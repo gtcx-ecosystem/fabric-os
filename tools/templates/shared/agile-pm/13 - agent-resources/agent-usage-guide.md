@@ -11,9 +11,12 @@
 ## Agent Workflow: Start Here
 
 ### Step 1: Understand Your Project Context
+
+> **Note:** The ecosystem now uses independent repos (`gtcx-protocols`, `gtcx-platforms`, etc.) instead of the former `gtcx-ecosystem-*` monorepo layout. Each repo has its own `agile-pm/` folder.
+
 ```bash
 # First, navigate to the project's agile-pm folder
-cd gtcx-ecosystem-protocols/[project-name]/agile-pm/
+cd gtcx-[repo-name]/agile-pm/
 
 # Read these files IN ORDER:
 1. README.md                          # Overview of the system

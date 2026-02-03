@@ -121,7 +121,7 @@ rules:
 
 ## Status
 
-**Placeholder** - Migrated from `gtcx-ecosystem-cognitive/veritas` (renamed to avoid confusion with GTCX Veritas product).
+**Placeholder** - Migrated from the former `gtcx-protocol-ecosystem` monorepo (originally under `cognitive/veritas`, renamed to avoid confusion with GTCX Veritas product). Now maintained in `gtcx-complianceos`.
 
 The original Veritas folder contained mostly placeholder READMEs. Actual compliance rules and engine implementation are planned for Phase 2.
 

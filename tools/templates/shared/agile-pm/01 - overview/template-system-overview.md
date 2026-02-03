@@ -6,6 +6,8 @@ This document provides a complete overview of the GTCX agile template system, ex
 
 ## Complete Template Architecture
 
+> **Note:** The tree below shows the original monorepo layout. Agile templates now live in each repo's own `agile-pm/` directory, with shared templates in `gtcx-infrastructure/tools/templates/shared/agile-pm/`.
+
 ```
 gtcx-ecosystem-agile/
 ├── agile/                           # Project-specific agile structure

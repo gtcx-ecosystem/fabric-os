@@ -121,4 +121,4 @@ Full agile-pm documentation in `agile-pm/` folder:
 - Sprint planning: `06 - planning/`
 
 
-*Source: Migrated from gtcx-ecosystem-migration/kora with domain abstraction*
+*Source: Originally from the GTCX monorepo migration tools; now maintained in gtcx-amis (KORA specs) and gtcx-infrastructure (templates)*

@@ -230,6 +230,9 @@ console.log(`\nAverage Velocity: ${avg.toFixed(1)} points`);
 ```
 
 ### Cross-Project Dashboard Generator
+
+> **Note:** The script below uses legacy monorepo paths (`gtcx-ecosystem-*`). The ecosystem now uses independent repos: `gtcx-protocols`, `gtcx-platforms`, `gtcx-app`, etc. Update paths accordingly when adapting this script.
+
 ```python
 #!/usr/bin/env python3
 # ecosystem-dashboard.py - Generate ecosystem-wide dashboard
@@ -251,13 +254,13 @@ def scan_project(project_path):
         'test_coverage': 0,
         'last_updated': None
     }
-    
+
     # Count stories
     stories_path = f"{project_path}/agile-pm/06 - planning/user-stories"
     if os.path.exists(stories_path):
         stories = os.listdir(stories_path)
         metrics['stories'] = len(stories)
-        
+
         for story in stories:
             with open(f"{stories_path}/{story}", 'r') as f:
                 content = f.read()
@@ -271,20 +274,20 @@ def scan_project(project_path):
                     metrics['p2'] += 1
                 elif 'Priority: P3' in content:
                     metrics['p3'] += 1
-    
+
     # Get last updated
     git_log = os.popen(f"cd {project_path} && git log -1 --format=%cd").read()
     metrics['last_updated'] = git_log.strip()
-    
+
     return metrics
 
 def generate_dashboard():
     """Generate markdown dashboard"""
     projects = [
-        'gtcx-ecosystem-protocols',
-        'gtcx-ecosystem-platforms',
-        'gtcx-ecosystem-services',
-        'gtcx-ecosystem-mobile'
+        'gtcx-protocols',
+        'gtcx-platforms',
+        'gtcx-app',
+        'gtcx-infrastructure'
     ]
     
     dashboard = f"""# GTCX Ecosystem Dashboard
@@ -314,12 +317,15 @@ if __name__ == "__main__":
 ## Utility Scripts
 
 ### Template Sync Script
+
+> **Note:** The script below uses legacy monorepo paths. Shared templates now live in `gtcx-infrastructure/tools/templates/shared/agile-pm/` and each repo has its own `agile-pm/` directory.
+
 ```bash
 #!/bin/bash
 # sync-templates.sh - Sync templates across all projects
 
-MASTER_TEMPLATE="gtcx-ecosystem-agile/agile-pm"
-PROJECTS=$(ls -d gtcx-ecosystem-*)
+MASTER_TEMPLATE="gtcx-infrastructure/tools/templates/shared/agile-pm"
+PROJECTS=$(ls -d gtcx-*)
 
 echo "🔄 Syncing templates from master: $MASTER_TEMPLATE"
 

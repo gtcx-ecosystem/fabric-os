@@ -7,12 +7,15 @@ This guide helps you adapt the GTCX Universal Agile Template to any project - ne
 ## Quick Start Process
 
 ### Step 1: Copy the Template Structure
+
+> **Note:** The paths below reflect the original monorepo layout. Shared agile templates now live in `gtcx-infrastructure/tools/templates/shared/agile-pm/`.
+
 ```bash
 # For new projects
-cp -r /path/to/gtcx-ecosystem-agile/agile/ your-new-project/
+cp -r /path/to/gtcx-infrastructure/tools/templates/shared/agile-pm/ your-new-project/agile-pm/
 
-# For existing projects  
-cp -r /path/to/gtcx-ecosystem-agile/agile/ your-existing-project/
+# For existing projects
+cp -r /path/to/gtcx-infrastructure/tools/templates/shared/agile-pm/ your-existing-project/agile-pm/
 ```
 
 ### Step 2: Customize Core Documents

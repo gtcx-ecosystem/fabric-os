@@ -151,4 +151,4 @@ Full agile-pm documentation in `agile-pm/` folder:
 - Language support: `11 - support/`
 
 
-*Source: Migrated from gtcx-ecosystem-migration/amani with domain abstraction*
+*Source: Originally from the GTCX monorepo migration tools; now maintained in gtcx-amis (AMANI specs) and gtcx-infrastructure (templates)*

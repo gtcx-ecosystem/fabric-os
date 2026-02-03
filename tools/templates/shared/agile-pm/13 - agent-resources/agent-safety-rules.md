@@ -280,19 +280,35 @@ Required_Tests:
 
 ## PROJECT STRUCTURE DISCIPLINE
 
-### GTCX Monorepo Structure
+### GTCX Ecosystem Structure
+
+> **Note:** The ecosystem migrated from a monorepo (`gtcx-protocol-ecosystem/gtcx-ecosystem-*`) to 12 independent repos at `gtcx-{core,protocols,platforms,intelligence,agentic,app,design,complianceos,hardware,infrastructure,amis,docs}`.
 
 ```
-gtcx-protocol-ecosystem/
-├── gtcx-ecosystem-*/        # NEVER rename these directories
-│   ├── agile-pm/           # Project management (don't modify structure)
-│   ├── src/                # Source code
-│   ├── tests/              # Test files
-│   ├── docs/               # Documentation
-│   └── package.json        # Dependencies (careful with updates)
-├── scripts/                # Shared scripts
-├── templates/              # Shared templates
-└── workspace.manifest.json # NEVER modify without approval
+gtcx-ecosystem/
+├── gtcx-core/              # Core protocol definitions
+├── gtcx-protocols/         # TradePass, GCI, GeoTag, VaultMark, PvP
+├── gtcx-platforms/         # CRX, SGX, AGX platforms
+├── gtcx-intelligence/      # CORTEX, ANISA intelligence layer
+├── gtcx-agentic/           # Agent framework and knowledge
+├── gtcx-app/               # Mobile and web applications
+├── gtcx-design/            # Design system and UI components
+├── gtcx-complianceos/      # Compliance rules engine
+├── gtcx-hardware/          # VaultCard, hardware integrations
+├── gtcx-infrastructure/    # DevOps, CI/CD, templates
+├── gtcx-amis/              # MABA, KORA, AMANI migration tools
+└── gtcx-docs/              # Public documentation
+```
+
+Each repo follows this structure:
+
+```
+gtcx-[name]/
+├── agile-pm/               # Project management (don't modify structure)
+├── src/                    # Source code
+├── tests/                  # Test files
+├── docs/                   # Documentation
+└── package.json            # Dependencies (careful with updates)
 ```
 
 ### File Naming Conventions

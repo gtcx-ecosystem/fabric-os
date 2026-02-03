@@ -1,55 +1,40 @@
 # GTCX Infrastructure
 
-DevOps tooling, deployment automation, and security framework for the GTCX ecosystem. Manages container orchestration, infrastructure-as-code, and zero-trust security across all environments.
+DevOps tooling, deployment automation, and security framework for the GTCX ecosystem. Manages container orchestration, infrastructure-as-code, compliance tooling, and zero-trust security across all environments. Used by platform engineers and DevOps teams deploying and operating GTCX services.
 
+## Quick Navigation
 
-## Deployment Infrastructure
+| Document | Description |
+|----------|-------------|
+| [Infrastructure Overview](./docs/infrastructure-overview.md) | High-level architecture of the deployment stack |
+| [Digital Infrastructure Framework](./docs/digital-infrastructure-framework.md) | End-to-end digital infrastructure design |
+| [Six-Month Deployment Roadmap](./docs/six-month-deployment-roadmap.md) | Phased deployment plan across environments |
+| [Security Policies](./docs/security/policies-overview.md) | Security policy framework and standards |
+| [Edge Proxy Overview](./docs/edge-proxy-overview.md) | Edge proxy architecture for field connectivity |
+| [Compliance OS Overview](./docs/compliance-os-overview.md) | Compliance operating system and automation |
+| [Migrations Overview](./docs/migrations-overview.md) | Data and service migration strategies |
+| [Infrastructure Economics](./docs/infrastructure-economics.md) | Cost modeling and optimization |
 
-| Tool | Purpose |
-|------|---------|
-| **Docker** | Container configurations for all services |
-| **Kubernetes** | Orchestration (base manifests + overlays per environment) |
-| **Terraform** | Multi-cloud provisioning (reusable modules + country-specific envs) |
-| **Ansible** | On-premise provisioning for air-gapped deployments |
-
-
-## Security Framework
-
-| Component | Purpose |
-|-----------|---------|
-| **Zero-trust** | Network policies, mTLS, service mesh |
-| **Threat models** | Per-service threat analysis |
-| **Secrets management** | Vault integration, key rotation |
-| **Audit logging** | Centralized security event collection |
-
-
-## Structure
+## Directory Structure
 
 ```
 gtcx-infrastructure/
-├── docker/               # Container configs
-├── kubernetes/
-│   ├── base/             # Base manifests
-│   └── overlays/         # dev/staging/prod
-├── terraform/
-│   ├── modules/          # Reusable IaC modules
-│   └── environments/     # Country-specific
-├── ansible/              # On-premise provisioning
-├── security/             # Zero-trust framework, threat models
-├── monitoring/           # Observability (metrics, logging, tracing)
-├── scripts/              # Deployment automation
-└── docs/
+├── infra/                 # Core IaC (docker, kubernetes, terraform, edge-proxy, migrations, security, scripts)
+├── docker/                # Container configurations (placeholder)
+├── kubernetes/            # Orchestration (base manifests + overlays per environment)
+├── terraform/             # Multi-cloud provisioning (modules + country-specific envs)
+├── ansible/               # On-premise provisioning for air-gapped deployments
+├── security/              # Zero-trust framework (placeholder)
+├── monitoring/            # Observability stack (placeholder)
+├── scripts/               # Deployment automation (placeholder)
+├── tools/                 # Scripts and project templates
+├── docs/                  # Infrastructure documentation and security policies
+├── package.json
+├── pnpm-workspace.yaml
+├── tsconfig.json
+└── turbo.json
 ```
-
 
 ## Dependencies
 
-- None (standalone DevOps tooling)
-
-
-## Source Reference
-
-- Infrastructure: `../gtcx/infra/`
-- Docker configs: `../gtcx/infra/docker/`
-- Kubernetes: `../gtcx/infra/kubernetes/`
-- Terraform: `../gtcx/infra/terraform/`
+None. Standalone DevOps tooling consumed by all other repos.

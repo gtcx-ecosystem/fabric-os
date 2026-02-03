@@ -29,5 +29,14 @@
     "prettier": "^3.4.0",
     "turbo": "^2.3.0",
     "typescript": "^5.7.0"
+  },
+  "gtcx": {
+    "principles": [
+      "P12",
+      "P14",
+      "P15",
+      "P22",
+      "P24"
+    ]
   }
 }

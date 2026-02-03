@@ -31,3 +31,23 @@ gtcx-infrastructure/
 ## Dependencies
 
 None. Standalone DevOps tooling consumed by all other repos.
+
+## Principles
+
+> Full definitions: [PRINCIPLES.md](https://github.com/gtcx-protocol/gtcx-infrastructure/blob/main/tools/templates/PRINCIPLES.md)
+
+Primary principles for this repo:
+
+- P12 Resilient -- fault-tolerant, self-healing systems
+- P14 Deployable -- automated, reproducible, reversible deployments
+- P15 Observable -- structured metrics, logs, and traces
+- P22 Portable -- runs on any infrastructure
+- P24 Scalable -- handles growth without redesign
+
+Required across all repos:
+
+- P7 Open -- open-source, no vendor lock-in
+- P13 Modular -- single responsibility, clear boundaries
+- P27 Documented -- every system and API is documented
+- P29 Tested -- automated tests for every module
+- P30 Intentional -- every line of code serves a purpose

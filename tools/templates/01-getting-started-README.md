@@ -41,7 +41,7 @@
 
 3. **Understand the Architecture**
    - [Architecture Overview](../02-architecture/README.md)
-   - [Protocol Spec](../../gtcx-protocol-docs/spec/02-architecture.md)
+   - [Protocol Spec](../../gtcx-ecosystem-docs/spec/02-architecture.md)
 
 4. **Pick Your Path**
    - Protocol Development → [03-protocols/](../03-protocols/)

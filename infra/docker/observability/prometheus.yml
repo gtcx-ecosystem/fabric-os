@@ -49,7 +49,7 @@ scrape_configs:
         replacement: 'gtcx-crypto'
 
   # Protocol Services
-  - job_name: 'gtcx-protocols'
+  - job_name: 'gtcx-ecosystems'
     metrics_path: '/metrics'
     static_configs:
       - targets:

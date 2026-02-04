@@ -32,9 +32,9 @@
 - [Code Standards](./05-engineering/CODE-STANDARDS.md)
 
 ### Protocol Specification
-- [Full Protocol Spec](../gtcx-protocol-docs/) — Formal specification (v3.0)
-- [Glossary](../gtcx-protocol-docs/GLOSSARY.md) — All terminology
-- [API Reference](../gtcx-protocol-docs/api/openapi.yaml) — OpenAPI spec
+- [Full Protocol Spec](../gtcx-ecosystem-docs/) — Formal specification (v3.0)
+- [Glossary](../gtcx-ecosystem-docs/GLOSSARY.md) — All terminology
+- [API Reference](../gtcx-ecosystem-docs/api/openapi.yaml) — OpenAPI spec
 
 
 ## Documentation Standards
@@ -63,7 +63,7 @@ docs/                        ← Working knowledge base (this folder)
 ├── Updated frequently
 └── Internal + external audience
 
-gtcx-protocol-docs/          ← Formal specification
+gtcx-ecosystem-docs/          ← Formal specification
 ├── Protocol specification v3.0
 ├── Versioned, change-controlled
 └── External publication ready

@@ -113,20 +113,11 @@ kubectl apply -k kubernetes/overlays/staging/
 
 ## Security Requirements
 
-Per DEPLOYMENT-STRATEGY.md:
-
 - [Done] All artifacts signed (Cosign/Sigstore)
 - [Done] No secrets in code or images
 - [Done] Security scanning in CI/CD
 - [Done] Encryption at rest (AES-256)
 - [Done] TLS 1.3 for all communications
-
-
-## Related Documentation
-
-- [DEPLOYMENT-STRATEGY.md](../docs/engineering-manifesto/DEPLOYMENT-STRATEGY.md) — Strategic requirements
-- [PRINCIPLES.md](../docs/engineering-manifesto/PRINCIPLES.md) — 30 engineering principles
-- [CODE-STANDARDS.md](../docs/engineering-manifesto/CODE-STANDARDS.md) — Implementation patterns
 
 
 *Infrastructure that governments trust with their economic sovereignty.*

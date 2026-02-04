@@ -115,7 +115,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: gtcx-protocol-policy
+  name: gtcx-ecosystem-policy
   namespace: gtcx-production
 spec:
   podSelector:

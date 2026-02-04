@@ -1,17 +1,31 @@
-# Agile-PM: GTCX Infrastructure
+# GTCX Infrastructure -- Agile PM
 
-> Master templates and standards: [gtcx-core/agile-pm](https://github.com/gtcx-protocol/gtcx-core/tree/main/agile-pm)
+## Product Overview
 
-DevOps tooling, deployment automation, and infrastructure-as-code for the GTCX ecosystem.
+DevOps tooling, deployment automation, and security framework for the GTCX ecosystem. Manages container orchestration, infrastructure-as-code, compliance tooling, and zero-trust security across all environments. Used by platform engineers and DevOps teams deploying and operating GTCX services.
 
-## Relevant Sections
+## Current Phase
 
-- 04 - spec: Deployment requirements and system architecture
-- 06 - planning: Sprint management and priority framework
-- 09 - security: Security architecture and threat modeling
-- 14 - automation: CI/CD and infrastructure automation
-- 15 - metrics-dashboards: Observability and monitoring
+Pre-development. Specifications and architecture documentation are in progress.
 
-## Project-Specific Content
+## Status
 
-None yet. As development progresses, add infrastructure-specific specs, runbooks, and deployment plans here.
+| Area | Status |
+|------|--------|
+| Specifications | In Progress |
+| Architecture Design | In Progress |
+| Implementation | Not Started |
+| Testing | Not Started |
+| CI/CD | Not Started |
+
+## Key Documents
+
+- [Architecture Overview](../docs/architecture/infrastructure-architecture-overview.md)
+- [Infrastructure Overview](../docs/infrastructure-overview.md)
+- [Digital Infrastructure Framework](../docs/digital-infrastructure-framework.md)
+- [Six-Month Deployment Roadmap](../docs/six-month-deployment-roadmap.md)
+- [Security Policies](../docs/security/policies-overview.md)
+
+## Dependencies
+
+None. Standalone DevOps tooling consumed by all other repos.

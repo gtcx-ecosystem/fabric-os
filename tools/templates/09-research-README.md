@@ -61,4 +61,4 @@ Research informs every major architectural decision. We don't build on assumptio
 
 - [Architecture Decisions](../02-architecture/decisions/)
 - [Engineering Principles](../05-engineering/PRINCIPLES.md)
-- [Protocol Specification](../../gtcx-protocol-docs/)
+- [Protocol Specification](../../gtcx-ecosystem-docs/)

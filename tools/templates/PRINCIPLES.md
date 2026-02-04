@@ -179,12 +179,12 @@ Each principle has a primary owner repo where its implementation is most critica
 |-----------|--------------|----------|
 | P1 Proof | gtcx-core | Trust |
 | P2 Private | gtcx-core | Trust |
-| P3 Auditable | gtcx-protocols, gtcx-complianceos | Trust |
+| P3 Auditable | gtcx-ecosystems, gtcx-complianceos | Trust |
 | P4 Immutable | gtcx-core | Trust |
-| P5 Transparent | gtcx-protocols | Trust |
+| P5 Transparent | gtcx-ecosystems | Trust |
 | P6 Sovereign | gtcx-platforms | Sovereignty |
 | P7 Open | Universal | Sovereignty |
-| P8 Federated | gtcx-protocols | Sovereignty |
+| P8 Federated | gtcx-ecosystems | Sovereignty |
 | P9 Governed | gtcx-platforms | Sovereignty |
 | P10 Compliant | gtcx-complianceos | Sovereignty |
 | P11 Secure | gtcx-core | Architecture |

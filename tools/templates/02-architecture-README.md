@@ -29,7 +29,7 @@ GTCX uses a **three-layer architecture**:
 └─────────────────────────────────────────────────────────────┘
 ```
 
-See [Protocol Spec §2](../../gtcx-protocol-docs/spec/02-architecture.md) for full details.
+See [Protocol Spec §2](../../gtcx-ecosystem-docs/spec/02-architecture.md) for full details.
 
 
 ## Key Architectural Decisions
@@ -58,6 +58,6 @@ Architecture decisions must align with the [30 Engineering Principles](../05-eng
 
 ## Related Documentation
 
-- [Full Protocol Specification](../../gtcx-protocol-docs/spec/)
-- [Spec-to-Code Map](../../gtcx-protocol-docs/SPEC-TO-CODE-MAP.md)
+- [Full Protocol Specification](../../gtcx-ecosystem-docs/spec/)
+- [Spec-to-Code Map](../../gtcx-ecosystem-docs/SPEC-TO-CODE-MAP.md)
 - [Deployment Architecture](../06-deployment/)

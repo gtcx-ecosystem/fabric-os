@@ -5,7 +5,7 @@
   "description": "GTCX Infrastructure - Docker, Kubernetes, Terraform, security, migrations, and deployment tooling",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gtcx-protocol/gtcx-infrastructure.git"
+    "url": "https://github.com/gtcx-ecosystem/gtcx-infrastructure.git"
   },
   "author": "GTCX Protocol",
   "license": "MIT",

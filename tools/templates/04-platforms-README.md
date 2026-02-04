@@ -88,6 +88,6 @@ platforms/
 
 ## Related Documentation
 
-- [Protocol Specification §2.3-2.4](../../gtcx-protocol-docs/spec/02-architecture.md)
-- [VIA/VXA Framework](../../gtcx-protocol-docs/addenda/E-ai-native.md)
+- [Protocol Specification §2.3-2.4](../../gtcx-ecosystem-docs/spec/02-architecture.md)
+- [VIA/VXA Framework](../../gtcx-ecosystem-docs/addenda/E-ai-native.md)
 - [Deployment Guide](../06-deployment/)

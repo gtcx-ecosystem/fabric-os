@@ -15,20 +15,20 @@
 ## Quick Links
 
 ### API Reference
-- [OpenAPI Specification](../../gtcx-protocol-docs/api/openapi.yaml)
-- [API README](../../gtcx-protocol-docs/api/README.md)
+- [OpenAPI Specification](../../gtcx-ecosystem-docs/api/openapi.yaml)
+- [API README](../../gtcx-ecosystem-docs/api/README.md)
 
 ### Schemas
-- [Data Models (Spec §7)](../../gtcx-protocol-docs/spec/07-data-models.md)
+- [Data Models (Spec §7)](../../gtcx-ecosystem-docs/spec/07-data-models.md)
 - [Schema Package](../../packages/schemas/)
 
 ### Terminology
-- [Full Glossary](../../gtcx-protocol-docs/GLOSSARY.md)
-- [Spec-to-Code Map](../../gtcx-protocol-docs/SPEC-TO-CODE-MAP.md)
+- [Full Glossary](../../gtcx-ecosystem-docs/GLOSSARY.md)
+- [Spec-to-Code Map](../../gtcx-ecosystem-docs/SPEC-TO-CODE-MAP.md)
 
 ### Cryptographic
-- [Test Vectors](../../gtcx-protocol-docs/TEST-VECTORS.md)
-- [Security Spec (§8)](../../gtcx-protocol-docs/spec/08-security.md)
+- [Test Vectors](../../gtcx-ecosystem-docs/TEST-VECTORS.md)
+- [Security Spec (§8)](../../gtcx-ecosystem-docs/spec/08-security.md)
 
 
 ## Data Model Overview
@@ -66,6 +66,6 @@ type GCIInput = z.infer<typeof GCIInputSchema>;
 
 ## Related Documentation
 
-- [Protocol Specification](../../gtcx-protocol-docs/spec/)
+- [Protocol Specification](../../gtcx-ecosystem-docs/spec/)
 - [Engineering Standards](../05-engineering/)
 - [Guides](../07-guides/)

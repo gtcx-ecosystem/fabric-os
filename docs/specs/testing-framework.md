@@ -41,8 +41,8 @@
 |---------------------|-----------------|-----------|
 | gtcx-core/crypto | 95% | Cryptographic correctness is existential; a single untested path can compromise the entire trust model |
 | gtcx-core/security | 90% | Authentication and authorization boundaries protect every service in the ecosystem |
-| gtcx-protocols/sdk-ts | 90% | Protocol SDK is the integration surface for all platforms and third-party consumers |
-| gtcx-protocols/sdk-python | 90% | Python SDK parity with TypeScript SDK; same integration surface |
+| gtcx-ecosystems/sdk-ts | 90% | Protocol SDK is the integration surface for all platforms and third-party consumers |
+| gtcx-ecosystems/sdk-python | 90% | Python SDK parity with TypeScript SDK; same integration surface |
 | gtcx-platforms/crx-api | 80% | NestJS services with well-defined API boundaries and input validation |
 | gtcx-platforms/sgx-api | 80% | NestJS services with well-defined API boundaries and input validation |
 | gtcx-platforms/agx-api | 80% | NestJS services with well-defined API boundaries and input validation |
@@ -200,7 +200,7 @@ The ecosystem currently has approximately 60 real assertions across 4 test files
 |-------|-------|--------|----------|
 | Phase 1 | gtcx-core/crypto property tests | All 9 cryptographic invariants above | Immediate |
 | Phase 2 | gtcx-core/security unit tests | 90% coverage on auth/authz | Following sprint |
-| Phase 3 | gtcx-protocols/sdk-ts unit tests | 90% coverage on protocol SDK | Following sprint |
+| Phase 3 | gtcx-ecosystems/sdk-ts unit tests | 90% coverage on protocol SDK | Following sprint |
 | Phase 4 | gtcx-platforms API integration tests | 80% coverage on NestJS services | 2 sprints |
 | Phase 5 | gtcx-app offline scenario tests | All 7 scenarios above | 2 sprints |
 | Phase 6 | gtcx-design accessibility tests | WCAG 2.1 AA compliance | Ongoing |

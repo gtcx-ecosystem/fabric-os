@@ -83,5 +83,5 @@ If any answer is "no" — fix it first.
 ## Related Documentation
 
 - [Architecture Decisions](../02-architecture/decisions/)
-- [Protocol Specification](../../gtcx-protocol-docs/)
-- [Test Vectors](../../gtcx-protocol-docs/TEST-VECTORS.md)
+- [Protocol Specification](../../gtcx-ecosystem-docs/)
+- [Test Vectors](../../gtcx-ecosystem-docs/TEST-VECTORS.md)

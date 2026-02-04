@@ -51,7 +51,7 @@ Three reusable workflow templates cover the entire ecosystem. Individual reposit
 
 ### 1. TypeScript Monorepo
 
-**Used by**: gtcx-core, gtcx-app, gtcx-protocols, gtcx-platforms, gtcx-design
+**Used by**: gtcx-core, gtcx-app, gtcx-ecosystems, gtcx-platforms, gtcx-design
 
 | Step | Command | Caching |
 |------|---------|---------|
@@ -66,7 +66,7 @@ Three reusable workflow templates cover the entire ecosystem. Individual reposit
 
 ### 2. Python Package
 
-**Used by**: gtcx-protocols (Python SDK)
+**Used by**: gtcx-ecosystems (Python SDK)
 
 | Step | Command | Caching |
 |------|---------|---------|

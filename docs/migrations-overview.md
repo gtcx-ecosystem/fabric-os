@@ -39,7 +39,7 @@ Transform any data from any source into any target schema.
 - **Universal connectors**: databases, files, APIs, streams
 - **Self-healing** with automatic error resolution
 
-[→ MABA Documentation](./maba/README.md)
+*Migration tooling for MABA has moved to the sensei-ai project.*
 
 ### KORA - Multi-Source Verification Oracle
 Create tamper-proof verification through multi-source consensus.
@@ -49,7 +49,7 @@ Create tamper-proof verification through multi-source consensus.
 - **ML-powered fraud detection** that learns over time
 - **Zero-knowledge proofs** for sensitive data
 
-[→ KORA Documentation](./kora/README.md)
+*Migration tooling for KORA has moved to the sensei-ai project.*
 
 ### AMANI - Multilingual Guidance Layer
 Make complex processes accessible to everyone.
@@ -59,7 +59,7 @@ Make complex processes accessible to everyone.
 - **Offline-first** for low-connectivity environments
 - **Context-aware** assistance and proactive guidance
 
-[→ AMANI Documentation](./amani/README.md)
+*Migration tooling for AMANI has moved to the sensei-ai project.*
 
 ## Domain Examples
 
@@ -93,7 +93,7 @@ amani:
   channels: [whatsapp, sms, ussd, web]
 ```
 
-See [config/example.yaml](./config/example.yaml) for a template.
+*Configuration templates are managed in the sensei-ai project.*
 
 ## Quick Start
 
@@ -173,7 +173,7 @@ When used with GTCX commodity verification:
 2. **KORA** verifies against GCI (Global Compliance Intelligence)
 3. **AMANI** guides users via VIA/VXA mobile agents
 
-Configuration: [config/gtcx.yaml](./config/gtcx.yaml)
+Configuration is managed in the sensei-ai project.
 
 ## API Overview
 

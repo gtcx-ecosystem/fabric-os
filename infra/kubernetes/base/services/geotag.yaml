@@ -25,7 +25,7 @@ spec:
         tier: protocol
         protocol: geotag
     spec:
-      serviceAccountName: gtcx-protocol
+      serviceAccountName: gtcx-ecosystem
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000

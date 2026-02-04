@@ -7,12 +7,12 @@
 
 | Protocol | Purpose | Spec Section |
 |----------|---------|--------------|
-| [TradePass](./tradepass/) | Digital identity & credentials | [§3](../../gtcx-protocol-docs/spec/03-tradepass.md) |
-| [GCI](./gci/) | Compliance scoring | [§4](../../gtcx-protocol-docs/spec/04-gci.md) |
-| [GeoTag](./geotag/) | Location verification | [§5.1](../../gtcx-protocol-docs/spec/05-geotag-vaultmark.md) |
-| [VaultMark](./vaultmark/) | Custody chain tracking | [§5.2](../../gtcx-protocol-docs/spec/05-geotag-vaultmark.md) |
-| [PvP](./pvp/) | Payment-versus-Payment settlement | [§6](../../gtcx-protocol-docs/spec/06-pvp-settlement.md) |
-| [PANX](./panx-oracle/) | Multi-stakeholder consensus | [§9.3](../../gtcx-protocol-docs/spec/09-network.md) |
+| [TradePass](./tradepass/) | Digital identity & credentials | [§3](../../gtcx-ecosystem-docs/spec/03-tradepass.md) |
+| [GCI](./gci/) | Compliance scoring | [§4](../../gtcx-ecosystem-docs/spec/04-gci.md) |
+| [GeoTag](./geotag/) | Location verification | [§5.1](../../gtcx-ecosystem-docs/spec/05-geotag-vaultmark.md) |
+| [VaultMark](./vaultmark/) | Custody chain tracking | [§5.2](../../gtcx-ecosystem-docs/spec/05-geotag-vaultmark.md) |
+| [PvP](./pvp/) | Payment-versus-Payment settlement | [§6](../../gtcx-ecosystem-docs/spec/06-pvp-settlement.md) |
+| [PANX](./panx-oracle/) | Multi-stakeholder consensus | [§9.3](../../gtcx-ecosystem-docs/spec/09-network.md) |
 
 
 ## Protocol Layer Architecture
@@ -53,7 +53,7 @@ packages/schemas/            # Shared schemas (Zod)
 
 ## Related Documentation
 
-- [Full Protocol Specification](../../gtcx-protocol-docs/spec/)
-- [Data Models](../../gtcx-protocol-docs/spec/07-data-models.md)
-- [Test Vectors](../../gtcx-protocol-docs/TEST-VECTORS.md)
-- [Glossary](../../gtcx-protocol-docs/GLOSSARY.md)
+- [Full Protocol Specification](../../gtcx-ecosystem-docs/spec/)
+- [Data Models](../../gtcx-ecosystem-docs/spec/07-data-models.md)
+- [Test Vectors](../../gtcx-ecosystem-docs/TEST-VECTORS.md)
+- [Glossary](../../gtcx-ecosystem-docs/GLOSSARY.md)

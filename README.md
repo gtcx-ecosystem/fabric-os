@@ -16,6 +16,22 @@ DevOps tooling, deployment automation, and security framework for the GTCX ecosy
 | [Migrations Overview](./docs/migrations-overview.md)                                 | Data and service migration strategies             |
 | [Infrastructure Economics](./docs/infrastructure-economics.md)                       | Cost modeling and optimization                    |
 
+## Quick Start
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) >= 20.0.0
+- [pnpm](https://pnpm.io/) >= 9.15.0
+
+### Setup
+
+```bash
+pnpm install
+pnpm build
+pnpm test
+pnpm lint
+```
+
 ## Directory Structure
 
 ```

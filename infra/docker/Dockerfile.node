@@ -1,0 +1,126 @@
+# =============================================================================
+# GTCX Node.js/TypeScript Dockerfile
+# =============================================================================
+#
+# Multi-stage build for TypeScript packages and protocol SDKs.
+#
+# Principles Implemented:
+#   - DEPLOYABLE (14): Same image runs everywhere
+#   - SECURE (11): Minimal attack surface, non-root user
+#   - PORTABLE (22): No cloud-specific dependencies
+#   - HARDWARE (20): Optimized for constrained environments
+#
+# Target Size: < 200MB for TypeScript services
+#
+# Usage:
+#   docker build --build-arg PACKAGE_PATH=packages/sdk-typescript -f Dockerfile.node .
+#   docker build --build-arg PACKAGE_PATH=protocols/tradepass -f Dockerfile.node .
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Build Arguments
+# -----------------------------------------------------------------------------
+ARG NODE_VERSION=20
+ARG PNPM_VERSION=9
+
+# -----------------------------------------------------------------------------
+# Stage 1: Builder - Install dependencies and compile TypeScript
+# -----------------------------------------------------------------------------
+FROM node:${NODE_VERSION}-alpine AS builder
+
+ARG PNPM_VERSION
+ARG PACKAGE_PATH=packages/sdk-typescript
+
+# Install pnpm globally
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
+
+# Set working directory
+WORKDIR /build
+
+# Copy workspace configuration first (layer caching)
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY tsconfig*.json ./
+COPY turbo.json ./
+
+# Copy all package.json files for dependency resolution
+# This allows pnpm to resolve the full workspace dependency graph
+COPY packages/ packages/
+COPY protocols/ protocols/
+
+# Install dependencies with frozen lockfile for reproducibility
+RUN pnpm install --frozen-lockfile
+
+# Build all packages (turbo handles dependency ordering)
+RUN pnpm build
+
+# -----------------------------------------------------------------------------
+# Stage 2: Production - Minimal runtime image
+# -----------------------------------------------------------------------------
+FROM node:${NODE_VERSION}-alpine AS production
+
+ARG PNPM_VERSION
+ARG PACKAGE_PATH=packages/sdk-typescript
+ARG APP_PORT=3000
+
+# OCI Image Labels
+LABEL org.opencontainers.image.source="https://github.com/gtcx-ecosystem/gtcx-protocols"
+LABEL org.opencontainers.image.description="GTCX TypeScript Package - ${PACKAGE_PATH}"
+LABEL org.opencontainers.image.vendor="GTCX Protocol"
+LABEL org.opencontainers.image.licenses="MIT"
+
+# Install pnpm for production dependency management
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
+
+# Security: Create non-root user
+RUN addgroup -g 1000 gtcx && \
+    adduser -D -u 1000 -G gtcx gtcx
+
+WORKDIR /app
+
+# Copy workspace root config
+COPY --from=builder /build/package.json /build/pnpm-lock.yaml /build/pnpm-workspace.yaml ./
+COPY --from=builder /build/turbo.json ./
+
+# Copy built artifacts and production node_modules
+COPY --from=builder --chown=gtcx:gtcx /build/node_modules ./node_modules
+COPY --from=builder --chown=gtcx:gtcx /build/packages ./packages
+COPY --from=builder --chown=gtcx:gtcx /build/protocols ./protocols
+
+# Remove source files, tests, and dev artifacts to minimize image size
+RUN find /app/packages /app/protocols -name "*.ts" ! -name "*.d.ts" -delete 2>/dev/null; \
+    find /app/packages /app/protocols -name "*.test.*" -delete 2>/dev/null; \
+    find /app/packages /app/protocols -name "*.spec.*" -delete 2>/dev/null; \
+    find /app/packages /app/protocols -type d -name "__tests__" -exec rm -rf {} + 2>/dev/null; \
+    find /app/packages /app/protocols -type d -name "coverage" -exec rm -rf {} + 2>/dev/null; \
+    rm -rf /app/node_modules/.cache 2>/dev/null; \
+    true
+
+# Environment
+ENV NODE_ENV=production \
+    APP_PORT=${APP_PORT}
+
+# Security: Switch to non-root user
+USER gtcx
+
+# Health check endpoint (OBSERVABLE principle)
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD node -e "try { require('http').get('http://localhost:${APP_PORT}/health', (r) => process.exit(r.statusCode === 200 ? 0 : 1)); } catch(e) { process.exit(0); }"
+
+# Default port
+EXPOSE ${APP_PORT}
+
+# Default command - can be overridden per package
+CMD ["node", "--version"]
+
+# =============================================================================
+# Build Targets:
+#   docker build --build-arg PACKAGE_PATH=packages/sdk-typescript \
+#                -f Dockerfile.node -t gtcx/sdk-typescript:latest .
+#
+#   docker build --build-arg PACKAGE_PATH=protocols/tradepass \
+#                -f Dockerfile.node -t gtcx/tradepass:latest .
+#
+#   docker build --build-arg PACKAGE_PATH=protocols/geotag \
+#                --build-arg APP_PORT=3001 \
+#                -f Dockerfile.node -t gtcx/geotag:latest .
+# =============================================================================

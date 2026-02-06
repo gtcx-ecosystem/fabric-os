@@ -68,3 +68,18 @@ Required across all repos:
 - P27 Documented -- every system and API is documented
 - P29 Tested -- automated tests for every module
 - P30 Intentional -- every line of code serves a purpose
+
+## Documentation Index
+
+- docs/README.md
+
+## Spec Canon Alignment
+
+- gtcx-protocols/agile-pm/spec-canon.md
+- gtcx-docs/docs/docs-overview.md
+
+## Cross-Links
+
+- gtcx-docs — Ecosystem documentation hub
+- gtcx-protocols — Protocol specs and delivery planning
+- gtcx-core — Shared crypto, types, and schemas

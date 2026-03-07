@@ -4,17 +4,16 @@ DevOps tooling, deployment automation, and security framework for the GTCX ecosy
 
 ## Quick Navigation
 
-| Document                                                                             | Description                                       |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------- |
-| [Architecture Overview](./docs/architecture/infrastructure-architecture-overview.md) | Composable architecture and ecosystem integration |
-| [Infrastructure Overview](./docs/infrastructure-overview.md)                         | High-level architecture of the deployment stack   |
-| [Digital Infrastructure Framework](./docs/digital-infrastructure-framework.md)       | End-to-end digital infrastructure design          |
-| [Six-Month Deployment Roadmap](./docs/six-month-deployment-roadmap.md)               | Phased deployment plan across environments        |
-| [Security Policies](./docs/security/README.md)                                       | Security policy framework and standards           |
-| [Edge Proxy Overview](./docs/edge-proxy-overview.md)                                 | Edge proxy architecture for field connectivity    |
-| [Compliance OS Overview](./docs/compliance-os-overview.md)                           | Compliance operating system and automation        |
-| [Migrations Overview](./docs/migrations-overview.md)                                 | Data and service migration strategies             |
-| [Infrastructure Economics](./docs/infrastructure-economics.md)                       | Cost modeling and optimization                    |
+| Document                                                                        | Description                                    |
+| ------------------------------------------------------------------------------- | ---------------------------------------------- |
+| [SOP Index](./_sop/README.md)                                                   | Full documentation and operations hub          |
+| [Orientation](./_sop/1-agents/1-onboarding/orientation.md)                      | Start here — codebase map and session protocol |
+| [Safety Rules](./_sop/1-agents/4-workflows/safety-rules.md)                     | What requires human approval                   |
+| [Architecture Overview](./_sop/2-docs/1-architecture/system-overview.md)        | System design, deployment model, trust zones   |
+| [Trust Model](./_sop/2-docs/1-architecture/trust-model.md)                      | Zero-trust security boundaries                 |
+| [Quality Runbook](./_sop/2-docs/4-devops/2-runbooks/quality-runbook.md)         | CI triage order and gate sequence              |
+| [Release Checklist](./_sop/2-docs/4-devops/7-release-mgmt/release-checklist.md) | Release gate and evidence requirements         |
+| [Roadmap](./_sop/3-agile/2-scrum-board/2-phases/roadmap.md)                     | Delivery roadmap and sprint status             |
 
 ## Quick Start
 
@@ -38,7 +37,7 @@ pnpm lint
 gtcx-infrastructure/
 ├── infra/                 # Core IaC (docker, kubernetes, terraform, edge-proxy, migrations, security, scripts)
 ├── tools/                 # Scripts and project templates
-├── docs/                  # Infrastructure documentation and security policies
+├── _sop/                  # Standard operating procedures, docs, agent team
 ├── package.json
 ├── pnpm-workspace.yaml
 ├── tsconfig.json
@@ -51,32 +50,21 @@ None. Standalone DevOps tooling consumed by all other repos.
 
 ## Principles
 
-> Full definitions: [PRINCIPLES.md](https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/tools/templates/PRINCIPLES.md)
-
 Primary principles for this repo:
 
-- P12 Resilient -- fault-tolerant, self-healing systems
-- P14 Deployable -- automated, reproducible, reversible deployments
-- P15 Observable -- structured metrics, logs, and traces
-- P22 Portable -- runs on any infrastructure
-- P24 Scalable -- handles growth without redesign
+- P12 Resilient — fault-tolerant, self-healing systems
+- P14 Deployable — automated, reproducible, reversible deployments
+- P15 Observable — structured metrics, logs, and traces
+- P22 Portable — runs on any infrastructure
+- P24 Scalable — handles growth without redesign
 
 Required across all repos:
 
-- P7 Open -- open-source, no vendor lock-in
-- P13 Modular -- single responsibility, clear boundaries
-- P27 Documented -- every system and API is documented
-- P29 Tested -- automated tests for every module
-- P30 Intentional -- every line of code serves a purpose
-
-## Documentation Index
-
-- docs/README.md
-
-## Spec Canon Alignment
-
-- gtcx-protocols/agile-pm/spec-canon.md
-- gtcx-docs/docs/docs-overview.md
+- P7 Open — open-source, no vendor lock-in
+- P13 Modular — single responsibility, clear boundaries
+- P27 Documented — every system and API is documented
+- P29 Tested — automated tests for every module
+- P30 Intentional — every line of code serves a purpose
 
 ## Cross-Links
 

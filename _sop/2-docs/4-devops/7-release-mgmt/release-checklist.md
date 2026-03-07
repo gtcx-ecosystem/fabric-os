@@ -1,79 +1,75 @@
-# Release Checklist — {repo-name}
+# Release Checklist — gtcx-infrastructure
 
-Complete this checklist for every release. All items must be checked before publishing. Gate execution is documented in the quality runbook.
+Complete this checklist for every release. All items must be checked before deploying to production. Gate execution is documented in the quality runbook.
 
 ---
 
 ## Pre-Release Gates
 
-Run all gates in order. Check each only after the command passes:
+Run all gates in order. Check each only after the command/check passes:
 
-- [ ] `{lint-command}`
-- [ ] `{format-check-command}`
-- [ ] `{typecheck-command}`
-- [ ] `{test-command}`
-- [ ] `{test-coverage-command}`
-- [ ] `{build-command}`
-- [ ] `{architecture-check-command}`
-- [ ] `{governance-check-command}`
-- [ ] `{security-check-command}`
-- [ ] `{perf-update-history-command}` + `{perf-check-command}`
-- [ ] `{api-check-command}` (review diff before proceeding)
-- [ ] `{docs-command}` + `{docs-check-command}`
+- [ ] `pnpm lint`
+- [ ] `pnpm typecheck`
+- [ ] `terraform fmt -check -recursive infra/terraform/`
+- [ ] `terraform validate`
+- [ ] `pnpm audit` (no critical vulnerabilities)
+- [ ] Container image scan (no critical CVEs)
+- [ ] `terraform plan` reviewed and approved for production
 
 ---
 
-## API Surface Review
+## Change Risk Assessment
 
-Review the API surface report against the current baseline:
+Review all changes in this release:
 
-| Diff type       | Required action                                          |
-| --------------- | -------------------------------------------------------- |
-| Breaking change | Major version bump — escalate to human before proceeding |
-| Additive change | Minor version bump minimum                               |
-| No change       | Patch version acceptable                                 |
-
-Do not update the API baseline until human approval is confirmed.
+| Change type                   | Required action                                 |
+| ----------------------------- | ----------------------------------------------- |
+| Destructive resource deletion | Verified rollback plan required before approval |
+| IAM or RBAC modification      | Security role review required                   |
+| Network policy change         | Security role review required                   |
+| Database migration            | Rollback script verified; backup confirmed      |
+| Base image update             | Image scan clean; no new critical CVEs          |
 
 ---
 
 ## Release Artifacts
 
-These must exist and be committed before release:
+These must exist before deployment:
 
-- [ ] API surface report
-- [ ] Performance benchmark report
-- [ ] `quality/release-<version>-evidence.md` — gate results summary
+- [ ] `terraform plan` output reviewed and signed off
+- [ ] Rollback plan documented for any destructive changes
+- [ ] Container scan report (if new images)
 
 ---
 
 ## Human Approval Signoff
 
 - [ ] CODEOWNERS approval received
-- [ ] Version bump type confirmed by human reviewer (patch / minor / major)
-- [ ] API diff reviewed and version decision made
-- [ ] UAT evidence log updated for any new features
-- [ ] Release notes updated
+- [ ] Terraform plan diff reviewed and approved
+- [ ] Security role sign-off for any IAM, RBAC, or network changes
+- [ ] UAT evidence log updated
+- [ ] Rollback procedure confirmed
 
 ---
 
-## Post-Approval Steps
+## Post-Approval Deployment Steps
 
 Execute only after human approval:
 
-- [ ] API baseline updated (if API changed)
-- [ ] Version bump applied
-- [ ] Tag created
-- [ ] Published per procedure in `_sop/2-docs/4-devops/3-ci-cd-pipelines/ci-cd.md`
+- [ ] Staging deployment verified
+- [ ] Production `terraform apply` completed
+- [ ] Post-deploy smoke checks passed
+- [ ] Monitoring dashboards confirm healthy state
 
 ---
 
 ## Hard Rules
 
 - Never mark a checklist item complete without running the actual gate
-- Never publish without all gates passing
-- Never update the API baseline without human approval
-- Never force-push a release tag
+- Never deploy to production without human approval of the Terraform plan
+- Never commit secrets or credentials
+- Never skip the rollback plan for destructive changes
+- Never apply without staging verification first
 
 ---
 

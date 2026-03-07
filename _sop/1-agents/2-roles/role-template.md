@@ -1,7 +1,7 @@
-# {Role Name} — {repo-name}
+# {Role Name} — gtcx-infrastructure
 
 **Archetype:** {Role Name} (defined in `1-agentic/archetypes/{role-archetype}`)
-**Repo scope:** `{repo-name}` — {one-sentence description of repo}
+**Repo scope:** `gtcx-infrastructure` — all deployment, infrastructure-as-code, and operational tooling for the GTCX ecosystem
 
 ---
 
@@ -49,7 +49,9 @@ Escalate to human review when:
 - {Trigger 1 — specific condition that requires human judgment}
 - {Trigger 2}
 - {Trigger 3}
-- {Trigger 4}
+- Any change to Terraform IAM policies or state configuration
+- Any change to K8s RBAC, network policies, or secret manifests
+- Any destructive migration or schema change
 
 ---
 
@@ -67,15 +69,15 @@ Escalate to human review when:
 Before working in this role, read in order:
 
 1. `_sop/1-agents/1-onboarding/orientation.md`
-2. {File 2 — e.g. core spec, system design overview}
-3. {File 3 — e.g. ADRs relevant to this role}
+2. `_sop/2-docs/1-architecture/system-overview.md` — environment topology
+3. `_sop/2-docs/1-architecture/decisions/` — ADRs relevant to this role
 4. `_sop/1-agents/4-workflows/safety-rules.md`
 
 ---
 
 ## Reference
 
-- [`_sop/2-docs/3-engineering/2-system-design/`](../../2-docs/3-engineering/2-system-design/) — architecture overview
-- [`_sop/2-docs/3-engineering/6-decisions/`](../../2-docs/3-engineering/6-decisions/) — all ADRs
+- [`_sop/2-docs/1-architecture/`](../../2-docs/1-architecture/) — architecture overview
+- [`_sop/2-docs/1-architecture/decisions/`](../../2-docs/1-architecture/decisions/) — all ADRs
 - [`_sop/1-agents/4-workflows/safety-rules.md`](../4-workflows/safety-rules.md) — escalation triggers
 - `1-agentic/archetypes/{role-archetype}` — canonical archetype definition

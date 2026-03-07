@@ -1,4 +1,4 @@
-# Codebase Orientation — {repo-name}
+# Codebase Orientation — gtcx-infrastructure
 
 Session-start protocol for any agent or contributor entering this repo.
 
@@ -6,7 +6,7 @@ Session-start protocol for any agent or contributor entering this repo.
 
 ## What This Repo Is
 
-{Describe what this repo is, what it produces, and who consumes it. Is it a library, a service, a product? Does it have a UI? What are the downstream dependencies?}
+`gtcx-infrastructure` is the deployment and operations backbone for the GTCX ecosystem. It owns all infrastructure-as-code, container definitions, orchestration manifests, security tooling, and database migrations that underpin every GTCX service. Changes here affect every running environment.
 
 ---
 
@@ -14,44 +14,51 @@ Session-start protocol for any agent or contributor entering this repo.
 
 In this order — no exceptions:
 
-1. `_sop/2-docs/5-specs/4-backend/core-spec.md` — scope, NFRs, design principles
-2. `_sop/2-docs/3-engineering/2-system-design/overview.md` — layer map and component boundaries
-3. `_sop/2-docs/3-engineering/6-decisions/` — all ADRs (understand why things are the way they are)
-4. `_sop/2-docs/5-specs/4-backend/packages/` — spec for the component you are working in
-5. `_sop/1-agents/4-workflows/safety-rules.md` — before making any change
+1. `_sop/2-docs/1-architecture/system-overview.md` — environment topology and service boundaries
+2. `_sop/2-docs/1-architecture/decisions/` — ADRs (understand why infra is configured the way it is)
+3. `_sop/2-docs/4-devops/2-runbooks/quality-runbook.md` — gate sequence and failure triage
+4. `_sop/1-agents/4-workflows/safety-rules.md` — before making any change
 
 ---
 
 ## Repo Structure
 
 ```
-{source-dir}/       {primary source — packages, services, apps, etc.}
-{secondary-dir}/    {secondary source if applicable — e.g. rust/, workers/}
-tools/              Quality gate scripts and automation
-tests/              Integration and end-to-end tests
-benchmarks/         Performance budgets and results (if applicable)
-quality/            API surface baselines and evidence artifacts
+infra/
+  docker/        — Dockerfiles and Docker Compose definitions
+  kubernetes/    — K8s manifests and Helm charts
+  terraform/     — Terraform modules and workspace configs
+  migrations/    — Database migration scripts
+  security/      — Security scanning configs and policies
+  edge-proxy/    — Edge proxy and routing configs
+  scripts/       — Operational shell scripts
+
+tools/           — Validation and CI tooling
 ```
 
 ---
 
 ## Dependency Rules
 
-- {Rule 1 — e.g. the core package has no hard internal dependencies}
-- {Rule 2 — e.g. higher-level packages build on lower-level ones}
-- Circular dependencies are disallowed — enforced by `{architecture-check-command}`
-- Any new dependency must be declared; phantom dependencies are a CI failure
+- Infrastructure changes must not be applied without peer review
+- Terraform plan output must be reviewed before any `apply`
+- Kubernetes manifests must pass `kubectl --dry-run=server` before merge
+- Secrets must never be committed — all secrets come from the vault
+- Circular dependencies between Terraform modules are disallowed
 
 ---
 
 ## Security-Sensitive Areas
 
-These packages or modules require explicit human review before any change ships:
+These areas require explicit human review before any change ships:
 
-| Component       | Area                                   |
-| --------------- | -------------------------------------- |
-| `{component-1}` | {e.g. auth, signing, key management}   |
-| `{component-2}` | {e.g. data validation, access control} |
+| Component           | Area                                                    |
+| ------------------- | ------------------------------------------------------- |
+| `infra/terraform/`  | State management, IAM, secrets configuration            |
+| `infra/kubernetes/` | RBAC, network policies, secret manifests                |
+| `infra/security/`   | Security scanning policies, firewall rules, TLS configs |
+| `infra/docker/`     | Base image selection, image hardening, non-root users   |
+| `infra/migrations/` | Destructive schema changes — irreversible               |
 
 ---
 
@@ -60,10 +67,15 @@ These packages or modules require explicit human review before any change ships:
 Run this sequence before every commit:
 
 ```bash
-{lint-command}
-{typecheck-command}
-{test-command}
-{build-command}
+pnpm lint
+pnpm typecheck
+```
+
+For Terraform changes:
+
+```bash
+terraform fmt -check -recursive infra/terraform/
+terraform validate
 ```
 
 See `_sop/2-docs/4-devops/2-runbooks/quality-runbook.md` for the full gate sequence and triage order when a gate fails.
@@ -72,17 +84,14 @@ See `_sop/2-docs/4-devops/2-runbooks/quality-runbook.md` for the full gate seque
 
 ## Where Things Live
 
-| Need                   | Location                                     |
-| ---------------------- | -------------------------------------------- |
-| System specification   | `_sop/2-docs/5-specs/4-backend/core-spec.md` |
-| Component specs        | `_sop/2-docs/5-specs/4-backend/packages/`    |
-| System architecture    | `_sop/2-docs/3-engineering/2-system-design/` |
-| Architecture decisions | `_sop/2-docs/3-engineering/6-decisions/`     |
-| Security framework     | `_sop/2-docs/3-engineering/7-security/`      |
-| CI/CD pipeline         | `_sop/2-docs/4-devops/3-ci-cd-pipelines/`    |
-| Operations runbooks    | `_sop/2-docs/4-devops/2-runbooks/`           |
-| Sprint and roadmap     | `_sop/3-agile/`                              |
-| Quality evidence       | `quality/`, `benchmarks/`                    |
+| Need                   | Location                                        |
+| ---------------------- | ----------------------------------------------- |
+| Environment topology   | `_sop/2-docs/1-architecture/system-overview.md` |
+| Architecture decisions | `_sop/2-docs/1-architecture/decisions/`         |
+| Security framework     | `_sop/2-docs/3-engineering/7-security/`         |
+| Operations runbooks    | `_sop/2-docs/4-devops/2-runbooks/`              |
+| CI/CD pipeline         | `_sop/2-docs/4-devops/3-ci-cd-pipelines/`       |
+| Sprint and roadmap     | `_sop/3-agile/`                                 |
 
 ---
 
@@ -90,5 +99,4 @@ See `_sop/2-docs/4-devops/2-runbooks/quality-runbook.md` for the full gate seque
 
 - [`safety-rules.md`](../4-workflows/safety-rules.md) — what requires human approval
 - [`context-recovery.md`](./context-recovery.md) — how to recover agent context across sessions
-- [`_sop/2-docs/3-engineering/2-system-design/overview.md`](../../2-docs/3-engineering/2-system-design/overview.md) — architecture overview
 - [`_sop/2-docs/4-devops/2-runbooks/quality-runbook.md`](../../2-docs/4-devops/2-runbooks/quality-runbook.md) — full pre-commit gate sequence

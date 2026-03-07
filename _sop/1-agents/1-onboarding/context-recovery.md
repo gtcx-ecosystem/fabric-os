@@ -1,4 +1,4 @@
-# Agent Context Recovery — {repo-name}
+# Agent Context Recovery — gtcx-infrastructure
 
 How to recover agent context across sessions, prevent drift, and maintain continuity in a codebase where incorrect assumptions cause downstream problems.
 
@@ -8,9 +8,9 @@ How to recover agent context across sessions, prevent drift, and maintain contin
 
 AI agents have no persistent memory between sessions. Every new conversation starts from zero. Context loss leads to:
 
-- Hallucinated file paths, function signatures, or package names
-- Architecture decisions made without reading the relevant ADR
-- Patterns that violate established dependency boundaries
+- Hallucinated file paths, Terraform module names, or K8s resource names
+- Infrastructure changes applied without reading the relevant ADR
+- Patterns that violate established environment boundaries
 - Regression to generic conventions instead of repo-specific ones
 
 ---
@@ -53,9 +53,9 @@ Naming: `YYYY-MM-DD-handoff.md`
 The codebase provides context directly:
 
 - Every `_sop/` folder has a README explaining what belongs there
-- Every component has a README with its purpose and key API surface
-- ADRs in `_sop/2-docs/3-engineering/6-decisions/` capture significant architectural decisions
-- Test files serve as living documentation of expected behavior
+- ADRs in `_sop/2-docs/1-architecture/decisions/` capture significant infrastructure decisions
+- Terraform modules have README files documenting inputs, outputs, and intended use
+- K8s manifests are organized by service and environment
 
 ---
 
@@ -72,21 +72,20 @@ Use when returning to a session with clear prior context:
 
 ### Deep Recovery — 5 to 10 minutes
 
-Use when starting work in an unfamiliar area of the codebase:
+Use when starting work in an unfamiliar area of the infrastructure:
 
 1. Complete Quick Recovery steps above
 2. Read `_sop/1-agents/1-onboarding/orientation.md`
-3. Read the relevant architecture section in `_sop/2-docs/3-engineering/2-system-design/`
-4. Read the relevant component spec in `_sop/2-docs/5-specs/4-backend/packages/`
-5. Read 2–3 test files to understand expected behavior patterns
-6. Summarize understanding before proceeding
+3. Read the relevant architecture section in `_sop/2-docs/1-architecture/`
+4. Review the Terraform module README or K8s manifest structure for the area of work
+5. Summarize understanding before proceeding
 
-### Full Recovery — after a long gap or major refactor
+### Full Recovery — after a long gap or major change
 
 1. Complete Deep Recovery steps above
-2. Read recent ADRs for architectural decisions
+2. Read recent ADRs for infrastructure decisions
 3. Run `git log --oneline -20` to review recent changes
-4. Run `{test-command}` to verify current state
+4. Confirm environment state before any destructive action
 5. Update memory files if anything has changed
 
 ---
@@ -94,9 +93,10 @@ Use when starting work in an unfamiliar area of the codebase:
 ## Maintaining Context During a Session
 
 - When context gets compressed, anchor on `CLAUDE.md` and memory files
-- Before major decisions, re-read the relevant ADR or component spec
-- If the agent starts hallucinating paths or patterns, stop and re-read the actual file structure
+- Before any `terraform apply` or `kubectl apply`, re-read the relevant plan or manifest
+- If the agent starts hallucinating resource names or module paths, stop and re-read the actual structure
 - Commit progress regularly to create concrete checkpoints
+- Never apply infra changes without human review of the plan output
 
 ---
 
@@ -104,11 +104,11 @@ Use when starting work in an unfamiliar area of the codebase:
 
 Signs that context has been lost and recovery is needed:
 
-- Suggesting file paths or functions that do not exist in this repo
-- Using patterns that contradict `_sop/2-docs/3-engineering/` standards or existing components
-- Asking questions that were already answered earlier in the session
+- Suggesting Terraform modules, K8s resources, or service names that do not exist in this repo
+- Using patterns that contradict `_sop/2-docs/3-engineering/` standards
 - Proposing architecture that conflicts with an existing ADR
-- Using wrong import paths, package names, or API signatures
+- Attempting to commit secrets, credentials, or `.env` files
+- Proposing destructive changes without stating the recovery plan
 
 When any of these appear: run Quick Recovery before continuing.
 
@@ -116,13 +116,13 @@ When any of these appear: run Quick Recovery before continuing.
 
 ## File Map
 
-| File                                             | Purpose                     | When to Update                                    |
-| ------------------------------------------------ | --------------------------- | ------------------------------------------------- |
-| `CLAUDE.md`                                      | Auto-loaded project context | When stack, structure, or conventions change      |
-| `.claude/memory/MEMORY.md`                       | Persistent agent memory     | After every significant session                   |
-| `.claude/memory/*.md`                            | Topic-specific knowledge    | When patterns are confirmed across sessions       |
-| `_sop/4-sessions/YYYY-MM-DD-handoff.md`          | Session handoff             | End of every session with in-progress work        |
-| ADRs in `_sop/2-docs/3-engineering/6-decisions/` | Decision record             | When significant architectural decisions are made |
+| File                                            | Purpose                     | When to Update                                     |
+| ----------------------------------------------- | --------------------------- | -------------------------------------------------- |
+| `CLAUDE.md`                                     | Auto-loaded project context | When stack, structure, or conventions change       |
+| `.claude/memory/MEMORY.md`                      | Persistent agent memory     | After every significant session                    |
+| `.claude/memory/*.md`                           | Topic-specific knowledge    | When patterns are confirmed across sessions        |
+| `_sop/4-sessions/YYYY-MM-DD-handoff.md`         | Session handoff             | End of every session with in-progress work         |
+| ADRs in `_sop/2-docs/1-architecture/decisions/` | Decision record             | When significant infrastructure decisions are made |
 
 ---
 
@@ -130,5 +130,5 @@ When any of these appear: run Quick Recovery before continuing.
 
 - [`orientation.md`](./orientation.md) — codebase map and session-start reading order
 - [`../4-workflows/safety-rules.md`](../4-workflows/safety-rules.md) — what requires human approval
-- [`../../2-docs/3-engineering/6-decisions/`](../../2-docs/3-engineering/6-decisions/) — all ADRs
+- [`../../2-docs/1-architecture/decisions/`](../../2-docs/1-architecture/decisions/) — all ADRs
 - [`../../4-sessions/README.md`](../../4-sessions/README.md) — session document structure

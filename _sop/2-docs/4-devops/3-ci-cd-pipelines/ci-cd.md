@@ -1,4 +1,4 @@
-# CI/CD Pipeline — {repo-name}
+# CI/CD Pipeline — gtcx-infrastructure
 
 CI/CD expectations and workflow. Every change to this repo runs through these gates before it reaches `main`.
 
@@ -8,55 +8,50 @@ CI/CD expectations and workflow. Every change to this repo runs through these ga
 
 All checks must pass on every pull request:
 
-| Gate                    | Command                        | Blocks   |
-| ----------------------- | ------------------------------ | -------- |
-| Architecture boundaries | `{architecture-check-command}` | PR merge |
-| Lint                    | `{lint-command}`               | PR merge |
-| Type check              | `{typecheck-command}`          | PR merge |
-| Tests                   | `{test-command}`               | PR merge |
-| Build                   | `{build-command}`              | PR merge |
-| API surface             | `{api-check-command}`          | PR merge |
+| Gate               | Command                           | Blocks   |
+| ------------------ | --------------------------------- | -------- |
+| Lint               | `pnpm lint`                       | PR merge |
+| Type check         | `pnpm typecheck`                  | PR merge |
+| Terraform format   | `terraform fmt -check -recursive` | PR merge |
+| Terraform validate | `terraform validate`              | PR merge |
 
 Full gate sequence: `_sop/2-docs/4-devops/2-runbooks/quality-runbook.md`
 
 ---
 
-## Release Workflow
+## Deployment Workflow
 
-Before a release, run all gates in the quality runbook. Specific release-gate actions:
+Infrastructure changes follow a plan-review-apply sequence. No automated apply without human review:
 
-| Gate                | Command                    | Action on Failure                                                     |
-| ------------------- | -------------------------- | --------------------------------------------------------------------- |
-| API baseline        | `{api-check-command}`      | Review diff — major/minor/patch determination required                |
-| Performance budgets | `{perf-check-command}`     | Investigate regression before releasing — do not raise budget         |
-| Security gate       | `{security-check-command}` | Escalate to security role immediately                                 |
-| UAT evidence        | Manual review              | Update `_sop/3-agile/2-scrum-board/6-testing/uat/uat-evidence-log.md` |
-| Release checklist   | Manual review              | Complete `_sop/2-docs/4-devops/7-release-mgmt/release-checklist.md`   |
-
-Update API baseline only after human approval.
+| Stage            | Process                                | Approval                         |
+| ---------------- | -------------------------------------- | -------------------------------- |
+| Terraform plan   | `terraform plan` output reviewed in PR | Human must review diff           |
+| Staging apply    | `terraform apply` to staging           | Human approval required          |
+| Production apply | `terraform apply` to production        | Separate explicit human approval |
+| K8s apply        | `kubectl apply`                        | Human must review manifest diff  |
 
 ---
 
-## Publish
+## Release Workflow
 
-Follow this sequence after all gates pass and human approval is confirmed:
+Before a release tag is cut:
 
-1. Update API baseline (if API changed, with human approval)
-2. Version bump (patch / minor / major per human decision)
-3. Tag: `git tag v<version>`
-4. Push tag and publish packages
-
-Never push to `main` without explicit instruction. Never force-push a release tag.
+| Gate                 | Action on Failure                                                     |
+| -------------------- | --------------------------------------------------------------------- |
+| Container image scan | Escalate critical CVEs to security role — do not release              |
+| Dependency audit     | `pnpm audit` — address criticals before release                       |
+| UAT evidence         | Update `_sop/3-agile/2-scrum-board/6-testing/uat/uat-evidence-log.md` |
+| Release checklist    | Complete `_sop/2-docs/4-devops/7-release-mgmt/release-checklist.md`   |
 
 ---
 
 ## Scheduled Workflows
 
-| Workflow         | Schedule   | Description                                      |
-| ---------------- | ---------- | ------------------------------------------------ |
-| {workflow-1}     | {schedule} | {description}                                    |
-| {workflow-2}     | {schedule} | {description}                                    |
-| Dependency audit | Weekly     | Audit all dependencies for known vulnerabilities |
+| Workflow              | Schedule | Description                                      |
+| --------------------- | -------- | ------------------------------------------------ |
+| Dependency audit      | Weekly   | Audit all dependencies for known vulnerabilities |
+| Container image scan  | Weekly   | Scan all base images for new CVEs                |
+| Terraform drift check | Daily    | Detect configuration drift from live state       |
 
 ---
 

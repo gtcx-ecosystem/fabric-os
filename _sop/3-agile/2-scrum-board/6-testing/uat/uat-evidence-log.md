@@ -1,4 +1,4 @@
-# UAT Evidence Log — {repo-name}
+# UAT Evidence Log — gtcx-infrastructure
 
 Tracks user acceptance testing (UAT) evidence for features and sprints. Updated at sprint close and before release.
 
@@ -6,8 +6,8 @@ Tracks user acceptance testing (UAT) evidence for features and sprints. Updated 
 
 ## How to Use This Log
 
-1. Add an entry for each feature or sprint that requires UAT evidence
-2. Attach or reference the evidence artifact (test output, screenshot, QA sign-off)
+1. Add an entry for each change or sprint that requires UAT evidence
+2. Attach or reference the evidence artifact (deployment verification output, smoke test results, QA sign-off)
 3. Update status when UAT passes
 4. This file is checked during release — missing UAT evidence blocks release
 
@@ -16,13 +16,13 @@ Tracks user acceptance testing (UAT) evidence for features and sprints. Updated 
 ## Log Format
 
 ```markdown
-### [YYYY-MM-DD] Sprint N — Feature or Story Name
+### [YYYY-MM-DD] Sprint N — Feature or Change Name
 
-**Type:** Sprint UAT / Feature UAT / Regression check
+**Type:** Sprint UAT / Change UAT / Regression check
 **Tested by:** [Role]
 **Status:** Pass / Fail / Pending
 **Evidence:** [path to artifact or description of evidence]
-**Notes:** [any deviations or conditions]
+**Notes:** [any deviations or conditions — including environment]
 ```
 
 ---

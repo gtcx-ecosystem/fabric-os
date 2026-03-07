@@ -1,4 +1,4 @@
-# Safety Rules — {repo-name}
+# Safety Rules — gtcx-infrastructure
 
 What agents and contributors may do autonomously vs. what requires explicit human authorization.
 
@@ -9,11 +9,8 @@ Governed by the Baseline Protocol (`ai-1-baseline`) and enforced through `1-agen
 ## Autonomous — No Approval Required
 
 - Read any file in the repo
-- Run any quality gate (`{lint-command}`, `{test-command}`, `{build-command}`, etc.)
+- Run any quality gate (`pnpm lint`, `pnpm typecheck`, `terraform validate`, `terraform fmt -check`, etc.)
 - Write or update documentation in `_sop/`
-- Write new tests for existing behavior
-- Fix failing tests where the fix is clearly scoped to the failing case
-- Update component specs in `_sop/2-docs/5-specs/`
 - Propose ADRs — status must remain `Proposed`; human approval required before `Accepted`
 - Commit completed work using conventional commit format — commit after each meaningful, self-contained unit of work; never accumulate multiple tasks into a single commit
 
@@ -21,17 +18,18 @@ Governed by the Baseline Protocol (`ai-1-baseline`) and enforced through `1-agen
 
 ## Requires Human Approval Before Proceeding
 
-| Action                                         | Reason                                     |
-| ---------------------------------------------- | ------------------------------------------ |
-| Any change to {security-sensitive-component-1} | {reason — e.g. security-sensitive package} |
-| Any change to {security-sensitive-component-2} | {reason}                                   |
-| Adding any new package, service, or module     | Changes workspace or service configuration |
-| Any change to `{workspace-config-file}`        | Build system integrity                     |
-| Any change to `.github/workflows/`             | CI/CD pipeline                             |
-| Any change to {quality-baseline-file}          | Published quality contract                 |
-| Marking an ADR status `Accepted`               | Architectural decision finalization        |
-| Any destructive git operation                  | Irreversible                               |
-| Publishing a release                           | Downstream impact                          |
+| Action                                                        | Reason                                |
+| ------------------------------------------------------------- | ------------------------------------- |
+| Any `terraform apply`                                         | Modifies live infrastructure          |
+| Any `kubectl apply` to production namespaces                  | Modifies production workloads         |
+| Any change to `infra/terraform/` IAM or state config          | Controls access to all environments   |
+| Any change to K8s RBAC, network policies, or secret manifests | Security-sensitive                    |
+| Any change to `infra/security/`                               | Security scanning and firewall policy |
+| Any change to `infra/migrations/` that is destructive         | Irreversible data changes             |
+| Any change to base Docker images                              | Supply chain and security impact      |
+| Any change to `.github/workflows/`                            | CI/CD pipeline                        |
+| Marking an ADR status `Accepted`                              | Architectural decision finalization   |
+| Any destructive git operation                                 | Irreversible                          |
 
 ---
 
@@ -42,8 +40,10 @@ These rules have no exceptions. There is no circumstance where these actions are
 - Never skip CI gates — no `--no-verify`, no bypassing hooks
 - Never push to `main` without explicit instruction
 - Never force push
-- Never commit `.env` files or secrets
+- Never commit secrets, credentials, API keys, or `.env` files — all secrets come from the vault
 - Never remove or downgrade a security control
+- Never `terraform apply` without reviewing `terraform plan` output first
+- Never run destructive migrations without a verified rollback plan
 - Never mark a release checklist item complete without running the actual gate
 - Never mark an ADR `Accepted` without human approval
 
@@ -53,7 +53,7 @@ These rules have no exceptions. There is no circumstance where these actions are
 
 If uncertain whether an action requires approval: stop. State the action, the uncertainty, and the consequence of getting it wrong. Ask.
 
-The cost of pausing is zero. The cost of an unauthorized change is unbounded.
+The cost of pausing is zero. The cost of an unauthorized infrastructure change can be catastrophic — affecting all running GTCX services.
 
 ---
 

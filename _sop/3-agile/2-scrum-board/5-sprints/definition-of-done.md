@@ -1,6 +1,6 @@
-# Definition of Done — {repo-name}
+# Definition of Done — gtcx-infrastructure
 
-Quality criteria that must be satisfied before any work item in `{repo-name}` is considered complete.
+Quality criteria that must be satisfied before any work item in `gtcx-infrastructure` is considered complete.
 
 ---
 
@@ -8,25 +8,24 @@ Quality criteria that must be satisfied before any work item in `{repo-name}` is
 
 ### Development
 
-- [ ] Feature implemented per acceptance criteria
-- [ ] Code committed using conventional commit format
-- [ ] Code reviewed by at least one peer; all comments addressed
-- [ ] No TODO comments or debug code left in
+- [ ] Change implemented per acceptance criteria
+- [ ] Code/config committed using conventional commit format
+- [ ] Change reviewed by at least one peer; all comments addressed
+- [ ] No hardcoded secrets, credentials, or environment-specific values committed
 
 ### CI Gates
 
-- [ ] `{architecture-check-command}` — zero violations
-- [ ] `{lint-command}` — zero errors
-- [ ] `{typecheck-command}` — zero type errors
-- [ ] `{test-command}` — all tests pass
-- [ ] `{build-command}` — all packages build cleanly
-- [ ] `{api-check-command}` — API surface reviewed (no unintentional changes)
+- [ ] `pnpm lint` — zero errors
+- [ ] `pnpm typecheck` — zero type errors (for TypeScript tooling)
+- [ ] `terraform fmt -check -recursive` — all Terraform formatted
+- [ ] `terraform validate` — all Terraform modules validate cleanly
+- [ ] `kubectl --dry-run=server` — all K8s manifests validate (where applicable)
 
 ### Documentation
 
-- [ ] Affected component spec in `_sop/2-docs/5-specs/` updated if behavior changed
-- [ ] ADR written if an architectural decision was made (status: `Proposed`)
-- [ ] UAT scenario documented if applicable
+- [ ] Affected runbook in `_sop/2-docs/4-devops/2-runbooks/` updated if operational procedure changed
+- [ ] ADR written if an infrastructure architectural decision was made (status: `Proposed`)
+- [ ] Terraform module README updated if inputs/outputs changed
 
 ---
 
@@ -34,7 +33,6 @@ Quality criteria that must be satisfied before any work item in `{repo-name}` is
 
 - [ ] All committed stories meet User Story DoD
 - [ ] Sprint goal achieved (or partially achieved with documented rationale)
-- [ ] Quality gates green: `{architecture-check-command}`, `{api-check-command}`, `{perf-check-command}`
 - [ ] UAT evidence logged in `_sop/3-agile/2-scrum-board/6-testing/uat/uat-evidence-log.md`
 - [ ] Sprint retrospective completed and action items assigned
 
@@ -46,21 +44,19 @@ Quality criteria that must be satisfied before any work item in `{repo-name}` is
 - [ ] UAT evidence log updated
 - [ ] CODEOWNERS approval obtained
 - [ ] Release notes updated
-- [ ] API surface baseline updated if API changed (human approval required)
+- [ ] Rollback procedure verified and documented for any destructive change
 
 ---
 
 ## Quality Gates
 
-| Gate                              | Threshold    |
-| --------------------------------- | ------------ |
-| Architecture violations           | 0            |
-| Lint errors                       | 0            |
-| Type errors                       | 0            |
-| Critical security vulnerabilities | 0            |
-| API surface unintentional breaks  | 0            |
-| Performance regression vs. budget | 0% allowed   |
-| Test coverage — critical paths    | {n}% minimum |
+| Gate                                        | Threshold      |
+| ------------------------------------------- | -------------- |
+| Lint errors                                 | 0              |
+| Type errors                                 | 0              |
+| Terraform validation failures               | 0              |
+| Critical security vulnerabilities in images | 0              |
+| Committed secrets                           | 0 (hard block) |
 
 ---
 

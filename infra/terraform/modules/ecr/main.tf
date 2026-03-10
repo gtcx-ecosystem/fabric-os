@@ -1,0 +1,136 @@
+# =============================================================================
+# GTCX ECR Module
+# =============================================================================
+# Container registry for GTCX service images.
+# Per SOVEREIGN (6): Images stored in-region
+# Per SECURE: Image scanning enabled, lifecycle policies enforced
+# =============================================================================
+
+variable "environment" {
+  description = "Environment name"
+  type        = string
+}
+
+variable "repositories" {
+  description = "List of ECR repository names"
+  type        = list(string)
+  default = [
+    "gtcx-api",
+    "gtcx-crypto",
+    "gtcx-tradepass",
+    "gtcx-geotag",
+    "gtcx-gci",
+    "gtcx-anisa",
+    "gtcx-veritas",
+    "gtcx-cortex",
+  ]
+}
+
+variable "image_tag_mutability" {
+  description = "Tag mutability setting (MUTABLE or IMMUTABLE)"
+  type        = string
+  default     = "IMMUTABLE"
+}
+
+variable "max_image_count" {
+  description = "Maximum number of images to retain per repository"
+  type        = number
+  default     = 30
+}
+
+variable "tags" {
+  description = "Additional tags"
+  type        = map(string)
+  default     = {}
+}
+
+# -----------------------------------------------------------------------------
+# Locals
+# -----------------------------------------------------------------------------
+
+locals {
+  common_tags = merge(var.tags, {
+    Environment = var.environment
+    ManagedBy   = "terraform"
+    Project     = "gtcx"
+    Principle   = "SOVEREIGN,SECURE"
+  })
+}
+
+# -----------------------------------------------------------------------------
+# ECR Repositories
+# -----------------------------------------------------------------------------
+
+resource "aws_ecr_repository" "repos" {
+  for_each = toset(var.repositories)
+
+  name                 = each.value
+  image_tag_mutability = var.image_tag_mutability
+  force_delete         = false
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  encryption_configuration {
+    encryption_type = "AES256"
+  }
+
+  tags = merge(local.common_tags, {
+    Name = each.value
+  })
+}
+
+# -----------------------------------------------------------------------------
+# Lifecycle Policies — Retain only N images
+# -----------------------------------------------------------------------------
+
+resource "aws_ecr_lifecycle_policy" "repos" {
+  for_each   = toset(var.repositories)
+  repository = aws_ecr_repository.repos[each.key].name
+
+  policy = jsonencode({
+    rules = [
+      {
+        rulePriority = 1
+        description  = "Expire untagged images after 7 days"
+        selection = {
+          tagStatus   = "untagged"
+          countType   = "sinceImagePushed"
+          countUnit   = "days"
+          countNumber = 7
+        }
+        action = {
+          type = "expire"
+        }
+      },
+      {
+        rulePriority = 2
+        description  = "Keep only the last ${var.max_image_count} tagged images"
+        selection = {
+          tagStatus     = "tagged"
+          tagPrefixList = ["v"]
+          countType     = "imageCountMoreThan"
+          countNumber   = var.max_image_count
+        }
+        action = {
+          type = "expire"
+        }
+      },
+    ]
+  })
+}
+
+# -----------------------------------------------------------------------------
+# Outputs
+# -----------------------------------------------------------------------------
+
+output "repository_urls" {
+  description = "Map of repository name to URL"
+  value       = { for name, repo in aws_ecr_repository.repos : name => repo.repository_url }
+}
+
+output "registry_id" {
+  description = "ECR registry ID"
+  value       = values(aws_ecr_repository.repos)[0].registry_id
+}

@@ -1,0 +1,253 @@
+# =============================================================================
+# GTCX Zimbabwe Pilot Environment
+# =============================================================================
+# First deployment: ZWCMP — 200+ licensed female mine operators.
+# Region: af-south-1 (Cape Town) — closest AWS region to Zimbabwe (~30ms).
+#
+# Principles:
+#   - SOVEREIGN (6): Zimbabwe data stays in Africa
+#   - DEPLOYABLE (14): Reproducible from this file
+#   - AUDITABLE (3): Dual database (operational + audit)
+#
+# Usage:
+#   terraform init
+#   terraform plan -var-file=terraform.tfvars
+#   terraform apply -var-file=terraform.tfvars
+# =============================================================================
+
+terraform {
+  required_version = ">= 1.5.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+
+  # Backend — uncomment and configure for remote state
+  # backend "s3" {
+  #   bucket         = "gtcx-terraform-state"
+  #   key            = "environments/zimbabwe-pilot/terraform.tfstate"
+  #   region         = "af-south-1"
+  #   encrypt        = true
+  #   dynamodb_table = "gtcx-terraform-locks"
+  # }
+}
+
+# -----------------------------------------------------------------------------
+# Variables
+# -----------------------------------------------------------------------------
+
+variable "environment" {
+  description = "Environment name"
+  type        = string
+  default     = "zimbabwe-pilot"
+}
+
+variable "region" {
+  description = "AWS region"
+  type        = string
+  default     = "af-south-1"
+}
+
+variable "availability_zones" {
+  description = "Availability zones"
+  type        = list(string)
+  default     = ["af-south-1a", "af-south-1b", "af-south-1c"]
+}
+
+variable "vpc_cidr" {
+  description = "VPC CIDR block"
+  type        = string
+  default     = "10.1.0.0/16"
+}
+
+variable "db_instance_class" {
+  description = "RDS instance class"
+  type        = string
+  default     = "db.t3.medium"
+}
+
+variable "db_allocated_storage" {
+  description = "Database storage in GB"
+  type        = number
+  default     = 100
+}
+
+variable "eks_node_instance_types" {
+  description = "EKS worker node instance types"
+  type        = list(string)
+  default     = ["t3.medium"]
+}
+
+variable "eks_node_desired_size" {
+  description = "Desired worker node count"
+  type        = number
+  default     = 2
+}
+
+variable "eks_node_min_size" {
+  description = "Minimum worker node count"
+  type        = number
+  default     = 1
+}
+
+variable "eks_node_max_size" {
+  description = "Maximum worker node count"
+  type        = number
+  default     = 5
+}
+
+variable "enable_public_api" {
+  description = "Enable public EKS API endpoint (for initial setup; disable in production)"
+  type        = bool
+  default     = true
+}
+
+variable "admin_cidr_blocks" {
+  description = "CIDR blocks allowed to access EKS API (when public)"
+  type        = list(string)
+  default     = []
+}
+
+variable "tags" {
+  description = "Additional tags"
+  type        = map(string)
+  default     = {}
+}
+
+# -----------------------------------------------------------------------------
+# Provider
+# -----------------------------------------------------------------------------
+
+provider "aws" {
+  region = var.region
+
+  default_tags {
+    tags = merge(var.tags, {
+      Project     = "gtcx"
+      Environment = var.environment
+      ManagedBy   = "terraform"
+      Deployment  = "ZWCMP"
+    })
+  }
+}
+
+# -----------------------------------------------------------------------------
+# Networking
+# -----------------------------------------------------------------------------
+
+module "vpc" {
+  source = "../../modules/vpc"
+
+  environment        = var.environment
+  region             = var.region
+  cidr_block         = var.vpc_cidr
+  availability_zones = var.availability_zones
+  enable_nat_gateway = true
+  enable_vpn_gateway = false
+
+  tags = var.tags
+}
+
+# -----------------------------------------------------------------------------
+# Databases (Operational + Audit)
+# -----------------------------------------------------------------------------
+
+module "database" {
+  source = "../../modules/database"
+
+  environment             = var.environment
+  vpc_id                  = module.vpc.vpc_id
+  subnet_ids              = module.vpc.database_subnet_ids
+  instance_class          = var.db_instance_class
+  allocated_storage       = var.db_allocated_storage
+  multi_az                = true
+  backup_retention_period = 30
+  deletion_protection     = true
+  allowed_security_groups = [module.eks.node_security_group_id]
+
+  tags = var.tags
+}
+
+# -----------------------------------------------------------------------------
+# Container Registry
+# -----------------------------------------------------------------------------
+
+module "ecr" {
+  source = "../../modules/ecr"
+
+  environment = var.environment
+
+  tags = var.tags
+}
+
+# -----------------------------------------------------------------------------
+# Kubernetes Cluster
+# -----------------------------------------------------------------------------
+
+module "eks" {
+  source = "../../modules/eks"
+
+  environment        = var.environment
+  region             = var.region
+  vpc_id             = module.vpc.vpc_id
+  private_subnet_ids = module.vpc.private_subnet_ids
+  public_subnet_ids  = module.vpc.public_subnet_ids
+
+  cluster_version     = "1.29"
+  node_instance_types = var.eks_node_instance_types
+  node_desired_size   = var.eks_node_desired_size
+  node_min_size       = var.eks_node_min_size
+  node_max_size       = var.eks_node_max_size
+
+  enable_public_access       = var.enable_public_api
+  allowed_cidr_blocks        = var.admin_cidr_blocks
+  database_security_group_id = module.database.security_group_id
+
+  tags = var.tags
+}
+
+# -----------------------------------------------------------------------------
+# Outputs
+# -----------------------------------------------------------------------------
+
+output "vpc_id" {
+  description = "VPC ID"
+  value       = module.vpc.vpc_id
+}
+
+output "eks_cluster_name" {
+  description = "EKS cluster name"
+  value       = module.eks.cluster_name
+}
+
+output "eks_cluster_endpoint" {
+  description = "EKS cluster API endpoint"
+  value       = module.eks.cluster_endpoint
+}
+
+output "database_endpoints" {
+  description = "Database endpoints"
+  value = {
+    operational = module.database.operational_endpoint
+    audit       = module.database.audit_endpoint
+  }
+  sensitive = true
+}
+
+output "ecr_repository_urls" {
+  description = "ECR repository URLs"
+  value       = module.ecr.repository_urls
+}
+
+output "alb_controller_role_arn" {
+  description = "ALB controller IAM role ARN (for Helm chart)"
+  value       = module.eks.alb_controller_role_arn
+}
+
+output "kubeconfig_command" {
+  description = "Command to configure kubectl"
+  value       = "aws eks update-kubeconfig --name ${module.eks.cluster_name} --region ${var.region}"
+}

@@ -35,12 +35,23 @@ pnpm lint
 
 ```
 gtcx-infrastructure/
-├── infra/                 # Core IaC (docker, kubernetes, terraform, edge-proxy, migrations, security, scripts)
+├── infra/
+│   ├── docker/            # Dockerfiles + Compose (dev, infra, test)
+│   ├── kubernetes/        # K8s manifests (base + dev/staging/production overlays)
+│   ├── terraform/
+│   │   ├── modules/
+│   │   │   ├── vpc/       # VPC with public/private/database subnets, NAT, flow logs
+│   │   │   ├── database/  # Dual RDS (operational + audit), Secrets Manager, TLS
+│   │   │   ├── eks/       # Managed K8s cluster, IRSA, KMS, ALB controller IAM
+│   │   │   └── ecr/       # Container registry (8 service repos, scan-on-push)
+│   │   └── environments/
+│   │       ├── template/          # Copy-and-customize pattern
+│   │       └── zimbabwe-pilot/    # ZWCMP deployment (af-south-1)
+│   ├── migrations/        # MABA/KORA/AMANI data transformation stack
+│   ├── scripts/           # deploy.sh (canary, approval-gated), migrate, seed
+│   └── security/          # Access control, data protection, incident response policies
 ├── tools/                 # Scripts and project templates
 ├── _sop/                  # Standard operating procedures, docs, agent team
-├── package.json
-├── pnpm-workspace.yaml
-├── tsconfig.json
 └── turbo.json
 ```
 

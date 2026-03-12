@@ -16,9 +16,9 @@ vpc_cidr = "10.1.0.0/16"
 db_instance_class    = "db.t3.medium"
 db_allocated_storage = 100
 
-# EKS — start small, autoscale based on load
+# EKS — pilot config (single node, scale up for production)
 eks_node_instance_types = ["t3.medium"]
-eks_node_desired_size   = 2
+eks_node_desired_size   = 1
 eks_node_min_size       = 1
 eks_node_max_size       = 5
 

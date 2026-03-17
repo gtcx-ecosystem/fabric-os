@@ -23,11 +23,11 @@ eks_node_min_size       = 1
 eks_node_max_size       = 5
 
 # API access — enable during setup, restrict for production
-enable_public_api  = true
-admin_cidr_blocks  = [] # Add your IP: ["x.x.x.x/32"]
+enable_public_api = true
+admin_cidr_blocks = [] # Add your IP: ["x.x.x.x/32"]
 
 tags = {
-  Deployment  = "ZWCMP"
-  Country     = "Zimbabwe"
-  CostCenter  = "gtcx-zwcmp-pilot"
+  Deployment = "ZWCMP"
+  Country    = "Zimbabwe"
+  CostCenter = "gtcx-zwcmp-pilot"
 }

@@ -163,9 +163,9 @@ module "database" {
   subnet_ids              = module.vpc.database_subnet_ids
   instance_class          = var.db_instance_class
   allocated_storage       = var.db_allocated_storage
-  multi_az                = false  # pilot — flip to true for production
+  multi_az                = false # pilot — flip to true for production
   backup_retention_period = 30
-  deletion_protection     = false  # pilot — flip to true for production
+  deletion_protection     = false # pilot — flip to true for production
   allowed_security_groups = [module.eks.node_security_group_id]
 
   tags = var.tags

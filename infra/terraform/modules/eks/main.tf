@@ -231,13 +231,13 @@ resource "aws_security_group" "nodes" {
 
 # Node-to-node communication
 resource "aws_security_group_rule" "nodes_internal" {
-  type                     = "ingress"
-  from_port                = 0
-  to_port                  = 65535
-  protocol                 = "-1"
-  self                     = true
-  security_group_id        = aws_security_group.nodes.id
-  description              = "Allow nodes to communicate with each other"
+  type              = "ingress"
+  from_port         = 0
+  to_port           = 65535
+  protocol          = "-1"
+  self              = true
+  security_group_id = aws_security_group.nodes.id
+  description       = "Allow nodes to communicate with each other"
 }
 
 # Cluster API to nodes (for kubelet, logs, exec)

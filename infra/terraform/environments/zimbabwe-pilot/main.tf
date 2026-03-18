@@ -25,14 +25,13 @@ terraform {
     }
   }
 
-  # Backend — uncomment and configure for remote state
-  # backend "s3" {
-  #   bucket         = "gtcx-terraform-state"
-  #   key            = "environments/zimbabwe-pilot/terraform.tfstate"
-  #   region         = "af-south-1"
-  #   encrypt        = true
-  #   dynamodb_table = "gtcx-terraform-locks"
-  # }
+  backend "s3" {
+    bucket         = "gtcx-terraform-state-zimbabwe-pilot"
+    key            = "environments/zimbabwe-pilot/terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+    dynamodb_table = "gtcx-terraform-locks"
+  }
 }
 
 # -----------------------------------------------------------------------------

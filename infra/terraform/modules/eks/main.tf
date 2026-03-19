@@ -308,6 +308,13 @@ resource "aws_eks_cluster" "main" {
     public_access_cidrs     = var.enable_public_access ? var.allowed_cidr_blocks : []
   }
 
+  lifecycle {
+    precondition {
+      condition     = !var.enable_public_access || length(var.allowed_cidr_blocks) > 0
+      error_message = "EKS public API access requires explicit CIDR restrictions. Set allowed_cidr_blocks or disable public access."
+    }
+  }
+
   encryption_config {
     provider {
       key_arn = aws_kms_key.eks_secrets.arn

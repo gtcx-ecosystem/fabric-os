@@ -115,6 +115,12 @@ variable "admin_cidr_blocks" {
   }
 }
 
+variable "domain_name" {
+  description = "Domain name for ACM certificate (e.g., api.gtcx.io). Leave empty to skip."
+  type        = string
+  default     = ""
+}
+
 variable "tags" {
   description = "Additional tags"
   type        = map(string)
@@ -232,6 +238,24 @@ module "eks" {
 }
 
 # -----------------------------------------------------------------------------
+# ALB Controller (AWS Load Balancer Controller + ACM)
+# -----------------------------------------------------------------------------
+
+module "alb" {
+  source = "../../modules/alb"
+
+  environment            = var.environment
+  cluster_name           = module.eks.cluster_name
+  cluster_endpoint       = module.eks.cluster_endpoint
+  cluster_ca_certificate = module.eks.cluster_ca_certificate
+  oidc_provider_arn      = module.eks.oidc_provider_arn
+  vpc_id                 = module.vpc.vpc_id
+  domain_name            = var.domain_name
+
+  tags = var.tags
+}
+
+# -----------------------------------------------------------------------------
 # Audit Backup (S3 export + 7-year retention)
 # -----------------------------------------------------------------------------
 
@@ -286,8 +310,13 @@ output "nats_security_group_id" {
 }
 
 output "alb_controller_role_arn" {
-  description = "ALB controller IAM role ARN (for Helm chart)"
-  value       = module.eks.alb_controller_role_arn
+  description = "ALB controller IAM role ARN"
+  value       = module.alb.controller_role_arn
+}
+
+output "acm_certificate_arn" {
+  description = "ACM certificate ARN for HTTPS"
+  value       = module.alb.certificate_arn
 }
 
 output "kubeconfig_command" {

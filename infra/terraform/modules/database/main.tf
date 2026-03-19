@@ -340,3 +340,8 @@ output "security_group_id" {
   description = "Database security group ID"
   value       = aws_security_group.database.id
 }
+
+output "audit_db_identifier" {
+  description = "Audit database RDS instance identifier"
+  value       = aws_db_instance.audit.identifier
+}

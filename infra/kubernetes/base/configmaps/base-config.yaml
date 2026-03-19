@@ -26,6 +26,11 @@ data:
   NATS_URL: 'nats://gtcx-nats:4222'
   NATS_CLUSTER_NAME: 'gtcx-events'
 
+  # Intelligence services
+  ANISA_URL: 'http://gtcx-anisa:8100'
+  SCREENING_URL: 'http://gtcx-intelligence-sdk:8200'
+  INTELLIGENCE_SDK_URL: 'http://gtcx-intelligence-sdk:8200'
+
   # Feature flags (per ADAPTIVE principle)
   GTCX_FEATURE_OFFLINE_SYNC: 'true'
   GTCX_FEATURE_ZK_PROOFS: 'true'

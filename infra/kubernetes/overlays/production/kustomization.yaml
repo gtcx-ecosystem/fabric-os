@@ -14,6 +14,9 @@ resources:
   - ../../base
   - network-policies.yaml
   - pod-security-policy.yaml
+  - ingress.yaml
+  - alb-controller.yaml
+  - alb-ingress.yaml
 
 nameSuffix: -prod
 

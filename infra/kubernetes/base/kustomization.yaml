@@ -20,6 +20,7 @@ resources:
   - services/tradepass.yaml
   - services/geotag.yaml
   - services/gci.yaml
+  - services/intelligence.yaml
 
 configMapGenerator:
   - name: gtcx-env

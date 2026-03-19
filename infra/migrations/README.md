@@ -40,8 +40,6 @@ Transform any data from any source into any target schema.
 - **Universal connectors**: databases, files, APIs, streams
 - **Self-healing** with automatic error resolution
 
-[→ MABA Documentation](./maba/README.md)
-
 ### KORA - Multi-Source Verification Oracle
 
 Create tamper-proof verification through multi-source consensus.
@@ -51,8 +49,6 @@ Create tamper-proof verification through multi-source consensus.
 - **ML-powered fraud detection** that learns over time
 - **Zero-knowledge proofs** for sensitive data
 
-[→ KORA Documentation](./kora/README.md)
-
 ### AMANI - Multilingual Guidance Layer
 
 Make complex processes accessible to everyone.
@@ -61,8 +57,6 @@ Make complex processes accessible to everyone.
 - **Multi-channel**: WhatsApp, SMS, USSD, Voice, Web
 - **Offline-first** for low-connectivity environments
 - **Context-aware** assistance and proactive guidance
-
-[→ AMANI Documentation](./amani/README.md)
 
 ## Domain Examples
 

@@ -91,3 +91,14 @@ spec:
       targetPort: http
   selector:
     app: gtcx-tradepass
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: gtcx-tradepass
+  namespace: gtcx
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: gtcx-tradepass

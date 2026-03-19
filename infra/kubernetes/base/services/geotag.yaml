@@ -91,3 +91,14 @@ spec:
       targetPort: http
   selector:
     app: gtcx-geotag
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: gtcx-geotag
+  namespace: gtcx
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: gtcx-geotag

@@ -269,16 +269,30 @@ canary_deploy() {
     
     local end_time=$(($(date +%s) + CANARY_WAIT_SECONDS))
     while [[ $(date +%s) -lt $end_time ]]; do
-        # Check error rate
-        local error_rate
-        error_rate=$(kubectl top pods -n "${NAMESPACE}" 2>/dev/null | grep -c "Error" || echo "0")
-        
-        if [[ $error_rate -gt 0 ]]; then
-            log_error "Errors detected during canary! Rolling back..."
+        # Check pod readiness via condition status
+        local not_ready
+        not_ready=$(kubectl get pods -n "${NAMESPACE}" -l app=gtcx-api-prod \
+            -o jsonpath='{.items[*].status.conditions[?(@.type=="Ready")].status}' 2>/dev/null \
+            | tr ' ' '\n' | grep -c "False" || echo "0")
+
+        if [[ $not_ready -gt 0 ]]; then
+            log_error "Unhealthy pods detected during canary (${not_ready} not ready). Rolling back..."
             rollback_deployment
             exit 1
         fi
-        
+
+        # Check for pods in CrashLoopBackOff or Error state
+        local failing_pods
+        failing_pods=$(kubectl get pods -n "${NAMESPACE}" -l app=gtcx-api-prod \
+            --field-selector=status.phase!=Running,status.phase!=Succeeded \
+            -o name 2>/dev/null | wc -l | tr -d ' ')
+
+        if [[ $failing_pods -gt 0 ]]; then
+            log_error "Failing pods detected during canary (${failing_pods} pods). Rolling back..."
+            rollback_deployment
+            exit 1
+        fi
+
         sleep 30
         log_info "Canary healthy... $((end_time - $(date +%s)))s remaining"
     done

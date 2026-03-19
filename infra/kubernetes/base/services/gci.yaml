@@ -105,3 +105,14 @@ kind: ServiceAccount
 metadata:
   name: gtcx-ecosystem
   namespace: gtcx
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: gtcx-gci
+  namespace: gtcx
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: gtcx-gci

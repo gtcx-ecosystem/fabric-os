@@ -40,7 +40,8 @@ metadata:
     # Performance
     alb.ingress.kubernetes.io/target-group-attributes: >-
       deregistration_delay.timeout_seconds=30,
-      stickiness.enabled=false
+      stickiness.enabled=false,
+      idle_timeout.timeout_seconds=60
     alb.ingress.kubernetes.io/load-balancer-attributes: >-
       idle_timeout.timeout_seconds=60,
       routing.http2.enabled=true,

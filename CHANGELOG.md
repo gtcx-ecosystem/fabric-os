@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Consolidated legacy `infra/k8s/` into canonical `infra/kubernetes/` (Kustomize-based). Unique intelligence configs (canary, secrets, namespace) moved to `overlays/production/intelligence/`. Redundant anisa/sdk-server manifests removed (already covered by `base/services/intelligence.yaml`)
 - Standardized `imagePullPolicy: IfNotPresent` across all base service manifests
 - Terraform template backend block uncommented with CHANGE-ME placeholders (fails-safe)
 - Base kustomization secrets annotated with "NEVER USE IN PRODUCTION" warning block

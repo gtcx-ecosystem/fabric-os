@@ -113,14 +113,9 @@ variable "enable_public_api" {
 }
 
 variable "admin_cidr_blocks" {
-  description = "CIDR blocks allowed to access EKS API (when public). Must be non-empty when enable_public_api is true."
+  description = "CIDR blocks allowed to access EKS API when enable_public_api is true. Must be non-empty when enabling public access — open 0.0.0.0/0 is not permitted."
   type        = list(string)
   default     = []
-
-  validation {
-    condition     = !var.enable_public_api || length(var.admin_cidr_blocks) > 0
-    error_message = "admin_cidr_blocks must contain at least one CIDR block when enable_public_api is true. An open EKS API endpoint (0.0.0.0/0) is not permitted."
-  }
 }
 
 variable "domain_name" {

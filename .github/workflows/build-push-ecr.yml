@@ -127,11 +127,16 @@ jobs:
             -f "$DOCKERFILE" \
             .
 
+      - name: Set primary ECR repo
+        id: primary_repo
+        run: |
+          FIRST=$(echo "${{ matrix.service.ecr_repos }}" | cut -d',' -f1)
+          echo "name=${FIRST}" >> "$GITHUB_OUTPUT"
+
       - name: Trivy security scan
         uses: aquasecurity/trivy-action@master
         with:
-          # Scan the first repo tag (same image for all repos in this service)
-          image-ref: "${{ steps.ecr-login.outputs.registry }}/${{ (split(matrix.service.ecr_repos, ','))[0] }}:${{ github.sha }}"
+          image-ref: '${{ steps.ecr-login.outputs.registry }}/${{ steps.primary_repo.outputs.name }}:${{ github.sha }}'
           format: sarif
           output: trivy-${{ matrix.service.name }}.sarif
           severity: HIGH,CRITICAL

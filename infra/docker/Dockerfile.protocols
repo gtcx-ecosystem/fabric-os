@@ -11,7 +11,12 @@ FROM node:20-alpine AS deps
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@latest --activate
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY protocols/*/package.json ./protocols/
+COPY protocols/tradepass/package.json ./protocols/tradepass/
+COPY protocols/geotag/package.json ./protocols/geotag/
+COPY protocols/gci/package.json ./protocols/gci/
+COPY protocols/vaultmark/package.json ./protocols/vaultmark/
+COPY protocols/pvp/package.json ./protocols/pvp/
+COPY protocols/panx/package.json ./protocols/panx/
 RUN pnpm install --frozen-lockfile --prod
 
 # Stage 2: Build
@@ -29,7 +34,12 @@ WORKDIR /app
 RUN addgroup -g 1001 -S gtcx && \
     adduser -S gtcx -u 1001 -G gtcx
 
-COPY --from=build --chown=gtcx:gtcx /app/protocols/*/dist ./dist
+COPY --from=build --chown=gtcx:gtcx /app/protocols/tradepass/dist ./dist/tradepass
+COPY --from=build --chown=gtcx:gtcx /app/protocols/geotag/dist ./dist/geotag
+COPY --from=build --chown=gtcx:gtcx /app/protocols/gci/dist ./dist/gci
+COPY --from=build --chown=gtcx:gtcx /app/protocols/vaultmark/dist ./dist/vaultmark
+COPY --from=build --chown=gtcx:gtcx /app/protocols/pvp/dist ./dist/pvp
+COPY --from=build --chown=gtcx:gtcx /app/protocols/panx/dist ./dist/panx
 COPY --from=deps --chown=gtcx:gtcx /app/node_modules ./node_modules
 
 USER gtcx

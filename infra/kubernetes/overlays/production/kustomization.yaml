@@ -12,7 +12,6 @@ namespace: gtcx-production
 
 resources:
   - ../../base
-  - ../../base/services/monitoring.yaml
   - network-policies.yaml
   - pod-security-policy.yaml
   - ingress.yaml

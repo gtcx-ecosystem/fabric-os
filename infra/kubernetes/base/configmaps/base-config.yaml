@@ -23,7 +23,9 @@ data:
   GTCX_CRYPTO_PORT: '8080'
 
   # Event bus (per RESILIENT principle)
+  EVENT_BUS_DRIVER: 'nats'
   NATS_URL: 'nats://gtcx-nats:4222'
+  NATS_DURABLE_NAME: 'gtcx-platform'
   NATS_CLUSTER_NAME: 'gtcx-events'
 
   # Intelligence services

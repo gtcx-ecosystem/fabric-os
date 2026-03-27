@@ -392,6 +392,8 @@ CREATE TABLE sgx_export_applications (
   crx_permit_id             VARCHAR NOT NULL,
   vault_mark_custody_proof_id VARCHAR NOT NULL,
   jurisdiction_code         VARCHAR NOT NULL,
+  clearance_authority_id    VARCHAR(64),
+  gci_score_at_submission   DECIMAL(5,2),
   export_tax_cents          BIGINT NOT NULL DEFAULT 0,
   royalty_cents             BIGINT NOT NULL DEFAULT 0,
   transaction_fee_cents     BIGINT NOT NULL DEFAULT 0,
@@ -1002,6 +1004,8 @@ CREATE INDEX idx_crx_alerts_workflow ON crx_compliance_alerts(workflow_status);
 CREATE INDEX idx_sgx_quotas_producer ON sgx_export_quotas(producer_id);
 CREATE INDEX idx_sgx_apps_producer ON sgx_export_applications(producer_id);
 CREATE INDEX idx_sgx_apps_status ON sgx_export_applications(status);
+CREATE INDEX idx_sgx_apps_clearance_authority ON sgx_export_applications(clearance_authority_id) WHERE clearance_authority_id IS NOT NULL;
+CREATE INDEX idx_sgx_apps_status_gci ON sgx_export_applications(status, gci_score_at_submission) WHERE status = 'PENDING_REVIEW';
 CREATE INDEX idx_sgx_clearances_producer ON sgx_export_clearances(producer_id);
 
 -- Pathways

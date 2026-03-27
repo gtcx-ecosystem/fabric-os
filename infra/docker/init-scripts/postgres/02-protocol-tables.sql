@@ -50,15 +50,19 @@ CREATE TABLE IF NOT EXISTS tradepass_credentials (
 
 CREATE TABLE IF NOT EXISTS tradepass_identities (
   did                   VARCHAR(256) PRIMARY KEY,
-  identity_json         JSONB NOT NULL,
-  identity_type         VARCHAR(64) NOT NULL,
+  trade_pass_id         VARCHAR(32) UNIQUE,
+  name                  VARCHAR(256),
+  role                  VARCHAR(64),
   jurisdiction          VARCHAR(8) NOT NULL,
+  public_key            VARCHAR(512),
   status                VARCHAR(32) NOT NULL DEFAULT 'pending',
-  biometric_hash        VARCHAR(128),
+  identity_json         JSONB NOT NULL,
+  kyc_document_type     VARCHAR(64),
+  kyc_document_ref      VARCHAR(512),
+  kyc_document_status   VARCHAR(16),
+  kyc_verified_at       TIMESTAMPTZ,
   created_at            TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  updated_at            TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-
-  CONSTRAINT chk_tradepass_identity_type CHECK (identity_type IN ('individual', 'organization'))
+  updated_at            TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- =============================================================================
@@ -88,15 +92,19 @@ CREATE TABLE IF NOT EXISTS geotag_proofs (
 -- =============================================================================
 
 CREATE TABLE IF NOT EXISTS geotag_sites (
-  id                    VARCHAR(128) PRIMARY KEY,
-  name                  VARCHAR(256) NOT NULL,
-  site_type             VARCHAR(64) NOT NULL,
-  geofence              JSONB NOT NULL,
-  jurisdiction          VARCHAR(8) NOT NULL,
-  commodity_types       JSONB,
-  status                VARCHAR(32) NOT NULL DEFAULT 'active',
-  created_at            TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  updated_at            TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  id                              VARCHAR(128) PRIMARY KEY,
+  name                            VARCHAR(256) NOT NULL,
+  site_type                       VARCHAR(64) NOT NULL,
+  geofence                        JSONB NOT NULL,
+  jurisdiction                    VARCHAR(8) NOT NULL,
+  operator_did                    VARCHAR(256),
+  commodity_types                 JSONB,
+  estimated_monthly_capacity_kg   DECIMAL(12,3),
+  allowed_grades                  JSONB,
+  min_assay_purity                DECIMAL(5,4),
+  status                          VARCHAR(32) NOT NULL DEFAULT 'active',
+  created_at                      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- =============================================================================
@@ -111,7 +119,8 @@ CREATE INDEX idx_tradepass_cred_subject_status ON tradepass_credentials(subject_
 
 CREATE INDEX idx_tradepass_identity_jurisdiction ON tradepass_identities(jurisdiction);
 CREATE INDEX idx_tradepass_identity_status ON tradepass_identities(status);
-CREATE INDEX idx_tradepass_identity_type ON tradepass_identities(identity_type);
+CREATE UNIQUE INDEX idx_tradepass_identity_trade_pass_id ON tradepass_identities(trade_pass_id) WHERE trade_pass_id IS NOT NULL;
+CREATE INDEX idx_tradepass_identity_kyc_status ON tradepass_identities(kyc_document_status) WHERE kyc_document_status IS NOT NULL;
 
 -- =============================================================================
 -- Indexes — GeoTag
@@ -126,6 +135,7 @@ CREATE INDEX idx_geotag_proofs_coords ON geotag_proofs(latitude, longitude);
 CREATE INDEX idx_geotag_sites_jurisdiction ON geotag_sites(jurisdiction);
 CREATE INDEX idx_geotag_sites_type ON geotag_sites(site_type);
 CREATE INDEX idx_geotag_sites_status ON geotag_sites(status);
+CREATE INDEX idx_geotag_sites_operator ON geotag_sites(operator_did) WHERE operator_did IS NOT NULL;
 
 -- =============================================================================
 -- Triggers — updated_at auto-update

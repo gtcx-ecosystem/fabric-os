@@ -287,6 +287,24 @@ module "alb" {
 }
 
 # -----------------------------------------------------------------------------
+# KYC Document Storage (presigned PUT, SSE-KMS, IRSA)
+# -----------------------------------------------------------------------------
+
+module "kyc_documents" {
+  source = "../../modules/kyc-documents"
+
+  environment              = var.environment
+  region                   = var.region
+  eks_oidc_provider_arn    = module.eks.oidc_provider_arn
+  eks_oidc_provider_url    = replace(module.eks.oidc_provider_url, "https://", "")
+  platform_namespace       = "default"
+  platform_service_account = "gtcx-platform"
+  document_retention_days  = 1825 # 5 years — FATF minimum
+
+  tags = var.tags
+}
+
+# -----------------------------------------------------------------------------
 # Audit Backup (S3 export + 7-year retention)
 # -----------------------------------------------------------------------------
 
@@ -358,6 +376,16 @@ output "nats_security_group_id" {
 output "alb_controller_role_arn" {
   description = "ALB controller IAM role ARN"
   value       = module.alb.controller_role_arn
+}
+
+output "kyc_documents_bucket" {
+  description = "KYC documents S3 bucket name — set as KYC_DOCUMENTS_BUCKET on platform pods"
+  value       = module.kyc_documents.bucket_name
+}
+
+output "kyc_documents_irsa_role_arn" {
+  description = "IRSA role ARN — annotate gtcx-platform service account with eks.amazonaws.com/role-arn"
+  value       = module.kyc_documents.irsa_role_arn
 }
 
 output "acm_certificate_arn" {

@@ -61,20 +61,16 @@ scrape_configs:
         replacement: 'gtcx-crypto'
 
   # --------------------------------------------------------------------------
-  # [PLACEHOLDER] Protocol Services -- requires TradePass, GeoTag, GCI apps
+  # [ACTIVE] Protocol Server -- unified Node.js service for all 6 protocols
   # --------------------------------------------------------------------------
   - job_name: 'gtcx-protocols'
     metrics_path: '/metrics'
     static_configs:
-      - targets:
-          - 'tradepass:3000'
-          - 'geotag:3000'
-          - 'gci:3000'
+      - targets: ['protocols:8300']
     relabel_configs:
       - source_labels: [__address__]
-        regex: '([^:]+):.*'
-        target_label: service
-        replacement: '${1}'
+        target_label: instance
+        replacement: 'gtcx-protocols'
 
   # --------------------------------------------------------------------------
   # [PLACEHOLDER] Platform Services -- requires CRX, SGX, AGX apps

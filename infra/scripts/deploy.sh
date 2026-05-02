@@ -384,7 +384,24 @@ post_deployment() {
     
     # Log deployment (per AUDITABLE principle)
     log_info "Recording deployment..."
-    echo "$(date -u +"%Y-%m-%dT%H:%M:%SZ") | ${ENVIRONMENT} | ${VERSION} | ${APPROVAL_TICKET:-N/A} | SUCCESS" >> "${PROJECT_ROOT}/deployment.log"
+    local deploy_record
+    deploy_record="$(date -u +"%Y-%m-%dT%H:%M:%SZ") | ${ENVIRONMENT} | ${VERSION} | ${APPROVAL_TICKET:-N/A} | SUCCESS"
+
+    # Write to CloudWatch Logs if AWS CLI available, otherwise S3
+    if command -v aws &>/dev/null && [[ -n "${AWS_REGION:-}" ]]; then
+        local log_group="/gtcx/${ENVIRONMENT}/deployments"
+        local log_stream="deploy-$(date -u +%Y-%m-%d)"
+        aws logs create-log-group --log-group-name "${log_group}" 2>/dev/null || true
+        aws logs create-log-stream --log-group-name "${log_group}" --log-stream-name "${log_stream}" 2>/dev/null || true
+        aws logs put-log-events \
+            --log-group-name "${log_group}" \
+            --log-stream-name "${log_stream}" \
+            --log-events "timestamp=$(date +%s000),message=${deploy_record}" \
+            --region "${AWS_REGION}" 2>/dev/null || log_warning "CloudWatch logging failed — falling back to local"
+    fi
+
+    # Always write local copy as backup
+    echo "${deploy_record}" >> "${PROJECT_ROOT}/deployment.log"
     
     log_success "Post-deployment verification complete"
 }

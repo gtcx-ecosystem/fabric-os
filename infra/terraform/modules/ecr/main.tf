@@ -60,6 +60,24 @@ locals {
 }
 
 # -----------------------------------------------------------------------------
+# KMS Key for ECR Encryption (per SECURE principle)
+# -----------------------------------------------------------------------------
+
+resource "aws_kms_key" "ecr" {
+  description         = "GTCX ECR image encryption — ${var.environment}"
+  enable_key_rotation = true
+
+  tags = merge(local.common_tags, {
+    Name = "gtcx-${var.environment}-ecr-kms"
+  })
+}
+
+resource "aws_kms_alias" "ecr" {
+  name          = "alias/gtcx-${var.environment}-ecr"
+  target_key_id = aws_kms_key.ecr.key_id
+}
+
+# -----------------------------------------------------------------------------
 # ECR Repositories
 # -----------------------------------------------------------------------------
 
@@ -75,7 +93,8 @@ resource "aws_ecr_repository" "repos" {
   }
 
   encryption_configuration {
-    encryption_type = "AES256"
+    encryption_type = "KMS"
+    kms_key         = aws_kms_key.ecr.arn
   }
 
   tags = merge(local.common_tags, {

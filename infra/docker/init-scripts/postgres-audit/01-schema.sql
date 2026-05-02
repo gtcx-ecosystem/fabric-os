@@ -18,8 +18,6 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE audit_records (
   id                  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  updated_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  deleted_at          TIMESTAMPTZ,
 
   request_id          UUID NOT NULL,
   actor_did           VARCHAR(255) NOT NULL,
@@ -56,3 +54,25 @@ CREATE INDEX idx_audit_request_id ON audit_records(request_id);
 -- Composite index for common compliance queries
 CREATE INDEX idx_audit_actor_time ON audit_records(actor_did, timestamp);
 CREATE INDEX idx_audit_jurisdiction_time ON audit_records(jurisdiction_code, timestamp);
+
+-- =============================================================================
+-- Immutability enforcement (per AUDITABLE principle)
+-- =============================================================================
+-- Audit records are append-only. No updates or deletes permitted.
+
+REVOKE UPDATE, DELETE ON audit_records FROM PUBLIC;
+
+-- Create insert-only role for application use
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'gtcx_audit_writer') THEN
+    CREATE ROLE gtcx_audit_writer;
+  END IF;
+END
+$$;
+
+GRANT SELECT, INSERT ON audit_records TO gtcx_audit_writer;
+GRANT USAGE ON SCHEMA public TO gtcx_audit_writer;
+
+-- Grant insert-only to the default audit user
+GRANT gtcx_audit_writer TO gtcx_audit;

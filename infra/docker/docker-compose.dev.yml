@@ -120,7 +120,7 @@ services:
   crypto:
     build:
       context: ../../../2-core
-      dockerfile: ../4-infrastructure/infra/docker/Dockerfile.crypto
+      dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.crypto
       target: production
     container_name: gtcx-crypto
     environment:
@@ -143,7 +143,7 @@ services:
   protocols:
     build:
       context: ../../../3-protocols
-      dockerfile: ../4-infrastructure/infra/docker/Dockerfile.protocols
+      dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.protocols
     container_name: gtcx-protocols
     environment:
       NODE_ENV: development
@@ -182,7 +182,7 @@ services:
   agx:
     build:
       context: ../../../6-platforms
-      dockerfile: ../4-infrastructure/infra/docker/Dockerfile.platforms
+      dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.platforms
       args:
         PLATFORM: agx
         APP_PORT: 3000
@@ -217,7 +217,7 @@ services:
   crx:
     build:
       context: ../../../6-platforms
-      dockerfile: ../4-infrastructure/infra/docker/Dockerfile.platforms
+      dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.platforms
       args:
         PLATFORM: crx
         APP_PORT: 3001
@@ -250,7 +250,7 @@ services:
   sgx:
     build:
       context: ../../../6-platforms
-      dockerfile: ../4-infrastructure/infra/docker/Dockerfile.platforms
+      dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.platforms
       args:
         PLATFORM: sgx
         APP_PORT: 3002

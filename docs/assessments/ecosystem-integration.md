@@ -1,7 +1,7 @@
 # Ecosystem Integration — gtcx-infrastructure
 
 **Date:** 2026-03-09
-**Scope:** 4-infrastructure — what this repo provides to the ecosystem, what it should provide, and the architectural gaps to close
+**Scope:** gtcx-infrastructure — what this repo provides to the ecosystem, what it should provide, and the architectural gaps to close
 
 ---
 

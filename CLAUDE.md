@@ -1,4 +1,4 @@
-# CLAUDE.md — GTCX Infrastructure (`4-infrastructure`)
+# CLAUDE.md — GTCX Infrastructure
 
 ## Purpose
 

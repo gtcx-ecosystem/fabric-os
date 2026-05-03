@@ -1,7 +1,7 @@
 # Remediation Plan: gtcx-infrastructure — Target 10/10
 
 > Verified audit: 2026-03-19
-> Repo: `/Users/amanianai/Sites/gtcx-ecosystem/4-infrastructure`
+> Repo: `/Users/amanianai/Sites/gtcx-ecosystem/gtcx-infrastructure`
 > Purpose: Close every gap to achieve 10/10 across all 5 audit dimensions
 
 ---
@@ -93,7 +93,7 @@
 - **Evidence:** `infra/terraform/environments/zimbabwe-pilot/.terraform/terraform.tfstate`
 - **Fix:**
   ```bash
-  cd /Users/amanianai/Sites/gtcx-ecosystem/4-infrastructure
+  cd /Users/amanianai/Sites/gtcx-ecosystem/gtcx-infrastructure
   git rm -r --cached infra/terraform/environments/zimbabwe-pilot/.terraform/
   ```
   Verify `.gitignore` already has `.terraform/` (it does — line in existing .gitignore). The `--cached` flag removes from git tracking without deleting the local directory.
@@ -227,7 +227,7 @@ Items 7-8 are documentation (do last, reference the fixed structure).
 ## Post-Remediation Verification Protocol
 
 ```bash
-cd /Users/amanianai/Sites/gtcx-ecosystem/4-infrastructure
+cd /Users/amanianai/Sites/gtcx-ecosystem/gtcx-infrastructure
 
 # 1. No terraform state in git
 git ls-files | grep -E '\.terraform/|\.tfstate' | wc -l  # expect: 0

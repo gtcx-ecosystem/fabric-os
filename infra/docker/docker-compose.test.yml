@@ -80,7 +80,7 @@ services:
   platforms-test:
     build:
       context: ../../../6-platforms
-      dockerfile: ../4-infrastructure/infra/docker/Dockerfile.platforms
+      dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.platforms
       target: build
       args:
         PLATFORM: agx
@@ -107,7 +107,7 @@ services:
   crypto-test:
     build:
       context: ../../../2-core
-      dockerfile: ../4-infrastructure/infra/docker/Dockerfile.crypto
+      dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.crypto
       target: builder
     container_name: gtcx-test-crypto
     environment:
@@ -122,7 +122,7 @@ services:
   protocols-test:
     build:
       context: ../../../3-protocols
-      dockerfile: ../4-infrastructure/infra/docker/Dockerfile.protocols
+      dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.protocols
       target: production
     container_name: gtcx-test-protocols
     environment:

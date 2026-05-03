@@ -1,7 +1,7 @@
 # GTM Q2 Africa — gtcx-infrastructure
 
 **Date:** 2026-03-09
-**Scope:** 4-infrastructure — how this repo's work directly enables or blocks Q2 Ghana GTM, and the one thing it must deliver
+**Scope:** gtcx-infrastructure — how this repo's work directly enables or blocks Q2 Ghana GTM, and the one thing it must deliver
 
 ---
 

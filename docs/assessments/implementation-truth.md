@@ -1,7 +1,7 @@
 # Implementation Truth — gtcx-infrastructure
 
 **Date:** 2026-03-09
-**Scope:** 4-infrastructure — directory-by-directory audit of what exists, what is deployable, and what breaks
+**Scope:** gtcx-infrastructure — directory-by-directory audit of what exists, what is deployable, and what breaks
 
 ---
 

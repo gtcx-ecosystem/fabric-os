@@ -8,9 +8,12 @@ All deployment, infrastructure-as-code, and operational tooling for the GTCX eco
 
 ```bash
 pnpm install        # Install Node tooling
-pnpm lint           # Lint IaC and scripts
-pnpm typecheck      # Type-check scripts
+pnpm lint           # Lint IaC and scripts (runs in CI; 0 workspace tasks locally)
+pnpm typecheck      # Type-check scripts (runs in CI; 0 workspace tasks locally)
+pnpm format:check   # Verify Prettier formatting
 ```
+
+IaC validation (Terraform validate, Kustomize build, Docker Compose config) runs in CI via the `iac-validation` job, not locally.
 
 ## Stack
 

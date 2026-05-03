@@ -33,10 +33,12 @@ terraform {
     }
   }
 
+  # Per SOVEREIGN (6): State stored in-region alongside compute and data.
+  # Migration from us-east-1: run infra/scripts/migrate-state.sh
   backend "s3" {
     bucket         = "gtcx-terraform-state-zimbabwe-pilot"
     key            = "environments/zimbabwe-pilot/terraform.tfstate"
-    region         = "us-east-1"
+    region         = "af-south-1"
     encrypt        = true
     dynamodb_table = "gtcx-terraform-locks"
   }

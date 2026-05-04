@@ -1,6 +1,5 @@
 packages:
   # Infrastructure
-  - 'infra/edge-proxy'
   - 'infra/migrations'
 
   # Tools

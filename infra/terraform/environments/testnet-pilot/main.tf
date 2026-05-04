@@ -36,7 +36,7 @@ terraform {
     key            = "environments/testnet-pilot/terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true
-    dynamodb_table = "gtcx-terraform-locks"
+    dynamodb_table = "gtcx-terraform-locks-testnet-pilot"
   }
 }
 

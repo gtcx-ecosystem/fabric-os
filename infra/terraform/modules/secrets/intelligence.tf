@@ -198,7 +198,7 @@ resource "aws_iam_role" "intelligence_secrets" {
       Action = "sts:AssumeRoleWithWebIdentity"
       Condition = {
         StringEquals = {
-          "${local.oidc_issuer}:sub" = "system:serviceaccount:intelligence:intelligence-sa"
+          "${local.oidc_issuer}:sub" = "system:serviceaccount:${var.intelligence_namespace}:${var.intelligence_service_account}"
           "${local.oidc_issuer}:aud" = "sts.amazonaws.com"
         }
       }

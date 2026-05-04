@@ -236,7 +236,7 @@ resource "aws_lambda_function" "backup" {
   source_code_hash = data.archive_file.backup_lambda.output_base64sha256
   handler          = "index.handler"
   runtime          = "python3.12"
-  timeout          = 60
+  timeout          = 300
   role             = aws_iam_role.lambda_execution.arn
 
   environment {

@@ -48,7 +48,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 # Configuration
 TARGET_REGION="af-south-1"
 STATE_BUCKET="gtcx-terraform-state-zimbabwe-pilot"
-LOCK_TABLE="gtcx-terraform-locks"
+LOCK_TABLE="gtcx-terraform-locks-zimbabwe-pilot"
 ENV_DIR="${PROJECT_ROOT}/infra/terraform/environments/zimbabwe-pilot"
 
 SKIP_REGION=false

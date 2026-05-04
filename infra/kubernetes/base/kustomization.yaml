@@ -29,29 +29,36 @@ configMapGenerator:
       - GTCX_LOG_FORMAT=json
 
 # ============================================================
-# PLACEHOLDER SECRETS — NEVER USE IN PRODUCTION
-# These exist only so kustomize build succeeds in base.
-# Production overlays MUST override via:
-#   - Sealed Secrets (bitnami/sealed-secrets)
-#   - External Secrets Operator (external-secrets.io)
-#   - Vault Agent injector
-# See: _sop/2-docs/secrets-management.md
+# STUB SECRETS — kustomize build requires this to succeed.
+# These values are intentionally non-functional.
+#
+# Production secrets flow through External Secrets Operator:
+#   AWS Secrets Manager → ESO SecretStore → K8s Secret
+# See: docs/security/secrets-management.md
+# See: infra/terraform/modules/secrets/intelligence.tf
+#
+# Environment overlays MUST NOT use these literals.
 # ============================================================
 secretGenerator:
   - name: gtcx-secrets
     type: Opaque
     literals:
-      - DATABASE_URL=postgres://placeholder:placeholder@localhost:5432/gtcx
-      - SECRET_KEY_BASE=placeholder-override-in-overlay
+      - DATABASE_URL=PLACEHOLDER_OVERRIDE_IN_OVERLAY
+      - SECRET_KEY_BASE=PLACEHOLDER_OVERRIDE_IN_OVERLAY
 
+# =============================================================
+# Image tags — base uses v0.1.0 as floor version.
+# Environment overlays MUST override with build-specific tags
+# (e.g., sha-a92b7fc from CI). Never deploy :latest.
+# =============================================================
 images:
   - name: gtcx/agx
-    newTag: latest
+    newTag: v0.1.0
   - name: gtcx/crx
-    newTag: latest
+    newTag: v0.1.0
   - name: gtcx/sgx
-    newTag: latest
+    newTag: v0.1.0
   - name: gtcx/crypto
-    newTag: latest
+    newTag: v0.1.0
   - name: gtcx/protocols
-    newTag: latest
+    newTag: v0.1.0

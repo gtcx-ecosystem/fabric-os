@@ -40,7 +40,7 @@ terraform {
     key            = "environments/zimbabwe-pilot/terraform.tfstate"
     region         = "af-south-1"
     encrypt        = true
-    dynamodb_table = "gtcx-terraform-locks"
+    dynamodb_table = "gtcx-terraform-locks-zimbabwe-pilot"
   }
 }
 

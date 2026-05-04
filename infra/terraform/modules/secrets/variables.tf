@@ -17,6 +17,18 @@ variable "eks_oidc_provider_arn" {
   type        = string
 }
 
+variable "intelligence_namespace" {
+  description = "Kubernetes namespace for intelligence service account"
+  type        = string
+  default     = "intelligence"
+}
+
+variable "intelligence_service_account" {
+  description = "Kubernetes service account name for intelligence pods"
+  type        = string
+  default     = "intelligence-sa"
+}
+
 variable "tags" {
   description = "Additional tags"
   type        = map(string)

@@ -22,8 +22,10 @@ eks_node_desired_size   = 1
 eks_node_min_size       = 1
 eks_node_max_size       = 3
 
-# API access — enabled for tenant evaluation
-enable_public_api = true
+# API access — disabled until VPN/office CIDRs are configured
+# To enable: set enable_public_api = true and add CIDRs below
+# Example: admin_cidr_blocks = ["41.60.0.0/16", "102.134.0.0/16"]
+enable_public_api = false
 admin_cidr_blocks = []
 
 # Domain — ACM certificate for HTTPS

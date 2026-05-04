@@ -231,7 +231,7 @@ resource "helm_release" "alb_controller" {
 
 resource "aws_wafv2_web_acl" "main" {
   name        = "gtcx-${var.environment}-waf"
-  description = "GTCX WAF — OWASP Core Rule Set for API protection"
+  description = "GTCX WAF - OWASP Core Rule Set for API protection"
   scope       = "REGIONAL"
 
   default_action {

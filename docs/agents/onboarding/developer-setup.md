@@ -22,7 +22,7 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/gtcx/gtcx-infrastructure
+git clone https://github.com/gtcx-ecosystem/gtcx-infrastructure
 cd gtcx-infrastructure
 
 # 2. Install Node dependencies

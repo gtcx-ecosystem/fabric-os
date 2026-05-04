@@ -171,10 +171,10 @@ CMMC Level 2 requires implementation of 110 practices from NIST SP 800-171 Rev 2
 
 ### RE -- Recovery
 
-| Practice     | Title                    | Implementation                                                         | Evidence                                                                           |
-| ------------ | ------------------------ | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| RE.L2-3.11.1 | Perform risk assessments | Threat model maintained. DR test script validates recovery capability. | `_sop/2-docs/3-engineering/7-security/threat-model.md`, `infra/scripts/dr-test.sh` |
-| RE.L2-3.11.2 | Scan for vulnerabilities | ECR scan-on-push. Trivy + CycloneDX SBOM in CI.                        | `infra/terraform/modules/ecr/main.tf`                                              |
+| Practice     | Title                    | Implementation                                                         | Evidence                                                    |
+| ------------ | ------------------------ | ---------------------------------------------------------------------- | ----------------------------------------------------------- |
+| RE.L2-3.11.1 | Perform risk assessments | Threat model maintained. DR test script validates recovery capability. | `docs/security/threat-model.md`, `infra/scripts/dr-test.sh` |
+| RE.L2-3.11.2 | Scan for vulnerabilities | ECR scan-on-push. Trivy + CycloneDX SBOM in CI.                        | `infra/terraform/modules/ecr/main.tf`                       |
 
 ---
 

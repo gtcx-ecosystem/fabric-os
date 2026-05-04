@@ -11,7 +11,7 @@
 - `terraform` >= 1.5.0
 - `kustomize` (bundled with kubectl >= 1.14)
 - `pnpm` (for building container images)
-- S3 bucket + DynamoDB table for Terraform state (see `_sop/2-docs/secrets-management.md`)
+- S3 bucket + DynamoDB table for Terraform state (see `docs/security/secrets-management.md`)
 
 ---
 
@@ -116,7 +116,7 @@ docker compose -f infra/docker/docker-compose.dev.yml up -d
 
 ## 5. Secrets Injection
 
-See `_sop/2-docs/secrets-management.md` for the full secrets strategy.
+See `docs/security/secrets-management.md` for the full secrets strategy.
 
 Quick reference:
 

@@ -50,6 +50,6 @@ Test coverage thresholds enforced in CI:
 
 ## References
 
-- `_sop/2-docs/4-operations/compliance/controls-matrix.md` — compliance control evidence
-- `_sop/3-agile/roadmap.md` — milestone targets
-- `_sop/2-docs/3-engineering/testing.md` — coverage gate configuration
+- `docs/compliance/controls-matrix.md` — compliance control evidence
+- `docs/agile/phased-roadmap.md` — milestone targets
+- `docs/engineering/test-strategy.md` — coverage gate configuration

@@ -8,7 +8,7 @@ Get local infrastructure running and understand the repo in under 10 minutes.
 
 ```bash
 # Clone
-git clone https://github.com/gtcx/gtcx-infrastructure
+git clone https://github.com/gtcx-ecosystem/gtcx-infrastructure
 cd gtcx-infrastructure
 
 # Install Node dependencies
@@ -138,6 +138,6 @@ Two databases are a hard constraint. They are never merged:
 
 ## Need Help?
 
-- GitHub Issues: https://github.com/gtcx/gtcx-infrastructure/issues
+- GitHub Issues: https://github.com/gtcx-ecosystem/gtcx-infrastructure/issues
 - Security contact: security@gtcx.io
 - Infrastructure on-call: see `_sop/2-docs/4-operations/runbooks/incident-response.md`

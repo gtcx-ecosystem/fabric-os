@@ -37,12 +37,12 @@ route:
   repeat_interval: 4h
 
   routes:
-    # P0 — Critical: immediate page
+    # P0 — Critical: immediate page, escalate every 15 min if unacknowledged
     - match:
         severity: critical
       receiver: pagerduty-critical
       group_wait: 10s
-      repeat_interval: 1h
+      repeat_interval: 15m
       continue: true
 
     # P0 — also send to Slack incidents channel

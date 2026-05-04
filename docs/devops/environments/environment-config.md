@@ -128,7 +128,7 @@ Production deployments require an approval ticket (`--approval-ticket=GTCX-NNN`)
 
 ```bash
 # Clone repo
-git clone https://github.com/gtcx/gtcx-infrastructure
+git clone https://github.com/gtcx-ecosystem/gtcx-infrastructure
 cd gtcx-infrastructure
 
 # Install Node dependencies

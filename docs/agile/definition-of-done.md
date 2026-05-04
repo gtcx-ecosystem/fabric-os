@@ -23,7 +23,7 @@ Quality criteria that must be satisfied before any work item in `gtcx-infrastruc
 
 ### Documentation
 
-- [ ] Affected runbook in `_sop/2-docs/4-devops/2-runbooks/` updated if operational procedure changed
+- [ ] Affected runbook in `docs/operations/runbooks/` updated if operational procedure changed
 - [ ] ADR written if an infrastructure architectural decision was made (status: `Proposed`)
 - [ ] Terraform module README updated if inputs/outputs changed
 
@@ -33,14 +33,14 @@ Quality criteria that must be satisfied before any work item in `gtcx-infrastruc
 
 - [ ] All committed stories meet User Story DoD
 - [ ] Sprint goal achieved (or partially achieved with documented rationale)
-- [ ] UAT evidence logged in `_sop/3-agile/2-scrum-board/6-testing/uat/uat-evidence-log.md`
+- [ ] UAT evidence logged in `docs/agile/qa-test-plan.md`
 - [ ] Sprint retrospective completed and action items assigned
 
 ---
 
 ## Release DoD
 
-- [ ] All pre-release gates pass (see `_sop/2-docs/4-devops/7-release-mgmt/release-checklist.md`)
+- [ ] All pre-release gates pass (see `docs/devops/release/release-checklist.md`)
 - [ ] UAT evidence log updated
 - [ ] CODEOWNERS approval obtained
 - [ ] Release notes updated
@@ -74,6 +74,6 @@ When DoD cannot be met:
 
 ## Reference
 
-- [`_sop/2-docs/4-devops/7-release-mgmt/release-checklist.md`](../../../../2-docs/4-devops/7-release-mgmt/release-checklist.md) — release gate checklist
-- [`_sop/2-docs/4-devops/2-runbooks/quality-runbook.md`](../../../../2-docs/4-devops/2-runbooks/quality-runbook.md) — full gate sequence
-- [`_sop/3-agile/2-scrum-board/6-testing/uat/uat-evidence-log.md`](../6-testing/uat/uat-evidence-log.md) — UAT evidence log
+- [`docs/devops/release/release-checklist.md`](../../../../2-docs/4-devops/7-release-mgmt/release-checklist.md) — release gate checklist
+- [`docs/operations/runbooks/quality-runbook.md`](../../../../2-docs/4-devops/2-runbooks/quality-runbook.md) — full gate sequence
+- [`docs/agile/qa-test-plan.md`](../6-testing/uat/uat-evidence-log.md) — UAT evidence log

@@ -30,7 +30,7 @@
 1. **Clone and Install**
 
    ```bash
-   git clone https://github.com/gtcx/gtcx.git
+   git clone https://github.com/gtcx-ecosystem/gtcx.git
    cd gtcx
    pnpm install
    ```

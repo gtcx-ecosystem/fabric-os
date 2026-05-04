@@ -108,6 +108,30 @@ CREATE TABLE IF NOT EXISTS geotag_sites (
 );
 
 -- =============================================================================
+-- Foreign Key Constraints
+-- =============================================================================
+
+ALTER TABLE tradepass_credentials
+  ADD CONSTRAINT fk_tradepass_cred_issuer
+  FOREIGN KEY (issuer_did) REFERENCES tradepass_identities(did) ON DELETE RESTRICT;
+
+ALTER TABLE tradepass_credentials
+  ADD CONSTRAINT fk_tradepass_cred_subject
+  FOREIGN KEY (subject_did) REFERENCES tradepass_identities(did) ON DELETE RESTRICT;
+
+ALTER TABLE geotag_proofs
+  ADD CONSTRAINT fk_geotag_proofs_operator
+  FOREIGN KEY (operator_did) REFERENCES tradepass_identities(did) ON DELETE RESTRICT;
+
+ALTER TABLE geotag_proofs
+  ADD CONSTRAINT fk_geotag_proofs_site
+  FOREIGN KEY (site_id) REFERENCES geotag_sites(id) ON DELETE SET NULL;
+
+ALTER TABLE geotag_sites
+  ADD CONSTRAINT fk_geotag_sites_operator
+  FOREIGN KEY (operator_did) REFERENCES tradepass_identities(did) ON DELETE SET NULL;
+
+-- =============================================================================
 -- Indexes — TradePass
 -- =============================================================================
 

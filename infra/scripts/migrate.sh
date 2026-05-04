@@ -170,12 +170,11 @@ run_migrations() {
         local checksum
         checksum="$(sha256sum "${sql_file}" | awk '{print $1}')"
 
-        # Check if already applied
+        # Check if already applied (parameterized query to prevent SQL injection)
         local already_applied
-        local safe_filename
-        safe_filename="$(printf '%s' "${filename}" | sed "s/'/''/g")"
         already_applied=$(psql "${DATABASE_URL}" -tAc \
-            "SELECT COUNT(*) FROM schema_migrations WHERE filename = '${safe_filename}'" 2>/dev/null || echo "0")
+            "SELECT COUNT(*) FROM schema_migrations WHERE filename = \$1" \
+            -v "1=${filename}" 2>/dev/null || echo "0")
 
         if [[ "${already_applied}" -gt 0 ]]; then
             log_info "  SKIP  ${filename} (already applied)"

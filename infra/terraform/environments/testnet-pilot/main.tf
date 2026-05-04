@@ -291,6 +291,7 @@ module "alb" {
 module "backup" {
   source        = "../../modules/backup"
   environment   = var.environment
+  region        = var.region
   db_identifier = module.database.audit_db_identifier
   tags          = var.tags
 }

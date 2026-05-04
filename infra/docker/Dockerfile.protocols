@@ -31,7 +31,7 @@ COPY protocols/vaultmark/package.json ./protocols/vaultmark/
 COPY protocols/pvp/package.json ./protocols/pvp/
 COPY protocols/panx/package.json ./protocols/panx/
 COPY server/package.json ./server/
-RUN pnpm install --no-frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
 # Stage 2: Copy source (tsx runs TypeScript directly, no build step)
 FROM node:20-alpine AS production

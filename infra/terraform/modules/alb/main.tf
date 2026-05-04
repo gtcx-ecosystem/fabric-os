@@ -201,4 +201,51 @@ resource "helm_release" "alb_controller" {
     name  = "vpcId"
     value = var.vpc_id
   }
+
+  # Enforce TLS 1.2+ via default Ingress annotations
+  set {
+    name  = "defaultTags.Environment"
+    value = var.environment
+  }
+}
+
+# -----------------------------------------------------------------------------
+# Default Ingress Class Params — TLS 1.2+ enforcement
+# -----------------------------------------------------------------------------
+# ALB Ingress annotations must include:
+#   alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
+#   alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+#   alb.ingress.kubernetes.io/certificate-arn: <from acm_certificate_arn output>
+#
+# This IngressClassParams resource sets the SSL policy at the class level
+# so individual Ingress resources inherit TLS 1.2+ by default.
+# -----------------------------------------------------------------------------
+
+resource "kubectl_manifest" "ingress_class_params" {
+  yaml_body = yamlencode({
+    apiVersion = "elbv2.k8s.aws/v1beta1"
+    kind       = "IngressClassParams"
+    metadata = {
+      name = "alb-tls"
+      labels = {
+        "app.kubernetes.io/managed-by" = "terraform"
+      }
+    }
+    spec = {
+      scheme = "internet-facing"
+      sslPolicy = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+      tags = [
+        {
+          key   = "Environment"
+          value = var.environment
+        },
+        {
+          key   = "ManagedBy"
+          value = "terraform"
+        },
+      ]
+    }
+  })
+
+  depends_on = [helm_release.alb_controller]
 }

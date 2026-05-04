@@ -277,10 +277,18 @@ deploy() {
     log_info "Applying Kubernetes configuration..."
     kubectl apply -k "overlays/${ENVIRONMENT}"
 
-    # Wait for rollout
+    # Wait for rollout — resolve deployment names dynamically from the cluster
     log_info "Waiting for deployment rollout..."
-    kubectl rollout status deployment/gtcx-agx-${ENVIRONMENT:0:4} -n "${NAMESPACE}" --timeout=300s
-    kubectl rollout status deployment/gtcx-crypto-${ENVIRONMENT:0:4} -n "${NAMESPACE}" --timeout=300s
+    local deployments
+    deployments=$(kubectl get deployments -n "${NAMESPACE}" -l app.kubernetes.io/part-of=gtcx -o jsonpath='{.items[*].metadata.name}' 2>/dev/null || echo "")
+    if [[ -z "${deployments}" ]]; then
+        log_error "No GTCX deployments found in namespace ${NAMESPACE}"
+        exit 1
+    fi
+    for dep in ${deployments}; do
+        log_info "Waiting for ${dep}..."
+        kubectl rollout status "deployment/${dep}" -n "${NAMESPACE}" --timeout=300s
+    done
     
     log_success "Deployment applied"
 }
@@ -367,10 +375,15 @@ rollback_deployment() {
     # Remove canary if present
     kubectl delete deployment gtcx-agx-canary -n "${NAMESPACE}" --ignore-not-found=true
 
-    kubectl rollout undo deployment/gtcx-agx-${ENVIRONMENT:0:4} -n "${NAMESPACE}"
-    kubectl rollout undo deployment/gtcx-crypto-${ENVIRONMENT:0:4} -n "${NAMESPACE}"
-
-    kubectl rollout status deployment/gtcx-agx-${ENVIRONMENT:0:4} -n "${NAMESPACE}" --timeout=300s
+    local deployments
+    deployments=$(kubectl get deployments -n "${NAMESPACE}" -l app.kubernetes.io/part-of=gtcx -o jsonpath='{.items[*].metadata.name}' 2>/dev/null || echo "")
+    for dep in ${deployments}; do
+        log_info "Rolling back ${dep}..."
+        kubectl rollout undo "deployment/${dep}" -n "${NAMESPACE}"
+    done
+    for dep in ${deployments}; do
+        kubectl rollout status "deployment/${dep}" -n "${NAMESPACE}" --timeout=300s
+    done
 
     log_success "Rollback completed"
 }
@@ -389,7 +402,7 @@ post_deployment() {
     # Run health checks
     log_info "Running health checks..."
     local api_pod
-    api_pod=$(kubectl get pods -n "${NAMESPACE}" -l app=gtcx-agx-${ENVIRONMENT:0:4} -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || echo "")
+    api_pod=$(kubectl get pods -n "${NAMESPACE}" -l app.kubernetes.io/part-of=gtcx,app.kubernetes.io/component=agx -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || echo "")
     
     if [[ -n "${api_pod}" ]]; then
         kubectl exec "${api_pod}" -n "${NAMESPACE}" -- wget -q --spider http://localhost:3000/health || {

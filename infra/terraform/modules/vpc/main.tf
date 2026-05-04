@@ -337,3 +337,82 @@ output "nat_gateway_ip" {
   description = "Public IP of NAT Gateway"
   value       = var.enable_nat_gateway ? aws_eip.nat[0].public_ip : null
 }
+
+# -----------------------------------------------------------------------------
+# VPC Endpoints — keep AWS service traffic off the public internet
+# -----------------------------------------------------------------------------
+# Reduces NAT Gateway costs and latency for S3, ECR, CloudWatch, and STS.
+# Gateway endpoints (S3) are free. Interface endpoints have hourly cost.
+# -----------------------------------------------------------------------------
+
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id       = aws_vpc.main.id
+  service_name = "com.amazonaws.${var.region}.s3"
+
+  route_table_ids = concat(
+    aws_route_table.private[*].id,
+    aws_route_table.database[*].id,
+  )
+
+  tags = merge(local.common_tags, { Name = "gtcx-${var.environment}-s3-endpoint" })
+}
+
+resource "aws_vpc_endpoint" "ecr_api" {
+  vpc_id              = aws_vpc.main.id
+  service_name        = "com.amazonaws.${var.region}.ecr.api"
+  vpc_endpoint_type   = "Interface"
+  subnet_ids          = aws_subnet.private[*].id
+  security_group_ids  = [aws_security_group.vpc_endpoints.id]
+  private_dns_enabled = true
+
+  tags = merge(local.common_tags, { Name = "gtcx-${var.environment}-ecr-api-endpoint" })
+}
+
+resource "aws_vpc_endpoint" "ecr_dkr" {
+  vpc_id              = aws_vpc.main.id
+  service_name        = "com.amazonaws.${var.region}.ecr.dkr"
+  vpc_endpoint_type   = "Interface"
+  subnet_ids          = aws_subnet.private[*].id
+  security_group_ids  = [aws_security_group.vpc_endpoints.id]
+  private_dns_enabled = true
+
+  tags = merge(local.common_tags, { Name = "gtcx-${var.environment}-ecr-dkr-endpoint" })
+}
+
+resource "aws_vpc_endpoint" "logs" {
+  vpc_id              = aws_vpc.main.id
+  service_name        = "com.amazonaws.${var.region}.logs"
+  vpc_endpoint_type   = "Interface"
+  subnet_ids          = aws_subnet.private[*].id
+  security_group_ids  = [aws_security_group.vpc_endpoints.id]
+  private_dns_enabled = true
+
+  tags = merge(local.common_tags, { Name = "gtcx-${var.environment}-logs-endpoint" })
+}
+
+resource "aws_vpc_endpoint" "sts" {
+  vpc_id              = aws_vpc.main.id
+  service_name        = "com.amazonaws.${var.region}.sts"
+  vpc_endpoint_type   = "Interface"
+  subnet_ids          = aws_subnet.private[*].id
+  security_group_ids  = [aws_security_group.vpc_endpoints.id]
+  private_dns_enabled = true
+
+  tags = merge(local.common_tags, { Name = "gtcx-${var.environment}-sts-endpoint" })
+}
+
+resource "aws_security_group" "vpc_endpoints" {
+  name_prefix = "gtcx-${var.environment}-vpc-endpoints-"
+  description = "Security group for VPC interface endpoints"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description = "HTTPS from private subnets"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = [var.cidr_block]
+  }
+
+  tags = merge(local.common_tags, { Name = "gtcx-${var.environment}-vpc-endpoints" })
+}

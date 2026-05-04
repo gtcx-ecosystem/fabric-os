@@ -27,8 +27,8 @@ Confirm with the human reviewer:
 
 Then read:
 
-- `_sop/2-docs/3-engineering/2-system-design/overview.md` — environment topology and database separation rules
-- `_sop/1-agents/4-workflows/safety-rules.md` — three-tier authority structure
+- `docs/engineering/2-system-design/overview.md` — environment topology and database separation rules
+- `docs/agents/workflows/safety-rules.md` — three-tier authority structure
 
 ---
 
@@ -39,7 +39,7 @@ Then read:
 If the new component introduces a new service, database, network boundary, or deployment target, write a brief spec:
 
 ```
-_sop/2-docs/5-specs/infrastructure/{component-name}.md
+docs/5-specs/infrastructure/{component-name}.md
 ```
 
 The spec must include:
@@ -54,7 +54,7 @@ The spec must include:
 
 ### 2. Write an ADR if the component changes infrastructure topology
 
-If the new component introduces a new service boundary, a new database, a new cloud resource type, or a new network zone, write an ADR before any code. See `_sop/1-agents/4-workflows/tasks/write-adr.md`.
+If the new component introduces a new service boundary, a new database, a new cloud resource type, or a new network zone, write an ADR before any code. See `docs/agents/workflows/tasks/write-adr.md`.
 
 ---
 
@@ -159,6 +159,6 @@ All gates must pass before the component is considered ready for review.
 
 ## Reference
 
-- [`_sop/2-docs/3-engineering/6-decisions/`](../../../2-docs/3-engineering/6-decisions/) — ADR index
-- [`_sop/1-agents/4-workflows/tasks/write-adr.md`](./write-adr.md) — ADR workflow
-- [`_sop/1-agents/4-workflows/safety-rules.md`](../safety-rules.md) — approval requirements
+- [`docs/engineering/6-decisions/`](../../../2-docs/3-engineering/6-decisions/) — ADR index
+- [`docs/agents/workflows/tasks/write-adr.md`](./write-adr.md) — ADR workflow
+- [`docs/agents/workflows/safety-rules.md`](../safety-rules.md) — approval requirements

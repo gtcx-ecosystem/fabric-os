@@ -172,5 +172,5 @@ Escalate to human review immediately if:
 - [`infra/scripts/migrate.sh`](../../../../infra/scripts/migrate.sh) — migration runner
 - [`infra/migrations/config/`](../../../../infra/migrations/config/) — per-environment configs
 - [`infra/migrations/scripts/check_docs.py`](../../../../infra/migrations/scripts/check_docs.py) — validation
-- [`_sop/1-agents/safety-rules.md`](../../../1-agents/safety-rules.md) — authority tiers
-- [`_sop/2-docs/1-architecture/system-overview.md`](../../1-architecture/system-overview.md) — two-database architecture
+- [`docs/agents/safety-rules.md`](../../../1-agents/safety-rules.md) — authority tiers
+- [`docs/architecture/system-overview.md`](../../1-architecture/system-overview.md) — two-database architecture

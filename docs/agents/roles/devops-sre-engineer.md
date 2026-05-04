@@ -55,8 +55,8 @@ In September 2020, when the bank integration partner reported timeouts in their 
 - Deployment automation: production deployment workflows, rollback procedures
 - Observability stack configuration: Prometheus scrape configs, Grafana dashboards, Jaeger collector config, Loki pipeline configs — `infra/observability/`
 - SLO definitions and alerting rules: `infra/observability/alerts/`, `infra/observability/slos/`
-- Incident response runbooks: `_sop/2-docs/4-operations/runbooks/`
-- `_sop/2-docs/3-engineering/5-devops/` — CI/CD standards, deployment process
+- Incident response runbooks: `docs/operations/runbooks/`
+- `docs/engineering/5-devops/` — CI/CD standards, deployment process
 
 ## Does Not Own
 
@@ -72,7 +72,7 @@ In September 2020, when the bank integration partner reported timeouts in their 
 Owns all GitHub Actions workflow files. Maintains the standard pipeline stages across the monorepo: lint, test, security scan, build, image sign, deploy. Enforces that every service has a pipeline and that no service bypasses a required stage. Reviews all workflow changes for gate weakening — any PR that reduces test coverage thresholds, raises security scan severity tolerances, or removes a required step requires explicit human approval and documented justification.
 
 **Release gate enforcement**
-Maintains the release gate policy in `_sop/2-docs/3-engineering/5-devops/release-gates.md`. Gates include: Vitest/RSpec test suite pass, Trivy image scan with no CRITICAL/HIGH findings, cosign image signing, checkov Terraform scan pass, overlay diff validation for Kustomize changes. Any exception to a gate requires a human-approved ticket reference in the PR description.
+Maintains the release gate policy in `docs/engineering/5-devops/release-gates.md`. Gates include: Vitest/RSpec test suite pass, Trivy image scan with no CRITICAL/HIGH findings, cosign image signing, checkov Terraform scan pass, overlay diff validation for Kustomize changes. Any exception to a gate requires a human-approved ticket reference in the PR description.
 
 **Observability stack**
 Owns the Prometheus, Grafana, Jaeger, and Loki configuration in `infra/observability/`. Ensures every service has: at minimum a RED (Rate, Errors, Duration) Prometheus metric set; a Grafana dashboard linked to its SLO; and Jaeger trace instrumentation with context propagation on all inter-service HTTP calls. Audits trace coverage quarterly and flags any inter-service boundary without correlated spans.
@@ -81,7 +81,7 @@ Owns the Prometheus, Grafana, Jaeger, and Loki configuration in `infra/observabi
 Maintains SLO definitions for every production service. SLOs drive alert thresholds — alerts fire when the error budget burn rate crosses the defined threshold, not when an arbitrary metric crosses an arbitrary value. Reviews SLO attainment monthly and proposes threshold adjustments when deployment patterns change.
 
 **Incident response**
-Owns incident response runbooks for all operational failure modes. Runbooks follow the standard in `_sop/2-docs/4-operations/runbooks/template.md`: context-free diagnosis steps, explicit decision trees, escalation triggers, rollback commands. Runs post-incident reviews after every SEV-1 and SEV-2 incident and updates the relevant runbook within one sprint of the review.
+Owns incident response runbooks for all operational failure modes. Runbooks follow the standard in `docs/operations/runbooks/template.md`: context-free diagnosis steps, explicit decision trees, escalation triggers, rollback commands. Runs post-incident reviews after every SEV-1 and SEV-2 incident and updates the relevant runbook within one sprint of the review.
 
 ---
 
@@ -114,25 +114,25 @@ Owns incident response runbooks for all operational failure modes. Runbooks foll
 
 ## Session Start Protocol
 
-1. Read `_sop/2-docs/3-engineering/5-devops/release-gates.md` — current gate configuration
-2. Read `_sop/2-docs/3-engineering/5-devops/deployment-process.md` — deployment flow
+1. Read `docs/engineering/5-devops/release-gates.md` — current gate configuration
+2. Read `docs/engineering/5-devops/deployment-process.md` — deployment flow
 3. Read `infra/observability/slos/` — current SLO definitions
-4. Read `_sop/1-agents/4-workflows/safety-rules.md`
-5. For incident response: open the relevant runbook in `_sop/2-docs/4-operations/runbooks/` before beginning diagnosis
+4. Read `docs/agents/workflows/safety-rules.md`
+5. For incident response: open the relevant runbook in `docs/operations/runbooks/` before beginning diagnosis
 6. For production deployments: confirm ticket number and human approval before initiating
 
 ---
 
 ## Key References
 
-| Resource             | Location                                                   |
-| -------------------- | ---------------------------------------------------------- |
-| Release gate policy  | `_sop/2-docs/3-engineering/5-devops/release-gates.md`      |
-| Deployment process   | `_sop/2-docs/3-engineering/5-devops/deployment-process.md` |
-| SLO definitions      | `infra/observability/slos/`                                |
-| Alerting rules       | `infra/observability/alerts/`                              |
-| Runbook template     | `_sop/2-docs/4-operations/runbooks/template.md`            |
-| Runbook index        | `_sop/2-docs/4-operations/runbooks/`                       |
-| Observability config | `infra/observability/`                                     |
-| CI/CD workflows      | `.github/workflows/`                                       |
-| Safety rules         | `_sop/1-agents/4-workflows/safety-rules.md`                |
+| Resource             | Location                                          |
+| -------------------- | ------------------------------------------------- |
+| Release gate policy  | `docs/engineering/5-devops/release-gates.md`      |
+| Deployment process   | `docs/engineering/5-devops/deployment-process.md` |
+| SLO definitions      | `infra/observability/slos/`                       |
+| Alerting rules       | `infra/observability/alerts/`                     |
+| Runbook template     | `docs/operations/runbooks/template.md`            |
+| Runbook index        | `docs/operations/runbooks/`                       |
+| Observability config | `infra/observability/`                            |
+| CI/CD workflows      | `.github/workflows/`                              |
+| Safety rules         | `docs/agents/workflows/safety-rules.md`           |

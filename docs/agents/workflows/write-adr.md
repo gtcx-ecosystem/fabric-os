@@ -23,13 +23,13 @@ Security-sensitive ADRs (affecting secrets management, network policies, IAM, or
 
 ```bash
 # Review existing ADRs to understand context and avoid contradictions
-ls _sop/2-docs/3-engineering/6-decisions/ | sort
+ls docs/engineering/6-decisions/ | sort
 ```
 
 Read:
 
-- `_sop/2-docs/3-engineering/6-decisions/README.md` — current index and numbering
-- `_sop/2-docs/3-engineering/6-decisions/adr-template.md` — mandatory template
+- `docs/engineering/6-decisions/README.md` — current index and numbering
+- `docs/engineering/6-decisions/adr-template.md` — mandatory template
 - Any ADRs directly related to the decision area
 
 ---
@@ -38,15 +38,15 @@ Read:
 
 ### 1. Assign ADR number
 
-Check the current highest number in `_sop/2-docs/3-engineering/6-decisions/README.md`. Use the next available number: `NNN`.
+Check the current highest number in `docs/engineering/6-decisions/README.md`. Use the next available number: `NNN`.
 
 ---
 
 ### 2. Create the ADR file
 
-File path: `_sop/2-docs/3-engineering/6-decisions/NNN-<kebab-case-title>.md`
+File path: `docs/engineering/6-decisions/NNN-<kebab-case-title>.md`
 
-Use `_sop/2-docs/3-engineering/6-decisions/adr-template.md` exactly. Fill every section:
+Use `docs/engineering/6-decisions/adr-template.md` exactly. Fill every section:
 
 | Section                 | Required content                                                 |
 | ----------------------- | ---------------------------------------------------------------- |
@@ -68,7 +68,7 @@ Use `_sop/2-docs/3-engineering/6-decisions/adr-template.md` exactly. Fill every 
 
 ### 3. Update the ADR index
 
-Add the new ADR to `_sop/2-docs/3-engineering/6-decisions/README.md`:
+Add the new ADR to `docs/engineering/6-decisions/README.md`:
 
 ```markdown
 | [ADR-NNN](./NNN-title.md) | Brief description | Proposed |
@@ -107,7 +107,7 @@ ADRs in `Proposed` status are complete and reviewable. Do not change status to `
 
 ## Post-Flight
 
-- [ ] `_sop/2-docs/3-engineering/6-decisions/README.md` is updated
+- [ ] `docs/engineering/6-decisions/README.md` is updated
 - [ ] New ADR file is at the correct path (`NNN-<kebab-case-title>.md`)
 - [ ] Status is `Proposed`
 - [ ] If superseding: old ADR is marked superseded
@@ -124,5 +124,5 @@ ADRs in `Proposed` status are complete and reviewable. Do not change status to `
 
 ## Reference
 
-- [`_sop/2-docs/3-engineering/6-decisions/`](../../../2-docs/3-engineering/6-decisions/) — ADR index and template
-- [`_sop/1-agents/4-workflows/safety-rules.md`](../safety-rules.md) — approval requirements
+- [`docs/engineering/6-decisions/`](../../../2-docs/3-engineering/6-decisions/) — ADR index and template
+- [`docs/agents/workflows/safety-rules.md`](../safety-rules.md) — approval requirements

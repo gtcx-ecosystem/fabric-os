@@ -122,6 +122,6 @@ Escalate to human review immediately if:
 ## Reference
 
 - [`infra/scripts/deploy.sh`](../../../../infra/scripts/deploy.sh) — deploy script
-- [`_sop/1-agents/safety-rules.md`](../../../1-agents/safety-rules.md) — authority tiers
-- [`_sop/2-docs/1-architecture/system-overview.md`](../../1-architecture/system-overview.md) — full stack overview
-- [`_sop/2-docs/4-operations/runbooks/migrate.md`](./migrate.md) — migration process
+- [`docs/agents/safety-rules.md`](../../../1-agents/safety-rules.md) — authority tiers
+- [`docs/architecture/system-overview.md`](../../1-architecture/system-overview.md) — full stack overview
+- [`docs/operations/runbooks/migrate.md`](./migrate.md) — migration process

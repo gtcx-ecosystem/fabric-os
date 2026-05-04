@@ -68,16 +68,16 @@ Escalate to human review when:
 
 Before working in this role, read in order:
 
-1. `_sop/1-agents/1-onboarding/orientation.md`
-2. `_sop/2-docs/1-architecture/system-overview.md` — environment topology
-3. `_sop/2-docs/1-architecture/decisions/` — ADRs relevant to this role
-4. `_sop/1-agents/4-workflows/safety-rules.md`
+1. `docs/agents/onboarding/orientation.md`
+2. `docs/architecture/system-overview.md` — environment topology
+3. `docs/decisions/` — ADRs relevant to this role
+4. `docs/agents/workflows/safety-rules.md`
 
 ---
 
 ## Reference
 
-- [`_sop/2-docs/1-architecture/`](../../2-docs/1-architecture/) — architecture overview
-- [`_sop/2-docs/1-architecture/decisions/`](../../2-docs/1-architecture/decisions/) — all ADRs
-- [`_sop/1-agents/4-workflows/safety-rules.md`](../4-workflows/safety-rules.md) — escalation triggers
+- [`docs/architecture/`](../../2-docs/1-architecture/) — architecture overview
+- [`docs/decisions/`](../../2-docs/1-architecture/decisions/) — all ADRs
+- [`docs/agents/workflows/safety-rules.md`](../4-workflows/safety-rules.md) — escalation triggers
 - `1-agentic/archetypes/{role-archetype}` — canonical archetype definition

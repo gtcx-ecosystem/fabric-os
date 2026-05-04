@@ -36,7 +36,7 @@ Rules: only write confirmed patterns, remove entries that turn out to be wrong, 
 
 ### Layer 3 — Session Handoff Documents
 
-Created at the end of any session with in-progress work. Stored in `_sop/4-sessions/`.
+Created at the end of any session with in-progress work. Stored in `docs/sessions/`.
 
 Each handoff must include:
 
@@ -52,8 +52,8 @@ Naming: `YYYY-MM-DD-handoff.md`
 
 The codebase provides context directly:
 
-- Every `_sop/` folder has a README explaining what belongs there
-- ADRs in `_sop/2-docs/1-architecture/decisions/` capture significant infrastructure decisions
+- Every `docs/` folder has a README explaining what belongs there
+- ADRs in `docs/decisions/` capture significant infrastructure decisions
 - Terraform modules have README files documenting inputs, outputs, and intended use
 - K8s manifests are organized by service and environment
 
@@ -75,8 +75,8 @@ Use when returning to a session with clear prior context:
 Use when starting work in an unfamiliar area of the infrastructure:
 
 1. Complete Quick Recovery steps above
-2. Read `_sop/1-agents/1-onboarding/orientation.md`
-3. Read the relevant architecture section in `_sop/2-docs/1-architecture/`
+2. Read `docs/agents/onboarding/orientation.md`
+3. Read the relevant architecture section in `docs/architecture/`
 4. Review the Terraform module README or K8s manifest structure for the area of work
 5. Summarize understanding before proceeding
 
@@ -105,7 +105,7 @@ Use when starting work in an unfamiliar area of the infrastructure:
 Signs that context has been lost and recovery is needed:
 
 - Suggesting Terraform modules, K8s resources, or service names that do not exist in this repo
-- Using patterns that contradict `_sop/2-docs/3-engineering/` standards
+- Using patterns that contradict `docs/engineering/` standards
 - Proposing architecture that conflicts with an existing ADR
 - Attempting to commit secrets, credentials, or `.env` files
 - Proposing destructive changes without stating the recovery plan
@@ -116,13 +116,13 @@ When any of these appear: run Quick Recovery before continuing.
 
 ## File Map
 
-| File                                            | Purpose                     | When to Update                                     |
-| ----------------------------------------------- | --------------------------- | -------------------------------------------------- |
-| `CLAUDE.md`                                     | Auto-loaded project context | When stack, structure, or conventions change       |
-| `.claude/memory/MEMORY.md`                      | Persistent agent memory     | After every significant session                    |
-| `.claude/memory/*.md`                           | Topic-specific knowledge    | When patterns are confirmed across sessions        |
-| `_sop/4-sessions/YYYY-MM-DD-handoff.md`         | Session handoff             | End of every session with in-progress work         |
-| ADRs in `_sop/2-docs/1-architecture/decisions/` | Decision record             | When significant infrastructure decisions are made |
+| File                                  | Purpose                     | When to Update                                     |
+| ------------------------------------- | --------------------------- | -------------------------------------------------- |
+| `CLAUDE.md`                           | Auto-loaded project context | When stack, structure, or conventions change       |
+| `.claude/memory/MEMORY.md`            | Persistent agent memory     | After every significant session                    |
+| `.claude/memory/*.md`                 | Topic-specific knowledge    | When patterns are confirmed across sessions        |
+| `docs/sessions/YYYY-MM-DD-handoff.md` | Session handoff             | End of every session with in-progress work         |
+| ADRs in `docs/decisions/`             | Decision record             | When significant infrastructure decisions are made |
 
 ---
 

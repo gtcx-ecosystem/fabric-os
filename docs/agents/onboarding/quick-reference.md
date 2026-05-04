@@ -37,7 +37,7 @@ gtcx-infrastructure/
 │   ├── security/      # Security policies and controls
 │   └── scripts/       # Operational scripts
 ├── tools/             # Project templates and dev scripts
-└── _sop/              # Docs, agent team, safety rules, runbooks
+└── docs/              # Docs, agent team, safety rules, runbooks
 ```
 
 ---

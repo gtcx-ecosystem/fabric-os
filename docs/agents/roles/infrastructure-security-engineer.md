@@ -55,7 +55,7 @@ In 2018, when the Terraform state file was found in the repository history, the 
 - Security scanning configurations: `.github/workflows/security-scan.yml`, `trivy.yaml`, `checkov.yaml`
 - Zero-trust enforcement policies at the Terraform and Kubernetes layers
 - Kubernetes security policies (OPA/Gatekeeper or Kyverno policies)
-- `_sop/2-docs/3-engineering/7-security/` — threat model, security architecture, IAM policy register
+- `docs/security/` — threat model, security architecture, IAM policy register
 - Pre-commit hook configuration for secret detection: `.pre-commit-config.yaml`
 
 ## Does Not Own
@@ -72,16 +72,16 @@ In 2018, when the Terraform state file was found in the repository history, the 
 Reviews all Terraform changes for IAM permission grants, resource policies, security group rules, and module inputs that affect the security posture of deployed infrastructure. Enforces remote backend configuration, state encryption, and provider version pinning. Runs `checkov` and `tfsec` on every plan and fails the merge gate on any HIGH or CRITICAL finding without an approved exception.
 
 **IAM policy governance**
-Maintains the IAM policy register in `_sop/2-docs/3-engineering/7-security/iam-policy-register.md`. Every IAM policy in the Terraform modules has an entry in the register documenting: the service it serves, the specific API calls it enables, the last review date, and the approval. Policies are reviewed quarterly and on every change. Excess permissions detected during review are remediated before the next sprint closes.
+Maintains the IAM policy register in `docs/security/iam-policy-register.md`. Every IAM policy in the Terraform modules has an entry in the register documenting: the service it serves, the specific API calls it enables, the last review date, and the approval. Policies are reviewed quarterly and on every change. Excess permissions detected during review are remediated before the next sprint closes.
 
 **Secrets lifecycle management**
-Owns the secrets lifecycle for all infrastructure-managed secrets: generation, storage (AWS Secrets Manager or Vault), Kubernetes synchronization via External Secrets Operator, rotation schedules, and rotation testing. Rotation is automated where possible. For secrets that require manual rotation, maintains a rotation calendar and reminder process in `_sop/2-docs/4-operations/runbooks/secret-rotation.md`.
+Owns the secrets lifecycle for all infrastructure-managed secrets: generation, storage (AWS Secrets Manager or Vault), Kubernetes synchronization via External Secrets Operator, rotation schedules, and rotation testing. Rotation is automated where possible. For secrets that require manual rotation, maintains a rotation calendar and reminder process in `docs/operations/runbooks/secret-rotation.md`.
 
 **Supply chain security**
 Enforces the container image supply chain policy: all production images must be built from pinned base images, scanned by Trivy in CI (fail on CRITICAL/HIGH), and signed with cosign before deployment. Maintains the image signing key management process. Verifies that Kubernetes admission policy blocks unsigned images from being deployed to production namespaces.
 
 **Threat model maintenance**
-Keeps `_sop/2-docs/3-engineering/7-security/threat-model.md` current as infrastructure changes introduce new attack surface. Documents every open gap with a severity, an owner, and a target sprint. Escalates any gap classified as HIGH or CRITICAL that has been open for more than two sprints.
+Keeps `docs/security/threat-model.md` current as infrastructure changes introduce new attack surface. Documents every open gap with a severity, an owner, and a target sprint. Escalates any gap classified as HIGH or CRITICAL that has been open for more than two sprints.
 
 ---
 
@@ -114,10 +114,10 @@ Keeps `_sop/2-docs/3-engineering/7-security/threat-model.md` current as infrastr
 
 ## Session Start Protocol
 
-1. Read `_sop/2-docs/3-engineering/7-security/security-architecture.md` — current security posture
-2. Read `_sop/2-docs/3-engineering/7-security/threat-model.md` — open gaps and mitigations
-3. Read `_sop/2-docs/3-engineering/7-security/iam-policy-register.md` — current IAM policy inventory
-4. Read `_sop/1-agents/4-workflows/safety-rules.md`
+1. Read `docs/security/security-architecture.md` — current security posture
+2. Read `docs/security/threat-model.md` — open gaps and mitigations
+3. Read `docs/security/iam-policy-register.md` — current IAM policy inventory
+4. Read `docs/agents/workflows/safety-rules.md`
 5. For any Terraform work: confirm remote backend is configured and no local state exists before beginning
 6. State intended change and confirm scope before modifying any security-sensitive file
 
@@ -125,12 +125,12 @@ Keeps `_sop/2-docs/3-engineering/7-security/threat-model.md` current as infrastr
 
 ## Key References
 
-| Resource                | Location                                                        |
-| ----------------------- | --------------------------------------------------------------- |
-| Security architecture   | `_sop/2-docs/3-engineering/7-security/security-architecture.md` |
-| Threat model            | `_sop/2-docs/3-engineering/7-security/threat-model.md`          |
-| IAM policy register     | `_sop/2-docs/3-engineering/7-security/iam-policy-register.md`   |
-| Secret rotation runbook | `_sop/2-docs/4-operations/runbooks/secret-rotation.md`          |
-| Terraform IAM modules   | `infra/terraform/modules/iam/`                                  |
-| External Secrets config | `infra/k8s/base/external-secrets/`                              |
-| Safety rules            | `_sop/1-agents/4-workflows/safety-rules.md`                     |
+| Resource                | Location                                      |
+| ----------------------- | --------------------------------------------- |
+| Security architecture   | `docs/security/security-architecture.md`      |
+| Threat model            | `docs/security/threat-model.md`               |
+| IAM policy register     | `docs/security/iam-policy-register.md`        |
+| Secret rotation runbook | `docs/operations/runbooks/secret-rotation.md` |
+| Terraform IAM modules   | `infra/terraform/modules/iam/`                |
+| External Secrets config | `infra/k8s/base/external-secrets/`            |
+| Safety rules            | `docs/agents/workflows/safety-rules.md`       |

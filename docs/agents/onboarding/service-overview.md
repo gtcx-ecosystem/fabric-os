@@ -103,7 +103,7 @@ gtcx-infrastructure/
 │   │   └── setup.sh              # Environment bootstrap
 │   └── edge-proxy/               # Edge proxy configuration
 ├── tools/                        # Additional operational scripts
-├── _sop/                         # SOP docs and agent team
+├── docs/                         # Docs, agent team, architecture, security
 ├── package.json
 ├── pnpm-workspace.yaml
 ├── tsconfig.json

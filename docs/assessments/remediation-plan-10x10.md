@@ -37,11 +37,11 @@
   #   - Sealed Secrets (bitnami/sealed-secrets)
   #   - External Secrets Operator (external-secrets.io)
   #   - Vault Agent injector
-  # See: _sop/2-docs/secrets-management.md
+  # See: docs/secrets-management.md
   # ============================================================
   ```
-  Also create `_sop/2-docs/secrets-management.md` documenting the secrets strategy: base uses placeholders, production injects via external operator, rotation cadence, which secrets exist.
-- **Verification:** `grep -c 'NEVER USE IN PRODUCTION' infra/kubernetes/base/kustomization.yaml` returns 1; `test -f _sop/2-docs/secrets-management.md`
+  Also create `docs/secrets-management.md` documenting the secrets strategy: base uses placeholders, production injects via external operator, rotation cadence, which secrets exist.
+- **Verification:** `grep -c 'NEVER USE IN PRODUCTION' infra/kubernetes/base/kustomization.yaml` returns 1; `test -f docs/secrets-management.md`
 - **Risk:** Low — adding documentation. No functional change.
 
 #### Issue 2: Image pull policy inconsistency
@@ -79,7 +79,7 @@
 - **Audit finding:** `infra/kubernetes/overlays/production/network-policies.yaml` hardcodes `cidr: 10.0.0.0/8` with a comment "customize per deployment" but no mechanism to actually customize it.
 - **Evidence:** `infra/kubernetes/overlays/production/network-policies.yaml:80,148`
 - **Fix:** Two options (pick based on preference):
-  1. **Document as deployment override:** Add to `_sop/2-docs/deployment-runbook.md` a section on network policy customization with the exact sed/kustomize patch command to update the CIDR per environment.
+  1. **Document as deployment override:** Add to `docs/deployment-runbook.md` a section on network policy customization with the exact sed/kustomize patch command to update the CIDR per environment.
   2. **Extract to ConfigMap:** Create a `network-config` ConfigMap with the internal CIDR and reference it from network policies (more complex, may not be worth it for a single value).
      Recommend option 1 — document the override procedure. The hardcoded value is a reasonable default for most VPCs.
 - **Verification:** Deployment runbook exists and contains a "Network Policy Customization" section with the CIDR override procedure
@@ -102,9 +102,9 @@
 
 #### Issue 6: Missing deployment runbook
 
-- **Audit finding:** Only one deployment script exists (`scripts/deploy-intelligence.sh`). No comprehensive deployment runbook in `_sop/`.
-- **Evidence:** `_sop/` — no deployment runbook found
-- **Fix:** Create `_sop/2-docs/deployment-runbook.md` covering:
+- **Audit finding:** Only one deployment script exists (`scripts/deploy-intelligence.sh`). No comprehensive deployment runbook in `docs/`.
+- **Evidence:** `docs/` — no deployment runbook found
+- **Fix:** Create `docs/deployment-runbook.md` covering:
   1. **Prerequisites:** AWS credentials, kubectl context, Terraform state backend
   2. **New environment setup:** Copy template, customize backend + variables, `terraform init && terraform plan && terraform apply`
   3. **K8s deployment:** `kustomize build infra/kubernetes/overlays/{env} | kubectl apply -f -`
@@ -114,7 +114,7 @@
   7. **Verification checklist:** Health endpoints, log checks, metric dashboards
   8. **Rollback procedure:** How to revert a bad deployment
   9. **Network policy customization:** CIDR override for non-default VPCs (addresses Issue 4)
-- **Verification:** `test -f _sop/2-docs/deployment-runbook.md` and file contains sections for prerequisites, setup, deployment, secrets, verification, rollback
+- **Verification:** `test -f docs/deployment-runbook.md` and file contains sections for prerequisites, setup, deployment, secrets, verification, rollback
 - **Risk:** None — documentation only
 
 #### Issue 7: No CHANGELOG
@@ -216,9 +216,9 @@ Items 7-8 are documentation (do last, reference the fixed structure).
 - [ ] `infra/monitoring/dashboards/` has content or README
 - [ ] All base service manifests use consistent `imagePullPolicy: IfNotPresent`
 - [ ] Base kustomization secrets have "NEVER USE IN PRODUCTION" comment block
-- [ ] `_sop/2-docs/secrets-management.md` exists
+- [ ] `docs/secrets-management.md` exists
 - [ ] Template backend block is uncommented with CHANGE-ME placeholders
-- [ ] `_sop/2-docs/deployment-runbook.md` exists with prerequisites, setup, deployment, secrets, verification, rollback, network CIDR sections
+- [ ] `docs/deployment-runbook.md` exists with prerequisites, setup, deployment, secrets, verification, rollback, network CIDR sections
 - [ ] `CHANGELOG.md` exists at repo root with current state documented
 - [ ] No committed `.tfstate` files or `.terraform/` directories
 
@@ -246,15 +246,15 @@ grep -r 'imagePullPolicy' infra/kubernetes/base/services/ | sort -u
 # expect: all IfNotPresent
 
 # 6. Secrets documented
-test -f _sop/2-docs/secrets-management.md && echo "ok"
+test -f docs/secrets-management.md && echo "ok"
 grep -c 'NEVER USE IN PRODUCTION' infra/kubernetes/base/kustomization.yaml  # >= 1
 
 # 7. Template backend active
 grep -c 'CHANGE-ME' infra/terraform/environments/template/main.tf  # >= 4
 
 # 8. Deployment runbook
-test -f _sop/2-docs/deployment-runbook.md && echo "ok"
-grep -c 'Rollback' _sop/2-docs/deployment-runbook.md  # >= 1
+test -f docs/deployment-runbook.md && echo "ok"
+grep -c 'Rollback' docs/deployment-runbook.md  # >= 1
 
 # 9. CHANGELOG
 test -f CHANGELOG.md && echo "ok"

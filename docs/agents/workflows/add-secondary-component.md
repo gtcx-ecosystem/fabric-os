@@ -28,10 +28,10 @@ Confirm with the human reviewer:
 
 Then read:
 
-- `_sop/2-docs/5-specs/4-backend/packages/{secondary-dir}/README.md` — existing component inventory
+- `docs/5-specs/4-backend/packages/{secondary-dir}/README.md` — existing component inventory
 - Any ADR governing why this secondary language is used and what it covers
 - The relevant component spec if the new component extends an existing one
-- `_sop/1-agents/4-workflows/safety-rules.md`
+- `docs/agents/workflows/safety-rules.md`
 
 ---
 
@@ -42,7 +42,7 @@ Then read:
 Before creating any code, write the component spec at:
 
 ```
-_sop/2-docs/5-specs/4-backend/packages/{secondary-dir}/{component-name}.md
+docs/5-specs/4-backend/packages/{secondary-dir}/{component-name}.md
 ```
 
 The spec must include:
@@ -58,7 +58,7 @@ The spec must include:
 
 ### 2. Write an ADR if the component establishes a new protocol boundary
 
-If the component introduces a new algorithm, a new binding contract, or a new security boundary, write an ADR before any code. See `_sop/1-agents/4-workflows/tasks/write-adr.md`.
+If the component introduces a new algorithm, a new binding contract, or a new security boundary, write an ADR before any code. See `docs/agents/workflows/tasks/write-adr.md`.
 
 ---
 
@@ -95,13 +95,13 @@ Coordinate with the owner of the binding layer. The binding surface must be revi
 
 ### 6. Update the component spec index
 
-Add the new component to `_sop/2-docs/5-specs/4-backend/packages/{secondary-dir}/README.md`.
+Add the new component to `docs/5-specs/4-backend/packages/{secondary-dir}/README.md`.
 
 ---
 
 ### 7. Update the spec-to-code traceability matrix
 
-Add an entry in `_sop/2-docs/3-engineering/5-compliance/spec-to-code-traceability.md`.
+Add an entry in `docs/compliance/spec-to-code-traceability.md`.
 
 ---
 
@@ -156,7 +156,7 @@ pnpm build
 
 ## Reference
 
-- [`_sop/2-docs/5-specs/4-backend/packages/`](../../../2-docs/5-specs/4-backend/packages/) — component specifications
-- [`_sop/2-docs/3-engineering/6-decisions/`](../../../2-docs/3-engineering/6-decisions/) — ADR index
-- [`_sop/1-agents/4-workflows/tasks/write-adr.md`](./write-adr.md) — ADR workflow
-- [`_sop/1-agents/4-workflows/safety-rules.md`](../safety-rules.md) — approval requirements
+- [`docs/5-specs/4-backend/packages/`](../../../2-docs/5-specs/4-backend/packages/) — component specifications
+- [`docs/engineering/6-decisions/`](../../../2-docs/3-engineering/6-decisions/) — ADR index
+- [`docs/agents/workflows/tasks/write-adr.md`](./write-adr.md) — ADR workflow
+- [`docs/agents/workflows/safety-rules.md`](../safety-rules.md) — approval requirements

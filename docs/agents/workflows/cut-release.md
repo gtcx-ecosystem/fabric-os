@@ -26,8 +26,8 @@ Confirm with the human reviewer:
 
 Then read:
 
-- `_sop/2-docs/4-devops/7-release-mgmt/release-checklist.md` — authoritative gate list
-- `_sop/1-agents/4-workflows/safety-rules.md` — three-tier authority structure
+- `docs/devops/release/release-checklist.md` — authoritative gate list
+- `docs/agents/workflows/safety-rules.md` — three-tier authority structure
 
 ---
 
@@ -179,6 +179,6 @@ Only after staging verification passes and human explicitly confirms production 
 
 ## Reference
 
-- [`_sop/2-docs/4-devops/7-release-mgmt/release-checklist.md`](../../../2-docs/4-devops/7-release-mgmt/release-checklist.md) — release checklist
-- [`_sop/2-docs/4-devops/3-ci-cd-pipelines/ci-cd.md`](../../../2-docs/4-devops/3-ci-cd-pipelines/ci-cd.md) — CI/CD pipeline reference
-- [`_sop/1-agents/4-workflows/safety-rules.md`](../safety-rules.md) — approval requirements and three-tier authority
+- [`docs/devops/release/release-checklist.md`](../../../2-docs/4-devops/7-release-mgmt/release-checklist.md) — release checklist
+- [`docs/devops/ci-cd/ci-cd.md`](../../../2-docs/4-devops/3-ci-cd-pipelines/ci-cd.md) — CI/CD pipeline reference
+- [`docs/agents/workflows/safety-rules.md`](../safety-rules.md) — approval requirements and three-tier authority

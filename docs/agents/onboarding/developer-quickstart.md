@@ -140,4 +140,4 @@ Two databases are a hard constraint. They are never merged:
 
 - GitHub Issues: https://github.com/gtcx-ecosystem/gtcx-infrastructure/issues
 - Security contact: security@gtcx.io
-- Infrastructure on-call: see `_sop/2-docs/4-operations/runbooks/incident-response.md`
+- Infrastructure on-call: see `docs/operations/runbooks/incident-response.md`

@@ -14,10 +14,10 @@ Session-start protocol for any agent or contributor entering this repo.
 
 In this order — no exceptions:
 
-1. `_sop/2-docs/1-architecture/system-overview.md` — environment topology and service boundaries
-2. `_sop/2-docs/1-architecture/decisions/` — ADRs (understand why infra is configured the way it is)
-3. `_sop/2-docs/4-devops/2-runbooks/quality-runbook.md` — gate sequence and failure triage
-4. `_sop/1-agents/4-workflows/safety-rules.md` — before making any change
+1. `docs/architecture/system-overview.md` — environment topology and service boundaries
+2. `docs/decisions/` — ADRs (understand why infra is configured the way it is)
+3. `docs/operations/runbooks/quality-runbook.md` — gate sequence and failure triage
+4. `docs/agents/workflows/safety-rules.md` — before making any change
 
 ---
 
@@ -78,20 +78,20 @@ terraform fmt -check -recursive infra/terraform/
 terraform validate
 ```
 
-See `_sop/2-docs/4-devops/2-runbooks/quality-runbook.md` for the full gate sequence and triage order when a gate fails.
+See `docs/operations/runbooks/quality-runbook.md` for the full gate sequence and triage order when a gate fails.
 
 ---
 
 ## Where Things Live
 
-| Need                   | Location                                        |
-| ---------------------- | ----------------------------------------------- |
-| Environment topology   | `_sop/2-docs/1-architecture/system-overview.md` |
-| Architecture decisions | `_sop/2-docs/1-architecture/decisions/`         |
-| Security framework     | `_sop/2-docs/3-engineering/7-security/`         |
-| Operations runbooks    | `_sop/2-docs/4-devops/2-runbooks/`              |
-| CI/CD pipeline         | `_sop/2-docs/4-devops/3-ci-cd-pipelines/`       |
-| Sprint and roadmap     | `_sop/3-agile/`                                 |
+| Need                   | Location                               |
+| ---------------------- | -------------------------------------- |
+| Environment topology   | `docs/architecture/system-overview.md` |
+| Architecture decisions | `docs/decisions/`                      |
+| Security framework     | `docs/security/`                       |
+| Operations runbooks    | `docs/operations/runbooks/`            |
+| CI/CD pipeline         | `docs/devops/ci-cd/`                   |
+| Sprint and roadmap     | `docs/agile/`                          |
 
 ---
 
@@ -99,4 +99,4 @@ See `_sop/2-docs/4-devops/2-runbooks/quality-runbook.md` for the full gate seque
 
 - [`safety-rules.md`](../4-workflows/safety-rules.md) — what requires human approval
 - [`context-recovery.md`](./context-recovery.md) — how to recover agent context across sessions
-- [`_sop/2-docs/4-devops/2-runbooks/quality-runbook.md`](../../2-docs/4-devops/2-runbooks/quality-runbook.md) — full pre-commit gate sequence
+- [`docs/operations/runbooks/quality-runbook.md`](../../2-docs/4-devops/2-runbooks/quality-runbook.md) — full pre-commit gate sequence

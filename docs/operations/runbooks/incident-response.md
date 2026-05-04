@@ -120,7 +120,7 @@ Conduct a post-mortem within 48 hours (P1) or 72 hours (P2):
 - **Blameless.** Focus on systems, processes, and gaps — not individuals.
 - Document: timeline from audit log, attack vector, controls that failed, controls that detected, remediation taken, preventive measures.
 - Update the STRIDE threat model for the affected protocol.
-- Update `_sop/2-docs/4-operations/compliance/controls-matrix.md` with new detection rules.
+- Update `docs/operations/compliance/controls-matrix.md` with new detection rules.
 
 ## Escalation Matrix
 
@@ -143,4 +143,4 @@ Conduct a post-mortem within 48 hours (P1) or 72 hours (P2):
 - [disaster-recovery.md](disaster-recovery.md)
 - [monitoring.md](monitoring.md)
 - [compliance/controls-matrix.md](../compliance/controls-matrix.md)
-- [\_sop/2-docs/3-engineering/security/cryptographic-inventory.md](../../3-engineering/security/cryptographic-inventory.md)
+- [\docs/engineering/security/cryptographic-inventory.md](../../3-engineering/security/cryptographic-inventory.md)

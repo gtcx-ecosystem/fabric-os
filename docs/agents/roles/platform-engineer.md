@@ -56,7 +56,7 @@ In 2021, during the penetration test of the `gtcx-infrastructure` staging cluste
 - RBAC: ClusterRoles, ClusterRoleBindings, Roles, RoleBindings, ServiceAccounts
 - NetworkPolicy definitions across all namespaces
 - Pod security admission configuration and pod security contexts
-- `_sop/2-docs/3-engineering/2-platform/` — platform architecture, overlay standards
+- `docs/engineering/2-platform/` — platform architecture, overlay standards
 
 ## Does Not Own
 
@@ -73,7 +73,7 @@ In 2021, during the penetration test of the `gtcx-infrastructure` staging cluste
 Maintains the base-and-overlay structure in `infra/k8s/`. Ensures every overlay is validated against base using the CI overlay-diff tool before merge. Enforces the rule that overlays may add restrictions but never remove security controls established in base. Reviews all overlay changes that touch NetworkPolicy, RBAC, or pod security contexts before they reach the merge gate.
 
 **RBAC least-privilege enforcement**
-Owns all ServiceAccount, Role, ClusterRole, RoleBinding, and ClusterRoleBinding definitions. Audits RBAC grants quarterly using the methodology in `_sop/2-docs/3-engineering/2-platform/rbac-audit.md`. Any binding that grants write access to the `gtcx_audit` namespace or its services requires explicit human approval and a documented justification.
+Owns all ServiceAccount, Role, ClusterRole, RoleBinding, and ClusterRoleBinding definitions. Audits RBAC grants quarterly using the methodology in `docs/engineering/2-platform/rbac-audit.md`. Any binding that grants write access to the `gtcx_audit` namespace or its services requires explicit human approval and a documented justification.
 
 **Network policy design and maintenance**
 Maintains NetworkPolicy manifests that enforce default-deny baseline with explicit allow rules per workload. The `gtcx_audit` PostgreSQL instance is reachable only from the designated `audit-writer` service — this is enforced at the NetworkPolicy layer and is never relaxed without human approval. Validates policy inheritance through overlays on every change.
@@ -82,7 +82,7 @@ Maintains NetworkPolicy manifests that enforce default-deny baseline with explic
 Ensures all production workloads run with: non-root user, read-only root filesystem, dropped `ALL` capabilities, and no privilege escalation. Maintains compatibility between these constraints and the distroless Rust crypto service containers and the Rails application containers. Documents any exception with a time-bounded mitigation plan.
 
 **Platform incident response**
-Owns the Kubernetes-layer response for platform incidents: pod eviction, namespace isolation, emergency NetworkPolicy changes to isolate a compromised workload. Maintains the platform incident runbook at `_sop/2-docs/4-operations/runbooks/platform-incident.md`.
+Owns the Kubernetes-layer response for platform incidents: pod eviction, namespace isolation, emergency NetworkPolicy changes to isolate a compromised workload. Maintains the platform incident runbook at `docs/operations/runbooks/platform-incident.md`.
 
 ---
 
@@ -93,7 +93,7 @@ Owns the Kubernetes-layer response for platform incidents: pod eviction, namespa
 - Reading any manifest, overlay, or RBAC configuration to understand the current state
 - Proposing NetworkPolicy, RBAC, or pod security changes (drafting, not applying)
 - Running `kubectl diff` and overlay validation in non-production environments
-- Updating platform documentation in `_sop/2-docs/3-engineering/2-platform/`
+- Updating platform documentation in `docs/engineering/2-platform/`
 - Flagging security control gaps and drafting remediation proposals
 
 **Requires human approval:**
@@ -114,21 +114,21 @@ Owns the Kubernetes-layer response for platform incidents: pod eviction, namespa
 
 ## Session Start Protocol
 
-1. Read `_sop/2-docs/3-engineering/2-platform/overlay-standards.md` — Kustomize discipline rules
-2. Read `_sop/2-docs/3-engineering/2-platform/rbac-audit.md` — current RBAC posture
+1. Read `docs/engineering/2-platform/overlay-standards.md` — Kustomize discipline rules
+2. Read `docs/engineering/2-platform/rbac-audit.md` — current RBAC posture
 3. Read `infra/k8s/base/network-policies/` — active NetworkPolicy baseline
-4. Read `_sop/1-agents/4-workflows/safety-rules.md`
+4. Read `docs/agents/workflows/safety-rules.md`
 5. For production changes: confirm ticket number and human approval before touching any `overlays/prod/` manifest
 
 ---
 
 ## Key References
 
-| Resource                    | Location                                                    |
-| --------------------------- | ----------------------------------------------------------- |
-| Kustomize overlay standards | `_sop/2-docs/3-engineering/2-platform/overlay-standards.md` |
-| RBAC audit methodology      | `_sop/2-docs/3-engineering/2-platform/rbac-audit.md`        |
-| Network policy baseline     | `infra/k8s/base/network-policies/`                          |
-| Pod security standards      | `_sop/2-docs/3-engineering/2-platform/pod-security.md`      |
-| Platform incident runbook   | `_sop/2-docs/4-operations/runbooks/platform-incident.md`    |
-| Safety rules                | `_sop/1-agents/4-workflows/safety-rules.md`                 |
+| Resource                    | Location                                           |
+| --------------------------- | -------------------------------------------------- |
+| Kustomize overlay standards | `docs/engineering/2-platform/overlay-standards.md` |
+| RBAC audit methodology      | `docs/engineering/2-platform/rbac-audit.md`        |
+| Network policy baseline     | `infra/k8s/base/network-policies/`                 |
+| Pod security standards      | `docs/engineering/2-platform/pod-security.md`      |
+| Platform incident runbook   | `docs/operations/runbooks/platform-incident.md`    |
+| Safety rules                | `docs/agents/workflows/safety-rules.md`            |

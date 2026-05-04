@@ -130,5 +130,5 @@ When escalating: state the gate that failed, the full error output, the root cau
 
 ## Reference
 
-- [`_sop/1-agents/4-workflows/safety-rules.md`](../safety-rules.md) — what requires escalation
-- [`_sop/2-docs/4-devops/2-runbooks/quality-runbook.md`](../../../2-docs/4-devops/2-runbooks/quality-runbook.md) — full gate sequence
+- [`docs/agents/workflows/safety-rules.md`](../safety-rules.md) — what requires escalation
+- [`docs/operations/runbooks/quality-runbook.md`](../../../2-docs/4-devops/2-runbooks/quality-runbook.md) — full gate sequence

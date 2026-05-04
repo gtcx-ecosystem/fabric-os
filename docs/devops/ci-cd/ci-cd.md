@@ -15,7 +15,7 @@ All checks must pass on every pull request:
 | Terraform format   | `terraform fmt -check -recursive` | PR merge |
 | Terraform validate | `terraform validate`              | PR merge |
 
-Full gate sequence: `_sop/2-docs/4-devops/2-runbooks/quality-runbook.md`
+Full gate sequence: `docs/operations/runbooks/quality-runbook.md`
 
 ---
 
@@ -36,12 +36,12 @@ Infrastructure changes follow a plan-review-apply sequence. No automated apply w
 
 Before a release tag is cut:
 
-| Gate                 | Action on Failure                                                     |
-| -------------------- | --------------------------------------------------------------------- |
-| Container image scan | Escalate critical CVEs to security role — do not release              |
-| Dependency audit     | `pnpm audit` — address criticals before release                       |
-| UAT evidence         | Update `_sop/3-agile/2-scrum-board/6-testing/uat/uat-evidence-log.md` |
-| Release checklist    | Complete `_sop/2-docs/4-devops/7-release-mgmt/release-checklist.md`   |
+| Gate                 | Action on Failure                                        |
+| -------------------- | -------------------------------------------------------- |
+| Container image scan | Escalate critical CVEs to security role — do not release |
+| Dependency audit     | `pnpm audit` — address criticals before release          |
+| UAT evidence         | Update `docs/agile/qa-test-plan.md`                      |
+| Release checklist    | Complete `docs/devops/release/release-checklist.md`      |
 
 ---
 
@@ -57,6 +57,6 @@ Before a release tag is cut:
 
 ## Reference
 
-- [`_sop/2-docs/4-devops/2-runbooks/quality-runbook.md`](../2-runbooks/quality-runbook.md) — triage order when gates fail
-- [`_sop/2-docs/4-devops/7-release-mgmt/release-checklist.md`](../7-release-mgmt/release-checklist.md) — release checklist
-- [`_sop/1-agents/4-workflows/tasks/cut-release.md`](../../../1-agents/4-workflows/tasks/cut-release.md) — release task playbook
+- [`docs/operations/runbooks/quality-runbook.md`](../2-runbooks/quality-runbook.md) — triage order when gates fail
+- [`docs/devops/release/release-checklist.md`](../7-release-mgmt/release-checklist.md) — release checklist
+- [`docs/agents/workflows/tasks/cut-release.md`](../../../1-agents/4-workflows/tasks/cut-release.md) — release task playbook

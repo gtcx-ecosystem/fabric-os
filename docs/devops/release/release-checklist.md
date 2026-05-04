@@ -75,5 +75,5 @@ Execute only after human approval:
 
 ## Reference
 
-- [`_sop/2-docs/4-devops/2-runbooks/quality-runbook.md`](../2-runbooks/quality-runbook.md) — full gate sequence and triage order
-- [`_sop/1-agents/4-workflows/tasks/cut-release.md`](../../../1-agents/4-workflows/tasks/cut-release.md) — release task playbook
+- [`docs/4-devops/2-runbooks/quality-runbook.md`](../2-runbooks/quality-runbook.md) — full gate sequence and triage order
+- [`docs/agents/workflows/tasks/cut-release.md`](../../../1-agents/4-workflows/tasks/cut-release.md) — release task playbook

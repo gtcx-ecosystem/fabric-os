@@ -17,7 +17,7 @@
 | Code Quality          | 7/10   | Good Terraform patterns; `deploy.sh:282` deployment name truncation is fragile                         |
 | Testability           | 5/10   | No unit tests; validation relies entirely on CI `iac-validation` job                                   |
 | Operational Readiness | 7/10   | Comprehensive observability stack; alert thresholds uncalibrated; SLO definitions incomplete           |
-| Consistency           | 6/10   | 6+ docs reference old `_sop/` paths; `.baseline/config.json` still references `4-infrastructure`       |
+| Consistency           | 6/10   | 6+ docs reference old `docs/` paths; `.baseline/config.json` still references `4-infrastructure`       |
 
 ### Key Findings
 
@@ -46,7 +46,7 @@
 **[High] [Consistency] — Repo Rename Incomplete**
 
 - `.baseline/config.json:4` still references `4-infrastructure`
-- 6+ doc files reference old `_sop/2-docs/` paths
+- 6+ doc files reference old `docs/` paths
 - GitHub clone URLs in docs point to `github.com/gtcx/` instead of `github.com/gtcx-ecosystem/`
 - **Status: OPEN** — Sprint 3
 
@@ -194,7 +194,7 @@ The infrastructure itself is standard AWS architecture — VPC, EKS, RDS, ECR. A
 
 | Category          | Score /10 | Issues                                                                                                                        |
 | ----------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Documentation     | 7         | 167 MD files, comprehensive coverage; 6+ stale path references to old `_sop/` structure                                       |
+| Documentation     | 7         | 167 MD files, comprehensive coverage; 6+ stale path references to old `docs/` structure                                       |
 | File Structure    | 6         | Clean `infra/` layout; 4.8MB `_delete/` directory needs removal; `edge-proxy/` is empty placeholder                           |
 | Naming            | 8         | Consistent `gtcx-*` naming in K8s, Terraform, Docker; ADR numbering sequential                                                |
 | Package/Build     | 9         | pnpm workspaces + Turborepo correctly configured; lint-staged + husky; CVE overrides current                                  |
@@ -252,7 +252,7 @@ The infrastructure itself is standard AWS architecture — VPC, EKS, RDS, ECR. A
 | 13  | Dockerfile.protocols uses --no-frozen-lockfile             | Phase 4 | Medium   | Open                     |
 | 14  | migrate.sh SQL injection risk                              | Phase 2 | Medium   | Open                     |
 | 15  | `_delete/` directory — 4.8MB dead weight                   | Phase 4 | Medium   | Open                     |
-| 16  | 6+ docs reference old `_sop/` paths                        | Phase 4 | Medium   | Open                     |
+| 16  | 6+ docs reference old `docs/` paths                        | Phase 4 | Medium   | Open                     |
 | 17  | `.baseline/config.json` references old project name        | Phase 4 | Medium   | Open                     |
 | 18  | No infrastructure tests (Terratest, etc.)                  | Phase 1 | Medium   | Open                     |
 | 19  | NATS single replica (no HA)                                | Phase 5 | Medium   | Open                     |
@@ -328,7 +328,7 @@ Layer mix: Remediation: 2 | Evolution: 4 | Innovation: 0
 | --- | ------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------- | ------ |
 | 3.1 | Delete `_delete/` directory                | Remediation | `_delete/` (4.8MB)                                                                                 | 15m    |
 | 3.2 | Fix `.baseline/config.json` project root   | Remediation | `.baseline/config.json:4`                                                                          | 5m     |
-| 3.3 | Update all `_sop/` path references in docs | Evolution   | 6+ files in `docs/agents/`, `docs/devops/`                                                         | 2h     |
+| 3.3 | Update all `docs/` path references in docs | Evolution   | 6+ files in `docs/agents/`, `docs/devops/`                                                         | 2h     |
 | 3.4 | Fix GitHub clone URLs in docs              | Evolution   | `docs/agents/onboarding/developer-quickstart.md`, `docs/devops/environments/environment-config.md` | 30m    |
 | 3.5 | Add Alertmanager escalation policy         | Evolution   | `infra/docker/observability/alertmanager.yml`                                                      | 2h     |
 | 3.6 | Add FK constraints to protocol tables      | Evolution   | `infra/docker/init-scripts/postgres/02-protocol-tables.sql`                                        | 2h     |
@@ -416,7 +416,7 @@ The infrastructure is built by someone who knows what production-grade looks lik
 - Infrastructure tests would exist before modules
 - Deploy would be a typed CLI tool, not a shell script
 - NATS would have auth and TLS configured in the first commit
-- The `_sop/` directory structure would never have existed — flat `docs/` from the start
+- The `docs/` directory structure would never have existed — flat `docs/` from the start
 
 ---
 

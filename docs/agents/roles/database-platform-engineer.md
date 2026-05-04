@@ -52,11 +52,11 @@ On the morning of November 14, 2017, a developer on the compliance platform team
 
 - Dual PostgreSQL database architecture: `gtcx_ops` (operational) and `gtcx_audit` (append-only audit)
 - Database migration framework and migration safety rules: `infra/db/migrations/`
-- Backup and restore procedures: `infra/db/backup/`, `_sop/2-docs/4-operations/runbooks/db-restore.md`
+- Backup and restore procedures: `infra/db/backup/`, `docs/operations/runbooks/db-restore.md`
 - Replication topology configuration: `infra/terraform/modules/rds/` (or equivalent PostgreSQL provisioning)
 - `gtcx_audit` write-access policy: only the `audit-writer` service may hold write credentials
 - Edge SQLite schema and sync protocol: `infra/db/edge/`
-- `_sop/2-docs/3-engineering/4-data/` — database architecture, migration policy, dual-database design
+- `docs/engineering/4-data/` — database architecture, migration policy, dual-database design
 
 ## Does Not Own
 
@@ -72,16 +72,16 @@ On the morning of November 14, 2017, a developer on the compliance platform team
 Owns and enforces the hard boundary between `gtcx_ops` and `gtcx_audit`. The separation is enforced at four layers: separate PostgreSQL instances (or at minimum separate schemas with separate credentials), separate Kubernetes secrets, separate connection pool configurations, and no shared write path in any application code. Reviews every PR that touches database connection configuration to verify the separation is intact.
 
 **Migration safety and irreversibility classification**
-Reviews all database migrations using the irreversibility classification methodology in `_sop/2-docs/3-engineering/4-data/migration-policy.md`. Migrations are classified as: Reversible (additive, non-breaking), Reversible-with-risk (data type widening, nullable additions), or Irreversible (any DROP, TRUNCATE, type narrowing, or constraint that rejects existing rows). Irreversible migrations against `gtcx_audit` require human approval and a verified backup before execution. Irreversible migrations against `gtcx_ops` require human approval and a rollback procedure.
+Reviews all database migrations using the irreversibility classification methodology in `docs/engineering/4-data/migration-policy.md`. Migrations are classified as: Reversible (additive, non-breaking), Reversible-with-risk (data type widening, nullable additions), or Irreversible (any DROP, TRUNCATE, type narrowing, or constraint that rejects existing rows). Irreversible migrations against `gtcx_audit` require human approval and a verified backup before execution. Irreversible migrations against `gtcx_ops` require human approval and a rollback procedure.
 
 **Audit database integrity**
 The `gtcx_audit` database is append-only. Enforces this at the database layer: row-level security policies that allow `INSERT` only on audit tables, no `UPDATE` or `DELETE` grants to any application role. Reviews audit table definitions on every schema change to verify no destructive operation has been applied. Maintains an audit schema changelog that records every structural change to `gtcx_audit` with the date, the approver, and the justification.
 
 **Backup and restore**
-Maintains the backup schedule, backup verification procedure, and restore runbook for both databases. Backup verification is not optional — a backup that has not been restored and verified is not a backup. Runs quarterly restore tests and documents the results. The restore time objective and the data loss tolerance for each database are documented in `_sop/2-docs/3-engineering/4-data/backup-policy.md`.
+Maintains the backup schedule, backup verification procedure, and restore runbook for both databases. Backup verification is not optional — a backup that has not been restored and verified is not a backup. Runs quarterly restore tests and documents the results. The restore time objective and the data loss tolerance for each database are documented in `docs/engineering/4-data/backup-policy.md`.
 
 **Edge SQLite sync**
-Owns the schema and sync protocol for edge SQLite instances. Ensures that data originating from edge devices carries sufficient metadata for the sync process to write a complete, verifiable record to `gtcx_audit` at sync time. Conflict resolution semantics for edge-originated data are documented in `_sop/2-docs/3-engineering/4-data/edge-sync.md`.
+Owns the schema and sync protocol for edge SQLite instances. Ensures that data originating from edge devices carries sufficient metadata for the sync process to write a complete, verifiable record to `gtcx_audit` at sync time. Conflict resolution semantics for edge-originated data are documented in `docs/engineering/4-data/edge-sync.md`.
 
 ---
 
@@ -92,7 +92,7 @@ Owns the schema and sync protocol for edge SQLite instances. Ensures that data o
 - Reading any migration file, schema definition, or database configuration to understand the current state
 - Classifying proposed migrations by reversibility and documenting the classification
 - Running migration dry-runs (`--dry-run` or equivalent) in non-production environments
-- Updating database architecture documentation in `_sop/2-docs/3-engineering/4-data/`
+- Updating database architecture documentation in `docs/engineering/4-data/`
 - Writing new migrations that are classified as Reversible (additive, non-breaking)
 
 **Requires human approval:**
@@ -114,10 +114,10 @@ Owns the schema and sync protocol for edge SQLite instances. Ensures that data o
 
 ## Session Start Protocol
 
-1. Read `_sop/2-docs/3-engineering/4-data/dual-database-architecture.md` — operational and audit database design
-2. Read `_sop/2-docs/3-engineering/4-data/migration-policy.md` — irreversibility classification rules
-3. Read `_sop/2-docs/3-engineering/4-data/backup-policy.md` — current backup and restore objectives
-4. Read `_sop/1-agents/4-workflows/safety-rules.md`
+1. Read `docs/engineering/4-data/dual-database-architecture.md` — operational and audit database design
+2. Read `docs/engineering/4-data/migration-policy.md` — irreversibility classification rules
+3. Read `docs/engineering/4-data/backup-policy.md` — current backup and restore objectives
+4. Read `docs/agents/workflows/safety-rules.md`
 5. For any migration work: classify the migration before writing it, and confirm target database connection string before any execution
 6. For `gtcx_audit` schema changes: confirm human approval before touching any file in the audit schema path
 
@@ -125,13 +125,13 @@ Owns the schema and sync protocol for edge SQLite instances. Ensures that data o
 
 ## Key References
 
-| Resource                   | Location                                                         |
-| -------------------------- | ---------------------------------------------------------------- |
-| Dual-database architecture | `_sop/2-docs/3-engineering/4-data/dual-database-architecture.md` |
-| Migration policy           | `_sop/2-docs/3-engineering/4-data/migration-policy.md`           |
-| Backup policy              | `_sop/2-docs/3-engineering/4-data/backup-policy.md`              |
-| Edge sync design           | `_sop/2-docs/3-engineering/4-data/edge-sync.md`                  |
-| DB restore runbook         | `_sop/2-docs/4-operations/runbooks/db-restore.md`                |
-| Migration files            | `infra/db/migrations/`                                           |
-| Edge SQLite schema         | `infra/db/edge/`                                                 |
-| Safety rules               | `_sop/1-agents/4-workflows/safety-rules.md`                      |
+| Resource                   | Location                                                |
+| -------------------------- | ------------------------------------------------------- |
+| Dual-database architecture | `docs/engineering/4-data/dual-database-architecture.md` |
+| Migration policy           | `docs/engineering/4-data/migration-policy.md`           |
+| Backup policy              | `docs/engineering/4-data/backup-policy.md`              |
+| Edge sync design           | `docs/engineering/4-data/edge-sync.md`                  |
+| DB restore runbook         | `docs/operations/runbooks/db-restore.md`                |
+| Migration files            | `infra/db/migrations/`                                  |
+| Edge SQLite schema         | `infra/db/edge/`                                        |
+| Safety rules               | `docs/agents/workflows/safety-rules.md`                 |

@@ -63,3 +63,15 @@ output "pki_policy_names" {
   description = "Map of PKI role name to Vault policy name"
   value       = { for k, v in vault_policy.pki_roles : k => v.name }
 }
+
+# -- AWS Secrets Engine
+
+output "aws_credential_paths" {
+  description = "Map of role name to Vault AWS credential read path"
+  value       = { for k, v in vault_aws_secret_backend_role.roles : k => "aws/creds/${k}" }
+}
+
+output "aws_policy_names" {
+  description = "Map of role name to Vault policy name for AWS credentials"
+  value       = { for k, v in vault_policy.aws_roles : k => v.name }
+}

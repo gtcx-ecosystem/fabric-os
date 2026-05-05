@@ -166,6 +166,27 @@ variable "pki_roles" {
 }
 
 # -----------------------------------------------------------------------------
+# AWS Secrets Engine (SIGNAL L5 — Per-Workflow Credentials)
+# -----------------------------------------------------------------------------
+
+variable "enable_aws_engine" {
+  description = "Enable AWS secrets engine for dynamic IAM credentials"
+  type        = bool
+  default     = false
+}
+
+variable "aws_credential_roles" {
+  description = "AWS dynamic credential roles for pipeline workloads"
+  type = map(object({
+    credential_type    = string
+    policy_arns        = list(string)
+    default_ttl_seconds = number
+    max_ttl_seconds     = number
+  }))
+  default = {}
+}
+
+# -----------------------------------------------------------------------------
 # Resource Limits
 # -----------------------------------------------------------------------------
 

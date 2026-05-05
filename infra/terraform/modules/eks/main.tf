@@ -99,6 +99,45 @@ variable "tags" {
 }
 
 # -----------------------------------------------------------------------------
+# GPU Node Pool (SIGNAL L5 — Fine-Tuning Pipeline)
+# -----------------------------------------------------------------------------
+
+variable "enable_gpu_nodes" {
+  description = "Enable GPU node group for ML training workloads"
+  type        = bool
+  default     = false
+}
+
+variable "gpu_instance_types" {
+  description = "GPU instance types for training node group"
+  type        = list(string)
+  default     = ["g5.xlarge"]
+}
+
+variable "gpu_max_size" {
+  description = "Maximum number of GPU nodes (scales to zero when idle)"
+  type        = number
+  default     = 4
+}
+
+variable "gpu_disk_size" {
+  description = "EBS volume size for GPU nodes (GB)"
+  type        = number
+  default     = 100
+}
+
+variable "gpu_capacity_type" {
+  description = "Capacity type for GPU nodes (ON_DEMAND or SPOT)"
+  type        = string
+  default     = "SPOT"
+
+  validation {
+    condition     = contains(["ON_DEMAND", "SPOT"], var.gpu_capacity_type)
+    error_message = "GPU capacity type must be ON_DEMAND or SPOT."
+  }
+}
+
+# -----------------------------------------------------------------------------
 # Locals
 # -----------------------------------------------------------------------------
 
@@ -396,6 +435,58 @@ resource "aws_eks_node_group" "main" {
 }
 
 # -----------------------------------------------------------------------------
+# GPU Node Group (SIGNAL L5 — Scale-to-Zero for Fine-Tuning)
+# -----------------------------------------------------------------------------
+
+resource "aws_eks_node_group" "gpu" {
+  count = var.enable_gpu_nodes ? 1 : 0
+
+  cluster_name    = aws_eks_cluster.main.name
+  node_group_name = "${local.cluster_name}-gpu"
+  node_role_arn   = aws_iam_role.node_group.arn
+  subnet_ids      = var.private_subnet_ids
+
+  instance_types = var.gpu_instance_types
+  disk_size      = var.gpu_disk_size
+  capacity_type  = var.gpu_capacity_type
+  ami_type       = "AL2_x86_64_GPU"
+
+  scaling_config {
+    desired_size = 0
+    min_size     = 0
+    max_size     = var.gpu_max_size
+  }
+
+  update_config {
+    max_unavailable = 1
+  }
+
+  labels = {
+    environment                      = var.environment
+    project                          = "gtcx"
+    "node.kubernetes.io/purpose"     = "gpu-training"
+    "nvidia.com/gpu.present"         = "true"
+  }
+
+  taint {
+    key    = "nvidia.com/gpu"
+    value  = "true"
+    effect = "NO_SCHEDULE"
+  }
+
+  tags = merge(local.common_tags, {
+    Name    = "${local.cluster_name}-gpu"
+    Purpose = "ML fine-tuning pipeline (SIGNAL L5)"
+  })
+
+  depends_on = [
+    aws_iam_role_policy_attachment.node_worker,
+    aws_iam_role_policy_attachment.node_cni,
+    aws_iam_role_policy_attachment.node_ecr,
+  ]
+}
+
+# -----------------------------------------------------------------------------
 # OIDC Provider (for IRSA — IAM Roles for Service Accounts)
 # -----------------------------------------------------------------------------
 
@@ -473,4 +564,9 @@ output "oidc_provider_url" {
 output "alb_controller_role_arn" {
   description = "IAM role ARN for AWS Load Balancer Controller (managed by module.alb)"
   value       = ""
+}
+
+output "gpu_node_group_name" {
+  description = "GPU node group name (empty if GPU disabled)"
+  value       = var.enable_gpu_nodes ? aws_eks_node_group.gpu[0].node_group_name : ""
 }

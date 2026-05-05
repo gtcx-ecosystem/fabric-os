@@ -25,6 +25,12 @@ variable "repositories" {
     "gtcx-anisa",
     "gtcx-veritas",
     "gtcx-cortex",
+    "gtcx-intelligence-sdk",
+    "gtcx-intelligence-cortex",
+    "gtcx-intelligence-screening",
+    "gtcx-intelligence-anisa",
+    "gtcx-intelligence-panx",
+    "gtcx-intelligence-red-team",
   ]
 }
 

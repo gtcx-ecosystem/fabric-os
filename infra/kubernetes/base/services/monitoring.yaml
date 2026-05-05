@@ -721,6 +721,19 @@ spec:
             - name: otlp-http
               containerPort: 4318
               protocol: TCP
+          env:
+            # Persistent storage via Badger (survives pod restarts)
+            - name: SPAN_STORAGE_TYPE
+              value: badger
+            - name: BADGER_EPHEMERAL
+              value: 'false'
+            - name: BADGER_DIRECTORY_VALUE
+              value: /badger/data
+            - name: BADGER_DIRECTORY_KEY
+              value: /badger/key
+            # Sampling: 10% default, 100% for errors
+            - name: SAMPLING_STRATEGIES_FILE
+              value: /etc/jaeger/sampling.json
           resources:
             requests:
               cpu: 100m
@@ -733,6 +746,11 @@ spec:
             capabilities:
               drop:
                 - ALL
+          volumeMounts:
+            - name: badger-data
+              mountPath: /badger
+            - name: sampling-config
+              mountPath: /etc/jaeger
           livenessProbe:
             httpGet:
               path: /
@@ -752,6 +770,73 @@ spec:
             initialDelaySeconds: 15
             periodSeconds: 5
             failureThreshold: 12
+      volumes:
+        - name: badger-data
+          persistentVolumeClaim:
+            claimName: jaeger-badger-data
+        - name: sampling-config
+          configMap:
+            name: jaeger-sampling
+---
+# -----------------------------------------------------------------------------
+# Jaeger Sampling Config
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jaeger-sampling
+  namespace: gtcx-monitoring
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/part-of: gtcx
+data:
+  sampling.json: |
+    {
+      "default_strategy": {
+        "type": "probabilistic",
+        "param": 0.1
+      },
+      "service_strategies": [
+        {
+          "service": "gtcx-protocols",
+          "type": "probabilistic",
+          "param": 0.1
+        },
+        {
+          "service": "gtcx-agx",
+          "type": "probabilistic",
+          "param": 0.1
+        },
+        {
+          "service": "gtcx-crypto",
+          "type": "probabilistic",
+          "param": 0.5
+        },
+        {
+          "service": "anisa",
+          "type": "probabilistic",
+          "param": 0.1
+        }
+      ]
+    }
+---
+# -----------------------------------------------------------------------------
+# Jaeger PVC (Badger persistent storage — 14-day retention)
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jaeger-badger-data
+  namespace: gtcx-monitoring
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/part-of: gtcx
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
 ---
 # -----------------------------------------------------------------------------
 # Jaeger Service

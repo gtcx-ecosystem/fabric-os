@@ -2,6 +2,16 @@
 
 DevOps tooling, deployment automation, and security framework for the GTCX ecosystem. Manages container orchestration, infrastructure-as-code, compliance tooling, and zero-trust security across all environments.
 
+---
+
+## Choose Your Path
+
+- **DevOps / Platform Engineer** — Start with [Orientation](./docs/agents/onboarding/orientation.md) and [Deployment Runbook](./docs/operations/runbooks/deployment-runbook.md)
+- **Security Auditor** — Review the [Trust Model](./docs/architecture/trust-model.md) and [Hardening Strategy](./docs/audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md)
+- **Government / Institutional Stakeholder** — Read the [Sovereign Stack Whitepaper](./docs/audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md)
+
+---
+
 ## Quick Start
 
 ### Prerequisites

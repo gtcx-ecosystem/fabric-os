@@ -2,6 +2,16 @@
 
 Single source of truth for all infrastructure documentation.
 
+---
+
+## Choose Your Path
+
+- **Engineering and DevOps** — [Orientation](agents/onboarding/orientation.md) | [Quickstart](agents/onboarding/developer-quickstart.md) | [Deployment Runbook](operations/runbooks/deploy.md)
+- **Security and Audit** — [Trust Model](architecture/trust-model.md) | [Hardening Strategy](audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md) | [Threat Model](security/threat-model.md)
+- **Strategic and Governance** — [Sovereign Stack Whitepaper](audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md) | [Innovation Roadmap](audit/qa-reviews/2026-05-05-innovation-roadmap.md) | [Principle Map](principles/open-infrastructure.md)
+
+---
+
 ## Directory Map
 
 ```
@@ -24,13 +34,18 @@ docs/
 ├── scripts/             Doc hygiene automation
 ├── security/            Architecture, threat model, NIST, CMMC, FIPS, STIG
 └── specs/               System specs (CI/CD, observability, resilience, scaling, testing)
+```
 
 ---
 
-## Audit
+## Audit (Session: 2026-05-05)
 
-- [Infrastructure Improvement Roadmap](audit/qa-reviews/2026-05-05-infrastructure-improvement-roadmap.md) — 2026-05-05 QA Review findings and roadmap
-```
+- [Infrastructure Improvement Roadmap](audit/qa-reviews/2026-05-05-infrastructure-improvement-roadmap.md) — Findings and roadmap
+- [GTCX Hardening Strategy](audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md) — Institutional hardening (Bash-to-Go, Merkle Anchoring)
+- [Documentation Coverage Proposal](audit/qa-reviews/2026-05-05-documentation-coverage-proposal.md) — Documentation-as-Code CI enforcement
+- [Innovation Roadmap](audit/qa-reviews/2026-05-05-innovation-roadmap.md) — Long-term vision (PQC, Agentic Compliance)
+- [Sovereign Stack Whitepaper](audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md) — Technical guide for government deployment
+- [Innovation Spec Suite](audit/qa-reviews/2026-05-05-innovation-spec-suite.md) — Specs for future core features
 
 ---
 

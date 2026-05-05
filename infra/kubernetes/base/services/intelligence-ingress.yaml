@@ -1,0 +1,56 @@
+# =============================================================================
+# Intelligence Services — ALB Ingress
+# =============================================================================
+# Routes external traffic to intelligence orchestrator via AWS ALB.
+# TLS terminated at ALB using ACM certificate.
+#
+# Endpoints:
+#   /             → intelligence-orchestrator (port 8200)
+#   /cortex       → intelligence-cortex (port 8201)
+#   /screening    → intelligence-screening (port 8202)
+# =============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: intelligence
+  namespace: intelligence
+  labels:
+    app.kubernetes.io/name: intelligence
+    app.kubernetes.io/part-of: gtcx
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:af-south-1:348389439381:certificate/5fa25ba3-82ea-47de-80d8-fc68e0722d01
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: '15'
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5'
+    alb.ingress.kubernetes.io/group.name: gtcx-intelligence
+spec:
+  rules:
+    - host: intelligence.gtcxprotocol.org
+      http:
+        paths:
+          - path: /cortex
+            pathType: Prefix
+            backend:
+              service:
+                name: intelligence-cortex
+                port:
+                  number: 8201
+          - path: /screening
+            pathType: Prefix
+            backend:
+              service:
+                name: intelligence-screening
+                port:
+                  number: 8202
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: intelligence-orchestrator
+                port:
+                  number: 8200

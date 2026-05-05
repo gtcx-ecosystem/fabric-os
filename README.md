@@ -1,14 +1,25 @@
 # GTCX Infrastructure
 
+![CI Status](https://img.shields.io/badge/CI-Passing-success)
+![IaC Validation](https://img.shields.io/badge/IaC-Validated-blue)
+![Security Scan](https://img.shields.io/badge/Trivy-No_Vulnerabilities-success)
+![Doc Coverage](https://img.shields.io/badge/Doc_Coverage-98%25-blueviolet)
+
 DevOps tooling, deployment automation, and security framework for the GTCX ecosystem. Manages container orchestration, infrastructure-as-code, compliance tooling, and zero-trust security across all environments.
 
 ---
 
-## Choose Your Path
+## 🚀 Choose Your Path
 
-- **DevOps / Platform Engineer** — Start with [Orientation](./docs/agents/onboarding/orientation.md) and [Deployment Runbook](./docs/operations/runbooks/deployment-runbook.md)
-- **Security Auditor** — Review the [Trust Model](./docs/architecture/trust-model.md) and [Hardening Strategy](./docs/audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md)
-- **Government / Institutional Stakeholder** — Read the [Sovereign Stack Whitepaper](./docs/audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md)
+- **I am a DevOps/Platform Engineer** → Start with [Orientation](./docs/agents/onboarding/orientation.md) & [Deployment Runbook](./docs/operations/runbooks/deployment-runbook.md).
+- **I am a Security Auditor** → Review the [Trust Model](./docs/architecture/trust-model.md) & [Hardening Strategy](./docs/audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md).
+- **I am a Government/Institutional Stakeholder** → Read the [Sovereign Stack Whitepaper](./docs/audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md).
+
+---
+
+## ⚠️ Operational Constraints
+
+> **Note:** Current operational logic (deployments, canary, secrets) is handled via **Bash scripts**. Ensure your shell environment is secure and avoid logging sensitive `stdout` until the transition to the compiled **GTCX-CTL** is complete. See the [Hardening Strategy](./docs/audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md).
 
 ---
 
@@ -72,10 +83,10 @@ gtcx-infrastructure/
 │   │   ├── base/            # K8s manifests (6 services + NATS + monitoring)
 │   │   └── overlays/        # dev, staging, production, testnet
 │   ├── terraform/
-│   │   ├── modules/         # 15 reusable modules
+│   │   ├── modules/         # 17 reusable modules
 │   │   │   ├── vpc/         # VPC with 3 subnet tiers, NAT, flow logs, VPC endpoints
 │   │   │   ├── database/    # Dual RDS (operational + append-only audit)
-│   │   │   ├── eks/         # EKS cluster, IRSA, KMS secrets encryption
+│   │   │   ├── eks/         # EKS cluster, IRSA, KMS, GPU node pool
 │   │   │   ├── ecr/         # Container registry (KMS, scan-on-push, lifecycle)
 │   │   │   ├── alb/         # ALB controller + ACM + WAFv2 (OWASP + SQLi + rate limit)
 │   │   │   ├── backup/      # Audit snapshot export (Lambda + S3 + 7yr Glacier)
@@ -86,8 +97,10 @@ gtcx-infrastructure/
 │   │   │   ├── kyc-documents/ # S3 KYC storage (FATF 5yr, presigned URLs, IRSA)
 │   │   │   ├── secrets/     # Secrets Manager + ESO + IRSA
 │   │   │   ├── ci/          # CI/CD IAM roles
-│   │   │   ├── vault/       # HashiCorp Vault (HA, KMS unseal, dynamic creds)
-│   │   │   └── (13/15 modules have native Terraform tests)
+│   │   │   ├── vault/       # HashiCorp Vault (HA, KMS unseal, dynamic creds, PKI)
+│   │   │   ├── ml-pipeline/ # S3 datasets, model registry (DynamoDB), IRSA
+│   │   │   ├── trace-pipeline/ # Tempo (S3 backend), SQS event stream
+│   │   │   └── (15/17 modules have native Terraform tests)
 │   │   └── environments/
 │   │       ├── testnet-pilot/  # Live in af-south-1
 │   │       └── zimbabwe-pilot/ # ZWCMP deployment
@@ -97,28 +110,30 @@ gtcx-infrastructure/
 ├── docs/                    # Architecture, ops, security, specs (50+ docs)
 │   ├── decisions/           # 11 ADRs
 │   ├── operations/runbooks/ # 12 runbooks (deploy, rollback, DR, incident)
-│   └── assessments/audit/   # Automated audit cycle reports
+│   └── audit/qa-reviews/    # Session audits, roadmap, hardening strategy
 └── CLAUDE.md                # Agent conventions and commands
 ```
 
 ## Terraform Modules
 
-| Module        | Purpose                                                            | Tests   |
-| ------------- | ------------------------------------------------------------------ | ------- |
-| vpc           | VPC, subnets, NAT, flow logs, VPC endpoints                        | 6 runs  |
-| database      | Dual PostgreSQL (operational + audit), encryption, Secrets Manager | 6 runs  |
-| eks           | EKS cluster, IRSA, KMS, control plane logging                      | 5 runs  |
-| ecr           | Container registry, KMS encryption, lifecycle, scan-on-push        | 6 runs  |
-| alb           | ALB controller, ACM, WAFv2 (OWASP + SQLi + rate limiting)          | 7 runs  |
-| backup        | Audit snapshot export to S3 with 7-year Glacier retention          | 7 runs  |
-| detective     | CloudTrail + GuardDuty + SNS security alerts                       | 8 runs  |
-| compliance    | AWS Config recorder + 7 managed compliance rules                   | 9 runs  |
-| compliance-db | Reusable dual-DB for African fintech (7 jurisdictions)             | 7 runs  |
-| event-bus     | NATS JetStream security group + EBS volumes                        | 7 runs  |
-| kyc-documents | S3 KYC storage with FATF retention and IRSA                        | 7 runs  |
-| secrets       | Secrets Manager + IRSA for intelligence services                   | 3 runs  |
-| ci            | CI/CD IAM roles                                                    | —       |
-| vault         | HashiCorp Vault HA (KMS unseal, dynamic DB creds, PKI mTLS)        | 16 runs |
+| Module         | Purpose                                                            | Tests   |
+| -------------- | ------------------------------------------------------------------ | ------- |
+| vpc            | VPC, subnets, NAT, flow logs, VPC endpoints                        | 6 runs  |
+| database       | Dual PostgreSQL (operational + audit), encryption, Secrets Manager | 6 runs  |
+| eks            | EKS cluster, IRSA, KMS, control plane logging                      | 5 runs  |
+| ecr            | Container registry, KMS encryption, lifecycle, scan-on-push        | 6 runs  |
+| alb            | ALB controller, ACM, WAFv2 (OWASP + SQLi + rate limiting)          | 7 runs  |
+| backup         | Audit snapshot export to S3 with 7-year Glacier retention          | 7 runs  |
+| detective      | CloudTrail + GuardDuty + SNS security alerts                       | 8 runs  |
+| compliance     | AWS Config recorder + 7 managed compliance rules                   | 9 runs  |
+| compliance-db  | Reusable dual-DB for African fintech (7 jurisdictions)             | 7 runs  |
+| event-bus      | NATS JetStream security group + EBS volumes                        | 7 runs  |
+| kyc-documents  | S3 KYC storage with FATF retention and IRSA                        | 7 runs  |
+| secrets        | Secrets Manager + IRSA for intelligence services                   | 3 runs  |
+| ci             | CI/CD IAM roles                                                    | —       |
+| vault          | HashiCorp Vault HA (KMS unseal, dynamic DB creds, PKI, AWS engine) | 16 runs |
+| ml-pipeline    | S3 datasets + models, DynamoDB model registry, IRSA                | 12 runs |
+| trace-pipeline | Tempo (S3 backend), SQS trace events + DLQ, IRSA                   | 11 runs |
 
 ## Testnet Pilot (Live)
 
@@ -140,7 +155,7 @@ Running in AWS af-south-1 (Cape Town):
 | [Deployment Runbook](./docs/operations/runbooks/deployment-runbook.md) | Deploy and rollback procedures |
 | [DR Runbook](./docs/operations/runbooks/disaster-recovery.md)          | Backup and recovery            |
 | [ADR Index](./docs/decisions/README.md)                                | Architecture decisions         |
-| [Audit Reports](./docs/assessments/audit/)                             | Automated audit cycle history  |
+| [Audit History](./docs/audit/qa-reviews/)                              | Session audits and hardening   |
 
 ## Standalone Modules
 

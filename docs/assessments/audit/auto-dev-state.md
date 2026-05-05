@@ -3,9 +3,9 @@
 ## Session
 
 - **Date:** 2026-05-05
-- **Cycle:** 8 (Vault module implementation)
+- **Cycle:** 9 (L5 pipeline infrastructure)
 - **Last command:** /continue
-- **Phase when saved:** Vault module complete, committing state
+- **Phase when saved:** L5 Phase 1 complete
 
 ## Latest Scores
 
@@ -15,65 +15,67 @@
 | Consistency           | 10/10 | All           | —                                     |
 | Security              | 10/10 | All           | —                                     |
 | Operational Readiness | 10/10 | All           | —                                     |
-| Spec Fidelity         | 9/10  | All -1        | Inline Lambda Python not testable     |
-| Structural Integrity  | 9/10  | All -1        | No explicit module dependency graph   |
+| Spec Fidelity         | 9/10  | All -1        | L5 modules not yet deployed           |
+| Structural Integrity  | 10/10 | All           | 17 modules, 15 tested                 |
 | Code Quality          | 9/10  | All -1        | Inline Lambda Python blob             |
 | Production Readiness  | 9/10  | All -1        | No load test evidence                 |
 | Competitive Moat      | 9/10  | All -1        | compliance-db needs external adoption |
 
-**Overall:** 9.5/10
+**Overall:** 9.6/10
 
 ## Current Sprint
 
-- **Theme:** Vault dynamic credentials (SIGNAL L4 gate)
+- **Theme:** L5 pipeline infrastructure (SIGNAL L5 gate)
 - **Tasks planned:** 8
-- **Tasks completed:** All 8 — variables.tf, main.tf, auth.tf, database.tf, pki.tf, outputs.tf, versions.tf, vault.tftest.hcl
+- **Tasks completed:** All 8
 - **Tasks remaining:** 0
 - **Tasks blocked:** None
 
 ## What Was Built This Session
 
-- **Vault Terraform module** (`infra/terraform/modules/vault/`) — 8 files, 1046 lines:
-  - `main.tf` — KMS auto-unseal key, IRSA role, Helm release (HA Raft)
-  - `auth.tf` — Kubernetes auth method, configurable roles
-  - `database.tf` — Database secrets engine, dynamic PostgreSQL credentials, Vault policies
-  - `pki.tf` — PKI engine, internal root CA (EC P-256), certificate roles for mTLS
-  - `variables.tf` — Full parameterization (environment, KMS, IRSA, DB, PKI, resources)
-  - `outputs.tf` — KMS ARN, IRSA role, credential paths, policy names, CA cert
-  - `versions.tf` — aws >= 5.0, helm >= 2.12, vault >= 4.2
-  - `vault.tftest.hcl` — 16 test runs covering KMS, IRSA, Helm, DB engine, K8s auth, PKI
-- **README housekeeping** — fixed broken whitepaper link, removed emojis/badges, committed 5 qa-review docs
+### Cycle 8 — Vault Module
+
+- `infra/terraform/modules/vault/` — 8 files: KMS unseal, IRSA, Helm HA, K8s auth, DB engine, PKI, 16 tests
+
+### Cycle 9 — L5 Pipeline Infrastructure
+
+- `infra/terraform/modules/ml-pipeline/` — 5 files: S3 datasets (DVC, Glacier lifecycle), S3 models, DynamoDB registry (status GSI, PITR), IRSA, 12 tests
+- `infra/terraform/modules/trace-pipeline/` — 5 files: S3 trace bucket (KMS, 120-day expiration), SQS queue + DLQ (encrypted, long polling), Tempo Helm (S3 backend, 90-day retention), IRSA for Tempo + consumer, 11 tests
+- `infra/terraform/modules/eks/main.tf` — GPU node group (g5.xlarge spot, scale-to-zero, taint/labels)
+- `infra/terraform/modules/ecr/main.tf` — 6 new repos (intelligence-sdk, cortex, screening, anisa, panx, red-team)
+- `infra/terraform/modules/vault/aws.tf` — AWS secrets engine for per-workflow dynamic IAM credentials
+- `infra/docker/observability/grafana/dashboards/intelligence-l5.json` — 3-section dashboard: Confidence Health, Fine-Tune Cycle, Feedback Loop
+- README updated: 17 modules, architecture tree, module table
 
 ## Open Findings (not yet addressed)
 
-| #   | Finding                           | Severity | File:Line                                                | Status                                |
-| --- | --------------------------------- | -------- | -------------------------------------------------------- | ------------------------------------- |
-| 1   | Vault not yet deployed to cluster | L4 gate  | infra/terraform/modules/vault/                           | Module written, needs terraform apply |
-| 2   | DR test execution                 | Medium   | docs/operations/runbooks/disaster-recovery.md            | Operational — schedule with team      |
-| 3   | Load test                         | Medium   | (needs new k6 script)                                    | Operational — needs traffic           |
-| 4   | AGX Docker build                  | Medium   | infra/docker/Dockerfile.platforms                        | Cross-repo — NestJS Turborepo         |
-| 5   | On-call rotation                  | Medium   | (PagerDuty)                                              | Team — schedule setup                 |
-| 6   | SOC 2 Type I                      | Low      | (external)                                               | Business — auditor selection          |
-| 7   | ArgoCD (P2)                       | Low      | (new install)                                            | Future — not blocking deploy          |
-| 8   | OTEL Collector not applied        | Low      | infra/kubernetes/base/services/otel-collector.yaml       | Manifest ready, needs kubectl apply   |
-| 9   | Intelligence Ingress not applied  | Low      | infra/kubernetes/base/services/intelligence-ingress.yaml | Manifest ready, needs kubectl apply   |
+| #   | Finding                          | Severity | Status                                  |
+| --- | -------------------------------- | -------- | --------------------------------------- |
+| 1   | Vault not yet deployed           | L4 gate  | Module written, needs terraform apply   |
+| 2   | L5 modules not yet deployed      | L5 gate  | Modules written, needs terraform apply  |
+| 3   | GPU availability in af-south-1   | L5 gate  | g5.xlarge may not be available — verify |
+| 4   | DR test execution                | Medium   | Operational — schedule with team        |
+| 5   | Load test                        | Medium   | Operational — needs traffic             |
+| 6   | AGX Docker build                 | Medium   | Cross-repo — NestJS Turborepo           |
+| 7   | OTEL Collector not applied       | Low      | Manifest ready, needs kubectl apply     |
+| 8   | Intelligence Ingress not applied | Low      | Manifest ready, needs kubectl apply     |
+| 9   | Argo Workflows (P1)              | L5 gate  | Architectural decision needed           |
+| 10  | Shadow deployment / Istio (P2)   | L5 gate  | Service mesh decision needed            |
 
 ## Git State
 
 - **Branch:** main
-- **Last commit:** 819587a feat(vault): implement Vault dynamic credentials module — SIGNAL L4
-- **Uncommitted changes:** README.md (module table update)
-- **Commits this session:** 2 (housekeeping + vault module)
+- **Last commit:** e255982 feat(vault): add AWS secrets engine for per-workflow credentials
+- **Uncommitted changes:** README.md, docs/assessments/audit/auto-dev-state.md
+- **Commits this session:** 9 total (housekeeping + vault + 6 L5 modules)
 
 ## Resume Instructions
 
-Vault module is written and tested (plan-only). Next steps to complete the SIGNAL L4 gate:
+L5 Phase 1 infrastructure is code-complete. Remaining L5 work:
 
-1. Add vault module to a Terraform environment (e.g., testnet-pilot) with real values for rds_endpoint, eks_oidc, and vault_db_admin_password_secret_arn
-2. Run `terraform init && terraform plan` to validate
-3. After plan review, `terraform apply` to deploy Vault to EKS
-4. Initialize Vault cluster: `vault operator init` (only needed once after first deploy)
-5. Configure K8s auth and database engine (Terraform handles this via vault provider)
-6. Test: `vault read database/creds/intelligence-prod` should return temp credentials
-7. Apply OTEL Collector and Intelligence Ingress manifests to cluster
-8. Commit the README.md update (module table change)
+1. Verify GPU instance availability: `aws ec2 describe-instance-type-offerings --location-type availability-zone --filters Name=instance-type,Values=g5.xlarge --region af-south-1`
+2. Update OTEL Collector to export traces to Tempo (add otlp exporter alongside Jaeger)
+3. Argo Workflows installation (P1) — decide: Argo Workflows + ArgoCD, or just Argo Workflows
+4. Istio / Gateway API for shadow deployment (P2) — significant architectural decision
+5. Wire Vault module into testnet-pilot environment and deploy
+6. Apply OTEL Collector and Intelligence Ingress manifests

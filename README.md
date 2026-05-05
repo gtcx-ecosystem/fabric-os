@@ -72,7 +72,7 @@ gtcx-infrastructure/
 │   │   ├── base/            # K8s manifests (6 services + NATS + monitoring)
 │   │   └── overlays/        # dev, staging, production, testnet
 │   ├── terraform/
-│   │   ├── modules/         # 14 reusable modules
+│   │   ├── modules/         # 15 reusable modules
 │   │   │   ├── vpc/         # VPC with 3 subnet tiers, NAT, flow logs, VPC endpoints
 │   │   │   ├── database/    # Dual RDS (operational + append-only audit)
 │   │   │   ├── eks/         # EKS cluster, IRSA, KMS secrets encryption
@@ -86,7 +86,8 @@ gtcx-infrastructure/
 │   │   │   ├── kyc-documents/ # S3 KYC storage (FATF 5yr, presigned URLs, IRSA)
 │   │   │   ├── secrets/     # Secrets Manager + ESO + IRSA
 │   │   │   ├── ci/          # CI/CD IAM roles
-│   │   │   └── (12/14 modules have native Terraform tests)
+│   │   │   ├── vault/       # HashiCorp Vault (HA, KMS unseal, dynamic creds)
+│   │   │   └── (13/15 modules have native Terraform tests)
 │   │   └── environments/
 │   │       ├── testnet-pilot/  # Live in af-south-1
 │   │       └── zimbabwe-pilot/ # ZWCMP deployment
@@ -102,21 +103,22 @@ gtcx-infrastructure/
 
 ## Terraform Modules
 
-| Module        | Purpose                                                            | Tests  |
-| ------------- | ------------------------------------------------------------------ | ------ |
-| vpc           | VPC, subnets, NAT, flow logs, VPC endpoints                        | 6 runs |
-| database      | Dual PostgreSQL (operational + audit), encryption, Secrets Manager | 6 runs |
-| eks           | EKS cluster, IRSA, KMS, control plane logging                      | 5 runs |
-| ecr           | Container registry, KMS encryption, lifecycle, scan-on-push        | 6 runs |
-| alb           | ALB controller, ACM, WAFv2 (OWASP + SQLi + rate limiting)          | 7 runs |
-| backup        | Audit snapshot export to S3 with 7-year Glacier retention          | 7 runs |
-| detective     | CloudTrail + GuardDuty + SNS security alerts                       | 8 runs |
-| compliance    | AWS Config recorder + 7 managed compliance rules                   | 9 runs |
-| compliance-db | Reusable dual-DB for African fintech (7 jurisdictions)             | 7 runs |
-| event-bus     | NATS JetStream security group + EBS volumes                        | 7 runs |
-| kyc-documents | S3 KYC storage with FATF retention and IRSA                        | 7 runs |
-| secrets       | Secrets Manager + IRSA for intelligence services                   | 3 runs |
-| ci            | CI/CD IAM roles                                                    | —      |
+| Module        | Purpose                                                            | Tests   |
+| ------------- | ------------------------------------------------------------------ | ------- |
+| vpc           | VPC, subnets, NAT, flow logs, VPC endpoints                        | 6 runs  |
+| database      | Dual PostgreSQL (operational + audit), encryption, Secrets Manager | 6 runs  |
+| eks           | EKS cluster, IRSA, KMS, control plane logging                      | 5 runs  |
+| ecr           | Container registry, KMS encryption, lifecycle, scan-on-push        | 6 runs  |
+| alb           | ALB controller, ACM, WAFv2 (OWASP + SQLi + rate limiting)          | 7 runs  |
+| backup        | Audit snapshot export to S3 with 7-year Glacier retention          | 7 runs  |
+| detective     | CloudTrail + GuardDuty + SNS security alerts                       | 8 runs  |
+| compliance    | AWS Config recorder + 7 managed compliance rules                   | 9 runs  |
+| compliance-db | Reusable dual-DB for African fintech (7 jurisdictions)             | 7 runs  |
+| event-bus     | NATS JetStream security group + EBS volumes                        | 7 runs  |
+| kyc-documents | S3 KYC storage with FATF retention and IRSA                        | 7 runs  |
+| secrets       | Secrets Manager + IRSA for intelligence services                   | 3 runs  |
+| ci            | CI/CD IAM roles                                                    | —       |
+| vault         | HashiCorp Vault HA (KMS unseal, dynamic DB creds, PKI mTLS)        | 16 runs |
 
 ## Testnet Pilot (Live)
 

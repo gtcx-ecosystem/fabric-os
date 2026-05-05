@@ -1,0 +1,108 @@
+# =============================================================================
+# Intelligence Shadow Deployment — Gateway API Weighted Routing
+# =============================================================================
+# Routes production traffic between stable and candidate model versions
+# using Gateway API HTTPRoute with weighted backends.
+#
+# Lighter than Istio — no sidecar injection. Requires a Gateway API
+# controller (e.g., AWS Gateway API Controller, Envoy Gateway, or
+# nginx-gateway-fabric).
+#
+# Per SIGNAL L5: Shadow deployment for candidate model testing
+# Usage: Adjust weights in HTTPRoute to shift traffic to candidate
+# =============================================================================
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: intelligence-gateway
+  namespace: intelligence
+  labels:
+    app.kubernetes.io/part-of: gtcx-intelligence
+    app.kubernetes.io/component: shadow-routing
+spec:
+  gatewayClassName: aws-alb # or envoy-gateway, nginx
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: Same
+---
+# Weighted route: stable gets 95%, candidate gets 5%
+# To promote: change stable weight to 0, candidate to 100
+# To rollback: change stable weight to 100, candidate to 0
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: intelligence-cortex-shadow
+  namespace: intelligence
+  labels:
+    app.kubernetes.io/part-of: gtcx-intelligence
+    app.kubernetes.io/component: shadow-routing
+spec:
+  parentRefs:
+    - name: intelligence-gateway
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /cortex
+      backendRefs:
+        - name: intelligence-cortex-stable
+          port: 8201
+          weight: 95
+        - name: intelligence-cortex-candidate
+          port: 8201
+          weight: 5
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: intelligence-orchestrator
+          port: 8200
+          weight: 100
+---
+# Stable cortex service (points to pods with model-version=stable label)
+apiVersion: v1
+kind: Service
+metadata:
+  name: intelligence-cortex-stable
+  namespace: intelligence
+  labels:
+    app.kubernetes.io/name: intelligence-cortex
+    app.kubernetes.io/part-of: gtcx-intelligence
+    model-version: stable
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: intelligence-cortex
+    model-version: stable
+  ports:
+    - name: http
+      port: 8201
+      targetPort: 8201
+      protocol: TCP
+---
+# Candidate cortex service (points to pods with model-version=candidate label)
+apiVersion: v1
+kind: Service
+metadata:
+  name: intelligence-cortex-candidate
+  namespace: intelligence
+  labels:
+    app.kubernetes.io/name: intelligence-cortex
+    app.kubernetes.io/part-of: gtcx-intelligence
+    model-version: candidate
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: intelligence-cortex
+    model-version: candidate
+  ports:
+    - name: http
+      port: 8201
+      targetPort: 8201
+      protocol: TCP

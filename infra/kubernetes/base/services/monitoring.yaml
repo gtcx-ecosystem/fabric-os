@@ -402,6 +402,10 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /var/lib/grafana
+            - name: dashboards
+              mountPath: /var/lib/grafana/dashboards
+            - name: dashboard-provisioning
+              mountPath: /etc/grafana/provisioning/dashboards
           livenessProbe:
             httpGet:
               path: /api/health
@@ -425,6 +429,12 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: grafana-data
+        - name: dashboards
+          configMap:
+            name: grafana-dashboards
+        - name: dashboard-provisioning
+          configMap:
+            name: grafana-dashboard-provisioning
 ---
 # -----------------------------------------------------------------------------
 # Grafana PVC
@@ -443,6 +453,47 @@ spec:
   resources:
     requests:
       storage: 10Gi
+---
+# -----------------------------------------------------------------------------
+# Grafana Dashboard Provisioning
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-provisioning
+  namespace: gtcx-monitoring
+  labels:
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/part-of: gtcx
+data:
+  dashboards.yaml: |
+    apiVersion: 1
+    providers:
+      - name: GTCX
+        orgId: 1
+        folder: GTCX
+        type: file
+        disableDeletion: false
+        updateIntervalSeconds: 30
+        options:
+          path: /var/lib/grafana/dashboards
+---
+# -----------------------------------------------------------------------------
+# Grafana Dashboards (intelligence — SIGNAL L3 gate)
+# Dashboard JSON stored as ConfigMap for K8s provisioning.
+# Source: infra/docker/observability/grafana/dashboards/intelligence.json
+# -----------------------------------------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards
+  namespace: gtcx-monitoring
+  labels:
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/part-of: gtcx
+data:
+  intelligence.json: |
+    {"annotations":{"list":[]},"editable":true,"panels":[{"title":"Request Rate","type":"timeseries","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":8,"w":8,"x":0,"y":0},"targets":[{"expr":"sum(rate(intelligence_requests_total[5m])) by (service)","legendFormat":"{{ service }}"}],"fieldConfig":{"defaults":{"unit":"reqps"}}},{"title":"Error Rate (%)","type":"timeseries","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":8,"w":8,"x":8,"y":0},"targets":[{"expr":"sum(rate(intelligence_errors_total[5m])) by (service) / sum(rate(intelligence_requests_total[5m])) by (service) * 100","legendFormat":"{{ service }}"}],"fieldConfig":{"defaults":{"unit":"percent","thresholds":{"steps":[{"color":"green","value":null},{"color":"yellow","value":2},{"color":"red","value":5}]}}}},{"title":"Degraded Rate (%)","type":"timeseries","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":8,"w":8,"x":16,"y":0},"targets":[{"expr":"sum(rate(intelligence_degraded_total[5m])) by (service) / sum(rate(intelligence_requests_total[5m])) by (service) * 100","legendFormat":"{{ service }}"}],"fieldConfig":{"defaults":{"unit":"percent"}}},{"title":"Confidence (p50)","type":"stat","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":4,"w":6,"x":0,"y":8},"targets":[{"expr":"histogram_quantile(0.5, sum(rate(intelligence_confidence_bucket[5m])) by (le))"}],"fieldConfig":{"defaults":{"unit":"percentunit","thresholds":{"steps":[{"color":"red","value":null},{"color":"yellow","value":0.5},{"color":"green","value":0.7}]}}}},{"title":"Confidence Trend (7d)","type":"timeseries","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":8,"w":12,"x":6,"y":8},"targets":[{"expr":"histogram_quantile(0.5, sum(rate(intelligence_confidence_bucket[1h])) by (le))","legendFormat":"p50"},{"expr":"histogram_quantile(0.25, sum(rate(intelligence_confidence_bucket[1h])) by (le))","legendFormat":"p25"},{"expr":"histogram_quantile(0.75, sum(rate(intelligence_confidence_bucket[1h])) by (le))","legendFormat":"p75"}],"fieldConfig":{"defaults":{"unit":"percentunit"}}},{"title":"Circuit Trips","type":"timeseries","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":8,"w":6,"x":18,"y":8},"targets":[{"expr":"increase(intelligence_circuit_trips_total[5m])","legendFormat":"{{ service }}"}],"fieldConfig":{"defaults":{"unit":"short"}}},{"title":"P95 Latency","type":"timeseries","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":8,"w":8,"x":0,"y":16},"targets":[{"expr":"histogram_quantile(0.95, sum(rate(intelligence_request_duration_ms_bucket[5m])) by (le, route))","legendFormat":"{{ route }}"}],"fieldConfig":{"defaults":{"unit":"ms","thresholds":{"steps":[{"color":"green","value":null},{"color":"yellow","value":2000},{"color":"red","value":5000}]}}}},{"title":"Buffer Utilization","type":"gauge","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":6,"w":4,"x":8,"y":16},"targets":[{"expr":"intelligence_buffer_utilization"}],"fieldConfig":{"defaults":{"unit":"percentunit","min":0,"max":1,"thresholds":{"steps":[{"color":"green","value":null},{"color":"yellow","value":0.7},{"color":"red","value":0.9}]}}}},{"title":"Staleness","type":"stat","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":6,"w":4,"x":12,"y":16},"targets":[{"expr":"intelligence_consensus_staleness_seconds"}],"fieldConfig":{"defaults":{"unit":"s","thresholds":{"steps":[{"color":"green","value":null},{"color":"yellow","value":60},{"color":"red","value":300}]}}}},{"title":"Health","type":"stat","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":6,"w":4,"x":16,"y":16},"targets":[{"expr":"intelligence_health_status","legendFormat":"{{ service }}"}],"fieldConfig":{"defaults":{"mappings":[{"type":"value","options":{"0":{"text":"DOWN","color":"red"},"1":{"text":"UP","color":"green"}}}]}}},{"title":"Error Budget Burn","type":"gauge","datasource":{"type":"prometheus","uid":"prometheus"},"gridPos":{"h":6,"w":4,"x":20,"y":16},"targets":[{"expr":"slo:agx:error_budget:burn_rate_1h"}],"fieldConfig":{"defaults":{"unit":"x","min":0,"max":20,"thresholds":{"steps":[{"color":"green","value":null},{"color":"yellow","value":6},{"color":"red","value":14.4}]}}}}],"refresh":"30s","schemaVersion":39,"tags":["intelligence","signal","slo"],"time":{"from":"now-7d","to":"now"},"timezone":"utc","title":"Intelligence — SIGNAL L3 Gate","uid":"gtcx-intelligence-signal","version":1}
 ---
 # -----------------------------------------------------------------------------
 # Grafana Service

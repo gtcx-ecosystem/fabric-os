@@ -14,6 +14,7 @@ groups:
           severity: warning
           service: intelligence
         annotations:
+          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/docs/operations/runbooks/intelligence-error-rate.md'
           summary: 'Intelligence error rate above 5%'
           description: 'Error rate is {{ $value | humanizePercentage }} over the last 5 minutes'
 

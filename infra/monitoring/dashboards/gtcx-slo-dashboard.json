@@ -1,0 +1,124 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "gtcx-slo",
+    "title": "GTCX SLO Overview",
+    "tags": ["gtcx", "slo", "production"],
+    "timezone": "UTC",
+    "schemaVersion": 36,
+    "panels": [
+      {
+        "id": 1,
+        "title": "AGX Availability SLO (30d)",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "slo:agx:availability:ratio_30d",
+            "legendFormat": "Availability"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit",
+            "thresholds": {
+              "steps": [
+                { "color": "red", "value": 0 },
+                { "color": "yellow", "value": 0.99 },
+                { "color": "green", "value": 0.995 }
+              ]
+            }
+          }
+        },
+        "gridPos": { "h": 8, "w": 8, "x": 0, "y": 0 }
+      },
+      {
+        "id": 2,
+        "title": "Protocols Availability SLO (30d)",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "slo:protocols:availability:ratio_30d",
+            "legendFormat": "Availability"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit",
+            "thresholds": {
+              "steps": [
+                { "color": "red", "value": 0 },
+                { "color": "yellow", "value": 0.99 },
+                { "color": "green", "value": 0.995 }
+              ]
+            }
+          }
+        },
+        "gridPos": { "h": 8, "w": 8, "x": 8, "y": 0 }
+      },
+      {
+        "id": 3,
+        "title": "ANISA Availability SLO (30d)",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "slo:anisa:availability:ratio_30d",
+            "legendFormat": "Availability"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit",
+            "thresholds": {
+              "steps": [
+                { "color": "red", "value": 0 },
+                { "color": "yellow", "value": 0.985 },
+                { "color": "green", "value": 0.99 }
+              ]
+            }
+          }
+        },
+        "gridPos": { "h": 8, "w": 8, "x": 16, "y": 0 }
+      },
+      {
+        "id": 4,
+        "title": "Error Budget Burn Rate (1h)",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "slo:agx:error_budget:burn_rate_1h",
+            "legendFormat": "AGX"
+          },
+          {
+            "expr": "slo:protocols:error_budget:burn_rate_1h",
+            "legendFormat": "Protocols"
+          },
+          {
+            "expr": "slo:anisa:error_budget:burn_rate_1h",
+            "legendFormat": "ANISA"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 24, "x": 0, "y": 8 }
+      },
+      {
+        "id": 5,
+        "title": "P95 Latency",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "slo:agx:latency:p95_5m",
+            "legendFormat": "AGX"
+          },
+          {
+            "expr": "slo:protocols:latency:p95_5m",
+            "legendFormat": "Protocols"
+          },
+          {
+            "expr": "slo:anisa:latency:p95_5m",
+            "legendFormat": "ANISA"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 24, "x": 0, "y": 16 }
+      }
+    ]
+  }
+}

@@ -280,7 +280,8 @@ def main():
         print(f"❌ Error: Path {project_path} does not exist")
         sys.exit(1)
     
-    print(f"\n🚀 Generating documentation for {project_name.upper()}...")
+    print(f"\n🚀 Generating DEPLOYMENT documentation for {project_name.upper()}...")
+    print("   Note: Core logic documentation resides in the sensei-ai repository.")
     print("=" * 55)
     generate_documentation(project_name, project_path)
     print("=" * 55)

@@ -95,7 +95,8 @@ def generate_report(base_path: Path = None):
         base_path = Path(__file__).parent.parent
     
     print("\n" + "="*60)
-    print("  GTCX MIGRATION STACK - DOCUMENTATION REPORT")
+    print("  GTCX MIGRATION STACK - DEPLOYMENT DOC REPORT")
+    print("  Note: Core logic documentation resides in sensei-ai.")
     print("  Generated:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     print("="*60)
     

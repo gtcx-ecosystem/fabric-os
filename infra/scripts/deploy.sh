@@ -27,7 +27,8 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+INFRA_ROOT="${PROJECT_ROOT}/infra"
 
 log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
 log_success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
@@ -42,12 +43,20 @@ log_step() { echo -e "${CYAN}[STEP]${NC} $1"; }
 ENVIRONMENT="${1:-}"
 APPROVAL_TICKET=""
 ROLLBACK=false
+DRY_RUN=false
 VERSION=""
 CANARY_PERCENTAGE=5
 CANARY_WAIT_SECONDS=300  # 5 minutes
 AWS_REGION="${AWS_REGION:-af-south-1}"
 AWS_ACCOUNT_ID="${AWS_ACCOUNT_ID:-}"
 ECR_REGISTRY=""
+
+if [[ "${ENVIRONMENT}" == "--help" ]] || [[ "${ENVIRONMENT}" == "-h" ]] || [[ "${ENVIRONMENT}" == "help" ]]; then
+    echo "Usage: $(basename "$0") <environment> [--approval-ticket=GTCX-XXX] [--version=TAG] [--rollback] [--dry-run] [--canary=N]"
+    echo ""
+    echo "Environments: development | staging | production"
+    exit 0
+fi
 
 # Parse flags
 shift || true
@@ -63,6 +72,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --rollback)
             ROLLBACK=true
+            shift
+            ;;
+        --dry-run)
+            DRY_RUN=true
             shift
             ;;
         --canary=*)
@@ -106,12 +119,17 @@ validate_inputs() {
             ;;
     esac
     
-    # Production requires approval ticket
-    if [[ "${ENVIRONMENT}" == "production" ]] && [[ -z "${APPROVAL_TICKET}" ]] && [[ "${ROLLBACK}" != "true" ]]; then
+    # Production requires approval ticket unless this is a dry-run plan.
+    if [[ "${ENVIRONMENT}" == "production" ]] && [[ -z "${APPROVAL_TICKET}" ]] && [[ "${ROLLBACK}" != "true" ]] && [[ "${DRY_RUN}" != "true" ]]; then
         log_error "Production deployment requires --approval-ticket=GTCX-XXX"
         exit 1
     fi
-    
+
+    if [[ "${DRY_RUN}" == "true" ]]; then
+        log_success "Inputs validated (dry-run)"
+        return 0
+    fi
+
     # Check kubectl access
     if ! kubectl cluster-info &>/dev/null; then
         log_error "Cannot connect to Kubernetes cluster"
@@ -119,6 +137,38 @@ validate_inputs() {
     fi
     
     log_success "Inputs validated"
+}
+
+dry_run_plan() {
+    log_step "Rendering deployment dry-run plan..."
+
+    if [[ -z "${VERSION}" ]]; then
+        VERSION="sha-dry-run"
+    fi
+
+    local overlay_dir="${INFRA_ROOT}/kubernetes/overlays/${ENVIRONMENT}"
+    if [[ ! -d "${overlay_dir}" ]]; then
+        log_error "Overlay directory not found: ${overlay_dir}"
+        exit 1
+    fi
+
+    local ecr_registry="${ECR_REGISTRY:-000000000000.dkr.ecr.${AWS_REGION}.amazonaws.com}"
+    if [[ "${ENVIRONMENT}" == "testnet-pilot" ]]; then
+        NAMESPACE="${NAMESPACE:-gtcx-testnet}"
+    fi
+
+    log_info "Environment: ${ENVIRONMENT}"
+    log_info "Namespace: ${NAMESPACE}"
+    log_info "Overlay: ${overlay_dir}"
+    log_info "Version: ${VERSION}"
+    log_info "AGX image: ${ecr_registry}/gtcx-agx:${VERSION}"
+    log_info "Protocols image: ${ecr_registry}/gtcx-protocols:${VERSION}"
+
+    if [[ "${ENVIRONMENT}" == "production" ]]; then
+        log_info "Canary percentage: ${CANARY_PERCENTAGE}%"
+    fi
+
+    log_success "Dry-run plan complete"
 }
 
 # -----------------------------------------------------------------------------
@@ -152,7 +202,7 @@ pre_deployment_checks() {
         log_warning "  Approval Ticket: ${APPROVAL_TICKET}"
         log_warning "=========================================="
         echo ""
-        read -p "Type 'DEPLOY' to confirm: " confirm
+        read -r -p "Type 'DEPLOY' to confirm: " confirm
         if [[ "${confirm}" != "DEPLOY" ]]; then
             log_info "Deployment cancelled"
             exit 0
@@ -206,7 +256,7 @@ build_images() {
     log_step "Building Docker images..."
 
     local ecosystem_root
-    ecosystem_root="$(cd "${PROJECT_ROOT}/../.." && pwd)"
+    ecosystem_root="$(cd "${PROJECT_ROOT}/.." && pwd)"
     local platforms_root="${ecosystem_root}/6-platforms"
     local protocols_root="${PROJECT_ROOT}/../gtcx-protocols"
 
@@ -229,14 +279,14 @@ build_images() {
 
     # Build deployable platform service image
     docker build \
-        -f "${PROJECT_ROOT}/infra/docker/Dockerfile.platforms" \
+        -f "${INFRA_ROOT}/docker/Dockerfile.platforms" \
         --build-arg PLATFORM=agx \
         --build-arg APP_PORT=3000 \
         -t "gtcx/agx:${VERSION}" \
         "${platforms_root}"
 
     docker build \
-        -f "${PROJECT_ROOT}/infra/docker/Dockerfile.protocols" \
+        -f "${INFRA_ROOT}/docker/Dockerfile.protocols" \
         -t "gtcx/protocols:${VERSION}" \
         "${protocols_root}"
 
@@ -275,14 +325,14 @@ security_scan() {
 deploy() {
     log_step "Deploying to ${ENVIRONMENT}..."
     
-    cd "${PROJECT_ROOT}/infra/kubernetes"
+    cd "${INFRA_ROOT}/kubernetes"
     
     # Update image tags in kustomization
     log_info "Updating image tags..."
     cd "overlays/${ENVIRONMENT}"
     kustomize edit set image "gtcx/agx=${ECR_REGISTRY}/gtcx-agx:${VERSION}"
     kustomize edit set image "gtcx/protocols=${ECR_REGISTRY}/gtcx-protocols:${VERSION}"
-    cd "${PROJECT_ROOT}/infra/kubernetes"
+    cd "${INFRA_ROOT}/kubernetes"
 
     # Apply configuration
     log_info "Applying Kubernetes configuration..."
@@ -314,10 +364,11 @@ deploy() {
 # canary is deleted and the primary is untouched.
 # -----------------------------------------------------------------------------
 
-CANARY_MANIFEST="${PROJECT_ROOT}/infra/kubernetes/overlays/production/canary.yaml"
+CANARY_MANIFEST="${INFRA_ROOT}/kubernetes/overlays/production/canary.yaml"
 
 canary_deploy() {
     log_step "Starting canary deployment..."
+    log_info "Canary percentage target: ${CANARY_PERCENTAGE}%"
 
     # Patch the canary manifest with the target image
     local canary_image="${ECR_REGISTRY}/gtcx-agx:${VERSION}"
@@ -396,9 +447,10 @@ rollback_deployment() {
         kubectl rollout status "deployment/${dep}" -n "${NAMESPACE}" --timeout=300s
     done
 
-    local evidence_dir="${PROJECT_ROOT}/infra/security/reports/rollback-evidence/${ENVIRONMENT}/$(date -u +%Y%m%dT%H%M%SZ)"
-    if [[ -x "${PROJECT_ROOT}/infra/scripts/capture-rollback-evidence.sh" ]]; then
-        "${PROJECT_ROOT}/infra/scripts/capture-rollback-evidence.sh" "${ENVIRONMENT}" \
+    local evidence_dir
+    evidence_dir="${INFRA_ROOT}/security/reports/rollback-evidence/${ENVIRONMENT}/$(date -u +%Y%m%dT%H%M%SZ)"
+    if [[ -x "${INFRA_ROOT}/scripts/capture-rollback-evidence.sh" ]]; then
+        "${INFRA_ROOT}/scripts/capture-rollback-evidence.sh" "${ENVIRONMENT}" \
             --output-dir="${evidence_dir}" \
             --reason="deploy-rollback" || log_warning "Rollback evidence capture failed"
     fi
@@ -439,7 +491,8 @@ post_deployment() {
     # Write to CloudWatch Logs if AWS CLI available, otherwise S3
     if command -v aws &>/dev/null && [[ -n "${AWS_REGION:-}" ]]; then
         local log_group="/gtcx/${ENVIRONMENT}/deployments"
-        local log_stream="deploy-$(date -u +%Y-%m-%d)"
+        local log_stream
+        log_stream="deploy-$(date -u +%Y-%m-%d)"
         aws logs create-log-group --log-group-name "${log_group}" 2>/dev/null || true
         aws logs create-log-stream --log-group-name "${log_group}" --log-stream-name "${log_stream}" 2>/dev/null || true
         aws logs put-log-events \
@@ -467,6 +520,11 @@ main() {
     fi
     
     validate_inputs
+
+    if [[ "${DRY_RUN}" == "true" ]]; then
+        dry_run_plan
+        exit 0
+    fi
     
     if [[ "${ROLLBACK}" == "true" ]]; then
         rollback_deployment

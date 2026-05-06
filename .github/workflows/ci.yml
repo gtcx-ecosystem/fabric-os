@@ -41,11 +41,8 @@ jobs:
       - name: Type check
         run: pnpm typecheck
 
-      - name: Fine-tune workflow policy check
-        run: pnpm check:fine-tune-workflow-policy
-
-      - name: Workflow image contract check
-        run: pnpm check:workflow-image-contract
+      - name: Infrastructure validation smoke
+        run: pnpm test
 
       - name: Build
         run: pnpm build
@@ -80,6 +77,15 @@ jobs:
         uses: hashicorp/setup-terraform@v4
         with:
           terraform_version: '1.5.0'
+
+      - name: Shell script checks
+        run: |
+          shellcheck infra/scripts/*.sh
+          bash infra/scripts/build-push.sh --list >/dev/null
+          bash infra/scripts/deploy.sh staging --dry-run --version=sha-ci-smoke >/dev/null
+          bash infra/scripts/fine-tune-workflow.sh --help >/dev/null
+          bash infra/scripts/capture-rollback-evidence.sh --help >/dev/null
+          bash infra/scripts/prepare-intelligence-evidence-env.sh --help >/dev/null
 
       - name: Terraform format check
         run: terraform fmt -check -recursive infra/terraform/
@@ -156,6 +162,18 @@ jobs:
           cd infra/terraform/modules/kyc-documents
           terraform init -backend=false
           terraform validate
+
+      - name: Terraform native tests
+        run: |
+          for module in vpc database eks ecr workflow-orchestration secrets alb backup detective compliance event-bus kyc-documents compliance-db ml-pipeline trace-pipeline vault; do
+            cd "infra/terraform/modules/${module}"
+            if [ "${module}" = "secrets" ]; then
+              echo '{}' | zip -q lambda/rotation.zip -
+            fi
+            terraform init -backend=false
+            terraform test
+            cd - >/dev/null
+          done
 
       - name: Kustomize build — base
         run: kubectl kustomize infra/kubernetes/base/ > /dev/null

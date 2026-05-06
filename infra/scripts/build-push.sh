@@ -173,7 +173,8 @@ build_and_push() {
     context="$(service_context "$svc")"
     local args
     args="$(service_args "$svc")"
-    local ecr_repo="${registry}/$(service_ecr_repo "$svc")"
+    local ecr_repo
+    ecr_repo="${registry}/$(service_ecr_repo "$svc")"
 
     # Validate
     if [[ ! -f "${dockerfile}" ]]; then

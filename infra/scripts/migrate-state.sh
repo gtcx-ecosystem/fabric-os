@@ -58,7 +58,7 @@ echo ""
 # --- Safety confirmation ---
 log_warning "This will migrate Terraform state to ${REGION}."
 log_warning "Ensure you have backups before proceeding."
-read -p "Type 'MIGRATE' to confirm: " confirm
+read -r -p "Type 'MIGRATE' to confirm: " confirm
 if [[ "${confirm}" != "MIGRATE" ]]; then
     log_info "Cancelled."
     exit 0

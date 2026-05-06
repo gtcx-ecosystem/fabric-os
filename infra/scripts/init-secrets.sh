@@ -12,7 +12,6 @@
 set -euo pipefail
 
 ENVIRONMENT="${1:-zimbabwe-pilot}"
-PREFIX="gtcx/${ENVIRONMENT}"
 
 echo "=== GTCX Secret Initialization ==="
 echo "Environment: ${ENVIRONMENT}"

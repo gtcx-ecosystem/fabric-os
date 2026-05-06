@@ -21,6 +21,8 @@ DevOps tooling, deployment automation, and security framework for the GTCX ecosy
 
 > **Note:** Current operational logic (deployments, canary, secrets) is handled via **Bash scripts**. Ensure your shell environment is secure and avoid logging sensitive `stdout` until the transition to the compiled **GTCX-CTL** is complete. See the [Hardening Strategy](./docs/audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md).
 
+This repo now ships a real validation entrypoint for that Bash surface at `pnpm test` and `pnpm test:full`. Those checks are required until the control plane transition is complete.
+
 ---
 
 ## Quick Start
@@ -33,6 +35,7 @@ DevOps tooling, deployment automation, and security framework for the GTCX ecosy
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) (for K8s operations)
 - [Docker](https://www.docker.com/) (for local development)
 - [AWS CLI](https://aws.amazon.com/cli/) v2 (for cloud deployments)
+- [ShellCheck](https://www.shellcheck.net/) (for operator-script validation)
 
 ### Setup
 
@@ -45,8 +48,10 @@ pnpm install
 ### Validate
 
 ```bash
-pnpm lint              # Lint IaC and scripts
+pnpm lint              # Lint workspace packages
 pnpm format:check      # Verify Prettier formatting
+pnpm test              # Policy checks, shellcheck, and operator-script smoke tests
+pnpm test:full         # Add terraform validate/test, kustomize, compose, and deploy dry-run validation
 ```
 
 ### Local Development Stack

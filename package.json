@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "test": "echo 'Infrastructure tests run via iac-validation CI job (terraform validate + kustomize build + docker compose config)'",
+    "test": "bash ./infra/scripts/validate.sh quick",
+    "test:full": "bash ./infra/scripts/validate.sh full",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yaml,yml}\"",
@@ -27,6 +28,7 @@
     "docker:build": "docker compose build",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
+    "lint:shell": "shellcheck infra/scripts/*.sh",
     "prepare": "husky"
   },
   "devDependencies": {

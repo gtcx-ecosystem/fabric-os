@@ -118,9 +118,9 @@ variable "enablement_evidence_manifest" {
 }
 
 variable "curator_image" {
-  description = "Container image for dataset curation steps"
+  description = "Container image for dataset curation steps; must be set explicitly by consuming environments"
   type        = string
-  default     = "placeholder/gtcx-intelligence-curator:sha-contract"
+  default     = ""
 
   validation {
     condition     = trimspace(var.curator_image) == "" || !can(regex(":latest$", trimspace(var.curator_image)))
@@ -140,9 +140,9 @@ variable "trainer_image" {
 }
 
 variable "evaluator_image" {
-  description = "Container image for evaluation steps"
+  description = "Container image for evaluation steps; must be set explicitly by consuming environments"
   type        = string
-  default     = "placeholder/gtcx-intelligence-evaluator:sha-contract"
+  default     = ""
 
   validation {
     condition     = trimspace(var.evaluator_image) == "" || !can(regex(":latest$", trimspace(var.evaluator_image)))
@@ -151,9 +151,9 @@ variable "evaluator_image" {
 }
 
 variable "promoter_image" {
-  description = "Container image for promotion-gate steps"
+  description = "Container image for promotion-gate steps; must be set explicitly by consuming environments"
   type        = string
-  default     = "placeholder/gtcx-intelligence-promoter:sha-contract"
+  default     = ""
 
   validation {
     condition     = trimspace(var.promoter_image) == "" || !can(regex(":latest$", trimspace(var.promoter_image)))

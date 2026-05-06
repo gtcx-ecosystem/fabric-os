@@ -1,7 +1,3 @@
 packages:
   # Infrastructure
   - 'infra/migrations'
-
-  # Tools
-  - 'tools/scripts'
-  - 'tools/templates'

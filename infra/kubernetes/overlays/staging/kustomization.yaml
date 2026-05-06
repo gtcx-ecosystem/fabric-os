@@ -26,9 +26,9 @@ configMapGenerator:
 
 images:
   - name: gtcx/agx
-    newTag: staging
+    newTag: v0.1.0-staging
   - name: gtcx/protocols
-    newTag: staging
+    newTag: v0.1.0-staging
 
 # Staging resource limits (moderate)
 patches:

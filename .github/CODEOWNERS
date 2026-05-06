@@ -15,4 +15,4 @@ infra/security/ @gtcx/security-team
 SECURITY.md @gtcx/security-team
 
 # SOPs and governance
-_sop/ @gtcx/platform-team @gtcx/security-team
+docs/operations/ @gtcx/platform-team @gtcx/security-team

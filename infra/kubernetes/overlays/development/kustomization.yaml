@@ -50,6 +50,6 @@ secretGenerator:
 
 images:
   - name: gtcx/agx
-    newTag: dev
+    newTag: v0.1.0-dev
   - name: gtcx/protocols
-    newTag: dev
+    newTag: v0.1.0-dev

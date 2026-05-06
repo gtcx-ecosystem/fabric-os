@@ -1,0 +1,17 @@
+{
+  "name": "@gtcx/infra-migrations",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GTCX infrastructure migrations and documentation tooling",
+  "scripts": {
+    "lint": "echo 'No lint configured for migrations'",
+    "format": "prettier --write \"**/*.{py,md,json,yaml,yml}\"",
+    "format:check": "prettier --check \"**/*.{py,md,json,yaml,yml}\"",
+    "build": "echo 'No build step for migrations'",
+    "typecheck": "echo 'No typecheck for migrations'",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.0"
+  }
+}

@@ -7,8 +7,11 @@ The evidence bundle is generated locally and written under `infra/security/repor
 ## Capture Command
 
 ```bash
-./infra/scripts/capture-rollback-evidence.sh staging \
+./infra/scripts/capture-rollback-evidence.sh testnet-pilot \
   --reason=failed-canary \
+  --scenario="bad revision rolled back after failed health check" \
+  --previous-revision=sha-previous \
+  --failed-revision=sha-failed \
   --smoke-base-url=https://api.testnet.gtcx.io
 ```
 
@@ -17,6 +20,9 @@ Production example:
 ```bash
 ./infra/scripts/capture-rollback-evidence.sh production \
   --reason=post-rollback-health-check \
+  --scenario="production rollback after failed health check" \
+  --previous-revision=sha-previous \
+  --failed-revision=sha-failed \
   --smoke-base-url=https://api.gtcx.io
 ```
 
@@ -28,6 +34,7 @@ Production example:
 - services and ingress state
 - namespace events
 - one smoke or health check result if a base URL or local pod probe is available
+- `rollback-evidence.json` with the machine-readable fields consumed by the `gtcx-intelligence` deployment smoke evidence gate
 
 ## Automatic Capture
 
@@ -38,9 +45,11 @@ If the automatic capture fails, run the command manually and preserve the output
 ## Minimum Evidence To Preserve
 
 - failed revision identifier or image tag
+- `rollback-evidence.json`
 - rollback timestamp
 - rollout history before and after rollback
 - post-rollback health result
+- post-rollback metrics result from `/metrics`
 - any linked incident or approval ticket
 
 ## Related

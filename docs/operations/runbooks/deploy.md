@@ -97,8 +97,15 @@ Rollback runs `kubectl rollout undo` on each deployment labeled `app.kubernetes.
 After rollback, capture evidence with:
 
 ```bash
-./infra/scripts/capture-rollback-evidence.sh staging --reason=manual-rollback
+./infra/scripts/capture-rollback-evidence.sh staging \
+  --reason=manual-rollback \
+  --scenario="manual rollback after failed deploy" \
+  --previous-revision=sha-previous \
+  --failed-revision=sha-failed \
+  --smoke-base-url=https://api.testnet.gtcx.io
 ```
+
+Use the generated `rollback-evidence.json` as `ROLLBACK_EVIDENCE_PATH` for the intelligence deployment smoke evidence gate.
 
 **Before deploying to production**: always confirm the previous stable image tag so rollback target is known.
 

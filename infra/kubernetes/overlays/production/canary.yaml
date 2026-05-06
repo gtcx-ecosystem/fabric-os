@@ -45,6 +45,7 @@ spec:
         runAsUser: 1001
         runAsGroup: 1001
         fsGroup: 1001
+      terminationGracePeriodSeconds: 30
       containers:
         - name: agx
           image: gtcx/agx:canary
@@ -73,6 +74,10 @@ spec:
             capabilities:
               drop:
                 - ALL
+          lifecycle:
+            preStop:
+              exec:
+                command: ['/bin/sh', '-c', 'sleep 15']
           livenessProbe:
             httpGet:
               path: /api/health

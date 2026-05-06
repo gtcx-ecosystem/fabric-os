@@ -101,6 +101,20 @@ spec:
         fsGroup: 10001
         seccompProfile:
           type: RuntimeDefault
+      terminationGracePeriodSeconds: 30
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: otel-collector
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: otel-collector
       containers:
         - name: otel-collector
           image: otel/opentelemetry-collector-contrib:0.96.0
@@ -129,6 +143,10 @@ spec:
             capabilities:
               drop:
                 - ALL
+          lifecycle:
+            preStop:
+              exec:
+                command: ['/bin/sh', '-c', 'sleep 15']
           volumeMounts:
             - name: config
               mountPath: /etc/otel
@@ -178,3 +196,19 @@ spec:
       protocol: TCP
   selector:
     app.kubernetes.io/name: otel-collector
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: otel-collector
+  namespace: observability
+  labels:
+    app.kubernetes.io/name: otel-collector
+    app.kubernetes.io/part-of: gtcx
+    app.kubernetes.io/component: observability
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: otel-collector

@@ -77,6 +77,20 @@ spec:
         fsGroup: 1000
         seccompProfile:
           type: RuntimeDefault
+      terminationGracePeriodSeconds: 30
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: gtcx-nats
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: gtcx-nats
       containers:
         - name: nats
           image: nats:2.10-alpine
@@ -107,6 +121,10 @@ spec:
             capabilities:
               drop:
                 - ALL
+          lifecycle:
+            preStop:
+              exec:
+                command: ['/bin/sh', '-c', 'sleep 15']
           livenessProbe:
             httpGet:
               path: /healthz

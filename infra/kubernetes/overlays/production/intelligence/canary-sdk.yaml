@@ -33,9 +33,23 @@ spec:
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
+      terminationGracePeriodSeconds: 60
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: intelligence-sdk
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: intelligence-sdk
       containers:
         - name: intelligence-sdk
-          image: '${ECR_REGISTRY}/gtcx-intelligence-sdk:latest'
+          image: '${ECR_REGISTRY}/gtcx-intelligence-sdk:v0.1.0'
           ports:
             - name: http
               containerPort: 8200
@@ -95,6 +109,10 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 3
             failureThreshold: 10
+          lifecycle:
+            preStop:
+              exec:
+                command: ['/bin/sh', '-c', 'sleep 15']
           volumeMounts:
             - name: cortex-data
               mountPath: /data

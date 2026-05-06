@@ -42,10 +42,23 @@ spec:
         fsGroup: 1001
         seccompProfile:
           type: RuntimeDefault
-      terminationGracePeriodSeconds: 15
+      terminationGracePeriodSeconds: 30
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: gtcx-protocols
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: gtcx-protocols
       containers:
         - name: protocols
-          image: gtcx/protocols:latest
+          image: gtcx/protocols:v0.1.0
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -80,6 +93,10 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: ['ALL']
+          lifecycle:
+            preStop:
+              exec:
+                command: ['/bin/sh', '-c', 'sleep 15']
           livenessProbe:
             httpGet:
               path: /health

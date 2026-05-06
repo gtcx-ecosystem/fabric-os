@@ -1,0 +1,9 @@
+# =============================================================================
+# Patch: Protocol Services NetworkPolicy — Database subnet CIDR
+# =============================================================================
+# Per-environment value. Update this patch for each deployment region.
+# Example (Zimbabwe pilot): 10.1.8.0/21
+# =============================================================================
+- op: replace
+  path: /spec/egress/0/to/0/ipBlock/cidr
+  value: 10.1.8.0/21

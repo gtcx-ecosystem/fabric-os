@@ -40,9 +40,23 @@ spec:
         fsGroup: 1001
         seccompProfile:
           type: RuntimeDefault
+      terminationGracePeriodSeconds: 30
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: gtcx-agx
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: gtcx-agx
       containers:
         - name: agx
-          image: gtcx/agx:latest
+          image: gtcx/agx:v0.1.0
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -68,6 +82,10 @@ spec:
             capabilities:
               drop:
                 - ALL
+          lifecycle:
+            preStop:
+              exec:
+                command: ['/bin/sh', '-c', 'sleep 15']
           livenessProbe:
             httpGet:
               path: /api/health

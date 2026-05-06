@@ -17,9 +17,7 @@ resources:
   - configmaps/base-config.yaml
   - services/nats.yaml
   - services/api.yaml
-  - services/crypto.yaml
   - services/protocols.yaml
-  - services/intelligence.yaml
   - services/platform.yaml
 
 configMapGenerator:
@@ -54,12 +52,6 @@ secretGenerator:
 # =============================================================
 images:
   - name: gtcx/agx
-    newTag: v0.1.0
-  - name: gtcx/crx
-    newTag: v0.1.0
-  - name: gtcx/sgx
-    newTag: v0.1.0
-  - name: gtcx/crypto
     newTag: v0.1.0
   - name: gtcx/protocols
     newTag: v0.1.0

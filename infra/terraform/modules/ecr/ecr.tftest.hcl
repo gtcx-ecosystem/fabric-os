@@ -7,7 +7,7 @@
 
 variables {
   environment        = "test"
-  repositories       = ["gtcx-agx", "gtcx-protocols", "gtcx-crypto"]
+  repositories       = ["gtcx-agx", "gtcx-protocols"]
   image_tag_mutability = "IMMUTABLE"
   max_image_count    = 30
 }
@@ -20,7 +20,7 @@ run "creates_repositories_for_each_service" {
   command = plan
 
   assert {
-    condition     = length(aws_ecr_repository.repos) == 3
+    condition     = length(aws_ecr_repository.repos) == 2
     error_message = "Must create one ECR repository per service"
   }
 }
@@ -47,7 +47,7 @@ run "force_delete_disabled" {
   command = plan
 
   assert {
-    condition     = aws_ecr_repository.repos["gtcx-crypto"].force_delete == false
+    condition     = aws_ecr_repository.repos["gtcx-protocols"].force_delete == false
     error_message = "Force delete must be disabled to prevent accidental image loss"
   }
 }

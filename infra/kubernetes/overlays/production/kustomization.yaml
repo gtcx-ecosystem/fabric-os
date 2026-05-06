@@ -40,11 +40,7 @@ configMapGenerator:
 images:
   - name: gtcx/agx
     newTag: v1.0.0 # Pinned versions in production
-  - name: gtcx/crx
-    newTag: v1.0.0
-  - name: gtcx/sgx
-    newTag: v1.0.0
-  - name: gtcx/crypto
+  - name: gtcx/protocols
     newTag: v1.0.0
 
 # Production resource configuration
@@ -69,21 +65,6 @@ patches:
     target:
       kind: Deployment
       name: gtcx-agx
-
-  # Crypto service - production resources
-  - patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 3
-      - op: replace
-        path: /spec/template/spec/containers/0/resources/requests/cpu
-        value: "250m"
-      - op: replace
-        path: /spec/template/spec/containers/0/resources/requests/memory
-        value: "256Mi"
-    target:
-      kind: Deployment
-      name: gtcx-crypto
 
   # HPA - production scaling
   - patch: |-

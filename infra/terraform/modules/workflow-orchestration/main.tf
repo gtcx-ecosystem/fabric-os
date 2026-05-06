@@ -17,7 +17,154 @@ locals {
     Principle   = "SIGNAL-L5"
   })
 
-  oidc_issuer = var.eks_oidc_provider_url
+  oidc_issuer            = var.eks_oidc_provider_url
+  workflow_enabled       = var.enable_fine_tune_workflow
+  trainer_enabled        = trimspace(var.trainer_image) != ""
+  red_team_enabled       = trimspace(var.red_team_image) != ""
+  evidence_manifest_path = trimspace(var.enablement_evidence_manifest) != "" ? "${path.root}/${trimspace(var.enablement_evidence_manifest)}" : ""
+  evidence_manifest      = local.workflow_enabled && local.evidence_manifest_path != "" && fileexists(local.evidence_manifest_path) ? jsondecode(file(local.evidence_manifest_path)) : null
+
+  fine_tune_steps = concat(
+    [
+      [{ name = "curate-dataset", template = "curate" }],
+    ],
+    local.trainer_enabled ? [[{ name = "fine-tune", template = "train" }]] : [],
+    [
+      [{ name = "evaluate", template = "eval" }],
+    ],
+    local.red_team_enabled ? [[{ name = "red-team", template = "red-team-scan" }]] : [],
+    [
+      [{ name = "promote-or-reject", template = "promotion-gate" }],
+    ]
+  )
+
+  fine_tune_templates = concat(
+    [
+      {
+        name = "curate"
+        container = {
+          image   = var.curator_image
+          command = ["node", "dist/learning/curator.js"]
+          args    = ["--dataset-version", "{{workflow.parameters.dataset-version}}"]
+        }
+      },
+    ],
+    local.trainer_enabled ? [{
+      name = "train"
+      nodeSelector = {
+        "nvidia.com/gpu.present" = "true"
+      }
+      tolerations = [{
+        key      = "nvidia.com/gpu"
+        operator = "Exists"
+        effect   = "NoSchedule"
+      }]
+      container = {
+        image   = var.trainer_image
+        command = ["python", "fine_tune.py"]
+        resources = {
+          limits = {
+            "nvidia.com/gpu" = "1"
+            memory           = "16Gi"
+          }
+          requests = {
+            "nvidia.com/gpu" = "1"
+            memory           = "8Gi"
+          }
+        }
+      }
+    }] : [],
+    [
+      {
+        name = "eval"
+        container = {
+          image   = var.evaluator_image
+          command = ["node", "dist/learning/eval.js"]
+          args    = ["--threshold", "{{workflow.parameters.eval-threshold}}"]
+        }
+      },
+    ],
+    local.red_team_enabled ? [{
+      name = "red-team-scan"
+      container = {
+        image   = var.red_team_image
+        command = ["python", "-m", "garak", "--model-type", "local"]
+      }
+    }] : [],
+    [
+      {
+        name = "promotion-gate"
+        container = {
+          image   = var.promoter_image
+          command = ["node", "dist/learning/promoter.js"]
+          args    = ["--model-id", "{{workflow.parameters.model-id}}"]
+        }
+      },
+    ]
+  )
+}
+
+resource "terraform_data" "workflow_policy_guard" {
+  input = {
+    environment = var.environment
+  }
+
+  lifecycle {
+    precondition {
+      condition     = !local.workflow_enabled || trimspace(var.enablement_evidence_manifest) != ""
+      error_message = "enable_fine_tune_workflow=true requires enablement_evidence_manifest to be set."
+    }
+
+    precondition {
+      condition     = !local.workflow_enabled || fileexists(local.evidence_manifest_path)
+      error_message = "enable_fine_tune_workflow=true requires an evidence manifest file that exists relative to the environment root module."
+    }
+
+    precondition {
+      condition     = !local.workflow_enabled || trimspace(var.curator_image) != ""
+      error_message = "enable_fine_tune_workflow=true requires curator_image to be set."
+    }
+
+    precondition {
+      condition     = !local.workflow_enabled || trimspace(var.trainer_image) != ""
+      error_message = "enable_fine_tune_workflow=true requires trainer_image to be set."
+    }
+
+    precondition {
+      condition     = !local.workflow_enabled || trimspace(var.evaluator_image) != ""
+      error_message = "enable_fine_tune_workflow=true requires evaluator_image to be set."
+    }
+
+    precondition {
+      condition     = !local.workflow_enabled || trimspace(var.promoter_image) != ""
+      error_message = "enable_fine_tune_workflow=true requires promoter_image to be set."
+    }
+
+    precondition {
+      condition     = !local.workflow_enabled || try(local.evidence_manifest.environment, "") == var.environment
+      error_message = "Evidence manifest environment must match the Terraform environment."
+    }
+
+    precondition {
+      condition     = !local.workflow_enabled || try(local.evidence_manifest.checks.trainer_artifact.status, "") == "verified"
+      error_message = "Evidence manifest must mark checks.trainer_artifact.status as verified before enabling the workflow."
+    }
+
+    precondition {
+      condition     = !local.workflow_enabled || try(local.evidence_manifest.checks.eval_gate.status, "") == "verified"
+      error_message = "Evidence manifest must mark checks.eval_gate.status as verified before enabling the workflow."
+    }
+
+    precondition {
+      condition     = !local.workflow_enabled || try(local.evidence_manifest.checks.promotion_target.status, "") == "verified"
+      error_message = "Evidence manifest must mark checks.promotion_target.status as verified before enabling the workflow."
+    }
+
+    precondition {
+      condition     = !local.workflow_enabled || try(local.evidence_manifest.checks.staging_e2e.status, "") == "verified"
+      error_message = "Evidence manifest must mark checks.staging_e2e.status as verified before enabling the workflow."
+    }
+  }
 }
 
 # -----------------------------------------------------------------------------
@@ -219,6 +366,8 @@ resource "kubernetes_service_account" "workflow" {
 # -----------------------------------------------------------------------------
 
 resource "kubectl_manifest" "fine_tune_workflow_template" {
+  count = local.workflow_enabled ? 1 : 0
+
   yaml_body = yamlencode({
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "WorkflowTemplate"
@@ -236,74 +385,13 @@ resource "kubectl_manifest" "fine_tune_workflow_template" {
           { name = "eval-threshold", value = var.eval_threshold },
         ]
       }
-      templates = [
-        {
-          name = "fine-tune-pipeline"
-          steps = [
-            [{ name = "curate-dataset", template = "curate" }],
-            [{ name = "fine-tune", template = "train" }],
-            [{ name = "evaluate", template = "eval" }],
-            [{ name = "red-team", template = "red-team-scan" }],
-            [{ name = "promote-or-reject", template = "promotion-gate" }],
-          ]
-        },
-        {
-          name = "curate"
-          container = {
-            image   = "placeholder/gtcx-intelligence-sdk:latest"
-            command = ["node", "dist/learning/curator.js"]
-            args    = ["--dataset-version", "{{workflow.parameters.dataset-version}}"]
-          }
-        },
-        {
-          name = "train"
-          nodeSelector = {
-            "nvidia.com/gpu.present" = "true"
-          }
-          tolerations = [{
-            key      = "nvidia.com/gpu"
-            operator = "Exists"
-            effect   = "NoSchedule"
-          }]
-          container = {
-            image   = "placeholder/gtcx-intelligence-sdk:latest"
-            command = ["python", "fine_tune.py"]
-            resources = {
-              limits = {
-                "nvidia.com/gpu" = "1"
-                memory           = "16Gi"
-              }
-              requests = {
-                "nvidia.com/gpu" = "1"
-                memory           = "8Gi"
-              }
-            }
-          }
-        },
-        {
-          name = "eval"
-          container = {
-            image   = "placeholder/gtcx-intelligence-sdk:latest"
-            command = ["node", "dist/learning/eval.js"]
-            args    = ["--threshold", "{{workflow.parameters.eval-threshold}}"]
-          }
-        },
-        {
-          name = "red-team-scan"
-          container = {
-            image   = "placeholder/gtcx-intelligence-red-team:latest"
-            command = ["python", "-m", "garak", "--model-type", "local"]
-          }
-        },
-        {
-          name = "promotion-gate"
-          container = {
-            image   = "placeholder/gtcx-intelligence-sdk:latest"
-            command = ["node", "dist/learning/promoter.js"]
-            args    = ["--model-id", "{{workflow.parameters.model-id}}"]
-          }
-        },
-      ]
+      templates = concat(
+        [{
+          name  = "fine-tune-pipeline"
+          steps = local.fine_tune_steps
+        }],
+        local.fine_tune_templates
+      )
     }
   })
 
@@ -315,6 +403,8 @@ resource "kubectl_manifest" "fine_tune_workflow_template" {
 # -----------------------------------------------------------------------------
 
 resource "kubectl_manifest" "fine_tune_cron" {
+  count = local.workflow_enabled ? 1 : 0
+
   yaml_body = yamlencode({
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "CronWorkflow"

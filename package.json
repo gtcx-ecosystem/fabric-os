@@ -21,6 +21,7 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yaml,yml}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yaml,yml}\"",
+    "check:fine-tune-workflow-policy": "node tools/policy/check-fine-tune-workflow-policy.mjs",
     "typecheck": "turbo run typecheck",
     "docker:build": "docker compose build",
     "docker:up": "docker compose up -d",

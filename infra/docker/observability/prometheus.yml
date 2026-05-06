@@ -51,18 +51,6 @@ scrape_configs:
         replacement: 'gtcx-agx'
 
   # --------------------------------------------------------------------------
-  # [PLACEHOLDER] GTCX Crypto Service -- requires Rust crypto binary
-  # --------------------------------------------------------------------------
-  - job_name: 'gtcx-crypto'
-    metrics_path: '/metrics'
-    static_configs:
-      - targets: ['crypto:8080']
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: instance
-        replacement: 'gtcx-crypto'
-
-  # --------------------------------------------------------------------------
   # [ACTIVE] Protocol Server -- unified Node.js service for all 6 protocols
   # --------------------------------------------------------------------------
   - job_name: 'gtcx-protocols'

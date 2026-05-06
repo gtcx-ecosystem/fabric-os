@@ -18,8 +18,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INFRA_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-INTELLIGENCE_ROOT="$(cd "$SCRIPT_DIR/../../5-intelligence" && pwd)"
-K8S_DIR="$INFRA_ROOT/infra/k8s/intelligence"
+INTELLIGENCE_ROOT="$(cd "$SCRIPT_DIR/../../gtcx-intelligence" && pwd)"
+K8S_DIR="$INFRA_ROOT/infra/kubernetes/overlays/production/intelligence"
 
 # Defaults
 ENV=""
@@ -27,6 +27,46 @@ SERVICE=""
 DRY_RUN=false
 AWS_REGION="${AWS_REGION:-af-south-1}"
 NAMESPACE="intelligence"
+
+manifest_for_service() {
+  case "$1" in
+    anisa) echo "$K8S_DIR/canary.yaml" ;;
+    sdk) echo "$K8S_DIR/canary-sdk.yaml" ;;
+    *) err "Unsupported service: $1" ;;
+  esac
+}
+
+rollout_kind_for_service() {
+  case "$1" in
+    anisa) echo "rollout" ;;
+    sdk) echo "deployment" ;;
+    *) err "Unsupported service: $1" ;;
+  esac
+}
+
+rollout_name_for_service() {
+  case "$1" in
+    anisa) echo "anisa" ;;
+    sdk) echo "intelligence-sdk" ;;
+    *) err "Unsupported service: $1" ;;
+  esac
+}
+
+service_name_for_service() {
+  case "$1" in
+    anisa) echo "anisa" ;;
+    sdk) echo "intelligence-sdk" ;;
+    *) err "Unsupported service: $1" ;;
+  esac
+}
+
+service_port_for_service() {
+  case "$1" in
+    anisa) echo "8100" ;;
+    sdk) echo "8200" ;;
+    *) err "Unsupported service: $1" ;;
+  esac
+}
 
 # --- Helpers ---
 
@@ -86,7 +126,11 @@ done
 
 # --- ECR configuration ---
 
-AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text 2>/dev/null) || err "Failed to get AWS account ID. Check aws cli config."
+if [[ "$DRY_RUN" = true ]]; then
+  AWS_ACCOUNT_ID="${AWS_ACCOUNT_ID:-000000000000}"
+else
+  AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text 2>/dev/null) || err "Failed to get AWS account ID. Check aws cli config."
+fi
 ECR_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
 IMAGE_TAG="${ENV}-$(git -C "$INTELLIGENCE_ROOT" rev-parse --short HEAD 2>/dev/null || date +%Y%m%d%H%M%S)"
 
@@ -131,6 +175,7 @@ apply_manifests() {
   local service_name="$1"
   local manifest="$2"
 
+  [[ -f "$manifest" ]] || err "Manifest not found: $manifest"
   log "Applying $service_name manifests..."
   local rendered
   rendered=$(ECR_REGISTRY="$ECR_REGISTRY" envsubst < "$manifest")
@@ -144,13 +189,16 @@ apply_manifests() {
   fi
 }
 
-if [[ "$SERVICE" == "anisa" || "$SERVICE" == "all" ]]; then
-  apply_manifests "ANISA (canary)" "$K8S_DIR/canary.yml"
+SERVICES=()
+if [[ "$SERVICE" == "all" ]]; then
+  SERVICES=(anisa sdk)
+else
+  SERVICES=("$SERVICE")
 fi
 
-if [[ "$SERVICE" == "sdk" || "$SERVICE" == "all" ]]; then
-  apply_manifests "Intelligence SDK" "$K8S_DIR/canary-sdk.yml"
-fi
+for target_service in "${SERVICES[@]}"; do
+  apply_manifests "$target_service" "$(manifest_for_service "$target_service")"
+done
 
 # --- Wait for rollout ---
 
@@ -172,13 +220,12 @@ wait_for_rollout() {
   fi
 }
 
-if [[ "$SERVICE" == "anisa" || "$SERVICE" == "all" ]]; then
-  wait_for_rollout "ANISA" "rollout" "anisa"
-fi
-
-if [[ "$SERVICE" == "sdk" || "$SERVICE" == "all" ]]; then
-  wait_for_rollout "Intelligence SDK" "deployment" "intelligence-sdk"
-fi
+for target_service in "${SERVICES[@]}"; do
+  wait_for_rollout \
+    "$target_service" \
+    "$(rollout_kind_for_service "$target_service")" \
+    "$(rollout_name_for_service "$target_service")"
+done
 
 # --- Smoke tests ---
 
@@ -216,13 +263,12 @@ smoke_test() {
   fi
 }
 
-if [[ "$SERVICE" == "anisa" || "$SERVICE" == "all" ]]; then
-  smoke_test "ANISA" "anisa" 8100
-fi
-
-if [[ "$SERVICE" == "sdk" || "$SERVICE" == "all" ]]; then
-  smoke_test "Intelligence SDK" "intelligence-sdk" 8200
-fi
+for target_service in "${SERVICES[@]}"; do
+  smoke_test \
+    "$target_service" \
+    "$(service_name_for_service "$target_service")" \
+    "$(service_port_for_service "$target_service")"
+done
 
 # --- Done ---
 

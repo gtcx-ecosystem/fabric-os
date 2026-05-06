@@ -74,9 +74,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: gtcx-tradepass
+                name: gtcx-protocols
                 port:
-                  number: 3000
+                  number: 8300
     - host: geotag.gtcx.internal
       http:
         paths:
@@ -84,9 +84,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: gtcx-geotag
+                name: gtcx-protocols
                 port:
-                  number: 3000
+                  number: 8300
     - host: gci.gtcx.internal
       http:
         paths:
@@ -94,6 +94,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: gtcx-gci
+                name: gtcx-protocols
                 port:
-                  number: 3000
+                  number: 8300

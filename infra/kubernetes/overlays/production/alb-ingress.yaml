@@ -72,46 +72,6 @@ spec:
                 port:
                   number: 3000
 
-    # Intelligence services (ANISA, Cortex)
-    - host: intelligence.gtcx.io
-      http:
-        paths:
-          - path: /v1/cultural-query
-            pathType: Prefix
-            backend:
-              service:
-                name: gtcx-anisa
-                port:
-                  number: 8100
-          - path: /v1/trade-query
-            pathType: Prefix
-            backend:
-              service:
-                name: gtcx-anisa
-                port:
-                  number: 8100
-          - path: /cortex
-            pathType: Prefix
-            backend:
-              service:
-                name: gtcx-intelligence-sdk
-                port:
-                  number: 8200
-          - path: /screening
-            pathType: Prefix
-            backend:
-              service:
-                name: gtcx-intelligence-sdk
-                port:
-                  number: 8200
-          - path: /underwriting
-            pathType: Prefix
-            backend:
-              service:
-                name: gtcx-intelligence-sdk
-                port:
-                  number: 8200
-
     # Veritas (attestation + resolution API)
     - host: veritas.gtcx.io
       http:

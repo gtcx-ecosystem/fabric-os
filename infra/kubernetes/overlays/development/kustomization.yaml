@@ -51,9 +51,5 @@ secretGenerator:
 images:
   - name: gtcx/agx
     newTag: dev
-  - name: gtcx/crx
-    newTag: dev
-  - name: gtcx/sgx
-    newTag: dev
-  - name: gtcx/crypto
+  - name: gtcx/protocols
     newTag: dev

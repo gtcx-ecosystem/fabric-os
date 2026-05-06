@@ -27,11 +27,7 @@ configMapGenerator:
 images:
   - name: gtcx/agx
     newTag: staging
-  - name: gtcx/crx
-    newTag: staging
-  - name: gtcx/sgx
-    newTag: staging
-  - name: gtcx/crypto
+  - name: gtcx/protocols
     newTag: staging
 
 # Staging resource limits (moderate)

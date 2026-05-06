@@ -1,0 +1,126 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: intelligence-sdk
+  namespace: intelligence
+  labels:
+    app: intelligence-sdk
+    app.kubernetes.io/name: intelligence-sdk
+    app.kubernetes.io/part-of: gtcx
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: intelligence-sdk
+  template:
+    metadata:
+      labels:
+        app: intelligence-sdk
+        app.kubernetes.io/name: intelligence-sdk
+        app.kubernetes.io/part-of: gtcx
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8200'
+        prometheus.io/path: '/metrics'
+    spec:
+      serviceAccountName: intelligence-sa
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: intelligence-sdk
+          image: '${ECR_REGISTRY}/gtcx-intelligence-sdk:latest'
+          ports:
+            - name: http
+              containerPort: 8200
+          env:
+            - name: PORT
+              value: '8200'
+            - name: CORTEX_EVENT_STORE_PATH
+              value: /data/cortex-events.jsonl
+            - name: CORTEX_EVENT_STORE_MAX
+              value: '50000'
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: intelligence-secrets
+                  key: anthropic-api-key
+                  optional: true
+            - name: COMPLY_ADVANTAGE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: intelligence-secrets
+                  key: comply-advantage-api-key
+                  optional: true
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: intelligence-secrets
+                  key: database-url
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: 'http://jaeger.observability:4318'
+            - name: OTEL_SERVICE_NAME
+              value: intelligence-sdk
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+          startupProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 3
+            failureThreshold: 10
+          volumeMounts:
+            - name: cortex-data
+              mountPath: /data
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: cortex-data
+          emptyDir:
+            sizeLimit: 1Gi
+        - name: tmp
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: intelligence-sdk
+  namespace: intelligence
+  labels:
+    app: intelligence-sdk
+    app.kubernetes.io/name: intelligence-sdk
+    app.kubernetes.io/part-of: gtcx
+spec:
+  selector:
+    app: intelligence-sdk
+  ports:
+    - name: http
+      port: 8200
+      targetPort: http
+  type: ClusterIP

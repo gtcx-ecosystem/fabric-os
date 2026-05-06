@@ -1,0 +1,60 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: intelligence
+  namespace: intelligence
+  labels:
+    app.kubernetes.io/name: intelligence
+    app.kubernetes.io/part-of: gtcx
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
+    alb.ingress.kubernetes.io/certificate-arn: ${ACM_CERTIFICATE_ARN}
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: '15'
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5'
+    alb.ingress.kubernetes.io/group.name: gtcx-intelligence
+spec:
+  ingressClassName: alb
+  rules:
+    - host: intelligence.gtcx.io
+      http:
+        paths:
+          - path: /v1/cultural-query
+            pathType: Prefix
+            backend:
+              service:
+                name: anisa
+                port:
+                  number: 8100
+          - path: /v1/trade-query
+            pathType: Prefix
+            backend:
+              service:
+                name: anisa
+                port:
+                  number: 8100
+          - path: /cortex
+            pathType: Prefix
+            backend:
+              service:
+                name: intelligence-sdk
+                port:
+                  number: 8200
+          - path: /screening
+            pathType: Prefix
+            backend:
+              service:
+                name: intelligence-sdk
+                port:
+                  number: 8200
+          - path: /underwriting
+            pathType: Prefix
+            backend:
+              service:
+                name: intelligence-sdk
+                port:
+                  number: 8200

@@ -58,14 +58,6 @@ spec:
         - protocol: TCP
           port: 3000
   egress:
-    # Allow to crypto service
-    - to:
-        - podSelector:
-            matchLabels:
-              app: gtcx-crypto-prod
-      ports:
-        - protocol: TCP
-          port: 8080
     # Allow to protocol services
     - to:
         - podSelector:
@@ -88,34 +80,6 @@ spec:
       ports:
         - protocol: UDP
           port: 53
-
----
-# Crypto service network policy
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: gtcx-crypto-policy
-  namespace: gtcx-production
-spec:
-  podSelector:
-    matchLabels:
-      app: gtcx-crypto-prod
-  policyTypes:
-    - Ingress
-    - Egress
-  ingress:
-    # Allow from API and protocol services only
-    - from:
-        - podSelector:
-            matchLabels:
-              app: gtcx-agx-prod
-        - podSelector:
-            matchLabels:
-              tier: protocol
-      ports:
-        - protocol: TCP
-          port: 8080
-  egress: [] # Crypto service has no external dependencies
 
 ---
 # Protocol services network policy
@@ -141,14 +105,6 @@ spec:
         - protocol: TCP
           port: 3000
   egress:
-    # Allow to crypto
-    - to:
-        - podSelector:
-            matchLabels:
-              app: gtcx-crypto-prod
-      ports:
-        - protocol: TCP
-          port: 8080
     # Allow to database (RDS in database subnets)
     - to:
         - ipBlock:

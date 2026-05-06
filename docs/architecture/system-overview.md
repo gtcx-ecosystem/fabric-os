@@ -9,7 +9,9 @@
 ```
 infra/
   docker/                   Docker images and Compose configs
-    Dockerfile.base           Shared base image (Ruby + Rust targets)
+    Dockerfile.platforms      Platform service image (AGX and related apps)
+    Dockerfile.protocols      Unified protocols service image
+    Dockerfile.intelligence   Intelligence SDK image
     Dockerfile.node           Node.js application image
     docker-compose.infra.yml  Infrastructure services only (DBs, observability)
     docker-compose.dev.yml    Application services (requires source code)
@@ -88,13 +90,17 @@ The audit database is write-once. `DROP` and `TRUNCATE` are never run against it
 
 - `namespace.yaml` — namespace definition
 - `configmaps/base-config.yaml` — shared configuration
-- `services/api.yaml`, `services/crypto.yaml`, `services/tradepass.yaml`, `services/geotag.yaml`, `services/gci.yaml` — service definitions
+- `services/api.yaml` — AGX deployment and service
+- `services/protocols.yaml` — unified protocols deployment and service
+- `services/platform.yaml` — shared platform service account
 
 ConfigMap keys: `GTCX_VERSION`, `GTCX_LOG_LEVEL` (info), `GTCX_LOG_FORMAT` (json)
 
-Images managed: `gtcx/api`, `gtcx/crypto` — tags set per overlay via `kustomize edit set image`.
+Images managed in the main stack: `gtcx/agx`, `gtcx/protocols` — tags set per overlay via `kustomize edit set image`.
 
 Secrets: `gtcx-secrets` (DATABASE_URL, SECRET_KEY_BASE) — base contains placeholders; overlays must override before deployment. The secret must exist in the namespace before `kubectl apply`.
+
+Intelligence is deployed separately in `infra/kubernetes/overlays/production/intelligence` under the `intelligence` namespace.
 
 ### Environment Overlays
 
@@ -137,12 +143,15 @@ Multi-cloud VPC and network isolation. Used by the database module and cluster n
 
 ## Deployed Services
 
-The K8s base defines five services: `api`, `crypto`, `tradepass`, `geotag`, `gci`. These are the runtime services from other repos deployed into the GTCX namespaces.
+The main K8s overlays currently deploy:
 
-Two built images:
+- `gtcx-agx` — platform API service
+- `gtcx-protocols` — unified protocol runtime
 
-- `gtcx/api` — built from `Dockerfile.base` target `ruby-production`
-- `gtcx/crypto` — built from `Dockerfile.base` target `rust-production`
+Production intelligence is managed separately:
+
+- `anisa` — cultural intelligence service in the `intelligence` namespace
+- `intelligence-sdk` — SDK/orchestration service in the `intelligence` namespace
 
 ---
 

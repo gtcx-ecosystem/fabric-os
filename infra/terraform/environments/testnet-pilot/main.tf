@@ -365,8 +365,8 @@ module "vault" {
   eks_oidc_provider_arn = module.eks.oidc_provider_arn
   eks_oidc_provider_url = replace(module.eks.oidc_provider_url, "https://", "")
 
-  rds_endpoint                      = module.database.operational_endpoint
-  rds_database_name                 = "gtcx_development"
+  rds_endpoint                       = module.database.operational_endpoint
+  rds_database_name                  = "gtcx_development"
   vault_db_admin_password_secret_arn = module.database.operational_master_secret_arn
 
   enable_pki = true
@@ -461,14 +461,20 @@ module "trace_pipeline" {
 module "workflow_orchestration" {
   source = "../../modules/workflow-orchestration"
 
-  environment           = var.environment
-  eks_oidc_provider_arn = module.eks.oidc_provider_arn
-  eks_oidc_provider_url = replace(module.eks.oidc_provider_url, "https://", "")
-  dataset_bucket_arn    = module.ml_pipeline.dataset_bucket_arn
-  model_bucket_arn      = module.ml_pipeline.model_bucket_arn
-  registry_table_arn    = module.ml_pipeline.registry_table_arn
-  trace_queue_arn       = module.trace_pipeline.queue_arn
-  ecr_repository_arns   = module.ecr.repository_arns
+  environment                  = var.environment
+  eks_oidc_provider_arn        = module.eks.oidc_provider_arn
+  eks_oidc_provider_url        = replace(module.eks.oidc_provider_url, "https://", "")
+  dataset_bucket_arn           = module.ml_pipeline.dataset_bucket_arn
+  model_bucket_arn             = module.ml_pipeline.model_bucket_arn
+  registry_table_arn           = module.ml_pipeline.registry_table_arn
+  trace_queue_arn              = module.trace_pipeline.queue_arn
+  ecr_repository_arns          = module.ecr.repository_arns
+  enable_fine_tune_workflow    = false
+  enablement_evidence_manifest = ""
+  curator_image                = "${module.ecr.repository_urls["gtcx-intelligence-sdk"]}:sha-manual-pin-required"
+  evaluator_image              = "${module.ecr.repository_urls["gtcx-intelligence-sdk"]}:sha-manual-pin-required"
+  promoter_image               = "${module.ecr.repository_urls["gtcx-intelligence-sdk"]}:sha-manual-pin-required"
+  red_team_image               = ""
 
   tags = var.tags
 }

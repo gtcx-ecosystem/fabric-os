@@ -5,10 +5,9 @@
 # security scans, and pushes to ECR with commit SHA + latest tags.
 #
 # Image → ECR repo mapping:
-#   intelligence  → gtcx-anisa, gtcx-cortex, gtcx-veritas
-#   protocols     → gtcx-tradepass, gtcx-geotag, gtcx-gci
-#   platforms     → gtcx-agx, gtcx-crx, gtcx-sgx
-#   crypto        → gtcx-crypto
+#   intelligence-sdk → gtcx-intelligence-sdk
+#   protocols        → gtcx-protocols
+#   platforms        → gtcx-agx
 # =============================================================================
 
 name: Build & Push to ECR
@@ -17,9 +16,9 @@ on:
   push:
     branches: [main]
     paths:
-      - 'intelligence/**'
-      - 'protocols/**'
       - 'infra/docker/**'
+      - 'infra/kubernetes/**'
+      - 'infra/scripts/**'
       - '.github/workflows/build-push-ecr.yml'
   workflow_dispatch: # Allow manual trigger
 
@@ -39,57 +38,38 @@ jobs:
       fail-fast: false
       matrix:
         service:
-          - name: intelligence
+          - name: intelligence-sdk
             dockerfile: infra/docker/Dockerfile.intelligence
+            context_dir: intelligence
             target: ''
-            ecr_repos: gtcx-anisa,gtcx-cortex,gtcx-veritas
+            ecr_repos: gtcx-intelligence-sdk
             source_repos: gtcx-intelligence
 
           - name: protocols
             dockerfile: infra/docker/Dockerfile.protocols
+            context_dir: protocols
             target: ''
-            ecr_repos: gtcx-tradepass,gtcx-geotag,gtcx-gci
+            ecr_repos: gtcx-protocols
             source_repos: gtcx-protocols
 
           - name: agx
             dockerfile: infra/docker/Dockerfile.platforms
+            context_dir: platforms
             target: production
             ecr_repos: gtcx-agx
             source_repos: gtcx-platforms
             build_args: PLATFORM=agx,APP_PORT=3000
 
-          - name: crx
-            dockerfile: infra/docker/Dockerfile.platforms
-            target: production
-            ecr_repos: gtcx-crx
-            source_repos: gtcx-platforms
-            build_args: PLATFORM=crx,APP_PORT=3001
-
-          - name: sgx
-            dockerfile: infra/docker/Dockerfile.platforms
-            target: production
-            ecr_repos: gtcx-sgx
-            source_repos: gtcx-platforms
-            build_args: PLATFORM=sgx,APP_PORT=3002
-
-          - name: crypto
-            dockerfile: infra/docker/Dockerfile.crypto
-            target: production
-            ecr_repos: gtcx-crypto
-            source_repos: gtcx-core
-
     steps:
       - name: Checkout infrastructure repo
         uses: actions/checkout@v4
-        with:
-          path: infra
 
       # Checkout source repos into paths the Dockerfiles expect
       - name: Checkout gtcx-intelligence source
         if: contains(matrix.service.source_repos, 'gtcx-intelligence')
         uses: actions/checkout@v4
         with:
-          repository: gtcx/gtcx-intelligence
+          repository: gtcx-ecosystem/gtcx-intelligence
           token: ${{ secrets.GTCX_REPO_TOKEN }}
           path: intelligence
 
@@ -97,23 +77,15 @@ jobs:
         if: contains(matrix.service.source_repos, 'gtcx-protocols')
         uses: actions/checkout@v4
         with:
-          repository: gtcx/gtcx-protocols
+          repository: gtcx-ecosystem/gtcx-protocols
           token: ${{ secrets.GTCX_REPO_TOKEN }}
           path: protocols
-
-      - name: Checkout gtcx-core source
-        if: contains(matrix.service.source_repos, 'gtcx-core')
-        uses: actions/checkout@v4
-        with:
-          repository: gtcx/gtcx-core
-          token: ${{ secrets.GTCX_REPO_TOKEN }}
-          path: core
 
       - name: Checkout gtcx-platforms source
         if: contains(matrix.service.source_repos, 'gtcx-platforms')
         uses: actions/checkout@v4
         with:
-          repository: gtcx/gtcx-platforms
+          repository: gtcx-ecosystem/gtcx-platforms
           token: ${{ secrets.GTCX_REPO_TOKEN }}
           path: platforms
 
@@ -129,7 +101,8 @@ jobs:
 
       - name: Build image
         run: |
-          DOCKERFILE="infra/${{ matrix.service.dockerfile }}"
+          DOCKERFILE="${{ matrix.service.dockerfile }}"
+          CONTEXT_DIR="${{ matrix.service.context_dir }}"
           TARGET_FLAG=""
           if [ -n "${{ matrix.service.target }}" ]; then
             TARGET_FLAG="--target ${{ matrix.service.target }}"
@@ -158,19 +131,20 @@ jobs:
             $BUILD_ARGS_FLAG \
             $TAGS \
             -f "$DOCKERFILE" \
-            .
+            "$CONTEXT_DIR"
 
       - name: Set primary ECR repo
         id: primary_repo
         run: |
           FIRST=$(echo "${{ matrix.service.ecr_repos }}" | cut -d',' -f1)
           echo "name=${FIRST}" >> "$GITHUB_OUTPUT"
+          echo "tag=${GITHUB_SHA::8}" >> "$GITHUB_OUTPUT"
 
       - name: Trivy security scan
         uses: aquasecurity/trivy-action@master
         continue-on-error: true
         with:
-          image-ref: '${{ steps.ecr-login.outputs.registry }}/${{ steps.primary_repo.outputs.name }}:${{ github.sha }}'
+          image-ref: '${{ steps.ecr-login.outputs.registry }}/${{ steps.primary_repo.outputs.name }}:${{ steps.primary_repo.outputs.tag }}'
           format: sarif
           output: trivy-${{ matrix.service.name }}.sarif
           severity: HIGH,CRITICAL
@@ -185,7 +159,7 @@ jobs:
       - name: Generate container SBOM (CycloneDX)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: '${{ steps.ecr-login.outputs.registry }}/${{ steps.primary_repo.outputs.name }}:${{ github.sha }}'
+          image-ref: '${{ steps.ecr-login.outputs.registry }}/${{ steps.primary_repo.outputs.name }}:${{ steps.primary_repo.outputs.tag }}'
           format: 'cyclonedx'
           output: 'sbom-${{ matrix.service.name }}.cdx.json'
 
@@ -238,10 +212,7 @@ jobs:
           # Update all service image tags to the new SHA
           kustomize edit set image \
             gtcx/agx="${REGISTRY}/gtcx-agx:${SHA_SHORT}" \
-            gtcx/crx="${REGISTRY}/gtcx-crx:${SHA_SHORT}" \
-            gtcx/sgx="${REGISTRY}/gtcx-sgx:${SHA_SHORT}" \
-            gtcx/crypto="${REGISTRY}/gtcx-crypto:${SHA_SHORT}" \
-            gtcx/intelligence-sdk="${REGISTRY}/gtcx-anisa:${SHA_SHORT}"
+            gtcx/protocols="${REGISTRY}/gtcx-protocols:${SHA_SHORT}"
 
       - name: Commit manifest update
         run: |
@@ -285,7 +256,6 @@ jobs:
       - name: Wait for rollout
         run: |
           kubectl rollout status deployment/gtcx-agx-prod -n gtcx-production --timeout=300s
-          kubectl rollout status deployment/gtcx-crypto-prod -n gtcx-production --timeout=300s
           echo "- Rollout: **healthy**" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Verify health

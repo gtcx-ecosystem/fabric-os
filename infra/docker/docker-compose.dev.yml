@@ -116,33 +116,13 @@ services:
   # CORE SERVICES
   # ===========================================================================
 
-  # Rust Crypto Service
-  crypto:
-    build:
-      context: ../../../2-core
-      dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.crypto
-      target: production
-    container_name: gtcx-crypto
-    environment:
-      RUST_LOG: info
-      GTCX_CRYPTO_PORT: 8080
-    ports:
-      - '8080:8080'
-    healthcheck:
-      test: ['CMD', 'wget', '-q', '--spider', 'http://localhost:8080/health']
-      interval: 30s
-      timeout: 5s
-      retries: 3
-    networks:
-      - gtcx-network
-
   # ===========================================================================
   # PROTOCOL SERVICES (Node.js — unified server for all 6 protocols)
   # ===========================================================================
 
   protocols:
     build:
-      context: ../../../3-protocols
+      context: ../../../gtcx-protocols
       dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.protocols
     container_name: gtcx-protocols
     environment:
@@ -286,7 +266,7 @@ services:
   # ANISA — Cultural Intelligence (FastAPI + gRPC)
   anisa:
     build:
-      context: ../../../5-intelligence
+      context: ../../../gtcx-intelligence
       dockerfile: intelligence/anisa/Dockerfile
     container_name: gtcx-anisa
     environment:
@@ -318,7 +298,7 @@ services:
   # Intelligence SDK Server (Cortex, Veritas, PANX, Underwriting)
   intelligence-sdk:
     build:
-      context: ../../../5-intelligence
+      context: ../../../gtcx-intelligence
       dockerfile: intelligence/sdk/Dockerfile
     container_name: gtcx-intelligence-sdk
     environment:

@@ -34,7 +34,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INFRA_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 # SQL migration files — applied in filename order
-MIGRATION_DIR="${INFRA_ROOT}/init-scripts/postgres"
+MIGRATION_DIR="${INFRA_ROOT}/docker/init-scripts/postgres"
 
 log_info()    { echo -e "${BLUE}[INFO]${NC} $1"; }
 log_success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
@@ -170,11 +170,14 @@ run_migrations() {
         local checksum
         checksum="$(sha256sum "${sql_file}" | awk '{print $1}')"
 
-        # Check if already applied (parameterized query to prevent SQL injection)
+        # psql variable interpolation with :'name' keeps this idempotency check safe.
         local already_applied
-        already_applied=$(psql "${DATABASE_URL}" -tAc \
-            "SELECT COUNT(*) FROM schema_migrations WHERE filename = \$1" \
-            -v "1=${filename}" 2>/dev/null || echo "0")
+        already_applied=$(
+            psql "${DATABASE_URL}" -X -A -t -v ON_ERROR_STOP=1 -v "filename=${filename}" <<'SQL'
+SELECT COUNT(*) FROM schema_migrations WHERE filename = :'filename';
+SQL
+        )
+        already_applied="$(echo "${already_applied}" | tr -d '[:space:]')"
 
         if [[ "${already_applied}" -gt 0 ]]; then
             log_info "  SKIP  ${filename} (already applied)"
@@ -192,9 +195,12 @@ run_migrations() {
 
         if psql "${DATABASE_URL}" -v ON_ERROR_STOP=1 -f "${sql_file}" &>/dev/null; then
             # Record as applied
-            psql "${DATABASE_URL}" -q <<SQL
+            psql "${DATABASE_URL}" -q \
+                -v "filename=${filename}" \
+                -v "checksum=${checksum}" \
+                -v "environment=${ENVIRONMENT}" <<'SQL'
 INSERT INTO schema_migrations (filename, checksum, environment)
-VALUES ('${filename}', '${checksum}', '${ENVIRONMENT}')
+VALUES (:'filename', :'checksum', :'environment')
 ON CONFLICT (filename) DO NOTHING;
 SQL
             log_success "  DONE   ${filename}"

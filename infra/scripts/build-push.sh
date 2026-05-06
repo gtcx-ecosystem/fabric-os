@@ -40,37 +40,41 @@ TARGET_SERVICE=""
 
 # =============================================================================
 # Service definitions: name → dockerfile, context dir, build args
+# Bash 3 compatibility: use case statements instead of associative arrays.
 # =============================================================================
 
-declare -A SERVICE_DOCKERFILE
-declare -A SERVICE_CONTEXT
-declare -A SERVICE_ARGS
+service_exists() {
+    case "$1" in
+        protocols|agx) return 0 ;;
+        *) return 1 ;;
+    esac
+}
 
-SERVICE_DOCKERFILE=(
-  [protocols]="infra/docker/Dockerfile.protocols"
-  [agx]="infra/docker/Dockerfile.platforms"
-  [crx]="infra/docker/Dockerfile.platforms"
-  [sgx]="infra/docker/Dockerfile.platforms"
-  [crypto]="infra/docker/Dockerfile.crypto"
-)
+service_dockerfile() {
+    case "$1" in
+        protocols) echo "infra/docker/Dockerfile.protocols" ;;
+        agx) echo "infra/docker/Dockerfile.platforms" ;;
+        *) return 1 ;;
+    esac
+}
 
-SERVICE_CONTEXT=(
-  [protocols]="${ECOSYSTEM_ROOT}/gtcx-protocols"
-  [agx]="${ECOSYSTEM_ROOT}/6-platforms"
-  [crx]="${ECOSYSTEM_ROOT}/6-platforms"
-  [sgx]="${ECOSYSTEM_ROOT}/6-platforms"
-  [crypto]="${ECOSYSTEM_ROOT}/gtcx-core"
-)
+service_context() {
+    case "$1" in
+        protocols) echo "${ECOSYSTEM_ROOT}/gtcx-protocols" ;;
+        agx) echo "${ECOSYSTEM_ROOT}/6-platforms" ;;
+        *) return 1 ;;
+    esac
+}
 
-SERVICE_ARGS=(
-  [protocols]=""
-  [agx]="--build-arg PLATFORM=agx --build-arg APP_PORT=3000"
-  [crx]="--build-arg PLATFORM=crx --build-arg APP_PORT=3001"
-  [sgx]="--build-arg PLATFORM=sgx --build-arg APP_PORT=3002"
-  [crypto]=""
-)
+service_args() {
+    case "$1" in
+        protocols) echo "" ;;
+        agx) echo "--build-arg PLATFORM=agx --build-arg APP_PORT=3000" ;;
+        *) return 1 ;;
+    esac
+}
 
-ALL_SERVICES=(protocols agx crx sgx crypto)
+ALL_SERVICES=(protocols agx)
 
 # =============================================================================
 # Parse arguments
@@ -143,9 +147,11 @@ build_and_push() {
     local svc="$1"
     local registry="$2"
 
-    local dockerfile="${INFRA_ROOT}/${SERVICE_DOCKERFILE[$svc]}"
-    local context="${SERVICE_CONTEXT[$svc]}"
-    local args="${SERVICE_ARGS[$svc]}"
+    local dockerfile="${INFRA_ROOT}/$(service_dockerfile "$svc")"
+    local context
+    context="$(service_context "$svc")"
+    local args
+    args="$(service_args "$svc")"
     local ecr_repo="${registry}/gtcx-${svc}"
 
     # Validate
@@ -189,7 +195,7 @@ main() {
 
     local services=()
     if [[ -n "${TARGET_SERVICE}" ]]; then
-        if [[ -z "${SERVICE_DOCKERFILE[${TARGET_SERVICE}]+x}" ]]; then
+        if ! service_exists "${TARGET_SERVICE}"; then
             log_error "Unknown service: ${TARGET_SERVICE}"
             log_info "Available: ${ALL_SERVICES[*]}"
             exit 1

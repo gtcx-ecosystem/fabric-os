@@ -1,0 +1,24 @@
+{
+  "environment": "test",
+  "change_request": "GTCX-TEST",
+  "approved_at": "2026-05-06T00:00:00Z",
+  "approved_by": "test@example.com",
+  "checks": {
+    "trainer_artifact": {
+      "status": "verified",
+      "evidence": "test-artifact"
+    },
+    "eval_gate": {
+      "status": "verified",
+      "evidence": "test-eval"
+    },
+    "promotion_target": {
+      "status": "verified",
+      "evidence": "test-promotion"
+    },
+    "staging_e2e": {
+      "status": "verified",
+      "evidence": "test-staging"
+    }
+  }
+}

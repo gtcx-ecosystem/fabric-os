@@ -185,7 +185,7 @@ ecr_login() {
 push_images() {
     log_step "Pushing images to ECR..."
 
-    local images=("intelligence" "protocols")
+    local images=("agx" "protocols")
     for img in "${images[@]}"; do
         local local_tag="gtcx/${img}:${VERSION}"
         local ecr_tag="${ECR_REGISTRY}/gtcx-${ENVIRONMENT}-${img}:${VERSION}"
@@ -204,7 +204,10 @@ push_images() {
 build_images() {
     log_step "Building Docker images..."
 
-    cd "${PROJECT_ROOT}"
+    local ecosystem_root
+    ecosystem_root="$(cd "${PROJECT_ROOT}/../.." && pwd)"
+    local platforms_root="${ecosystem_root}/6-platforms"
+    local protocols_root="${PROJECT_ROOT}/../gtcx-protocols"
 
     # Determine version
     if [[ -z "${VERSION}" ]]; then
@@ -213,16 +216,28 @@ build_images() {
 
     log_info "Version: ${VERSION}"
 
-    # Build Node.js service images
+    if [[ ! -d "${platforms_root}" ]]; then
+        log_error "Platform source repo not found: ${platforms_root}"
+        exit 1
+    fi
+
+    if [[ ! -d "${protocols_root}" ]]; then
+        log_error "Protocols source repo not found: ${protocols_root}"
+        exit 1
+    fi
+
+    # Build deployable platform service image
     docker build \
-        -f infra/docker/Dockerfile.intelligence \
-        -t "gtcx/intelligence:${VERSION}" \
-        .
+        -f "${PROJECT_ROOT}/infra/docker/Dockerfile.platforms" \
+        --build-arg PLATFORM=agx \
+        --build-arg APP_PORT=3000 \
+        -t "gtcx/agx:${VERSION}" \
+        "${platforms_root}"
 
     docker build \
-        -f infra/docker/Dockerfile.protocols \
+        -f "${PROJECT_ROOT}/infra/docker/Dockerfile.protocols" \
         -t "gtcx/protocols:${VERSION}" \
-        .
+        "${protocols_root}"
 
     log_success "Images built successfully"
 }
@@ -236,18 +251,15 @@ security_scan() {
     
     # Scan images with Trivy
     if command -v trivy &>/dev/null; then
-        log_info "Scanning intelligence image..."
-        trivy image --exit-code 1 --severity HIGH,CRITICAL "gtcx/intelligence:${VERSION}" || {
-            log_error "Security vulnerabilities found in intelligence image"
-            [[ "${ENVIRONMENT}" == "production" ]] && exit 1
-            log_warning "Continuing despite vulnerabilities (non-production)"
-        }
-
-        log_info "Scanning protocols image..."
-        trivy image --exit-code 1 --severity HIGH,CRITICAL "gtcx/protocols:${VERSION}" || {
-            log_error "Security vulnerabilities found in protocols image"
-            [[ "${ENVIRONMENT}" == "production" ]] && exit 1
-        }
+        local images=("agx" "protocols")
+        for image in "${images[@]}"; do
+            log_info "Scanning ${image} image..."
+            trivy image --exit-code 1 --severity HIGH,CRITICAL "gtcx/${image}:${VERSION}" || {
+                log_error "Security vulnerabilities found in ${image} image"
+                [[ "${ENVIRONMENT}" == "production" ]] && exit 1
+                log_warning "Continuing despite vulnerabilities (non-production)"
+            }
+        done
     else
         log_warning "Trivy not installed - skipping security scan"
     fi
@@ -267,10 +279,8 @@ deploy() {
     # Update image tags in kustomization
     log_info "Updating image tags..."
     cd "overlays/${ENVIRONMENT}"
-    kustomize edit set image "gtcx/agx:${VERSION}"
-    kustomize edit set image "gtcx/crx:${VERSION}"
-    kustomize edit set image "gtcx/sgx:${VERSION}"
-    kustomize edit set image "gtcx/crypto:${VERSION}"
+    kustomize edit set image "gtcx/agx=${ECR_REGISTRY}/gtcx-${ENVIRONMENT}-agx:${VERSION}"
+    kustomize edit set image "gtcx/protocols=${ECR_REGISTRY}/gtcx-${ENVIRONMENT}-protocols:${VERSION}"
     cd "${PROJECT_ROOT}/infra/kubernetes"
 
     # Apply configuration
@@ -402,10 +412,10 @@ post_deployment() {
     # Run health checks
     log_info "Running health checks..."
     local api_pod
-    api_pod=$(kubectl get pods -n "${NAMESPACE}" -l app.kubernetes.io/part-of=gtcx,app.kubernetes.io/component=agx -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || echo "")
+    api_pod=$(kubectl get pods -n "${NAMESPACE}" -l app=gtcx-agx -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || echo "")
     
     if [[ -n "${api_pod}" ]]; then
-        kubectl exec "${api_pod}" -n "${NAMESPACE}" -- wget -q --spider http://localhost:3000/health || {
+        kubectl exec "${api_pod}" -n "${NAMESPACE}" -- wget -q --spider http://localhost:3000/api/health || {
             log_error "Health check failed!"
             [[ "${ENVIRONMENT}" == "production" ]] && rollback_deployment
             exit 1

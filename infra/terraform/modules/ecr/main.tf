@@ -16,21 +16,9 @@ variable "repositories" {
   type        = list(string)
   default = [
     "gtcx-agx",
-    "gtcx-crx",
-    "gtcx-sgx",
-    "gtcx-crypto",
-    "gtcx-tradepass",
-    "gtcx-geotag",
-    "gtcx-gci",
+    "gtcx-protocols",
     "gtcx-anisa",
-    "gtcx-veritas",
-    "gtcx-cortex",
     "gtcx-intelligence-sdk",
-    "gtcx-intelligence-cortex",
-    "gtcx-intelligence-screening",
-    "gtcx-intelligence-anisa",
-    "gtcx-intelligence-panx",
-    "gtcx-intelligence-red-team",
   ]
 }
 

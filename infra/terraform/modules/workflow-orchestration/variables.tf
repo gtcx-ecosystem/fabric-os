@@ -99,6 +99,73 @@ variable "eval_threshold" {
   default     = "0.05"
 }
 
+variable "enable_fine_tune_workflow" {
+  description = "Whether to create the fine-tune WorkflowTemplate and CronWorkflow"
+  type        = bool
+  default     = false
+}
+
+variable "enablement_evidence_manifest" {
+  description = "Path to the JSON evidence manifest required before enabling the fine-tune workflow"
+  type        = string
+  default     = ""
+}
+
+variable "curator_image" {
+  description = "Container image for dataset curation steps"
+  type        = string
+  default     = "placeholder/gtcx-intelligence-curator:sha-contract"
+
+  validation {
+    condition     = trimspace(var.curator_image) == "" || !can(regex(":latest$", trimspace(var.curator_image)))
+    error_message = "curator_image must use an immutable SHA or release tag, not :latest."
+  }
+}
+
+variable "trainer_image" {
+  description = "Container image for model training steps; leave empty to disable training"
+  type        = string
+  default     = ""
+
+  validation {
+    condition     = trimspace(var.trainer_image) == "" || !can(regex(":latest$", trimspace(var.trainer_image)))
+    error_message = "trainer_image must use an immutable SHA or release tag, not :latest."
+  }
+}
+
+variable "evaluator_image" {
+  description = "Container image for evaluation steps"
+  type        = string
+  default     = "placeholder/gtcx-intelligence-evaluator:sha-contract"
+
+  validation {
+    condition     = trimspace(var.evaluator_image) == "" || !can(regex(":latest$", trimspace(var.evaluator_image)))
+    error_message = "evaluator_image must use an immutable SHA or release tag, not :latest."
+  }
+}
+
+variable "promoter_image" {
+  description = "Container image for promotion-gate steps"
+  type        = string
+  default     = "placeholder/gtcx-intelligence-promoter:sha-contract"
+
+  validation {
+    condition     = trimspace(var.promoter_image) == "" || !can(regex(":latest$", trimspace(var.promoter_image)))
+    error_message = "promoter_image must use an immutable SHA or release tag, not :latest."
+  }
+}
+
+variable "red_team_image" {
+  description = "Optional container image for the red-team scan step; leave empty to disable the step"
+  type        = string
+  default     = ""
+
+  validation {
+    condition     = trimspace(var.red_team_image) == "" || !can(regex(":latest$", trimspace(var.red_team_image)))
+    error_message = "red_team_image must use an immutable SHA or release tag, not :latest."
+  }
+}
+
 variable "tags" {
   description = "Additional tags for AWS resources"
   type        = map(string)

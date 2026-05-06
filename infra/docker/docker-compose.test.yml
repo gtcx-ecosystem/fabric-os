@@ -103,25 +103,10 @@ services:
     networks:
       - gtcx-test-network
 
-  # Rust Crypto Test Runner
-  crypto-test:
-    build:
-      context: ../../../2-core
-      dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.crypto
-      target: builder
-    container_name: gtcx-test-crypto
-    environment:
-      RUST_LOG: debug
-      RUST_BACKTRACE: 1
-    working_dir: /build
-    command: ['cargo', 'test', '--package', 'gtcx-crypto', '--', '--test-threads=4']
-    networks:
-      - gtcx-test-network
-
   # Protocol Services Test Runner (Vitest)
   protocols-test:
     build:
-      context: ../../../3-protocols
+      context: ../../../gtcx-protocols
       dockerfile: ../gtcx-infrastructure/infra/docker/Dockerfile.protocols
       target: production
     container_name: gtcx-test-protocols

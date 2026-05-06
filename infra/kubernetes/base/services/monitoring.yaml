@@ -859,11 +859,6 @@ data:
           "param": 0.1
         },
         {
-          "service": "gtcx-crypto",
-          "type": "probabilistic",
-          "param": 0.5
-        },
-        {
           "service": "anisa",
           "type": "probabilistic",
           "param": 0.1

@@ -41,6 +41,9 @@ jobs:
       - name: Type check
         run: pnpm typecheck
 
+      - name: Fine-tune workflow policy check
+        run: pnpm check:fine-tune-workflow-policy
+
       - name: Build
         run: pnpm build
 
@@ -99,6 +102,12 @@ jobs:
       - name: Terraform validate — ECR module
         run: |
           cd infra/terraform/modules/ecr
+          terraform init -backend=false
+          terraform validate
+
+      - name: Terraform validate — Workflow Orchestration module
+        run: |
+          cd infra/terraform/modules/workflow-orchestration
           terraform init -backend=false
           terraform validate
 

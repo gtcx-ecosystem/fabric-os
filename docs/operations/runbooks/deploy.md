@@ -49,12 +49,13 @@ The script runs these steps in order:
 ### 3. Image Build
 
 - Determines version from `git rev-parse --short HEAD` or `--version=` flag
-- Builds `gtcx/api:{version}` from `infra/docker/Dockerfile.base` target `ruby-production`
-- Builds `gtcx/crypto:{version}` from `infra/docker/Dockerfile.base` target `rust-production`
+- Builds `gtcx/agx:{version}` from `infra/docker/Dockerfile.platforms`
+- Builds `gtcx/protocols:{version}` from `infra/docker/Dockerfile.protocols`
+- Intelligence services are deployed separately via `scripts/deploy-intelligence.sh`
 
 ### 4. Security Scan
 
-- Runs Trivy against both images: `trivy image --exit-code 1 --severity HIGH,CRITICAL`
+- Runs Trivy against both mainline images: `gtcx/agx:{version}` and `gtcx/protocols:{version}`
 - **Production**: exits on any HIGH/CRITICAL finding — no exceptions
 - **Non-production**: logs warning but continues
 
@@ -68,7 +69,7 @@ The script runs these steps in order:
 
 ### 6. Deploy
 
-- Updates image tags in the overlay: `kustomize edit set image gtcx/api:{version}`
+- Updates image tags in the overlay for `gtcx/agx` and `gtcx/protocols`
 - Applies: `kubectl apply -k overlays/{environment}`
 - Waits for rollout: `kubectl rollout status deployment/... --timeout=300s`
 
@@ -91,7 +92,7 @@ The script runs these steps in order:
 ./infra/scripts/deploy.sh staging --rollback
 ```
 
-Rollback runs `kubectl rollout undo` on `gtcx-api-{env}` and `gtcx-crypto-{env}` deployments, then waits for rollout status.
+Rollback runs `kubectl rollout undo` on each deployment labeled `app.kubernetes.io/part-of=gtcx` in the target namespace, then waits for rollout status.
 
 **Before deploying to production**: always confirm the previous stable image tag so rollback target is known.
 

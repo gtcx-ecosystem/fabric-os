@@ -113,22 +113,9 @@ setup_docker() {
     
     cd "${PROJECT_ROOT}"
     
-    # Build service images
-    log_info "Building Docker images..."
-    docker build \
-        -f infra/docker/Dockerfile.crypto \
-        --target production \
-        -t gtcx/crypto:dev \
-        ../../2-core || {
-            log_error "Failed to build crypto image"
-            return 1
-        }
-
-    log_success "Docker images built successfully"
-    
     # Create Docker network if it doesn't exist
     docker network create gtcx-network 2>/dev/null || true
-    
+
     log_success "Docker setup complete"
 }
 

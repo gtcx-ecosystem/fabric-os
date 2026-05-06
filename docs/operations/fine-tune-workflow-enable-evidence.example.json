@@ -1,0 +1,24 @@
+{
+  "environment": "testnet-pilot",
+  "change_request": "GTCX-000",
+  "approved_at": "2026-05-06T00:00:00Z",
+  "approved_by": "platform-owner@example.com",
+  "checks": {
+    "trainer_artifact": {
+      "status": "verified",
+      "evidence": "link-or-artifact-reference"
+    },
+    "eval_gate": {
+      "status": "verified",
+      "evidence": "link-or-artifact-reference"
+    },
+    "promotion_target": {
+      "status": "verified",
+      "evidence": "link-or-artifact-reference"
+    },
+    "staging_e2e": {
+      "status": "verified",
+      "evidence": "link-or-artifact-reference"
+    }
+  }
+}

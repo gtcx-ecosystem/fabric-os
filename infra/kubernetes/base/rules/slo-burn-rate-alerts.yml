@@ -105,27 +105,6 @@ groups:
           summary: 'ANISA burning error budget 6x — intelligence quality at risk'
 
       # =======================================================================
-      # Crypto — 99.9% SLO (0.001 error budget)
-      # =======================================================================
-      - alert: CryptoErrorBudgetFastBurn
-        expr: >
-          (
-            1 - (
-              sum(rate(http_requests_total{service="gtcx-crypto", code!~"5.."}[1h]))
-              /
-              sum(rate(http_requests_total{service="gtcx-crypto"}[1h]))
-            ) / 0.001
-          ) > 14.4
-        for: 5m
-        labels:
-          severity: critical
-          service: gtcx-crypto
-          slo: availability
-        annotations:
-          summary: 'Crypto burning error budget 14.4x — cryptographic operations failing'
-          description: 'Crypto has the tightest SLO (99.9%). Budget will exhaust in ~2 days.'
-
-      # =======================================================================
       # Latency SLO violations
       # =======================================================================
       - alert: AGXLatencySLOBreach
@@ -158,14 +137,3 @@ groups:
           slo: latency
         annotations:
           summary: 'ANISA p95 latency above 2000ms SLO target'
-
-      - alert: CryptoLatencySLOBreach
-        expr: slo:crypto:latency:p95_5m > 0.1
-        for: 5m
-        labels:
-          severity: critical
-          service: gtcx-crypto
-          slo: latency
-        annotations:
-          summary: 'Crypto p95 latency above 100ms SLO target'
-          description: 'Crypto latency SLO is strictest (100ms). Current: {{ $value | printf "%.0f" }}ms'

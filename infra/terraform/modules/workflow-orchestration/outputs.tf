@@ -19,10 +19,10 @@ output "workflow_service_account" {
 
 output "workflow_template_name" {
   description = "Name of the fine-tune WorkflowTemplate"
-  value       = "intelligence-fine-tune-cycle"
+  value       = var.enable_fine_tune_workflow ? "intelligence-fine-tune-cycle" : null
 }
 
 output "cron_workflow_name" {
   description = "Name of the bi-weekly CronWorkflow"
-  value       = "intelligence-fine-tune-biweekly"
+  value       = var.enable_fine_tune_workflow ? "intelligence-fine-tune-biweekly" : null
 }

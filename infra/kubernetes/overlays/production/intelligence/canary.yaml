@@ -109,6 +109,27 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 3
 ---
+# Stable service — required by Argo Rollouts canary strategy
+apiVersion: v1
+kind: Service
+metadata:
+  name: anisa
+  namespace: intelligence
+  labels:
+    app: anisa
+    role: stable
+spec:
+  selector:
+    app: anisa
+  ports:
+    - name: http
+      port: 8100
+      targetPort: http
+    - name: grpc
+      port: 8101
+      targetPort: grpc
+  type: ClusterIP
+---
 # Canary service — routes to canary revision pods
 apiVersion: v1
 kind: Service

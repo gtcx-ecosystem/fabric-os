@@ -10,7 +10,7 @@ The source code and functional logic for these components have been migrated to 
 
 1.  **Orchestration Configs:** Environment-specific YAML definitions.
 2.  **Deployment Documentation:** `agile-pm` structures for infrastructure-specific requirements.
-3.  **Local Dev Integration:** Docker Compose and local testing scripts.
+3.  **Documentation Tooling:** Audit and template-generation scripts for migration deployment docs.
 
 ---
 
@@ -24,18 +24,12 @@ The source code and functional logic for these components have been migrated to 
 
 ## Quick Start
 
-### Local Integration Test
+### Local Tooling
 
-To start the integration environment:
+This repository does not currently define standalone `maba`, `kora`, or `amani` Docker Compose services.
+Use `sensei-ai` for component runtime development and this repo for deployment-facing documentation and configuration.
 
-```bash
-cd ../../
-docker compose -f infra/docker/docker-compose.dev.yml up maba kora amani
-```
-
-### Documentation Audit
-
-To audit the documentation for these components (within this repo):
+To audit the documentation for these components from this directory:
 
 ```bash
 python scripts/check_docs.py
@@ -43,7 +37,7 @@ python scripts/check_docs.py
 
 ### Configuration
 
-Domain-specific configurations live in `config/`. These should be updated to point to the correct `sensei-ai` endpoints.
+Domain-specific configuration templates live in `config/`. Treat them as deployment-facing templates that may need to be reconciled with the current `sensei-ai` runtime contracts before use.
 
 ---
 

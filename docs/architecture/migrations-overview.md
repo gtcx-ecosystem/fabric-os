@@ -59,13 +59,15 @@ Make complex processes accessible to everyone. Supports 200+ languages with cult
 
 Since the core logic has moved to `sensei-ai`, this repository focuses on **orchestration**.
 
-### Local Development (Integration Testing)
+### Local Development Boundary
 
-To run the migration stack integration locally, use the provided Docker Compose profiles:
+This repository does not currently ship standalone `maba`, `kora`, or `amani` Compose services.
+Use `sensei-ai` for local runtime development of those components.
+This repo owns deployment-facing docs, templates, and infrastructure wiring.
 
 ```bash
-# Start the full migration stack integration
-docker compose -f infra/docker/docker-compose.dev.yml up maba kora amani
+# Audit migration deployment docs from the repo root
+python infra/migrations/scripts/check_docs.py
 ```
 
 ### Sovereign Stack Deployment
@@ -100,10 +102,10 @@ terraform apply
 
 Documentation for the _deployment_ of these components is maintained here. Functional and code-level documentation resides in the `sensei-ai` repository.
 
-| Script                     | Purpose                                     |
-| :------------------------- | :------------------------------------------ |
-| `scripts/generate_docs.py` | Generate deployment documentation templates |
-| `scripts/check_docs.py`    | Audit deployment doc completeness           |
+| Script                                      | Purpose                                     |
+| :------------------------------------------ | :------------------------------------------ |
+| `infra/migrations/scripts/generate_docs.py` | Generate deployment documentation templates |
+| `infra/migrations/scripts/check_docs.py`    | Audit deployment doc completeness           |
 
 ---
 

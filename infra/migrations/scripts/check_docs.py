@@ -10,6 +10,14 @@ import json
 from pathlib import Path
 from datetime import datetime
 
+REQUIRED_DEPLOYMENT_FILES = [
+    "README.md",
+    "config/example.yaml",
+    "config/gtcx.yaml",
+    "scripts/check_docs.py",
+    "scripts/generate_docs.py",
+]
+
 
 def check_documentation(project_name: str, project_path: Path) -> dict:
     """Check documentation status for a project."""
@@ -88,6 +96,48 @@ def check_documentation(project_name: str, project_path: Path) -> dict:
     }
 
 
+def check_deployment_docs(base_path: Path) -> dict:
+    """Check documentation status for the current deployment-only repo structure."""
+
+    print(f"\n{'='*60}")
+    print("  DEPLOYMENT DOCUMENTATION STATUS")
+    print(f"{'='*60}")
+
+    found = []
+    missing = []
+
+    for relative_path in REQUIRED_DEPLOYMENT_FILES:
+        absolute_path = base_path / relative_path
+        if absolute_path.exists():
+            print(f"✅ {relative_path}")
+            found.append(relative_path)
+        else:
+            print(f"❌ {relative_path}")
+            missing.append(relative_path)
+
+    coverage = (len(found) / len(REQUIRED_DEPLOYMENT_FILES)) * 100
+
+    print(f"\n📊 Summary:")
+    print(f"   Required deployment files found: {len(found)}/{len(REQUIRED_DEPLOYMENT_FILES)}")
+    print(f"   Coverage: {coverage:.1f}%")
+    print("   Runtime components: maintained in sensei-ai")
+
+    if missing:
+        print(f"\n⚠️  Missing deployment assets:")
+        for item in missing:
+            print(f"   - {item}")
+    else:
+        print("\n🎉 Deployment documentation assets are present!")
+
+    return {
+        "project": "DEPLOYMENT_DOCS",
+        "total_files": len(found),
+        "coverage": coverage,
+        "missing": missing,
+        "complete": len(missing) == 0,
+    }
+
+
 def generate_report(base_path: Path = None):
     """Generate comprehensive documentation report for all components."""
     
@@ -103,19 +153,18 @@ def generate_report(base_path: Path = None):
     # Components to check
     components = ['maba', 'kora', 'amani']
     results = []
-    
+
     for component in components:
         component_path = base_path / component
         if component_path.exists():
             result = check_documentation(component.upper(), component_path)
             results.append(result)
-        else:
-            print(f"\n❌ {component.upper()}: Directory not found at {component_path}")
-    
+
     if not results:
-        print("\n❌ No components found to check")
-        return
-    
+        print("\nℹ️  Component directories are not present in this repo.")
+        print("   Falling back to deployment-only documentation checks.")
+        results.append(check_deployment_docs(base_path))
+
     # Overall summary
     print("\n" + "="*60)
     print("  OVERALL STATUS")
@@ -127,13 +176,16 @@ def generate_report(base_path: Path = None):
     print(f"\n📈 Ecosystem Metrics:")
     print(f"   Total documentation files: {total_files}")
     print(f"   Average coverage: {avg_coverage:.1f}%")
-    print(f"   Components documented: {len(results)}/{len(components)}")
+    print(f"   Result sets checked: {len(results)}")
     
     # Recommendations
     print(f"\n💡 Recommendations:")
     
     for result in results:
-        if result['missing']:
+        if result['project'] == 'DEPLOYMENT_DOCS' and result['missing']:
+            print("\n   DEPLOYMENT_DOCS:")
+            print("   - Restore the missing deployment-facing files listed above.")
+        elif result['missing']:
             print(f"\n   {result['project']}:")
             print(f"   - Run: python scripts/generate_docs.py {result['project'].lower()}")
             print(f"   - Focus on: {', '.join(result['missing'][:3])}")

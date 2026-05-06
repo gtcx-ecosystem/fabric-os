@@ -275,10 +275,17 @@ def main():
     
     project_path = Path(sys.argv[1]).resolve()
     project_name = project_path.name
+    infra_root = Path(__file__).parent.parent.resolve()
     
     if not project_path.exists():
         print(f"❌ Error: Path {project_path} does not exist")
         sys.exit(1)
+
+    if project_path == infra_root:
+        print("\nℹ️  infra/migrations is deployment-only in this repo.")
+        print("   No agile-pm scaffolding will be generated here.")
+        print("   Use sensei-ai for component runtime docs, or pass a component/project path explicitly.")
+        sys.exit(0)
     
     print(f"\n🚀 Generating DEPLOYMENT documentation for {project_name.upper()}...")
     print("   Note: Core logic documentation resides in the sensei-ai repository.")

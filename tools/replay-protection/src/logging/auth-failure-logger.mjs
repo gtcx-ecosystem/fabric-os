@@ -39,6 +39,6 @@ export function logAuthFailure(entry) {
     ...entry.extra,
   });
 
-  // eslint-disable-next-line no-console
+   
   console.error(logLine);
 }

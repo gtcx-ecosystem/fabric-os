@@ -55,7 +55,7 @@ async function initRedis() {
   const redisUrl = process.env.REDIS_URL;
   if (!redisUrl) {
     if (NODE_ENV === 'production') {
-      // eslint-disable-next-line no-console
+       
       console.error(JSON.stringify({ level: 'warn', message: 'REDIS_URL not set in production; falling back to memory store. Multi-instance replay protection is WEAKENED.' }));
     }
     metrics.setRedisConnected(0);
@@ -73,7 +73,7 @@ async function initRedis() {
     return true;
   } catch (err) {
     metrics.setRedisConnected(0);
-    // eslint-disable-next-line no-console
+     
     console.error(JSON.stringify({ level: 'warn', message: 'Redis unavailable, falling back to memory store', error: /** @type {any} */ (err)?.message }));
     return false;
   }
@@ -100,7 +100,7 @@ const verifier = new ReplayVerifier({
   verifySignature: (() => {
     const allowStub = process.env.REPLAY_GUARD_ALLOW_STUB_SIGNATURE === 'true';
     if (allowStub && NODE_ENV === 'production') {
-      // eslint-disable-next-line no-console
+       
       console.error(JSON.stringify({
         level: 'error',
         type: 'auth.replay.signature.bypass.blocked',
@@ -284,7 +284,7 @@ const server = createServer(async (req, res) => {
       sendJson(res, 404, { error: 'Not found' });
     }
   } catch (/** @type {any} */ err) {
-    // eslint-disable-next-line no-console
+     
     console.error(JSON.stringify({ level: 'error', message: 'Unhandled server error', error: err?.message }));
     sendJson(res, 500, { error: 'Internal server error' });
   }

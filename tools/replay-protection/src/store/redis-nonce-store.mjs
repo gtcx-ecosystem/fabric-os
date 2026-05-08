@@ -18,8 +18,6 @@ export class RedisNonceStore extends NonceStore {
   #client = null;
   /** @type {string} */
   #keyPrefix;
-  /** @type {boolean} */
-  #connected = false;
 
   /**
    * @param {object} opts

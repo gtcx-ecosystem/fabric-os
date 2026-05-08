@@ -113,7 +113,7 @@ export async function verifyDidSignatureStubBypass(integrity) {
   if (!HEX_RE.test(integrity.envelopeHash) || integrity.envelopeHash.length !== 64) {
     return false;
   }
-  // eslint-disable-next-line no-console
+   
   console.warn(JSON.stringify({
     level: 'warn',
     type: 'auth.replay.signature.bypass',

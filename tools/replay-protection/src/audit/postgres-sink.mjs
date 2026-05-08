@@ -19,7 +19,7 @@
  */
 export function createPostgresSink(opts) {
   if (!opts?.connectionString) {
-    // eslint-disable-next-line no-console
+     
     console.warn(JSON.stringify({
       level: 'warn',
       type: 'audit.sink.postgres.misconfigured',
@@ -56,7 +56,7 @@ export function createPostgresSink(opts) {
       );
     } catch (/** @type {any} */ err) {
       // Best-effort: do not block verification on audit write failure.
-      // eslint-disable-next-line no-console
+       
       console.error(JSON.stringify({
         level: 'error',
         type: 'audit.sink.postgres.write_failed',
@@ -82,7 +82,7 @@ function defaultQuery(connectionString) {
         const { Pool } = await import('pg');
         pool = new Pool({ connectionString, max: 5 });
       } catch {
-        // eslint-disable-next-line no-console
+         
         console.warn(JSON.stringify({
           level: 'warn',
           type: 'audit.sink.postgres.pg_missing',

@@ -218,11 +218,11 @@ All Critical and High severity findings, if any, must be remediated or have a do
 
 ## 9. Sign-off
 
-| Role          | Name        | Signature          | Date         |
-| ------------- | ----------- | ------------------ | ------------ |
-| Lead Assessor | [Full Name] | ******\_\_\_****** | [YYYY-MM-DD] |
-| Peer Reviewer | [Full Name] | ******\_\_\_****** | [YYYY-MM-DD] |
-| CTO           | [Full Name] | ******\_\_\_****** | [YYYY-MM-DD] |
+| Role          | Name        | Signature              | Date         |
+| ------------- | ----------- | ---------------------- | ------------ |
+| Lead Assessor | [Full Name] | **\*\***\_\_\_**\*\*** | [YYYY-MM-DD] |
+| Peer Reviewer | [Full Name] | **\*\***\_\_\_**\*\*** | [YYYY-MM-DD] |
+| CTO           | [Full Name] | **\*\***\_\_\_**\*\*** | [YYYY-MM-DD] |
 
 By signing, the Lead Assessor and Peer Reviewer confirm that the findings in this report are accurate and complete to the best of their knowledge. The CTO acknowledges the findings and approves the remediation plan.
 

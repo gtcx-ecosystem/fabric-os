@@ -2,8 +2,8 @@
 
 **Purpose:** Informal meeting with the regulator's sandbox team before formal application  
 **Duration:** 45 minutes  
-**Date:** ******\_\_\_******  
-**Location:** ******\_\_\_******  
+**Date:** **\*\***\_\_\_**\*\***  
+**Location:** **\*\***\_\_\_**\*\***  
 **Attendees:** [GTCX team], [Regulator sandbox team]
 
 ---

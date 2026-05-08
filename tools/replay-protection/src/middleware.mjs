@@ -30,6 +30,7 @@ import { defaultAuditCapture } from './audit/audit-capture.mjs';
  * @property {import('./policy/clock-skew.mjs').ClockSkewPolicy} [clockSkewPolicy]
  * @property {boolean} [logFailures]
  * @property {string[]} [exemptPaths] — Regex strings or exact paths to skip (e.g. ["/health", "/metrics"])
+ * @property {boolean} [skipHashVerification] — For bootstrap / migration only
  */
 
 /**
@@ -45,6 +46,7 @@ export function replayGuardMiddleware(opts) {
     nonceTtlMs: opts.nonceTtlMs,
     clockSkewPolicy: opts.clockSkewPolicy,
     logFailures: opts.logFailures,
+    skipHashVerification: opts.skipHashVerification ?? false,
   });
 
   const exempt = new Set(opts.exemptPaths ?? ['/health', '/metrics', '/_next']);
@@ -77,6 +79,13 @@ export function replayGuardMiddleware(opts) {
       envelopeHash: req.headers['x-gtcx-envelope-hash'] ?? '',
     };
 
+    const requestData = {
+      body: req.body ?? null,
+      headers: req.headers ?? {},
+      method: req.method ?? 'GET',
+      url: `${req.protocol ?? 'http'}://${req.headers.host ?? 'localhost'}${req.originalUrl ?? req.url ?? '/'}`,
+    };
+
     const context = {
       region: req.headers['x-gtcx-region'],
       requestId: req.headers['x-request-id'] ?? req.id,
@@ -85,7 +94,7 @@ export function replayGuardMiddleware(opts) {
       userAgent: req.headers['user-agent'],
     };
 
-    const result = await verifier.verify(integrity, context);
+    const result = await verifier.verify(integrity, requestData, context);
 
     if (!result.allowed) {
       res.statusCode = 401;

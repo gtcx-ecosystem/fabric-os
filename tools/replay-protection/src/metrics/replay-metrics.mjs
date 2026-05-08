@@ -86,6 +86,65 @@ export class ReplayMetrics {
       this.#counters.set(label, 0);
     }
   }
+
+  // --- Gauges (not counters) ---
+
+  /** @type {number} */
+  #redisConnected = 0;
+
+  /**
+   * Set Redis connectivity gauge.
+   * @param {0 | 1} value
+   */
+  setRedisConnected(value) {
+    this.#redisConnected = value;
+  }
+
+  /**
+   * @returns {0 | 1}
+   */
+  redisConnected() {
+    return this.#redisConnected;
+  }
+
+  // --- Histogram buckets for clock skew ---
+
+  /** @type {number[]} */
+  #skewBuckets = [];
+
+  /**
+   * Record a clock skew observation.
+   * @param {number} skewMs
+   */
+  observeClockSkew(skewMs) {
+    if (skewMs != null) {
+      this.#skewBuckets.push(Math.abs(skewMs));
+      // Keep last 10k samples to avoid unbounded growth
+      if (this.#skewBuckets.length > 10000) {
+        this.#skewBuckets = this.#skewBuckets.slice(-5000);
+      }
+    }
+  }
+
+  /**
+   * Return clock skew histogram in Prometheus format.
+   * @returns {string}
+   */
+  clockSkewHistogram() {
+    const buckets = [0, 1000, 5000, 60000, 300000, 600000, 900000, 1800000, 3600000];
+    const lines = [
+      '# HELP replay_protection_clock_skew_ms Absolute clock skew of verified requests',
+      '# TYPE replay_protection_clock_skew_ms histogram',
+    ];
+    for (const le of buckets) {
+      const count = this.#skewBuckets.filter((v) => v <= le).length;
+      lines.push(`replay_protection_clock_skew_ms_bucket{le="${le}"} ${count}`);
+    }
+    lines.push(`replay_protection_clock_skew_ms_bucket{le="+Inf"} ${this.#skewBuckets.length}`);
+    lines.push(`replay_protection_clock_skew_ms_sum ${this.#skewBuckets.reduce((a, b) => a + b, 0)}`);
+    lines.push(`replay_protection_clock_skew_ms_count ${this.#skewBuckets.length}`);
+    return lines.join('\n') + '\n';
+  }
 }
 
 /** Singleton for process-wide metrics. */

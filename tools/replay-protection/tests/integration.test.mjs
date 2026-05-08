@@ -2,7 +2,7 @@
  * @fileoverview Replay Guard Integration Tests
  *
  * Spins up the HTTP server on an ephemeral port and exercises:
- *   - /v1/replay/verify   (accept, reject nonce, reject stale, reject future)
+ *   - /v1/replay/verify   (accept, reject nonce, reject stale, reject future, hash mismatch)
  *   - /health             (liveness)
  *   - /metrics            (Prometheus exposition)
  *
@@ -13,8 +13,7 @@ import { describe, it, before, after } from 'node:test';
 import assert from 'node:assert';
 import { createServer, request as httpRequest } from 'node:http';
 
-// We import the server module dynamically so we can control its lifecycle.
-// Because server.mjs calls server.listen() at module load, we stub PORT.
+import { computeBodyHash, computeHeadersHash, computeEnvelopeHash } from '../src/crypto/hash.mjs';
 
 /** @type {import('node:http').Server} */
 let testServer;
@@ -40,23 +39,60 @@ async function fetchJson(path, opts = {}) {
   });
 }
 
+function makeIntegrityPayload(requestData, overrides = {}) {
+  const now = new Date().toISOString();
+  const nonce = overrides.nonce ?? `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
+  const timestamp = overrides.timestamp ?? now;
+  const bodyHash = computeBodyHash(requestData.body);
+  const headersHash = computeHeadersHash(requestData.headers);
+  const envelopeHash = computeEnvelopeHash({
+    method: requestData.method,
+    url: requestData.url,
+    bodyHash,
+    headersHash,
+    timestamp,
+    nonce,
+    did: 'did:gtcx:device:test',
+    keyId: 'key-1',
+    audience: 'gtcx-api',
+  });
+
+  return {
+    scheme: 'did-jwt-es256',
+    did: 'did:gtcx:device:test',
+    keyId: 'key-1',
+    audience: 'gtcx-api',
+    bodyHash,
+    headersHash,
+    timestamp,
+    nonce,
+    signature: 'c2lnbmF0dXJlLXRlc3Q=',
+    envelopeHash,
+    ...overrides,
+  };
+}
+
+const defaultRequestData = {
+  body: { action: 'create', payload: { id: 1 } },
+  headers: { 'content-type': 'application/json', 'x-request-id': 'req-123' },
+  method: 'POST',
+  url: 'http://api.gtcx.local/v1/tradepass/issue',
+};
+
 describe('Replay Guard Integration', () => {
   before(async () => {
-    // Pick an ephemeral port
     const stubServer = createServer();
     await new Promise((r) => stubServer.listen(0, '127.0.0.1', r));
     const port = stubServer.address().port;
     stubServer.close();
 
     process.env.PORT = String(port);
-    process.env.REDIS_URL = ''; // force memory store
-    process.env.OTLP_ENDPOINT = ''; // disable OTLP push
+    process.env.REDIS_URL = '';
+    process.env.OTLP_ENDPOINT = '';
 
     const mod = await import('../src/server.mjs');
     testServer = mod.server;
     baseUrl = `http://127.0.0.1:${port}`;
-
-    // Wait for server to be ready
     await new Promise((r) => setTimeout(r, 100));
   });
 
@@ -65,24 +101,12 @@ describe('Replay Guard Integration', () => {
   });
 
   describe('POST /v1/replay/verify', () => {
-    it('accepts a valid fresh request', async () => {
+    it('accepts a valid fresh request with matching hashes', async () => {
+      const reqData = defaultRequestData;
+      const integrity = makeIntegrityPayload(reqData);
       const res = await fetchJson('/v1/replay/verify', {
         method: 'POST',
-        body: {
-          integrity: {
-            scheme: 'did-jwt-es256',
-            did: 'did:gtcx:device:test1',
-            keyId: 'key-1',
-            audience: 'gtcx-api',
-            bodyHash: 'a'.repeat(64),
-            headersHash: 'b'.repeat(64),
-            timestamp: new Date().toISOString(),
-            nonce: `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`,
-            signature: 'c2lnbmF0dXJl',
-            envelopeHash: 'c'.repeat(64),
-          },
-          region: 'us-east',
-        },
+        body: { integrity, ...reqData, region: 'us-east' },
       });
       assert.strictEqual(res.status, 200);
       assert.strictEqual(res.body.allowed, true);
@@ -91,92 +115,135 @@ describe('Replay Guard Integration', () => {
     });
 
     it('rejects a replayed nonce', async () => {
+      const reqData = defaultRequestData;
       const nonce = `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
-      const integrity = {
-        scheme: 'did-jwt-es256',
-        did: 'did:gtcx:device:test2',
-        keyId: 'key-1',
-        audience: 'gtcx-api',
-        bodyHash: 'a'.repeat(64),
-        headersHash: 'b'.repeat(64),
-        timestamp: new Date().toISOString(),
-        nonce,
-        signature: 'c2lnbmF0dXJl',
-        envelopeHash: 'c'.repeat(64),
-      };
+      const integrity = makeIntegrityPayload(reqData, { nonce });
 
       const first = await fetchJson('/v1/replay/verify', {
         method: 'POST',
-        body: { integrity, region: 'us-east' },
+        body: { integrity, ...reqData, region: 'us-east' },
       });
       assert.strictEqual(first.status, 200);
       assert.strictEqual(first.body.allowed, true);
 
       const second = await fetchJson('/v1/replay/verify', {
         method: 'POST',
-        body: { integrity, region: 'us-east' },
+        body: { integrity, ...reqData, region: 'us-east' },
       });
       assert.strictEqual(second.status, 401);
       assert.strictEqual(second.body.allowed, false);
       assert.strictEqual(second.body.code, 'REPLAY_NONCE');
     });
 
-    it('rejects a stale timestamp', async () => {
+    it('rejects stale timestamps', async () => {
+      const reqData = defaultRequestData;
+      const oldTs = new Date(Date.now() - 10 * 60 * 1000).toISOString();
+      const integrity = makeIntegrityPayload(reqData, { timestamp: oldTs });
       const res = await fetchJson('/v1/replay/verify', {
         method: 'POST',
-        body: {
-          integrity: {
-            scheme: 'did-jwt-es256',
-            did: 'did:gtcx:device:test3',
-            keyId: 'key-1',
-            audience: 'gtcx-api',
-            bodyHash: 'a'.repeat(64),
-            headersHash: 'b'.repeat(64),
-            timestamp: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
-            nonce: `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`,
-            signature: 'c2lnbmF0dXJl',
-            envelopeHash: 'c'.repeat(64),
-          },
-        },
+        body: { integrity, ...reqData },
       });
       assert.strictEqual(res.status, 401);
       assert.strictEqual(res.body.code, 'REPLAY_STALE');
     });
 
-    it('rejects a future timestamp', async () => {
+    it('rejects future timestamps', async () => {
+      const reqData = defaultRequestData;
+      const futureTs = new Date(Date.now() + 10 * 60 * 1000).toISOString();
+      const integrity = makeIntegrityPayload(reqData, { timestamp: futureTs });
       const res = await fetchJson('/v1/replay/verify', {
         method: 'POST',
-        body: {
-          integrity: {
-            scheme: 'did-jwt-es256',
-            did: 'did:gtcx:device:test4',
-            keyId: 'key-1',
-            audience: 'gtcx-api',
-            bodyHash: 'a'.repeat(64),
-            headersHash: 'b'.repeat(64),
-            timestamp: new Date(Date.now() + 10 * 60 * 1000).toISOString(),
-            nonce: `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`,
-            signature: 'c2lnbmF0dXJl',
-            envelopeHash: 'c'.repeat(64),
-          },
-        },
+        body: { integrity, ...reqData },
       });
       assert.strictEqual(res.status, 401);
       assert.strictEqual(res.body.code, 'REPLAY_FUTURE');
     });
 
+    it('accepts timestamps inside the window', async () => {
+      const reqData = defaultRequestData;
+      const ts = new Date(Date.now() - 30 * 1000).toISOString();
+      const integrity = makeIntegrityPayload(reqData, { timestamp: ts });
+      const res = await fetchJson('/v1/replay/verify', {
+        method: 'POST',
+        body: { integrity, ...reqData },
+      });
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.allowed, true);
+    });
+
+    it('rejects bodyHash mismatch', async () => {
+      const reqData = defaultRequestData;
+      const integrity = makeIntegrityPayload(reqData, { bodyHash: 'a'.repeat(64) });
+      const res = await fetchJson('/v1/replay/verify', {
+        method: 'POST',
+        body: { integrity, ...reqData },
+      });
+      assert.strictEqual(res.status, 401);
+      assert.strictEqual(res.body.code, 'REPLAY_ENVELOPE');
+      assert.ok(res.body.reason?.includes('bodyHash'));
+    });
+
+    it('rejects headersHash mismatch', async () => {
+      const reqData = defaultRequestData;
+      const integrity = makeIntegrityPayload(reqData, { headersHash: 'b'.repeat(64) });
+      const res = await fetchJson('/v1/replay/verify', {
+        method: 'POST',
+        body: { integrity, ...reqData },
+      });
+      assert.strictEqual(res.status, 401);
+      assert.strictEqual(res.body.code, 'REPLAY_ENVELOPE');
+      assert.ok(res.body.reason?.includes('headersHash'));
+    });
+
+    it('rejects envelopeHash mismatch', async () => {
+      const reqData = defaultRequestData;
+      const integrity = makeIntegrityPayload(reqData, { envelopeHash: 'c'.repeat(64) });
+      const res = await fetchJson('/v1/replay/verify', {
+        method: 'POST',
+        body: { integrity, ...reqData },
+      });
+      assert.strictEqual(res.status, 401);
+      assert.strictEqual(res.body.code, 'REPLAY_ENVELOPE');
+      assert.ok(res.body.reason?.includes('envelopeHash'));
+    });
+
     it('accepts X-GTCX-* header map instead of integrity payload', async () => {
+      const reqData = {
+        body: { action: 'test' },
+        headers: { 'content-type': 'application/json' },
+        method: 'POST',
+        url: 'http://api.gtcx.local/v1/test',
+      };
+      const now = new Date().toISOString();
+      const bodyHash = computeBodyHash(reqData.body);
+      const headersHash = computeHeadersHash(reqData.headers);
+      const nonce = `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
+      const envelopeHash = computeEnvelopeHash({
+        method: reqData.method,
+        url: reqData.url,
+        bodyHash,
+        headersHash,
+        timestamp: now,
+        nonce,
+        did: 'did:gtcx:device:header-test',
+        keyId: 'key-1',
+        audience: 'gtcx-api',
+      });
+
       const res = await fetchJson('/v1/replay/verify', {
         method: 'POST',
         body: {
+          ...reqData,
           'x-gtcx-auth-scheme': 'did-jwt-es256',
           'x-gtcx-did': 'did:gtcx:device:header-test',
           'x-gtcx-key-id': 'key-1',
           'x-gtcx-audience': 'gtcx-api',
-          'x-gtcx-body-sha256': 'a'.repeat(64),
-          'x-gtcx-timestamp': new Date().toISOString(),
-          'x-gtcx-nonce': `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`,
-          'x-gtcx-signature': 'c2lnbmF0dXJl',
+          'x-gtcx-body-sha256': bodyHash,
+          'x-gtcx-headers-hash': headersHash,
+          'x-gtcx-timestamp': now,
+          'x-gtcx-nonce': nonce,
+          'x-gtcx-signature': 'c2lnbmF0dXJlLXRlc3Q=',
+          'x-gtcx-envelope-hash': envelopeHash,
         },
       });
       assert.strictEqual(res.status, 200);
@@ -184,26 +251,28 @@ describe('Replay Guard Integration', () => {
     });
 
     it('allows low-connectivity region with extended window', async () => {
+      const reqData = defaultRequestData;
+      const oldTs = new Date(Date.now() - 8 * 60 * 1000).toISOString();
+      const integrity = makeIntegrityPayload(reqData, { timestamp: oldTs });
       const res = await fetchJson('/v1/replay/verify', {
         method: 'POST',
-        body: {
-          integrity: {
-            scheme: 'did-jwt-es256',
-            did: 'did:gtcx:device:global-south-test',
-            keyId: 'key-1',
-            audience: 'gtcx-api',
-            bodyHash: 'a'.repeat(64),
-            headersHash: 'b'.repeat(64),
-            timestamp: new Date(Date.now() - 8 * 60 * 1000).toISOString(), // 8 min old
-            nonce: `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`,
-            signature: 'c2lnbmF0dXJl',
-            envelopeHash: 'c'.repeat(64),
-          },
-          region: 'global-south',
-        },
+        body: { integrity, ...reqData, region: 'global-south' },
       });
       assert.strictEqual(res.status, 200);
       assert.strictEqual(res.body.allowed, true);
+    });
+
+    it('still rejects beyond extended window', async () => {
+      const reqData = defaultRequestData;
+      const oldTs = new Date(Date.now() - 20 * 60 * 1000).toISOString();
+      const integrity = makeIntegrityPayload(reqData, { timestamp: oldTs });
+      const res = await fetchJson('/v1/replay/verify', {
+        method: 'POST',
+        body: { integrity, ...reqData, region: 'global-south' },
+      });
+      assert.strictEqual(res.status, 401);
+      assert.strictEqual(res.body.allowed, false);
+      assert.strictEqual(res.body.code, 'REPLAY_STALE');
     });
   });
 
@@ -218,23 +287,11 @@ describe('Replay Guard Integration', () => {
 
   describe('GET /metrics', () => {
     it('returns prometheus exposition', async () => {
-      // Prime some metrics first
+      const reqData = defaultRequestData;
+      const integrity = makeIntegrityPayload(reqData);
       await fetchJson('/v1/replay/verify', {
         method: 'POST',
-        body: {
-          integrity: {
-            scheme: 'did-jwt-es256',
-            did: 'did:gtcx:device:metrics',
-            keyId: 'key-1',
-            audience: 'gtcx-api',
-            bodyHash: 'a'.repeat(64),
-            headersHash: 'b'.repeat(64),
-            timestamp: new Date().toISOString(),
-            nonce: `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`,
-            signature: 'c2lnbmF0dXJl',
-            envelopeHash: 'c'.repeat(64),
-          },
-        },
+        body: { integrity, ...reqData },
       });
 
       const res = await fetchJson('/metrics');

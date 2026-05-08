@@ -3,7 +3,7 @@
  *
  * Standalone sidecar / service that verifies mobile signed-request contracts.
  * Endpoints:
- *   POST /v1/replay/verify  — verify a QueueIntegrity payload
+ *   POST /v1/replay/verify  — verify a QueueIntegrity payload against request data
  *   GET  /health            — liveness + readiness
  *   GET  /metrics           — Prometheus exposition format
  *
@@ -16,6 +16,7 @@
  *   OTLP_ENDPOINT           — http://host:port/v1/metrics (optional)
  *   OTLP_PUSH_INTERVAL_MS   — default 30000 (30 sec)
  *   PORT                    — default 8400
+ *   NODE_ENV                — 'production' enables Redis default
  *
  * Principles: SECURE (P11), OBSERVABLE (P15), RESILIENT (P12)
  */
@@ -42,9 +43,10 @@ const LOW_CONN_BUFFER_MS = Number(process.env.LOW_CONN_BUFFER_MS ?? 10 * 60 * 10
 const MAX_FUTURE_MS = Number(process.env.MAX_FUTURE_MS ?? 2 * 60 * 1000);
 const OTLP_ENDPOINT = process.env.OTLP_ENDPOINT ?? '';
 const OTLP_PUSH_INTERVAL_MS = Number(process.env.OTLP_PUSH_INTERVAL_MS ?? 30 * 1000);
+const NODE_ENV = process.env.NODE_ENV ?? 'development';
 
 // ---------------------------------------------------------------------------
-// Store bootstrap
+// Store bootstrap — Redis is default in production, memory in dev/test
 // ---------------------------------------------------------------------------
 
 /** @type {import('./store/nonce-store.mjs').NonceStore} */
@@ -52,18 +54,26 @@ let nonceStore = new MemoryNonceStore();
 
 async function initRedis() {
   const redisUrl = process.env.REDIS_URL;
-  if (!redisUrl) return false;
+  if (!redisUrl) {
+    if (NODE_ENV === 'production') {
+      // eslint-disable-next-line no-console
+      console.error(JSON.stringify({ level: 'warn', message: 'REDIS_URL not set in production; falling back to memory store. Multi-instance replay protection is WEAKENED.' }));
+    }
+    metrics.setRedisConnected(0);
+    return false;
+  }
 
   try {
-    // Dynamic import so redis is truly optional
     const { createClient } = await import('redis');
     const client = createClient({ url: redisUrl });
     await client.connect();
     nonceStore = new RedisNonceStore({ client, keyPrefix: 'replay:nonce' });
+    metrics.setRedisConnected(1);
     // eslint-disable-next-line no-console
     console.log(JSON.stringify({ level: 'info', message: 'Redis nonce store connected', redisUrl }));
     return true;
   } catch (err) {
+    metrics.setRedisConnected(0);
     // eslint-disable-next-line no-console
     console.error(JSON.stringify({ level: 'warn', message: 'Redis unavailable, falling back to memory store', error: err?.message }));
     return false;
@@ -194,6 +204,14 @@ async function handleVerify(req, res) {
     envelopeHash: body['x-gtcx-envelope-hash'] ?? body.envelopeHash,
   };
 
+  // Build request data for hash verification
+  const requestData = {
+    body: body.body ?? null,
+    headers: body.headers ?? {},
+    method: body.method ?? 'POST',
+    url: body.url ?? 'http://localhost/',
+  };
+
   const context = {
     region: body.region ?? req.headers['x-gtcx-region'],
     requestId: body.requestId ?? req.headers['x-request-id'],
@@ -202,7 +220,7 @@ async function handleVerify(req, res) {
     userAgent: req.headers['user-agent'],
   };
 
-  const result = await verifier.verify(integrity, context);
+  const result = await verifier.verify(integrity, requestData, context);
 
   sendJson(res, result.allowed ? 200 : 401, {
     allowed: result.allowed,
@@ -227,7 +245,14 @@ async function handleHealth(_req, res) {
 /** @param {import('node:http').IncomingMessage} _req @param {import('node:http').ServerResponse} res */
 async function handleMetrics(_req, res) {
   res.writeHead(200, { 'Content-Type': 'text/plain; version=0.0.4; charset=utf-8' });
-  res.end(verifier.metricsPrometheus());
+  const lines = [
+    verifier.metricsPrometheus(),
+    `# HELP replay_guard_redis_connected Redis connectivity status (1=connected, 0=fallback)`,
+    `# TYPE replay_guard_redis_connected gauge`,
+    `replay_guard_redis_connected ${metrics.redisConnected()}`,
+    metrics.clockSkewHistogram(),
+  ];
+  res.end(lines.join('\n'));
 }
 
 // ---------------------------------------------------------------------------
@@ -274,7 +299,7 @@ startOtlpPush();
 
 server.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(JSON.stringify({ level: 'info', message: 'Replay Guard listening', port: PORT, nonceTtlMs: NONCE_TTL_MS }));
+  console.log(JSON.stringify({ level: 'info', message: 'Replay Guard listening', port: PORT, nonceTtlMs: NONCE_TTL_MS, nodeEnv: NODE_ENV, redis: nonceStore.constructor.name }));
 });
 
 export { server, verifier, nonceStore, metrics, auditCapture };

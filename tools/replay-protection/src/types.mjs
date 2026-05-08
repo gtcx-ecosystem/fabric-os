@@ -58,6 +58,7 @@
  * @property {string} [deviceId] - Device ID
  * @property {number} [clockSkewMs] - Detected clock skew in ms
  * @property {number} [acceptanceWindowMs] - Window used for this check
+ * @property {boolean} [isDelayedOfflineReplay] - true if skew > 5 min (offline queue backlog)
  */
 
 /**

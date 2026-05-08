@@ -23,7 +23,7 @@ const NONCE_MIN_LEN = 16; // 8 bytes hex minimum
  */
 export async function verifyDidSignature(integrity) {
   // Required fields must be non-empty strings
-  const required = ['scheme', 'did', 'keyId', 'audience', 'timestamp', 'nonce', 'signature'];
+  const required = ['scheme', 'did', 'keyId', 'audience', 'timestamp', 'nonce', 'signature', 'envelopeHash'];
   for (const field of required) {
     const val = integrity[field];
     if (typeof val !== 'string' || val.length === 0) {
@@ -49,6 +49,11 @@ export async function verifyDidSignature(integrity) {
 
   // Signature must be non-trivial base64-like string
   if (integrity.signature.length < 4) {
+    return false;
+  }
+
+  // Envelope hash must be 64-char hex (SHA-256)
+  if (!HEX_RE.test(integrity.envelopeHash) || integrity.envelopeHash.length !== 64) {
     return false;
   }
 

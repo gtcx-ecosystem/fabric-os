@@ -56,6 +56,7 @@ export class AuditCapture {
    * @param {string} [params.deviceId]
    * @param {number} [params.clockSkewMs]
    * @param {number} [params.acceptanceWindowMs]
+   * @param {boolean} [params.isDelayedOfflineReplay]
    * @returns {Promise<import('../types.mjs').AuditEvent>}
    */
   async capture(params) {
@@ -73,6 +74,7 @@ export class AuditCapture {
       deviceId: params.deviceId,
       clockSkewMs: params.clockSkewMs,
       acceptanceWindowMs: params.acceptanceWindowMs,
+      isDelayedOfflineReplay: params.isDelayedOfflineReplay,
     };
 
     if (!this.#enabled) {

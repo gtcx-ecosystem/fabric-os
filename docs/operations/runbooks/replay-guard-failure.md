@@ -1,10 +1,10 @@
 # Runbook: Replay Guard Failure
 
-| | |
-|---|---|
-| **Service** | `gtcx-replay-guard` |
-| **Severity** | P1 (blocks mobile offline queue replay) |
-| **Owner** | Platform SRE |
+|                |                                                 |
+| -------------- | ----------------------------------------------- |
+| **Service**    | `gtcx-replay-guard`                             |
+| **Severity**   | P1 (blocks mobile offline queue replay)         |
+| **Owner**      | Platform SRE                                    |
 | **Principles** | SECURE (P11), RESILIENT (P12), OBSERVABLE (P15) |
 
 ---
@@ -25,13 +25,19 @@
 # Replay guard is down — no successful verifications in 2 min
 sum(rate(replay_protection_total[2m])) == 0
 
-# Redis nonce store unreachable
-# (health probe returns unhealthy)
-gtcx_replay_guard_health_status == 0
+# Redis nonce store unreachable (fallen back to memory)
+replay_guard_redis_connected == 0
 
 # High rejection rate (possible clock skew spike)
 sum(rate(replay_protection_total{code=~"REPLAY_FUTURE|REPLAY_STALE"}[5m]))
   / sum(rate(replay_protection_total[5m])) > 0.5
+
+# Replay attack indicator — nonce rejections spiking
+sum(rate(replay_protection_total{code="REPLAY_NONCE"}[5m])) > 30
+
+# Delayed offline replay events
+sum(rate(replay_protection_total{code="REPLAY_OK"}[15m])) by (region)
+  * on() group_left() (replay_protection_clock_skew_ms_bucket{le="+Inf"} > 300000)
 ```
 
 ---
@@ -53,6 +59,7 @@ kubectl exec -it deploy/gtcx-replay-guard -n gtcx -- \
 ```
 
 If Redis is down:
+
 - Replay-guard **falls back to in-memory store** automatically
 - **Risk:** nonce replay protection is weakened across pod restarts
 - **Mitigation:** Restart Redis or scale the Redis StatefulSet
@@ -65,6 +72,7 @@ kubectl top pods -n gtcx -l app=gtcx-replay-guard
 ```
 
 If CPU/memory is saturated:
+
 - HPA should auto-scale to max 10 replicas
 - If max reached, increase `maxReplicas` temporarily:
   ```bash
@@ -76,13 +84,14 @@ If CPU/memory is saturated:
 
 ## Root Cause Analysis
 
-| Scenario | Logs | Fix |
-|----------|------|-----|
-| Redis connection timeout | `Redis unavailable, falling back to memory store` | Restart Redis; check network policies |
-| Clock skew spike (global-south) | `REPLAY_FUTURE` rate > 50% | Extend `LOW_CONN_BUFFER_MS` temporarily; investigate NTP on mobile devices |
-| Signature verification failure | `REPLAY_SIGNATURE` rate spike | Check DID resolver health; verify key rotation schedule |
-| Nonce store overflow (memory) | `MemoryNonceStore maxSize reached` | Switch to Redis; increase `maxSize` |
-| OTLP push failure | `ETIMEDOUT` to collector | Non-critical; metrics buffered in memory |
+| Scenario                        | Logs                                              | Fix                                                                        |
+| ------------------------------- | ------------------------------------------------- | -------------------------------------------------------------------------- |
+| Redis connection timeout        | `Redis unavailable, falling back to memory store` | Restart Redis; check network policies                                      |
+| Clock skew spike (global-south) | `REPLAY_FUTURE` rate > 50%                        | Extend `LOW_CONN_BUFFER_MS` temporarily; investigate NTP on mobile devices |
+| Signature verification failure  | `REPLAY_SIGNATURE` rate spike                     | Check DID resolver health; verify key rotation schedule                    |
+| Envelope/hash mismatch          | `REPLAY_ENVELOPE` rate spike                      | Verify mobile serialization contract alignment; check for MITM             |
+| Nonce store overflow (memory)   | `MemoryNonceStore maxSize reached`                | Switch to Redis; increase `maxSize`                                        |
+| OTLP push failure               | `ETIMEDOUT` to collector                          | Non-critical; metrics buffered in memory                                   |
 
 ---
 
@@ -140,3 +149,17 @@ curl -s http://gtcx-replay-guard.gtcx:8400/v1/replay/verify \
    ```bash
    kubectl apply -f infra/kubernetes/overlays/production/chaos/replay-guard-pod-kill.yaml
    ```
+
+## Fail-Safe Nonce Semantics
+
+The replay-guard uses **fail-safe nonce semantics**: once a nonce is consumed, it stays consumed regardless of downstream verification outcome. This means:
+
+- A request with a valid nonce but invalid signature will have its nonce permanently consumed
+- Legitimate clients must generate a **fresh nonce** for every request (including retries)
+- Attackers cannot replay rejected requests to probe the system
+
+If you see `REPLAY_NONCE` rejections from legitimate clients, check:
+
+1. Client is generating unique nonces (not reusing)
+2. Client clock is within acceptable skew
+3. Client is computing envelope hashes correctly

@@ -73,7 +73,7 @@ jobs:
             --smoke-base-url=http://localhost:3000 \
             --image=replay-guard=gtcx/replay-guard:ci-${{ github.sha }} \
             --output-dir=infra/security/reports/release-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
-        continue-on-error: true
+        continue-on-error: true # Intentional: smoke-base-url isn't running in CI; generates partial evidence
 
       - name: Upload release evidence
         uses: actions/upload-artifact@v4
@@ -247,9 +247,9 @@ jobs:
           export AUDIT_DB=gtcx_audit
           export AUDIT_PASSWORD=gtcx_audit_dev_password
           export PROTOCOL_URL=http://localhost:8300
-          bash infra/scripts/dr-test.sh testnet || true
+          bash infra/scripts/dr-test.sh testnet
           docker compose -f infra/docker/docker-compose.dev.yml down
-        continue-on-error: true
+        continue-on-error: true # Non-blocking: DR failures are visible in step status but don't block PRs
 
   codeql:
     runs-on: ubuntu-latest

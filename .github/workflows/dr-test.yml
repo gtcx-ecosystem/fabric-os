@@ -86,3 +86,71 @@ jobs:
         if: failure()
         run: |
           echo "::error::DR test failed for ${{ github.event.inputs.environment || 'testnet' }}. Check artifacts for evidence."
+
+  canary-rollback:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment || 'testnet' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+          version: 'v1.30.0'
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: af-south-1
+
+      - name: Update kubeconfig
+        run: |
+          aws eks update-kubeconfig --name gtcx-${{ github.event.inputs.environment || 'testnet' }} --region af-south-1
+
+      - name: Deploy known-good image
+        run: |
+          kubectl set image deployment/gtcx-replay-guard \
+            replay-guard=gtcx/replay-guard:v0.1.0-stable \
+            -n gtcx-${{ github.event.inputs.environment || 'testnet' }}
+          kubectl rollout status deployment/gtcx-replay-guard \
+            -n gtcx-${{ github.event.inputs.environment || 'testnet' }}
+
+      - name: Deploy broken image (simulated failure)
+        run: |
+          kubectl set image deployment/gtcx-replay-guard \
+            replay-guard=gtcx/replay-guard:v0.1.0-broken-exit-1 \
+            -n gtcx-${{ github.event.inputs.environment || 'testnet' }}
+          kubectl rollout status deployment/gtcx-replay-guard \
+            -n gtcx-${{ github.event.inputs.environment || 'testnet' }} \
+            --timeout=60s || true
+
+      - name: Capture rollback evidence
+        run: |
+          bash infra/scripts/capture-rollback-evidence.sh \
+            ${{ github.event.inputs.environment || 'testnet' }} \
+            --previous-revision=v0.1.0-stable \
+            --failed-revision=v0.1.0-broken-exit-1 \
+            --reason="CI canary rollback test"
+
+      - name: Rollback to stable
+        run: |
+          kubectl rollout undo deployment/gtcx-replay-guard \
+            -n gtcx-${{ github.event.inputs.environment || 'testnet' }}
+          kubectl rollout status deployment/gtcx-replay-guard \
+            -n gtcx-${{ github.event.inputs.environment || 'testnet' }}
+
+      - name: Upload rollback evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rollback-evidence-${{ github.run_id }}
+          path: infra/security/reports/rollback-evidence/${{ github.event.inputs.environment || 'testnet' }}/
+          retention-days: 90
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::Canary rollback test failed for ${{ github.event.inputs.environment || 'testnet' }}. Check artifacts for evidence."

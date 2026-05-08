@@ -1,32 +1,32 @@
 /**
- * @fileoverview DID Signature Verification — Fail-Closed Stub
+ * @fileoverview DID Signature Verification
  *
- * STRICT: This function returns false for every structurally valid request
- * until a real DID resolver + JWT verifier is wired. Production must NEVER
- * rely on the structural stub as a security control.
+ * Verifies ES256 JWT signatures from gtcx-mobile's offline queue.
+ * Uses Node.js Web Crypto API — zero external dependencies.
  *
- * To run integration tests or local dev while the real verifier is missing,
- * set REPLAY_GUARD_ALLOW_STUB_SIGNATURE=true. This bypass is logged at
- * warn level and flagged in every audit event.
- *
- * TODO: Wire to @gtcx/crypto DID resolver once available.
+ * Flow:
+ *   1. Structural validation (hex nonce, ISO timestamp, did: prefix, SHA-256 envelopeHash)
+ *   2. DID resolution → DID document
+ *   3. Extract publicKeyJwk by keyId
+ *   4. Verify JWT signature over envelopeHash
+ *   5. Validate audience claim
  *
  * Principles: SECURE (P11)
  */
+
+import { resolveDid, extractPublicKeyJwk, verifyJwt } from './jwt-verify.mjs';
 
 const HEX_RE = /^[0-9a-fA-F]+$/;
 const NONCE_MIN_LEN = 16; // 8 bytes hex minimum
 
 /**
- * Structural validation — rejects obviously malformed requests.
- * Returns false for well-formed requests because cryptographic verification
- * is not yet implemented.
+ * Verify a DID-signed JWT envelope.
  *
  * @param {import('../types').QueueIntegrity} integrity
  * @returns {Promise<boolean>}
  */
 export async function verifyDidSignature(integrity) {
-  // Required fields must be non-empty strings
+  // 1. Structural validation
   const required = ['scheme', 'did', 'keyId', 'audience', 'timestamp', 'nonce', 'signature', 'envelopeHash'];
   for (const field of required) {
     const val = integrity[field];
@@ -35,42 +35,51 @@ export async function verifyDidSignature(integrity) {
     }
   }
 
-  // Nonce must be hex (mobile generates crypto-random bytes encoded as hex)
   if (!HEX_RE.test(integrity.nonce) || integrity.nonce.length < NONCE_MIN_LEN) {
     return false;
   }
 
-  // Timestamp must be valid ISO-8601
   const tsMs = Date.parse(integrity.timestamp);
   if (Number.isNaN(tsMs)) {
     return false;
   }
 
-  // DID must start with did: prefix
   if (!integrity.did.startsWith('did:')) {
     return false;
   }
 
-  // Signature must be non-trivial base64-like string
   if (integrity.signature.length < 4) {
     return false;
   }
 
-  // Envelope hash must be 64-char hex (SHA-256)
   if (!HEX_RE.test(integrity.envelopeHash) || integrity.envelopeHash.length !== 64) {
     return false;
   }
 
-  // FAIL-CLOSED: Cryptographic verification is not implemented.
-  // A strict auditor would flag any system that returns true here.
-  return false;
+  // 2–5. Cryptographic verification
+  try {
+    const didDocument = await resolveDid(integrity.did);
+    const publicKeyJwk = extractPublicKeyJwk(didDocument, integrity.keyId);
+    if (!publicKeyJwk) {
+      return false;
+    }
+
+    const payload = await verifyJwt(integrity.signature, publicKeyJwk, {
+      audience: integrity.audience,
+    });
+
+    // The JWT payload must contain the envelopeHash that was signed
+    return payload.envelopeHash === integrity.envelopeHash;
+  } catch {
+    return false;
+  }
 }
 
 /**
  * Bypass wrapper for integration tests and local development ONLY.
- * Performs the same structural checks as verifyDidSignature but returns true
- * for well-formed requests. Logs a loud warning every time it is invoked.
+ * Logs a loud warning every time it is invoked.
  *
+ * @deprecated Remove once all environments have DID resolver access.
  * @param {import('../types').QueueIntegrity} integrity
  * @returns {Promise<boolean>}
  */

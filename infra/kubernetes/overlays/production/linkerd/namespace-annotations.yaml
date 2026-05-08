@@ -1,0 +1,29 @@
+# =============================================================================
+# Linkerd Data-Plane Injection — Namespace Annotations
+# =============================================================================
+# Apply these patches to enable Linkerd sidecar injection per namespace.
+# After applying, restart all deployments in the namespace to pick up
+# the sidecar: kubectl rollout restart deployment -n <namespace>
+#
+# Verification: linkerd viz stat deploy -n <namespace>
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gtcx
+  annotations:
+    linkerd.io/inject: enabled
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: intelligence
+  annotations:
+    linkerd.io/inject: enabled
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  annotations:
+    linkerd.io/inject: enabled

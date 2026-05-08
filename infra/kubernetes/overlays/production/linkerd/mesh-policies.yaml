@@ -1,0 +1,83 @@
+# =============================================================================
+# Linkerd Mesh Authorization Policies
+# =============================================================================
+# Phase 3: Deny-by-default with per-service allowlists.
+# Apply after all pods are meshed and stable.
+#
+# Principles: SECURE (P11)
+# =============================================================================
+
+# Default deny all traffic within the mesh
+apiVersion: policy.linkerd.io/v1alpha1
+kind: MeshTLSAuthentication
+metadata:
+  name: default-deny
+  namespace: gtcx
+spec:
+  identities: []
+---
+# Allow replay-guard to call protocols
+apiVersion: policy.linkerd.io/v1alpha1
+kind: AuthorizationPolicy
+metadata:
+  name: replay-guard-to-protocols
+  namespace: gtcx
+spec:
+  targetRef:
+    group: ''
+    kind: Service
+    name: gtcx-protocols
+  requiredAuthenticationRefs:
+    - name: replay-guard-auth
+      kind: MeshTLSAuthentication
+      group: policy.linkerd.io
+---
+apiVersion: policy.linkerd.io/v1alpha1
+kind: MeshTLSAuthentication
+metadata:
+  name: replay-guard-auth
+  namespace: gtcx
+spec:
+  identities:
+    - 'gtcx.gtcx-replay-guard.serviceaccount.identity.linkerd.cluster.local'
+---
+# Allow protocols to call postgres (operational)
+apiVersion: policy.linkerd.io/v1alpha1
+kind: AuthorizationPolicy
+metadata:
+  name: protocols-to-postgres
+  namespace: gtcx
+spec:
+  targetRef:
+    group: ''
+    kind: Service
+    name: gtcx-postgres
+  requiredAuthenticationRefs:
+    - name: protocols-auth
+      kind: MeshTLSAuthentication
+      group: policy.linkerd.io
+---
+apiVersion: policy.linkerd.io/v1alpha1
+kind: MeshTLSAuthentication
+metadata:
+  name: protocols-auth
+  namespace: gtcx
+spec:
+  identities:
+    - 'gtcx.gtcx-protocols.serviceaccount.identity.linkerd.cluster.local'
+---
+# Allow protocols to call postgres-audit
+apiVersion: policy.linkerd.io/v1alpha1
+kind: AuthorizationPolicy
+metadata:
+  name: protocols-to-postgres-audit
+  namespace: gtcx
+spec:
+  targetRef:
+    group: ''
+    kind: Service
+    name: gtcx-postgres-audit
+  requiredAuthenticationRefs:
+    - name: protocols-auth
+      kind: MeshTLSAuthentication
+      group: policy.linkerd.io

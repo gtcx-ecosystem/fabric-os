@@ -196,6 +196,60 @@ The 0.3 to true 10/10 comes from 3-6 months of operational history — regulator
 
 ---
 
+---
+
+## Appendix: The $0 Path
+
+If even $8-15K for a pen-test is a constraint, here is the zero-cash path to a credible 10/10:
+
+### Self-Assessment Pen-Test ($0)
+
+African regulators do not mandate a specific pen-test vendor. They mandate that a test was conducted. For a sandbox application (not a full banking license), a documented self-assessment is often accepted if it demonstrates rigor.
+
+1. **Run OWASP ZAP** against the staging API (DAST pipeline already committed in `.github/workflows/dast-zap.yml`). Export the HTML report.
+2. **Run Trivy** against all container images (already in CI). Export SARIF + SBOM.
+3. **Run CodeQL** with the custom crypto queries (already in CI). Export SARIF.
+4. **Run `npm audit`** on all workspaces. Export JSON.
+5. **Manual testing**: use the OWASP Testing Guide v4.2 checklist. Two engineers spend 2 days testing each other's work. Document findings in a spreadsheet.
+6. **Write a pen-test summary report**: executive summary, methodology (OWASP TG v4.2 + automated scanning), findings (CVSS-scored), remediation status. Sign it as "Internal Security Assessment."
+
+Submit this with the sandbox application. If the regulator pushes back, you upgrade to a formal pen-test later — but many sandbox applications in East Africa have been approved with internal assessments.
+
+### Free Infrastructure ($0/mo)
+
+For testnet/sandbox (not production):
+
+- **AWS Activate for Startups**: $5K-$100K in credits. Apply through an accelerator (MEST, Founders Factory Africa, Norrsken) or directly.
+- **Google for Startups Cloud Program**: $100K in GCP credits (if willing to port to GKE).
+- **Azure for Startups**: $25K-$150K in credits via Microsoft for Startups Founders Hub.
+- **Railway / Render free tier**: For the replay-guard service only (if decoupled from EKS).
+
+### Community Pen-Test ($0)
+
+- **OWASP Chapter**: Most African capitals have an OWASP chapter (Nairobi, Lagos, Johannesburg, Accra). Offer a security review session to the local chapter — they get practice, you get findings.
+- **University partnerships**: Computer science security courses at University of Nairobi, University of Cape Town, or Ashesi University often need real-world projects. Offer your API as a lab exercise.
+- **Bug bounty preview**: Invite 3-5 known security researchers from the African infosec community for a private preview. Recognition + small gift cards ($50-100 each) instead of formal bounty payouts.
+
+### Regulator Relationship ($0)
+
+This is the most underused lever. Every sandbox program in Africa has an innovation office. They want you to succeed because your success validates their program.
+
+- **Pre-submission meeting**: Request a 30-minute informal meeting with the sandbox team before submitting. Ask: "What do you need to see from us?" They will tell you exactly what they're looking for. No guessing.
+- **Reference check**: Ask if they can point you to a successful sandbox applicant's public submission (some regulators publish redacted versions).
+- **Iterative submission**: Most sandbox programs allow you to submit incomplete and iterate. Don't wait for perfection — submit early, respond to feedback.
+
+### Total: $0 + time
+
+| Item            | Cost       | Alternative                                             |
+| --------------- | ---------- | ------------------------------------------------------- |
+| Infrastructure  | $0         | AWS Activate credits                                    |
+| Pen-test        | $0         | Internal assessment + OWASP ZAP + community review      |
+| Application fee | $0-$5K     | Varies by jurisdiction (Kenya: free, Zimbabwe: nominal) |
+| Board sign-off  | $0         | Same people, same meeting                               |
+| **Total**       | **$0-$5K** |                                                         |
+
+This path takes 6-8 weeks and gets you into a sandbox. Once in the sandbox, revenue validates the spend on a formal pen-test and production infrastructure.
+
 _Plan authored: 2026-05-08_
 _Applicable jurisdictions: Zimbabwe (RBZ), Kenya (CBK), Nigeria (CBN), South Africa (SARB/FSCA), Ghana (BoG), Egypt (CBE), Tanzania (BoT), Rwanda (BNR)_
 _Reviewed against: RBZ Fintech Regulatory Sandbox Guidelines (2023), CBK Regulatory Sandbox Guidelines (2020), CBN Regulatory Sandbox Framework (2021)_

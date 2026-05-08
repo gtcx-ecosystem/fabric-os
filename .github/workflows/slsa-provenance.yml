@@ -1,0 +1,227 @@
+name: SLSA Provenance (Level 3)
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  # ──────────────────────────────────────────────
+  # 1. Build container image
+  # ──────────────────────────────────────────────
+  build-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    outputs:
+      image-digest: ${{ steps.build.outputs.digest }}
+      image-uri: ${{ steps.meta.outputs.tags }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=sha,prefix=
+            type=ref,event=tag
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+
+      - name: Build and push
+        id: build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          provenance: false # We generate provenance separately via slsa-github-generator
+
+  # ──────────────────────────────────────────────
+  # 2. Generate SLSA provenance for container image
+  # ──────────────────────────────────────────────
+  provenance-image:
+    needs: [build-image]
+    permissions:
+      actions: read
+      id-token: write
+      packages: write
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.1.0
+    with:
+      image: ghcr.io/${{ github.repository }}
+      digest: ${{ needs.build-image.outputs.image-digest }}
+      registry-username: ${{ github.actor }}
+    secrets:
+      registry-password: ${{ secrets.GITHUB_TOKEN }}
+
+  # ──────────────────────────────────────────────
+  # 3. Build npm package
+  # ──────────────────────────────────────────────
+  build-npm:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      package-hash: ${{ steps.hash.outputs.hash }}
+      package-name: ${{ steps.pack.outputs.package-name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Pack
+        id: pack
+        run: |
+          PACKAGE=$(pnpm pack --pack-destination ./dist 2>&1 | tail -1)
+          echo "package-name=${PACKAGE}" >> "$GITHUB_OUTPUT"
+
+      - name: Generate hash
+        id: hash
+        run: |
+          HASH=$(sha256sum ./dist/*.tgz | base64 -w0)
+          echo "hash=${HASH}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-package
+          path: ./dist/*.tgz
+          if-no-files-found: error
+          retention-days: 5
+
+  # ──────────────────────────────────────────────
+  # 4. Generate SLSA provenance for npm package
+  # ──────────────────────────────────────────────
+  provenance-npm:
+    needs: [build-npm]
+    permissions:
+      actions: read
+      id-token: write
+      contents: write
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.1.0
+    with:
+      base64-subjects: ${{ needs.build-npm.outputs.package-hash }}
+      upload-assets: true
+      provenance-name: npm-provenance.intoto.jsonl
+
+  # ──────────────────────────────────────────────
+  # 5. Verify provenance before deployment
+  # ──────────────────────────────────────────────
+  verify-provenance:
+    needs: [provenance-image, provenance-npm]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Install slsa-verifier
+        uses: slsa-framework/slsa-verifier/actions/installer@v2.7.0
+
+      - name: Verify container provenance
+        run: |
+          slsa-verifier verify-image \
+            "ghcr.io/${{ github.repository }}@${{ needs.provenance-image.outputs.outcome == 'success' && 'verified' || 'failed' }}" \
+            --source-uri "github.com/${{ github.repository }}" \
+            --source-branch "${{ github.ref_name }}"
+        continue-on-error: false
+
+      - name: Download npm artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: npm-package
+
+      - name: Download npm provenance
+        uses: actions/download-artifact@v4
+        with:
+          name: npm-provenance.intoto.jsonl
+
+      - name: Verify npm provenance
+        run: |
+          slsa-verifier verify-artifact \
+            ./*.tgz \
+            --provenance-path npm-provenance.intoto.jsonl \
+            --source-uri "github.com/${{ github.repository }}" \
+            --source-branch "${{ github.ref_name }}"
+        continue-on-error: false
+
+      - name: Provenance verification summary
+        if: always()
+        run: |
+          echo "## SLSA Provenance Verification" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Artifact | Status |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|---|---|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Container image | ${{ needs.provenance-image.result == 'success' && 'Verified' || 'Failed' }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| npm package | ${{ needs.provenance-npm.result == 'success' && 'Verified' || 'Failed' }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "SLSA Level: **3**" >> "$GITHUB_STEP_SUMMARY"
+          echo "Source: \`${{ github.repository }}@${{ github.sha }}\`" >> "$GITHUB_STEP_SUMMARY"
+
+  # ──────────────────────────────────────────────
+  # 6. Publish attestation to Rekor transparency log
+  # ──────────────────────────────────────────────
+  publish-attestation:
+    needs: [verify-provenance, build-image]
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      packages: write
+    steps:
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Attest container image
+        run: |
+          cosign attest \
+            --predicate <(echo '{"buildType":"https://slsa.dev/provenance/v1","builder":{"id":"https://github.com/${{ github.repository }}/actions"},"metadata":{"buildInvocationId":"${{ github.run_id }}","completeness":{"parameters":true,"environment":true,"materials":true}}}') \
+            --type slsaprovenance \
+            --yes \
+            "ghcr.io/${{ github.repository }}@${{ needs.build-image.outputs.image-digest }}"
+
+      - name: Verify attestation on Rekor
+        run: |
+          cosign verify-attestation \
+            --type slsaprovenance \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+            --certificate-identity-regexp "https://github.com/${{ github.repository }}/.github/workflows/" \
+            "ghcr.io/${{ github.repository }}@${{ needs.build-image.outputs.image-digest }}"

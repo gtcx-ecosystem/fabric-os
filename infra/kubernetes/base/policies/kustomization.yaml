@@ -8,6 +8,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+  - deny-external-load-balancers.yaml
+  - deny-privileged-containers.yaml
   - reject-latest-tag.yaml
+  - require-encryption-annotations.yaml
   - require-resource-limits.yaml
+  - require-security-context.yaml
   - require-signed-images.yaml

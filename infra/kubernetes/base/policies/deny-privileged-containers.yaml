@@ -1,0 +1,73 @@
+# =============================================================================
+# Kyverno Policy — Deny Privileged Containers
+# =============================================================================
+# Prevents containers from running in privileged mode, using host network,
+# or sharing the host PID namespace. These are common container escape vectors.
+#
+# Install prerequisite:
+#   helm install kyverno kyverno/kyverno -n kyverno --create-namespace
+# =============================================================================
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: deny-privileged-containers
+  annotations:
+    policies.kyverno.io/title: 'Deny Privileged Containers'
+    policies.kyverno.io/category: 'Pod Security'
+    policies.kyverno.io/severity: 'high'
+    policies.kyverno.io/subject: 'Pod'
+    policies.kyverno.io/description: >-
+      Privileged containers, host networking, and host PID sharing are
+      prohibited. These capabilities allow container escape and must never
+      be used in production or staging workloads.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: deny-privileged
+      match:
+        resources:
+          kinds:
+            - Pod
+          namespaces:
+            - gtcx-production
+            - gtcx-staging
+      exclude:
+        resources:
+          namespaces:
+            - kube-system
+            - kube-public
+            - kyverno
+      validate:
+        message: 'Privileged containers are not allowed.'
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  privileged: 'false'
+    - name: deny-host-network
+      match:
+        resources:
+          kinds:
+            - Pod
+          namespaces:
+            - gtcx-production
+            - gtcx-staging
+      validate:
+        message: 'Host network access is not allowed.'
+        pattern:
+          spec:
+            =(hostNetwork): 'false'
+    - name: deny-host-pid
+      match:
+        resources:
+          kinds:
+            - Pod
+          namespaces:
+            - gtcx-production
+            - gtcx-staging
+      validate:
+        message: 'Host PID namespace sharing is not allowed.'
+        pattern:
+          spec:
+            =(hostPID): 'false'

@@ -13,10 +13,15 @@ helm install kyverno kyverno/kyverno \
 
 ## Policies
 
-| Policy                         | Action  | Scope                                                    |
-| ------------------------------ | ------- | -------------------------------------------------------- |
-| `reject-latest-tag.yaml`       | Enforce | Block `:latest` image tags in production and staging     |
-| `require-resource-limits.yaml` | Enforce | Require CPU/memory requests and limits on all containers |
+| Policy                                | Action  | Scope                                                       |
+| ------------------------------------- | ------- | ----------------------------------------------------------- |
+| `deny-external-load-balancers.yaml`   | Enforce | Services of type LoadBalancer must use internal annotation  |
+| `deny-privileged-containers.yaml`     | Enforce | No privileged containers, host network, or host PID         |
+| `reject-latest-tag.yaml`              | Enforce | Block `:latest` image tags in production and staging        |
+| `require-encryption-annotations.yaml` | Enforce | Pods must declare a data classification label               |
+| `require-resource-limits.yaml`        | Enforce | Require CPU/memory requests and limits on all containers    |
+| `require-security-context.yaml`       | Enforce | runAsNonRoot, readOnlyRootFilesystem, drop ALL capabilities |
+| `require-signed-images.yaml`          | Enforce | All images must carry valid Cosign signatures               |
 
 ## Application
 

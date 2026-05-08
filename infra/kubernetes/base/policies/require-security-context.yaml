@@ -1,0 +1,91 @@
+# =============================================================================
+# Kyverno Policy — Require Security Context
+# =============================================================================
+# Enforces defense-in-depth container security: run as non-root, read-only
+# root filesystem, and drop all Linux capabilities. Containers that need
+# specific capabilities must explicitly add only what they require.
+#
+# Install prerequisite:
+#   helm install kyverno kyverno/kyverno -n kyverno --create-namespace
+# =============================================================================
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-security-context
+  annotations:
+    policies.kyverno.io/title: 'Require Security Context'
+    policies.kyverno.io/category: 'Pod Security'
+    policies.kyverno.io/severity: 'high'
+    policies.kyverno.io/subject: 'Pod'
+    policies.kyverno.io/description: >-
+      All containers must run as non-root, use a read-only root filesystem,
+      and drop ALL Linux capabilities. This enforces least-privilege and
+      reduces the attack surface for container breakout.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: run-as-non-root
+      match:
+        resources:
+          kinds:
+            - Pod
+          namespaces:
+            - gtcx-production
+            - gtcx-staging
+      exclude:
+        resources:
+          namespaces:
+            - kube-system
+            - kube-public
+            - kyverno
+      validate:
+        message: 'Containers must set securityContext.runAsNonRoot to true.'
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  runAsNonRoot: true
+    - name: read-only-root-filesystem
+      match:
+        resources:
+          kinds:
+            - Pod
+          namespaces:
+            - gtcx-production
+            - gtcx-staging
+      exclude:
+        resources:
+          namespaces:
+            - kube-system
+            - kube-public
+            - kyverno
+      validate:
+        message: 'Containers must set securityContext.readOnlyRootFilesystem to true.'
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  readOnlyRootFilesystem: true
+    - name: drop-all-capabilities
+      match:
+        resources:
+          kinds:
+            - Pod
+          namespaces:
+            - gtcx-production
+            - gtcx-staging
+      exclude:
+        resources:
+          namespaces:
+            - kube-system
+            - kube-public
+            - kyverno
+      validate:
+        message: 'Containers must drop ALL capabilities. Add back only what is explicitly needed.'
+        deny:
+          conditions:
+            any:
+              - key: '{{ request.object.spec.containers[].securityContext.capabilities.drop[] | length(@) }}'
+                operator: Equals
+                value: 0

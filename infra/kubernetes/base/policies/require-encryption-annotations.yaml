@@ -1,0 +1,51 @@
+# =============================================================================
+# Kyverno Policy — Require Data Classification Labels
+# =============================================================================
+# Ensures every Pod declares a data classification label indicating what
+# type of data it processes. Required for audit trail and encryption-at-rest
+# enforcement decisions.
+#
+# Valid classifications: public, internal, confidential, restricted
+#
+# Install prerequisite:
+#   helm install kyverno kyverno/kyverno -n kyverno --create-namespace
+# =============================================================================
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-encryption-annotations
+  annotations:
+    policies.kyverno.io/title: 'Require Data Classification Label'
+    policies.kyverno.io/category: 'Security'
+    policies.kyverno.io/severity: 'high'
+    policies.kyverno.io/subject: 'Pod'
+    policies.kyverno.io/description: >-
+      All Pods must carry a gtcx.io/data-classification label with a valid
+      classification (public, internal, confidential, restricted). This enables
+      policy-driven encryption enforcement and audit scoping.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: check-data-classification-label
+      match:
+        resources:
+          kinds:
+            - Pod
+          namespaces:
+            - gtcx-production
+            - gtcx-staging
+      exclude:
+        resources:
+          namespaces:
+            - kube-system
+            - kube-public
+            - kyverno
+      validate:
+        message: >-
+          Pods must have a 'gtcx.io/data-classification' label set to one of:
+          public, internal, confidential, restricted.
+        pattern:
+          metadata:
+            labels:
+              gtcx.io/data-classification: 'public | internal | confidential | restricted'

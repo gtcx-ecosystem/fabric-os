@@ -1,0 +1,53 @@
+# =============================================================================
+# Kyverno Policy — Deny External Load Balancers
+# =============================================================================
+# Services of type LoadBalancer must carry the internal load balancer
+# annotation. All external ingress must flow through the ingress controller
+# to enforce TLS termination, WAF rules, and audit logging.
+#
+# Install prerequisite:
+#   helm install kyverno kyverno/kyverno -n kyverno --create-namespace
+# =============================================================================
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: deny-external-load-balancers
+  annotations:
+    policies.kyverno.io/title: 'Deny External Load Balancers'
+    policies.kyverno.io/category: 'Networking'
+    policies.kyverno.io/severity: 'high'
+    policies.kyverno.io/subject: 'Service'
+    policies.kyverno.io/description: >-
+      Services of type LoadBalancer must have the internal load balancer
+      annotation (service.beta.kubernetes.io/aws-load-balancer-internal or
+      the equivalent cloud-provider annotation). Direct external exposure
+      bypasses the ingress controller's TLS termination, WAF, and audit
+      logging.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: require-internal-lb-annotation
+      match:
+        resources:
+          kinds:
+            - Service
+          namespaces:
+            - gtcx-production
+            - gtcx-staging
+      preconditions:
+        all:
+          - key: '{{ request.object.spec.type }}'
+            operator: Equals
+            value: LoadBalancer
+      validate:
+        message: >-
+          Services of type LoadBalancer must include the internal load balancer
+          annotation. Use the ingress controller for external traffic.
+        anyPattern:
+          - metadata:
+              annotations:
+                service.beta.kubernetes.io/aws-load-balancer-internal: 'true'
+          - metadata:
+              annotations:
+                service.beta.kubernetes.io/aws-load-balancer-scheme: 'internal'

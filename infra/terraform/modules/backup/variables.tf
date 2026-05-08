@@ -13,6 +13,12 @@ variable "db_identifier" {
   type        = string
 }
 
+variable "immutable_replication_destination_bucket_arn" {
+  description = "ARN of the cross-region destination bucket for immutable backup replication (empty = disabled)"
+  type        = string
+  default     = ""
+}
+
 variable "tags" {
   description = "Additional tags to apply to all resources"
   type        = map(string)

@@ -198,9 +198,15 @@ jobs:
           terraform init -backend=false
           terraform validate
 
+      - name: Terraform validate — Multi-Region module
+        run: |
+          cd infra/terraform/modules/multi-region
+          terraform init -backend=false
+          terraform validate
+
       - name: Terraform native tests
         run: |
-          for module in vpc database eks ecr workflow-orchestration secrets alb backup detective compliance event-bus kyc-documents compliance-db ml-pipeline trace-pipeline vault; do
+          for module in vpc database eks ecr workflow-orchestration secrets alb backup detective compliance event-bus kyc-documents compliance-db ml-pipeline trace-pipeline vault multi-region; do
             cd "infra/terraform/modules/${module}"
             if [ "${module}" = "secrets" ]; then
               echo '{}' | zip -q lambda/rotation.zip -

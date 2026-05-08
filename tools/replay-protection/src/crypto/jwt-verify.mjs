@@ -12,10 +12,14 @@ const DID_RESOLVER_URL = process.env.DID_RESOLVER_URL || 'https://did.gtcxprotoc
 const DID_RESOLVER_TIMEOUT_MS = Number(process.env.DID_RESOLVER_TIMEOUT_MS || 5000);
 
 /**
+ * @typedef {{ verificationMethod?: Array<{ id: string, publicKeyJwk?: object }>, id?: string }} DidDocument
+ */
+
+/**
  * Resolve a DID to a DID document via HTTP.
  *
  * @param {string} did
- * @returns {Promise<object>}
+ * @returns {Promise<DidDocument>}
  */
 export async function resolveDid(did) {
   const url = `${DID_RESOLVER_URL}/${encodeURIComponent(did)}`;
@@ -37,7 +41,7 @@ export async function resolveDid(did) {
 /**
  * Extract a publicKeyJwk from a DID document by keyId.
  *
- * @param {object} didDocument
+ * @param {DidDocument} didDocument
  * @param {string} keyId
  * @returns {object | null}
  */
@@ -168,10 +172,12 @@ export async function generateEs256KeyPair() {
 // Helpers
 // ---------------------------------------------------------------------------
 
+/** @param {Uint8Array} bytes @returns {string} */
 function base64urlEncode(bytes) {
   return Buffer.from(bytes).toString('base64url');
 }
 
+/** @param {string} str @returns {Uint8Array} */
 function base64urlDecode(str) {
   return new Uint8Array(Buffer.from(str, 'base64url'));
 }

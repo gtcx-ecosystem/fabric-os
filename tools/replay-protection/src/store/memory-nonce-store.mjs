@@ -24,6 +24,7 @@ export class MemoryNonceStore extends NonceStore {
     this.#maxSize = opts.maxSize ?? 100_000;
   }
 
+  /** @param {string} nonce @param {number} ttlMs @returns {Promise<boolean>} */
   async checkAndSet(nonce, ttlMs) {
     this.#evictExpired();
 
@@ -45,6 +46,7 @@ export class MemoryNonceStore extends NonceStore {
     return true;
   }
 
+  /** @param {string} nonce @returns {Promise<boolean>} */
   async has(nonce) {
     const expiresAt = this.#store.get(nonce);
     if (!expiresAt) return false;
@@ -55,6 +57,7 @@ export class MemoryNonceStore extends NonceStore {
     return true;
   }
 
+  /** @param {string} nonce @returns {Promise<void>} */
   async delete(nonce) {
     this.#store.delete(nonce);
   }

@@ -72,10 +72,12 @@ export async function generateEd25519KeyPair() {
 // Helpers
 // ---------------------------------------------------------------------------
 
+/** @param {Uint8Array} bytes @returns {string} */
 function base64urlEncode(bytes) {
   return Buffer.from(bytes).toString('base64url');
 }
 
+/** @param {string} str @returns {Uint8Array} */
 function base64urlDecode(str) {
   return new Uint8Array(Buffer.from(str, 'base64url'));
 }

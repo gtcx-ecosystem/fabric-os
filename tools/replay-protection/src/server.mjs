@@ -75,7 +75,7 @@ async function initRedis() {
   } catch (err) {
     metrics.setRedisConnected(0);
     // eslint-disable-next-line no-console
-    console.error(JSON.stringify({ level: 'warn', message: 'Redis unavailable, falling back to memory store', error: err?.message }));
+    console.error(JSON.stringify({ level: 'warn', message: 'Redis unavailable, falling back to memory store', error: /** @type {any} */ (err)?.message }));
     return false;
   }
 }
@@ -98,15 +98,26 @@ const verifier = new ReplayVerifier({
     maxFutureMs: MAX_FUTURE_MS,
     lowConnectivityRegions: ['global-south', 'rural', 'mesh', 'satellite'],
   },
-  verifySignature: process.env.REPLAY_GUARD_ALLOW_STUB_SIGNATURE === 'true'
-    ? verifyDidSignatureStubBypass
-    : verifyDidSignature,
+  verifySignature: (() => {
+    const allowStub = process.env.REPLAY_GUARD_ALLOW_STUB_SIGNATURE === 'true';
+    if (allowStub && NODE_ENV === 'production') {
+      // eslint-disable-next-line no-console
+      console.error(JSON.stringify({
+        level: 'error',
+        type: 'auth.replay.signature.bypass.blocked',
+        message: 'REPLAY_GUARD_ALLOW_STUB_SIGNATURE=true is FORBIDDEN in production. Using real verification.',
+      }));
+      return verifyDidSignature;
+    }
+    return allowStub ? verifyDidSignatureStubBypass : verifyDidSignature;
+  })(),
 });
 
 // ---------------------------------------------------------------------------
 // OTLP Push
 // ---------------------------------------------------------------------------
 
+/** @type {ReturnType<typeof setInterval> | null} */
 let otlpTimer = null;
 
 function startOtlpPush() {
@@ -273,7 +284,7 @@ const server = createServer(async (req, res) => {
     } else {
       sendJson(res, 404, { error: 'Not found' });
     }
-  } catch (err) {
+  } catch (/** @type {any} */ err) {
     // eslint-disable-next-line no-console
     console.error(JSON.stringify({ level: 'error', message: 'Unhandled server error', error: err?.message }));
     sendJson(res, 500, { error: 'Internal server error' });

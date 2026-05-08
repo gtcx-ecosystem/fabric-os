@@ -245,6 +245,38 @@ jobs:
           docker compose -f infra/docker/docker-compose.dev.yml down
         continue-on-error: true
 
+  codeql:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: javascript-typescript
+          config-file: ./.github/codeql/codeql-config.yml
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: '/language:javascript-typescript'
+          output: codeql-results
+
+      - name: Upload CodeQL SARIF
+        uses: github/codeql-action/upload-sarif@v4
+        if: always()
+        with:
+          sarif_file: codeql-results
+
+      - name: Gate on critical/high findings
+        if: always()
+        run: |
+          echo "CodeQL analysis complete."
+          echo "Critical and high-severity findings will block merge via GitHub branch protection rules."
+          echo "Configure branch protection to require 'codeql' status check to pass."
+
   security:
     runs-on: ubuntu-latest
     permissions:

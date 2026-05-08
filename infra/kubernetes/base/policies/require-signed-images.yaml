@@ -1,0 +1,64 @@
+# =============================================================================
+# Kyverno Policy — Require Cosign-Signed Images
+# =============================================================================
+# Enforces that all container images in production and staging namespaces
+# carry a valid Cosign signature from our CI pipeline (GitHub Actions OIDC).
+# Uses keyless verification via Fulcio (certificate authority) and Rekor
+# (transparency log) from the Sigstore public-good infrastructure.
+#
+# Install prerequisites:
+#   helm install kyverno kyverno/kyverno -n kyverno --create-namespace
+#
+# Apply:
+#   kubectl apply -f require-signed-images.yaml
+# =============================================================================
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-signed-images
+  annotations:
+    policies.kyverno.io/title: 'Require Cosign Image Signatures'
+    policies.kyverno.io/category: 'Supply Chain Security'
+    policies.kyverno.io/severity: 'high'
+    policies.kyverno.io/subject: 'Pod'
+    policies.kyverno.io/description: >-
+      All container images deployed to production and staging must be signed
+      via Cosign keyless signing (Fulcio + Rekor) originating from our GitHub
+      Actions CI pipeline. Unsigned or incorrectly signed images are rejected
+      at admission time to prevent supply chain attacks.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  webhookTimeoutSeconds: 30
+  failurePolicy: Fail
+  rules:
+    - name: verify-cosign-signature
+      match:
+        resources:
+          kinds:
+            - Pod
+          namespaces:
+            - gtcx-production
+            - gtcx-staging
+      exclude:
+        resources:
+          namespaces:
+            - kube-system
+            - kube-public
+            - cert-manager
+            - linkerd
+            - linkerd-viz
+            - kyverno
+      verifyImages:
+        - imageReferences:
+            - '293488310036.dkr.ecr.af-south-1.amazonaws.com/gtcx-*'
+          attestors:
+            - entries:
+                - keyless:
+                    subject: 'https://github.com/gtcx-ecosystem/*'
+                    issuer: 'https://token.actions.githubusercontent.com'
+                    rekor:
+                      url: 'https://rekor.sigstore.dev'
+          mutateDigest: true
+          verifyDigest: true
+          required: true

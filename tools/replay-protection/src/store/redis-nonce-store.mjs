@@ -35,30 +35,33 @@ export class RedisNonceStore extends NonceStore {
     this.#keyPrefix = opts.keyPrefix ?? 'replay:nonce';
   }
 
+  /** @param {string} nonce @param {number} ttlMs @returns {Promise<boolean>} */
   async checkAndSet(nonce, ttlMs) {
     const key = this.#key(nonce);
     // SET key value NX PX ms  ->  returns "OK" on success, null on key exists
-    const result = await this.#client.set(key, '1', {
+    const result = await this.#client?.set(key, '1', {
       NX: true,
       PX: Math.max(1, Math.floor(ttlMs)),
     });
     return result === 'OK';
   }
 
+  /** @param {string} nonce @returns {Promise<boolean>} */
   async has(nonce) {
     const key = this.#key(nonce);
-    const result = await this.#client.exists(key);
+    const result = await this.#client?.exists(key);
     return result === 1;
   }
 
+  /** @param {string} nonce @returns {Promise<void>} */
   async delete(nonce) {
     const key = this.#key(nonce);
-    await this.#client.del(key);
+    await this.#client?.del(key);
   }
 
   async health() {
     try {
-      await this.#client.ping();
+      await this.#client?.ping();
       return true;
     } catch {
       return false;

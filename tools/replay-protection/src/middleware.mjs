@@ -40,7 +40,7 @@ import { defaultAuditCapture } from './audit/audit-capture.mjs';
 export function replayGuardMiddleware(opts) {
   const verifier = new ReplayVerifier({
     nonceStore: opts.nonceStore,
-    verifySignature: opts.verifySignature ?? null,
+    verifySignature: opts.verifySignature ?? undefined,
     metrics: opts.metrics ?? defaultMetrics,
     auditCapture: opts.auditCapture ?? defaultAuditCapture,
     nonceTtlMs: opts.nonceTtlMs,

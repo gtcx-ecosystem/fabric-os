@@ -94,8 +94,8 @@ export class AuditCapture {
   }
 }
 
-/** Default console sink for local dev and bootstrap. */
-export const consoleSink = /** @type {AuditSink} */ (event) => {
+/** Default console sink for local dev and bootstrap. @param {import('../types').AuditEvent} event */
+export const consoleSink = (event) => {
   // eslint-disable-next-line no-console
   console.log(JSON.stringify({ type: 'audit.replay', ...event }));
 };

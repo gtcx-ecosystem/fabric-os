@@ -10,3 +10,4 @@ kind: Kustomization
 resources:
   - reject-latest-tag.yaml
   - require-resource-limits.yaml
+  - require-signed-images.yaml

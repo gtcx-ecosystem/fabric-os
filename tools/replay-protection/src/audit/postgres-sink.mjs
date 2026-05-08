@@ -30,7 +30,7 @@ export function createPostgresSink(opts) {
 
   const query = opts.query ?? defaultQuery(opts.connectionString);
 
-  return async (event) => {
+  return async (/** @type {import('../types').AuditEvent} */ event) => {
     try {
       await query(
         `INSERT INTO gtcx_audit.replay_events
@@ -54,7 +54,7 @@ export function createPostgresSink(opts) {
           event.isDelayedOfflineReplay ?? null,
         ]
       );
-    } catch (err) {
+    } catch (/** @type {any} */ err) {
       // Best-effort: do not block verification on audit write failure.
       // eslint-disable-next-line no-console
       console.error(JSON.stringify({
@@ -71,9 +71,11 @@ export function createPostgresSink(opts) {
  * Default query implementation using `pg` if available.
  * Returns a no-op if `pg` is not installed (peer dependency).
  */
+/** @param {string} connectionString */
 function defaultQuery(connectionString) {
+  /** @type {any} */
   let pool = null;
-  return async (sql, params) => {
+  return async (/** @type {string} */ sql, /** @type {any[]} */ params) => {
     if (!pool) {
       try {
         // @ts-ignore pg is an optional peer dependency

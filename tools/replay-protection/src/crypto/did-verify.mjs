@@ -25,7 +25,7 @@ const NONCE_MIN_LEN = 16; // 8 bytes hex minimum
  */
 export async function verifyDidSignature(integrity) {
   // 1. Structural validation
-  const required = ['scheme', 'did', 'keyId', 'audience', 'timestamp', 'nonce', 'signature', 'envelopeHash'];
+  const required = /** @type {const} */ (['scheme', 'did', 'keyId', 'audience', 'timestamp', 'nonce', 'signature', 'envelopeHash']);
   for (const field of required) {
     const val = integrity[field];
     if (typeof val !== 'string' || val.length === 0) {
@@ -69,9 +69,9 @@ export async function verifyDidSignature(integrity) {
       }
       case 'did-jwt-es256': {
         // ES256 JWT; payload must contain matching envelopeHash
-        const payload = await verifyJwt(integrity.signature, publicKeyJwk, {
+        const payload = /** @type {any} */ (await verifyJwt(integrity.signature, publicKeyJwk, {
           audience: integrity.audience,
-        });
+        }));
         return payload.envelopeHash === integrity.envelopeHash;
       }
       default:
@@ -91,7 +91,7 @@ export async function verifyDidSignature(integrity) {
  * @returns {Promise<boolean>}
  */
 export async function verifyDidSignatureStubBypass(integrity) {
-  const required = ['scheme', 'did', 'keyId', 'audience', 'timestamp', 'nonce', 'signature', 'envelopeHash'];
+  const required = /** @type {const} */ (['scheme', 'did', 'keyId', 'audience', 'timestamp', 'nonce', 'signature', 'envelopeHash']);
   for (const field of required) {
     const val = integrity[field];
     if (typeof val !== 'string' || val.length === 0) {

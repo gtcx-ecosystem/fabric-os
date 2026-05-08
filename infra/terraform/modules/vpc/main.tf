@@ -260,6 +260,82 @@ resource "aws_flow_log" "main" {
   })
 }
 
+# S3 flow log for long-term retention (bank-grade: 7 years)
+resource "aws_flow_log" "s3" {
+  vpc_id                   = aws_vpc.main.id
+  traffic_type             = "ALL"
+  log_destination_type     = "s3"
+  log_destination          = aws_s3_bucket.flow_logs.arn
+  max_aggregation_interval = 600
+
+  destination_options {
+    file_format                = "parquet"
+    per_hour_partition         = true
+    hive_compatible_partitions = true
+  }
+
+  tags = merge(local.common_tags, {
+    Name = "gtcx-${var.environment}-flow-logs-s3"
+  })
+}
+
+resource "aws_s3_bucket" "flow_logs" {
+  bucket = "gtcx-${var.environment}-vpc-flow-logs-${data.aws_caller_identity.current.account_id}"
+
+  tags = merge(local.common_tags, {
+    Name       = "gtcx-${var.environment}-vpc-flow-logs"
+    Compliance = "FFIEC-network-monitoring"
+  })
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "flow_logs" {
+  bucket = aws_s3_bucket.flow_logs.id
+
+  rule {
+    id     = "archive-flow-logs"
+    status = "Enabled"
+
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+
+    expiration {
+      days = 2557 # ~7 years
+    }
+  }
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "flow_logs" {
+  bucket = aws_s3_bucket.flow_logs.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "aws:kms"
+    }
+    bucket_key_enabled = true
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "flow_logs" {
+  bucket = aws_s3_bucket.flow_logs.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_versioning" "flow_logs" {
+  bucket = aws_s3_bucket.flow_logs.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+data "aws_caller_identity" "current" {}
+
 resource "aws_cloudwatch_log_group" "flow_logs" {
   name              = "/gtcx/${var.environment}/vpc-flow-logs"
   retention_in_days = 90 # Per AUDITABLE principle

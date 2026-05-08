@@ -84,24 +84,26 @@ export class ReplayVerifier {
     const deviceId = context.deviceId;
 
     // --- 1. Timestamp window + clock skew ---
-    const tsEval = evaluateTimestamp(integrity.timestamp, region, this.#clockSkewPolicy);
+    const tsEval = evaluateTimestamp(integrity.timestamp, region ?? '', this.#clockSkewPolicy);
     if (!tsEval.valid) {
       this.#metrics.inc(tsEval.code === 'REPLAY_FUTURE' ? 'rejected_future_total' : 'rejected_stale_total');
       this.#metrics.observeClockSkew(tsEval.skewMs);
-      this.#maybeLog(integrity, tsEval.code, tsEval.reason, context);
+      const tsCode = /** @type {string} */ (tsEval.code);
+      const tsReason = /** @type {string} */ (tsEval.reason);
+      this.#maybeLog(integrity, tsCode, tsReason, context);
       const auditEvent = await this.#audit.capture({
         eventType: 'replay.rejected',
         nonce: integrity.nonce,
         did: integrity.did,
-        reason: tsEval.reason,
-        code: tsEval.code,
+        reason: tsReason,
+        code: tsCode,
         region,
         requestId,
         deviceId,
         clockSkewMs: tsEval.skewMs,
         acceptanceWindowMs: tsEval.windowMs,
       });
-      return { allowed: false, code: tsEval.code, reason: tsEval.reason, auditEvent };
+      return { allowed: false, code: tsCode, reason: tsReason, auditEvent };
     }
 
     // --- 2. Nonce uniqueness (atomic check-and-set) ---
@@ -128,11 +130,11 @@ export class ReplayVerifier {
 
     // --- 3. Hash verification (body, headers, envelope) ---
     if (!this.#skipHashVerification) {
-      const hashResult = this.#verifyHashes(integrity, request);
+      const hashResult = this.#verifyHashes(integrity, /** @type {any} */ (request));
       if (!hashResult.valid) {
         this.#metrics.inc('rejected_envelope_total');
         this.#metrics.observeClockSkew(tsEval.skewMs);
-        this.#maybeLog(integrity, 'REPLAY_ENVELOPE', hashResult.reason, context);
+        this.#maybeLog(integrity, 'REPLAY_ENVELOPE', /** @type {string} */ (hashResult.reason), context);
         // NONCE IS NOT DELETED — fail-safe semantics: once consumed, a nonce stays
         // consumed regardless of downstream verification outcome. This prevents
         // replay of rejected requests and forces attackers to mint fresh nonces.
@@ -213,14 +215,13 @@ export class ReplayVerifier {
   }
 
   /**
-   
    * @param {import('./types').QueueIntegrity} integrity
-   * @param {object} request
+   * @param {{ body: unknown, headers: Record<string, string>, method: string, url: string }} request
    * @returns {{ valid: boolean; reason?: string }}
    */
   #verifyHashes(integrity, request) {
     // Body hash
-    const computedBodyHash = computeBodyHash(request.body);
+    const computedBodyHash = computeBodyHash(/** @type {string} */ (request.body));
     if (computedBodyHash !== integrity.bodyHash) {
       return { valid: false, reason: 'bodyHash mismatch' };
     }
@@ -251,7 +252,10 @@ export class ReplayVerifier {
   }
 
   /**
-   
+   * @param {import('./types').QueueIntegrity} integrity
+   * @param {string} code
+   * @param {string} reason
+   * @param {import('./types').VerifyContext} context
    */
   #maybeLog(integrity, code, reason, context) {
     if (!this.#logFailures) return;

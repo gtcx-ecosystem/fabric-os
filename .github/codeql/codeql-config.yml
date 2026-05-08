@@ -1,0 +1,15 @@
+name: 'GTCX Crypto Misuse Analysis'
+
+queries:
+  - uses: security-extended
+  - uses: ./.github/codeql/crypto-misuse.ql
+
+paths:
+  - tools/
+  - src/
+
+paths-ignore:
+  - node_modules/
+  - dist/
+  - '**/*.test.mjs'
+  - '**/*.spec.ts'

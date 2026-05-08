@@ -67,6 +67,11 @@ run_policy_checks() {
     (cd "${PROJECT_ROOT}" && pnpm check:workflow-image-contract)
 }
 
+run_replay_protection_tests() {
+    log_info "Running replay-protection tests..."
+    (cd "${PROJECT_ROOT}/tools/replay-protection" && node --test tests/**/*.test.mjs)
+}
+
 run_script_smoke_tests() {
     log_info "Running operator script smoke tests..."
     (cd "${PROJECT_ROOT}" && bash infra/scripts/build-push.sh --list >/dev/null)
@@ -171,11 +176,13 @@ case "${MODE}" in
     quick)
         run_policy_checks
         run_shell_checks
+        run_replay_protection_tests
         run_script_smoke_tests
         ;;
     full)
         run_policy_checks
         run_shell_checks
+        run_replay_protection_tests
         run_script_smoke_tests
         run_terraform_validation
         run_terraform_tests

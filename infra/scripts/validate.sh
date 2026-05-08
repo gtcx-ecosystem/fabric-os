@@ -69,7 +69,7 @@ run_policy_checks() {
 
 run_replay_protection_tests() {
     log_info "Running replay-protection tests..."
-    (cd "${PROJECT_ROOT}/tools/replay-protection" && node --test tests/**/*.test.mjs)
+    (cd "${PROJECT_ROOT}/tools/replay-protection" && node --test tests/verifier.test.mjs tests/integration.test.mjs)
 }
 
 run_script_smoke_tests() {

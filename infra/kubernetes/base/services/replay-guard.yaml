@@ -1,0 +1,184 @@
+# =============================================================================
+# Replay Guard — Replay-protection sidecar service
+#
+# Verifies mobile signed-request contracts:
+#   - nonce uniqueness
+#   - timestamp window + clock-skew tolerance
+#   - signature verification (delegated to DID resolver)
+#
+# Principles: SECURE (P11), OBSERVABLE (P15), RESILIENT (P12)
+# =============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gtcx-replay-guard
+  namespace: gtcx
+  labels:
+    app: gtcx-replay-guard
+    tier: security
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: gtcx-replay-guard
+  template:
+    metadata:
+      labels:
+        app: gtcx-replay-guard
+        tier: security
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8400'
+        prometheus.io/path: '/metrics'
+    spec:
+      serviceAccountName: gtcx-platform
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+        seccompProfile:
+          type: RuntimeDefault
+      terminationGracePeriodSeconds: 30
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: gtcx-replay-guard
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: gtcx-replay-guard
+      containers:
+        - name: replay-guard
+          image: gtcx/replay-guard:v0.1.0
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8400
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: '8400'
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-redis
+                  key: url
+            - name: NONCE_TTL_MS
+              value: '900000'
+            - name: CLOCK_SKEW_WINDOW_MS
+              value: '300000'
+            - name: LOW_CONN_BUFFER_MS
+              value: '600000'
+            - name: MAX_FUTURE_MS
+              value: '120000'
+            - name: OTLP_ENDPOINT
+              value: 'http://gtcx-otel-collector.monitoring:4318/v1/metrics'
+            - name: OTLP_PUSH_INTERVAL_MS
+              value: '30000'
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          lifecycle:
+            preStop:
+              exec:
+                command: ['/bin/sh', '-c', 'sleep 10']
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gtcx-replay-guard
+  namespace: gtcx
+  labels:
+    app: gtcx-replay-guard
+spec:
+  type: ClusterIP
+  selector:
+    app: gtcx-replay-guard
+  ports:
+    - name: http
+      port: 8400
+      targetPort: 8400
+      protocol: TCP
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: gtcx-replay-guard
+  namespace: gtcx
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: gtcx-replay-guard
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: gtcx-replay-guard
+  namespace: gtcx
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: gtcx-replay-guard
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 30
+      policies:
+        - type: Pods
+          value: 2
+          periodSeconds: 15
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Pods
+          value: 1
+          periodSeconds: 60

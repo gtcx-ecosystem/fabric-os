@@ -86,6 +86,29 @@ services:
     networks:
       - gtcx-network
 
+  # Replay Guard — nonce / timestamp / signature verification for mobile offline queue
+  replay-guard:
+    build:
+      context: ../../tools/replay-protection
+      dockerfile: Dockerfile
+    container_name: gtcx-replay-guard
+    ports:
+      - '8400:8400'
+    environment:
+      NODE_ENV: development
+      PORT: '8400'
+      REDIS_URL: 'redis://gtcx-redis:6379'
+      NONCE_TTL_MS: '900000'
+      CLOCK_SKEW_WINDOW_MS: '300000'
+      LOW_CONN_BUFFER_MS: '600000'
+      MAX_FUTURE_MS: '120000'
+      OTLP_ENDPOINT: 'http://gtcx-otel-collector:4318/v1/metrics'
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - gtcx-network
+
   # ===========================================================================
   # EVENT BUS (per RESILIENT principle)
   # ===========================================================================

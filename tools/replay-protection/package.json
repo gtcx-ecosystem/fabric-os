@@ -6,6 +6,8 @@
   "main": "src/verifier.mjs",
   "exports": {
     ".": "./src/verifier.mjs",
+    "./server": "./src/server.mjs",
+    "./middleware": "./src/middleware.mjs",
     "./store": "./src/store/nonce-store.mjs",
     "./store/memory": "./src/store/memory-nonce-store.mjs",
     "./store/redis": "./src/store/redis-nonce-store.mjs",

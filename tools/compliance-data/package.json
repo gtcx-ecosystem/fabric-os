@@ -1,0 +1,24 @@
+{
+  "name": "@gtcx/compliance-data",
+  "version": "1.1.0",
+  "description": "African fintech regulatory jurisdiction data — 11 jurisdictions covering 22+ countries",
+  "type": "module",
+  "main": "jurisdictions.json",
+  "exports": {
+    ".": "./jurisdictions.json",
+    "./jurisdictions": "./jurisdictions.json"
+  },
+  "keywords": [
+    "gtcx",
+    "compliance",
+    "african-fintech",
+    "regulatory",
+    "kyc",
+    "aml",
+    "jurisdiction",
+    "fatf",
+    "central-bank"
+  ],
+  "license": "MIT",
+  "private": true
+}

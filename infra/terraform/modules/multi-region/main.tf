@@ -57,13 +57,13 @@ locals {
 
 resource "aws_route53_health_check" "primary" {
   fqdn              = var.primary_alb_dns
-  port               = 443
-  type               = "HTTPS"
-  resource_path      = var.health_check_path
-  failure_threshold  = 3
-  request_interval   = 10
-  measure_latency    = true
-  regions            = ["us-east-1", "eu-west-1", "ap-southeast-1"]
+  port              = 443
+  type              = "HTTPS"
+  resource_path     = var.health_check_path
+  failure_threshold = 3
+  request_interval  = 10
+  measure_latency   = true
+  regions           = ["us-east-1", "eu-west-1", "ap-southeast-1"]
 
   tags = merge(local.common_tags, {
     Name = "gtcx-${var.environment}-primary-health"
@@ -76,13 +76,13 @@ resource "aws_route53_health_check" "primary" {
 
 resource "aws_route53_health_check" "secondary" {
   fqdn              = var.secondary_alb_dns
-  port               = 443
-  type               = "HTTPS"
-  resource_path      = var.health_check_path
-  failure_threshold  = 3
-  request_interval   = 10
-  measure_latency    = true
-  regions            = ["us-east-1", "eu-west-1", "ap-southeast-1"]
+  port              = 443
+  type              = "HTTPS"
+  resource_path     = var.health_check_path
+  failure_threshold = 3
+  request_interval  = 10
+  measure_latency   = true
+  regions           = ["us-east-1", "eu-west-1", "ap-southeast-1"]
 
   tags = merge(local.common_tags, {
     Name = "gtcx-${var.environment}-secondary-health"
@@ -145,13 +145,13 @@ resource "aws_db_instance" "audit_replica" {
   identifier          = "gtcx-${var.environment}-audit-replica"
   replicate_source_db = var.audit_db_arn
 
-  instance_class        = var.replica_instance_class
-  storage_encrypted     = true
-  kms_key_id            = var.secondary_kms_key_arn
-  publicly_accessible   = false
-  multi_az              = false # Single-AZ replica (cost optimization — promoted to Multi-AZ on failover)
-  deletion_protection   = true
-  skip_final_snapshot   = false
+  instance_class            = var.replica_instance_class
+  storage_encrypted         = true
+  kms_key_id                = var.secondary_kms_key_arn
+  publicly_accessible       = false
+  multi_az                  = false # Single-AZ replica (cost optimization — promoted to Multi-AZ on failover)
+  deletion_protection       = true
+  skip_final_snapshot       = false
   final_snapshot_identifier = "gtcx-${var.environment}-audit-replica-final"
 
   performance_insights_enabled          = true

@@ -241,9 +241,9 @@ resource "aws_lambda_function" "backup" {
 
   environment {
     variables = {
-      BACKUP_BUCKET  = aws_s3_bucket.backup.id
-      KMS_KEY_ARN    = aws_kms_key.backup.arn
-      DB_IDENTIFIER  = var.db_identifier
+      BACKUP_BUCKET   = aws_s3_bucket.backup.id
+      KMS_KEY_ARN     = aws_kms_key.backup.arn
+      DB_IDENTIFIER   = var.db_identifier
       EXPORT_ROLE_ARN = aws_iam_role.rds_export.arn
     }
   }
@@ -297,8 +297,8 @@ resource "aws_iam_role_policy" "lambda_execution" {
         Resource = "arn:aws:logs:*:*:log-group:/aws/lambda/gtcx-${var.environment}-audit-backup:*"
       },
       {
-        Effect = "Allow"
-        Action = "iam:PassRole"
+        Effect   = "Allow"
+        Action   = "iam:PassRole"
         Resource = aws_iam_role.rds_export.arn
       }
     ]

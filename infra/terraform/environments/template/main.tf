@@ -27,11 +27,11 @@ terraform {
   # Backend configuration — MUST be customized per environment.
   # terraform init will fail if CHANGE-ME values are not replaced.
   backend "s3" {
-    bucket         = "CHANGE-ME-gtcx-terraform-state"  # Required: unique bucket name
-    key            = "CHANGE-ME/terraform.tfstate"       # Required: state file path
-    region         = "CHANGE-ME"                         # Required: AWS region
+    bucket         = "CHANGE-ME-gtcx-terraform-state" # Required: unique bucket name
+    key            = "CHANGE-ME/terraform.tfstate"    # Required: state file path
+    region         = "CHANGE-ME"                      # Required: AWS region
     encrypt        = true
-    dynamodb_table = "CHANGE-ME-terraform-locks"         # Required: lock table name
+    dynamodb_table = "CHANGE-ME-terraform-locks" # Required: lock table name
   }
 }
 

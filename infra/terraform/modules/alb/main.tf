@@ -350,7 +350,7 @@ resource "kubectl_manifest" "ingress_class_params" {
       }
     }
     spec = {
-      scheme = "internet-facing"
+      scheme    = "internet-facing"
       sslPolicy = "ELBSecurityPolicy-TLS13-1-2-2021-06"
       tags = [
         {

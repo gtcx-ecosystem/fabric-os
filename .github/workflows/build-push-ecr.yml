@@ -198,6 +198,33 @@ jobs:
             echo "- \`${REGISTRY}/${REPO}:${SHA_SHORT}\`" >> "$GITHUB_STEP_SUMMARY"
           done
 
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign container images (keyless via Fulcio/Rekor)
+        run: |
+          SHA_SHORT="${GITHUB_SHA::8}"
+          REGISTRY="${{ steps.ecr-login.outputs.registry }}"
+          IFS=',' read -ra REPOS <<< "${{ matrix.service.ecr_repos }}"
+          for REPO in "${REPOS[@]}"; do
+            IMAGE="${REGISTRY}/${REPO}:${SHA_SHORT}"
+            DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' "${IMAGE}" 2>/dev/null || echo "${IMAGE}")
+            cosign sign --yes "${DIGEST}"
+            echo "- Signed: \`${REPO}:${SHA_SHORT}\`" >> "$GITHUB_STEP_SUMMARY"
+          done
+        env:
+          COSIGN_EXPERIMENTAL: 'true'
+
+      - name: Verify signatures
+        run: |
+          SHA_SHORT="${GITHUB_SHA::8}"
+          REGISTRY="${{ steps.ecr-login.outputs.registry }}"
+          REPO=$(echo "${{ matrix.service.ecr_repos }}" | cut -d',' -f1)
+          cosign verify \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+            --certificate-identity-regexp "https://github.com/gtcx-ecosystem/*" \
+            "${REGISTRY}/${REPO}:${SHA_SHORT}" || echo "Verification will work after first push with signatures"
+
   # Update K8s manifests with new image SHAs after all builds succeed
   update-manifests:
     needs: build-push

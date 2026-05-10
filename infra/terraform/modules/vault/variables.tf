@@ -107,11 +107,11 @@ variable "vault_db_admin_password_secret_arn" {
 variable "db_roles" {
   description = "Database dynamic credential roles to create"
   type = map(object({
-    db_name              = string
-    creation_statements  = list(string)
+    db_name               = string
+    creation_statements   = list(string)
     revocation_statements = list(string)
-    default_ttl_seconds  = number
-    max_ttl_seconds      = number
+    default_ttl_seconds   = number
+    max_ttl_seconds       = number
   }))
   default = {}
 }
@@ -156,11 +156,11 @@ variable "pki_max_ttl_hours" {
 variable "pki_roles" {
   description = "PKI certificate roles"
   type = map(object({
-    allowed_domains    = list(string)
-    allow_subdomains   = bool
-    max_ttl_hours      = number
-    key_type           = string
-    key_bits           = number
+    allowed_domains  = list(string)
+    allow_subdomains = bool
+    max_ttl_hours    = number
+    key_type         = string
+    key_bits         = number
   }))
   default = {}
 }
@@ -178,8 +178,8 @@ variable "enable_aws_engine" {
 variable "aws_credential_roles" {
   description = "AWS dynamic credential roles for pipeline workloads"
   type = map(object({
-    credential_type    = string
-    policy_arns        = list(string)
+    credential_type     = string
+    policy_arns         = list(string)
     default_ttl_seconds = number
     max_ttl_seconds     = number
   }))

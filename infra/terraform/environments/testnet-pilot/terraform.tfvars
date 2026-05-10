@@ -22,10 +22,13 @@ eks_node_desired_size   = 1
 eks_node_min_size       = 1
 eks_node_max_size       = 3
 
-# API access — restricted to operator IP
-# Update admin_cidr_blocks when your IP changes
+# API access — use Cloudflare Tunnel for service traffic.
+# EKS public API is for kubectl only; disable once bastion is set up.
+# Operator IPs are set via AWS CLI, not committed to source:
+#   aws eks update-cluster-config --name gtcx-testnet-pilot \
+#     --resources-vpc-config publicAccessCidrs=$(curl -s https://api.ipify.org)/32
 enable_public_api = true
-admin_cidr_blocks = ["102.182.46.107/32", "196.50.223.130/32"]
+admin_cidr_blocks = []
 
 # Domain — ACM certificate for HTTPS
 domain_name = "gtcx.trade"

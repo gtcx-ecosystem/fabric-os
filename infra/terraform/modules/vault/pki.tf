@@ -19,7 +19,7 @@ resource "vault_mount" "pki" {
   type        = "pki"
   description = "Internal PKI for GTCX service-to-service mTLS"
 
-  default_lease_ttl_seconds = 259200   # 72 hours
+  default_lease_ttl_seconds = 259200 # 72 hours
   max_lease_ttl_seconds     = var.pki_max_ttl_hours * 3600
 }
 

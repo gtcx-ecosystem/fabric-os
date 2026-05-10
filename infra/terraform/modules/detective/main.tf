@@ -171,11 +171,11 @@ resource "aws_s3_bucket_policy" "cloudtrail" {
 # -----------------------------------------------------------------------------
 
 resource "aws_cloudtrail" "main" {
-  name                       = "gtcx-${var.environment}-trail"
-  s3_bucket_name             = aws_s3_bucket.cloudtrail.id
-  kms_key_id                 = aws_kms_key.cloudtrail.arn
-  is_multi_region_trail      = false
-  enable_log_file_validation = true
+  name                          = "gtcx-${var.environment}-trail"
+  s3_bucket_name                = aws_s3_bucket.cloudtrail.id
+  kms_key_id                    = aws_kms_key.cloudtrail.arn
+  is_multi_region_trail         = false
+  enable_log_file_validation    = true
   include_global_service_events = true
 
   event_selector {
@@ -226,7 +226,7 @@ resource "aws_cloudwatch_event_rule" "guardduty_findings" {
   description = "Route GuardDuty findings to SNS for alerting"
 
   event_pattern = jsonencode({
-    source      = ["aws.guardduty"]
+    source        = ["aws.guardduty"]
     "detail-type" = ["GuardDuty Finding"]
     detail = {
       severity = [{ numeric = [">=", 4] }] # MEDIUM and above

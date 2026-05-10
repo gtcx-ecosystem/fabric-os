@@ -64,3 +64,4 @@ _delete/
 
 # Generated security reports
 infra/security/reports/rollback-evidence/
+*.tfplan

@@ -17,8 +17,8 @@ resource "vault_mount" "database" {
   type        = "database"
   description = "Dynamic database credentials for GTCX services"
 
-  default_lease_ttl_seconds = 3600   # 1 hour
-  max_lease_ttl_seconds     = 86400  # 24 hours
+  default_lease_ttl_seconds = 3600  # 1 hour
+  max_lease_ttl_seconds     = 86400 # 24 hours
 }
 
 # -----------------------------------------------------------------------------
@@ -57,7 +57,7 @@ resource "vault_database_secret_backend_role" "roles" {
   default_ttl = each.value.default_ttl_seconds
   max_ttl     = each.value.max_ttl_seconds
 
-  creation_statements  = each.value.creation_statements
+  creation_statements   = each.value.creation_statements
   revocation_statements = each.value.revocation_statements
 }
 

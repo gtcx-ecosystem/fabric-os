@@ -99,9 +99,9 @@ resource "aws_iam_role_policy" "github_deploy" {
     Statement = [
       {
         # ECR authentication (not repo-specific)
-        Sid    = "ECRAuth"
-        Effect = "Allow"
-        Action = ["ecr:GetAuthorizationToken"]
+        Sid      = "ECRAuth"
+        Effect   = "Allow"
+        Action   = ["ecr:GetAuthorizationToken"]
         Resource = "*"
       },
       {

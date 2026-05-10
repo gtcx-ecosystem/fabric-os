@@ -18,8 +18,8 @@ resource "vault_aws_secret_backend" "aws" {
   path        = "aws"
   description = "Dynamic AWS credentials for GTCX pipeline workloads"
 
-  default_lease_ttl_seconds = 1800   # 30 minutes
-  max_lease_ttl_seconds     = 7200   # 2 hours
+  default_lease_ttl_seconds = 1800 # 30 minutes
+  max_lease_ttl_seconds     = 7200 # 2 hours
 }
 
 # -----------------------------------------------------------------------------

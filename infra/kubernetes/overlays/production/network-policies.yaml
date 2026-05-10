@@ -70,7 +70,7 @@ spec:
     # Per-environment patch: replace with your VPC database subnet range.
     - to:
         - ipBlock:
-            cidr: REPLACE_WITH_DB_SUBNET_CIDR
+            cidr: 10.0.128.0/17
       ports:
         - protocol: TCP
           port: 5432
@@ -109,7 +109,7 @@ spec:
     # Per-environment patch: replace with your VPC database subnet range.
     - to:
         - ipBlock:
-            cidr: REPLACE_WITH_DB_SUBNET_CIDR
+            cidr: 10.0.128.0/17
       ports:
         - protocol: TCP
           port: 5432

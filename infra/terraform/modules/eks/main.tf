@@ -462,10 +462,10 @@ resource "aws_eks_node_group" "gpu" {
   }
 
   labels = {
-    environment                      = var.environment
-    project                          = "gtcx"
-    "node.kubernetes.io/purpose"     = "gpu-training"
-    "nvidia.com/gpu.present"         = "true"
+    environment                  = var.environment
+    project                      = "gtcx"
+    "node.kubernetes.io/purpose" = "gpu-training"
+    "nvidia.com/gpu.present"     = "true"
   }
 
   taint {

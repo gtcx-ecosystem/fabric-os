@@ -141,8 +141,8 @@ resource "helm_release" "tempo" {
     }
 
     global_overrides = {
-      max_traces_per_user  = 0       # unlimited
-      max_bytes_per_trace  = 5000000 # 5MB
+      max_traces_per_user = 0       # unlimited
+      max_bytes_per_trace = 5000000 # 5MB
     }
 
     ingester = {

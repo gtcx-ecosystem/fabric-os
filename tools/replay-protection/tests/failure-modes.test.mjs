@@ -131,9 +131,7 @@ describe('Failure Modes — Clock Drift', () => {
 });
 
 describe('Failure Modes — Redis Outage', () => {
-  it('falls back to memory store when Redis is unreachable', async () => {
-    // Simulate Redis outage: REDIS_URL is set but Redis is down
-    // The server falls back to MemoryNonceStore automatically
+  it('allows development-mode fallback to memory store when Redis is unreachable', async () => {
     const memoryStore = new MemoryNonceStore();
     const verifier = new ReplayVerifier({ nonceStore: memoryStore });
 

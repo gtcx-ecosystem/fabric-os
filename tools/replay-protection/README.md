@@ -128,11 +128,11 @@ Pathnames are normalized (`//` → `/`). Query parameters are sorted lexicograph
 
 ### Prometheus Metrics
 
-| Metric                            | Type      | Description                      |
-| --------------------------------- | --------- | -------------------------------- |
-| `replay_protection_total{code}`   | counter   | Decisions by outcome code        |
-| `replay_guard_redis_connected`    | gauge     | 1 = Redis, 0 = memory fallback   |
-| `replay_protection_clock_skew_ms` | histogram | Absolute clock skew distribution |
+| Metric                            | Type      | Description                           |
+| --------------------------------- | --------- | ------------------------------------- |
+| `replay_protection_total{code}`   | counter   | Decisions by outcome code             |
+| `replay_guard_redis_connected`    | gauge     | 1 = Redis, 0 = unavailable / fallback |
+| `replay_protection_clock_skew_ms` | histogram | Absolute clock skew distribution      |
 
 ### Alert Rules
 
@@ -144,7 +144,7 @@ Key alerts:
 - `ReplayStaleTimestampSpike` — stale rejections > 10/sec (clock drift or offline backlog)
 - `ReplaySignatureFailureSpike` — signature failures > 10/sec (possible key compromise)
 - `ReplayGuardDown` — service unavailable
-- `ReplayGuardRedisUnavailable` — fallen back to memory store
+- `ReplayGuardRedisUnavailable` — durable nonce storage unavailable; production traffic blocked
 
 ### Grafana Dashboard
 

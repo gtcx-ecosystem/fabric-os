@@ -8,7 +8,7 @@
  *   GET  /metrics           — Prometheus exposition format
  *
  * Environment:
- *   REDIS_URL               — redis://host:port (falls back to memory store)
+ *   REDIS_URL               — redis://host:port (required in production)
  *   NONCE_TTL_MS            — default 900000 (15 min)
  *   CLOCK_SKEW_WINDOW_MS    — default 300000 (5 min)
  *   LOW_CONN_BUFFER_MS      — default 600000 (10 min)
@@ -27,6 +27,7 @@ import { request as httpsRequest } from 'node:https';
 import { AuditCapture, consoleSink } from './audit/audit-capture.mjs';
 import { verifyDidSignature, verifyDidSignatureStubBypass } from './crypto/did-verify.mjs';
 import { ReplayMetrics } from './metrics/replay-metrics.mjs';
+import { getTrafficBlockReason } from './runtime-policy.mjs';
 import { MemoryNonceStore } from './store/memory-nonce-store.mjs';
 import { RedisNonceStore } from './store/redis-nonce-store.mjs';
 import { ReplayVerifier } from './verifier.mjs';
@@ -50,13 +51,21 @@ const NODE_ENV = process.env.NODE_ENV ?? 'development';
 
 /** @type {import('./store/nonce-store.mjs').NonceStore} */
 let nonceStore = new MemoryNonceStore();
+let trafficBlockReason = null;
 
 async function initRedis() {
   const redisUrl = process.env.REDIS_URL;
   if (!redisUrl) {
-    if (NODE_ENV === 'production') {
-       
-      console.error(JSON.stringify({ level: 'warn', message: 'REDIS_URL not set in production; falling back to memory store. Multi-instance replay protection is WEAKENED.' }));
+    trafficBlockReason = getTrafficBlockReason({
+      nodeEnv: NODE_ENV,
+      redisConfigured: false,
+      redisConnected: false,
+    });
+    if (trafficBlockReason) {
+      console.error(JSON.stringify({
+        level: 'error',
+        message: trafficBlockReason,
+      }));
     }
     metrics.setRedisConnected(0);
     return false;
@@ -67,13 +76,27 @@ async function initRedis() {
     const client = createClient({ url: redisUrl });
     await client.connect();
     nonceStore = new RedisNonceStore({ client, keyPrefix: 'replay:nonce' });
+    trafficBlockReason = null;
     metrics.setRedisConnected(1);
     // eslint-disable-next-line no-console
     console.log(JSON.stringify({ level: 'info', message: 'Redis nonce store connected', redisUrl }));
     return true;
   } catch (err) {
     metrics.setRedisConnected(0);
-     
+    trafficBlockReason = getTrafficBlockReason({
+      nodeEnv: NODE_ENV,
+      redisConfigured: true,
+      redisConnected: false,
+    });
+    if (trafficBlockReason) {
+      console.error(JSON.stringify({
+        level: 'error',
+        message: trafficBlockReason,
+        error: /** @type {any} */ (err)?.message,
+      }));
+      return false;
+    }
+
     console.error(JSON.stringify({ level: 'warn', message: 'Redis unavailable, falling back to memory store', error: /** @type {any} */ (err)?.message }));
     return false;
   }
@@ -193,6 +216,15 @@ async function handleVerify(req, res) {
     return;
   }
 
+  if (trafficBlockReason) {
+    sendJson(res, 503, {
+      allowed: false,
+      code: 'REPLAY_STORE_UNAVAILABLE',
+      reason: trafficBlockReason,
+    });
+    return;
+  }
+
   let body;
   try {
     body = JSON.parse(await readBody(req));
@@ -244,12 +276,14 @@ async function handleVerify(req, res) {
 
 /** @param {import('node:http').IncomingMessage} _req @param {import('node:http').ServerResponse} res */
 async function handleHealth(_req, res) {
-  const storeHealthy = await nonceStore.health();
+  const storeHealthy = trafficBlockReason ? false : await nonceStore.health();
   const status = storeHealthy ? 200 : 503;
   const body = {
     status: storeHealthy ? 'healthy' : 'unhealthy',
     nonceStore: storeHealthy ? 'ok' : 'down',
+    trafficAccepted: !trafficBlockReason,
     uptimeSeconds: Math.floor(process.uptime()),
+    ...(trafficBlockReason ? { reason: trafficBlockReason } : {}),
   };
   sendJson(res, status, body);
 }
@@ -314,4 +348,4 @@ server.listen(PORT, () => {
   console.log(JSON.stringify({ level: 'info', message: 'Replay Guard listening', port: PORT, nonceTtlMs: NONCE_TTL_MS, nodeEnv: NODE_ENV, redis: nonceStore.constructor.name }));
 });
 
-export { server, verifier, nonceStore, metrics, auditCapture };
+export { server, verifier, nonceStore, metrics, auditCapture, trafficBlockReason };

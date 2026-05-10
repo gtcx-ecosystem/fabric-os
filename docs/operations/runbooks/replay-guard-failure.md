@@ -64,9 +64,9 @@ kubectl exec -it deploy/gtcx-replay-guard -n gtcx -- \
 
 If Redis is down:
 
-- Replay-guard **falls back to in-memory store** automatically
-- **Risk:** nonce replay protection is weakened across pod restarts
-- **Mitigation:** Restart Redis or scale the Redis StatefulSet
+- Replay-guard **fails closed in production** and returns `503`
+- **Risk:** mobile offline queue replay is blocked until durable nonce storage returns
+- **Mitigation:** restart Redis or restore connectivity, then restart replay-guard if needed
 
 ### 3. Check HPA status
 
@@ -88,14 +88,14 @@ If CPU/memory is saturated:
 
 ## Root Cause Analysis
 
-| Scenario                        | Logs                                              | Fix                                                                        |
-| ------------------------------- | ------------------------------------------------- | -------------------------------------------------------------------------- |
-| Redis connection timeout        | `Redis unavailable, falling back to memory store` | Restart Redis; check network policies                                      |
-| Clock skew spike (global-south) | `REPLAY_FUTURE` rate > 50%                        | Extend `LOW_CONN_BUFFER_MS` temporarily; investigate NTP on mobile devices |
-| Signature verification failure  | `REPLAY_SIGNATURE` rate spike                     | Check DID resolver health; verify key rotation schedule                    |
-| Envelope/hash mismatch          | `REPLAY_ENVELOPE` rate spike                      | Verify mobile serialization contract alignment; check for MITM             |
-| Nonce store overflow (memory)   | `MemoryNonceStore maxSize reached`                | Switch to Redis; increase `maxSize`                                        |
-| OTLP push failure               | `ETIMEDOUT` to collector                          | Non-critical; metrics buffered in memory                                   |
+| Scenario                        | Logs                                               | Fix                                                                        |
+| ------------------------------- | -------------------------------------------------- | -------------------------------------------------------------------------- |
+| Redis connection timeout        | `Durable nonce store is unavailable in production` | Restart Redis; check network policies; confirm readiness recovers          |
+| Clock skew spike (global-south) | `REPLAY_FUTURE` rate > 50%                         | Extend `LOW_CONN_BUFFER_MS` temporarily; investigate NTP on mobile devices |
+| Signature verification failure  | `REPLAY_SIGNATURE` rate spike                      | Check DID resolver health; verify key rotation schedule                    |
+| Envelope/hash mismatch          | `REPLAY_ENVELOPE` rate spike                       | Verify mobile serialization contract alignment; check for MITM             |
+| Nonce store overflow (memory)   | `MemoryNonceStore maxSize reached`                 | Switch to Redis; increase `maxSize`                                        |
+| OTLP push failure               | `ETIMEDOUT` to collector                           | Non-critical; metrics buffered in memory                                   |
 
 ---
 

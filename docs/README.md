@@ -1,55 +1,60 @@
-# GTCX Infrastructure — Documentation
+# GTCX Infrastructure — Documentation Index
+
+> Last updated: 2026-05-08 | 254 documents indexed
 
 Single source of truth for all infrastructure documentation.
 
 ---
 
-## Choose Your Path
+## 0. Start Here
 
-- **Engineering and DevOps** — [Orientation](agents/onboarding/orientation.md) | [Quickstart](agents/onboarding/developer-quickstart.md) | [Deployment Runbook](operations/runbooks/deploy.md)
-- **Security and Audit** — [Trust Model](architecture/trust-model.md) | [Hardening Strategy](audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md) | [Threat Model](security/threat-model.md)
-- **Strategic and Governance** — [Sovereign Stack Whitepaper](audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md) | [Innovation Roadmap](audit/qa-reviews/2026-05-05-innovation-roadmap.md) | [Principle Map](principles/open-infrastructure.md)
-
----
-
-## Directory Map
-
-```
-docs/
-├── agents/              Agent onboarding, roles, workflows, governance
-├── agile/               Roadmap, sprints, backlog, testing, retrospectives
-├── architecture/        System design, trust model, network, offline, migrations
-├── assessments/         Repo audits, remediation plans, ecosystem integration
-├── audit/               QA reviews, audit roadmaps, infrastructure assessments
-├── compliance/          Regulatory frameworks, controls, SOC2, accessibility
-├── decisions/           Architecture Decision Records (ADRs)
-├── devops/              Environments, CI/CD, monitoring, QA, release management
-├── engineering/         Backend architecture, API patterns, schemas, deployment
-├── external/            Public-facing docs (quickstart, integration, governance)
-├── operations/          Production runbooks (deploy, migrate, DR, incidents)
-├── principles/          Infrastructure philosophy and values
-├── reference/           Glossary, changelog, writing guide, SLOs
-├── release/             GA checklist, legal, licenses, versioning
-├── research/            Industry landscape, competitors, network concepts
-├── scripts/             Doc hygiene automation
-├── security/            Architecture, threat model, NIST, CMMC, FIPS, STIG
-└── specs/               System specs (CI/CD, observability, resilience, scaling, testing)
-```
+- [Orientation](agents/onboarding/orientation.md) — Repo map, environment topology, key commands
+- [Developer Quickstart](agents/onboarding/developer-quickstart.md) — Clone to running in under 10 minutes
+- [Agent Safety Rules](agents/workflows/agent-safety-rules.md) — Three-tier authority structure
 
 ---
 
-## Audit (Session: 2026-05-05)
+## 1. GTM / Sandbox Application
 
-- [Infrastructure Improvement Roadmap](audit/qa-reviews/2026-05-05-infrastructure-improvement-roadmap.md) — Findings and roadmap
-- [GTCX Hardening Strategy](audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md) — Institutional hardening (Bash-to-Go, Merkle Anchoring)
-- [Documentation Coverage Proposal](audit/qa-reviews/2026-05-05-documentation-coverage-proposal.md) — Documentation-as-Code CI enforcement
-- [Innovation Roadmap](audit/qa-reviews/2026-05-05-innovation-roadmap.md) — Long-term vision (PQC, Agentic Compliance)
-- [Sovereign Stack Whitepaper](audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md) — Technical guide for government deployment
-- [Innovation Spec Suite](audit/qa-reviews/2026-05-05-innovation-spec-suite.md) — Specs for future core features
+### Plans
+
+- [Bank-Grade 10x Remediation Plan](gtm/plans/bank-grade-10x-remediation-plan.md) — Institutional-grade hardening roadmap
+- [Global South 10x Plan](gtm/plans/global-south-10x-plan.md) — Africa-first market entry strategy
+- [Moat Execution Plan](gtm/plans/moat-execution-plan.md) — Competitive differentiation execution
+
+### Regulatory
+
+- [Incident Response Plan v1](gtm/regulatory/incident-response-plan-v1.md) — Regulatory incident handling
+- [ISO 27001 ISMS Scope](gtm/regulatory/iso27001-isms-scope.md) — ISMS boundary definition
+- [PCI DSS Scoping](gtm/regulatory/pci-dss-scoping.md) — Cardholder data environment scope
+- [Pentest Scope RFP](gtm/regulatory/pentest-scope-rfp.md) — Penetration testing request for proposal
+- [Regulatory Notification Templates](gtm/regulatory/regulatory-notification-templates.md) — Breach and incident notification templates
+- [RTO/RPO Resolution](gtm/regulatory/rto-rpo-resolution.md) — Recovery time and point objectives
+- [SOC2 Readiness Checklist](gtm/regulatory/soc2-readiness-checklist.md) — SOC2 Type II readiness tracker
+
+### Sandbox Application
+
+- [Architecture Overview](gtm/sandbox-application/architecture-overview.md) — Sandbox deployment architecture
+- [Data Residency Proof](gtm/sandbox-application/data-residency-proof.md) — Jurisdictional data sovereignty evidence
+- [Encryption Statement](gtm/sandbox-application/encryption-statement.md) — Cryptographic controls statement
+- [Internal Security Assessment](gtm/sandbox-application/internal-security-assessment.md) — Pre-submission security review
+- [KYC Retention Schedule](gtm/sandbox-application/kyc-retention-schedule.md) — Identity data lifecycle policy
+- [Pre-Submission Agenda](gtm/sandbox-application/pre-submission-agenda.md) — Regulatory meeting preparation
 
 ---
 
-## Architecture
+## 2. Plans & Roadmaps
+
+- [Phased Roadmap](agile/phased-roadmap.md) — Multi-phase delivery plan
+- [Sprint Roadmap](agile/sprint-roadmap.md) — Current sprint sequence
+- [Sprint: Production Readiness](agile/sprints/sprint-2026-05-production-readiness.md) — May 2026 production readiness sprint
+- [Sprint: Phase 2 9+ Roadmap](agile/sprints/sprint-2026-05-phase2-9plus-roadmap.md) — Phase 2 scoring targets
+- [Executive Summary](agile/executive-summary.md) — High-level project status
+- [Priority Framework](agile/priority-framework.md) — Task prioritization methodology
+
+---
+
+## 3. Architecture
 
 - [System Overview](architecture/system-overview.md) — Three-layer stack, deployment model, trust zones
 - [Infrastructure Architecture](architecture/infrastructure-architecture-overview.md) — 4-tier deployment, K8s topology, edge mesh
@@ -57,9 +62,12 @@ docs/
 - [Trust Model](architecture/trust-model.md) — Zero-trust boundaries, Byzantine fault tolerance
 - [Network Architecture](architecture/network-architecture.md) — Topology, mesh resilience, peer discovery
 - [Offline Architecture](architecture/offline-architecture.md) — Offline-first design, CRDT sync
-- [Migrations](architecture/migrations-overview.md) — MABA/KORA/AMANI data transformation stack
+- [Migrations Overview](architecture/migrations-overview.md) — MABA/KORA/AMANI data transformation stack
+- [K8s Probes Rationale](architecture/k8s-probes-rationale.md) — Liveness, readiness, and startup probe design
 
-## Decisions
+---
+
+## 4. Decisions (ADRs)
 
 - [ADR-001](decisions/ADR-001-monorepo-structure.md) — Monorepo structure
 - [ADR-002](decisions/ADR-002-commodity-agnostic-design.md) — Commodity-agnostic design
@@ -70,121 +78,369 @@ docs/
 - [ADR-007](decisions/ADR-007-kustomize-over-helm.md) — Kustomize over Helm
 - [ADR-008](decisions/ADR-008-dual-database-architecture.md) — Dual database architecture
 - [ADR-011](decisions/ADR-011-connectivity-profiles.md) — Connectivity profiles
-- [001 Error Taxonomy](decisions/001-error-taxonomy.md)
-- [002 In-Memory Stub Guards](decisions/002-in-memory-stub-guards.md)
-- [ADR Guide](decisions/adr-guide.md) | [ADR Template](decisions/adr-template.md)
+- [ADR-007 mTLS Service Mesh](decisions/adr-007-mtls-service-mesh.md) — mTLS service mesh decision
+- [001 Error Taxonomy](decisions/001-error-taxonomy.md) — Standardized error classification
+- [002 In-Memory Stub Guards](decisions/002-in-memory-stub-guards.md) — Test double safety boundaries
+- [ADR Guide](decisions/adr-guide.md) — How to write an ADR
+- [ADR Template](decisions/adr-template.md) — Blank ADR scaffold
 
-## Engineering
+---
+
+## 5. Engineering
 
 - [Backend Architecture](engineering/backend-architecture.md) — Service topology, build targets
-- [Microservices Architecture](engineering/microservices-architecture.md) — Monorepo patterns
-- [API Patterns](engineering/api-patterns.md) — Design standards
+- [Microservices Architecture](engineering/microservices-architecture.md) — Monorepo service patterns
+- [API Patterns](engineering/api-patterns.md) — Design standards and conventions
 - [API Specification](engineering/api-specification.md) — Full API spec
-- [Database Schema](engineering/database-schema.md) — Schema conventions
+- [Database Schema](engineering/database-schema.md) — Schema conventions and models
 - [Content Schema](engineering/content-schema.md) — Content data models
-- [System Architecture Spec](engineering/system-architecture-spec.md)
-- [Deployment](engineering/deployment/deployment.md) — Deployment procedures
-- [Tech Stack](engineering/tech-stack/tech-stack.md) | [Versions](engineering/tech-stack/version-standards.md) | [Dependencies](engineering/tech-stack/dependency-boundaries.md)
-- [Connection Pooling](engineering/connection-pooling.md) | [Agentic Guide](engineering/agentic-guide.md)
+- [System Architecture Spec](engineering/system-architecture-spec.md) — End-to-end system specification
+- [Connection Pooling](engineering/connection-pooling.md) — Database connection management
+- [Agentic Guide](engineering/agentic-guide.md) — Agentic development patterns
+- [Architecture Docs Protocol](engineering/architecture-docs-protocol.md) — Documentation standards for architecture
+- [K8s Manifest Ownership](engineering/k8s-manifest-ownership.md) — Manifest ownership and review policy
+- [LLM Routing Strategy](engineering/llm-routing-strategy.md) — Model selection and routing logic
+- [Deployment](engineering/deployment/deployment.md) — Deployment procedures and gates
 
-## Operations
+### Tech Stack
+
+- [Tech Stack](engineering/tech-stack/tech-stack.md) — Technology choices and rationale
+- [Version Standards](engineering/tech-stack/version-standards.md) — Pinned dependency versions
+- [Dependency Boundaries](engineering/tech-stack/dependency-boundaries.md) — Package boundary rules
+
+---
+
+## 6. Operations (Runbooks)
 
 - [Deploy](operations/runbooks/deploy.md) — Canary deployment, approval gates, rollback
+- [Deployment Runbook](operations/runbooks/deployment-runbook.md) — Step-by-step deployment procedure
 - [Migrate](operations/runbooks/migrate.md) — Database migration procedures
 - [Release](operations/runbooks/release.md) — Release gate and evidence
-- [Disaster Recovery](operations/runbooks/disaster-recovery.md)
-- [Incident Response](operations/runbooks/incident-response.md)
-- [Monitoring](operations/runbooks/monitoring.md)
-- [Database Failover](operations/runbooks/database-failover.md)
-- [Terraform State Migration](operations/runbooks/terraform-state-migration.md)
+- [Release Evidence](operations/runbooks/release-evidence.md) — Release evidence collection
+- [Rollback Evidence](operations/runbooks/rollback-evidence.md) — Rollback evidence collection
+- [Disaster Recovery](operations/runbooks/disaster-recovery.md) — DR failover and restore
+- [Incident Response](operations/runbooks/incident-response.md) — Incident handling procedure
+- [Monitoring](operations/runbooks/monitoring.md) — Observability and alerting
+- [Database Failover](operations/runbooks/database-failover.md) — Database failover procedure
+- [Automated Rollback](operations/runbooks/automated-rollback.md) — Automatic rollback triggers and flow
+- [Terraform State Migration](operations/runbooks/terraform-state-migration.md) — Terraform state move procedure
 - [Quality Runbook](operations/runbooks/quality-runbook.md) — CI triage order
-- [Production Store Integration](operations/runbooks/production-store-integration.md)
+- [Production Store Integration](operations/runbooks/production-store-integration.md) — Store integration procedure
+- [Replay Guard Failure](operations/runbooks/replay-guard-failure.md) — Replay protection failure response
+- [Fine-Tune Workflow Enablement](operations/runbooks/fine-tune-workflow-enablement.md) — ML fine-tune workflow setup
+- [Fine-Tune Workflow Operations](operations/runbooks/fine-tune-workflow-operations.md) — ML fine-tune workflow day-2 ops
+- [Intelligence Evidence](operations/runbooks/intelligence-evidence.md) — AI/ML evidence collection
+- [Intelligence Error Rate](operations/runbooks/intelligence-error-rate.md) — AI/ML error rate monitoring
+- [Latency SLO Breach](operations/runbooks/latency-slo-breach.md) — Latency SLO violation response
+- [AGX Error Budget](operations/runbooks/agx-error-budget.md) — AGX error budget tracking
+- [ANISA Error Budget](operations/runbooks/anisa-error-budget.md) — ANISA error budget tracking
+- [Protocols Error Budget](operations/runbooks/protocols-error-budget.md) — Protocols error budget tracking
+- [Runbook Template](operations/runbooks/runbook-template.md) — Blank runbook scaffold
 
-## Security
+---
+
+## 7. Security
 
 - [Security Framework](security/security-framework.md) — Zero-trust, crypto standards
-- [Security Architecture](security/security-architecture.md)
-- [Threat Model](security/threat-model.md)
-- [Security Policy](security/security-policy.md)
-- [Secrets Management](security/secrets-management.md)
-- [Defense Readiness](security/defense-readiness.md) — CMMC L2
-- [NIST 800-53](security/nist-800-53-mapping.md)
-- [FIPS Assessment](security/fips-assessment.md)
-- [STIG Compliance](security/stig-compliance.md)
+- [Security Architecture](security/security-architecture.md) — Defense-in-depth architecture
+- [Security Policy](security/security-policy.md) — Organizational security policy
+- [Threat Model](security/threat-model.md) — System-wide threat analysis
+- [Threat Model Template](security/threat-model-template.md) — Blank threat model scaffold
+- [Secrets Management](security/secrets-management.md) — Secret storage and rotation
+- [Defense Readiness](security/defense-readiness.md) — CMMC L2 readiness
+- [NIST 800-53 Mapping](security/nist-800-53-mapping.md) — NIST control mapping
+- [FIPS Assessment](security/fips-assessment.md) — FIPS 140-2/3 compliance assessment
+- [STIG Compliance](security/stig-compliance.md) — DISA STIG compliance status
+- [Zero Trust Assessment](security/zero-trust-assessment.md) — Zero-trust maturity evaluation
+- [Data Flow](security/data-flow.md) — Data flow diagrams and classification
+- [Tokenization Architecture](security/tokenization-architecture.md) — Token vault and PCI tokenization
+- [Key Ceremony Runbook](security/key-ceremony-runbook.md) — HSM key generation ceremony
+- [Signed Commits Policy](security/signed-commits-policy.md) — Git commit signing enforcement
+- [Cosign CI Integration](security/cosign-ci-integration.md) — Container image signing in CI
+- [Audit Integrity Verification](security/audit-integrity-verification.md) — Audit log tamper detection
+- [Break Glass Procedure](security/break-glass-procedure.md) — Emergency access escalation
+- [Bug Bounty Policy](security/bug-bounty-policy.md) — Vulnerability disclosure program
+- [Forensic Readiness](security/forensic-readiness.md) — Digital forensics preparation
+- [Red Team Playbook](security/red-team-playbook.md) — Adversary simulation scenarios
+- [RASP Integration Guide](security/rasp-integration-guide.md) — Runtime application self-protection
+- [Security Training Program](security/security-training-program.md) — Security awareness and training
+- [SOC Requirements](security/soc-requirements.md) — Security operations center requirements
 
-## Compliance
+---
 
-- [Requirements](compliance/compliance-requirements.md)
-- [Controls Matrix](compliance/controls-matrix.md)
-- [Regulatory Framework](compliance/regulatory-framework.md)
-- [SOC2 Evidence Pipeline](compliance/soc2-evidence-pipeline.md)
-- [Compliance Templates](compliance/compliance-templates-overview.md) — Per-jurisdiction configs
-- [Accessibility Checklist](compliance/accessibility-checklist.md)
+## 8. Compliance
 
-## Specs
+- [Compliance Requirements](compliance/compliance-requirements.md) — Regulatory requirements matrix
+- [Controls Matrix](compliance/controls-matrix.md) — Security controls mapping
+- [Regulatory Framework](compliance/regulatory-framework.md) — Multi-jurisdiction regulatory map
+- [SOC2 Evidence Pipeline](compliance/soc2-evidence-pipeline.md) — Automated SOC2 evidence collection
+- [Compliance Templates Overview](compliance/compliance-templates-overview.md) — Per-jurisdiction config templates
+- [Accessibility Checklist](compliance/accessibility-checklist.md) — WCAG compliance checklist
+- [Board Security Committee Charter](compliance/board-security-committee-charter.md) — Board oversight charter
+- [Data Classification Policy](compliance/data-classification-policy.md) — Data sensitivity classification
+- [Data Retention Policy](compliance/data-retention-policy.md) — Data lifecycle and retention rules
+- [Risk Register](compliance/risk-register.md) — Enterprise risk register
+- [Separation of Duties Matrix](compliance/separation-of-duties-matrix.md) — SoD control matrix
+- [Vendor Risk Program](compliance/vendor-risk-program.md) — Third-party risk management
+
+### ISO 27001 Annex A Policies
+
+- [A05 Information Security Policy](compliance/policies/A05-information-security-policy.md) — Top-level security policy
+- [A06 Organization of Information Security](compliance/policies/A06-organization-of-information-security.md) — Security roles and responsibilities
+- [A07 Human Resource Security](compliance/policies/A07-human-resource-security.md) — Personnel security controls
+- [A08 Asset Management](compliance/policies/A08-asset-management.md) — Asset inventory and handling
+- [A09 Access Control](compliance/policies/A09-access-control.md) — Access management policy
+- [A10 Cryptography](compliance/policies/A10-cryptography.md) — Cryptographic controls policy
+- [A11 Physical Security](compliance/policies/A11-physical-security.md) — Physical and environmental security
+- [A12 Operations Security](compliance/policies/A12-operations-security.md) — Operational security procedures
+- [A13 Communications Security](compliance/policies/A13-communications-security.md) — Network and transfer security
+- [A14 System Acquisition](compliance/policies/A14-system-acquisition.md) — Secure development and procurement
+- [A15 Supplier Relationships](compliance/policies/A15-supplier-relationships.md) — Supply chain security
+- [A16 Incident Management](compliance/policies/A16-incident-management.md) — Security incident procedures
+- [A17 Business Continuity](compliance/policies/A17-business-continuity.md) — BCM and disaster recovery
+- [A18 Compliance](compliance/policies/A18-compliance.md) — Legal and regulatory compliance
+
+---
+
+## 9. Specs
+
+### Core Specs
 
 - [CI/CD Pipeline](specs/cicd-pipeline.md) — Stages, quality gates, security scanning
 - [Data Governance](specs/data-governance.md) — Classification, PII, sovereignty
-- [Observability](specs/observability-framework.md) — Metrics, logging, tracing, SLOs
-- [Resilience](specs/resilience-framework.md) — RTO/RPO, SPOF, degradation tiers
-- [Scalability](specs/scalability-framework.md) — HPA, caching, load testing
-- [Testing](specs/testing-framework.md) — Taxonomy, coverage targets, CI gates
-- [specs/design/](specs/design/) — Design system, UX research, personas, journeys
-- [specs/frontend/](specs/frontend/) — Frontend PRD, epics, architecture, screens
-- [specs/data/](specs/data/) — Data specifications
-- [specs/testing/](specs/testing/) — Test plans
+- [Observability Framework](specs/observability-framework.md) — Metrics, logging, tracing, SLOs
+- [Resilience Framework](specs/resilience-framework.md) — RTO/RPO, SPOF, degradation tiers
+- [Scalability Framework](specs/scalability-framework.md) — HPA, caching, load testing
+- [Testing Framework](specs/testing-framework.md) — Taxonomy, coverage targets, CI gates
+- [Project Specification](specs/project-specification.md) — Overall project spec
+- [Vault Dynamic Credentials](specs/vault-dynamic-credentials.md) — HashiCorp Vault credential rotation
 
-## DevOps
+### Data
 
-- [Environments](devops/environments/environment-config.md)
-- [CI/CD](devops/ci-cd/ci-cd.md)
-- [Monitoring](devops/monitoring/monitoring-setup.md)
-- [QA](devops/qa/qa-process.md)
-- [Release Checklist](devops/release/release-checklist.md) | [Legal Sign-off](devops/release/legal-sign-off.md)
+- [Data Spec](specs/data/data-spec.md) — Data model specification
 
-## Agents
+### Design
 
-- [Orientation](agents/onboarding/orientation.md) — Start here
-- [Service Overview](agents/onboarding/service-overview.md)
-- [Developer Quickstart](agents/onboarding/developer-quickstart.md)
-- [Developer Setup](agents/onboarding/developer-setup.md)
-- [Agent Guide](agents/onboarding/agent-guide.md)
-- [Safety Rules](agents/workflows/agent-safety-rules.md)
-- [Agent Checklist](agents/workflows/agent-checklist.md)
-- [Approval Flows](agents/workflows/approval-flows.md)
-- [Roles](agents/roles/) — Platform, DevOps, Security, Database engineers
-- [Governance](agents/governance/) — Editorial independence, conflict of interest
+- [Critical Workflows](specs/design/critical-workflows.md) — Core user workflow definitions
+- [Design System](specs/design/design-system.md) — Component library and tokens
+- [Information Architecture](specs/design/information-architecture.md) — Navigation and content structure
+- [Job to Be Done](specs/design/job-to-be-done.md) — JTBD framework analysis
+- [Northern Stars](specs/design/northern-stars.md) — Product vision metrics
+- [Personas](specs/design/personas.md) — User persona definitions
+- [User Flow Diagrams](specs/design/user-flow-diagrams.md) — End-to-end user flows
+- [User Journey Maps](specs/design/user-journey-maps.md) — Experience journey maps
 
-## Assessments
+### Frontend
 
-- [Implementation Truth](assessments/implementation-truth.md) — What exists vs. what's missing
-- [Remediation Plan](assessments/remediation-plan-10x10.md) — 10-point fix list
+- [Frontend Architecture](specs/frontend/frontend-architecture.md) — Frontend system design
+- [Frontend Epics](specs/frontend/frontend-epics.md) — Frontend feature epics
+- [Frontend PRD](specs/frontend/frontend-prd.md) — Frontend product requirements
+- [Frontend Strategy](specs/frontend/frontend-strategy.md) — Frontend technology strategy
+- [Screen Inventory](specs/frontend/screen-inventory.md) — UI screen catalog
+
+### Product
+
+- [User Guide](specs/product/user-guide.md) — End-user documentation
+
+### Testing
+
+- [Test Plan](specs/testing/test-plan.md) — Test strategy and plan
+
+---
+
+## 10. DevOps
+
+- [CI/CD](devops/ci-cd/ci-cd.md) — Pipeline configuration and stages
+- [Environment Config](devops/environments/environment-config.md) — Environment topology and variables
+- [Monitoring Setup](devops/monitoring/monitoring-setup.md) — Monitoring stack configuration
+- [QA Process](devops/qa/qa-process.md) — Quality assurance workflow
+- [Release Checklist](devops/release/release-checklist.md) — Pre-release verification steps
+- [Legal Sign-off](devops/release/legal-sign-off.md) — Legal review gate
+- [Analytics Setup](devops/analytics-setup.md) — Analytics instrumentation
+- [Terraform History Purge Runbook](devops/terraform-history-purge-runbook.md) — Terraform state history cleanup
+
+---
+
+## 11. Assessments & Audit
+
+### Assessments
+
+- [Implementation Truth](assessments/implementation-truth.md) — What exists vs. what is missing
+- [Remediation Plan 10x10](assessments/remediation-plan-10x10.md) — 10-point fix list
 - [Ecosystem Integration](assessments/ecosystem-integration.md) — Cross-repo dependencies
 - [GTM Q2 Africa](assessments/gtm-q2-africa.md) — Ghana pilot infrastructure needs
+- [Pilot Agreement Template](assessments/pilot-agreement-template.md) — Partner pilot agreement scaffold
+- [Pilot Success Criteria](assessments/pilot-success-criteria.md) — Pilot evaluation metrics
 
-## Agile
+### Audit Cycles
 
-- [Phased Roadmap](agile/phased-roadmap.md) | [Sprint Roadmap](agile/sprint-roadmap.md)
-- [Sprint Planning](agile/sprint-planning.md) | [Definition of Done](agile/definition-of-done.md)
-- [Backlog](agile/backlog.md) | [Feature Backlog](agile/feature-backlog.md)
-- [QA Test Plan](agile/qa-test-plan.md) | [UAT Test Plan](agile/uat-test-plan.md)
+- [Auto Dev State](assessments/audit/auto-dev-state.md) — Autonomous development state tracker
+- [2026-05-04 Cycle 2](assessments/audit/2026-05-04-cycle-2.md) — Audit cycle 2 results
+- [2026-05-04 Cycle 3](assessments/audit/2026-05-04-cycle-3.md) — Audit cycle 3 results
+- [2026-05-04 Cycle 4](assessments/audit/2026-05-04-cycle-4.md) — Audit cycle 4 results
+- [2026-05-04 Full Audit](assessments/audit/2026-05-04-full-audit.md) — Complete audit report
+- [2026-05-05 Cycle 5](assessments/audit/2026-05-05-cycle-5.md) — Audit cycle 5 results
+- [2026-05-05 Cycle 6](assessments/audit/2026-05-05-cycle-6.md) — Audit cycle 6 results
+- [2026-05-05 Cycle 7 Final](assessments/audit/2026-05-05-cycle-7-final.md) — Final audit cycle results
 
-## Release
+### QA Reviews
 
-- [GA Checklist](release/ga-release-checklist.md)
-- [Legal Review](release/legal-review.md)
-- [License Compliance](release/license-compliance.md)
-- [Versioning Policy](release/versioning-policy.md)
+- [Production Readiness Evidence](audit/production-readiness-evidence-2026-05-08.md) — Production readiness evidence package
+- [Documentation Coverage Proposal](audit/qa-reviews/2026-05-05-documentation-coverage-proposal.md) — Documentation-as-Code CI enforcement
+- [Hardening Strategy](audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md) — Institutional hardening (Bash-to-Go, Merkle Anchoring)
+- [Sovereign Stack Whitepaper](audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md) — Technical guide for government deployment
+- [Infrastructure Improvement Roadmap](audit/qa-reviews/2026-05-05-infrastructure-improvement-roadmap.md) — Findings and remediation roadmap
+- [Innovation Roadmap](audit/qa-reviews/2026-05-05-innovation-roadmap.md) — Long-term vision (PQC, Agentic Compliance)
+- [Innovation Spec Suite](audit/qa-reviews/2026-05-05-innovation-spec-suite.md) — Specs for future core features
 
-## Principles
+---
 
-- [Open Infrastructure](principles/open-infrastructure.md)
-- [Regenerative Economics](principles/regenerative-economics.md)
-- [Sovereign Accessibility](principles/sovereign-accessibility.md)
+## 12. Agents
 
-## Reference
+### Onboarding
 
-- [Glossary](reference/glossary.md)
-- [Docs Writing Guide](reference/docs-writing-guide.md)
-- [Performance SLOs](reference/performance-slos.md)
-- [Changelog](reference/changelog.md)
+- [Orientation](agents/onboarding/orientation.md) — Repo map, environment topology, key commands
+- [Developer Quickstart](agents/onboarding/developer-quickstart.md) — Fast-track setup guide
+- [Developer Setup](agents/onboarding/developer-setup.md) — Full development environment setup
+- [Agent Guide](agents/onboarding/agent-guide.md) — Agent behavior and conventions
+- [Agentic Integration](agents/onboarding/agentic-integration.md) — Agentic system integration patterns
+- [Context Recovery](agents/onboarding/context-recovery.md) — Session context restoration
+- [Contributor Guide](agents/onboarding/contributor-guide.md) — Contribution workflow
+- [Project Adaptation Guide](agents/onboarding/project-adaptation-guide.md) — Adapting to project conventions
+- [Quick Reference](agents/onboarding/quick-reference.md) — Command and path cheat sheet
+- [Service Overview](agents/onboarding/service-overview.md) — Service catalog and ownership
+
+### Roles
+
+- [Bureau Chiefs](agents/roles/bureau-chiefs.md) — Bureau chief responsibilities
+- [Contributors](agents/roles/contributors.md) — Contributor role definition
+- [Database Platform Engineer](agents/roles/database-platform-engineer.md) — Database engineering role
+- [DevOps SRE Engineer](agents/roles/devops-sre-engineer.md) — DevOps/SRE role
+- [Editor in Chief](agents/roles/editor-in-chief.md) — Editorial oversight role
+- [Infrastructure Security Engineer](agents/roles/infrastructure-security-engineer.md) — Security engineering role
+- [Platform Engineer](agents/roles/platform-engineer.md) — Platform engineering role
+- [Role Identification Guide](agents/roles/role-identification-guide.md) — How to identify your role
+- [Role Template](agents/roles/role-template.md) — Blank role definition scaffold
+
+### Workflows
+
+- [Agent Safety Rules](agents/workflows/agent-safety-rules.md) — Three-tier authority structure
+- [Agent Checklist](agents/workflows/agent-checklist.md) — Pre-flight checklist
+- [Approval Flows](agents/workflows/approval-flows.md) — Change approval routing
+- [Add Package](agents/workflows/add-package.md) — New package addition workflow
+- [Add Secondary Component](agents/workflows/add-secondary-component.md) — Secondary component workflow
+- [Cut Release](agents/workflows/cut-release.md) — Release cut procedure
+- [Investigate CI Failure](agents/workflows/investigate-ci-failure.md) — CI failure triage
+- [Story Lifecycle](agents/workflows/story-lifecycle.md) — Story from creation to done
+- [Write ADR](agents/workflows/write-adr.md) — ADR authoring workflow
+
+### Governance
+
+- [Conflict of Interest](agents/governance/conflict-of-interest.md) — COI disclosure policy
+- [Editorial Independence](agents/governance/editorial-independence.md) — Editorial autonomy policy
+
+### Structure
+
+- [Tech Team](agents/structure/tech-team.md) — Team structure and ownership
+
+---
+
+## 13. Agile
+
+- [Backlog](agile/backlog.md) — Product backlog
+- [Feature Backlog](agile/feature-backlog.md) — Feature-level backlog
+- [Epic](agile/epic.md) — Epic definitions
+- [Sprint Planning](agile/sprint-planning.md) — Sprint planning process
+- [Definition of Done](agile/definition-of-done.md) — Done criteria
+- [Definition of Ready](agile/definition-of-ready.md) — Ready criteria
+- [QA Test Plan](agile/qa-test-plan.md) — QA testing strategy
+- [UAT Test Plan](agile/uat-test-plan.md) — User acceptance testing
+- [Retrospective](agile/retrospective.md) — Sprint retrospective template
+- [Doc Hygiene Runbook](agile/doc-hygiene-runbook.md) — Documentation maintenance procedure
+
+---
+
+## 14. Release
+
+- [GA Release Checklist](release/ga-release-checklist.md) — General availability release gate
+- [Legal Review](release/legal-review.md) — Legal sign-off requirements
+- [License Compliance](release/license-compliance.md) — OSS license audit
+- [Versioning Policy](release/versioning-policy.md) — SemVer and release tagging
+
+---
+
+## 15. External
+
+- [Governance](external/governance.md) — Public governance model
+- [Integration Guide](external/integration-guide.md) — Third-party integration guide
+- [Quickstart](external/quickstart.md) — External developer quickstart
+
+---
+
+## 16. Principles
+
+- [Open Infrastructure](principles/open-infrastructure.md) — Open-source infrastructure philosophy
+- [Regenerative Economics](principles/regenerative-economics.md) — Regenerative economic model
+- [Sovereign Accessibility](principles/sovereign-accessibility.md) — Sovereignty and accessibility principles
+
+---
+
+## 17. Reference & Research
+
+### Reference
+
+- [Glossary](reference/glossary.md) — Term definitions
+- [Cannon Glossary](reference/cannon-glossary.md) — Canonical term registry
+- [Docs Writing Guide](reference/docs-writing-guide.md) — Documentation style guide
+- [Changelog](reference/changelog.md) — Infrastructure changelog
+- [Performance Metrics](reference/performance-metrics.md) — Performance measurement definitions
+- [Performance SLOs](reference/performance-slos.md) — Service level objectives
+
+### Research
+
+- [Alternative Network Concepts](research/alternative-network-concepts.md) — Alternative networking approaches
+- [Competitors](research/competitors.md) — Competitive landscape analysis
+- [Industry Landscape](research/industry-landscape.md) — Market and industry overview
+
+---
+
+## Document Lifecycle Conventions
+
+| Stage        | Meaning                            |
+| ------------ | ---------------------------------- |
+| `DRAFT`      | Work in progress, not yet reviewed |
+| `REVIEW`     | Ready for peer review              |
+| `APPROVED`   | Reviewed and accepted              |
+| `SUPERSEDED` | Replaced by a newer document       |
+| `DEPRECATED` | Scheduled for removal              |
+
+- ADRs are immutable once `APPROVED`. To change a decision, write a new ADR that supersedes it.
+- Runbooks must be tested against staging before promotion to `APPROVED`.
+- Policies in `compliance/policies/` follow ISO 27001 Annex A numbering (A05-A18).
+
+---
+
+## How to Find Something
+
+| I need to...                   | Go to                                                                                                                                                            |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Set up my dev environment      | [Developer Quickstart](agents/onboarding/developer-quickstart.md)                                                                                                |
+| Understand the system          | [System Overview](architecture/system-overview.md)                                                                                                               |
+| Deploy to production           | [Deploy Runbook](operations/runbooks/deploy.md)                                                                                                                  |
+| Handle an incident             | [Incident Response](operations/runbooks/incident-response.md)                                                                                                    |
+| Understand a past decision     | [Decisions (ADRs)](#4-decisions-adrs)                                                                                                                            |
+| Review security posture        | [Security Framework](security/security-framework.md)                                                                                                             |
+| Check compliance status        | [Controls Matrix](compliance/controls-matrix.md)                                                                                                                 |
+| Write documentation            | [Docs Writing Guide](reference/docs-writing-guide.md)                                                                                                            |
+| Add a new package              | [Add Package Workflow](agents/workflows/add-package.md)                                                                                                          |
+| Cut a release                  | [Cut Release Workflow](agents/workflows/cut-release.md)                                                                                                          |
+| Understand the tech stack      | [Tech Stack](engineering/tech-stack/tech-stack.md)                                                                                                               |
+| Review threat model            | [Threat Model](security/threat-model.md)                                                                                                                         |
+| Check audit history            | [Assessments & Audit](#11-assessments--audit)                                                                                                                    |
+| Understand agent roles         | [Role Identification Guide](agents/roles/role-identification-guide.md)                                                                                           |
+| Review frontend specs          | [Frontend PRD](specs/frontend/frontend-prd.md)                                                                                                                   |
+| Check SLOs                     | [Performance SLOs](reference/performance-slos.md)                                                                                                                |
+| Prepare for sandbox submission | [Sandbox Application](#sandbox-application)                                                                                                                      |
+| Review CI/CD pipeline          | [CI/CD](devops/ci-cd/ci-cd.md)                                                                                                                                   |
+| Understand data governance     | [Data Governance](specs/data-governance.md)                                                                                                                      |
+| Review error budgets           | [AGX](operations/runbooks/agx-error-budget.md) / [ANISA](operations/runbooks/anisa-error-budget.md) / [Protocols](operations/runbooks/protocols-error-budget.md) |

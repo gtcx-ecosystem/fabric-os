@@ -283,11 +283,25 @@ BEGIN
             RAISE EXCEPTION 'gtcx_audit_writer unexpectedly has DELETE on %', fq_table;
         END IF;
 
-        IF has_table_privilege('PUBLIC', fq_table, 'UPDATE') THEN
+        IF EXISTS (
+            SELECT 1
+            FROM information_schema.role_table_grants
+            WHERE grantee = 'PUBLIC'
+              AND table_schema = tbl.schemaname
+              AND table_name = tbl.tablename
+              AND privilege_type = 'UPDATE'
+        ) THEN
             RAISE EXCEPTION 'PUBLIC unexpectedly has UPDATE on %', fq_table;
         END IF;
 
-        IF has_table_privilege('PUBLIC', fq_table, 'DELETE') THEN
+        IF EXISTS (
+            SELECT 1
+            FROM information_schema.role_table_grants
+            WHERE grantee = 'PUBLIC'
+              AND table_schema = tbl.schemaname
+              AND table_name = tbl.tablename
+              AND privilege_type = 'DELETE'
+        ) THEN
             RAISE EXCEPTION 'PUBLIC unexpectedly has DELETE on %', fq_table;
         END IF;
 
@@ -315,10 +329,12 @@ BEGIN
     LOOP
         SELECT a.attname
           INTO first_column
-          FROM pg_attribute a
+         FROM pg_attribute a
          WHERE a.attrelid = format('%I.%I', tbl.schemaname, tbl.tablename)::regclass
            AND a.attnum > 0
            AND NOT a.attisdropped
+           AND COALESCE(a.attidentity, '') = ''
+           AND COALESCE(a.attgenerated, '') = ''
          ORDER BY a.attnum
          LIMIT 1;
 

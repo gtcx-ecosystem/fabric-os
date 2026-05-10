@@ -1,6 +1,6 @@
 ## GTCX Infrastructure — Remediation Plan
 
-> **Status:** Draft for approval
+> **Status:** Active — Sprint 1 in progress
 > **Date:** 2026-05-10
 > **Owner:** GTCX Infrastructure
 

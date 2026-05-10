@@ -4,35 +4,37 @@
 > **Date:** 2026-05-10
 > **Owner:** GTCX Infrastructure
 
-Process for running database migrations using `./infra/scripts/migrate.sh`.
+Process for running SQL database migrations with `./infra/scripts/migrate.sh`.
 
-**Hard rule**: A migration that has run in any environment is immutable. Never modify it — write a forward migration instead.
+**Hard rule:** A migration that has run in any environment is immutable. Never modify an applied file. Write a forward migration instead.
 
 ---
 
 ## Two-Database Architecture
 
-Always confirm the target database before running any migration command:
+Always confirm which database you are targeting before you run anything:
 
-| Database    | DB Name              | Port | User               | Purpose                    |
-| ----------- | -------------------- | ---- | ------------------ | -------------------------- |
-| Operational | `gtcx_{environment}` | 5432 | `gtcx_admin`       | All application read/write |
-| Audit       | `gtcx_{env}_audit`   | 5433 | `gtcx_audit_admin` | Append-only audit events   |
+| Database    | Purpose                    | Required URL                |
+| ----------- | -------------------------- | --------------------------- |
+| Operational | Application read/write     | `DATABASE_URL`              |
+| Audit       | Append-only audit evidence | `AUDIT_DATABASE_URL`        |
+| AuditWriter | Live negative DML probe    | `AUDIT_WRITER_DATABASE_URL` |
 
-Never cross-write between these two databases. The audit database accepts no `UPDATE`, `DELETE`, or `DROP`. Any migration touching the audit schema must be reviewed by the Database & Migration Lead before running.
+Never cross-write between operational and audit data paths. The audit database must remain append-only for writer roles.
 
 ---
 
 ## Pre-flight Checklist
 
-Before running any migration against staging or production:
+Before running migrations against staging or production:
 
-- [ ] Confirm target environment and target database (operational vs. audit)
-- [ ] Run `python infra/migrations/scripts/check_docs.py` — fix all warnings
-- [ ] Review the migration file — confirm it is forward-only (no `DROP`, no destructive changes unless explicitly approved)
-- [ ] Confirm a rollback path exists — document it before running
-- [ ] For staging/production: obtain explicit human approval
-- [ ] For production: confirm no active deployment is in progress
+- [ ] Confirm target environment and target database
+- [ ] Export `DATABASE_URL`, `AUDIT_DATABASE_URL`, and `AUDIT_WRITER_DATABASE_URL`
+- [ ] Run `python infra/migrations/scripts/check_docs.py` and clear warnings
+- [ ] Review the migration file and confirm it is forward-only
+- [ ] Confirm a rollback or compensating migration path exists
+- [ ] Obtain explicit human approval
+- [ ] Confirm no other deployment or migration is in progress
 
 ---
 
@@ -48,87 +50,93 @@ Before running any migration against staging or production:
 
 ## Running Migrations
 
-### Dry-run (always run first for staging/production)
+### Dry-run
+
+Always run dry-run first for staging or production:
 
 ```bash
 ./infra/scripts/migrate.sh staging --dry-run
 ./infra/scripts/migrate.sh production --dry-run
 ```
 
-Dry-run shows pending migration status via `rails db:migrate:status` without applying anything.
+Dry-run still performs connectivity checks and audit immutability verification. It does not apply SQL files.
 
-### Development (autonomous)
+### Development
 
 ```bash
 ./infra/scripts/migrate.sh development
 ```
 
-No confirmation prompt. Runs `bundle exec rails db:migrate` with `RAILS_ENV=development`.
+Development runs autonomously. If audit DSNs are set, the script also verifies audit immutability.
 
-### Staging (requires approval)
+### Staging
 
 ```bash
-# After obtaining human approval:
 ./infra/scripts/migrate.sh staging
 ```
 
-No `--force` flag required for staging — the script will not prompt for staging. Requires human approval before running per `safety-rules.md`.
+Requires prior human approval. The script does not prompt interactively for staging.
 
-### Production (requires approval + confirmation)
+### Production
 
 ```bash
-# After obtaining human approval:
 ./infra/scripts/migrate.sh production
 ```
 
-Production prompts: `Type 'yes' to confirm`. If `--force` is passed, this prompt is skipped — **never use `--force` for production**.
+Requires prior human approval and an interactive `yes` confirmation unless `--force` is used. Do not use `--force` in production.
 
 ---
 
-## Migration Execution Sequence
+## Execution Sequence
 
 The script runs these steps:
 
 ### 1. Environment Validation
 
-Resolves aliases (`prod` → `production`, `stg` → `staging`). Fails on unrecognized environment.
+Resolves aliases such as `dev`, `stg`, and `prod`. Fails on unrecognized values.
 
 ### 2. Pre-flight Checks
 
-- Verifies `Gemfile` exists in the project root
-- Production (without `--force`): prompts `Type 'yes' to confirm`
+- Verifies `psql` is installed
+- Verifies `DATABASE_URL` is set and reachable
+- Verifies the SQL migration directory exists and contains `.sql` files
+- Prompts for confirmation in production unless `--force` is used
 
-### 3. Migration Check
+### 3. Migration Tracking
 
-Runs `bundle exec rails db:migrate:status` and counts pending (`down`) migrations. If count is 0, exits with success — no migrations needed.
+Creates `schema_migrations` if needed, computes a checksum for each SQL file, and identifies pending files by filename.
 
 ### 4. Migration Execution
 
-Runs `bundle exec rails db:migrate` with the target `RAILS_ENV`. Logs current schema version via `bundle exec rails db:version`.
+Applies each pending SQL file with `psql` and records filename, checksum, timestamp, and environment in `schema_migrations`.
 
 ### 5. Audit Constraints Verification
 
-Runs `setup_audit_constraints` — verifies the append-only constraints on the audit database are in place. If the dry-run flag is set, logs what would be done without running.
+Runs `setup_audit_constraints` after migration scanning:
+
+- Verifies `gtcx_audit_writer` exists
+- Verifies the audit database contains non-system tables
+- Fails if `gtcx_audit_writer` has `UPDATE` or `DELETE`
+- Fails if `PUBLIC` has `UPDATE` or `DELETE`
+- Fails if `gtcx_audit_writer` is missing `INSERT`
+- Runs a live negative `UPDATE` and `DELETE` probe as the audit writer
+
+Outside development, both `AUDIT_DATABASE_URL` and `AUDIT_WRITER_DATABASE_URL` are mandatory.
 
 ---
 
 ## Rollback
 
-**Production rollbacks require manual approval — the script refuses them:**
+Do not mutate or edit an applied migration file. Recover with a forward compensating migration.
 
-```
-Production rollbacks require manual approval
-Use: RAILS_ENV=production bundle exec rails db:rollback
-```
-
-For staging:
+Examples:
 
 ```bash
-# The script supports rollback for non-production only
-RAILS_ENV=staging bundle exec rails db:rollback
+./infra/scripts/migrate.sh production --dry-run
+psql "$DATABASE_URL" -f path/to/forward-fix.sql
 ```
 
-Document the rollback action: which migration was undone, why, and what the new schema version is.
+Document the recovery action: what failed, which compensating migration ran, and the resulting schema state.
 
 ---
 
@@ -136,18 +144,20 @@ Document the rollback action: which migration was undone, why, and what the new 
 
 When authoring a new migration file:
 
-1. Place it in `infra/migrations/` following the existing naming convention
-2. Add a header comment documenting: what it does, the rollback path, and which database it targets
-3. Run `python infra/migrations/scripts/check_docs.py` — fix all warnings before proposing for review
-4. Run `python infra/migrations/scripts/generate_docs.py` to update migration documentation
-5. Test against development before requesting staging approval
+1. Place it in `infra/docker/init-scripts/postgres/` using the existing ordering convention.
+2. Add a header comment describing purpose, target database, and recovery path.
+3. Run `python infra/migrations/scripts/check_docs.py`.
+4. Run `python infra/migrations/scripts/generate_docs.py`.
+5. Test against development before requesting staging approval.
+6. If the audit schema or grants change, run `bash infra/scripts/test-audit-immutability.sh`.
 
-### Migration constraints for the audit database
+### Audit migration constraints
 
-Any migration touching the audit schema (`gtcx_{env}_audit`) must:
+Any migration touching audit schema or audit grants must:
 
-- Never add `UPDATE` or `DELETE` permissions to any role
-- Never add an index that could be used to facilitate bulk deletion
+- Preserve append-only semantics for writer roles
+- Avoid introducing `UPDATE` or `DELETE` privileges
+- Avoid destructive cleanup shortcuts
 - Be reviewed by the Database & Migration Lead before running anywhere
 
 ---
@@ -156,7 +166,7 @@ Any migration touching the audit schema (`gtcx_{env}_audit`) must:
 
 | Flag        | Effect                                                        |
 | ----------- | ------------------------------------------------------------- |
-| `--dry-run` | Show pending migration status without applying                |
+| `--dry-run` | Show pending migration status without applying schema changes |
 | `--force`   | Skip production confirmation prompt — never use in production |
 
 ---
@@ -165,16 +175,17 @@ Any migration touching the audit schema (`gtcx_{env}_audit`) must:
 
 Escalate to human review immediately if:
 
-- A migration fails against staging or production — do not retry without investigation
-- A migration ran against the wrong database (operational vs. audit cross-write)
-- `check_docs.py` reports errors that cannot be resolved without modifying an applied migration
+- A staging or production migration fails
+- The wrong database target was used
+- Audit immutability verification fails
+- `check_docs.py` reports an issue that would require modifying an applied migration
 
 ---
 
 ## Reference
 
 - [`infra/scripts/migrate.sh`](../../../infra/scripts/migrate.sh) — migration runner
-- `infra/migrations/config/` — per-environment configs
-- [`infra/migrations/scripts/check_docs.py`](../../../infra/migrations/scripts/check_docs.py) — validation
-- [`docs/agents/safety-rules.md`](../../agents/workflows/agent-safety-rules.md) — authority tiers
-- [`docs/architecture/system-overview.md`](../../architecture/system-overview.md) — two-database architecture
+- [`infra/scripts/test-audit-immutability.sh`](../../../infra/scripts/test-audit-immutability.sh) — live audit immutability fixture
+- [`infra/migrations/scripts/check_docs.py`](../../../infra/migrations/scripts/check_docs.py) — migration doc validation
+- [`docs/agents/workflows/agent-safety-rules.md`](../../agents/workflows/agent-safety-rules.md) — authority tiers
+- [`docs/architecture/system-overview.md`](../../architecture/system-overview.md) — system overview

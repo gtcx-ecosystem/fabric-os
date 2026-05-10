@@ -32,6 +32,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
       - name: Lint
         run: pnpm lint
 
@@ -63,6 +68,9 @@ jobs:
         run: |
           cd tools/replay-protection
           node --test tests/**/*.test.mjs
+
+      - name: Audit immutability fixture
+        run: bash infra/scripts/test-audit-immutability.sh
 
       - name: Generate release evidence
         run: |

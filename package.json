@@ -24,6 +24,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yaml,yml}\"",
     "check:fine-tune-workflow-policy": "node tools/policy/check-fine-tune-workflow-policy.mjs",
     "check:workflow-image-contract": "node tools/policy/check-workflow-image-contract.mjs",
+    "check:security-control-boundaries": "node tools/policy/check-security-control-boundaries.mjs",
     "check:k8s-policy": "node tools/policy/check-k8s-policy.mjs",
     "typecheck": "turbo run typecheck",
     "ctl": "node ./tools/control-plane/gtcx-ctl.mjs",

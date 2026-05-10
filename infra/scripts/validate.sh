@@ -65,11 +65,27 @@ run_policy_checks() {
     log_info "Running workflow policy checks..."
     (cd "${PROJECT_ROOT}" && pnpm check:fine-tune-workflow-policy)
     (cd "${PROJECT_ROOT}" && pnpm check:workflow-image-contract)
+    (cd "${PROJECT_ROOT}" && pnpm check:security-control-boundaries)
 }
 
 run_replay_protection_tests() {
     log_info "Running replay-protection tests..."
     (cd "${PROJECT_ROOT}/tools/replay-protection" && node --test tests/verifier.test.mjs tests/integration.test.mjs)
+}
+
+run_replay_production_policy_tests() {
+    log_info "Running replay-protection production policy tests..."
+    (
+        cd "${PROJECT_ROOT}" && \
+        node --test \
+            tools/replay-protection/tests/failure-modes.test.mjs \
+            tools/replay-protection/tests/runtime-policy.test.mjs
+    )
+}
+
+run_compliance_gateway_tests() {
+    log_info "Running compliance-gateway tests..."
+    (cd "${PROJECT_ROOT}" && node --test tools/compliance-gateway/tests/*.test.mjs)
 }
 
 run_script_smoke_tests() {
@@ -172,18 +188,31 @@ run_compose_validation() {
     (cd "${PROJECT_ROOT}" && docker compose -f infra/docker/docker-compose.infra.yml config --quiet)
 }
 
+run_audit_immutability_fixture() {
+    require_command docker
+    require_command psql
+
+    log_info "Running audit immutability fixture..."
+    (cd "${PROJECT_ROOT}" && bash infra/scripts/test-audit-immutability.sh)
+}
+
 case "${MODE}" in
     quick)
         run_policy_checks
         run_shell_checks
         run_replay_protection_tests
+        run_replay_production_policy_tests
+        run_compliance_gateway_tests
         run_script_smoke_tests
         ;;
     full)
         run_policy_checks
         run_shell_checks
         run_replay_protection_tests
+        run_replay_production_policy_tests
+        run_compliance_gateway_tests
         run_script_smoke_tests
+        run_audit_immutability_fixture
         run_terraform_validation
         run_terraform_tests
         run_kustomize_validation

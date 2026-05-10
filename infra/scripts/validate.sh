@@ -104,6 +104,27 @@ run_script_smoke_tests() {
     (cd "${PROJECT_ROOT}" && bash infra/scripts/prepare-intelligence-evidence-env.sh --help >/dev/null)
 }
 
+run_docs_standard_validation() {
+    log_info "Running docs-standard validation..."
+    (cd "${PROJECT_ROOT}" && node tools/scripts/docs-standard-validator.mjs --baseline=.docs-exceptions.json)
+}
+
+run_score_ledger_validation() {
+    log_info "Running score-evidence ledger validation..."
+    (cd "${PROJECT_ROOT}" && node tools/scripts/validate-score-ledger.mjs)
+}
+
+run_build_evidence_generation() {
+    log_info "Running build evidence generation..."
+    (cd "${PROJECT_ROOT}" && node tools/control-plane/generate-release-evidence.mjs \
+        --environment=ci \
+        --version=ci-smoke \
+        --commit=smoke-test \
+        --build-only \
+        --image=replay-guard=gtcx/replay-guard:ci-smoke \
+        --output-dir=/tmp/gtcx-build-evidence-smoke)
+}
+
 run_terraform_validation() {
     require_command terraform
     require_command zip
@@ -211,6 +232,9 @@ case "${MODE}" in
         run_replay_production_policy_tests
         run_compliance_gateway_tests
         run_deployment_guard_tests
+        run_docs_standard_validation
+        run_score_ledger_validation
+        run_build_evidence_generation
         run_script_smoke_tests
         ;;
     full)
@@ -220,6 +244,9 @@ case "${MODE}" in
         run_replay_production_policy_tests
         run_compliance_gateway_tests
         run_deployment_guard_tests
+        run_docs_standard_validation
+        run_score_ledger_validation
+        run_build_evidence_generation
         run_script_smoke_tests
         run_audit_immutability_fixture
         run_terraform_validation

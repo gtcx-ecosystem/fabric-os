@@ -253,4 +253,4 @@ Year [X] target ([X]% of SAM): **$[X]K–$[X]M ARR**
 ## References
 
 - [Competitor profiles](competitors.md)
-- [Market analysis](.)
+- [Market analysis](industry-landscape.md)

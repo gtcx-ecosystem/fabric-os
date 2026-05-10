@@ -22,6 +22,16 @@ function usage() {
     [--image=<name>=<image-ref>]... \\
     [--output-dir=<path>]
 
+Build-only mode (no smoke/rollback required):
+  node tools/control-plane/generate-release-evidence.mjs \\
+    --environment=ci \\
+    --version=<tag> \\
+    --commit=<sha> \\
+    --build-only \\
+    [--image=<name>=<image-ref>]... \\
+    [--sbom=<name>=<path>]... \\
+    [--scan=<name>=<status>]...
+
 Notes:
   - Image refs must be immutable release tags or digest-pinned. ':latest' is rejected.
   - Repeat --image, --sbom, and --scan to add multiple entries.
@@ -69,10 +79,21 @@ const options = {
   images: [],
   sboms: [],
   scans: [],
+  buildOnly: false,
 };
 
 for (const arg of args) {
-  if (!arg.startsWith('--') || !arg.includes('=')) {
+  if (!arg.startsWith('--')) {
+    fail(`Unsupported argument: ${arg}`);
+  }
+
+  // Boolean flags without '='
+  if (arg === '--build-only') {
+    options.buildOnly = true;
+    continue;
+  }
+
+  if (!arg.includes('=')) {
     fail(`Unsupported argument: ${arg}`);
   }
 
@@ -101,9 +122,17 @@ for (const arg of args) {
   }
 }
 
-for (const key of ['environment', 'version', 'commit', 'smoke-base-url', 'rollback-target']) {
+for (const key of ['environment', 'version', 'commit']) {
   if (!options[key]) {
     fail(`Missing required argument: --${key}=...`);
+  }
+}
+
+if (!options.buildOnly) {
+  for (const key of ['smoke-base-url', 'rollback-target']) {
+    if (!options[key]) {
+      fail(`Missing required argument: --${key}=... (or use --build-only)`);
+    }
   }
 }
 
@@ -149,10 +178,9 @@ const bundle = {
     commit: options.commit,
     approvalTicket: options['approval-ticket'] ?? null,
   },
-  deployment: {
-    smokeBaseUrl: options['smoke-base-url'],
-    rollbackTarget: options['rollback-target'],
-  },
+  deployment: options.buildOnly
+    ? { smokeBaseUrl: null, rollbackTarget: null, buildOnly: true }
+    : { smokeBaseUrl: options['smoke-base-url'], rollbackTarget: options['rollback-target'] },
   images: imageEntries,
   sboms: sbomEntries,
   scans: scanEntries,
@@ -172,8 +200,8 @@ const summary = [
   `- Version: ${bundle.release.version}`,
   `- Commit: ${bundle.release.commit}`,
   `- Approval ticket: ${bundle.release.approvalTicket ?? 'none'}`,
-  `- Smoke base URL: ${bundle.deployment.smokeBaseUrl}`,
-  `- Rollback target: ${bundle.deployment.rollbackTarget}`,
+  `- Smoke base URL: ${bundle.deployment.smokeBaseUrl ?? 'N/A (build-only)'}`,
+  `- Rollback target: ${bundle.deployment.rollbackTarget ?? 'N/A (build-only)'}`,
   '',
   '## Images',
   ...imageEntries.map((entry) => `- ${entry.name}: \`${entry.ref}\``),

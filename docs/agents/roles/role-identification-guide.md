@@ -209,4 +209,4 @@ Before submitting the role gap report:
 - [examples/bureau-chiefs.md](bureau-chiefs.md) — regional lead role example
 - [examples/editor-in-chief.md](editor-in-chief.md) — senior editorial role example
 - [4-workflows/approval-flows.md](../workflows/approval-flows.md) — approval authority reference
-- [5-governance/](../governance) — governance and decision authority policies
+- [5-governance/](../governance/editorial-independence.md) — governance and decision authority policies

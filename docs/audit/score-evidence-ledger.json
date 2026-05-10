@@ -1,0 +1,204 @@
+{
+  "version": 1,
+  "baselineDate": "2026-05-10",
+  "sourceAudit": "docs/audit/master-audit-2026-05-10.md",
+  "rules": [
+    "Scores may only increase when a reproducible artifact and CI link are provided.",
+    "Ledger entries are append-only; corrections require a new entry with rationale.",
+    "The validator fails CI when an audit doc claims a score not present in the ledger."
+  ],
+  "dimensions": [
+    {
+      "id": "core-weighted",
+      "name": "Core Weighted Score",
+      "currentScore": 5.9,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 5.9,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline after Phase 3 docs-standard compliance pass"
+        }
+      ]
+    },
+    {
+      "id": "investor-lens",
+      "name": "Investor Lens",
+      "currentScore": 6.2,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 6.2,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline"
+        }
+      ]
+    },
+    {
+      "id": "enterprise-buyer",
+      "name": "Enterprise Buyer Lens",
+      "currentScore": 5.9,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 5.9,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline"
+        }
+      ]
+    },
+    {
+      "id": "sovereign-dfi",
+      "name": "African Sovereign / DFI Lens",
+      "currentScore": 6.4,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 6.4,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline"
+        }
+      ]
+    },
+    {
+      "id": "code-quality",
+      "name": "Code Quality",
+      "currentScore": 7.2,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 7.2,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline"
+        }
+      ]
+    },
+    {
+      "id": "repo-hygiene",
+      "name": "Repo / Folder Hygiene",
+      "currentScore": 8.1,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 8.1,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline"
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "currentScore": 4.5,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 4.5,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline"
+        }
+      ]
+    },
+    {
+      "id": "global-south-resilience",
+      "name": "Global South Resilience",
+      "currentScore": 6.8,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 6.8,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline"
+        }
+      ]
+    },
+    {
+      "id": "ecosystem-integration",
+      "name": "Ecosystem Integration",
+      "currentScore": 7.5,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 7.5,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline"
+        }
+      ]
+    },
+    {
+      "id": "agentic-maturity",
+      "name": "Agentic Maturity",
+      "currentScore": 4.0,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 4.0,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline"
+        }
+      ]
+    },
+    {
+      "id": "enterprise-readiness",
+      "name": "Enterprise / Production Readiness",
+      "currentScore": 6.3,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 6.3,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-10.md",
+          "reason": "Initial master audit baseline"
+        }
+      ]
+    },
+    {
+      "id": "docs-standard",
+      "name": "Docs Standard Compliance",
+      "currentScore": 8.9,
+      "maxScore": 10,
+      "history": [
+        {
+          "date": "2026-05-10",
+          "score": 8.9,
+          "commit": "37272bd",
+          "ciRun": null,
+          "artifact": "docs/audit/docs-standard-compliance-2026-05-10.md",
+          "reason": "Initial docs-standard compliance audit baseline"
+        }
+      ]
+    }
+  ]
+}

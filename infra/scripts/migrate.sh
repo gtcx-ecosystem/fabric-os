@@ -78,6 +78,27 @@ validate_environment() {
             exit 1
             ;;
     esac
+
+    # Delegate safety-critical gating to typed, tested module.
+    local gate_cli="${INFRA_ROOT}/../tools/deployment-guard/src/cli/migrate-gate.mjs"
+    if ! node "${gate_cli}" \
+        --environment="${ENVIRONMENT}" \
+        ${DRY_RUN:+--dry-run} \
+        ${FORCE:+--force} \
+        --audit-admin-url="${AUDIT_DATABASE_URL:-}" \
+        --audit-writer-url="${AUDIT_WRITER_DATABASE_URL:-}" >/dev/null 2>&1; then
+        local gate_reason
+        gate_reason=$(node "${gate_cli}" \
+            --environment="${ENVIRONMENT}" \
+            ${DRY_RUN:+--dry-run} \
+            ${FORCE:+--force} \
+            --audit-admin-url="${AUDIT_DATABASE_URL:-}" \
+            --audit-writer-url="${AUDIT_WRITER_DATABASE_URL:-}" 2>&1 || true)
+        if echo "${gate_reason}" | grep -q "MIGRATE_GATE_BLOCKED"; then
+            log_error "${gate_reason#MIGRATE_GATE_BLOCKED: }"
+            exit 1
+        fi
+    fi
 }
 
 # -----------------------------------------------------------------------------

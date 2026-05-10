@@ -61,6 +61,15 @@ importers:
         specifier: ^3.4.0
         version: 3.8.1
 
+  tools/deployment-guard:
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.0
+        version: 22.19.8
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
   tools/replay-protection:
     devDependencies:
       '@types/node':

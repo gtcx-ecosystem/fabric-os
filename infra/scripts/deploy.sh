@@ -119,7 +119,31 @@ validate_inputs() {
             ;;
     esac
     
+    # Delegate safety-critical gating to typed, tested module.
+    local has_kubeconfig=false
+    if kubectl cluster-info &>/dev/null; then
+        has_kubeconfig=true
+    fi
+    local gate_cli="${PROJECT_ROOT}/tools/deployment-guard/src/cli/deploy-gate.mjs"
+    if ! node "${gate_cli}" \
+        --environment="${ENVIRONMENT}" \
+        --approval-ticket="${APPROVAL_TICKET}" \
+        ${ROLLBACK:+--rollback} \
+        ${DRY_RUN:+--dry-run} \
+        ${has_kubeconfig:+--has-kubeconfig} >/dev/null 2>&1; then
+        local gate_reason
+        gate_reason=$(node "${gate_cli}" \
+            --environment="${ENVIRONMENT}" \
+            --approval-ticket="${APPROVAL_TICKET}" \
+            ${ROLLBACK:+--rollback} \
+            ${DRY_RUN:+--dry-run} \
+            ${has_kubeconfig:+--has-kubeconfig} 2>&1 || true)
+        log_error "${gate_reason#DEPLOY_GATE_BLOCKED: }"
+        exit 1
+    fi
+
     # Production requires approval ticket unless this is a dry-run plan.
+    # (Redundant with gate above, kept as defense-in-depth.)
     if [[ "${ENVIRONMENT}" == "production" ]] && [[ -z "${APPROVAL_TICKET}" ]] && [[ "${ROLLBACK}" != "true" ]] && [[ "${DRY_RUN}" != "true" ]]; then
         log_error "Production deployment requires --approval-ticket=GTCX-XXX"
         exit 1
@@ -397,17 +421,33 @@ canary_deploy() {
             -o jsonpath='{.items[*].status.conditions[?(@.type=="Ready")].status}' 2>/dev/null \
             | tr ' ' '\n' | grep -c "False" || echo "0")
 
-        if [[ $not_ready -gt 0 ]]; then
-            log_error "Canary pod not ready. Removing canary..."
-            canary_cleanup
-            exit 1
-        fi
-
         # Check for restart count (CrashLoopBackOff indicator)
         local restarts
         restarts=$(kubectl get pods -n "${NAMESPACE}" -l app=gtcx-agx-prod,role=canary \
             -o jsonpath='{.items[0].status.containerStatuses[0].restartCount}' 2>/dev/null || echo "0")
 
+        # Delegate canary health decision to typed, tested module.
+        local canary_eval
+        canary_eval=$(node "${PROJECT_ROOT}/tools/deployment-guard/src/cli/canary-eval.mjs" \
+            --not-ready="${not_ready}" \
+            --restarts="${restarts}" \
+            --elapsed="$(( $(date +%s) - (end_time - CANARY_WAIT_SECONDS) ))" \
+            --max-wait="${CANARY_WAIT_SECONDS}" 2>&1 || true)
+
+        if echo "${canary_eval}" | grep -q "CANARY_UNHEALTHY"; then
+            local canary_reason
+            canary_reason=$(echo "${canary_eval}" | grep "CANARY_UNHEALTHY:" | sed 's/CANARY_UNHEALTHY: //')
+            log_error "Canary unhealthy: ${canary_reason}. Removing canary..."
+            canary_cleanup
+            exit 1
+        fi
+
+        # Shell-level defense-in-depth retained
+        if [[ $not_ready -gt 0 ]]; then
+            log_error "Canary pod not ready. Removing canary..."
+            canary_cleanup
+            exit 1
+        fi
         if [[ "${restarts}" -gt 2 ]]; then
             log_error "Canary pod restarting (${restarts} restarts). Removing canary..."
             canary_cleanup

@@ -1,6 +1,6 @@
 ## GTCX Infrastructure — Remediation Plan
 
-> **Status:** Active — Sprint 2 in progress
+> **Status:** Active — Sprint 2 complete; Sprint 3 pending
 > **Date:** 2026-05-10
 > **Owner:** GTCX Infrastructure
 
@@ -58,7 +58,7 @@ Normalization rule:
 | F-004 | `master-audit-2026-05-10`                                                       | Compliance / auditability    | P1       | Audit immutability check is a no-op                                                                        | Migration workflow logs success without live verification                         | Add privilege verification and negative mutation tests for audit tables                                           | Data Platform               | 1      | Release or migration fails if audit tables permit mutation                                                             | SQL verification, CI job, evidence artifact                     |
 | F-005 | `master-audit-2026-05-10`                                                       | CI/CD / compliance           | P1       | Release evidence job is intentionally partial                                                              | CI tolerates missing smoke target with `continue-on-error`                        | Require complete release-evidence generation against a real smoke target or split partial path from required path | DevOps                      | 3      | Shipping workflow fails on incomplete evidence                                                                         | Workflow diff, artifact inspection, green CI                    |
 | F-006 | `master-audit-2026-05-10`, `documentation-coverage-proposal`                    | Docs / DX / CI               | P1       | Docs CI gate checks only stale `_sop/` refs and old GitHub org URLs                                        | No full docs-standard validator in CI                                             | Add broken-link, frontmatter, naming, empty-dir, and index drift validation as required CI                        | Developer Productivity      | 3      | Docs regressions fail CI deterministically                                                                             | Workflow run, validator output, sample failing PR               |
-| F-007 | `master-audit-2026-05-10`                                                       | Code quality                 | P2       | Explicit `any` and weak type boundaries remain in replay-protection surface                                | JS typing shortcuts left in place after hardening                                 | Remove explicit `any`, narrow event/listener contracts, and add lint rule coverage                                | Platform Security           | 2      | No explicit `any` remains in owned replay-protection surface                                                           | `rg -n "any"` clean for targeted paths, lint pass               |
+| F-007 | `master-audit-2026-05-10`                                                       | Code quality                 | P2       | ~~Explicit `any` and weak type boundaries remain in replay-protection surface~~ **CLOSED Sprint 1**        | JS typing shortcuts left in place after hardening                                 | Remove explicit `any`, narrow event/listener contracts, and add lint rule coverage                                | Platform Security           | 2      | No explicit `any` remains in owned replay-protection surface                                                           | `rg -n "any"` clean for targeted paths, lint pass               |
 | F-008 | `master-audit-2026-05-10`                                                       | Security / trust             | P1       | No third-party pen-test or equivalent external validation is evidenced                                     | Trust story is self-asserted                                                      | Commission external review of gateway, replay guard, and release/audit evidence paths                             | Security / Leadership       | 4      | External report completed, findings triaged, no open criticals                                                         | Pen-test report, remediation tickets, sign-off                  |
 | F-009 | `master-audit-2026-05-10`, `production-readiness-evidence-2026-05-08`           | Operations / DR              | P1       | DR and restore proof are not yet institutional-grade                                                       | Runbooks exist, but recurring restore evidence is incomplete                      | Make DR restore drills scheduled, reproducible, and artifacted in CI and non-prod                                 | SRE                         | 4      | Restore drill passes with retained evidence and measured RTO/RPO                                                       | DR workflow artifacts, restore log, runbook record              |
 | F-010 | `2026-05-04-full-audit`, `2026-05-05-cycle-7-final`                             | Production / performance     | P1       | Load-test evidence and live alert calibration are incomplete                                               | Observability exists, but sustained traffic evidence does not                     | Run load tests, calibrate thresholds from observed traffic, and encode thresholds as gates                        | SRE / Performance           | 4      | Target RPS, latency, and error budget thresholds proven and documented                                                 | k6 results, dashboard snapshots, alert threshold PR             |
@@ -68,7 +68,7 @@ Normalization rule:
 | F-014 | `no local UX corpus`, `AI_NATIVE_PATTERNS.md`                                   | UX / design governance       | P2       | Repo has no local UX audit baseline for operator/control-plane surfaces                                    | Infra work was audited for trust and ops, not operator experience                 | Audit control-plane, runbook, and onboarding UX against AI-native and design-bar standards                        | Platform DX                 | 7      | UX baseline documented; anti-pattern list closed; operator journey tested                                              | UX audit doc, checklist, walkthrough evidence                   |
 | F-015 | `no local SIGNAL corpus`, `master-audit-2026-05-10`                             | SIGNAL / agentic maturity    | P1       | Agentic maturity is scored, but no repo-local SIGNAL rubric or gate exists                                 | Maturity judgment is narrative, not instrumented                                  | Create repo-local SIGNAL scorecard tied to policy, approval, provenance, and degraded-mode tests                  | Platform AI Safety          | 5      | SIGNAL score is computed from tests and policy checks, not prose                                                       | Scorecard doc, CI checks, audit mapping                         |
 | F-016 | `gtcx-hardening-strategy`, `master-audit-2026-05-10`                            | Innovation / trust           | P2       | Audit trail is append-only by design but not tamper-evident beyond DB controls                             | No cryptographic anchoring layer                                                  | Design and stage Merkle-root or equivalent tamper-evident anchoring for audit ledger                              | Security Architecture       | 9      | ADR accepted; prototype proves anchor generation and verification                                                      | ADR, design doc, prototype evidence                             |
-| F-017 | `gtcx-hardening-strategy`, `infrastructure-improvement-roadmap`                 | Architecture / operability   | P2       | Critical control-plane logic remains spread across shell and thin wrappers                                 | Safety-critical operations are hard to unit test and reason about                 | Reduce shell authority surface and move high-risk logic behind typed, testable interfaces                         | Platform Engineering        | 2      | Critical deployment/evidence logic has typed tests and clearer ownership boundaries                                    | Test coverage, module boundaries, ADR/update                    |
+| F-017 | `gtcx-hardening-strategy`, `infrastructure-improvement-roadmap`                 | Architecture / operability   | P2       | ~~Critical control-plane logic remains spread across shell and thin wrappers~~ **CLOSED Sprint 2**         | Safety-critical operations are hard to unit test and reason about                 | Reduce shell authority surface and move high-risk logic behind typed, testable interfaces                         | Platform Engineering        | 2      | Critical deployment/evidence logic has typed tests and clearer ownership boundaries                                    | Test coverage, module boundaries, ADR/update                    |
 | F-018 | `gtm-q2-africa`, `pilot-success-criteria`                                       | Global South resilience      | P1       | Low-connectivity and offline requirements are stated, but proof is incomplete for exposed services         | Pilot criteria exist without repeatable degraded-mode drills                      | Add low-bandwidth, outage, replay, and recovery drills tied to acceptance thresholds                              | Platform / Mobile Interface | 6      | Low-connectivity scenarios pass with no data loss and bounded recovery                                                 | Chaos test output, replay drill logs, pilot acceptance evidence |
 | F-019 | `pilot-agreement-template`, `pilot-success-criteria`, `master-audit-2026-05-10` | GTM / compliance             | P1       | Institutional pilot packet is weakened by unresolved trust controls and incomplete DPA/evidence references | Commercial docs outpace live bank-grade controls                                  | Update pilot packet only after trust controls are fixed and evidence links are real                               | GTM / Compliance            | 10     | Pilot agreement, success criteria, and data-flow evidence are internally consistent and auditable                      | Updated pilot pack, DPA checklist, link check                   |
 | F-020 | `production-readiness-evidence-2026-05-08`                                      | Ecosystem program            | P2       | Ecosystem blockers are tracked informally across peer repos, not as interface obligations                  | Cross-repo health is reported, not enforced                                       | Convert ecosystem health list into owned dependency matrix with contract owners and escalation paths              | TPM / Platform              | 8      | Every direct dependency has an owner, version contract, and escalation path                                            | Dependency matrix, review cadence, contract docs                |
@@ -108,16 +108,38 @@ Normalization rule:
 
 **Goal:** Remove unsafe type shortcuts and reduce safety-critical shell authority.
 
+**Status:** Complete
+
 **Exit criteria:**
 
-- F-007 and F-017 are closed.
-- High-risk operational paths have typed tests or constrained interfaces.
+- ~~F-007 and F-017 are closed.~~
+- ~~High-risk operational paths have typed tests or constrained interfaces.~~
+
+**Evidence:**
+
+- `tools/replay-protection/src/redis.d.ts` no longer carries explicit `any` boundaries (F-007 closed in Sprint 1).
+- New `tools/deployment-guard/` module created with typed, tested interfaces for:
+  - `src/gate.mjs` — deployment gating (environment normalization, approval ticket validation, kubeconfig checks)
+  - `src/canary.mjs` — canary health evaluation and promotion decisions
+  - `src/migration-safety.mjs` — migration checksum/idempotency and dry-run planning
+  - `src/audit-verifier.mjs` — audit privilege SQL generation and result parsing
+- CLI wrappers (`src/cli/deploy-gate.mjs`, `src/cli/migrate-gate.mjs`, `src/cli/canary-eval.mjs`) integrate the typed modules into existing shell entrypoints.
+- `infra/scripts/deploy.sh` delegates critical gating to `deploy-gate.mjs` and canary decisions to `canary-eval.mjs`.
+- `infra/scripts/migrate.sh` delegates environment and audit policy gating to `migrate-gate.mjs`.
+- `infra/scripts/validate.sh` runs the full `deployment-guard` test suite and TypeScript typecheck in both `quick` and `full` modes.
+- All 56 deployment-guard tests pass; `tsc --noEmit` is clean.
+
+**Architecture boundary:**
+
+- Shell scripts (`infra/scripts/`) retain I/O, kubectl/psql invocation, and logging.
+- Policy decisions (gate checks, health evaluation, migration planning, audit verification) live in `tools/deployment-guard/` and are unit-testable without a cluster or database.
+- `tools/control-plane/` continues to own the operator CLI (`gtcx-ctl.mjs`); `tools/deployment-guard/` owns the safety policy layer beneath it.
 
 **Tasks:**
 
-- Remove explicit `any` usage and weak listener signatures in replay-protection. Link: F-007.
-- Inventory high-risk shell logic and move safety-critical decisions behind typed, testable modules. Link: F-017.
-- Document architecture boundaries for control-plane, replay-protection, and gateway responsibility lines.
+- ~~Remove explicit `any` usage and weak listener signatures in replay-protection. Link: F-007.~~
+- ~~Inventory high-risk shell logic and move safety-critical decisions behind typed, testable modules. Link: F-017.~~
+- ~~Document architecture boundaries for control-plane, replay-protection, and gateway responsibility lines.~~
 
 **Risks:**
 
@@ -126,6 +148,7 @@ Normalization rule:
 **Rollback plan:**
 
 - Limit code motion to audited surfaces; preserve shell entrypoints while replacing internals incrementally.
+- Shell scripts retain defense-in-depth checks alongside the typed module delegation.
 
 ### Sprint 3. Tests + CI/CD
 

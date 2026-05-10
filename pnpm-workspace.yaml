@@ -3,3 +3,4 @@ packages:
   - 'infra/migrations'
   # Tools
   - 'tools/replay-protection'
+  - 'tools/deployment-guard'

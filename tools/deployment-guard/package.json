@@ -1,0 +1,33 @@
+{
+  "name": "@gtcx/deployment-guard",
+  "version": "0.1.0",
+  "description": "GTCX Deployment Guard — typed, testable safety gates for deployment and migration control paths",
+  "type": "module",
+  "exports": {
+    "./gate": "./src/gate.mjs",
+    "./canary": "./src/canary.mjs",
+    "./migration-safety": "./src/migration-safety.mjs",
+    "./audit-verifier": "./src/audit-verifier.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/**/*.test.mjs",
+    "test:watch": "node --test --watch tests/**/*.test.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  },
+  "keywords": [
+    "gtcx",
+    "deployment",
+    "migration",
+    "safety",
+    "control-plane"
+  ],
+  "license": "MIT",
+  "private": true
+}

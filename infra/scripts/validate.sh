@@ -88,6 +88,13 @@ run_compliance_gateway_tests() {
     (cd "${PROJECT_ROOT}" && node --test tools/compliance-gateway/tests/*.test.mjs)
 }
 
+run_deployment_guard_tests() {
+    log_info "Running deployment-guard tests..."
+    (cd "${PROJECT_ROOT}/tools/deployment-guard" && node --test tests/**/*.test.mjs)
+    log_info "Running deployment-guard typecheck..."
+    (cd "${PROJECT_ROOT}/tools/deployment-guard" && npx tsc --noEmit)
+}
+
 run_script_smoke_tests() {
     log_info "Running operator script smoke tests..."
     (cd "${PROJECT_ROOT}" && bash infra/scripts/build-push.sh --list >/dev/null)
@@ -203,6 +210,7 @@ case "${MODE}" in
         run_replay_protection_tests
         run_replay_production_policy_tests
         run_compliance_gateway_tests
+        run_deployment_guard_tests
         run_script_smoke_tests
         ;;
     full)
@@ -211,6 +219,7 @@ case "${MODE}" in
         run_replay_protection_tests
         run_replay_production_policy_tests
         run_compliance_gateway_tests
+        run_deployment_guard_tests
         run_script_smoke_tests
         run_audit_immutability_fixture
         run_terraform_validation

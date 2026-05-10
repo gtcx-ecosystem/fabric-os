@@ -73,13 +73,13 @@ if (process.env.GOOGLE_API_KEY) {
 
   registry.push({
     name: 'gemini-2.5-flash',
-    model: 'gemini-2.5-flash-preview-04-17',
+    model: 'gemini-2.5-flash',
     inputCostPer1M: 0.15,
     outputCostPer1M: 0.60,
     tier: 'cheap',
     maxTools: 128,
     available: true,
-    createModel: () => google('gemini-2.5-flash-preview-04-17'),
+    createModel: () => google('gemini-2.5-flash'),
   });
 
   registry.push({
@@ -95,13 +95,13 @@ if (process.env.GOOGLE_API_KEY) {
 
   registry.push({
     name: 'gemini-2.5-pro',
-    model: 'gemini-2.5-pro-preview-05-06',
+    model: 'gemini-2.5-pro',
     inputCostPer1M: 1.25,
     outputCostPer1M: 10.0,
     tier: 'frontier',
     maxTools: 128,
     available: true,
-    createModel: () => google('gemini-2.5-pro-preview-05-06'),
+    createModel: () => google('gemini-2.5-pro'),
   });
 }
 

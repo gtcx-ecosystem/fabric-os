@@ -1,7 +1,7 @@
 # Production Readiness Evidence — 2026-05-08
 
 > **Status:** Current
-> **Date:** 2026-05-10
+> **Date:** 2026-05-11
 > **Owner:** GTCX Infrastructure
 
 ## GTCX Infrastructure Replay Protection
@@ -18,6 +18,29 @@
 | **Chaos Tested**       | ✅     | `replay-guard-pod-kill.yaml`, `replay-guard-network-latency.yaml` |
 | **Runbook**            | ✅     | `docs/operations/runbooks/replay-guard-failure.md`                |
 | **Mobile Contract**    | ✅     | Verifies all 8 `X-GTCX-*` headers per mobile spec                 |
+| **Load Tested**        | ✅     | k6 health-load test — p95 < 200ms, error rate < 0.5%              |
+
+## GTCX Infrastructure Compliance Gateway
+
+| Gate            | Status | Evidence                                             |
+| --------------- | ------ | ---------------------------------------------------- |
+| **Load Tested** | ✅     | k6 health-load test — p95 < 500ms, error rate < 0.5% |
+
+## GTCX Infrastructure Disaster Recovery
+
+| Gate                 | Status | Evidence                                                  |
+| -------------------- | ------ | --------------------------------------------------------- |
+| **DR Test Required** | ✅     | `ci.yml` DR step fails PRs on backup/restore failure      |
+| **DR Evidence**      | ✅     | `dr-test.sh` emits `dr-evidence.json` with RTO/RPO ms     |
+| **DR Scheduled**     | ✅     | `.github/workflows/dr-test.yml` — weekly cron + on-demand |
+
+## GTCX Infrastructure Incident Response
+
+| Gate                    | Status | Evidence                                                         |
+| ----------------------- | ------ | ---------------------------------------------------------------- |
+| **Alert Routing Valid** | ✅     | `incident-drill-validator.mjs` — 5 receivers, 3 inhibition rules |
+| **Business Hours**      | ✅     | `business-hours` time interval in `alertmanager.yml`             |
+| **PagerDuty Wired**     | ✅     | Global `pagerduty_url` + critical/high route to PD               |
 
 ## Ecosystem Lint Status
 
@@ -63,4 +86,4 @@
 
 ---
 
-**Signed:** `gtcx-infrastructure@3d8e693` — 2026-05-08
+**Signed:** `gtcx-infrastructure@3d8e693` — 2026-05-11

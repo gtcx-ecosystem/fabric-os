@@ -1,0 +1,38 @@
+# =============================================================================
+# Staging Ingress — TLS-terminated, WAF-protected
+# =============================================================================
+# Staging environment ingress with:
+#   - AWS ALB (application load balancer)
+#   - HTTPS only (TLS 1.2+)
+#   - Health checks on /health
+#   - WAF association (managed rule group)
+# =============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gtcx-api
+  namespace: gtcx-staging
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:af-south-1:293488310036:certificate/gtcx-staging-wildcard
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/success-codes: '200'
+    alb.ingress.kubernetes.io/group.name: gtcx-staging-api
+    # WAF WebACL association
+    alb.ingress.kubernetes.io/wafv2-acl-arn: arn:aws:wafv2:af-south-1:293488310036:regional/webacl/gtcx-staging/...
+spec:
+  ingressClassName: alb
+  rules:
+    - host: api.staging.gtcx.trade
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gtcx-protocols-staging
+                port:
+                  number: 8300

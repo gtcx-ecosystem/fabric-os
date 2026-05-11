@@ -66,6 +66,18 @@ export default tseslint.config(
     },
   },
 
+  // Override for k6 load tests — allow k6 globals
+  {
+    files: ['tools/load-tests/**/*.js'],
+    languageOptions: {
+      globals: {
+        __ENV: 'readonly',
+        __VU: 'readonly',
+        __ITER: 'readonly',
+      },
+    },
+  },
+
   // Prettier must be last — disables conflicting rules
   prettier,
 );

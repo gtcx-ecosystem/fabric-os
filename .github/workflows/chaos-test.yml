@@ -4,6 +4,12 @@ on:
   schedule:
     # 1st of every month at 03:00 UTC
     - cron: '0 3 1 * *'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'infra/kubernetes/**'
+      - '.github/workflows/chaos-test.yml'
+      - 'tools/scripts/chaos-manifest-validator.mjs'
   workflow_dispatch:
     inputs:
       environment:
@@ -39,6 +45,19 @@ env:
   SLO_P99_LATENCY_THRESHOLD: '2000'
 
 jobs:
+  # ---------------------------------------------------------------------------
+  # PR validation — lightweight manifest check (no destructive experiments)
+  # ---------------------------------------------------------------------------
+  validate-manifests:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate chaos manifests
+        run: node tools/scripts/chaos-manifest-validator.mjs
+
   # ---------------------------------------------------------------------------
   # Production requires manual approval via GitHub environment protection
   # ---------------------------------------------------------------------------

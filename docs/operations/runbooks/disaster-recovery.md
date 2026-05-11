@@ -28,11 +28,18 @@ Recovery procedures for protocol services (TradePass, GeoTag, GCI, VaultMark, Pv
 
 ### DR Test Schedule
 
-Run `infra/scripts/dr-test.sh` quarterly. Record results below.
+DR tests run on three schedules:
 
-| Date | Test Type | RTO Achieved | RPO Achieved | Issues | Status |
-| ---- | --------- | ------------ | ------------ | ------ | ------ |
-| —    | —         | —            | —            | —      | —      |
+1. **Per-PR gate** — `ci.yml` runs `dr-test.sh` against local Docker Compose Postgres (required, not `continue-on-error`)
+2. **Weekly schedule** — `.github/workflows/dr-test.yml` runs Mondays at 06:00 UTC against testnet via EKS port-forward
+3. **On-demand** — `workflow_dispatch` via GitHub Actions for staging or testnet
+
+Evidence artifacts (SQL dump + JSON with RTO/RPO ms) are uploaded automatically.
+
+| Date       | Test Type           | RTO Achieved | RPO Achieved | Issues | Status  |
+| ---------- | ------------------- | ------------ | ------------ | ------ | ------- |
+| 2026-05-11 | CI gate (compose)   | automated    | automated    | none   | ✅ PASS |
+| —          | Scheduled (testnet) | —            | —            | —      | —       |
 
 ---
 

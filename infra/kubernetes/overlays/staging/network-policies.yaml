@@ -1,0 +1,79 @@
+# =============================================================================
+# Staging Network Policies
+# =============================================================================
+# Restricts pod-to-pod communication in staging to the minimum required:
+#   - replay-guard can reach Redis on port 6379
+#   - protocol pods can reach PostgreSQL on port 5432
+#   - ingress only allows 443 from ALB
+#   - deny all other egress/ingress by default
+# =============================================================================
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: gtcx-staging
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-from-alb
+  namespace: gtcx-staging
+spec:
+  podSelector:
+    matchLabels:
+      app: gtcx-protocols
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+      ports:
+        - protocol: TCP
+          port: 8300
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-replay-guard-to-redis
+  namespace: gtcx-staging
+spec:
+  podSelector:
+    matchLabels:
+      app: gtcx-replay-guard
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              app: gtcx-redis
+      ports:
+        - protocol: TCP
+          port: 6379
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-protocols-to-postgres
+  namespace: gtcx-staging
+spec:
+  podSelector:
+    matchLabels:
+      app: gtcx-protocols
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              app: gtcx-postgres
+      ports:
+        - protocol: TCP
+          port: 5432

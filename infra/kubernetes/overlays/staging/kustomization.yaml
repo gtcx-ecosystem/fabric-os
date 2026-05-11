@@ -1,6 +1,17 @@
 # =============================================================================
 # Staging Overlay
 # =============================================================================
+# Pre-production environment for:
+#   - Integration testing before production promotion
+#   - Pen-test target environment
+#   - Chaos engineering experiments
+#   - Load testing with realistic data volumes
+#
+# Principles:
+#   - TESTED (P29): Runs full integration suite before promotion
+#   - SECURE (P11): TLS-only ingress, NetworkPolicies, WAF
+#   - RESILIENT (P12): HPA, PDB, multi-AZ ready
+# =============================================================================
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
@@ -8,6 +19,8 @@ namespace: gtcx-staging
 
 resources:
   - ../../base
+  - ingress.yaml
+  - network-policies.yaml
 
 nameSuffix: -staging
 

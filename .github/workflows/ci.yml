@@ -67,7 +67,14 @@ jobs:
       - name: Replay protection tests
         run: |
           cd tools/replay-protection
-          node --test tests/**/*.test.mjs
+          node --test tests/verifier.test.mjs tests/integration.test.mjs
+
+      - name: Replay protection production policy tests
+        run: |
+          node --test \
+            tools/replay-protection/tests/failure-modes.test.mjs \
+            tools/replay-protection/tests/runtime-policy.test.mjs \
+            tools/replay-protection/tests/production-fail-closed.test.mjs
 
       - name: Audit immutability fixture
         run: bash infra/scripts/test-audit-immutability.sh
@@ -91,6 +98,41 @@ jobs:
 
       - name: Validate score-evidence ledger
         run: node tools/scripts/validate-score-ledger.mjs
+
+      - name: Security control boundaries
+        run: node tools/policy/check-security-control-boundaries.mjs
+
+      - name: Kyverno policy validation
+        run: node tools/scripts/kyverno-policy-validator.mjs
+
+      - name: Chaos manifest validation
+        run: node tools/scripts/chaos-manifest-validator.mjs
+
+      - name: PagerDuty incident drill simulation
+        run: node tools/scripts/incident-drill-pagerduty-simulation.mjs --dry-run
+
+      - name: Compliance gateway integration tests
+        run: node --test tools/compliance-gateway/tests/server.integration.test.mjs
+
+      - name: Incident-drill validation
+        run: node tools/scripts/incident-drill-validator.mjs
+
+      - name: Install k6
+        run: |
+          K6_VERSION="v0.52.0"
+          curl -fsSL "https://github.com/grafana/k6/releases/download/${K6_VERSION}/k6-${K6_VERSION}-linux-amd64.tar.gz" | tar -xz -C /tmp
+          sudo mv "/tmp/k6-${K6_VERSION}-linux-amd64/k6" /usr/local/bin/
+
+      - name: Load tests
+        run: |
+          bash tools/load-tests/run-load-tests.sh --output-dir=infra/security/reports/load-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
+
+      - name: Upload load-test evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: load-test-evidence-ci
+          path: infra/security/reports/load-evidence/ci/
+          retention-days: 90
 
   docs-standard:
     runs-on: ubuntu-latest
@@ -265,9 +307,16 @@ jobs:
           export AUDIT_DB=gtcx_audit
           export AUDIT_PASSWORD=gtcx_audit_dev_password
           export PROTOCOL_URL=http://localhost:8300
+          export OUTPUT_DIR=infra/security/reports/dr-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
           bash infra/scripts/dr-test.sh testnet
           docker compose -f infra/docker/docker-compose.dev.yml down
-        continue-on-error: true # Non-blocking: DR failures are visible in step status but don't block PRs
+
+      - name: Upload DR evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dr-evidence-ci
+          path: infra/security/reports/dr-evidence/ci/
+          retention-days: 90
 
   codeql:
     runs-on: ubuntu-latest

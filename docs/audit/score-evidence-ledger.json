@@ -11,7 +11,7 @@
     {
       "id": "core-weighted",
       "name": "Core Weighted Score",
-      "currentScore": 5.9,
+      "currentScore": 7.6,
       "maxScore": 10,
       "history": [
         {
@@ -21,6 +21,30 @@
           "ciRun": null,
           "artifact": "docs/audit/master-audit-2026-05-10.md",
           "reason": "Initial master audit baseline after Phase 3 docs-standard compliance pass"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 6.8,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Sprint 4 complete: DR required, load tests, incident-drill validation, auth gateway closed, replay fail-closed, audit immutability live-verified"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 7.2,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Phase 1 complete: compliance gateway HTTP integration tests, security boundary policy gate in CI, replay production-mode test, Kyverno policy validation, load-test timeout fix"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 7.6,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Phase 2 partial: staging Terraform+K8s configs, pen-test scope doc, chaos PR validation, quarterly DR workflow, PagerDuty simulation, staging ingress/TLS/NetworkPolicies"
         }
       ]
     },
@@ -75,7 +99,7 @@
     {
       "id": "code-quality",
       "name": "Code Quality",
-      "currentScore": 7.2,
+      "currentScore": 7.6,
       "maxScore": 10,
       "history": [
         {
@@ -85,6 +109,14 @@
           "ciRun": null,
           "artifact": "docs/audit/master-audit-2026-05-10.md",
           "reason": "Initial master audit baseline"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 7.4,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Phase 1: HTTP integration test coverage expanded for compliance gateway and replay protection"
         }
       ]
     },
@@ -107,7 +139,7 @@
     {
       "id": "security",
       "name": "Security",
-      "currentScore": 4.5,
+      "currentScore": 7.3,
       "maxScore": 10,
       "history": [
         {
@@ -117,6 +149,30 @@
           "ciRun": null,
           "artifact": "docs/audit/master-audit-2026-05-10.md",
           "reason": "Initial master audit baseline"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 6.2,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Sprint 4: auth gateway, replay fail-closed, audit immutability live-verified"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 6.8,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Phase 1: HTTP integration tests verify auth boundary; production-mode 503 test; security-control-boundaries in CI; Kyverno validation"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 7.3,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Phase 2 partial: pen-test scope doc, staging ingress/TLS/NetworkPolicies, chaos manifest validation in CI, PagerDuty drill simulation"
         }
       ]
     },
@@ -133,6 +189,14 @@
           "ciRun": null,
           "artifact": "docs/audit/master-audit-2026-05-10.md",
           "reason": "Initial master audit baseline"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 7.0,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Phase 1: Load test timeout fix improves CI reliability in low-connectivity simulation"
         }
       ]
     },
@@ -171,7 +235,7 @@
     {
       "id": "enterprise-readiness",
       "name": "Enterprise / Production Readiness",
-      "currentScore": 6.3,
+      "currentScore": 7.2,
       "maxScore": 10,
       "history": [
         {
@@ -181,6 +245,30 @@
           "ciRun": null,
           "artifact": "docs/audit/master-audit-2026-05-10.md",
           "reason": "Initial master audit baseline"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 6.8,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Sprint 4: DR required in CI, load tests with artifact upload, incident-drill validation"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 7.2,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Phase 1: Kyverno policy validation, load-test reliability, explicit security boundary CI gate"
+        },
+        {
+          "date": "2026-05-11",
+          "score": 7.6,
+          "commit": "705b03e",
+          "ciRun": null,
+          "artifact": "docs/audit/master-audit-2026-05-11.md",
+          "reason": "Phase 2 partial: quarterly DR workflow, chaos PR gate, staging smoke test harness, PagerDuty incident drill simulation"
         }
       ]
     },

@@ -37,8 +37,8 @@ Usage:
   validate.sh [quick|full]
 
 Modes:
-  quick  Run policy checks, shell syntax checks, shellcheck, and script smoke tests
-  full   Run quick plus terraform fmt/validate/test, kustomize builds, compose config validation, and deploy dry-run smoke
+  quick  Run policy checks, shell syntax checks, shellcheck, script smoke tests, docs/ledger gates, and incident-drill validation
+  full   Run quick plus terraform fmt/validate/test, kustomize builds, compose config, load tests, audit immutability fixture, and deploy dry-run smoke
 EOF
 }
 
@@ -79,7 +79,8 @@ run_replay_production_policy_tests() {
         cd "${PROJECT_ROOT}" && \
         node --test \
             tools/replay-protection/tests/failure-modes.test.mjs \
-            tools/replay-protection/tests/runtime-policy.test.mjs
+            tools/replay-protection/tests/runtime-policy.test.mjs \
+            tools/replay-protection/tests/production-fail-closed.test.mjs
     )
 }
 
@@ -224,6 +225,35 @@ run_audit_immutability_fixture() {
     (cd "${PROJECT_ROOT}" && bash infra/scripts/test-audit-immutability.sh)
 }
 
+run_incident_drill_validation() {
+    log_info "Running incident-drill validation..."
+    (cd "${PROJECT_ROOT}" && node tools/scripts/incident-drill-validator.mjs)
+}
+
+run_kyverno_policy_validation() {
+    log_info "Running Kyverno policy validation..."
+    (cd "${PROJECT_ROOT}" && node tools/scripts/kyverno-policy-validator.mjs)
+}
+
+run_chaos_manifest_validation() {
+    log_info "Running chaos manifest validation..."
+    (cd "${PROJECT_ROOT}" && node tools/scripts/chaos-manifest-validator.mjs)
+}
+
+run_pagerduty_drill_simulation() {
+    log_info "Running PagerDuty incident drill simulation..."
+    (cd "${PROJECT_ROOT}" && node tools/scripts/incident-drill-pagerduty-simulation.mjs --dry-run)
+}
+
+run_load_tests() {
+    if ! command -v k6 >/dev/null 2>&1; then
+        log_warning "k6 not installed — skipping load tests"
+        return 0
+    fi
+    log_info "Running load tests..."
+    (cd "${PROJECT_ROOT}" && bash tools/load-tests/run-load-tests.sh)
+}
+
 case "${MODE}" in
     quick)
         run_policy_checks
@@ -236,6 +266,10 @@ case "${MODE}" in
         run_score_ledger_validation
         run_build_evidence_generation
         run_script_smoke_tests
+        run_incident_drill_validation
+        run_kyverno_policy_validation
+        run_chaos_manifest_validation
+        run_pagerduty_drill_simulation
         ;;
     full)
         run_policy_checks
@@ -248,11 +282,16 @@ case "${MODE}" in
         run_score_ledger_validation
         run_build_evidence_generation
         run_script_smoke_tests
+        run_incident_drill_validation
+        run_kyverno_policy_validation
+        run_chaos_manifest_validation
+        run_pagerduty_drill_simulation
         run_audit_immutability_fixture
         run_terraform_validation
         run_terraform_tests
         run_kustomize_validation
         run_compose_validation
+        run_load_tests
         ;;
     --help|-h|help)
         usage

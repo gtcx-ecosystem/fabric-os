@@ -49,13 +49,15 @@ jobs:
 
       - name: Port-forward protocol server
         run: |
-          kubectl port-forward -n gtcx svc/gtcx-protocols 8300:8300 &
+          NAMESPACE="gtcx-${{ github.event.inputs.environment || 'testnet' }}"
+          kubectl port-forward -n "$NAMESPACE" svc/gtcx-protocols 8300:8300 &
           sleep 5
 
       - name: Port-forward PostgreSQL
         run: |
-          kubectl port-forward -n gtcx svc/gtcx-postgres 5432:5432 &
-          kubectl port-forward -n gtcx svc/gtcx-postgres-audit 5433:5432 &
+          NAMESPACE="gtcx-${{ github.event.inputs.environment || 'testnet' }}"
+          kubectl port-forward -n "$NAMESPACE" svc/gtcx-postgres 5432:5432 &
+          kubectl port-forward -n "$NAMESPACE" svc/gtcx-postgres-audit 5433:5432 &
           sleep 5
 
       - name: Run DR test
@@ -71,6 +73,7 @@ jobs:
           AUDIT_PASSWORD: ${{ secrets.AUDIT_PASSWORD }}
           AUDIT_DB: gtcx_audit
           PROTOCOL_URL: http://localhost:8300
+          OUTPUT_DIR: infra/security/reports/dr-evidence/${{ github.event.inputs.environment || 'testnet' }}/${{ github.run_id }}
         run: |
           bash ./infra/scripts/dr-test.sh ${{ github.event.inputs.environment || 'testnet' }}
 
@@ -79,7 +82,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dr-evidence-${{ github.run_id }}
-          path: /tmp/gtcx_dr_test_*.sql
+          path: |
+            /tmp/gtcx_dr_test_*.sql
+            infra/security/reports/dr-evidence/${{ github.event.inputs.environment || 'testnet' }}/${{ github.run_id }}/
           retention-days: 90
 
       - name: Notify on failure

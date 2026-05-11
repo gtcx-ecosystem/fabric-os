@@ -2,5 +2,7 @@ packages:
   # Infrastructure
   - 'infra/migrations'
   # Tools
+  - 'tools/compliance-data'
+  - 'tools/compliance-gateway'
   - 'tools/replay-protection'
   - 'tools/deployment-guard'

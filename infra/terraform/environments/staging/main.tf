@@ -51,9 +51,22 @@ terraform {
   }
 }
 
+provider "aws" {
+  region            = var.region
+  use_fips_endpoint = true
+
+  default_tags {
+    tags = merge(var.tags, {
+      Project     = "gtcx"
+      Environment = "staging"
+      ManagedBy   = "terraform"
+    })
+  }
+}
+
 # -----------------------------------------------------------------------------
 # Variables
-# -----------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 variable "environment" {
   description = "Environment name"
@@ -170,9 +183,9 @@ module "vpc" {
 module "database" {
   source = "../../modules/database"
 
-  environment         = var.environment
-  region              = var.region
-  vpc_id              = module.vpc.vpc_id
+  environment          = var.environment
+  region               = var.region
+  vpc_id               = module.vpc.vpc_id
   db_subnet_group_name = module.vpc.db_subnet_group_name
   db_instance_class    = var.db_instance_class
   db_allocated_storage = var.db_allocated_storage

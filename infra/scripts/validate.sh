@@ -110,6 +110,11 @@ run_docs_standard_validation() {
     (cd "${PROJECT_ROOT}" && node tools/scripts/docs-standard-validator.mjs --baseline=.docs-exceptions.json)
 }
 
+run_docs_link_check() {
+    log_info "Running docs link check..."
+    (cd "${PROJECT_ROOT}" && node tools/scripts/docs-link-checker.mjs)
+}
+
 run_score_ledger_validation() {
     log_info "Running score-evidence ledger validation..."
     (cd "${PROJECT_ROOT}" && node tools/scripts/validate-score-ledger.mjs)
@@ -273,6 +278,7 @@ case "${MODE}" in
         run_compliance_gateway_tests
         run_deployment_guard_tests
         run_docs_standard_validation
+        run_docs_link_check
         run_score_ledger_validation
         run_build_evidence_generation
         run_script_smoke_tests
@@ -299,6 +305,7 @@ case "${MODE}" in
         run_chaos_manifest_validation
         run_pagerduty_drill_simulation
         run_audit_immutability_fixture
+        run_docs_link_check
         run_terraform_validation
         run_terraform_tests
         run_kustomize_validation

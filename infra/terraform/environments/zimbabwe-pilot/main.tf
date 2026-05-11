@@ -137,7 +137,8 @@ variable "tags" {
 # -----------------------------------------------------------------------------
 
 provider "aws" {
-  region = var.region
+  region            = var.region
+  use_fips_endpoint = true
 
   default_tags {
     tags = merge(var.tags, {

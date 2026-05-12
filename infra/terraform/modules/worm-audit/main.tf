@@ -9,29 +9,6 @@
 #   aws s3api get-object-lock-configuration --bucket <bucket_name>
 # =============================================================================
 
-variable "name_prefix" {
-  description = "Prefix for all WORM resources"
-  type        = string
-  default     = "gtcx"
-}
-
-variable "environment" {
-  description = "Environment name (staging, production, testnet-pilot, zimbabwe-pilot)"
-  type        = string
-}
-
-variable "retention_days" {
-  description = "WORM retention period in days"
-  type        = number
-  default     = 2555 # 7 years
-}
-
-variable "aws_region" {
-  description = "AWS region for WORM bucket"
-  type        = string
-  default     = "af-south-1"
-}
-
 resource "aws_s3_bucket" "worm_audit" {
   bucket = "${var.name_prefix}-worm-audit-${var.environment}-${var.aws_region}"
 
@@ -139,17 +116,4 @@ resource "aws_s3_bucket_policy" "worm_audit" {
   })
 }
 
-output "bucket_arn" {
-  description = "ARN of the WORM audit S3 bucket"
-  value       = aws_s3_bucket.worm_audit.arn
-}
 
-output "bucket_name" {
-  description = "Name of the WORM audit S3 bucket"
-  value       = aws_s3_bucket.worm_audit.id
-}
-
-output "kms_key_arn" {
-  description = "ARN of the KMS key used for WORM audit encryption"
-  value       = aws_kms_key.worm_audit.arn
-}

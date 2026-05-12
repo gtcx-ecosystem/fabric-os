@@ -264,6 +264,21 @@ module "flow_logs" {
 }
 
 # -----------------------------------------------------------------------------
+# WORM Audit Storage Module
+# -----------------------------------------------------------------------------
+
+module "worm_audit" {
+  source = "../../modules/worm-audit"
+
+  environment    = var.environment
+  retention_days = 2557
+
+  tags = merge(var.tags, {
+    Environment = "staging"
+  })
+}
+
+# -----------------------------------------------------------------------------
 # Outputs
 # -----------------------------------------------------------------------------
 
@@ -322,4 +337,19 @@ output "flow_log_cloudwatch_log_group" {
 output "flow_log_id" {
   description = "VPC Flow Log ID"
   value       = module.flow_logs.flow_log_id
+}
+
+output "worm_audit_bucket_name" {
+  description = "WORM audit S3 bucket name"
+  value       = module.worm_audit.bucket_name
+}
+
+output "worm_audit_bucket_arn" {
+  description = "WORM audit S3 bucket ARN"
+  value       = module.worm_audit.bucket_arn
+}
+
+output "worm_audit_kms_key_arn" {
+  description = "WORM audit KMS key ARN"
+  value       = module.worm_audit.kms_key_arn
 }

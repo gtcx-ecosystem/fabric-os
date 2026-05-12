@@ -1,6 +1,18 @@
+variable "name_prefix" {
+  description = "Prefix for all WORM resources"
+  type        = string
+  default     = "gtcx"
+}
+
 variable "environment" {
   description = "Environment name (e.g., production, staging)"
   type        = string
+}
+
+variable "aws_region" {
+  description = "AWS region for WORM bucket"
+  type        = string
+  default     = "af-south-1"
 }
 
 variable "retention_days" {

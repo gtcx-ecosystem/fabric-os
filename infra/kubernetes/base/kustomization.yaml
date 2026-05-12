@@ -19,6 +19,7 @@ resources:
   - services/api.yaml
   - services/protocols.yaml
   - services/platform.yaml
+  - services/anomaly-detector.yaml
 
 configMapGenerator:
   - name: gtcx-env

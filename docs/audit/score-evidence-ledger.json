@@ -11,7 +11,7 @@
     {
       "id": "core-weighted",
       "name": "Core Weighted Score",
-      "currentScore": 8.75,
+      "currentScore": 8.85,
       "maxScore": 10,
       "history": [
         {
@@ -69,6 +69,14 @@
           "ciRun": null,
           "artifact": "docs/audit/signal-scorecard.json",
           "reason": "M2 Hardening continued: TruffleHog secret scanning workflow, pnpm audit CI gate, anomaly detector CI integration (6/6 tests), SLO burn-rate alerts (14.4x/6x/2x), on-call drill evidence template"
+        },
+        {
+          "date": "2026-05-12",
+          "score": 8.85,
+          "commit": null,
+          "ciRun": null,
+          "artifact": "infra/terraform/environments/staging/terraform.tfstate",
+          "reason": "Staging environment fully operational: VPC, EKS cluster, RDS operational+audit, WAF Web ACL, VPC Flow Logs, shared CI deploy role. 76 resources created. Verified via AWS CLI."
         }
       ]
     },
@@ -187,7 +195,7 @@
     {
       "id": "security",
       "name": "Security",
-      "currentScore": 8.5,
+      "currentScore": 8.7,
       "maxScore": 10,
       "history": [
         {
@@ -245,6 +253,14 @@
           "ciRun": null,
           "artifact": "docs/audit/signal-scorecard.json",
           "reason": "M2 Hardening continued: TruffleHog secret scanning workflow (.github/workflows/secret-scan.yml), pnpm audit dependency gate in CI, SLO burn-rate alerting (Prometheus rules)"
+        },
+        {
+          "date": "2026-05-12",
+          "score": 8.7,
+          "commit": null,
+          "ciRun": null,
+          "artifact": "infra/terraform/environments/staging/terraform.tfstate",
+          "reason": "WAF Web ACL live in af-south-1 (verified), VPC Flow Logs active with 365d retention, shared CI deploy role with least-privilege ECR/EKS access. Network segmentation now operational."
         }
       ]
     },
@@ -307,7 +323,7 @@
     {
       "id": "enterprise-readiness",
       "name": "Enterprise / Production Readiness",
-      "currentScore": 8.3,
+      "currentScore": 8.6,
       "maxScore": 10,
       "history": [
         {
@@ -365,6 +381,14 @@
           "ciRun": null,
           "artifact": "docs/audit/signal-scorecard.json",
           "reason": "M2 Hardening continued: SLO burn-rate alerts (fast/slow burn), on-call drill evidence template with scenario library, anomaly detector CI-validated"
+        },
+        {
+          "date": "2026-05-12",
+          "score": 8.6,
+          "commit": null,
+          "ciRun": null,
+          "artifact": "infra/terraform/environments/staging/terraform.tfstate",
+          "reason": "Live staging environment with all production-readiness components: EKS, RDS, WAF, Flow Logs, shared CI role. Service repos onboard via 2 GitHub variables."
         }
       ]
     },

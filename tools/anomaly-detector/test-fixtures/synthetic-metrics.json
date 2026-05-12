@@ -1,0 +1,43 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "service": "gtcx-agx",
+          "mutating": "true",
+          "approved": "false"
+        },
+        "value": [1715520000, "1"]
+      },
+      {
+        "metric": {
+          "service": "gtcx-protocols",
+          "code": "REPLAY_NONCE"
+        },
+        "value": [1715520000, "0.08"]
+      },
+      {
+        "metric": {
+          "service": "gtcx-agx",
+          "did": "did:gtcx:unknown:attacker"
+        },
+        "value": [1715520000, "5"]
+      },
+      {
+        "metric": {
+          "service": "gtcx-agx",
+          "role": "admin"
+        },
+        "value": [1715520000, "1"]
+      },
+      {
+        "metric": {
+          "service": "gtcx-agx"
+        },
+        "value": [1715520000, "15"]
+      }
+    ]
+  }
+}

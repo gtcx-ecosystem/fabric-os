@@ -61,6 +61,15 @@ groups:
             sum(rate(http_requests_total{service="gtcx-agx"}[6h]))
           ) / 0.005
 
+      # AGX error budget — 5m burn rate (for fast-burn alerting)
+      - record: slo:agx:error_budget:burn_rate_5m
+        expr: >
+          1 - (
+            sum(rate(http_requests_total{service="gtcx-agx", code!~"5.."}[5m]))
+            /
+            sum(rate(http_requests_total{service="gtcx-agx"}[5m]))
+          ) / 0.005
+
       # Protocols error budget — 1h burn rate (target 99.5%)
       - record: slo:protocols:error_budget:burn_rate_1h
         expr: >
@@ -70,6 +79,15 @@ groups:
             sum(rate(http_requests_total{service="gtcx-protocols"}[1h]))
           ) / 0.005
 
+      # Protocols error budget — 5m burn rate (for fast-burn alerting)
+      - record: slo:protocols:error_budget:burn_rate_5m
+        expr: >
+          1 - (
+            sum(rate(http_requests_total{service="gtcx-protocols", code!~"5.."}[5m]))
+            /
+            sum(rate(http_requests_total{service="gtcx-protocols"}[5m]))
+          ) / 0.005
+
       # ANISA error budget — 1h burn rate (target 99.0% = 0.01 error budget)
       - record: slo:anisa:error_budget:burn_rate_1h
         expr: >
@@ -77,6 +95,15 @@ groups:
             sum(rate(http_requests_total{service="anisa", code!~"5.."}[1h]))
             /
             sum(rate(http_requests_total{service="anisa"}[1h]))
+          ) / 0.01
+
+      # ANISA error budget — 5m burn rate (for fast-burn alerting)
+      - record: slo:anisa:error_budget:burn_rate_5m
+        expr: >
+          1 - (
+            sum(rate(http_requests_total{service="anisa", code!~"5.."}[5m]))
+            /
+            sum(rate(http_requests_total{service="anisa"}[5m]))
           ) / 0.01
 
   # ---------------------------------------------------------------------------

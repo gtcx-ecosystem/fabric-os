@@ -11,7 +11,7 @@
     {
       "id": "core-weighted",
       "name": "Core Weighted Score",
-      "currentScore": 8.5,
+      "currentScore": 8.75,
       "maxScore": 10,
       "history": [
         {
@@ -61,6 +61,14 @@
           "ciRun": null,
           "artifact": "docs/audit/signal-scorecard.json",
           "reason": "M2 Hardening partial: WORM audit storage Terraform module (S3 Object Lock COMPLIANCE), real-time anomaly detector PoC (5 rules + architecture doc), chaos network partition resilience (4/4 tests pass), FIPS endpoints on all providers"
+        },
+        {
+          "date": "2026-05-12",
+          "score": 8.75,
+          "commit": null,
+          "ciRun": null,
+          "artifact": "docs/audit/signal-scorecard.json",
+          "reason": "M2 Hardening continued: TruffleHog secret scanning workflow, pnpm audit CI gate, anomaly detector CI integration (6/6 tests), SLO burn-rate alerts (14.4x/6x/2x), on-call drill evidence template"
         }
       ]
     },
@@ -179,7 +187,7 @@
     {
       "id": "security",
       "name": "Security",
-      "currentScore": 8.2,
+      "currentScore": 8.5,
       "maxScore": 10,
       "history": [
         {
@@ -229,6 +237,14 @@
           "ciRun": null,
           "artifact": "docs/audit/signal-scorecard.json",
           "reason": "M2 Hardening partial: WORM audit storage module (S3 Object Lock + KMS), anomaly detector PoC (rule-based detection + metrics), chaos network partition resilience validated, FIPS endpoints all environments"
+        },
+        {
+          "date": "2026-05-12",
+          "score": 8.5,
+          "commit": null,
+          "ciRun": null,
+          "artifact": "docs/audit/signal-scorecard.json",
+          "reason": "M2 Hardening continued: TruffleHog secret scanning workflow (.github/workflows/secret-scan.yml), pnpm audit dependency gate in CI, SLO burn-rate alerting (Prometheus rules)"
         }
       ]
     },
@@ -291,7 +307,7 @@
     {
       "id": "enterprise-readiness",
       "name": "Enterprise / Production Readiness",
-      "currentScore": 8.0,
+      "currentScore": 8.3,
       "maxScore": 10,
       "history": [
         {
@@ -341,13 +357,21 @@
           "ciRun": null,
           "artifact": "docs/audit/signal-scorecard.json",
           "reason": "M2 Hardening partial: WORM audit storage (enterprise immutability), anomaly detection (enterprise observability), chaos resilience (enterprise reliability)"
+        },
+        {
+          "date": "2026-05-12",
+          "score": 8.3,
+          "commit": null,
+          "ciRun": null,
+          "artifact": "docs/audit/signal-scorecard.json",
+          "reason": "M2 Hardening continued: SLO burn-rate alerts (fast/slow burn), on-call drill evidence template with scenario library, anomaly detector CI-validated"
         }
       ]
     },
     {
       "id": "signal",
       "name": "SIGNAL Framework",
-      "currentScore": 8.81,
+      "currentScore": 8.89,
       "maxScore": 10,
       "history": [
         {
@@ -365,6 +389,14 @@
           "ciRun": null,
           "artifact": "docs/audit/signal-scorecard.json",
           "reason": "M2 Hardening partial: I4 WORM audit storage (4→6), S3 real-time anomaly detection (5→6), chaos network partition resilience (4/4 pass), FIPS endpoints all environments"
+        },
+        {
+          "date": "2026-05-12",
+          "score": 8.89,
+          "commit": null,
+          "ciRun": null,
+          "artifact": "docs/audit/signal-scorecard.json",
+          "reason": "M2 Hardening continued: S3 anomaly detection (6→7, CI-validated), secret scanning (TruffleHog), dependency audit gate, SLO burn-rate alerts, on-call drill template"
         }
       ]
     },

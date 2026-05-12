@@ -18,16 +18,16 @@
 
 ### By File
 
-| File                              | Branch | Blockers to 90%                                     |
-| --------------------------------- | ------ | --------------------------------------------------- |
-| `src/verifier.mjs`                | 94.59% | Edge case: invalid envelope structure (lines 57–58) |
-| `src/runtime-policy.mjs`          | 87.50% | Missing `isProductionMode=false` path               |
-| `src/server.mjs`                  | 58.06% | Error handlers, graceful shutdown, DB failure paths |
-| `src/crypto/did-verify.mjs`       | 35.71% | DID resolution failure, cache miss, format errors   |
-| `src/crypto/jwt-verify.mjs`       | 40.00% | Token format edge cases, key fetch failure          |
-| `src/store/redis-nonce-store.mjs` | 100%   | Only 21.91% line coverage — requires Redis          |
-| `src/audit/audit-capture.mjs`     | 71.42% | Audit DB write failure paths                        |
-| `src/metrics/replay-metrics.mjs`  | 58.33% | Prometheus push failure paths                       |
+| File                                  | Branch | Blockers to 90%                                     |
+| ------------------------------------- | ------ | --------------------------------------------------- |
+| `src/verifier.mjs`                    | 94.59% | Edge case: invalid envelope structure (lines 57–58) |
+| `src/runtime-policy.mjs`              | 87.50% | Missing `isProductionMode=false` path               |
+| `src/server.mjs`                      | 58.06% | Error handlers, graceful shutdown, DB failure paths |
+| `src/protocols-crypto/did-verify.mjs` | 35.71% | DID resolution failure, cache miss, format errors   |
+| `src/protocols-crypto/jwt-verify.mjs` | 40.00% | Token format edge cases, key fetch failure          |
+| `src/store/redis-nonce-store.mjs`     | 100%   | Only 21.91% line coverage — requires Redis          |
+| `src/audit/audit-capture.mjs`         | 71.42% | Audit DB write failure paths                        |
+| `src/metrics/replay-metrics.mjs`      | 58.33% | Prometheus push failure paths                       |
 
 ### Coverage Gaps by Risk
 

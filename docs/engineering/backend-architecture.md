@@ -48,7 +48,7 @@ Services:
     Purpose: Primary API gateway
 
   crypto:
-    Image: gtcx/crypto
+    Image: gtcx/protocols-crypto
     Source: Dockerfile.base (rust-production target)
     Purpose: Cryptographic operations (Ed25519, HSM interface)
 
@@ -109,7 +109,7 @@ The audit instance has `deletion_protection = true` in Terraform for all environ
 
 - `namespace.yaml` — namespace definition
 - `configmaps/base-config.yaml` — shared config (`GTCX_VERSION`, `GTCX_LOG_LEVEL=info`, `GTCX_LOG_FORMAT=json`)
-- `services/api.yaml`, `services/crypto.yaml`, `services/tradepass.yaml`, `services/geotag.yaml`, `services/gci.yaml`
+- `services/api.yaml`, `services/protocols-crypto.yaml`, `services/tradepass.yaml`, `services/geotag.yaml`, `services/gci.yaml`
 
 ### Environment Overlays
 
@@ -145,11 +145,11 @@ Each environment is a directory copy of `template/`. Engineers fill in environme
 
 ## Container Images
 
-| Image         | Dockerfile        | Build Target      | Used By                    |
-| ------------- | ----------------- | ----------------- | -------------------------- |
-| `gtcx/api`    | `Dockerfile.base` | `ruby-production` | `api` K8s service          |
-| `gtcx/crypto` | `Dockerfile.base` | `rust-production` | `crypto` K8s service       |
-| Node services | `Dockerfile.node` | (single target)   | Node.js application images |
+| Image                   | Dockerfile        | Build Target      | Used By                    |
+| ----------------------- | ----------------- | ----------------- | -------------------------- |
+| `gtcx/api`              | `Dockerfile.base` | `ruby-production` | `api` K8s service          |
+| `gtcx/protocols-crypto` | `Dockerfile.base` | `rust-production` | `crypto` K8s service       |
+| Node services           | `Dockerfile.node` | (single target)   | Node.js application images |
 
 Image tags are managed per K8s overlay via `kustomize edit set image`.
 

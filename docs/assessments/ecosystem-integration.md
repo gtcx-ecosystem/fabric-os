@@ -35,7 +35,7 @@ The K8s ingress assumes an NGINX ingress controller behind an ALB, and cert-mana
 
 ### Container Registry
 
-Images are tagged `gtcx/api` and `gtcx/crypto` but no ECR repository is defined. No cross-account pull permissions, no image lifecycle policies. The deploy script builds and references images but has no place to push them.
+Images are tagged `gtcx/api` and `gtcx/protocols-crypto` but no ECR repository is defined. No cross-account pull permissions, no image lifecycle policies. The deploy script builds and references images but has no place to push them.
 
 ### Intelligence Service Infrastructure
 

@@ -53,7 +53,7 @@ tools/             — Scripts and templates subdirectories
 - `namespace.yaml`: declares the `gtcx` namespace
 - `kustomization.yaml`: base kustomization wiring 5 service manifests — api, crypto, tradepass, geotag, gci
 - `services/api.yaml`: complete manifest — Deployment (2 replicas, non-root, read-only root filesystem, all capabilities dropped) + ClusterIP Service + ServiceAccount + HPA (2–10 replicas, CPU 70% / memory 80%) + PodDisruptionBudget (minAvailable: 1) + Prometheus scrape annotations
-- `services/crypto.yaml`, `tradepass.yaml`, `geotag.yaml`, `gci.yaml`: same pattern
+- `services/protocols-crypto.yaml`, `tradepass.yaml`, `geotag.yaml`, `gci.yaml`: same pattern
 
 ### Overlays (Confirmed)
 
@@ -68,7 +68,7 @@ tools/             — Scripts and templates subdirectories
 
 The production K8s manifests are correct and well-structured. They will deploy successfully given:
 
-1. Container images (`gtcx/api`, `gtcx/crypto`) exist in a registry accessible to the cluster
+1. Container images (`gtcx/api`, `gtcx/protocols-crypto`) exist in a registry accessible to the cluster
 2. Secret `gtcx-secrets` pre-created in namespace with `DATABASE_URL` and `SECRET_KEY_BASE`
 3. cert-manager installed in the cluster for TLS
 4. NGINX ingress controller running

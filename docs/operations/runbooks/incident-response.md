@@ -149,4 +149,4 @@ Conduct a post-mortem within 48 hours (P1) or 72 hours (P2):
 - [disaster-recovery.md](disaster-recovery.md)
 - [monitoring.md](monitoring.md)
 - [compliance/controls-matrix.md](../../compliance/controls-matrix.md)
-- [\docs/engineering/security/cryptographic-inventory.md](../../security/security-architecture.md)
+- [\docs/engineering/security/protocols-cryptographic-inventory.md](../../security/security-architecture.md)

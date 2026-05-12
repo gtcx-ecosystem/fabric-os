@@ -80,7 +80,7 @@ import {
   adaptNodeRedisForRateLimit,
   createPluggableRateLimiter,
   createRedisRateLimitStore,
-} from '@gtcx/domain';
+} from '@gtcx/protocols-domain';
 
 const redis = createClient({ url: process.env.REDIS_URL });
 await redis.connect();
@@ -105,7 +105,7 @@ import {
   adaptIoRedisForRateLimit,
   createPluggableRateLimiter,
   createRedisRateLimitStore,
-} from '@gtcx/domain';
+} from '@gtcx/protocols-domain';
 
 const redis = new Redis(process.env.REDIS_URL!);
 
@@ -129,7 +129,7 @@ Used by PANX, PvP, and VaultMark to prevent message replay within a time window.
 
 ```typescript
 import { createClient } from 'redis';
-import { adaptNodeRedisForReplay, createRedisReplayCache } from '@gtcx/domain';
+import { adaptNodeRedisForReplay, createRedisReplayCache } from '@gtcx/protocols-domain';
 
 const redis = createClient({ url: process.env.REDIS_URL });
 await redis.connect();

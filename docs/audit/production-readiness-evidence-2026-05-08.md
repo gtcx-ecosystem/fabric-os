@@ -76,7 +76,7 @@
    - _Action:_ Create `gtcx-ecosystem/gtcx-markets` repo via GitHub UI or API
 
 3. **Real DID signature verification** — Stub validates structure only
-   - _Action:_ Wire `@gtcx/crypto` DID resolver when available
+   - _Action:_ Wire `@gtcx/protocols-crypto` DID resolver when available
 
 4. **6-platforms ESLint** — ESLint 9 + eslint-config-next incompatibility
    - _Action:_ Downgrade to ESLint 8 or migrate to flat config

@@ -127,7 +127,7 @@ All key management operations pass through AWS KMS, which uses HSMs validated to
 
 ### What This Repo Does NOT Own
 
-Application-level cryptographic operations (signing, ZKP, DID key generation) are handled by `@gtcx/crypto` and `@gtcx/crypto-native` in the `2-core` repo. Those are assessed separately. This repo provides the infrastructure encryption layer beneath application crypto.
+Application-level cryptographic operations (signing, ZKP, DID key generation) are handled by `@gtcx/protocols-crypto` and `@gtcx/crypto-native` in the `2-core` repo. Those are assessed separately. This repo provides the infrastructure encryption layer beneath application crypto.
 
 ---
 
@@ -159,6 +159,6 @@ Application-level cryptographic operations (signing, ZKP, DID key generation) ar
 ## References
 
 - AWS FIPS 140-2 compliance: https://aws.amazon.com/compliance/fips/
-- AWS KMS cryptographic details: https://docs.aws.amazon.com/kms/latest/cryptographic-details/
+- AWS KMS cryptographic details: https://docs.aws.amazon.com/kms/latest/protocols-cryptographic-details/
 - NIST SP 800-52 Rev 2 (TLS guidelines): https://csrc.nist.gov/publications/detail/sp/800-52/rev-2/final
 - NIST SP 800-38D (AES-GCM): https://csrc.nist.gov/publications/detail/sp/800-38d/final

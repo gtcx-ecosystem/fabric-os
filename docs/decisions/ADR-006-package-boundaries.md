@@ -50,12 +50,12 @@ platforms/
 
 Cross-cutting concerns live in designated locations:
 
-| Resource            | Location                |
-| ------------------- | ----------------------- |
-| Type definitions    | `technology/schemas/`   |
-| Editorial standards | `publishing/editorial/` |
-| Agent configs       | `publishing/agentic/`   |
-| Index methodologies | `intelligence/indices/` |
+| Resource            | Location                        |
+| ------------------- | ------------------------------- |
+| Type definitions    | `technology/protocols-schemas/` |
+| Editorial standards | `publishing/editorial/`         |
+| Agent configs       | `publishing/agentic/`           |
+| Index methodologies | `intelligence/indices/`         |
 
 ### 4. No Deep Imports
 

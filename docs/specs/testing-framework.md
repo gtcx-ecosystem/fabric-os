@@ -43,7 +43,7 @@
 
 | Repository / Package           | Minimum Coverage | Rationale                                                                                              |
 | ------------------------------ | ---------------- | ------------------------------------------------------------------------------------------------------ |
-| gtcx-core/crypto               | 95%              | Cryptographic correctness is existential; a single untested path can compromise the entire trust model |
+| gtcx-core/protocols-crypto     | 95%              | Cryptographic correctness is existential; a single untested path can compromise the entire trust model |
 | gtcx-core/security             | 90%              | Authentication and authorization boundaries protect every service in the ecosystem                     |
 | gtcx-protocols/sdk-ts          | 90%              | Protocol SDK is the integration surface for all platforms and third-party consumers                    |
 | gtcx-protocols/sdk-python      | 90%              | Python SDK parity with TypeScript SDK; same integration surface                                        |
@@ -61,7 +61,7 @@
 
 ## Property-Based Testing Requirements
 
-Property-based testing is mandatory for ALL cryptographic operations in `gtcx-core/crypto`. The following invariants must be tested with a minimum of 1,000 random inputs per property:
+Property-based testing is mandatory for ALL cryptographic operations in `gtcx-core/protocols-crypto`. The following invariants must be tested with a minimum of 1,000 random inputs per property:
 
 | Operation                    | Invariant                                                             | fast-check Arbitrary                                            | Min Runs |
 | ---------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------- | -------- |
@@ -201,14 +201,14 @@ Offline tests use a custom `NetworkSimulator` helper that controls `navigator.on
 
 The ecosystem currently has approximately 60 real assertions across 4 test files. This specification defines the target state. The migration path:
 
-| Phase   | Scope                                | Target                               | Timeline         |
-| ------- | ------------------------------------ | ------------------------------------ | ---------------- |
-| Phase 1 | gtcx-core/crypto property tests      | All 9 cryptographic invariants above | Immediate        |
-| Phase 2 | gtcx-core/security unit tests        | 90% coverage on auth/authz           | Following sprint |
-| Phase 3 | gtcx-protocols/sdk-ts unit tests     | 90% coverage on protocol SDK         | Following sprint |
-| Phase 4 | gtcx-platforms API integration tests | 80% coverage on NestJS services      | 2 sprints        |
-| Phase 5 | gtcx-app offline scenario tests      | All 7 scenarios above                | 2 sprints        |
-| Phase 6 | gtcx-design accessibility tests      | WCAG 2.1 AA compliance               | Ongoing          |
+| Phase   | Scope                                     | Target                               | Timeline         |
+| ------- | ----------------------------------------- | ------------------------------------ | ---------------- |
+| Phase 1 | gtcx-core/protocols-crypto property tests | All 9 cryptographic invariants above | Immediate        |
+| Phase 2 | gtcx-core/security unit tests             | 90% coverage on auth/authz           | Following sprint |
+| Phase 3 | gtcx-protocols/sdk-ts unit tests          | 90% coverage on protocol SDK         | Following sprint |
+| Phase 4 | gtcx-platforms API integration tests      | 80% coverage on NestJS services      | 2 sprints        |
+| Phase 5 | gtcx-app offline scenario tests           | All 7 scenarios above                | 2 sprints        |
+| Phase 6 | gtcx-design accessibility tests           | WCAG 2.1 AA compliance               | Ongoing          |
 
 ## Deep Dives
 

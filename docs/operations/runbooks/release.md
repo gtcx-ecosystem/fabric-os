@@ -127,7 +127,7 @@ git tag -d vX.Y.Z
 
 If the release contains schema breaking changes (MAJOR version bump):
 
-1. Confirm migration functions are present in `@gtcx/schemas/migrations/` before tagging.
+1. Confirm migration functions are present in `@gtcx/protocols-schemas/migrations/` before tagging.
 2. Verify the `MigrationExecutor` applies migrations in the correct order.
 3. Announce the breaking change in release notes with migration instructions.
 4. Do not deprecate the previous MAJOR version until consumers have confirmed migration.

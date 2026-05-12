@@ -24,7 +24,7 @@
 
 1. **Infrastructure sprawl**: 6 repos maintain independent Terraform + K8s (94+ `.tf` files, 312+ K8s manifests). This duplicates `gtcx-infrastructure`, creates drift, and multiplies blast radius.
 2. **Shared platform adoption is 4%**: Only `gtcx-intelligence` uses the shared CI role and ECR registry. Every other repo has its own deployment pipeline.
-3. **Package sharing is nearly zero**: Only `gtcx-protocols` consumes `@gtcx/*` packages. `gtcx-core` (shared crypto/types/schemas) is not being used by sibling repos.
+3. **Package sharing is nearly zero**: Only `gtcx-protocols` consumes `@gtcx/*` packages. `gtcx-core` (shared crypto/types/protocols-schemas) is not being used by sibling repos.
 
 ---
 
@@ -145,7 +145,7 @@ Only `gtcx-protocols` consumes `@gtcx/*` shared packages. `gtcx-core` (crypto, t
 
 1. Publish `gtcx-core` packages to the internal registry (GitHub Packages or ECR npm proxy)
 2. Add `gtcx-core` as a dependency to all TypeScript service repos
-3. Enforce via CI: PRs that re-implement crypto/types/schemas should fail with "use `@gtcx/core`"
+3. Enforce via CI: PRs that re-implement crypto/types/protocols-schemas should fail with "use `@gtcx/core`"
 
 ---
 

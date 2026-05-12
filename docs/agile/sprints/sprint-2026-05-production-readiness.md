@@ -37,6 +37,6 @@
 
 ## Risks
 
-- **DID resolver dependency:** `@gtcx/crypto` does not exist in this repo. Mitigation: fail-closed stub with explicit bypass.
+- **DID resolver dependency:** `@gtcx/protocols-crypto` does not exist in this repo. Mitigation: fail-closed stub with explicit bypass.
 - **Terraform history purge:** Requires `git-filter-repo` which rewrites history. Mitigation: document runbook; do not execute automatically in CI.
 - **postgres-audit networking:** StatefulSet uses `ClusterIP`; services in `gtcx` namespace can reach it via `gtcx-postgres-audit.gtcx.svc.cluster.local:5432`.

@@ -71,7 +71,7 @@ The GTCX Protocol follows semantic versioning:
 **Breaking changes:**
 
 - Announced via GitHub Releases with minimum 30-day notice for MAJOR bumps
-- Migration functions shipped in `@gtcx/schemas/migrations/` before the breaking version is tagged
+- Migration functions shipped in `@gtcx/protocols-schemas/migrations/` before the breaking version is tagged
 - Old schema versions remain valid for a deprecation period defined in the release notes
 
 ---

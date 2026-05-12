@@ -17,7 +17,7 @@ The codebase needed a consistent error handling strategy across all packages and
 
 ## Decision
 
-We adopted a structured error taxonomy with `GtcxError` as the base class in `@gtcx/domain`, and domain-specific subclasses:
+We adopted a structured error taxonomy with `GtcxError` as the base class in `@gtcx/protocols-domain`, and domain-specific subclasses:
 
 **`GtcxError`** — Base error with `code: string` and `context?: Record<string, unknown>`
 

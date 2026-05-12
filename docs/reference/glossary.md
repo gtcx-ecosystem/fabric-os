@@ -20,7 +20,7 @@ A system property that allows correct operation even when up to 1/3 of participa
 The model by which GTCX Protocol services are delivered to operators. RCOs are the primary field operators of CaaS services.
 
 **Commodity-agnostic**
-The design principle that no commodity type (gold, coffee, cobalt, timber) is hardcoded into protocol logic. All commodity-specific configuration lives in `@gtcx/schemas/config/commodities/`.
+The design principle that no commodity type (gold, coffee, cobalt, timber) is hardcoded into protocol logic. All commodity-specific configuration lives in `@gtcx/protocols-schemas/config/commodities/`.
 
 **CRDT (Conflict-free Replicated Data Type)**
 The data structure approach used for offline conflict resolution. CRDT merges are deterministic and commutative — independent device operations converge to the same canonical state on sync.
@@ -51,7 +51,7 @@ See _stub guard_.
 See _audit chain_.
 
 **Jurisdiction**
-A geographic and regulatory boundary within which specific compliance rules and government validators apply. Jurisdictions are configured per-commodity in `@gtcx/schemas/config/jurisdictions/`.
+A geographic and regulatory boundary within which specific compliance rules and government validators apply. Jurisdictions are configured per-commodity in `@gtcx/protocols-schemas/config/jurisdictions/`.
 
 **Offline-first**
 Design principle requiring that all core operations function without network connectivity. The system syncs and resolves conflicts when connectivity returns.
@@ -230,13 +230,13 @@ An attack where a valid signed message is captured and re-submitted to cause uni
 
 ## Packages
 
-**`@gtcx/crypto`**
+**`@gtcx/protocols-crypto`**
 Shared cryptographic primitives: Ed25519 sign/verify, AES-256-GCM encrypt/decrypt, SHA-256 hash. All operations go through the `CryptoProvider` interface.
 
-**`@gtcx/domain`**
+**`@gtcx/protocols-domain`**
 Shared domain logic: rate limiting, replay cache, stub guard, metrics interface.
 
-**`@gtcx/schemas`**
+**`@gtcx/protocols-schemas`**
 Zod schemas for all protocol types. All external input is validated here at protocol boundaries.
 
 **`@gtcx/sdk`**

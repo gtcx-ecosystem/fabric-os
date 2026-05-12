@@ -79,7 +79,7 @@ Listed in execution sequence — each unblocks the next:
 3. Write ECR Terraform module — repositories for api, crypto, intelligence services
 4. Instantiate `environments/ghana-pilot/` with af-south-1 region
 
-**Week 2: Make the deployment complete** 5. Write DB init scripts — schema for audit events, compliance records, trade data 6. Add VaultMark and PvP K8s manifests (copy tradepass.yaml pattern) 7. Add network policy rules for any new services 8. Build and push api/crypto images to ECR as proof of pipeline
+**Week 2: Make the deployment complete** 5. Write DB init scripts — schema for audit events, compliance records, trade data 6. Add VaultMark and PvP K8s manifests (copy tradepass.yaml pattern) 7. Add network policy rules for any new services 8. Build and push api/protocols-crypto images to ECR as proof of pipeline
 
 **Week 3: Make the deployment observable and resilient** 9. Add Grafana dashboard — pod health, transaction throughput, error rates 10. Add Prometheus alert rules — pod restarts, DB connections, latency 11. Fix canary error detection in deploy.sh (Prometheus query, not grep) 12. First full deploy to ghana-pilot environment with approval ticket
 

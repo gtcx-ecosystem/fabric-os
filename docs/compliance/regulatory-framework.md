@@ -81,7 +81,7 @@ The OECD Due Diligence Guidance five-step framework is the primary international
 
 ## 4. Per-Commodity Configuration
 
-Commodity configurations are defined in `@gtcx/schemas/config/commodities/`. Each defines:
+Commodity configurations are defined in `@gtcx/protocols-schemas/config/commodities/`. Each defines:
 
 - Required verification types
 - GCI factor weights (specific to the commodity's regulatory profile)
@@ -101,7 +101,7 @@ Adding a new commodity requires only a new configuration file in `commodities/` 
 
 ## 5. Jurisdiction Configuration
 
-Compliance requirements are configured per jurisdiction in `@gtcx/schemas/config/jurisdictions/`. This covers:
+Compliance requirements are configured per jurisdiction in `@gtcx/protocols-schemas/config/jurisdictions/`. This covers:
 
 - Active regulatory frameworks for the jurisdiction
 - Government PANX validator assignments

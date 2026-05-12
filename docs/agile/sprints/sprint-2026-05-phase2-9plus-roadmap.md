@@ -23,16 +23,16 @@
 
 **Target state:** Production can verify ES256 JWT signatures over the canonical envelope hash using a resolved DID document.
 
-#### Approach A1 (Preferred): Integrate `@gtcx/crypto` when available
+#### Approach A1 (Preferred): Integrate `@gtcx/protocols-crypto` when available
 
-- Wait for `@gtcx/crypto` package to publish DID resolver + JWT verifier
+- Wait for `@gtcx/protocols-crypto` package to publish DID resolver + JWT verifier
 - Replace `verifyDidSignature` body with:
   1. `resolveDid(integrity.did)` → DID document
   2. `extractPublicKey(didDoc, integrity.keyId)` → JWK
   3. `verifyJwt(integrity.signature, jwk, { audience: integrity.audience })`
   4. Validate `jwt.payload.envelopeHash === integrity.envelopeHash`
 
-#### Approach A2 (Interim — if `@gtcx/crypto` is >4 weeks out)
+#### Approach A2 (Interim — if `@gtcx/protocols-crypto` is >4 weeks out)
 
 Use `jose` (npm: `jose`) — a production-grade, zero-dependency JWS/JWT library (Mozilla, widely audited).
 
@@ -65,7 +65,7 @@ export async function verifyDidSignature(integrity) {
 
 **Dependencies:**
 
-- `@gtcx/crypto` package OR `jose` npm package
+- `@gtcx/protocols-crypto` package OR `jose` npm package
 - DID resolver endpoint (e.g., `https://did.gtcxprotocol.org/1.0/identifiers/{did}`)
 - Test DID + private key for CI fixtures
 
@@ -345,7 +345,7 @@ canary-rollback:
 
 ```
 Week 1:
-  [A1] DID interim with jose (or wait for @gtcx/crypto)
+  [A1] DID interim with jose (or wait for @gtcx/protocols-crypto)
   [B1] Linkerd staging install + validation
   [C1] Build broken image + canary-rollback CI job scaffolding
 

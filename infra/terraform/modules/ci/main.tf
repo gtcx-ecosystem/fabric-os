@@ -178,6 +178,7 @@ resource "aws_iam_role_policy" "github_deploy" {
           "ecr:CompleteLayerUpload",
           "ecr:PutImage",
           "ecr:DescribeRepositories",
+          "ecr:DescribeImages",
           "ecr:ListImages",
         ]
         Resource = var.ecr_repository_arns
@@ -195,6 +196,7 @@ resource "aws_iam_role_policy" "github_deploy" {
           "ecr:CompleteLayerUpload",
           "ecr:PutImage",
           "ecr:DescribeRepositories",
+          "ecr:DescribeImages",
           "ecr:ListImages",
         ]
         Resource = "arn:aws:ecr:*:${data.aws_caller_identity.current.account_id}:repository/gtcx-*"

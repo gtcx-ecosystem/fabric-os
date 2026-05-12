@@ -307,7 +307,7 @@
     {
       "id": "ecosystem-integration",
       "name": "Ecosystem Integration",
-      "currentScore": 8.0,
+      "currentScore": 8.3,
       "maxScore": 10,
       "history": [
         {
@@ -325,6 +325,14 @@
           "ciRun": null,
           "artifact": "docs/audit/ecosystem-repo-review-2026-05-12.md",
           "reason": "Batch-onboarded 15 repos to shared platform (AWS_ROLE_ARN + ECR_REGISTRY). Shared CI adoption 4% \u2192 64%. Anomaly detector build-push workflow created."
+        },
+        {
+          "date": "2026-05-12",
+          "score": 8.3,
+          "commit": "77dda36",
+          "ciRun": "https://github.com/gtcx-ecosystem/gtcx-infrastructure/actions/runs/25756297277",
+          "artifact": "docs/audit/ecosystem-repo-review-2026-05-12.md",
+          "reason": "100% shared platform onboarding: all 23 active repos have AWS_ROLE_ARN + ECR_REGISTRY. ECR repo gtcx-anomaly-detector created. IAM policy fixed (added ecr:DescribeImages)."
         }
       ]
     },
@@ -347,7 +355,7 @@
     {
       "id": "enterprise-readiness",
       "name": "Enterprise / Production Readiness",
-      "currentScore": 8.75,
+      "currentScore": 8.8,
       "maxScore": 10,
       "history": [
         {
@@ -437,6 +445,14 @@
           "ciRun": null,
           "artifact": "infra/terraform/environments/production/main.tf",
           "reason": "Production Terraform environment configured: VPC (10.4.0.0/16), EKS (3\u00d7 t3.medium), RDS (db.t3.medium, 100GB), WAF, Flow Logs, WORM, CI role. Validated. Awaiting backend bootstrap + cost approval."
+        },
+        {
+          "date": "2026-05-12",
+          "score": 8.8,
+          "commit": "77dda36",
+          "ciRun": "https://github.com/gtcx-ecosystem/gtcx-infrastructure/actions/runs/25756297277",
+          "artifact": "348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-anomaly-detector:77dda36",
+          "reason": "Anomaly detector image built and pushed to ECR via CI (multi-arch, scan-on-push, verified). IAM policy updated to include ecr:DescribeImages."
         }
       ]
     },

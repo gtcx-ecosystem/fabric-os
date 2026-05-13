@@ -247,6 +247,20 @@ module "flow_logs" {
 }
 
 # -----------------------------------------------------------------------------
+# AWS Config Compliance Rules
+# -----------------------------------------------------------------------------
+
+module "config_rules" {
+  source = "../../modules/config-rules"
+
+  environment = var.environment
+
+  tags = merge(var.tags, {
+    Environment = "production"
+  })
+}
+
+# -----------------------------------------------------------------------------
 # WORM Audit Storage Module
 # -----------------------------------------------------------------------------
 

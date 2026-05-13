@@ -355,7 +355,7 @@
     {
       "id": "enterprise-readiness",
       "name": "Enterprise / Production Readiness",
-      "currentScore": 8.85,
+      "currentScore": 8.95,
       "maxScore": 10,
       "history": [
         {
@@ -461,6 +461,14 @@
           "ciRun": null,
           "artifact": "infra/kubernetes/base/services/anomaly-detector.yaml",
           "reason": "Anomaly detector deployed to staging EKS as CronJob (every 5min). 5 rules active. Prometheus monitoring namespace created. EKS endpoint re-secured (public access disabled)."
+        },
+        {
+          "date": "2026-05-13",
+          "score": 8.95,
+          "commit": null,
+          "ciRun": null,
+          "artifact": "infra/terraform/environments/production/terraform.tfstate",
+          "reason": "Production environment LIVE: VPC, EKS (3× t3.medium), RDS (db.t3.medium × 2), WAF, Flow Logs, WORM audit storage, shared CI deploy role. 86 resources. Verified via AWS CLI."
         }
       ]
     },

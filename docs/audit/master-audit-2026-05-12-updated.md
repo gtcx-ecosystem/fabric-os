@@ -20,11 +20,12 @@
 | Core Weighted Score          | **8.85/10** | production-ready              |
 | Investor Lens                |  **7.8/10** | serious production candidate  |
 | Enterprise Buyer Lens        |  **8.0/10** | serious production candidate  |
+| Enterprise Readiness         | **8.95/10** | production live               |
 | Ecosystem Integration        |  **8.3/10** | shared platform fully adopted |
 | African Sovereign / DFI Lens |  **7.9/10** | serious production candidate  |
 | SIGNAL Framework             | **8.97/10** | institutional controls active |
 
-**Verdict:** Production-ready infrastructure platform. Staging environment fully operational with WAF, Flow Logs, EKS, RDS, WORM storage, and shared CI. Two external blockers remain: pen-test vendor engagement (F-008) and SOC 2 auditor engagement.
+**Verdict:** Production-ready infrastructure platform. **Both staging and production environments are fully operational** with WAF, Flow Logs, EKS, RDS, WORM storage, and shared CI. Two external blockers remain: pen-test vendor engagement (F-008) and SOC 2 auditor engagement.
 
 **Top 3 priorities for next sprint:**
 
@@ -38,16 +39,16 @@
 
 ### 1.1 Infrastructure Platform
 
-| Component               | Status  | Evidence                                         |
-| ----------------------- | ------- | ------------------------------------------------ |
-| VPC + Subnets           | ✅ Live | `vpc-0c489ca4ba9c71cc4`                          |
-| EKS Cluster             | ✅ Live | `gtcx-staging`                                   |
-| RDS Operational + Audit | ✅ Live | `gtcx-staging-operational`, `gtcx-staging-audit` |
-| WAF Web ACL             | ✅ Live | `gtcx-staging-waf-af-south-1`                    |
-| VPC Flow Logs           | ✅ Live | `/gtcx-staging/vpc/flow-logs`                    |
-| WORM Audit Storage      | ✅ Live | `gtcx-worm-audit-staging-af-south-1`             |
-| Shared CI Deploy Role   | ✅ Live | `gtcx-staging-shared-deploy`                     |
-| GitHub OIDC Provider    | ✅ Live | `token.actions.githubusercontent.com`            |
+| Component               | Status  | Evidence                                                                |
+| ----------------------- | ------- | ----------------------------------------------------------------------- |
+| VPC + Subnets           | ✅ Live | `vpc-0c489ca4ba9c71cc4` (staging), `vpc-02d12f8ff89997f9b` (production) |
+| EKS Cluster             | ✅ Live | `gtcx-staging`, `gtcx-production`                                       |
+| RDS Operational + Audit | ✅ Live | Staging + Production (both `available`)                                 |
+| WAF Web ACL             | ✅ Live | Staging + Production (`e84e9d91...`)                                    |
+| VPC Flow Logs           | ✅ Live | Staging + Production (`fl-025ed754...`)                                 |
+| WORM Audit Storage      | ✅ Live | Staging + Production (`gtcx-worm-audit-production-af-south-1`)          |
+| Shared CI Deploy Role   | ✅ Live | `gtcx-staging-shared-deploy`, `gtcx-production-shared-deploy`           |
+| GitHub OIDC Provider    | ✅ Live | `token.actions.githubusercontent.com`                                   |
 
 ### 1.2 Security Controls
 
@@ -123,7 +124,7 @@
 | ---------- | --------------- | ------- | ------------ | --------- | --------- |
 | Core       | 5.9             | 6.8–8.5 | **8.85**     | 9.3       | 10.0      |
 | Security   | 4.5             | 6.2–8.2 | **8.8**      | 9.6       | 10.0      |
-| Enterprise | 6.3             | 6.8–8.0 | **8.8**      | 9.5       | 10.0      |
+| Enterprise | 6.3             | 6.8–8.0 | **8.95**     | 9.5       | 10.0      |
 | SIGNAL     | —               | 8.6     | **8.97**     | —         | —         |
 
 ---
@@ -136,7 +137,7 @@
 | M3        | SOC 2 Type 1 gap analysis                | 2–4 weeks   | Auditor engagement | No             |
 | M3        | WORM storage append-only verified        | 1 day       | None               | Yes            |
 | M3        | Anomaly detector deployed to staging EKS | 1 day       | None               | Yes            |
-| M3        | Production environment                   | 2–3 days    | Cost approval      | No             |
+| M3        | ~~Production environment~~               | ✅ **DONE** | Live 2026-05-13    | No             |
 | M3        | Anomaly detector deployed to staging EKS | 1 day       | None               | Yes            |
 | M3        | Cross-repo package adoption              | 1 week      | Publish + PRs      | Yes            |
 | M4        | SOC 2 Type 1 attestation                 | 3–6 months  | Auditor + evidence | No             |

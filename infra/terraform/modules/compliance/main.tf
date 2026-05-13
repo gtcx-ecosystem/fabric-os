@@ -92,9 +92,14 @@ resource "aws_s3_bucket_policy" "config" {
 # AWS Config Recorder
 # -----------------------------------------------------------------------------
 
+# Use AWS service-linked role for Config (Security Hub best practice)
+data "aws_iam_role" "config_service_linked" {
+  name = "AWSServiceRoleForConfig"
+}
+
 resource "aws_config_configuration_recorder" "main" {
   name     = "gtcx-${var.environment}"
-  role_arn = aws_iam_role.config.arn
+  role_arn = data.aws_iam_role.config_service_linked.arn
 
   recording_group {
     all_supported = true
@@ -119,41 +124,12 @@ resource "aws_config_configuration_recorder_status" "main" {
   depends_on = [aws_config_delivery_channel.main]
 }
 
-resource "aws_iam_role" "config" {
-  name = "gtcx-${var.environment}-config-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [{
-      Action = "sts:AssumeRole"
-      Effect = "Allow"
-      Principal = {
-        Service = "config.amazonaws.com"
-      }
-    }]
-  })
-
-  tags = local.common_tags
-}
-
-resource "aws_iam_role_policy_attachment" "config" {
-  role       = aws_iam_role.config.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWS_ConfigRole"
-}
-
-resource "aws_iam_role_policy" "config_s3" {
-  name = "gtcx-${var.environment}-config-s3-delivery"
-  role = aws_iam_role.config.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [{
-      Effect   = "Allow"
-      Action   = ["s3:PutObject", "s3:GetBucketAcl"]
-      Resource = [aws_s3_bucket.config.arn, "${aws_s3_bucket.config.arn}/*"]
-    }]
-  })
-}
+# NOTE: Custom IAM role for Config replaced by AWS service-linked role
+# (AWSServiceRoleForConfig) per Security Hub best practice.
+# The service-linked role is created automatically or via:
+#   aws iam create-service-linked-role --aws-service-name config.amazonaws.com
+# If the legacy custom role exists, it should be manually deleted after
+# confirming no other resources depend on it.
 
 # -----------------------------------------------------------------------------
 # Config Rules — Policy Enforcement

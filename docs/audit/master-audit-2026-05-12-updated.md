@@ -60,22 +60,26 @@ review_cycle: 'quarterly'
 
 ### 1.2 Security Controls
 
-| Control                        | Status      | Evidence                                         |
-| ------------------------------ | ----------- | ------------------------------------------------ |
-| SIGNAL Scorecard CI Gate       | ✅ Active   | 8.89/10, 0 critical failures                     |
-| WAF (OWASP CRS + Rate Limit)   | ✅ Live     | Verified via AWS CLI                             |
-| VPC Flow Logs (365d retention) | ✅ Live     | Verified via AWS CLI                             |
-| WORM S3 Object Lock            | ✅ Live     | COMPLIANCE mode, 2557 days                       |
-| TruffleHog Secret Scanning     | ✅ In CI    | `.github/workflows/secret-scan.yml`              |
-| pnpm Audit Gate                | ✅ In CI    | With accepted-CVE filter script                  |
-| SLO Burn-Rate Alerts           | ✅ Active   | 14.4x/6x/2x thresholds                           |
-| On-Call Drill Template         | ✅ Complete | 5 scenarios + scoring rubric                     |
-| CodeQL (4 custom queries)      | ✅ In CI    | Crypto, JWT, SQLi, deserialization               |
-| ZAP DAST                       | ✅ In CI    | `.github/workflows/zap-dast.yml`                 |
-| Kyverno Policy Validation      | ✅ In CI    | Staging + production overlays                    |
-| Chaos Network Partition        | ✅ Passing  | 4/4 subtests                                     |
-| FIPS Endpoints                 | ✅ Enabled  | All environments except af-south-1 (unavailable) |
-| AWS Config Compliance Rules    | ✅ Active   | 8 managed rules, all resources COMPLIANT         |
+| Control                        | Status      | Evidence                                             |
+| ------------------------------ | ----------- | ---------------------------------------------------- |
+| SIGNAL Scorecard CI Gate       | ✅ Active   | 8.89/10, 0 critical failures                         |
+| WAF (OWASP CRS + Rate Limit)   | ✅ Live     | Verified via AWS CLI                                 |
+| VPC Flow Logs (365d retention) | ✅ Live     | Verified via AWS CLI                                 |
+| WORM S3 Object Lock            | ✅ Live     | COMPLIANCE mode, 2557 days                           |
+| TruffleHog Secret Scanning     | ✅ In CI    | `.github/workflows/secret-scan.yml`                  |
+| pnpm Audit Gate                | ✅ In CI    | With accepted-CVE filter script                      |
+| SLO Burn-Rate Alerts           | ✅ Active   | 14.4x/6x/2x thresholds                               |
+| On-Call Drill Template         | ✅ Complete | 5 scenarios + scoring rubric                         |
+| CodeQL (4 custom queries)      | ✅ In CI    | Crypto, JWT, SQLi, deserialization                   |
+| ZAP DAST                       | ✅ In CI    | `.github/workflows/zap-dast.yml`                     |
+| Kyverno Policy Validation      | ✅ In CI    | Staging + production overlays                        |
+| Chaos Network Partition        | ✅ Passing  | 4/4 subtests                                         |
+| FIPS Endpoints                 | ✅ Enabled  | All environments except af-south-1 (unavailable)     |
+| AWS Config Compliance Rules    | ✅ Active   | 8 managed rules, all resources COMPLIANT             |
+| Config Service-Linked Role     | ✅ Fixed    | AWSServiceRoleForConfig (Security Hub best practice) |
+| WORM Append-Only Verified      | ✅ Verified | Explicit deny on overwrite, COMPLIANCE mode          |
+| Docs Machine-Readable Format   | ✅ Complete | 306 docs with YAML frontmatter                       |
+| Anomaly Detector Prod Manifest | ✅ Ready    | SHA-pinned in production kustomization               |
 
 ### 1.3 GTM Readiness
 
@@ -163,25 +167,31 @@ review_cycle: 'quarterly'
 2. SOC 2 gap analysis no critical gaps (+0.2 Enterprise)
 3. ~~Production environment live~~ ✅ DONE (+0.2 Enterprise)
 4. ~~Anomaly detector running in staging~~ ✅ DONE (+0.2 Agentic)
-5. AWS Config compliance rules with 0 non-compliant (+0.1 Security)
-6. Cross-repo package adoption 80% (+0.1 Ecosystem)
+5. ~~AWS Config compliance rules with 0 non-compliant~~ ✅ DONE (+0.1 Security)
+6. ~~WORM audit storage append-only verified~~ ✅ DONE (+0.1 Integrity)
+7. ~~Docs machine-readable migration~~ ✅ DONE (+0.1 Docs)
+8. Cross-repo package adoption 80% (+0.1 Ecosystem)
 
 ---
 
 ## 6. Audit Trail
 
-| Phase        | Commit  | What                                                            |
-| ------------ | ------- | --------------------------------------------------------------- |
-| M1           | 05e69fc | Fixes + FIPS + link checker + anomaly arch                      |
-| M2 partial   | 3f75ced | WORM module + anomaly PoC + chaos tests + FIPS all              |
-| M2 completed | 627748c | Staging live + WAF/Flow Logs + shared CI + repo review          |
-| M2 continued | 22661e2 | Package rename docs + compliance governance + deprecation ADR   |
-| M2 finalized | 05a654f | WORM deployed + anomaly detector containerized                  |
-| Ledger bump  | c4a176e | Security 8.8, Enterprise 8.7                                    |
-| Ledger bump  | 7ebca03 | Ecosystem 8.3, Enterprise 8.8, 100% onboarding, image built     |
-| Prod backend | —       | S3 gtcx-terraform-state-production + DynamoDB locks table       |
-| K8s deploy   | —       | Anomaly detector CronJob in staging EKS, Prometheus monitoring  |
-| Config rules | c837c98 | AWS Config 8 managed rules applied in production, all COMPLIANT |
+| Phase        | Commit  | What                                                                    |
+| ------------ | ------- | ----------------------------------------------------------------------- |
+| M1           | 05e69fc | Fixes + FIPS + link checker + anomaly arch                              |
+| M2 partial   | 3f75ced | WORM module + anomaly PoC + chaos tests + FIPS all                      |
+| M2 completed | 627748c | Staging live + WAF/Flow Logs + shared CI + repo review                  |
+| M2 continued | 22661e2 | Package rename docs + compliance governance + deprecation ADR           |
+| M2 finalized | 05a654f | WORM deployed + anomaly detector containerized                          |
+| Ledger bump  | c4a176e | Security 8.8, Enterprise 8.7                                            |
+| Ledger bump  | 7ebca03 | Ecosystem 8.3, Enterprise 8.8, 100% onboarding, image built             |
+| Prod backend | —       | S3 gtcx-terraform-state-production + DynamoDB locks table               |
+| K8s deploy   | —       | Anomaly detector CronJob in staging EKS, Prometheus monitoring          |
+| Config rules | c837c98 | AWS Config 8 managed rules applied in production, all COMPLIANT         |
+| Config SLR   | —       | Service-linked role AWSServiceRoleForConfig created, recorder updated   |
+| WORM verify  | —       | Append-only verified via explicit deny policy test                      |
+| Docs MR      | a3828ff | 283 docs migrated to YAML frontmatter + 23 index READMEs                |
+| Prod anomaly | —       | Production kustomization updated with SHA-pinned anomaly detector image |
 
 ---
 

@@ -82,8 +82,15 @@ aws securityhub get-findings \
 ## AWS Config
 
 **Recorder:** `gtcx-config-recorder`
+**Role:** `AWSServiceRoleForConfig` (service-linked role, Security Hub best practice)
 **Delivery Bucket:** `gtcx-config-records-af-south-1`
 **Delivery Frequency:** 24 hours
+
+**Service-linked role creation:**
+
+```bash
+aws iam create-service-linked-role --aws-service-name config.amazonaws.com
+```
 
 **Recorded resources:**
 

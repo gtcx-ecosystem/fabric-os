@@ -43,6 +43,11 @@ images:
     newTag: v1.0.0 # Pinned versions in production
   - name: gtcx/protocols
     newTag: v1.0.0
+  # Anomaly detector — pinned to verified SHA (built 2026-05-12)
+  # SHA: 77dda36431624c4f537d8650a1910a4180f7fc1d
+  - name: gtcx-anomaly-detector
+    newName: 348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-anomaly-detector
+    newTag: '77dda36431624c4f537d8650a1910a4180f7fc1d'
 
 # Production resource configuration
 patches:

@@ -1,3 +1,14 @@
+---
+title: 'Decisions'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['architecture', 'infrastructure', 'database', 'network', 'mobile']
+review_cycle: 'monthly'
+---
+
 # Decisions
 
 Architecture Decision Records (ADRs) capturing key design choices and their rationale.

@@ -1,8 +1,15 @@
-# Automated Rollback Runbook
+---
+title: 'Automated Rollback Runbook'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'architecture', 'infrastructure', 'devops', 'performance']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Automated Rollback Runbook
 
 ## Overview
 

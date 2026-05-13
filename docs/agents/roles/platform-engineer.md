@@ -1,8 +1,15 @@
-# Role: Platform Engineer
+---
+title: 'Role: Platform Engineer'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Role: Platform Engineer
 
 ## Archetype
 

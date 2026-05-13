@@ -1,8 +1,15 @@
-# {Product Name} — User Guide
+---
+title: '{Product Name} — User Guide'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['infrastructure', 'frontend', 'ux', 'mobile', 'agentic']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# {Product Name} — User Guide
 
 **Version:** {version}
 **Last updated:** {YYYY-MM-DD}

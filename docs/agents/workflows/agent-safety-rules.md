@@ -1,8 +1,15 @@
-# Agent Safety Rules
+---
+title: 'Agent Safety Rules'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'crypto', 'infrastructure', 'testing', 'api']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Agent Safety Rules
 
 Critical rules for protecting the codebase and its collaborators.
 

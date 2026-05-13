@@ -1,3 +1,14 @@
+---
+title: 'GTCX Infrastructure — Penetration Test Scope & RFP'
+status: 'draft'
+date: '2026-05-12'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'quarterly'
+---
+
 # GTCX Infrastructure — Penetration Test Scope & RFP
 
 **Status:** Vendor shortlist complete — awaiting leadership selection & RFP send

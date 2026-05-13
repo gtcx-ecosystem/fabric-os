@@ -1,8 +1,15 @@
-# Technology Stack — gtcx-infrastructure
+---
+title: 'Technology Stack — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'infrastructure', 'frontend', 'backend', 'database']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Technology Stack — gtcx-infrastructure
 
 **Last updated:** 2026-03-08
 

@@ -1,8 +1,15 @@
-# Incident Response Plan v1.0
+---
+title: 'Incident Response Plan v1.0'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Incident Response Plan v1.0
 
 **Classification:** Confidential
 **Owner:** Chief Information Security Officer (CISO)
@@ -254,15 +261,9 @@ Evidence must be stored in the forensic evidence bucket with write-once, read-ma
 
 **P1 -- Critical Incident (Public-Facing)**
 
-> GTCX is aware of a security incident affecting [affected service/system]. We have activated our incident response procedures and are working to contain and resolve the issue. The security of our users' data is our highest priority. We will provide updates as our investigation progresses. If you have questions, please contact [support email].
-
 **P1 -- Critical Incident (Regulator-Facing)**
 
-> We are writing to notify you of a security incident detected on [date] at [time] UTC. The incident involves [brief factual description]. We initiated our incident response procedures immediately upon detection. Containment measures are in place. We will provide a full report within [regulatory deadline]. Point of contact: [CISO name, email, phone].
-
 **P2 -- High Severity (Internal Stakeholders)**
-
-> A security event has been detected affecting [system/service]. The incident response team is actively investigating. Current assessment is [severity]. No evidence of [data exfiltration / customer impact] at this time. Next update at [time] UTC.
 
 **P3/P4 -- No External Communication Required**
 
@@ -323,8 +324,6 @@ This Incident Response Plan has been reviewed and approved by the GTCX Board of 
 ---
 
 ## Appendix A: Contact List Template
-
-> **CONFIDENTIAL** -- Distribute only to personnel with incident response roles.
 
 | Role                        | Name         | Phone (Primary) | Phone (Secondary) | Email        | Escalation Order |
 | --------------------------- | ------------ | --------------- | ----------------- | ------------ | ---------------- |

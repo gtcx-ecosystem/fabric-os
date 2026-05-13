@@ -1,8 +1,15 @@
-# Project Adaptation Guide
+---
+title: 'Project Adaptation Guide'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Project Adaptation Guide
 
 How to adapt SOP templates for a new or existing project.
 

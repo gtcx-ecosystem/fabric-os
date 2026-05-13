@@ -1,3 +1,14 @@
+---
+title: 'Platform Compliance Governance'
+status: 'current'
+date: '2026-05-12'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'quarterly'
+---
+
 # Platform Compliance Governance
 
 **Date:** 2026-05-12
@@ -106,9 +117,9 @@ Service repos reference these in their own compliance docs:
 ```markdown
 ## Inherited Platform Compliance
 
-- Platform SOC 2 Type I: [gtcx-infrastructure release compliance/soc2-type1-2026](link)
-- Platform pen-test: [gtcx-infrastructure release compliance/pen-test-2026](link)
-- Shared CI security: [gtcx-infrastructure docs](link)
+- Platform SOC 2 Type I: [gtcx-infrastructure release compliance/soc2-type1-2026](#)
+- Platform pen-test: [gtcx-infrastructure release compliance/pen-test-2026](#)
+- Shared CI security: [gtcx-infrastructure docs](#)
 
 ## Service-Specific Compliance
 

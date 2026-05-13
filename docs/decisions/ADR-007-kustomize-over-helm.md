@@ -1,3 +1,14 @@
+---
+title: 'ADR-007: Use Kustomize over Helm for K8s manifest management'
+status: 'current'
+date: '2026-05-02'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['architecture', 'infrastructure', 'frontend', 'mobile', 'agentic']
+review_cycle: 'monthly'
+---
+
 # ADR-007: Use Kustomize over Helm for K8s manifest management
 
 ## Status

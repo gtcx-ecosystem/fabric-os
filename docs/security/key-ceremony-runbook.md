@@ -1,8 +1,15 @@
-# Key Ceremony Runbook
+---
+title: 'Key Ceremony Runbook'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Key Ceremony Runbook
 
 **Purpose:** Document the procedures for KMS signing key generation, rotation, and revocation.
 **Compliance:** FFIEC Key Management, PCI-DSS Requirement 3.6, ISO 27001 A.10.1

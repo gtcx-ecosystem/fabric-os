@@ -1,6 +1,15 @@
-# Service Compliance README — Template
+---
+title: 'Service Compliance README — Template'
+status: 'current'
+date: '2026-05-12'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> Copy this file into `docs/compliance/service/README.md` in your service repo.
+# Service Compliance README — Template
 
 ---
 
@@ -8,15 +17,15 @@
 
 This service runs on the GTCX shared platform. The following compliance artifacts are inherited from [`gtcx-infrastructure`](https://github.com/gtcx-ecosystem/gtcx-infrastructure):
 
-| Control                                | Inherited From        | Evidence                                    |
-| -------------------------------------- | --------------------- | ------------------------------------------- |
-| Infrastructure pen-test                | `gtcx-infrastructure` | [Platform pen-test report](link-to-release) |
-| SOC 2 Type I — CC6/CC7/CC8/CC9         | `gtcx-infrastructure` | [SOC 2 Type I report](link-to-release)      |
-| CI/CD security (SLSA L3, Cosign, SBOM) | `gtcx-infrastructure` | [CI security docs](link)                    |
-| Network segmentation                   | `gtcx-infrastructure` | [NetworkPolicies](link)                     |
-| WAF / DDoS protection                  | `gtcx-infrastructure` | [WAF rules](link)                           |
-| Backup / DR                            | `gtcx-infrastructure` | [DR runbook](link)                          |
-| IAM / OIDC                             | `gtcx-infrastructure` | [CI role docs](link)                        |
+| Control                                | Inherited From        | Evidence                      |
+| -------------------------------------- | --------------------- | ----------------------------- |
+| Infrastructure pen-test                | `gtcx-infrastructure` | [Platform pen-test report](#) |
+| SOC 2 Type I — CC6/CC7/CC8/CC9         | `gtcx-infrastructure` | [SOC 2 Type I report](#)      |
+| CI/CD security (SLSA L3, Cosign, SBOM) | `gtcx-infrastructure` | [CI security docs](#)         |
+| Network segmentation                   | `gtcx-infrastructure` | [NetworkPolicies](#)          |
+| WAF / DDoS protection                  | `gtcx-infrastructure` | [WAF rules](#)                |
+| Backup / DR                            | `gtcx-infrastructure` | [DR runbook](#)               |
+| IAM / OIDC                             | `gtcx-infrastructure` | [CI role docs](#)             |
 
 ---
 

@@ -1,3 +1,14 @@
+---
+title: 'Frontend PRD — {Product Name}'
+status: 'draft'
+date: '2026-05-02'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'informational'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'api']
+review_cycle: 'monthly'
+---
+
 # Frontend PRD — {Product Name}
 
 **Product Manager:** {name}

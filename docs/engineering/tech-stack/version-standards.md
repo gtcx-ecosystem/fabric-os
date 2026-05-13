@@ -1,8 +1,15 @@
-# Version Standards
+---
+title: 'Version Standards'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'backend', 'database', 'devops', 'governance']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Version Standards
 
 Purpose: define the minimum supported versions and lifecycle policy for core runtime components.
 

@@ -1,8 +1,15 @@
-# Metrics — gtcx-protocols
+---
+title: 'Metrics — gtcx-protocols'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'network']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Metrics — gtcx-protocols
 
 Protocol performance targets and KPI reference for the GTCX Protocol layer.
 

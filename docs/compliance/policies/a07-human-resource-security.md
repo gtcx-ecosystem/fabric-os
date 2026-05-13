@@ -1,8 +1,15 @@
-# POL-07: Human Resource Security
+---
+title: 'POL-07: Human Resource Security'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'frontend']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# POL-07: Human Resource Security
 
 **Annex A Reference:** A.7 — People Controls
 **Effective Date:** 2026-05-08

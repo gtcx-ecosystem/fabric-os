@@ -1,8 +1,15 @@
-# Task Playbook: Add a Secondary-Language Component
+---
+title: 'Task Playbook: Add a Secondary-Language Component'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Task Playbook: Add a Secondary-Language Component
 
 **Owner:** DevOps/SRE Engineer or Infrastructure Security Engineer (depending on component type)
 **Safety tier:** Requires human approval before proceeding

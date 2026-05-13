@@ -1,8 +1,15 @@
-# Task Playbook: Write an ADR
+---
+title: 'Task Playbook: Write an ADR'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'frontend']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Task Playbook: Write an ADR
 
 **Owner:** Lead engineer / DevOps engineer
 **Safety tier:** Autonomous (propose) / Requires approval (accept)

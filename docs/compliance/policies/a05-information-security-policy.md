@@ -1,8 +1,15 @@
-# POL-05: Information Security Policy
+---
+title: 'POL-05: Information Security Policy'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'frontend', 'network']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# POL-05: Information Security Policy
 
 **Annex A Reference:** A.5 — Organizational Controls
 **Effective Date:** 2026-05-08

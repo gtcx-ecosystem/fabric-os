@@ -1,3 +1,14 @@
+---
+title: 'ADR-001: Structured Error Taxonomy'
+status: 'current'
+date: '2026-05-12'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['architecture', 'infrastructure', 'api', 'frontend', 'backend']
+review_cycle: 'on-change'
+---
+
 # ADR-001: Structured Error Taxonomy
 
 **Status:** Accepted

@@ -1,8 +1,15 @@
-# POL-15: Supplier Relationships
+---
+title: 'POL-15: Supplier Relationships'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'frontend', 'devops']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# POL-15: Supplier Relationships
 
 **Annex A Reference:** A.15 — Supplier Controls
 **Effective Date:** 2026-05-08

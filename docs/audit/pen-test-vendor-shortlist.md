@@ -1,3 +1,14 @@
+---
+title: 'Pen-Test Vendor Shortlist & Evaluation'
+status: 'current'
+date: '2026-05-12'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'quarterly'
+---
+
 # Pen-Test Vendor Shortlist & Evaluation
 
 **Date:** 2026-05-12
@@ -143,17 +154,4 @@
 
 ## RFP Outreach Template
 
-> **Subject:** RFP — Penetration Test: GTCX Protocol (Staging + Testnet)
 >
-> GTCX Protocol is an AI-native compliance gateway for African commodity trade. We require an independent penetration test of our staging and testnet environments before a regulated pilot deployment.
->
-> **Scope:** Web APIs (6 protocol handlers), AI gateway (`/v1/query`, `/v1/tools`), Kubernetes ingress/ALB, PostgreSQL (primary + audit), Redis, ECR images, CI/CD pipeline.
-> **Methodology:** OWASP Testing Guide v4.2 + AI-specific vectors (prompt injection, tool enumeration, mutating tool bypass).
-> **Timeline:** ~20 business days (4 weeks) + 3-day re-test window.
-> **Budget:** $25,000–$45,000 USD.
-> **Deliverables:** Executive summary, technical findings (PDF + JSON), remediation roadmap, signed attestation.
-> **Accreditation required:** CREST or OSCP-led team.
->
-> Full scope document attached. Please confirm availability for a 2026-05-26 kickoff and provide a fixed-price proposal by 2026-05-16.
->
-> Contact: security@gtcx.trade

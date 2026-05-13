@@ -1,8 +1,15 @@
-# Frontend Epics — {Project Name}
+---
+title: 'Frontend Epics — {Project Name}'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'infrastructure', 'frontend', 'network']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Frontend Epics — {Project Name}
 
 Suggested epic structure for frontend products. Adapt to your project — remove epics that don't apply, add product-specific ones, adjust priorities.
 

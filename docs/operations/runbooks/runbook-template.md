@@ -1,12 +1,15 @@
+---
+title: 'Runbook: [Service or Incident Type]'
+status: 'draft'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'infrastructure', 'api', 'frontend', 'backend']
+review_cycle: 'quarterly'
+---
+
 # Runbook: [Service or Incident Type]
-
-> **Status:** Draft
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> **Owner**: [Team / On-call engineer]
-> **Last reviewed**: {YYYY-MM-DD}
-> **Severity**: [P0 / P1 / P2 / P3]
 
 ---
 

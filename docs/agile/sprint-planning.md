@@ -1,9 +1,15 @@
-# [Product Name] — Sprint Planning and User Stories
+---
+title: '[Product Name] — Sprint Planning and User Stories'
+status: 'current'
+date: '2026-05-10'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'informational'
+tags: ['security', 'architecture', 'infrastructure', 'testing', 'api']
+review_cycle: 'monthly'
+---
 
-> **Document ID:** [SPRINT-001]
-> **Version:** [1.0]
-> **Date:** [YYYY-MM-DD]
-> **Status:** [Planning / Active / Complete]
+# [Product Name] — Sprint Planning and User Stories
 
 ---
 

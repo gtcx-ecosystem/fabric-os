@@ -1,8 +1,15 @@
-# GTCX Data Governance Specification
+---
+title: 'GTCX Data Governance Specification'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# GTCX Data Governance Specification
 
 | Field   | Value                                                                                                              |
 | ------- | ------------------------------------------------------------------------------------------------------------------ |

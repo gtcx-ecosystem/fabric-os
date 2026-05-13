@@ -1,3 +1,14 @@
+---
+title: 'AWS Security Monitoring — Production'
+status: 'current'
+date: '2026-05-10'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'database']
+review_cycle: 'quarterly'
+---
+
 # AWS Security Monitoring — Production
 
 **Date:** 2026-05-13

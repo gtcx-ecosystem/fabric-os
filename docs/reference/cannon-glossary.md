@@ -1,10 +1,15 @@
+---
+title: 'Glossary'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'monthly'
+---
+
 # Glossary
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Domain terminology, acronyms, and standardized definitions for [Organization Name].
 
 ---
 

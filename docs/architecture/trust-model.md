@@ -1,8 +1,15 @@
-# Trust Model
+---
+title: 'Trust Model'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Trust Model
 
 **Protocol:** GTCX Protocol Layer
 **Version:** 3.0.0

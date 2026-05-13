@@ -1,8 +1,15 @@
-# Developer Quickstart — gtcx-infrastructure
+---
+title: 'Developer Quickstart — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Developer Quickstart — gtcx-infrastructure
 
 Get local infrastructure running and understand the repo in under 10 minutes.
 

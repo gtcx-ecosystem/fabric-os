@@ -1,3 +1,14 @@
+---
+title: 'Encryption Statement'
+status: 'current'
+date: '2026-05-08'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'standard'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'on-change'
+---
+
 # Encryption Statement
 
 **Classification:** Confidential — Regulator Submission

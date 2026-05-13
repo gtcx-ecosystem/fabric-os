@@ -1,3 +1,14 @@
+---
+title: 'ADR-008: Separate operational and audit databases'
+status: 'current'
+date: '2026-05-02'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'standard'
+tags: ['compliance', 'architecture', 'infrastructure', 'api', 'frontend']
+review_cycle: 'on-change'
+---
+
 # ADR-008: Separate operational and audit databases
 
 ## Status

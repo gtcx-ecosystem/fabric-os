@@ -1,10 +1,15 @@
+---
+title: 'Approval Flows'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['compliance', 'architecture', 'infrastructure', 'testing', 'api']
+review_cycle: 'monthly'
+---
+
 # Approval Flows
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Decision authority and sign-off requirements for [Organization Name] content
 
 ---
 

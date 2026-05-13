@@ -1,3 +1,14 @@
+---
+title: 'ADR-004: Offline-First Mobile Architecture'
+status: 'draft'
+date: '2026-05-02'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['architecture', 'infrastructure', 'api', 'frontend', 'backend']
+review_cycle: 'on-change'
+---
+
 # ADR-004: Offline-First Mobile Architecture
 
 ## Status

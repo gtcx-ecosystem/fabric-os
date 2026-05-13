@@ -1,8 +1,15 @@
-# Onboarding Overview
+---
+title: 'Onboarding Overview'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['architecture', 'infrastructure', 'database', 'devops', 'governance']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Onboarding Overview
 
 This is the canonical repo-level onboarding entrypoint for new contributors and agents.
 

@@ -1,8 +1,15 @@
-# Break-Glass Emergency Access Procedure
+---
+title: 'Break-Glass Emergency Access Procedure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Break-Glass Emergency Access Procedure
 
 **Classification:** Internal — Restricted  
 **Owner:** CISO  

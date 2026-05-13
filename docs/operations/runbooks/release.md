@@ -1,8 +1,15 @@
-# Release Runbook
+---
+title: 'Release Runbook'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Release Runbook
 
 Safe release process for the GTCX Protocol monorepo — preflight, dry-run, tagging, and rollback decisions.
 
@@ -118,8 +125,6 @@ git push --delete origin vX.Y.Z
 # Delete the local tag
 git tag -d vX.Y.Z
 ```
-
-> Prefer forward-fix patch releases over destructive rollback once consumers may have pulled artifacts. Deleting a published npm version is not possible — only deprecation is available post-publish.
 
 ---
 

@@ -1,6 +1,15 @@
-# GTCX Infrastructure — Documentation Index
+---
+title: 'GTCX Infrastructure — Documentation Index'
+status: 'draft'
+date: '2026-05-10'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
 
-> Last updated: 2026-05-10 | 259 documents indexed
+# GTCX Infrastructure — Documentation Index
 
 Single source of truth for all infrastructure documentation.
 

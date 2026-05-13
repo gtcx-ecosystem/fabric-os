@@ -1,3 +1,14 @@
+---
+title: 'ADR-007: mTLS and Service Mesh Architecture'
+status: 'current'
+date: '2026-05-08'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'standard'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'on-change'
+---
+
 # ADR-007: mTLS and Service Mesh Architecture
 
 ## Status

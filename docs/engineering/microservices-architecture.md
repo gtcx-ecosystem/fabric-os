@@ -1,8 +1,15 @@
-# Microservices Architecture — {Service Name}
+---
+title: 'Microservices Architecture — {Service Name}'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Microservices Architecture — {Service Name}
 
 **Service type:** Core / Support / Gateway / Integration
 **Language:** {TypeScript / Python / Go / Rust}

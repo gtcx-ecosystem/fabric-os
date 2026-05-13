@@ -1,10 +1,15 @@
+---
+title: 'GTCX Infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'monthly'
+---
+
 # GTCX Infrastructure
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> **Enterprise-scale deployment infrastructure aligned with 30 Engineering Principles**
 
 ## Overview
 

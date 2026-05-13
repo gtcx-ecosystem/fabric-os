@@ -1,8 +1,15 @@
-# GTCX Vendor Risk Management Program
+---
+title: 'GTCX Vendor Risk Management Program'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'testing']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# GTCX Vendor Risk Management Program
 
 **Owner:** CISO
 **Effective Date:** 2026-05-08

@@ -1,3 +1,14 @@
+---
+title: 'Runbooks'
+status: 'current'
+date: '2026-05-02'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['architecture', 'infrastructure', 'devops', 'governance', 'telemetry']
+review_cycle: 'quarterly'
+---
+
 # Runbooks
 
 Incident response, escalation procedures, and on-call rotation.

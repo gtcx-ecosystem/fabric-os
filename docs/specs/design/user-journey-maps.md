@@ -1,8 +1,15 @@
-# User Journey Maps — {project-name}
+---
+title: 'User Journey Maps — {project-name}'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'testing', 'frontend', 'ux', 'mobile']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# User Journey Maps — {project-name}
 
 ## Personas
 

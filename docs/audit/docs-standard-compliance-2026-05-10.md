@@ -1,3 +1,14 @@
+---
+title: 'Docs Standard Compliance Audit — 2026-05-10'
+status: 'draft'
+date: '2026-05-10'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # Docs Standard Compliance Audit — 2026-05-10
 
 **Status:** Complete

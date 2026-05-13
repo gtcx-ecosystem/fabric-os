@@ -1,6 +1,13 @@
-> **Status:** Current
-> **Date:** 2026-05-12
-> **Owner:** GTCX Infrastructure
+---
+title: 'GTCX Infrastructure — Master Audit & Bank-Grade Certification'
+status: 'current'
+date: '2026-05-12'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
 
 # GTCX Infrastructure — Master Audit & Bank-Grade Certification
 

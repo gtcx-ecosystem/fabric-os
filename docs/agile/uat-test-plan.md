@@ -1,3 +1,14 @@
+---
+title: 'UAT Test Plan — {Feature / Release}'
+status: 'current'
+date: '2026-05-02'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['infrastructure', 'testing', 'frontend', 'devops', 'performance']
+review_cycle: 'monthly'
+---
+
 # UAT Test Plan — {Feature / Release}
 
 **UAT Lead:** {name}

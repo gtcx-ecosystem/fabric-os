@@ -1,8 +1,15 @@
-# Frontend Strategy — {Project Name}
+---
+title: 'Frontend Strategy — {Project Name}'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Frontend Strategy — {Project Name}
 
 **Product lead:** {name}
 **Design lead:** {name}

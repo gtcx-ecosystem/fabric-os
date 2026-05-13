@@ -1,10 +1,15 @@
-# On-Call Drill Evidence Log
+---
+title: 'On-Call Drill Evidence Log'
+status: 'current'
+date: '2026-05-12'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Template  
-> **Date:** 2026-05-12  
-> **Owner:** GTCX Infrastructure / SRE  
-> **Classification:** Internal — Restricted  
-> **Retention:** 7 years
+# On-Call Drill Evidence Log
 
 ---
 

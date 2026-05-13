@@ -1,18 +1,21 @@
+---
+title: 'Analytics Setup'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['compliance', 'infrastructure', 'api', 'frontend', 'database']
+review_cycle: 'on-change'
+---
+
 # Analytics Setup
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> KPI definitions, instrumentation standards, and dashboard specifications for [Organization Name].
 
 ---
 
 ## 1. KPI Framework
 
 ### North Star Metric
-
-> **[North Star Metric]** — [One-sentence definition of the metric that best captures the value delivered to users]
 
 _Example: "Weekly Active Subscribers who consumed at least [N] intelligence items" — measures both retention and value delivery._
 

@@ -1,8 +1,15 @@
-# GTM Documentation Overview
+---
+title: 'GTM Documentation Overview'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['compliance', 'architecture', 'infrastructure', 'api', 'frontend']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# GTM Documentation Overview
 
 This collection tracks the regulatory, sandbox, and commercialization evidence needed to move the infrastructure stack toward pilot and institutional readiness.
 

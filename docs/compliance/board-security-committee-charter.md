@@ -1,8 +1,15 @@
-# Board Security Committee Charter
+---
+title: 'Board Security Committee Charter'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Board Security Committee Charter
 
 **Effective Date:** 2026-05-08
 **Review Cycle:** Annual

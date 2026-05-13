@@ -1,8 +1,15 @@
-# {Role Name} — gtcx-infrastructure
+---
+title: '{Role Name} — gtcx-infrastructure'
+status: 'draft'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['architecture', 'infrastructure', 'frontend', 'backend', 'database']
+review_cycle: 'monthly'
+---
 
-> **Status:** Draft
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# {Role Name} — gtcx-infrastructure
 
 **Archetype:** {Role Name} (defined in `1-agentic/archetypes/{role-archetype}`)
 **Repo scope:** `gtcx-infrastructure` — all deployment, infrastructure-as-code, and operational tooling for the GTCX ecosystem

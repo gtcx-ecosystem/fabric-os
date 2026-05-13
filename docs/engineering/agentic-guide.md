@@ -1,8 +1,15 @@
-# Architecture Documentation Standard (Agentic Guide)
+---
+title: 'Architecture Documentation Standard (Agentic Guide)'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'architecture', 'infrastructure', 'frontend', 'backend']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Architecture Documentation Standard (Agentic Guide)
 
 Purpose: define how architecture documentation is structured, authored, and maintained.
 

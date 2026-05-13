@@ -1,10 +1,15 @@
+---
+title: 'Tokenization Architecture'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # Tokenization Architecture
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> PII tokenization design using HashiCorp Vault Transit for format-preserving encryption across GTCX services.
 
 ---
 

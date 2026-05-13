@@ -1,8 +1,15 @@
-# Executive Summary — gtcx-infrastructure
+---
+title: 'Executive Summary — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'compliance', 'infrastructure', 'frontend', 'backend']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Executive Summary — gtcx-infrastructure
 
 ---
 

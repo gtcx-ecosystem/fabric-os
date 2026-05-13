@@ -1,3 +1,14 @@
+---
+title: 'QA Test Plan — {Feature / Sprint / Release}'
+status: 'current'
+date: '2026-05-02'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'informational'
+tags: ['security', 'infrastructure', 'testing', 'frontend', 'devops']
+review_cycle: 'monthly'
+---
+
 # QA Test Plan — {Feature / Sprint / Release}
 
 **QA Lead:** {name}

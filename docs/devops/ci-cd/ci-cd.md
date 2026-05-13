@@ -1,8 +1,15 @@
-# CI/CD Pipeline — gtcx-infrastructure
+---
+title: 'CI/CD Pipeline — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'frontend']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# CI/CD Pipeline — gtcx-infrastructure
 
 CI/CD expectations and workflow. Every change to this repo runs through these gates before it reaches `main`.
 

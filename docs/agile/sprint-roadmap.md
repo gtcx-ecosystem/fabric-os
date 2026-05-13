@@ -1,8 +1,15 @@
-# [Product Name] — Roadmap
+---
+title: '[Product Name] — Roadmap'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'api', 'frontend', 'backend', 'database']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# [Product Name] — Roadmap
 
 ## Phase 1: Foundation ([Q/Year])
 

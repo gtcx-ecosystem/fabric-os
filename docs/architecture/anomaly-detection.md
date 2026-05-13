@@ -1,6 +1,13 @@
-> **Status:** Draft
-> **Date:** 2026-05-12
-> **Owner:** GTCX Infrastructure
+---
+title: 'Anomaly Detection Architecture — GTCX Compliance Gateway'
+status: 'draft'
+date: '2026-05-12'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'backend']
+review_cycle: 'on-change'
+---
 
 # Anomaly Detection Architecture — GTCX Compliance Gateway
 

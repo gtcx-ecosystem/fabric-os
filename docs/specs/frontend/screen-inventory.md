@@ -1,8 +1,15 @@
-# Screen Inventory and Navigation Map — {Project Name}
+---
+title: 'Screen Inventory and Navigation Map — {Project Name}'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'frontend', 'database', 'network', 'ux']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Screen Inventory and Navigation Map — {Project Name}
 
 A complete list of all screens in the product, organized by category, with navigation structure and role access matrix.
 

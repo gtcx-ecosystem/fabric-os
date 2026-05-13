@@ -1,3 +1,14 @@
+---
+title: 'Disaster Recovery Runbook — GTCX Production'
+status: 'current'
+date: '2026-05-10'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['crypto', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'quarterly'
+---
+
 # Disaster Recovery Runbook — GTCX Production
 
 **Classification:** INTERNAL — Platform Engineering & SRE  
@@ -216,8 +227,6 @@ aws rds restore-db-instance-from-db-snapshot \
   --db-snapshot-identifier gtcx-dr-operational-us-east-1 \
   --region us-east-1
 ```
-
-> ⚠️ **Known Gap:** RDS does NOT have automatic cross-region snapshot replication configured. This must be added as a post-launch task.
 
 **Step 3: Verify WORM Data in DR Region**
 

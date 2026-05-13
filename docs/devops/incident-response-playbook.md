@@ -1,3 +1,14 @@
+---
+title: 'Incident Response Playbook — GTCX Production'
+status: 'current'
+date: '2026-05-10'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'quarterly'
+---
+
 # Incident Response Playbook — GTCX Production
 
 **Classification:** INTERNAL — Platform Engineering & Security  

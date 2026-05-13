@@ -1,8 +1,15 @@
-# Release Checklist — gtcx-infrastructure
+---
+title: 'Release Checklist — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'frontend']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Release Checklist — gtcx-infrastructure
 
 Complete this checklist for every release. All items must be checked before deploying to production. Gate execution is documented in the quality runbook.
 

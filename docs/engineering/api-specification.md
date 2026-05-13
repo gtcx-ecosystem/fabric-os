@@ -1,10 +1,15 @@
+---
+title: 'API Specification — {api-name}'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'monthly'
+---
+
 # API Specification — {api-name}
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Full API specification. For a lightweight architecture-level overview, see api-design-template.md (`api-design-template.md`).
 
 ## 1. Overview
 

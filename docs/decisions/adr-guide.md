@@ -1,8 +1,15 @@
-# Guide: ADRs vs System Design
+---
+title: 'Guide: ADRs vs System Design'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['architecture', 'infrastructure', 'frontend', 'database', 'agentic']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Guide: ADRs vs System Design
 
 When to use an ADR versus a system design document.
 

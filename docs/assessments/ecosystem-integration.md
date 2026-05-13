@@ -1,3 +1,14 @@
+---
+title: 'Ecosystem Integration — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-12'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'monthly'
+---
+
 # Ecosystem Integration — gtcx-infrastructure
 
 **Date:** 2026-03-09

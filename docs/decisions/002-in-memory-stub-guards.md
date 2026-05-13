@@ -1,3 +1,14 @@
+---
+title: 'ADR-002: In-Memory Stub Guards'
+status: 'current'
+date: '2026-05-02'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'standard'
+tags: ['compliance', 'architecture', 'infrastructure', 'testing', 'api']
+review_cycle: 'on-change'
+---
+
 # ADR-002: In-Memory Stub Guards
 
 **Status:** Accepted

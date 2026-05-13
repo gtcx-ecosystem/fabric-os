@@ -1,10 +1,15 @@
+---
+title: 'System Architecture Specification — {system-name}'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # System Architecture Specification — {system-name}
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Formal security-focused specification. For the lightweight component design doc, see system-design-template.md (`system-design-template.md`).
 
 ---
 

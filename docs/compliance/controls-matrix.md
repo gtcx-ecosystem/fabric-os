@@ -1,8 +1,15 @@
-# Controls Matrix
+---
+title: 'Controls Matrix'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Controls Matrix
 
 Unified security control mapping across NIST 800-53 Rev 5, SOC 2 Trust Services Criteria (TSC), and ISO 27001:2022 Annex A. Each entry documents the GTCX implementation and current status.
 

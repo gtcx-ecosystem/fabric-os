@@ -1,8 +1,15 @@
-# POL-17: Business Continuity
+---
+title: 'POL-17: Business Continuity'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# POL-17: Business Continuity
 
 **Annex A Reference:** A.17 — Business Continuity
 **Effective Date:** 2026-05-08

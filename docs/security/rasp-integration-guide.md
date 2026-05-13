@@ -1,3 +1,14 @@
+---
+title: 'RASP Integration Guide — replay-guard'
+status: 'current'
+date: '2026-05-08'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'quarterly'
+---
+
 # RASP Integration Guide — replay-guard
 
 **Version:** 1.0

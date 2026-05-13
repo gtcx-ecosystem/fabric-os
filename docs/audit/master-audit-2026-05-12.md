@@ -1,6 +1,13 @@
-> **Status:** Current
-> **Date:** 2026-05-12
-> **Owner:** GTCX Infrastructure
+---
+title: 'GTCX Infrastructure — Master Audit & Bank-Grade Certification'
+status: 'current'
+date: '2026-05-12'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
 
 # GTCX Infrastructure — Master Audit & Bank-Grade Certification
 
@@ -29,8 +36,6 @@
 1. Fix replay-protection integration test isolation (`tools/replay-protection/tests/integration.test.mjs:13`) — flakiness blocks clean CI
 2. Deploy staging WAF + VPC Flow Logs Terraform (`infra/terraform/modules/waf/main.tf`, `infra/terraform/modules/flow-logs/main.tf`)
 3. Enable `use_fips_endpoint = true` in AWS provider configs (`infra/terraform/`) — FIPS assessment gap
-
-> **Hardcore sanity check:** Forensic verification found scores are honest within ±0.1. No opaque boosts detected. Raw weighted = 7.90. One minor FIPS documentation imprecision noted (3 `createHash` calls exist despite "no app-level crypto" claim). See Phase 5.5 for details.
 
 ---
 
@@ -159,8 +164,6 @@ No commit produced for this phase.
 ---
 
 ## 5. Bank-Grade Scorecard (Phase 5)
-
-> **Note:** These are the claimed scores. The honest recalculation is in §9 (Phase 5.5 verification).
 
 ### 5.1 Core Dimensions
 

@@ -1,10 +1,15 @@
+---
+title: 'Industry Landscape'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'architecture', 'infrastructure', 'frontend', 'mobile']
+review_cycle: 'monthly'
+---
+
 # Industry Landscape
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> [Organization Name] market — structure, players, and dynamics
 
 ---
 

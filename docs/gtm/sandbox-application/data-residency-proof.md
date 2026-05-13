@@ -1,3 +1,14 @@
+---
+title: 'Data Residency Proof'
+status: 'current'
+date: '2026-05-08'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'testing']
+review_cycle: 'quarterly'
+---
+
 # Data Residency Proof
 
 **Classification:** Confidential — Regulator Submission

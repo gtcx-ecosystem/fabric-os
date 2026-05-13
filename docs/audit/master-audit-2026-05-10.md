@@ -1,3 +1,14 @@
+---
+title: 'GTCX Infrastructure — Master Audit & Bank-Grade Certification'
+status: 'draft'
+date: '2026-05-10'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # GTCX Infrastructure — Master Audit & Bank-Grade Certification
 
 **Date:** 2026-05-10

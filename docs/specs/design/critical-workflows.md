@@ -1,10 +1,15 @@
+---
+title: 'Critical Workflows'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'frontend', 'network', 'devops', 'performance']
+review_cycle: 'on-change'
+---
+
 # Critical Workflows
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> The workflows that must function correctly for [Organization Name] to deliver its core value proposition. These are the acceptance criteria for "the product works."
 
 ---
 

@@ -1,8 +1,15 @@
-# Moat Execution Plan
+---
+title: 'Moat Execution Plan'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'api']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Moat Execution Plan
 
 **Purpose:** Execute the four strategic opportunities identified in the full audit — each creates durable competitive advantage that cannot be copied in 90 days.
 

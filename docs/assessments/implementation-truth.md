@@ -1,3 +1,14 @@
+---
+title: 'Implementation Truth — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-12'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
+
 # Implementation Truth — gtcx-infrastructure
 
 **Date:** 2026-03-09

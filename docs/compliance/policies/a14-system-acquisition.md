@@ -1,8 +1,15 @@
-# POL-14: System Acquisition, Development and Maintenance
+---
+title: 'POL-14: System Acquisition, Development and Maintenance'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# POL-14: System Acquisition, Development and Maintenance
 
 **Annex A Reference:** A.14 — System Development Controls
 **Effective Date:** 2026-05-08

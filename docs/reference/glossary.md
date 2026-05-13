@@ -1,8 +1,15 @@
-# Glossary
+---
+title: 'Glossary'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Glossary
 
 Definitions for all protocol-specific terms, acronyms, and concepts used across the GTCX Protocol layer. Terms are organized alphabetically within thematic groups.
 

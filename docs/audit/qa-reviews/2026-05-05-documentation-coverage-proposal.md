@@ -1,3 +1,14 @@
+---
+title: 'Internal Memo: Formalizing Documentation-as-Code Enforcement'
+status: 'current'
+date: '2026-05-05'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'critical'
+tags: ['compliance', 'architecture', 'infrastructure', 'testing', 'frontend']
+review_cycle: 'quarterly'
+---
+
 # Internal Memo: Formalizing Documentation-as-Code Enforcement
 
 - **Date:** 2026-05-05

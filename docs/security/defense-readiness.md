@@ -1,3 +1,14 @@
+---
+title: 'Defense Readiness Assessment — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-04'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # Defense Readiness Assessment — gtcx-infrastructure
 
 **Assessment date:** 2026-04-06

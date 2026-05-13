@@ -1,3 +1,14 @@
+---
+title: 'GitBook'
+status: 'current'
+date: '2026-05-02'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'quarterly'
+---
+
 # GitBook
 
 External-facing documentation published to GitBook. This section contains the public protocol documentation — quickstarts, integration guides, governance, and API reference.

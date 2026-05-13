@@ -1,8 +1,15 @@
-# Infrastructure Architecture — gtcx-infrastructure
+---
+title: 'Infrastructure Architecture — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Infrastructure Architecture — gtcx-infrastructure
 
 **Repo type:** DevOps / IaC tooling (no application runtime)
 **Primary languages:** HCL (Terraform), YAML (Kubernetes), TypeScript (scripts), Shell

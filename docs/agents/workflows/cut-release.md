@@ -1,8 +1,15 @@
-# Task Playbook: Apply an Infrastructure Change
+---
+title: 'Task Playbook: Apply an Infrastructure Change'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Task Playbook: Apply an Infrastructure Change
 
 **Owner:** DevOps engineer (gates + approval) + Lead engineer (sign-off)
 **Safety tier:** Requires human approval before applying to any environment
@@ -14,8 +21,6 @@
 Run when infrastructure changes are ready to be applied — Terraform modules, Kubernetes manifests, Docker configurations, migrations, or CI/CD pipelines.
 
 Infrastructure changes are not package publishes. There is no npm release. "Releasing" infra means applying reviewed IaC changes to an environment. Every environment tier (staging, production) requires explicit confirmation before apply.
-
-> **Hard rule**: Never run `terraform apply` or `kubectl apply` against production without `--approval-ticket=GTCX-XXX` in the command and explicit user confirmation.
 
 ---
 

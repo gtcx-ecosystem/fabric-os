@@ -1,4 +1,13 @@
-> Architecture Decision Records capture significant technical decisions. One ADR per decision. Keep them immutable once accepted — create a new ADR to supersede.
+---
+title: 'ADR-{number}: {title}'
+status: 'superseded'
+date: '2026-05-02'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['architecture', 'infrastructure', 'frontend', 'database', 'agentic']
+review_cycle: 'monthly'
+---
 
 # ADR-{number}: {title}
 

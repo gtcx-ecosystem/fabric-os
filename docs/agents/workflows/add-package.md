@@ -1,8 +1,15 @@
-# Task Playbook: Add an Infrastructure Component
+---
+title: 'Task Playbook: Add an Infrastructure Component'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'api']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Task Playbook: Add an Infrastructure Component
 
 **Owner:** DevOps engineer (design) + Lead engineer (approval)
 **Safety tier:** Requires human approval before proceeding

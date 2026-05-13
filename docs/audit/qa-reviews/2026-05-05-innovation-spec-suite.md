@@ -1,3 +1,14 @@
+---
+title: 'Innovation Spec Suite: GTCX Future-Core'
+status: 'current'
+date: '2026-05-05'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'testing']
+review_cycle: 'quarterly'
+---
+
 # Innovation Spec Suite: GTCX Future-Core
 
 - **Suite ID:** GTCX-SPEC-INF-001

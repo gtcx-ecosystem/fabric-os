@@ -1,8 +1,15 @@
-# Codebase Orientation — gtcx-infrastructure
+---
+title: 'Codebase Orientation — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'architecture', 'infrastructure', 'frontend', 'backend']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Codebase Orientation — gtcx-infrastructure
 
 Session-start protocol for any agent or contributor entering this repo.
 

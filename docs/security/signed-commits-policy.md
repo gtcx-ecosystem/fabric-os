@@ -1,8 +1,15 @@
-# Signed Git Commits Policy
+---
+title: 'Signed Git Commits Policy'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Signed Git Commits Policy
 
 **Purpose:** Ensure all code changes are cryptographically attributable to verified developers.
 **Compliance:** SOC 2 CC6.1 (Logical Access), ISO 27001 A.9.4.2, FFIEC Change Management
@@ -42,9 +49,6 @@ git config --global tag.gpgsign true
 ```bash
 # 1. Generate GPG key on YubiKey
 gpg --card-edit
-> admin
-> generate
-
 # 2. Configure Git
 git config --global user.signingkey <KEY_ID>
 git config --global commit.gpgsign true

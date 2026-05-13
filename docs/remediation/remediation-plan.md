@@ -1,8 +1,17 @@
-## GTCX Infrastructure — Remediation Plan
+---
+title: 'Remediation Plan'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'monthly'
+---
 
-> **Status:** Active — Sprint 3 complete; Sprint 4 pending
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Remediation Plan
+
+## GTCX Infrastructure — Remediation Plan
 
 ## Scope and normalization
 

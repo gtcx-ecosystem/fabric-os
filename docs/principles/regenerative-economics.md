@@ -1,8 +1,15 @@
-# Regenerative Economics Principles
+---
+title: 'Regenerative Economics Principles'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'api', 'frontend', 'risk', 'mobile']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Regenerative Economics Principles
 
 **Building systems that create more value than they extract**
 

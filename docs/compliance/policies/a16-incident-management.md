@@ -1,8 +1,15 @@
-# POL-16: Information Security Incident Management
+---
+title: 'POL-16: Information Security Incident Management'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'devops', 'governance']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# POL-16: Information Security Incident Management
 
 **Annex A Reference:** A.16 — Incident Management
 **Effective Date:** 2026-05-08

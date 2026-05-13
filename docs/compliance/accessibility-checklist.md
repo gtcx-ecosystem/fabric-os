@@ -1,8 +1,15 @@
-# Accessibility Checklist
+---
+title: 'Accessibility Checklist'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['compliance', 'infrastructure', 'testing', 'frontend', 'devops']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Accessibility Checklist
 
 **Standard**: WCAG 2.1 Level AA
 **Review Cycle**: Per release + quarterly audit

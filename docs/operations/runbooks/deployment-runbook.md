@@ -1,10 +1,15 @@
+---
+title: 'Deployment Runbook'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'infrastructure', 'api', 'frontend', 'backend']
+review_cycle: 'monthly'
+---
+
 # Deployment Runbook
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> End-to-end guide for deploying GTCX infrastructure to a new or existing environment.
 
 ---
 

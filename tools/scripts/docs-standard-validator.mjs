@@ -174,6 +174,34 @@ function checkFrontmatter(violations) {
     if (ADR_PATTERN.test(basename)) return;
 
     const content = readFileSync(filePath, 'utf8');
+
+    // Check for YAML frontmatter first
+    const hasYamlFrontmatter = content.trimStart().startsWith('---\n');
+    if (hasYamlFrontmatter) {
+      const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
+      if (fmMatch) {
+        const fm = fmMatch[1];
+        const hasStatus = /^status:/m.test(fm);
+        const hasDate = /^date:/m.test(fm);
+        const hasOwner = /^owner:/m.test(fm);
+
+        if (!hasStatus || !hasDate || !hasOwner) {
+          const missing = [
+            !hasStatus && 'status',
+            !hasDate && 'date',
+            !hasOwner && 'owner',
+          ].filter(Boolean);
+          violations.push({
+            type: 'missing-frontmatter',
+            file: relativeDocs(filePath),
+            detail: `Missing YAML frontmatter fields: ${missing.join(', ')}`,
+          });
+        }
+        return; // Valid YAML frontmatter found
+      }
+    }
+
+    // Fallback: check old-style blockquote metadata
     const hasStatus = /\*\*Status:\*\*|^Status:/m.test(content);
     const hasDate = /\*\*Date:\*\*|^Date:/m.test(content);
     const hasOwner = /\*\*Owner:\*\*|^Owner:/m.test(content);

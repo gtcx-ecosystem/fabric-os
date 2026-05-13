@@ -1,8 +1,15 @@
-# Compliance Templates
+---
+title: 'Compliance Templates'
+status: 'draft'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['compliance', 'architecture', 'infrastructure', 'frontend', 'devops']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Draft
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Compliance Templates
 
 Country-agnostic compliance rule templates for GTCX Protocol deployments.
 

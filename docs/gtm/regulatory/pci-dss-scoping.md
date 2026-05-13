@@ -1,8 +1,15 @@
-# PCI-DSS Scoping Assessment
+---
+title: 'PCI-DSS Scoping Assessment'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# PCI-DSS Scoping Assessment
 
 **Document ID**: GTCX-PCIDSS-SCOPE-001
 **Version**: 1.0

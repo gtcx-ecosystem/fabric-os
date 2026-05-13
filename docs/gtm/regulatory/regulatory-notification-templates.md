@@ -1,8 +1,15 @@
-# Regulatory Notification Templates
+---
+title: 'Regulatory Notification Templates'
+status: 'draft'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Draft
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Regulatory Notification Templates
 
 **Classification:** Confidential
 **Owner:** General Counsel + CISO

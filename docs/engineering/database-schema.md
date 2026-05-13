@@ -1,8 +1,15 @@
-# Database Schema — {Project Name}
+---
+title: 'Database Schema — {Project Name}'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Database Schema — {Project Name}
 
 **Database type:** {PostgreSQL / MongoDB / DynamoDB / MySQL}
 **Version:** {version}

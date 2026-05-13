@@ -1,3 +1,14 @@
+---
+title: 'Production Deployment Checklist'
+status: 'current'
+date: '2026-05-10'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
+
 # Production Deployment Checklist
 
 **Environment:** `gtcx-production` (af-south-1)  
@@ -185,8 +196,6 @@ If any verification fails:
 cd infra/terraform/environments/production
 terraform destroy -auto-approve
 ```
-
-> ⚠️ **Warning:** `terraform destroy` will delete ALL 86 resources including databases. Only use if the environment is truly broken and data loss is acceptable.
 
 ---
 

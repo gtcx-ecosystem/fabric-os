@@ -1,10 +1,15 @@
-> **EXAMPLE** — This file shows how to define an Editor-in-Chief role using the [contributors.md](contributors.md) framework. Replace all `[placeholder]` values and organization-specific details before use.
+---
+title: 'Editor-in-Chief'
+status: 'draft'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'frontend', 'database', 'network', 'performance']
+review_cycle: 'on-change'
+---
 
 # Editor-in-Chief
-
-> **Status:** Draft
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
 
 **The editorial voice and quality standard for [Organization Name]**
 

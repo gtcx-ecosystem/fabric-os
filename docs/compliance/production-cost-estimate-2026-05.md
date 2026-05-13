@@ -1,3 +1,14 @@
+---
+title: 'GTCX Production Environment — Monthly Cost Estimate'
+status: 'current'
+date: '2026-05-10'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'testing']
+review_cycle: 'quarterly'
+---
+
 # GTCX Production Environment — Monthly Cost Estimate
 
 **Date:** 2026-05-13
@@ -15,8 +26,6 @@
 | **Minimum (3 nodes, baseline traffic)** |     **$520 – $680** |   **$6,240 – $8,160** |
 | **Nominal (4 nodes, moderate traffic)** |     **$780 – $980** |  **$9,360 – $11,760** |
 | **Maximum (6 nodes, peak traffic)**     | **$1,200 – $1,500** | **$14,400 – $18,000** |
-
-> **Note:** af-south-1 (Cape Town) pricing is approximately **15–25% higher** than us-east-1 for EC2, RDS, and EKS. All estimates reflect regional pricing where known.
 
 ---
 
@@ -82,8 +91,6 @@
 | Managed Rules (AWS) | OWASP CRS + KnownBadInputs |  ~$1/rule/month |      $5 |      $5 |
 | **WAF Subtotal**    |                            |                 | **$21** | **$45** |
 
-> Traffic estimates: Zimbabwe pilot (~1,000 DAU) → ~5–10M requests/month. Scaling to 10,000 DAU → ~50–100M requests/month.
-
 ---
 
 ### 5. S3 WORM Audit Storage
@@ -96,8 +103,6 @@
 | S3 API Requests                | ~1M PUT, ~100K GET/mo  | ~$0.005/1K requests |     $5 |     $10 |
 | KMS Key                        | 1 customer-managed key |          ~$1/key-mo |     $1 |      $1 |
 | **S3 WORM Subtotal**           |                        |                     | **$9** | **$18** |
-
-> WORM Object Lock COMPLIANCE mode has no additional charge beyond standard S3 rates.
 
 ---
 
@@ -136,9 +141,6 @@
 | Observability   |      $40 |      $65 |      $90 |
 | Security (KMS)  |       $5 |       $5 |       $5 |
 | **Total**       | **$539** | **$694** | **$848** |
-
-> **Buffer for variance (+20%):** $647 – $1,018/mo
-> **With contingency (+40% for af-south-1 premium):** $755 – $1,187/mo
 
 The original estimate of **$1,200–1,800/month** was conservative and included:
 

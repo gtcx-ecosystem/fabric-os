@@ -1,3 +1,14 @@
+---
+title: 'Auto-Dev State — 2026-05-05'
+status: 'current'
+date: '2026-05-05'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'quarterly'
+---
+
 # Auto-Dev State — 2026-05-05
 
 ## Session

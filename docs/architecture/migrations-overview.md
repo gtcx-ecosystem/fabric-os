@@ -1,10 +1,15 @@
+---
+title: 'GTCX Migration Stack'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['compliance', 'architecture', 'infrastructure', 'api', 'frontend']
+review_cycle: 'monthly'
+---
+
 # GTCX Migration Stack
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> **Universal data transformation, verification, and guidance infrastructure**
 
 ## Overview
 

@@ -1,8 +1,15 @@
-# Open Infrastructure Principles
+---
+title: 'Open Infrastructure Principles'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'api', 'frontend', 'backend', 'database']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Open Infrastructure Principles
 
 **Building systems that others can build upon**
 

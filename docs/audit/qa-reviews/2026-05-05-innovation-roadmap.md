@@ -1,3 +1,14 @@
+---
+title: 'GTCX Innovation & Long-Term Roadmap'
+status: 'draft'
+date: '2026-05-05'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # GTCX Innovation & Long-Term Roadmap
 
 - **Version:** 1.0.0

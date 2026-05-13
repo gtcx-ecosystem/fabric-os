@@ -1,10 +1,15 @@
+---
+title: 'Environment Configuration — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'frontend']
+review_cycle: 'quarterly'
+---
+
 # Environment Configuration — gtcx-infrastructure
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Environment topology, configuration profiles, and secrets management for the GTCX infrastructure layer.
 
 ---
 

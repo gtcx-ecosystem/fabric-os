@@ -1,8 +1,15 @@
-# Quality Gates Runbook — gtcx-infrastructure
+---
+title: 'Quality Gates Runbook — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'compliance', 'infrastructure', 'frontend', 'backend']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Quality Gates Runbook — gtcx-infrastructure
 
 Required quality gates and triage order. Run this sequence before every release and after any CI gate failure.
 

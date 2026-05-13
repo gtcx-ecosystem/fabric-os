@@ -1,18 +1,21 @@
+---
+title: 'Jobs to Be Done'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'infrastructure', 'testing', 'frontend', 'ux']
+review_cycle: 'on-change'
+---
+
 # Jobs to Be Done
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> The functional, emotional, and social jobs that users hire [Organization Name] to accomplish. Every product decision should trace back to at least one job.
 
 ---
 
 ## Framework
 
 A job statement follows the format:
-
-> **When** [situation], **I want to** [motivation / goal], **so I can** [expected outcome].
 
 Jobs are categorized as:
 

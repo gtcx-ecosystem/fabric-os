@@ -1,8 +1,15 @@
-# Guide: Identifying Roles That Should Be Added
+---
+title: 'Guide: Identifying Roles That Should Be Added'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['compliance', 'infrastructure', 'frontend', 'governance', 'ux']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Guide: Identifying Roles That Should Be Added
 
 How to systematically audit an organization's role coverage and identify gaps that need new role definitions.
 

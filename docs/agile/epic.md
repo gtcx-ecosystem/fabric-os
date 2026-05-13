@@ -1,14 +1,15 @@
+---
+title: '[Epic Name] — Sprint [N] ([Milestone Name])'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'testing', 'agentic', 'docs']
+review_cycle: 'on-change'
+---
+
 # [Epic Name] — Sprint [N] ([Milestone Name])
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> **Sprint:** [N]
-> **Dates:** [YYYY-MM-DD] to [YYYY-MM-DD]
-> **Goal:** [One sentence — what this sprint delivers and why.]
-> **Milestone:** [Milestone name]
-> **Source of Truth:** [Link to phased-roadmap.md or PRD]
 
 ---
 

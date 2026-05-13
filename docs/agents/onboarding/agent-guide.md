@@ -1,8 +1,15 @@
-# Agent Guide
+---
+title: 'Agent Guide'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Agent Guide
 
 Guidelines for AI agents working in any project repo that uses this SOP structure.
 

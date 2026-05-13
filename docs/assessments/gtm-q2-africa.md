@@ -1,3 +1,14 @@
+---
+title: 'GTM Q2 Africa — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-12'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'standard'
+tags: ['compliance', 'architecture', 'infrastructure', 'testing', 'api']
+review_cycle: 'on-change'
+---
+
 # GTM Q2 Africa — gtcx-infrastructure
 
 **Date:** 2026-03-09

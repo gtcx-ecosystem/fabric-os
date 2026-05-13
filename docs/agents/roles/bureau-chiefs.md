@@ -1,12 +1,15 @@
-> **EXAMPLE** — This file shows how to apply the [contributors.md](contributors.md) template for a regional lead role. Replace all `[placeholder]` values and organization-specific details before use.
+---
+title: 'Bureau Chiefs'
+status: 'draft'
+date: '2026-05-10'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'informational'
+tags: ['compliance', 'architecture', 'infrastructure', 'frontend', 'database']
+review_cycle: 'monthly'
+---
 
 # Bureau Chiefs
-
-> **Status:** Draft
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Regional leadership for [Organization Name] coverage
 
 ---
 

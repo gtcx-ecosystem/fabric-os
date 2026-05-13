@@ -1,3 +1,14 @@
+---
+title: 'Compliance'
+status: 'current'
+date: '2026-05-02'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'mobile', 'agentic']
+review_cycle: 'quarterly'
+---
+
 # Compliance
 
 | Document                                           | Description                                                        |

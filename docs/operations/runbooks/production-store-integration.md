@@ -1,8 +1,15 @@
-# Production Store Integration
+---
+title: 'Production Store Integration'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Production Store Integration
 
 How to replace in-memory stubs with production-grade persistence. Covers Redis (rate limiting, replay cache) and Postgres (audit log). Also documents the fail-open/fail-closed policy matrix.
 

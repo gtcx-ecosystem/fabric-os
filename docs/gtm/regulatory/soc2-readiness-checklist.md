@@ -1,8 +1,15 @@
-# SOC 2 Type II Readiness Checklist
+---
+title: 'SOC 2 Type II Readiness Checklist'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# SOC 2 Type II Readiness Checklist
 
 **Document ID**: GTCX-SOC2-READY-001
 **Version**: 1.0

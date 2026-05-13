@@ -1,8 +1,15 @@
-# POL-06: Organization of Information Security
+---
+title: 'POL-06: Organization of Information Security'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# POL-06: Organization of Information Security
 
 **Annex A Reference:** A.6 — Organizational Controls
 **Effective Date:** 2026-05-08

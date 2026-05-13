@@ -1,3 +1,14 @@
+---
+title: 'ADR-001: Monorepo Structure'
+status: 'current'
+date: '2026-05-02'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['architecture', 'infrastructure', 'api', 'frontend', 'database']
+review_cycle: 'monthly'
+---
+
 # ADR-001: Monorepo Structure
 
 ## Status

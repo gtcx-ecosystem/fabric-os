@@ -1,8 +1,15 @@
-# Production Readiness Evidence — 2026-05-08
+---
+title: 'Production Readiness Evidence — 2026-05-08'
+status: 'current'
+date: '2026-05-11'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'testing']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-11
-> **Owner:** GTCX Infrastructure
+# Production Readiness Evidence — 2026-05-08
 
 ## GTCX Infrastructure Replay Protection
 

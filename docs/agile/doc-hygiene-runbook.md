@@ -1,8 +1,15 @@
-# Guide: Documentation Hygiene Runbook
+---
+title: 'Guide: Documentation Hygiene Runbook'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['infrastructure', 'api', 'frontend', 'devops', 'agentic']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Guide: Documentation Hygiene Runbook
 
 How to run a documentation hygiene check across the repo.
 

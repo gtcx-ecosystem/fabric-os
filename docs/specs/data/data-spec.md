@@ -1,8 +1,15 @@
-# [Project Name] Data Specification
+---
+title: '[Project Name] Data Specification'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['compliance', 'infrastructure', 'api', 'frontend', 'backend']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# [Project Name] Data Specification
 
 **Document ID**: [DOC-DATA-NNN]
 **Version**: {version}

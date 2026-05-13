@@ -1,8 +1,15 @@
-# Regulatory Framework
+---
+title: 'Regulatory Framework'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'testing']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Regulatory Framework
 
 Regulatory landscape, per-commodity compliance obligations, and how the GTCX Protocol layer maps to each framework. Configuration is jurisdiction- and commodity-specific — no regulatory framework is hardcoded.
 

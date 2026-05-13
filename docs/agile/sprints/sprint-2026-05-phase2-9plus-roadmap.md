@@ -1,8 +1,15 @@
-# Sprint Phase 2: 9+ Production-Readiness Roadmap
+---
+title: 'Sprint Phase 2: 9+ Production-Readiness Roadmap'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Sprint Phase 2: 9+ Production-Readiness Roadmap
 
 **Goal:** Close the 5 remaining trust-bearing audit gaps to move `gtcx-infrastructure` from 7.5 → 9+.
 

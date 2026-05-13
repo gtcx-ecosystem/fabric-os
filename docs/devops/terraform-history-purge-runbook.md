@@ -1,8 +1,15 @@
-# Terraform Binary History Purge Runbook
+---
+title: 'Terraform Binary History Purge Runbook'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'api', 'frontend', 'devops', 'agentic']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Terraform Binary History Purge Runbook
 
 ## Problem
 

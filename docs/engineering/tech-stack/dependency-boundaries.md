@@ -1,8 +1,15 @@
-# Dependency Boundaries
+---
+title: 'Dependency Boundaries'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'infrastructure', 'frontend', 'devops', 'performance']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Dependency Boundaries
 
 Purpose: define which dependency sources are allowed, which are prohibited, and the review rules for exceptions.
 

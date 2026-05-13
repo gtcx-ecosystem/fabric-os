@@ -1,8 +1,15 @@
-# Agent Context Recovery — gtcx-infrastructure
+---
+title: 'Agent Context Recovery — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'architecture', 'infrastructure', 'frontend', 'database']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Agent Context Recovery — gtcx-infrastructure
 
 How to recover agent context across sessions, prevent drift, and maintain continuity in a codebase where incorrect assumptions cause downstream problems.
 

@@ -1,10 +1,15 @@
+---
+title: 'Quick Reference — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'frontend']
+review_cycle: 'quarterly'
+---
+
 # Quick Reference — gtcx-infrastructure
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> One-page orientation. Start here, then follow the links.
 
 ---
 

@@ -1,8 +1,15 @@
-# QA Process
+---
+title: 'QA Process'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# QA Process
 
 **Owner**: [QA Lead / Engineering Lead]
 **Review Cycle**: Quarterly or after major process changes

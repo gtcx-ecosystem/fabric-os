@@ -1,3 +1,14 @@
+---
+title: 'Infrastructure QA Review: Roadmap for Improvement & Hardening'
+status: 'draft'
+date: '2026-05-05'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'critical'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'quarterly'
+---
+
 # Infrastructure QA Review: Roadmap for Improvement & Hardening
 
 - **Date:** 2026-05-05

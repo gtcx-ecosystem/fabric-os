@@ -1,3 +1,14 @@
+---
+title: 'Pre-Submission Meeting Agenda — Regulatory Sandbox'
+status: 'draft'
+date: '2026-05-08'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # Pre-Submission Meeting Agenda — Regulatory Sandbox
 
 **Purpose:** Informal meeting with the regulator's sandbox team before formal application  
@@ -71,21 +82,4 @@
 
 ### Thank-You Email Template
 
-> Subject: Thank you — GTCX sandbox pre-submission meeting [DATE]
 >
-> Dear [Name],
->
-> Thank you for meeting with us on [date] to discuss our sandbox application. We appreciated the guidance on [specific topics discussed].
->
-> As discussed, we will:
->
-> 1. [Action item 1 — owner, deadline]
-> 2. [Action item 2 — owner, deadline]
-> 3. [Action item 3 — owner, deadline]
->
-> We plan to submit our formal application by [date]. Please let us know if there is anything else you need from us in the interim.
->
-> Best regards,
-> [Name, Title]
-> GTCX
-> [Phone] | [Email]

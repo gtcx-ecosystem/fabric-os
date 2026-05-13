@@ -1,11 +1,15 @@
-# [Product Name] — Phased Roadmap
+---
+title: '[Product Name] — Phased Roadmap'
+status: 'current'
+date: '2026-05-02'
+owner: 'product-lead'
+role: 'product-lead'
+tier: 'standard'
+tags: ['infrastructure', 'testing', 'devops', 'mobile', 'telemetry']
+review_cycle: 'on-change'
+---
 
-> **Source:** [PRD / Discovery Doc / Strategy Brief]
-> **Scope:** [Team name / Product / Feature set]
-> **Cadence:** [X]-week sprints
-> **Status:** [Active / Planning / On Hold]
-> **Owner:** [Product Lead]
-> **Last Updated:** [YYYY-MM-DD]
+# [Product Name] — Phased Roadmap
 
 ---
 

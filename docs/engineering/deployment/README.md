@@ -1,0 +1,18 @@
+---
+title: 'Deployment'
+status: 'current'
+date: '2026-05-10'
+owner: 'protocol-architect'
+role: 'protocol-architect'
+tier: 'informational'
+tags: ['docs', 'architecture']
+review_cycle: 'monthly'
+---
+
+# Deployment
+
+Index of documents in `docs/engineering/deployment`.
+
+## Documents
+
+- [deployment](./deployment.md)

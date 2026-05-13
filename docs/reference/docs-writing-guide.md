@@ -1,8 +1,15 @@
-# Documentation Writing Guide
+---
+title: 'Documentation Writing Guide'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['architecture', 'infrastructure', 'api', 'frontend', 'database']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Documentation Writing Guide
 
 How to write clear, useful documentation in the GTCX Protocol repo. Covers voice, structure, naming, linking, and common mistakes.
 
@@ -68,8 +75,6 @@ Someone reading only the headings should understand the document's structure. Te
 ```
 
 **Bad:**
-
-> The lotId field is a required string containing the commodity lot identifier. The amount field is a required number representing the transfer amount in grams.
 
 ### Bulleted Lists Over Paragraphs for Lists
 

@@ -1,8 +1,15 @@
-# [Project Name] Frontend Architecture
+---
+title: '[Project Name] Frontend Architecture'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# [Project Name] Frontend Architecture
 
 **Document ID**: [DOC-FRONTEND-NNN]
 **Version**: {version}

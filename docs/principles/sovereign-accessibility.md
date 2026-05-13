@@ -1,8 +1,15 @@
-# Sovereign Accessibility Principles
+---
+title: 'Sovereign Accessibility Principles'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['architecture', 'infrastructure', 'testing', 'frontend', 'network']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Sovereign Accessibility Principles
 
 **Making verification infrastructure available to everyone who needs it**
 

@@ -1,3 +1,14 @@
+---
+title: 'ADR-006: Package Boundaries and Dependencies'
+status: 'current'
+date: '2026-05-12'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['architecture', 'infrastructure', 'frontend', 'backend', 'database']
+review_cycle: 'on-change'
+---
+
 # ADR-006: Package Boundaries and Dependencies
 
 ## Status

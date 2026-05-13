@@ -1,8 +1,15 @@
-# Latency SLO Breach Runbook
+---
+title: 'Latency SLO Breach Runbook'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'backend', 'database', 'network', 'devops']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Latency SLO Breach Runbook
 
 ## Alert
 

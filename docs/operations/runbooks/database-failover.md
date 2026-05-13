@@ -1,12 +1,15 @@
+---
+title: 'Runbook: Database Failover'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['compliance', 'architecture', 'infrastructure', 'testing', 'api']
+review_cycle: 'on-change'
+---
+
 # Runbook: Database Failover
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> **Owner**: Platform Engineering
-> **Last reviewed**: 2026-03-18
-> **Severity**: P0
 
 ---
 

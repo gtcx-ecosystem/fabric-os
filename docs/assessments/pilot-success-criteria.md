@@ -1,8 +1,15 @@
-# Pilot Success Criteria — ZWCMP Zimbabwe
+---
+title: 'Pilot Success Criteria — ZWCMP Zimbabwe'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['crypto', 'compliance', 'architecture', 'infrastructure', 'api']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Pilot Success Criteria — ZWCMP Zimbabwe
 
 ## Overview
 

@@ -1,8 +1,15 @@
-# [Project Name] Test Plan
+---
+title: '[Project Name] Test Plan'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# [Project Name] Test Plan
 
 **Document ID**: [DOC-TEST-NNN]
 **Version**: {version}

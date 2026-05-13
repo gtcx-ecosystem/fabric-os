@@ -1,8 +1,15 @@
-# Migration Runbook — gtcx-infrastructure
+---
+title: 'Migration Runbook — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['compliance', 'architecture', 'infrastructure', 'frontend', 'backend']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Migration Runbook — gtcx-infrastructure
 
 Process for running SQL database migrations with `./infra/scripts/migrate.sh`.
 

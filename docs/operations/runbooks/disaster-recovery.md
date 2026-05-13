@@ -1,8 +1,15 @@
-# Disaster Recovery Runbook
+---
+title: 'Disaster Recovery Runbook'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['crypto', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Disaster Recovery Runbook
 
 Recovery procedures for protocol services (TradePass, GeoTag, GCI, VaultMark, PvP, PANX), shared packages, and supporting state stores (audit logs, replay cache, rate limits).
 

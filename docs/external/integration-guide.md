@@ -1,8 +1,15 @@
-# Integration Guide
+---
+title: 'Integration Guide'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['crypto', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Integration Guide
 
 Full integration walkthrough for platform builders, exchange operators, and institutional participants connecting to the GTCX Protocol.
 

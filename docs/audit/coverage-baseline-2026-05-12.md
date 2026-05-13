@@ -1,9 +1,15 @@
-# Test Coverage Baseline
+---
+title: 'Test Coverage Baseline'
+status: 'current'
+date: '2026-05-12'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'critical'
+tags: ['compliance', 'infrastructure', 'frontend', 'backend', 'governance']
+review_cycle: 'quarterly'
+---
 
-> **Date:** 2026-05-12  
-> **Repo:** `gtcx-infrastructure`  
-> **Tool:** c8 (v8 coverage)  
-> **Target:** Branch coverage ≥90% for 10/10 roadmap
+# Test Coverage Baseline
 
 ---
 

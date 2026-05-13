@@ -1,8 +1,15 @@
-# Quickstart
+---
+title: 'Quickstart'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['crypto', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Quickstart
 
 Get up and running with the GTCX Protocol SDK in under 10 minutes.
 

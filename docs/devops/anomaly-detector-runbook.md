@@ -1,3 +1,14 @@
+---
+title: 'Anomaly Detector — Operations Runbook'
+status: 'current'
+date: '2026-05-10'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'standard'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'on-change'
+---
+
 # Anomaly Detector — Operations Runbook
 
 **Service:** `anomaly-detector`  
@@ -138,16 +149,7 @@ aws eks update-nodegroup-config \
 
 ### Issue: `CrashLoopBackOff` (historic — now resolved)
 
-> **Root cause:** The anomaly detector was originally deployed as a `Deployment`, but it exits after evaluation. Kubernetes interpreted exit code 0 as a crash and restarted it indefinitely.
 >
-> **Fix:** Converted to `CronJob` with `restartPolicy: OnFailure` and `concurrencyPolicy: Forbid`.
->
-> **Verification:**
->
-> ```bash
-> kubectl get cronjob anomaly-detector -n gtcx
-> # Should show: ACTIVE=0, LAST SCHEDULE=<recent timestamp>
-> ```
 
 ---
 

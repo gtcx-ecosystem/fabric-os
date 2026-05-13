@@ -1,3 +1,14 @@
+---
+title: 'GTCX Ecosystem — Repository Health Review'
+status: 'deprecated'
+date: '2026-05-10'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'quarterly'
+---
+
 # GTCX Ecosystem — Repository Health Review
 
 **Date:** 2026-05-12

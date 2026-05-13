@@ -1,8 +1,15 @@
-# Pilot Agreement Template — GTCX Platform Evaluation
+---
+title: 'Pilot Agreement Template — GTCX Platform Evaluation'
+status: 'draft'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'testing']
+review_cycle: 'monthly'
+---
 
-> **Status:** Draft
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Pilot Agreement Template — GTCX Platform Evaluation
 
 **This is a template. Customize for each pilot engagement.**
 

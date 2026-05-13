@@ -1,8 +1,15 @@
-# Definition of Done — gtcx-infrastructure
+---
+title: 'Definition of Done — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'architecture', 'infrastructure', 'testing', 'backend']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Definition of Done — gtcx-infrastructure
 
 Quality criteria that must be satisfied before any work item in `gtcx-infrastructure` is considered complete.
 

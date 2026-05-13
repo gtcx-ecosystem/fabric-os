@@ -1,3 +1,14 @@
+---
+title: 'Vault Dynamic Credentials — SIGNAL L4 Infrastructure Spec'
+status: 'current'
+date: '2026-05-05'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'monthly'
+---
+
 # Vault Dynamic Credentials — SIGNAL L4 Infrastructure Spec
 
 **Status:** Planned

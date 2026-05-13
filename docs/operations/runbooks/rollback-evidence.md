@@ -1,8 +1,15 @@
-# Rollback Evidence
+---
+title: 'Rollback Evidence'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'infrastructure', 'api', 'frontend', 'devops']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Rollback Evidence
 
 Use this runbook after a failed deploy, failed canary, or manual rollback to preserve cluster state and recovery proof.
 

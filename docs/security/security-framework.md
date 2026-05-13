@@ -1,8 +1,15 @@
-# GTCX Security Infrastructure
+---
+title: 'GTCX Security Infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# GTCX Security Infrastructure
 
 _Enterprise-Grade Security Framework Aligned with 12 Architectural Principles_
 _Version 2.0_
@@ -15,8 +22,6 @@ GTCX implements **zero-trust security architecture** with **defense-in-depth** p
 - **Producer Identity Systems** - TradePass credentials and biometrics
 - **Government Integration** - Sovereign compliance data
 - **Cross-Border Trade Operations** - International settlement and audit
-
-> _"Security is not a feature—it's the foundation that enables trust in verification infrastructure."_
 
 ## Security Architecture
 

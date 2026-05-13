@@ -1,3 +1,14 @@
+---
+title: 'GTM — Go-to-Market Regulatory Readiness'
+status: 'current'
+date: '2026-05-10'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # GTM — Go-to-Market Regulatory Readiness
 
 Everything needed to enter African central bank sandboxes and scale to full licensing.

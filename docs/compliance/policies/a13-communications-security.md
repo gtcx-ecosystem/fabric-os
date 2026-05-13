@@ -1,8 +1,15 @@
-# POL-13: Communications Security
+---
+title: 'POL-13: Communications Security'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# POL-13: Communications Security
 
 **Annex A Reference:** A.13 — Communications Security
 **Effective Date:** 2026-05-08

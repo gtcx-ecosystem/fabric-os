@@ -1,8 +1,15 @@
-# LLM Routing Strategy — Compliance Gateway
+---
+title: 'LLM Routing Strategy — Compliance Gateway'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['compliance', 'infrastructure', 'api', 'verification', 'agentic']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# LLM Routing Strategy — Compliance Gateway
 
 _Last updated: 2026-05-10. Sources: OpenRouter API, pricepertoken.com, getdeploying.com, provider docs._
 

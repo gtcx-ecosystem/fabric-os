@@ -1,8 +1,15 @@
-# [Competitor Category] — Competitive Analysis
+---
+title: '[Competitor Category] — Competitive Analysis'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['architecture', 'infrastructure', 'mobile', 'agentic', 'gtm']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# [Competitor Category] — Competitive Analysis
 
 **[Describe the incumbent category — e.g., "The dominant information infrastructure for [market]"]**
 

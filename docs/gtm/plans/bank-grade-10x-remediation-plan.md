@@ -1,8 +1,15 @@
-# Bank-Grade 10/10 Remediation Plan
+---
+title: 'Bank-Grade 10/10 Remediation Plan'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Bank-Grade 10/10 Remediation Plan
 
 **Target:** Achieve 10/10 across all control domains under FFIEC, PCI-DSS, SOC 2, and ISO 27001 frameworks.
 **Timeline:** 12 months (4 phases, 3 months each)

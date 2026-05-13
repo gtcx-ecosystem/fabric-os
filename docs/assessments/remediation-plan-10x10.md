@@ -1,12 +1,15 @@
+---
+title: 'Remediation Plan: gtcx-infrastructure — Target 10/10'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'api']
+review_cycle: 'monthly'
+---
+
 # Remediation Plan: gtcx-infrastructure — Target 10/10
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Verified audit: 2026-03-19
-> Repo: `/Users/amanianai/Sites/gtcx-ecosystem/gtcx-infrastructure`
-> Purpose: Close every gap to achieve 10/10 across all 5 audit dimensions
 
 ---
 

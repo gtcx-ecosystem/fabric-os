@@ -1,3 +1,14 @@
+---
+title: 'GTCX Infrastructure — 10/10 Remediation Plan'
+status: 'current'
+date: '2026-05-11'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # GTCX Infrastructure — 10/10 Remediation Plan
 
 **Status:** In progress (Phase 1 complete)  

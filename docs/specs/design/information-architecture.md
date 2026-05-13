@@ -1,10 +1,15 @@
+---
+title: 'Information Architecture'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['architecture', 'infrastructure', 'frontend', 'mobile', 'agentic']
+review_cycle: 'on-change'
+---
+
 # Information Architecture
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> The structural design of [Organization Name]'s product — how content, navigation, and features are organized and labeled.
 
 ---
 

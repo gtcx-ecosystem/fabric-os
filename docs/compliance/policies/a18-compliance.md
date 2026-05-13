@@ -1,8 +1,15 @@
-# POL-18: Compliance
+---
+title: 'POL-18: Compliance'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'frontend']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# POL-18: Compliance
 
 **Annex A Reference:** A.18 — Compliance
 **Effective Date:** 2026-05-08

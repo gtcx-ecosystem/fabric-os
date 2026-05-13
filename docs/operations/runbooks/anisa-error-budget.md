@@ -1,8 +1,15 @@
-# ANISA Error Budget Runbook
+---
+title: 'ANISA Error Budget Runbook'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'api', 'frontend', 'devops', 'performance']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# ANISA Error Budget Runbook
 
 ## Alert
 

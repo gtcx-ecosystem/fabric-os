@@ -1,3 +1,14 @@
+---
+title: 'GTCX Security Policies Library'
+status: 'current'
+date: '2026-05-08'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'frontend']
+review_cycle: 'quarterly'
+---
+
 # GTCX Security Policies Library
 
 ISO 27001:2022 Annex A aligned security policies for the GTCX ecosystem.

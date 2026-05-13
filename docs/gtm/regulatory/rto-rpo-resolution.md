@@ -1,8 +1,15 @@
-# Board Resolution: Recovery Time & Recovery Point Objectives
+---
+title: 'Board Resolution: Recovery Time & Recovery Point Objectives'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Board Resolution: Recovery Time & Recovery Point Objectives
 
 **Document ID:** GTCX-BRD-DR-001
 **Classification:** Confidential — Board Use Only

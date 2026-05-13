@@ -1,8 +1,15 @@
-# Developer Setup — gtcx-infrastructure
+---
+title: 'Developer Setup — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Developer Setup — gtcx-infrastructure
 
 ---
 
@@ -17,8 +24,6 @@
 | Terraform      | >= 1.6.0  | https://developer.hashicorp.com/terraform/downloads |
 | kubectl        | >= 1.28   | https://kubernetes.io/docs/tasks/tools/             |
 | AWS CLI        | >= 2.13   | `brew install awscli` or https://aws.amazon.com/cli |
-
-> Terraform, kubectl, and the AWS CLI are not required just to run local services — only for IaC work or deploying to live environments.
 
 ---
 
@@ -67,8 +72,6 @@ docker compose -f infra/docker/docker-compose.dev.yml up -d
 | Grafana            | 3030    | admin / admin                        |
 | Jaeger UI          | 16686   | No auth (local)                      |
 | Loki               | 3100    | No auth (local)                      |
-
-> The two PostgreSQL instances are a hard architectural constraint. The audit database (`postgres-audit` on port 5433) is append-only. Never merge the two instances, never cross-write.
 
 ---
 

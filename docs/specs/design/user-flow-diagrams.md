@@ -1,10 +1,15 @@
+---
+title: 'User Flow Diagrams'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'frontend', 'network', 'ux', 'mobile']
+review_cycle: 'on-change'
+---
+
 # User Flow Diagrams
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> End-to-end journey maps for [Organization Name]'s key user flows.
 
 ---
 

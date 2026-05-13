@@ -1,8 +1,15 @@
-# [Service Name] -- Metrics and Dashboards
+---
+title: '[Service Name] -- Metrics and Dashboards'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# [Service Name] -- Metrics and Dashboards
 
 **Document ID**: [SVC]-METRICS-001
 **Version**: 1.0

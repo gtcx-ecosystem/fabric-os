@@ -1,10 +1,15 @@
+---
+title: 'Story Lifecycle'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['compliance', 'architecture', 'infrastructure', 'api', 'frontend']
+review_cycle: 'monthly'
+---
+
 # Story Lifecycle
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> From idea to publication — the [Organization Name] content workflow
 
 ---
 

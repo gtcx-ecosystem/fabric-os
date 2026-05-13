@@ -1,10 +1,15 @@
+---
+title: 'Legal Sign-Off'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['compliance', 'infrastructure', 'api', 'frontend', 'devops']
+review_cycle: 'monthly'
+---
+
 # Legal Sign-Off
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Legal review requirements and sign-off gates for [Organization Name] releases.
 
 ---
 

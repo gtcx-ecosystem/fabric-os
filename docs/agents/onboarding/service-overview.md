@@ -1,10 +1,15 @@
+---
+title: 'Service Overview — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'testing']
+review_cycle: 'monthly'
+---
+
 # Service Overview — gtcx-infrastructure
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Understand this repo in 5 minutes.
 
 ---
 

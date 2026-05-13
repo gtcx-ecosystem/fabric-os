@@ -1,3 +1,14 @@
+---
+title: '1-agentic Integration — gtcx-infrastructure'
+status: 'current'
+date: '2026-05-10'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'informational'
+tags: ['security', 'architecture', 'infrastructure', 'frontend', 'devops']
+review_cycle: 'monthly'
+---
+
 # 1-agentic Integration — gtcx-infrastructure
 
 **Status:** Planned. The governance model is in place and operational. Technical wiring between this repo and `1-agentic` has not yet begun.

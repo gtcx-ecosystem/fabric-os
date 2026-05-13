@@ -1,3 +1,14 @@
+---
+title: 'KYC/AML Record Retention Schedule'
+status: 'current'
+date: '2026-05-08'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'standard'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'on-change'
+---
+
 # KYC/AML Record Retention Schedule
 
 **Classification:** Confidential — Regulator Submission

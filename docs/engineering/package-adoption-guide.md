@@ -1,3 +1,14 @@
+---
+title: 'Cross-Repo Package Adoption Guide'
+status: 'deprecated'
+date: '2026-05-10'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'monthly'
+---
+
 # Cross-Repo Package Adoption Guide
 
 **Date:** 2026-05-13
@@ -58,8 +69,6 @@ car
     echo "@gtcx:registry=https://npm.pkg.github.com" >> .npmrc
     echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 ```
-
-> `GITHUB_TOKEN` is automatically available in GitHub Actions. No extra secrets needed.
 
 ---
 

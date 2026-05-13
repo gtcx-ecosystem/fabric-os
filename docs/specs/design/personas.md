@@ -1,10 +1,15 @@
+---
+title: 'User Personas'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['infrastructure', 'frontend', 'database', 'network', 'ux']
+review_cycle: 'on-change'
+---
+
 # User Personas
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Archetypal user profiles that represent [Organization Name]'s key audiences. All product and design decisions should be grounded in one or more of these personas.
 
 ---
 
@@ -46,8 +51,6 @@
 
 ### Representative Quote
 
-> "[A quote that captures their core frustration or aspiration — grounded in research if available, otherwise a synthesis]"
-
 ---
 
 ## Persona 2: [Persona Name]
@@ -84,8 +87,6 @@
 - **Key requirement**: [Non-negotiable UX property]
 
 ### Representative Quote
-
-> "[Quote]"
 
 ---
 

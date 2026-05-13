@@ -1,8 +1,15 @@
-# [Service Name] v[X.Y] GA Release Checklist
+---
+title: '[Service Name] v[X.Y] GA Release Checklist'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# [Service Name] v[X.Y] GA Release Checklist
 
 **Owner**: [Team Name]
 **Scope**: [Service / Product Name]

@@ -1,8 +1,15 @@
-# Priority Framework
+---
+title: 'Priority Framework'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'compliance', 'infrastructure', 'frontend', 'risk']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Priority Framework
 
 Classification system for work items, bugs, features, and improvements.
 

@@ -1,8 +1,15 @@
-# Release Evidence Bundle
+---
+title: 'Release Evidence Bundle'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'infrastructure', 'api', 'frontend', 'devops']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Release Evidence Bundle
 
 Generate a machine-readable release bundle before promotion or pilot sign-off.
 

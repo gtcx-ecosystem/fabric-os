@@ -1,8 +1,15 @@
-# Definition of Ready
+---
+title: 'Definition of Ready'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['architecture', 'infrastructure', 'testing', 'api', 'frontend']
+review_cycle: 'on-change'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Definition of Ready
 
 Criteria that must be met before a user story can enter a sprint. Stories that do not meet these criteria should be refined first.
 

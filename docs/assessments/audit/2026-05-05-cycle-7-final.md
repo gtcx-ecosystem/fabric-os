@@ -1,3 +1,14 @@
+---
+title: 'GTCX Infrastructure — Final Assessment (Cycle 7)'
+status: 'current'
+date: '2026-05-05'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'quarterly'
+---
+
 # GTCX Infrastructure — Final Assessment (Cycle 7)
 
 **Date:** 2026-05-05

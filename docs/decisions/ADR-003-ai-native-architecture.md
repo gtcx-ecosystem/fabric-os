@@ -1,3 +1,14 @@
+---
+title: 'ADR-003: AI-Native Architecture'
+status: 'current'
+date: '2026-05-10'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'informational'
+tags: ['crypto', 'compliance', 'architecture', 'infrastructure', 'frontend']
+review_cycle: 'monthly'
+---
+
 # ADR-003: AI-Native Architecture
 
 ## Status

@@ -1,8 +1,15 @@
-# Legal Review — Release Checklist
+---
+title: 'Legal Review — Release Checklist'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['crypto', 'compliance', 'infrastructure', 'frontend', 'devops']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Legal Review — Release Checklist
 
 **Release**: {version}
 **Review Date**: {date}

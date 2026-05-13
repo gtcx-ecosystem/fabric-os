@@ -1,8 +1,15 @@
-# API Design Patterns
+---
+title: 'API Design Patterns'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'testing']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# API Design Patterns
 
 Reference patterns and conventions for designing consistent, scalable APIs.
 

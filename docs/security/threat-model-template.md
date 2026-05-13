@@ -1,3 +1,14 @@
+---
+title: 'STRIDE Threat Model Template'
+status: 'current'
+date: '2026-05-08'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # STRIDE Threat Model Template
 
 **Version:** 1.0

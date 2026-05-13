@@ -1,12 +1,15 @@
+---
+title: 'Runbook: Terraform State Migration (Local → S3)'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['crypto', 'infrastructure', 'api', 'frontend', 'backend']
+review_cycle: 'on-change'
+---
+
 # Runbook: Terraform State Migration (Local → S3)
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> **Owner**: Platform Engineering
-> **Last reviewed**: 2026-03-18
-> **Severity**: P2
 
 ---
 

@@ -1,8 +1,15 @@
-# SOC 2 Evidence Pipeline (Compliance API)
+---
+title: 'SOC 2 Evidence Pipeline (Compliance API)'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'infrastructure', 'api']
+review_cycle: 'quarterly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# SOC 2 Evidence Pipeline (Compliance API)
 
 **Owner**: Security + Platform
 **Scope**: Compliance API (Gateway)

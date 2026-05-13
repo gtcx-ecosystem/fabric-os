@@ -1,17 +1,19 @@
+---
+title: 'North Stars'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['infrastructure', 'frontend', 'database', 'telemetry', 'agentic']
+review_cycle: 'monthly'
+---
+
 # North Stars
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> The north star metric and design targets that define "winning" for [Organization Name]. Everything we build should move these numbers.
 
 ---
 
 ## North Star Metric
-
-> **[North Star Metric Name]**
-> [Definition in plain English]
 
 This metric was chosen because it captures both user value delivery and business health simultaneously. A user who [achieves the north star behavior] is a user who has found real value — and is likely to retain and refer.
 

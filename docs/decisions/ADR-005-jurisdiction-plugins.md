@@ -1,3 +1,14 @@
+---
+title: 'ADR-005: Jurisdiction Plugin Architecture'
+status: 'current'
+date: '2026-05-02'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'informational'
+tags: ['security', 'compliance', 'architecture', 'infrastructure', 'frontend']
+review_cycle: 'monthly'
+---
+
 # ADR-005: Jurisdiction Plugin Architecture
 
 ## Status

@@ -1,3 +1,14 @@
+---
+title: 'GTCX Hardening Strategy: Bridging the Gap to Institutional Grade'
+status: 'current'
+date: '2026-05-05'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
+review_cycle: 'quarterly'
+---
+
 # GTCX Hardening Strategy: Bridging the Gap to Institutional Grade
 
 - **Date:** 2026-05-05

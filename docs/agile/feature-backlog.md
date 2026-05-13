@@ -1,8 +1,15 @@
-# Feature Backlog — {Project Name}
+---
+title: 'Feature Backlog — {Project Name}'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['infrastructure', 'frontend', 'risk', 'telemetry', 'agentic']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Feature Backlog — {Project Name}
 
 A structured breakdown of epics, features, and user stories with prioritization and estimation guidance.
 

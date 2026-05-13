@@ -1,8 +1,15 @@
-# Network Architecture
+---
+title: 'Network Architecture'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'informational'
+tags: ['crypto', 'architecture', 'infrastructure', 'frontend', 'database']
+review_cycle: 'monthly'
+---
 
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
+# Network Architecture
 
 **Protocol:** GTCX Protocol Layer
 **Version:** 3.0.0

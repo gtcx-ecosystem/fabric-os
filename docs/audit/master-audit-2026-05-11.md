@@ -1,3 +1,14 @@
+---
+title: 'GTCX Infrastructure — Fresh Bank-Grade Audit'
+status: 'current'
+date: '2026-05-11'
+owner: 'quality-evidence-lead'
+role: 'quality-evidence-lead'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'quarterly'
+---
+
 # GTCX Infrastructure — Fresh Bank-Grade Audit
 
 **Status:** Complete  

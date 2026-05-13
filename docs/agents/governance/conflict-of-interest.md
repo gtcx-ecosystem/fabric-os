@@ -1,10 +1,15 @@
+---
+title: 'Conflict of Interest Policy'
+status: 'current'
+date: '2026-05-10'
+owner: 'frontier-infra-engineer'
+role: 'frontier-infra-engineer'
+tier: 'standard'
+tags: ['security', 'compliance', 'infrastructure', 'testing', 'api']
+review_cycle: 'on-change'
+---
+
 # Conflict of Interest Policy
-
-> **Status:** Current
-> **Date:** 2026-05-10
-> **Owner:** GTCX Infrastructure
-
-> Protecting [Organization Name]' integrity and credibility
 
 ---
 
@@ -244,8 +249,6 @@ Accused persons may appeal to:
 ## Annual Certification
 
 All covered persons must annually certify:
-
-> I have read and understand the [Organization Name] Conflict of Interest Policy. I have disclosed all conflicts as required. I will promptly disclose any new conflicts that arise. I understand the consequences of policy violations.
 
 ---
 

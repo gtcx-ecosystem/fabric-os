@@ -1,0 +1,101 @@
+# =============================================================================
+# GTCX Shared Action — Deploy to EKS
+# =============================================================================
+# Reusable composite action for building Docker image, pushing to ECR,
+# and deploying to the shared GTCX EKS cluster.
+#
+# Prerequisites:
+#   - Repo must have AWS_ROLE_ARN and ECR_REGISTRY GitHub variables set
+#   - Repo must have a Dockerfile in the working directory
+#   - K8s manifest must reference image: ${{ vars.ECR_REGISTRY }}/<repo>:${{ github.sha }}
+#
+# Usage in service repo workflow:
+#   - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/deploy-to-eks@main
+#     with:
+#       image-name: my-service
+#       k8s-manifest-path: ./k8s/
+# =============================================================================
+
+name: 'GTCX Deploy to EKS'
+description: 'Build Docker image, push to ECR, deploy to shared GTCX EKS cluster'
+
+inputs:
+  image-name:
+    description: 'ECR repository name (e.g., gtcx-intelligence)'
+    required: true
+  k8s-manifest-path:
+    description: 'Path to Kubernetes manifests'
+    required: false
+    default: './k8s/'
+  working-directory:
+    description: 'Directory containing Dockerfile'
+    required: false
+    default: '.'
+  aws-region:
+    description: 'AWS region'
+    required: false
+    default: 'af-south-1'
+  eks-cluster-name:
+    description: 'EKS cluster name'
+    required: false
+    default: 'gtcx-production'
+  environment:
+    description: 'Deployment environment (staging or production)'
+    required: false
+    default: 'production'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+        aws-region: ${{ inputs.aws-region }}
+
+    - name: Login to Amazon ECR
+      id: ecr-login
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build and push
+      uses: docker/build-push-action@v6
+      with:
+        context: ${{ inputs.working-directory }}
+        push: true
+        tags: |
+          ${{ vars.ECR_REGISTRY }}/${{ inputs.image-name }}:${{ github.sha }}
+          ${{ vars.ECR_REGISTRY }}/${{ inputs.image-name }}:latest
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+    - name: Update kubeconfig
+      shell: bash
+      run: |
+        aws eks update-kubeconfig \
+          --region ${{ inputs.aws-region }} \
+          --name ${{ inputs.eks-cluster-name }}
+
+    - name: Deploy to EKS
+      shell: bash
+      working-directory: ${{ inputs.k8s-manifest-path }}
+      run: |
+        # Update image tag in manifests
+        sed -i "s|image:.*${{ inputs.image-name }}:.*|image: ${{ vars.ECR_REGISTRY }}/${{ inputs.image-name }}:${{ github.sha }}|g" *.yaml
+
+        # Apply manifests
+        kubectl apply -f .
+
+        # Wait for rollout
+        kubectl rollout status deployment/${{ inputs.image-name }} \
+          -n gtcx-${{ inputs.environment }} \
+          --timeout=300s
+
+    - name: Verify deployment
+      shell: bash
+      run: |
+        kubectl get pods -n gtcx-${{ inputs.environment }} \
+          -l app=${{ inputs.image-name }} \
+          -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.phase}{"\n"}{end}'

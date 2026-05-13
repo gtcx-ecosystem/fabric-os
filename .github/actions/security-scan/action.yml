@@ -1,0 +1,75 @@
+# =============================================================================
+# GTCX Shared Action — Security Scan
+# =============================================================================
+# Reusable composite action for secret scanning and dependency auditing.
+# Consumes the CVE acceptance log from gtcx-infrastructure.
+#
+# Usage in service repo workflow:
+#   - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/security-scan@main
+# =============================================================================
+
+name: 'GTCX Security Scan'
+description: 'Secret scanning (TruffleHog) + dependency audit (pnpm audit with acceptance log)'
+
+inputs:
+  node-version:
+    description: 'Node.js version'
+    required: false
+    default: '20'
+  pnpm-version:
+    description: 'pnpm version'
+    required: false
+    default: '9.15.0'
+  working-directory:
+    description: 'Directory to run commands in'
+    required: false
+    default: '.'
+  fail-on-high:
+    description: 'Fail CI if unaccepted HIGH/CRITICAL CVEs found'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: ${{ inputs.pnpm-version }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'pnpm'
+        cache-dependency-path: ${{ inputs.working-directory }}/pnpm-lock.yaml
+
+    - name: Install dependencies
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: pnpm install --frozen-lockfile
+
+    - name: TruffleHog secret scan
+      uses: trufflesecurity/trufflehog@main
+      with:
+        path: ${{ inputs.working-directory }}
+        base: main
+        head: HEAD
+        extra_args: --only-verified
+
+    - name: pnpm audit with acceptance
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        # Download the shared audit script from gtcx-infrastructure
+        curl -sL \
+          https://raw.githubusercontent.com/gtcx-ecosystem/gtcx-infrastructure/main/tools/scripts/audit-with-acceptance.mjs \
+          > /tmp/audit-with-acceptance.mjs
+
+        # Download the shared CVE acceptance log
+        curl -sL \
+          https://raw.githubusercontent.com/gtcx-ecosystem/gtcx-infrastructure/main/docs/security/cve-acceptance-log.md \
+          > /tmp/cve-acceptance-log.md
+
+        # Run the audit
+        node /tmp/audit-with-acceptance.mjs

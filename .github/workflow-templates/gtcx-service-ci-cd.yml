@@ -1,0 +1,42 @@
+# =============================================================================
+# GTCX Service — CI/CD Template
+# =============================================================================
+# Copy this file to .github/workflows/ci.yml in your service repo.
+# Prerequisites: AWS_ROLE_ARN and ECR_REGISTRY GitHub variables set.
+# =============================================================================
+
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/build-and-test@main
+
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/security-scan@main
+
+  deploy:
+    needs: [build-and-test, security-scan]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/deploy-to-eks@main
+        with:
+          image-name: 'gtcx-CHANGE-ME'
+          k8s-manifest-path: './k8s/'

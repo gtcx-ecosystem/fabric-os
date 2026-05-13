@@ -293,6 +293,14 @@
           "ciRun": null,
           "artifact": "infra/terraform/environments/production/terraform.tfstate",
           "reason": "Production security hardening: CloudTrail live (KMS-encrypted, 7yr retention), AWS Config service-linked role (Security Hub CRITICAL fix), S3 SSL enforced on 14 buckets, IAM console hygiene (gtcx-terraform profile removed), unused EBS deleted. 6/7 Config rules COMPLIANT."
+        },
+        {
+          "date": "2026-05-13",
+          "score": 9.1,
+          "commit": "3469bf6",
+          "ciRun": null,
+          "artifact": "infra/terraform/modules/detective/main.tf",
+          "reason": "CIS CloudWatch monitoring: 14 metric filters + alarms for CloudTrail events. CloudTrail delivers to CloudWatch Logs. Alarms cover: unauthorized API, root usage, IAM policy, VPC, S3, security group, NACL, gateway, route table, CMK, console auth, MFA, CloudTrail config, AWS Config changes. All alarms → SNS security-alerts topic."
         }
       ]
     },

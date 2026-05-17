@@ -33,5 +33,4 @@ To run any forensic audit on this repo (master-audit, full-audit, 10-10-roadmap,
 5. Write the output to the path the command specifies (typically `docs/audit/<command>-<YYYY-MM-DD>.md`).
 
 The audit registry is provider-agnostic — the same prompts work for Claude, Codex, Gemini, Kimi, Deepseek, Grok, etc.
-
 <!-- AGENT-SYNC:END -->

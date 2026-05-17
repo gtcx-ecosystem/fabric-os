@@ -1,7 +1,9 @@
 ---
 audit_type: master
 target_repo: gtcx-infrastructure
-audit_date: 2026-05-17
+status: current
+date: 2026-05-17
+owner: frontier-infra-engineer
 composite: 5.9
 composite_raw: 7.56
 investor: 7.4

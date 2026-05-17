@@ -204,21 +204,39 @@ resource "helm_release" "vault" {
     value = "10Gi"
   }
 
-  # -- Vault config (HCL) — KMS auto-unseal + Raft listener
+  # -- Vault config (HCL) — KMS auto-unseal + Raft listener + TLS
+  # TLS certificates are provisioned by cert-manager (vault-server-tls secret).
+  # See: infra/kubernetes/base/services/vault-tls.yaml
   values = [yamlencode({
     server = {
       extraEnvironmentVars = {
         AWS_REGION = data.aws_region.current.name
       }
+      extraVolumes = [
+        {
+          type = "secret"
+          name = "vault-server-tls"
+        }
+      ]
+      extraVolumeMounts = [
+        {
+          name      = "vault-server-tls"
+          mountPath = "/vault/tls"
+          readOnly  = true
+        }
+      ]
       ha = {
         raft = {
           config = <<-EOT
             ui = true
 
             listener "tcp" {
-              tls_disable = 1
-              address     = "[::]:8200"
-              cluster_address = "[::]:8201"
+              tls_disable       = 0
+              tls_cert_file     = "/vault/tls/tls.crt"
+              tls_key_file      = "/vault/tls/tls.key"
+              tls_client_ca_file = "/vault/tls/ca.crt"
+              address           = "[::]:8200"
+              cluster_address   = "[::]:8201"
             }
 
             storage "raft" {

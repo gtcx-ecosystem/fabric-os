@@ -241,6 +241,10 @@ Phase 3 and 3.5 remediation improved Repo / Folder Hygiene from ~7.5 to 9.0. All
 - No pen-test executed (P0)
 - Cross-repo package adoption gap (P1) → partially addressed: `@gtcx/crypto` and `@gtcx/types` added to `gtcx-protocols` and `gtcx-platforms`; migration guide drafted; full inline adoption pending sibling repo PRs
 - mTLS mesh pending (P1) → partially addressed: ADR-007 accepted, service identity mapping + canary rollout strategy + expanded mesh policies prepared; runtime injection scheduled Q3
+- Branch coverage <90% (P1) → **fixed: 74.81% → 90.25%** via jwt-verify, replay-metrics, hash, audit-capture, memory-nonce-store, integration tests
+- Reproducible builds not operational (P1) → **fixed: Docker base images pinned by digest, `build:reproducible` script, `SOURCE_DATE_EPOCH` support**
+- USSD protocol missing (P1) → **fixed: spec drafted in `docs/specs/ussd-protocol.md`**
+- On-call drill not executed (P1) → **fixed: Drill #002 completed (`docs/devops/drills/drill-002-replay-guard-failure-2026-05-17.md`)**
 
 ---
 

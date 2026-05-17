@@ -410,7 +410,73 @@ describe('Replay Guard Integration', () => {
     });
   });
 
+    it('rejects GET requests to /v1/replay/verify', async () => {
+      const res = await fetchJson('/v1/replay/verify', { method: 'GET' });
+      assert.strictEqual(res.status, 405);
+      assert.strictEqual(res.body.error, 'Method not allowed');
+    });
+
+    it('rejects invalid JSON body', async () => {
+      const res = await fetchJson('/v1/replay/verify', {
+        method: 'POST',
+        body: 'not-json{',
+        headers: { 'content-type': 'application/json' },
+      });
+      assert.strictEqual(res.status, 400);
+      assert.strictEqual(res.body.error, 'Invalid JSON');
+    });
+
+    it('accepts flat body fields without integrity wrapper', async () => {
+      const reqData = {
+        body: '{"action":"test"}',
+        headers: { 'content-type': 'application/json' },
+        method: 'POST',
+        url: 'http://api.gtcx.local/v1/test',
+      };
+      const now = new Date().toISOString();
+      const bodyHash = computeBodyHash(reqData.body);
+      const headersHash = computeHeadersHash(reqData.headers);
+      const nonce = `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
+      const envelopeHash = computeEnvelopeHash({
+        method: reqData.method,
+        url: reqData.url,
+        bodyHash,
+        headersHash,
+        timestamp: now,
+        nonce,
+        did: 'did:gtcx:device:test',
+        keyId: 'key-1',
+        audience: 'gtcx-api',
+      });
+      const signature = await signEnvelopeV1(envelopeHash);
+
+      const res = await fetchJson('/v1/replay/verify', {
+        method: 'POST',
+        body: {
+          ...reqData,
+          scheme: 'gtcx-queue-envelope-v1',
+          did: 'did:gtcx:device:test',
+          keyId: 'key-1',
+          audience: 'gtcx-api',
+          bodyHash,
+          headersHash,
+          timestamp: now,
+          nonce,
+          signature,
+          envelopeHash,
+        },
+      });
+      assert.strictEqual(res.status, 200);
+      assert.strictEqual(res.body.allowed, true);
+    });
+
   describe('GET /health', () => {
+    it('returns 404 for unknown routes', async () => {
+      const res = await fetchJson('/unknown-route');
+      assert.strictEqual(res.status, 404);
+      assert.strictEqual(res.body.error, 'Not found');
+    });
+
     it('returns healthy status', async () => {
       const res = await fetchJson('/health');
       assert.strictEqual(res.status, 200);

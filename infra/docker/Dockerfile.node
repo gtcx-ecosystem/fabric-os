@@ -26,7 +26,7 @@ ARG PNPM_VERSION=9
 # -----------------------------------------------------------------------------
 # Stage 1: Builder - Install dependencies and compile TypeScript
 # -----------------------------------------------------------------------------
-FROM node:${NODE_VERSION}-alpine AS builder
+FROM node:${NODE_VERSION}-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 AS builder
 
 ARG PNPM_VERSION
 ARG PACKAGE_PATH=packages/sdk-typescript
@@ -56,7 +56,7 @@ RUN pnpm build
 # -----------------------------------------------------------------------------
 # Stage 2: Production - Minimal runtime image
 # -----------------------------------------------------------------------------
-FROM node:${NODE_VERSION}-alpine AS production
+FROM node:${NODE_VERSION}-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 AS production
 
 ARG PNPM_VERSION
 ARG PACKAGE_PATH=packages/sdk-typescript

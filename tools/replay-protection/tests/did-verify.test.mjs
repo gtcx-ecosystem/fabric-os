@@ -101,6 +101,33 @@ describe('verifyDidSignatureStubBypass — structural validation', () => {
     const integrity = makeIntegrity();
     assert.strictEqual(await verifyDidSignatureStubBypass(integrity), true);
   });
+
+  it('returns false for DID without did: prefix (stub bypass)', async () => {
+    const integrity = makeIntegrity({ did: 'not-a-did' });
+    assert.strictEqual(await verifyDidSignatureStubBypass(integrity), false);
+  });
+
+  it('returns false for short signature (stub bypass)', async () => {
+    const integrity = makeIntegrity({ signature: 'ab' });
+    assert.strictEqual(await verifyDidSignatureStubBypass(integrity), false);
+  });
+
+  it('returns false for non-hex envelopeHash (stub bypass)', async () => {
+    const integrity = makeIntegrity({ envelopeHash: 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz' });
+    assert.strictEqual(await verifyDidSignatureStubBypass(integrity), false);
+  });
+
+  it('returns false for wrong-length envelopeHash (stub bypass)', async () => {
+    const integrity = makeIntegrity({ envelopeHash: 'a'.repeat(63) });
+    assert.strictEqual(await verifyDidSignatureStubBypass(integrity), false);
+  });
+});
+
+describe('verifyDidSignature — unknown scheme', () => {
+  it('returns false for unsupported scheme', async () => {
+    const integrity = makeIntegrity({ scheme: 'unknown-scheme-v1' });
+    assert.strictEqual(await verifyDidSignature(integrity), false);
+  });
 });
 
 describe('verifyDidSignature — gtcx-queue-envelope-v1', () => {

@@ -1,8 +1,14 @@
+---
+status: current
+date: 2026-05-12
+owner: frontier-infra-engineer
+---
+
 # GTCX Platforms M3 Cross-Repo Contract
 
-## Status
-
-**Active** — Infrastructure deliverables complete. Platforms team unblocked.
+> **Status:** Current — Infrastructure deliverables complete. Platforms team unblocked.
+> **Date:** 2026-05-12
+> **Owner:** frontier-infra-engineer
 
 ## Deliverables from Infrastructure (this repo)
 

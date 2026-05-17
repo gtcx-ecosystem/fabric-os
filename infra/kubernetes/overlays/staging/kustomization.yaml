@@ -49,6 +49,15 @@ images:
 
 # Staging resource limits (moderate)
 patches:
+  # NetworkPolicy — per-environment database subnet CIDR
+  - target:
+      kind: NetworkPolicy
+      name: gtcx-agx-policy
+    path: patches/agx-db-cidr.yaml
+  - target:
+      kind: NetworkPolicy
+      name: gtcx-ecosystem-policy
+    path: patches/ecosystem-db-cidr.yaml
   - path: anomaly-detector-patch.yaml
     target:
       kind: CronJob

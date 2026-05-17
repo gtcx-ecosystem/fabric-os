@@ -33,7 +33,7 @@
     "docker:build": "docker compose build",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
-    "build:reproducible": "SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct) turbo run build --force && node tools/scripts/verify-reproducible-build.mjs",
+    "build:reproducible": "SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-$(git log -1 --pretty=%ct 2>/dev/null || date +%s)} turbo run build --force && node tools/scripts/verify-reproducible-build.mjs",
     "lint:shell": "shellcheck infra/scripts/*.sh",
     "quality:governance:check": "node tools/scripts/docs-standard-validator.mjs",
     "docs:check-links": "node tools/scripts/docs-link-checker.mjs",

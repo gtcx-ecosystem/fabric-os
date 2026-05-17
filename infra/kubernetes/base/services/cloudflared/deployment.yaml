@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: cloudflared
+        gtcx.io/data-classification: internal
     spec:
       securityContext:
         runAsNonRoot: true
@@ -34,10 +35,11 @@ spec:
             - run
           securityContext:
             allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
             capabilities:
               drop:
                 - ALL
-            readOnlyRootFilesystem: true
           volumeMounts:
             - name: tmp
               mountPath: /tmp

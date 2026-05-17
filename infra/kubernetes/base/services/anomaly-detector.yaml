@@ -31,6 +31,7 @@ spec:
           labels:
             app: anomaly-detector
             version: v1
+            gtcx.io/data-classification: internal
         spec:
           serviceAccountName: anomaly-detector
           securityContext:
@@ -40,7 +41,7 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: detector
-              image: '348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-anomaly-detector:latest'
+              image: '348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-anomaly-detector:v0.1.0'
               imagePullPolicy: Always
               env:
                 - name: PROMETHEUS_URL
@@ -66,6 +67,7 @@ spec:
               securityContext:
                 allowPrivilegeEscalation: false
                 readOnlyRootFilesystem: true
+                runAsNonRoot: true
                 capabilities:
                   drop:
                     - ALL

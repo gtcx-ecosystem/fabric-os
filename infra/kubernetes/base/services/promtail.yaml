@@ -90,6 +90,7 @@ spec:
         app.kubernetes.io/name: promtail
         app.kubernetes.io/part-of: gtcx
         app.kubernetes.io/component: log-shipping
+        gtcx.io/data-classification: confidential
     spec:
       serviceAccountName: promtail
       securityContext:
@@ -113,6 +114,13 @@ spec:
             limits:
               cpu: 200m
               memory: 256Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
           volumeMounts:
             - name: config
               mountPath: /etc/promtail/

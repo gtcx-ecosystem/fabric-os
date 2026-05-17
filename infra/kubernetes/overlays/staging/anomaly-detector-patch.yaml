@@ -14,10 +14,22 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            app: anomaly-detector
+            version: v1
+            gtcx.io/data-classification: internal
         spec:
           serviceAccountName: anomaly-detector
           containers:
             - name: detector
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                capabilities:
+                  drop:
+                    - ALL
               env:
                 - name: PROMETHEUS_URL
                   value: 'http://prometheus.monitoring.svc.cluster.local:9090'

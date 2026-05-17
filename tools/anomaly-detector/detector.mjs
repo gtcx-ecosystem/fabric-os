@@ -10,14 +10,21 @@
  *   node detector.mjs --synthetic-data=tools/anomaly-detector/test-fixtures/synthetic-metrics.json
  */
 
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readFileSync as readFile } from 'node:fs';
 import { request } from 'node:http';
+import { exec } from 'node:child_process';
+import { promisify } from 'node:util';
 
 const PROMETHEUS_URL = process.env.PROMETHEUS_URL || 'http://localhost:9090';
 const THRESHOLD_MULTIPLIER = Number(process.argv.find((a) => a.startsWith('--threshold='))?.slice(12)) || 10;
 const WINDOW_MS = Number(process.argv.find((a) => a.startsWith('--window='))?.slice(9)) || 300_000;
 const DRY_RUN = process.argv.includes('--dry-run');
 const SYNTHETIC_DATA = process.argv.find((a) => a.startsWith('--synthetic-data='))?.slice(17);
+const ROLLBACK_TARGET = process.argv.find((a) => a.startsWith('--rollback-target='))?.slice(18) || '';
+const ROLLBACK_COOLDOWN_MS = Number(process.argv.find((a) => a.startsWith('--rollback-cooldown='))?.slice(20)) || 900_000; // 15 min default
+const ROLLBACK_STATE_PATH = process.env.ROLLBACK_STATE_PATH || '/tmp/anomaly-detector-last-rollback';
+
+const execAsync = promisify(exec);
 
 const RULES = {
   query_rate_spike: {
@@ -186,6 +193,41 @@ function evaluateAllRules(metrics) {
   return allAnomalies;
 }
 
+function isRollbackOnCooldown() {
+  if (!existsSync(ROLLBACK_STATE_PATH)) return false;
+  try {
+    const lastRollback = Number(readFile(ROLLBACK_STATE_PATH, 'utf8'));
+    return Date.now() - lastRollback < ROLLBACK_COOLDOWN_MS;
+  } catch {
+    return false;
+  }
+}
+
+function recordRollback() {
+  try {
+    writeFileSync(ROLLBACK_STATE_PATH, String(Date.now()));
+  } catch {
+    // Best-effort state tracking
+  }
+}
+
+async function triggerRollback(targetDeployment, reason) {
+  if (!targetDeployment) return { performed: false, reason: 'no target configured' };
+  if (isRollbackOnCooldown()) return { performed: false, reason: 'cooldown active' };
+  if (DRY_RUN) return { performed: false, reason: 'dry-run mode' };
+
+  try {
+    const { stdout, stderr } = await execAsync(
+      `kubectl rollout undo deployment/${targetDeployment} -n gtcx`,
+      { timeout: 30000 }
+    );
+    recordRollback();
+    return { performed: true, stdout, stderr };
+  } catch (err) {
+    return { performed: false, reason: err instanceof Error ? err.message : 'rollback failed' };
+  }
+}
+
 async function main() {
   console.log(JSON.stringify({
     level: 'info',
@@ -194,6 +236,7 @@ async function main() {
     windowMs: WINDOW_MS,
     dryRun: DRY_RUN,
     syntheticData: SYNTHETIC_DATA || null,
+    rollbackTarget: ROLLBACK_TARGET || null,
     rules: Object.keys(RULES),
   }));
 
@@ -223,6 +266,8 @@ async function main() {
       process.exit(0);
     }
 
+    const criticalAnomalies = anomalies.filter((a) => a.severity === 'critical');
+
     for (const a of anomalies) {
       console.error(JSON.stringify({
         level: 'warn',
@@ -237,9 +282,25 @@ async function main() {
         level: 'info',
         type: 'anomaly.detector.dry_run_complete',
         anomaliesDetected: anomalies.length,
-        message: 'Dry-run mode: anomalies logged but no alerts sent',
+        criticalAnomalies: criticalAnomalies.length,
+        message: 'Dry-run mode: anomalies logged but no rollback performed',
       }));
       process.exit(0);
+    }
+
+    // Automated rollback for critical anomalies
+    if (criticalAnomalies.length > 0 && ROLLBACK_TARGET) {
+      const rollbackResult = await triggerRollback(
+        ROLLBACK_TARGET,
+        `${criticalAnomalies.length} critical anomaly(s) detected`
+      );
+      console.log(JSON.stringify({
+        level: rollbackResult.performed ? 'warn' : 'info',
+        type: 'anomaly.detector.rollback',
+        performed: rollbackResult.performed,
+        target: ROLLBACK_TARGET,
+        reason: rollbackResult.reason || rollbackResult.stdout || 'unknown',
+      }));
     }
 
     process.exit(1);

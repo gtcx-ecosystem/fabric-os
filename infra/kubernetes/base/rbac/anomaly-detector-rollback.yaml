@@ -1,0 +1,50 @@
+# =============================================================================
+# Anomaly Detector Rollback RBAC
+# =============================================================================
+# Grants the anomaly detector permission to roll back deployments
+# when critical anomalies are detected. Scoped to the gtcx namespace.
+#
+# Principles: SECURE (P11) — least privilege; only rollout/rollback
+# =============================================================================
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: anomaly-detector
+  namespace: gtcx
+  labels:
+    app.kubernetes.io/part-of: gtcx
+    app.kubernetes.io/component: rbac
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: anomaly-detector-rollback
+  namespace: gtcx
+  labels:
+    app.kubernetes.io/part-of: gtcx
+    app.kubernetes.io/component: rbac
+rules:
+  - apiGroups: ['apps']
+    resources: ['deployments']
+    verbs: ['get', 'list', 'patch']
+  - apiGroups: ['apps']
+    resources: ['deployments/rollback']
+    verbs: ['create']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: anomaly-detector-rollback
+  namespace: gtcx
+  labels:
+    app.kubernetes.io/part-of: gtcx
+    app.kubernetes.io/component: rbac
+subjects:
+  - kind: ServiceAccount
+    name: anomaly-detector
+    namespace: gtcx
+roleRef:
+  kind: Role
+  name: anomaly-detector-rollback
+  apiGroup: rbac.authorization.k8s.io

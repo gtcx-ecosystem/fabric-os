@@ -15,6 +15,7 @@ spec:
     spec:
       template:
         spec:
+          serviceAccountName: anomaly-detector
           containers:
             - name: detector
               env:
@@ -22,6 +23,8 @@ spec:
                   value: 'http://prometheus.monitoring.svc.cluster.local:9090'
                 - name: NODE_ENV
                   value: 'staging'
+                - name: ROLLBACK_STATE_PATH
+                  value: '/tmp/anomaly-detector-last-rollback'
               # Override command for staging: use synthetic data for validation
               command:
                 - node
@@ -29,6 +32,8 @@ spec:
                 - '--threshold=5'
                 - '--window=120000'
                 - '--synthetic-data=/app/test-fixtures/synthetic-metrics.json'
+                - '--rollback-target=gtcx-compliance-gateway'
+                - '--rollback-cooldown=300000'
               resources:
                 requests:
                   memory: '32Mi'

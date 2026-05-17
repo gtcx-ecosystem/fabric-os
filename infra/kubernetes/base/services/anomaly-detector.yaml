@@ -32,6 +32,7 @@ spec:
             app: anomaly-detector
             version: v1
         spec:
+          serviceAccountName: anomaly-detector
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000
@@ -46,6 +47,15 @@ spec:
                   value: 'http://prometheus.monitoring.svc.cluster.local:9090'
                 - name: NODE_ENV
                   value: 'production'
+                - name: ROLLBACK_STATE_PATH
+                  value: '/tmp/anomaly-detector-last-rollback'
+              args:
+                - node
+                - detector.mjs
+                - '--threshold=10'
+                - '--window=300000'
+                - '--rollback-target=gtcx-compliance-gateway'
+                - '--rollback-cooldown=900000'
               resources:
                 requests:
                   memory: '64Mi'

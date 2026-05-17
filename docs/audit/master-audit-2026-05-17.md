@@ -245,6 +245,7 @@ Phase 3 and 3.5 remediation improved Repo / Folder Hygiene from ~7.5 to 9.0. All
 - Reproducible builds not operational (P1) → **fixed: Docker base images pinned by digest, `build:reproducible` script, `SOURCE_DATE_EPOCH` support**
 - USSD protocol missing (P1) → **fixed: spec drafted in `docs/specs/ussd-protocol.md`**
 - On-call drill not executed (P1) → **fixed: Drill #002 completed (`docs/devops/drills/drill-002-replay-guard-failure-2026-05-17.md`)**
+- Anomaly detection without rollback (P1) → **fixed: rollback controller with RBAC, 15-min cooldown, `gtcx-compliance-gateway` target**
 
 ---
 

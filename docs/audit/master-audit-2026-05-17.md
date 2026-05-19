@@ -255,29 +255,29 @@ Phase 3 and 3.5 remediation improved Repo / Folder Hygiene from ~7.5 to 9.0. All
 
 ### 5.1 Core Dimensions
 
-| Dimension                         | Weight | Score | Confidence | Notes                                    |
-| --------------------------------- | -----: | ----: | ---------- | ---------------------------------------- |
-| Code Quality                      |     15 |   7.2 | B          | Strict TS; coverage gaps in crypto/store |
-| Repo / Folder Hygiene             |     10 |   9.0 | A          | Phase 3 + 3.5 remediation complete       |
-| Security                          |     20 |   7.5 | B          | Strong controls; Vault TLS disabled      |
-| Global South Resilience           |     15 |   7.0 | B          | Offline replay; chaos pass; no USSD      |
-| Ecosystem Integration             |     15 |   8.0 | B          | 23/23 onboarded; packages not consumed   |
-| Agentic Maturity                  |     10 |   6.5 | C          | Sync system; no eval pipeline in CI      |
-| Enterprise / Production Readiness |     15 |   7.8 | B          | Prod live; no pen-test/SOC 2/Vault TLS   |
+| Dimension                         | Weight | Score | Confidence | Notes                                                                                                               |
+| --------------------------------- | -----: | ----: | ---------- | ------------------------------------------------------------------------------------------------------------------- |
+| Code Quality                      |     15 |   7.2 | B          | Strict TS; coverage gaps in crypto/store                                                                            |
+| Repo / Folder Hygiene             |     10 |   9.0 | A          | Phase 3 + 3.5 remediation complete                                                                                  |
+| Security                          |     20 |   7.5 | B          | Strong controls; Vault TLS disabled                                                                                 |
+| Global South Resilience           |     15 |   7.0 | B          | Offline replay; chaos pass; no USSD                                                                                 |
+| Ecosystem Integration             |     15 |   8.0 | B          | 23/23 onboarded; packages not consumed                                                                              |
+| Agentic Maturity                  |     10 |   7.5 | B          | Eval pipeline CI-gated; 5 model cards; confidence scoring; migration guide; auth boundary + tool segregation tested |
+| Enterprise / Production Readiness |     15 |   7.8 | B          | Prod live; no pen-test/SOC 2/Vault TLS                                                                              |
 
-**Raw weighted score:** 7.56/10
+**Raw weighted score:** 7.65/10
 
 ### 5.2 Caps Applied
 
-| Cap                                      | Triggered? | Triggering finding                              | New ceiling |
-| ---------------------------------------- | ---------- | ----------------------------------------------- | ----------- |
-| Unresolved critical                      | **YES**    | Vault TLS disabled (`vault/main.tf:219`)        | 5.9 overall |
-| 2+ unresolved high (consequential)       | **YES**    | Container contexts + no pen-test                | 6.9 overall |
-| Money/settlement in process memory       | No         | —                                               | —           |
-| Non-durable audit on consequential paths | No         | CloudTrail + WORM durable                       | —           |
-| Raw AI output approves consequential     | No         | No AI approval paths in this repo               | —           |
-| Local placeholder ecosystem authority    | No         | Shared CI platform real and active              | —           |
-| No safe degraded-mode                    | No         | Chaos tests pass; replay-protection fail-closed | —           |
+| Cap                                      | Triggered? | Triggering finding                                                             | New ceiling |
+| ---------------------------------------- | ---------- | ------------------------------------------------------------------------------ | ----------- |
+| Unresolved critical                      | **YES**    | Vault TLS disabled (`vault/main.tf:219`)                                       | 5.9 overall |
+| 2+ unresolved high (consequential)       | **YES**    | Container contexts + no pen-test                                               | 6.9 overall |
+| Money/settlement in process memory       | No         | —                                                                              | —           |
+| Non-durable audit on consequential paths | No         | CloudTrail + WORM durable                                                      | —           |
+| Raw AI output approves consequential     | No         | Approval tickets + runtime policy + tool segregation enforce human-in-the-loop | —           |
+| Local placeholder ecosystem authority    | No         | Shared CI platform real and active                                             | —           |
+| No safe degraded-mode                    | No         | Chaos tests pass; replay-protection fail-closed                                | —           |
 
 **Final core score:** 5.9/10 (capped by unresolved critical)
 
@@ -285,13 +285,13 @@ Phase 3 and 3.5 remediation improved Repo / Folder Hygiene from ~7.5 to 9.0. All
 
 #### Investor / Sequoia-Style Lens
 
-| Area                           | Weight | Score | Notes                                     |
-| ------------------------------ | -----: | ----: | ----------------------------------------- |
-| Technical Differentiation      |     25 |   7.2 | Strong IaC; Vault gap drags score         |
-| Execution Credibility          |     25 |   7.5 | Production live; security gaps noted      |
-| Ecosystem Leverage             |     20 |   7.5 | 23-repo platform; package adoption lag    |
-| Commercialization Readiness    |     15 |  7.65 | No pen-test/SOC 2 blocks enterprise sales |
-| Platform Compounding Potential |     15 |  7.17 | Resilience good; agentic maturity lagging |
+| Area                           | Weight | Score | Notes                                       |
+| ------------------------------ | -----: | ----: | ------------------------------------------- |
+| Technical Differentiation      |     25 |   7.2 | Strong IaC; Vault gap drags score           |
+| Execution Credibility          |     25 |   7.5 | Production live; security gaps noted        |
+| Ecosystem Leverage             |     20 |   7.5 | 23-repo platform; package adoption lag      |
+| Commercialization Readiness    |     15 |  7.65 | No pen-test/SOC 2 blocks enterprise sales   |
+| Platform Compounding Potential |     15 |  7.47 | Resilience good; agentic maturity improving |
 
 **Investor lens score:** 7.4/10 — credible beta
 
@@ -399,7 +399,7 @@ Phase 3 and 3.5 remediation improved Repo / Folder Hygiene from ~7.5 to 9.0. All
 
 1. Close Vault TLS + pen-test (adds +0.4 to Execution Credibility)
 2. Cross-repo package adoption 80% (adds +0.3 to Ecosystem Leverage)
-3. Agentic eval pipeline in CI (adds +0.3 to Platform Compounding)
+3. ~~Agentic eval pipeline in CI~~ ✅ Done — adds +0.3 to Platform Compounding (now reflected)
 
 **To raise enterprise buyer lens by 1.0 (to 8.52):**
 
@@ -432,16 +432,16 @@ This section applies corrected scores based on code-level verification, not docu
 
 ### 9.2 Honest Dimension Scores
 
-| Dimension                         | Weight  | Honest Score | Weighted  | Rationale                                       |
-| --------------------------------- | ------- | ------------ | --------- | ----------------------------------------------- |
-| Code Quality                      | 15      | 7.2          | 108.0     | Coverage gaps; untested packages                |
-| Repo / Folder Hygiene             | 10      | 9.0          | 90.0      | Phase 3/3.5 remediation verified                |
-| Security                          | 20      | 7.5          | 150.0     | Vault TLS disabled; container gaps; no pen-test |
-| Global South Resilience           | 15      | 7.0          | 105.0     | Offline replay good; no USSD; chaos passes      |
-| Ecosystem Integration             | 15      | 8.0          | 120.0     | Platform adopted; packages not consumed         |
-| Agentic Maturity                  | 10      | 6.5          | 65.0      | Sync system; no eval CI; partial model cards    |
-| Enterprise / Production Readiness | 15      | 7.8          | 117.0     | Prod live; Vault gap; no external validation    |
-| **Total**                         | **100** |              | **755.0** | **7.56/10 raw**                                 |
+| Dimension                         | Weight  | Honest Score | Weighted  | Rationale                                                                                                           |
+| --------------------------------- | ------- | ------------ | --------- | ------------------------------------------------------------------------------------------------------------------- |
+| Code Quality                      | 15      | 7.2          | 108.0     | Coverage gaps; untested packages                                                                                    |
+| Repo / Folder Hygiene             | 10      | 9.0          | 90.0      | Phase 3/3.5 remediation verified                                                                                    |
+| Security                          | 20      | 7.5          | 150.0     | Vault TLS disabled; container gaps; no pen-test                                                                     |
+| Global South Resilience           | 15      | 7.0          | 105.0     | Offline replay good; no USSD; chaos passes                                                                          |
+| Ecosystem Integration             | 15      | 8.0          | 120.0     | Platform adopted; packages not consumed                                                                             |
+| Agentic Maturity                  | 10      | 7.5          | 75.0      | Eval pipeline CI-gated; 5 model cards; confidence scoring; migration guide; auth boundary + tool segregation tested |
+| Enterprise / Production Readiness | 15      | 7.8          | 117.0     | Prod live; Vault gap; no external validation                                                                        |
+| **Total**                         | **100** |              | **765.0** | **7.65/10 raw**                                                                                                     |
 
 ### 9.3 Honest Audience Lenses
 
@@ -453,12 +453,12 @@ This section applies corrected scores based on code-level verification, not docu
 
 ### 9.4 What This Means for 10/10
 
-The gap to 10.0 is larger than the prior audit suggested. The honest core score is **7.56 raw, capped to 5.9** due to Vault TLS disabled. To reach 10.0:
+The gap to 10.0 is larger than the prior audit suggested. The honest core score is **7.65 raw, capped to 5.9** due to Vault TLS disabled in production (verified in testnet-pilot). To reach 10.0:
 
 1. **Immediate (cap lift):** Fix Vault TLS → uncaps score to 7.56
 2. **Short-term:** Pen-test clean + SOC 2 gap analysis → Security 9.0+, Enterprise 9.0+
 3. **Medium-term:** Cross-repo package adoption + mTLS mesh → Ecosystem 9.0+, Enterprise 9.0+
-4. **Long-term:** Full agentic eval pipeline + model cards for all services → Agentic 9.0+
+4. **Long-term:** Signed audit records for all consequential AI flows + cross-repo agentic policy adoption → Agentic 9.0+
 
 The most leveraged fix is Vault TLS — it alone lifts the 5.9 cap and unlocks honest scoring. Every other improvement is incremental until this P0 is closed.
 

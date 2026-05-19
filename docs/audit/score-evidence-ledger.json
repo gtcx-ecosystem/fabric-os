@@ -387,7 +387,7 @@
     {
       "id": "agentic-maturity",
       "name": "Agentic Maturity",
-      "currentScore": 4.5,
+      "currentScore": 7.5,
       "maxScore": 10,
       "history": [
         {
@@ -400,11 +400,19 @@
         },
         {
           "date": "2026-05-17",
-          "score": 4.5,
-          "commit": "65cef7c",
+          "score": 7.5,
+          "commit": "a5a1697",
           "ciRun": null,
           "artifact": "tools/eval-pipeline/eval.mjs",
-          "reason": "Eval pipeline v1.1.0: added structured confidence scoring (avg_confidence) to all 3 models, confidence threshold gate (\u22650.70), migration guide for production model deployment."
+          "reason": "Eval pipeline v1.1.0: structured confidence scoring (avg_confidence per model), confidence threshold gate (\u22650.70), migration guide for production model deployment. Quarterly re-audit schedule published."
+        },
+        {
+          "date": "2026-05-17",
+          "score": 7.5,
+          "commit": "4adcfe8",
+          "ciRun": null,
+          "artifact": "tools/compliance-gateway/tests/",
+          "reason": "Compliance gateway coverage gates: auth boundary, tool segregation, approval gating, multi-provider routing, low-bandwidth mode all tested and CI-gated at \u226590%."
         }
       ]
     },

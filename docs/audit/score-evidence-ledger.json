@@ -181,6 +181,14 @@
           "ciRun": null,
           "artifact": "tools/replay-protection/package.json",
           "reason": "M3 Certification: Branch coverage CI gate enforced at \u226590% (c8 --check-coverage --branches=90). Replay-protection at 90.25% branch coverage."
+        },
+        {
+          "date": "2026-05-17",
+          "score": 7.8,
+          "commit": "f66faad",
+          "ciRun": null,
+          "artifact": "tools/ussd-handler/package.json",
+          "reason": "USSD handler v0.1.0 added to repo with 91.04% branch coverage. New critical service enforces c8 gate from inception (Statements 99.14%, Branch 91.04%, Functions 93.87%, Lines 99.14%)."
         }
       ]
     },
@@ -349,6 +357,14 @@
           "ciRun": null,
           "artifact": "docs/audit/master-audit-2026-05-11.md",
           "reason": "Phase 1: Load test timeout fix improves CI reliability in low-connectivity simulation"
+        },
+        {
+          "date": "2026-05-17",
+          "score": 7.5,
+          "commit": "f66faad",
+          "ciRun": null,
+          "artifact": "tools/ussd-handler/package.json",
+          "reason": "USSD handler v0.1.0: full HTTP server with /ussd webhook, /health, /metrics; 6-language localization (EN/Shona/Ndebele/Swahili/Zulu/FR); PBKDF2 PIN auth with lockout; Redis + Memory session stores; 112 tests passing; c8 branch coverage 91.04% with CI gate"
         }
       ]
     },

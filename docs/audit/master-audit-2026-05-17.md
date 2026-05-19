@@ -243,7 +243,7 @@ Phase 3 and 3.5 remediation improved Repo / Folder Hygiene from ~7.5 to 9.0. All
 - mTLS mesh pending (P1) → partially addressed: ADR-007 accepted, service identity mapping + canary rollout strategy + expanded mesh policies prepared; runtime injection scheduled Q3
 - Branch coverage <90% (P1) → **fixed: 74.81% → 90.25%** via jwt-verify, replay-metrics, hash, audit-capture, memory-nonce-store, integration tests
 - Reproducible builds not operational (P1) → **fixed: Docker base images pinned by digest, `build:reproducible` script, `SOURCE_DATE_EPOCH` support**
-- USSD protocol missing (P1) → **fixed: spec drafted in `docs/specs/ussd-protocol.md`**
+- USSD protocol missing (P1) → **fixed: spec drafted in `docs/specs/ussd-protocol.md`; handler v0.1.0 implemented in `tools/ussd-handler/` with 112 tests, 91.04% branch coverage, c8 gate enforced, hardened K8s manifest**
 - On-call drill not executed (P1) → **fixed: Drill #002 completed (`docs/devops/drills/drill-002-replay-guard-failure-2026-05-17.md`)**
 - Anomaly detection without rollback (P1) → **fixed: rollback controller with RBAC, 15-min cooldown, `gtcx-compliance-gateway` target**
 
@@ -260,7 +260,7 @@ Phase 3 and 3.5 remediation improved Repo / Folder Hygiene from ~7.5 to 9.0. All
 | Code Quality                      |     15 |   7.2 | B          | Strict TS; coverage gaps in crypto/store                                                                            |
 | Repo / Folder Hygiene             |     10 |   9.0 | A          | Phase 3 + 3.5 remediation complete                                                                                  |
 | Security                          |     20 |   7.5 | B          | Strong controls; Vault TLS disabled                                                                                 |
-| Global South Resilience           |     15 |   7.0 | B          | Offline replay; chaos pass; no USSD                                                                                 |
+| Global South Resilience           |     15 |   7.5 | B          | Offline replay; chaos pass; USSD handler v0.1.0 with 91% coverage                                                   |
 | Ecosystem Integration             |     15 |   8.0 | B          | 23/23 onboarded; packages not consumed                                                                              |
 | Agentic Maturity                  |     10 |   7.5 | B          | Eval pipeline CI-gated; 5 model cards; confidence scoring; migration guide; auth boundary + tool segregation tested |
 | Enterprise / Production Readiness |     15 |   7.8 | B          | Prod live; no pen-test/SOC 2/Vault TLS                                                                              |
@@ -437,11 +437,11 @@ This section applies corrected scores based on code-level verification, not docu
 | Code Quality                      | 15      | 7.2          | 108.0     | Coverage gaps; untested packages                                                                                    |
 | Repo / Folder Hygiene             | 10      | 9.0          | 90.0      | Phase 3/3.5 remediation verified                                                                                    |
 | Security                          | 20      | 7.5          | 150.0     | Vault TLS disabled; container gaps; no pen-test                                                                     |
-| Global South Resilience           | 15      | 7.0          | 105.0     | Offline replay good; no USSD; chaos passes                                                                          |
+| Global South Resilience           | 15      | 7.5          | 112.5     | Offline replay good; USSD handler v0.1.0 with 91% coverage; chaos passes                                            |
 | Ecosystem Integration             | 15      | 8.0          | 120.0     | Platform adopted; packages not consumed                                                                             |
 | Agentic Maturity                  | 10      | 7.5          | 75.0      | Eval pipeline CI-gated; 5 model cards; confidence scoring; migration guide; auth boundary + tool segregation tested |
 | Enterprise / Production Readiness | 15      | 7.8          | 117.0     | Prod live; Vault gap; no external validation                                                                        |
-| **Total**                         | **100** |              | **765.0** | **7.65/10 raw**                                                                                                     |
+| **Total**                         | **100** |              | **772.5** | **7.73/10 raw**                                                                                                     |
 
 ### 9.3 Honest Audience Lenses
 

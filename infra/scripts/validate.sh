@@ -261,9 +261,17 @@ run_pagerduty_drill_simulation() {
 }
 
 run_load_tests() {
+    # k6 is a required quality gate in full validation. The runner allows
+    # GTCX_SKIP_LOAD_TESTS=1 for emergency unblocking, but the default
+    # path treats a missing k6 binary as a failure — the contract is
+    # "load tests have run", not "load tests would have run if installed".
     if ! command -v k6 >/dev/null 2>&1; then
-        log_warning "k6 not installed — skipping load tests"
-        return 0
+        if [[ "${GTCX_SKIP_LOAD_TESTS:-0}" == "1" ]]; then
+            log_warning "k6 not installed and GTCX_SKIP_LOAD_TESTS=1 — load gate skipped (CI must NOT use this)"
+            return 0
+        fi
+        log_error "k6 not installed — install per docs/operations/runbooks/load-testing.md or set GTCX_SKIP_LOAD_TESTS=1"
+        return 1
     fi
     log_info "Running load tests..."
     (cd "${PROJECT_ROOT}" && bash tools/load-tests/run-load-tests.sh)

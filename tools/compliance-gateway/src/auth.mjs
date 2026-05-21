@@ -9,6 +9,7 @@ const DEFAULT_DEV_PERMISSIONS = ['query:read', 'tools:read', 'providers:read'];
  *   subject: string,
  *   permissions: string[],
  *   label?: string,
+ *   tenantId?: string,
  * }} GatewayTokenConfig
  */
 
@@ -26,6 +27,7 @@ const DEFAULT_DEV_PERMISSIONS = ['query:read', 'tools:read', 'providers:read'];
  *   subject: string,
  *   permissions: Set<string>,
  *   label: string,
+ *   tenantId: string,
  * }} GatewayPrincipal
  */
 
@@ -94,6 +96,11 @@ export function loadAuthState(env = process.env) {
       const label = typeof entry.label === 'string' && entry.label.trim().length > 0
         ? entry.label.trim()
         : subject;
+      // Tenant defaults to 'default' for legacy single-tenant deployments.
+      // Multi-tenant pilots set tenantId per token in the auth config.
+      const tenantId = typeof entry.tenantId === 'string' && entry.tenantId.trim().length > 0
+        ? entry.tenantId.trim()
+        : 'default';
 
       if (!token || !subject || permissions.length === 0) {
         throw new Error('each auth token entry requires token, subject, and at least one permission');
@@ -103,7 +110,7 @@ export function loadAuthState(env = process.env) {
       }
 
       seenSubjects.add(subject);
-      tokens.push({ token, subject, permissions, label });
+      tokens.push({ token, subject, permissions, label, tenantId });
     }
 
     return {
@@ -173,6 +180,7 @@ function matchPrincipal(tokens, bearerToken) {
       subject: entry.subject,
       permissions: new Set(entry.permissions),
       label: entry.label ?? entry.subject,
+      tenantId: entry.tenantId ?? 'default',
     };
   }
   return null;
@@ -228,6 +236,7 @@ export function buildAccessProfile(principal, approval) {
     canReadTools: hasPermission(principal, 'tools:read'),
     permissions: [...principal.permissions].sort(),
     subject: principal.subject,
+    tenantId: principal.tenantId ?? 'default',
   };
 }
 

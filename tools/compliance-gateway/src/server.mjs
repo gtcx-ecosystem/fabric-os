@@ -94,6 +94,7 @@ function requirePermission(req, res, requiredPermission) {
       action: `auth:failure`,
       target: req.url,
       reason: `${requiredPermission}: ${auth.error}`,
+      payload: { tenantId: 'unknown' },
     });
     sendJson(res, auth.status, { error: auth.error }, req);
     return null;
@@ -102,7 +103,11 @@ function requirePermission(req, res, requiredPermission) {
     actor: auth.principal.subject,
     action: `auth:success`,
     target: req.url,
-    payload: { permission: requiredPermission, permissions: auth.principal.permissions },
+    payload: {
+      permission: requiredPermission,
+      permissions: auth.principal.permissions,
+      tenantId: auth.principal.tenantId,
+    },
   });
   return auth.principal;
 }
@@ -147,16 +152,23 @@ async function handleQuery(req, res, deps = {
   // Bound blast radius: a single principal cannot exceed its QPS or
   // its daily LLM spend. The check is intentionally before the LLM
   // call so abuse does not produce provider invocations.
-  const budgetCheck = checkBudget(principal.subject);
+  const budgetCheck = checkBudget(principal.subject, principal.tenantId);
   if (!budgetCheck.ok) {
     signAuditEvent({
       actor: principal.subject,
       action: 'query:throttled',
       target: query.substring(0, 200),
       reason: budgetCheck.reason,
-      payload: { limits: budgetCheck.limits, spentUsd: budgetCheck.spentUsd },
+      payload: {
+        tenantId: principal.tenantId,
+        limits: budgetCheck.limits,
+        spentUsd: budgetCheck.spentUsd,
+      },
     });
-    incrementCounter('compliance_gateway_throttle_total', { reason: budgetCheck.reason });
+    incrementCounter('compliance_gateway_throttle_total', {
+      reason: budgetCheck.reason,
+      tenantId: principal.tenantId,
+    });
     res.setHeader?.('Retry-After', String(budgetCheck.retryAfterSeconds ?? 1));
     return sendJson(res, budgetCheck.status, {
       error: budgetCheck.reason === 'qps'
@@ -178,7 +190,7 @@ async function handleQuery(req, res, deps = {
       actor: principal.subject,
       action: 'query:failure',
       target: query.substring(0, 200),
-      payload: { reason: 'no-providers-configured', status: 503 },
+      payload: { tenantId: principal.tenantId, reason: 'no-providers-configured', status: 503 },
     });
     return sendJson(res, 503, {
       error: 'No LLM providers configured',
@@ -220,15 +232,21 @@ async function handleQuery(req, res, deps = {
           provider: provider.name,
           tier: provider.tier,
           principal: principal.subject,
+          tenantId: principal.tenantId,
         }, estimatedCost.totalCostUSD);
       }
-      incrementCounter('compliance_gateway_requests_total', { route: '/v1/query', status: '200' });
-      setGauge('compliance_gateway_query_latency_ms', { provider: provider.name }, latencyMs);
+      incrementCounter('compliance_gateway_requests_total', {
+        route: '/v1/query',
+        status: '200',
+        tenantId: principal.tenantId,
+      });
+      setGauge('compliance_gateway_query_latency_ms', { provider: provider.name, tenantId: principal.tenantId }, latencyMs);
       signAuditEvent({
         actor: principal.subject,
         action: 'query:success',
         target: query.substring(0, 200),
         payload: {
+          tenantId: principal.tenantId,
           provider: provider.name,
           complexity,
           latencyMs,
@@ -275,7 +293,11 @@ async function handleQuery(req, res, deps = {
     actor: principal.subject,
     action: 'query:failure',
     target: query.substring(0, 200),
-    payload: { errors: errors.map((e) => ({ provider: e.provider, error: e.error })), status: 502 },
+    payload: {
+      tenantId: principal.tenantId,
+      errors: errors.map((e) => ({ provider: e.provider, error: e.error })),
+      status: 502,
+    },
   });
   sendJson(res, 502, {
     error: 'All LLM providers failed',
@@ -516,7 +538,7 @@ const server = createServer(async (req, res) => {
       if (!principal) {
         return;
       }
-      sendJson(res, 200, getSpend(principal.subject), req);
+      sendJson(res, 200, getSpend(principal.subject, principal.tenantId), req);
     } else if (url === '/v1/providers') {
       const principal = requirePermission(req, res, 'providers:read');
       if (!principal) {

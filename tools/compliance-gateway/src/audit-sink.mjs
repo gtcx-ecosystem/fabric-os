@@ -87,7 +87,15 @@ function natsSink() {
       console.log(JSON.stringify({ type: 'audit.signed', record }));
       if (!natsClient) return;
       try {
-        natsClient.publish(natsSubject(), JSON.stringify(record));
+        // Per-tenant subject when the record carries a tenantId in its
+        // payload, so the audit-flush sidecar can write per-tenant
+        // prefixes into the WORM bucket. Falls back to the bare subject
+        // for legacy records or auth events with unknown tenant.
+        const tenantId = record?.payload?.tenantId;
+        const subject = tenantId && typeof tenantId === 'string' && /^[a-z0-9-]+$/.test(tenantId)
+          ? `${natsSubject()}.${tenantId}`
+          : natsSubject();
+        natsClient.publish(subject, JSON.stringify(record));
       } catch (err) {
         console.error(JSON.stringify({
           level: 'error',

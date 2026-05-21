@@ -41,11 +41,14 @@ function todayUtc() {
   return new Date().toISOString().slice(0, 10);
 }
 
-function principalLimits(subject) {
-  const override = overrides[subject] || {};
+function principalLimits(subject, tenantId = 'default') {
+  // Override resolution order: tenant-scoped > subject-scoped > defaults.
+  const tenantOverride = overrides[`tenant:${tenantId}`] || {};
+  const subjectOverride = overrides[subject] || {};
+  const merged = { ...tenantOverride, ...subjectOverride };
   return {
-    qps: Number.isFinite(override.qps) ? override.qps : QPS_LIMIT,
-    dailyUsd: Number.isFinite(override.dailyUsd) ? override.dailyUsd : DAILY_BUDGET_USD,
+    qps: Number.isFinite(merged.qps) ? merged.qps : QPS_LIMIT,
+    dailyUsd: Number.isFinite(merged.dailyUsd) ? merged.dailyUsd : DAILY_BUDGET_USD,
   };
 }
 
@@ -56,8 +59,8 @@ function principalLimits(subject) {
  * @param {string} subject
  * @returns {{ ok: true, limits: { qps: number, dailyUsd: number } } | { ok: false, status: 429, reason: 'qps' | 'budget', retryAfterSeconds?: number, limits: { qps: number, dailyUsd: number }, spentUsd: number }}
  */
-export function checkBudget(subject) {
-  const limits = principalLimits(subject);
+export function checkBudget(subject, tenantId = 'default') {
+  const limits = principalLimits(subject, tenantId);
 
   // QPS — sliding window.
   const now = Date.now();
@@ -121,13 +124,15 @@ export function recordSpend(subject, usd) {
  * @param {string} subject
  * @returns {{ day: string, spentUsd: number, limits: { qps: number, dailyUsd: number } }}
  */
-export function getSpend(subject) {
+export function getSpend(subject, tenantId = 'default') {
   const day = todayUtc();
   const current = dailySpend.get(subject);
   return {
     day,
+    subject,
+    tenantId,
     spentUsd: (current && current.day === day) ? current.spentUsd : 0,
-    limits: principalLimits(subject),
+    limits: principalLimits(subject, tenantId),
   };
 }
 

@@ -2,7 +2,11 @@ packages:
   # Infrastructure
   - 'infra/migrations'
   # Tools
+  - 'tools/audit-signer'
   - 'tools/compliance-data'
   - 'tools/compliance-gateway'
   - 'tools/replay-protection'
   - 'tools/deployment-guard'
+  - 'tools/low-bandwidth'
+  - 'tools/ussd-handler'
+  - 'tools/eval-pipeline'

@@ -14,7 +14,7 @@ import {
   toNdjson,
   fromNdjson,
   generateKeyPair,
-} from '../../audit-signer/src/index.mjs';
+} from '@gtcx/audit-signer';
 
 let keyPair = null;
 const chain = createChain();

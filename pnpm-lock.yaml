@@ -102,7 +102,11 @@ importers:
         specifier: ^5.7.0
         version: 5.9.3
 
-  tools/eval-pipeline: {}
+  tools/eval-pipeline:
+    dependencies:
+      '@gtcx/compliance-gateway':
+        specifier: workspace:*
+        version: link:../compliance-gateway
 
   tools/low-bandwidth:
     devDependencies:

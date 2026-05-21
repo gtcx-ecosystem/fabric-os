@@ -6,7 +6,12 @@
   "private": true,
   "scripts": {
     "eval": "node eval.mjs",
-    "eval:all": "node eval.mjs --all"
+    "eval:all": "node eval.mjs --all",
+    "eval:injection": "node injection-suite.mjs",
+    "test": "node --test tests/**/*.test.mjs"
+  },
+  "dependencies": {
+    "@gtcx/compliance-gateway": "workspace:*"
   },
   "engines": {
     "node": ">=20.0.0"

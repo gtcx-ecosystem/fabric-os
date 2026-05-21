@@ -78,6 +78,24 @@ spec:
                 configMapKeyRef:
                   name: gtcx-runtime-policies
                   key: GTCX_FEATURE_FEEDBACK_LOOP
+            # Audit sink — durable publish of signed records via NATS JetStream.
+            - name: AUDIT_SINK
+              value: 'nats'
+            - name: AUDIT_NATS_SUBJECT
+              value: 'gtcx.audit.compliance-gateway'
+            - name: NATS_URL
+              value: 'nats://nats.gtcx.svc.cluster.local:4222'
+            # In-memory chain ceiling. The full chain lives in the sink;
+            # records roll over to a checkpoint hash beyond this count.
+            - name: AUDIT_CHAIN_MAX_RECORDS
+              value: '10000'
+            # Audit signing key. Mounted from a sealed Secret per overlay.
+            # In production the gateway exits 78 (EX_CONFIG) if absent.
+            - name: AUDIT_SIGNING_KEY_B64
+              valueFrom:
+                secretKeyRef:
+                  name: compliance-gateway-audit-key
+                  key: AUDIT_SIGNING_KEY_B64
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:

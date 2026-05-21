@@ -1,0 +1,105 @@
+# =============================================================================
+# Audit Flush — NATS JetStream → WORM S3 Object Lock
+# =============================================================================
+# Subscribes to the gtcx.audit.* subject hierarchy on JetStream and writes
+# batched NDJSON to the gtcx-worm-audit-production-af-south-1 bucket in
+# COMPLIANCE mode. The bucket policy enforces 2557-day Object Lock retention
+# so flushed records cannot be modified or deleted before the retention
+# window expires.
+#
+# Operational contract:
+#   - Reads from NATS subject AUDIT_NATS_SUBJECT (default gtcx.audit.>)
+#   - Writes NDJSON objects keyed by yyyy/MM/dd/HH/<chainHash>.ndjson
+#   - Uses IRSA (AWS IAM role for service account) to authenticate to S3
+#   - Restarts crashloop the pod if it cannot reach NATS for >2m (readiness)
+# =============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: audit-flush
+  namespace: gtcx
+  annotations:
+    # Patched per environment to point at the IRSA role that has
+    # s3:PutObject on the WORM audit bucket and nothing else.
+    eks.amazonaws.com/role-arn: PLACEHOLDER_OVERRIDE_IN_OVERLAY
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audit-flush
+  namespace: gtcx
+  labels:
+    app.kubernetes.io/name: audit-flush
+    app.kubernetes.io/component: audit
+    app.kubernetes.io/part-of: gtcx
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: audit-flush
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: audit-flush
+        app.kubernetes.io/component: audit
+    spec:
+      serviceAccountName: audit-flush
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: flusher
+          image: PLACEHOLDER_OVERRIDE_IN_OVERLAY # gtcx/audit-flush:<digest>
+          imagePullPolicy: Always
+          env:
+            - name: NATS_URL
+              value: nats://nats.gtcx.svc.cluster.local:4222
+            - name: AUDIT_NATS_SUBJECT
+              value: gtcx.audit.>
+            - name: AUDIT_S3_BUCKET
+              value: gtcx-worm-audit-production-af-south-1
+            - name: AUDIT_S3_REGION
+              value: af-south-1
+            - name: AUDIT_FLUSH_BATCH_SIZE
+              value: '500'
+            - name: AUDIT_FLUSH_INTERVAL_MS
+              value: '10000'
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 12 # 2 minutes
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}

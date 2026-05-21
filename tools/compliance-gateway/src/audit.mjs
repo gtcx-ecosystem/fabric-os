@@ -15,6 +15,7 @@ import {
   fromNdjson,
   generateKeyPair,
 } from '@gtcx/audit-signer';
+import { getSink, getSinkInfo } from './audit-sink.mjs';
 
 let keyPair = null;
 const chain = createChain();
@@ -100,10 +101,7 @@ export function signAuditEvent({ actor, action, target, reason, payload }) {
   const record = createRecord({ actor, action, target, reason, payload });
   const signed = append(chain, record, keyPair.privateKey, keyPair.publicKey);
 
-  console.log(JSON.stringify({
-    type: 'audit.signed',
-    record: signed,
-  }));
+  getSink().emit(signed);
 
   // Bound in-memory chain. The full chain is durable in the sink (stdout
   // shipped to log aggregation, optionally NATS JetStream). The in-memory
@@ -185,12 +183,13 @@ export function resetAuditSigner() {
  * Indicates whether the gateway is producing signed audit evidence.
  * Used by /health to make the signing posture observable.
  *
- * @returns {{ signing: boolean; ephemeral: boolean; maxInMemoryRecords: number }}
+ * @returns {{ signing: boolean; ephemeral: boolean; maxInMemoryRecords: number; sink: object }}
  */
 export function getSignerHealth() {
   return {
     signing: keyPair !== null,
     ephemeral: keyPair !== null && !process.env.AUDIT_SIGNING_KEY_B64,
     maxInMemoryRecords: MAX_IN_MEMORY_RECORDS,
+    sink: getSinkInfo(),
   };
 }

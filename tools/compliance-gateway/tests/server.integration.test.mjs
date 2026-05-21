@@ -230,10 +230,11 @@ describe('Compliance Gateway Integration', () => {
           authorization: 'Bearer readonly-test-token',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ jurisdiction: 'ZA' }),
+        body: JSON.stringify({ jurisdiction: 'south-africa' }),
       });
       assert.strictEqual(res.status, 400);
-      assert.match(res.body.error, /Missing "query" field/);
+      assert.match(res.body.error, /query/);
+      assert.ok(res.body.fieldErrors);
     });
 
     it('returns 400 when query field is not a string', async () => {
@@ -246,7 +247,20 @@ describe('Compliance Gateway Integration', () => {
         body: JSON.stringify({ query: 123 }),
       });
       assert.strictEqual(res.status, 400);
-      assert.match(res.body.error, /Missing "query" field/);
+      assert.match(res.body.error, /query/);
+    });
+
+    it('returns 400 with fieldErrors when jurisdiction is unknown', async () => {
+      const res = await fetchJson('/v1/query', {
+        method: 'POST',
+        headers: {
+          authorization: 'Bearer readonly-test-token',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: 'Check compliance', jurisdiction: 'narnia' }),
+      });
+      assert.strictEqual(res.status, 400);
+      assert.match(res.body.error, /jurisdiction/);
     });
   });
 
@@ -340,7 +354,7 @@ describe('Compliance Gateway Integration', () => {
   });
 
   describe('Query with context', () => {
-    it('returns 503 with context included in error', async () => {
+    it('returns 503 with context included in error (no providers configured)', async () => {
       const res = await fetchJson('/v1/query', {
         method: 'POST',
         headers: {
@@ -349,7 +363,7 @@ describe('Compliance Gateway Integration', () => {
         },
         body: JSON.stringify({
           query: 'Check compliance',
-          jurisdiction: 'ZA',
+          jurisdiction: 'south-africa',
           context: { shipmentId: 'SHP-123' },
         }),
       });

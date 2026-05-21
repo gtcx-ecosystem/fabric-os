@@ -31,6 +31,7 @@ import {
   parseApprovalContext,
 } from './auth.mjs';
 import { buildRuntimePolicyPrompt } from './policy.mjs';
+import { validateQueryBody, buildUserMessage } from './schemas.mjs';
 import {
   initAuditSigner,
   signAuditEvent,
@@ -125,23 +126,22 @@ async function handleQuery(req, res, deps = {
   const approval = parseApprovalContext(req.headers);
   const accessProfile = buildAccessProfile(principal, approval);
   const body = await readBody(req);
-  let parsed;
+  let rawParsed;
   try {
-    parsed = JSON.parse(body);
+    rawParsed = JSON.parse(body);
   } catch {
     return sendJson(res, 400, { error: 'Invalid JSON' }, req);
   }
 
-  const { query, jurisdiction, context } = parsed;
-  if (!query || typeof query !== 'string') {
-    return sendJson(res, 400, { error: 'Missing "query" field' }, req);
+  const validation = validateQueryBody(rawParsed);
+  if (!validation.ok) {
+    return sendJson(res, validation.status, {
+      error: validation.error,
+      fieldErrors: validation.fieldErrors,
+    }, req);
   }
-
-  const userMessage = [
-    query,
-    jurisdiction ? `Jurisdiction: ${jurisdiction}` : '',
-    context ? `Additional context: ${JSON.stringify(context)}` : '',
-  ].filter(Boolean).join('\n');
+  const { query, jurisdiction, context } = validation.data;
+  const userMessage = buildUserMessage({ query, jurisdiction, context });
 
   const complexity = classifyComplexity(query);
   const primary = deps.selectProvider(query);

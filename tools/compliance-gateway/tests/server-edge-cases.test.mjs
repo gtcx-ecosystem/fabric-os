@@ -120,7 +120,7 @@ describe('handleQuery', () => {
       ],
     });
 
-    const req = createMockReq({ query: 'Check compliance status', jurisdiction: 'ZA' }, {
+    const req = createMockReq({ query: 'Check compliance status', jurisdiction: 'south-africa' }, {
       authorization: 'Bearer hq-test-token',
       'content-type': 'application/json',
     });

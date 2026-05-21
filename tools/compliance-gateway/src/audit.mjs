@@ -16,6 +16,7 @@ import {
   generateKeyPair,
 } from '@gtcx/audit-signer';
 import { getSink, getSinkInfo } from './audit-sink.mjs';
+import { incrementCounter } from './metrics.mjs';
 
 let keyPair = null;
 const chain = createChain();
@@ -99,8 +100,21 @@ export function signAuditEvent({ actor, action, target, reason, payload }) {
   }
 
   const record = createRecord({ actor, action, target, reason, payload });
-  const signed = append(chain, record, keyPair.privateKey, keyPair.publicKey);
+  let signed;
+  try {
+    signed = append(chain, record, keyPair.privateKey, keyPair.publicKey);
+  } catch (err) {
+    incrementCounter('compliance_gateway_audit_sign_failures_total', { action });
+    console.error(JSON.stringify({
+      level: 'error',
+      type: 'audit.signer.signFailed',
+      action,
+      error: err.message,
+    }));
+    return null;
+  }
 
+  incrementCounter('compliance_gateway_audit_records_total', { action });
   getSink().emit(signed);
 
   // Bound in-memory chain. The full chain is durable in the sink (stdout

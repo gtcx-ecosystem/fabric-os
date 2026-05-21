@@ -32,6 +32,8 @@ import {
 } from './auth.mjs';
 import { buildRuntimePolicyPrompt } from './policy.mjs';
 import { validateQueryBody, buildUserMessage } from './schemas.mjs';
+import { checkBudget, recordSpend, getSpend } from './budget.mjs';
+import { incrementCounter, setGauge, renderMetrics } from './metrics.mjs';
 import {
   initAuditSigner,
   signAuditEvent,
@@ -70,7 +72,7 @@ if (process.env.NODE_ENV === 'production' && !auditInit.initialized) {
 // Runtime policy (from ConfigMap — adjustable without code changes)
 // ---------------------------------------------------------------------------
 
-const runtimePolicy = {
+const runtimePolicyConfig = {
   degradationMode: process.env.GTCX_DEGRADATION_MODE || 'auto',
   lbwStripFields: (process.env.GTCX_LBW_STRIP_FIELDS || 'authz,usage,toolResults').split(',').map((s) => s.trim()).filter(Boolean),
   lbwCompression: process.env.GTCX_LBW_COMPRESSION || 'br',
@@ -141,6 +143,31 @@ async function handleQuery(req, res, deps = {
     }, req);
   }
   const { query, jurisdiction, context } = validation.data;
+
+  // Bound blast radius: a single principal cannot exceed its QPS or
+  // its daily LLM spend. The check is intentionally before the LLM
+  // call so abuse does not produce provider invocations.
+  const budgetCheck = checkBudget(principal.subject);
+  if (!budgetCheck.ok) {
+    signAuditEvent({
+      actor: principal.subject,
+      action: 'query:throttled',
+      target: query.substring(0, 200),
+      reason: budgetCheck.reason,
+      payload: { limits: budgetCheck.limits, spentUsd: budgetCheck.spentUsd },
+    });
+    incrementCounter('compliance_gateway_throttle_total', { reason: budgetCheck.reason });
+    res.setHeader?.('Retry-After', String(budgetCheck.retryAfterSeconds ?? 1));
+    return sendJson(res, budgetCheck.status, {
+      error: budgetCheck.reason === 'qps'
+        ? 'Rate limit exceeded for this principal'
+        : 'Daily LLM budget exceeded for this principal',
+      retryAfterSeconds: budgetCheck.retryAfterSeconds,
+      limits: budgetCheck.limits,
+      spentUsd: budgetCheck.spentUsd,
+    }, req);
+  }
+
   const userMessage = buildUserMessage({ query, jurisdiction, context });
 
   const complexity = classifyComplexity(query);
@@ -163,14 +190,14 @@ async function handleQuery(req, res, deps = {
   const chain = [primary, ...fallbacks];
   const errors = [];
   const tools = createToolRegistry(accessProfile);
-  const runtimePolicy = buildRuntimePolicyPrompt(accessProfile);
+  const runtimePolicyPrompt = buildRuntimePolicyPrompt(accessProfile);
 
   for (const provider of chain) {
     try {
       const start = Date.now();
       const result = await deps.generateText({
         model: provider.createModel(),
-        system: `${systemPrompt}\n\n${runtimePolicy}`,
+        system: `${systemPrompt}\n\n${runtimePolicyPrompt}`,
         prompt: userMessage,
         tools,
         maxSteps: 5,
@@ -186,11 +213,28 @@ async function handleQuery(req, res, deps = {
         .flatMap((step) => step.toolResults || [])
         .map((r) => ({ tool: r.toolName, result: r.result }));
 
+      const estimatedCost = estimateCost(provider, result.usage);
+      if (estimatedCost?.totalCostUSD) {
+        recordSpend(principal.subject, estimatedCost.totalCostUSD);
+        incrementCounter('compliance_gateway_cost_usd_total', {
+          provider: provider.name,
+          tier: provider.tier,
+          principal: principal.subject,
+        }, estimatedCost.totalCostUSD);
+      }
+      incrementCounter('compliance_gateway_requests_total', { route: '/v1/query', status: '200' });
+      setGauge('compliance_gateway_query_latency_ms', { provider: provider.name }, latencyMs);
       signAuditEvent({
         actor: principal.subject,
         action: 'query:success',
         target: query.substring(0, 200),
-        payload: { provider: provider.name, complexity, latencyMs, status: 200 },
+        payload: {
+          provider: provider.name,
+          complexity,
+          latencyMs,
+          status: 200,
+          estimatedCostUSD: estimatedCost?.totalCostUSD ?? 0,
+        },
       });
       return sendJson(res, 200, {
         answer: result.text,
@@ -203,7 +247,7 @@ async function handleQuery(req, res, deps = {
           complexity,
           latencyMs,
           fallbacksAvailable: fallbacks.length,
-          estimatedCost: estimateCost(provider, result.usage),
+          estimatedCost,
         },
         authz: {
           approvalTicket: approval.ticket,
@@ -273,8 +317,8 @@ async function readBody(req) {
 
 function detectLowBandwidth(req) {
   // Runtime policy override takes precedence
-  if (runtimePolicy.degradationMode === 'normal') return false;
-  if (['reduced', 'minimal', 'offline'].includes(runtimePolicy.degradationMode)) return true;
+  if (runtimePolicyConfig.degradationMode === 'normal') return false;
+  if (['reduced', 'minimal', 'offline'].includes(runtimePolicyConfig.degradationMode)) return true;
 
   // Auto-detection from client headers
   const saveData = req.headers['save-data'];
@@ -288,8 +332,8 @@ function detectLowBandwidth(req) {
 }
 
 function getDegradationLevel(req) {
-  if (runtimePolicy.degradationMode !== 'auto') {
-    return runtimePolicy.degradationMode;
+  if (runtimePolicyConfig.degradationMode !== 'auto') {
+    return runtimePolicyConfig.degradationMode;
   }
   const downlink = parseFloat(req?.headers?.['downlink'] || '10');
   if (downlink < 0.5) return 'minimal';
@@ -302,7 +346,7 @@ function logDegradationEvent(req, level) {
     type: 'resilience.degradation',
     level,
     endpoint: req?.url,
-    mode: runtimePolicy.degradationMode,
+    mode: runtimePolicyConfig.degradationMode,
     timestamp: new Date().toISOString(),
   }));
 }
@@ -388,9 +432,9 @@ function sendJson(res, status, body, req) {
 
   const headers = {
     'Content-Type': 'application/json',
-    'Cache-Control': isLowBandwidth ? `max-age=${runtimePolicy.lbwCacheSeconds}, public` : 'no-cache',
+    'Cache-Control': isLowBandwidth ? `max-age=${runtimePolicyConfig.lbwCacheSeconds}, public` : 'no-cache',
     'X-Low-Bandwidth': isLowBandwidth ? 'true' : 'false',
-    'X-Degradation-Mode': runtimePolicy.degradationMode,
+    'X-Degradation-Mode': runtimePolicyConfig.degradationMode,
   };
 
   if (encoding) {
@@ -456,6 +500,23 @@ const server = createServer(async (req, res) => {
         mutatingToolsEnabled: accessProfile.canMutate,
         tools: listToolsForAccess(accessProfile),
       }, req);
+    } else if (url === '/metrics') {
+      // Reflect live audit posture into gauges so /metrics is self-consistent.
+      const sh = getSignerHealth();
+      setGauge('compliance_gateway_audit_signing', undefined, sh.signing ? 1 : 0);
+      setGauge('compliance_gateway_audit_sink_connected', { mode: sh.sink?.mode }, sh.sink?.natsConnected ? 1 : 0);
+      const chainState = getChainState();
+      setGauge('compliance_gateway_audit_chain_in_memory', undefined, chainState.recordCount);
+      setGauge('compliance_gateway_audit_chain_total', undefined, chainState.totalRecords);
+      res.writeHead(200, { 'Content-Type': 'text/plain; version=0.0.4' });
+      res.end(renderMetrics());
+      return;
+    } else if (url === '/v1/budget') {
+      const principal = requirePermission(req, res, 'query:read');
+      if (!principal) {
+        return;
+      }
+      sendJson(res, 200, getSpend(principal.subject), req);
     } else if (url === '/v1/providers') {
       const principal = requirePermission(req, res, 'providers:read');
       if (!principal) {

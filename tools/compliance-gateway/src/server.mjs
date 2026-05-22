@@ -35,6 +35,7 @@ import { validateQueryBody, buildUserMessage } from './schemas.mjs';
 import { checkBudget, recordSpend, getSpend } from './budget.mjs';
 import { incrementCounter, setGauge, renderMetrics } from './metrics.mjs';
 import { sanitizeAuditTarget } from './audit-target.mjs';
+import { startAdaptiveScheduler, defaultThresholds } from './adaptive-policy.mjs';
 
 // In-flight /v1/query count, exposed to the HPA via the
 // compliance_gateway_inflight_requests metric (autoscaling.v2 Pods target).
@@ -647,10 +648,31 @@ server.listen(PORT, () => {
       message: 'Compliance Gateway is using the default development read-only token. Configure COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON before any shared use.',
     }));
   }
+  const adaptiveThresholds = defaultThresholds();
+  if (adaptiveThresholds.enabled) {
+    startAdaptiveScheduler({
+      sampleLatencyP95Ms: () => runtimePolicyConfig.observedLatencyP95Ms ?? 0,
+      sampleErrorRate: () => runtimePolicyConfig.observedErrorRate ?? 0,
+      getCurrentMode: () => runtimePolicyConfig.degradationMode,
+      onChange: (next, reason) => {
+        const previous = runtimePolicyConfig.degradationMode;
+        runtimePolicyConfig.degradationMode = next;
+        signAuditEvent({
+          actor: 'compliance-gateway',
+          action: 'resilience.policy.adaptation',
+          target: 'runtimePolicyConfig.degradationMode',
+          reason,
+          payload: { previous, next, reason },
+        });
+      },
+      thresholds: adaptiveThresholds,
+    });
+  }
   console.log(JSON.stringify({
     authConfigured: !authState.configurationError,
     auditInitialized: auditInit.initialized,
     auditEphemeral: auditInit.ephemeral,
+    adaptivePolicy: adaptiveThresholds.enabled ? 'enabled' : 'disabled',
     level: 'info',
     message: 'Compliance Gateway listening',
     nodeEnv: authState.nodeEnv,

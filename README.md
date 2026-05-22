@@ -166,6 +166,33 @@ Running in AWS af-south-1 (Cape Town):
 | [ADR Index](./docs/decisions/README.md)                                | Architecture decisions         |
 | [Audit History](./docs/audit/qa-reviews/)                              | Session audits and hardening   |
 
+## Published Substrate
+
+GTCX's compliance substrate is published as three composable primitives. Each is independently useful; together they form the audit + storage + agent-discovery surface behind the testnet pilot. All MIT licensed.
+
+| Primitive                          | Where                                                                                                                                                            | Purpose                                                                                                                            |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **`@gtcx/audit-signer`**           | [npm](https://www.npmjs.com/package/@gtcx/audit-signer) · [`tools/audit-signer/`](./tools/audit-signer/)                                                         | Ed25519-signed, hash-linked audit chain. Zero runtime dependencies. Third-party verifiable offline.                                |
+| **`terraform-aws-compliance-db`**  | [GitHub](https://github.com/amani-amina-anai/terraform-aws-compliance-db) · [`infra/terraform/modules/compliance-db/`](./infra/terraform/modules/compliance-db/) | Dual-database (operational + audit) module for regulated African fintech. 11 jurisdictions covered, FATF-aligned retention floors. |
+| **`@gtcx/compliance-gateway-mcp`** | [`tools/compliance-gateway-mcp/`](./tools/compliance-gateway-mcp/)                                                                                               | Model Context Protocol server exposing the gateway's read-only surface to AI agents. Mutating tools deliberately absent.           |
+
+Detailed pages: [`docs/external/docs-site/`](./docs/external/docs-site/) (markdown source for `gtcx.io/compliance`).
+
+## Internal Workspace Packages
+
+The repo is a pnpm workspace with 11 packages under `tools/`. The ones above are publication targets; the ones below run the testnet pilot.
+
+| Package                                                   | Role                                                                   |
+| --------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [`@gtcx/compliance-gateway`](./tools/compliance-gateway/) | AI-native HTTP gateway routing compliance queries to protocol tools    |
+| [`@gtcx/audit-flush`](./tools/audit-flush/)               | Sidecar that ships signed audit records from NATS JetStream to WORM S3 |
+| [`@gtcx/replay-protection`](./tools/replay-protection/)   | Nonce + timestamp + signature verification for offline-queued requests |
+| [`@gtcx/deployment-guard`](./tools/deployment-guard/)     | Canary deployment safety gates                                         |
+| [`@gtcx/ussd-handler`](./tools/ussd-handler/)             | USSD menu + SMS bridge for feature-phone access                        |
+| [`@gtcx/low-bandwidth`](./tools/low-bandwidth/)           | Adaptive low-bandwidth middleware                                      |
+| [`@gtcx/eval-pipeline`](./tools/eval-pipeline/)           | AI output evaluation + prompt-injection red-team                       |
+| [`@gtcx/compliance-data`](./tools/compliance-data/)       | Per-jurisdiction regulator + retention catalog                         |
+
 ## Standalone Modules
 
-- [terraform-aws-compliance-db](https://github.com/amani-amina-anai/terraform-aws-compliance-db) — Compliance-ready dual-database for regulated African fintech. MIT licensed, 7 jurisdictions, published on GitHub.
+- [terraform-aws-compliance-db](https://github.com/amani-amina-anai/terraform-aws-compliance-db) — Compliance-ready dual-database for regulated African fintech. MIT licensed, 11 jurisdictions, published on GitHub.

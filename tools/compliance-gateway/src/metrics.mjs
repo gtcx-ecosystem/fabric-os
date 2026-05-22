@@ -108,3 +108,4 @@ declareMetric('compliance_gateway_requests_total', 'HTTP requests, by route + st
 declareMetric('compliance_gateway_query_latency_ms', 'Per-provider /v1/query latency (ms)');
 declareMetric('compliance_gateway_cost_usd_total', 'Cumulative estimated LLM cost in USD, by provider + tier + principal');
 declareMetric('compliance_gateway_throttle_total', 'Requests throttled by per-principal budget, by reason');
+declareMetric('compliance_gateway_inflight_requests', 'In-flight /v1/query requests on this pod — HPA scaling target');

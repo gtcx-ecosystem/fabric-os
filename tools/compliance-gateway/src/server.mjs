@@ -34,6 +34,11 @@ import { buildRuntimePolicyPrompt } from './policy.mjs';
 import { validateQueryBody, buildUserMessage } from './schemas.mjs';
 import { checkBudget, recordSpend, getSpend } from './budget.mjs';
 import { incrementCounter, setGauge, renderMetrics } from './metrics.mjs';
+import { sanitizeAuditTarget } from './audit-target.mjs';
+
+// In-flight /v1/query count, exposed to the HPA via the
+// compliance_gateway_inflight_requests metric (autoscaling.v2 Pods target).
+let inflightQueries = 0;
 import {
   initAuditSigner,
   signAuditEvent,
@@ -88,12 +93,13 @@ const runtimePolicyConfig = {
  * @param {string} requiredPermission
  */
 function requirePermission(req, res, requiredPermission) {
+  const target = sanitizeAuditTarget(req.url);
   const auth = authenticateHeaders(req.headers, authState, requiredPermission);
   if (!auth.ok) {
     signAuditEvent({
       actor: 'unknown',
       action: `auth:failure`,
-      target: req.url,
+      target,
       reason: `${requiredPermission}: ${auth.error}`,
       payload: { tenantId: 'unknown' },
     });
@@ -103,7 +109,7 @@ function requirePermission(req, res, requiredPermission) {
   signAuditEvent({
     actor: auth.principal.subject,
     action: `auth:success`,
-    target: req.url,
+    target,
     payload: {
       permission: requiredPermission,
       permissions: auth.principal.permissions,
@@ -125,7 +131,17 @@ async function handleQuery(req, res, deps = {
   if (req.method !== 'POST') {
     return sendJson(res, 405, { error: 'Method not allowed' }, req);
   }
+  inflightQueries += 1;
+  setGauge('compliance_gateway_inflight_requests', undefined, inflightQueries);
+  try {
+    return await handleQueryInner(req, res, deps);
+  } finally {
+    inflightQueries = Math.max(0, inflightQueries - 1);
+    setGauge('compliance_gateway_inflight_requests', undefined, inflightQueries);
+  }
+}
 
+async function handleQueryInner(req, res, deps) {
   const principal = requirePermission(req, res, 'query:read');
   if (!principal) {
     return;

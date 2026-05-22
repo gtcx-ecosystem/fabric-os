@@ -1,0 +1,49 @@
+name: distribution-snapshot
+
+# Daily snapshot of npm downloads + GitHub stars/forks/issues
+# for the two distribution-strategy bets: @gtcx/audit-signer (npm) and
+# terraform-aws-compliance-db (GitHub + future Terraform Registry).
+#
+# Output: docs/audit/distribution-snapshots/<YYYY-MM-DD>.json, committed
+# to main so progression is visible in git history without a separate
+# metrics service.
+
+on:
+  schedule:
+    - cron: '17 6 * * *' # 06:17 UTC daily (off the hour to spread cron load)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: distribution-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run snapshot
+        run: node tools/scripts/distribution-snapshot.mjs
+
+      - name: Commit if changed
+        run: |
+          if [[ -n "$(git status --porcelain docs/audit/distribution-snapshots/)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs/audit/distribution-snapshots/
+            git commit -m "chore(metrics): distribution snapshot $(date -u +%Y-%m-%d)"
+            git push
+          else
+            echo "No snapshot change; nothing to commit."
+          fi

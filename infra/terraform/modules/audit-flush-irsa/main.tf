@@ -104,9 +104,9 @@ resource "aws_iam_role_policy" "audit_flush_write" {
         Resource = "${var.worm_bucket_arn}/*"
       },
       {
-        Sid    = "AllowListBucketUnderPrefix"
-        Effect = "Allow"
-        Action = ["s3:ListBucket"]
+        Sid      = "AllowListBucketUnderPrefix"
+        Effect   = "Allow"
+        Action   = ["s3:ListBucket"]
         Resource = var.worm_bucket_arn
       },
       {

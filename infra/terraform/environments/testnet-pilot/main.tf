@@ -501,6 +501,47 @@ module "workflow_orchestration" {
 }
 
 # -----------------------------------------------------------------------------
+# WORM Audit Storage + Audit-Flush IRSA
+# -----------------------------------------------------------------------------
+# The compliance-gateway publishes signed audit events to the
+# gtcx.audit.compliance-gateway.<tenantId> JetStream subject; the
+# audit-flush sidecar consumes that stream and writes verified NDJSON
+# to the WORM bucket below.
+#
+# IAM grant is intentionally narrow: PutObject + KMS:Encrypt only.
+# No GetObject, no DeleteObject. The Object Lock policy (COMPLIANCE
+# mode, 2557-day retention) prevents deletion at the bucket level
+# regardless of role grants.
+# -----------------------------------------------------------------------------
+
+module "worm_audit" {
+  source = "../../modules/worm-audit"
+
+  environment    = var.environment
+  retention_days = 2557
+
+  tags = merge(var.tags, {
+    Environment = var.environment
+    Component   = "audit"
+  })
+}
+
+module "audit_flush_irsa" {
+  source = "../../modules/audit-flush-irsa"
+
+  environment       = var.environment
+  oidc_provider_arn = module.eks.oidc_provider_arn
+  oidc_provider_url = replace(module.eks.oidc_provider_url, "https://", "")
+  worm_bucket_arn   = module.worm_audit.bucket_arn
+  worm_kms_key_arn  = module.worm_audit.kms_key_arn
+
+  tags = merge(var.tags, {
+    Environment = var.environment
+    Component   = "audit-flush"
+  })
+}
+
+# -----------------------------------------------------------------------------
 # Outputs
 # -----------------------------------------------------------------------------
 
@@ -623,4 +664,14 @@ output "sandbox_secret_arns" {
 output "argo_workflows_namespace" {
   description = "Argo Workflows namespace"
   value       = module.workflow_orchestration.namespace
+}
+
+output "audit_flush_role_arn" {
+  description = "IAM role ARN to annotate the audit-flush ServiceAccount with (eks.amazonaws.com/role-arn)"
+  value       = module.audit_flush_irsa.role_arn
+}
+
+output "worm_audit_bucket_name" {
+  description = "WORM audit S3 bucket name — set AUDIT_S3_BUCKET on the audit-flush deployment to this"
+  value       = module.worm_audit.bucket_name
 }

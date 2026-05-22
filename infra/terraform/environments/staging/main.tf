@@ -201,19 +201,19 @@ module "database" {
 module "eks" {
   source = "../../modules/eks"
 
-  environment             = var.environment
-  region                  = var.region
-  vpc_id                  = module.vpc.vpc_id
-  private_subnet_ids      = module.vpc.private_subnet_ids
-  public_subnet_ids       = module.vpc.public_subnet_ids
-  node_instance_types     = var.eks_node_instance_types
-  node_desired_size       = var.eks_node_desired_size
-  node_min_size           = var.eks_node_min_size
-  node_max_size           = var.eks_node_max_size
-  enable_public_access    = var.enable_public_api
-  allowed_cidr_blocks     = var.admin_cidr_blocks
+  environment                = var.environment
+  region                     = var.region
+  vpc_id                     = module.vpc.vpc_id
+  private_subnet_ids         = module.vpc.private_subnet_ids
+  public_subnet_ids          = module.vpc.public_subnet_ids
+  node_instance_types        = var.eks_node_instance_types
+  node_desired_size          = var.eks_node_desired_size
+  node_min_size              = var.eks_node_min_size
+  node_max_size              = var.eks_node_max_size
+  enable_public_access       = var.enable_public_api
+  allowed_cidr_blocks        = var.admin_cidr_blocks
   database_security_group_id = module.database.security_group_id
-  enable_database_access  = true
+  enable_database_access     = true
 
   tags = merge(var.tags, {
     Environment = "staging"
@@ -227,9 +227,9 @@ module "eks" {
 module "ci" {
   source = "../../modules/ci"
 
-  environment           = var.environment
-  repository_pattern    = "repo:gtcx-ecosystem/*:ref:refs/heads/main"
-  create_oidc_provider  = true
+  environment             = var.environment
+  repository_pattern      = "repo:gtcx-ecosystem/*:ref:refs/heads/main"
+  create_oidc_provider    = true
   enable_broad_ecr_access = true
 
   tags = merge(var.tags, {
@@ -275,6 +275,21 @@ module "worm_audit" {
 
   tags = merge(var.tags, {
     Environment = "staging"
+  })
+}
+
+module "audit_flush_irsa" {
+  source = "../../modules/audit-flush-irsa"
+
+  environment       = var.environment
+  oidc_provider_arn = module.eks.oidc_provider_arn
+  oidc_provider_url = replace(module.eks.oidc_provider_url, "https://", "")
+  worm_bucket_arn   = module.worm_audit.bucket_arn
+  worm_kms_key_arn  = module.worm_audit.kms_key_arn
+
+  tags = merge(var.tags, {
+    Environment = "staging"
+    Component   = "audit-flush"
   })
 }
 
@@ -352,4 +367,9 @@ output "worm_audit_bucket_arn" {
 output "worm_audit_kms_key_arn" {
   description = "WORM audit KMS key ARN"
   value       = module.worm_audit.kms_key_arn
+}
+
+output "audit_flush_role_arn" {
+  description = "IAM role ARN to annotate the audit-flush ServiceAccount with"
+  value       = module.audit_flush_irsa.role_arn
 }

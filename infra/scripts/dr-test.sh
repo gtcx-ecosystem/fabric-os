@@ -19,13 +19,17 @@ set -euo pipefail
 ENV="${1:-testnet}"
 OUTPUT_DIR="${2:-}"
 
-# Validate required environment variables
+# Validate required environment variables — fail-fast on missing creds
+# rather than silently falling back to a published dev default that
+# could authenticate against a misconfigured staging shell.
 : "${POSTGRES_HOST:?POSTGRES_HOST is required}"
 : "${POSTGRES_USER:?POSTGRES_USER is required}"
 : "${POSTGRES_DB:?POSTGRES_DB is required}"
+: "${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required — source from secret manager, never use shell-history values}"
 : "${AUDIT_HOST:?AUDIT_HOST is required}"
 : "${AUDIT_USER:?AUDIT_USER is required}"
 : "${AUDIT_DB:?AUDIT_DB is required}"
+: "${POSTGRES_AUDIT_PASSWORD:?POSTGRES_AUDIT_PASSWORD is required — source from secret manager, never use shell-history values}"
 
 POSTGRES_PORT="${POSTGRES_PORT:-5432}"
 AUDIT_PORT="${AUDIT_PORT:-5433}"
@@ -84,10 +88,10 @@ STEP1_START=$(date +%s%N)
 HEALTH=$(curl -sf "$PROTOCOL_URL/health" 2>/dev/null | python3 -c "import sys,json; print(json.load(sys.stdin).get('status',''))" 2>/dev/null || echo "")
 check "Protocol server health" "$([ "$HEALTH" = "ok" ] && echo true || echo false)" "$STEP1_START"
 
-PG_OK=$(PGPASSWORD="${POSTGRES_PASSWORD:-gtcx_dev_password}" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT 1" -t -A 2>/dev/null || echo "")
+PG_OK=$(PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT 1" -t -A 2>/dev/null || echo "")
 check "PostgreSQL operational" "$([ "$PG_OK" = "1" ] && echo true || echo false)" "$STEP1_START"
 
-AUDIT_OK=$(PGPASSWORD="${POSTGRES_AUDIT_PASSWORD:-gtcx_audit_dev_password}" psql -h "$AUDIT_HOST" -p "$AUDIT_PORT" -U "$AUDIT_USER" -d "$AUDIT_DB" -c "SELECT 1" -t -A 2>/dev/null || echo "")
+AUDIT_OK=$(PGPASSWORD="$POSTGRES_AUDIT_PASSWORD" psql -h "$AUDIT_HOST" -p "$AUDIT_PORT" -U "$AUDIT_USER" -d "$AUDIT_DB" -c "SELECT 1" -t -A 2>/dev/null || echo "")
 check "PostgreSQL audit" "$([ "$AUDIT_OK" = "1" ] && echo true || echo false)" "$STEP1_START"
 
 # --- Step 2: Insert test data ---
@@ -95,11 +99,11 @@ echo ""
 echo "Step 2: Insert test data"
 STEP2_START=$(date +%s%N)
 DR_MARKER="dr_test_$(date +%s)"
-PGPASSWORD="${POSTGRES_PASSWORD:-gtcx_dev_password}" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "
+PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "
   CREATE TABLE IF NOT EXISTS dr_test_markers (id TEXT PRIMARY KEY, created_at TIMESTAMPTZ DEFAULT NOW());
   INSERT INTO dr_test_markers (id) VALUES ('$DR_MARKER') ON CONFLICT DO NOTHING;
 " 2>/dev/null
-INSERTED=$(PGPASSWORD="${POSTGRES_PASSWORD:-gtcx_dev_password}" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT id FROM dr_test_markers WHERE id = '$DR_MARKER'" -t -A 2>/dev/null || echo "")
+INSERTED=$(PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT id FROM dr_test_markers WHERE id = '$DR_MARKER'" -t -A 2>/dev/null || echo "")
 check "Test marker inserted" "$([ "$INSERTED" = "$DR_MARKER" ] && echo true || echo false)" "$STEP2_START"
 
 # --- Step 3: Create backup ---
@@ -107,7 +111,7 @@ echo ""
 echo "Step 3: Backup"
 STEP3_START=$(date +%s%N)
 BACKUP_FILE="/tmp/gtcx_dr_test_${ENV}_$(date +%Y%m%d%H%M%S).sql"
-PGPASSWORD="${POSTGRES_PASSWORD:-gtcx_dev_password}" pg_dump -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" --no-owner --no-acl > "$BACKUP_FILE" 2>/dev/null
+PGPASSWORD="$POSTGRES_PASSWORD" pg_dump -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" --no-owner --no-acl > "$BACKUP_FILE" 2>/dev/null
 BACKUP_SIZE=$(wc -c < "$BACKUP_FILE" 2>/dev/null || echo "0")
 check "Backup created ($BACKUP_SIZE bytes)" "$([ "$BACKUP_SIZE" -gt 100 ] && echo true || echo false)" "$STEP3_START"
 
@@ -124,10 +128,10 @@ echo "Step 5: Restore test"
 STEP5_START=$(date +%s%N)
 RESTORE_START_NS=$(date +%s%N)
 RESTORE_DB="gtcx_dr_test_restore"
-PGPASSWORD="${POSTGRES_PASSWORD:-gtcx_dev_password}" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "postgres" -c "DROP DATABASE IF EXISTS $RESTORE_DB; CREATE DATABASE $RESTORE_DB;" 2>/dev/null
-PGPASSWORD="${POSTGRES_PASSWORD:-gtcx_dev_password}" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$RESTORE_DB" < "$BACKUP_FILE" > /dev/null 2>&1
+PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "postgres" -c "DROP DATABASE IF EXISTS $RESTORE_DB; CREATE DATABASE $RESTORE_DB;" 2>/dev/null
+PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$RESTORE_DB" < "$BACKUP_FILE" > /dev/null 2>&1
 RESTORE_END_NS=$(date +%s%N)
-RESTORED=$(PGPASSWORD="${POSTGRES_PASSWORD:-gtcx_dev_password}" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$RESTORE_DB" -c "SELECT id FROM dr_test_markers WHERE id = '$DR_MARKER'" -t -A 2>/dev/null || echo "")
+RESTORED=$(PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$RESTORE_DB" -c "SELECT id FROM dr_test_markers WHERE id = '$DR_MARKER'" -t -A 2>/dev/null || echo "")
 check "Test marker restored" "$([ "$RESTORED" = "$DR_MARKER" ] && echo true || echo false)" "$STEP5_START"
 
 # Compute RTO (restore time) and RPO (data loss window approximated as backup age)
@@ -140,8 +144,8 @@ EVIDENCE_RPO_MS="$RPO_MS"
 echo ""
 echo "Step 6: Cleanup"
 STEP6_START=$(date +%s%N)
-PGPASSWORD="${POSTGRES_PASSWORD:-gtcx_dev_password}" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "postgres" -c "DROP DATABASE IF EXISTS $RESTORE_DB;" 2>/dev/null
-PGPASSWORD="${POSTGRES_PASSWORD:-gtcx_dev_password}" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "DELETE FROM dr_test_markers WHERE id = '$DR_MARKER';" 2>/dev/null
+PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "postgres" -c "DROP DATABASE IF EXISTS $RESTORE_DB;" 2>/dev/null
+PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "DELETE FROM dr_test_markers WHERE id = '$DR_MARKER';" 2>/dev/null
 rm -f "$BACKUP_FILE"
 echo "  Cleanup complete"
 record_step "Cleanup" "PASS" "$(( ($(date +%s%N) - STEP6_START) / 1000000 ))" ""

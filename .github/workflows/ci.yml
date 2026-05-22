@@ -365,18 +365,22 @@ jobs:
           docker compose -f infra/docker/docker-compose.infra.yml config --quiet
 
       - name: DR test — backup integrity
+        env:
+          # Dev creds for the ephemeral Compose Postgres. Sourced as repo
+          # secrets so the dr-test.sh fail-fast guard exercises the same
+          # secret-load path it does in staging/production.
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: gtcx
+          POSTGRES_DB: gtcx_development
+          POSTGRES_PASSWORD: ${{ secrets.CI_POSTGRES_PASSWORD || 'gtcx_dev_password' }}
+          AUDIT_HOST: localhost
+          AUDIT_USER: gtcx_audit
+          AUDIT_DB: gtcx_audit
+          POSTGRES_AUDIT_PASSWORD: ${{ secrets.CI_POSTGRES_AUDIT_PASSWORD || 'gtcx_audit_dev_password' }}
+          PROTOCOL_URL: http://localhost:8300
         run: |
           docker compose -f infra/docker/docker-compose.dev.yml up -d postgres postgres-audit
           sleep 10
-          export POSTGRES_HOST=localhost
-          export POSTGRES_USER=gtcx
-          export POSTGRES_DB=gtcx_development
-          export POSTGRES_PASSWORD=gtcx_dev_password
-          export AUDIT_HOST=localhost
-          export AUDIT_USER=gtcx_audit
-          export AUDIT_DB=gtcx_audit
-          export AUDIT_PASSWORD=gtcx_audit_dev_password
-          export PROTOCOL_URL=http://localhost:8300
           export OUTPUT_DIR=infra/security/reports/dr-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
           bash infra/scripts/dr-test.sh testnet
           docker compose -f infra/docker/docker-compose.dev.yml down

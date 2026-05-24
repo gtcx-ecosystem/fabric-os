@@ -138,4 +138,4 @@ GCI scores are cached and re-evaluated at PvP settlement time. A score drop belo
 
 - [controls-matrix.md](controls-matrix.md)
 - Operator role definitions are maintained in the product and protocol repos, not in this infrastructure repository.
-- [data-models.md](../specs/data/data-spec.md)
+- [`../engineering/database-schema.md`](../engineering/database-schema.md) — Schema + data-model conventions

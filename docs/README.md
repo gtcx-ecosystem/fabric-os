@@ -214,7 +214,7 @@ Single source of truth for all infrastructure documentation.
 
 ## 9. Specs
 
-### Core Specs
+### Substrate specifications
 
 - [CI/CD Pipeline](specs/cicd-pipeline.md) — Stages, quality gates, security scanning
 - [Data Governance](specs/data-governance.md) — Classification, PII, sovereignty
@@ -222,39 +222,8 @@ Single source of truth for all infrastructure documentation.
 - [Resilience Framework](specs/resilience-framework.md) — RTO/RPO, SPOF, degradation tiers
 - [Scalability Framework](specs/scalability-framework.md) — HPA, caching, load testing
 - [Testing Framework](specs/testing-framework.md) — Taxonomy, coverage targets, CI gates
-- [Project Specification](specs/project-specification.md) — Overall project spec
+- [USSD Protocol](specs/ussd-protocol.md) — USSD-mode interaction specification
 - [Vault Dynamic Credentials](specs/vault-dynamic-credentials.md) — HashiCorp Vault credential rotation
-
-### Data
-
-- [Data Spec](specs/data/data-spec.md) — Data model specification
-
-### Design
-
-- [Critical Workflows](specs/design/critical-workflows.md) — Core user workflow definitions
-- [Design System](specs/design/design-system.md) — Component library and tokens
-- [Information Architecture](specs/design/information-architecture.md) — Navigation and content structure
-- [Job to Be Done](specs/design/job-to-be-done.md) — JTBD framework analysis
-- [Northern Stars](specs/design/northern-stars.md) — Product vision metrics
-- [Personas](specs/design/personas.md) — User persona definitions
-- [User Flow Diagrams](specs/design/user-flow-diagrams.md) — End-to-end user flows
-- [User Journey Maps](specs/design/user-journey-maps.md) — Experience journey maps
-
-### Frontend
-
-- [Frontend Architecture](specs/frontend/frontend-architecture.md) — Frontend system design
-- [Frontend Epics](specs/frontend/frontend-epics.md) — Frontend feature epics
-- [Frontend PRD](specs/frontend/frontend-prd.md) — Frontend product requirements
-- [Frontend Strategy](specs/frontend/frontend-strategy.md) — Frontend technology strategy
-- [Screen Inventory](specs/frontend/screen-inventory.md) — UI screen catalog
-
-### Product
-
-- [User Guide](specs/product/user-guide.md) — End-user documentation
-
-### Testing
-
-- [Test Plan](specs/testing/test-plan.md) — Test strategy and plan
 
 ---
 
@@ -448,7 +417,6 @@ Single source of truth for all infrastructure documentation.
 | Review threat model            | [Threat Model](security/threat-model.md)                                                                                                                         |
 | Check audit history            | [Assessments & Audit](#11-assessments--audit)                                                                                                                    |
 | Understand agent roles         | [Role Identification Guide](agents/roles/role-identification-guide.md)                                                                                           |
-| Review frontend specs          | [Frontend PRD](specs/frontend/frontend-prd.md)                                                                                                                   |
 | Check SLOs                     | [Performance SLOs](reference/performance-slos.md)                                                                                                                |
 | Prepare for sandbox submission | [Sandbox Application](#sandbox-application)                                                                                                                      |
 | Review CI/CD pipeline          | [CI/CD](devops/ci-cd/ci-cd.md)                                                                                                                                   |

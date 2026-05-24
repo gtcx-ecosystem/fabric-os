@@ -29,6 +29,12 @@ import { AuditBundleRequestSchema } from './schemas.mjs';
  * @property {import('./did-resolver.mjs').DidResolver} resolver
  * @property {import('./nonce-gate.mjs').NonceGate} nonceGate
  * @property {number} [nowMs]
+ * @property {(event: object) => void} [signAuditEvent] - Optional injectable
+ *   internal audit-of-the-ingest signer. When provided, an
+ *   `audit-bundle.received` record is signed into our own audit chain
+ *   on every 200 response so the substrate's audit-of-the-ingest is
+ *   itself verifiable. The handler tolerates the signer being absent
+ *   (used in tests that don't care about the audit trail).
  *
  * @typedef {object} HandleResult
  * @property {number} status
@@ -88,6 +94,39 @@ export async function processBundle(args) {
 
   // 4. Within-bundle chain validation → partial accept
   const chain = validateWithinBundleChain(parsed.events);
+
+  // 5. Sign our own internal "audit-bundle.received" record so the
+  // substrate's audit-of-the-ingest is itself verifiable (closes the
+  // loop: mobile signs events → we verify → we sign acceptance → all
+  // flows to WORM via the existing NATS+JetStream pipeline).
+  // Tolerates the signer being absent for tests that don't exercise it.
+  if (typeof args.signAuditEvent === 'function') {
+    try {
+      args.signAuditEvent({
+        actor: envelope.did,
+        action: 'audit-bundle.received',
+        target: `/audit/bundles#${parsed.bundleId}`,
+        payload: {
+          bundleId: parsed.bundleId,
+          tenantId: args.headers['x-gtcx-tenant-id'] ?? null,
+          eventsReceived: parsed.events.length,
+          eventsAccepted: chain.acceptedIds.length,
+          eventsRejected: chain.rejectedIds.length,
+          chainBreakIndex: chain.firstBreakIndex,
+        },
+      });
+    } catch (err) {
+      // Don't fail the request if our own audit signing fails; the
+      // response to mobile is already determined. Log via stderr so
+      // the operator sees it.
+      console.error(JSON.stringify({
+        level: 'error',
+        type: 'audit-bundles.internalAuditSignFailed',
+        bundleId: parsed.bundleId,
+        error: err?.message,
+      }));
+    }
+  }
 
   return {
     status: 200,

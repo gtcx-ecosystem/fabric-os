@@ -203,6 +203,86 @@ describe('processBundle — 400 bundle-malformed', () => {
   });
 });
 
+describe('processBundle — audit-of-the-ingest', () => {
+  it('signs an audit-bundle.received event on 200', async () => {
+    const bundle = { bundleId: 'b-aoi-1', events: [event('e1', 'h1', null), event('e2', 'h2', 'h1')] };
+    const args = await buildSignedRequest({ bundle });
+    args.headers['x-gtcx-tenant-id'] = 'zw';
+    const signed = [];
+    args.signAuditEvent = (evt) => signed.push(evt);
+    const result = await processBundle(args);
+    assert.strictEqual(result.status, 200);
+    assert.strictEqual(signed.length, 1);
+    assert.strictEqual(signed[0].action, 'audit-bundle.received');
+    assert.strictEqual(signed[0].actor, DID);
+    assert.strictEqual(signed[0].payload.bundleId, 'b-aoi-1');
+    assert.strictEqual(signed[0].payload.tenantId, 'zw');
+    assert.strictEqual(signed[0].payload.eventsReceived, 2);
+    assert.strictEqual(signed[0].payload.eventsAccepted, 2);
+    assert.strictEqual(signed[0].payload.eventsRejected, 0);
+    assert.strictEqual(signed[0].payload.chainBreakIndex, null);
+  });
+
+  it('records eventsAccepted/eventsRejected on partial accept', async () => {
+    const bundle = {
+      bundleId: 'b-aoi-2',
+      events: [event('e1', 'h1', null), event('e2', 'h2', 'WRONG'), event('e3', 'h3', 'h2')],
+    };
+    const args = await buildSignedRequest({ bundle });
+    const signed = [];
+    args.signAuditEvent = (evt) => signed.push(evt);
+    const result = await processBundle(args);
+    assert.strictEqual(result.status, 200);
+    assert.strictEqual(signed[0].payload.eventsAccepted, 1);
+    assert.strictEqual(signed[0].payload.eventsRejected, 2);
+    assert.strictEqual(signed[0].payload.chainBreakIndex, 1);
+  });
+
+  it('does NOT sign on envelope verification failure (400)', async () => {
+    const bundle = { bundleId: 'b-aoi-3', events: [event('e1', 'h1', null)] };
+    const args = await buildSignedRequest({ bundle });
+    args.expectedAudience = 'https://wrong.example';
+    const signed = [];
+    args.signAuditEvent = (evt) => signed.push(evt);
+    const result = await processBundle(args);
+    assert.strictEqual(result.status, 400);
+    assert.strictEqual(signed.length, 0);
+  });
+
+  it('does NOT sign on nonce replay (409)', async () => {
+    const bundle = { bundleId: 'b-aoi-4', events: [event('e1', 'h1', null)] };
+    const args = await buildSignedRequest({ bundle });
+    const sharedGate = args.nonceGate;
+    const signed = [];
+    args.signAuditEvent = (evt) => signed.push(evt);
+    await processBundle(args);
+
+    const args2 = await buildSignedRequest({ bundle, nonce: args.headers['x-gtcx-nonce'] });
+    args2.nonceGate = sharedGate;
+    args2.signAuditEvent = (evt) => signed.push(evt);
+    const result = await processBundle(args2);
+    assert.strictEqual(result.status, 409);
+    assert.strictEqual(signed.length, 1, 'only the first call should have signed');
+  });
+
+  it('does NOT throw if signAuditEvent itself throws', async () => {
+    const bundle = { bundleId: 'b-aoi-5', events: [event('e1', 'h1', null)] };
+    const args = await buildSignedRequest({ bundle });
+    args.signAuditEvent = () => { throw new Error('sink unavailable'); };
+    const result = await processBundle(args);
+    assert.strictEqual(result.status, 200, 'response is unaffected by audit-signing failure');
+    assert.deepStrictEqual(result.body.acceptedIds, ['e1']);
+  });
+
+  it('tolerates absent signAuditEvent without error', async () => {
+    const bundle = { bundleId: 'b-aoi-6', events: [event('e1', 'h1', null)] };
+    const args = await buildSignedRequest({ bundle });
+    delete args.signAuditEvent;
+    const result = await processBundle(args);
+    assert.strictEqual(result.status, 200);
+  });
+});
+
 describe('processBundle — ordering invariant', () => {
   it('nonce is NOT consumed when envelope verification fails (wrong audience)', async () => {
     const bundle = { bundleId: 'b-1', events: [event('e1', 'h1', null)] };

@@ -565,6 +565,7 @@ const server = createServer(async (req, res) => {
         expectedAudience: auditBundlesExpectedAudience,
         resolver: auditBundlesResolver,
         nonceGate: auditBundlesNonceGate,
+        signAuditEvent,
       });
       return sendJson(res, result.status, result.body, req);
     } else if (url === '/v1/audit/chain') {

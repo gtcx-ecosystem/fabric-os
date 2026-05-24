@@ -12,3 +12,4 @@ packages:
   - 'tools/eval-pipeline'
   - 'tools/compliance-gateway-mcp'
   - 'tools/audit-flush'
+  - 'tools/docs-site'

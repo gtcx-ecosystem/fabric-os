@@ -1,0 +1,19 @@
+{
+  "name": "@gtcx/docs-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Astro Starlight static-site config for the public docs at gtcx.io/compliance. Source markdown lives in docs/external/docs-site/; the sync script copies it into src/content/docs/ at build time.",
+  "scripts": {
+    "sync": "node scripts/sync-content.mjs",
+    "dev": "pnpm run sync && astro dev",
+    "build": "pnpm run sync && astro check && astro build",
+    "preview": "astro preview",
+    "clean": "rm -rf dist .astro src/content/docs"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.30.0",
+    "astro": "^5.0.0",
+    "sharp": "^0.33.0"
+  }
+}

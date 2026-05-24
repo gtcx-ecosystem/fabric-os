@@ -1,0 +1,17 @@
+/*
+ * Minimal Starlight overrides. We keep the default Starlight theme; this
+ * file exists so `astro.config.mjs` has a stable customCss target and
+ * future brand work has a known landing spot.
+ */
+
+:root {
+  --sl-font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent: #6ee7b7;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent: #047857;
+}

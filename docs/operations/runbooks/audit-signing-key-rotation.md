@@ -19,6 +19,42 @@ The Ed25519 keypair that signs every audit record is the substrate's root of tru
 
 The rotation is **non-destructive** for old records: the old public key is archived (not destroyed), so historical WORM batches remain verifiable forever. Forward chains use the new key.
 
+## Rotation flow at a glance
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Op as Operator
+    participant Host as Rotation Host (SSM)
+    participant KMS as AWS KMS
+    participant K8s as kubectl (Secret)
+    participant GW as compliance-gateway pods
+    participant Arch as Key Archive (WORM S3)
+    participant Chain as Audit Chain
+
+    Op->>Host: 2.1 generate Ed25519 keypair
+    Host-->>Op: verifies: true
+    Op->>KMS: 2.2 encrypt private key
+    KMS-->>Op: ciphertext blob
+    Op->>K8s: 2.3 patch Secret — add staged-{private,public}-key
+    Note over K8s: gateway still uses active key
+    Op->>K8s: 2.4 promote staged → active
+    Op->>GW: rollout restart
+    GW->>K8s: read active-private-key on boot
+    Note over GW: now signing with new key
+    GW->>Chain: 2.5 sign chain.rotation event<br/>(includes priorPublicKey)
+    Chain-->>Op: rotation record landed
+    Op->>Arch: 2.6 archive old keypair record
+    Op->>K8s: 2.7 remove staged slot
+    Note over K8s,GW: rotation complete; old WORM<br/>batches still verify with archived key
+
+    rect rgba(220, 38, 38, 0.08)
+        Note over Op,Arch: Undo possible up to step 2.6.<br/>After 2.7 the staged slot is gone — undo<br/>requires another full rotation.
+    end
+```
+
+The diagram is illustrative; the canonical procedure is the numbered subsections below. If the two ever diverge, the prose wins.
+
 ---
 
 ## 1. Pre-Rotation Checklist

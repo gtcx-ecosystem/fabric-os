@@ -21,7 +21,7 @@ caps_fired: 0
 
 **Round:** 4 of 4 in the May-2026 audit cycle.  
 **Predecessor:** [`master-audit-2026-05-17.md`](./master-audit-2026-05-17.md) (cycle 7, 8.48 core).  
-**Methodology:** [`gtcx-agentic/audit/prompts/audit/forensic-full-audit-prompt.md`](../../../gtcx-agentic/audit/prompts/audit/forensic-full-audit-prompt.md), six phases, repo overlay applied per [`docs/audit/repo-overlay.md`](./repo-overlay.md).  
+**Methodology:** [`gtcx-agentic/audit/prompts/audit/forensic-full-audit-prompt.md`](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/audit/prompts/audit/forensic-full-audit-prompt.md), six phases, repo overlay applied per [`docs/audit/repo-overlay.md`](./repo-overlay.md).  
 **Reading order:** This is the post-substrate-completion forensic re-audit. The prior three rounds (pre-sprints, post-six-sprints, post-residual-cleanup) shipped the substrate; this round is the audit that says it's done.
 
 ## Evidence Sources Reviewed
@@ -187,7 +187,7 @@ None of A–D move the GTM stage. The stage moves when the external clocks (pen-
 
 ## Cross-Reference
 
-- Base framework: [`gtcx-ecosystem/audit/SCORING_FRAMEWORK.md`](../../../gtcx-agentic/audit/SCORING_FRAMEWORK.md)
+- Base framework: [`gtcx-agentic/audit/SCORING_FRAMEWORK.md`](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/audit/SCORING_FRAMEWORK.md)
 - Repo overlay: [`docs/audit/repo-overlay.md`](./repo-overlay.md)
 - Master audit: [`docs/audit/master-audit-2026-05-17.md`](./master-audit-2026-05-17.md)
 - SIGNAL scorecard: [`docs/audit/signal-scorecard.json`](./signal-scorecard.json)

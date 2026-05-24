@@ -879,4 +879,4 @@ Cycle 2 closes when **all** of the following are true:
 - SOC 2 engagement plan: [`docs/audit/soc2-engagement-2026.md`](../audit/soc2-engagement-2026.md)
 - Tenant onboarding runbook: [`docs/operations/runbooks/tenant-onboarding.md`](../operations/runbooks/tenant-onboarding.md)
 - Audit-flush deployment runbook: [`docs/operations/runbooks/audit-flush-deployment.md`](../operations/runbooks/audit-flush-deployment.md)
-- Ecosystem audit framework: [`gtcx-agentic/audit/SCORING_FRAMEWORK.md`](../../../gtcx-agentic/audit/SCORING_FRAMEWORK.md)
+- Ecosystem audit framework: [`gtcx-agentic/audit/SCORING_FRAMEWORK.md`](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/audit/SCORING_FRAMEWORK.md)

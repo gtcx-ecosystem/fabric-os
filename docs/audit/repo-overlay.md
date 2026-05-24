@@ -12,7 +12,7 @@ review_cycle: 'quarterly'
 
 # gtcx-infrastructure — Repo Audit Overlay
 
-> Base framework: [`gtcx-ecosystem/audit/SCORING_FRAMEWORK.md`](../../../gtcx-agentic/audit/SCORING_FRAMEWORK.md)
+> Base framework: [`gtcx-agentic/audit/SCORING_FRAMEWORK.md`](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/audit/SCORING_FRAMEWORK.md)
 >
 > This overlay adds infrastructure-specific stricter caps and evidence requirements to the ecosystem baseline. The base framework remains canonical; this overlay only _raises_ the bar, never lowers it.
 

@@ -36,6 +36,8 @@ import { checkBudget, recordSpend, getSpend } from './budget.mjs';
 import { incrementCounter, setGauge, renderMetrics } from './metrics.mjs';
 import { sanitizeAuditTarget } from './audit-target.mjs';
 import { startAdaptiveScheduler, defaultThresholds } from './adaptive-policy.mjs';
+import { processQuery as processAuditQuery } from './audit-query/handler.mjs';
+import { InMemoryQueryStore } from './audit-query/store.mjs';
 
 // In-flight /v1/query count, exposed to the HPA via the
 // compliance_gateway_inflight_requests metric (autoscaling.v2 Pods target).
@@ -90,6 +92,17 @@ const runtimePolicyConfig = {
   featureSignedAudit: process.env.GTCX_FEATURE_SIGNED_AUDIT === 'true',
   featureFeedbackLoop: process.env.GTCX_FEATURE_FEEDBACK_LOOP === 'true',
 };
+
+// ---------------------------------------------------------------------------
+// /audit/query wiring (feature-flagged)
+// ---------------------------------------------------------------------------
+
+const auditQueryEnabled = process.env.AUDIT_QUERY_ENABLED === '1';
+// Production swaps this for a WORM-backed store reading the same NDJSON
+// batches audit-flush writes. Until that ingestion path is live (gated by
+// EXT-003 + the feat/audit-bundles-verifier merge), the in-memory store
+// is the substitute.
+const auditQueryStore = new InMemoryQueryStore();
 
 /**
  * @param {import('node:http').IncomingMessage} req
@@ -513,6 +526,22 @@ const server = createServer(async (req, res) => {
     const url = new URL(req.url ?? '/', 'http://localhost').pathname;
     if (url === '/v1/query') {
       await handleQuery(req, res);
+    } else if (url === '/audit/query') {
+      if (!auditQueryEnabled) {
+        return sendJson(res, 404, { error: 'Not found' }, req);
+      }
+      const body = await readBody(req);
+      const headersLower = {};
+      for (const [k, v] of Object.entries(req.headers)) {
+        if (typeof v === 'string') headersLower[k.toLowerCase()] = v;
+      }
+      const result = await processAuditQuery({
+        method: req.method,
+        body,
+        headers: headersLower,
+        store: auditQueryStore,
+      });
+      return sendJson(res, result.status, result.body, req);
     } else if (url === '/v1/audit/chain') {
       const principal = requirePermission(req, res, 'audit:read');
       if (!principal) {

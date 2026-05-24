@@ -355,9 +355,9 @@ Single source of truth for all infrastructure documentation.
 
 ## 16. Principles
 
-- [Open Infrastructure](principles/open-infrastructure.md) — Open-source infrastructure philosophy
-- [Regenerative Economics](principles/regenerative-economics.md) — Regenerative economic model
-- [Sovereign Accessibility](principles/sovereign-accessibility.md) — Sovereignty and accessibility principles
+- [Open Infrastructure](architecture/principles/open-infrastructure.md) — Open-source infrastructure philosophy
+- [Regenerative Economics](architecture/principles/regenerative-economics.md) — Regenerative economic model
+- [Sovereign Accessibility](architecture/principles/sovereign-accessibility.md) — Sovereignty and accessibility principles
 
 ---
 
@@ -374,9 +374,9 @@ Single source of truth for all infrastructure documentation.
 
 ### Research
 
-- [Alternative Network Concepts](research/alternative-network-concepts.md) — Alternative networking approaches
-- [Competitors](research/competitors.md) — Competitive landscape analysis
-- [Industry Landscape](research/industry-landscape.md) — Market and industry overview
+- [Alternative Network Concepts](reference/alternative-network-concepts.md) — Alternative networking approaches
+- [Competitors](reference/competitors.md) — Competitive landscape analysis
+- [Industry Landscape](reference/industry-landscape.md) — Market and industry overview
 
 ---
 

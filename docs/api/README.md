@@ -85,6 +85,10 @@ Standard codes:
 
 The canonical OpenAPI spec carries version metadata under `info.version` in `openapi.yaml`.
 
+## OpenAPI spec coverage
+
+The [`openapi.yaml`](./openapi.yaml) covers all 11 documented endpoints (full request / response / error schemas) plus the mobile-contract `/audit/bundles` endpoint. The mobile-contract endpoint is documented even though its implementation lives on the `feat/audit-bundles-verifier` feature branch (PR [#56](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/56)); with the feature flag off the endpoint returns 404 (default route), and the spec documents the active-flag behavior.
+
 ## What's NOT in this API
 
 The gateway intentionally does **not** expose:

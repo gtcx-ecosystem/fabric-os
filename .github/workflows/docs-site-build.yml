@@ -1,0 +1,46 @@
+name: docs-site-build
+
+# Build-only verification for the Astro Starlight static-site at
+# tools/docs-site/. Runs on PRs that touch the docs-site markdown
+# source or the build config. Does NOT deploy.
+
+on:
+  pull_request:
+    paths:
+      - 'docs/external/docs-site/**'
+      - 'tools/docs-site/**'
+      - '.github/workflows/docs-site-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-site-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install workspace deps (docs-site only)
+        run: pnpm install --filter @gtcx/docs-site... --frozen-lockfile
+
+      - name: Sync markdown source
+        run: pnpm -F @gtcx/docs-site sync
+
+      - name: Build site
+        run: pnpm -F @gtcx/docs-site build
+        env:
+          DOCS_SITE_SKIP_DRAFTS: '1'

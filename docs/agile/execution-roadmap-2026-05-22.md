@@ -2,7 +2,7 @@
 title: 'GTCX Infrastructure — Execution Roadmap'
 status: 'current'
 date: '2026-05-22'
-last_updated: '2026-05-22'
+last_updated: '2026-05-25'
 owner: 'platform-engineering'
 tier: 'critical'
 tags: ['agile', 'roadmap', 'sprint-plan', 'audit']
@@ -363,7 +363,7 @@ Cross-references:
 - **EXT-003** (Sprint 7) — audit-flush container image to ECR (without it, bundles ingest but don't reach WORM)
 - **gtcx-infrastructure#55** — tracks gtcx-protocols#60 deployment readiness
 
-**Stub branch already landed:** `feat/audit-bundles-verifier` — 7 commits, 92 unit tests, verifier + chain validator + nonce gate + mockable DID resolver. Production wiring (real TradePass URL) waits on gtcx-protocols#60.
+**Implementation status (2026-05-25):** `feat/audit-bundles-verifier` — 8 commits including `audit-bundle.received` signing into our own chain; verifier + chain validator + nonce gate + mockable DID resolver; **PR [#56](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/56) open** for review. Handler wired behind `AUDIT_BUNDLES_ENABLED=1`. Production wiring (real TradePass URL via gtcx-protocols#60) lands as a follow-up commit once that issue closes.
 
 ### [MOB-W1-003] Deploy nonce store + replay-rejection (gtcx-infrastructure#51)
 
@@ -379,7 +379,7 @@ Cross-references:
 
 **Dependencies:** MOB-W1-002 (lands in the same PR — same handler).
 
-**Status:** Implementation complete on `feat/audit-bundles-verifier`; awaiting end-to-end staging deploy with #50.
+**Status:** Implementation complete on `feat/audit-bundles-verifier` and bundled into PR [#56](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/56); awaiting end-to-end staging deploy with #50.
 
 ### [MOB-W1-004] Deploy POST /audit/query (gtcx-infrastructure#52)
 
@@ -389,13 +389,18 @@ Cross-references:
 
 **Acceptance criteria:**
 
-- [ ] Endpoint accepts `QueryAuditRequest` per `gtcx-mobile/apps/web/portal/lib/audit-client.ts`.
-- [ ] Bearer-only auth for W1 (signed-edge dual-auth deferred to Sprint 22+).
-- [ ] `X-GTCX-Tenant-Id` lowercase ISO-2 country code → per-tenant namespace per ADR-015.
-- [ ] `totalMatched` computed as `min(matched, limit + 1)` for scalability; `truncated` flag is the load-bearing indicator.
-- [ ] `outcome` taxonomy stored as-received (mobile's 4-state enum coexists with our internal event types).
+- [x] Endpoint accepts `QueryAuditRequest` per `gtcx-mobile/apps/web/portal/lib/audit-client.ts`.
+- [x] Bearer-only auth for W1 (signed-edge dual-auth deferred to Sprint 22+).
+- [x] `X-GTCX-Tenant-Id` lowercase ISO-2 country code → per-tenant namespace per ADR-015.
+- [x] `totalMatched` computed as `min(matched, limit + 1)` for scalability; `truncated` flag is the load-bearing indicator.
+- [x] `outcome` taxonomy stored as-received (mobile's 4-state enum coexists with our internal event types).
+- [x] Pluggable store interface — in-memory (dev), NDJSON-file (staging, durable across restarts), future WORM (production). See [ADR-022](../architecture/decisions/ADR-022-pluggable-audit-query-store.md).
+- [x] Audit-of-the-query: every successful query signs an `audit-query.served` record into our own audit chain.
+- [x] Prometheus metrics: `compliance_gateway_audit_query_requests_total{status,tenantId}` + truncation counter.
 
-**Dependencies:** MOB-W1-002 (handler infrastructure); WORM bucket access path.
+**Implementation status (2026-05-25):** Complete on `feat/audit-query` across 7 atomic commits (AQ-1 schemas, AQ-2 in-memory store, AQ-3 handler, AQ-4 server wire, AQ-5 audit-of-the-query signing, AQ-6 NDJSON store, AQ-7 metrics); **PR [#58](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/58) open** for review. OpenAPI spec for the endpoint and ADR-022 landed separately on `main`. Handler wired behind `AUDIT_QUERY_ENABLED=1`; store selection via `AUDIT_QUERY_NDJSON_DIR` env var.
+
+**Dependencies:** MOB-W1-002 (handler infrastructure); WORM bucket access path (only for future `WormQueryStore`, not for staging).
 
 ### MOB-W1 UAT
 
@@ -418,10 +423,16 @@ Cross-references:
 
 ### MOB-W1 commit plan
 
-1. Branch `feat/audit-bundles-verifier` — 7 commits already landed (schemas, canonical, DID resolver, envelope verifier, chain validator, nonce gate, handler).
-2. PR opens as draft post-Monday-standup ratification.
-3. Production wiring lands as a follow-up commit when gtcx-protocols#60 deploys.
-4. `/audit/query` (#52) lands as a separate PR after #50 review opens.
+1. Branch `feat/audit-bundles-verifier` — 8 commits landed (schemas, canonical, DID resolver, envelope verifier, chain validator, nonce gate, handler, `audit-bundle.received` self-signing). **PR [#56](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/56) open**.
+2. Branch `feat/audit-query` — 7 commits landed (schemas, in-memory store, handler, server wire, audit-of-the-query signing, NDJSON store, Prometheus metrics). **PR [#58](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/58) open**.
+3. On `main`: OpenAPI 3.1 spec expanded to 12 endpoints incl. `/audit/query` (`c7c02e4`); [ADR-022](../architecture/decisions/ADR-022-pluggable-audit-query-store.md) on pluggable store (`7630af8`).
+4. Production wiring for `/audit/bundles` (real TradePass URL) lands as a follow-up commit once gtcx-protocols#60 deploys.
+
+### Pre-standup status (2026-05-25)
+
+- Cross-team contract closed via `gtcx-infrastructure#52` (10 wire-shape ambiguities resolved with mobile team).
+- **Finding for gtcx-protocols' tag-firing approval pattern:** `npm-production` environment does not exist on `gtcx-ecosystem/gtcx-protocols` (`gh api /repos/gtcx-ecosystem/gtcx-protocols/environments` → `{ "total_count": 0 }`). Their tag-push approval gate cannot fire on its own; environment-protection rule must be created before Wed 2026-05-28 tag window. Surfaced to gtcx-protocols pre-standup.
+- gtcx-infrastructure side ready: PRs #56 + #58 open; ADR-022 + OpenAPI on main.
 
 ---
 
@@ -879,4 +890,6 @@ Cycle 2 closes when **all** of the following are true:
 - SOC 2 engagement plan: [`docs/audit/soc2-engagement-2026.md`](../audit/soc2-engagement-2026.md)
 - Tenant onboarding runbook: [`docs/operations/runbooks/tenant-onboarding.md`](../operations/runbooks/tenant-onboarding.md)
 - Audit-flush deployment runbook: [`docs/operations/runbooks/audit-flush-deployment.md`](../operations/runbooks/audit-flush-deployment.md)
+- ADR-022 (audit-query pluggable store): [`docs/architecture/decisions/ADR-022-pluggable-audit-query-store.md`](../architecture/decisions/ADR-022-pluggable-audit-query-store.md)
+- OpenAPI spec: [`docs/api/openapi.yaml`](../api/openapi.yaml) — 12 endpoints incl. `/audit/bundles` + `/audit/query`
 - Ecosystem audit framework: [`gtcx-agentic/audit/SCORING_FRAMEWORK.md`](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/audit/SCORING_FRAMEWORK.md)

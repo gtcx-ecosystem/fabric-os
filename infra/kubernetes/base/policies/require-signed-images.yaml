@@ -51,7 +51,7 @@ spec:
             - kyverno
       verifyImages:
         - imageReferences:
-            - '293488310036.dkr.ecr.af-south-1.amazonaws.com/gtcx-*'
+            - '348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-*'
           attestors:
             - entries:
                 - keyless:

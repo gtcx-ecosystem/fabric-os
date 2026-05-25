@@ -16,13 +16,16 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    # FIXME: ACM certificate references old account 293488310036.
+    # No *.gtcx.trade certificate exists in active account 348389439381.
+    # Use ingress-nginx.yaml + letsencrypt-issuer.yaml as fallback.
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:af-south-1:293488310036:certificate/gtcx-staging-wildcard
     alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
     alb.ingress.kubernetes.io/healthcheck-path: /health
     alb.ingress.kubernetes.io/success-codes: '200'
     alb.ingress.kubernetes.io/group.name: gtcx-staging-api
     # WAF WebACL association
-    alb.ingress.kubernetes.io/wafv2-acl-arn: arn:aws:wafv2:af-south-1:293488310036:regional/webacl/gtcx-staging/...
+    alb.ingress.kubernetes.io/wafv2-acl-arn: arn:aws:wafv2:af-south-1:348389439381:regional/webacl/gtcx-staging-waf-af-south-1/c918a5e4-bbae-4385-aa6e-e135469c250f
 spec:
   ingressClassName: alb
   rules:

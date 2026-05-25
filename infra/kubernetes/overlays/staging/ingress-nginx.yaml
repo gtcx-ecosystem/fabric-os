@@ -1,7 +1,7 @@
 # =============================================================================
 # Staging Ingress — NGINX Alternative (ALB bypass)
 # =============================================================================
-# Use this ingress if the ACM certificate in account 293488310036 is
+# Use this ingress if the ACM certificate issue (old account 293488310036) is
 # unavailable and a cert-manager + Let's Encrypt path is preferred.
 #
 # Prerequisites:

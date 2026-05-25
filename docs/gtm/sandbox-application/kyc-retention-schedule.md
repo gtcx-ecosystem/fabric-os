@@ -12,8 +12,8 @@ review_cycle: 'on-change'
 # KYC/AML Record Retention Schedule
 
 **Classification:** Confidential — Regulator Submission
-**Date:** \_\_\_\_\_\_\_\_\_\_
-**Prepared by:** \_\_\_\_\_\_\_\_\_\_
+**Date:** 2026-05-25
+**Prepared by:** GTCX Compliance Lead
 
 ---
 

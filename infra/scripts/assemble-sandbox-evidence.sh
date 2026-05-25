@@ -72,6 +72,9 @@ fi
 DOCS_DIR="${REPO_ROOT}/docs"
 COMPLIANCE_DIR="${DOCS_DIR}/compliance"
 SECURITY_DIR="${DOCS_DIR}/security"
+GTM_DIR="${DOCS_DIR}/gtm"
+SANDBOX_DIR="${GTM_DIR}/sandbox-application"
+REGULATORY_DIR="${GTM_DIR}/regulatory"
 TERRAFORM_DIR="${REPO_ROOT}/infra/terraform/modules/compliance-db"
 
 log_info "Assembling sandbox evidence for jurisdiction: ${JURISDICTION}"
@@ -83,11 +86,11 @@ mkdir -p "${OUTPUT_DIR}/appendices"
 # 01 — Architecture Overview
 # ---------------------------------------------------------------------------
 
-if [ -f "${COMPLIANCE_DIR}/sandbox/architecture-overview.md" ]; then
-  cp "${COMPLIANCE_DIR}/sandbox/architecture-overview.md" "${OUTPUT_DIR}/01-architecture-overview.md"
+if [ -f "${SANDBOX_DIR}/architecture-overview.md" ]; then
+  cp "${SANDBOX_DIR}/architecture-overview.md" "${OUTPUT_DIR}/01-architecture-overview.md"
   log_success "01 — Architecture overview copied"
 else
-  log_warn "01 — Architecture overview not found at docs/compliance/sandbox/architecture-overview.md"
+  log_warn "01 — Architecture overview not found at docs/gtm/sandbox-application/architecture-overview.md"
 fi
 
 # ---------------------------------------------------------------------------
@@ -345,11 +348,11 @@ fi
 # 07 — Incident Response Plan (copy existing IRP)
 # ---------------------------------------------------------------------------
 
-if [ -f "${COMPLIANCE_DIR}/incident-response-plan-v1.md" ]; then
-  cp "${COMPLIANCE_DIR}/incident-response-plan-v1.md" "${OUTPUT_DIR}/07-incident-response-plan.md"
+if [ -f "${REGULATORY_DIR}/incident-response-plan-v1.md" ]; then
+  cp "${REGULATORY_DIR}/incident-response-plan-v1.md" "${OUTPUT_DIR}/07-incident-response-plan.md"
   log_success "07 — Incident response plan copied"
 else
-  log_warn "07 — Incident response plan not found"
+  log_warn "07 — Incident response plan not found at docs/gtm/regulatory/incident-response-plan-v1.md"
 fi
 
 # ---------------------------------------------------------------------------
@@ -357,8 +360,8 @@ fi
 # ---------------------------------------------------------------------------
 
 generate_business_continuity() {
-  local bc_policy="${COMPLIANCE_DIR}/policies/A17-business-continuity.md"
-  local rto_rpo="${COMPLIANCE_DIR}/rto-rpo-resolution.md"
+  local bc_policy="${DOCS_DIR}/compliance/policies/a17-business-continuity.md"
+  local rto_rpo="${REGULATORY_DIR}/rto-rpo-resolution.md"
 
   {
     if [ -f "$bc_policy" ]; then

@@ -327,7 +327,7 @@ Cross-references:
 
 ### [MOB-W1-001] Provision \*.staging.gtcx.trade + /health (gtcx-infrastructure#49)
 
-**Priority:** P0 | **Points:** 2 | **Assignee:** Platform Engineering
+**Priority:** P0 | **Points:** 2 | **Assignee:** Platform Engineering | **ETA:** Tuesday 2026-05-27
 
 **User story:** As **gtcx-mobile**, I want **a stable staging hostname with valid TLS** so that **the 30-day pilot can validate the signed-edge transport end-to-end against `https://geotag.staging.gtcx.trade`**.
 
@@ -344,7 +344,7 @@ Cross-references:
 
 ### [MOB-W1-002] Deploy POST /audit/bundles verifier (gtcx-infrastructure#50)
 
-**Priority:** P0 | **Points:** 3 | **Assignee:** Platform Engineering
+**Priority:** P0 | **Points:** 3 | **Assignee:** Platform Engineering | **ETA:** Thursday 2026-05-29
 
 **User story:** As **gtcx-mobile**, I want **server-side signature verification + chain validation of audit bundles** so that **field-captured events ingest cryptographically into the substrate**.
 
@@ -367,7 +367,7 @@ Cross-references:
 
 ### [MOB-W1-003] Deploy nonce store + replay-rejection (gtcx-infrastructure#51)
 
-**Priority:** P0 | **Points:** 1 | **Assignee:** Platform Engineering
+**Priority:** P0 | **Points:** 1 | **Assignee:** Platform Engineering | **ETA:** Thursday 2026-05-29 (bundled with #50)
 
 **User story:** As **gtcx-mobile**, I want **server-side replay rejection** so that **a stolen envelope replayed from a different device cannot smuggle audit events**.
 
@@ -383,7 +383,7 @@ Cross-references:
 
 ### [MOB-W1-004] Deploy POST /audit/query (gtcx-infrastructure#52)
 
-**Priority:** P0 | **Points:** 2 | **Assignee:** Platform Engineering
+**Priority:** P0 | **Points:** 2 | **Assignee:** Platform Engineering | **ETA:** Friday 2026-05-30 (morning)
 
 **User story:** As **the web portal regulator**, I want **`/audit/query` to serve real audit events scoped by tenant** so that **the audit-review page renders live data instead of the demo fixture**.
 

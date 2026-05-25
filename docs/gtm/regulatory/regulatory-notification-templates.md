@@ -1,6 +1,6 @@
 ---
 title: 'Regulatory Notification Templates'
-status: 'draft'
+status: 'current'
 date: '2026-05-10'
 owner: 'frontier-infra-engineer'
 role: 'frontier-infra-engineer'

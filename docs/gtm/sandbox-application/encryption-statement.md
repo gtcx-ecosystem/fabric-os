@@ -12,8 +12,8 @@ review_cycle: 'on-change'
 # Encryption Statement
 
 **Classification:** Confidential — Regulator Submission
-**Date:** \_\_\_\_\_\_\_\_\_\_
-**Prepared by:** \_\_\_\_\_\_\_\_\_\_
+**Date:** 2026-05-25
+**Prepared by:** GTCX Security Lead
 
 ---
 

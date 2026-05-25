@@ -21,4 +21,5 @@ Index of documents in `docs/gtm/regulatory`.
 - [pentest scope rfp](./pentest-scope-rfp.md)
 - [regulatory notification templates](./regulatory-notification-templates.md)
 - [rto rpo resolution](./rto-rpo-resolution.md)
+- [soc2 auditor selection](./soc2-auditor-selection.md)
 - [soc2 readiness checklist](./soc2-readiness-checklist.md)

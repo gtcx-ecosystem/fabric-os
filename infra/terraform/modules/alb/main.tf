@@ -121,7 +121,17 @@ resource "aws_iam_role_policy" "alb_controller" {
           "ec2:DescribeTargetHealth",
           "ec2:DescribeListeners",
           "ec2:DescribeRules",
-          "elasticloadbalancing:Describe*",
+          "elasticloadbalancing:DescribeLoadBalancers",
+          "elasticloadbalancing:DescribeLoadBalancerAttributes",
+          "elasticloadbalancing:DescribeListeners",
+          "elasticloadbalancing:DescribeListenerCertificates",
+          "elasticloadbalancing:DescribeRules",
+          "elasticloadbalancing:DescribeTargetGroups",
+          "elasticloadbalancing:DescribeTargetGroupAttributes",
+          "elasticloadbalancing:DescribeTargetHealth",
+          "elasticloadbalancing:DescribeTags",
+          "elasticloadbalancing:DescribeSSLPolicies",
+          "elasticloadbalancing:DescribeAccountLimits",
         ]
         Resource = "*"
       },

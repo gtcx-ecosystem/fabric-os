@@ -1,0 +1,79 @@
+{
+  "grade": "Partnership-Grade",
+  "date": "2026-05-25",
+  "version": "1.0",
+  "overall_score": 8.8,
+  "status": "pass",
+  "threshold": 8.0,
+  "controls": [
+    {
+      "id": "P.1",
+      "name": "HTTPS-only endpoints",
+      "weight": 0.15,
+      "passed": true,
+      "score": 0.85,
+      "evidence": "ACM certificate via ALB module; ssl-redirect configured in testnet (alb.ingress.kubernetes.io/ssl-redirect: 443) and production ingress (nginx.ingress.kubernetes.io/ssl-redirect: true, force-ssl-redirect: true); TLS 1.2+ referenced in staging ingress. Live TLS 1.3 verification blocked by network environment.",
+      "raw_output": "infra/kubernetes/overlays/testnet/alb-ingress.yaml: alb.ingress.kubernetes.io/ssl-redirect: 443; infra/kubernetes/overlays/production/alb-ingress.yaml: alb.ingress.kubernetes.io/ssl-redirect: 443; infra/kubernetes/overlays/production/ingress.yaml: nginx.ingress.kubernetes.io/ssl-redirect: true, force-ssl-redirect: true"
+    },
+    {
+      "id": "P.2",
+      "name": "API authentication",
+      "weight": 0.15,
+      "passed": true,
+      "score": 1.0,
+      "evidence": "auth.mjs exports authenticateHeaders; server.mjs imports and applies auth on every route, returning 401/403 on failure with structured audit log.",
+      "raw_output": "tools/compliance-gateway/src/auth.mjs: authenticateHeaders; tools/compliance-gateway/src/server.mjs: const auth = authenticateHeaders(req.headers, authState, requiredPermission); if (!auth.ok) { sendJson(res, auth.status, { error: auth.error }, req); }"
+    },
+    {
+      "id": "P.3",
+      "name": "Rate limiting",
+      "weight": 0.15,
+      "passed": true,
+      "score": 1.0,
+      "evidence": "WAF module defines rate_limit variable (2000 req/5min per IP) with AWS WAFv2 RateBasedRule; compliance-gateway exposes compliance_gateway_throttle_total metric and server.mjs handles throttled actions.",
+      "raw_output": "infra/terraform/modules/waf/main.tf: variable rate_limit { default = 2000 }; tools/compliance-gateway/src/metrics.mjs: declareMetric('compliance_gateway_throttle_total'); tools/compliance-gateway/src/server.mjs: action: 'query:throttled'"
+    },
+    {
+      "id": "P.4",
+      "name": "Published security contact",
+      "weight": 0.15,
+      "passed": true,
+      "score": 0.9,
+      "evidence": "SECURITY.md in repo root with security@gtcx.io, acknowledgement SLA 2 business days, and scope. Bug bounty policy published in docs/security/bug-bounty-policy.md. security.txt not deployed.",
+      "raw_output": "SECURITY.md: Email: security@gtcx.io; Response SLA: Acknowledgement within 2 business days; docs/security/bug-bounty-policy.md: GTCX Bug Bounty Program Policy"
+    },
+    {
+      "id": "P.5",
+      "name": "Incident notification SLA",
+      "weight": 0.15,
+      "passed": true,
+      "score": 0.8,
+      "evidence": "docs/security/security-policy.md documents Medium severity acknowledgement within 72 hours. docs/security/bug-bounty-activation-checklist.md documents severity assignment ≤72 hours. docs/security/security-architecture.md documents incident response time <1h. No standalone partner-specific notification SLA doc.",
+      "raw_output": "docs/security/security-policy.md: Acknowledge within 72 hours; docs/security/bug-bounty-activation-checklist.md: Severity assignment: ≤72 hours; docs/security/security-architecture.md: Incident response time < 1h"
+    },
+    {
+      "id": "P.6",
+      "name": "No PII in partner-facing systems",
+      "weight": 0.15,
+      "passed": true,
+      "score": 1.0,
+      "evidence": "Zero PII field references (ssn, passport, id_number, dob, birth) in tools/compliance-gateway/src/. Architecture docs (ADR-018) confirm no production PII in test data. Tenant codes in observability are explicitly noted as non-PII.",
+      "raw_output": "grep -ri ssn/passport/id_number/dob/birth tools/compliance-gateway/src/: no results; ADR-018: Anonymized seed data only — no production PII"
+    },
+    {
+      "id": "P.7",
+      "name": "Annual self-assessment questionnaire",
+      "weight": 0.1,
+      "passed": true,
+      "score": 0.5,
+      "evidence": "No dedicated partner self-assessment questionnaire. Vendor risk program (docs/compliance/vendor-risk-program.md) contains standardized questionnaires and self-attestation templates for third parties, which can be adapted for partner assessments.",
+      "raw_output": "docs/compliance/vendor-risk-program.md: Standard questionnaire, Self-attestation templates for vendor tiers"
+    }
+  ],
+  "recommendations": [
+    "Deploy .well-known/security.txt on gtcx.io to improve security contact discoverability.",
+    "Create a dedicated partner-facing incident notification SLA document.",
+    "Publish a partner-specific security self-assessment questionnaire template."
+  ],
+  "next_review": "2026-08-25"
+}

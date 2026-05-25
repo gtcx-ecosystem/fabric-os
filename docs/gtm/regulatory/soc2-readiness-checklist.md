@@ -45,13 +45,13 @@ This checklist maps GTCX's current posture against the AICPA Trust Services Crit
 
 ### CC1 — Control Environment
 
-| Ref   | Criterion                              | What We Have                                      | What's Missing                                       | Remediation Action                                                    | Owner | Status  |
-| ----- | -------------------------------------- | ------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------- | ----- | ------- |
-| CC1.1 | CISO/board oversight of security       | Remediation plan with board governance model      | No formal board security committee charter           | Draft charter, obtain board approval, schedule quarterly reviews      | CISO  | PLANNED |
-| CC1.2 | Management commitment to competence    | Engineering team with crypto/infra expertise      | No formal security training program                  | Implement annual security training + quarterly phishing simulation    | CISO  | PLANNED |
-| CC1.3 | Organizational structure               | Repo-per-domain architecture with clear ownership | No formal org chart with security responsibilities   | Document security org structure, assign security champions per team   | CISO  | PLANNED |
-| CC1.4 | Commitment to attract/retain personnel | Competitive hiring practices                      | No documented security role descriptions             | Formalize CISO and Security Engineer JDs with required certifications | CISO  | PLANNED |
-| CC1.5 | Accountability for internal control    | Controls matrix exists (controls-matrix.md)       | No formal control owner assignment or review cadence | Assign control owners in matrix, establish quarterly review cycle     | CISO  | PARTIAL |
+| Ref   | Criterion                              | What We Have                                      | What's Missing                                             | Remediation Action                                                    | Owner | Status  |
+| ----- | -------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------- | ----- | ------- |
+| CC1.1 | CISO/board oversight of security       | Board Security Committee Charter published        | Board Security Committee Charter exists; CISO role defined | Maintain quarterly reviews, appoint named CISO                        | CISO  | PARTIAL |
+| CC1.2 | Management commitment to competence    | Engineering team with crypto/infra expertise      | No formal security training program                        | Implement annual security training + quarterly phishing simulation    | CISO  | PLANNED |
+| CC1.3 | Organizational structure               | Repo-per-domain architecture with clear ownership | No formal org chart with security responsibilities         | Document security org structure, assign security champions per team   | CISO  | PLANNED |
+| CC1.4 | Commitment to attract/retain personnel | Competitive hiring practices                      | No documented security role descriptions                   | Formalize CISO and Security Engineer JDs with required certifications | CISO  | PLANNED |
+| CC1.5 | Accountability for internal control    | Controls matrix exists (controls-matrix.md)       | No formal control owner assignment or review cadence       | Assign control owners in matrix, establish quarterly review cycle     | CISO  | PARTIAL |
 
 **Evidence the auditor will request:**
 
@@ -65,11 +65,11 @@ This checklist maps GTCX's current posture against the AICPA Trust Services Crit
 
 ### CC2 — Communication and Information
 
-| Ref   | Criterion                                    | What We Have                                                    | What's Missing                                                       | Remediation Action                                                     | Owner             | Status  |
-| ----- | -------------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------- | ------- |
-| CC2.1 | Quality information for internal control     | Audit event logging (InMemoryAuditLog), SOC 2 evidence pipeline | In-memory storage is volatile; no persistent SIEM                    | Deploy WORM audit storage (Phase 2.1); integrate with SIEM             | Platform Engineer | PARTIAL |
-| CC2.2 | Internal communication of control objectives | CLAUDE.md, agent safety rules, separation-of-duties matrix      | No formal security policy library communicated to all staff          | Publish security policy library (Phase 3.2); annual acknowledgment     | CISO              | PARTIAL |
-| CC2.3 | External communication                       | Regulatory framework documented                                 | No external-facing security page, no vulnerability disclosure policy | Publish security.txt, responsible disclosure policy, trust center page | CISO              | PLANNED |
+| Ref   | Criterion                                    | What We Have                                                    | What's Missing                                                     | Remediation Action                                                 | Owner             | Status  |
+| ----- | -------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ----------------- | ------- |
+| CC2.1 | Quality information for internal control     | Audit event logging (InMemoryAuditLog), SOC 2 evidence pipeline | In-memory storage is volatile; no persistent SIEM                  | Deploy WORM audit storage (Phase 2.1); integrate with SIEM         | Platform Engineer | PARTIAL |
+| CC2.2 | Internal communication of control objectives | CLAUDE.md, agent safety rules, separation-of-duties matrix      | No formal security policy library communicated to all staff        | Publish security policy library (Phase 3.2); annual acknowledgment | CISO              | PARTIAL |
+| CC2.3 | External communication                       | security.txt published; bug bounty policy active; VDP drafted   | No live trust center page; no HackerOne/Bugcrowd program confirmed | Publish trust center page; activate live bug bounty platform       | CISO              | PARTIAL |
 
 **Evidence the auditor will request:**
 
@@ -82,12 +82,12 @@ This checklist maps GTCX's current posture against the AICPA Trust Services Crit
 
 ### CC3 — Risk Assessment
 
-| Ref   | Criterion                            | What We Have                                      | What's Missing                                           | Remediation Action                                                                      | Owner             | Status  |
-| ----- | ------------------------------------ | ------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------- | ------- |
-| CC3.1 | Risk objectives defined              | Compliance requirements doc, regulatory framework | No formal risk appetite statement approved by board      | Draft risk appetite statement; board approval                                           | CISO              | PLANNED |
-| CC3.2 | Risk identification and analysis     | Controls matrix identifies gaps                   | No formal risk register with likelihood x impact scoring | Create risk register with 5x5 matrix (see ISO 27001 scope doc)                          | CISO              | PLANNED |
-| CC3.3 | Fraud risk assessment                | N/A — not formally assessed                       | No fraud risk assessment                                 | Conduct fraud risk assessment covering: replay attacks, identity fraud, insider threats | CISO              | GAP     |
-| CC3.4 | Identification of significant change | Git-based change management, PR reviews           | No formal change risk assessment process                 | Integrate change risk classification into PR template                                   | Platform Engineer | PLANNED |
+| Ref   | Criterion                            | What We Have                                             | What's Missing                                           | Remediation Action                                                                      | Owner             | Status  |
+| ----- | ------------------------------------ | -------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------- | ------- |
+| CC3.1 | Risk objectives defined              | Risk register published; regulatory framework documented | No formal risk appetite statement approved by board      | Draft risk appetite statement; board approval                                           | CISO              | PLANNED |
+| CC3.2 | Risk identification and analysis     | Controls matrix identifies gaps                          | No formal risk register with likelihood x impact scoring | Create risk register with 5x5 matrix (see ISO 27001 scope doc)                          | CISO              | PLANNED |
+| CC3.3 | Fraud risk assessment                | N/A — not formally assessed                              | No fraud risk assessment                                 | Conduct fraud risk assessment covering: replay attacks, identity fraud, insider threats | CISO              | GAP     |
+| CC3.4 | Identification of significant change | Git-based change management, PR reviews                  | No formal change risk assessment process                 | Integrate change risk classification into PR template                                   | Platform Engineer | PLANNED |
 
 **Evidence the auditor will request:**
 

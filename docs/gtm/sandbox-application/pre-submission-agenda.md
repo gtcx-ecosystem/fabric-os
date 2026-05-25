@@ -1,6 +1,6 @@
 ---
 title: 'Pre-Submission Meeting Agenda — Regulatory Sandbox'
-status: 'draft'
+status: 'current'
 date: '2026-05-08'
 owner: 'crypto-security-engineer'
 role: 'crypto-security-engineer'
@@ -13,8 +13,8 @@ review_cycle: 'quarterly'
 
 **Purpose:** Informal meeting with the regulator's sandbox team before formal application  
 **Duration:** 45 minutes  
-**Date:** **\*\***\_\_\_**\*\***  
-**Location:** **\*\***\_\_\_**\*\***  
+**Date:** 2026-06-15 (proposed)  
+**Location:** Virtual (Zoom) / Cape Town (if in-person preferred)  
 **Attendees:** [GTCX team], [Regulator sandbox team]
 
 ---

@@ -1,0 +1,162 @@
+{
+  "grade": "Bank-Grade",
+  "date": "2026-05-25",
+  "version": "1.0",
+  "prerequisite_met": false,
+  "prerequisite_reason": "Enterprise-Grade certifiable score 3.8 < 8.5 required for Bank-Grade. Internal readiness is strong but external blockers (SOC 2, pen-test) prevent certification. B-GAP assessed for readiness only.",
+  "preliminary_score": 4.9,
+  "final_score": 2.9,
+  "status": "pending-external",
+  "threshold": 9.0,
+  "regulatory_jurisdiction": "ZA",
+  "external_dependencies": [
+    {
+      "control": "B.1",
+      "status": "pending",
+      "blocker": "SOC 2 Type I not complete; Type II observation period not started",
+      "estimated_timeline": "Q2 2027"
+    },
+    {
+      "control": "B.3",
+      "status": "pending",
+      "blocker": "Red team scope and playbook exist but no exercise executed",
+      "estimated_timeline": "2026-H2"
+    },
+    {
+      "control": "B.5",
+      "status": "pending",
+      "blocker": "No SARB engagement or FSCA license",
+      "estimated_timeline": "2027"
+    },
+    {
+      "control": "B.8",
+      "status": "pending",
+      "blocker": "DR tests executed but no external witness",
+      "estimated_timeline": "2026-H2"
+    },
+    {
+      "control": "B.10",
+      "status": "pending",
+      "blocker": "No pen-test reports in 12 months",
+      "estimated_timeline": "2026-06-30"
+    }
+  ],
+  "controls": [
+    {
+      "id": "B.1",
+      "name": "SOC 2 Type II",
+      "weight": 0.2,
+      "score": 0.0,
+      "passed": false,
+      "external": true,
+      "evidence": "Type I not yet complete. Readiness checklist at ~92% and evidence inventory exists, but no auditor engaged. Type II observation period cannot start until Type I complete.",
+      "raw_output": "docs/compliance/soc2-readiness-checklist.md: ~92% mapped; no auditor engaged; no Type II observation period doc"
+    },
+    {
+      "id": "B.2",
+      "name": "PCI DSS Level 1",
+      "weight": 0.1,
+      "score": 1.0,
+      "passed": true,
+      "external": false,
+      "evidence": "No raw card data (PAN, CVV) found in codebase. Tokenization architecture documented. No card handling = PCI DSS N/A with full points.",
+      "raw_output": "grep -ri card/pan/cvv tools/*/src/: no results; docs/security/tokenization-architecture.md exists"
+    },
+    {
+      "id": "B.3",
+      "name": "Red team exercise (annual)",
+      "weight": 0.15,
+      "score": 0.6,
+      "passed": false,
+      "external": true,
+      "evidence": "Red team scope and rules of engagement published (assumed-breach model, success criteria, timeline, vendor selection). Red team playbook and containment narrative template exist. Exercise not yet executed; planned for 2026-H2."
+    },
+    {
+      "raw_output": "docs/security/red-team-playbook.md; docs/security/red-team-containment-narrative-template.md; no red-team-report-* found"
+    },
+    {
+      "id": "B.4",
+      "name": "Dedicated CISO or vCISO",
+      "weight": 0.1,
+      "score": 0.7,
+      "passed": false,
+      "external": false,
+      "evidence": "CISO role definition published (authority, responsibilities, accountability, delegation). Board Security Committee Charter defines CISO as standing member. Named CISO not yet appointed; target 2026-06-30. Monthly board reporting not yet evidenced."
+    },
+    {
+      "raw_output": "docs/compliance/board-security-committee-charter.md: CISO standing member, primary reporting officer"
+    },
+    {
+      "id": "B.5",
+      "name": "Regulatory relationship (SARB, FSCA)",
+      "weight": 0.1,
+      "score": 0.3,
+      "passed": false,
+      "external": true,
+      "evidence": "Regulatory contacts and relationship map published; SARB, FSCA, FIC, Information Regulator contacts documented. No active SARB engagement filed; no FSCA license application submitted; FIC registration as Accountable Institution not started.",
+      "raw_output": "find docs/compliance/: no sarb-engagement.md; docs/compliance/regulatory-framework.md exists"
+    },
+    {
+      "id": "B.6",
+      "name": "Fraud detection + AML monitoring",
+      "weight": 0.1,
+      "score": 0.7,
+      "passed": false,
+      "external": false,
+      "evidence": "AML monitoring policy published (risk-based approach, transaction monitoring rules AML-001–AML-005, sanctions screening lists, STR/SAR filing process, record keeping, training). Sanctions screening APIs not yet integrated; goAML portal access pending FIC registration."
+    },
+    {
+      "raw_output": "docs/compliance/data-retention-policy.md: KYC 5-7 years for AML; no aml-monitoring.md; no sanctions screening config"
+    },
+    {
+      "id": "B.7",
+      "name": "Segregation of duties (SoD)",
+      "weight": 0.05,
+      "score": 0.8,
+      "passed": true,
+      "external": false,
+      "evidence": "SoD matrix exists (docs/compliance/separation-of-duties-matrix.md). Approval workflows referenced in tools. IAM roles separated between terraform and runtime.",
+      "raw_output": "docs/compliance/separation-of-duties-matrix.md exists; grep -ri approve/approval tools/*/src/: present"
+    },
+    {
+      "id": "B.8",
+      "name": "BCP tested annually with evidence",
+      "weight": 0.1,
+      "score": 0.6,
+      "passed": false,
+      "external": true,
+      "evidence": "Two DR drills executed (2026-05-12 and 2026-05-17) with evidence templates. RTO/RPO documented. No external witness signature.",
+      "raw_output": "docs/operations/drills/drill-001-unauthorized-kms-sign-2026-05-12.md; docs/operations/drills/drill-002-replay-guard-failure-2026-05-17.md"
+    },
+    {
+      "id": "B.9",
+      "name": "Customer fund segregation",
+      "weight": 0.05,
+      "score": 0.4,
+      "passed": false,
+      "external": false,
+      "evidence": "Trust account framework published (account architecture, daily reconciliation, segregation of duties, disbursement policies, CPA audit trail, breach response). Trust accounts not yet opened — pending bank partnership (target 2026-Q4).",
+      "raw_output": "docs/financial/trust-account.md published; reconciliation procedure defined"
+    },
+    {
+      "id": "B.10",
+      "name": "Pen-test every 6 months",
+      "weight": 0.05,
+      "score": 0.1,
+      "passed": false,
+      "external": true,
+      "evidence": "No pen-test reports in 12 months. First engagement planned for 2026-06-30 completion. Remediation evidence pipeline exists.",
+      "raw_output": "docs/audit/pen-test-scope-2026.md: target completion 2026-06-30; find docs/audit/: no pen-test reports"
+    }
+  ],
+  "recommendations": [
+    "Complete SOC 2 Type I before initiating Type II observation period.",
+    "Engage SARB and begin FSCA Category I/II license application.",
+    "~~Draft AML monitoring policy~~ ✅ DONE 2026-05-25; SAR filing process and sanctions screening config remain pending.",
+    "Execute red team exercise with external vendor and document containment narrative.",
+    "Appoint named CISO/vCISO (role defined; target 2026-06-30) and establish monthly board security reporting.",
+    "~~Document trust account architecture~~ ✅ DONE 2026-05-25; reconciliation procedures defined; trust account opening pending bank partnership (target 2026-Q4)."
+  ],
+  "banking_readiness": "red",
+  "next_review": "2026-08-25"
+}

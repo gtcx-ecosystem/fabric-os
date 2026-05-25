@@ -36,3 +36,13 @@ spec:
                 name: gtcx-protocols-staging
                 port:
                   number: 8300
+    - host: geotag.staging.gtcx.trade
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gtcx-protocols-staging
+                port:
+                  number: 8300

@@ -1,0 +1,7 @@
+Contact: mailto:security@gtcx.io
+Expires: 2027-05-25T00:00:00.000Z
+Acknowledgements: https://gtcx.io/security#hall-of-fame
+Preferred-Languages: en
+Canonical: https://gtcx.io/.well-known/security.txt
+Policy: https://gtcx.io/security
+Hiring: https://gtcx.io/careers#security

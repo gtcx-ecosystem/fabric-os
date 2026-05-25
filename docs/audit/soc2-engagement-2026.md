@@ -1,6 +1,6 @@
 ---
 title: 'SOC 2 Type 1 Engagement Plan'
-status: 'draft'
+status: 'final'
 date: '2026-05-22'
 owner: 'security-lead'
 target_send_date: '2026-05-29'

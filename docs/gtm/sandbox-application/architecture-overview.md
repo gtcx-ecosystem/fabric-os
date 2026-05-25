@@ -127,12 +127,12 @@ The following controls protect the platform and its data:
 
 ## Contact Information
 
-| Role           | Name                           | Email                          | Phone                          |
-| -------------- | ------------------------------ | ------------------------------ | ------------------------------ |
-| CEO            | **\*\*\*\***\_\_\_**\*\*\*\*** | **\*\*\*\***\_\_\_**\*\*\*\*** | **\*\*\*\***\_\_\_**\*\*\*\*** |
-| CISO           | **\*\*\*\***\_\_\_**\*\*\*\*** | **\*\*\*\***\_\_\_**\*\*\*\*** | **\*\*\*\***\_\_\_**\*\*\*\*** |
-| Legal Counsel  | **\*\*\*\***\_\_\_**\*\*\*\*** | **\*\*\*\***\_\_\_**\*\*\*\*** | **\*\*\*\***\_\_\_**\*\*\*\*** |
-| Technical Lead | **\*\*\*\***\_\_\_**\*\*\*\*** | **\*\*\*\***\_\_\_**\*\*\*\*** | **\*\*\*\***\_\_\_**\*\*\*\*** |
+| Role           | Name                      | Email            | Phone         |
+| -------------- | ------------------------- | ---------------- | ------------- |
+| CEO            | [To be appointed]         | ceo@gtcx.io      | +27 [pending] |
+| CISO           | [To be appointed]         | security@gtcx.io | +27 [pending] |
+| Legal Counsel  | [External counsel]        | legal@gtcx.io    | +27 [pending] |
+| Technical Lead | Platform Engineering Lead | platform@gtcx.io | +27 [pending] |
 
 ---
 

@@ -38,6 +38,7 @@ import { sanitizeAuditTarget } from './audit-target.mjs';
 import { startAdaptiveScheduler, defaultThresholds } from './adaptive-policy.mjs';
 import { processQuery as processAuditQuery } from './audit-query/handler.mjs';
 import { InMemoryQueryStore } from './audit-query/store.mjs';
+import { NdjsonQueryStore } from './audit-query/ndjson-store.mjs';
 
 // In-flight /v1/query count, exposed to the HPA via the
 // compliance_gateway_inflight_requests metric (autoscaling.v2 Pods target).
@@ -98,11 +99,16 @@ const runtimePolicyConfig = {
 // ---------------------------------------------------------------------------
 
 const auditQueryEnabled = process.env.AUDIT_QUERY_ENABLED === '1';
-// Production swaps this for a WORM-backed store reading the same NDJSON
-// batches audit-flush writes. Until that ingestion path is live (gated by
-// EXT-003 + the feat/audit-bundles-verifier merge), the in-memory store
-// is the substitute.
-const auditQueryStore = new InMemoryQueryStore();
+
+// Store selection by env var:
+// - AUDIT_QUERY_NDJSON_DIR=/path → NDJSON-file-backed (durable, staging-ready)
+// - unset                       → in-memory (dev / tests)
+// Production swaps for a WORM-backed store reading the same NDJSON
+// batches audit-flush writes; that requires AWS credentials and lands
+// when the audit-bundles ingestion path is live (gated on EXT-003).
+const auditQueryStore = process.env.AUDIT_QUERY_NDJSON_DIR
+  ? new NdjsonQueryStore({ rootDir: process.env.AUDIT_QUERY_NDJSON_DIR, fileExistenceMode: 'lazy' })
+  : new InMemoryQueryStore();
 
 /**
  * @param {import('node:http').IncomingMessage} req

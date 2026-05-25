@@ -22,12 +22,12 @@ review_cycle: 'on-change'
 
 All four MOB-W1 tickets are **confirmed in scope for W1** (2026-05-26 → 2026-05-30). Total capacity: 8 story points. Sprint owner: Platform Engineering Lead.
 
-| Ticket                      | Priority | Points | Status              | In Scope?       |
-| --------------------------- | -------- | ------ | ------------------- | --------------- |
-| #49 staging URL + TLS       | P0       | 2      | Not started         | ✅ Confirmed W1 |
-| #50 /audit/bundles verifier | P0       | 3      | PR #56 open, review | ✅ Confirmed W1 |
-| #51 nonce store + replay    | P0       | 1      | Complete in PR #56  | ✅ Confirmed W1 |
-| #52 /audit/query            | P0       | 2      | PR #58 open, review | ✅ Confirmed W1 |
+| Ticket                      | Priority | Points | Status                        | In Scope?       |
+| --------------------------- | -------- | ------ | ----------------------------- | --------------- |
+| #49 staging URL + TLS       | P0       | 2      | Ingress fix on main           | ✅ Confirmed W1 |
+| #50 /audit/bundles verifier | P0       | 3      | PR #56 rebased, 17 gates PASS | ✅ Confirmed W1 |
+| #51 nonce store + replay    | P0       | 1      | Complete in PR #56            | ✅ Confirmed W1 |
+| #52 /audit/query            | P0       | 2      | PR #58 rebased, 17 gates PASS | ✅ Confirmed W1 |
 
 No counter-proposal. No scope reduction.
 
@@ -45,8 +45,8 @@ No counter-proposal. No scope reduction.
 ### EXT-003 — audit-flush container (Sprint 7)
 
 - **ETA image push:** Wednesday 2026-05-28 (W1 day 3)
-- **Status:** Package complete, Dockerfile exists, `@gtcx/audit-signer` published to npm. Remaining: install `@gtcx/audit-signer` in Dockerfile (`INT-A-2`, 1 pt), `docker build && push` to ECR, optional NATS integration test (`INT-A-1`, 3 pts) — integration test can run in parallel and is not a blocker for image availability.
-- **Risk:** Low. EXT-003 is Sprint 7's P0; daily standup visibility.
+- **Status:** ✅ **COMPLETE as of 2026-05-25.** Dockerfile verified, `@gtcx/audit-signer@^0.1.0` installed. Image `gtcx-audit-flush:v0.1.0` pushed to ECR `348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-audit-flush` (staging tag `v0.1.0-staging` also available). Optional NATS integration test (`INT-A-1`, 3 pts) can run in parallel and is not a blocker.
+- **Risk:** Resolved.
 
 ### #50 — /audit/bundles verifier
 
@@ -55,7 +55,7 @@ No counter-proposal. No scope reduction.
   - #49 ✅ (staging URL live by Tuesday)
   - EXT-003 ✅ (image in ECR by Wednesday)
   - gtcx-protocols#60: Production wiring (real TradePass DID resolver URL) lands as a **follow-up commit** once #60 closes. The mock DID resolver is already landed in PR #56; verifier ships with mock resolution and switches to real URL via config change (no redeploy).
-- **PR:** [#56](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/56) — 8 commits, ready for final review once #49 is live.
+- **PR:** [#56](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/56) — 8 commits, **rebased on main** (0701584), all 17 validation gates PASS. Ready for final review and merge once #49 is live.
 
 ### #51 — nonce store + replay rejection
 
@@ -65,7 +65,7 @@ No counter-proposal. No scope reduction.
 ### #52 — /audit/query
 
 - **ETA deploy:** Friday 2026-05-30 (W1 day 5, morning)
-- **PR:** [#58](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/58) — 7 commits, ready for review.
+- **PR:** [#58](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/58) — 7 commits, **rebased on main** (0701584), all 17 validation gates PASS. Ready for review.
 - **Note:** Deploy scheduled for **Friday morning** (not afternoon) to give mobile team the afternoon for integration testing before the weekend.
 
 ---
@@ -117,7 +117,7 @@ gtcx-mobile production rollout   → W4 Zimbabwe go-live
 | Risk                                                  | Severity | Likelihood | Status                                                                             |
 | ----------------------------------------------------- | -------- | ---------- | ---------------------------------------------------------------------------------- |
 | gtcx-protocols#60 slips → #50 real-DID wiring blocked | High     | Medium     | **Mitigated** — mock resolver landed; real URL is a config change, not a redeploy. |
-| EXT-003 audit-flush image slips → #50 blocked         | High     | Low        | **On track** — Sprint 7 P0, high visibility.                                       |
+| EXT-003 audit-flush image slips → #50 blocked         | High     | Low        | **Resolved** — Image `v0.1.0` in ECR as of 2026-05-25.                             |
 | AWS creds / zone delegation missing → #49 blocked     | Medium   | Low        | **Pre-checked** — both verified current.                                           |
 
 ---

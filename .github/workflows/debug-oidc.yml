@@ -20,3 +20,16 @@ jobs:
           echo "$PAYLOAD" | jq .
           echo "=== Subject Claim ==="
           echo "$PAYLOAD" | jq -r '.sub'
+
+      - name: Attempt direct STS assume
+        run: |
+          TOKEN=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" | jq -r '.value')
+          echo "Attempting to assume gtcx-staging-shared-deploy..."
+          aws sts assume-role-with-web-identity \
+            --role-arn arn:aws:iam::348389439381:role/gtcx-staging-shared-deploy \
+            --role-session-name github-actions-debug \
+            --web-identity-token "$TOKEN" \
+            --region af-south-1 \
+            --query "Credentials.[AccessKeyId,Expiration]" \
+            --output table

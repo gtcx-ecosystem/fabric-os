@@ -40,6 +40,11 @@ import { QueryAuditRequestSchema } from './schemas.mjs';
  *   on every 200 response so reads against the audit corpus are
  *   themselves auditable (regulator who-asked-what trail). Handler
  *   tolerates the signer being absent (tests + staging).
+ * @property {(metric: string, labels: object, value?: number) => void} [incrementCounter]
+ *   Optional injectable Prometheus counter increment. When provided,
+ *   the handler emits per-tenant request + outcome counters so
+ *   operators can see query volume, error rates, and truncation rate
+ *   on the audit-trust dashboard. Tolerates absent (tests + dev).
  *
  * @typedef {object} HandleResult
  * @property {number} status
@@ -47,8 +52,11 @@ import { QueryAuditRequestSchema } from './schemas.mjs';
  */
 
 export async function processQuery(args) {
+  const inc = typeof args.incrementCounter === 'function' ? args.incrementCounter : noopCounter;
+
   // 1. Method
   if (args.method !== 'POST') {
+    inc('compliance_gateway_audit_query_requests_total', { status: '405', tenantId: 'unknown' });
     return { status: 405, body: { error: 'Method not allowed' } };
   }
 
@@ -56,10 +64,12 @@ export async function processQuery(args) {
   const auth = args.headers['authorization'] ?? '';
   const bearerMatch = auth.match(/^Bearer\s+(.+)$/i);
   if (!bearerMatch) {
+    inc('compliance_gateway_audit_query_requests_total', { status: '401', tenantId: 'unknown' });
     return { status: 401, body: { error: 'Bearer token required' } };
   }
   const token = bearerMatch[1].trim();
   if (token.length === 0) {
+    inc('compliance_gateway_audit_query_requests_total', { status: '401', tenantId: 'unknown' });
     return { status: 401, body: { error: 'Bearer token required' } };
   }
   let tokenTenant;
@@ -67,6 +77,7 @@ export async function processQuery(args) {
   if (typeof args.validateToken === 'function') {
     const v = args.validateToken(token);
     if (!v.ok) {
+      inc('compliance_gateway_audit_query_requests_total', { status: '401', tenantId: 'unknown' });
       return { status: 401, body: { error: v.error } };
     }
     tokenTenant = v.tenantId;
@@ -79,12 +90,14 @@ export async function processQuery(args) {
   const headerTenant = args.headers['x-gtcx-tenant-id'];
   const tenantId = headerTenant ?? tokenTenant;
   if (typeof tenantId !== 'string' || tenantId.length === 0) {
+    inc('compliance_gateway_audit_query_requests_total', { status: '400', tenantId: 'unknown' });
     return {
       status: 400,
       body: { error: 'tenant-required', detail: 'X-GTCX-Tenant-Id header or token-bound tenant required' },
     };
   }
   if (!/^[a-z]{2}$/.test(tenantId)) {
+    inc('compliance_gateway_audit_query_requests_total', { status: '400', tenantId: 'unknown' });
     return {
       status: 400,
       body: { error: 'tenant-malformed', detail: 'X-GTCX-Tenant-Id must be lowercase ISO-2 country code' },
@@ -98,6 +111,7 @@ export async function processQuery(args) {
     try {
       json = JSON.parse(args.body);
     } catch (err) {
+      inc('compliance_gateway_audit_query_requests_total', { status: '400', tenantId });
       return {
         status: 400,
         body: { error: 'invalid-json', detail: err?.message ?? 'JSON parse error' },
@@ -105,6 +119,7 @@ export async function processQuery(args) {
     }
     const result = QueryAuditRequestSchema.safeParse(json);
     if (!result.success) {
+      inc('compliance_gateway_audit_query_requests_total', { status: '400', tenantId });
       return {
         status: 400,
         body: { error: 'query-malformed', detail: result.error.issues },
@@ -120,6 +135,7 @@ export async function processQuery(args) {
   try {
     storeResult = await args.store.query({ ...parsed, tenantId });
   } catch (err) {
+    inc('compliance_gateway_audit_query_requests_total', { status: '500', tenantId });
     return {
       status: 500,
       body: { error: 'store-failed', detail: err?.message ?? 'store error' },
@@ -166,6 +182,12 @@ export async function processQuery(args) {
     }
   }
 
+  inc('compliance_gateway_audit_query_requests_total', { status: '200', tenantId });
+  inc('compliance_gateway_audit_query_events_served_total', { tenantId }, storeResult.events.length);
+  if (storeResult.hasMore) {
+    inc('compliance_gateway_audit_query_truncated_total', { tenantId });
+  }
+
   return {
     status: 200,
     body: {
@@ -174,4 +196,8 @@ export async function processQuery(args) {
       truncated: storeResult.hasMore,
     },
   };
+}
+
+function noopCounter() {
+  // No-op when no Prometheus counter is wired (tests, dev).
 }

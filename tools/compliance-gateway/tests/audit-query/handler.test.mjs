@@ -293,3 +293,73 @@ describe('processQuery — audit-of-the-query', () => {
     assert.strictEqual(r.status, 200);
   });
 });
+
+describe('processQuery — metrics emission', () => {
+  function mkCounter() {
+    const calls = [];
+    return {
+      calls,
+      fn: (metric, labels, value) => calls.push({ metric, labels, value }),
+    };
+  }
+
+  it('emits requests_total{status=200, tenantId} + events_served on success', async () => {
+    const c = mkCounter();
+    await processQuery({ ...defaults(), incrementCounter: c.fn });
+    const req = c.calls.find((x) => x.metric === 'compliance_gateway_audit_query_requests_total');
+    assert.ok(req, 'requests_total emitted');
+    assert.deepStrictEqual(req.labels, { status: '200', tenantId: 'zw' });
+    const events = c.calls.find((x) => x.metric === 'compliance_gateway_audit_query_events_served_total');
+    assert.ok(events, 'events_served emitted');
+    assert.strictEqual(events.value, 1);
+  });
+
+  it('emits truncated_total when hasMore', async () => {
+    const c = mkCounter();
+    const events = Array.from({ length: 5 }, (_, i) =>
+      event({ id: `e${i}`, timestamp: `2026-05-${20 + i}T00:00:00Z` }),
+    );
+    await processQuery({
+      ...defaults(),
+      body: JSON.stringify({ limit: 3 }),
+      store: freshStore({ zw: events }),
+      incrementCounter: c.fn,
+    });
+    const trunc = c.calls.find((x) => x.metric === 'compliance_gateway_audit_query_truncated_total');
+    assert.ok(trunc, 'truncated emitted');
+    assert.deepStrictEqual(trunc.labels, { tenantId: 'zw' });
+  });
+
+  it('emits status=401 on missing bearer with tenantId=unknown', async () => {
+    const c = mkCounter();
+    const args = defaults();
+    delete args.headers.authorization;
+    args.incrementCounter = c.fn;
+    await processQuery(args);
+    const req = c.calls.find((x) => x.metric === 'compliance_gateway_audit_query_requests_total');
+    assert.deepStrictEqual(req.labels, { status: '401', tenantId: 'unknown' });
+  });
+
+  it('emits status=400 on bad tenant with tenantId=unknown', async () => {
+    const c = mkCounter();
+    const args = defaults();
+    delete args.headers['x-gtcx-tenant-id'];
+    args.incrementCounter = c.fn;
+    await processQuery(args);
+    const req = c.calls.find((x) => x.metric === 'compliance_gateway_audit_query_requests_total');
+    assert.deepStrictEqual(req.labels, { status: '400', tenantId: 'unknown' });
+  });
+
+  it('emits status=500 with real tenantId on store failure', async () => {
+    const c = mkCounter();
+    const store = { query: async () => { throw new Error('boom'); } };
+    await processQuery({ ...defaults(), store, incrementCounter: c.fn });
+    const req = c.calls.find((x) => x.metric === 'compliance_gateway_audit_query_requests_total');
+    assert.deepStrictEqual(req.labels, { status: '500', tenantId: 'zw' });
+  });
+
+  it('tolerates absent incrementCounter (default no-op)', async () => {
+    const r = await processQuery(defaults());
+    assert.strictEqual(r.status, 200, 'no metrics counter is fine');
+  });
+});

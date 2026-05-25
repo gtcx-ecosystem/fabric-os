@@ -38,6 +38,7 @@ Architecture Decision Records (ADRs) capturing key design choices and their rati
 | [ADR-019](ADR-019-workspace-boundary-discipline.md)        | Workspace Package Boundary Discipline               | Accepted |
 | [ADR-020](ADR-020-per-package-coverage-thresholds.md)      | Per-Package Coverage Thresholds                     | Accepted |
 | [ADR-021](ADR-021-npm-publish-discipline.md)               | npm Publish Discipline + Supply-Chain Roadmap       | Accepted |
+| [ADR-022](ADR-022-pluggable-audit-query-store.md)          | Pluggable Audit-Query Store with Three Backends     | Accepted |
 
 ## Adding a New ADR
 

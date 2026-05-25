@@ -31,7 +31,7 @@ permissions:
 
 env:
   AWS_REGION: af-south-1
-  ECR_ACCOUNT: 293488310036
+  ECR_ACCOUNT: 348389439381
 
 jobs:
   build-push:

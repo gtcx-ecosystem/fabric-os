@@ -21,3 +21,10 @@ spec:
               value: '1'
             - name: AUDIT_QUERY_ENABLED
               value: '1'
+            # TODO(gtcx-protocols#60): Update to real TradePass DID resolver URL
+            # once gtcx-protocols#60 deploys. Until then /audit/bundles returns 503
+            # because no resolver is wired (null check in server.mjs).
+            # - name: TRADEPASS_BASE_URL
+            #   value: 'https://identity.gtcx.trade'
+            # - name: AUDIT_BUNDLES_AUDIENCE
+            #   value: 'https://geotag.gtcx.trade'

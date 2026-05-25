@@ -20,6 +20,8 @@ namespace: gtcx-staging
 resources:
   - ../../base
   - ingress.yaml
+  - ingress-nginx.yaml
+  - letsencrypt-issuer.yaml
   - network-policies.yaml
 
 nameSuffix: -staging

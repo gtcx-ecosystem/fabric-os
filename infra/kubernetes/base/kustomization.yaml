@@ -13,8 +13,9 @@ commonLabels:
 
 resources:
   - namespace.yaml
-  - cert-manager.yaml
-  - services/vault-tls.yaml
+  # NOTE: cert-manager.yaml and services/vault-tls.yaml removed because
+  # cert-manager is not installed in the cluster. Re-add when cert-manager
+  # CRDs are available (via Helm or direct install).
   - configmaps/base-config.yaml
   - configmaps/runtime-policies.yaml
   - services/audit-flush.yaml

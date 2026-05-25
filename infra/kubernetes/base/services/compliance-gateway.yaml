@@ -23,7 +23,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: compliance-gateway
-          image: 348389439381.dkr.ecr.af-south-1.amazonaws.com/compliance-gateway:6d1410c
+          image: 348389439381.dkr.ecr.af-south-1.amazonaws.com/compliance-gateway:6d1410c-amd64
           ports:
             - name: http
               containerPort: 8500

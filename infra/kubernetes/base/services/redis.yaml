@@ -1,0 +1,100 @@
+# =============================================================================
+# Redis — Shared Nonce / Replay Store
+# =============================================================================
+# Single-replica Redis for cross-service nonce deduplication and replay
+# protection. Data is ephemeral (TTL 5 min); persistence is disabled.
+# Services: agx, audit, crx, sgx (and any future signed-edge validators).
+#
+# Operational contract:
+#   - maxmemory 256mb with allkeys-lru eviction
+#   - bind 0.0.0.0, protected-mode no (mesh NetworkPolicies enforce auth)
+#   - no AUTH (trust the mesh; NetworkPolicies restrict to gtcx namespace)
+#   - readiness: PING → PONG
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: gtcx
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/component: cache
+    app.kubernetes.io/part-of: gtcx
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: redis
+  ports:
+    - port: 6379
+      targetPort: 6379
+      name: redis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: gtcx
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/component: cache
+    app.kubernetes.io/part-of: gtcx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: redis
+        app.kubernetes.io/component: cache
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+        fsGroup: 999
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          args:
+            - --maxmemory
+            - 256mb
+            - --maxmemory-policy
+            - allkeys-lru
+            - --bind
+            - 0.0.0.0
+            - --protected-mode
+            - 'no'
+          ports:
+            - containerPort: 6379
+              name: redis
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+          livenessProbe:
+            exec:
+              command: [redis-cli, ping]
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command: [redis-cli, ping]
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}

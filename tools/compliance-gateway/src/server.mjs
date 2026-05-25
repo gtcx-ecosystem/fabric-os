@@ -38,7 +38,7 @@ import { sanitizeAuditTarget } from './audit-target.mjs';
 import { startAdaptiveScheduler, defaultThresholds } from './adaptive-policy.mjs';
 import { processBundle as processAuditBundle } from './audit-bundles/handler.mjs';
 import { createTradePassResolver, createMockResolver } from './audit-bundles/did-resolver.mjs';
-import { NonceGate } from './audit-bundles/nonce-gate.mjs';
+import { createNonceStore } from './nonce-store/redis.mjs';
 import { processQuery as processAuditQuery } from './audit-query/handler.mjs';
 import { InMemoryQueryStore } from './audit-query/store.mjs';
 import { NdjsonQueryStore } from './audit-query/ndjson-store.mjs';
@@ -115,7 +115,7 @@ const auditBundlesResolver = tradePassBaseUrl
   ? createTradePassResolver({ baseUrl: tradePassBaseUrl })
   : null;
 
-const auditBundlesNonceGate = new NonceGate();
+const auditBundlesNonceGate = createNonceStore({ tenantId: 'audit-bundles' });
 // Silence linter for the mock resolver helper — it's imported so test
 // fixtures and the eventual integration test can inject one.
 void createMockResolver;
@@ -582,7 +582,7 @@ const server = createServer(async (req, res) => {
         headers: headersLower,
         expectedAudience: auditBundlesExpectedAudience,
         resolver: auditBundlesResolver,
-        nonceGate: auditBundlesNonceGate,
+        nonceGate: await auditBundlesNonceGate,
         signAuditEvent,
       });
       return sendJson(res, result.status, result.body, req);

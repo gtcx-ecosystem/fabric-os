@@ -52,6 +52,11 @@ secretGenerator:
     literals:
       - DATABASE_URL=PLACEHOLDER_OVERRIDE_IN_OVERLAY
       - SECRET_KEY_BASE=PLACEHOLDER_OVERRIDE_IN_OVERLAY
+  - name: compliance-gateway-secrets
+    type: Opaque
+    literals:
+      - DATABASE_URL=PLACEHOLDER_OVERRIDE_IN_OVERLAY
+      - SECRET_KEY_BASE=PLACEHOLDER_OVERRIDE_IN_OVERLAY
 
 # =============================================================
 # Image tags — base uses v0.1.0 as floor version.

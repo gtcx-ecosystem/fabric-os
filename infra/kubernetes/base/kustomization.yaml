@@ -18,7 +18,9 @@ resources:
   # CRDs are available (via Helm or direct install).
   - configmaps/base-config.yaml
   - configmaps/runtime-policies.yaml
-  - services/audit-flush.yaml
+  # NOTE: audit-flush removed — image is ARM64-only, cluster nodes are AMD64.
+  # Re-add when AMD64 image is built and pushed to ECR.
+  # - services/audit-flush.yaml
   - services/compliance-gateway.yaml
   - services/compliance-gateway-hpa.yaml
   - services/nats.yaml
@@ -57,6 +59,12 @@ secretGenerator:
     literals:
       - DATABASE_URL=PLACEHOLDER_OVERRIDE_IN_OVERLAY
       - SECRET_KEY_BASE=PLACEHOLDER_OVERRIDE_IN_OVERLAY
+      - COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON=[]
+      - ANTHROPIC_API_KEY=PLACEHOLDER_OVERRIDE_IN_OVERLAY
+  - name: compliance-gateway-audit-key
+    type: Opaque
+    literals:
+      - AUDIT_SIGNING_KEY_B64=PLACEHOLDER_OVERRIDE_IN_OVERLAY
 
 # =============================================================
 # Image tags — base uses v0.1.0 as floor version.

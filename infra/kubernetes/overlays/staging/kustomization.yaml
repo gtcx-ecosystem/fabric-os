@@ -59,8 +59,9 @@ patches:
       kind: Deployment
       name: compliance-gateway
     path: patches/compliance-gateway-redis.yaml
-  # Audit-flush — staging image + IRSA role + WORM bucket
-  - path: audit-flush-patch.yaml
+  # NOTE: audit-flush removed from base — image is ARM64-only, nodes are AMD64.
+  # Re-add when AMD64 image is available.
+  # - path: audit-flush-patch.yaml
   # NetworkPolicy — per-environment database subnet CIDR
   - target:
       kind: NetworkPolicy

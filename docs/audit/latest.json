@@ -1,0 +1,72 @@
+{
+  "repo": "gtcx-infrastructure",
+  "auditDate": "2026-05-27",
+  "head": "dd4dcfe",
+  "sourceAudit": "docs/audit/master-audit-2026-05-27.md",
+  "latestAudit": "docs/audit/master-audit-post-sprint-2026-05-27.md",
+  "roadmap": "docs/audit/10-10-remediation-plan-2026-05-27.md",
+  "status": "production-candidate",
+  "scores": {
+    "composite": 9.0,
+    "compositeRaw": 8.95,
+    "investor": 8.9,
+    "enterprise": 8.6,
+    "sovereignDfi": 8.8,
+    "signal": 9.6
+  },
+  "findings": {
+    "p0": 0,
+    "p1": 3,
+    "p2": 1
+  },
+  "gates": {
+    "testFull": "pass",
+    "testQuick": "pass",
+    "lint": "pass",
+    "typecheck": "pass",
+    "build": "pass",
+    "format": "pass",
+    "audit": "pass",
+    "docsLinks": "pass",
+    "governance": "pass",
+    "terraformFmt": "pass",
+    "gitleaks": "pass",
+    "kustomizeOverlays": "pass",
+    "loadTests": "pass",
+    "natsIntegration": "pass",
+    "signal": "pass",
+    "protocolContracts": "pass"
+  },
+  "evidence": {
+    "wormRuntime": "docs/audit/worm-runtime-evidence-2026-05-27.md",
+    "externalAssuranceKickoff": "docs/audit/external-assurance-kickoff-2026-05-27.md",
+    "postSprintAudit": "docs/audit/master-audit-post-sprint-2026-05-27.md",
+    "masterSummary": "docs/audit/master-audit-summary-2026-05-27.md",
+    "internalSprintPlan": "docs/audit/internal-10-10-sprint-plan-2026-05-27.md",
+    "runtimeSmokeRunbook": "docs/operations/runbooks/runtime-smoke-evidence.md",
+    "redisNonceStoreCoverage": "tools/compliance-gateway/coverage/coverage-final.json",
+    "externalFindingRegisterTemplate": "docs/audit/external-finding-register-template.md",
+    "externalFindingClosureChecklist": "docs/audit/external-finding-closure-checklist.md",
+    "wormReleaseUploadWrapper": "tools/control-plane/upload-release-evidence-to-worm.mjs",
+    "vendorEngagementReadinessPack": "docs/audit/vendor-engagement-readiness-pack.md",
+    "testnetPilotWormRunbook": "docs/operations/runbooks/testnet-pilot-worm-provision.md",
+    "stagingSmokeProbeManifest": "infra/kubernetes/overlays/staging/smoke-probe-cronjob.yaml",
+    "stagingSmokeProbeRunbook": "docs/operations/runbooks/staging-smoke-probe.md",
+    "drFireDrillRunbook": "docs/operations/runbooks/dr-fire-drill-exercise.md",
+    "kustomizeCiArtifact": "kustomize-rendered-ci",
+    "stagingWormObject": {
+      "bucket": "gtcx-worm-audit-staging-af-south-1",
+      "key": "remediation-evidence/2026-05-27/master-audit-remediation.ndjson",
+      "versionId": "uQu0ST2hh18Xe2s9QoDvRR1Z36bTRzQ4",
+      "sha256": "d5d71d57159d75f0656aa4616f3775e90da565ada0c49ded9a8e868e82e00149",
+      "objectLockMode": "COMPLIANCE",
+      "retainUntil": "2033-05-27T17:42:58.404000+00:00"
+    }
+  },
+  "remainingGaps": [
+    "External SOC 2 Type I and third-party penetration-test execution are pending vendor/legal completion.",
+    "gtcx-worm-audit-testnet-pilot-af-south-1 is absent from the AWS account (Terraform ready; requires terraform apply).",
+    "Runtime smoke evidence command is implemented; authenticated staging execution still requires a scoped smoke credential.",
+    "Signed release evidence is generated and verified locally; WORM upload and retention verification are not yet automated end to end."
+  ]
+}

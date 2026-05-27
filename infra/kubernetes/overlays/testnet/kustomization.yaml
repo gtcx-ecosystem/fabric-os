@@ -15,8 +15,10 @@ resources:
 
 nameSuffix: -testnet
 
-commonLabels:
-  environment: testnet
+labels:
+  - includeSelectors: true
+    pairs:
+      environment: testnet
 
 configMapGenerator:
   - name: gtcx-env

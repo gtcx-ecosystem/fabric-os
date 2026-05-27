@@ -414,12 +414,12 @@ Cross-references:
 
 ### MOB-W1 risks
 
-| Risk                                                               | Severity | Likelihood | Mitigation                                                            |
-| ------------------------------------------------------------------ | -------- | ---------- | --------------------------------------------------------------------- |
-| gtcx-protocols#60 deployment slips → #50 production wiring blocked | High     | Medium     | Mock DID resolver landed in stub branch; switch to real on #60 close  |
-| EXT-003 audit-flush image slips → #50 deploy blocked               | High     | Low        | EXT-003 is Sprint 7's P0; visible in same ClickUp / baseline-os standup   |
-| AWS creds expired or zone delegation missing → #49 cannot ship     | Medium   | Low        | Pre-check Monday; flag at standup if missing                          |
-| @gtcx/sdk not published → schema duplication across consumers      | Medium   | High       | Coordinate with gtcx-protocols on publish ownership (ADR-021 pattern) |
+| Risk                                                               | Severity | Likelihood | Mitigation                                                              |
+| ------------------------------------------------------------------ | -------- | ---------- | ----------------------------------------------------------------------- |
+| gtcx-protocols#60 deployment slips → #50 production wiring blocked | High     | Medium     | Mock DID resolver landed in stub branch; switch to real on #60 close    |
+| EXT-003 audit-flush image slips → #50 deploy blocked               | High     | Low        | EXT-003 is Sprint 7's P0; visible in same ClickUp / baseline-os standup |
+| AWS creds expired or zone delegation missing → #49 cannot ship     | Medium   | Low        | Pre-check Monday; flag at standup if missing                            |
+| @gtcx/sdk not published → schema duplication across consumers      | Medium   | High       | Coordinate with gtcx-protocols on publish ownership (ADR-021 pattern)   |
 
 ### MOB-W1 commit plan
 

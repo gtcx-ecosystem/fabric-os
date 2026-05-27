@@ -16,6 +16,7 @@
  *   OTLP_ENDPOINT           — http://host:port/v1/metrics (optional)
  *   OTLP_PUSH_INTERVAL_MS   — default 30000 (30 sec)
  *   PORT                    — default 8400
+ *   HOST                    — optional listen host (default: all interfaces)
  *   NODE_ENV                — 'production' enables Redis default
  *
  * Principles: SECURE (P11), OBSERVABLE (P15), RESILIENT (P12)
@@ -37,6 +38,7 @@ import { ReplayVerifier } from './verifier.mjs';
 // ---------------------------------------------------------------------------
 
 const PORT = Number(process.env.PORT ?? 8400);
+const HOST = process.env.HOST;
 const NONCE_TTL_MS = Number(process.env.NONCE_TTL_MS ?? 15 * 60 * 1000);
 const CLOCK_SKEW_WINDOW_MS = Number(process.env.CLOCK_SKEW_WINDOW_MS ?? 5 * 60 * 1000);
 const LOW_CONN_BUFFER_MS = Number(process.env.LOW_CONN_BUFFER_MS ?? 10 * 60 * 1000);
@@ -352,9 +354,9 @@ process.on('SIGINT', () => {
 await initRedis();
 startOtlpPush();
 
-server.listen(PORT, () => {
+server.listen(PORT, HOST, () => {
   // eslint-disable-next-line no-console
-  console.log(JSON.stringify({ level: 'info', message: 'Replay Guard listening', port: PORT, nonceTtlMs: NONCE_TTL_MS, nodeEnv: NODE_ENV, redis: nonceStore.constructor.name }));
+  console.log(JSON.stringify({ level: 'info', message: 'Replay Guard listening', host: HOST ?? '0.0.0.0', port: PORT, nonceTtlMs: NONCE_TTL_MS, nodeEnv: NODE_ENV, redis: nonceStore.constructor.name }));
 });
 
 export { server, verifier, nonceStore, metrics, auditCapture, trafficBlockReason };

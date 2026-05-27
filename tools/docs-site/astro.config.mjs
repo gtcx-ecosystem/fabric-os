@@ -16,14 +16,18 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'GTCX Compliance',
-      description: 'Compliance substrate documentation: audit-signer, compliance-db, compliance-gateway-mcp.',
+      description:
+        'Compliance substrate documentation: audit-signer, compliance-db, compliance-gateway-mcp.',
       logo: {
         src: './src/assets/logo.svg',
         replacesTitle: false,
       },
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure' },
-        { icon: 'npm', label: 'npm', href: 'https://www.npmjs.com/package/@gtcx/audit-signer' },
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure',
+        },
       ],
       sidebar: [
         { label: 'Overview', link: '/' },
@@ -37,9 +41,7 @@ export default defineConfig({
         },
         {
           label: 'Reference',
-          items: [
-            { label: 'Architecture', link: '/architecture' },
-          ],
+          items: [{ label: 'Architecture', link: '/architecture' }],
         },
       ],
       customCss: ['./src/styles/custom.css'],

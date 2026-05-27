@@ -9,10 +9,11 @@ import assert from 'node:assert';
 import { describe, it } from 'node:test';
 
 import { verifyDidSignature, verifyDidSignatureStubBypass } from '../src/crypto/did-verify.mjs';
+
 import {
   getEd25519KeyPair,
-  signEnvelopeV1,
   getEs256KeyPair,
+  signEnvelopeV1,
   signTestJwt,
 } from './helpers/jwt-fixture.mjs';
 
@@ -113,7 +114,9 @@ describe('verifyDidSignatureStubBypass — structural validation', () => {
   });
 
   it('returns false for non-hex envelopeHash (stub bypass)', async () => {
-    const integrity = makeIntegrity({ envelopeHash: 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz' });
+    const integrity = makeIntegrity({
+      envelopeHash: 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz',
+    });
     assert.strictEqual(await verifyDidSignatureStubBypass(integrity), false);
   });
 
@@ -132,7 +135,7 @@ describe('verifyDidSignature — unknown scheme', () => {
 
 describe('verifyDidSignature — gtcx-queue-envelope-v1', () => {
   it('verifies a valid Ed25519 signature', async () => {
-    const keyPair = await getEd25519KeyPair();
+    await getEd25519KeyPair();
     const envelopeHash = 'a'.repeat(64);
     const signature = await signEnvelopeV1(envelopeHash);
 
@@ -151,7 +154,7 @@ describe('verifyDidSignature — gtcx-queue-envelope-v1', () => {
 
 describe('verifyDidSignature — did-jwt-es256', () => {
   it('verifies a valid ES256 JWT', async () => {
-    const keyPair = await getEs256KeyPair();
+    await getEs256KeyPair();
     const envelopeHash = 'b'.repeat(64);
     const jwt = await signTestJwt(envelopeHash, 'gtcx-api');
 

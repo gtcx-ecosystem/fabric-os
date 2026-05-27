@@ -70,7 +70,7 @@ describe('processQuery — happy path', () => {
 
   it('sets truncated=true when limit is exceeded', async () => {
     const events = Array.from({ length: 5 }, (_, i) =>
-      event({ id: `e${i}`, timestamp: `2026-05-${20 + i}T00:00:00Z` }),
+      event({ id: `e${i}`, timestamp: `2026-05-${20 + i}T00:00:00Z` })
     );
     const r = await processQuery({
       ...defaults(),
@@ -87,6 +87,30 @@ describe('processQuery — happy path', () => {
     const r = await processQuery({ ...defaults(), body: '' });
     assert.strictEqual(r.status, 200);
     assert.strictEqual(r.body.events.length, 1);
+  });
+});
+
+describe('processQuery — budget gate', () => {
+  it('returns 429 when the authenticated principal exceeds request budget', async () => {
+    let checked;
+    const r = await processQuery({
+      ...defaults(),
+      validateToken: () => ({ ok: true, tenantId: 'zw', subject: 'auditor-1' }),
+      checkBudget: (subject, tenantId) => {
+        checked = { subject, tenantId };
+        return {
+          ok: false,
+          status: 429,
+          reason: 'qps',
+          retryAfterSeconds: 1,
+          limits: { qps: 1, dailyUsd: 5 },
+          spentUsd: 0,
+        };
+      },
+    });
+    assert.deepStrictEqual(checked, { subject: 'auditor-1', tenantId: 'zw' });
+    assert.strictEqual(r.status, 429);
+    assert.strictEqual(r.body.error, 'Rate limit exceeded for this principal');
   });
 });
 
@@ -269,7 +293,11 @@ describe('processQuery — audit-of-the-query', () => {
 
   it('does NOT sign on 500 (store failure)', async () => {
     const signed = [];
-    const store = { query: async () => { throw new Error('store-down'); } };
+    const store = {
+      query: async () => {
+        throw new Error('store-down');
+      },
+    };
     const r = await processQuery({
       ...defaults(),
       store,
@@ -282,7 +310,9 @@ describe('processQuery — audit-of-the-query', () => {
   it('does NOT throw if signAuditEvent itself throws', async () => {
     const r = await processQuery({
       ...defaults(),
-      signAuditEvent: () => { throw new Error('sink unavailable'); },
+      signAuditEvent: () => {
+        throw new Error('sink unavailable');
+      },
     });
     assert.strictEqual(r.status, 200, 'response is unaffected by audit-signing failure');
     assert.strictEqual(r.body.events.length, 1);
@@ -309,7 +339,9 @@ describe('processQuery — metrics emission', () => {
     const req = c.calls.find((x) => x.metric === 'compliance_gateway_audit_query_requests_total');
     assert.ok(req, 'requests_total emitted');
     assert.deepStrictEqual(req.labels, { status: '200', tenantId: 'zw' });
-    const events = c.calls.find((x) => x.metric === 'compliance_gateway_audit_query_events_served_total');
+    const events = c.calls.find(
+      (x) => x.metric === 'compliance_gateway_audit_query_events_served_total'
+    );
     assert.ok(events, 'events_served emitted');
     assert.strictEqual(events.value, 1);
   });
@@ -317,7 +349,7 @@ describe('processQuery — metrics emission', () => {
   it('emits truncated_total when hasMore', async () => {
     const c = mkCounter();
     const events = Array.from({ length: 5 }, (_, i) =>
-      event({ id: `e${i}`, timestamp: `2026-05-${20 + i}T00:00:00Z` }),
+      event({ id: `e${i}`, timestamp: `2026-05-${20 + i}T00:00:00Z` })
     );
     await processQuery({
       ...defaults(),
@@ -325,7 +357,9 @@ describe('processQuery — metrics emission', () => {
       store: freshStore({ zw: events }),
       incrementCounter: c.fn,
     });
-    const trunc = c.calls.find((x) => x.metric === 'compliance_gateway_audit_query_truncated_total');
+    const trunc = c.calls.find(
+      (x) => x.metric === 'compliance_gateway_audit_query_truncated_total'
+    );
     assert.ok(trunc, 'truncated emitted');
     assert.deepStrictEqual(trunc.labels, { tenantId: 'zw' });
   });
@@ -352,7 +386,11 @@ describe('processQuery — metrics emission', () => {
 
   it('emits status=500 with real tenantId on store failure', async () => {
     const c = mkCounter();
-    const store = { query: async () => { throw new Error('boom'); } };
+    const store = {
+      query: async () => {
+        throw new Error('boom');
+      },
+    };
     await processQuery({ ...defaults(), store, incrementCounter: c.fn });
     const req = c.calls.find((x) => x.metric === 'compliance_gateway_audit_query_requests_total');
     assert.deepStrictEqual(req.labels, { status: '500', tenantId: 'zw' });

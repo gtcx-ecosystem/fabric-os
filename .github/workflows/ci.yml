@@ -98,6 +98,19 @@ jobs:
             --commit=${{ github.sha }} \
             --build-only \
             --image=replay-guard=gtcx/replay-guard:ci-${{ github.sha }} \
+            --scan=replay-guard=passed \
+            --gate=install=pass \
+            --gate=dependency-audit=pass \
+            --gate=lint=pass \
+            --gate=format=pass \
+            --gate=typecheck=pass \
+            --gate=test=pass \
+            --gate=terraform-binary-gate=pass \
+            --gate=build=pass \
+            --gate=replay-protection-tests=pass \
+            --gate=audit-immutability-fixture=pass \
+            --evidence=score-ledger=docs/audit/score-evidence-ledger.json \
+            --worm-key=release-evidence/ci/${{ github.sha }}/release-evidence.ndjson \
             --output-dir=infra/security/reports/release-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
 
       - name: Upload release evidence
@@ -336,23 +349,39 @@ jobs:
             cd - >/dev/null
           done
 
+      - name: Prepare Kustomize render evidence
+        run: mkdir -p infra/security/reports/kustomize-rendered/ci
+
       - name: Kustomize build — base
-        run: kubectl kustomize infra/kubernetes/base/ > /dev/null
+        run: kubectl kustomize infra/kubernetes/base/ > infra/security/reports/kustomize-rendered/ci/base.yaml
 
       - name: Kustomize build — dev overlay
-        run: kubectl kustomize infra/kubernetes/overlays/development/ > /dev/null
+        run: kubectl kustomize infra/kubernetes/overlays/development/ > infra/security/reports/kustomize-rendered/ci/development.yaml
 
       - name: Kustomize build — staging overlay
-        run: kubectl kustomize infra/kubernetes/overlays/staging/ > /dev/null
+        run: kubectl kustomize infra/kubernetes/overlays/staging/ > infra/security/reports/kustomize-rendered/ci/staging.yaml
 
       - name: Kustomize build — staging linkerd overlay
-        run: kubectl kustomize infra/kubernetes/overlays/staging/linkerd/ > /dev/null
+        run: kubectl kustomize infra/kubernetes/overlays/staging/linkerd/ > infra/security/reports/kustomize-rendered/ci/staging-linkerd.yaml
 
       - name: Kustomize build — production overlay
-        run: kubectl kustomize infra/kubernetes/overlays/production/ > /dev/null
+        run: kubectl kustomize infra/kubernetes/overlays/production/ > infra/security/reports/kustomize-rendered/ci/production.yaml
 
       - name: Kustomize build — production linkerd overlay
-        run: kubectl kustomize infra/kubernetes/overlays/production/linkerd/ > /dev/null
+        run: kubectl kustomize infra/kubernetes/overlays/production/linkerd/ > infra/security/reports/kustomize-rendered/ci/production-linkerd.yaml
+
+      - name: Kustomize build — testnet overlay
+        run: kubectl kustomize infra/kubernetes/overlays/testnet/ > infra/security/reports/kustomize-rendered/ci/testnet.yaml
+
+      - name: Kustomize build — pen-test overlay
+        run: kubectl kustomize infra/kubernetes/overlays/pen-test/ > infra/security/reports/kustomize-rendered/ci/pen-test.yaml
+
+      - name: Upload Kustomize render evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: kustomize-rendered-ci
+          path: infra/security/reports/kustomize-rendered/ci/
+          retention-days: 90
 
       - name: Docker Compose config validation
         run: |

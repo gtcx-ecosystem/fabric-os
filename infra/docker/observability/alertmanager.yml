@@ -177,7 +177,7 @@ receivers:
 
   - name: pagerduty-intelligence
     pagerduty_configs:
-      - routing_key: 'f1abedcb69384c06d1a99e45940cfc2d'
+      - routing_key: '${PAGERDUTY_INTELLIGENCE_ROUTING_KEY}'
         severity: '{{ .CommonLabels.severity }}'
         description: '{{ .CommonAnnotations.summary }}'
         details:

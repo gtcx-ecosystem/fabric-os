@@ -261,7 +261,7 @@ module "alb" {
   oidc_provider_arn      = module.eks.oidc_provider_arn
   vpc_id                 = module.vpc.vpc_id
   domain_name            = var.domain_name
-  rate_limit             = 500  # 100/min for staging (TradePass Wire #2 §10.1)
+  rate_limit             = 500 # 100/min for staging (TradePass Wire #2 §10.1)
 
   tags = merge(var.tags, {
     Environment = "staging"
@@ -294,7 +294,7 @@ module "waf" {
 
   name_prefix = "gtcx-staging"
   scope       = "REGIONAL"
-  rate_limit  = 500  # 100/min for staging (TradePass Wire #2 §10.1)
+  rate_limit  = 500 # 100/min for staging (TradePass Wire #2 §10.1)
   aws_region  = var.region
 }
 

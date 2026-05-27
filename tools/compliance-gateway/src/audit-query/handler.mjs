@@ -45,6 +45,8 @@ import { QueryAuditRequestSchema } from './schemas.mjs';
  *   the handler emits per-tenant request + outcome counters so
  *   operators can see query volume, error rates, and truncation rate
  *   on the audit-trust dashboard. Tolerates absent (tests + dev).
+ * @property {(subject: string, tenantId?: string) => { ok: true } | { ok: false, status: number, reason: string, retryAfterSeconds?: number, limits?: object, spentUsd?: number }} [checkBudget]
+ *   Optional per-principal QPS/budget gate shared with `/v1/query`.
  *
  * @typedef {object} HandleResult
  * @property {number} status
@@ -93,14 +95,44 @@ export async function processQuery(args) {
     inc('compliance_gateway_audit_query_requests_total', { status: '400', tenantId: 'unknown' });
     return {
       status: 400,
-      body: { error: 'tenant-required', detail: 'X-GTCX-Tenant-Id header or token-bound tenant required' },
+      body: {
+        error: 'tenant-required',
+        detail: 'X-GTCX-Tenant-Id header or token-bound tenant required',
+      },
     };
   }
   if (!/^[a-z]{2}$/.test(tenantId)) {
     inc('compliance_gateway_audit_query_requests_total', { status: '400', tenantId: 'unknown' });
     return {
       status: 400,
-      body: { error: 'tenant-malformed', detail: 'X-GTCX-Tenant-Id must be lowercase ISO-2 country code' },
+      body: {
+        error: 'tenant-malformed',
+        detail: 'X-GTCX-Tenant-Id must be lowercase ISO-2 country code',
+      },
+    };
+  }
+
+  const budgetSubject = tokenSubject ?? `audit-query:${tenantId}`;
+  const budgetCheck =
+    typeof args.checkBudget === 'function'
+      ? args.checkBudget(budgetSubject, tenantId)
+      : { ok: true };
+  if (!budgetCheck.ok) {
+    inc('compliance_gateway_audit_query_requests_total', {
+      status: String(budgetCheck.status ?? 429),
+      tenantId,
+    });
+    return {
+      status: budgetCheck.status ?? 429,
+      body: {
+        error:
+          budgetCheck.reason === 'qps'
+            ? 'Rate limit exceeded for this principal'
+            : 'Daily audit query budget exceeded for this principal',
+        retryAfterSeconds: budgetCheck.retryAfterSeconds,
+        limits: budgetCheck.limits,
+        spentUsd: budgetCheck.spentUsd,
+      },
     };
   }
 
@@ -173,17 +205,23 @@ export async function processQuery(args) {
     } catch (err) {
       // Don't fail the request if audit signing fails; the response
       // to the caller is already determined. Log via stderr.
-      console.error(JSON.stringify({
-        level: 'error',
-        type: 'audit-query.internalAuditSignFailed',
-        tenantId,
-        error: err?.message,
-      }));
+      console.error(
+        JSON.stringify({
+          level: 'error',
+          type: 'audit-query.internalAuditSignFailed',
+          tenantId,
+          error: err?.message,
+        })
+      );
     }
   }
 
   inc('compliance_gateway_audit_query_requests_total', { status: '200', tenantId });
-  inc('compliance_gateway_audit_query_events_served_total', { tenantId }, storeResult.events.length);
+  inc(
+    'compliance_gateway_audit_query_events_served_total',
+    { tenantId },
+    storeResult.events.length
+  );
   if (storeResult.hasMore) {
     inc('compliance_gateway_audit_query_truncated_total', { tenantId });
   }

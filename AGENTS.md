@@ -27,3 +27,40 @@ GTCX Infrastructure is part of the GTCX ecosystem. This repository follows Basel
 
 This repo participates in the GTCX ecosystem alignment checks.
 Run `pnpm ecosystem:alignment:check` (or equivalent) to verify standards.
+
+## Coordination Contract
+
+This repo participates in the GTCX ecosystem coordination system managed by `baseline-os`.
+
+| Field | Value |
+|-------|-------|
+| Repo ID | `gtcx-infrastructure` |
+| Tier | Tier 2 (Platform) |
+| Human Lead | TBD — update this |
+| Agent Roles | Builder, Reviewer |
+| QA Gates | `typecheck`, `test`, `arch-check`, `spec-drift` |
+
+### Reporting Work
+
+Report work items to the coordination hub:
+
+```bash
+cd /path/to/baseline-os
+pnpm ecosystem:repo:report-work --repo=gtcx-infrastructure --item="Description" --status=in-progress
+```
+
+Valid statuses: `pending`, `in-progress`, `blocked`, `completed`, `deferred`.
+
+### Querying Blockers
+
+Check `baseline-os/workstream/coordination/coordination-report-latest.md` for cross-repo blockers.
+
+### Trust Requirements
+
+- Builders: trust ≥ 70 (Permissioned)
+- Reviewers: trust ≥ 80 (Authorized)
+- Public API changes require human approval
+
+---
+
+*Coordination contract added: 2026-05-26*

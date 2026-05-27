@@ -12,8 +12,11 @@
     "clean": "rm -rf dist .astro src/content/docs"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.30.0",
-    "astro": "^5.0.0",
+    "@astrojs/starlight": "^0.39.2",
+    "astro": "^6.3.8",
     "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9"
   }
 }

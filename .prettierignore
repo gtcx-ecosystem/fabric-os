@@ -2,9 +2,13 @@ node_modules/
 dist/
 build/
 .turbo/
+.astro/
 .terraform/
 coverage/
 _delete/
+.baseline/
+tools/docs-site/.astro/
+tools/docs-site/src/content/docs/
 *.min.js
 *.min.css
 pnpm-lock.yaml

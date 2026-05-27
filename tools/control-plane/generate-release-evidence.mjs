@@ -1,7 +1,17 @@
 #!/usr/bin/env node
 
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import {
+  append,
+  createChain,
+  createRecord,
+  fromNdjson,
+  generateKeyPair,
+  toNdjson,
+  verifyChain,
+} from '../audit-signer/src/index.mjs';
 
 function fail(message) {
   console.error(`release-evidence error: ${message}`);
@@ -20,6 +30,10 @@ function usage() {
     [--sbom=<name>=<path>]... \\
     [--scan=<name>=<status>]... \\
     [--image=<name>=<image-ref>]... \\
+    [--gate=<name>=<pass|fail|warn|skipped>]... \\
+    [--evidence=<name>=<path-or-uri>]... \\
+    [--worm-bucket=<bucket>] \\
+    [--worm-key=<key>] \\
     [--output-dir=<path>]
 
 Build-only mode (no smoke/rollback required):
@@ -30,11 +44,14 @@ Build-only mode (no smoke/rollback required):
     --build-only \\
     [--image=<name>=<image-ref>]... \\
     [--sbom=<name>=<path>]... \\
-    [--scan=<name>=<status>]...
+    [--scan=<name>=<status>]... \\
+    [--gate=<name>=<pass|fail|warn|skipped>]...
 
 Notes:
   - Image refs must be immutable release tags or digest-pinned. ':latest' is rejected.
   - Repeat --image, --sbom, and --scan to add multiple entries.
+  - Repeat --gate to record validation outcomes that have already completed.
+  - The command writes signed NDJSON and verifier output for offline audit.
   - Output defaults to infra/security/reports/release-evidence/<environment>/<utc-timestamp>/`);
 }
 
@@ -69,6 +86,18 @@ function isImmutableImageRef(ref) {
   return true;
 }
 
+function normalizeGateStatus(status, gateName) {
+  const normalized = status.toLowerCase();
+  if (!['pass', 'fail', 'warn', 'skipped'].includes(normalized)) {
+    fail(`--gate=${gateName}=... must be one of pass, fail, warn, skipped`);
+  }
+  return normalized;
+}
+
+function sha256File(filePath) {
+  return createHash('sha256').update(readFileSync(filePath)).digest('hex');
+}
+
 const args = process.argv.slice(2);
 if (args.length === 0 || args.includes('--help') || args.includes('-h')) {
   usage();
@@ -79,6 +108,8 @@ const options = {
   images: [],
   sboms: [],
   scans: [],
+  gates: [],
+  evidence: [],
   buildOnly: false,
 };
 
@@ -106,6 +137,8 @@ for (const arg of args) {
     case 'rollback-target':
     case 'approval-ticket':
     case 'output-dir':
+    case 'worm-bucket':
+    case 'worm-key':
       options[key] = value;
       break;
     case 'image':
@@ -116,6 +149,17 @@ for (const arg of args) {
       break;
     case 'scan':
       options.scans.push(parseAssignment(value, '--scan'));
+      break;
+    case 'gate': {
+      const entry = parseAssignment(value, '--gate');
+      options.gates.push({
+        name: entry.name,
+        status: normalizeGateStatus(entry.value, entry.name),
+      });
+      break;
+    }
+    case 'evidence':
+      options.evidence.push(parseAssignment(value, '--evidence'));
       break;
     default:
       fail(`Unsupported argument: --${key}`);
@@ -168,9 +212,26 @@ const scanEntries = options.scans.map((entry) => ({
   name: entry.name,
   status: entry.value,
 }));
+const gateEntries = options.gates.map((entry) => ({
+  name: entry.name,
+  status: entry.status,
+}));
+const evidenceEntries = options.evidence.map((entry) => ({
+  name: entry.name,
+  uri: entry.value,
+}));
+const wormKey =
+  options['worm-key'] ??
+  path.posix.join(
+    'release-evidence',
+    options.environment,
+    options.version,
+    timestamp,
+    'release-evidence.ndjson'
+  );
 
 const bundle = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   generatedAt: new Date().toISOString(),
   environment: options.environment,
   release: {
@@ -184,13 +245,20 @@ const bundle = {
   images: imageEntries,
   sboms: sbomEntries,
   scans: scanEntries,
+  gates: gateEntries,
+  evidence: evidenceEntries,
+  worm: {
+    bucket: options['worm-bucket'] ?? null,
+    key: wormKey,
+    uploadReady: true,
+    requiredHeaders: {
+      serverSideEncryption: 'aws:kms',
+    },
+  },
 };
 
-writeFileSync(
-  path.join(outputDir, 'release-evidence.json'),
-  `${JSON.stringify(bundle, null, 2)}\n`,
-  'utf8'
-);
+const bundlePath = path.join(outputDir, 'release-evidence.json');
+writeFileSync(bundlePath, `${JSON.stringify(bundle, null, 2)}\n`, 'utf8');
 
 const summary = [
   '# Release Evidence',
@@ -216,10 +284,99 @@ const summary = [
     ? scanEntries.map((entry) => `- ${entry.name}: ${entry.status}`)
     : ['- none recorded']),
   '',
+  '## Validation Gates',
+  ...(gateEntries.length > 0
+    ? gateEntries.map((entry) => `- ${entry.name}: ${entry.status}`)
+    : ['- none recorded']),
+  '',
+  '## Evidence Pointers',
+  ...(evidenceEntries.length > 0
+    ? evidenceEntries.map((entry) => `- ${entry.name}: \`${entry.uri}\``)
+    : ['- none recorded']),
+  '',
+  '## WORM Target',
+  `- Bucket: ${bundle.worm.bucket ?? 'not configured'}`,
+  `- Key: \`${bundle.worm.key}\``,
+  '',
   '## Files',
   '- release-evidence.json',
+  '- summary.md',
+  '- release-evidence.ndjson',
+  '- release-evidence-verification.json',
+  '- worm-upload.json',
 ];
 
-writeFileSync(path.join(outputDir, 'summary.md'), `${summary.join('\n')}\n`, 'utf8');
+const summaryPath = path.join(outputDir, 'summary.md');
+writeFileSync(summaryPath, `${summary.join('\n')}\n`, 'utf8');
+
+const fileHashes = {
+  'release-evidence.json': sha256File(bundlePath),
+  'summary.md': sha256File(summaryPath),
+};
+
+const keyPair = generateKeyPair();
+const chain = createChain();
+append(
+  chain,
+  createRecord({
+    actor: 'gtcx-infrastructure-release-evidence',
+    action: 'release.evidence.generated',
+    target: `${bundle.environment}:${bundle.release.version}`,
+    reason: 'recurring release evidence bundle',
+    payload: {
+      schemaVersion: bundle.schemaVersion,
+      environment: bundle.environment,
+      release: bundle.release,
+      deployment: bundle.deployment,
+      images: bundle.images,
+      sboms: bundle.sboms,
+      scans: bundle.scans,
+      gates: bundle.gates,
+      evidence: bundle.evidence,
+      worm: bundle.worm,
+      fileHashes,
+    },
+  }),
+  keyPair.privateKey,
+  keyPair.publicKey
+);
+
+const ndjsonPath = path.join(outputDir, 'release-evidence.ndjson');
+const ndjson = toNdjson(chain);
+writeFileSync(ndjsonPath, ndjson, 'utf8');
+
+const verification = {
+  generatedAt: new Date().toISOString(),
+  verifier: '@gtcx/audit-signer',
+  result: verifyChain(fromNdjson(ndjson)),
+};
+const verificationPath = path.join(outputDir, 'release-evidence-verification.json');
+writeFileSync(verificationPath, `${JSON.stringify(verification, null, 2)}\n`, 'utf8');
+
+const uploadManifest = {
+  schemaVersion: 1,
+  generatedAt: new Date().toISOString(),
+  bucket: bundle.worm.bucket,
+  key: bundle.worm.key,
+  object: 'release-evidence.ndjson',
+  sha256: sha256File(ndjsonPath),
+  verification: verification.result,
+  requiredHeaders: bundle.worm.requiredHeaders,
+  command:
+    bundle.worm.bucket === null
+      ? null
+      : [
+          'aws s3api put-object',
+          `--bucket ${bundle.worm.bucket}`,
+          `--key ${bundle.worm.key}`,
+          '--body release-evidence.ndjson',
+          '--server-side-encryption aws:kms',
+        ].join(' '),
+};
+writeFileSync(
+  path.join(outputDir, 'worm-upload.json'),
+  `${JSON.stringify(uploadManifest, null, 2)}\n`,
+  'utf8'
+);
 
 console.log(outputDir);

@@ -57,8 +57,6 @@ _archive/
 _cannon/
 _delete/
 
-# BaselineOS
-.baseline/
 
 # Local IDE settings
 .claude/settings.local.json
@@ -67,8 +65,16 @@ _delete/
 infra/security/reports/rollback-evidence/
 *.tfplan
 
+
 # BaselineOS institutional memory (tracked)
-.baseline/
-!.baseline/definition.json
-!.baseline/memory/
-!.baseline/memory/**
+.baseline/checkpoints/
+.baseline/metrics/
+.baseline/offline/
+.baseline/archives/
+.baseline/govern/
+.baseline/index/
+.baseline/data/
+.baseline/evidence/
+.baseline/keys/
+.baseline/knowledge/
+.baseline/security/

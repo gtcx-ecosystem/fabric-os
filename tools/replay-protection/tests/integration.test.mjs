@@ -104,12 +104,13 @@ describe('Replay Guard Integration', () => {
     originalFetch = await installMockFetch();
 
     const stubServer = createServer();
-    await new Promise((r) => stubServer.listen(0, () => r()));
+    await new Promise((r) => stubServer.listen(0, '127.0.0.1', () => r()));
     const addr = stubServer.address();
     const port = typeof addr === 'string' ? parseInt(addr.split(':').pop() || '0', 10) : (addr?.port || 0);
     await new Promise((r) => stubServer.close(r));
 
     process.env.PORT = String(port);
+    process.env.HOST = '127.0.0.1';
     process.env.REDIS_URL = '';
     process.env.OTLP_ENDPOINT = '';
     // REPLAY_GUARD_ALLOW_STUB_SIGNATURE removed — real crypto verification is active
@@ -123,6 +124,7 @@ describe('Replay Guard Integration', () => {
   after(() => {
     global.fetch = /** @type {typeof global.fetch} */ (originalFetch);
     testServer?.close();
+    delete process.env.HOST;
   });
 
   describe('POST /v1/replay/verify', () => {

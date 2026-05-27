@@ -7,9 +7,11 @@ kind: Kustomization
 metadata:
   name: gtcx-base
 
-commonLabels:
-  app.kubernetes.io/part-of: gtcx
-  app.kubernetes.io/managed-by: kustomize
+labels:
+  - includeSelectors: true
+    pairs:
+      app.kubernetes.io/part-of: gtcx
+      app.kubernetes.io/managed-by: kustomize
 
 resources:
   - namespace.yaml

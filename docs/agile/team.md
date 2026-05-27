@@ -1,6 +1,8 @@
 ---
 id: TEAM-INFRA
 title: 'GTCX Infrastructure — Agile Team'
+status: 'current'
+date: '2026-05-27'
 version: '1.0'
 effective_date: '2026-05-27'
 owner: 'infrastructure@gtcx.io'

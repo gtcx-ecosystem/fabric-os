@@ -7,6 +7,7 @@
 
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
+
 import {
   resolveDid,
   extractPublicKeyJwk,
@@ -14,7 +15,6 @@ import {
   signJwt,
   generateEs256KeyPair,
 } from '../src/crypto/jwt-verify.mjs';
-
 
 describe('resolveDid', () => {
   it('throws on non-ok HTTP response', async () => {
@@ -30,7 +30,11 @@ describe('resolveDid', () => {
   it('resolves and unwraps wrapped didDocument', async () => {
     const originalFetch = global.fetch;
     const doc = { id: 'did:test:1' };
-    global.fetch = async () => ({ ok: true, status: 200, json: async () => ({ didDocument: doc }) });
+    global.fetch = async () => ({
+      ok: true,
+      status: 200,
+      json: async () => ({ didDocument: doc }),
+    });
     try {
       const result = await resolveDid('did:test:1');
       assert.strictEqual(result, doc);
@@ -136,7 +140,10 @@ describe('verifyJwt', () => {
   it('verifies valid JWT with matching audience', async () => {
     keyPair = await generateEs256KeyPair();
     const nowSec = Math.floor(Date.now() / 1000);
-    const jwt = await signJwt({ aud: 'gtcx-api', iat: nowSec, exp: nowSec + 300 }, keyPair.privateKeyJwk);
+    const jwt = await signJwt(
+      { aud: 'gtcx-api', iat: nowSec, exp: nowSec + 300 },
+      keyPair.privateKeyJwk
+    );
     const payload = await verifyJwt(jwt, keyPair.publicKeyJwk, { audience: 'gtcx-api' });
     assert.strictEqual(payload.aud, 'gtcx-api');
   });

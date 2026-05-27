@@ -4,6 +4,7 @@
 
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
+
 import {
   sha256Hex,
   normalizeHeaders,
@@ -35,8 +36,6 @@ describe('normalizeHeaders', () => {
   });
 
   it('sorts by value when keys are equal', () => {
-    // Simulate duplicate keys by constructing raw object (Object.entries won't dedupe)
-    const headers = { 'x-same': 'b', 'x-same': 'a' };
     // JavaScript deduplicates literal keys, so we use Object.assign
     const dup = Object.assign({}, { 'x-same': 'b' }, { 'x-same': 'a' });
     const h = normalizeHeaders(dup);

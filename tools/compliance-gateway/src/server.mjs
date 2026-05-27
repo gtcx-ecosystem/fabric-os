@@ -74,12 +74,15 @@ const auditInit = initAuditSigner(process.env);
 // Fail-closed: in production, the gateway must not run without a signing
 // key. Tamper-evident audit is a stated contract; refuse to serve without it.
 if (process.env.NODE_ENV === 'production' && !auditInit.initialized) {
-  console.error(JSON.stringify({
-    level: 'fatal',
-    type: 'audit.signer.startupRefused',
-    message: 'Compliance Gateway refusing to start: audit signing key not configured in production.',
-    error: auditInit.error,
-  }));
+  console.error(
+    JSON.stringify({
+      level: 'fatal',
+      type: 'audit.signer.startupRefused',
+      message:
+        'Compliance Gateway refusing to start: audit signing key not configured in production.',
+      error: auditInit.error,
+    })
+  );
   // eslint-disable-next-line no-process-exit
   process.exit(78); // EX_CONFIG
 }
@@ -90,7 +93,10 @@ if (process.env.NODE_ENV === 'production' && !auditInit.initialized) {
 
 const runtimePolicyConfig = {
   degradationMode: process.env.GTCX_DEGRADATION_MODE || 'auto',
-  lbwStripFields: (process.env.GTCX_LBW_STRIP_FIELDS || 'authz,usage,toolResults').split(',').map((s) => s.trim()).filter(Boolean),
+  lbwStripFields: (process.env.GTCX_LBW_STRIP_FIELDS || 'authz,usage,toolResults')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean),
   lbwCompression: process.env.GTCX_LBW_COMPRESSION || 'br',
   lbwCacheSeconds: Number(process.env.GTCX_LBW_CACHE_SECONDS || '300'),
   featureSignedAudit: process.env.GTCX_FEATURE_SIGNED_AUDIT === 'true',
@@ -171,11 +177,15 @@ function requirePermission(req, res, requiredPermission) {
 // Query handler with fallback chain
 // ---------------------------------------------------------------------------
 
-async function handleQuery(req, res, deps = {
-  generateText,
-  selectProvider: defaultSelectProvider,
-  getFallbackChain: defaultGetFallbackChain,
-}) {
+async function handleQuery(
+  req,
+  res,
+  deps = {
+    generateText,
+    selectProvider: defaultSelectProvider,
+    getFallbackChain: defaultGetFallbackChain,
+  }
+) {
   if (req.method !== 'POST') {
     return sendJson(res, 405, { error: 'Method not allowed' }, req);
   }
@@ -207,10 +217,15 @@ async function handleQueryInner(req, res, deps) {
 
   const validation = validateQueryBody(rawParsed);
   if (!validation.ok) {
-    return sendJson(res, validation.status, {
-      error: validation.error,
-      fieldErrors: validation.fieldErrors,
-    }, req);
+    return sendJson(
+      res,
+      validation.status,
+      {
+        error: validation.error,
+        fieldErrors: validation.fieldErrors,
+      },
+      req
+    );
   }
   const { query, jurisdiction, context } = validation.data;
 
@@ -235,14 +250,20 @@ async function handleQueryInner(req, res, deps) {
       tenantId: principal.tenantId,
     });
     res.setHeader?.('Retry-After', String(budgetCheck.retryAfterSeconds ?? 1));
-    return sendJson(res, budgetCheck.status, {
-      error: budgetCheck.reason === 'qps'
-        ? 'Rate limit exceeded for this principal'
-        : 'Daily LLM budget exceeded for this principal',
-      retryAfterSeconds: budgetCheck.retryAfterSeconds,
-      limits: budgetCheck.limits,
-      spentUsd: budgetCheck.spentUsd,
-    }, req);
+    return sendJson(
+      res,
+      budgetCheck.status,
+      {
+        error:
+          budgetCheck.reason === 'qps'
+            ? 'Rate limit exceeded for this principal'
+            : 'Daily LLM budget exceeded for this principal',
+        retryAfterSeconds: budgetCheck.retryAfterSeconds,
+        limits: budgetCheck.limits,
+        spentUsd: budgetCheck.spentUsd,
+      },
+      req
+    );
   }
 
   const userMessage = buildUserMessage({ query, jurisdiction, context });
@@ -257,10 +278,15 @@ async function handleQueryInner(req, res, deps) {
       target: query.substring(0, 200),
       payload: { tenantId: principal.tenantId, reason: 'no-providers-configured', status: 503 },
     });
-    return sendJson(res, 503, {
-      error: 'No LLM providers configured',
-      hint: 'Set at least one of: GOOGLE_API_KEY, GROQ_API_KEY, ANTHROPIC_API_KEY, OPENAI_API_KEY, DEEPSEEK_API_KEY',
-    }, req);
+    return sendJson(
+      res,
+      503,
+      {
+        error: 'No LLM providers configured',
+        hint: 'Set at least one of: GOOGLE_API_KEY, GROQ_API_KEY, ANTHROPIC_API_KEY, OPENAI_API_KEY, DEEPSEEK_API_KEY',
+      },
+      req
+    );
   }
 
   const fallbacks = deps.getFallbackChain(primary);
@@ -293,19 +319,27 @@ async function handleQueryInner(req, res, deps) {
       const estimatedCost = estimateCost(provider, result.usage);
       if (estimatedCost?.totalCostUSD) {
         recordSpend(principal.subject, estimatedCost.totalCostUSD);
-        incrementCounter('compliance_gateway_cost_usd_total', {
-          provider: provider.name,
-          tier: provider.tier,
-          principal: principal.subject,
-          tenantId: principal.tenantId,
-        }, estimatedCost.totalCostUSD);
+        incrementCounter(
+          'compliance_gateway_cost_usd_total',
+          {
+            provider: provider.name,
+            tier: provider.tier,
+            principal: principal.subject,
+            tenantId: principal.tenantId,
+          },
+          estimatedCost.totalCostUSD
+        );
       }
       incrementCounter('compliance_gateway_requests_total', {
         route: '/v1/query',
         status: '200',
         tenantId: principal.tenantId,
       });
-      setGauge('compliance_gateway_query_latency_ms', { provider: provider.name, tenantId: principal.tenantId }, latencyMs);
+      setGauge(
+        'compliance_gateway_query_latency_ms',
+        { provider: provider.name, tenantId: principal.tenantId },
+        latencyMs
+      );
       signAuditEvent({
         actor: principal.subject,
         action: 'query:success',
@@ -319,36 +353,43 @@ async function handleQueryInner(req, res, deps) {
           estimatedCostUSD: estimatedCost?.totalCostUSD ?? 0,
         },
       });
-      return sendJson(res, 200, {
-        answer: result.text,
-        toolCalls,
-        toolResults,
-        routing: {
-          provider: provider.name,
-          model: provider.model,
-          tier: provider.tier,
-          complexity,
-          latencyMs,
-          fallbacksAvailable: fallbacks.length,
-          estimatedCost,
+      return sendJson(
+        res,
+        200,
+        {
+          answer: result.text,
+          toolCalls,
+          toolResults,
+          routing: {
+            provider: provider.name,
+            model: provider.model,
+            tier: provider.tier,
+            complexity,
+            latencyMs,
+            fallbacksAvailable: fallbacks.length,
+            estimatedCost,
+          },
+          authz: {
+            approvalTicket: approval.ticket,
+            mutatingToolsEnabled: accessProfile.canMutate,
+            permissions: accessProfile.permissions,
+            subject: accessProfile.subject,
+          },
+          usage: result.usage,
         },
-        authz: {
-          approvalTicket: approval.ticket,
-          mutatingToolsEnabled: accessProfile.canMutate,
-          permissions: accessProfile.permissions,
-          subject: accessProfile.subject,
-        },
-        usage: result.usage,
-      }, req);
+        req
+      );
     } catch (err) {
       errors.push({ provider: provider.name, error: err?.message });
-      console.error(JSON.stringify({
-        level: 'warn',
-        type: 'compliance-gateway.provider.failed',
-        provider: provider.name,
-        error: err?.message,
-        fallbacksRemaining: chain.length - errors.length - 1,
-      }));
+      console.error(
+        JSON.stringify({
+          level: 'warn',
+          type: 'compliance-gateway.provider.failed',
+          provider: provider.name,
+          error: err?.message,
+          fallbacksRemaining: chain.length - errors.length - 1,
+        })
+      );
       // Continue to next provider in fallback chain
     }
   }
@@ -364,11 +405,16 @@ async function handleQueryInner(req, res, deps) {
       status: 502,
     },
   });
-  sendJson(res, 502, {
-    error: 'All LLM providers failed',
-    attempts: errors,
-    query: query.substring(0, 200),
-  }, req);
+  sendJson(
+    res,
+    502,
+    {
+      error: 'All LLM providers failed',
+      attempts: errors,
+      query: query.substring(0, 200),
+    },
+    req
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -380,11 +426,15 @@ function buildBriefNarrative({ chainState, spend, signing }) {
   if (!signing) {
     lines.push('⚠ Audit signing is DISABLED. Investigate before consequential traffic.');
   } else {
-    lines.push(`Audit chain is healthy: ${chainState.totalRecords} records, head ${chainState.lastHash.slice(0, 12)}…`);
+    lines.push(
+      `Audit chain is healthy: ${chainState.totalRecords} records, head ${chainState.lastHash.slice(0, 12)}…`
+    );
   }
   if (spend.spentUsd > 0) {
     const pct = Math.min(100, Math.round((spend.spentUsd / spend.limits.dailyUsd) * 100));
-    lines.push(`Today: $${spend.spentUsd.toFixed(4)} / $${spend.limits.dailyUsd} (${pct}% of daily budget).`);
+    lines.push(
+      `Today: $${spend.spentUsd.toFixed(4)} / $${spend.limits.dailyUsd} (${pct}% of daily budget).`
+    );
   } else {
     lines.push(`Today: no LLM spend yet.`);
   }
@@ -449,13 +499,15 @@ function getDegradationLevel(req) {
 }
 
 function logDegradationEvent(req, level) {
-  console.log(JSON.stringify({
-    type: 'resilience.degradation',
-    level,
-    endpoint: req?.url,
-    mode: runtimePolicyConfig.degradationMode,
-    timestamp: new Date().toISOString(),
-  }));
+  console.log(
+    JSON.stringify({
+      type: 'resilience.degradation',
+      level,
+      endpoint: req?.url,
+      mode: runtimePolicyConfig.degradationMode,
+      timestamp: new Date().toISOString(),
+    })
+  );
 }
 
 function stripForLowBandwidth(body, endpoint) {
@@ -529,7 +581,9 @@ function sendJson(res, status, body, req) {
       try {
         data = brotliCompressSync(data);
         encoding = 'br';
-      } catch { /* fallback */ }
+      } catch {
+        /* fallback */
+      }
     }
     if (!encoding && acceptEncoding.includes('gzip')) {
       data = gzipSync(data);
@@ -539,7 +593,9 @@ function sendJson(res, status, body, req) {
 
   const headers = {
     'Content-Type': 'application/json',
-    'Cache-Control': isLowBandwidth ? `max-age=${runtimePolicyConfig.lbwCacheSeconds}, public` : 'no-cache',
+    'Cache-Control': isLowBandwidth
+      ? `max-age=${runtimePolicyConfig.lbwCacheSeconds}, public`
+      : 'no-cache',
     'X-Low-Bandwidth': isLowBandwidth ? 'true' : 'false',
     'X-Degradation-Mode': runtimePolicyConfig.degradationMode,
   };
@@ -565,10 +621,15 @@ const server = createServer(async (req, res) => {
         return sendJson(res, 405, { error: 'Method not allowed' }, req);
       }
       if (!auditBundlesResolver) {
-        return sendJson(res, 503, {
-          error: 'tradepass-resolver-unconfigured',
-          acceptedIds: [],
-        }, req);
+        return sendJson(
+          res,
+          503,
+          {
+            error: 'tradepass-resolver-unconfigured',
+            acceptedIds: [],
+          },
+          req
+        );
       }
       const body = await readBody(req);
       const headersLower = {};
@@ -583,6 +644,7 @@ const server = createServer(async (req, res) => {
         expectedAudience: auditBundlesExpectedAudience,
         resolver: auditBundlesResolver,
         nonceGate: await auditBundlesNonceGate,
+        checkBudget,
         signAuditEvent,
       });
       return sendJson(res, result.status, result.body, req);
@@ -600,6 +662,7 @@ const server = createServer(async (req, res) => {
         body,
         headers: headersLower,
         store: auditQueryStore,
+        checkBudget,
         signAuditEvent,
         incrementCounter,
       });
@@ -615,34 +678,46 @@ const server = createServer(async (req, res) => {
       if (!principal) {
         return;
       }
-      const sinceParam = new URL(req.url ?? '/', 'http://localhost').searchParams.get('since') ?? undefined;
-      sendJson(res, 200, buildEvidenceBundle({
-        tenantId: principal.tenantId,
-        since: sinceParam,
-      }), req);
+      const sinceParam =
+        new URL(req.url ?? '/', 'http://localhost').searchParams.get('since') ?? undefined;
+      sendJson(
+        res,
+        200,
+        buildEvidenceBundle({
+          tenantId: principal.tenantId,
+          since: sinceParam,
+        }),
+        req
+      );
     } else if (url === '/v1/brief') {
       const principal = requirePermission(req, res, 'query:read');
       if (!principal) {
         return;
       }
-      const sinceParam = new URL(req.url ?? '/', 'http://localhost').searchParams.get('since') ?? undefined;
+      const sinceParam =
+        new URL(req.url ?? '/', 'http://localhost').searchParams.get('since') ?? undefined;
       const chainState = getChainState();
       const spend = getSpend(principal.subject, principal.tenantId);
-      sendJson(res, 200, {
-        tenantId: principal.tenantId,
-        since: sinceParam,
-        producedAt: new Date().toISOString(),
-        chainHead: chainState.lastHash,
-        recordCount: chainState.recordCount,
-        totalRecords: chainState.totalRecords,
-        spend,
-        signing: getSignerHealth().signing,
-        narrative: buildBriefNarrative({
-          chainState,
+      sendJson(
+        res,
+        200,
+        {
+          tenantId: principal.tenantId,
+          since: sinceParam,
+          producedAt: new Date().toISOString(),
+          chainHead: chainState.lastHash,
+          recordCount: chainState.recordCount,
+          totalRecords: chainState.totalRecords,
           spend,
           signing: getSignerHealth().signing,
-        }),
-      }, req);
+          narrative: buildBriefNarrative({
+            chainState,
+            spend,
+            signing: getSignerHealth().signing,
+          }),
+        },
+        req
+      );
     } else if (url === '/v1/audit/verify') {
       const principal = requirePermission(req, res, 'audit:read');
       if (!principal) {
@@ -656,42 +731,55 @@ const server = createServer(async (req, res) => {
       sendJson(res, 200, result, req);
     } else if (url === '/health') {
       const signerHealth = getSignerHealth();
-      const productionUnsigned =
-        process.env.NODE_ENV === 'production' && !signerHealth.signing;
+      const productionUnsigned = process.env.NODE_ENV === 'production' && !signerHealth.signing;
       const unhealthy = authState.configurationError || productionUnsigned;
-      sendJson(res, unhealthy ? 503 : 200, {
-        authConfigured: !authState.configurationError,
-        authMode: authState.defaulted ? 'dev-default-readonly' : 'configured',
-        audit: {
-          signing: signerHealth.signing,
-          ephemeral: signerHealth.ephemeral,
-          maxInMemoryRecords: signerHealth.maxInMemoryRecords,
-          ...getChainState(),
+      sendJson(
+        res,
+        unhealthy ? 503 : 200,
+        {
+          authConfigured: !authState.configurationError,
+          authMode: authState.defaulted ? 'dev-default-readonly' : 'configured',
+          audit: {
+            signing: signerHealth.signing,
+            ephemeral: signerHealth.ephemeral,
+            maxInMemoryRecords: signerHealth.maxInMemoryRecords,
+            ...getChainState(),
+          },
+          status: unhealthy ? 'unhealthy' : 'healthy',
+          tools: toolCount,
+          providers: providerCount,
+          availableProviders: getProviders().map((p) => p.name),
+          ...(authState.configurationError ? { error: authState.configurationError } : {}),
+          ...(productionUnsigned ? { error: 'audit signing not configured in production' } : {}),
         },
-        status: unhealthy ? 'unhealthy' : 'healthy',
-        tools: toolCount,
-        providers: providerCount,
-        availableProviders: getProviders().map((p) => p.name),
-        ...(authState.configurationError ? { error: authState.configurationError } : {}),
-        ...(productionUnsigned ? { error: 'audit signing not configured in production' } : {}),
-      }, req);
+        req
+      );
     } else if (url === '/v1/tools') {
       const principal = requirePermission(req, res, 'tools:read');
       if (!principal) {
         return;
       }
       const accessProfile = buildAccessProfile(principal, parseApprovalContext(req.headers));
-      sendJson(res, 200, {
-        availableCount: listToolsForAccess(accessProfile).length,
-        count: toolCount,
-        mutatingToolsEnabled: accessProfile.canMutate,
-        tools: listToolsForAccess(accessProfile),
-      }, req);
+      sendJson(
+        res,
+        200,
+        {
+          availableCount: listToolsForAccess(accessProfile).length,
+          count: toolCount,
+          mutatingToolsEnabled: accessProfile.canMutate,
+          tools: listToolsForAccess(accessProfile),
+        },
+        req
+      );
     } else if (url === '/metrics') {
       // Reflect live audit posture into gauges so /metrics is self-consistent.
       const sh = getSignerHealth();
       setGauge('compliance_gateway_audit_signing', undefined, sh.signing ? 1 : 0);
-      setGauge('compliance_gateway_audit_sink_connected', { mode: sh.sink?.mode }, sh.sink?.natsConnected ? 1 : 0);
+      setGauge(
+        'compliance_gateway_audit_sink_connected',
+        { mode: sh.sink?.mode },
+        sh.sink?.natsConnected ? 1 : 0
+      );
       const chainState = getChainState();
       setGauge('compliance_gateway_audit_chain_in_memory', undefined, chainState.recordCount);
       setGauge('compliance_gateway_audit_chain_total', undefined, chainState.totalRecords);
@@ -709,22 +797,27 @@ const server = createServer(async (req, res) => {
       if (!principal) {
         return;
       }
-      sendJson(res, 200, {
-        count: providerCount,
-        routing: {
-          simple: 'Free tier (Gemini Flash, Groq Llama)',
-          medium: 'Cost-optimized (DeepSeek, Gemini, GPT-4.1-mini)',
-          complex: 'Frontier (Claude Sonnet, GPT-4.1, Gemini Pro)',
+      sendJson(
+        res,
+        200,
+        {
+          count: providerCount,
+          routing: {
+            simple: 'Free tier (Gemini Flash, Groq Llama)',
+            medium: 'Cost-optimized (DeepSeek, Gemini, GPT-4.1-mini)',
+            complex: 'Frontier (Claude Sonnet, GPT-4.1, Gemini Pro)',
+          },
+          providers: getProviders().map((p) => ({
+            name: p.name,
+            model: p.model,
+            tier: p.tier,
+            inputCostPer1M: p.inputCostPer1M,
+            outputCostPer1M: p.outputCostPer1M,
+            maxTools: p.maxTools,
+          })),
         },
-        providers: getProviders().map((p) => ({
-          name: p.name,
-          model: p.model,
-          tier: p.tier,
-          inputCostPer1M: p.inputCostPer1M,
-          outputCostPer1M: p.outputCostPer1M,
-          maxTools: p.maxTools,
-        })),
-      }, req);
+        req
+      );
     } else {
       sendJson(res, 404, { error: 'Not found' }, req);
     }
@@ -737,10 +830,13 @@ const server = createServer(async (req, res) => {
 server.listen(PORT, () => {
   const providers = getProviders();
   if (authState.defaulted) {
-    console.warn(JSON.stringify({
-      level: 'warn',
-      message: 'Compliance Gateway is using the default development read-only token. Configure COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON before any shared use.',
-    }));
+    console.warn(
+      JSON.stringify({
+        level: 'warn',
+        message:
+          'Compliance Gateway is using the default development read-only token. Configure COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON before any shared use.',
+      })
+    );
   }
   const adaptiveThresholds = defaultThresholds();
   if (adaptiveThresholds.enabled) {
@@ -762,20 +858,22 @@ server.listen(PORT, () => {
       thresholds: adaptiveThresholds,
     });
   }
-  console.log(JSON.stringify({
-    authConfigured: !authState.configurationError,
-    auditInitialized: auditInit.initialized,
-    auditEphemeral: auditInit.ephemeral,
-    adaptivePolicy: adaptiveThresholds.enabled ? 'enabled' : 'disabled',
-    level: 'info',
-    message: 'Compliance Gateway listening',
-    nodeEnv: authState.nodeEnv,
-    port: PORT,
-    tools: toolCount,
-    providers: providers.length,
-    providerNames: providers.map((p) => p.name),
-    routing: 'cost-optimized (simple→free, medium→cheap, complex→frontier)',
-  }));
+  console.log(
+    JSON.stringify({
+      authConfigured: !authState.configurationError,
+      auditInitialized: auditInit.initialized,
+      auditEphemeral: auditInit.ephemeral,
+      adaptivePolicy: adaptiveThresholds.enabled ? 'enabled' : 'disabled',
+      level: 'info',
+      message: 'Compliance Gateway listening',
+      nodeEnv: authState.nodeEnv,
+      port: PORT,
+      tools: toolCount,
+      providers: providers.length,
+      providerNames: providers.map((p) => p.name),
+      routing: 'cost-optimized (simple→free, medium→cheap, complex→frontier)',
+    })
+  );
 });
 
 export { server, handleQuery, estimateCost, stripForLowBandwidth, sendJson };

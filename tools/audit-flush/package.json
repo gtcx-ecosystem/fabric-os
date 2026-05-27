@@ -15,10 +15,10 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "@gtcx/audit-signer": "workspace:*"
+    "@gtcx/audit-signer": "workspace:*",
+    "nats": "^2.29.3"
   },
   "devDependencies": {
-    "@nats-io/transport-node": "^3.4.0",
     "@nats-io/transport-node": "^3.4.0"
   },
   "keywords": [

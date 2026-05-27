@@ -12,23 +12,23 @@
 
 import { NonceGate, NONCE_TTL_MS } from '../audit-bundles/nonce-gate.mjs';
 
-const REDIS_URL = process.env.REDIS_URL;
 const REDIS_TTL_S = Math.ceil(NONCE_TTL_MS / 1000);
 
 /** @type {import('ioredis').Redis | null} */
 let redis = null;
+let cachedRedisUrl = null;
 
 /**
  * Lazy-connect to Redis. Returns null if REDIS_URL is unset or connection
  * throws, logging a WARN so operators know the nonce store is in-memory.
  */
-async function getRedis() {
-  if (redis) return redis;
-  if (!REDIS_URL) return null;
+async function getRedis({ redisUrl = process.env.REDIS_URL, RedisCtor } = {}) {
+  if (redis && cachedRedisUrl === redisUrl) return redis;
+  if (!redisUrl) return null;
 
   try {
-    const { Redis } = await import('ioredis');
-    const client = new Redis(REDIS_URL, {
+    const Redis = RedisCtor ?? (await import('ioredis')).Redis;
+    const client = new Redis(redisUrl, {
       maxRetriesPerRequest: 3,
       lazyConnect: true,
       retryStrategy(times) {
@@ -37,6 +37,7 @@ async function getRedis() {
     });
     await client.connect();
     redis = client;
+    cachedRedisUrl = redisUrl;
     return redis;
   } catch (err) {
     console.warn(
@@ -44,7 +45,7 @@ async function getRedis() {
         level: 'warn',
         type: 'nonce-store.redis.unavailable',
         message: 'REDIS_URL set but connection failed; falling back to in-memory NonceGate',
-        redisUrl: REDIS_URL,
+        redisUrl,
         error: err.message,
       })
     );
@@ -57,10 +58,14 @@ async function getRedis() {
  *
  * @param {object} [opts]
  * @param {string} [opts.tenantId]  - tenant segment for key namespacing
+ * @param {string} [opts.redisUrl]  - Redis URL override, mostly for tests
+ * @param {new (...args: unknown[]) => import('ioredis').Redis} [opts.RedisCtor] - Redis constructor override
+ * @param {import('ioredis').Redis} [opts.redisClient] - connected Redis client override
  * @returns {Promise<{ checkAndSet: (nonce: string, requestHash?: string) => Promise<{ accepted: boolean, alreadySeen: boolean }> }>}
  */
 export async function createNonceStore(opts = {}) {
-  const client = await getRedis();
+  const client =
+    opts.redisClient ?? (await getRedis({ redisUrl: opts.redisUrl, RedisCtor: opts.RedisCtor }));
   const tenantId = opts.tenantId ?? 'default';
 
   if (!client) {
@@ -90,15 +95,33 @@ export async function createNonceStore(opts = {}) {
         hash: requestHash,
       });
 
-      // SET key value NX EX ttl — only sets if key does not exist
-      const result = await client.set(key, value, 'NX', 'EX', REDIS_TTL_S);
+      try {
+        // SET key value NX EX ttl - only sets if key does not exist
+        const result = await client.set(key, value, 'NX', 'EX', REDIS_TTL_S);
 
-      if (result === 'OK') {
-        return { accepted: true, alreadySeen: false };
+        if (result === 'OK') {
+          return { accepted: true, alreadySeen: false };
+        }
+
+        // Key already exists - replay
+        return { accepted: false, alreadySeen: true };
+      } catch (err) {
+        console.warn(
+          JSON.stringify({
+            level: 'warn',
+            type: 'nonce-store.redis.command_failed',
+            message: 'Redis nonce check failed; rejecting nonce to fail closed',
+            tenantId,
+            error: err.message,
+          })
+        );
+        return { accepted: false, alreadySeen: true };
       }
-
-      // Key already exists → replay
-      return { accepted: false, alreadySeen: true };
     },
   };
+}
+
+export function __resetNonceStoreForTests() {
+  redis = null;
+  cachedRedisUrl = null;
 }

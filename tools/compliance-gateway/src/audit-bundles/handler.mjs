@@ -27,8 +27,9 @@ import { AuditBundleRequestSchema } from './schemas.mjs';
  * @property {Record<string, string>} headers
  * @property {string} expectedAudience
  * @property {import('./did-resolver.mjs').DidResolver} resolver
- * @property {import('./nonce-gate.mjs').NonceGate} nonceGate
+ * @property {{ checkAndSet: (nonce: string) => { accepted: boolean, alreadySeen: boolean } | Promise<{ accepted: boolean, alreadySeen: boolean }> }} nonceGate
  * @property {number} [nowMs]
+ * @property {(subject: string, tenantId?: string) => { ok: true } | { ok: false, status: number, reason: string, retryAfterSeconds?: number, limits?: object, spentUsd?: number }} [checkBudget]
  * @property {(event: object) => void} [signAuditEvent] - Optional injectable
  *   internal audit-of-the-ingest signer. When provided, an
  *   `audit-bundle.received` record is signed into our own audit chain
@@ -67,8 +68,28 @@ export async function processBundle(args) {
     };
   }
 
+  const budgetCheck =
+    typeof args.checkBudget === 'function'
+      ? args.checkBudget(envelope.did, args.headers['x-gtcx-tenant-id'] ?? 'default')
+      : { ok: true };
+  if (!budgetCheck.ok) {
+    return {
+      status: budgetCheck.status ?? 429,
+      body: {
+        error:
+          budgetCheck.reason === 'qps'
+            ? 'Rate limit exceeded for this device'
+            : 'Audit bundle budget exceeded for this device',
+        retryAfterSeconds: budgetCheck.retryAfterSeconds,
+        limits: budgetCheck.limits,
+        spentUsd: budgetCheck.spentUsd,
+        acceptedIds: [],
+      },
+    };
+  }
+
   // 2. Nonce gate (the canonical 409 path)
-  const { accepted } = args.nonceGate.checkAndSet(envelope.nonce);
+  const { accepted } = await args.nonceGate.checkAndSet(envelope.nonce);
   if (!accepted) {
     return {
       status: 409,
@@ -119,12 +140,14 @@ export async function processBundle(args) {
       // Don't fail the request if our own audit signing fails; the
       // response to mobile is already determined. Log via stderr so
       // the operator sees it.
-      console.error(JSON.stringify({
-        level: 'error',
-        type: 'audit-bundles.internalAuditSignFailed',
-        bundleId: parsed.bundleId,
-        error: err?.message,
-      }));
+      console.error(
+        JSON.stringify({
+          level: 'error',
+          type: 'audit-bundles.internalAuditSignFailed',
+          bundleId: parsed.bundleId,
+          error: err?.message,
+        })
+      );
     }
   }
 

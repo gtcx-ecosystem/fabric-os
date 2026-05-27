@@ -1,0 +1,177 @@
+# =============================================================================
+# Staging In-Cluster Smoke Probe — CronJob
+# =============================================================================
+# Runs inside the staging cluster to capture authenticated runtime smoke
+# evidence without exposing /health or /metrics through the public ALB.
+#
+# The probe hits the compliance-gateway Service directly on ClusterIP,
+# bypassing ALB/WAF entirely. Evidence is written to a shared EmptyDir
+# and can be collected via `kubectl cp` or uploaded to WORM by a sidecar.
+#
+# Schedule: Every 15 minutes (adjust as needed)
+# Namespace: gtcx-staging (mirrors the ingress namespace)
+# =============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: gtcx-smoke-probe
+  namespace: gtcx-staging
+  labels:
+    app: gtcx-smoke-probe
+    tier: observability
+spec:
+  schedule: '*/15 * * * *'
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 300
+      backoffLimit: 2
+      template:
+        metadata:
+          labels:
+            app: gtcx-smoke-probe
+        spec:
+          serviceAccountName: gtcx-smoke-probe
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+            runAsGroup: 1001
+            fsGroup: 1001
+            seccompProfile:
+              type: RuntimeDefault
+          restartPolicy: OnFailure
+          volumes:
+            - name: evidence
+              emptyDir: {}
+            - name: tmp
+              emptyDir: {}
+          initContainers:
+            - name: capture-evidence
+              image: node:22-alpine
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop:
+                    - ALL
+                readOnlyRootFilesystem: true
+              resources:
+                requests:
+                  cpu: 50m
+                  memory: 64Mi
+                limits:
+                  cpu: 200m
+                  memory: 128Mi
+              env:
+                - name: NODE_ENV
+                  value: 'production'
+                - name: GTCX_SMOKE_BASE_URL
+                  value: 'http://compliance-gateway.gtcx.svc.cluster.local:8500'
+                - name: GTCX_SMOKE_OUTPUT_DIR
+                  value: /evidence
+              volumeMounts:
+                - name: evidence
+                  mountPath: /evidence
+                - name: tmp
+                  mountPath: /tmp
+              command:
+                - sh
+                - '-c'
+                - |
+                  set -e
+                  # Fetch the capture script from the repo at the current commit.
+                  # In practice this is baked into the image or mounted from a ConfigMap.
+                  # For the initial deploy, use a raw GitHub URL or copy the script into
+                  # a ConfigMap and mount it here.
+                  echo "Smoke probe started at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+                  echo "Target: $GTCX_SMOKE_BASE_URL"
+                  echo "Output: $GTCX_SMOKE_OUTPUT_DIR"
+                  # Placeholder: the actual invocation will be added once the image
+                  # contains the control-plane scripts. For now, curl the endpoints
+                  # directly and write minimal evidence.
+                  mkdir -p "$GTCX_SMOKE_OUTPUT_DIR"
+                  for endpoint in health metrics; do
+                    url="${GTCX_SMOKE_BASE_URL}/${endpoint}"
+                    out="${GTCX_SMOKE_OUTPUT_DIR}/${endpoint}.json"
+                    code=$(wget -qO- --server-response "$url" 2>&1 | awk '/HTTP\// {print $2}' | tail -1)
+                    echo "{\"endpoint\":\"${endpoint}\",\"status\":${code},\"ts\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" > "$out"
+                  done
+                  echo "Smoke probe completed."
+          containers:
+            - name: evidence-uploader
+              image: amazon/aws-cli:latest
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop:
+                    - ALL
+                readOnlyRootFilesystem: true
+              resources:
+                requests:
+                  cpu: 50m
+                  memory: 64Mi
+                limits:
+                  cpu: 100m
+                  memory: 128Mi
+              env:
+                - name: AWS_REGION
+                  value: 'af-south-1'
+                - name: AUDIT_S3_BUCKET
+                  valueFrom:
+                    configMapKeyRef:
+                      name: gtcx-runtime-policies
+                      key: AUDIT_S3_BUCKET
+                      optional: true
+              volumeMounts:
+                - name: evidence
+                  mountPath: /evidence
+                  readOnly: true
+              command:
+                - sh
+                - '-c'
+                - |
+                  set -e
+                  if [ -z "${AUDIT_S3_BUCKET:-}" ]; then
+                    echo "No AUDIT_S3_BUCKET configured; evidence remains in pod."
+                    echo "Collect with: kubectl cp gtcx-staging/$(hostname):/evidence ./local-evidence"
+                    exit 0
+                  fi
+                  ts=$(date -u +%Y%m%d-%H%M%S)
+                  key="runtime-smoke-evidence/staging/${ts}/$(hostname).tar.gz"
+                  tar -czf /tmp/evidence.tar.gz -C /evidence .
+                  aws s3 cp /tmp/evidence.tar.gz "s3://${AUDIT_S3_BUCKET}/${key}"
+                  echo "Uploaded to s3://${AUDIT_S3_BUCKET}/${key}"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: gtcx-smoke-probe
+  namespace: gtcx-staging
+  annotations:
+    # If uploading to S3, annotate with the IRSA role ARN:
+    # eks.amazonaws.com/role-arn: arn:aws:iam::348389439381:role/gtcx-staging-smoke-probe
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: gtcx-smoke-probe
+  namespace: gtcx-staging
+rules:
+  - apiGroups: ['']
+    resources: ['pods']
+    verbs: ['get', 'list']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: gtcx-smoke-probe
+  namespace: gtcx-staging
+subjects:
+  - kind: ServiceAccount
+    name: gtcx-smoke-probe
+    namespace: gtcx-staging
+roleRef:
+  kind: Role
+  name: gtcx-smoke-probe
+  apiGroup: rbac.authorization.k8s.io

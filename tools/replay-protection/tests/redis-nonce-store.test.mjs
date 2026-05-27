@@ -6,7 +6,7 @@
  */
 
 import assert from 'node:assert';
-import { describe, it, beforeEach } from 'node:test';
+import { describe, it } from 'node:test';
 
 import { RedisNonceStore } from '../src/store/redis-nonce-store.mjs';
 
@@ -35,10 +35,7 @@ function createMockRedisClient() {
 
 describe('RedisNonceStore', () => {
   it('requires a Redis client', () => {
-    assert.throws(
-      () => new RedisNonceStore({}),
-      /RedisNonceStore requires opts.client/
-    );
+    assert.throws(() => new RedisNonceStore({}), /RedisNonceStore requires opts.client/);
   });
 
   it('checkAndSet returns true on first insert', async () => {

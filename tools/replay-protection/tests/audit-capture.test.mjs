@@ -4,6 +4,7 @@
 
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
+
 import { AuditCapture, consoleSink } from '../src/audit/audit-capture.mjs';
 
 describe('AuditCapture — disabled mode', () => {
@@ -32,7 +33,9 @@ describe('AuditCapture — sink behavior', () => {
     const capture = new AuditCapture({
       enabled: true,
       sinks: [
-        () => { throw new Error('sink failure'); },
+        () => {
+          throw new Error('sink failure');
+        },
         (event) => good.push(event),
       ],
     });
@@ -88,7 +91,9 @@ describe('AuditCapture — optional fields', () => {
 describe('consoleSink', () => {
   it('outputs JSON to console', () => {
     const logs = [];
+    // eslint-disable-next-line no-console
     const original = console.log;
+    // eslint-disable-next-line no-console
     console.log = (...args) => logs.push(args.join(' '));
     try {
       consoleSink({ eventType: 'replay.accepted' });
@@ -97,6 +102,7 @@ describe('consoleSink', () => {
       assert.strictEqual(parsed.type, 'audit.replay');
       assert.strictEqual(parsed.eventType, 'replay.accepted');
     } finally {
+      // eslint-disable-next-line no-console
       console.log = original;
     }
   });

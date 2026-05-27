@@ -222,8 +222,8 @@ If_Accidentally_Committed:
 
 ```typescript
 // WRONG: Hardcoded values
-const API_KEY = 'sk_live_1234567890';
-const DB_PASSWORD = 'mysecretpassword';
+const API_KEY = 'example-api-key-do-not-use';
+const DB_PASSWORD = 'example-password-do-not-use';
 
 // RIGHT: Environment variables
 const API_KEY = process.env.API_KEY;

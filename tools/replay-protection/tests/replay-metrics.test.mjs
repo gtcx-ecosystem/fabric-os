@@ -7,6 +7,7 @@
 
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
+
 import { ReplayMetrics } from '../src/metrics/replay-metrics.mjs';
 
 describe('ReplayMetrics — disabled mode', () => {

@@ -128,7 +128,28 @@ run_build_evidence_generation() {
         --commit=smoke-test \
         --build-only \
         --image=replay-guard=gtcx/replay-guard:ci-smoke \
+        --scan=replay-guard=passed \
+        --gate=build-evidence-generation=pass \
+        --evidence=score-ledger=docs/audit/score-evidence-ledger.json \
         --output-dir=/tmp/gtcx-build-evidence-smoke)
+}
+
+run_runtime_smoke_evidence_generation() {
+    log_info "Running runtime smoke evidence generation..."
+    (
+        cd "${PROJECT_ROOT}"
+        node tools/control-plane/capture-runtime-smoke-evidence.mjs \
+            --environment=ci \
+            --base-url=http://127.0.0.1:9 \
+            --endpoint=unreachable=/health \
+            --timeout-ms=250 \
+            --output-dir=/tmp/gtcx-runtime-smoke-evidence-smoke >/dev/null
+    )
+}
+
+run_control_plane_tests() {
+    log_info "Running control-plane tests..."
+    (cd "${PROJECT_ROOT}" && node --test tools/control-plane/tests/*.test.mjs)
 }
 
 run_terraform_validation() {
@@ -209,8 +230,11 @@ run_kustomize_validation() {
     (cd "${PROJECT_ROOT}" && kubectl kustomize infra/kubernetes/base/ > /dev/null)
     (cd "${PROJECT_ROOT}" && kubectl kustomize infra/kubernetes/overlays/development/ > /dev/null)
     (cd "${PROJECT_ROOT}" && kubectl kustomize infra/kubernetes/overlays/staging/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize infra/kubernetes/overlays/staging/linkerd/ > /dev/null)
     (cd "${PROJECT_ROOT}" && kubectl kustomize infra/kubernetes/overlays/production/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize infra/kubernetes/overlays/production/linkerd/ > /dev/null)
     (cd "${PROJECT_ROOT}" && kubectl kustomize infra/kubernetes/overlays/testnet/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize infra/kubernetes/overlays/pen-test/ > /dev/null)
 }
 
 run_compose_validation() {
@@ -305,6 +329,8 @@ case "${MODE}" in
         run_docs_link_check
         run_score_ledger_validation
         run_build_evidence_generation
+        run_runtime_smoke_evidence_generation
+        run_control_plane_tests
         run_script_smoke_tests
         run_incident_drill_validation
         run_kyverno_policy_validation
@@ -323,6 +349,8 @@ case "${MODE}" in
         run_docs_standard_validation
         run_score_ledger_validation
         run_build_evidence_generation
+        run_runtime_smoke_evidence_generation
+        run_control_plane_tests
         run_script_smoke_tests
         run_incident_drill_validation
         run_kyverno_policy_validation

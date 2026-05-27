@@ -98,10 +98,10 @@ Return completed questionnaires to: **security@gtcx.io**
 
 By submitting this questionnaire, the partner certifies that all responses are accurate to the best of their knowledge and agrees to notify GTCX within 10 business days of any material change.
 
-**Signature:** ********\_\_\_********  
-**Date:** ********\_\_\_********  
-**Name:** ********\_\_\_********  
-**Title:** ********\_\_\_********
+**Signature:** **\*\*\*\***\_\_\_**\*\*\*\***  
+**Date:** **\*\*\*\***\_\_\_**\*\*\*\***  
+**Name:** **\*\*\*\***\_\_\_**\*\*\*\***  
+**Title:** **\*\*\*\***\_\_\_**\*\*\*\***
 
 ---
 

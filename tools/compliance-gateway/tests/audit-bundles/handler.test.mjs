@@ -2,7 +2,11 @@ import { describe, it, before } from 'node:test';
 import assert from 'node:assert';
 
 import { processBundle } from '../../src/audit-bundles/handler.mjs';
-import { canonicalizeUrl, computeEnvelopeHash, sha256Hex } from '../../src/audit-bundles/canonical.mjs';
+import {
+  canonicalizeUrl,
+  computeEnvelopeHash,
+  sha256Hex,
+} from '../../src/audit-bundles/canonical.mjs';
 import { createMockResolver } from '../../src/audit-bundles/did-resolver.mjs';
 import { generateEd25519KeyPair, signEd25519 } from '../../src/audit-bundles/ed25519.mjs';
 import { NonceGate } from '../../src/audit-bundles/nonce-gate.mjs';
@@ -105,6 +109,30 @@ describe('processBundle — happy path', () => {
   });
 });
 
+describe('processBundle — budget gate', () => {
+  it('returns 429 when the signed DID exceeds the request budget', async () => {
+    const bundle = { bundleId: 'b-1', events: [event('e1', 'h1', null)] };
+    const args = await buildSignedRequest({ bundle });
+    let checkedSubject;
+    args.checkBudget = (subject) => {
+      checkedSubject = subject;
+      return {
+        ok: false,
+        status: 429,
+        reason: 'qps',
+        retryAfterSeconds: 1,
+        limits: { qps: 1, dailyUsd: 5 },
+        spentUsd: 0,
+      };
+    };
+    const result = await processBundle(args);
+    assert.strictEqual(checkedSubject, DID);
+    assert.strictEqual(result.status, 429);
+    assert.strictEqual(result.body.error, 'Rate limit exceeded for this device');
+    assert.deepStrictEqual(result.body.acceptedIds, []);
+  });
+});
+
 describe('processBundle — 400 envelope failures', () => {
   it('returns 400 envelope-audience-mismatch on wrong audience', async () => {
     const bundle = { bundleId: 'b-1', events: [event('e1', 'h1', null)] };
@@ -135,6 +163,18 @@ describe('processBundle — 400 envelope failures', () => {
 });
 
 describe('processBundle — 409 nonce replay', () => {
+  it('awaits async nonce gates before accepting the bundle', async () => {
+    const bundle = { bundleId: 'b-async', events: [event('e1', 'h1', null)] };
+    const args = await buildSignedRequest({ bundle });
+    args.nonceGate = {
+      checkAndSet: async () => ({ accepted: true, alreadySeen: false }),
+    };
+
+    const result = await processBundle(args);
+
+    assert.strictEqual(result.status, 200);
+  });
+
   it('returns 409 nonce-replayed on second send of same nonce', async () => {
     const bundle = { bundleId: 'b-1', events: [event('e1', 'h1', null)] };
     const args = await buildSignedRequest({ bundle });
@@ -153,7 +193,9 @@ describe('processBundle — 409 nonce replay', () => {
 
 describe('processBundle — 400 bundle-malformed', () => {
   it('returns 400 when body is not parseable JSON', async () => {
-    const args = await buildSignedRequest({ bundle: { bundleId: 'b-1', events: [event('e1', 'h1', null)] } });
+    const args = await buildSignedRequest({
+      bundle: { bundleId: 'b-1', events: [event('e1', 'h1', null)] },
+    });
     // Rewrite body to invalid JSON but keep the body-hash header in sync
     const newBody = 'not-json{';
     args.body = newBody;
@@ -179,7 +221,9 @@ describe('processBundle — 400 bundle-malformed', () => {
   });
 
   it('returns 400 when bundle violates Zod (missing bundleId)', async () => {
-    const args = await buildSignedRequest({ bundle: { bundleId: 'b-1', events: [event('e1', 'h1', null)] } });
+    const args = await buildSignedRequest({
+      bundle: { bundleId: 'b-1', events: [event('e1', 'h1', null)] },
+    });
     const newBody = JSON.stringify({ events: [event('e1', 'h1', null)] });
     args.body = newBody;
     args.headers['x-gtcx-body-sha256'] = sha256Hex(newBody);
@@ -205,7 +249,10 @@ describe('processBundle — 400 bundle-malformed', () => {
 
 describe('processBundle — audit-of-the-ingest', () => {
   it('signs an audit-bundle.received event on 200', async () => {
-    const bundle = { bundleId: 'b-aoi-1', events: [event('e1', 'h1', null), event('e2', 'h2', 'h1')] };
+    const bundle = {
+      bundleId: 'b-aoi-1',
+      events: [event('e1', 'h1', null), event('e2', 'h2', 'h1')],
+    };
     const args = await buildSignedRequest({ bundle });
     args.headers['x-gtcx-tenant-id'] = 'zw';
     const signed = [];
@@ -268,7 +315,9 @@ describe('processBundle — audit-of-the-ingest', () => {
   it('does NOT throw if signAuditEvent itself throws', async () => {
     const bundle = { bundleId: 'b-aoi-5', events: [event('e1', 'h1', null)] };
     const args = await buildSignedRequest({ bundle });
-    args.signAuditEvent = () => { throw new Error('sink unavailable'); };
+    args.signAuditEvent = () => {
+      throw new Error('sink unavailable');
+    };
     const result = await processBundle(args);
     assert.strictEqual(result.status, 200, 'response is unaffected by audit-signing failure');
     assert.deepStrictEqual(result.body.acceptedIds, ['e1']);
@@ -295,6 +344,10 @@ describe('processBundle — ordering invariant', () => {
     const args2 = await buildSignedRequest({ bundle, nonce: args.headers['x-gtcx-nonce'] });
     args2.nonceGate = gate;
     const result = await processBundle(args2);
-    assert.strictEqual(result.status, 200, 'nonce should still be available after envelope failure');
+    assert.strictEqual(
+      result.status,
+      200,
+      'nonce should still be available after envelope failure'
+    );
   });
 });

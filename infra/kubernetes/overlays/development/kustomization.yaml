@@ -11,8 +11,10 @@ resources:
 
 nameSuffix: -dev
 
-commonLabels:
-  environment: development
+labels:
+  - includeSelectors: true
+    pairs:
+      environment: development
 
 # Development-specific patches
 patches:

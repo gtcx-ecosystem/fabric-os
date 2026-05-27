@@ -19,7 +19,6 @@ namespace: gtcx-pen-test
 
 resources:
   - ../../base
-  - namespace.yaml
 
 patches:
   - target:
@@ -49,20 +48,12 @@ patches:
                 name: compliance-gateway-secrets
                 key: COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON
 
-  - target:
-      kind: Deployment
-      name: audit-flush
-    patch: |-
-      - op: replace
-        path: /spec/template/spec/containers/0/env
-        value:
-          - { name: NATS_URL, value: 'nats://nats.gtcx-pen-test.svc.cluster.local:4222' }
-          - { name: AUDIT_NATS_SUBJECT, value: 'gtcx.audit.pen-test.>' }
-          - { name: AUDIT_S3_BUCKET, value: 'gtcx-pen-test-audit-af-south-1' }
-          - { name: AUDIT_S3_REGION, value: 'af-south-1' }
-          - { name: AUDIT_FLUSH_BATCH_SIZE, value: '100' }
-          - { name: AUDIT_FLUSH_INTERVAL_MS, value: '5000' }
+  # NOTE: audit-flush is intentionally not patched here while the base
+  # resource remains disabled for AMD64 clusters. Re-enable the base resource
+  # and this overlay together when an AMD64 image is available.
 
-commonLabels:
-  app.kubernetes.io/environment: pen-test
-  gtcx.io/blast-radius: contained
+labels:
+  - includeSelectors: true
+    pairs:
+      app.kubernetes.io/environment: pen-test
+      gtcx.io/blast-radius: contained

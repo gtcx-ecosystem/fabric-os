@@ -14,6 +14,8 @@ const scriptMap = {
   workflow: path.join(infraScriptsDir, 'fine-tune-workflow.sh'),
   prepareEvidenceEnv: path.join(infraScriptsDir, 'prepare-intelligence-evidence-env.sh'),
   releaseEvidence: path.join(controlPlaneDir, 'generate-release-evidence.mjs'),
+  runtimeSmokeEvidence: path.join(controlPlaneDir, 'capture-runtime-smoke-evidence.mjs'),
+  wormUploadEvidence: path.join(controlPlaneDir, 'upload-release-evidence-to-worm.mjs'),
 };
 
 function fail(message) {
@@ -92,7 +94,9 @@ function showHelp() {
   gtcx-ctl workflow <status|trigger|suspend|resume> [workflow flags...]
   gtcx-ctl evidence rollback-capture --environment=<env> [--reason=<text>] [--smoke-base-url=<url>]
   gtcx-ctl evidence prepare-intelligence-env --terraform-output-file=<path> [--mode=<value>] [--failure-target=<value>]
-  gtcx-ctl evidence release-bundle --environment=<env> --version=<tag> --commit=<sha> --smoke-base-url=<url> --rollback-target=<target> --image=<name>=<ref> [--sbom=<name>=<path>] [--scan=<name>=<status>]
+  gtcx-ctl evidence release-bundle --environment=<env> --version=<tag> --commit=<sha> [--build-only|--smoke-base-url=<url> --rollback-target=<target>] --image=<name>=<ref> [--sbom=<name>=<path>] [--scan=<name>=<status>] [--gate=<name>=<status>]
+  gtcx-ctl evidence runtime-smoke --environment=<env> --base-url=<url> [--mode=public|bearer] [--bearer-token-env=<ENV_VAR>] [--endpoint=<name>=<path>] [--strict]
+  gtcx-ctl evidence worm-upload --manifest=<path/to/worm-upload.json> [--dry-run] [--output-dir=<path>]
   gtcx-ctl validate --environment=<env> [--dry-run]
 
 Notes:
@@ -191,27 +195,92 @@ if (area === 'evidence') {
   }
 
   if (action === 'release-bundle') {
-    const required = ['environment', 'version', 'commit', 'smoke-base-url', 'rollback-target'];
+    const required = ['environment', 'version', 'commit'];
     for (const key of required) {
       if (typeof flags.get(key) !== 'string') {
         fail(`release-bundle requires --${key}=...`);
       }
     }
+    if (flags.get('build-only') !== true) {
+      for (const key of ['smoke-base-url', 'rollback-target']) {
+        if (typeof flags.get(key) !== 'string') {
+          fail(`release-bundle requires --${key}=... unless --build-only is set`);
+        }
+      }
+    }
 
     const commandArgs = required.map((key) => formatFlag(key, flags.get(key)));
-    for (const key of ['approval-ticket', 'output-dir']) {
+    if (flags.get('build-only') === true) {
+      commandArgs.push('--build-only');
+    } else {
+      commandArgs.push(formatFlag('smoke-base-url', flags.get('smoke-base-url')));
+      commandArgs.push(formatFlag('rollback-target', flags.get('rollback-target')));
+    }
+    for (const key of ['approval-ticket', 'output-dir', 'worm-bucket', 'worm-key']) {
       if (typeof flags.get(key) === 'string') {
         commandArgs.push(formatFlag(key, flags.get(key)));
       }
     }
 
     for (const arg of args) {
-      if (arg.startsWith('--image=') || arg.startsWith('--sbom=') || arg.startsWith('--scan=')) {
+      if (
+        arg.startsWith('--image=') ||
+        arg.startsWith('--sbom=') ||
+        arg.startsWith('--scan=') ||
+        arg.startsWith('--gate=') ||
+        arg.startsWith('--evidence=')
+      ) {
         commandArgs.push(arg);
       }
     }
 
     runNodeScript(scriptMap.releaseEvidence, commandArgs);
+  }
+
+  if (action === 'runtime-smoke') {
+    for (const key of ['environment', 'base-url']) {
+      if (typeof flags.get(key) !== 'string') {
+        fail(`runtime-smoke requires --${key}=...`);
+      }
+    }
+
+    const commandArgs = [
+      formatFlag('environment', flags.get('environment')),
+      formatFlag('base-url', flags.get('base-url')),
+    ];
+    if (flags.get('strict') === true) {
+      commandArgs.push('--strict');
+    }
+    for (const key of ['mode', 'bearer-token-env', 'timeout-ms', 'output-dir']) {
+      if (typeof flags.get(key) === 'string') {
+        commandArgs.push(formatFlag(key, flags.get(key)));
+      }
+    }
+    for (const arg of args) {
+      if (arg.startsWith('--endpoint=')) {
+        commandArgs.push(arg);
+      }
+    }
+
+    runNodeScript(scriptMap.runtimeSmokeEvidence, commandArgs);
+  }
+
+  if (action === 'worm-upload') {
+    if (typeof flags.get('manifest') !== 'string') {
+      fail('worm-upload requires --manifest=<path/to/worm-upload.json>');
+    }
+
+    const commandArgs = [formatFlag('manifest', flags.get('manifest'))];
+    if (flags.get('dry-run') === true) {
+      commandArgs.push('--dry-run');
+    }
+    for (const key of ['output-dir', 'aws-bin', 'expected-mode', 'min-retention-days']) {
+      if (typeof flags.get(key) === 'string') {
+        commandArgs.push(formatFlag(key, flags.get(key)));
+      }
+    }
+
+    runNodeScript(scriptMap.wormUploadEvidence, commandArgs);
   }
 
   fail(`Unknown evidence action: ${action}`);

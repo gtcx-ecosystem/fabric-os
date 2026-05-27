@@ -21,8 +21,10 @@ resources:
 
 nameSuffix: -prod
 
-commonLabels:
-  environment: production
+labels:
+  - includeSelectors: true
+    pairs:
+      environment: production
 
 commonAnnotations:
   deployment.kubernetes.io/revision: '1'
@@ -56,8 +58,10 @@ patches:
       kind: Deployment
       name: compliance-gateway
     path: patches/compliance-gateway-env.yaml
-  # Audit-flush — production image (3 replicas) + IRSA role + WORM bucket
-  - path: audit-flush-patch.yaml
+  # NOTE: audit-flush is intentionally not patched here while the base
+  # resource remains disabled for AMD64 clusters. Re-enable the base resource
+  # and this overlay together when an AMD64 image is available.
+  # - path: audit-flush-patch.yaml
 
   # API service - production resources
   - patch: |-

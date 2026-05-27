@@ -1,74 +1,55 @@
 ---
-title: 'Backlog — [Product Name]'
-status: 'current'
-date: '2026-05-10'
-owner: 'frontier-infra-engineer'
-role: 'frontier-infra-engineer'
-tier: 'standard'
-tags: ['infrastructure', 'api', 'backend', 'database', 'network']
-review_cycle: 'on-change'
+id: BACKLOG-INFRA
+title: 'GTCX Infrastructure — Product Backlog'
+version: '1.0'
+effective_date: '2026-05-27'
+owner: 'infrastructure@gtcx.io'
 ---
 
-# Backlog — [Product Name]
+# GTCX Infrastructure — Product Backlog
 
-## Must Have (Phase 1)
+> **Source of truth for prioritized work beyond the current sprint.**  
+> **Last Updated:** 2026-05-27  
+> **Owner:** @amanianai
 
-- [Platform A] [web / app] with [X] subscription tiers
-- [Platform B] [registry / database] with search and basic verification
-- [Service A] [daily / weekly] [content type] and [alert type] workflow
-- [Index A] scores for [X]+ [jurisdictions / markets] with public methodology
-- [Service B] monitoring for [X] Tier 1 [markets / jurisdictions]
-- [Research Platform] [analysis cadence] and [report cadence]
-- [Field Publication] [dispatches / releases] from [X]+ [locations / sources]
-- [Agentic / automation] production pipeline
-- Email distribution infrastructure
+## How to Use
 
----
+1. Groom weekly during backlog refinement
+2. Priority order is meaningful — top = next to pull into sprint
+3. Each item needs acceptance criteria before sprint planning
+4. Link to roadmap epics where applicable
 
-## Should Have (Phase 2)
+## P0 — Critical (Next Sprint)
 
-- [Platform A] [Feature Module 1] ([X]+ [jurisdictions / markets])
-- [Platform A] [Feature Module 2] ([X]+ [routes / corridors])
-- [Platform A] [Feature Module 3] ([X]+ [operators / entities])
-- [Platform B] premium verification tiers ([Verified] / [Certified])
-- [Service A] paid subscriber tier ($[X]/yr)
-- [Service A] [audio / alternative format] content ([language A], [language B])
-- [API Layer] [Index A] API and [content] feed API
-- [Community Platform] [Layer 1]: [Events / content] database ([X]+ entries), [coverage type], newsletter
-- [Service B] Tier 2 [markets] + [trade hubs]
-- [Index B] and [Index C] scores for [X]+ [jurisdictions]
-- [Advisory Platform] first [X] [policy briefs / reports] and [institutional] subscriptions
-- [Analytical Capability 1] for [X] [markets / corridors]
-- [Analytical Capability 2] for [X] [jurisdictions]
-- Multi-language content ([language A], [language B])
-- [PWA / mobile] with push notifications and offline caching
+| ID  | Item | Epic | Est. | Owner |
+| --- | ---- | ---- | ---- | ----- |
 
----
+## P1 — High (This Quarter)
 
-## Could Have (Phase 3)
+| ID   | Item                                            | Epic                    | Est. | Owner      |
+| ---- | ----------------------------------------------- | ----------------------- | ---- | ---------- |
+| BL-1 | Kubernetes cluster setup for staging            | Multi-Region Deployment | L    | @amanianai |
+| BL-2 | Terraform modules for AWS/GCP baseline          | IaC Foundation          | L    | @amanianai |
+| BL-3 | CI/CD pipeline for cross-repo deployments       | GitOps                  | M    | @amanianai |
+| BL-4 | Observability stack (Prometheus, Grafana, Loki) | Monitoring              | L    | @amanianai |
 
-- [Platform A] [top tier] with community features ([Feature A], [Feature B])
-- [Community Platform] [Layer 2] scaled: [event type A], [event type B], [event type C]
-- [Community Platform] [Layer 1] expanded: [operator dashboards], [X]+ [events] indexed
-- [Platform B] [ecosystem / protocol] integration
-- [API Layer] [Service B] API, [Platform B] API, webhooks
-- [Service A] API feed for institutional clients
-- [Field Publication] [corridor / regional] coverage and [visual / multimedia] essays
-- [Index A] comparison tools and data downloads
-- [Analytical Capability 3] for [X] [market segments]
-- [Analytical Capability 4] linking [variable A] to [variable B] across [markets / corridors]
-- [Analytical Capability 5] for [X]+ [markets] identifying [opportunity type]
-- [SMS / alternative delivery] alert delivery
-- [Additional language] [audio / content] format
-- Custom research offerings
+## P2 — Medium (Next Quarter)
 
----
+| ID   | Item                                    | Epic              | Est. | Owner      |
+| ---- | --------------------------------------- | ----------------- | ---- | ---------- |
+| BL-5 | Multi-region failover automation        | Disaster Recovery | XL   | TBD        |
+| BL-6 | Edge node deployment in Ghana and Kenya | Edge Computing    | XL   | TBD        |
+| BL-7 | Cost optimization and budget governance | FinOps            | M    | @amanianai |
 
-## Won't Have (This Year)
+## P3 — Low (Future)
 
-- [Flagship Annual Event] (Year 2)
-- [Platform A] Annual [Summit / Conference] (Year 2)
-- [API Layer] [price / real-time] data streaming ([Year])
-- White-label licensing
-- Predictive analytics
-- Mobile native apps ([PWA / web app] sufficient)
+| ID   | Item                                      | Epic        | Est. | Owner |
+| ---- | ----------------------------------------- | ----------- | ---- | ----- |
+| BL-8 | Chaos engineering framework               | Resilience  | L    | TBD   |
+| BL-9 | Custom African cloud provider integration | Local Cloud | XL   | TBD   |
+
+## Icebox
+
+| ID    | Item                                          | Notes                |
+| ----- | --------------------------------------------- | -------------------- |
+| ICE-1 | Bare-metal Kubernetes for offline deployments | Rural edge scenarios |

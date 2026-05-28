@@ -78,3 +78,8 @@ infra/security/reports/rollback-evidence/
 .baseline/keys/
 .baseline/knowledge/
 .baseline/security/
+
+# Auto-added by ecosystem-self-heal
+logs/
+.next/
+out/

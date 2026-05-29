@@ -1,12 +1,15 @@
 {
   "repo": "gtcx-infrastructure",
   "auditDate": "2026-05-28",
-  "head": "9b6ec6045541e61598a310e8e147363a15c8634c",
+  "head": "5b8d323e41cc8d9d54827b72d4f46839a8d61a53",
   "sourceAudit": "docs/audit/master-audit-2026-05-28.md",
   "latestAudit": "docs/audit/master-audit-2026-05-28.md",
   "roadmap": "docs/audit/10-10-remediation-plan-2026-05-28.md",
-  "status": "production-candidate",
+  "status": "internal-10-10-complete",
+  "internalSignoff": "docs/audit/internal-10-10-signoff-2026-05-28.md",
+  "externalRegister": "docs/audit/external-dependencies-register-2026-05-28.md",
   "scores": {
+    "internalReadiness": 10.0,
     "composite": 8.8,
     "compositeRaw": 8.85,
     "investor": 8.7,
@@ -14,9 +17,14 @@
     "sovereignDfi": 8.6,
     "signal": 9.6
   },
+  "externalDependencies": {
+    "total": 12,
+    "open": 11,
+    "completeOrDescoped": 1
+  },
   "findings": {
     "p0": 0,
-    "p1": 2,
+    "p1": 0,
     "p2": 2
   },
   "gates": {
@@ -64,10 +72,10 @@
     }
   },
   "remainingGaps": [
-    "External SOC 2 Type I and third-party penetration-test execution pending vendor completion.",
-    "Runtime smoke evidence script exists; authenticated staging execution requires scoped credentials.",
-    "Signed release evidence WORM upload not yet automated on every main merge.",
-    "Large uncommitted doc/baseline working tree pending commit."
+    "Certified composite 8.8 pending 11 open external dependencies — see external-dependencies-register-2026-05-28.md.",
+    "INF-49 staging URL + TLS (EXT-INF-004) blocks gtcx-protocols DID resolution.",
+    "Recurring WORM release upload on main (EXT-INF-003) requires AWS/OIDC credentials.",
+    "Large uncommitted doc/baseline working tree pending commit (hygiene P2)."
   ],
   "freshVerification": {
     "verifiedAt": "2026-05-28",

@@ -1,7 +1,10 @@
 # =============================================================================
 # Compliance Gateway — HorizontalPodAutoscaler
 # =============================================================================
-# Scales on Prometheus custom metric: in-flight /v1/query requests per pod.
+# Scales on Prometheus custom metrics:
+#   - in-flight /v1/query requests per pod
+#   - p95 latency (stay under 5s)
+#   - queue depth (stay under 100)
 # Falls back to CPU when the metrics adapter is unavailable.
 #
 # Floor:   1 pod
@@ -31,6 +34,20 @@ spec:
         target:
           type: AverageValue
           averageValue: '20'
+    - type: Pods
+      pods:
+        metric:
+          name: compliance_gateway_latency_p95_ms
+        target:
+          type: AverageValue
+          averageValue: '5000'
+    - type: Pods
+      pods:
+        metric:
+          name: compliance_gateway_queue_depth
+        target:
+          type: AverageValue
+          averageValue: '100'
     - type: Resource
       resource:
         name: cpu

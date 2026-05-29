@@ -1,23 +1,23 @@
 {
   "repo": "gtcx-infrastructure",
-  "auditDate": "2026-05-27",
-  "head": "dd4dcfe",
-  "sourceAudit": "docs/audit/master-audit-2026-05-27.md",
-  "latestAudit": "docs/audit/master-audit-post-sprint-2026-05-27.md",
-  "roadmap": "docs/audit/10-10-remediation-plan-2026-05-27.md",
+  "auditDate": "2026-05-28",
+  "head": "9b6ec6045541e61598a310e8e147363a15c8634c",
+  "sourceAudit": "docs/audit/master-audit-2026-05-28.md",
+  "latestAudit": "docs/audit/master-audit-2026-05-28.md",
+  "roadmap": "docs/audit/10-10-remediation-plan-2026-05-28.md",
   "status": "production-candidate",
   "scores": {
-    "composite": 9.0,
-    "compositeRaw": 8.95,
-    "investor": 8.9,
-    "enterprise": 8.6,
-    "sovereignDfi": 8.8,
+    "composite": 8.8,
+    "compositeRaw": 8.85,
+    "investor": 8.7,
+    "enterprise": 8.4,
+    "sovereignDfi": 8.6,
     "signal": 9.6
   },
   "findings": {
     "p0": 0,
     "p1": 2,
-    "p2": 1
+    "p2": 2
   },
   "gates": {
     "testFull": "pass",
@@ -64,9 +64,23 @@
     }
   },
   "remainingGaps": [
-    "External SOC 2 Type I and third-party penetration-test execution are pending vendor/legal completion.",
-    "Testnet-pilot WORM resolved via ADR-023: audit evidence routes to staging WORM bucket with prefixed keys.",
-    "Runtime smoke evidence command is implemented; authenticated staging execution still requires a scoped smoke credential.",
-    "Signed release evidence is generated and verified locally; WORM upload and retention verification are not yet automated end to end."
-  ]
+    "External SOC 2 Type I and third-party penetration-test execution pending vendor completion.",
+    "Runtime smoke evidence script exists; authenticated staging execution requires scoped credentials.",
+    "Signed release evidence WORM upload not yet automated on every main merge.",
+    "Large uncommitted doc/baseline working tree pending commit."
+  ],
+  "freshVerification": {
+    "verifiedAt": "2026-05-28",
+    "commands": {
+      "pnpm test": "pass",
+      "pnpm test:full": "pass",
+      "pnpm lint": "pass",
+      "pnpm build": "pass"
+    },
+    "fixesSincePriorAudit": [
+      "docs-standard green (version-standards.md, vendor-outreach/README.md)",
+      "docker-compose.infra.yml schema fix (removed nats service from volumes block)",
+      "cross-repo markdown links removed from audit docs"
+    ]
+  }
 }

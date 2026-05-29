@@ -163,7 +163,7 @@ Running in AWS af-south-1 (Cape Town):
 | [Architecture Overview](./docs/architecture/system-overview.md)        | System design and trust zones  |
 | [Deployment Runbook](./docs/operations/runbooks/deployment-runbook.md) | Deploy and rollback procedures |
 | [DR Runbook](./docs/operations/runbooks/disaster-recovery.md)          | Backup and recovery            |
-| [ADR Index](./docs/decisions/README.md)                                | Architecture decisions         |
+| [ADR Index](./docs/architecture/decisions/README.md)                                | Architecture decisions         |
 | [Audit History](./docs/audit/qa-reviews/)                              | Session audits and hardening   |
 
 ## Published Substrate
@@ -176,7 +176,7 @@ GTCX's compliance substrate is published as three composable primitives. Each is
 | **`terraform-aws-compliance-db`**  | [GitHub](https://github.com/amani-amina-anai/terraform-aws-compliance-db) · [`infra/terraform/modules/compliance-db/`](./infra/terraform/modules/compliance-db/) | Dual-database (operational + audit) module for regulated African fintech. 11 jurisdictions covered, FATF-aligned retention floors. |
 | **`@gtcx/compliance-gateway-mcp`** | [`tools/compliance-gateway-mcp/`](./tools/compliance-gateway-mcp/)                                                                                               | Model Context Protocol server exposing the gateway's read-only surface to AI agents. Mutating tools deliberately absent.           |
 
-Detailed pages: [`docs/external/docs-site/`](./docs/external/docs-site/) (markdown source for `gtcx.io/compliance`).
+Detailed pages: [`docs/external/docs-site/`](./docs/gitbook/) (markdown source for `gtcx.io/compliance`).
 
 ## Internal Workspace Packages
 

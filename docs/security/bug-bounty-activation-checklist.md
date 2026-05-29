@@ -1,4 +1,18 @@
 ---
+title: "Bug Bounty Program — Activation Checklist"
+status: "current"
+date: "2026-05-27"
+owner: "gtcx-infrastructure"
+role: "protocol-architect"
+agent_id: "agent://gtcx-infrastructure/2026-05-27/session-backfill"
+trust_score: 60
+autonomy_level: "permissioned"
+tier: "standard"
+tags: ["documentation", "security"]
+review_cycle: "on-change"
+---
+
+---
 status: 'draft'
 date: '2026-05-17'
 owner: 'infrastructure-security-team'

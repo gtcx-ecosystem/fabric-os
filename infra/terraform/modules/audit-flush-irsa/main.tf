@@ -53,6 +53,18 @@ variable "tags" {
   default     = {}
 }
 
+variable "list_bucket_prefixes" {
+  description = <<-EOT
+    S3 key prefixes the sidecar is permitted to list. Defaults to the
+    per-tenant and quarantine prefixes that flush.unit.test.mjs writes
+    under. ListBucket without a prefix condition would expose the
+    bucket's inventory across tenants — a horizontal-privilege risk
+    cited in the 2026-05-30 security audit.
+  EOT
+  type        = list(string)
+  default     = ["tenant=*/*", "_quarantine/*"]
+}
+
 locals {
   common_tags = merge(var.tags, {
     Environment = var.environment
@@ -108,6 +120,14 @@ resource "aws_iam_role_policy" "audit_flush_write" {
         Effect   = "Allow"
         Action   = ["s3:ListBucket"]
         Resource = var.worm_bucket_arn
+        Condition = {
+          # Scope listing to per-tenant + quarantine prefixes. Without
+          # this condition the role can list every tenant's keys — the
+          # horizontal-privilege risk flagged in the 2026-05-30 audit.
+          StringLike = {
+            "s3:prefix" = var.list_bucket_prefixes
+          }
+        }
       },
       {
         Sid    = "AllowKmsEncryptForBucketCMK"

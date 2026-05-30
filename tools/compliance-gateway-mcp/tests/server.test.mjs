@@ -8,7 +8,7 @@
 import assert from 'node:assert';
 import { afterEach, beforeEach, describe, it } from 'node:test';
 
-import { handleRpc, TOOLS } from '../src/server.mjs';
+import { handleRpc, TOOLS, RESOURCES, PROMPTS } from '../src/server.mjs';
 
 let fetchCalls = [];
 const originalFetch = globalThis.fetch;
@@ -114,5 +114,109 @@ describe('MCP — JSON-RPC dispatch', () => {
       params: { name: 'gtcx_audit_evidence_bundle', arguments: { since: '2026-05-01T00:00:00Z' } },
     });
     assert.match(fetchCalls[0].url, /\/v1\/audit\/evidence-bundle\?since=2026-05-01/);
+  });
+
+  it('initialize advertises resources + prompts capabilities', async () => {
+    const r = await handleRpc({ jsonrpc: '2.0', id: 8, method: 'initialize' });
+    assert.ok(r.result.capabilities.resources, 'resources capability missing');
+    assert.ok(r.result.capabilities.prompts, 'prompts capability missing');
+    assert.ok(r.result.capabilities.tools, 'tools capability missing');
+  });
+});
+
+describe('MCP — resources (AI-native ambient context)', () => {
+  beforeEach(installFetchStub);
+  afterEach(uninstallFetchStub);
+
+  it('exposes the morning brief as a discoverable resource', () => {
+    const morning = RESOURCES.find((r) => r.uri === 'gtcx://brief/morning');
+    assert.ok(morning, 'morning brief resource missing');
+    assert.strictEqual(morning.mimeType, 'text/plain');
+  });
+
+  it('resources/list returns the catalog', async () => {
+    const r = await handleRpc({ jsonrpc: '2.0', id: 10, method: 'resources/list' });
+    assert.ok(r.result.resources.length >= 1);
+    assert.ok(r.result.resources.some((res) => res.uri === 'gtcx://brief/morning'));
+  });
+
+  it('resources/read for morning brief fetches /v1/brief and returns narrative', async () => {
+    // Override the stub to return a realistic brief body.
+    globalThis.fetch = async (url) => ({
+      status: 200,
+      text: async () =>
+        JSON.stringify({
+          tenantId: 'zw',
+          narrative: 'Audit chain is healthy: 4 records, head deadbeef…',
+          chainHead: 'deadbeefcafe',
+          signing: true,
+          spend: { spentUsd: 0.42, limits: { dailyUsd: 5 } },
+          producedAt: '2026-05-30T12:00:00Z',
+        }),
+    });
+    const r = await handleRpc({
+      jsonrpc: '2.0',
+      id: 11,
+      method: 'resources/read',
+      params: { uri: 'gtcx://brief/morning' },
+    });
+    assert.strictEqual(r.result.contents.length, 1);
+    assert.match(r.result.contents[0].text, /Audit chain is healthy/);
+    assert.match(r.result.contents[0].text, /chainHead=deadbeefcafe/);
+    assert.match(r.result.contents[0].text, /spendUsd=0.42/);
+  });
+
+  it('resources/read for an unknown uri returns isError', async () => {
+    const r = await handleRpc({
+      jsonrpc: '2.0',
+      id: 12,
+      method: 'resources/read',
+      params: { uri: 'gtcx://no/such/thing' },
+    });
+    assert.strictEqual(r.result.isError, true);
+  });
+});
+
+describe('MCP — prompts (named drop-in patterns)', () => {
+  beforeEach(installFetchStub);
+  afterEach(uninstallFetchStub);
+
+  it('advertises a morning-brief prompt', () => {
+    const morning = PROMPTS.find((p) => p.name === 'morning-brief');
+    assert.ok(morning, 'morning-brief prompt missing');
+  });
+
+  it('prompts/list returns the catalog', async () => {
+    const r = await handleRpc({ jsonrpc: '2.0', id: 20, method: 'prompts/list' });
+    assert.ok(r.result.prompts.some((p) => p.name === 'morning-brief'));
+  });
+
+  it('prompts/get morning-brief expands with live brief content', async () => {
+    globalThis.fetch = async () => ({
+      status: 200,
+      text: async () =>
+        JSON.stringify({ narrative: 'All systems nominal.', tenantId: 'zw' }),
+    });
+    const r = await handleRpc({
+      jsonrpc: '2.0',
+      id: 21,
+      method: 'prompts/get',
+      params: { name: 'morning-brief' },
+    });
+    assert.strictEqual(r.result.messages.length, 1);
+    assert.strictEqual(r.result.messages[0].role, 'user');
+    assert.match(r.result.messages[0].content.text, /All systems nominal/);
+    assert.match(r.result.messages[0].content.text, /THREE short headline items/);
+  });
+
+  it('prompts/get for an unknown prompt returns a JSON-RPC error', async () => {
+    const r = await handleRpc({
+      jsonrpc: '2.0',
+      id: 22,
+      method: 'prompts/get',
+      params: { name: 'nope' },
+    });
+    assert.ok(r.error);
+    assert.match(r.error.message, /Unknown prompt/);
   });
 });

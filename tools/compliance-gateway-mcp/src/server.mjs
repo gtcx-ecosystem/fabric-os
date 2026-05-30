@@ -10,6 +10,16 @@
  *   gtcx_audit_evidence_bundle   — verifiable evidence for an auditor
  *   gtcx_brief                   — morning-brief summary
  *
+ * Also exposes RESOURCES and PROMPTS that MCP clients read on connect,
+ * implementing the AI-native "Persistent Context" pattern: the agent
+ * has the compliance posture briefing BEFORE any user prompt arrives.
+ *
+ *   resources/gtcx://brief/morning  — live morning brief (signing posture,
+ *                                     chain head, today's LLM spend)
+ *   prompts/morning-brief           — drop-in prompt that asks the agent
+ *                                     to surface the brief as 3 headline
+ *                                     items the user should know today
+ *
  * The MCP server is intentionally read-only. Mutating tools require an
  * approval ticket and live behind the HTTP gateway with explicit human
  * authorization — exposing them via an agent-discoverable surface
@@ -86,6 +96,104 @@ async function callGateway(path, opts = {}) {
   return { status: res.status, body };
 }
 
+// ---------------------------------------------------------------------------
+// Resources — agent reads on connect (AI-native Pattern #10: Persistent Context)
+// ---------------------------------------------------------------------------
+
+const RESOURCES = [
+  {
+    uri: 'gtcx://brief/morning',
+    name: 'GTCX Morning Brief',
+    description:
+      'Live one-paragraph compliance briefing: audit signing posture, current chain head, today\'s LLM spend vs daily budget. Read on connect so the agent surfaces today\'s posture before the user asks.',
+    mimeType: 'text/plain',
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Prompts — drop-in prompts the agent advertises so users can invoke
+// the AI-native experience by name. Surface the brief in 3 headline items.
+// ---------------------------------------------------------------------------
+
+const PROMPTS = [
+  {
+    name: 'morning-brief',
+    description:
+      'Surface today\'s GTCX compliance posture as three headline items the user should know. Pulls live state from the gateway; the agent presents it without the user having to ask.',
+    arguments: [],
+  },
+];
+
+async function dispatchResourceRead(uri) {
+  if (uri === 'gtcx://brief/morning') {
+    const { status, body } = await callGateway('/v1/brief');
+    if (status >= 400) {
+      return {
+        contents: [
+          {
+            uri,
+            mimeType: 'text/plain',
+            text: `Compliance gateway brief unavailable (status ${status}). Reason: ${typeof body === 'string' ? body : JSON.stringify(body)}`,
+          },
+        ],
+      };
+    }
+    // Render the JSON brief into a single paragraph the agent can
+    // narrate directly. The narrative field is human-readable; the
+    // raw signing/spend/chain fields are also returned so the agent
+    // can drill in without an extra fetch.
+    const narrative = body?.narrative ?? 'No narrative produced by gateway.';
+    const metaLines = [
+      `chainHead=${body?.chainHead ?? 'unknown'}`,
+      `signing=${body?.signing ?? 'unknown'}`,
+      `spendUsd=${body?.spend?.spentUsd ?? 0}`,
+      `dailyBudgetUsd=${body?.spend?.limits?.dailyUsd ?? 'unknown'}`,
+      `tenantId=${body?.tenantId ?? 'unknown'}`,
+      `producedAt=${body?.producedAt ?? new Date().toISOString()}`,
+    ];
+    return {
+      contents: [
+        {
+          uri,
+          mimeType: 'text/plain',
+          text: `${narrative}\n\n${metaLines.join('\n')}`,
+        },
+      ],
+    };
+  }
+  return { contents: [], isError: true };
+}
+
+async function dispatchPromptGet(name) {
+  if (name === 'morning-brief') {
+    const { status, body } = await callGateway('/v1/brief');
+    const briefText = status >= 400
+      ? `(brief unavailable — status ${status})`
+      : body?.narrative ?? '(no narrative)';
+    return {
+      description:
+        'Surface today\'s GTCX compliance posture as three headline items the user should know.',
+      messages: [
+        {
+          role: 'user',
+          content: {
+            type: 'text',
+            text:
+              `Here is today's GTCX compliance brief from the gateway:\n\n` +
+              `${briefText}\n\n` +
+              `Surface this to me as exactly THREE short headline items, in this order:\n` +
+              `  1. Audit signing posture (one line; flag if not SIGNING)\n` +
+              `  2. Spend vs daily LLM budget (one line; flag if >75%)\n` +
+              `  3. Chain head + record count (one line; flag if chain not verified)\n\n` +
+              `Use plain language. Lead with the headline, not the metric.`,
+          },
+        },
+      ],
+    };
+  }
+  throw new Error(`Unknown prompt: ${name}`);
+}
+
 export async function dispatchToolCall(name, args = {}) {
   switch (name) {
     case 'gtcx_compliance_query':
@@ -112,8 +220,11 @@ export function handleRpc(message) {
       id: message.id,
       result: {
         protocolVersion: '2024-11-05',
-        capabilities: { tools: {} },
-        serverInfo: { name: 'gtcx-compliance-gateway-mcp', version: '0.1.0' },
+        // Advertise resources + prompts so MCP clients fetch them on
+        // connect — the agent has the compliance brief in context
+        // BEFORE the first user prompt arrives.
+        capabilities: { tools: {}, resources: {}, prompts: {} },
+        serverInfo: { name: 'gtcx-compliance-gateway-mcp', version: '0.2.0' },
       },
     };
   }
@@ -123,6 +234,46 @@ export function handleRpc(message) {
       id: message.id,
       result: { tools: TOOLS },
     };
+  }
+  if (message.method === 'resources/list') {
+    return {
+      jsonrpc: '2.0',
+      id: message.id,
+      result: { resources: RESOURCES },
+    };
+  }
+  if (message.method === 'resources/read') {
+    return dispatchResourceRead(message.params?.uri)
+      .then((result) => ({
+        jsonrpc: '2.0',
+        id: message.id,
+        result,
+      }))
+      .catch((err) => ({
+        jsonrpc: '2.0',
+        id: message.id,
+        error: { code: -32000, message: err.message },
+      }));
+  }
+  if (message.method === 'prompts/list') {
+    return {
+      jsonrpc: '2.0',
+      id: message.id,
+      result: { prompts: PROMPTS },
+    };
+  }
+  if (message.method === 'prompts/get') {
+    return dispatchPromptGet(message.params?.name)
+      .then((result) => ({
+        jsonrpc: '2.0',
+        id: message.id,
+        result,
+      }))
+      .catch((err) => ({
+        jsonrpc: '2.0',
+        id: message.id,
+        error: { code: -32000, message: err.message },
+      }));
   }
   if (message.method === 'tools/call') {
     return dispatchToolCall(message.params?.name, message.params?.arguments ?? {})
@@ -147,7 +298,7 @@ export function handleRpc(message) {
   };
 }
 
-export { TOOLS };
+export { TOOLS, RESOURCES, PROMPTS };
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const rl = createInterface({ input: process.stdin });

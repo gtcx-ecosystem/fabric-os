@@ -72,10 +72,6 @@ importers:
       '@gtcx/audit-signer':
         specifier: workspace:*
         version: link:../audit-signer
-      nats:
-        specifier: ^2.29.3
-        version: 2.29.3
-    devDependencies:
       '@nats-io/transport-node':
         specifier: ^3.4.0
         version: 3.4.0
@@ -2582,21 +2578,12 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     hasBin: true
 
-  nats@2.29.3:
-    resolution: {integrity: sha512-tOQCRCwC74DgBTk4pWZ9V45sk4d7peoE2njVprMRCBXrhJ5q5cYM7i6W+Uvw2qUrcfOSnuisrX7bEx3b3Wx4QA==}
-    engines: {node: '>= 14.0.0'}
-    deprecated: Package moved. Use @nats-io/transport-node from https://github.com/nats-io/nats.js
-
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
   neotraverse@0.6.18:
     resolution: {integrity: sha512-Z4SmBUweYa09+o6pG+eASabEpP6QkQ70yHj351pQoEXIs8uHbaU2DWVmzBANKgflPa47A50PtB2+NgRpQvr7vA==}
     engines: {node: '>= 10'}
-
-  nkeys.js@1.1.0:
-    resolution: {integrity: sha512-tB/a0shZL5UZWSwsoeyqfTszONTt4k2YS0tuQioMOD180+MbombYVgzDUYHlx+gejYK6rgf08n/2Df99WY0Sxg==}
-    engines: {node: '>=10.0.0'}
 
   nlcst-to-string@4.0.0:
     resolution: {integrity: sha512-YKLBCcUYKAg0FNlOBT6aI91qFmSiFKiluk655WzPF+DDMA02qIyy8uiRqI8QXtcFpEvll12LpL5MXqEmAZ+dcA==}
@@ -6455,17 +6442,9 @@ snapshots:
 
   napi-postinstall@0.3.4: {}
 
-  nats@2.29.3:
-    dependencies:
-      nkeys.js: 1.1.0
-
   natural-compare@1.4.0: {}
 
   neotraverse@0.6.18: {}
-
-  nkeys.js@1.1.0:
-    dependencies:
-      tweetnacl: 1.0.3
 
   nlcst-to-string@4.0.0:
     dependencies:

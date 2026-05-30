@@ -55,6 +55,7 @@ import {
   parseApprovalContext,
 } from './auth.mjs';
 import { checkBudget, recordSpend, getSpend } from './budget.mjs';
+import { computeConfidence } from './confidence.mjs';
 import { incrementCounter, setGauge, renderMetrics } from './metrics.mjs';
 import { createNonceStore } from './nonce-store/redis.mjs';
 import { buildRuntimePolicyPrompt } from './policy.mjs';
@@ -421,6 +422,16 @@ async function handleQueryInner(req, res, deps) {
         { provider: provider.name, tenantId: principal.tenantId },
         latencyMs
       );
+      // Heuristic confidence score. Surfaced to callers so agent
+       // clients can adopt their own thresholds (AI-native Pattern
+       // #5: Progressive Confidence). Tool-execution gating on
+       // confidence is a follow-up; for now we surface the signal.
+      const confidence = computeConfidence(result, complexity);
+      setGauge(
+        'compliance_gateway_query_confidence',
+        { provider: provider.name, tenantId: principal.tenantId, band: confidence.band },
+        confidence.score
+      );
       signAuditEvent({
         actor: principal.subject,
         action: 'query:success',
@@ -432,6 +443,8 @@ async function handleQueryInner(req, res, deps) {
           latencyMs,
           status: 200,
           estimatedCostUSD: estimatedCost?.totalCostUSD ?? 0,
+          confidenceScore: confidence.score,
+          confidenceBand: confidence.band,
         },
       });
       return sendJson(
@@ -456,6 +469,7 @@ async function handleQueryInner(req, res, deps) {
             permissions: accessProfile.permissions,
             subject: accessProfile.subject,
           },
+          confidence,
           usage: result.usage,
         },
         req

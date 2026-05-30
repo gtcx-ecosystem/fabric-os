@@ -34,6 +34,18 @@ let checkpointCount = 0;
 // JetStream subject level (see audit-flush `tenantFromSubject`).
 const recordTenants = new Map();
 
+// Per-record exception classification for the in-memory window.
+// Most exception kinds are derivable at read time from the preserved
+// `action` field (auth:failure, query:failure, query:throttled,
+// audit-bundle.received with rejectedIds > 0, etc.). The exception
+// kinds we CANNOT derive from action alone are stashed here:
+//
+//   query:success → 'low-confidence' when confidence band is 'low'
+//
+// Keys are signed record IDs; values are { kind, severity } so the
+// exception-only operator view can surface them as a single feed.
+const recordExceptions = new Map();
+
 const MAX_IN_MEMORY_RECORDS = Number(process.env.AUDIT_CHAIN_MAX_RECORDS || '10000');
 
 /**
@@ -100,16 +112,22 @@ export function initAuditSigner(env = process.env, force = false) {
  * for `buildEvidenceBundle` filtering. It is also pulled from
  * `payload.tenantId` for backward compatibility with existing call sites.
  *
+ * `exceptionKind` is captured in the `recordExceptions` sidecar so the
+ * `/v1/exceptions` operator view can surface confidence-class events
+ * (the action field alone doesn't carry that signal — payload is
+ * stripped by the signer).
+ *
  * @param {object} params
  * @param {string} params.actor
  * @param {string} params.action
  * @param {string} params.target
  * @param {string} [params.reason]
  * @param {string} [params.tenantId] - explicit tenant; falls back to payload.tenantId
+ * @param {string} [params.exceptionKind] - 'low-confidence' | 'integrity-violation' | ...; tagged in recordExceptions
  * @param {unknown} [params.payload]
  * @returns {import('../../audit-signer/src/signer.mjs').SignedAuditRecord | null}
  */
-export function signAuditEvent({ actor, action, target, reason, tenantId, payload }) {
+export function signAuditEvent({ actor, action, target, reason, tenantId, exceptionKind, payload }) {
   if (!keyPair) {
     return null;
   }
@@ -137,6 +155,9 @@ export function signAuditEvent({ actor, action, target, reason, tenantId, payloa
         : null;
   if (effectiveTenant) {
     recordTenants.set(signed.id, effectiveTenant);
+  }
+  if (typeof exceptionKind === 'string' && exceptionKind.length > 0) {
+    recordExceptions.set(signed.id, exceptionKind);
   }
 
   incrementCounter('compliance_gateway_audit_records_total', { action });
@@ -177,6 +198,7 @@ export function signAuditEvent({ actor, action, target, reason, tenantId, payloa
     checkpointCount += chain.records.length;
     chain.records.length = 0;
     recordTenants.clear();
+    recordExceptions.clear();
     console.log(JSON.stringify({
       type: 'audit.checkpoint',
       checkpointHash,
@@ -306,6 +328,83 @@ export function resetChain() {
   checkpointHash = '';
   checkpointCount = 0;
   recordTenants.clear();
+  recordExceptions.clear();
+}
+
+// ---------------------------------------------------------------------------
+// Exception-only operator view (AI-native Pattern #3)
+// ---------------------------------------------------------------------------
+
+/**
+ * Map a signed record's action + sidecar tags to an exception kind,
+ * or null if it's a routine event the operator view should hide.
+ *
+ * Kinds:
+ *   - 'auth-failure'           — auth:failure action
+ *   - 'query-failure'          — query:failure (LLM chain exhausted, no providers, etc.)
+ *   - 'query-throttled'        — query:throttled (budget gate)
+ *   - 'resilience-degraded'    — resilience.policy.adaptation away from 'normal'
+ *   - 'low-confidence'         — query:success tagged via recordExceptions
+ *   - 'integrity-violation'    — chain verification failure (tagged sidecar)
+ *
+ * @param {object} record
+ * @returns {string | null}
+ */
+function classifyException(record) {
+  const tagged = recordExceptions.get(record.id);
+  if (tagged) return tagged;
+  if (record.action === 'auth:failure') return 'auth-failure';
+  if (record.action === 'query:failure') return 'query-failure';
+  if (record.action === 'query:throttled') return 'query-throttled';
+  if (record.action === 'resilience.policy.adaptation') return 'resilience-degraded';
+  return null;
+}
+
+/**
+ * Return exception-class events from the in-memory chain, scoped to a
+ * single tenant. The operator view's job is to surface only the events
+ * that require human judgment — failures, throttles, degraded
+ * resilience, and low-confidence LLM outputs.
+ *
+ * @param {{ tenantId: string, since?: string, kinds?: string[], limit?: number }} opts
+ * @returns {{
+ *   tenantId: string,
+ *   producedAt: string,
+ *   totalExceptions: number,
+ *   truncated: boolean,
+ *   exceptions: Array<{ id: string, timestamp: string, action: string, kind: string, actor: string, target: string, reason?: string }>,
+ * }}
+ */
+export function getExceptions({ tenantId, since, kinds, limit = 200 } = {}) {
+  if (typeof tenantId !== 'string' || tenantId.length === 0) {
+    throw new Error('getExceptions: tenantId is required');
+  }
+  const kindFilter = Array.isArray(kinds) && kinds.length > 0 ? new Set(kinds) : null;
+  const matches = [];
+  for (const r of chain.records) {
+    if (recordTenants.get(r.id) !== tenantId) continue;
+    if (since && r.timestamp < since) continue;
+    const kind = classifyException(r);
+    if (!kind) continue;
+    if (kindFilter && !kindFilter.has(kind)) continue;
+    matches.push({
+      id: r.id,
+      timestamp: r.timestamp,
+      action: r.action,
+      kind,
+      actor: r.actor,
+      target: r.target,
+      ...(r.reason ? { reason: r.reason } : {}),
+    });
+  }
+  const truncated = matches.length > limit;
+  return {
+    tenantId,
+    producedAt: new Date().toISOString(),
+    totalExceptions: matches.length,
+    truncated,
+    exceptions: matches.slice(0, limit),
+  };
 }
 
 /**

@@ -41,6 +41,7 @@ import {
   verifyAuditBody,
   getSignerHealth,
   buildEvidenceBundle,
+  getExceptions,
 } from './audit.mjs';
 import {
   clearAuthFailures,
@@ -436,6 +437,9 @@ async function handleQueryInner(req, res, deps) {
         actor: principal.subject,
         action: 'query:success',
         target: query.substring(0, 200),
+        // Tag low-confidence responses so the exception-only operator
+        // view (AI-native Pattern #3) surfaces them for human review.
+        exceptionKind: confidence.band === 'low' ? 'low-confidence' : undefined,
         payload: {
           tenantId: principal.tenantId,
           provider: provider.name,
@@ -780,6 +784,31 @@ const server = createServer(async (req, res) => {
         buildEvidenceBundle({
           tenantId: principal.tenantId,
           since: sinceParam,
+        }),
+        req
+      );
+    } else if (url === '/v1/exceptions') {
+      // AI-native Pattern #3 (Exception-Based Workflow): surface only
+      // events that require human judgment — auth failures, query
+      // failures, throttles, degraded resilience, low-confidence LLM
+      // outputs. The 95%+ routine events stay in the audit chain for
+      // the regulator trail but never reach the operator's screen.
+      const principal = requirePermission(req, res, 'audit:read');
+      if (!principal) {
+        return;
+      }
+      const params = new URL(req.url ?? '/', 'http://localhost').searchParams;
+      const sinceParam = params.get('since') ?? undefined;
+      const kindsParam = params.get('kinds');
+      const limitParam = params.get('limit');
+      sendJson(
+        res,
+        200,
+        getExceptions({
+          tenantId: principal.tenantId,
+          since: sinceParam,
+          kinds: kindsParam ? kindsParam.split(',').map((s) => s.trim()).filter(Boolean) : undefined,
+          limit: limitParam ? Math.min(1000, Math.max(1, Number(limitParam))) : 200,
         }),
         req
       );

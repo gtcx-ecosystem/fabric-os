@@ -36,8 +36,8 @@ describe('MCP — tool catalog', () => {
   beforeEach(installFetchStub);
   afterEach(uninstallFetchStub);
 
-  it('exposes 4 tools', () => {
-    assert.strictEqual(TOOLS.length, 4);
+  it('exposes 5 tools', () => {
+    assert.strictEqual(TOOLS.length, 5);
   });
 
   it('every tool has a description and inputSchema', () => {
@@ -66,7 +66,7 @@ describe('MCP — JSON-RPC dispatch', () => {
 
   it('tools/list returns the catalog', async () => {
     const r = await handleRpc({ jsonrpc: '2.0', id: 2, method: 'tools/list' });
-    assert.strictEqual(r.result.tools.length, 4);
+    assert.strictEqual(r.result.tools.length, 5);
   });
 
   it('tools/call → gtcx_compliance_query POSTs to /v1/query', async () => {
@@ -218,5 +218,68 @@ describe('MCP — prompts (named drop-in patterns)', () => {
     });
     assert.ok(r.error);
     assert.match(r.error.message, /Unknown prompt/);
+  });
+});
+
+describe('MCP — exceptions (AI-native exception-only view)', () => {
+  beforeEach(installFetchStub);
+  afterEach(uninstallFetchStub);
+
+  it('exposes gtcx_exceptions as a tool', () => {
+    const tool = TOOLS.find((t) => t.name === 'gtcx_exceptions');
+    assert.ok(tool, 'gtcx_exceptions tool missing');
+    assert.match(tool.description, /human judgment/);
+  });
+
+  it('exposes the exceptions resource', () => {
+    const res = RESOURCES.find((r) => r.uri === 'gtcx://exceptions/current');
+    assert.ok(res, 'exceptions resource missing');
+    assert.strictEqual(res.mimeType, 'application/json');
+  });
+
+  it('tools/call → gtcx_exceptions GETs /v1/exceptions and passes kinds + since', async () => {
+    await handleRpc({
+      jsonrpc: '2.0',
+      id: 30,
+      method: 'tools/call',
+      params: {
+        name: 'gtcx_exceptions',
+        arguments: {
+          since: '2026-05-01T00:00:00Z',
+          kinds: ['query-failure', 'auth-failure'],
+          limit: 100,
+        },
+      },
+    });
+    const url = fetchCalls[0].url;
+    assert.match(url, /\/v1\/exceptions\?/);
+    assert.match(url, /since=2026-05-01/);
+    assert.match(url, /kinds=query-failure%2Cauth-failure/);
+    assert.match(url, /limit=100/);
+  });
+
+  it('resources/read of exceptions URI returns JSON payload from the gateway', async () => {
+    globalThis.fetch = async () => ({
+      status: 200,
+      text: async () => JSON.stringify({
+        tenantId: 'zw',
+        totalExceptions: 2,
+        truncated: false,
+        exceptions: [
+          { kind: 'query-failure', action: 'query:failure' },
+          { kind: 'low-confidence', action: 'query:success' },
+        ],
+      }),
+    });
+    const r = await handleRpc({
+      jsonrpc: '2.0',
+      id: 31,
+      method: 'resources/read',
+      params: { uri: 'gtcx://exceptions/current' },
+    });
+    assert.strictEqual(r.result.contents[0].mimeType, 'application/json');
+    const body = JSON.parse(r.result.contents[0].text);
+    assert.strictEqual(body.totalExceptions, 2);
+    assert.strictEqual(body.exceptions[0].kind, 'query-failure');
   });
 });

@@ -74,6 +74,23 @@ const TOOLS = [
       },
     },
   },
+  {
+    name: 'gtcx_exceptions',
+    description:
+      'Return ONLY events requiring human judgment for the caller\'s tenant: auth failures, query failures, throttles, degraded resilience, low-confidence LLM outputs. The 95%+ routine events stay in the audit chain for the regulator trail but are hidden here. Use this as the primary operator surface instead of the raw audit feed.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        since: { type: 'string', description: 'ISO-8601 timestamp; only exceptions on/after this time' },
+        kinds: {
+          type: 'array',
+          items: { type: 'string', enum: ['auth-failure', 'query-failure', 'query-throttled', 'resilience-degraded', 'low-confidence', 'integrity-violation'] },
+          description: 'Subset of exception kinds to include; omitted = all',
+        },
+        limit: { type: 'integer', description: 'Max events returned (default 200, max 1000)' },
+      },
+    },
+  },
 ];
 
 async function callGateway(path, opts = {}) {
@@ -108,6 +125,13 @@ const RESOURCES = [
       'Live one-paragraph compliance briefing: audit signing posture, current chain head, today\'s LLM spend vs daily budget. Read on connect so the agent surfaces today\'s posture before the user asks.',
     mimeType: 'text/plain',
   },
+  {
+    uri: 'gtcx://exceptions/current',
+    name: 'GTCX Exceptions (operator view)',
+    description:
+      'Only events requiring human judgment — failures, throttles, low-confidence LLM outputs, integrity violations. The agent reads this on connect so the operator sees today\'s exceptions before drilling into the routine audit feed.',
+    mimeType: 'application/json',
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -125,6 +149,25 @@ const PROMPTS = [
 ];
 
 async function dispatchResourceRead(uri) {
+  if (uri === 'gtcx://exceptions/current') {
+    const { status, body } = await callGateway('/v1/exceptions?limit=50');
+    if (status >= 400) {
+      return {
+        contents: [{
+          uri,
+          mimeType: 'text/plain',
+          text: `Exceptions feed unavailable (status ${status}). Reason: ${typeof body === 'string' ? body : JSON.stringify(body)}`,
+        }],
+      };
+    }
+    return {
+      contents: [{
+        uri,
+        mimeType: 'application/json',
+        text: JSON.stringify(body, null, 2),
+      }],
+    };
+  }
   if (uri === 'gtcx://brief/morning') {
     const { status, body } = await callGateway('/v1/brief');
     if (status >= 400) {
@@ -207,6 +250,16 @@ export async function dispatchToolCall(name, args = {}) {
     case 'gtcx_brief': {
       const qs = args.since ? `?since=${encodeURIComponent(args.since)}` : '';
       return callGateway(`/v1/brief${qs}`);
+    }
+    case 'gtcx_exceptions': {
+      const params = new URLSearchParams();
+      if (args.since) params.set('since', String(args.since));
+      if (Array.isArray(args.kinds) && args.kinds.length > 0) {
+        params.set('kinds', args.kinds.join(','));
+      }
+      if (args.limit) params.set('limit', String(args.limit));
+      const qs = params.toString();
+      return callGateway(`/v1/exceptions${qs ? `?${qs}` : ''}`);
     }
     default:
       return { status: 404, body: { error: `Unknown tool: ${name}` } };

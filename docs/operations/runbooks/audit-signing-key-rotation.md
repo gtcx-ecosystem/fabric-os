@@ -1,26 +1,15 @@
 ---
-title: "Runbook: Audit Signing Key Rotation"
-status: "current"
-date: "2026-05-27"
-owner: "gtcx-infrastructure"
-role: "protocol-architect"
-agent_id: "agent://gtcx-infrastructure/2026-05-27/session-backfill"
-trust_score: 60
-autonomy_level: "permissioned"
-tier: "standard"
-tags: ["documentation", "operations"]
-review_cycle: "on-change"
----
-
----
 title: 'Runbook: Audit Signing Key Rotation'
 status: 'current'
-date: '2026-05-24'
+date: '2026-05-27'
 owner: 'platform-engineering'
 role: 'security-engineer'
 tier: 'critical'
 tags: ['security', 'audit', 'key-rotation', 'cryptography']
 review_cycle: 'quarterly'
+agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+trust_score: 60
+autonomy_level: 'permissioned'
 ---
 
 # Runbook: Audit Signing Key Rotation

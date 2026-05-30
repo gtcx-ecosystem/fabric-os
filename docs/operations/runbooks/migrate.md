@@ -1,26 +1,15 @@
 ---
-title: "Migration Runbook — gtcx-infrastructure"
-status: "current"
-date: "2026-05-27"
-owner: "gtcx-infrastructure"
-role: "protocol-architect"
-agent_id: "agent://gtcx-infrastructure/2026-05-27/session-backfill"
-trust_score: 60
-autonomy_level: "permissioned"
-tier: "standard"
-tags: ["documentation", "operations"]
-review_cycle: "on-change"
----
-
----
 title: 'Migration Runbook — gtcx-infrastructure'
 status: 'current'
-date: '2026-05-10'
+date: '2026-05-27'
 owner: 'frontier-infra-engineer'
 role: 'frontier-infra-engineer'
 tier: 'informational'
 tags: ['compliance', 'architecture', 'infrastructure', 'frontend', 'backend']
 review_cycle: 'monthly'
+agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+trust_score: 60
+autonomy_level: 'permissioned'
 ---
 
 # Migration Runbook — gtcx-infrastructure

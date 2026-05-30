@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: '@gtcx/compliance-data: African fintech regulatory jurisdiction catalog'
+type: dataset
+abstract: >-
+  Cryptographically signed catalog of African fintech regulatory
+  jurisdiction data — 11 jurisdictions covering 22+ countries.
+  Per-jurisdiction KYC + audit retention floors, primary regulator,
+  data-protection authority, cross-border data flow conditions, and
+  currency. Sourced from central bank circulars, data protection
+  acts, and FATF mutual evaluation reports. Catalog is Ed25519-signed
+  for tamper-evident citation.
+authors:
+  - name: GTCX Protocol
+    website: 'https://gtcx.io'
+version: 1.1.0
+date-released: '2026-05-30'
+license: MIT
+repository-code: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/tree/main/tools/compliance-data'
+keywords:
+  - african-fintech
+  - regulatory-data
+  - kyc
+  - aml
+  - data-protection
+  - fatf
+  - central-bank

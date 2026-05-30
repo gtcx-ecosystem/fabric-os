@@ -145,6 +145,11 @@ run_production_overlay_guard() {
     (cd "${PROJECT_ROOT}" && node tools/scripts/production-overlay-guard.mjs)
 }
 
+run_compliance_data_signature_verify() {
+    log_info "Running compliance-data catalog signature verification..."
+    (cd "${PROJECT_ROOT}" && node tools/compliance-data/scripts/verify-catalog.mjs)
+}
+
 run_docs_link_check() {
     log_info "Running docs link check..."
     (cd "${PROJECT_ROOT}" && node tools/scripts/docs-link-checker.mjs)
@@ -368,6 +373,7 @@ case "${MODE}" in
         run_fail_closed_tests
         run_pin_actions_sha_check
         run_production_overlay_guard
+        run_compliance_data_signature_verify
         run_docs_link_check
         run_score_ledger_validation
         run_build_evidence_generation
@@ -396,6 +402,7 @@ case "${MODE}" in
         run_fail_closed_tests
         run_pin_actions_sha_check
         run_production_overlay_guard
+        run_compliance_data_signature_verify
         run_score_ledger_validation
         run_build_evidence_generation
         run_runtime_smoke_evidence_generation

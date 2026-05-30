@@ -43,6 +43,12 @@ import {
   buildEvidenceBundle,
 } from './audit.mjs';
 import {
+  clearAuthFailures,
+  isAuthThrottled,
+  recordAuthFailure,
+  sourceIpFromRequest,
+} from './auth-failure-throttle.mjs';
+import {
   authenticateHeaders,
   buildAccessProfile,
   loadAuthState,
@@ -185,18 +191,56 @@ function validateAuditQueryToken(token) {
  */
 function requirePermission(req, res, requiredPermission) {
   const target = sanitizeAuditTarget(req.url);
+  const sourceIp = sourceIpFromRequest(req);
+
+  // Throttle gate BEFORE auth. If this IP has crossed the failure
+  // threshold, refuse without signing — otherwise bearer brute-force
+  // becomes an audit-DoS amplifier (Ed25519 sign + chain append per
+  // attempt). The counter increment happens via the metric, not the
+  // audit chain, so dashboards still see the abuse.
+  const throttle = isAuthThrottled(sourceIp);
+  if (throttle.throttled) {
+    incrementCounter('compliance_gateway_auth_throttled_total', { sourceIp });
+    res.setHeader?.('Retry-After', String(throttle.retryAfterSeconds ?? 60));
+    sendJson(
+      res,
+      429,
+      {
+        error: 'Too many authentication failures from this source',
+        retryAfterSeconds: throttle.retryAfterSeconds,
+      },
+      req
+    );
+    return null;
+  }
+
   const auth = authenticateHeaders(req.headers, authState, requiredPermission);
   if (!auth.ok) {
-    signAuditEvent({
-      actor: 'unknown',
-      action: `auth:failure`,
-      target,
-      reason: `${requiredPermission}: ${auth.error}`,
-      payload: { tenantId: 'unknown' },
+    const update = recordAuthFailure(sourceIp);
+    incrementCounter('compliance_gateway_auth_failures_total', {
+      reason: auth.status === 401 ? 'invalid-token' : 'missing-permission',
+      throttled: update.throttled ? 'true' : 'false',
     });
+    // Once throttled, skip the signing to break the amplifier. Pre-
+    // throttle failures still sign so the regulator-facing trail
+    // captures the early abuse signal.
+    if (!update.throttled) {
+      signAuditEvent({
+        actor: 'unknown',
+        action: `auth:failure`,
+        target,
+        reason: `${requiredPermission}: ${auth.error}`,
+        payload: { tenantId: 'unknown', sourceIp, failuresInWindow: update.count },
+      });
+    }
     sendJson(res, auth.status, { error: auth.error }, req);
     return null;
   }
+
+  // Successful auth wipes the failure counter for this IP — humans
+  // who fat-fingered once shouldn't carry that into the next session.
+  clearAuthFailures(sourceIp);
+
   signAuditEvent({
     actor: auth.principal.subject,
     action: `auth:success`,

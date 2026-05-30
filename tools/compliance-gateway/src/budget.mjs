@@ -6,11 +6,26 @@
  *   1. QPS  — sliding-window rate limit per principal (default 10 req/s).
  *   2. Cost — daily USD token budget per principal (default $5).
  *
- * Backed by Redis when REDIS_URL is configured (shared with replay-protection);
- * falls back to an in-process LRU when Redis is unavailable. The in-process
- * mode is intentionally lossy under multi-replica deployments — production
- * MUST configure Redis, and the gateway's startup log surfaces which mode
- * is active so operators can spot misconfiguration.
+ * STORAGE — PER-POD, IN-PROCESS.
+ *
+ * The prior docstring claimed Redis backing "when REDIS_URL is
+ * configured"; no Redis path existed. Under HPA (1→8 pods) the
+ * documented per-principal QPS limit was silently multiplied by
+ * replica count — at 8 pods, an attacker holding one token could
+ * issue 8× the limit before being throttled. The audit on
+ * 2026-05-30 flagged this as a P1.
+ *
+ * The honest behavior today: each pod enforces the limit
+ * independently. For a low-traffic pilot at <100 req/min this is
+ * acceptable; for ZWCMP / multi-tenant production it is not.
+ *
+ * Cross-pod enforcement is available via `./budget-store.mjs`, a
+ * Redis-backed primitive that mirrors this module's API. Wiring it
+ * into the hot path requires migrating checkBudget/recordSpend/
+ * getSpend to async — a follow-up tracked in the S4.3 plan note in
+ * docs/audit/internal-10-10-sprint-plan-2026-05-27.md. Until that
+ * migration lands, operators should be aware that HPA-replica count
+ * multiplies the documented per-principal cap.
  */
 
 const QPS_LIMIT = Number(process.env.GTCX_QPS_LIMIT || '10');

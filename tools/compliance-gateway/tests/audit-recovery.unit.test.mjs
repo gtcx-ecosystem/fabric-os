@@ -16,14 +16,7 @@ import assert from 'node:assert';
 import { generateKeyPairSync } from 'node:crypto';
 import { afterEach, describe, it } from 'node:test';
 
-import {
-  createRecord,
-  createChain,
-  append,
-  verifyChain,
-  toNdjson,
-  fromNdjson,
-} from '@gtcx/audit-signer';
+import { verifyChain, fromNdjson } from '@gtcx/audit-signer';
 
 import {
   initAuditSigner,

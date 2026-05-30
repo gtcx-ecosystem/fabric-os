@@ -140,6 +140,11 @@ run_pin_actions_sha_check() {
     (cd "${PROJECT_ROOT}" && node tools/scripts/pin-actions-sha.mjs --check)
 }
 
+run_production_overlay_guard() {
+    log_info "Running production overlay image-tag guard..."
+    (cd "${PROJECT_ROOT}" && node tools/scripts/production-overlay-guard.mjs)
+}
+
 run_docs_link_check() {
     log_info "Running docs link check..."
     (cd "${PROJECT_ROOT}" && node tools/scripts/docs-link-checker.mjs)
@@ -362,6 +367,7 @@ case "${MODE}" in
         run_empty_catch_check
         run_fail_closed_tests
         run_pin_actions_sha_check
+        run_production_overlay_guard
         run_docs_link_check
         run_score_ledger_validation
         run_build_evidence_generation
@@ -389,6 +395,7 @@ case "${MODE}" in
         run_empty_catch_check
         run_fail_closed_tests
         run_pin_actions_sha_check
+        run_production_overlay_guard
         run_score_ledger_validation
         run_build_evidence_generation
         run_runtime_smoke_evidence_generation

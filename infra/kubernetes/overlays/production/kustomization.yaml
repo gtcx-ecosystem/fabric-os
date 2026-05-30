@@ -40,11 +40,31 @@ configMapGenerator:
 # Production secrets managed externally (Vault/Sealed Secrets)
 # Not generated here - injected via GitOps
 
+# IMAGE TAG POLICY (production overlay)
+# ---------------------------------------------------------------------------
+# Tags below are PLACEHOLDERS. `infra/scripts/deploy.sh` (lines 357-358)
+# rewrites them at runtime via `kustomize edit set image` to the actual
+# ECR URI + 40-char commit SHA for the release being deployed.
+#
+# Anyone running `kubectl apply -k overlays/production/` directly from
+# git WITHOUT going through deploy.sh will get an ImagePullBackOff
+# because PLACEHOLDER-RUN-DEPLOY-SH is not a real tag — fail-safe, not
+# silent-wrong-version.
+#
+# The tools/scripts/production-overlay-guard.mjs check (wired into
+# pnpm test) refuses to merge a commit whose production overlay
+# carries a version-shaped tag like `v1.0.0` (which previously LOOKED
+# real but was decorative; kubectl apply would try to pull a
+# non-existent image OR — worse — silently pull `latest` if a
+# malicious push landed at gtcx/agx:v1.0.0 in a public registry).
+# ---------------------------------------------------------------------------
 images:
   - name: gtcx/agx
-    newTag: v1.0.0 # Pinned versions in production
+    newName: 348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-agx
+    newTag: 'PLACEHOLDER-RUN-DEPLOY-SH'
   - name: gtcx/protocols
-    newTag: v1.0.0
+    newName: 348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-protocols
+    newTag: 'PLACEHOLDER-RUN-DEPLOY-SH'
   # Anomaly detector — pinned to verified SHA (built 2026-05-12)
   # SHA: 77dda36431624c4f537d8650a1910a4180f7fc1d
   - name: gtcx-anomaly-detector

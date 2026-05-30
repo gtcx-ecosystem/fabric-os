@@ -27,8 +27,11 @@ const WORKFLOWS_DIR = join(REPO_ROOT, '.github', 'workflows');
 const checkOnly = process.argv.includes('--check');
 
 // `uses: owner/repo@ref` or `uses: owner/repo/path@ref` (reusable workflows).
+// Matches both block form (`      uses: ...`) and list-item form
+// (`      - uses: ...`). The earlier regex missed the latter, which
+// silently let docs-site-build.yml and friends through unpinned.
 // SHA is 40 lowercase hex; anything else is a tag/branch.
-const USES_RX = /^(\s*uses:\s+)([^@\s]+)@([^\s#]+)(.*)$/;
+const USES_RX = /^(\s*(?:-\s+)?uses:\s+)([^@\s]+)@([^\s#]+)(.*)$/;
 const SHA_RX = /^[0-9a-f]{40}$/;
 
 const cache = new Map();

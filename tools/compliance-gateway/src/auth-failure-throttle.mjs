@@ -34,12 +34,13 @@ const ipState = new Map();
 
 /**
  * Check whether the given IP is currently throttled. Side-effect free.
+ * Reads existing state set by `recordAuthFailure`; takes no config
+ * because the lockout-until timestamp is already baked into state.
  *
  * @param {string} ip
- * @param {ThrottleConfig} [cfg]
  * @returns {{ throttled: boolean, retryAfterSeconds?: number }}
  */
-export function isAuthThrottled(ip, cfg = {}) {
+export function isAuthThrottled(ip) {
   const now = Date.now();
   const state = ipState.get(ip);
   if (!state) return { throttled: false };

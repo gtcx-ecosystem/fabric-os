@@ -8,17 +8,20 @@
 
 import { z } from 'zod';
 
+import { failClosed } from './fail-closed.mjs';
+
 // Single source of truth: the canonical jurisdiction catalog ships with
 // @gtcx/compliance-data. Extending it is a deliberate signal that a new
 // market is live; the schema picks up the new code on next deploy.
 let JURISDICTION_CODES = ['global'];
-try {
-  const mod = await import('@gtcx/compliance-data/jurisdictions', { with: { type: 'json' } });
+const mod = await failClosed(
+  'compliance-gateway.schemas.jurisdictions',
+  () => import('@gtcx/compliance-data/jurisdictions', { with: { type: 'json' } }),
+  { onError: 'log-and-return-null' }
+);
+if (mod) {
   const data = mod.default ?? mod;
   JURISDICTION_CODES = [...Object.keys(data.jurisdictions || {}), 'global'];
-} catch {
-  // Compliance-data not resolvable in a sandbox; fall back to a single
-  // safe value rather than crashing the gateway at startup.
 }
 export { JURISDICTION_CODES };
 
@@ -41,18 +44,12 @@ export const QueryBodySchema = z
     context: z
       .record(
         z.string().max(64),
-        z.union([
-          z.string().max(2048),
-          z.number(),
-          z.boolean(),
-          z.null(),
-        ]),
+        z.union([z.string().max(2048), z.number(), z.boolean(), z.null()])
       )
       .optional()
-      .refine(
-        (val) => !val || JSON.stringify(val).length <= 16_384,
-        { message: 'context must serialize to ≤ 16384 bytes' },
-      ),
+      .refine((val) => !val || JSON.stringify(val).length <= 16_384, {
+        message: 'context must serialize to ≤ 16384 bytes',
+      }),
   })
   .strict();
 

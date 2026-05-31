@@ -26,7 +26,9 @@ async function fetchJson(path, opts = {}) {
   return new Promise((resolve, reject) => {
     const req = httpRequest(url, { method: opts.method ?? 'GET', headers: opts.headers }, (res) => {
       let body = '';
-      res.on('data', (c) => { body += c; });
+      res.on('data', (c) => {
+        body += c;
+      });
       res.on('end', () => {
         try {
           resolve({ status: res.statusCode, body: JSON.parse(body) });
@@ -37,19 +39,20 @@ async function fetchJson(path, opts = {}) {
     });
     req.on('error', reject);
     if (opts.body) {
-    if (typeof opts.body === 'string') {
-      req.write(opts.body);
-    } else {
-      req.write(JSON.stringify(opts.body));
+      if (typeof opts.body === 'string') {
+        req.write(opts.body);
+      } else {
+        req.write(JSON.stringify(opts.body));
+      }
     }
-  }
     req.end();
   });
 }
 
 async function makeIntegrityPayload(requestData, overrides = {}) {
   const now = new Date().toISOString();
-  const nonce = overrides.nonce ?? `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
+  const nonce =
+    overrides.nonce ?? `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
   const timestamp = overrides.timestamp ?? now;
   const did = overrides.did ?? 'did:gtcx:device:test';
   const keyId = overrides.keyId ?? 'key-1';
@@ -68,11 +71,11 @@ async function makeIntegrityPayload(requestData, overrides = {}) {
     keyId,
     audience,
   });
-  const signature = overrides.signature ?? await (
-    scheme === 'gtcx-queue-envelope-v1'
+  const signature =
+    overrides.signature ??
+    (await (scheme === 'gtcx-queue-envelope-v1'
       ? signEnvelopeV1(envelopeHash)
-      : signTestJwt(envelopeHash, audience)
-  );
+      : signTestJwt(envelopeHash, audience)));
 
   return {
     scheme,
@@ -106,7 +109,8 @@ describe('Replay Guard Integration', () => {
     const stubServer = createServer();
     await new Promise((r) => stubServer.listen(0, '127.0.0.1', () => r()));
     const addr = stubServer.address();
-    const port = typeof addr === 'string' ? parseInt(addr.split(':').pop() || '0', 10) : (addr?.port || 0);
+    const port =
+      typeof addr === 'string' ? parseInt(addr.split(':').pop() || '0', 10) : addr?.port || 0;
     await new Promise((r) => stubServer.close(r));
 
     process.env.PORT = String(port);
@@ -166,8 +170,14 @@ describe('Replay Guard Integration', () => {
       });
 
       // Verify bodyHash and headersHash match the expected mobile-computed values.
-      assert.strictEqual(bodyHash, '3e3fcfb382a1b6e25308382c117e39e27754f8816c0cbcec6167b657f2f83092');
-      assert.strictEqual(headersHash, '77379377611b75759693c33d15b695393316b077476de62f0ee5453bb652e6ea');
+      assert.strictEqual(
+        bodyHash,
+        '3e3fcfb382a1b6e25308382c117e39e27754f8816c0cbcec6167b657f2f83092'
+      );
+      assert.strictEqual(
+        headersHash,
+        '77379377611b75759693c33d15b695393316b077476de62f0ee5453bb652e6ea'
+      );
 
       const signature = await signEnvelopeV1(envelopeHash);
       const integrity = {
@@ -206,7 +216,10 @@ describe('Replay Guard Integration', () => {
         method: 'POST',
         url: 'http://api.gtcx.local/v1/es256-test',
       };
-      const integrity = await makeIntegrityPayload(reqData, { scheme: 'did-jwt-es256', did: 'did:gtcx:device:es256-test' });
+      const integrity = await makeIntegrityPayload(reqData, {
+        scheme: 'did-jwt-es256',
+        did: 'did:gtcx:device:es256-test',
+      });
       const res = await fetchJson('/v1/replay/verify', {
         method: 'POST',
         body: { integrity, ...reqData, region: 'us-east' },
@@ -355,7 +368,9 @@ describe('Replay Guard Integration', () => {
 
     it('rejects requests with an invalid Ed25519 signature', async () => {
       const reqData = defaultRequestData;
-      const integrity = await makeIntegrityPayload(reqData, { signature: 'invalid-signature-bytes' });
+      const integrity = await makeIntegrityPayload(reqData, {
+        signature: 'invalid-signature-bytes',
+      });
       const res = await fetchJson('/v1/replay/verify', {
         method: 'POST',
         body: { integrity, ...reqData, region: 'us-east' },
@@ -379,7 +394,11 @@ describe('Replay Guard Integration', () => {
         integrity.signature.slice(idx + 1);
       const res = await fetchJson('/v1/replay/verify', {
         method: 'POST',
-        body: { integrity: { ...integrity, signature: tamperedSignature }, ...reqData, region: 'us-east' },
+        body: {
+          integrity: { ...integrity, signature: tamperedSignature },
+          ...reqData,
+          region: 'us-east',
+        },
       });
       assert.strictEqual(res.status, 401);
       assert.strictEqual(res.body.allowed, false);
@@ -412,65 +431,76 @@ describe('Replay Guard Integration', () => {
     });
   });
 
-    it('rejects GET requests to /v1/replay/verify', async () => {
-      const res = await fetchJson('/v1/replay/verify', { method: 'GET' });
-      assert.strictEqual(res.status, 405);
-      assert.strictEqual(res.body.error, 'Method not allowed');
-    });
+  it('rejects GET requests to /v1/replay/verify', async () => {
+    const res = await fetchJson('/v1/replay/verify', { method: 'GET' });
+    assert.strictEqual(res.status, 405);
+    assert.strictEqual(res.body.error, 'Method not allowed');
+  });
 
-    it('rejects invalid JSON body', async () => {
-      const res = await fetchJson('/v1/replay/verify', {
-        method: 'POST',
-        body: 'not-json{',
-        headers: { 'content-type': 'application/json' },
-      });
-      assert.strictEqual(res.status, 400);
-      assert.strictEqual(res.body.error, 'Invalid JSON');
+  it('rejects invalid JSON body', async () => {
+    const res = await fetchJson('/v1/replay/verify', {
+      method: 'POST',
+      body: 'not-json{',
+      headers: { 'content-type': 'application/json' },
     });
+    assert.strictEqual(res.status, 400);
+    assert.strictEqual(res.body.error, 'Invalid JSON');
+  });
 
-    it('accepts flat body fields without integrity wrapper', async () => {
-      const reqData = {
-        body: '{"action":"test"}',
-        headers: { 'content-type': 'application/json' },
-        method: 'POST',
-        url: 'http://api.gtcx.local/v1/test',
-      };
-      const now = new Date().toISOString();
-      const bodyHash = computeBodyHash(reqData.body);
-      const headersHash = computeHeadersHash(reqData.headers);
-      const nonce = `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
-      const envelopeHash = computeEnvelopeHash({
-        method: reqData.method,
-        url: reqData.url,
+  it('accepts flat body fields without integrity wrapper', async () => {
+    const reqData = {
+      body: '{"action":"test"}',
+      headers: { 'content-type': 'application/json' },
+      method: 'POST',
+      url: 'http://api.gtcx.local/v1/test',
+    };
+    const now = new Date().toISOString();
+    const bodyHash = computeBodyHash(reqData.body);
+    const headersHash = computeHeadersHash(reqData.headers);
+    const nonce = `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
+    const envelopeHash = computeEnvelopeHash({
+      method: reqData.method,
+      url: reqData.url,
+      bodyHash,
+      headersHash,
+      timestamp: now,
+      nonce,
+      did: 'did:gtcx:device:test',
+      keyId: 'key-1',
+      audience: 'gtcx-api',
+    });
+    const signature = await signEnvelopeV1(envelopeHash);
+
+    const res = await fetchJson('/v1/replay/verify', {
+      method: 'POST',
+      body: {
+        ...reqData,
+        scheme: 'gtcx-queue-envelope-v1',
+        did: 'did:gtcx:device:test',
+        keyId: 'key-1',
+        audience: 'gtcx-api',
         bodyHash,
         headersHash,
         timestamp: now,
         nonce,
-        did: 'did:gtcx:device:test',
-        keyId: 'key-1',
-        audience: 'gtcx-api',
-      });
-      const signature = await signEnvelopeV1(envelopeHash);
-
-      const res = await fetchJson('/v1/replay/verify', {
-        method: 'POST',
-        body: {
-          ...reqData,
-          scheme: 'gtcx-queue-envelope-v1',
-          did: 'did:gtcx:device:test',
-          keyId: 'key-1',
-          audience: 'gtcx-api',
-          bodyHash,
-          headersHash,
-          timestamp: now,
-          nonce,
-          signature,
-          envelopeHash,
-        },
-      });
-      assert.strictEqual(res.status, 200);
-      assert.strictEqual(res.body.allowed, true);
+        signature,
+        envelopeHash,
+      },
     });
+    assert.strictEqual(res.status, 200);
+    assert.strictEqual(res.body.allowed, true);
+  });
+
+  it('rejects requests without a serialized body field', async () => {
+    const reqData = defaultRequestData;
+    const integrity = await makeIntegrityPayload(reqData);
+    const res = await fetchJson('/v1/replay/verify', {
+      method: 'POST',
+      body: { integrity },
+    });
+    assert.strictEqual(res.status, 400);
+    assert.strictEqual(res.body.error, 'Request body must be a serialized string');
+  });
 
   describe('GET /health', () => {
     it('returns 404 for unknown routes', async () => {

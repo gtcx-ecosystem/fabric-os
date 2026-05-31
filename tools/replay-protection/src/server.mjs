@@ -73,10 +73,12 @@ async function initRedis() {
       redisConnected: false,
     });
     if (trafficBlockReason) {
-      console.error(JSON.stringify({
-        level: 'error',
-        message: trafficBlockReason,
-      }));
+      console.error(
+        JSON.stringify({
+          level: 'error',
+          message: trafficBlockReason,
+        })
+      );
     }
     metrics.setRedisConnected(0);
     return false;
@@ -90,7 +92,9 @@ async function initRedis() {
     trafficBlockReason = null;
     metrics.setRedisConnected(1);
     // eslint-disable-next-line no-console
-    console.log(JSON.stringify({ level: 'info', message: 'Redis nonce store connected', redisUrl }));
+    console.log(
+      JSON.stringify({ level: 'info', message: 'Redis nonce store connected', redisUrl })
+    );
     return true;
   } catch (err) {
     metrics.setRedisConnected(0);
@@ -100,15 +104,23 @@ async function initRedis() {
       redisConnected: false,
     });
     if (trafficBlockReason) {
-      console.error(JSON.stringify({
-        level: 'error',
-        message: trafficBlockReason,
-        error: errorMessage(err),
-      }));
+      console.error(
+        JSON.stringify({
+          level: 'error',
+          message: trafficBlockReason,
+          error: errorMessage(err),
+        })
+      );
       return false;
     }
 
-    console.error(JSON.stringify({ level: 'warn', message: 'Redis unavailable, falling back to memory store', error: errorMessage(err) }));
+    console.error(
+      JSON.stringify({
+        level: 'warn',
+        message: 'Redis unavailable, falling back to memory store',
+        error: errorMessage(err),
+      })
+    );
     return false;
   }
 }
@@ -134,12 +146,14 @@ const verifier = new ReplayVerifier({
   verifySignature: (() => {
     const allowStub = process.env.REPLAY_GUARD_ALLOW_STUB_SIGNATURE === 'true';
     if (allowStub && NODE_ENV === 'production') {
-       
-      console.error(JSON.stringify({
-        level: 'error',
-        type: 'auth.replay.signature.bypass.blocked',
-        message: 'REPLAY_GUARD_ALLOW_STUB_SIGNATURE=true is FORBIDDEN in production. Using real verification.',
-      }));
+      console.error(
+        JSON.stringify({
+          level: 'error',
+          type: 'auth.replay.signature.bypass.blocked',
+          message:
+            'REPLAY_GUARD_ALLOW_STUB_SIGNATURE=true is FORBIDDEN in production. Using real verification.',
+        })
+      );
       return verifyDidSignature;
     }
     return allowStub ? verifyDidSignatureStubBypass : verifyDidSignature;
@@ -159,35 +173,112 @@ function startOtlpPush() {
   otlpTimer = setInterval(async () => {
     const snap = metrics.snapshot();
     const payload = {
-      resourceMetrics: [{
-        resource: { attributes: [{ key: 'service.name', value: { stringValue: 'replay-guard' } }] },
-        scopeMetrics: [{
-          metrics: [
-            { name: 'replay_protection_total', sum: { dataPoints: [{ asInt: snap.acceptedTotal, attributes: [{ key: 'code', value: { stringValue: 'REPLAY_OK' } }] }] } },
-            { name: 'replay_protection_total', sum: { dataPoints: [{ asInt: snap.rejectedNonceTotal, attributes: [{ key: 'code', value: { stringValue: 'REPLAY_NONCE' } }] }] } },
-            { name: 'replay_protection_total', sum: { dataPoints: [{ asInt: snap.rejectedStaleTotal, attributes: [{ key: 'code', value: { stringValue: 'REPLAY_STALE' } }] }] } },
-            { name: 'replay_protection_total', sum: { dataPoints: [{ asInt: snap.rejectedFutureTotal, attributes: [{ key: 'code', value: { stringValue: 'REPLAY_FUTURE' } }] }] } },
-            { name: 'replay_protection_total', sum: { dataPoints: [{ asInt: snap.rejectedSignatureTotal, attributes: [{ key: 'code', value: { stringValue: 'REPLAY_SIGNATURE' } }] }] } },
-            { name: 'replay_protection_total', sum: { dataPoints: [{ asInt: snap.rejectedEnvelopeTotal, attributes: [{ key: 'code', value: { stringValue: 'REPLAY_ENVELOPE' } }] }] } },
+      resourceMetrics: [
+        {
+          resource: {
+            attributes: [{ key: 'service.name', value: { stringValue: 'replay-guard' } }],
+          },
+          scopeMetrics: [
+            {
+              metrics: [
+                {
+                  name: 'replay_protection_total',
+                  sum: {
+                    dataPoints: [
+                      {
+                        asInt: snap.acceptedTotal,
+                        attributes: [{ key: 'code', value: { stringValue: 'REPLAY_OK' } }],
+                      },
+                    ],
+                  },
+                },
+                {
+                  name: 'replay_protection_total',
+                  sum: {
+                    dataPoints: [
+                      {
+                        asInt: snap.rejectedNonceTotal,
+                        attributes: [{ key: 'code', value: { stringValue: 'REPLAY_NONCE' } }],
+                      },
+                    ],
+                  },
+                },
+                {
+                  name: 'replay_protection_total',
+                  sum: {
+                    dataPoints: [
+                      {
+                        asInt: snap.rejectedStaleTotal,
+                        attributes: [{ key: 'code', value: { stringValue: 'REPLAY_STALE' } }],
+                      },
+                    ],
+                  },
+                },
+                {
+                  name: 'replay_protection_total',
+                  sum: {
+                    dataPoints: [
+                      {
+                        asInt: snap.rejectedFutureTotal,
+                        attributes: [{ key: 'code', value: { stringValue: 'REPLAY_FUTURE' } }],
+                      },
+                    ],
+                  },
+                },
+                {
+                  name: 'replay_protection_total',
+                  sum: {
+                    dataPoints: [
+                      {
+                        asInt: snap.rejectedSignatureTotal,
+                        attributes: [{ key: 'code', value: { stringValue: 'REPLAY_SIGNATURE' } }],
+                      },
+                    ],
+                  },
+                },
+                {
+                  name: 'replay_protection_total',
+                  sum: {
+                    dataPoints: [
+                      {
+                        asInt: snap.rejectedEnvelopeTotal,
+                        attributes: [{ key: 'code', value: { stringValue: 'REPLAY_ENVELOPE' } }],
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
           ],
-        }],
-      }],
+        },
+      ],
     };
 
     try {
       const url = new URL(OTLP_ENDPOINT);
       const mod = url.protocol === 'https:' ? httpsRequest : httpRequest;
-      const req = mod(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      }, (res) => {
-        res.resume();
-      });
+      const req = mod(
+        url,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+        },
+        (res) => {
+          res.resume();
+        }
+      );
       req.on('error', () => {});
       req.write(JSON.stringify(payload));
       req.end();
-    } catch {
+    } catch (err) {
       // Best-effort push; don't crash the verifier on metrics failure.
+      console.error(
+        JSON.stringify({
+          level: 'warn',
+          message: 'OTLP metrics push skipped',
+          error: errorMessage(err),
+        })
+      );
     }
   }, OTLP_PUSH_INTERVAL_MS);
 
@@ -267,6 +358,11 @@ async function handleVerify(req, res) {
     url: body.url ?? 'http://localhost/',
   };
 
+  if (typeof requestData.body !== 'string') {
+    sendJson(res, 400, { error: 'Request body must be a serialized string' });
+    return;
+  }
+
   const context = {
     region: body.region ?? req.headers['x-gtcx-region'],
     requestId: body.requestId ?? req.headers['x-request-id'],
@@ -329,8 +425,13 @@ const server = createServer(async (req, res) => {
       sendJson(res, 404, { error: 'Not found' });
     }
   } catch (err) {
-     
-    console.error(JSON.stringify({ level: 'error', message: 'Unhandled server error', error: errorMessage(err) }));
+    console.error(
+      JSON.stringify({
+        level: 'error',
+        message: 'Unhandled server error',
+        error: errorMessage(err),
+      })
+    );
     sendJson(res, 500, { error: 'Internal server error' });
   }
 });
@@ -356,7 +457,17 @@ startOtlpPush();
 
 server.listen(PORT, HOST, () => {
   // eslint-disable-next-line no-console
-  console.log(JSON.stringify({ level: 'info', message: 'Replay Guard listening', host: HOST ?? '0.0.0.0', port: PORT, nonceTtlMs: NONCE_TTL_MS, nodeEnv: NODE_ENV, redis: nonceStore.constructor.name }));
+  console.log(
+    JSON.stringify({
+      level: 'info',
+      message: 'Replay Guard listening',
+      host: HOST ?? '0.0.0.0',
+      port: PORT,
+      nonceTtlMs: NONCE_TTL_MS,
+      nodeEnv: NODE_ENV,
+      redis: nonceStore.constructor.name,
+    })
+  );
 });
 
 export { server, verifier, nonceStore, metrics, auditCapture, trafficBlockReason };

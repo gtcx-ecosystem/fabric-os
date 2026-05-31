@@ -68,6 +68,15 @@ function makeMockNats({ failConnects = 0, subMessages = [], hangupAfter = null }
   };
 }
 
+async function waitFor(predicate, message, timeoutMs = 1_000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    if (predicate()) return;
+    await new Promise((resolve) => setTimeout(resolve, 10));
+  }
+  assert.fail(message);
+}
+
 describe('nats-consumer — nextRetryDelayMs', () => {
   it('grows exponentially up to maxDelayMs', () => {
     const cfg = { initialDelayMs: 100, maxDelayMs: 1000, jitterFraction: 0 };
@@ -110,7 +119,10 @@ describe('nats-consumer — supervisor reconnect', () => {
 
     // Drain a few reconnect cycles. Each cycle delivers 2 messages
     // then closes; supervisor reconnects after backoff.
-    await new Promise((r) => setTimeout(r, 120));
+    await waitFor(
+      () => records.length >= 4 && mock.stats().opens >= 2,
+      `expected reconnect records and opens, got records=${records.length}, opens=${mock.stats().opens}`
+    );
     await handle.stop();
 
     const state = natsConnectionState();
@@ -129,13 +141,22 @@ describe('nats-consumer — supervisor reconnect', () => {
 
     // Wait for the supervisor to push through several failed connects
     // and one successful open.
-    await new Promise((r) => setTimeout(r, 200));
+    await waitFor(
+      () => mock.stats().connectAttempts >= 4 && mock.stats().opens >= 1,
+      `expected >= 4 connect attempts and >= 1 open, got attempts=${mock.stats().connectAttempts}, opens=${mock.stats().opens}`
+    );
     await handle.stop();
 
-    assert.ok(mock.stats().connectAttempts >= 4, `expected >= 4 connect attempts, got ${mock.stats().connectAttempts}`);
+    assert.ok(
+      mock.stats().connectAttempts >= 4,
+      `expected >= 4 connect attempts, got ${mock.stats().connectAttempts}`
+    );
     assert.ok(mock.stats().opens >= 1, 'should have at least one successful open');
     const state = natsConnectionState();
-    assert.ok(state.reconnectAttempts >= 3, `reconnectAttempts >= 3, got ${state.reconnectAttempts}`);
+    assert.ok(
+      state.reconnectAttempts >= 3,
+      `reconnectAttempts >= 3, got ${state.reconnectAttempts}`
+    );
   });
 
   it('returns a no-op handle when loader yields null (module missing)', async () => {

@@ -15,7 +15,7 @@
 import assert from 'node:assert';
 import { afterEach, beforeEach, describe, it } from 'node:test';
 
-import { _resetForTests, buildS3Client } from '../src/s3-uploader.mjs';
+import { _resetForTests, _setSdkLoaderForTests, buildS3Client } from '../src/s3-uploader.mjs';
 
 describe('s3-uploader — fail-closed in production', () => {
   let priorNodeEnv;
@@ -49,31 +49,28 @@ describe('s3-uploader — fail-closed in production', () => {
   });
 
   it('throws when the SDK is missing and NODE_ENV=production', async () => {
-    // Force the loader to "fail" by injecting an unresolvable specifier
-    // through monkey-patching is brittle; instead, simulate by setting
-    // production AND ensuring the stub-opt-in is absent. The SDK IS
-    // present in this test env, so this scenario asserts the policy:
-    // even if we WERE missing the SDK, the path must throw, not stub.
-    // We cover the throw path indirectly by asserting that, when the
-    // SDK is genuinely absent, the stub branch is gated.
     process.env.NODE_ENV = 'production';
     delete process.env.AUDIT_S3_ALLOW_STUB;
-    // SDK present → real client; no throw expected.
-    const client = await buildS3Client({ region: 'af-south-1' });
-    assert.strictEqual(typeof client.send, 'function');
+    _setSdkLoaderForTests(async () => {
+      throw new Error('missing-sdk');
+    });
+    await assert.rejects(
+      () => buildS3Client({ region: 'af-south-1' }),
+      /@aws-sdk\/client-s3 could not be loaded \(missing-sdk\)/
+    );
   });
 
   it('returns the no-op stub when AUDIT_S3_ALLOW_STUB=1 and SDK is missing', async () => {
-    // We cannot easily simulate "SDK missing" without monkey-patching
-    // the module loader. Assert the contract at the call-site level by
-    // verifying that, with the stub opt-in set, a real-SDK environment
-    // still returns a real client (not the stub) — establishing the
-    // priority: real SDK > stub > throw.
     process.env.NODE_ENV = 'test';
     process.env.AUDIT_S3_ALLOW_STUB = '1';
+    _setSdkLoaderForTests(async () => {
+      throw new Error('missing-sdk');
+    });
     const client = await buildS3Client({ region: 'af-south-1' });
     assert.strictEqual(typeof client.send, 'function');
-    // Real client → constructor is S3Client; stub → anonymous object.
-    // Either is acceptable, but the call must succeed.
+    assert.deepStrictEqual(await client.send({ constructor: { name: 'PutObjectCommand' } }), {
+      stub: true,
+      command: 'PutObjectCommand',
+    });
   });
 });

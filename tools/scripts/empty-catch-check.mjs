@@ -25,23 +25,16 @@ const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const ALLOWLIST = new Set([
   // Shutdown / drain paths — these run during process termination
   // and reraising would prevent clean teardown.
-  'tools/compliance-gateway/src/audit-sink.mjs:109',       // await natsClient.drain() during sink.close()
+  'tools/compliance-gateway/src/audit-sink.mjs:109', // await natsClient.drain() during sink.close()
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:151', // fall-through path with cleanup
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:154', // client.disconnect() during shutdown
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:244', // await client.quit() during dispose
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:279', // await activeStore.close() during reset
   // budget-store shutdown / already-closed paths
-  'tools/compliance-gateway/src/budget-store.mjs:128',     // client.disconnect() during dispose
-  'tools/compliance-gateway/src/budget-store.mjs:184',     // already closed during teardown
-  'tools/compliance-gateway/src/budget-store.mjs:229',     // best-effort reset during swap
-  'tools/compliance-gateway/src/budget-store.mjs:230',     // best-effort close during swap
-  // Optional import fallback — compliance-data unresolvable in sandbox;
-  // gateway uses a safe default value rather than crashing at startup.
-  'tools/compliance-gateway/src/schemas.mjs:19',
-  'tools/compliance-gateway/src/system-prompt.mjs:20',
-  // JSONL parse per-line — each line is independent; one malformed entry
-  // must not blank the whole evidence bundle.
-  'tools/compliance-gateway/src/evidence-renderer.mjs:44',
+  'tools/compliance-gateway/src/budget-store.mjs:128', // client.disconnect() during dispose
+  'tools/compliance-gateway/src/budget-store.mjs:184', // already closed during teardown
+  'tools/compliance-gateway/src/budget-store.mjs:229', // best-effort reset during swap
+  'tools/compliance-gateway/src/budget-store.mjs:230', // best-effort close during swap
   // Brotli compression best-effort fallback — gzip path runs next.
   'tools/compliance-gateway/src/server.mjs:690',
   // NATS stream already-exists (race-safe creation) + shutdown drain.
@@ -50,8 +43,6 @@ const ALLOWLIST = new Set([
   // Audit-capture sinks are best-effort by design — a slow / failing
   // sink must not break replay verification on the hot path.
   'tools/replay-protection/src/audit/audit-capture.mjs:88',
-  // OTLP metrics push is best-effort — must not crash the verifier.
-  'tools/replay-protection/src/server.mjs:189',
 ]);
 
 const SRC_GLOBS = [
@@ -95,7 +86,11 @@ function findEmptyCatches(file) {
     for (let i = 0; i < m.index; i += 1) {
       if (text.charCodeAt(i) === 10) lineNo += 1;
     }
-    hits.push({ file: relative(REPO_ROOT, file), line: lineNo, source: lines[lineNo - 1]?.trim() ?? '' });
+    hits.push({
+      file: relative(REPO_ROOT, file),
+      line: lineNo,
+      source: lines[lineNo - 1]?.trim() ?? '',
+    });
   }
   return hits;
 }
@@ -134,7 +129,7 @@ function main() {
     console.error(
       '\nEmpty `catch {}` hides silent failures. Either:\n' +
         '  1. Use tools/scripts/fail-closed.mjs to log and decide explicitly.\n' +
-        "  2. Log via console.error if the failure is truly informational.\n" +
+        '  2. Log via console.error if the failure is truly informational.\n' +
         '  3. Add the site to ALLOWLIST in this script WITH a justification comment.\n'
     );
     process.exit(1);

@@ -15,6 +15,8 @@
  * the regulator can save, archive, and re-open without dependencies.
  */
 
+import { failClosedSync } from './fail-closed.mjs';
+
 /**
  * Escape a string for safe insertion into HTML text content.
  * @param {string} s
@@ -41,7 +43,14 @@ function parseNdjson(ndjson) {
   for (const line of ndjson.split('\n')) {
     const t = line.trim();
     if (!t) continue;
-    try { records.push(JSON.parse(t)); } catch { /* skip malformed line */ }
+    const parsed = failClosedSync(
+      'compliance-gateway.evidence-renderer.ndjson-line',
+      () => JSON.parse(t),
+      {
+        onError: 'log-and-return-null',
+      }
+    );
+    if (parsed) records.push(parsed);
   }
   return records;
 }
@@ -99,11 +108,13 @@ export function renderEvidenceHtml(bundle) {
   const isMulti = bundle?.bundleVersion === '2-multi-tenant';
   const sections = isMulti
     ? bundle.sections
-    : [{
-        tenantId: bundle?.tenantId ?? 'unknown',
-        recordCount: bundle?.recordCount ?? 0,
-        ndjson: bundle?.ndjson ?? '',
-      }];
+    : [
+        {
+          tenantId: bundle?.tenantId ?? 'unknown',
+          recordCount: bundle?.recordCount ?? 0,
+          ndjson: bundle?.ndjson ?? '',
+        },
+      ];
 
   const tenantLabel = isMulti
     ? `${bundle.tenantCount} tenants: ${sections.map((s) => esc(s.tenantId)).join(', ')}`

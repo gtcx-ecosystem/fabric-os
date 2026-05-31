@@ -5,6 +5,8 @@
  * for audit records produced by AI agents and automated systems.
  */
 
+export { canonicalizeValue } from './canonical.mjs';
+
 export {
   generateKeyPair,
   canonicalize,

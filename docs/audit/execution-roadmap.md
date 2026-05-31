@@ -317,7 +317,7 @@ closed. Regulator-readiness checklists have named owners.
 | S2-10 | Frontmatter-merge guard: refuse `tier:` downgrade                     | pending                                                                                                                                            |
 | S2-11 | Dependabot Tier 1+2 merges + `.github/dependabot.yml` ignore rules    | pending (Q7)                                                                                                                                       |
 | S2-12 | SOC 2 readiness owner mapping + IRP v1 board sign-off prep            | pending                                                                                                                                            |
-| S2-13 | **Pen-test SOW signature** (Bet 1 external validation)                | pending (Q5)                                                                                                                                       |
+| S2-13 | **Pen-test SOW signature** (Bet 1 external validation)                | pending — Q5 ANSWERED 2026-05-31 (**AFTER** Sprint 1; SOW targets post-Sprint-1 state, no +4w delay)                                               |
 | S2-14 | Replay-protection package coverage pump (close 90% branches gate)     | pending — promoted from S1-01                                                                                                                      |
 
 > Per-story acceptance commands will be filled in when Sprint 2 opens (sprint
@@ -379,9 +379,9 @@ session rather than across the planned 1-week window.
 
 **Carried into Sprint 2:** S2-14 (coverage pump, ~10 verifier-flow tests across server.mjs / hash.mjs / replay-metrics.mjs).
 
-**Decisions answered 2026-05-31:** Q4 (WIRE both), Q6 (sales-led; Sprint 3 headline = S3-11 ZWCMP signature).
+**Decisions answered 2026-05-31:** Q4 (WIRE both), Q5 (pen-test AFTER Sprint 1), Q6 (sales-led; Sprint 3 headline = S3-11 ZWCMP signature).
 
-**Decisions still pending before Sprint 2:** Q5 (pen-test ordering), Q7 (`@types/node` pin).
+**Decisions still pending before Sprint 2:** Q7 (`@types/node` pin).
 
 **Net commits this session:** 21 (8 audit-finding closes + reconciled roadmap + 4 docs updates + 7 misc fixes + 1 scaffolding). All landed on `docs/roadmap-update-2026-05-30`. `pnpm test` green; `pnpm validate-all.mjs` 21 of 22 gates pass (the failing one is the pre-existing coverage gate now tracked as S2-14).
 
@@ -406,7 +406,8 @@ or PR comment.
 - budget-store → wire into `checkBudget` / `recordSpend` / `getSpend`. Redis already provisioned at `infra/kubernetes/base/services/redis.yaml` (consumed by replay-guard) — no net-new infra. Under HPA 1→8 pods, per-pod Map state silently multiplies a tenant's per-principal QPS budget by replica count, which is a real correctness bug, not theoretical. ~2 days.
 - Net Sprint 2 impact: S2-01 and S2-02 become "in_progress" decisions with concrete acceptance commands rather than wire-or-delete decisions.
 
-**Q5 — Pen-test before or after Sprint 1 fixes?** Post-roadmap §"Decisions needed" item 5 asks: ratify Sprint 1 plan and execute, OR commission external review before Sprint 1 (safer, +4w latency). S2-13 assumes the former. Reverse the order if you want external sign-off on remediation design.
+**Q5 — Pen-test before or after Sprint 1 fixes?**
+**ANSWERED 2026-05-31: AFTER.** Ratify Sprint 1 plan + execute first (already done — Sprint 1 closed); then commission external pen-test against the post-Sprint-1 state. S2-13 (Pen-test SOW signature) proceeds in Sprint 2 as planned; EXT-INF-002 ETA stays on the post-SoW schedule (no +4w delay). Rationale: external review against a stationary post-remediation target is more useful than review against a moving design; Sprint 1 closures were small and well-scoped enough that "what changed" can be summarized in the SOW itself.
 
 **Q6 — Product motion (product-led vs sales-led).**
 **ANSWERED 2026-05-31: SALES-LED with primitives as parallel tail.**

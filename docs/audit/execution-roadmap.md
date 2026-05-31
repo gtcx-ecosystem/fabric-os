@@ -332,20 +332,20 @@ closed. Regulator-readiness checklists have named owners.
 signed. Primitives published with provenance. Soak baseline + DR drill
 artifacts on disk.
 
-| Story | Title                                                                                    | Status                                                                                                          |
-| ----- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| S3-01 | Dependabot Tier 3-5 batched merges (AI SDK v5→v6 verified)                               | pending                                                                                                         |
-| S3-02 | First quarterly DR fire-drill against staging RDS — evidence committed                   | **structural done** — `dr-fire-drill-evidence` gate + dated artifact; live RDS restore = operator (vault creds) |
-| S3-03 | Soak-test baseline as PR gate (>25% regression fails build)                              | **done** — `docs/audit/soak-baseline.json` + `soak-baseline-check.mjs` in validate-all                          |
-| S3-04 | Live runtime evidence — release-bundle + WORM upload + staging smoke                     | **structural done** — `runtime-evidence-check` dry-run gate; live WORM/staging smoke = operator                 |
-| S3-05 | Replace local canonicalize with `@gtcx/audit-signer` export                              | **done** — `canonicalizeValue` exported; compliance-data sign/verify use shared helper                          |
-| S3-06 | Stub S3 uploader must not mutate `lastSuccessMs`                                         | **done** — stub `send` no longer advances timestamp; unit regression added                                      |
-| S3-07 | **Publish primitives** — flip `private:true→false` on signer + catalog + SLSA provenance | **partial** — `@gtcx/compliance-data` public + provenance; `@gtcx/audit-signer` provenance; npm publish pending |
-| S3-08 | Indemnified-SLA legal review + insurance quote (publication checklist 1-3)               | pending (EXT-INF-015)                                                                                           |
-| S3-09 | Contract tests — replay/audit-signer/catalog/gateway-tenancy                             | **done** — four contract tests wired in validate-all                                                            |
-| S3-10 | Cloudflare Tunnel migration for `api.gtcx.trade`                                         | pending                                                                                                         |
-| S3-11 | **ZWCMP DPA + pilot agreement signature** (Bet 2 close — **Sprint 3 headline** per Q6)   | pending (Q5)                                                                                                    |
-| S3-12 | Publish `terraform-aws-compliance-db` v1.0.0 + 5 new jurisdictions                       | pending                                                                                                         |
+| Story | Title                                                                                    | Status                                                                                                               |
+| ----- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| S3-01 | Dependabot Tier 3-5 batched merges (AI SDK v5→v6 verified)                               | **structural done** — tier 3-5 batch groups gated; PR merges = GitHub operator step                                  |
+| S3-02 | First quarterly DR fire-drill against staging RDS — evidence committed                   | **structural done** — `dr-fire-drill-evidence` gate + dated artifact; live RDS restore = operator (vault creds)      |
+| S3-03 | Soak-test baseline as PR gate (>25% regression fails build)                              | **done** — `docs/audit/soak-baseline.json` + `soak-baseline-check.mjs` in validate-all                               |
+| S3-04 | Live runtime evidence — release-bundle + WORM upload + staging smoke                     | **structural done** — `runtime-evidence-check` dry-run gate; live WORM/staging smoke = operator                      |
+| S3-05 | Replace local canonicalize with `@gtcx/audit-signer` export                              | **done** — `canonicalizeValue` exported; compliance-data sign/verify use shared helper                               |
+| S3-06 | Stub S3 uploader must not mutate `lastSuccessMs`                                         | **done** — stub `send` no longer advances timestamp; unit regression added                                           |
+| S3-07 | **Publish primitives** — flip `private:true→false` on signer + catalog + SLSA provenance | **structural done** — packages publish-ready + provenance; `npm publish` = operator (NPM_TOKEN)                      |
+| S3-08 | Indemnified-SLA legal review + insurance quote (publication checklist 1-3)               | pending (EXT-INF-015)                                                                                                |
+| S3-09 | Contract tests — replay/audit-signer/catalog/gateway-tenancy                             | **done** — four contract tests wired in validate-all                                                                 |
+| S3-10 | Cloudflare Tunnel migration for `api.gtcx.trade`                                         | **done** — tunnel routes `api.gtcx.trade` → `compliance-gateway:8500`; `cloudflared-api-gateway-check` gate          |
+| S3-11 | **ZWCMP DPA + pilot agreement signature** (Bet 2 close — **Sprint 3 headline** per Q6)   | pending (EXT-INF-014)                                                                                                |
+| S3-12 | Publish `terraform-aws-compliance-db` v1.0.0 + 5 new jurisdictions                       | **structural done** — v1.0.0 VERSION, EAC preset, catalog parity + registry readiness gates; registry tag = operator |
 
 > Per-story acceptance commands filled in at sprint start (2026-06-15).
 

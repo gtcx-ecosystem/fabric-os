@@ -128,8 +128,10 @@ echo "Step 5: Restore test"
 STEP5_START=$(date +%s%N)
 RESTORE_START_NS=$(date +%s%N)
 RESTORE_DB="gtcx_dr_test_restore"
-PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "postgres" -c "DROP DATABASE IF EXISTS $RESTORE_DB; CREATE DATABASE $RESTORE_DB;" 2>/dev/null
-PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$RESTORE_DB" < "$BACKUP_FILE" > /dev/null 2>&1
+# dropdb/createdb avoid CREATE DATABASE inside a psql transaction (fails under set -e on CI).
+PGPASSWORD="$POSTGRES_PASSWORD" dropdb -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" --if-exists "$RESTORE_DB" 2>/dev/null || true
+PGPASSWORD="$POSTGRES_PASSWORD" createdb -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" "$RESTORE_DB" 2>/dev/null || true
+PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$RESTORE_DB" -v ON_ERROR_STOP=1 -f "$BACKUP_FILE" > /dev/null 2>&1 || true
 RESTORE_END_NS=$(date +%s%N)
 RESTORED=$(PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$RESTORE_DB" -c "SELECT id FROM dr_test_markers WHERE id = '$DR_MARKER'" -t -A 2>/dev/null || echo "")
 check "Test marker restored" "$([ "$RESTORED" = "$DR_MARKER" ] && echo true || echo false)" "$STEP5_START"
@@ -186,4 +188,4 @@ EOF
   echo "Evidence written to: $EVIDENCE_FILE"
 fi
 
-exit "$FAIL"
+exit $([ "$FAIL" -eq 0 ] && echo 0 || echo 1)

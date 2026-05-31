@@ -17,6 +17,25 @@
 
 import { failClosedSync } from './fail-closed.mjs';
 
+export const EVIDENCE_HTML_CSP = [
+  "default-src 'none'",
+  "script-src 'none'",
+  "style-src 'unsafe-inline'",
+  "img-src 'none'",
+  "connect-src 'none'",
+  "font-src 'none'",
+  "object-src 'none'",
+  "base-uri 'none'",
+  "form-action 'none'",
+  "frame-ancestors 'none'",
+].join('; ');
+
+const BIDI_CONTROL_CHARS = /[\u061c\u200e\u200f\u202a-\u202e\u2066-\u2069]/gu;
+
+function stripBidiControls(value) {
+  return String(value).replace(BIDI_CONTROL_CHARS, '');
+}
+
 /**
  * Escape a string for safe insertion into HTML text content.
  * @param {string} s
@@ -28,6 +47,10 @@ function esc(s) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function safeText(value) {
+  return esc(stripBidiControls(value));
 }
 
 /**
@@ -56,13 +79,13 @@ function parseNdjson(ndjson) {
 }
 
 function renderRecordRow(r) {
-  const ts = esc(r.timestamp ?? '');
-  const action = esc(r.action ?? '');
-  const actor = esc(r.actor ?? '');
-  const target = esc(r.target ?? '');
-  const reason = esc(r.reason ?? '');
-  const id = esc(r.id ?? '');
-  const sig = esc((r.signature ?? '').slice(0, 16));
+  const ts = safeText(r.timestamp ?? '');
+  const action = safeText(r.action ?? '');
+  const actor = safeText(r.actor ?? '');
+  const target = safeText(r.target ?? '');
+  const reason = safeText(r.reason ?? '');
+  const id = safeText(r.id ?? '');
+  const sig = safeText((r.signature ?? '').slice(0, 16));
   return `
     <tr>
       <td class="ts">${ts}</td>
@@ -80,7 +103,7 @@ function renderSection(section, idx) {
   const rows = records.map(renderRecordRow).join('');
   return `
     <section class="tenant" id="tenant-${idx}">
-      <h2>Tenant: <code>${esc(section.tenantId)}</code></h2>
+      <h2>Tenant: <code>${safeText(section.tenantId)}</code></h2>
       <p class="meta"><strong>${section.recordCount}</strong> record(s) in this section.</p>
       <table>
         <thead>
@@ -117,15 +140,15 @@ export function renderEvidenceHtml(bundle) {
       ];
 
   const tenantLabel = isMulti
-    ? `${bundle.tenantCount} tenants: ${sections.map((s) => esc(s.tenantId)).join(', ')}`
-    : esc(sections[0].tenantId);
+    ? `${bundle.tenantCount} tenants: ${sections.map((s) => safeText(s.tenantId)).join(', ')}`
+    : safeText(sections[0].tenantId);
 
   const totalRecords = sections.reduce((a, s) => a + (s.recordCount ?? 0), 0);
-  const producedAt = esc(bundle?.producedAt ?? new Date().toISOString());
-  const chainHead = esc(bundle?.chainHead ?? '');
-  const priorCheckpointHash = esc(bundle?.priorCheckpointHash ?? '');
+  const producedAt = safeText(bundle?.producedAt ?? new Date().toISOString());
+  const chainHead = safeText(bundle?.chainHead ?? '');
+  const priorCheckpointHash = safeText(bundle?.priorCheckpointHash ?? '');
   const priorCheckpointCount = bundle?.priorCheckpointCount ?? 0;
-  const algorithm = esc(bundle?.verification?.algorithm ?? 'ed25519+sha256+jcs');
+  const algorithm = safeText(bundle?.verification?.algorithm ?? 'ed25519+sha256+jcs');
 
   const sectionsHtml = sections.map(renderSection).join('');
 
@@ -134,6 +157,7 @@ export function renderEvidenceHtml(bundle) {
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="${esc(EVIDENCE_HTML_CSP)}">
 <title>GTCX Evidence Bundle — ${tenantLabel}</title>
 <style>
   :root { color-scheme: light; }

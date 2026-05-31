@@ -57,7 +57,7 @@ import {
 } from './auth.mjs';
 import { checkBudget, recordSpend, getSpend } from './budget.mjs';
 import { computeConfidence } from './confidence.mjs';
-import { renderEvidenceHtml } from './evidence-renderer.mjs';
+import { EVIDENCE_HTML_CSP, renderEvidenceHtml } from './evidence-renderer.mjs';
 import { incrementCounter, setGauge, renderMetrics } from './metrics.mjs';
 import { createNonceStore } from './nonce-store/redis.mjs';
 import { buildRuntimePolicyPrompt } from './policy.mjs';
@@ -820,6 +820,7 @@ const server = createServer(async (req, res) => {
         res.writeHead(200, {
           'Content-Type': 'text/html; charset=utf-8',
           'Content-Disposition': `inline; filename="evidence-${principal.tenantId}-${new Date().toISOString().slice(0, 10)}.html"`,
+          'Content-Security-Policy': EVIDENCE_HTML_CSP,
           'Cache-Control': 'no-cache',
         });
         res.end(html);

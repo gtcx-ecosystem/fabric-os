@@ -112,6 +112,16 @@ describe('Sprint 1-6 routes — integration', () => {
       assert.strictEqual(res.status, 401);
     });
 
+    it('sets a restrictive CSP header for HTML evidence', async () => {
+      const res = await httpGet('/v1/audit/evidence-bundle?format=html', {
+        Authorization: 'Bearer new-routes-token',
+      });
+      assert.strictEqual(res.status, 200);
+      assert.match(res.headers['content-type'], /text\/html/);
+      assert.match(res.headers['content-security-policy'], /default-src 'none'/);
+      assert.match(res.headers['content-security-policy'], /script-src 'none'/);
+    });
+
     it('emits request and record-count metrics', async () => {
       await httpGet('/v1/audit/evidence-bundle', {
         Authorization: 'Bearer new-routes-token',

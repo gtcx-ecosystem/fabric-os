@@ -8,6 +8,27 @@ focus: "Baseline initialization — discovery and enrichment"
 
 # Session: Baseline Initialization
 
+## 2026-05-31 — Roadmap Execution: S2-06 Evidence HTML Hardening
+
+## What Was Done
+- Executed roadmap item S2-06: hardened the regulator-readable HTML evidence renderer against missing CSP and Unicode bidi controls.
+- Added `EVIDENCE_HTML_CSP` with restrictive defaults (`default-src 'none'`, `script-src 'none'`, no remote images/fonts/connect/object/form/base/frame ancestors) while still allowing inline CSS for the self-contained report.
+- Added the CSP both as an HTTP response header for `/v1/audit/evidence-bundle?format=html` and as an HTML meta tag for archived standalone files.
+- Stripped Unicode bidi control characters from visible evidence fields before HTML escaping so actor, target, tenant, and metadata text cannot visually reorder the report.
+- Preserved raw NDJSON exactly in the details block so offline signature verification still works.
+- Updated `docs/audit/execution-roadmap.md` and `docs/audit/latest.json` to mark S2-06 done and reduce remaining P2 gaps.
+
+## Verification
+- `node --test tools/compliance-gateway/tests/evidence-renderer.unit.test.mjs` — pass; 9 tests.
+- `node --test tools/compliance-gateway/tests/server.new-routes.integration.test.mjs` — pass outside sandbox; 17 tests.
+- `pnpm --dir tools/compliance-gateway run test:coverage:gate` — pass outside sandbox; 174 tests; branch coverage 91.87%.
+- `node tools/scripts/empty-catch-check.mjs` — pass; 13 allowed empty catches, 0 unallowed.
+- `node tools/scripts/validate-all.mjs` — pass outside sandbox; 24/24 gates green.
+
+## Notes
+- Next local roadmap candidates: S2-07 (KYC handler hardening), S2-09 (Alertmanager defaults fail-closed), or S2-10 (frontmatter tier downgrade guard).
+- S2-13 remains a human-signature item unless the user provides SOW/sign-off direction.
+
 ## 2026-05-31 — Roadmap Execution: S2-08 Node 20.18.0 Enforcement
 
 ## What Was Done

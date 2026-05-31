@@ -99,6 +99,7 @@ run('Empty Catch Blocks', 'node tools/scripts/empty-catch-check.mjs');
 run('Runbook Commands Exist', 'node tools/scripts/runbook-commands-check.mjs');
 run('Runbook Frontmatter', 'node tools/scripts/runbook-frontmatter-check.mjs --check');
 run('Production Overlay Tags', 'node tools/scripts/production-overlay-guard.mjs');
+run('Alert Runbook Anchors', 'node tools/scripts/alerts-add-runbook-url.mjs --check');
 
 // =============================================================================
 // 3. Security Validators

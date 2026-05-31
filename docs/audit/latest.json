@@ -1,94 +1,58 @@
 {
   "repo": "gtcx-infrastructure",
-  "auditDate": "2026-05-28",
-  "head": "5b8d323e41cc8d9d54827b72d4f46839a8d61a53",
-  "sourceAudit": "docs/audit/master-audit-2026-05-28.md",
-  "latestAudit": "docs/audit/master-audit-2026-05-28.md",
-  "roadmap": "docs/audit/10-10-remediation-plan-2026-05-28.md",
-  "status": "internal-10-10-complete",
-  "internalSignoff": "docs/audit/internal-10-10-signoff-2026-05-28.md",
-  "externalRegister": "docs/audit/external-dependencies-register-2026-05-28.md",
+  "auditDate": "2026-05-30",
+  "verifiedAt": "2026-05-31T07:05:00Z",
+  "head": "dd46907",
+  "sourceAudit": "docs/audit/master-audit-2026-05-30.md",
+  "latestAudit": "docs/audit/master-audit-2026-05-30.md",
+  "previousAudit": "docs/audit/master-audit-2026-05-28.md",
+  "remediationPlan": "docs/audit/10-10-remediation-plan-2026-05-30.md",
+  "status": "phase-1-in-progress",
   "scores": {
-    "internalReadiness": 10.0,
-    "composite": 8.8,
-    "compositeRaw": 8.85,
-    "investor": 8.7,
-    "enterprise": 8.4,
-    "sovereignDfi": 8.6,
-    "signal": 9.6
-  },
-  "externalDependencies": {
-    "total": 12,
-    "open": 11,
-    "completeOrDescoped": 1
+    "internalReadiness": 7.6,
+    "composite": 7.6,
+    "codeQuality": 7.4,
+    "repoHygiene": 7.4,
+    "security": 6.6,
+    "globalSouthResilience": 7.5,
+    "ecosystemIntegration": 6.5,
+    "agenticMaturity": 6.0,
+    "enterpriseReadiness": 5.5
   },
   "findings": {
     "p0": 0,
-    "p1": 0,
-    "p2": 2
+    "p1": 6,
+    "p2": 3
   },
   "gates": {
-    "testFull": "pass",
     "testQuick": "pass",
-    "lint": "pass",
-    "typecheck": "pass",
-    "build": "pass",
-    "format": "pass",
-    "audit": "pass",
-    "docsLinks": "pass",
     "governance": "pass",
-    "terraformFmt": "pass",
-    "gitleaks": "pass",
-    "kustomizeOverlays": "pass",
-    "loadTests": "pass",
-    "natsIntegration": "pass",
-    "signal": "pass",
-    "protocolContracts": "pass"
+    "typecheck": "pass",
+    "format": "pass",
+    "agentCheck": "pass",
+    "lint": "pass",
+    "docsLinks": "pass",
+    "build": "pass"
   },
-  "evidence": {
-    "wormRuntime": "docs/audit/worm-runtime-evidence-2026-05-27.md",
-    "externalAssuranceKickoff": "docs/audit/external-assurance-kickoff-2026-05-27.md",
-    "postSprintAudit": "docs/audit/master-audit-post-sprint-2026-05-27.md",
-    "masterSummary": "docs/audit/master-audit-summary-2026-05-27.md",
-    "internalSprintPlan": "docs/audit/internal-10-10-sprint-plan-2026-05-27.md",
-    "runtimeSmokeRunbook": "docs/operations/runbooks/runtime-smoke-evidence.md",
-    "redisNonceStoreCoverage": "tools/compliance-gateway/coverage/coverage-final.json",
-    "externalFindingRegisterTemplate": "docs/audit/external-finding-register-template.md",
-    "externalFindingClosureChecklist": "docs/audit/external-finding-closure-checklist.md",
-    "wormReleaseUploadWrapper": "tools/control-plane/upload-release-evidence-to-worm.mjs",
-    "vendorEngagementReadinessPack": "docs/audit/vendor-engagement-readiness-pack.md",
-    "testnetPilotWormRunbook": "docs/operations/runbooks/testnet-pilot-worm-provision.md",
-    "stagingSmokeProbeManifest": "infra/kubernetes/overlays/staging/smoke-probe-cronjob.yaml",
-    "stagingSmokeProbeRunbook": "docs/operations/runbooks/staging-smoke-probe.md",
-    "drFireDrillRunbook": "docs/operations/runbooks/dr-fire-drill-exercise.md",
-    "kustomizeCiArtifact": "kustomize-rendered-ci",
-    "stagingWormObject": {
-      "bucket": "gtcx-worm-audit-staging-af-south-1",
-      "key": "remediation-evidence/2026-05-27/master-audit-remediation.ndjson",
-      "versionId": "uQu0ST2hh18Xe2s9QoDvRR1Z36bTRzQ4",
-      "sha256": "d5d71d57159d75f0656aa4616f3775e90da565ada0c49ded9a8e868e82e00149",
-      "objectLockMode": "COMPLIANCE",
-      "retainUntil": "2033-05-27T17:42:58.404000+00:00"
-    }
-  },
-  "remainingGaps": [
-    "Certified composite 8.8 pending 11 open external dependencies — see external-dependencies-register-2026-05-28.md.",
-    "INF-49 staging URL + TLS (EXT-INF-004) blocks gtcx-protocols DID resolution.",
-    "Recurring WORM release upload on main (EXT-INF-003) requires AWS/OIDC credentials.",
-    "Large uncommitted doc/baseline working tree pending commit (hygiene P2)."
+  "gateFailures": [],
+  "remediationProgress": [
+    "Phase 0 gate rescue complete: roadmap filename/index fixed, replay middleware typecheck fixed, AGENTS.md synchronized, Prettier drift cleared.",
+    "Incident-drill validator and PagerDuty dry-run simulation now read alertmanager.yml.tpl, matching the rendered Alertmanager config source.",
+    "S1-001 replay traversal closed: exemption matching now normalizes paths and rejects raw or decoded parent traversal before static-path exemptions.",
+    "S1-002/S1-003 audit bundle tenant binding closed: budget checks and audit-bundle.received records now use tenant scope derived from the signed DID, not x-gtcx-tenant-id."
   ],
-  "freshVerification": {
-    "verifiedAt": "2026-05-28",
-    "commands": {
-      "pnpm test": "pass",
-      "pnpm test:full": "pass",
-      "pnpm lint": "pass",
-      "pnpm build": "pass"
-    },
-    "fixesSincePriorAudit": [
-      "docs-standard green (version-standards.md, vendor-outreach/README.md)",
-      "docker-compose.infra.yml schema fix (removed nats service from volumes block)",
-      "cross-repo markdown links removed from audit docs"
-    ]
+  "remainingGaps": [
+    "Auth-failure events use tenantId unknown and are filtered out of tenant-scoped exception views.",
+    "Auth-failure throttle is process-local, unbounded, and trusts X-Forwarded-For without trusted-proxy validation.",
+    "Compliance catalog verification uses the embedded public key instead of a pinned trust anchor.",
+    "failClosed and budget-store primitives are not wired into production hot paths.",
+    "Node runtime floor is inconsistent across package manifests and CI workflows.",
+    "Alertmanager PagerDuty/Slack development defaults still need an explicit staging/production fail-closed guard.",
+    "Audit and remediation artifacts remain uncommitted in the current working tree.",
+    "External assurance remains pending; this is an internal audit only."
+  ],
+  "evidence": {
+    "postRoadmapDraft": "docs/audit/post-roadmap-session-2026-05-30.md",
+    "externalRegister": "docs/audit/external-dependencies-register-2026-05-28.md"
   }
 }

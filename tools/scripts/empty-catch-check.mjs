@@ -31,10 +31,10 @@ const ALLOWLIST = new Set([
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:244', // await client.quit() during dispose
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:279', // await activeStore.close() during reset
   // budget-store shutdown / already-closed paths
-  'tools/compliance-gateway/src/budget-store.mjs:128', // client.disconnect() during dispose
-  'tools/compliance-gateway/src/budget-store.mjs:184', // already closed during teardown
-  'tools/compliance-gateway/src/budget-store.mjs:229', // best-effort reset during swap
-  'tools/compliance-gateway/src/budget-store.mjs:230', // best-effort close during swap
+  'tools/compliance-gateway/src/budget-store.mjs:134', // client.disconnect() during dispose
+  'tools/compliance-gateway/src/budget-store.mjs:192', // already closed during teardown
+  'tools/compliance-gateway/src/budget-store.mjs:243', // best-effort reset during swap
+  'tools/compliance-gateway/src/budget-store.mjs:248', // best-effort close during swap
   // Brotli compression best-effort fallback — gzip path runs next.
   'tools/compliance-gateway/src/server.mjs:690',
   // NATS stream already-exists (race-safe creation) + shutdown drain.

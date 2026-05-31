@@ -95,7 +95,7 @@ if (process.env.NODE_ENV === 'production' && !auditInit.initialized) {
       error: auditInit.error,
     })
   );
-   
+
   process.exit(78); // EX_CONFIG
 }
 
@@ -324,7 +324,7 @@ async function handleQueryInner(req, res, deps) {
   // Bound blast radius: a single principal cannot exceed its QPS or
   // its daily LLM spend. The check is intentionally before the LLM
   // call so abuse does not produce provider invocations.
-  const budgetCheck = checkBudget(principal.subject, principal.tenantId);
+  const budgetCheck = await checkBudget(principal.subject, principal.tenantId);
   if (!budgetCheck.ok) {
     signAuditEvent({
       actor: principal.subject,
@@ -410,7 +410,7 @@ async function handleQueryInner(req, res, deps) {
 
       const estimatedCost = estimateCost(provider, result.usage);
       if (estimatedCost?.totalCostUSD) {
-        recordSpend(principal.subject, estimatedCost.totalCostUSD);
+        await recordSpend(principal.subject, estimatedCost.totalCostUSD, principal.tenantId);
         incrementCounter(
           'compliance_gateway_cost_usd_total',
           {
@@ -433,9 +433,9 @@ async function handleQueryInner(req, res, deps) {
         latencyMs
       );
       // Heuristic confidence score. Surfaced to callers so agent
-       // clients can adopt their own thresholds (AI-native Pattern
-       // #5: Progressive Confidence). Tool-execution gating on
-       // confidence is a follow-up; for now we surface the signal.
+      // clients can adopt their own thresholds (AI-native Pattern
+      // #5: Progressive Confidence). Tool-execution gating on
+      // confidence is a follow-up; for now we surface the signal.
       const confidence = computeConfidence(result, complexity);
       setGauge(
         'compliance_gateway_query_confidence',
@@ -797,12 +797,13 @@ const server = createServer(async (req, res) => {
       // same underlying bundle.
       const acceptsHtml = (req.headers.accept ?? '').includes('text/html');
       const wantsHtml =
-        acceptsHtml || new URL(req.url ?? '/', 'http://localhost').searchParams.get('format') === 'html';
+        acceptsHtml ||
+        new URL(req.url ?? '/', 'http://localhost').searchParams.get('format') === 'html';
       if (wantsHtml) {
         const html = renderEvidenceHtml(bundle);
         res.writeHead(200, {
           'Content-Type': 'text/html; charset=utf-8',
-          'Content-Disposition': `inline; filename="evidence-${principal.tenantId}-${new Date().toISOString().slice(0,10)}.html"`,
+          'Content-Disposition': `inline; filename="evidence-${principal.tenantId}-${new Date().toISOString().slice(0, 10)}.html"`,
           'Cache-Control': 'no-cache',
         });
         res.end(html);
@@ -829,7 +830,12 @@ const server = createServer(async (req, res) => {
         getExceptions({
           tenantId: principal.tenantId,
           since: sinceParam,
-          kinds: kindsParam ? kindsParam.split(',').map((s) => s.trim()).filter(Boolean) : undefined,
+          kinds: kindsParam
+            ? kindsParam
+                .split(',')
+                .map((s) => s.trim())
+                .filter(Boolean)
+            : undefined,
           limit: limitParam ? Math.min(1000, Math.max(1, Number(limitParam))) : 200,
         }),
         req
@@ -842,7 +848,7 @@ const server = createServer(async (req, res) => {
       const sinceParam =
         new URL(req.url ?? '/', 'http://localhost').searchParams.get('since') ?? undefined;
       const chainState = getChainState();
-      const spend = getSpend(principal.subject, principal.tenantId);
+      const spend = await getSpend(principal.subject, principal.tenantId);
       sendJson(
         res,
         200,
@@ -936,7 +942,7 @@ const server = createServer(async (req, res) => {
       if (!principal) {
         return;
       }
-      sendJson(res, 200, getSpend(principal.subject, principal.tenantId), req);
+      sendJson(res, 200, await getSpend(principal.subject, principal.tenantId), req);
     } else if (url === '/v1/providers') {
       const principal = requirePermission(req, res, 'providers:read');
       if (!principal) {

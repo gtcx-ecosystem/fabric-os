@@ -1,9 +1,9 @@
 {
   "repo": "gtcx-infrastructure",
   "auditDate": "2026-05-31",
-  "verifiedAt": "2026-05-31T15:39:47Z",
-  "head": "1d898ea",
-  "workingTree": "modified; S2-14 coverage-pump and S2-01 failClosed wiring changes are uncommitted",
+  "verifiedAt": "2026-05-31T16:07:33Z",
+  "head": "570ad49",
+  "workingTree": "modified; S2-02 budget-store wiring changes are uncommitted",
   "sourceAudit": "docs/audit/post-roadmap-session-2026-05-30.md",
   "latestAudit": "docs/audit/post-roadmap-session-2026-05-30.md",
   "previousAudit": "docs/audit/master-audit-2026-05-30.md",
@@ -24,7 +24,7 @@
   "findings": {
     "p0Closed": ["F1", "F2", "F3", "F4", "F7", "F10", "F11", "F12", "F13", "F14"],
     "p0Open": 0,
-    "p1": 6,
+    "p1": 5,
     "p2": 9,
     "p3": 2
   },
@@ -55,11 +55,11 @@
     "F10 closed (3729a29): verify-catalog pinned trust anchor PINNED_PUBLIC_KEY; 8 test cases for every rejection code.",
     "F11-F14 closed (66e9eb0, d8262f0, 22b7f2e, 152d079): regex bypasses in pin-actions-sha, empty-catch-check, runbook-commands-check; missing-label fix in dependabot-triage workflow.",
     "Meta-finding closed (fb26c9f): 5 previously-unwired gates now invoked from validate-all.mjs Static Validators section.",
-    "S2-14 closed (working tree, 2026-05-31): replay-protection package branch coverage now passes at 90.45%; stale empty-catch allowlist entry removed; node tools/scripts/validate-all.mjs passes 23 of 23 gates.",
-    "S2-01 closed (working tree, 2026-05-31): failClosed wired into audit-flush S3 SDK loading and compliance-gateway soft-import/NDJSON parse sites; stale empty-catch allowlist entries removed; audit-flush and compliance-gateway targeted coverage gates pass; node tools/scripts/validate-all.mjs passes 23 of 23 gates."
+    "S2-14 closed (570ad49, 2026-05-31): replay-protection package branch coverage now passes at 90.45%; stale empty-catch allowlist entry removed; node tools/scripts/validate-all.mjs passes 23 of 23 gates.",
+    "S2-01 closed (570ad49, 2026-05-31): failClosed wired into audit-flush S3 SDK loading and compliance-gateway soft-import/NDJSON parse sites; stale empty-catch allowlist entries removed; audit-flush and compliance-gateway targeted coverage gates pass; node tools/scripts/validate-all.mjs passes 23 of 23 gates.",
+    "S2-02 closed (working tree, 2026-05-31): checkBudget, recordSpend, and getSpend are async and delegate to budget-store.mjs; /v1/query, /v1/budget, /v1/brief, /audit/bundles, and /audit/query await the store-backed budget gates; compliance-gateway coverage gate passes; node tools/scripts/validate-all.mjs passes 23 of 23 gates."
   ],
   "remainingGaps": [
-    "S2-02 — budget-store.mjs unwired; Q4 answered WIRE BOTH, implementation pending.",
     "S2-03 — auth-failure-throttle ipState Map unbounded.",
     "S2-04 — XFF first-hop trust without CIDR validation.",
     "S2-05 — /v1/exceptions and /v1/audit/evidence-bundle have no Prometheus metrics.",

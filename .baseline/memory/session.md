@@ -8,6 +8,27 @@ focus: "Baseline initialization — discovery and enrichment"
 
 # Session: Baseline Initialization
 
+## 2026-05-31 — Roadmap Execution: S2-02 Budget Store Wiring
+
+## What Was Done
+- Executed roadmap item S2-02: wired `budget-store.mjs` into the hot-path budget API instead of leaving it as an unused primitive.
+- Migrated `checkBudget`, `recordSpend`, `getSpend`, and `resetBudget` to async functions backed by `getBudgetStore()`.
+- Updated `/v1/query`, `/v1/brief`, `/v1/budget`, `/audit/bundles`, and `/audit/query` to await store-backed budget gates.
+- Preserved memory as the default backend while enabling shared Redis enforcement through `GTCX_BUDGET_STORE_BACKEND=redis` and `GTCX_BUDGET_REDIS_URL`.
+- Added regression coverage proving the public budget API delegates QPS, spend writes, and spend reads to the active BudgetStore.
+- Updated `docs/audit/execution-roadmap.md` and `docs/audit/latest.json` to mark S2-02 done and reduce remaining P1 gaps.
+
+## Verification
+- `node --test tools/compliance-gateway/tests/budget.unit.test.mjs tools/compliance-gateway/tests/budget-store.unit.test.mjs tools/compliance-gateway/tests/tenant-isolation.unit.test.mjs` — pass; 25 tests.
+- `node --test tools/compliance-gateway/tests/audit-bundles/handler.test.mjs tools/compliance-gateway/tests/audit-query/handler.test.mjs` — pass; 53 tests.
+- `pnpm --dir tools/compliance-gateway run test:coverage:gate` — pass; 174 tests; branch coverage 91.87%.
+- `node tools/scripts/empty-catch-check.mjs` — pass; 13 allowed empty catches, 0 unallowed.
+- `node tools/scripts/validate-all.mjs` — pass outside sandbox; 23/23 gates green.
+
+## Notes
+- Next roadmap candidate: S2-03 (`auth-failure-throttle` bounded map + atomic `recordAndCheck`).
+- HTTP server integration tests should be run outside the sandbox because local listener binding can fail with `listen EPERM`.
+
 ## 2026-05-31 — Roadmap Execution: S2-01 failClosed Wiring
 
 ## What Was Done

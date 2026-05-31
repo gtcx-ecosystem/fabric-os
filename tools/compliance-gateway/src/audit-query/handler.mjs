@@ -45,7 +45,7 @@ import { QueryAuditRequestSchema } from './schemas.mjs';
  *   the handler emits per-tenant request + outcome counters so
  *   operators can see query volume, error rates, and truncation rate
  *   on the audit-trust dashboard. Tolerates absent (tests + dev).
- * @property {(subject: string, tenantId?: string) => { ok: true } | { ok: false, status: number, reason: string, retryAfterSeconds?: number, limits?: object, spentUsd?: number }} [checkBudget]
+ * @property {(subject: string, tenantId?: string) => { ok: true } | { ok: false, status: number, reason: string, retryAfterSeconds?: number, limits?: object, spentUsd?: number } | Promise<{ ok: true } | { ok: false, status: number, reason: string, retryAfterSeconds?: number, limits?: object, spentUsd?: number }>} [checkBudget]
  *   Optional per-principal QPS/budget gate shared with `/v1/query`.
  *
  * @typedef {object} HandleResult
@@ -101,7 +101,10 @@ export async function processQuery(args) {
   let tenantId;
   if (tokenTenant) {
     if (headerTenant && headerTenant !== tokenTenant) {
-      inc('compliance_gateway_audit_query_requests_total', { status: '403', tenantId: tokenTenant });
+      inc('compliance_gateway_audit_query_requests_total', {
+        status: '403',
+        tenantId: tokenTenant,
+      });
       return {
         status: 403,
         body: {
@@ -138,7 +141,7 @@ export async function processQuery(args) {
   const budgetSubject = tokenSubject ?? `audit-query:${tenantId}`;
   const budgetCheck =
     typeof args.checkBudget === 'function'
-      ? args.checkBudget(budgetSubject, tenantId)
+      ? await args.checkBudget(budgetSubject, tenantId)
       : { ok: true };
   if (!budgetCheck.ok) {
     inc('compliance_gateway_audit_query_requests_total', {

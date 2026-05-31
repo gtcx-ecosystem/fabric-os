@@ -45,7 +45,7 @@ export function tenantIdFromSignedDid(did) {
  * @property {import('./did-resolver.mjs').DidResolver} resolver
  * @property {{ checkAndSet: (nonce: string) => { accepted: boolean, alreadySeen: boolean } | Promise<{ accepted: boolean, alreadySeen: boolean }> }} nonceGate
  * @property {number} [nowMs]
- * @property {(subject: string, tenantId?: string) => { ok: true } | { ok: false, status: number, reason: string, retryAfterSeconds?: number, limits?: object, spentUsd?: number }} [checkBudget]
+ * @property {(subject: string, tenantId?: string) => { ok: true } | { ok: false, status: number, reason: string, retryAfterSeconds?: number, limits?: object, spentUsd?: number } | Promise<{ ok: true } | { ok: false, status: number, reason: string, retryAfterSeconds?: number, limits?: object, spentUsd?: number }>} [checkBudget]
  * @property {(event: object) => void} [signAuditEvent] - Optional injectable
  *   internal audit-of-the-ingest signer. When provided, an
  *   `audit-bundle.received` record is signed into our own audit chain
@@ -87,7 +87,7 @@ export async function processBundle(args) {
   const tenantId = tenantIdFromSignedDid(envelope.did);
   const budgetCheck =
     typeof args.checkBudget === 'function'
-      ? args.checkBudget(envelope.did, tenantId)
+      ? await args.checkBudget(envelope.did, tenantId)
       : { ok: true };
   if (!budgetCheck.ok) {
     return {

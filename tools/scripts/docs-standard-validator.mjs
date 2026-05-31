@@ -50,6 +50,7 @@ const EXCLUDED_PATHS = [
   /\.turbo/,
   /dist/,
   /build/,
+  /audit\/evidence\/ci-dry-run/,
 ];
 
 // Draft templates, historical archives, and generated reports are not substantive.

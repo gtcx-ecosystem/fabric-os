@@ -18,14 +18,19 @@ import {
   resetAuditSigner,
   signAuditEvent,
 } from '../src/audit.mjs';
-import { renderEvidenceHtml } from '../src/evidence-renderer.mjs';
+import { EVIDENCE_HTML_CSP, renderEvidenceHtml } from '../src/evidence-renderer.mjs';
 
 function silence(fn) {
   const out = console.log;
   const err = console.error;
   console.log = () => {};
   console.error = () => {};
-  try { return fn(); } finally { console.log = out; console.error = err; }
+  try {
+    return fn();
+  } finally {
+    console.log = out;
+    console.error = err;
+  }
 }
 
 describe('renderEvidenceHtml — single-tenant bundle', () => {
@@ -74,6 +79,35 @@ describe('renderEvidenceHtml — single-tenant bundle', () => {
 
     resetAuditSigner();
   });
+
+  it('strips bidi control characters from visible record fields', () => {
+    const html = renderEvidenceHtml({
+      bundleVersion: '1',
+      tenantId: 'zw',
+      recordCount: 1,
+      chainHead: 'head',
+      ndjson: JSON.stringify({
+        id: 'rec-1',
+        timestamp: '2026-05-31T00:00:00Z',
+        action: 'query:success',
+        actor: 'safe\u202eevil',
+        target: 'target\u2066hidden\u2069',
+        signature: 'abcdef',
+      }),
+    });
+
+    assert.match(html, /<td>safeevil<\/td>/);
+    assert.match(html, /<td class="target">targethidden<\/td>/);
+    assert.doesNotMatch(html, /<td>safe\u202eevil<\/td>/u);
+  });
+
+  it('embeds a CSP meta tag for archived standalone HTML', () => {
+    const html = renderEvidenceHtml({});
+    assert.match(html, /http-equiv="Content-Security-Policy"/);
+    for (const directive of EVIDENCE_HTML_CSP.split('; ')) {
+      assert.ok(html.includes(directive.replace(/'/g, '&#39;')), `${directive} missing`);
+    }
+  });
 });
 
 describe('renderEvidenceHtml — multi-tenant bundle (v2)', () => {
@@ -99,13 +133,16 @@ describe('renderEvidenceHtml — multi-tenant bundle (v2)', () => {
 
   it('throws when tenantIds is missing or empty', () => {
     assert.throws(() => buildMultiTenantEvidenceBundle({}), /tenantIds\[\] is required/);
-    assert.throws(() => buildMultiTenantEvidenceBundle({ tenantIds: [] }), /tenantIds\[\] is required/);
+    assert.throws(
+      () => buildMultiTenantEvidenceBundle({ tenantIds: [] }),
+      /tenantIds\[\] is required/
+    );
   });
 
   it('rejects non-string tenantIds', () => {
     assert.throws(
       () => buildMultiTenantEvidenceBundle({ tenantIds: ['zw', null] }),
-      /every tenantId must be a non-empty string/,
+      /every tenantId must be a non-empty string/
     );
   });
 });

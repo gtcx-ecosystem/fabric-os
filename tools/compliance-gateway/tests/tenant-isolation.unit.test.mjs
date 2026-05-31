@@ -17,7 +17,12 @@ import {
   resetAuditSigner,
   signAuditEvent,
 } from '../src/audit.mjs';
-import { loadAuthState, authenticateHeaders, buildAccessProfile, parseApprovalContext } from '../src/auth.mjs';
+import {
+  loadAuthState,
+  authenticateHeaders,
+  buildAccessProfile,
+  parseApprovalContext,
+} from '../src/auth.mjs';
 import { checkBudget, getSpend, resetBudget } from '../src/budget.mjs';
 
 function tokensFor(env) {
@@ -50,69 +55,59 @@ describe('tenant boundary — auth', () => {
     const state = loadAuthState(tokensFor({ NODE_ENV: 'test' }));
     assert.strictEqual(state.configurationError, null);
 
-    const auth = authenticateHeaders(
-      { authorization: 'Bearer tenant-a-tok' },
-      state,
-      'query:read',
-    );
+    const auth = authenticateHeaders({ authorization: 'Bearer tenant-a-tok' }, state, 'query:read');
     assert.strictEqual(auth.ok, true);
     assert.strictEqual(auth.principal.tenantId, 'tenant-a');
   });
 
   it("defaults tenantId to 'default' when the config omits it", () => {
     const state = loadAuthState(tokensFor({ NODE_ENV: 'test' }));
-    const auth = authenticateHeaders(
-      { authorization: 'Bearer legacy-tok' },
-      state,
-      'query:read',
-    );
+    const auth = authenticateHeaders({ authorization: 'Bearer legacy-tok' }, state, 'query:read');
     assert.strictEqual(auth.ok, true);
     assert.strictEqual(auth.principal.tenantId, 'default');
   });
 
   it('buildAccessProfile carries tenantId through', () => {
     const state = loadAuthState(tokensFor({ NODE_ENV: 'test' }));
-    const auth = authenticateHeaders(
-      { authorization: 'Bearer tenant-b-tok' },
-      state,
-      'query:read',
-    );
+    const auth = authenticateHeaders({ authorization: 'Bearer tenant-b-tok' }, state, 'query:read');
     const profile = buildAccessProfile(auth.principal, parseApprovalContext({}));
     assert.strictEqual(profile.tenantId, 'tenant-b');
   });
 });
 
 describe('tenant boundary — budget', () => {
-  beforeEach(() => resetBudget());
-  afterEach(() => {
+  beforeEach(async () => {
+    await resetBudget();
+  });
+  afterEach(async () => {
     delete process.env.GTCX_PRINCIPAL_BUDGETS_JSON;
-    resetBudget();
+    await resetBudget();
   });
 
-  it('applies tenant-scoped overrides via tenant:<id> key', () => {
+  it('applies tenant-scoped overrides via tenant:<id> key', async () => {
     process.env.GTCX_PRINCIPAL_BUDGETS_JSON = JSON.stringify({
       'tenant:big-tenant': { qps: 100, dailyUsd: 500 },
     });
-    resetBudget();
-    const r = checkBudget('any-subject', 'big-tenant');
+    await resetBudget();
+    const r = await checkBudget('any-subject', 'big-tenant');
     assert.strictEqual(r.ok, true);
     assert.strictEqual(r.limits.qps, 100);
     assert.strictEqual(r.limits.dailyUsd, 500);
   });
 
-  it('subject-scoped override takes precedence over tenant-scoped', () => {
+  it('subject-scoped override takes precedence over tenant-scoped', async () => {
     process.env.GTCX_PRINCIPAL_BUDGETS_JSON = JSON.stringify({
       'tenant:t1': { qps: 100, dailyUsd: 100 },
       'subject-a': { qps: 5, dailyUsd: 1 },
     });
-    resetBudget();
-    const r = checkBudget('subject-a', 't1');
+    await resetBudget();
+    const r = await checkBudget('subject-a', 't1');
     assert.strictEqual(r.limits.qps, 5);
     assert.strictEqual(r.limits.dailyUsd, 1);
   });
 
-  it('getSpend returns the tenantId', () => {
-    const s = getSpend('a', 'demo-tenant');
+  it('getSpend returns the tenantId', async () => {
+    const s = await getSpend('a', 'demo-tenant');
     assert.strictEqual(s.tenantId, 'demo-tenant');
   });
 });

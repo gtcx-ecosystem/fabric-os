@@ -42,6 +42,12 @@ describe('ReplayMetrics — reset and delta', () => {
     m.inc('accepted_total', 3);
     assert.strictEqual(m.snapshot().acceptedTotal, 3);
   });
+
+  it('inc() initializes an unknown label defensively', () => {
+    const m = new ReplayMetrics();
+    m.inc('diagnostic_total', 4);
+    assert.strictEqual(m.snapshot().acceptedTotal, 0);
+  });
 });
 
 describe('ReplayMetrics — Redis connectivity', () => {

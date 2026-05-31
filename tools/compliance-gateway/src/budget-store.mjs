@@ -36,13 +36,16 @@ function currentBackend() {
   return (process.env.GTCX_BUDGET_STORE_BACKEND || 'memory').toLowerCase();
 }
 function currentRedisUrl() {
-  return process.env.GTCX_BUDGET_REDIS_URL
-    || process.env.REDIS_URL
-    || 'redis://redis.gtcx.svc.cluster.local:6379';
+  return (
+    process.env.GTCX_BUDGET_REDIS_URL ||
+    process.env.REDIS_URL ||
+    'redis://redis.gtcx.svc.cluster.local:6379'
+  );
 }
 function currentRedisPrefix() {
-  return process.env.GTCX_BUDGET_REDIS_PREFIX
-    || `gtcx:budget:${process.env.NODE_ENV || 'development'}`;
+  return (
+    process.env.GTCX_BUDGET_REDIS_PREFIX || `gtcx:budget:${process.env.NODE_ENV || 'development'}`
+  );
 }
 
 let activeStore = null;
@@ -122,10 +125,15 @@ async function buildRedisStore() {
   const url = currentRedisUrl();
   const prefix = currentRedisPrefix();
   const client = new RedisCtor(url, { lazyConnect: true, maxRetriesPerRequest: 1 });
+  client.on?.('error', () => {});
   try {
     await client.connect();
   } catch {
-    try { client.disconnect(); } catch { /* shutdown */ }
+    try {
+      client.disconnect();
+    } catch {
+      /* shutdown */
+    }
     return null;
   }
 
@@ -181,7 +189,9 @@ async function buildRedisStore() {
     async close() {
       try {
         await client.quit();
-      } catch { /* already closed */ }
+      } catch {
+        /* already closed */
+      }
     },
     info() {
       return { backend: 'redis', url, prefix };
@@ -207,13 +217,15 @@ export async function getBudgetStore() {
       return activeStore;
     }
     if (!redisFallbackLogged) {
-      console.warn(JSON.stringify({
-        level: 'warn',
-        type: 'budget.store.redis-fallback',
-        message:
-          'GTCX_BUDGET_STORE_BACKEND=redis was requested but ioredis is not loadable or the broker is unreachable. Falling back to memory (per-pod) — per-principal limits will NOT be honored across HPA replicas.',
-        url: currentRedisUrl(),
-      }));
+      console.warn(
+        JSON.stringify({
+          level: 'warn',
+          type: 'budget.store.redis-fallback',
+          message:
+            'GTCX_BUDGET_STORE_BACKEND=redis was requested but ioredis is not loadable or the broker is unreachable. Falling back to memory (per-pod) — per-principal limits will NOT be honored across HPA replicas.',
+          url: currentRedisUrl(),
+        })
+      );
       redisFallbackLogged = true;
     }
   }
@@ -226,8 +238,16 @@ export async function getBudgetStore() {
  */
 export async function _resetForTests() {
   if (activeStore) {
-    try { await activeStore.reset(); } catch { /* swallow */ }
-    try { await activeStore.close(); } catch { /* swallow */ }
+    try {
+      await activeStore.reset();
+    } catch {
+      /* swallow */
+    }
+    try {
+      await activeStore.close();
+    } catch {
+      /* swallow */
+    }
   }
   activeStore = null;
   redisFallbackLogged = false;

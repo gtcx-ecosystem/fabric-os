@@ -95,11 +95,28 @@ run('Score Ledger', 'node tools/scripts/validate-score-ledger.mjs');
 run('Docs Standard', 'node tools/scripts/docs-standard-validator.mjs');
 run('Kyverno Policies', 'node tools/scripts/kyverno-policy-validator.mjs');
 run('SHA-pinned Actions', 'node tools/scripts/pin-actions-sha.mjs --check');
+run('Node Version Floor', 'node tools/scripts/node-version-floor-check.mjs');
+run('Alertmanager Env Guard', 'node tools/scripts/alertmanager-env-check.mjs');
 run('Empty Catch Blocks', 'node tools/scripts/empty-catch-check.mjs');
 run('Runbook Commands Exist', 'node tools/scripts/runbook-commands-check.mjs');
 run('Runbook Frontmatter', 'node tools/scripts/runbook-frontmatter-check.mjs --check');
 run('Production Overlay Tags', 'node tools/scripts/production-overlay-guard.mjs');
 run('Alert Runbook Anchors', 'node tools/scripts/alerts-add-runbook-url.mjs --check');
+run('Dependabot Policy', 'node tools/scripts/dependabot-policy-check.mjs');
+run('SOC2 Agent Owners', 'node tools/scripts/soc2-agent-owners-check.mjs');
+run('Soak Baseline', 'node tools/scripts/soak-baseline-check.mjs --check');
+run('DR Drill Evidence', 'node tools/scripts/dr-fire-drill-evidence.mjs');
+run('Cloudflared API Gateway', 'node tools/scripts/cloudflared-api-gateway-check.mjs');
+run('Jurisdiction Catalog Parity', 'node tools/scripts/jurisdiction-catalog-parity-check.mjs');
+run('Terraform Registry Readiness', 'node tools/scripts/terraform-registry-readiness-check.mjs');
+run('NPM Publish Readiness', 'node tools/scripts/npm-publish-readiness-check.mjs');
+run('Dependabot Tier Merge', 'node tools/scripts/dependabot-tier-merge-check.mjs');
+run('Dependabot Merge Plan', 'node tools/scripts/dependabot-merge-plan.mjs');
+run('Pen-Test Intake Evidence', 'node tools/scripts/pen-test-intake-evidence.mjs');
+run(
+  'Contract Tests',
+  'node --test tools/contract-tests/protocol-schema.test.mjs tools/contract-tests/gateway-tenancy.test.mjs tools/contract-tests/audit-signer-catalog.test.mjs tools/contract-tests/replay-protection.test.mjs'
+);
 
 // =============================================================================
 // 3. Security Validators
@@ -107,7 +124,10 @@ run('Alert Runbook Anchors', 'node tools/scripts/alerts-add-runbook-url.mjs --ch
 section('Security Validators');
 
 run('Mesh Injection (prod)', 'node tools/scripts/verify-mesh-injection.mjs --namespace gtcx');
-run('Mesh Injection (staging)', 'node tools/scripts/verify-mesh-injection.mjs --namespace gtcx-staging');
+run(
+  'Mesh Injection (staging)',
+  'node tools/scripts/verify-mesh-injection.mjs --namespace gtcx-staging'
+);
 
 // =============================================================================
 // 4. Build Validators
@@ -115,6 +135,7 @@ run('Mesh Injection (staging)', 'node tools/scripts/verify-mesh-injection.mjs --
 section('Build Validators');
 
 run('Reproducible Build (dry)', 'node tools/scripts/verify-reproducible-build.mjs');
+run('Runtime Evidence (dry)', 'node tools/scripts/runtime-evidence-check.mjs');
 
 // =============================================================================
 // Summary

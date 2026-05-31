@@ -6,24 +6,29 @@
  * by wrapping a generic model around public docs.
  */
 
+import { failClosed } from './fail-closed.mjs';
+
 // Jurisdictions catalog is consumed via the workspace package's
 // exports map (see @gtcx/compliance-data/jurisdictions). The package
 // ships the JSON as its default export; the named subpath is provided
 // for readers who want explicit intent.
 let jurisdictions = {};
-try {
-  // Dynamic JSON import — Node ≥20.10 supports import attributes; we
-  // fall back to a synchronous require-by-resolve so this module stays
-  // usable in test contexts where the import-attribute parser is finicky.
-  const mod = await import('@gtcx/compliance-data/jurisdictions', { with: { type: 'json' } });
+// Dynamic JSON import — Node ≥20.10 supports import attributes; wrapped
+// through failClosed so dependency fallback is loud, never silent.
+const mod = await failClosed(
+  'compliance-gateway.system-prompt.jurisdictions',
+  () => import('@gtcx/compliance-data/jurisdictions', { with: { type: 'json' } }),
+  { onError: 'log-and-return-null' }
+);
+if (mod) {
   jurisdictions = mod.default ?? mod;
-} catch {
-  // Graceful fallback if the package is not resolvable (rare; only in
-  // hand-rolled sandboxes that bypass the workspace).
 }
 
 const jurisdictionSummary = Object.entries(jurisdictions.jurisdictions || {})
-  .map(([key, j]) => `- ${key}: ${j.regulator} (${j.regulator_full}), ${j.data_protection_law}, KYC ${j.kyc_retention_days}d, Audit ${j.audit_retention_days}d`)
+  .map(
+    ([key, j]) =>
+      `- ${key}: ${j.regulator} (${j.regulator_full}), ${j.data_protection_law}, KYC ${j.kyc_retention_days}d, Audit ${j.audit_retention_days}d`
+  )
   .join('\n');
 
 export const systemPrompt = `You are the GTCX Compliance Gateway — an AI-native interface to the Global Trade & Compliance Exchange protocol network.

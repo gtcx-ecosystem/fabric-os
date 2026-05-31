@@ -12,6 +12,8 @@ import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { canonicalizeValue } from '@gtcx/audit-signer';
+
 const HERE = dirname(fileURLToPath(import.meta.url));
 const PKG = join(HERE, '..');
 const CATALOG = join(PKG, 'jurisdictions.json');
@@ -31,12 +33,8 @@ const SIG = join(PKG, 'jurisdictions.json.sig');
 export const PINNED_PUBLIC_KEY =
   'MCowBQYDK2VwAyEA+zeNXQRjNzP8vCq/vlzvfbcLDCKwMO5nFGD9IYpsk9w=';
 
-export function canonicalize(value) {
-  if (value === null || typeof value !== 'object') return JSON.stringify(value);
-  if (Array.isArray(value)) return `[${value.map(canonicalize).join(',')}]`;
-  const keys = Object.keys(value).sort();
-  return `{${keys.map((k) => `${JSON.stringify(k)}:${canonicalize(value[k])}`).join(',')}}`;
-}
+/** @deprecated Use canonicalizeValue from @gtcx/audit-signer */
+export const canonicalize = canonicalizeValue;
 
 /**
  * Verify a parsed catalog against its parsed signature, anchored to a
@@ -80,7 +78,7 @@ export function verifyCatalog({ catalog, sig, expectedPublicKey }) {
     };
   }
 
-  const canonical = canonicalize(catalog);
+  const canonical = canonicalizeValue(catalog);
   const computedHash = createHash('sha256').update(canonical, 'utf8').digest('base64');
   if (computedHash !== sig.catalogHash) {
     return {

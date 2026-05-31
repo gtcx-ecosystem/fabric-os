@@ -46,7 +46,7 @@ import {
 import {
   clearAuthFailures,
   isAuthThrottled,
-  recordAuthFailure,
+  recordAndCheckAuthFailure,
   sourceIpFromRequest,
 } from './auth-failure-throttle.mjs';
 import {
@@ -57,7 +57,7 @@ import {
 } from './auth.mjs';
 import { checkBudget, recordSpend, getSpend } from './budget.mjs';
 import { computeConfidence } from './confidence.mjs';
-import { renderEvidenceHtml } from './evidence-renderer.mjs';
+import { EVIDENCE_HTML_CSP, renderEvidenceHtml } from './evidence-renderer.mjs';
 import { incrementCounter, setGauge, renderMetrics } from './metrics.mjs';
 import { createNonceStore } from './nonce-store/redis.mjs';
 import { buildRuntimePolicyPrompt } from './policy.mjs';
@@ -95,7 +95,7 @@ if (process.env.NODE_ENV === 'production' && !auditInit.initialized) {
       error: auditInit.error,
     })
   );
-   
+
   process.exit(78); // EX_CONFIG
 }
 
@@ -219,7 +219,7 @@ function requirePermission(req, res, requiredPermission) {
 
   const auth = authenticateHeaders(req.headers, authState, requiredPermission);
   if (!auth.ok) {
-    const update = recordAuthFailure(sourceIp);
+    const update = recordAndCheckAuthFailure(sourceIp);
     incrementCounter('compliance_gateway_auth_failures_total', {
       reason: auth.status === 401 ? 'invalid-token' : 'missing-permission',
       throttled: update.throttled ? 'true' : 'false',
@@ -227,7 +227,7 @@ function requirePermission(req, res, requiredPermission) {
     // Once throttled, skip the signing to break the amplifier. Pre-
     // throttle failures still sign so the regulator-facing trail
     // captures the early abuse signal.
-    if (!update.throttled) {
+    if (update.shouldSign) {
       // Tag auth failures with the synthetic `platform` tenant. The
       // attacker's intended tenant is unknown — and even if known via
       // a guessable header, leaking it to that tenant's `/v1/exceptions`
@@ -324,7 +324,7 @@ async function handleQueryInner(req, res, deps) {
   // Bound blast radius: a single principal cannot exceed its QPS or
   // its daily LLM spend. The check is intentionally before the LLM
   // call so abuse does not produce provider invocations.
-  const budgetCheck = checkBudget(principal.subject, principal.tenantId);
+  const budgetCheck = await checkBudget(principal.subject, principal.tenantId);
   if (!budgetCheck.ok) {
     signAuditEvent({
       actor: principal.subject,
@@ -410,7 +410,7 @@ async function handleQueryInner(req, res, deps) {
 
       const estimatedCost = estimateCost(provider, result.usage);
       if (estimatedCost?.totalCostUSD) {
-        recordSpend(principal.subject, estimatedCost.totalCostUSD);
+        await recordSpend(principal.subject, estimatedCost.totalCostUSD, principal.tenantId);
         incrementCounter(
           'compliance_gateway_cost_usd_total',
           {
@@ -433,9 +433,9 @@ async function handleQueryInner(req, res, deps) {
         latencyMs
       );
       // Heuristic confidence score. Surfaced to callers so agent
-       // clients can adopt their own thresholds (AI-native Pattern
-       // #5: Progressive Confidence). Tool-execution gating on
-       // confidence is a follow-up; for now we surface the signal.
+      // clients can adopt their own thresholds (AI-native Pattern
+      // #5: Progressive Confidence). Tool-execution gating on
+      // confidence is a follow-up; for now we surface the signal.
       const confidence = computeConfidence(result, complexity);
       setGauge(
         'compliance_gateway_query_confidence',
@@ -714,6 +714,14 @@ function sendJson(res, status, body, req) {
   res.end(data);
 }
 
+function recordRouteRequest(route, status, tenantId = 'unknown') {
+  incrementCounter('compliance_gateway_requests_total', {
+    route,
+    status: String(status),
+    tenantId,
+  });
+}
+
 const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url ?? '/', 'http://localhost').pathname;
@@ -783,6 +791,7 @@ const server = createServer(async (req, res) => {
     } else if (url === '/v1/audit/evidence-bundle') {
       const principal = requirePermission(req, res, 'audit:read');
       if (!principal) {
+        recordRouteRequest('/v1/audit/evidence-bundle', res.statusCode || 500);
         return;
       }
       const sinceParam =
@@ -797,12 +806,21 @@ const server = createServer(async (req, res) => {
       // same underlying bundle.
       const acceptsHtml = (req.headers.accept ?? '').includes('text/html');
       const wantsHtml =
-        acceptsHtml || new URL(req.url ?? '/', 'http://localhost').searchParams.get('format') === 'html';
+        acceptsHtml ||
+        new URL(req.url ?? '/', 'http://localhost').searchParams.get('format') === 'html';
+      const format = wantsHtml ? 'html' : 'json';
+      recordRouteRequest('/v1/audit/evidence-bundle', 200, principal.tenantId);
+      incrementCounter(
+        'compliance_gateway_evidence_bundle_records_total',
+        { format, tenantId: principal.tenantId },
+        bundle.recordCount
+      );
       if (wantsHtml) {
         const html = renderEvidenceHtml(bundle);
         res.writeHead(200, {
           'Content-Type': 'text/html; charset=utf-8',
-          'Content-Disposition': `inline; filename="evidence-${principal.tenantId}-${new Date().toISOString().slice(0,10)}.html"`,
+          'Content-Disposition': `inline; filename="evidence-${principal.tenantId}-${new Date().toISOString().slice(0, 10)}.html"`,
+          'Content-Security-Policy': EVIDENCE_HTML_CSP,
           'Cache-Control': 'no-cache',
         });
         res.end(html);
@@ -817,23 +835,31 @@ const server = createServer(async (req, res) => {
       // the regulator trail but never reach the operator's screen.
       const principal = requirePermission(req, res, 'audit:read');
       if (!principal) {
+        recordRouteRequest('/v1/exceptions', res.statusCode || 500);
         return;
       }
       const params = new URL(req.url ?? '/', 'http://localhost').searchParams;
       const sinceParam = params.get('since') ?? undefined;
       const kindsParam = params.get('kinds');
       const limitParam = params.get('limit');
-      sendJson(
-        res,
-        200,
-        getExceptions({
-          tenantId: principal.tenantId,
-          since: sinceParam,
-          kinds: kindsParam ? kindsParam.split(',').map((s) => s.trim()).filter(Boolean) : undefined,
-          limit: limitParam ? Math.min(1000, Math.max(1, Number(limitParam))) : 200,
-        }),
-        req
+      const exceptions = getExceptions({
+        tenantId: principal.tenantId,
+        since: sinceParam,
+        kinds: kindsParam
+          ? kindsParam
+              .split(',')
+              .map((s) => s.trim())
+              .filter(Boolean)
+          : undefined,
+        limit: limitParam ? Math.min(1000, Math.max(1, Number(limitParam))) : 200,
+      });
+      recordRouteRequest('/v1/exceptions', 200, principal.tenantId);
+      incrementCounter(
+        'compliance_gateway_exceptions_served_total',
+        { tenantId: principal.tenantId, truncated: String(exceptions.truncated) },
+        exceptions.exceptions.length
       );
+      sendJson(res, 200, exceptions, req);
     } else if (url === '/v1/brief') {
       const principal = requirePermission(req, res, 'query:read');
       if (!principal) {
@@ -842,7 +868,7 @@ const server = createServer(async (req, res) => {
       const sinceParam =
         new URL(req.url ?? '/', 'http://localhost').searchParams.get('since') ?? undefined;
       const chainState = getChainState();
-      const spend = getSpend(principal.subject, principal.tenantId);
+      const spend = await getSpend(principal.subject, principal.tenantId);
       sendJson(
         res,
         200,
@@ -936,7 +962,7 @@ const server = createServer(async (req, res) => {
       if (!principal) {
         return;
       }
-      sendJson(res, 200, getSpend(principal.subject, principal.tenantId), req);
+      sendJson(res, 200, await getSpend(principal.subject, principal.tenantId), req);
     } else if (url === '/v1/providers') {
       const principal = requirePermission(req, res, 'providers:read');
       if (!principal) {

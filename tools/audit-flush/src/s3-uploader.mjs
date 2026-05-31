@@ -16,9 +16,12 @@
  * 7 years, matching the WORM bucket's default retention).
  */
 
+import { failClosed } from './fail-closed.mjs';
+
 let s3Module = null;
 let s3LoadError = null;
 let lastSuccessMs = 0;
+let sdkLoader = () => import('@aws-sdk/client-s3');
 
 const RETENTION_DAYS = Number(process.env.AUDIT_S3_RETENTION_DAYS || 2557);
 
@@ -32,14 +35,26 @@ const RETENTION_DAYS = Number(process.env.AUDIT_S3_RETENTION_DAYS || 2557);
 async function loadSdk() {
   if (s3Module) return s3Module;
   if (s3LoadError) return null;
-  try {
-    s3Module = await import('@aws-sdk/client-s3');
-    return s3Module;
-  } catch (err) {
-    s3LoadError = err;
-    s3Module = null;
-    return null;
-  }
+  let loadFailure = null;
+  const sdk = await failClosed(
+    'audit-flush.s3.sdk',
+    async () => {
+      try {
+        return await sdkLoader();
+      } catch (err) {
+        loadFailure = err;
+        throw err;
+      }
+    },
+    {
+      onError: 'log-and-return-null',
+      onStub: () => {
+        s3LoadError = loadFailure ?? new Error('@aws-sdk/client-s3 unavailable');
+      },
+    }
+  );
+  s3Module = sdk;
+  return s3Module;
 }
 
 /**
@@ -74,13 +89,12 @@ export async function buildS3Client({ region }) {
     JSON.stringify({
       level: 'warn',
       type: 'audit-flush.s3.stub-engaged',
-      message:
-        '@aws-sdk/client-s3 not available; using no-op stub (AUDIT_S3_ALLOW_STUB=1).',
+      message: '@aws-sdk/client-s3 not available; using no-op stub (AUDIT_S3_ALLOW_STUB=1).',
     })
   );
   return {
     send: async (cmd) => {
-      lastSuccessMs = Date.now();
+      // Stub must not advance lastSuccessMs — readiness probes would lie.
       return { stub: true, command: cmd?.constructor?.name ?? 'unknown' };
     },
   };
@@ -111,16 +125,18 @@ export async function putBatch(client, bucket, key, records, metadata = {}) {
   }
 
   const { PutObjectCommand } = s3Module;
-  await client.send(new PutObjectCommand({
-    Bucket: bucket,
-    Key: key,
-    Body: body,
-    ContentType: 'application/x-ndjson',
-    ServerSideEncryption: 'aws:kms',
-    ObjectLockMode: 'COMPLIANCE',
-    ObjectLockRetainUntilDate: retainUntil,
-    Metadata: { recordcount: String(records.length), ...metadata },
-  }));
+  await client.send(
+    new PutObjectCommand({
+      Bucket: bucket,
+      Key: key,
+      Body: body,
+      ContentType: 'application/x-ndjson',
+      ServerSideEncryption: 'aws:kms',
+      ObjectLockMode: 'COMPLIANCE',
+      ObjectLockRetainUntilDate: retainUntil,
+      Metadata: { recordcount: String(records.length), ...metadata },
+    })
+  );
   lastSuccessMs = Date.now();
   return { key, size: body.length };
 }
@@ -132,6 +148,14 @@ export function s3LastSuccessTimestamp() {
 /** Test-only reset. */
 export function _resetForTests() {
   lastSuccessMs = 0;
+  s3Module = null;
+  s3LoadError = null;
+  sdkLoader = () => import('@aws-sdk/client-s3');
+}
+
+/** Test-only SDK loader injection. */
+export function _setSdkLoaderForTests(loader) {
+  sdkLoader = loader;
   s3Module = null;
   s3LoadError = null;
 }

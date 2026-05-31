@@ -36,10 +36,8 @@ describe('normalizeHeaders', () => {
   });
 
   it('sorts by value when keys are equal', () => {
-    // JavaScript deduplicates literal keys, so we use Object.assign
-    const dup = Object.assign({}, { 'x-same': 'b' }, { 'x-same': 'a' });
-    const h = normalizeHeaders(dup);
-    assert.ok(h.includes('["x-same","a"]'));
+    const h = normalizeHeaders({ 'X-Same': 'b', 'x-same': 'a' });
+    assert.ok(h.indexOf('["x-same","a"]') < h.indexOf('["x-same","b"]'));
   });
 });
 
@@ -115,5 +113,21 @@ describe('computeEnvelopeHash', () => {
     const h1 = computeEnvelopeHash(p1);
     const h2 = computeEnvelopeHash(p2);
     assert.strictEqual(h1, h2);
+  });
+
+  it('sorts duplicate query parameters by value', () => {
+    const p1 = {
+      method: 'GET',
+      url: 'https://api.gtcxprotocol.org/v1/status?a=2&a=1',
+      bodyHash: 'a'.repeat(64),
+      headersHash: 'b'.repeat(64),
+      timestamp: '2026-05-17T12:00:00Z',
+      nonce: 'n1',
+      did: 'did:gtcx:device:test',
+      keyId: 'key-1',
+      audience: 'gtcx-api',
+    };
+    const p2 = { ...p1, url: 'https://api.gtcxprotocol.org/v1/status?a=1&a=2' };
+    assert.strictEqual(computeEnvelopeHash(p1), computeEnvelopeHash(p2));
   });
 });

@@ -13,6 +13,7 @@ import {
   _stateSizeForTests,
   clearAuthFailures,
   isAuthThrottled,
+  isIpInCidrs,
   recordAndCheckAuthFailure,
   recordAuthFailure,
   sourceIpFromRequest,
@@ -113,12 +114,48 @@ describe('auth-failure-throttle — counter + window', () => {
 });
 
 describe('auth-failure-throttle — sourceIpFromRequest', () => {
-  it('prefers x-forwarded-for first hop when present', () => {
+  it('prefers x-forwarded-for first hop only when socket peer is trusted', () => {
     const req = {
       headers: { 'x-forwarded-for': '10.0.0.1, 172.16.0.1' },
       socket: { remoteAddress: '127.0.0.1' },
     };
-    assert.strictEqual(sourceIpFromRequest(req), '10.0.0.1');
+    assert.strictEqual(
+      sourceIpFromRequest(req, { trustedProxyCidrs: ['127.0.0.0/8'] }),
+      '10.0.0.1'
+    );
+  });
+
+  it('ignores x-forwarded-for from untrusted socket peers', () => {
+    const req = {
+      headers: { 'x-forwarded-for': '10.0.0.1, 172.16.0.1' },
+      socket: { remoteAddress: '198.51.100.20' },
+    };
+    assert.strictEqual(
+      sourceIpFromRequest(req, { trustedProxyCidrs: ['127.0.0.0/8'] }),
+      '198.51.100.20'
+    );
+  });
+
+  it('ignores malformed x-forwarded-for even from trusted peers', () => {
+    const req = {
+      headers: { 'x-forwarded-for': 'not-an-ip, 10.0.0.1' },
+      socket: { remoteAddress: '127.0.0.1' },
+    };
+    assert.strictEqual(
+      sourceIpFromRequest(req, { trustedProxyCidrs: ['127.0.0.0/8'] }),
+      '127.0.0.1'
+    );
+  });
+
+  it('supports IPv4-mapped socket addresses for trusted proxy checks', () => {
+    const req = {
+      headers: { 'x-forwarded-for': '203.0.113.44' },
+      socket: { remoteAddress: '::ffff:127.0.0.1' },
+    };
+    assert.strictEqual(
+      sourceIpFromRequest(req, { trustedProxyCidrs: ['127.0.0.0/8'] }),
+      '203.0.113.44'
+    );
   });
 
   it('falls back to socket.remoteAddress', () => {
@@ -128,5 +165,24 @@ describe('auth-failure-throttle — sourceIpFromRequest', () => {
 
   it('returns "unknown" when no source can be determined', () => {
     assert.strictEqual(sourceIpFromRequest({ headers: {} }), 'unknown');
+  });
+});
+
+describe('auth-failure-throttle — CIDR matching', () => {
+  it('matches IPv4 CIDR ranges', () => {
+    assert.strictEqual(isIpInCidrs('10.0.5.10', ['10.0.0.0/16']), true);
+    assert.strictEqual(isIpInCidrs('10.1.5.10', ['10.0.0.0/16']), false);
+  });
+
+  it('matches IPv6 CIDR ranges', () => {
+    assert.strictEqual(isIpInCidrs('2001:db8::42', ['2001:db8::/32']), true);
+    assert.strictEqual(isIpInCidrs('2001:db9::42', ['2001:db8::/32']), false);
+  });
+
+  it('ignores invalid CIDR entries safely', () => {
+    assert.strictEqual(isIpInCidrs('10.0.0.1', ['not-cidr', '10.0.0.0/8']), true);
+    assert.strictEqual(isIpInCidrs('10.0.0.1', ['not-cidr', '10.0.0.0/99']), false);
+    assert.strictEqual(isIpInCidrs('10.0.0.1', ['10.0.0.0/8junk']), false);
+    assert.strictEqual(isIpInCidrs('10.0.0.1', ['10.0.0.0/8/extra']), false);
   });
 });

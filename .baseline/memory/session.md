@@ -8,6 +8,25 @@ focus: "Baseline initialization — discovery and enrichment"
 
 # Session: Baseline Initialization
 
+## 2026-05-31 — Roadmap Execution: S2-04 Trusted-XFF CIDR Enforcement
+
+## What Was Done
+- Executed roadmap item S2-04: `sourceIpFromRequest()` now trusts `X-Forwarded-For` only when the socket peer is inside configured trusted proxy CIDRs.
+- Added `GTCX_TRUSTED_PROXY_CIDRS`; with no configured CIDRs, XFF is ignored and the socket IP remains authoritative.
+- Added IPv4 and IPv6 CIDR matching plus IPv4-mapped socket address normalization for proxy peers.
+- Added regression coverage for trusted proxy XFF extraction, spoofed XFF from untrusted peers, malformed XFF fallback, IPv4 CIDR matching, IPv6 CIDR matching, and invalid CIDR handling.
+- Updated `docs/audit/execution-roadmap.md` and `docs/audit/latest.json` to mark S2-04 done and reduce remaining P1 gaps.
+
+## Verification
+- `node --test tools/compliance-gateway/tests/auth-failure-throttle.unit.test.mjs` — pass; 18 tests.
+- `pnpm --dir tools/compliance-gateway run test:coverage:gate` — pass; 174 tests; branch coverage 91.87%.
+- `node tools/scripts/empty-catch-check.mjs` — pass; 13 allowed empty catches, 0 unallowed.
+- `node tools/scripts/validate-all.mjs` — pass outside sandbox; 23/23 gates green.
+
+## Notes
+- Next roadmap candidate: S2-05 (Prometheus metrics for `/v1/exceptions` and `/v1/audit/evidence-bundle`).
+- Full validation should run outside the sandbox because HTTP listener tests can fail with `listen EPERM` inside the sandbox.
+
 ## 2026-05-31 — Roadmap Execution: S2-03 Auth Failure Throttle
 
 ## What Was Done

@@ -111,6 +111,8 @@ run('Jurisdiction Catalog Parity', 'node tools/scripts/jurisdiction-catalog-pari
 run('Terraform Registry Readiness', 'node tools/scripts/terraform-registry-readiness-check.mjs');
 run('NPM Publish Readiness', 'node tools/scripts/npm-publish-readiness-check.mjs');
 run('Dependabot Tier Merge', 'node tools/scripts/dependabot-tier-merge-check.mjs');
+run('Dependabot Merge Plan', 'node tools/scripts/dependabot-merge-plan.mjs');
+run('Pen-Test Intake Evidence', 'node tools/scripts/pen-test-intake-evidence.mjs');
 run(
   'Contract Tests',
   'node --test tools/contract-tests/protocol-schema.test.mjs tools/contract-tests/gateway-tenancy.test.mjs tools/contract-tests/audit-signer-catalog.test.mjs tools/contract-tests/replay-protection.test.mjs'

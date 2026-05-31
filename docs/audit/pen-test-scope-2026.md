@@ -37,17 +37,17 @@ GTCX Protocol requires an independent, accredited penetration test of its infras
 
 ### 2.1 In-Scope Assets
 
-| Asset                                         | Type             | Environment       | Notes                                                                                                                |
-| --------------------------------------------- | ---------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `api.gtcx.trade` / `api.testnet.gtcx.trade`   | Web API          | Testnet + Staging | All protocol handlers (`/v1/tradepass/*`, `/v1/vaultmark/*`, `/v1/pvp/*`, `/v1/panx/*`, `/v1/gci/*`, `/v1/geotag/*`) |
-| Compliance Gateway (`/v1/query`, `/v1/tools`) | AI Gateway       | Staging           | Natural-language to protocol routing; auth boundary is critical                                                      |
-| Replay Protection (`/v1/replay/verify`)       | Security Service | Staging           | Signed-request contract verification                                                                                 |
-| gtcx-platforms                                | Core Service     | Production        | KMS signing integration, IRSA token flow, container security hardening                                               |
-| Kubernetes ingress + ALB                      | Infrastructure   | Staging           | AWS ALB, WAF rules, TLS termination                                                                                  |
-| PostgreSQL (primary + audit)                  | Database         | Staging           | Data at rest, access controls, privilege escalation                                                                  |
-| Redis (nonce store)                           | Cache/Store      | Staging           | Key exposure, unauthorized access                                                                                    |
-| ECR container images                          | Supply Chain     | Registry          | Image tampering, secret leakage                                                                                      |
-| CI/CD pipeline                                | DevOps           | GitHub Actions    | Artifact integrity, secret exfiltration                                                                              |
+| Asset                                         | Type             | Environment       | Notes                                                                                            |
+| --------------------------------------------- | ---------------- | ----------------- | ------------------------------------------------------------------------------------------------ |
+| `api.gtcx.trade` / `api.testnet.gtcx.trade`   | Web API          | Testnet + Staging | Cloudflare Tunnel → `compliance-gateway:8500` (primary public surface post S3-10)                |
+| Compliance Gateway (`/v1/query`, `/v1/tools`) | AI Gateway       | Staging           | Natural-language to protocol routing; auth boundary is critical; tenant isolation + budget gates |
+| Replay Protection (`/v1/replay/verify`)       | Security Service | Staging           | Signed-request contract verification                                                             |
+| gtcx-platforms                                | Core Service     | Production        | KMS signing integration, IRSA token flow, container security hardening                           |
+| Kubernetes ingress + ALB                      | Infrastructure   | Staging           | AWS ALB, WAF rules, TLS termination                                                              |
+| PostgreSQL (primary + audit)                  | Database         | Staging           | Data at rest, access controls, privilege escalation                                              |
+| Redis (nonce store)                           | Cache/Store      | Staging           | Key exposure, unauthorized access                                                                |
+| ECR container images                          | Supply Chain     | Registry          | Image tampering, secret leakage                                                                  |
+| CI/CD pipeline                                | DevOps           | GitHub Actions    | Artifact integrity, secret exfiltration                                                          |
 
 ### 2.2 Out-of-Scope
 

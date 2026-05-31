@@ -43,7 +43,7 @@ const ALLOWLIST = new Set([
   // must not blank the whole evidence bundle.
   'tools/compliance-gateway/src/evidence-renderer.mjs:44',
   // Brotli compression best-effort fallback — gzip path runs next.
-  'tools/compliance-gateway/src/server.mjs:682',
+  'tools/compliance-gateway/src/server.mjs:690',
   // NATS stream already-exists (race-safe creation) + shutdown drain.
   'tools/audit-flush/src/nats-consumer.mjs:75',
   'tools/audit-flush/src/nats-consumer.mjs:187',

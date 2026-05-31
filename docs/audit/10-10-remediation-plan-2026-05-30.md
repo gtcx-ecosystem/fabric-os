@@ -1,11 +1,14 @@
 ---
 title: 'GTCX Infrastructure — 10/10 Remediation Plan'
-status: 'current'
+status: 'superseded'
 date: '2026-05-30'
+superseded_by: 'docs/audit/execution-roadmap.md'
+superseded_on: '2026-05-31'
+superseded_reason: 'Three docs from 2026-05-30 reported different scores (post-roadmap-session = 6.8/6.2, master-audit = 6.5/6.1, this plan = 7.6/7.6). Per Q3 of execution-roadmap.md, the 7.6 baseline assumed Phase 0 gates green at HEAD while the tree was dirty. Authoritative reconciled baseline: 6.8/6.2.'
 owner: 'gtcx-infrastructure'
 role: 'quality-evidence-lead'
 tier: 'strategic'
-tags: ['roadmap', 'audit', 'remediation', '10-10']
+tags: ['roadmap', 'audit', 'remediation', '10-10', 'superseded']
 review_cycle: 'weekly'
 source_audit: 'docs/audit/master-audit-2026-05-30.md'
 previous_plan: 'docs/audit/10-10-remediation-plan-2026-05-28.md'
@@ -13,6 +16,12 @@ current_composite: 7.6
 internal_readiness: 7.6
 target_composite: 10.0
 ---
+
+> **SUPERSEDED 2026-05-31.** Current source of truth:
+> [`execution-roadmap.md`](./execution-roadmap.md). The 7.6/7.6 baseline
+> below was rejected during reconciliation (Q3) in favour of the
+> independently-rescored 6.8/6.2 from
+> [`post-roadmap-session-2026-05-30.md`](./post-roadmap-session-2026-05-30.md).
 
 # GTCX Infrastructure — 10/10 Remediation Plan
 

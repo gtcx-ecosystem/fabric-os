@@ -46,20 +46,20 @@ supersedes: docs/audit/external-dependencies-register-2026-05-28.md
 
 The 12 EXT-INF-001 through EXT-INF-012 entries from `external-dependencies-register-2026-05-28.md` remain valid. Status changes:
 
-| ID              | Prior status              | 2026-05-31 status                                                                                                                                    |
-| --------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EXT-INF-001     | open — kickoff pack ready | unchanged                                                                                                                                            |
-| **EXT-INF-002** | open — RFP/scope ready    | escalated to P0 in execution-roadmap S2-13; Q5 ANSWERED 2026-05-31 (pen-test AFTER Sprint 1) — SOW signature in Sprint 2 targets post-Sprint-1 state |
-| EXT-INF-003     | open — script not wired   | unchanged                                                                                                                                            |
-| EXT-INF-004     | open                      | INF-49 substrate landed (commit `dd46907`); DNS + cert still TBD                                                                                     |
-| EXT-INF-005     | open                      | unchanged                                                                                                                                            |
-| EXT-INF-006     | open                      | mapped to S3-02 in execution-roadmap                                                                                                                 |
-| EXT-INF-007     | open                      | unchanged                                                                                                                                            |
-| EXT-INF-008     | conditional               | unchanged                                                                                                                                            |
-| EXT-INF-009     | de-scoped (ADR-023)       | unchanged                                                                                                                                            |
-| EXT-INF-010     | open                      | EXT-INF-015 (SLA) tracks parallel work                                                                                                               |
-| EXT-INF-011     | open                      | unchanged                                                                                                                                            |
-| EXT-INF-012     | open                      | unchanged                                                                                                                                            |
+| ID              | Prior status              | 2026-05-31 status                                                                                                                                                                                      |
+| --------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| EXT-INF-001     | open — kickoff pack ready | unchanged                                                                                                                                                                                              |
+| **EXT-INF-002** | open — RFP/scope ready    | escalated to P0 in execution-roadmap S2-13; Q5 ANSWERED 2026-05-31 (pen-test AFTER Sprint 1) — agent intake evidence at `docs/audit/pen-test-intake-evidence-2026-05-31.md`; **SOW signature pending** |
+| EXT-INF-003     | open — script not wired   | unchanged                                                                                                                                                                                              |
+| EXT-INF-004     | open                      | INF-49 substrate landed (commit `dd46907`); DNS + cert still TBD                                                                                                                                       |
+| EXT-INF-005     | open                      | unchanged                                                                                                                                                                                              |
+| EXT-INF-006     | open                      | mapped to S3-02 in execution-roadmap                                                                                                                                                                   |
+| EXT-INF-007     | open                      | unchanged                                                                                                                                                                                              |
+| EXT-INF-008     | conditional               | unchanged                                                                                                                                                                                              |
+| EXT-INF-009     | de-scoped (ADR-023)       | unchanged                                                                                                                                                                                              |
+| EXT-INF-010     | open                      | EXT-INF-015 (SLA) tracks parallel work                                                                                                                                                                 |
+| EXT-INF-011     | open                      | unchanged                                                                                                                                                                                              |
+| EXT-INF-012     | open                      | unchanged                                                                                                                                                                                              |
 
 ---
 

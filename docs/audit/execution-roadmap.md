@@ -317,7 +317,7 @@ closed. Regulator-readiness checklists have named owners.
 | S2-10 | Frontmatter-merge guard: refuse `tier:` downgrade                     | **done** — `mergeBlocks` keeps highest `tier`; legacy downgrade detection in `--check`; `automated-rollback.md` restored to `critical`            |
 | S2-11 | Dependabot Tier 1+2 merges + `.github/dependabot.yml` ignore rules    | **done** — Q7 pin in dependabot.yml; `dependabot-policy-check` wired in validate-all                                                              |
 | S2-12 | SOC 2 readiness owner mapping + IRP v1 board sign-off prep            | **done** — agent ownership model + `soc2-agent-owners-check`; IRP v1 agent-prep section (board signatures = EXT-INF escalation)                   |
-| S2-13 | **Pen-test SOW signature** (Bet 1 external validation)                | pending — Q5 ANSWERED 2026-05-31 (**AFTER** Sprint 1; SOW targets post-Sprint-1 state, no +4w delay)                                              |
+| S2-13 | **Pen-test SOW signature** (Bet 1 external validation)                | **intake ready** — `pen-test-intake-evidence-2026-05-31.md` + scope updated; human SOW signature pending (EXT-INF-002)                            |
 | S2-14 | Replay-protection package coverage pump (close 90% branches gate)     | **done** (`570ad49`) — replay-protection branch coverage 90.45%; `node tools/scripts/validate-all.mjs` 23/23 pass                                 |
 
 > Per-story acceptance commands will be filled in when Sprint 2 opens (sprint

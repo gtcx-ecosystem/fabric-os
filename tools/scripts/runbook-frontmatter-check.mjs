@@ -48,7 +48,7 @@ const FRONTMATTER_RX = /^---\n([\s\S]*?)\n---/;
  *   restAfterSecond?: string,
  * }}
  */
-function detectDuplicate(text) {
+export function detectDuplicate(text) {
   const m1 = text.match(FRONTMATTER_RX);
   if (!m1) return { hasDuplicate: false };
   const afterFirst = text.slice(m1[0].length);
@@ -75,7 +75,7 @@ function detectDuplicate(text) {
  * @param {string} block
  * @returns {Map<string, string>}
  */
-function parseBlock(block) {
+export function parseBlock(block) {
   const map = new Map();
   for (const rawLine of block.split('\n')) {
     const line = rawLine.replace(/\s+$/, '');
@@ -204,4 +204,4 @@ function main() {
   console.log(`[runbook-frontmatter-check] merged frontmatter in ${changedCount} file(s)`);
 }
 
-main();
+if (import.meta.url === `file://${process.argv[1]}`) main();

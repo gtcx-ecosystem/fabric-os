@@ -43,22 +43,12 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { canonicalizeValue } from '@gtcx/audit-signer';
+
 const HERE = dirname(fileURLToPath(import.meta.url));
 const PKG = join(HERE, '..');
 const CATALOG = join(PKG, 'jurisdictions.json');
 const SIG = join(PKG, 'jurisdictions.json.sig');
-
-function canonicalize(value) {
-  // Deterministic JSON: keys sorted, no insignificant whitespace.
-  // Compatible with @gtcx/audit-signer's canonicalize for primitives,
-  // extended here to handle nested objects + arrays.
-  if (value === null || typeof value !== 'object') return JSON.stringify(value);
-  if (Array.isArray(value)) {
-    return `[${value.map(canonicalize).join(',')}]`;
-  }
-  const keys = Object.keys(value).sort();
-  return `{${keys.map((k) => `${JSON.stringify(k)}:${canonicalize(value[k])}`).join(',')}}`;
-}
 
 function main() {
   const keyB64 = process.env.COMPLIANCE_DATA_SIGNING_KEY_B64;
@@ -77,7 +67,7 @@ function main() {
   const catalogRaw = readFileSync(CATALOG, 'utf8');
   const catalog = JSON.parse(catalogRaw);
   const pkg = JSON.parse(readFileSync(join(PKG, 'package.json'), 'utf8'));
-  const canonical = canonicalize(catalog);
+  const canonical = canonicalizeValue(catalog);
   const catalogHash = createHash('sha256').update(canonical, 'utf8').digest('base64');
 
   const privateKey = createPrivateKey({

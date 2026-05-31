@@ -44,6 +44,9 @@
     "signed-data"
   ],
   "license": "MIT",
-  "private": true,
+  "dependencies": {
+    "@gtcx/audit-signer": "workspace:*"
+  },
+  "private": false,
   "_publishingNote": "Set private:false when ready to npm publish. prepublishOnly runs the signature verifier to refuse publication of an unsigned or tampered catalog."
 }

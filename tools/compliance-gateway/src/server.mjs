@@ -46,7 +46,7 @@ import {
 import {
   clearAuthFailures,
   isAuthThrottled,
-  recordAuthFailure,
+  recordAndCheckAuthFailure,
   sourceIpFromRequest,
 } from './auth-failure-throttle.mjs';
 import {
@@ -219,7 +219,7 @@ function requirePermission(req, res, requiredPermission) {
 
   const auth = authenticateHeaders(req.headers, authState, requiredPermission);
   if (!auth.ok) {
-    const update = recordAuthFailure(sourceIp);
+    const update = recordAndCheckAuthFailure(sourceIp);
     incrementCounter('compliance_gateway_auth_failures_total', {
       reason: auth.status === 401 ? 'invalid-token' : 'missing-permission',
       throttled: update.throttled ? 'true' : 'false',
@@ -227,7 +227,7 @@ function requirePermission(req, res, requiredPermission) {
     // Once throttled, skip the signing to break the amplifier. Pre-
     // throttle failures still sign so the regulator-facing trail
     // captures the early abuse signal.
-    if (!update.throttled) {
+    if (update.shouldSign) {
       // Tag auth failures with the synthetic `platform` tenant. The
       // attacker's intended tenant is unknown — and even if known via
       // a guessable header, leaking it to that tenant's `/v1/exceptions`

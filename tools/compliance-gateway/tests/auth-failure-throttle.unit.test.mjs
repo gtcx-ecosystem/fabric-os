@@ -10,13 +10,16 @@ import { afterEach, beforeEach, describe, it } from 'node:test';
 
 import {
   _resetForTests,
+  _stateSizeForTests,
   clearAuthFailures,
   isAuthThrottled,
+  recordAndCheckAuthFailure,
   recordAuthFailure,
   sourceIpFromRequest,
 } from '../src/auth-failure-throttle.mjs';
 
 const CFG = { threshold: 3, windowMs: 100, throttleMs: 100 };
+const CAP_CFG = { threshold: 100, windowMs: 60_000, throttleMs: 60_000, maxIps: 3 };
 
 describe('auth-failure-throttle — counter + window', () => {
   beforeEach(() => _resetForTests());
@@ -63,6 +66,49 @@ describe('auth-failure-throttle — counter + window', () => {
     const r = recordAuthFailure('a', CFG);
     assert.strictEqual(r.throttled, false);
     assert.strictEqual(r.count, 1);
+  });
+
+  it('recordAndCheckAuthFailure suppresses signing on the threshold-crossing failure', () => {
+    assert.strictEqual(recordAndCheckAuthFailure('a', CFG).shouldSign, true);
+    assert.strictEqual(recordAndCheckAuthFailure('a', CFG).shouldSign, true);
+    const thresholdCrossing = recordAndCheckAuthFailure('a', CFG);
+    assert.strictEqual(thresholdCrossing.throttled, true);
+    assert.strictEqual(thresholdCrossing.alreadyThrottled, false);
+    assert.strictEqual(thresholdCrossing.shouldSign, false);
+
+    const locked = recordAndCheckAuthFailure('a', CFG);
+    assert.strictEqual(locked.throttled, true);
+    assert.strictEqual(locked.alreadyThrottled, true);
+    assert.strictEqual(locked.shouldSign, false);
+    assert.strictEqual(locked.count, thresholdCrossing.count);
+  });
+
+  it('bounds tracked IP state with LRU eviction', () => {
+    recordAuthFailure('ip-1', CAP_CFG);
+    recordAuthFailure('ip-2', CAP_CFG);
+    recordAuthFailure('ip-3', CAP_CFG);
+    assert.strictEqual(_stateSizeForTests(), 3);
+
+    // Touch ip-1 so ip-2 becomes the oldest evictable entry.
+    assert.strictEqual(isAuthThrottled('ip-1').throttled, false);
+    recordAuthFailure('ip-4', CAP_CFG);
+
+    assert.strictEqual(_stateSizeForTests(), 3);
+    assert.strictEqual(isAuthThrottled('ip-1').throttled, false);
+    assert.strictEqual(isAuthThrottled('ip-3').throttled, false);
+    assert.strictEqual(isAuthThrottled('ip-4').throttled, false);
+    assert.strictEqual(
+      recordAuthFailure('ip-2', { ...CAP_CFG, maxIps: 10 }).count,
+      1,
+      'evicted IP should start a fresh counter'
+    );
+  });
+
+  it('does not evict the IP currently being recorded when maxIps is tiny', () => {
+    recordAuthFailure('old', { ...CAP_CFG, maxIps: 1 });
+    recordAuthFailure('current', { ...CAP_CFG, maxIps: 1 });
+    assert.strictEqual(_stateSizeForTests(), 1);
+    assert.strictEqual(recordAuthFailure('current', { ...CAP_CFG, maxIps: 1 }).count, 2);
   });
 });
 

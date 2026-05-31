@@ -8,6 +8,26 @@ focus: "Baseline initialization — discovery and enrichment"
 
 # Session: Baseline Initialization
 
+## 2026-05-31 — Roadmap Execution: S2-03 Auth Failure Throttle
+
+## What Was Done
+- Executed roadmap item S2-03: bounded `auth-failure-throttle` state and added an atomic record/check helper.
+- Added `GTCX_AUTH_FAILURE_MAX_IPS` support with LRU-style eviction so distributed brute-force source IPs cannot grow the in-process `ipState` map without bound.
+- Added `recordAndCheckAuthFailure()` so the auth-failure path records a failure and decides whether an audit event may be signed from the same state update.
+- Updated `server.mjs` to use the atomic helper and suppress audit signing on the threshold-crossing failure as well as already-throttled failures.
+- Added regression tests for threshold-crossing no-sign behavior, LRU cap eviction, and current-IP protection when the cap is tiny.
+- Updated `docs/audit/execution-roadmap.md` and `docs/audit/latest.json` to mark S2-03 done and reduce remaining P1/P2 gaps.
+
+## Verification
+- `node --test tools/compliance-gateway/tests/auth-failure-throttle.unit.test.mjs` — pass; 12 tests.
+- `pnpm --dir tools/compliance-gateway run test:coverage:gate` — pass; 174 tests; branch coverage 91.87%.
+- `node tools/scripts/empty-catch-check.mjs` — pass; 13 allowed empty catches, 0 unallowed.
+- `node tools/scripts/validate-all.mjs` — pass outside sandbox; 23/23 gates green.
+
+## Notes
+- Next roadmap candidate: S2-04 (Trusted-XFF CIDR enforcement).
+- Full validation was run outside the sandbox because HTTP listener tests can fail with `listen EPERM` inside the sandbox.
+
 ## 2026-05-31 — Roadmap Execution: S2-02 Budget Store Wiring
 
 ## What Was Done

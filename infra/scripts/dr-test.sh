@@ -146,7 +146,7 @@ EVIDENCE_RPO_MS="$RPO_MS"
 echo ""
 echo "Step 6: Cleanup"
 STEP6_START=$(date +%s%N)
-PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "postgres" -c "DROP DATABASE IF EXISTS $RESTORE_DB;" 2>/dev/null
+PGPASSWORD="$POSTGRES_PASSWORD" dropdb -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" --if-exists "$RESTORE_DB" 2>/dev/null || true
 PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "DELETE FROM dr_test_markers WHERE id = '$DR_MARKER';" 2>/dev/null
 rm -f "$BACKUP_FILE"
 echo "  Cleanup complete"

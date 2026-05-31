@@ -4,9 +4,11 @@ import { describe, it } from 'node:test';
 import { validateCloudflaredApiRouting } from './cloudflared-api-gateway-check.mjs';
 
 describe('cloudflared-api-gateway-check', () => {
-  it('accepts compliance-gateway routing for api.gtcx.trade', () => {
+  it('accepts expected public API routing', () => {
     const text = [
       'ingress:',
+      '  - hostname: api.gtcx.africa',
+      '    service: http://baselineos.baselineos.svc.cluster.local:3141',
       '  - hostname: api.gtcx.trade',
       '    service: http://compliance-gateway.gtcx.svc.cluster.local:8500',
       '  - service: http_status:404',
@@ -23,5 +25,23 @@ describe('cloudflared-api-gateway-check', () => {
       '    service: http://gtcx-protocols.gtcx.svc.cluster.local:8300',
     ].join('\n');
     assert.ok(validateCloudflaredApiRouting(legacy).some((f) => f.includes('compliance-gateway')));
+  });
+
+  it('rejects missing or incorrect api.gtcx.africa routing', () => {
+    const missing = [
+      'ingress:',
+      '  - hostname: api.gtcx.trade',
+      '    service: http://compliance-gateway.gtcx.svc.cluster.local:8500',
+    ].join('\n');
+    assert.ok(validateCloudflaredApiRouting(missing).some((f) => f.includes('api.gtcx.africa')));
+
+    const wrongService = [
+      'ingress:',
+      '  - hostname: api.gtcx.africa',
+      '    service: http://compliance-gateway.gtcx.svc.cluster.local:8500',
+      '  - hostname: api.gtcx.trade',
+      '    service: http://compliance-gateway.gtcx.svc.cluster.local:8500',
+    ].join('\n');
+    assert.ok(validateCloudflaredApiRouting(wrongService).some((f) => f.includes('baselineos:3141')));
   });
 });

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * @fileoverview Validate api.gtcx.trade routes through Cloudflare Tunnel to compliance-gateway.
+ * @fileoverview Validate public API hostnames route through Cloudflare Tunnel.
  */
 
 import { readFileSync } from 'node:fs';
@@ -23,15 +23,26 @@ export function validateCloudflaredApiRouting(text) {
   if (text.includes('query.gtcx.trade')) {
     failures.push('query.gtcx.trade must not be published until zero-trust boundary exists');
   }
-  const apiRule = text.match(/- hostname: api\.gtcx\.trade\n\s+service: \S+/);
-  if (!apiRule) {
+  const tradeApiRule = text.match(/- hostname: api\.gtcx\.trade\n\s+service: \S+/);
+  if (!tradeApiRule) {
     failures.push('missing api.gtcx.trade ingress rule');
-    return failures;
+  } else {
+    const service = tradeApiRule[0].split('\n').pop().trim();
+    if (!service.includes('compliance-gateway.gtcx.svc.cluster.local:8500')) {
+      failures.push(`api.gtcx.trade must route to compliance-gateway:8500 (got ${service})`);
+    }
   }
-  const service = apiRule[0].split('\n').pop().trim();
-  if (!service.includes('compliance-gateway.gtcx.svc.cluster.local:8500')) {
-    failures.push(`api.gtcx.trade must route to compliance-gateway:8500 (got ${service})`);
+
+  const baselineApiRule = text.match(/- hostname: api\.gtcx\.africa\n\s+service: \S+/);
+  if (!baselineApiRule) {
+    failures.push('missing api.gtcx.africa ingress rule');
+  } else {
+    const service = baselineApiRule[0].split('\n').pop().trim();
+    if (!service.includes('baselineos.baselineos.svc.cluster.local:3141')) {
+      failures.push(`api.gtcx.africa must route to baselineos:3141 (got ${service})`);
+    }
   }
+
   return failures;
 }
 
@@ -43,7 +54,7 @@ function main() {
     for (const f of failures) console.error(`- ${f}`);
     process.exit(1);
   }
-  console.log('[cloudflared-api-gateway-check] api.gtcx.trade -> compliance-gateway:8500 OK');
+  console.log('[cloudflared-api-gateway-check] public API tunnel routes OK');
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) main();

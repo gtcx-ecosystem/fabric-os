@@ -2,6 +2,8 @@ tunnel: b750343c-a43d-4d1e-b80e-44298348fac4
 credentials-file: /etc/cloudflared/credentials.json
 
 ingress:
+  - hostname: api.gtcx.africa
+    service: http://baselineos.baselineos.svc.cluster.local:3141
   - hostname: api.gtcx.trade
     service: http://compliance-gateway.gtcx.svc.cluster.local:8500
   - hostname: testnet.gtcx.trade

@@ -64,15 +64,21 @@
     "S2-08 closed (9829b8f, 2026-05-31): every workspace package manifest now requires node >=20.18.0; GitHub setup-node calls and shared action defaults pin exact 20.18.0; node-version-floor-check.mjs is wired into validate-all to prevent drift; node tools/scripts/validate-all.mjs passes 24 of 24 gates.",
     "S2-06 closed (a9eaa4c, 2026-05-31): HTML evidence responses now set a restrictive Content-Security-Policy header and archived HTML embeds matching CSP metadata; visible table/meta fields strip Unicode bidi control characters while raw NDJSON remains exact for offline signature verification; renderer and route integration tests pass; node tools/scripts/validate-all.mjs passes 24 of 24 gates.",
     "S2-07 closed (afce75a, 2026-05-31): KYC local screening now fails closed without an explicit SCREENING_LOCAL_SALT outside tests; handler checks for an existing screening result object before re-screening; decoded S3 keys with control characters are rejected before screening or writing results; node tools/scripts/validate-all.mjs passes 24 of 24 gates.",
-    "Full-audit 2026-05-31 (afce75a): six-phase fresh audit; internal 7.3 / certified 6.6; S2-09 and S2-10 remain top code gaps; EXT-INF-013 and S2-13 remain top external gaps."
+    "Full-audit 2026-05-31 (afce75a): six-phase fresh audit; internal 7.3 / certified 6.6; S2-09 and S2-10 remain top code gaps; EXT-INF-013 and S2-13 remain top external gaps.",
+    "S2-11 closed (2026-05-31): dependabot-policy-check gate validates Q7 pin and tier grouping in validate-all.",
+    "S2-12 closed (2026-05-31): SOC 2 checklist agent ownership model + soc2-agent-owners-check; IRP v1 agent-prep section added.",
+    "S3-02 structural (2026-05-31): dr-fire-drill-evidence gate validates dr-test.sh contract and writes dated artifact.",
+    "S3-03 closed (2026-05-31): soak-baseline.json committed; soak-baseline-check wired in validate-all.",
+    "S3-04 structural (2026-05-31): runtime-evidence-check dry-run gate generates and verifies signed release bundle.",
+    "S3-05 closed (2026-05-31): canonicalizeValue exported from @gtcx/audit-signer; compliance-data uses shared helper.",
+    "S3-06 closed (2026-05-31): S3 stub send no longer advances lastSuccessMs.",
+    "S3-09 closed (2026-05-31): contract tests for gateway-tenancy, audit-signer-catalog, replay-protection in validate-all."
   ],
   "remainingGaps": [
-    "S2-09 — Alertmanager defaults fail-closed outside dev.",
-    "S2-10 — Frontmatter-merge guard: refuse tier downgrade.",
-    "S2-11 — Dependabot Tier 1+2 merges.",
-    "S2-12 — SOC 2 readiness owner mapping.",
-    "S2-13 — Pen-test SOW signature.",
-    "S1-09 / EXT-INF-013 — ZWCMP owner assignment (human).",
+    "S2-13 — Pen-test SOW signature (EXT-INF-002).",
+    "S3-07 — npm publish @gtcx/audit-signer + @gtcx/compliance-data (agent prep done).",
+    "S3-08 — Indemnified SLA legal review (EXT-INF-015).",
+    "S3-11 — ZWCMP DPA + pilot agreement (EXT-INF-014).",
     "External assurance remains pending; full-audit-2026-05-31 is internal only."
   ],
   "evidence": {

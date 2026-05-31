@@ -315,8 +315,8 @@ closed. Regulator-readiness checklists have named owners.
 | S2-08 | Node 20.18.0 enforcement across packages + workflows                  | **done** (`9829b8f`) — package engines, CI setup-node, shared action defaults, docs, and validate-all gate enforce 20.18.0                        |
 | S2-09 | Alertmanager defaults fail-closed outside dev                         | **done** — init container rejects placeholder PagerDuty/Slack env unless `GTCX_ALERTS_DEV_MODE=1`; `alertmanager-env-check` wired in validate-all |
 | S2-10 | Frontmatter-merge guard: refuse `tier:` downgrade                     | **done** — `mergeBlocks` keeps highest `tier`; legacy downgrade detection in `--check`; `automated-rollback.md` restored to `critical`            |
-| S2-11 | Dependabot Tier 1+2 merges + `.github/dependabot.yml` ignore rules    | pending (Q7)                                                                                                                                      |
-| S2-12 | SOC 2 readiness owner mapping + IRP v1 board sign-off prep            | pending                                                                                                                                           |
+| S2-11 | Dependabot Tier 1+2 merges + `.github/dependabot.yml` ignore rules    | **done** — Q7 pin in dependabot.yml; `dependabot-policy-check` wired in validate-all                                                              |
+| S2-12 | SOC 2 readiness owner mapping + IRP v1 board sign-off prep            | **done** — agent ownership model + `soc2-agent-owners-check`; IRP v1 agent-prep section (board signatures = EXT-INF escalation)                   |
 | S2-13 | **Pen-test SOW signature** (Bet 1 external validation)                | pending — Q5 ANSWERED 2026-05-31 (**AFTER** Sprint 1; SOW targets post-Sprint-1 state, no +4w delay)                                              |
 | S2-14 | Replay-protection package coverage pump (close 90% branches gate)     | **done** (`570ad49`) — replay-protection branch coverage 90.45%; `node tools/scripts/validate-all.mjs` 23/23 pass                                 |
 
@@ -332,20 +332,20 @@ closed. Regulator-readiness checklists have named owners.
 signed. Primitives published with provenance. Soak baseline + DR drill
 artifacts on disk.
 
-| Story | Title                                                                                    | Status       |
-| ----- | ---------------------------------------------------------------------------------------- | ------------ |
-| S3-01 | Dependabot Tier 3-5 batched merges (AI SDK v5→v6 verified)                               | pending      |
-| S3-02 | First quarterly DR fire-drill against staging RDS — evidence committed                   | pending      |
-| S3-03 | Soak-test baseline as PR gate (>25% regression fails build)                              | pending      |
-| S3-04 | Live runtime evidence — release-bundle + WORM upload + staging smoke                     | pending      |
-| S3-05 | Replace local canonicalize with `@gtcx/audit-signer` export                              | pending      |
-| S3-06 | Stub S3 uploader must not mutate `lastSuccessMs`                                         | pending      |
-| S3-07 | **Publish primitives** — flip `private:true→false` on signer + catalog + SLSA provenance | pending      |
-| S3-08 | Indemnified-SLA legal review + insurance quote (publication checklist 1-3)               | pending      |
-| S3-09 | Contract tests — replay/audit-signer/catalog/gateway-tenancy                             | pending      |
-| S3-10 | Cloudflare Tunnel migration for `api.gtcx.trade`                                         | pending      |
-| S3-11 | **ZWCMP DPA + pilot agreement signature** (Bet 2 close — **Sprint 3 headline** per Q6)   | pending (Q5) |
-| S3-12 | Publish `terraform-aws-compliance-db` v1.0.0 + 5 new jurisdictions                       | pending      |
+| Story | Title                                                                                    | Status                                                                                                          |
+| ----- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| S3-01 | Dependabot Tier 3-5 batched merges (AI SDK v5→v6 verified)                               | pending                                                                                                         |
+| S3-02 | First quarterly DR fire-drill against staging RDS — evidence committed                   | **structural done** — `dr-fire-drill-evidence` gate + dated artifact; live RDS restore = operator (vault creds) |
+| S3-03 | Soak-test baseline as PR gate (>25% regression fails build)                              | **done** — `docs/audit/soak-baseline.json` + `soak-baseline-check.mjs` in validate-all                          |
+| S3-04 | Live runtime evidence — release-bundle + WORM upload + staging smoke                     | **structural done** — `runtime-evidence-check` dry-run gate; live WORM/staging smoke = operator                 |
+| S3-05 | Replace local canonicalize with `@gtcx/audit-signer` export                              | **done** — `canonicalizeValue` exported; compliance-data sign/verify use shared helper                          |
+| S3-06 | Stub S3 uploader must not mutate `lastSuccessMs`                                         | **done** — stub `send` no longer advances timestamp; unit regression added                                      |
+| S3-07 | **Publish primitives** — flip `private:true→false` on signer + catalog + SLSA provenance | **partial** — `@gtcx/compliance-data` public + provenance; `@gtcx/audit-signer` provenance; npm publish pending |
+| S3-08 | Indemnified-SLA legal review + insurance quote (publication checklist 1-3)               | pending (EXT-INF-015)                                                                                           |
+| S3-09 | Contract tests — replay/audit-signer/catalog/gateway-tenancy                             | **done** — four contract tests wired in validate-all                                                            |
+| S3-10 | Cloudflare Tunnel migration for `api.gtcx.trade`                                         | pending                                                                                                         |
+| S3-11 | **ZWCMP DPA + pilot agreement signature** (Bet 2 close — **Sprint 3 headline** per Q6)   | pending (Q5)                                                                                                    |
+| S3-12 | Publish `terraform-aws-compliance-db` v1.0.0 + 5 new jurisdictions                       | pending                                                                                                         |
 
 > Per-story acceptance commands filled in at sprint start (2026-06-15).
 

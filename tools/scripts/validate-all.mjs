@@ -102,6 +102,14 @@ run('Runbook Commands Exist', 'node tools/scripts/runbook-commands-check.mjs');
 run('Runbook Frontmatter', 'node tools/scripts/runbook-frontmatter-check.mjs --check');
 run('Production Overlay Tags', 'node tools/scripts/production-overlay-guard.mjs');
 run('Alert Runbook Anchors', 'node tools/scripts/alerts-add-runbook-url.mjs --check');
+run('Dependabot Policy', 'node tools/scripts/dependabot-policy-check.mjs');
+run('SOC2 Agent Owners', 'node tools/scripts/soc2-agent-owners-check.mjs');
+run('Soak Baseline', 'node tools/scripts/soak-baseline-check.mjs --check');
+run('DR Drill Evidence', 'node tools/scripts/dr-fire-drill-evidence.mjs');
+run(
+  'Contract Tests',
+  'node --test tools/contract-tests/protocol-schema.test.mjs tools/contract-tests/gateway-tenancy.test.mjs tools/contract-tests/audit-signer-catalog.test.mjs tools/contract-tests/replay-protection.test.mjs'
+);
 
 // =============================================================================
 // 3. Security Validators
@@ -120,6 +128,7 @@ run(
 section('Build Validators');
 
 run('Reproducible Build (dry)', 'node tools/scripts/verify-reproducible-build.mjs');
+run('Runtime Evidence (dry)', 'node tools/scripts/runtime-evidence-check.mjs');
 
 // =============================================================================
 // Summary

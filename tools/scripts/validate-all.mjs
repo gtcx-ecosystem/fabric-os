@@ -106,6 +106,11 @@ run('Dependabot Policy', 'node tools/scripts/dependabot-policy-check.mjs');
 run('SOC2 Agent Owners', 'node tools/scripts/soc2-agent-owners-check.mjs');
 run('Soak Baseline', 'node tools/scripts/soak-baseline-check.mjs --check');
 run('DR Drill Evidence', 'node tools/scripts/dr-fire-drill-evidence.mjs');
+run('Cloudflared API Gateway', 'node tools/scripts/cloudflared-api-gateway-check.mjs');
+run('Jurisdiction Catalog Parity', 'node tools/scripts/jurisdiction-catalog-parity-check.mjs');
+run('Terraform Registry Readiness', 'node tools/scripts/terraform-registry-readiness-check.mjs');
+run('NPM Publish Readiness', 'node tools/scripts/npm-publish-readiness-check.mjs');
+run('Dependabot Tier Merge', 'node tools/scripts/dependabot-tier-merge-check.mjs');
 run(
   'Contract Tests',
   'node --test tools/contract-tests/protocol-schema.test.mjs tools/contract-tests/gateway-tenancy.test.mjs tools/contract-tests/audit-signer-catalog.test.mjs tools/contract-tests/replay-protection.test.mjs'

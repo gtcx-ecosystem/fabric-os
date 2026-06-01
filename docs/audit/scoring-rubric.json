@@ -1,0 +1,127 @@
+{
+  "rubricId": "gtcx-infra-canonical-v1",
+  "effectiveDate": "2026-06-01",
+  "supersedes": [
+    "core-weighted (ledger headline — retired)",
+    "unified-scorecard partnership/enterprise grades (MAOP 2026-05-25)",
+    "ad-hoc internal/certified pairs in audit markdown without latest.json"
+  ],
+  "headlineScores": {
+    "internalReadiness": {
+      "id": "IR",
+      "label": "Internal Readiness",
+      "description": "Repo-controlled engineering + structural ops evidence. Moves only via ledger dimension updates or CI penalty deltas."
+    },
+    "certifiedReadiness": {
+      "id": "CR",
+      "label": "Certified Readiness",
+      "aliases": ["composite", "certified composite"],
+      "description": "What an auditor/regulator can trust today. CR = IR − externalAssuranceGap (capped 0–2.0)."
+    }
+  },
+  "dimensions": [
+    {
+      "id": "codeQuality",
+      "ledgerId": "code-quality",
+      "weight": 0.15,
+      "description": "Tests, coverage gates, type safety, gateway/replay hardening"
+    },
+    {
+      "id": "repoHygiene",
+      "ledgerId": "repo-hygiene",
+      "weight": 0.12,
+      "description": "CI truth, formatting, docs, README accuracy"
+    },
+    {
+      "id": "security",
+      "ledgerId": "security",
+      "weight": 0.15,
+      "description": "Auth boundaries, policies, dependency audit, Kyverno"
+    },
+    {
+      "id": "globalSouthResilience",
+      "ledgerId": "global-south-resilience",
+      "weight": 0.1,
+      "description": "USSD, low-bandwidth, offline-tolerant paths"
+    },
+    {
+      "id": "ecosystemIntegration",
+      "ledgerId": "ecosystem-integration",
+      "weight": 0.1,
+      "description": "Cross-repo contracts, shared CI, alignment"
+    },
+    {
+      "id": "agenticMaturity",
+      "ledgerId": "agentic-maturity",
+      "weight": 0.13,
+      "description": "SIGNAL, eval pipeline, agent gates (not raw SIGNAL alone)"
+    },
+    {
+      "id": "enterpriseReadiness",
+      "ledgerId": "enterprise-readiness",
+      "weight": 0.25,
+      "description": "DR/WORM/release evidence — structural vs live operator proof"
+    }
+  ],
+  "externalAssurancePenalties": [
+    {
+      "id": "EXT-INF-013",
+      "label": "ZWCMP pilot owner + cadence",
+      "penalty": 0.25,
+      "status": "open"
+    },
+    {
+      "id": "EXT-INF-014",
+      "label": "DPA + pilot agreement",
+      "penalty": 0.25,
+      "status": "open"
+    },
+    {
+      "id": "EXT-INF-002",
+      "label": "Pen-test SOW signed",
+      "penalty": 0.3,
+      "status": "open"
+    },
+    {
+      "id": "EXT-INF-003",
+      "label": "Recurring WORM upload on main merge",
+      "penalty": 0.2,
+      "status": "open"
+    }
+  ],
+  "ciPenalties": [
+    {
+      "id": "main-ci-format-fail",
+      "dimension": "repoHygiene",
+      "delta": -0.4,
+      "when": "mainCiFormatFail"
+    },
+    {
+      "id": "main-ci-job-fail",
+      "dimension": "repoHygiene",
+      "delta": -0.2,
+      "when": "mainCiJobFail"
+    }
+  ],
+  "supplementaryMetrics": [
+    {
+      "id": "signalScore",
+      "ledgerId": "signal",
+      "label": "SIGNAL scorecard",
+      "note": "Report separately; do not substitute for agenticMaturity or IR."
+    },
+    {
+      "id": "coreWeightedLegacy",
+      "ledgerId": "core-weighted",
+      "label": "Core weighted (retired)",
+      "note": "Do not cite in new audits. Historical only."
+    }
+  ],
+  "rules": [
+    "Only two headline scores: IR and CR.",
+    "Full audits MUST run node tools/scripts/compute-audit-scores.mjs and paste the Scorecard block.",
+    "Phase audits use Strong/Good/Pass — no ad-hoc X/10 unless mapped to a dimension change in the ledger.",
+    "Sprint plans use qualitative impact, not projected IR/CR trajectories.",
+    "Score changes require an append-only ledger history entry with commit + artifact."
+  ]
+}

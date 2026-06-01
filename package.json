@@ -39,7 +39,8 @@
     "docs:check-links": "node tools/scripts/docs-link-checker.mjs",
     "prepare": "husky",
     "agent:sync": "node scripts/agent-sync/sync.mjs",
-    "agent:check": "node scripts/agent-sync/sync.mjs --check"
+    "agent:check": "node scripts/agent-sync/sync.mjs --check",
+    "score:compute": "node tools/scripts/compute-audit-scores.mjs --write"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

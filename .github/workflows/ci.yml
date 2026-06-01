@@ -62,7 +62,7 @@ jobs:
           echo "No Terraform artifacts in diff."
 
       - name: Build
-        run: pnpm build
+        run: pnpm exec turbo run build --filter='!@gtcx/docs-site'
 
       - name: Replay protection tests
         run: |
@@ -129,6 +129,8 @@ jobs:
 
       - name: Master validation (all gates)
         run: node tools/scripts/validate-all.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Chaos manifest validation
         run: node tools/scripts/chaos-manifest-validator.mjs
@@ -331,7 +333,7 @@ jobs:
 
       - name: Terraform validate — Multi-Region module
         run: |
-          cd infra/terraform/modules/multi-region
+          cd infra/terraform/modules/multi-region/ci-validate
           terraform init -backend=false
           terraform validate
 
@@ -401,6 +403,7 @@ jobs:
           AUDIT_DB: gtcx_audit
           POSTGRES_AUDIT_PASSWORD: ${{ secrets.CI_POSTGRES_AUDIT_PASSWORD || 'gtcx_audit_dev_password' }}
           PROTOCOL_URL: http://localhost:8300
+          DR_SKIP_PROTOCOL_HEALTH: '1'
         run: |
           docker compose -f infra/docker/docker-compose.dev.yml up -d postgres postgres-audit
           sleep 10

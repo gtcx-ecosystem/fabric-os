@@ -211,20 +211,20 @@ Other:
 
 ### ISO 27001 Annex A Policies
 
-- [A05 Information Security Policy](compliance/policies/A05-information-security-policy.md) — Top-level security policy
-- [A06 Organization of Information Security](compliance/policies/A06-organization-of-information-security.md) — Security roles and responsibilities
-- [A07 Human Resource Security](compliance/policies/A07-human-resource-security.md) — Personnel security controls
-- [A08 Asset Management](compliance/policies/A08-asset-management.md) — Asset inventory and handling
-- [A09 Access Control](compliance/policies/A09-access-control.md) — Access management policy
-- [A10 Cryptography](compliance/policies/A10-cryptography.md) — Cryptographic controls policy
-- [A11 Physical Security](compliance/policies/A11-physical-security.md) — Physical and environmental security
-- [A12 Operations Security](compliance/policies/A12-operations-security.md) — Operational security procedures
-- [A13 Communications Security](compliance/policies/A13-communications-security.md) — Network and transfer security
-- [A14 System Acquisition](compliance/policies/A14-system-acquisition.md) — Secure development and procurement
-- [A15 Supplier Relationships](compliance/policies/A15-supplier-relationships.md) — Supply chain security
-- [A16 Incident Management](compliance/policies/A16-incident-management.md) — Security incident procedures
-- [A17 Business Continuity](compliance/policies/A17-business-continuity.md) — BCM and disaster recovery
-- [A18 Compliance](compliance/policies/A18-compliance.md) — Legal and regulatory compliance
+- [A05 Information Security Policy](compliance/policies/a05-information-security-policy.md) — Top-level security policy
+- [A06 Organization of Information Security](compliance/policies/a06-organization-of-information-security.md) — Security roles and responsibilities
+- [A07 Human Resource Security](compliance/policies/a07-human-resource-security.md) — Personnel security controls
+- [A08 Asset Management](compliance/policies/a08-asset-management.md) — Asset inventory and handling
+- [A09 Access Control](compliance/policies/a09-access-control.md) — Access management policy
+- [A10 Cryptography](compliance/policies/a10-cryptography.md) — Cryptographic controls policy
+- [A11 Physical Security](compliance/policies/a11-physical-security.md) — Physical and environmental security
+- [A12 Operations Security](compliance/policies/a12-operations-security.md) — Operational security procedures
+- [A13 Communications Security](compliance/policies/a13-communications-security.md) — Network and transfer security
+- [A14 System Acquisition](compliance/policies/a14-system-acquisition.md) — Secure development and procurement
+- [A15 Supplier Relationships](compliance/policies/a15-supplier-relationships.md) — Supply chain security
+- [A16 Incident Management](compliance/policies/a16-incident-management.md) — Security incident procedures
+- [A17 Business Continuity](compliance/policies/a17-business-continuity.md) — BCM and disaster recovery
+- [A18 Compliance](compliance/policies/a18-compliance.md) — Legal and regulatory compliance
 
 ---
 

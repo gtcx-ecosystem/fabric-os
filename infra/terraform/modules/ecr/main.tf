@@ -21,6 +21,7 @@ variable "repositories" {
     "gtcx-intelligence-sdk",
     "gtcx-intelligence-trainer",
     "gtcx-intelligence-redteam",
+    "baselineos",
   ]
 }
 

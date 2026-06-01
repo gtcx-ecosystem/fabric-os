@@ -22,6 +22,9 @@ target_composite: 10.0
 > below was rejected during reconciliation (Q3) in favour of the
 > independently-rescored 6.8/6.2 from
 > [`post-roadmap-session-2026-05-30.md`](./post-roadmap-session-2026-05-30.md).
+>
+> **Scoring (v2, 2026-06-01):** Use **IR** + **XC** separately ([`SCORING.md`](./SCORING.md)).
+> Retired: `certified composite` as engineering minus outsiders.
 
 # GTCX Infrastructure — 10/10 Remediation Plan
 

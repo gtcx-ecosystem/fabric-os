@@ -16,6 +16,8 @@ autonomy_level: 'sovereign'
 
 Forensic audit prompt templates and evidence-collection guides used by the GTCX certification pipeline.
 
+> **Repo headline scores (v2):** Report **IR** (internal engineering) and **XC** (external/GTM clearance) as **separate** numbers from [`../SCORING.md`](../SCORING.md). Do not derive a single “certified” score as IR minus external gap. Grade-tier prompts (P/E/I/B/G) are orthogonal to IR/XC.
+
 ## Contents
 
 | Path                     | Purpose                                                |

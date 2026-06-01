@@ -19,6 +19,8 @@ certified_composite: 8.8
 > The 10.0/8.8 scores below were the internal-attestation baseline at the time;
 > the 2026-05-30 audit cluster rescored to 6.8/6.2 with the 10.0 figure
 > rejected per Q3 of [`execution-roadmap.md`](./execution-roadmap.md).
+>
+> **Scoring (v2):** External deps affect **XC** only, not **IR**. Retired: `certified composite` — [`SCORING.md`](./SCORING.md).
 
 # gtcx-infrastructure — External Dependencies Register
 

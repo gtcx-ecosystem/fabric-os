@@ -26,6 +26,8 @@ Not every relationship demands the same security posture. A payment API partner 
 
 > **Rule:** You cannot claim a grade until _all_ controls in that grade are validated by the appropriate party (internal or external).
 
+> **Repo headline scores (separate from grades):** [`SCORING.md`](./SCORING.md) defines **IR** (internal engineering) and **XC** (external/GTM clearance) as independent tracks. Grade-tier scores (P/E/I/B/G) must not be confused with retired `certified composite`.
+
 ---
 
 ## 2. Grade Definitions

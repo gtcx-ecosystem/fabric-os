@@ -17,13 +17,15 @@ human_signature: pending
 
 ## Repository state
 
-| Field               | Value                                      |
-| ------------------- | ------------------------------------------ |
-| HEAD                | `d00eef69989e63f6242d396820ffd539530c3ded` |
-| Branch              | `docs/roadmap-update-2026-05-30`           |
-| Internal readiness  | 7.5/10                                     |
-| Certified composite | 6.6/10                                     |
-| validate-all        | 36/36 gates (agent closure session)        |
+| Field                       | Value                                      |
+| --------------------------- | ------------------------------------------ |
+| HEAD                        | `d00eef69989e63f6242d396820ffd539530c3ded` |
+| Branch                      | `docs/roadmap-update-2026-05-30`           |
+| Internal readiness          | 7.5/10                                     |
+| XC (external clearance, v2) | 9.0/10 (burden 1.0; EXT-INF-002 open)      |
+| IR (engineering, v2)        | 7.6/10 (see `latest.json`)                 |
+| ~~Certified composite~~     | _retired v1 — was IR − gap_                |
+| validate-all                | 36/36 gates (agent closure session)        |
 
 ## Post-remediation scope anchors (attach to SOW)
 

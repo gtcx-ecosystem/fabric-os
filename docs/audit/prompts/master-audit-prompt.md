@@ -26,6 +26,17 @@ autonomy_level: 'permissioned'
 
 Execute the complete GTCX audit grade assessment across all five tiers. Produce a unified scorecard, identify the highest grade currently achievable, and generate a prioritized remediation roadmap.
 
+### Repo scores (orthogonal to grade tiers)
+
+When this repo publishes **headline** readiness numbers, use rubric **v2** ([`../SCORING.md`](../SCORING.md)):
+
+| Track  | Meaning                                                        |
+| ------ | -------------------------------------------------------------- |
+| **IR** | Internal Engineering Readiness — unblocked in-repo work        |
+| **XC** | External / GTM Clearance — EXT-INF / legal / pilot / assurance |
+
+**Do not** report `certified composite` or `CR = IR − gap`. External blockers belong on **XC**, not as a deduction from engineering (**IR**).
+
 **Output:** `docs/audit/master-audit-report-YYYY-MM-DD.md`  
 **Evidence Directory:** `docs/audit/prompts/evidence/`
 

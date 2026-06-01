@@ -16,6 +16,8 @@ autonomy_level: 'sovereign'
 
 Historical snapshots of master audits and roadmaps. These are immutable records of past assessments.
 
+Scores in archived files may use retired v1 terms (`certified composite`, `CR = IR − gap`). Map to **IR** / **XC** using [`../SCORING.md`](../SCORING.md) and [`../AUDIT-RECONCILIATION.md`](../AUDIT-RECONCILIATION.md).
+
 ## Contents
 
 | File                                 | Date       | Description                                                   |

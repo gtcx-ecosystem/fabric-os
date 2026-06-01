@@ -1,7 +1,7 @@
 ---
 title: 'Audit'
 status: 'current'
-date: '2026-05-27'
+date: '2026-06-01'
 owner: 'quality-evidence-lead'
 role: 'quality-evidence-lead'
 tier: 'critical'
@@ -14,22 +14,45 @@ autonomy_level: 'sovereign'
 
 # Audit
 
-This directory contains audit documentation for the GTCX infrastructure.
+Audit reports, evidence, execution planning, and **canonical scoring** for `gtcx-infrastructure`.
 
-## Contents
+## Canonical scores (rubric v2)
 
-- 10-10-roadmap-2026-05-17.md
-- audit-grade-framework.md
-- bank-grade-rating-framework.md
-- coverage-baseline-2026-05-12.md
-- docs-standard-compliance-2026-05-10.md
-- ecosystem-repo-review-2026-05-12.md
-- master-audit-2026-05-17.md
-- pen-test-scope-2026.md
-- pen-test-vendor-shortlist.md
-- production-readiness-evidence-2026-05-08.md
-- remediation-plan-10-10-2026.md
+| Track  | Name                           | Measures                                                                 | Does **not** measure         |
+| ------ | ------------------------------ | ------------------------------------------------------------------------ | ---------------------------- |
+| **IR** | Internal Engineering Readiness | Unblocked in-repo engineering: gates, code, tests, structural automation | Whether outsiders signed off |
+| **XC** | External / GTM Clearance       | Legal, pilot, pen-test SOW, operator-run live ops (EXT-INF register)     | Engineering velocity         |
+
+**IR and XC are independent.** External blockers affect **XC only** — they do **not** subtract from IR.
+
+| Resource                                                                                         | Purpose                                     |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| [`SCORING.md`](./SCORING.md)                                                                     | Formulas, dimensions, retired v1 terms      |
+| [`scoring-rubric.json`](./scoring-rubric.json)                                                   | Machine rubric (`gtcx-infra-canonical-v2`)  |
+| [`latest.json`](./latest.json)                                                                   | Current IR / XC (from `pnpm score:compute`) |
+| [`AUDIT-RECONCILIATION.md`](./AUDIT-RECONCILIATION.md)                                           | Why old docs show 6.6 / 6.8 / 9.0           |
+| [`execution-roadmap.md`](./execution-roadmap.md)                                                 | Sprint plan (agent-executable work)         |
+| [`external-dependencies-register-2026-05-31.md`](./external-dependencies-register-2026-05-31.md) | Human/legal/operator blockers               |
+
+**Retired (do not publish as headline scores):** `certifiedReadiness`, `certified composite`, `CR = IR − gap`.
+
+```bash
+node tools/scripts/compute-audit-scores.mjs --write   # refresh latest.json
+```
+
+## Historical documents
+
+Older audits may still use v1 terms (`certified composite`, `internal 6.8 / certified 6.2`). Treat those as **historical snapshots**; map them using [`AUDIT-RECONCILIATION.md`](./AUDIT-RECONCILIATION.md). Superseded plans live under [`archive/`](./archive/) and [`historical-cycles/`](./historical-cycles/).
+
+## Active entry points
+
+| Document                                                     | Role                                 |
+| ------------------------------------------------------------ | ------------------------------------ |
+| [`full-audit-2026-06-01.md`](./full-audit-2026-06-01.md)     | Latest six-phase full audit          |
+| [`master-audit-2026-05-30.md`](./master-audit-2026-05-30.md) | Latest master audit cluster          |
+| [`prompts/`](./prompts/)                                     | Grade-tier audit prompts (P/E/I/B/G) |
+| [`evidence/`](./evidence/)                                   | Evidence staging                     |
 
 ---
 
-_Generated: 2026-05-17_
+_Updated: 2026-06-01 (scoring v2)_

@@ -13,8 +13,11 @@ head: afce75a
 provenance: 'Fresh six-phase audit at HEAD afce75a after Sprint 2 hardening (S2-01–S2-08, S2-14 closed). Internal only — not external attestation.'
 internal_readiness: 7.3
 certified_composite: 6.6
+scoring_note: 'v1 certified_composite retired — use IR + XC per docs/audit/SCORING.md v2'
 supersedes: docs/audit/full-audit-2026-05-22.md
 ---
+
+> **Scoring (v2):** Frontmatter `certified_composite` is a **historical v1** figure (IR minus external gap). Current canonical tracks: **IR** (engineering) + **XC** (external/GTM), independent. See [`SCORING.md`](./SCORING.md).
 
 # Full Audit — gtcx-infrastructure (2026-05-31)
 

@@ -22,6 +22,9 @@ p2_count: 2
 caps_fired: 0
 ---
 
+> **Scoring (v2):** `composite` / `certified` in this superseded doc are **v1** combined scores.
+> Canonical tracks: **IR** (engineering) + **XC** (external/GTM) — [`SCORING.md`](./SCORING.md).
+
 # GTCX Infrastructure — Master Audit
 
 **Date:** 2026-05-28 (reconciled)  

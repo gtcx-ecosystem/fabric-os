@@ -14,7 +14,7 @@ autonomy_level: 'sovereign'
 
 # Historical Audit Cycles
 
-Archive of older audit cycles preserved as historical evidence. The current authoritative audit is [`../full-audit-2026-05-22.md`](../full-audit-2026-05-22.md); files here are predecessor cycles from May 2026.
+Archive of older audit cycles preserved as historical evidence. Current audit: [`../full-audit-2026-06-01.md`](../full-audit-2026-06-01.md). Headline scores: **IR** + **XC** ([`../SCORING.md`](../SCORING.md) v2) — not `certified composite`. Files here are predecessor cycles from May 2026.
 
 ## Contents
 

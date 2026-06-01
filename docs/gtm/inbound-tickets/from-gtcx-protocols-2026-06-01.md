@@ -97,6 +97,10 @@ INF-49 (DNS/TLS + /health 200)
 
 **Their ask:** Ping when `/health` is 200; they run verification curls and update #60.
 
+**Protocols paper trail:** `gtcx-protocols/docs/gtm/inbound-tickets/from-gtcx-infrastructure-2026-06-01.md` @ `2e156bc3` (2026-06-01).
+
+**Protocols #60 comment posted:** alignment ack — protocols owns handler; will not close #60 before `/health` 200 + sample DID curl.
+
 ## Infra next (our side)
 
 1. Fix ALB → `gtcx-protocols-staging:8300` so `/health` returns **200** (closes **#49**)

@@ -1,6 +1,16 @@
 {
   "version": 1,
   "baselineDate": "2026-05-10",
+  "canonicalRubric": "docs/audit/scoring-rubric.json",
+  "canonicalCalculator": "tools/scripts/compute-audit-scores.mjs",
+  "canonicalOutput": "docs/audit/latest.json",
+  "retiredHeadlineMetrics": [
+    "core-weighted",
+    "investor-lens",
+    "enterprise-buyer",
+    "sovereign-dfi",
+    "unified-scorecard partnership/enterprise grades"
+  ],
   "sourceAudit": "docs/audit/master-audit-2026-05-10.md",
   "rules": [
     "Scores may only increase when a reproducible artifact and CI link are provided.",
@@ -171,7 +181,7 @@
     {
       "id": "code-quality",
       "name": "Code Quality",
-      "currentScore": 7.7,
+      "currentScore": 8.0,
       "maxScore": 10,
       "history": [
         {
@@ -221,6 +231,14 @@
           "ciRun": null,
           "artifact": "tools/audit-signer/package.json",
           "reason": "Audit-signer v0.1.0: Ed25519 signed audit records for consequential AI flows with hash-linked chains, tamper detection, NDJSON export. 34 tests, 100% coverage."
+        },
+        {
+          "date": "2026-06-01",
+          "score": 8.0,
+          "commit": "6834b47",
+          "ciRun": "https://github.com/gtcx-ecosystem/gtcx-infrastructure/actions/runs/26742421949",
+          "artifact": "tools/scripts/validate-all.mjs",
+          "reason": "Canonical reconciliation: 38/38 validate-all gates pass post-#85; Linux test runner + coverage gates green on PR CI."
         }
       ]
     },
@@ -419,7 +437,7 @@
     {
       "id": "ecosystem-integration",
       "name": "Ecosystem Integration",
-      "currentScore": 8.3,
+      "currentScore": 6.8,
       "maxScore": 10,
       "history": [
         {
@@ -445,13 +463,21 @@
           "ciRun": "https://github.com/gtcx-ecosystem/gtcx-infrastructure/actions/runs/25756297277",
           "artifact": "docs/audit/ecosystem-repo-review-2026-05-12.md",
           "reason": "100% shared platform onboarding: all 23 active repos have AWS_ROLE_ARN + ECR_REGISTRY. ECR repo gtcx-anomaly-detector created. IAM policy fixed (added ecr:DescribeImages)."
+        },
+        {
+          "date": "2026-06-01",
+          "score": 6.8,
+          "commit": "6834b47",
+          "ciRun": null,
+          "artifact": ".github/workflows/cross-repo-contract.yml",
+          "reason": "Canonical reconciliation: contract-matrix jobs fail without GTCX_REPO_TOKEN; infra contract tests pass in validate-all only."
         }
       ]
     },
     {
       "id": "agentic-maturity",
       "name": "Agentic Maturity",
-      "currentScore": 9.6,
+      "currentScore": 8.2,
       "maxScore": 10,
       "history": [
         {
@@ -493,13 +519,21 @@
           "ciRun": null,
           "artifact": "docs/audit/signal-scorecard.json",
           "reason": "SIGNAL scorecard v2: substrate hardening complete. S2 (audit trail) 9\u219210 (fail-closed in production + NATS+WORM durability + restart-recovery proven). I4 (WORM audit storage) 9\u219210 (testnet wires both worm_audit + audit-flush-irsa modules). A2 (fail-closed) 10/10 (gateway exits EX_CONFIG 78 + adaptive policy quarantines). validate-signal.mjs CI gate confirms 9.60."
+        },
+        {
+          "date": "2026-06-01",
+          "score": 8.2,
+          "commit": "6834b47",
+          "ciRun": null,
+          "artifact": "docs/audit/scoring-rubric.json",
+          "reason": "Canonical reconciliation: SIGNAL 9.6 remains supplementary metric; headline agenticMaturity uses gates + eval pipeline, not SIGNAL alone."
         }
       ]
     },
     {
       "id": "enterprise-readiness",
       "name": "Enterprise / Production Readiness",
-      "currentScore": 9.0,
+      "currentScore": 6.9,
       "maxScore": 10,
       "history": [
         {
@@ -629,6 +663,14 @@
           "ciRun": null,
           "artifact": "docs/architecture/mtls-service-identity-mapping.md",
           "reason": "Enterprise readiness: mTLS mesh configs complete with canary rollout, identity mapping, verification script. Reproducible build validator auto-fallback."
+        },
+        {
+          "date": "2026-06-01",
+          "score": 6.9,
+          "commit": "6834b47",
+          "ciRun": null,
+          "artifact": "docs/audit/scoring-rubric.json",
+          "reason": "Canonical reconciliation: structural DR/WORM/runtime-evidence gates exist; live RDS restore, recurring WORM on merge, and staging smoke remain operator-owned (EXT-INF-003, S3-02 live)."
         }
       ]
     },

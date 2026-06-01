@@ -1,8 +1,8 @@
 {
   "repo": "gtcx-infrastructure",
-  "auditDate": "2026-05-31",
-  "verifiedAt": "2026-05-31T20:00:00Z",
-  "head": "545ff04",
+  "auditDate": "2026-06-01",
+  "verifiedAt": "2026-06-01T08:46:40.421Z",
+  "head": "da6c66f",
   "workingTree": "clean",
   "sourceAudit": "docs/audit/post-roadmap-session-2026-05-30.md",
   "latestAudit": "docs/audit/full-audit-2026-05-31.md",
@@ -10,17 +10,19 @@
   "remediationPlan": "docs/audit/execution-roadmap.md",
   "status": "sprint-3-agent-closed",
   "scores": {
-    "internalReadiness": 7.5,
+    "internalReadiness": 7.6,
+    "certifiedReadiness": 6.6,
     "composite": 6.6,
-    "codeQuality": 7.8,
-    "repoHygiene": 8.2,
-    "security": 7.5,
-    "globalSouthResilience": 7.5,
+    "externalAssuranceGap": 1,
+    "codeQuality": 8,
+    "repoHygiene": 7.9,
+    "security": 8.9,
+    "globalSouthResilience": 6.8,
     "ecosystemIntegration": 6.8,
-    "agenticMaturity": 6.5,
-    "enterpriseReadiness": 5.8
+    "agenticMaturity": 8.2,
+    "enterpriseReadiness": 6.9
   },
-  "scoreReconciliation": "Three docs from 2026-05-30 reported different scores (post-roadmap = 6.8/6.2, master-audit = 6.5/6.1, 10-10-remediation = 7.6/7.6). Per Q3 of execution-roadmap.md, the post-roadmap-session figure is authoritative — the 7.6 baseline assumed Phase 0 gates green at HEAD while the tree was dirty.",
+  "scoreReconciliation": "Canonical IR/CR from tools/scripts/compute-audit-scores.mjs + docs/audit/scoring-rubric.json. Do not cite retired scores (9.0 core-weighted, 8.8 partnership, self-claim 8.5/7.5). See docs/audit/AUDIT-RECONCILIATION.md.",
   "findings": {
     "p0Closed": ["F1", "F2", "F3", "F4", "F7", "F10", "F11", "F12", "F13", "F14"],
     "p0Open": 0,
@@ -119,5 +121,13 @@
       }
     ],
     "open": []
+  },
+  "rubricId": "gtcx-infra-canonical-v1",
+  "openExternalAssurance": ["EXT-INF-013", "EXT-INF-014", "EXT-INF-002", "EXT-INF-003"],
+  "ciSnapshot": {
+    "mainCiFormatFail": true,
+    "mainCiJobFail": true,
+    "localValidateAllPass": true,
+    "localValidateAllGateCount": 38
   }
 }

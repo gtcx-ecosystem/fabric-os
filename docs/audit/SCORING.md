@@ -1,61 +1,80 @@
 # Canonical audit scoring — gtcx-infrastructure
 
-**Single source of truth:** run `node tools/scripts/compute-audit-scores.mjs --write` and read `docs/audit/latest.json`.
+**Single source of truth:** `node tools/scripts/compute-audit-scores.mjs --write` → `docs/audit/latest.json`
 
-## Two headline scores only
+## Two independent scores (do not merge them)
 
-| ID     | Name                | Alias                             | Meaning                                                       |
-| ------ | ------------------- | --------------------------------- | ------------------------------------------------------------- |
-| **IR** | Internal Readiness  | `internalReadiness`               | What the repo controls: code, gates, structural ops evidence. |
-| **CR** | Certified Readiness | `certifiedReadiness`, `composite` | What an auditor/regulator can trust **today**.                |
+| ID     | Name                               | JSON key                       | What it measures                                                                                   |
+| ------ | ---------------------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------- |
+| **IR** | **Internal Engineering Readiness** | `internalEngineeringReadiness` | Can engineering ship and prove it **in this repo**? Gates, code, tests, structural automation.     |
+| **XC** | **External / GTM Clearance**       | `externalClearance`            | Are **outside-the-repo** blockers closed? Legal, pilot owner, pen-test SOW, operator-run live ops. |
 
-### Formulas (fixed — do not improvise)
+**IR is not “minus outsiders.”** XC is a **separate** score. A team can have **IR 7.6** with full engineering velocity while **XC 9.0** (one point of external burden) until EXT-INF items close.
+
+### Formulas (v2 — fixed)
 
 ```
-IR = Σ (dimensionScore × weight)     # 7 dimensions, weights sum to 1.0
-CR = IR − externalAssuranceGap       # gap capped at 2.0
+IR = Σ (internalDimension × weight)   # 7 dimensions; CI penalties from ci-snapshot.json only
+
+externalBlockerBurden = Σ weight of open items in scoring-rubric.json → externalBlockers
+XC = 10 − min(10, externalBlockerBurden)
 ```
 
-- Dimension scores start from `docs/audit/score-evidence-ledger.json` (`currentScore`).
-- CI penalties from `docs/audit/ci-snapshot.json` (e.g. `main` format failure → `repoHygiene −0.4`).
-- External gap = sum of open penalties in `docs/audit/scoring-rubric.json` → `externalAssurancePenalties`.
+**Do not use:** `certifiedReadiness`, `certified composite`, `CR = IR − gap`. Those are **retired** (v1 rubric).
 
-**Current open penalties (1.0 total):** EXT-INF-013, EXT-INF-014, EXT-INF-002, EXT-INF-003.
+## Track 1 — Internal engineering (IR)
 
-## Seven dimensions (weights)
+### Seven dimensions
 
-| Dimension             | Weight | Ledger id                 |
-| --------------------- | ------ | ------------------------- |
-| codeQuality           | 15%    | `code-quality`            |
-| repoHygiene           | 12%    | `repo-hygiene`            |
-| security              | 15%    | `security`                |
-| globalSouthResilience | 10%    | `global-south-resilience` |
-| ecosystemIntegration  | 10%    | `ecosystem-integration`   |
-| agenticMaturity       | 13%    | `agentic-maturity`        |
-| enterpriseReadiness   | 25%    | `enterprise-readiness`    |
+| Dimension             | Weight | Ledger id                 | In scope                                              | Out of scope                                |
+| --------------------- | ------ | ------------------------- | ----------------------------------------------------- | ------------------------------------------- |
+| codeQuality           | 15%    | `code-quality`            | Tests, coverage, types                                | —                                           |
+| repoHygiene           | 12%    | `repo-hygiene`            | CI truth, format, docs                                | —                                           |
+| security              | 15%    | `security`                | Policies, Kyverno, audit gate                         | Vendor pen-test execution                   |
+| globalSouthResilience | 10%    | `global-south-resilience` | USSD, low-bandwidth                                   | —                                           |
+| ecosystemIntegration  | 10%    | `ecosystem-integration`   | Contract tests in-repo                                | Org secret for sibling repos                |
+| agenticMaturity       | 13%    | `agentic-maturity`        | validate-all, eval gates                              | —                                           |
+| enterpriseReadiness   | 25%    | `enterprise-readiness`    | DR **script**, WORM **gate**, evidence **generators** | Live RDS restore, recurring WORM **upload** |
+
+### CI penalties (still internal)
+
+From `docs/audit/ci-snapshot.json` — e.g. `main` Prettier fail → `repoHygiene −0.4`.
+
+## Track 2 — External / GTM blockers (XC)
+
+Canonical list: `scoring-rubric.json` → `externalBlockers.items`  
+Full register: [`external-dependencies-register-2026-05-31.md`](./external-dependencies-register-2026-05-31.md)
+
+| Category      | Example EXT-INF | Blocks                          |
+| ------------- | --------------- | ------------------------------- |
+| **gtm**       | EXT-INF-013     | Pilot owner, cadence            |
+| **legal**     | EXT-INF-014     | DPA, pilot agreement            |
+| **assurance** | EXT-INF-002     | Pen-test SOW signature          |
+| **operator**  | EXT-INF-003     | Live WORM recurrence (AWS/OIDC) |
+
+When an item closes: set `status: "done"` in **both** the register and `scoring-rubric.json`, then `--write`.
 
 ## What full audits must do
 
-1. Run `node tools/scripts/compute-audit-scores.mjs --markdown` and paste the **Canonical Scorecard** block at the top.
-2. Use **Strong / Good / Pass** in phase scorecards — not new X/10 numbers.
-3. Do **not** publish sprint “before → 8.4” projection tables; use qualitative impact instead.
-4. To change a score: append a ledger `history` entry with commit + artifact, then re-run `--write`.
+1. Run `node tools/scripts/compute-audit-scores.mjs --markdown` — paste **both** IR and XC blocks.
+2. Phase 1–5: qualitative ratings only (Strong / Good / Pass).
+3. Phase 3 GTM: stage labels (S2, S3) — **not** a third /10 score.
+4. Sprint plans: say which track moves (e.g. “closes EXT-INF-013 → XC +0.25”), not “CR +0.8”.
 
-## Supplementary metrics (report separately)
+## Supplementary (neither IR nor XC)
 
-| Metric            | Where                                       | Do not use as IR/CR   |
-| ----------------- | ------------------------------------------- | --------------------- |
-| SIGNAL            | `signal` ledger id, `signal-scorecard.json` | Yes — supplementary   |
-| Core weighted 9.0 | `core-weighted` ledger id                   | **Retired**           |
-| Partnership 8.8   | `unified-scorecard.json`                    | **Retired**           |
-| GTM S0–S6         | Phase 3 of full audit                       | Stage labels, not /10 |
+| Metric                    | Where                                           |
+| ------------------------- | ----------------------------------------------- |
+| SIGNAL ≈9.6               | `signal-scorecard.json`                         |
+| GTM S0–S6                 | Phase 3 narrative                               |
+| Retired 9.0 core-weighted | Historical only — see `AUDIT-RECONCILIATION.md` |
 
 ## Files
 
-| File                         | Role                                         |
-| ---------------------------- | -------------------------------------------- |
-| `scoring-rubric.json`        | Weights, penalties, rules (machine-readable) |
-| `score-evidence-ledger.json` | Append-only dimension history                |
-| `ci-snapshot.json`           | Current CI truth for automatic penalties     |
-| `latest.json`                | Output of `--write`                          |
-| `AUDIT-RECONCILIATION.md`    | Why old scores differ                        |
+| File                                  | Role                               |
+| ------------------------------------- | ---------------------------------- |
+| `scoring-rubric.json`                 | IR weights + external blocker list |
+| `score-evidence-ledger.json`          | IR dimension history (append-only) |
+| `ci-snapshot.json`                    | IR CI penalties                    |
+| `external-dependencies-register-*.md` | Human-facing EXT-INF detail        |
+| `latest.json`                         | Calculator output                  |

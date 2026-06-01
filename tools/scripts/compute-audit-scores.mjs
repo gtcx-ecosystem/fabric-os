@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Canonical audit score calculator — single source for latest.json headline scores.
+ * Canonical audit score calculator — IR (engineering) and XC (external) are independent.
  *
  * Usage:
  *   node tools/scripts/compute-audit-scores.mjs
@@ -40,18 +40,24 @@ function compute() {
   const ledger = loadJson(LEDGER);
   const ci = loadJson(CI_SNAPSHOT);
 
+  const dimensionsConfig = rubric.internalDimensions ?? rubric.dimensions ?? [];
+  const externalConfig = rubric.externalBlockers ?? {
+    items: rubric.externalAssurancePenalties ?? [],
+    burdenCap: 2.0,
+  };
+
   const ledgerById = new Map(ledger.dimensions.map((d) => [d.id, d]));
 
   /** @type {Record<string, { base: number, adjusted: number, ledgerId: string, weight: number }>} */
   const dimensions = {};
 
-  for (const dim of rubric.dimensions) {
+  for (const dim of dimensionsConfig) {
     const entry = ledgerById.get(dim.ledgerId);
     if (!entry) {
       throw new Error(`Ledger missing dimension ${dim.ledgerId} for ${dim.id}`);
     }
     let score = entry.currentScore;
-    for (const pen of rubric.ciPenalties) {
+    for (const pen of rubric.ciPenalties ?? []) {
       if (pen.when === 'mainCiFormatFail' && ci.mainCiFormatFail) {
         if (pen.dimension === dim.id) score += pen.delta;
       }
@@ -68,31 +74,44 @@ function compute() {
     };
   }
 
-  let internalReadiness = 0;
-  for (const dim of rubric.dimensions) {
-    internalReadiness += dimensions[dim.id].adjusted * dim.weight;
+  let internalEngineeringReadiness = 0;
+  for (const dim of dimensionsConfig) {
+    internalEngineeringReadiness += dimensions[dim.id].adjusted * dim.weight;
   }
-  internalReadiness = round1(internalReadiness);
+  internalEngineeringReadiness = round1(internalEngineeringReadiness);
 
-  let externalGap = 0;
-  const openExternal = [];
-  for (const ext of rubric.externalAssurancePenalties) {
+  const burdenCap = externalConfig.burdenCap ?? 2.0;
+  let externalBlockerBurden = 0;
+  const openExternalBlockers = [];
+  const externalByCategory = { gtm: 0, legal: 0, assurance: 0, operator: 0, other: 0 };
+
+  for (const ext of externalConfig.items ?? []) {
     if (ext.status === 'open') {
-      externalGap += ext.penalty;
-      openExternal.push(ext.id);
+      const w = ext.weight ?? ext.penalty ?? 0;
+      externalBlockerBurden += w;
+      openExternalBlockers.push({
+        id: ext.id,
+        category: ext.category ?? 'other',
+        label: ext.label,
+        weight: w,
+      });
+      const cat = ext.category ?? 'other';
+      externalByCategory[cat] = (externalByCategory[cat] ?? 0) + w;
     }
   }
-  externalGap = Math.min(2.0, round1(externalGap));
-  const certifiedReadiness = round1(Math.max(0, internalReadiness - externalGap));
+  externalBlockerBurden = Math.min(burdenCap, round1(externalBlockerBurden));
+  const externalClearance = round1(Math.max(0, 10 - externalBlockerBurden));
 
   return {
     rubricId: rubric.rubricId,
     computedAt: new Date().toISOString(),
     head: gitHead() ?? ci.head,
-    internalReadiness,
-    certifiedReadiness,
-    externalAssuranceGap: externalGap,
-    openExternalAssurance: openExternal,
+    internalEngineeringReadiness,
+    internalReadiness: internalEngineeringReadiness,
+    externalClearance,
+    externalBlockerBurden,
+    openExternalBlockers,
+    externalByCategory,
     dimensions,
     ciSnapshot: {
       mainCiFormatFail: ci.mainCiFormatFail,
@@ -100,19 +119,24 @@ function compute() {
       localValidateAllPass: ci.localValidateAllPass,
       localValidateAllGateCount: ci.localValidateAllGateCount,
     },
+    externalRegister: externalConfig.register,
   };
 }
 
 function scorecardMarkdown(result) {
+  const openList =
+    result.openExternalBlockers.length === 0
+      ? 'none'
+      : result.openExternalBlockers.map((b) => `${b.id} (${b.category})`).join(', ');
+
   const lines = [
-    '## Canonical Scorecard (do not cite other X/10 figures)',
+    '## Canonical Scorecard',
     '',
-    `| Metric | Score | How computed |`,
-    `|--------|-------|----------------|`,
-    `| **Internal Readiness (IR)** | **${result.internalReadiness}/10** | Weighted sum of 7 dimensions (see \`docs/audit/scoring-rubric.json\`) |`,
-    `| **Certified Readiness (CR)** | **${result.certifiedReadiness}/10** | IR − ${result.externalAssuranceGap} external gap (${result.openExternalAssurance.join(', ') || 'none'}) |`,
+    '### Track 1 — Internal engineering (repo-controlled)',
     '',
-    '### Dimension breakdown',
+    '| Metric | Score | How computed |',
+    '|--------|-------|----------------|',
+    `| **Internal Engineering Readiness (IR)** | **${result.internalEngineeringReadiness}/10** | Weighted sum of 7 in-repo dimensions + CI penalties only |`,
     '',
     '| Dimension | Weight | Ledger base | After CI penalty |',
     '|-----------|--------|-------------|------------------|',
@@ -124,7 +148,27 @@ function scorecardMarkdown(result) {
   }
   lines.push(
     '',
-    `Recompute: \`node tools/scripts/compute-audit-scores.mjs --markdown\``,
+    '### Track 2 — External / GTM blockers (separate; does NOT reduce IR)',
+    '',
+    '| Metric | Score | How computed |',
+    '|--------|-------|----------------|',
+    `| **External / GTM Clearance (XC)** | **${result.externalClearance}/10** | 10 − ${result.externalBlockerBurden} burden (${openList}) |`,
+    '',
+    '| Category | Open burden |',
+    '|----------|-------------|'
+  );
+  for (const [cat, burden] of Object.entries(result.externalByCategory)) {
+    if (burden > 0) {
+      lines.push(`| ${cat} | ${burden} |`);
+    }
+  }
+  lines.push(
+    '',
+    `Register: \`${result.externalRegister ?? 'docs/audit/external-dependencies-register-2026-05-31.md'}\``,
+    '',
+    '**Retired:** `certifiedReadiness`, `CR = IR − gap`, `composite` as external-adjusted score.',
+    '',
+    'Recompute: `node tools/scripts/compute-audit-scores.mjs --write`',
     ''
   );
   return lines.join('\n');
@@ -151,10 +195,10 @@ function main() {
       head: result.head?.slice(0, 7) ?? prev.head,
       rubricId: result.rubricId,
       scores: {
-        internalReadiness: result.internalReadiness,
-        certifiedReadiness: result.certifiedReadiness,
-        composite: result.certifiedReadiness,
-        externalAssuranceGap: result.externalAssuranceGap,
+        internalEngineeringReadiness: result.internalEngineeringReadiness,
+        internalReadiness: result.internalEngineeringReadiness,
+        externalClearance: result.externalClearance,
+        externalBlockerBurden: result.externalBlockerBurden,
         codeQuality: result.dimensions.codeQuality.adjusted,
         repoHygiene: result.dimensions.repoHygiene.adjusted,
         security: result.dimensions.security.adjusted,
@@ -163,9 +207,18 @@ function main() {
         agenticMaturity: result.dimensions.agenticMaturity.adjusted,
         enterpriseReadiness: result.dimensions.enterpriseReadiness.adjusted,
       },
+      externalBlockers: {
+        register: result.externalRegister,
+        open: result.openExternalBlockers,
+        burden: result.externalBlockerBurden,
+        byCategory: result.externalByCategory,
+      },
       scoreReconciliation:
-        'Canonical IR/CR from tools/scripts/compute-audit-scores.mjs + docs/audit/scoring-rubric.json. Do not cite retired scores (9.0 core-weighted, 8.8 partnership, self-claim 8.5/7.5). See docs/audit/AUDIT-RECONCILIATION.md.',
-      openExternalAssurance: result.openExternalAssurance,
+        'IR = in-repo engineering only. XC = external/GTM track (separate). See docs/audit/SCORING.md v2. certifiedReadiness/composite as IR−gap are retired.',
+      deprecatedScores: {
+        certifiedReadiness: 'retired — use externalClearance (XC) for external track; IR for engineering',
+        composite: 'retired — use internalEngineeringReadiness',
+      },
       ciSnapshot: result.ciSnapshot,
     };
     writeFileSync(LATEST, `${JSON.stringify(next, null, 2)}\n`);

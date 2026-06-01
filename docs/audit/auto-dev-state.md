@@ -21,17 +21,14 @@ review_cycle: on-change
 
 Agent-executable Sprint 2/3 items closed. `validate-all` 36/36 PASS. `pnpm typecheck && pnpm lint && pnpm test && pnpm build` PASS.
 
-## Score delta (targeted dimensions)
+## Score delta (rubric v2 — two tracks)
 
-| Dimension               | Before  | After   | Delta                     |
-| ----------------------- | ------- | ------- | ------------------------- |
-| Security                | 7.2     | 7.5     | +0.3                      |
-| Operational readiness   | 7.0     | 7.6     | +0.6                      |
-| Repo hygiene            | 8.0     | 8.2     | +0.2                      |
-| Ecosystem integration   | 6.5     | 6.8     | +0.3                      |
-| Enterprise readiness    | 5.5     | 5.8     | +0.3                      |
-| **Internal composite**  | **7.3** | **7.5** | **+0.2**                  |
-| **Certified composite** | **6.6** | **6.6** | **0** (EXT-INF unchanged) |
+| Track                             | Before | After                       | Notes                                                  |
+| --------------------------------- | ------ | --------------------------- | ------------------------------------------------------ |
+| **IR** (internal engineering)     | 7.3    | **7.5** → **7.6** after #85 | Ledger + CI snapshot                                   |
+| **XC** (external / GTM clearance) | 9.0    | **9.0**                     | 1.0 burden; EXT-INF unchanged — **does not reduce IR** |
+
+Retired: `certified composite` (was IR − gap). See `docs/audit/SCORING.md`.
 
 ## Agent-closed stories
 

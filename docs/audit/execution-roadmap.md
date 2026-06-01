@@ -43,7 +43,7 @@ session opened and unblocks the ZWCMP pilot. Sprint 2 hardens shipped surfaces
 and decides the wire-or-delete fate of unwired primitives. Sprint 3 ships
 external evidence — pilot signature, primitives publication, soak-test baseline.
 
-**Score baseline carried into Sprint 1:** internal 6.8 / certified 6.2 (post-roadmap-session-2026-05-30.md, accepted over conflicting 7.6 figure — see Q3 below).
+**Score baseline (2026-06-01, rubric v2):** **IR 7.6** (internal engineering) + **XC 9.0** (external/GTM clearance, separate track). Do not use retired `certified composite` or `CR = IR − gap`. See `docs/audit/SCORING.md`.
 
 **Sprint cadence:**
 

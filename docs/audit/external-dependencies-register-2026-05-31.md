@@ -9,6 +9,7 @@ tags: ['audit', 'external', 'dependencies', '10-10', 'zwcmp', 'pilot']
 review_cycle: 'weekly'
 internal_readiness: 6.8
 certified_composite: 6.2
+scoring_note: 'certified_composite retired in rubric v2 — use IR (engineering) + XC (external clearance) from docs/audit/SCORING.md'
 supersedes: docs/audit/external-dependencies-register-2026-05-28.md
 ---
 

@@ -4,7 +4,7 @@ status: 'current'
 date: '2026-06-01'
 owner: 'gtcx-infrastructure'
 head: '6834b47636101ce3a80066b111bc3b0afd806fb6'
-rubricId: 'gtcx-infra-canonical-v1'
+rubricId: 'gtcx-infra-canonical-v2'
 supersedes: 'docs/audit/full-audit-2026-05-31.md'
 sources:
   - docs/audit/SCORING.md
@@ -22,16 +22,15 @@ sources:
 
 Post-merge assessment at `6834b476` (#85 on `main`). Six phases + sprint synthesis.
 
-> **Scoring rule:** Only **IR** and **CR** below are headline scores. Phase tables use qualitative ratings. Reconciliation of historical 9.0 / 6.8 / 7.5 figures: `docs/audit/AUDIT-RECONCILIATION.md`.
+> **Scoring rule (v2):** **IR** = internal engineering only. **XC** = external/GTM blockers (separate track). IR is **not** reduced by unsigned DPAs or missing pilot owners. See `docs/audit/SCORING.md`.
 
-## Canonical Scorecard (do not cite other X/10 figures)
+## Canonical Scorecard
 
-| Metric                       | Score      | How computed                                                               |
-| ---------------------------- | ---------- | -------------------------------------------------------------------------- |
-| **Internal Readiness (IR)**  | **7.6/10** | Weighted sum of 7 dimensions (see `docs/audit/scoring-rubric.json`)        |
-| **Certified Readiness (CR)** | **6.6/10** | IR − 1.0 external gap (EXT-INF-013, EXT-INF-014, EXT-INF-002, EXT-INF-003) |
+### Track 1 — Internal engineering (repo-controlled)
 
-### Dimension breakdown
+| Metric                                  | Score      | How computed                                             |
+| --------------------------------------- | ---------- | -------------------------------------------------------- |
+| **Internal Engineering Readiness (IR)** | **7.6/10** | Weighted sum of 7 in-repo dimensions + CI penalties only |
 
 | Dimension             | Weight | Ledger base | After CI penalty |
 | --------------------- | ------ | ----------- | ---------------- |
@@ -43,9 +42,24 @@ Post-merge assessment at `6834b476` (#85 on `main`). Six phases + sprint synthes
 | agenticMaturity       | 13%    | 8.2         | **8.2**          |
 | enterpriseReadiness   | 25%    | 6.9         | **6.9**          |
 
+### Track 2 — External / GTM blockers (does NOT reduce IR)
+
+| Metric                            | Score      | How computed                                                              |
+| --------------------------------- | ---------- | ------------------------------------------------------------------------- |
+| **External / GTM Clearance (XC)** | **9.0/10** | 10 − 1.0 open burden (EXT-INF-013, EXT-INF-014, EXT-INF-002, EXT-INF-003) |
+
+| Category  | Open burden |
+| --------- | ----------- |
+| gtm       | 0.25        |
+| legal     | 0.25        |
+| assurance | 0.30        |
+| operator  | 0.20        |
+
+Register: `docs/audit/external-dependencies-register-2026-05-31.md`
+
 Recompute: `node tools/scripts/compute-audit-scores.mjs --write`
 
-**Supplementary (not IR/CR):** SIGNAL scorecard ≈9.6 — see `docs/audit/signal-scorecard.json`.
+**Retired:** `certifiedReadiness`, `CR = IR − gap`. **Supplementary:** SIGNAL ≈9.6 (`signal-scorecard.json`).
 
 ---
 
@@ -59,7 +73,7 @@ Recompute: `node tools/scripts/compute-audit-scores.mjs --write`
 | Structural Integrity  | **Strong**       | Clear split: `infra/` (IaC/K8s/bash), `tools/` (Node services), `docs/` (governance). `deployment-guard` extracts policy from `deploy.sh` but deploy path remains bash-primary.                                                                  |
 | Code Quality          | **Good**         | Compliance gateway production fail-closed (`server.mjs:86-99`); replay path normalization (`middleware.mjs:123-134`). Gateway coverage gates use 85% branches where broker integration is soft-loaded (`compliance-gateway/package.json:12-13`). |
 | Testability           | **Good**         | `run-package-tests.mjs` fixes Linux glob drift; contract tests in `tools/contract-tests/`. Redis/NATS paths use injectable stores or mocks.                                                                                                      |
-| Operational Readiness | **Mostly ready** | 38+ automated gates; release-evidence generation in CI (`ci.yml:91-112`). Live WORM recurrence and staging smoke remain operator-owned (EXT-INF-003).                                                                                            |
+| Operational Readiness | **Mostly ready** | 38+ automated gates; release-evidence generation in CI (`ci.yml:91-112`). Structural DR/WORM gates in-repo; live recurrence = **XC** track (EXT-INF-003).                                                                                        |
 | Consistency           | **Good**         | Node `>=20.18.0` enforced (`node-version-floor-check.mjs`, `ci.yml:23`). Minor drift: static README badges vs live Actions.                                                                                                                      |
 
 ### Issues
@@ -125,7 +139,7 @@ Recompute: `node tools/scripts/compute-audit-scores.mjs --write`
 
 - SOC2 scaffolding + agent owners gate (`soc2-agent-owners-check.mjs`).
 - Pen-test intake evidence present; **SOW signature open** (EXT-INF-002, S2-13).
-- Certified Readiness **6.6** blocked on external assurance gap 1.0 (`latest.json`, EXT-INF register).
+- External / GTM clearance **XC 9.0** (1.0 burden open) — separate from IR; see EXT-INF register.
 
 ---
 
@@ -206,20 +220,20 @@ Checklist (failures):
 
 ### 6.1 Intelligence Synthesis
 
-| #   | Finding                                             | Source            | Severity    | Status               |
-| --- | --------------------------------------------------- | ----------------- | ----------- | -------------------- |
-| 1   | `main` CI red — Prettier on distribution snapshot   | Phase 4 / Actions | P1          | **open**             |
-| 2   | Org-level codeql/security/contract-matrix failures  | Phase 2 / Actions | P1          | **open**             |
-| 3   | ZWCMP owner unsigned (EXT-INF-013)                  | GTM / roadmap     | P0 external | **open**             |
-| 4   | DPA + pilot agreement (EXT-INF-014)                 | GTM               | P0 external | **open**             |
-| 5   | Pen-test SOW (EXT-INF-002)                          | Security          | P0 external | **open**             |
-| 6   | AI SDK v5→v6 dependabot batch                       | Security          | P1          | **open**             |
-| 7   | WORM recurrence (EXT-INF-003)                       | Production        | P1          | **open**             |
-| 8   | README static CI badges                             | Hygiene           | P2          | **open**             |
-| 9   | Bash deploy authority vs gtcx-ctl                   | Architecture      | P2          | **open**             |
-| 10  | Tier 3 dependabot backlog (#78, #81, actions)       | Hygiene           | P2          | **open**             |
-| 11  | Certified Readiness stuck at 6.6 (1.0 external gap) | GTM               | P1          | **blocked external** |
-| 12  | validate-all 38 gates green on PR (post-#85)        | Phase 1           | —           | **closed**           |
+| #   | Finding                                              | Source            | Severity    | Status                  |
+| --- | ---------------------------------------------------- | ----------------- | ----------- | ----------------------- |
+| 1   | `main` CI red — Prettier on distribution snapshot    | Phase 4 / Actions | P1          | **open**                |
+| 2   | Org-level codeql/security/contract-matrix failures   | Phase 2 / Actions | P1          | **open**                |
+| 3   | ZWCMP owner unsigned (EXT-INF-013)                   | GTM / roadmap     | P0 external | **open**                |
+| 4   | DPA + pilot agreement (EXT-INF-014)                  | GTM               | P0 external | **open**                |
+| 5   | Pen-test SOW (EXT-INF-002)                           | Security          | P0 external | **open**                |
+| 6   | AI SDK v5→v6 dependabot batch                        | Security          | P1          | **open**                |
+| 7   | WORM recurrence (EXT-INF-003)                        | Production        | P1          | **open**                |
+| 8   | README static CI badges                              | Hygiene           | P2          | **open**                |
+| 9   | Bash deploy authority vs gtcx-ctl                    | Architecture      | P2          | **open**                |
+| 10  | Tier 3 dependabot backlog (#78, #81, actions)        | Hygiene           | P2          | **open**                |
+| 11  | External blockers (XC burden 1.0) — not an IR defect | GTM / legal       | P0 ext      | **open** — see XC track |
+| 12  | validate-all 38 gates green on PR (post-#85)         | Phase 1           | —           | **closed**              |
 
 ### 6.2 Innovation Scan
 
@@ -405,16 +419,16 @@ Ship pilot-differentiating evidence UX.
 
 ---
 
-### 6.4 Certified lift (qualitative — not projected IR/CR)
+### 6.4 Score impact by track (qualitative — no projected tables)
 
-| Milestone                                     | Expected effect on CR                          |
-| --------------------------------------------- | ---------------------------------------------- |
-| Sprint 1: green `main` CI                     | IR +0.1 via `repoHygiene`; restores CI truth   |
-| Close EXT-INF-013 + EXT-INF-014 + EXT-INF-002 | CR +0.8 (remove 0.8 of 1.0 gap)                |
-| Close EXT-INF-003 (recurring WORM)            | CR +0.2                                        |
-| AI SDK migration (controlled)                 | IR stable; security dimension evidence refresh |
+| Milestone                     | Track  | Effect                                            |
+| ----------------------------- | ------ | ------------------------------------------------- |
+| Sprint 1: green `main` CI     | **IR** | `repoHygiene` +0.1 via ci-snapshot                |
+| Close EXT-INF-013/014/002     | **XC** | +0.8 clearance (burden 1.0 → 0.2)                 |
+| Close EXT-INF-003             | **XC** | +0.2 clearance                                    |
+| AI SDK migration (controlled) | **IR** | Refresh `security` / `codeQuality` ledger entries |
 
-Do not publish numeric “after sprint N” IR/CR in audit docs — update ledger + run `compute-audit-scores.mjs --write`.
+Do not subtract external progress from IR. Update ledger or `externalBlockers[].status`, then `--write`.
 
 ### 6.5 Meta-Learning
 
@@ -427,21 +441,21 @@ Do not publish numeric “after sprint N” IR/CR in audit docs — update ledge
 
 ## OUTPUT SUMMARY
 
-**Current State:** Internally strong infra repo (38 validation gates, sprint 2/3 code closed) with **untrustworthy `main` CI** (format failure), **org-blocked security workflows**, and **pilot blocked on three human/legal dependencies**.
+**Current State:** **IR 7.6** — strong in-repo engineering (38 gates, sprint 2/3 closed) with **`main` CI format failure** (IR hygiene hit). **XC 9.0** — four external/GTM blockers open (not an engineering score drop).
 
-**Target State:** Honest green `main`, recurring WORM/DR live evidence, signed ZWCMP pilot package, and tier-4 AI deps migrated — **CR toward 7.0+** (close external gap + refresh ledger).
+**Target State:** **IR ~8.0+** (green CI, deps migrated). **XC 10.0** (EXT-INF register clear). Tracks move independently.
 
 **Critical Path:**
 
-1. Fix `main` `format:check` (distribution snapshot)
-2. EXT-INF-013 pilot owner + EXT-INF-014 DPA
-3. EXT-INF-002 pen-test SOW
+1. **IR:** Fix `main` `format:check` (distribution snapshot)
+2. **XC:** EXT-INF-013 pilot owner + EXT-INF-014 DPA
+3. **XC:** EXT-INF-002 pen-test SOW
 
-**Timeline:** Sprint 1 (immediate); Sprints 2–4 parallel with leadership/legal (2–4 weeks); Sprints 5–6 after pilot signature (weeks 5–6). Certified 7.0+ depends on external assurance, not code alone.
+**Timeline:** IR fixes in days; XC parallel with leadership/legal (weeks). Do not wait for XC to ship engineering.
 
-**Biggest Risk:** Declaring pilot-ready while `main` CI and README disagree — auditors and regulators treat that as process immaturity.
+**Biggest Risk:** Confusing **IR** (engineering) with **XC** (legal/GTM) — demoralizes eng when outsiders have not signed.
 
-**Biggest Opportunity:** **Signed evidence delivery** for ZWCMP (offline verifier + live metrics) — matches sales-led motion and passes the 90-day copy test on _operations_, not features.
+**Biggest Opportunity:** **IR already unblocks velocity**; closing XC unlocks pilot revenue without requiring another “9.0 engineering” myth.
 
 ---
 

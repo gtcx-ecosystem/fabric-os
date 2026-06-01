@@ -4,18 +4,48 @@ status: 'current'
 date: '2026-06-01'
 owner: 'gtcx-infrastructure'
 head: '6834b47636101ce3a80066b111bc3b0afd806fb6'
+rubricId: 'gtcx-infra-canonical-v1'
 supersedes: 'docs/audit/full-audit-2026-05-31.md'
 sources:
-  - docs/audit/execution-roadmap.md
+  - docs/audit/SCORING.md
+  - docs/audit/scoring-rubric.json
+  - docs/audit/AUDIT-RECONCILIATION.md
   - docs/audit/latest.json
+  - docs/audit/execution-roadmap.md
   - docs/audit/external-dependencies-register-2026-05-31.md
   - .github/workflows/ci.yml
   - tools/scripts/validate-all.mjs
+  - tools/scripts/compute-audit-scores.mjs
 ---
 
 # Full Audit — gtcx-infrastructure (2026-06-01)
 
 Post-merge assessment at `6834b476` (#85 on `main`). Six phases + sprint synthesis.
+
+> **Scoring rule:** Only **IR** and **CR** below are headline scores. Phase tables use qualitative ratings. Reconciliation of historical 9.0 / 6.8 / 7.5 figures: `docs/audit/AUDIT-RECONCILIATION.md`.
+
+## Canonical Scorecard (do not cite other X/10 figures)
+
+| Metric                       | Score      | How computed                                                               |
+| ---------------------------- | ---------- | -------------------------------------------------------------------------- |
+| **Internal Readiness (IR)**  | **7.6/10** | Weighted sum of 7 dimensions (see `docs/audit/scoring-rubric.json`)        |
+| **Certified Readiness (CR)** | **6.6/10** | IR − 1.0 external gap (EXT-INF-013, EXT-INF-014, EXT-INF-002, EXT-INF-003) |
+
+### Dimension breakdown
+
+| Dimension             | Weight | Ledger base | After CI penalty |
+| --------------------- | ------ | ----------- | ---------------- |
+| codeQuality           | 15%    | 8.0         | **8.0**          |
+| repoHygiene           | 12%    | 8.5         | **7.9**          |
+| security              | 15%    | 8.9         | **8.9**          |
+| globalSouthResilience | 10%    | 6.8         | **6.8**          |
+| ecosystemIntegration  | 10%    | 6.8         | **6.8**          |
+| agenticMaturity       | 13%    | 8.2         | **8.2**          |
+| enterpriseReadiness   | 25%    | 6.9         | **6.9**          |
+
+Recompute: `node tools/scripts/compute-audit-scores.mjs --write`
+
+**Supplementary (not IR/CR):** SIGNAL scorecard ≈9.6 — see `docs/audit/signal-scorecard.json`.
 
 ---
 
@@ -95,7 +125,7 @@ Post-merge assessment at `6834b476` (#85 on `main`). Six phases + sprint synthes
 
 - SOC2 scaffolding + agent owners gate (`soc2-agent-owners-check.mjs`).
 - Pen-test intake evidence present; **SOW signature open** (EXT-INF-002, S2-13).
-- Certified composite **6.2** blocked on external assurance (`latest.json:15`, `remainingGaps`).
+- Certified Readiness **6.6** blocked on external assurance gap 1.0 (`latest.json`, EXT-INF register).
 
 ---
 
@@ -176,20 +206,20 @@ Checklist (failures):
 
 ### 6.1 Intelligence Synthesis
 
-| #   | Finding                                            | Source            | Severity    | Status               |
-| --- | -------------------------------------------------- | ----------------- | ----------- | -------------------- |
-| 1   | `main` CI red — Prettier on distribution snapshot  | Phase 4 / Actions | P1          | **open**             |
-| 2   | Org-level codeql/security/contract-matrix failures | Phase 2 / Actions | P1          | **open**             |
-| 3   | ZWCMP owner unsigned (EXT-INF-013)                 | GTM / roadmap     | P0 external | **open**             |
-| 4   | DPA + pilot agreement (EXT-INF-014)                | GTM               | P0 external | **open**             |
-| 5   | Pen-test SOW (EXT-INF-002)                         | Security          | P0 external | **open**             |
-| 6   | AI SDK v5→v6 dependabot batch                      | Security          | P1          | **open**             |
-| 7   | WORM recurrence (EXT-INF-003)                      | Production        | P1          | **open**             |
-| 8   | README static CI badges                            | Hygiene           | P2          | **open**             |
-| 9   | Bash deploy authority vs gtcx-ctl                  | Architecture      | P2          | **open**             |
-| 10  | Tier 3 dependabot backlog (#78, #81, actions)      | Hygiene           | P2          | **open**             |
-| 11  | Certified composite stuck at 6.2                   | GTM               | P1          | **blocked external** |
-| 12  | validate-all 38 gates green on PR (post-#85)       | Phase 1           | —           | **closed**           |
+| #   | Finding                                             | Source            | Severity    | Status               |
+| --- | --------------------------------------------------- | ----------------- | ----------- | -------------------- |
+| 1   | `main` CI red — Prettier on distribution snapshot   | Phase 4 / Actions | P1          | **open**             |
+| 2   | Org-level codeql/security/contract-matrix failures  | Phase 2 / Actions | P1          | **open**             |
+| 3   | ZWCMP owner unsigned (EXT-INF-013)                  | GTM / roadmap     | P0 external | **open**             |
+| 4   | DPA + pilot agreement (EXT-INF-014)                 | GTM               | P0 external | **open**             |
+| 5   | Pen-test SOW (EXT-INF-002)                          | Security          | P0 external | **open**             |
+| 6   | AI SDK v5→v6 dependabot batch                       | Security          | P1          | **open**             |
+| 7   | WORM recurrence (EXT-INF-003)                       | Production        | P1          | **open**             |
+| 8   | README static CI badges                             | Hygiene           | P2          | **open**             |
+| 9   | Bash deploy authority vs gtcx-ctl                   | Architecture      | P2          | **open**             |
+| 10  | Tier 3 dependabot backlog (#78, #81, actions)       | Hygiene           | P2          | **open**             |
+| 11  | Certified Readiness stuck at 6.6 (1.0 external gap) | GTM               | P1          | **blocked external** |
+| 12  | validate-all 38 gates green on PR (post-#85)        | Phase 1           | —           | **closed**           |
 
 ### 6.2 Innovation Scan
 
@@ -375,18 +405,16 @@ Ship pilot-differentiating evidence UX.
 
 ---
 
-### 6.4 Roadmap Visualization
+### 6.4 Certified lift (qualitative — not projected IR/CR)
 
-| Dimension             | Before (2026-06-01) | After Sprint 1 | After Sprint 2 | After Sprint 3 | After Sprint 4 | After Sprint 5 | After Sprint 6 |
-| --------------------- | ------------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
-| Security              | 7.5                 | 7.6            | 7.8            | 8.0            | 8.2            | 8.3            | 8.4            |
-| Operational readiness | 5.8                 | 6.2            | 6.4            | 6.5            | 7.5            | 8.0            | 8.2            |
-| GTM stage             | S2 partial          | S2             | S3             | S3             | S3 live        | S3             | S4 edge        |
-| Developer experience  | 7.8                 | 8.2            | 8.2            | 8.5            | 8.5            | 8.8            | 8.8            |
-| Competitive moat      | 6.0                 | 6.0            | 6.2            | 6.3            | 6.8            | 7.0            | 7.5            |
-| AI maturity           | 6.5                 | 6.5            | 6.5            | 7.5            | 7.5            | 7.5            | 7.8            |
+| Milestone                                     | Expected effect on CR                          |
+| --------------------------------------------- | ---------------------------------------------- |
+| Sprint 1: green `main` CI                     | IR +0.1 via `repoHygiene`; restores CI truth   |
+| Close EXT-INF-013 + EXT-INF-014 + EXT-INF-002 | CR +0.8 (remove 0.8 of 1.0 gap)                |
+| Close EXT-INF-003 (recurring WORM)            | CR +0.2                                        |
+| AI SDK migration (controlled)                 | IR stable; security dimension evidence refresh |
 
-_(Projected — requires external closes for certified composite jump.)_
+Do not publish numeric “after sprint N” IR/CR in audit docs — update ledger + run `compute-audit-scores.mjs --write`.
 
 ### 6.5 Meta-Learning
 
@@ -401,7 +429,7 @@ _(Projected — requires external closes for certified composite jump.)_
 
 **Current State:** Internally strong infra repo (38 validation gates, sprint 2/3 code closed) with **untrustworthy `main` CI** (format failure), **org-blocked security workflows**, and **pilot blocked on three human/legal dependencies**.
 
-**Target State:** Honest green `main`, recurring WORM/DR live evidence, signed ZWCMP pilot package, and tier-4 AI deps migrated — **certified composite toward 7.0+**.
+**Target State:** Honest green `main`, recurring WORM/DR live evidence, signed ZWCMP pilot package, and tier-4 AI deps migrated — **CR toward 7.0+** (close external gap + refresh ledger).
 
 **Critical Path:**
 

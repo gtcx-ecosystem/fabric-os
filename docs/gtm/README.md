@@ -18,6 +18,12 @@ Everything needed to enter African central bank sandboxes and scale to full lice
 
 See [GTM Documentation Overview](overview.md) for scope boundaries and ownership.
 
+## Inbound tickets (cross-repo)
+
+| Document                                                                                                 | From                                            |
+| -------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| [`inbound-tickets/from-gtcx-protocols-2026-06-01.md`](inbound-tickets/from-gtcx-protocols-2026-06-01.md) | gtcx-protocols P0 (#60 / #61) — INF-49, #86 HSM |
+
 ---
 
 ## Sandbox Application (`sandbox-application/`)

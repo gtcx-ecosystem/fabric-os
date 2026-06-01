@@ -1,0 +1,26 @@
+# Staging protocols — production NODE_ENV + missing REDIS/DATABASE crash the pod.
+# See StubNotAllowedError (InMemoryRateLimitStore) and validateProductionConfig.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gtcx-protocols
+spec:
+  template:
+    spec:
+      containers:
+        - name: protocols
+          env:
+            - name: NODE_ENV
+              value: staging
+            - name: REDIS_URL
+              value: redis://redis-staging.gtcx-staging.svc.cluster.local:6379
+            - name: GTCX_CSP_ROOT
+              value: /app/country-support-packages
+            # Until RDS URL is in gtcx-secrets; avoids stub guard on in-memory stores at boot.
+            - name: GTCX_ALLOW_STUBS
+              value: '1'
+            # Override base secret placeholder until RDS URL is in gtcx-secrets.
+            - name: DATABASE_URL
+              value: ''
+            - name: GTCX_AUDIT_STORE
+              value: memory

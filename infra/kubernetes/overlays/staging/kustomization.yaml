@@ -102,6 +102,10 @@ patches:
     target:
       kind: Deployment
       name: gtcx-protocols
+  - path: patches/protocols-probes-staging.yaml
+    target:
+      kind: Deployment
+      name: gtcx-protocols
   # Protocols — reduce memory for t3.small nodes
   - patch: |-
       - op: replace

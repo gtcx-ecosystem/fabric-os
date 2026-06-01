@@ -1,0 +1,31 @@
+# SEC-004 health rate limit is 10 req/min per IP; kubelet probes exceed that and return 429.
+# Use TCP probes in staging until server exempts probe traffic (gtcx-protocols follow-up).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gtcx-protocols
+spec:
+  template:
+    spec:
+      containers:
+        - name: protocols
+          livenessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 2
+          startupProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 3
+            failureThreshold: 10

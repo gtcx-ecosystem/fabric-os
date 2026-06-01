@@ -1,9 +1,10 @@
 # GTCX Infrastructure
 
-![CI Status](https://img.shields.io/badge/CI-Passing-success)
-![IaC Validation](https://img.shields.io/badge/IaC-Validated-blue)
-![Security Scan](https://img.shields.io/badge/Trivy-No_Vulnerabilities-success)
-![Doc Coverage](https://img.shields.io/badge/Doc_Coverage-98%25-blueviolet)
+[![CI](https://github.com/gtcx-ecosystem/gtcx-infrastructure/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/gtcx-ecosystem/gtcx-infrastructure/actions/workflows/ci.yml)
+[![IaC validation](https://github.com/gtcx-ecosystem/gtcx-infrastructure/actions/workflows/ci.yml/badge.svg?branch=main&label=IaC)](https://github.com/gtcx-ecosystem/gtcx-infrastructure/actions/workflows/ci.yml)
+[![Security](https://github.com/gtcx-ecosystem/gtcx-infrastructure/actions/workflows/ci.yml/badge.svg?branch=main&label=security)](https://github.com/gtcx-ecosystem/gtcx-infrastructure/actions/workflows/ci.yml)
+
+Engineering scores (IR / XC): [`docs/audit/latest.json`](./docs/audit/latest.json).
 
 DevOps tooling, deployment automation, and security framework for the GTCX ecosystem. Manages container orchestration, infrastructure-as-code, compliance tooling, and zero-trust security across all environments.
 

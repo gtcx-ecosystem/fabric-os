@@ -71,10 +71,11 @@ jobs:
 
   # ---------------------------------------------------------------------------
   # Setup — configure cluster access and baseline metrics
+  # (PRs run validate-manifests only; AWS OIDC is not configured for pull_request)
   # ---------------------------------------------------------------------------
   setup:
     needs: [approve]
-    if: always() && (needs.approve.result == 'success' || needs.approve.result == 'skipped')
+    if: github.event_name != 'pull_request' && always() && (needs.approve.result == 'success' || needs.approve.result == 'skipped')
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment || 'staging' }}
     outputs:
@@ -125,7 +126,7 @@ jobs:
   # ---------------------------------------------------------------------------
   pod-kill:
     needs: [setup]
-    if: contains(fromJSON('["all", "pod-kill"]'), github.event.inputs.experiment || 'all')
+    if: github.event_name != 'pull_request' && contains(fromJSON('["all", "pod-kill"]'), github.event.inputs.experiment || 'all')
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment || 'staging' }}
     steps:
@@ -204,7 +205,7 @@ jobs:
   # ---------------------------------------------------------------------------
   network-partition:
     needs: [setup]
-    if: contains(fromJSON('["all", "network-partition"]'), github.event.inputs.experiment || 'all')
+    if: github.event_name != 'pull_request' && contains(fromJSON('["all", "network-partition"]'), github.event.inputs.experiment || 'all')
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment || 'staging' }}
     steps:
@@ -292,7 +293,7 @@ jobs:
   # ---------------------------------------------------------------------------
   az-failure:
     needs: [setup]
-    if: contains(fromJSON('["all", "az-failure"]'), github.event.inputs.experiment || 'all')
+    if: github.event_name != 'pull_request' && contains(fromJSON('["all", "az-failure"]'), github.event.inputs.experiment || 'all')
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment || 'staging' }}
     steps:
@@ -372,7 +373,7 @@ jobs:
   # ---------------------------------------------------------------------------
   report:
     needs: [pod-kill, network-partition, az-failure]
-    if: always()
+    if: github.event_name != 'pull_request' && always()
     runs-on: ubuntu-latest
     steps:
       - name: Download all reports

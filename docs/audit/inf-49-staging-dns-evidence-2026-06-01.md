@@ -50,11 +50,18 @@ server: awselb/2.0
 ## Closure criteria
 
 - [x] `curl` with browser UA → `/health` **200**, `GET /v1/dids/auth/gh/bog` → `did:gtcx:auth:gh:bog`
-- [ ] GitHub close **#49** / protocols **#60** with comment + SPKI pin for mobile
+- [x] GitHub **#49** / protocols **#60** closed with verify comment (2026-06-01)
 - [ ] Production HSM keys (**#86**, protocols **#61**) — out of INF-49 scope
-- [ ] SPKI fingerprint posted on #49 for mobile `CERT_PINS.md`
-- [ ] Staging deploy: `gtcx-protocols-staging` image ≥ `d54241c1`, `GTCX_CSP_ROOT` + CSP volume mounted
-- [ ] `GET /v1/dids/auth/gh/bog` → 200, `jq .id` = `"did:gtcx:auth:gh:bog"` (handler on `main` since `d54241c1`; protocols verifies after infra ping)
+- [x] SPKI fingerprint on #49: `gVKObBhQjbrl6ricI6NZg7SDAPB/1BJrLn4UHPCKgOo=` (`api.staging.gtcx.trade`)
+- [x] Staging deploy: `gtcx-protocols-staging` image `v0.4.5`, TCP probes in Git (`protocols-probes-staging.yaml`)
+- [x] Spot-check authorities: `gh/bog`, `gh/pmmc`, `gh/cocobod`, `zw/zimra`, `na/bon` → 200
+
+## Verify commands (WAF requires browser UA)
+
+```bash
+curl -sS -A "Mozilla/5.0" -o /dev/null -w "%{http_code}\n" https://api.staging.gtcx.trade/health
+curl -sS -A "Mozilla/5.0" https://api.staging.gtcx.trade/v1/dids/auth/gh/bog | jq -r .id
+```
 
 ## Cross-repo
 

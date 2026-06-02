@@ -1,0 +1,26 @@
+{
+  "schema": "gtcx-staging-smoke/v1",
+  "generatedAt": "2026-06-02T08:26:41.908Z",
+  "repo": "gtcx-infrastructure",
+  "commit": "680becb",
+  "branch": "main",
+  "target": "https://api.staging.gtcx.trade",
+  "probes": [
+    {
+      "url": "https://api.staging.gtcx.trade/audit/bundles",
+      "path": "/audit/bundles",
+      "status": 404,
+      "error": null,
+      "latencyMs": 158
+    },
+    {
+      "url": "https://api.staging.gtcx.trade/audit/query",
+      "path": "/audit/query",
+      "status": 404,
+      "error": null,
+      "latencyMs": 87
+    }
+  ],
+  "pass": false,
+  "notes": "FAIL: audit routes still 404 (ingress or compliance-gateway image)"
+}

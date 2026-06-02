@@ -111,6 +111,24 @@ jobs:
             exit 1
           fi
 
+      - name: Smoke test — audit API reachability (durable evidence)
+        id: audit-smoke
+        run: |
+          OUTPUT_DIR=infra/security/reports/staging-smoke/${{ github.run_id }} \
+            node scripts/staging-audit-probe.mjs
+          echo "- Audit API smoke test: **completed**" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+
+      - name: Upload staging smoke evidence
+        if: always() && steps.audit-smoke.outcome != 'skipped'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: staging-smoke-evidence-${{ github.run_id }}
+          path: infra/security/reports/staging-smoke/${{ github.run_id }}/
+          retention-days: 365
+
       - name: Collect rollout evidence on failure
         if: failure()
         run: |

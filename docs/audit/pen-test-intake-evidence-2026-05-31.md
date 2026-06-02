@@ -19,9 +19,9 @@ human_signature: pending
 
 | Field               | Value                                      |
 | ------------------- | ------------------------------------------ |
-| HEAD                | `4189077d49fbb2c166b8448e89bfe737c1b39dd8` |
+| HEAD                | `680becbea5d72645bbefdf810d98c14c73f4a671` |
 | Branch              | `docs/roadmap-update-2026-05-30`           |
-| Internal readiness  | 7.7/10                                     |
+| Internal readiness  | 7.1/10                                     |
 | Certified composite | undefined/10                               |
 | validate-all        | 36/36 gates (agent closure session)        |
 

@@ -64,7 +64,7 @@ service_exists() {
 service_dockerfile() {
     case "$1" in
         protocols) echo "Dockerfile" ;;
-        agx) echo "infra/docker/Dockerfile.platforms" ;;
+        agx) echo "${ECOSYSTEM_ROOT}/gtcx-platforms/Dockerfile" ;;
         intelligence-sdk) echo "infra/docker/Dockerfile.intelligence" ;;
         trainer) echo "${ECOSYSTEM_ROOT}/gtcx-intelligence/intelligence/trainer/Dockerfile" ;;
         redteam) echo "${ECOSYSTEM_ROOT}/gtcx-intelligence/intelligence/red-team/Dockerfile" ;;
@@ -76,7 +76,7 @@ service_dockerfile() {
 service_context() {
     case "$1" in
         protocols) echo "${ECOSYSTEM_ROOT}/gtcx-protocols" ;;
-        agx) echo "${ECOSYSTEM_ROOT}/6-platforms" ;;
+        agx) echo "${ECOSYSTEM_ROOT}/gtcx-platforms" ;;
         intelligence-sdk|trainer|redteam) echo "${ECOSYSTEM_ROOT}/gtcx-intelligence" ;;
         compliance-gateway) echo "${REPO_ROOT}" ;;
         *) return 1 ;;

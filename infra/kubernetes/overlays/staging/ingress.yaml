@@ -43,6 +43,14 @@ spec:
                 name: compliance-gateway-staging
                 port:
                   number: 8500
+          # TradePass DID resolution + protocol endpoints — served by gtcx-protocols (#60/#61).
+          - path: /v1/tradepass
+            pathType: Prefix
+            backend:
+              service:
+                name: gtcx-protocols-staging
+                port:
+                  number: 8300
           # Sovereign API (CRX/SGX modules) — routes to platform AGX service
           - path: /api
             pathType: Prefix

@@ -24,3 +24,16 @@ spec:
               value: ''
             - name: GTCX_AUDIT_STORE
               value: memory
+            # Boot-seed staging operator DIDs from bundled fixtures (#60 / 6ef3b423).
+            - name: GTCX_STAGING_TRADEPASS_SEED
+              value: '1'
+            - name: GTCX_STAGING_TRADEPASS_FIXTURES_PATH
+              value: server/fixtures/staging-tradepass-operators.json
+            # API key for admin/operator registration (Bearer auth).
+            - name: GTCX_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-protocols-api-key-staging
+                  key: api-key
+            - name: GTCX_API_KEY_SCOPES
+              value: 'admin:audit,protocol:read,protocol:write'

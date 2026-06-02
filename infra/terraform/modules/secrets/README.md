@@ -76,6 +76,17 @@ Database passwords rotate automatically via Lambda (30-day cycle). API keys must
 
 Sandbox provider keys should be rotated independently from production keys.
 
+## External Access Plane (EAP)
+
+Terraform: `eap.tf` — see [docs/operations/eap-secrets-and-iam.md](../../../docs/operations/eap-secrets-and-iam.md).
+
+| Secret                   | Path                                 |
+| ------------------------ | ------------------------------------ |
+| Per-client key           | `gtcx/eap/<env>/clients/<client_id>` |
+| Intelligence auth bundle | `gtcx/intelligence/<env>/auth-keys`  |
+
+IAM role `gtcx-<env>-eap-admin` for issuance + bundle sync.
+
 ## Security
 
 - Secret values are NEVER stored in Terraform state (lifecycle ignores secret_string changes)

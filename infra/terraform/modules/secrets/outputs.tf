@@ -51,3 +51,23 @@ output "secrets_reader_policy_arn" {
   description = "ARN of the IAM policy for reading intelligence secrets"
   value       = aws_iam_policy.intelligence_secrets_reader.arn
 }
+
+output "intelligence_auth_keys_secret_arn" {
+  description = "ARN of the intelligence AUTH_API_KEYS bundle (EAP sync target)"
+  value       = aws_secretsmanager_secret.intelligence_auth_keys.arn
+}
+
+output "intelligence_auth_keys_secret_name" {
+  description = "Secrets Manager name for intelligence auth bundle"
+  value       = aws_secretsmanager_secret.intelligence_auth_keys.name
+}
+
+output "eap_admin_role_arn" {
+  description = "IAM role ARN for EAP admin service (IRSA)"
+  value       = aws_iam_role.eap_admin.arn
+}
+
+output "eap_admin_policy_arn" {
+  description = "IAM policy ARN for EAP admin operations"
+  value       = aws_iam_policy.eap_admin.arn
+}

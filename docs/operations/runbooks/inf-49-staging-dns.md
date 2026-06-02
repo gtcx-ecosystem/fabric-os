@@ -20,9 +20,12 @@ review_cycle: 'on-change'
 
 This runbook walks through bringing public DNS for the staging environment under IaC and explains the chicken-and-egg between the ALB Controller (which creates the ALB at K8s Ingress time) and Route53 (which needs the ALB's DNS name to alias). It assumes the prerequisites below.
 
+## Architecture (authorities vs operators)
+
+Canonical three-layer model (trust anchors, CSP rules, per-company operators): **gtcx-protocols** [`docs/reference/architecture/trust-layers-and-did-resolution.md`](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/reference/architecture/trust-layers-and-did-resolution.md) (infra pointer: [`docs/reference/architecture/trust-layers-and-did-resolution.md`](../../reference/architecture/trust-layers-and-did-resolution.md)).
+
 ## What this runbook does NOT cover
 
-- **Server-side DID resolution.** The route from `https://api.staging.gtcx.trade/v1/dids/auth/<iso>/<slug>` to the 43 JSON-LD files at `country-support-packages/<iso>/v1.0.0/authorities/<slug>.json` lives in `gtcx-protocols`. As of 2026-05-30 there is no HTTP handler serving these. That handler is a separate gtcx-protocols PR — see the "Open follow-ups" section.
 - **Key ceremony.** Authority DIDs ship with `key_status: "placeholder"` and `key_ceremony_blocked_by` references. Replacing placeholders with real regulator-attested keys is `gtcx-protocols#61` — out of scope here.
 
 ---
@@ -103,8 +106,15 @@ route53_a_records_created = true
 dig +short api.staging.gtcx.trade
 # → <ALB IPs>
 
-curl -sS -o /dev/null -w "%{http_code}\n" https://api.staging.gtcx.trade/health
-# → 200 (assuming gtcx-protocols-staging service is healthy)
+# WAF may block default curl; use a browser User-Agent (see trust-layers doc).
+curl -sS -o /dev/null -w "%{http_code}\n" \
+  -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
+  https://api.staging.gtcx.trade/health
+# → 200
+
+curl -sS -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
+  "https://api.staging.gtcx.trade/v1/dids/auth/gh/bog" | jq .id
+# → "did:gtcx:auth:gh:bog" (protocols v0.4.5+ with GTCX_CSP_ROOT)
 ```
 
 ---
@@ -144,14 +154,14 @@ helm upgrade --install external-dns external-dns/external-dns \
 
 ## Open follow-ups (NOT in INF-49 scope)
 
-These are required for end-to-end `gtcx-protocols#60` resolution but live in other repos / tracks.
+| Item                                                                  | Where                                                          | Owner           |
+| --------------------------------------------------------------------- | -------------------------------------------------------------- | --------------- |
+| Production HSM keys for authority DIDs (`key_status: production`)     | `gtcx-protocols#61`, infra **#86**                             | compliance-lead |
+| Production DNS (`gtcx.trade` apex, not staging)                       | `gtcx-infrastructure/infra/terraform/environments/production/` | platform-lead   |
+| `external-dns-irsa` Terraform module                                  | `gtcx-infrastructure/infra/terraform/modules/`                 | platform-lead   |
+| WAF allowlist / `/health` rate-limit exemption for synthetic monitors | staging WAF + protocols SEC-004                                | platform-lead   |
 
-| Item                                                                               | Where                                                          | Owner              |
-| ---------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------ |
-| HTTP handler serving `/v1/dids/auth/<iso>/<slug>` from `country-support-packages/` | `gtcx-protocols/server/`                                       | protocol-architect |
-| Replace placeholder Ed25519 keys with regulator-attested keys (per ADR-002 §3)     | `gtcx-protocols#61` + per-regulator coordination               | compliance-lead    |
-| Production DNS (`gtcx.trade` apex, not staging)                                    | `gtcx-infrastructure/infra/terraform/environments/production/` | platform-lead      |
-| `external-dns-irsa` Terraform module                                               | `gtcx-infrastructure/infra/terraform/modules/`                 | platform-lead      |
+**Completed (staging, 2026-06-01):** HTTP handler `GET /v1/dids/auth/{iso}/{slug}`, image `gtcx-protocols:v0.4.5`, staging verify on `api.staging.gtcx.trade` — closes **#60** / INF-49 staging gate. See trust-layers architecture doc.
 
 ---
 

@@ -13,7 +13,9 @@ infra_issue: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/issues/49'
 
 **Issue:** gtcx-infrastructure#49  
 **Runbook:** [`docs/operations/runbooks/inf-49-staging-dns.md`](../operations/runbooks/inf-49-staging-dns.md)  
-**State:** **Partial** — DNS aliases live; `/health` returns **403** (not yet closable).
+**State:** **Staging verify complete (2026-06-01)** — DNS + TLS + authority DID resolution. Production keys remain **#61** / **#86**.
+
+**Architecture:** [trust-layers-and-did-resolution.md](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/reference/architecture/trust-layers-and-did-resolution.md)
 
 ## DNS resolution
 
@@ -45,9 +47,11 @@ server: awselb/2.0
 - PR #66 merged — `infra/terraform/modules/route53/`, staging `main.tf` wiring
 - Ingress annotations: `api.staging.gtcx.trade`, `geotag.staging.gtcx.trade`
 
-## Closure criteria (remaining)
+## Closure criteria
 
-- [ ] `curl https://api.staging.gtcx.trade/health` → **200** with `{"status":"ok","version":"<sha>"}`
+- [x] `curl` with browser UA → `/health` **200**, `GET /v1/dids/auth/gh/bog` → `did:gtcx:auth:gh:bog`
+- [ ] GitHub close **#49** / protocols **#60** with comment + SPKI pin for mobile
+- [ ] Production HSM keys (**#86**, protocols **#61**) — out of INF-49 scope
 - [ ] SPKI fingerprint posted on #49 for mobile `CERT_PINS.md`
 - [ ] Staging deploy: `gtcx-protocols-staging` image ≥ `d54241c1`, `GTCX_CSP_ROOT` + CSP volume mounted
 - [ ] `GET /v1/dids/auth/gh/bog` → 200, `jq .id` = `"did:gtcx:auth:gh:bog"` (handler on `main` since `d54241c1`; protocols verifies after infra ping)

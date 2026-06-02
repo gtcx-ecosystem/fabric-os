@@ -36,13 +36,15 @@ INF-49 (DNS/TLS + /health 200)
 
 ### #49 — Staging DNS + TLS
 
-| Item                                            | Status                                                                                                          |
-| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| IaC (Route53 module, staging ingress hostnames) | **Merged** — PR #66                                                                                             |
-| Runbook                                         | [`docs/operations/runbooks/inf-49-staging-dns.md`](../../operations/runbooks/inf-49-staging-dns.md)             |
-| DNS `api.staging.gtcx.trade`                    | **Resolves** to ALB (af-south-1)                                                                                |
-| `curl https://api.staging.gtcx.trade/health`    | **403** (ALB reachable; backend/routing fix in progress)                                                        |
-| Evidence                                        | [`docs/audit/inf-49-staging-dns-evidence-2026-06-01.md`](../../audit/inf-49-staging-dns-evidence-2026-06-01.md) |
+| Item                                            | Status                                                                                                                                                |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IaC (Route53 module, staging ingress hostnames) | **Merged** — PR #66                                                                                                                                   |
+| Runbook                                         | [`docs/operations/runbooks/inf-49-staging-dns.md`](../../operations/runbooks/inf-49-staging-dns.md)                                                   |
+| DNS `api.staging.gtcx.trade`                    | **Resolves** to ALB (af-south-1)                                                                                                                      |
+| `curl https://api.staging.gtcx.trade/health`    | **200** with browser UA (WAF blocks default curl)                                                                                                     |
+| `GET /v1/dids/auth/gh/bog`                      | **200** → `did:gtcx:auth:gh:bog` (`gtcx-protocols:v0.4.5`)                                                                                            |
+| Architecture doc                                | [trust-layers (protocols)](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/reference/architecture/trust-layers-and-did-resolution.md) |
+| Evidence                                        | [`docs/audit/inf-49-staging-dns-evidence-2026-06-01.md`](../../audit/inf-49-staging-dns-evidence-2026-06-01.md)                                       |
 
 **ETA to close #49:** 3–5 business days (target group / ingress path to compliance-gateway or protocols staging service returning 200 on `/health`).
 

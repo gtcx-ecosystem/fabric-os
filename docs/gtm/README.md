@@ -18,6 +18,8 @@ Everything needed to enter African central bank sandboxes and scale to full lice
 
 See [GTM Documentation Overview](overview.md) for scope boundaries and ownership.
 
+**Trust architecture (authorities vs operators):** [gtcx-protocols canonical spec](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/reference/architecture/trust-layers-and-did-resolution.md) · [infra cross-ref](../reference/architecture/trust-layers-and-did-resolution.md)
+
 ## Inbound tickets (cross-repo)
 
 | Document                                                                                                 | From                                            |

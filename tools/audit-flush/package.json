@@ -9,7 +9,9 @@
     "start": "node src/index.mjs",
     "test": "node ../scripts/run-package-tests.mjs",
     "test:coverage:gate": "node ../scripts/run-package-tests.mjs",
-    "test:integration": "node test/run-integration.mjs"
+    "test:integration": "node test/run-integration.mjs",
+    "typecheck": "echo \"No TypeScript files — typecheck is a no-op for this JS-only package\"",
+    "build": "echo \"No build step required — this package runs directly with Node.js ESM\""
   },
   "engines": {
     "node": ">=20.18.0"

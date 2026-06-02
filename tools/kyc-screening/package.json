@@ -6,7 +6,9 @@
   "main": "src/handler.mjs",
   "scripts": {
     "test": "node ../scripts/run-package-tests.mjs",
-    "package": "bash ../scripts/package-lambda.sh"
+    "package": "bash ../scripts/package-lambda.sh",
+    "typecheck": "echo \"No TypeScript files — typecheck is a no-op for this JS-only package\"",
+    "build": "echo \"No build step required — this package runs directly with Node.js ESM\""
   },
   "engines": {
     "node": ">=20.18.0"

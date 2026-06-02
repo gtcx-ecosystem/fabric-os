@@ -9,7 +9,9 @@
     "eval:all": "node eval.mjs --all",
     "eval:injection": "node injection-suite.mjs",
     "test": "node ../scripts/run-package-tests.mjs",
-    "test:coverage:gate": "node ../scripts/run-package-tests.mjs"
+    "test:coverage:gate": "node ../scripts/run-package-tests.mjs",
+    "typecheck": "echo \"No TypeScript files — typecheck is a no-op for this JS-only package\"",
+    "build": "echo \"No build step required — this package runs directly with Node.js ESM\""
   },
   "dependencies": {
     "@gtcx/compliance-gateway": "workspace:*"

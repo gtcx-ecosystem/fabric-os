@@ -24,7 +24,8 @@
     "test:coverage": "c8 --reporter=text --reporter=json --reporter=lcov --include='src/**' --exclude='tests/**' node ../scripts/run-package-tests.mjs",
     "test:coverage:gate": "c8 --reporter=text --check-coverage --branches=90 --statements=90 --functions=90 --lines=90 --include='src/**' --exclude='tests/**' node ../scripts/run-package-tests.mjs",
     "lint": "eslint --ext .mjs,.js src tests",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build": "echo \"No build step required — this package runs directly with Node.js ESM\""
   },
   "engines": {
     "node": ">=20.18.0"

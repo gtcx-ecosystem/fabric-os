@@ -12,7 +12,8 @@
     "dev": "pnpm run sync && astro dev",
     "build": "pnpm run sync && astro check && astro build",
     "preview": "astro preview",
-    "clean": "rm -rf dist .astro src/content/docs"
+    "clean": "rm -rf dist .astro src/content/docs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.39.2",

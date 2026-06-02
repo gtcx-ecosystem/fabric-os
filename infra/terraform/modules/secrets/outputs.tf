@@ -52,6 +52,11 @@ output "secrets_reader_policy_arn" {
   value       = aws_iam_policy.intelligence_secrets_reader.arn
 }
 
+output "intelligence_secrets_role_arn" {
+  description = "IRSA role ARN for intelligence service account (ESO → SM)"
+  value       = aws_iam_role.intelligence_secrets.arn
+}
+
 output "intelligence_auth_keys_secret_arn" {
   description = "ARN of the intelligence AUTH_API_KEYS bundle (EAP sync target)"
   value       = aws_secretsmanager_secret.intelligence_auth_keys.arn

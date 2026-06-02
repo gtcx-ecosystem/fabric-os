@@ -425,6 +425,28 @@ module "audit_flush_irsa" {
 }
 
 # -----------------------------------------------------------------------------
+# Secrets (Secrets Manager + External Secrets Operator + intelligence IRSA)
+# -----------------------------------------------------------------------------
+# Installs ESO on gtcx-staging and syncs SM → K8s secret intelligence-secrets.
+# EAP auth bundle: gtcx/intelligence/staging/auth-keys → AUTH_API_KEYS / AUTH_KEY_ROLES.
+# If auth-keys SM secret already exists (EAP sync), import before apply — see
+# docs/operations/staging-intelligence-eso-bootstrap.md
+
+module "secrets" {
+  source = "../../modules/secrets"
+
+  environment           = var.environment
+  eks_cluster_name      = module.eks.cluster_name
+  eks_oidc_provider_arn = module.eks.oidc_provider_arn
+
+  tags = merge(var.tags, {
+    Environment = "staging"
+  })
+
+  depends_on = [module.eks]
+}
+
+# -----------------------------------------------------------------------------
 # Outputs
 # -----------------------------------------------------------------------------
 
@@ -528,4 +550,14 @@ output "route53_hostnames" {
 output "route53_a_records_created" {
   description = "Whether DNS A records are wired (false on first apply before the ALB exists)"
   value       = module.route53.a_records_created
+}
+
+output "intelligence_auth_keys_secret_name" {
+  description = "EAP intelligence auth bundle in Secrets Manager"
+  value       = module.secrets.intelligence_auth_keys_secret_name
+}
+
+output "intelligence_secrets_role_arn" {
+  description = "IRSA role for intelligence-sa (ESO SecretStore JWT)"
+  value       = module.secrets.intelligence_secrets_role_arn
 }

@@ -237,6 +237,7 @@ resource "aws_iam_policy" "intelligence_secrets_reader" {
           aws_secretsmanager_secret.provider_mode.arn,
           aws_secretsmanager_secret.provider_failure_target.arn,
           aws_secretsmanager_secret.database_url.arn,
+          aws_secretsmanager_secret.intelligence_auth_keys.arn,
         ]
       },
     ]
@@ -336,7 +337,10 @@ resource "kubectl_manifest" "secret_store" {
     }
   })
 
-  depends_on = [helm_release.external_secrets_operator]
+  depends_on = [
+    helm_release.external_secrets_operator,
+    kubectl_manifest.intelligence_service_account,
+  ]
 }
 
 resource "kubectl_manifest" "external_secret" {
@@ -416,6 +420,20 @@ resource "kubectl_manifest" "external_secret" {
             key = aws_secretsmanager_secret.database_url.name
           }
         },
+        {
+          secretKey = "AUTH_API_KEYS"
+          remoteRef = {
+            key      = aws_secretsmanager_secret.intelligence_auth_keys.name
+            property = "AUTH_API_KEYS"
+          }
+        },
+        {
+          secretKey = "AUTH_KEY_ROLES"
+          remoteRef = {
+            key      = aws_secretsmanager_secret.intelligence_auth_keys.name
+            property = "AUTH_KEY_ROLES"
+          }
+        },
       ]
     }
   })
@@ -423,7 +441,28 @@ resource "kubectl_manifest" "external_secret" {
   depends_on = [
     helm_release.external_secrets_operator,
     kubectl_manifest.secret_store,
+    kubectl_manifest.intelligence_service_account,
   ]
+}
+
+resource "kubectl_manifest" "intelligence_service_account" {
+  yaml_body = yamlencode({
+    apiVersion = "v1"
+    kind       = "ServiceAccount"
+    metadata = {
+      name      = var.intelligence_service_account
+      namespace = var.intelligence_namespace
+      annotations = {
+        "eks.amazonaws.com/role-arn" = aws_iam_role.intelligence_secrets.arn
+      }
+      labels = {
+        "app.kubernetes.io/managed-by" = "terraform"
+        "app.kubernetes.io/part-of"    = "gtcx-intelligence"
+      }
+    }
+  })
+
+  depends_on = [aws_iam_role_policy_attachment.intelligence_secrets]
 }
 
 # -----------------------------------------------------------------------------

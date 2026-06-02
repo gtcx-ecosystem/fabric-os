@@ -58,6 +58,8 @@ aws iam get-role --role-name gtcx-staging-eap-admin
 
 ## Force ESO refresh (after sync)
 
+Requires ESO on the cluster — see [staging-intelligence-eso-bootstrap.md](./staging-intelligence-eso-bootstrap.md).
+
 ```bash
 kubectl annotate externalsecret intelligence-secrets -n intelligence \
   force-sync=$(date +%s) --overwrite

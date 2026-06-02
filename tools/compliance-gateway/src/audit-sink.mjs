@@ -15,7 +15,13 @@
  * until the next checkpoint.
  */
 
-function sinkMode() { return (process.env.AUDIT_SINK || 'stdout').toLowerCase(); }
+function sinkMode() {
+  if (process.env.AUDIT_SINK) return process.env.AUDIT_SINK.toLowerCase();
+  const env = process.env.NODE_ENV || 'development';
+  // Default to durable NATS sink in production and staging;
+  // stdout is acceptable only in development and test environments.
+  return (env === 'production' || env === 'staging') ? 'nats' : 'stdout';
+}
 function natsSubject() { return process.env.AUDIT_NATS_SUBJECT || 'gtcx.audit.compliance-gateway'; }
 function natsUrl() { return process.env.NATS_URL || 'nats://nats.gtcx.svc.cluster.local:4222'; }
 

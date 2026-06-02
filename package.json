@@ -40,7 +40,8 @@
     "prepare": "husky",
     "agent:sync": "node scripts/agent-sync/sync.mjs",
     "agent:check": "node scripts/agent-sync/sync.mjs --check",
-    "score:compute": "node tools/scripts/compute-audit-scores.mjs --write"
+    "score:compute": "node tools/scripts/compute-audit-scores.mjs --write",
+    "agent:coordination:check": "node scripts/check-coordination-hygiene.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

@@ -45,10 +45,8 @@ function applyBlock(existing, block) {
   const startIdx = existing.indexOf(markerStart);
   const endIdx = existing.indexOf(markerEnd);
   if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
-    const before = existing.slice(0, startIdx).trimEnd();
-    const after = existing.slice(endIdx + markerEnd.length).trimStart();
-    const parts = [before, block, after].filter(Boolean);
-    return parts.join('\n\n') + '\n';
+    // Preserve human-managed whitespace outside markers (idempotent re-sync).
+    return existing.slice(0, startIdx) + block + existing.slice(endIdx + markerEnd.length);
   }
   const before = existing.trimEnd();
   const parts = [before, block].filter(Boolean);

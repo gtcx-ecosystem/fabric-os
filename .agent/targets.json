@@ -7,15 +7,36 @@
   "targets": [
     {
       "path": "AGENTS.md",
-      "partials": ["base.md", "audit-pointer.md"]
+      "partials": [
+        "base.md",
+        "audit-pointer.md",
+        "credentials-pointer.md",
+        "execute-roadmap-pointer.md",
+        "coordination-pointer.md",
+        "claude.partial.md"
+      ]
     },
     {
       "path": "CLAUDE.md",
-      "partials": ["base.md", "audit-pointer.md", "claude.partial.md"]
+      "partials": [
+        "base.md",
+        "audit-pointer.md",
+        "claude.partial.md",
+        "credentials-pointer.md",
+        "execute-roadmap-pointer.md",
+        "coordination-pointer.md"
+      ]
     },
     {
       "path": "GEMINI.md",
-      "partials": ["base.md", "audit-pointer.md"],
+      "partials": [
+        "base.md",
+        "audit-pointer.md",
+        "credentials-pointer.md",
+        "execute-roadmap-pointer.md",
+        "coordination-pointer.md",
+        "claude.partial.md"
+      ],
       "createIfMissing": true
     },
     {
@@ -24,13 +45,22 @@
         "base.md",
         "audit-pointer.md",
         "credentials-pointer.md",
-        "execute-roadmap-pointer.md"
+        "execute-roadmap-pointer.md",
+        "coordination-pointer.md",
+        "claude.partial.md"
       ],
       "createIfMissing": true
     },
     {
       "path": "CONVENTIONS.md",
-      "partials": ["base.md", "audit-pointer.md"],
+      "partials": [
+        "base.md",
+        "audit-pointer.md",
+        "credentials-pointer.md",
+        "execute-roadmap-pointer.md",
+        "coordination-pointer.md",
+        "claude.partial.md"
+      ],
       "createIfMissing": true
     }
   ]

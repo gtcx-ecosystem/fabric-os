@@ -35,8 +35,6 @@ const ALLOWLIST = new Set([
   'tools/compliance-gateway/src/budget-store.mjs:192', // already closed during teardown
   'tools/compliance-gateway/src/budget-store.mjs:243', // best-effort reset during swap
   'tools/compliance-gateway/src/budget-store.mjs:248', // best-effort close during swap
-  // Brotli compression best-effort fallback — gzip path runs next.
-  'tools/compliance-gateway/src/server.mjs:690',
   // NATS stream already-exists (race-safe creation) + shutdown drain.
   'tools/audit-flush/src/nats-consumer.mjs:75',
   'tools/audit-flush/src/nats-consumer.mjs:187',

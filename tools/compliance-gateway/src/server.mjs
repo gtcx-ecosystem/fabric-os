@@ -692,8 +692,10 @@ function sendJson(res, status, body, req) {
       try {
         data = brotliCompressSync(data);
         encoding = 'br';
-      } catch {
-        /* fallback */
+      } catch (err) {
+        // Defensive: brotli can throw for invalid inputs or resource constraints.
+        // We intentionally fall back to identity/gzip but still surface the failure.
+        console.error(JSON.stringify({ level: 'warn', message: 'brotli-compress-failed', error: err?.message }));
       }
     }
     if (!encoding && acceptEncoding.includes('gzip')) {

@@ -27,7 +27,7 @@ Read that document for:
 | Concern                        | Location                                                                                                |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------- |
 | Staging DNS + ALB + ingress    | `infra/kubernetes/overlays/staging/ingress.yaml`, `infra/terraform/environments/staging/`               |
-| Runbook                        | [`docs/operations/runbooks/inf-49-staging-dns.md`](../operations/runbooks/inf-49-staging-dns.md)        |
+| Runbook                        | [`docs/operations/runbooks/inf-49-staging-dns.md`](../../operations/runbooks/inf-49-staging-dns.md)     |
 | Staging protocols env + probes | `infra/kubernetes/overlays/staging/patches/protocols-staging-env.yaml`, `protocols-probes-staging.yaml` |
 | Image tag                      | `infra/kubernetes/overlays/staging/kustomization.yaml` → `gtcx-protocols:v0.4.5+`                       |
 | HSM ceremony                   | **#86** (not INF-49)                                                                                    |

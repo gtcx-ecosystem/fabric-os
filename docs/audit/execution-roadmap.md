@@ -2,12 +2,13 @@
 status: current
 date: 2026-06-01
 owner: gtcx-infrastructure
-last_reconciled: 2026-06-01
+last_reconciled: 2026-06-02
 ir_roadmap: docs/audit/ir-10-10-roadmap.md
 sources:
   - docs/audit/ir-10-10-roadmap.md
   - docs/audit/post-roadmap-session-2026-05-30.md
   - docs/audit/master-audit-2026-05-30.md
+  - docs/audit/master-audit-2026-06-02.md
   - docs/audit/10-10-remediation-plan-2026-05-30.md
   - docs/audit/10-10-roadmap-2026-05-26.md
   - docs/roadmap/roadmap-2026-07-13.md
@@ -29,6 +30,8 @@ reconciled_against_commits:
   - 152d079 # closes F14 — dependabot-triage labels
   - fb26c9f # META — wires 5 unwired gates into validate-all
   - 0f83c27 # partial coverage bump for replay-guard
+  - 3437db4 # WAF /health allow rule + INF-49 runbook updates
+  - bb1c2ab # staging /audit ingress routing scaffold for #50–#52
 ---
 
 # Execution roadmap — gtcx-infrastructure
@@ -48,6 +51,8 @@ and decides the wire-or-delete fate of unwired primitives. Sprint 3 ships
 external evidence — pilot signature, primitives publication, soak-test baseline.
 
 **Score baseline (2026-06-01, rubric v2):** **IR 7.6** (internal engineering) + **XC 9.0** (external/GTM clearance, separate track). Do not use retired `certified composite` or `CR = IR − gap`. See `docs/audit/SCORING.md`.
+
+**Reconcile delta (2026-06-02):** Infra shipped INF-49 staging verification and WAF `/health` allow. PRD-002 audit API deploy work is in-flight (#50–#52) but still requires an amd64 image push + contract alignment for TradePass DID doc resolution (see `docs/audit/master-audit-2026-06-02.md`).
 
 **Sprint cadence:**
 
@@ -75,6 +80,52 @@ scheduled cadence call.
 | S1-08 | Validate alert `runbook_url` anchors — fail CI on dead links                            | **done** (`7081223`) — anchor existence gate; 37 STUB sections backfilled                                                                                                                                             |
 | S1-09 | **ZWCMP owner assignment + first cadence call**                                         | **scaffolded** (`879795b`); Q6 ANSWERED 2026-05-31 (sales-led) — owner profile: senior pilot-facing operator with prior fintech-pilot-with-African-central-bank experience; assignment still requires human selection |
 | S1-10 | Trust-anchor pin in `verify-catalog.mjs` (20-line moat fix)                             | **done** (`3729a29`) — PINNED_PUBLIC_KEY + 8 test cases for every rejection code                                                                                                                                      |
+
+---
+
+## Sprint 4 (reconcile-only additions): Staging integration hygiene (INF-49 → PRD-002 bridge)
+
+> Added 2026-06-02 from `master-audit-2026-06-02.md`. These are planning entries only; use `execute-roadmap` to implement.
+
+| Story | Title                                                                                           | Status  |
+| ----- | ----------------------------------------------------------------------------------------------- | ------- |
+| S4-01 | Commit-or-revert audit-session remediation (keep main reproducible)                             | pending |
+| S4-02 | PRD-002 Tier A: staging `/audit/*` reachable (≠404) + evidence probe script in CI               | pending |
+| S4-03 | PRD-002 Tier B: align TradePass DID doc resolver contract for `/audit/bundles` signature verify | blocked |
+
+### S4-01: Commit-or-revert audit-session remediation (keep main reproducible)
+
+**Why:** master-audit reconcile requires a clean baseline; uncommitted gate-fix deltas make evidence non-replayable.
+
+**Acceptance**
+
+```bash
+git status --short   # clean
+pnpm test
+node tools/scripts/validate-all.mjs
+```
+
+### S4-02: PRD-002 Tier A: staging `/audit/*` reachable (≠404) + evidence probe script in CI
+
+**Why:** unblock mobile to flip from mock-only to “route exists” staging smoke without claiming live signed ingestion.
+
+**Acceptance**
+
+```bash
+node scripts/staging-audit-probe.mjs
+curl -sS -o /dev/null -w "%{http_code}\n" -X POST https://api.staging.gtcx.trade/audit/bundles -H "Content-Type: application/json" -d '{}'
+```
+
+**UAT / QA**
+
+- [ ] `compliance-gateway-staging` running with **linux/amd64** image
+- [ ] `/audit/bundles` and `/audit/query` return not-404 via public ingress
+
+### S4-03: PRD-002 Tier B: align TradePass DID doc resolver contract for `/audit/bundles` signature verify
+
+**Why:** compliance-gateway currently expects DID documents with `verificationMethod[].publicKeyJwk`. Protocols tradepass compat currently serves a VC-like payload at `/v1/tradepass/:did`.
+
+**Blocker:** requires protocols-side contract decision (TradePass `/identity/:did` endpoint shape) and/or a dedicated TradePass service.
 
 ### S1-01: Replay-guard traversal — verify closure + add fuzz fixtures
 

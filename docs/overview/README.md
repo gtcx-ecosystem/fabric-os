@@ -1,7 +1,7 @@
 ---
 title: 'GTCX Infrastructure — Repository Overview'
 status: 'current'
-date: '2026-05-27'
+date: '2026-06-02'
 owner: 'frontier-infra-engineer'
 role: 'frontier-infra-engineer'
 tier: 'strategic'
@@ -14,9 +14,11 @@ autonomy_level: 'sovereign'
 
 # GTCX Infrastructure — Repository Overview
 
-> **Last updated:** 2026-05-27
-> **Latest audit:** [master-audit-2026-05-27.md](../audit/master-audit-2026-05-27.md)
-> **Latest roadmap:** [10-10-remediation-plan-2026-05-27.md](../audit/10-10-remediation-plan-2026-05-27.md)
+> **Last updated:** 2026-06-02
+> **Latest master audit:** [`master-audit-2026-06-02.md`](../audit/master-audit-2026-06-02.md)
+> **Latest full audit:** [`full-audit-2026-05-31.md`](../audit/full-audit-2026-05-31.md)
+> **Execution roadmap:** [`execution-roadmap.md`](../audit/execution-roadmap.md)
+> **Machine status:** [`latest.json`](../audit/latest.json)
 > **Single source of truth:** This document is the canonical entry point. If you find conflicting information, this document wins.
 
 ---
@@ -25,7 +27,7 @@ autonomy_level: 'sovereign'
 
 **For a 10-year-old:** This repo contains the blueprints and tools for building a super-secure computer system that helps people in Africa trade minerals fairly.
 
-**For a CTO:** GTCX Infrastructure is the deployment, operations, and security platform for the GTCX ecosystem. It provides Terraform modules for AWS infrastructure, Kubernetes manifests for container orchestration, Docker images for services, and operational tooling for compliance, anomaly detection, replay protection, deployment gating, WORM audit storage, and chaos engineering. The current 2026-05-27 post-sprint audit scores the repo at **9.0/10**. All repo-controlled gates are green (lint, build, test, format, Terraform, Kustomize, secret scan, docs links). Production certification is now blocked only by external execution gaps: vendor SOC 2 / pen-test completion, live AWS WORM upload proof, authenticated staging runtime smoke, and DR/fire-drill exercise.
+**For a CTO:** GTCX Infrastructure is the deployment, operations, and security platform for the GTCX ecosystem. It provides Terraform modules for AWS infrastructure, Kubernetes manifests for container orchestration, Docker images for services, and operational tooling for compliance, anomaly detection, replay protection, deployment gating, WORM audit storage, and chaos engineering. Current internal engineering state is **IR ≈ 7.7/10** (see `docs/audit/latest.json` + `docs/audit/master-audit-2026-06-02.md`). Staging DNS/TLS for authority DID resolution (INF-49) is verified; production sovereign authority keys remain gated on infra **#86** (HSM ceremony) → protocols **#61**.
 
 **For an investor:** GTCX Infrastructure is the foundational layer that enables the GTCX platform to run securely and scale across African markets. Its strongest assets are WORM Object Lock in production/staging, the published `@gtcx/audit-signer` package, SIGNAL validation, Kyverno policy validation, and coverage gates for gateway/replay surfaces. The internal sprint roadmap (INT-1 through INT-5) is complete. Signed recurring release evidence, runtime smoke tooling, Redis nonce-store coverage, external finding workflow templates, and WORM upload automation are all implemented. The path to 10/10 now runs through external execution: vendor engagements, AWS credential-driven live evidence, and the quarterly DR exercise.
 

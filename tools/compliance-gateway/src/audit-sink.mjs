@@ -106,7 +106,7 @@ function natsSink() {
     },
     async close() {
       if (natsClient) {
-        try { await natsClient.drain(); } catch {}
+        try { await natsClient.drain(); } catch { /* shutdown drain — safe to ignore */ }
       }
     },
   };

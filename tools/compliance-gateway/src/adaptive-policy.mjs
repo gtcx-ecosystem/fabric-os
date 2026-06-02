@@ -97,7 +97,7 @@ export function evaluatePolicy(state, t = defaultThresholds()) {
 
   let nextLatencyBreaches = latencyBreached ? state.consecutiveLatencyBreaches + 1 : 0;
   let nextErrorBreaches = errorBreached ? state.consecutiveErrorBreaches + 1 : 0;
-  let nextRecoveryWindows = (!latencyBreached && !errorBreached)
+  const nextRecoveryWindows = (!latencyBreached && !errorBreached)
     ? state.consecutiveRecoveryWindows + 1
     : 0;
 

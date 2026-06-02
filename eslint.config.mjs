@@ -66,6 +66,14 @@ export default tseslint.config(
     },
   },
 
+  // Override for compliance-gateway — structured JSON logging uses console.log intentionally
+  {
+    files: ['tools/compliance-gateway/src/**/*.mjs'],
+    rules: {
+      'no-console': ['warn', { allow: ['log', 'warn', 'error'] }],
+    },
+  },
+
   // Override for k6 load tests — allow k6 globals
   {
     files: ['tools/load-tests/**/*.js'],

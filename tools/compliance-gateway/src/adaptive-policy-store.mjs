@@ -151,7 +151,7 @@ async function buildRedisStore() {
       } catch { /* fall through */ }
     }
     if (!connected) {
-      try { client.disconnect(); } catch {}
+      try { client.disconnect(); } catch { /* shutdown drain — safe to ignore */ }
       if (!redisFallbackLogged) {
         console.error(JSON.stringify({
           level: 'warn',
@@ -241,7 +241,7 @@ async function buildRedisStore() {
       }
     },
     async close() {
-      try { await client.quit(); } catch {}
+      try { await client.quit(); } catch { /* shutdown drain — safe to ignore */ }
     },
     info() {
       return { backend: 'redis', url: REDIS_URL, key: REDIS_KEY };
@@ -276,7 +276,7 @@ export function getStoreInfo() {
 /** Test-only reset. */
 export async function _resetForTests() {
   if (activeStore) {
-    try { await activeStore.close(); } catch {}
+    try { await activeStore.close(); } catch { /* test cleanup — safe to ignore */ }
   }
   activeStore = null;
   redisFallbackLogged = false;

@@ -33,7 +33,7 @@ variable "vpc_id" {
 }
 
 variable "domain_name" {
-  description = "Domain name for ACM certificate (e.g., api.gtcx.io)"
+  description = "Domain name for ACM certificate (e.g., api.gtcx.trade)"
   type        = string
   default     = ""
 }

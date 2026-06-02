@@ -121,7 +121,7 @@ variable "admin_cidr_blocks" {
 }
 
 variable "domain_name" {
-  description = "Domain name for ACM certificate (e.g., api.gtcx.io). Leave empty to skip."
+  description = "Domain name for ACM certificate (e.g., api.gtcx.trade). Leave empty to skip."
   type        = string
   default     = ""
 }

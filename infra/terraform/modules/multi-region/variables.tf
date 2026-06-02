@@ -24,7 +24,7 @@ variable "secondary_region" {
 # -----------------------------------------------------------------------------
 
 variable "domain_name" {
-  description = "Domain name for Route53 failover record (e.g., api.gtcx.io)"
+  description = "Domain name for Route53 failover record (e.g., api.gtcx.trade)"
   type        = string
 }
 

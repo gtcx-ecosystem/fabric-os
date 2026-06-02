@@ -129,7 +129,7 @@ variable "domain_name" {
 variable "smoke_evidence_base_url" {
   description = "Canonical external base URL for deployment smoke evidence in this environment"
   type        = string
-  default     = "https://api.testnet.gtcx.io"
+  default     = "https://api.testnet.gtcx.trade"
 }
 
 variable "provider_failure_mode" {

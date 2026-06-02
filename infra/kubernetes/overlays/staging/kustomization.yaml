@@ -140,8 +140,6 @@ patches:
       - op: replace
         path: /spec/replicas
         value: 1
-      - op: remove
-        path: /spec/template/spec/containers/0/envFrom
     target:
       kind: Deployment
       name: sovereign

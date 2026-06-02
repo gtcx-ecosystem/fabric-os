@@ -80,6 +80,14 @@ jobs:
             source_repos: gtcx-platforms
             build_args: PLATFORM=agx,APP_PORT=3000
 
+          - name: sovereign
+            dockerfile: platforms/Dockerfile
+            context_dir: platforms
+            target: production
+            ecr_repos: gtcx-sovereign
+            source_repos: gtcx-platforms
+            build_args: PLATFORM=sovereign,APP_PORT=3001
+
           - name: baselineos
             dockerfile: baseline-os/Dockerfile
             context_dir: baseline-os

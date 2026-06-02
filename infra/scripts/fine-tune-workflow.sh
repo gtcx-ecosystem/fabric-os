@@ -144,11 +144,11 @@ metadata:
   namespace: ${NAMESPACE}
   labels:
     app.kubernetes.io/part-of: gtcx-intelligence
-    gtcx.io/environment: ${ENVIRONMENT}
-    gtcx.io/trigger: manual
+    gtcx.trade/environment: ${ENVIRONMENT}
+    gtcx.trade/trigger: manual
   annotations:
-    gtcx.io/reason: ${REASON}
-    gtcx.io/requested-by: ${requested_by}
+    gtcx.trade/reason: ${REASON}
+    gtcx.trade/requested-by: ${requested_by}
 spec:
   workflowTemplateRef:
     name: ${WORKFLOW_TEMPLATE_NAME}

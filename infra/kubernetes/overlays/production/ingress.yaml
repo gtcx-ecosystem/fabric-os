@@ -41,11 +41,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - api.gtcx.io
-        - '*.gtcx.io'
+        - api.gtcx.trade
+        - '*.gtcx.trade'
       secretName: gtcx-tls-secret
   rules:
-    - host: api.gtcx.io
+    - host: api.gtcx.trade
       http:
         paths:
           - path: /

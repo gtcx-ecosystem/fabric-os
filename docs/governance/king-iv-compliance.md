@@ -37,10 +37,10 @@ Map GTCX governance practices to the 17 principles of King IV to demonstrate rea
 
 ### Principle 2: Organizational Ethics
 
-| Requirement     | GTCX Implementation                                            | Evidence                           |
-| --------------- | -------------------------------------------------------------- | ---------------------------------- |
-| Ethical culture | Whistleblower channel (ethics@gtcx.io); non-retaliation policy | `docs/governance/ethics-policy.md` |
-| Code of conduct | Ethics policy + employment contracts                           | HR records                         |
+| Requirement     | GTCX Implementation                                               | Evidence                           |
+| --------------- | ----------------------------------------------------------------- | ---------------------------------- |
+| Ethical culture | Whistleblower channel (ethics@gtcx.trade); non-retaliation policy | `docs/governance/ethics-policy.md` |
+| Code of conduct | Ethics policy + employment contracts                              | HR records                         |
 
 ### Principle 3: Responsible Corporate Citizenship
 

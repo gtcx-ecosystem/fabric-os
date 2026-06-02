@@ -31,7 +31,7 @@ spec:
           labels:
             app: anomaly-detector
             version: v1
-            gtcx.io/data-classification: internal
+            gtcx.trade/data-classification: internal
         spec:
           serviceAccountName: anomaly-detector
           securityContext:

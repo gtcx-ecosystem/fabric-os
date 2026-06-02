@@ -85,7 +85,7 @@ To determine if notification is required, assess:
 > **What information was involved:** [Categories of personal information]
 > **What we are doing:** [Containment and remediation steps]
 > **What you should do:** [Recommended protective steps]
-> **Contact:** For questions, contact our Data Protection Officer at dpo@gtcx.io or +27 [number].
+> **Contact:** For questions, contact our Data Protection Officer at dpo@gtcx.trade or +27 [number].
 >
 > We sincerely apologize for any inconvenience.
 >

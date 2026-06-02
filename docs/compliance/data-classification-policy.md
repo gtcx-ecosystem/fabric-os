@@ -81,9 +81,9 @@ Every data element must carry its classification label at the infrastructure lay
 ```yaml
 metadata:
   annotations:
-    gtcx.io/data-classification: 'confidential' # public | internal | confidential | restricted
-    gtcx.io/data-owner: 'compliance-team'
-    gtcx.io/contains-pii: 'true'
+    gtcx.trade/data-classification: 'confidential' # public | internal | confidential | restricted
+    gtcx.trade/data-owner: 'compliance-team'
+    gtcx.trade/contains-pii: 'true'
 ```
 
 ### S3 Object Tags
@@ -175,7 +175,7 @@ Q4: Is this data any of the following?
 
 ## Enforcement
 
-- CI pipelines validate that all new K8s manifests include `gtcx.io/data-classification` annotations
+- CI pipelines validate that all new K8s manifests include `gtcx.trade/data-classification` annotations
 - Terraform plans fail if resources handling Confidential or Restricted data lack required encryption tags
 - S3 bucket policies deny PutObject for objects missing classification tags in Confidential/Restricted buckets
 - Quarterly automated scan of all databases for unclassified columns containing PII patterns

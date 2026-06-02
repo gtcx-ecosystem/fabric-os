@@ -26,7 +26,7 @@ autonomy_level: 'permissioned'
 
 Partners integrating with GTCX APIs or handling GTCX customer data must complete this questionnaire annually and within 30 days of any material security event.
 
-Return completed questionnaires to: **security@gtcx.io**
+Return completed questionnaires to: **security@gtcx.trade**
 
 ---
 

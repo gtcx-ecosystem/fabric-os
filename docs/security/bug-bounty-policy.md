@@ -37,7 +37,7 @@ GTCX operates a vulnerability disclosure and bug bounty program to incentivize r
 - Denial of service (DoS/DDoS) attacks
 - Physical attacks against GTCX offices, data centers, or personnel
 - Attacks against third-party services or vendors not owned by GTCX
-- Automated scanning that degrades service performance (coordinate with security@gtcx.io first)
+- Automated scanning that degrades service performance (coordinate with security@gtcx.trade first)
 - Findings from automated tools without demonstrated exploitability
 - Vulnerabilities in out-of-date browsers or platforms
 - Reports of missing security headers without demonstrated impact
@@ -84,7 +84,7 @@ GTCX will not initiate legal action against researchers who:
 - Act in good faith and follow this policy
 - Avoid accessing, modifying, or deleting data belonging to other users
 - Do not degrade the availability of GTCX services
-- Report vulnerabilities exclusively to security@gtcx.io (or the designated platform)
+- Report vulnerabilities exclusively to security@gtcx.trade (or the designated platform)
 - Do not publicly disclose vulnerability details before the agreed disclosure date
 - Do not use discovered vulnerabilities for personal gain beyond the bounty reward
 
@@ -92,7 +92,7 @@ GTCX considers security research conducted under this policy to be authorized an
 
 ## Submission Process
 
-1. Submit findings via the designated platform (see Platform section below) or email security@gtcx.io
+1. Submit findings via the designated platform (see Platform section below) or email security@gtcx.trade
 2. Include a clear description of the vulnerability, affected asset, and reproduction steps
 3. Provide proof of concept (screenshots, HTTP requests, scripts) demonstrating exploitability
 4. Do not include sensitive data (passwords, PII) in reports -- redact appropriately
@@ -138,7 +138,7 @@ Researchers who submit valid, unique vulnerabilities are recognized in the GTCX 
 
 ## Contact
 
-- Primary: security@gtcx.io
-- PGP key: Published on the program platform page and at https://gtcx.io/.well-known/security.txt
+- Primary: security@gtcx.trade
+- PGP key: Published on the program platform page and at https://gtcx.trade/.well-known/security.txt
 - Response hours: Monday-Friday, 09:00-18:00 EAT (UTC+3)
 - Emergency (critical severity): Monitored 24/7 via PagerDuty escalation

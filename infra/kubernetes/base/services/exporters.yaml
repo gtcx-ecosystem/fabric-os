@@ -142,7 +142,7 @@ spec:
         app.kubernetes.io/name: postgres-exporter
         app.kubernetes.io/part-of: gtcx
         app.kubernetes.io/component: metrics
-        gtcx.io/data-classification: internal
+        gtcx.trade/data-classification: internal
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9187'

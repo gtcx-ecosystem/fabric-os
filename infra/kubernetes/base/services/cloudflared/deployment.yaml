@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: cloudflared
-        gtcx.io/data-classification: internal
+        gtcx.trade/data-classification: internal
     spec:
       securityContext:
         runAsNonRoot: true

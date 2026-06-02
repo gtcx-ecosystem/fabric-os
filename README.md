@@ -178,7 +178,7 @@ GTCX's compliance substrate is published as three composable primitives. Each is
 | **`terraform-aws-compliance-db`**  | [GitHub](https://github.com/amani-amina-anai/terraform-aws-compliance-db) · [`infra/terraform/modules/compliance-db/`](./infra/terraform/modules/compliance-db/) | Dual-database (operational + audit) module for regulated African fintech. 11 jurisdictions covered, FATF-aligned retention floors. |
 | **`@gtcx/compliance-gateway-mcp`** | [`tools/compliance-gateway-mcp/`](./tools/compliance-gateway-mcp/)                                                                                               | Model Context Protocol server exposing the gateway's read-only surface to AI agents. Mutating tools deliberately absent.           |
 
-Detailed pages: [`docs/external/docs-site/`](./docs/gitbook/) (markdown source for `gtcx.io/compliance`).
+Detailed pages: [`docs/external/docs-site/`](./docs/gitbook/) (markdown source for `gtcx.trade/compliance`).
 
 ## Internal Workspace Packages
 

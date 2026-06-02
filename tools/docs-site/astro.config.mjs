@@ -1,4 +1,4 @@
-// Astro Starlight configuration for gtcx.io/compliance.
+// Astro Starlight configuration for gtcx.trade/compliance.
 //
 // Source-of-truth markdown lives in `docs/external/docs-site/` at the repo
 // root so the public docs are version-controlled alongside the substrate
@@ -10,7 +10,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
-  site: 'https://gtcx.io',
+  site: 'https://gtcx.trade',
   base: '/compliance',
   trailingSlash: 'ignore',
   integrations: [

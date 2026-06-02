@@ -10,7 +10,7 @@ review_cycle: 'on-change'
 
 # docs-site (Astro Starlight)
 
-Astro Starlight static-site config that builds the public docs at `gtcx.io/compliance`.
+Astro Starlight static-site config that builds the public docs at `gtcx.trade/compliance`.
 
 Source-of-truth markdown lives at the repo root in [`docs/gitbook/docs-site/`](../../docs/gitbook/docs-site/README.md); this package's `scripts/sync-content.mjs` mirrors that directory into `src/content/docs/` before Astro reads it. The mirror is `.gitignore`-d — the canonical source is in one place only.
 
@@ -48,7 +48,7 @@ A page is a draft if its frontmatter has `status: 'draft'`. The default `pnpm de
 The static output (`tools/docs-site/dist/`) is what gets uploaded. Two paths are supported; the choice is operational, not a code change:
 
 - **Cloudflare Pages:** point a Cloudflare Pages project at this directory; build command `pnpm -F @gtcx/docs-site build`; output directory `tools/docs-site/dist`. Base path `/compliance` is set in `astro.config.mjs`.
-- **S3 + CloudFront (recommended for AWS parity):** same build command, upload `dist/` to the bucket, configure CloudFront to route `gtcx.io/compliance/*` to the bucket.
+- **S3 + CloudFront (recommended for AWS parity):** same build command, upload `dist/` to the bucket, configure CloudFront to route `gtcx.trade/compliance/*` to the bucket.
 
 The deploy decision is not gated on this ADR — it lands when the marketing site is ready to mount the subpath.
 

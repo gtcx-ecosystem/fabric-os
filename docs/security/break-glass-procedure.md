@@ -238,12 +238,12 @@ kind: ClusterRoleBinding
 metadata:
   name: break-glass-binding
   annotations:
-    gtcx.io/ttl: '900'
-    gtcx.io/incident-id: 'PD-XXXXXXXX'
-    gtcx.io/requester: 'responder@gtcx.io'
+    gtcx.trade/ttl: '900'
+    gtcx.trade/incident-id: 'PD-XXXXXXXX'
+    gtcx.trade/requester: 'responder@gtcx.trade'
 subjects:
   - kind: User
-    name: responder@gtcx.io
+    name: responder@gtcx.trade
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole

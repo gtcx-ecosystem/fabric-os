@@ -25,7 +25,7 @@ One or more of the 6 GTCX protocols (TradePass, GeoTag, GCI, CRX, SGX, Pathways)
 
 ## Initial Response (5 minutes)
 
-1. Check protocol health: `GET https://api.gtcx.io/health`
+1. Check protocol health: `GET https://api.gtcx.trade/health`
 2. Check individual protocol endpoints:
    - `/tradepass/health`
    - `/geotag/health`

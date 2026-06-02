@@ -11,7 +11,7 @@ abstract: >-
   for tamper-evident citation.
 authors:
   - name: GTCX Protocol
-    website: 'https://gtcx.io'
+    website: 'https://gtcx.trade'
 version: 1.1.0
 date-released: '2026-05-30'
 license: MIT

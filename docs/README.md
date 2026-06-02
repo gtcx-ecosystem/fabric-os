@@ -18,9 +18,9 @@ Single source of truth for all infrastructure documentation.
 
 > **Doc-site architecture.** This repo has ONE public doc-site, not three.
 >
-> - **Source of truth** (markdown): [`docs/gitbook/docs-site/`](gitbook/docs-site/README.md) — what gets published at `gtcx.io/compliance`.
+> - **Source of truth** (markdown): [`docs/gitbook/docs-site/`](gitbook/docs-site/README.md) — what gets published at `gtcx.trade/compliance`.
 > - **Build pipeline**: [`tools/docs-site/`](../tools/docs-site/README.md) — Astro Starlight static site generator. Its `scripts/sync-content.mjs` mirrors the source above into `src/content/docs/` (gitignored) before each build.
-> - **Internal docs** (this tree, `docs/`): for the engineering team, agents, and operators — not published to gtcx.io.
+> - **Internal docs** (this tree, `docs/`): for the engineering team, agents, and operators — not published to gtcx.trade.
 >
 > The "three doc-site implementations" finding in the 2026-05-30 audit was a misreading of the directory layout. The build pipeline and the source are intentionally separated; the internal docs are a different surface entirely.
 

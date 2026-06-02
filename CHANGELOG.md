@@ -49,7 +49,7 @@ The May-2026 cycle. Six original sprints (audit signer, defense in depth, operat
 
 ### Added — Distribution
 
-- **Public docs site source** (`docs/external/docs-site/`) — markdown source for `gtcx.io/compliance` covering all three primitives.
+- **Public docs site source** (`docs/external/docs-site/`) — markdown source for `gtcx.trade/compliance` covering all three primitives.
 - **Launch announcement blog post draft** (`docs/external/blog/audit-signer-launch-2026-05.md`).
 - **Terraform Registry submission package** (`docs/external/terraform-registry-submission-2026.md`) for `terraform-aws-compliance-db`.
 - **Distribution metrics scaffold** (`tools/scripts/distribution-snapshot.mjs`) with daily GitHub Actions cron.

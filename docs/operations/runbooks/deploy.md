@@ -155,7 +155,7 @@ After rollback, capture evidence with:
   --scenario="manual rollback after failed deploy" \
   --previous-revision=sha-previous \
   --failed-revision=sha-failed \
-  --smoke-base-url=https://api.testnet.gtcx.io
+  --smoke-base-url=https://api.testnet.gtcx.trade
 ```
 
 Use the generated `rollback-evidence.json` as `ROLLBACK_EVIDENCE_PATH` for the intelligence deployment smoke evidence gate.

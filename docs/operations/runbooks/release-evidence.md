@@ -42,7 +42,7 @@ pnpm ctl evidence release-bundle \
   --environment=staging \
   --version=v0.1.0 \
   --commit=0123456789abcdef \
-  --smoke-base-url=https://api.testnet.gtcx.io \
+  --smoke-base-url=https://api.testnet.gtcx.trade \
   --rollback-target=sha-previous-good \
   --approval-ticket=CHG-2026-001 \
   --image=agx=000000000000.dkr.ecr.af-south-1.amazonaws.com/gtcx-agx:sha-0123456 \

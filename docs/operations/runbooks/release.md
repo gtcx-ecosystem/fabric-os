@@ -96,7 +96,7 @@ pnpm ctl evidence release-bundle \
   --environment=staging \
   --version=vX.Y.Z \
   --commit=<git-sha> \
-  --smoke-base-url=https://api.testnet.gtcx.io \
+  --smoke-base-url=https://api.testnet.gtcx.trade \
   --rollback-target=<previous-known-good-tag> \
   --image=agx=<immutable-image-ref> \
   --image=protocols=<immutable-image-ref>

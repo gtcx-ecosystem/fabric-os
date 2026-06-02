@@ -41,7 +41,7 @@ We add a dedicated Kustomize overlay at `infra/kubernetes/overlays/pen-test/` wi
 - **Separate WORM bucket** `gtcx-pen-test-audit-af-south-1` — different from production `gtcx-worm-audit-production-af-south-1`. The pen-test cannot pollute production audit evidence.
 - **Tight resource limits per principal** — 5 QPS and $1/day token budget. An exploited token cannot run up a real bill.
 - **Anonymized seed data only** — `infra/migrations/seed-pentest.sql` (planned) loads test data; no production PII.
-- **Auto-teardown date annotation** `gtcx.io/teardown-after: 2026-08-31` so the namespace gets cleaned up after the engagement.
+- **Auto-teardown date annotation** `gtcx.trade/teardown-after: 2026-08-31` so the namespace gets cleaned up after the engagement.
 
 ## Alternatives Considered
 

@@ -39,9 +39,9 @@ Execute all commands. Capture output. Each command maps to a control.
 
 ```bash
 # Verify TLS 1.3 on all public endpoints
-nmap --script ssl-enum-ciphers -p 443 api.gtcx.io 2>/dev/null || echo "nmap not available"
-curl -s -o /dev/null -w "%{http_code}\n" http://api.gtcx.io || true
-curl -s -o /dev/null -w "%{http_code}\n" https://api.gtcx.io || true
+nmap --script ssl-enum-ciphers -p 443 api.gtcx.trade 2>/dev/null || echo "nmap not available"
+curl -s -o /dev/null -w "%{http_code}\n" http://api.gtcx.trade || true
+curl -s -o /dev/null -w "%{http_code}\n" https://api.gtcx.trade || true
 ```
 
 **Pass:** HTTP returns 301/308 to HTTPS. HTTPS returns 200. TLS 1.3 available.
@@ -50,7 +50,7 @@ curl -s -o /dev/null -w "%{http_code}\n" https://api.gtcx.io || true
 
 ```bash
 # Check that unauthenticated requests are rejected
-curl -s -w "\n%{http_code}" https://api.gtcx.io/v1/health || true
+curl -s -w "\n%{http_code}" https://api.gtcx.trade/v1/health || true
 # Check auth middleware exists in codebase
 grep -r "auth" tools/compliance-gateway/src/ | grep -i "middleware\|verify\|validate" | head -5
 ```
@@ -71,7 +71,7 @@ grep -r "rateLimit\|rate_limit\|throttle" infra/terraform/modules/waf/ | head -5
 
 ```bash
 # Check security.txt
-curl -s https://gtcx.io/.well-known/security.txt | head -10 || true
+curl -s https://gtcx.trade/.well-known/security.txt | head -10 || true
 # Check SECURITY.md
 cat SECURITY.md | head -20
 ```

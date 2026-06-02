@@ -90,7 +90,7 @@ spec:
         app.kubernetes.io/name: promtail
         app.kubernetes.io/part-of: gtcx
         app.kubernetes.io/component: log-shipping
-        gtcx.io/data-classification: confidential
+        gtcx.trade/data-classification: confidential
     spec:
       serviceAccountName: promtail
       securityContext:

@@ -155,12 +155,12 @@ Round-4 work was already on the executable list from the prior audit. With subst
 
 These are available but no longer high-leverage; substrate is structurally complete.
 
-| #   | Direction                                                                                                                                   | Effort    | Value                                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------------------------------------------- |
-| A   | Onboard a synthetic second tenant via `docs/operations/runbooks/tenant-onboarding.md`; validate the 2-hour SLA empirically                  | 2 hours   | Validates the tenant boundary work           |
-| B   | Build a documentation site under `gtcx.io/compliance` linking `@gtcx/audit-signer`, `terraform-aws-compliance-db`, and the SIGNAL scorecard | ~1 day    | Unblocks external-adoption signal collection |
-| C   | Add a docker-compose-backed NATS integration test under `validate.sh --full`                                                                | 2-3 hours | Closes the audit-flush coverage gap honestly |
-| D   | Wire prometheus-adapter custom metric pipeline so HPA scales on `compliance_gateway_inflight_requests`                                      | 4 hours   | Completes the HPA contract                   |
+| #   | Direction                                                                                                                                      | Effort    | Value                                        |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------------------------------------------- |
+| A   | Onboard a synthetic second tenant via `docs/operations/runbooks/tenant-onboarding.md`; validate the 2-hour SLA empirically                     | 2 hours   | Validates the tenant boundary work           |
+| B   | Build a documentation site under `gtcx.trade/compliance` linking `@gtcx/audit-signer`, `terraform-aws-compliance-db`, and the SIGNAL scorecard | ~1 day    | Unblocks external-adoption signal collection |
+| C   | Add a docker-compose-backed NATS integration test under `validate.sh --full`                                                                   | 2-3 hours | Closes the audit-flush coverage gap honestly |
+| D   | Wire prometheus-adapter custom metric pipeline so HPA scales on `compliance_gateway_inflight_requests`                                         | 4 hours   | Completes the HPA contract                   |
 
 None of A–D move the GTM stage. The stage moves when the external clocks (pen-test, SOC 2) finish.
 

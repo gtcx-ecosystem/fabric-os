@@ -14,7 +14,7 @@ autonomy_level: 'sovereign'
 
 # External Blog Drafts
 
-Publish-ready drafts for the GTCX `gtcx.io` blog. Each draft has an internal-review checklist at the bottom; mark items as the named reviewer signs off, then publish.
+Publish-ready drafts for the GTCX `gtcx.trade` blog. Each draft has an internal-review checklist at the bottom; mark items as the named reviewer signs off, then publish.
 
 ## Drafts
 

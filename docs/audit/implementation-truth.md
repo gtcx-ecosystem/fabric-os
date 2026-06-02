@@ -74,7 +74,7 @@ tools/             — Scripts and templates subdirectories
 - `overlays/development/kustomization.yaml`: thin reference to base
 - `overlays/staging/kustomization.yaml`: thin reference to base, no meaningful patches
 - `overlays/production/kustomization.yaml`: references base + ingress + network policies + pod security policy
-- `overlays/production/ingress.yaml`: NGINX Ingress for `api.gtcx.io` (TLS via cert-manager, rate limit 100 rps / 50 connections, full security headers CSP/XFO/XCTO) + internal ingress for tradepass/geotag/gci on `*.gtcx.internal`
+- `overlays/production/ingress.yaml`: NGINX Ingress for `api.gtcx.trade` (TLS via cert-manager, rate limit 100 rps / 50 connections, full security headers CSP/XFO/XCTO) + internal ingress for tradepass/geotag/gci on `*.gtcx.internal`
 - `overlays/production/network-policies.yaml`: default-deny ingress + default-deny egress (DNS exempted); per-service policies for api → crypto → protocol services → database at 10.0.0.0/8; crypto has no external egress at all
 - `overlays/production/pod-security-policy.yaml`: non-root enforcement, read-only root filesystem
 

@@ -14,7 +14,7 @@ autonomy_level: 'sovereign'
 
 # Public Docs Site Source
 
-Markdown source for `gtcx.io/compliance` — the public-facing documentation surface for the GTCX compliance substrate.
+Markdown source for `gtcx.trade/compliance` — the public-facing documentation surface for the GTCX compliance substrate.
 
 ## Pages
 

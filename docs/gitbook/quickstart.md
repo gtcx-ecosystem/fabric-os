@@ -52,7 +52,7 @@ npm install @gtcx/sdk
 import { GTCXClient } from '@gtcx/sdk';
 
 const client = new GTCXClient({
-  apiUrl: 'https://api.testnet.gtcx.io',
+  apiUrl: 'https://api.testnet.gtcx.trade',
   networkId: 'gtcx:testnet',
   chainId: 'gtcx-testnet-1',
   apiKey: process.env.GTCX_API_KEY,
@@ -175,10 +175,10 @@ try {
 
 ## Networks
 
-| Network | API URL                       | Purpose                             |
-| ------- | ----------------------------- | ----------------------------------- |
-| Testnet | `https://api.testnet.gtcx.io` | Development and integration testing |
-| Mainnet | `https://api.gtcx.io`         | Production                          |
+| Network | API URL                          | Purpose                             |
+| ------- | -------------------------------- | ----------------------------------- |
+| Testnet | `https://api.testnet.gtcx.trade` | Development and integration testing |
+| Mainnet | `https://api.gtcx.trade`         | Production                          |
 
 ---
 

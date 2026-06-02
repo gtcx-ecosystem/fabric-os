@@ -38,7 +38,7 @@ All API calls require a valid TradePass DID and API key. The DID establishes ide
 import { GTCXClient } from '@gtcx/sdk';
 
 const client = new GTCXClient({
-  apiUrl: 'https://api.gtcx.io',
+  apiUrl: 'https://api.gtcx.trade',
   networkId: 'gtcx:mainnet',
   chainId: 'gtcx-mainnet-1',
   apiKey: process.env.GTCX_API_KEY,
@@ -202,7 +202,7 @@ The GTCX SDK supports offline operation for field deployments. Operations queue 
 ```typescript
 // Configure offline queue (TypeScript SDK)
 const client = new GTCXClient({
-  apiUrl: 'https://api.gtcx.io',
+  apiUrl: 'https://api.gtcx.trade',
   networkId: 'gtcx:mainnet',
   chainId: 'gtcx-mainnet-1',
   apiKey: process.env.GTCX_API_KEY,
@@ -247,7 +247,7 @@ Use the testnet for all integration development:
 
 ```typescript
 const client = new GTCXClient({
-  apiUrl: 'https://api.testnet.gtcx.io',
+  apiUrl: 'https://api.testnet.gtcx.trade',
   networkId: 'gtcx:testnet',
   chainId: 'gtcx-testnet-1',
   apiKey: process.env.GTCX_TESTNET_API_KEY,

@@ -19,7 +19,7 @@
  *   - Containers drop ALL capabilities
  *   - No privileged containers, hostNetwork, or hostPID (deny-privileged-containers)
  *   - CPU/memory requests and limits on all containers (require-resource-limits)
- *   - Pod template has gtcx.io/data-classification label (require-encryption-annotations)
+ *   - Pod template has gtcx.trade/data-classification label (require-encryption-annotations)
  *
  * Exits 0 on pass, 1 with categorized violations.
  */
@@ -496,9 +496,9 @@ for (const filepath of allManifestFiles) {
 
     // Check data classification label
     const labels = getPodLabels(doc, kind);
-    const classification = labels['gtcx.io/data-classification'];
+    const classification = labels['gtcx.trade/data-classification'];
     if (!classification) {
-      failService(relativePath, kind, name, `Pod template missing gtcx.io/data-classification label`);
+      failService(relativePath, kind, name, `Pod template missing gtcx.trade/data-classification label`);
     } else if (!VALID_CLASSIFICATIONS.has(classification)) {
       failService(relativePath, kind, name, `Invalid data classification "${classification}"`);
     }

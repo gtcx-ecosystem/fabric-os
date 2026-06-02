@@ -56,4 +56,4 @@ labels:
   - includeSelectors: true
     pairs:
       app.kubernetes.io/environment: pen-test
-      gtcx.io/blast-radius: contained
+      gtcx.trade/blast-radius: contained

@@ -4,7 +4,7 @@
 
 If you discover a security vulnerability in this repository, please report it responsibly.
 
-**Email:** security@gtcx.io
+**Email:** security@gtcx.trade
 
 Do not open a public issue for security vulnerabilities.
 

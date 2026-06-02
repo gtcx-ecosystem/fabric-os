@@ -45,7 +45,7 @@ K8s manifests assume a running cluster but no Terraform creates one. Every envir
 
 ### Load Balancer / Ingress Provisioning
 
-The K8s ingress assumes an NGINX ingress controller behind an ALB, and cert-manager provides TLS. Neither the ALB nor the ACM certificate has Terraform definitions. The path from `api.gtcx.io` DNS to a running pod does not exist in infrastructure code.
+The K8s ingress assumes an NGINX ingress controller behind an ALB, and cert-manager provides TLS. Neither the ALB nor the ACM certificate has Terraform definitions. The path from `api.gtcx.trade` DNS to a running pod does not exist in infrastructure code.
 
 ### Container Registry
 

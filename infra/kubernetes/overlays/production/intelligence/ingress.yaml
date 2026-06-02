@@ -20,7 +20,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: intelligence.gtcx.io
+    - host: intelligence.gtcx.trade
       http:
         paths:
           - path: /v1/cultural-query

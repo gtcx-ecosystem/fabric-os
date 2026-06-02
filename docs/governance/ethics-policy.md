@@ -77,7 +77,7 @@ The following are strictly prohibited and may result in disciplinary action up t
 
 | Element                | Policy                                                                     |
 | ---------------------- | -------------------------------------------------------------------------- |
-| **Reporting channels** | ethics@gtcx.io (encrypted), anonymous web form, direct board contact       |
+| **Reporting channels** | ethics@gtcx.trade (encrypted), anonymous web form, direct board contact    |
 | **Confidentiality**    | Identity protected to the maximum extent permitted by law                  |
 | **Non-retaliation**    | Any retaliation against a whistleblower is grounds for immediate dismissal |
 | **Investigation**      | Independent investigation by Board Security Committee or external counsel  |

@@ -215,7 +215,7 @@ Reverses tokenization. Requires elevated authorization and produces an audit rec
     "subject_id": "usr_abc123",
     "purpose": "data_subject_request",
     "ticket": "GTCX-4521",
-    "requester": "compliance@gtcx.io"
+    "requester": "compliance@gtcx.trade"
   }
 }
 ```
@@ -228,7 +228,7 @@ Reverses tokenization. Requires elevated authorization and produces an audit rec
   "audit": {
     "audit_id": "aud_789xyz",
     "detokenized_at": "2026-05-08T14:35:00Z",
-    "requester": "compliance@gtcx.io",
+    "requester": "compliance@gtcx.trade",
     "purpose": "data_subject_request"
   }
 }

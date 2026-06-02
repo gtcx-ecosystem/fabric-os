@@ -159,5 +159,5 @@ Two databases are a hard constraint. They are never merged:
 ## Need Help?
 
 - GitHub Issues: https://github.com/gtcx-ecosystem/gtcx-infrastructure/issues
-- Security contact: security@gtcx.io
+- Security contact: security@gtcx.trade
 - Infrastructure on-call: see `docs/operations/runbooks/incident-response.md`

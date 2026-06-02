@@ -547,7 +547,7 @@ Cross-references:
 
 **Acceptance criteria:**
 
-- [ ] Site live at `gtcx.io/compliance` (or agreed-on subdomain).
+- [ ] Site live at `gtcx.trade/compliance` (or agreed-on subdomain).
 - [ ] Linked pages for `@gtcx/audit-signer`, `terraform-aws-compliance-db`, `compliance-gateway-mcp`.
 - [ ] Each page includes: install command, quick-start, real-world install example, link to GitHub source.
 - [ ] SIGNAL scorecard summary embedded with link to live JSON.
@@ -593,7 +593,7 @@ Cross-references:
 
 - [ ] Blog post drafted (~1500 words). One post, three angles: (a) the problem (audit trails are not tamper-evident), (b) the design (Ed25519 + JCS + hash-linked chain, why each), (c) the substrate (npm + Terraform Registry + GitHub).
 - [ ] Post reviewed by Security Lead for cryptographic accuracy.
-- [ ] Post published on `gtcx.io` (or partner blog).
+- [ ] Post published on `gtcx.trade` (or partner blog).
 - [ ] Submitted to HN with a non-spammy title (drafted, not yet posted).
 - [ ] LinkedIn post from CEO/CTO account (drafted, not yet posted).
 - [ ] First-week metrics captured: npm downloads, blog views, HN points, GitHub stars on `terraform-aws-compliance-db`.
@@ -610,7 +610,7 @@ Cross-references:
 
 **Acceptance criteria:**
 
-- [ ] Dashboard at `gtcx.io/internal/distribution` (auth-gated).
+- [ ] Dashboard at `gtcx.trade/internal/distribution` (auth-gated).
 - [ ] Pulls npm download stats via `npm-stat-api`.
 - [ ] Pulls GitHub stars + forks via GitHub API.
 - [ ] Pulls blog page-view counts.
@@ -628,7 +628,7 @@ Cross-references:
 
 | Scenario               | Steps                             | Expected                              | Verified By       | Status |
 | ---------------------- | --------------------------------- | ------------------------------------- | ----------------- | ------ |
-| Docs site live         | Visit `gtcx.io/compliance`        | Loads <2s, WCAG AA, mobile responsive | Design Lead       | ☐      |
+| Docs site live         | Visit `gtcx.trade/compliance`     | Loads <2s, WCAG AA, mobile responsive | Design Lead       | ☐      |
 | Terraform Registry     | Search "compliance-db"            | Listed in top 5 results               | DevOps Lead       | ☐      |
 | Blog post live         | Visit blog URL                    | Renders, all anchor links work        | Platform Eng Lead | ☐      |
 | Distribution dashboard | Open dashboard 7 days post-launch | Non-zero downloads + stars + views    | Platform Eng Lead | ☐      |

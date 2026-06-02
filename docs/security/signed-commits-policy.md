@@ -35,7 +35,7 @@ autonomy_level: 'permissioned'
 
 ```bash
 # 1. Generate SSH signing key (or use existing)
-ssh-keygen -t ed25519 -C "developer@gtcx.io" -f ~/.ssh/gtcx_signing
+ssh-keygen -t ed25519 -C "developer@gtcx.trade" -f ~/.ssh/gtcx_signing
 
 # 2. Configure Git to use SSH signing
 git config --global gpg.format ssh

@@ -61,7 +61,7 @@ spec:
   ingressClassName: alb
   rules:
     # Primary API endpoint
-    - host: api.gtcx.io
+    - host: api.gtcx.trade
       http:
         paths:
           - path: /
@@ -73,7 +73,7 @@ spec:
                   number: 3000
 
     # Veritas (attestation + resolution API)
-    - host: veritas.gtcx.io
+    - host: veritas.gtcx.trade
       http:
         paths:
           - path: /

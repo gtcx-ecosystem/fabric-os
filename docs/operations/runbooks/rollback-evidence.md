@@ -26,7 +26,7 @@ The evidence bundle is generated locally and written under `infra/security/repor
   --scenario="bad revision rolled back after failed health check" \
   --previous-revision=sha-previous \
   --failed-revision=sha-failed \
-  --smoke-base-url=https://api.testnet.gtcx.io
+  --smoke-base-url=https://api.testnet.gtcx.trade
 ```
 
 Production example:
@@ -37,7 +37,7 @@ Production example:
   --scenario="production rollback after failed health check" \
   --previous-revision=sha-previous \
   --failed-revision=sha-failed \
-  --smoke-base-url=https://api.gtcx.io
+  --smoke-base-url=https://api.gtcx.trade
 ```
 
 ## What It Captures

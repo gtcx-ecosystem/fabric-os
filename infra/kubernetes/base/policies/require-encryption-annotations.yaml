@@ -20,7 +20,7 @@ metadata:
     policies.kyverno.io/severity: 'high'
     policies.kyverno.io/subject: 'Pod'
     policies.kyverno.io/description: >-
-      All Pods must carry a gtcx.io/data-classification label with a valid
+      All Pods must carry a gtcx.trade/data-classification label with a valid
       classification (public, internal, confidential, restricted). This enables
       policy-driven encryption enforcement and audit scoping.
 spec:
@@ -43,9 +43,9 @@ spec:
             - kyverno
       validate:
         message: >-
-          Pods must have a 'gtcx.io/data-classification' label set to one of:
+          Pods must have a 'gtcx.trade/data-classification' label set to one of:
           public, internal, confidential, restricted.
         pattern:
           metadata:
             labels:
-              gtcx.io/data-classification: 'public | internal | confidential | restricted'
+              gtcx.trade/data-classification: 'public | internal | confidential | restricted'

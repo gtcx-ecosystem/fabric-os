@@ -29,7 +29,7 @@ spec:
         app: gtcx-postgres-audit
         tier: audit
         principle: auditable
-        gtcx.io/data-classification: restricted
+        gtcx.trade/data-classification: restricted
     spec:
       serviceAccountName: gtcx-platform
       securityContext:
@@ -225,7 +225,7 @@ spec:
       labels:
         app: gtcx-postgres-audit-exporter
         tier: audit
-        gtcx.io/data-classification: internal
+        gtcx.trade/data-classification: internal
     spec:
       serviceAccountName: gtcx-platform
       securityContext:

@@ -25,7 +25,7 @@ AGX (Authenticated Global Exchange) platform API is failing requests at an unsus
 
 ## Initial Response (5 minutes)
 
-1. Check AGX health endpoint: `GET https://api.gtcx.io/api/health`
+1. Check AGX health endpoint: `GET https://api.gtcx.trade/api/health`
 2. Review recent deployments:
    ```bash
    kubectl rollout history deployment/gtcx-agx-prod -n gtcx-production

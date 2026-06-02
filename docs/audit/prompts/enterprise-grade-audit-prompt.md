@@ -43,7 +43,7 @@ cat docs/compliance/soc2-gap-analysis.md 2>/dev/null | head -30 || echo "No SOC 
 # Check for auditor engagement
 grep -ri "soc.*2\|iso.*27001" docs/audit/ | head -10
 # Check trust center or compliance page
-curl -s https://gtcx.io/trust | grep -i "soc\|iso" | head -5 || true
+curl -s https://gtcx.trade/trust | grep -i "soc\|iso" | head -5 || true
 ```
 
 **Pass:** Gap analysis exists AND auditor selected OR Type I in progress.
@@ -87,7 +87,7 @@ aws s3api get-bucket-encryption --bucket gtcx-production-cloudtrail-logs 2>/dev/
 # Check KMS key policies
 grep -r "kms" infra/terraform/modules/kms-signing/main.tf | head -10
 # Check TLS version on endpoints
-openssl s_client -connect api.gtcx.io:443 -tls1_3 2>/dev/null | grep "Protocol" || true
+openssl s_client -connect api.gtcx.trade:443 -tls1_3 2>/dev/null | grep "Protocol" || true
 ```
 
 **Pass:** RDS encrypted, S3 encrypted, KMS policies restrictive, TLS 1.3 enforced.
@@ -125,7 +125,7 @@ find docs/audit/ -name "*uptime*" -o -name "*availability*" | head -5
 
 ```bash
 # Check for bug bounty program
-curl -s https://gtcx.io/security | grep -i "bug\|bounty\|vdp\|disclosure" | head -5 || true
+curl -s https://gtcx.trade/security | grep -i "bug\|bounty\|vdp\|disclosure" | head -5 || true
 # Check HackerOne or Bugcrowd
 curl -s https://hackerone.com/gtcx | head -5 || true
 # Check security page for VDP

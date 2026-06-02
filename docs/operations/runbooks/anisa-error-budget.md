@@ -25,7 +25,7 @@ ANISA (AI-driven intelligence service) is failing or returning low-confidence re
 
 ## Initial Response (5 minutes)
 
-1. Check ANISA health: `GET https://api.gtcx.io/intelligence/health`
+1. Check ANISA health: `GET https://api.gtcx.trade/intelligence/health`
 2. Review intelligence logs:
    ```bash
    kubectl logs -n intelligence -l app=anisa --tail=500

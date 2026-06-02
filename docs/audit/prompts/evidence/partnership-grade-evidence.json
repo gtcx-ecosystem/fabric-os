@@ -40,8 +40,8 @@
       "name": "Published security contact",
       "weight": 0.15,
       "passed": true,
-      "evidence": "SECURITY.md exists in the repository root with a security contact email (security@gtcx.io) and documented response SLA.",
-      "raw_output": "SECURITY.md:\n# Security Policy\n## Reporting a Vulnerability\n**Email:** security@gtcx.io\nDo not open a public issue for security vulnerabilities.\n## Response SLA\n- **Acknowledgement:** within 2 business days\n- **Initial assessment:** within 5 business days\n- **Resolution target:** within 30 days for critical issues",
+      "evidence": "SECURITY.md exists in the repository root with a security contact email (security@gtcx.trade) and documented response SLA.",
+      "raw_output": "SECURITY.md:\n# Security Policy\n## Reporting a Vulnerability\n**Email:** security@gtcx.trade\nDo not open a public issue for security vulnerabilities.\n## Response SLA\n- **Acknowledgement:** within 2 business days\n- **Initial assessment:** within 5 business days\n- **Resolution target:** within 30 days for critical issues",
       "justification": "SECURITY.md is present in the repo root with a valid security contact email and clear response commitments."
     },
     {

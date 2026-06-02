@@ -3,7 +3,7 @@ title: 'Sprint Current — gtcx-infrastructure'
 status: 'current'
 date: '2026-05-27'
 sprintId: 'S46'
-owner: 'infrastructure@gtcx.io'
+owner: 'infrastructure@gtcx.trade'
 dates:
 commitments: []
 role: 'protocol-architect'

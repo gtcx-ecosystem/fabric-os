@@ -114,7 +114,7 @@ review_cycle: 'on-change'
 
 - **Agentic Maturity +0.7:** New signed audit-bundle ingestion and tenant-isolated audit-query endpoints represent the most significant agentic surface upgrade since SIGNAL v2. Every bundle is Ed25519-verified, nonce-gated, and chain-validated. Query responses are tenant-scoped and signed.
 - **Global South Resilience +0.4:** Redis-backed nonce store replaces per-pod memory gates, enabling horizontal scaling of replay protection across low-connectivity regions. Memory fallback remains for development.
-- **Ecosystem Integration +0.2:** New primitives (`audit-bundles`, `audit-query`) extend the compliance substrate published at `gtcx.io/compliance`.
+- **Ecosystem Integration +0.2:** New primitives (`audit-bundles`, `audit-query`) extend the compliance substrate published at `gtcx.trade/compliance`.
 
 **Regressions (-):**
 

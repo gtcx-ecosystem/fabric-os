@@ -29,11 +29,11 @@ GTCX respects the right of access to information as enshrined in the Constitutio
 
 ## 2. Contact Details
 
-| Role                       | Name                                        | Email              | Phone         |
-| -------------------------- | ------------------------------------------- | ------------------ | ------------- |
-| Information Officer        | [Pending appointment]                       | dpo@gtcx.io        | +27 [pending] |
-| Deputy Information Officer | Compliance Lead                             | compliance@gtcx.io | +27 [pending] |
-| Physical address           | [Cape Town, SA — registered office pending] |                    |               |
+| Role                       | Name                                        | Email                 | Phone         |
+| -------------------------- | ------------------------------------------- | --------------------- | ------------- |
+| Information Officer        | [Pending appointment]                       | dpo@gtcx.trade        | +27 [pending] |
+| Deputy Information Officer | Compliance Lead                             | compliance@gtcx.trade | +27 [pending] |
+| Physical address           | [Cape Town, SA — registered office pending] |                       |               |
 
 ## 3. Categories of Records
 
@@ -42,7 +42,7 @@ GTCX respects the right of access to information as enshrined in the Constitutio
 | Category              | Location                                   | Format         |
 | --------------------- | ------------------------------------------ | -------------- |
 | Security policies     | `docs/security/`                           | Markdown / PDF |
-| Privacy policy        | `https://gtcx.io/privacy`                  | Web            |
+| Privacy policy        | `https://gtcx.trade/privacy`               | Web            |
 | Bug bounty policy     | `docs/security/bug-bounty-policy.md`       | Markdown       |
 | Data retention policy | `docs/compliance/data-retention-policy.md` | Markdown       |
 
@@ -69,8 +69,8 @@ GTCX respects the right of access to information as enshrined in the Constitutio
 
 ### 4.1 How to Request Access
 
-1. Complete the PAIA request form (available at `https://gtcx.io/paia-form`).
-2. Submit the form to **dpo@gtcx.io** with subject line: **PAIA Request — [Your Name] — [Date]**.
+1. Complete the PAIA request form (available at `https://gtcx.trade/paia-form`).
+2. Submit the form to **dpo@gtcx.trade** with subject line: **PAIA Request — [Your Name] — [Date]**.
 3. Include proof of identity (ID or passport) and, if acting on behalf of another, proof of authority.
 
 ### 4.2 Response Timeline

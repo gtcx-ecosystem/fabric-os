@@ -113,16 +113,16 @@ metadata:
   name: jit-alice-payments-edit-20260508T1400Z
   namespace: payments
   annotations:
-    gtcx.io/jit: 'true'
-    gtcx.io/ttl: '7200'
-    gtcx.io/expires-at: '2026-05-08T16:00:00Z'
-    gtcx.io/requester: 'alice@gtcx.io'
-    gtcx.io/approver: 'bob@gtcx.io,security-oncall@gtcx.io'
-    gtcx.io/reason: 'JIRA-1234: investigate payment processing latency'
-    gtcx.io/ticket: 'JIRA-1234'
+    gtcx.trade/jit: 'true'
+    gtcx.trade/ttl: '7200'
+    gtcx.trade/expires-at: '2026-05-08T16:00:00Z'
+    gtcx.trade/requester: 'alice@gtcx.trade'
+    gtcx.trade/approver: 'bob@gtcx.trade,security-oncall@gtcx.trade'
+    gtcx.trade/reason: 'JIRA-1234: investigate payment processing latency'
+    gtcx.trade/ticket: 'JIRA-1234'
 subjects:
   - kind: User
-    name: alice@gtcx.io
+    name: alice@gtcx.trade
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole

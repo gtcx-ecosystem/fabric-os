@@ -215,7 +215,7 @@ The main execution roadmap (`execution-roadmap-2026-05-22.md`) mixes internal an
 
 **Priority:** P1 | **Points:** 3
 
-**User story:** As **a developer landing on `gtcx.io/compliance` for the first time**, I want **a clear path from "what is this" to "how do I install it"** so that **I can evaluate the substrate in under 10 minutes**.
+**User story:** As **a developer landing on `gtcx.trade/compliance` for the first time**, I want **a clear path from "what is this" to "how do I install it"** so that **I can evaluate the substrate in under 10 minutes**.
 
 **Acceptance criteria:**
 

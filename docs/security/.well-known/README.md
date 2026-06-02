@@ -15,10 +15,10 @@ This directory contains security resources published under the `/.well-known/` p
 
 ## Files
 
-| File                             | Path                                       | Purpose                                                                                         |
-| -------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| [`security.txt`](./security.txt) | `https://gtcx.io/.well-known/security.txt` | Security contact and policy references per [securitytxt.org](https://securitytxt.org) RFC draft |
+| File                             | Path                                          | Purpose                                                                                         |
+| -------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| [`security.txt`](./security.txt) | `https://gtcx.trade/.well-known/security.txt` | Security contact and policy references per [securitytxt.org](https://securitytxt.org) RFC draft |
 
 ## Deployment
 
-`security.txt` should be served at `https://gtcx.io/.well-known/security.txt` with `Content-Type: text/plain; charset=utf-8`.
+`security.txt` should be served at `https://gtcx.trade/.well-known/security.txt` with `Content-Type: text/plain; charset=utf-8`.

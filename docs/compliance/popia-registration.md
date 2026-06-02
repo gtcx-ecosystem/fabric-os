@@ -92,8 +92,8 @@ GTCX processes personal information under the following lawful grounds (POPIA Se
 
 | Role                          | Name              | Email                  | Phone        |
 | ----------------------------- | ----------------- | ---------------------- | ------------ |
-| Information Officer (pending) | [To be appointed] | dpo@gtcx.io            | —            |
-| Deputy Information Officer    | Compliance Lead   | compliance@gtcx.io     | —            |
+| Information Officer (pending) | [To be appointed] | dpo@gtcx.trade         | —            |
+| Deputy Information Officer    | Compliance Lead   | compliance@gtcx.trade  | —            |
 | Information Regulator         | —                 | inforeg@justice.gov.za | 012 406 4818 |
 
 ---

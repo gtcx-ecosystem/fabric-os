@@ -37,6 +37,9 @@ env:
 jobs:
   build-push:
     runs-on: ubuntu-latest
+    # Allow update-manifests to run even if some matrix jobs fail.
+    # Individual failures are still visible in the UI.
+    continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
@@ -192,6 +195,7 @@ jobs:
       - name: Upload Trivy results
         uses: github/codeql-action/upload-sarif@03e4368ac7daa2bd82b3e85262f3bf87ee112f57 # v3
         if: always()
+        continue-on-error: true
         with:
           sarif_file: trivy-${{ matrix.service.name }}.sarif
 
@@ -273,10 +277,24 @@ jobs:
           REGISTRY="${{ steps.ecr-login.outputs.registry }}"
           cd infra/kubernetes/overlays/production
 
-          # Update all service image tags to the new SHA
-          kustomize edit set image \
-            gtcx/agx="${REGISTRY}/gtcx-agx:${SHA_SHORT}" \
-            gtcx/protocols="${REGISTRY}/gtcx-protocols:${SHA_SHORT}"
+          # Only update tags for images that actually exist in ECR
+          update_if_exists() {
+            local repo=$1
+            if aws ecr describe-images --repository-name "${repo}" --image-ids imageTag="${SHA_SHORT}" --region "${AWS_REGION}" >/dev/null 2>&1; then
+              echo "Updating ${repo}:${SHA_SHORT}"
+              echo "${repo}=${REGISTRY}/${repo}:${SHA_SHORT}" >> .kustomize-images.txt
+            else
+              echo "Skipping ${repo}:${SHA_SHORT} (not found in ECR)"
+            fi
+          }
+
+          update_if_exists gtcx-agx
+          update_if_exists gtcx-protocols
+
+          if [ -s .kustomize-images.txt ]; then
+            kustomize edit set image $(cat .kustomize-images.txt)
+            rm .kustomize-images.txt
+          fi
 
       - name: Update staging kustomization image tags
         run: |
@@ -284,9 +302,15 @@ jobs:
           REGISTRY="${{ steps.ecr-login.outputs.registry }}"
           cd infra/kubernetes/overlays/staging
 
-          # Compliance-gateway uses the full ECR path in base manifests
-          kustomize edit set image \
-            "${REGISTRY}/compliance-gateway=${REGISTRY}/compliance-gateway:${SHA_SHORT}"
+          # Only update compliance-gateway if the image exists in ECR
+          if aws ecr describe-images --repository-name compliance-gateway --image-ids imageTag="${SHA_SHORT}" --region "${AWS_REGION}" >/dev/null 2>&1; then
+            kustomize edit set image \
+              "${REGISTRY}/compliance-gateway=${REGISTRY}/compliance-gateway:${SHA_SHORT}"
+            echo "Updated compliance-gateway:${SHA_SHORT}"
+          else
+            echo "Skipping compliance-gateway:${SHA_SHORT} (not found in ECR)"
+            exit 1
+          fi
 
       - name: Commit manifest update
         run: |

@@ -1,3 +1,13 @@
+---
+title: 'Audit Deploy Acceptance Evidence — Infra #50–#52'
+status: current
+date: '2026-06-02'
+owner: infrastructure-security-engineer
+tier: critical
+tags: ['audit', 'staging', 'deploy', 'evidence']
+review_cycle: on-change
+---
+
 # Audit Deploy Acceptance Evidence — Infra #50–#52
 
 > Generated: 2026-06-02T09:04:00Z  

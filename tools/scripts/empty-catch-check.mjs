@@ -25,7 +25,7 @@ const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const ALLOWLIST = new Set([
   // Shutdown / drain paths — these run during process termination
   // and reraising would prevent clean teardown.
-  'tools/compliance-gateway/src/audit-sink.mjs:115', // await natsClient.drain() during sink.close()
+  'tools/compliance-gateway/src/audit-sink.mjs:123', // await natsClient.drain() during sink.close()
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:151', // fall-through path with cleanup
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:154', // client.disconnect() during shutdown
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:244', // await client.quit() during dispose

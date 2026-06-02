@@ -10,10 +10,17 @@
  * volume deployments because it gives at-least-once delivery and
  * decouples gateway pod lifetime from chain durability.
  *
+ * When NATS is unreachable, records are buffered to a durable local disk
+ * queue (append-only JSONL + byte-offset cursor). A background drain
+ * loop replays queued records to NATS when connectivity returns. The
+ * queue survives process restart and SIGKILL. See ADR-024.
+ *
  * Sinks fail-soft: a transient sink error never blocks the signing path
  * or the request; the in-memory chain remains the authoritative copy
  * until the next checkpoint.
  */
+
+import { createDiskQueue } from './disk-queue.mjs';
 
 function sinkMode() {
   if (process.env.AUDIT_SINK) return process.env.AUDIT_SINK.toLowerCase();
@@ -27,6 +34,7 @@ function natsUrl() { return process.env.NATS_URL || 'nats://nats.gtcx.svc.cluste
 
 let natsClient = null;
 let natsConnectPromise = null;
+let diskQueue = null;
 
 /**
  * @typedef {{
@@ -82,7 +90,21 @@ async function connectNats() {
   return natsConnectPromise;
 }
 
-function natsSink() {
+function natsPublishRaw(record) {
+  if (!natsClient) return false;
+  try {
+    const tenantId = record?.payload?.tenantId;
+    const subject = tenantId && typeof tenantId === 'string' && /^[a-z0-9-]+$/.test(tenantId)
+      ? `${natsSubject()}.${tenantId}`
+      : natsSubject();
+    natsClient.publish(subject, JSON.stringify(record));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function natsSink({ onNatsUnavailable } = {}) {
   // Kick off the connect in the background; stdout serves as the failover.
   connectNats();
   return {
@@ -91,23 +113,9 @@ function natsSink() {
       // Always mirror to stdout so log aggregation has a copy even if
       // JetStream is briefly unreachable.
       console.log(JSON.stringify({ type: 'audit.signed', record }));
-      if (!natsClient) return;
-      try {
-        // Per-tenant subject when the record carries a tenantId in its
-        // payload, so the audit-flush sidecar can write per-tenant
-        // prefixes into the WORM bucket. Falls back to the bare subject
-        // for legacy records or auth events with unknown tenant.
-        const tenantId = record?.payload?.tenantId;
-        const subject = tenantId && typeof tenantId === 'string' && /^[a-z0-9-]+$/.test(tenantId)
-          ? `${natsSubject()}.${tenantId}`
-          : natsSubject();
-        natsClient.publish(subject, JSON.stringify(record));
-      } catch (err) {
-        console.error(JSON.stringify({
-          level: 'error',
-          type: 'audit.sink.nats.publishFailed',
-          error: err.message,
-        }));
+      const ok = natsPublishRaw(record);
+      if (!ok && onNatsUnavailable) {
+        onNatsUnavailable(record);
       }
     },
     async close() {
@@ -128,7 +136,24 @@ let activeSink = null;
  */
 export function getSink() {
   if (activeSink) return activeSink;
-  activeSink = sinkMode() === 'nats' ? natsSink() : stdoutSink();
+  if (sinkMode() === 'nats') {
+    diskQueue = createDiskQueue({
+      dir: process.env.AUDIT_QUEUE_DIR || '/tmp/gtcx-audit-queue',
+      maxBytes: parseInt(process.env.AUDIT_QUEUE_MAX_BYTES || '104857600', 10),
+      drainIntervalMs: parseInt(process.env.AUDIT_QUEUE_DRAIN_INTERVAL_MS || '5000', 10),
+    });
+    activeSink = natsSink({
+      onNatsUnavailable: (record) => diskQueue.enqueue(record),
+    });
+    diskQueue.startDrain({
+      emit: (record) => {
+        // Raw NATS publish without stdout mirror or re-queue
+        natsPublishRaw(record);
+      },
+    });
+  } else {
+    activeSink = stdoutSink();
+  }
   return activeSink;
 }
 
@@ -137,6 +162,10 @@ export function getSink() {
  */
 export function resetSink() {
   activeSink = null;
+  if (diskQueue) {
+    diskQueue.stopDrain();
+    diskQueue = null;
+  }
   natsClient = null;
   natsConnectPromise = null;
 }
@@ -148,8 +177,12 @@ export function resetSink() {
  */
 export function getSinkInfo() {
   const mode = sinkMode();
-  return {
+  const info = {
     mode: mode === 'nats' ? 'nats' : 'stdout',
     ...(mode === 'nats' ? { subject: natsSubject(), natsConnected: natsClient !== null } : {}),
   };
+  if (diskQueue) {
+    info.queue = diskQueue.getStats();
+  }
+  return info;
 }

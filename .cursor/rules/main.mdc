@@ -53,4 +53,26 @@ To run any forensic audit on this repo (master-audit, full-audit, 10-10-roadmap,
 5. Write the output to the path the command specifies (typically `docs/audit/<command>-<YYYY-MM-DD>.md`).
 
 The audit registry is provider-agnostic — the same prompts work for Claude, Codex, Gemini, Kimi, Deepseek, Grok, etc.
+
+## Credentials: system-of-record + ownership split (cross-repo)
+
+**Canonical policy:** `gtcx-docs/docs/governance/protocols/19-agent-credential-access/protocol.md` (see “System-of-Record and Operational Ownership Split”).
+
+- **System-of-record (SoR)**: `gtcx-agentic` Baseline vault (shared provider creds + audited access)
+- **Runtime usage owner**: product repo (e.g. `gtcx-intelligence`) owns its runtime secrets
+- **CI/automation owner**: `gtcx-infrastructure` owns org automation secrets/policy
+- **Contracts only**: `gtcx-protocols` defines env var names, redaction rules, and artifact paths/globs
+
+**Credentialed evidence packs:** run either via vault injection on a dev laptop or in infra-owned CI; write redacted JSON evidence only (no raw secrets).
+
+## Execute roadmap (any LLM, any repo)
+
+Command: **`execute-roadmap`** (not `roadmap`).
+
+1. Read `../gtcx-docs/tools/roadmap/roadmap-framework/AGENT-START.md`
+2. Read `commands/execute-roadmap.md` and `prompts/roadmap/roadmap-reconcile-execute-prompt.md`
+3. Update `docs/strategy/execution-roadmap.md` or `docs/audit/execution-roadmap.md`; execute until active phase done
+4. Quick: `prompts/shareable/execute-roadmap-prompt-RUN.md`
+
+Provider-agnostic — Claude, Codex, Gemini, Kimi, Cursor, etc.
 <!-- AGENT-SYNC:END -->

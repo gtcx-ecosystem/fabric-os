@@ -20,7 +20,12 @@
     },
     {
       "path": ".cursor/rules/main.mdc",
-      "partials": ["base.md", "audit-pointer.md"],
+      "partials": [
+        "base.md",
+        "audit-pointer.md",
+        "credentials-pointer.md",
+        "execute-roadmap-pointer.md"
+      ],
       "createIfMissing": true
     },
     {

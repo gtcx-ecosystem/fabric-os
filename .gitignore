@@ -83,3 +83,7 @@ infra/security/reports/rollback-evidence/
 logs/
 .next/
 out/
+
+# Local Baseline initialization artifacts (never tracked)
+.baseline/config.json
+baseline.config.json

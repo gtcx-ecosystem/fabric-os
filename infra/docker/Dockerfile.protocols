@@ -1,4 +1,8 @@
 # =============================================================================
+# DEPRECATED — use gtcx-protocols/Dockerfile (production multi-stage build).
+# CI and infra/scripts/build-push.sh point at the protocols repo root Dockerfile.
+# This file remains for reference only; do not use for ECR pushes.
+# =============================================================================
 # GTCX Protocol Server — Node.js HTTP service
 # =============================================================================
 # Serves all 6 protocol verification endpoints (TradePass, GeoTag, GCI,

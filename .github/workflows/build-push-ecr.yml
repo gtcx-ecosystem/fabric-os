@@ -63,7 +63,7 @@ jobs:
             source_repos: gtcx-intelligence
 
           - name: protocols
-            dockerfile: infra/docker/Dockerfile.protocols
+            dockerfile: Dockerfile
             context_dir: protocols
             target: ''
             ecr_repos: gtcx-protocols

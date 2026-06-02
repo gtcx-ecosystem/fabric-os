@@ -62,7 +62,7 @@ service_exists() {
 
 service_dockerfile() {
     case "$1" in
-        protocols) echo "infra/docker/Dockerfile.protocols" ;;
+        protocols) echo "Dockerfile" ;;
         agx) echo "infra/docker/Dockerfile.platforms" ;;
         intelligence-sdk) echo "infra/docker/Dockerfile.intelligence" ;;
         trainer) echo "${ECOSYSTEM_ROOT}/gtcx-intelligence/intelligence/trainer/Dockerfile" ;;

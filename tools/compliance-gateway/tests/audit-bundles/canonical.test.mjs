@@ -71,6 +71,18 @@ describe('canonicalizeUrl', () => {
     const { path } = canonicalizeUrl('https://example.com');
     assert.strictEqual(path, '/');
   });
+
+  it('accepts a URL object directly', () => {
+    const urlObj = new URL('https://example.com/audit/bundles?a=1');
+    const { path, query } = canonicalizeUrl(urlObj);
+    assert.strictEqual(path, '/audit/bundles');
+    assert.strictEqual(query, 'a=1');
+  });
+
+  it('sorts same-key query params by value', () => {
+    const { query } = canonicalizeUrl('https://example.com/x?tag=beta&tag=alpha&tag=gamma');
+    assert.strictEqual(query, 'tag=alpha&tag=beta&tag=gamma');
+  });
 });
 
 describe('computeEnvelopeHash', () => {

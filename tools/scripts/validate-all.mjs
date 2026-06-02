@@ -85,6 +85,8 @@ for (const pkg of packages) {
   }
 }
 
+run('Coverage Honesty (per-file)', 'node tools/scripts/coverage-honesty-check.mjs');
+
 // =============================================================================
 // 2. Static Validators
 // =============================================================================

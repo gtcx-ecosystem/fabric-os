@@ -19,7 +19,7 @@ human_signature: pending
 
 | Field               | Value                                      |
 | ------------------- | ------------------------------------------ |
-| HEAD                | `801c2e05763d87000c7540338f4831cb89ca7643` |
+| HEAD                | `986782e956b252be06d697dccee88e15e741261b` |
 | Branch              | `docs/roadmap-update-2026-05-30`           |
 | Internal readiness  | 7.1/10                                     |
 | Certified composite | undefined/10                               |

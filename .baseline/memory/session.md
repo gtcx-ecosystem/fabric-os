@@ -63,7 +63,7 @@
 | S2-10 | Verifier DNS (XR-507 / S3-09) | `blocked` | Cloudflare admin (`zone:write` token) |
 | S2-11 | Supabase unpause (XR-508 / S3-10) | `blocked` | Ops dashboard |
 | S2-13 | Pen-test SOW signature | `intake ready` | Human SOW signature pending (EXT-INF-002) |
-| S3-06 | Publish primitives | `structural done` | `@gtcx/audit-signer` publish-ready; `npm publish` needs NPM_TOKEN operator |
+| S3-06 | Publish primitives | `done` | `publish-npm` job in slsa-provenance.yml; tag-triggered; gate in validate-all; needs NPM_TOKEN secret |
 | S3-07 | DR live RDS restore | `done` | `rds-live-restore.sh` + runbook + gate in validate-all; evidence dir ready; operator step pending AWS creds |
 | INT-S9-01 | Wire #2 POST /v1/evidence/submit | `infra unblocked` | Routing verified + TRADEPASS_AUTH_TOKEN wired (optional); protocols endpoint + secret population remaining |
 

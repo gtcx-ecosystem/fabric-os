@@ -63,7 +63,7 @@ to: baseline-os coordination hub + sibling repos
 
 **Caveat:** `/health` returns 200 without auth — this is by design in the SDK (`AUTH_EXEMPT_PATHS` includes `/health`, `/live`, `/ready`, `/metrics`). The ALB health check and K8s probes require this. The acceptance criteria in protocols kickoff may need updating.
 
-**Next:** Ping intelligence for XR-202 re-smoke — see [`to-gtcx-intelligence-track-b-auth-2026-06-03.md`](to-gtcx-intelligence-track-b-auth-2026-06-03.md)
+**Next:** — XR-202 **done** 2026-06-03 (intelligence `deployment-smoke-2026-06-03T06-42-43-281Z.json`). Historical: [`to-gtcx-intelligence-track-b-auth-2026-06-03.md`](to-gtcx-intelligence-track-b-auth-2026-06-03.md)
 
 ---
 

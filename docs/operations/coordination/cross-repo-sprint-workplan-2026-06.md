@@ -113,7 +113,7 @@ Three parallel numbering schemes exist across the ecosystem. This register adopt
 | XR-102  | Mobile audit E2E (SM → env → smoke)            | gtcx-mobile         | S-XR-1      | **ready**       | R-high | XR-101                | MOBILE-AUDIT-01/02                                                                |
 | XR-103  | WAF/admin register-operator 403                | gtcx-infrastructure | S-XR-2      | **deferred**    | R-low  | —                     | external admin curl                                                               |
 | XR-201  | Intelligence-staging auth gate                 | gtcx-infrastructure | S-XR-1      | **done**        | R-high | —                     | XR-202 unblocked; full SDK `12be5342` deployed; auth enforced on non-exempt paths |
-| XR-202  | INT-S3-08 full-stack re-smoke                  | gtcx-intelligence   | S-XR-2      | **ready**       | R-high | —                     | protocols mirror                                                                  |
+| XR-202  | INT-S3-08 full-stack re-smoke                  | gtcx-intelligence   | S-XR-2      | **done**        | R-high | —                     | protocols mirror                                                                  |
 | XR-203  | Protocols mirror intelligence smoke JSON       | gtcx-protocols      | S-XR-2      | **deferred**    | R-low  | XR-202                | —                                                                                 |
 | XR-301  | Push sovereign staging image (P4-07)           | gtcx-platforms      | S-XR-2      | **ready**       | R-med  | infra rollout         | signed-edge smoke                                                                 |
 | XR-302  | Push AGX staging image + rollout               | gtcx-platforms      | S-XR-2      | **in-progress** | R-med  | infra                 | api.staging `/api/*`                                                              |
@@ -324,7 +324,7 @@ Move licence intelligence from staging fixtures toward production path.
 
 | Sprint  | Work                                       | Status |
 | ------- | ------------------------------------------ | ------ |
-| S-XR-2  | XR-202                                     | ready  |
+| S-XR-2  | XR-202                                     | done   |
 | In-repo | INT-S2-\*, INT-S4-01 via `agent:next-work` | ready  |
 
 ### exploration-os

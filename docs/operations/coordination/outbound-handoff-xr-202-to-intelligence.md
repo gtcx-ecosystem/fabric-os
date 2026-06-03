@@ -6,6 +6,8 @@ owner: gtcx-infrastructure
 
 # Outbound Handoff: XR-202 → gtcx-intelligence
 
+> **Historical (2026-06-03):** XR-202 **completed** — evidence `deployment-smoke-2026-06-03T06-42-43-281Z.json` in gtcx-intelligence. Do not treat as open handoff.
+
 **Date:** 2026-06-03T09:12Z  
 **From:** gtcx-infrastructure (infra agent)  
 **To:** gtcx-intelligence (intelligence agent)  

@@ -61,7 +61,7 @@ tags: ['coordination', 'cross-repo', 'inbound', 'bridge', 'index']
 | ------ | ----------------- | ------------------------------- | --------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | XR-301 | gtcx-platforms    | Sovereign staging image rollout | **READY**                         | Rollout support when platforms pushes image                                            | `sovereign-staging.gtcx.trade/health` not placeholder |
 | XR-302 | gtcx-platforms    | AGX staging image + rollout     | **IN-PROGRESS** (platforms-owned) | Rollout support when image ready                                                       | `api.staging.gtcx.trade/api/health` 200               |
-| XR-202 | gtcx-intelligence | INT-S3-08 re-smoke              | **READY**                         | Ping intelligence — XR-201 done, auth gate live                                        | Intelligence commits `deployment-smoke-*.json`        |
+| XR-202 | gtcx-intelligence | INT-S3-08 re-smoke              | **done** 2026-06-03               | Evidence `deployment-smoke-2026-06-03T06-42-43-281Z.json` in intelligence repo         | —                                                     |
 | XR-103 | gtcx-protocols    | WAF `/v1/admin/*` 403 fix       | **DEFERRED**                      | Add WAF rule for `/v1/admin/tradepass/register-operator` if external admin curl needed | Admin POST returns JSON 200/403, not HTML 403         |
 
 ---

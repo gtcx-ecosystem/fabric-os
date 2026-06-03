@@ -54,7 +54,7 @@ protocol: gtcx-docs/docs/governance/protocols/24-cross-repo-coordination/protoco
 | 2026-06-03 | gtcx-protocols      | **S-XR-1 begun:** `probe-staging-cross-repo.mjs` — api/authority/operator OK; intelligence `/health` still **200** (XR-201 **not met**). Operator GET requires Bearer.                                      |
 | 2026-06-03 | gtcx-infrastructure | Track A complete per `from-gtcx-protocols-staging-operator-seed` (DONE). SM `gtcx/staging/mobile-audit-e2e-credentials` aligned.                                                                            |
 | 2026-06-03 | gtcx-protocols      | INF-86 pre-ceremony: `AuthorityVerificationMethodSchema` supports Ed25519 + P-256 (`577b79e5`). Post-ceremony tooling ready.                                                                                |
-| 2026-06-02 | gtcx-intelligence   | Smoke green; INT-S3-08 infra-gated (Track B). No mobile outbound.                                                                                                                                           |
+| 2026-06-03 | gtcx-intelligence   | **XR-202 done** — INT-S3-08 closed; witness `cross-repo-closure-2026-06-03.md`.                                                                                                                             |
 | 2026-06-02 | gtcx-infrastructure | #50–#52 audit presence live; evidence posted on GitHub.                                                                                                                                                     |
 
 > Full history: [`cross-repo-agent-log.md`](cross-repo-agent-log.md)
@@ -106,7 +106,7 @@ XR-301/302 (platforms ECR → infra rollout)
 
 | Priority | ID     | Owner                         | Next action                                                        | Infra unblocks when                                   |
 | -------- | ------ | ----------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------- |
-| **P0**   | XR-202 | gtcx-intelligence             | Re-smoke with full SDK; commit `deployment-smoke-*.json`           | INT-S3-08 evidence committed                          |
+| **P0**   | XR-202 | gtcx-intelligence             | **done** 2026-06-03 — evidence committed                           | —                                                     |
 | **P1**   | XR-301 | gtcx-platforms → **infra**    | Rollout support when image pushed                                  | `sovereign-staging.gtcx.trade/health` not placeholder |
 | **P1**   | XR-302 | gtcx-platforms → **infra**    | Rollout support when image ready                                   | `api.staging.gtcx.trade/api/health` 200               |
 | **P1**   | XR-507 | **gtcx-infrastructure**       | Cloudflare DNS `verify.explorationos.gtcx.trade` (need zone:write) | F-33 audit close                                      |
@@ -157,7 +157,7 @@ See [`cross-repo-sprint-workplan-2026-06.md`](cross-repo-sprint-workplan-2026-06
 
 ### gtcx-infrastructure
 
-- **XR-201 DONE** — full SDK deployed; auth enforced. XR-202 handoff sent to intelligence.
+- **XR-201/202 DONE** — full SDK deployed; intelligence vault smoke evidence committed.
 - **XR-104 DONE** — compliance-gateway DID resolve fixed. SDK rebuilt (audit-tradepass-auth-amd64), signing secret fixed (valid PKCS#8 DER Ed25519), rollout verified. Mobile E2E unblocked.
 - **INF-86 pilot** — HOLD awaiting CISO algorithm sign-off.
 
@@ -167,11 +167,11 @@ Track A done. **MOBILE-AUDIT-01 unblocked** — XR-104 resolved. Load SM and run
 
 ### gtcx-intelligence
 
-**XR-202 READY** — handoff received; run vault smoke + commit evidence. `/health` 200 is by design.
+**XR-202 DONE** (2026-06-03) — `deployment-smoke-2026-06-03T06-42-43-281Z.json` committed; coordination **closed**. `/health` 200 is by design.
 
 ### gtcx-protocols
 
-XR-201 reconciled (done). No code until XR-202 evidence or INF-86 ceremony output.
+XR-201/202 reconciled (done). Next: INF-86 ceremony output when unblocked.
 
 ### gtcx-platforms
 

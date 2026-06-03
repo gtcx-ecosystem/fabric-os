@@ -118,19 +118,19 @@ review_cycle: weekly
 
 **Goal:** Ship security surface required for pen-test readiness. Close production-trust gaps. Unblock PRD-002 production path.
 
-| Story | Title                                                                  | Priority | Status        | Owner                       | Acceptance                                                                         |
-| ----- | ---------------------------------------------------------------------- | -------- | ------------- | --------------------------- | ---------------------------------------------------------------------------------- |
-| S2-01 | **FIPS 140-3 feature flag** — compiles, tests pass                     | P1       | `done`        | security                    | `fips-mode.mjs` + signer ECDSA P-256; 48 tests pass; gate in validate-all          |
-| S2-02 | **Mutable audit default path** — stdout → NATS/WORM or persistent sink | P1       | `done`        | infra                       | Production guard: AUDIT_SINK=stdout throws; defaults to NATS; gate in validate-all |
-| S2-03 | **Durable offline queue** — survive restart + crash recovery           | P1       | `pending`     | infra                       | Queue backend chosen (NATS JetStream vs Redis Streams); integration tests pass     |
-| S2-04 | **PRD-002 Tier B** — TradePass DID resolver contract alignment         | P1       | `blocked`     | protocols + infra           | Protocols decision on `/identity/:did` shape; compliance-gateway consumes it       |
-| S2-05 | **SLSA Build L3** — sigstore attestation on ≥1 package                 | P2       | `pending`     | devops                      | Published package has `.sigstore` attestation artifact                             |
-| S2-06 | **Pen-test SOW signature push** (EXT-INF-002)                          | P0       | `pending`     | leadership                  | SOW signed; vendor kickoff scheduled                                               |
-| S2-07 | **SOC 2 Type I auditor engagement** (EXT-INF-016)                      | P0       | `pending`     | ciso + finance              | Auditor selected; gap analysis kickoff scheduled                                   |
-| S2-08 | **Cost router production** (ER-2)                                      | P1       | `in_progress` | infra + intel + baseline-os | Intel proof + baseline-os v1.1 freeze; cost-stats evidence                         |
-| S2-09 | **INF-86 pilot ceremony** (XR-402) — if XR-401 unblocks                | P0       | `hold`        | CISO + platform             | Ceremony executed; SPKI handoff to protocols                                       |
-| S2-10 | **Verifier DNS** (XR-507 / S3-09)                                      | P2       | `blocked`     | cloudflare admin            | DNS record live; Terraform state matches                                           |
-| S2-11 | **Supabase unpause** (XR-508 / S3-10)                                  | P2       | `blocked`     | ops                         | Project unpaused; migrations 006+007 applied                                       |
+| Story | Title                                                                  | Priority | Status        | Owner                       | Acceptance                                                                           |
+| ----- | ---------------------------------------------------------------------- | -------- | ------------- | --------------------------- | ------------------------------------------------------------------------------------ |
+| S2-01 | **FIPS 140-3 feature flag** — compiles, tests pass                     | P1       | `done`        | security                    | `fips-mode.mjs` + signer ECDSA P-256; 48 tests pass; gate in validate-all            |
+| S2-02 | **Mutable audit default path** — stdout → NATS/WORM or persistent sink | P1       | `done`        | infra                       | Production guard: AUDIT_SINK=stdout throws; defaults to NATS; gate in validate-all   |
+| S2-03 | **Durable offline queue** — survive restart + crash recovery           | P1       | `done`        | infra                       | Restart + crash recovery tests added; 23 disk-queue tests pass; gate in validate-all |
+| S2-04 | **PRD-002 Tier B** — TradePass DID resolver contract alignment         | P1       | `blocked`     | protocols + infra           | Protocols decision on `/identity/:did` shape; compliance-gateway consumes it         |
+| S2-05 | **SLSA Build L3** — sigstore attestation on ≥1 package                 | P2       | `pending`     | devops                      | Published package has `.sigstore` attestation artifact                               |
+| S2-06 | **Pen-test SOW signature push** (EXT-INF-002)                          | P0       | `pending`     | leadership                  | SOW signed; vendor kickoff scheduled                                                 |
+| S2-07 | **SOC 2 Type I auditor engagement** (EXT-INF-016)                      | P0       | `pending`     | ciso + finance              | Auditor selected; gap analysis kickoff scheduled                                     |
+| S2-08 | **Cost router production** (ER-2)                                      | P1       | `in_progress` | infra + intel + baseline-os | Intel proof + baseline-os v1.1 freeze; cost-stats evidence                           |
+| S2-09 | **INF-86 pilot ceremony** (XR-402) — if XR-401 unblocks                | P0       | `hold`        | CISO + platform             | Ceremony executed; SPKI handoff to protocols                                         |
+| S2-10 | **Verifier DNS** (XR-507 / S3-09)                                      | P2       | `blocked`     | cloudflare admin            | DNS record live; Terraform state matches                                             |
+| S2-11 | **Supabase unpause** (XR-508 / S3-10)                                  | P2       | `blocked`     | ops                         | Project unpaused; migrations 006+007 applied                                         |
 
 ### Sprint 2 Dependencies
 

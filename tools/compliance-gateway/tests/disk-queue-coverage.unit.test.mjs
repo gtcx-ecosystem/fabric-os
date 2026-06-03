@@ -300,4 +300,60 @@ describe('disk-queue — error paths and edge cases', () => {
     }
     assert.ok(errors.some((e) => e.includes('audit.queue.drainUnhandled')));
   });
+
+  it('survives process restart — new queue resumes from cursor', async () => {
+    // Simulate process A: enqueue records, then exit (no stopDrain)
+    const q1 = createDiskQueue({ dir });
+    q1.enqueue({ id: 'r1', payload: 'first' });
+    q1.enqueue({ id: 'r2', payload: 'second' });
+    // q1 exits without stopDrain — files are left on disk
+
+    // Simulate process B: new queue instance reads the same directory
+    const q2 = createDiskQueue({ dir });
+    const emitted = [];
+    q2.startDrain({ emit: (r) => emitted.push(r) });
+    await new Promise((r) => setTimeout(r, 100));
+    q2.stopDrain();
+
+    assert.strictEqual(emitted.length, 2);
+    assert.strictEqual(emitted[0].id, 'r1');
+    assert.strictEqual(emitted[1].id, 'r2');
+
+    const stats = q2.getStats();
+    assert.strictEqual(stats.pendingBytes, 0);
+    assert.strictEqual(stats.pendingRecords, 0);
+  });
+
+  it('survives crash — partial cursor is recovered', async () => {
+    // Simulate process A: enqueue, start drain, crash mid-drain
+    const q1 = createDiskQueue({ dir });
+    q1.enqueue({ id: 'r1' });
+    q1.enqueue({ id: 'r2' });
+    q1.enqueue({ id: 'r3' });
+
+    const emitted = [];
+    q1.startDrain({
+      emit: (r) => {
+        emitted.push(r);
+        // Simulate crash after processing 2 records by not letting the 3rd emit
+        if (emitted.length >= 2) {
+          q1.stopDrain();
+        }
+      },
+    });
+    await new Promise((r) => setTimeout(r, 100));
+
+    // Cursor should be at the 2nd record boundary
+    assert.strictEqual(emitted.length, 2);
+
+    // Simulate process B: resumes from cursor (should only see r3)
+    const q2 = createDiskQueue({ dir });
+    const resumed = [];
+    q2.startDrain({ emit: (r) => resumed.push(r) });
+    await new Promise((r) => setTimeout(r, 100));
+    q2.stopDrain();
+
+    assert.strictEqual(resumed.length, 1);
+    assert.strictEqual(resumed[0].id, 'r3');
+  });
 });

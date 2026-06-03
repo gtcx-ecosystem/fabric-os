@@ -55,9 +55,10 @@ images:
   - name: gtcx-anomaly-detector
     newName: 348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-anomaly-detector
     newTag: latest
-  # XR-104: Bearer auth for TradePass DID resolve (commit 764fb83; amd64 tag = git SHA).
+  # XR-104: Bearer auth for TradePass DID resolve (commit 764fb83).
+  # NOTE: Original audit-tradepass-auth tag was ARM64-only; rebuilt as audit-tradepass-auth-amd64.
   - name: 348389439381.dkr.ecr.af-south-1.amazonaws.com/compliance-gateway
-    newTag: '79ee914'
+    newTag: audit-tradepass-auth-amd64
   - name: 348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-sovereign
     newTag: staging
 

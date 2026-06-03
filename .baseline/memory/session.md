@@ -41,7 +41,7 @@
 |-------|-------|--------|-------------|
 | S1-02 | TypeORM entity/schema drift | `pending` | Schema reconciliation job or entity sync |
 | S1-03 | ioredis missing | `pending` | Add to sovereign image; verify Redis nonce store |
-| S1-05 | Terraform IRSA drift | `pending` | Capture `gtcx-staging-platforms-irsa` in staging main.tf |
+| S1-05 | Terraform IRSA drift | `done` (`0c72072`) | Role + policy imported; targeted plan 0 changes; KMS bug fixed |
 | S1-06 | Production IRSA trust cleanup | `pending` | Remove stale staging SA from production role trust |
 | S1-07 | Kustomize secret collision pattern | `pending` | Document pattern; consider removing base secretGenerator |
 | S1-11 | Secret scanning CI (TruffleHog) | `pending` | Add gate to validate-all.mjs |

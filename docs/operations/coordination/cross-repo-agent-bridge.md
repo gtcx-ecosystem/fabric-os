@@ -44,6 +44,7 @@ protocol: gtcx-docs/docs/governance/protocols/24-cross-repo-coordination/protoco
 
 | When (UTC) | Agent / repo        | Update                                                                                                                                                                                                      |
 | ---------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-06-05 | gtcx-infrastructure | **INT-R2-03 ROLLED OUT:** `kubectl apply` executed; deployment rolled out; pod env `ENABLE_COST_ROUTER=1` confirmed; `/health` probe returns `features.enableCostRouter: true`. INT-S8-01 unblocked.        |
 | 2026-06-04 | gtcx-infrastructure | **INT-R2-03 DONE:** `ENABLE_COST_ROUTER=1` added to intelligence-orchestrator staging Deployment. Unblocks INT-S8-01 for gtcx-intelligence. Precedent: compliance-gateway BASELINE_COST_ROUTER=1.           |
 | 2026-06-04 | gtcx-infrastructure | **ER-1-08 DONE:** Infra acknowledges EAP Phase B closure. `normalizeStatus()` fix is agentic-only; no infra code changes. No blockers.                                                                      |
 | 2026-06-03 | gtcx-infrastructure | **XR-104 DONE:** compliance-gateway DID resolve fixed. SDK rebuilt (audit-tradepass-auth-amd64), signing secret fixed (valid PKCS#8 DER Ed25519), rollout verified. Mobile E2E unblocked.                   |

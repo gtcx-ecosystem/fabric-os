@@ -15,5 +15,5 @@ spec:
             - name: AUDIT_SIGNING_KEY_B64
               valueFrom:
                 secretKeyRef:
-                  name: compliance-gateway-audit-key-staging
+                  name: gtcx-compliance-gateway-audit-key-staging
                   key: AUDIT_SIGNING_KEY_B64

@@ -39,7 +39,7 @@
 
 | Story | Title | Status | Next Action |
 |-------|-------|--------|-------------|
-| S1-02 | TypeORM entity/schema drift | `pending` | Schema reconciliation job or entity sync |
+| S1-02 | TypeORM entity/schema drift | `in_progress` (`724cea9`) | 4 critical tables added to 01-schema.sql; 21+ remaining; drift report done |
 | S1-03 | ioredis missing | `pending` | Add to sovereign image; verify Redis nonce store |
 | S1-05 | Terraform IRSA drift | `done` (`0c72072`) | Role + policy imported; targeted plan 0 changes; KMS bug fixed |
 | S1-06 | Production IRSA trust cleanup | `pending` | Remove stale staging SA from production role trust |

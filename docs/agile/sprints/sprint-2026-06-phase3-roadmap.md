@@ -38,7 +38,7 @@ review_cycle: weekly
 | ID        | Title                                           | Owner             | Status        |
 | --------- | ----------------------------------------------- | ----------------- | ------------- |
 | S1-02     | TypeORM entity/schema drift                     | infra             | `in_progress` |
-| S1-03     | ioredis missing — sovereign image               | infra             | `pending`     |
+| S1-03     | ioredis missing — sovereign image               | infra             | **`done`**    |
 | S1-05     | Terraform IRSA drift capture                    | infra             | **`done`**    |
 | S2-01     | Secret scanning CI (TruffleHog)                 | devops            | `pending`     |
 | S2-02     | Rate limiting — `/audit/*` throttling           | infra             | `pending`     |
@@ -95,7 +95,7 @@ review_cycle: weekly
 | ----- | --------------------------------------------------------------------- | -------- | ------------- | ------ | -------------------------------------------------------------------------------- |
 | S1-01 | **Kustomize selector immutability** — sovereign deployment full apply | P1       | **`done`**    | infra  | `b1615d0` — `includeSelectors: false` in base kustomization                      |
 | S1-02 | **TypeORM entity/schema drift** — reconcile with `01-schema.sql`      | P1       | `in_progress` | infra  | `724cea9` — 4 critical tables added; 21+ remaining; drift report catalogued      |
-| S1-03 | **ioredis missing** — add to sovereign production image               | P1       | `pending`     | infra  | `ioredis` in `package.json` prod deps; Redis nonce store connects                |
+| S1-03 | **ioredis missing** — add to sovereign production image               | P1       | **`done`**    | infra  | `0292959` — ioredis ^5.10.1 added to platforms/shared; lockfile updated          |
 | S1-04 | **AUDIT_SEAL_SECRET missing** — sovereign staging secret              | P1       | **`done`**    | infra  | Added to `gtcx-sovereign-secrets-staging`; sovereign restarted                   |
 | S1-05 | **Terraform IRSA drift** — staging IRSA role in state                 | P1       | **`done`**    | infra  | `0c72072` — role + policy imported; targeted plan shows 0 changes; KMS bug fixed |
 | S1-06 | **Production IRSA trust cleanup** — remove stale staging ref          | P2       | `pending`     | infra  | `gtcx-production-platforms-irsa` trust policy has no staging SA references       |

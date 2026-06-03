@@ -1,8 +1,11 @@
 /**
- * Ed25519 audit record signer for consequential AI flows.
+ * Audit record signer for consequential AI flows.
+ *
+ * Algorithm: Ed25519 (default) or ECDSA P-256 (FIPS 140-3 mode).
  */
 
 import { createHash, randomBytes, sign, verify, generateKeyPairSync, createPublicKey } from 'node:crypto';
+import { isFipsMode, signingAlgorithm, fipsCurve, assertFipsDigest } from './fips-mode.mjs';
 
 /**
  * @typedef {object} SignedAuditRecord
@@ -18,14 +21,18 @@ import { createHash, randomBytes, sign, verify, generateKeyPairSync, createPubli
  * @property {string} publicKey
  */
 
-const ED25519 = 'ed25519';
+const ALGORITHM = signingAlgorithm();
+const CURVE = fipsCurve();
 
 /**
- * Generate a new Ed25519 key pair.
+ * Generate a new key pair.
  * @returns {{ publicKey: import('node:crypto').KeyObject; privateKey: import('node:crypto').KeyObject }}
  */
 export function generateKeyPair() {
-  return generateKeyPairSync(ED25519);
+  if (ALGORITHM === 'ec') {
+    return generateKeyPairSync(ALGORITHM, { namedCurve: CURVE });
+  }
+  return generateKeyPairSync(ALGORITHM);
 }
 
 /**
@@ -53,6 +60,7 @@ export function canonicalize(record) {
  * @returns {string}
  */
 export function hashCanonical(canonical) {
+  assertFipsDigest('sha256');
   return createHash('sha256').update(canonical).digest('base64');
 }
 
@@ -65,7 +73,7 @@ export function hashCanonical(canonical) {
  */
 export function signRecord(record, privateKey, publicKey) {
   const canonical = canonicalize(record);
-  const sig = sign(null, Buffer.from(canonical, 'utf8'), privateKey);
+  const sig = sign(ALGORITHM === 'ec' ? 'sha256' : null, Buffer.from(canonical, 'utf8'), privateKey);
   const pubDer = publicKey.export({ type: 'spki', format: 'der' });
   return {
     ...record,
@@ -89,7 +97,7 @@ export function verifyRecord(record) {
       type: 'spki',
     });
     return verify(
-      null,
+      ALGORITHM === 'ec' ? 'sha256' : null,
       Buffer.from(canonical, 'utf8'),
       pubKey,
       Buffer.from(signature, 'base64')
@@ -134,6 +142,7 @@ export function createRecord({
   };
   if (reason !== undefined) record.reason = reason;
   if (payload !== undefined) {
+    assertFipsDigest('sha256');
     record.payloadHash = createHash('sha256')
       .update(JSON.stringify(payload))
       .digest('base64');

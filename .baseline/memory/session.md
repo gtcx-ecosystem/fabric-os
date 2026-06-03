@@ -48,8 +48,13 @@
 | S1-12 | Rate limiting — `/audit/*` throttling | `done` | `checkBudget` already wired; k6 load test PASS (50% throttled, 0 errors) |
 | S1-13 | Runtime cross-repo integration tests | `done` | `cross-repo-health-probe.mjs` + CI workflow; sovereign/api/intelligence all 200 |
 
+### Sprint 2: Security + Production Hardening
 
-| S1-13 | Runtime cross-repo integration tests | `pending` | CI job probes protocols/core/intelligence health |
+| Story | Title | Status | Next Action |
+|-------|-------|--------|-------------|
+| S2-01 | FIPS 140-3 feature flag | `done` | `fips-mode.mjs` + signer ECDSA P-256; 48 tests pass; gate in validate-all |
+| S2-02 | Mutable audit default path | `pending` | stdout → NATS/WORM or persistent sink |
+| S2-03 | Durable offline queue | `pending` | Queue backend chosen; integration tests pass |
 
 ---
 

@@ -120,7 +120,7 @@ review_cycle: weekly
 
 | Story | Title                                                                  | Priority | Status        | Owner                       | Acceptance                                                                     |
 | ----- | ---------------------------------------------------------------------- | -------- | ------------- | --------------------------- | ------------------------------------------------------------------------------ |
-| S2-01 | **FIPS 140-3 feature flag** — compiles, tests pass                     | P1       | `pending`     | security                    | `GTCX_FIPS_MODE=1` build passes; unit tests green                              |
+| S2-01 | **FIPS 140-3 feature flag** — compiles, tests pass                     | P1       | `done`        | security                    | `fips-mode.mjs` + signer ECDSA P-256; 48 tests pass; gate in validate-all      |
 | S2-02 | **Mutable audit default path** — stdout → NATS/WORM or persistent sink | P1       | `pending`     | infra                       | `AUDIT_SINK` env routes to durable sink; no stdout default in production       |
 | S2-03 | **Durable offline queue** — survive restart + crash recovery           | P1       | `pending`     | infra                       | Queue backend chosen (NATS JetStream vs Redis Streams); integration tests pass |
 | S2-04 | **PRD-002 Tier B** — TradePass DID resolver contract alignment         | P1       | `blocked`     | protocols + infra           | Protocols decision on `/identity/:did` shape; compliance-gateway consumes it   |

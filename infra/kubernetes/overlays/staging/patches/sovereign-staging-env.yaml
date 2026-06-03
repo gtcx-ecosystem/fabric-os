@@ -44,3 +44,9 @@ spec:
               value: redis://redis-staging.gtcx-staging.svc.cluster.local:6379
             - name: NODE_TLS_REJECT_UNAUTHORIZED
               value: '0'
+            - name: SIGNING_KEY_PROVIDER
+              value: kms
+            - name: AWS_KMS_KEY_ID
+              value: alias/gtcx-production-sovereign-gh-bog
+            - name: AWS_REGION
+              value: af-south-1

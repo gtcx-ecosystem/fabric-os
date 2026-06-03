@@ -172,3 +172,117 @@ For each key ceremony, the following evidence is retained for 7 years:
 
 _Last updated: 2026-05-08_
 _Next review: 2026-08-08 (quarterly)_
+
+## 5. Sovereign Authority Key Ceremony
+
+Sovereign authority keys are created via the `kms-sovereign-signing` Terraform module.
+Each jurisdiction / authority gets an independent KMS asymmetric key with its own alias,
+IAM policy, CloudWatch alarm, and SSM parameters.
+
+### 5.1 Prerequisites
+
+- [ ] Algorithm decision documented (ECC_NIST_P256 vs Ed25519/CloudHSM) — **PENDING CISO / platform-lead sign-off**
+- [ ] `GTCX-KEY-CEREMONY` leadership approval obtained
+- [ ] Two custodians + one witness identified — **PENDING scheduling**
+- [ ] Authority DID JSON-LD schema confirmed with gtcx-protocols
+- [ ] Pilot authority selected (`gh-bog`) — ✅ configured in Terraform; **DO NOT APPLY YET**
+
+> **HOLD:** Production Terraform apply is blocked until algorithm sign-off and custodian scheduling are complete. See §5.4.
+
+### 5.2 Procedure
+
+```
+Step 1: Verify identity of all participants
+        - Government ID check for custodians
+        - Record names, roles, timestamps in ceremony log
+
+Step 2: Review Terraform plan for target authority
+        $ cd infra/terraform/environments/production
+        $ terraform plan -target=module.kms_sovereign_signing -out=sovereign.tfplan
+        $ # Confirm only the target authority key is added
+
+Step 3: Custodian A initiates apply
+        $ terraform apply sovereign.tfplan
+
+Step 4: Custodian B verifies key creation
+        $ aws kms describe-key \
+            --key-id alias/gtcx-production-sovereign-<authority-id>
+        - Confirm: KeyUsage=SIGN_VERIFY
+        - Confirm: KeySpec matches algorithm decision
+        - Confirm: KeyState=Enabled
+        - Confirm: DeletionDate=null
+
+Step 5: Export public key for DID document
+        $ aws kms get-public-key \
+            --key-id alias/gtcx-production-sovereign-<authority-id> \
+            --query 'PublicKey' --output text
+        - Convert to publicKeyMultibase or publicKeyJwk per protocols schema
+        - Hand off to gtcx-protocols for DID document update
+
+Step 6: Both custodians verify key policy
+        $ aws kms get-key-policy \
+            --key-id alias/gtcx-production-sovereign-<authority-id> \
+            --policy-name default
+        - Confirm: Only approved roles in Sign statement
+        - Confirm: DenyKeyExport statement present
+
+Step 7: Witness signs ceremony log
+        - All participants sign
+        - Video recording saved to tamper-evident S3 storage
+```
+
+### 5.3 Sovereign Ceremony Log Template
+
+| Field             | Value                                            |
+| ----------------- | ------------------------------------------------ |
+| Date              | YYYY-MM-DD HH:MM UTC                             |
+| Environment       | production                                       |
+| Authority ID      | e.g. `gh-bog`                                    |
+| Key ID            | `aws_kms_key.sovereign[authority].key_id`        |
+| Key ARN           | `aws_kms_key.sovereign[authority].arn`           |
+| Alias             | `alias/gtcx-production-sovereign-<authority-id>` |
+| Algorithm         | ECC_NIST_P256 / Ed25519                          |
+| Custodian A       | Name, Role                                       |
+| Custodian B       | Name, Role                                       |
+| Witness           | Name, Role                                       |
+| Video Location    | `s3://gtcx-production-ceremonies/YYYY-MM-DD/`    |
+| Public Key Export | Base64 DER / publicKeyMultibase / publicKeyJwk   |
+| Protocols Handoff | gtcx-protocols#61 comment URL                    |
+| Next Rotation Due | YYYY-MM-DD (90 days from creation)               |
+
+### 5.4 Pilot Hold & Expansion Guardrails
+
+**Current status:** `HOLD` — production Terraform apply is **explicitly blocked** pending:
+
+1. CISO / platform-lead algorithm sign-off (ECC_NIST_P256 vs Ed25519 / CloudHSM)
+2. Custodian scheduling (dual-control + witness)
+
+**Pilot constraints:**
+
+- **Single pilot authority only:** `gh-bog` (already configured in `production/main.tf`)
+- **No apply until hold lifted** — `terraform apply` for `module.kms_sovereign_signing` is prohibited
+- **Post-pilot deliverables:**
+  - Ceremony evidence package (§4) to compliance
+  - Exported public key (base64 DER / multibase / JWK) to **gtcx-protocols** for DID document update
+  - **Do not edit `key_status` in protocols** — protocols team owns DID schema and status fields
+
+**Post-pilot expansion rules:**
+
+- Expand `var.authorities` map to remaining 42 authorities **only after** successful `gh-bog` pilot
+- Batch size: **maximum 10 authorities per Terraform apply** (to stay within KMS API rate limits and keep ceremony logs manageable)
+- Each batch requires its own ceremony log, witness, and evidence package
+- Total batches: 5 (10 + 10 + 10 + 10 + 2)
+
+**Algorithm blocker note:**
+
+AWS KMS does not support Ed25519. Options:
+
+- **(A)** Migrate DID schema to `ECC_NIST_P256` (KMS-native, no CloudHSM cost)
+- **(B)** Deploy AWS CloudHSM cluster (~$2,100/month HA pair) for Ed25519
+
+Infra recommends **Option A** for cost and operational simplicity, but the decision is **CISO/platform-lead authority**.
+
+---
+
+_Last updated: 2026-06-03_
+_Next review: 2026-08-08 (quarterly)_

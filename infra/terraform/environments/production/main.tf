@@ -326,6 +326,49 @@ module "kms_signing" {
 }
 
 # -----------------------------------------------------------------------------
+# KMS Sovereign Signing Keys — Authority DID signing (protocols #61 / INF-86)
+# -----------------------------------------------------------------------------
+# Per SOVEREIGN (P6): Each jurisdiction gets an independent asymmetric key.
+# Per SECURE (P11): FIPS 140-2 Level 2 validated HSM backing via AWS KMS.
+#
+# ALGORITHM DECISION REQUIRED BEFORE APPLY:
+#   AWS KMS does NOT support Ed25519. If authority DIDs require Ed25519
+#   (current did:gtcx schema), either:
+#     (a) Update DID documents to use ECDSA P-256 (cross-repo change), or
+#     (b) Use AWS CloudHSM for Ed25519 (~$2,100/month for HA pair).
+#   Default below uses ECC_NIST_P256 pending leadership decision.
+#
+# TODO: Replace pilot authorities with full 43-authority map after ceremony.
+# TODO: Create dedicated IRSA roles for protocols/sovereign services.
+#
+# HOLD (2026-06-03): Do NOT run terraform apply for this module until:
+#   1. CISO / platform-lead signs off on algorithm (ECC_NIST_P256 vs Ed25519/CloudHSM)
+#   2. Two custodians + witness are scheduled
+#   3. GTCX-KEY-CEREMONY leadership approval is obtained
+# Pilot authority only (gh-bog). Max 10 per batch after pilot.
+# -----------------------------------------------------------------------------
+
+module "kms_sovereign_signing" {
+  source = "../../modules/kms-sovereign-signing"
+
+  environment          = var.environment
+  admin_role_arns      = [module.ci.deploy_role_arn]
+  alarm_sns_topic_arns = [module.detective.security_alerts_topic_arn]
+
+  # Pilot: single authority for ceremony rehearsal.
+  # Expand to full 43-authority map after GTCX-KEY-CEREMONY approval.
+  authorities = {
+    "gh-bog" = {
+      label             = "Ghana Bogoso"
+      key_spec          = "ECC_NIST_P256"
+      signing_algorithm = "ECDSA_SHA_256"
+      # TODO: Replace with dedicated protocols IRSA role ARN
+      signing_role_arns = [module.irsa_platform.platforms_role_arn]
+    }
+  }
+}
+
+# -----------------------------------------------------------------------------
 # IRSA — gtcx-platforms Service Account
 # -----------------------------------------------------------------------------
 # Allows gtcx-platforms pods in the gtcx namespace to assume AWS IAM roles

@@ -37,3 +37,12 @@ spec:
                   key: api-key
             - name: GTCX_API_KEY_SCOPES
               value: 'admin:audit,protocol:read,protocol:write'
+            # TradePass auth token for Wire #2 evidence submit (INT-S9-01).
+            # Optional: pod starts without it; protocols falls back to stub/
+            # dev-mode until the secret key is populated.
+            - name: TRADEPASS_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-secrets-staging-cdkk972mcc
+                  key: TRADEPASS_AUTH_TOKEN
+                  optional: true

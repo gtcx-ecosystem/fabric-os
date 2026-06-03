@@ -13,7 +13,9 @@ metadata:
   name: gtcx-ingress
   namespace: gtcx
   annotations:
-    # NGINX configuration
+    # DEPRECATED: api.gtcx.trade is migrating to Cloudflare Tunnel (S3-08).
+    # This ingress rule will be removed once tunnel routes are confirmed live.
+    # Remaining rules (internal services) continue to use NGINX ingress.
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
     nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'

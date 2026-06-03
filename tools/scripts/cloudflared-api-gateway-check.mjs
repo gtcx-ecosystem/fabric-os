@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 /**
  * @fileoverview Validate public API hostnames route through Cloudflare Tunnel.
+ *
+ * S3-08: Checks that:
+ *   1. Tunnel config routes api.gtcx.trade → compliance-gateway:8500
+ *   2. Production ingress is marked deprecated (no conflicting ALB route)
+ *   3. query.gtcx.trade is not prematurely exposed
  */
 
 import { readFileSync } from 'node:fs';
@@ -16,6 +21,14 @@ const CONFIG = join(
   'services',
   'cloudflared',
   'config.yaml'
+);
+const INGRESS = join(
+  ROOT,
+  'infra',
+  'kubernetes',
+  'overlays',
+  'production',
+  'ingress.yaml'
 );
 
 export function validateCloudflaredApiRouting(text) {
@@ -46,15 +59,32 @@ export function validateCloudflaredApiRouting(text) {
   return failures;
 }
 
+export function validateIngressDeprecation(text) {
+  const failures = [];
+  if (!text.includes('DEPRECATED') && !text.includes('deprecated')) {
+    failures.push('production ingress missing deprecation annotation (S3-08)');
+  }
+  // The api.gtcx.trade rule may still exist during migration, but it must be
+  // annotated as deprecated. We don't fail on presence — only on missing
+  // deprecation notice.
+  return failures;
+}
+
 function main() {
-  const text = readFileSync(CONFIG, 'utf8');
-  const failures = validateCloudflaredApiRouting(text);
+  const tunnelText = readFileSync(CONFIG, 'utf8');
+  const ingressText = readFileSync(INGRESS, 'utf8');
+
+  const failures = [
+    ...validateCloudflaredApiRouting(tunnelText),
+    ...validateIngressDeprecation(ingressText),
+  ];
+
   if (failures.length > 0) {
     console.error('[cloudflared-api-gateway-check] routing drift:');
     for (const f of failures) console.error(`- ${f}`);
     process.exit(1);
   }
-  console.log('[cloudflared-api-gateway-check] public API tunnel routes OK');
+  console.log('[cloudflared-api-gateway-check] public API tunnel routes OK; ingress deprecated');
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) main();

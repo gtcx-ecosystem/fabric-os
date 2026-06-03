@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
-import { validateCloudflaredApiRouting } from './cloudflared-api-gateway-check.mjs';
+import {
+  validateCloudflaredApiRouting,
+  validateIngressDeprecation,
+} from './cloudflared-api-gateway-check.mjs';
 
 describe('cloudflared-api-gateway-check', () => {
   it('accepts expected public API routing', () => {
@@ -43,5 +46,15 @@ describe('cloudflared-api-gateway-check', () => {
       '    service: http://compliance-gateway.gtcx.svc.cluster.local:8500',
     ].join('\n');
     assert.ok(validateCloudflaredApiRouting(wrongService).some((f) => f.includes('baselineos:3141')));
+  });
+
+  it('accepts deprecated ingress annotation', () => {
+    const text = '# DEPRECATED: api.gtcx.trade is migrating to Cloudflare Tunnel';
+    assert.deepEqual(validateIngressDeprecation(text), []);
+  });
+
+  it('rejects ingress missing deprecation annotation', () => {
+    const text = 'apiVersion: networking.k8s.io/v1\nkind: Ingress';
+    assert.ok(validateIngressDeprecation(text).some((f) => f.includes('deprecation')));
   });
 });

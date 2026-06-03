@@ -1,6 +1,6 @@
 ---
 title: 'From gtcx-infrastructure — AGX staging ARM64-only blocker'
-status: resolved
+status: closed
 date: 2026-06-03
 owner: gtcx-infrastructure
 to: gtcx-platforms

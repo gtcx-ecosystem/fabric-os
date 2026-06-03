@@ -1,0 +1,79 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrate-tradepass-identities
+  namespace: gtcx-staging
+  labels:
+    app: migrate-tradepass-identities
+    environment: staging
+spec:
+  ttlSecondsAfterFinished: 3600
+  template:
+    metadata:
+      labels:
+        app: migrate-tradepass-identities
+        environment: staging
+    spec:
+      restartPolicy: OnFailure
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: pg-migrate
+          image: postgres:15-alpine
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Running tradepass_identities migration..."
+              DB_URL="$(echo "$DATABASE_URL" | sed 's/?.*//')"
+              export PGSSLMODE=require
+
+              psql "$DB_URL" -c "
+                CREATE TABLE IF NOT EXISTS tradepass_identities (
+                  did               VARCHAR(256) PRIMARY KEY,
+                  trade_pass_id     VARCHAR(64)  NOT NULL,
+                  name              VARCHAR(256) NOT NULL,
+                  role              VARCHAR(64)  NOT NULL,
+                  jurisdiction      VARCHAR(8)   NOT NULL,
+                  public_key        VARCHAR(128) NOT NULL,
+                  status            VARCHAR(32)  NOT NULL DEFAULT 'pending',
+                  identity_json     JSONB        NOT NULL,
+                  kyc_document_type VARCHAR(64),
+                  kyc_document_ref  VARCHAR(512),
+                  kyc_document_status VARCHAR(16),
+                  kyc_verified_at   TIMESTAMPTZ,
+                  created_at        TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
+                  updated_at        TIMESTAMPTZ  NOT NULL DEFAULT NOW()
+                );
+
+                CREATE INDEX IF NOT EXISTS idx_tradepass_identities_trade_pass_id ON tradepass_identities(trade_pass_id);
+                CREATE INDEX IF NOT EXISTS idx_tradepass_identities_jurisdiction ON tradepass_identities(jurisdiction);
+                CREATE INDEX IF NOT EXISTS idx_tradepass_identities_status ON tradepass_identities(status);
+                CREATE INDEX IF NOT EXISTS idx_tradepass_identities_kyc_status ON tradepass_identities(kyc_document_status);
+
+                SELECT 'tradepass_identities table created successfully' as result;
+              "
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-secrets-staging-cdkk972mcc
+                  key: DATABASE_URL
+            - name: PGSSLMODE
+              value: 'require'
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              memory: '64Mi'
+              cpu: '50m'
+            limits:
+              memory: '128Mi'
+              cpu: '100m'

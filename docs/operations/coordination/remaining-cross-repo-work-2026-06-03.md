@@ -18,17 +18,17 @@ to: baseline-os coordination hub + sibling repos
 
 ## Summary
 
-| Category                                    | Open | P0 this week | Infra action required                    |
-| ------------------------------------------- | ---: | :----------- | ---------------------------------------- |
-| Staging Track A (operator DID + SM)         |    0 | No           | **DONE** — monitor only                  |
-| Staging Track B (intelligence auth)         |    0 | No           | **DONE** — monitor only                  |
-| EAP auth-keys ESO sync (CORE-001)           |    0 | No           | **DONE** — ESO refreshed, pods restarted |
-| Platforms staging (sovereign + AGX)         |    2 | No           | Rollout when image pushed                |
-| Exploration blockers (verifier + Supabase)  |    2 | No           | External actions (CF admin + ops)        |
-| INF-86 sovereign pilot                      |    2 | No           | **HOLD** — human-gated                   |
-| W2 licence intelligence                     |    1 | No           | Provide secrets if asked                 |
-| P22 agent ergonomics                        |    0 | No           | **DONE** — P22/P26/P27 checks in CI      |
-| Coordination gaps (terra-os, hardware, ops) |    0 | No           | **DONE** — flagged to baseline-os        |
+| Category                                    | Open | P0 this week | Infra action required                          |
+| ------------------------------------------- | ---: | :----------- | ---------------------------------------------- |
+| Staging Track A (operator DID + SM)         |    0 | No           | **DONE** — monitor only                        |
+| Staging Track B (intelligence auth)         |    0 | No           | **DONE** — monitor only                        |
+| EAP auth-keys ESO sync (CORE-001)           |    0 | No           | **DONE** — ESO refreshed, pods restarted       |
+| Platforms staging (sovereign + AGX)         |    0 | No           | **DONE** — sovereign health 200, table created |
+| Exploration blockers (verifier + Supabase)  |    2 | No           | External actions (CF admin + ops)              |
+| INF-86 sovereign pilot                      |    2 | No           | **HOLD** — human-gated                         |
+| W2 licence intelligence                     |    1 | No           | Provide secrets if asked                       |
+| P22 agent ergonomics                        |    0 | No           | **DONE** — P22/P26/P27 checks in CI            |
+| Coordination gaps (terra-os, hardware, ops) |    0 | No           | **DONE** — flagged to baseline-os              |
 
 ---
 

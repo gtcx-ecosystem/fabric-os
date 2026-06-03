@@ -68,10 +68,11 @@ secretGenerator:
       - SECRET_KEY_BASE=PLACEHOLDER_OVERRIDE_IN_OVERLAY
       - COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON=[]
       - ANTHROPIC_API_KEY=PLACEHOLDER_OVERRIDE_IN_OVERLAY
-  - name: compliance-gateway-audit-key
-    type: Opaque
-    literals:
-      - AUDIT_SIGNING_KEY_B64=PLACEHOLDER_OVERRIDE_IN_OVERLAY
+  # REMOVED: compliance-gateway-audit-key stub secret.
+  # Overlays MUST provide their own audit-key secret with a `gtcx-` prefix
+  # to avoid kustomize secretGenerator hash-suffix collision.
+  # Pattern: gtcx-compliance-gateway-audit-key-<environment>
+  # See: docs/operations/runbooks/kustomize-secret-collision-pattern.md
 
 # =============================================================
 # Image tags — base uses v0.1.0 as floor version.

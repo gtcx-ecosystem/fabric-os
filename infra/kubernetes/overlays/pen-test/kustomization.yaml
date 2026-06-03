@@ -40,7 +40,7 @@ patches:
           - name: AUDIT_SIGNING_KEY_B64
             valueFrom:
               secretKeyRef:
-                name: compliance-gateway-audit-key
+                name: gtcx-compliance-gateway-audit-key-pen-test
                 key: AUDIT_SIGNING_KEY_B64
           - name: COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON
             valueFrom:

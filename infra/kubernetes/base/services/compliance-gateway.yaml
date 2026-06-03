@@ -127,8 +127,10 @@ spec:
             # records roll over to a checkpoint hash beyond this count.
             - name: AUDIT_CHAIN_MAX_RECORDS
               value: '10000'
-            # Audit signing key. Mounted from a sealed Secret per overlay.
-            # In production the gateway exits 78 (EX_CONFIG) if absent.
+            # Audit signing key. Overlays MUST provide their own secret.
+            # Use gtcx-compliance-gateway-audit-key-<environment> to avoid
+            # kustomize secretGenerator hash-suffix collision.
+            # See: docs/operations/runbooks/kustomize-secret-collision-pattern.md
             - name: AUDIT_SIGNING_KEY_B64
               valueFrom:
                 secretKeyRef:

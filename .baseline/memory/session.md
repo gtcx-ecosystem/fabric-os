@@ -1,6 +1,6 @@
 # Session State
 
-> **Last updated:** 2026-06-04T23:50+02:00
+> **Last updated:** 2026-06-05T00:15+02:00
 > **Agent:** platform-architect (development frame)
 > **Protocol compliance:** P22, P26, P27, P28 active
 > **Current sprint:** Sprint 1 — Infra Hardening (2026-06-04 → 2026-06-11)
@@ -34,7 +34,7 @@
 | S1-08 | ER-1-08 infra hub log row | `done` | — |
 | S1-09 | Lint debt (compliance-gateway) | `done` (`d78cb7b`) | 0 errors; ~21 no-console warnings remain in tests |
 | S1-09b | Lint scripts — all workspace packages | `done` (`a95d554`) | 14 packages, 0 errors, only no-console warnings |
-| S1-10 | Coverage honesty | `pending` | Branch coverage 86.1% (gate 85%); audit wants ≥90% for +1.0 uplift |
+| S1-10 | Coverage honesty | `done` (`3962176`) | Branch coverage 90.03% (gate 85%, audit target 90%) |
 
 ---
 

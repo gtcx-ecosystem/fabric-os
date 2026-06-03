@@ -85,7 +85,7 @@ resource "aws_route53_record" "host" {
 
 resource "aws_route53_record" "acm_validation" {
   for_each = {
-    for r in var.acm_validation_records : r.name => r
+    for r in var.acm_validation_records : r.name => r...
   }
 
   zone_id = data.aws_route53_zone.apex.zone_id

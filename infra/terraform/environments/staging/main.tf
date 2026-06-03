@@ -234,11 +234,12 @@ module "vpc" {
 module "database" {
   source = "../../modules/database"
 
-  environment       = var.environment
-  vpc_id            = module.vpc.vpc_id
-  subnet_ids        = module.vpc.database_subnet_ids
-  instance_class    = var.db_instance_class
-  allocated_storage = var.db_allocated_storage
+  environment             = var.environment
+  vpc_id                  = module.vpc.vpc_id
+  subnet_ids              = module.vpc.database_subnet_ids
+  instance_class          = var.db_instance_class
+  allocated_storage       = var.db_allocated_storage
+  allowed_security_groups = [module.eks.node_security_group_id]
 
   tags = merge(var.tags, {
     Environment = "staging"
@@ -375,10 +376,11 @@ resource "aws_eks_access_policy_association" "ci_deploy_admin" {
 module "waf" {
   source = "../../modules/waf"
 
-  name_prefix = "gtcx-staging"
-  scope       = "REGIONAL"
-  rate_limit  = 500 # 100/min for staging (TradePass Wire #2 §10.1)
-  aws_region  = var.region
+  name_prefix       = "gtcx-staging"
+  scope             = "REGIONAL"
+  rate_limit        = 500 # 100/min for staging (TradePass Wire #2 §10.1)
+  aws_region        = var.region
+  allow_audit_paths = true
 }
 
 # -----------------------------------------------------------------------------

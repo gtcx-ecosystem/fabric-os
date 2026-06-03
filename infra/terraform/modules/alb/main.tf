@@ -154,6 +154,8 @@ resource "aws_iam_role_policy" "alb_controller" {
           "elasticloadbalancing:ModifyRule",
           "elasticloadbalancing:RegisterTargets",
           "elasticloadbalancing:DeregisterTargets",
+          "elasticloadbalancing:AddListenerCertificates",
+          "elasticloadbalancing:RemoveListenerCertificates",
           "elasticloadbalancing:SetWebAcl",
           "elasticloadbalancing:SetSecurityGroups",
           "elasticloadbalancing:SetSubnets",

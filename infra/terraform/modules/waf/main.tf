@@ -37,6 +37,12 @@ variable "allow_health_path" {
   default     = true
 }
 
+variable "allow_audit_paths" {
+  description = "Allow /audit and /v1/tradepass without Bot Control blocking (mobile E2E, default fetch UA)"
+  type        = bool
+  default     = false
+}
+
 resource "aws_wafv2_web_acl" "main" {
   name        = "${var.name_prefix}-waf-${var.aws_region}"
   description = "OWASP CRS + BotControl + RateLimit for ${var.name_prefix}"
@@ -79,10 +85,62 @@ resource "aws_wafv2_web_acl" "main" {
     }
   }
 
+  # Audit and TradePass endpoints: allow non-browser UAs (mobile E2E, default fetch).
+  # Must run before BotControl and CommonRuleSet so API calls with Bearer tokens
+  # return JSON 401/200 instead of HTML 403.
+  dynamic "rule" {
+    for_each = var.allow_audit_paths ? [1] : []
+    content {
+      name     = "AllowAuditAndTradePassEndpoints"
+      priority = 1
+
+      action {
+        allow {}
+      }
+
+      statement {
+        or_statement {
+          statement {
+            byte_match_statement {
+              search_string         = "/audit"
+              positional_constraint = "STARTS_WITH"
+              field_to_match {
+                uri_path {}
+              }
+              text_transformation {
+                priority = 0
+                type     = "LOWERCASE"
+              }
+            }
+          }
+          statement {
+            byte_match_statement {
+              search_string         = "/v1/tradepass"
+              positional_constraint = "STARTS_WITH"
+              field_to_match {
+                uri_path {}
+              }
+              text_transformation {
+                priority = 0
+                type     = "LOWERCASE"
+              }
+            }
+          }
+        }
+      }
+
+      visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name                = "AllowAuditAndTradePassMetric"
+        sampled_requests_enabled   = true
+      }
+    }
+  }
+
   # AWS Managed Rule: OWASP Core Rule Set
   rule {
     name     = "AWSManagedRulesCommonRuleSet"
-    priority = 1
+    priority = 2
     override_action {
       none {}
     }
@@ -102,7 +160,7 @@ resource "aws_wafv2_web_acl" "main" {
   # AWS Managed Rule: Known Bad Inputs
   rule {
     name     = "AWSManagedRulesKnownBadInputsRuleSet"
-    priority = 2
+    priority = 3
     override_action {
       none {}
     }
@@ -122,7 +180,7 @@ resource "aws_wafv2_web_acl" "main" {
   # Rate Limiting — per IP
   rule {
     name     = "RateLimitPerIP"
-    priority = 3
+    priority = 4
     action {
       block {}
     }
@@ -142,7 +200,7 @@ resource "aws_wafv2_web_acl" "main" {
   # AWS Managed Rule: Bot Control (optional, lower priority)
   rule {
     name     = "AWSManagedRulesBotControlRuleSet"
-    priority = 4
+    priority = 5
     override_action {
       none {}
     }

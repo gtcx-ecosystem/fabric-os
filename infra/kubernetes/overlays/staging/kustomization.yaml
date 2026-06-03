@@ -59,7 +59,8 @@ images:
   # NOTE: Original audit-tradepass-auth tag was ARM64-only; rebuilt as audit-tradepass-auth-amd64.
   - name: 348389439381.dkr.ecr.af-south-1.amazonaws.com/compliance-gateway
     newTag: audit-tradepass-auth-amd64
-  - name: 348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-sovereign
+  - name: gtcx/sovereign
+    newName: 348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-sovereign
     newTag: staging
 
 # Staging resource limits (moderate)
@@ -141,7 +142,17 @@ patches:
     target:
       kind: HorizontalPodAutoscaler
       name: gtcx-protocols
-  - path: patches/sovereign-staging-envfrom.yaml
+  - patch: |-
+      - op: replace
+        path: /data/NATS_URL
+        value: "nats://gtcx-nats-staging.gtcx-staging.svc.cluster.local:4222"
+      - op: replace
+        path: /data/EVENT_BUS_DRIVER
+        value: "memory"
+    target:
+      kind: ConfigMap
+      name: gtcx-base-config
+  - path: patches/sovereign-staging-env.yaml
     target:
       kind: Deployment
       name: sovereign

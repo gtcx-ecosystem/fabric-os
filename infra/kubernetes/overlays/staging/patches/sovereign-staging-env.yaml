@@ -1,0 +1,46 @@
+# =============================================================================
+# Sovereign Staging — Runtime Environment
+# =============================================================================
+# Replaces the kustomize-generated hash-suffixed secret with a manually-managed
+# secret (prevents rollout regression when live secret is patched outside git).
+# Also adds staging-specific env vars not in the base ConfigMap.
+#
+# Required manual secret (create once, manage outside kustomize):
+#   kubectl create secret generic gtcx-sovereign-secrets-staging \
+#     --from-literal=DATABASE_URL='...' \
+#     --from-literal=SECRET_KEY_BASE='...' \
+#     --from-literal=TRADEPASS_JWT_SECRET='...' \
+#     -n gtcx-staging
+# =============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sovereign
+spec:
+  template:
+    spec:
+      containers:
+        - name: sovereign
+          envFrom:
+            - configMapRef:
+                name: gtcx-base-config
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-sovereign-secrets-staging
+                  key: DATABASE_URL
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-sovereign-secrets-staging
+                  key: SECRET_KEY_BASE
+            - name: TRADEPASS_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-sovereign-secrets-staging
+                  key: TRADEPASS_JWT_SECRET
+            - name: REDIS_URL
+              value: redis://redis-staging.gtcx-staging.svc.cluster.local:6379
+            - name: NODE_TLS_REJECT_UNAUTHORIZED
+              value: '0'

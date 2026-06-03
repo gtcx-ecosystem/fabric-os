@@ -32,6 +32,16 @@ variable "tags" {
   default     = {}
 }
 
+variable "service_account_subjects" {
+  description = "EKS service account subjects allowed to assume this role (system:serviceaccount:namespace:name)"
+  type        = list(string)
+  default = [
+    "system:serviceaccount:gtcx:gtcx-platforms",
+    "system:serviceaccount:gtcx:gtcx-platform",
+    "system:serviceaccount:gtcx-staging:gtcx-platform-staging",
+  ]
+}
+
 locals {
   common_tags = merge(var.tags, {
     Environment = var.environment
@@ -53,19 +63,21 @@ resource "aws_iam_role" "platforms" {
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
-    Statement = [{
-      Effect = "Allow"
-      Principal = {
-        Federated = var.oidc_provider_arn
-      }
-      Action = "sts:AssumeRoleWithWebIdentity"
-      Condition = {
-        StringEquals = {
-          "${var.oidc_provider_url}:sub" = "system:serviceaccount:gtcx:gtcx-platforms"
-          "${var.oidc_provider_url}:aud" = "sts.amazonaws.com"
+    Statement = [
+      for sub in var.service_account_subjects : {
+        Effect = "Allow"
+        Principal = {
+          Federated = var.oidc_provider_arn
+        }
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Condition = {
+          StringEquals = {
+            "${var.oidc_provider_url}:sub" = sub
+            "${var.oidc_provider_url}:aud" = "sts.amazonaws.com"
+          }
         }
       }
-    }]
+    ]
   })
 
   tags = local.common_tags

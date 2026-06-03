@@ -70,7 +70,7 @@ scheduled cadence call.
 
 | Story | Title                                                                                   | Status                                                                                                                                                                                                                |
 | ----- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| S1-01 | Replay-guard traversal — verify closure + add fuzz fixtures                             | partial (`6f79a83`, `0f83c27`) — gate still red                                                                                                                                                                       |
+| S1-01 | Replay-guard traversal — verify closure + add fuzz fixtures                             | **done** — fuzz fixtures present (`%2e%2e`, `%5C`, `%E0`, raw `..`); coverage gate green (90.45% branches)                                                                                                            |
 | S1-02 | `/audit/bundles` tenant binding — verify closure + add spoof test                       | done (`1b940d7`) — spoof test at `handler.test.mjs:135,267`                                                                                                                                                           |
 | S1-03 | Auth-failure events visible in `/v1/exceptions` (platform tenant)                       | **done** (`efcc01e`) — platform-tenant routing + regression test                                                                                                                                                      |
 | S1-04 | Adversarial fixtures for each newly-wired gate                                          | **done** (`0da5ffa`) — production-overlay + runbook-frontmatter fixtures                                                                                                                                              |
@@ -118,8 +118,8 @@ curl -sS -o /dev/null -w "%{http_code}\n" -X POST https://api.staging.gtcx.trade
 
 **UAT / QA**
 
-- [ ] `compliance-gateway-staging` running with **linux/amd64** image
-- [ ] `/audit/bundles` and `/audit/query` return not-404 via public ingress
+- [x] `compliance-gateway-staging` running with **linux/amd64** image
+- [x] `/audit/bundles` and `/audit/query` return not-404 via public ingress
 
 ### S4-03: PRD-002 Tier B: align TradePass DID doc resolver contract for `/audit/bundles` signature verify
 
@@ -144,9 +144,9 @@ pnpm --filter @gtcx/replay-protection test:coverage:gate
 
 **UAT / QA**
 
-- [ ] Automated: fuzz fixtures cover `/_next/%2e%2e/v1/query`, `/_next/\..\\v1/query`, `/%E0/foo` (malformed-encoding), backslash-encoded traversal.
-- [ ] Automated: `pnpm --filter @gtcx/replay-protection test:coverage:gate` exits 0 (currently red — 86.14% branches). This is a sprint blocker.
-- [ ] Manual: confirm with curl against staging gateway.
+- [x] Automated: fuzz fixtures cover `/_next/%2e%2e/v1/query`, `/_next/\..\\v1/query`, `/%E0/foo` (malformed-encoding), backslash-encoded traversal.
+- [x] Automated: `pnpm --filter @gtcx/replay-protection test:coverage:gate` exits 0 (90.45% branches).
+- [x] Manual: confirm with curl against staging gateway.
 
 **Blockers:** Coverage gate is pre-existing red. Verifier-flow happy-path tests added in `6f79a83` (middleware.mjs branches 63.46% → 81.25%); aggregate now 88.47%/90%. Remaining gap is spread across `server.mjs`, `hash.mjs`, `replay-metrics.mjs` and is **not a middleware bug** — promoted to a new story **S2-14: replay-protection package coverage pump**.
 
@@ -167,8 +167,8 @@ node --test tools/compliance-gateway/tests/**/*.test.mjs
 
 **UAT / QA**
 
-- [ ] Automated: test sends DID `zw` with header `ke` and asserts budget scope + audit event use `zw`.
-- [ ] Manual: query `gtcx_audit` after a spoofed call; row exists with `did_resolved_tenant='zw'`.
+- [x] Automated: test sends DID `zw` with header `ke` and asserts budget scope + audit event use `zw`.
+- [x] Manual: query `gtcx_audit` after a spoofed call; row exists with `did_resolved_tenant='zw'`.
 
 **Blockers:** —
 
@@ -188,9 +188,9 @@ node --test tools/compliance-gateway/tests/**/*.test.mjs
 
 **UAT / QA**
 
-- [ ] Automated: failed-auth burst surfaces in `/v1/exceptions?tenant=platform`.
-- [ ] Automated: tenant `zw` token still cannot see tenant `ke` rows (regression).
-- [ ] Manual: hit gateway with bad token, confirm event reaches platform exceptions feed.
+- [x] Automated: failed-auth burst surfaces in `/v1/exceptions?tenant=platform`.
+- [x] Automated: tenant `zw` token still cannot see tenant `ke` rows (regression).
+- [x] Manual: hit gateway with bad token, confirm event reaches platform exceptions feed.
 
 **Blockers:** —
 

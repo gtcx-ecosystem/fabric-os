@@ -45,6 +45,7 @@ protocol: gtcx-docs/docs/governance/protocols/24-cross-repo-coordination/protoco
 | When (UTC) | Agent / repo        | Update                                                                                                                                                                                                      |
 | ---------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 2026-06-03 | gtcx-infrastructure | **XR-201 finding:** `intelligence-orchestrator` Deployment manifest is **missing** from infra repo. ESO/ingress/secrets all live. Need gtcx-intelligence to provide full SDK image + manifest. See runbook. |
+| 2026-06-03 | gtcx-infrastructure | **XR-202 READY:** Outbound handoff created for intelligence re-smoke. Full env spec + caveats in `outbound-handoff-xr-202-to-intelligence.md`.                                                              |
 | 2026-06-03 | gtcx-infrastructure | **XR-201 DONE:** Full intelligence SDK `12be5342` deployed to staging. Auth enforced on non-exempt paths. `/health` 200 by design (ALB health check); `/policy/rules` 401→200 with key.                     |
 | 2026-06-03 | gtcx-infrastructure | Coordination hub expanded: bridge + sprint workplan + outbound handoffs created. XR schemes reconciled (protocols canonical).                                                                               |
 | 2026-06-03 | gtcx-platforms      | XR-301/302: ECR rollout outbound to infra; `main` 8 commits ahead of origin (push before CI ECR workflow). Sovereign external `/health` → 526 (edge).                                                       |
@@ -191,6 +192,7 @@ Witness only until XR-507 + XR-508 unblocked. Supabase paused; verifier needs DN
 
 - Protocols → infra staging operator seed: [`from-gtcx-protocols-staging-operator-seed-2026-06-02.md`](from-gtcx-protocols-staging-operator-seed-2026-06-02.md)
 - Infra → intelligence Track B: [`to-gtcx-intelligence-track-b-auth-2026-06-03.md`](to-gtcx-intelligence-track-b-auth-2026-06-03.md)
+- Infra → intelligence XR-202 handoff: [`outbound-handoff-xr-202-to-intelligence.md`](outbound-handoff-xr-202-to-intelligence.md)
 - Infra → platforms rollout: [`to-gtcx-platforms-rollout-ready-2026-06-03.md`](to-gtcx-platforms-rollout-ready-2026-06-03.md)
 - Key ceremony runbook: `docs/security/key-ceremony-runbook.md`
 - Protocols sprint workplan: `gtcx-protocols/docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md`

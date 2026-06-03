@@ -51,3 +51,5 @@ Append **newest entries at the top** of the table below. One row per meaningful 
 - When logging **done** for an `XR-*`, update [`README.md`](README.md) and [`cross-repo-agent-bridge.md`](cross-repo-agent-bridge.md) status columns in the same action.
 - Mirror P0 **done/blocked** to protocols ecosystem log when it affects other repos.
 - Archive when >50 entries → `cross-repo-agent-log-archive-YYYY-MM.md`.
+
+- **2026-06-03T09:12Z** — `XR-202 outbound` — **READY** — Handoff created `outbound-handoff-xr-202-to-intelligence.md` unblocking intelligence re-smoke. Ref: `d826393`.

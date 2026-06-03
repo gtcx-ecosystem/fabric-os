@@ -53,3 +53,5 @@ Append **newest entries at the top** of the table below. One row per meaningful 
 - Archive when >50 entries → `cross-repo-agent-log-archive-YYYY-MM.md`.
 
 - **2026-06-03T09:12Z** — `XR-202 outbound` — **READY** — Handoff created `outbound-handoff-xr-202-to-intelligence.md` unblocking intelligence re-smoke. Ref: `d826393`.
+
+- **2026-06-03T09:20Z** — `XR-104` — **BLOCKED** — compliance-gateway DID resolve returns 401; needs TradePass Bearer auth + audit signing secret rollout. Blocks MOBILE-AUDIT-01 signed ingest. Discovered during mobile E2E. Ref: mobile bridge `to-gtcx-infrastructure-compliance-gateway-tradepass-auth-2026-06-03.md`.

@@ -64,7 +64,8 @@ protocol: gtcx-docs/docs/governance/protocols/24-cross-repo-coordination/protoco
 | Track                       | XR-ID  | Status               | Owner                  | Unblocks           | Risk   |
 | --------------------------- | ------ | -------------------- | ---------------------- | ------------------ | ------ |
 | Operator DID / mobile audit | XR-101 | **done**             | gtcx-infrastructure    | Mobile E2E         | —      |
-| Mobile staging audit E2E    | XR-102 | **ready**            | gtcx-mobile            | MOBILE-AUDIT-01/02 | R-high |
+| Mobile staging audit E2E    | XR-102 | **blocked**          | gtcx-mobile            | MOBILE-AUDIT-01/02 | R-high |
+| compliance-gateway Bearer   | XR-104 | **blocked**          | gtcx-infrastructure    | XR-102             | R-high |
 | Intelligence auth gate      | XR-201 | **done**             | gtcx-infrastructure    | XR-202 / INT-S3-08 | R-high |
 | Intelligence re-smoke       | XR-202 | **ready**            | gtcx-intelligence      | Protocols mirror   | R-high |
 | Sovereign staging image     | XR-301 | **ready**            | gtcx-platforms → infra | P4-07 smoke        | R-med  |
@@ -77,9 +78,9 @@ protocol: gtcx-docs/docs/governance/protocols/24-cross-repo-coordination/protoco
 **Critical path today:**
 
 ```
-XR-202 (intelligence re-smoke)
+XR-104 (infra gateway) → XR-102 (mobile E2E)
       ‖ parallel
-XR-102 (mobile SM → E2E)
+XR-202 (intelligence re-smoke)
       ‖ parallel
 XR-301/302 (platforms ECR → infra rollout)
 ```
@@ -153,23 +154,25 @@ See [`cross-repo-sprint-workplan-2026-06.md`](cross-repo-sprint-workplan-2026-06
 
 ### gtcx-infrastructure
 
-Track B + INF-86 pilot remain. Confirm intelligence auth gate; ping intelligence for re-smoke. See outbound [`to-gtcx-intelligence-track-b-auth-2026-06-03.md`](to-gtcx-intelligence-track-b-auth-2026-06-03.md).
+- **XR-201 DONE** — full SDK deployed; auth enforced. XR-202 handoff sent to intelligence.
+- **XR-104 BLOCKED** — compliance-gateway DID resolve 401; needs TradePass Bearer + audit signing secret rollout. Blocks mobile signed ingest.
+- **INF-86 pilot** — HOLD awaiting CISO algorithm sign-off.
 
 ### gtcx-mobile
 
-Track A done — load SM `gtcx/staging/mobile-audit-e2e-credentials`, run `pnpm staging:audit-e2e`. No intelligence action.
+Track A done. **MOBILE-AUDIT-01 blocked on XR-104** (infra compliance-gateway). Load SM when XR-104 resolved.
 
 ### gtcx-intelligence
 
-Wait for infra Track B ping → vault re-smoke → log entry + optional protocols mirror.
+**XR-202 READY** — handoff received; run vault smoke + commit evidence. `/health` 200 is by design.
 
 ### gtcx-protocols
 
-No code until intelligence smoke or INF-86 ceremony output. Optional mirror on new evidence JSON.
+XR-201 reconciled (done). No code until XR-202 evidence or INF-86 ceremony output.
 
 ### gtcx-platforms
 
-Push sovereign + AGX staging images; request infra rollout. See inbound [`to-gtcx-platforms-rollout-ready-2026-06-03.md`](to-gtcx-platforms-rollout-ready-2026-06-03.md).
+Push sovereign + AGX staging images; request infra rollout. Sovereign `/health` → 526 (edge).
 
 ### exploration-os
 

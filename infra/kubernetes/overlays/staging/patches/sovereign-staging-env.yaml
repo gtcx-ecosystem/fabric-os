@@ -50,3 +50,5 @@ spec:
               value: alias/gtcx-production-sovereign-gh-bog
             - name: AWS_REGION
               value: af-south-1
+            - name: AWS_KMS_SIGNING_ALGORITHM
+              value: ECDSA_SHA_256

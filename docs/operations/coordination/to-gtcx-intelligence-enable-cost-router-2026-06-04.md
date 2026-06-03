@@ -2,6 +2,7 @@
 title: 'Outbound — ENABLE_COST_ROUTER unblocks INT-S8-01'
 status: ready
 date: 2026-06-04
+owner: gtcx-infrastructure
 from: gtcx-infrastructure
 to: gtcx-intelligence
 work_id: INT-R2-03 / INT-S8-01 / ER-2

@@ -1,10 +1,11 @@
 ---
 title: 'XR-405 Rollout Complete — Sovereign Staging KMS Signing'
+status: done
 date: 2026-06-04
+owner: gtcx-infrastructure
 from: gtcx-infrastructure
 to: gtcx-platforms
 item: XR-405
-status: done
 ---
 
 # XR-405 Rollout Complete — Sovereign Staging KMS Signing

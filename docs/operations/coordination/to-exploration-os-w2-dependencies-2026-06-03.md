@@ -2,6 +2,7 @@
 title: 'Outbound — ExplorationOS W2 + verifier dependencies resolved/tracked'
 status: current
 date: 2026-06-03
+owner: gtcx-infrastructure
 from: gtcx-infrastructure
 to: exploration-os
 priority: P1

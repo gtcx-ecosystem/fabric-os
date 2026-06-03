@@ -2,6 +2,7 @@
 title: 'Inbound copy — W2 secrets (exploration-os consumer, hub #17.1)'
 status: current
 date: 2026-06-05
+owner: gtcx-infrastructure
 from: exploration-os
 to: gtcx-infrastructure
 hub_blocker: 17

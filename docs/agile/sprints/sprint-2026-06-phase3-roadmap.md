@@ -1,5 +1,6 @@
 ---
 title: 'Sprint Phase 3 — June 2026: Hardening + External Readiness (Revamped)'
+status: current
 date: 2026-06-05
 owner: gtcx-infrastructure
 role: platform-architect

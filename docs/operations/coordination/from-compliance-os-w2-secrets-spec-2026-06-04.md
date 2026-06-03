@@ -2,6 +2,7 @@
 title: 'Inbound — W2 hub #17 secrets spec (from compliance-os)'
 status: received
 date: 2026-06-05
+owner: gtcx-infrastructure
 from: compliance-os
 to: gtcx-infrastructure
 priority: P1
@@ -12,7 +13,7 @@ responds_to_commit: 77dfa9b
 # Inbound received — W2 prod secrets
 
 **Full specification (canonical):**  
-[`compliance-os/docs/operations/coordination/to-gtcx-infrastructure-w2-secrets-inbound-2026-06-04.md`](../../../compliance-os/docs/operations/coordination/to-gtcx-infrastructure-w2-secrets-inbound-2026-06-04.md)
+`compliance-os/docs/operations/coordination/to-gtcx-infrastructure-w2-secrets-inbound-2026-06-04.md`
 
 **Hub copy:** `baseline-os/workstream/coordination/inbound/from-compliance-os-w2-secrets-spec-2026-06-04.md`
 

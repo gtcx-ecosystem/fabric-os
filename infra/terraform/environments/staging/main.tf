@@ -427,6 +427,30 @@ module "audit_flush_irsa" {
 }
 
 # -----------------------------------------------------------------------------
+# Platforms IRSA (INF-86 / XR-405)
+# -----------------------------------------------------------------------------
+# This role was originally created via AWS CLI during the INF-86 ceremony.
+# Imported into Terraform state to prevent drift.
+# Trusts only the staging service account to match current AWS state.
+
+module "irsa_platform" {
+  source = "../../modules/irsa-platform"
+
+  environment             = var.environment
+  oidc_provider_arn       = module.eks.oidc_provider_arn
+  oidc_provider_url       = replace(module.eks.oidc_provider_url, "https://", "")
+  kms_signing_key_arn     = "arn:aws:kms:af-south-1:348389439381:key/d44106a0-cb37-4225-b84d-bb8105eaaca5"
+  service_account_subjects = [
+    "system:serviceaccount:gtcx-staging:gtcx-platform-staging",
+  ]
+
+  tags = merge(var.tags, {
+    Environment = "staging"
+    Component   = "platforms"
+  })
+}
+
+# -----------------------------------------------------------------------------
 # Secrets (Secrets Manager + External Secrets Operator + intelligence IRSA)
 # -----------------------------------------------------------------------------
 # Installs ESO on gtcx-staging and syncs SM → K8s secret intelligence-secrets.
@@ -527,6 +551,11 @@ output "worm_audit_kms_key_arn" {
 output "audit_flush_role_arn" {
   description = "IAM role ARN to annotate the audit-flush ServiceAccount with"
   value       = module.audit_flush_irsa.role_arn
+}
+
+output "platforms_role_arn" {
+  description = "IAM role ARN for gtcx-platforms IRSA (INF-86)"
+  value       = module.irsa_platform.platforms_role_arn
 }
 
 output "acm_certificate_arn" {

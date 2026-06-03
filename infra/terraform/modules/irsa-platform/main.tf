@@ -84,6 +84,7 @@ resource "aws_iam_role" "platforms" {
 }
 
 # KMS signing permissions for gtcx-platforms (attached only if key ARN provided)
+# Split into two statements: Sign requires algorithm condition; GetPublicKey/DescribeKey do not.
 resource "aws_iam_role_policy" "platforms_kms" {
   count = var.kms_signing_key_arn != "" ? 1 : 0
 
@@ -92,21 +93,30 @@ resource "aws_iam_role_policy" "platforms_kms" {
 
   policy = jsonencode({
     Version = "2012-10-17"
-    Statement = [{
-      Sid    = "AllowKmsSign"
-      Effect = "Allow"
-      Action = [
-        "kms:Sign",
-        "kms:GetPublicKey",
-        "kms:DescribeKey",
-      ]
-      Resource = var.kms_signing_key_arn
-      Condition = {
-        StringEquals = {
-          "kms:SigningAlgorithm" = "ECDSA_SHA_256"
+    Statement = [
+      {
+        Sid    = "AllowKmsSign"
+        Effect = "Allow"
+        Action = [
+          "kms:Sign",
+        ]
+        Resource = var.kms_signing_key_arn
+        Condition = {
+          StringEquals = {
+            "kms:SigningAlgorithm" = "ECDSA_SHA_256"
+          }
         }
-      }
-    }]
+      },
+      {
+        Sid    = "AllowKmsGetPublicKeyAndDescribe"
+        Effect = "Allow"
+        Action = [
+          "kms:GetPublicKey",
+          "kms:DescribeKey",
+        ]
+        Resource = var.kms_signing_key_arn
+      },
+    ]
   })
 }
 

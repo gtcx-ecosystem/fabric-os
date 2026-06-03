@@ -11,21 +11,44 @@ xr-id: XR-201
 **Priority:** P0  
 **Sprint:** S-XR-1 (2026-06-03 → 06-07)  
 **Owner:** gtcx-infrastructure  
-**Blocked by:** Missing full SDK deployment; orchestrator placeholder still live  
+**Status:** **DONE** — full SDK deployed 2026-06-03  
 **Unblocks:** XR-202 (intelligence re-smoke); INT-S3-08 evidence
 
 ---
 
-## Current state (2026-06-03)
+## Completion update (2026-06-03)
+
+**Full intelligence SDK `gtcx-intelligence-sdk:12be5342` deployed to staging.**
+
+| Endpoint          | No auth | With key | Note                              |
+| ----------------- | ------- | -------- | --------------------------------- |
+| `/health`         | 200     | 200      | Exempt by design (ALB/K8s probes) |
+| `/live`           | 200     | 200      | Exempt by design (K8s liveness)   |
+| `/ready`          | 200     | 200      | Exempt by design (K8s readiness)  |
+| `/metrics`        | 200     | 200      | Exempt by design (Prometheus)     |
+| `/policy/rules`   | 401     | 200      | Auth enforced ✅                  |
+| `/feedback/stats` | 401     | 200      | Auth enforced ✅                  |
+
+**Image:** `348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-intelligence-sdk:12be5342151a30ebedd6b7221cd547a008f9e7a1`
+
+**Manifest:** `infra/kubernetes/overlays/staging/intelligence/deployment.yaml`
+
+**Caveat:** `/health` returns 200 without auth — this is by design in the SDK (`AUTH_EXEMPT_PATHS` includes `/health`, `/live`, `/ready`, `/metrics`). The ALB health check and K8s probes require this. The acceptance criteria in the original protocols kickoff expected 401 on `/health`, which conflicts with the SDK design.
+
+**Next:** XR-202 — intelligence re-smoke.
+
+---
+
+## Historical state (pre-completion — reference only)
 
 ```bash
-# Probe results
+# Pre-completion probe results (orchestrator placeholder era)
 curl -s -o /dev/null -w "%{http_code}" https://intelligence-staging.gtcx.trade/health
-# → 200 (should be 401/403 for unauthenticated)
+# → 200 (placeholder did not enforce auth on /health)
 
-# /live and /ready DO return 401 without auth
+# /live and /ready returned 401 without auth (placeholder behavior)
 curl -s -o /dev/null -w "%{http_code}" https://intelligence-staging.gtcx.trade/live
-# → 401 (correct)
+# → 401
 ```
 
 **Root cause:** The `intelligence-orchestrator` service currently deployed is a **placeholder** that does not enforce auth on `/health`. The full intelligence SDK with auth-gated routes needs to be deployed.

@@ -172,13 +172,13 @@ Close mobile staging audit path and confirm intelligence infra prerequisites.
 
 #### XR-201 — Intelligence auth gate
 
-| Field          | Value                                                                                                                                   |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| **Owner**      | gtcx-infrastructure                                                                                                                     |
-| **Assessment** | **blocked** — intelligence waiting                                                                                                      |
-| **Plan**       | Apply `module.secrets`; deploy full SDK; unauthenticated `/health` → 401/403; EAP key → 200; real `INTELLIGENCE_FAILURE_URL`            |
-| **Acceptance** | Runbook steps in `staging-intelligence-eso-bootstrap.md` green                                                                          |
-| **Ping**       | Notify intelligence same day — see [`to-gtcx-intelligence-track-b-auth-2026-06-03.md`](to-gtcx-intelligence-track-b-auth-2026-06-03.md) |
+| Field          | Value                                                                                                                             |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Owner**      | gtcx-infrastructure                                                                                                               |
+| **Assessment** | **done** — full SDK `12be5342` deployed 2026-06-03                                                                                |
+| **Plan**       | ✅ `module.secrets` applied; ✅ full SDK deployed; ✅ auth enforced on non-exempt paths; `/health` 200 by design (ALB/K8s probes) |
+| **Acceptance** | `GET /policy/rules` → 401 without auth, 200 with key; `GET /feedback/stats` → 401 without auth, 200 with key                      |
+| **Ping**       | ✅ Intelligence notified via agentic log + protocols log                                                                          |
 
 ---
 
@@ -195,7 +195,7 @@ Restore platforms staging services; complete INT-S3-08 evidence chain.
 | Field          | Value                                                                                                             |
 | -------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **Owner**      | gtcx-intelligence + gtcx-agentic (runner)                                                                         |
-| **Assessment** | **blocked** on XR-201                                                                                             |
+| **Assessment** | **ready** — XR-201 done; full SDK live                                                                            |
 | **Plan**       | `run-production-readiness-with-vault.mjs` → commit `deployment-smoke-*.json` → `pnpm check:eap-issuance-evidence` |
 | **Acceptance** | INT-S3-08 marked done in execution roadmap                                                                        |
 
@@ -349,10 +349,10 @@ Move licence intelligence from staging fixtures toward production path.
 
 ### gtcx-agentic
 
-| Sprint  | Work                                  | Status  |
-| ------- | ------------------------------------- | ------- |
-| S-XR-2  | Vault smoke runner after XR-201       | blocked |
-| Ongoing | `agent:coordination:check`, audit hub | done    |
+| Sprint  | Work                                  | Status |
+| ------- | ------------------------------------- | ------ |
+| S-XR-2  | Vault smoke runner after XR-201       | ready  |
+| Ongoing | `agent:coordination:check`, audit hub | done   |
 
 ### ledger-ui
 

@@ -21,7 +21,7 @@ to: baseline-os coordination hub + sibling repos
 | Category                                    | Open | P0 this week | Infra action required             |
 | ------------------------------------------- | ---: | :----------- | --------------------------------- |
 | Staging Track A (operator DID + SM)         |    0 | No           | **DONE** — monitor only           |
-| Staging Track B (intelligence auth)         |    1 | **Yes**      | Deploy full SDK + auth gate       |
+| Staging Track B (intelligence auth)         |    0 | No           | **DONE** — monitor only           |
 | Platforms staging (sovereign + AGX)         |    2 | No           | Rollout when image pushed         |
 | Exploration blockers (verifier + Supabase)  |    2 | No           | External actions (CF admin + ops) |
 | INF-86 sovereign pilot                      |    2 | No           | **HOLD** — human-gated            |

@@ -60,18 +60,18 @@ protocol: gtcx-docs/docs/governance/protocols/24-cross-repo-coordination/protoco
 
 ## Current snapshot (2026-06-03)
 
-| Track                       | XR-ID  | Status                | Owner                  | Unblocks           | Risk   |
-| --------------------------- | ------ | --------------------- | ---------------------- | ------------------ | ------ |
-| Operator DID / mobile audit | XR-101 | **done**              | gtcx-infrastructure    | Mobile E2E         | —      |
-| Mobile staging audit E2E    | XR-102 | **ready**             | gtcx-mobile            | MOBILE-AUDIT-01/02 | R-high |
-| Intelligence auth gate      | XR-201 | **done**              | gtcx-infrastructure    | XR-202 / INT-S3-08 | R-high |
-| Intelligence re-smoke       | XR-202 | **blocked** on XR-201 | gtcx-intelligence      | Protocols mirror   | R-high |
-| Sovereign staging image     | XR-301 | **ready**             | gtcx-platforms → infra | P4-07 smoke        | R-med  |
-| AGX staging `/api/*`        | XR-302 | **in-progress**       | gtcx-platforms → infra | Mobile API path    | R-med  |
-| INF-86 algorithm            | XR-401 | **blocked** (human)   | CISO + platform-lead   | XR-402–405         | R-high |
-| INF-86 pilot ceremony       | XR-402 | **hold**              | gtcx-infrastructure    | XR-403             | R-high |
-| SIR verifier prod           | XR-507 | **blocked** (DNS)     | gtcx-infrastructure    | F-33 audit close   | R-med  |
-| Supabase migrations         | XR-508 | **blocked** (paused)  | gtcx-infrastructure    | Financing prod     | R-med  |
+| Track                       | XR-ID  | Status               | Owner                  | Unblocks           | Risk   |
+| --------------------------- | ------ | -------------------- | ---------------------- | ------------------ | ------ |
+| Operator DID / mobile audit | XR-101 | **done**             | gtcx-infrastructure    | Mobile E2E         | —      |
+| Mobile staging audit E2E    | XR-102 | **ready**            | gtcx-mobile            | MOBILE-AUDIT-01/02 | R-high |
+| Intelligence auth gate      | XR-201 | **done**             | gtcx-infrastructure    | XR-202 / INT-S3-08 | R-high |
+| Intelligence re-smoke       | XR-202 | **ready**            | gtcx-intelligence      | Protocols mirror   | R-high |
+| Sovereign staging image     | XR-301 | **ready**            | gtcx-platforms → infra | P4-07 smoke        | R-med  |
+| AGX staging `/api/*`        | XR-302 | **in-progress**      | gtcx-platforms → infra | Mobile API path    | R-med  |
+| INF-86 algorithm            | XR-401 | **blocked** (human)  | CISO + platform-lead   | XR-402–405         | R-high |
+| INF-86 pilot ceremony       | XR-402 | **hold**             | gtcx-infrastructure    | XR-403             | R-high |
+| SIR verifier prod           | XR-507 | **blocked** (DNS)    | gtcx-infrastructure    | F-33 audit close   | R-med  |
+| Supabase migrations         | XR-508 | **blocked** (paused) | gtcx-infrastructure    | Financing prod     | R-med  |
 
 **Critical path today:**
 
@@ -88,9 +88,7 @@ XR-301/302 (platforms ECR → infra rollout)
 ## Infra critical path (today)
 
 ```text
-[P0] XR-201: Deploy full intelligence SDK + auth gate → ping intelligence
-       ↓
-  XR-202 unblocked → INT-S3-08 evidence committed
+[P0] XR-202: Intelligence re-smoke → commit evidence → ping agentic
        ↓
 [P1] XR-301/302: Rollout sovereign + AGX when platforms pushes image
        ↓
@@ -103,7 +101,7 @@ XR-301/302 (platforms ECR → infra rollout)
 
 | Priority | ID     | Owner                         | Next action                                                        | Infra unblocks when                                   |
 | -------- | ------ | ----------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------- |
-| **P0**   | XR-201 | **gtcx-infrastructure**       | Deploy full SDK; auth on `/health` → 401/403; EAP key → 200        | INT-S3-08 re-smoke green                              |
+| **P0**   | XR-202 | gtcx-intelligence             | Re-smoke with full SDK; commit `deployment-smoke-*.json`           | INT-S3-08 evidence committed                          |
 | **P1**   | XR-301 | gtcx-platforms → **infra**    | Rollout support when image pushed                                  | `sovereign-staging.gtcx.trade/health` not placeholder |
 | **P1**   | XR-302 | gtcx-platforms → **infra**    | Rollout support when image ready                                   | `api.staging.gtcx.trade/api/health` 200               |
 | **P1**   | XR-507 | **gtcx-infrastructure**       | Cloudflare DNS `verify.explorationos.gtcx.trade` (need zone:write) | F-33 audit close                                      |
@@ -119,7 +117,7 @@ XR-301/302 (platforms ECR → infra rollout)
 | Theme                               | Status                      | Infra action                                   |
 | ----------------------------------- | --------------------------- | ---------------------------------------------- |
 | Staging Track A (operator DID + SM) | **Done**                    | Monitor only                                   |
-| Staging Track B (intelligence auth) | **Open**                    | Deploy full SDK; ping intelligence             |
+| Staging Track B (intelligence auth) | **Done**                    | Monitor only; SDK `12be5342` deployed          |
 | Platforms sovereign + AGX           | **Open**                    | Rollout when image ready                       |
 | SIR verifier prod                   | **Blocked** (CF zone:write) | Escalate to CF admin or dashboard action       |
 | Supabase prod migrations            | **Blocked** (paused)        | Dashboard unpause required                     |

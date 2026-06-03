@@ -125,6 +125,7 @@ run(
 // =============================================================================
 section('Security Validators');
 
+run('Secret Scan', 'node tools/scripts/secret-scan-gate.mjs');
 run('Mesh Injection (prod)', 'node tools/scripts/verify-mesh-injection.mjs --namespace gtcx');
 run(
   'Mesh Injection (staging)',

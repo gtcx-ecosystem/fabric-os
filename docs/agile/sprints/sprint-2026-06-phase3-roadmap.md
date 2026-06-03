@@ -103,7 +103,7 @@ review_cycle: weekly
 | S1-08 | **ER-1-08 infra hub log row** — protocols ack                         | P2       | **`done`**    | infra  | `f8e1425` + `8c19a797` (protocols SoR) — all 5 repo acks complete                |
 | S1-09 | **Lint debt** — compliance-gateway ESLint + scripts                   | P1       | **`done`**    | infra  | `d78cb7b` + `a95d554` — 0 errors across 14 packages                              |
 | S1-10 | **Coverage honesty** — branch coverage ≥90%                           | P1       | **`done`**    | infra  | `3962176` — 90.03% branches, 92.9% statements, 90.82% functions                  |
-| S1-11 | **Secret scanning CI** — TruffleHog gate                              | P1       | `pending`     | devops | `validate-all.mjs` gate passes; zero live secrets in scan output                 |
+| S1-11 | **Secret scanning CI** — gitleaks gate                                | P1       | `done`        | devops | `secret-scan-gate.mjs` added; gitleaks clean; falls back to trufflehog           |
 | S1-12 | **Rate limiting** — `/audit/*` throttling with load-test              | P1       | `pending`     | infra  | Load-test evidence shows throttle at configured RPS                              |
 | S1-13 | **Runtime cross-repo integration tests** — health probes in CI        | P1       | `pending`     | infra  | CI job probes protocols/core/intelligence health; fails on ≥1 down               |
 

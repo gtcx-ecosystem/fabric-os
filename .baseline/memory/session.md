@@ -228,3 +228,134 @@ focus: "Baseline initialization — discovery and enrichment"
 - Resolve TODOs/FIXMEs flagged in pitfalls.md
 - Verify ecosystem dependencies in dependencies.md
 - Re-run `baseline-init` after significant repo changes
+
+## 2026-06-02 — Staging Infrastructure: Intelligence Secrets Module Unblocked
+
+## What Was Done
+- Resolved Terraform `module.secrets` apply failures caused by pre-existing AWS resources.
+- Imported 10 existing Secrets Manager secrets into Terraform state:
+  - `gtcx/intelligence/{anthropic,openai,comply-advantage}-{,sandbox-}api-key`
+  - `gtcx/intelligence/{provider-mode,provider-failure-target,database-url}`
+  - `gtcx/intelligence/staging/auth-keys`
+- Imported existing `aws_secretsmanager_secret_rotation.database_url` to resolve "previous rotation isn't complete" error.
+- Applied `module.secrets` successfully; created:
+  - `aws_iam_role` + `aws_iam_policy` for intelligence IRSA (`gtcx-staging-intelligence-secrets-role`)
+  - `aws_iam_role` + `aws_iam_policy` for EAP admin (`gtcx-staging-eap-admin`)
+  - Lambda rotation function + CloudWatch alarm for database URL
+  - ESO `SecretStore` (`intelligence-aws-secrets`) and `ExternalSecret` (`intelligence-secrets`) in `intelligence` namespace
+- Populated all empty secrets with placeholder values so External Secrets Operator could sync.
+- Verified `ExternalSecret` status: `Ready=True`, `SecretSynced`, 11 keys present in K8s secret `intelligence-secrets`.
+
+## Verification
+- `terraform apply -target=module.secrets` — apply complete; 0 added, 1 changed, 0 destroyed.
+- `kubectl get externalsecret intelligence-secrets -n intelligence` — Ready=True.
+- `kubectl get secret intelligence-secrets -n intelligence` — 11 data items.
+
+## Notes
+- Placeholder secret values are staging-only and must be replaced with real credentials before production traffic.
+- The `gtcx/intelligence/staging/auth-keys` secret holds `AUTH_API_KEYS` + `AUTH_KEY_ROLES` JSON for the orchestrator auth gate.
+- Cross-repo outbound ticket to `gtcx-core` for EAP auth-keys sync remains open until real key material is provisioned.
+- Next staging candidates: verify ESO service-account annotation on intelligence pods, run full `terraform plan` to clear remaining targeting warnings, or address AGX CrashLoopBackOff via `gtcx-platforms` outbound ticket.
+
+## 2026-06-02 — Staging Audit E2E Credentials (Mobile S2 Blocker)
+
+## What Was Done
+- Unblocked mobile audit E2E testing (MOBILE-AUDIT-01 / S4-03) by deploying a static DID resolver and provisioning credentials.
+- Created `did-resolver-staging` (nginx) in `gtcx-staging` namespace serving TradePass DID docs at `/v1/tradepass/:did`.
+- Seeded DID docs for `did:gtcx:tp_staging_e2e_001` (new E2E operator) and `did:gtcx:tp_zw_001` (legacy fixture).
+- Added `/v1/tradepass` ALB ingress route; cleaned up duplicate `gtcx-api` ingress causing listener rule priority conflicts.
+- Updated WAF module with `AllowAuditAndTradePassEndpoints` rule so default-fetch UA gets JSON 401/200 instead of HTML 403.
+- Fixed ALB controller IAM policy (`elasticloadbalancing:RemoveListenerCertificates` missing), restoring ingress reconciliation.
+- Generated Ed25519 keypair for `tp_staging_e2e_001`; public JWK in DID doc, private JWK stored in AWS Secrets Manager.
+- Provisioned AUDIT_TOKEN (`c09b7aa9a47d43e2888e630ff8ec91f5`) with `audit:read` permission in compliance-gateway auth config.
+- Stored all credentials in AWS Secrets Manager: `gtcx/staging/mobile-audit-e2e-credentials`.
+
+## Verification
+- `curl https://api.staging.gtcx.trade/v1/tradepass/did%3Agtcx%3Atp_staging_e2e_001` → 200 + verificationMethod
+- `curl -X POST /audit/query -H "Authorization: Bearer <AUDIT_TOKEN>"` → 200 + events[]
+- `curl -X POST /audit/query` (no token) → 401 JSON (not HTML 403)
+- All tests pass with default curl UA (WAF no longer blocks)
+
+## Files Modified
+- `infra/kubernetes/overlays/staging/ingress.yaml`
+- `infra/kubernetes/base/kustomization.yaml`
+- `infra/kubernetes/base/services/did-resolver/*` (new)
+- `infra/terraform/modules/waf/main.tf`
+- `infra/terraform/environments/staging/main.tf`
+- `infra/terraform/modules/alb/main.tf`
+- `docs/gtm/handoffs/staging-audit-e2e-credentials-2026-06-02.md` (new)
+
+## Notes
+- did-resolver is a temporary bridge until gtcx-protocols #60 lands.
+- Cross-repo outbound ticket to gtcx-protocols (DID resolver contract) remains open for canonical implementation.
+
+## 2026-06-02 — HSM Production Keys (#86 / protocols #61)
+
+## What Was Done
+- Created `infra/terraform/modules/kms-sovereign-signing/` — multi-key KMS signing module for sovereign authority DIDs.
+  - Supports 1..N authorities via `for_each`
+  - Per-authority: KMS key, alias, IAM policy, CloudWatch alarm, SSM parameters
+  - Least-privilege key policies with signing algorithm conditions
+  - `terraform validate` passes for module and production environment
+- Updated `infra/terraform/environments/production/main.tf` with `module.kms_sovereign_signing` pilot config (gh-bog).
+- Created execution plan: `docs/gtm/plans/inf-86-hsovereign-key-ceremony-execution-plan.md`
+  - Documents algorithm decision (ECC_NIST_P256 vs Ed25519/CloudHSM)
+  - Ceremony procedure for pilot + full 43-authority rollout
+  - DID document update handoff to protocols #61
+  - Rollback / emergency revocation steps
+  - Risk register with mitigations
+- Updated `docs/security/key-ceremony-runbook.md` with §5 Sovereign Authority Key Ceremony.
+
+## Verification
+- `terraform validate` — pass for `kms-sovereign-signing` module
+- `terraform validate` — pass for production environment with new module reference
+
+## Notes
+- Algorithm decision is BLOCKED on human approval: AWS KMS does not support Ed25519.
+  - Option A (default): ECC_NIST_P256 via KMS — requires DID doc schema change
+  - Option B: Ed25519 via CloudHSM — ~$2,100/month, no DID changes
+- Actual key ceremony requires dual custodians + witness + leadership approval.
+- Do NOT apply to production until algorithm decision and ceremony are approved.
+- Next step: CISO + platform-lead approve algorithm choice; schedule pilot ceremony.
+
+## 2026-06-03 — XR-104 Resolution + Ecosystem Coordination Sync
+
+### What Was Done
+- **XR-104 resolved:** compliance-gateway `audit-tradepass-auth-amd64` deployed to staging
+  - Fixed audit signing secret (Ed25519 PKCS#8 DER key)
+  - Rebuilt image for linux/amd64 (original was ARM64-only)
+  - Restored env vars after strategic merge patch wiped them
+  - Verified `/audit/bundles` → 400, `/audit/query` → 401, `/health` → 200
+- **S4-02 verified:** staging `/audit/*` endpoints reachable via public ingress
+- **S1-01 confirmed passing:** replay-protection coverage gate green (90.45% branches)
+- **Coordination sync:** Updated bridges + logs across 5 repos (infra, protocols, mobile, agentic, intelligence)
+  - XR-201: reconciled to DONE across all repos
+  - XR-104: marked DONE
+  - XR-102: marked READY
+- **AGX architecture blocker discovered:** `gtcx-agx:staging` is ARM64-only; handed off to platforms
+- **Docs-standard gate fixed:** Added README/index files and frontmatter to 9 docs
+- **Terraform committed:** WAF audit paths, ALB cert permissions, DB security groups, KMS sovereign signing module
+- **All 39 validation gates passing**
+
+### Files Modified
+- `infra/kubernetes/overlays/staging/kustomization.yaml`
+- `infra/kubernetes/overlays/staging/patches/compliance-gateway-audit-key-secret-ref.yaml`
+- `docs/operations/staging-xr-104-compliance-gateway-rollout.md`
+- `docs/operations/coordination/*` (bridge, log, handoffs)
+- `docs/audit/execution-roadmap.md`
+- `infra/terraform/*` (WAF, ALB, DB, KMS modules)
+- `docs/gtm/handoffs/README.md`
+- `docs/gtm/outbound-tickets/README.md`
+- `docs/operations/deployments/README.md`
+- Multiple frontmatter fixes across docs
+
+### Verification
+- `node tools/scripts/validate-all.mjs` — pass; 39/39 gates green
+- `pnpm --filter @gtcx/replay-protection test:coverage:gate` — pass; 90.45% branches
+- `node --test tools/compliance-gateway/tests/*.test.mjs` — pass; 298 tests
+- Staging deployment health: compliance-gateway ✅, did-resolver ✅, protocols ✅, intelligence ✅, sovereign ✅, AGX ❌ (platforms-owned)
+
+### Notes
+- AGX CrashLoopBackOff is platforms-owned (ARM64-only image). Waiting for platforms to push AMD64 build.
+- Next staging candidates: AGX rollout after platforms push, mobile E2E verification, intelligence re-smoke (XR-202).
+- No further infra-owned P0 blockers.

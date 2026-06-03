@@ -1,6 +1,6 @@
 ---
 title: 'Ping — W2 prod E2E secrets confirmation (gtcx-infrastructure)'
-status: draft
+status: current
 date: 2026-06-04
 from: compliance-os coordination hub
 to: gtcx-infrastructure
@@ -9,6 +9,8 @@ priority: P1
 ---
 
 # Ping: W2 licence-intelligence secrets — infra confirmation
+
+**Inbound received:** [from-compliance-os-w2-secrets-spec-2026-06-04.md](./from-compliance-os-w2-secrets-spec-2026-06-04.md) → full spec in compliance-os `to-gtcx-infrastructure-w2-secrets-inbound-2026-06-04.md`.
 
 **Context:** Locker #17 W2 prod E2E requires three sibling confirmations. This document is the **gtcx-infrastructure** leg.
 

@@ -23,14 +23,52 @@ xr-id: XR-201
 
 INT-S3-08 acceptance requires **401/403** on unauthenticated `/health`.
 
-## What infra will do
+---
 
-1. Apply `module.secrets` for intelligence-staging namespace
-2. Deploy full SDK image (not orchestrator placeholder)
-3. Wire auth on `/health` → 401/403
-4. Verify EAP key route → 200
-5. Set real `INTELLIGENCE_FAILURE_URL`
-6. **Ping intelligence same day** via this handoff + log entry
+## What infra has done (2026-06-03)
+
+1. ✅ Verified `module.secrets` Terraform applied — ESO, SecretStore, ExternalSecret, ServiceAccount all live
+2. ✅ Ingress routes to `intelligence-orchestrator:8200`
+3. ✅ AWS SM `gtcx/intelligence/staging/auth-keys` exists (EAP sync ready)
+
+---
+
+## Critical finding: missing deployment manifest
+
+**The `intelligence-orchestrator` Deployment + Service are NOT in the infrastructure repo.**
+
+The orchestrator placeholder currently running was deployed via an unknown mechanism. Infrastructure cannot replace it with the full SDK without:
+
+1. **Full SDK image URI + digest** (from gtcx-intelligence ECR build)
+2. **Deployment manifest** (either provided by intelligence repo or spec'd for infra to create)
+3. **Confirmation that auth middleware is enabled** in the full SDK image
+
+See detailed runbook: [`xr-201-intelligence-auth-gate-runbook.md`](xr-201-intelligence-auth-gate-runbook.md)
+
+---
+
+## What gtcx-intelligence must provide to unblock XR-201
+
+| Item                           | Why needed                                     | Format                                                                                  |
+| ------------------------------ | ---------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Full SDK image URI             | Infra needs exact image to deploy              | `348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-intelligence:<tag>@sha256:<digest>` |
+| Deployment manifest (optional) | If intelligence manages its own k8s manifests  | YAML or Helm chart path                                                                 |
+| Resource requests/limits       | For infra-created manifest                     | CPU/memory strings                                                                      |
+| Required env vars              | Beyond what's in `intelligence-secrets` secret | List of env var names                                                                   |
+| Auth middleware config         | Confirm `/health` requires Bearer in full SDK  | Boolean or config snippet                                                               |
+
+---
+
+## What infra will do once image is provided
+
+1. Create `intelligence-orchestrator` Deployment + Service manifest
+2. Mount `intelligence-secrets` via `envFrom`
+3. Set `serviceAccountName: intelligence-sa`
+4. Apply to staging cluster
+5. Verify auth gate (see evidence commands below)
+6. **Ping intelligence same day** via log entry
+
+---
 
 ## What intelligence should do after ping
 
@@ -39,7 +77,9 @@ INT-S3-08 acceptance requires **401/403** on unauthenticated `/health`.
 3. Mark INT-S3-08 done in execution roadmap
 4. Optional: mirror smoke JSON to protocols (XR-203)
 
-## Evidence to collect
+---
+
+## Evidence to collect (post-deploy)
 
 | Check                       | Expected                   | Command                                                                                 |
 | --------------------------- | -------------------------- | --------------------------------------------------------------------------------------- |
@@ -48,14 +88,11 @@ INT-S3-08 acceptance requires **401/403** on unauthenticated `/health`.
 | `/live` + `/ready`          | 401 no auth, 200 with auth | Same pattern                                                                            |
 | EAP key route               | 200 with valid key         | `curl -H "X-EAP-Key: ..." ...`                                                          |
 
-## Blockers
-
-- ESO secret `gtcx/intelligence/staging/auth-keys` must be synced (gtcx-core CORE-001 is done)
-- Terraform `module.secrets` must be applied
-- Full SDK image must be available in ECR
+---
 
 ## References
 
+- Detailed runbook: [`xr-201-intelligence-auth-gate-runbook.md`](xr-201-intelligence-auth-gate-runbook.md)
 - gtcx-intelligence bridge: `gtcx-intelligence/docs/operations/coordination/cross-repo-bridge.md`
 - gtcx-agentic log: `gtcx-agentic/docs/operations/coordination/agent-coordination-log.md`
 - baseline-os blocker: `baseline-os/workstream/index/blockers.md` §9

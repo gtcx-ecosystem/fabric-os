@@ -42,15 +42,16 @@ protocol: gtcx-docs/docs/governance/protocols/24-cross-repo-coordination/protoco
 
 ## Latest updates (newest first)
 
-| When (UTC) | Agent / repo        | Update                                                                                                                                                                 |
-| ---------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-06-03 | gtcx-infrastructure | Coordination hub expanded: bridge + sprint workplan + outbound handoffs created. XR schemes reconciled (protocols canonical).                                          |
-| 2026-06-03 | gtcx-platforms      | XR-301/302: ECR rollout outbound to infra; `main` 8 commits ahead of origin (push before CI ECR workflow). Sovereign external `/health` → 526 (edge).                  |
-| 2026-06-03 | gtcx-protocols      | **S-XR-1 begun:** `probe-staging-cross-repo.mjs` — api/authority/operator OK; intelligence `/health` still **200** (XR-201 **not met**). Operator GET requires Bearer. |
-| 2026-06-03 | gtcx-infrastructure | Track A complete per `from-gtcx-protocols-staging-operator-seed` (DONE). SM `gtcx/staging/mobile-audit-e2e-credentials` aligned.                                       |
-| 2026-06-03 | gtcx-protocols      | INF-86 pre-ceremony: `AuthorityVerificationMethodSchema` supports Ed25519 + P-256 (`577b79e5`). Post-ceremony tooling ready.                                           |
-| 2026-06-02 | gtcx-intelligence   | Smoke green; INT-S3-08 infra-gated (Track B). No mobile outbound.                                                                                                      |
-| 2026-06-02 | gtcx-infrastructure | #50–#52 audit presence live; evidence posted on GitHub.                                                                                                                |
+| When (UTC) | Agent / repo        | Update                                                                                                                                                                                                      |
+| ---------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-06-03 | gtcx-infrastructure | **XR-201 finding:** `intelligence-orchestrator` Deployment manifest is **missing** from infra repo. ESO/ingress/secrets all live. Need gtcx-intelligence to provide full SDK image + manifest. See runbook. |
+| 2026-06-03 | gtcx-infrastructure | Coordination hub expanded: bridge + sprint workplan + outbound handoffs created. XR schemes reconciled (protocols canonical).                                                                               |
+| 2026-06-03 | gtcx-platforms      | XR-301/302: ECR rollout outbound to infra; `main` 8 commits ahead of origin (push before CI ECR workflow). Sovereign external `/health` → 526 (edge).                                                       |
+| 2026-06-03 | gtcx-protocols      | **S-XR-1 begun:** `probe-staging-cross-repo.mjs` — api/authority/operator OK; intelligence `/health` still **200** (XR-201 **not met**). Operator GET requires Bearer.                                      |
+| 2026-06-03 | gtcx-infrastructure | Track A complete per `from-gtcx-protocols-staging-operator-seed` (DONE). SM `gtcx/staging/mobile-audit-e2e-credentials` aligned.                                                                            |
+| 2026-06-03 | gtcx-protocols      | INF-86 pre-ceremony: `AuthorityVerificationMethodSchema` supports Ed25519 + P-256 (`577b79e5`). Post-ceremony tooling ready.                                                                                |
+| 2026-06-02 | gtcx-intelligence   | Smoke green; INT-S3-08 infra-gated (Track B). No mobile outbound.                                                                                                                                           |
+| 2026-06-02 | gtcx-infrastructure | #50–#52 audit presence live; evidence posted on GitHub.                                                                                                                                                     |
 
 > Full history: [`cross-repo-agent-log.md`](cross-repo-agent-log.md)
 

@@ -1,0 +1,19 @@
+# Staging compliance-gateway runtime — NODE_ENV staging (ephemeral audit signer OK)
+# and manually-managed audit signing secret (not kustomize-generated hash suffix).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compliance-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - name: compliance-gateway
+          env:
+            - name: NODE_ENV
+              value: staging
+            - name: AUDIT_SIGNING_KEY_B64
+              valueFrom:
+                secretKeyRef:
+                  name: compliance-gateway-audit-key-staging
+                  key: AUDIT_SIGNING_KEY_B64

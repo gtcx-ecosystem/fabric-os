@@ -17,29 +17,32 @@ Unblocks **gtcx-mobile** `MOBILE-AUDIT-01` signed ingest (`envelope-did-resolve-
 
 ## 1. Image tag
 
-ECR tag **`79ee914`** (commit `764fb83` bearer fix, **linux/amd64**). Do not use `audit-tradepass-auth` (immutable tag, wrong arch on EKS). Build: `docker buildx build --platform linux/amd64 ... --push`.
+ECR tag **`audit-tradepass-auth-amd64`** (commit `764fb83` bearer fix, **linux/amd64**).
 
-## 2. Fix audit signing secret
+## 2. Secrets (manual — not in git)
 
 ```bash
 cd gtcx-infrastructure
 node scripts/staging/generate-compliance-gateway-audit-signing-key.mjs
-# Follow printed kubectl commands (secret compliance-gateway-audit-key-staging in gtcx-staging)
+# Creates secret compliance-gateway-audit-key-staging
+
+node scripts/staging/patch-compliance-gateway-auth-tokens.mjs
+# Patches COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON from AWS SM AUDIT_TOKEN
 ```
 
-**Do not** store PEM or JSON JWK in `AUDIT_SIGNING_KEY_B64` — only PKCS#8 DER base64 (~44–88 chars for Ed25519).
-
-## 3. Apply staging kustomize (image + env patch)
-
-`infra/kubernetes/overlays/staging/kustomization.yaml` sets:
-
-- `compliance-gateway` image → `audit-tradepass-auth`
-- `patches/compliance-gateway-audit-staging.yaml` → `GTCX_API_KEY` from `gtcx-protocols-api-key-staging`
+## 3. Apply + post-apply env (protocols Bearer path)
 
 ```bash
 kubectl apply -k infra/kubernetes/overlays/staging/
+kubectl set env deployment/compliance-gateway-staging -n gtcx-staging \
+  TRADEPASS_BASE_URL=http://gtcx-protocols-staging.gtcx-staging.svc.cluster.local:8300 \
+  NODE_ENV=staging
 kubectl rollout status deployment/compliance-gateway-staging -n gtcx-staging
+node scripts/staging/patch-compliance-gateway-auth-tokens.mjs
+kubectl rollout restart deployment/compliance-gateway-staging -n gtcx-staging
 ```
+
+**Live 2026-06-03:** protocols Bearer path verified — `pnpm staging:pilot-smoke -- --e2e` green.
 
 ## 4. Verify
 

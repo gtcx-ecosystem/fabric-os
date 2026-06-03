@@ -19,6 +19,11 @@ spec:
               value: 'http://gtcx-protocols-staging.gtcx-staging.svc.cluster.local:8300'
             - name: TRADEPASS_IDENTITY_PATH_PREFIX
               value: '/v1/tradepass'
+            - name: GTCX_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-protocols-api-key-staging
+                  key: api-key
             - name: AUDIT_BUNDLES_AUDIENCE
               value: 'https://api.staging.gtcx.trade'
             - name: AUDIT_QUERY_NDJSON_DIR

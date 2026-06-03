@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: did-documents
+  namespace: gtcx-staging
+data:
+  tp_staging_e2e_001.json: |
+    {
+      "id": "did:gtcx:tp_staging_e2e_001",
+      "verificationMethod": [
+        {
+          "id": "did:gtcx:tp_staging_e2e_001#k-1",
+          "type": "Ed25519VerificationKey2020",
+          "controller": "did:gtcx:tp_staging_e2e_001",
+          "publicKeyJwk": {
+            "crv": "Ed25519",
+            "x": "OP743wqD8AUD2Vl05YGJ17fnNWUDIkQ1NRHrWTo4OuI",
+            "kty": "OKP"
+          }
+        }
+      ]
+    }
+  tp_zw_001.json: |
+    {
+      "id": "did:gtcx:tp_zw_001",
+      "verificationMethod": [
+        {
+          "id": "did:gtcx:tp_zw_001#k-1",
+          "type": "Ed25519VerificationKey2020",
+          "controller": "did:gtcx:tp_zw_001",
+          "publicKeyJwk": {
+            "crv": "Ed25519",
+            "x": "FD2wCmfY0UB9mc4_4nzUMd9eMng0j1C0clbcznMrS_w",
+            "kty": "OKP"
+          }
+        }
+      ]
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: did-resolver-config
+  namespace: gtcx-staging
+data:
+  nginx.conf: |
+    worker_processes 1;
+    error_log /var/log/nginx/error.log warn;
+    pid /var/run/nginx.pid;
+    events {
+      worker_connections 1024;
+    }
+    http {
+      include /etc/nginx/mime.types;
+      default_type application/json;
+      access_log /var/log/nginx/access.log;
+      server {
+        listen 8080;
+        server_name localhost;
+        location ~ ^/v1/tradepass/did:gtcx:([a-zA-Z0-9_]+)$ {
+          alias /usr/share/nginx/html/v1/tradepass/$1.json;
+          add_header Content-Type application/json;
+        }
+        location ~ ^/v1/tradepass/did%3Agtcx%3A([a-zA-Z0-9_]+)$ {
+          alias /usr/share/nginx/html/v1/tradepass/$1.json;
+          add_header Content-Type application/json;
+        }
+        location / {
+          return 404;
+        }
+        location /health {
+          access_log off;
+          return 200 "healthy\n";
+          add_header Content-Type text/plain;
+        }
+      }
+    }

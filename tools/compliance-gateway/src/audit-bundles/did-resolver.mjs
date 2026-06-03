@@ -45,6 +45,7 @@ const DEFAULT_TIMEOUT_MS = 5000;
  * @typedef {object} ResolverConfig
  * @property {string} baseUrl
  * @property {string} [identityPathPrefix] - e.g. `/identity` (default) or `/v1/tradepass`
+ * @property {string} [authToken] - Bearer token for authenticated TradePass (staging protocols)
  * @property {typeof fetch} [fetcher]
  * @property {number} [timeoutMs]
  *
@@ -103,6 +104,7 @@ export function createTradePassResolver(config) {
   const baseUrl = config.baseUrl.replace(/\/$/, '');
   const identityPathPrefix = (config.identityPathPrefix ?? '/identity').replace(/\/$/, '');
   const fetcher = config.fetcher ?? globalThis.fetch;
+  const authToken = config.authToken?.trim() || '';
   const timeoutMs = config.timeoutMs ?? DEFAULT_TIMEOUT_MS;
   if (typeof fetcher !== 'function') {
     throw new TypeError('createTradePassResolver requires a fetcher (or global fetch)');
@@ -114,8 +116,9 @@ export function createTradePassResolver(config) {
     const url = `${baseUrl}${identityPathPrefix}/${encodeURIComponent(did)}`;
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
+    const headers = authToken ? { Authorization: `Bearer ${authToken}` } : {};
     try {
-      const res = await fetcher(url, { signal: controller.signal });
+      const res = await fetcher(url, { signal: controller.signal, headers });
       if (!res.ok) {
         throw new DidResolverError(`http-${res.status}`);
       }

@@ -75,6 +75,24 @@ describe('createTradePassResolver', () => {
     assert.strictEqual(capturedUrl, 'https://tradepass.example/identity/did%3Agtcx%3Atp_zw_001');
   });
 
+  it('sends Authorization Bearer when authToken is set', async () => {
+    let capturedHeaders;
+    const fetcher = async (_url, opts) => {
+      capturedHeaders = opts?.headers;
+      return {
+        ok: true,
+        json: async () => makeDidDoc([{ id: 'k-1', publicKeyJwk: SAMPLE_JWK }]),
+      };
+    };
+    const resolve = createTradePassResolver({
+      baseUrl: 'https://tradepass.example',
+      authToken: 'staging-test-key',
+      fetcher,
+    });
+    await resolve('did:gtcx:tp_zw_001', 'k-1');
+    assert.strictEqual(capturedHeaders?.Authorization, 'Bearer staging-test-key');
+  });
+
   it('supports TRADEPASS_IDENTITY_PATH_PREFIX for gtcx-protocols compat', async () => {
     let capturedUrl;
     const fetcher = async (url) => {

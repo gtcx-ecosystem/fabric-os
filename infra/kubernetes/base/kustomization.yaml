@@ -33,6 +33,9 @@ resources:
   - services/platform.yaml
   - services/anomaly-detector.yaml
   - services/sovereign/deployment.yaml
+  - services/did-resolver/configmap.yaml
+  - services/did-resolver/deployment.yaml
+  - services/did-resolver/service.yaml
 
 configMapGenerator:
   - name: gtcx-env

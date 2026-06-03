@@ -131,10 +131,13 @@ const tradePassIdentityPathPrefix =
 // request to /audit/bundles is rejected with 503. Tests inject a
 // mockable resolver directly into processBundle; production wiring
 // happens when TRADEPASS_BASE_URL is set in the staging environment.
+const tradePassAuthToken =
+  process.env.TRADEPASS_API_KEY?.trim() || process.env.GTCX_API_KEY?.trim() || '';
 const auditBundlesResolver = tradePassBaseUrl
   ? createTradePassResolver({
       baseUrl: tradePassBaseUrl,
       identityPathPrefix: tradePassIdentityPathPrefix,
+      authToken: tradePassAuthToken || undefined,
     })
   : null;
 

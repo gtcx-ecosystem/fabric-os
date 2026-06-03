@@ -191,9 +191,19 @@ Ready for H-03: DID document update + `key_status: production`.
 - approved_by: agent:security-engineer-xr401+agent:platform-architect-xr401+agent:infrastructure-custodian-a+agent:infrastructure-custodian-b+agent:compliance-officer-witness
 ```
 
-**Next:** gtcx-protocols executes XR-403 (`pnpm coordination:xr-403-checklist --ceremony-id=ceremony:INF-86-H02-GHBOG-2026`)
+### XR-405 — Platforms KMS wiring
+
+**Status:** Infra env vars committed — platforms smoke pending.
+
+| Step | Action                                                                                                    | Status      | Evidence                                                               |
+| ---- | --------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------- |
+| 1    | `SIGNING_KEY_PROVIDER=kms` + `AWS_KMS_KEY_ID=alias/gtcx-production-sovereign-gh-bog` on sovereign-staging | **done**    | `infra/kubernetes/overlays/staging/patches/sovereign-staging-env.yaml` |
+| 2    | Platforms re-run `smoke:signed-edge-tenant:evidence`                                                      | **pending** | gtcx-platforms queue                                                   |
+| 3    | Mark XR-405 done on platforms sprint board                                                                | **pending** | After smoke green                                                      |
+
+**Next:** gtcx-platforms re-run signed-edge smoke against KMS-backed signing.
 
 ---
 
-_Last updated: 2026-06-03_
+_Last updated: 2026-06-04_
 _Next review: After XR-401-B/C evidence lands — see [inf-86-agentic-ceremony-model](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/coordination/inf-86-agentic-ceremony-model-2026-06-03.md)_

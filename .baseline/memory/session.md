@@ -1,6 +1,6 @@
 # Session State
 
-> **Last updated:** 2026-06-04T17:45+02:00
+> **Last updated:** 2026-06-02T09:04+02:00
 > **Agent:** platform-architect (development frame)
 > **Protocol compliance:** P22, P26, P27, P28 active
 > **Current sprint:** Sprint 1 — Infra Hardening (2026-06-04 → 2026-06-11)
@@ -16,6 +16,7 @@
 | ER-2-04 | Compliance-gateway staging deploy unblock | `d05d089` |
 | IR-2.2 | AI SDK v5→v6 migration | `48b3366` |
 | Sprint roadmap | Phase 3 June 2026 hardening + external readiness | `178dc79` |
+| P1-LINT | Compliance-gateway ESLint errors (34 → 0) | `d78cb7b` |
 
 ---
 
@@ -23,16 +24,16 @@
 
 | Story | Title | Status | Next Action |
 |-------|-------|--------|-------------|
-| S1-01 | Kustomize selector immutability | `pending` | TBD |
-| S1-02 | TypeORM entity/schema drift | `pending` | TBD |
-| S1-03 | ioredis missing | `pending` | TBD |
-| S1-04 | AUDIT_SEAL_SECRET missing | `pending` | TBD |
-| S1-05 | Terraform IRSA drift | `pending` | TBD |
-| S1-06 | Production IRSA trust cleanup | `pending` | TBD |
-| S1-07 | Kustomize secret collision pattern | `pending` | TBD |
-| S1-08 | ER-1-08 infra hub log row | `pending` | TBD |
-| S1-09 | Lint debt (compliance-gateway) | `pending` | TBD |
-| S1-10 | Coverage honesty | `pending` | TBD |
+| S1-01 | Kustomize selector immutability | `done` (`b1615d0`) | — |
+| S1-02 | TypeORM entity/schema drift | `pending` | Schema reconciliation job or entity sync |
+| S1-03 | ioredis missing | `pending` | Add to sovereign image; verify Redis nonce store |
+| S1-04 | AUDIT_SEAL_SECRET missing | `done` | — |
+| S1-05 | Terraform IRSA drift | `pending` | Capture `gtcx-staging-platforms-irsa` in staging main.tf |
+| S1-06 | Production IRSA trust cleanup | `pending` | Remove stale staging SA from production role trust |
+| S1-07 | Kustomize secret collision pattern | `pending` | Document pattern; consider removing base secretGenerator |
+| S1-08 | ER-1-08 infra hub log row | `done` | — |
+| S1-09 | Lint debt (compliance-gateway) | `done` (`d78cb7b`) | 0 errors; ~21 no-console warnings remain in tests |
+| S1-10 | Coverage honesty | `pending` | Branch coverage 86.1% (gate 85%); audit wants ≥90% for +1.0 uplift |
 
 ---
 

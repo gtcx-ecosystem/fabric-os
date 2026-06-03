@@ -2,6 +2,7 @@
 title: 'From gtcx-protocols — INF-86 preceremony ready (XR-402)'
 status: current
 date: 2026-06-03
+owner: gtcx-infrastructure
 from: gtcx-protocols
 priority: P0
 work_ids: [XR-402]

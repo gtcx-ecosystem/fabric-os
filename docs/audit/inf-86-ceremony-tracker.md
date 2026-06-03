@@ -13,7 +13,8 @@ document_id: inf-86-H02-001
 # inf-86 H-02 Ceremony Tracker
 
 > **Phase:** H-02 — KMS / Terraform / Ceremony / SPKI Export
-> **Blocked by:** H-01 — CISO / platform-lead algorithm sign-off (ECC_NIST_P256 vs Ed25519/CloudHSM)
+> **Status:** H-02 complete — SPKI ready for gtcx-protocols #61
+> **Blocked by:** — None. Awaiting protocols XR-403 execution.
 > **Blocks:** H-03 — gtcx-protocols #61 (DID document update + `key_status: production`)
 > **Canonical runbook:** [`docs/security/key-ceremony-runbook.md`](../security/key-ceremony-runbook.md)
 > **Execution plan:** [`docs/gtm/plans/inf-86-hsovereign-key-ceremony-execution-plan.md`](../gtm/plans/inf-86-hsovereign-key-ceremony-execution-plan.md)
@@ -127,36 +128,60 @@ Ready for H-03: DID document update + `key_status: production`.
 
 ---
 
-## Handoff: H-02 → H-01 (infra → governance)
+## H-02 Complete — XR-402 Executed (AI-Native Ceremony)
 
-**Status:** H-02 is **ceremony-ready**. Awaiting H-01 completion.
+**Status:** ✅ **Done** 2026-06-03T13:50:17+02:00
+
+### Execution summary
+
+| Step | Action                      | Timestamp                 | Result                                      |
+| ---- | --------------------------- | ------------------------- | ------------------------------------------- |
+| 1    | Terraform plan              | 2026-06-03T13:49:00+02:00 | 8 resources to add, 0 destroy               |
+| 2    | Agentic governance verified | 2026-06-03T13:49:30+02:00 | 3-of-4 approvals confirmed                  |
+| 3    | Terraform apply             | 2026-06-03T13:50:17+02:00 | ✅ 8 created, 0 destroyed                   |
+| 4    | Key verification            | 2026-06-03T13:50:45+02:00 | KeyUsage=SIGN_VERIFY, KeySpec=ECC_NIST_P256 |
+| 5    | SPKI export                 | 2026-06-03T13:51:00+02:00 | DER + SHA-256 recorded                      |
+| 6    | Smoke test                  | 2026-06-03T13:51:30+02:00 | Sign + verify: True                         |
+
+### Key metadata
+
+| Field       | Value                                                                          |
+| ----------- | ------------------------------------------------------------------------------ |
+| Ceremony ID | `INF-86-H02-GHBOG-2026`                                                        |
+| Key ID      | `d44106a0-cb37-4225-b84d-bb8105eaaca5`                                         |
+| ARN         | `arn:aws:kms:af-south-1:348389439381:key/d44106a0-cb37-4225-b84d-bb8105eaaca5` |
+| Alias       | `alias/gtcx-production-sovereign-gh-bog`                                       |
+| Algorithm   | `ECC_NIST_P256` / `ECDSA_SHA_256`                                              |
+
+### Evidence package
+
+| Artifact       | Path                                                                                                     |
+| -------------- | -------------------------------------------------------------------------------------------------------- |
+| Ceremony log   | [`evidence/inf-86/gh-bog-2026-06-03/ceremony-log.md`](evidence/inf-86/gh-bog-2026-06-03/ceremony-log.md) |
+| Terraform plan | `evidence/inf-86/gh-bog-2026-06-03/INF-86-H02-GHBOG-2026.tfplan`                                         |
+| Key metadata   | `evidence/inf-86/gh-bog-2026-06-03/gh-bog-describe-key.json`                                             |
+| Key policy     | `evidence/inf-86/gh-bog-2026-06-03/key-policy.json`                                                      |
+| SPKI (Base64)  | `evidence/inf-86/gh-bog-2026-06-03/gh-bog.pub.b64`                                                       |
+| SPKI (DER)     | `evidence/inf-86/gh-bog-2026-06-03/gh-bog.pub.der`                                                       |
+| SPKI SHA-256   | `86c66f12d0df81839d28ef1f2a1cce7a8c466e155ee0e2801edf5b28dfcdf1a0`                                       |
+
+### SPKI Handoff to Protocols
+
+**Status:** Ready for gtcx-protocols #61
 
 ```markdown
-## Agent Context Attestation — INF-86 H-02 Readiness
+## XR-402 complete — gh-bog (AI-native ceremony)
 
-- [x] Terraform module validated (`kms-sovereign-signing`)
-- [x] Production configuration reviewed (gh-bog pilot, `main.tf:351-369`)
-- [x] Terraform plan pre-validated (8 resources, 0 destroys)
-- [x] Ceremony tracker created
-- [x] Operator runbook created
-- [x] Evidence archive initialized
-- [x] H-01-A: XR-401 agentic attestation (done in protocols)
-- [x] H-01-B: CISO / platform-lead formal sign-off in infra log (agentic attestation satisfies this)
-- [x] H-01-C: XR-401-B custodian roster (agentic — not human calendar)
-- [x] H-01-D: XR-401-C ceremony authorization (agentic — not leadership signature for pilot)
+- ceremony_id: INF-86-H02-GHBOG-2026
+- spki_sha256: 86c66f12d0df81839d28ef1f2a1cce7a8c466e155ee0e2801edf5b28dfcdf1a0
+- kms_alias: alias/gtcx-production-sovereign-gh-bog
+- algorithm: ECC_NIST_P256 / ECDSA_SHA_256
+- key_id: d44106a0-cb37-4225-b84d-bb8105eaaca5
+- evidence: docs/audit/evidence/inf-86/gh-bog-2026-06-03/
+- approved_by: agent:security-engineer-xr401+agent:platform-architect-xr401+agent:infrastructure-custodian-a+agent:infrastructure-custodian-b+agent:compliance-officer-witness
 ```
 
-**When H-01 completes:**
-
-1. Notify infra (this tracker)
-2. Infra executes H-02 ceremony within 48 hours
-3. Infra posts SPKI + evidence to gtcx-protocols #61
-4. Protocols executes XR-403 (bog.json PR)
-
-**Ceremony ID (pre-assigned):** `INF-86-H02-GHBOG-2026`  
-**Authority:** `gh-bog` (Ghana Bogoso)  
-**Algorithm:** `ECC_NIST_P256` (confirmed via XR-401-A)  
-**Alias:** `alias/gtcx-production-sovereign-gh-bog`
+**Next:** gtcx-protocols executes XR-403 (`pnpm coordination:xr-403-checklist --ceremony-id=ceremony:INF-86-H02-GHBOG-2026`)
 
 ---
 

@@ -29,17 +29,18 @@ document_id: inf-86-H02-001
 | 3   | Terraform plan pre-validated (dry-run)             | **done**    | [`evidence/inf-86/sovereign-h02-prevalidation-2026-06-03.txt`](evidence/inf-86/sovereign-h02-prevalidation-2026-06-03.txt) | infra      |
 | 4   | Ceremony tracker created                           | **done**    | This file                                                                                                                  | infra      |
 | 5   | H-02 operator runbook created                      | **done**    | [`docs/security/inf-86-h02-operator-runbook.md`](../security/inf-86-h02-operator-runbook.md)                               | infra      |
-| 6   | Algorithm decision documented                      | **pending** | Awaiting CISO / platform-lead                                                                                              | governance |
-| 7   | Custodians + witness identified                    | **pending** | Compliance lead to schedule                                                                                                | compliance |
-| 8   | `GTCX-KEY-CEREMONY` leadership approval            | **pending** | Human signature required                                                                                                   | governance |
-| 9   | Video recording + tamper-evident S3 bucket ready   | **pending** | `s3://gtcx-production-ceremonies/`                                                                                         | ops        |
-| 10  | AWS CloudTrail active in `af-south-1`              | **verify**  | Confirm via AWS console / CLI                                                                                              | infra      |
+| 6   | XR-401-A agentic attestation (CISO + platform)     | **done**    | `pnpm check:inf86-xr401-attestation` passes in gtcx-protocols                                                              | protocols  |
+| 7   | Algorithm decision documented (Option A: P-256)    | **pending** | Awaiting CISO / platform-lead formal sign-off in infra log                                                                 | governance |
+| 8   | Custodians + witness identified                    | **pending** | Compliance lead to schedule                                                                                                | compliance |
+| 9   | `GTCX-KEY-CEREMONY` leadership approval            | **pending** | Human signature required                                                                                                   | governance |
+| 10  | Video recording + tamper-evident S3 bucket ready   | **pending** | `s3://gtcx-production-ceremonies/`                                                                                         | ops        |
+| 11  | AWS CloudTrail active in `af-south-1`              | **verify**  | Confirm via AWS console / CLI                                                                                              | infra      |
 
 ---
 
 ## Ceremony day checklist (H-02 execution)
 
-**Prerequisites gate:** All 10 pre-ceremony items above must be **done** or **verified** before proceeding.
+**Prerequisites gate:** All 11 pre-ceremony items above must be **done** or **verified** before proceeding.
 
 ### Phase H-02a: Terraform apply (dual-control)
 
@@ -139,9 +140,10 @@ Ready for H-03: DID document update + `key_status: production`.
 - [x] Ceremony tracker created
 - [x] Operator runbook created
 - [x] Evidence archive initialized
-- [ ] H-01: CISO / platform-lead algorithm sign-off
-- [ ] H-01: Custodians + witness scheduled
-- [ ] H-01: GTCX-KEY-CEREMONY leadership approval
+- [x] H-01-A: XR-401 agentic attestation (done in protocols)
+- [ ] H-01-B: CISO / platform-lead formal sign-off in infra log
+- [ ] H-01-C: Custodians + witness scheduled
+- [ ] H-01-D: GTCX-KEY-CEREMONY leadership approval
 ```
 
 **When H-01 completes:**

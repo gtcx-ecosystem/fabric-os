@@ -71,6 +71,7 @@ jobs:
       image: ghcr.io/${{ github.repository }}
       digest: ${{ needs.build-image.outputs.image-digest }}
       registry-username: ${{ github.actor }}
+      private-repository: true
     secrets:
       registry-password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -139,6 +140,7 @@ jobs:
       base64-subjects: ${{ needs.build-npm.outputs.package-hash }}
       upload-assets: ${{ startsWith(github.ref, 'refs/tags/v') }}
       provenance-name: npm-provenance.intoto.jsonl
+      private-repository: true
 
   # ──────────────────────────────────────────────
   # 5. Verify image provenance

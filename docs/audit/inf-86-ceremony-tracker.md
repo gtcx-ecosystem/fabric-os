@@ -167,7 +167,14 @@ Ready for H-03: DID document update + `key_status: production`.
 
 ### SPKI Handoff to Protocols
 
-**Status:** Ready for gtcx-protocols #61
+**Status:** Blocked — DER file in infra evidence dir; awaiting secure delivery to protocols agent host (`/secure/gh-bog.pub.der`) before protocols can run hash verify + JWK conversion.
+
+| Prerequisite                                     | Status                         |
+| ------------------------------------------------ | ------------------------------ |
+| XR-402 ceremony + #61 `spki_sha256` recorded     | **done** (`86c66f12…dfcdf1a0`) |
+| `/secure/gh-bog.pub.der` on protocols agent host | **not done** — last witness    |
+| Hash verify + `bog.json` apply                   | **blocked** on DER delivery    |
+| XR-403 (`key_status: production`)                | **blocked**                    |
 
 ```markdown
 ## XR-402 complete — gh-bog (AI-native ceremony)

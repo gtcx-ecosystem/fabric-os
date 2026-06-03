@@ -45,8 +45,9 @@
 | S1-06 | Production IRSA trust cleanup | `done` | Staging SA removed from production role trust; 2 statements remain |
 | S1-07 | Kustomize secret collision pattern | `done` (`ded6d9b`) | Base stub removed; pen-test prefixed; runbook created |
 | S1-11 | Secret scanning CI gate | `done` | `secret-scan-gate.mjs` added to validate-all; gitleaks clean |
+| S1-12 | Rate limiting — `/audit/*` throttling | `done` | `checkBudget` already wired; k6 load test PASS (50% throttled, 0 errors) |
 
-| S1-12 | Rate limiting — `/audit/*` throttling | `pending` | Load-test evidence at configured RPS |
+
 | S1-13 | Runtime cross-repo integration tests | `pending` | CI job probes protocols/core/intelligence health |
 
 ---

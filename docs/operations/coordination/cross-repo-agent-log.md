@@ -59,3 +59,5 @@ Append **newest entries at the top** of the table below. One row per meaningful 
 - **2026-06-03T09:20Z** — `XR-104` — **BLOCKED** — compliance-gateway DID resolve returns 401; needs TradePass Bearer auth + audit signing secret rollout. Blocks MOBILE-AUDIT-01 signed ingest. Discovered during mobile E2E. Ref: mobile bridge `to-gtcx-infrastructure-compliance-gateway-tradepass-auth-2026-06-03.md`.
 
 - **2026-06-03T09:45Z** — `XR-104` — **DONE** — compliance-gateway `audit-tradepass-auth-amd64` deployed to staging. Audit signing initialized (not ephemeral). DID resolver verified working. MOBILE-AUDIT-01 unblocked. Ref: `a3fe3e2`.
+
+- **2026-06-03T09:55Z** — `AGX-staging` — **CRASHLOOP** — `gtcx-agx-staging` pods failing with `MODULE_NOT_FOUND: @gtcx/platform-shared`. Image `v0.4.0` appears broken. Platforms-owned; blocks `/api/*` paths.

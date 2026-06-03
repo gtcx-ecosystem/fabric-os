@@ -205,3 +205,19 @@ Witness only until XR-507 + XR-508 unblocked. Supabase paused; verifier needs DN
 ---
 
 _Last bridge review: 2026-06-03. Trigger: any P0 status change or sprint boundary._
+
+---
+
+## Staging health snapshot (2026-06-03)
+
+| Deployment                 | Namespace    | Status | Note                                                   |
+| -------------------------- | ------------ | ------ | ------------------------------------------------------ |
+| compliance-gateway-staging | gtcx-staging | ✅ 1/1 | XR-104 resolved                                        |
+| did-resolver-staging       | gtcx-staging | ✅ 1/1 | DID docs serving                                       |
+| gtcx-protocols-staging     | gtcx-staging | ✅ 1/1 | v0.4.6                                                 |
+| redis-staging              | gtcx-staging | ✅ 1/1 | —                                                      |
+| sovereign-staging          | gtcx-staging | ✅ 1/1 | —                                                      |
+| gtcx-agx-staging           | gtcx-staging | ❌ 0/1 | **CrashLoopBackOff** — `@gtcx/platform-shared` missing |
+| intelligence-orchestrator  | intelligence | ✅ 2/2 | XR-201 done                                            |
+
+**Platforms action needed:** AGX image `v0.4.0` is missing `@gtcx/platform-shared` dependency. Blocks XR-302 (`/api/*`).

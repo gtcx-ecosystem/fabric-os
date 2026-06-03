@@ -43,7 +43,7 @@
 | S1-03 | ioredis missing | `done` (`0292959`) | ioredis ^5.10.1 added to platforms/shared; lockfile updated |
 | S1-05 | Terraform IRSA drift | `done` (`0c72072`) | Role + policy imported; targeted plan 0 changes; KMS bug fixed |
 | S1-06 | Production IRSA trust cleanup | `done` | Staging SA removed from production role trust; 2 statements remain |
-| S1-07 | Kustomize secret collision pattern | `pending` | Document pattern; consider removing base secretGenerator |
+| S1-07 | Kustomize secret collision pattern | `done` (`ded6d9b`) | Base stub removed; pen-test prefixed; runbook created |
 | S1-11 | Secret scanning CI (TruffleHog) | `pending` | Add gate to validate-all.mjs |
 | S1-12 | Rate limiting — `/audit/*` throttling | `pending` | Load-test evidence at configured RPS |
 | S1-13 | Runtime cross-repo integration tests | `pending` | CI job probes protocols/core/intelligence health |

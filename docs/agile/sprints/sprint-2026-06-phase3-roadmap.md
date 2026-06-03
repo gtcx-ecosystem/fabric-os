@@ -58,7 +58,7 @@ review_cycle: weekly
 | ID             | Title                                                                | Owner            | Status     |
 | -------------- | -------------------------------------------------------------------- | ---------------- | ---------- |
 | S1-06          | Production IRSA trust cleanup                                        | infra            | **`done`** |
-| S1-07          | Kustomize secret collision pattern                                   | infra            | `pending`  |
+| S1-07          | Kustomize secret collision pattern                                   | infra            | **`done`** |
 | S2-06          | SLSA Build L3 — sigstore attestation                                 | devops           | `pending`  |
 | S3-04          | Publish primitives (@gtcx/audit-signer, terraform-aws-compliance-db) | devops           | `pending`  |
 | S3-07          | DR live RDS restore — operator evidence                              | platform         | `pending`  |
@@ -99,7 +99,7 @@ review_cycle: weekly
 | S1-04 | **AUDIT_SEAL_SECRET missing** — sovereign staging secret              | P1       | **`done`**    | infra  | Added to `gtcx-sovereign-secrets-staging`; sovereign restarted                   |
 | S1-05 | **Terraform IRSA drift** — staging IRSA role in state                 | P1       | **`done`**    | infra  | `0c72072` — role + policy imported; targeted plan shows 0 changes; KMS bug fixed |
 | S1-06 | **Production IRSA trust cleanup** — remove stale staging ref          | P2       | **`done`**    | infra  | Staging SA removed from production role trust; 2 statements remain               |
-| S1-07 | **Kustomize secret collision pattern** — base cleanup                 | P2       | `pending`     | infra  | Base `secretGenerator` `compliance-gateway-audit-key` removed or disabled        |
+| S1-07 | **Kustomize secret collision pattern** — base cleanup                 | P2       | **`done`**    | infra  | `ded6d9b` — base stub removed; pen-test prefixed; runbook created                |
 | S1-08 | **ER-1-08 infra hub log row** — protocols ack                         | P2       | **`done`**    | infra  | `f8e1425` + `8c19a797` (protocols SoR) — all 5 repo acks complete                |
 | S1-09 | **Lint debt** — compliance-gateway ESLint + scripts                   | P1       | **`done`**    | infra  | `d78cb7b` + `a95d554` — 0 errors across 14 packages                              |
 | S1-10 | **Coverage honesty** — branch coverage ≥90%                           | P1       | **`done`**    | infra  | `3962176` — 90.03% branches, 92.9% statements, 90.82% functions                  |

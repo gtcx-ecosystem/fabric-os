@@ -1048,3 +1048,113 @@ CREATE INDEX idx_agx_listings_active ON agx_listings(id) WHERE deleted_at IS NUL
 CREATE INDEX idx_agx_trades_active ON agx_trades(id) WHERE deleted_at IS NULL;
 CREATE INDEX idx_crx_permits_active ON crx_permits(id) WHERE deleted_at IS NULL;
 CREATE INDEX idx_sgx_clearances_active ON sgx_export_clearances(id) WHERE deleted_at IS NULL;
+
+-- =============================================================================
+-- S1-02 REMEDIATION: Critical missing tables (added 2026-06-05)
+-- =============================================================================
+-- These tables were missing from the canonical schema but exist in TypeORM
+-- entities. Staging required manual K8s Jobs to create them (XR-302b, etc.).
+-- Source: gtcx-platforms/platforms/shared/src/**/*.entity.ts
+-- =============================================================================
+
+-- ------------------------------------------------------------------------------
+-- SHARED: TradePass Identities
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/shared/src/operations/tradepass/tradepass-identity.entity.ts
+-- Note: Uses `did` as string PK (not UUID). No soft delete.
+
+CREATE TABLE tradepass_identities (
+  did                       VARCHAR(256) PRIMARY KEY,
+  trade_pass_id             VARCHAR(64) NOT NULL,
+  name                      VARCHAR(256) NOT NULL,
+  role                      VARCHAR(64) NOT NULL,
+  jurisdiction              VARCHAR(8) NOT NULL,
+  public_key                VARCHAR(128) NOT NULL,
+  status                    VARCHAR(32) NOT NULL DEFAULT 'pending',
+  identity_json             JSONB NOT NULL DEFAULT '{}',
+  kyc_document_type         VARCHAR(64),
+  kyc_document_ref          VARCHAR(512),
+  kyc_document_status       VARCHAR(16) DEFAULT NULL,
+  kyc_verified_at           TIMESTAMPTZ,
+  created_at                TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_tradepass_identities_tradepass ON tradepass_identities(trade_pass_id);
+CREATE INDEX idx_tradepass_identities_jurisdiction ON tradepass_identities(jurisdiction);
+CREATE INDEX idx_tradepass_identities_status ON tradepass_identities(status);
+
+-- ------------------------------------------------------------------------------
+-- SHARED: Audit Records
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/shared/src/audit/audit-record.entity.ts
+-- Extends BaseEntity: id (UUID PK), created_at, updated_at, deleted_at
+
+CREATE TABLE audit_records (
+  id                        UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                TIMESTAMPTZ,
+
+  request_id                UUID NOT NULL,
+  actor_did                 VARCHAR(255) NOT NULL,
+  action                    VARCHAR(512) NOT NULL,
+  resource_id               VARCHAR(255),
+  timestamp                 TIMESTAMPTZ NOT NULL,
+  outcome                   VARCHAR(20) NOT NULL,
+  status_code               INT NOT NULL,
+  entity_type               VARCHAR(50),
+  jurisdiction_code         VARCHAR(10),
+  processing_time_ms        INT,
+  request_body_hash         VARCHAR(64),
+  metadata                  JSONB
+);
+
+CREATE INDEX idx_audit_records_request_id ON audit_records(request_id);
+CREATE INDEX idx_audit_records_actor ON audit_records(actor_did);
+CREATE INDEX idx_audit_records_action ON audit_records(action);
+CREATE INDEX idx_audit_records_timestamp ON audit_records(timestamp);
+CREATE INDEX idx_audit_records_outcome ON audit_records(outcome);
+
+-- ------------------------------------------------------------------------------
+-- SHARED: Outbox (event publishing)
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/shared/src/events/outbox.entity.ts
+-- Note: No soft delete. publishedAt is nullable.
+
+CREATE TABLE outbox (
+  id                        UUID PRIMARY KEY,
+  event_type                VARCHAR NOT NULL,
+  payload                   JSONB NOT NULL,
+  aggregate_type            VARCHAR NOT NULL,
+  aggregate_id              VARCHAR NOT NULL,
+  published                 BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at                TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  published_at              TIMESTAMPTZ
+);
+
+CREATE INDEX idx_outbox_unpublished ON outbox(created_at) WHERE published = FALSE;
+CREATE INDEX idx_outbox_aggregate ON outbox(aggregate_type, aggregate_id);
+CREATE INDEX idx_outbox_event_type ON outbox(event_type);
+
+-- ------------------------------------------------------------------------------
+-- SHARED: Idempotency Keys
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/shared/src/resilience/idempotency-key.entity.ts
+-- Composite PK: (key, actor_did, route)
+
+CREATE TABLE idempotency_keys (
+  key                       VARCHAR(128) NOT NULL,
+  actor_did                 VARCHAR(255) NOT NULL,
+  route                     VARCHAR(512) NOT NULL,
+  request_hash              VARCHAR(64) NOT NULL,
+  status_code               INT NOT NULL,
+  response_body             JSONB,
+  created_at                TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  expires_at                TIMESTAMPTZ NOT NULL,
+
+  PRIMARY KEY (key, actor_did, route)
+);
+
+CREATE INDEX idx_idempotency_keys_expires ON idempotency_keys(expires_at);
+CREATE INDEX idx_idempotency_keys_actor ON idempotency_keys(actor_did);

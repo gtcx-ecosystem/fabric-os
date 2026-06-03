@@ -75,9 +75,18 @@ chmod +x scripts/staging/install-intelligence-eso.sh
 ./scripts/staging/install-intelligence-eso.sh
 ```
 
-## 5. Wire orchestrator / SDK (follow-up)
+## 5. Deploy full intelligence SDK (XR-201)
 
-Current staging deployment is `intelligence-orchestrator` only. Mount `intelligence-secrets` and set `serviceAccountName: intelligence-sa` when promoting the full SDK.
+Manifest: `infra/kubernetes/overlays/staging/intelligence/deployment.yaml` (image `gtcx-intelligence-sdk`, `envFrom: intelligence-secrets`, `serviceAccountName: intelligence-sa`).
+
+```bash
+kubectl apply -k infra/kubernetes/overlays/staging/intelligence/
+kubectl rollout status deployment/intelligence-orchestrator -n intelligence
+```
+
+**INT-S3-08 acceptance** (full-stack profile): unauthenticated `/feedback/stats` → 401/403; valid `x-api-key` → 200. `/health` may stay public per SDK `AUTH_EXEMPT_PATHS` — evidence runner uses `/feedback/stats` for auth enforcement.
+
+After green: ping `gtcx-agentic` to run `run-production-readiness-with-vault.mjs` (XR-202).
 
 ## Related
 

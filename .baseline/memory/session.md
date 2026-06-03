@@ -53,7 +53,7 @@
 | Story | Title | Status | Next Action |
 |-------|-------|--------|-------------|
 | S2-01 | FIPS 140-3 feature flag | `done` | `fips-mode.mjs` + signer ECDSA P-256; 48 tests pass; gate in validate-all |
-| S2-02 | Mutable audit default path | `pending` | stdout → NATS/WORM or persistent sink |
+| S2-02 | Mutable audit default path | `done` | Production guard: AUDIT_SINK=stdout throws; defaults to NATS; gate in validate-all |
 | S2-03 | Durable offline queue | `pending` | Queue backend chosen; integration tests pass |
 
 ---

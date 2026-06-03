@@ -23,11 +23,26 @@
 import { createDiskQueue } from './disk-queue.mjs';
 
 function sinkMode() {
-  if (process.env.AUDIT_SINK) return process.env.AUDIT_SINK.toLowerCase();
+  const explicit = process.env.AUDIT_SINK?.toLowerCase();
   const env = process.env.NODE_ENV || 'development';
+  const isProdLike = env === 'production' || env === 'staging';
+
+  if (explicit) {
+    // Fail-closed: stdout is never allowed in production-like environments,
+    // even if explicitly requested. This prevents misconfigurations where
+    // AUDIT_SINK=stdout is set in a production Deployment.
+    if (isProdLike && explicit === 'stdout') {
+      throw new Error(
+        `AUDIT_SINK=stdout is not permitted in NODE_ENV=${env}. ` +
+          `Use 'nats' (recommended) or omit AUDIT_SINK to default to NATS.`
+      );
+    }
+    return explicit;
+  }
+
   // Default to durable NATS sink in production and staging;
   // stdout is acceptable only in development and test environments.
-  return (env === 'production' || env === 'staging') ? 'nats' : 'stdout';
+  return isProdLike ? 'nats' : 'stdout';
 }
 function natsSubject() { return process.env.AUDIT_NATS_SUBJECT || 'gtcx.audit.compliance-gateway'; }
 function natsUrl() { return process.env.NATS_URL || 'nats://nats.gtcx.svc.cluster.local:4222'; }

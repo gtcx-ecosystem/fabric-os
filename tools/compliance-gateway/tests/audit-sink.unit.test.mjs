@@ -12,13 +12,13 @@ import { afterEach, beforeEach, describe, it } from 'node:test';
 import { getSink, getSinkInfo, resetSink } from '../src/audit-sink.mjs';
 
 function captureStdout(fn) {
-  const original = console.warn;
+  const original = console.log;
   const captured = [];
-  console.warn = (line) => captured.push(line);
+  console.log = (line) => captured.push(line);
   try {
     fn();
   } finally {
-    console.warn = original;
+    console.log = original;
   }
   return captured;
 }
@@ -171,6 +171,48 @@ describe('audit sink', () => {
       assert.ok(info.queue, 'queue stats must be present');
     } finally {
       delete process.env.AUDIT_SINK;
+      resetSink();
+    }
+  });
+
+  it('throws when AUDIT_SINK=stdout in production', () => {
+    const originalNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    process.env.AUDIT_SINK = 'stdout';
+    resetSink();
+    try {
+      assert.throws(() => getSink(), /AUDIT_SINK=stdout is not permitted/);
+    } finally {
+      process.env.NODE_ENV = originalNodeEnv;
+      delete process.env.AUDIT_SINK;
+      resetSink();
+    }
+  });
+
+  it('throws when AUDIT_SINK=stdout in staging', () => {
+    const originalNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'staging';
+    process.env.AUDIT_SINK = 'stdout';
+    resetSink();
+    try {
+      assert.throws(() => getSink(), /AUDIT_SINK=stdout is not permitted/);
+    } finally {
+      process.env.NODE_ENV = originalNodeEnv;
+      delete process.env.AUDIT_SINK;
+      resetSink();
+    }
+  });
+
+  it('defaults to nats in production when AUDIT_SINK is unset', () => {
+    const originalNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    delete process.env.AUDIT_SINK;
+    resetSink();
+    try {
+      const info = getSinkInfo();
+      assert.strictEqual(info.mode, 'nats');
+    } finally {
+      process.env.NODE_ENV = originalNodeEnv;
       resetSink();
     }
   });

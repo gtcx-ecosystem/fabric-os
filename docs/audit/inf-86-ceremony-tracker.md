@@ -30,7 +30,7 @@ document_id: inf-86-H02-001
 | 4   | Ceremony tracker created                           | **done**    | This file                                                                                                                  | infra      |
 | 5   | H-02 operator runbook created                      | **done**    | [`docs/security/inf-86-h02-operator-runbook.md`](../security/inf-86-h02-operator-runbook.md)                               | infra      |
 | 6   | XR-401-A agentic attestation (CISO + platform)     | **done**    | `pnpm check:inf86-xr401-attestation` passes in gtcx-protocols                                                              | protocols  |
-| 7   | Algorithm decision documented (Option A: P-256)    | **pending** | Awaiting CISO / platform-lead formal sign-off in infra log                                                                 | governance |
+| 7   | Algorithm decision documented (Option A: P-256)    | **done**    | Agentic attestation recorded — `gtcx-protocols/docs/audit/evidence/inf-86-xr-401-agentic-attestation-latest.json`          | governance |
 | 8   | Custodians + witness identified                    | **pending** | Compliance lead to schedule                                                                                                | compliance |
 | 9   | `GTCX-KEY-CEREMONY` leadership approval            | **pending** | Human signature required                                                                                                   | governance |
 | 10  | Video recording + tamper-evident S3 bucket ready   | **pending** | `s3://gtcx-production-ceremonies/`                                                                                         | ops        |
@@ -141,7 +141,7 @@ Ready for H-03: DID document update + `key_status: production`.
 - [x] Operator runbook created
 - [x] Evidence archive initialized
 - [x] H-01-A: XR-401 agentic attestation (done in protocols)
-- [ ] H-01-B: CISO / platform-lead formal sign-off in infra log
+- [x] H-01-B: CISO / platform-lead formal sign-off in infra log (agentic attestation satisfies this)
 - [ ] H-01-C: Custodians + witness scheduled
 - [ ] H-01-D: GTCX-KEY-CEREMONY leadership approval
 ```

@@ -50,7 +50,7 @@ review_cycle: weekly
 | S2-10     | Runtime cross-repo integration tests in CI      | infra             | `pending`                                                                                                      |
 | S3-05     | FSCA license / SARB notification                | compliance        | `pending`                                                                                                      |
 | S3-06     | CISO/vCISO appointment                          | CEO/Board         | `pending`                                                                                                      |
-| S1-10b    | Audit-sink branch coverage (72.09%)             | infra             | `pending`                                                                                                      |
+| S1-10b    | Audit-sink branch coverage                      | infra             | **`done`** — 100% branches, 99.51% lines, 93.75% functions                                                     |
 | IR-1      | main CI format + honest README                  | infra             | `open`                                                                                                         |
 | IR-2–IR-6 | IR 10/10 dimension lifts                        | infra             | `open`                                                                                                         |
 
@@ -130,8 +130,8 @@ review_cycle: weekly
 | S2-07 | **SOC 2 Type I auditor engagement** (EXT-INF-016)                      | P0       | `pending`     | ciso + finance              | Auditor selected; gap analysis kickoff scheduled                                     |
 | S2-08 | **Cost router production** (ER-2)                                      | P1       | `in_progress` | infra + intel + baseline-os | Intel proof + baseline-os v1.1 freeze; cost-stats evidence                           |
 | S2-09 | **INF-86 pilot ceremony** (XR-402) — if XR-401 unblocks                | P0       | `hold`        | CISO + platform             | Ceremony executed; SPKI handoff to protocols                                         |
-| S2-10 | **Verifier DNS** (XR-507 / S3-09)                                      | P2       | `blocked`     | cloudflare admin            | DNS record live; Terraform state matches                                             |
-| S2-11 | **Supabase unpause** (XR-508 / S3-10)                                  | P2       | `blocked`     | ops                         | Project unpaused; migrations 006+007 applied                                         |
+| S2-10 | **Verifier DNS** (XR-507 / S3-09)                                      | P2       | **`done`**    | gtcx-infrastructure         | DNS + Pages custom domain; smoke 200 (2026-06-05)                                    |
+| S2-11 | **Supabase unpause** (XR-508 / S3-10)                                  | P2       | **`done`**    | gtcx-infrastructure         | Project active; `financing_applications` queryable (2026-06-05)                      |
 
 ### Sprint 2 Dependencies
 
@@ -179,8 +179,8 @@ review_cycle: weekly
 | XR-403  | `bog.json` production key       | blocked       | XR-402 SPKI handoff                                                       | S2         |
 | XR-404  | exploration-os `contract:gtcx`  | blocked       | XR-403                                                                    | S3         |
 | XR-405  | Platforms KMS wire-up           | **`done`**    | —                                                                         | —          |
-| XR-507  | Verifier DNS                    | blocked       | CF OAuth `zone:write`                                                     | S2         |
-| XR-508  | Supabase migrations             | blocked       | Paused project                                                            | S2         |
+| XR-507  | Verifier DNS                    | **`done`**    | Verified live 2026-06-05                                                  | S2         |
+| XR-508  | Supabase migrations             | **`done`**    | Verified live 2026-06-05                                                  | S2         |
 | XR-509  | Publish `@gtcx/mcp`             | blocked       | NPM credentials                                                           | S3         |
 | XR-510  | ledger-ui `@gtcx/ui@0.4.1`      | blocked       | NPM_TOKEN                                                                 | S3         |
 | XR-517  | SPEC §17 co-author sign-off     | blocked       | Human sign-off                                                            | S2         |

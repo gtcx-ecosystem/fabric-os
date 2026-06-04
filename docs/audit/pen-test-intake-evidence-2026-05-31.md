@@ -17,13 +17,13 @@ human_signature: pending
 
 ## Repository state
 
-| Field               | Value                                      |
-| ------------------- | ------------------------------------------ |
-| HEAD                | `0f3aea5d2bc06b23251c4b1664dd1a4f7077ad23` |
-| Branch              | `docs/roadmap-update-2026-05-30`           |
-| Internal readiness  | 7.1/10                                     |
-| Certified composite | undefined/10                               |
-| validate-all        | 36/36 gates (agent closure session)        |
+| Field               | Value                            |
+| ------------------- | -------------------------------- |
+| HEAD                | `037c9d0`                        |
+| Branch              | `docs/roadmap-update-2026-05-30` |
+| Internal readiness  | 7.1/10                           |
+| Certified composite | undefined/10                     |
+| validate-all        | 46/46 gates (all passing)        |
 
 ## Post-remediation scope anchors (attach to SOW)
 
@@ -32,6 +32,7 @@ human_signature: pending
 3. **Audit chain:** `@gtcx/audit-signer` canonical signing; catalog pinned in `tools/compliance-data/`.
 4. **Tenant isolation:** gateway tenancy contract tests; auth failures tagged `platform`.
 5. **Closed P0s (2026-05-30 audit):** F1–F4, F7, F10–F14; S2-01–S2-10, S2-14; S3 structural gates.
+6. **WORM upload workflow:** IR-3.1 complete — post-CI WORM upload with OIDC (staging bucket).
 
 ## Vendor documents (existing)
 

@@ -458,6 +458,22 @@ module "ml_pipeline" {
 }
 
 # -----------------------------------------------------------------------------
+# GCP → AWS ML bridge (Phase 3 — disabled until GCP SA unique_id is set)
+# See docs/operations/intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md
+# -----------------------------------------------------------------------------
+
+# module "gcp_ml_bridge" {
+#   source = "../../modules/gcp-ml-bridge"
+#
+#   environment                   = var.environment
+#   enabled                       = true
+#   gcp_service_account_unique_id = var.gcp_ml_sa_unique_id
+#   model_bucket_arn              = module.ml_pipeline.model_bucket_arn
+#   registry_table_arn            = module.ml_pipeline.registry_table_arn
+#   tags                          = var.tags
+# }
+
+# -----------------------------------------------------------------------------
 # Trace Pipeline (SIGNAL L5)
 # -----------------------------------------------------------------------------
 

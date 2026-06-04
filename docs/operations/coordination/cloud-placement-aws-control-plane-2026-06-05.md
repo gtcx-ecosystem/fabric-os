@@ -38,11 +38,10 @@ role: platform-engineer
 
 ## GCP bridge (when Phase 3 starts)
 
-Implement AWS side of [`global-trade-phase-3-ml-pipeline.md`](../../../../gtcx-intelligence/docs/roadmap/global-trade-phase-3-ml-pipeline.md):
+**Epic + module:** [`intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md`](../intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md) · `infra/terraform/modules/gcp-ml-bridge/` (disabled until GCP SA `unique_id` supplied).
 
-- IAM role `intelligence-gcp-ml-bridge` (WIF from GCP SA)
-- S3 `gtcx-intelligence-models/*` write from pipeline
-- DynamoDB registry updates
+- WIF OIDC + IAM role `gtcx-<env>-intelligence-gcp-ml-bridge`
+- S3 model bucket + DynamoDB registry from existing `ml-pipeline` module
 
 **No** compliance-os RDS or evidence buckets in GCP.
 

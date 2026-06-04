@@ -10,6 +10,9 @@ role: platform-engineer
 
 **Canonical ecosystem spec (SoR: gtcx-docs):** [`gtcx-docs/docs/architecture/cloud-placement/README.md`](../../../../gtcx-docs/docs/architecture/cloud-placement/README.md) → [`gtcx-ecosystem-2026-06-05.md`](../../../../gtcx-docs/docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md) · **Per-repo register:** [`repo-register-2026-06-05.md`](../../../../gtcx-docs/docs/architecture/cloud-placement/repo-register-2026-06-05.md)
 
+> **Infra agents — start here for “what do I do per repo?”**  
+> [`infra-per-repo-action-matrix-2026-06-05.md`](./infra-per-repo-action-matrix-2026-06-05.md) (P0/P1 checklist; owner vs infra split)
+
 ## Infra owns (optimize here)
 
 | Capability     | Examples in this repo                                                      |

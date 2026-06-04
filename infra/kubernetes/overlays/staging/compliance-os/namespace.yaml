@@ -1,0 +1,17 @@
+# =============================================================================
+# compliance-os-staging — Namespace
+# =============================================================================
+# Declarative companion to the imperative `kubectl create namespace`
+# applied during W2 hub #17 secrets sealing (fc0d36f).
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: compliance-os-staging
+  labels:
+    app.kubernetes.io/part-of: gtcx
+    environment: staging
+    compliance-tier: standard
+  annotations:
+    # Linkerd mesh injection for compliance-os workloads
+    linkerd.io/inject: enabled

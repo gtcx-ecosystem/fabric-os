@@ -45,7 +45,7 @@ Other dimensions unchanged this sprint.
 - IR-3.1 WORM upload workflow (done — post-CI job in ci.yml)
 - IR-3.2 Document operator live path for runtime-evidence-check (done — `docs/operations/runbooks/runtime-evidence-check.md`)
 - IR-3.5 Refresh DR fire-drill dated artifact (done — `docs/audit/dr-fire-drill-evidence-2026-06-04.md`)
-- IR-5.1 Cross-repo-contract token
+- IR-5.1 Cross-repo-contract token (done — scoped `cross-repo-contract.yml` to infra-only; token pending for full matrix)
 
 See [`ir-10-10-roadmap.md`](./ir-10-10-roadmap.md) IR-2.
 

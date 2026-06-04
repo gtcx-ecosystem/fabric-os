@@ -66,15 +66,15 @@ Agent-executable **execution-roadmap Sprints 1–3** are closed (38/38 `validate
 
 **Headline:** **IR 7.6** (2026-06-01, HEAD per `latest.json`)
 
-| Dimension             | Weight | Ledger | Adjusted | Gap to 10.0 | Primary blocker                                     |
-| --------------------- | ------ | ------ | -------- | ----------- | --------------------------------------------------- |
-| codeQuality           | 15%    | 8.0    | 8.0      | 2.0         | Tier 3–4 dependabot + AI SDK migration open         |
-| repoHygiene           | 12%    | 8.5    | **7.9**  | 2.1         | `main` CI format fail (−0.4) + job fail (−0.2)      |
-| security              | 15%    | 8.9    | 8.9      | 1.1         | CodeQL/SARIF + open security workflow on `main`     |
-| globalSouthResilience | 10%    | 6.8    | 6.8      | 3.2         | USSD soak in CI; offline verifier pack              |
-| ecosystemIntegration  | 10%    | 6.8    | 6.8      | 3.2         | `cross-repo-contract` needs `GTCX_REPO_TOKEN`       |
-| agenticMaturity       | 13%    | 8.2    | 8.2      | 1.8         | Eval gates tied to pilot KPIs; SIGNAL supplementary |
-| enterpriseReadiness   | 25%    | 6.9    | 6.9      | 3.1         | Recurring WORM **workflow**; live DR/load artifacts |
+| Dimension             | Weight | Ledger | Adjusted | Gap to 10.0 | Primary blocker                                            |
+| --------------------- | ------ | ------ | -------- | ----------- | ---------------------------------------------------------- |
+| codeQuality           | 15%    | 8.0    | 8.0      | 2.0         | Tier 3–4 dependabot + AI SDK migration open                |
+| repoHygiene           | 12%    | 8.5    | **7.9**  | 2.1         | `main` CI format fail (−0.4) + job fail (−0.2)             |
+| security              | 15%    | 8.9    | 8.9      | 1.1         | CodeQL/SARIF + open security workflow on `main`            |
+| globalSouthResilience | 10%    | 6.8    | 6.8      | 3.2         | USSD soak in CI; offline verifier pack                     |
+| ecosystemIntegration  | 10%    | 6.8    | 6.8      | 3.2         | `cross-repo-contract` scoped to infra-only (token pending) |
+| agenticMaturity       | 13%    | 8.2    | 8.2      | 1.8         | Eval gates tied to pilot KPIs; SIGNAL supplementary        |
+| enterpriseReadiness   | 25%    | 6.9    | 6.9      | 3.1         | Recurring WORM **workflow**; live DR/load artifacts        |
 
 **XC (separate):** 9.0 — do not plan here. EXT-INF register unchanged.
 
@@ -150,11 +150,11 @@ Do not publish fake “IR 8.2 after sprint N” tables — run `pnpm score:compu
 
 ### IR-5 — Ecosystem integration → **M4 (9.5)**
 
-| ID     | Work                                                                                      | Dimension            | Source                         |
-| ------ | ----------------------------------------------------------------------------------------- | -------------------- | ------------------------------ |
-| IR-5.1 | `GTCX_REPO_TOKEN` for `cross-repo-contract.yml` **or** narrow job to infra-only contracts | ecosystemIntegration | full-audit Sprint 1 #3         |
-| IR-5.2 | Re-run ecosystem-repo-review; ledger ≥9.0 with matrix green                               | ecosystemIntegration | ledger 2026-05-12 peak was 8.3 |
-| IR-5.3 | S3-12 registry tag (operator) — optional; not required for IR 10 if matrix green          | ecosystemIntegration | execution-roadmap S3-12        |
+| ID     | Work                                                                                                 | Dimension            | Source                                       |
+| ------ | ---------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------------------- |
+| IR-5.1 | ~~`GTCX_REPO_TOKEN` for `cross-repo-contract.yml`~~ Narrowed to infra-only contracts (token pending) | ecosystemIntegration | full-audit Sprint 1 #3 — **done** 2026-06-04 |
+| IR-5.2 | Re-run ecosystem-repo-review; ledger ≥9.0 with matrix green                                          | ecosystemIntegration | ledger 2026-05-12 peak was 8.3               |
+| IR-5.3 | S3-12 registry tag (operator) — optional; not required for IR 10 if matrix green                     | ecosystemIntegration | execution-roadmap S3-12                      |
 
 ---
 

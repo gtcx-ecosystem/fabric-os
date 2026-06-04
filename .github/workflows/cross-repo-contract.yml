@@ -18,12 +18,14 @@ jobs:
       fail-fast: false
       matrix:
         repo:
-          - name: gtcx-protocols
-            path: protocols
-            test-command: pnpm test
-          - name: gtcx-core
-            path: core
-            test-command: pnpm test
+          # Scoped to infra-only until GTCX_REPO_TOKEN is provisioned.
+          # To re-enable cross-repo matrix, add the secret and uncomment:
+          #   - name: gtcx-protocols
+          #     path: protocols
+          #     test-command: pnpm test
+          #   - name: gtcx-core
+          #     path: core
+          #     test-command: pnpm test
           - name: gtcx-infrastructure
             path: infrastructure
             test-command: bash infra/scripts/validate.sh quick
@@ -34,6 +36,7 @@ jobs:
           path: infrastructure
 
       - name: Checkout ${{ matrix.repo.name }}
+        if: matrix.repo.name != 'gtcx-infrastructure'
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           repository: gtcx-ecosystem/${{ matrix.repo.name }}

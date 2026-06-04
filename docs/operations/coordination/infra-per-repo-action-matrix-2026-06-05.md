@@ -119,11 +119,11 @@ Full list: register §7 in gtcx-docs.
 
 ## Post-P0 handoffs (owner repos)
 
-| Repo           | Action                                                               |
-| -------------- | -------------------------------------------------------------------- |
-| compliance-os  | Run `pnpm w2:staging-prereq-check`; hub #17 steps 2–5 when web Ready |
-| exploration-os | F-33 / `contract:gtcx` smoke against live verifier + Supabase        |
-| gtcx-agentic   | Re-run XR-008 verifier audit (was blocked on stale XR-507)           |
+| Repo           | Action                                                                            |
+| -------------- | --------------------------------------------------------------------------------- |
+| compliance-os  | Run `pnpm w2:staging-prereq-check`; hub #17 steps 2–5 when web Ready              |
+| exploration-os | F-33 / `contract:gtcx` smoke against live verifier + Supabase                     |
+| gtcx-agentic   | ~~XR-008 verifier re-audit~~ **done** 2026-06-05 — F-33/H-F prod narrative closed |
 
 Report infra platform work: `baseline-os` `pnpm ecosystem:repo:report-work --repo=gtcx-infrastructure --item="<slice>" --status=completed`.
 

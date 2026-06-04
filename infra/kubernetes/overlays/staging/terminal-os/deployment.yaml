@@ -59,7 +59,7 @@ spec:
             - name: NODE_ENV
               value: production
             - name: NEXT_PUBLIC_APP_URL
-              value: https://terminal-staging.gtcx.trade
+              value: https://terminal.gtcx.trade
             - name: NEXT_TELEMETRY_DISABLED
               value: '1'
           envFrom:

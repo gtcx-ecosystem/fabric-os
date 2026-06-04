@@ -115,13 +115,13 @@ The audit registry is provider-agnostic — the same prompts work for Claude, Co
 
 ## LLM routing + token usage (BaselineOS SoR)
 
-| Concern | Owner | Operator entry |
-| --- | --- | --- |
-| Route decisions + pricing | `baseline-os` | `baseline cost-route --prompt "..." --json` |
-| Token usage aggregate | `baseline-os` | `baseline cost-stats --json` |
-| Agent vault (populate/verify) | `gtcx-agentic` | `pnpm agent:vault:verify` |
-| Staging vs production keys | `gtcx-agentic` | `docs/operators/vault-environments.md` |
-| Ecosystem coordination | `baseline-os` | `workstream/coordination/ECOSYSTEM-COST-ROUTER-2026-06-03.md` |
+| Concern                       | Owner          | Operator entry                                                |
+| ----------------------------- | -------------- | ------------------------------------------------------------- |
+| Route decisions + pricing     | `baseline-os`  | `baseline cost-route --prompt "..." --json`                   |
+| Token usage aggregate         | `baseline-os`  | `baseline cost-stats --json`                                  |
+| Agent vault (populate/verify) | `gtcx-agentic` | `pnpm agent:vault:verify`                                     |
+| Staging vs production keys    | `gtcx-agentic` | `docs/operators/vault-environments.md`                        |
+| Ecosystem coordination        | `baseline-os`  | `workstream/coordination/ECOSYSTEM-COST-ROUTER-2026-06-03.md` |
 
 **Do not** use `baseline-os/infra/docker/.env.staging` for production vault work.
 
@@ -154,4 +154,137 @@ When a story is **blocked on a sibling repo** or you **hand off** cross-repo wor
 **Not in this repo:** inbound archive SoR for ecosystem-wide weekly reports — that stays **`baseline-os`** (`workstream/coordination/`).
 
 **Evidence paths (link only):** production smoke and EAP issuance artifacts live in owning repos per deployment-proof-index (e.g. `gtcx-intelligence/docs/audit/evidence/`).
+
+## Universal agent behavior (ANY LLM — terminal, IDE, CLI)
+
+**Applies to:** Claude, Kimi, Gemini, Codex, Cursor (IDE + `agent` CLI), Copilot, and any future agent with shell access.
+
+**Canonical doc (read every session):** `docs/operations/agent-universal-instructions.md`
+
+### Session start (provider-agnostic)
+
+```bash
+pnpm agent:session-start          # preferred when wired
+pnpm agent:next-work              # P22 selection only
+pnpm agent:next-work --json       # automation / scripts
+```
+
+If `agent:session-start` is missing: `node scripts/agent-session-start.mjs` or `node scripts/agent-next-work.mjs`.
+
+### P22 — Work selection
+
+- Run next-work; **never** ask "which story?" or present numbered menus.
+- Execute the returned story in **this repo** unless P24 handoff says switch owner repo.
+
+### P26 — Proceed Brief (then implement)
+
+Emit **one** brief, then work. Human may **stop**, **correct:**, or story ID — not pick options.
+
+**Forbidden replies:** Your call · Two options · 1./2. menus · Say push if you want · Which do you prefer? · approval of path already selected (Class R).
+
+### P27 — You run commands
+
+- Gates, dev servers (Metro/Expo background), `adb`, `git push` — in-session.
+- Report **command + exit code**.
+- Harness blocks bare `git push`? `pnpm --dir ../gtcx-agentic ecosystem:push-all` (from ecosystem root).
+- Blocked after diagnosis D1–D6? **Permission Unblock Report** — not "run locally."
+
+### P28 — Authority
+
+| Class | Behavior |
+| ----- | -------- |
+| **R** | Self-execute docs, tests, commits, normal push |
+| **A** | Run after artifact (XR, inbound ticket) |
+| **S** | Stop; Blocker Report only |
+
+### Hub specs
+
+- P22 `gtcx-docs/docs/governance/protocols/22-agent-work-selection/protocol.md`
+- P26 `gtcx-docs/docs/governance/protocols/26-agent-proceed-confirmation/protocol.md`
+- P27 `gtcx-docs/docs/governance/protocols/27-agent-execution-obligation/protocol.md`
+
+## Session start (all terminals / LLMs)
+
+```bash
+pnpm agent:session-start
+pnpm agent:session-start --json
+```
+
+Prints P22 next-work + P26 Proceed Brief skeleton. Not IDE-specific.
+
+## Protocol 26 — Proceed Brief (no menus)
+
+After P22: **one Proceed Brief → implement**. Template: `docs/operations/agent-proceed-brief-template.md` (when present).
+
+**Forbidden:** Your call · Two options · Say push if you want · path-approval ask for Class R work.
+
+## Protocol 27 — execution obligation
+
+**You run commands.** Dev servers, gates, `adb`, push — not operator checklists.
+
+**Diagnosis before human:** Shell → background → node spawn → owner repo → `ecosystem:push-all` → Unblock Report.
+
+**Forbidden:** verify locally · focus your terminal · run these commands · let me know when you've run.
+
+## Status Update (progress / handoff / end of turn)
+
+Use **after work in the turn** or when reporting cluster/repo state — not instead of Proceed Brief at session start.
+
+```markdown
+## Status Update
+
+### Done
+- <outcome> — <evidence: command exit N, commit SHA, probe result>
+
+### Next priority
+- **Owner:** <repo or role>
+- **Action:** <single imperative>
+- **Because:** <1 line — P22 ID, blocker, witness>
+
+### Approval needed
+- <only Class A or S gates — secret, prod, legal, force-push; omit section if none>
+```
+
+**Rules:** One next priority (not a menu). **Approval needed** only for real gates — never "I can push / I can help / if you want." Class **R**: execute, then show Done + Next.
+
+Template: `docs/operations/agent-status-update-template.md` · Spec: P26 §3b (gtcx-docs).
+
+## Persona selection (Phase 4 — mandatory)
+
+**Bridge:** [ecosystem-persona-bridge-2026-06.md](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-persona-bridge-2026-06.md)  
+**Registry:** [gtcx-docs institutional personas](https://github.com/gtcx-ecosystem/gtcx-docs/tree/main/docs/governance/institutional/personas)
+
+| Step | Action                                                                                        |
+| ---- | --------------------------------------------------------------------------------------------- |
+| 1    | Run `pnpm agent:next-work` — use JSON `persona.institutional` + `persona.docUrl` when present |
+| 2    | **Read** the persona `.md` file (not only the ID)                                             |
+| 3    | State **Active persona** + **Frame** in every Proceed Brief (Protocol 26)                     |
+| 4    | On **task switch**, re-select persona and read the new doc                                    |
+
+**MCP personas** (`builder`, `security`, …) apply when using BaselineOS MCP tools; **institutional** names apply in chat, commits, and hub docs.
+
+**Forbidden:** defaulting to generic coder voice for security, compliance, or coordination tasks.
+
+## Ecosystem agent learning card (normative — read every session)
+
+**Canonical SoR:** [ecosystem-agent-learning-card-2026-06.md](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-agent-learning-card-2026-06.md) (gtcx-protocols).
+
+### Read order
+
+| Step | Link |
+| ---- | ---- |
+| 1 | [Unblock playbook F1–F10](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-unblock-playbook-2026-06.md) |
+| 2 | [P26 Status Update + post-pilot gating](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/agent-status-update-and-post-pilot-gating-2026-06-06.md) |
+| 3 | [Human-external register](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/coordination/human-external-blocker-register-2026-06.md) |
+| 4 | [Cross-repo bridge — Latest updates](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/cross-repo-agent-bridge.md) |
+| 5 | This repo `docs/operations/agent-work-selection.md` · `docs/audit/auto-dev-state.md` |
+
+**End of turn:** one P26 Status Update (not a menu) → append [cross-repo-agent-log](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/cross-repo-agent-log.md) if state changed.
+
+### Rules (all repos)
+
+- **`backlogClear`** on a sibling (e.g. gtcx-protocols) does **not** stop IR in **this** repo.
+- **Class S** (H-03, DTF-5.5.4 LOI, pen-test SOW, …) → **Approval needed** only — never execute from wrong repo.
+- **Class R** (tests, manifests, capture scripts) → run in-session; never list under Approval needed.
+- **Never** execute H-03 countersign or XR-518 `--confirm` unless owner repo + Class A artifact says so.
 <!-- AGENT-SYNC:END -->

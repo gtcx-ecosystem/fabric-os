@@ -13,7 +13,14 @@
         "credentials-pointer.md",
         "execute-roadmap-pointer.md",
         "coordination-pointer.md",
-        "claude.partial.md"
+        "claude.partial.md",
+        "universal-agent-behavior.md",
+        "session-start-pointer.md",
+        "protocol-26-proceed-pointer.md",
+        "protocol-27-execution-pointer.md",
+        "agent-status-update-pointer.md",
+        "persona-pointer.md",
+        "ecosystem-learning-pointer.md"
       ]
     },
     {
@@ -24,7 +31,14 @@
         "claude.partial.md",
         "credentials-pointer.md",
         "execute-roadmap-pointer.md",
-        "coordination-pointer.md"
+        "coordination-pointer.md",
+        "universal-agent-behavior.md",
+        "session-start-pointer.md",
+        "protocol-26-proceed-pointer.md",
+        "protocol-27-execution-pointer.md",
+        "agent-status-update-pointer.md",
+        "persona-pointer.md",
+        "ecosystem-learning-pointer.md"
       ]
     },
     {
@@ -35,7 +49,14 @@
         "credentials-pointer.md",
         "execute-roadmap-pointer.md",
         "coordination-pointer.md",
-        "claude.partial.md"
+        "claude.partial.md",
+        "universal-agent-behavior.md",
+        "session-start-pointer.md",
+        "protocol-26-proceed-pointer.md",
+        "protocol-27-execution-pointer.md",
+        "agent-status-update-pointer.md",
+        "persona-pointer.md",
+        "ecosystem-learning-pointer.md"
       ],
       "createIfMissing": true
     },
@@ -47,7 +68,14 @@
         "credentials-pointer.md",
         "execute-roadmap-pointer.md",
         "coordination-pointer.md",
-        "claude.partial.md"
+        "claude.partial.md",
+        "universal-agent-behavior.md",
+        "session-start-pointer.md",
+        "protocol-26-proceed-pointer.md",
+        "protocol-27-execution-pointer.md",
+        "agent-status-update-pointer.md",
+        "persona-pointer.md",
+        "ecosystem-learning-pointer.md"
       ],
       "createIfMissing": true
     },
@@ -59,7 +87,14 @@
         "credentials-pointer.md",
         "execute-roadmap-pointer.md",
         "coordination-pointer.md",
-        "claude.partial.md"
+        "claude.partial.md",
+        "universal-agent-behavior.md",
+        "session-start-pointer.md",
+        "protocol-26-proceed-pointer.md",
+        "protocol-27-execution-pointer.md",
+        "agent-status-update-pointer.md",
+        "persona-pointer.md",
+        "ecosystem-learning-pointer.md"
       ],
       "createIfMissing": true
     }

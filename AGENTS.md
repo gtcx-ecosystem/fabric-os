@@ -421,4 +421,66 @@ After P22: **one Proceed Brief → implement**. Template: `docs/operations/agent
 **Diagnosis before human:** Shell → background → node spawn → owner repo → `ecosystem:push-all` → Unblock Report.
 
 **Forbidden:** verify locally · focus your terminal · run these commands · let me know when you've run.
+
+## Status Update (progress / handoff / end of turn)
+
+Use **after work in the turn** or when reporting cluster/repo state — not instead of Proceed Brief at session start.
+
+```markdown
+## Status Update
+
+### Done
+- <outcome> — <evidence: command exit N, commit SHA, probe result>
+
+### Next priority
+- **Owner:** <repo or role>
+- **Action:** <single imperative>
+- **Because:** <1 line — P22 ID, blocker, witness>
+
+### Approval needed
+- <only Class A or S gates — secret, prod, legal, force-push; omit section if none>
+```
+
+**Rules:** One next priority (not a menu). **Approval needed** only for real gates — never "I can push / I can help / if you want." Class **R**: execute, then show Done + Next.
+
+Template: `docs/operations/agent-status-update-template.md` · Spec: P26 §3b (gtcx-docs).
+
+## Persona selection (Phase 4 — mandatory)
+
+**Bridge:** [ecosystem-persona-bridge-2026-06.md](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-persona-bridge-2026-06.md)  
+**Registry:** [gtcx-docs institutional personas](https://github.com/gtcx-ecosystem/gtcx-docs/tree/main/docs/governance/institutional/personas)
+
+| Step | Action                                                                                        |
+| ---- | --------------------------------------------------------------------------------------------- |
+| 1    | Run `pnpm agent:next-work` — use JSON `persona.institutional` + `persona.docUrl` when present |
+| 2    | **Read** the persona `.md` file (not only the ID)                                             |
+| 3    | State **Active persona** + **Frame** in every Proceed Brief (Protocol 26)                     |
+| 4    | On **task switch**, re-select persona and read the new doc                                    |
+
+**MCP personas** (`builder`, `security`, …) apply when using BaselineOS MCP tools; **institutional** names apply in chat, commits, and hub docs.
+
+**Forbidden:** defaulting to generic coder voice for security, compliance, or coordination tasks.
+
+## Ecosystem agent learning card (normative — read every session)
+
+**Canonical SoR:** [ecosystem-agent-learning-card-2026-06.md](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-agent-learning-card-2026-06.md) (gtcx-protocols).
+
+### Read order
+
+| Step | Link |
+| ---- | ---- |
+| 1 | [Unblock playbook F1–F10](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-unblock-playbook-2026-06.md) |
+| 2 | [P26 Status Update + post-pilot gating](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/agent-status-update-and-post-pilot-gating-2026-06-06.md) |
+| 3 | [Human-external register](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/coordination/human-external-blocker-register-2026-06.md) |
+| 4 | [Cross-repo bridge — Latest updates](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/cross-repo-agent-bridge.md) |
+| 5 | This repo `docs/operations/agent-work-selection.md` · `docs/audit/auto-dev-state.md` |
+
+**End of turn:** one P26 Status Update (not a menu) → append [cross-repo-agent-log](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/cross-repo-agent-log.md) if state changed.
+
+### Rules (all repos)
+
+- **`backlogClear`** on a sibling (e.g. gtcx-protocols) does **not** stop IR in **this** repo.
+- **Class S** (H-03, DTF-5.5.4 LOI, pen-test SOW, …) → **Approval needed** only — never execute from wrong repo.
+- **Class R** (tests, manifests, capture scripts) → run in-session; never list under Approval needed.
+- **Never** execute H-03 countersign or XR-518 `--confirm` unless owner repo + Class A artifact says so.
 <!-- AGENT-SYNC:END -->

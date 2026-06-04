@@ -64,7 +64,7 @@
 | S2-11 | Supabase unpause (XR-508 / S3-10) | `blocked` | Ops dashboard |
 | S2-13 | Pen-test SOW signature | `intake ready` | Human SOW signature pending (EXT-INF-002) |
 | S3-06 | Publish primitives | `done` | `publish-npm` job in slsa-provenance.yml; tag-triggered; gate in validate-all; needs NPM_TOKEN secret |
-| S3-07 | DR live RDS restore | `done` | `rds-live-restore.sh` + runbook + gate in validate-all; evidence dir ready; operator step pending AWS creds |
+| S3-07 | DR live RDS restore | `done` | Live PITR staging operational 2026-06-04 — `docs/audit/evidence/rds-restore/rds-restore-operational-staging-20260604-080937.json` (RTO ~20m, RPO 0); side instance deleted |
 | INT-S9-01 | Wire #2 POST /v1/evidence/submit | `infra unblocked` | Routing verified + TRADEPASS_AUTH_TOKEN wired (optional); protocols endpoint + secret population remaining |
 
 ### Sprint 2 + Sprint 3: Security + Production Hardening — Done

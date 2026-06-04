@@ -49,7 +49,7 @@ The script automatically queries the latest restorable time:
 
 ```bash
 aws rds describe-db-instances \
-  --db-instance-identifier gtcx-staging-operational-db \
+  --db-instance-identifier gtcx-staging-operational \
   --region af-south-1
 ```
 
@@ -61,12 +61,12 @@ The script creates a **new** DB instance from the PITR snapshot:
 
 ```bash
 aws rds restore-db-instance-to-point-in-time \
-  --source-db-instance-identifier gtcx-staging-operational-db \
-  --target-db-instance-identifier gtcx-staging-operational-db-restore-YYYYMMDD-HHMMSS \
+  --source-db-instance-identifier gtcx-staging-operational \
+  --target-db-instance-identifier gtcx-staging-operational-restore-YYYYMMDD-HHMMSS \
   --restore-time <LatestRestorableTime> \
-  --db-instance-class db.t3.medium \
-  --vpc-security-group-ids sg-staging-rds-restore \
-  --db-subnet-group-name gtcx-staging-db-subnet-group \
+  --db-instance-class <same as source, e.g. db.t3.small> \
+  --vpc-security-group-ids <from source describe> \
+  --db-subnet-group-name gtcx-staging-db-subnet \
   --no-publicly-accessible \
   --region af-south-1
 ```
@@ -120,7 +120,7 @@ Delete the restored instance to avoid ongoing charges:
 
 ```bash
 aws rds delete-db-instance \
-  --db-instance-identifier gtcx-staging-operational-db-restore-YYYYMMDD-HHMMSS \
+  --db-instance-identifier gtcx-staging-operational-restore-YYYYMMDD-HHMMSS \
   --skip-final-snapshot \
   --region af-south-1
 ```
@@ -138,8 +138,8 @@ Each restore produces a JSON artifact:
   "date": "2026-06-05T14:30:22Z",
   "dbType": "operational",
   "environment": "staging",
-  "sourceInstance": "gtcx-staging-operational-db",
-  "targetInstance": "gtcx-staging-operational-db-restore-20260605-143022",
+  "sourceInstance": "gtcx-staging-operational",
+  "targetInstance": "gtcx-staging-operational-restore-20260605-143022",
   "steps": [
     {
       "name": "describe-source",
@@ -151,7 +151,7 @@ Each restore produces a JSON artifact:
       "name": "initiate-restore",
       "status": "PASS",
       "durationMs": 3420,
-      "detail": "target=gtcx-staging-operational-db-restore-20260605-143022"
+      "detail": "target=gtcx-staging-operational-restore-20260605-143022"
     },
     {
       "name": "poll-availability",
@@ -163,7 +163,7 @@ Each restore produces a JSON artifact:
       "name": "connectivity-check",
       "status": "PASS",
       "durationMs": 450,
-      "detail": "endpoint=gtcx-staging-operational-db-restore-...af-south-1.rds.amazonaws.com"
+      "detail": "endpoint=gtcx-staging-operational-restore-...af-south-1.rds.amazonaws.com"
     }
   ],
   "rtoMs": 897110,
@@ -185,12 +185,12 @@ Each restore produces a JSON artifact:
 
 ## Troubleshooting
 
-| Symptom                              | Cause                    | Fix                                                               |
-| ------------------------------------ | ------------------------ | ----------------------------------------------------------------- |
-| `DBInstanceStatus` hangs on creating | RDS provisioning delay   | Wait up to 1 hour; script polls automatically                     |
-| `UnauthorizedOperation`              | Missing IAM permission   | Add `rds:RestoreDBInstanceToPointInTime`                          |
-| `InvalidRestoreTime`                 | PITR window expired      | Use a more recent `LatestRestorableTime`                          |
-| psql connection refused              | Security group misconfig | Verify `sg-staging-rds-restore` allows port 5432 from operator IP |
+| Symptom                              | Cause                    | Fix                                                                       |
+| ------------------------------------ | ------------------------ | ------------------------------------------------------------------------- |
+| `DBInstanceStatus` hangs on creating | RDS provisioning delay   | Wait up to 1 hour; script polls automatically                             |
+| `UnauthorizedOperation`              | Missing IAM permission   | Add `rds:RestoreDBInstanceToPointInTime`                                  |
+| `InvalidRestoreTime`                 | PITR window expired      | Use a more recent `LatestRestorableTime`                                  |
+| psql connection refused              | Security group misconfig | Use source instance security groups; allow port 5432 from operator IP/VPN |
 
 ---
 

@@ -3,7 +3,7 @@
   "normativeDoc": "docs/operations/agent-launch-focus.md",
   "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/docs/operations/agent-launch-focus.md",
   "statePath": ".baseline/launch-focus.json",
-  "provisionedAt": "2026-06-04T19:12:19.720Z",
+  "provisionedAt": "2026-06-04T19:28:28.186Z",
   "repo": "gtcx-infrastructure",
   "northStar": {
     "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -21,23 +21,7 @@
     "label": "ZWCMP pilot + Global South 10x deploy"
   },
   "workSet": {
-    "implement": [
-      {
-        "storyId": "IR-3.5",
-        "title": "Refresh DR fire-drill dated artifact",
-        "workClass": "ops-docs",
-        "authorityClass": "S",
-        "lane": "p22-head"
-      },
-      {
-        "storyId": "OI-X02",
-        "title": "Append ER-1-08 hub ack row (gtcx-core outbound filed)",
-        "workClass": "ops-docs",
-        "lane": "coordination",
-        "because": "Launch blocker for ecosystem ER-1 evidence chain",
-        "requiresFile": "docs/operations/coordination/from-gtcx-core-er-1-08-hub-ack-2026-06-03.md"
-      }
-    ],
+    "implement": [],
     "plan": [
       {
         "storyId": "LAUNCH-PLAN-01",
@@ -72,27 +56,11 @@
       }
     ]
   },
-  "activeWorkSet": [
-    {
-      "storyId": "IR-3.5",
-      "title": "Refresh DR fire-drill dated artifact",
-      "workClass": "ops-docs",
-      "authorityClass": "S",
-      "lane": "p22-head"
-    },
-    {
-      "storyId": "OI-X02",
-      "title": "Append ER-1-08 hub ack row (gtcx-core outbound filed)",
-      "workClass": "ops-docs",
-      "lane": "coordination",
-      "because": "Launch blocker for ecosystem ER-1 evidence chain",
-      "requiresFile": "docs/operations/coordination/from-gtcx-core-er-1-08-hub-ack-2026-06-03.md"
-    }
-  ],
+  "activeWorkSet": [],
   "workSetCounts": {
-    "implement": 2,
+    "implement": 0,
     "plan": 3,
-    "witness": 0,
+    "witness": 1,
     "human": 1
   },
   "sources": [
@@ -107,6 +75,6 @@
   "agentInstructions": [
     "Launch focus (gtcx-infrastructure) — read .baseline/launch-focus.json before audits.",
     "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
-    "IMPLEMENT mode — drain 1 item(s) toward app launch / GTM."
+    "IMPLEMENT mode drained — 0 items remaining. PLAN mode for roadmap reconciliation."
   ]
 }

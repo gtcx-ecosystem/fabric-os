@@ -20,6 +20,16 @@ This repo operates within the GTCX ecosystem. All agents must reference the cano
 
 **Registry:** See `gtcx-docs/docs/governance/REGISTRY.md` for the full document index.
 
+### 1.5.1 Ecosystem cloud placement (OPS-CLOUD-PLACE-001)
+
+All infrastructure work defaults to **AWS** (`af-south-1`). GCP is used only for the intelligence ML bridge (`infra/terraform/modules/gcp-ml-bridge/`), disabled until Phase 3.
+
+| Doc | ID | Purpose |
+|-----|-----|---------|
+| Normative matrix | OPS-CLOUD-PLACE-001 | [`compliance-os/docs/operations/cloud-placement-gtcx-ecosystem-2026-06-05.md`](../../../compliance-os/docs/operations/cloud-placement-gtcx-ecosystem-2026-06-05.md) |
+| Per-repo register | OPS-CLOUD-PLACE-002 | [`compliance-os/docs/operations/cloud-placement/repo-register-2026-06-05.md`](../../../compliance-os/docs/operations/cloud-placement/repo-register-2026-06-05.md) |
+| Infra annex | — | [`docs/operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md`](./docs/operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md) |
+
 ## 1.6 Agent Startup Protocol (MANDATORY)
 
 Before making any code changes, architectural decisions, or recommendations, complete this sequence:
@@ -295,13 +305,13 @@ The audit registry is provider-agnostic — the same prompts work for Claude, Co
 
 ## LLM routing + token usage (BaselineOS SoR)
 
-| Concern | Owner | Operator entry |
-| --- | --- | --- |
-| Route decisions + pricing | `baseline-os` | `baseline cost-route --prompt "..." --json` |
-| Token usage aggregate | `baseline-os` | `baseline cost-stats --json` |
-| Agent vault (populate/verify) | `gtcx-agentic` | `pnpm agent:vault:verify` |
-| Staging vs production keys | `gtcx-agentic` | `docs/operators/vault-environments.md` |
-| Ecosystem coordination | `baseline-os` | `workstream/coordination/ECOSYSTEM-COST-ROUTER-2026-06-03.md` |
+| Concern                       | Owner          | Operator entry                                                |
+| ----------------------------- | -------------- | ------------------------------------------------------------- |
+| Route decisions + pricing     | `baseline-os`  | `baseline cost-route --prompt "..." --json`                   |
+| Token usage aggregate         | `baseline-os`  | `baseline cost-stats --json`                                  |
+| Agent vault (populate/verify) | `gtcx-agentic` | `pnpm agent:vault:verify`                                     |
+| Staging vs production keys    | `gtcx-agentic` | `docs/operators/vault-environments.md`                        |
+| Ecosystem coordination        | `baseline-os`  | `workstream/coordination/ECOSYSTEM-COST-ROUTER-2026-06-03.md` |
 
 **Do not** use `baseline-os/infra/docker/.env.staging` for production vault work.
 
@@ -340,4 +350,75 @@ When a story is **blocked on a sibling repo** or you **hand off** cross-repo wor
 - Session-start protocol from `~/.claude/CLAUDE.md` applies: read `DESIGN_BAR.md` and `AI_NATIVE_PATTERNS.md` before UI work.
 - Reject conventional UI anti-patterns: AI sidebar, AI tab, "Run AI" buttons, blank forms, dashboard-as-report.
 - No emojis, no preamble, no time estimates, lead with the answer.
+
+## Universal agent behavior (ANY LLM — terminal, IDE, CLI)
+
+**Applies to:** Claude, Kimi, Gemini, Codex, Cursor (IDE + `agent` CLI), Copilot, and any future agent with shell access.
+
+**Canonical doc (read every session):** `docs/operations/agent-universal-instructions.md`
+
+### Session start (provider-agnostic)
+
+```bash
+pnpm agent:session-start          # preferred when wired
+pnpm agent:next-work              # P22 selection only
+pnpm agent:next-work --json       # automation / scripts
+```
+
+If `agent:session-start` is missing: `node scripts/agent-session-start.mjs` or `node scripts/agent-next-work.mjs`.
+
+### P22 — Work selection
+
+- Run next-work; **never** ask "which story?" or present numbered menus.
+- Execute the returned story in **this repo** unless P24 handoff says switch owner repo.
+
+### P26 — Proceed Brief (then implement)
+
+Emit **one** brief, then work. Human may **stop**, **correct:**, or story ID — not pick options.
+
+**Forbidden replies:** Your call · Two options · 1./2. menus · Say push if you want · Which do you prefer? · approval of path already selected (Class R).
+
+### P27 — You run commands
+
+- Gates, dev servers (Metro/Expo background), `adb`, `git push` — in-session.
+- Report **command + exit code**.
+- Harness blocks bare `git push`? `pnpm --dir ../gtcx-agentic ecosystem:push-all` (from ecosystem root).
+- Blocked after diagnosis D1–D6? **Permission Unblock Report** — not "run locally."
+
+### P28 — Authority
+
+| Class | Behavior |
+| ----- | -------- |
+| **R** | Self-execute docs, tests, commits, normal push |
+| **A** | Run after artifact (XR, inbound ticket) |
+| **S** | Stop; Blocker Report only |
+
+### Hub specs
+
+- P22 `gtcx-docs/docs/governance/protocols/22-agent-work-selection/protocol.md`
+- P26 `gtcx-docs/docs/governance/protocols/26-agent-proceed-confirmation/protocol.md`
+- P27 `gtcx-docs/docs/governance/protocols/27-agent-execution-obligation/protocol.md`
+
+## Session start (all terminals / LLMs)
+
+```bash
+pnpm agent:session-start
+pnpm agent:session-start --json
+```
+
+Prints P22 next-work + P26 Proceed Brief skeleton. Not IDE-specific.
+
+## Protocol 26 — Proceed Brief (no menus)
+
+After P22: **one Proceed Brief → implement**. Template: `docs/operations/agent-proceed-brief-template.md` (when present).
+
+**Forbidden:** Your call · Two options · Say push if you want · path-approval ask for Class R work.
+
+## Protocol 27 — execution obligation
+
+**You run commands.** Dev servers, gates, `adb`, push — not operator checklists.
+
+**Diagnosis before human:** Shell → background → node spawn → owner repo → `ecosystem:push-all` → Unblock Report.
+
+**Forbidden:** verify locally · focus your terminal · run these commands · let me know when you've run.
 <!-- AGENT-SYNC:END -->

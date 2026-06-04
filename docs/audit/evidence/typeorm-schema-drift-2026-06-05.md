@@ -115,6 +115,7 @@ TypeORM `simple-json` serializes to TEXT, not JSONB. Schema uses JSONB.
 
 - [x] `tradepass_identities`, `audit_records`, `outbox`, `idempotency_keys` added to `01-schema.sql`
 - [x] K8s Jobs `migrate-shared-entities`, `migrate-tradepass-identities`, `migrate-audit-records` annotated as deprecated (idempotent safety net until TypeORM migration runner is wired)
+- [x] Jobs moved to `infra/kubernetes/jobs/archive/` — no longer active manifests
 
 ### Remaining (Phase 2 — platforms backlog)
 
@@ -148,4 +149,4 @@ Per coordination doc `from-gtcx-platforms-s2-07-typeorm-phase1-2026-06-05.md`:
 - This report: `docs/audit/evidence/typeorm-schema-drift-2026-06-05.md`
 - Canonical schema: `infra/docker/init-scripts/postgres/01-schema.sql`
 - Entities: `gtcx-platforms/platforms/*/src/**/*.entity.ts`
-- Staging migration jobs: `infra/kubernetes/jobs/staging-migrate-*.yaml`
+- Staging migration jobs (archived): `infra/kubernetes/jobs/archive/staging-migrate-*.yaml`

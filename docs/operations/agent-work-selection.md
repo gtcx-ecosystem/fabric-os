@@ -1,7 +1,7 @@
 ---
 title: 'Agent Work Selection Manifest'
 status: current
-date: 2026-06-03
+date: 2026-06-05
 owner: gtcx-infrastructure
 role: platform-architect
 tier: critical
@@ -37,33 +37,37 @@ AGENT_FRAME=regulatory-audit pnpm agent:next-work
 
 ## Active phase
 
-**Sprint 2: M2 Hardening (IR-2) + S-XR-2 cross-repo coordination**
+**Sprint 1: Infra Hardening — DONE (2026-06-05). Launch-plan mode.**
 
 When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: true`, run **witness** (`node tools/scripts/validate-all.mjs`) + refresh evidence gates — do not idle.
 
-| Artifact          | Path                                                                   |
-| ----------------- | ---------------------------------------------------------------------- |
-| Cross-repo bridge | `docs/operations/coordination/cross-repo-agent-bridge.md`              |
-| Remaining work    | `docs/operations/coordination/remaining-cross-repo-work-2026-06-03.md` |
-| Latest audit      | `docs/audit/master-audit-2026-06-02.md`                                |
+| Artifact          | Path                                                      |
+| ----------------- | --------------------------------------------------------- |
+| Cross-repo bridge | `docs/operations/coordination/cross-repo-agent-bridge.md` |
+| Latest audit      | `docs/audit/master-audit-2026-06-02.md`                   |
+| GTM audit         | `docs/audit/gtm-audit-2026-06-05.md`                      |
 
-**Cross-repo:** S-XR-1 **closed** — XR-301/302 done, INT-S3-08 done. S-XR-2 in progress.
-**Blocked (external class — skip in development frame):** S1-09 (human selection), S4-03 (protocols contract), INF-86/XR-401–405 (CISO).
+**Cross-repo:** S-XR-1 **closed** — XR-101/201 done. S-XR-2 **closed** — XR-202/301/302 done. S-XR-3: XR-401 **done**, XR-402 **ready**, XR-405 **done**. S-XR-4: XR-507 **done**, XR-508 **done**.
+**Blocked (external class — skip in development frame):** EXT-INF-002/013/014/015/016, S4-03 (protocols contract), XR-403–404 (post-ceremony).
 
 ## Work register (Protocol 22 — explicit backlog)
 
-| ID           | Title                                                          | P   | Status  | Class    |
-| ------------ | -------------------------------------------------------------- | --- | ------- | -------- |
-| IR-2.1       | Dependabot tier-3 merges                                       | P2  | blocked | external |
-| IR-2.2       | AI SDK v5→v6 migration branch + eval regression                | P1  | done    | code     |
-| IR-2.3       | CodeQL/Trivy SARIF upload graceful when Code Security disabled | P0  | done    | code     |
-| IR-3.1       | WORM upload workflow                                           | P1  | done    | code     |
-| IR-3.2       | Document operator live path for runtime-evidence-check         | P1  | done    | ops-docs |
-| IR-3.5       | Refresh DR fire-drill dated artifact                           | P1  | done    | ops-docs |
-| IR-5.1       | Cross-repo-contract token                                      | P2  | done    | code     |
-| S2-13        | Pen-test SOW signature                                         | P0  | blocked | external |
-| S4-03        | PRD-002 Tier B: align TradePass DID doc resolver contract      | P1  | blocked | external |
-| P22-INFRA-01 | Protocol 22 adoption — manifest + script + CI                  | P0  | done    | ops-docs |
+| ID             | Title                                                          | P   | Status  | Class    |
+| -------------- | -------------------------------------------------------------- | --- | ------- | -------- |
+| IR-2.1         | Dependabot tier-3 merges                                       | P2  | blocked | external |
+| IR-2.2         | AI SDK v5→v6 migration branch + eval regression                | P1  | done    | code     |
+| IR-2.3         | CodeQL/Trivy SARIF upload graceful when Code Security disabled | P0  | done    | code     |
+| IR-3.1         | WORM upload workflow                                           | P1  | done    | code     |
+| IR-3.2         | Document operator live path for runtime-evidence-check         | P1  | done    | ops-docs |
+| IR-3.5         | Refresh DR fire-drill dated artifact                           | P1  | done    | ops-docs |
+| IR-5.1         | Cross-repo-contract token                                      | P2  | done    | code     |
+| LAUNCH-PLAN-01 | Reconcile execution-roadmap + work register                    | P1  | done    | plan     |
+| LAUNCH-PLAN-02 | Refresh auto-dev-state for launch/GTM                          | P1  | done    | plan     |
+| LAUNCH-PLAN-03 | Global South 10x plan status row update                        | P1  | done    | plan     |
+| GTM-AUDIT      | Lane-5 GTM completeness audit                                  | P1  | done    | plan     |
+| S2-13          | Pen-test SOW signature                                         | P0  | blocked | external |
+| S4-03          | PRD-002 Tier B: align TradePass DID doc resolver contract      | P1  | blocked | external |
+| P22-INFRA-01   | Protocol 22 adoption — manifest + script + CI                  | P0  | done    | ops-docs |
 
 ## Implementation classes
 
@@ -83,7 +87,7 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 ## Forbidden
 
 - Asking the user which story to pick when this manifest and roadmap exist.
-- Starting external-class stories (S1-09, S2-13, S4-03, INF-86 chain) without explicit human authorization.
+- Starting external-class stories (EXT-INF-002/013/014/015/016, S4-03, INF-86 post-ceremony) without explicit human authorization.
 - Silently skipping a story that is implementable in the current frame.
 
 ## After each story

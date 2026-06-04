@@ -57,9 +57,9 @@
 
 | Story | Title | Status | Next Action |
 |-------|-------|--------|-------------|
-| S1-02 | TypeORM entity/schema drift | `in_progress` (`724cea9`) | 4 critical tables added to 01-schema.sql; 21+ remaining; drift report done. Full regeneration deferred to platforms coordination. |
-| S2-04 | PRD-002 Tier B — TradePass DID resolver | `blocked` | Blocked on gtcx-protocols contract decision |
-| S2-08 | Cost router production (ER-2) | `in_progress` | Infra unblocked (cost router live). Waiting for gtcx-intelligence credentialed inference smoke + cost-stats capture. |
+| S1-02 | TypeORM entity/schema drift | **`done`** (phase 1) | 4 critical tables in 01-schema.sql; K8s Jobs deprecated; phase 2 deferred to platforms S2-07 |
+| S2-04 | PRD-002 Tier B — TradePass DID resolver | `in_progress` | Multibase support implemented (`edb0db9`). Protocols contract delivered 2026-06-02. Remaining: seed operator + verify resolution (needs staging API key) |
+| S2-08 | Cost router production (ER-2) | **`done`** (infra) | Cost router live on intelligence-staging (`dac128d`). Waiting on gtcx-intelligence credentialed inference smoke + cost-stats capture (intelligence/baseline-os owned) |
 | S2-09 | INF-86 pilot ceremony | `hold` | Waiting for XR-401 unblock |
 | S2-10 | Verifier DNS (XR-507 / S3-09) | `blocked` | Cloudflare admin (`zone:write` token) |
 | S2-11 | Supabase unpause (XR-508 / S3-10) | `blocked` | Ops dashboard |

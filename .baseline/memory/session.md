@@ -198,3 +198,17 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - **validate-all:** 46/46 gates pass
 - **Cross-repo:** XR-401/405/507/508 done; XR-402 ready; EXT-INF-002/013/014/015/016 remain human blockers
 - **Next computed:** IR dimension lifts (IR-3.4, IR-4.1, IR-5.2, IR-6.4) or external/human actions
+
+### W2-E2E UNBLOCK — 2026-06-05
+
+**Root cause:** `COMPLIANCE_OS_TERMINAL_API_KEY` drift between terminal-os staging AWS SM secret and compliance-os-w2-secrets K8s secret. Different 44-byte values caused cross-origin 401.
+
+**Fix:**
+1. Read compliance-os canonical value from `compliance-os-w2-secrets` (K8s, compliance-os-staging)
+2. Updated AWS SM `gtcx/terminal-os/staging/api-keys` — new VersionId `c3f22785-9f93-41ee-b354-4a3e66b4376f`
+3. ESO sync verified: `terminal-os-secrets` now byte-equal to `compliance-os-w2-secrets`
+4. Restarted terminal-os deployment — rollout successful
+5. Pod env verified: 44 bytes, first 8 hex `5655424954562f49` (matches)
+6. Health check: `https://terminal-staging.gtcx.trade/api/health` → 200
+
+**Next:** compliance-os runs `pnpm w2:terminal-patch-proof`, terminal-os runs `pnpm workflow:staging-receiver-smoke`.

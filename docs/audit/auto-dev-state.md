@@ -1,68 +1,93 @@
 ---
 title: 'Auto-Dev State — gtcx-infrastructure'
 status: current
-date: '2026-06-01'
+date: '2026-06-05'
 owner: agent:platform-architect
 tier: critical
 tags: ['audit', 'auto-dev', 'sprint']
 review_cycle: on-change
 ---
 
-# Auto-Dev State — 2026-06-01
+# Auto-Dev State — 2026-06-05
 
 ## Session
 
 - **Date:** 2026-06-05
-- **Last command:** IR-3.1 WORM upload workflow; validate-all 46/46 gates
+- **Last command:** GTM audit + execution-roadmap reconciliation
 - **Branch:** `main`
-- **HEAD:** `df4c6a4` (agent-next-work fix + IR-3.1 WORM upload job)
+- **HEAD:** `00a8bbf` (gtm-audit-2026-06-05 + execution roadmap reconciliation)
 
-## Sprint closure — IR-1 (Main CI truth)
+## Sprint closure — Phase 3 Sprint 1 (Infra Hardening)
 
-| Task                                         | Status                                      |
-| -------------------------------------------- | ------------------------------------------- |
-| IR-1.1 Prettier-safe distribution snapshot   | **done**                                    |
-| IR-1.2 ci-snapshot penalties cleared (local) | **done** — verify `main` Actions after push |
-| IR-1.3 README workflow badges                | **done**                                    |
-| IR-1.4 Trivy SHA pin comments                | **done** (was already SHA-pinned)           |
-| IR-1.5 Ledger note for repo-hygiene          | **done**                                    |
+| Task                                       | Status                                                             |
+| ------------------------------------------ | ------------------------------------------------------------------ |
+| S1-01 Kustomize selector immutability      | **done** — `b1615d0`                                               |
+| S1-02 TypeORM entity/schema drift          | **in_progress** — platforms phase 1 shipped; infra refresh pending |
+| S1-03 ioredis missing                      | **done** — `0292959`                                               |
+| S1-04 AUDIT_SEAL_SECRET                    | **done** — added to staging secrets                                |
+| S1-05 Terraform IRSA drift                 | **done** — `0c72072`                                               |
+| S1-06 Production IRSA trust cleanup        | **done** — 2 statements remain                                     |
+| S1-07 Kustomize secret collision           | **done** — `ded6d9b`                                               |
+| S1-08 ER-1-08 hub ack                      | **done** — `f8e1425`                                               |
+| S1-09 Lint debt                            | **done** — `d78cb7b` + `a95d554`                                   |
+| S1-10 Coverage honesty                     | **done** — `3962176` (90.03% branches)                             |
+| S1-11 Secret scanning CI                   | **done** — gitleaks gate                                           |
+| S1-12 Rate limiting                        | **done** — k6 burst test evidence committed                        |
+| S1-13 Runtime cross-repo integration tests | **done** — health probes in CI                                     |
 
-`pnpm typecheck && pnpm lint && pnpm test && pnpm build` — **PASS**
+`node tools/scripts/validate-all.mjs` — **PASS** (46/46 gates)
+
+## Cross-repo reconciliation (2026-06-05)
+
+| XR                             | Status                                            | Evidence              |
+| ------------------------------ | ------------------------------------------------- | --------------------- |
+| XR-401 INF-86 algorithm        | **done** — CISO sign-off (ECC_NIST_P256)          | `c36a5f6`             |
+| XR-402 INF-86 ceremony         | **ready** — unblocked for scheduling              | —                     |
+| XR-405 Platforms KMS wire-up   | **done** — staging IRSA in prod KMS policy        | `b3ef031` … `a9ca4ce` |
+| XR-507 Verifier DNS            | **done** — `verify.explorationos.gtcx.trade` live | 2026-06-05            |
+| XR-508 Supabase unpause        | **done** — migrations 006/007 applied             | 2026-06-05            |
+| W2-OPS-001 terminal-os staging | **done** — EKS deployed, DNS live                 | `9fcc8cc`             |
+| INT-D05 cluster capacity       | **done** — 2→3 nodes, Litmus installed            | `89b5ab8`, `1b9333d`  |
+
+## GTM audit (lane 5)
+
+- **Output:** `docs/audit/gtm-audit-2026-06-05.md`
+- **GR Tier:** GR-T3 (enterprise pilot) + GR-T4 scaffolding (regulator path)
+- **Asset score:** 35/100 (commercial weak, regulatory strong at 85/100)
+- **4 critical gaps** map to human blockers: EXT-INF-002, -013, -014, -016
 
 ## Score delta (rubric v2)
 
-| Dimension              | Before | After   | Delta                       |
-| ---------------------- | ------ | ------- | --------------------------- |
-| **IR** (headline)      | 7.6    | **7.7** | +0.1                        |
-| repoHygiene (adjusted) | 7.9    | **8.5** | +0.6 (CI penalties cleared) |
-| **XC**                 | 9.0    | 9.0     | 0                           |
+| Dimension         | Before | After   | Delta                               |
+| ----------------- | ------ | ------- | ----------------------------------- |
+| **IR** (headline) | 7.6    | **7.6** | 0 (no dimension lifts this session) |
+| repoHygiene       | 7.9    | **7.9** | 0                                   |
+| **XC**            | 9.0    | 9.0     | 0                                   |
 
-Other dimensions unchanged this sprint.
-
-## Next sprint (IR-2)
-
-- Merge tier-3 dependabot PRs
-- IR-3.1 WORM upload workflow (done — post-CI job in ci.yml)
-- IR-3.2 Document operator live path for runtime-evidence-check (done — `docs/operations/runbooks/runtime-evidence-check.md`)
-- IR-3.5 Refresh DR fire-drill dated artifact (done — `docs/audit/dr-fire-drill-evidence-2026-06-04.md`)
-- IR-5.1 Cross-repo-contract token (done — scoped `cross-repo-contract.yml` to infra-only; token pending for full matrix)
-
-See [`ir-10-10-roadmap.md`](./ir-10-10-roadmap.md) IR-2.
+No IR dimension changes this session — work was planning/GTM reconciliation, not engineering lifts.
 
 ## EXT-INF blocked (XC — not IR)
 
-EXT-INF-002, EXT-INF-013, EXT-INF-014, EXT-INF-003 (live operator), EXT-INF-015.
+EXT-INF-002 (pen-test SOW), EXT-INF-013 (pilot owner), EXT-INF-014 (DPA), EXT-INF-015 (indemnified-SLA), EXT-INF-016 (SOC 2 auditor).
 
-> All owned by gtcx-infrastructure + GTM. Agent role: evidence appendix into infra sandbox ZIP, not running those programs.  
-> **Normative:** [ecosystem-unblock-playbook-2026-06.md](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-unblock-playbook-2026-06.md) — XC blockers **must not** freeze IR merges or INT-S9-01 intelligence path.
+> Agent role: evidence and scaffolding only. Human action required for signatures, owner assignment, and auditor selection.
+
+## Active planning tasks (Class R)
+
+| Story          | Title                                       | Status          |
+| -------------- | ------------------------------------------- | --------------- |
+| LAUNCH-PLAN-01 | Reconcile execution-roadmap + work register | **done**        |
+| LAUNCH-PLAN-02 | Refresh auto-dev-state for launch/GTM       | **in_progress** |
+| LAUNCH-PLAN-03 | Global South 10x plan status row update     | **pending**     |
 
 ## Next work (computed)
 
 Run `pnpm agent:next-work` to get the next story. Current computed next:
 
-| Story  | Tier          | Class | Command                                           |
-| ------ | ------------- | ----- | ------------------------------------------------- |
-| IR-3.1 | work-register | code  | WORM upload workflow (post-CI job, OIDC, staging) |
+| Story          | Tier         | Class | Command                        |
+| -------------- | ------------ | ----- | ------------------------------ |
+| LAUNCH-PLAN-02 | launch-focus | plan  | Refresh auto-dev-state         |
+| LAUNCH-PLAN-03 | launch-focus | plan  | Global South 10x status update |
 
 ## Resume
 

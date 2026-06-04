@@ -57,6 +57,28 @@ Not FFIEC. Not PCI-DSS. Scored against what an RBZ, CBK, or CBN examiner actuall
 
 ---
 
+## Current Status — 2026-06-05
+
+The plan below was written 2026-05-08 when "everything is committed but nothing is running." Since then, significant progress:
+
+| #   | Task                                           | Original Status | Current Status                                                                                     | Evidence                                                                               |
+| --- | ---------------------------------------------- | --------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| 1.1 | `terraform apply` — VPC, EKS, RDS, ECR, KMS    | Not started     | **Done** — staging live since May 2026                                                             | `infra/terraform/environments/staging/`                                                |
+| 1.2 | Deploy replay-guard, protocols, NATS to EKS    | Not started     | **Done** — `compliance-gateway-staging`, `gtcx-protocols-staging`, `redis-staging` all Running     | `infra/kubernetes/overlays/staging/`                                                   |
+| 1.3 | Deploy monitoring stack                        | Not started     | **Partial** — Prometheus/Grafana manifests committed; Alertmanager configured; no live traffic yet | `infra/monitoring/`                                                                    |
+| 1.4 | Wire KMS signing key                           | Not started     | **Done** — `alias/gtcx-production-sovereign-gh-bog` live; staging IRSA trusted; INF-86 unblocked   | `docs/security/key-ceremony-runbook.md`                                                |
+| 1.5 | Deploy WORM audit storage                      | Not started     | **Structural done** — WORM module + CI job (`IR-3.1`) committed; live S3 upload = operator step    | `.github/workflows/ci.yml`                                                             |
+| 1.6 | DR test: snapshot restore, verify RTO < 30 min | Not started     | **Done** — Live PITR restore 2026-06-04; RTO ~20m; RPO 0                                           | `docs/audit/evidence/rds-restore/rds-restore-operational-staging-20260604-080937.json` |
+| 1.7 | Chaos test: kill pod, verify HPA recovers      | Not started     | **Partial** — Litmus operator installed (`litmus` namespace); chaos experiments not yet run        | Commit `1b9333d`                                                                       |
+| 1.8 | Generate release evidence bundle               | Not started     | **Done** — `runtime-evidence-check` dry-run gate passes; signed bundle generation verified         | `tools/scripts/runtime-evidence-check.mjs`                                             |
+| 2.1 | Engage pen-test firm                           | Not started     | **Partial** — Vendor selected (SensePost); SOW signature pending (EXT-INF-002)                     | `docs/gtm/regulatory/pentest-scope-rfp.md`                                             |
+| 3.1 | Board signs IRP v1.0                           | Not started     | **Pending** — Document ready; board meeting not scheduled                                          | `docs/gtm/regulatory/incident-response-plan-v1.md`                                     |
+| 3.2 | Board signs RTO/RPO resolution                 | Not started     | **Pending** — Document ready; board meeting not scheduled                                          | `docs/gtm/regulatory/rto-rpo-resolution.md`                                            |
+
+**Net progress:** Gap 1 (deploy and prove) is ~80% complete. Gap 2 (pen-test) is ~30% complete (vendor selected, SOW pending). Gap 3 (board + submission) is ~10% complete (docs ready, signatures pending).
+
+---
+
 ## The Gap to 10/10
 
 Three things. That's it.

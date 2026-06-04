@@ -180,6 +180,23 @@ describe('Compliance Gateway Integration', () => {
     });
   });
 
+  describe('GET /v1/exceptions', () => {
+    it('requires audit:read permission', async () => {
+      const res = await fetchJson('/v1/exceptions', {
+        headers: { authorization: 'Bearer limited-test-token' },
+      });
+      assert.strictEqual(res.status, 403);
+    });
+
+    it('returns exceptions list with kinds filter', async () => {
+      const res = await fetchJson('/v1/exceptions?kinds=auth,rate&limit=10', {
+        headers: { authorization: 'Bearer readonly-test-token' },
+      });
+      assert.strictEqual(res.status, 200);
+      assert.ok(Array.isArray(res.body.exceptions));
+    });
+  });
+
   describe('POST /v1/query', () => {
     it('requires authentication', async () => {
       const res = await fetchJson('/v1/query', { method: 'POST' });

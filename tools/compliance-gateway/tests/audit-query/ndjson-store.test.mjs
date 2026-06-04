@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import { mkdirSync, writeFileSync, rmSync, utimesSync } from 'node:fs';
+import { mkdirSync, writeFileSync, rmSync, utimesSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, it, before, after } from 'node:test';
@@ -211,5 +211,68 @@ describe('NdjsonQueryStore — caching', () => {
     store.invalidate();
     const r = await store.query({ tenantId: 'invalidate-test' });
     assert.strictEqual(r.events[0].id, 'updated');
+  });
+});
+
+describe('NdjsonQueryStore — cache hit path', () => {
+  it('uses cache when mtime is unchanged between queries', async () => {
+    const tenantDir = join(scratchRoot, 'cache-hit');
+    mkdirSync(tenantDir);
+    const fp = join(tenantDir, 'batch.ndjson');
+    writeNdjson(fp, [event({ id: 'v1' })]);
+    const store = new NdjsonQueryStore({ rootDir: scratchRoot });
+
+    // First query populates cache
+    let r = await store.query({ tenantId: 'cache-hit' });
+    assert.strictEqual(r.events[0].id, 'v1');
+
+    // Second query immediately after should hit cache (mtime unchanged)
+    r = await store.query({ tenantId: 'cache-hit' });
+    assert.strictEqual(r.events[0].id, 'v1');
+    assert.strictEqual(r.events.length, 1);
+  });
+});
+
+describe('NdjsonQueryStore — default parse error logger', () => {
+  it('logs short malformed lines via default logger', async () => {
+    const tenantDir = join(scratchRoot, 'default-logger-short');
+    mkdirSync(tenantDir);
+    writeFileSync(join(tenantDir, 'bad.ndjson'), 'not-json\n');
+    const store = new NdjsonQueryStore({ rootDir: scratchRoot });
+
+    const errors = [];
+    const originalError = console.error;
+    console.error = (...args) => errors.push(args);
+    try {
+      const r = await store.query({ tenantId: 'default-logger-short' });
+      assert.deepStrictEqual(r.events, []);
+      assert.strictEqual(errors.length, 1);
+      const log = JSON.parse(errors[0][0]);
+      assert.strictEqual(log.type, 'ndjson-store.parseError');
+      assert.strictEqual(log.linePreview, 'not-json');
+    } finally {
+      console.error = originalError;
+    }
+  });
+
+  it('truncates long malformed lines (>80 chars) via default logger', async () => {
+    const tenantDir = join(scratchRoot, 'default-logger-long');
+    mkdirSync(tenantDir);
+    const longLine = 'x'.repeat(100);
+    writeFileSync(join(tenantDir, 'bad.ndjson'), `${longLine}\n`);
+    const store = new NdjsonQueryStore({ rootDir: scratchRoot });
+
+    const errors = [];
+    const originalError = console.error;
+    console.error = (...args) => errors.push(args);
+    try {
+      const r = await store.query({ tenantId: 'default-logger-long' });
+      assert.deepStrictEqual(r.events, []);
+      assert.strictEqual(errors.length, 1);
+      const log = JSON.parse(errors[0][0]);
+      assert.strictEqual(log.linePreview, 'x'.repeat(80) + '…');
+    } finally {
+      console.error = originalError;
+    }
   });
 });

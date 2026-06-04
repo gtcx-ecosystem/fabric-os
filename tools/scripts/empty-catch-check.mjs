@@ -25,16 +25,16 @@ const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const ALLOWLIST = new Set([
   // Shutdown / drain paths — these run during process termination
   // and reraising would prevent clean teardown.
-  'tools/compliance-gateway/src/audit-sink.mjs:138', // await natsClient.drain() during sink.close()
+  'tools/compliance-gateway/src/audit-sink.mjs:139', // await natsClient.drain() during sink.close()
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:151', // fall-through path with cleanup
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:154', // client.disconnect() during shutdown
   'tools/compliance-gateway/src/adaptive-policy-store.mjs:244', // await client.quit() during dispose
-  'tools/compliance-gateway/src/adaptive-policy-store.mjs:279', // await activeStore.close() during reset
+  'tools/compliance-gateway/src/adaptive-policy-store.mjs:280', // await activeStore.close() during reset
   // budget-store shutdown / already-closed paths
   'tools/compliance-gateway/src/budget-store.mjs:134', // client.disconnect() during dispose
   'tools/compliance-gateway/src/budget-store.mjs:192', // already closed during teardown
-  'tools/compliance-gateway/src/budget-store.mjs:243', // best-effort reset during swap
-  'tools/compliance-gateway/src/budget-store.mjs:248', // best-effort close during swap
+  'tools/compliance-gateway/src/budget-store.mjs:244', // best-effort reset during swap
+  'tools/compliance-gateway/src/budget-store.mjs:249', // best-effort close during swap
   // NATS stream already-exists (race-safe creation) + shutdown drain.
   'tools/audit-flush/src/nats-consumer.mjs:75',
   'tools/audit-flush/src/nats-consumer.mjs:187',

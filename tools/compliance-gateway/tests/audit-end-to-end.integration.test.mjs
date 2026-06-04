@@ -36,15 +36,15 @@ function freshKeyB64() {
 }
 
 function captureStdout(fn) {
-  const original = console.warn;
+  const original = console.log;
   const errOriginal = console.error;
   const captured = [];
-  console.warn = (line) => captured.push(line);
+  console.log = (line) => captured.push(line);
   console.error = () => {};
   try {
     fn();
   } finally {
-    console.warn = original;
+    console.log = original;
     console.error = errOriginal;
   }
   return captured;

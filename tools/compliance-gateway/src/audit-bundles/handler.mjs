@@ -78,6 +78,7 @@ export async function processBundle(args) {
         body: { error: `envelope-${err.reason}`, acceptedIds: [] },
       };
     }
+    /* c8 ignore next 4 — defensive: verifyEnvelope should only throw EnvelopeVerificationError */
     return {
       status: 500,
       body: { error: 'envelope-unexpected-failure', acceptedIds: [] },

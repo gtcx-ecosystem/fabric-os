@@ -31,6 +31,7 @@ async function getRedis({ redisUrl = process.env.REDIS_URL, RedisCtor } = {}) {
     const client = new Redis(redisUrl, {
       maxRetriesPerRequest: 3,
       lazyConnect: true,
+      /* c8 ignore next 3 — only exercised during live connection retries */
       retryStrategy(times) {
         return times > 3 ? null : Math.min(times * 100, 1000);
       },

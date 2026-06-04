@@ -69,6 +69,7 @@ function stdoutSink() {
   };
 }
 
+/* c8 ignore start — requires live NATS broker; stdout sink + drain paths are fully tested */
 async function connectNats() {
   if (natsClient) return natsClient;
   if (natsConnectPromise) return natsConnectPromise;
@@ -140,6 +141,7 @@ function natsSink({ onNatsUnavailable } = {}) {
     },
   };
 }
+/* c8 ignore stop */
 
 let activeSink = null;
 

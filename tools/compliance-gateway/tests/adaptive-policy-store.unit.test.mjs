@@ -62,6 +62,18 @@ describe('adaptive-policy-store — memory backend (default)', () => {
     assert.strictEqual(info.initialized, false);
   });
 
+  it('getStore() returns the same cached store on subsequent calls', async () => {
+    const first = await getStore();
+    const second = await getStore();
+    assert.strictEqual(first, second);
+  });
+
+  it('_resetForTests swallows close errors', async () => {
+    const store = await getStore();
+    store.close = async () => { throw new Error('close boom'); };
+    await assert.doesNotReject(() => _resetForTests());
+  });
+
   it('two independent process simulations DO drift (memory backend property)', async () => {
     // First "pod"
     const a = await getStore();
@@ -104,5 +116,14 @@ describe('adaptive-policy-store — Redis backend falls back to memory when iore
     const state = await store.read();
     assert.ok(state);
     assert.ok(typeof state.mode === 'string');
+  });
+
+  it('covers the redis branch via dynamic import with env pre-set', async () => {
+    process.env.GTCX_ADAPTIVE_STORE_BACKEND = 'redis';
+    const mod = await import('../src/adaptive-policy-store.mjs?v=redis-branch');
+    const store = await mod.getStore();
+    assert.ok(store);
+    assert.ok(['memory', 'redis'].includes(store.backend));
+    await mod._resetForTests();
   });
 });

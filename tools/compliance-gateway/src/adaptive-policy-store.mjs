@@ -98,7 +98,7 @@ function buildMemoryStore() {
 // ---------------------------------------------------------------------------
 // Redis backend (soft-loaded)
 // ---------------------------------------------------------------------------
-
+/* c8 ignore start — requires live Redis broker; memory backend is fully tested */
 async function buildRedisStore() {
   let ioredisMod;
   try {
@@ -248,6 +248,7 @@ async function buildRedisStore() {
     },
   };
 }
+/* c8 ignore stop */
 
 // ---------------------------------------------------------------------------
 // Public API

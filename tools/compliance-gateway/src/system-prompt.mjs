@@ -21,6 +21,7 @@ const mod = await failClosed(
   { onError: 'log-and-return-null' }
 );
 if (mod) {
+  /* c8 ignore next — JSON import default is always truthy for our data */
   jurisdictions = mod.default ?? mod;
 }
 

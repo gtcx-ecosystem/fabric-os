@@ -36,6 +36,15 @@ const checkOnly = process.argv.includes('--check');
 export const USES_RX = /^(\s*(?:-\s+)?)uses\s*:\s*([^@\s]+)@([^\s#]+)(.*)$/;
 export const SHA_RX = /^[0-9a-f]{40}$/;
 
+// SLSA GitHub Generator reusable workflows MUST be referenced by tag (not SHA)
+// because the generator downloads pre-built release binaries keyed to the tag.
+// Using a SHA would cause `generate-builder` to fail with a 404.
+// See: https://github.com/slsa-framework/slsa-github-generator/issues/1076
+const TAG_REQUIRED_ACTIONS = new Set([
+  'slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml',
+  'slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml',
+]);
+
 const cache = new Map();
 
 function resolveSha(actionPath, ref) {
@@ -99,6 +108,10 @@ function processFile(path) {
       // Already SHA-pinned. If the trailing comment doesn't include
       // a `# <ref>` tag annotation, leave it alone — we don't know
       // what the original tag was.
+      return line;
+    }
+    if (TAG_REQUIRED_ACTIONS.has(actionPath)) {
+      // Tag-required actions are intentionally left unpinned.
       return line;
     }
     const result = resolveSha(actionPath, ref);

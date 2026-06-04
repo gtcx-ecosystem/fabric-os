@@ -9,6 +9,21 @@ import { describe, it, before, after } from 'node:test';
 
 const originalFetch = global.fetch;
 
+describe('listToolsForAccess', () => {
+  it('lists tools accessible to the given profile', async () => {
+    const { listToolsForAccess } = await import('../src/tools.mjs?v=list1');
+    const tools = listToolsForAccess({
+      canMutate: false,
+      canQuery: true,
+      permissions: ['query:read'],
+      subject: 'test-operator',
+    });
+    assert.ok(Array.isArray(tools));
+    assert.ok(tools.some((t) => t.name === 'tradepass_resolveIdentity'));
+    assert.ok(!tools.some((t) => t.name === 'tradepass_createIdentity'));
+  });
+});
+
 describe('protocolTool execute', () => {
   before(() => {
     process.env.PROTOCOL_BASE_URL = 'http://test-protocol.local';
@@ -17,6 +32,28 @@ describe('protocolTool execute', () => {
   after(() => {
     global.fetch = originalFetch;
     delete process.env.PROTOCOL_BASE_URL;
+  });
+
+  it('calls the protocol endpoint via raw tool definition (no access profile)', async () => {
+    let capturedRequest = null;
+    global.fetch = async (url, init) => {
+      capturedRequest = { url, init };
+      return {
+        json: async () => ({ success: true, data: 'mocked' }),
+      };
+    };
+
+    const { toolDefinitions } = await import('../src/tools.mjs?v=raw1');
+    const result = await toolDefinitions.tradepass_resolveIdentity.execute({ did: 'did:gtcx:test-123' });
+
+    assert.strictEqual(capturedRequest.url, 'http://test-protocol.local/v1/tradepass/resolveIdentity');
+    assert.strictEqual(capturedRequest.init.method, 'POST');
+    assert.strictEqual(capturedRequest.init.headers['Content-Type'], 'application/json');
+    assert.strictEqual(
+      capturedRequest.init.headers['X-GTCX-Gateway-Principal'],
+      undefined
+    );
+    assert.deepStrictEqual(result, { success: true, data: 'mocked' });
   });
 
   it('calls the protocol endpoint with correct headers and body', async () => {

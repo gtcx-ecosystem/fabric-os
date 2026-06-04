@@ -114,7 +114,7 @@ function buildMemoryStore() {
 // ---------------------------------------------------------------------------
 // Redis backend — shared across all gateway pods.
 // ---------------------------------------------------------------------------
-
+/* c8 ignore start — requires live Redis broker; memory backend + fallback path are fully tested */
 async function buildRedisStore() {
   let RedisCtor;
   try {
@@ -198,6 +198,7 @@ async function buildRedisStore() {
     },
   };
 }
+/* c8 ignore stop */
 
 // ---------------------------------------------------------------------------
 // Factory + lazy init

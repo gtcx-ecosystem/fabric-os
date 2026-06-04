@@ -70,6 +70,7 @@ function normalizeIp(ip) {
 
 function ipv4ToBytes(ip) {
   const parts = ip.split('.').map((part) => Number(part));
+  /* c8 ignore next 4 — defensive: isIP already validated the shape */
   if (
     parts.length !== 4 ||
     parts.some((part) => !Number.isInteger(part) || part < 0 || part > 255)

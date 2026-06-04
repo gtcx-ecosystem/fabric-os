@@ -1,0 +1,13 @@
+# =============================================================================
+# terminal-os-staging namespace
+# =============================================================================
+# W2-OPS-001: Host terminal-os on EKS instead of Vercel.
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: terminal-os-staging
+  labels:
+    app.kubernetes.io/part-of: gtcx
+    app.kubernetes.io/component: terminal-os
+    environment: staging

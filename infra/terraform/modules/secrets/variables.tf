@@ -41,6 +41,18 @@ variable "compliance_os_service_account" {
   default     = "compliance-os-sa"
 }
 
+variable "terminal_os_namespace" {
+  description = "Kubernetes namespace for terminal-os ESO (W2-OPS-001)"
+  type        = string
+  default     = "terminal-os-staging"
+}
+
+variable "terminal_os_service_account" {
+  description = "Service account for terminal-os ESO IRSA"
+  type        = string
+  default     = "terminal-os-sa"
+}
+
 variable "tags" {
   description = "Additional tags"
   type        = map(string)

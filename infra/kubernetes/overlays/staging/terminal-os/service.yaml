@@ -1,0 +1,22 @@
+# =============================================================================
+# terminal-os — Staging Service
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: terminal-os
+  namespace: terminal-os-staging
+  labels:
+    app: terminal-os
+    tier: frontend
+    environment: staging
+spec:
+  type: ClusterIP
+  selector:
+    app: terminal-os
+    environment: staging
+  ports:
+    - name: http
+      port: 3000
+      targetPort: http
+      protocol: TCP

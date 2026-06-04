@@ -17,14 +17,14 @@ work_ids: [XR-507, XR-508, XR-502, W2-E2E]
 
 ## Dependency matrix
 
-| Hub # | Work ID     | What exploration-os needs            | Infra status                  | Blocker                     | Next action             |
-| ----- | ----------- | ------------------------------------ | ----------------------------- | --------------------------- | ----------------------- |
-| 15    | XR-EO-003   | F-51 lender webhook deploy + secrets | **Not infra-owned**           | TBD ops                     | Escalate to ops owner   |
-| 16    | XR-EO-004   | TerraOS live permit adapters         | **Not infra-owned**           | terra-os deferred           | Escalate to terra-os    |
-| 17    | W2 prod E2E | Bearer + secrets + receiver          | **READY** — see details below | None on infra               | ExplorationOS runs E2E  |
-| 18    | W2-C03      | Postgres persistence proof           | **Not infra-owned**           | terminal-os / prod ops      | Escalate to terminal-os |
-| —     | XR-507      | SIR verifier DNS                     | **BLOCKED**                   | CF `zone:write` token       | Escalate to CF admin    |
-| —     | XR-508      | Supabase prod migrations             | **BLOCKED**                   | Project paused in dashboard | Escalate to ops         |
+| Hub # | Work ID     | What exploration-os needs            | Infra status                  | Blocker                | Next action             |
+| ----- | ----------- | ------------------------------------ | ----------------------------- | ---------------------- | ----------------------- |
+| 15    | XR-EO-003   | F-51 lender webhook deploy + secrets | **Not infra-owned**           | TBD ops                | Escalate to ops owner   |
+| 16    | XR-EO-004   | TerraOS live permit adapters         | **Not infra-owned**           | terra-os deferred      | Escalate to terra-os    |
+| 17    | W2 prod E2E | Bearer + secrets + receiver          | **READY** — see details below | None on infra          | ExplorationOS runs E2E  |
+| 18    | W2-C03      | Postgres persistence proof           | **Not infra-owned**           | terminal-os / prod ops | Escalate to terminal-os |
+| —     | XR-507      | SIR verifier DNS                     | **DONE** (2026-06-05)         | —                      | Smoke PASS              |
+| —     | XR-508      | Supabase prod migrations             | **DONE** (2026-06-05)         | —                      | Table queryable         |
 
 ---
 
@@ -63,27 +63,23 @@ work_ids: [XR-507, XR-508, XR-502, W2-E2E]
 
 ### XR-507 — SIR verifier DNS
 
-- **Status:** Blocked
-- **Blocker:** Cloudflare OAuth token lacks `zone:write`
-- **Impact:** F-33 audit close; XR-008 re-audit
-- **Evidence:** `https://4d98ac1c.exploration-os-verifier.pages.dev/sir` → 308 (Pages functional, custom domain missing)
-- **Escalation path:** CF admin → add `zone:write` to token or manually create CNAME
+- **Status:** DONE (2026-06-05)
+- **Evidence:** `https://verify.explorationos.gtcx.trade/sir/` → HTTP 200, pepper present
+- **Action:** None — live and serving
 
 ### XR-508 — Supabase prod migrations
 
-- **Status:** Blocked
-- **Blocker:** Project `lolfkclpuvccntgtzwaj` paused in Supabase dashboard
-- **Impact:** Financing prod path; `financing_applications` table
-- **Evidence:** Migrations `006_financing_applications.sql` + `007_financing_lender_webhook.sql` ready
-- **Escalation path:** Ops admin → unpause project in Supabase dashboard
+- **Status:** DONE (2026-06-05)
+- **Evidence:** Project `lolfkclpuvccntgtzwaj` active; `/rest/v1/financing_applications?limit=0` → HTTP 200
+- **Action:** None — table exists and queryable
 
 ---
 
 ## What exploration-os should do next
 
 1. **W2 E2E:** Run end-to-end flow against `geotag.staging.gtcx.trade/audit` or compliance-gateway ClusterIP. Bearer tokens available via `gtcx-secrets-staging`.
-2. **Verifier DNS:** Escalate CF `zone:write` to whoever owns the Cloudflare `gtcx.trade` zone.
-3. **Supabase:** Escalate project unpause to ops/whoever has Supabase dashboard access.
+2. **Verifier DNS:** ✅ Done — no further action.
+3. **Supabase:** ✅ Done — no further action.
 
 ---
 

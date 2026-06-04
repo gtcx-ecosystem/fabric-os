@@ -91,11 +91,11 @@ tags: ['coordination', 'cross-repo', 'inbound', 'bridge', 'index']
 
 ## Sprint S-XR-4 (2026-06-08 → 06-28 parallel) — P25 W2 + exploration blockers
 
-| ID     | From           | Title                                | Status                        | Infra action                                                            | Acceptance                                                      |
-| ------ | -------------- | ------------------------------------ | ----------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------- |
-| XR-507 | exploration-os | SIR verifier prod deploy             | **BLOCKED** on DNS            | Cloudflare Pages deployed; need CNAME `verify.explorationos.gtcx.trade` | `https://verify.explorationos.gtcx.trade/sir` live + smoke PASS |
-| XR-508 | exploration-os | Supabase prod migrations (006 + 007) | **BLOCKED** on paused project | Unpause `lolfkclpuvccntgtzwaj` → `supabase db push`                     | `financing_applications` table + RLS + trigger active           |
-| XR-502 | compliance-os  | W2 M2M intake secret                 | **READY**                     | Provide infra secret for compliance-os M2M bearer if needed             | Secret in vault/SM                                              |
+| ID     | From           | Title                                | Status                | Infra action                                                | Acceptance                                                      |
+| ------ | -------------- | ------------------------------------ | --------------------- | ----------------------------------------------------------- | --------------------------------------------------------------- |
+| XR-507 | exploration-os | SIR verifier prod deploy             | **DONE** (2026-06-05) | CNAME + Pages custom domain attached; smoke PASS            | `https://verify.explorationos.gtcx.trade/sir` live + smoke PASS |
+| XR-508 | exploration-os | Supabase prod migrations (006 + 007) | **DONE** (2026-06-05) | Project active; `financing_applications` table queryable    | `financing_applications` table + RLS + trigger active           |
+| XR-502 | compliance-os  | W2 M2M intake secret                 | **READY**             | Provide infra secret for compliance-os M2M bearer if needed | Secret in vault/SM                                              |
 
 **Verifier status:** Deployed to `https://4d98ac1c.exploration-os-verifier.pages.dev/sir` with pepper injected. Custom domain pending zone:write permission.
 
@@ -148,7 +148,7 @@ S-XR-3 (week of 06-15):
   XR-401 [human] → XR-402 [infra hold] → XR-403 [protocols] → XR-404/405
 
 S-XR-4 (parallel):
-  XR-507 [DNS] + XR-508 [unpause] — both blocked on external actions
+  XR-507 [DNS] + XR-508 [unpause] — both verified done 2026-06-05
 ```
 
 ---

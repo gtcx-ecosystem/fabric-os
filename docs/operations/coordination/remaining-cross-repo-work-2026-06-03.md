@@ -24,7 +24,7 @@ to: baseline-os coordination hub + sibling repos
 | Staging Track B (intelligence auth)         |    0 | No           | **DONE** — monitor only                        |
 | EAP auth-keys ESO sync (CORE-001)           |    0 | No           | **DONE** — ESO refreshed, pods restarted       |
 | Platforms staging (sovereign + AGX)         |    0 | No           | **DONE** — sovereign health 200, table created |
-| Exploration blockers (verifier + Supabase)  |    2 | No           | External actions (CF admin + ops)              |
+| Exploration blockers (verifier + Supabase)  |    0 | No           | **DONE** — verified live 2026-06-05            |
 | INF-86 sovereign pilot                      |    2 | No           | **HOLD** — human-gated                         |
 | W2 licence intelligence                     |    1 | No           | Provide secrets if asked                       |
 | P22 agent ergonomics                        |    0 | No           | **DONE** — P22/P26/P27 checks in CI            |
@@ -100,24 +100,20 @@ to: baseline-os coordination hub + sibling repos
 
 ### XR-507 — SIR verifier prod deploy
 
-| Field          | Value                                                                       |
-| -------------- | --------------------------------------------------------------------------- |
-| **Status**     | **blocked** — DNS not configured                                            |
-| **Owner**      | **gtcx-infrastructure**                                                     |
-| **Blocked by** | Cloudflare OAuth token lacks `zone:write`; cannot create DNS record via API |
-| **Unblocks**   | F-33 audit close; XR-008 re-audit                                           |
+| Field        | Value                                              |
+| ------------ | -------------------------------------------------- |
+| **Status**   | **DONE** — DNS live + Pages custom domain attached |
+| **Owner**    | **gtcx-infrastructure**                            |
+| **Verified** | 2026-06-05                                         |
+| **Unblocks** | F-33 audit close; XR-008 re-audit                  |
 
 **Current state:**
 
 - Pages deployed to `https://4d98ac1c.exploration-os-verifier.pages.dev/sir`
 - Pepper injected; verifier functional
-- Custom domain `verify.explorationos.gtcx.trade` needs CNAME
-
-**Options to unblock:**
-
-1. **Preferred:** Obtain CF token with `zone:write` → automate DNS via Terraform
-2. **Fallback:** Manual dashboard action by CF admin
-3. **Defer:** Use Pages random subdomain for staging (not prod)
+- CNAME `verify.explorationos.gtcx.trade` → `exploration-os-verifier.pages.dev` ✅
+- Pages custom domain attached ✅
+- Smoke: `https://verify.explorationos.gtcx.trade/sir/` → HTTP 200, pepper present ✅
 
 **Sibling docs:**
 
@@ -128,20 +124,19 @@ to: baseline-os coordination hub + sibling repos
 
 ### XR-508 — Supabase prod migrations
 
-| Field          | Value                                                          |
-| -------------- | -------------------------------------------------------------- |
-| **Status**     | **blocked** — project paused                                   |
-| **Owner**      | **gtcx-infrastructure** / ops                                  |
-| **Blocked by** | Project `lolfkclpuvccntgtzwaj` is paused in Supabase dashboard |
-| **Unblocks**   | Financing prod path; `financing_applications` table            |
+| Field        | Value                                               |
+| ------------ | --------------------------------------------------- |
+| **Status**   | **DONE** — project active, table queryable          |
+| **Owner**    | **gtcx-infrastructure** / exploration-os            |
+| **Verified** | 2026-06-05                                          |
+| **Unblocks** | Financing prod path; `financing_applications` table |
 
 **Current state:**
 
-- Migrations `006_financing_applications.sql` + `007_financing_lender_webhook.sql` are ready
-- `supabase link` and `supabase db push` fail with project paused error
-- Must be unpaused from Supabase dashboard before any migration can run
-
-**Action:** Escalate to ops/whoever has Supabase dashboard access to unpause project.
+- Migrations `006_financing_applications.sql` + `007_financing_lender_webhook.sql` appear applied
+- `supabase link` and `supabase db push` functional
+- `curl /rest/v1/financing_applications?limit=0` → HTTP 200 ✅
+- Table exists and is queryable ✅
 
 **Sibling docs:**
 

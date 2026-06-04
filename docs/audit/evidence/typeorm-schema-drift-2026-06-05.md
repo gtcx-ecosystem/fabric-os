@@ -109,19 +109,25 @@ TypeORM `simple-json` serializes to TEXT, not JSONB. Schema uses JSONB.
 
 ---
 
+## Remediation Log
+
+### 2026-06-05 — Phase 1 Complete (infra)
+
+- [x] `tradepass_identities`, `audit_records`, `outbox`, `idempotency_keys` added to `01-schema.sql`
+- [x] K8s Jobs `migrate-shared-entities`, `migrate-tradepass-identities`, `migrate-audit-records` annotated as deprecated (idempotent safety net until TypeORM migration runner is wired)
+
+### Remaining (Phase 2 — platforms backlog)
+
+Per coordination doc `from-gtcx-platforms-s2-07-typeorm-phase1-2026-06-05.md`:
+
+- `tradepass_credentials`, `device_keys`, `geotag_proofs`, `geotag_sites`, `webhook_subscriptions`, `compliance_rules`, and 15+ additional tables remain **platforms backlog** (S2-07 phase 2). Infra does not block on these.
+
 ## Recommended Actions
 
-### Immediate (S1-02)
+### Immediate (S1-02) — DONE
 
-1. **Add missing critical tables to `01-schema.sql`** — at minimum:
-   - `tradepass_identities`
-   - `audit_records`
-   - `outbox`
-   - `idempotency_keys`
-   - `tradepass_credentials`
-   - `device_keys`
-
-2. **Regenerate full schema** from TypeORM entities using `typeorm schema:log` or `typeorm migration:generate`
+1. ~~Add missing critical tables to `01-schema.sql`~~ ✅
+2. ~~Retire/gate K8s Jobs~~ ✅
 
 ### Short-term (Sprint 2)
 

@@ -6,6 +6,11 @@ metadata:
   labels:
     app: migrate-shared-entities
     environment: staging
+  annotations:
+    # DEPRECATED 2026-06-05: Tables now in 01-schema.sql (S1-02 phase 1).
+    # Retain until TypeORM migration runner is wired in deploy (phase 2).
+    gtcx.io/deprecated: '2026-06-05'
+    gtcx.io/reason: 'Tables created by postgres init script; job is idempotent safety net'
 spec:
   ttlSecondsAfterFinished: 3600
   template:

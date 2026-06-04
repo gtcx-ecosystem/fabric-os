@@ -1158,3 +1158,554 @@ CREATE TABLE idempotency_keys (
 
 CREATE INDEX idx_idempotency_keys_expires ON idempotency_keys(expires_at);
 CREATE INDEX idx_idempotency_keys_actor ON idempotency_keys(actor_did);
+
+-- =============================================================================
+-- S1-02 REMEDIATION: Phase 2 — Remaining platform parity tables (2026-06-05)
+-- =============================================================================
+-- These tables were missing from the canonical schema but exist in TypeORM
+-- entities across platforms/shared, platforms/sovereign, platforms/veritas,
+-- platforms/tradepass, and platforms/operations.
+-- Source: gtcx-platforms/platforms/*/src/**/*.entity.ts
+-- =============================================================================
+
+-- ------------------------------------------------------------------------------
+-- SHARED: Compliance Rules
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/shared/src/compliance/compliance-rule.entity.ts
+
+CREATE TABLE compliance_rules (
+  id                          VARCHAR PRIMARY KEY,
+  jurisdiction_code           VARCHAR NOT NULL,
+  subject                     VARCHAR NOT NULL,
+  name                        VARCHAR NOT NULL,
+  condition                   TEXT NOT NULL,
+  severity                    VARCHAR NOT NULL,
+  message                     VARCHAR NOT NULL,
+  remediation_steps           JSONB,
+  active                      BOOLEAN NOT NULL DEFAULT TRUE,
+  version                     INT NOT NULL DEFAULT 1,
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_compliance_rules_jurisdiction ON compliance_rules(jurisdiction_code);
+CREATE INDEX idx_compliance_rules_subject ON compliance_rules(subject);
+CREATE INDEX idx_compliance_rules_active ON compliance_rules(active);
+
+-- ------------------------------------------------------------------------------
+-- SHARED: Device Keys
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/shared/src/crypto/device-key.entity.ts
+
+CREATE TABLE device_keys (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  did                         VARCHAR(128) NOT NULL,
+  device_id                   VARCHAR(64) NOT NULL,
+  key_type                    VARCHAR(32) NOT NULL,
+  public_key                  TEXT NOT NULL,
+  key_fingerprint             VARCHAR(64) NOT NULL,
+  status                      VARCHAR(20) NOT NULL,
+  expires_at                  TIMESTAMPTZ,
+  rotated_at                  TIMESTAMPTZ,
+  rotated_by                  VARCHAR(128),
+  revoked_by                  VARCHAR(128),
+  revocation_reason           TEXT,
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE UNIQUE INDEX idx_device_keys_did_device ON device_keys(did, device_id);
+CREATE INDEX idx_device_keys_did_status ON device_keys(did, status);
+CREATE INDEX idx_device_keys_status ON device_keys(status);
+
+-- ------------------------------------------------------------------------------
+-- SHARED: Webhook Subscriptions
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/shared/src/marketplace/webhook-subscription.entity.ts
+
+CREATE TABLE webhook_subscriptions (
+  id                          UUID PRIMARY KEY,
+  subscriber_did              VARCHAR NOT NULL,
+  endpoint                    VARCHAR NOT NULL,
+  event_types                 TEXT NOT NULL,
+  secret                      VARCHAR NOT NULL,
+  status                      VARCHAR NOT NULL,
+  delivery_count              INT NOT NULL DEFAULT 0,
+  failure_count               INT NOT NULL DEFAULT 0,
+  last_delivered_at           TIMESTAMPTZ,
+  last_failure_at             TIMESTAMPTZ,
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_webhook_subscriptions_subscriber ON webhook_subscriptions(subscriber_did);
+CREATE INDEX idx_webhook_subscriptions_status ON webhook_subscriptions(status);
+
+-- ------------------------------------------------------------------------------
+-- SHARED: GeoTag Sites
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/shared/src/operations/geotag/geotag-site.entity.ts
+
+CREATE TABLE geotag_sites (
+  id                          VARCHAR(128) PRIMARY KEY,
+  name                        VARCHAR(256) NOT NULL,
+  site_type                   VARCHAR(64) NOT NULL,
+  geofence                    JSONB NOT NULL,
+  jurisdiction                VARCHAR(8) NOT NULL,
+  operator_did                VARCHAR(256) NOT NULL,
+  commodity_types             JSONB,
+  estimated_monthly_capacity_kg DECIMAL(12,3),
+  allowed_grades              JSONB,
+  min_assay_purity            DECIMAL(5,4),
+  status                      VARCHAR(32) NOT NULL DEFAULT 'active',
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_geotag_sites_jurisdiction ON geotag_sites(jurisdiction);
+CREATE INDEX idx_geotag_sites_operator ON geotag_sites(operator_did);
+CREATE INDEX idx_geotag_sites_status ON geotag_sites(status);
+
+-- ------------------------------------------------------------------------------
+-- SHARED: GeoTag Proofs
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/shared/src/operations/geotag/geotag.entity.ts
+-- Note: Table name is geotag_proofs (entity is GeoTagProofEntity).
+
+CREATE TABLE geotag_proofs (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  proof_id                    VARCHAR NOT NULL,
+  operator_did                VARCHAR NOT NULL,
+  latitude                    DOUBLE PRECISION NOT NULL,
+  longitude                   DOUBLE PRECISION NOT NULL,
+  altitude                    DOUBLE PRECISION,
+  accuracy                    DOUBLE PRECISION,
+  timestamp                   VARCHAR NOT NULL,
+  signature                   TEXT NOT NULL,
+  verification_status         VARCHAR NOT NULL DEFAULT 'pending',
+  anti_spoof_passed           BOOLEAN NOT NULL DEFAULT FALSE,
+  site_id                     VARCHAR,
+  commodity                   VARCHAR
+);
+
+CREATE INDEX idx_geotag_proofs_operator ON geotag_proofs(operator_did);
+CREATE INDEX idx_geotag_proofs_proof_id ON geotag_proofs(proof_id);
+CREATE INDEX idx_geotag_proofs_status ON geotag_proofs(verification_status);
+
+-- ------------------------------------------------------------------------------
+-- SHARED: TradePass Credentials
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/shared/src/operations/tradepass/tradepass.entity.ts
+
+CREATE TABLE tradepass_credentials (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  credential_json             JSONB NOT NULL,
+  issuer_did                  VARCHAR(255) NOT NULL,
+  subject_did                 VARCHAR(255) NOT NULL,
+  credential_type             VARCHAR(50) NOT NULL,
+  status                      VARCHAR(20) NOT NULL DEFAULT 'ACTIVE',
+  issued_at                   TIMESTAMPTZ NOT NULL,
+  expires_at                  TIMESTAMPTZ,
+  revoked_at                  TIMESTAMPTZ,
+  revocation_reason           TEXT
+);
+
+CREATE INDEX idx_tradepass_credentials_issuer ON tradepass_credentials(issuer_did);
+CREATE INDEX idx_tradepass_credentials_subject ON tradepass_credentials(subject_did);
+CREATE INDEX idx_tradepass_credentials_status ON tradepass_credentials(status);
+
+-- ------------------------------------------------------------------------------
+-- SOVEREIGN: SGX Custody Events
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/sovereign/src/entities/sgx/custody-event.entity.ts
+
+CREATE TABLE sgx_custody_events (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  event_id                    VARCHAR NOT NULL UNIQUE,
+  export_application_number   VARCHAR NOT NULL,
+  event_type                  VARCHAR NOT NULL,
+  asset_id                    VARCHAR NOT NULL,
+  custodian_did               VARCHAR NOT NULL,
+  from_custodian_did          VARCHAR,
+  to_custodian_did            VARCHAR,
+  seal_id                     TEXT,
+  vault_location              TEXT,
+  custody_proof_hash          TEXT,
+  previous_custody_proof_hash TEXT,
+  chain_of_custody            JSONB,
+  status                      VARCHAR NOT NULL DEFAULT 'PENDING',
+  rejection_reason            TEXT,
+  recorded_at                 TIMESTAMPTZ NOT NULL,
+  validated_at                TIMESTAMPTZ
+);
+
+CREATE INDEX idx_sgx_custody_events_event_id ON sgx_custody_events(event_id);
+CREATE INDEX idx_sgx_custody_events_export_app ON sgx_custody_events(export_application_number);
+CREATE INDEX idx_sgx_custody_events_custodian ON sgx_custody_events(custodian_did);
+CREATE INDEX idx_sgx_custody_events_status ON sgx_custody_events(status);
+
+-- ------------------------------------------------------------------------------
+-- SOVEREIGN: SGX Revenue Collections
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/sovereign/src/entities/sgx/revenue-collection.entity.ts
+
+CREATE TABLE sgx_revenue_collections (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  collection_number           VARCHAR NOT NULL UNIQUE,
+  clearance_id                VARCHAR NOT NULL,
+  producer_id                 VARCHAR NOT NULL,
+  commodity_type              VARCHAR NOT NULL,
+  total_tax_cents             BIGINT NOT NULL,
+  currency                    VARCHAR NOT NULL DEFAULT 'USD',
+  status                      VARCHAR NOT NULL,
+  collected_at                TIMESTAMPTZ NOT NULL,
+  paid_at                     TIMESTAMPTZ,
+  payment_method              VARCHAR,
+  payment_reference           VARCHAR,
+  confirmed_by                VARCHAR
+);
+
+CREATE INDEX idx_sgx_revenue_collections_clearance ON sgx_revenue_collections(clearance_id);
+CREATE INDEX idx_sgx_revenue_collections_producer ON sgx_revenue_collections(producer_id);
+CREATE INDEX idx_sgx_revenue_collections_status ON sgx_revenue_collections(status);
+
+-- ------------------------------------------------------------------------------
+-- SOVEREIGN: CRX Inspection Evidence
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/sovereign/src/entities/crx/inspection-evidence.entity.ts
+
+CREATE TABLE crx_inspection_evidence (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  evidence_id                 VARCHAR NOT NULL UNIQUE,
+  application_number          VARCHAR NOT NULL,
+  evidence_type               VARCHAR NOT NULL,
+  operator_did                VARCHAR NOT NULL,
+  description                 TEXT,
+  image_hash                  TEXT,
+  latitude                    DECIMAL(10,4),
+  longitude                   DECIMAL(10,4),
+  accuracy_meters             DECIMAL(10,4),
+  geotag_proof_id             TEXT,
+  attestation_id              TEXT,
+  attestation_proof_hash      TEXT,
+  extracted_fields            JSONB,
+  status                      VARCHAR NOT NULL DEFAULT 'PENDING',
+  rejection_reason            TEXT,
+  captured_at                 TIMESTAMPTZ NOT NULL,
+  reviewed_at                 TIMESTAMPTZ,
+  submitted_at                TIMESTAMPTZ NOT NULL
+);
+
+CREATE INDEX idx_crx_inspection_evidence_app ON crx_inspection_evidence(application_number);
+CREATE INDEX idx_crx_inspection_evidence_operator ON crx_inspection_evidence(operator_did);
+CREATE INDEX idx_crx_inspection_evidence_status ON crx_inspection_evidence(status);
+
+-- ------------------------------------------------------------------------------
+-- SOVEREIGN: CRX Permit Documents
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/sovereign/src/entities/crx/permit-document.entity.ts
+
+CREATE TABLE crx_permit_documents (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  application_id              VARCHAR NOT NULL,
+  document_type               VARCHAR NOT NULL,
+  file_name                   VARCHAR NOT NULL,
+  storage_key                 VARCHAR NOT NULL,
+  file_hash                   VARCHAR(64) NOT NULL,
+  file_size                   INT NOT NULL,
+  status                      VARCHAR NOT NULL DEFAULT 'PENDING',
+  verified_by                 VARCHAR,
+  verified_at                 TIMESTAMPTZ,
+  rejection_reason            TEXT,
+  uploaded_at                 TIMESTAMPTZ NOT NULL
+);
+
+CREATE INDEX idx_crx_permit_documents_application ON crx_permit_documents(application_id);
+CREATE INDEX idx_crx_permit_documents_status ON crx_permit_documents(status);
+
+-- ------------------------------------------------------------------------------
+-- SOVEREIGN: Pathways Evidence
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/sovereign/src/entities/pathways/evidence.entity.ts
+
+CREATE TABLE pathways_evidence (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  milestone_id                VARCHAR NOT NULL,
+  evidence_type               VARCHAR NOT NULL,
+  file_url                    VARCHAR NOT NULL,
+  mime_type                   VARCHAR,
+  file_size                   INT,
+  uploaded_by                 VARCHAR NOT NULL,
+  uploaded_at                 TIMESTAMPTZ NOT NULL,
+  metadata                    JSONB
+);
+
+CREATE INDEX idx_pathways_evidence_milestone ON pathways_evidence(milestone_id);
+CREATE INDEX idx_pathways_evidence_uploaded_by ON pathways_evidence(uploaded_by);
+
+-- ------------------------------------------------------------------------------
+-- VERITAS: Claims
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/veritas/src/entities/claim.entity.ts
+
+CREATE TABLE veritas_claims (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  claim_id                    VARCHAR NOT NULL UNIQUE,
+  claim_type                  VARCHAR NOT NULL,
+  subject_type                VARCHAR NOT NULL,
+  subject_id                  VARCHAR NOT NULL,
+  assertions                  TEXT NOT NULL,
+  metadata                    JSONB,
+  status                      VARCHAR NOT NULL,
+  confidence                  DOUBLE PRECISION NOT NULL,
+  proof_hash                  TEXT,
+  evaluated_at                VARCHAR NOT NULL
+);
+
+CREATE INDEX idx_veritas_claims_claim_id ON veritas_claims(claim_id);
+CREATE INDEX idx_veritas_claims_subject ON veritas_claims(subject_type, subject_id);
+CREATE INDEX idx_veritas_claims_status ON veritas_claims(status);
+
+-- ------------------------------------------------------------------------------
+-- VERITAS: Confidence Provenance
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/veritas/src/entities/confidence-provenance.entity.ts
+
+CREATE TABLE veritas_confidence_provenance (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  target_type                 VARCHAR NOT NULL,
+  target_id                   VARCHAR NOT NULL,
+  overall_confidence          DECIMAL(5,4) NOT NULL,
+  methodology_version         VARCHAR NOT NULL,
+  sources                     JSONB NOT NULL,
+  computation_summary         TEXT,
+  data_hash                   VARCHAR,
+  computed_by                 VARCHAR NOT NULL,
+  computation_duration_ms     INT NOT NULL DEFAULT 0
+);
+
+CREATE INDEX idx_veritas_conf_prov_target ON veritas_confidence_provenance(target_type, target_id);
+CREATE INDEX idx_veritas_conf_prov_computed_by ON veritas_confidence_provenance(computed_by);
+
+-- ------------------------------------------------------------------------------
+-- VERITAS: Data Stream Subscriptions
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/veritas/src/entities/data-stream-subscription.entity.ts
+
+CREATE TABLE veritas_data_stream_subscriptions (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  subscription_number         VARCHAR NOT NULL UNIQUE,
+  subscriber_did              VARCHAR NOT NULL,
+  stream_type                 VARCHAR NOT NULL,
+  filters                     TEXT NOT NULL,
+  status                      VARCHAR NOT NULL DEFAULT 'active',
+  started_at                  TIMESTAMPTZ NOT NULL,
+  expires_at                  TIMESTAMPTZ,
+  last_delivered_at           TIMESTAMPTZ,
+  events_delivered            BIGINT NOT NULL DEFAULT 0
+);
+
+CREATE INDEX idx_veritas_data_streams_subscriber ON veritas_data_stream_subscriptions(subscriber_did);
+CREATE INDEX idx_veritas_data_streams_status ON veritas_data_stream_subscriptions(status);
+
+-- ------------------------------------------------------------------------------
+-- VERITAS: Inspections
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/veritas/src/entities/inspection.entity.ts
+
+CREATE TABLE veritas_inspections (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  inspection_id               VARCHAR NOT NULL UNIQUE,
+  facility_name               VARCHAR NOT NULL,
+  commodity                   VARCHAR NOT NULL,
+  country                     VARCHAR NOT NULL,
+  inspector_did               VARCHAR NOT NULL,
+  client_did                  VARCHAR NOT NULL,
+  phases                      JSONB NOT NULL DEFAULT '{}'
+);
+
+CREATE INDEX idx_veritas_inspections_inspection_id ON veritas_inspections(inspection_id);
+CREATE INDEX idx_veritas_inspections_inspector ON veritas_inspections(inspector_did);
+CREATE INDEX idx_veritas_inspections_client ON veritas_inspections(client_did);
+
+-- ------------------------------------------------------------------------------
+-- VERITAS: Screening Decisions
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/veritas/src/entities/screening-decision.entity.ts
+
+CREATE TABLE veritas_screening_decisions (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  subject_id                  VARCHAR NOT NULL,
+  subject_type                VARCHAR NOT NULL,
+  decision_id                 VARCHAR,
+  risk_level                  VARCHAR NOT NULL,
+  approved                    BOOLEAN NOT NULL,
+  conditions                  TEXT,
+  risk_score                  DECIMAL(5,2) NOT NULL DEFAULT 0,
+  screened_at                 TIMESTAMPTZ NOT NULL,
+  attestation_id              VARCHAR
+);
+
+CREATE INDEX idx_veritas_screening_subject ON veritas_screening_decisions(subject_type, subject_id);
+CREATE INDEX idx_veritas_screening_risk ON veritas_screening_decisions(risk_level);
+CREATE INDEX idx_veritas_screening_attestation ON veritas_screening_decisions(attestation_id);
+
+-- ------------------------------------------------------------------------------
+-- TRADEPASS: Roster Assignments
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/tradepass/src/roster/roster-assignment.entity.ts
+
+CREATE TABLE roster_assignments (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  cooperative_id              VARCHAR NOT NULL,
+  did                         VARCHAR NOT NULL
+);
+
+CREATE UNIQUE INDEX idx_roster_assignments_unique ON roster_assignments(cooperative_id, did);
+CREATE INDEX idx_roster_assignments_did ON roster_assignments(did);
+
+-- ------------------------------------------------------------------------------
+-- TRADEPASS: Market Prices
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/tradepass/src/market/market-price.entity.ts
+
+CREATE TABLE market_prices (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  commodity                   VARCHAR NOT NULL,
+  price                       DOUBLE PRECISION NOT NULL,
+  unit                        VARCHAR NOT NULL,
+  currency                    VARCHAR NOT NULL,
+  jurisdiction                VARCHAR NOT NULL,
+  history                     JSONB NOT NULL DEFAULT '[]'
+);
+
+CREATE UNIQUE INDEX idx_market_prices_commodity_jurisdiction ON market_prices(commodity, jurisdiction);
+CREATE INDEX idx_market_prices_jurisdiction ON market_prices(jurisdiction);
+
+-- ------------------------------------------------------------------------------
+-- TRADEPASS: Sync Counters
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/tradepass/src/sync/sync-counter.entity.ts
+
+CREATE TABLE sync_counters (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  counter_key                 VARCHAR NOT NULL UNIQUE,
+  value                       INT NOT NULL DEFAULT 0
+);
+
+CREATE INDEX idx_sync_counters_key ON sync_counters(counter_key);
+
+-- ------------------------------------------------------------------------------
+-- TRADEPASS: Sync Items
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/tradepass/src/sync/sync-item.entity.ts
+
+CREATE TABLE sync_items (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  sync_id                     VARCHAR NOT NULL,
+  type                        VARCHAR NOT NULL,
+  method                      VARCHAR NOT NULL,
+  url                         VARCHAR NOT NULL,
+  body                        JSONB NOT NULL,
+  processed_at                VARCHAR,
+  status                      VARCHAR NOT NULL DEFAULT 'pending',
+  error                       TEXT,
+  operator_did                VARCHAR NOT NULL
+);
+
+CREATE INDEX idx_sync_items_operator ON sync_items(operator_did);
+CREATE INDEX idx_sync_items_status ON sync_items(status);
+CREATE INDEX idx_sync_items_sync_id ON sync_items(sync_id);
+
+-- ------------------------------------------------------------------------------
+-- OPERATIONS: Checklists
+-- ------------------------------------------------------------------------------
+-- Entity: platforms/operations/checklist/src/entities/checklist.entity.ts
+-- Note: submitted_at and reviewed_at use VARCHAR in the entity definition
+-- (TypeORM decorator type: 'varchar'); stored as ISO-8601 strings.
+
+CREATE TABLE ops_checklists (
+  id                          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at                  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  deleted_at                  TIMESTAMPTZ,
+
+  tenant_id                   VARCHAR(2) NOT NULL,
+  inspector_did               VARCHAR NOT NULL,
+  site_id                     VARCHAR NOT NULL,
+  inspection_type             VARCHAR,
+  payload                     JSONB NOT NULL,
+  status                      VARCHAR NOT NULL DEFAULT 'draft',
+  submitted_at                VARCHAR,
+  reviewed_at                 VARCHAR,
+  reviewer_did                VARCHAR,
+  review_notes                TEXT
+);
+
+CREATE INDEX idx_ops_checklists_tenant_status ON ops_checklists(tenant_id, status, updated_at);
+CREATE INDEX idx_ops_checklists_inspector_status ON ops_checklists(inspector_did, status);
+CREATE INDEX idx_ops_checklists_site ON ops_checklists(site_id);

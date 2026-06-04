@@ -8,7 +8,7 @@ role: platform-engineer
 
 # AWS control plane — gtcx-infrastructure
 
-**Canonical ecosystem spec:** [`compliance-os/docs/operations/cloud-placement-gtcx-ecosystem-2026-06-05.md`](../../../compliance-os/docs/operations/cloud-placement-gtcx-ecosystem-2026-06-05.md)
+**Canonical ecosystem spec:** [`compliance-os/docs/operations/cloud-placement-gtcx-ecosystem-2026-06-05.md`](../../../../compliance-os/docs/operations/cloud-placement-gtcx-ecosystem-2026-06-05.md)
 
 ## Infra owns (optimize here)
 
@@ -38,7 +38,7 @@ role: platform-engineer
 
 ## GCP bridge (when Phase 3 starts)
 
-Implement AWS side of [`global-trade-phase-3-ml-pipeline.md`](../../../gtcx-intelligence/docs/roadmap/global-trade-phase-3-ml-pipeline.md):
+Implement AWS side of [`global-trade-phase-3-ml-pipeline.md`](../../../../gtcx-intelligence/docs/roadmap/global-trade-phase-3-ml-pipeline.md):
 
 - IAM role `intelligence-gcp-ml-bridge` (WIF from GCP SA)
 - S3 `gtcx-intelligence-models/*` write from pipeline

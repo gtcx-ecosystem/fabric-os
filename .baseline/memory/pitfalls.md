@@ -17,6 +17,14 @@
 
 > Review and resolve these before they become blockers.
 
+## Agent false blocks (normative 2026-06-05)
+
+**SoR:** [ecosystem-unblock-playbook-2026-06.md](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-unblock-playbook-2026-06.md)
+
+- **Do not** treat `EXT-INF-*` as reason to stop IR-2.x / validate-all merges — XC track is separate (infra auto-dev-state § EXT-INF blocked).
+- **Do not** re-work INT-S9-01 WAF/routing — **done**; ping **gtcx-intelligence** for credentialed acceptance.
+- **Do not** mark INT-S9-01 done on anon 401 probe alone.
+
 ## Code Quality
 **Discovered:** 2026-05-27
 - Add pitfalls here as they are discovered

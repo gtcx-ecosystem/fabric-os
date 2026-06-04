@@ -52,7 +52,8 @@ See [`ir-10-10-roadmap.md`](./ir-10-10-roadmap.md) IR-2.
 
 EXT-INF-002, EXT-INF-013, EXT-INF-014, EXT-INF-003 (live operator), EXT-INF-015.
 
-> All owned by gtcx-infrastructure + GTM. Agent role: evidence appendix into infra sandbox ZIP, not running those programs.
+> All owned by gtcx-infrastructure + GTM. Agent role: evidence appendix into infra sandbox ZIP, not running those programs.  
+> **Normative:** [ecosystem-unblock-playbook-2026-06.md](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-unblock-playbook-2026-06.md) — XC blockers **must not** freeze IR merges or INT-S9-01 intelligence path.
 
 ## Next work (computed)
 

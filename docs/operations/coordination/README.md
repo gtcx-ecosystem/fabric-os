@@ -11,6 +11,7 @@ tags: ['coordination', 'cross-repo', 'inbound', 'bridge', 'index']
 
 # Cross-repo coordination — gtcx-infrastructure hub index
 
+**Agent norms (normative):** [`ecosystem-unblock-playbook-2026-06.md`](../../../../gtcx-protocols/docs/operations/coordination/ecosystem-unblock-playbook-2026-06.md) — **EXT-INF ≠ IR merge freeze**; INT-S9-01 owner = **gtcx-intelligence**  
 **Canonical XR-### SoR:** [`gtcx-protocols/docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md`](../../../../gtcx-protocols/docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md)  
 **Ecosystem bridge (live):** [`gtcx-protocols/docs/operations/coordination/cross-repo-agent-bridge.md`](../../../../gtcx-protocols/docs/operations/coordination/cross-repo-agent-bridge.md)  
 **Agentic log (append-only):** [`gtcx-agentic/docs/operations/coordination/agent-coordination-log.md`](../../../../gtcx-agentic/docs/operations/coordination/agent-coordination-log.md)  

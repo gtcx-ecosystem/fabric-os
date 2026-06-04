@@ -66,6 +66,7 @@
 | S2-13 | Pen-test SOW signature | `intake ready` | Human SOW signature pending (EXT-INF-002) |
 | S3-06 | Publish primitives | `done` | `publish-npm` job in slsa-provenance.yml; tag-triggered; gate in validate-all; needs NPM_TOKEN secret |
 | S3-07 | DR live RDS restore | `done` | Live PITR staging operational 2026-06-04 — `docs/audit/evidence/rds-restore/rds-restore-operational-staging-20260604-080937.json` (RTO ~20m, RPO 0); side instance deleted |
+| IR-3.5 | Refresh DR fire-drill dated artifact | `done` | Updated from 2026-05-31 structural placeholder to 2026-06-04 live evidence; `docs/audit/dr-fire-drill-evidence-2026-06-04.md` |
 | INT-S9-01 | Wire #2 POST /v1/evidence/submit | `infra unblocked` | Routing verified + TRADEPASS_AUTH_TOKEN wired (optional); protocols endpoint + secret population remaining |
 
 ### Sprint 2 + Sprint 3: Security + Production Hardening — Done

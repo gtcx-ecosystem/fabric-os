@@ -108,6 +108,7 @@ jobs:
             --gate=replay-protection-tests=pass \
             --gate=audit-immutability-fixture=pass \
             --evidence=score-ledger=docs/audit/score-evidence-ledger.json \
+            --worm-bucket=gtcx-worm-audit-staging-af-south-1 \
             --worm-key=release-evidence/ci/${{ github.sha }}/release-evidence.ndjson \
             --output-dir=infra/security/reports/release-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
 
@@ -513,3 +514,45 @@ jobs:
           name: sbom-infrastructure
           path: sbom-cyclonedx.json
           retention-days: 365
+
+  worm-upload:
+    name: WORM Upload
+    needs: [ci]
+    if: github.ref == 'refs/heads/main' && needs.ci.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Setup Node
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: '20.18.0'
+
+      - name: Download release evidence
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: release-evidence-ci
+          path: ./release-evidence
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: af-south-1
+
+      - name: Upload to WORM
+        run: |
+          MANIFEST=$(find ./release-evidence/ -name 'worm-upload.json' | head -1)
+          if [ -z "$MANIFEST" ]; then
+            echo "::error::worm-upload.json not found in release evidence"
+            exit 1
+          fi
+          echo "Using manifest: $MANIFEST"
+          node tools/control-plane/gtcx-ctl.mjs evidence worm-upload \
+            --manifest="$MANIFEST" \
+            --expected-mode=COMPLIANCE \
+            --min-retention-days=2550

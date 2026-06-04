@@ -27,6 +27,7 @@
 | S2-05 | SLSA Build L3 gate | `5655309` |
 | S3-10 | P22 CI smoke (already in CI) | `5655309` |
 | validate-all | Empty-catch allowlist + evidence index files | `fb46749` |
+| IR-3.1 | WORM upload workflow (post-CI job, OIDC, staging bucket) | `ci.yml` |
 
 ---
 

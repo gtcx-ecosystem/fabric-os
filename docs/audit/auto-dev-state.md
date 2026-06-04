@@ -12,10 +12,10 @@ review_cycle: on-change
 
 ## Session
 
-- **Date:** 2026-06-03
-- **Last command:** adopt Protocols 26 + 27 + 28; close cross-repo dependencies
+- **Date:** 2026-06-05
+- **Last command:** IR-3.1 WORM upload workflow; validate-all 46/46 gates
 - **Branch:** `main`
-- **HEAD:** `14310df` (Protocols 26+28 adoption)
+- **HEAD:** `df4c6a4` (agent-next-work fix + IR-3.1 WORM upload job)
 
 ## Sprint closure — IR-1 (Main CI truth)
 
@@ -42,9 +42,10 @@ Other dimensions unchanged this sprint.
 ## Next sprint (IR-2)
 
 - Merge tier-3 dependabot PRs
-- AI SDK v5→v6 migration branch (IR-2.2)
-- CodeQL/SARIF upload fix on `main`
-- IR-2.1 / IR-2.3 / IR-2.4 per `pnpm agent:next-work`
+- IR-3.1 WORM upload workflow (done — post-CI job in ci.yml)
+- IR-3.2 Document operator live path for runtime-evidence-check
+- IR-3.5 Refresh DR fire-drill dated artifact
+- IR-5.1 Cross-repo-contract token
 
 See [`ir-10-10-roadmap.md`](./ir-10-10-roadmap.md) IR-2.
 
@@ -59,9 +60,9 @@ EXT-INF-002, EXT-INF-013, EXT-INF-014, EXT-INF-003 (live operator), EXT-INF-015.
 
 Run `pnpm agent:next-work` to get the next story. Current computed next:
 
-| Story  | Tier          | Class | Command                                         |
-| ------ | ------------- | ----- | ----------------------------------------------- |
-| IR-2.2 | work-register | code  | AI SDK v5→v6 migration branch + eval regression |
+| Story  | Tier          | Class | Command                                           |
+| ------ | ------------- | ----- | ------------------------------------------------- |
+| IR-3.1 | work-register | code  | WORM upload workflow (post-CI job, OIDC, staging) |
 
 ## Resume
 

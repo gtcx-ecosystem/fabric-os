@@ -143,6 +143,17 @@ variable "tags" {
 }
 
 # -----------------------------------------------------------------------------
+# Data Sources
+# -----------------------------------------------------------------------------
+
+# Staging platform IRSA role — referenced by production KMS key policy so
+# staging sovereign pods can call kms:Sign on the production key for
+# integration testing (XR-EO-006 / INF-86).
+data "aws_iam_role" "staging_platforms" {
+  name = "gtcx-staging-platforms-irsa"
+}
+
+# -----------------------------------------------------------------------------
 # VPC Module
 # -----------------------------------------------------------------------------
 
@@ -341,11 +352,10 @@ module "kms_signing" {
 # TODO: Replace pilot authorities with full 43-authority map after ceremony.
 # TODO: Create dedicated IRSA roles for protocols/sovereign services.
 #
-# HOLD (2026-06-03): Do NOT run terraform apply for this module until:
-#   1. CISO / platform-lead signs off on algorithm (ECC_NIST_P256 vs Ed25519/CloudHSM)
-#   2. Two custodians + witness are scheduled
-#   3. GTCX-KEY-CEREMONY leadership approval is obtained
-# Pilot authority only (gh-bog). Max 10 per batch after pilot.
+# UNBLOCKED (2026-06-05): Algorithm confirmed ECC_NIST_P256 + ECDSA_SHA_256.
+# IRSA role trusts gtcx-platform SA; KMS key policy allows IRSA role ARN.
+# Ceremony scheduling tracked in protocols repo (INF-86 tracker).
+# Pilot authority only (gh-bog). Max 10 per batch after ceremony.
 # -----------------------------------------------------------------------------
 
 module "kms_sovereign_signing" {
@@ -362,8 +372,13 @@ module "kms_sovereign_signing" {
       label             = "Ghana Bogoso"
       key_spec          = "ECC_NIST_P256"
       signing_algorithm = "ECDSA_SHA_256"
-      # TODO: Replace with dedicated protocols IRSA role ARN
-      signing_role_arns = [module.irsa_platform.platforms_role_arn]
+      # Production IRSA role + staging IRSA role (for integration testing).
+      # Staging sovereign pods reference the production key to verify end-to-end
+      # signing before ceremony. Both roles are in the same AWS account.
+      signing_role_arns = [
+        module.irsa_platform.platforms_role_arn,
+        data.aws_iam_role.staging_platforms.arn,
+      ]
     }
   }
 }

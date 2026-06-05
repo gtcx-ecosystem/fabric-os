@@ -17,7 +17,9 @@ baseline_commit: HEAD
 **Framework:** [SIGNAL.md](https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/docs/governance/frameworks/SIGNAL.md) — overall level = **lowest** dimension.  
 **Note:** This repo scores **SIGNAL-E (engineering + platform AI)**. End-user product AI (SIGNAL-P) lives primarily in `gtcx-intelligence`, `gtcx-mobile`, `exploration-os`. The in-repo **compliance SIGNAL scorecard** (`docs/audit/signal-scorecard.json`, 9.6/10) measures **AI safety pillars** (supervision/integrity/governance) — distinct from this maturity rail.
 
-**Evidence anchors:** `docs/audit/latest.json` (IR 7.1, agenticMaturity 8.0), `validate-all` 48/48, `signal-scorecard.json`, Protocol 22–28 adoption, staging overlays live.
+**Evidence anchors:** `docs/audit/latest.json` (IR 7.9, agenticMaturity 8.2), `validate-all` **50/50** @ `9d7d763`, `signal-scorecard.json` 9.60, Protocol 22–28 adoption, witness mode (`backlogClear: true`), USSD soak + gtcx-ctl validate --ci in CI.
+
+**Re-scored:** 2026-06-07 (session `baseline session` @ `9d7d763`) — scores unchanged; witness gates refreshed.
 
 ---
 

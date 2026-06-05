@@ -3,7 +3,7 @@
   "normativeDoc": "docs/operations/agent-launch-focus.md",
   "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/docs/operations/agent-launch-focus.md",
   "statePath": ".baseline/launch-focus.json",
-  "provisionedAt": "2026-06-05T03:27:34.159Z",
+  "provisionedAt": "2026-06-05T05:29:33.698Z",
   "repo": "gtcx-infrastructure",
   "northStar": {
     "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -12,7 +12,8 @@
     "gtmTier": {
       "library": "GR-T1",
       "integratorPilot": "GR-T2-partial",
-      "ecosystemSovereign": "below-GR-T2"
+      "ecosystemSovereign": "below-GR-T2",
+      "index": "docs/audit/gtm-audit-2026-06-05.md"
     }
   },
   "sessionMode": "witness",

@@ -387,11 +387,11 @@ Emit **one** brief, then work. Human may **stop**, **correct:**, or story ID —
 
 ### P28 — Authority
 
-| Class | Behavior |
-| ----- | -------- |
+| Class | Behavior                                       |
+| ----- | ---------------------------------------------- |
 | **R** | Self-execute docs, tests, commits, normal push |
-| **A** | Run after artifact (XR, inbound ticket) |
-| **S** | Stop; Blocker Report only |
+| **A** | Run after artifact (XR, inbound ticket)        |
+| **S** | Stop; Blocker Report only                      |
 
 ### Hub specs
 
@@ -433,14 +433,17 @@ Use **after work in the turn** or when reporting cluster/repo state — not inst
 ## Status Update
 
 ### Done
+
 - <outcome> — <evidence: command exit N, commit SHA, probe result>
 
 ### Next priority
+
 - **Owner:** <repo or role>
 - **Action:** <single imperative>
 - **Because:** <1 line — P22 ID, blocker, witness>
 
 ### Approval needed
+
 - <only Class A or S gates — secret, prod, legal, force-push; omit section if none>
 ```
 

@@ -125,6 +125,10 @@ run(
   'Contract Tests',
   'node --test tools/contract-tests/protocol-schema.test.mjs tools/contract-tests/gateway-tenancy.test.mjs tools/contract-tests/audit-signer-catalog.test.mjs tools/contract-tests/replay-protection.test.mjs'
 );
+run(
+  'Ecosystem Integration Matrix',
+  'node tools/scripts/ecosystem-integration-matrix-check.mjs',
+);
 
 // =============================================================================
 // 3. Security Validators

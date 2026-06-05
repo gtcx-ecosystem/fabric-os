@@ -63,7 +63,7 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 | IR-3.5         | Refresh DR fire-drill dated artifact                           | P1  | done    | ops-docs |
 | IR-4.1         | USSD path soak test in CI                                      | P1  | done    | code     |
 | IR-5.1         | Cross-repo-contract token                                      | P2  | done    | code     |
-| IR-5.2         | Re-run ecosystem-repo-review; ledger ≥9.0 matrix green         | P2  | pending | ops-docs |
+| IR-5.2         | Re-run ecosystem-repo-review; ledger ≥9.0 matrix green         | P2  | done    | ops-docs |
 | LAUNCH-PLAN-01 | Reconcile execution-roadmap + work register                    | P1  | done    | plan     |
 | LAUNCH-PLAN-02 | Refresh auto-dev-state for launch/GTM                          | P1  | done    | plan     |
 | LAUNCH-PLAN-03 | Global South 10x plan status row update                        | P1  | done    | plan     |

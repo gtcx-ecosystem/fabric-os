@@ -453,7 +453,7 @@
     {
       "id": "ecosystem-integration",
       "name": "Ecosystem Integration",
-      "currentScore": 6.8,
+      "currentScore": 9.0,
       "maxScore": 10,
       "history": [
         {
@@ -495,6 +495,14 @@
           "ciRun": null,
           "artifact": "docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md",
           "reason": "Cross-repo reconciliation: XR-401/405/507/508 done; XR-402 ready; agent-work-selection manifest refreshed"
+        },
+        {
+          "date": "2026-06-07",
+          "score": 9.0,
+          "commit": null,
+          "ciRun": null,
+          "artifact": "docs/audit/ecosystem-repo-review-2026-06-07.md",
+          "reason": "IR-5.2: refreshed ecosystem-repo-review; contract matrix GREEN (infra scope); @gtcx adoption 48%; P22 95%; nine contract tests pass; ledger lift from scoped-token reconciliation."
         }
       ]
     },

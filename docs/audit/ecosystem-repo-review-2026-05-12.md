@@ -1,7 +1,7 @@
 ---
 title: 'GTCX Ecosystem — Repository Health Review'
 status: 'deprecated'
-date: '2026-05-27'
+date: '2026-06-07'
 owner: 'quality-evidence-lead'
 role: 'quality-evidence-lead'
 tier: 'critical'
@@ -13,6 +13,8 @@ autonomy_level: 'permissioned'
 ---
 
 # GTCX Ecosystem — Repository Health Review
+
+> **Superseded** by [`ecosystem-repo-review-2026-06-07.md`](./ecosystem-repo-review-2026-06-07.md) (IR-5.2).
 
 **Date:** 2026-05-12
 **Reviewer:** Platform Engineering

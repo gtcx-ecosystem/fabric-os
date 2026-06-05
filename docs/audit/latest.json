@@ -1,8 +1,8 @@
 {
   "repo": "gtcx-infrastructure",
-  "auditDate": "2026-06-02",
-  "verifiedAt": "2026-06-02T10:30:00.000Z",
-  "head": "801c2e0",
+  "auditDate": "2026-06-05",
+  "verifiedAt": "2026-06-05T03:13:34.242Z",
+  "head": "8ebf72e",
   "workingTree": "clean",
   "sourceAudit": "docs/audit/post-roadmap-session-2026-05-30.md",
   "latestAudit": "docs/audit/master-audit-2026-06-02.md",
@@ -12,16 +12,16 @@
   "irRoadmap": "docs/audit/ir-10-10-roadmap.md",
   "status": "sprint-3-agent-closed",
   "scores": {
-    "internalEngineeringReadiness": 7.1,
-    "internalReadiness": 7.1,
+    "internalEngineeringReadiness": 7.9,
+    "internalReadiness": 7.9,
     "externalClearance": 9,
     "externalBlockerBurden": 1,
-    "codeQuality": 6.5,
-    "repoHygiene": 7.5,
-    "security": 8.2,
-    "globalSouthResilience": 5.5,
-    "ecosystemIntegration": 7.0,
-    "agenticMaturity": 8.0,
+    "codeQuality": 8,
+    "repoHygiene": 8.5,
+    "security": 8.9,
+    "globalSouthResilience": 6.8,
+    "ecosystemIntegration": 9,
+    "agenticMaturity": 8.2,
     "enterpriseReadiness": 6.9
   },
   "scoreReconciliation": "IR = in-repo engineering only. XC = external/GTM track (separate). See docs/audit/SCORING.md v2. certifiedReadiness/composite as IR−gap are retired.",
@@ -42,7 +42,6 @@
     "lint": "pass",
     "docsLinks": "pass",
     "repoHygiene": "pass",
-    "docsLinks": "pass",
     "build": "pass",
     "replayProtectionCoverage": "pass"
   },
@@ -98,7 +97,8 @@
     "postRoadmapAudit": "docs/audit/post-roadmap-session-2026-05-30.md",
     "externalRegister": "docs/audit/external-dependencies-register-2026-05-31.md",
     "pilotCriteria": "docs/audit/pilot-success-criteria.md",
-    "gtmAudit": "docs/audit/gtm-audit-2026-06-05.md"
+    "gtmAudit": "docs/audit/gtm-audit-2026-06-05.md",
+    "repoHygieneAudit": "docs/audit/repo-hygiene-2026-06-06.md"
   },
   "gtmReadiness": {
     "tier": "GR-T3",
@@ -148,7 +148,7 @@
     "mainCiFormatFail": false,
     "mainCiJobFail": false,
     "localValidateAllPass": true,
-    "localValidateAllGateCount": 39
+    "localValidateAllGateCount": 46
   },
   "externalBlockers": {
     "register": "docs/audit/external-dependencies-register-2026-05-31.md",

@@ -105,3 +105,5 @@ Append **newest entries at the top** of the table below. One row per meaningful 
 | 2026-06-08T14:00Z | gtcx-infrastructure | hub #17 prod scaffold | **SCAFFOLD** — Terraform `module.secrets` + W2 SM shell in production; K8s overlay `production/compliance-os/` (ESO, slim web-app, ingress `compliance.gtcx.trade`); operator scripts + `production-compliance-os-eso-bootstrap.md`. **Operator apply pending** (terraform apply, SM populate, image pin, DNS). |
 
 | 2026-06-08T16:00Z | gtcx-infrastructure | hub #17 prod partial | **PARTIAL** — production terraform apply (11 resources); W2 + GHCR SM populated (7 keys). K8s apply blocked: prod EKS API private (i/o timeout). Probe `compliance.gtcx.trade` still **525**. Witness: `from-gtcx-infrastructure-hub-17-prod-w2-partial-2026-06-08.md`. |
+
+| 2026-06-08T18:00Z | gtcx-infrastructure | hub #17 prod deploy | **PARTIAL** — prod K8s live: ESO, web-app 2/2, ALB ingress provisioned, intake **201** (port-forward). `compliance.gtcx.trade` **525** — Cloudflare CNAME → `k8s-gtcxproductionapi-527ebd7716-1025454332.af-south-1.elb.amazonaws.com` pending. Unblocks exploration retest after DNS. |

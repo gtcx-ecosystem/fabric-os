@@ -146,6 +146,22 @@ variable "tags" {
 # Data Sources
 # -----------------------------------------------------------------------------
 
+data "aws_eks_cluster" "main" {
+  name = module.eks.cluster_name
+}
+
+data "aws_eks_cluster_auth" "main" {
+  name = module.eks.cluster_name
+}
+
+provider "helm" {
+  kubernetes {
+    host                   = data.aws_eks_cluster.main.endpoint
+    cluster_ca_certificate = base64decode(data.aws_eks_cluster.main.certificate_authority[0].data)
+    token                  = data.aws_eks_cluster_auth.main.token
+  }
+}
+
 # Staging platform IRSA role — referenced by production KMS key policy so
 # staging sovereign pods can call kms:Sign on the production key for
 # integration testing (XR-EO-006 / INF-86).
@@ -212,6 +228,29 @@ module "eks" {
   tags = merge(var.tags, {
     Environment = "production"
   })
+}
+
+# -----------------------------------------------------------------------------
+# ALB Controller + ACM (Hub #17 compliance.gtcx.trade ingress)
+# -----------------------------------------------------------------------------
+
+module "alb" {
+  source = "../../modules/alb"
+
+  environment            = var.environment
+  cluster_name           = module.eks.cluster_name
+  cluster_endpoint       = module.eks.cluster_endpoint
+  cluster_ca_certificate = module.eks.cluster_ca_certificate
+  oidc_provider_arn      = module.eks.oidc_provider_arn
+  vpc_id                 = module.vpc.vpc_id
+  domain_name            = var.domain_name
+  rate_limit             = 5000
+
+  tags = merge(var.tags, {
+    Environment = "production"
+  })
+
+  depends_on = [module.eks]
 }
 
 # -----------------------------------------------------------------------------

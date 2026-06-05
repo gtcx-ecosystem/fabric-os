@@ -1,56 +1,50 @@
 ---
-title: 'Witness — Hub #17 prod W2 partial (terraform + SM)'
+title: 'Witness — Hub #17 prod W2 deploy (partial — DNS pending)'
 status: partial
 date: 2026-06-08
+updated: 2026-06-08
 owner: gtcx-infrastructure
 hub_blocker: 17
 er1: ER-1-10
 authority_class: A
 ---
 
-# Witness — Hub #17 prod W2 (partial)
+# Witness — Hub #17 prod W2 deploy (partial)
 
-**Status:** Terraform + AWS SM **complete**. K8s apply **blocked** — production EKS API is private (`10.4.x.x:443` i/o timeout from operator laptop). `compliance.gtcx.trade` still **525** until overlay apply + DNS.
+**Status:** K8s stack **live** on `gtcx-production`; intake **201** via port-forward. Public origin `compliance.gtcx.trade` still **525** — Cloudflare CNAME must point to prod ALB.
 
-## Terraform apply (production)
+## Completed
 
-```text
-Target: module.secrets (compliance-os)
-Result: 11 added, 0 changed, 0 destroyed
-IRSA: arn:aws:iam::348389439381:role/gtcx-production-compliance-os-secrets-role
-Cluster: gtcx-production (af-south-1)
-```
+| Step                       | Evidence                                                                   |
+| -------------------------- | -------------------------------------------------------------------------- |
+| Terraform `module.secrets` | 11 SM shells + IRSA `gtcx-production-compliance-os-secrets-role`           |
+| SM populate                | `gtcx/compliance-os/production/w2` — 7 keys + GHCR token                   |
+| ESO                        | `compliance-os-w2-secrets` + `compliance-os-ghcr-pull` Ready               |
+| web-app                    | 2/2 Running — `ghcr.io/gtcx-ecosystem/compliance-web:staging-b3d19e0`      |
+| ALB controller             | Helm `aws-load-balancer-controller` in `kube-system`                       |
+| Ingress                    | `k8s-gtcxproductionapi-527ebd7716-1025454332.af-south-1.elb.amazonaws.com` |
+| Intake smoke (PF)          | **201** — `reviewId: licence_case_ag_invest_kasai`                         |
 
-## AWS SM paths (names only)
+## Operator notes
 
-| Path                                            | Status             |
-| ----------------------------------------------- | ------------------ |
-| `gtcx/compliance-os/production/w2`              | populated — 7 keys |
-| `gtcx/compliance-os/production/ghcr-pull-token` | populated          |
+- **EKS API:** Temporarily enabled `endpointPublicAccess=true` for operator IP `154.70.214.191/32` (re-applied after revert).
+- **Rate limit:** Prod image lacks `ioredis`; slim overlay uses `COMPLIANCE_OS_STAGING_INPROC_RATE_LIMIT=1` + `COMPLIANCE_OS_LICENCE_DILIGENCE_MEMORY_ONLY=1` until prod image rebuild.
+- **Terminal key:** Generated fresh in SM — align `COMPLIANCE_OS_TERMINAL_API_KEY` with terminal-os prod before PATCH proof.
 
-W2 keys present: `COMPLIANCE_OS_INTAKE_API_KEY`, `COMPLIANCE_OS_INTAKE_ORGANIZATION_ID`, `COMPLIANCE_OS_TERMINAL_OS_URL`, `COMPLIANCE_OS_TERMINAL_API_KEY`, `COMPLIANCE_API_URL`, `COMPLIANCE_API_INTERNAL_TOKEN`, `COMPLIANCE_OS_SESSION_SECRET`.
+## DNS (blocking public retest)
 
-**Terminal key:** generated fresh — align with terminal-os prod receiver before compliance-os PATCH proof.
-
-## K8s (pending — bastion/VPN required)
-
-```bash
-kubectl config use-context arn:aws:eks:af-south-1:348389439381:cluster/gtcx-production
-./scripts/production/install-compliance-os-eso.sh
-```
-
-Overlay: `infra/kubernetes/overlays/production/compliance-os/`
-
-## Probe
+Cloudflare proxies `compliance.gtcx.trade` (525). Point origin to:
 
 ```text
-curl https://compliance.gtcx.trade/ → 525 (pre-ingress)
+k8s-gtcxproductionapi-527ebd7716-1025454332.af-south-1.elb.amazonaws.com
 ```
+
+Mode: **DNS only** (grey cloud) or Full SSL with valid ACM on ALB (`8929e5a0`, `9f7149a3`).
 
 ## Next
 
-1. Apply K8s overlay from bastion with production cluster access.
-2. Pin amd64 `compliance-web` prod image tag in `web-app.yaml`.
-3. Cloudflare CNAME `compliance.gtcx.trade` → prod ALB.
-4. Intake smoke → 201; post full witness `from-gtcx-infrastructure-hub-17-prod-w2-sealed-*.md`.
-5. exploration-os `w2:prod:retest` → baseline-os locker #17 close.
+1. Cloudflare CNAME update (or Route53 if delegating).
+2. `curl https://compliance.gtcx.trade/...` intake → **201**.
+3. exploration-os `w2:prod:retest` → `w2-hub-17-retest-latest.json`.
+4. compliance-os `w2:terminal-patch-proof`.
+5. baseline-os locker #17 close.

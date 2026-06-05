@@ -13,5 +13,6 @@ resources:
   - namespace.yaml
   - secret-store.yaml
   - external-secrets.yaml
+  - redis.yaml
   - web-app.yaml
   - ingress.yaml

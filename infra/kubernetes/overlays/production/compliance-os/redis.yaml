@@ -1,0 +1,46 @@
+# Hub #17 slim prod — Redis for rate limiter when prod image bundles ioredis.
+apiVersion: v1
+kind: Service
+metadata:
+  name: compliance-os-redis
+  labels:
+    app: compliance-os-redis
+    app.kubernetes.io/part-of: gtcx
+    environment: production
+spec:
+  selector:
+    app: compliance-os-redis
+  ports:
+    - port: 6379
+      targetPort: 6379
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compliance-os-redis
+  labels:
+    app: compliance-os-redis
+    app.kubernetes.io/part-of: gtcx
+    environment: production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: compliance-os-redis
+  template:
+    metadata:
+      labels:
+        app: compliance-os-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          ports:
+            - containerPort: 6379
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi

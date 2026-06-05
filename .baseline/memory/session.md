@@ -169,13 +169,13 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - [ ] Re-read `.baseline/memory/pitfalls.md`
 - [ ] Run `pnpm agent:next-work` to confirm next story
 
-## Session bootstrap (2026-06-05 09:31:46 UTC)
+## Session bootstrap (2026-06-05 17:47:13 UTC)
 
 - **Command:** `agent start` (baseline-os repo-session-core)
 - **Repo:** gtcx-infrastructure
 - **Next work:** unknown
 - **Blocked:** no
-- **Git:** 0 changed path(s)
+- **Git:** 70 changed path(s)
 
 
 ## Session — 2026-06-05 (continued)
@@ -237,3 +237,45 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 
 - Docs Standard drift: 27 violations (mostly `docs/agents/*` + cross-repo `gtcx-agentic` links) — baseline or fix in dedicated hygiene pass
 - EXT-INF-002 pen-test SOW — Class S parallel (not repo-blocked)
+
+---
+
+## Baseline session — 2026-06-05 (fresh)
+
+| Signal | Value |
+|--------|-------|
+| **Persona / frame** | platform-architect · development |
+| **traceId** | `71776c34-08ea-4d51-84fa-543bbee73e51` |
+| **P22 next** | **S4-08** — Docs-standard drift (agent README stubs + cross-repo links) |
+| **backlogClear** | `false` — 1 automatable item |
+| **Launch focus** | `zwcmp-unblock` — sovereign pilot substrate |
+| **Git** | `main` · **12 commits ahead** of origin · HEAD `994afab` |
+| **SIGNAL** | Sprints 1–3 **done** (`994afab`, `f99b862`) |
+| **validate-all** | **49/52+** — Docs Standard fail (**33** violations) |
+| **Hub #17** | **closed** |
+| **Hub #18** | **open** — prod Postgres persistence (sibling) |
+| **Staging monitoring** | Manifests applied; pods **Pending** (insufficient CPU/memory) |
+
+### Uncommitted / untracked (not in HEAD)
+
+- Modified: agent-sync files (`.agent/`, `CLAUDE.md`, cursor rules, `docs/agents/README.md`)
+- Untracked: `workspace/`, `agents/`, `docs/agents/{claude,codex,...}/` — likely agent-sync drift; fold into S4-08
+
+### Proceed Brief (P26)
+
+**Next:** Execute **S4-08** — fix docs-standard violations (README stubs, link targets).  
+**Because:** Only remaining automatable backlog item; blocks `validate-all` 50/50 and S4-07.  
+**Authority class:** R  
+**Blocked until:** none
+
+---
+
+## execute-roadmap — 2026-06-05
+
+| Story | Status | UAT |
+|-------|--------|-----|
+| S4-08 docs-standard | **done** | `docs-standard-validator` exit 0 |
+| S4-07 validate.sh quick | **done** | `bash infra/scripts/validate.sh quick` exit 0 |
+| validate-all | **55/55** | all gates pass |
+
+**Next (P22):** witness mode — `backlogClear: true` pending recompute

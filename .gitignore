@@ -93,3 +93,11 @@ out/
 # Local Baseline initialization artifacts (never tracked)
 .baseline/config.json
 baseline.config.json
+
+# Operator-local (never commit)
+.kube-config-prod
+.helm-cache/
+.helm-config/
+
+# Local Supabase CLI scratch
+supabase/

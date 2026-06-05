@@ -95,6 +95,10 @@ section('Static Validators');
 run('SIGNAL Scorecard', 'node tools/scripts/validate-signal.mjs');
 run('Score Ledger', 'node tools/scripts/validate-score-ledger.mjs');
 run('Docs Standard', 'node tools/scripts/docs-standard-validator.mjs');
+run(
+  'Workspace Root Cleanliness',
+  'python3 scripts/ops/check-workspace-root-cleanliness.py --strict',
+);
 run('Kyverno Policies', 'node tools/scripts/kyverno-policy-validator.mjs');
 run('SHA-pinned Actions', 'node tools/scripts/pin-actions-sha.mjs --check');
 run('Node Version Floor', 'node tools/scripts/node-version-floor-check.mjs');

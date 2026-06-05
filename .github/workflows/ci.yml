@@ -43,6 +43,9 @@ jobs:
       - name: Format check
         run: pnpm format:check
 
+      - name: Workspace root cleanliness
+        run: pnpm check:workspace-root-cleanliness:strict
+
       - name: Type check
         run: pnpm typecheck
 

@@ -26,6 +26,8 @@
     "check:workflow-image-contract": "node tools/policy/check-workflow-image-contract.mjs",
     "check:security-control-boundaries": "node tools/policy/check-security-control-boundaries.mjs",
     "check:k8s-policy": "node tools/policy/check-k8s-policy.mjs",
+    "check:workspace-root-cleanliness": "python3 scripts/ops/check-workspace-root-cleanliness.py",
+    "check:workspace-root-cleanliness:strict": "python3 scripts/ops/check-workspace-root-cleanliness.py --strict",
     "typecheck": "turbo run typecheck",
     "ctl": "node ./tools/control-plane/gtcx-ctl.mjs",
     "evidence:release-bundle": "node ./tools/control-plane/generate-release-evidence.mjs",
@@ -54,7 +56,10 @@
     "session": "node ../baseline-os/packages/baselineos/dist/cli/bin.js session",
     "next": "node ../baseline-os/scripts/ecosystem/work-next.mjs",
     "gates": "node ../baseline-os/scripts/ecosystem/human-gates-check.mjs",
-    "hub": "node ../baseline-os/scripts/ecosystem/hub-sync.mjs"
+    "hub": "node ../baseline-os/scripts/ecosystem/hub-sync.mjs",
+    "workspace:check": "node scripts/workspace/check.mjs",
+    "pm:sync": "node scripts/workspace/pm-sync.mjs",
+    "pm:status": "node scripts/workspace/pm-status.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

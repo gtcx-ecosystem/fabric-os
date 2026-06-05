@@ -3,20 +3,35 @@ title: 'gtcx-infrastructure — Repo Hygiene Audit'
 status: current
 owner: gtcx-infrastructure
 date: '2026-06-05'
-command: 'repo-hygiene'
+command: 'execute-repo-hygiene'
 workspace_type: 'monorepo'
-policy_source: 'universal-default'
-allowlist_version: 'n/a'
-schema_version: 'n/a'
+policy_source: 'docs/operations/repo/repo-hygiene-protocol.md'
+allowlist_version: '1.0.0'
+schema_version: '1.0.0'
 overall_score: 8.8
+post_remediation_score: 9.8
+post_remediation_date: '2026-06-05'
+remediation_status: 'complete'
+files_changed: 18
+p0_resolved: 0/0
+p1_resolved: 7/7
 branch: main
-head: '786c2e2'
+head: '06e8b95'
 axis_scores:
   axis_1_root_cleanliness: 7.5
   axis_2_per_dir_readme: 8.0
   axis_3_build_artifacts: 10.0
   axis_4_archive_handling: 8.5
   axis_5_naming: 7.5
+  axis_6_size_outliers: 10.0
+  axis_7_os_junk: 10.0
+  axis_8_empty_dirs: 10.0
+post_axis_scores:
+  axis_1_root_cleanliness: 10.0
+  axis_2_per_dir_readme: 9.5
+  axis_3_build_artifacts: 10.0
+  axis_4_archive_handling: 10.0
+  axis_5_naming: 10.0
   axis_6_size_outliers: 10.0
   axis_7_os_junk: 10.0
   axis_8_empty_dirs: 10.0
@@ -257,3 +272,97 @@ Run `/execute-repo-hygiene` or say "ship P1 fixes" to apply remediation.
 ---
 
 _Audit per `gtcx-docs/tools/audit/audit-framework/prompts/hygiene/repo-hygiene-protocol-prompt.md` Phase 0–4._
+
+---
+
+## Post-remediation validation
+
+**Executed:** 2026-06-05 · **Command:** `/execute-repo-hygiene` · **Head:** `06e8b95`
+
+### Files changed
+
+| Action    | Path                                                                                                           |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| Bootstrap | `docs/operations/repo/repo-hygiene-protocol.md`                                                                |
+| Bootstrap | `docs/operations/repo/root-allowlist.json`                                                                     |
+| Bootstrap | `docs/operations/repo/root-allowlist.schema.json`                                                              |
+| Bootstrap | `scripts/ops/check-workspace-root-cleanliness.py`                                                              |
+| Wire      | `package.json` — `check:workspace-root-cleanliness:strict`                                                     |
+| Wire      | `tools/scripts/validate-all.mjs` — Workspace Root Cleanliness gate                                             |
+| Wire      | `.github/workflows/ci.yml` — CI step                                                                           |
+| P1-1      | `git mv` `audit-deploy-comment.md` → `docs/audit/evidence/deploy-comments/staging-audit-bundles-2026-06-02.md` |
+| P1-2      | `git rm` `roadmap.md` (redirect stub; canonical roadmap in `docs/audit/execution-roadmap.md`)                  |
+| P1-3      | `.gitignore` — `.kube-config-prod`, `.helm-cache/`, `.helm-config/`, `supabase/`                               |
+| P1-4      | `scripts/production/README.md`                                                                                 |
+| P1-5      | `.claude/README.md`                                                                                            |
+| P1-6      | `supabase/` gitignored (local CLI scratch only)                                                                |
+| P1-7      | `workspace/assurance/README.md`                                                                                |
+| Extra     | `scripts/workspace/README.md`                                                                                  |
+
+### Checker output
+
+```bash
+$ pnpm check:workspace-root-cleanliness:strict
+# Workspace Root Cleanliness
+Status: PASS
+Repo root matches the canonical allowlist.
+# exit 0
+```
+
+### Verification gates (Protocol 27)
+
+| Command                                        | Exit  | Note                                                                                                    |
+| ---------------------------------------------- | ----- | ------------------------------------------------------------------------------------------------------- |
+| `pnpm check:workspace-root-cleanliness:strict` | **0** | Root allowlist enforced                                                                                 |
+| `node tools/scripts/validate-all.mjs`          | **1** | **50/51 gates** incl. new root gate PASS; Docs Standard fail (27 link violations — S4-08, pre-existing) |
+| `git ls-files` build-artifact scan             | **0** | 0 tracked artifacts                                                                                     |
+| `find` empty-dir scan                          | **0** | 0 empty dirs                                                                                            |
+
+### Post-remediation axis scores
+
+| Axis                       | Before | After    | Delta |
+| -------------------------- | ------ | -------- | ----- |
+| 1. Root cleanliness        | 7.5    | **10.0** | +2.5  |
+| 2. Per-directory README    | 8.0    | **9.5**  | +1.5  |
+| 3. Build-artifact tracking | 10.0   | **10.0** | —     |
+| 4. Archive handling        | 8.5    | **10.0** | +1.5  |
+| 5. Naming consistency      | 7.5    | **10.0** | +2.5  |
+| 6. File-size outliers      | 10.0   | **10.0** | —     |
+| 7. IDE/OS junk             | 10.0   | **10.0** | —     |
+| 8. Empty / orphan dirs     | 10.0   | **10.0** | —     |
+
+**Post-remediation overall:** **9.8** (mean of post axes; policy bootstrapped — 8.9 cap removed)
+
+---
+
+## 10/10 checklist
+
+| Criterion                     | Pass        | Evidence                                                 |
+| ----------------------------- | ----------- | -------------------------------------------------------- |
+| P1 — Repo hygiene protocol    | **pass**    | `docs/operations/repo/repo-hygiene-protocol.md`          |
+| P2 — Machine allowlist        | **pass**    | `docs/operations/repo/root-allowlist.json` v1.0.0        |
+| P3 — Checker script           | **pass**    | `scripts/ops/check-workspace-root-cleanliness.py`        |
+| P4 — CI wired                 | **pass**    | `validate-all.mjs` + `.github/workflows/ci.yml`          |
+| Axis 1 — Root cleanliness     | **pass**    | Checker strict exit 0                                    |
+| Axis 2 — Per-directory README | **pass**    | All P1 gaps closed; `agents/` has README (untracked WIP) |
+| Axis 3 — Build artifacts      | **pass**    | 0 tracked                                                |
+| Axis 4 — Archive handling     | **pass**    | `_delete`/`_archive`/`_cannon` in allowlist + gitignore  |
+| Axis 5 — Naming               | **pass**    | No root uppercase violations                             |
+| Axis 6 — Size outliers        | **pass**    | 0 >1 MB                                                  |
+| Axis 7 — OS/IDE junk          | **pass**    | 0 tracked                                                |
+| Axis 8 — Empty dirs           | **pass**    | 0 empty                                                  |
+| M1 — Package README sweep     | **pass**    | 15/15 workspace packages                                 |
+| M2 — Cross-repo stubs         | **N/A**     | No ecosystem stub dirs at root                           |
+| M3 — Inventory accuracy       | **partial** | `tools/README.md` subdir enumeration still informal      |
+
+**10/10 gate:** overall ≥ 9.0 and every axis ≥ 9.0 — **met** (9.8 overall; axis 2 at 9.5).
+
+---
+
+## Remaining blockers
+
+None for repo hygiene. Cross-cutting **S4-08** (Docs Standard 27 link violations) is a separate docs-standard story, not a hygiene blocker.
+
+---
+
+_Remediation per `gtcx-docs/tools/audit/audit-framework/prompts/hygiene/repo-hygiene-remediation-prompt.md` Phases R0–R4._

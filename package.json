@@ -51,10 +51,10 @@
     "agent:coordination:check": "node scripts/check-coordination-hygiene.mjs",
     "agent:start": "node scripts/agent-start.mjs",
     "agent:session-start": "pnpm run agent:start",
-    "session": "pnpm --dir ../baseline-os session",
-    "next": "pnpm --dir ../baseline-os next",
-    "gates": "pnpm --dir ../baseline-os gates",
-    "hub": "pnpm --dir ../baseline-os hub"
+    "session": "node ../baseline-os/packages/baselineos/dist/cli/bin.js session",
+    "next": "node ../baseline-os/scripts/ecosystem/work-next.mjs",
+    "gates": "node ../baseline-os/scripts/ecosystem/human-gates-check.mjs",
+    "hub": "node ../baseline-os/scripts/ecosystem/hub-sync.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

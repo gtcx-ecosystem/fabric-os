@@ -16,6 +16,16 @@ Prod K8s stack is live; **525** at origin means Cloudflare proxy cannot reach th
 k8s-gtcxproductionapi-527ebd7716-1025454332.af-south-1.elb.amazonaws.com
 ```
 
+## ACM certificate (required)
+
+Ingress must use production wildcard cert (not staging certs):
+
+```text
+arn:aws:acm:af-south-1:348389439381:certificate/eefdabd1-a823-4aa8-b6fb-147584435020
+```
+
+Validation CNAME (grey cloud): `_aa2eb14c3b952c1f3a2246fc0ad673f3.gtcx.trade` → `_ef927b4cfc7988e2be3c3324e1e36106.jkddzztszm.acm-validations.aws.`
+
 Confirm:
 
 ```bash

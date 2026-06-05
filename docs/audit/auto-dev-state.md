@@ -115,6 +115,17 @@ Run `pnpm agent:next-work` to get the next story. Current computed next:
 | ----- | ---- | ----- | -------------------------------------------------------- |
 | —     | —    | —     | `backlogClear: true` — witness until EXT-INF human gates |
 
+## Witness (2026-06-07)
+
+| Gate            | Result                |
+| --------------- | --------------------- |
+| validate-all    | **50/50 PASS**        |
+| validate-signal | **9.60/10 PASS**      |
+| P22 adoption    | 9/9                   |
+| P27 adoption    | 12/12                 |
+| P26 adoption    | 10/10                 |
+| backlogClear    | `true` — witness mode |
+
 ## Resume
 
 ```bash

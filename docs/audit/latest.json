@@ -1,9 +1,9 @@
 {
   "repo": "gtcx-infrastructure",
   "auditDate": "2026-06-05",
-  "verifiedAt": "2026-06-05T03:13:34.242Z",
-  "head": "8ebf72e",
-  "workingTree": "clean",
+  "verifiedAt": "2026-06-07T12:30:00.000Z",
+  "head": "82afdc3",
+  "workingTree": "dirty-23",
   "sourceAudit": "docs/audit/post-roadmap-session-2026-05-30.md",
   "latestAudit": "docs/audit/master-audit-2026-06-02.md",
   "previousAudit": "docs/audit/master-audit-2026-05-30.md",
@@ -148,7 +148,7 @@
     "mainCiFormatFail": false,
     "mainCiJobFail": false,
     "localValidateAllPass": true,
-    "localValidateAllGateCount": 46
+    "localValidateAllGateCount": 50
   },
   "externalBlockers": {
     "register": "docs/audit/external-dependencies-register-2026-05-31.md",

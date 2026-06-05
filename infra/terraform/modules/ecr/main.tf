@@ -15,13 +15,15 @@ variable "repositories" {
   description = "List of ECR repository names"
   type        = list(string)
   default = [
+    "baselineos",
+    "compliance-gateway",
     "gtcx-agx",
-    "gtcx-protocols",
     "gtcx-anisa",
+    "gtcx-intelligence-redteam",
     "gtcx-intelligence-sdk",
     "gtcx-intelligence-trainer",
-    "gtcx-intelligence-redteam",
-    "baselineos",
+    "gtcx-protocols",
+    "gtcx-sovereign",
   ]
 }
 

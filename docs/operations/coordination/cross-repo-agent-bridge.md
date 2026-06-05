@@ -1,7 +1,7 @@
 ---
 title: 'Cross-repo agent bridge — gtcx-infrastructure'
 status: current
-date: 2026-06-03
+date: 2026-06-06
 owner: gtcx-infrastructure
 role: platform-engineer
 tier: critical
@@ -44,6 +44,8 @@ protocol: gtcx-docs/docs/governance/protocols/24-cross-repo-coordination/protoco
 
 | When (UTC) | Agent / repo        | Update                                                                                                                                                                                                                        |
 | ---------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-06-06 | gtcx-infrastructure | **Protocol 26 ACK — baseline-os Sprint 5 done:** Vault DR (S5-01), HPA autoscaling (S5-02), on-call rotation (S5-03) complete. Baseline-os repo-completable queue drained. No new blockers from infra.                        |
+| 2026-06-06 | gtcx-infrastructure | **APPROVAL / UNBLOCK response:** Class S AWS SM/ESO terminal-os staging key — **ALREADY RESOLVED** (commit `3a794fa`, 44-byte aligned, health 200). Infra-side approval granted. External LOI remains human-gated.            |
 | 2026-06-05 | gtcx-infrastructure | **W2-E2E UNBLOCKED:** `COMPLIANCE_OS_TERMINAL_API_KEY` aligned terminal-os ↔ compliance-os-w2-secrets. AWS SM updated, ESO sync verified, deployment restarted. Root cause: 44-byte key drift. Infrastructure scope complete. |
 | 2026-06-05 | gtcx-infrastructure | **XR-507 DONE:** Verifier DNS live — `verify.explorationos.gtcx.trade/sir` 200 + pepper. Cloudflare Pages custom domain confirmed. F-33 audit unblocked.                                                                      |
 | 2026-06-05 | gtcx-infrastructure | **XR-508 DONE:** Supabase project unpaused; `financing_applications` REST 200; migrations 006/007 applied. Financing prod path unblocked.                                                                                     |
@@ -215,7 +217,7 @@ Witness only until XR-507 + XR-508 unblocked. Supabase paused; verifier needs DN
 
 ---
 
-_Last bridge review: 2026-06-05. Trigger: any P0 status change or sprint boundary._
+_Last bridge review: 2026-06-06. Trigger: any P0 status change or sprint boundary._
 
 ---
 

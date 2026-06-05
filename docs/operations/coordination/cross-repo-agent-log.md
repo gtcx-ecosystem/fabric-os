@@ -95,3 +95,5 @@ Append **newest entries at the top** of the table below. One row per meaningful 
 - **2026-06-05T08:00Z** — `INT-R2-03` — **ROLLED OUT** — `ENABLE_COST_ROUTER=1` applied to intelligence-orchestrator staging. Pod env confirmed. `/health` returns `features.enableCostRouter: true`. INT-S8-01 unblocked.
 
 - **2026-06-05T22:00Z** — `W2-E2E` — **UNBLOCKED** — `COMPLIANCE_OS_TERMINAL_API_KEY` aligned between terminal-os staging and compliance-os-w2-secrets. Root cause: key drift (different 44-byte values in AWS SM vs compliance-os K8s secret). Fix: updated `gtcx/terminal-os/staging/api-keys` in AWS SM with compliance-os canonical value (VersionId `c3f22785-9f93-41ee-b354-4a3e66b4376f`), ESO sync verified, deployment restarted. Infrastructure scope complete. Next: compliance-os runs `pnpm w2:terminal-patch-proof`, terminal-os runs `pnpm workflow:staging-receiver-smoke`.
+
+| 2026-06-06T07:04Z | gtcx-infrastructure | Protocol 26 inbound from baseline-os | Sprint 5 complete (S5-01/02/03). Approval request: (1) AWS SM/ESO terminal-os key — RESOLVED by infra commit 3a794fa; (2) Pilot LOI — human-gated. No new blockers. Infra queue: IR-3.4, IR-4.1, IR-5.2. |

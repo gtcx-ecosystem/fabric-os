@@ -2,12 +2,16 @@
 title: 'Inbound — W2 hub #17 secrets spec (from compliance-os)'
 status: received
 date: 2026-06-05
+updated: 2026-06-08
 owner: gtcx-infrastructure
 from: compliance-os
 to: gtcx-infrastructure
-priority: P1
+priority: P0
 hub_blocker: 17
 responds_to_commit: 77dfa9b
+phase_a_staging: complete
+phase_b_prod: in_progress
+infra_raise: docs/operations/coordination/outbound/hub-17-prod-w2-close-raise-2026-06-08.md
 ---
 
 # Inbound received — W2 prod secrets
@@ -26,11 +30,18 @@ responds_to_commit: 77dfa9b
 | Environment | Staging (`gtcx-staging`) then production                                                                                                                     |
 | Pod scope   | **apps/web** + **compliance-api** — not sovereign; not gateway-only                                                                                          |
 
-## Infra action (proceed — matches ping § Infra action on receipt)
+## Phase status (2026-06-08)
 
-1. Seal in AWS SM (`af-south-1`) → ESO → `gtcx-staging` then prod.
-2. Patch **web** Deployment `env.valueFrom.secretKeyRef`; align compliance-api internal token.
-3. Rolling restart → post evidence (secret names, pod names, env verify — no values).
-4. Unblocks: exploration `w2:prod:retest` → compliance PATCH proof → hub #17 close.
+| Phase | Environment                          | Status          | Evidence                                                                                                                                                 |
+| ----- | ------------------------------------ | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **A** | `compliance-os-staging`              | **complete**    | [`from-gtcx-infrastructure-w2-secrets-sealed-2026-06-05.md`](./from-gtcx-infrastructure-w2-secrets-sealed-2026-06-05.md), ESO `3a794fa`, staging witness |
+| **B** | prod `https://compliance.gtcx.trade` | **in progress** | Probe **525** — [`hub-17-prod-w2-close-raise-2026-06-08.md`](./outbound/hub-17-prod-w2-close-raise-2026-06-08.md)                                        |
+
+## Infra action (Phase B — prod close)
+
+1. Seal prod secrets in AWS SM (`af-south-1`) → ESO → prod namespace (`compliance-os-production` / `gtcx-production`).
+2. Ingress `compliance.gtcx.trade` → web deployment; align prod terminal URL/key.
+3. Patch **web** + **compliance-api** `env.valueFrom.secretKeyRef`; rolling restart.
+4. Post evidence (names only) → unblocks exploration `w2:prod:retest` → compliance PATCH proof → hub #17 close.
 
 **Responds to:** [ping-gtcx-infrastructure-w2-secrets-2026-06-04.md](./ping-gtcx-infrastructure-w2-secrets-2026-06-04.md) (`77dfa9b`)

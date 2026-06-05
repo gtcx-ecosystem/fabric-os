@@ -20,8 +20,8 @@
 
 | Needs | Owner | Status |
 | --- | --- | --- |
+| **Hub #17 prod W2 close** | **gtcx-infrastructure** | **in progress** — seal prod secrets, `compliance.gtcx.trade` ingress, terminal URL/key |
 | EXT-INF-003 WORM recurrence on main | Infra operator | open |
-| `git push` (9+ commits ahead) | Operator / Cursor permissions | blocked |
 
 ## Soft Dependencies
 

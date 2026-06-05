@@ -38,16 +38,17 @@ review_cycle: on-change
 
 ## Cross-repo reconciliation (2026-06-05)
 
-| XR                             | Status                                                                          | Evidence              |
-| ------------------------------ | ------------------------------------------------------------------------------- | --------------------- |
-| XR-401 INF-86 algorithm        | **done** — CISO sign-off (ECC_NIST_P256)                                        | `c36a5f6`             |
-| XR-402 INF-86 ceremony         | **ready** — unblocked for scheduling                                            | —                     |
-| XR-405 Platforms KMS wire-up   | **done** — staging IRSA in prod KMS policy                                      | `b3ef031` … `a9ca4ce` |
-| XR-507 Verifier DNS            | **done** — `verify.explorationos.gtcx.trade` live                               | 2026-06-05            |
-| XR-508 Supabase unpause        | **done** — migrations 006/007 applied                                           | 2026-06-05            |
-| W2-OPS-001 terminal-os staging | **done** — EKS deployed, DNS live                                               | `9fcc8cc`             |
-| INT-D05 cluster capacity       | **done** — 2→3 nodes, Litmus installed                                          | `89b5ab8`, `1b9333d`  |
-| W2-E2E key alignment           | **done** — `COMPLIANCE_OS_TERMINAL_API_KEY` aligned terminal-os ↔ compliance-os | `3a794fa`             |
+| XR                             | Status                                                                                          | Evidence                                   |
+| ------------------------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| XR-401 INF-86 algorithm        | **done** — CISO sign-off (ECC_NIST_P256)                                                        | `c36a5f6`                                  |
+| XR-402 INF-86 ceremony         | **ready** — unblocked for scheduling                                                            | —                                          |
+| XR-405 Platforms KMS wire-up   | **done** — staging IRSA in prod KMS policy                                                      | `b3ef031` … `a9ca4ce`                      |
+| XR-507 Verifier DNS            | **done** — `verify.explorationos.gtcx.trade` live                                               | 2026-06-05                                 |
+| XR-508 Supabase unpause        | **done** — migrations 006/007 applied                                                           | 2026-06-05                                 |
+| W2-OPS-001 terminal-os staging | **done** — EKS deployed, DNS live                                                               | `9fcc8cc`                                  |
+| INT-D05 cluster capacity       | **done** — 2→3 nodes, Litmus installed                                                          | `89b5ab8`, `1b9333d`                       |
+| W2-E2E key alignment           | **done** — `COMPLIANCE_OS_TERMINAL_API_KEY` aligned terminal-os ↔ compliance-os                 | `3a794fa`                                  |
+| Hub #17 prod W2 close          | **in progress** — infra Class A owner; staging done; prod `compliance.gtcx.trade` probe **525** | `hub-17-prod-w2-close-raise-2026-06-08.md` |
 
 ## GTM audit (lane 5)
 
@@ -86,28 +87,29 @@ EXT-INF-002 (pen-test SOW), EXT-INF-013 (pilot owner), EXT-INF-014 (DPA), EXT-IN
 
 ## Work register (Protocol 22)
 
-| ID             | Title                                                          | P   | Status   | Class    |
-| -------------- | -------------------------------------------------------------- | --- | -------- | -------- |
-| LAUNCH-PLAN-01 | Reconcile execution-roadmap + work register                    | P1  | **done** | plan     |
-| LAUNCH-PLAN-02 | Refresh auto-dev-state for launch/GTM                          | P1  | **done** | plan     |
-| LAUNCH-PLAN-03 | Global South 10x plan status row update                        | P1  | **done** | plan     |
-| GTM-AUDIT      | Lane-5 GTM completeness audit                                  | P1  | **done** | plan     |
-| S1-02b         | Retire deprecated ad-hoc K8s migration Jobs                    | P1  | **done** | ops      |
-| S1-10b         | Verify audit-sink branch coverage                              | P1  | **done** | code     |
-| W2-E2E         | Align terminal-os API key with compliance-os                   | P0  | **done** | ops      |
-| IR-2.1         | Dependabot tier-3 merges                                       | P2  | blocked  | external |
-| IR-2.2         | AI SDK v5→v6 migration branch + eval regression                | P1  | **done** | code     |
-| IR-2.3         | CodeQL/Trivy SARIF upload graceful when Code Security disabled | P0  | **done** | code     |
-| IR-3.1         | WORM upload workflow                                           | P1  | **done** | code     |
-| IR-3.2         | Document operator live path for runtime-evidence-check         | P1  | **done** | ops-docs |
-| IR-3.5         | Refresh DR fire-drill dated artifact                           | P1  | **done** | ops-docs |
-| IR-3.4         | Expand `gtcx-ctl validate-environment` in CI                   | P1  | **done** | code     |
-| IR-4.1         | USSD path soak test in CI                                      | P1  | **done** | code     |
-| IR-5.2         | Re-run ecosystem-repo-review; ledger ≥9.0                      | P2  | **done** | ops-docs |
-| IR-5.1         | Cross-repo-contract token                                      | P2  | **done** | code     |
-| S2-13          | Pen-test SOW signature                                         | P0  | blocked  | external |
-| S4-03          | PRD-002 Tier B: align TradePass DID doc resolver contract      | P1  | blocked  | external |
-| P22-INFRA-01   | Protocol 22 adoption — manifest + script + CI                  | P0  | **done** | ops-docs |
+| ID             | Title                                                          | P   | Status      | Class    |
+| -------------- | -------------------------------------------------------------- | --- | ----------- | -------- |
+| LAUNCH-PLAN-01 | Reconcile execution-roadmap + work register                    | P1  | **done**    | plan     |
+| LAUNCH-PLAN-02 | Refresh auto-dev-state for launch/GTM                          | P1  | **done**    | plan     |
+| LAUNCH-PLAN-03 | Global South 10x plan status row update                        | P1  | **done**    | plan     |
+| GTM-AUDIT      | Lane-5 GTM completeness audit                                  | P1  | **done**    | plan     |
+| S1-02b         | Retire deprecated ad-hoc K8s migration Jobs                    | P1  | **done**    | ops      |
+| S1-10b         | Verify audit-sink branch coverage                              | P1  | **done**    | code     |
+| W2-E2E         | Align terminal-os API key with compliance-os                   | P0  | **done**    | ops      |
+| HUB-17-PROD    | Prod W2 secrets + compliance.gtcx.trade ingress (Class A)      | P0  | in_progress | ops      |
+| IR-2.1         | Dependabot tier-3 merges                                       | P2  | blocked     | external |
+| IR-2.2         | AI SDK v5→v6 migration branch + eval regression                | P1  | **done**    | code     |
+| IR-2.3         | CodeQL/Trivy SARIF upload graceful when Code Security disabled | P0  | **done**    | code     |
+| IR-3.1         | WORM upload workflow                                           | P1  | **done**    | code     |
+| IR-3.2         | Document operator live path for runtime-evidence-check         | P1  | **done**    | ops-docs |
+| IR-3.5         | Refresh DR fire-drill dated artifact                           | P1  | **done**    | ops-docs |
+| IR-3.4         | Expand `gtcx-ctl validate-environment` in CI                   | P1  | **done**    | code     |
+| IR-4.1         | USSD path soak test in CI                                      | P1  | **done**    | code     |
+| IR-5.2         | Re-run ecosystem-repo-review; ledger ≥9.0                      | P2  | **done**    | ops-docs |
+| IR-5.1         | Cross-repo-contract token                                      | P2  | **done**    | code     |
+| S2-13          | Pen-test SOW signature                                         | P0  | blocked     | external |
+| S4-03          | PRD-002 Tier B: align TradePass DID doc resolver contract      | P1  | blocked     | external |
+| P22-INFRA-01   | Protocol 22 adoption — manifest + script + CI                  | P0  | **done**    | ops-docs |
 
 ## Next work (computed)
 

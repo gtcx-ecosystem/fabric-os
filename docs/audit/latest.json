@@ -37,13 +37,13 @@
     "p3": 1
   },
   "gates": {
-    "testQuick": "fail",
+    "testQuick": "partial",
     "validateAll": "pass",
     "governance": "pass",
-    "typecheck": "partial",
+    "typecheck": "pass",
     "format": "pass",
     "agentCheck": "pass",
-    "lint": "partial",
+    "lint": "pass",
     "docsLinks": "pass",
     "repoHygiene": "pass",
     "build": "pass",
@@ -51,11 +51,7 @@
     "gtcxCtlValidateCi": "pass",
     "validateSignal": "pass"
   },
-  "gateFailures": [
-    "pnpm test exit 2 — deployment-guard migration-safety.mjs typecheck",
-    "pnpm lint exit 1 — @gtcx/audit-signer ESLint (5 errors)",
-    "pnpm typecheck exit 2 — deployment-guard migration-safety.mjs JSDoc/param mismatch"
-  ],
+  "gateFailures": ["pnpm test quick — 1/359 test flake (S4-07 pending investigation)"],
   "sprint1Closed": {
     "done": ["S1-02", "S1-03", "S1-04", "S1-05", "S1-06", "S1-07", "S1-08", "S1-10"],
     "partial": ["S1-01 → promoted to S2-14"],
@@ -94,7 +90,8 @@
     "10-10-roadmap 2026-06-02 (1dec78f): honest baseline 7.1 → 10.0; M1 Foundation target 8.0 (2-3w); M2 Hardening target 9.0 (4-6w); M3 Certification target 9.5 (2-3mo); M4 Reference target 10.0 (1-2mo); critical path dominated by external dependencies (SOC 2 + pen-test).",
     "M1 Foundation complete (801c2e0): compliance-gateway lint debt resolved (1 error fixed); 6 missing READMEs added; dead cross-repo links fixed (1198/1198); mutable audit default sink durable (NATS in prod/staging, stdout only in dev/test); typecheck/build wired for all 15 packages (18/18 tasks pass); 39/39 gates green.",
     "Bank-grade audit 2026-06-07 (9d7d763): lane-4 certified composite 8.3 (+1.2 vs master-audit 2026-06-02); validate-all 50/50; IR-3.4 gtcx-ctl validate --ci + IR-4.1 USSD soak; external assurance unchanged (pen-test, SOC2, FSCA).",
-    "Engineering audit 2026-06-07 (c181138): lane-1 headline 7.9 (signoff 7.5 / completion 8.3); validate-all 50/50; lint/typecheck/test fail on audit-signer + deployment-guard regressions."
+    "Engineering audit 2026-06-07 (c181138): lane-1 headline 7.9 (signoff 7.5 / completion 8.3); validate-all 50/50; lint/typecheck/test fail on audit-signer + deployment-guard regressions.",
+    "Execute-roadmap reconcile 2026-06-07: S4-04/05 closed — lint + typecheck green; validate-all 50/50; S4-07 tracks pnpm test quick 1/359 flake."
   ],
   "remainingGaps": [
     "S2-13 — Pen-test SOW signature (EXT-INF-002).",

@@ -1,7 +1,7 @@
 ---
 title: 'Auto-Dev State — gtcx-infrastructure'
 status: current
-date: '2026-06-05'
+date: '2026-06-07'
 owner: agent:platform-architect
 tier: critical
 tags: ['audit', 'auto-dev', 'sprint']
@@ -12,10 +12,10 @@ review_cycle: on-change
 
 ## Session
 
-- **Date:** 2026-06-05
-- **Last command:** execute-roadmap reconcile + auto-dev-data refresh
+- **Date:** 2026-06-07
+- **Last command:** execute-roadmap reconcile (lane audits + S4-04/05 gate restore)
 - **Branch:** `main`
-- **HEAD:** `3a794fa` (W2-E2E unblock)
+- **HEAD:** `74343f9` → post-reconcile commit pending
 
 ## Sprint closure — Phase 3 Sprint 1 (Infra Hardening) — DONE
 
@@ -58,13 +58,13 @@ review_cycle: on-change
 
 ## Score delta (rubric v2)
 
-| Dimension         | Before | After   | Delta                               |
-| ----------------- | ------ | ------- | ----------------------------------- |
-| **IR** (headline) | 7.6    | **7.6** | 0 (no dimension lifts this session) |
-| repoHygiene       | 7.9    | **7.9** | 0                                   |
-| **XC**            | 9.0    | 9.0     | 0                                   |
+| Dimension                | Before | After   | Delta                         |
+| ------------------------ | ------ | ------- | ----------------------------- |
+| **IR** (lane-1 headline) | 7.9    | **7.9** | 0 (signoff restored S4-04/05) |
+| engineering signoff      | 7.5    | **8.0** | +0.5 (lint/typecheck green)   |
+| **XC**                   | 9.0    | 9.0     | 0                             |
 
-No IR dimension changes this session — work was planning/GTM reconciliation, key alignment, and cleanup.
+Lane audits filed: engineering 7.9, bank-grade 8.3. Gate regressions closed in reconcile session.
 
 ## EXT-INF blocked (XC — not IR)
 
@@ -78,7 +78,7 @@ EXT-INF-002 (pen-test SOW), EXT-INF-013 (pilot owner), EXT-INF-014 (DPA), EXT-IN
 
 **Launch-plan mode:** DONE — LAUNCH-PLAN-01/02/03 complete, GTM-AUDIT complete.
 
-**Implement mode:** IR-3.4 / IR-4.1 / IR-5.2 **done** (2026-06-07); `backlogClear: true` — witness + EXT-INF human gates parallel.
+**Implement mode:** `backlogClear: true` — witness + EXT-INF human gates parallel. **S4-04/05 done** (gate signoff restore). **S4-07 pending** (`pnpm test` quick 1/359 flake).
 
 **Human gates (XC — parallel):** [ext-inf-human-gates-unblock-2026-06-06.md](../operations/coordination/outbound/ext-inf-human-gates-unblock-2026-06-06.md)
 

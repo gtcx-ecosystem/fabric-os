@@ -7,7 +7,7 @@ role: quality-evidence-lead
 tier: strategic
 tags: ['audit', 'roadmap', '10-10', 'IR', 'internal-engineering']
 review_cycle: weekly
-last_reconciled: '2026-06-01'
+last_reconciled: '2026-06-07'
 supersedes:
   - docs/audit/10-10-roadmap-2026-05-17.md
   - docs/audit/10-10-roadmap-2026-05-26.md
@@ -64,17 +64,17 @@ Agent-executable **execution-roadmap Sprints 1–3** are closed (38/38 `validate
 
 ## 2. Current scorecard
 
-**Headline:** **IR 7.6** (2026-06-01, HEAD per `latest.json`)
+**Headline:** **IR 7.9** (2026-06-07, lane-1 engineering audit @ `74343f9`)
 
-| Dimension             | Weight | Ledger | Adjusted | Gap to 10.0 | Primary blocker                                            |
-| --------------------- | ------ | ------ | -------- | ----------- | ---------------------------------------------------------- |
-| codeQuality           | 15%    | 8.0    | 8.0      | 2.0         | Tier 3–4 dependabot + AI SDK migration open                |
-| repoHygiene           | 12%    | 8.5    | **7.9**  | 2.1         | `main` CI format fail (−0.4) + job fail (−0.2)             |
-| security              | 15%    | 8.9    | 8.9      | 1.1         | CodeQL/SARIF + open security workflow on `main`            |
-| globalSouthResilience | 10%    | 6.8    | 6.8      | 3.2         | USSD soak in CI; offline verifier pack                     |
-| ecosystemIntegration  | 10%    | 6.8    | 6.8      | 3.2         | `cross-repo-contract` scoped to infra-only (token pending) |
-| agenticMaturity       | 13%    | 8.2    | 8.2      | 1.8         | Eval gates tied to pilot KPIs; SIGNAL supplementary        |
-| enterpriseReadiness   | 25%    | 6.9    | 6.9      | 3.1         | Recurring WORM **workflow**; live DR/load artifacts        |
+| Dimension             | Weight | Ledger | Adjusted | Gap to 10.0 | Primary blocker                                         |
+| --------------------- | ------ | ------ | -------- | ----------- | ------------------------------------------------------- |
+| codeQuality           | 15%    | 8.2    | 8.2      | 1.8         | S4-04/05 gate regressions (fix in progress)             |
+| repoHygiene           | 12%    | 8.5    | 8.5      | 1.5         | 12 missing READMEs (S4-06)                              |
+| security              | 15%    | 8.6    | 8.6      | 1.4         | Pen-test external (XC); 50-gate validate-all green      |
+| globalSouthResilience | 10%    | 7.2    | 7.2      | 2.8         | USSD soak done (IR-4.1); offline queue still flag       |
+| ecosystemIntegration  | 10%    | 8.7    | 8.7      | 1.3         | IR-5.1/5.2 done; PRD-002 Tier B external                |
+| agenticMaturity       | 13%    | 8.3    | 8.3      | 1.7         | SIGNAL L2-low; Human Lead TBD                           |
+| enterpriseReadiness   | 25%    | 7.6    | 7.6      | 2.4         | Live DR witness; operator WORM recurrence (EXT-INF-003) |
 
 **XC (separate):** 9.0 — do not plan here. EXT-INF register unchanged.
 

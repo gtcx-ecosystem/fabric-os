@@ -2,13 +2,15 @@
 status: current
 date: 2026-06-01
 owner: gtcx-infrastructure
-last_reconciled: 2026-06-05
+last_reconciled: 2026-06-07
 ir_roadmap: docs/audit/ir-10-10-roadmap.md
 sources:
   - docs/audit/ir-10-10-roadmap.md
   - docs/audit/post-roadmap-session-2026-05-30.md
   - docs/audit/master-audit-2026-05-30.md
   - docs/audit/master-audit-2026-06-02.md
+  - docs/audit/bank-grade-audit-2026-06-07.md
+  - docs/audit/engineering-audit-2026-06-07.md
   - docs/audit/10-10-remediation-plan-2026-05-30.md
   - docs/audit/10-10-roadmap-2026-05-26.md
   - docs/roadmap/roadmap-2026-07-13.md
@@ -43,16 +45,33 @@ reconciled_against_commits:
 > Reconciles every open finding from the 2026-05-30 audit cluster. Newer audit
 > evidence wins over older "done" claims.
 
-## Active phase: Close-the-gap + ZWCMP unblock (2026-05-31 → 2026-06-21)
+## Active phase: Witness + gate signoff restore (2026-06-07 → 2026-06-14)
+
+Agent implement queue **clear** (`backlogClear: true`). Automatable work: restore turbo `lint`/`typecheck`/`test` green (S4-04/05). Parallel human gates: EXT-INF human signatures.
+
+Prior phase **Close-the-gap + ZWCMP unblock** (2026-05-31 → 2026-06-21) — engineering stories closed; XC blockers remain.
+
+## Sprint 4: Gate signoff restore (2026-06-07 → 2026-06-14)
+
+| Story | Title                                                | Status   | Acceptance                                    |
+| ----- | ---------------------------------------------------- | -------- | --------------------------------------------- |
+| S4-04 | `deployment-guard` typecheck — JSDoc/param alignment | **done** | `pnpm typecheck` exit 0 @ reconcile           |
+| S4-05 | `@gtcx/audit-signer` + compliance-gateway lint debt  | **done** | `pnpm lint` exit 0 @ reconcile                |
+| S4-07 | Investigate `pnpm test` quick 1/359 flake            | pending  | `bash infra/scripts/validate.sh quick` exit 0 |
+| S4-06 | README gaps (12 dirs) per repo-hygiene audit         | pending  | repo-hygiene P1 items; optional polish        |
+
+---
+
+## Prior phase: Close-the-gap + ZWCMP unblock (2026-05-31 → 2026-06-21)
 
 Three back-to-back sprints, one week each. Sprint 1 closes what the 2026-05-30
 session opened and unblocks the ZWCMP pilot. Sprint 2 hardens shipped surfaces
 and decides the wire-or-delete fate of unwired primitives. Sprint 3 ships
 external evidence — pilot signature, primitives publication, soak-test baseline.
 
-**Score baseline (2026-06-05, rubric v2):** **IR 7.6** (internal engineering) + **XC 9.0** (external/GTM clearance, separate track). Sprint 1 hardening complete; 46/46 validate-all gates pass. See `docs/audit/SCORING.md` and `docs/agile/sprints/sprint-2026-06-phase3-roadmap.md` for active sprint state.
+**Score baseline (2026-06-07, rubric v2):** **IR 7.9** (lane-1 engineering headline) + **bank-grade 8.3** (lane 4, separate) + **XC 9.0** (external/GTM clearance). `validate-all` **50/50**; witness mode (`backlogClear: true`). See [`engineering-audit-2026-06-07.md`](./engineering-audit-2026-06-07.md) and [`bank-grade-audit-2026-06-07.md`](./bank-grade-audit-2026-06-07.md).
 
-**Reconcile delta (2026-06-07):** IR-3.4 done (`gtcx-ctl validate --ci` in CI + validate-all). IR-4.1 done — USSD path k6 soak (`tools/load-tests/ussd-handler-soak.js`) + baseline gate (`ussd-soak-baseline-check.mjs`) wired in CI. Sprint 1 infra hardening complete (S1-01 through S1-13 all done). Remaining IR lifts: IR-5.2. Human blockers: EXT-INF-002/013/014/015/016.
+**Reconcile delta (2026-06-07):** Lane audits filed — engineering **7.9** (signoff 7.5 / completion 8.3), bank-grade **8.3**. IR-3.4/4.1/5.2 **done**. New P1 regressions from engineering audit → **S4-04** (deployment-guard typecheck), **S4-05** (audit-signer lint) — **in_progress** this reconcile session. Human blockers unchanged: EXT-INF-002/013/014/015/016.
 
 **Reconcile delta (2026-06-05):** Sprint 1 infra hardening complete (S1-01 through S1-13 all done). XR-401 unblocked (CISO sign-off). XR-405 done (KMS sovereign signing). XR-507/508 done (verifier DNS + Supabase unpause). W2-OPS-001 done (terminal-os staging EKS). INT-D05 done (cluster capacity + Litmus). DR live restore evidence refreshed 2026-06-04. Cross-repo-contract scoped to infra-only.
 

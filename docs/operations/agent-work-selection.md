@@ -44,7 +44,7 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 | Artifact          | Path                                                      |
 | ----------------- | --------------------------------------------------------- |
 | Cross-repo bridge | `docs/operations/coordination/cross-repo-agent-bridge.md` |
-| Latest audit      | `docs/audit/master-audit-2026-06-02.md`                   |
+| Latest audit      | `docs/audit/engineering-audit-2026-06-07.md`              |
 | GTM audit         | `docs/audit/gtm-audit-2026-06-05.md`                      |
 
 **Cross-repo:** S-XR-1 **closed** — XR-101/201 done. S-XR-2 **closed** — XR-202/301/302 done. S-XR-3: XR-401 **done**, XR-402 **ready**, XR-405 **done**. S-XR-4: XR-507 **done**, XR-508 **done**.
@@ -71,6 +71,9 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 | S2-13          | Pen-test SOW signature                                         | P0  | blocked | external |
 | S4-03          | PRD-002 Tier B: align TradePass DID doc resolver contract      | P1  | blocked | external |
 | P22-INFRA-01   | Protocol 22 adoption — manifest + script + CI                  | P0  | done    | ops-docs |
+| S4-04          | deployment-guard typecheck regression                          | P1  | done    | code     |
+| S4-05          | audit-signer + compliance-gateway lint regressions             | P1  | done    | code     |
+| S4-07          | pnpm test quick 1/359 flake investigation                      | P2  | pending | code     |
 
 ## Implementation classes
 

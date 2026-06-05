@@ -2,11 +2,21 @@
  * @fileoverview System Prompt for AI Compliance Gateway
  *
  * Domain-specific knowledge for African trade compliance.
- * This is the moat — the regulatory intelligence that cannot be copied
- * by wrapping a generic model around public docs.
+ * Semver SoR: docs/audit/prompts/compliance-gateway@1.0.0/ (SIGNAL INF-014).
  */
 
 import { failClosed } from './fail-closed.mjs';
+
+/** @type {const} */
+export const PROMPT_VERSION = process.env.COMPLIANCE_GATEWAY_PROMPT_VERSION ?? '1.0.0';
+
+export function getPromptMetadata() {
+  return {
+    engine: 'compliance-gateway',
+    promptVersion: PROMPT_VERSION,
+    manifest: `docs/audit/prompts/compliance-gateway@${PROMPT_VERSION}/manifest.json`,
+  };
+}
 
 // Jurisdictions catalog is consumed via the workspace package's
 // exports map (see @gtcx/compliance-data/jurisdictions). The package

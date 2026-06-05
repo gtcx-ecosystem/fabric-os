@@ -1,0 +1,12 @@
+{
+  "engine": "compliance-gateway",
+  "version": "1.0.0",
+  "semver": "1.0.0",
+  "updated": "2026-06-05",
+  "files": {
+    "system": "system.md",
+    "changelog": "CHANGELOG.md"
+  },
+  "runtimeInjection": ["jurisdictions-catalog"],
+  "auditField": "prompt_version"
+}

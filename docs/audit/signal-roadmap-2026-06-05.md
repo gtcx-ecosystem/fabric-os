@@ -5,7 +5,7 @@ date: 2026-06-05
 owner: gtcx-infrastructure
 overall_signal: L2-low
 target_signal: L4-low
-phase: 1-sprint-2-partial
+phase: 1-sprint-3-done
 ---
 
 # SIGNAL Roadmap
@@ -35,3 +35,14 @@ Canonical assessment: [`signal-assessment-2026-06-05.md`](./signal-assessment-20
 **Next:** Operator `kubectl apply` per `staging-monitoring-apply.md`; live scrape verify; monthly cost-stats import.
 
 **Sprint 1 recap:** INF-007 pilot, INF-001, INF-011, INF-006, INF-012, INF-003 — see above.
+
+## Sprint 3 progress (2026-06-05)
+
+| Task                                   | Status      | Evidence                                                                            |
+| -------------------------------------- | ----------- | ----------------------------------------------------------------------------------- |
+| SIGNAL-INF-014 prompt semver           | **done**    | `docs/audit/prompts/compliance-gateway@1.0.0/`; `prompt_version` on `query:success` |
+| SIGNAL-INF-005 injection-suite CI      | **done**    | `.github/workflows/injection-suite-weekly.yml`; `run-injection-suite-witness.mjs`   |
+| SIGNAL-INF-009 agent integration smoke | **done**    | `tools/contract-tests/agent-integration.test.mjs`; CI job                           |
+| SIGNAL-INF-008 staging apply           | **partial** | Manifests applied; pods pending (staging node CPU/memory)                           |
+
+**Overall SIGNAL after Sprint 3:** L2 mid/high (in-repo); L2 high in prod after staging monitoring apply + live scrape.

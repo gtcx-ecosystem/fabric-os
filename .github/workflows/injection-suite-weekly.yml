@@ -1,0 +1,31 @@
+# SIGNAL INF-005 — weekly injection-suite static witness
+name: Injection Suite — Weekly Witness
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  injection-static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '20.18.0'
+
+      - name: Run injection-suite static witness
+        run: node scripts/ops/run-injection-suite-witness.mjs
+
+      - name: Upload evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: injection-suite-latest
+          path: docs/audit/evidence/injection-suite-latest.json
+          retention-days: 90

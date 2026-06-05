@@ -69,7 +69,7 @@ import {
   classifyComplexity,
 } from './providers.mjs';
 import { validateQueryBody, buildUserMessage } from './schemas.mjs';
-import { systemPrompt } from './system-prompt.mjs';
+import { getPromptMetadata, systemPrompt } from './system-prompt.mjs';
 import { createToolRegistry, listToolsForAccess, toolCount } from './tools.mjs';
 
 // In-flight /v1/query count, exposed to the HPA via the
@@ -487,6 +487,7 @@ async function handleQueryInner(req, res, deps) {
           estimatedCostUSD: estimatedCost?.totalCostUSD ?? 0,
           confidenceScore: confidence.score,
           confidenceBand: confidence.band,
+          promptVersion: getPromptMetadata().promptVersion,
         },
       });
       return sendJson(

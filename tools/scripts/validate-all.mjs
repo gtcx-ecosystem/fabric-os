@@ -101,6 +101,8 @@ run(
 );
 run('Trace Correlation (SIGNAL)', 'node tools/scripts/validate-trace-correlation.mjs');
 run('LLM Ops (SIGNAL)', 'node tools/scripts/validate-llm-ops.mjs');
+run('Prompt Semver (SIGNAL)', 'node tools/scripts/validate-prompt-semver.mjs');
+run('Injection Suite Witness (SIGNAL)', 'node scripts/ops/run-injection-suite-witness.mjs');
 run('Kyverno Policies', 'node tools/scripts/kyverno-policy-validator.mjs');
 run('SHA-pinned Actions', 'node tools/scripts/pin-actions-sha.mjs --check');
 run('Node Version Floor', 'node tools/scripts/node-version-floor-check.mjs');
@@ -129,7 +131,7 @@ run('Dependabot Merge Plan', 'node tools/scripts/dependabot-merge-plan.mjs');
 run('Pen-Test Intake Evidence', 'node tools/scripts/pen-test-intake-evidence.mjs');
 run(
   'Contract Tests',
-  'node --test tools/contract-tests/protocol-schema.test.mjs tools/contract-tests/gateway-tenancy.test.mjs tools/contract-tests/audit-signer-catalog.test.mjs tools/contract-tests/replay-protection.test.mjs'
+  'node --test tools/contract-tests/protocol-schema.test.mjs tools/contract-tests/gateway-tenancy.test.mjs tools/contract-tests/audit-signer-catalog.test.mjs tools/contract-tests/replay-protection.test.mjs tools/contract-tests/agent-integration.test.mjs'
 );
 run(
   'Ecosystem Integration Matrix',

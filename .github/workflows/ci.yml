@@ -52,6 +52,9 @@ jobs:
       - name: Infrastructure validation smoke
         run: pnpm test
 
+      - name: Agent integration smoke (SIGNAL INF-009)
+        run: node --test tools/contract-tests/agent-integration.test.mjs
+
       - name: Environment preflight (gtcx-ctl validate --ci)
         run: node tools/control-plane/gtcx-ctl.mjs validate --ci
 

@@ -1,3 +1,9 @@
+---
+status: current
+date: 2026-06-05
+owner: gtcx-infrastructure
+---
+
 # compliance-gateway prompts @1.0.0
 
 ## 1.0.0 — 2026-06-05

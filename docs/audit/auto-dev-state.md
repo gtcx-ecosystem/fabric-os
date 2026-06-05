@@ -13,7 +13,7 @@ review_cycle: on-change
 ## Session
 
 - **Date:** 2026-06-07
-- **Last command:** execute-roadmap — S4-06 README sweep (12 dirs)
+- **Last command:** execute-roadmap — S4-08 docs-standard remediation (33 violations → 0)
 - **Branch:** `main`
 - **HEAD:** `74343f9` → post-reconcile commit pending
 
@@ -79,7 +79,7 @@ EXT-INF-002 (pen-test SOW), EXT-INF-013 (pilot owner), EXT-INF-014 (DPA), EXT-IN
 
 **Launch-plan mode:** DONE — LAUNCH-PLAN-01/02/03 complete, GTM-AUDIT complete.
 
-**Implement mode:** **S4-06 done** (12 READMEs). Next: **S4-07** (`pnpm test` quick flake). EXT-INF human gates parallel (Class S).
+**Implement mode:** **S4-06 done** (repo-hygiene 8.8). **S4-07 blocked** (docs-standard 27 violations in `validate.sh quick`). Next: **S4-08**. Hub **#17 closed**. EXT-INF human gates parallel (Class S).
 
 **Human gates (XC — parallel):** [ext-inf-human-gates-unblock-2026-06-06.md](../operations/coordination/outbound/ext-inf-human-gates-unblock-2026-06-06.md)
 

@@ -1,3 +1,9 @@
+---
+status: current
+date: 2026-06-05
+owner: gtcx-infrastructure
+---
+
 # compliance-gateway system prompt @1.0.0
 
 > Runtime source: `tools/compliance-gateway/src/system-prompt.mjs`  

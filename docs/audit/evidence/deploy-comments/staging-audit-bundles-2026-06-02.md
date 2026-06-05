@@ -1,3 +1,9 @@
+---
+status: current
+date: 2026-06-02
+owner: gtcx-infrastructure
+---
+
 ## Infrastructure staging deploy — audit bundle (#50–#52)
 
 Base: `https://api.staging.gtcx.trade`

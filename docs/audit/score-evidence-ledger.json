@@ -287,6 +287,14 @@
           "ciRun": null,
           "artifact": "docs/audit/auto-dev-state.md",
           "reason": "Execution roadmap reconciled; LAUNCH-PLAN-01/02/03 done; GTM audit committed; cross-repo workplan updated"
+        },
+        {
+          "date": "2026-06-05",
+          "score": 8.8,
+          "commit": "786c2e2",
+          "ciRun": null,
+          "artifact": "docs/audit/repo-hygiene-2026-06-05.md",
+          "reason": "repo-hygiene audit: README sweep improved (15/15 workspace packages); 2 root uppercase files + operator artifacts remain; no repo policy (8.9 cap)"
         }
       ]
     },

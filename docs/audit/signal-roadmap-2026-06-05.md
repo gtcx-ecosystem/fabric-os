@@ -20,7 +20,7 @@ Canonical assessment: [`signal-assessment-2026-06-05.md`](./signal-assessment-20
 | SIGNAL-INF-001 Human Lead      | **done**    | AGENTS.md @amanianai                                             |
 | SIGNAL-INF-011 agent:next-work | **done**    | `scripts/lib/suggest-persona.mjs`, `agent-launch-focus.mjs`      |
 | SIGNAL-INF-006 taxonomy        | **done**    | `cross-repo-agent-log.md` columns                                |
-| SIGNAL-INF-012 topology        | **done**    | `docs/architecture/agent-topology-2026-Q3.md`                    |
+| SIGNAL-INF-012 topology        | **done**    | `docs/architecture/agent-topology-2026-q3.md`                    |
 | SIGNAL-INF-003 PR checklist    | **done**    | `docs/operations/agent-pr-checklist.md`                          |
 
 ## Sprint 2 progress (2026-06-05)

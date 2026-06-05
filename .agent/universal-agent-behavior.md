@@ -2,17 +2,21 @@
 
 **Applies to:** Claude, Kimi, Gemini, Codex, Cursor (IDE + `agent` CLI), Copilot, and any future agent with shell access.
 
-**Canonical doc (read every session):** `docs/operations/agent-universal-instructions.md`
+**Canonical docs (read every session):**
 
-### Session start (provider-agnostic)
+1. `docs/operations/agent-universal-instructions.md`
+2. `docs/operations/human-gate-navigation.md` — Class **S** + **`blocksIR: false`** gates are **parallel**, not repo frozen
+
+**Full chain:** `baseline start` (INST-003 + repo session + gates). Repo-only: `pnpm agent:start`.
+
+### Session start (one command)
 
 ```bash
-pnpm agent:session-start          # preferred when wired
-pnpm agent:next-work              # P22 selection only
-pnpm agent:next-work --json       # automation / scripts
+baseline start
+# or: pnpm agent:start   # P22 bootstrap only — not full INST-003 chain
 ```
 
-If `agent:session-start` is missing: `node scripts/agent-session-start.mjs` or `node scripts/agent-next-work.mjs`.
+Optional: `pnpm agent:start --json` · legacy alias `pnpm agent:session-start` (same as `agent:start`).
 
 ### P22 — Work selection
 
@@ -23,13 +27,21 @@ If `agent:session-start` is missing: `node scripts/agent-session-start.mjs` or `
 
 Emit **one** brief, then work. Human may **stop**, **correct:**, or story ID — not pick options.
 
-**Forbidden replies:** Your call · Two options · 1./2. menus · Say push if you want · Which do you prefer? · approval of path already selected (Class R).
+**Forbidden replies:** Your call · Two options · 1./2. menus · Say push if you want · **Say if you want** · **committed next or** · **left as local WIP** · Which do you prefer? · **I can…** · **Want me to tackle…** · **anything on the P1 list?** · approval of path already selected (Class R).
+
+**After push/status tables:** run `agent:next-work` → **Status Update** → **Next priority** = that story → implement (do not offer a repo pick list).
+
+**Uncommitted Class R files:** commit in-session (micro-commit) — never ask operator to choose commit vs WIP.
+
+**Required close:** **Status Update** only — message **stops** after Approval needed. **One** Next priority (from `agent:next-work`); never "Want me to proceed with A or B?". Execute Class R Next in-session.
+
+**Status Update (end of turn):** `### Done` · `### Next priority` (one owner + action) · `### Approval needed` (Class A/S only — omit if empty). Template: `docs/operations/agent-status-update-template.md`.
 
 ### P27 — You run commands
 
 - Gates, dev servers (Metro/Expo background), `adb`, `git push` — in-session.
 - Report **command + exit code**.
-- Harness blocks bare `git push`? `pnpm --dir ../gtcx-agentic ecosystem:push-all` (from ecosystem root).
+- Harness blocks bare `git push`? **D3:** `pnpm --dir ../gtcx-agentic ecosystem:git-push --repo <name>` · **D5:** `pnpm --dir ../gtcx-agentic ecosystem:push-all`.
 - Blocked after diagnosis D1–D6? **Permission Unblock Report** — not "run locally."
 
 ### P28 — Authority

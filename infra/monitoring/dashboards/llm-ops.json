@@ -1,0 +1,138 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "gtcx-llm-ops",
+    "title": "LLM Ops — compliance-gateway (SIGNAL INF-002)",
+    "tags": ["gtcx", "llm", "signal", "compliance-gateway"],
+    "timezone": "UTC",
+    "schemaVersion": 39,
+    "refresh": "30s",
+    "time": { "from": "now-7d", "to": "now" },
+    "panels": [
+      {
+        "id": 1,
+        "title": "LLM cost (USD / day)",
+        "type": "timeseries",
+        "datasource": { "type": "prometheus", "uid": "prometheus" },
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+        "targets": [
+          {
+            "expr": "sum(increase(compliance_gateway_cost_usd_total[1d])) by (provider)",
+            "legendFormat": "{{ provider }}"
+          }
+        ],
+        "fieldConfig": { "defaults": { "unit": "currencyUSD" } }
+      },
+      {
+        "id": 2,
+        "title": "Query latency p95 (ms)",
+        "type": "timeseries",
+        "datasource": { "type": "prometheus", "uid": "prometheus" },
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+        "targets": [
+          {
+            "expr": "max(compliance_gateway_query_latency_ms) by (provider)",
+            "legendFormat": "{{ provider }}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "ms",
+            "thresholds": {
+              "steps": [
+                { "color": "green", "value": null },
+                { "color": "yellow", "value": 3000 },
+                { "color": "red", "value": 8000 }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "/v1/query request rate",
+        "type": "timeseries",
+        "datasource": { "type": "prometheus", "uid": "prometheus" },
+        "gridPos": { "h": 8, "w": 8, "x": 0, "y": 8 },
+        "targets": [
+          {
+            "expr": "sum(rate(compliance_gateway_requests_total{route=\"/v1/query\"}[5m])) by (status)",
+            "legendFormat": "{{ status }}"
+          }
+        ],
+        "fieldConfig": { "defaults": { "unit": "reqps" } }
+      },
+      {
+        "id": 4,
+        "title": "Error rate (non-200)",
+        "type": "stat",
+        "datasource": { "type": "prometheus", "uid": "prometheus" },
+        "gridPos": { "h": 8, "w": 8, "x": 8, "y": 8 },
+        "targets": [
+          {
+            "expr": "sum(rate(compliance_gateway_requests_total{route=\"/v1/query\",status!=\"200\"}[5m])) / sum(rate(compliance_gateway_requests_total{route=\"/v1/query\"}[5m])) * 100"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "thresholds": {
+              "steps": [
+                { "color": "green", "value": null },
+                { "color": "yellow", "value": 2 },
+                { "color": "red", "value": 5 }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Confidence (median)",
+        "type": "gauge",
+        "datasource": { "type": "prometheus", "uid": "prometheus" },
+        "gridPos": { "h": 8, "w": 8, "x": 16, "y": 8 },
+        "targets": [
+          {
+            "expr": "avg(compliance_gateway_query_confidence) by (band)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percentunit",
+            "min": 0,
+            "max": 1,
+            "thresholds": {
+              "steps": [
+                { "color": "red", "value": null },
+                { "color": "yellow", "value": 0.5 },
+                { "color": "green", "value": 0.7 }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "LLM trace exports",
+        "type": "timeseries",
+        "datasource": { "type": "prometheus", "uid": "prometheus" },
+        "gridPos": { "h": 6, "w": 12, "x": 0, "y": 16 },
+        "targets": [
+          {
+            "expr": "sum(rate(compliance_gateway_llm_traces_total[5m])) by (backend)",
+            "legendFormat": "{{ backend }}"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "In-flight queries",
+        "type": "stat",
+        "datasource": { "type": "prometheus", "uid": "prometheus" },
+        "gridPos": { "h": 6, "w": 12, "x": 12, "y": 16 },
+        "targets": [{ "expr": "sum(compliance_gateway_inflight_requests)" }]
+      }
+    ]
+  }
+}

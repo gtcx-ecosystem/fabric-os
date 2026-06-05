@@ -135,3 +135,7 @@ declareMetric(
   'compliance_gateway_inflight_requests',
   'In-flight /v1/query requests on this pod — HPA scaling target'
 );
+declareMetric(
+  'compliance_gateway_llm_traces_total',
+  'LLM trace exports by observability backend (langsmith, helicone)'
+);

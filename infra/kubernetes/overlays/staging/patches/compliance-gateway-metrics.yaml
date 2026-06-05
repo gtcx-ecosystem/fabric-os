@@ -1,0 +1,42 @@
+# Prometheus scrape annotations for compliance-gateway (SIGNAL INF-008)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compliance-gateway
+spec:
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8500'
+        prometheus.io/path: /metrics
+    spec:
+      containers:
+        - name: compliance-gateway
+          env:
+            - name: GTCX_TRACE_LOG
+              value: '1'
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: 'http://jaeger.gtcx-monitoring.svc.cluster.local:4318'
+            - name: OTEL_SERVICE_NAME
+              value: compliance-gateway
+            - name: LANGCHAIN_TRACING_V2
+              valueFrom:
+                secretKeyRef:
+                  name: compliance-gateway-secrets
+                  key: LANGCHAIN_TRACING_V2
+                  optional: true
+            - name: LANGCHAIN_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: compliance-gateway-secrets
+                  key: LANGCHAIN_API_KEY
+                  optional: true
+            - name: LANGCHAIN_PROJECT
+              value: 'compliance-gateway-staging'
+            - name: HELICONE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: compliance-gateway-secrets
+                  key: HELICONE_API_KEY
+                  optional: true

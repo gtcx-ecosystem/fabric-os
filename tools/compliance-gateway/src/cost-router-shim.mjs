@@ -9,6 +9,7 @@
 
 import { dirname, join } from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
+import { recordLlmTrace } from './llm-trace.mjs';
 
 /** @typedef {{ 'gtcx.trace_id': string, 'gtcx.service': string, 'gtcx.operation': string, timestamp: string }} TraceSpanMarker */
 
@@ -67,6 +68,11 @@ export async function selectProviderViaBaseline(query, providersMod) {
   if (spanMarker && process.env.GTCX_TRACE_LOG === '1') {
     console.info(JSON.stringify({ type: 'gtcx.trace.span', ...spanMarker }));
   }
+  recordLlmTrace({
+    traceId: process.env.GTCX_TRACE_ID,
+    provider: 'cost-router',
+    operation: 'selectProvider',
+  });
 
   const router = await loadBaselineRouter();
   if (!router) return null;

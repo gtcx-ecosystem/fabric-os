@@ -315,3 +315,15 @@ STUB — see `infra/monitoring/alerts/veritas-anomaly.yml`.
 ### veritaselevatedmatchrate
 
 STUB — see `infra/monitoring/alerts/veritas-anomaly.yml`.
+
+### compliancegatewayllmhighlatency
+
+STUB — see `infra/monitoring/alerts/llm-ops-alerts.yml`. Check Grafana LLM Ops dashboard; review provider latency and cost-router fallback.
+
+### compliancegatewayllmhigherrorrate
+
+STUB — see `infra/monitoring/alerts/llm-ops-alerts.yml`. Inspect compliance-gateway logs and `/v1/query` error metrics; verify API keys and provider health.
+
+### compliancegatewayllmdailycostanomaly
+
+STUB — see `infra/monitoring/alerts/llm-ops-alerts.yml`. Compare `baseline cost-stats` export with `compliance_gateway_cost_usd_total`; tune routing thresholds.

@@ -28,6 +28,7 @@
     "check:k8s-policy": "node tools/policy/check-k8s-policy.mjs",
     "check:workspace-root-cleanliness": "python3 scripts/ops/check-workspace-root-cleanliness.py",
     "check:workspace-root-cleanliness:strict": "python3 scripts/ops/check-workspace-root-cleanliness.py --strict",
+    "signal:import-cost-stats": "node scripts/ops/import-baseline-cost-stats.mjs",
     "typecheck": "turbo run typecheck",
     "ctl": "node ./tools/control-plane/gtcx-ctl.mjs",
     "evidence:release-bundle": "node ./tools/control-plane/generate-release-evidence.mjs",

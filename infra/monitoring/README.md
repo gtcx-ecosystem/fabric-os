@@ -14,8 +14,15 @@ Observability stack for GTCX Infrastructure.
 
 ## Alerts
 
-Alert rules live in `prometheus-rules/`. Every alert must have a `runbook_url`
-annotation linking to a runbook in `docs/operations/runbooks/`.
+Alert rules live in `alerts/`. Every alert must have a `runbook_url` annotation
+linking to a runbook in `docs/operations/runbooks/alerts.md`.
+
+## Dashboards
+
+| Dashboard                    | File                                 | SIGNAL  |
+| ---------------------------- | ------------------------------------ | ------- |
+| LLM Ops (compliance-gateway) | `dashboards/llm-ops.json`            | INF-002 |
+| GTCX SLO Overview            | `dashboards/gtcx-slo-dashboard.json` | —       |
 
 ## Agent note
 

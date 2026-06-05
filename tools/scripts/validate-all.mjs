@@ -100,6 +100,7 @@ run(
   'python3 scripts/ops/check-workspace-root-cleanliness.py --strict',
 );
 run('Trace Correlation (SIGNAL)', 'node tools/scripts/validate-trace-correlation.mjs');
+run('LLM Ops (SIGNAL)', 'node tools/scripts/validate-llm-ops.mjs');
 run('Kyverno Policies', 'node tools/scripts/kyverno-policy-validator.mjs');
 run('SHA-pinned Actions', 'node tools/scripts/pin-actions-sha.mjs --check');
 run('Node Version Floor', 'node tools/scripts/node-version-floor-check.mjs');

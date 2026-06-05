@@ -44,4 +44,4 @@ Prod W2 secrets, ESO, web-app, ALB ingress, ACM `*.gtcx.trade`, and Cloudflare C
 
 **Note:** Terminal prod uses file-backed task store (`LICENCE_INTELLIGENCE_FORCE_FILE=1`) until hub **#18** seals production audit `DATABASE_URL`.
 
-Hub **#17** engineering bundle **complete** — baseline-os locker #17 finalize (Class A witness post).
+Hub **#17** **closed** — baseline-os locker finalized `2026-06-05` (`from-compliance-os-w2-locker-17-2026-06-04.md`).

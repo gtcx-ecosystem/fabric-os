@@ -1,6 +1,6 @@
 ---
 title: 'Outbound — Hub #17 prod close witness (baseline-os tracking)'
-status: current
+status: closed
 date: 2026-06-08
 owner: gtcx-infrastructure
 from: gtcx-infrastructure
@@ -24,12 +24,12 @@ tags: ['coordination', 'witness', 'hub-17']
 
 ## Evidence bundle tracker
 
-| #   | Owner               | Staging                                          | Prod                                 | Blocker                    |
-| --- | ------------------- | ------------------------------------------------ | ------------------------------------ | -------------------------- |
-| 1   | exploration-os      | ☑ `w2-hub-17-retest-latest.json` ok @ staging PF | ☐ prod origin                        | infra secrets + ingress    |
-| 2   | gtcx-infrastructure | ☑ ESO + 7 W2 keys                                | ☐ seal/inject/ingress                | **owner — in progress**    |
-| 3   | compliance-os       | ☑ PATCH 200 staging                              | ☐ prod PATCH 2xx                     | after infra + terminal URL |
-| 4   | terminal-os         | ☑ `431a2169` + live staging                      | ☑ contract (re-smoke if URL changes) | none                       |
+| #   | Owner               | Staging                     | Prod                                    | Blocker |
+| --- | ------------------- | --------------------------- | --------------------------------------- | ------- |
+| 1   | exploration-os      | ☑ staging PF                | ☑ **201** @ `compliance.gtcx.trade`     | none    |
+| 2   | gtcx-infrastructure | ☑ ESO + 7 W2 keys           | ☑ prod secrets + dual ingress           | none    |
+| 3   | compliance-os       | ☑ PATCH 200 staging         | ☑ PATCH **200** prod                    | none    |
+| 4   | terminal-os         | ☑ `431a2169` + live staging | ☑ PATCH **200** @ `terminal.gtcx.trade` | none    |
 
 **Hub #18** remains separate: prod `POSTGRES_URL` + persistence proof.
 

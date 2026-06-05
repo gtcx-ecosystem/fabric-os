@@ -455,6 +455,8 @@ module "secrets" {
 
   compliance_os_namespace        = "compliance-os-production"
   compliance_os_service_account  = "compliance-os-sa"
+  terminal_os_namespace          = "terminal-os-production"
+  terminal_os_service_account    = "terminal-os-sa"
 
   tags = merge(var.tags, {
     Environment = "production"

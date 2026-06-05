@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: terminal-os
+  namespace: terminal-os-production
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:af-south-1:348389439381:certificate/eefdabd1-a823-4aa8-b6fb-147584435020
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/healthcheck-path: /api/health
+    alb.ingress.kubernetes.io/success-codes: '200'
+    alb.ingress.kubernetes.io/group.name: gtcx-production-api
+    external-dns.alpha.kubernetes.io/hostname: terminal.gtcx.trade
+    external-dns.alpha.kubernetes.io/ttl: '60'
+spec:
+  ingressClassName: alb
+  rules:
+    - host: terminal.gtcx.trade
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: terminal-os
+                port:
+                  number: 3000

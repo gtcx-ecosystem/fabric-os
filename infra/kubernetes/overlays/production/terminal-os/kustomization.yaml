@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: terminal-os-production
+
+resources:
+  - namespace.yaml
+  - service-account.yaml
+  - secret-store.yaml
+  - external-secret.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+images:
+  - name: 348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-terminal-os
+    newTag: latest

@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: terminal-os
+  namespace: terminal-os-production
+  labels:
+    app: terminal-os
+    tier: frontend
+    environment: production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: terminal-os
+      environment: production
+  template:
+    metadata:
+      labels:
+        app: terminal-os
+        tier: frontend
+        environment: production
+    spec:
+      serviceAccountName: terminal-os-sa
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: terminal-os
+          image: 348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-terminal-os:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+          env:
+            - name: PORT
+              value: '3000'
+            - name: NODE_ENV
+              value: production
+            - name: NEXT_PUBLIC_APP_URL
+              value: https://terminal.gtcx.trade
+            - name: NEXT_TELEMETRY_DISABLED
+              value: '1'
+            # Hub #17 PATCH proof — file store until prod audit DATABASE_URL is sealed (#18).
+            - name: LICENCE_INTELLIGENCE_FORCE_FILE
+              value: '1'
+            - name: LICENCE_INTELLIGENCE_STORE_PATH
+              value: /tmp/licence-intelligence/tasks.json
+          envFrom:
+            - secretRef:
+                name: terminal-os-secrets
+                optional: false
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              cpu: 1000m
+              memory: 1Gi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /api/ready
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}

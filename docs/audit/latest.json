@@ -91,7 +91,8 @@
     "M1 Foundation complete (801c2e0): compliance-gateway lint debt resolved (1 error fixed); 6 missing READMEs added; dead cross-repo links fixed (1198/1198); mutable audit default sink durable (NATS in prod/staging, stdout only in dev/test); typecheck/build wired for all 15 packages (18/18 tasks pass); 39/39 gates green.",
     "Bank-grade audit 2026-06-07 (9d7d763): lane-4 certified composite 8.3 (+1.2 vs master-audit 2026-06-02); validate-all 50/50; IR-3.4 gtcx-ctl validate --ci + IR-4.1 USSD soak; external assurance unchanged (pen-test, SOC2, FSCA).",
     "Engineering audit 2026-06-07 (c181138): lane-1 headline 7.9 (signoff 7.5 / completion 8.3); validate-all 50/50; lint/typecheck/test fail on audit-signer + deployment-guard regressions.",
-    "Execute-roadmap reconcile 2026-06-07: S4-04/05 closed — lint + typecheck green; validate-all 50/50; S4-07 tracks pnpm test quick 1/359 flake."
+    "Execute-roadmap reconcile 2026-06-07: S4-04/05 closed — lint + typecheck green; validate-all 50/50; S4-07 tracks pnpm test quick 1/359 flake.",
+    "Execute-roadmap 2026-06-08: S4-06 done — 12 READMEs (dotdirs, scripts, workspace packages, templates, chaos-tests); backlogClear true; S4-07 deferred."
   ],
   "remainingGaps": [
     "S2-13 — Pen-test SOW signature (EXT-INF-002).",

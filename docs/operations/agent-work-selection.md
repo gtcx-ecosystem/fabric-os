@@ -48,7 +48,8 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 | GTM audit         | `docs/audit/gtm-audit-2026-06-05.md`                      |
 
 **Cross-repo:** S-XR-1 **closed** — XR-101/201 done. S-XR-2 **closed** — XR-202/301/302 done. S-XR-3: XR-401 **done**, XR-402 **ready**, XR-405 **done**. S-XR-4: XR-507 **done**, XR-508 **done**.
-**Blocked (external class — skip in development frame):** EXT-INF-002/013/014/015/016, S4-03 (protocols contract), XR-403–404 (post-ceremony).
+**Approval needed (Class S — parallel, `blocksIR: false`):** EXT-INF-002/013/014/015/016 — do **not** freeze implement queue. Nav: [human-gate-navigation](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/human-gate-navigation.md).  
+**Non-selectable in P22 (external class):** same IDs + S4-03, XR-403–404 — agents skip **that story ID**, not all IR.
 
 ## Work register (Protocol 22 — explicit backlog)
 
@@ -73,16 +74,17 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 | P22-INFRA-01   | Protocol 22 adoption — manifest + script + CI                  | P0  | done    | ops-docs |
 | S4-04          | deployment-guard typecheck regression                          | P1  | done    | code     |
 | S4-05          | audit-signer + compliance-gateway lint regressions             | P1  | done    | code     |
+| S4-06          | README gaps (12 dirs) per repo-hygiene audit                   | P0  | done    | code     |
 | S4-07          | pnpm test quick 1/359 flake investigation                      | P2  | pending | code     |
 
 ## Implementation classes
 
-| Class                | Detection                                                            | Development frame |
-| -------------------- | -------------------------------------------------------------------- | ----------------- |
-| **code**             | Scripts, tests, gates, CI workflows, Terraform, K8s manifests        | **Select**        |
-| **ops-docs**         | Author `docs/`, manifest, Protocol 22, roadmap reconcile, runbooks   | **Select**        |
-| **evidence-capture** | Manual UAT, staging probe with live credentials                      | Skip              |
-| **external**         | Human SOW signature, CISO decision, Supabase unpause, DNS zone:write | Skip              |
+| Class                | Detection                                                            | Development frame                                                                                                                                        |
+| -------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **code**             | Scripts, tests, gates, CI workflows, Terraform, K8s manifests        | **Select**                                                                                                                                               |
+| **ops-docs**         | Author `docs/`, manifest, Protocol 22, roadmap reconcile, runbooks   | **Select**                                                                                                                                               |
+| **evidence-capture** | Manual UAT, staging probe with live credentials                      | Skip                                                                                                                                                     |
+| **external**         | Human SOW signature, CISO decision, Supabase unpause, DNS zone:write | Skip **story ID** — repo IR/witness continues ([nav](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/human-gate-navigation.md)) |
 
 ## Status sources
 

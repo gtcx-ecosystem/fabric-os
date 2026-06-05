@@ -1,23 +1,28 @@
----
-title: 'Agents'
-status: 'current'
-date: '2026-05-27'
-owner: 'frontier-infra-engineer'
-role: 'frontier-infra-engineer'
-tier: 'informational'
-tags: ['agents', 'onboarding']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
-trust_score: 95
-autonomy_level: 'sovereign'
----
+# docs/agents/ — gtcx-infrastructure
 
-# Agents
+**Start here** for terminal-specific agent guidance. Universal protocols stay in `gtcx-docs`; repo operations stay in `workspace/` + `docs/`.
 
-This directory contains agents documentation for the GTCX infrastructure.
+> **Note:** `gtcx-agentic` reserves repo-root `agents/` for the persona **code package**. Terminal index is always `docs/agents/` ecosystem-wide.
 
-## Contents
+## Which file for my terminal?
 
----
+| Terminal           | Read first                                     | Config location                                                            |
+| ------------------ | ---------------------------------------------- | -------------------------------------------------------------------------- |
+| **Any**            | [`universal/README.md`](./universal/README.md) | P22–P29 session card                                                       |
+| **Cursor**         | [`cursor/README.md`](./cursor/README.md)       | [`AGENTS.md`](../../AGENTS.md), [`.cursor/`](../../.cursor/)               |
+| **Claude Code**    | [`claude/README.md`](./claude/README.md)       | [`CLAUDE.md`](../../CLAUDE.md), [`.claude/`](../../.claude/)               |
+| **Gemini**         | [`gemini/README.md`](./gemini/README.md)       | [`GEMINI.md`](../../GEMINI.md)                                             |
+| **Kimi CLI**       | [`kimi/README.md`](./kimi/README.md)           | [`KIMI.md`](../../KIMI.md)                                                 |
+| **Codex**          | [`codex/README.md`](./codex/README.md)         | [`CODEX.md`](../../CODEX.md)                                               |
+| **GitHub Copilot** | [`copilot/README.md`](./copilot/README.md)     | [`.github/copilot/instructions.md`](../../.github/copilot/instructions.md) |
 
-_Generated: 2026-05-17_
+## Layer map
+
+| Layer              | Path                             | Role                                                    |
+| ------------------ | -------------------------------- | ------------------------------------------------------- |
+| **Machine sync**   | [`.agent/`](../../.agent/)       | `pnpm agent:sync` generator SoR                         |
+| **Terminal index** | **`docs/agents/`** (this folder) | Route Cursor / Claude / Gemini / Kimi / Codex / Copilot |
+| **Operational**    | [`workspace/`](../../workspace/) | JSON manifests, gates, backlog                          |
+| **Narrative**      | [`docs/`](../)                   | Procedures, audit lenses, assurance programs            |
+
+<!-- gtcx-agents-folder-v1 -->

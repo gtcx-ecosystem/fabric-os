@@ -5,6 +5,7 @@
 
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
+
 import { renderEvidenceHtml } from '../src/evidence-renderer.mjs';
 
 describe('renderEvidenceHtml — ndjson edge cases', () => {

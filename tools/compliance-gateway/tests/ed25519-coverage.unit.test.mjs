@@ -5,6 +5,7 @@
 
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
+
 import { generateEd25519KeyPair } from '../src/audit-bundles/ed25519.mjs';
 
 describe('generateEd25519KeyPair — error branch', () => {

@@ -5,7 +5,8 @@
  */
 
 import { createHash, randomBytes, sign, verify, generateKeyPairSync, createPublicKey } from 'node:crypto';
-import { isFipsMode, signingAlgorithm, fipsCurve, assertFipsDigest } from './fips-mode.mjs';
+
+import { signingAlgorithm, fipsCurve, assertFipsDigest } from './fips-mode.mjs';
 
 /**
  * @typedef {object} SignedAuditRecord

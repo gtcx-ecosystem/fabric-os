@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import { mkdirSync, writeFileSync, rmSync, utimesSync, statSync } from 'node:fs';
+import { mkdirSync, writeFileSync, rmSync, utimesSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, it, before, after } from 'node:test';

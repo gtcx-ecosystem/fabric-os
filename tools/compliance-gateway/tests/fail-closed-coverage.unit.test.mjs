@@ -5,6 +5,7 @@
 
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
+
 import { failClosed, failClosedSync } from '../src/fail-closed.mjs';
 
 describe('failClosedSync — onStub failure', () => {

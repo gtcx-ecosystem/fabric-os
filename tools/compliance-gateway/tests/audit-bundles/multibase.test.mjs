@@ -1,5 +1,6 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
+
 import { base58btcDecode, ed25519MultibaseToJwk } from '../../src/audit-bundles/multibase.mjs';
 
 describe('base58btcDecode', () => {
@@ -38,9 +39,7 @@ describe('ed25519MultibaseToJwk', () => {
   });
 
   it('converts multibase without multicodec prefix (raw 32 bytes)', () => {
-    // 32 zero bytes encoded as base58btc
-    const raw32 = Buffer.alloc(32, 0);
-    // base58btc of 32 zeros is "11111111111111111111111111111111" (32 ones)
+    // base58btc of 32 zero bytes is "11111111111111111111111111111111" (32 ones)
     const multibase = 'z11111111111111111111111111111111';
     const jwk = ed25519MultibaseToJwk(multibase);
     assert.strictEqual(jwk.kty, 'OKP');

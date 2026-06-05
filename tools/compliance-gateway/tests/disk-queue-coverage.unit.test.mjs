@@ -4,10 +4,11 @@
  */
 
 import assert from 'node:assert';
-import { describe, it, beforeEach, afterEach } from 'node:test';
 import { mkdtempSync, writeFileSync, chmodSync, rmSync, mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { describe, it, beforeEach, afterEach } from 'node:test';
+
 import { createDiskQueue } from '../src/disk-queue.mjs';
 
 function tempDir() {
@@ -24,7 +25,9 @@ describe('disk-queue — error paths and edge cases', () => {
   afterEach(() => {
     try {
       rmSync(dir, { recursive: true, force: true });
-    } catch {}
+    } catch {
+      /* best-effort temp dir cleanup */
+    }
   });
 
   it('enqueue fails softly when directory is unwritable', () => {
@@ -197,7 +200,7 @@ describe('disk-queue — error paths and edge cases', () => {
   it('drain returns early after stopDrain clears sinkRef', async () => {
     const q = createDiskQueue({ dir, drainIntervalMs: 10 });
     q.enqueue({ id: 'r1' });
-    q.startDrain({ emit: (r) => {} });
+    q.startDrain({ emit: () => {} });
     q.stopDrain();
     // Wait for a potential interval tick after stopDrain
     await new Promise((r) => setTimeout(r, 50));

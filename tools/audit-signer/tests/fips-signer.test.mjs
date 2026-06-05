@@ -6,8 +6,8 @@
  * var is set at process startup before any modules load.
  */
 
-import { describe, it } from 'node:test';
 import assert from 'node:assert';
+import { describe, it } from 'node:test';
 
 // Set FIPS mode BEFORE dynamically importing the signer module.
 process.env.GTCX_FIPS_MODE = '1';

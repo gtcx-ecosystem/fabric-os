@@ -5,6 +5,7 @@
 
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
+
 import { computeConfidence } from '../src/confidence.mjs';
 
 describe('computeConfidence — edge cases', () => {

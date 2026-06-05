@@ -149,12 +149,16 @@ export function buildMigrationTableSQL() {
 /**
  * Build the INSERT statement for recording an applied migration.
  *
- * @param {string} filename
- * @param {string} checksum
- * @param {string} environment
+ * @param {string} _filename
+ * @param {string} _checksum
+ * @param {string} _environment
  * @returns {string}
  */
-export function buildMigrationInsertSQL(_filename, _checksum, _environment) {
+export function buildMigrationInsertSQL(
+  /** @type {string} */ _filename,
+  /** @type {string} */ _checksum,
+  /** @type {string} */ _environment,
+) {
   // Caller is responsible for parameterized query execution;
   // this returns a template for use with psql variables.
   return `INSERT INTO schema_migrations (filename, checksum, environment)

@@ -8,9 +8,9 @@
  */
 
 import assert from 'node:assert';
-import { describe, it } from 'node:test';
 import { spawnSync } from 'node:child_process';
 import { readFileSync, renameSync, writeFileSync } from 'node:fs';
+import { describe, it } from 'node:test';
 
 const PKG_ROOT = '/Users/amanianai/Sites/gtcx-ecosystem/gtcx-infrastructure/tools/compliance-gateway';
 const BASELINE_ROUTER = '/Users/amanianai/Sites/gtcx-ecosystem/baseline-os/packages/baselineos/dist/core/cost-router.js';

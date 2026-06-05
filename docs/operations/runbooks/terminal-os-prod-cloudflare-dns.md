@@ -1,3 +1,10 @@
+---
+title: 'terminal.gtcx.trade — Cloudflare DNS (Hub #17)'
+status: current
+date: 2026-06-05
+owner: gtcx-infrastructure
+---
+
 # terminal.gtcx.trade — Cloudflare DNS (Hub #17)
 
 Point `terminal.gtcx.trade` at the production shared ALB (`gtcx-production-api` ingress group).

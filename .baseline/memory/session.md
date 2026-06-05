@@ -1,6 +1,6 @@
 # Session State
 
-> **Last updated:** 2026-06-05T20:55+02:00
+> **Last updated:** 2026-06-05T12:00+02:00
 > **Agent:** platform-architect (development frame)
 > **Protocol compliance:** P22, P26, P27, P28 active
 > **Current sprint:** Sprint 1 + Sprint 2 + Sprint 3 infra items — effectively complete
@@ -169,13 +169,13 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - [ ] Re-read `.baseline/memory/pitfalls.md`
 - [ ] Run `pnpm agent:next-work` to confirm next story
 
-## Session bootstrap (2026-06-05 03:18:28 UTC)
+## Session bootstrap (2026-06-05 09:31:46 UTC)
 
 - **Command:** `agent start` (baseline-os repo-session-core)
 - **Repo:** gtcx-infrastructure
 - **Next work:** unknown
 - **Blocked:** no
-- **Git:** 23 changed path(s)
+- **Git:** 0 changed path(s)
 
 
 ## Session — 2026-06-05 (continued)
@@ -211,3 +211,29 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 6. Health check: `https://terminal-staging.gtcx.trade/api/health` → 200
 
 **Next:** compliance-os runs `pnpm w2:terminal-patch-proof`, terminal-os runs `pnpm workflow:staging-receiver-smoke`.
+
+---
+
+## Session — 2026-06-05 (baseline witness)
+
+### State
+
+| Signal | Value |
+|--------|-------|
+| P22 | `backlogClear: true` — WITNESS mode |
+| Hub #17 | **closed** — prod ingress + PATCH proof; baseline-os `7d98352b2` |
+| Hub #18 | **open** — prod Postgres persistence (sibling) |
+| Prod probes | `compliance.gtcx.trade` **307** · `terminal.gtcx.trade/api/health` **200** |
+| `validate-all` | **49/50** — Docs Standard fail (27 link violations; agent-sync untracked dirs) |
+| Head | `e72c728` (hub #17 witness closed) |
+
+### Witness fixes (this session)
+
+- `docs/operations/runbooks/terminal-os-prod-cloudflare-dns.md` — frontmatter
+- `docs/operations/human-gate-navigation.md` — sibling-repo link targets
+- `docs/agile/roadmap.md` — frontmatter
+
+### Next (Class R)
+
+- Docs Standard drift: 27 violations (mostly `docs/agents/*` + cross-repo `gtcx-agentic` links) — baseline or fix in dedicated hygiene pass
+- EXT-INF-002 pen-test SOW — Class S parallel (not repo-blocked)

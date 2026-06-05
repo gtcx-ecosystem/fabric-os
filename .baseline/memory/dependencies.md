@@ -20,7 +20,8 @@
 
 | Needs | Owner | Status |
 | --- | --- | --- |
-| **Hub #17 prod W2 close** | **gtcx-infrastructure** | **in progress** — seal prod secrets, `compliance.gtcx.trade` ingress, terminal URL/key |
+| ~~**Hub #17 prod W2 close**~~ | **gtcx-infrastructure** | **done** 2026-06-05 — `compliance.gtcx.trade` + `terminal.gtcx.trade`; baseline-os locker `7d98352b2` |
+| **Hub #18 prod Postgres** | terminal-os + **gtcx-infrastructure** | **open** — prod audit `DATABASE_URL` + `workflow:persistence-proof` |
 | EXT-INF-003 WORM recurrence on main | Infra operator | open |
 
 ## Soft Dependencies

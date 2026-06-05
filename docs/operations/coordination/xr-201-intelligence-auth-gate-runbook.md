@@ -231,7 +231,7 @@ curl -H "X-EAP-Key: $EAP_KEY" \
 Once auth gate is confirmed, append to agent log and notify gtcx-intelligence:
 
 - [`to-gtcx-intelligence-track-b-auth-2026-06-03.md`](to-gtcx-intelligence-track-b-auth-2026-06-03.md)
-- [`gtcx-agentic/docs/operations/coordination/agent-coordination-log.md`](../../../../gtcx-agentic/docs/operations/coordination/agent-coordination-log.md)
+- [gtcx-agentic agent-coordination-log](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/coordination/agent-coordination-log.md)
 
 ---
 

@@ -45,7 +45,7 @@ const ALLOWLIST = new Set([
   // built or BASELINE_COST_ROUTER=0. Reraising would break the query
   // path even when cost routing is disabled.
   'tools/compliance-gateway/src/server.mjs:91',
-  'tools/compliance-gateway/src/cost-router-shim.mjs:34',
+  'tools/compliance-gateway/src/cost-router-shim.mjs:37',
 ]);
 
 const SRC_GLOBS = [

@@ -25,7 +25,7 @@ protocol: gtcx-docs/docs/governance/protocols/24-cross-repo-coordination/protoco
 [`gtcx-protocols/docs/operations/coordination/cross-repo-agent-bridge.md`](../../../../gtcx-protocols/docs/operations/coordination/cross-repo-agent-bridge.md)
 
 **Agentic log (append-only):**  
-[`gtcx-agentic/docs/operations/coordination/agent-coordination-log.md`](../../../../gtcx-agentic/docs/operations/coordination/agent-coordination-log.md)
+[gtcx-agentic agent-coordination-log](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/coordination/agent-coordination-log.md)
 
 **Blocker SoR:** `baseline-os/workstream/index/blockers.md`
 

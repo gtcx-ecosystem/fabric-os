@@ -1,40 +1,47 @@
 # Cross-Repo Dependencies
 
-> Last updated: 2026-06-03
+> Last updated: 2026-06-08
 
-## Hard Dependencies (Blocking)
+## Hard Dependencies (Blocking — XC / Class S)
 
-| Needs | From Repo | Status | ETA | Blocking Epic |
-|-------|-----------|--------|-----|---------------|
-| XR-403 bog.json PR | gtcx-protocols | blocked | TBD (protocols ready) | INF-86 H-03 |
-| CF `zone:write` token | Cloudflare admin (external) | blocked | TBD | XR-507 |
-| Supabase project unpause | ops / Supabase dashboard | blocked | TBD | XR-508 |
-| NPM_TOKEN | human / npm admin | blocked | TBD | XR-303 / XR-510 |
+| Needs | From Repo / Owner | Status | ETA | Blocking |
+| --- | --- | --- | --- | --- |
+| EXT-INF-002 pen-test SOW | Human Security + **gtcx-agentic** H-05 chase | **open** | 2026-06-13 | S2-13, live-stack pen-test |
+| EXT-INF-013 ZWCMP pilot owner | Leadership (**gtcx-agentic** escalate) | **overdue** | was 2026-06-07 | EXT-INF-014, Bet 2 |
+| EXT-INF-014 DPA + pilot agreement | Legal | **open** | 2026-06-21 | ZWCMP signature |
+| EXT-INF-015 indemnified SLA | Legal | **open** | 2026-06-21 | Pilot agreement |
+| EXT-INF-016 SOC 2 Type I auditor | CISO + Finance | **open** | TBD | Bank-grade B.1 |
+| H-03 sovereign countersign | Human CSP (**gtcx-agentic** ceremony) | **awaiting-human** | TBD | XR-518, MA-003 / #61 scale |
+| S4-03 PRD-002 Tier B contract | **gtcx-protocols** | **blocked-sibling** | TBD | Audit route Tier B |
 
-## Soft Dependencies (Nice to have / standing offers)
+**Agentic pickup:** [`to-gtcx-agentic-blockers-raise-2026-06-08.md`](../docs/operations/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md)
 
-| Needs | From Repo | Status | ETA |
-|-------|-----------|--------|-----|
-| `COMPLIANCE_OS_INTAKE_API_KEY` sealed | compliance-os inbound ticket | ready | when asked |
-| Platforms image digest | gtcx-platforms | ready | when pushed |
+## Operator / Class A (not agentic code)
 
-## Downstream Consumers
+| Needs | Owner | Status |
+| --- | --- | --- |
+| EXT-INF-003 WORM recurrence on main | Infra operator | open |
+| `git push` (9+ commits ahead) | Operator / Cursor permissions | blocked |
+
+## Soft Dependencies
+
+| Needs | From Repo | Status |
+| --- | --- | --- |
+| XR-403 bog.json PR | gtcx-protocols | ready post H-03 |
+| `COMPLIANCE_OS_INTAKE_API_KEY` | compliance-os | ready when asked |
+
+## Downstream Consumers (infra delivered)
 
 | Repo | What They Need | Status |
-|------|---------------|--------|
-| gtcx-protocols | SPKI DER + SHA-256 hash for XR-403 | ✅ delivered 2026-06-03 |
-| gtcx-platforms | KMS alias + algorithm spec for XR-405 | ✅ ready, waiting XR-403 merge |
-| exploration-os | `bog.json` production for contract regression | ✅ ready, waiting XR-403 merge |
-| gtcx-intelligence | `intelligence-orchestrator` manifest template | ✅ deployed 2026-06-03 |
+| --- | --- | --- |
+| gtcx-protocols | SPKI DER + SHA-256 (XR-402) | done 2026-06-03 |
+| gtcx-intelligence | orchestrator manifest + cost router | done |
+| gtcx-core | EXT-INF-002 vendor pack ack | done 2026-06-07 |
 
-## Closed This Session
+## Engineering witness (not XC blockers)
 
-| ID | Date | What | Evidence |
-|----|------|------|----------|
-| XR-201 | 2026-06-03 | Intelligence auth gate deployed | `deployment-smoke-2026-06-03T06-42-43-281Z.json` |
-| XR-202 | 2026-06-03 | INT-S3-08 re-smoke | intelligence evidence committed |
-| XR-301/302 | 2026-06-03 | Platforms staging rollout unblocked | both `/api/health` → 200 |
-| XR-401/402 | 2026-06-03 | INF-86 ceremony + SPKI export | `docs/audit/evidence/inf-86/gh-bog-2026-06-03/` |
-| XR-516 | 2026-06-03 | P22/P26/P27 CI smoke | `.github/workflows/ci.yml` |
-
----
+| Signal | Value |
+| --- | ---: |
+| validate-all | 50/50 |
+| Lane 1 IR | 7.9 |
+| backlogClear | true |

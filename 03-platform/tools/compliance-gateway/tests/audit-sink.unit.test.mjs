@@ -24,7 +24,10 @@ function captureStdout(fn) {
 }
 
 describe('audit sink', () => {
-  beforeEach(() => resetSink());
+  beforeEach(() => {
+    process.env.NODE_ENV = 'test';
+    resetSink();
+  });
   afterEach(() => resetSink());
 
   it('defaults to stdout sink', () => {

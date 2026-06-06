@@ -156,7 +156,10 @@ describe('buildEvidenceBundle — filters', () => {
 });
 
 describe('audit-sink — stdout default', () => {
-  beforeEach(() => resetSink());
+  beforeEach(() => {
+    process.env.NODE_ENV = 'test';
+    resetSink();
+  });
   afterEach(() => resetSink());
 
   it('getSink returns the same instance on repeated calls (cached)', () => {

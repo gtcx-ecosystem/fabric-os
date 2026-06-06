@@ -115,6 +115,7 @@ describe('Replay Guard Integration', () => {
 
     process.env.PORT = String(port);
     process.env.HOST = '127.0.0.1';
+    process.env.NODE_ENV = 'test';
     process.env.REDIS_URL = '';
     process.env.OTLP_ENDPOINT = '';
     // REPLAY_GUARD_ALLOW_STUB_SIGNATURE removed — real crypto verification is active
@@ -129,6 +130,7 @@ describe('Replay Guard Integration', () => {
     global.fetch = /** @type {typeof global.fetch} */ (originalFetch);
     testServer?.close();
     delete process.env.HOST;
+    delete process.env.NODE_ENV;
   });
 
   describe('POST /v1/replay/verify', () => {

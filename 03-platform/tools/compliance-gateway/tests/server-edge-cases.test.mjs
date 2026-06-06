@@ -66,6 +66,7 @@ describe('handleQuery', () => {
 
   before(async () => {
     process.env.PORT = '0';
+    process.env.NODE_ENV = 'test';
     process.env.COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON = JSON.stringify([
       { token: 'hq-test-token', subject: 'hq-test', permissions: ['query:read'] },
     ]);
@@ -209,6 +210,7 @@ describe('estimateCost', () => {
 
   before(async () => {
     process.env.PORT = '0';
+    process.env.NODE_ENV = 'test';
     const mod = await import('../src/server.mjs?v=ec');
     estimateCost = mod.estimateCost;
     srv = mod.server;
@@ -252,6 +254,7 @@ describe('stripForLowBandwidth', () => {
 
   before(async () => {
     process.env.PORT = '0';
+    process.env.NODE_ENV = 'test';
     const mod = await import('../src/server.mjs?v=slb');
     stripForLowBandwidth = mod.stripForLowBandwidth;
     srv = mod.server;
@@ -338,6 +341,7 @@ describe('sendJson', () => {
 
   before(async () => {
     process.env.PORT = '0';
+    process.env.NODE_ENV = 'test';
     const mod = await import('../src/server.mjs?v=sj');
     sendJson = mod.sendJson;
     srv = mod.server;

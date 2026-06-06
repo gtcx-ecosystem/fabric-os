@@ -48,7 +48,7 @@
   },
   "docs": {
     "map": "01-docs/README.md",
-    "framework": "01-docs/04-ops/workspace/ecosystem-repo-layout-v2.md",
+    "framework": "https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/protocols/29-agent-workspace-domains/ecosystem-repo-layout-v3.md",
     "consolidation": "01-docs/04-ops/workspace/repo-consolidation-review.md",
     "index": "README.md#operational-domains"
   },

@@ -11,7 +11,7 @@ review_cycle: quarterly
 # Layout v3 migration complete — gtcx-infrastructure
 
 **Score:** 100/100 GREEN (`migrationComplete: true`)  
-**Commit:** _(filled after commit)_  
+**Commit:** `a4bad2f` (migration series: `efa0e08` + `a4bad2f`)  
 **Scored at:** 2026-06-06T13:30:37Z
 
 ## Evidence

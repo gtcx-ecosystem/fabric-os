@@ -4,14 +4,16 @@
   "repo": "gtcx-infrastructure",
   "updated": "2026-06-05",
   "protocol": "https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/protocols/29-agent-workspace-domains/protocol.md",
-  "layout": "01-docs/04-ops/workspace/ecosystem-repo-layout-v2.md",
+  "layout": "01-docs/04-ops/workspace/ecosystem-repo-layout-v3.md",
   "hubs": {
     "archive": "00-archive",
     "docs": "01-docs",
     "ops": "02-ops",
     "platform": "03-platform",
     "ship": "04-ship",
-    "audit": "05-audit"
+    "audit": "05-audit",
+    "deploy": "04-deploy",
+    "workstream": "06-workstream"
   },
   "domains": {
     "pm": "02-ops/pm",
@@ -33,10 +35,11 @@
     "mcp": "03-platform/mcp",
     "tools": "03-platform/tools",
     "scripts": "03-platform/scripts",
-    "ship": "04-ship",
-    "deploy": "04-ship",
-    "infra": "04-ship",
-    "auditEntry": "05-audit"
+    "ship": "04-deploy",
+    "deploy": "04-deploy",
+    "infra": "04-deploy",
+    "auditEntry": "05-audit",
+    "workstream": "06-workstream"
   },
   "commands": {
     "check": "pnpm ops:check",

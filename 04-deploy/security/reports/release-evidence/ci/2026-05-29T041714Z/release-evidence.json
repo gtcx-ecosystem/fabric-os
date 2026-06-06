@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-29T04:17:14.206Z",
+  "environment": "ci",
+  "release": {
+    "version": "internal-10-10-2026-05-28",
+    "commit": "5b8d323e41cc8d9d54827b72d4f46839a8d61a53",
+    "approvalTicket": null
+  },
+  "deployment": {
+    "smokeBaseUrl": null,
+    "rollbackTarget": null,
+    "buildOnly": true
+  },
+  "images": [
+    {
+      "name": "gtcx-infrastructure",
+      "ref": "ghcr.io/gtcx/infrastructure@sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "sboms": [],
+  "scans": [],
+  "gates": [
+    {
+      "name": "pnpm-test",
+      "status": "pass"
+    },
+    {
+      "name": "pnpm-lint",
+      "status": "pass"
+    },
+    {
+      "name": "pnpm-build",
+      "status": "pass"
+    },
+    {
+      "name": "docs-standard",
+      "status": "pass"
+    },
+    {
+      "name": "governance",
+      "status": "pass"
+    }
+  ],
+  "evidence": [],
+  "worm": {
+    "bucket": null,
+    "key": "release-evidence/ci/internal-10-10-2026-05-28/2026-05-29T041714Z/release-evidence.ndjson",
+    "uploadReady": true,
+    "requiredHeaders": {
+      "serverSideEncryption": "aws:kms"
+    }
+  }
+}

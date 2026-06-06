@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-29T04:17:14.210Z",
+  "bucket": null,
+  "key": "release-evidence/ci/internal-10-10-2026-05-28/2026-05-29T041714Z/release-evidence.ndjson",
+  "object": "release-evidence.ndjson",
+  "sha256": "b82e85c5d5538e99257e133c4f072f83acae78fae5936ea390d72a35805fa273",
+  "verification": {
+    "valid": true,
+    "firstInvalidIndex": -1,
+    "reason": "all records valid"
+  },
+  "requiredHeaders": {
+    "serverSideEncryption": "aws:kms"
+  },
+  "command": null
+}

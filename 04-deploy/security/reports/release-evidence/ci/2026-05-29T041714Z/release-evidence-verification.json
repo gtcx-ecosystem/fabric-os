@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-05-29T04:17:14.209Z",
+  "verifier": "@gtcx/audit-signer",
+  "result": {
+    "valid": true,
+    "firstInvalidIndex": -1,
+    "reason": "all records valid"
+  }
+}

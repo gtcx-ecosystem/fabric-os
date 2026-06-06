@@ -59,6 +59,8 @@
     "next": "node ../baseline-os/03-platform/scripts/ecosystem/work-next.mjs",
     "gates": "node ../baseline-os/03-platform/scripts/ecosystem/human-gates-check.mjs",
     "hub": "node ../baseline-os/03-platform/scripts/ecosystem/hub-sync.mjs",
+    "ops:check": "node 03-platform/scripts/workspace/check.mjs",
+    "layout:migrate:v6:check": "node 03-platform/scripts/layout-drift-check.mjs",
     "workspace:check": "node 03-platform/scripts/workspace/check.mjs",
     "pm:sync": "node 03-platform/scripts/workspace/pm-sync.mjs",
     "pm:status": "node 03-platform/scripts/workspace/pm-status.mjs",

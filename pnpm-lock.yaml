@@ -58,12 +58,6 @@ importers:
         specifier: ^8.60.0
         version: 8.60.0(eslint@9.39.4)(typescript@5.9.3)
 
-  04-deploy/migrations:
-    devDependencies:
-      prettier:
-        specifier: ^3.4.0
-        version: 3.8.1
-
   03-platform/tools/anomaly-detector: {}
 
   03-platform/tools/audit-flush:
@@ -145,6 +139,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.9
         version: 0.9.9(prettier@3.8.3)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
 
   03-platform/tools/eval-pipeline:
     dependencies:
@@ -181,6 +178,12 @@ importers:
       ioredis:
         specifier: ^5.10.1
         version: 5.10.1
+
+  04-deploy/migrations:
+    devDependencies:
+      prettier:
+        specifier: ^3.4.0
+        version: 3.8.1
 
 packages:
 

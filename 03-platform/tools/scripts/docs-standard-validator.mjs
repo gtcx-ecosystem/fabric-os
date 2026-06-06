@@ -69,6 +69,7 @@ const ALLOWED_UPPERCASE_NAMES = new Set([
   'INDEX.md',
   'CLAUDE.md',
   'CONTRIBUTING.md',
+  'CODE_OF_CONDUCT.md',
   'LICENSE',
   'SECURITY.md',
   'CHANGELOG.md',

@@ -51,7 +51,7 @@ configMapGenerator:
 # because PLACEHOLDER-RUN-DEPLOY-SH is not a real tag — fail-safe, not
 # silent-wrong-version.
 #
-# The 03-platform/tools/03-platform/scripts/production-overlay-guard.mjs check (wired into
+# The 03-platform/scripts/production-overlay-guard.mjs check (wired into
 # pnpm test) refuses to merge a commit whose production overlay
 # carries a version-shaped tag like `v1.0.0` (which previously LOOKED
 # real but was decorative; kubectl apply would try to pull a

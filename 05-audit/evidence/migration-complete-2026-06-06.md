@@ -77,4 +77,4 @@ review_cycle: quarterly
 ## Review note (2026-06-06)
 
 - Stray `baseline-os/` directory can reappear at root from session/tooling runtime copies — gitignored and relocated to `00-archive/`; does not affect scorecard (not scanned by migration score).
-- **Push status:** `main` ahead of `origin/main` by 3 migration commits — not pushed in this session.
+- **Push status:** `main` ahead of `origin/main` by 4 migration commits — not pushed in this session.

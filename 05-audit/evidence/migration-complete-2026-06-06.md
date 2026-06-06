@@ -11,8 +11,8 @@ review_cycle: quarterly
 # Layout v3 migration complete — gtcx-infrastructure
 
 **Score:** 100/100 GREEN (`migrationComplete: true`)  
-**Commit:** `a4bad2f` (migration series: `efa0e08` + `a4bad2f`)  
-**Scored at:** 2026-06-06T13:30:37Z
+**Commit:** `78a9b82` (series: `efa0e08`, `a4bad2f`, `78a9b82`)  
+**Scored at:** 2026-06-06T13:41:10Z (re-verified 2026-06-06)
 
 ## Evidence
 
@@ -73,3 +73,8 @@ review_cycle: quarterly
 
 - `03-platform/tools/03-platform/scripts/` path references in narrative docs (comments only; layout drift scan clean)
 - Witness-mode backlog (`backlogClear`) — human gates EXT-INF-002 et al. unchanged
+
+## Review note (2026-06-06)
+
+- Stray `baseline-os/` directory can reappear at root from session/tooling runtime copies — gitignored and relocated to `00-archive/`; does not affect scorecard (not scanned by migration score).
+- **Push status:** `main` ahead of `origin/main` by 3 migration commits — not pushed in this session.

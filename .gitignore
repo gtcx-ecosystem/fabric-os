@@ -57,6 +57,9 @@ _archive/
 _cannon/
 _delete/
 
+# Runtime artifact — baseline-os dist copied locally by session/tooling (never at root)
+baseline-os/
+
 
 # Local IDE settings
 .claude/settings.local.json

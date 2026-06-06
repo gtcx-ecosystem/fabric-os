@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { canonicalizeValue } from '../audit-signer/src/index.mjs';
-import { verifyCatalog, PINNED_PUBLIC_KEY } from '../compliance-data/03-platform/scripts/verify-catalog.mjs';
+import { verifyCatalog, PINNED_PUBLIC_KEY } from '../compliance-data/scripts/verify-catalog.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 

@@ -12,7 +12,7 @@ import { getPromptMetadata, PROMPT_VERSION } from '../compliance-gateway/src/sys
 import { recordLlmTrace } from '../compliance-gateway/src/llm-trace.mjs';
 import { runStaticChecks } from '../eval-pipeline/injection-suite.mjs';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 
 describe('agent integration smoke', () => {
   it('agent:next-work emits traceId', () => {
@@ -39,7 +39,7 @@ describe('agent integration smoke', () => {
     assert.equal(PROMPT_VERSION, '1.0.0');
     const manifest = join(
       ROOT,
-      `01-docs/05-audit/prompts/compliance-gateway@${PROMPT_VERSION}/manifest.json`,
+      `01-docs/audit/prompts/compliance-gateway@${PROMPT_VERSION}/manifest.json`,
     );
     assert.equal(existsSync(manifest), true);
     assert.equal(getPromptMetadata().engine, 'compliance-gateway');

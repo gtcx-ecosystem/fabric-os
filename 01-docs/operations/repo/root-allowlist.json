@@ -1,9 +1,9 @@
 {
   "$schema": "./root-allowlist.schema.json",
-  "version": "3.0.0",
+  "version": "3.2.0",
   "schema_version": "1.0.0",
   "updated": "2026-06-06",
-  "description": "Universal seven-hub root allowlist (ecosystem layout v3). No per-repo exceptions.",
+  "description": "Universal seven-hub root allowlist (ecosystem layout v3). Closed world — Protocol 31. No per-repo exceptions.",
   "required_files": ["README.md", "AGENTS.md"],
   "required_directories": [
     "00-archive",
@@ -18,10 +18,7 @@
   "allowed_files": [
     "LICENSE",
     "NOTICE",
-    "SECURITY.md",
     "CHANGELOG.md",
-    "CONTRIBUTING.md",
-    "CODE_OF_CONDUCT.md",
     "package.json",
     "pnpm-workspace.yaml",
     "pnpm-lock.yaml",
@@ -47,8 +44,7 @@
     ".nvmrc",
     ".prettierignore",
     ".prettierrc",
-    ".size-limit.json",
-    "vitest.workspace.ts"
+    ".size-limit.json"
   ],
   "allowed_directories": [
     "00-archive",
@@ -93,6 +89,12 @@
     "CLAUDE.md": "Use .claude/CLAUDE.md.",
     "GEMINI.md": "Use .gemini/GEMINI.md.",
     "CONVENTIONS.md": "Use 01-docs/conventions.md.",
+    "CODE_OF_CONDUCT.md": "Use 01-docs/operations/repo/CODE_OF_CONDUCT.md (Protocol 31).",
+    "CONTRIBUTING.md": "Use 01-docs/operations/repo/CONTRIBUTING.md (Protocol 31).",
+    "SECURITY.md": "Use 01-docs/operations/repo/SECURITY.md (Protocol 32).",
+    "public": "Use 04-deploy/static/ or 03-platform/public/.",
+    "screenshots": "Use 03-platform/assets/screenshots/.",
+    "ExpoNative": "Use 03-platform/reference/exponative/.",
     "apps": "Use 03-platform/apps/.",
     "services": "Use 03-platform/services/.",
     "packages": "Use 03-platform/packages/.",
@@ -114,6 +116,9 @@
     "deploy_docker": "04-deploy/docker/",
     "toolchain": "config/toolchain/",
     "shared_assets": "03-platform/assets/",
-    "workstream": "06-workstream/"
+    "workstream": "06-workstream/",
+    "community_docs": "01-docs/operations/repo/",
+    "static_deploy": "04-deploy/static/",
+    "ui_reference": "03-platform/reference/exponative/"
   }
 }

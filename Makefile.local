@@ -1,0 +1,6 @@
+# Maintainer-owned Makefile targets (not synced from config/toolchain).
+# Root Makefile includes this file via `-include Makefile.local`.
+
+.PHONY:
+
+# Add repo-specific targets below.

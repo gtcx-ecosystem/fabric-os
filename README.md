@@ -59,7 +59,7 @@ pnpm test:full         # Add terraform validate/test, kustomize, compose, and de
 ### Local Development Stack
 
 ```bash
-docker compose -f 04-ship/docker/docker-compose.dev.yml up -d
+docker compose -f 04-deploy/docker/docker-compose.dev.yml up -d
 ```
 
 This starts: PostgreSQL (operational + audit), NATS with JetStream, Prometheus, Grafana, Loki, Jaeger.
@@ -67,7 +67,7 @@ This starts: PostgreSQL (operational + audit), NATS with JetStream, Prometheus, 
 ### Terraform (IaC)
 
 ```bash
-cd 04-ship/terraform/environments/testnet-pilot
+cd 04-deploy/terraform/environments/testnet-pilot
 terraform init
 terraform plan
 terraform apply   # requires explicit confirmation
@@ -76,15 +76,15 @@ terraform apply   # requires explicit confirmation
 ### Kubernetes
 
 ```bash
-kubectl kustomize 04-ship/kubernetes/base/           # preview base manifests
-kubectl kustomize 04-ship/kubernetes/overlays/testnet # preview testnet overlay
+kubectl kustomize 04-deploy/kubernetes/base/           # preview base manifests
+kubectl kustomize 04-deploy/kubernetes/overlays/testnet # preview testnet overlay
 ```
 
 ## Architecture
 
 ```
 gtcx-infrastructure/
-├── 04-ship/
+├── 04-deploy/
 │   ├── docker/              # Dockerfiles + Compose (dev, infra, test)
 │   ├── kubernetes/
 │   │   ├── base/            # K8s manifests (14 services + NATS + monitoring)
@@ -172,11 +172,11 @@ Running in AWS af-south-1 (Cape Town):
 
 GTCX's compliance substrate is published as three composable primitives. Each is independently useful; together they form the audit + storage + agent-discovery surface behind the testnet pilot. All MIT licensed.
 
-| Primitive                          | Where                                                                                                                                                                | Purpose                                                                                                                            |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| **`@gtcx/audit-signer`**           | [npm](https://www.npmjs.com/package/@gtcx/audit-signer) · [`03-platform/tools/audit-signer/`](./03-platform/tools/audit-signer/)                                     | Ed25519-signed, hash-linked audit chain. Zero runtime dependencies. Third-party verifiable offline.                                |
-| **`terraform-aws-compliance-db`**  | [GitHub](https://github.com/amani-amina-anai/terraform-aws-compliance-db) · [`04-ship/terraform/modules/compliance-db/`](./04-ship/terraform/modules/compliance-db/) | Dual-database (operational + audit) module for regulated African fintech. 11 jurisdictions covered, FATF-aligned retention floors. |
-| **`@gtcx/compliance-gateway-mcp`** | [`03-platform/tools/compliance-gateway-mcp/`](./03-platform/tools/compliance-gateway-mcp/)                                                                           | Model Context Protocol server exposing the gateway's read-only surface to AI agents. Mutating tools deliberately absent.           |
+| Primitive                          | Where                                                                                                                                                                    | Purpose                                                                                                                            |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **`@gtcx/audit-signer`**           | [npm](https://www.npmjs.com/package/@gtcx/audit-signer) · [`03-platform/tools/audit-signer/`](./03-platform/tools/audit-signer/)                                         | Ed25519-signed, hash-linked audit chain. Zero runtime dependencies. Third-party verifiable offline.                                |
+| **`terraform-aws-compliance-db`**  | [GitHub](https://github.com/amani-amina-anai/terraform-aws-compliance-db) · [`04-deploy/terraform/modules/compliance-db/`](./04-deploy/terraform/modules/compliance-db/) | Dual-database (operational + audit) module for regulated African fintech. 11 jurisdictions covered, FATF-aligned retention floors. |
+| **`@gtcx/compliance-gateway-mcp`** | [`03-platform/tools/compliance-gateway-mcp/`](./03-platform/tools/compliance-gateway-mcp/)                                                                               | Model Context Protocol server exposing the gateway's read-only surface to AI agents. Mutating tools deliberately absent.           |
 
 Detailed pages: [`01-docs/external/docs-site/`](./01-docs/gitbook/) (markdown source for `gtcx.trade/compliance`).
 
@@ -199,14 +199,35 @@ The repo is a pnpm workspace with 11 packages under `03-platform/tools/`. The on
 
 - [terraform-aws-compliance-db](https://github.com/amani-amina-anai/terraform-aws-compliance-db) — Compliance-ready dual-database for regulated African fintech. MIT licensed, 11 jurisdictions, published on GitHub.
 
-## Agent & workspace index
+## Governance
 
-| Resource            | Path                                                  |
-| ------------------- | ----------------------------------------------------- |
-| **Any terminal**    | [`agents/README.md`](./agents/README.md)              |
-| **Cursor**          | [`AGENTS.md`](./AGENTS.md)                            |
-| **Operational SoR** | [`workspace/`](./workspace/) — `pnpm workspace:check` |
-| **Docs map**        | [`01-docs/README.md`](./01-docs/README.md)            |
+| Document        | Path                                                                           |
+| --------------- | ------------------------------------------------------------------------------ |
+| Contributing    | [CONTRIBUTING.md](./01-docs/operations/repo/CONTRIBUTING.md)                   |
+| Code of conduct | [CODE_OF_CONDUCT.md](./01-docs/operations/repo/CODE_OF_CONDUCT.md)             |
+| Security        | [SECURITY.md](./01-docs/operations/repo/SECURITY.md)                           |
+| Repo hygiene    | [repo-hygiene-protocol.md](./01-docs/operations/repo/repo-hygiene-protocol.md) |
+| Changelog       | [CHANGELOG.md](./CHANGELOG.md)                                                 |
+| License         | [LICENSE](./LICENSE)                                                           |
+
+## Agents
+
+| Resource    | Path                                                                                  |
+| ----------- | ------------------------------------------------------------------------------------- |
+| Agent entry | [AGENTS.md](./AGENTS.md)                                                              |
+| Audit start | [05-audit/AGENT-START.md](./05-audit/AGENT-START.md)                                  |
+| Layout v3   | [ecosystem-repo-layout-v3.md](./01-docs/04-ops/workspace/ecosystem-repo-layout-v3.md) |
+
+## Agents
+
+| Resource        | Path                                                                                  |
+| --------------- | ------------------------------------------------------------------------------------- |
+| Agent entry     | [AGENTS.md](./AGENTS.md)                                                              |
+| Audit start     | [05-audit/AGENT-START.md](./05-audit/AGENT-START.md)                                  |
+| Layout v3       | [ecosystem-repo-layout-v3.md](./01-docs/04-ops/workspace/ecosystem-repo-layout-v3.md) |
+| Any terminal    | [`03-platform/agents/README.md`](./03-platform/agents/README.md)                      |
+| Operational SoR | [`02-ops/`](./02-ops/) — `pnpm ops:check`                                             |
+| Docs map        | [`01-docs/README.md`](./01-docs/README.md)                                            |
 
 Protocol [P29 workspace domains](https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/protocols/29-agent-workspace-domains/protocol.md).
 

@@ -22,7 +22,7 @@ This repo operates within the GTCX ecosystem. All agents must reference the cano
 
 ### 1.5.1 Ecosystem cloud placement (OPS-CLOUD-PLACE-001)
 
-All infrastructure work defaults to **AWS** (`af-south-1`). GCP is used only for the intelligence ML bridge (`04-ship/terraform/modules/gcp-ml-bridge/`), disabled until Phase 3.
+All infrastructure work defaults to **AWS** (`af-south-1`). GCP is used only for the intelligence ML bridge (`04-deploy/terraform/modules/gcp-ml-bridge/`), disabled until Phase 3.
 
 | Doc | ID | Purpose |
 |-----|-----|---------|
@@ -278,7 +278,7 @@ pnpm agent:sync
 docker build -t audit-flush:latest 03-platform/tools/audit-flush/
 
 # Terraform (staging)
-cd 04-ship/terraform/environments/staging && terraform plan -var-file=terraform.tfvars
+cd 04-deploy/terraform/environments/staging && terraform plan -var-file=terraform.tfvars
 ```
 
 ## Audits (cross-repo)
@@ -314,7 +314,7 @@ The audit registry is provider-agnostic — the same prompts work for Claude, Co
 | Staging vs production keys    | `gtcx-agentic` | `01-docs/operators/vault-environments.md`                        |
 | Ecosystem coordination        | `baseline-os`  | `workstream/coordination/ECOSYSTEM-COST-ROUTER-2026-06-03.md` |
 
-**Do not** use `baseline-os/04-ship/docker/.env.staging` for production vault work.
+**Do not** use `baseline-os/04-deploy/docker/.env.staging` for production vault work.
 
 ## Execute roadmap (any LLM, any repo)
 
@@ -520,3 +520,17 @@ pnpm pm:sync
 Spec: [P29 Agent Workspace Domains](https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/protocols/29-agent-workspace-domains/protocol.md)
 
 <!-- gtcx-workspace-p29 -->
+
+<!-- gtcx-governance-spine -->
+
+## Governance spine (Protocol 33)
+
+| Gate             | Command                                        |
+| ---------------- | ---------------------------------------------- |
+| Root cleanliness | `pnpm check:workspace-root-cleanliness:strict` |
+| Ops domains      | `pnpm ops:check`                               |
+| Work selection   | `pnpm agent:next-work` (Protocol 22)           |
+
+Tier B docs: [`01-docs/operations/repo/`](./01-docs/operations/repo/) · Audit entry: [`05-audit/AGENT-START.md`](./05-audit/AGENT-START.md)
+
+Spec: [Protocol 33](https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/protocols/33-ecosystem-repo-governance-spine/protocol.md)

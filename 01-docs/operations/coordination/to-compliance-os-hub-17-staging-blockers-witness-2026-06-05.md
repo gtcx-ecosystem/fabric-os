@@ -24,7 +24,7 @@ Operator run found **`ClusterSecretStore/gtcx-aws-secrets-manager` not found**. 
 | ServiceAccount | `compliance-os-sa` (IRSA)                                       |
 | SecretStore    | `compliance-os-aws-secrets` (namespace `compliance-os-staging`) |
 | IAM role       | `gtcx-staging-compliance-os-secrets-role`                       |
-| Terraform      | `04-ship/terraform/modules/secrets/compliance-os.tf`            |
+| Terraform      | `04-deploy/terraform/modules/secrets/compliance-os.tf`            |
 | Bootstrap      | `01-docs/04-ops/staging-compliance-os-eso-bootstrap.md`         |
 | Script         | `03-platform/scripts/staging/install-compliance-os-eso.sh`      |
 
@@ -34,7 +34,7 @@ Operator run found **`ClusterSecretStore/gtcx-aws-secrets-manager` not found**. 
 
 ### Ask 1 — GHCR imagePullSecret (P0)
 
-**Manifest:** `04-ship/kubernetes/overlays/staging/compliance-os/external-secrets.yaml`
+**Manifest:** `04-deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml`
 
 ```yaml
 # ExternalSecret: compliance-os-ghcr-pull
@@ -61,7 +61,7 @@ aws secretsmanager create-secret \
 3. Apply the manifest:
 
 ```bash
-kubectl apply -k 04-ship/kubernetes/overlays/staging/compliance-os/
+kubectl apply -k 04-deploy/kubernetes/overlays/staging/compliance-os/
 ```
 
 4. Bind to the web-app Deployment (compliance-os manifest patch):
@@ -76,7 +76,7 @@ spec:
 
 ### Ask 2 — Non-W2 staging secrets (P1)
 
-**Manifests:** `04-ship/kubernetes/overlays/staging/compliance-os/external-secrets.yaml`
+**Manifests:** `04-deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml`
 
 | ExternalSecret           | K8s Secret name          | AWS SM path                                 |
 | ------------------------ | ------------------------ | ------------------------------------------- |
@@ -102,11 +102,11 @@ kubectl get secrets -n compliance-os-staging
 
 | File                                                                                         | Action                        |
 | -------------------------------------------------------------------------------------------- | ----------------------------- |
-| `04-ship/kubernetes/overlays/staging/compliance-os/namespace.yaml`                           | Added (declarative namespace) |
-| `04-ship/kubernetes/overlays/staging/compliance-os/secret-store.yaml`                        | Added (SA + SecretStore)      |
-| `04-ship/kubernetes/overlays/staging/compliance-os/external-secrets.yaml`                    | SecretStore ref (not Cluster) |
-| `04-ship/kubernetes/overlays/staging/compliance-os/kustomization.yaml`                       | Includes secret-store.yaml    |
-| `04-ship/terraform/modules/secrets/compliance-os.tf`                                         | IRSA + SM shells              |
+| `04-deploy/kubernetes/overlays/staging/compliance-os/namespace.yaml`                           | Added (declarative namespace) |
+| `04-deploy/kubernetes/overlays/staging/compliance-os/secret-store.yaml`                        | Added (SA + SecretStore)      |
+| `04-deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml`                    | SecretStore ref (not Cluster) |
+| `04-deploy/kubernetes/overlays/staging/compliance-os/kustomization.yaml`                       | Includes secret-store.yaml    |
+| `04-deploy/terraform/modules/secrets/compliance-os.tf`                                         | IRSA + SM shells              |
 | `03-platform/scripts/staging/install-compliance-os-eso.sh`                                   | Apply + verify                |
 | `01-docs/04-ops/staging-compliance-os-eso-bootstrap.md`                                      | Operator runbook              |
 | `01-docs/04-ops/coordination/to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md` | This witness                  |
@@ -114,7 +114,7 @@ kubectl get secrets -n compliance-os-staging
 ## Acceptance
 
 - [ ] Operator populates AWS SM secrets (GHCR token + 6 app secrets)
-- [ ] `kubectl apply -k 04-ship/kubernetes/overlays/staging/compliance-os/` succeeds
+- [ ] `kubectl apply -k 04-deploy/kubernetes/overlays/staging/compliance-os/` succeeds
 - [ ] `kubectl get pods -n compliance-os-staging -l app=web-app` shows **Running**
 - [ ] compliance-os runs `pnpm w2:staging-prereq-check` → `ok: true`
 

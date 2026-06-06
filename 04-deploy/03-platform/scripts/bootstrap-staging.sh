@@ -50,7 +50,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 TARGET_REGION="af-south-1"
 STATE_BUCKET="gtcx-terraform-state-staging"
 LOCK_TABLE="gtcx-terraform-locks-staging"
-ENV_DIR="${PROJECT_ROOT}/04-ship/terraform/environments/staging"
+ENV_DIR="${PROJECT_ROOT}/04-deploy/terraform/environments/staging"
 
 SKIP_REGION=false
 SKIP_OIDC=false

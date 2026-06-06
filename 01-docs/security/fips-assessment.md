@@ -34,7 +34,7 @@ GTCX infrastructure achieves FIPS 140-2 compliance at the AWS infrastructure lev
 | Property          | Value                                    | Evidence                                                                          |
 | ----------------- | ---------------------------------------- | --------------------------------------------------------------------------------- |
 | Algorithm         | AES-256                                  | AWS RDS default for `storage_encrypted = true`                                    |
-| Key management    | AWS KMS (customer-managed)               | `04-ship/terraform/modules/database/main.tf` line 188: `storage_encrypted = true` |
+| Key management    | AWS KMS (customer-managed)               | `04-deploy/terraform/modules/database/main.tf` line 188: `storage_encrypted = true` |
 | HSM validation    | FIPS 140-2 Level 3                       | AWS KMS HSMs ([AWS compliance page](https://aws.amazon.com/compliance/fips/))     |
 | Key rotation      | Automatic annual rotation                | KMS default for customer-managed keys                                             |
 | Scope             | Both operational and audit RDS instances | `aws_db_instance.operational` and `aws_db_instance.audit`                         |
@@ -42,14 +42,14 @@ GTCX infrastructure achieves FIPS 140-2 compliance at the AWS infrastructure lev
 
 **Terraform evidence:**
 
-- `04-ship/terraform/modules/database/main.tf` -- `storage_encrypted = true` on both instances
-- `04-ship/terraform/modules/backup/main.tf` -- KMS key with `enable_key_rotation = true` for backup exports
+- `04-deploy/terraform/modules/database/main.tf` -- `storage_encrypted = true` on both instances
+- `04-deploy/terraform/modules/backup/main.tf` -- KMS key with `enable_key_rotation = true` for backup exports
 
 ### 2. Data at Rest -- S3 (Backup Exports)
 
 | Property       | Value               | Evidence                                                                       |
 | -------------- | ------------------- | ------------------------------------------------------------------------------ |
-| Algorithm      | AES-256 (SSE-S3)    | `04-ship/terraform/modules/backup/main.tf` line 41: `sse_algorithm = "AES256"` |
+| Algorithm      | AES-256 (SSE-S3)    | `04-deploy/terraform/modules/backup/main.tf` line 41: `sse_algorithm = "AES256"` |
 | Key management | AWS-managed S3 keys | Server-side encryption by default                                              |
 | HSM validation | FIPS 140-2 Level 3  | AWS S3 SSE uses KMS-backed keys                                                |
 | Versioning     | Enabled             | `aws_s3_bucket_versioning.backup`                                              |
@@ -60,7 +60,7 @@ GTCX infrastructure achieves FIPS 140-2 compliance at the AWS infrastructure lev
 | Property       | Value                                  | Evidence                                                                        |
 | -------------- | -------------------------------------- | ------------------------------------------------------------------------------- |
 | Algorithm      | AES-256-GCM (envelope encryption)      | AWS EKS encryption config                                                       |
-| Key management | Dedicated KMS key per cluster          | `04-ship/terraform/modules/eks/main.tf` line 285-298: `aws_kms_key.eks_secrets` |
+| Key management | Dedicated KMS key per cluster          | `04-deploy/terraform/modules/eks/main.tf` line 285-298: `aws_kms_key.eks_secrets` |
 | HSM validation | FIPS 140-2 Level 3                     | KMS-backed                                                                      |
 | Key rotation   | Enabled                                | `enable_key_rotation = true`                                                    |
 | Scope          | All Kubernetes Secrets in etcd         | `encryption_config.resources = ["secrets"]`                                     |
@@ -70,7 +70,7 @@ GTCX infrastructure achieves FIPS 140-2 compliance at the AWS infrastructure lev
 
 | Property           | Value          | Evidence                                                                      |
 | ------------------ | -------------- | ----------------------------------------------------------------------------- |
-| Algorithm          | AES-256        | `04-ship/terraform/modules/ecr/main.tf` line 76: `encryption_type = "AES256"` |
+| Algorithm          | AES-256        | `04-deploy/terraform/modules/ecr/main.tf` line 76: `encryption_type = "AES256"` |
 | Key management     | AWS-managed    | ECR default encryption                                                        |
 | Image immutability | IMMUTABLE tags | `image_tag_mutability = "IMMUTABLE"`                                          |
 
@@ -78,7 +78,7 @@ GTCX infrastructure achieves FIPS 140-2 compliance at the AWS infrastructure lev
 
 | Property       | Value                             | Evidence                                                                   |
 | -------------- | --------------------------------- | -------------------------------------------------------------------------- |
-| Algorithm      | AES-256                           | `04-ship/terraform/modules/event-bus/main.tf` line 173: `encrypted = true` |
+| Algorithm      | AES-256                           | `04-deploy/terraform/modules/event-bus/main.tf` line 173: `encrypted = true` |
 | Key management | AWS-managed EBS encryption        | Default EBS KMS key                                                        |
 | Scope          | All JetStream persistence volumes | `aws_ebs_volume.jetstream`                                                 |
 
@@ -87,7 +87,7 @@ GTCX infrastructure achieves FIPS 140-2 compliance at the AWS infrastructure lev
 | Property      | Value                       | Evidence                                                                   |
 | ------------- | --------------------------- | -------------------------------------------------------------------------- |
 | Protocol      | TLS 1.2+                    | AWS ALB default security policy (ELBSecurityPolicy-TLS13-1-2-2021-06)      |
-| Certificate   | ACM-managed, auto-renewed   | `04-ship/terraform/modules/alb/main.tf` line 31: `aws_acm_certificate.api` |
+| Certificate   | ACM-managed, auto-renewed   | `04-deploy/terraform/modules/alb/main.tf` line 31: `aws_acm_certificate.api` |
 | Validation    | DNS validation              | `validation_method = "DNS"`                                                |
 | Cipher suites | AWS-managed (FIPS-approved) | ALB security policy                                                        |
 
@@ -97,14 +97,14 @@ GTCX infrastructure achieves FIPS 140-2 compliance at the AWS infrastructure lev
 | ------------------ | ------------------------------- | ------------------------------------------------------------- |
 | Protocol           | TLS 1.2+ (SSL enforced)         | PostgreSQL 16 enforces SSL by default                         |
 | Certificate        | AWS RDS CA bundle               | RDS-managed                                                   |
-| Parameter group    | `rds.force_ssl` via RDS default | `04-ship/terraform/modules/database/main.tf` line 139 comment |
+| Parameter group    | `rds.force_ssl` via RDS default | `04-deploy/terraform/modules/database/main.tf` line 139 comment |
 | Connection logging | Enabled                         | `log_connections = 1`, `log_disconnections = 1`               |
 
 ### 8. Data in Transit -- NATS JetStream
 
 | Property          | Value                                  | Evidence                                                                                 |
 | ----------------- | -------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Network isolation | Private subnets only                   | `04-ship/terraform/modules/event-bus/main.tf` -- security group restricts to allowed SGs |
+| Network isolation | Private subnets only                   | `04-deploy/terraform/modules/event-bus/main.tf` -- security group restricts to allowed SGs |
 | TLS               | Available (configured per environment) | NATS supports TLS; production configs enable it                                          |
 | Transport         | Cluster-internal only                  | No public endpoint exposed                                                               |
 
@@ -113,7 +113,7 @@ GTCX infrastructure achieves FIPS 140-2 compliance at the AWS infrastructure lev
 | Property      | Value                                           | Evidence                                                                           |
 | ------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------- |
 | Protocol      | TLS 1.2+                                        | AWS EKS API server enforces TLS                                                    |
-| Endpoint      | Private by default                              | `04-ship/terraform/modules/eks/main.tf` line 312: `endpoint_private_access = true` |
+| Endpoint      | Private by default                              | `04-deploy/terraform/modules/eks/main.tf` line 312: `endpoint_private_access = true` |
 | Public access | Disabled by default, CIDR-restricted if enabled | `enable_public_access = false`, precondition enforces CIDR                         |
 
 ---

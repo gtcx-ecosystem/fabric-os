@@ -60,7 +60,7 @@ export default tseslint.config(
 
   // Override for infrastructure scripts — allow console
   {
-    files: ['04-ship/**/03-platform/scripts/**/*.js', '04-ship/**/03-platform/scripts/**/*.mjs', '03-platform/tools/scripts/**/*.js'],
+    files: ['04-deploy/**/03-platform/scripts/**/*.js', '04-deploy/**/03-platform/scripts/**/*.mjs', '03-platform/tools/scripts/**/*.js'],
     rules: {
       'no-console': 'off',
     },

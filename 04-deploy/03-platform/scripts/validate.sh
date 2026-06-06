@@ -9,9 +9,9 @@
 #   full   - quick plus terraform validate/test, kustomize, compose, and deploy dry-run validation
 #
 # Usage:
-#   ./04-ship/03-platform/scripts/validate.sh
-#   ./04-ship/03-platform/scripts/validate.sh quick
-#   ./04-ship/03-platform/scripts/validate.sh full
+#   ./04-deploy/03-platform/scripts/validate.sh
+#   ./04-deploy/03-platform/scripts/validate.sh quick
+#   ./04-deploy/03-platform/scripts/validate.sh full
 # =============================================================================
 
 set -euo pipefail
@@ -53,10 +53,10 @@ run_shell_checks() {
     require_command shellcheck
 
     log_info "Checking shell script syntax..."
-    bash -n "${PROJECT_ROOT}"/04-ship/03-platform/scripts/*.sh
+    bash -n "${PROJECT_ROOT}"/04-deploy/03-platform/scripts/*.sh
 
     log_info "Running shellcheck..."
-    shellcheck "${PROJECT_ROOT}"/04-ship/03-platform/scripts/*.sh
+    shellcheck "${PROJECT_ROOT}"/04-deploy/03-platform/scripts/*.sh
 }
 
 run_policy_checks() {
@@ -98,11 +98,11 @@ run_deployment_guard_tests() {
 
 run_script_smoke_tests() {
     log_info "Running operator script smoke tests..."
-    (cd "${PROJECT_ROOT}" && bash 04-ship/03-platform/scripts/build-push.sh --list >/dev/null)
-    (cd "${PROJECT_ROOT}" && bash 04-ship/03-platform/scripts/deploy.sh staging --dry-run --version=sha-smoke-test >/dev/null)
-    (cd "${PROJECT_ROOT}" && bash 04-ship/03-platform/scripts/fine-tune-workflow.sh --help >/dev/null)
-    (cd "${PROJECT_ROOT}" && bash 04-ship/03-platform/scripts/capture-rollback-evidence.sh --help >/dev/null)
-    (cd "${PROJECT_ROOT}" && bash 04-ship/03-platform/scripts/prepare-intelligence-evidence-env.sh --help >/dev/null)
+    (cd "${PROJECT_ROOT}" && bash 04-deploy/03-platform/scripts/build-push.sh --list >/dev/null)
+    (cd "${PROJECT_ROOT}" && bash 04-deploy/03-platform/scripts/deploy.sh staging --dry-run --version=sha-smoke-test >/dev/null)
+    (cd "${PROJECT_ROOT}" && bash 04-deploy/03-platform/scripts/fine-tune-workflow.sh --help >/dev/null)
+    (cd "${PROJECT_ROOT}" && bash 04-deploy/03-platform/scripts/capture-rollback-evidence.sh --help >/dev/null)
+    (cd "${PROJECT_ROOT}" && bash 04-deploy/03-platform/scripts/prepare-intelligence-evidence-env.sh --help >/dev/null)
 }
 
 run_docs_standard_validation() {
@@ -197,7 +197,7 @@ run_terraform_validation() {
     require_command zip
 
     log_info "Running terraform format check..."
-    (cd "${PROJECT_ROOT}" && terraform fmt -check -recursive 04-ship/terraform/)
+    (cd "${PROJECT_ROOT}" && terraform fmt -check -recursive 04-deploy/terraform/)
 
     local modules=(
         vpc
@@ -217,7 +217,7 @@ run_terraform_validation() {
     for module in "${modules[@]}"; do
         log_info "Terraform validate: ${module}"
         (
-            cd "${PROJECT_ROOT}/04-ship/terraform/modules/${module}"
+            cd "${PROJECT_ROOT}/04-deploy/terraform/modules/${module}"
             if [[ "${module}" == "secrets" ]]; then
                 echo '{}' | zip -q lambda/rotation.zip -
             fi
@@ -253,7 +253,7 @@ run_terraform_tests() {
     for module in "${modules[@]}"; do
         log_info "Terraform test: ${module}"
         (
-            cd "${PROJECT_ROOT}/04-ship/terraform/modules/${module}"
+            cd "${PROJECT_ROOT}/04-deploy/terraform/modules/${module}"
             if [[ "${module}" == "secrets" ]]; then
                 echo '{}' | zip -q lambda/rotation.zip -
             fi
@@ -267,23 +267,23 @@ run_kustomize_validation() {
     require_command kubectl
 
     log_info "Running kustomize builds..."
-    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-ship/kubernetes/base/ > /dev/null)
-    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-ship/kubernetes/overlays/development/ > /dev/null)
-    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-ship/kubernetes/overlays/staging/ > /dev/null)
-    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-ship/kubernetes/overlays/staging/linkerd/ > /dev/null)
-    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-ship/kubernetes/overlays/production/ > /dev/null)
-    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-ship/kubernetes/overlays/production/linkerd/ > /dev/null)
-    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-ship/kubernetes/overlays/testnet/ > /dev/null)
-    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-ship/kubernetes/overlays/pen-test/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-deploy/kubernetes/base/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-deploy/kubernetes/overlays/development/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-deploy/kubernetes/overlays/staging/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-deploy/kubernetes/overlays/staging/linkerd/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-deploy/kubernetes/overlays/production/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-deploy/kubernetes/overlays/production/linkerd/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-deploy/kubernetes/overlays/testnet/ > /dev/null)
+    (cd "${PROJECT_ROOT}" && kubectl kustomize 04-deploy/kubernetes/overlays/pen-test/ > /dev/null)
 }
 
 run_compose_validation() {
     require_command docker
 
     log_info "Running docker compose config validation..."
-    (cd "${PROJECT_ROOT}" && docker compose -f 04-ship/docker/docker/docker-compose.dev.yml config --quiet)
-    (cd "${PROJECT_ROOT}" && docker compose -f 04-ship/docker/docker/docker-compose.test.yml config --quiet)
-    (cd "${PROJECT_ROOT}" && docker compose -f 04-ship/docker/docker/docker-compose.infra.yml config --quiet)
+    (cd "${PROJECT_ROOT}" && docker compose -f 04-deploy/docker/docker/docker-compose.dev.yml config --quiet)
+    (cd "${PROJECT_ROOT}" && docker compose -f 04-deploy/docker/docker/docker-compose.test.yml config --quiet)
+    (cd "${PROJECT_ROOT}" && docker compose -f 04-deploy/docker/docker/docker-compose.infra.yml config --quiet)
 }
 
 run_audit_immutability_fixture() {
@@ -291,7 +291,7 @@ run_audit_immutability_fixture() {
     require_command psql
 
     log_info "Running audit immutability fixture..."
-    (cd "${PROJECT_ROOT}" && bash 04-ship/03-platform/scripts/test-audit-immutability.sh)
+    (cd "${PROJECT_ROOT}" && bash 04-deploy/03-platform/scripts/test-audit-immutability.sh)
 }
 
 run_incident_drill_validation() {

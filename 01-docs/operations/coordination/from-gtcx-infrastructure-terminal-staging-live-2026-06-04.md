@@ -81,5 +81,5 @@ Synced via ExternalSecret `terminal-os-secrets` → K8s secret `terminal-os-secr
 ## References
 
 - Terminal-os outbound: `terminal-os/01-docs/06-coordination/to-gtcx-infrastructure-w2-ops-001-terminal-staging-2026-06-05.md`
-- Infra manifests: `04-ship/kubernetes/overlays/staging/terminal-os/`
-- Secrets module: `04-ship/terraform/modules/secrets/terminal-os.tf`
+- Infra manifests: `04-deploy/kubernetes/overlays/staging/terminal-os/`
+- Secrets module: `04-deploy/terraform/modules/secrets/terminal-os.tf`

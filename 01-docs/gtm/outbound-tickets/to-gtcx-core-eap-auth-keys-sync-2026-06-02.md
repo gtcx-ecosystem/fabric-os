@@ -119,6 +119,6 @@ kubectl get secret intelligence-auth-keys -n intelligence -o jsonpath='{.data.au
 
 ## Refs
 
-- `04-ship/terraform/modules/secrets/eap.tf` (EAP resources)
+- `04-deploy/terraform/modules/secrets/eap.tf` (EAP resources)
 - `01-docs/04-ops/eap-secrets-and-iam.md` (runbook)
-- `04-ship/terraform/modules/secrets/README.md` (EAP section)
+- `04-deploy/terraform/modules/secrets/README.md` (EAP section)

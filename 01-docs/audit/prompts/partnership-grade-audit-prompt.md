@@ -62,7 +62,7 @@ grep -r "auth" 03-platform/tools/compliance-gateway/src/ | grep -i "middleware\|
 ```bash
 # Check rate limit configuration
 grep -r "rateLimit\|rate_limit\|throttle" 03-platform/tools/compliance-gateway/src/ | head -5
-grep -r "rateLimit\|rate_limit\|throttle" 04-ship/terraform/modules/waf/ | head -5
+grep -r "rateLimit\|rate_limit\|throttle" 04-deploy/terraform/modules/waf/ | head -5
 ```
 
 **Pass:** Rate limiting configured in gateway OR WAF.

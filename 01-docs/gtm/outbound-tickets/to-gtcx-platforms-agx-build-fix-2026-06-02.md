@@ -55,7 +55,7 @@ curl -s https://api.staging.gtcx.trade/api/health
 
 ## Context
 
-- **Current image tag in staging:** `v0.4.0` (from `04-ship/kubernetes/overlays/staging/kustomization.yaml`)
+- **Current image tag in staging:** `v0.4.0` (from `04-deploy/kubernetes/overlays/staging/kustomization.yaml`)
 - **Cluster nodes:** AMD64 (t3.medium)
 - **Previous working state:** Unknown — AGX has been crashing since at least 2026-05-26
 - **Infra has verified:** ECR pull works, image starts, then immediately crashes with module-not-found
@@ -74,7 +74,7 @@ curl -s https://api.staging.gtcx.trade/api/health
 
 Once you provide a working image tag:
 
-- Update `04-ship/kubernetes/overlays/staging/kustomization.yaml` image reference
+- Update `04-deploy/kubernetes/overlays/staging/kustomization.yaml` image reference
 - Roll out and verify
 - Re-run `pnpm staging:readiness`
 - Notify mobile team that DID resolution is unblocked
@@ -83,6 +83,6 @@ Once you provide a working image tag:
 
 ## Refs
 
-- `04-ship/kubernetes/overlays/staging/kustomization.yaml` (AGX image ref)
-- `04-ship/docker/Dockerfile.intelligence` (working multi-stage monorepo build pattern)
+- `04-deploy/kubernetes/overlays/staging/kustomization.yaml` (AGX image ref)
+- `04-deploy/docker/Dockerfile.intelligence` (working multi-stage monorepo build pattern)
 - `01-docs/08-gtm/outbound-tickets/to-gtcx-infrastructure-audit-e2e-creds-2026-06-02.md` (mobile side of this blocker)

@@ -24,9 +24,9 @@ cd ../gtcx-infrastructure/03-platform/tools/compliance-gateway && pnpm start
 
 ## K8s keys
 
-`04-ship/kubernetes/base/services/compliance-gateway.yaml` — optional `OPENAI_API_KEY`, `GOOGLE_API_KEY`, `GEMINI_API_KEY`, `DEEPSEEK_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY` from `compliance-gateway-secrets`.
+`04-deploy/kubernetes/base/services/compliance-gateway.yaml` — optional `OPENAI_API_KEY`, `GOOGLE_API_KEY`, `GEMINI_API_KEY`, `DEEPSEEK_API_KEY`, `GROQ_API_KEY`, `OPENROUTER_API_KEY` from `compliance-gateway-secrets`.
 
-Seed secrets: `04-ship/03-platform/scripts/init-secrets.sh`
+Seed secrets: `04-deploy/03-platform/scripts/init-secrets.sh`
 
 ## Budget
 

@@ -72,10 +72,10 @@ tags: ['coordination', 'outbound', 'hub-17', 'w2', 'prod', 'class-a']
 | Artifact          | Path                                                                                           |
 | ----------------- | ---------------------------------------------------------------------------------------------- |
 | Bootstrap runbook | [`production-compliance-os-eso-bootstrap.md`](../../production-compliance-os-eso-bootstrap.md) |
-| K8s overlay       | `04-ship/kubernetes/overlays/production/compliance-os/`                                        |
+| K8s overlay       | `04-deploy/kubernetes/overlays/production/compliance-os/`                                        |
 | Populate SM       | `03-platform/scripts/production/populate-compliance-os-prod-sm.sh`                             |
 | Install ESO       | `03-platform/scripts/production/install-compliance-os-eso.sh`                                  |
-| Terraform         | `04-ship/terraform/environments/production/main.tf` → `module.secrets`                         |
+| Terraform         | `04-deploy/terraform/environments/production/main.tf` → `module.secrets`                         |
 
 ### Terraform / AWS SM (prod shells)
 

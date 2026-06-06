@@ -57,9 +57,9 @@ curl -sS -A "Mozilla/5.0" -H "Authorization: Bearer $GTCX_API_KEY" \
 
 ## Files modified in infra
 
-- `04-ship/kubernetes/overlays/staging/kustomization.yaml` — image tag `v0.4.6`
-- `04-ship/kubernetes/overlays/staging/patches/protocols-staging-env.yaml` — seed + API key env vars
-- `04-ship/kubernetes/overlays/staging/ingress.yaml` — `/v1/tradepass` → `gtcx-protocols-staging`
+- `04-deploy/kubernetes/overlays/staging/kustomization.yaml` — image tag `v0.4.6`
+- `04-deploy/kubernetes/overlays/staging/patches/protocols-staging-env.yaml` — seed + API key env vars
+- `04-deploy/kubernetes/overlays/staging/ingress.yaml` — `/v1/tradepass` → `gtcx-protocols-staging`
 - `01-docs/08-gtm/handoffs/staging-audit-e2e-credentials-2026-06-02.md` — updated
 
 ## Notes

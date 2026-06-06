@@ -14,8 +14,8 @@
 #   - AWS CLI configured (to confirm role exists before annotating)
 #
 # Usage:
-#   ENVIRONMENT=zimbabwe-pilot ./04-ship/03-platform/scripts/apply-platform-irsa.sh
-#   ENVIRONMENT=ghana-pilot    ./04-ship/03-platform/scripts/apply-platform-irsa.sh
+#   ENVIRONMENT=zimbabwe-pilot ./04-deploy/03-platform/scripts/apply-platform-irsa.sh
+#   ENVIRONMENT=ghana-pilot    ./04-deploy/03-platform/scripts/apply-platform-irsa.sh
 # =============================================================================
 set -euo pipefail
 

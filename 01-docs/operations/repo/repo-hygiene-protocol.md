@@ -20,7 +20,7 @@ canonical_protocol: gtcx-docs/03-platform/tools/audit/audit-framework/prompts/hy
 
 ## Purpose
 
-Keep the repository root predictable for humans and agents. Only intentional files live at root; everything else belongs under `01-docs/`, `04-ship/`, `03-platform/scripts/`, `03-platform/tools/`, `workspace/`, or `agents/`.
+Keep the repository root predictable for humans and agents. Only intentional files live at root; everything else belongs under `01-docs/`, `04-deploy/`, `03-platform/scripts/`, `03-platform/tools/`, `workspace/`, or `agents/`.
 
 ## Tier A — Front door (required)
 
@@ -89,7 +89,7 @@ Modify sources in `.agent/` and run `pnpm agent:sync` — do not hand-edit gener
 | Dir                    | Purpose                                                     |
 | ---------------------- | ----------------------------------------------------------- |
 | `01-docs/`             | All documentation, audits, runbooks, coordination           |
-| `04-ship/`             | Terraform, Kubernetes, Docker, security                     |
+| `04-deploy/`             | Terraform, Kubernetes, Docker, security                     |
 | `03-platform/scripts/` | Repo automation, agent selection, production operators      |
 | `03-platform/tools/`   | Workspace packages (compliance-gateway, audit-flush, etc.)  |
 | `workspace/`           | PM v3 operational workspace (assurance, product-management) |

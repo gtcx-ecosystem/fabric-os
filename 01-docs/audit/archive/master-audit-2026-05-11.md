@@ -125,7 +125,7 @@ Phase 1 (this session) closed two additional P0/P1 gaps:
 | Security control boundaries CI gate  | `.github/workflows/ci.yml`                                                  | ✅ Required step              |
 | Kyverno policy validator             | `03-platform/tools/scripts/kyverno-policy-validator.mjs`                    | ✅ 7/7 policies valid         |
 | Load test timeout fix                | `03-platform/tools/load-tests/run-load-tests.sh`                            | ✅ 120 iteration wait         |
-| Full validation suite                | `04-ship/03-platform/scripts/validate.sh quick`                             | ✅ All pass                   |
+| Full validation suite                | `04-deploy/03-platform/scripts/validate.sh quick`                             | ✅ All pass                   |
 | Build evidence                       | `03-platform/tools/control-plane/generate-release-evidence.mjs`             | ✅ `--build-only` required    |
 | Score ledger                         | `01-docs/05-audit/score-evidence-ledger.json`                               | ✅ Validator passes           |
 | DR test evidence                     | `.github/workflows/dr-test.yml`                                             | ✅ Weekly + on-demand         |

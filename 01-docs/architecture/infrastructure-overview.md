@@ -23,7 +23,7 @@ This directory contains all infrastructure-as-code for deploying GTCX across any
 ## Directory Structure
 
 ```
-04-ship/
+04-deploy/
 ├── docker/                    # Container configurations
 │   ├── Dockerfile.base        # Base image for all services
 │   ├── Dockerfile.api         # Rails API services

@@ -50,10 +50,10 @@ Added matrix entry:
 
 **File:** `.github/workflows/build-push-ecr.yml`
 
-Extended the `update-manifests` job to also patch `04-ship/kubernetes/overlays/staging/kustomization.yaml`:
+Extended the `update-manifests` job to also patch `04-deploy/kubernetes/overlays/staging/kustomization.yaml`:
 
 ```bash
-cd 04-ship/kubernetes/overlays/staging
+cd 04-deploy/kubernetes/overlays/staging
 kustomize edit set image \
   "${REGISTRY}/compliance-gateway=${REGISTRY}/compliance-gateway:${SHA_SHORT}"
 ```
@@ -69,8 +69,8 @@ docker build -f 03-platform/tools/compliance-gateway/Dockerfile -t compliance-ga
 
 ### 4. K8s manifests — already correct
 
-- **Ingress:** `04-ship/kubernetes/overlays/staging/ingress.yaml` routes `/audit` prefix → `compliance-gateway-staging:8500`
-- **Deployment:** `04-ship/kubernetes/base/services/compliance-gateway.yaml` defines container port 8500, `/health` probes
+- **Ingress:** `04-deploy/kubernetes/overlays/staging/ingress.yaml` routes `/audit` prefix → `compliance-gateway-staging:8500`
+- **Deployment:** `04-deploy/kubernetes/base/services/compliance-gateway.yaml` defines container port 8500, `/health` probes
 - **Service:** `compliance-gateway-staging` ClusterIP on port 8500
 
 ## Operator Steps to Complete Deploy

@@ -144,7 +144,7 @@ baseline_commit: 6092700
 - **Level impact:** Monitoring L2 mid → L2 high
 - **Current:** Gateway counters; baseline `cost-stats` not dashboarded
 - **Target:** Grafana: token spend, p95 latency, error rate per route/model; monthly review
-- **Implementation:** Export gateway metrics; import baseline cost-stats; `04-ship/monitoring/dashboards/llm-ops.json`
+- **Implementation:** Export gateway metrics; import baseline cost-stats; `04-deploy/monitoring/dashboards/llm-ops.json`
 - **Dependencies:** SIGNAL-INF-001 (threshold owner)
 
 ### [SIGNAL-INF-003] Agent PR witness gate

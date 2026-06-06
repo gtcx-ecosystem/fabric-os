@@ -274,7 +274,7 @@ This appendix documents improvements made during the continuous remediation sess
 
 | Fix                      | File                                    | Status                                                                         |
 | ------------------------ | --------------------------------------- | ------------------------------------------------------------------------------ |
-| ALB IAM wildcard removal | `04-ship/terraform/modules/alb/main.tf` | ✅ Replaced `elasticloadbalancing:Describe*` with 11 explicit describe actions |
+| ALB IAM wildcard removal | `04-deploy/terraform/modules/alb/main.tf` | ✅ Replaced `elasticloadbalancing:Describe*` with 11 explicit describe actions |
 
 ### Documents Published (20+)
 

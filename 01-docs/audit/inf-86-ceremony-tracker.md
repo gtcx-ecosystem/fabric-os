@@ -26,7 +26,7 @@ document_id: inf-86-H02-001
 | #   | Item                                               | Status      | Evidence                                                                                                                   | Owner        |
 | --- | -------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------- | ------------ |
 | 1   | Terraform module `kms-sovereign-signing` validated | **done**    | `terraform validate` passes                                                                                                | infra        |
-| 2   | Production configuration reviewed (gh-bog pilot)   | **done**    | `04-ship/terraform/environments/production/main.tf:351-369`                                                                | infra        |
+| 2   | Production configuration reviewed (gh-bog pilot)   | **done**    | `04-deploy/terraform/environments/production/main.tf:351-369`                                                                | infra        |
 | 3   | Terraform plan pre-validated (dry-run)             | **done**    | [`evidence/inf-86/sovereign-h02-prevalidation-2026-06-03.txt`](evidence/inf-86/sovereign-h02-prevalidation-2026-06-03.txt) | infra        |
 | 4   | Ceremony tracker created                           | **done**    | This file                                                                                                                  | infra        |
 | 5   | H-02 operator runbook created                      | **done**    | [`01-docs/09-security/inf-86-h02-operator-runbook.md`](../security/inf-86-h02-operator-runbook.md)                         | infra        |
@@ -197,10 +197,10 @@ Ready for H-03: DID document update + `key_status: production`.
 
 | Step | Action                                                                                                    | Status   | Evidence                                                                        |
 | ---- | --------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------- |
-| 1    | `SIGNING_KEY_PROVIDER=kms` + `AWS_KMS_KEY_ID=alias/gtcx-production-sovereign-gh-bog` on sovereign-staging | **done** | `04-ship/kubernetes/overlays/staging/patches/sovereign-staging-env.yaml`        |
+| 1    | `SIGNING_KEY_PROVIDER=kms` + `AWS_KMS_KEY_ID=alias/gtcx-production-sovereign-gh-bog` on sovereign-staging | **done** | `04-deploy/kubernetes/overlays/staging/patches/sovereign-staging-env.yaml`        |
 | 1b   | Staging IRSA role `gtcx-staging-platforms-irsa` created + KMS policy fixed                                | **done** | AWS IAM role + inline policy                                                    |
 | 1d   | Production KMS key `gh-bog` `signing_role_arns` includes staging platforms IRSA                           | **done** | `c36a5f6` — `from-gtcx-infrastructure-xr-eo-006-kms-staging-irsa-2026-06-06.md` |
-| 1c   | `gtcx-platform-staging` SA annotated with staging IRSA role                                               | **done** | `04-ship/kubernetes/overlays/staging/patches/platform-sa-irsa.yaml`             |
+| 1c   | `gtcx-platform-staging` SA annotated with staging IRSA role                                               | **done** | `04-deploy/kubernetes/overlays/staging/patches/platform-sa-irsa.yaml`             |
 | 2    | Sovereign pod Running, `KmsKeyProvider` init OK, health 200                                               | **done** | `sovereign-staging-888f9bc4d-7h4rk`                                             |
 | 3    | Platforms re-run `smoke:signed-edge-tenant:evidence`                                                      | **done** | 2026-06-06 — exit 0 vs `sovereign-staging.gtcx.trade` post-KMS apply            |
 | 4    | Mark XR-405 done on platforms sprint board                                                                | **done** | KMS policy + smoke green                                                        |

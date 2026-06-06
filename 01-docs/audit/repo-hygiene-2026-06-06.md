@@ -93,7 +93,7 @@ axis_scores:
 | Entry                  | Tier                 | Status        | Notes                                    |
 | ---------------------- | -------------------- | ------------- | ---------------------------------------- |
 | `01-docs/`             | G — Structural       | ok            | 18 subdirs, all with README              |
-| `04-ship/`             | G — Structural       | ok            | 7 subdirs, all with README               |
+| `04-deploy/`             | G — Structural       | ok            | 7 subdirs, all with README               |
 | `03-platform/scripts/` | G — Structural       | ok            | 3 subdirs, 0 with README                 |
 | `03-platform/tools/`   | G — Structural       | ok            | 24+ subdirs, mixed README coverage       |
 | `.agent/`              | F — Baseline / agent | ok            | README present                           |

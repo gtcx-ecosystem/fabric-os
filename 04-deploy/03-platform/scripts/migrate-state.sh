@@ -38,7 +38,7 @@ if [[ -z "${ENVIRONMENT}" ]]; then
     exit 1
 fi
 
-ENV_DIR="${PROJECT_ROOT}/04-ship/terraform/environments/${ENVIRONMENT}"
+ENV_DIR="${PROJECT_ROOT}/04-deploy/terraform/environments/${ENVIRONMENT}"
 if [[ ! -d "${ENV_DIR}" ]]; then
     log_error "Environment directory not found: ${ENV_DIR}"
     exit 1

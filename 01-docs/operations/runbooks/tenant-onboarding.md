@@ -162,4 +162,4 @@ Tenant audit records remain in the WORM bucket for the FATF 7-year retention win
 
 - [`01-docs/05-audit/score-evidence-ledger.json`](../../audit/score-evidence-ledger.json) — link each onboarded tenant's first signed record.
 - [`01-docs/09-security/break-glass-procedure.md`](../../security/break-glass-procedure.md) — tenant escalation paths.
-- [`04-ship/kubernetes/base/services/compliance-gateway.yaml`](../../../04-ship/kubernetes/base/services/compliance-gateway.yaml) — env vars consumed.
+- [`04-deploy/kubernetes/base/services/compliance-gateway.yaml`](../../../04-deploy/kubernetes/base/services/compliance-gateway.yaml) — env vars consumed.

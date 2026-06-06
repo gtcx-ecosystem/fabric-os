@@ -27,7 +27,7 @@ DevOps tooling, deployment automation, and security framework for the entire GTC
 
 ## Infrastructure Components
 
-### Container and Orchestration (04-ship/)
+### Container and Orchestration (04-deploy/)
 
 | Component   | Purpose                                                                                                                        |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -60,8 +60,8 @@ DevOps tooling, deployment automation, and security framework for the entire GTC
 
 | Package                     | Purpose                                                                |
 | --------------------------- | ---------------------------------------------------------------------- |
-| 04-ship/edge-proxy          | Edge proxy configuration and deployment for field environments         |
-| 04-ship/migrations          | Database migration tooling and schema versioning                       |
+| 04-deploy/edge-proxy          | Edge proxy configuration and deployment for field environments         |
+| 04-deploy/migrations          | Database migration tooling and schema versioning                       |
 | 03-platform/tools/scripts   | Deployment and setup automation consumed by CI/CD pipelines            |
 | 03-platform/tools/templates | Project templates, documentation standards, and engineering principles |
 
@@ -124,7 +124,7 @@ Mesh networking between nearby field sites enables peer-to-peer data sharing eve
 - Digital Infrastructure Framework (`./digital-infrastructure-framework.md`) -- End-to-end digital infrastructure design
 - Six-Month Deployment Roadmap (`./six-month-deployment-roadmap.md`) -- Phased deployment plan across environments
 - [Security Policies](../security/security-policy.md) -- Security policy framework and standards
-- [Access Control](../../04-ship/security/policies/access-control.md) -- Access control policies and role definitions
+- [Access Control](../../04-deploy/security/policies/access-control.md) -- Access control policies and role definitions
 - [Data Protection](../compliance/data-classification-policy.md) -- Data protection and encryption standards
 - [Incident Response](../operations/runbooks/incident-response.md) -- Security incident response procedures
 - Edge Proxy Overview (`./edge-proxy-overview.md`) -- Edge proxy architecture for field connectivity

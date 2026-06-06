@@ -40,7 +40,7 @@ As of Cycle 2.5, the workspace lists 11 packages:
 
 ```yaml
 packages:
-  - '04-ship/migrations'
+  - '04-deploy/migrations'
   - '03-platform/tools/audit-signer'
   - '03-platform/tools/audit-flush'
   - '03-platform/tools/compliance-data'

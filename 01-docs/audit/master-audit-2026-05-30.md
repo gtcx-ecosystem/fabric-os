@@ -103,7 +103,7 @@ Internal readiness is assessed at **6.5/10**. Certified composite is assessed at
 Root requires `node >=20.18.0`, but most workspace package manifests still allow `>=20.0.0`. CI workflows also use `node-version: '20'` instead of the repository floor.
 
 **P2-003: Alertmanager has development defaults that can leak into non-dev runs.**  
-`04-ship/docker/docker-compose.infra.yml:151-153` defaults PagerDuty and Slack destinations to development placeholders if env vars are unset. Keep this dev-only or fail closed for staging/production compose use.
+`04-deploy/docker/docker-compose.infra.yml:151-153` defaults PagerDuty and Slack destinations to development placeholders if env vars are unset. Keep this dev-only or fail closed for staging/production compose use.
 
 **P2-004: Current audit source is untracked.**  
 `01-docs/05-audit/post-roadmap-session-2026-05-30.md` is present but untracked. Either commit it as supporting evidence or discard it before release packaging.

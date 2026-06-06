@@ -37,8 +37,8 @@ autonomy_level: 'permissioned'
 **Top 3 priorities for next sprint:**
 
 1. Fix replay-protection integration test isolation (`03-platform/tools/replay-protection/tests/integration.test.mjs:13`) — flakiness blocks clean CI
-2. Deploy staging WAF + VPC Flow Logs Terraform (`04-ship/terraform/modules/waf/main.tf`, `04-ship/terraform/modules/flow-logs/main.tf`)
-3. Enable `use_fips_endpoint = true` in AWS provider configs (`04-ship/terraform/`) — FIPS assessment gap
+2. Deploy staging WAF + VPC Flow Logs Terraform (`04-deploy/terraform/modules/waf/main.tf`, `04-deploy/terraform/modules/flow-logs/main.tf`)
+3. Enable `use_fips_endpoint = true` in AWS provider configs (`04-deploy/terraform/`) — FIPS assessment gap
 
 ---
 
@@ -161,7 +161,7 @@ No commit produced for this phase.
 | ID    | Finding                                                                | Severity | File:Line                                                           |
 | ----- | ---------------------------------------------------------------------- | -------- | ------------------------------------------------------------------- |
 | G-008 | Replay integration test flaky under full suite                         | P2       | `03-platform/tools/replay-protection/tests/integration.test.mjs:13` |
-| G-009 | `use_fips_endpoint` not set in Terraform despite FIPS assessment claim | P2       | `04-ship/terraform/`                                                |
+| G-009 | `use_fips_endpoint` not set in Terraform despite FIPS assessment claim | P2       | `04-deploy/terraform/`                                                |
 | G-010 | No `docs:check-links` script for automated link validation             | P2       | `package.json`                                                      |
 
 ---

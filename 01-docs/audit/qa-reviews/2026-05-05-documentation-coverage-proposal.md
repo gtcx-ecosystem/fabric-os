@@ -23,7 +23,7 @@ autonomy_level: 'permissioned'
 
 ## Overview
 
-While our repository currently holds a "Gold Standard" rating for its architectural transparency and documentation depth, we face a common long-term risk: **Documentation Drift.** As we scale from 2 pilots to 10+ jurisdictions, the speed of code changes in `04-ship/` may eventually outpace the manual updates to our `01-docs/` folder.
+While our repository currently holds a "Gold Standard" rating for its architectural transparency and documentation depth, we face a common long-term risk: **Documentation Drift.** As we scale from 2 pilots to 10+ jurisdictions, the speed of code changes in `04-deploy/` may eventually outpace the manual updates to our `01-docs/` folder.
 
 To achieve a perfect 10/10 operational score and satisfy the "Verifiable Integrity" required by our government partners, I propose we implement a **Documentation Coverage CI Gate.**
 
@@ -43,7 +43,7 @@ We will utilize the existing `01-docs/03-platform/scripts/doc-hygiene-check.sh` 
 
 The script will use `git diff` to analyze the scope of the PR:
 
-- **Infrastructure Changes:** Detects changes in `04-ship/terraform/` or `04-ship/kubernetes/`.
+- **Infrastructure Changes:** Detects changes in `04-deploy/terraform/` or `04-deploy/kubernetes/`.
 - **Missing Evidence:** Checks if new or updated files are present in `01-docs/architecture/`, `01-docs/architecture/decisions/`, or `01-docs/specs/`.
 - **Outcome:** Exit with Code 1, blocking the merge until an ADR or Spec update is included.
 
@@ -54,7 +54,7 @@ The script will use `git diff` to analyze the scope of the PR:
 set -euo pipefail
 
 # 1. Identify core changes
-INFRA_CHANGES=$(git diff --name-only origin/main...HEAD | grep -E '^(04-ship/|03-platform/tools/)' || true)
+INFRA_CHANGES=$(git diff --name-only origin/main...HEAD | grep -E '^(04-deploy/|03-platform/tools/)' || true)
 
 # 2. Identify documentation updates
 DOCS_UPDATES=$(git diff --name-only origin/main...HEAD | grep -E '^01-docs/(architecture/|decisions/|specs/)' || true)

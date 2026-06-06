@@ -5,8 +5,8 @@
 # staging-specific image + IRSA role + WORM bucket.
 #
 # The role ARN and bucket name come from `terraform output`:
-#   terraform -chdir=04-ship/terraform/environments/staging output audit_flush_role_arn
-#   terraform -chdir=04-ship/terraform/environments/staging output worm_audit_bucket_name
+#   terraform -chdir=04-deploy/terraform/environments/staging output audit_flush_role_arn
+#   terraform -chdir=04-deploy/terraform/environments/staging output worm_audit_bucket_name
 # These are committed here per the GitOps convention; rotating them is a
 # terraform apply + kustomize patch update.
 # =============================================================================

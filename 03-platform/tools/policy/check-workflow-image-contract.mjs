@@ -2,9 +2,9 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 
 const repoRoot = process.cwd();
-const ecrModuleFile = path.join(repoRoot, '04-ship/terraform/modules/ecr/main.tf');
+const ecrModuleFile = path.join(repoRoot, '04-deploy/terraform/modules/ecr/main.tf');
 const workflowFile = path.join(repoRoot, '.github/workflows/build-push-ecr.yml');
-const environmentsRoot = path.join(repoRoot, '04-ship/terraform/environments');
+const environmentsRoot = path.join(repoRoot, '04-deploy/terraform/environments');
 
 const workflowImageKeys = [
   'curator_image',
@@ -34,7 +34,7 @@ function parseEcrRepositories() {
   );
   if (!match?.groups?.items) {
     throw new Error(
-      'Could not parse default repositories from 04-ship/terraform/modules/ecr/main.tf'
+      'Could not parse default repositories from 04-deploy/terraform/modules/ecr/main.tf'
     );
   }
 
@@ -118,7 +118,7 @@ const workflowBuildRepositories = parseWorkflowBuildRepositories();
 for (const repoName of workflowBuildRepositories) {
   if (!ecrRepositories.has(repoName)) {
     fail(
-      `${path.relative(repoRoot, workflowFile)}: build workflow repo ${repoName} is not declared in 04-ship/terraform/modules/ecr/main.tf`
+      `${path.relative(repoRoot, workflowFile)}: build workflow repo ${repoName} is not declared in 04-deploy/terraform/modules/ecr/main.tf`
     );
   }
 }
@@ -138,7 +138,7 @@ for (const relativeFile of collectEnvironmentFiles(environmentsRoot)) {
 
     if (!ecrRepositories.has(referencedRepo)) {
       fail(
-        `${relativeFile}: ${key} references ECR repo ${referencedRepo}, but 04-ship/terraform/modules/ecr/main.tf does not declare it`
+        `${relativeFile}: ${key} references ECR repo ${referencedRepo}, but 04-deploy/terraform/modules/ecr/main.tf does not declare it`
       );
     }
 

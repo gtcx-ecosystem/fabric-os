@@ -70,7 +70,7 @@ Recompute: `node 03-platform/tools/scripts/compute-audit-scores.mjs --write`
 | Dimension             | Rating           | Top Issue                                                                                                                                                                                                                                        |
 | --------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Spec Fidelity         | **Strong**       | Execution roadmap and `validate-all.mjs` align; README CI badge claims "Passing" while `main` `ci` job failed on `format:check` (run `26743741600`).                                                                                             |
-| Structural Integrity  | **Strong**       | Clear split: `04-ship/` (IaC/K8s/bash), `03-platform/tools/` (Node services), `01-docs/` (governance). `deployment-guard` extracts policy from `deploy.sh` but deploy path remains bash-primary.                                                 |
+| Structural Integrity  | **Strong**       | Clear split: `04-deploy/` (IaC/K8s/bash), `03-platform/tools/` (Node services), `01-docs/` (governance). `deployment-guard` extracts policy from `deploy.sh` but deploy path remains bash-primary.                                                 |
 | Code Quality          | **Good**         | Compliance gateway production fail-closed (`server.mjs:86-99`); replay path normalization (`middleware.mjs:123-134`). Gateway coverage gates use 85% branches where broker integration is soft-loaded (`compliance-gateway/package.json:12-13`). |
 | Testability           | **Good**         | `run-package-tests.mjs` fixes Linux glob drift; contract tests in `03-platform/tools/contract-tests/`. Redis/NATS paths use injectable stores or mocks.                                                                                          |
 | Operational Readiness | **Mostly ready** | 38+ automated gates; release-evidence generation in CI (`ci.yml:91-112`). Structural DR/WORM gates in-repo; live recurrence = **XC** track (EXT-INF-003).                                                                                        |
@@ -81,7 +81,7 @@ Recompute: `node 03-platform/tools/scripts/compute-audit-scores.mjs --write`
 | Severity | Category     | Title                                                                                                                                                                                                                                                                                                                                                                                                           |
 | -------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **P1**   | Ops/CI       | `[P1] Hygiene — main branch CI red on Prettier` — Evidence: Actions run `26743741600`, job `ci`, step `pnpm format:check`; file `01-docs/05-audit/distribution-snapshots/2026-06-01.json`. Impact: `main` does not match README "CI-Passing" badge. Fix: `pnpm format --write 01-docs/05-audit/distribution-snapshots/2026-06-01.json` + commit or add snapshot to `.prettierignore` with documented rationale. |
-| **P2**   | Architecture | `[P2] Structural — Bash deploy surface remains authority` — Evidence: `README.md:23-25`, `04-ship/03-platform/scripts/deploy.sh:1-59`. Impact: policy logic split between bash and `03-platform/tools/deployment-guard/`. Fix: continue `gtcx-ctl` migration; gate deploy via `deployment-guard` CLI only.                                                                                                      |
+| **P2**   | Architecture | `[P2] Structural — Bash deploy surface remains authority` — Evidence: `README.md:23-25`, `04-deploy/03-platform/scripts/deploy.sh:1-59`. Impact: policy logic split between bash and `03-platform/tools/deployment-guard/`. Fix: continue `gtcx-ctl` migration; gate deploy via `deployment-guard` CLI only.                                                                                                      |
 | **P2**   | Consistency  | `[P2] Docs — README shields not wired to Actions` — Evidence: `README.md:3-6` static badges. Impact: institutional readers see false green. Fix: Shields.io workflow badge or remove static claims.                                                                                                                                                                                                             |
 | **P3**   | Dead code    | `[P3] Consistency — SessionStore abstract throws uncovered` — Evidence: `ussd-handler` coverage report `session.mjs:20-21,29-30,37-38`. Impact: none functional. Fix: optional `/* c8 ignore */` on abstract stubs or trivial subclass test.                                                                                                                                                                    |
 
@@ -177,7 +177,7 @@ Stages (S0 prototype → S6 defense). Assessment uses `01-docs/08-gtm/overview.m
 | Category          | Score /10 | Issues                                                                                        |
 | ----------------- | --------- | --------------------------------------------------------------------------------------------- |
 | Documentation     | **9**     | Roadmap, external register, trust model current; README badges stale                          |
-| File Structure    | **9**     | `04-ship/` vs `03-platform/tools/` vs `01-docs/` clear; ADR and audit supersession pattern    |
+| File Structure    | **9**     | `04-deploy/` vs `03-platform/tools/` vs `01-docs/` clear; ADR and audit supersession pattern    |
 | Naming            | **8**     | Conventional commits; some `gtcx-production` vs `gtcx` namespace variants in overlays         |
 | Package/Build     | **8**     | pnpm workspaces + turbo; docs-site excluded from default CI build (`ci.yml:65`)               |
 | Code Hygiene      | **8**     | `empty-catch-check`, ESLint on packages; abstract class coverage noise                        |
@@ -352,7 +352,7 @@ Close S3-04 live gap and EXT-INF-003.
 | #   | Task                                  | Layer       | Files                                                           | Effort  | Why It Matters                |
 | --- | ------------------------------------- | ----------- | --------------------------------------------------------------- | ------- | ----------------------------- |
 | 1   | Wire WORM upload on `main` merge      | Remediation | new workflow or `ci.yml`, `upload-release-evidence-to-worm.mjs` | M       | Recurring compliance evidence |
-| 2   | Operator live DR against staging RDS  | Remediation | `04-ship/03-platform/scripts/dr-test.sh`, evidence dir          | L (ops) | S3-02 live half               |
+| 2   | Operator live DR against staging RDS  | Remediation | `04-deploy/03-platform/scripts/dr-test.sh`, evidence dir          | L (ops) | S3-02 live half               |
 | 3   | Staging smoke probe runbook execution | Evolution   | `01-docs/04-ops/runbooks/staging-smoke-probe.md`                | M       | Runtime proof                 |
 
 ### Definition of Done
@@ -378,7 +378,7 @@ Reduce bash authority; harden production deploy path.
 
 | #   | Task                                           | Layer       | Files                                                                                                             | Effort | Why It Matters        |
 | --- | ---------------------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------- | ------ | --------------------- |
-| 1   | Route `deploy.sh` through deployment-guard CLI | Evolution   | `04-ship/03-platform/scripts/deploy.sh`, `03-platform/tools/deployment-guard/03-platform/src/cli/deploy-gate.mjs` | M      | Single policy brain   |
+| 1   | Route `deploy.sh` through deployment-guard CLI | Evolution   | `04-deploy/03-platform/scripts/deploy.sh`, `03-platform/tools/deployment-guard/03-platform/src/cli/deploy-gate.mjs` | M      | Single policy brain   |
 | 2   | Expand gtcx-ctl validate-environment in CI     | Evolution   | `03-platform/tools/control-plane/`, `ci.yml`                                                                      | M      | Pre-flight env checks |
 | 3   | Document bash deprecation timeline             | Remediation | `README.md` operational constraints                                                                               | S      | Operator clarity      |
 
@@ -404,7 +404,7 @@ Ship pilot-differentiating evidence UX.
 
 | #   | Task                                      | Layer      | Files                                                                            | Effort | Why It Matters            |
 | --- | ----------------------------------------- | ---------- | -------------------------------------------------------------------------------- | ------ | ------------------------- |
-| 1   | Pilot KPI dashboard from Prometheus rules | Innovation | `04-ship/kubernetes/base/monitoring/`, pilot criteria                            | M      | Measurable 30-day success |
+| 1   | Pilot KPI dashboard from Prometheus rules | Innovation | `04-deploy/kubernetes/base/monitoring/`, pilot criteria                            | M      | Measurable 30-day success |
 | 2   | Offline verifier pack for ZWCMP           | Innovation | `03-platform/tools/compliance-data/03-platform/scripts/verify-catalog.mjs`, docs | M      | Regulator-facing moat     |
 | 3   | USSD path soak test in CI                 | Innovation | `03-platform/tools/ussd-handler/`, load tests                                    | M      | Global South distribution |
 

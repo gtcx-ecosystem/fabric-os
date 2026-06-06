@@ -17,7 +17,7 @@
  *
  * Environment:
  *   PAGERDUTY_ROUTING_KEY — PagerDuty integration key (required for real send)
- *   ALERTMANAGER_CONFIG — Path to alertmanager.yml.tpl (default: 04-ship/docker/observability/alertmanager.yml.tpl)
+ *   ALERTMANAGER_CONFIG — Path to alertmanager.yml.tpl (default: 04-deploy/docker/observability/alertmanager.yml.tpl)
  *
  * Exit codes:
  *   0 = simulation passed
@@ -31,7 +31,7 @@ import { request as httpsRequest } from 'node:https';
 
 const ALERTMANAGER_CONFIG =
   process.env.ALERTMANAGER_CONFIG ??
-  path.join(process.cwd(), '04-ship', 'docker', 'docker', 'observability', 'alertmanager.yml.tpl');
+  path.join(process.cwd(), '04-deploy', 'docker', 'docker', 'observability', 'alertmanager.yml.tpl');
 const PAGERDUTY_ROUTING_KEY = process.env.PAGERDUTY_ROUTING_KEY ?? '';
 const DRY_RUN = process.argv.includes('--dry-run');
 

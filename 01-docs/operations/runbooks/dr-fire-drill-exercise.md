@@ -267,7 +267,7 @@ curl -s "https://api.${ENVIRONMENT}.gtcx.trade/v1/audit/chain" \
 
 ```bash
 EXERCISE_ID="dr-exercise-$(date -u +%Y%m%d-%H%M%S)"
-mkdir -p "04-ship/security/reports/dr-exercises/${EXERCISE_ID}"
+mkdir -p "04-deploy/security/reports/dr-exercises/${EXERCISE_ID}"
 # Copy all evidence files into this directory
 ```
 
@@ -279,16 +279,16 @@ pnpm ctl evidence release-bundle \
   --version="${EXERCISE_ID}" \
   --commit="$(git rev-parse HEAD)" \
   --build-only \
-  --image=gateway="$(yq -r '.images[0].newName' 04-ship/kubernetes/overlays/${ENVIRONMENT}/kustomization.yaml):$(yq -r '.images[0].newTag' 04-ship/kubernetes/overlays/${ENVIRONMENT}/kustomization.yaml)" \
-  --evidence=dr-exercise="04-ship/security/reports/dr-exercises/${EXERCISE_ID}" \
-  --output-dir="04-ship/security/reports/dr-exercises/${EXERCISE_ID}"
+  --image=gateway="$(yq -r '.images[0].newName' 04-deploy/kubernetes/overlays/${ENVIRONMENT}/kustomization.yaml):$(yq -r '.images[0].newTag' 04-deploy/kubernetes/overlays/${ENVIRONMENT}/kustomization.yaml)" \
+  --evidence=dr-exercise="04-deploy/security/reports/dr-exercises/${EXERCISE_ID}" \
+  --output-dir="04-deploy/security/reports/dr-exercises/${EXERCISE_ID}"
 ```
 
 3. Upload to WORM (when AWS credentials are available). `worm-upload` consumes the manifest written by `release-bundle`:
 
 ```bash
 pnpm ctl evidence worm-upload \
-  --manifest="04-ship/security/reports/dr-exercises/${EXERCISE_ID}/worm-upload.json"
+  --manifest="04-deploy/security/reports/dr-exercises/${EXERCISE_ID}/worm-upload.json"
 ```
 
 4. Update `01-docs/05-audit/latest.json` with the exercise ID and WORM object key.

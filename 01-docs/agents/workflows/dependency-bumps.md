@@ -42,7 +42,7 @@ If a group PR mixes patch + major bumps, treat the whole thing as major.
 - **Never** merge a major bump on a production-hot package
   (`@gtcx/*`, `@ai-sdk/*`, `ai`, `nats`, `@aws-sdk/*`) without
   first running `pnpm test:full` locally + checking soak-test
-  artifacts in `04-ship/security/reports/load-tests/`.
+  artifacts in `04-deploy/security/reports/load-tests/`.
 - **Never** merge while `pnpm test` / `pnpm test:full` is red.
 - **SHA-pin every action.** `pin-actions-sha.mjs --check` enforces this
   in CI; dependabot bumps preserve the SHA-pin format because

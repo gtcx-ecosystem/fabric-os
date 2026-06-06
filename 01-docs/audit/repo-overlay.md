@@ -57,7 +57,7 @@ The overlay codifies what the team already does informally: hold infra to a bar 
 
 ### Admission Enforcement (new)
 
-- Does every Kyverno policy declared in `04-ship/kubernetes/base/policies/` have a matching producer in CI (e.g., `require-signed-images.yaml` → Cosign signing in `build-push-ecr.yml`)?
+- Does every Kyverno policy declared in `04-deploy/kubernetes/base/policies/` have a matching producer in CI (e.g., `require-signed-images.yaml` → Cosign signing in `build-push-ecr.yml`)?
 - Are admission policies scoped to ALL environment namespaces (`gtcx-testnet`, `gtcx-staging`, `gtcx-production`) — not just production?
 
 ### Audit-Flow Verifiability (new)
@@ -95,7 +95,7 @@ These caps OVERRIDE the ecosystem caps when they're stricter; they never relax t
 ### Sovereign / DFI Lens
 
 - The dual-DB (operational + audit) + WORM Object Lock + jurisdiction-plugin-driven retention is the differentiator under the DFI lens. Score `Governance and Trust` highly only if the audit substrate is end-to-end externally verifiable (the audit-flush sidecar must be deployed, not scaffolded).
-- `Mission and Regional Fit` should reflect actual jurisdiction-plugin coverage (the `04-ship/terraform/modules/compliance-db/plugins/` catalog), not the ambition to cover them.
+- `Mission and Regional Fit` should reflect actual jurisdiction-plugin coverage (the `04-deploy/terraform/modules/compliance-db/plugins/` catalog), not the ambition to cover them.
 
 ## Evidence Requirements (beyond the base framework)
 

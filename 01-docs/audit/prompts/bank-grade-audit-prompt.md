@@ -127,7 +127,7 @@ cat 01-docs/10-compliance/sod-matrix.md 2>/dev/null | head -40 || echo "No SoD m
 # Check for approval workflows in code
 grep -ri "approve\|approval\|dual.*control\|four.eyes" 03-platform/tools/*/03-platform/src/ | head -10
 # Check IAM for separation
-grep -r "gtcx-terraform" 04-ship/terraform/ | grep -i "role\|policy" | head -5
+grep -r "gtcx-terraform" 04-deploy/terraform/ | grep -i "role\|policy" | head -5
 ```
 
 **Pass:** SoD matrix documented. No single role can approve + execute financial transactions.

@@ -16,8 +16,8 @@ owner: gtcx-infrastructure
 
 ### 1. Sovereign Deployment (Kubernetes)
 
-- Base manifest created at `04-ship/kubernetes/base/services/sovereign/deployment.yaml`
-- Added to staging kustomization (`04-ship/kubernetes/overlays/staging/kustomization.yaml`)
+- Base manifest created at `04-deploy/kubernetes/base/services/sovereign/deployment.yaml`
+- Added to staging kustomization (`04-deploy/kubernetes/overlays/staging/kustomization.yaml`)
 - Image reference: `348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-sovereign:staging`
 - PodSecurity-compliant (`restricted:latest`):
   - `runAsNonRoot: true`, `runAsUser: 1000`
@@ -29,7 +29,7 @@ owner: gtcx-infrastructure
 
 ### 2. Staging Ingress Updated
 
-- `04-ship/kubernetes/overlays/staging/ingress.yaml` now includes:
+- `04-deploy/kubernetes/overlays/staging/ingress.yaml` now includes:
   - Host rule: `sovereign-staging.gtcx.trade` → `sovereign-staging:3001`
   - `external-dns.alpha.kubernetes.io/hostname` includes `sovereign-staging.gtcx.trade`
 
@@ -115,7 +115,7 @@ aws elbv2 add-listener-certificates \
 
 ### Step 5: Update Ingress Certificate Annotation
 
-Update `04-ship/kubernetes/overlays/staging/ingress.yaml` to include both certificates:
+Update `04-deploy/kubernetes/overlays/staging/ingress.yaml` to include both certificates:
 
 ```yaml
 alb.ingress.kubernetes.io/certificate-arn: |
@@ -126,7 +126,7 @@ alb.ingress.kubernetes.io/certificate-arn: |
 Then apply:
 
 ```bash
-kubectl apply -f 04-ship/kubernetes/overlays/staging/ingress.yaml
+kubectl apply -f 04-deploy/kubernetes/overlays/staging/ingress.yaml
 ```
 
 ---
@@ -161,8 +161,8 @@ curl -sI https://sovereign-staging.gtcx.trade/health
 
 ## References
 
-- Ingress: `04-ship/kubernetes/overlays/staging/ingress.yaml`
-- Sovereign base manifest: `04-ship/kubernetes/base/services/sovereign/deployment.yaml`
-- Staging kustomization: `04-ship/kubernetes/overlays/staging/kustomization.yaml`
+- Ingress: `04-deploy/kubernetes/overlays/staging/ingress.yaml`
+- Sovereign base manifest: `04-deploy/kubernetes/base/services/sovereign/deployment.yaml`
+- Staging kustomization: `04-deploy/kubernetes/overlays/staging/kustomization.yaml`
 - ALB DNS: `k8s-gtcxstagingapi-295a96727a-1533822930.af-south-1.elb.amazonaws.com`
 - ACM Certificate ARN: `arn:aws:acm:af-south-1:348389439381:certificate/9f7149a3-26db-4dee-bce5-b5a3cd29fe16`

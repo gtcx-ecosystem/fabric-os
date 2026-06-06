@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
 const repoRoot = process.cwd();
-const shipRoot = path.join(repoRoot, '04-ship');
+const shipRoot = path.join(repoRoot, '04-deploy');
 const cloudflaredConfig = path.join(
   shipRoot,
   'kubernetes',

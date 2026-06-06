@@ -70,7 +70,7 @@ Board-ready documents and certification readiness. Used for full licensing (post
 gh workflow run security-evidence.yml -f environment=testnet
 
 # 2. Assemble the evidence package locally
-bash 04-ship/03-platform/scripts/assemble-sandbox-evidence.sh
+bash 04-deploy/03-platform/scripts/assemble-sandbox-evidence.sh
 
 # 3. Fill in the security assessment template (2 engineers, 2 days)
 # 4. Get board signatures on IRP + RTO/RPO

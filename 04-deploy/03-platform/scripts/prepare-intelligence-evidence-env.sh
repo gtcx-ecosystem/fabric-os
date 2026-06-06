@@ -6,8 +6,8 @@
 # needed for intelligence evidence runners.
 #
 # Example:
-#   terraform -chdir=04-ship/terraform/environments/testnet-pilot output -json > /tmp/testnet-outputs.json
-#   ./04-ship/03-platform/scripts/prepare-intelligence-evidence-env.sh \
+#   terraform -chdir=04-deploy/terraform/environments/testnet-pilot output -json > /tmp/testnet-outputs.json
+#   ./04-deploy/03-platform/scripts/prepare-intelligence-evidence-env.sh \
 #     --terraform-output-file=/tmp/testnet-outputs.json \
 #     --mode=sandbox
 # =============================================================================

@@ -36,7 +36,7 @@ Provision HSM-backed asymmetric signing keys for all 43 sovereign authority DIDs
 
 ## 3. Terraform Infrastructure — Status
 
-### New Module: `04-ship/terraform/modules/kms-sovereign-signing/`
+### New Module: `04-deploy/terraform/modules/kms-sovereign-signing/`
 
 - Multi-key KMS signing module using `for_each`
 - Per-authority: key, alias, IAM policy, CloudWatch alarm, SSM parameters
@@ -45,7 +45,7 @@ Provision HSM-backed asymmetric signing keys for all 43 sovereign authority DIDs
 
 ### Production Configuration
 
-Added to `04-ship/terraform/environments/production/main.tf`:
+Added to `04-deploy/terraform/environments/production/main.tf`:
 
 ```hcl
 module "kms_sovereign_signing" {
@@ -82,7 +82,7 @@ module "kms_sovereign_signing" {
 
 ```bash
 # Step 1: Verify identities
-cd 04-ship/terraform/environments/production
+cd 04-deploy/terraform/environments/production
 
 # Step 2: Plan
 terraform plan -target=module.kms_sovereign_signing -out=sovereign.tfplan

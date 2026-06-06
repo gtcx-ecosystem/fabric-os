@@ -48,7 +48,7 @@ review_cycle: 'on-change'
 
 **Top 3 priorities for next sprint:**
 
-1. **[P0] Enable Vault TLS** — `04-ship/terraform/modules/vault/main.tf:219` — Replace `tls_disable = 1` with cert-manager-managed TLS
+1. **[P0] Enable Vault TLS** — `04-deploy/terraform/modules/vault/main.tf:219` — Replace `tls_disable = 1` with cert-manager-managed TLS
 2. **[P0] Fix container security contexts** — `promtail.yaml:96`, `cloudflared/deployment.yaml:40`, `postgres-audit.yaml:74` — Enforce `readOnlyRootFilesystem: true` and non-root users
 3. **[P0] Execute pen-test engagement** — RFP ready, vendor shortlist complete, awaiting leadership send
 
@@ -71,19 +71,19 @@ review_cycle: 'on-change'
 
 **P0 Findings:**
 
-- **[P0] Vault TLS disabled** `04-ship/terraform/modules/vault/main.tf:219`
+- **[P0] Vault TLS disabled** `04-deploy/terraform/modules/vault/main.tf:219`
   Vault HA Raft listener has `tls_disable = 1`. Secrets traffic traverses the cluster unencrypted. Even with mTLS mesh pending (ADR-007), Vault should enforce its own TLS.
   **Fix:** Add `tls_cert_file` / `tls_key_file` with cert-manager or Vault auto-TLS.
 
 **P1 Findings:**
 
-- **[P1] Public EKS API in testnet** `04-ship/terraform/environments/testnet-pilot/terraform.tfvars:30`
+- **[P1] Public EKS API in testnet** `04-deploy/terraform/environments/testnet-pilot/terraform.tfvars:30`
   `enable_public_api = true` with empty `admin_cidr_blocks`. Acceptable for evaluation but must be restricted before production parity.
 
-- **[P1] Placeholder workflow image tag** `04-ship/terraform/environments/testnet-pilot/main.tf:494-498`
+- **[P1] Placeholder workflow image tag** `04-deploy/terraform/environments/testnet-pilot/main.tf:494-498`
   `sha-manual-pin-required` is non-deployable by design but creates operational friction.
 
-- **[P1] ALB controller IAM policy excessively broad** `04-ship/terraform/modules/alb/main.tf:83-161`
+- **[P1] ALB controller IAM policy excessively broad** `04-deploy/terraform/modules/alb/main.tf:83-161`
   50+ actions including `shield:CreateProtection` and `ec2:CreateSecurityGroup` on `Resource = "*"`.
 
 ### 1.2 Security Audit
@@ -99,17 +99,17 @@ review_cycle: 'on-change'
 
 **P0 Findings:**
 
-- **[P0] Vault TLS disabled** `04-ship/terraform/modules/vault/main.tf:219` (same as architecture)
+- **[P0] Vault TLS disabled** `04-deploy/terraform/modules/vault/main.tf:219` (same as architecture)
 
-- **[P0] Promtail runs as root** `04-ship/kubernetes/base/services/promtail.yaml:96`
+- **[P0] Promtail runs as root** `04-deploy/kubernetes/base/services/promtail.yaml:96`
   `runAsUser: 0` / `runAsGroup: 0`. Violates Kyverno `require-security-context` policy.
   **Fix:** Use dedicated non-root user with `CAP_DAC_READ_SEARCH` or sidecar log collection.
 
-- **[P0] Cloudflared mutable root filesystem** `04-ship/kubernetes/base/services/cloudflared/deployment.yaml:40`
+- **[P0] Cloudflared mutable root filesystem** `04-deploy/kubernetes/base/services/cloudflared/deployment.yaml:40`
   `readOnlyRootFilesystem: false`. Violates Kyverno policy.
   **Fix:** Mount `emptyDir` for writable paths, set `readOnlyRootFilesystem: true`.
 
-- **[P0] Postgres-audit mutable root filesystem** `04-ship/kubernetes/base/services/postgres-audit.yaml:74`
+- **[P0] Postgres-audit mutable root filesystem** `04-deploy/kubernetes/base/services/postgres-audit.yaml:74`
   `readOnlyRootFilesystem: false` on the Postgres container.
   **Fix:** Same pattern — `emptyDir` for `/var/lib/postgresql/data`.
 
@@ -118,13 +118,13 @@ review_cycle: 'on-change'
 - **[P1] No penetration test executed** `01-docs/05-audit/pen-test-scope-2026.md:15`
   Blocks SOC 2 Type 1 and pilot launch. RFP ready but engagement not started.
 
-- **[P1] NetworkPolicy placeholder CIDR overly broad** `04-ship/kubernetes/overlays/production/network-policies.yaml:73`
+- **[P1] NetworkPolicy placeholder CIDR overly broad** `04-deploy/kubernetes/overlays/production/network-policies.yaml:73`
   `/17` CIDR placeholder. Must be patched to actual DB subnet ranges per environment.
 
 - **[P1] Duplicate ZAP DAST workflows** `.github/workflows/dast-zap.yml` and `.github/workflows/zap-dast.yml`
   Configuration drift risk. Consolidate into single workflow.
 
-- **[P1] Remediation role broad S3 access** `04-ship/terraform/modules/compliance/encryption-enforcement.tf:129-154`
+- **[P1] Remediation role broad S3 access** `04-deploy/terraform/modules/compliance/encryption-enforcement.tf:129-154`
   `s3:PutEncryptionConfiguration` on `arn:aws:s3:::*`. Scope to GTCX-owned buckets.
 
 ### 1.3 GTM Readiness
@@ -225,7 +225,7 @@ Phase 3 and 3.5 remediation improved Repo / Folder Hygiene from ~7.5 to 9.0. All
 **Findings closed:**
 
 - 6 missing READMEs in docs subdirectories (Phase 3)
-- 3 missing top-level READMEs (04-ship/, 03-platform/scripts/, 03-platform/tools/) (Phase 3.5)
+- 3 missing top-level READMEs (04-deploy/, 03-platform/scripts/, 03-platform/tools/) (Phase 3.5)
 - Stale `.docs-exceptions.json` regenerated (Phase 3)
 
 **Findings closed (M1 + M2 engineering):**

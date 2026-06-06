@@ -92,7 +92,7 @@ baseline_commit: HEAD
 - `01-docs/05-audit/latest.json` gates all green; `auto-dev-state.md` machine-readable posture.
 - Gateway Prometheus metrics (S2-05): route/status/exception counters.
 - Anomaly detector + eval-pipeline workflows; DR/live-restore evidence gates.
-- OTel collector manifest (`04-ship/kubernetes/base/services/otel-collector.yaml`).
+- OTel collector manifest (`04-deploy/kubernetes/base/services/otel-collector.yaml`).
 
 **Gaps to L2 high / L3:** Monitoring stack **partial** deploy (Global South plan 1.3); no production LLM latency/cost dashboard; no weekly agent eval report; no per-agent error-rate SLO.
 
@@ -156,7 +156,7 @@ baseline_commit: HEAD
 - **Level impact:** Monitoring **L2 mid → L2 high**
 - **Current:** Gateway Prometheus counters; baseline-os `cost-stats` exists but not dashboarded in infra
 - **Target:** Grafana panel: token spend, p95 latency, error rate per model/route; monthly review ritual
-- **Implementation:** Export gateway LLM metrics; import baseline cost-stats JSON; add `04-ship/monitoring/dashboards/llm-ops.json`
+- **Implementation:** Export gateway LLM metrics; import baseline cost-stats JSON; add `04-deploy/monitoring/dashboards/llm-ops.json`
 - **Effort:** M | **Priority:** P0 | **Dependencies:** SIGNAL-INF-001 (owner signs off thresholds)
 
 ### [SIGNAL-INF-003] Agent PR witness gate

@@ -9,6 +9,7 @@
 
 import { dirname, join } from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
+
 import { recordLlmTrace } from './llm-trace.mjs';
 
 /** @typedef {{ 'gtcx.trace_id': string, 'gtcx.service': string, 'gtcx.operation': string, timestamp: string }} TraceSpanMarker */
@@ -37,7 +38,7 @@ async function loadBaselineRouter() {
         return mod;
       }
     } catch {
-      // try next
+      continue; // baseline candidate path not present — try next
     }
   }
   baselineRouter = false;

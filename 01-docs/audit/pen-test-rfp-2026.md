@@ -26,7 +26,7 @@ This RFP solicits proposals for an external penetration test of the gateway, its
 ### In-scope assets
 
 - **compliance-gateway** (HTTP API, `03-platform/tools/compliance-gateway/`): `/v1/query`, `/v1/tools`, `/v1/providers`, `/v1/audit/chain`, `/v1/audit/verify`, `/v1/audit/bundles`, `/v1/audit/query`, `/v1/budget`, `/metrics`, `/health`.
-- **audit-flush sidecar** (`04-ship/kubernetes/base/services/audit-flush.yaml`): JetStream → WORM S3 path.
+- **audit-flush sidecar** (`04-deploy/kubernetes/base/services/audit-flush.yaml`): JetStream → WORM S3 path.
 - **NATS JetStream** broker on `gtcx.audit.*` subjects.
 - **Dual PostgreSQL** databases (operational + audit, segregated user, append-only).
 - **Vault HA** instance (TLS, KMS unseal, dynamic creds).

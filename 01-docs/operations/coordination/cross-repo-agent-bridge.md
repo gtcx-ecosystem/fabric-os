@@ -35,7 +35,7 @@ protocol: gtcx-docs/01-docs/governance/protocols/24-cross-repo-coordination/prot
 
 1. **Session start:** Read **Latest updates** below → [`cross-repo-agent-log.md`](cross-repo-agent-log.md) last 10 rows → check your XR-### in sprint workplan.
 2. **Cross-repo change:** Append one row to **agent log**; if P0, also `baseline-os` `pnpm ecosystem:repo:report-work --status=blocked`.
-3. **Ecosystem-wide P0:** Read protocols bridge **Critical path** before duplicating 04-ship/protocols work.
+3. **Ecosystem-wide P0:** Read protocols bridge **Critical path** before duplicating 04-deploy/protocols work.
 4. **Do not** paste secrets, JWK private keys, or `AUDIT_TOKEN` values here.
 
 ---

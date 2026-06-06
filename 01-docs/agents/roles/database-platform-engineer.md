@@ -65,11 +65,11 @@ On the morning of November 14, 2017, a developer on the compliance platform team
 ## Owns
 
 - Dual PostgreSQL database architecture: `gtcx_ops` (operational) and `gtcx_audit` (append-only audit)
-- Database migration framework and migration safety rules: `04-ship/db/migrations/`
-- Backup and restore procedures: `04-ship/db/backup/`, `01-docs/04-ops/runbooks/db-restore.md`
-- Replication topology configuration: `04-ship/terraform/modules/rds/` (or equivalent PostgreSQL provisioning)
+- Database migration framework and migration safety rules: `04-deploy/db/migrations/`
+- Backup and restore procedures: `04-deploy/db/backup/`, `01-docs/04-ops/runbooks/db-restore.md`
+- Replication topology configuration: `04-deploy/terraform/modules/rds/` (or equivalent PostgreSQL provisioning)
 - `gtcx_audit` write-access policy: only the `audit-writer` service may hold write credentials
-- Edge SQLite schema and sync protocol: `04-ship/db/edge/`
+- Edge SQLite schema and sync protocol: `04-deploy/db/edge/`
 - `01-docs/engineering/4-data/` — database architecture, migration policy, dual-database design
 
 ## Does Not Own
@@ -146,6 +146,6 @@ Owns the schema and sync protocol for edge SQLite instances. Ensures that data o
 | Backup policy              | `01-docs/engineering/4-data/backup-policy.md`              |
 | Edge sync design           | `01-docs/engineering/4-data/edge-sync.md`                  |
 | DB restore runbook         | `01-docs/04-ops/runbooks/db-restore.md`                    |
-| Migration files            | `04-ship/db/migrations/`                                   |
-| Edge SQLite schema         | `04-ship/db/edge/`                                         |
+| Migration files            | `04-deploy/db/migrations/`                                   |
+| Edge SQLite schema         | `04-deploy/db/edge/`                                         |
 | Safety rules               | `01-docs/01-agents/workflows/safety-rules.md`              |

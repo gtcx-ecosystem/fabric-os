@@ -481,7 +481,7 @@ data:
 # -----------------------------------------------------------------------------
 # Grafana Dashboards (intelligence — SIGNAL L3 gate)
 # Dashboard JSON stored as ConfigMap for K8s provisioning.
-# Source: 04-ship/docker/observability/grafana/dashboards/intelligence.json
+# Source: 04-deploy/docker/observability/grafana/dashboards/intelligence.json
 # -----------------------------------------------------------------------------
 apiVersion: v1
 kind: ConfigMap

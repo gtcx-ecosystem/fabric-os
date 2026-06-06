@@ -33,7 +33,7 @@ Additionally, the current `NonceGate` is process-scoped. When the compliance-gat
 
 A shared Redis instance has been added to the base Kubernetes manifest:
 
-- **Manifest:** `04-ship/kubernetes/base/services/redis.yaml`
+- **Manifest:** `04-deploy/kubernetes/base/services/redis.yaml`
 - **Service:** `redis.gtcx.svc.cluster.local:6379`
 - **Config:** maxmemory 256mb, allkeys-lru eviction, no persistence
 - **Security:** runAsNonRoot, seccomp RuntimeDefault, drop ALL caps
@@ -70,13 +70,13 @@ nonceGate: await auditBundlesNonceGate,
 
 ## 3. Deployment Checklist
 
-- [x] Redis manifest created (`04-ship/kubernetes/base/services/redis.yaml`)
+- [x] Redis manifest created (`04-deploy/kubernetes/base/services/redis.yaml`)
 - [x] Base kustomization updated to include Redis
 - [x] `ioredis` dependency added to compliance-gateway
 - [x] `createNonceStore` implementation with Redis + fallback
 - [x] `server.mjs` wired to use `createNonceStore`
 - [x] Tests for memory fallback path
-- [ ] **Deploy Redis:** `kubectl apply -k 04-ship/kubernetes/overlays/staging/`
+- [ ] **Deploy Redis:** `kubectl apply -k 04-deploy/kubernetes/overlays/staging/`
 - [ ] **Set env var:** `REDIS_URL=redis://redis.gtcx-staging.svc.cluster.local:6379`
 - [ ] **NetworkPolicy:** verify `redis` port 6379 is reachable from `gtcx-staging` namespace
 - [ ] **Integration test:** deploy two gateway replicas, verify cross-replica nonce rejection

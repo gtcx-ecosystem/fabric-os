@@ -120,7 +120,7 @@ Compressed retrospective form. Full per-sprint detail in commit history under ea
 
 **Goal delivered:** External engagements are engagement-ready, awaiting leadership signature.
 
-**Stories closed:** ENG-001 (pen-test RFP), ENG-002 (pen-test K8s overlay `04-ship/kubernetes/overlays/pen-test/`), ENG-003 (SOC 2 Type 1 engagement plan), ENG-004 (internal red-team pre-pass via injection suite).
+**Stories closed:** ENG-001 (pen-test RFP), ENG-002 (pen-test K8s overlay `04-deploy/kubernetes/overlays/pen-test/`), ENG-003 (SOC 2 Type 1 engagement plan), ENG-004 (internal red-team pre-pass via injection suite).
 
 **Velocity:** 5 planned / 5 delivered.
 
@@ -210,7 +210,7 @@ Compressed retrospective form. Full per-sprint detail in commit history under ea
 
 - [ ] `docker build` against `03-platform/tools/audit-flush/Dockerfile` succeeds.
 - [ ] Image scanned by Trivy with zero high/critical CVEs.
-- [ ] Image signed via Cosign keyless (matching `04-ship/kubernetes/base/policies/require-signed-images.yaml`).
+- [ ] Image signed via Cosign keyless (matching `04-deploy/kubernetes/base/policies/require-signed-images.yaml`).
 - [ ] Image pushed to all three ECRs (testnet, staging, production).
 - [ ] Kustomize overlays patched with the real image digest (testnet first).
 - [ ] `kubectl rollout status deploy/audit-flush -n gtcx` reports `successfully rolled out` in testnet.
@@ -236,7 +236,7 @@ Compressed retrospective form. Full per-sprint detail in commit history under ea
 - [ ] `prometheus-adapter` Helm chart installed in the `monitoring` namespace.
 - [ ] `prometheus-adapter` configmap maps `compliance_gateway_inflight_requests` → `pods` metric.
 - [ ] `kubectl get --raw "/apis/custom.metrics.k8s.io/v1beta1/namespaces/gtcx/pods/*/compliance_gateway_inflight_requests"` returns values for each gateway pod.
-- [ ] HPA at `04-ship/kubernetes/base/services/compliance-gateway-hpa.yaml` reports `targets: ... <currentValue>/20` (not `<unknown>/20`).
+- [ ] HPA at `04-deploy/kubernetes/base/services/compliance-gateway-hpa.yaml` reports `targets: ... <currentValue>/20` (not `<unknown>/20`).
 - [ ] HPA decision log shows scale-up after sustained load.
 
 **Test scenarios:**
@@ -255,7 +255,7 @@ Compressed retrospective form. Full per-sprint detail in commit history under ea
 
 **Acceptance criteria:**
 
-- [ ] `terraform -chdir=04-ship/terraform/environments/testnet-pilot apply` succeeds.
+- [ ] `terraform -chdir=04-deploy/terraform/environments/testnet-pilot apply` succeeds.
 - [ ] `terraform output audit_flush_role_arn` returns the role ARN.
 - [ ] `aws iam get-role --role-name gtcx-testnet-audit-flush-irsa` returns the trust policy.
 - [ ] Kustomize overlay patched with the role ARN (replaces `PLACEHOLDER_OVERRIDE_IN_OVERLAY`).
@@ -266,7 +266,7 @@ Compressed retrospective form. Full per-sprint detail in commit history under ea
 2. `aws sts assume-role-with-web-identity` (via the sidecar pod's projected token) succeeds.
 3. `aws s3 put-object` from a debug pod assuming the role into the WORM bucket succeeds; the same role's `aws s3 get-object` returns AccessDenied (write-only verification).
 
-**Dependencies:** None (module exists at `04-ship/terraform/modules/audit-flush-irsa/`).
+**Dependencies:** None (module exists at `04-deploy/terraform/modules/audit-flush-irsa/`).
 
 ### Sprint 7 UAT
 
@@ -681,7 +681,7 @@ Cross-references:
 
 **Acceptance criteria:**
 
-- [ ] Run `04-ship/03-platform/scripts/dr-test.sh staging` end-to-end with `OUTPUT_DIR=04-ship/security/reports/dr-evidence/2026-07-<DD>`.
+- [ ] Run `04-deploy/03-platform/scripts/dr-test.sh staging` end-to-end with `OUTPUT_DIR=04-deploy/security/reports/dr-evidence/2026-07-<DD>`.
 - [ ] Evidence JSON captured with non-null RTO + RPO.
 - [ ] Evidence linked from `01-docs/05-audit/score-evidence-ledger.json` under metric I4 → "live restoration evidence".
 - [ ] Master audit footer updated to note the live evidence.
@@ -786,7 +786,7 @@ Cross-references:
 
 This sprint is scaffolded; full story-level detail is deferred to sprint-zero in Q3 because the dependent infrastructure (Linkerd version, EKS upgrade) needs to be confirmed first. The high-level shape:
 
-- **MESH-001:** Install Linkerd control plane in `staging` first per the canary plan at `04-ship/kubernetes/overlays/staging/linkerd/canary-rollout.yaml`.
+- **MESH-001:** Install Linkerd control plane in `staging` first per the canary plan at `04-deploy/kubernetes/overlays/staging/linkerd/canary-rollout.yaml`.
 - **MESH-002:** Annotate one service (`compliance-gateway`) for sidecar injection in staging.
 - **MESH-003:** Validate mesh policies enforced (deny-by-default for unannotated namespaces).
 - **MESH-004:** Roll out to remaining 15 services in staging per the existing canary phases.

@@ -31,7 +31,7 @@ Use Kustomize with a base/overlay pattern for all Kubernetes manifest management
 Directory structure:
 
 ```
-04-ship/kubernetes/
+04-deploy/kubernetes/
   base/           # Shared resource definitions
   overlays/
     development/  # Dev-specific patches

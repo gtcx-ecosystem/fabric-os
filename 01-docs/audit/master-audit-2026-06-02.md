@@ -46,7 +46,7 @@ caps_fired: 0
   - `03-platform/tools/replay-protection/src/middleware.mjs` (path normalization, traversal hardening)
   - `03-platform/tools/audit-flush/src/nats-consumer.mjs` (durability path, WORM upload)
   - `03-platform/tools/scripts/validate-all.mjs` (38-gate orchestrator)
-  - `04-ship/terraform/modules/*/main.tf` (encryption, WAF, IAM, KMS)
+  - `04-deploy/terraform/modules/*/main.tf` (encryption, WAF, IAM, KMS)
 - **Tests and gates:**
   - `pnpm install` — PASS
   - `pnpm typecheck` — PASS (3/15 packages; 12 untyped)
@@ -115,7 +115,7 @@ caps_fired: 0
   Fix: Appoint named CISO, establish monthly board reporting.
 
 - **[P1] PRD-002 staging audit API is not production-verifiable yet**
-  Evidence: `04-ship/kubernetes/overlays/staging/ingress.yaml` routes `/audit` to compliance-gateway; DID resolver contract misalignment (TradePass `/identity/:did` vs protocols `/v1/tradepass/:did`).
+  Evidence: `04-deploy/kubernetes/overlays/staging/ingress.yaml` routes `/audit` to compliance-gateway; DID resolver contract misalignment (TradePass `/identity/:did` vs protocols `/v1/tradepass/:did`).
   Fix: Tier A (route ≠404) then Tier B (signature verify end-to-end).
 
 - **[P1] FSCA license / SARB notification not started**
@@ -139,7 +139,7 @@ caps_fired: 0
   Fix: Add minimal typecheck/lint/build scripts to all packages, or document intentional exclusions.
 
 - **[P2] 6 missing READMEs in top-level directories**
-  Evidence: `.baseline/`, `.github/`, `04-ship/docker/`, `04-ship/kubernetes/`, `04-ship/monitoring/`, `04-ship/terraform/` lack READMEs.
+  Evidence: `.baseline/`, `.github/`, `04-deploy/docker/`, `04-deploy/kubernetes/`, `04-deploy/monitoring/`, `04-deploy/terraform/` lack READMEs.
   Fix: Add index READMEs per repo hygiene assessment.
 
 ---

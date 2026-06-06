@@ -40,11 +40,11 @@ HTTP/2 403
 server: awselb/2.0
 ```
 
-**Interpretation:** Route53 → ALB path is working. **403** from `awselb/2.0` with Ingress backend `gtcx-protocols-staging:8300` (`04-ship/kubernetes/overlays/staging/ingress.yaml`) — likely **no healthy targets** (protocols pod not deployed) and/or **WAF** default block. Next: `kubectl --context staging -n gtcx-staging get pods,svc,ingress` + target group health.
+**Interpretation:** Route53 → ALB path is working. **403** from `awselb/2.0` with Ingress backend `gtcx-protocols-staging:8300` (`04-deploy/kubernetes/overlays/staging/ingress.yaml`) — likely **no healthy targets** (protocols pod not deployed) and/or **WAF** default block. Next: `kubectl --context staging -n gtcx-staging get pods,svc,ingress` + target group health.
 
 ## IaC landed
 
-- PR #66 merged — `04-ship/terraform/modules/route53/`, staging `main.tf` wiring
+- PR #66 merged — `04-deploy/terraform/modules/route53/`, staging `main.tf` wiring
 - Ingress annotations: `api.staging.gtcx.trade`, `geotag.staging.gtcx.trade`
 
 ## Closure criteria

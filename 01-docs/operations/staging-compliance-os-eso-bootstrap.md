@@ -17,7 +17,7 @@ Hub **#17** ExternalSecrets previously referenced **`ClusterSecretStore/gtcx-aws
 ## 1. Terraform — IRSA role + empty SM shells
 
 ```bash
-cd 04-ship/terraform/environments/staging
+cd 04-deploy/terraform/environments/staging
 terraform init
 terraform apply -var-file=terraform.tfvars \
   -target=module.secrets.aws_iam_role.compliance_os_secrets \
@@ -58,7 +58,7 @@ Or fix and re-run `CD / Staging` on `compliance-os` `main` (workflow_dispatch).
 ## 3. Apply K8s overlay
 
 ```bash
-kubectl apply -k 04-ship/kubernetes/overlays/staging/compliance-os/
+kubectl apply -k 04-deploy/kubernetes/overlays/staging/compliance-os/
 # or
 ./03-platform/scripts/staging/install-compliance-os-eso.sh
 ```

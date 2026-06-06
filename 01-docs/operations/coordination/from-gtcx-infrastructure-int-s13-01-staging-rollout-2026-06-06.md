@@ -13,16 +13,16 @@ story_id: INT-S13-01
 ## Actions taken (2026-06-06)
 
 1. Staging Deployment image → `gtcx-intelligence-sdk:b0488d2d955471f439b824309dd5e15264d4ce53` (INT-S13-01 production COPY baselineos).
-2. `build-push.sh` intelligence-sdk now uses `gtcx-intelligence/intelligence/sdk/Dockerfile` (not legacy `04-ship/docker/Dockerfile.intelligence`).
+2. `build-push.sh` intelligence-sdk now uses `gtcx-intelligence/intelligence/sdk/Dockerfile` (not legacy `04-deploy/docker/Dockerfile.intelligence`).
 
 ## Operator commands (Class R — run in-session)
 
 ```bash
 # 1) Build + push (gtcx-infrastructure, Docker + AWS CLI required)
-bash 04-ship/03-platform/scripts/build-push.sh intelligence-sdk --version=b0488d2d955471f439b824309dd5e15264d4ce53
+bash 04-deploy/03-platform/scripts/build-push.sh intelligence-sdk --version=b0488d2d955471f439b824309dd5e15264d4ce53
 
 # 2) Roll staging
-kubectl apply -k 04-ship/kubernetes/overlays/staging/intelligence/
+kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
 kubectl rollout status deployment/intelligence-orchestrator -n intelligence --timeout=300s
 
 # 3) Intelligence evidence (after pod Ready)

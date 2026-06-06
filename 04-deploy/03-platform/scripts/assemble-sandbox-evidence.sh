@@ -75,7 +75,7 @@ SECURITY_DIR="${DOCS_DIR}/security"
 GTM_DIR="${DOCS_DIR}/gtm"
 SANDBOX_DIR="${GTM_DIR}/sandbox-application"
 REGULATORY_DIR="${GTM_DIR}/regulatory"
-TERRAFORM_DIR="${REPO_ROOT}/04-ship/terraform/modules/compliance-db"
+TERRAFORM_DIR="${REPO_ROOT}/04-deploy/terraform/modules/compliance-db"
 
 log_info "Assembling sandbox evidence for jurisdiction: ${JURISDICTION}"
 log_info "Output directory: ${OUTPUT_DIR}"
@@ -110,7 +110,7 @@ generate_data_residency() {
 
 **Generated:** ${DATE}
 **Jurisdiction:** ${JURISDICTION}
-**Source:** 04-ship/terraform/modules/compliance-db/main.tf
+**Source:** 04-deploy/terraform/modules/compliance-db/main.tf
 
 ---
 
@@ -144,7 +144,7 @@ All GTCX data for the ${JURISDICTION} jurisdiction is stored in the AWS region d
 
 The jurisdiction configuration is defined in:
 \`\`\`
-04-ship/terraform/modules/compliance-db/main.tf — local.jurisdiction_config
+04-deploy/terraform/modules/compliance-db/main.tf — local.jurisdiction_config
 \`\`\`
 
 To verify: \`terraform plan -var jurisdiction=${JURISDICTION}\` will show the resolved region in the plan output.
@@ -164,7 +164,7 @@ generate_encryption_statement() {
 # Encryption Statement
 
 **Generated:** ${DATE}
-**Source:** 01-docs/10-compliance/policies/A10-cryptography.md, 04-ship/terraform/modules/compliance-db/main.tf
+**Source:** 01-docs/10-compliance/policies/A10-cryptography.md, 04-deploy/terraform/modules/compliance-db/main.tf
 
 ---
 
@@ -220,7 +220,7 @@ generate_kyc_retention() {
 # KYC Retention Schedule
 
 **Generated:** ${DATE}
-**Source:** 04-ship/terraform/modules/compliance-db/main.tf — local.jurisdiction_config
+**Source:** 04-deploy/terraform/modules/compliance-db/main.tf — local.jurisdiction_config
 
 ---
 
@@ -469,7 +469,7 @@ copy_if_exists() {
   fi
 }
 
-REPORTS_DIR="${REPO_ROOT}/04-ship/security/reports"
+REPORTS_DIR="${REPO_ROOT}/04-deploy/security/reports"
 
 copy_if_exists "${REPORTS_DIR}/zap-report.html"     "${OUTPUT_DIR}/appendices/zap-report.html"
 copy_if_exists "${REPORTS_DIR}/trivy-report.sarif"   "${OUTPUT_DIR}/appendices/trivy-report.sarif"
@@ -522,7 +522,7 @@ echo "  [ ] 05 — Replace sample audit trail with real sanitized records from a
 echo "  [ ] 07 — Set effective date and obtain board sign-off on IRP"
 echo "  [ ] 09 — Commission and attach independent penetration test report"
 echo "  [ ] Appendix — Generate real SBOM: npx @cyclonedx/cyclonedx-npm --output-file sbom.json"
-echo "  [ ] Appendix — Run ZAP scan and place report at 04-ship/security/reports/zap-report.html"
+echo "  [ ] Appendix — Run ZAP scan and place report at 04-deploy/security/reports/zap-report.html"
 echo "  [ ] Appendix — Run Trivy scan: trivy fs --format sarif -o trivy-report.sarif ."
 echo "  [ ] Appendix — Run CodeQL analysis via GitHub Actions and download SARIF"
 echo "  [ ] Review all 10 documents for accuracy before submission"

@@ -207,7 +207,7 @@ Feature Branch ──→ PR ──→ main ──→ Staging (auto) ──→ Pr
 | ------------------------ | --------------------------------------------------------------------------------------------------------------- |
 | Infrastructure isolation | Each jurisdiction (Ghana, Kenya) has isolated Terraform state and independent Kubernetes namespaces             |
 | Data sovereignty         | Jurisdiction-specific secrets, database instances, HSM keys; no cross-jurisdiction data flow for sovereign data |
-| Configuration            | Jurisdiction-specific values in `04-ship/terraform/environments/{jurisdiction}/`                                |
+| Configuration            | Jurisdiction-specific values in `04-deploy/terraform/environments/{jurisdiction}/`                                |
 | Edge sites               | Provisioned via Ansible playbooks; government data center specifications per jurisdiction                       |
 | Compliance               | Jurisdiction-specific compliance checks in deployment pipeline (e.g., data residency verification)              |
 
@@ -220,4 +220,4 @@ Feature Branch ──→ PR ──→ main ──→ Staging (auto) ──→ Pr
 - [Infrastructure Architecture](../architecture/infrastructure-architecture-overview.md) -- Kubernetes cluster configuration, Terraform structure, and edge deployment topology
 - [Security Policies](../security/security-policy.md) -- Security scanning requirements and vulnerability management policy
 - [Observability Framework](./observability-framework.md) -- Metrics and alerting that drive canary health checks
-- Terraform configurations: `gtcx-infrastructure/04-ship/terraform/`
+- Terraform configurations: `gtcx-infrastructure/04-deploy/terraform/`

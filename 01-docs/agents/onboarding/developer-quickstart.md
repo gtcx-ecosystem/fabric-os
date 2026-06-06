@@ -35,10 +35,10 @@ cd gtcx-infrastructure
 pnpm install
 
 # Start all local infrastructure services
-docker compose -f 04-ship/docker/docker-compose.infra.yml up -d
+docker compose -f 04-deploy/docker/docker-compose.infra.yml up -d
 
 # Confirm everything is up
-docker compose -f 04-ship/docker/docker-compose.infra.yml ps
+docker compose -f 04-deploy/docker/docker-compose.infra.yml ps
 ```
 
 That gives you two PostgreSQL instances, Redis, Prometheus, Grafana, Jaeger, and Loki — the full local observability and data stack.
@@ -50,7 +50,7 @@ That gives you two PostgreSQL instances, Redis, Prometheus, Grafana, Jaeger, and
 `gtcx-infrastructure` owns all deployment, IaC, and operational tooling for the GTCX ecosystem. It contains no application logic. It orchestrates, deploys, and operates services from other repos.
 
 ```
-04-ship/
+04-deploy/
   docker/          Docker images + Compose configs for local and test environments
   kubernetes/      K8s manifests organized with Kustomize (base + per-env overlays)
   terraform/       AWS IaC modules — VPC, dual RDS (operational + audit)
@@ -68,7 +68,7 @@ Before changing any live infrastructure, always run a plan:
 
 ```bash
 # Navigate to the environment you want to inspect
-cd 04-ship/terraform/environments/{env}
+cd 04-deploy/terraform/environments/{env}
 
 # Initialize (first time only)
 terraform init
@@ -88,14 +88,14 @@ No automated apply runs without human review. See [ci-cd.md](../../operations/ci
 pnpm lint
 
 # Preview what would change (dry run)
-kubectl diff -k 04-ship/kubernetes/overlays/development
+kubectl diff -k 04-deploy/kubernetes/overlays/development
 
 # Apply to development namespace
-kubectl apply -k 04-ship/kubernetes/overlays/development
+kubectl apply -k 04-deploy/kubernetes/overlays/development
 
 # Staging and production require human approval — use deploy.sh
-./04-ship/03-platform/scripts/deploy.sh staging
-./04-ship/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-123
+./04-deploy/03-platform/scripts/deploy.sh staging
+./04-deploy/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-123
 ```
 
 ---
@@ -104,15 +104,15 @@ kubectl apply -k 04-ship/kubernetes/overlays/development
 
 ```bash
 # Development — autonomous, no approval required
-./04-ship/03-platform/scripts/migrate.sh development
+./04-deploy/03-platform/scripts/migrate.sh development
 
 # Staging — always dry-run first
-./04-ship/03-platform/scripts/migrate.sh staging --dry-run
-./04-ship/03-platform/scripts/migrate.sh staging
+./04-deploy/03-platform/scripts/migrate.sh staging --dry-run
+./04-deploy/03-platform/scripts/migrate.sh staging
 
 # Production — requires explicit approval
-./04-ship/03-platform/scripts/migrate.sh production --dry-run
-# After review: ./04-ship/03-platform/scripts/migrate.sh production
+./04-deploy/03-platform/scripts/migrate.sh production --dry-run
+# After review: ./04-deploy/03-platform/scripts/migrate.sh production
 ```
 
 ---

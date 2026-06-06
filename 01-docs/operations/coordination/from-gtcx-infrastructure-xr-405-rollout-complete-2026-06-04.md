@@ -16,7 +16,7 @@ item: XR-405
    - `SIGNING_KEY_PROVIDER=kms`
    - `AWS_KMS_KEY_ID=alias/gtcx-production-sovereign-gh-bog`
    - `AWS_REGION=af-south-1`
-   - File: `04-ship/kubernetes/overlays/staging/patches/sovereign-staging-env.yaml`
+   - File: `04-deploy/kubernetes/overlays/staging/patches/sovereign-staging-env.yaml`
 
 2. **Staging IRSA role created** (`gtcx-staging-platforms-irsa`)
    - Trust policy: `gtcx-staging:gtcx-platform-staging` → staging EKS OIDC provider
@@ -25,7 +25,7 @@ item: XR-405
 
 3. **ServiceAccount annotation fixed** (`6646bf9`)
    - `gtcx-platform-staging` SA now points to staging IRSA role
-   - File: `04-ship/kubernetes/overlays/staging/patches/platform-sa-irsa.yaml`
+   - File: `04-deploy/kubernetes/overlays/staging/patches/platform-sa-irsa.yaml`
 
 4. **Sovereign pod rolled out**
    - Pod: `sovereign-staging-888f9bc4d-7h4rk` — Running, 0 restarts

@@ -18,7 +18,7 @@ review_cycle: on-change
 | Component                    | Wave 1                                                                                    | Notes                                            |
 | ---------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------ |
 | Staging EKS / ingress / IRSA | In scope                                                                                  | Prerequisites per protocols wave README          |
-| K8s pen-test overlay         | [`04-ship/kubernetes/overlays/pen-test/`](../../../04-ship/kubernetes/overlays/pen-test/) | Isolated targets when needed                     |
+| K8s pen-test overlay         | [`04-deploy/kubernetes/overlays/pen-test/`](../../../04-deploy/kubernetes/overlays/pen-test/) | Isolated targets when needed                     |
 | Legacy RFP scope             | [`regulatory/pentest-scope-rfp.md`](../regulatory/pentest-scope-rfp.md)                   | Infra-specific scope; canonical RFP in protocols |
 
 ## Evidence in this repo

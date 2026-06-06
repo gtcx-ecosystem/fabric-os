@@ -10,5 +10,5 @@ This directory contains evidence from live RDS point-in-time recovery (PITR) exe
 
 ## See also
 
-- [`04-ship/03-platform/scripts/rds-live-restore.sh`](../../../../04-ship/03-platform/scripts/rds-live-restore.sh) — Live restore script
+- [`04-deploy/03-platform/scripts/rds-live-restore.sh`](../../../../04-deploy/03-platform/scripts/rds-live-restore.sh) — Live restore script
 - [`01-docs/05-audit/execution-roadmap.md`](../../execution-roadmap.md) — S3-07 story tracking

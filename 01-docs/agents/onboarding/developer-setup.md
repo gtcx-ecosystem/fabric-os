@@ -53,23 +53,23 @@ pnpm build
 pnpm lint && pnpm typecheck
 ```
 
-There is no `.env.example` at the repo root — environment configuration is managed per-infrastructure component. See `04-ship/terraform/environments/template/` for Terraform variable templates.
+There is no `.env.example` at the repo root — environment configuration is managed per-infrastructure component. See `04-deploy/terraform/environments/template/` for Terraform variable templates.
 
 ---
 
 ## Starting Local Infrastructure Services
 
-All local backing services (databases, observability stack) are defined in `04-ship/docker/docker-compose.infra.yml`:
+All local backing services (databases, observability stack) are defined in `04-deploy/docker/docker-compose.infra.yml`:
 
 ```bash
 # Start infrastructure services only (PostgreSQL, Redis, Prometheus, Grafana, Jaeger, Loki)
-docker compose -f 04-ship/docker/docker-compose.infra.yml up -d
+docker compose -f 04-deploy/docker/docker-compose.infra.yml up -d
 
 # Verify all services are healthy
-docker compose -f 04-ship/docker/docker-compose.infra.yml ps
+docker compose -f 04-deploy/docker/docker-compose.infra.yml ps
 
 # Start full local dev stack (application services + infrastructure)
-docker compose -f 04-ship/docker/docker-compose.dev.yml up -d
+docker compose -f 04-deploy/docker/docker-compose.dev.yml up -d
 ```
 
 | Service            | Port(s) | Credentials                          |
@@ -98,13 +98,13 @@ pnpm typecheck
 node 03-platform/tools/scripts/security-status.js
 
 # Bootstrap a new environment
-./04-ship/03-platform/scripts/setup.sh
+./04-deploy/03-platform/scripts/setup.sh
 
 # Run database migrations (development — autonomous)
-./04-ship/03-platform/scripts/migrate.sh development
+./04-deploy/03-platform/scripts/migrate.sh development
 
 # Run migrations with dry-run (staging/production — always dry-run first)
-./04-ship/03-platform/scripts/migrate.sh staging --dry-run
+./04-deploy/03-platform/scripts/migrate.sh staging --dry-run
 ```
 
 ---
@@ -116,7 +116,7 @@ This repo is IaC and tooling — it does not run a long-lived application proces
 For Terraform work, copy the environment template:
 
 ```bash
-cp 04-ship/terraform/environments/template/ 04-ship/terraform/environments/my-env
+cp 04-deploy/terraform/environments/template/ 04-deploy/terraform/environments/my-env
 # Edit terraform.tfvars with environment-specific values
 ```
 
@@ -169,7 +169,7 @@ Confirm your setup is working:
 - [ ] Repository cloned and `pnpm install` ran without errors
 - [ ] `pnpm build` passes
 - [ ] `pnpm lint && pnpm typecheck` passes
-- [ ] `docker compose -f 04-ship/docker/docker-compose.infra.yml up -d` starts all services
+- [ ] `docker compose -f 04-deploy/docker/docker-compose.infra.yml up -d` starts all services
 - [ ] `docker compose ps` shows all containers healthy
 - [ ] PostgreSQL reachable on port 5432: `psql -h localhost -U gtcx -d gtcx_development`
 - [ ] Grafana accessible at http://localhost:3030

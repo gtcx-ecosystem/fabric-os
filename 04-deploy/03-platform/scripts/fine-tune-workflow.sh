@@ -5,10 +5,10 @@
 # Safe operator path for manual Argo workflow runs and fast cron suspension.
 #
 # Usage:
-#   ./04-ship/03-platform/scripts/fine-tune-workflow.sh status
-#   ./04-ship/03-platform/scripts/fine-tune-workflow.sh trigger --environment=testnet-pilot --dataset-version=2026-05-06
-#   ./04-ship/03-platform/scripts/fine-tune-workflow.sh suspend
-#   ./04-ship/03-platform/scripts/fine-tune-workflow.sh resume
+#   ./04-deploy/03-platform/scripts/fine-tune-workflow.sh status
+#   ./04-deploy/03-platform/scripts/fine-tune-workflow.sh trigger --environment=testnet-pilot --dataset-version=2026-05-06
+#   ./04-deploy/03-platform/scripts/fine-tune-workflow.sh suspend
+#   ./04-deploy/03-platform/scripts/fine-tune-workflow.sh resume
 #
 # Assumptions:
 #   - kubectl is already configured for the target cluster

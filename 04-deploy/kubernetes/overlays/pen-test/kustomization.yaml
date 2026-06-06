@@ -5,7 +5,7 @@
 #   - Namespace: gtcx-pen-test
 #   - Audit chain isolated to gtcx.audit.pen-test.> JetStream subject
 #   - NO writes to the production WORM bucket — separate bucket for the run
-#   - Anonymized seed data only (loaded by 04-ship/migrations/seed-pentest.sql)
+#   - Anonymized seed data only (loaded by 04-deploy/migrations/seed-pentest.sql)
 #   - Resources are intentionally bounded so test traffic cannot consume
 #     production capacity if the namespace boundary leaks
 # =============================================================================

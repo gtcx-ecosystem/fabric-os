@@ -37,7 +37,7 @@ autonomy_level: 'permissioned'
 
 ### Kubernetes Overlays
 
-Each environment has a Kustomize overlay at `04-ship/kubernetes/overlays/{env}/`:
+Each environment has a Kustomize overlay at `04-deploy/kubernetes/overlays/{env}/`:
 
 | Overlay       | Image Strategy      | Resource Limits | Security Additions                                                  |
 | ------------- | ------------------- | --------------- | ------------------------------------------------------------------- |
@@ -47,7 +47,7 @@ Each environment has a Kustomize overlay at `04-ship/kubernetes/overlays/{env}/`
 
 ### Terraform Variables
 
-Each environment directory (`04-ship/terraform/environments/{env}/`) is a copy of `environments/template/`. Fill in `terraform.tfvars` with environment-specific values before running `terraform plan`.
+Each environment directory (`04-deploy/terraform/environments/{env}/`) is a copy of `environments/template/`. Fill in `terraform.tfvars` with environment-specific values before running `terraform plan`.
 
 ### Database Sizing
 
@@ -63,7 +63,7 @@ Each environment directory (`04-ship/terraform/environments/{env}/`) is a copy o
 
 ### Kubernetes ConfigMap Keys
 
-The base configmap (`04-ship/kubernetes/base/configmaps/base-config.yaml`) provides:
+The base configmap (`04-deploy/kubernetes/base/configmaps/base-config.yaml`) provides:
 
 | Key               | Value (base)  | Override in overlay? |
 | ----------------- | ------------- | -------------------- |
@@ -73,7 +73,7 @@ The base configmap (`04-ship/kubernetes/base/configmaps/base-config.yaml`) provi
 
 ### Environment Variables for Scripts
 
-Scripts in `04-ship/03-platform/scripts/` and the Node TypeScript tooling use:
+Scripts in `04-deploy/03-platform/scripts/` and the Node TypeScript tooling use:
 
 | Variable       | Description                            | Dev              | Staging              | Production              |
 | -------------- | -------------------------------------- | ---------------- | -------------------- | ----------------------- |
@@ -147,23 +147,23 @@ cd gtcx-infrastructure
 pnpm install
 
 # Start local infrastructure services
-docker compose -f 04-ship/docker/docker-compose.infra.yml up -d
+docker compose -f 04-deploy/docker/docker-compose.infra.yml up -d
 
 # Verify all services are running
-docker compose -f 04-ship/docker/docker-compose.infra.yml ps
+docker compose -f 04-deploy/docker/docker-compose.infra.yml ps
 ```
 
 ### New Environment (Staging/Production)
 
 ```bash
 # Copy the Terraform environment template
-cp -r 04-ship/terraform/environments/template 04-ship/terraform/environments/{env}
+cp -r 04-deploy/terraform/environments/template 04-deploy/terraform/environments/{env}
 
 # Fill in environment-specific variables
-vi 04-ship/terraform/environments/{env}/terraform.tfvars
+vi 04-deploy/terraform/environments/{env}/terraform.tfvars
 
 # Initialize and plan (never apply without reviewing the plan)
-cd 04-ship/terraform/environments/{env}
+cd 04-deploy/terraform/environments/{env}
 terraform init
 terraform plan
 
@@ -175,17 +175,17 @@ terraform apply
 
 ```bash
 # Create the overlay directory if it doesn't exist
-mkdir -p 04-ship/kubernetes/overlays/{env}
+mkdir -p 04-deploy/kubernetes/overlays/{env}
 
 # Verify what would change before applying
-kubectl diff -k 04-ship/kubernetes/overlays/{env}
+kubectl diff -k 04-deploy/kubernetes/overlays/{env}
 
 # Apply (development only — autonomous)
-kubectl apply -k 04-ship/kubernetes/overlays/development
+kubectl apply -k 04-deploy/kubernetes/overlays/development
 
 # Staging and production use deploy.sh
-./04-ship/03-platform/scripts/deploy.sh staging
-./04-ship/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-NNN
+./04-deploy/03-platform/scripts/deploy.sh staging
+./04-deploy/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-NNN
 ```
 
 ### Environment Health Checks

@@ -53,7 +53,7 @@ Notes:
   - Repeat --image, --sbom, and --scan to add multiple entries.
   - Repeat --gate to record validation outcomes that have already completed.
   - The command writes signed NDJSON and verifier output for offline audit.
-  - Output defaults to 04-ship/security/reports/release-evidence/<environment>/<utc-timestamp>/`);
+  - Output defaults to 04-deploy/security/reports/release-evidence/<environment>/<utc-timestamp>/`);
 }
 
 function parseAssignment(value, flagName) {

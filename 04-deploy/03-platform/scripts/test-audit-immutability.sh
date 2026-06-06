@@ -103,7 +103,7 @@ if ! (
     DATABASE_URL="${OP_DSN}" \
     AUDIT_DATABASE_URL="${AUDIT_ADMIN_DSN}" \
     AUDIT_WRITER_DATABASE_URL="${AUDIT_WRITER_DSN}" \
-    bash 04-ship/03-platform/scripts/migrate.sh staging --dry-run
+    bash 04-deploy/03-platform/scripts/migrate.sh staging --dry-run
 ) >"${SUCCESS_LOG}" 2>&1; then
     cat "${SUCCESS_LOG}" >&2
     log_error "migrate.sh should pass when the audit writer is append-only"
@@ -120,7 +120,7 @@ set +e
     DATABASE_URL="${OP_DSN}" \
     AUDIT_DATABASE_URL="${AUDIT_ADMIN_DSN}" \
     AUDIT_WRITER_DATABASE_URL="${AUDIT_WRITER_DSN}" \
-    bash 04-ship/03-platform/scripts/migrate.sh staging --dry-run
+    bash 04-deploy/03-platform/scripts/migrate.sh staging --dry-run
 ) >"${FAILURE_LOG}" 2>&1
 STATUS=$?
 set -e

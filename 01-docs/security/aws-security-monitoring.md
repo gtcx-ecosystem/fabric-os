@@ -113,7 +113,7 @@ aws iam create-service-linked-role --aws-service-name config.amazonaws.com
 | `mfa-enabled-for-iam-console-access` | AWS Managed | Account     | ✅ COMPLIANT |
 | `rds-instance-public-access-check`   | AWS Managed | All regions | ✅ COMPLIANT |
 
-**Terraform:** `04-ship/terraform/modules/config-rules/main.tf`
+**Terraform:** `04-deploy/terraform/modules/config-rules/main.tf`
 
 ```bash
 # List all rules

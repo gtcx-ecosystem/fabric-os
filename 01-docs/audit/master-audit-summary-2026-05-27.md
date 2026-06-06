@@ -126,7 +126,7 @@ Remaining gaps:
 | P0       | Fix replay-protection lint failures.                                                  | `pnpm lint` passes.                                          |
 | P0       | Fix docs-site Starlight `social` config and missing Astro check dependency.           | `pnpm build` passes.                                         |
 | P0       | Upgrade or pin Astro to clear current vulnerabilities.                                | `pnpm audit` has no Astro findings.                          |
-| P0       | Run Terraform fmt on failing files.                                                   | `terraform fmt -check -recursive 04-ship/terraform/` passes. |
+| P0       | Run Terraform fmt on failing files.                                                   | `terraform fmt -check -recursive 04-deploy/terraform/` passes. |
 | P0       | Fix or exclude invalid `01-docs/05-audit/agile/sprints/current.md` frontmatter.       | `pnpm test` and `pnpm quality:governance:check` pass.        |
 | P0       | Run Prettier on flagged files or document generated snapshot exception if applicable. | `pnpm format:check` passes.                                  |
 
@@ -225,7 +225,7 @@ The sprint remediation pass completed the repo-controlled score-unlocking items:
 - `pnpm test` passes.
 - `pnpm format:check` passes.
 - `pnpm audit` reports no known vulnerabilities.
-- `terraform fmt -check -recursive 04-ship/terraform/` passes.
+- `terraform fmt -check -recursive 04-deploy/terraform/` passes.
 - `gitleaks detect --no-git --redact --verbose` passes.
 - Production and pen-test Kustomize overlays render.
 - `/audit/bundles` and `/audit/query` now use the shared budget/QPS gate with tests.

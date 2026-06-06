@@ -24,7 +24,7 @@ k8s-gtcxproductionapi-527ebd7716-1025454332.af-south-1.elb.amazonaws.com
 export CLOUDFLARE_API_TOKEN="<zone-dns-edit>"
 export ALB_DNS="k8s-gtcxproductionapi-527ebd7716-1025454332.af-south-1.elb.amazonaws.com"
 export CLOUDFLARE_COMPLIANCE_HOST=terminal
-./04-ship/03-platform/scripts/attach-compliance-os-prod-domain.sh
+./04-deploy/03-platform/scripts/attach-compliance-os-prod-domain.sh
 ```
 
 Use **DNS only** (proxied=false) so TLS terminates at the ALB.

@@ -6,7 +6,7 @@
 # Produces structured evidence with RTO/RPO measurements.
 #
 # Usage:
-#   ./04-ship/03-platform/scripts/dr-test.sh [testnet|staging]
+#   ./04-deploy/03-platform/scripts/dr-test.sh [testnet|staging]
 #
 # Prerequisites:
 #   - docker compose running (docker-compose.dev.yml)

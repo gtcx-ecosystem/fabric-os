@@ -49,7 +49,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 TARGET_REGION="af-south-1"
 STATE_BUCKET="gtcx-terraform-state-zimbabwe-pilot"
 LOCK_TABLE="gtcx-terraform-locks-zimbabwe-pilot"
-ENV_DIR="${PROJECT_ROOT}/04-ship/terraform/environments/zimbabwe-pilot"
+ENV_DIR="${PROJECT_ROOT}/04-deploy/terraform/environments/zimbabwe-pilot"
 
 SKIP_REGION=false
 SKIP_OIDC=false
@@ -306,7 +306,7 @@ echo "     aws eks update-kubeconfig --name gtcx-zimbabwe-pilot --region ${TARGE
 echo ""
 echo "  4. Deploy services:"
 echo "     cd ${PROJECT_ROOT}"
-echo "     ./04-ship/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-001"
+echo "     ./04-deploy/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-001"
 echo ""
 echo "  Estimated monthly cost: ~\$325 (pilot config)"
 echo "  Estimated terraform apply time: ~15-20 minutes"

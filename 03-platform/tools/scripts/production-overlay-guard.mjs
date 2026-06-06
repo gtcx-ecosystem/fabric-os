@@ -3,7 +3,7 @@
  * @fileoverview Guard against committing a version-shaped (`v1.0.0`,
  * `1.2.3`, `latest`) tag in production overlay image references.
  *
- * Production deploys go through `04-ship/03-platform/scripts/deploy.sh`, which
+ * Production deploys go through `04-deploy/03-platform/scripts/deploy.sh`, which
  * rewrites the kustomization at runtime via `kustomize edit set image`
  * to inject the real ECR URI + 40-char commit SHA. The committed file
  * must contain a placeholder tag so that a manual
@@ -26,7 +26,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
-const TARGET = join(REPO_ROOT, '04-ship', 'kubernetes', 'overlays', 'production', 'kustomization.yaml');
+const TARGET = join(REPO_ROOT, '04-deploy', 'kubernetes', 'overlays', 'production', 'kustomization.yaml');
 
 export const SHA_RX = /^[0-9a-f]{40}$/;
 export const PLACEHOLDER_RX = /^PLACEHOLDER-RUN-DEPLOY-SH$/;

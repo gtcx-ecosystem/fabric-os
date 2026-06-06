@@ -2,7 +2,7 @@
  * Deployment gating logic.
  *
  * Encapsulates safety-critical decisions that were previously embedded in
- * 04-ship/03-platform/scripts/deploy.sh.  Shell should handle I/O; this module handles
+ * 04-deploy/03-platform/scripts/deploy.sh.  Shell should handle I/O; this module handles
  * policy decisions.
  */
 

@@ -30,7 +30,7 @@ GTCX uses a layered secrets strategy:
 
 ### Base Layer (placeholders)
 
-`04-ship/kubernetes/base/kustomization.yaml` contains a `secretGenerator` with placeholder literals:
+`04-deploy/kubernetes/base/kustomization.yaml` contains a `secretGenerator` with placeholder literals:
 
 ```yaml
 secretGenerator:

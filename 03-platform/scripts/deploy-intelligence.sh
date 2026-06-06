@@ -19,7 +19,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INFRA_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 INTELLIGENCE_ROOT="$(cd "$SCRIPT_DIR/../../gtcx-intelligence" && pwd)"
-K8S_DIR="$INFRA_ROOT/04-ship/kubernetes/overlays/production/intelligence"
+K8S_DIR="$INFRA_ROOT/04-deploy/kubernetes/overlays/production/intelligence"
 
 # Defaults
 ENV=""

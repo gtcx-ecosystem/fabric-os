@@ -23,7 +23,7 @@ autonomy_level: 'permissioned'
 ## Full Stack
 
 ```
-04-ship/
+04-deploy/
   docker/                   Docker images and Compose configs
     Dockerfile.platforms      Platform service image (AGX and related apps)
     Dockerfile.protocols      Unified protocols service image
@@ -75,7 +75,7 @@ autonomy_level: 'permissioned'
 
 ## Local Infrastructure Services
 
-Defined in `04-ship/docker/docker-compose.infra.yml` (compose name: `gtcx-infra`):
+Defined in `04-deploy/docker/docker-compose.infra.yml` (compose name: `gtcx-infra`):
 
 | Service          | Image                         | Port(s)                                        | Purpose                    |
 | ---------------- | ----------------------------- | ---------------------------------------------- | -------------------------- |
@@ -102,7 +102,7 @@ The audit database is write-once. `DROP` and `TRUNCATE` are never run against it
 
 ## Kubernetes Architecture
 
-### Base Resources (`04-ship/kubernetes/base/`)
+### Base Resources (`04-deploy/kubernetes/base/`)
 
 - `namespace.yaml` — namespace definition
 - `configmaps/base-config.yaml` — shared configuration
@@ -116,7 +116,7 @@ Images managed in the main stack: `gtcx/agx`, `gtcx/protocols` — tags set per 
 
 Secrets: `gtcx-secrets` (DATABASE_URL, SECRET_KEY_BASE) — base contains placeholders; overlays must override before deployment. The secret must exist in the namespace before `kubectl apply`.
 
-Intelligence is deployed separately in `04-ship/kubernetes/overlays/production/intelligence` under the `intelligence` namespace.
+Intelligence is deployed separately in `04-deploy/kubernetes/overlays/production/intelligence` under the `intelligence` namespace.
 
 ### Environment Overlays
 
@@ -132,7 +132,7 @@ Production overlay is security-sensitive: `network-policies.yaml` (deny-all + ex
 
 ## Terraform Architecture
 
-### Module: `04-ship/terraform/modules/database/`
+### Module: `04-deploy/terraform/modules/database/`
 
 Provisions two RDS PostgreSQL 16.1 instances per environment:
 
@@ -151,7 +151,7 @@ Security configuration:
 - CloudWatch logs: `postgresql`, `upgrade`
 - Performance Insights enabled
 
-### Module: `04-ship/terraform/modules/vpc/`
+### Module: `04-deploy/terraform/modules/vpc/`
 
 Multi-cloud VPC and network isolation. Used by the database module and cluster networking.
 
@@ -175,28 +175,28 @@ Production intelligence is managed separately:
 
 ```bash
 # Start local infrastructure only (databases + observability)
-docker compose -f 04-ship/docker/docker-compose.infra.yml up -d
+docker compose -f 04-deploy/docker/docker-compose.infra.yml up -d
 
 # Start full local dev stack (application + infrastructure)
-docker compose -f 04-ship/docker/docker-compose.dev.yml up -d
+docker compose -f 04-deploy/docker/docker-compose.dev.yml up -d
 
 # Deploy to staging
-./04-ship/03-platform/scripts/deploy.sh staging
+./04-deploy/03-platform/scripts/deploy.sh staging
 
 # Deploy to production (requires ticket)
-./04-ship/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-123
+./04-deploy/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-123
 
 # Roll back production
-./04-ship/03-platform/scripts/deploy.sh production --rollback
+./04-deploy/03-platform/scripts/deploy.sh production --rollback
 
 # Run migrations (development only — autonomously)
-./04-ship/03-platform/scripts/migrate.sh development
+./04-deploy/03-platform/scripts/migrate.sh development
 
 # Run migrations with dry-run
-./04-ship/03-platform/scripts/migrate.sh staging --dry-run
+./04-deploy/03-platform/scripts/migrate.sh staging --dry-run
 
 # Terraform plan (read-only, requires human to apply)
-cd 04-ship/terraform/environments/{env} && terraform plan
+cd 04-deploy/terraform/environments/{env} && terraform plan
 
 # Security scan
 node 03-platform/tools/scripts/security-status.js

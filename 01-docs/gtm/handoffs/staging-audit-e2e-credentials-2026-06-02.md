@@ -79,12 +79,12 @@ curl -s -X POST https://api.staging.gtcx.trade/audit/query \
 
 ## Files Modified
 
-- `04-ship/kubernetes/overlays/staging/ingress.yaml` — added `/v1/tradepass` route
-- `04-ship/kubernetes/base/kustomization.yaml` — added did-resolver resources
-- `04-ship/kubernetes/base/services/did-resolver/*` — new static DID resolver
-- `04-ship/terraform/modules/waf/main.tf` — added `AllowAuditAndTradePassEndpoints` rule
-- `04-ship/terraform/environments/staging/main.tf` — enabled `allow_audit_paths`
-- `04-ship/terraform/modules/alb/main.tf` — added `RemoveListenerCertificates` permission
+- `04-deploy/kubernetes/overlays/staging/ingress.yaml` — added `/v1/tradepass` route
+- `04-deploy/kubernetes/base/kustomization.yaml` — added did-resolver resources
+- `04-deploy/kubernetes/base/services/did-resolver/*` — new static DID resolver
+- `04-deploy/terraform/modules/waf/main.tf` — added `AllowAuditAndTradePassEndpoints` rule
+- `04-deploy/terraform/environments/staging/main.tf` — enabled `allow_audit_paths`
+- `04-deploy/terraform/modules/alb/main.tf` — added `RemoveListenerCertificates` permission
 
 ---
 

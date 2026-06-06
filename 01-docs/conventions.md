@@ -46,7 +46,7 @@ pnpm agent:sync
 docker build -t audit-flush:latest 03-platform/tools/audit-flush/
 
 # Terraform (staging)
-cd 04-ship/terraform/environments/staging && terraform plan -var-file=terraform.tfvars
+cd 04-deploy/terraform/environments/staging && terraform plan -var-file=terraform.tfvars
 ```
 
 ## Audits (cross-repo)
@@ -82,7 +82,7 @@ The audit registry is provider-agnostic — the same prompts work for Claude, Co
 | Staging vs production keys    | `gtcx-agentic` | `01-docs/operators/vault-environments.md`                        |
 | Ecosystem coordination        | `baseline-os`  | `workstream/coordination/ECOSYSTEM-COST-ROUTER-2026-06-03.md` |
 
-**Do not** use `baseline-os/04-ship/docker/.env.staging` for production vault work.
+**Do not** use `baseline-os/04-deploy/docker/.env.staging` for production vault work.
 
 ## Execute roadmap (any LLM, any repo)
 

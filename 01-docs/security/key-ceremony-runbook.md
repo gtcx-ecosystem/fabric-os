@@ -39,7 +39,7 @@ Step 1: Verify identity of all participants
         - Record names, roles, timestamps in ceremony log
 
 Step 2: Custodian A initiates Terraform apply
-        $ cd 04-ship/terraform/environments/{env}
+        $ cd 04-deploy/terraform/environments/{env}
         $ terraform plan -target=module.kms_signing -out=kms.tfplan
         $ terraform apply kms.tfplan
 
@@ -197,7 +197,7 @@ Step 1: Verify identity of all participants
         - Record names, roles, timestamps in ceremony log
 
 Step 2: Review Terraform plan for target authority
-        $ cd 04-ship/terraform/environments/production
+        $ cd 04-deploy/terraform/environments/production
         $ terraform plan -target=module.kms_sovereign_signing -out=sovereign.tfplan
         $ # Confirm only the target authority key is added
 

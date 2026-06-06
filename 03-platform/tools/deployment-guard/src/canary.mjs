@@ -3,7 +3,7 @@
  *
  * Encapsulates the decision rules that determine whether a canary deployment
  * should be promoted, held, or rolled back.  Previously embedded in
- * 04-ship/03-platform/scripts/deploy.sh canary_deploy().
+ * 04-deploy/03-platform/scripts/deploy.sh canary_deploy().
  */
 
 /**

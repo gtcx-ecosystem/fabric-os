@@ -5,7 +5,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 
 const repoRoot = process.cwd();
-const infraScriptsDir = path.join(repoRoot, '04-ship', '03-platform', 'scripts');
+const infraScriptsDir = path.join(repoRoot, '04-deploy', '03-platform', 'scripts');
 const controlPlaneDir = path.join(repoRoot, '03-platform', 'tools', 'control-plane');
 
 const scriptMap = {
@@ -101,7 +101,7 @@ function showHelp() {
   gtcx-ctl validate --ci [--environment=<env>]
 
 Notes:
-  - This is a bounded operator interface over 04-ship/scripts.
+  - This is a bounded operator interface over 04-deploy/scripts.
   - It validates command shape before dispatching to the underlying script.
   - Use --help with the underlying scripts for full low-level flags.`);
 }

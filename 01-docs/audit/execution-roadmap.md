@@ -59,7 +59,7 @@ Prior phase **Close-the-gap + ZWCMP unblock** (2026-05-31 → 2026-06-21) — en
 | ----- | -------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------- |
 | S4-04 | `deployment-guard` typecheck — JSDoc/param alignment           | **done** | `pnpm typecheck` exit 0 @ reconcile                                                                      |
 | S4-05 | `@gtcx/audit-signer` + compliance-gateway lint debt            | **done** | `pnpm lint` exit 0 @ reconcile                                                                           |
-| S4-07 | `validate.sh quick` green (shellcheck + tests + docs-standard) | **done** | `bash 04-ship/03-platform/scripts/validate.sh quick` exit 0 @ 2026-06-05 (S4-08 unblocked docs-standard) |
+| S4-07 | `validate.sh quick` green (shellcheck + tests + docs-standard) | **done** | `bash 04-deploy/03-platform/scripts/validate.sh quick` exit 0 @ 2026-06-05 (S4-08 unblocked docs-standard) |
 | S4-08 | Docs-standard drift — agent README stubs + cross-repo links    | **done** | `node 03-platform/tools/scripts/docs-standard-validator.mjs` exit 0; `validate-all` 55/55 @ 2026-06-05   |
 | S4-06 | README gaps per repo-hygiene audit                             | **done** | 15/15 workspace READMEs; 5 dirs remain (see `repo-hygiene-2026-06-05.md` P1) @ 8.8 overall               |
 
@@ -312,7 +312,7 @@ pnpm format:check
 
 ### S1-08: Validate alert `runbook_url` anchors
 
-**Files:** `03-platform/tools/scripts/alerts-add-runbook-url.mjs`, `01-docs/04-ops/runbooks/alerts.md`, `04-ship/monitoring/alerts/*.yml`
+**Files:** `03-platform/tools/scripts/alerts-add-runbook-url.mjs`, `01-docs/04-ops/runbooks/alerts.md`, `04-deploy/monitoring/alerts/*.yml`
 
 F7. The annotator confirms 44 of 44 alerts have `runbook_url` annotations but
 31 of 44 anchors do not exist in the target runbook. Extend the validator to
@@ -490,7 +490,7 @@ or PR comment.
 **ANSWERED 2026-05-31: WIRE BOTH.**
 
 - failClosed → wire into the 4 documented soft-import sites (audit-flush s3-uploader, compliance-gateway schemas + system-prompt + evidence-renderer). ~1 day. Removes the silent-failure pattern that hid the audit-flush S3 bug for weeks; keeping the helper unwired means the next contributor with the same pattern has no canonical pattern to reach for.
-- budget-store → wire into `checkBudget` / `recordSpend` / `getSpend`. Redis already provisioned at `04-ship/kubernetes/base/services/redis.yaml` (consumed by replay-guard) — no net-new infra. Under HPA 1→8 pods, per-pod Map state silently multiplies a tenant's per-principal QPS budget by replica count, which is a real correctness bug, not theoretical. ~2 days.
+- budget-store → wire into `checkBudget` / `recordSpend` / `getSpend`. Redis already provisioned at `04-deploy/kubernetes/base/services/redis.yaml` (consumed by replay-guard) — no net-new infra. Under HPA 1→8 pods, per-pod Map state silently multiplies a tenant's per-principal QPS budget by replica count, which is a real correctness bug, not theoretical. ~2 days.
 - Net Sprint 2 impact: S2-01 and S2-02 become "in_progress" decisions with concrete acceptance commands rather than wire-or-delete decisions.
 
 **Q5 — Pen-test before or after Sprint 1 fixes?**

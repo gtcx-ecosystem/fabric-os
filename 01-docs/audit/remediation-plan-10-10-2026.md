@@ -132,4 +132,4 @@ autonomy_level: 'permissioned'
 - `03-platform/tools/replay-protection/tests/production-fail-closed.test.mjs` — Production 503 test
 - `03-platform/tools/scripts/kyverno-policy-validator.mjs` — Policy structural validator
 - `.github/workflows/ci.yml` — Hardened CI with required evidence gates
-- `04-ship/03-platform/scripts/validate.sh` — Local validation entrypoint
+- `04-deploy/03-platform/scripts/validate.sh` — Local validation entrypoint

@@ -160,7 +160,7 @@ Supported languages at launch: **English, Shona, Ndebele, Swahili, Zulu, French*
 ### 6.1 USSD Handler Service
 
 ```yaml
-# 04-ship/kubernetes/base/services/ussd-handler.yaml (planned)
+# 04-deploy/kubernetes/base/services/ussd-handler.yaml (planned)
 apiVersion: apps/v1
 kind: Deployment
 metadata:

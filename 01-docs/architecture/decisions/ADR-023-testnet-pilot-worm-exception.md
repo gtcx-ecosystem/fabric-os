@@ -24,7 +24,7 @@ Accepted
 
 ## Context
 
-The testnet-pilot environment (`04-ship/terraform/environments/testnet-pilot/`) is an ephemeral evaluation substrate for bank and government tenants. It is explicitly tagged `Deployment = "TESTNET"` and `Purpose = "tenant-evaluation"`. Its sizing reflects this: one `t3.small` EKS node, a `db.t3.micro` RDS instance, and no multi-AZ redundancy.
+The testnet-pilot environment (`04-deploy/terraform/environments/testnet-pilot/`) is an ephemeral evaluation substrate for bank and government tenants. It is explicitly tagged `Deployment = "TESTNET"` and `Purpose = "tenant-evaluation"`. Its sizing reflects this: one `t3.small` EKS node, a `db.t3.micro` RDS instance, and no multi-AZ redundancy.
 
 The master audit (`01-docs/05-audit/master-audit-2026-05-27.md`) flagged the absence of `gtcx-worm-audit-testnet-pilot-af-south-1` as a P1 finding because the Terraform environment includes `module "worm_audit"` but the bucket has never been applied. The remediation plan (`01-docs/05-audit/10-10-remediation-plan-2026-05-27.md`) presents two valid paths:
 
@@ -46,7 +46,7 @@ Testnet-pilot **does not require a dedicated WORM audit bucket.** Its audit evid
 1. The `audit-flush` deployment in testnet-pilot is configured with `AUDIT_S3_BUCKET = gtcx-worm-audit-staging-af-south-1` and an S3 key prefix of `audit/testnet-pilot/YYYY/MM/DD/`.
 2. The testnet-pilot `audit_flush_irsa` module retains its IAM role, but the role's `s3:PutObject` grant targets the staging bucket ARN rather than a testnet-pilot-specific bucket.
 3. No new KMS key is provisioned for testnet-pilot audit storage; the staging KMS key encrypts all prefixed objects.
-4. The Terraform `module "worm_audit"` in `04-ship/terraform/environments/testnet-pilot/main.tf` is **commented out** (not destroyed) with a reference to this ADR, so it can be re-enabled if testnet-pilot's role changes from evaluation to long-term operational.
+4. The Terraform `module "worm_audit"` in `04-deploy/terraform/environments/testnet-pilot/main.tf` is **commented out** (not destroyed) with a reference to this ADR, so it can be re-enabled if testnet-pilot's role changes from evaluation to long-term operational.
 5. Testnet-pilot audit records remain signed by `@gtcx/audit-signer`, verifiable by `@gtcx/audit-signer@0.1.0`, and subject to the same Object Lock retention as staging records.
 
 ## Alternatives Considered
@@ -83,7 +83,7 @@ Testnet-pilot **does not require a dedicated WORM audit bucket.** Its audit evid
 ## References
 
 - ADR-014 — NATS JetStream audit transport (audit-flush routing logic)
-- `04-ship/terraform/environments/testnet-pilot/main.tf` — Terraform environment with commented `module "worm_audit"`
+- `04-deploy/terraform/environments/testnet-pilot/main.tf` — Terraform environment with commented `module "worm_audit"`
 - `01-docs/05-audit/worm-runtime-evidence-2026-05-27.md` — staging WORM evidence and testnet-pilot gap analysis
 - `01-docs/05-audit/10-10-remediation-plan-2026-05-27.md` — Phase 3, W3-001 (decide/create/document testnet-pilot WORM)
 - `03-platform/tools/audit-flush/src/s3-uploader.mjs` — S3 key prefix logic

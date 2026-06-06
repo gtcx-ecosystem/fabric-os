@@ -10,7 +10,7 @@
 #   - AWS SM gtcx/intelligence/staging/auth-keys populated
 #
 # Apply:
-#   kubectl apply -k 04-ship/kubernetes/overlays/staging/intelligence/
+#   kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
 # =============================================================================
 ---
 apiVersion: apps/v1

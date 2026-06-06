@@ -196,7 +196,7 @@ If any verification fails:
 ### Emergency Destroy
 
 ```bash
-cd 04-ship/terraform/environments/production
+cd 04-deploy/terraform/environments/production
 terraform destroy -auto-approve
 ```
 

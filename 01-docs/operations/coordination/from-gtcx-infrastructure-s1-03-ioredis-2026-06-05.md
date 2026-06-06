@@ -55,5 +55,5 @@ pnpm install --no-frozen-lockfile
 ## Cross-references
 
 - RedisNonceStoreService: `gtcx-platforms/platforms/shared/03-platform/src/auth/redis-nonce-store.service.ts`
-- Staging env: `gtcx-infrastructure/04-ship/kubernetes/overlays/staging/patches/sovereign-staging-env.yaml`
+- Staging env: `gtcx-infrastructure/04-deploy/kubernetes/overlays/staging/patches/sovereign-staging-env.yaml`
 - Sprint roadmap: `gtcx-infrastructure/01-docs/05-audit/agile/sprints/sprint-2026-06-phase3-roadmap.md`

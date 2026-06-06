@@ -2,7 +2,7 @@
  * Audit immutability verification logic.
  *
  * Encapsulates SQL generation and result parsing for audit-database privilege
- * checks.  Previously embedded in 04-ship/03-platform/scripts/migrate.sh setup_audit_constraints().
+ * checks.  Previously embedded in 04-deploy/03-platform/scripts/migrate.sh setup_audit_constraints().
  */
 
 /**

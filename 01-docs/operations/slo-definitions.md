@@ -16,7 +16,7 @@ autonomy_level: 'permissioned'
 
 Per ADR-016 (fail-closed audit signing) and ADR-017 (adaptive policy tuning), the substrate behaves differently under degraded conditions than under healthy ones. SLIs/SLOs are the contract that defines "healthy."
 
-This doc enumerates every SLI we measure, the SLO target for each, and the operational consequences of breaching it. Prometheus recording rules live at [`04-ship/monitoring/rules/slo-recording-rules.yml`](../../04-ship/monitoring/rules/slo-recording-rules.yml). Alertmanager routing for SLO burn-rate breaches lives at [`04-ship/monitoring/alerts/slo-burn-rate-alerts.yml`](../../04-ship/monitoring/alerts/slo-burn-rate-alerts.yml).
+This doc enumerates every SLI we measure, the SLO target for each, and the operational consequences of breaching it. Prometheus recording rules live at [`04-deploy/monitoring/rules/slo-recording-rules.yml`](../../04-deploy/monitoring/rules/slo-recording-rules.yml). Alertmanager routing for SLO burn-rate breaches lives at [`04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`](../../04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml).
 
 ## Why SLIs/SLOs matter for compliance substrate
 
@@ -89,7 +89,7 @@ Per the [Google SRE workbook](https://sre.google/workbook/implementing-slos/) co
 | audit signing = 1.000 | **zero budget** — every miss is investigated | Any sign-failure increments the audit-anomaly alert (immediate)                                |
 | audit flush lag < 60s | 5% of time window permitted                  | At 5 min sustained lag → critical                                                              |
 
-Burn-rate alerting is wired in [`04-ship/monitoring/rules/slo-recording-rules.yml`](../../04-ship/monitoring/rules/slo-recording-rules.yml) (existing) + Alertmanager routing.
+Burn-rate alerting is wired in [`04-deploy/monitoring/rules/slo-recording-rules.yml`](../../04-deploy/monitoring/rules/slo-recording-rules.yml) (existing) + Alertmanager routing.
 
 ## Operational Consequences of Breach
 

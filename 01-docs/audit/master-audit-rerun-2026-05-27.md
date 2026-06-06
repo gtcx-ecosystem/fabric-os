@@ -74,7 +74,7 @@ This is now a credible production-candidate platform substrate, not yet referenc
 | `pnpm audit`                                         | PASS   | No known vulnerabilities found.                                                          |
 | `pnpm docs:check-links`                              | PASS   | 967 links across 403 markdown files resolve.                                             |
 | `pnpm quality:governance:check`                      | PASS   | Docs-standard validation passed.                                                         |
-| `terraform fmt -check -recursive 04-ship/terraform/` | PASS   | Terraform formatting gate passed.                                                        |
+| `terraform fmt -check -recursive 04-deploy/terraform/` | PASS   | Terraform formatting gate passed.                                                        |
 | `gitleaks detect --no-git --redact --verbose`        | PASS   | Scanned 24.47 MB; no leaks found.                                                        |
 | Full Terraform validation and native tests           | PASS   | Full gate validated modules and native Terraform tests.                                  |
 | Kustomize base and overlays                          | PASS   | Base, dev, staging, staging-linkerd, production, production-linkerd, testnet, pen-test.  |

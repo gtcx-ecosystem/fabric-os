@@ -1,7 +1,7 @@
 # =============================================================================
 # compliance-os-production — web-app slim (Hub #17 intake + terminal export)
 # =============================================================================
-# Full stack: compliance-os 04-ship/compliance-os/k8s/overlays/production
+# Full stack: compliance-os 04-deploy/compliance-os/k8s/overlays/production
 # This slim slice unblocks exploration w2:prod:retest at compliance.gtcx.trade.
 # =============================================================================
 apiVersion: v1

@@ -32,11 +32,11 @@ review_cycle: 'quarterly'
 ```bash
 # Staging operational DB
 ENV=staging DB_TYPE=operational \
-  ./04-ship/03-platform/scripts/rds-live-restore.sh operational staging
+  ./04-deploy/03-platform/scripts/rds-live-restore.sh operational staging
 
 # Staging audit DB
 ENV=staging DB_TYPE=audit \
-  ./04-ship/03-platform/scripts/rds-live-restore.sh audit staging
+  ./04-deploy/03-platform/scripts/rds-live-restore.sh audit staging
 ```
 
 ---
@@ -196,7 +196,7 @@ Each restore produces a JSON artifact:
 
 ## Cross-references
 
-- `04-ship/03-platform/scripts/rds-live-restore.sh` — Automated restore script
+- `04-deploy/03-platform/scripts/rds-live-restore.sh` — Automated restore script
 - `01-docs/04-ops/runbooks/disaster-recovery.md` — General DR runbook
 - `01-docs/04-ops/runbooks/dr-fire-drill-exercise.md` — DR exercise template
 - `03-platform/tools/scripts/dr-fire-drill-evidence.mjs` — Structural DR evidence gate

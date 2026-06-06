@@ -87,7 +87,7 @@ terraform {
 ## Step 3: Migrate State
 
 ```bash
-cd 04-ship/terraform/environments/zimbabwe-pilot
+cd 04-deploy/terraform/environments/zimbabwe-pilot
 
 # Initialize with new backend — Terraform will detect the change
 # and offer to copy existing state

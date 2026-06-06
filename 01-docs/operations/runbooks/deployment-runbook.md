@@ -32,7 +32,7 @@ autonomy_level: 'permissioned'
 ### 1.1 Copy Template
 
 ```bash
-cd 04-ship/terraform/environments
+cd 04-deploy/terraform/environments
 cp -r template {country}-{env}  # e.g., ghana-pilot, kenya-prod
 cd {country}-{env}
 ```
@@ -79,13 +79,13 @@ terraform apply plan.tfplan
 
 ```bash
 # Development
-kustomize build 04-ship/kubernetes/overlays/development | kubectl apply -f -
+kustomize build 04-deploy/kubernetes/overlays/development | kubectl apply -f -
 
 # Staging
-kustomize build 04-ship/kubernetes/overlays/staging | kubectl apply -f -
+kustomize build 04-deploy/kubernetes/overlays/staging | kubectl apply -f -
 
 # Production
-kustomize build 04-ship/kubernetes/overlays/production | kubectl apply -f -
+kustomize build 04-deploy/kubernetes/overlays/production | kubectl apply -f -
 ```
 
 ### 2.2 Verify Namespace
@@ -105,7 +105,7 @@ Deploy ANISA and SDK services:
 bash 03-platform/scripts/deploy-intelligence.sh
 ```
 
-This deploys from `04-ship/k8s/intelligence/` — the dedicated intelligence manifests.
+This deploys from `04-deploy/k8s/intelligence/` — the dedicated intelligence manifests.
 
 ---
 
@@ -115,13 +115,13 @@ Apply init scripts from Docker infrastructure:
 
 ```bash
 # Connect to operational database
-psql $DATABASE_URL < 04-ship/docker/init-03-platform/scripts/01-init.sql
+psql $DATABASE_URL < 04-deploy/docker/init-03-platform/scripts/01-init.sql
 ```
 
 For the full Docker Compose development stack:
 
 ```bash
-docker compose -f 04-ship/docker/docker-compose.dev.yml up -d
+docker compose -f 04-deploy/docker/docker-compose.dev.yml up -d
 ```
 
 ---
@@ -146,11 +146,11 @@ kubectl create secret generic gtcx-secrets \
 
 ## 6. Network Policy Customization
 
-Production network policies (`04-ship/kubernetes/overlays/production/network-policies.yaml`) hardcode `cidr: 10.0.0.0/8` as the internal network range. If your VPC uses a different CIDR:
+Production network policies (`04-deploy/kubernetes/overlays/production/network-policies.yaml`) hardcode `cidr: 10.0.0.0/8` as the internal network range. If your VPC uses a different CIDR:
 
 ```bash
 # Option 1: sed replacement
-sed -i 's|10.0.0.0/8|172.16.0.0/12|g' 04-ship/kubernetes/overlays/production/network-policies.yaml
+sed -i 's|10.0.0.0/8|172.16.0.0/12|g' 04-deploy/kubernetes/overlays/production/network-policies.yaml
 
 # Option 2: kustomize patch
 # Add a strategic merge patch in the production overlay's kustomization.yaml
@@ -207,9 +207,9 @@ terraform apply
 
 ```bash
 # Kubernetes resources
-kustomize build 04-ship/kubernetes/overlays/{env} | kubectl delete -f -
+kustomize build 04-deploy/kubernetes/overlays/{env} | kubectl delete -f -
 
 # Terraform (requires confirmation)
-cd 04-ship/terraform/environments/{country}-{env}
+cd 04-deploy/terraform/environments/{country}-{env}
 terraform destroy
 ```

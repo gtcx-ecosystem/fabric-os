@@ -79,7 +79,7 @@ This repo owns deployment-facing docs, templates, and infrastructure wiring.
 
 ```bash
 # Audit migration deployment docs from the repo root
-python 04-ship/migrations/03-platform/scripts/check_docs.py
+python 04-deploy/migrations/03-platform/scripts/check_docs.py
 ```
 
 ### Sovereign Stack Deployment
@@ -88,7 +88,7 @@ For national or institutional deployments, use the Terraform modules and Kuberne
 
 ```bash
 # Example: Deploying to a jurisdictional node
-cd 04-ship/terraform/environments/zimbabwe-pilot
+cd 04-deploy/terraform/environments/zimbabwe-pilot
 terraform apply
 ```
 
@@ -116,8 +116,8 @@ Documentation for the _deployment_ of these components is maintained here. Funct
 
 | Script                                                    | Purpose                                     |
 | :-------------------------------------------------------- | :------------------------------------------ |
-| `04-ship/migrations/03-platform/scripts/generate_docs.py` | Generate deployment documentation templates |
-| `04-ship/migrations/03-platform/scripts/check_docs.py`    | Audit deployment doc completeness           |
+| `04-deploy/migrations/03-platform/scripts/generate_docs.py` | Generate deployment documentation templates |
+| `04-deploy/migrations/03-platform/scripts/check_docs.py`    | Audit deployment doc completeness           |
 
 ---
 

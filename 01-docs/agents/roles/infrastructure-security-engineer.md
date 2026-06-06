@@ -64,8 +64,8 @@ In 2018, when the Terraform state file was found in the repository history, the 
 
 ## Owns
 
-- Terraform IAM modules: `04-ship/terraform/modules/iam/`
-- Secrets management configuration: `04-ship/terraform/modules/secrets/`, `04-ship/k8s/base/external-secrets/`
+- Terraform IAM modules: `04-deploy/terraform/modules/iam/`
+- Secrets management configuration: `04-deploy/terraform/modules/secrets/`, `04-deploy/k8s/base/external-secrets/`
 - Security scanning configurations: `.github/workflows/security-scan.yml`, `trivy.yaml`, `checkov.yaml`
 - Zero-trust enforcement policies at the Terraform and Kubernetes layers
 - Kubernetes security policies (OPA/Gatekeeper or Kyverno policies)
@@ -145,6 +145,6 @@ Keeps `01-docs/09-security/threat-model.md` current as infrastructure changes in
 | Threat model            | `01-docs/09-security/threat-model.md`          |
 | IAM policy register     | `01-docs/09-security/iam-policy-register.md`   |
 | Secret rotation runbook | `01-docs/04-ops/runbooks/secret-rotation.md`   |
-| Terraform IAM modules   | `04-ship/terraform/modules/iam/`               |
-| External Secrets config | `04-ship/k8s/base/external-secrets/`           |
+| Terraform IAM modules   | `04-deploy/terraform/modules/iam/`               |
+| External Secrets config | `04-deploy/k8s/base/external-secrets/`           |
 | Safety rules            | `01-docs/01-agents/workflows/safety-rules.md`  |

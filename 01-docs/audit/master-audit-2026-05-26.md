@@ -152,7 +152,7 @@ review_cycle: 'on-change'
 
 #### P0-003: Terraform Formatting Violations
 
-- **File:** `04-ship/terraform/environments/staging/main.tf:261,294` and `04-ship/terraform/modules/worm-audit/versions.tf:6-7`
+- **File:** `04-deploy/terraform/environments/staging/main.tf:261,294` and `04-deploy/terraform/modules/worm-audit/versions.tf:6-7`
 - **Issue:** `terraform fmt` reports misaligned comments and inconsistent key-value spacing. `validate.sh full` runs `terraform fmt -check` and exits non-zero.
 - **Impact:** `pnpm test:full` fails, blocking full validation pipeline.
 - **Fix:** Run `terraform fmt` on both files.
@@ -201,7 +201,7 @@ review_cycle: 'on-change'
 
 #### P2-001: Terraform Validation Skipped for Modules with Custom Providers
 
-- **File:** `04-ship/03-platform/scripts/validate.sh`
+- **File:** `04-deploy/03-platform/scripts/validate.sh`
 - **Issue:** `terraform validate` fails for modules requiring `gavinbunney/kubectl` or `hashicorp/helm` when `terraform init` has not been run. The full validation script reports failure but does not distinguish between formatting errors and provider-missing errors.
 - **Impact:** False negatives in local validation; engineers may ignore Terraform validation results.
 - **Fix:** Run `terraform init -backend=false` before `terraform validate` in the script, or skip validation for modules known to require custom providers.
@@ -215,7 +215,7 @@ review_cycle: 'on-change'
 
 #### P2-003: Kustomize Base Still References `cert-manager` Resources in Comment
 
-- **File:** `04-ship/kubernetes/base/kustomization.yaml`
+- **File:** `04-deploy/kubernetes/base/kustomization.yaml`
 - **Issue:** Commit `cc9d974` removed cert-manager resources from base build, but comments or patches may still reference them. While not a functional bug, it creates confusion for operators.
 - **Impact:** Minor operational friction during Kustomize builds.
 - **Fix:** Audit and remove stale cert-manager references from base kustomization comments.

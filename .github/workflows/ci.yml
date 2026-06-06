@@ -95,7 +95,7 @@ jobs:
             03-platform/tools/replay-protection/tests/production-fail-closed.test.mjs
 
       - name: Audit immutability fixture
-        run: bash 04-ship/03-platform/scripts/test-audit-immutability.sh
+        run: bash 04-deploy/03-platform/scripts/test-audit-immutability.sh
 
       - name: Generate build evidence
         run: |
@@ -119,13 +119,13 @@ jobs:
             --evidence=score-ledger=01-docs/05-audit/score-evidence-ledger.json \
             --worm-bucket=gtcx-worm-audit-staging-af-south-1 \
             --worm-key=release-evidence/ci/${{ github.sha }}/release-evidence.ndjson \
-            --output-dir=04-ship/security/reports/release-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
+            --output-dir=04-deploy/security/reports/release-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
 
       - name: Upload release evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: release-evidence-ci
-          path: 04-ship/security/reports/release-evidence/ci/
+          path: 04-deploy/security/reports/release-evidence/ci/
           retention-days: 90
 
       - name: Validate score-evidence ledger
@@ -206,25 +206,25 @@ jobs:
 
       - name: Load tests
         run: |
-          bash 03-platform/tools/load-tests/run-load-tests.sh --output-dir=04-ship/security/reports/load-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
+          bash 03-platform/tools/load-tests/run-load-tests.sh --output-dir=04-deploy/security/reports/load-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
 
       - name: USSD path soak (IR-4.1)
         run: |
           chmod +x 03-platform/tools/load-tests/run-ussd-soak.sh
-          bash 03-platform/tools/load-tests/run-ussd-soak.sh --output-dir=04-ship/security/reports/ussd-soak/ci/$(date -u +%Y%m%dT%H%M%SZ)
+          bash 03-platform/tools/load-tests/run-ussd-soak.sh --output-dir=04-deploy/security/reports/ussd-soak/ci/$(date -u +%Y%m%dT%H%M%SZ)
 
       - name: Upload load-test evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: load-test-evidence-ci
-          path: 04-ship/security/reports/load-evidence/ci/
+          path: 04-deploy/security/reports/load-evidence/ci/
           retention-days: 90
 
       - name: Upload USSD soak evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: ussd-soak-evidence-ci
-          path: 04-ship/security/reports/ussd-soak/ci/
+          path: 04-deploy/security/reports/ussd-soak/ci/
           retention-days: 90
           if-no-files-found: ignore
 
@@ -271,15 +271,15 @@ jobs:
 
       - name: Shell script checks
         run: |
-          shellcheck 04-ship/03-platform/scripts/*.sh
-          bash 04-ship/03-platform/scripts/build-push.sh --list >/dev/null
-          bash 04-ship/03-platform/scripts/deploy.sh staging --dry-run --version=sha-ci-smoke >/dev/null
-          bash 04-ship/03-platform/scripts/fine-tune-workflow.sh --help >/dev/null
-          bash 04-ship/03-platform/scripts/capture-rollback-evidence.sh --help >/dev/null
-          bash 04-ship/03-platform/scripts/prepare-intelligence-evidence-env.sh --help >/dev/null
+          shellcheck 04-deploy/03-platform/scripts/*.sh
+          bash 04-deploy/03-platform/scripts/build-push.sh --list >/dev/null
+          bash 04-deploy/03-platform/scripts/deploy.sh staging --dry-run --version=sha-ci-smoke >/dev/null
+          bash 04-deploy/03-platform/scripts/fine-tune-workflow.sh --help >/dev/null
+          bash 04-deploy/03-platform/scripts/capture-rollback-evidence.sh --help >/dev/null
+          bash 04-deploy/03-platform/scripts/prepare-intelligence-evidence-env.sh --help >/dev/null
 
       - name: Terraform format check
-        run: terraform fmt -check -recursive 04-ship/terraform/
+        run: terraform fmt -check -recursive 04-deploy/terraform/
 
       - name: Install tflint
         uses: terraform-linters/setup-tflint@90f302c255ef959cbfb4bd10581afecdb7ece3e6 # v4
@@ -288,7 +288,7 @@ jobs:
 
       - name: IaC security lint (tflint)
         run: |
-          for module in 04-ship/terraform/modules/*/; do
+          for module in 04-deploy/terraform/modules/*/; do
             echo "Linting $module..."
             tflint --chdir="$module" --minimum-failure-severity=error || true
           done
@@ -297,94 +297,94 @@ jobs:
         uses: aquasecurity/trivy-action@314ff8b43182423b84c50b1670b0e10f858f2d98 # pin: v0.34.0 (SHA)
         with:
           scan-type: 'config'
-          scan-ref: '04-ship/terraform/'
+          scan-ref: '04-deploy/terraform/'
           severity: 'CRITICAL,HIGH'
           exit-code: '0'
           format: 'table'
 
       - name: Terraform validate — VPC module
         run: |
-          cd 04-ship/terraform/modules/vpc
+          cd 04-deploy/terraform/modules/vpc
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — Database module
         run: |
-          cd 04-ship/terraform/modules/database
+          cd 04-deploy/terraform/modules/database
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — EKS module
         run: |
-          cd 04-ship/terraform/modules/eks
+          cd 04-deploy/terraform/modules/eks
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — ECR module
         run: |
-          cd 04-ship/terraform/modules/ecr
+          cd 04-deploy/terraform/modules/ecr
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — Workflow Orchestration module
         run: |
-          cd 04-ship/terraform/modules/workflow-orchestration
+          cd 04-deploy/terraform/modules/workflow-orchestration
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — Secrets module
         run: |
-          cd 04-ship/terraform/modules/secrets
+          cd 04-deploy/terraform/modules/secrets
           echo '{}' | zip -q lambda/rotation.zip -
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — ALB module
         run: |
-          cd 04-ship/terraform/modules/alb
+          cd 04-deploy/terraform/modules/alb
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — Backup module
         run: |
-          cd 04-ship/terraform/modules/backup
+          cd 04-deploy/terraform/modules/backup
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — Detective module
         run: |
-          cd 04-ship/terraform/modules/detective
+          cd 04-deploy/terraform/modules/detective
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — Compliance module
         run: |
-          cd 04-ship/terraform/modules/compliance
+          cd 04-deploy/terraform/modules/compliance
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — Event Bus module
         run: |
-          cd 04-ship/terraform/modules/event-bus
+          cd 04-deploy/terraform/modules/event-bus
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — KYC Documents module
         run: |
-          cd 04-ship/terraform/modules/kyc-documents
+          cd 04-deploy/terraform/modules/kyc-documents
           terraform init -backend=false
           terraform validate
 
       - name: Terraform validate — Multi-Region module
         run: |
-          cd 04-ship/terraform/modules/multi-region/ci-validate
+          cd 04-deploy/terraform/modules/multi-region/ci-validate
           terraform init -backend=false
           terraform validate
 
       - name: Terraform native tests
         run: |
           for module in vpc database eks ecr workflow-orchestration secrets alb backup detective compliance event-bus kyc-documents compliance-db ml-pipeline trace-pipeline vault multi-region; do
-            cd "04-ship/terraform/modules/${module}"
+            cd "04-deploy/terraform/modules/${module}"
             if [ "${module}" = "secrets" ]; then
               echo '{}' | zip -q lambda/rotation.zip -
             fi
@@ -394,31 +394,31 @@ jobs:
           done
 
       - name: Prepare Kustomize render evidence
-        run: mkdir -p 04-ship/security/reports/kustomize-rendered/ci
+        run: mkdir -p 04-deploy/security/reports/kustomize-rendered/ci
 
       - name: Kustomize build — base
-        run: kubectl kustomize 04-ship/kubernetes/base/ > 04-ship/security/reports/kustomize-rendered/ci/base.yaml
+        run: kubectl kustomize 04-deploy/kubernetes/base/ > 04-deploy/security/reports/kustomize-rendered/ci/base.yaml
 
       - name: Kustomize build — dev overlay
-        run: kubectl kustomize 04-ship/kubernetes/overlays/development/ > 04-ship/security/reports/kustomize-rendered/ci/development.yaml
+        run: kubectl kustomize 04-deploy/kubernetes/overlays/development/ > 04-deploy/security/reports/kustomize-rendered/ci/development.yaml
 
       - name: Kustomize build — staging overlay
-        run: kubectl kustomize 04-ship/kubernetes/overlays/staging/ > 04-ship/security/reports/kustomize-rendered/ci/staging.yaml
+        run: kubectl kustomize 04-deploy/kubernetes/overlays/staging/ > 04-deploy/security/reports/kustomize-rendered/ci/staging.yaml
 
       - name: Kustomize build — staging linkerd overlay
-        run: kubectl kustomize 04-ship/kubernetes/overlays/staging/linkerd/ > 04-ship/security/reports/kustomize-rendered/ci/staging-linkerd.yaml
+        run: kubectl kustomize 04-deploy/kubernetes/overlays/staging/linkerd/ > 04-deploy/security/reports/kustomize-rendered/ci/staging-linkerd.yaml
 
       - name: Kustomize build — production overlay
-        run: kubectl kustomize 04-ship/kubernetes/overlays/production/ > 04-ship/security/reports/kustomize-rendered/ci/production.yaml
+        run: kubectl kustomize 04-deploy/kubernetes/overlays/production/ > 04-deploy/security/reports/kustomize-rendered/ci/production.yaml
 
       - name: Kustomize build — production linkerd overlay
-        run: kubectl kustomize 04-ship/kubernetes/overlays/production/linkerd/ > 04-ship/security/reports/kustomize-rendered/ci/production-linkerd.yaml
+        run: kubectl kustomize 04-deploy/kubernetes/overlays/production/linkerd/ > 04-deploy/security/reports/kustomize-rendered/ci/production-linkerd.yaml
 
       - name: Kustomize build — testnet overlay
-        run: kubectl kustomize 04-ship/kubernetes/overlays/testnet/ > 04-ship/security/reports/kustomize-rendered/ci/testnet.yaml
+        run: kubectl kustomize 04-deploy/kubernetes/overlays/testnet/ > 04-deploy/security/reports/kustomize-rendered/ci/testnet.yaml
 
       - name: Kustomize build — pen-test overlay
-        run: kubectl kustomize 04-ship/kubernetes/overlays/pen-test/ > 04-ship/security/reports/kustomize-rendered/ci/pen-test.yaml
+        run: kubectl kustomize 04-deploy/kubernetes/overlays/pen-test/ > 04-deploy/security/reports/kustomize-rendered/ci/pen-test.yaml
 
       - name: Environment preflight (gtcx-ctl validate-environment --ci)
         run: |
@@ -429,14 +429,14 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: kustomize-rendered-ci
-          path: 04-ship/security/reports/kustomize-rendered/ci/
+          path: 04-deploy/security/reports/kustomize-rendered/ci/
           retention-days: 90
 
       - name: Docker Compose config validation
         run: |
-          docker compose -f 04-ship/docker/docker-compose.dev.yml config --quiet
-          docker compose -f 04-ship/docker/docker-compose.test.yml config --quiet
-          docker compose -f 04-ship/docker/docker-compose.infra.yml config --quiet
+          docker compose -f 04-deploy/docker/docker-compose.dev.yml config --quiet
+          docker compose -f 04-deploy/docker/docker-compose.test.yml config --quiet
+          docker compose -f 04-deploy/docker/docker-compose.infra.yml config --quiet
 
       - name: DR test — backup integrity
         env:
@@ -454,17 +454,17 @@ jobs:
           PROTOCOL_URL: http://localhost:8300
           DR_SKIP_PROTOCOL_HEALTH: '1'
         run: |
-          docker compose -f 04-ship/docker/docker-compose.dev.yml up -d postgres postgres-audit
+          docker compose -f 04-deploy/docker/docker-compose.dev.yml up -d postgres postgres-audit
           sleep 10
-          export OUTPUT_DIR=04-ship/security/reports/dr-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
-          bash 04-ship/03-platform/scripts/dr-test.sh testnet
-          docker compose -f 04-ship/docker/docker-compose.dev.yml down
+          export OUTPUT_DIR=04-deploy/security/reports/dr-evidence/ci/$(date -u +%Y%m%dT%H%M%SZ)
+          bash 04-deploy/03-platform/scripts/dr-test.sh testnet
+          docker compose -f 04-deploy/docker/docker-compose.dev.yml down
 
       - name: Upload DR evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: dr-evidence-ci
-          path: 04-ship/security/reports/dr-evidence/ci/
+          path: 04-deploy/security/reports/dr-evidence/ci/
           retention-days: 90
 
   codeql:

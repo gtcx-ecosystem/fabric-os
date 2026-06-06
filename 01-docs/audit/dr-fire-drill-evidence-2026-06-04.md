@@ -21,7 +21,7 @@ live_rds_execution: done
 | ----------------------------------- | ------------------------------------------------- |
 | `dr-test.sh` fail-fast env guards   | PASS                                              |
 | Evidence fields (RTO/RPO/steps)     | PASS                                              |
-| Script path                         | `04-ship/03-platform/scripts/rds-live-restore.sh` |
+| Script path                         | `04-deploy/03-platform/scripts/rds-live-restore.sh` |
 | Live RDS PITR — staging operational | **PASS** (2026-06-04)                             |
 
 ## Live execution evidence

@@ -42,7 +42,7 @@ cd "${PROJECT_ROOT}"
 export NODE_ENV="${ENVIRONMENT}"
 
 # Load seed SQL files
-SEED_DIR="${PROJECT_ROOT}/04-ship/docker/init-03-platform/scripts/postgres"
+SEED_DIR="${PROJECT_ROOT}/04-deploy/docker/init-03-platform/scripts/postgres"
 if [[ -d "${SEED_DIR}" ]]; then
     for file in "${SEED_DIR}"/*.sql; do
         if [[ -f "$file" ]]; then

@@ -191,7 +191,7 @@ The sidecar:
 ### 6. Terraform Module Structure
 
 ```
-04-ship/terraform/modules/vault/
+04-deploy/terraform/modules/vault/
 ├── main.tf           # Helm release, KMS key, IRSA role
 ├── auth.tf           # K8s auth method, roles
 ├── database.tf       # Database secrets engine, connection configs, roles

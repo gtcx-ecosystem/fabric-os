@@ -29,7 +29,7 @@ This is the **Trust** vertical from the defensible software framework: sell veri
 ### What exists today
 
 ```
-04-ship/terraform/modules/compliance-db/
+04-deploy/terraform/modules/compliance-db/
   main.tf              — 11 jurisdiction presets (8 countries + 3 regional blocs)
   variables.tf         — Environment, jurisdiction, overrides
   compliance-db.tftest.hcl — 7 test runs

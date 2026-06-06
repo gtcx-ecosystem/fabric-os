@@ -24,7 +24,7 @@ Operator evidence (vault + HTTPS smoke) does **not** require ESO. Full intellige
 ## 1. Import existing auth-keys secret (if EAP sync created it first)
 
 ```bash
-cd 04-ship/terraform/environments/staging
+cd 04-deploy/terraform/environments/staging
 terraform init
 terraform import \
   'module.secrets.aws_secretsmanager_secret.intelligence_auth_keys' \
@@ -77,10 +77,10 @@ chmod +x 03-platform/scripts/staging/install-intelligence-eso.sh
 
 ## 5. Deploy full intelligence SDK (XR-201)
 
-Manifest: `04-ship/kubernetes/overlays/staging/intelligence/deployment.yaml` (image `gtcx-intelligence-sdk`, `envFrom: intelligence-secrets`, `serviceAccountName: intelligence-sa`).
+Manifest: `04-deploy/kubernetes/overlays/staging/intelligence/deployment.yaml` (image `gtcx-intelligence-sdk`, `envFrom: intelligence-secrets`, `serviceAccountName: intelligence-sa`).
 
 ```bash
-kubectl apply -k 04-ship/kubernetes/overlays/staging/intelligence/
+kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
 kubectl rollout status deployment/intelligence-orchestrator -n intelligence
 ```
 
@@ -91,5 +91,5 @@ After green: ping `gtcx-agentic` to run `run-production-readiness-with-vault.mjs
 ## Related
 
 - `01-docs/04-ops/eap-secrets-and-iam.md`
-- `04-ship/terraform/modules/secrets/intelligence.tf`
+- `04-deploy/terraform/modules/secrets/intelligence.tf`
 - `gtcx-agentic/01-docs/operators/intelligence-smoke-evidence.md`

@@ -2,7 +2,7 @@
 # compliance-os-staging — Kustomize overlay
 # =============================================================================
 # Provides namespace + ExternalSecrets for GHCR pull token and non-W2 secrets.
-# Apply: kubectl apply -k 04-ship/kubernetes/overlays/staging/compliance-os/
+# Apply: kubectl apply -k 04-deploy/kubernetes/overlays/staging/compliance-os/
 # =============================================================================
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization

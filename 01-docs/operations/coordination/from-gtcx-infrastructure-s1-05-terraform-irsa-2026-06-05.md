@@ -11,7 +11,7 @@ work_id: S1-05 / INF-86 / XR-405
 ## What was done
 
 ```bash
-cd 04-ship/terraform/environments/staging
+cd 04-deploy/terraform/environments/staging
 
 # 1. Added irsa_platform module to main.tf
 # 2. Fixed irsa-platform module KMS policy bug (split statements)

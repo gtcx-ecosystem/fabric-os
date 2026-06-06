@@ -72,7 +72,7 @@ cat 01-docs/10-compliance/fips140-2-assessment.md 2>/dev/null | head -40 || echo
 # Check KMS key specs for FIPS
 aws kms describe-key --key-id alias/gtcx-production-signing --query 'KeyMetadata.CustomerMasterKeySpec' 2>/dev/null || echo "Check KMS key spec manually"
 # Check for HSM backing
-grep -ri "hsm\|cloudhsm\|hardware" 04-ship/terraform/modules/kms-signing/ | head -5
+grep -ri "hsm\|cloudhsm\|hardware" 04-deploy/terraform/modules/kms-signing/ | head -5
 # Check for CMVP certificate
 find 01-docs/10-compliance/ -name "*cmvp*" -o -name "*certificate*" | head -5
 ```
@@ -115,7 +115,7 @@ grep -ri "background.check\|vetting\|screening" 01-docs/hr/ | head -10
 # Check for data localization architecture
 cat 01-docs/architecture/data-localization.md 2>/dev/null | head -40 || echo "No data localization doc"
 # Verify all production in af-south-1
-grep -r "af-south-1" 04-ship/terraform/environments/production/*.tf | wc -l
+grep -r "af-south-1" 04-deploy/terraform/environments/production/*.tf | wc -l
 # Check for cross-border transfer policy
 grep -ri "cross.border\|transfer\|mou\|adequacy" 01-docs/10-compliance/ | head -10
 ```
@@ -128,9 +128,9 @@ grep -ri "cross.border\|transfer\|mou\|adequacy" 01-docs/10-compliance/ | head -
 # Check for air-gapped architecture
 cat 01-docs/architecture/air-gapped-deployment.md 2>/dev/null |head -40 || echo "No air-gapped doc"
 # Check for offline-capable builds
-grep -ri "offline\|airgap\|disconnected" 01-docs/architecture/ 04-ship/docker/ | head -10
+grep -ri "offline\|airgap\|disconnected" 01-docs/architecture/ 04-deploy/docker/ | head -10
 # Check for container registry mirroring
-grep -ri "mirror\|registry.*proxy\|harbor" 04-ship/kubernetes/ 01-docs/devops/ | head -5
+grep -ri "mirror\|registry.*proxy\|harbor" 04-deploy/kubernetes/ 01-docs/devops/ | head -5
 ```
 
 **Pass:** Air-gapped architecture documented, offline build tested, container registry mirroring configured.
@@ -143,7 +143,7 @@ grep -ri "multi.region\|failover\|dr\|disaster" 01-docs/architecture/ | head -10
 # Check for historical uptime
 cat 01-docs/05-audit/uptime-evidence-*.md 2>/dev/null | head -30 || echo "No uptime evidence"
 # Check for redundant region
-grep -r "region" 04-ship/terraform/environments/production/main.tf | head -10
+grep -r "region" 04-deploy/terraform/environments/production/main.tf | head -10
 ```
 
 **Pass:** Multi-region or hot-standby documented, historical evidence supports 99.99%, redundant region configured.
@@ -154,9 +154,9 @@ grep -r "region" 04-ship/terraform/environments/production/main.tf | head -10
 # Check for 24/7 SOC documentation
 cat 01-docs/devops/soc-operations.md 2>/dev/null | head -40 || echo "No SOC ops doc"
 # Check for SIEM integration
-grep -ri "siem\|splunk\|elastic\|sentinel\|sumo" 04-ship/monitoring/ 01-docs/devops/ | head -10
+grep -ri "siem\|splunk\|elastic\|sentinel\|sumo" 04-deploy/monitoring/ 01-docs/devops/ | head -10
 # Check for threat intel feeds
-grep -ri "threat.intel\|ioc\|feeds\|misp" 01-docs/devops/ 04-ship/monitoring/ | head -5
+grep -ri "threat.intel\|ioc\|feeds\|misp" 01-docs/devops/ 04-deploy/monitoring/ | head -5
 # Check for MTTR metrics
 grep -ri "mttr\|mean.time\|response.time" 01-docs/devops/ | head -5
 ```
@@ -167,13 +167,13 @@ grep -ri "mttr\|mean.time\|response.time" 01-docs/devops/ | head -5
 
 ```bash
 # Check for mTLS mesh
-grep -ri "linkerd\|istio\|mTLS\|mutual.tls" 04-ship/kubernetes/ 01-docs/architecture/ | head -10
+grep -ri "linkerd\|istio\|mTLS\|mutual.tls" 04-deploy/kubernetes/ 01-docs/architecture/ | head -10
 # Check for NetworkPolicy
-grep -ri "NetworkPolicy\|network.policy" 04-ship/kubernetes/ | head -5
+grep -ri "NetworkPolicy\|network.policy" 04-deploy/kubernetes/ | head -5
 # Check for micro-segmentation
 grep -ri "segmentation\|zero.trust\|ztna" 01-docs/architecture/ | head -5
 # Check for service mesh sidecar injection
-grep -ri "sidecar\|injection" 04-ship/kubernetes/ | head -5
+grep -ri "sidecar\|injection" 04-deploy/kubernetes/ | head -5
 ```
 
 **Pass:** Service mesh with mTLS deployed, NetworkPolicies enforce micro-segmentation, zero-trust architecture documented.

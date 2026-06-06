@@ -2,7 +2,7 @@
 # SLO Error Budget Burn Rate Alerts
 # =============================================================================
 # Multi-window burn rate alerting per Google SRE handbook.
-# Uses recording rules from 04-ship/monitoring/rules/slo-recording-rules.yml.
+# Uses recording rules from 04-deploy/monitoring/rules/slo-recording-rules.yml.
 #
 # Thresholds:
 #   14.4x burn rate (1h window) — exhausts 30-day budget in 2 days → PAGE

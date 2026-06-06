@@ -3,7 +3,7 @@
 # =============================================================================
 # W2-OPS-001: EKS deployment for terminal-os staging.
 #
-# Apply: kubectl apply -k 04-ship/kubernetes/overlays/staging/terminal-os/
+# Apply: kubectl apply -k 04-deploy/kubernetes/overlays/staging/terminal-os/
 #
 # Prerequisites:
 #   1. Terraform apply module.secrets (terminal-os.tf) — IRSA role + empty SM shell.

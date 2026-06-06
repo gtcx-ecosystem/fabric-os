@@ -15,7 +15,7 @@ work_id: INT-S9-01
 `api.staging.gtcx.trade/v1/evidence/submit` already routes to `gtcx-protocols-staging:8300` via the catch-all `/` path in the ALB ingress:
 
 ```yaml
-# 04-ship/kubernetes/overlays/staging/ingress.yaml
+# 04-deploy/kubernetes/overlays/staging/ingress.yaml
 - host: api.staging.gtcx.trade
   http:
     paths:
@@ -74,5 +74,5 @@ curl -s -o /dev/null -w "%{http_code}" \
 
 - Intelligence tracker: `gtcx-intelligence/01-docs/08-gtm/inbound-tickets/tracker-wire2-spec17.md`
 - Protocols witness: `gtcx-protocols/01-docs/operations/coordination/from-gtcx-intelligence-wave2-blockers-2026-06-05.md`
-- Infra ingress: `04-ship/kubernetes/overlays/staging/ingress.yaml`
-- Infra protocols env: `04-ship/kubernetes/overlays/staging/patches/protocols-staging-env.yaml`
+- Infra ingress: `04-deploy/kubernetes/overlays/staging/ingress.yaml`
+- Infra protocols env: `04-deploy/kubernetes/overlays/staging/patches/protocols-staging-env.yaml`

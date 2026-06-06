@@ -58,7 +58,7 @@ to: baseline-os coordination hub + sibling repos
 
 **What was done:**
 
-1. ✅ Created Deployment + Service manifest in `04-ship/kubernetes/overlays/staging/intelligence/deployment.yaml`
+1. ✅ Created Deployment + Service manifest in `04-deploy/kubernetes/overlays/staging/intelligence/deployment.yaml`
 2. ✅ Updated kustomization to include deployment
 3. ✅ Resolved FIPS issue (`NODE_ENV=staging`; image lacks FIPS module)
 4. ✅ Deployed full SDK image from ECR
@@ -170,7 +170,7 @@ to: baseline-os coordination hub + sibling repos
 
 **What infra should prepare:**
 
-- Review `04-ship/terraform/modules/kms-sovereign-signing/` readiness
+- Review `04-deploy/terraform/modules/kms-sovereign-signing/` readiness
 - Ensure IAM roles for ceremony exist
 - Document SPKI export procedure
 

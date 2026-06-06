@@ -35,7 +35,7 @@ autonomy_level: 'permissioned'
 - **What:** Real TradePass DID resolver deployment.
 - **Why:** `/audit/bundles` verifier has mock resolver landed (PR #56). Production returns 503 (safe fail-closed) until real resolver is wired.
 - **Action required:** gtcx-protocols team closes #60 and provides stable URL.
-- **Our follow-up:** Uncomment `TRADEPASS_BASE_URL` and `AUDIT_BUNDLES_AUDIENCE` in `04-ship/kubernetes/overlays/production/patches/compliance-gateway-env.yaml`. This is a config-only change — no redeploy needed.
+- **Our follow-up:** Uncomment `TRADEPASS_BASE_URL` and `AUDIT_BUNDLES_AUDIENCE` in `04-deploy/kubernetes/overlays/production/patches/compliance-gateway-env.yaml`. This is a config-only change — no redeploy needed.
 - **Risk:** **Mitigated** — mock resolver is in place; switch to real is one-line config.
 
 ---
@@ -45,7 +45,7 @@ autonomy_level: 'permissioned'
 ### 3. Staging Deploy Smoke Test
 
 - **What:** Trigger the new `Deploy to Staging` workflow.
-- **How:** Go to Actions → "Deploy to Staging" → "Run workflow", or push any change to `04-ship/kubernetes/**` on `main`.
+- **How:** Go to Actions → "Deploy to Staging" → "Run workflow", or push any change to `04-deploy/kubernetes/**` on `main`.
 - **What to verify:**
   - `compliance-gateway-staging` pod starts and `/health` returns 200
   - `redis-staging` pod starts and accepts connections

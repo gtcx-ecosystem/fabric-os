@@ -40,7 +40,7 @@ supersedes: 01-docs/05-audit/full-audit-2026-05-22.md
 | Dimension             | Rating                | Top Issue                                                                                                                                               |
 | --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Spec Fidelity         | **Strong (7.5/10)**   | `/audit/bundles` returns 503 until `TRADEPASS_BASE_URL` lands (`server.mjs:127-134`) — spec promises DID-bound bundles; production wiring deferred      |
-| Structural Integrity  | **Strong (8.0/10)**   | Clear `04-ship/` vs `03-platform/tools/` split; 14 workspace packages; non-package `03-platform/tools/policy` documented in `pnpm-workspace.yaml:21-35` |
+| Structural Integrity  | **Strong (8.0/10)**   | Clear `04-deploy/` vs `03-platform/tools/` split; 14 workspace packages; non-package `03-platform/tools/policy` documented in `pnpm-workspace.yaml:21-35` |
 | Code Quality          | **Strong (7.8/10)**   | Sprint 2 closed fail-open paths; remaining stub S3 still mutates `lastSuccessMs` (`s3-uploader.mjs:97`)                                                 |
 | Testability           | **Strong (8.2/10)**   | 94 `*.test.mjs` files; per-package coverage gates; adversarial fixtures for static validators (S1-04)                                                   |
 | Operational Readiness | **Adequate (7.0/10)** | Deploy/canary in Bash (`deploy.sh:48-49`); `gtcx-ctl` wraps scripts but production path still shell-first                                               |
@@ -52,7 +52,7 @@ supersedes: 01-docs/05-audit/full-audit-2026-05-22.md
 | -------- | ------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | P1       | Spec Fidelity | Audit bundles feature-flagged off in prod   | `03-platform/tools/compliance-gateway/src/server.mjs:122-134` — resolver null without `TRADEPASS_BASE_URL` | Pilot TradePass path cannot exercise bundle ingestion end-to-end                   | Wire resolver when protocols #55/#60 stable; keep 503 + signed refusal until then |
 | P2       | Operational   | Stub S3 updates success timestamp           | `03-platform/tools/audit-flush/src/s3-uploader.mjs:96-98`                                                  | Readiness/lag probes lie during dev stub                                           | S3-06: stop mutating `lastSuccessMs` on stub `send`                               |
-| P2       | Operational   | Production kustomize tags are placeholders  | `04-ship/kubernetes/overlays/production/kustomization.yaml:43-50`                                          | Direct `kubectl apply -k` without `deploy.sh` → ImagePullBackOff                   | Document-only risk if deploy.sh is mandatory; add CI gate blocking bare apply     |
+| P2       | Operational   | Production kustomize tags are placeholders  | `04-deploy/kubernetes/overlays/production/kustomization.yaml:43-50`                                          | Direct `kubectl apply -k` without `deploy.sh` → ImagePullBackOff                   | Document-only risk if deploy.sh is mandatory; add CI gate blocking bare apply     |
 | P3       | Structural    | Budget Redis backend opt-in, default memory | `03-platform/tools/compliance-gateway/src/budget-store.mjs:11-18`                                          | Per-pod QPS multiplication until `GTCX_BUDGET_STORE_BACKEND=redis` in prod overlay | S2-02 wired code; Sprint 3: enforce redis backend in production ConfigMap         |
 | P3       | Consistency   | Adaptive policy per-pod                     | Post-roadmap F-adaptive (carried)                                                                          | Degraded fairness under HPA >10                                                    | Redis-backed policy store (deferred bank-grade item)                              |
 
@@ -87,7 +87,7 @@ supersedes: 01-docs/05-audit/full-audit-2026-05-22.md
 
 | Severity | Title                                                | Evidence                                                                                                                 | Fix                                                                                                      |
 | -------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| P1       | Alertmanager dev defaults can render to prod compose | `04-ship/docker/docker-compose.infra.yml:151` `PAGERDUTY_SERVICE_KEY:-CHANGE_ME_DEV`                                     | S2-09: fail init container if keys are placeholder outside `NODE_ENV=development`; add validate-all gate |
+| P1       | Alertmanager dev defaults can render to prod compose | `04-deploy/docker/docker-compose.infra.yml:151` `PAGERDUTY_SERVICE_KEY:-CHANGE_ME_DEV`                                     | S2-09: fail init container if keys are placeholder outside `NODE_ENV=development`; add validate-all gate |
 | P2       | Frontmatter merge allows `tier:` downgrade           | `03-platform/tools/scripts/runbook-frontmatter-check.mjs:117-120` — `merged = new Map(second)` with no tier rank compare | S2-10: refuse merge when `tierRank(second) < tierRank(first)`                                            |
 | P2       | Stub S3 success signal                               | `s3-uploader.mjs:97`                                                                                                     | S3-06                                                                                                    |
 | P2       | MCP read-only but gateway token in env               | `compliance-gateway-mcp/03-platform/src/server.mjs:35-36` — bearer in process env                                        | Document vault injection; optional short-lived token rotation runbook                                    |
@@ -144,7 +144,7 @@ Stages assessed per command (S0→S6). **Stop rule:** two consecutive **Not Read
 | Category          | Score /10 | Issues                                                                              |
 | ----------------- | --------- | ----------------------------------------------------------------------------------- |
 | Documentation     | 8.5       | 250+ docs; execution-roadmap current; `latest.json` head was stale until this audit |
-| File Structure    | 8.5       | Clear `04-ship/` / `03-platform/tools/` / `01-docs/`; ADR index present             |
+| File Structure    | 8.5       | Clear `04-deploy/` / `03-platform/tools/` / `01-docs/`; ADR index present             |
 | Naming            | 8.0       | Conventional commits; roadmap filename normalized (F1 closed)                       |
 | Package/Build     | 8.5       | pnpm 9.15 + turbo; Node 20.18.0 floor gate (`9829b8f`)                              |
 | Code Hygiene      | 8.0       | No TODO debt in tools sources; empty-catch gate enforced                            |
@@ -246,7 +246,7 @@ Close F21 and F16 — no silent alert blackholes; no `tier` downgrade on doc mer
 
 | #   | Task                                                                       | Layer       | Files                                                                                                         | Effort | Why It Matters                               |
 | --- | -------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------- | ------ | -------------------------------------------- |
-| 1   | Fail compose init when PagerDuty/Slack placeholders in non-dev             | Remediation | `04-ship/docker/docker-compose.infra.yml:150-157`, new `03-platform/tools/scripts/alertmanager-env-check.mjs` | 0.5d   | Critical alerts must page, not no-op         |
+| 1   | Fail compose init when PagerDuty/Slack placeholders in non-dev             | Remediation | `04-deploy/docker/docker-compose.infra.yml:150-157`, new `03-platform/tools/scripts/alertmanager-env-check.mjs` | 0.5d   | Critical alerts must page, not no-op         |
 | 2   | Wire alertmanager-env-check into validate-all                              | Remediation | `03-platform/tools/scripts/validate-all.mjs:101` area                                                         | 0.25d  | Regression-proof                             |
 | 3   | Tier rank guard in frontmatter merge                                       | Remediation | `03-platform/tools/scripts/runbook-frontmatter-check.mjs:117-140`, `runbook-frontmatter-check.test.mjs`       | 0.5d   | DR/deployment runbooks stay `tier: critical` |
 | 4   | Adversarial fixture: merge `tier: informational` over `critical` must fail | Remediation | `03-platform/tools/scripts/runbook-frontmatter-check.test.mjs`                                                | 0.25d  | Proves S2-10                                 |
@@ -315,7 +315,7 @@ Unblock ZWCMP signature path; wire audit bundles when URL available.
 | --- | ------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------------------- | ------ | ---------------------- |
 | 1   | Record ZWCMP owner + cadence in register          | Remediation | `01-docs/05-audit/pilot-success-criteria.md:27`, `external-dependencies-register-2026-05-31.md` | human  | EXT-INF-013            |
 | 2   | DPA + pilot agreement draft → sign                | Remediation | `01-docs/05-audit/vendor-outreach/zwcmp/`                                                       | legal  | S3-11 headline         |
-| 3   | Set `TRADEPASS_BASE_URL` in testnet overlay       | Remediation | `04-ship/kubernetes/overlays/testnet/`, `server.mjs:132-134`                                    | 1d     | End-to-end bundle path |
+| 3   | Set `TRADEPASS_BASE_URL` in testnet overlay       | Remediation | `04-deploy/kubernetes/overlays/testnet/`, `server.mjs:132-134`                                    | 1d     | End-to-end bundle path |
 | 4   | Enforce `GTCX_BUDGET_STORE_BACKEND=redis` in prod | Remediation | production configmap / gateway deployment                                                       | 0.5d   | HPA-correct budgets    |
 
 ### Definition of Done
@@ -341,7 +341,7 @@ S3-02, S3-03, S3-04 — prove ops, not claim ops.
 
 | #   | Task                               | Layer       | Files                                                                                                  | Effort | Why It Matters              |
 | --- | ---------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------ | ------ | --------------------------- |
-| 1   | Quarterly DR drill artifact        | Remediation | `04-ship/03-platform/scripts/dr-test.sh`, `01-docs/05-audit/` new evidence md                          | 1d     | Production readiness        |
+| 1   | Quarterly DR drill artifact        | Remediation | `04-deploy/03-platform/scripts/dr-test.sh`, `01-docs/05-audit/` new evidence md                          | 1d     | Production readiness        |
 | 2   | Soak baseline PR gate              | Evolution   | `03-platform/tools/load-tests/`, `validate-all.mjs`                                                    | 1d     | Capacity truth              |
 | 3   | Release bundle + WORM upload smoke | Remediation | `03-platform/tools/control-plane/generate-release-evidence.mjs`, `upload-release-evidence-to-worm.mjs` | 1d     | Regulator-verifiable deploy |
 
@@ -384,7 +384,7 @@ S3-11 signature; pen-test findings triage queue ready.
 | --- | ------------------------------------------------- | ----------- | ------------------------------------------ | ------ | -------------- |
 | 1   | Pilot agreement + DPA signed PDFs committed       | Remediation | `01-docs/05-audit/vendor-outreach/zwcmp/`  | human  | Revenue        |
 | 2   | Pen-test kickoff + scope includes closed S2 items | Remediation | EXT-INF-002                                | human  | Certified bump |
-| 3   | terraform-aws-compliance-db v1.0.0 tag            | Innovation  | `04-ship/terraform/modules/compliance-db/` | 1d     | S3-12          |
+| 3   | terraform-aws-compliance-db v1.0.0 tag            | Innovation  | `04-deploy/terraform/modules/compliance-db/` | 1d     | S3-12          |
 
 ---
 

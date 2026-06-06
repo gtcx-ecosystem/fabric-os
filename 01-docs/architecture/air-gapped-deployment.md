@@ -83,7 +83,7 @@ An air-gapped GTCX deployment meets **all** of the following:
 
 ### 5.1 Base Image Mirroring
 
-1. Pin all Docker base images by digest in `04-ship/docker/`.
+1. Pin all Docker base images by digest in `04-deploy/docker/`.
 2. Pull images in the Unclassified Zone build pipeline.
 3. Export to OCI tarball.
 4. Cryptographically sign tarball with offline signing key.

@@ -29,7 +29,7 @@ This runbook does not execute the evidence scripts itself. It prepares the smoke
 From this repo:
 
 ```bash
-terraform -chdir=04-ship/terraform/environments/testnet-pilot output -json > /tmp/testnet-outputs.json
+terraform -chdir=04-deploy/terraform/environments/testnet-pilot output -json > /tmp/testnet-outputs.json
 ```
 
 The output file must contain:
@@ -44,7 +44,7 @@ The output file must contain:
 Generate shell exports from the Terraform outputs plus Secrets Manager values:
 
 ```bash
-./04-ship/03-platform/scripts/prepare-intelligence-evidence-env.sh \
+./04-deploy/03-platform/scripts/prepare-intelligence-evidence-env.sh \
   --terraform-output-file=/tmp/testnet-outputs.json \
   --mode=sandbox
 ```
@@ -52,7 +52,7 @@ Generate shell exports from the Terraform outputs plus Secrets Manager values:
 To force degraded-mode verification:
 
 ```bash
-./04-ship/03-platform/scripts/prepare-intelligence-evidence-env.sh \
+./04-deploy/03-platform/scripts/prepare-intelligence-evidence-env.sh \
   --terraform-output-file=/tmp/testnet-outputs.json \
   --mode=forced-failure \
   --failure-target=all
@@ -61,7 +61,7 @@ To force degraded-mode verification:
 To write a dotenv-style file:
 
 ```bash
-./04-ship/03-platform/scripts/prepare-intelligence-evidence-env.sh \
+./04-deploy/03-platform/scripts/prepare-intelligence-evidence-env.sh \
   --terraform-output-file=/tmp/testnet-outputs.json \
   --format=dotenv \
   --write-env-file=/tmp/intelligence-evidence.env

@@ -52,7 +52,7 @@ The ecosystem review of 2026-05-12 (`01-docs/05-audit/ecosystem-repo-review-2026
 
 ### Negative
 
-- Any historical references to `gtcx-core12` in migration configs must be updated (done: `04-ship/migrations/config/gtcx.yaml`)
+- Any historical references to `gtcx-core12` in migration configs must be updated (done: `04-deploy/migrations/config/gtcx.yaml`)
 - Any historical references to `gtcx-amis` in template docs must be updated (done: `03-platform/tools/templates/projects/maba/README.md`, `03-platform/tools/templates/projects/amani/README.md`)
 
 ### Neutral
@@ -63,7 +63,7 @@ The ecosystem review of 2026-05-12 (`01-docs/05-audit/ecosystem-repo-review-2026
 
 ## Actions Taken
 
-- [x] Updated `04-ship/migrations/config/gtcx.yaml`: `target_schema: 'gtcx-core12'` → `target_schema: 'gtcx-core'`
+- [x] Updated `04-deploy/migrations/config/gtcx.yaml`: `target_schema: 'gtcx-core12'` → `target_schema: 'gtcx-core'`
 - [x] Updated `03-platform/tools/templates/projects/maba/README.md`: removed `gtcx-core12` and `gtcx-amis` references
 - [x] Updated `03-platform/tools/templates/projects/amani/README.md`: removed `gtcx-amis` reference
 - [x] Updated `03-platform/tools/templates/PRINCIPLES.md`: remapped P21 → `gtcx-core`, P23 → `gtcx-protocols`

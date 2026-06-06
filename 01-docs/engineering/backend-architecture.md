@@ -115,7 +115,7 @@ The audit instance has `deletion_protection = true` in Terraform for all environ
 
 ## Kubernetes Architecture
 
-### Base Resources (`04-ship/kubernetes/base/`)
+### Base Resources (`04-deploy/kubernetes/base/`)
 
 - `namespace.yaml` — namespace definition
 - `configmaps/base-config.yaml` — shared config (`GTCX_VERSION`, `GTCX_LOG_LEVEL=info`, `GTCX_LOG_FORMAT=json`)
@@ -139,15 +139,15 @@ The `gtcx-secrets` Kubernetes secret holds `DATABASE_URL` and `SECRET_KEY_BASE`.
 
 ## Terraform Architecture
 
-### Module: `04-ship/terraform/modules/vpc/`
+### Module: `04-deploy/terraform/modules/vpc/`
 
 Multi-cloud VPC and network isolation. Provides subnet definitions and security group foundations used by the database module and cluster networking.
 
-### Module: `04-ship/terraform/modules/database/`
+### Module: `04-deploy/terraform/modules/database/`
 
 Provisions two RDS PostgreSQL 16.1 instances per environment with all security defaults enabled. Uses the `vpc/` module for network placement.
 
-### Environments: `04-ship/terraform/environments/`
+### Environments: `04-deploy/terraform/environments/`
 
 Each environment is a directory copy of `template/`. Engineers fill in environment-specific `terraform.tfvars`. No automated apply without human review of `terraform plan` output.
 
@@ -184,7 +184,7 @@ All local and remote observability services:
 | Tracing    | Jaeger 1.52        | 16686 | Distributed traces (OTLP) |
 | Logs       | Loki 2.9.2         | 3100  | Log aggregation           |
 
-Prometheus scrape configs and Grafana dashboard definitions live in `04-ship/docker/observability/`.
+Prometheus scrape configs and Grafana dashboard definitions live in `04-deploy/docker/observability/`.
 
 ---
 
@@ -192,9 +192,9 @@ Prometheus scrape configs and Grafana dashboard definitions live in `04-ship/doc
 
 Security posture is managed through three components:
 
-1. **Policies** (`04-ship/security/policies/`) — access control, data protection policy, incident response playbooks
+1. **Policies** (`04-deploy/security/policies/`) — access control, data protection policy, incident response playbooks
 2. **Scanner** (`03-platform/tools/scripts/security-status.js`) — run manually and in CI; generates reports
-3. **Reports** (`04-ship/security/reports/`) — audit reports, SOC2 evidence
+3. **Reports** (`04-deploy/security/reports/`) — audit reports, SOC2 evidence
 
 CI gates include weekly container image scans and weekly `pnpm audit` dependency checks. Critical CVEs block release.
 

@@ -19,9 +19,9 @@ on:
   push:
     branches: [main]
     paths:
-      - '04-ship/docker/**'
-      - '04-ship/kubernetes/**'
-      - '04-ship/03-platform/scripts/**'
+      - '04-deploy/docker/**'
+      - '04-deploy/kubernetes/**'
+      - '04-deploy/03-platform/scripts/**'
       - '.github/workflows/build-push-ecr.yml'
   workflow_dispatch: # Allow manual trigger
 
@@ -45,7 +45,7 @@ jobs:
       matrix:
         service:
           - name: intelligence-sdk
-            dockerfile: 04-ship/docker/Dockerfile.intelligence
+            dockerfile: 04-deploy/docker/Dockerfile.intelligence
             context_dir: intelligence
             target: ''
             ecr_repos: gtcx-intelligence-sdk
@@ -283,7 +283,7 @@ jobs:
         run: |
           SHA_SHORT="${GITHUB_SHA::8}"
           REGISTRY="${{ steps.ecr-login.outputs.registry }}"
-          cd 04-ship/kubernetes/overlays/production
+          cd 04-deploy/kubernetes/overlays/production
 
           # Only update tags for images that actually exist in ECR
           update_if_exists() {
@@ -308,7 +308,7 @@ jobs:
         run: |
           SHA_SHORT="${GITHUB_SHA::8}"
           REGISTRY="${{ steps.ecr-login.outputs.registry }}"
-          cd 04-ship/kubernetes/overlays/staging
+          cd 04-deploy/kubernetes/overlays/staging
 
           # Only update compliance-gateway if the image exists in ECR
           if aws ecr describe-images --repository-name compliance-gateway --image-ids imageTag="${SHA_SHORT}" --region "${AWS_REGION}" >/dev/null 2>&1; then
@@ -324,8 +324,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add 04-ship/kubernetes/overlays/production/kustomization.yaml
-          git add 04-ship/kubernetes/overlays/staging/kustomization.yaml
+          git add 04-deploy/kubernetes/overlays/production/kustomization.yaml
+          git add 04-deploy/kubernetes/overlays/staging/kustomization.yaml
           git diff --staged --quiet || git commit -m "chore(deploy): update image tags to ${GITHUB_SHA::8}"
           git push
 
@@ -355,7 +355,7 @@ jobs:
 
       - name: Deploy to production
         run: |
-          kubectl apply -k 04-ship/kubernetes/overlays/production/
+          kubectl apply -k 04-deploy/kubernetes/overlays/production/
           echo "### Deployed to production" >> "$GITHUB_STEP_SUMMARY"
           echo "- Commit: \`${GITHUB_SHA::8}\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- Cluster: gtcx-zimbabwe-pilot" >> "$GITHUB_STEP_SUMMARY"

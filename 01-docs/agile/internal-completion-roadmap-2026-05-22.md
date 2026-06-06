@@ -100,19 +100,19 @@ The main execution roadmap (`execution-roadmap-2026-05-22.md`) mixes internal an
 
 **Acceptance criteria:**
 
-- [ ] `04-ship/kubernetes/overlays/staging/audit-flush-patch.yaml` (new) substitutes image + IRSA role ARN + S3 bucket name with `terraform output`–compatible placeholders.
-- [ ] `04-ship/kubernetes/overlays/production/audit-flush-patch.yaml` (new) same.
+- [ ] `04-deploy/kubernetes/overlays/staging/audit-flush-patch.yaml` (new) substitutes image + IRSA role ARN + S3 bucket name with `terraform output`–compatible placeholders.
+- [ ] `04-deploy/kubernetes/overlays/production/audit-flush-patch.yaml` (new) same.
 - [ ] Both overlays' `kustomization.yaml` reference the patch.
-- [ ] `kubectl kustomize 04-ship/kubernetes/overlays/staging` and `…/production` build clean (no admission errors).
+- [ ] `kubectl kustomize 04-deploy/kubernetes/overlays/staging` and `…/production` build clean (no admission errors).
 - [ ] Patches include resource limits sized per env (staging: 200m/256Mi; production: 500m/512Mi).
 
 **Test scenarios:**
 
-1. `kubectl kustomize 04-ship/kubernetes/overlays/staging | grep -c "image: gtcx/audit-flush:"` returns 1.
+1. `kubectl kustomize 04-deploy/kubernetes/overlays/staging | grep -c "image: gtcx/audit-flush:"` returns 1.
 2. Same for production.
 3. `kubectl kustomize` is dry-runnable; no field-strictness errors.
 
-**Dependencies:** Existing `04-ship/kubernetes/base/services/audit-flush.yaml` (✅) + Terraform module already wired (✅).
+**Dependencies:** Existing `04-deploy/kubernetes/base/services/audit-flush.yaml` (✅) + Terraform module already wired (✅).
 
 ### INT-A UAT
 
@@ -250,7 +250,7 @@ The main execution roadmap (`execution-roadmap-2026-05-22.md`) mixes internal an
 
 **Test scenarios:** N/A (administrative + verification).
 
-**Dependencies:** Existing `04-ship/terraform/modules/compliance-db/` is the source of truth.
+**Dependencies:** Existing `04-deploy/terraform/modules/compliance-db/` is the source of truth.
 
 ## [INT-C-4] Distribution metrics scaffold
 

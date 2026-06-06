@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - '04-ship/kubernetes/**'
+      - '04-deploy/kubernetes/**'
       - '.github/workflows/chaos-test.yml'
       - '03-platform/tools/scripts/chaos-manifest-validator.mjs'
   workflow_dispatch:

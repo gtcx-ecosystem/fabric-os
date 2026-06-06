@@ -33,7 +33,7 @@ This plan covers internal, non-blocked work remaining after the 8.7 / 10 fresh a
 | Verify release evidence locally | Complete | `release-evidence-verification.json` stores verifier result.                                      |
 | Emit WORM upload manifest       | Complete | `worm-upload.json` records bucket/key, required KMS header, hash, and command.                    |
 | Add tests                       | Complete | `03-platform/tools/control-plane/tests/generate-release-evidence.test.mjs`.                       |
-| Add validation gate             | Complete | `04-ship/03-platform/scripts/validate.sh` runs control-plane tests in quick and full validation.  |
+| Add validation gate             | Complete | `04-deploy/03-platform/scripts/validate.sh` runs control-plane tests in quick and full validation.  |
 | WORM upload wrapper             | Complete | `03-platform/tools/control-plane/upload-release-evidence-to-worm.mjs` validates hash and uploads. |
 
 ## Sprint INT-2 - Runtime Smoke Evidence Script
@@ -48,7 +48,7 @@ This plan covers internal, non-blocked work remaining after the 8.7 / 10 fresh a
 | Emit JSON evidence               | Complete | Output includes endpoint, status, headers subset, latency, timestamp.                  |
 | Add 01-docs/runbook              | Complete | Operators can run against staging, testnet, or production.                             |
 | Add dry-run/local test           | Complete | Local test proves output shape without live credentials.                               |
-| In-cluster smoke probe           | Complete | `04-ship/kubernetes/overlays/staging/smoke-probe-cronjob.yaml` deploys inside cluster. |
+| In-cluster smoke probe           | Complete | `04-deploy/kubernetes/overlays/staging/smoke-probe-cronjob.yaml` deploys inside cluster. |
 
 ## Sprint INT-3 - Redis Nonce-Store Coverage
 

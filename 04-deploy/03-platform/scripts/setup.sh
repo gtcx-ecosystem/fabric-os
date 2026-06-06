@@ -129,7 +129,7 @@ setup_database() {
     cd "${PROJECT_ROOT}"
     
     # Start database containers
-    docker compose -f 04-ship/docker/docker-compose.dev.yml up -d postgres postgres-audit redis
+    docker compose -f 04-deploy/docker/docker-compose.dev.yml up -d postgres postgres-audit redis
     
     # Wait for databases to be ready
     log_info "Waiting for databases to be ready..."
@@ -137,7 +137,7 @@ setup_database() {
     
     local retries=30
     while [[ $retries -gt 0 ]]; do
-        if docker compose -f 04-ship/docker/docker-compose.dev.yml exec -T postgres pg_isready -U gtcx &>/dev/null; then
+        if docker compose -f 04-deploy/docker/docker-compose.dev.yml exec -T postgres pg_isready -U gtcx &>/dev/null; then
             break
         fi
         retries=$((retries - 1))
@@ -214,10 +214,10 @@ full_setup() {
     log_success "=========================================="
     echo ""
     echo "Start all services:"
-    echo "  docker compose -f 04-ship/docker/docker-compose.dev.yml up"
+    echo "  docker compose -f 04-deploy/docker/docker-compose.dev.yml up"
     echo ""
     echo "Or start in background:"
-    echo "  docker compose -f 04-ship/docker/docker-compose.dev.yml up -d"
+    echo "  docker compose -f 04-deploy/docker/docker-compose.dev.yml up -d"
     echo ""
     echo "Access points:"
     echo "  API:        http://localhost:3000"

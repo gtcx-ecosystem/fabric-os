@@ -22,7 +22,7 @@ Detect unusual query patterns, tool usage spikes, and auth anomalies in the comp
 
 - Compliance gateway query stream (`03-platform/tools/compliance-gateway/src/server.mjs`)
 - Replay guard verification stream (`03-platform/tools/replay-protection/src/server.mjs`)
-- Audit event stream (`04-ship/03-platform/scripts/test-audit-immutability.sh`)
+- Audit event stream (`04-deploy/03-platform/scripts/test-audit-immutability.sh`)
 
 Out of scope: Protocol-level anomalies (handled by `gtcx-protocols`).
 

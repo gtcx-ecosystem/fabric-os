@@ -21,8 +21,8 @@ Allow **Vertex AI pipelines** (GCP) to publish **non-PII model artifacts** to AW
 
 | Path                                       | Purpose                                                   |
 | ------------------------------------------ | --------------------------------------------------------- |
-| `04-ship/terraform/modules/gcp-ml-bridge/` | WIF OIDC provider + `intelligence-gcp-ml-bridge` IAM role |
-| `04-ship/terraform/modules/ml-pipeline/`   | AWS S3 datasets/models + DynamoDB registry (existing)     |
+| `04-deploy/terraform/modules/gcp-ml-bridge/` | WIF OIDC provider + `intelligence-gcp-ml-bridge` IAM role |
+| `04-deploy/terraform/modules/ml-pipeline/`   | AWS S3 datasets/models + DynamoDB registry (existing)     |
 
 ## Activation checklist
 

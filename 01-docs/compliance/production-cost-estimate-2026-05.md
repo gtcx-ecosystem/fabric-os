@@ -197,7 +197,7 @@ Region: af-south-1
 **Apply command (requires approval):**
 
 ```bash
-cd 04-ship/terraform/environments/production
+cd 04-deploy/terraform/environments/production
 terraform plan -out=production.tfplan
 terraform apply production.tfplan
 ```

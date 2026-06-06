@@ -10,7 +10,7 @@ review_cycle: 'on-change'
 
 # Alert Runbooks
 
-Each Prometheus alert in `04-ship/monitoring/alerts/` has its `runbook_url`
+Each Prometheus alert in `04-deploy/monitoring/alerts/` has its `runbook_url`
 annotation pointing at a section below. **Operators arriving here from a
 PagerDuty page should be able to identify the alert, the immediate impact,
 the triage steps, and the mitigation in under 60 seconds.**
@@ -34,7 +34,7 @@ anchor rules apply.
 | Field    | Value                                                           |
 | -------- | --------------------------------------------------------------- |
 | Severity | <critical / high / warning>                                     |
-| Source   | `04-ship/monitoring/alerts/<file>.yml`                            |
+| Source   | `04-deploy/monitoring/alerts/<file>.yml`                            |
 | Impact   | <one sentence on what the user sees if this fires>              |
 
 **Detection signal:** <metric + threshold>
@@ -60,7 +60,7 @@ anchor rules apply.
 | Field    | Value                                           |
 | -------- | ----------------------------------------------- |
 | Severity | critical                                        |
-| Source   | `04-ship/monitoring/alerts/protocol-alerts.yml` |
+| Source   | `04-deploy/monitoring/alerts/protocol-alerts.yml` |
 | Impact   | A protocol handler is failing >5% of requests   |
 
 **Detection signal:** `gtcx_protocol_errors_total / gtcx_protocol_requests_total > 0.05` for 5m.
@@ -83,7 +83,7 @@ anchor rules apply.
 | Field    | Value                                           |
 | -------- | ----------------------------------------------- |
 | Severity | warning                                         |
-| Source   | `04-ship/monitoring/alerts/protocol-alerts.yml` |
+| Source   | `04-deploy/monitoring/alerts/protocol-alerts.yml` |
 | Impact   | p99 latency exceeds 2s — user-visible slowness  |
 
 **Triage:** Check NATS broker latency, DB connection pool saturation, recent traffic spike. Compare against k6 soak baseline in `03-platform/tools/load-tests/`.
@@ -93,7 +93,7 @@ anchor rules apply.
 | Field    | Value                                           |
 | -------- | ----------------------------------------------- |
 | Severity | critical                                        |
-| Source   | `04-ship/monitoring/alerts/protocol-alerts.yml` |
+| Source   | `04-deploy/monitoring/alerts/protocol-alerts.yml` |
 | Impact   | Total protocol outage                           |
 
 **Triage:** Verify pod status (`kubectl get pods -n gtcx -l app=gtcx-protocols`), check recent ALB target health, inspect node health.
@@ -116,7 +116,7 @@ VerifiedLotProof assembly failing. Check `audit-flush` sidecar `/ready`, NATS Je
 
 ### auditeventvolumedropped / auditunusualdidpattern / auditoffhoursactivity / auditburstdetected / auditmerklerootmismatch
 
-See `04-ship/monitoring/alerts/audit-anomaly.yml` and `audit-trust-alerts.yml`. These detect tampering attempts or operational anomalies in the audit chain. **Any merkle root mismatch is a stop-ship event** — escalate to security-engineer-lead immediately and stop ingest until investigated. Sections below to be expanded by the next on-call rotation.
+See `04-deploy/monitoring/alerts/audit-anomaly.yml` and `audit-trust-alerts.yml`. These detect tampering attempts or operational anomalies in the audit chain. **Any merkle root mismatch is a stop-ship event** — escalate to security-engineer-lead immediately and stop ingest until investigated. Sections below to be expanded by the next on-call rotation.
 
 ---
 
@@ -134,7 +134,7 @@ For ANISA/Cortex/Veritas/PANX: see the corresponding intelligence service runboo
 
 `slo-burn-rate-alerts.yml` — multi-window burn-rate alerts on AGX/Protocols/ANISA. Fast burn (`SLOFastBurn*`) → page; slow burn (`SLOSlowBurn*`) → Slack.
 
-**For any fast-burn page:** consult the SLO dashboard (`04-ship/monitoring/dashboards/gtcx-slo-dashboard.json`) to identify the contributing endpoint, then follow the protocol or intelligence runbook for that service.
+**For any fast-burn page:** consult the SLO dashboard (`04-deploy/monitoring/dashboards/gtcx-slo-dashboard.json`) to identify the contributing endpoint, then follow the protocol or intelligence runbook for that service.
 
 ### slolatencybreachagx
 
@@ -150,7 +150,7 @@ p99 latency breach on AGX. Compare against the recent deploy timeline; common ca
 
 ## How to add a new alert section
 
-1. Add the alert to `04-ship/monitoring/alerts/<area>.yml`.
+1. Add the alert to `04-deploy/monitoring/alerts/<area>.yml`.
 2. Run `node 03-platform/tools/scripts/alerts-add-runbook-url.mjs` to add the `runbook_url` annotation.
 3. Add a section here under the matching area, using the template above. Anchor matches the alertname lowercased.
 4. Commit both in one change.
@@ -170,160 +170,160 @@ p99 latency breach on AGX. Compare against the recent deploy timeline; common ca
 
 ### anisaelevatedllmlatency
 
-STUB — see `04-ship/monitoring/alerts/anisa-error-budget.yml`.
+STUB — see `04-deploy/monitoring/alerts/anisa-error-budget.yml`.
 
 ### anisahighllmlatency
 
-STUB — see `04-ship/monitoring/alerts/anisa-error-budget.yml`.
+STUB — see `04-deploy/monitoring/alerts/anisa-error-budget.yml`.
 
 ### auditburstdetected
 
-STUB — see `04-ship/monitoring/alerts/audit-trust-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/audit-trust-alerts.yml`.
 
 ### auditdbwritefailure
 
-STUB — see `04-ship/monitoring/alerts/audit-trust-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/audit-trust-alerts.yml`.
 
 ### auditeventvolumedrop
 
-STUB — see `04-ship/monitoring/alerts/audit-trust-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/audit-trust-alerts.yml`.
 
 ### auditeventvolumedropped
 
-STUB — see `04-ship/monitoring/alerts/audit-trust-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/audit-trust-alerts.yml`.
 
 ### auditmerklerootmismatch
 
-STUB — see `04-ship/monitoring/alerts/audit-trust-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/audit-trust-alerts.yml`.
 
 ### auditoffhoursactivity
 
-STUB — see `04-ship/monitoring/alerts/audit-trust-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/audit-trust-alerts.yml`.
 
 ### auditunusualdidpattern
 
-STUB — see `04-ship/monitoring/alerts/audit-trust-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/audit-trust-alerts.yml`.
 
 ### cortexbufferelevated
 
-STUB — see `04-ship/monitoring/alerts/intelligence-circuit-breakers.yml`.
+STUB — see `04-deploy/monitoring/alerts/intelligence-circuit-breakers.yml`.
 
 ### cortexbuffernearfull
 
-STUB — see `04-ship/monitoring/alerts/intelligence-circuit-breakers.yml`.
+STUB — see `04-deploy/monitoring/alerts/intelligence-circuit-breakers.yml`.
 
 ### intelligencecircuitbreakertripped
 
-STUB — see `04-ship/monitoring/alerts/intelligence-circuit-breakers.yml`.
+STUB — see `04-deploy/monitoring/alerts/intelligence-circuit-breakers.yml`.
 
 ### intelligenceelevatederrorrate
 
-STUB — see `04-ship/monitoring/alerts/intelligence-error-rate.yml`.
+STUB — see `04-deploy/monitoring/alerts/intelligence-error-rate.yml`.
 
 ### intelligencehigherrorrate
 
-STUB — see `04-ship/monitoring/alerts/intelligence-error-rate.yml`.
+STUB — see `04-deploy/monitoring/alerts/intelligence-error-rate.yml`.
 
 ### intelligenceservicedegraded
 
-STUB — see `04-ship/monitoring/alerts/intelligence-error-rate.yml`.
+STUB — see `04-deploy/monitoring/alerts/intelligence-error-rate.yml`.
 
 ### panxconsensusaging
 
-STUB — see `04-ship/monitoring/alerts/panx-consensus.yml`.
+STUB — see `04-deploy/monitoring/alerts/panx-consensus.yml`.
 
 ### panxconsensusstale
 
-STUB — see `04-ship/monitoring/alerts/panx-consensus.yml`.
+STUB — see `04-deploy/monitoring/alerts/panx-consensus.yml`.
 
 ### replayenvelopemismatchspike
 
-STUB — see `04-ship/monitoring/alerts/replay-protection-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/replay-protection-alerts.yml`.
 
 ### replayextendedwindowusage
 
-STUB — see `04-ship/monitoring/alerts/replay-protection-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/replay-protection-alerts.yml`.
 
 ### replayfuturetimestampspike
 
-STUB — see `04-ship/monitoring/alerts/replay-protection-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/replay-protection-alerts.yml`.
 
 ### replayguardclockskewhigh
 
-STUB — see `04-ship/monitoring/alerts/replay-protection-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/replay-protection-alerts.yml`.
 
 ### replayguarddown
 
-STUB — see `04-ship/monitoring/alerts/replay-protection-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/replay-protection-alerts.yml`.
 
 ### replayguardhighrejectionrate
 
-STUB — see `04-ship/monitoring/alerts/replay-protection-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/replay-protection-alerts.yml`.
 
 ### replayguardredisunavailable
 
-STUB — see `04-ship/monitoring/alerts/replay-protection-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/replay-protection-alerts.yml`.
 
 ### replayprotectionspike
 
-STUB — see `04-ship/monitoring/alerts/replay-protection-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/replay-protection-alerts.yml`.
 
 ### replaysignaturefailurespike
 
-STUB — see `04-ship/monitoring/alerts/replay-protection-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/replay-protection-alerts.yml`.
 
 ### replaystaletimestampspike
 
-STUB — see `04-ship/monitoring/alerts/replay-protection-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/replay-protection-alerts.yml`.
 
 ### slofastburnagx
 
-STUB — see `04-ship/monitoring/alerts/slo-burn-rate-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`.
 
 ### slofastburnanisa
 
-STUB — see `04-ship/monitoring/alerts/slo-burn-rate-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`.
 
 ### slofastburnprotocols
 
-STUB — see `04-ship/monitoring/alerts/slo-burn-rate-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`.
 
 ### slolatencybreachanisa
 
-STUB — see `04-ship/monitoring/alerts/slo-burn-rate-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`.
 
 ### slolatencybreachprotocols
 
-STUB — see `04-ship/monitoring/alerts/slo-burn-rate-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`.
 
 ### sloslowburnagx
 
-STUB — see `04-ship/monitoring/alerts/slo-burn-rate-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`.
 
 ### sloslowburnanisa
 
-STUB — see `04-ship/monitoring/alerts/slo-burn-rate-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`.
 
 ### sloslowburnprotocols
 
-STUB — see `04-ship/monitoring/alerts/slo-burn-rate-alerts.yml`.
+STUB — see `04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`.
 
 ### veritasanomalousmatchrate
 
-STUB — see `04-ship/monitoring/alerts/veritas-anomaly.yml`.
+STUB — see `04-deploy/monitoring/alerts/veritas-anomaly.yml`.
 
 ### veritaselevatedmatchrate
 
-STUB — see `04-ship/monitoring/alerts/veritas-anomaly.yml`.
+STUB — see `04-deploy/monitoring/alerts/veritas-anomaly.yml`.
 
 ### compliancegatewayllmhighlatency
 
-STUB — see `04-ship/monitoring/alerts/llm-ops-alerts.yml`. Check Grafana LLM Ops dashboard; review provider latency and cost-router fallback.
+STUB — see `04-deploy/monitoring/alerts/llm-ops-alerts.yml`. Check Grafana LLM Ops dashboard; review provider latency and cost-router fallback.
 
 ### compliancegatewayllmhigherrorrate
 
-STUB — see `04-ship/monitoring/alerts/llm-ops-alerts.yml`. Inspect compliance-gateway logs and `/v1/query` error metrics; verify API keys and provider health.
+STUB — see `04-deploy/monitoring/alerts/llm-ops-alerts.yml`. Inspect compliance-gateway logs and `/v1/query` error metrics; verify API keys and provider health.
 
 ### compliancegatewayllmdailycostanomaly
 
-STUB — see `04-ship/monitoring/alerts/llm-ops-alerts.yml`. Compare `baseline cost-stats` export with `compliance_gateway_cost_usd_total`; tune routing thresholds.
+STUB — see `04-deploy/monitoring/alerts/llm-ops-alerts.yml`. Compare `baseline cost-stats` export with `compliance_gateway_cost_usd_total`; tune routing thresholds.

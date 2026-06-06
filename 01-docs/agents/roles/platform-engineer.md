@@ -64,8 +64,8 @@ In 2021, during the penetration test of the `gtcx-infrastructure` staging cluste
 
 ## Owns
 
-- Kubernetes manifests: `04-ship/k8s/` (base manifests and all environment overlays)
-- Kustomize base and overlay structure: `04-ship/k8s/base/`, `04-ship/k8s/overlays/`
+- Kubernetes manifests: `04-deploy/k8s/` (base manifests and all environment overlays)
+- Kustomize base and overlay structure: `04-deploy/k8s/base/`, `04-deploy/k8s/overlays/`
 - Service definitions, Deployments, StatefulSets, Services, Ingress
 - RBAC: ClusterRoles, ClusterRoleBindings, Roles, RoleBindings, ServiceAccounts
 - NetworkPolicy definitions across all namespaces
@@ -84,7 +84,7 @@ In 2021, during the penetration test of the `gtcx-infrastructure` staging cluste
 ## Responsibilities
 
 **Kustomize overlay governance**
-Maintains the base-and-overlay structure in `04-ship/k8s/`. Ensures every overlay is validated against base using the CI overlay-diff tool before merge. Enforces the rule that overlays may add restrictions but never remove security controls established in base. Reviews all overlay changes that touch NetworkPolicy, RBAC, or pod security contexts before they reach the merge gate.
+Maintains the base-and-overlay structure in `04-deploy/k8s/`. Ensures every overlay is validated against base using the CI overlay-diff tool before merge. Enforces the rule that overlays may add restrictions but never remove security controls established in base. Reviews all overlay changes that touch NetworkPolicy, RBAC, or pod security contexts before they reach the merge gate.
 
 **RBAC least-privilege enforcement**
 Owns all ServiceAccount, Role, ClusterRole, RoleBinding, and ClusterRoleBinding definitions. Audits RBAC grants quarterly using the methodology in `01-docs/engineering/2-platform/rbac-audit.md`. Any binding that grants write access to the `gtcx_audit` namespace or its services requires explicit human approval and a documented justification.
@@ -130,7 +130,7 @@ Owns the Kubernetes-layer response for platform incidents: pod eviction, namespa
 
 1. Read `01-docs/engineering/2-platform/overlay-standards.md` — Kustomize discipline rules
 2. Read `01-docs/engineering/2-platform/rbac-audit.md` — current RBAC posture
-3. Read `04-ship/k8s/base/network-policies/` — active NetworkPolicy baseline
+3. Read `04-deploy/k8s/base/network-policies/` — active NetworkPolicy baseline
 4. Read `01-docs/01-agents/workflows/safety-rules.md`
 5. For production changes: confirm ticket number and human approval before touching any `overlays/prod/` manifest
 
@@ -142,7 +142,7 @@ Owns the Kubernetes-layer response for platform incidents: pod eviction, namespa
 | --------------------------- | ----------------------------------------------------- |
 | Kustomize overlay standards | `01-docs/engineering/2-platform/overlay-standards.md` |
 | RBAC audit methodology      | `01-docs/engineering/2-platform/rbac-audit.md`        |
-| Network policy baseline     | `04-ship/k8s/base/network-policies/`                  |
+| Network policy baseline     | `04-deploy/k8s/base/network-policies/`                  |
 | Pod security standards      | `01-docs/engineering/2-platform/pod-security.md`      |
 | Platform incident runbook   | `01-docs/04-ops/runbooks/platform-incident.md`        |
 | Safety rules                | `01-docs/01-agents/workflows/safety-rules.md`         |

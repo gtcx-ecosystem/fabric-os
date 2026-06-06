@@ -33,7 +33,7 @@ autonomy_level: 'permissioned'
 ### 1. Initialize Terraform
 
 ```bash
-cd 04-ship/terraform/environments/testnet-pilot
+cd 04-deploy/terraform/environments/testnet-pilot
 terraform init
 ```
 
@@ -142,7 +142,7 @@ aws iam get-role --role-name "${ROLE_ARN##*/}" --query 'Role.AssumeRolePolicyDoc
 After verification succeeds, write the evidence bundle:
 
 ```bash
-mkdir -p 04-ship/security/reports/testnet-pilot-worm-evidence/$(date -u +%Y%m%d-%H%M%S)
+mkdir -p 04-deploy/security/reports/testnet-pilot-worm-evidence/$(date -u +%Y%m%d-%H%M%S)
 ```
 
 Collect:
@@ -155,7 +155,7 @@ Collect:
 6. `bucket-policy.json` — `get-bucket-policy` response.
 7. `irsa-trust.json` — `get-role` AssumeRolePolicyDocument.
 
-Commit these to `04-ship/security/reports/testnet-pilot-worm-evidence/<timestamp>/` and link from `01-docs/05-audit/latest.json`.
+Commit these to `04-deploy/security/reports/testnet-pilot-worm-evidence/<timestamp>/` and link from `01-docs/05-audit/latest.json`.
 
 ---
 

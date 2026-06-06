@@ -1,7 +1,7 @@
 # =============================================================================
 # Intelligence Production Overlay
 # =============================================================================
-# Migrated from legacy 04-ship/k8s/intelligence/ directory.
+# Migrated from legacy 04-deploy/k8s/intelligence/ directory.
 # Contains canary deployment (Argo Rollouts), secrets template,
 # and intelligence namespace definition.
 # =============================================================================

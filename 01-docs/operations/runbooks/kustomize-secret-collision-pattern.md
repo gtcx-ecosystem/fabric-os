@@ -99,7 +99,7 @@ When adding a secret to an overlay:
 
 ```bash
 # Build and inspect secret names
-kustomize build 04-ship/kubernetes/overlays/staging | grep -E "name:.*audit-key"
+kustomize build 04-deploy/kubernetes/overlays/staging | grep -E "name:.*audit-key"
 
 # Expected output should show the gtcx- prefixed name, NOT a hash-suffixed name
 # ❌ name: compliance-gateway-audit-key-staging-4c79fk655h
@@ -117,5 +117,5 @@ kustomize build 04-ship/kubernetes/overlays/staging | grep -E "name:.*audit-key"
 ## References
 
 - ER-2-04 incident: `01-docs/04-ops/coordination/from-gtcx-infrastructure-compliance-gateway-staging-healthy-2026-06-04.md`
-- Base kustomization: `04-ship/kubernetes/base/kustomization.yaml`
-- Staging patch: `04-ship/kubernetes/overlays/staging/patches/compliance-gateway-audit-key-secret-ref.yaml`
+- Base kustomization: `04-deploy/kubernetes/base/kustomization.yaml`
+- Staging patch: `04-deploy/kubernetes/overlays/staging/patches/compliance-gateway-audit-key-secret-ref.yaml`

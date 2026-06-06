@@ -37,14 +37,14 @@ autonomy_level: 'permissioned'
 | Replay-protection lint           | Complete | `pnpm lint` passes with 0 errors.                                                                                            |
 | Docs-site build                  | Complete | `pnpm build` passes after Astro/Starlight upgrade and content-config migration.                                              |
 | Astro vulnerabilities            | Complete | `pnpm audit` reports no known vulnerabilities.                                                                               |
-| Terraform fmt                    | Complete | `terraform fmt -check -recursive 04-ship/terraform/` passes.                                                                 |
+| Terraform fmt                    | Complete | `terraform fmt -check -recursive 04-deploy/terraform/` passes.                                                                 |
 | Docs-standard sprint frontmatter | Complete | `pnpm quality:governance:check` and `pnpm test` pass.                                                                        |
 | Prettier drift                   | Complete | `pnpm format:check` passes.                                                                                                  |
 | PagerDuty routing key            | Complete | Hardcoded routing key replaced with `${PAGERDUTY_INTELLIGENCE_ROUTING_KEY}`; `gitleaks` passes.                              |
 | Fake docs token examples         | Complete | Token-shaped examples replaced; `gitleaks` passes.                                                                           |
-| Production Kustomize             | Complete | `kubectl kustomize 04-ship/kubernetes/overlays/production/` passes.                                                          |
-| Pen-test Kustomize               | Complete | `kubectl kustomize 04-ship/kubernetes/overlays/pen-test/` passes.                                                            |
-| `commonLabels` deprecation       | Complete | Kubernetes kustomizations now use `labels`; `rg "commonLabels:" 04-ship/kubernetes` returns no matches.                      |
+| Production Kustomize             | Complete | `kubectl kustomize 04-deploy/kubernetes/overlays/production/` passes.                                                          |
+| Pen-test Kustomize               | Complete | `kubectl kustomize 04-deploy/kubernetes/overlays/pen-test/` passes.                                                            |
+| `commonLabels` deprecation       | Complete | Kubernetes kustomizations now use `labels`; `rg "commonLabels:" 04-deploy/kubernetes` returns no matches.                      |
 | Audit API rate limiting          | Complete | `/audit/bundles` and `/audit/query` use the shared budget/QPS gate; focused tests pass.                                      |
 | Overlay rendering in CI          | Complete | CI now renders base, development, staging, staging-linkerd, production, production-linkerd, testnet, and pen-test artifacts. |
 | WORM runtime proof               | Complete | Signed staging WORM record written and retained in COMPLIANCE mode; see `worm-runtime-evidence-2026-05-27.md`.               |
@@ -80,7 +80,7 @@ autonomy_level: 'permissioned'
 | G0-001 | Fix `03-platform/tools/replay-protection/tests/*.test.mjs` lint failures: import order, unused variables, duplicate object key.                                 | `pnpm lint` passes with 0 errors.                                         |
 | G0-002 | Fix docs-site build: convert Starlight `social` config to object shape and add the missing Astro check dependency.                                              | `pnpm build` passes.                                                      |
 | G0-003 | Upgrade Astro to a patched version that clears GHSA-j687-52p2-xcff and GHSA-xr5h-phrj-8vxv.                                                                     | `pnpm audit` has no Astro findings.                                       |
-| G0-004 | Run Terraform fmt on `04-ship/terraform/environments/staging/main.tf` and `04-ship/terraform/modules/worm-audit/versions.tf`.                                   | `terraform fmt -check -recursive 04-ship/terraform/` passes.              |
+| G0-004 | Run Terraform fmt on `04-deploy/terraform/environments/staging/main.tf` and `04-deploy/terraform/modules/worm-audit/versions.tf`.                                   | `terraform fmt -check -recursive 04-deploy/terraform/` passes.              |
 | G0-005 | Resolve docs-standard failure in `01-docs/05-audit/agile/sprints/current.md` by adding required frontmatter or excluding the scratch file from committed state. | `pnpm test` and `pnpm quality:governance:check` pass on a clean checkout. |
 | G0-006 | Run Prettier on the 8 flagged files or deliberately exclude generated snapshots with documented rationale.                                                      | `pnpm format:check` passes.                                               |
 
@@ -97,8 +97,8 @@ autonomy_level: 'permissioned'
 
 | ID     | Action                                                                                                                                                                 | Evidence To Produce                                                 |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| D1-001 | Reconcile `audit-flush`: either restore `services/audit-flush.yaml` with AMD64-compatible image support or remove production patches that target the removed resource. | `kubectl kustomize 04-ship/kubernetes/overlays/production/` passes. |
-| D1-002 | Fix pen-test namespace conflict by removing duplicate namespace material or converting the overlay to a clean namespace patch model.                                   | `kubectl kustomize 04-ship/kubernetes/overlays/pen-test/` passes.   |
+| D1-001 | Reconcile `audit-flush`: either restore `services/audit-flush.yaml` with AMD64-compatible image support or remove production patches that target the removed resource. | `kubectl kustomize 04-deploy/kubernetes/overlays/production/` passes. |
+| D1-002 | Fix pen-test namespace conflict by removing duplicate namespace material or converting the overlay to a clean namespace patch model.                                   | `kubectl kustomize 04-deploy/kubernetes/overlays/pen-test/` passes.   |
 | D1-003 | Replace deprecated `commonLabels` with `labels` in Kustomize manifests.                                                                                                | All Kustomize overlays pass without deprecation warnings.           |
 | D1-004 | Add production and pen-test overlay generation to CI if not already enforced.                                                                                          | CI artifact includes rendered manifests for each overlay.           |
 
@@ -115,7 +115,7 @@ autonomy_level: 'permissioned'
 
 | ID     | Action                                                                                                                   | Evidence To Produce                                                                |
 | ------ | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| S2-001 | Remove PagerDuty routing key from `04-ship/docker/observability/alertmanager.yml`; rotate it if it has ever been usable. | `gitleaks detect --no-git --redact` passes or only has documented false positives. |
+| S2-001 | Remove PagerDuty routing key from `04-deploy/docker/observability/alertmanager.yml`; rotate it if it has ever been usable. | `gitleaks detect --no-git --redact` passes or only has documented false positives. |
 | S2-002 | Replace fake docs token-shaped examples with non-token-shaped examples.                                                  | Secret scan no longer flags docs examples.                                         |
 | S2-003 | Add per-principal rate limiting or a dedicated limiter to `/audit/bundles`.                                              | Unit/integration test proves 429 or equivalent denial after threshold.             |
 | S2-004 | Add per-principal rate limiting or a dedicated limiter to `/audit/query`.                                                | Unit/integration test proves 429 or equivalent denial after threshold.             |

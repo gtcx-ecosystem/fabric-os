@@ -80,7 +80,7 @@ autonomy_level: 'permissioned'
 
 ```
 gtcx-infrastructure/
-├── 04-ship/
+├── 04-deploy/
 │   ├── docker/                   # Docker images and Compose configs
 │   │   ├── Dockerfile.base       # Ruby + Rust production targets
 │   │   ├── Dockerfile.node       # Node.js application image
@@ -128,13 +128,13 @@ gtcx-infrastructure/
 
 | File                                           | Purpose                                                    |
 | ---------------------------------------------- | ---------------------------------------------------------- |
-| `04-ship/docker/docker-compose.infra.yml`      | Local infrastructure services — start here first           |
-| `04-ship/kubernetes/base/`                     | Shared K8s resources for all environments                  |
-| `04-ship/kubernetes/overlays/production/`      | Production-specific manifests — changes require approval   |
-| `04-ship/terraform/modules/database/`          | Dual RDS provisioning with deletion protection on audit DB |
-| `04-ship/terraform/environments/template/`     | Scaffold for new environments                              |
-| `04-ship/03-platform/scripts/deploy.sh`        | Canonical deployment entry point                           |
-| `04-ship/03-platform/scripts/migrate.sh`       | Migration runner with dry-run and environment guards       |
+| `04-deploy/docker/docker-compose.infra.yml`      | Local infrastructure services — start here first           |
+| `04-deploy/kubernetes/base/`                     | Shared K8s resources for all environments                  |
+| `04-deploy/kubernetes/overlays/production/`      | Production-specific manifests — changes require approval   |
+| `04-deploy/terraform/modules/database/`          | Dual RDS provisioning with deletion protection on audit DB |
+| `04-deploy/terraform/environments/template/`     | Scaffold for new environments                              |
+| `04-deploy/03-platform/scripts/deploy.sh`        | Canonical deployment entry point                           |
+| `04-deploy/03-platform/scripts/migrate.sh`       | Migration runner with dry-run and environment guards       |
 | `03-platform/tools/scripts/security-status.js` | Security posture scanner                                   |
 
 ---
@@ -188,7 +188,7 @@ gtcx-infrastructure/
 
 ```bash
 # Start infrastructure services
-docker compose -f 04-ship/docker/docker-compose.infra.yml up -d
+docker compose -f 04-deploy/docker/docker-compose.infra.yml up -d
 
 # Services available at:
 # PostgreSQL (app)    localhost:5432

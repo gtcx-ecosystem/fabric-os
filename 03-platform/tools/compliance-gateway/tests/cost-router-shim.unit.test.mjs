@@ -11,8 +11,8 @@ import assert from 'node:assert';
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { describe, it } from 'node:test';
+import { fileURLToPath } from 'node:url';
 
 const PKG_ROOT = dirname(fileURLToPath(import.meta.url));
 const BASELINE_ROUTER = join(

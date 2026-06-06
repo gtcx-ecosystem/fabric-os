@@ -105,7 +105,7 @@ aws elbv2 add-listener-certificates \
 Then update the ingress annotation so the controller keeps it:
 
 ```yaml
-# 04-ship/kubernetes/overlays/staging/ingress.yaml
+# 04-deploy/kubernetes/overlays/staging/ingress.yaml
 alb.ingress.kubernetes.io/certificate-arn: |
   arn:aws:acm:af-south-1:348389439381:certificate/8929e5a0-a4ec-4acf-86f8-945993e1f0c3,
   arn:aws:acm:af-south-1:348389439381:certificate/9f7149a3-26db-4dee-bce5-b5a3cd29fe16
@@ -114,7 +114,7 @@ alb.ingress.kubernetes.io/certificate-arn: |
 Apply:
 
 ```bash
-kubectl apply -f 04-ship/kubernetes/overlays/staging/ingress.yaml
+kubectl apply -f 04-deploy/kubernetes/overlays/staging/ingress.yaml
 ```
 
 ---

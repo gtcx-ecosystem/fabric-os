@@ -11,7 +11,7 @@
 #   3. NGINX auth_request — ingress-level enforcement before traffic hits agx
 #
 # To apply this patch:
-#   kustomize build 04-ship/kubernetes/overlays/production | kubectl apply -f -
+#   kustomize build 04-deploy/kubernetes/overlays/production | kubectl apply -f -
 # =============================================================================
 
 apiVersion: apps/v1

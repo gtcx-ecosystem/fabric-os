@@ -153,7 +153,7 @@ aws eks describe-cluster --name gtcx-production --region af-south-1 \
 **Option B: Restore from Terraform (if cluster is unrecoverable)**
 
 ```bash
-cd 04-ship/terraform/environments/production
+cd 04-deploy/terraform/environments/production
 
 # Taint the failed cluster resource
 terraform taint module.eks.aws_eks_cluster.main
@@ -162,7 +162,7 @@ terraform taint module.eks.aws_eks_cluster.main
 terraform apply -auto-approve
 
 # Re-deploy all workloads
-kubectl apply -f 04-ship/kubernetes/base/services/
+kubectl apply -f 04-deploy/kubernetes/base/services/
 ```
 
 **Option C: Failover to staging**
@@ -206,7 +206,7 @@ export AWS_REGION=us-east-1
 
 # 1. Create emergency VPC in us-east-1
 # (Use Terraform with region override)
-cd 04-ship/terraform/environments/production
+cd 04-deploy/terraform/environments/production
 terraform apply -var='region=us-east-1' -target=module.vpc -auto-approve
 
 # 2. Restore RDS from cross-region snapshot
@@ -308,7 +308,7 @@ terraform show
 
 ```bash
 # Option A: Terraform state is intact — just re-apply
-cd 04-ship/terraform/environments/production
+cd 04-deploy/terraform/environments/production
 terraform plan
 terraform apply -auto-approve
 

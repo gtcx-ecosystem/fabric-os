@@ -24,7 +24,7 @@ This runbook does **not** change the enablement policy in [fine-tune-workflow-en
 
 ## Script
 
-Use [04-ship/03-platform/scripts/fine-tune-workflow.sh](../../../04-ship/03-platform/scripts/fine-tune-workflow.sh).
+Use [04-deploy/03-platform/scripts/fine-tune-workflow.sh](../../../04-deploy/03-platform/scripts/fine-tune-workflow.sh).
 
 The script assumes:
 
@@ -37,7 +37,7 @@ The script assumes:
 Before any manual run or suspend/resume action:
 
 ```bash
-./04-ship/03-platform/scripts/fine-tune-workflow.sh status
+./04-deploy/03-platform/scripts/fine-tune-workflow.sh status
 ```
 
 This verifies:
@@ -54,7 +54,7 @@ If the template or cron is missing, stop. That usually means the workflow is sti
 Run one explicit workflow from the `WorkflowTemplate` before any cron enablement:
 
 ```bash
-./04-ship/03-platform/scripts/fine-tune-workflow.sh trigger \
+./04-deploy/03-platform/scripts/fine-tune-workflow.sh trigger \
   --environment=testnet-pilot \
   --dataset-version=2026-05-06 \
   --model-id=cortex-anomaly-detector \
@@ -71,7 +71,7 @@ Notes:
 Dry-run mode:
 
 ```bash
-./04-ship/03-platform/scripts/fine-tune-workflow.sh trigger \
+./04-deploy/03-platform/scripts/fine-tune-workflow.sh trigger \
   --environment=testnet-pilot \
   --dataset-version=2026-05-06 \
   --dry-run
@@ -89,7 +89,7 @@ After submission, collect:
 Suspend the cron without editing Terraform or patching resources by hand:
 
 ```bash
-./04-ship/03-platform/scripts/fine-tune-workflow.sh suspend
+./04-deploy/03-platform/scripts/fine-tune-workflow.sh suspend
 ```
 
 This sets:
@@ -106,7 +106,7 @@ Use it when:
 Dry-run mode:
 
 ```bash
-./04-ship/03-platform/scripts/fine-tune-workflow.sh suspend --dry-run
+./04-deploy/03-platform/scripts/fine-tune-workflow.sh suspend --dry-run
 ```
 
 ## Resume Path
@@ -114,7 +114,7 @@ Dry-run mode:
 Only resume after explicit review:
 
 ```bash
-./04-ship/03-platform/scripts/fine-tune-workflow.sh resume
+./04-deploy/03-platform/scripts/fine-tune-workflow.sh resume
 ```
 
 Resume is allowed only after:
@@ -142,4 +142,4 @@ If the issue is in the serving path, use the normal deploy rollback flow in [dep
 
 - [fine-tune-workflow-enablement.md](./fine-tune-workflow-enablement.md)
 - [deploy.md](./deploy.md)
-- [04-ship/terraform/modules/workflow-orchestration/main.tf](../../../04-ship/terraform/modules/workflow-orchestration/main.tf)
+- [04-deploy/terraform/modules/workflow-orchestration/main.tf](../../../04-deploy/terraform/modules/workflow-orchestration/main.tf)

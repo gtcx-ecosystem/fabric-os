@@ -48,12 +48,12 @@ No data is transferred outside the African continent during normal operations.
 The following Terraform configuration enforces data residency:
 
 ```hcl
-# From: 04-ship/terraform/environments/zimbabwe-pilot/main.tf
+# From: 04-deploy/terraform/environments/zimbabwe-pilot/main.tf
 provider "aws" {
   region = "af-south-1"  # Cape Town, South Africa
 }
 
-# From: 04-ship/terraform/modules/compliance-db/main.tf
+# From: 04-deploy/terraform/modules/compliance-db/main.tf
 # Jurisdiction-specific configuration:
 zimbabwe = {
   region               = "af-south-1"

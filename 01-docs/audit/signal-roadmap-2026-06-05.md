@@ -27,7 +27,7 @@ Canonical assessment: [`signal-assessment-2026-06-05.md`](./signal-assessment-20
 
 | Task                              | Status             | Evidence                                                        |
 | --------------------------------- | ------------------ | --------------------------------------------------------------- |
-| SIGNAL-INF-002 LLM dashboard      | **done** (in-repo) | `04-ship/monitoring/dashboards/llm-ops.json`                    |
+| SIGNAL-INF-002 LLM dashboard      | **done** (in-repo) | `04-deploy/monitoring/dashboards/llm-ops.json`                    |
 | SIGNAL-INF-008 staging monitoring | **partial**        | `overlays/staging/monitoring/` + runbook; cluster apply pending |
 | SIGNAL-INF-004 LangSmith/Helicone | **done** (shim)    | `03-platform/tools/compliance-gateway/src/llm-trace.mjs`        |
 | SIGNAL-INF-007 OTel endpoint      | **partial**        | Jaeger OTLP env in metrics patch                                |

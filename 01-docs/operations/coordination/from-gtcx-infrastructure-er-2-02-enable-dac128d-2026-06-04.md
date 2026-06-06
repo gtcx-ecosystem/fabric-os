@@ -12,7 +12,7 @@ work_id: INT-R2-03 / ER-2-02
 
 ```bash
 $ cd /Users/amanianai/Sites/gtcx-ecosystem/gtcx-infrastructure
-$ kubectl apply -k 04-ship/kubernetes/overlays/staging/intelligence/
+$ kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
 namespace/intelligence unchanged
 service/intelligence-orchestrator unchanged
 deployment.apps/intelligence-orchestrator configured

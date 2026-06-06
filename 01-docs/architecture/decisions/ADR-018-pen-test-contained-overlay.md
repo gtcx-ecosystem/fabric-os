@@ -34,13 +34,13 @@ Three constraints shaped the decision:
 
 ## Decision
 
-We add a dedicated Kustomize overlay at `04-ship/kubernetes/overlays/pen-test/` with:
+We add a dedicated Kustomize overlay at `04-deploy/kubernetes/overlays/pen-test/` with:
 
 - **Dedicated namespace** `gtcx-pen-test` with `pod-security.kubernetes.io/enforce: restricted` (PodSecurity Standards baseline).
 - **Isolated JetStream subject** `gtcx.audit.pen-test.>` — separate from production subjects.
 - **Separate WORM bucket** `gtcx-pen-test-audit-af-south-1` — different from production `gtcx-worm-audit-production-af-south-1`. The pen-test cannot pollute production audit evidence.
 - **Tight resource limits per principal** — 5 QPS and $1/day token budget. An exploited token cannot run up a real bill.
-- **Anonymized seed data only** — `04-ship/migrations/seed-pentest.sql` (planned) loads test data; no production PII.
+- **Anonymized seed data only** — `04-deploy/migrations/seed-pentest.sql` (planned) loads test data; no production PII.
 - **Auto-teardown date annotation** `gtcx.trade/teardown-after: 2026-08-31` so the namespace gets cleaned up after the engagement.
 
 ## Alternatives Considered
@@ -76,5 +76,5 @@ We add a dedicated Kustomize overlay at `04-ship/kubernetes/overlays/pen-test/` 
 
 - ADR-014 — NATS JetStream audit transport (separate subject hierarchy enables contained routing)
 - ADR-015 — Per-tenant JetStream subject routing (pen-test subjects are a special case)
-- `04-ship/kubernetes/overlays/pen-test/kustomization.yaml`
+- `04-deploy/kubernetes/overlays/pen-test/kustomization.yaml`
 - `01-docs/05-audit/pen-test-rfp-2026.md`

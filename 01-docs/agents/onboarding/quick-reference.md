@@ -46,7 +46,7 @@ DevOps tooling, deployment automation, and security framework for the GTCX ecosy
 
 ```
 gtcx-infrastructure/
-├── 04-ship/
+├── 04-deploy/
 │   ├── docker/        # Container definitions and compose files
 │   ├── kubernetes/    # K8s manifests and Helm charts
 │   ├── terraform/     # Infrastructure-as-code (IaC)

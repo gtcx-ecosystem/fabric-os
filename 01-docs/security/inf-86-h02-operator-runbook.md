@@ -28,7 +28,7 @@ aws configure get region  # should be af-south-1
 terraform version  # >= 1.5.0
 
 # Navigate to production environment
-cd 04-ship/terraform/environments/production
+cd 04-deploy/terraform/environments/production
 
 # Verify backend is configured (DO NOT apply if backend is local)
 terraform workspace show  # should show "default" or "production"
@@ -50,7 +50,7 @@ terraform workspace show  # should show "default" or "production"
 ### Step 2: Generate Terraform plan (Custodian A)
 
 ```bash
-cd 04-ship/terraform/environments/production
+cd 04-deploy/terraform/environments/production
 
 # Ensure clean state
 git status --short  # should be clean

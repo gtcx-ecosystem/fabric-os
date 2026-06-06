@@ -5,10 +5,10 @@
 # Builds Docker images from ecosystem repos and pushes to ECR.
 #
 # Usage:
-#   ./04-ship/03-platform/scripts/build-push.sh                    # Build all, push all
-#   ./04-ship/03-platform/scripts/build-push.sh protocols           # Build + push one service
-#   ./04-ship/03-platform/scripts/build-push.sh --list              # List available services
-#   ./04-ship/03-platform/scripts/build-push.sh --version=sha-abc   # Custom immutable tag
+#   ./04-deploy/03-platform/scripts/build-push.sh                    # Build all, push all
+#   ./04-deploy/03-platform/scripts/build-push.sh protocols           # Build + push one service
+#   ./04-deploy/03-platform/scripts/build-push.sh --list              # List available services
+#   ./04-deploy/03-platform/scripts/build-push.sh --version=sha-abc   # Custom immutable tag
 #
 # Prerequisites:
 #   - Docker running
@@ -265,7 +265,7 @@ main() {
     log_success "============================================"
     echo ""
     log_info "Next: update kustomization image tags and apply"
-    log_info "  cd 04-ship/kubernetes/overlays/<env>"
+    log_info "  cd 04-deploy/kubernetes/overlays/<env>"
     log_info "  kustomize edit set image gtcx/protocols=${registry}/gtcx-protocols:${VERSION}"
     log_info "  kubectl apply -k ."
 }

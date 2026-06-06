@@ -31,7 +31,7 @@ xr-id: XR-201
 
 **Image:** `348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-intelligence-sdk:12be5342151a30ebedd6b7221cd547a008f9e7a1`
 
-**Manifest:** `04-ship/kubernetes/overlays/staging/intelligence/deployment.yaml`
+**Manifest:** `04-deploy/kubernetes/overlays/staging/intelligence/deployment.yaml`
 
 **Caveat:** `/health` returns 200 without auth — this is by design in the SDK (`AUTH_EXEMPT_PATHS` includes `/health`, `/live`, `/ready`, `/metrics`). The ALB health check and K8s probes require this. The acceptance criteria in the original protocols kickoff expected 401 on `/health`, which conflicts with the SDK design.
 
@@ -87,12 +87,12 @@ kubectl get secretstore -n intelligence
 
 ### 1. Intelligence Deployment manifest
 
-**Status (2026-06-03):** Manifest **exists** at `04-ship/kubernetes/overlays/staging/intelligence/deployment.yaml` + Service in same file.
+**Status (2026-06-03):** Manifest **exists** at `04-deploy/kubernetes/overlays/staging/intelligence/deployment.yaml` + Service in same file.
 
 **Problem:** Overlay may not be **applied** to the cluster — live URL still returns `orchestrator-placeholder` on `/health`.
 
 ```bash
-kubectl apply -k 04-ship/kubernetes/overlays/staging/intelligence/
+kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
 kubectl rollout status deployment/intelligence-orchestrator -n intelligence
 ```
 
@@ -149,7 +149,7 @@ If missing, check:
 **If intelligence repo does not provide manifests, infrastructure creates:**
 
 ```yaml
-# 04-ship/kubernetes/base/services/intelligence-deployment.yaml
+# 04-deploy/kubernetes/base/services/intelligence-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -200,10 +200,10 @@ spec:
 
 ```bash
 # If manifest added to overlay
-kubectl apply -k 04-ship/kubernetes/overlays/staging/intelligence/
+kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
 
 # Or apply directly
-kubectl apply -f 04-ship/kubernetes/base/services/intelligence-deployment.yaml
+kubectl apply -f 04-deploy/kubernetes/base/services/intelligence-deployment.yaml
 ```
 
 ### Step 5: Verify auth gate
@@ -237,7 +237,7 @@ Once auth gate is confirmed, append to agent log and notify gtcx-intelligence:
 
 ## Finding: Missing deployment in infra repo
 
-**Critical discovery:** The `intelligence-orchestrator` Deployment and Service are **not present** in `gtcx-infrastructure/04-ship/kubernetes/`. This means:
+**Critical discovery:** The `intelligence-orchestrator` Deployment and Service are **not present** in `gtcx-infrastructure/04-deploy/kubernetes/`. This means:
 
 1. The orchestrator placeholder was deployed by some other mechanism (manual, other repo CI, or older manifest since deleted)
 2. Infrastructure cannot complete XR-201 without either:
@@ -255,9 +255,9 @@ Once auth gate is confirmed, append to agent log and notify gtcx-intelligence:
 
 ## References
 
-- Terraform secrets module: `04-ship/terraform/modules/secrets/intelligence.tf`
-- Staging ingress: `04-ship/kubernetes/overlays/staging/intelligence/ingress.yaml`
-- Intelligence shadow routing: `04-ship/kubernetes/base/services/intelligence-shadow.yaml`
+- Terraform secrets module: `04-deploy/terraform/modules/secrets/intelligence.tf`
+- Staging ingress: `04-deploy/kubernetes/overlays/staging/intelligence/ingress.yaml`
+- Intelligence shadow routing: `04-deploy/kubernetes/base/services/intelligence-shadow.yaml`
 - EAP sync runbook: `gtcx-core/01-docs/04-ops/runbooks/eap-bundle-sync.md`
 - Outbound handoff: [`to-gtcx-intelligence-track-b-auth-2026-06-03.md`](to-gtcx-intelligence-track-b-auth-2026-06-03.md)
 

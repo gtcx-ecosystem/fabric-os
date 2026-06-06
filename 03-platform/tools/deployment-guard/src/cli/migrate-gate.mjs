@@ -2,7 +2,7 @@
 /**
  * CLI wrapper for migration gating decisions.
  *
- * Used by 04-ship/03-platform/scripts/migrate.sh to delegate safety-critical decisions to
+ * Used by 04-deploy/03-platform/scripts/migrate.sh to delegate safety-critical decisions to
  * typed, tested modules.
  */
 

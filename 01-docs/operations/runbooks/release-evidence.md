@@ -64,7 +64,7 @@ pnpm ctl evidence release-bundle \
 Default output path:
 
 ```text
-04-ship/security/reports/release-evidence/<environment>/<utc-timestamp>/
+04-deploy/security/reports/release-evidence/<environment>/<utc-timestamp>/
 ```
 
 Files:
@@ -82,7 +82,7 @@ Use dry-run mode in CI or local review to validate the manifest and planned uplo
 
 ```bash
 pnpm ctl evidence worm-upload \
-  --manifest=04-ship/security/reports/release-evidence/staging/20260527T120000Z/worm-upload.json \
+  --manifest=04-deploy/security/reports/release-evidence/staging/20260527T120000Z/worm-upload.json \
   --dry-run
 ```
 
@@ -90,7 +90,7 @@ Use non-dry-run mode only with scoped AWS credentials for the target bucket:
 
 ```bash
 pnpm ctl evidence worm-upload \
-  --manifest=04-ship/security/reports/release-evidence/staging/20260527T120000Z/worm-upload.json \
+  --manifest=04-deploy/security/reports/release-evidence/staging/20260527T120000Z/worm-upload.json \
   --expected-mode=COMPLIANCE \
   --min-retention-days=2550
 ```

@@ -29,7 +29,7 @@ autonomy_level: 'permissioned'
 | WORM buckets           | `gtcx-worm-audit-production-af-south-1`, `gtcx-worm-audit-staging-af-south-1` |
 | Testnet-pilot WORM     | Terraform ready; pending apply (see runbook below)                            |
 | Compliance gateway     | `03-platform/tools/compliance-gateway/` — Node.js, port 8500                  |
-| Protocol server        | `04-ship/kubernetes/base/services/protocols.yaml` — Node.js, port 8300        |
+| Protocol server        | `04-deploy/kubernetes/base/services/protocols.yaml` — Node.js, port 8300        |
 | Audit signer package   | `@gtcx/audit-signer@0.1.0` on npm                                             |
 | Current audit score    | 9.0 / 10 (repo-controlled gates green)                                        |
 
@@ -57,13 +57,13 @@ Per-control mapping lives at:
 | CC1.2 Board oversight              | `01-docs/10-compliance/board-security-committee-charter.md`                                                | 🟢    |
 | CC1.3 Org structure + reporting    | `01-docs/09-security/security-framework.md`                                                                | 🟢    |
 | CC1.4 Commitment to competence     | `01-docs/01-agents/onboarding/`, 24 runbooks                                                               | 🟢    |
-| CC1.5 Accountability               | `01-docs/09-security/security-framework.md`, `04-ship/security/policies/access-control.md`                 | 🟢    |
+| CC1.5 Accountability               | `01-docs/09-security/security-framework.md`, `04-deploy/security/policies/access-control.md`                 | 🟢    |
 | CC2.1 Internal information needs   | `01-docs/README.md`, `03-platform/tools/scripts/docs-link-checker.mjs`                                     | 🟢    |
 | CC2.2 Internal communication       | `01-docs/04-ops/runbooks/` — 25 runbooks                                                                   | 🟢    |
 | CC4.1 Monitoring activities        | Grafana dashboards, `03-platform/tools/compliance-gateway/src/metrics.mjs`                                 | 🟢    |
 | CC4.2 Deficiency communication     | `.github/workflows/dast-zap.yml`, `dr-test-quarterly.yml`                                                  | 🟢    |
 | CC6.1 Logical access security      | `03-platform/tools/compliance-gateway/src/auth.mjs`, `03-platform/tools/compliance-gateway/src/budget.mjs` | 🟢    |
-| CC7.2 System operations            | `04-ship/terraform/`, `04-ship/kubernetes/`                                                                | 🟢    |
+| CC7.2 System operations            | `04-deploy/terraform/`, `04-deploy/kubernetes/`                                                                | 🟢    |
 | CC7.3 Change management            | `.github/workflows/ci.yml`, ADRs                                                                           | 🟢    |
 | CC8.1 Risk assessment              | `01-docs/05-audit/master-audit-*.md`                                                                       | 🟢    |
 
@@ -179,8 +179,8 @@ Closure checklist:
 | ----------------------------------- | --------------------- | ------------------- | --------------------- | ------------------------------------------------------------------- |
 | Identity, auth, rate limits         | Security Lead         | Platform Lead       | security@gtcx.trade   | `03-platform/tools/compliance-gateway/src/auth.mjs`, `budget.mjs`   |
 | WORM audit chain                    | Compliance Platform   | Security Lead       | compliance@gtcx.trade | `03-platform/tools/audit-signer/`, `03-platform/tools/audit-flush/` |
-| Kubernetes deployability            | Infrastructure Lead   | Platform Lead       | infra@gtcx.trade      | `04-ship/kubernetes/`, `.github/workflows/ci.yml`                   |
-| Terraform and AWS controls          | Infrastructure Lead   | SRE                 | infra@gtcx.trade      | `04-ship/terraform/`                                                |
+| Kubernetes deployability            | Infrastructure Lead   | Platform Lead       | infra@gtcx.trade      | `04-deploy/kubernetes/`, `.github/workflows/ci.yml`                   |
+| Terraform and AWS controls          | Infrastructure Lead   | SRE                 | infra@gtcx.trade      | `04-deploy/terraform/`                                                |
 | DR and recovery                     | SRE                   | Infrastructure Lead | sre@gtcx.trade        | `01-docs/04-ops/runbooks/disaster-recovery-detailed.md`             |
 | Documentation governance            | Quality Evidence Lead | Security Lead       | docs@gtcx.trade       | `03-platform/tools/scripts/docs-standard-validator.mjs`             |
 | External comms and evidence handoff | Security Lead         | Compliance Lead     | security@gtcx.trade   | `01-docs/05-audit/`, `01-docs/10-compliance/`                       |

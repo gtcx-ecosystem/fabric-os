@@ -69,8 +69,8 @@ find 01-docs/05-audit/ -name "*pen*test*report*" -o -name "*pentest*" | head -5
 # Verify AWS region lock
 aws configure get region 2>/dev/null || echo "AWS CLI not configured"
 # Check Terraform for region constraints
-grep -r "af-south-1" 04-ship/terraform/environments/production/main.tf | head -3
-grep -r "provider.*aws" 04-ship/terraform/environments/production/main.tf -A 3 | head -10
+grep -r "af-south-1" 04-deploy/terraform/environments/production/main.tf | head -3
+grep -r "provider.*aws" 04-deploy/terraform/environments/production/main.tf -A 3 | head -10
 # Check for data localization contract template
 find 01-docs/ -name "*dpa*" -o -name "*data*processing*" -o -name "*residency*" | head -5
 ```
@@ -85,7 +85,7 @@ aws rds describe-db-instances --query 'DBInstances[*].[DBInstanceIdentifier,Stor
 # Check S3 default encryption
 aws s3api get-bucket-encryption --bucket gtcx-production-cloudtrail-logs 2>/dev/null | grep -i "sse" || echo "Check S3 encryption manually"
 # Check KMS key policies
-grep -r "kms" 04-ship/terraform/modules/kms-signing/main.tf | head -10
+grep -r "kms" 04-deploy/terraform/modules/kms-signing/main.tf | head -10
 # Check TLS version on endpoints
 openssl s_client -connect api.gtcx.trade:443 -tls1_3 2>/dev/null | grep "Protocol" || true
 ```
@@ -96,13 +96,13 @@ openssl s_client -connect api.gtcx.trade:443 -tls1_3 2>/dev/null | grep "Protoco
 
 ```bash
 # Run IAM Access Analyzer
-grep -r "AccessAnalyzer\|access_analyzer" 04-ship/terraform/ | head -5
+grep -r "AccessAnalyzer\|access_analyzer" 04-deploy/terraform/ | head -5
 # Check IAM policies for wildcard permissions
-find 04-ship/terraform/modules/ -name "*.tf" -exec grep -l "Action.*\*" {} \; | head -10
+find 04-deploy/terraform/modules/ -name "*.tf" -exec grep -l "Action.*\*" {} \; | head -10
 # Check for unused IAM roles
 aws iam list-roles --query 'Roles[*].[RoleName,CreateDate]' 2>/dev/null | head -10 || echo "Check IAM roles manually"
 # Verify IRSA role has minimal permissions
-cat 04-ship/terraform/modules/irsa-platform/main.tf | grep -A 20 "AllowKmsSign"
+cat 04-deploy/terraform/modules/irsa-platform/main.tf | grep -A 20 "AllowKmsSign"
 ```
 
 **Pass:** No `*` actions in policies (except root policy). IRSA scoped to specific KMS key. Access Analyzer enabled.
@@ -112,7 +112,7 @@ cat 04-ship/terraform/modules/irsa-platform/main.tf | grep -A 20 "AllowKmsSign"
 ```bash
 # Check SLO dashboards exist
 find 01-docs/devops/ -name "*slo*" -o -name "*grafana*" | head -5
-find 04-ship/monitoring/ -name "*slo*" -o -name "*dashboard*" | head -5
+find 04-deploy/monitoring/ -name "*slo*" -o -name "*dashboard*" | head -5
 # Check uptime calculation scripts
 find 03-platform/tools/ -name "*uptime*" -o -name "*slo*" | head -5
 # Check historical uptime evidence

@@ -54,7 +54,7 @@ INF-49 (DNS/TLS + /health 200)
 
 | Item                           | Status                                                                                  |
 | ------------------------------ | --------------------------------------------------------------------------------------- |
-| KMS signing Terraform module   | Present — `04-ship/terraform/modules/kms-sovereign-signing/`                            |
+| KMS signing Terraform module   | Present — `04-deploy/terraform/modules/kms-sovereign-signing/`                            |
 | Ceremony runbook               | [`01-docs/09-security/key-ceremony-runbook.md`](../../security/key-ceremony-runbook.md) |
 | H-02 pilot ceremony (`gh-bog`) | **DONE** 2026-06-03 — SPKI exported, evidence committed                                 |
 | SPKI handoff to protocols #61  | **DONE** — comment posted with `spki_sha256`                                            |

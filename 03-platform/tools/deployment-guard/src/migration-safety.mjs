@@ -2,7 +2,7 @@
  * Migration safety logic.
  *
  * Encapsulates checksum computation, idempotency checks, and dry-run planning
- * for database migrations.  Previously embedded in 04-ship/03-platform/scripts/migrate.sh.
+ * for database migrations.  Previously embedded in 04-deploy/03-platform/scripts/migrate.sh.
  */
 
 import { createHash } from 'node:crypto';

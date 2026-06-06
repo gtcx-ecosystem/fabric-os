@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * @fileoverview Ensure every Prometheus alert in 04-ship/monitoring/alerts/
+ * @fileoverview Ensure every Prometheus alert in 04-deploy/monitoring/alerts/
  * carries a `runbook_url` annotation pointing at the canonical alerts
  * runbook section (01-docs/04-ops/runbooks/alerts.md#<alertname-lower>).
  *
@@ -22,7 +22,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
-const ALERTS_DIR = join(REPO_ROOT, '04-ship', 'monitoring', 'alerts');
+const ALERTS_DIR = join(REPO_ROOT, '04-deploy', 'monitoring', 'alerts');
 const RUNBOOK_PATH = join(REPO_ROOT, '01-docs', 'operations', 'runbooks', 'alerts.md');
 const RUNBOOK_BASE =
   'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/operations/runbooks/alerts.md';

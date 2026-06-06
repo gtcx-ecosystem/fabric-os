@@ -30,12 +30,12 @@ docker buildx build --platform linux/amd64 \
   --push .
 ```
 
-Update `04-ship/kubernetes/overlays/staging/kustomization.yaml` `images[].newTag` to match the tag you pushed.
+Update `04-deploy/kubernetes/overlays/staging/kustomization.yaml` `images[].newTag` to match the tag you pushed.
 
 ## 2. Apply Kubernetes
 
 ```bash
-kubectl --context staging apply -k 04-ship/kubernetes/overlays/staging/
+kubectl --context staging apply -k 04-deploy/kubernetes/overlays/staging/
 kubectl --context staging -n gtcx-staging rollout status deployment/compliance-gateway-staging --timeout=300s
 ```
 

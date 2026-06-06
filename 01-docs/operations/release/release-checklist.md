@@ -24,7 +24,7 @@ Run all gates in order. Check each only after the command/check passes:
 
 - [ ] `pnpm lint`
 - [ ] `pnpm typecheck`
-- [ ] `terraform fmt -check -recursive 04-ship/terraform/`
+- [ ] `terraform fmt -check -recursive 04-deploy/terraform/`
 - [ ] `terraform validate`
 - [ ] `pnpm audit` (no critical vulnerabilities)
 - [ ] Container image scan (no critical CVEs)

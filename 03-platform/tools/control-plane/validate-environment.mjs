@@ -19,7 +19,7 @@ const environments = new Set([
   'production',
 ]);
 
-/** Logical environment name → overlay directory under 04-ship/kubernetes/overlays */
+/** Logical environment name → overlay directory under 04-deploy/kubernetes/overlays */
 const overlayDirNames = {
   development: 'development',
   staging: 'staging',
@@ -64,7 +64,7 @@ function parseArgs() {
 
 function overlayDirForEnvironment(environment) {
   const dirName = overlayDirNames[environment] ?? environment;
-  return path.join(repoRoot, '04-ship', 'kubernetes', 'overlays', dirName);
+  return path.join(repoRoot, '04-deploy', 'kubernetes', 'overlays', dirName);
 }
 
 function assertNoLatestTags(rendered, label) {

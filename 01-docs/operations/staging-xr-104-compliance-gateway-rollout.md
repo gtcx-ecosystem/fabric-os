@@ -33,7 +33,7 @@ node 03-platform/scripts/staging/patch-compliance-gateway-auth-tokens.mjs
 ## 3. Apply + post-apply env (protocols Bearer path)
 
 ```bash
-kubectl apply -k 04-ship/kubernetes/overlays/staging/
+kubectl apply -k 04-deploy/kubernetes/overlays/staging/
 kubectl set env deployment/compliance-gateway-staging -n gtcx-staging \
   TRADEPASS_BASE_URL=http://gtcx-protocols-staging.gtcx-staging.svc.cluster.local:8300 \
   NODE_ENV=staging

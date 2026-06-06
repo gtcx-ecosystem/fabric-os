@@ -14,7 +14,7 @@ autonomy_level: 'permissioned'
 
 # Migration Runbook — gtcx-infrastructure
 
-Process for running SQL database migrations with `./04-ship/03-platform/scripts/migrate.sh`.
+Process for running SQL database migrations with `./04-deploy/03-platform/scripts/migrate.sh`.
 
 **Hard rule:** A migration that has run in any environment is immutable. Never modify an applied file. Write a forward migration instead.
 
@@ -65,8 +65,8 @@ Before running migrations against staging or production:
 Always run dry-run first for staging or production:
 
 ```bash
-./04-ship/03-platform/scripts/migrate.sh staging --dry-run
-./04-ship/03-platform/scripts/migrate.sh production --dry-run
+./04-deploy/03-platform/scripts/migrate.sh staging --dry-run
+./04-deploy/03-platform/scripts/migrate.sh production --dry-run
 ```
 
 Dry-run still performs connectivity checks and audit immutability verification. It does not apply SQL files.
@@ -74,7 +74,7 @@ Dry-run still performs connectivity checks and audit immutability verification. 
 ### Development
 
 ```bash
-./04-ship/03-platform/scripts/migrate.sh development
+./04-deploy/03-platform/scripts/migrate.sh development
 ```
 
 Development runs autonomously. If audit DSNs are set, the script also verifies audit immutability.
@@ -82,7 +82,7 @@ Development runs autonomously. If audit DSNs are set, the script also verifies a
 ### Staging
 
 ```bash
-./04-ship/03-platform/scripts/migrate.sh staging
+./04-deploy/03-platform/scripts/migrate.sh staging
 ```
 
 Requires prior human approval. The script does not prompt interactively for staging.
@@ -90,7 +90,7 @@ Requires prior human approval. The script does not prompt interactively for stag
 ### Production
 
 ```bash
-./04-ship/03-platform/scripts/migrate.sh production
+./04-deploy/03-platform/scripts/migrate.sh production
 ```
 
 Requires prior human approval and an interactive `yes` confirmation unless `--force` is used. Do not use `--force` in production.
@@ -142,7 +142,7 @@ Do not mutate or edit an applied migration file. Recover with a forward compensa
 Examples:
 
 ```bash
-./04-ship/03-platform/scripts/migrate.sh production --dry-run
+./04-deploy/03-platform/scripts/migrate.sh production --dry-run
 psql "$DATABASE_URL" -f path/to/forward-fix.sql
 ```
 
@@ -154,12 +154,12 @@ Document the recovery action: what failed, which compensating migration ran, and
 
 When authoring a new migration file:
 
-1. Place it in `04-ship/docker/init-03-platform/scripts/postgres/` using the existing ordering convention.
+1. Place it in `04-deploy/docker/init-03-platform/scripts/postgres/` using the existing ordering convention.
 2. Add a header comment describing purpose, target database, and recovery path.
 3. Run `python 03-platform/tools/scripts/check_docs.py`.
-4. Run `python 04-ship/migrations/03-platform/scripts/generate_docs.py`.
+4. Run `python 04-deploy/migrations/03-platform/scripts/generate_docs.py`.
 5. Test against development before requesting staging approval.
-6. If the audit schema or grants change, run `bash 04-ship/03-platform/scripts/test-audit-immutability.sh`.
+6. If the audit schema or grants change, run `bash 04-deploy/03-platform/scripts/test-audit-immutability.sh`.
 
 ### Audit migration constraints
 
@@ -194,8 +194,8 @@ Escalate to human review immediately if:
 
 ## Reference
 
-- [`04-ship/03-platform/scripts/migrate.sh`](../../../04-ship/03-platform/scripts/migrate.sh) — migration runner
-- [`04-ship/03-platform/scripts/test-audit-immutability.sh`](../../../04-ship/03-platform/scripts/test-audit-immutability.sh) — live audit immutability fixture
+- [`04-deploy/03-platform/scripts/migrate.sh`](../../../04-deploy/03-platform/scripts/migrate.sh) — migration runner
+- [`04-deploy/03-platform/scripts/test-audit-immutability.sh`](../../../04-deploy/03-platform/scripts/test-audit-immutability.sh) — live audit immutability fixture
 - [`03-platform/tools/scripts/check_docs.py`](../../../03-platform/tools/scripts/check_docs.py) — migration doc validation
 - [`01-docs/01-agents/workflows/agent-safety-rules.md`](../../agents/workflows/agent-safety-rules.md) — authority tiers
 - [`01-docs/architecture/system-overview.md`](../../architecture/system-overview.md) — system overview

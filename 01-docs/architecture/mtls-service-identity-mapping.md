@@ -108,7 +108,7 @@ Any communication path not explicitly listed above is denied by the default-deny
 
 ## 4. Canary Rollout Strategy
 
-See `04-ship/kubernetes/overlays/{staging,production}/linkerd/canary-rollout.yaml` for phased rollout manifests.
+See `04-deploy/kubernetes/overlays/{staging,production}/linkerd/canary-rollout.yaml` for phased rollout manifests.
 
 **Phase 1:** Observability stack only (prometheus, grafana, jaeger) — no business impact  
 **Phase 2:** Non-critical services (promtail, cloudflared, otel-collector)  
@@ -142,6 +142,6 @@ linkerd viz stat -n gtcx --from deploy/
 ## 6. References
 
 - ADR-007: Kustomize over Helm
-- `04-ship/kubernetes/overlays/production/linkerd/mesh-policies.yaml`
-- `04-ship/kubernetes/overlays/staging/linkerd/mesh-policies.yaml`
+- `04-deploy/kubernetes/overlays/production/linkerd/mesh-policies.yaml`
+- `04-deploy/kubernetes/overlays/staging/linkerd/mesh-policies.yaml`
 - Linkerd docs: https://linkerd.io/2.16/features/automatic-mtls/

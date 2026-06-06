@@ -15,7 +15,7 @@
       "01-docs",
       "02-ops",
       "03-platform",
-      "04-ship",
+      "04-deploy",
       "05-audit",
       "config",
       "node_modules"

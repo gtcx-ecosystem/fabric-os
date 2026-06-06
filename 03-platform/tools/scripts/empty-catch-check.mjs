@@ -38,8 +38,6 @@ const ALLOWLIST = new Set([
   // NATS stream already-exists (race-safe creation) + shutdown drain.
   '03-platform/tools/audit-flush/src/nats-consumer.mjs:75',
   '03-platform/tools/audit-flush/src/nats-consumer.mjs:187',
-  // baseline-os cost-router shim — try next import candidate on failure
-  '03-platform/tools/compliance-gateway/src/cost-router-shim.mjs:39',
   // Audit-capture sinks are best-effort by design — a slow / failing
   // sink must not break replay verification on the hot path.
   '03-platform/tools/replay-protection/src/audit/audit-capture.mjs:88',

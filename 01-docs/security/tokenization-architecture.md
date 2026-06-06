@@ -72,7 +72,7 @@ GTCX tokenizes all PII fields before storage. The tokenization layer sits betwee
 ### Terraform
 
 ```hcl
-# 04-ship/terraform/modules/vault/tokenization.tf
+# 04-deploy/terraform/modules/vault/tokenization.tf
 
 resource "vault_mount" "transit" {
   path        = "transit"

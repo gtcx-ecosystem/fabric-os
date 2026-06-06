@@ -22,7 +22,7 @@ autonomy_level: 'permissioned'
 ## Root Structure
 
 ```
-04-ship/
+04-deploy/
   docker/          — Compose files, Dockerfiles, observability configs
   kubernetes/      — K8s base + dev/staging/production overlays
   terraform/       — VPC module + database module only

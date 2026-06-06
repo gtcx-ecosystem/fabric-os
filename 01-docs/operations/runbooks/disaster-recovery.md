@@ -140,7 +140,7 @@ pnpm test:full
 
 # Capture runtime smoke evidence against the recovered endpoint.
 # Compare against the last green pre-DR runtime-smoke artifact in
-# 04-ship/security/reports/release-evidence/ to confirm parity.
+# 04-deploy/security/reports/release-evidence/ to confirm parity.
 pnpm ctl evidence runtime-smoke \
   --environment="${ENVIRONMENT}" \
   --base-url="${RECOVERY_BASE_URL}" \

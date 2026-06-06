@@ -173,9 +173,9 @@ cd gtcx-infrastructure-purge
 
 # 3. Run filter-repo
 git filter-repo \
-  --path-glob '04-ship/terraform/**/*.tfstate*' \
-  --path-glob '04-ship/terraform/**/.terraform/**' \
-  --path-glob '04-ship/terraform/**/.terraform.lock.hcl' \
+  --path-glob '04-deploy/terraform/**/*.tfstate*' \
+  --path-glob '04-deploy/terraform/**/.terraform/**' \
+  --path-glob '04-deploy/terraform/**/.terraform.lock.hcl' \
   --invert-paths
 
 # 4. Verify
@@ -219,7 +219,7 @@ git push origin --force --tags
 
 #### Implementation Plan
 
-Add to `04-ship/monitoring/alerts/audit-trust-alerts.yml`:
+Add to `04-deploy/monitoring/alerts/audit-trust-alerts.yml`:
 
 ```yaml
 - alert: AuditDBWriteFailure
@@ -255,7 +255,7 @@ Add to `04-ship/monitoring/alerts/audit-trust-alerts.yml`:
 
 **Acceptance criteria:**
 
-- [ ] `promtool check rules 04-ship/monitoring/alerts/audit-trust-alerts.yml` passes
+- [ ] `promtool check rules 04-deploy/monitoring/alerts/audit-trust-alerts.yml` passes
 - [ ] Alert definitions committed and deployed to AlertManager
 - [ ] Alert routing configured: `critical` → PagerDuty/Slack #incidents; `warning` → Slack #alerts
 - [ ] Simulated test: scale postgres-audit to 0 replicas → alert fires within 2m
@@ -313,7 +313,7 @@ canary-rollback:
 
     - name: Capture rollback evidence
       run: |
-        bash 04-ship/03-platform/scripts/capture-rollback-evidence.sh staging \
+        bash 04-deploy/03-platform/scripts/capture-rollback-evidence.sh staging \
           --previous-revision=v0.1.0-stable \
           --failed-revision=v0.1.0-broken-exit-1 \
           --reason="CI canary rollback test"
@@ -327,7 +327,7 @@ canary-rollback:
       uses: actions/upload-artifact@v4
       with:
         name: rollback-evidence-${{ github.run_id }}
-        path: 04-ship/security/reports/rollback-evidence/staging/
+        path: 04-deploy/security/reports/rollback-evidence/staging/
         retention-days: 90
 ```
 

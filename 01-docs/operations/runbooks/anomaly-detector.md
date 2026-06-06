@@ -179,7 +179,7 @@ kubectl get pods -n monitoring -l app=prometheus
 
 ```bash
 # If Prometheus is missing, redeploy
-kubectl apply -f 04-ship/kubernetes/base/services/monitoring.yaml
+kubectl apply -f 04-deploy/kubernetes/base/services/monitoring.yaml
 
 # If namespace is wrong, verify service DNS:
 kubectl get svc -n monitoring

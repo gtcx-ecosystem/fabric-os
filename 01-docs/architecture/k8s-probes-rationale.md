@@ -16,7 +16,7 @@ autonomy_level: 'permissioned'
 
 ## Verified Coverage (2026-05)
 
-All **Deployments** in `04-ship/kubernetes/base/services/` have liveness + readiness probes:
+All **Deployments** in `04-deploy/kubernetes/base/services/` have liveness + readiness probes:
 
 | Resource                                | Kind        | livenessProbe | readinessProbe | startupProbe |
 | --------------------------------------- | ----------- | ------------- | -------------- | ------------ |

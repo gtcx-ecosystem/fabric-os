@@ -49,7 +49,7 @@ To enable automatic rollback on SLO breach:
 Every rollback generates an evidence bundle:
 
 ```
-04-ship/security/reports/rollback-evidence/
+04-deploy/security/reports/rollback-evidence/
   └── 2026-05-06T14-30-00-production/
       ├── rollout-history.json
       ├── pod-status.json

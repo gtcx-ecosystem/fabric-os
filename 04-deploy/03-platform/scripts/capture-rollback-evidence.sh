@@ -3,7 +3,7 @@
 # GTCX Rollback Evidence Capture
 # =============================================================================
 # Captures post-rollback cluster state and rollout history into a local bundle.
-# Generated artifacts land under 04-ship/security/reports/rollback-evidence/ by
+# Generated artifacts land under 04-deploy/security/reports/rollback-evidence/ by
 # default and should not be committed.
 # =============================================================================
 
@@ -98,7 +98,7 @@ command -v jq >/dev/null 2>&1 || { log_error "jq is required"; exit 1; }
 kubectl cluster-info >/dev/null
 
 if [[ -z "${OUTPUT_DIR}" ]]; then
-    OUTPUT_DIR="04-ship/security/reports/rollback-evidence/${ENVIRONMENT}/$(date -u +%Y%m%dT%H%M%SZ)"
+    OUTPUT_DIR="04-deploy/security/reports/rollback-evidence/${ENVIRONMENT}/$(date -u +%Y%m%dT%H%M%SZ)"
 fi
 
 mkdir -p "${OUTPUT_DIR}"

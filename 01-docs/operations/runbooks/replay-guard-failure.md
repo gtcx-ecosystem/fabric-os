@@ -161,7 +161,7 @@ curl -s http://gtcx-replay-guard.gtcx:8400/v1/replay/verify \
 3. Open incident ticket with `gtcx/incident-response` template
 4. Schedule chaos re-run to validate fix:
    ```bash
-   kubectl apply -f 04-ship/kubernetes/overlays/production/chaos/replay-guard-pod-kill.yaml
+   kubectl apply -f 04-deploy/kubernetes/overlays/production/chaos/replay-guard-pod-kill.yaml
    ```
 
 ## Fail-Safe Nonce Semantics

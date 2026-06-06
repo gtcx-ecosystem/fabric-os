@@ -70,8 +70,8 @@ curl https://api.staging.gtcx.trade/api/health        # → 200, 0.10s
 
 ## Artifacts
 
-- K8s Job manifest: `04-ship/kubernetes/jobs/staging-migrate-shared-entities.yaml`
-- WAF module: `04-ship/terraform/modules/waf/main.tf` (new `AllowApiHealthEndpoints` rule)
+- K8s Job manifest: `04-deploy/kubernetes/jobs/staging-migrate-shared-entities.yaml`
+- WAF module: `04-deploy/terraform/modules/waf/main.tf` (new `AllowApiHealthEndpoints` rule)
 
 ## Agent Context Attestation
 

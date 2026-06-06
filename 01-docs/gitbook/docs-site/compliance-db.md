@@ -88,7 +88,7 @@ output "secrets_arns" {}
 
 The dual-DB pattern is the substrate behind GTCX's SIGNAL Integrity I2 (audit immutability) control. Live evidence:
 
-- Audit DB privilege check: `04-ship/03-platform/scripts/test-audit-immutability.sh` in CI
+- Audit DB privilege check: `04-deploy/03-platform/scripts/test-audit-immutability.sh` in CI
 - WORM bucket Object Lock: `aws s3api get-object-lock-configuration --bucket gtcx-worm-audit-production-af-south-1` returns COMPLIANCE mode with 2557-day retention
 
 ## When NOT to use this

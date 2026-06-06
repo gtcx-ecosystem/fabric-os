@@ -1,6 +1,6 @@
 packages:
   # Infrastructure
-  - '04-ship/migrations'
+  - '04-deploy/migrations'
   # Tools — Node ESM workspace packages with their own package.json,
   # tests, and (where applicable) Dockerfile + npm publication target.
   - '03-platform/tools/anomaly-detector'

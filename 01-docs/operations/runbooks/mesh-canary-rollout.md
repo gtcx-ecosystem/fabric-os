@@ -136,7 +136,7 @@ kubectl rollout restart statefulset/gtcx-postgres-audit -n gtcx
 
 **Validation:**
 
-- DR test: `bash 04-ship/03-platform/scripts/dr-test.sh production`
+- DR test: `bash 04-deploy/03-platform/scripts/dr-test.sh production`
 - Connection pool metrics stable
 
 ---
@@ -151,7 +151,7 @@ After all pods are meshed and stable for 48 hours:
 4. If unexpected denials occur, remove default-deny and investigate
 
 ```bash
-kubectl apply -f 04-ship/kubernetes/overlays/production/linkerd/mesh-policies.yaml
+kubectl apply -f 04-deploy/kubernetes/overlays/production/linkerd/mesh-policies.yaml
 ```
 
 ---

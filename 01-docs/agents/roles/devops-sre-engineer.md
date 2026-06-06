@@ -67,8 +67,8 @@ In September 2020, when the bank integration partner reported timeouts in their 
 - GitHub Actions CI/CD pipelines: `.github/workflows/`
 - Release gates: test coverage thresholds, security scan gates, image signing requirements
 - Deployment automation: production deployment workflows, rollback procedures
-- Observability stack configuration: Prometheus scrape configs, Grafana dashboards, Jaeger collector config, Loki pipeline configs — `04-ship/observability/`
-- SLO definitions and alerting rules: `04-ship/observability/alerts/`, `04-ship/observability/slos/`
+- Observability stack configuration: Prometheus scrape configs, Grafana dashboards, Jaeger collector config, Loki pipeline configs — `04-deploy/observability/`
+- SLO definitions and alerting rules: `04-deploy/observability/alerts/`, `04-deploy/observability/slos/`
 - Incident response runbooks: `01-docs/04-ops/runbooks/`
 - `01-docs/engineering/5-devops/` — CI/CD standards, deployment process
 
@@ -89,7 +89,7 @@ Owns all GitHub Actions workflow files. Maintains the standard pipeline stages a
 Maintains the release gate policy in `01-docs/engineering/5-devops/release-gates.md`. Gates include: Vitest/RSpec test suite pass, Trivy image scan with no CRITICAL/HIGH findings, cosign image signing, checkov Terraform scan pass, overlay diff validation for Kustomize changes. Any exception to a gate requires a human-approved ticket reference in the PR description.
 
 **Observability stack**
-Owns the Prometheus, Grafana, Jaeger, and Loki configuration in `04-ship/observability/`. Ensures every service has: at minimum a RED (Rate, Errors, Duration) Prometheus metric set; a Grafana dashboard linked to its SLO; and Jaeger trace instrumentation with context propagation on all inter-service HTTP calls. Audits trace coverage quarterly and flags any inter-service boundary without correlated spans.
+Owns the Prometheus, Grafana, Jaeger, and Loki configuration in `04-deploy/observability/`. Ensures every service has: at minimum a RED (Rate, Errors, Duration) Prometheus metric set; a Grafana dashboard linked to its SLO; and Jaeger trace instrumentation with context propagation on all inter-service HTTP calls. Audits trace coverage quarterly and flags any inter-service boundary without correlated spans.
 
 **SLO/SLA governance**
 Maintains SLO definitions for every production service. SLOs drive alert thresholds — alerts fire when the error budget burn rate crosses the defined threshold, not when an arbitrary metric crosses an arbitrary value. Reviews SLO attainment monthly and proposes threshold adjustments when deployment patterns change.
@@ -130,7 +130,7 @@ Owns incident response runbooks for all operational failure modes. Runbooks foll
 
 1. Read `01-docs/engineering/5-devops/release-gates.md` — current gate configuration
 2. Read `01-docs/engineering/5-devops/deployment-process.md` — deployment flow
-3. Read `04-ship/observability/slos/` — current SLO definitions
+3. Read `04-deploy/observability/slos/` — current SLO definitions
 4. Read `01-docs/01-agents/workflows/safety-rules.md`
 5. For incident response: open the relevant runbook in `01-docs/04-ops/runbooks/` before beginning diagnosis
 6. For production deployments: confirm ticket number and human approval before initiating
@@ -143,10 +143,10 @@ Owns incident response runbooks for all operational failure modes. Runbooks foll
 | -------------------- | ---------------------------------------------------- |
 | Release gate policy  | `01-docs/engineering/5-devops/release-gates.md`      |
 | Deployment process   | `01-docs/engineering/5-devops/deployment-process.md` |
-| SLO definitions      | `04-ship/observability/slos/`                        |
-| Alerting rules       | `04-ship/observability/alerts/`                      |
+| SLO definitions      | `04-deploy/observability/slos/`                        |
+| Alerting rules       | `04-deploy/observability/alerts/`                      |
 | Runbook template     | `01-docs/04-ops/runbooks/template.md`                |
 | Runbook index        | `01-docs/04-ops/runbooks/`                           |
-| Observability config | `04-ship/observability/`                             |
+| Observability config | `04-deploy/observability/`                             |
 | CI/CD workflows      | `.github/workflows/`                                 |
 | Safety rules         | `01-docs/01-agents/workflows/safety-rules.md`        |

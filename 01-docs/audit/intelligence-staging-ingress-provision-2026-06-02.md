@@ -23,7 +23,7 @@ Provision a resolvable staging hostname for the Intelligence orchestrator with w
 
 ### 1. Staging Intelligence Overlay
 
-**Path:** `04-ship/kubernetes/overlays/staging/intelligence/`
+**Path:** `04-deploy/kubernetes/overlays/staging/intelligence/`
 
 | File                 | Purpose                                           |
 | -------------------- | ------------------------------------------------- |
@@ -43,14 +43,14 @@ Provision a resolvable staging hostname for the Intelligence orchestrator with w
 **Apply command:**
 
 ```bash
-kubectl apply -k 04-ship/kubernetes/overlays/staging/intelligence/
+kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
 ```
 
 ### 2. Deploy Workflow Updated
 
 **File:** `.github/workflows/deploy-staging.yml`
 
-- Added `kubectl apply -k 04-ship/kubernetes/overlays/staging/intelligence/` step
+- Added `kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/` step
 - Added `intelligence-orchestrator` rollout check in the `intelligence` namespace
 
 ## Prerequisites Before DNS Resolves
@@ -93,7 +93,7 @@ pnpm evidence:deployment-smoke -- --base-url https://intelligence-staging.gtcx.t
 ## Rollback
 
 ```bash
-kubectl delete -k 04-ship/kubernetes/overlays/staging/intelligence/
+kubectl delete -k 04-deploy/kubernetes/overlays/staging/intelligence/
 ```
 
 ## Agent Attestation

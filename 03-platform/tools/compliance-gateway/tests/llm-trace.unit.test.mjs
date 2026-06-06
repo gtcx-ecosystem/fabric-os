@@ -1,5 +1,6 @@
 import assert from 'node:assert';
 import { describe, it, beforeEach, afterEach } from 'node:test';
+
 import { recordLlmTrace } from '../src/llm-trace.mjs';
 import { resetMetrics, renderMetrics } from '../src/metrics.mjs';
 

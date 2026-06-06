@@ -51,30 +51,30 @@ autonomy_level: 'sovereign'
 
 | Capability                  | What It Does                                                                                 | Who It Serves                        | Evidence                                |
 | --------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------ | --------------------------------------- |
-| **Infrastructure as Code**  | Provisions VPC, EKS, RDS, WAF, WORM storage, and 20+ Terraform modules across 4 environments | Platform Engineering, DevOps         | `04-ship/terraform/modules/`            |
-| **Container Orchestration** | K8s manifests with Kyverno policies, Linkerd mesh, network policies, and canary deployments  | SRE, Platform Engineering            | `04-ship/kubernetes/`                   |
+| **Infrastructure as Code**  | Provisions VPC, EKS, RDS, WAF, WORM storage, and 20+ Terraform modules across 4 environments | Platform Engineering, DevOps         | `04-deploy/terraform/modules/`            |
+| **Container Orchestration** | K8s manifests with Kyverno policies, Linkerd mesh, network policies, and canary deployments  | SRE, Platform Engineering            | `04-deploy/kubernetes/`                   |
 | **Replay Protection**       | Offline nonce/timestamp/signature verification for Global South operations                   | gtcx-protocols, gtcx-markets         | `03-platform/tools/replay-protection/`  |
 | **Compliance Gateway**      | Regulatory compliance API for African fintech jurisdictions                                  | gtcx-platforms, external integrators | `03-platform/tools/compliance-gateway/` |
 | **Deployment Guard**        | Typed deployment gating, canary evaluation, and audit verification                           | SRE, Platform Engineering            | `03-platform/tools/deployment-guard/`   |
 | **Anomaly Detection**       | ML-based audit anomaly detection for security events                                         | Security, Compliance                 | `03-platform/tools/anomaly-detector/`   |
 | **Chaos Engineering**       | Network partition, pod-kill, and AZ-failure resilience tests                                 | SRE, Platform Engineering            | `03-platform/tools/chaos/`              |
 | **Shared CI Platform**      | SLSA L3 provenance, Cosign signing, ECR registries for 23 repos                              | All GTCX repos                       | `.github/workflows/slsa-provenance.yml` |
-| **Secret Management**       | AWS Secrets Manager + External Secrets Operator + auto-rotation                              | All GTCX services                    | `04-ship/terraform/modules/secrets/`    |
+| **Secret Management**       | AWS Secrets Manager + External Secrets Operator + auto-rotation                              | All GTCX services                    | `04-deploy/terraform/modules/secrets/`    |
 
 ### 2.2 Feature Matrix
 
 | Feature                        | Status        | Evidence                                     | Consumed By                  |
 | ------------------------------ | ------------- | -------------------------------------------- | ---------------------------- |
-| VPC + 3-tier subnets           | Production    | `04-ship/terraform/modules/vpc/`             | All GTCX services            |
-| EKS 1.31 + GPU nodes           | Production    | `04-ship/terraform/modules/eks/`             | All GTCX services            |
-| Dual RDS (operational + audit) | Production    | `04-ship/terraform/modules/database/`        | gtcx-markets, gtcx-protocols |
-| WAFv2 (OWASP + rate limit)     | Production    | `04-ship/terraform/modules/waf/`             | ALB ingress                  |
-| WORM S3 audit storage          | Production    | `04-ship/terraform/modules/worm-audit/`      | Compliance, Security         |
-| KMS signing (ECC P-256)        | Production    | `04-ship/terraform/modules/kms-signing/`     | gtcx-platforms               |
-| CloudTrail + GuardDuty         | Production    | `04-ship/terraform/modules/detective/`       | Security                     |
-| AWS Config (13 rules)          | Production    | `04-ship/terraform/modules/compliance/`      | Compliance                   |
-| Kyverno policies (7 rules)     | Production    | `04-ship/kubernetes/base/policies/`          | All K8s workloads            |
-| Vault HA (TLS disabled)        | Staging       | `04-ship/terraform/modules/vault/`           | Secret management            |
+| VPC + 3-tier subnets           | Production    | `04-deploy/terraform/modules/vpc/`             | All GTCX services            |
+| EKS 1.31 + GPU nodes           | Production    | `04-deploy/terraform/modules/eks/`             | All GTCX services            |
+| Dual RDS (operational + audit) | Production    | `04-deploy/terraform/modules/database/`        | gtcx-markets, gtcx-protocols |
+| WAFv2 (OWASP + rate limit)     | Production    | `04-deploy/terraform/modules/waf/`             | ALB ingress                  |
+| WORM S3 audit storage          | Production    | `04-deploy/terraform/modules/worm-audit/`      | Compliance, Security         |
+| KMS signing (ECC P-256)        | Production    | `04-deploy/terraform/modules/kms-signing/`     | gtcx-platforms               |
+| CloudTrail + GuardDuty         | Production    | `04-deploy/terraform/modules/detective/`       | Security                     |
+| AWS Config (13 rules)          | Production    | `04-deploy/terraform/modules/compliance/`      | Compliance                   |
+| Kyverno policies (7 rules)     | Production    | `04-deploy/kubernetes/base/policies/`          | All K8s workloads            |
+| Vault HA (TLS disabled)        | Staging       | `04-deploy/terraform/modules/vault/`           | Secret management            |
 | Replay protection verifier     | Production    | `03-platform/tools/replay-protection/tests/` | gtcx-protocols               |
 | Anomaly detector               | Containerized | `03-platform/tools/anomaly-detector/tests/`  | Security ops                 |
 
@@ -101,7 +101,7 @@ autonomy_level: 'sovereign'
 2. _When_ a security alert fires, _I want to_ trace it to a specific K8s pod and Terraform resource, _so I can_ remediate within minutes
 3. _When_ an auditor asks for evidence, _I want to_ generate a compliance report from CI, _so I can_ pass the audit without manual documentation
 
-**How This Repo Helps:** Tendai uses `04-ship/terraform/modules/` to provision infrastructure with security defaults (encrypted storage, least-privilege IAM, VPC isolation). The `03-platform/tools/deployment-guard/` enforces approval tickets for production changes. The `03-platform/tools/scripts/audit-with-acceptance.mjs` generates SOC 2 evidence artifacts automatically.
+**How This Repo Helps:** Tendai uses `04-deploy/terraform/modules/` to provision infrastructure with security defaults (encrypted storage, least-privilege IAM, VPC isolation). The `03-platform/tools/deployment-guard/` enforces approval tickets for production changes. The `03-platform/tools/scripts/audit-with-acceptance.mjs` generates SOC 2 evidence artifacts automatically.
 
 **Workflow Unlocked:** Tendai receives a Jira ticket to onboard a new pilot bank. She copies the `template/` Terraform environment, adjusts variables for the bank's region, runs `terraform plan`, and attaches the plan output to the deployment-gate CLI. The gate checks for approval ticket GTCX-XXX, verifies no destructive changes, and allows apply. Within 30 minutes, the bank's isolated environment is live with WAF, Flow Logs, and WORM audit storage.
 
@@ -271,7 +271,7 @@ Technical specifications available for sales reference:
 | deployment-guard   | `03-platform/tools/deployment-guard/`   | Deployment gating + canary eval      | Beta       | Measured              | SRE                  |
 | anomaly-detector   | `03-platform/tools/anomaly-detector/`   | ML-based audit anomaly detection     | Beta       | Basic                 | Security ops         |
 | compliance-data    | `03-platform/tools/compliance-data/`    | Jurisdiction compliance datasets     | Production | N/A                   | compliance-gateway   |
-| infra-migrations   | `04-ship/migrations/`                   | Database migration tooling           | Production | N/A                   | Platform Engineering |
+| infra-migrations   | `04-deploy/migrations/`                   | Database migration tooling           | Production | N/A                   | Platform Engineering |
 
 ### 6.4 Ecosystem Integration Map
 
@@ -323,7 +323,7 @@ Key controls active in production:
 
 **Critical gaps:**
 
-- Vault TLS disabled (`04-ship/terraform/modules/vault/main.tf:219`)
+- Vault TLS disabled (`04-deploy/terraform/modules/vault/main.tf:219`)
 - 3 containers violate Kyverno policies (Promtail root, Cloudflared/Postgres mutable fs)
 - No pen-test executed
 
@@ -345,7 +345,7 @@ Key controls active in production:
 2. **Clone and install:** `git clone` → `pnpm install`
 3. **Build:** `pnpm build`
 4. **Run tests:** `pnpm test` (quick validation) → `pnpm test:full` (comprehensive)
-5. **Run verification:** `bash 04-ship/03-platform/scripts/validate.sh quick`
+5. **Run verification:** `bash 04-deploy/03-platform/scripts/validate.sh quick`
 6. **Read ADRs:** `01-docs/architecture/decisions/` — start with ADR-007 (mTLS mesh) and ADR-009 (deprecation)
 7. **Pick a first issue:** Look for `good-first-issue` labels or start with docs-standard improvements
 

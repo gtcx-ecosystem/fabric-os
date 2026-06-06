@@ -16,7 +16,7 @@ autonomy_level: 'permissioned'
 
 ## Status
 
-**Accepted** — Phase 1 complete (documentation + policy templates). Phase 2 (cert-manager + Linkerd sidecar injection) scheduled Q3 2026. Phase 3 (deny-by-default authorization) templates prepared in `04-ship/kubernetes/overlays/*/linkerd/`.
+**Accepted** — Phase 1 complete (documentation + policy templates). Phase 2 (cert-manager + Linkerd sidecar injection) scheduled Q3 2026. Phase 3 (deny-by-default authorization) templates prepared in `04-deploy/kubernetes/overlays/*/linkerd/`.
 
 ## Context
 
@@ -66,4 +66,4 @@ Current intra-cluster communication uses plain HTTP. A strict trust-bearing audi
 
 - Linkerd getting started: https://linkerd.io/getting-started/
 - cert-manager docs: https://cert-manager.io/01-docs/
-- Existing NetworkPolicy: `04-ship/kubernetes/overlays/production/network-policies.yaml`
+- Existing NetworkPolicy: `04-deploy/kubernetes/overlays/production/network-policies.yaml`

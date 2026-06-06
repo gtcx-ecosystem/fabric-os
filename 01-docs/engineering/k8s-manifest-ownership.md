@@ -25,7 +25,7 @@ autonomy_level: 'permissioned'
 Two repos ship K8s manifests for the same services, creating conflicting sources of truth:
 
 ```
-gtcx-infrastructure/04-ship/kubernetes/     ← Platform team
+gtcx-infrastructure/04-deploy/kubernetes/     ← Platform team
 gtcx-protocols/deploy/                    ← Application team
 ```
 
@@ -35,10 +35,10 @@ gtcx-protocols/deploy/                    ← Application team
 | --------------------- | ------------------------------------------------------------- | -------------------------------------------- | ---------------------------------------------------- |
 | **Service mesh**      | `overlays/production/linkerd/` (Linkerd mTLS)                 | `deploy/k8s/istio-mtls.yaml` (Istio mTLS)    | Two different service meshes. Can't run both.        |
 | **Network policy**    | `overlays/production/network-policies.yaml`                   | `deploy/k8s/network-policy.yaml`             | Two policy sets, likely overlapping or contradicting |
-| **Prometheus alerts** | `04-ship/monitoring/alerts/protocol-alerts.yml`               | `deploy/monitoring/prometheus-alerts.yaml`   | Duplicate alert definitions for same service         |
-| **SLO rules**         | `04-ship/monitoring/rules/slo-recording-rules.yml`            | `deploy/monitoring/slo-recording-rules.yaml` | Duplicate recording rules                            |
-| **Deployment**        | `04-ship/kubernetes/base/services/api.yaml`                   | `deploy/k8s/deployment.yaml`                 | Two deployment manifests for protocols               |
-| **Service**           | `04-ship/kubernetes/base/services/protocols.yaml` (ClusterIP) | `deploy/k8s/service.yaml`                    | Two service definitions                              |
+| **Prometheus alerts** | `04-deploy/monitoring/alerts/protocol-alerts.yml`               | `deploy/monitoring/prometheus-alerts.yaml`   | Duplicate alert definitions for same service         |
+| **SLO rules**         | `04-deploy/monitoring/rules/slo-recording-rules.yml`            | `deploy/monitoring/slo-recording-rules.yaml` | Duplicate recording rules                            |
+| **Deployment**        | `04-deploy/kubernetes/base/services/api.yaml`                   | `deploy/k8s/deployment.yaml`                 | Two deployment manifests for protocols               |
+| **Service**           | `04-deploy/kubernetes/base/services/protocols.yaml` (ClusterIP) | `deploy/k8s/service.yaml`                    | Two service definitions                              |
 | **HPA**               | Defined in `base/services/api.yaml`                           | `deploy/k8s/hpa.yaml`                        | Duplicate autoscaling config                         |
 | **PDB**               | Defined in `base/services/api.yaml`                           | `deploy/k8s/pdb.yaml`                        | Duplicate disruption budget                          |
 
@@ -64,13 +64,13 @@ gtcx-protocols/deploy/                    ← Application team
 | ConfigMap                              | **Protocols**      | `gtcx-protocols/deploy/k8s/configmap.yaml`                            | App-specific configuration                            |
 | Migration job                          | **Protocols**      | `gtcx-protocols/deploy/k8s/migration-job.yaml`                        | App owns schema migrations                            |
 | Prometheus alerts                      | **Protocols**      | `gtcx-protocols/deploy/monitoring/prometheus-alerts.yaml`             | App team knows what to alert on                       |
-| Namespace                              | **Infrastructure** | `gtcx-infrastructure/04-ship/kubernetes/base/`                        | Platform owns namespace lifecycle                     |
-| Network policy                         | **Infrastructure** | `gtcx-infrastructure/04-ship/kubernetes/overlays/`                    | Platform owns security boundaries                     |
-| Service mesh (Linkerd)                 | **Infrastructure** | `gtcx-infrastructure/04-ship/kubernetes/overlays/production/linkerd/` | Platform decision — one mesh for all services         |
-| SLO recording rules                    | **Infrastructure** | `gtcx-infrastructure/04-ship/monitoring/rules/`                       | Platform owns SLO definitions                         |
-| Ingress / tunnel routing               | **Infrastructure** | `gtcx-infrastructure/04-ship/kubernetes/base/services/cloudflared/`   | Platform owns external routing                        |
-| Kyverno admission policies             | **Infrastructure** | `gtcx-infrastructure/04-ship/kubernetes/base/policies/`               | Platform owns admission control                       |
-| Resource quotas                        | **Infrastructure** | `gtcx-infrastructure/04-ship/kubernetes/overlays/`                    | Platform owns capacity limits                         |
+| Namespace                              | **Infrastructure** | `gtcx-infrastructure/04-deploy/kubernetes/base/`                        | Platform owns namespace lifecycle                     |
+| Network policy                         | **Infrastructure** | `gtcx-infrastructure/04-deploy/kubernetes/overlays/`                    | Platform owns security boundaries                     |
+| Service mesh (Linkerd)                 | **Infrastructure** | `gtcx-infrastructure/04-deploy/kubernetes/overlays/production/linkerd/` | Platform decision — one mesh for all services         |
+| SLO recording rules                    | **Infrastructure** | `gtcx-infrastructure/04-deploy/monitoring/rules/`                       | Platform owns SLO definitions                         |
+| Ingress / tunnel routing               | **Infrastructure** | `gtcx-infrastructure/04-deploy/kubernetes/base/services/cloudflared/`   | Platform owns external routing                        |
+| Kyverno admission policies             | **Infrastructure** | `gtcx-infrastructure/04-deploy/kubernetes/base/policies/`               | Platform owns admission control                       |
+| Resource quotas                        | **Infrastructure** | `gtcx-infrastructure/04-deploy/kubernetes/overlays/`                    | Platform owns capacity limits                         |
 
 ---
 
@@ -106,18 +106,18 @@ gtcx-protocols/deploy/                    ← Application team
 
 ### In gtcx-infrastructure (platform team)
 
-1. **Delete `04-ship/kubernetes/base/services/api.yaml`** — protocols repo owns the deployment. Infrastructure was maintaining a duplicate.
+1. **Delete `04-deploy/kubernetes/base/services/api.yaml`** — protocols repo owns the deployment. Infrastructure was maintaining a duplicate.
 
-2. **Delete `04-ship/monitoring/alerts/protocol-alerts.yml`** — protocols repo owns its alerts. Infrastructure will consume them via Prometheus federation or shared rules path.
+2. **Delete `04-deploy/monitoring/alerts/protocol-alerts.yml`** — protocols repo owns its alerts. Infrastructure will consume them via Prometheus federation or shared rules path.
 
 3. **Keep and own:**
-   - `04-ship/kubernetes/base/services/cloudflared/` — tunnel routing
-   - `04-ship/kubernetes/base/services/nats.yaml` — NATS is platform infrastructure
-   - `04-ship/kubernetes/base/services/otel-collector.yaml` — observability infra
-   - `04-ship/kubernetes/base/policies/` — all Kyverno admission policies
-   - `04-ship/kubernetes/overlays/production/linkerd/` — service mesh
-   - `04-ship/kubernetes/overlays/production/network-policies.yaml` — security boundaries
-   - `04-ship/monitoring/rules/slo-recording-rules.yml` — platform SLO definitions
+   - `04-deploy/kubernetes/base/services/cloudflared/` — tunnel routing
+   - `04-deploy/kubernetes/base/services/nats.yaml` — NATS is platform infrastructure
+   - `04-deploy/kubernetes/base/services/otel-collector.yaml` — observability infra
+   - `04-deploy/kubernetes/base/policies/` — all Kyverno admission policies
+   - `04-deploy/kubernetes/overlays/production/linkerd/` — service mesh
+   - `04-deploy/kubernetes/overlays/production/network-policies.yaml` — security boundaries
+   - `04-deploy/monitoring/rules/slo-recording-rules.yml` — platform SLO definitions
 
 ---
 

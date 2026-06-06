@@ -36,8 +36,8 @@ autonomy_level: 'permissioned'
 
 #### Issue 1: Placeholder secrets in base kustomization.yaml
 
-- **Audit finding:** `04-ship/kubernetes/base/kustomization.yaml` lines 35-37 contain placeholder secrets as literal values: `DATABASE_URL=postgres://placeholder:placeholder@localhost:5432/gtcx` and `SECRET_KEY_BASE=placeholder-override-in-overlay`.
-- **Evidence:** `04-ship/kubernetes/base/kustomization.yaml:35-37`
+- **Audit finding:** `04-deploy/kubernetes/base/kustomization.yaml` lines 35-37 contain placeholder secrets as literal values: `DATABASE_URL=postgres://placeholder:placeholder@localhost:5432/gtcx` and `SECRET_KEY_BASE=placeholder-override-in-overlay`.
+- **Evidence:** `04-deploy/kubernetes/base/kustomization.yaml:35-37`
 - **Fix:** Add a clear comment block above the `secretGenerator` section:
   ```yaml
   # ============================================================
@@ -51,23 +51,23 @@ autonomy_level: 'permissioned'
   # ============================================================
   ```
   Also create `01-docs/secrets-management.md` documenting the secrets strategy: base uses placeholders, production injects via external operator, rotation cadence, which secrets exist.
-- **Verification:** `grep -c 'NEVER USE IN PRODUCTION' 04-ship/kubernetes/base/kustomization.yaml` returns 1; `test -f 01-docs/secrets-management.md`
+- **Verification:** `grep -c 'NEVER USE IN PRODUCTION' 04-deploy/kubernetes/base/kustomization.yaml` returns 1; `test -f 01-docs/secrets-management.md`
 - **Risk:** Low — adding documentation. No functional change.
 
 #### Issue 2: Image pull policy inconsistency
 
 - **Audit finding:** Most base services use `imagePullPolicy: Always` but NATS uses `IfNotPresent`. Inconsistency in base manifests.
-- **Evidence:** `04-ship/kubernetes/base/services/nats.yaml` — `imagePullPolicy: IfNotPresent`
-- **Fix:** Standardize to `IfNotPresent` in base (appropriate for tagged images) and `Always` in development overlay (appropriate for `:latest`). NATS is correct; the other services should match. Check each service manifest in `04-ship/kubernetes/base/services/` and ensure consistent `imagePullPolicy: IfNotPresent`. Development overlay should patch to `Always`.
-- **Verification:** `grep -r 'imagePullPolicy' 04-ship/kubernetes/base/services/` — all show `IfNotPresent`. `grep -r 'imagePullPolicy' 04-ship/kubernetes/overlays/development/` — shows `Always` patch.
+- **Evidence:** `04-deploy/kubernetes/base/services/nats.yaml` — `imagePullPolicy: IfNotPresent`
+- **Fix:** Standardize to `IfNotPresent` in base (appropriate for tagged images) and `Always` in development overlay (appropriate for `:latest`). NATS is correct; the other services should match. Check each service manifest in `04-deploy/kubernetes/base/services/` and ensure consistent `imagePullPolicy: IfNotPresent`. Development overlay should patch to `Always`.
+- **Verification:** `grep -r 'imagePullPolicy' 04-deploy/kubernetes/base/services/` — all show `IfNotPresent`. `grep -r 'imagePullPolicy' 04-deploy/kubernetes/overlays/development/` — shows `Always` patch.
 - **Risk:** Low — pull policy change in base manifests. Production overlay already pins tags (v1.0.0), so `IfNotPresent` is correct there.
 
 ### Architecture: 9/10 → 10/10
 
 #### Issue 3: Backend template has commented-out remote state
 
-- **Audit finding:** `04-ship/terraform/environments/template/main.tf` has the S3 backend block commented out. Operators must know to uncomment it, increasing risk of local state being used accidentally.
-- **Evidence:** `04-ship/terraform/environments/template/main.tf` — `# backend "s3" { ... }`
+- **Audit finding:** `04-deploy/terraform/environments/template/main.tf` has the S3 backend block commented out. Operators must know to uncomment it, increasing risk of local state being used accidentally.
+- **Evidence:** `04-deploy/terraform/environments/template/main.tf` — `# backend "s3" { ... }`
 - **Fix:** Uncomment the backend block in the template and add placeholder values with clear comments:
   ```hcl
   backend "s3" {
@@ -79,15 +79,15 @@ autonomy_level: 'permissioned'
   }
   ```
   The `CHANGE-ME` prefix ensures `terraform init` fails immediately if not customized — safer than silent local state.
-- **Verification:** `grep -c 'CHANGE-ME' 04-ship/terraform/environments/template/main.tf` returns >= 4
+- **Verification:** `grep -c 'CHANGE-ME' 04-deploy/terraform/environments/template/main.tf` returns >= 4
 - **Risk:** Low — template change only. Existing environments unaffected.
 
 ### System Design: 9/10 → 10/10
 
 #### Issue 4: Network policy CIDR hardcoded to 10.0.0.0/8
 
-- **Audit finding:** `04-ship/kubernetes/overlays/production/network-policies.yaml` hardcodes `cidr: 10.0.0.0/8` with a comment "customize per deployment" but no mechanism to actually customize it.
-- **Evidence:** `04-ship/kubernetes/overlays/production/network-policies.yaml:80,148`
+- **Audit finding:** `04-deploy/kubernetes/overlays/production/network-policies.yaml` hardcodes `cidr: 10.0.0.0/8` with a comment "customize per deployment" but no mechanism to actually customize it.
+- **Evidence:** `04-deploy/kubernetes/overlays/production/network-policies.yaml:80,148`
 - **Fix:** Two options (pick based on preference):
   1. **Document as deployment override:** Add to `01-docs/deployment-runbook.md` a section on network policy customization with the exact sed/kustomize patch command to update the CIDR per environment.
   2. **Extract to ConfigMap:** Create a `network-config` ConfigMap with the internal CIDR and reference it from network policies (more complex, may not be worth it for a single value).
@@ -99,15 +99,15 @@ autonomy_level: 'permissioned'
 
 #### Issue 5: CRITICAL — `.terraform/terraform.tfstate` committed to git
 
-- **Audit finding:** The `.terraform/` directory including `terraform.tfstate` is committed at `04-ship/terraform/environments/zimbabwe-pilot/.terraform/`. This is a security and hygiene violation — state files may contain sensitive outputs and should never be version-controlled.
-- **Evidence:** `04-ship/terraform/environments/zimbabwe-pilot/.terraform/terraform.tfstate`
+- **Audit finding:** The `.terraform/` directory including `terraform.tfstate` is committed at `04-deploy/terraform/environments/zimbabwe-pilot/.terraform/`. This is a security and hygiene violation — state files may contain sensitive outputs and should never be version-controlled.
+- **Evidence:** `04-deploy/terraform/environments/zimbabwe-pilot/.terraform/terraform.tfstate`
 - **Fix:**
   ```bash
   cd /Users/amanianai/Sites/gtcx-ecosystem/gtcx-infrastructure
-  git rm -r --cached 04-ship/terraform/environments/zimbabwe-pilot/.terraform/
+  git rm -r --cached 04-deploy/terraform/environments/zimbabwe-pilot/.terraform/
   ```
   Verify `.gitignore` already has `.terraform/` (it does — line in existing .gitignore). The `--cached` flag removes from git tracking without deleting the local directory.
-- **Verification:** `git ls-files | grep '.terraform/'` returns empty. `test -d 04-ship/terraform/environments/zimbabwe-pilot/.terraform` still exists locally.
+- **Verification:** `git ls-files | grep '.terraform/'` returns empty. `test -d 04-deploy/terraform/environments/zimbabwe-pilot/.terraform` still exists locally.
 - **Risk:** Medium — ensure the state file has a remote backend configured (S3) before removing local copy. The zimbabwe-pilot environment already has `backend "s3"` configured, so this is safe. If the local `.terraform/terraform.tfstate` is the ONLY copy, back it up first.
 
 #### Issue 6: Missing deployment runbook
@@ -117,9 +117,9 @@ autonomy_level: 'permissioned'
 - **Fix:** Create `01-docs/deployment-runbook.md` covering:
   1. **Prerequisites:** AWS credentials, kubectl context, Terraform state backend
   2. **New environment setup:** Copy template, customize backend + variables, `terraform init && terraform plan && terraform apply`
-  3. **K8s deployment:** `kustomize build 04-ship/kubernetes/overlays/{env} | kubectl apply -f -`
+  3. **K8s deployment:** `kustomize build 04-deploy/kubernetes/overlays/{env} | kubectl apply -f -`
   4. **Intelligence services:** Reference `03-platform/scripts/deploy-intelligence.sh`
-  5. **Database initialization:** Apply init scripts from `04-ship/docker/init-03-platform/scripts/`
+  5. **Database initialization:** Apply init scripts from `04-deploy/docker/init-03-platform/scripts/`
   6. **Secrets injection:** How to create/rotate secrets per environment
   7. **Verification checklist:** Health endpoints, log checks, metric dashboards
   8. **Rollback procedure:** How to revert a bad deployment
@@ -160,40 +160,40 @@ autonomy_level: 'permissioned'
 
 #### Issue 8: Duplicate K8s directories — `k8s/` vs `kubernetes/`
 
-- **Audit finding:** Both `04-ship/k8s/` (intelligence-specific configs) and `04-ship/kubernetes/` (full platform) exist. Purpose overlap is unclear. `k8s/intelligence/` contains: `secrets.yml`, `sdk-server.yml`, `canary.yml`, `anisa.yml`, `namespace.yml`.
-- **Evidence:** `04-ship/k8s/intelligence/` — 5 YAML files; `04-ship/kubernetes/base/services/intelligence.yaml` — equivalent manifests
+- **Audit finding:** Both `04-deploy/k8s/` (intelligence-specific configs) and `04-deploy/kubernetes/` (full platform) exist. Purpose overlap is unclear. `k8s/intelligence/` contains: `secrets.yml`, `sdk-server.yml`, `canary.yml`, `anisa.yml`, `namespace.yml`.
+- **Evidence:** `04-deploy/k8s/intelligence/` — 5 YAML files; `04-deploy/kubernetes/base/services/intelligence.yaml` — equivalent manifests
 - **Fix:** Consolidate. The `kubernetes/` directory is the canonical Kustomize structure. Either:
   1. Move any unique content from `k8s/intelligence/` into `kubernetes/overlays/` (e.g., canary config)
   2. Delete `k8s/` entirely if all content is superseded by `kubernetes/base/services/intelligence.yaml`
      Compare the files first — if `k8s/intelligence/anisa.yml` and `kubernetes/base/services/intelligence.yaml` define the same deployment, keep only the Kustomize version.
-- **Verification:** `test ! -d 04-ship/k8s` — directory should not exist. Or if kept, has a README explaining its distinct purpose.
-- **Risk:** Medium — must verify no CI/CD pipeline references `04-ship/k8s/`. Check `03-platform/scripts/deploy-intelligence.sh` and any GitHub Actions for path references.
+- **Verification:** `test ! -d 04-deploy/k8s` — directory should not exist. Or if kept, has a README explaining its distinct purpose.
+- **Risk:** Medium — must verify no CI/CD pipeline references `04-deploy/k8s/`. Check `03-platform/scripts/deploy-intelligence.sh` and any GitHub Actions for path references.
 
 #### Issue 9: Orphaned `edge-proxy/` directory
 
-- **Audit finding:** `04-ship/edge-proxy/` directory exists but appears empty or undocumented.
-- **Evidence:** `04-ship/edge-proxy/` — no visible content or README
+- **Audit finding:** `04-deploy/edge-proxy/` directory exists but appears empty or undocumented.
+- **Evidence:** `04-deploy/edge-proxy/` — no visible content or README
 - **Fix:** If the directory is empty, remove it. If it contains files for a future edge proxy (Envoy, Traefik), add a README explaining its purpose and status.
   ```bash
   # Check if empty
-  ls -la 04-ship/edge-proxy/
+  ls -la 04-deploy/edge-proxy/
   # If empty:
-  rmdir 04-ship/edge-proxy/
+  rmdir 04-deploy/edge-proxy/
   # If has content:
   # Add README.md explaining purpose
   ```
-- **Verification:** Either `test ! -d 04-ship/edge-proxy` (removed) or `test -f 04-ship/edge-proxy/README.md` (documented)
+- **Verification:** Either `test ! -d 04-deploy/edge-proxy` (removed) or `test -f 04-deploy/edge-proxy/README.md` (documented)
 - **Risk:** Low — removing an empty directory or adding documentation
 
 #### Issue 10: Empty `monitoring/dashboards/` directory
 
-- **Audit finding:** `04-ship/monitoring/dashboards/` may be empty — should contain Grafana dashboard JSON files or a README.
-- **Evidence:** `04-ship/monitoring/dashboards/` — unclear if populated
+- **Audit finding:** `04-deploy/monitoring/dashboards/` may be empty — should contain Grafana dashboard JSON files or a README.
+- **Evidence:** `04-deploy/monitoring/dashboards/` — unclear if populated
 - **Fix:** If empty, either:
   1. Add a `README.md` explaining that dashboard JSON files will be added when Grafana is deployed (if dashboards are managed via Grafana UI and exported later)
   2. Add placeholder dashboard JSON files for the key views: API latency, NATS throughput, pod health
   3. Remove the directory if dashboards are managed entirely outside this repo
-- **Verification:** `ls 04-ship/monitoring/dashboards/` — shows either dashboard files or a README
+- **Verification:** `ls 04-deploy/monitoring/dashboards/` — shows either dashboard files or a README
 - **Risk:** None
 
 ---
@@ -221,9 +221,9 @@ Items 7-8 are documentation (do last, reference the fixed structure).
 ## Definition of Done
 
 - [ ] `git ls-files | grep '.terraform/'` returns empty
-- [ ] `04-ship/k8s/` either removed or documented with clear distinction from `kubernetes/`
-- [ ] `04-ship/edge-proxy/` either removed or has README
-- [ ] `04-ship/monitoring/dashboards/` has content or README
+- [ ] `04-deploy/k8s/` either removed or documented with clear distinction from `kubernetes/`
+- [ ] `04-deploy/edge-proxy/` either removed or has README
+- [ ] `04-deploy/monitoring/dashboards/` has content or README
 - [ ] All base service manifests use consistent `imagePullPolicy: IfNotPresent`
 - [ ] Base kustomization secrets have "NEVER USE IN PRODUCTION" comment block
 - [ ] `01-docs/secrets-management.md` exists
@@ -243,24 +243,24 @@ cd /Users/amanianai/Sites/gtcx-ecosystem/gtcx-infrastructure
 git ls-files | grep -E '\.terraform/|\.tfstate' | wc -l  # expect: 0
 
 # 2. No duplicate K8s dirs (or documented)
-test ! -d 04-ship/k8s || test -f 04-ship/k8s/README.md
+test ! -d 04-deploy/k8s || test -f 04-deploy/k8s/README.md
 
 # 3. No orphaned dirs
-test ! -d 04-ship/edge-proxy || test -f 04-ship/edge-proxy/README.md
+test ! -d 04-deploy/edge-proxy || test -f 04-deploy/edge-proxy/README.md
 
 # 4. Dashboards dir has content
-ls 04-ship/monitoring/dashboards/ | wc -l  # expect: >= 1
+ls 04-deploy/monitoring/dashboards/ | wc -l  # expect: >= 1
 
 # 5. Consistent image pull policy
-grep -r 'imagePullPolicy' 04-ship/kubernetes/base/services/ | sort -u
+grep -r 'imagePullPolicy' 04-deploy/kubernetes/base/services/ | sort -u
 # expect: all IfNotPresent
 
 # 6. Secrets documented
 test -f 01-docs/secrets-management.md && echo "ok"
-grep -c 'NEVER USE IN PRODUCTION' 04-ship/kubernetes/base/kustomization.yaml  # >= 1
+grep -c 'NEVER USE IN PRODUCTION' 04-deploy/kubernetes/base/kustomization.yaml  # >= 1
 
 # 7. Template backend active
-grep -c 'CHANGE-ME' 04-ship/terraform/environments/template/main.tf  # >= 4
+grep -c 'CHANGE-ME' 04-deploy/terraform/environments/template/main.tf  # >= 4
 
 # 8. Deployment runbook
 test -f 01-docs/deployment-runbook.md && echo "ok"
@@ -271,7 +271,7 @@ test -f CHANGELOG.md && echo "ok"
 grep -c 'Unreleased' CHANGELOG.md  # >= 1
 
 # 10. Terraform validates
-cd 04-ship/terraform/modules/vpc && terraform validate
+cd 04-deploy/terraform/modules/vpc && terraform validate
 cd ../database && terraform validate
 cd ../eks && terraform validate
 ```

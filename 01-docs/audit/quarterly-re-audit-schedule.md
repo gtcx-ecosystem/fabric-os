@@ -96,7 +96,7 @@ This schedule satisfies the M4 exit criterion: **"Quarterly re-audit scheduled."
 | Master audit reports     | 7 years   | `01-docs/05-audit/archive/`                             |
 | Score evidence ledger    | 7 years   | `01-docs/05-audit/score-evidence-ledger.json`           |
 | CI build artifacts       | 90 days   | GitHub Actions                                          |
-| Release evidence bundles | 7 years   | `04-ship/security/reports/release-evidence/`            |
+| Release evidence bundles | 7 years   | `04-deploy/security/reports/release-evidence/`            |
 | Pen-test reports         | 7 years   | `01-docs/05-audit/pen-test-report-YYYY-MM-DD.md`        |
 | SOC 2 reports            | 7 years   | `01-docs/10-compliance/soc2-type1-attestation-YYYY.pdf` |
 | On-call drill evidence   | 3 years   | `01-docs/devops/drills/`                                |

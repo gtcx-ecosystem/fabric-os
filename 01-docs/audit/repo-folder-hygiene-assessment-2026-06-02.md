@@ -52,7 +52,7 @@ tags: ['audit', 'hygiene', 'repo-structure']
 
 - Top-level directories with READMEs (5/7):
   - `01-docs/` ✓
-  - `04-ship/` ✓
+  - `04-deploy/` ✓
   - `03-platform/scripts/` ✓
   - `03-platform/tools/` ✓
   - `.agent/` ✓
@@ -61,16 +61,16 @@ tags: ['audit', 'hygiene', 'repo-structure']
   - `.github/` — no `README.md` at root (only `.github/actions/README.md` exists)
 - `01-docs/` subdirectories: **18/18** have READMEs (agents, agile, api, architecture, audit, compliance, engineering, esg, financial, gitbook, governance, gtm, operations, overview, reference, roadmap, security, specs)
 - `03-platform/tools/` top-level directories: **23/23** have READMEs
-- `04-ship/` subdirectories: **3/7** have READMEs
-  - ✓ `04-ship/migrations/README.md`
-  - ✓ `04-ship/03-platform/scripts/README.md`
-  - ✓ `04-ship/security/README.md`
-  - ✗ `04-ship/docker/` — missing
-  - ✗ `04-ship/kubernetes/` — missing
-  - ✗ `04-ship/monitoring/` — missing
-  - ✗ `04-ship/terraform/` — missing
+- `04-deploy/` subdirectories: **3/7** have READMEs
+  - ✓ `04-deploy/migrations/README.md`
+  - ✓ `04-deploy/03-platform/scripts/README.md`
+  - ✓ `04-deploy/security/README.md`
+  - ✗ `04-deploy/docker/` — missing
+  - ✗ `04-deploy/kubernetes/` — missing
+  - ✗ `04-deploy/monitoring/` — missing
+  - ✗ `04-deploy/terraform/` — missing
 
-**Deduction:** -3 for 6 missing READMEs across `.baseline/`, `.github/`, and 4 `04-ship/` subdirectories
+**Deduction:** -3 for 6 missing READMEs across `.baseline/`, `.github/`, and 4 `04-deploy/` subdirectories
 
 ---
 
@@ -99,7 +99,7 @@ tags: ['audit', 'hygiene', 'repo-structure']
 **Working-tree presence (ignored but not cleaned):**
 
 - `.turbo/` at root with cache files
-- `04-ship/migrations/.turbo/`
+- `04-deploy/migrations/.turbo/`
 - `03-platform/tools/deployment-guard/.turbo/`
 - `03-platform/tools/docs-site/.turbo/`
 - `03-platform/tools/docs-site/dist/`
@@ -137,7 +137,7 @@ tags: ['audit', 'hygiene', 'repo-structure']
 - All top-level directories: kebab-case or lowercase (`.agent`, `.baseline`, `.github`, `docs`, `infra`, `scripts`, `tools`)
 - `03-platform/tools/` subdirectories: 23 directories, **100% kebab-case**
   - `anomaly-detector`, `audit-flush`, `audit-signer`, `compliance-gateway`, `compliance-gateway-mcp`, `contract-tests`, `control-plane`, `deployment-guard`, `docs-site`, `eval-pipeline`, `kubectl-access`, `kyc-screening`, `load-tests`, `low-bandwidth`, `policy`, `replay-protection`, `ussd-handler`, etc.
-- `04-ship/` subdirectories: 7 directories, **100% lowercase/kebab-case**
+- `04-deploy/` subdirectories: 7 directories, **100% lowercase/kebab-case**
   - `docker`, `kubernetes`, `migrations`, `monitoring`, `scripts`, `security`, `terraform`
 - `01-docs/` subdirectories: 18 directories, **100% kebab-case/lowercase**
 - Config files consistently kebab-case: `eslint.config.mjs`, `pnpm-workspace.yaml`, `tsconfig.json`, `turbo.json`
@@ -215,10 +215,10 @@ tags: ['audit', 'hygiene', 'repo-structure']
 | --- | ----------------- | ---------------------------------------------------------------------------------------------------- | -------- | ------ | -------------------------------------------------------------------------- |
 | 1   | README discipline | `.baseline/` — missing root `README.md`                                                              | Medium   | Open   | Create `.baseline/README.md` explaining baseline structure                 |
 | 2   | README discipline | `.github/` — missing root `README.md`                                                                | Medium   | Open   | Create `.github/README.md` explaining workflow organization                |
-| 3   | README discipline | `04-ship/docker/` — missing `README.md`                                                              | Low      | Open   | Create `README.md` with Docker build instructions                          |
-| 4   | README discipline | `04-ship/kubernetes/` — missing `README.md`                                                          | Low      | Open   | Create `README.md` with K8s manifest overview                              |
-| 5   | README discipline | `04-ship/monitoring/` — missing `README.md`                                                          | Low      | Open   | Create `README.md` with monitoring stack overview                          |
-| 6   | README discipline | `04-ship/terraform/` — missing `README.md`                                                           | Low      | Open   | Create `README.md` with Terraform module index                             |
+| 3   | README discipline | `04-deploy/docker/` — missing `README.md`                                                              | Low      | Open   | Create `README.md` with Docker build instructions                          |
+| 4   | README discipline | `04-deploy/kubernetes/` — missing `README.md`                                                          | Low      | Open   | Create `README.md` with K8s manifest overview                              |
+| 5   | README discipline | `04-deploy/monitoring/` — missing `README.md`                                                          | Low      | Open   | Create `README.md` with monitoring stack overview                          |
+| 6   | README discipline | `04-deploy/terraform/` — missing `README.md`                                                           | Low      | Open   | Create `README.md` with Terraform module index                             |
 | 7   | Build artifacts   | 11 tools with `node_modules/`, 6+ with `coverage/`, 4 with `.turbo/`, 1 with `dist/` in working tree | Low      | Open   | Run `git clean -fdX` or add `pnpm clean` script to purge ignored artifacts |
 | 8   | File size         | Coverage `lcov.info` files 500KB-2MB, 2000-8000+ LOC in working tree                                 | Low      | Open   | Add post-test cleanup or move coverage to `/tmp`                           |
 
@@ -234,7 +234,7 @@ tags: ['audit', 'hygiene', 'repo-structure']
 | ------------------------------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `.baseline/` missing README          | **Yes**    | Institutional memory directory lacks entry-point documentation. Users must navigate to `.baseline/memory/README.md` instead.                                                                        |
 | `.github/` missing README            | **Yes**    | 19 workflow files, 3 action definitions, and codeql configs lack top-level orientation.                                                                                                             |
-| 4 `04-ship/` subdirs missing READMEs | **Yes**    | Infrastructure subsystems (docker, kubernetes, monitoring, terraform) are complex and warrant local documentation.                                                                                  |
+| 4 `04-deploy/` subdirs missing READMEs | **Yes**    | Infrastructure subsystems (docker, kubernetes, monitoring, terraform) are complex and warrant local documentation.                                                                                  |
 | Build artifacts in working tree      | **Yes**    | While properly `.gitignore`d, the accumulation of coverage, dist, and .turbo directories increases clone size and cognitive load. A `pnpm clean` or `git clean -fdX` workflow should be documented. |
 | Large coverage files in working tree | **Yes**    | lcov reports are generated artifacts that can exceed 2MB. They are ignored but not removed after test runs.                                                                                         |
 
@@ -245,7 +245,7 @@ tags: ['audit', 'hygiene', 'repo-structure']
 1. **Create missing READMEs** (Priority: Medium)
    - `.baseline/README.md` — reference `.baseline/definition.json` and memory structure
    - `.github/README.md` — catalog workflows, actions, and contribution guidelines
-   - `04-ship/docker/README.md`, `04-ship/kubernetes/README.md`, `04-ship/monitoring/README.md`, `04-ship/terraform/README.md`
+   - `04-deploy/docker/README.md`, `04-deploy/kubernetes/README.md`, `04-deploy/monitoring/README.md`, `04-deploy/terraform/README.md`
 
 2. **Add clean script** (Priority: Low)
    - Add `"clean": "git clean -fdX || rm -rf */coverage */.turbo */dist */node_modules"` to root `package.json`
@@ -256,7 +256,7 @@ tags: ['audit', 'hygiene', 'repo-structure']
    - Alternatively, add `coverage/` to `.eslintignore` and `.prettierignore` if not already present
 
 4. **Baseline README template** (Priority: Low)
-   - Establish a README template for 04-ship/ subdirectories to ensure consistency
+   - Establish a README template for 04-deploy/ subdirectories to ensure consistency
 
 ---
 

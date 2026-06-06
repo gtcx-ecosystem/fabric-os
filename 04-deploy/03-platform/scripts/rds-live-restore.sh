@@ -7,7 +7,7 @@
 # evidence for audit.
 #
 # Usage:
-#   ./04-ship/03-platform/scripts/rds-live-restore.sh <operational|audit> [target-env]
+#   ./04-deploy/03-platform/scripts/rds-live-restore.sh <operational|audit> [target-env]
 #
 # Prerequisites:
 #   - AWS CLI authenticated with RDS restore permissions

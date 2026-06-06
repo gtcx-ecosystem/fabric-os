@@ -57,7 +57,7 @@ GTCX retains KYC and AML records in accordance with each jurisdiction's requirem
 Retention is enforced through infrastructure-as-code, not application logic:
 
 ```hcl
-# From: 04-ship/terraform/modules/compliance-db/main.tf
+# From: 04-deploy/terraform/modules/compliance-db/main.tf
 zimbabwe = {
   kyc_retention_days   = 1825  # 5 years
   audit_retention_days = 2555  # 7 years

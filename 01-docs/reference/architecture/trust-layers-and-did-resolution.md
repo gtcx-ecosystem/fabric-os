@@ -26,10 +26,10 @@ Read that document for:
 
 | Concern                        | Location                                                                                                  |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| Staging DNS + ALB + ingress    | `04-ship/kubernetes/overlays/staging/ingress.yaml`, `04-ship/terraform/environments/staging/`             |
+| Staging DNS + ALB + ingress    | `04-deploy/kubernetes/overlays/staging/ingress.yaml`, `04-deploy/terraform/environments/staging/`             |
 | Runbook                        | [`01-docs/04-ops/runbooks/inf-49-staging-dns.md`](../../operations/runbooks/inf-49-staging-dns.md)        |
-| Staging protocols env + probes | `04-ship/kubernetes/overlays/staging/patches/protocols-staging-env.yaml`, `protocols-probes-staging.yaml` |
-| Image tag                      | `04-ship/kubernetes/overlays/staging/kustomization.yaml` → `gtcx-protocols:v0.4.5+`                       |
+| Staging protocols env + probes | `04-deploy/kubernetes/overlays/staging/patches/protocols-staging-env.yaml`, `protocols-probes-staging.yaml` |
+| Image tag                      | `04-deploy/kubernetes/overlays/staging/kustomization.yaml` → `gtcx-protocols:v0.4.5+`                       |
 | HSM ceremony                   | **#86** (not INF-49)                                                                                      |
 
 ## Staging smoke (2026-06-01)

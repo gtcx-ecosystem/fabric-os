@@ -25,7 +25,7 @@ There is no `gtcx/audit-flush` image in the registry by default — the sidecar 
 - Healthcheck: HTTP `/health` returns 200 when connected to NATS in the last 2 minutes.
 - Readiness: HTTP `/ready` returns 200 only when both NATS and S3 PutObject have succeeded at least once.
 
-The contract lives in `04-ship/kubernetes/base/services/audit-flush.yaml`; pin the digest in the kustomize image overlay per environment.
+The contract lives in `04-deploy/kubernetes/base/services/audit-flush.yaml`; pin the digest in the kustomize image overlay per environment.
 
 ```bash
 # Build + push (replace REGISTRY)
@@ -35,7 +35,7 @@ docker push $REGISTRY/audit-flush:$(git rev-parse --short HEAD)
 # Patch the overlay (testnet shown)
 yq -i \
   ".images[0].newName = \"$REGISTRY/audit-flush\" | .images[0].newTag = \"$(git rev-parse --short HEAD)\"" \
-  04-ship/kubernetes/overlays/testnet/kustomization.yaml
+  04-deploy/kubernetes/overlays/testnet/kustomization.yaml
 ```
 
 The image is intentionally outside this repo's CI today because the WORM bucket policy must be agreed with security before any image gets write access. Build it from a one-line index.mjs that uses the published `@gtcx/audit-signer` chain verifier + the `nats` + `@aws-sdk/client-s3` packages.
@@ -61,7 +61,7 @@ module "audit_flush_irsa" {
 ROLE_ARN=$(terraform output -raw audit_flush_role_arn)
 yq -i \
   ".patches[0].patch |= sub(\"PLACEHOLDER_OVERRIDE_IN_OVERLAY\"; \"$ROLE_ARN\")" \
-  04-ship/kubernetes/overlays/testnet/kustomization.yaml
+  04-deploy/kubernetes/overlays/testnet/kustomization.yaml
 ```
 
 Or maintain the ARN as a per-environment Kustomize patch file referenced from the overlay.

@@ -4,13 +4,13 @@ status: current
 date: 2026-06-05
 owner: gtcx-infrastructure
 source_repos:
-  - gtcx-infrastructure/04-ship/docker/init-03-platform/scripts/postgres/01-schema.sql
+  - gtcx-infrastructure/04-deploy/docker/init-03-platform/scripts/postgres/01-schema.sql
   - gtcx-platforms/platforms/*/03-platform/src/**/*.entity.ts
 ---
 
 # TypeORM Entity / Schema Drift Report (S1-02)
 
-**Canonical DDL:** `04-ship/docker/init-03-platform/scripts/postgres/01-schema.sql` (1,050 lines)  
+**Canonical DDL:** `04-deploy/docker/init-03-platform/scripts/postgres/01-schema.sql` (1,050 lines)  
 **TypeORM entities:** `gtcx-platforms/platforms/*/03-platform/src/**/*.entity.ts` (40+ entities)  
 **Method:** Manual comparison of DDL vs entity decorators  
 **Date:** 2026-06-05
@@ -115,7 +115,7 @@ TypeORM `simple-json` serializes to TEXT, not JSONB. Schema uses JSONB.
 
 - [x] `tradepass_identities`, `audit_records`, `outbox`, `idempotency_keys` added to `01-schema.sql`
 - [x] K8s Jobs `migrate-shared-entities`, `migrate-tradepass-identities`, `migrate-audit-records` annotated as deprecated (idempotent safety net until TypeORM migration runner is wired)
-- [x] Jobs moved to `04-ship/kubernetes/jobs/archive/` — no longer active manifests
+- [x] Jobs moved to `04-deploy/kubernetes/jobs/archive/` — no longer active manifests
 
 ### Remaining (Phase 2 — platforms backlog)
 
@@ -147,6 +147,6 @@ Per coordination doc `from-gtcx-platforms-s2-07-typeorm-phase1-2026-06-05.md`:
 ## Evidence
 
 - This report: `01-docs/05-audit/evidence/typeorm-schema-drift-2026-06-05.md`
-- Canonical schema: `04-ship/docker/init-03-platform/scripts/postgres/01-schema.sql`
+- Canonical schema: `04-deploy/docker/init-03-platform/scripts/postgres/01-schema.sql`
 - Entities: `gtcx-platforms/platforms/*/03-platform/src/**/*.entity.ts`
-- Staging migration jobs (archived): `04-ship/kubernetes/jobs/archive/staging-migrate-*.yaml`
+- Staging migration jobs (archived): `04-deploy/kubernetes/jobs/archive/staging-migrate-*.yaml`

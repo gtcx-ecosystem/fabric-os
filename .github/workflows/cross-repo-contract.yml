@@ -28,7 +28,7 @@ jobs:
           #     test-command: pnpm test
           - name: gtcx-infrastructure
             path: infrastructure
-            test-command: bash 04-ship/03-platform/scripts/validate.sh quick
+            test-command: bash 04-deploy/03-platform/scripts/validate.sh quick
     steps:
       - name: Checkout infrastructure (this repo)
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6

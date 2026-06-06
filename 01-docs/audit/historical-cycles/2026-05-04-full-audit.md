@@ -37,7 +37,7 @@ autonomy_level: 'permissioned'
 
 **[Critical] [Spec Fidelity] — EKS Public API Endpoint Exposed**
 
-- `04-ship/terraform/environments/zimbabwe-pilot/terraform.tfvars`: `enable_public_api = true` with `admin_cidr_blocks = []`
+- `04-deploy/terraform/environments/zimbabwe-pilot/terraform.tfvars`: `enable_public_api = true` with `admin_cidr_blocks = []`
 - Same in `testnet-pilot/terraform.tfvars`
 - EKS precondition (`eks/main.tf:321`) only triggers at apply time, not plan
 - Impact: Kubernetes API server is publicly reachable with zero IP restrictions
@@ -53,7 +53,7 @@ autonomy_level: 'permissioned'
 
 **[High] [Code Quality] — Deploy Script Name Truncation**
 
-- `04-ship/03-platform/scripts/deploy.sh:282`: `deployment/gtcx-agx-${ENVIRONMENT:0:4}` truncates "production" to "prod", "development" to "deve"
+- `04-deploy/03-platform/scripts/deploy.sh:282`: `deployment/gtcx-agx-${ENVIRONMENT:0:4}` truncates "production" to "prod", "development" to "deve"
 - Will fail if actual K8s deployment names don't match this convention
 - **Status: OPEN** — Sprint 2
 
@@ -73,7 +73,7 @@ autonomy_level: 'permissioned'
 
 **[Medium] [Operational Readiness] — SLO Definitions Missing Latency**
 
-- `04-ship/monitoring/rules/slo-recording-rules.yml`: Availability SLOs only count HTTP status codes
+- `04-deploy/monitoring/rules/slo-recording-rules.yml`: Availability SLOs only count HTTP status codes
 - No latency SLO violations tracked (200-OK but >2s = success in current recording rules)
 - **Status: OPEN** — Sprint 2
 
@@ -92,7 +92,7 @@ autonomy_level: 'permissioned'
 | MFA enforcement       | **Not implemented** | Policy claims MFA required (`access-control.md:19`); zero IaC enforcement             |
 | Network policies      | Partially           | Monitoring namespace has policies (`monitoring.yaml:608-691`); app services have none |
 
-**[Critical] NATS Event Bus Has No Authentication** — `04-ship/docker/nats/nats.conf`: Any pod in the cluster can publish to any subject. No TLS, no accounts, no authorization. Financial trade events flow through this bus.
+**[Critical] NATS Event Bus Has No Authentication** — `04-deploy/docker/nats/nats.conf`: Any pod in the cluster can publish to any subject. No TLS, no accounts, no authorization. Financial trade events flow through this bus.
 
 - **Status: REMEDIATED in Sprint 1** — Account-based auth with per-service publish/subscribe permissions added
 
@@ -117,7 +117,7 @@ autonomy_level: 'permissioned'
 
 ### Input Validation & Injection
 
-**[Medium] SQL Injection Risk in migrate.sh** — `04-ship/03-platform/scripts/migrate.sh:176-178`: Filename interpolated into SQL query. Even with quote escaping, special characters could break the query. Should use psql parameterized variables.
+**[Medium] SQL Injection Risk in migrate.sh** — `04-deploy/03-platform/scripts/migrate.sh:176-178`: Filename interpolated into SQL query. Even with quote escaping, special characters could break the query. Should use psql parameterized variables.
 
 - **Status: OPEN** — Sprint 3
 
@@ -209,7 +209,7 @@ The infrastructure itself is standard AWS architecture — VPC, EKS, RDS, ECR. A
 | Category          | Score /10 | Issues                                                                                                                        |
 | ----------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | Documentation     | 7         | 167 MD files, comprehensive coverage; 6+ stale path references to old `01-docs/` structure                                    |
-| File Structure    | 6         | Clean `04-ship/` layout; 4.8MB `_delete/` directory needs removal; `edge-proxy/` is empty placeholder                         |
+| File Structure    | 6         | Clean `04-deploy/` layout; 4.8MB `_delete/` directory needs removal; `edge-proxy/` is empty placeholder                         |
 | Naming            | 8         | Consistent `gtcx-*` naming in K8s, Terraform, Docker; ADR numbering sequential                                                |
 | Package/Build     | 9         | pnpm workspaces + Turborepo correctly configured; lint-staged + husky; CVE overrides current                                  |
 | Code Hygiene      | 7         | Terraform modules well-structured; `deploy.sh` has fragile string parsing; `Dockerfile.protocols` uses `--no-frozen-lockfile` |
@@ -225,7 +225,7 @@ The infrastructure itself is standard AWS architecture — VPC, EKS, RDS, ECR. A
 - `.baseline/config.json` — References old project root `4-infrastructure`
 - `Dockerfile.protocols:34` — `--no-frozen-lockfile` breaks reproducibility
 - Docker image tags — Monitoring stack pinned (`prometheus:v2.48.0`, `grafana:10.2.2`); application images used `:latest` in kustomization (REMEDIATED — now `v0.1.0`)
-- `04-ship/edge-proxy/` — Empty directory with placeholder README
+- `04-deploy/edge-proxy/` — Empty directory with placeholder README
 - `.gitignore` — Comprehensive, covers terraform state, node_modules, env files
 - `SECURITY.md` — Vulnerability reporting policy present
 - `CHANGELOG.md` — Unreleased section maintained
@@ -323,12 +323,12 @@ Layer mix: Remediation: 3 | Evolution: 3 | Innovation: 0
 
 | #   | Task                                         | Layer       | Files                                                      | Effort |
 | --- | -------------------------------------------- | ----------- | ---------------------------------------------------------- | ------ |
-| 2.1 | Add ALB TLS 1.2+ enforcement                 | Remediation | `04-ship/terraform/modules/alb/main.tf`                    | 2h     |
-| 2.2 | Fix deploy.sh deployment name resolution     | Remediation | `04-ship/03-platform/scripts/deploy.sh:282-283`            | 1h     |
-| 2.3 | Fix Dockerfile.protocols frozen lockfile     | Remediation | `04-ship/docker/Dockerfile.protocols:34`                   | 15m    |
-| 2.4 | Add CloudTrail + GuardDuty Terraform module  | Evolution   | New `04-ship/terraform/modules/detective/main.tf`          | 4h     |
-| 2.5 | Add latency dimension to SLO recording rules | Evolution   | `04-ship/monitoring/rules/slo-recording-rules.yml`         | 2h     |
-| 2.6 | Move monitoring NetworkPolicies to overlays  | Evolution   | `04-ship/kubernetes/base/services/monitoring.yaml:608-691` | 2h     |
+| 2.1 | Add ALB TLS 1.2+ enforcement                 | Remediation | `04-deploy/terraform/modules/alb/main.tf`                    | 2h     |
+| 2.2 | Fix deploy.sh deployment name resolution     | Remediation | `04-deploy/03-platform/scripts/deploy.sh:282-283`            | 1h     |
+| 2.3 | Fix Dockerfile.protocols frozen lockfile     | Remediation | `04-deploy/docker/Dockerfile.protocols:34`                   | 15m    |
+| 2.4 | Add CloudTrail + GuardDuty Terraform module  | Evolution   | New `04-deploy/terraform/modules/detective/main.tf`          | 4h     |
+| 2.5 | Add latency dimension to SLO recording rules | Evolution   | `04-deploy/monitoring/rules/slo-recording-rules.yml`         | 2h     |
+| 2.6 | Move monitoring NetworkPolicies to overlays  | Evolution   | `04-deploy/kubernetes/base/services/monitoring.yaml:608-691` | 2h     |
 
 ---
 
@@ -344,9 +344,9 @@ Layer mix: Remediation: 2 | Evolution: 4 | Innovation: 0
 | 3.2 | Fix `.baseline/config.json` project root      | Remediation | `.baseline/config.json:4`                                                                                   | 5m     |
 | 3.3 | Update all `01-docs/` path references in docs | Evolution   | 6+ files in `01-docs/01-agents/`, `01-docs/devops/`                                                         | 2h     |
 | 3.4 | Fix GitHub clone URLs in docs                 | Evolution   | `01-docs/01-agents/onboarding/developer-quickstart.md`, `01-docs/devops/environments/environment-config.md` | 30m    |
-| 3.5 | Add Alertmanager escalation policy            | Evolution   | `04-ship/docker/observability/alertmanager.yml`                                                             | 2h     |
-| 3.6 | Add FK constraints to protocol tables         | Evolution   | `04-ship/docker/init-03-platform/scripts/postgres/02-protocol-tables.sql`                                   | 2h     |
-| 3.7 | Fix migrate.sh SQL injection risk             | Remediation | `04-ship/03-platform/scripts/migrate.sh:176-178`                                                            | 1h     |
+| 3.5 | Add Alertmanager escalation policy            | Evolution   | `04-deploy/docker/observability/alertmanager.yml`                                                             | 2h     |
+| 3.6 | Add FK constraints to protocol tables         | Evolution   | `04-deploy/docker/init-03-platform/scripts/postgres/02-protocol-tables.sql`                                   | 2h     |
+| 3.7 | Fix migrate.sh SQL injection risk             | Remediation | `04-deploy/03-platform/scripts/migrate.sh:176-178`                                                            | 1h     |
 
 ---
 
@@ -358,10 +358,10 @@ Layer mix: Remediation: 0 | Evolution: 4 | Innovation: 1
 
 | #   | Task                                                 | Layer      | Files                                                       | Effort |
 | --- | ---------------------------------------------------- | ---------- | ----------------------------------------------------------- | ------ |
-| 4.1 | Scale NATS to 3 replicas in production overlay       | Evolution  | `04-ship/kubernetes/overlays/production/`, event-bus module | 3h     |
-| 4.2 | Add Terraform outputs for database secret ARNs       | Evolution  | `04-ship/terraform/modules/database/main.tf`                | 30m    |
-| 4.3 | Increase Loki retention to 365 days                  | Evolution  | `04-ship/docker/observability/loki.yml:70`                  | 15m    |
-| 4.4 | Add Pod Security Standards to namespaces             | Evolution  | `04-ship/kubernetes/base/namespace.yaml`                    | 2h     |
+| 4.1 | Scale NATS to 3 replicas in production overlay       | Evolution  | `04-deploy/kubernetes/overlays/production/`, event-bus module | 3h     |
+| 4.2 | Add Terraform outputs for database secret ARNs       | Evolution  | `04-deploy/terraform/modules/database/main.tf`                | 30m    |
+| 4.3 | Increase Loki retention to 365 days                  | Evolution  | `04-deploy/docker/observability/loki.yml:70`                  | 15m    |
+| 4.4 | Add Pod Security Standards to namespaces             | Evolution  | `04-deploy/kubernetes/base/namespace.yaml`                    | 2h     |
 | 4.5 | Create deployment controller CLI (replace deploy.sh) | Innovation | New `03-platform/tools/scripts/deploy/` TypeScript project  | 8h     |
 
 ---
@@ -376,8 +376,8 @@ Layer mix: Remediation: 0 | Evolution: 2 | Innovation: 2
 | --- | --------------------------------------------- | ---------- | ------------------------------------------------------------ | ------ |
 | 5.1 | Add Terratest for VPC and Database modules    | Innovation | New `vpc/vpc_test.go`, `database/database_test.go`           | 6h     |
 | 5.2 | Add CI link checker for documentation         | Evolution  | `.github/workflows/ci.yml`                                   | 2h     |
-| 5.3 | Calibrate alert thresholds from pilot traffic | Evolution  | `04-ship/monitoring/alerts/*.yml`, `slo-recording-rules.yml` | 4h     |
-| 5.4 | Add VPC endpoints for S3/ECR/CloudWatch       | Innovation | `04-ship/terraform/modules/vpc/main.tf`                      | 3h     |
+| 5.3 | Calibrate alert thresholds from pilot traffic | Evolution  | `04-deploy/monitoring/alerts/*.yml`, `slo-recording-rules.yml` | 4h     |
+| 5.4 | Add VPC endpoints for S3/ECR/CloudWatch       | Innovation | `04-deploy/terraform/modules/vpc/main.tf`                      | 3h     |
 
 ---
 
@@ -389,10 +389,10 @@ Layer mix: Remediation: 0 | Evolution: 1 | Innovation: 3
 
 | #   | Task                                                 | Layer      | Files                                                    | Effort |
 | --- | ---------------------------------------------------- | ---------- | -------------------------------------------------------- | ------ |
-| 6.1 | Add AWS Config rules for compliance validation       | Innovation | New `04-ship/terraform/modules/compliance/main.tf`       | 4h     |
-| 6.2 | Document and test DR procedure with actual RTO/RPO   | Innovation | `04-ship/03-platform/scripts/dr-test.sh`, new DR runbook | 4h     |
+| 6.1 | Add AWS Config rules for compliance validation       | Innovation | New `04-deploy/terraform/modules/compliance/main.tf`       | 4h     |
+| 6.2 | Document and test DR procedure with actual RTO/RPO   | Innovation | `04-deploy/03-platform/scripts/dr-test.sh`, new DR runbook | 4h     |
 | 6.3 | Package dual-database module as reusable open-source | Innovation | Extract from `database/` + `backup/` + `kyc-documents/`  | 4h     |
-| 6.4 | Add WAF to ALB module                                | Evolution  | `04-ship/terraform/modules/alb/main.tf`                  | 3h     |
+| 6.4 | Add WAF to ALB module                                | Evolution  | `04-deploy/terraform/modules/alb/main.tf`                  | 3h     |
 
 ---
 

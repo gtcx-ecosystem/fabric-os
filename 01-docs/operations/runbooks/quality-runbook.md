@@ -25,7 +25,7 @@ Run in order. Do not skip or reorder. Do not proceed past a failing gate.
 ```bash
 pnpm lint                                     # Lint scripts and Node tooling
 pnpm typecheck                                # Type-check TypeScript tooling
-terraform fmt -check -recursive 04-ship/terraform/   # Terraform formatting
+terraform fmt -check -recursive 04-deploy/terraform/   # Terraform formatting
 terraform validate                            # Terraform module validation
 pnpm audit                                    # Dependency vulnerability audit
 ```

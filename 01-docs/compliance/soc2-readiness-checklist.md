@@ -258,7 +258,7 @@ autonomy_level: 'permissioned'
 | Security policies                | `01-docs/09-security/`                         | ✅           |
 | Incident response playbook       | `01-docs/devops/incident-response-playbook.md` | ✅           |
 | Disaster recovery runbook        | `01-docs/devops/disaster-recovery-runbook.md`  | ✅           |
-| Access control matrix            | `04-ship/terraform/modules/ci/`                | ✅           |
+| Access control matrix            | `04-deploy/terraform/modules/ci/`                | ✅           |
 | Change management logs           | GitHub PR history                              | ✅           |
 | Monitoring dashboards            | Prometheus + Grafana                           | ✅ (staging) |
 | Audit logs                       | WORM S3 bucket                                 | ✅           |

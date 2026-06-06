@@ -42,7 +42,7 @@ configMapGenerator:
 
 # IMAGE TAG POLICY (production overlay)
 # ---------------------------------------------------------------------------
-# Tags below are PLACEHOLDERS. `04-ship/03-platform/scripts/deploy.sh` (lines 357-358)
+# Tags below are PLACEHOLDERS. `04-deploy/03-platform/scripts/deploy.sh` (lines 357-358)
 # rewrites them at runtime via `kustomize edit set image` to the actual
 # ECR URI + 40-char commit SHA for the release being deployed.
 #
@@ -139,7 +139,7 @@ patches:
   # automountServiceAccountToken is false in base; set true in production so the
   # EKS-projected OIDC token is available for STS AssumeRoleWithWebIdentity.
   # The eks.amazonaws.com/role-arn annotation is applied post-Terraform-apply by:
-  #   ENVIRONMENT=zimbabwe-pilot ./04-ship/03-platform/scripts/apply-platform-irsa.sh
+  #   ENVIRONMENT=zimbabwe-pilot ./04-deploy/03-platform/scripts/apply-platform-irsa.sh
   # ARN source: terraform output kyc_documents_irsa_role_arn
   - patch: |-
       - op: replace

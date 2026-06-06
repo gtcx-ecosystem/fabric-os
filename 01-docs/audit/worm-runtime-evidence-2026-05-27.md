@@ -87,7 +87,7 @@ Observed result:
 Local signed NDJSON record:
 
 ```text
-04-ship/security/reports/worm-evidence/2026-05-27/master-audit-remediation.ndjson
+04-deploy/security/reports/worm-evidence/2026-05-27/master-audit-remediation.ndjson
 ```
 
 SHA-256:
@@ -115,7 +115,7 @@ aws s3api put-object \
   --bucket gtcx-worm-audit-staging-af-south-1 \
   --region af-south-1 \
   --key remediation-evidence/2026-05-27/master-audit-remediation.ndjson \
-  --body 04-ship/security/reports/worm-evidence/2026-05-27/master-audit-remediation.ndjson \
+  --body 04-deploy/security/reports/worm-evidence/2026-05-27/master-audit-remediation.ndjson \
   --server-side-encryption aws:kms \
   --metadata sha256=d5d71d57159d75f0656aa4616f3775e90da565ada0c49ded9a8e868e82e00149,evidence=master-audit-remediation-2026-05-27
 ```

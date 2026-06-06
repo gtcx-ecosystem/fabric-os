@@ -24,7 +24,7 @@ Hub **#17** prod close at `https://compliance.gtcx.trade`. Staging Phase A is **
 ## 1. Terraform — IRSA + SM shells
 
 ```bash
-cd 04-ship/terraform/environments/production
+cd 04-deploy/terraform/environments/production
 terraform init
 terraform plan -var-file=terraform.tfvars \
   -target=module.secrets.aws_iam_role.compliance_os_secrets \
@@ -60,7 +60,7 @@ docker buildx build --platform linux/amd64 -f apps/web/Dockerfile \
   --push .
 ```
 
-Pin image in `04-ship/kubernetes/overlays/production/compliance-os/web-app.yaml` before apply.
+Pin image in `04-deploy/kubernetes/overlays/production/compliance-os/web-app.yaml` before apply.
 
 ## 4. Apply K8s overlay
 
@@ -68,7 +68,7 @@ Pin image in `04-ship/kubernetes/overlays/production/compliance-os/web-app.yaml`
 ./03-platform/scripts/production/install-compliance-os-eso.sh
 ```
 
-Overlay path: `04-ship/kubernetes/overlays/production/compliance-os/`
+Overlay path: `04-deploy/kubernetes/overlays/production/compliance-os/`
 
 ## 5. DNS
 

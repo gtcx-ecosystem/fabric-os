@@ -17,7 +17,7 @@ Deploy Prometheus + Grafana + Jaeger to staging and import the LLM ops dashboard
 ## Apply monitoring stack
 
 ```bash
-kubectl apply -k 04-ship/kubernetes/overlays/staging/monitoring/
+kubectl apply -k 04-deploy/kubernetes/overlays/staging/monitoring/
 kubectl -n gtcx-monitoring rollout status deployment/prometheus --timeout=120s
 kubectl -n gtcx-monitoring rollout status deployment/grafana --timeout=120s
 kubectl -n gtcx-monitoring rollout status deployment/jaeger --timeout=120s
@@ -28,7 +28,7 @@ kubectl -n gtcx-monitoring rollout status deployment/jaeger --timeout=120s
 Included in staging overlay — re-apply staging workloads:
 
 ```bash
-kubectl apply -k 04-ship/kubernetes/overlays/staging/
+kubectl apply -k 04-deploy/kubernetes/overlays/staging/
 kubectl -n gtcx-staging rollout status deployment/compliance-gateway-staging --timeout=120s
 ```
 
@@ -38,7 +38,7 @@ kubectl -n gtcx-staging rollout status deployment/compliance-gateway-staging --t
 # Port-forward Grafana
 kubectl -n gtcx-monitoring port-forward svc/grafana 3000:3000
 
-# Import 04-ship/monitoring/dashboards/llm-ops.json via UI or API
+# Import 04-deploy/monitoring/dashboards/llm-ops.json via UI or API
 ```
 
 ## Verify scrape

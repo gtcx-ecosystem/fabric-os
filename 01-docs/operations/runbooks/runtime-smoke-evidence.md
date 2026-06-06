@@ -45,7 +45,7 @@ Bearer tokens are read from the named environment variable and are redacted in e
 Default output path:
 
 ```text
-04-ship/security/reports/runtime-smoke-evidence/<environment>/<utc-timestamp>/
+04-deploy/security/reports/runtime-smoke-evidence/<environment>/<utc-timestamp>/
 ```
 
 Files:

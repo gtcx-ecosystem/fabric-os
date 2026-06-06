@@ -14,7 +14,7 @@ autonomy_level: 'permissioned'
 
 # Deploy Runbook — gtcx-infrastructure
 
-Process for deploying GTCX services to any environment using `./04-ship/03-platform/scripts/deploy.sh`.
+Process for deploying GTCX services to any environment using `./04-deploy/03-platform/scripts/deploy.sh`.
 
 > **Deprecation notice (2026-06-05):** `deploy.sh` is in maintenance mode.
 > Critical safety decisions already delegate to `03-platform/tools/deployment-guard/` (typed,
@@ -39,11 +39,11 @@ Before any deployment:
 
 | Environment   | Namespace         | Command                                                                         |
 | ------------- | ----------------- | ------------------------------------------------------------------------------- |
-| `development` | `gtcx-dev`        | `./04-ship/03-platform/scripts/deploy.sh development`                           |
-| `staging`     | `gtcx-staging`    | `./04-ship/03-platform/scripts/deploy.sh staging` _(requires human approval)_   |
-| `production`  | `gtcx-production` | `./04-ship/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-XXX` |
+| `development` | `gtcx-dev`        | `./04-deploy/03-platform/scripts/deploy.sh development`                           |
+| `staging`     | `gtcx-staging`    | `./04-deploy/03-platform/scripts/deploy.sh staging` _(requires human approval)_   |
+| `production`  | `gtcx-production` | `./04-deploy/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-XXX` |
 
-**Never** run `./04-ship/03-platform/scripts/deploy.sh production` without `--approval-ticket`. The script enforces this and will exit 1 if the flag is missing.
+**Never** run `./04-deploy/03-platform/scripts/deploy.sh production` without `--approval-ticket`. The script enforces this and will exit 1 if the flag is missing.
 
 ---
 
@@ -107,8 +107,8 @@ The script runs these steps in order:
 ### 3. Image Build
 
 - Determines version from `git rev-parse --short HEAD` or `--version=` flag
-- Builds `gtcx/agx:{version}` from `04-ship/docker/Dockerfile.platforms`
-- Builds `gtcx/protocols:{version}` from `04-ship/docker/Dockerfile.protocols`
+- Builds `gtcx/agx:{version}` from `04-deploy/docker/Dockerfile.platforms`
+- Builds `gtcx/protocols:{version}` from `04-deploy/docker/Dockerfile.protocols`
 - Intelligence services are deployed separately via `03-platform/scripts/deploy-intelligence.sh`
 
 ### 4. Security Scan
@@ -144,10 +144,10 @@ The script runs these steps in order:
 
 ```bash
 # Roll back production to the previous image
-./04-ship/03-platform/scripts/deploy.sh production --rollback
+./04-deploy/03-platform/scripts/deploy.sh production --rollback
 
 # Roll back staging
-./04-ship/03-platform/scripts/deploy.sh staging --rollback
+./04-deploy/03-platform/scripts/deploy.sh staging --rollback
 ```
 
 Rollback runs `kubectl rollout undo` on each deployment labeled `app.kubernetes.io/part-of=gtcx` in the target namespace, then waits for rollout status.
@@ -155,7 +155,7 @@ Rollback runs `kubectl rollout undo` on each deployment labeled `app.kubernetes.
 After rollback, capture evidence with:
 
 ```bash
-./04-ship/03-platform/scripts/capture-rollback-evidence.sh staging \
+./04-deploy/03-platform/scripts/capture-rollback-evidence.sh staging \
   --reason=manual-rollback \
   --scenario="manual rollback after failed deploy" \
   --previous-revision=sha-previous \
@@ -193,7 +193,7 @@ Escalate to human review immediately if:
 
 ## Reference
 
-- [`04-ship/03-platform/scripts/deploy.sh`](../../../04-ship/03-platform/scripts/deploy.sh) — deploy script
+- [`04-deploy/03-platform/scripts/deploy.sh`](../../../04-deploy/03-platform/scripts/deploy.sh) — deploy script
 - [`01-docs/01-agents/safety-rules.md`](../../agents/workflows/agent-safety-rules.md) — authority tiers
 - [`01-docs/architecture/system-overview.md`](../../architecture/system-overview.md) — full stack overview
 - [`01-docs/04-ops/runbooks/migrate.md`](./migrate.md) — migration process

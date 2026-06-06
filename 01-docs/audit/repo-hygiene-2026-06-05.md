@@ -102,7 +102,7 @@ post_axis_scores:
 | Entry                  | Tier | Status | Notes                             |
 | ---------------------- | ---- | ------ | --------------------------------- |
 | `01-docs/`             | G    | ok     | README present                    |
-| `04-ship/`             | G    | ok     | All 7 subdirs have README         |
+| `04-deploy/`             | G    | ok     | All 7 subdirs have README         |
 | `03-platform/scripts/` | G    | ok     | `production/` missing README      |
 | `03-platform/tools/`   | G    | ok     | All workspace packages README     |
 | `.agent/`              | F    | ok     | README present                    |

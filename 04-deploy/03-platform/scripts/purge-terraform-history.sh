@@ -11,7 +11,7 @@
 #   - Backup fork created
 #
 # Usage:
-#   ./04-ship/03-platform/scripts/purge-terraform-history.sh
+#   ./04-deploy/03-platform/scripts/purge-terraform-history.sh
 # =============================================================================
 
 set -euo pipefail
@@ -46,9 +46,9 @@ cd "${PURGE_DIR}"
 # 4. Run filter-repo
 echo "Step 3: Running git-filter-repo"
 git filter-repo \
-  --path-glob '04-ship/terraform/**/*.tfstate*' \
-  --path-glob '04-ship/terraform/**/.terraform/**' \
-  --path-glob '04-ship/terraform/**/.terraform.lock.hcl' \
+  --path-glob '04-deploy/terraform/**/*.tfstate*' \
+  --path-glob '04-deploy/terraform/**/.terraform/**' \
+  --path-glob '04-deploy/terraform/**/.terraform.lock.hcl' \
   --invert-paths \
   --force
 

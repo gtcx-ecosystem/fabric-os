@@ -44,7 +44,7 @@ autonomy_level: 'permissioned'
 ### 1. Apply the manifest
 
 ```bash
-kubectl apply -f 04-ship/kubernetes/overlays/staging/smoke-probe-cronjob.yaml
+kubectl apply -f 04-deploy/kubernetes/overlays/staging/smoke-probe-cronjob.yaml
 ```
 
 ### 2. Verify the CronJob is scheduled
@@ -97,7 +97,7 @@ args:
 3. Re-apply:
 
 ```bash
-kubectl apply -f 04-ship/kubernetes/overlays/staging/smoke-probe-cronjob.yaml
+kubectl apply -f 04-deploy/kubernetes/overlays/staging/smoke-probe-cronjob.yaml
 ```
 
 ---
@@ -107,7 +107,7 @@ kubectl apply -f 04-ship/kubernetes/overlays/staging/smoke-probe-cronjob.yaml
 To automatically upload evidence to the staging WORM bucket, create an IRSA role:
 
 ```bash
-# 04-ship/terraform/environments/staging/main.tf
+# 04-deploy/terraform/environments/staging/main.tf
 module "smoke_probe_irsa" {
   source = "../../modules/audit-flush-irsa"  # or a generic irsa module
 
@@ -140,7 +140,7 @@ Each run produces:
 - `metrics.json` — HTTP status, timestamp, response hash
 - `runtime-smoke-evidence.json` — full schema (after upgrading to `capture-runtime-smoke-evidence.mjs`)
 
-Commit the collected evidence to `04-ship/security/reports/runtime-smoke-evidence/staging/` and link from `01-docs/05-audit/latest.json`.
+Commit the collected evidence to `04-deploy/security/reports/runtime-smoke-evidence/staging/` and link from `01-docs/05-audit/latest.json`.
 
 ---
 

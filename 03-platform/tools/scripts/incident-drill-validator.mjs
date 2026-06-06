@@ -26,7 +26,7 @@ const args = process.argv.slice(2);
 const configArg = args.find((a) => a.startsWith('--config='));
 const configPath = configArg
   ? configArg.slice(9)
-  : path.join('04-ship', 'docker', 'docker', 'observability', 'alertmanager.yml.tpl');
+  : path.join('04-deploy', 'docker', 'docker', 'observability', 'alertmanager.yml.tpl');
 
 // ---------------------------------------------------------------------------
 // Parse YAML into top-level sections (minimal, indentation-aware)

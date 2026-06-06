@@ -41,7 +41,7 @@ export CLOUDFLARE_API_TOKEN="<zone DNS Edit>"
 export ALB_DNS="k8s-gtcxproductionapi-527ebd7716-1025454332.af-south-1.elb.amazonaws.com"
 # DNS only (recommended first — avoids 525 during ACM handshake):
 export CLOUDFLARE_PROXIED=false
-bash 04-ship/03-platform/scripts/attach-compliance-os-prod-domain.sh
+bash 04-deploy/03-platform/scripts/attach-compliance-os-prod-domain.sh
 ```
 
 ## Option B — Dashboard (manual)

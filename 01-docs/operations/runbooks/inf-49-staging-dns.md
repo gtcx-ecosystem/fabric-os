@@ -50,7 +50,7 @@ This is the safest path for the initial unblock. No new cluster components.
 ### Pass 1 — ACM validation records only (no ALB yet)
 
 ```bash
-cd 04-ship/terraform/environments/staging
+cd 04-deploy/terraform/environments/staging
 
 # alb_dns_name + alb_hosted_zone_id default to "" → Route53 A records skipped.
 # ACM validation CNAMEs are still managed (idempotent).
@@ -73,7 +73,7 @@ route53_hostnames         = ["api.staging.gtcx.trade", "geotag.staging.gtcx.trad
 
 ```bash
 # Apply the staging Ingress. The ALB controller creates the ALB.
-kubectl --context staging apply -k 04-ship/kubernetes/overlays/staging/
+kubectl --context staging apply -k 04-deploy/kubernetes/overlays/staging/
 
 # Wait for the ALB to be provisioned (~2-3 min).
 kubectl --context staging -n gtcx-staging get ingress gtcx-api \
@@ -108,7 +108,7 @@ dig +short api.staging.gtcx.trade
 
 # Until WAF module is applied (AllowHealthEndpoint rule), bare curl may 403 — use https:// or browser UA:
 curl -sS -o /dev/null -w "%{http_code}\n" https://api.staging.gtcx.trade/health
-# → 200 after: cd 04-ship/terraform/environments/staging && terraform apply -target=module.waf
+# → 200 after: cd 04-deploy/terraform/environments/staging && terraform apply -target=module.waf
 
 curl -sS -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
   "https://api.staging.gtcx.trade/v1/dids/auth/gh/bog" | jq .id
@@ -125,7 +125,7 @@ After the manual two-pass works, replace the second pass with cluster-side autom
 
 ```bash
 # IRSA role for external-dns (write access to gtcx.trade hosted zone only).
-# Scaffold in 04-ship/terraform/modules/external-dns-irsa/ — not yet created.
+# Scaffold in 04-deploy/terraform/modules/external-dns-irsa/ — not yet created.
 # Ticket: gtcx-infrastructure#TBD.
 
 helm repo add external-dns https://kubernetes-sigs.github.io/external-dns/
@@ -155,9 +155,9 @@ helm upgrade --install external-dns external-dns/external-dns \
 | Item                                                                                             | Where                                                            | Owner           |
 | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- | --------------- |
 | Production HSM keys for authority DIDs (`key_status: production`)                                | `gtcx-protocols#61`, infra **#86**                               | compliance-lead |
-| Production DNS (`gtcx.trade` apex, not staging)                                                  | `gtcx-infrastructure/04-ship/terraform/environments/production/` | platform-lead   |
-| `external-dns-irsa` Terraform module                                                             | `gtcx-infrastructure/04-ship/terraform/modules/`                 | platform-lead   |
-| WAF `/health` allow (bare curl / monitors) — **IaC in `modules/waf`**; `terraform apply` staging | `04-ship/terraform/modules/waf/main.tf` (`AllowHealthEndpoint`)  | platform-lead   |
+| Production DNS (`gtcx.trade` apex, not staging)                                                  | `gtcx-infrastructure/04-deploy/terraform/environments/production/` | platform-lead   |
+| `external-dns-irsa` Terraform module                                                             | `gtcx-infrastructure/04-deploy/terraform/modules/`                 | platform-lead   |
+| WAF `/health` allow (bare curl / monitors) — **IaC in `modules/waf`**; `terraform apply` staging | `04-deploy/terraform/modules/waf/main.tf` (`AllowHealthEndpoint`)  | platform-lead   |
 
 **Completed (staging, 2026-06-01):** HTTP handler `GET /v1/dids/auth/{iso}/{slug}`, image `gtcx-protocols:v0.4.5`, staging verify on `api.staging.gtcx.trade` — closes **#60** / INF-49 staging gate. See trust-layers architecture doc.
 

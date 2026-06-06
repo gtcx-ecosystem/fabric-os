@@ -39,7 +39,7 @@ In this order — no exceptions:
 ## Repo Structure
 
 ```
-04-ship/
+04-deploy/
   docker/        — Dockerfiles and Docker Compose definitions
   kubernetes/    — K8s manifests and Helm charts
   terraform/     — Terraform modules and workspace configs
@@ -69,11 +69,11 @@ These areas require explicit human review before any change ships:
 
 | Component             | Area                                                    |
 | --------------------- | ------------------------------------------------------- |
-| `04-ship/terraform/`  | State management, IAM, secrets configuration            |
-| `04-ship/kubernetes/` | RBAC, network policies, secret manifests                |
-| `04-ship/security/`   | Security scanning policies, firewall rules, TLS configs |
-| `04-ship/docker/`     | Base image selection, image hardening, non-root users   |
-| `04-ship/migrations/` | Destructive schema changes — irreversible               |
+| `04-deploy/terraform/`  | State management, IAM, secrets configuration            |
+| `04-deploy/kubernetes/` | RBAC, network policies, secret manifests                |
+| `04-deploy/security/`   | Security scanning policies, firewall rules, TLS configs |
+| `04-deploy/docker/`     | Base image selection, image hardening, non-root users   |
+| `04-deploy/migrations/` | Destructive schema changes — irreversible               |
 
 ---
 
@@ -89,7 +89,7 @@ pnpm typecheck
 For Terraform changes:
 
 ```bash
-terraform fmt -check -recursive 04-ship/terraform/
+terraform fmt -check -recursive 04-deploy/terraform/
 terraform validate
 ```
 

@@ -14,7 +14,7 @@ priority: P1
 **What changed:** `ENABLE_COST_ROUTER=1` added to `intelligence-orchestrator` Deployment env in staging.
 
 **Commit:** `dac128d`  
-**Manifest:** `04-ship/kubernetes/overlays/staging/intelligence/deployment.yaml`
+**Manifest:** `04-deploy/kubernetes/overlays/staging/intelligence/deployment.yaml`
 
 ---
 
@@ -22,7 +22,7 @@ priority: P1
 
 1. **Deploy** the updated manifest to staging:
    ```bash
-   kubectl apply -k 04-ship/kubernetes/overlays/staging/intelligence/
+   kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
    ```
 2. **Confirm** the env var is injected:
    ```bash

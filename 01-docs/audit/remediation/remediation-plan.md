@@ -51,9 +51,9 @@ Normalization rule:
 ### Top 5 ship-stopper risks
 
 1. Consequential protocol mutations are reachable from an unauthenticated natural-language HTTP endpoint in `03-platform/tools/compliance-gateway/src/server.mjs:43` and `03-platform/tools/compliance-gateway/src/tools.mjs:17`.
-2. The publicly exposed `query.gtcx.trade` tunnel publishes that gateway directly in `04-ship/kubernetes/base/services/cloudflared/config.yaml:9`.
+2. The publicly exposed `query.gtcx.trade` tunnel publishes that gateway directly in `04-deploy/kubernetes/base/services/cloudflared/config.yaml:9`.
 3. Replay protection silently weakens to process-local state when Redis is absent or down in `03-platform/tools/replay-protection/src/server.mjs:54`.
-4. Audit immutability is asserted, not verified, in `04-ship/03-platform/scripts/migrate.sh:228`.
+4. Audit immutability is asserted, not verified, in `04-deploy/03-platform/scripts/migrate.sh:228`.
 5. CI still allows partial release evidence and only runs a shallow docs check in `.github/workflows/ci.yml:67` and `.github/workflows/ci.yml:85`.
 
 ### Estimated sprint count
@@ -136,14 +136,14 @@ Normalization rule:
   - `03-platform/src/migration-safety.mjs` — migration checksum/idempotency and dry-run planning
   - `03-platform/src/audit-verifier.mjs` — audit privilege SQL generation and result parsing
 - CLI wrappers (`03-platform/src/cli/deploy-gate.mjs`, `03-platform/src/cli/migrate-gate.mjs`, `03-platform/src/cli/canary-eval.mjs`) integrate the typed modules into existing shell entrypoints.
-- `04-ship/03-platform/scripts/deploy.sh` delegates critical gating to `deploy-gate.mjs` and canary decisions to `canary-eval.mjs`.
-- `04-ship/03-platform/scripts/migrate.sh` delegates environment and audit policy gating to `migrate-gate.mjs`.
-- `04-ship/03-platform/scripts/validate.sh` runs the full `deployment-guard` test suite and TypeScript typecheck in both `quick` and `full` modes.
+- `04-deploy/03-platform/scripts/deploy.sh` delegates critical gating to `deploy-gate.mjs` and canary decisions to `canary-eval.mjs`.
+- `04-deploy/03-platform/scripts/migrate.sh` delegates environment and audit policy gating to `migrate-gate.mjs`.
+- `04-deploy/03-platform/scripts/validate.sh` runs the full `deployment-guard` test suite and TypeScript typecheck in both `quick` and `full` modes.
 - All 56 deployment-guard tests pass; `tsc --noEmit` is clean.
 
 **Architecture boundary:**
 
-- Shell scripts (`04-ship/03-platform/scripts/`) retain I/O, kubectl/psql invocation, and logging.
+- Shell scripts (`04-deploy/03-platform/scripts/`) retain I/O, kubectl/psql invocation, and logging.
 - Policy decisions (gate checks, health evaluation, migration planning, audit verification) live in `03-platform/tools/deployment-guard/` and are unit-testable without a cluster or database.
 - `03-platform/tools/control-plane/` continues to own the operator CLI (`gtcx-ctl.mjs`); `03-platform/tools/deployment-guard/` owns the safety policy layer beneath it.
 
@@ -195,7 +195,7 @@ Normalization rule:
 - New `01-docs/05-audit/score-evidence-ledger.json` records the current authorized baseline for 12 dimensions.
 - New `03-platform/tools/scripts/validate-score-ledger.mjs` parses audit docs and fails if any dimension claims a score higher than the ledger's current authorized value.
 - Ledger rules: scores may only increase with a reproducible artifact and CI link; ledger entries are append-only.
-- Both the ledger and validator are exercised in `04-ship/03-platform/scripts/validate.sh` and will be added to CI.
+- Both the ledger and validator are exercised in `04-deploy/03-platform/scripts/validate.sh` and will be added to CI.
 
 **Tasks:**
 
@@ -380,13 +380,13 @@ Normalization rule:
 | Control area                        | Current state                                                                                               | Gap                                                                                                                                    | Required remediation                                                     | Evidence link / target proof                                                                                           |
 | ----------------------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
 | Encryption at rest                  | RDS, S3, ECR, and EKS encryption are documented as implemented                                              | Need a consolidated bank-grade evidence bundle, not scattered claims                                                                   | Generate a single encryption proof pack per environment                  | `01-docs/05-audit/master-audit-2026-05-10.md`, Terraform module outputs, CI evidence artifacts                         |
-| Encryption in transit               | Public ingress and internal services exist; public gateway path is unsafe from an authorization perspective | No proven protected control path for consequential AI actions; no repo-proven service-to-service trust policy for gateway -> protocols | Close F-001/F-002 and document internal trust requirements               | `03-platform/tools/compliance-gateway/src/server.mjs:43`, `04-ship/kubernetes/base/services/cloudflared/config.yaml:9` |
+| Encryption in transit               | Public ingress and internal services exist; public gateway path is unsafe from an authorization perspective | No proven protected control path for consequential AI actions; no repo-proven service-to-service trust policy for gateway -> protocols | Close F-001/F-002 and document internal trust requirements               | `03-platform/tools/compliance-gateway/src/server.mjs:43`, `04-deploy/kubernetes/base/services/cloudflared/config.yaml:9` |
 | Key rotation / KMS                  | KMS-backed storage is present in prior audits                                                               | Rotation evidence is not assembled as an audit pack                                                                                    | Add scheduled evidence capture and control checklist                     | Terraform/KMS configs, rotation records                                                                                |
-| Audit logging / immutability        | Append-only audit design exists                                                                             | Live immutability verification is missing                                                                                              | Close F-004; stage cryptographic anchoring via F-016                     | `04-ship/03-platform/scripts/migrate.sh:228`, audit verification job                                                   |
+| Audit logging / immutability        | Append-only audit design exists                                                                             | Live immutability verification is missing                                                                                              | Close F-004; stage cryptographic anchoring via F-016                     | `04-deploy/03-platform/scripts/migrate.sh:228`, audit verification job                                                   |
 | Data residency / PII / redaction    | Pilot docs and templates call out af-south-1 and no AI training on customer data                            | DPA/data-flow references are not yet an institutional evidence packet                                                                  | Update pilot packet after control fixes and link real data-flow evidence | `01-docs/assessments/pilot-agreement-template.md`, `01-docs/assessments/pilot-success-criteria.md`                     |
 | Supply chain / SBOM / signed builds | Trivy, dependency audit, Terraform validation, and artifact upload exist                                    | Signed build / attestation proof is not evidenced in current audit set; release evidence path is partial                               | Close F-005 and expand build provenance evidence                         | `.github/workflows/ci.yml`, release-evidence artifacts                                                                 |
 | Secrets management                  | External secret patterns and secret references exist                                                        | Secret-zero and operator-path proof is incomplete                                                                                      | Confirm only approved secret injection paths remain and evidence them    | Secrets modules, runbooks, ESO manifests                                                                               |
-| Separation of duties                | Production deploy requires approval ticket in script                                                        | No in-repo proof that deployer != approver or that prod access is JIT-governed end-to-end                                              | Add deploy/access evidence pack and review control ownership             | `04-ship/03-platform/scripts/deploy.sh:122`, JIT access policy docs                                                    |
+| Separation of duties                | Production deploy requires approval ticket in script                                                        | No in-repo proof that deployer != approver or that prod access is JIT-governed end-to-end                                              | Add deploy/access evidence pack and review control ownership             | `04-deploy/03-platform/scripts/deploy.sh:122`, JIT access policy docs                                                    |
 
 ## E. Global South Resilience Checklist
 

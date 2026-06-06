@@ -75,7 +75,7 @@ Eleven folders folded into canonical homes:
 When this repo is not the authority for a referenced concept:
 
 - Use absolute GitHub URLs: `https://github.com/gtcx-ecosystem/<repo>/blob/main/...`
-- Repo-relative code paths (`03-platform/tools/...`, `04-ship/...`) when referring to this repo's own non-doc files
+- Repo-relative code paths (`03-platform/tools/...`, `04-deploy/...`) when referring to this repo's own non-doc files
 - Never `../../<sibling-repo>/...` (those paths don't resolve in CI or rendered docs)
 
 ## How to add a new doc

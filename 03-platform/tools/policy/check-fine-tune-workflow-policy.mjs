@@ -2,7 +2,7 @@ import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 
 const repoRoot = process.cwd();
-const environmentsRoot = path.join(repoRoot, '04-ship/terraform/environments');
+const environmentsRoot = path.join(repoRoot, '04-deploy/terraform/environments');
 
 const requiredChecks = ['trainer_artifact', 'eval_gate', 'promotion_target', 'staging_e2e'];
 

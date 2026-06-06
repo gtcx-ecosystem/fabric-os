@@ -8,7 +8,7 @@ protocol: gtcx-docs/01-docs/governance/protocols/23-external-access-credentials/
 
 # EAP secrets and IAM
 
-Terraform: `04-ship/terraform/modules/secrets/eap.tf` (EAP-03)
+Terraform: `04-deploy/terraform/modules/secrets/eap.tf` (EAP-03)
 
 ## Secrets Manager paths
 

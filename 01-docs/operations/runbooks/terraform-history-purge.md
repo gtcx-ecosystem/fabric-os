@@ -16,7 +16,7 @@ autonomy_level: 'permissioned'
 
 ## Problem
 
-`.terraform/` directories and `*.tfstate` files were accidentally committed to Git history in `04-ship/terraform/environments/testnet-pilot/` and other paths. These binaries bloat the repo and may contain sensitive state.
+`.terraform/` directories and `*.tfstate` files were accidentally committed to Git history in `04-deploy/terraform/environments/testnet-pilot/` and other paths. These binaries bloat the repo and may contain sensitive state.
 
 ## Prerequisites
 
@@ -33,14 +33,14 @@ autonomy_level: 'permissioned'
 
 # 2. Run filter-repo to remove Terraform artifacts from ALL history
  git filter-repo \
-   --path-glob '04-ship/terraform/**/*.tfstate*' \
-   --path-glob '04-ship/terraform/**/.terraform/**' \
-   --path-glob '04-ship/terraform/**/.terraform.lock.hcl' \
+   --path-glob '04-deploy/terraform/**/*.tfstate*' \
+   --path-glob '04-deploy/terraform/**/.terraform/**' \
+   --path-glob '04-deploy/terraform/**/.terraform.lock.hcl' \
    --invert-paths
 
 # 3. Verify nothing remains
- git log --all --full-history -- '04-ship/terraform/**/.terraform/**'
- git log --all --full-history -- '04-ship/terraform/**/*.tfstate*'
+ git log --all --full-history -- '04-deploy/terraform/**/.terraform/**'
+ git log --all --full-history -- '04-deploy/terraform/**/*.tfstate*'
 
 # 4. Force-push to origin (DESTRUCTIVE — requires admin)
  git push origin --force --all

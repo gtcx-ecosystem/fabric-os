@@ -51,7 +51,7 @@ configMapGenerator:
 # Production secrets flow through External Secrets Operator:
 #   AWS Secrets Manager → ESO SecretStore → K8s Secret
 # See: 01-docs/09-security/secrets-management.md
-# See: 04-ship/terraform/modules/secrets/intelligence.tf
+# See: 04-deploy/terraform/modules/secrets/intelligence.tf
 #
 # Environment overlays MUST NOT use these literals.
 # ============================================================

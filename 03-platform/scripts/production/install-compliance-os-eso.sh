@@ -3,7 +3,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-OVERLAY="${REPO_ROOT}/04-ship/kubernetes/overlays/production/compliance-os"
+OVERLAY="${REPO_ROOT}/04-deploy/kubernetes/overlays/production/compliance-os"
 AWS_REGION="${AWS_REGION:-af-south-1}"
 ENVIRONMENT="${ENVIRONMENT:-production}"
 ACCOUNT_ID="${ACCOUNT_ID:-348389439381}"
@@ -16,7 +16,7 @@ echo "==> Verify ServiceAccount IRSA annotation"
 kubectl get sa compliance-os-sa -n compliance-os-production -o jsonpath='{.metadata.annotations.eks\.amazonaws\.com/role-arn}{"\n"}' \
   | grep -q "${ROLE_ARN}" || {
   echo "WARN: SA role-arn mismatch. Expected ${ROLE_ARN}"
-  echo "Run: terraform -chdir=04-ship/terraform/environments/production apply -target=module.secrets"
+  echo "Run: terraform -chdir=04-deploy/terraform/environments/production apply -target=module.secrets"
 }
 
 echo "==> Wait for ExternalSecrets (up to 120s)"

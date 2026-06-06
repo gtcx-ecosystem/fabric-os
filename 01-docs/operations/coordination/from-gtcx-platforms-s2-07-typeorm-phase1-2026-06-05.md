@@ -30,7 +30,7 @@ DATABASE_URL=... pnpm migrate:run
 
 ## Infra resume (S1-02 remaining)
 
-1. Update `04-ship/docker/init-03-platform/scripts/postgres/01-schema.sql` with parity DDL.
+1. Update `04-deploy/docker/init-03-platform/scripts/postgres/01-schema.sql` with parity DDL.
 2. Retire or gate `staging-migrate-shared-entities` / `migrate-tradepass-identities` Jobs once migration runner is wired in deploy.
 3. Phase 2 tables (sovereign, `tradepass_credentials`, drift gate) remain **platforms backlog** — do not block infra 01-schema refresh on phase 2.
 

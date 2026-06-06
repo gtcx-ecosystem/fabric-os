@@ -4,7 +4,10 @@
   "schema_version": "1.0.0",
   "updated": "2026-06-05",
   "description": "Root allowlist for gtcx-infrastructure (five-hub v2).",
-  "required_files": ["README.md", "AGENTS.md"],
+  "required_files": [
+    "README.md",
+    "AGENTS.md"
+  ],
   "allowed_files": [
     ".dockerignore",
     ".editorconfig",
@@ -41,7 +44,9 @@
     "pyproject.toml",
     "renovate.json",
     "tsconfig.json",
-    "turbo.json"
+    "turbo.json",
+    "vitest.workspace.ts",
+    "Makefile.local"
   ],
   "allowed_directories": [
     ".agent",
@@ -76,8 +81,13 @@
     ".changeset",
     ".vitepress"
   ],
-  "ignored_prefixes": [".", "node_modules"],
-  "ignored_exact": ["node_modules"],
+  "ignored_prefixes": [
+    ".",
+    "node_modules"
+  ],
+  "ignored_exact": [
+    "node_modules"
+  ],
   "forbidden_root_names": {
     "audit": "Move to 01-docs/05-audit/.",
     "coverage": "Build artifact — gitignored.",
@@ -93,7 +103,11 @@
     "GEMINI.md": "Use .gemini/GEMINI.md.",
     "CONVENTIONS.md": "Use 01-docs/conventions.md."
   },
-  "forbidden_name_prefixes": ["IMG_", "Screenshot", "Untitled"],
+  "forbidden_name_prefixes": [
+    "IMG_",
+    "Screenshot",
+    "Untitled"
+  ],
   "human_owned_paths": {
     "_delete": {
       "owner": "repository maintainer (manual)",

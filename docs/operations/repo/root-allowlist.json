@@ -3,7 +3,7 @@
   "version": "4.0.0",
   "schema_version": "5.0.0",
   "updated": "2026-06-09",
-  "description": "P35 v5 closed-world repo root — REQUIRED / ALLOWED / PERMISSIBLE_ON_APPROVAL / FORBIDDEN. Spec: bridgeOS/docs/root-allowlist-spec-v5.md",
+  "description": "P35 v5 closed-world repo root — REQUIRED / ALLOWED / PERMISSIBLE_ON_APPROVAL / FORBIDDEN. Spec: bridge-os/docs/root-allowlist-spec-v5.md",
   "migration_tier": "stable",
   "required_files": [
     "README.md",
@@ -50,7 +50,8 @@
     "pnpm-workspace.yaml",
     "pyproject.toml",
     "tsconfig.json",
-    "turbo.json"
+    "turbo.json",
+    "vitest.workspace.ts"
   ],
   "allowed_directories": [
     "archive",
@@ -121,7 +122,10 @@
     "playwright-report": "Use platform/e2e/.artifacts/playwright-report/.",
     "test-results": "Use platform/e2e/.artifacts/test-results/.",
     "scripts": "Use platform/scripts/.",
-    "gtcx-logo.png": "Use platform/assets/."
+    "gtcx-logo.png": "Use platform/assets/.",
+    ".eslintrc.js": "Use config/toolchain/eslint.config.js + root re-export (P35 toolchain).",
+    ".eslintrc.json": "Use config/toolchain/eslint.config.js + root re-export (P35 toolchain).",
+    ".eslintignore": "Use eslint.config.js ignores block (P35 toolchain)."
   },
   "forbidden_name_prefixes": [
     "IMG_",

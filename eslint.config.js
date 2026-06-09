@@ -1,1 +1,1 @@
-export { default } from './config/toolchain/eslint.config.mjs';
+module.exports = require('./config/toolchain/eslint.config.js');

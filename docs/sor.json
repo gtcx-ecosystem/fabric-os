@@ -1,0 +1,86 @@
+{
+  "$schema": "gtcx://docs/sor/v1",
+  "schema": "gtcx.docs.sor.v1",
+  "repo": "gtcx-infrastructure",
+  "repoKind": "infra-platform",
+  "updated": "2026-06-09",
+  "narrativeRoot": "docs/",
+  "rootSorMap": "config/sor-map.json",
+  "layoutContract": "config/layout-contract.v5.json",
+  "upstream": {
+    "constitution": {
+      "repo": "gtcx-docs",
+      "path": "../gtcx-docs",
+      "manifest": "../gtcx-docs/config/ecosystem-central-sor.json",
+      "role": "protocols and audit-engine specs — read-only"
+    },
+    "platform": {
+      "repo": "bridgeOS",
+      "path": "../bridgeOS",
+      "layoutContract": "../bridgeOS/config/ecosystem-layout-contract.v5.json",
+      "role": "fleet layout and rollout — read-only"
+    },
+    "runtime": {
+      "repo": "baselineOS",
+      "path": "../baselineOS",
+      "role": "session, MCP, ACR — read-only"
+    }
+  },
+  "allowedTopLevel": [
+    "agents",
+    "agile",
+    "api",
+    "architecture",
+    "engineering",
+    "gitbook",
+    "governance",
+    "operations",
+    "overview",
+    "reference",
+    "roadmap",
+    "specs"
+  ],
+  "narrativePointersOnly": ["assurance", "coordination", "gtm", "legal", "security"],
+  "documentDriven": {
+    "description": "Human-edited narrative under docs/ — version in git",
+    "paths": [
+      "docs/README.md",
+      "docs/INDEX.md",
+      "docs/conventions.md",
+      "docs/agents/",
+      "docs/architecture/",
+      "docs/specs/",
+      "docs/operations/",
+      "docs/roadmap/"
+    ]
+  },
+  "pointerOnly": {
+    "description": "Stub or index — canonical prose lives in gtcx-docs or ops/",
+    "paths": ["docs/governance/", "docs/compliance/"]
+  },
+  "shipPaths": {
+    "terraform": "deploy/terraform",
+    "kubernetes": "deploy/kubernetes",
+    "docker": "deploy/docker",
+    "monitoring": "deploy/monitoring",
+    "platformScripts": "platform/scripts"
+  },
+  "forbidden": {
+    "numberedSegments": "^\\d{2}-",
+    "shadowAsAuthority": ["docs/shadow/", "archive/shadow-gtcx-docs/"],
+    "competingRoots": ["_sop/", "_canon/", "wiki/"],
+    "opsDuplicatesUnderDocs": [
+      "assurance",
+      "attestation",
+      "coordination",
+      "gtm",
+      "legal",
+      "security",
+      "witness"
+    ]
+  },
+  "engineDriven": {
+    "note": "Not stored under docs/ — see pm/manifest.json (P36)",
+    "manifest": "pm/manifest.json"
+  }
+}

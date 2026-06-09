@@ -1,0 +1,18 @@
+{
+  "$schema": "gtcx://pm/manifest/v5",
+  "schema": "gtcx.pm.manifest.v5",
+  "repo": "gtcx-infrastructure",
+  "layoutVersion": "v5",
+  "updated": "2026-06-09",
+  "agileHub": null,
+  "local": {
+    "executionRoadmap": "audit/product-management/execution-roadmap.md",
+    "workSelection": "docs/operations/agents/agent-work-selection.md",
+    "autoDevState": "audit/product-management/auto-dev-state.md",
+    "nextWorkScript": "platform/scripts/agent-next-work.mjs"
+  },
+  "sync": {
+    "command": "pnpm pm:sync",
+    "output": "ops/pm/backlog.json"
+  }
+}

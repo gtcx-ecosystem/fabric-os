@@ -1,3 +1,0 @@
-# SHA-256 of /secure/gh-bog.pub.der (do not commit .der)
-# shasum -a 256 /secure/gh-bog.pub.der | awk '{print $1}'
-86c66f12d0df81839d28ef1f2a1cce7a8c466e155ee0e2801edf5b28dfcdf1a0

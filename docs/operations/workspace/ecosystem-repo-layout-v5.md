@@ -1,0 +1,17 @@
+---
+title: Layout v5 pointer — gtcx-infrastructure
+status: current
+date: 2026-06-09
+owner: gtcx-infrastructure
+---
+
+# Layout v5 — local SoR pointer
+
+| Artifact         | Path |
+| ---------------- | ---- |
+| Machine contract | [`../../../../bridgeOS/config/ecosystem-layout-contract.v5.json`](../../../../bridgeOS/config/ecosystem-layout-contract.v5.json) |
+| Prose            | [`../../../../bridgeOS/docs/ecosystem-layout-v5.md`](../../../../bridgeOS/docs/ecosystem-layout-v5.md) |
+| Runtime pointer  | [`../../../config/layout-contract.v5.json`](../../../config/layout-contract.v5.json) |
+| Docs hub SoR     | [`../../sor.json`](../../sor.json) |
+
+**Policy:** P29 domains live under **`ops/`** only — not `docs/`.

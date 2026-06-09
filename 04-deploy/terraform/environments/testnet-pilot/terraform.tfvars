@@ -16,7 +16,8 @@ vpc_cidr = "10.2.0.0/16"
 db_instance_class    = "db.t3.micro"
 db_allocated_storage = 20
 
-# EKS — cost_profile ephemeral → nodeMin 0 / desired 0 / max 5 (ECO-ENV-07)
+# EKS + network — cost_profile ephemeral (ECO-ENV-07/08)
+# nodeMin 0; NAT disabled (fleet 4→3); VPC endpoints carry AWS API traffic
 # Up via bridgeOS env:up --ttl; down by default
 cost_profile            = "ephemeral"
 eks_node_instance_types = ["t3.small"]

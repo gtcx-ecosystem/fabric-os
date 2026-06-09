@@ -177,6 +177,11 @@ variable "tags" {
   default     = {}
 }
 
+locals {
+  # ECO-ENV-08: ephemeral pilot has no NAT (fleet 4→3 gateway consolidation).
+  enable_nat_gateway = var.cost_profile != "ephemeral"
+}
+
 # -----------------------------------------------------------------------------
 # Provider
 # -----------------------------------------------------------------------------
@@ -241,7 +246,7 @@ module "vpc" {
   region             = var.region
   cidr_block         = var.vpc_cidr
   availability_zones = var.availability_zones
-  enable_nat_gateway = true
+  enable_nat_gateway = local.enable_nat_gateway
   enable_vpn_gateway = false
 
   tags = var.tags

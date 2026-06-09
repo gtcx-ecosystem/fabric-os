@@ -419,7 +419,7 @@ output "nat_gateway_ip" {
 # -----------------------------------------------------------------------------
 # VPC Endpoints — keep AWS service traffic off the public internet
 # -----------------------------------------------------------------------------
-# Reduces NAT Gateway costs and latency for S3, ECR, CloudWatch, and STS.
+# Reduces NAT Gateway costs and latency for S3, ECR, Secrets Manager, CloudWatch, and STS.
 # Gateway endpoints (S3) are free. Interface endpoints have hourly cost.
 # -----------------------------------------------------------------------------
 
@@ -477,6 +477,17 @@ resource "aws_vpc_endpoint" "sts" {
   private_dns_enabled = true
 
   tags = merge(local.common_tags, { Name = "gtcx-${var.environment}-sts-endpoint" })
+}
+
+resource "aws_vpc_endpoint" "secretsmanager" {
+  vpc_id              = aws_vpc.main.id
+  service_name        = "com.amazonaws.${var.region}.secretsmanager"
+  vpc_endpoint_type   = "Interface"
+  subnet_ids          = aws_subnet.private[*].id
+  security_group_ids  = [aws_security_group.vpc_endpoints.id]
+  private_dns_enabled = true
+
+  tags = merge(local.common_tags, { Name = "gtcx-${var.environment}-secretsmanager-endpoint" })
 }
 
 resource "aws_security_group" "vpc_endpoints" {

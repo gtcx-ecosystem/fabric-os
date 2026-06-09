@@ -32,6 +32,23 @@ run "ephemeral_profile_node_min_zero" {
   }
 }
 
+run "ephemeral_disables_nat" {
+  command = plan
+
+  module {
+    source = "./"
+  }
+
+  variables {
+    cost_profile = "ephemeral"
+  }
+
+  assert {
+    condition     = output.enable_nat_gateway == false
+    error_message = "ephemeral profile must disable NAT for fleet 4→3 consolidation"
+  }
+}
+
 run "explicit_override_wins" {
   command = plan
 

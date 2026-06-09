@@ -11,3 +11,5 @@ Maps fleet **cost_profile** tiers to EKS managed node group sizing.
 Policy SoR: `bridgeOS/pm/spec/environment-cost-policy.v1.json` (ECO-ENV-07).
 
 Explicit `eks_node_*` variables override profile defaults when set.
+
+`enable_nat_gateway` is `false` for `ephemeral` (testnet_pilot) — fleet NAT count 4→3.

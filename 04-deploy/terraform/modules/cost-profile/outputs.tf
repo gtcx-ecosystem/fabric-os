@@ -29,3 +29,8 @@ output "cost_profile" {
   description = "Active cost profile name, if any."
   value       = var.cost_profile
 }
+
+output "enable_nat_gateway" {
+  description = "Ephemeral profiles omit NAT (fleet target 4→3 gateways across environments)."
+  value       = var.cost_profile != "ephemeral"
+}

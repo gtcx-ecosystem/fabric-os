@@ -1,0 +1,101 @@
+{
+  "storyId": "T7",
+  "initiative": "INIT-P35-TOOLCHAIN",
+  "status": "done",
+  "checkedAt": "2026-06-09T19:18:49.978Z",
+  "owner": "gtcx-infrastructure",
+  "policySoR": "bridge-os/pm/spec/environment-cost-policy.v1.json",
+  "governanceSoR": "bridge-os/pm/spec/aws-cost-governance.v1.json",
+  "module": "deploy/terraform/modules/cost-profile",
+  "profiles": {
+    "scheduled": {
+      "env": "staging",
+      "nodeMin": 0,
+      "nodeDesired": 0,
+      "nodeMax": 4
+    },
+    "ephemeral": {
+      "env": "testnet_pilot",
+      "nodeMin": 0,
+      "nodeDesired": 0,
+      "nodeMax": 5,
+      "natDisabled": true
+    },
+    "always_on": {
+      "env": "production",
+      "nodeMin": 2,
+      "nodeDesired": 3,
+      "nodeMax": 6
+    }
+  },
+  "gates": {
+    "moduleExists": {
+      "ok": true
+    },
+    "stagingTfvars": {
+      "ok": true,
+      "path": "deploy/terraform/environments/staging/terraform.tfvars",
+      "profile": "scheduled",
+      "expect": "scheduled"
+    },
+    "testnetTfvars": {
+      "ok": true,
+      "path": "deploy/terraform/environments/testnet-pilot/terraform.tfvars",
+      "profile": "ephemeral",
+      "expect": "ephemeral"
+    },
+    "stagingWiring": {
+      "ok": true,
+      "path": "deploy/terraform/environments/staging/main.tf"
+    },
+    "testnetWiring": {
+      "ok": true,
+      "path": "deploy/terraform/environments/testnet-pilot/main.tf"
+    },
+    "policySoR": {
+      "ok": true
+    },
+    "governanceSoR": {
+      "ok": true
+    },
+    "bridgeWitnesses": {
+      "ok": true,
+      "links": [
+        {
+          "path": "pm/ci/eco-env-07-terraform-cost-profile-latest.json",
+          "present": true
+        },
+        {
+          "path": "pm/ci/eco-env-08-nat-endpoints-latest.json",
+          "present": true
+        },
+        {
+          "path": "pm/ci/aws-cost-weekly.json",
+          "present": true
+        },
+        {
+          "path": "pm/ci/aws-budgets-latest.json",
+          "present": true
+        }
+      ]
+    },
+    "terraformTest": {
+      "ok": true,
+      "exitCode": 0,
+      "phase": "test",
+      "detail": "4/4 pass"
+    }
+  },
+  "ecoEnvStories": [
+    "ECO-ENV-07",
+    "ECO-ENV-08"
+  ],
+  "runtimeOps": {
+    "costReport": "pnpm --dir ../bridge-os env:cost:report:write",
+    "warm": "pnpm --dir ../bridge-os env:warm",
+    "cold": "pnpm --dir ../bridge-os env:cold",
+    "governanceCheck": "pnpm --dir ../bridge-os env:governance:check"
+  },
+  "applyRequired": "terraform apply staging + testnet-pilot when infra window opens (Class A for production-adjacent)",
+  "ok": true
+}

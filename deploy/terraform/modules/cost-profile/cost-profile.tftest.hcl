@@ -11,7 +11,7 @@ run "scheduled_profile_node_min_zero" {
 
   assert {
     condition     = output.node_min_size == 0 && output.node_desired_size == 0 && output.node_max_size == 4
-    error_message = "scheduled profile must match bridgeOS staging policy (0/0/4)"
+    error_message = "scheduled profile must match bridge-os staging policy (0/0/4)"
   }
 }
 
@@ -28,7 +28,7 @@ run "ephemeral_profile_node_min_zero" {
 
   assert {
     condition     = output.node_min_size == 0 && output.node_desired_size == 0 && output.node_max_size == 5
-    error_message = "ephemeral profile must match bridgeOS testnet_pilot policy (0/0/5)"
+    error_message = "ephemeral profile must match bridge-os testnet_pilot policy (0/0/5)"
   }
 }
 

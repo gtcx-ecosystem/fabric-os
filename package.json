@@ -29,6 +29,8 @@
     "check:workspace-root-cleanliness": "python3 platform/scripts/ops/check-workspace-root-cleanliness.py",
     "check:workspace-root-cleanliness:strict": "python3 platform/scripts/ops/check-workspace-root-cleanliness.py --strict",
     "signal:import-cost-stats": "node platform/scripts/ops/import-baseline-cost-stats.mjs",
+    "infra:cost:audit": "node platform/scripts/cost/run-infra-cost-audit.mjs",
+    "infra:cost:audit:write": "node platform/scripts/cost/run-infra-cost-audit.mjs --write",
     "signal:injection-witness": "node platform/scripts/ops/run-injection-suite-witness.mjs",
     "typecheck": "turbo run typecheck",
     "ctl": "node ./platform/tools/control-plane/gtcx-ctl.mjs",

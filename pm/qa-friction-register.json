@@ -1,0 +1,17 @@
+{
+  "$schema": "gtcx://gtcx-infrastructure/qa-friction-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-10",
+  "program": "QA-as-a-Service",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "owner": "gtcx-infrastructure",
+  "items": [
+    {
+      "id": "QA-UAT-01",
+      "priority": "P1",
+      "status": "open",
+      "title": "Independent fleet UAT replay",
+      "blocksIR": false
+    }
+  ]
+}

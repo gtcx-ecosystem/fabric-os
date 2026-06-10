@@ -1,0 +1,10 @@
+{
+  "$schema": "gtcx://gtcx-infrastructure/hygiene-friction-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-10",
+  "program": "Hygiene-as-a-Service",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "owner": "gtcx-infrastructure",
+  "fleetCheck": "ecosystem:hygiene:check",
+  "items": []
+}

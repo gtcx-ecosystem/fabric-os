@@ -1,0 +1,20 @@
+{
+  "$schema": "gtcx://gtcx-infrastructure/legal-friction-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-10",
+  "program": "Legal-as-a-Service",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "owner": "gtcx-infrastructure",
+  "principle": "Class S legal gates live in fabric register; product repos link manifest only — blocksIR false by default",
+  "items": [
+    {
+      "id": "LEGAL-EXT-INF-002",
+      "priority": "P0",
+      "status": "open",
+      "title": "Pen-test SOW sovereign sign-off",
+      "blocksIR": false,
+      "class": "S",
+      "productRepoPattern": "ops/legal/manifest.json → href only"
+    }
+  ]
+}

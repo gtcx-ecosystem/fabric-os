@@ -1,0 +1,19 @@
+{
+  "$schema": "gtcx://gtcx-infrastructure/gtm-friction-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-10",
+  "program": "GTM-as-a-Service",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "owner": "gtcx-infrastructure",
+  "principle": "GTM narratives and sales friction centralized — product repos consume cards",
+  "items": [
+    {
+      "id": "GTM-LOI-01",
+      "priority": "P1",
+      "status": "open",
+      "title": "DTF LOI witness queue",
+      "blocksIR": false,
+      "class": "S"
+    }
+  ]
+}

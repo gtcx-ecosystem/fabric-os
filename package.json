@@ -36,6 +36,8 @@
     "ctl": "node ./platform/tools/control-plane/gtcx-ctl.mjs",
     "evidence:release-bundle": "node ./platform/tools/control-plane/generate-release-evidence.mjs",
     "agent:next-work": "node platform/scripts/agent-next-work.mjs",
+    "fabric:assurance:run": "node platform/scripts/fabric-assurance-run.mjs",
+    "fabric:assurance:check": "node platform/scripts/fabric-assurance-run.mjs --check",
     "daas:friction:check": "node platform/scripts/daas-friction-check.mjs",
     "daas:friction:check:write": "node platform/scripts/daas-friction-check.mjs --write",
     "daas:cards:check": "node platform/scripts/daas-cards-check.mjs",

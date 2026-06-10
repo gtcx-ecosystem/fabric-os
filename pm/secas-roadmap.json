@@ -1,0 +1,34 @@
+{
+  "$schema": "gtcx://gtcx-infrastructure/secas-roadmap/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-10",
+  "program": "Security-as-a-Service",
+  "initiative": "INIT-GTCX-INFRA-SECAS",
+  "protocol": "P42-SECURITY-AS-A-SERVICE",
+  "owner": "gtcx-infrastructure",
+  "primaryRoadmap": true,
+  "extends": {
+    "daas": "pm/daas-roadmap.json",
+    "p42": "bridge-os/pm/spec/security-as-a-service.v1.json"
+  },
+  "sprints": [
+    {
+      "id": "SECAS-S1",
+      "name": "Sovereign register + security friction SoR",
+      "status": "complete",
+      "items": []
+    },
+    {
+      "id": "SECAS-S2",
+      "name": "Pen-test execution post EXT-INF-002 approval",
+      "status": "in_progress",
+      "items": ["SEC-PENTEST-01"]
+    },
+    {
+      "id": "SECAS-S3",
+      "name": "Fleet IRSA + WAF hardening cards",
+      "status": "pending",
+      "items": ["SEC-IRSA-01"]
+    }
+  ]
+}

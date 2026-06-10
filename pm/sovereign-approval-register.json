@@ -1,0 +1,38 @@
+{
+  "$schema": "gtcx://gtcx-infrastructure/sovereign-approval-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-10",
+  "program": "Security-as-a-Service",
+  "initiative": "INIT-GTCX-INFRA-SECAS",
+  "protocol": "P42-SECURITY-AS-A-SERVICE",
+  "owner": "gtcx-infrastructure",
+  "principle": "Class S = Approval needed only — blocksIR false; agent prepares, human signs",
+  "items": [
+    {
+      "id": "EXT-INF-002",
+      "storyId": "S2-13",
+      "priority": "P0",
+      "authorityClass": "S",
+      "status": "approved",
+      "title": "Live-stack pen-test vendor SOW",
+      "owner": "Human / Security",
+      "approvedAt": "2026-06-10",
+      "approvedBy": "human:sovereign",
+      "witness": "audit/evidence/ext-inf-002-sow-approval-2026-06-10.json",
+      "seal": "docs/operations/coordination/from-gtcx-infrastructure-ext-inf-002-sow-approved-2026-06-10.md",
+      "postApprovalOwner": "gtcx-infrastructure",
+      "postApprovalAction": "Schedule live-stack pen-test window after vendor countersign",
+      "blocksIR": false
+    },
+    {
+      "id": "BL-SOC2-01",
+      "priority": "P1",
+      "authorityClass": "S",
+      "status": "approval-needed",
+      "title": "SOC 2 Type I auditor engagement",
+      "owner": "Human / Legal",
+      "intake": "ops/assurance/programs/soc2.md",
+      "blocksIR": false
+    }
+  ]
+}

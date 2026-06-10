@@ -1,0 +1,20 @@
+{
+  "schema": "gtcx://gtcx-infrastructure/secas-approval-check/v1",
+  "protocol": "P42-SECURITY-AS-A-SERVICE",
+  "checkedAt": "2026-06-10T04:27:13.826Z",
+  "approvalNeeded": [
+    {
+      "id": "BL-SOC2-01",
+      "title": "SOC 2 Type I auditor engagement",
+      "authorityClass": "S"
+    }
+  ],
+  "approved": [
+    {
+      "id": "EXT-INF-002",
+      "approvedAt": "2026-06-10"
+    }
+  ],
+  "blocksIRPolicy": true,
+  "ok": true
+}

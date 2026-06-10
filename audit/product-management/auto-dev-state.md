@@ -18,7 +18,7 @@ owner: gtcx-infrastructure
 
 - **ID:** SECAS-S2
 - **Status:** in_progress
-- **Reason:** EXT-INF-002 approved; vendor SOW countersign pending.
+- **Reason:** EXT-INF-002 + BL-SOC2-01 approved; vendor pen-test countersign + auditor MSA pending.
 
 ## Next Work
 

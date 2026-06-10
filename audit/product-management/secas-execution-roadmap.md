@@ -2,7 +2,7 @@
 title: Execution roadmap — Security-as-a-Service
 status: current
 date: 2026-06-10
-last_reconciled: 2026-06-10T05:54:52.489Z
+last_reconciled: 2026-06-10T06:19:33.998Z
 owner: gtcx-infrastructure
 program: INIT-GTCX-INFRA-SECAS
 generated: true
@@ -52,10 +52,10 @@ pnpm secas:approval:check:write
 
 ## Class S — Approval needed (parallel, blocksIR false)
 
-| ID          | Status          | Title                           |
-| ----------- | --------------- | ------------------------------- |
-| EXT-INF-002 | approved        | Live-stack pen-test vendor SOW  |
-| BL-SOC2-01  | approval-needed | SOC 2 Type I auditor engagement |
+| ID          | Status   | Title                           |
+| ----------- | -------- | ------------------------------- |
+| EXT-INF-002 | approved | Live-stack pen-test vendor SOW  |
+| BL-SOC2-01  | approved | SOC 2 Type I auditor engagement |
 
 ## Future Phases
 

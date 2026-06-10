@@ -1,6 +1,6 @@
 # SECaaS card — gtcx-intelligence
 
-**Sovereign parallel:** `BL-SOC2-01` / `INT-S12-03` (approval-needed — blocksIR false)
+**Sovereign parallel:** `BL-SOC2-01` / `INT-S12-03` (approved 2026-06-10 — blocksIR false)
 
 ## Stack security actions (gtcx-infrastructure)
 

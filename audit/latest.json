@@ -198,6 +198,14 @@
         "answeredOn": "2026-06-10",
         "rationale": "Sovereign approval after DAAS-S1 seal and master audit 8.4; intake pack + vendor artifacts acked; procurement countersign and kickoff authorized.",
         "evidence": "audit/evidence/ext-inf-002-sow-approval-2026-06-10.json"
+      },
+      {
+        "id": "BL-SOC2-01",
+        "question": "SOC 2 Type I auditor engagement (INT-S12-03)?",
+        "answer": "APPROVED",
+        "answeredOn": "2026-06-10",
+        "rationale": "Sovereign approval for auditor selection and engagement; readiness checklist in-repo; CISO/Finance execute MSA.",
+        "evidence": "audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json"
       }
     ],
     "open": []

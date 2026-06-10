@@ -23,7 +23,11 @@
       "acceptance": ["pnpm secas:friction:check:write", "pnpm secas:approval:check:write"],
       "uat": [
         { "text": "EXT-INF-002 approved with blocksIR false", "done": true },
-        { "text": "BL-SOC2-01 listed approval-needed only", "done": true },
+        {
+          "text": "BL-SOC2-01 sovereign approval recorded",
+          "done": true,
+          "note": "2026-06-10 — audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json"
+        },
         { "text": "SECaaS friction harness PASS", "done": true }
       ],
       "blockers": null

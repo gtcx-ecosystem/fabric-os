@@ -83,7 +83,7 @@ Use **Approval needed** — `blocksIR: false` — implement/witness queues conti
 | Approval needed (your list)     | Hub SoR ID     | Repo-local alias         | SECaaS register         | blocksClaims only                  |
 | ------------------------------- | -------------- | ------------------------ | ----------------------- | ---------------------------------- |
 | H-05 / EXT-INF-002 pen-test SOW | H-05           | baseline-os **BG-10-10** | **approved** 2026-06-10 | `pen-test complete`                |
-| BG-10-11 SOC 2 auditor          | BL-SOC2-01     | baseline-os **BG-10-11** | approval-needed         | `SOC 2 attested`                   |
+| BG-10-11 SOC 2 auditor          | BL-SOC2-01     | baseline-os **BG-10-11** | approved 2026-06-10     | `SOC 2 attested`                   |
 | BG-10-12 operator witnesses     | BL-OPERATOR-01 | baseline-os **BG-10-12** | _baseline-os owner_     | `non-core engineer baseline proof` |
 
 **ID collision:** gtcx-docs **BG-10-11/12** are M2 Q2/Q3 hygiene gates (automatable, done) — different

@@ -53,7 +53,7 @@ Stack security operations are a separate concern from product engineering — pa
 
 ## Acceptance
 
-- [x] pm/sovereign-approval-register.json (EXT-INF-002 approved, BL-SOC2-01 approval-needed)
+- [x] pm/sovereign-approval-register.json (EXT-INF-002 + BL-SOC2-01 approved)
 - [x] pm/security-friction-register.json (SEC-PENTEST-01, SEC-IRSA-01)
 - [x] pm/secas-roadmap.json (SECAS-S1–S3)
 - [x] pm/secas-stories.json

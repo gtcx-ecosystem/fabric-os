@@ -1,0 +1,48 @@
+{
+  "schema": "gtcx://audit/composite/v1",
+  "repo": "gtcx-infrastructure",
+  "date": "2026-06-10",
+  "composite100": 80,
+  "productionReady": true,
+  "cores": {
+    "A1-PRODUCT-EXCELLENCE": {
+      "slug": "product-excellence",
+      "score100": 80,
+      "weight": 0.25,
+      "status": "migrated-from-master-audit"
+    },
+    "A2-PRODUCTION-GRADE": {
+      "slug": "production-grade",
+      "score100": 80,
+      "weight": 0.2,
+      "status": "migrated-from-master-audit"
+    },
+    "A3-AGENTIC-INNOVATION": {
+      "slug": "agentic-innovation",
+      "score100": 80,
+      "weight": 0.15,
+      "status": "migrated-from-master-audit"
+    },
+    "A4-COMPLIANCE-SECURITY": {
+      "slug": "compliance-security",
+      "score100": 80,
+      "weight": 0.2,
+      "status": "migrated-from-master-audit"
+    },
+    "A5-REPO-HYGIENE": {
+      "slug": "repo-hygiene",
+      "score100": 80,
+      "weight": 0.2,
+      "status": "migrated-from-master-audit"
+    }
+  },
+  "weights": {
+    "A1-PRODUCT-EXCELLENCE": 0.25,
+    "A2-PRODUCTION-GRADE": 0.2,
+    "A3-AGENTIC-INNOVATION": 0.15,
+    "A4-COMPLIANCE-SECURITY": 0.2,
+    "A5-REPO-HYGIENE": 0.2
+  },
+  "replaces": ["master-audit", "comprehensive-audit", "bank-grade-audit"],
+  "initiative": "INIT-AUDIT-CONSOLIDATION"
+}

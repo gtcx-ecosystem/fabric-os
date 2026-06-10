@@ -1,0 +1,28 @@
+{
+  "schema": "gtcx.auditScrubManifest.v1",
+  "repo": "gtcx-infrastructure",
+  "date": "2026-06-10",
+  "initiative": "INIT-AUDIT-CONSOLIDATION",
+  "dryRun": false,
+  "moved": [
+    {
+      "from": "master-audit-2026-06-10.md",
+      "to": "audit/archive/superseded/audits/master-audit-2026-06-10.md"
+    },
+    {
+      "from": "prompts/compliance-gateway@1.0.0/CHANGELOG.md",
+      "to": "audit/archive/superseded/audits/prompts_compliance-gateway@1.0.0_CHANGELOG.md"
+    },
+    {
+      "from": "prompts/compliance-gateway@1.0.0/system.md",
+      "to": "audit/archive/superseded/audits/prompts_compliance-gateway@1.0.0_system.md"
+    }
+  ],
+  "fiveCoreOnly": [
+    "audit/product-excellence-audit-{date}.md",
+    "audit/production-grade-audit-{date}.md",
+    "audit/agentic-innovation-audit-{date}.md",
+    "audit/compliance-security-audit-{date}.md",
+    "audit/repo-hygiene-audit-{date}.md"
+  ]
+}

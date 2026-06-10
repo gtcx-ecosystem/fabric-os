@@ -17,11 +17,11 @@ owner: gtcx-infrastructure
 
 - **Owner:** Human / Security
 - **Action:** Vendor SOW countersign → schedule pen-test window per `pen-test-kickoff-prep-2026-06-10.md`.
-- **Parallel (Class R):** compliance-os pod capacity / image tag GitOps sync.
+- **Parallel (Class R):** Fix `COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON` in `compliance-gateway-secrets-staging` (health 503).
 
 ## Evidence
 
-- `audit/evidence/daas-friction-check-latest.json` — structural gate passed.
-- `audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json` — live AGX health `503`.
-- `docs/operations/coordination/from-gtcx-infrastructure-s39-01-authority-routes-2026-06-10.md`
-  — partial seal and owner split.
+- `audit/evidence/daas-friction-check-latest.json` — open P0 **0**.
+- `audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json` — fleet **PASS** (3/3 required).
+- `audit/evidence/waf-terraform-apply-2026-06-10.json` — WAF TF converged (`AllowMarketsAuthorityEndpoints`).
+- `audit/evidence/compliance-gateway-staging-restore-2026-06-10.json` — scaled 0→1; auth JSON fix pending.

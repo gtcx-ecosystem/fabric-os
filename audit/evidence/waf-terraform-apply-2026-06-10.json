@@ -1,0 +1,13 @@
+{
+  "schema": "gtcx.terraformApplyWitness.v1",
+  "storyId": "SECAS-S3",
+  "findingId": "TF-WAF-DRIFT",
+  "verifiedAt": "2026-06-10T05:26:22.000Z",
+  "environment": "staging",
+  "command": "terraform apply -target=module.waf -auto-approve",
+  "exitCode": 0,
+  "result": "No changes. Your infrastructure matches the configuration.",
+  "wafAclArn": "arn:aws:wafv2:af-south-1:348389439381:regional/webacl/gtcx-staging-waf-af-south-1/c918a5e4-bbae-4385-aa6e-e135469c250f",
+  "rule": "AllowMarketsAuthorityEndpoints",
+  "note": "WAF markets authority allow rule codified in deploy/terraform/modules/waf/main.tf"
+}

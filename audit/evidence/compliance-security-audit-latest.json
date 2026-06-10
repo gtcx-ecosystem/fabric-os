@@ -1,0 +1,14 @@
+{
+  "schema": "gtcx://audit/core-witness/v1",
+  "coreId": "A4-COMPLIANCE-SECURITY",
+  "slug": "compliance-security",
+  "repo": "gtcx-infrastructure",
+  "date": "2026-06-10",
+  "score10": 8,
+  "score100": 80,
+  "status": "migrated-from-master-audit",
+  "migratedFrom": "master-audit",
+  "gaps": ["full five-core audit not yet run"],
+  "checks": {},
+  "note": "Transition witness — run full A1–A5 audit to replace migration scores"
+}

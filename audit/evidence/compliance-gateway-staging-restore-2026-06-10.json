@@ -1,0 +1,13 @@
+{
+  "schema": "gtcx.stagingRestoreWitness.v1",
+  "verifiedAt": "2026-06-10T05:24:00.000Z",
+  "environment": "staging",
+  "deployment": "compliance-gateway-staging",
+  "namespace": "gtcx-staging",
+  "action": "kubectl scale --replicas=1 (was 0)",
+  "probeUrl": "https://compliance-gateway-staging.gtcx.trade/health",
+  "externalStatus": 525,
+  "inClusterStatus": 503,
+  "rootCause": "Deployment scaled to 0 (cold); after scale-up health 503 — Invalid COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON in secret",
+  "nextAction": "Republish COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON in compliance-gateway-secrets-staging"
+}

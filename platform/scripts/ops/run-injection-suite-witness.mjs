@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * SIGNAL INF-005 — injection-suite static witness → 05-audit/evidence/
+ * SIGNAL INF-005 — injection-suite static witness → audit/evidence/
  */
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -9,7 +9,7 @@ import { runStaticChecks } from '../../tools/eval-pipeline/injection-suite.mjs';
 import { PROMPT_VERSION } from '../../tools/compliance-gateway/src/system-prompt.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
-const OUT = join(ROOT, '05-audit/evidence/injection-suite-latest.json');
+const OUT = join(ROOT, 'audit/evidence/injection-suite-latest.json');
 
 const results = runStaticChecks();
 const failures = results.filter(

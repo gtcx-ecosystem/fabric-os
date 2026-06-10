@@ -5,7 +5,7 @@
  * Runs all GTCX infrastructure validation gates in sequence.
  * Exits 0 only if ALL gates pass.
  *
- * Usage: node 03-platform/tools/scripts/validate-all.mjs
+ * Usage: node platform/tools/scripts/validate-all.mjs
  */
 
 import { execSync } from 'node:child_process';
@@ -19,7 +19,7 @@ const YELLOW = '\x1b[33m';
 const RESET = '\x1b[0m';
 
 // Resolve REPO_ROOT from the script location, not cwd. Every gate runs
-// with cwd defaulting to the repo root so paths like `03-platform/tools/scripts/...`
+// with cwd defaulting to the repo root so paths like `platform/tools/scripts/...`
 // resolve correctly no matter where the user invoked validate-all from.
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(SCRIPT_DIR, '..', '..', '..');
@@ -66,16 +66,16 @@ function section(title) {
 section('Coverage Gates');
 
 const packages = [
-  '03-platform/tools/compliance-gateway',
-  '03-platform/tools/replay-protection',
-  '03-platform/tools/deployment-guard',
-  '03-platform/tools/ussd-handler',
-  '03-platform/tools/low-bandwidth',
-  '03-platform/tools/audit-signer',
-  '03-platform/tools/audit-flush',
-  '03-platform/tools/compliance-gateway-mcp',
-  '03-platform/tools/compliance-data',
-  '03-platform/tools/eval-pipeline',
+  'platform/tools/compliance-gateway',
+  'platform/tools/replay-protection',
+  'platform/tools/deployment-guard',
+  'platform/tools/ussd-handler',
+  'platform/tools/low-bandwidth',
+  'platform/tools/audit-signer',
+  'platform/tools/audit-flush',
+  'platform/tools/compliance-gateway-mcp',
+  'platform/tools/compliance-data',
+  'platform/tools/eval-pipeline',
 ];
 
 for (const pkg of packages) {
@@ -85,57 +85,57 @@ for (const pkg of packages) {
   }
 }
 
-run('Coverage Honesty (per-file)', 'node 03-platform/tools/scripts/coverage-honesty-check.mjs');
+run('Coverage Honesty (per-file)', 'node platform/tools/scripts/coverage-honesty-check.mjs');
 
 // =============================================================================
 // 2. Static Validators
 // =============================================================================
 section('Static Validators');
 
-run('SIGNAL Scorecard', 'node 03-platform/tools/scripts/validate-signal.mjs');
-run('Score Ledger', 'node 03-platform/tools/scripts/validate-score-ledger.mjs');
-run('Docs Standard', 'node 03-platform/tools/scripts/docs-standard-validator.mjs');
+run('SIGNAL Scorecard', 'node platform/tools/scripts/validate-signal.mjs');
+run('Score Ledger', 'node platform/tools/scripts/validate-score-ledger.mjs');
+run('Docs Standard', 'node platform/tools/scripts/docs-standard-validator.mjs');
 run(
   'Workspace Root Cleanliness',
-  'python3 03-platform/scripts/ops/check-workspace-root-cleanliness.py --strict',
+  'python3 platform/scripts/ops/check-workspace-root-cleanliness.py --strict',
 );
-run('Trace Correlation (SIGNAL)', 'node 03-platform/tools/scripts/validate-trace-correlation.mjs');
-run('LLM Ops (SIGNAL)', 'node 03-platform/tools/scripts/validate-llm-ops.mjs');
-run('Prompt Semver (SIGNAL)', 'node 03-platform/tools/scripts/validate-prompt-semver.mjs');
-run('Injection Suite Witness (SIGNAL)', 'node 03-platform/scripts/ops/run-injection-suite-witness.mjs');
-run('Kyverno Policies', 'node 03-platform/tools/scripts/kyverno-policy-validator.mjs');
-run('SHA-pinned Actions', 'node 03-platform/tools/scripts/pin-actions-sha.mjs --check');
-run('Node Version Floor', 'node 03-platform/tools/scripts/node-version-floor-check.mjs');
-run('Alertmanager Env Guard', 'node 03-platform/tools/scripts/alertmanager-env-check.mjs');
-run('Empty Catch Blocks', 'node 03-platform/tools/scripts/empty-catch-check.mjs');
-run('Runbook Commands Exist', 'node 03-platform/tools/scripts/runbook-commands-check.mjs');
-run('Runbook Frontmatter', 'node 03-platform/tools/scripts/runbook-frontmatter-check.mjs --check');
-run('Production Overlay Tags', 'node 03-platform/tools/scripts/production-overlay-guard.mjs');
+run('Trace Correlation (SIGNAL)', 'node platform/tools/scripts/validate-trace-correlation.mjs');
+run('LLM Ops (SIGNAL)', 'node platform/tools/scripts/validate-llm-ops.mjs');
+run('Prompt Semver (SIGNAL)', 'node platform/tools/scripts/validate-prompt-semver.mjs');
+run('Injection Suite Witness (SIGNAL)', 'node platform/scripts/ops/run-injection-suite-witness.mjs');
+run('Kyverno Policies', 'node platform/tools/scripts/kyverno-policy-validator.mjs');
+run('SHA-pinned Actions', 'node platform/tools/scripts/pin-actions-sha.mjs --check');
+run('Node Version Floor', 'node platform/tools/scripts/node-version-floor-check.mjs');
+run('Alertmanager Env Guard', 'node platform/tools/scripts/alertmanager-env-check.mjs');
+run('Empty Catch Blocks', 'node platform/tools/scripts/empty-catch-check.mjs');
+run('Runbook Commands Exist', 'node platform/tools/scripts/runbook-commands-check.mjs');
+run('Runbook Frontmatter', 'node platform/tools/scripts/runbook-frontmatter-check.mjs --check');
+run('Production Overlay Tags', 'node platform/tools/scripts/production-overlay-guard.mjs');
 run(
   'Environment CI Preflight',
-  'node 03-platform/tools/control-plane/validate-environment.mjs --ci',
+  'node platform/tools/control-plane/validate-environment.mjs --ci',
 );
-run('Environment Preflight (CI)', 'node 03-platform/tools/control-plane/gtcx-ctl.mjs validate --ci');
-run('Alert Runbook Anchors', 'node 03-platform/tools/scripts/alerts-add-runbook-url.mjs --check');
-run('Dependabot Policy', 'node 03-platform/tools/scripts/dependabot-policy-check.mjs');
-run('SOC2 Agent Owners', 'node 03-platform/tools/scripts/soc2-agent-owners-check.mjs');
-run('Soak Baseline', 'node 03-platform/tools/scripts/soak-baseline-check.mjs --check');
-run('USSD Soak Baseline', 'node 03-platform/tools/scripts/ussd-soak-baseline-check.mjs --check');
-run('DR Drill Evidence', 'node 03-platform/tools/scripts/dr-fire-drill-evidence.mjs');
-run('Cloudflared API Gateway', 'node 03-platform/tools/scripts/cloudflared-api-gateway-check.mjs');
-run('Jurisdiction Catalog Parity', 'node 03-platform/tools/scripts/jurisdiction-catalog-parity-check.mjs');
-run('Terraform Registry Readiness', 'node 03-platform/tools/scripts/terraform-registry-readiness-check.mjs');
-run('NPM Publish Readiness', 'node 03-platform/tools/scripts/npm-publish-readiness-check.mjs');
-run('Dependabot Tier Merge', 'node 03-platform/tools/scripts/dependabot-tier-merge-check.mjs');
-run('Dependabot Merge Plan', 'node 03-platform/tools/scripts/dependabot-merge-plan.mjs');
-run('Pen-Test Intake Evidence', 'node 03-platform/tools/scripts/pen-test-intake-evidence.mjs');
+run('Environment Preflight (CI)', 'node platform/tools/control-plane/gtcx-ctl.mjs validate --ci');
+run('Alert Runbook Anchors', 'node platform/tools/scripts/alerts-add-runbook-url.mjs --check');
+run('Dependabot Policy', 'node platform/tools/scripts/dependabot-policy-check.mjs');
+run('SOC2 Agent Owners', 'node platform/tools/scripts/soc2-agent-owners-check.mjs');
+run('Soak Baseline', 'node platform/tools/scripts/soak-baseline-check.mjs --check');
+run('USSD Soak Baseline', 'node platform/tools/scripts/ussd-soak-baseline-check.mjs --check');
+run('DR Drill Evidence', 'node platform/tools/scripts/dr-fire-drill-evidence.mjs');
+run('Cloudflared API Gateway', 'node platform/tools/scripts/cloudflared-api-gateway-check.mjs');
+run('Jurisdiction Catalog Parity', 'node platform/tools/scripts/jurisdiction-catalog-parity-check.mjs');
+run('Terraform Registry Readiness', 'node platform/tools/scripts/terraform-registry-readiness-check.mjs');
+run('NPM Publish Readiness', 'node platform/tools/scripts/npm-publish-readiness-check.mjs');
+run('Dependabot Tier Merge', 'node platform/tools/scripts/dependabot-tier-merge-check.mjs');
+run('Dependabot Merge Plan', 'node platform/tools/scripts/dependabot-merge-plan.mjs');
+run('Pen-Test Intake Evidence', 'node platform/tools/scripts/pen-test-intake-evidence.mjs');
 run(
   'Contract Tests',
-  'node --test 03-platform/tools/contract-tests/protocol-schema.test.mjs 03-platform/tools/contract-tests/gateway-tenancy.test.mjs 03-platform/tools/contract-tests/audit-signer-catalog.test.mjs 03-platform/tools/contract-tests/replay-protection.test.mjs 03-platform/tools/contract-tests/agent-integration.test.mjs'
+  'node --test platform/tools/contract-tests/protocol-schema.test.mjs platform/tools/contract-tests/gateway-tenancy.test.mjs platform/tools/contract-tests/audit-signer-catalog.test.mjs platform/tools/contract-tests/replay-protection.test.mjs platform/tools/contract-tests/agent-integration.test.mjs'
 );
 run(
   'Ecosystem Integration Matrix',
-  'node 03-platform/tools/scripts/ecosystem-integration-matrix-check.mjs',
+  'node platform/tools/scripts/ecosystem-integration-matrix-check.mjs',
 );
 
 // =============================================================================
@@ -143,17 +143,17 @@ run(
 // =============================================================================
 section('Security Validators');
 
-run('Secret Scan', 'node 03-platform/tools/scripts/secret-scan-gate.mjs');
-run('FIPS 140-3 Mode', 'node 03-platform/tools/scripts/fips-mode-gate.mjs');
-run('Audit Sink Guard', 'node 03-platform/tools/scripts/audit-sink-gate.mjs');
-run('Disk Queue Durability', 'node 03-platform/tools/scripts/disk-queue-gate.mjs');
-run('SLSA Build L3', 'node 03-platform/tools/scripts/slsa-l3-gate.mjs');
-run('Live RDS Restore', 'node 03-platform/tools/scripts/s3-07-rds-restore-gate.mjs');
-run('Publish Primitives', 'node 03-platform/tools/scripts/s3-06-publish-primitives-gate.mjs');
-run('Mesh Injection (prod)', 'node 03-platform/tools/scripts/verify-mesh-injection.mjs --namespace gtcx');
+run('Secret Scan', 'node platform/tools/scripts/secret-scan-gate.mjs');
+run('FIPS 140-3 Mode', 'node platform/tools/scripts/fips-mode-gate.mjs');
+run('Audit Sink Guard', 'node platform/tools/scripts/audit-sink-gate.mjs');
+run('Disk Queue Durability', 'node platform/tools/scripts/disk-queue-gate.mjs');
+run('SLSA Build L3', 'node platform/tools/scripts/slsa-l3-gate.mjs');
+run('Live RDS Restore', 'node platform/tools/scripts/s3-07-rds-restore-gate.mjs');
+run('Publish Primitives', 'node platform/tools/scripts/s3-06-publish-primitives-gate.mjs');
+run('Mesh Injection (prod)', 'node platform/tools/scripts/verify-mesh-injection.mjs --namespace gtcx');
 run(
   'Mesh Injection (staging)',
-  'node 03-platform/tools/scripts/verify-mesh-injection.mjs --namespace gtcx-staging'
+  'node platform/tools/scripts/verify-mesh-injection.mjs --namespace gtcx-staging'
 );
 
 // =============================================================================
@@ -161,8 +161,8 @@ run(
 // =============================================================================
 section('Build Validators');
 
-run('Reproducible Build (dry)', 'node 03-platform/tools/scripts/verify-reproducible-build.mjs');
-run('Runtime Evidence (dry)', 'node 03-platform/tools/scripts/runtime-evidence-check.mjs');
+run('Reproducible Build (dry)', 'node platform/tools/scripts/verify-reproducible-build.mjs');
+run('Runtime Evidence (dry)', 'node platform/tools/scripts/runtime-evidence-check.mjs');
 
 // =============================================================================
 // Summary

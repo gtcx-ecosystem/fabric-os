@@ -11,22 +11,15 @@
     "label": "ZWCMP pilot + Global South 10x deploy"
   },
   "paths": {
-    "executionRoadmap": "01-docs/05-audit/execution-roadmap.md",
-    "openItems": "01-docs/04-ops/agent-work-selection.md",
-    "latestJson": "01-docs/05-audit/latest.json"
+    "executionRoadmap": "audit/product-management/execution-roadmap.md",
+    "openItems": "docs/operations/agent-work-selection.md",
+    "latestJson": "audit/latest.json"
   },
   "storyIdPattern": "(?:IR-\\d+\\.\\d+|S\\d+-\\d+|P22-[A-Z]+-\\d+)",
   "implementStatuses": ["pending", "in_progress"],
-  "parseOpenIds": ["EXT-INF-002"],
+  "parseOpenIds": [],
   "staticImplement": [],
-  "staticHuman": [
-    {
-      "storyId": "EXT-INF-002",
-      "title": "Live-stack pen-test vendor SOW",
-      "authorityClass": "S",
-      "owner": "Human / Security"
-    }
-  ],
+  "staticHuman": [],
   "planningQueue": [],
   "forbidden": [
     "Ask operator to run master-audit before starting work",

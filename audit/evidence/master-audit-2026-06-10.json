@@ -1,0 +1,57 @@
+{
+  "schema": "gtcx.masterAuditEvidence.v1",
+  "repo": "gtcx-infrastructure",
+  "auditDate": "2026-06-10",
+  "verifiedAt": "2026-06-10T04:20:00.000Z",
+  "commit": "cfd0982981f52c9858673062de43a93beccc17e5",
+  "workingTreeDirty": 56,
+  "command": "master-audit",
+  "priorComposite": 8.3,
+  "compositeScore": 8.4,
+  "compositeRaw": 8.35,
+  "grade": "A-",
+  "productionReady": false,
+  "productionReadyReason": "sovereign fleet probe fail; Class S external assurance pending",
+  "gates": {
+    "validateAll": { "status": "pass", "ratio": "55/55", "exitCode": 0 },
+    "opsCheck": { "status": "pass", "exitCode": 0 },
+    "daasFriction": { "status": "pass", "openP0": 0, "exitCode": 0 },
+    "daasFleetHealth": { "status": "fail", "exitCode": 1, "unhealthy": ["sovereign"] },
+    "agentWorkSelection": { "status": "fail", "passed": 3, "total": 9, "exitCode": 1 },
+    "lint": { "status": "fail", "package": "@gtcx/docs-site", "exitCode": 1 },
+    "typecheck": { "status": "fail", "package": "@gtcx/docs-site", "exitCode": 2 },
+    "agxHealth": { "status": "pass", "httpCode": 200 },
+    "authorityTraceCapture": { "status": "pass", "ratio": "7/7", "repo": "gtcx-markets" }
+  },
+  "program": {
+    "id": "INIT-GTCX-INFRA-DAAS",
+    "sprint": "DAAS-S1",
+    "sprintStatus": "complete",
+    "storiesDone": 5
+  },
+  "scores": {
+    "codeQuality": 8.0,
+    "repoHygiene": 8.5,
+    "security": 8.7,
+    "globalSouthResilience": 8.3,
+    "ecosystemIntegration": 8.4,
+    "agenticMaturity": 8.2,
+    "enterpriseReadiness": 8.0,
+    "bankGradeComposite": 8.4,
+    "investorLens": 8.3,
+    "enterpriseLens": 8.2,
+    "sovereignLens": 8.5
+  },
+  "findings": {
+    "p0Open": 0,
+    "p1Open": 2,
+    "p2Open": 4,
+    "closedThisSession": ["F-AGX-01", "XR-MKT-011", "DAAS-S1-05"]
+  },
+  "artifacts": {
+    "report": "audit/master-audit-2026-06-10.md",
+    "roadmap": "audit/product-management/execution-roadmap.md",
+    "frictionWitness": "audit/evidence/daas-friction-check-latest.json",
+    "fleetWitness": "audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json"
+  }
+}

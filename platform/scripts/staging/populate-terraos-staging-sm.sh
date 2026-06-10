@@ -36,14 +36,16 @@ DOCKER_CFG="$(jq -nc --arg auth "${AUTH}" '{"auths":{"ghcr.io":{"auth":$auth}}}'
 GHCR_JSON="$(jq -nc --argjson cfg "${DOCKER_CFG}" '{dockerconfigjson: $cfg}')"
 put_json "${PREFIX}/ghcr-pull-token" "${GHCR_JSON}"
 
-RDS_HOST="${TERRAOS_RDS_HOST:-staging-terraos-postgres}"
+RDS_HOST="${TERRAOS_RDS_HOST:-gtcx-staging-operational.c9q6m82euzii.af-south-1.rds.amazonaws.com}"
+RDS_USER="${TERRAOS_RDS_USER:-gtcx_admin}"
+RDS_DB="${TERRAOS_RDS_DB:-terraos}"
 RDS_PASS="${TERRAOS_RDS_PASSWORD:-staging-change-me}"
-REDIS_HOST="${TERRAOS_REDIS_HOST:-staging-terraos-redis}"
-REDIS_PASS="${TERRAOS_REDIS_PASSWORD:-staging-change-me}"
+REDIS_HOST="${TERRAOS_REDIS_HOST:-redis-staging.gtcx-staging.svc.cluster.local}"
+REDIS_PASS="${TERRAOS_REDIS_PASSWORD:-}"
 
-echo "==> RDS bundle (override via TERRAOS_RDS_HOST / TERRAOS_RDS_PASSWORD)"
+echo "==> RDS bundle (override via TERRAOS_RDS_HOST / TERRAOS_RDS_USER / TERRAOS_RDS_DB / TERRAOS_RDS_PASSWORD)"
 put_json "${PREFIX}/rds" "$(jq -nc \
-  --arg url "postgresql://terraos:${RDS_PASS}@${RDS_HOST}:5432/terraos" \
+  --arg url "postgresql://${RDS_USER}:${RDS_PASS}@${RDS_HOST}:5432/${RDS_DB}" \
   --arg password "${RDS_PASS}" \
   '{url: $url, password: $password}')"
 

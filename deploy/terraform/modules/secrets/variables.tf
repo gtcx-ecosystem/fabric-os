@@ -53,6 +53,18 @@ variable "terminal_os_service_account" {
   default     = "terminal-os-sa"
 }
 
+variable "terra_os_namespace" {
+  description = "Kubernetes namespace for terra-os ESO (INF-TERRA)"
+  type        = string
+  default     = "terraos"
+}
+
+variable "terra_os_eso_service_account" {
+  description = "Service account for terra-os ESO IRSA"
+  type        = string
+  default     = "terraos-eso-sa"
+}
+
 variable "tags" {
   description = "Additional tags"
   type        = map(string)

@@ -95,3 +95,18 @@ output "compliance_os_sm_secret_names" {
     aws_secretsmanager_secret.compliance_os_minio.name,
   ]
 }
+
+output "terra_os_secrets_role_arn" {
+  description = "IRSA role ARN for terra-os ESO (INF-TERRA)"
+  value       = aws_iam_role.terra_os_secrets.arn
+}
+
+output "terra_os_sm_secret_names" {
+  description = "AWS SM secret names (shells) for terra-os ESO"
+  value = [
+    aws_secretsmanager_secret.terra_os_ghcr_pull.name,
+    aws_secretsmanager_secret.terra_os_rds.name,
+    aws_secretsmanager_secret.terra_os_redis.name,
+    "terraos/staging/app-secrets",
+  ]
+}

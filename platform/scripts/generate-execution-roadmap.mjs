@@ -69,9 +69,13 @@ function main() {
   const friction = readJson(FRICTION_JSON);
   const storiesDoc = readJson(STORIES_JSON);
   const stories = storiesDoc.stories ?? [];
-  const activeSprint =
-    roadmap.sprints.find((s) => s.status !== 'complete') ?? roadmap.sprints.at(-1);
-  const activeStories = stories.filter((s) => s.sprint === activeSprint?.id);
+  const allComplete = roadmap.sprints.every((s) => s.status === 'complete');
+  const activeSprint = allComplete
+    ? roadmap.sprints.at(-1)
+    : (roadmap.sprints.find((s) => s.status !== 'complete') ?? roadmap.sprints.at(-1));
+  const activeStories = allComplete
+    ? stories.filter((s) => s.sprint === activeSprint?.id)
+    : stories.filter((s) => s.sprint === activeSprint?.id);
   const futureSprints = roadmap.sprints.filter((s) => s.id !== activeSprint?.id);
 
   const fleetHint = existsSync(FLEET_EVIDENCE)
@@ -107,6 +111,14 @@ function main() {
   lines.push('');
   lines.push('**Primary program:** DevOps-as-a-Service (DaaS) — not product ECO sprints.');
   lines.push('');
+  if (allComplete) {
+    lines.push('## Program status: **complete** (all DAAS sprints sealed)');
+    lines.push('');
+    lines.push(
+      '**Co-primary program:** Security-as-a-Service — see `audit/product-management/secas-execution-roadmap.md`.',
+    );
+    lines.push('');
+  }
   lines.push(`## Active Phase: ${activeSprint?.id ?? 'DAAS-S1'} — ${activeSprint?.name ?? 'DaaS'}`);
   lines.push('');
   lines.push(`**Status:** \`${activeSprint?.status ?? 'blocked'}\``);

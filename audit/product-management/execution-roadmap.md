@@ -2,7 +2,7 @@
 title: Execution roadmap — DevOps-as-a-Service
 status: current
 date: 2026-06-10
-last_reconciled: 2026-06-10T04:31:54.383Z
+last_reconciled: 2026-06-10T04:34:21.289Z
 owner: gtcx-infrastructure
 program: INIT-GTCX-INFRA-DAAS
 generated: true
@@ -21,6 +21,10 @@ sources:
 > `pm/daas-roadmap.json`, then run `pnpm generate:roadmap`.
 
 **Primary program:** DevOps-as-a-Service (DaaS) — not product ECO sprints.
+
+## Program status: **complete** (all DAAS sprints sealed)
+
+**Co-primary program:** Security-as-a-Service — see `audit/product-management/secas-execution-roadmap.md`.
 
 ## Active Phase: DAAS-S3 — Cost witness + env schedule automation
 

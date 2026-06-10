@@ -36,10 +36,12 @@
     {
       "id": "SEC-IRSA-01",
       "priority": "P1",
-      "status": "open",
+      "status": "closed",
       "repo": "compliance-os",
       "title": "IRSA + least-privilege review for compliance-os staging",
       "matrixRef": "INF-PER-REPO-001#compliance-os",
+      "executionStatus": "done",
+      "witness": "audit/evidence/secas-irsa-compliance-os-2026-06-10.json",
       "blocksIR": false
     }
   ]

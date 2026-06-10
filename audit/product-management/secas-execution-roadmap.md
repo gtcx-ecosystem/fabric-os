@@ -2,7 +2,7 @@
 title: Execution roadmap — Security-as-a-Service
 status: current
 date: 2026-06-10
-last_reconciled: 2026-06-10T04:32:44.380Z
+last_reconciled: 2026-06-10T04:34:22.057Z
 owner: gtcx-infrastructure
 program: INIT-GTCX-INFRA-SECAS
 generated: true
@@ -62,7 +62,7 @@ pnpm secas:approval:check:write
 | Sprint   | Goal                                       | Status   | Owner               | Stories / Friction |
 | -------- | ------------------------------------------ | -------- | ------------------- | ------------------ |
 | SECAS-S1 | Sovereign register + security friction SoR | complete | gtcx-infrastructure |                    |
-| SECAS-S3 | Fleet IRSA + WAF hardening cards           | pending  | gtcx-infrastructure | `SEC-IRSA-01`      |
+| SECAS-S3 | Fleet IRSA + WAF hardening cards           | complete | gtcx-infrastructure |                    |
 
 ## Issue Reconciliation
 
@@ -70,10 +70,9 @@ pnpm secas:approval:check:write
 | ---------------------------- | ------------------------------------ | --------------- | ----------- |
 | `SEC-PENTEST-01`             | `pm/security-friction-register.json` | SECAS-S2-01     | in_progress |
 | `SEC-WAF-01`                 | `pm/security-friction-register.json` | —               | done        |
-| `SEC-IRSA-01`                | `pm/security-friction-register.json` | SECAS-S3-01     | pending     |
+| `SEC-IRSA-01`                | `pm/security-friction-register.json` | SECAS-S3-01     | done        |
 | P42 hub protocol publication | `pm/_tasks`                          | gtcx-docs       | done        |
 
 ## Unblock Order
 
 1. **`SEC-PENTEST-01`** (gtcx-infrastructure) — Live-stack pen-test execution window — after EXT-INF-002
-2. **`SEC-IRSA-01`** (compliance-os) — IRSA + least-privilege review for compliance-os staging

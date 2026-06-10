@@ -73,7 +73,7 @@
       "sprint": "SECAS-S3",
       "title": "Compliance-os staging IRSA least-privilege review",
       "priority": "P1",
-      "status": "pending",
+      "status": "done",
       "owner": "gtcx-infrastructure",
       "frictionIds": ["SEC-IRSA-01"],
       "files": [
@@ -82,8 +82,16 @@
       ],
       "acceptance": ["pnpm secas:cards:check:write"],
       "uat": [
-        { "text": "IRSA roles scoped to staging SA needs", "done": false },
-        { "text": "Evidence witness published", "done": false }
+        {
+          "text": "IRSA roles scoped to staging SA needs",
+          "done": true,
+          "note": "7 SM ARNs; OIDC sub scoped to compliance-os-sa"
+        },
+        {
+          "text": "Evidence witness published",
+          "done": true,
+          "note": "audit/evidence/secas-irsa-compliance-os-2026-06-10.json"
+        }
       ],
       "blockers": null
     },
@@ -92,7 +100,7 @@
       "sprint": "SECAS-S3",
       "title": "Publish per-repo SECaaS security cards",
       "priority": "P1",
-      "status": "pending",
+      "status": "done",
       "owner": "gtcx-infrastructure",
       "files": [
         "docs/operations/secas/README.md",
@@ -105,9 +113,13 @@
       "uat": [
         {
           "text": "SECaaS cards for compliance-os, gtcx-markets, gtcx-intelligence",
-          "done": false
+          "done": true
         },
-        { "text": "secas:cards:check harness PASS", "done": false }
+        {
+          "text": "secas:cards:check harness PASS",
+          "done": true,
+          "note": "pnpm secas:cards:check:write exit 0"
+        }
       ],
       "blockers": null
     }

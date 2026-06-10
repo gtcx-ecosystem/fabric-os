@@ -1,0 +1,40 @@
+{
+  "schema": "gtcx.secasIrsaWitness.v1",
+  "storyId": "SECAS-S3-01",
+  "frictionId": "SEC-IRSA-01",
+  "repo": "gtcx-infrastructure",
+  "verifiedAt": "2026-06-10T04:34:00.000Z",
+  "environment": "staging",
+  "namespace": "compliance-os-staging",
+  "serviceAccount": {
+    "name": "compliance-os-sa",
+    "roleArn": "arn:aws:iam::348389439381:role/gtcx-staging-compliance-os-secrets-role"
+  },
+  "trustPolicy": {
+    "principal": "eks OIDC federated",
+    "subject": "system:serviceaccount:compliance-os-staging:compliance-os-sa",
+    "audience": "sts.amazonaws.com"
+  },
+  "readerPolicy": {
+    "name": "gtcx-staging-compliance-os-secrets-reader",
+    "actions": ["secretsmanager:GetSecretValue", "secretsmanager:DescribeSecret"],
+    "resourceCount": 7,
+    "scopedPrefixes": ["gtcx/compliance-os/staging/"]
+  },
+  "externalSecrets": {
+    "total": 7,
+    "ready": 7,
+    "names": [
+      "compliance-os-ghcr-pull",
+      "compliance-api-secrets",
+      "caas-secrets",
+      "core12-secrets",
+      "via-secrets",
+      "vxa-secrets",
+      "minio-secrets"
+    ]
+  },
+  "terraformSource": "deploy/terraform/modules/secrets/compliance-os.tf",
+  "finding": "IRSA least-privilege scoped to compliance-os staging SM paths; no wildcard Resource.",
+  "note": "W2 bundle uses separate sealed secret path; not in ESO IRSA reader set."
+}

@@ -9,15 +9,15 @@ owner: gtcx-infrastructure
 
 ## Active Phase
 
-- **ID:** DAAS-S3
-- **Status:** complete
-- **Reason:** F2 imagePullSecrets on 8/8 deployments; F6 cost router witness; fleet health **PASS** (3/3 required).
+- **ID:** SECAS-S2
+- **Status:** in_progress
+- **Reason:** EXT-INF-002 approved; vendor SOW countersign pending. SECAS-S3 sealed (IRSA + cards).
 
 ## Next Work
 
-- **Owner:** `gtcx-infrastructure`
-- **Action:** Witness mode — backlog clear; optional: docs-site lint/typecheck, compliance-os pod capacity.
-- **Parallel:** pen-test vendor kickoff (EXT-INF-002 approved 2026-06-10).
+- **Owner:** Human / Security
+- **Action:** Vendor SOW countersign → schedule pen-test window per `pen-test-kickoff-prep-2026-06-10.md`.
+- **Parallel (Class R):** compliance-os pod capacity / image tag GitOps sync.
 
 ## Evidence
 

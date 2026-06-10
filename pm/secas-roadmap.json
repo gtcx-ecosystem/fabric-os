@@ -27,8 +27,8 @@
     {
       "id": "SECAS-S3",
       "name": "Fleet IRSA + WAF hardening cards",
-      "status": "pending",
-      "items": ["SEC-IRSA-01"]
+      "status": "complete",
+      "items": []
     }
   ]
 }

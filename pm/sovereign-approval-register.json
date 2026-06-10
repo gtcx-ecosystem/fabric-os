@@ -10,6 +10,7 @@
   "items": [
     {
       "id": "EXT-INF-002",
+      "aliases": ["H-05", "INT-S12-01", "BG-10-10"],
       "storyId": "S2-13",
       "priority": "P0",
       "authorityClass": "S",
@@ -22,17 +23,22 @@
       "seal": "docs/operations/coordination/from-gtcx-infrastructure-ext-inf-002-sow-approved-2026-06-10.md",
       "postApprovalOwner": "gtcx-infrastructure",
       "postApprovalAction": "Schedule live-stack pen-test window after vendor countersign",
-      "blocksIR": false
+      "blocksClaims": ["pen-test complete"],
+      "blocksIR": false,
+      "hubManifest": "bridge-os/.../human-gates.manifest.json#H-05"
     },
     {
       "id": "BL-SOC2-01",
+      "aliases": ["S3-SOC2-01", "INT-S12-03", "BG-10-11"],
       "priority": "P1",
       "authorityClass": "S",
       "status": "approval-needed",
       "title": "SOC 2 Type I auditor engagement",
       "owner": "Human / Legal",
       "intake": "ops/assurance/programs/soc2.md",
-      "blocksIR": false
+      "blocksClaims": ["SOC 2 Type I attested", "SOC 2 attested"],
+      "blocksIR": false,
+      "note": "baseline-os BG-10-11 — not gtcx-docs Q2 hygiene BG-10-11"
     }
   ]
 }

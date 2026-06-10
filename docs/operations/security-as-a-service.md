@@ -55,12 +55,30 @@ pnpm secas:approval:check
 pnpm agent:next-work
 ```
 
+## Cross-repo false blocks (baseline-os M3 pattern)
+
+Repos that label Class S items **blocked** on security/compliance are usually **false blocks** per
+[`human-gate-navigation.md`](https://github.com/gtcx-ecosystem/baseline-os/blob/main/docs/operations/human-gate-navigation.md).
+Use **Approval needed** — `blocksIR: false` — implement/witness queues continue.
+
+| Approval needed (your list)     | Hub SoR ID     | Repo-local alias         | SECaaS register         | blocksClaims only                  |
+| ------------------------------- | -------------- | ------------------------ | ----------------------- | ---------------------------------- |
+| H-05 / EXT-INF-002 pen-test SOW | H-05           | baseline-os **BG-10-10** | **approved** 2026-06-10 | `pen-test complete`                |
+| BG-10-11 SOC 2 auditor          | BL-SOC2-01     | baseline-os **BG-10-11** | approval-needed         | `SOC 2 attested`                   |
+| BG-10-12 operator witnesses     | BL-OPERATOR-01 | baseline-os **BG-10-12** | _baseline-os owner_     | `non-core engineer baseline proof` |
+
+**ID collision:** gtcx-docs **BG-10-11/12** are M2 Q2/Q3 hygiene gates (automatable, done) — different
+stories from baseline-os M3 Class S gates. Resolve by **owner repo**, not ID alone.
+
+Fleet reconciliation spec: `bridge-os/pm/spec/sovereign-gate-reconciliation.v1.json`
+
 ## Operator entry
 
 **Approval needed (Class S only):**
 
-- **EXT-INF-002** — approved 2026-06-10; next: vendor countersign
-- **BL-SOC2-01** — SOC 2 Type I auditor engagement
+- **EXT-INF-002 / H-05 / BG-10-10** — sovereign SOW approved 2026-06-10; next: vendor countersign
+- **BL-SOC2-01 / BG-10-11** — SOC 2 Type I auditor engagement
+- **BL-OPERATOR-01 / BG-10-12** — named non-core operator workflow (baseline-os register — parallel)
 
 **Next operational (Class R/A):**
 

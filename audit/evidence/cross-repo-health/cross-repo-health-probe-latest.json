@@ -2,29 +2,19 @@
   "schemaVersion": 1,
   "testType": "cross-repo-health-probe",
   "storyId": "S1-13",
-  "timestamp": "2026-06-10T04:19:22.352Z",
+  "timestamp": "2026-06-10T04:31:57.767Z",
   "environment": "staging",
-  "overall": "FAIL",
+  "overall": "PASS",
   "services": [
     {
       "name": "sovereign",
       "repo": "gtcx-platforms",
       "url": "https://sovereign-staging.gtcx.trade/api/health",
-      "status": "000",
-      "error": "fetch failed",
-      "body": null,
-      "latencyMs": 546,
-      "required": true
-    },
-    {
-      "name": "agx-api",
-      "repo": "gtcx-platforms",
-      "url": "https://api.staging.gtcx.trade/api/health",
       "status": 200,
       "error": null,
       "body": {
         "status": "up",
-        "timestamp": "2026-06-10T04:19:22.451Z",
+        "timestamp": "2026-06-10T04:31:57.256Z",
         "database": {
           "status": "up",
           "details": {
@@ -46,39 +36,126 @@
         "audit-trail": {
           "status": "up",
           "details": {
-            "lastAppend": "2026-06-10T04:19:22.451Z",
+            "lastAppend": "2026-06-10T04:31:57.256Z",
             "chainVerified": true
           }
         }
       },
-      "latencyMs": 3095,
+      "transport": "curl",
+      "latencyMs": 2230,
+      "required": true
+    },
+    {
+      "name": "agx-api",
+      "repo": "gtcx-platforms",
+      "url": "https://api.staging.gtcx.trade/api/health",
+      "status": 200,
+      "error": null,
+      "body": {
+        "status": "up",
+        "timestamp": "2026-06-10T04:31:57.168Z",
+        "database": {
+          "status": "up",
+          "details": {
+            "type": "postgres"
+          }
+        },
+        "protocol-adapters": {
+          "status": "up",
+          "details": {
+            "expectedVersions": {
+              "tradepass": "1.0.0",
+              "geotag": "1.0.0",
+              "gci": "1.0.0",
+              "vaultmark": "1.0.0",
+              "panx": "1.0.0"
+            }
+          }
+        },
+        "audit-trail": {
+          "status": "up",
+          "details": {
+            "lastAppend": "2026-06-10T04:31:57.167Z",
+            "chainVerified": true
+          }
+        }
+      },
+      "transport": "fetch",
+      "latencyMs": 2101,
       "required": true
     },
     {
       "name": "intelligence",
       "repo": "gtcx-intelligence",
       "url": "https://intelligence-staging.gtcx.trade/health",
-      "status": "000",
-      "error": "fetch failed",
-      "body": null,
-      "latencyMs": 507,
+      "status": 200,
+      "error": null,
+      "body": {
+        "service": "intelligence-sdk",
+        "version": "0.1.0",
+        "uptime": 13052,
+        "status": "healthy",
+        "dependencies": {
+          "inference_backend": {
+            "status": "up",
+            "latency_ms": 0
+          },
+          "event_store": {
+            "status": "up",
+            "events": 0
+          }
+        },
+        "scheduler": {
+          "running": true,
+          "jobs": {
+            "anomaly": {
+              "enabled": true,
+              "lastRun": "2026-06-10T04:29:24.739Z",
+              "runCount": 43
+            },
+            "trend": {
+              "enabled": true,
+              "runCount": 0
+            },
+            "summary": {
+              "enabled": false,
+              "runCount": 0
+            }
+          }
+        },
+        "features": {
+          "enableWorldModel": false,
+          "enableDriftAutoRollback": true,
+          "enableTradePassSubmission": false,
+          "enableCostRouter": true,
+          "degradationTimeoutMs": 5000,
+          "degradationErrorThreshold": 0.5,
+          "degradationLatencyThresholdMs": 2000
+        },
+        "ussd": {
+          "activeSessions": 0
+        }
+      },
+      "transport": "curl",
+      "latencyMs": 2868,
       "required": true
     },
     {
       "name": "compliance-gateway",
       "repo": "gtcx-infrastructure",
       "url": "https://compliance-gateway-staging.gtcx.trade/health",
-      "status": "000",
-      "error": "fetch failed",
-      "body": null,
-      "latencyMs": 506,
+      "status": 525,
+      "error": null,
+      "body": "error code: 525",
+      "transport": "curl",
+      "latencyMs": 2733,
       "required": false
     }
   ],
   "summary": {
     "total": 4,
-    "healthy": 1,
-    "unhealthy": 3,
-    "requiredUnhealthy": 2
+    "healthy": 3,
+    "unhealthy": 1,
+    "requiredUnhealthy": 0
   }
 }

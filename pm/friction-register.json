@@ -42,28 +42,35 @@
     {
       "id": "F1",
       "priority": "P1",
-      "status": "open",
+      "status": "closed",
       "repo": "terminal-os",
       "title": "Terminal EKS + COMPLIANCE_OS_TERMINAL_API_KEY secret mirror",
       "matrixRef": "INF-PER-REPO-001#terminal-os",
+      "executionStatus": "done",
+      "witness": "terminal-os-staging 1/1 Running; terminal-os-secrets SecretSynced (2026-06-10)",
+      "seal": "docs/operations/coordination/from-gtcx-infrastructure-terminal-os-eks-2026-06-10.md",
       "blocksIR": false
     },
     {
       "id": "F2",
       "priority": "P1",
-      "status": "open",
+      "status": "closed",
       "repo": "compliance-os",
       "title": "GHCR imagePullSecret staging",
       "matrixRef": "INF-PER-REPO-001#compliance-os",
+      "executionStatus": "done",
+      "witness": "8/8 GHCR deployments reference compliance-os-ghcr-pull (2026-06-10)",
       "blocksIR": false
     },
     {
       "id": "F6",
       "priority": "P1",
-      "status": "open",
+      "status": "closed",
       "repo": "gtcx-intelligence",
       "title": "Intelligence staging image with ENABLE_COST_ROUTER",
       "matrixRef": "infra-per-repo-action-matrix F6",
+      "executionStatus": "done",
+      "witness": "intelligence-orchestrator 2/2; ENABLE_COST_ROUTER=1; fleet health PASS",
       "blocksIR": false
     }
   ]

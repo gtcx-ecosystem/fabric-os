@@ -2,7 +2,7 @@
 title: Execution roadmap — DevOps-as-a-Service
 status: current
 date: 2026-06-10
-last_reconciled: 2026-06-10T04:19:25.354Z
+last_reconciled: 2026-06-10T04:31:54.383Z
 owner: gtcx-infrastructure
 program: INIT-GTCX-INFRA-DAAS
 generated: true
@@ -24,14 +24,14 @@ sources:
 
 ## Active Phase: DAAS-S3 — Cost witness + env schedule automation
 
-**Status:** `in_progress`
+**Status:** `complete`
 
 **Live probe:** AGX `api/health` → **200** (fleet witness 2026-06-10).
 
-| Story      | Title                                                      | Priority | Status      | Owner               |
-| ---------- | ---------------------------------------------------------- | -------- | ----------- | ------------------- |
-| DAAS-S3-01 | Compliance-os GHCR imagePullSecrets on all app deployments | P1       | in_progress | gtcx-infrastructure |
-| DAAS-S3-02 | Intelligence staging image with ENABLE_COST_ROUTER         | P1       | pending     | gtcx-infrastructure |
+| Story      | Title                                                      | Priority | Status | Owner               |
+| ---------- | ---------------------------------------------------------- | -------- | ------ | ------------------- |
+| DAAS-S3-01 | Compliance-os GHCR imagePullSecrets on all app deployments | P1       | done   | gtcx-infrastructure |
+| DAAS-S3-02 | Intelligence staging image with ENABLE_COST_ROUTER         | P1       | done   | gtcx-infrastructure |
 
 ### DAAS-S3-01: Compliance-os GHCR imagePullSecrets on all app deployments
 
@@ -48,9 +48,9 @@ pnpm --dir ../compliance-os w2:staging-prereq-check
 
 - [x] compliance-os-ghcr-pull SecretSynced True
 - [x] staging-web-app 1/1 Running
-- [ ] All GHCR app deployments reference imagePullSecrets
+- [x] All GHCR app deployments reference imagePullSecrets (2026-06-10 — patch-compliance-os-ghcr-pull.sh + compliance-os kustomize patches)
 
-**Blockers:** compliance-api/caas/core12/via/vxa deployments missing imagePullSecrets
+**Blockers:** none
 
 ### DAAS-S3-02: Intelligence staging image with ENABLE_COST_ROUTER
 
@@ -64,8 +64,8 @@ pnpm daas:fleet:health
 
 **UAT / QA**
 
-- [ ] gtcx-intelligence staging pod Running with cost router enabled
-- [ ] Cost witness evidence published
+- [x] gtcx-intelligence staging pod Running with cost router enabled (intelligence-orchestrator 2/2 Running; ENABLE_COST_ROUTER=1)
+- [x] Cost witness evidence published (audit/evidence/daas-cost-router-witness-2026-06-10.json)
 
 **Blockers:** none
 
@@ -83,11 +83,10 @@ pnpm daas:fleet:health
 | `F-AGX-01`                   | `pm/friction-register.json` | DAAS-S1-03      | done              |
 | `XR-MKT-011`                 | `pm/friction-register.json` | DAAS-S1-04      | done              |
 | `F1`                         | `pm/friction-register.json` | DAAS-S2-01      | done              |
-| `F2`                         | `pm/friction-register.json` | DAAS-S3-01      | in_progress       |
-| `F6`                         | `pm/friction-register.json` | DAAS-S3-02      | pending           |
+| `F2`                         | `pm/friction-register.json` | DAAS-S3-01      | done              |
+| `F6`                         | `pm/friction-register.json` | DAAS-S3-02      | done              |
 | P41 hub protocol publication | `pm/_tasks`                 | gtcx-docs       | done (`a34baa8a`) |
 
 ## Unblock Order
 
-1. **`F2`** (compliance-os) — GHCR imagePullSecret staging
-2. **`F6`** (gtcx-intelligence) — Intelligence staging image with ENABLE_COST_ROUTER
+_No open friction items — program clear for current sprint._

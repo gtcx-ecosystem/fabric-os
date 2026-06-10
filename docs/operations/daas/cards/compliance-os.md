@@ -1,6 +1,6 @@
 ---
 title: DaaS card — compliance-os
-status: in_progress
+status: done
 date: 2026-06-10
 friction: F2
 owner: gtcx-infrastructure
@@ -35,16 +35,17 @@ kubectl get externalsecret -n compliance-os-staging
 
 ## Verification (2026-06-10)
 
-| Probe                                    | Result                                                          |
-| ---------------------------------------- | --------------------------------------------------------------- |
-| `compliance-os-ghcr-pull` ExternalSecret | **SecretSynced True**                                           |
-| `staging-web-app`                        | **1/1 Running** (imagePullSecret attached)                      |
-| `staging-compliance-api-app`             | **ImagePullBackOff** — missing `imagePullSecrets` on deployment |
-| Product gate                             | `pnpm w2:staging-prereq-check` (compliance-os)                  |
+| Probe                                    | Result                                         |
+| ---------------------------------------- | ---------------------------------------------- |
+| `compliance-os-ghcr-pull` ExternalSecret | **SecretSynced True**                          |
+| `staging-web-app`                        | **1/1 Running** (imagePullSecret attached)     |
+| `staging-compliance-api-app`             | **imagePullSecrets attached** (2026-06-10)     |
+| All 8 GHCR deployments                   | **compliance-os-ghcr-pull** on pod spec        |
+| Product gate                             | `pnpm w2:staging-prereq-check` (compliance-os) |
 
 ## Next infra action
 
-Patch GHCR-backed deployments (compliance-api, caas, core12, via, vxa) to reference `compliance-os-ghcr-pull`. Witness after all app pods **Running**.
+None for F2 — imagePullSecrets on all GHCR deployments. App pods may remain Pending until cluster capacity or image tag sync (compliance-os GitOps).
 
 ## Product handback
 

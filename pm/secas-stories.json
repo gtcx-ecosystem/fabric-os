@@ -1,0 +1,115 @@
+{
+  "$schema": "gtcx://gtcx-infrastructure/secas-stories/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-10",
+  "program": "Security-as-a-Service",
+  "initiative": "INIT-GTCX-INFRA-SECAS",
+  "owner": "gtcx-infrastructure",
+  "stories": [
+    {
+      "id": "SECAS-S1-01",
+      "sprint": "SECAS-S1",
+      "title": "Sovereign approval + security friction registers",
+      "priority": "P0",
+      "status": "done",
+      "owner": "gtcx-infrastructure",
+      "files": [
+        "pm/sovereign-approval-register.json",
+        "pm/security-friction-register.json",
+        "pm/secas-roadmap.json",
+        "audit/evidence/secas-friction-check-latest.json",
+        "audit/evidence/secas-approval-check-latest.json"
+      ],
+      "acceptance": ["pnpm secas:friction:check:write", "pnpm secas:approval:check:write"],
+      "uat": [
+        { "text": "EXT-INF-002 approved with blocksIR false", "done": true },
+        { "text": "BL-SOC2-01 listed approval-needed only", "done": true },
+        { "text": "SECaaS friction harness PASS", "done": true }
+      ],
+      "blockers": null
+    },
+    {
+      "id": "SECAS-S1-02",
+      "sprint": "SECAS-S1",
+      "title": "P42 hub protocol + fleet harness",
+      "priority": "P0",
+      "status": "done",
+      "owner": "bridge-os → gtcx-infrastructure",
+      "files": [
+        "bridge-os/pm/spec/security-as-a-service.v1.json",
+        "bridge-os/platform/scripts/ecosystem/ecosystem-secas-check.mjs",
+        "gtcx-docs/docs/governance/protocols/42-security-as-a-service/protocol.md"
+      ],
+      "acceptance": ["pnpm --dir ../bridge-os ecosystem:secas:check:write"],
+      "uat": [
+        { "text": "P42 hub protocol published", "done": true },
+        { "text": "ecosystem:secas:check 8/8 PASS", "done": true }
+      ],
+      "blockers": null
+    },
+    {
+      "id": "SECAS-S2-01",
+      "sprint": "SECAS-S2",
+      "title": "Live-stack pen-test execution window",
+      "priority": "P0",
+      "status": "in_progress",
+      "owner": "gtcx-infrastructure",
+      "frictionIds": ["SEC-PENTEST-01"],
+      "files": [
+        "audit/pen-test-intake-evidence-2026-05-31.md",
+        "audit/evidence/ext-inf-002-sow-approval-2026-06-10.json",
+        "docs/operations/coordination/from-gtcx-infrastructure-ext-inf-002-sow-approved-2026-06-10.md"
+      ],
+      "acceptance": ["pnpm secas:friction:check:write", "pnpm secas:approval:check:write"],
+      "uat": [
+        { "text": "Vendor SOW countersign received", "done": false },
+        { "text": "Pen-test window scheduled and witnessed", "done": false },
+        { "text": "Report ingested to audit/evidence/", "done": false }
+      ],
+      "blockers": "vendor countersign (Class S parallel — not repo frozen)"
+    },
+    {
+      "id": "SECAS-S3-01",
+      "sprint": "SECAS-S3",
+      "title": "Compliance-os staging IRSA least-privilege review",
+      "priority": "P1",
+      "status": "pending",
+      "owner": "gtcx-infrastructure",
+      "frictionIds": ["SEC-IRSA-01"],
+      "files": [
+        "deploy/kubernetes/overlays/staging/compliance-os/",
+        "docs/operations/secas/cards/compliance-os.md"
+      ],
+      "acceptance": ["pnpm secas:cards:check:write"],
+      "uat": [
+        { "text": "IRSA roles scoped to staging SA needs", "done": false },
+        { "text": "Evidence witness published", "done": false }
+      ],
+      "blockers": null
+    },
+    {
+      "id": "SECAS-S3-02",
+      "sprint": "SECAS-S3",
+      "title": "Publish per-repo SECaaS security cards",
+      "priority": "P1",
+      "status": "pending",
+      "owner": "gtcx-infrastructure",
+      "files": [
+        "docs/operations/secas/README.md",
+        "docs/operations/secas/cards/compliance-os.md",
+        "docs/operations/secas/cards/gtcx-markets.md",
+        "docs/operations/secas/cards/gtcx-intelligence.md",
+        "platform/scripts/secas-cards-check.mjs"
+      ],
+      "acceptance": ["pnpm secas:cards:check:write"],
+      "uat": [
+        {
+          "text": "SECaaS cards for compliance-os, gtcx-markets, gtcx-intelligence",
+          "done": false
+        },
+        { "text": "secas:cards:check harness PASS", "done": false }
+      ],
+      "blockers": null
+    }
+  ]
+}

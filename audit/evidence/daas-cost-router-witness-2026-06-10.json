@@ -1,0 +1,22 @@
+{
+  "schema": "gtcx.daasCostRouterWitness.v1",
+  "storyId": "DAAS-S3-02",
+  "frictionId": "F6",
+  "repo": "gtcx-infrastructure",
+  "verifiedAt": "2026-06-10T04:31:00.000Z",
+  "environment": "staging",
+  "deployment": {
+    "namespace": "intelligence",
+    "name": "intelligence-orchestrator",
+    "image": "348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-intelligence-sdk:12be5342151a30ebedd6b7221cd547a008f9e7a1",
+    "enableCostRouter": "1",
+    "readyReplicas": "2/2"
+  },
+  "manifest": "deploy/kubernetes/overlays/staging/intelligence/deployment.yaml",
+  "probes": {
+    "kubectl": "ENABLE_COST_ROUTER=1 on live deployment",
+    "healthUrl": "https://intelligence-staging.gtcx.trade/health",
+    "healthStatus": 200
+  },
+  "note": "Cost router env wired in infra overlay; credentialed inference smoke remains gtcx-intelligence owned."
+}

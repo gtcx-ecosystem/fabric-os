@@ -19,6 +19,14 @@
 
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { setDefaultResultOrder } from 'node:dns';
+
+// Prefer IPv4 — Node dual-stack fetch can fail (EHOSTUNREACH) while curl succeeds.
+setDefaultResultOrder('ipv4first');
+
+const execFileAsync = promisify(execFile);
 
 const outputDir = process.env.OUTPUT_DIR ?? 'audit/evidence/cross-repo-health';
 const ua = process.env.GTCX_PROBE_UA ?? 'Mozilla/5.0 (GTCX cross-repo-health-probe)';
@@ -50,11 +58,41 @@ const SERVICES = [
   },
 ];
 
+async function probeWithCurl(url) {
+  const { stdout } = await execFileAsync(
+    'curl',
+    [
+      '-4',
+      '-sS',
+      '-A',
+      ua,
+      '--max-time',
+      '15',
+      '-w',
+      '\n%{http_code}',
+      url,
+    ],
+    { maxBuffer: 1024 * 1024 },
+  );
+  const lines = stdout.trimEnd().split('\n');
+  const statusLine = lines.pop() ?? '000';
+  const status = Number.parseInt(statusLine, 10);
+  const text = lines.join('\n');
+  let body = text;
+  try {
+    body = JSON.parse(text);
+  } catch {
+    body = text.slice(0, 500);
+  }
+  return { status: Number.isFinite(status) ? status : 0, body };
+}
+
 async function probe(service) {
   const start = Date.now();
   let status = '000';
   let error = null;
   let body = null;
+  let transport = 'fetch';
   try {
     const res = await fetch(service.url, {
       headers: { 'User-Agent': ua },
@@ -69,6 +107,15 @@ async function probe(service) {
     }
   } catch (err) {
     error = err.message;
+    try {
+      const curlResult = await probeWithCurl(service.url);
+      status = curlResult.status;
+      body = curlResult.body;
+      error = null;
+      transport = 'curl';
+    } catch (curlErr) {
+      error = `${err.message}; curl: ${curlErr.message}`;
+    }
   }
   return {
     name: service.name,
@@ -77,6 +124,7 @@ async function probe(service) {
     status,
     error,
     body,
+    transport,
     latencyMs: Date.now() - start,
     required: service.required,
   };

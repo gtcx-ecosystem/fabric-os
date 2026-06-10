@@ -9,15 +9,15 @@ owner: gtcx-infrastructure
 
 ## Active Phase
 
-- **ID:** DAAS-S1
+- **ID:** DAAS-S3
 - **Status:** complete
-- **Reason:** All 5 stories done; validate-all **55/55**; AGX health **200**; authority trace **7/7**.
+- **Reason:** F2 imagePullSecrets on 8/8 deployments; F6 cost router witness; fleet health **PASS** (3/3 required).
 
 ## Next Work
 
 - **Owner:** `gtcx-infrastructure`
-- **Action:** FLEET-SOV-01 — restore sovereign staging probe in `pnpm daas:fleet:health`.
-- **Parallel:** docs-site lint/typecheck; pen-test vendor kickoff after procurement countersign (EXT-INF-002 approved 2026-06-10).
+- **Action:** Witness mode — backlog clear; optional: docs-site lint/typecheck, compliance-os pod capacity.
+- **Parallel:** pen-test vendor kickoff (EXT-INF-002 approved 2026-06-10).
 
 ## Evidence
 

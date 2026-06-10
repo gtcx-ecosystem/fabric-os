@@ -169,7 +169,7 @@
       "sprint": "DAAS-S3",
       "title": "Compliance-os GHCR imagePullSecrets on all app deployments",
       "priority": "P1",
-      "status": "in_progress",
+      "status": "done",
       "owner": "gtcx-infrastructure",
       "frictionIds": ["F2"],
       "files": [
@@ -183,16 +183,20 @@
       "uat": [
         { "text": "compliance-os-ghcr-pull SecretSynced True", "done": true },
         { "text": "staging-web-app 1/1 Running", "done": true },
-        { "text": "All GHCR app deployments reference imagePullSecrets", "done": false }
+        {
+          "text": "All GHCR app deployments reference imagePullSecrets",
+          "done": true,
+          "note": "2026-06-10 — patch-compliance-os-ghcr-pull.sh + compliance-os kustomize patches"
+        }
       ],
-      "blockers": "compliance-api/caas/core12/via/vxa deployments missing imagePullSecrets"
+      "blockers": null
     },
     {
       "id": "DAAS-S3-02",
       "sprint": "DAAS-S3",
       "title": "Intelligence staging image with ENABLE_COST_ROUTER",
       "priority": "P1",
-      "status": "pending",
+      "status": "done",
       "owner": "gtcx-infrastructure",
       "frictionIds": ["F6"],
       "files": [
@@ -201,8 +205,16 @@
       ],
       "acceptance": ["pnpm daas:fleet:health"],
       "uat": [
-        { "text": "gtcx-intelligence staging pod Running with cost router enabled", "done": false },
-        { "text": "Cost witness evidence published", "done": false }
+        {
+          "text": "gtcx-intelligence staging pod Running with cost router enabled",
+          "done": true,
+          "note": "intelligence-orchestrator 2/2 Running; ENABLE_COST_ROUTER=1"
+        },
+        {
+          "text": "Cost witness evidence published",
+          "done": true,
+          "note": "audit/evidence/daas-cost-router-witness-2026-06-10.json"
+        }
       ],
       "blockers": null
     }

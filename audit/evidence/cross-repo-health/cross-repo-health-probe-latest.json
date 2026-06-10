@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "testType": "cross-repo-health-probe",
   "storyId": "S1-13",
-  "timestamp": "2026-06-10T02:03:59.411Z",
+  "timestamp": "2026-06-10T04:19:22.352Z",
   "environment": "staging",
   "overall": "FAIL",
   "services": [
@@ -13,17 +13,45 @@
       "status": "000",
       "error": "fetch failed",
       "body": null,
-      "latencyMs": 881,
+      "latencyMs": 546,
       "required": true
     },
     {
       "name": "agx-api",
       "repo": "gtcx-platforms",
       "url": "https://api.staging.gtcx.trade/api/health",
-      "status": 503,
+      "status": 200,
       "error": null,
-      "body": "<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n</body>\r\n</html>\r\n",
-      "latencyMs": 3440,
+      "body": {
+        "status": "up",
+        "timestamp": "2026-06-10T04:19:22.451Z",
+        "database": {
+          "status": "up",
+          "details": {
+            "type": "postgres"
+          }
+        },
+        "protocol-adapters": {
+          "status": "up",
+          "details": {
+            "expectedVersions": {
+              "tradepass": "1.0.0",
+              "geotag": "1.0.0",
+              "gci": "1.0.0",
+              "vaultmark": "1.0.0",
+              "panx": "1.0.0"
+            }
+          }
+        },
+        "audit-trail": {
+          "status": "up",
+          "details": {
+            "lastAppend": "2026-06-10T04:19:22.451Z",
+            "chainVerified": true
+          }
+        }
+      },
+      "latencyMs": 3095,
       "required": true
     },
     {
@@ -33,7 +61,7 @@
       "status": "000",
       "error": "fetch failed",
       "body": null,
-      "latencyMs": 1062,
+      "latencyMs": 507,
       "required": true
     },
     {
@@ -43,14 +71,14 @@
       "status": "000",
       "error": "fetch failed",
       "body": null,
-      "latencyMs": 1061,
+      "latencyMs": 506,
       "required": false
     }
   ],
   "summary": {
     "total": 4,
-    "healthy": 0,
-    "unhealthy": 4,
-    "requiredUnhealthy": 3
+    "healthy": 1,
+    "unhealthy": 3,
+    "requiredUnhealthy": 2
   }
 }

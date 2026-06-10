@@ -69,8 +69,10 @@ function main() {
   const friction = readJson(FRICTION_JSON);
   const storiesDoc = readJson(STORIES_JSON);
   const stories = storiesDoc.stories ?? [];
-  const activeSprint = roadmap.sprints[0];
+  const activeSprint =
+    roadmap.sprints.find((s) => s.status !== 'complete') ?? roadmap.sprints.at(-1);
   const activeStories = stories.filter((s) => s.sprint === activeSprint?.id);
+  const futureSprints = roadmap.sprints.filter((s) => s.id !== activeSprint?.id);
 
   const fleetHint = existsSync(FLEET_EVIDENCE)
     ? readJson(FLEET_EVIDENCE)
@@ -129,7 +131,7 @@ function main() {
   lines.push('');
   lines.push('| Sprint | Goal | Status | Owner | Stories / Friction |');
   lines.push('| --- | --- | --- | --- | --- |');
-  for (const sprint of roadmap.sprints.slice(1)) {
+  for (const sprint of futureSprints) {
     lines.push(
       `| ${sprint.id} | ${sprint.name} | ${sprint.status} | gtcx-infrastructure | ${(sprint.items ?? []).map((id) => `\`${id}\``).join(', ')} |`,
     );
@@ -148,13 +150,20 @@ function main() {
       `| \`${item.id}\` | \`pm/friction-register.json\` | ${mapping} | ${frictionRoadmapStatus(item, stories)} |`,
     );
   }
-  lines.push('| P41 hub protocol publication | `pm/_tasks` | deferred to `gtcx-docs` owner | blocked-sibling |');
+  lines.push('| P41 hub protocol publication | `pm/_tasks` | gtcx-docs | done (`a34baa8a`) |');
   lines.push('');
   lines.push('## Unblock Order');
   lines.push('');
-  lines.push('1. `gtcx-os/platforms`: publish corrected `gtcx-agx:staging` image.');
-  lines.push('2. `gtcx-infrastructure`: roll out digest, verify health `200`, confirm authority ingress.');
-  lines.push('3. `gtcx-markets`: run `authority:trace:capture` and return `7/7` evidence.');
+  const openFriction = (friction.items ?? []).filter((i) => i.status === 'open');
+  if (openFriction.length === 0) {
+    lines.push('_No open friction items — program clear for current sprint._');
+  } else {
+    openFriction.forEach((item, idx) => {
+      lines.push(
+        `${idx + 1}. **\`${item.id}\`** (${item.repo}) — ${item.title}${item.blockedBy ? ` — blocked: ${item.blockedBy}` : ''}`,
+      );
+    });
+  }
   lines.push('');
 
   writeFileSync(OUT, `${lines.join('\n')}\n`);

@@ -29,8 +29,8 @@
     {
       "id": "DAAS-S3",
       "name": "Cost witness + env schedule automation",
-      "status": "pending",
-      "items": ["F6"]
+      "status": "in_progress",
+      "items": ["F2", "F6"]
     }
   ],
   "forbidden": [

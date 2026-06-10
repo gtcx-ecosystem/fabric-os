@@ -12,7 +12,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
-const COMPOSE_PATH = join(ROOT, '04-deploy', 'docker', 'docker', 'docker-compose.infra.yml');
+const COMPOSE_PATH = join(ROOT, 'deploy', 'docker', 'docker', 'docker-compose.infra.yml');
 
 const REQUIRED_MARKERS = [
   'GTCX_ALERTS_DEV_MODE',

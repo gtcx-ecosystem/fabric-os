@@ -1,12 +1,12 @@
 {
-  "startedAt": "2026-06-05T17:47:13.355Z",
+  "startedAt": "2026-06-10T06:16:35.060Z",
   "repo": "gtcx-infrastructure",
-  "ssot": "baseline-os/03-platform/scripts/ecosystem/repo-session-core.mjs",
+  "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-e7a19bbf-1ccf-434d-8b58-529c18f3fe0d",
+    "id": "gtcx-agent-e6c5aa73-9d84-4946-abdd-9e44722d86cf",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-ba27b4be1d4ae1b2b3638ee8d9568522-ac87397c62a9d123-01"
+    "traceparent": "00-e218c51dd4e9cb76e9425825e7e7149d-349090d663fbd1de-01"
   },
   "nextWork": {
     "protocol": "22-agent-work-selection",
@@ -20,17 +20,32 @@
       "bridgeUrl": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/ecosystem-persona-bridge-2026-06.md",
       "instruction": "Read persona doc before work; re-select persona on task switch (Phase 4)."
     },
-    "traceId": "d77687cb-6cdb-4bd6-8c2e-e9e7ca92b649",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=d77687cb-6cdb-4bd6-8c2e-e9e7ca92b649",
+    "traceId": "8773fe5c-a2f1-4785-9ba7-0feefc4a16a5",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=8773fe5c-a2f1-4785-9ba7-0feefc4a16a5",
     "ok": true,
-    "backlogClear": true,
-    "message": "No automatable pending or in_progress stories for current frame.",
+    "backlogClear": false,
+    "message": "Implement queue empty — PLAN mode: advance launch/GTM state without forensic audit.",
+    "next": {
+      "storyId": "LAUNCH-PLAN-01",
+      "title": "Advance launch planning",
+      "track": "launch",
+      "workClass": "ops-docs",
+      "blocked": false
+    },
+    "agentInstructions": [
+      "Phase 4: adopt persona **platform-architect** (development) — read https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/institutional/personas/platform-architect.md",
+      "Include **Active persona** + **Frame** in Proceed Brief and Status Update (P26).",
+      "Launch focus (gtcx-infrastructure) — read .baseline/launch-focus.json before audits.",
+      "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
+      "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle.",
+      "Drain workSet.plan in-session — same bout loop as implement."
+    ],
     "launchFocus": {
       "schema": "gtcx.launchFocus.v1",
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-05T17:47:13.350Z",
+      "provisionedAt": "2026-06-10T06:16:35.055Z",
       "repo": "gtcx-infrastructure",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -43,7 +58,7 @@
           "index": "01-docs/05-audit/gtm-audit-2026-06-05.md"
         }
       },
-      "sessionMode": "witness",
+      "sessionMode": "plan",
       "activePhase": {
         "id": "zwcmp-unblock",
         "label": "ZWCMP pilot + Global South 10x deploy"
@@ -52,26 +67,19 @@
         "implement": [],
         "plan": [],
         "witness": [],
-        "human": [
-          {
-            "storyId": "EXT-INF-002",
-            "title": "Live-stack pen-test vendor SOW",
-            "authorityClass": "S",
-            "owner": "Human / Security"
-          }
-        ]
+        "human": []
       },
       "activeWorkSet": [],
       "workSetCounts": {
         "implement": 0,
         "plan": 0,
         "witness": 0,
-        "human": 1
+        "human": 0
       },
       "sources": [
-        "01-docs/05-audit/execution-roadmap.md",
-        "01-docs/04-ops/agent-work-selection.md",
-        "01-docs/05-audit/latest.json"
+        "audit/product-management/execution-roadmap.md",
+        "docs/operations/agent-work-selection.md",
+        "audit/latest.json"
       ],
       "forbidden": [
         "Ask operator to run master-audit before starting work",
@@ -80,19 +88,15 @@
       "agentInstructions": [
         "Launch focus (gtcx-infrastructure) — read .baseline/launch-focus.json before audits.",
         "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
-        "WITNESS mode — human gates only."
+        "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle."
       ]
     },
     "proceedBrief": {
       "activePersona": "platform-architect",
       "frame": "development",
       "personaDocUrl": "https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/institutional/personas/platform-architect.md"
-    },
-    "agentInstructions": [
-      "Phase 4: adopt persona **platform-architect** (development) — read https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/institutional/personas/platform-architect.md",
-      "Include **Active persona** + **Frame** in Proceed Brief and Status Update (P26)."
-    ]
+    }
   },
-  "gitChanged": 70,
+  "gitChanged": 40,
   "authorityClass": "R"
 }

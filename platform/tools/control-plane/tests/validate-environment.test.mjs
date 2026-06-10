@@ -6,8 +6,8 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..', '..', '..', '..');
-const script = path.join(repoRoot, '03-platform', 'tools', 'control-plane', 'validate-environment.mjs');
-const ctl = path.join(repoRoot, '03-platform', 'tools', 'control-plane', 'gtcx-ctl.mjs');
+const script = path.join(repoRoot, 'platform', 'tools', 'control-plane', 'validate-environment.mjs');
+const ctl = path.join(repoRoot, 'platform', 'tools', 'control-plane', 'gtcx-ctl.mjs');
 
 function runScript(args) {
   return spawnSync(process.execPath, [script, ...args], {

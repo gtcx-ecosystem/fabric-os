@@ -23,7 +23,7 @@ Saying **"P22 directs; I do not poll"** while pasting `aws` / `kubectl` / `terra
 
 ```text
 Your action needed on W2-OPS-001:
-Run this sequence to light up terminalOS staging:
+Run this sequence to light up terminal-os staging:
 # 1. Populate the AWS SM secret (operator — generate values)
 aws secretsmanager put-secret-value ...
 

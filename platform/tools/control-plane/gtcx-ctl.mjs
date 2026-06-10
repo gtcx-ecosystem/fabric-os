@@ -5,8 +5,8 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 
 const repoRoot = process.cwd();
-const infraScriptsDir = path.join(repoRoot, '04-deploy', '03-platform', 'scripts');
-const controlPlaneDir = path.join(repoRoot, '03-platform', 'tools', 'control-plane');
+const infraScriptsDir = path.join(repoRoot, 'deploy', '03-platform', 'scripts');
+const controlPlaneDir = path.join(repoRoot, 'platform', 'tools', 'control-plane');
 
 const scriptMap = {
   deploy: path.join(infraScriptsDir, 'deploy.sh'),

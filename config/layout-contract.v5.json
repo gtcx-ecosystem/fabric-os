@@ -2,9 +2,9 @@
   "$schema": "gtcx://ecosystem/layout-contract/v5",
   "version": "5.1.0",
   "updated": "2026-06-08",
-  "owner": "bridgeOS",
-  "sor": "bridgeOS/config/ecosystem-layout-contract.v5.json",
-  "prose": "bridgeOS/docs/ecosystem-layout-v5.md",
+  "owner": "bridge-os",
+  "sor": "bridge-os/config/ecosystem-layout-contract.v5.json",
+  "prose": "bridge-os/docs/ecosystem-layout-v5.md",
   "policy": {
     "numberedPaths": "forbidden-for-new-work",
     "strictGate": "p35-layout-check --strict",
@@ -92,13 +92,7 @@
       "specs",
       "strategy"
     ],
-    "narrativePointersOnly": [
-      "assurance",
-      "coordination",
-      "gtm",
-      "legal",
-      "security"
-    ]
+    "narrativePointersOnly": ["assurance", "coordination", "gtm", "legal", "security"]
   },
   "auditHub": {
     "v5Name": "audit",

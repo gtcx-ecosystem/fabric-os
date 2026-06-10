@@ -2,6 +2,7 @@
 title: Seal — terminal-os EKS staging (F1)
 status: delivered
 date: 2026-06-10
+owner: gtcx-infrastructure
 from: gtcx-infrastructure
 to: terminal-os
 friction: F1

@@ -1,4 +1,5 @@
 # EditorConfig — https://editorconfig.org
+# SoR: config/toolchain/editorconfig (sync via pnpm config:stubs:sync)
 root = true
 
 [*]

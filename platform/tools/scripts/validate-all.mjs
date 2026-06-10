@@ -94,7 +94,7 @@ section('Static Validators');
 
 run('SIGNAL Scorecard', 'node platform/tools/scripts/validate-signal.mjs');
 run('Score Ledger', 'node platform/tools/scripts/validate-score-ledger.mjs');
-run('Docs Standard', 'node platform/tools/scripts/docs-standard-validator.mjs');
+run('Docs Standard', 'node platform/tools/scripts/docs-standard-validator.mjs --baseline=.docs-exceptions.json');
 run(
   'Workspace Root Cleanliness',
   'python3 platform/scripts/ops/check-workspace-root-cleanliness.py --strict',

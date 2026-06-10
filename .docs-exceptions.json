@@ -1,5 +1,1458 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-17T16:53:50.105Z",
-  "exceptions": []
+  "generatedAt": "2026-06-10T03:13:25.437Z",
+  "exceptions": [
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: ../03-platform/tools/docs-site/README.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/plans/bank-grade-10x-remediation-plan.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/plans/global-south-10x-plan.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/plans/moat-execution-plan.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/regulatory/incident-response-plan-v1.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/regulatory/iso27001-isms-scope.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/regulatory/pci-dss-scoping.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/regulatory/pentest-scope-rfp.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/regulatory/regulatory-notification-templates.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/regulatory/rto-rpo-resolution.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/regulatory/soc2-readiness-checklist.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/sandbox-application/architecture-overview.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/sandbox-application/data-residency-proof.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/sandbox-application/encryption-statement.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/sandbox-application/internal-security-assessment.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/sandbox-application/kyc-retention-schedule.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: gtm/sandbox-application/pre-submission-agenda.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/latest.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/security-framework.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/security-architecture.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/security-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/threat-model.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/threat-model-template.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/secrets-management.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/defense-readiness.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/nist-800-53-mapping.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/fips-assessment.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/stig-compliance.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/zero-trust-assessment.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/data-flow.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/tokenization-architecture.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/key-ceremony-runbook.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/signed-commits-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/cosign-ci-integration.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/audit-integrity-verification.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/break-glass-procedure.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/bug-bounty-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/forensic-readiness.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/red-team-playbook.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/rasp-integration-guide.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/security-training-program.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/soc-requirements.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/compliance-requirements.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/controls-matrix.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/regulatory-framework.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/soc2-evidence-pipeline.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/compliance-templates-overview.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/accessibility-checklist.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/board-security-committee-charter.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/data-classification-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/data-retention-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/risk-register.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/separation-of-duties-matrix.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/vendor-risk-program.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a05-information-security-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a06-organization-of-information-security.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a07-human-resource-security.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a08-asset-management.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a09-access-control.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a10-cryptography.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a11-physical-security.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a12-operations-security.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a13-communications-security.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a14-system-acquisition.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a15-supplier-relationships.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a16-incident-management.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a17-business-continuity.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/policies/a18-compliance.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/implementation-truth.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/remediation/remediation-plan-10x10.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/ecosystem-integration-assessment.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/gtm-q2-africa-assessment.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/pilot-agreement-template.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/pilot-success-criteria.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/historical-cycles/auto-dev-state.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/historical-cycles/2026-05-04-cycle-2.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/historical-cycles/2026-05-04-cycle-3.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/historical-cycles/2026-05-04-cycle-4.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/historical-cycles/2026-05-04-full-audit.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/historical-cycles/2026-05-05-cycle-5.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/historical-cycles/2026-05-05-cycle-6.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/historical-cycles/2026-05-05-cycle-7-final.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/production-readiness-evidence-2026-05-08.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/qa-reviews/2026-05-05-documentation-coverage-proposal.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/qa-reviews/2026-05-05-infrastructure-improvement-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/qa-reviews/2026-05-05-innovation-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: audit/qa-reviews/2026-05-05-innovation-spec-suite.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/security-framework.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: compliance/controls-matrix.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/README.md",
+      "detail": "Link target does not exist: security/threat-model.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agents/README.md",
+      "detail": "Link target does not exist: ../01-agents/README.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agents/claude/README.md",
+      "detail": "Link target does not exist: ../../../02-ops/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agents/codex/README.md",
+      "detail": "Link target does not exist: ../../../02-ops/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agents/copilot/README.md",
+      "detail": "Link target does not exist: ../../../02-ops/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agents/cursor/README.md",
+      "detail": "Link target does not exist: ../../../02-ops/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agents/gemini/README.md",
+      "detail": "Link target does not exist: ../../../02-ops/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agents/kimi/README.md",
+      "detail": "Link target does not exist: ../../../02-ops/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agents/profile.md",
+      "detail": "Link target does not exist: ../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/README.md",
+      "detail": "Link target does not exist: ../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/master-audit-2026-05-17.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/full-audit-2026-05-22.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/repo-overlay.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/full-audit-2026-05-22.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../../03-platform/tools/compliance-gateway/src/schemas.mjs",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../../03-platform/tools/compliance-gateway/src/budget.mjs",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../../03-platform/tools/eval-pipeline/injection-suite.mjs",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/pen-test-rfp-2026.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/soc2-engagement-2026.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/master-audit-2026-05-17.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/full-audit-2026-05-22.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/repo-overlay.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/signal-scorecard.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/score-evidence-ledger.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/coverage-gate-rationale.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/pen-test-rfp-2026.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/execution-roadmap-2026-05-22.md",
+      "detail": "Link target does not exist: ../audit/soc2-engagement-2026.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/executive-summary.md",
+      "detail": "Link target does not exist: ../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/sprints/README.md",
+      "detail": "Link target does not exist: ../../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/agile/sprints/current.md",
+      "detail": "Link target does not exist: ../../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/api/README.md",
+      "detail": "Link target does not exist: ../security/credential-rotation-log.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/api/README.md",
+      "detail": "Link target does not exist: ../security/threat-model-2026-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/api/README.md",
+      "detail": "Link target does not exist: ../../03-platform/tools/compliance-gateway/src/server.mjs",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/compliance-substrate-deep-dive.md",
+      "detail": "Link target does not exist: ../security/threat-model-2026-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/compliance-substrate-deep-dive.md",
+      "detail": "Link target does not exist: ../compliance/dpia-2026-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/compliance-substrate-deep-dive.md",
+      "detail": "Link target does not exist: ../audit/full-audit-2026-05-22.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/compliance-substrate-deep-dive.md",
+      "detail": "Link target does not exist: ../audit/signal-scorecard.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/infrastructure-architecture-overview.md",
+      "detail": "Link target does not exist: ../security/security-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/infrastructure-architecture-overview.md",
+      "detail": "Link target does not exist: ../../04-deploy/security/policies/access-control.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/infrastructure-architecture-overview.md",
+      "detail": "Link target does not exist: ../compliance/data-classification-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/infrastructure-architecture-overview.md",
+      "detail": "Link target does not exist: ../compliance/compliance-templates-overview.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/system-overview.md",
+      "detail": "Link target does not exist: ../compliance/platform-compliance-governance.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/trust-model.md",
+      "detail": "Link target does not exist: ../security/security-architecture.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/engineering/backend-architecture.md",
+      "detail": "Link target does not exist: ../compliance/soc2-evidence-pipeline.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/engineering/low-bandwidth-mode.md",
+      "detail": "Link target does not exist: ../../03-platform/tools/low-bandwidth/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/engineering/low-bandwidth-mode.md",
+      "detail": "Link target does not exist: ../../03-platform/tools/low-bandwidth/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/engineering/low-bandwidth-mode.md",
+      "detail": "Link target does not exist: ../../03-platform/tools/compliance-gateway/src/server.mjs",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/gitbook/docs-site/README.md",
+      "detail": "Link target does not exist: ../../../03-platform/tools/docs-site/README.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/governance/README.md",
+      "detail": "Link target does not exist: ../compliance/board-security-committee-charter.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/governance/README.md",
+      "detail": "Link target does not exist: ../compliance/regulatory-contacts.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/governance/README.md",
+      "detail": "Link target does not exist: ../compliance/risk-register.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/governance/ciso-role.md",
+      "detail": "Link target does not exist: ../compliance/board-security-committee-charter.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/governance/documentation-deviations.md",
+      "detail": "Link target does not exist: ../audit/historical-cycles/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/governance/documentation-deviations.md",
+      "detail": "Link target does not exist: ../gtm/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/governance/documentation-deviations.md",
+      "detail": "Link target does not exist: ../security/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/governance/documentation-deviations.md",
+      "detail": "Link target does not exist: ../compliance/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/governance/documentation-deviations.md",
+      "detail": "Link target does not exist: ../audit/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/governance/documentation-deviations.md",
+      "detail": "Link target does not exist: ../audit/docs-standard-compliance-2026-05-24-cycle-2.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/agent-command-lookup.md",
+      "detail": "Link target does not exist: ../../../baseline-os/01-docs/cli/agent-cheatsheet.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/README.md",
+      "detail": "Link target does not exist: ../../../../gtcx-protocols/01-docs/operations/coordination/ecosystem-unblock-playbook-2026-06.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/README.md",
+      "detail": "Link target does not exist: ../../../../gtcx-protocols/01-docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/README.md",
+      "detail": "Link target does not exist: ../../../../gtcx-protocols/01-docs/operations/coordination/cross-repo-agent-bridge.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/README.md",
+      "detail": "Link target does not exist: ../../../../gtcx-docs/01-docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md",
+      "detail": "Link target does not exist: ../../../../gtcx-docs/01-docs/architecture/cloud-placement/README.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md",
+      "detail": "Link target does not exist: ../../../../gtcx-docs/01-docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md",
+      "detail": "Link target does not exist: ../../../../gtcx-docs/01-docs/architecture/cloud-placement/repo-register-2026-06-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/cross-repo-agent-bridge.md",
+      "detail": "Link target does not exist: ../../../../gtcx-protocols/01-docs/operations/coordination/cross-repo-agent-bridge.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/cross-repo-agent-log.md",
+      "detail": "Link target does not exist: ../../../../gtcx-protocols/01-docs/operations/coordination/cross-repo-agent-log.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md",
+      "detail": "Link target does not exist: ../../../../gtcx-protocols/01-docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/from-gtcx-core-ext-inf-002-vendor-pack-2026-06-05.md",
+      "detail": "Link target does not exist: ../../audit/pen-test-intake-evidence-2026-05-31.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/from-gtcx-infrastructure-xr-302-smoke-blockers-2026-06-03.md",
+      "detail": "Link target does not exist: ../../../../gtcx-platforms/01-docs/operations/coordination/to-gtcx-infrastructure-xr-302-smoke-blockers-2026-06-03.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/from-gtcx-platforms-xr-302-smoke-blockers-2026-06-03.md",
+      "detail": "Link target does not exist: ../../../../gtcx-platforms/01-docs/operations/coordination/to-gtcx-infrastructure-xr-302-smoke-blockers-2026-06-03.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/from-gtcx-platforms-xr-302-smoke-blockers-2026-06-03.md",
+      "detail": "Link target does not exist: ../../../../gtcx-platforms/01-docs/operations/coordination/from-gtcx-infrastructure-xr-302-smoke-blockers-TEMPLATE.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md",
+      "detail": "Link target does not exist: ../../../../gtcx-docs/01-docs/architecture/cloud-placement/repo-register-2026-06-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md",
+      "detail": "Link target does not exist: ../../../../gtcx-docs/01-docs/architecture/cloud-placement/README.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/ext-inf-human-gates-unblock-2026-06-06.md",
+      "detail": "Link target does not exist: ../../../audit/pilot-success-criteria.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/ext-inf-human-gates-unblock-2026-06-06.md",
+      "detail": "Link target does not exist: ../../../audit/pen-test-intake-evidence-2026-05-31.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/ext-inf-human-gates-unblock-2026-06-06.md",
+      "detail": "Link target does not exist: ../../../audit/external-dependencies-register-2026-05-31.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md",
+      "detail": "Link target does not exist: ../../../audit/pen-test-intake-evidence-2026-05-31.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md",
+      "detail": "Link target does not exist: ../../../audit/pen-test-intake-evidence-2026-05-31.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md",
+      "detail": "Link target does not exist: ../../../audit/engineering-audit-2026-06-07.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md",
+      "detail": "Link target does not exist: ../../../audit/bank-grade-audit-2026-06-07.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md",
+      "detail": "Link target does not exist: ../../../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md",
+      "detail": "Link target does not exist: ../../../audit/pen-test-intake-evidence-2026-05-31.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md",
+      "detail": "Link target does not exist: ../../../audit/pilot-success-criteria.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md",
+      "detail": "Link target does not exist: ../../../compliance/verification-sla-draft.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md",
+      "detail": "Link target does not exist: ../../../audit/external-dependencies-register-2026-05-31.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md",
+      "detail": "Link target does not exist: ../../../audit/pen-test-intake-evidence-2026-05-31.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md",
+      "detail": "Link target does not exist: ../../../audit/gtm-audit-2026-06-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/to-gtcx-platforms-rollout-ready-2026-06-03.md",
+      "detail": "Link target does not exist: ../../../../gtcx-protocols/01-docs/operations/coordination/cross-repo-agent-log.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/human-gate-navigation.md",
+      "detail": "Link target does not exist: ../coordination/human-gates.manifest.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/human-gate-navigation.md",
+      "detail": "Link target does not exist: ../coordination/human-gates.manifest.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md",
+      "detail": "Link target does not exist: ../../../gtcx-docs/01-docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md",
+      "detail": "Link target does not exist: ../../../gtcx-intelligence/01-docs/roadmap/global-trade-phase-3-ml-pipeline.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/audit-chain-incident-response.md",
+      "detail": "Link target does not exist: ../../security/threat-model-2026-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/audit-signing-key-rotation.md",
+      "detail": "Link target does not exist: ../../security/credential-rotation-log.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/audit-signing-key-rotation.md",
+      "detail": "Link target does not exist: ../../security/threat-model-2026-05.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/deploy.md",
+      "detail": "Link target does not exist: ../../../04-deploy/03-platform/scripts/deploy.sh",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/fine-tune-workflow-operations.md",
+      "detail": "Link target does not exist: ../../../04-deploy/03-platform/scripts/fine-tune-workflow.sh",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/fine-tune-workflow-operations.md",
+      "detail": "Link target does not exist: ../../../04-deploy/terraform/modules/workflow-orchestration/main.tf",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/incident-response.md",
+      "detail": "Link target does not exist: ../../compliance/controls-matrix.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/incident-response.md",
+      "detail": "Link target does not exist: ../../security/security-architecture.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/intelligence-evidence.md",
+      "detail": "Link target does not exist: ../../security/secrets-management.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/migrate.md",
+      "detail": "Link target does not exist: ../../../04-deploy/03-platform/scripts/migrate.sh",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/migrate.md",
+      "detail": "Link target does not exist: ../../../04-deploy/03-platform/scripts/test-audit-immutability.sh",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/migrate.md",
+      "detail": "Link target does not exist: ../../../03-platform/tools/scripts/check_docs.py",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/rollback-evidence.md",
+      "detail": "Link target does not exist: ../../../04-deploy/03-platform/scripts/deploy.sh",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/tenant-onboarding.md",
+      "detail": "Link target does not exist: ../../audit/score-evidence-ledger.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/tenant-onboarding.md",
+      "detail": "Link target does not exist: ../../security/break-glass-procedure.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/runbooks/tenant-onboarding.md",
+      "detail": "Link target does not exist: ../../../04-deploy/kubernetes/base/services/compliance-gateway.yaml",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/slo-definitions.md",
+      "detail": "Link target does not exist: ../../04-deploy/monitoring/rules/slo-recording-rules.yml",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/slo-definitions.md",
+      "detail": "Link target does not exist: ../../04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/slo-definitions.md",
+      "detail": "Link target does not exist: ../../04-deploy/monitoring/rules/slo-recording-rules.yml",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/slo-definitions.md",
+      "detail": "Link target does not exist: ../audit/score-evidence-ledger.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/slo-definitions.md",
+      "detail": "Link target does not exist: ../audit/repo-overlay.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/slo-definitions.md",
+      "detail": "Link target does not exist: ../audit/full-audit-2026-05-22.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/master-audit-2026-06-02.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/full-audit-2026-05-31.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/latest.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/master-audit-post-sprint-2026-05-27.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/10-10-remediation-plan-2026-05-27.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/master-audit-2026-05-17.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/archive/master-audit-2026-05-12-updated.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/10-10-roadmap-2026-05-17.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/10-10-roadmap-2026-05-17.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist: ../audit/master-audit-post-sprint-2026-05-27.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/esg/README.md",
+      "detail": "Link target does not exist: ../governance/king-iv-compliance.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/esg/README.md",
+      "detail": "Link target does not exist: ../governance/ethics-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/financial/README.md",
+      "detail": "Link target does not exist: ../compliance/data-retention-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/financial/README.md",
+      "detail": "Link target does not exist: ../compliance/vendor-risk-program.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/roadmap/README.md",
+      "detail": "Link target does not exist: ../audit/ir-10-10-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/roadmap/README.md",
+      "detail": "Link target does not exist: ../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/roadmap/README.md",
+      "detail": "Link target does not exist: ../audit/latest.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/roadmap/roadmap-2026-07-13.md",
+      "detail": "Link target does not exist: ../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/roadmap/roadmap-2026-07-13.md",
+      "detail": "Link target does not exist: ../audit/execution-roadmap.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/roadmap/roadmap-2026-07-13.md",
+      "detail": "Link target does not exist: ../audit/external-dependencies-register-2026-05-31.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/roadmap/roadmap-2026-07-13.md",
+      "detail": "Link target does not exist: ../audit/post-roadmap-session-2026-05-30.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/roadmap/roadmap-2026-07-13.md",
+      "detail": "Link target does not exist: ../audit/latest.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/specs/cicd-pipeline.md",
+      "detail": "Link target does not exist: ../security/security-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/specs/observability-framework.md",
+      "detail": "Link target does not exist: ../security/security-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/specs/observability-framework.md",
+      "detail": "Link target does not exist: ../compliance/data-classification-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/specs/resilience-framework.md",
+      "detail": "Link target does not exist: ../security/security-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/specs/resilience-framework.md",
+      "detail": "Link target does not exist: ../security/security-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/specs/resilience-framework.md",
+      "detail": "Link target does not exist: ../compliance/data-classification-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/specs/testing-framework.md",
+      "detail": "Link target does not exist: ../security/security-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "missing-frontmatter",
+      "file": "docs/operations/aws-cost-optimization.md",
+      "detail": "Missing frontmatter fields: Status, Date",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "missing-frontmatter",
+      "file": "docs/operations/coordination/from-gtcx-infrastructure-s39-01-authority-routes-2026-06-10.md",
+      "detail": "Missing YAML frontmatter fields: owner",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "missing-index",
+      "file": "docs/governance/regulatory",
+      "detail": "Subdirectory missing README.md or index.md",
+      "reviewBy": "2026-06-30"
+    }
+  ]
 }

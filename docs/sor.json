@@ -15,14 +15,14 @@
       "role": "protocols and audit-engine specs — read-only"
     },
     "platform": {
-      "repo": "bridgeOS",
-      "path": "../bridgeOS",
-      "layoutContract": "../bridgeOS/config/ecosystem-layout-contract.v5.json",
+      "repo": "bridge-os",
+      "path": "../bridge-os",
+      "layoutContract": "../bridge-os/config/ecosystem-layout-contract.v5.json",
       "role": "fleet layout and rollout — read-only"
     },
     "runtime": {
-      "repo": "baselineOS",
-      "path": "../baselineOS",
+      "repo": "baseline-os",
+      "path": "../baseline-os",
       "role": "session, MCP, ACR — read-only"
     }
   },

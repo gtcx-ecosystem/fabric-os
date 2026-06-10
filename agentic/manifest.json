@@ -5,9 +5,9 @@
   "role": "thin-bridge",
   "updated": "2026-06-09",
   "baseline": {
-    "provider": "baselineOS",
-    "resolvedAt": "../baselineOS",
-    "cliEntry": "../baselineOS/platform/packages/baselineos/dist/cli/bin.js",
+    "provider": "baseline-os",
+    "resolvedAt": "../baseline-os",
+    "cliEntry": "../baseline-os/platform/packages/baselineos/dist/cli/bin.js",
     "verbs": {
       "session": "pnpm session",
       "next": "pnpm next",
@@ -15,18 +15,18 @@
       "hub": "pnpm hub"
     }
   },
-  "bridgeOS": {
-    "provider": "bridgeOS",
-    "resolvedAt": "../bridgeOS",
+  "bridge-os": {
+    "provider": "bridge-os",
+    "resolvedAt": "../bridge-os",
     "role": "ecosystem-program-office",
     "verbs": {
-      "ecosystem:p35:check": "pnpm --dir ../bridgeOS ecosystem:p35:check -- --repo gtcx-infrastructure",
-      "fleet:readiness": "pnpm --dir ../bridgeOS ecosystem:fleet:readiness -- --repo gtcx-infrastructure"
+      "ecosystem:p35:check": "pnpm --dir ../bridge-os ecosystem:p35:check -- --repo gtcx-infrastructure",
+      "fleet:readiness": "pnpm --dir ../bridge-os ecosystem:fleet:readiness -- --repo gtcx-infrastructure"
     }
   },
   "directiveSources": {
     "primary": "pm/",
-    "ecosystemPlan": "../bridgeOS/pm/",
+    "ecosystemPlan": "../bridge-os/pm/",
     "rejected": ["fat-hub-in-product-repo"]
   },
   "protocols": {

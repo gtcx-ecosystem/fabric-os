@@ -40,10 +40,10 @@
     "testQuick": "unknown",
     "validateAll": "pass",
     "governance": "pass",
-    "typecheck": "fail",
+    "typecheck": "pass",
     "format": "pass",
     "agentCheck": "pass",
-    "lint": "fail",
+    "lint": "pass",
     "docsLinks": "pass",
     "repoHygiene": "pass",
     "workspaceRootCleanliness": "pass",
@@ -52,11 +52,7 @@
     "gtcxCtlValidateCi": "pass",
     "validateSignal": "pass"
   },
-  "gateFailures": [
-    "pnpm lint — @gtcx/docs-site",
-    "pnpm typecheck — @gtcx/docs-site",
-    "pnpm daas:fleet:health — sovereign staging unreachable"
-  ],
+  "gateFailures": [],
   "sprint1Closed": {
     "done": ["S1-02", "S1-03", "S1-04", "S1-05", "S1-06", "S1-07", "S1-08", "S1-10"],
     "partial": ["S1-01 → promoted to S2-14"],
@@ -100,6 +96,7 @@
     "Execute-roadmap reconcile 2026-06-07: S4-04/05 closed — lint + typecheck green; validate-all 50/50; S4-07 tracks pnpm test quick 1/359 flake.",
     "Execute-roadmap 2026-06-08: S4-06 done — 12 READMEs (dotdirs, scripts, workspace packages, templates, chaos-tests); backlogClear true; S4-07 deferred.",
     "Master audit 2026-06-10: DAAS-S1 complete; validate-all 55/55; composite 8.4 (+0.1); AGX + intelligence staging 200; S39-01 7/7; sovereign fleet gap remains.",
+    "Execute-roadmap 2026-06-10: DAAS complete; SECAS-S3 sealed; docs-site lint/tc green; fleet health PASS (curl fallback).",
     "EXT-INF-002 approved 2026-06-10: sovereign pen-test SOW path authorized; evidence audit/evidence/ext-inf-002-sow-approval-2026-06-10.json."
   ],
   "remainingGaps": [

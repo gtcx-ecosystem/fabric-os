@@ -48,6 +48,7 @@ override.tf.json
 
 # Terraform lambda artifacts (built at deploy time)
 04-ship/terraform/modules/secrets/lambda/rotation.zip
+deploy/terraform/modules/secrets/lambda/rotation.zip
 
 # Security reports (generated, not tracked)
 04-ship/security/reports/

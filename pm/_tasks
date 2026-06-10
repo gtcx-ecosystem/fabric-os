@@ -29,7 +29,7 @@ DevOps and infrastructure are a separate concern from product engineering — pa
 - [x] XR-MKT-011 seal status delivered
 - [x] F-AGX-01 AGX health 200
 - [x] F1 terminal-os EKS seal delivered
-- [ ] F2 compliance-os GHCR rollout (api pods — imagePullSecrets patch)
+- [x] F2 compliance-os GHCR rollout (8/8 imagePullSecrets — DAAS-S3-01)
 
 ## Sprint plan
 
@@ -62,7 +62,7 @@ Stack security operations are a separate concern from product engineering — pa
 - [x] secas:friction:check + secas:approval:check harness green
 - [x] docs/operations/secas/cards/ (compliance-os, gtcx-markets, gtcx-intelligence)
 - [ ] SEC-PENTEST-01 pen-test window after vendor countersign
-- [ ] SEC-IRSA-01 compliance-os IRSA review
+- [x] SEC-IRSA-01 compliance-os IRSA review (SECAS-S3-01)
 
 ## Sprint plan
 

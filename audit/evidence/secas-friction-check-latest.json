@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://gtcx-infrastructure/secas-friction-check/v1",
   "protocol": "P42-SECURITY-AS-A-SERVICE",
-  "checkedAt": "2026-06-10T04:34:23.144Z",
+  "checkedAt": "2026-06-10T04:34:58.887Z",
   "gates": {
     "register": {
       "ok": true

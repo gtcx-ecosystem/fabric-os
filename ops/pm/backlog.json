@@ -7,22 +7,40 @@
   "backlogClear": true,
   "stories": [
     {
-      "id": "DAAS-S1",
-      "status": "in_progress",
-      "title": "Close P0 friction (XR-MKT-011, F-AGX-01)",
-      "owner": null
+      "id": "DAAS-S1-01",
+      "status": "done",
+      "title": "DaaS friction register structural witness",
+      "owner": "gtcx-infrastructure"
+    },
+    {
+      "id": "DAAS-S1-02",
+      "status": "done",
+      "title": "Canonical scheduled fleet-health witness",
+      "owner": "gtcx-infrastructure"
+    },
+    {
+      "id": "DAAS-S1-03",
+      "status": "handoff",
+      "title": "Correct AGX staging image and health",
+      "owner": "gtcx-os/platforms → gtcx-infrastructure"
+    },
+    {
+      "id": "DAAS-S1-04",
+      "status": "handoff",
+      "title": "Deliver XR-MKT-011 authority routes and trace seal",
+      "owner": "gtcx-infrastructure → gtcx-markets"
     },
     {
       "id": "DAAS-S2",
       "status": "pending",
-      "title": "Terminal EKS (F1), compliance GHCR (F2), DaaS cards",
-      "owner": null
+      "title": "Terminal EKS, compliance GHCR, DaaS cards",
+      "owner": "gtcx-infrastructure"
     },
     {
       "id": "DAAS-S3",
       "status": "pending",
-      "title": "Intelligence cost-router image (F6), cost witness",
-      "owner": null
+      "title": "Intelligence cost-router image and cost witness",
+      "owner": "gtcx-infrastructure"
     }
   ],
   "crossRepoRefs": [],

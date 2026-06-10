@@ -45,7 +45,7 @@ function parseRoadmapStories(md) {
     if (cells.length < 2) continue;
     const id = cells[0].replace(/\*\*/g, '').trim();
     if (
-      !/^(S\d+-\d+|DAAS-S\d+|EAP-\d+|P22-\d+|ER-\d+-\d+|MA-\d+|PLAT-[A-Z0-9-]+|CORE-\d+)$/i.test(
+      !/^(S\d+-\d+|DAAS-S\d+(?:-\d+)?|EAP-\d+|P22-\d+|ER-\d+-\d+|MA-\d+|PLAT-[A-Z0-9-]+|CORE-\d+)$/i.test(
         id,
       )
     ) {

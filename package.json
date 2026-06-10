@@ -38,6 +38,7 @@
     "agent:next-work": "node platform/scripts/agent-next-work.mjs",
     "daas:friction:check": "node platform/scripts/daas-friction-check.mjs",
     "daas:friction:check:write": "node platform/scripts/daas-friction-check.mjs --write",
+    "daas:fleet:health": "node platform/tools/scripts/cross-repo-health-probe.mjs",
     "agent:launch:check": "node ../gtcx-agentic/platform/scripts/check-agent-launch-focus.mjs",
     "agent:work-selection:check": "node platform/scripts/check-agent-work-selection.mjs",
     "agent:execution-obligation:check": "node platform/scripts/check-agent-execution-obligation.mjs",

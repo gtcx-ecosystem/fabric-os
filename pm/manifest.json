@@ -7,7 +7,7 @@
   "agileHub": null,
   "local": {
     "executionRoadmap": "audit/product-management/execution-roadmap.md",
-    "workSelection": "docs/operations/agents/agent-work-selection.md",
+    "workSelection": "docs/operations/agent-work-selection.md",
     "autoDevState": "audit/product-management/auto-dev-state.md",
     "nextWorkScript": "platform/scripts/agent-next-work.mjs"
   },

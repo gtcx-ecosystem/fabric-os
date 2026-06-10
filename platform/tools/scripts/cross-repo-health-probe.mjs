@@ -13,14 +13,14 @@
  *   - compliance-gateway-staging.gtcx.trade/health (gtcx-infrastructure)
  *
  * Usage:
- *   node 03-platform/tools/scripts/cross-repo-health-probe.mjs
- *   OUTPUT_DIR=01-docs/05-audit/evidence node 03-platform/tools/scripts/cross-repo-health-probe.mjs
+ *   pnpm daas:fleet:health
+ *   OUTPUT_DIR=audit/evidence/cross-repo-health node platform/tools/scripts/cross-repo-health-probe.mjs
  */
 
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const outputDir = process.env.OUTPUT_DIR ?? null;
+const outputDir = process.env.OUTPUT_DIR ?? 'audit/evidence/cross-repo-health';
 const ua = process.env.GTCX_PROBE_UA ?? 'Mozilla/5.0 (GTCX cross-repo-health-probe)';
 
 const SERVICES = [

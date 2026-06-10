@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "testType": "cross-repo-health-probe",
+  "storyId": "S1-13",
+  "timestamp": "2026-06-10T01:28:48.777Z",
+  "environment": "staging",
+  "overall": "FAIL",
+  "services": [
+    {
+      "name": "sovereign",
+      "repo": "gtcx-platforms",
+      "url": "https://sovereign-staging.gtcx.trade/api/health",
+      "status": "000",
+      "error": "fetch failed",
+      "body": null,
+      "latencyMs": 817,
+      "required": true
+    },
+    {
+      "name": "agx-api",
+      "repo": "gtcx-platforms",
+      "url": "https://api.staging.gtcx.trade/api/health",
+      "status": 503,
+      "error": null,
+      "body": "<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n</body>\r\n</html>\r\n",
+      "latencyMs": 2370,
+      "required": true
+    },
+    {
+      "name": "intelligence",
+      "repo": "gtcx-intelligence",
+      "url": "https://intelligence-staging.gtcx.trade/health",
+      "status": "000",
+      "error": "fetch failed",
+      "body": null,
+      "latencyMs": 1061,
+      "required": true
+    },
+    {
+      "name": "compliance-gateway",
+      "repo": "gtcx-infrastructure",
+      "url": "https://compliance-gateway-staging.gtcx.trade/health",
+      "status": "000",
+      "error": "fetch failed",
+      "body": null,
+      "latencyMs": 1059,
+      "required": false
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "healthy": 0,
+    "unhealthy": 4,
+    "requiredUnhealthy": 3
+  }
+}

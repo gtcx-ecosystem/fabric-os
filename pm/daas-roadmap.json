@@ -17,7 +17,7 @@
     {
       "id": "DAAS-S1",
       "name": "Friction register + fleet health witness",
-      "status": "in_progress",
+      "status": "blocked",
       "items": ["F-AGX-01", "XR-MKT-011"]
     },
     {

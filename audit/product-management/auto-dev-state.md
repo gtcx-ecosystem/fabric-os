@@ -11,14 +11,15 @@ owner: gtcx-infrastructure
 
 - **ID:** DAAS-S1
 - **Status:** blocked
-- **Reason:** Repository-owned structural and fleet witness work is complete. AGX rollout and
-  XR-MKT-011 acceptance require a corrected supplier image from `gtcx-os/platforms`.
+- **Reason:** XR-MKT-011 ingress + URL matrix delivered (partial). AGX image build still fails —
+  platforms `docker:push:agx:staging` needs monorepo lockfile in build context (`pnpm-lock.yaml`).
 
 ## Next Work
 
 - **Owner:** `gtcx-os/platforms`
-- **Action:** Publish corrected `gtcx-agx:staging` image containing `@gtcx/platform-shared`.
-- **Inbound to infra:** New immutable digest for rollout.
+- **Action:** Fix Dockerfile build context (monorepo `pnpm-lock.yaml` + `turbo.json`); publish
+  `gtcx-agx:staging` with `@gtcx/platform-shared`; notify infra for rollout.
+- **Owner (infra):** Roll out new digest after push; re-run `pnpm daas:fleet:health`.
 
 ## Evidence
 

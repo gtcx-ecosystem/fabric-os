@@ -1,5 +1,5 @@
 ---
-title: "Seal — S39-01 staging warm + AGX diagnosis (XR-MKT-011)"
+title: 'Seal — S39-01 staging warm + AGX diagnosis (XR-MKT-011)'
 status: delivered-partial
 date: 2026-06-10
 from: gtcx-infrastructure
@@ -14,11 +14,11 @@ blocksIR: false
 
 ## Actions executed (Class A approval 2026-06-10)
 
-| Step | Command | Result |
-| ---- | ------- | ------ |
-| Warm staging | `pnpm env:warm --env staging` (bridge-os) | exit **0** — RDS start + EKS `gtcx-staging-nodes` desired **0→2** |
-| Node join | `kubectl get nodes` | **2** Ready (`v1.31.14-eks`) |
-| Health probe | `GET https://api.staging.gtcx.trade/api/health` | **503** (was **504** cold) |
+| Step         | Command                                         | Result                                                            |
+| ------------ | ----------------------------------------------- | ----------------------------------------------------------------- |
+| Warm staging | `pnpm env:warm --env staging` (bridge-os)       | exit **0** — RDS start + EKS `gtcx-staging-nodes` desired **0→2** |
+| Node join    | `kubectl get nodes`                             | **2** Ready (`v1.31.14-eks`)                                      |
+| Health probe | `GET https://api.staging.gtcx.trade/api/health` | **503** (was **504** cold)                                        |
 
 ## Root cause (updated)
 
@@ -28,19 +28,25 @@ blocksIR: false
 
 ## Owner split (remaining)
 
-| Owner | Action |
-| ----- | ------ |
-| **gtcx-platforms** (gtcx-os) | `pnpm docker:push:agx:staging` — image must bundle `@gtcx/platform-shared` |
-| **gtcx-infrastructure** | Rollout new digest; add XR-MKT-011 ingress paths → `gtcx-agx-staging` before `/` catch-all |
-| **gtcx-markets** | Re-run `pnpm authority:trace:capture` after health **200** + ingress seal **delivered** |
+| Owner                        | Action                                                                                     |
+| ---------------------------- | ------------------------------------------------------------------------------------------ |
+| **gtcx-platforms** (gtcx-os) | `pnpm docker:push:agx:staging` — image must bundle `@gtcx/platform-shared`                 |
+| **gtcx-infrastructure**      | Rollout new digest; add XR-MKT-011 ingress paths → `gtcx-agx-staging` before `/` catch-all |
+| **gtcx-markets**             | Re-run `pnpm authority:trace:capture` after health **200** + ingress seal **delivered**    |
 
 ## Acceptance (not yet met)
 
-| Gate | Current |
-| ---- | ------- |
-| `api/health` | **503** |
-| `authority:trace:capture` | not re-run — AGX unhealthy |
-| Ingress matrix | not applied |
+| Gate                      | Current                                                                     |
+| ------------------------- | --------------------------------------------------------------------------- |
+| `api/health`              | **503**                                                                     |
+| `authority:trace:capture` | not re-run — AGX unhealthy                                                  |
+| Ingress matrix            | **applied** 2026-06-10 — 7 paths → `gtcx-agx-staging`; matrix doc published |
+
+## Ingress witness (2026-06-10)
+
+- `kubectl apply -f deploy/kubernetes/overlays/staging/ingress.yaml` → exit **0**
+- Matrix: `docs/operations/coordination/xr-mkt-011-authority-url-matrix-2026-06-10.md`
+- Probe: `POST /orders` → **403** (reachable via ALB; auth/backend pending healthy AGX)
 
 ## Markets re-run
 

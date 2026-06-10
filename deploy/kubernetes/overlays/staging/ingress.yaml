@@ -51,6 +51,56 @@ spec:
                 name: gtcx-protocols-staging
                 port:
                   number: 8300
+          # XR-MKT-011 — markets authority trace capture (7 operations → AGX)
+          - path: /orders
+            pathType: Prefix
+            backend:
+              service:
+                name: gtcx-agx-staging
+                port:
+                  number: 3000
+          - path: /escrow-deposit
+            pathType: Prefix
+            backend:
+              service:
+                name: gtcx-agx-staging
+                port:
+                  number: 3000
+          - path: /escrow-release
+            pathType: Prefix
+            backend:
+              service:
+                name: gtcx-agx-staging
+                port:
+                  number: 3000
+          - path: /settle-init
+            pathType: Prefix
+            backend:
+              service:
+                name: gtcx-agx-staging
+                port:
+                  number: 3000
+          - path: /settle-final
+            pathType: Prefix
+            backend:
+              service:
+                name: gtcx-agx-staging
+                port:
+                  number: 3000
+          - path: /cc-issue
+            pathType: Prefix
+            backend:
+              service:
+                name: gtcx-agx-staging
+                port:
+                  number: 3000
+          - path: /cc-pay
+            pathType: Prefix
+            backend:
+              service:
+                name: gtcx-agx-staging
+                port:
+                  number: 3000
           # Sovereign API (CRX/SGX modules) — routes to platform AGX service
           - path: /api
             pathType: Prefix

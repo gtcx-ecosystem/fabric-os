@@ -29,12 +29,17 @@ tags: ['coordination', 'pen-test', 'secas-s2', 'ext-inf-002']
 | Vendor pack ack | `docs/operations/coordination/outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md` |
 | Fleet witness   | `audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json`                    |
 
-## In-scope staging targets (post-DAAS-S1/S3)
+## In-scope staging targets (post-DAAS-S1/S3) — by lane
 
-- `api.staging.gtcx.trade` — AGX + authority stub routes
-- `intelligence-staging.gtcx.trade` — cost router enabled
-- `sovereign-staging.gtcx.trade` — fleet probe 200
-- compliance-gateway staging (optional — 525 known)
+| Lane    | Target                                                  | deployProduct  |
+| ------- | ------------------------------------------------------- | -------------- |
+| **T0**  | protocols staging API + admin paths                     | protocol rail  |
+| **L4a** | `sovereign-staging.gtcx.trade`                          | GTCX Sovereign |
+| **L4b** | `api.staging.gtcx.trade` — AGX + authority stub routes  | GTCX Cloud     |
+| **L2**  | `intelligence-staging.gtcx.trade` — cost router enabled | product-hosted |
+| **L3**  | compliance-gateway staging (optional — 525 known)       | product-hosted |
+
+Full boundary spec: [`audit/pen-test-scope-2026.md`](../../../audit/pen-test-scope-2026.md) §2.1b
 
 ## Post-countersign actions (fabric-os)
 

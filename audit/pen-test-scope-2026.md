@@ -49,6 +49,22 @@ GTCX Protocol requires an independent, accredited penetration test of its infras
 | ECR container images                          | Supply Chain     | Registry          | Image tampering, secret leakage                                                                  |
 | CI/CD pipeline                                | DevOps           | GitHub Actions    | Artifact integrity, secret exfiltration                                                          |
 
+### 2.1b Trade-lane boundaries (SECAS-S2 — ADR-007 aligned)
+
+Pentest scope **must not collapse** sovereign gov rails, cloud exchange, and protocol API into one bucket.
+
+| Lane    | Staging target                               | deployProduct      | Pentest focus                                               |
+| ------- | -------------------------------------------- | ------------------ | ----------------------------------------------------------- |
+| **T0**  | protocols API (`/v1/tradepass`, admin paths) | protocol rail      | AuthN/Z, rate limits, admin nonce replay, crypto boundary   |
+| **L4a** | `sovereign-staging.gtcx.trade`               | **GTCX Sovereign** | CRX/SGX permit gates, sovereign fail-closed, minister paths |
+| **L4b** | `api.staging.gtcx.trade`                     | **GTCX Cloud**     | AGX buyer auth, tenant scoping, settlement stubs            |
+| **L3**  | compliance-gateway + hub #17 workloads       | product-hosted     | Enterprise compliance API, XR-104 signing boundary          |
+| **L2**  | `terminal-staging.gtcx.trade`                | product-hosted     | Desk ingress, WAF, IRSA secrets (lower priority vs T0/L4)   |
+
+**Out of lane scope for this engagement:** ledger-ui (X) static hosting, baseline vault (A), canon/agile utilities (U).
+
+Registry: `pm/spec/trade-ecosystem-lanes.json` · fabric witness: `audit/evidence/fabric-lanes-check-latest.json`
+
 ### 2.2 Out-of-Scope
 
 - Third-party LLM providers (OpenAI, Anthropic, Google) — their security is their responsibility

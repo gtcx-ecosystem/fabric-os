@@ -1,12 +1,13 @@
-# SECaaS card — gtcx-markets
+# SECaaS card — markets-os
 
+**Lane:** **L4b** · **deployProduct:** **GTCX Cloud** (AGX)  
 **Friction:** `SEC-WAF-01` (closed) · **DaaS overlap:** `XR-MKT-011`
 
-## Stack security actions (gtcx-infrastructure)
+## Stack security actions (fabric-os)
 
 1. WAF `AllowMarketsAuthorityEndpoints` — witness 7/7 authority trace
 2. Ingress TLS + path rules per `xr-mkt-011-authority-url-matrix`
-3. Pen-test scope includes AGX staging (`SEC-PENTEST-01` post vendor ack)
+3. Pen-test scope **L4b only** — AGX staging at `api.staging.gtcx.trade` (`SEC-PENTEST-01`; distinct from L4a sovereign + T0 protocol API)
 
 ## Product handoff
 

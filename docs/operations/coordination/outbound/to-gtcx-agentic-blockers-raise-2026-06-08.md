@@ -1,5 +1,5 @@
 ---
-title: 'Outbound — gtcx-infrastructure blockers raise (human + XC)'
+title: 'Outbound — fabric-os blockers raise (human + XC)'
 status: current
 date: 2026-06-08
 owner: fabric-os
@@ -13,9 +13,9 @@ tags: ['coordination', 'outbound', 'human-gates', 'ext-inf', 'witness']
 
 # Outbound — raise blockers to gtcx-agentic
 
-**One-line read:** `gtcx-infrastructure` **IR witness is green** (`validate-all` 50/50, lane-1 **7.9**, bank-grade **8.3**). **XC human gates block pilot revenue** — route Class S pings through **gtcx-agentic** human-external queue; infra agents scaffold evidence only.
+**One-line read:** `fabric-os` **IR witness is green** (`validate-all` 50/50, lane-1 **7.9**, bank-grade **8.3**). **XC human gates block pilot revenue** — route Class S pings through **gtcx-agentic** human-external queue; infra agents scaffold evidence only.
 
-**From:** gtcx-infrastructure @ `089ee5e` (+ uncommitted S4-06 README sweep)  
+**From:** fabric-os @ `089ee5e` (+ uncommitted S4-06 README sweep)  
 **To:** gtcx-agentic coordination + human-gates runners  
 **Authority:** Protocol 24 step 3 inbound · Protocol 28 Class S for signatures
 
@@ -71,15 +71,15 @@ tags: ['coordination', 'outbound', 'human-gates', 'ext-inf', 'witness']
 2. **Update** [`human-external-blocker-register-2026-06.md`](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/01-docs/04-ops/coordination/human-external-blocker-register-2026-06.md) — add **INF-XC** rows for EXT-INF-013/014/015/016 + overdue flag on 013.
 3. **Hub / human batch** — one Status Update block for program lead (P26): EXT-INF-013 overdue + EXT-INF-002 SOW due 2026-06-13.
 4. **`pnpm agent:human-gates:check`** after manifest/register update.
-5. **Optional:** `ecosystem:repo:report-work --repo=gtcx-infrastructure --item="XC human gates raised to agentic" --status=blocked` from baseline-os.
+5. **Optional:** `ecosystem:repo:report-work --repo=fabric-os --item="XC human gates raised to agentic" --status=blocked` from baseline-os.
 
 ---
 
 ## Explicitly not requesting from agentic
 
-| Item                       | Owner                                             |
-| -------------------------- | ------------------------------------------------- |
-| S4-06 README sweep commit  | gtcx-infrastructure (uncommitted in working tree) |
-| S4-07 test flake fix       | gtcx-infrastructure P2                            |
-| `git push` sandbox unblock | Operator / Cursor permissions                     |
-| IR dimension lifts         | Infra witness — backlog clear                     |
+| Item                       | Owner                                   |
+| -------------------------- | --------------------------------------- |
+| S4-06 README sweep commit  | fabric-os (uncommitted in working tree) |
+| S4-07 test flake fix       | fabric-os P2                            |
+| `git push` sandbox unblock | Operator / Cursor permissions           |
+| IR dimension lifts         | Infra witness — backlog clear           |

@@ -13,7 +13,7 @@ canonical_source: terra-os/docs/operations/coordination/to-fabric-os-terraos-sta
 
 # Inbound — TerraOS staging deploy (P1)
 
-**Received:** 2026-06-10 · **Escalation:** `--escalate @gtcx-infrastructure`
+**Received:** 2026-06-10 · **Escalation:** `--escalate @fabric-os`
 
 **Canonical source:** [terra-os `to-fabric-os-terraos-staging-deploy-2026-06-10.md`](https://github.com/gtcx-ecosystem/terra-os/blob/main/docs/operations/coordination/to-fabric-os-terraos-staging-deploy-2026-06-10.md)
 

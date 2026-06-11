@@ -1,5 +1,5 @@
 ---
-title: 'Outbound coordination — gtcx-infrastructure'
+title: 'Outbound coordination — fabric-os'
 status: current
 date: 2026-06-06
 owner: fabric-os
@@ -9,7 +9,7 @@ tags: ['coordination', 'outbound', 'index']
 
 # Outbound coordination
 
-Durable outbound handoffs filed from `gtcx-infrastructure` to sibling repos or human owners.
+Durable outbound handoffs filed from `fabric-os` to sibling repos or human owners.
 
 | Document                                                                                 | Date       | Topic                                 |
 | ---------------------------------------------------------------------------------------- | ---------- | ------------------------------------- |

@@ -14,7 +14,7 @@ Acknowledged outbound from gtcx-core: `01-docs/04-ops/coordination/to-fabric-os-
 
 ## Infra status
 
-ER-1-08 was closed in gtcx-infrastructure on 2026-06-04:
+ER-1-08 was closed in fabric-os on 2026-06-04:
 
 - Commit: `f8e1425`
 - Outbound to protocols: `01-docs/04-ops/coordination/to-gtcx-protocols-er-1-08-infra-ack.md`

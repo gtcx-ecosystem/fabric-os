@@ -36,7 +36,7 @@ tags: ['coordination', 'pen-test', 'secas-s2', 'ext-inf-002']
 - `sovereign-staging.gtcx.trade` — fleet probe 200
 - compliance-gateway staging (optional — 525 known)
 
-## Post-countersign actions (gtcx-infrastructure)
+## Post-countersign actions (fabric-os)
 
 1. Confirm test window with vendor
 2. Publish `audit/evidence/pen-test-window-YYYY-MM-DD.json`

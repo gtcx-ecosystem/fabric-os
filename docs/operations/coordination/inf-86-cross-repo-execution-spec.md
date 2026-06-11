@@ -34,7 +34,7 @@ H-01 (governance) → H-02 (infra ceremony) → H-03 (protocols XR-403) → H-04
 
 ## Per-repo next actions
 
-### gtcx-infrastructure (lead: H-02)
+### fabric-os (lead: H-02)
 
 | #   | Action                                 | Blocker               | ETA                  | Status |
 | --- | -------------------------------------- | --------------------- | -------------------- | ------ |

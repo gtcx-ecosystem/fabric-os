@@ -18,7 +18,7 @@ issue: 'https://github.com/gtcx-ecosystem/gtcx-protocols/issues/61'
 - **algorithm:** `ECC_NIST_P256` / `ECDSA_SHA_256`
 - **key_id:** `d44106a0-cb37-4225-b84d-bb8105eaaca5`
 - **spki_sha256:** `86c66f12d0df81839d28ef1f2a1cce7a8c466e155ee0e2801edf5b28dfcdf1a0`
-- **evidence_package:** `gtcx-infrastructure/01-docs/05-audit/evidence/inf-86/gh-bog-2026-06-03/`
+- **evidence_package:** `fabric-os/01-docs/05-audit/evidence/inf-86/gh-bog-2026-06-03/`
 - **approved_by:** `agent://gtcx-agentic/security-engineer-xr401` + `agent://gtcx-agentic/platform-architect-xr401` + `agent://gtcx-agentic/infrastructure-custodian-a-xr401b` + `agent://gtcx-agentic/infrastructure-custodian-b-xr401b` + witness
 
 ### SPKI handoff
@@ -34,7 +34,7 @@ Then: `kms-public-key-to-jwk.mjs` + `apply-production-authority-key.mjs --confir
 
 ### Infra tracker
 
-[`gtcx-infrastructure/01-docs/05-audit/inf-86-ceremony-tracker.md`](https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/05-audit/inf-86-ceremony-tracker.md)
+[`fabric-os/01-docs/05-audit/inf-86-ceremony-tracker.md`](https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/05-audit/inf-86-ceremony-tracker.md)
 
 ```
 

@@ -24,12 +24,12 @@ tags: ['coordination', 'witness', 'hub-17']
 
 ## Evidence bundle tracker
 
-| #   | Owner               | Staging                     | Prod                                    | Blocker |
-| --- | ------------------- | --------------------------- | --------------------------------------- | ------- |
-| 1   | exploration-os      | ☑ staging PF                | ☑ **201** @ `compliance.gtcx.trade`     | none    |
-| 2   | gtcx-infrastructure | ☑ ESO + 7 W2 keys           | ☑ prod secrets + dual ingress           | none    |
-| 3   | compliance-os       | ☑ PATCH 200 staging         | ☑ PATCH **200** prod                    | none    |
-| 4   | terminal-os         | ☑ `431a2169` + live staging | ☑ PATCH **200** @ `terminal.gtcx.trade` | none    |
+| #   | Owner          | Staging                     | Prod                                    | Blocker |
+| --- | -------------- | --------------------------- | --------------------------------------- | ------- |
+| 1   | exploration-os | ☑ staging PF                | ☑ **201** @ `compliance.gtcx.trade`     | none    |
+| 2   | fabric-os      | ☑ ESO + 7 W2 keys           | ☑ prod secrets + dual ingress           | none    |
+| 3   | compliance-os  | ☑ PATCH 200 staging         | ☑ PATCH **200** prod                    | none    |
+| 4   | terminal-os    | ☑ `431a2169` + live staging | ☑ PATCH **200** @ `terminal.gtcx.trade` | none    |
 
 **Hub #18** remains separate: prod `POSTGRES_URL` + persistence proof.
 

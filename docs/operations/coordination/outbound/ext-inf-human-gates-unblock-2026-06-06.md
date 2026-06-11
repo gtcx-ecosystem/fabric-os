@@ -1,5 +1,5 @@
 ---
-title: 'EXT-INF human gates — who unblocks (gtcx-infrastructure)'
+title: 'EXT-INF human gates — who unblocks (fabric-os)'
 status: current
 date: 2026-06-06
 owner: fabric-os
@@ -7,7 +7,7 @@ owner: fabric-os
 
 # EXT-INF human gates — unblock matrix (XC track)
 
-**One-line read:** **gtcx-infrastructure** engineering is in **witness mode** for these gates. They affect **XC** (external clearance), not IR code lifts. Agents scaffold evidence only — **Class S** for signatures and owner assignment.
+**One-line read:** **fabric-os** engineering is in **witness mode** for these gates. They affect **XC** (external clearance), not IR code lifts. Agents scaffold evidence only — **Class S** for signatures and owner assignment.
 
 ## Not agent-automatable
 
@@ -21,11 +21,11 @@ owner: fabric-os
 
 ## Cross-repo pen-test (EXT-INF-002)
 
-| Repo                | Role                                                                                                                                                                                               |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| gtcx-intelligence   | INT-S12-01 witness — [outbound chase](https://github.com/gtcx-ecosystem/gtcx-intelligence/blob/main/01-docs/04-ops/coordination/outbound/to-human-security-int-s12-01-pentest-chase-2026-06-06.md) |
-| gtcx-core           | Vendor pack delivered — infra live-stack test owner                                                                                                                                                |
-| gtcx-infrastructure | Intake evidence [`pen-test-intake-evidence-2026-05-31.md`](../../../audit/pen-test-intake-evidence-2026-05-31.md); **S2-13** blocked until SOW                                                     |
+| Repo              | Role                                                                                                                                                                                               |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| gtcx-intelligence | INT-S12-01 witness — [outbound chase](https://github.com/gtcx-ecosystem/gtcx-intelligence/blob/main/01-docs/04-ops/coordination/outbound/to-human-security-int-s12-01-pentest-chase-2026-06-06.md) |
+| gtcx-core         | Vendor pack delivered — infra live-stack test owner                                                                                                                                                |
+| fabric-os         | Intake evidence [`pen-test-intake-evidence-2026-05-31.md`](../../../audit/pen-test-intake-evidence-2026-05-31.md); **S2-13** blocked until SOW                                                     |
 
 ## Agent boundary
 

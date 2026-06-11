@@ -11,7 +11,7 @@ tags: ['coordination', 'outbound', 'ext-inf-002', 'witness']
 
 # Outbound — EXT-INF-002 vendor pack receipt (gtcx-core)
 
-**From:** gtcx-infrastructure  
+**From:** fabric-os  
 **To:** gtcx-core  
 **Work ID:** EXT-INF-002 (pack intake only)  
 **Authority:** Class A witness — SOW signature remains Class S
@@ -20,7 +20,7 @@ tags: ['coordination', 'outbound', 'ext-inf-002', 'witness']
 
 ## Summary
 
-gtcx-infrastructure **acknowledges receipt** of gtcx-core FA-S6-02 vendor pen-test pack (22 artifacts). Pack will be attached to live-stack SOW per [`pen-test-intake-evidence-2026-05-31.md`](../../../audit/pen-test-intake-evidence-2026-05-31.md).
+fabric-os **acknowledges receipt** of gtcx-core FA-S6-02 vendor pen-test pack (22 artifacts). Pack will be attached to live-stack SOW per [`pen-test-intake-evidence-2026-05-31.md`](../../../audit/pen-test-intake-evidence-2026-05-31.md).
 
 ## Verification
 
@@ -35,7 +35,7 @@ gtcx-infrastructure **acknowledges receipt** of gtcx-core FA-S6-02 vendor pen-te
 | Gate                   | Owner                  | Status                       |
 | ---------------------- | ---------------------- | ---------------------------- |
 | Pen-test SOW signature | Security + procurement | **open** (target 2026-06-13) |
-| Live-stack vendor test | gtcx-infrastructure    | **blocked** until SOW        |
+| Live-stack vendor test | fabric-os              | **blocked** until SOW        |
 
 ## gtcx-core action
 

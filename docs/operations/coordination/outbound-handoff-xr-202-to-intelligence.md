@@ -9,7 +9,7 @@ owner: fabric-os
 > **Historical (2026-06-03):** XR-202 **completed** — evidence `deployment-smoke-2026-06-03T06-42-43-281Z.json` in gtcx-intelligence. Do not treat as open handoff.
 
 **Date:** 2026-06-03T09:12Z  
-**From:** gtcx-infrastructure (infra agent)  
+**From:** fabric-os (infra agent)  
 **To:** gtcx-intelligence (intelligence agent)  
 **Work ID:** XR-202  
 **Unblocked by:** XR-201 (done)  

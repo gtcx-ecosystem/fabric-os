@@ -10,9 +10,9 @@ parent: cloud-placement-aws-control-plane-2026-06-05.md
 
 # Infra per-repo action matrix
 
-**Audience:** gtcx-infrastructure agents only.
+**Audience:** fabric-os agents only.
 
-**Problem this solves:** The ecosystem register ([`repo-register-2026-06-05.md`](../../../../gtcx-docs/01-docs/architecture/cloud-placement/repo-register-2026-06-05.md)) describes **every repo’s cloud posture**. This file says **what gtcx-infrastructure must do** for each repo — and what is **not** infra’s job.
+**Problem this solves:** The ecosystem register ([`repo-register-2026-06-05.md`](../../../../gtcx-docs/01-docs/architecture/cloud-placement/repo-register-2026-06-05.md)) describes **every repo’s cloud posture**. This file says **what fabric-os must do** for each repo — and what is **not** infra’s job.
 
 **Read order:**
 
@@ -25,7 +25,7 @@ parent: cloud-placement-aws-control-plane-2026-06-05.md
 
 ## One rule
 
-| gtcx-infrastructure                                                  | Other repos                                                  |
+| fabric-os                                                            | Other repos                                                  |
 | -------------------------------------------------------------------- | ------------------------------------------------------------ |
 | **Hosts** on AWS: EKS, SM→ESO, RDS, S3, WAF, IAM, origins, GHCR pull | **Build & deploy** app images, run smoke, own business logic |
 | **Seals** secrets; never commits plaintext                           | **Consumes** secrets via `envFrom` / vault                   |
@@ -72,7 +72,7 @@ All infra P0 items verified. **Next:** owner-repo smoke (compliance hub #17 inta
 | **ledger-ui**                                | None until XR-510 npm creds | npm publish is XC, not EKS                    |
 | **terra-os**                                 | None until W2 adapter epic  | Live permit adapters — terra owns             |
 | **gtcx-operations**                          | None                        | Satellite; AWS when product turns on          |
-| **gtcx-markets**                             | **P41 DaaS** — XR-MKT-011   | S39-01 authority routes, AGX ingress, auth SM |
+| **markets-os**                               | **P41 DaaS** — XR-MKT-011   | S39-01 authority routes, AGX ingress, auth SM |
 | **gtcx-hardware**                            | None                        | Device edge — out of cloud matrix             |
 | **nyota-ai** / **griot-ai** / **veritas-ai** | None                        | Call intelligence over HTTPS on AWS           |
 | **sensei-ai**                                | **Out of band**             | Separate product — not GTCX EKS unless merged |
@@ -96,7 +96,7 @@ All infra P0 items verified. **Next:** owner-repo smoke (compliance hub #17 inta
 ## “Am I needed?” (30 seconds)
 
 ```
-Inbound says gtcx-infrastructure?
+Inbound says fabric-os?
 ├─ Secret / EKS / RDS / S3 / WAF / DNS / GHCR → YES (this repo)
 ├─ App bug / API logic / LLM prompt / Vertex pipeline → NO (owner repo)
 ├─ npm publish / Supabase schema / Vercel deploy → NO unless inbound explicitly asks infra platform op
@@ -109,7 +109,7 @@ Inbound says gtcx-infrastructure?
 
 | Host                          | Service          | Namespace             | Card                                                      |
 | ----------------------------- | ---------------- | --------------------- | --------------------------------------------------------- |
-| `api.staging.gtcx.trade`      | gtcx-agx-staging | gtcx-staging          | [gtcx-markets DaaS card](../daas/cards/gtcx-markets.md)   |
+| `api.staging.gtcx.trade`      | gtcx-agx-staging | gtcx-staging          | [markets-os DaaS card](../daas/cards/markets-os.md)       |
 | `terminal-staging.gtcx.trade` | terminal-os      | terminal-os-staging   | [terminal-os DaaS card](../daas/cards/terminal-os.md)     |
 | compliance-os staging         | multi-workload   | compliance-os-staging | [compliance-os DaaS card](../daas/cards/compliance-os.md) |
 
@@ -135,8 +135,8 @@ Full list: register §7 in gtcx-docs.
 | gtcx-agentic   | ~~XR-008 verifier re-audit~~ **done** 2026-06-05                     |
 | exploration-os | ~~XR-EO-003 lender webhook~~ **done** 2026-06-05 — hub #15 cleared   |
 
-Report infra platform work: `baseline-os` `pnpm ecosystem:repo:report-work --repo=gtcx-infrastructure --item="<slice>" --status=completed`.
+Report infra platform work: `baseline-os` `pnpm ecosystem:repo:report-work --repo=fabric-os --item="<slice>" --status=completed`.
 
 ---
 
-_Maintained by gtcx-infrastructure. Update when inbound lands or P0/P1 changes._
+_Maintained by fabric-os. Update when inbound lands or P0/P1 changes._

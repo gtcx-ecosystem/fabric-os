@@ -15,7 +15,7 @@ related:
 # Coordination — Infra staging operator DID deploy (DONE)
 
 **From:** gtcx-protocols  
-**To:** gtcx-infrastructure  
+**To:** fabric-os  
 **Subject:** Staging deploy — operator DID seed + `publicKeyJwk` GET (protocols `6ef3b423`)
 
 ## Status

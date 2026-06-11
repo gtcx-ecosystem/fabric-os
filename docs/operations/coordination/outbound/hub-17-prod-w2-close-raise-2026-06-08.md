@@ -1,5 +1,5 @@
 ---
-title: 'Outbound — Hub #17 prod W2 close (gtcx-infrastructure owner)'
+title: 'Outbound — Hub #17 prod W2 close (fabric-os owner)'
 status: current
 date: 2026-06-08
 owner: fabric-os
@@ -18,7 +18,7 @@ tags: ['coordination', 'outbound', 'hub-17', 'w2', 'prod', 'class-a']
 
 # Outbound — Hub #17 prod W2 close (infra owner)
 
-**One-line:** Approval and execution for prod W2 secrets + `https://compliance.gtcx.trade` ingress → **gtcx-infrastructure**; hub close witness → **baseline-os** after prod evidence exists.
+**One-line:** Approval and execution for prod W2 secrets + `https://compliance.gtcx.trade` ingress → **fabric-os**; hub close witness → **baseline-os** after prod evidence exists.
 
 **Authority:** Class **A** — compliance-os spec inbound is prior authorization; infra executes seal/inject/ingress and posts evidence. Sibling retests are Class **R** after infra witness.
 
@@ -131,12 +131,12 @@ Witness file: `01-docs/04-ops/coordination/from-fabric-os-hub-17-prod-w2-sealed-
 
 ## Hub evidence bundle status
 
-| #   | Owner               | Staging             | Prod                                      |
-| --- | ------------------- | ------------------- | ----------------------------------------- |
-| 1   | exploration-os      | ☑ retest **201**    | ☐ `compliance.gtcx.trade` (probe **525**) |
-| 2   | gtcx-infrastructure | ☑ 7 W2 keys + ESO   | ☐ seal + inject + ingress                 |
-| 3   | compliance-os       | ☑ PATCH **200**     | ☐ prod terminal PATCH 2xx                 |
-| 4   | terminal-os         | ☑ CI + live staging | ☑ receiver contract (unless URL change)   |
+| #   | Owner          | Staging             | Prod                                      |
+| --- | -------------- | ------------------- | ----------------------------------------- |
+| 1   | exploration-os | ☑ retest **201**    | ☐ `compliance.gtcx.trade` (probe **525**) |
+| 2   | fabric-os      | ☑ 7 W2 keys + ESO   | ☐ seal + inject + ingress                 |
+| 3   | compliance-os  | ☑ PATCH **200**     | ☐ prod terminal PATCH 2xx                 |
+| 4   | terminal-os    | ☑ CI + live staging | ☑ receiver contract (unless URL change)   |
 
 ---
 

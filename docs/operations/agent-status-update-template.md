@@ -1,23 +1,27 @@
 ---
-title: 'Agent Status Update — template (Protocol 26 §3b)'
+title: 'Agent Status Update — template (Protocol 26 §3b + P45)'
 status: current
-date: 2026-06-05
-owner: gtcx-agentic
+date: 2026-06-12
+owner: baseline-os
 role: protocol-architect
 document_id: OPS-AGENT-STATUS-UPDATE
 tier: standard
-tags: ['agents', 'protocol-26', 'communication']
+tags: ['agents', 'protocol-26', 'protocol-45', 'communication']
 review_cycle: on-change
 ---
 
 # Agent Status Update — template
 
-Structured operator communication for **progress, handoffs, and end-of-turn** summaries. Complements the **Proceed Brief** (session start / resume).
+**Message type:** `STATUS_UPDATE` · **When:** end of substantive turn, handoff, sprint boundary.
 
-| When                                              | Use                                                   |
-| ------------------------------------------------- | ----------------------------------------------------- |
-| Session start, new story, blocker cleared         | **Proceed Brief** (`agent-proceed-brief-template.md`) |
-| After executing work, mid-session report, handoff | **Status Update** (this template)                     |
+Complements **Proceed Brief** (`agent-proceed-brief-template.md`) at session start.
+
+| When                                              | Use                               |
+| ------------------------------------------------- | --------------------------------- |
+| Session start, new story, blocker cleared         | **Proceed Brief**                 |
+| After executing work, mid-session report, handoff | **Status Update** (this template) |
+
+Spec: `pm/spec/agent-communication-protocol.v1.json` (P45)
 
 ---
 
@@ -26,85 +30,76 @@ Structured operator communication for **progress, handoffs, and end-of-turn** su
 ```markdown
 ## Status Update
 
+### Execution mode
+
+- **Mode:** <auto-dev mode id> · **Scope:** <program / sprint / roadmap>
+- **Progress:** <from `pnpm agent:next-work --json` → execution + progress>
+
 ### Done
 
 - <what shipped or verified> — `<command>` exit <code> · commit `<sha>` · probe: <fact>
-- <second item only if needed>
 
-### Next priority
+### Next work item
 
-- **Active persona:** <institutional> · **Frame:** <frame> (from `agent:next-work`; read persona doc on switch)
+- **Type:** Story | Epic | Task | Sprint | Milestone
+- **ID:** `<story-id>`
 - **Owner:** <repo | role>
-- **Action:** <one imperative the agent or owner will run next>
-- **Because:** <story ID / hub row / witness path>
+- **Because:** <P22 selection.reason / witness>
 
 ### Approval needed
 
-- <Class A/S only — parallel human gates; omit section if none>
-- Example: **EXT-INF-002 / H-05** — Security signs pen-test SOW (`blocksIR: false` — implement queue continues). Nav: `human-gate-navigation.md`
+- <Class A/S only — parallel human gates; omit section if empty>
 ```
 
 ---
 
 ## Section rules
 
+### Execution mode
+
+- From `pnpm agent:next-work --json` → `execution` and `progress` (or `pnpm ecosystem:progress:report --markdown` on hub).
+- One headline line the operator can scan: mode + % complete.
+
 ### Done
 
-- Past tense, evidence-linked (exit codes, SHAs, `kubectl` Ready/NotReady, check JSON paths).
-- No vague "implemented ESO" without probe result.
+- Past tense, evidence-linked (exit codes, SHAs, probe results).
+- No vague claims without command or witness path.
 
-### Next priority
+### Next work item
 
-- **Exactly one** primary action. Secondary work goes in **Done** as "parallel completed" or waits for the next turn.
-- Agent **executes** Class R next steps in the same session when possible — do not replace with "I can …".
+- **Exactly one** agile artifact — Type + ID + Owner. Legacy header **Next priority** is forbidden (P45).
+- Agent **executes** Class R next steps in-session when possible.
 
 ### Approval needed
 
-- Include **only** when Protocol 28 class **A** or **S** needs human action — **`blocksIR: false`** gates are **parallel**, not repo frozen ([`human-gate-navigation.md`](human-gate-navigation.md)).
-- Omit the heading when empty (do not write "None" or "N/A").
-- Forbidden: story menus, repo pick lists, push delegation.
+- Protocol 28 class **A** or **S** only — **`blocksIR: false`** gates are parallel, not repo frozen.
+- Omit the heading when empty. Message **ends** here — no follow-up questions.
 
 ---
 
-## Example (infra hub #17)
+## Task list (multi-step work)
+
+When more than one ordered step must be visible, add before or after Status Update:
 
 ```markdown
-## Status Update
+## Tasks
 
-### Done
-
-- ESO SecretStore + 7 ExternalSecrets — `kubectl get externalsecret -n compliance-os-staging` all SecretSynced
-- Terraform IRSA + SM shells — `terraform apply` 10 resources created (b0ca238)
-
-### Next priority
-
-- **Owner:** compliance-os
-- **Action:** Patch `compliance-web` image to `staging-<sha>` in staging kustomize; re-run `pnpm w2:staging-prereq-check`
-- **Because:** Hub #17 — prereq still `ImagePullBackOff` on tag `0.1.0` (NotFound)
-
-### Approval needed
-
-- GHCR PAT with `read:packages` if SM `ghcr-pull-token` must be rotated (Class A — operator secret)
+| #   | Task | Owner     | Command / action | Done when              |
+| --- | ---- | --------- | ---------------- | ---------------------- |
+| T1  | …    | Agent (R) | `pnpm …`         | exit 0; witness exists |
 ```
 
 ---
 
 ## Anti-patterns
 
-| Wrong                                                                                      | Right                                                                                                  |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| End with "I can push / help populate SM if you want"                                       | **Next priority** + run Class R steps; **Approval needed** only for PAT/prod                           |
-| **"Want me to tackle anything on the P1 list?"** after push table                          | Run `agent:next-work`; **Next priority** = that story; start work                                      |
-| **"Say if you want … committed next or left as WIP"**                                      | Commit Class R files; Status Update + **Next priority**; no commit menu                                |
-| Commit/push tables with no **Next priority**                                               | Tables under **Done** only; always one owned **Next**                                                  |
-| Three equal options under Next                                                             | One **Next priority**; matrix lists other repos, not a menu                                            |
-| **Next:** W2-OPS-001 + IR-3.5 listed, then "Want me to proceed with IR-3.5 or stay on W2?" | **Next priority** = in_progress W2 only; IR-3.5 → Deferred line; **stop** — no question after Approval |
-| Text after `### Approval needed`                                                           | Message **ends** at Status Update; execute Class R Next in-session                                     |
-| Done section empty when commands ran                                                       | List what ran with exit codes                                                                          |
-| "Repo blocked on EXT-INF-002" / wait for pen-test before coding                            | **Approval needed** for SOW; **Next priority** = implement/witness per `agent:next-work`               |
-
-**Owning work after hub delivery:** Done (commits) → `agent:next-work` in owner repo → Next priority (story ID) → implement Class R in-session.
+| Wrong                                 | Right                                           |
+| ------------------------------------- | ----------------------------------------------- |
+| `### Next priority` as closing header | `### Next work item` after `### Execution mode` |
+| End with "want me to …"               | Execute Class R; close at Approval needed       |
+| Status Update then more prose         | Terminal message type (P45)                     |
+| Three equal options                   | One Next work item from P22                     |
 
 ---
 
-_Normative: [Protocol 26 §3b](https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/protocols/26-agent-proceed-confirmation/protocol.md) · Rollout: `pnpm ecosystem:rollout-universal`_
+_Normative: [Protocol 45](https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/protocols/45-agent-communication/protocol.md) · [Protocol 26 §3b](https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/protocols/26-agent-proceed-confirmation/protocol.md)_

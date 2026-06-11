@@ -88,10 +88,26 @@ From `bridge-os/pm/spec/five-pillar-evaluation.v1.json` — use as acceptance le
 
 ---
 
+## gtcx-agile lineage (centralized agile home)
+
+`gtcx-agile` was the ecosystem's **centralized agile hub** (sprint planning, standup, UAT, cross-repo workplan). It is **archived**; **bridge-os** is the legal fleet successor via `pm/agile-successor.json` — not a second prioritization engine.
+
+| Tier                   | Home          | Role                                                                    |
+| ---------------------- | ------------- | ----------------------------------------------------------------------- |
+| **L3 Fleet agile hub** | bridge-os     | ZenHub, ceremonies, derived fleet orientation (successor to gtcx-agile) |
+| **L1 Product agile**   | product repos | `active.json`, P22, icebox promotion                                    |
+| **L2 Programme**       | fabric-os     | XR programmes — read-only L1                                            |
+
+**Normative contract (draft):** `bridge-os/pm/spec/sprint-authority.v1.json` · Ops: `bridge-os/docs/operations/sprint-authority.md`
+
+---
+
 ## What already exists (bridge-os SoR — link, do not fork)
 
 | Resource                               | Path                                                             |
 | -------------------------------------- | ---------------------------------------------------------------- |
+| Sprint authority (draft)               | `bridge-os/pm/spec/sprint-authority.v1.json`                     |
+| Agile successor (gtcx-agile)           | `bridge-os/pm/agile-successor.json`                              |
 | Ceremony cadence spec                  | `bridge-os/pm/spec/sprint-ceremony-cadence.v1.json`              |
 | Ops doc                                | `bridge-os/docs/operations/sprint-ceremony-cadence.md`           |
 | CI scheduler                           | `bridge-os/.github/workflows/sprint-ceremony-cadence.yml`        |

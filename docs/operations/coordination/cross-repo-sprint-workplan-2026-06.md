@@ -1,5 +1,5 @@
 ---
-title: 'Cross-repo sprint workplan — gtcx-infrastructure unified register'
+title: 'Cross-repo sprint workplan — fabric-os unified register'
 status: current
 date: 2026-06-05
 owner: fabric-os
@@ -9,9 +9,9 @@ sprint_horizon: 2026-06-03 → 2026-06-28
 review_cycle: weekly
 ---
 
-# Cross-repo sprint workplan — gtcx-infrastructure unified register
+# Cross-repo sprint workplan — fabric-os unified register
 
-**Planning lens:** Ecosystem dependencies requiring gtcx-infrastructure action or blocked on infrastructure, reconciled across three parallel XR numbering schemes.  
+**Planning lens:** Ecosystem dependencies requiring fabric-os action or blocked on infrastructure, reconciled across three parallel XR numbering schemes.  
 **Canonical XR-### SoR:** [`gtcx-protocols/01-docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md`](../../../../gtcx-protocols/01-docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md)  
 **Bridge (live):** [`cross-repo-agent-bridge.md`](cross-repo-agent-bridge.md) · **Log:** [`cross-repo-agent-log.md`](cross-repo-agent-log.md)
 
@@ -53,7 +53,7 @@ Three parallel numbering schemes exist across the ecosystem. This register adopt
 | XR-513                | XR-017                | XR-017               | P22 W2 CI — gtcx-intelligence                  |
 | XR-514                | XR-017                | XR-017               | P22 W2 CI — terminal-os                        |
 | XR-515                | XR-017                | XR-017               | P22 W2 CI — gtcx-protocols                     |
-| XR-516                | XR-017                | XR-017               | P22 W4 core — gtcx-infrastructure              |
+| XR-516                | XR-017                | XR-017               | P22 W4 core — fabric-os                        |
 | XR-517                | XR-019                | XR-019               | SPEC §17 co-author sign-off                    |
 | XR-518                | —                     | —                    | INF-86 expand 43 authorities                   |
 
@@ -106,41 +106,41 @@ Three parallel numbering schemes exist across the ecosystem. This register adopt
 
 ## Master dependency register
 
-| Work ID | Title                                          | Owner               | Sprint      | Status       | Risk   | Depends on            | Blocks                                                                               |
-| ------- | ---------------------------------------------- | ------------------- | ----------- | ------------ | ------ | --------------------- | ------------------------------------------------------------------------------------ |
-| XR-060  | Authority DID staging (#60)                    | gtcx-protocols      | —           | **done**     | R-low  | INF-49                | —                                                                                    |
-| XR-101  | Staging operator DID + native protocols        | gtcx-infrastructure | S-XR-1      | **done**     | R-high | protocols `6ef3b423+` | mobile E2E                                                                           |
-| XR-102  | Mobile audit E2E (SM → env → smoke)            | gtcx-mobile         | S-XR-1      | **ready**    | R-high | XR-101                | MOBILE-AUDIT-01/02                                                                   |
-| XR-103  | WAF/admin register-operator 403                | gtcx-infrastructure | S-XR-2      | **deferred** | R-low  | —                     | external admin curl                                                                  |
-| XR-201  | Intelligence-staging auth gate                 | gtcx-infrastructure | S-XR-1      | **done**     | R-high | —                     | XR-202 unblocked; full SDK `12be5342` deployed; auth enforced on non-exempt paths    |
-| XR-202  | INT-S3-08 full-stack re-smoke                  | gtcx-intelligence   | S-XR-2      | **done**     | R-high | —                     | protocols mirror                                                                     |
-| XR-203  | Protocols mirror intelligence smoke JSON       | gtcx-protocols      | S-XR-2      | **deferred** | R-low  | XR-202                | —                                                                                    |
-| XR-301  | Push sovereign staging image (P4-07)           | gtcx-platforms      | S-XR-2      | **done**     | R-med  | —                     | sovereign-staging.gtcx.trade/api/health 200; WAF `/api/*` rule applied               |
-| XR-302  | Push AGX staging image + rollout               | gtcx-platforms      | S-XR-2      | **done**     | R-med  | —                     | api.staging.gtcx.trade/api/health 200; DB shared entities migrated; JWT secrets live |
-| XR-303  | Platforms consume `@gtcx/ui` portal primitives | gtcx-platforms      | S-XR-2      | **blocked**  | R-med  | ledger-ui NPM_TOKEN   | regulator portals                                                                    |
-| XR-401  | INF-86 algorithm decision                      | human (CISO)        | S-XR-3      | **blocked**  | R-high | —                     | XR-402–405                                                                           |
-| XR-402  | INF-86 pilot KMS ceremony gh-bog               | gtcx-infrastructure | S-XR-3      | **hold**     | R-high | XR-401                | XR-403                                                                               |
-| XR-403  | Update `bog.json` production key               | gtcx-protocols      | S-XR-3      | **blocked**  | R-high | XR-402                | #61, XR-404                                                                          |
-| XR-404  | exploration-os `contract:gtcx` post-pilot      | exploration-os      | S-XR-3      | **blocked**  | R-low  | XR-403                | —                                                                                    |
-| XR-405  | Platforms KMS sovereign signing wire-up        | gtcx-platforms      | S-XR-3      | **blocked**  | R-high | XR-403                | prod authority claims                                                                |
-| XR-501  | exploration-os validators 0.5.0 import PR      | exploration-os      | S-XR-4      | **ready**    | R-low  | —                     | dedup schemas                                                                        |
-| XR-502  | compliance-os W2 M2M intake (W2-C01)           | compliance-os       | S-XR-4      | **ready**    | R-med  | infra secret          | ExplorationOS export                                                                 |
-| XR-503  | compliance-os W2 review webhook (W2-C02)       | compliance-os       | S-XR-4      | **ready**    | R-med  | terminal-os API       | export pipeline                                                                      |
-| XR-504  | compliance-os diligence persist (W2-C03)       | compliance-os       | S-XR-4      | **ready**    | R-med  | —                     | prod restart                                                                         |
-| XR-505  | terminal-os workflow Postgres (W2-T01)         | terminal-os         | S-XR-4      | **ready**    | R-med  | —                     | XR-503                                                                               |
-| XR-506  | terra-os live permit adapters (W2-E01)         | terra-os            | S-XR-5      | **deferred** | R-high | P22 W4 core           | external diligence                                                                   |
-| XR-507  | exploration-os verifier prod deploy (F-33)     | gtcx-infrastructure | S-XR-4      | **done**     | R-med  | —                     | H-F audit close                                                                      |
-| XR-508  | exploration-os Supabase prod migrations        | gtcx-infrastructure | S-XR-4      | **done**     | R-med  | —                     | financing prod                                                                       |
-| XR-509  | S11-03 publish `@gtcx/mcp` npm                 | gtcx-protocols      | S-XR-5      | **blocked**  | R-med  | NPM credentials       | consumers                                                                            |
-| XR-510  | ledger-ui publish `@gtcx/ui@0.4.1`             | ledger-ui           | S-XR-2      | **blocked**  | R-med  | NPM_TOKEN             | XR-303                                                                               |
-| XR-511  | P22 W2 CI — compliance-os                      | compliance-os       | S-XR-5      | **ready**    | R-low  | —                     | agent ergonomics                                                                     |
-| XR-512  | P22 W2 CI — exploration-os                     | exploration-os      | S-XR-5      | **ready**    | R-low  | —                     | P25 smoke                                                                            |
-| XR-513  | P22 W2 CI — gtcx-intelligence                  | gtcx-intelligence   | S-XR-5      | **ready**    | R-low  | —                     | agent ergonomics                                                                     |
-| XR-514  | P22 W2 CI — terminal-os                        | terminal-os         | S-XR-5      | **ready**    | R-low  | —                     | P25 consumer                                                                         |
-| XR-515  | P22 W2 CI — gtcx-protocols                     | gtcx-protocols      | S-XR-5      | **done**     | R-low  | —                     | agent ergonomics                                                                     |
-| XR-516  | P22 W4 core — gtcx-infrastructure              | gtcx-infrastructure | S-XR-5      | **done**     | R-med  | —                     | long-term agents — P22/P26/P27 checks wired in CI                                    |
-| XR-517  | SPEC §17 co-author sign-off                    | human               | —           | **blocked**  | R-high | Eng+Security          | Wire #2 ratification                                                                 |
-| XR-518  | INF-86 expand 43 authorities                   | gtcx-infrastructure | post S-XR-3 | **deferred** | R-high | XR-402 pilot          | close #86                                                                            |
+| Work ID | Title                                          | Owner             | Sprint      | Status       | Risk   | Depends on            | Blocks                                                                               |
+| ------- | ---------------------------------------------- | ----------------- | ----------- | ------------ | ------ | --------------------- | ------------------------------------------------------------------------------------ |
+| XR-060  | Authority DID staging (#60)                    | gtcx-protocols    | —           | **done**     | R-low  | INF-49                | —                                                                                    |
+| XR-101  | Staging operator DID + native protocols        | fabric-os         | S-XR-1      | **done**     | R-high | protocols `6ef3b423+` | mobile E2E                                                                           |
+| XR-102  | Mobile audit E2E (SM → env → smoke)            | gtcx-mobile       | S-XR-1      | **ready**    | R-high | XR-101                | MOBILE-AUDIT-01/02                                                                   |
+| XR-103  | WAF/admin register-operator 403                | fabric-os         | S-XR-2      | **deferred** | R-low  | —                     | external admin curl                                                                  |
+| XR-201  | Intelligence-staging auth gate                 | fabric-os         | S-XR-1      | **done**     | R-high | —                     | XR-202 unblocked; full SDK `12be5342` deployed; auth enforced on non-exempt paths    |
+| XR-202  | INT-S3-08 full-stack re-smoke                  | gtcx-intelligence | S-XR-2      | **done**     | R-high | —                     | protocols mirror                                                                     |
+| XR-203  | Protocols mirror intelligence smoke JSON       | gtcx-protocols    | S-XR-2      | **deferred** | R-low  | XR-202                | —                                                                                    |
+| XR-301  | Push sovereign staging image (P4-07)           | gtcx-platforms    | S-XR-2      | **done**     | R-med  | —                     | sovereign-staging.gtcx.trade/api/health 200; WAF `/api/*` rule applied               |
+| XR-302  | Push AGX staging image + rollout               | gtcx-platforms    | S-XR-2      | **done**     | R-med  | —                     | api.staging.gtcx.trade/api/health 200; DB shared entities migrated; JWT secrets live |
+| XR-303  | Platforms consume `@gtcx/ui` portal primitives | gtcx-platforms    | S-XR-2      | **blocked**  | R-med  | ledger-ui NPM_TOKEN   | regulator portals                                                                    |
+| XR-401  | INF-86 algorithm decision                      | human (CISO)      | S-XR-3      | **blocked**  | R-high | —                     | XR-402–405                                                                           |
+| XR-402  | INF-86 pilot KMS ceremony gh-bog               | fabric-os         | S-XR-3      | **hold**     | R-high | XR-401                | XR-403                                                                               |
+| XR-403  | Update `bog.json` production key               | gtcx-protocols    | S-XR-3      | **blocked**  | R-high | XR-402                | #61, XR-404                                                                          |
+| XR-404  | exploration-os `contract:gtcx` post-pilot      | exploration-os    | S-XR-3      | **blocked**  | R-low  | XR-403                | —                                                                                    |
+| XR-405  | Platforms KMS sovereign signing wire-up        | gtcx-platforms    | S-XR-3      | **blocked**  | R-high | XR-403                | prod authority claims                                                                |
+| XR-501  | exploration-os validators 0.5.0 import PR      | exploration-os    | S-XR-4      | **ready**    | R-low  | —                     | dedup schemas                                                                        |
+| XR-502  | compliance-os W2 M2M intake (W2-C01)           | compliance-os     | S-XR-4      | **ready**    | R-med  | infra secret          | ExplorationOS export                                                                 |
+| XR-503  | compliance-os W2 review webhook (W2-C02)       | compliance-os     | S-XR-4      | **ready**    | R-med  | terminal-os API       | export pipeline                                                                      |
+| XR-504  | compliance-os diligence persist (W2-C03)       | compliance-os     | S-XR-4      | **ready**    | R-med  | —                     | prod restart                                                                         |
+| XR-505  | terminal-os workflow Postgres (W2-T01)         | terminal-os       | S-XR-4      | **ready**    | R-med  | —                     | XR-503                                                                               |
+| XR-506  | terra-os live permit adapters (W2-E01)         | terra-os          | S-XR-5      | **deferred** | R-high | P22 W4 core           | external diligence                                                                   |
+| XR-507  | exploration-os verifier prod deploy (F-33)     | fabric-os         | S-XR-4      | **done**     | R-med  | —                     | H-F audit close                                                                      |
+| XR-508  | exploration-os Supabase prod migrations        | fabric-os         | S-XR-4      | **done**     | R-med  | —                     | financing prod                                                                       |
+| XR-509  | S11-03 publish `@gtcx/mcp` npm                 | gtcx-protocols    | S-XR-5      | **blocked**  | R-med  | NPM credentials       | consumers                                                                            |
+| XR-510  | ledger-ui publish `@gtcx/ui@0.4.1`             | ledger-ui         | S-XR-2      | **blocked**  | R-med  | NPM_TOKEN             | XR-303                                                                               |
+| XR-511  | P22 W2 CI — compliance-os                      | compliance-os     | S-XR-5      | **ready**    | R-low  | —                     | agent ergonomics                                                                     |
+| XR-512  | P22 W2 CI — exploration-os                     | exploration-os    | S-XR-5      | **ready**    | R-low  | —                     | P25 smoke                                                                            |
+| XR-513  | P22 W2 CI — gtcx-intelligence                  | gtcx-intelligence | S-XR-5      | **ready**    | R-low  | —                     | agent ergonomics                                                                     |
+| XR-514  | P22 W2 CI — terminal-os                        | terminal-os       | S-XR-5      | **ready**    | R-low  | —                     | P25 consumer                                                                         |
+| XR-515  | P22 W2 CI — gtcx-protocols                     | gtcx-protocols    | S-XR-5      | **done**     | R-low  | —                     | agent ergonomics                                                                     |
+| XR-516  | P22 W4 core — fabric-os                        | fabric-os         | S-XR-5      | **done**     | R-med  | —                     | long-term agents — P22/P26/P27 checks wired in CI                                    |
+| XR-517  | SPEC §17 co-author sign-off                    | human             | —           | **blocked**  | R-high | Eng+Security          | Wire #2 ratification                                                                 |
+| XR-518  | INF-86 expand 43 authorities                   | fabric-os         | post S-XR-3 | **deferred** | R-high | XR-402 pilot          | close #86                                                                            |
 
 ---
 
@@ -174,7 +174,7 @@ Close mobile staging audit path and confirm intelligence infra prerequisites.
 
 | Field          | Value                                                                                                                             |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **Owner**      | gtcx-infrastructure                                                                                                               |
+| **Owner**      | fabric-os                                                                                                                         |
 | **Assessment** | **done** — full SDK `12be5342` deployed 2026-06-03                                                                                |
 | **Plan**       | ✅ `module.secrets` applied; ✅ full SDK deployed; ✅ auth enforced on non-exempt paths; `/health` 200 by design (ALB/K8s probes) |
 | **Acceptance** | `GET /policy/rules` → 401 without auth, 200 with key; `GET /feedback/stats` → 401 without auth, 200 with key                      |
@@ -248,7 +248,7 @@ XR-401 (human algorithm)
 
 | Field                  | Value                                                                 |
 | ---------------------- | --------------------------------------------------------------------- |
-| **Owner**              | gtcx-infrastructure                                                   |
+| **Owner**              | fabric-os                                                             |
 | **Assessment**         | **hold** — DO NOT APPLY                                               |
 | **Unblock conditions** | XR-401 sign-off + custodian scheduling + `GTCX-KEY-CEREMONY` approval |
 | **Runbook**            | `01-docs/09-security/key-ceremony-runbook.md` §5.4                    |
@@ -261,15 +261,15 @@ XR-401 (human algorithm)
 
 Move licence intelligence from staging fixtures toward production path.
 
-| ID     | Owner               | Assessment | Deliverable                                |
-| ------ | ------------------- | ---------- | ------------------------------------------ |
-| XR-502 | compliance-os       | ready      | M2M bearer on diligence POST               |
-| XR-503 | compliance-os       | ready      | Webhook on review accepted                 |
-| XR-504 | compliance-os       | ready      | Postgres-backed diligence store            |
-| XR-505 | terminal-os         | ready      | Postgres workflow tasks                    |
-| XR-507 | gtcx-infrastructure | blocked    | `verify.explorationos.gtcx.trade/sir` live |
-| XR-508 | gtcx-infrastructure | blocked    | Supabase migrations 006/007                |
-| XR-501 | exploration-os      | ready      | Import validators evidence Zod             |
+| ID     | Owner          | Assessment | Deliverable                                |
+| ------ | -------------- | ---------- | ------------------------------------------ |
+| XR-502 | compliance-os  | ready      | M2M bearer on diligence POST               |
+| XR-503 | compliance-os  | ready      | Webhook on review accepted                 |
+| XR-504 | compliance-os  | ready      | Postgres-backed diligence store            |
+| XR-505 | terminal-os    | ready      | Postgres workflow tasks                    |
+| XR-507 | fabric-os      | blocked    | `verify.explorationos.gtcx.trade/sir` live |
+| XR-508 | fabric-os      | blocked    | Supabase migrations 006/007                |
+| XR-501 | exploration-os | ready      | Import validators evidence Zod             |
 
 **Staging E2E path (already closed):** exploration-os fixture → compliance-os POST → terminal-os task — do not re-open unless regression.
 
@@ -281,13 +281,13 @@ Move licence intelligence from staging fixtures toward production path.
 
 `agent:next-work` smoke in CI for P0 repos per gtcx-docs hub.
 
-| ID     | Repo                | Priority | Assessment                                |
-| ------ | ------------------- | -------- | ----------------------------------------- |
-| XR-511 | compliance-os       | P0       | ready                                     |
-| XR-512 | exploration-os      | P0       | ready                                     |
-| XR-513 | gtcx-intelligence   | P0       | ready                                     |
-| XR-514 | terminal-os         | P0       | ready                                     |
-| XR-516 | gtcx-infrastructure | P1       | **done** — P22/P26/P27 checks wired in CI |
+| ID     | Repo              | Priority | Assessment                                |
+| ------ | ----------------- | -------- | ----------------------------------------- |
+| XR-511 | compliance-os     | P0       | ready                                     |
+| XR-512 | exploration-os    | P0       | ready                                     |
+| XR-513 | gtcx-intelligence | P0       | ready                                     |
+| XR-514 | terminal-os       | P0       | ready                                     |
+| XR-516 | fabric-os         | P1       | **done** — P22/P26/P27 checks wired in CI |
 
 **gtcx-protocols:** XR-515 P22 CI smoke **done** in workflow.
 
@@ -295,7 +295,7 @@ Move licence intelligence from staging fixtures toward production path.
 
 ## Repo plans (condensed)
 
-### gtcx-infrastructure
+### fabric-os
 
 | Sprint | Work                       | Status                                    |
 | ------ | -------------------------- | ----------------------------------------- |

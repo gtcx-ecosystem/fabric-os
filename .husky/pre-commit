@@ -1,1 +1,4 @@
-pnpm exec lint-staged
+#!/bin/sh
+cd "$(dirname "$0")/.." || exit 1
+node "../bridge-os/platform/scripts/ecosystem/atomic-settlement-gate.mjs" commit || exit 1
+command -v pnpm >/dev/null 2>&1 && pnpm exec lint-staged 2>/dev/null || true

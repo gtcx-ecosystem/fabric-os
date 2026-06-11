@@ -1,12 +1,12 @@
 ---
-title: 'Cloud placement — AWS control plane (gtcx-infrastructure)'
+title: 'Cloud placement — AWS control plane (fabric-os)'
 status: current
 date: 2026-06-05
 owner: fabric-os
 role: platform-engineer
 ---
 
-# AWS control plane — gtcx-infrastructure
+# AWS control plane — fabric-os
 
 **Canonical ecosystem spec (SoR: gtcx-docs):** [`gtcx-docs/01-docs/architecture/cloud-placement/README.md`](../../../../gtcx-docs/01-docs/architecture/cloud-placement/README.md) → [`gtcx-ecosystem-2026-06-05.md`](../../../../gtcx-docs/01-docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md) · **Per-repo register:** [`repo-register-2026-06-05.md`](../../../../gtcx-docs/01-docs/architecture/cloud-placement/repo-register-2026-06-05.md)
 

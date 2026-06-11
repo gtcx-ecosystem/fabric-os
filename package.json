@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "test": "bash ./deploy/platform/scripts/validate.sh quick",
+    "test": "bash ./deploy/platform/scripts/validate.sh quick && node --test platform/scripts/tests/**/*.test.mjs",
     "test:full": "bash ./deploy/platform/scripts/validate.sh full",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
@@ -38,6 +38,8 @@
     "agent:next-work": "node platform/scripts/agent-next-work.mjs",
     "fabric:assurance:run": "node platform/scripts/fabric-assurance-run.mjs",
     "fabric:assurance:check": "node platform/scripts/fabric-assurance-run.mjs --check",
+    "fabric:lanes:check": "node platform/scripts/fabric-lanes-check.mjs",
+    "fabric:lanes:check:write": "node platform/scripts/fabric-lanes-check.mjs --write",
     "daas:friction:check": "node platform/scripts/daas-friction-check.mjs",
     "daas:friction:check:write": "node platform/scripts/daas-friction-check.mjs --write",
     "daas:cards:check": "node platform/scripts/daas-cards-check.mjs",

@@ -112,7 +112,7 @@ See [`../operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md
 
 - [x] Each P1 hosting row in [`infra-per-repo-action-matrix-2026-06-05.md`](../operations/coordination/infra-per-repo-action-matrix-2026-06-05.md) tagged with lane ID
 - [x] New deploy requests cite lane ID in coordination handoff
-- [ ] `pnpm fabric:lanes:check` (future) validates JSON lane members vs deploy registry
+- [x] `pnpm fabric:lanes:check` validates JSON lane members vs deploy registry
 
 ---
 

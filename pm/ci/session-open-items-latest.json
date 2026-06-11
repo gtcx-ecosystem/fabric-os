@@ -1,0 +1,280 @@
+{
+  "schema": "gtcx://baseline-os/session-open-items/v1",
+  "at": "2026-06-11T18:22:28.724Z",
+  "repo": "fabric-os",
+  "repoPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+  "session": {
+    "startedAt": "2026-06-11T18:21:42.076Z",
+    "agentTrace": "gtcx-agent-1534a0c4-2e84-4bcb-9167-8b056b792903"
+  },
+  "transcript": {
+    "path": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-fabric-os/agent-transcripts/0bc17772-5b2a-4eb1-a2df-d2c45a58fe91/0bc17772-5b2a-4eb1-a2df-d2c45a58fe91.jsonl",
+    "lineCount": 111,
+    "userTurns": 23,
+    "userQueries": [
+      "what can we learn from claude fable",
+      "audit every repo in the gtcx-ecosystem and share a generate a report for each repo/project that identifies what fable should be used for in term of each repo achieving 100/100 for the gtcx pillars of  technical excellence, compliance, craft, world-class, and trust and safety in everything we do. save the reports in gctx-ecosystem/reports/save here",
+      "where are the rest of the repos?",
+      "sorry, that was confusing, you should be reviewing each FOLDER in the local folder gtcx-ecosystme",
+      "provide a brief summary in chat for each repo",
+      "oh, i wanted the summary to focus on how fable would be applied to each repo",
+      "Rsearch clickup 4.0 and \"convergence\" ...how can we create convergence within the gtcx ecosystem, something akin to the apple cloud ecosystem...",
+      "the google business apps ecosystem perhaps is ann even better example...",
+      "outside of google business apps what about aws? what other companies are great comps for gtcx?",
+      "hashicorp?",
+      "yes, but more than that how should we leverage the overall insights including google workspace, AWS, for the gtcx-ecosystem cannon?",
+      "GTCX is a sovereign commodity-trust suite: operators experience one workspace (Google), the fleet runs on one cloud contract \n    (AWS), and every change flows through one control plane (HashiCorp-shaped workflow) — with canon-os as constitution and \n    bridge-os as admin.\" We are a full-strack commodity trade ecosystem....not a trust suite",
+      "please have another quick review of all of our folders/repos to ensure we get this right...",
+      "What I love about apple id, vs google is the entire ecosystem works across surface, hardware and softewre...phones, watches, mac, ipad, airpod, tv, ...one account, icloud houses your data and make is available on any surface or device and I never am concerned about syncing, sharing, porting etc....moreover I can login from ANY device with the OS OR from the cloud. And the product talk to each other incredible well ...thoughts?",
+      "Tier model for canon (17 repos)\n\n  ┌───────────────────────┬─────────────────────────────────────────────────────────────┬──────────────────────────────────────────┐\n  │ Tier                  │ Repos                                                       │ Purpose                                  │\n  ├───────────────────────┼─────────────────────────────────────────────────────────────┼──────────────────────────────────────────┤\n  │ T0 — Trade core       │ exploration-os, terra-os, compliance-os,",
+      "onest constraint\n\n  GTCX won't ship watches and AirPods. But you do have surfaces: field phone, WhatsApp, web, desk terminal, agent session. Apple's\n  lesson isn't hardware — it's don't make the operator think about plumbing.\n\n  We have gtcx-hardware which was moved into gtcxOS...we have plans for drones, tables, IOt, wearables, NFC cards, etc.",
+      "Visual: separated domains\n\n    D1 FIELD              D2 LAND           D3 COMPLIANCE        D4 MARKETS\n    ─────────             ───────           ─────────────        ──────────\n    exploration-os        terra-os          compliance-os        markets-os\n    nyota-ai                                                    terminal-os\n         │                     │                  │                    │\n         └────────── evidence / rights / certification ──────────────┘\n                         ",
+      "Visual: separated domains\n\n    D1 FIELD              D2 LAND           D3 COMPLIANCE        D4 MARKETS\n    ─────────             ───────           ─────────────        ──────────\n    exploration-os        terra-os          compliance-os        markets-os\n    nyota-ai                                                    terminal-os\n         │                     │                  │                    │\n         └────────── evidence / rights / certification ──────────────┘\n                         ",
+      "xperience & primitives          │ X   │ ledger-ui, core, protocols    -- don't mix these our trade protocols are major industry standard and verification primitives",
+      "Infrastructure intelligence      │ P   │ fabric, baseline, bridge, canon, agile, gtcx-os    ---gtcxOs should not be in here ..it is the MAIN core of our trade infrastructure....",
+      "fabric, baseline, bridge, canon, agile, gtcx-os  / baseline is an AI OS....agile, canon, are utilties, fabric - infra",
+      "k, lets document the raw discussion of this chat session, all of our brainstorming and idea. Craft comprehensive and robust specs for every initiative and feature that is indicated in our goals and desired features and documenation/cannon. Create and/or  update the hand off for fabric-os and provide robust and share a note once finished that i cna share with fabric-\n  os",
+      "session:open-items"
+    ],
+    "mentionedIds": [
+      "INIT-GTCX-CONVERGENCE",
+      "INIT-GTCX-WORKSPACE-CONVERGENCE",
+      "XR-MKT-011",
+      "INIT-WORKSPACE-PLANE",
+      "INIT-TRUST-CLOUD",
+      "INIT-CONTROL-PLANE",
+      "INIT-GTCX-ADMIN",
+      "T0",
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T7",
+      "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
+      "INIT-FABRIC-LANE-DEPLOY-MATRIX",
+      "INIT-GTCX-CONSTITUTION-ART-IV-BIS",
+      "INIT-CANON-INST-F-006",
+      "INIT-PROTOCOL-46-TRADE-OBJECT-CONTINUITY",
+      "INIT-BRIDGE-LANES-REGISTRY-SYNC",
+      "INIT-GTCX-CONVERGENCE-FRAME",
+      "INIT-FABRIC-README-SOR-",
+      "XR-FABRIC-TRADE-LANES-001"
+    ]
+  },
+  "p22": {
+    "backlogClear": false,
+    "next": {
+      "storyId": "LAUNCH-PLAN-01",
+      "title": "Advance launch planning",
+      "track": "launch",
+      "workClass": "ops-docs",
+      "blocked": false
+    }
+  },
+  "git": {
+    "dirtyCount": 21,
+    "commitsSinceSession": 0
+  },
+  "productionWeek": null,
+  "intake": null,
+  "actionable": [
+    {
+      "task": "Advance launch planning",
+      "owner": "fabric-os",
+      "command": "baseline next · execute in fabric-os",
+      "doneWhen": "P22 story done + auditNotes",
+      "authority": "R",
+      "n": 1
+    },
+    {
+      "task": "Git-clean fabric-os (21 uncommitted path(s) in working tree)",
+      "owner": "fabric-os",
+      "command": "micro-commit conventional + push when GATE-PUSH green",
+      "doneWhen": "working tree clean; ahead=0",
+      "authority": "R",
+      "n": 2
+    }
+  ],
+  "completed": [
+    {
+      "kind": "session-outcome",
+      "detail": "Completed a fleet-wide audit using `bridge-os/pm/ci/five-pillar-fleet-stress-latest.json` and each repo’s `audit/evidence/five-pillar-latest.json`. Reports are saved here: **`/Users/amanianai/Sites/g",
+      "source": "transcript"
+    },
+    {
+      "kind": "session-outcome",
+      "detail": "Here’s a **Fable-application** summary per folder — what to route to Fable, at what effort, and what not to bother it with. --- ### `baseline-os` **Apply Fable for:** Long-horizon hardening of vault",
+      "source": "transcript"
+    },
+    {
+      "kind": "session-outcome",
+      "detail": "Correct — **`gtcx-os` is not a fleet enabler**. It is the **trade infrastructure core**: the monorepo that holds the protocol rail, platform desks, field surfaces, and the domains that *are* the trade",
+      "source": "transcript"
+    }
+  ],
+  "openItems": [
+    {
+      "type": "story",
+      "id": "LAUNCH-PLAN-01",
+      "title": "Advance launch planning",
+      "owner": "fabric-os",
+      "source": "P22 agent:next-work",
+      "status": "selected"
+    },
+    {
+      "type": "handoff",
+      "id": null,
+      "title": "The constitution already has the right **skeleton** — Article IV planes (Product · Fabric · Canon · Program office · Run",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "deferred",
+      "id": null,
+      "title": "Quick review of **every folder** under `gtcx-ecosystem/` (2026-06-11 workspace). Goal: map each repo to the **full-stack",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "handoff",
+      "id": null,
+      "title": "Quick review of **every folder** under `gtcx-ecosystem/` (2026-06-11 workspace). Goal: map each repo to the **full-stack",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "handoff",
+      "id": null,
+      "title": "You're naming something **deeper than Google Workspace** — and it's the right instinct for GTCX. Google converges **apps",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "handoff",
+      "id": "T0",
+      "title": "You're right to split this. A single “T0 trade core” blurs **three different businesses**: field/origination, commodity ",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "deferred",
+      "id": null,
+      "title": "You were right — the earlier diagram collapsed **six different businesses** into four rows. Here is a **canon-accurate m",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "handoff",
+      "id": null,
+      "title": "You're refining the **supporting layer** — not flattening everything into one \"P\" bucket. Here is the corrected taxonomy",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "handoff",
+      "id": null,
+      "title": "Documenting the session brainstorm and drafting fabric-os specs plus a shareable handoff. Exploring existing docs and co",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "handoff",
+      "id": null,
+      "title": "Creating the documentation package: session capture, lane specs, initiatives, fabric handoff, and shareable note. [REDAC",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "handoff",
+      "id": null,
+      "title": "Documentation is in **fabric-os**. Below is what was created and the note you can share with the fabric-os team. --- ## ",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "approval",
+      "id": null,
+      "title": "Documentation is in **fabric-os**. Below is what was created and the note you can share with the fabric-os team. --- ## ",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "handoff",
+      "id": null,
+      "title": "Gathering open items from session docs and handoff checklists. [REDACTED]",
+      "owner": "session",
+      "source": "transcript",
+      "status": "open"
+    },
+    {
+      "type": "blocker",
+      "id": "uncommitted-work",
+      "title": "21 uncommitted path(s) in working tree",
+      "owner": "fabric-os",
+      "source": "git status",
+      "status": "open",
+      "sample": [
+        " M .baseline/launch-focus.json",
+        " M .baseline/memory/session-last-start.json",
+        " M .baseline/memory/session.md",
+        " M docs/operations/coordination-handoff-template.md",
+        " M docs/operations/coordination/README.md",
+        " M docs/operations/coordination/cross-repo-agent-log.md",
+        " M docs/operations/coordination/from-markets-os-capital-formation-os-scope-2026-06-11.md",
+        " M docs/operations/coordination/from-markets-os-capital-formation-os-shareable-note-2026-06-11.md",
+        " M docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md",
+        " M docs/operations/coordination/outbound/README.md",
+        " M pm/ci/settlement-commit-latest.json",
+        " M pm/ci/settlement-push-latest.json",
+        " M pm/roadmap/initiatives.json",
+        " M pm/ux/design-research/competitive-benchmarks.md",
+        "?? docs/operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md"
+      ]
+    }
+  ],
+  "threads": [
+    "Visual: separated domains",
+    "xperience & primitives          │ X   │ ledger-ui, core, protocols    -- don't mix these our trade protocols are major i",
+    "Infrastructure intelligence      │ P   │ fabric, baseline, bridge, canon, agile, gtcx-os    ---gtcxOs should not be in h",
+    "fabric, baseline, bridge, canon, agile, gtcx-os  / baseline is an AI OS....agile, canon, are utilties, fabric - infra",
+    "k, lets document the raw discussion of this chat session, all of our brainstorming and idea. Craft comprehensive and rob",
+    "session:open-items"
+  ],
+  "backlogCandidates": [
+    "INIT-GTCX-CONVERGENCE",
+    "INIT-GTCX-WORKSPACE-CONVERGENCE",
+    "XR-MKT-011",
+    "INIT-WORKSPACE-PLANE",
+    "INIT-TRUST-CLOUD",
+    "INIT-CONTROL-PLANE",
+    "INIT-GTCX-ADMIN",
+    "T0",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T7",
+    "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
+    "INIT-FABRIC-LANE-DEPLOY-MATRIX",
+    "INIT-GTCX-CONSTITUTION-ART-IV-BIS",
+    "INIT-CANON-INST-F-006",
+    "INIT-PROTOCOL-46-TRADE-OBJECT-CONTINUITY",
+    "INIT-BRIDGE-LANES-REGISTRY-SYNC",
+    "INIT-GTCX-CONVERGENCE-FRAME",
+    "INIT-FABRIC-README-SOR-",
+    "XR-FABRIC-TRADE-LANES-001"
+  ]
+}

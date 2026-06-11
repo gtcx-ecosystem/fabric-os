@@ -28,7 +28,7 @@
 
 | Program | Originating handoff | Status | Evidence |
 | --- | --- | --- | --- |
-| **PROG-GHANA-TOKENIZATION-001** / XR-MKT-FABRIC-001 | markets-os → fabric-os | **acknowledged** 2026-06-11 | `docs/operations/coordination/from-gtcx-infrastructure-xr-mkt-fabric-001-ack-2026-06-11.md`, `xr-mkt-fabric-001-ghana-tokenization-execution-plan-2026-06-11.md` |
+| **PROG-TOKENIZATION-001** / XR-MKT-FABRIC-001 | markets-os → fabric-os | **acknowledged** 2026-06-11 | `docs/operations/coordination/from-gtcx-infrastructure-xr-mkt-fabric-001-ack-2026-06-11.md`, `xr-mkt-fabric-001-tokenization-execution-plan-2026-06-11.md` |
 
 **Canonical identity:** `fabric-os` = alias for `gtcx-infrastructure` (`bridge-os/pm/spec/service-fabric.v1.json`, P44).
 

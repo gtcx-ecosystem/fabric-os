@@ -1,19 +1,19 @@
 ---
-title: 'PROG-GHANA-TOKENIZATION-001 — cross-repo execution plan'
+title: 'PROG-TOKENIZATION-001 — cross-repo execution plan'
 status: current
 date: 2026-06-11
 owner: fabric-os
 canonical_repo: gtcx-infrastructure
-program: PROG-GHANA-TOKENIZATION-001
+program: PROG-TOKENIZATION-001
 ticket: XR-MKT-FABRIC-001
 protocol: P24
 priority: P0
 blocksIR: false
 ---
 
-# PROG-GHANA-TOKENIZATION-001 — Ghana sovereign mining and tokenization
+# PROG-TOKENIZATION-001 — Tokenization platform (configuration-first)
 
-> **North star:** One bounded Ghana transaction — verified asset → investable
+> **North star:** One bounded pilot transaction — verified asset → investable
 > instrument → compliant issuance → transfer → distribution → redemption — with
 > regulator-ready evidence.
 >
@@ -21,14 +21,14 @@ blocksIR: false
 > product, protocol, institution, and human owners below.
 
 **Ack:** [`from-gtcx-infrastructure-xr-mkt-fabric-001-ack-2026-06-11.md`](./from-gtcx-infrastructure-xr-mkt-fabric-001-ack-2026-06-11.md)  
-**Originating handoff:** markets-os `to-fabric-os-ghana-tokenization-platform-scope-2026-06-11.md`
+**Originating handoff:** markets-os `to-fabric-os-tokenization-platform-scope-2026-06-11.md`
 
 ---
 
 ## 1. Phase map
 
 ```
-P0 contracts ──► P1 bounded Ghana pilot ──► P2 live permissioned tokenization ──► P3 portfolio expansion
+P0 contracts ──► P1 bounded pilot ──► P2 live permissioned tokenization ──► P3 portfolio expansion
      │                    │                           │                                    │
   Markets +           one asset +                  audited contracts +               multi-asset +
   ledger-ui           one instrument +             live custody/settlement           sovereign nodes
@@ -100,44 +100,44 @@ legal register, chain supply, or compliance decisions.
 
 ### 3a. markets-os (backend track) — primary executor
 
-| Story     | Title                                       | Acceptance evidence                  | Depends on                       |
-| --------- | ------------------------------------------- | ------------------------------------ | -------------------------------- |
-| MKT-GH-00 | Freeze tokenization lifecycle API contracts | OpenAPI/types PR + CI contract tests | —                                |
-| MKT-GH-01 | Production issuance + allotment path        | Integration tests + signed receipt   | MKT-GH-00, identity stubs → live |
-| MKT-GH-02 | Transfer policy + concentration limits      | Fail-closed transfer tests           | MKT-GH-01, TP claims             |
-| MKT-GH-03 | Distribution + redemption orchestration     | End-to-end pilot script              | MKT-GH-02, PvP stubs → live      |
-| MKT-GH-04 | Multi-ledger reconciliation job             | Daily reconciliation report JSON     | MKT-GH-03                        |
-| MKT-GH-05 | Operator + investor API routes              | Route tests + auth matrix            | MKT-GH-00                        |
+| Story      | Title                                       | Acceptance evidence                  | Depends on                        |
+| ---------- | ------------------------------------------- | ------------------------------------ | --------------------------------- |
+| MKT-TKN-00 | Freeze tokenization lifecycle API contracts | OpenAPI/types PR + CI contract tests | —                                 |
+| MKT-TKN-01 | Production issuance + allotment path        | Integration tests + signed receipt   | MKT-TKN-00, identity stubs → live |
+| MKT-TKN-02 | Transfer policy + concentration limits      | Fail-closed transfer tests           | MKT-TKN-01, TP claims             |
+| MKT-TKN-03 | Distribution + redemption orchestration     | End-to-end pilot script              | MKT-TKN-02, PvP stubs → live      |
+| MKT-TKN-04 | Multi-ledger reconciliation job             | Daily reconciliation report JSON     | MKT-TKN-03                        |
+| MKT-TKN-05 | Operator + investor API routes              | Route tests + auth matrix            | MKT-TKN-00                        |
 
 **Existing baseline:** pilot engines documented in originating handoff; chain,
 custody, GoldBod, and fund-admin integrations remain stubbed until P1 gates clear.
 
 ### 3b. ledger-ui (design track) — parallel from P0
 
-| Story    | Title                                                | Acceptance evidence            | Depends on               |
-| -------- | ---------------------------------------------------- | ------------------------------ | ------------------------ |
-| UI-GH-00 | Tokenization lifecycle fixture pack                  | Storybook/fixture JSON in repo | MKT-GH-00 contract draft |
-| UI-GH-01 | Lifecycle stepper + assurance timeline               | Component tests + a11y         | UI-GH-00                 |
-| UI-GH-02 | Issuance wizard primitives                           | Fixture-driven stories         | UI-GH-00                 |
-| UI-GH-03 | Reserve attestation + claims matrix panels           | Visual regression              | UI-GH-00                 |
-| UI-GH-04 | Ownership register + transfer/redemption patterns    | Component tests                | UI-GH-01                 |
-| UI-GH-05 | Reconciliation drift + kill-switch recommendation UI | Fixture: normal + drift states | UI-GH-04                 |
+| Story     | Title                                                | Acceptance evidence            | Depends on                |
+| --------- | ---------------------------------------------------- | ------------------------------ | ------------------------- |
+| UI-TKN-00 | Tokenization lifecycle fixture pack                  | Storybook/fixture JSON in repo | MKT-TKN-00 contract draft |
+| UI-TKN-01 | Lifecycle stepper + assurance timeline               | Component tests + a11y         | UI-TKN-00                 |
+| UI-TKN-02 | Issuance wizard primitives                           | Fixture-driven stories         | UI-TKN-00                 |
+| UI-TKN-03 | Reserve attestation + claims matrix panels           | Visual regression              | UI-TKN-00                 |
+| UI-TKN-04 | Ownership register + transfer/redemption patterns    | Component tests                | UI-TKN-01                 |
+| UI-TKN-05 | Reconciliation drift + kill-switch recommendation UI | Fixture: normal + drift states | UI-TKN-04                 |
 
 **Split:** ledger-ui owns **reusable, fixture-driven components**; markets-os
 owns routes, permissions, API clients, regulatory behavior, and integration tests.
 
 **Inbound to ledger-ui:** fabric-os to open
-`to-ledger-ui-ghana-tokenization-ui-track-2026-06-11.md` in ledger-ui repo
+`to-ledger-ui-tokenization-ui-track-2026-06-11.md` in ledger-ui repo
 (owner-repo action).
 
 ### 3c. fabric-os (orchestration track)
 
-| Story     | Title                                | Acceptance evidence                           |
-| --------- | ------------------------------------ | --------------------------------------------- |
-| FAB-GH-00 | Ack + execution plan                 | This document + ack                           |
-| FAB-GH-01 | Phase 0 assurance at contract freeze | `audit/evidence/fabric-assurance-latest.json` |
-| FAB-GH-02 | Hub milestone rows per phase seal    | baseline-os agentic-state update              |
-| FAB-GH-03 | Runtime readiness matrix for P1      | Infra staging matrix + pen-test window        |
+| Story      | Title                                | Acceptance evidence                           |
+| ---------- | ------------------------------------ | --------------------------------------------- |
+| FAB-TKN-00 | Ack + execution plan                 | This document + ack                           |
+| FAB-TKN-01 | Phase 0 assurance at contract freeze | `audit/evidence/fabric-assurance-latest.json` |
+| FAB-TKN-02 | Hub milestone rows per phase seal    | baseline-os agentic-state update              |
+| FAB-TKN-03 | Runtime readiness matrix for P1      | Infra staging matrix + pen-test window        |
 
 ---
 
@@ -147,7 +147,7 @@ owns routes, permissions, API clients, regulatory behavior, and integration test
 | ------------------------------ | --------------------------------------------------- | ------------------------------------ |
 | Transaction kernel             | **markets-os**                                      | Weekly status via hub                |
 | Tokenization UI primitives     | **ledger-ui**                                       | Parallel track from P0               |
-| Identity / AML / accreditation | TradePass / Veritas / GCI                           | Block MKT-GH-02 until claims live    |
+| Identity / AML / accreditation | TradePass / Veritas / GCI                           | Block MKT-TKN-02 until claims live   |
 | Cadastre / asset passport      | **terra-os**, **exploration-os**, Ghana authorities | Block P1 asset selection             |
 | Compliance decisions / filings | **compliance-os**, protocol owners                  | Evidence pack template               |
 | Custody / reserves             | VaultMark / GoldBod integrators                     | Block P2                             |
@@ -160,13 +160,13 @@ owns routes, permissions, API clients, regulatory behavior, and integration test
 
 ## 5. Phase 0 stories (immediate)
 
-| ID        | Owner               | Done when                                                            |
-| --------- | ------------------- | -------------------------------------------------------------------- |
-| MKT-GH-00 | markets-os          | Lifecycle types + OpenAPI frozen; CI contract gate green             |
-| UI-GH-00  | ledger-ui           | Fixture pack covers normal, rejected, pending, default, drift        |
-| FAB-GH-00 | fabric-os           | Ack + plan published (**done**)                                      |
-| COS-GH-00 | compliance-os       | Instrument classification checklist for first SPV/right type         |
-| INF-GH-00 | gtcx-infrastructure | Staging secrets matrix row for tokenization operators (no prod keys) |
+| ID         | Owner               | Done when                                                            |
+| ---------- | ------------------- | -------------------------------------------------------------------- |
+| MKT-TKN-00 | markets-os          | Lifecycle types + OpenAPI frozen; CI contract gate green             |
+| UI-TKN-00  | ledger-ui           | Fixture pack covers normal, rejected, pending, default, drift        |
+| FAB-TKN-00 | fabric-os           | Ack + plan published (**done**)                                      |
+| COS-TKN-00 | compliance-os       | Instrument classification checklist for first SPV/right type         |
+| INF-TKN-00 | gtcx-infrastructure | Staging secrets matrix row for tokenization operators (no prod keys) |
 
 **P0 exit:** Interactive operator + investor workflows against controlled stubs;
 fail-closed behavior and signed evidence chain preserved.
@@ -219,11 +219,11 @@ Fabric **records** these gates; it does **not** execute Class S approvals.
 
 ## 9. Sequencing (next 14 days)
 
-| Week | Markets                   | ledger-ui               | fabric-os                     | bridge-os                                     |
-| ---- | ------------------------- | ----------------------- | ----------------------------- | --------------------------------------------- |
-| W1   | MKT-GH-00 contract freeze | UI-GH-00 fixtures       | FAB-GH-01 assurance at freeze | ZenHub epic under PROG-GHANA-TOKENIZATION-001 |
-| W2   | MKT-GH-01 issuance path   | UI-GH-01..02 components | INF-GH-00 staging matrix      | Fleet fabric check                            |
-| W3   | MKT-GH-02 transfers       | UI-GH-03..04            | P1 gate review                | Delegate REM-\* from assurance                |
+| Week | Markets                    | ledger-ui                | fabric-os                      | bridge-os                               |
+| ---- | -------------------------- | ------------------------ | ------------------------------ | --------------------------------------- |
+| W1   | MKT-TKN-00 contract freeze | UI-TKN-00 fixtures       | FAB-TKN-01 assurance at freeze | ZenHub epic under PROG-TOKENIZATION-001 |
+| W2   | MKT-TKN-01 issuance path   | UI-TKN-01..02 components | INF-TKN-00 staging matrix      | Fleet fabric check                      |
+| W3   | MKT-TKN-02 transfers       | UI-TKN-03..04            | P1 gate review                 | Delegate REM-\* from assurance          |
 
 ---
 

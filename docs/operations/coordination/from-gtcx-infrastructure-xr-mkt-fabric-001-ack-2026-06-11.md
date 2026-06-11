@@ -6,10 +6,10 @@ from: fabric-os
 canonical_repo: gtcx-infrastructure
 to: markets-os, ledger-ui, bridge-os, baseline-os
 ticket: XR-MKT-FABRIC-001
-program: PROG-GHANA-TOKENIZATION-001
+program: PROG-TOKENIZATION-001
 protocol: P24
 authorityClass: R
-responds_to: markets-os/docs/operations/coordination/to-fabric-os-ghana-tokenization-platform-scope-2026-06-11.md
+responds_to: markets-os/docs/operations/coordination/to-fabric-os-tokenization-platform-scope-2026-06-11.md
 ---
 
 # outbound-ack — XR-MKT-FABRIC-001
@@ -35,12 +35,12 @@ description or tags.
 
 Fabric acknowledges **XR-MKT-FABRIC-001** on 2026-06-11.
 
-- **Inbound received:** [`to-fabric-os-ghana-tokenization-platform-scope-2026-06-11.md`](https://github.com/gtcx-ecosystem/markets-os/blob/main/docs/operations/coordination/to-fabric-os-ghana-tokenization-platform-scope-2026-06-11.md)
-- **Program identifier:** `PROG-GHANA-TOKENIZATION-001`
+- **Inbound received:** [`to-fabric-os-tokenization-platform-scope-2026-06-11.md`](https://github.com/gtcx-ecosystem/markets-os/blob/main/docs/operations/coordination/to-fabric-os-tokenization-platform-scope-2026-06-11.md)
+- **Program identifier:** `PROG-TOKENIZATION-001`
 - **Orchestration role:** dependency graph, parallel workplan, milestone tracking,
   acceptance evidence — **not** SoR for identity, title, compliance decisions,
   custody, settlement finality, or Markets transaction state
-- **Execution plan:** [`xr-mkt-fabric-001-ghana-tokenization-execution-plan-2026-06-11.md`](./xr-mkt-fabric-001-ghana-tokenization-execution-plan-2026-06-11.md)
+- **Execution plan:** [`xr-mkt-fabric-001-tokenization-execution-plan-2026-06-11.md`](./xr-mkt-fabric-001-tokenization-execution-plan-2026-06-11.md)
 
 ## Acceptance criteria (handoff §)
 
@@ -68,4 +68,4 @@ Fabric acknowledges **XR-MKT-FABRIC-001** on 2026-06-11.
 
 Report under `gtcx-infrastructure`:
 
-> XR-MKT-FABRIC-001 acknowledged; PROG-GHANA-TOKENIZATION-001 execution plan published.
+> XR-MKT-FABRIC-001 acknowledged; PROG-TOKENIZATION-001 execution plan published.

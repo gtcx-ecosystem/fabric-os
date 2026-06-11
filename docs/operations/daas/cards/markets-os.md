@@ -2,21 +2,25 @@
 title: DaaS card — gtcx-markets (pilot reference)
 status: delivered
 date: 2026-06-10
+laneId: L4b
+deployProduct: GTCX Cloud
 friction: XR-MKT-011
-owner: gtcx-infrastructure
-productOwner: gtcx-markets
+owner: fabric-os
+productOwner: markets-os
 protocol: P40 + P41
 ---
 
-# DaaS card: gtcx-markets (XR-MKT-011 pilot)
+# DaaS card: markets-os (XR-MKT-011 pilot)
 
 ## Profile
 
-| Field                     | Value                                                  |
-| ------------------------- | ------------------------------------------------------ |
-| `deployment-profile.json` | `gtcx-markets/docs/operations/deployment-profile.json` |
-| Pilot                     | `INIT-GTCX-INFRA-DEPLOY`                               |
-| Handoff                   | `to-fabric-os-s39-01-authority-routes-2026-06-10.md`   |
+| Field                     | Value                                                |
+| ------------------------- | ---------------------------------------------------- |
+| **laneId**                | **L4b** — market exchange & investment               |
+| **deployProduct**         | **GTCX Cloud** (AGX module — ADR-007)                |
+| `deployment-profile.json` | `markets-os/docs/operations/deployment-profile.json` |
+| Pilot                     | `INIT-GTCX-INFRA-DEPLOY`                             |
+| Handoff                   | `to-fabric-os-s39-01-authority-routes-2026-06-10.md` |
 
 ## Seal witness
 

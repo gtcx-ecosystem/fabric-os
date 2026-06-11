@@ -2,8 +2,10 @@
 title: DaaS card — compliance-os
 status: done
 date: 2026-06-10
+laneId: L3
+deployProduct: product-hosted
 friction: F2
-owner: gtcx-infrastructure
+owner: fabric-os
 productOwner: compliance-os
 protocol: P41-DEVOPS-AS-A-SERVICE
 ---
@@ -14,6 +16,8 @@ protocol: P41-DEVOPS-AS-A-SERVICE
 
 | Field                     | Value                                                   |
 | ------------------------- | ------------------------------------------------------- |
+| **laneId**                | **L3** — compliance & attestation (enterprise product)  |
+| **deployProduct**         | **product-hosted** (not ADR-007 Sovereign/Cloud bundle) |
 | `deployment-profile.json` | `compliance-os/docs/operations/deployment-profile.json` |
 | Deploy mode               | `eks-service` (multi-workload)                          |
 | Matrix ref                | `INF-PER-REPO-001#compliance-os`                        |

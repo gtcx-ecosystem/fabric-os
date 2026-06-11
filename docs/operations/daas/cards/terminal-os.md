@@ -2,8 +2,10 @@
 title: DaaS card — terminal-os
 status: delivered
 date: 2026-06-10
+laneId: L2
+deployProduct: product-hosted
 friction: F1
-owner: gtcx-infrastructure
+owner: fabric-os
 productOwner: terminal-os
 protocol: P41-DEVOPS-AS-A-SERVICE
 ---
@@ -14,6 +16,8 @@ protocol: P41-DEVOPS-AS-A-SERVICE
 
 | Field                     | Value                                                 |
 | ------------------------- | ----------------------------------------------------- |
+| **laneId**                | **L2** — market intelligence                          |
+| **deployProduct**         | **product-hosted** (FIFTY-FOUR desk — not ADR bundle) |
 | `deployment-profile.json` | `terminal-os/docs/operations/deployment-profile.json` |
 | Deploy mode               | `static` on EKS                                       |
 | Matrix ref                | `INF-PER-REPO-001#terminal-os`                        |

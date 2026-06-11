@@ -17,11 +17,35 @@ const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
 
 const REQUIRED = ['terminal-os', 'compliance-os', 'markets-os'];
+const VALID_DEPLOY = new Set(['GTCX Cloud', 'GTCX Sovereign', 'product-hosted']);
 const gates = { index: { ok: existsSync(INDEX) }, cards: {} };
+
+function parseCardMeta(text) {
+  const laneId = text.match(/^laneId:\s*(\S+)/m)?.[1] ?? null;
+  const deployProduct = text.match(/^deployProduct:\s*(.+)$/m)?.[1]?.trim() ?? null;
+  return { laneId, deployProduct };
+}
 
 for (const repo of REQUIRED) {
   const path = join(CARDS_DIR, `${repo}.md`);
-  gates.cards[repo] = { ok: existsSync(path), path: `docs/operations/daas/cards/${repo}.md` };
+  const exists = existsSync(path);
+  let laneId = null;
+  let deployProduct = null;
+  let metaOk = false;
+  if (exists) {
+    const meta = parseCardMeta(readFileSync(path, 'utf8'));
+    laneId = meta.laneId;
+    deployProduct = meta.deployProduct;
+    metaOk = Boolean(laneId && deployProduct && VALID_DEPLOY.has(deployProduct));
+  }
+  gates.cards[repo] = {
+    ok: exists && metaOk,
+    exists,
+    metaOk,
+    laneId,
+    deployProduct,
+    path: `docs/operations/daas/cards/${repo}.md`,
+  };
 }
 
 let s2Items = [];

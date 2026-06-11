@@ -1,12 +1,17 @@
-# Moved to gtcx-ecosystem
+# Fabric OS
 
-This repository is archived. Development continues at:
+**Lane:** **I — Infra** (cloud control plane for the GTCX trade ecosystem)
 
-https://gtcx.trade/ecosystem/03-platform/infrastructure/
+Service fabric execution layer: AWS/EKS/Terraform, DaaS/SECaaS, staging/prod deploy, and fleet infra assurance. **Trade infrastructure core (C)** lives in sibling **`gtcx-os`** — fabric **runs** it; fabric does not define trade protocols or platform desks.
 
-See [repo-redirects.md](https://gtcx.trade/ecosystem/01-docs/operations/ecosystem/repo-redirects).
+| Resource               | Path                                                                                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Agent entry            | [`AGENTS.md`](./AGENTS.md)                                                                                                                             |
+| Lane spec              | [`docs/specs/ecosystem/trade-ecosystem-lanes-spec.md`](./docs/specs/ecosystem/trade-ecosystem-lanes-spec.md)                                           |
+| Deploy matrix          | [`docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md`](./docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md) |
+| P34 shadow (read-only) | [`gtcx-os/platform/infrastructure/`](https://gtcx.trade/ecosystem/03-platform/infrastructure/)                                                         |
 
-**Cutover:** P34 Phase 7 · H-P34-01 · canonical SoR = `gtcx-ecosystem` on **gtcx.trade**
+**Edit SoR:** this repo (`fabric-os`). P34 monorepo shadow is browse/cache only — see [repo-redirects](https://gtcx.trade/ecosystem/01-docs/operations/ecosystem/repo-redirects).
 
 ## Governance
 

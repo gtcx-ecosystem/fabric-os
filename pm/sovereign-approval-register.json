@@ -1,11 +1,11 @@
 {
-  "$schema": "gtcx://gtcx-infrastructure/sovereign-approval-register/v1",
+  "$schema": "gtcx://fabric-os/sovereign-approval-register/v1",
   "version": "1.0.0",
   "updated": "2026-06-10",
   "program": "Security-as-a-Service",
   "initiative": "INIT-GTCX-INFRA-SECAS",
   "protocol": "P42-SECURITY-AS-A-SERVICE",
-  "owner": "gtcx-infrastructure",
+  "owner": "fabric-os",
   "principle": "Class S = Approval needed only — blocksIR false; agent prepares, human signs",
   "items": [
     {
@@ -21,7 +21,7 @@
       "approvedBy": "human:sovereign",
       "witness": "audit/evidence/ext-inf-002-sow-approval-2026-06-10.json",
       "seal": "docs/operations/coordination/from-fabric-os-ext-inf-002-sow-approved-2026-06-10.md",
-      "postApprovalOwner": "gtcx-infrastructure",
+      "postApprovalOwner": "fabric-os",
       "postApprovalAction": "Schedule live-stack pen-test window after vendor countersign",
       "countersign": {
         "id": "EXT-INF-002-COUNTERSIGN",

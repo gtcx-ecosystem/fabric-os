@@ -1,9 +1,9 @@
 {
-  "$schema": "gtcx://gtcx-infrastructure/daas-stories/v1",
+  "$schema": "gtcx://fabric-os/daas-stories/v1",
   "version": "1.0.0",
   "updated": "2026-06-10",
   "program": "DevOps-as-a-Service",
-  "owner": "gtcx-infrastructure",
+  "owner": "fabric-os",
   "stories": [
     {
       "id": "DAAS-S1-01",
@@ -11,7 +11,7 @@
       "title": "DaaS friction register structural witness",
       "priority": "P0",
       "status": "done",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "files": [
         "pm/friction-register.json",
         "pm/daas-roadmap.json",
@@ -30,7 +30,7 @@
       "title": "Canonical scheduled fleet-health witness",
       "priority": "P0",
       "status": "done",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "files": [
         "package.json",
         "platform/tools/scripts/cross-repo-health-probe.mjs",
@@ -51,7 +51,7 @@
       "title": "Correct AGX staging image and health",
       "priority": "P0",
       "status": "done",
-      "owner": "gtcx-os/platforms → gtcx-infrastructure",
+      "owner": "gtcx-os/platforms → fabric-os",
       "frictionIds": ["F-AGX-01"],
       "files": [
         "deploy/kubernetes/overlays/staging/kustomization.yaml",
@@ -79,7 +79,7 @@
       "title": "Deliver XR-MKT-011 authority routes and trace seal",
       "priority": "P0",
       "status": "done",
-      "owner": "gtcx-infrastructure → gtcx-markets",
+      "owner": "fabric-os → markets-os",
       "frictionIds": ["XR-MKT-011"],
       "files": [
         "deploy/kubernetes/overlays/staging/ingress.yaml",
@@ -87,10 +87,7 @@
         "docs/operations/coordination/from-fabric-os-s39-01-authority-routes-2026-06-10.md",
         "docs/operations/coordination/xr-mkt-011-authority-url-matrix-2026-06-10.md"
       ],
-      "acceptance": [
-        "pnpm daas:fleet:health",
-        "pnpm --dir ../gtcx-markets authority:trace:capture"
-      ],
+      "acceptance": ["pnpm daas:fleet:health", "pnpm --dir ../markets-os authority:trace:capture"],
       "uat": [
         { "text": "Ingress paths for 7 authority URLs applied", "done": true },
         { "text": "Canonical URL matrix published", "done": true },
@@ -106,7 +103,7 @@
       "title": "Align validate-all gates to P35 paths",
       "priority": "P1",
       "status": "done",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "files": [
         "pnpm-workspace.yaml",
         "platform/tools/scripts/validate-all.mjs",
@@ -130,18 +127,18 @@
       "title": "Publish per-repo DaaS cards",
       "priority": "P1",
       "status": "done",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "frictionIds": ["F1"],
       "files": [
         "docs/operations/daas/README.md",
         "docs/operations/daas/cards/terminal-os.md",
         "docs/operations/daas/cards/compliance-os.md",
-        "docs/operations/daas/cards/gtcx-markets.md",
+        "docs/operations/daas/cards/markets-os.md",
         "platform/scripts/daas-cards-check.mjs"
       ],
       "acceptance": ["pnpm daas:cards:check:write"],
       "uat": [
-        { "text": "Cards for terminal-os, compliance-os, gtcx-markets", "done": true },
+        { "text": "Cards for terminal-os, compliance-os, markets-os", "done": true },
         { "text": "daas:cards:check harness PASS", "done": true }
       ],
       "blockers": null
@@ -152,7 +149,7 @@
       "title": "Publish staging ingress matrix",
       "priority": "P1",
       "status": "done",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "files": [
         "docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md",
         "docs/operations/coordination/from-fabric-os-terminal-os-eks-2026-06-10.md"
@@ -170,7 +167,7 @@
       "title": "Compliance-os GHCR imagePullSecrets on all app deployments",
       "priority": "P1",
       "status": "done",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "frictionIds": ["F2"],
       "files": [
         "deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml",
@@ -197,7 +194,7 @@
       "title": "Intelligence staging image with ENABLE_COST_ROUTER",
       "priority": "P1",
       "status": "done",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "frictionIds": ["F6"],
       "files": [
         "deploy/kubernetes/overlays/staging/",

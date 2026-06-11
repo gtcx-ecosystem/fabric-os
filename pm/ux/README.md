@@ -2,7 +2,7 @@
 title: UX SoR — GTCX Infrastructure Control Plane
 status: current
 date: 2026-06-10
-owner: gtcx-infrastructure
+owner: fabric-os
 protocols: [P20-SEF, P21-UX-DOC-OPS, A1-PRODUCT-EXCELLENCE]
 ---
 
@@ -11,7 +11,7 @@ protocols: [P20-SEF, P21-UX-DOC-OPS, A1-PRODUCT-EXCELLENCE]
 **Product:** GTCX Infrastructure — sovereign AWS/K8s control plane (DaaS + SECaaS)  
 **Value proposition:** Sibling product repos ship staging pilots on af-south-1 with auditable deploy handoffs, fleet health witnesses, and parallel security evidence — without each team owning Terraform, WAF, or pen-test execution.
 
-**Repo kind:** Control-plane / operator-surface (CLI, runbooks, docs-site, coordination seals). End-user commodity-trade journeys live in sibling repos (`compliance-os`, `gtcx-markets`, `terminal-os`). This SoR documents **operators and integrators**, not field inspectors or traders.
+**Repo kind:** Control-plane / operator-surface (CLI, runbooks, docs-site, coordination seals). End-user commodity-trade journeys live in sibling repos (`compliance-os`, `markets-os`, `terminal-os`). This SoR documents **operators and integrators**, not field inspectors or traders.
 
 ## Traceability map
 
@@ -24,12 +24,12 @@ protocols: [P20-SEF, P21-UX-DOC-OPS, A1-PRODUCT-EXCELLENCE]
 
 ## Owner roster
 
-| Role               | Owner                                | Artifact                                        |
-| ------------------ | ------------------------------------ | ----------------------------------------------- |
-| Principal TPM      | gtcx-infrastructure                  | `pm/daas-roadmap.json`, `pm/secas-roadmap.json` |
-| Platform architect | gtcx-infrastructure                  | `deploy/`, `platform/tools/control-plane/`      |
-| Security operator  | gtcx-infrastructure + Human/Security | `pm/sovereign-approval-register.json`           |
-| Design / UX        | Principal product designer (fleet)   | this tree                                       |
+| Role               | Owner                              | Artifact                                        |
+| ------------------ | ---------------------------------- | ----------------------------------------------- |
+| Principal TPM      | fabric-os                          | `pm/daas-roadmap.json`, `pm/secas-roadmap.json` |
+| Platform architect | fabric-os                          | `deploy/`, `platform/tools/control-plane/`      |
+| Security operator  | fabric-os + Human/Security         | `pm/sovereign-approval-register.json`           |
+| Design / UX        | Principal product designer (fleet) | this tree                                       |
 
 _Formal `pm/team/roster.json` not yet provisioned — roster inferred from program owners._
 
@@ -49,5 +49,5 @@ _Formal `pm/team/roster.json` not yet provisioned — roster inferred from progr
 pnpm pm:sync
 pnpm ops:check
 # Fleet A1 probe (from bridge-os):
-cd ../bridge-os && pnpm audit:five-core:run -- --repo gtcx-infrastructure --core A1 --write
+cd ../bridge-os && pnpm audit:five-core:run -- --repo fabric-os --core A1 --write
 ```

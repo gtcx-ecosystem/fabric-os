@@ -14,7 +14,7 @@ type: primary
 
 ## Context
 
-Custodian agent or senior SRE operating **gtcx-infrastructure** from Cursor/CI. Works in `af-south-1` staging with `kubectl`, Terraform, and repo scripts — not by forwarding runbooks to a human. Success means sibling repos unblock without infra becoming the long pole.
+Custodian agent or senior SRE operating **fabric-os** from Cursor/CI. Works in `af-south-1` staging with `kubectl`, Terraform, and repo scripts — not by forwarding runbooks to a human. Success means sibling repos unblock without infra becoming the long pole.
 
 ## Goals
 

@@ -1,10 +1,10 @@
 {
-  "$schema": "gtcx://gtcx-infrastructure/secas-stories/v1",
+  "$schema": "gtcx://fabric-os/secas-stories/v1",
   "version": "1.0.0",
   "updated": "2026-06-10",
   "program": "Security-as-a-Service",
   "initiative": "INIT-GTCX-INFRA-SECAS",
-  "owner": "gtcx-infrastructure",
+  "owner": "fabric-os",
   "stories": [
     {
       "id": "SECAS-S1-01",
@@ -12,7 +12,7 @@
       "title": "Sovereign approval + security friction registers",
       "priority": "P0",
       "status": "done",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "files": [
         "pm/sovereign-approval-register.json",
         "pm/security-friction-register.json",
@@ -38,7 +38,7 @@
       "title": "P42 hub protocol + fleet harness",
       "priority": "P0",
       "status": "done",
-      "owner": "bridge-os → gtcx-infrastructure",
+      "owner": "bridge-os → fabric-os",
       "files": [
         "bridge-os/pm/spec/security-as-a-service.v1.json",
         "bridge-os/platform/scripts/ecosystem/ecosystem-secas-check.mjs",
@@ -57,7 +57,7 @@
       "title": "Live-stack pen-test execution window",
       "priority": "P0",
       "status": "in_progress",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "frictionIds": ["SEC-PENTEST-01"],
       "files": [
         "audit/pen-test-intake-evidence-2026-05-31.md",
@@ -86,7 +86,7 @@
       "title": "Compliance-os staging IRSA least-privilege review",
       "priority": "P1",
       "status": "done",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "frictionIds": ["SEC-IRSA-01"],
       "files": [
         "deploy/kubernetes/overlays/staging/compliance-os/",
@@ -113,18 +113,18 @@
       "title": "Publish per-repo SECaaS security cards",
       "priority": "P1",
       "status": "done",
-      "owner": "gtcx-infrastructure",
+      "owner": "fabric-os",
       "files": [
         "docs/operations/secas/README.md",
         "docs/operations/secas/cards/compliance-os.md",
-        "docs/operations/secas/cards/gtcx-markets.md",
+        "docs/operations/secas/cards/markets-os.md",
         "docs/operations/secas/cards/gtcx-intelligence.md",
         "platform/scripts/secas-cards-check.mjs"
       ],
       "acceptance": ["pnpm secas:cards:check:write"],
       "uat": [
         {
-          "text": "SECaaS cards for compliance-os, gtcx-markets, gtcx-intelligence",
+          "text": "SECaaS cards for compliance-os, markets-os, gtcx-intelligence",
           "done": true
         },
         {

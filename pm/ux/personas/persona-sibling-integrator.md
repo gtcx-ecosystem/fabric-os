@@ -14,7 +14,7 @@ type: primary
 
 ## Context
 
-Engineer in `compliance-os`, `gtcx-markets`, `terminal-os`, or `gtcx-intelligence` who needs staging ingress, secrets, GHCR pull, or WAF paths — without owning the AWS control plane. Files inbound handoffs (`to-fabric-os-*`) and consumes outbound seals.
+Engineer in `compliance-os`, `markets-os`, `terminal-os`, or `gtcx-intelligence` who needs staging ingress, secrets, GHCR pull, or WAF paths — without owning the AWS control plane. Files inbound handoffs (`to-fabric-os-*`) and consumes outbound seals.
 
 ## Goals
 

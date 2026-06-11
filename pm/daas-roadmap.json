@@ -1,13 +1,13 @@
 {
-  "$schema": "gtcx://gtcx-infrastructure/daas-roadmap/v1",
+  "$schema": "gtcx://fabric-os/daas-roadmap/v1",
   "version": "1.0.0",
   "updated": "2026-06-10",
   "program": "DevOps-as-a-Service",
   "initiative": "INIT-GTCX-INFRA-DAAS",
   "protocol": "P41-DEVOPS-AS-A-SERVICE",
-  "owner": "gtcx-infrastructure",
+  "owner": "fabric-os",
   "primaryRoadmap": true,
-  "note": "Primary gtcx-infrastructure program — not bridge-os ECO-PROD or product PM",
+  "note": "Primary fabric-os program — not bridge-os ECO-PROD or product PM",
   "extends": {
     "p40": "bridge-os/pm/spec/deployment-choreography.v1.json",
     "matrix": "docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md",

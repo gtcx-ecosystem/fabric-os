@@ -2,7 +2,7 @@
   "id": "JTBD-staging-substrate-ready",
   "title": "When a sibling repo needs staging, I want infra handoff executed with witness, so I can run product prereq checks",
   "personaId": "sibling-integrator",
-  "job": "Receive staging substrate (secrets, ingress, deploy) from gtcx-infrastructure with auditable completion",
+  "job": "Receive staging substrate (secrets, ingress, deploy) from fabric-os with auditable completion",
   "situation": "Product repo files inbound handoff (e.g. terminal-os W2, compliance-os Hub #17, markets authority routes)",
   "motivation": "Pilot deadline or sprint commitment blocked on AWS/K8s outside product repo ownership",
   "expectedOutcome": "Outbound seal published; product `w2:staging-prereq-check` or equivalent passes",
@@ -27,7 +27,7 @@
   "linkedExrs": ["EXR-001"],
   "linkedPrds": ["PRD-daass-operator-substrate"],
   "nonGoals": [
-    "Product feature development in gtcx-infrastructure",
+    "Product feature development in fabric-os",
     "Production apply without Class A authorization artifact"
   ]
 }

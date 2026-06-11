@@ -14,7 +14,7 @@ type: secondary
 
 ## Context
 
-Agent or human security lead executing **SECaaS** in gtcx-infrastructure: WAF apply, IRSA review, pen-test window prep, sovereign register hygiene. Prepares Class S intake; never substitutes human signature on SOW or auditor MSA.
+Agent or human security lead executing **SECaaS** in fabric-os: WAF apply, IRSA review, pen-test window prep, sovereign register hygiene. Prepares Class S intake; never substitutes human signature on SOW or auditor MSA.
 
 ## Goals
 

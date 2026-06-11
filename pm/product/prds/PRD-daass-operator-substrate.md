@@ -19,7 +19,7 @@ Sibling repos cannot own AWS/K8s control plane but need staging pilots on af-sou
 
 ## Solution
 
-DevOps-as-a-Service in gtcx-infrastructure: per-repo cards, staging scripts, fleet health witness, friction register.
+DevOps-as-a-Service in fabric-os: per-repo cards, staging scripts, fleet health witness, friction register.
 
 ## Success criteria
 

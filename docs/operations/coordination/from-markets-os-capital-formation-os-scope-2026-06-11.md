@@ -27,6 +27,10 @@ The resulting product north star is:
 Fabric must expand its current tokenization programme coordination into the
 broader Capital Formation OS programme described in that specification.
 
+The time-to-close and controlled-market protocol is:
+
+`markets-os/docs/specs/time-boxed-capital-formation-market-protocol.md`
+
 ## Scope correction
 
 `PROG-TOKENIZATION-001` correctly coordinates the controlled ownership and
@@ -62,10 +66,13 @@ not the platform's primary identity.
 | Asset Passport and authority registry | markets-os + terra-os + exploration-os + authority owners | Portable asset/project/programme identity with current evidence                                                           |
 | Capital Compiler and Scenario Room    | markets-os                                                | Explainable ranked structures, capital stacks, waterfalls, covenants, scenarios                                           |
 | Mandate and Capital Network           | markets-os                                                | Machine-readable capital-provider mandates, matching, syndication, and relationship status                                |
+| Two-sided Deal Team OS                | markets-os + professional-service owners                  | Dedicated lister and investor teams combining governed agents with accountable human professionals                        |
+| Time-boxed primary market             | markets-os + fabric-os                                    | Close-ready admission and terminal market outcome inside declared 7/14/30-day windows                                     |
 | Controlled close                      | markets-os                                                | Conditions precedent, approvals, commitments, payments, issuance, closing evidence                                        |
 | Ownership and controlled instruments  | markets-os + ledger-ui                                    | Direct, SPV/fund, and permissioned digital ownership lifecycle                                                            |
 | Servicing and covenant engine         | markets-os + authority owners                             | Obligations, performance, draws, distributions, monitoring, exception handling                                            |
 | Workout and exit                      | markets-os + human/legal owners                           | Waiver, remediation, restructuring, enforcement, wind-down, redemption, exit                                              |
+| Controlled secondary liquidity        | markets-os + authority owners                             | RFQ, block trade, periodic auction, buyback, redemption, and qualified continuous-market pathways                         |
 | Regulatory adapter                    | compliance-os + markets-os                                | Jurisdiction profiles, classification, filings, restrictions, regulator evidence                                          |
 | Runtime and assurance                 | fabric-os                                                 | Secure runtime, secrets, observability, DR, external assurance, deployment proof                                          |
 | Product UI and assisted channels      | ledger-ui + markets-os + mobile/messaging owners          | Decision-first role surfaces, field/offline/voice/local-language access                                                   |
@@ -180,36 +187,76 @@ replication; independently governed nodes can use the shared kernel.
 - no shared mutable operational database;
 - explicit sovereign data and authority controls.
 
+### Epic 9 — Transaction Certainty and Time-Boxed Market
+
+**Outcome:** Every live listing is close-ready and reaches a declared terminal
+market outcome inside a governed 7, 14, or 30-day window.
+
+**Exit evidence:**
+
+- Transaction Certainty Record and Close Readiness Score;
+- live-admission and deadline state machine;
+- predeclared award, binding-commitment, financial-close, or first-funding
+  standard;
+- governed extension, withdrawal, failure, and redisclosure rules;
+- AI Evidence Room, approved-answer disclosure, media room, and syndication
+  book; and
+- separate lister and investor deal teams with conflicts, privilege,
+  engagement, authority, and information-barrier controls; and
+- measured live-to-close performance by instrument and window.
+
+### Epic 10 — Controlled Secondary Market
+
+**Outcome:** Holders have credible, compliant exit pathways appropriate to each
+instrument's liquidity and legal characteristics.
+
+**Exit evidence:**
+
+- negotiated assignment, institutional RFQ, block trade, and periodic
+  call-auction workflows;
+- issuer tender, buyback, redemption, and refinancing pathways;
+- transfer-rule simulation before order acceptance;
+- DvP/PvP settlement and authoritative-register reconciliation;
+- clear distinction between model, indicative, executable, and traded prices;
+  and
+- continuous order book or AMM enabled only after explicit liquidity,
+  disclosure, legal, and surveillance gates pass.
+
 ## Requested Fabric actions
 
 1. Acknowledge `XR-MKT-FABRIC-002` and assign
    `PROG-CAPITAL-FORMATION-001`.
 2. Preserve `PROG-TOKENIZATION-001` as a child workstream.
 3. Publish a cross-repo dependency graph and phased execution plan for the
-   eight epics.
+   ten epics.
 4. Map existing Markets, tokenization, EIX, regulatory-adapter, ledger-ui,
    authority, and runtime work into the broader programme.
 5. Identify ambiguous ownership, duplicated capabilities, and missing systems.
 6. Register Class S legal/regulatory gates separately from executable product
    work.
 7. Coordinate parallel execution without blocking current Sprint 82 UI work.
+8. Treat the Transaction Certainty Record, time-boxed live market, and
+   controlled secondary-liquidity ladder as programme-level capabilities.
+9. Map the Two-Sided Deal Team OS across agent runtime, professional-service
+   marketplace, identity, conflicts, privilege, billing, and licensed-human
+   authority owners.
 
 ## Recommended sequencing
 
-| Phase                     | Outcome                                                                       |
-| ------------------------- | ----------------------------------------------------------------------------- |
-| P0 — Product foundation   | Transaction Graph, claim taxonomy, archetype fixtures, programme map          |
-| P1 — Transaction factory  | Opportunity Room, Capital Compiler, Transaction Workspace, servicing baseline |
-| P2 — Capital network      | Mandates, matching, syndication, reusable capital stacks                      |
-| P3 — Controlled market    | Ownership mechanisms, approved liquidity, refinancing, portfolio operations   |
-| P4 — Sovereign nodes      | Independently governed nodes and federation                                   |
-| P5 — Intelligence utility | Outcome-driven benchmarks, pricing, policy, and capital allocation            |
+| Phase                     | Outcome                                                                                        |
+| ------------------------- | ---------------------------------------------------------------------------------------------- |
+| P0 — Product foundation   | Transaction Graph, claim taxonomy, archetype fixtures, programme map                           |
+| P1 — Transaction factory  | Opportunity Room, Capital Compiler, Transaction Workspace, servicing baseline                  |
+| P2 — Capital network      | Mandates, matching, syndication, reusable capital stacks, time-boxed live market               |
+| P3 — Controlled market    | Ownership mechanisms, controlled secondary-liquidity ladder, refinancing, portfolio operations |
+| P4 — Sovereign nodes      | Independently governed nodes and federation                                                    |
+| P5 — Intelligence utility | Outcome-driven benchmarks, pricing, policy, and capital allocation                             |
 
 ## Acceptance criteria
 
 1. Durable Fabric acknowledgement and programme identifier.
 2. `PROG-TOKENIZATION-001` shown as a child, not the complete platform.
-3. Cross-repo ownership and dependency graph for all eight epics.
+3. Cross-repo ownership and dependency graph for all ten epics.
 4. Existing backlog mapped to the new programme with no loss of active work.
 5. Initial executable stories for Transaction Graph and Opportunity/Evidence
    Room.
@@ -220,6 +267,7 @@ replication; independently governed nodes can use the shared kernel.
 ## References
 
 - `docs/specs/capital-markets-operating-system-product-spec.md`
+- `docs/specs/time-boxed-capital-formation-market-protocol.md`
 - `docs/specs/tokenization-platform-requirements.md`
 - `docs/specs/african-financial-markets-regulatory-adapter-requirements.md`
 - `docs/strategy/e2e-transaction-shipping-spec-2026-06-09.md`

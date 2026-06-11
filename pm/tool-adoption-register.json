@@ -1,0 +1,12 @@
+{
+  "$schema": "gtcx://fabric-os/tool-adoption-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-12",
+  "initiative": "INIT-AGENT-TOOL-SCOUT",
+  "spec": "bridge-os/pm/spec/agent-tool-scout.v1.json",
+  "programOffice": "bridge-os",
+  "status": "active",
+  "adoptions": [],
+  "friction": [],
+  "note": "Fabric execution owner for TAAS pilots. Populate from bridge-os/pm/tool-scout-register.json on P2-fabric promotion."
+}

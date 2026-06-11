@@ -7,6 +7,7 @@ to: fabric-os
 program: PROG-CAPITAL-FORMATION-001
 ticket: XR-MKT-FABRIC-002
 protocol: P24
+laneId: L4b
 priority: P0
 blocksIR: false
 ---

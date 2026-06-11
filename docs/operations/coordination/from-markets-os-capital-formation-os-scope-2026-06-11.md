@@ -8,6 +8,7 @@ ticket: XR-MKT-FABRIC-002
 program: PROG-CAPITAL-FORMATION-001
 supersedes_scope: XR-MKT-FABRIC-001
 protocol: P24
+laneId: L4b
 priority: P0
 blocksIR: false
 ---

@@ -66,16 +66,25 @@ GitHub renames are **complete** and redirects work. Local folders match (`market
 - `pm/ux/stakeholders/stakeholder-map.md`
 - `docs/operations/coordination/to-fabric-os-s39-01-authority-routes-2026-06-10.md`
 
-## Tier C — Deferred (non-blocking)
+## Resolution closeout (2026-06-12)
 
-| Area                                                                  | Approx. remaining | Notes                                                                                  |
-| --------------------------------------------------------------------- | ----------------- | -------------------------------------------------------------------------------------- |
-| `fabric-os/docs/operations/coordination/*`                            | ~40+ files        | Dated ticket frontmatter (`from: gtcx-infrastructure`) — historical                    |
-| `fabric-os` docker-compose paths `../gtcx-infrastructure/`            | 6 lines           | Cross-repo docker build context — needs path lift to `../fabric-os/` or gtcx-os shadow |
-| `baseline-os` hub JSON                                                | ~800 lines        | Separate sweep; many archived polyrepo keys                                            |
-| `gtcx-os` monorepo shadow imports                                     | ~3700 lines       | P34 archive domain keys — cutover tracked separately                                   |
-| `bridge-os/pm/spec/deployment-*.json` (uncommitted WIP)               | partial           | `to-gtcx-infrastructure` patterns in handoff specs                                     |
-| Cutover scripts under `bridge-os/platform/scripts/ecosystem/cutover/` | ~10 refs          | Accept legacy ids via `resolve-repo-id.mjs`; update usage docs                         |
+| Item                                         | SHA / state                                   |
+| -------------------------------------------- | --------------------------------------------- |
+| Fleet registries (`markets-os`, `fabric-os`) | bridge-os `3bb7599`                           |
+| P40 deployment specs                         | bridge-os (this closeout)                     |
+| Monitoring URLs + ops owners                 | fabric-os `fef7e5c`                           |
+| Docker-compose cross-repo paths              | fabric-os `9cc325b`                           |
+| markets-os contracts + gates                 | markets-os `1569050`                          |
+| `zenhub-config.json` slug keys               | **local WIP** — commit gate flags secret-risk |
+
+## Out of scope (historical / separate initiative)
+
+| Area                                   | Notes                                |
+| -------------------------------------- | ------------------------------------ |
+| Dated coordination tickets             | Historical frontmatter only          |
+| `baseline-os` / `gtcx-os` archive keys | P34 polyrepo cutover                 |
+| `@gtx-markets/*` npm scope             | Product namespace                    |
+| Cutover scripts                        | Legacy ids via `resolve-repo-id.mjs` |
 
 ## Verification commands
 

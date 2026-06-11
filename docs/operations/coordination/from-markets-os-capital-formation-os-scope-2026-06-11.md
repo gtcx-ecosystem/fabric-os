@@ -111,7 +111,7 @@ conditions, expiry, and owner.
 | Programme, runtime, security, deployment, and assurance orchestration              | Fabric OS                                                               |
 | Transaction Graph, market state, close, servicing, liquidity, and outcomes         | Markets OS / EIX                                                        |
 | Capital Graph, investor discovery, formation strategy, pre-market, and syndication | Markets OS + Griot AI + Terminal OS                                     |
-| Two-sided participant qualification, capability, capacity, and reliability         | Markets OS + TradePass + Veritas + Compliance OS                        |
+| Two-sided participant qualification, capability, capacity, and reliability         | TradePass + Markets OS + Veritas + Compliance OS                        |
 | Jurisdiction Policy Compiler, execution profiles, and regulatory-change impact     | Markets OS + Compliance OS + Griot AI + Protocols + adopted authorities |
 | Bankability Graph, Capital Compiler, valuation, scenarios, and Plans A/B/C         | Markets OS + GTCX Intelligence + domain owners                          |
 | Opportunity, evidence, asset, title, technical, and production readiness           | Markets OS + Exploration OS + Terra OS                                  |

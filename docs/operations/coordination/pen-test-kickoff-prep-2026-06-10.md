@@ -15,19 +15,19 @@ tags: ['coordination', 'pen-test', 'secas-s2', 'ext-inf-002']
 
 **Countersign:** approved 2026-06-10 — [`ext-inf-002-countersign-approval-2026-06-10.json`](../../../audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json).
 
-**Window:** scheduled 2026-06-17..21 — [`pen-test-window-2026-06-10.json`](../../../audit/evidence/pen-test-window-2026-06-10.json) · [seal](./from-gtcx-infrastructure-pen-test-window-scheduled-2026-06-10.md).
+**Window:** scheduled 2026-06-17..21 — [`pen-test-window-2026-06-10.json`](../../../audit/evidence/pen-test-window-2026-06-10.json) · [seal](./from-fabric-os-pen-test-window-scheduled-2026-06-10.md).
 
 **Next:** Ingest vendor report after window execution.
 
 ## Intake pack (attach to vendor kickoff)
 
-| Artifact        | Path                                                                                                |
-| --------------- | --------------------------------------------------------------------------------------------------- |
-| Scope           | `audit/pen-test-scope-2026.md`                                                                      |
-| RFP             | `audit/pen-test-rfp-2026.md`                                                                        |
-| Intake evidence | `audit/pen-test-intake-evidence-2026-05-31.md`                                                      |
-| Vendor pack ack | `docs/operations/coordination/outbound/from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md` |
-| Fleet witness   | `audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json`                              |
+| Artifact        | Path                                                                                      |
+| --------------- | ----------------------------------------------------------------------------------------- |
+| Scope           | `audit/pen-test-scope-2026.md`                                                            |
+| RFP             | `audit/pen-test-rfp-2026.md`                                                              |
+| Intake evidence | `audit/pen-test-intake-evidence-2026-05-31.md`                                            |
+| Vendor pack ack | `docs/operations/coordination/outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md` |
+| Fleet witness   | `audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json`                    |
 
 ## In-scope staging targets (post-DAAS-S1/S3)
 

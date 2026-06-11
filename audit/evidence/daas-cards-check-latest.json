@@ -1,9 +1,9 @@
 {
-  "schema": "gtcx://gtcx-infrastructure/daas-cards-check/v1",
+  "schema": "gtcx://fabric-os/daas-cards-check/v1",
   "protocol": "P41-DEVOPS-AS-A-SERVICE",
   "sprint": "DAAS-S2",
   "checkedAt": "2026-06-10T04:15:57.292Z",
-  "owner": "gtcx-infrastructure",
+  "owner": "fabric-os",
   "gates": {
     "index": {
       "ok": true
@@ -17,9 +17,9 @@
         "ok": true,
         "path": "docs/operations/daas/cards/compliance-os.md"
       },
-      "gtcx-markets": {
+      "markets-os": {
         "ok": true,
-        "path": "docs/operations/daas/cards/gtcx-markets.md"
+        "path": "docs/operations/daas/cards/markets-os.md"
       }
     },
     "s2FrictionCards": {

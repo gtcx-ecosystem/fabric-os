@@ -29,15 +29,15 @@ if (existsSync(REGISTER)) {
 }
 if (existsSync(ROADMAP)) {
   const rm = JSON.parse(readFileSync(ROADMAP, 'utf8'));
-  gates.primaryRoadmap = { ok: rm.primaryRoadmap === true && rm.owner === 'gtcx-infrastructure' };
+  gates.primaryRoadmap = { ok: rm.primaryRoadmap === true && rm.owner === 'fabric-os' };
 }
 
 const structuralOk = gates.register.ok && gates.roadmap.ok && gates.opsDoc.ok && gates.primaryRoadmap.ok;
 const witness = {
-  schema: 'gtcx://gtcx-infrastructure/daas-friction-check/v1',
+  schema: 'gtcx://fabric-os/daas-friction-check/v1',
   protocol: 'P41-DEVOPS-AS-A-SERVICE',
   checkedAt: new Date().toISOString(),
-  owner: 'gtcx-infrastructure',
+  owner: 'fabric-os',
   gates,
   openP0: gates.openP0.count ?? 0,
   ok: structuralOk,

@@ -25,7 +25,7 @@ responds_to: markets-os/docs/operations/coordination/to-fabric-os-tokenization-p
 | **Protocol**              | [P44 Fabric Consumption](https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/docs/governance/protocols/44-fabric-consumption/protocol.md) |
 | **Program office**        | `bridge-os` (ZenHub orchestration, fleet harnesses)                                                                                         |
 | **Durable inbound path**  | `fabric-os/docs/operations/coordination/from-markets-os-*`                                                                                  |
-| **Durable outbound path** | `fabric-os/docs/operations/coordination/from-gtcx-infrastructure-*` (legacy filename prefix)                                                |
+| **Durable outbound path** | `fabric-os/docs/operations/coordination/from-fabric-os-*` (legacy filename prefix)                                                          |
 
 **ADR:** `docs/reference/adr/ADR-0007-fabric-os-repo-rename.md` — GitHub renamed 2026-06-12.
 

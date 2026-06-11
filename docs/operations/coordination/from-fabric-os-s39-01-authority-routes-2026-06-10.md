@@ -62,5 +62,5 @@ Markets authority trace capture is **7/7** on staging. Root cause was **WAF 403*
 ## Witness
 
 - Matrix: `docs/operations/coordination/xr-mkt-011-authority-url-matrix-2026-06-10.md`
-- Markets inbound: `gtcx-markets/docs/operations/coordination/to-gtcx-infrastructure-s39-01-authority-routes-2026-06-10.md`
+- Markets inbound: `gtcx-markets/docs/operations/coordination/to-fabric-os-s39-01-authority-routes-2026-06-10.md`
 - Capture manifest: `gtcx-markets/authority-trace-evidence/2026-06-10T02-39-46.130Z/manifest.json`

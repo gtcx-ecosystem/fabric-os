@@ -127,7 +127,7 @@ const witness = {
   initiative: 'INIT-P35-TOOLCHAIN',
   status: requiredOk ? 'done' : 'blocked',
   checkedAt: new Date().toISOString(),
-  owner: 'gtcx-infrastructure',
+  owner: 'fabric-os',
   policySoR: POLICY_SOR,
   governanceSoR: GOVERNANCE_SOR,
   module: 'deploy/terraform/modules/cost-profile',

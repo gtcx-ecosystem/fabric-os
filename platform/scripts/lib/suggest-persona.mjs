@@ -56,7 +56,7 @@ const RULES = [
 ];
 
 export const DEFAULT_BY_REPO = {
-  'gtcx-infrastructure': {
+  'fabric-os': {
     institutional: 'platform-architect',
     mcp: 'builder',
     frame: 'development',
@@ -73,7 +73,7 @@ export function suggestPersona(input = {}) {
       return pack(rule.institutional, rule.mcp, rule.frame);
     }
   }
-  const repo = input.repo ?? 'gtcx-infrastructure';
+  const repo = input.repo ?? 'fabric-os';
   const d = DEFAULT_BY_REPO[repo] ?? {
     institutional: 'platform-architect',
     mcp: 'builder',

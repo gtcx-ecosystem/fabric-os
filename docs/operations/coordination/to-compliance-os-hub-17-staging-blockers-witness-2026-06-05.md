@@ -10,7 +10,7 @@ priority: P1
 hub_blocker: 17
 er1: ER-1-10
 work_id: W2-E2E / XR-502 / XR-503
-responds_to: compliance-os/01-docs/04-ops/coordination/to-gtcx-infrastructure-w2-hub-17-staging-blockers-2026-06-05.md
+responds_to: compliance-os/01-docs/04-ops/coordination/to-fabric-os-w2-hub-17-staging-blockers-2026-06-05.md
 ---
 
 # Infra witness — compliance-os staging blockers
@@ -24,7 +24,7 @@ Operator run found **`ClusterSecretStore/gtcx-aws-secrets-manager` not found**. 
 | ServiceAccount | `compliance-os-sa` (IRSA)                                       |
 | SecretStore    | `compliance-os-aws-secrets` (namespace `compliance-os-staging`) |
 | IAM role       | `gtcx-staging-compliance-os-secrets-role`                       |
-| Terraform      | `04-deploy/terraform/modules/secrets/compliance-os.tf`            |
+| Terraform      | `04-deploy/terraform/modules/secrets/compliance-os.tf`          |
 | Bootstrap      | `01-docs/04-ops/staging-compliance-os-eso-bootstrap.md`         |
 | Script         | `03-platform/scripts/staging/install-compliance-os-eso.sh`      |
 
@@ -102,11 +102,11 @@ kubectl get secrets -n compliance-os-staging
 
 | File                                                                                         | Action                        |
 | -------------------------------------------------------------------------------------------- | ----------------------------- |
-| `04-deploy/kubernetes/overlays/staging/compliance-os/namespace.yaml`                           | Added (declarative namespace) |
-| `04-deploy/kubernetes/overlays/staging/compliance-os/secret-store.yaml`                        | Added (SA + SecretStore)      |
-| `04-deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml`                    | SecretStore ref (not Cluster) |
-| `04-deploy/kubernetes/overlays/staging/compliance-os/kustomization.yaml`                       | Includes secret-store.yaml    |
-| `04-deploy/terraform/modules/secrets/compliance-os.tf`                                         | IRSA + SM shells              |
+| `04-deploy/kubernetes/overlays/staging/compliance-os/namespace.yaml`                         | Added (declarative namespace) |
+| `04-deploy/kubernetes/overlays/staging/compliance-os/secret-store.yaml`                      | Added (SA + SecretStore)      |
+| `04-deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml`                  | SecretStore ref (not Cluster) |
+| `04-deploy/kubernetes/overlays/staging/compliance-os/kustomization.yaml`                     | Includes secret-store.yaml    |
+| `04-deploy/terraform/modules/secrets/compliance-os.tf`                                       | IRSA + SM shells              |
 | `03-platform/scripts/staging/install-compliance-os-eso.sh`                                   | Apply + verify                |
 | `01-docs/04-ops/staging-compliance-os-eso-bootstrap.md`                                      | Operator runbook              |
 | `01-docs/04-ops/coordination/to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md` | This witness                  |

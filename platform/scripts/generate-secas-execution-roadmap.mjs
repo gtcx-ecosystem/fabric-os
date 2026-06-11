@@ -80,7 +80,7 @@ function main() {
   lines.push('status: current');
   lines.push(`date: ${now.slice(0, 10)}`);
   lines.push(`last_reconciled: ${now}`);
-  lines.push('owner: gtcx-infrastructure');
+  lines.push('owner: fabric-os');
   lines.push(`program: ${roadmap.initiative}`);
   lines.push('generated: true');
   lines.push('generated_by: platform/scripts/generate-secas-execution-roadmap.mjs');
@@ -93,7 +93,7 @@ function main() {
   if (existsSync(APPROVAL_EVIDENCE)) lines.push('  - audit/evidence/secas-approval-check-latest.json');
   lines.push('---');
   lines.push('');
-  lines.push('# gtcx-infrastructure SECaaS execution roadmap');
+  lines.push('# fabric-os SECaaS execution roadmap');
   lines.push('');
   lines.push('> **Generated file.** Edit `pm/secas-stories.json`, `pm/security-friction-register.json`, or');
   lines.push('> `pm/secas-roadmap.json`, then run `pnpm generate:secas-roadmap`.');
@@ -129,7 +129,7 @@ function main() {
   lines.push('| --- | --- | --- | --- | --- |');
   for (const sprint of futureSprints) {
     lines.push(
-      `| ${sprint.id} | ${sprint.name} | ${sprint.status} | gtcx-infrastructure | ${(sprint.items ?? []).map((id) => `\`${id}\``).join(', ')} |`,
+      `| ${sprint.id} | ${sprint.name} | ${sprint.status} | fabric-os | ${(sprint.items ?? []).map((id) => `\`${id}\``).join(', ')} |`,
     );
   }
   lines.push('');

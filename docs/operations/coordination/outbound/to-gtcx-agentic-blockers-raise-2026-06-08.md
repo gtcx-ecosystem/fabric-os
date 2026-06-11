@@ -54,20 +54,20 @@ tags: ['coordination', 'outbound', 'human-gates', 'ext-inf', 'witness']
 
 ## Evidence pointers (infra SoR)
 
-| Topic                | Path                                                                                                                           |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| XC register          | [`external-dependencies-register-2026-05-31.md`](../../../audit/external-dependencies-register-2026-05-31.md)                  |
-| Human gate matrix    | [`ext-inf-human-gates-unblock-2026-06-06.md`](./ext-inf-human-gates-unblock-2026-06-06.md)                                     |
-| Pen-test intake      | [`pen-test-intake-evidence-2026-05-31.md`](../../../audit/pen-test-intake-evidence-2026-05-31.md)                              |
-| GTM audit (GR-T3)    | [`gtm-audit-2026-06-05.md`](../../../audit/gtm-audit-2026-06-05.md)                                                            |
-| Launch focus         | `.baseline/launch-focus.json` — `sessionMode: witness`, human: EXT-INF-002                                                     |
-| EXT-INF-002 pack ack | [`from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md`](./from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md) |
+| Topic                | Path                                                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------------------------------- |
+| XC register          | [`external-dependencies-register-2026-05-31.md`](../../../audit/external-dependencies-register-2026-05-31.md) |
+| Human gate matrix    | [`ext-inf-human-gates-unblock-2026-06-06.md`](./ext-inf-human-gates-unblock-2026-06-06.md)                    |
+| Pen-test intake      | [`pen-test-intake-evidence-2026-05-31.md`](../../../audit/pen-test-intake-evidence-2026-05-31.md)             |
+| GTM audit (GR-T3)    | [`gtm-audit-2026-06-05.md`](../../../audit/gtm-audit-2026-06-05.md)                                           |
+| Launch focus         | `.baseline/launch-focus.json` — `sessionMode: witness`, human: EXT-INF-002                                    |
+| EXT-INF-002 pack ack | [`from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md`](./from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md)    |
 
 ---
 
 ## Requested agentic deliverables
 
-1. **Ack** this outbound → `from-gtcx-infrastructure-blockers-raise-2026-06-08.md` on gtcx-agentic.
+1. **Ack** this outbound → `from-fabric-os-blockers-raise-2026-06-08.md` on gtcx-agentic.
 2. **Update** [`human-external-blocker-register-2026-06.md`](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/01-docs/04-ops/coordination/human-external-blocker-register-2026-06.md) — add **INF-XC** rows for EXT-INF-013/014/015/016 + overdue flag on 013.
 3. **Hub / human batch** — one Status Update block for program lead (P26): EXT-INF-013 overdue + EXT-INF-002 SOW due 2026-06-13.
 4. **`pnpm agent:human-gates:check`** after manifest/register update.

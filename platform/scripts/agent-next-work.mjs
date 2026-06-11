@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Protocol 22 — deterministic next-work selection for gtcx-infrastructure.
+ * Protocol 22 — deterministic next-work selection for fabric-os.
  * Sources: 01-docs/04-ops/agent-work-selection.md (work register),
  * 01-docs/05-audit/execution-roadmap.md (sprint stories),
  * .baseline/memory/session.md (session pointer).
@@ -14,7 +14,7 @@ import { resolveTraceId } from './lib/trace-context.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '../..');
-const THIS_REPO = 'gtcx-infrastructure';
+const THIS_REPO = 'fabric-os';
 
 const PATHS = {
   manifest: join(REPO_ROOT, '01-docs/operations/agent-work-selection.md'),
@@ -262,7 +262,7 @@ function main() {
     ok: true,
     backlogClear: false,
     protocol: '22-agent-work-selection',
-    repo: 'gtcx-infrastructure',
+    repo: 'fabric-os',
     frame,
     next: {
       storyId: story.id,

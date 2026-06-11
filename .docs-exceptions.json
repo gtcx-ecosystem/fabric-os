@@ -982,20 +982,20 @@
     },
     {
       "type": "broken-link",
-      "file": "docs/operations/coordination/from-gtcx-infrastructure-xr-302-smoke-blockers-2026-06-03.md",
-      "detail": "Link target does not exist: ../../../../gtcx-platforms/01-docs/operations/coordination/to-gtcx-infrastructure-xr-302-smoke-blockers-2026-06-03.md",
+      "file": "docs/operations/coordination/from-fabric-os-xr-302-smoke-blockers-2026-06-03.md",
+      "detail": "Link target does not exist: ../../../../gtcx-platforms/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md",
       "reviewBy": "2026-06-30"
     },
     {
       "type": "broken-link",
       "file": "docs/operations/coordination/from-gtcx-platforms-xr-302-smoke-blockers-2026-06-03.md",
-      "detail": "Link target does not exist: ../../../../gtcx-platforms/01-docs/operations/coordination/to-gtcx-infrastructure-xr-302-smoke-blockers-2026-06-03.md",
+      "detail": "Link target does not exist: ../../../../gtcx-platforms/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md",
       "reviewBy": "2026-06-30"
     },
     {
       "type": "broken-link",
       "file": "docs/operations/coordination/from-gtcx-platforms-xr-302-smoke-blockers-2026-06-03.md",
-      "detail": "Link target does not exist: ../../../../gtcx-platforms/01-docs/operations/coordination/from-gtcx-infrastructure-xr-302-smoke-blockers-TEMPLATE.md",
+      "detail": "Link target does not exist: ../../../../gtcx-platforms/01-docs/operations/coordination/from-fabric-os-xr-302-smoke-blockers-TEMPLATE.md",
       "reviewBy": "2026-06-30"
     },
     {
@@ -1030,13 +1030,13 @@
     },
     {
       "type": "broken-link",
-      "file": "docs/operations/coordination/outbound/from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md",
+      "file": "docs/operations/coordination/outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md",
       "detail": "Link target does not exist: ../../../audit/pen-test-intake-evidence-2026-05-31.md",
       "reviewBy": "2026-06-30"
     },
     {
       "type": "broken-link",
-      "file": "docs/operations/coordination/outbound/from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md",
+      "file": "docs/operations/coordination/outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md",
       "detail": "Link target does not exist: ../../../audit/pen-test-intake-evidence-2026-05-31.md",
       "reviewBy": "2026-06-30"
     },
@@ -1444,7 +1444,7 @@
     },
     {
       "type": "missing-frontmatter",
-      "file": "docs/operations/coordination/from-gtcx-infrastructure-s39-01-authority-routes-2026-06-10.md",
+      "file": "docs/operations/coordination/from-fabric-os-s39-01-authority-routes-2026-06-10.md",
       "detail": "Missing YAML frontmatter fields: owner",
       "reviewBy": "2026-06-30"
     },

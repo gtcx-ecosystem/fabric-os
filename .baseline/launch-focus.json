@@ -44,7 +44,7 @@
     "Story menus when launch-focus.json is provisioned"
   ],
   "agentInstructions": [
-    "Launch focus (gtcx-infrastructure) — read .baseline/launch-focus.json before audits.",
+    "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
     "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
     "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle."
   ]

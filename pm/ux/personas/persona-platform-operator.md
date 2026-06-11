@@ -34,7 +34,7 @@ Custodian agent or senior SRE operating **gtcx-infrastructure** from Cursor/CI. 
 
 - `pnpm daas:fleet:health` → PASS 4/4
 - `node platform/tools/scripts/validate-all.mjs` → 55/55
-- Coordination seal published per handoff (`docs/operations/coordination/from-gtcx-infrastructure-*`)
+- Coordination seal published per handoff (`docs/operations/coordination/from-fabric-os-*`)
 
 ## Anti-personas
 

@@ -10,7 +10,7 @@
 
 ## Product handoff
 
-Runtime secret or staging auth failures → `to-gtcx-infrastructure-intelligence-*.md`
+Runtime secret or staging auth failures → `to-fabric-os-intelligence-*.md`
 
 ## Re-probe
 

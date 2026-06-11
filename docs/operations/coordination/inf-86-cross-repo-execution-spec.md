@@ -60,7 +60,7 @@ H-01 (governance) → H-02 (infra ceremony) → H-03 (protocols XR-403) → H-04
 | 5   | Flip `key_status: production`, VM type `EcdsaSecp256r1VerificationKey2019` | #4             | In PR              |
 | 6   | Verify `pnpm check:csp-authority-keys` + `authority-did-docs` green        | #4             | In CI              |
 
-**Artifacts:** `01-docs/04-ops/coordination/to-gtcx-infrastructure-inf-86-ceremony-2026-06-03.md`, `inf-86-pilot-gh-bog-protocols-runbook-2026-06-02.md`
+**Artifacts:** `01-docs/04-ops/coordination/to-fabric-os-inf-86-ceremony-2026-06-03.md`, `inf-86-pilot-gh-bog-protocols-runbook-2026-06-02.md`
 
 **Trigger command when SPKI ready:**
 

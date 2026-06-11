@@ -19,7 +19,7 @@
   "acceptanceCriteria": [
     "Inbound handoff acked in `docs/operations/coordination/`",
     "Staging scripts or terraform apply executed in-session with exit codes recorded",
-    "Outbound `from-gtcx-infrastructure-*` seal links witness JSON",
+    "Outbound `from-fabric-os-*` seal links witness JSON",
     "Sibling integrator can run product-side prereq check without infra shell access"
   ],
   "priority": "P0",

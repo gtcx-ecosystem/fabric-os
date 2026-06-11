@@ -14,10 +14,10 @@ work_ids: [XR-302]
 **Action required:** Resolve three blockers so platforms can run `pnpm smoke:signed-edge-tenant:evidence` and close P4-07.
 
 **Canonical ticket (platforms outbound):**  
-[`gtcx-platforms/01-docs/operations/coordination/to-gtcx-infrastructure-xr-302-smoke-blockers-2026-06-03.md`](../../../../gtcx-platforms/01-docs/operations/coordination/to-gtcx-infrastructure-xr-302-smoke-blockers-2026-06-03.md)
+[`gtcx-platforms/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md`](../../../../gtcx-platforms/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md)
 
 **Reply template (infra fills):**  
-[`gtcx-platforms/01-docs/operations/coordination/from-gtcx-infrastructure-xr-302-smoke-blockers-TEMPLATE.md`](../../../../gtcx-platforms/01-docs/operations/coordination/from-gtcx-infrastructure-xr-302-smoke-blockers-TEMPLATE.md)
+[`gtcx-platforms/01-docs/operations/coordination/from-fabric-os-xr-302-smoke-blockers-TEMPLATE.md`](../../../../gtcx-platforms/01-docs/operations/coordination/from-fabric-os-xr-302-smoke-blockers-TEMPLATE.md)
 
 ## Blockers (summary)
 
@@ -35,4 +35,4 @@ work_ids: [XR-302]
 | 2 Secrets (`SECRET_KEY_BASE` + `TRADEPASS_JWT_SECRET`)         | **done**     | AWS SM `gtcx-secrets-staging-cdkk972mcc` updated; pods rolling-restarted; env verified            |
 | 3 Migrations (`audit_records` + `outbox` + `idempotency_keys`) | **done**     | K8s Job `migrate-shared-entities` created all 3 tables + indexes; pods restarted; no more `42P01` |
 
-**Reply posted:** [`from-gtcx-infrastructure-xr-302-smoke-blockers-2026-06-03.md`](from-gtcx-infrastructure-xr-302-smoke-blockers-2026-06-03.md)
+**Reply posted:** [`from-fabric-os-xr-302-smoke-blockers-2026-06-03.md`](from-fabric-os-xr-302-smoke-blockers-2026-06-03.md)

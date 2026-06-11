@@ -117,7 +117,7 @@ to: baseline-os coordination hub + sibling repos
 
 **Sibling docs:**
 
-- exploration-os outbound: `exploration-os/01-docs/04-ops/coordination/to-gtcx-infrastructure-outbound-2026-06-02.md`
+- exploration-os outbound: `exploration-os/01-docs/04-ops/coordination/to-fabric-os-outbound-2026-06-02.md`
 - gtcx-agentic audit runbook: `gtcx-agentic/audit/AGENT-START.md`
 
 ---
@@ -140,7 +140,7 @@ to: baseline-os coordination hub + sibling repos
 
 **Sibling docs:**
 
-- exploration-os outbound: `exploration-os/01-docs/04-ops/coordination/to-gtcx-infrastructure-outbound-2026-06-02.md`
+- exploration-os outbound: `exploration-os/01-docs/04-ops/coordination/to-fabric-os-outbound-2026-06-02.md`
 
 ---
 

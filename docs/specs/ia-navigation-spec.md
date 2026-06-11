@@ -23,4 +23,4 @@ Information architecture mirrors operator zones under `docs/operations/` and `do
 
 ## Cross-repo
 
-Integrators land from sibling repo inbound tickets → `docs/operations/coordination/to-gtcx-infrastructure-*` → outbound seal.
+Integrators land from sibling repo inbound tickets → `docs/operations/coordination/to-fabric-os-*` → outbound seal.

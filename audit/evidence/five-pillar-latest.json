@@ -1181,7 +1181,7 @@
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
-  "rubricSourcePath": "/Users/amanianai/Sites/gtcx-ecosystem/gtcx-infrastructure/audit/audit-output-2026-06-11.json",
+  "rubricSourcePath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/audit/audit-output-2026-06-11.json",
   "initiative": "INIT-FIVE-PILLAR-EVAL",
   "source": "run-five-pillar-audit"
 }

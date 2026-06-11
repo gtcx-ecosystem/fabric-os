@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "repo": "fabric-os",
+    "date": "2026-06-11",
+    "auditType": "quality-scaffold",
+    "source": "bridge-os scaffold-quality-audit-output",
+    "confidence": "C",
+    "note": "Probe-derived provisional scores — replace with full auditor rubric pass"
+  },
+  "qualityDimensionScores": {
+    "ux-product-design": {
+      "score100": 100,
+      "confidence": "C"
+    },
+    "ecosystem-integration": {
+      "score100": 100,
+      "confidence": "C"
+    },
+    "innovation-originality": {
+      "score100": 100,
+      "confidence": "C"
+    },
+    "technical-moat": {
+      "score100": 100,
+      "confidence": "C"
+    },
+    "production-readiness": {
+      "score100": 80,
+      "confidence": "C"
+    },
+    "ai-maturity": {
+      "score100": 80,
+      "confidence": "C"
+    },
+    "hallucination-resilience": {
+      "score100": 80,
+      "confidence": "C"
+    },
+    "security": {
+      "score100": 100,
+      "confidence": "C"
+    },
+    "enterprise-readiness": {
+      "score100": 100,
+      "confidence": "C"
+    },
+    "bank-grade-auditability": {
+      "score100": 100,
+      "confidence": "C"
+    }
+  },
+  "hygieneDimensionScores": {
+    "documentation": 75,
+    "repo-folder-hygiene": 75,
+    "spec-drift": 75
+  },
+  "dimensionScores": {
+    "ux-product-design": 100,
+    "ecosystem-integration": 100,
+    "innovation-originality": 100,
+    "technical-moat": 100,
+    "production-readiness": 80,
+    "ai-maturity": 80,
+    "hallucination-resilience": 80,
+    "security": 100,
+    "enterprise-readiness": 100,
+    "bank-grade-auditability": 100,
+    "documentation": 75,
+    "repo-folder-hygiene": 75,
+    "spec-drift": 75
+  },
+  "craftFlags": {
+    "interchangeable": false,
+    "aiSlop": false
+  },
+  "findings": [],
+  "evidence": {
+    "probeScores": {
+      "A1-PRODUCT-EXCELLENCE": 100,
+      "A2-PRODUCTION-GRADE": 80,
+      "A3-AGENTIC-INNOVATION": 80,
+      "A4-COMPLIANCE-SECURITY": 100,
+      "A5-REPO-HYGIENE": 75
+    },
+    "scaffoldCommand": "pnpm ecosystem:scaffold-quality-audit:run"
+  }
+}

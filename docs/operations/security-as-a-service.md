@@ -47,8 +47,8 @@ Witness: `audit/evidence/ext-inf-002-sow-approval-2026-06-10.json`
 ## Product interface
 
 1. App security controls stay in product `09-security/`
-2. Stack security handoff → `to-gtcx-infrastructure-{topic}-YYYY-MM-DD.md`
-3. Re-probe when `from-gtcx-infrastructure-*` security seal **delivered**
+2. Stack security handoff → `to-fabric-os-{topic}-YYYY-MM-DD.md`
+3. Re-probe when `from-fabric-os-*` security seal **delivered**
 
 ## Four-plane model
 
@@ -64,7 +64,7 @@ Witness: `audit/evidence/ext-inf-002-sow-approval-2026-06-10.json`
 1. Triage security inbound → `pm/security-friction-register.json`
 2. Class S gates → `pm/sovereign-approval-register.json` (witness only)
 3. Execute on `pm/secas-roadmap.json` sprints (SECAS-S\*)
-4. Seal with `from-gtcx-infrastructure-*` + `audit/evidence/secas-*-latest.json`
+4. Seal with `from-fabric-os-*` + `audit/evidence/secas-*-latest.json`
 
 ```bash
 pnpm agent:next-work              # P22 — infra programs (DaaS + SECaaS)

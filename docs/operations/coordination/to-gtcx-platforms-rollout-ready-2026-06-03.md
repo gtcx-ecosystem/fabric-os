@@ -50,7 +50,7 @@ Infra is **ready** to receive image push and execute rollout. No blockers on inf
 ## Notes
 
 - Sovereign external `/health` currently returns 526 (edge) — this is expected before real image deploy
-- AGX shared package Docker fix must be in the pushed image (`gtcx-platforms/.../from-gtcx-infrastructure-agx-2026-06-02.md`)
+- AGX shared package Docker fix must be in the pushed image (`gtcx-platforms/.../from-fabric-os-agx-2026-06-02.md`)
 - Infra will not roll out until explicit image digest is provided (no `:latest`)
 
 ## References

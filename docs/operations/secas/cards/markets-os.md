@@ -10,7 +10,7 @@
 
 ## Product handoff
 
-Authority route or capture failures → `to-gtcx-infrastructure-markets-authority-*.md`
+Authority route or capture failures → `to-fabric-os-markets-authority-*.md`
 
 ## Re-probe
 

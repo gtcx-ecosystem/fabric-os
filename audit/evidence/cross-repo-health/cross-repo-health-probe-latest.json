@@ -142,7 +142,7 @@
     },
     {
       "name": "compliance-gateway",
-      "repo": "gtcx-infrastructure",
+      "repo": "fabric-os",
       "url": "https://compliance-gateway-staging.gtcx.trade/health",
       "status": 200,
       "error": null,

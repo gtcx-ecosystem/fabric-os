@@ -18,7 +18,7 @@ Staging sovereign pods reference `alias/gtcx-production-sovereign-gh-bog` with I
 | Item        | Detail                                                                                          |
 | ----------- | ----------------------------------------------------------------------------------------------- |
 | Commit      | `c36a5f6`                                                                                       |
-| File        | `04-deploy/terraform/environments/production/main.tf`                                             |
+| File        | `04-deploy/terraform/environments/production/main.tf`                                           |
 | Data source | `data.aws_iam_role.staging_platforms` → `gtcx-staging-platforms-irsa`                           |
 | Policy      | `module.kms_sovereign_signing.authorities.gh-bog.signing_role_arns` = production + staging ARNs |
 | Algorithm   | ECC_NIST_P256 / `ECDSA_SHA_256` (HOLD comment → UNBLOCKED)                                      |

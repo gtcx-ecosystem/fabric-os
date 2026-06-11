@@ -39,4 +39,4 @@ gtcx-infrastructure **acknowledges receipt** of gtcx-core FA-S6-02 vendor pen-te
 
 ## gtcx-core action
 
-Mirror inbound: `from-gtcx-infrastructure-ext-inf-002-ack-2026-06-07.md` — mark EXT-INF-002 **outbound-acknowledged** in `remaining-cross-repo-work`.
+Mirror inbound: `from-fabric-os-ext-inf-002-ack-2026-06-07.md` — mark EXT-INF-002 **outbound-acknowledged** in `remaining-cross-repo-work`.

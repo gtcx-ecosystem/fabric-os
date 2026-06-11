@@ -17,7 +17,7 @@ infra_raise: 01-docs/04-ops/coordination/outbound/hub-17-prod-w2-close-raise-202
 # Inbound received — W2 prod secrets
 
 **Full specification (canonical):**  
-`compliance-os/01-docs/04-ops/coordination/to-gtcx-infrastructure-w2-secrets-inbound-2026-06-04.md`
+`compliance-os/01-docs/04-ops/coordination/to-fabric-os-w2-secrets-inbound-2026-06-04.md`
 
 **Hub copy:** `baseline-os/workstream/coordination/inbound/from-compliance-os-w2-secrets-spec-2026-06-04.md`
 
@@ -32,10 +32,10 @@ infra_raise: 01-docs/04-ops/coordination/outbound/hub-17-prod-w2-close-raise-202
 
 ## Phase status (2026-06-08)
 
-| Phase | Environment                          | Status          | Evidence                                                                                                                                                 |
-| ----- | ------------------------------------ | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **A** | `compliance-os-staging`              | **complete**    | [`from-gtcx-infrastructure-w2-secrets-sealed-2026-06-05.md`](./from-gtcx-infrastructure-w2-secrets-sealed-2026-06-05.md), ESO `3a794fa`, staging witness |
-| **B** | prod `https://compliance.gtcx.trade` | **in progress** | Probe **525** — [`hub-17-prod-w2-close-raise-2026-06-08.md`](./outbound/hub-17-prod-w2-close-raise-2026-06-08.md)                                        |
+| Phase | Environment                          | Status          | Evidence                                                                                                                             |
+| ----- | ------------------------------------ | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **A** | `compliance-os-staging`              | **complete**    | [`from-fabric-os-w2-secrets-sealed-2026-06-05.md`](./from-fabric-os-w2-secrets-sealed-2026-06-05.md), ESO `3a794fa`, staging witness |
+| **B** | prod `https://compliance.gtcx.trade` | **in progress** | Probe **525** — [`hub-17-prod-w2-close-raise-2026-06-08.md`](./outbound/hub-17-prod-w2-close-raise-2026-06-08.md)                    |
 
 ## Infra action (Phase B — prod close)
 

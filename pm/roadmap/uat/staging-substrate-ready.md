@@ -13,5 +13,5 @@ Derived from `pm/ux/user-flows/flow-staging-handoff.md` §UAT outline.
 | --- | ---------------------------------------------- | ----------------------------------------------------- |
 | 1   | File test inbound handoff for one sibling repo | Inbound doc under `docs/operations/coordination/`     |
 | 2   | Agent runs populate + apply sequence           | All commands exit 0; recorded in Status Update        |
-| 3   | Outbound seal published                        | `from-gtcx-infrastructure-*` links evidence JSON      |
+| 3   | Outbound seal published                        | `from-fabric-os-*` links evidence JSON                |
 | 4   | Sibling prereq check from owner repo           | Product check passes (e.g. `w2:staging-prereq-check`) |

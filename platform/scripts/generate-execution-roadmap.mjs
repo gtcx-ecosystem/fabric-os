@@ -90,7 +90,7 @@ function main() {
   lines.push('status: current');
   lines.push(`date: ${now.slice(0, 10)}`);
   lines.push(`last_reconciled: ${now}`);
-  lines.push('owner: gtcx-infrastructure');
+  lines.push('owner: fabric-os');
   lines.push(`program: ${roadmap.initiative}`);
   lines.push('generated: true');
   lines.push('generated_by: platform/scripts/generate-execution-roadmap.mjs');
@@ -104,7 +104,7 @@ function main() {
   }
   lines.push('---');
   lines.push('');
-  lines.push('# gtcx-infrastructure execution roadmap');
+  lines.push('# fabric-os execution roadmap');
   lines.push('');
   lines.push('> **Generated file.** Edit `pm/daas-stories.json`, `pm/friction-register.json`, or');
   lines.push('> `pm/daas-roadmap.json`, then run `pnpm generate:roadmap`.');
@@ -145,7 +145,7 @@ function main() {
   lines.push('| --- | --- | --- | --- | --- |');
   for (const sprint of futureSprints) {
     lines.push(
-      `| ${sprint.id} | ${sprint.name} | ${sprint.status} | gtcx-infrastructure | ${(sprint.items ?? []).map((id) => `\`${id}\``).join(', ')} |`,
+      `| ${sprint.id} | ${sprint.name} | ${sprint.status} | fabric-os | ${(sprint.items ?? []).map((id) => `\`${id}\``).join(', ')} |`,
     );
   }
   lines.push('');

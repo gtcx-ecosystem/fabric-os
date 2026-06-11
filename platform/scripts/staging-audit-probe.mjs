@@ -96,7 +96,7 @@ async function main() {
     const jsonArtifact = {
       schema: 'gtcx-staging-smoke/v1',
       generatedAt: tsStr,
-      repo: 'gtcx-infrastructure',
+      repo: 'fabric-os',
       commit: sha,
       branch,
       target: base,
@@ -120,7 +120,7 @@ owner: infrastructure-security-engineer
 tier: critical
 tags: ['audit', 'staging', 'smoke', 'evidence', 'prd-002']
 review_cycle: on-change
-infra_issue: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/issues/50'
+infra_issue: 'https://github.com/gtcx-ecosystem/fabric-os/issues/50'
 ---
 
 # Staging Smoke Evidence — ${dateStr}

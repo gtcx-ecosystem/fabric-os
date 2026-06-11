@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
-  "goldenName": "gtcx-infrastructure-baseline",
+  "goldenName": "fabric-os-baseline",
   "goldenVersion": "1.0",
-  "goldenPath": "/Users/amanianai/Sites/gtcx-ecosystem/gtcx-infrastructure/config/baseline/rag-eval-golden.json",
+  "goldenPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/config/baseline/rag-eval-golden.json",
   "runAt": 1781089659103,
   "totalQueries": 3,
   "averagePrecision": 0.8,
@@ -15,7 +15,7 @@
   "queryResults": [
     {
       "id": "repo-purpose",
-      "query": "gtcx-infrastructure product purpose architecture",
+      "query": "fabric-os product purpose architecture",
       "topK": 5,
       "retrieved": [
         {

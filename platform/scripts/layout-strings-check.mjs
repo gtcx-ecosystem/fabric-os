@@ -91,4 +91,4 @@ if (hits.length) {
   process.exit(1);
 }
 
-console.log('layout strings check passed (gtcx-infrastructure).');
+console.log('layout strings check passed (fabric-os).');

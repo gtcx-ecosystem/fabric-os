@@ -20,7 +20,7 @@
       "approvedAt": "2026-06-10",
       "approvedBy": "human:sovereign",
       "witness": "audit/evidence/ext-inf-002-sow-approval-2026-06-10.json",
-      "seal": "docs/operations/coordination/from-gtcx-infrastructure-ext-inf-002-sow-approved-2026-06-10.md",
+      "seal": "docs/operations/coordination/from-fabric-os-ext-inf-002-sow-approved-2026-06-10.md",
       "postApprovalOwner": "gtcx-infrastructure",
       "postApprovalAction": "Schedule live-stack pen-test window after vendor countersign",
       "countersign": {
@@ -28,7 +28,7 @@
         "status": "approved",
         "approvedAt": "2026-06-10",
         "witness": "audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json",
-        "seal": "docs/operations/coordination/from-gtcx-infrastructure-ext-inf-002-countersign-approved-2026-06-10.md"
+        "seal": "docs/operations/coordination/from-fabric-os-ext-inf-002-countersign-approved-2026-06-10.md"
       },
       "blocksClaims": ["pen-test complete"],
       "blocksIR": false,
@@ -45,7 +45,7 @@
       "approvedAt": "2026-06-10",
       "approvedBy": "human:sovereign",
       "witness": "audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json",
-      "seal": "docs/operations/coordination/from-gtcx-infrastructure-bl-soc2-01-approved-2026-06-10.md",
+      "seal": "docs/operations/coordination/from-fabric-os-bl-soc2-01-approved-2026-06-10.md",
       "intake": "docs/governance/regulatory/soc2-readiness-checklist.md",
       "postApprovalOwner": "CISO + Finance",
       "postApprovalAction": "Execute auditor MSA/SOW and schedule Type I fieldwork",
@@ -54,7 +54,7 @@
         "status": "approved",
         "approvedAt": "2026-06-10",
         "witness": "audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json",
-        "seal": "docs/operations/coordination/from-gtcx-infrastructure-bl-soc2-01-msa-approved-2026-06-10.md"
+        "seal": "docs/operations/coordination/from-fabric-os-bl-soc2-01-msa-approved-2026-06-10.md"
       },
       "blocksClaims": ["SOC 2 Type I attested", "SOC 2 attested"],
       "blocksIR": false,

@@ -12,7 +12,7 @@ tags: ['coordination', 'inbound', 'ext-inf-002', 'pen-test']
 
 ## Receipt
 
-Acknowledged outbound from gtcx-core: [`to-gtcx-infrastructure-ext-inf-002-vendor-pack-2026-06-05.md`](https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/coordination/to-gtcx-infrastructure-ext-inf-002-vendor-pack-2026-06-05.md)
+Acknowledged outbound from gtcx-core: [`to-fabric-os-ext-inf-002-vendor-pack-2026-06-05.md`](https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/coordination/to-fabric-os-ext-inf-002-vendor-pack-2026-06-05.md)
 
 ## Pack summary
 
@@ -30,4 +30,4 @@ Acknowledged outbound from gtcx-core: [`to-gtcx-infrastructure-ext-inf-002-vendo
 
 ## Outbound reply
 
-[`outbound/from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md`](./outbound/from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md)
+[`outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md`](./outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md)

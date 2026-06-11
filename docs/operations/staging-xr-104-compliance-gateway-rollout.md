@@ -57,5 +57,5 @@ Expected: `signed-bundles 200`, no `envelope-did-resolve-http-401`.
 
 ## Related
 
-- Mobile outbound: `gtcx-mobile/01-docs/04-ops/coordination/to-gtcx-infrastructure-compliance-gateway-tradepass-auth-2026-06-03.md`
+- Mobile outbound: `gtcx-mobile/01-docs/04-ops/coordination/to-fabric-os-compliance-gateway-tradepass-auth-2026-06-03.md`
 - Protocols workplan: **XR-104**

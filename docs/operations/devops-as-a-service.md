@@ -21,23 +21,23 @@ Infrastructure and DevOps are a **separate concern** from product engineering �
 
 ## Three-plane model
 
-| Plane | Owner | Product engineering |
-| ----- | ----- | ------------------- |
-| **Engineering** | Product repo | Features, tests, `deployment:smoke` |
-| **DaaS** | **gtcx-infrastructure** | Handoff only — never `kubectl apply` |
-| **Assurance** | assurance / legal / protocols | Witness parallel (`blocksIR: false`) |
+| Plane           | Owner                         | Product engineering                  |
+| --------------- | ----------------------------- | ------------------------------------ |
+| **Engineering** | Product repo                  | Features, tests, `deployment:smoke`  |
+| **DaaS**        | **gtcx-infrastructure**       | Handoff only — never `kubectl apply` |
+| **Assurance**   | assurance / legal / protocols | Witness parallel (`blocksIR: false`) |
 
 ## Product interface
 
 1. Maintain `docs/operations/deployment-profile.json`
-2. On upstream failure → `to-gtcx-infrastructure-{topic}-YYYY-MM-DD.md` (P24)
-3. Re-run smoke/capture when `from-gtcx-infrastructure-*` status **delivered**
+2. On upstream failure → `to-fabric-os-{topic}-YYYY-MM-DD.md` (P24)
+3. Re-run smoke/capture when `from-fabric-os-*` status **delivered**
 
 ## Infra interface
 
 1. Triage inbound into `pm/friction-register.json`
-2. Execute on `pm/daas-roadmap.json` sprints (DAAS-S*)
-3. Seal with `from-gtcx-infrastructure-*` + `audit/evidence/*-latest.json`
+2. Execute on `pm/daas-roadmap.json` sprints (DAAS-S\*)
+3. Seal with `from-fabric-os-*` + `audit/evidence/*-latest.json`
 4. Run `pnpm daas:friction:check` + `pnpm daas:fleet:health` each session
 
 ## Operator entry

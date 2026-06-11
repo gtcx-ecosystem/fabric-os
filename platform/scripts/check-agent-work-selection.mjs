@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Protocol 22 adoption check for gtcx-infrastructure.
+ * Protocol 22 adoption check for fabric-os.
  * Validates manifest, script, package scripts, and AGENTS.md references.
  */
 import { existsSync, readFileSync } from 'node:fs';
@@ -36,7 +36,7 @@ const CHECKS = [
     test: (p) => {
       if (!existsSync(p)) return false;
       const content = readFileSync(p, 'utf8');
-      return content.includes('protocol: \'22-agent-work-selection\'') && content.includes('gtcx-infrastructure');
+      return content.includes('protocol: \'22-agent-work-selection\'') && content.includes('fabric-os');
     },
   },
   {

@@ -159,7 +159,7 @@
     "regulatoryScore": 85,
     "commercialScore": 10,
     "auditDate": "2026-06-05",
-    "auditor": "agent://gtcx-infrastructure/2026-06-05/gtm-audit"
+    "auditor": "agent://fabric-os/2026-06-05/gtm-audit"
   },
   "leadershipDecisions": {
     "answered": [
@@ -212,7 +212,7 @@
         "question": "Vendor pen-test SOW countersign (procurement)?",
         "answer": "APPROVED",
         "answeredOn": "2026-06-10",
-        "rationale": "Sovereign procurement countersign; pen-test window scheduling authorized for gtcx-infrastructure.",
+        "rationale": "Sovereign procurement countersign; pen-test window scheduling authorized for fabric-os.",
         "evidence": "audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json"
       },
       {

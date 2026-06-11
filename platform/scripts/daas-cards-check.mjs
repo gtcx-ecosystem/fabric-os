@@ -16,7 +16,7 @@ const OUT = join(ROOT, 'audit/evidence/daas-cards-check-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
 
-const REQUIRED = ['terminal-os', 'compliance-os', 'gtcx-markets'];
+const REQUIRED = ['terminal-os', 'compliance-os', 'markets-os'];
 const gates = { index: { ok: existsSync(INDEX) }, cards: {} };
 
 for (const repo of REQUIRED) {
@@ -43,11 +43,11 @@ for (const id of s2Items) {
 const cardOk = Object.values(gates.cards).every((c) => c.ok);
 const ok = gates.index.ok && cardOk && gates.s2FrictionCards.ok;
 const witness = {
-  schema: 'gtcx://gtcx-infrastructure/daas-cards-check/v1',
+  schema: 'gtcx://fabric-os/daas-cards-check/v1',
   protocol: 'P41-DEVOPS-AS-A-SERVICE',
   sprint: 'DAAS-S2',
   checkedAt: new Date().toISOString(),
-  owner: 'gtcx-infrastructure',
+  owner: 'fabric-os',
   gates,
   ok,
 };

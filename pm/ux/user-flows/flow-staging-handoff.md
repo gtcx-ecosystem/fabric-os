@@ -9,7 +9,7 @@ exrId: EXR-001
 
 ## Trigger
 
-Sibling repo engineer or agent files inbound coordination doc (`to-gtcx-infrastructure-<topic>-YYYY-MM-DD.md`) or hub ticket naming infra blocker (W2-OPS-001, Hub #17, XR-MKT-011).
+Sibling repo engineer or agent files inbound coordination doc (`to-fabric-os-<topic>-YYYY-MM-DD.md`) or hub ticket naming infra blocker (W2-OPS-001, Hub #17, XR-MKT-011).
 
 ## Happy path
 
@@ -18,7 +18,7 @@ Sibling repo engineer or agent files inbound coordination doc (`to-gtcx-infrastr
 3. **System** runs repo script first — e.g. `platform/scripts/staging/populate-compliance-os-staging-sm.sh`.
 4. **System** applies Terraform target or `kubectl apply -k deploy/kubernetes/overlays/staging/...`.
 5. **System** records command + exit code; writes witness JSON if applicable.
-6. **Platform operator** publishes `docs/operations/coordination/from-gtcx-infrastructure-<topic>-YYYY-MM-DD.md` linking evidence.
+6. **Platform operator** publishes `docs/operations/coordination/from-fabric-os-<topic>-YYYY-MM-DD.md` linking evidence.
 7. **Integrator** runs product prereq check in owner repo; confirms unblock.
 
 ## Error / edge paths

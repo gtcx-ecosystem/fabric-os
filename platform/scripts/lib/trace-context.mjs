@@ -20,7 +20,7 @@ export function resolveTraceId(incoming) {
 export function traceSpanMarker(ctx) {
   return {
     'gtcx.trace_id': ctx.traceId,
-    'gtcx.service': ctx.service ?? 'gtcx-infrastructure',
+    'gtcx.service': ctx.service ?? 'fabric-os',
     'gtcx.operation': ctx.operation ?? 'unknown',
     timestamp: new Date().toISOString(),
   };

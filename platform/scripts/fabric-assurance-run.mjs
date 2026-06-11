@@ -25,7 +25,7 @@ function buildContextBundle() {
     baselineConfig,
     persona: 'pm/spec/repo-persona-profiles.v1.json',
     skills: 'bridge-os/pm/spec/skills-ecosystem-map.v1.json',
-    ragWitness: 'audit/evidence/rag-model-b-gtcx-infrastructure-latest.json',
+    ragWitness: 'audit/evidence/rag-model-b-fabric-os-latest.json',
     triggers: 'bridge-os/pm/spec/assurance-triggers.v1.json',
   };
 }

@@ -56,4 +56,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('docs IA check passed (gtcx-infrastructure).');
+console.log('docs IA check passed (fabric-os).');

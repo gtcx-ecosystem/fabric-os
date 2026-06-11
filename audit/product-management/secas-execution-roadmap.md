@@ -33,7 +33,7 @@ sources:
 
 ### SECAS-S2-01: Live-stack pen-test execution window
 
-**Files:** audit/pen-test-intake-evidence-2026-05-31.md, audit/evidence/ext-inf-002-sow-approval-2026-06-10.json, docs/operations/coordination/from-gtcx-infrastructure-ext-inf-002-sow-approved-2026-06-10.md
+**Files:** audit/pen-test-intake-evidence-2026-05-31.md, audit/evidence/ext-inf-002-sow-approval-2026-06-10.json, docs/operations/coordination/from-fabric-os-ext-inf-002-sow-approved-2026-06-10.md
 
 **Acceptance**
 

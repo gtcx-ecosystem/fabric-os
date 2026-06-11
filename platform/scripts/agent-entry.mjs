@@ -39,7 +39,7 @@ function findAgenticRoot() {
 function readMigrationTiers() {
   const agentic = findAgenticRoot();
   if (!agentic) return null;
-  const evidence = join(agentic, '05-audit/evidence/migration-health-gtcx-infrastructure-latest.json');
+  const evidence = join(agentic, '05-audit/evidence/migration-health-fabric-os-latest.json');
   if (!existsSync(evidence)) return null;
   try {
     const raw = JSON.parse(readFileSync(evidence, 'utf8'));
@@ -50,7 +50,7 @@ function readMigrationTiers() {
       worldClass: raw.worldClass ?? false,
       total: raw.total ?? null,
       grade: raw.grade ?? null,
-      source: 'gtcx-agentic/05-audit/evidence/migration-health-gtcx-infrastructure-latest.json',
+      source: 'gtcx-agentic/05-audit/evidence/migration-health-fabric-os-latest.json',
       date: raw.date ?? null,
     };
   } catch {

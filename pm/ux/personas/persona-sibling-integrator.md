@@ -14,7 +14,7 @@ type: primary
 
 ## Context
 
-Engineer in `compliance-os`, `gtcx-markets`, `terminal-os`, or `gtcx-intelligence` who needs staging ingress, secrets, GHCR pull, or WAF paths — without owning the AWS control plane. Files inbound handoffs (`to-gtcx-infrastructure-*`) and consumes outbound seals.
+Engineer in `compliance-os`, `gtcx-markets`, `terminal-os`, or `gtcx-intelligence` who needs staging ingress, secrets, GHCR pull, or WAF paths — without owning the AWS control plane. Files inbound handoffs (`to-fabric-os-*`) and consumes outbound seals.
 
 ## Goals
 
@@ -32,7 +32,7 @@ Engineer in `compliance-os`, `gtcx-markets`, `terminal-os`, or `gtcx-intelligenc
 
 ## Success signals
 
-- Inbound ticket acked within one sprint; `from-gtcx-infrastructure-*` seal links evidence JSON
+- Inbound ticket acked within one sprint; `from-fabric-os-*` seal links evidence JSON
 - Product repo staging prereq check passes after seal
 - DaaS card for their repo lists current action matrix row
 

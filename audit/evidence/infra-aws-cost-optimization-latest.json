@@ -3,7 +3,7 @@
   "initiative": "INIT-P35-TOOLCHAIN",
   "status": "done",
   "checkedAt": "2026-06-09T19:18:49.978Z",
-  "owner": "gtcx-infrastructure",
+  "owner": "fabric-os",
   "policySoR": "bridge-os/pm/spec/environment-cost-policy.v1.json",
   "governanceSoR": "bridge-os/pm/spec/aws-cost-governance.v1.json",
   "module": "deploy/terraform/modules/cost-profile",
@@ -86,10 +86,7 @@
       "detail": "4/4 pass"
     }
   },
-  "ecoEnvStories": [
-    "ECO-ENV-07",
-    "ECO-ENV-08"
-  ],
+  "ecoEnvStories": ["ECO-ENV-07", "ECO-ENV-08"],
   "runtimeOps": {
     "costReport": "pnpm --dir ../bridge-os env:cost:report:write",
     "warm": "pnpm --dir ../bridge-os env:warm",

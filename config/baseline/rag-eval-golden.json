@@ -1,12 +1,12 @@
 {
   "version": "1.0",
-  "name": "gtcx-infrastructure-baseline",
-  "description": "S14 Model B golden eval — gtcx-infrastructure. Expand to ≥10 queries.",
+  "name": "fabric-os-baseline",
+  "description": "S14 Model B golden eval — fabric-os. Expand to ≥10 queries.",
   "defaultTopK": 5,
   "queries": [
     {
       "id": "repo-purpose",
-      "query": "gtcx-infrastructure product purpose architecture",
+      "query": "fabric-os product purpose architecture",
       "expectedSources": ["README.md", "AGENTS.md"],
       "tags": ["overview"]
     },

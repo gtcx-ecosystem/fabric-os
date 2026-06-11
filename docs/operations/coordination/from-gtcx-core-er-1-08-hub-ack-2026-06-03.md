@@ -10,7 +10,7 @@ source: gtcx-core
 
 ## Receipt
 
-Acknowledged outbound from gtcx-core: `01-docs/04-ops/coordination/to-gtcx-infrastructure-er-1-08-hub-ack-2026-06-03.md`
+Acknowledged outbound from gtcx-core: `01-docs/04-ops/coordination/to-fabric-os-er-1-08-hub-ack-2026-06-03.md`
 
 ## Infra status
 

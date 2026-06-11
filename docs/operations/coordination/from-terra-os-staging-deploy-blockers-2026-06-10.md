@@ -8,14 +8,14 @@ owner: gtcx-infrastructure
 priority: P1
 work_id: CI-TERRA-20260609-02
 blocking: true
-canonical_source: terra-os/docs/operations/coordination/to-gtcx-infrastructure-terraos-staging-deploy-2026-06-10.md
+canonical_source: terra-os/docs/operations/coordination/to-fabric-os-terraos-staging-deploy-2026-06-10.md
 ---
 
 # Inbound — TerraOS staging deploy (P1)
 
 **Received:** 2026-06-10 · **Escalation:** `--escalate @gtcx-infrastructure`
 
-**Canonical source:** [terra-os `to-gtcx-infrastructure-terraos-staging-deploy-2026-06-10.md`](https://github.com/gtcx-ecosystem/terra-os/blob/main/docs/operations/coordination/to-gtcx-infrastructure-terraos-staging-deploy-2026-06-10.md)
+**Canonical source:** [terra-os `to-fabric-os-terraos-staging-deploy-2026-06-10.md`](https://github.com/gtcx-ecosystem/terra-os/blob/main/docs/operations/coordination/to-fabric-os-terraos-staging-deploy-2026-06-10.md)
 
 ## TL;DR
 

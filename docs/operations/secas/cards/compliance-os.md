@@ -23,7 +23,7 @@ owner: gtcx-infrastructure
 
 ## Product handoff
 
-When app-level control changes: `compliance-os/docs/operations/to-gtcx-infrastructure-{topic}-YYYY-MM-DD.md`
+When app-level control changes: `compliance-os/docs/operations/to-fabric-os-{topic}-YYYY-MM-DD.md`
 
 ## Re-probe
 

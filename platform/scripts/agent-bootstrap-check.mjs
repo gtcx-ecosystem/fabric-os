@@ -52,7 +52,7 @@ if (existsSync(REPO_KIND_PATH)) {
 
 if (existsSync(GOVERNANCE_SPINE_PATH)) {
   const spine = JSON.parse(readFileSync(GOVERNANCE_SPINE_PATH, 'utf8'));
-  if (spine.repo !== 'gtcx-infrastructure') failures.push('governance-spine.json repo mismatch');
+  if (spine.repo !== 'fabric-os') failures.push('governance-spine.json repo mismatch');
 }
 
 if (existsSync(ALLOWLIST_PATH)) {
@@ -103,4 +103,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('agent bootstrap check passed (gtcx-infrastructure).');
+console.log('agent bootstrap check passed (fabric-os).');

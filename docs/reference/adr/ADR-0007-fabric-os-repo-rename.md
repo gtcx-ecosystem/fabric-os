@@ -16,15 +16,14 @@ hub and workspace discovery failures parallel to the markets-os rename.
 
 - **Canonical repo id:** `fabric-os`
 - **GitHub:** `gtcx-ecosystem/fabric-os` (renamed 2026-06-12; redirect from `gtcx-infrastructure`)
-- **Local checkout:** `~/Sites/gtcx-ecosystem/fabric-os`
-- **Legacy symlink:** `gtcx-infrastructure` → `fabric-os` (for older scripts)
-- **Legacy id:** `gtcx-infrastructure` resolves via `bridge-os/pm/spec/ecosystem-repo-aliases.v1.json`
+- **Local checkout:** `~/Sites/gtcx-ecosystem/fabric-os` (no legacy folder symlinks)
+- **Legacy id:** `gtcx-infrastructure` resolves via `bridge-os/pm/spec/ecosystem-repo-aliases.v1.json` (IDs only — not disk paths)
 
 ## Consequences
 
 - Update remotes: `git remote set-url origin https://github.com/gtcx-ecosystem/fabric-os.git`
 - Fleet scripts, hub `repoId`, and friction registers use `fabric-os`
-- Coordination filenames `from-gtcx-infrastructure-*` remain for historical traceability
+- Outbound coordination filenames use `from-fabric-os-*`; inbound handoffs use `to-fabric-os-*`
 - Dated audit evidence may still cite `gtcx-infrastructure` in filenames
 
 ## References

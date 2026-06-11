@@ -13,7 +13,7 @@
     "audit/pen-test-intake-evidence-2026-05-31.md",
     "audit/pen-test-rfp-2026.md",
     "audit/pen-test-scope-2026.md",
-    "docs/operations/coordination/outbound/from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md"
+    "docs/operations/coordination/outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md"
   ],
   "postApprovalActions": [
     "Security/procurement: execute vendor SOW countersign",

@@ -48,4 +48,4 @@ When seal **delivered**: terminal-os runs `pnpm ops:check` and hub webhook smoke
 
 ## Seal
 
-`from-gtcx-infrastructure-terminal-os-eks-2026-06-10.md` — status **delivered**
+`from-fabric-os-terminal-os-eks-2026-06-10.md` — status **delivered**

@@ -116,6 +116,6 @@ kustomize build 04-deploy/kubernetes/overlays/staging | grep -E "name:.*audit-ke
 
 ## References
 
-- ER-2-04 incident: `01-docs/04-ops/coordination/from-gtcx-infrastructure-compliance-gateway-staging-healthy-2026-06-04.md`
+- ER-2-04 incident: `01-docs/04-ops/coordination/from-fabric-os-compliance-gateway-staging-healthy-2026-06-04.md`
 - Base kustomization: `04-deploy/kubernetes/base/kustomization.yaml`
 - Staging patch: `04-deploy/kubernetes/overlays/staging/patches/compliance-gateway-audit-key-secret-ref.yaml`

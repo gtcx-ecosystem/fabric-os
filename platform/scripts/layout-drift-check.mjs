@@ -63,4 +63,4 @@ if (hits.length) {
   process.exit(1);
 }
 
-console.log('layout drift check passed (gtcx-infrastructure).');
+console.log('layout drift check passed (fabric-os).');

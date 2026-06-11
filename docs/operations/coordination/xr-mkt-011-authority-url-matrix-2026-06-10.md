@@ -47,4 +47,4 @@ WAF: `AllowMarketsAuthorityEndpoints` on `gtcx-staging-waf-af-south-1` (priority
 ## Witness
 
 - Markets contract: `gtcx-markets/platform/contracts/ecosystem/authority-staging-env-manifest.json`
-- Infra seal: `docs/operations/coordination/from-gtcx-infrastructure-s39-01-authority-routes-2026-06-10.md`
+- Infra seal: `docs/operations/coordination/from-fabric-os-s39-01-authority-routes-2026-06-10.md`

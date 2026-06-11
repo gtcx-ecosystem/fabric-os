@@ -22,7 +22,7 @@ const approved = (reg.items ?? []).filter((i) => i.status === 'approved');
 const allBlocksIRFalse = (reg.items ?? []).every((i) => i.blocksIR === false);
 
 const witness = {
-  schema: 'gtcx://gtcx-infrastructure/secas-approval-check/v1',
+  schema: 'gtcx://fabric-os/secas-approval-check/v1',
   protocol: 'P42-SECURITY-AS-A-SERVICE',
   checkedAt: new Date().toISOString(),
   approvalNeeded: pending.map((i) => ({ id: i.id, title: i.title, authorityClass: i.authorityClass })),

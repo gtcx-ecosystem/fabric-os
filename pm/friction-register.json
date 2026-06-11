@@ -28,11 +28,11 @@
       "id": "XR-MKT-011",
       "priority": "P0",
       "status": "closed",
-      "repo": "gtcx-markets",
+      "repo": "markets-os",
       "title": "S39-01 authority routes + auth contract alignment",
       "symptom": "authority:trace:capture 0/7 HTTP 401; health 503",
-      "inbound": "gtcx-markets/docs/operations/coordination/to-gtcx-infrastructure-s39-01-authority-routes-2026-06-10.md",
-      "seal": "docs/operations/coordination/from-gtcx-infrastructure-s39-01-authority-routes-2026-06-10.md",
+      "inbound": "markets-os/docs/operations/coordination/to-fabric-os-s39-01-authority-routes-2026-06-10.md",
+      "seal": "docs/operations/coordination/from-fabric-os-s39-01-authority-routes-2026-06-10.md",
       "acceptance": "api/health 200; capture 7/7; from-* status delivered",
       "executionStatus": "done",
       "blockedBy": null,
@@ -48,7 +48,7 @@
       "matrixRef": "INF-PER-REPO-001#terminal-os",
       "executionStatus": "done",
       "witness": "terminal-os-staging 1/1 Running; terminal-os-secrets SecretSynced (2026-06-10)",
-      "seal": "docs/operations/coordination/from-gtcx-infrastructure-terminal-os-eks-2026-06-10.md",
+      "seal": "docs/operations/coordination/from-fabric-os-terminal-os-eks-2026-06-10.md",
       "blocksIR": false
     },
     {

@@ -45,4 +45,4 @@ Finalize hub locker draft → baseline-os when exploration retest also green.
 
 ## Witness
 
-[`from-gtcx-infrastructure-hub-17-prod-w2-partial-2026-06-08.md`](../from-gtcx-infrastructure-hub-17-prod-w2-partial-2026-06-08.md)
+[`from-fabric-os-hub-17-prod-w2-partial-2026-06-08.md`](../from-fabric-os-hub-17-prod-w2-partial-2026-06-08.md)

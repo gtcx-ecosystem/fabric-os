@@ -84,7 +84,7 @@
       "files": [
         "deploy/kubernetes/overlays/staging/ingress.yaml",
         "deploy/kubernetes/overlays/staging/markets-authority-stub/",
-        "docs/operations/coordination/from-gtcx-infrastructure-s39-01-authority-routes-2026-06-10.md",
+        "docs/operations/coordination/from-fabric-os-s39-01-authority-routes-2026-06-10.md",
         "docs/operations/coordination/xr-mkt-011-authority-url-matrix-2026-06-10.md"
       ],
       "acceptance": [
@@ -155,7 +155,7 @@
       "owner": "gtcx-infrastructure",
       "files": [
         "docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md",
-        "docs/operations/coordination/from-gtcx-infrastructure-terminal-os-eks-2026-06-10.md"
+        "docs/operations/coordination/from-fabric-os-terminal-os-eks-2026-06-10.md"
       ],
       "acceptance": ["pnpm daas:cards:check:write"],
       "uat": [

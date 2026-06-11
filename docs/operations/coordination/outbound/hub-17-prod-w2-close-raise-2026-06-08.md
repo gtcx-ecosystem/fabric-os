@@ -10,7 +10,7 @@ hub_blocker: 17
 er1: ER-1-10
 work_id: W2-E2E / XR-502 / XR-503 / XR-504
 authority_class: A
-authorization_artifact: compliance-os/01-docs/04-ops/coordination/to-gtcx-infrastructure-w2-secrets-inbound-2026-06-04.md
+authorization_artifact: compliance-os/01-docs/04-ops/coordination/to-fabric-os-w2-secrets-inbound-2026-06-04.md
 protocol: gtcx-docs/01-docs/governance/protocols/24-cross-repo-coordination/protocol.md
 document_id: INFRA-OUT-HUB17-PROD-001
 tags: ['coordination', 'outbound', 'hub-17', 'w2', 'prod', 'class-a']
@@ -55,13 +55,13 @@ tags: ['coordination', 'outbound', 'hub-17', 'w2', 'prod', 'class-a']
 
 ## Inbound specifications (SoR links)
 
-| Artifact                    | Path                                                                                                                                                                                                                     | Status      |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| W2 prod secrets spec        | [compliance-os `to-gtcx-infrastructure-w2-secrets-inbound-2026-06-04.md`](https://github.com/gtcx-ecosystem/compliance-os/blob/main/01-docs/04-ops/coordination/to-gtcx-infrastructure-w2-secrets-inbound-2026-06-04.md) | **current** |
-| Infra received copy         | [`from-compliance-os-w2-secrets-spec-2026-06-04.md`](../from-compliance-os-w2-secrets-spec-2026-06-04.md)                                                                                                                | received    |
-| Staging blockers (archived) | [`from-compliance-os-w2-hub-17-staging-blockers-2026-06-05.md`](../from-compliance-os-w2-hub-17-staging-blockers-2026-06-05.md)                                                                                          | **closed**  |
-| Staging witness             | [`to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md`](../to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md)                                                                                    | delivered   |
-| Staging secrets sealed      | [`from-gtcx-infrastructure-w2-secrets-sealed-2026-06-05.md`](../from-gtcx-infrastructure-w2-secrets-sealed-2026-06-05.md)                                                                                                | sealed      |
+| Artifact                    | Path                                                                                                                                                                                                 | Status      |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| W2 prod secrets spec        | [compliance-os `to-fabric-os-w2-secrets-inbound-2026-06-04.md`](https://github.com/gtcx-ecosystem/compliance-os/blob/main/01-docs/04-ops/coordination/to-fabric-os-w2-secrets-inbound-2026-06-04.md) | **current** |
+| Infra received copy         | [`from-compliance-os-w2-secrets-spec-2026-06-04.md`](../from-compliance-os-w2-secrets-spec-2026-06-04.md)                                                                                            | received    |
+| Staging blockers (archived) | [`from-compliance-os-w2-hub-17-staging-blockers-2026-06-05.md`](../from-compliance-os-w2-hub-17-staging-blockers-2026-06-05.md)                                                                      | **closed**  |
+| Staging witness             | [`to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md`](../to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md)                                                                | delivered   |
+| Staging secrets sealed      | [`from-fabric-os-w2-secrets-sealed-2026-06-05.md`](../from-fabric-os-w2-secrets-sealed-2026-06-05.md)                                                                                                | sealed      |
 
 ---
 
@@ -72,10 +72,10 @@ tags: ['coordination', 'outbound', 'hub-17', 'w2', 'prod', 'class-a']
 | Artifact          | Path                                                                                           |
 | ----------------- | ---------------------------------------------------------------------------------------------- |
 | Bootstrap runbook | [`production-compliance-os-eso-bootstrap.md`](../../production-compliance-os-eso-bootstrap.md) |
-| K8s overlay       | `04-deploy/kubernetes/overlays/production/compliance-os/`                                        |
+| K8s overlay       | `04-deploy/kubernetes/overlays/production/compliance-os/`                                      |
 | Populate SM       | `03-platform/scripts/production/populate-compliance-os-prod-sm.sh`                             |
 | Install ESO       | `03-platform/scripts/production/install-compliance-os-eso.sh`                                  |
-| Terraform         | `04-deploy/terraform/environments/production/main.tf` → `module.secrets`                         |
+| Terraform         | `04-deploy/terraform/environments/production/main.tf` → `module.secrets`                       |
 
 ### Terraform / AWS SM (prod shells)
 
@@ -112,7 +112,7 @@ Post to this thread + [`cross-repo-agent-log.md`](../cross-repo-agent-log.md):
 - [x] exploration-os retest unblocked: <SM/IAM path>
 ```
 
-Witness file: `01-docs/04-ops/coordination/from-gtcx-infrastructure-hub-17-prod-w2-sealed-YYYY-MM-DD.md`
+Witness file: `01-docs/04-ops/coordination/from-fabric-os-hub-17-prod-w2-sealed-YYYY-MM-DD.md`
 
 ---
 

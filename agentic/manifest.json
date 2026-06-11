@@ -20,8 +20,8 @@
     "resolvedAt": "../bridge-os",
     "role": "ecosystem-program-office",
     "verbs": {
-      "ecosystem:p35:check": "pnpm --dir ../bridge-os ecosystem:p35:check -- --repo gtcx-infrastructure",
-      "fleet:readiness": "pnpm --dir ../bridge-os ecosystem:fleet:readiness -- --repo gtcx-infrastructure"
+      "ecosystem:p35:check": "pnpm --dir ../bridge-os ecosystem:p35:check -- --repo fabric-os",
+      "fleet:readiness": "pnpm --dir ../bridge-os ecosystem:fleet:readiness -- --repo fabric-os"
     }
   },
   "directiveSources": {

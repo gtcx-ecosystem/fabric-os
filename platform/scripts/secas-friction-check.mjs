@@ -23,7 +23,7 @@ const gates = {
 
 if (existsSync(ROADMAP)) {
   const rm = JSON.parse(readFileSync(ROADMAP, 'utf8'));
-  gates.primaryRoadmap = { ok: rm.primaryRoadmap === true && rm.owner === 'gtcx-infrastructure' };
+  gates.primaryRoadmap = { ok: rm.primaryRoadmap === true && rm.owner === 'fabric-os' };
 }
 if (existsSync(REGISTER)) {
   const reg = JSON.parse(readFileSync(REGISTER, 'utf8'));
@@ -33,7 +33,7 @@ if (existsSync(REGISTER)) {
 
 const ok = gates.register.ok && gates.roadmap.ok && gates.opsDoc.ok && gates.primaryRoadmap.ok;
 const witness = {
-  schema: 'gtcx://gtcx-infrastructure/secas-friction-check/v1',
+  schema: 'gtcx://fabric-os/secas-friction-check/v1',
   protocol: 'P42-SECURITY-AS-A-SERVICE',
   checkedAt: new Date().toISOString(),
   gates,

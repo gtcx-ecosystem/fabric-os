@@ -2,7 +2,7 @@
 title: 'Cloud placement — AWS control plane (gtcx-infrastructure)'
 status: current
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 role: platform-engineer
 ---
 

@@ -2,7 +2,7 @@
 title: 'Inbound — EXT-INF-002 vendor pen-test pack from gtcx-core'
 status: acknowledged
 date: 2026-06-07
-owner: gtcx-infrastructure
+owner: fabric-os
 source: gtcx-core
 protocol: gtcx-docs/01-docs/governance/protocols/24-cross-repo-coordination/protocol.md
 tags: ['coordination', 'inbound', 'ext-inf-002', 'pen-test']

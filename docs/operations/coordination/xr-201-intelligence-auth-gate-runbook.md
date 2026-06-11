@@ -2,7 +2,7 @@
 title: 'XR-201 runbook — intelligence-staging auth gate'
 status: current
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 xr-id: XR-201
 ---
 

@@ -2,7 +2,7 @@
 title: 'Infra handoff — INT-S9-01 unblock'
 status: in_progress
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 work_id: INT-S9-01
 ---
 

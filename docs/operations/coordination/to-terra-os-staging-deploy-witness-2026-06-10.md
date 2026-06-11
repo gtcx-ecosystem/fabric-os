@@ -2,7 +2,7 @@
 title: 'Partial witness — terraos staging ESO + web pod (INF-TERRA)'
 status: current
 date: 2026-06-10
-from: gtcx-infrastructure
+from: fabric-os
 to: terra-os
 owner: terra-os
 ---

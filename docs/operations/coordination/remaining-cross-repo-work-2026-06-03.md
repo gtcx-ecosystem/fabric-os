@@ -2,8 +2,8 @@
 title: 'Remaining cross-repo work — gtcx-infrastructure'
 status: current
 date: 2026-06-03
-owner: gtcx-infrastructure
-from: gtcx-infrastructure
+owner: fabric-os
+from: fabric-os
 to: baseline-os coordination hub + sibling repos
 ---
 

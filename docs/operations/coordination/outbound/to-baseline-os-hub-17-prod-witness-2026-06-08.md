@@ -2,8 +2,8 @@
 title: 'Outbound — Hub #17 prod close witness (baseline-os tracking)'
 status: closed
 date: 2026-06-08
-owner: gtcx-infrastructure
-from: gtcx-infrastructure
+owner: fabric-os
+from: fabric-os
 to: baseline-os
 priority: P1
 hub_blocker: 17

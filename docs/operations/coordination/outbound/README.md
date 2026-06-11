@@ -2,7 +2,7 @@
 title: 'Outbound coordination — gtcx-infrastructure'
 status: current
 date: 2026-06-06
-owner: gtcx-infrastructure
+owner: fabric-os
 tier: operational
 tags: ['coordination', 'outbound', 'index']
 ---

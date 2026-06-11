@@ -3,9 +3,9 @@ title: 'Inbound — W2 hub #17 secrets spec (from compliance-os)'
 status: received
 date: 2026-06-05
 updated: 2026-06-08
-owner: gtcx-infrastructure
+owner: fabric-os
 from: compliance-os
-to: gtcx-infrastructure
+to: fabric-os
 priority: P0
 hub_blocker: 17
 responds_to_commit: 77dfa9b

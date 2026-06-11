@@ -2,8 +2,8 @@
 title: 'Outbound — ExplorationOS W2 + verifier dependencies resolved/tracked'
 status: current
 date: 2026-06-03
-owner: gtcx-infrastructure
-from: gtcx-infrastructure
+owner: fabric-os
+from: fabric-os
 to: exploration-os
 priority: P1
 work_ids: [XR-507, XR-508, XR-502, W2-E2E]

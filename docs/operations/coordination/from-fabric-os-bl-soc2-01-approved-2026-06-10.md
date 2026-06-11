@@ -2,7 +2,7 @@
 title: 'BL-SOC2-01 — SOC 2 Type I auditor sovereign approval'
 status: current
 date: 2026-06-10
-owner: gtcx-infrastructure
+owner: fabric-os
 from: human:sovereign
 authorityClass: S
 tags: ['coordination', 'bl-soc2-01', 'soc2', 'assurance']

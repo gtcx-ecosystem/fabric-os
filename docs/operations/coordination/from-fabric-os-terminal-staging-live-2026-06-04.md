@@ -2,7 +2,7 @@
 title: 'Inbound — terminal-os staging live (W2-OPS-001)'
 status: live
 date: 2026-06-04
-from: gtcx-infrastructure
+from: fabric-os
 to: terminal-os, compliance-os
 priority: P0
 hub_blocker: 17

@@ -2,7 +2,7 @@
 title: 'Inbound — XR-EO-006 production KMS key allows staging platforms IRSA'
 status: current
 date: 2026-06-06
-owner: gtcx-infrastructure
+owner: fabric-os
 work_ids: [XR-EO-006, INF-86, XR-405]
 document_id: COORD-XR-EO-006-INFRA-001
 ---

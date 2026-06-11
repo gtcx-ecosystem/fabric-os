@@ -2,7 +2,7 @@
 title: EXT-INF-002 — Vendor pen-test SOW countersign approved
 status: current
 date: 2026-06-10
-owner: gtcx-infrastructure
+owner: fabric-os
 from: human:sovereign
 authorityClass: S
 tags: ['coordination', 'ext-inf-002', 'pen-test', 'procurement']

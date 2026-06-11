@@ -2,9 +2,9 @@
 title: 'Ping — W2 prod E2E secrets confirmation (gtcx-infrastructure)'
 status: current
 date: 2026-06-04
-owner: gtcx-infrastructure
+owner: fabric-os
 from: compliance-os coordination hub
-to: gtcx-infrastructure
+to: fabric-os
 work_id: W2-E2E / #17
 priority: P1
 ---

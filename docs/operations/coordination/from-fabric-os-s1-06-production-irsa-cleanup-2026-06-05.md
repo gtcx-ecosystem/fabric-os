@@ -2,7 +2,7 @@
 title: 'Witness — S1-06 production IRSA trust cleanup'
 status: verified
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 work_id: S1-06
 ---
 

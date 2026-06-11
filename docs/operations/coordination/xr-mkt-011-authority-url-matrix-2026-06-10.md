@@ -2,7 +2,7 @@
 title: 'XR-MKT-011 authority URL matrix (staging)'
 status: current
 date: 2026-06-10
-owner: gtcx-infrastructure
+owner: fabric-os
 ticket: XR-MKT-011
 protocol: P24 + P41
 ---

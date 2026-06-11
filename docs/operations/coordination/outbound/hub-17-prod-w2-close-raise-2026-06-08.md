@@ -2,8 +2,8 @@
 title: 'Outbound — Hub #17 prod W2 close (gtcx-infrastructure owner)'
 status: current
 date: 2026-06-08
-owner: gtcx-infrastructure
-from: gtcx-infrastructure
+owner: fabric-os
+from: fabric-os
 to: compliance-os, exploration-os, terminal-os, baseline-os
 priority: P0
 hub_blocker: 17

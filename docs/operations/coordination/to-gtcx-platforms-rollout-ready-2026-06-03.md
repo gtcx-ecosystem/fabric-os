@@ -2,9 +2,9 @@
 title: 'Outbound — gtcx-platforms staging rollout ready (XR-301/302)'
 status: current
 date: 2026-06-03
-from: gtcx-infrastructure
+from: fabric-os
 to: gtcx-platforms
-owner: gtcx-infrastructure
+owner: fabric-os
 xr-id: XR-301, XR-302
 ---
 

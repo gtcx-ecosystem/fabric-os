@@ -2,7 +2,7 @@
 title: 'From gtcx-infrastructure — AGX staging ARM64-only blocker'
 status: closed
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 to: gtcx-platforms
 priority: P0
 blocking: XR-302 / P4-07

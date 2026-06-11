@@ -2,9 +2,9 @@
 title: 'Outbound — EXT-INF-002 vendor pack receipt ack'
 status: current
 date: 2026-06-07
-owner: gtcx-infrastructure
+owner: fabric-os
 to: gtcx-core
-from: gtcx-infrastructure
+from: fabric-os
 protocol: gtcx-docs/01-docs/governance/protocols/24-cross-repo-coordination/protocol.md
 tags: ['coordination', 'outbound', 'ext-inf-002', 'witness']
 ---

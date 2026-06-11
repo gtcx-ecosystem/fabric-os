@@ -2,7 +2,7 @@
 title: Pen-test kickoff prep — post EXT-INF-002 approval
 status: current
 date: 2026-06-10
-owner: gtcx-infrastructure
+owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 storyId: SECAS-S2-01
 authorityClass: A

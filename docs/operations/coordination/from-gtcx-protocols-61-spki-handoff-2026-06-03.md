@@ -3,7 +3,7 @@ title: 'MESSAGE — gtcx-protocols issue #61 SPKI handoff (XR-402 complete)'
 status: sent
 comment_url: 'https://github.com/gtcx-ecosystem/gtcx-protocols/issues/61#issuecomment-4612133251'
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 to: gtcx-protocols
 issue: 'https://github.com/gtcx-ecosystem/gtcx-protocols/issues/61'
 ---

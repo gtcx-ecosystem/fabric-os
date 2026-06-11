@@ -2,7 +2,7 @@
 title: 'Inbound — ER-1-08 hub ack from gtcx-core'
 status: acknowledged
 date: 2026-06-04
-owner: gtcx-infrastructure
+owner: fabric-os
 source: gtcx-core
 ---
 

@@ -68,23 +68,29 @@ GitHub renames are **complete** and redirects work. Local folders match (`market
 
 ## Resolution closeout (2026-06-12)
 
-| Item                                         | SHA / state                                   |
-| -------------------------------------------- | --------------------------------------------- |
-| Fleet registries (`markets-os`, `fabric-os`) | bridge-os `3bb7599`                           |
-| P40 deployment specs                         | bridge-os (this closeout)                     |
-| Monitoring URLs + ops owners                 | fabric-os `fef7e5c`                           |
-| Docker-compose cross-repo paths              | fabric-os `9cc325b`                           |
-| markets-os contracts + gates                 | markets-os `1569050`                          |
-| `zenhub-config.json` slug keys               | **local WIP** — commit gate flags secret-risk |
+| Item                                         | SHA / state                                                                  |
+| -------------------------------------------- | ---------------------------------------------------------------------------- |
+| Fleet registries (`markets-os`, `fabric-os`) | bridge-os `3bb7599`                                                          |
+| P40 deployment specs                         | bridge-os (this closeout)                                                    |
+| Monitoring URLs + ops owners                 | fabric-os `fef7e5c`                                                          |
+| Docker-compose cross-repo paths              | fabric-os `9cc325b`                                                          |
+| markets-os contracts + gates                 | markets-os `1569050`                                                         |
+| `zenhub-config.json` slug keys               | secret-risk gated — `pnpm ecosystem:zenhub:discover`                         |
+| Intentional-ref policy + sweep gate          | `legacy-repo-id-intentional-refs.v1.json` + `pnpm ecosystem:legacy-id:check` |
+| Coordination ticket frontmatter              | swept to `fabric-os`                                                         |
+| baseline-os workstream folders               | `fabric-os/`, `markets-os/`                                                  |
 
-## Out of scope (historical / separate initiative)
+## Protected references (do not delete)
 
-| Area                                   | Notes                                |
-| -------------------------------------- | ------------------------------------ |
-| Dated coordination tickets             | Historical frontmatter only          |
-| `baseline-os` / `gtcx-os` archive keys | P34 polyrepo cutover                 |
-| `@gtx-markets/*` npm scope             | Product namespace                    |
-| Cutover scripts                        | Legacy ids via `resolve-repo-id.mjs` |
+See `bridge-os/pm/spec/legacy-repo-id-intentional-refs.v1.json` — alias `legacyIds`, rename ADRs, cutover maps, P34 merge manifest, dated audit evidence filenames, `@gtx-markets/*` npm scope.
+
+## Out of scope (separate initiative)
+
+| Area                                  | Notes                                            |
+| ------------------------------------- | ------------------------------------------------ |
+| `gtcx-os` P34 shadow/archive keys     | ~3700 refs — polyrepo cutover                    |
+| baseline-os workstream cross-mentions | generated dependency tables citing old doc paths |
+| Cutover scripts                       | legacy ids via `resolve-repo-id.mjs`             |
 
 ## Verification commands
 

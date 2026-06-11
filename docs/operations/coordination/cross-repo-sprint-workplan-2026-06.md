@@ -2,7 +2,7 @@
 title: 'Cross-repo sprint workplan — gtcx-infrastructure unified register'
 status: current
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 role: platform-engineer
 document_id: INFRA-COORD-SPRINT-2026-06
 sprint_horizon: 2026-06-03 → 2026-06-28

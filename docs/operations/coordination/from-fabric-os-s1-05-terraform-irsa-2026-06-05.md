@@ -2,7 +2,7 @@
 title: 'Witness — S1-05 Terraform IRSA drift captured'
 status: verified
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 work_id: S1-05 / INF-86 / XR-405
 ---
 

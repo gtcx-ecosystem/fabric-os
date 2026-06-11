@@ -2,7 +2,7 @@
 title: 'From gtcx-protocols — INF-86 preceremony ready (XR-402)'
 status: done
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 from: gtcx-protocols
 priority: P0
 work_ids: [XR-402]

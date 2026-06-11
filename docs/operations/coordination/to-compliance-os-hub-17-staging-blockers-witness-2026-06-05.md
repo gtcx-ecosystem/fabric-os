@@ -3,9 +3,9 @@ title: 'Witness — Hub #17 staging blockers (infra reply to compliance-os)'
 status: ready-for-operator
 date: 2026-06-05
 eso_fix: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 to: compliance-os
-from: gtcx-infrastructure
+from: fabric-os
 priority: P1
 hub_blocker: 17
 er1: ER-1-10

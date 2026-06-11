@@ -2,7 +2,7 @@
 title: 'Cross-repo agent activity log — gtcx-infrastructure'
 status: current
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 document_id: INFRA-COORD-LOG-001
 review_cycle: append-only
 ---

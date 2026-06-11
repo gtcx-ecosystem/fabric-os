@@ -2,7 +2,7 @@
 title: 'Witness — W2 #17 secrets sealed in compliance-os-staging'
 status: sealed
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 work_id: W2-E2E / #17 / XR-502
 ---
 

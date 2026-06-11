@@ -2,7 +2,7 @@
 title: 'Witness — Hub #17 prod W2 sealed + ingress live'
 status: complete
 date: 2026-06-08
-owner: gtcx-infrastructure
+owner: fabric-os
 hub_blocker: 17
 er1: ER-1-10
 authority_class: A

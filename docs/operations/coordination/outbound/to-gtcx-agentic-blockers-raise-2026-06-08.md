@@ -2,9 +2,9 @@
 title: 'Outbound — gtcx-infrastructure blockers raise (human + XC)'
 status: current
 date: 2026-06-08
-owner: gtcx-infrastructure
+owner: fabric-os
 to: gtcx-agentic
-from: gtcx-infrastructure
+from: fabric-os
 protocol: gtcx-docs/01-docs/governance/protocols/24-cross-repo-coordination/protocol.md
 document_id: INFRA-OUT-AGENTIC-BLOCKERS-001
 priority: P0

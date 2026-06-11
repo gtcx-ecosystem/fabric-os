@@ -1,7 +1,7 @@
 ---
 status: current
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # Outbound Handoff: XR-202 → gtcx-intelligence

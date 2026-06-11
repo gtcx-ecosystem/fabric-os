@@ -2,9 +2,9 @@
 title: 'Outbound — Hub #17 prod status (compliance-os witness)'
 status: current
 date: 2026-06-08
-owner: gtcx-infrastructure
+owner: fabric-os
 to: compliance-os
-from: gtcx-infrastructure
+from: fabric-os
 priority: P0
 hub_blocker: 17
 authority_class: R

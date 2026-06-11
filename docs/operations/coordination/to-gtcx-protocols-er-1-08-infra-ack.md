@@ -2,7 +2,7 @@
 title: 'Outbound — ER-1-08 infra ack for protocols ecosystem log'
 status: ready
 date: 2026-06-04
-owner: gtcx-infrastructure
+owner: fabric-os
 target: gtcx-protocols
 ---
 

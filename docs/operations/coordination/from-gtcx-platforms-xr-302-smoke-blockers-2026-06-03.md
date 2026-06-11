@@ -2,9 +2,9 @@
 title: 'Inbound — XR-302 P4-07 smoke blockers from gtcx-platforms'
 status: done
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 from: gtcx-platforms
-to: gtcx-infrastructure
+to: fabric-os
 priority: P0
 work_ids: [XR-302]
 ---

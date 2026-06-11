@@ -4,8 +4,8 @@ status: archived
 date: 2026-06-05
 archived_date: 2026-06-08
 from: compliance-os
-to: gtcx-infrastructure
-owner: gtcx-infrastructure
+to: fabric-os
+owner: fabric-os
 priority: P1
 hub_blocker: 17
 er1: ER-1-10

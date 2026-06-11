@@ -2,9 +2,9 @@
 title: 'Outbound — gtcx-intelligence Track B auth gate (XR-201)'
 status: current
 date: 2026-06-03
-from: gtcx-infrastructure
+from: fabric-os
 to: gtcx-intelligence
-owner: gtcx-infrastructure
+owner: fabric-os
 xr-id: XR-201
 ---
 

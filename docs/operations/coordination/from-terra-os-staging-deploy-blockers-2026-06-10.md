@@ -3,8 +3,8 @@ title: 'Inbound — TerraOS staging deploy blockers (from terra-os)'
 status: current
 date: 2026-06-10
 from: terra-os
-to: gtcx-infrastructure
-owner: gtcx-infrastructure
+to: fabric-os
+owner: fabric-os
 priority: P1
 work_id: CI-TERRA-20260609-02
 blocking: true

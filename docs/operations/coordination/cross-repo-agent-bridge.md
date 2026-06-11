@@ -2,7 +2,7 @@
 title: 'Cross-repo agent bridge — gtcx-infrastructure'
 status: current
 date: 2026-06-06
-owner: gtcx-infrastructure
+owner: fabric-os
 role: platform-engineer
 tier: critical
 tags: ['coordination', 'bridge', 'agents', 'protocol-24']

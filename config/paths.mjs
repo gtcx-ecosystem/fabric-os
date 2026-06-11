@@ -1,5 +1,5 @@
 /**
- * Canonical path joins for gtcx-infrastructure — import from scripts/tests via sor-map.
+ * Canonical path joins for fabric-os — import from scripts/tests via sor-map.
  * SoR: config/sor-map.json
  */
 import { readFileSync } from 'node:fs';

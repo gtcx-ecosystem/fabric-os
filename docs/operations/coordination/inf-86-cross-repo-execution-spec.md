@@ -2,7 +2,7 @@
 title: 'INF-86 Cross-Repo Execution Spec'
 status: current
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 to: all repos
 priority: P0
 work_ids: [XR-401, XR-402, XR-403]

@@ -2,8 +2,8 @@
 title: 'XR-405 Rollout Complete — Sovereign Staging KMS Signing'
 status: done
 date: 2026-06-04
-owner: gtcx-infrastructure
-from: gtcx-infrastructure
+owner: fabric-os
+from: fabric-os
 to: gtcx-platforms
 item: XR-405
 ---

@@ -3,7 +3,7 @@ title: 'Inbound — platforms S2-07 TypeORM phase 1 (infra S1-02 drift)'
 status: current
 date: 2026-06-05
 from: gtcx-platforms
-owner: gtcx-infrastructure
+owner: fabric-os
 work_ids: [S1-02, S2-07]
 tags: ['coordination', 'inbound', 'typeorm', 'migrations']
 ---

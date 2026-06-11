@@ -2,7 +2,7 @@
 title: 'Pointer — INF-86 AI-native trust model'
 status: current
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # INF-86 AI-native trust — canonical in gtcx-protocols

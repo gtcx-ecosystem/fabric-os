@@ -2,7 +2,7 @@
 title: 'EXT-INF human gates — who unblocks (gtcx-infrastructure)'
 status: current
 date: 2026-06-06
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # EXT-INF human gates — unblock matrix (XC track)

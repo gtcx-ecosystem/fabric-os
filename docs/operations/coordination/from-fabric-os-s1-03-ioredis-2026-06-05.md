@@ -2,7 +2,7 @@
 title: 'Witness — S1-03 ioredis added to platforms shared deps'
 status: done
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 target: gtcx-platforms
 work_id: S1-03
 ---

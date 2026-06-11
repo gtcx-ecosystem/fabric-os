@@ -2,7 +2,7 @@
 title: 'Outbound — INT-S9-01 staging smoke unblocked'
 status: sent
 date: 2026-06-04
-owner: gtcx-infrastructure
+owner: fabric-os
 target: gtcx-intelligence
 ---
 

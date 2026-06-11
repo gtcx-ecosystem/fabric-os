@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://audit/composite/v2",
   "repo": "fabric-os",
-  "date": "2026-06-10",
+  "date": "2026-06-11",
   "composite100": 87,
   "composite100Raw": 88,
   "productionReady": true,
@@ -29,31 +29,31 @@
       "score100": 100,
       "score100Raw": 100,
       "weight": 0.25,
-      "status": "probe-gates-only",
+      "status": "rubric-driven",
       "metrics": {
         "ux-product-design": {
-          "score100": 0,
+          "score100": 100,
           "weight": 1,
-          "confidence": "D",
-          "source": "missing"
+          "confidence": "C",
+          "source": "audit-output"
         },
         "ecosystem-integration": {
-          "score100": 0,
+          "score100": 100,
           "weight": 1,
-          "confidence": "D",
-          "source": "missing"
+          "confidence": "C",
+          "source": "audit-output"
         },
         "innovation-originality": {
-          "score100": 0,
+          "score100": 100,
           "weight": 1,
-          "confidence": "D",
-          "source": "missing"
+          "confidence": "C",
+          "source": "audit-output"
         },
         "technical-moat": {
-          "score100": 0,
+          "score100": 100,
           "weight": 1,
-          "confidence": "D",
-          "source": "missing"
+          "confidence": "C",
+          "source": "audit-output"
         }
       }
     },
@@ -62,13 +62,13 @@
       "score100": 80,
       "score100Raw": 80,
       "weight": 0.2,
-      "status": "probe-gates-only",
+      "status": "rubric-driven",
       "metrics": {
         "production-readiness": {
-          "score100": 0,
+          "score100": 80,
           "weight": 1,
-          "confidence": "D",
-          "source": "missing"
+          "confidence": "C",
+          "source": "audit-output"
         }
       }
     },
@@ -77,19 +77,19 @@
       "score100": 80,
       "score100Raw": 80,
       "weight": 0.15,
-      "status": "probe-gates-only",
+      "status": "rubric-driven",
       "metrics": {
         "ai-maturity": {
-          "score100": 0,
+          "score100": 80,
           "weight": 1,
-          "confidence": "D",
-          "source": "missing"
+          "confidence": "C",
+          "source": "audit-output"
         },
         "hallucination-resilience": {
-          "score100": 0,
+          "score100": 80,
           "weight": 1,
-          "confidence": "D",
-          "source": "missing"
+          "confidence": "C",
+          "source": "audit-output"
         }
       }
     },
@@ -98,25 +98,25 @@
       "score100": 100,
       "score100Raw": 100,
       "weight": 0.2,
-      "status": "probe-gates-only",
+      "status": "rubric-driven",
       "metrics": {
         "security": {
-          "score100": 0,
+          "score100": 100,
           "weight": 1,
-          "confidence": "D",
-          "source": "missing"
+          "confidence": "C",
+          "source": "audit-output"
         },
         "enterprise-readiness": {
-          "score100": 0,
+          "score100": 100,
           "weight": 1,
-          "confidence": "D",
-          "source": "missing"
+          "confidence": "C",
+          "source": "audit-output"
         },
         "bank-grade-auditability": {
-          "score100": 0,
+          "score100": 100,
           "weight": 1,
-          "confidence": "D",
-          "source": "missing"
+          "confidence": "C",
+          "source": "audit-output"
         }
       }
     },
@@ -158,7 +158,7 @@
   "replaces": ["master-audit", "comprehensive-audit", "bank-grade-audit"],
   "initiative": "INIT-AUDIT-CONSOLIDATION",
   "source": "run-five-core-audit",
-  "status": "probe-gates-only",
-  "rubricSource": null,
-  "rubricSourcePath": null
+  "status": "rubric-driven",
+  "rubricSource": "audit-output",
+  "rubricSourcePath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/audit/audit-output-2026-06-11.json"
 }

@@ -36,7 +36,37 @@
       "to": "audit/archive/2026-06-11/audit/repo-hygiene-audit-2026-06-10.md",
       "reason": "dated-sibling-when-latest-exists",
       "at": "2026-06-11T17:44:04.451Z"
+    },
+    {
+      "from": "audit/agentic-innovation-audit-2026-06-11.md",
+      "to": "audit/archive/2026-06-11/audit/agentic-innovation-audit-2026-06-11.md",
+      "reason": "dated-sibling-when-latest-exists",
+      "at": "2026-06-11T18:19:35.122Z"
+    },
+    {
+      "from": "audit/compliance-security-audit-2026-06-11.md",
+      "to": "audit/archive/2026-06-11/audit/compliance-security-audit-2026-06-11.md",
+      "reason": "dated-sibling-when-latest-exists",
+      "at": "2026-06-11T18:19:35.122Z"
+    },
+    {
+      "from": "audit/product-excellence-audit-2026-06-11.md",
+      "to": "audit/archive/2026-06-11/audit/product-excellence-audit-2026-06-11.md",
+      "reason": "dated-sibling-when-latest-exists",
+      "at": "2026-06-11T18:19:35.122Z"
+    },
+    {
+      "from": "audit/production-grade-audit-2026-06-11.md",
+      "to": "audit/archive/2026-06-11/audit/production-grade-audit-2026-06-11.md",
+      "reason": "dated-sibling-when-latest-exists",
+      "at": "2026-06-11T18:19:35.122Z"
+    },
+    {
+      "from": "audit/repo-hygiene-audit-2026-06-11.md",
+      "to": "audit/archive/2026-06-11/audit/repo-hygiene-audit-2026-06-11.md",
+      "reason": "dated-sibling-when-latest-exists",
+      "at": "2026-06-11T18:19:35.122Z"
     }
   ],
-  "updated": "2026-06-11T17:44:04.451Z"
+  "updated": "2026-06-11T18:19:35.122Z"
 }

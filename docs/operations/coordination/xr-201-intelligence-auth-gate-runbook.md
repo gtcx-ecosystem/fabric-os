@@ -10,7 +10,7 @@ xr-id: XR-201
 
 **Priority:** P0  
 **Sprint:** S-XR-1 (2026-06-03 → 06-07)  
-**Owner:** gtcx-infrastructure  
+**Owner:** fabric-os  
 **Status:** **DONE** — full SDK deployed 2026-06-03  
 **Unblocks:** XR-202 (intelligence re-smoke); INT-S3-08 evidence
 
@@ -237,7 +237,7 @@ Once auth gate is confirmed, append to agent log and notify gtcx-intelligence:
 
 ## Finding: Missing deployment in infra repo
 
-**Critical discovery:** The `intelligence-orchestrator` Deployment and Service are **not present** in `gtcx-infrastructure/04-deploy/kubernetes/`. This means:
+**Critical discovery:** The `intelligence-orchestrator` Deployment and Service are **not present** in `fabric-os/04-deploy/kubernetes/`. This means:
 
 1. The orchestrator placeholder was deployed by some other mechanism (manual, other repo CI, or older manifest since deleted)
 2. Infrastructure cannot complete XR-201 without either:

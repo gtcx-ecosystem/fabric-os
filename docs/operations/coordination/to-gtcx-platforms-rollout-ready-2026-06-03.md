@@ -13,7 +13,7 @@ xr-id: XR-301, XR-302
 **Work IDs:** XR-301 (sovereign), XR-302 (AGX)  
 **Priority:** P1  
 **Sprint:** S-XR-2 (2026-06-08 → 06-14)  
-**From:** gtcx-infrastructure  
+**From:** fabric-os  
 **To:** gtcx-platforms
 
 ---
@@ -39,13 +39,13 @@ Infra is **ready** to receive image push and execute rollout. No blockers on inf
 
 ## Rollout checklist
 
-| Step                     | Owner               | Check                                    |
-| ------------------------ | ------------------- | ---------------------------------------- |
-| ECR image push           | gtcx-platforms      | Digest posted                            |
-| Kustomize overlay update | gtcx-infrastructure | Image ref matches                        |
-| Rollout apply            | gtcx-infrastructure | `kubectl apply -k overlays/staging`      |
-| Smoke sovereign          | gtcx-platforms      | `pnpm smoke:signed-edge-tenant:evidence` |
-| Smoke AGX `/api/*`       | gtcx-platforms      | `/api/health` 200                        |
+| Step                     | Owner          | Check                                    |
+| ------------------------ | -------------- | ---------------------------------------- |
+| ECR image push           | gtcx-platforms | Digest posted                            |
+| Kustomize overlay update | fabric-os      | Image ref matches                        |
+| Rollout apply            | fabric-os      | `kubectl apply -k overlays/staging`      |
+| Smoke sovereign          | gtcx-platforms | `pnpm smoke:signed-edge-tenant:evidence` |
+| Smoke AGX `/api/*`       | gtcx-platforms | `/api/health` 200                        |
 
 ## Notes
 

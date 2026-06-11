@@ -15,7 +15,7 @@ target: gtcx-protocols
 Add directly below the `gtcx-core` ER-1-08 row (newest-first ordering within ER-1-08 cluster):
 
 ```markdown
-| 2026-06-04T23:50Z | gtcx-infrastructure | ER-1-08 | done | Infra acknowledges EAP Phase B closure. `normalizeStatus()` fix is agentic-only; no infra code changes. No blockers. | `gtcx-infrastructure:f8e1425` |
+| 2026-06-04T23:50Z | fabric-os | ER-1-08 | done | Infra acknowledges EAP Phase B closure. `normalizeStatus()` fix is agentic-only; no infra code changes. No blockers. | `fabric-os:f8e1425` |
 ```
 
 ## Evidence
@@ -31,6 +31,6 @@ Add directly below the `gtcx-core` ER-1-08 row (newest-first ordering within ER-
 - [x] gtcx-protocols — done
 - [x] gtcx-intelligence — done (`8d07705`)
 - [x] gtcx-core — done (`ba63d0d`)
-- [x] gtcx-infrastructure — done (`f8e1425`) — **this ack**
+- [x] fabric-os — done (`f8e1425`) — **this ack**
 
 ER-1-08 fully closed across all repos once this row is in the protocols ecosystem log.

@@ -1,5 +1,5 @@
 ---
-title: 'Ping — W2 prod E2E secrets confirmation (gtcx-infrastructure)'
+title: 'Ping — W2 prod E2E secrets confirmation (fabric-os)'
 status: current
 date: 2026-06-04
 owner: fabric-os
@@ -13,7 +13,7 @@ priority: P1
 
 **Inbound received:** [from-compliance-os-w2-secrets-spec-2026-06-04.md](./from-compliance-os-w2-secrets-spec-2026-06-04.md) → full spec in compliance-os `to-fabric-os-w2-secrets-inbound-2026-06-04.md`.
 
-**Context:** Locker #17 W2 prod E2E requires three sibling confirmations. This document is the **gtcx-infrastructure** leg.
+**Context:** Locker #17 W2 prod E2E requires three sibling confirmations. This document is the **fabric-os** leg.
 
 **What hub needs from infra:**
 Confirm `COMPLIANCE_OS_INTAKE_*` + `COMPLIANCE_OS_TERMINAL_*` (+ internal token) exist in production (or staging-for-prod) and are injectable into compliance-gateway pods.

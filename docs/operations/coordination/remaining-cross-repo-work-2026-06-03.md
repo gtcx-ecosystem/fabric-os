@@ -1,5 +1,5 @@
 ---
-title: 'Remaining cross-repo work — gtcx-infrastructure'
+title: 'Remaining cross-repo work — fabric-os'
 status: current
 date: 2026-06-03
 owner: fabric-os
@@ -7,7 +7,7 @@ from: fabric-os
 to: baseline-os coordination hub + sibling repos
 ---
 
-# Remaining cross-repo work (gtcx-infrastructure)
+# Remaining cross-repo work (fabric-os)
 
 > **Bridge (read first):** [`cross-repo-agent-bridge.md`](cross-repo-agent-bridge.md)  
 > **Sprint plan:** [`cross-repo-sprint-workplan-2026-06.md`](cross-repo-sprint-workplan-2026-06.md)  
@@ -39,7 +39,7 @@ to: baseline-os coordination hub + sibling repos
 | Field        | Value                                              |
 | ------------ | -------------------------------------------------- |
 | **Status**   | **DONE** — full SDK deployed, auth enforced        |
-| **Owner**    | **gtcx-infrastructure**                            |
+| **Owner**    | **fabric-os**                                      |
 | **Image**    | `gtcx-intelligence-sdk:12be5342`                   |
 | **Unblocks** | XR-202 (intelligence re-smoke); INT-S3-08 evidence |
 
@@ -77,7 +77,7 @@ to: baseline-os coordination hub + sibling repos
 | Field        | Value                                                                        |
 | ------------ | ---------------------------------------------------------------------------- |
 | **Status**   | **done** 2026-06-03                                                          |
-| **Owner**    | gtcx-platforms (push) → **gtcx-infrastructure** (rollout)                    |
+| **Owner**    | gtcx-platforms (push) → **fabric-os** (rollout)                              |
 | **Evidence** | Both `/api/health` endpoints return 200; DB tables created; JWT secrets live |
 | **Unblocks** | P4-07 smoke; api.staging `/api/*` health                                     |
 
@@ -103,7 +103,7 @@ to: baseline-os coordination hub + sibling repos
 | Field        | Value                                              |
 | ------------ | -------------------------------------------------- |
 | **Status**   | **DONE** — DNS live + Pages custom domain attached |
-| **Owner**    | **gtcx-infrastructure**                            |
+| **Owner**    | **fabric-os**                                      |
 | **Verified** | 2026-06-05                                         |
 | **Unblocks** | F-33 audit close; XR-008 re-audit                  |
 
@@ -127,7 +127,7 @@ to: baseline-os coordination hub + sibling repos
 | Field        | Value                                               |
 | ------------ | --------------------------------------------------- |
 | **Status**   | **DONE** — project active, table queryable          |
-| **Owner**    | **gtcx-infrastructure** / exploration-os            |
+| **Owner**    | **fabric-os** / exploration-os                      |
 | **Verified** | 2026-06-05                                          |
 | **Unblocks** | Financing prod path; `financing_applications` table |
 
@@ -151,7 +151,7 @@ to: baseline-os coordination hub + sibling repos
 | Field          | Value                                                                        |
 | -------------- | ---------------------------------------------------------------------------- |
 | **Status**     | **HOLD** — DO NOT APPLY                                                      |
-| **Owner**      | CISO + platform-lead (XR-401) → **gtcx-infrastructure** (XR-402)             |
+| **Owner**      | CISO + platform-lead (XR-401) → **fabric-os** (XR-402)                       |
 | **Blocked by** | Algorithm decision (ECC_NIST_P256 vs Ed25519/CloudHSM); custodian scheduling |
 | **Unblocks**   | XR-403 (protocols bog.json); production authority keys                       |
 
@@ -185,12 +185,12 @@ to: baseline-os coordination hub + sibling repos
 
 ### XR-502 — W2 M2M intake secret (compliance-os)
 
-| Field        | Value                                                                |
-| ------------ | -------------------------------------------------------------------- |
-| **Status**   | **ready** — no action unless compliance-os asks                      |
-| **Owner**    | compliance-os (consumer) → **gtcx-infrastructure** (secret provider) |
-| **Action**   | Seal `COMPLIANCE_OS_INTAKE_API_KEY` in staging overlay if requested  |
-| **Unblocks** | ExplorationOS export to compliance-os                                |
+| Field        | Value                                                               |
+| ------------ | ------------------------------------------------------------------- |
+| **Status**   | **ready** — no action unless compliance-os asks                     |
+| **Owner**    | compliance-os (consumer) → **fabric-os** (secret provider)          |
+| **Action**   | Seal `COMPLIANCE_OS_INTAKE_API_KEY` in staging overlay if requested |
+| **Unblocks** | ExplorationOS export to compliance-os                               |
 
 **Note:** compliance-os may already have this wired. Infra action only if they file inbound ticket.
 
@@ -203,7 +203,7 @@ to: baseline-os coordination hub + sibling repos
 | Field        | Value                                                                                                                |
 | ------------ | -------------------------------------------------------------------------------------------------------------------- |
 | **Status**   | **deferred**                                                                                                         |
-| **Owner**    | **gtcx-infrastructure**                                                                                              |
+| **Owner**    | **fabric-os**                                                                                                        |
 | **Context**  | `POST /v1/admin/tradepass/register-operator` returns HTML 403 from upstream (WAF/Cloudflare). Pod would return JSON. |
 | **Action**   | Add WAF rule to allow admin paths with proper auth headers if external admin curl needed                             |
 | **Priority** | Low — admin registration can run via port-forward or internal network                                                |
@@ -215,7 +215,7 @@ to: baseline-os coordination hub + sibling repos
 | Field       | Value                                                                        |
 | ----------- | ---------------------------------------------------------------------------- |
 | **Status**  | **ready** — waiting capacity                                                 |
-| **Owner**   | **gtcx-infrastructure**                                                      |
+| **Owner**   | **fabric-os**                                                                |
 | **Action**  | Add `agent:next-work` to GitHub Actions workflow when sprint capacity allows |
 | **Pattern** | Copy gtcx-protocols CI pattern                                               |
 
@@ -251,7 +251,7 @@ When status changes on any item above:
 1. Append [`cross-repo-agent-log.md`](cross-repo-agent-log.md)
 2. Update [`cross-repo-agent-bridge.md`](cross-repo-agent-bridge.md) § Latest updates
 3. Update [`cross-repo-sprint-workplan-2026-06.md`](cross-repo-sprint-workplan-2026-06.md) Status column
-4. If P0, report to baseline-os: `pnpm ecosystem:repo:report-work --repo=gtcx-infrastructure --item="<XR-ID> <note>" --status=<status>`
+4. If P0, report to baseline-os: `pnpm ecosystem:repo:report-work --repo=fabric-os --item="<XR-ID> <note>" --status=<status>`
 
 ---
 

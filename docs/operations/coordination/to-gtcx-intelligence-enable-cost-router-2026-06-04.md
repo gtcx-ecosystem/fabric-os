@@ -49,5 +49,5 @@ priority: P1
 ## Cross-references
 
 - Intelligence evidence tool: `gtcx-intelligence/03-platform/tools/evidence/capture-cost-router-staging-evidence.mjs`
-- Sprint roadmap: `gtcx-infrastructure/01-docs/05-audit/agile/sprints/sprint-2026-06-phase3-roadmap.md` § ER-2
+- Sprint roadmap: `fabric-os/01-docs/05-audit/agile/sprints/sprint-2026-06-phase3-roadmap.md` § ER-2
 - Ecosystem cost router spec: `baseline-os/01-docs/specs/runtime/cost-router.md`

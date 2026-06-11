@@ -13,7 +13,7 @@ xr-id: XR-201
 **Work ID:** XR-201  
 **Priority:** P0  
 **Sprint:** S-XR-1 (2026-06-03 → 06-07)  
-**From:** gtcx-infrastructure  
+**From:** fabric-os  
 **To:** gtcx-intelligence
 
 ---

@@ -37,14 +37,14 @@ WAF: `AllowMarketsAuthorityEndpoints` on `gtcx-staging-waf-af-south-1` (priority
 
 ## Acceptance
 
-| Gate            | Target                                                              | Status (2026-06-10) |
-| --------------- | ------------------------------------------------------------------- | ------------------- |
-| Authority trace | `pnpm authority:trace:capture` (gtcx-markets) → **7/7**, exit **0** | **PASS**            |
-| Public POST     | Bearer + decision JSON on all 7 paths                               | **PASS**            |
-| AGX health      | `GET /api/health` → **200**                                         | pending (F-AGX-01)  |
-| Fleet probe     | `pnpm daas:fleet:health` → agx-api **PASS**                         | pending             |
+| Gate            | Target                                                            | Status (2026-06-10) |
+| --------------- | ----------------------------------------------------------------- | ------------------- |
+| Authority trace | `pnpm authority:trace:capture` (markets-os) → **7/7**, exit **0** | **PASS**            |
+| Public POST     | Bearer + decision JSON on all 7 paths                             | **PASS**            |
+| AGX health      | `GET /api/health` → **200**                                       | pending (F-AGX-01)  |
+| Fleet probe     | `pnpm daas:fleet:health` → agx-api **PASS**                       | pending             |
 
 ## Witness
 
-- Markets contract: `gtcx-markets/platform/contracts/ecosystem/authority-staging-env-manifest.json`
+- Markets contract: `markets-os/platform/contracts/ecosystem/authority-staging-env-manifest.json`
 - Infra seal: `docs/operations/coordination/from-fabric-os-s39-01-authority-routes-2026-06-10.md`

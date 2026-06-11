@@ -9,7 +9,7 @@ priority: P1
 work_ids: [XR-507, XR-508, XR-502, W2-E2E]
 ---
 
-# Outbound: ExplorationOS dependency resolution (gtcx-infrastructure)
+# Outbound: ExplorationOS dependency resolution (fabric-os)
 
 **Reply to:** Hub P1 items #15–18 and `from-gtcx-protocols-cross-repo-unblock-2026-06-03.md`
 
@@ -87,5 +87,5 @@ work_ids: [XR-507, XR-508, XR-502, W2-E2E]
 
 - Hub P1 register: `gtcx-docs/01-docs/governance/.../hub-p1-register.md`
 - Protocols unblock doc: `gtcx-protocols/01-docs/operations/coordination/from-gtcx-protocols-cross-repo-unblock-2026-06-03.md`
-- Infra remaining work: `gtcx-infrastructure/01-docs/04-ops/coordination/remaining-cross-repo-work-2026-06-03.md`
-- Sprint workplan: `gtcx-infrastructure/01-docs/04-ops/coordination/cross-repo-sprint-workplan-2026-06.md`
+- Infra remaining work: `fabric-os/01-docs/04-ops/coordination/remaining-cross-repo-work-2026-06-03.md`
+- Sprint workplan: `fabric-os/01-docs/04-ops/coordination/cross-repo-sprint-workplan-2026-06.md`

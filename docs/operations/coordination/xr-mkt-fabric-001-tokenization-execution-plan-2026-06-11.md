@@ -48,7 +48,7 @@ P0 contracts ──► P1 bounded pilot ──► P2 live permissioned tokenizat
 
 ```mermaid
 flowchart TB
-  subgraph fabric["fabric-os (gtcx-infrastructure)"]
+  subgraph fabric["fabric-os (fabric-os)"]
     ORCH[Program orchestration + assurance]
   end
   subgraph product["Product execution"]
@@ -71,7 +71,7 @@ flowchart TB
     PVP[PvP / PANX / infrastructure owners]
   end
   subgraph runtime["Runtime & assurance"]
-    INF[gtcx-infrastructure — chains, secrets, DR, pen-test]
+    INF[fabric-os — chains, secrets, DR, pen-test]
   end
   subgraph legal["Legal & regulatory"]
     HUMAN[Human legal/regulatory owners — Class S]
@@ -151,8 +151,8 @@ owns routes, permissions, API clients, regulatory behavior, and integration test
 | Cadastre / asset passport      | **terra-os**, **exploration-os**, Ghana authorities | Block P1 asset selection             |
 | Compliance decisions / filings | **compliance-os**, protocol owners                  | Evidence pack template               |
 | Custody / reserves             | VaultMark / GoldBod integrators                     | Block P2                             |
-| Settlement / DvP               | PvP / PANX / **gtcx-infrastructure**                | XR-MKT-011 authority matrix extended |
-| Runtime / DR / pen-test        | **gtcx-infrastructure**                             | EXT-INF-002 window 2026-06-17..21    |
+| Settlement / DvP               | PvP / PANX / **fabric-os**                          | XR-MKT-011 authority matrix extended |
+| Runtime / DR / pen-test        | **fabric-os**                                       | EXT-INF-002 window 2026-06-17..21    |
 | Legal / regulatory             | **Human (Class S)**                                 | See §7                               |
 | ZenHub / fleet gates           | **bridge-os**                                       | `pnpm ecosystem:fabric:check`        |
 
@@ -160,13 +160,13 @@ owns routes, permissions, API clients, regulatory behavior, and integration test
 
 ## 5. Phase 0 stories (immediate)
 
-| ID         | Owner               | Done when                                                            |
-| ---------- | ------------------- | -------------------------------------------------------------------- |
-| MKT-TKN-00 | markets-os          | Lifecycle types + OpenAPI frozen; CI contract gate green             |
-| UI-TKN-00  | ledger-ui           | Fixture pack covers normal, rejected, pending, default, drift        |
-| FAB-TKN-00 | fabric-os           | Ack + plan published (**done**)                                      |
-| COS-TKN-00 | compliance-os       | Instrument classification checklist for first SPV/right type         |
-| INF-TKN-00 | gtcx-infrastructure | Staging secrets matrix row for tokenization operators (no prod keys) |
+| ID         | Owner         | Done when                                                            |
+| ---------- | ------------- | -------------------------------------------------------------------- |
+| MKT-TKN-00 | markets-os    | Lifecycle types + OpenAPI frozen; CI contract gate green             |
+| UI-TKN-00  | ledger-ui     | Fixture pack covers normal, rejected, pending, default, drift        |
+| FAB-TKN-00 | fabric-os     | Ack + plan published (**done**)                                      |
+| COS-TKN-00 | compliance-os | Instrument classification checklist for first SPV/right type         |
+| INF-TKN-00 | fabric-os     | Staging secrets matrix row for tokenization operators (no prod keys) |
 
 **P0 exit:** Interactive operator + investor workflows against controlled stubs;
 fail-closed behavior and signed evidence chain preserved.
@@ -182,7 +182,7 @@ fail-closed behavior and signed evidence chain preserved.
 | P1-ID      | TradePass / Veritas               | One investor cohort with live claims                           |
 | P1-TX      | markets-os                        | Subscription → issuance → distribution → transfer → redemption |
 | P1-RECON   | markets-os                        | Daily multi-ledger reconciliation + regulator evidence pack    |
-| P1-RUNTIME | gtcx-infrastructure               | Staging deploy proof + observability + incident runbook        |
+| P1-RUNTIME | fabric-os                         | Staging deploy proof + observability + incident runbook        |
 
 **P1 exit:** Single bounded transaction with daily reconciliation and exportable
 evidence pack. **Not** national scale, **not** committed $250M financing.
@@ -230,6 +230,6 @@ Fabric **records** these gates; it does **not** execute Class S approvals.
 ## 10. References
 
 - markets-os: `docs/architecture/eix/fractionalization.md`, `authority-model.md`
-- gtcx-infrastructure: XR-MKT-011 authority URL matrix
+- fabric-os: XR-MKT-011 authority URL matrix
 - bridge-os: `pm/spec/service-fabric.v1.json`, `pm/spec/gtcx-execution-engine.v1.json`
 - compliance-os: cloud placement + W2 hub witnesses

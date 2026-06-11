@@ -1,0 +1,23 @@
+{
+  "$schema": "gtcx://pm/ci-gates/v1",
+  "version": "1.0.0",
+  "gates": [
+    {
+      "id": "ops-check",
+      "command": "pnpm ops:check",
+      "required": true
+    },
+    {
+      "id": "session",
+      "command": "pnpm session --json",
+      "required": true
+    },
+    {
+      "id": "verify",
+      "command": "pnpm verify",
+      "required": false
+    }
+  ],
+  "evidenceDir": "audit/evidence",
+  "repo": "fabric-os"
+}

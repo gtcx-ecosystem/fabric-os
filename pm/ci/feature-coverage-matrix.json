@@ -1,0 +1,6 @@
+{
+  "$schema": "gtcx://pm/feature-coverage-matrix/v1",
+  "version": "1.0.0",
+  "features": [],
+  "minCoveragePercent": 90
+}

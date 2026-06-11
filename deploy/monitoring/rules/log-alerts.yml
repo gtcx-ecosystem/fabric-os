@@ -15,7 +15,7 @@ groups:
           severity: warning
           source: logs
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/high-error-log-rate.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/high-error-log-rate.md'
           summary: 'High error log rate for {{ $labels.app }}'
           description: 'Error log rate is {{ $value | humanizePercentage }} per second over the last 5 minutes'
 
@@ -27,7 +27,7 @@ groups:
           severity: critical
           source: logs
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/auth-failure-spike.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/auth-failure-spike.md'
           summary: 'Authentication failure spike on {{ $labels.app }}'
           description: 'Auth failure rate is {{ $value | humanizePercentage }} per second — potential attack or misconfiguration'
 
@@ -39,6 +39,6 @@ groups:
           severity: warning
           source: logs
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/database-pool-exhausted.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/database-pool-exhausted.md'
           summary: 'Database connection pool exhausted for {{ $labels.app }}'
           description: 'Connection pool exhaustion detected — requests may queue or fail'

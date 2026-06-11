@@ -1,12 +1,12 @@
 ---
-title: 'Agent launch focus — gtcx-infrastructure'
+title: 'Agent launch focus — fabric-os'
 status: current
 date: 2026-06-06
-owner: gtcx-infrastructure
+owner: fabric-os
 document_id: OPS-AGENT-LAUNCH-INFRA
 ---
 
-# Launch focus — gtcx-infrastructure
+# Launch focus — fabric-os
 
 **Hub spec:** [gtcx-core agent-launch-focus.md](https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md)
 

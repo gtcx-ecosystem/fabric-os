@@ -2,7 +2,7 @@
 title: 'Epic — Intelligence Phase 3 GCP→AWS ML bridge (Terraform)'
 status: planned
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 partner: gtcx-intelligence
 epic_id: INF-PHASE3-GCP-BRIDGE-001
 ---
@@ -19,8 +19,8 @@ Allow **Vertex AI pipelines** (GCP) to publish **non-PII model artifacts** to AW
 
 ## Terraform (shipped — disabled by default)
 
-| Path                                       | Purpose                                                   |
-| ------------------------------------------ | --------------------------------------------------------- |
+| Path                                         | Purpose                                                   |
+| -------------------------------------------- | --------------------------------------------------------- |
 | `04-deploy/terraform/modules/gcp-ml-bridge/` | WIF OIDC provider + `intelligence-gcp-ml-bridge` IAM role |
 | `04-deploy/terraform/modules/ml-pipeline/`   | AWS S3 datasets/models + DynamoDB registry (existing)     |
 

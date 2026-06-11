@@ -2,7 +2,7 @@
 title: 'Staging — compliance-os ESO bootstrap (Hub #17)'
 status: current
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # Staging — compliance-os ESO bootstrap

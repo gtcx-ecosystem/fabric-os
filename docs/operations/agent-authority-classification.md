@@ -3,7 +3,7 @@ title: 'Agent Authority Classification — Protocol 28 Reference'
 status: current
 protocol: gtcx-docs/01-docs/governance/protocols/28-agent-authority-classification/
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # Agent Authority Classification — Protocol 28 Reference

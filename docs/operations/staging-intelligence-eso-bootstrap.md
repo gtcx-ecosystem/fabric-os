@@ -2,7 +2,7 @@
 title: 'Staging — Intelligence ESO bootstrap'
 status: current
 date: 2026-06-02
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # Staging — Intelligence ESO bootstrap

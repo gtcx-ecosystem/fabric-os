@@ -3,7 +3,7 @@ title: 'Agent Proceed Confirmation — Protocol 26 Adoption'
 status: established
 protocol: gtcx-docs/01-docs/governance/protocols/26-agent-proceed-confirmation/
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 document_id: OPS-APC-001
 ---
 

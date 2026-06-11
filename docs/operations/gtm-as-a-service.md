@@ -2,7 +2,7 @@
 title: GTM-as-a-Service (GTMaaS)
 status: current
 date: 2026-06-10
-owner: gtcx-infrastructure
+owner: fabric-os
 protocol: P44-FABRIC-CONSUMPTION
 initiative: INIT-GTCX-SERVICE-FABRIC
 ---

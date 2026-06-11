@@ -2,7 +2,7 @@
 title: 'Staging — XR-104 compliance-gateway rollout'
 status: current
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 xr_id: XR-104
 ---
 

@@ -2,7 +2,7 @@
 title: 'Agent PR witness checklist (SIGNAL INF-003)'
 status: current
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # Agent PR witness checklist

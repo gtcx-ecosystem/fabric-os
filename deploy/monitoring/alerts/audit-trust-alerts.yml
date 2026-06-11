@@ -18,7 +18,7 @@ groups:
           severity: critical
           team: platform
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/alerts.md#auditdbwritefailure'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/alerts.md#auditdbwritefailure'
           summary: 'Audit PostgreSQL is down'
           description: 'The audit database (gtcx-postgres-audit) has been unreachable for >1 minute. Replay events may be lost.'
 
@@ -38,7 +38,7 @@ groups:
           severity: warning
           team: platform
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/alerts.md#auditeventvolumedrop'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/alerts.md#auditeventvolumedrop'
           summary: 'Audit event volume dropped'
           description: 'Replay protection is accepting requests but no rows are being inserted into gtcx_audit.replay_events. Check postgres-sink connectivity.'
 
@@ -54,7 +54,7 @@ groups:
           severity: warning
           team: security
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/alerts.md#replayguardhighrejectionrate'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/alerts.md#replayguardhighrejectionrate'
           summary: 'High replay rejection rate'
           description: '>25% of replay protection checks are failing. Possible attack, clock skew incident, or mobile client misconfiguration.'
 
@@ -68,6 +68,6 @@ groups:
           severity: warning
           team: platform
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/alerts.md#replayguardclockskewhigh'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/alerts.md#replayguardclockskewhigh'
           summary: 'P99 clock skew > 5 minutes'
           description: 'Devices are showing significant clock drift. Investigate NTP configuration on mobile fleet.'

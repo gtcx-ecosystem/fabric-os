@@ -2,7 +2,7 @@
 title: 'Agent staging execution — W2 / Hub #17 (P27)'
 status: current
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 document_id: OPS-AGENT-STAGING-EXEC
 tier: critical
 tags: ['agents', 'staging', 'w2', 'protocol-27']
@@ -18,12 +18,12 @@ tags: ['agents', 'staging', 'w2', 'protocol-27']
 
 ## terminal-os (W2-OPS-001)
 
-| Step     | Agent runs                                                                            | Notes                                       |
-| -------- | ------------------------------------------------------------------------------------- | ------------------------------------------- |
-| 1 SM     | `./03-platform/scripts/staging/populate-terminal-os-staging-sm.sh`                    | If `aws` denied → Permission Unblock Report |
+| Step     | Agent runs                                                                              | Notes                                       |
+| -------- | --------------------------------------------------------------------------------------- | ------------------------------------------- |
+| 1 SM     | `./03-platform/scripts/staging/populate-terminal-os-staging-sm.sh`                      | If `aws` denied → Permission Unblock Report |
 | 2 TF     | `cd 04-deploy/terraform/environments/staging && terraform apply -target=module.secrets` | Report plan/apply exit                      |
 | 3 K8s    | `kubectl apply -k 04-deploy/kubernetes/overlays/staging/terminal-os/`                   | Context `gtcx-staging`                      |
-| 4 Verify | `kubectl rollout status deployment/terminal-os -n terminal-os-staging`                |                                             |
+| 4 Verify | `kubectl rollout status deployment/terminal-os -n terminal-os-staging`                  |                                             |
 
 Paths: `04-deploy/terraform/modules/secrets/terminal-os.tf`, overlay under `04-deploy/kubernetes/overlays/staging/terminal-os/`.
 

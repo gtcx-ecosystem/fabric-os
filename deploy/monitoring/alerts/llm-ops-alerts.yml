@@ -9,7 +9,7 @@ groups:
           team: platform
           service: compliance-gateway
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/alerts.md#compliancegatewayllmhighlatency'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/alerts.md#compliancegatewayllmhighlatency'
           summary: 'compliance-gateway LLM p95 latency above 8s'
           description: 'Provider {{ $labels.provider }} latency {{ $value }}ms exceeds SLO.'
 
@@ -26,7 +26,7 @@ groups:
           team: platform
           service: compliance-gateway
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/alerts.md#compliancegatewayllmhigherrorrate'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/alerts.md#compliancegatewayllmhigherrorrate'
           summary: 'compliance-gateway /v1/query error rate above 2%'
           description: 'LLM path error rate {{ $value | humanizePercentage }} over 5m.'
 
@@ -38,6 +38,6 @@ groups:
           team: platform
           service: compliance-gateway
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/alerts.md#compliancegatewayllmdailycostanomaly'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/alerts.md#compliancegatewayllmdailycostanomaly'
           summary: 'compliance-gateway daily LLM cost above $50'
           description: 'Review baseline cost-stats and provider routing.'

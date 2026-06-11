@@ -2,7 +2,7 @@
 title: DevOps-as-a-Service (DaaS)
 status: current
 date: 2026-06-10
-owner: gtcx-infrastructure
+owner: fabric-os
 protocol: P41-DEVOPS-AS-A-SERVICE
 initiative: INIT-GTCX-INFRA-DAAS
 ---

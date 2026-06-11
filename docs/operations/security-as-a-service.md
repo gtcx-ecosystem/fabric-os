@@ -2,7 +2,7 @@
 title: Security-as-a-Service (SECaaS)
 status: current
 date: 2026-06-10
-owner: gtcx-infrastructure
+owner: fabric-os
 protocol: P42-SECURITY-AS-A-SERVICE
 initiative: INIT-GTCX-INFRA-SECAS
 ---

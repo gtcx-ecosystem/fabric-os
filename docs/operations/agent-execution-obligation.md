@@ -3,7 +3,7 @@ title: 'Agent Execution Obligation — Protocol 27 Adoption'
 status: established
 protocol: gtcx-docs/01-docs/governance/protocols/27-agent-execution-obligation/
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # Agent Execution Obligation — Protocol 27 Adoption

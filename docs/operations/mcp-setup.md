@@ -2,7 +2,7 @@
 title: MCP / RAG setup (Model B)
 status: current
 date: 2026-06-08
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # MCP / RAG setup — gtcx-infrastructure

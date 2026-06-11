@@ -2,7 +2,7 @@
 title: 'Unified LLM cost router — infrastructure consumer'
 status: current
 date: 2026-06-03
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # Compliance-gateway → baseline-os cost router

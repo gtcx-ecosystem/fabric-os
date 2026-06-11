@@ -1,0 +1,244 @@
+{
+  "$schema": "gtcx://fabric-os/trade-ecosystem-lanes/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-12",
+  "initiative": "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
+  "title": "GTCX Trade Ecosystem Lanes",
+  "status": "draft",
+  "authorityClass": "R",
+  "humanSpec": "docs/specs/ecosystem/trade-ecosystem-lanes-spec.md",
+  "sessionBrainstorm": "docs/specs/ecosystem/session-brainstorm-trade-domain-model-2026-06-12.md",
+  "principle": "Full-stack sovereign commodity trade ecosystem. Proof is the rail, not the product category. Separate lanes; never collapse gtcx-os into infra utilities.",
+  "forbiddenBuckets": [
+    "experienceAndPrimitives",
+    "infrastructureIntelligenceFlatP",
+    "trustSuiteAsProductCategory"
+  ],
+  "supplyChainOrder": ["T0", "L1", "L4a", "L4b", "L3", "X"],
+  "deployProducts": {
+    "sovereign": {
+      "adr": "ADR-007",
+      "product": "GTCX Sovereign",
+      "modules": ["CRX", "SGX", "Pathways", "Operations"],
+      "hostLane": "L4a",
+      "sor": "gtcx-os/platform/platforms"
+    },
+    "cloud": {
+      "adr": "ADR-007",
+      "product": "GTCX Cloud",
+      "modules": ["AGX", "TradePass", "Veritas"],
+      "hostLanes": ["L4b", "L3"],
+      "sor": "gtcx-os/platform/platforms"
+    }
+  },
+  "lanes": {
+    "T0": {
+      "id": "T0",
+      "name": "Trade protocol rail",
+      "type": "foundation",
+      "parentLane": "C",
+      "sor": "gtcx-os/platform/protocols",
+      "legacyRepo": "gtcx-protocols",
+      "members": [
+        "TradePass",
+        "GeoTag",
+        "GCI",
+        "VaultMark",
+        "PvP",
+        "PANX",
+        "CSP",
+        "commodity-hierarchy",
+        "schema-forge"
+      ],
+      "tagline": "Industry-standard verification primitives — protocol suite, not product platform",
+      "fabricRole": "host-runtime-only"
+    },
+    "T0.5": {
+      "id": "T0.5",
+      "name": "Core substrate",
+      "type": "foundation",
+      "parentLane": "C",
+      "sor": "gtcx-os/platform/core",
+      "legacyRepo": "gtcx-core",
+      "fabricRole": "deploy-artifacts-only"
+    },
+    "C": {
+      "id": "C",
+      "name": "Trade infrastructure core",
+      "type": "platform-center",
+      "repo": "gtcx-os",
+      "domains": [
+        "platform/protocols",
+        "platform/core",
+        "platform/platforms",
+        "platform/mobile",
+        "platform/hardware",
+        "platform/operations",
+        "platform/intelligence"
+      ],
+      "shadowDomains": [
+        {
+          "path": "platform/infrastructure",
+          "liveSor": "fabric-os",
+          "note": "P34 shadow; edit infra in fabric-os"
+        },
+        {
+          "path": "platform/markets",
+          "liveSor": "markets-os",
+          "note": "ADR-0005 pointer only"
+        }
+      ],
+      "tagline": "Main core of trade infrastructure — where trade is built",
+      "notInLanes": ["I", "U", "B"]
+    },
+    "L1": {
+      "id": "L1",
+      "name": "Site verification and intelligence",
+      "type": "product",
+      "question": "What happened at the site?",
+      "members": {
+        "inC": ["platform/mobile", "platform/hardware", "platform/operations"],
+        "siblings": ["exploration-os", "terra-os"]
+      },
+      "fabricRole": "host-and-secrets"
+    },
+    "L2": {
+      "id": "L2",
+      "name": "Market intelligence",
+      "type": "product",
+      "question": "What does the market know?",
+      "members": {
+        "siblings": ["terminal-os", "nyota-ai", "griot-ai"],
+        "inC": ["platform/intelligence"]
+      },
+      "distinctFrom": "L4b",
+      "fabricRole": "host-terminal-and-intelligence-staging"
+    },
+    "L3": {
+      "id": "L3",
+      "name": "Compliance and attestation",
+      "type": "product",
+      "question": "Is it allowed and true?",
+      "members": {
+        "siblings": ["compliance-os", "veritas-ai"],
+        "inC": ["platform/platforms/Veritas"]
+      },
+      "distinctFrom": "L4a-CRX",
+      "fabricRole": "hub-17-substrate-xr-104"
+    },
+    "L4a": {
+      "id": "L4a",
+      "name": "Civic digital infrastructure",
+      "type": "product",
+      "question": "Sovereign government rails",
+      "members": {
+        "inC": ["CRX", "SGX", "Pathways", "Operations"],
+        "siblings": ["sensei-os"]
+      },
+      "deployProduct": "GTCX Sovereign",
+      "fabricRole": "sovereign-staging-prod-origins"
+    },
+    "L4b": {
+      "id": "L4b",
+      "name": "Market exchange and investment",
+      "type": "product",
+      "question": "Liquidity and capital formation",
+      "members": {
+        "inC": ["AGX", "Pathways"],
+        "siblings": ["markets-os"]
+      },
+      "deployProduct": "GTCX Cloud",
+      "fabricRole": "agx-staging-prod-api-origins"
+    },
+    "X": {
+      "id": "X",
+      "name": "Experience",
+      "type": "cross-cut-ui",
+      "members": ["ledger-ui"],
+      "forbiddenMembers": ["platform/protocols", "platform/core"],
+      "tagline": "Desk shell only — no protocol authority"
+    },
+    "A": {
+      "id": "A",
+      "name": "AI OS",
+      "type": "platform-support",
+      "repo": "baseline-os",
+      "layers": ["Lang", "Frame", "Studio", "Persona", "Autonomy", "Experience", "Govern"],
+      "notCategories": ["I", "U", "utility", "infra"],
+      "fabricRole": "optional-pilot-host-only"
+    },
+    "I": {
+      "id": "I",
+      "name": "Infra",
+      "type": "platform-support",
+      "repo": "fabric-os",
+      "legacyRepo": "gtcx-infrastructure",
+      "tagline": "Cloud control plane — deploys C, does not define trade",
+      "services": ["DaaS", "SECaaS", "EKS", "terraform", "SM-ESO", "WAF"]
+    },
+    "U": {
+      "id": "U",
+      "name": "Utilities",
+      "type": "platform-support",
+      "members": {
+        "canon-os": "constitution-governance-protocols-audit-framework",
+        "agile-os": "fleet-zenhub-sprint-graph"
+      },
+      "notCategories": ["product", "trade-core"]
+    },
+    "B": {
+      "id": "B",
+      "name": "Program office",
+      "type": "platform-support",
+      "repo": "bridge-os",
+      "tagline": "Fleet gates, PM harness, cutover witness"
+    },
+    "P-gov": {
+      "id": "P-gov",
+      "name": "Governance protocols",
+      "type": "utility-sub-lane",
+      "sor": "canon-os/docs/governance/protocols",
+      "distinctFrom": "T0",
+      "note": "P1-P45 agent fleet law — not GeoTag/GCI trade protocols"
+    }
+  },
+  "boundaryRules": [
+    {
+      "pair": ["compliance-os", "CRX"],
+      "rule": "Enterprise compliance product vs sovereign permit desk"
+    },
+    {
+      "pair": ["markets-os", "AGX"],
+      "rule": "Capital formation sibling vs international marketplace module in C"
+    },
+    {
+      "pair": ["terminal-os", "markets-os"],
+      "rule": "Market intelligence vs capital formation execution"
+    },
+    {
+      "pair": ["T0", "P-gov"],
+      "rule": "Trade verification rail vs agent governance law"
+    },
+    {
+      "pair": ["fabric-os", "gtcx-os"],
+      "rule": "Infra runs trade core; trade core is not infra"
+    }
+  ],
+  "continuityModel": {
+    "analogue": "Apple iCloud + Apple ID",
+    "identitySor": "baseline-os",
+    "syncUnit": "trade-object-graph",
+    "notSyncUnit": "git-repo-files",
+    "surfaces": ["mobile", "NFC", "desk", "WhatsApp", "minister-portal"]
+  },
+  "childInitiatives": [
+    "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
+    "INIT-FABRIC-LANE-DEPLOY-MATRIX",
+    "INIT-CANON-INST-F-006",
+    "INIT-GTCX-CONSTITUTION-ART-IV-BIS",
+    "INIT-PROTOCOL-46-TRADE-OBJECT-CONTINUITY",
+    "INIT-BRIDGE-LANES-REGISTRY-SYNC",
+    "INIT-GTCX-CONVERGENCE-FRAME"
+  ],
+  "fabricHandoff": "docs/operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md"
+}

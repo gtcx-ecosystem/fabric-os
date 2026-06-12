@@ -3,7 +3,7 @@
   "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
   "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
   "statePath": ".baseline/launch-focus.json",
-  "provisionedAt": "2026-06-12T11:20:27.198Z",
+  "provisionedAt": "2026-06-12T13:48:05.562Z",
   "repo": "fabric-os",
   "northStar": {
     "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -29,13 +29,6 @@
         "workClass": "ops-docs",
         "authorityClass": "S",
         "lane": "p22-head"
-      },
-      {
-        "storyId": "S4-07",
-        "title": "pnpm test quick 1/359 flake investigation",
-        "workClass": "code",
-        "lane": "work-register",
-        "because": "Only pending IR-class code story in P22 manifest"
       }
     ],
     "plan": [],
@@ -46,13 +39,6 @@
         "workClass": "ops-docs",
         "lane": "secas",
         "because": "SECAS-S2 in_progress; window 2026-06-17..21"
-      },
-      {
-        "storyId": "XR-FABRIC-SPRINT-AUTH-001",
-        "title": "Consume bridge fleet-sprint-orientation-latest.json",
-        "workClass": "ops-docs",
-        "lane": "coordination",
-        "because": "L2 sprint authority eval delivered; await bridge witness"
       }
     ],
     "human": [
@@ -73,19 +59,12 @@
       "workClass": "ops-docs",
       "authorityClass": "S",
       "lane": "p22-head"
-    },
-    {
-      "storyId": "S4-07",
-      "title": "pnpm test quick 1/359 flake investigation",
-      "workClass": "code",
-      "lane": "work-register",
-      "because": "Only pending IR-class code story in P22 manifest"
     }
   ],
   "workSetCounts": {
-    "implement": 2,
+    "implement": 1,
     "plan": 0,
-    "witness": 2,
+    "witness": 1,
     "human": 1
   },
   "sources": [
@@ -101,6 +80,6 @@
   "agentInstructions": [
     "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
     "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
-    "IMPLEMENT mode — drain 1 item(s) toward app launch / GTM."
+    "WITNESS mode — human gates only."
   ]
 }

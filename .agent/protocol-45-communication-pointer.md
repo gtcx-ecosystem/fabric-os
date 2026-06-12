@@ -1,6 +1,6 @@
 # Agent communication (P45)
 
-SoR: `baseline-os/pm/spec/agent-communication-protocol.v1.json`
+SoR: `baseline-os/pm/spec/agent-communication-protocol.json`
 
 Message types: PROCEED_BRIEF · STATUS_UPDATE · TASK_LIST · PERMISSION_UNBLOCK_REPORT · COORDINATION_HANDOFF
 

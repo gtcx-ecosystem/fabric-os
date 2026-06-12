@@ -9,7 +9,7 @@
   "primaryRoadmap": true,
   "note": "Primary fabric-os program — not bridge-os ECO-PROD or product PM",
   "extends": {
-    "p40": "bridge-os/pm/spec/deployment-choreography.v1.json",
+    "p40": "bridge-os/pm/spec/deployment-choreography.json",
     "matrix": "docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md",
     "friction": "pm/friction-register.json"
   },

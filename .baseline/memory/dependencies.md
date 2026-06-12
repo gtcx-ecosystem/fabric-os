@@ -30,7 +30,7 @@
 | --- | --- | --- | --- |
 | **PROG-TOKENIZATION-001** / XR-MKT-FABRIC-001 | markets-os → fabric-os | **acknowledged** 2026-06-11 | `docs/operations/coordination/from-fabric-os-xr-mkt-fabric-001-ack-2026-06-11.md`, `xr-mkt-fabric-001-tokenization-execution-plan-2026-06-11.md` |
 
-**Canonical identity:** `fabric-os` (legacy: `gtcx-infrastructure`) — `bridge-os/pm/spec/service-fabric.v1.json`, ADR-0007.
+**Canonical identity:** `fabric-os` (legacy: `gtcx-infrastructure`) — `bridge-os/pm/spec/service-fabric.json`, ADR-0007.
 
 ## Soft Dependencies
 

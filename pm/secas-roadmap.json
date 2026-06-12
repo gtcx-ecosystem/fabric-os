@@ -9,7 +9,7 @@
   "primaryRoadmap": true,
   "extends": {
     "daas": "pm/daas-roadmap.json",
-    "p42": "bridge-os/pm/spec/security-as-a-service.v1.json"
+    "p42": "bridge-os/pm/spec/security-as-a-service.json"
   },
   "sprints": [
     {

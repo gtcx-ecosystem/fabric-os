@@ -1,51 +1,90 @@
 {
-  "startedAt": "2026-06-11T18:36:26.274Z",
+  "startedAt": "2026-06-12T13:03:44.111Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-5f5e1ed2-d677-402a-80fc-60bf60681a8e",
+    "id": "gtcx-agent-66f615ce-fdbe-4771-b3fe-0ac9d23e9193",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-5b45340393c9f482723a0c767bc40f6c-2d8da15516e2cb0e-01"
+    "traceparent": "00-38cbc0f471b4467d2c33188497393ea2-a31f95315bc63162-01"
   },
   "nextWork": {
     "protocol": "22-agent-work-selection",
     "repo": "fabric-os",
     "frame": "development",
     "persona": {
-      "institutional": "platform-architect",
-      "mcp": "agile",
-      "frame": "development",
-      "docUrl": "https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/institutional/personas/platform-architect.md",
+      "institutional": "security-engineer",
+      "mcp": "security",
+      "frame": "regulatory-audit",
+      "docUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/governance/institutional/personas/security-engineer.md",
       "bridgeUrl": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/ecosystem-persona-bridge-2026-06.md",
       "instruction": "Read persona doc before work; re-select persona on task switch (Phase 4)."
     },
-    "traceId": "58d3e9e5-1578-4efa-a9d3-647773e2f3bf",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=58d3e9e5-1578-4efa-a9d3-647773e2f3bf",
+    "traceId": "aef5532d-2c00-437b-a925-bef5a0d2aca8",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=aef5532d-2c00-437b-a925-bef5a0d2aca8",
     "ok": true,
     "backlogClear": false,
-    "message": "Implement queue empty — PLAN mode: advance launch/GTM state without forensic audit.",
     "next": {
-      "storyId": "LAUNCH-PLAN-01",
-      "title": "Advance launch planning",
-      "track": "launch",
-      "workClass": "ops-docs",
-      "blocked": false
+      "storyId": "SECAS-S2-01",
+      "title": "Live-stack pen-test execution window",
+      "priority": "P0",
+      "status": "in_progress",
+      "implementationClass": "ops-docs",
+      "source": "work-register"
+    },
+    "selection": {
+      "tier": "resume-in_progress",
+      "reason": "Story already in_progress in backlog"
+    },
+    "proceedBrief": {
+      "activePersona": "security-engineer",
+      "frame": "regulatory-audit",
+      "personaDocUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/governance/institutional/personas/security-engineer.md",
+      "next": "SECAS-S2-01 — Live-stack pen-test execution window",
+      "because": "Story already in_progress in backlog",
+      "blockedUntil": "none",
+      "override": "stop | correct: | story ID"
+    },
+    "communicationPolicy": {
+      "protocol": "26-agent-proceed-confirmation",
+      "version": "1.2.0",
+      "statusUpdateSections": [
+        "Done",
+        "Next priority",
+        "Approval needed"
+      ],
+      "forbiddenReplyPatterns": [
+        "Your call",
+        "Two options",
+        "Which do you prefer",
+        "natural transition point",
+        "Switch to compliance-os",
+        "Either ",
+        "Want me to tackle",
+        "Want me to",
+        "anything on the P1 list",
+        "I can push",
+        "I can help"
+      ]
     },
     "agentInstructions": [
-      "Phase 4: adopt persona **platform-architect** (development) — read https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/institutional/personas/platform-architect.md",
+      "Phase 4: adopt persona **security-engineer** (regulatory-audit) — read https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/governance/institutional/personas/security-engineer.md",
       "Include **Active persona** + **Frame** in Proceed Brief and Status Update (P26).",
-      "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
-      "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
-      "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle.",
-      "Drain workSet.plan in-session — same bout loop as implement."
+      "Mark SECAS-S2-01 in_progress in docs/operations/agent-work-selection.md before coding.",
+      "Update audit/product-management execution roadmaps and work register when complete.",
+      "Refresh audit/product-management/auto-dev-state.md after completion.",
+      "After push/status reports: Status Update (Done → Next priority from this JSON → Approval needed if any), then implement.",
+      "FORBIDDEN: \"Your call\", \"Two options\", \"Want me to tackle…\", \"anything on the P1 list?\", repo pick menus.",
+      "Do not ask the user which story or repo to pick — P22 already selected."
     ],
+    "automatableExhausted": false,
+    "message": "Launch implement queue: 2 Class R items (fabric-os).",
     "launchFocus": {
       "schema": "gtcx.launchFocus.v1",
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-11T18:36:26.269Z",
+      "provisionedAt": "2026-06-12T13:03:44.107Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -58,23 +97,77 @@
           "index": "01-docs/05-audit/gtm-audit-2026-06-05.md"
         }
       },
-      "sessionMode": "plan",
+      "sessionMode": "implement",
       "activePhase": {
         "id": "zwcmp-unblock",
         "label": "ZWCMP pilot + Global South 10x deploy"
       },
       "workSet": {
-        "implement": [],
+        "implement": [
+          {
+            "storyId": "SECAS-S2-01",
+            "title": "Live-stack pen-test execution window",
+            "workClass": "ops-docs",
+            "authorityClass": "S",
+            "lane": "p22-head"
+          },
+          {
+            "storyId": "S4-07",
+            "title": "pnpm test quick 1/359 flake investigation",
+            "workClass": "code",
+            "lane": "work-register",
+            "because": "Only pending IR-class code story in P22 manifest"
+          }
+        ],
         "plan": [],
-        "witness": [],
-        "human": []
+        "witness": [
+          {
+            "storyId": "SECAS-S2-01",
+            "title": "Pen-test window witness prep — report ingest scaffolding",
+            "workClass": "ops-docs",
+            "lane": "secas",
+            "because": "SECAS-S2 in_progress; window 2026-06-17..21"
+          },
+          {
+            "storyId": "XR-FABRIC-SPRINT-AUTH-001",
+            "title": "Consume bridge fleet-sprint-orientation-latest.json",
+            "workClass": "ops-docs",
+            "lane": "coordination",
+            "because": "L2 sprint authority eval delivered; await bridge witness"
+          }
+        ],
+        "human": [
+          {
+            "storyId": "EXT-INF-013",
+            "title": "ZWCMP pilot owner + cadence call",
+            "authorityClass": "S",
+            "owner": "Leadership",
+            "lane": "zwcmp-unblock",
+            "because": "Class S human gate — blocksIR false"
+          }
+        ]
       },
-      "activeWorkSet": [],
+      "activeWorkSet": [
+        {
+          "storyId": "SECAS-S2-01",
+          "title": "Live-stack pen-test execution window",
+          "workClass": "ops-docs",
+          "authorityClass": "S",
+          "lane": "p22-head"
+        },
+        {
+          "storyId": "S4-07",
+          "title": "pnpm test quick 1/359 flake investigation",
+          "workClass": "code",
+          "lane": "work-register",
+          "because": "Only pending IR-class code story in P22 manifest"
+        }
+      ],
       "workSetCounts": {
-        "implement": 0,
+        "implement": 2,
         "plan": 0,
-        "witness": 0,
-        "human": 0
+        "witness": 2,
+        "human": 1
       },
       "sources": [
         "audit/product-management/execution-roadmap.md",
@@ -83,20 +176,16 @@
       ],
       "forbidden": [
         "Ask operator to run master-audit before starting work",
-        "Story menus when launch-focus.json is provisioned"
+        "Story menus when launch-focus.json is provisioned",
+        "Re-select LAUNCH-PLAN-01 when LAUNCH-PLAN-01/02/03 are done in work register"
       ],
       "agentInstructions": [
         "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
         "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
-        "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle."
+        "IMPLEMENT mode — drain 1 item(s) toward app launch / GTM."
       ]
-    },
-    "proceedBrief": {
-      "activePersona": "platform-architect",
-      "frame": "development",
-      "personaDocUrl": "https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/01-docs/governance/institutional/personas/platform-architect.md"
     }
   },
-  "gitChanged": 14,
+  "gitChanged": 103,
   "authorityClass": "R"
 }

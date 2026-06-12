@@ -1,6 +1,6 @@
 # Five core audits only
 
-See `bridge-os/pm/spec/five-core-audits.v1.json`.
+See `bridge-os/pm/spec/five-core-audits.json`.
 
 | Core                   | Report                                      |
 | ---------------------- | ------------------------------------------- |

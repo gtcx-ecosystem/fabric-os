@@ -27,7 +27,7 @@ pnpm ecosystem:legacy-id:check   # bridge-os — all fleet repos in scope
 
 ## Protected (do not delete or rewrite)
 
-SoR: `bridge-os/pm/spec/legacy-repo-id-intentional-refs.v1.json`
+SoR: `bridge-os/pm/spec/legacy-repo-id-intentional-refs.json`
 
 - **`audit/**` entire trees** — old audit files are point-in-time witness; fixing legacy repo ids there is **not required\*\*
 - Alias `legacyIds`, rename ADRs, cutover maps, P34 merge manifest

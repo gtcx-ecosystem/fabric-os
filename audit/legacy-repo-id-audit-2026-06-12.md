@@ -4,7 +4,7 @@
 **Status:** resolved (live-tooling paths)  
 **Auditor:** fabric-os agent session  
 **Canonical ids:** `markets-os`, `fabric-os`  
-**Alias SoR:** `bridge-os/pm/spec/ecosystem-repo-aliases.v1.json`
+**Alias SoR:** `bridge-os/pm/spec/ecosystem-repo-aliases.json`
 
 ## Executive summary
 
@@ -23,11 +23,11 @@ GitHub renames are **complete** and redirects work. Local folders match (`market
 
 | Location                                                                                                 | Why                                         |
 | -------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `bridge-os/pm/spec/ecosystem-repo-aliases.v1.json` `legacyIds`                                           | Resolution for old hub JSON and scripts     |
+| `bridge-os/pm/spec/ecosystem-repo-aliases.json` `legacyIds`                                              | Resolution for old hub JSON and scripts     |
 | `markets-os/docs/reference/adr/ADR-0006-*.md`                                                            | Rename witness                              |
 | `fabric-os/docs/reference/adr/ADR-0007-*.md`                                                             | Rename witness                              |
 | `~/Sites/gtcx-ecosystem/README.md`                                                                       | Documents legacy id policy                  |
-| `bridge-os/config/ecosystem-product-dir-rename.v1.json`                                                  | Cutover map `gtcxMarkets` → `markets-os`    |
+| `bridge-os/config/ecosystem-product-dir-rename.json`                                                     | Cutover map `gtcxMarkets` → `markets-os`    |
 | `bridge-os/config/archived-polyrepos.json`                                                               | Archive witness with `legacyLiveRepo`       |
 | `bridge-os/config/gtcx-ecosystem-merge.manifest.json`                                                    | P34 merge history (immutable)               |
 | Dated audit evidence filenames (`*-gtcx-markets-*`, `*-gtcx-infrastructure-*`)                           | Historical witness — do not rename          |
@@ -68,21 +68,21 @@ GitHub renames are **complete** and redirects work. Local folders match (`market
 
 ## Resolution closeout (2026-06-12)
 
-| Item                                         | SHA / state                                                                  |
-| -------------------------------------------- | ---------------------------------------------------------------------------- |
-| Fleet registries (`markets-os`, `fabric-os`) | bridge-os `3bb7599`                                                          |
-| P40 deployment specs                         | bridge-os (this closeout)                                                    |
-| Monitoring URLs + ops owners                 | fabric-os `fef7e5c`                                                          |
-| Docker-compose cross-repo paths              | fabric-os `9cc325b`                                                          |
-| markets-os contracts + gates                 | markets-os `1569050`                                                         |
-| `zenhub-config.json` slug keys               | secret-risk gated — `pnpm ecosystem:zenhub:discover`                         |
-| Intentional-ref policy + sweep gate          | `legacy-repo-id-intentional-refs.v1.json` + `pnpm ecosystem:legacy-id:check` |
-| Coordination ticket frontmatter              | swept to `fabric-os`                                                         |
-| baseline-os workstream folders               | `fabric-os/`, `markets-os/`                                                  |
+| Item                                         | SHA / state                                                               |
+| -------------------------------------------- | ------------------------------------------------------------------------- |
+| Fleet registries (`markets-os`, `fabric-os`) | bridge-os `3bb7599`                                                       |
+| P40 deployment specs                         | bridge-os (this closeout)                                                 |
+| Monitoring URLs + ops owners                 | fabric-os `fef7e5c`                                                       |
+| Docker-compose cross-repo paths              | fabric-os `9cc325b`                                                       |
+| markets-os contracts + gates                 | markets-os `1569050`                                                      |
+| `zenhub-config.json` slug keys               | secret-risk gated — `pnpm ecosystem:zenhub:discover`                      |
+| Intentional-ref policy + sweep gate          | `legacy-repo-id-intentional-refs.json` + `pnpm ecosystem:legacy-id:check` |
+| Coordination ticket frontmatter              | swept to `fabric-os`                                                      |
+| baseline-os workstream folders               | `fabric-os/`, `markets-os/`                                               |
 
 ## Protected references (do not delete)
 
-See `bridge-os/pm/spec/legacy-repo-id-intentional-refs.v1.json` — alias `legacyIds`, rename ADRs, cutover maps, P34 merge manifest, dated audit evidence filenames, `@gtx-markets/*` npm scope.
+See `bridge-os/pm/spec/legacy-repo-id-intentional-refs.json` — alias `legacyIds`, rename ADRs, cutover maps, P34 merge manifest, dated audit evidence filenames, `@gtx-markets/*` npm scope.
 
 ## Out of scope (separate initiative)
 

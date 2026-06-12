@@ -40,12 +40,7 @@
         "ahead": 11
       }
     ],
-    "deferred_p2": [
-      "INIT-GTCX-TWO-PRODUCT-DEPLOY-WITNESS",
-      "DaaS-L4a-sovereign-card",
-      "SECAS-cards-L4a-T0",
-      "nyota-ai-griot-ai-hosting"
-    ],
+    "deferred_p2": ["INIT-GTCX-TWO-PRODUCT-DEPLOY-WITNESS", "nyota-ai-griot-ai-hosting"],
     "handoff_other_repos": {
       "bridge-os": [
         "F-LANE-002",
@@ -84,6 +79,7 @@
       "Stripe/Bloomberg/Palantir/M-Pesa comps annex"
     ]
   },
+  "p2CompletedThisSession": ["DaaS-L4a-sovereign-card", "SECAS-card-protocols-T0"],
   "docDriftResolved": [
     "initiatives-from-domain-model status reconcile v1.1.0",
     "session-brainstorm §4 triage column",

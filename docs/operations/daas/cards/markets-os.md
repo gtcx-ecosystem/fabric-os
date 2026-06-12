@@ -1,5 +1,5 @@
 ---
-title: DaaS card — gtcx-markets (pilot reference)
+title: DaaS card — markets-os (pilot reference)
 status: delivered
 date: 2026-06-10
 laneId: L4b

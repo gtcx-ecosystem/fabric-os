@@ -2,30 +2,86 @@
   "schemaVersion": 1,
   "testType": "cross-repo-health-probe",
   "storyId": "S1-13",
-  "timestamp": "2026-06-12T17:49:32.652Z",
+  "timestamp": "2026-06-12T18:36:36.308Z",
   "environment": "staging",
-  "overall": "FAIL",
+  "overall": "PASS",
   "services": [
     {
       "name": "sovereign",
       "repo": "gtcx-platforms",
       "url": "https://sovereign-staging.gtcx.trade/api/health",
-      "status": 503,
+      "status": 200,
       "error": null,
-      "body": "<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n</body>\r\n</html>\r\n",
+      "body": {
+        "status": "up",
+        "timestamp": "2026-06-12T18:35:29.581Z",
+        "database": {
+          "status": "up",
+          "details": {
+            "type": "postgres"
+          }
+        },
+        "protocol-adapters": {
+          "status": "up",
+          "details": {
+            "expectedVersions": {
+              "tradepass": "1.0.0",
+              "geotag": "1.0.0",
+              "gci": "1.0.0",
+              "vaultmark": "1.0.0",
+              "panx": "1.0.0"
+            }
+          }
+        },
+        "audit-trail": {
+          "status": "up",
+          "details": {
+            "lastAppend": "2026-06-12T18:35:29.581Z",
+            "chainVerified": true
+          }
+        }
+      },
       "transport": "curl",
-      "latencyMs": 2484,
+      "latencyMs": 3164,
       "required": true
     },
     {
       "name": "agx-api",
       "repo": "gtcx-platforms",
       "url": "https://api.staging.gtcx.trade/api/health",
-      "status": 503,
+      "status": 200,
       "error": null,
-      "body": "<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n</body>\r\n</html>\r\n",
+      "body": {
+        "status": "up",
+        "timestamp": "2026-06-12T18:35:30.695Z",
+        "database": {
+          "status": "up",
+          "details": {
+            "type": "postgres"
+          }
+        },
+        "protocol-adapters": {
+          "status": "up",
+          "details": {
+            "expectedVersions": {
+              "tradepass": "1.0.0",
+              "geotag": "1.0.0",
+              "gci": "1.0.0",
+              "vaultmark": "1.0.0",
+              "panx": "1.0.0"
+            }
+          }
+        },
+        "audit-trail": {
+          "status": "up",
+          "details": {
+            "lastAppend": "2026-06-12T18:35:30.695Z",
+            "chainVerified": true
+          }
+        }
+      },
       "transport": "fetch",
-      "latencyMs": 2220,
+      "latencyMs": 4093,
       "required": true
     },
     {
@@ -37,7 +93,7 @@
       "body": {
         "service": "intelligence-sdk",
         "version": "0.1.0",
-        "uptime": 233703,
+        "uptime": 236465,
         "status": "healthy",
         "dependencies": {
           "inference_backend": {
@@ -54,8 +110,8 @@
           "jobs": {
             "anomaly": {
               "enabled": true,
-              "lastRun": "2026-06-12T17:49:24.832Z",
-              "runCount": 779
+              "lastRun": "2026-06-12T18:34:24.833Z",
+              "runCount": 788
             },
             "trend": {
               "enabled": true,
@@ -80,44 +136,26 @@
           "activeSessions": 0
         }
       },
-      "transport": "fetch",
-      "latencyMs": 2024,
+      "transport": "curl",
+      "latencyMs": 3606,
       "required": true
     },
     {
       "name": "compliance-gateway",
       "repo": "gtcx-infrastructure",
       "url": "https://compliance-gateway-staging.gtcx.trade/health",
-      "status": 200,
-      "error": null,
-      "body": {
-        "authConfigured": true,
-        "authMode": "configured",
-        "audit": {
-          "signing": true,
-          "ephemeral": false,
-          "maxInMemoryRecords": 10000,
-          "lastHash": "",
-          "recordCount": 0,
-          "totalRecords": 0,
-          "checkpointHash": "",
-          "inMemoryVerified": true,
-          "verifiedScope": "full-chain"
-        },
-        "status": "healthy",
-        "tools": 30,
-        "providers": 2,
-        "availableProviders": ["claude-sonnet", "claude-haiku"]
-      },
-      "transport": "kubectl-exec",
-      "latencyMs": 6932,
+      "status": 525,
+      "error": "Command failed: kubectl exec -n gtcx-staging deploy/compliance-gateway-staging -- wget -qO- http://127.0.0.1:8500/health\nerror: timed out waiting for the condition\n",
+      "body": "error code: 525",
+      "transport": "curl",
+      "latencyMs": 69685,
       "required": false
     }
   ],
   "summary": {
     "total": 4,
-    "healthy": 2,
-    "unhealthy": 2,
-    "requiredUnhealthy": 2
+    "healthy": 3,
+    "unhealthy": 1,
+    "requiredUnhealthy": 0
   }
 }

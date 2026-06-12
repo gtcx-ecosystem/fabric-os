@@ -2,7 +2,7 @@
   "schema": "gtcx.roadmapExecuteWitness.v1",
   "repo": "fabric-os",
   "mode": "execute_roadmap",
-  "witnessedAt": "2026-06-12T18:25:00.000Z",
+  "witnessedAt": "2026-06-12T18:37:00.000Z",
   "p22Head": "SECAS-S2-01",
   "calendarGate": {
     "blockedUntil": "2026-06-21",
@@ -35,7 +35,10 @@
     "gtcx-protocols:e7525dfa built, pushed to ECR, rolled to gtcx-staging",
     "verifier env patched live — /ready true, verify route 409 rejection",
     "protocol-verifier-staging-readiness PASS",
-    "GT probe: verify_route_live_markets_trace_pending"
+    "GT probe: verify_route_live_markets_trace_pending",
+    "pen-test-pre-window-fleet-health refreshed PASS 3/4 @ 2026-06-12T18:36Z",
+    "P24 outbound to-markets-os-brokerage-staging-gt-trace-2026-06-12.md",
+    "apply-protocols-verifier-env.mjs idempotent deploy patch script"
   ],
   "pnvLiveDeploy": {
     "secret": "done",

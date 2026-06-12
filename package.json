@@ -37,6 +37,8 @@
     "protocol:markets:verifier:populate:dry-run": "bash deploy/03-platform/scripts/staging/populate-markets-protocol-verifier-sm.sh --dry-run",
     "protocol:verifier:staging:build-push": "bash deploy/03-platform/scripts/staging/build-push-protocols-pnv2.sh",
     "protocol:verifier:staging:build-push:dry-run": "bash deploy/03-platform/scripts/staging/build-push-protocols-pnv2.sh --dry-run",
+    "protocol:verifier:staging:apply-env": "node deploy/03-platform/scripts/staging/apply-protocols-verifier-env.mjs",
+    "protocol:verifier:staging:apply-env:dry-run": "node deploy/03-platform/scripts/staging/apply-protocols-verifier-env.mjs --dry-run",
     "check:workspace-root-cleanliness": "python3 platform/scripts/ops/check-workspace-root-cleanliness.py",
     "check:workspace-root-cleanliness:strict": "python3 platform/scripts/ops/check-workspace-root-cleanliness.py --strict",
     "signal:import-cost-stats": "node platform/scripts/ops/import-baseline-cost-stats.mjs",

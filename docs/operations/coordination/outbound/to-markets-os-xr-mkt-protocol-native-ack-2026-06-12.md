@@ -31,12 +31,12 @@ Fabric acknowledges **XR-MKT-PROTOCOL-NATIVE-001** on 2026-06-12.
 | PNV-1 signing + receipt contract       | gtcx-os                | **done** — commit `aeefd48e` per inbound                             |
 | PNV-2 live verifier route + runtime    | gtcx-os                | **done** — route `90517f09`; readiness `e7525dfa`                    |
 | PNV-3 verifier deployment contract     | fabric-os              | **done** — fail-closed staging config plus deterministic config gate |
-| Deploy live verifier route + runtime   | fabric-os              | **pending** — secrets and image containing `e7525dfa` required       |
-| Inject verifier URL/token into Markets | fabric-os              | **deferred** — awaits fabric verifier route deploy                   |
-| Replay/revocation dependency readiness | fabric-os              | **partial** — contract configured; live readiness evidence pending   |
+| Deploy live verifier route + runtime   | fabric-os              | **done** — `e7525dfa` live; readiness witness PASS                   |
+| Inject verifier URL/token into Markets | fabric-os              | **done** — SM synced; ESO consume pending markets-os deploy          |
+| Replay/revocation dependency readiness | fabric-os              | **done** — `/ready` true; Redis replay configured                    |
 | Markets manifest/trace migrations      | markets-os             | **done** per inbound                                                 |
-| Authenticated health probes            | fabric-os              | **partial** — `pnpm daas:fleet:health` PASS 4/4 staging (2026-06-12) |
-| Live Golden Transaction trace pack     | fabric-os + markets-os | **deferred** — fixture-only cannot close handoff                     |
+| Authenticated health probes            | fabric-os              | **partial** — verifier live; fleet PASS 3/4 @ 2026-06-12T18:36Z      |
+| Live Golden Transaction trace pack     | fabric-os + markets-os | **deferred** — markets brokerage staging deploy (P24 outbound filed) |
 
 ## Evidence
 

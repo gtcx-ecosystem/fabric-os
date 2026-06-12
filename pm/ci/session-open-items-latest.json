@@ -142,16 +142,12 @@
     {
       "type": "handoff",
       "id": "XR-MKT-PROTOCOL-NATIVE-001",
-      "title": "PNV live deploy — e7525dfa ECR image + Markets brokerage + Golden Transaction",
-      "owner": "fabric-os",
-      "status": "blocked",
-      "authority": "A",
-      "witness": "audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json",
-      "commands": [
-        "pnpm protocol:markets:verifier:populate",
-        "build-push gtcx-protocols:e7525dfa to ECR",
-        "pnpm protocol:golden-transaction:probe:write"
-      ]
+      "title": "Markets brokerage staging deploy for Golden Transaction trace",
+      "owner": "markets-os",
+      "status": "open",
+      "authority": "R",
+      "handoff": "docs/operations/coordination/outbound/to-markets-os-brokerage-staging-gt-trace-2026-06-12.md",
+      "witness": "audit/evidence/golden-transaction-protocol-native-2026-06-12.json"
     },
     {
       "type": "handoff",

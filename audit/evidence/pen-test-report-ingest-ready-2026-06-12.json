@@ -1,0 +1,37 @@
+{
+  "schema": "gtcx.penTestReportIngest.v1",
+  "id": "PEN-TEST-INGEST-READY-2026-06-12",
+  "storyId": "SECAS-S2-01",
+  "frictionId": "SEC-PENTEST-01",
+  "program": "INIT-GTCX-INFRA-SECAS",
+  "status": "awaiting_vendor_report",
+  "preparedAt": "2026-06-12T11:40:00.000Z",
+  "preparedBy": "agent:fabric-os",
+  "window": {
+    "start": "2026-06-17",
+    "end": "2026-06-21",
+    "timezone": "Africa/Johannesburg",
+    "witness": "audit/evidence/pen-test-window-2026-06-10.json"
+  },
+  "ingestContract": {
+    "targetPath": "audit/evidence/pen-test-report-YYYY-MM-DD.json",
+    "requiredFields": [
+      "vendor",
+      "reportDate",
+      "window",
+      "findingsSummary",
+      "severityCounts",
+      "remediationDue",
+      "redactionPolicy"
+    ],
+    "acceptance": "SECAS-S2-01 UAT: Report ingested to audit/evidence/"
+  },
+  "prerequisites": {
+    "sowApproval": "audit/evidence/ext-inf-002-sow-approval-2026-06-10.json",
+    "countersign": "audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json",
+    "intake": "audit/pen-test-intake-evidence-2026-05-31.md",
+    "scope": "audit/pen-test-scope-2026.md"
+  },
+  "blocksIR": false,
+  "repo": "fabric-os"
+}

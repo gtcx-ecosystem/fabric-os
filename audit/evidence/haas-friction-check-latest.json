@@ -1,0 +1,32 @@
+{
+  "schema": "gtcx://fabric-os/haas-friction-check/v1",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "service": "HAAS",
+  "checkedAt": "2026-06-12T03:43:57.036Z",
+  "owner": "fabric-os",
+  "gates": {
+    "register": {
+      "ok": true
+    },
+    "roadmap": {
+      "ok": true
+    },
+    "opsDoc": {
+      "ok": true
+    },
+    "primaryRoadmap": {
+      "ok": true
+    },
+    "workspaceHygiene": {
+      "ok": true,
+      "exit": 0
+    },
+    "openP0": {
+      "ok": true,
+      "count": 0,
+      "ids": []
+    }
+  },
+  "openP0": 0,
+  "ok": true
+}

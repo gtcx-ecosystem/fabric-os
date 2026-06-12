@@ -1,0 +1,37 @@
+{
+  "schema": "gtcx://fabric-os/aaas-friction-check/v1",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "service": "AAAS",
+  "checkedAt": "2026-06-12T03:43:59.070Z",
+  "owner": "fabric-os",
+  "harness": "bridge-os/audit:five-core:run",
+  "gates": {
+    "register": {
+      "ok": true
+    },
+    "roadmap": {
+      "ok": true
+    },
+    "opsDoc": {
+      "ok": true
+    },
+    "primaryRoadmap": {
+      "ok": true
+    },
+    "fiveCoreProbe": {
+      "ok": true,
+      "exit": 0,
+      "skipped": false
+    },
+    "compositeWitness": {
+      "ok": true
+    },
+    "openP0": {
+      "ok": true,
+      "count": 0,
+      "ids": []
+    }
+  },
+  "openP0": 0,
+  "ok": true
+}

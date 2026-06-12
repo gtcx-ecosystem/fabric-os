@@ -1,0 +1,21 @@
+{
+  "$schema": "gtcx://fabric-os/aaas-roadmap/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-12",
+  "program": "Audit-as-a-Service",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "owner": "fabric-os",
+  "primaryRoadmap": true,
+  "extends": {
+    "fiveCore": "bridge-os/pm/spec/five-core-audits.json",
+    "harness": "bridge-os/platform/scripts/ecosystem/run-five-core-audit.mjs"
+  },
+  "sprints": [
+    {
+      "id": "AAAS-S1",
+      "name": "Five-core friction runner + witness delegate",
+      "status": "complete",
+      "items": ["AAAS-RUNNER-01"]
+    }
+  ]
+}

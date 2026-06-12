@@ -1,0 +1,21 @@
+{
+  "$schema": "gtcx://fabric-os/haas-roadmap/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-12",
+  "program": "Hygiene-as-a-Service",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "owner": "fabric-os",
+  "primaryRoadmap": true,
+  "extends": {
+    "serviceFabric": "bridge-os/pm/spec/service-fabric.json",
+    "hygieneTool": "bridge-os/03-platform/tools/hygiene/"
+  },
+  "sprints": [
+    {
+      "id": "HAAS-S1",
+      "name": "Friction register + fleet hygiene runner",
+      "status": "complete",
+      "items": ["HAAS-RUNNER-01"]
+    }
+  ]
+}

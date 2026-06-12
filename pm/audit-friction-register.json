@@ -1,0 +1,11 @@
+{
+  "$schema": "gtcx://fabric-os/audit-friction-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-12",
+  "program": "Audit-as-a-Service",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "owner": "fabric-os",
+  "programOfficeHarness": "bridge-os",
+  "principle": "Five-core witnesses via bridge harness; fabric triages fleet audit friction only",
+  "items": []
+}

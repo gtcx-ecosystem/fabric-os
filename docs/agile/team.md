@@ -1,5 +1,5 @@
 ---
-title: 'GTCX Infrastructure — Agile Team'
+title: 'Fabric OS — Agile Team'
 status: 'current'
 date: '2026-05-27'
 id: TEAM-INFRA
@@ -7,7 +7,7 @@ version: '1.0'
 effective_date: '2026-05-27'
 owner: 'infrastructure@gtcx.trade'
 role: 'protocol-architect'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+agent_id: 'agent://fabric-os/2026-05-27/session-backfill'
 trust_score: 60
 autonomy_level: 'permissioned'
 tier: 'standard'
@@ -15,15 +15,15 @@ tags: ['documentation', 'agile']
 review_cycle: 'on-change'
 ---
 
-# GTCX Infrastructure — Agile Team
+# Fabric OS — Agile Team
 
-> **Team Charter:** Build and maintain the cloud infrastructure, Kubernetes clusters, networking, observability, and disaster recovery systems that keep the entire GTCX ecosystem running across African data centers and global cloud regions. This squad is the single owner of all work for gtcx-infrastructure — **leading** the technical direction, **managing** the backlog and sprint commitments, **documenting** architecture and decisions, **organizing** ceremonies and stakeholder communication, **verifying** quality through testing and review, and **ensuring** the highest standard of deliverables across every commit.  
+> **Team Charter:** Build and maintain the cloud infrastructure, Kubernetes clusters, networking, observability, and disaster recovery systems that keep the entire GTCX ecosystem running across African data centers and global cloud regions. This squad is the single owner of all work for **fabric-os** (legacy alias `gtcx-infrastructure`) — **leading** the technical direction, **managing** the backlog and sprint commitments, **documenting** architecture and decisions, **organizing** ceremonies and stakeholder communication, **verifying** quality through testing and review, and **ensuring** the highest standard of deliverables across every commit.  
 > **Squad Size:** 2–3 people (target: 5)  
 > **Last Updated:** 2026-05-27
 
 ## Responsibilities by Function
 
-This squad owns the full lifecycle of work for `gtcx-infrastructure`:
+This squad owns the full lifecycle of work for `fabric-os`:
 
 | Function           | What It Means                                                             | Primary Owner         |
 | ------------------ | ------------------------------------------------------------------------- | --------------------- |
@@ -36,7 +36,7 @@ This squad owns the full lifecycle of work for `gtcx-infrastructure`:
 
 ## ClickUp Work Management
 
-This squad manages all `gtcx-infrastructure` work in ClickUp. Source of truth for sprint commitments and backlog priority is git (`01-docs/05-audit/agile/`), but ClickUp is the operational execution layer.
+This squad manages all `fabric-os` work in ClickUp. Source of truth for sprint commitments and backlog priority is git (`01-docs/05-audit/agile/`), but ClickUp is the operational execution layer.
 
 | Activity         | ClickUp Action                                                 | Owner                     |
 | ---------------- | -------------------------------------------------------------- | ------------------------- |
@@ -53,13 +53,13 @@ This squad manages all `gtcx-infrastructure` work in ClickUp. Source of truth fo
 
 ### Product Manager
 
-| Field                | Value                                                                                                                                                                                                                    |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Name**             | @amanianai                                                                                                                                                                                                               |
-| **Type**             | Full-time (shared)                                                                                                                                                                                                       |
-| **Responsibilities** | Own the backlog and roadmap for gtcx-infrastructure. Manage multi-region deployment strategy and vendor relationships. Ensure ClickUp reflects current priorities. Document infrastructure strategy and cost governance. |
-| **Accountable For**  | Sprint completion rate, infrastructure uptime, cost optimization, ClickUp list hygiene, stakeholder satisfaction                                                                                                         |
-| **Current Status**   | 🟢 Staffed                                                                                                                                                                                                               |
+| Field                | Value                                                                                                                                                                                                          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Name**             | @amanianai                                                                                                                                                                                                     |
+| **Type**             | Full-time (shared)                                                                                                                                                                                             |
+| **Responsibilities** | Own the backlog and roadmap for fabric-os. Manage multi-region deployment strategy and vendor relationships. Ensure ClickUp reflects current priorities. Document infrastructure strategy and cost governance. |
+| **Accountable For**  | Sprint completion rate, infrastructure uptime, cost optimization, ClickUp list hygiene, stakeholder satisfaction                                                                                               |
+| **Current Status**   | 🟢 Staffed                                                                                                                                                                                                     |
 
 ### Scrum Master / Agile Lead
 
@@ -160,15 +160,15 @@ This squad manages all `gtcx-infrastructure` work in ClickUp. Source of truth fo
 
 ## Communication
 
-| Channel                    | Purpose                                        | Cadence            |
-| -------------------------- | ---------------------------------------------- | ------------------ |
-| Daily standup              | Blockers, progress, plans, ClickUp updates     | Daily 09:00 UTC    |
-| Sprint planning            | Commitments, estimation, ClickUp tasking       | Bi-weekly Monday   |
-| Sprint review              | Demo, stakeholder feedback                     | Bi-weekly Thursday |
-| Retrospective              | Process improvement, quality reflection        | Bi-weekly Friday   |
-| Slack #gtcx-infrastructure | Async updates, alerts                          | Continuous         |
-| ClickUp                    | Task tracking, status updates, blocker logging | Continuous         |
-| PagerDuty                  | On-call alerts, incident response              | 24/7               |
+| Channel          | Purpose                                               | Cadence            |
+| ---------------- | ----------------------------------------------------- | ------------------ |
+| Daily standup    | Blockers, progress, plans, ClickUp updates            | Daily 09:00 UTC    |
+| Sprint planning  | Commitments, estimation, ClickUp tasking              | Bi-weekly Monday   |
+| Sprint review    | Demo, stakeholder feedback                            | Bi-weekly Thursday |
+| Retrospective    | Process improvement, quality reflection               | Bi-weekly Friday   |
+| Slack #fabric-os | Async updates, alerts (legacy `#gtcx-infrastructure`) | Continuous         |
+| ClickUp          | Task tracking, status updates, blocker logging        | Continuous         |
+| PagerDuty        | On-call alerts, incident response                     | 24/7               |
 
 ---
 

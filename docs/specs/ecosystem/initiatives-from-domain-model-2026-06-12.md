@@ -1,6 +1,6 @@
 ---
 title: 'Initiatives catalog — trade ecosystem domain model session'
-status: draft
+status: current
 date: 2026-06-12
 owner: fabric-os
 initiative: INIT-GTCX-TRADE-ECOSYSTEM-LANES
@@ -20,8 +20,9 @@ Each initiative below was indicated in the 2026-06-11/12 strategy session. **Own
 | Field          | Value                                                                          |
 | -------------- | ------------------------------------------------------------------------------ |
 | **Title**      | Trade ecosystem lane taxonomy                                                  |
-| **Status**     | draft                                                                          |
+| **Status**     | **complete** (fabric) — canon ratification pending                             |
 | **Owner**      | fabric-os (spec author) → canon-os (ratification)                              |
+| **Witness**    | `pm/roadmap/initiatives.json` · `audit/evidence/xr-lane-witness-latest.json`   |
 | **Spec**       | `docs/specs/ecosystem/trade-ecosystem-lanes-spec.md`                           |
 | **Machine**    | `pm/spec/trade-ecosystem-lanes.json`                                           |
 | **Goal**       | Replace flat D1–D4 and P-tier diagrams with normative lane IDs                 |
@@ -93,9 +94,10 @@ Each initiative below was indicated in the 2026-06-11/12 strategy session. **Own
 | Field          | Value                                                                                    |
 | -------------- | ---------------------------------------------------------------------------------------- |
 | **Title**      | Sync gtcx-execution-engine + fleet registry to lane taxonomy                             |
-| **Status**     | proposed                                                                                 |
+| **Status**     | **complete** (bridge log 2026-06-11)                                                     |
 | **Owner**      | bridge-os                                                                                |
 | **Handoff**    | `docs/operations/coordination/to-bridge-os-trade-ecosystem-lanes-registry-2026-06-12.md` |
+| **Witness**    | XR-BRIDGE-LANES-REGISTRY-001                                                             |
 | **Goal**       | Add `tradeCore` plane; remove gtcx-os from fabric/agentRuntime confusion                 |
 | **Files**      | `pm/spec/gtcx-execution-engine.json`, `config/fleet-deploy-readiness-registry.json`      |
 | **Acceptance** | `pnpm ecosystem:execution-engine:check` green with lane refs                             |
@@ -106,20 +108,21 @@ Each initiative below was indicated in the 2026-06-11/12 strategy session. **Own
 
 ### INIT-FABRIC-LANE-DEPLOY-MATRIX
 
-| Field          | Value                                                            |
-| -------------- | ---------------------------------------------------------------- |
-| **Title**      | Deploy matrix by trade lane                                      |
-| **Status**     | draft                                                            |
-| **Owner**      | fabric-os                                                        |
-| **Spec**       | `docs/specs/ecosystem/lane-deploy-matrix.md`                     |
-| **Goal**       | Tag every hosting obligation with lane ID                        |
-| **Acceptance** | infra-per-repo matrix updated; handoff template requires lane ID |
+| Field          | Value                                                                            |
+| -------------- | -------------------------------------------------------------------------------- |
+| **Title**      | Deploy matrix by trade lane                                                      |
+| **Status**     | **complete** (2026-06-12)                                                        |
+| **Owner**      | fabric-os                                                                        |
+| **Spec**       | `docs/specs/ecosystem/lane-deploy-matrix.md`                                     |
+| **Goal**       | Tag every hosting obligation with lane ID                                        |
+| **Acceptance** | infra-per-repo matrix updated; handoff template requires lane ID                 |
+| **Witness**    | `pnpm fabric:lanes:check` PASS · `audit/evidence/fabric-lanes-check-latest.json` |
 
 **Features:**
 
-- F-FAB-001 — Lane tags on infra-per-repo-action-matrix rows
-- F-FAB-002 — Coordination handoff `laneId` field (required)
-- F-FAB-003 — `pnpm fabric:lanes:check` script (future)
+- F-FAB-001 — Lane tags on infra-per-repo-action-matrix rows — **done**
+- F-FAB-002 — Coordination handoff `laneId` field (required) — **done**
+- F-FAB-003 — `pnpm fabric:lanes:check` — **done**
 
 ---
 
@@ -128,10 +131,11 @@ Each initiative below was indicated in the 2026-06-11/12 strategy session. **Own
 | Field          | Value                                                    |
 | -------------- | -------------------------------------------------------- |
 | **Title**      | fabric-os README vs AGENTS.md SoR reconcile              |
-| **Status**     | open                                                     |
+| **Status**     | **complete** (2026-06-12)                                |
 | **Owner**      | fabric-os                                                |
 | **Goal**       | README says active infra SoR, not archived redirect only |
 | **Acceptance** | README matches AGENTS.md; link to lane spec              |
+| **Witness**    | `README.md` I-tier SoR banner                            |
 
 ---
 
@@ -140,7 +144,7 @@ Each initiative below was indicated in the 2026-06-11/12 strategy session. **Own
 | Field         | Value                                                      |
 | ------------- | ---------------------------------------------------------- |
 | **Title**     | DevOps-as-a-Service — lane-aware DaaS cards                |
-| **Status**    | complete → extend                                          |
+| **Status**    | **complete** (laneId + deployProduct on staging cards)     |
 | **Owner**     | fabric-os                                                  |
 | **Extension** | DaaS cards cite lane ID + deploy product (Sovereign/Cloud) |
 
@@ -256,4 +260,6 @@ INIT-GTCX-TRADE-ECOSYSTEM-LANES
 
 ---
 
-_Catalog version 1.0.0 — 2026-06-12_
+_Reconciled 2026-06-12 — fabric Class R items marked complete per `pm/roadmap/initiatives.json`._
+
+_Catalog version 1.1.0 — 2026-06-12_

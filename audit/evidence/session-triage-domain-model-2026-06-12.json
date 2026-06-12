@@ -1,0 +1,100 @@
+{
+  "schema": "gtcx://fabric-os/session-triage/v1",
+  "sessionId": "fabric-os-domain-model-2026-06-12",
+  "compiledAt": "2026-06-12T14:30:00.000Z",
+  "repo": "fabric-os",
+  "sources": [
+    "docs/specs/ecosystem/session-brainstorm-trade-domain-model-2026-06-12.md",
+    "docs/specs/ecosystem/initiatives-from-domain-model-2026-06-12.md",
+    "pm/roadmap/initiatives.json",
+    "pm/ci/session-open-items-latest.json",
+    "git log"
+  ],
+  "disposition": {
+    "complete": [
+      "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
+      "INIT-FABRIC-LANE-DEPLOY-MATRIX",
+      "INIT-FABRIC-README-SOR-REconcile",
+      "INIT-GTCX-INFRA-DAAS-lane-cards",
+      "XR-FABRIC-TRADE-LANES-001",
+      "XR-BRIDGE-LANES-REGISTRY-001",
+      "XR-FABRIC-SPRINT-AUTH-001",
+      "XR-101/301/302/104-lane-witness"
+    ],
+    "in_progress": ["SECAS-S2-01"],
+    "blocked": [
+      {
+        "id": "SECAS-S2-01-report",
+        "until": "2026-06-21",
+        "reason": "vendor pen-test report ingest"
+      },
+      {
+        "id": "XR-CANON-TRADE-LANES-001",
+        "owner": "canon-os",
+        "until": "INST-F-006 publish"
+      },
+      {
+        "id": "git-push",
+        "owner": "fabric-os",
+        "until": "network/sandbox push unblock",
+        "ahead": 11
+      }
+    ],
+    "deferred_p2": [
+      "INIT-GTCX-TWO-PRODUCT-DEPLOY-WITNESS",
+      "DaaS-L4a-sovereign-card",
+      "SECAS-cards-L4a-T0",
+      "nyota-ai-griot-ai-hosting"
+    ],
+    "handoff_other_repos": {
+      "bridge-os": [
+        "F-LANE-002",
+        "F-LANE-003",
+        "active-sprint-witness",
+        "ecosystem:sprint-authority:check",
+        "INIT-FABLE-REPORTS-LANE-REFRESH",
+        "INIT-GTCX-CONVERGENCE-FRAME",
+        "INIT-ECOSYSTEM-README-REFRESH"
+      ],
+      "canon-os": [
+        "INST-F-006",
+        "INIT-GTCX-CONSTITUTION-ART-IV-BIS",
+        "INIT-PROTOCOL-46-TRADE-OBJECT-CONTINUITY"
+      ],
+      "baseline-os": ["INIT-GTCX-APPLE-CONTINUITY-MODEL", "P46-runtime"],
+      "gtcx-os": [
+        "INIT-GTCX-OS-PLATFORM-HYGIENE",
+        "INIT-GTCX-TWO-PRODUCT-DEPLOY-WITNESS",
+        "INIT-GTCX-HARDWARE-EDGE-H0"
+      ],
+      "agile-os": ["sprint-witness-consumer", "fable-report-gap"]
+    },
+    "class_s_product": [
+      "Article IV bis ratification",
+      "terminal vs markets vs AGX boundary",
+      "veritas-ai SoR",
+      "infrastructure shadow sunset",
+      "Protocol 46 vs baseline Handoff API ownership",
+      "Article IV bis vs VIII numbering"
+    ],
+    "ideas_not_scheduled": [
+      "GTCX convergence frame (ClickUp rings)",
+      "Fable harness investment",
+      "Model routing policy",
+      "Stripe/Bloomberg/Palantir/M-Pesa comps annex"
+    ]
+  },
+  "docDriftResolved": [
+    "initiatives-from-domain-model status reconcile v1.1.0",
+    "session-brainstorm §4 triage column",
+    "docs/agile/team.md fabric-os rename",
+    "docs/operations/secas/cards/markets-os.md markets-os path"
+  ],
+  "docDriftOpen": [
+    "gtcx-ecosystem/README.md gtcx-docs refs",
+    "reports/fable-pillar-audit FOLDER-INDEX gtcx-docs",
+    "Fable pack missing agile-os canon-os"
+  ],
+  "p22Next": "SECAS-S2-01",
+  "sessionOpenItemsNote": "Use baseline session:open-items --json; no --handoff flag; bridge exit 1 = closureBar not parse failure"
+}

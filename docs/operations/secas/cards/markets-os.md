@@ -22,4 +22,4 @@ Authority route or capture failures → `to-fabric-os-markets-authority-*.md`
 
 ## Re-probe
 
-`pnpm --dir ../gtcx-markets authority:trace:capture` after infra seal.
+`pnpm --dir ../markets-os authority:trace:capture` after infra seal.

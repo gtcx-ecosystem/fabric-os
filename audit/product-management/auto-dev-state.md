@@ -64,11 +64,11 @@ last_reconciled: 2026-06-12T14:45:00.000Z
 - **Session:** `fabric-os-domain-model-2026-06-12`
 - **Machine witness:** `pm/ci/session-open-items-latest.json` · `audit/evidence/session-open-items-reconcile-2026-06-12.json`
 - **Lane sprint:** CLOSED · DAAS sealed · git 0 ahead
-- **P22:** SECAS-S2-01 `awaiting_vendor_report` until 2026-06-21 · window-ready refreshed 2026-06-12T19:01Z
+- **P22:** SECAS-S2-01 `awaiting_vendor_report` until 2026-06-21 · `secas:window:readiness:write` @ 2026-06-12T19:23Z
 - **Bridge handoff:** XR-BRIDGE-SESSION-OPEN-001 accepted · closure **5/5** · program office **0 open**
 - **T23 / XR-MKT-RDS-VPC:** sealed per bridge — do not re-open
 - **Assurance:** `fabric:assurance:run:write` — bridge evaluate consumed; `uat-exit` cross-repo witness open (bridge-os)
-- **Fleet:** cross-repo-health PASS 3/4 required @ 2026-06-12T18:36Z (sovereign+agx restored after resource tuning)
+- **Fleet:** cross-repo-health PASS 3/3 required @ 2026-06-12T19:23Z (compliance-gateway optional scaled 0)
 - **PNV:** verifier **live** · GT blocked on **markets-os brokerage staging deploy** — P24 `to-markets-os-brokerage-staging-gt-trace-2026-06-12.md`
 
 ## Evidence

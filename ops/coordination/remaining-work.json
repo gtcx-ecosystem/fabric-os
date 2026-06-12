@@ -2,7 +2,7 @@
   "$schema": "gtcx://workspace/remaining-work/v1",
   "repo": "fabric-os",
   "updated": "2026-06-12",
-  "reconciledAt": "2026-06-12T19:01:00.000Z",
+  "reconciledAt": "2026-06-12T19:23:18.000Z",
   "sessionOpenItems": "pm/ci/session-open-items-latest.json",
   "bridgeHandoff": "docs/operations/coordination/from-bridge-os-session-open-items-handoff-ack-2026-06-12.md",
   "sessionRef": "fabric-os-domain-model-2026-06-12",
@@ -16,7 +16,7 @@
       "blockedUntil": "2026-06-21",
       "authority": "R",
       "p22": true,
-      "notes": "Pre-window fleet health PASS 3/4; window-ready witness refreshed 2026-06-12T19:01Z; vendor report post 2026-06-21"
+      "notes": "Pre-window fleet health PASS 3/3 required; secas:window:readiness:write @ 2026-06-12T19:23Z; vendor report post 2026-06-21"
     },
     {
       "id": "XR-MKT-PROTOCOL-NATIVE-001-GT",

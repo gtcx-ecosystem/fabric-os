@@ -2,7 +2,7 @@
   "schema": "gtcx.roadmapExecuteWitness.v1",
   "repo": "fabric-os",
   "mode": "execute_roadmap",
-  "witnessedAt": "2026-06-12T19:02:00.000Z",
+  "witnessedAt": "2026-06-12T19:23:18.000Z",
   "automatableExhausted": true,
   "automatableExhaustNote": "SECAS-S2 calendar gate + markets-os brokerage ECS deploy; fabric PNV live complete",
   "p22Head": "SECAS-S2-01",
@@ -41,7 +41,11 @@
     "pen-test-pre-window-fleet-health refreshed PASS 3/4 @ 2026-06-12T18:36Z",
     "P24 outbound to-markets-os-brokerage-staging-gt-trace-2026-06-12.md",
     "apply-protocols-verifier-env.mjs idempotent deploy patch script",
-    "execute_roadmap session refresh @ 2026-06-12T19:01Z — all SECAS pre-window + PNV gates PASS; GT partial"
+    "execute_roadmap session refresh @ 2026-06-12T19:01Z — all SECAS pre-window + PNV gates PASS; GT partial",
+    "secas:window:readiness consolidated script + package targets",
+    "pen-test-window-execution-ready refreshed @ 2026-06-12T19:23Z — fleet 3/3 required PASS",
+    "protocol-verifier-staging-readiness refreshed PASS (/ready true, image e7525dfa)",
+    "GT probe PARTIAL — verify_route_live_markets_trace_pending @ 2026-06-12T19:23Z"
   ],
   "pnvLiveDeploy": {
     "secret": "done",

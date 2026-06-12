@@ -4,14 +4,17 @@
   "storyId": "SECAS-S2-01",
   "frictionId": "SEC-PENTEST-01",
   "program": "INIT-GTCX-INFRA-SECAS",
-  "probedAt": "2026-06-12T19:01:00.000Z",
+  "probedAt": "2026-06-12T19:21:31.301Z",
   "probedBy": "agent:fabric-os",
-  "command": "pnpm daas:fleet:health",
+  "command": "pnpm secas:window:readiness",
   "result": "PASS",
-  "servicesHealthy": "3/4 required PASS (compliance-gateway optional 525 — scaled 0)",
+  "servicesHealthy": "3/3 required",
   "witness": "audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json",
   "environment": "staging",
-  "window": { "start": "2026-06-17", "end": "2026-06-21" },
+  "window": {
+    "start": "2026-06-17",
+    "end": "2026-06-21"
+  },
   "blocksIR": false,
   "repo": "fabric-os"
 }

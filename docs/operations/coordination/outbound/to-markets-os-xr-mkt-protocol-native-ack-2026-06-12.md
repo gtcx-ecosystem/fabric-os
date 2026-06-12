@@ -29,9 +29,9 @@ Fabric acknowledges **XR-MKT-PROTOCOL-NATIVE-001** on 2026-06-12.
 | Step                                   | Owner                  | Status                                                               |
 | -------------------------------------- | ---------------------- | -------------------------------------------------------------------- |
 | PNV-1 signing + receipt contract       | gtcx-os                | **done** — commit `aeefd48e` per inbound                             |
-| PNV-2 live verifier route + runtime    | gtcx-os                | **done** — commit `90517f09` per inbound                             |
+| PNV-2 live verifier route + runtime    | gtcx-os                | **done** — route `90517f09`; readiness `e7525dfa`                    |
 | PNV-3 verifier deployment contract     | fabric-os              | **done** — fail-closed staging config plus deterministic config gate |
-| Deploy live verifier route + runtime   | fabric-os              | **pending** — secret population and PNV-2-capable image required     |
+| Deploy live verifier route + runtime   | fabric-os              | **pending** — secrets and image containing `e7525dfa` required       |
 | Inject verifier URL/token into Markets | fabric-os              | **deferred** — awaits fabric verifier route deploy                   |
 | Replay/revocation dependency readiness | fabric-os              | **partial** — contract configured; live readiness evidence pending   |
 | Markets manifest/trace migrations      | markets-os             | **done** per inbound                                                 |

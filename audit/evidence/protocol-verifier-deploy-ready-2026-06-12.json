@@ -20,14 +20,15 @@
   },
   "pnv2": {
     "owner": "gtcx-os/protocols",
-    "commit": "90517f09",
+    "commit": "e7525dfa",
     "status": "implemented",
     "capabilities": [
       "live fail-closed verification route",
       "Ed25519 manifest signature verification",
       "signer authorization and revocation",
       "purpose-bound distributed replay enforcement",
-      "signed digest-bound verification receipts"
+      "signed digest-bound verification receipts",
+      "fail-closed readiness for verifier authority dependencies"
     ]
   },
   "pnv3": {

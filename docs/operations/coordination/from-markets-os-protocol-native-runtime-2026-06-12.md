@@ -62,6 +62,12 @@ Direct `gtcx-os/protocols` handoff:
 - signed, digest-bound verification receipts; and
 - mandatory rejection-case and lifecycle regression tests.
 
+Readiness hardening is implemented in `gtcx-os/protocols` commit `e7525dfa`:
+
+- `/ready` returns `503` when the signer registry, revocation source,
+  distributed replay, or receipt signer is unavailable; and
+- readiness identifies each unavailable verifier authority dependency.
+
 ## Runtime Contract
 
 Markets calls:
@@ -132,9 +138,9 @@ dependency through:
 pnpm check:protocol-verifier-staging-contract
 ```
 
-Live secret population, deployment of a PNV-2-capable image, live authority
-dependency configuration, Markets deployment injection, and the live Golden
-Transaction trace pack remain required before claiming complete
+Live secret population, deployment of an image containing `e7525dfa`, live
+authority dependency configuration, Markets deployment injection, and the live
+Golden Transaction trace pack remain required before claiming complete
 protocol-native execution.
 
 ## What This Document Does NOT Cover

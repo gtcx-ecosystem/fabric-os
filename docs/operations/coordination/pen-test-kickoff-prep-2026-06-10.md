@@ -45,5 +45,5 @@ Full boundary spec: [`audit/pen-test-scope-2026.md`](../../../audit/pen-test-sco
 
 1. Confirm test window with vendor
 2. Publish `audit/evidence/pen-test-window-YYYY-MM-DD.json`
-3. Ingest final report to `audit/evidence/pen-test-report-YYYY-MM-DD.json`
+3. Ingest final report to `audit/evidence/pen-test-report-YYYY-MM-DD.json` — `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` then `pnpm secas:pentest:ingest:check:write`
 4. Close SEC-PENTEST-01 / SECAS-S2-01

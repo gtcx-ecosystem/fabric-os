@@ -56,6 +56,7 @@
     "secas:cards:check:write": "node platform/scripts/secas-cards-check.mjs --write",
     "secas:pentest:ingest:check": "node platform/scripts/secas-pentest-ingest-check.mjs",
     "secas:pentest:ingest:check:write": "node platform/scripts/secas-pentest-ingest-check.mjs --write",
+    "secas:pentest:report:ingest": "node platform/scripts/secas-pentest-report-ingest.mjs",
     "haas:friction:check": "node platform/scripts/haas-friction-check.mjs",
     "haas:friction:check:write": "node platform/scripts/haas-friction-check.mjs --write",
     "aaas:friction:check": "node platform/scripts/aaas-friction-check.mjs",

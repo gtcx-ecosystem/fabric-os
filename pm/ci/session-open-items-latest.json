@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://baseline-os/session-open-items/v1",
-  "at": "2026-06-12T13:51:35.140Z",
+  "at": "2026-06-12T13:55:56.508Z",
   "repo": "fabric-os",
   "repoPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
   "session": {
@@ -30,7 +30,7 @@
     }
   },
   "git": {
-    "dirtyCount": 5,
+    "dirtyCount": 1,
     "commitsSinceSession": 20
   },
   "productionWeek": null,
@@ -45,7 +45,7 @@
       "n": 1
     },
     {
-      "task": "Git-clean fabric-os (5 uncommitted path(s) in working tree)",
+      "task": "Git-clean fabric-os (1 uncommitted path(s) in working tree)",
       "owner": "fabric-os",
       "command": "micro-commit conventional + push when GATE-PUSH green",
       "doneWhen": "working tree clean; ahead=0",
@@ -54,6 +54,26 @@
     }
   ],
   "completed": [
+    {
+      "kind": "commit",
+      "detail": "739b620 chore(secas): refresh witnesses and reconcile auto-dev state.",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "2cc1983 chore(cursor): add superpowers skill adapter rules.",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "d6ba422 chore(audit): refresh witnesses after validate-all run.",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "eba1174 chore(pm): settlement-commit witness post-batch.",
+      "source": "git log"
+    },
     {
       "kind": "commit",
       "detail": "d9dc059 chore(pm): sync session witnesses after git settlement batch.",
@@ -133,26 +153,6 @@
       "kind": "commit",
       "detail": "7332f8f docs(standard): fix frontmatter, links, and EXR naming exceptions",
       "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "6e730c1 chore(audit): restore ecosystem matrix and SOC2 evidence witnesses",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "2fe7dc8 chore(audit): restore IR witness artifacts and pass security gates",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "dd75330 fix(test): resolve P35 deploy/platform paths in policy gates and validate.sh",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "14a0e5f fix(pm): repair launch-focus.config.json trailing comma after witness prune.",
-      "source": "git log"
     }
   ],
   "openItems": [
@@ -168,17 +168,11 @@
     {
       "type": "blocker",
       "id": "uncommitted-work",
-      "title": "5 uncommitted path(s) in working tree",
+      "title": "1 uncommitted path(s) in working tree",
       "owner": "fabric-os",
       "source": "git status",
       "status": "open",
-      "sample": [
-        " M .baseline/launch-focus.json",
-        " M audit/dr-fire-drill-evidence-2026-05-31.md",
-        " M audit/evidence/injection-suite-latest.json",
-        " M audit/pen-test-intake-evidence-2026-05-31.md",
-        "MM pm/ci/settlement-commit-latest.json"
-      ]
+      "sample": [" M pm/ci/settlement-commit-latest.json"]
     }
   ],
   "threads": [],

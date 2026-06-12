@@ -142,14 +142,14 @@
     {
       "type": "handoff",
       "id": "XR-MKT-PROTOCOL-NATIVE-001",
-      "title": "Live verifier deploy — secrets, e7525dfa image, Markets inject, Golden Transaction",
+      "title": "PNV live deploy — e7525dfa ECR image + Markets brokerage + Golden Transaction",
       "owner": "fabric-os",
       "status": "blocked",
       "authority": "A",
       "witness": "audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json",
       "commands": [
-        "pnpm protocol:verifier:staging:populate",
-        "kubectl rollout restart deploy/gtcx-protocols-staging -n gtcx-staging",
+        "pnpm protocol:markets:verifier:populate",
+        "build-push gtcx-protocols:e7525dfa to ECR",
         "pnpm protocol:golden-transaction:probe:write"
       ]
     },

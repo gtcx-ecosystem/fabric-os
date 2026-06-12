@@ -2,7 +2,7 @@
   "schema": "gtcx.roadmapExecuteWitness.v1",
   "repo": "fabric-os",
   "mode": "execute_roadmap",
-  "witnessedAt": "2026-06-12T16:55:00.000Z",
+  "witnessedAt": "2026-06-12T17:50:00.000Z",
   "p22Head": "SECAS-S2-01",
   "calendarGate": {
     "blockedUntil": "2026-06-21",
@@ -25,8 +25,22 @@
     "XR-MKT-RDS-VPC sealed per bridge T23 (do not re-open)",
     "bridge session open-items handoff accepted — closure 5/5",
     "fabric:assurance:run:write — bridge evaluate witness consumed (uat-exit cross-repo open)",
-    "fleet health refresh PASS 4/4 (2026-06-12T16:45:42Z)"
+    "fleet health refresh PASS 4/4 (2026-06-12T16:45:42Z)",
+    "PNV secret + markets signer populated in gtcx-staging",
+    "Markets verifier SM synced (gtx-markets/staging/protocols-verifier-url + token)",
+    "secas:pentest:ingest:check:write pre-window PASS (awaiting_vendor_report)",
+    "protocol:verifier:staging:readiness — secret EXISTS; image e7525dfa pending",
+    "protocol:golden-transaction:probe — verify route probe attempted",
+    "staging cluster capacity remediation documented (protocols Recreate + resource tuning)"
   ],
+  "pnvLiveDeploy": {
+    "secret": "done",
+    "marketsSigner": "done",
+    "marketsSm": "done",
+    "image": "blocked_ecr_e7525dfa",
+    "dockerBuildNote": "install PASS after workspace strip; build fails @gtcx/sdk tsup in Docker context",
+    "goldenTransaction": "blocked_markets_brokerage_not_on_cluster"
+  },
   "classSDeferred": [
     { "id": "SECAS-S2-01", "item": "Vendor pen-test report ingest", "blockedUntil": "2026-06-21" },
     { "id": "EXT-INF-013", "item": "ZWCMP pilot owner", "owner": "Leadership" }

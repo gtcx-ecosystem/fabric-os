@@ -2,14 +2,23 @@
   "schema": "gtcx://fabric-os/golden-transaction-protocol-native/v1",
   "id": "GOLDEN-TXN-PROTOCOL-NATIVE-2026-06-12",
   "ticket": "XR-MKT-PROTOCOL-NATIVE-001",
-  "probedAt": "2026-06-12T17:11:37.683Z",
+  "probedAt": "2026-06-12T17:47:01.575Z",
   "ok": false,
   "phase": "blocked_prerequisites",
   "prerequisites": {
-    "verifierUrl": false,
-    "verifierToken": false,
-    "readinessWitness": "audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json"
+    "verifierUrl": true,
+    "verifierToken": true,
+    "tokenSource": "k8s-secret",
+    "readinessWitness": "audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json",
+    "marketsBrokerageDeployed": false,
+    "pnv2Image": "e7525dfa"
   },
-  "note": "Live registration→admission trace pack not executed — populate verifier secrets, deploy e7525dfa image, inject Markets credentials first.",
+  "verifyRouteProbe": {
+    "ok": false,
+    "exitCode": 1,
+    "body": null,
+    "stderr": "wget: server returned error: HTTP/1.1 404 Not Found\ncommand terminated with exit code 1"
+  },
+  "note": "Live Golden Transaction trace pack requires e7525dfa image, Markets brokerage deploy, and trace orchestration.",
   "repo": "fabric-os"
 }

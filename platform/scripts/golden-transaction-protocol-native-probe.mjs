@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 /**
  * XR-MKT-PROTOCOL-NATIVE-001 — live Golden Transaction probe (registration allowed path).
- * Requires verifier URL + token + Markets trace route. Fixture-only cannot close handoff.
+ * Resolves verifier URL/token from cluster when env unset. Full GT trace still requires
+ * Markets brokerage deploy + e7525dfa image.
  *
  * Usage:
- *   GTCX_OS_PROTOCOLS_VERIFIER_URL=... GTCX_OS_PROTOCOLS_VERIFIER_TOKEN=... \
- *     node platform/scripts/golden-transaction-protocol-native-probe.mjs [--write]
+ *   node platform/scripts/golden-transaction-protocol-native-probe.mjs [--write]
  */
+import { spawnSync } from 'node:child_process';
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -14,9 +15,92 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const OUT = join(ROOT, 'audit/evidence/golden-transaction-protocol-native-2026-06-12.json');
 const WRITE = process.argv.includes('--write');
+const NAMESPACE = 'gtcx-staging';
+const DEFAULT_URL =
+  'http://gtcx-protocols-staging.gtcx-staging.svc.cluster.local:8300';
 
-const verifierUrl = process.env.GTCX_OS_PROTOCOLS_VERIFIER_URL;
-const verifierToken = process.env.GTCX_OS_PROTOCOLS_VERIFIER_TOKEN;
+function kubectl(args) {
+  return spawnSync('kubectl', ['--request-timeout=25s', ...args], { encoding: 'utf8' });
+}
+
+function secretLiteral(name, key) {
+  const r = kubectl([
+    'get',
+    'secret',
+    name,
+    '-n',
+    NAMESPACE,
+    '-o',
+    `jsonpath={.data.${key}}`,
+  ]);
+  if (r.status !== 0 || !r.stdout?.trim()) return null;
+  return Buffer.from(r.stdout.trim(), 'base64').toString('utf8');
+}
+
+function resolveCredentials() {
+  const url = process.env.GTCX_OS_PROTOCOLS_VERIFIER_URL || DEFAULT_URL;
+  const token =
+    process.env.GTCX_OS_PROTOCOLS_VERIFIER_TOKEN ||
+    secretLiteral('gtcx-protocols-api-key-staging', 'api-key');
+  return { url, token, source: process.env.GTCX_OS_PROTOCOLS_VERIFIER_TOKEN ? 'env' : 'k8s-secret' };
+}
+
+function probeVerifyRoute(pod, token) {
+  const postBody = JSON.stringify({
+    manifest: { schemaVersion: '1.0.0', manifestId: 'probe-staging-v1' },
+    purpose: 'registration',
+    requestedBy: 'fabric-os:golden-transaction-probe',
+  });
+  const exec = kubectl([
+    'exec',
+    '-n',
+    NAMESPACE,
+    pod,
+    '-c',
+    'protocols',
+    '--',
+    'wget',
+    '-qO-',
+    '--header',
+    `Authorization: Bearer ${token}`,
+    '--header',
+    'Content-Type: application/json',
+    '--post-data',
+    postBody,
+    'http://127.0.0.1:8300/v1/protocol-manifests/verify',
+  ]);
+  const responseBody = exec.stdout?.trim()?.slice(0, 500) || null;
+  const stderr = exec.stderr?.trim()?.slice(0, 300) || null;
+  const routeReachable =
+    exec.status === 0 ||
+    Boolean(responseBody?.includes('INVALID_')) ||
+    Boolean(responseBody?.includes('UNAUTHORIZED_')) ||
+    Boolean(responseBody?.includes('"allowed"'));
+  return {
+    ok: routeReachable,
+    exitCode: exec.status,
+    body: responseBody,
+    stderr,
+  };
+}
+
+const { url, token, source } = resolveCredentials();
+const podList = kubectl([
+  'get',
+  'pods',
+  '-n',
+  NAMESPACE,
+  '-l',
+  'app=gtcx-protocols',
+  '-o',
+  'jsonpath={.items[?(@.status.phase=="Running")].metadata.name}',
+]);
+const pod = podList.stdout?.trim().split(/\s+/).filter(Boolean)[0] || null;
+
+let verifyProbe = { ok: false, note: 'no running protocols pod' };
+if (pod && token) {
+  verifyProbe = probeVerifyRoute(pod, token);
+}
 
 const witness = {
   schema: 'gtcx://fabric-os/golden-transaction-protocol-native/v1',
@@ -24,25 +108,32 @@ const witness = {
   ticket: 'XR-MKT-PROTOCOL-NATIVE-001',
   probedAt: new Date().toISOString(),
   ok: false,
-  phase: 'blocked_prerequisites',
+  phase: verifyProbe.ok ? 'verify_route_reachable' : 'blocked_prerequisites',
   prerequisites: {
-    verifierUrl: Boolean(verifierUrl),
-    verifierToken: Boolean(verifierToken),
+    verifierUrl: Boolean(url),
+    verifierToken: Boolean(token),
+    tokenSource: source,
     readinessWitness: 'audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json',
+    marketsBrokerageDeployed: false,
+    pnv2Image: 'e7525dfa',
   },
-  note: 'Live registration→admission trace pack not executed — populate verifier secrets, deploy e7525dfa image, inject Markets credentials first.',
+  verifyRouteProbe: verifyProbe,
+  note:
+    'Live Golden Transaction trace pack requires e7525dfa image, Markets brokerage deploy, and trace orchestration.',
   repo: 'fabric-os',
 };
 
-if (!verifierUrl || !verifierToken) {
-  console.error('BLOCKED — GTCX_OS_PROTOCOLS_VERIFIER_URL and GTCX_OS_PROTOCOLS_VERIFIER_TOKEN required');
-  if (WRITE) {
-    mkdirSync(dirname(OUT), { recursive: true });
-    writeFileSync(OUT, `${JSON.stringify(witness, null, 2)}\n`);
-    console.log(`witness: ${OUT}`);
-  }
-  process.exit(1);
+if (!token) {
+  console.error('BLOCKED — GTCX_OS_PROTOCOLS_VERIFIER_TOKEN not in env and not in k8s secret');
+} else if (!verifyProbe.ok) {
+  console.error('BLOCKED — verify route probe failed (image may lack PNV-2 fail-closed route)');
+} else {
+  console.error('PARTIAL — verify route reachable; Markets trace orchestration not wired');
 }
 
-console.error('BLOCKED — live manifest + Markets trace orchestration not yet wired in this runner');
-process.exit(1);
+if (WRITE) {
+  mkdirSync(dirname(OUT), { recursive: true });
+  writeFileSync(OUT, `${JSON.stringify(witness, null, 2)}\n`);
+  console.log(`witness: ${OUT}`);
+}
+process.exit(witness.ok ? 0 : 1);

@@ -7,7 +7,7 @@
   "preparedAt": "2026-06-12T17:15:00.000Z",
   "readinessWitness": "audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json",
   "populateScript": "deploy/03-platform/scripts/staging/populate-manifest-verifier-staging-secret.mjs",
-  "liveDeployPhase": "secret_populated_awaiting_ecr_image_e7525dfa",
+  "liveDeployPhase": "markets_sm_synced_awaiting_ecr_image_e7525dfa",
   "clusterRemediation": {
     "at": "2026-06-12T17:22:00.000Z",
     "note": "Staging cluster CPU/memory saturated; scaled non-PNV workloads to 0 and lowered protocols requests to restore gtcx-protocols-staging pod.",
@@ -82,7 +82,8 @@
     {
       "item": "GTCX_OS_PROTOCOLS_VERIFIER_URL + TOKEN via ESO",
       "owner": "fabric-os",
-      "status": "pending"
+      "status": "sm_populated",
+      "witness": "gtx-markets/staging/protocols-verifier-url + protocols-verifier-token"
     },
     {
       "item": "Replay/revocation dependency readiness probes",

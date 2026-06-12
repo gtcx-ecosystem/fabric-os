@@ -14,6 +14,7 @@ const WRITE = process.argv.includes('--write');
 const NAMESPACE = 'gtcx-staging';
 const DEPLOY = 'gtcx-protocols-staging';
 const SECRET = 'gtcx-manifest-verifier-staging';
+const MARKETS_SIGNER_SECRET = 'gtcx-markets-manifest-signer-staging';
 
 function kubectl(args) {
   return spawnSync('kubectl', ['--request-timeout=20s', ...args], { encoding: 'utf8' });
@@ -29,6 +30,8 @@ function configGate() {
 
 const secretGet = kubectl(['get', 'secret', SECRET, '-n', NAMESPACE]);
 const secretExists = secretGet.status === 0;
+const marketsSignerGet = kubectl(['get', 'secret', MARKETS_SIGNER_SECRET, '-n', NAMESPACE]);
+const marketsSignerExists = marketsSignerGet.status === 0;
 
 const deployGet = kubectl([
   'get',
@@ -66,17 +69,19 @@ const witness = {
   namespace: NAMESPACE,
   deployment: DEPLOY,
   secret: { name: SECRET, exists: secretExists },
+  marketsSignerSecret: { name: MARKETS_SIGNER_SECRET, exists: marketsSignerExists },
   image,
   pnv2: { requiredCommit: pnv2ImageRequired, imageContainsCommit: imageHasPnv2 },
   configGate: config,
   readyEndpoint: readyProbe,
   blockers: [
     !secretExists && 'populate gtcx-manifest-verifier-staging (Class A)',
+    !marketsSignerExists && 'populate gtcx-markets-manifest-signer-staging',
     !imageHasPnv2 && `deploy image containing ${pnv2ImageRequired}`,
-    'inject Markets GTCX_OS_PROTOCOLS_VERIFIER_URL + TOKEN',
-    'live Golden Transaction trace pack',
+    imageHasPnv2 && 'markets-os ESO sync + brokerage staging deploy for GT trace',
+    imageHasPnv2 && 'live Golden Transaction trace pack',
   ].filter(Boolean),
-  ok: secretExists && imageHasPnv2 && config.ok,
+  ok: secretExists && marketsSignerExists && imageHasPnv2 && config.ok,
   repo: 'fabric-os',
 };
 
@@ -86,6 +91,7 @@ if (WRITE) {
 }
 
 console.log(`secret ${SECRET}: ${secretExists ? 'EXISTS' : 'MISSING'}`);
+console.log(`markets signer ${MARKETS_SIGNER_SECRET}: ${marketsSignerExists ? 'EXISTS' : 'MISSING'}`);
 console.log(`image: ${image ?? 'unknown'}`);
 console.log(`config gate: ${config.ok ? 'PASS' : 'FAIL'}`);
 console.log(`/ready: ${readyProbe.body ?? readyProbe.note}`);

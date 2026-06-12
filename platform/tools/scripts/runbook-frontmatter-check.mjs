@@ -20,7 +20,7 @@
  * Idempotent: re-running on a clean file is a no-op.
  */
 
-import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -33,7 +33,12 @@ const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..'
 // frontmatter shape there too. Including gitbook in the merge guard
 // catches that regression at commit time instead of leaving 12 files
 // to be manually discarded the next time the generator runs.
-const SCAN_DIRS = [join(REPO_ROOT, '01-docs')];
+const DOCS_HUB = ['docs', '01-docs'].find((hub) => existsSync(join(REPO_ROOT, hub)));
+if (!DOCS_HUB) {
+  console.error('runbook-frontmatter-check: docs/ or 01-docs/ not found');
+  process.exit(1);
+}
+const SCAN_DIRS = [join(REPO_ROOT, DOCS_HUB)];
 const EXCLUDE_SEGMENTS = new Set(['node_modules', 'dist']);
 const checkOnly = process.argv.includes('--check');
 

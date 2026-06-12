@@ -18,15 +18,7 @@
   "storyIdPattern": "(?:SECAS-S\\d+-\\d+|IR-\\d+\\.\\d+|S\\d+-\\d+|P22-[A-Z]+-\\d+)",
   "implementStatuses": ["pending", "in_progress"],
   "parseOpenIds": [],
-  "staticImplement": [
-    {
-      "storyId": "S4-07",
-      "title": "pnpm test quick 1/359 flake investigation",
-      "workClass": "code",
-      "lane": "work-register",
-      "because": "Only pending IR-class code story in P22 manifest"
-    }
-  ],
+  "staticImplement": [],
   "staticWitness": [
     {
       "storyId": "SECAS-S2-01",

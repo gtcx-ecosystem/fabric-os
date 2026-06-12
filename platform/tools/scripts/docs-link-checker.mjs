@@ -22,7 +22,12 @@ import { fileURLToPath } from 'node:url';
 // inside a platform/tools/* package after a publish or test run).
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(SCRIPT_DIR, '..', '..', '..');
-const DOCS_ROOT = resolve(REPO_ROOT, '01-docs');
+const DOCS_HUB = ['docs', '01-docs'].find((hub) => existsSync(resolve(REPO_ROOT, hub)));
+if (!DOCS_HUB) {
+  console.error('docs-link-checker: docs/ or 01-docs/ not found');
+  process.exit(1);
+}
+const DOCS_ROOT = resolve(REPO_ROOT, DOCS_HUB);
 
 function walk(dir, files = []) {
   for (const entry of readdirSync(dir)) {

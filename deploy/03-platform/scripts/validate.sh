@@ -170,7 +170,7 @@ run_build_evidence_generation() {
         --image=replay-guard=gtcx/replay-guard:ci-smoke \
         --scan=replay-guard=passed \
         --gate=build-evidence-generation=pass \
-        --evidence=score-ledger=01-docs/audit/score-evidence-ledger.json \
+        --evidence=score-ledger=audit/score-evidence-ledger.json \
         --output-dir=/tmp/gtcx-build-evidence-smoke)
 }
 

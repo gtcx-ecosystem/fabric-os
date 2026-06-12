@@ -2,7 +2,7 @@
 title: Execution roadmap — Security-as-a-Service
 status: current
 date: 2026-06-12
-last_reconciled: 2026-06-12T12:32:20.232Z
+last_reconciled: 2026-06-12T13:41:11.522Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true

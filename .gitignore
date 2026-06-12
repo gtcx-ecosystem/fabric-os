@@ -64,6 +64,7 @@ baseline-os/
 
 # Local IDE settings
 .claude/settings.local.json
+.claude/skills/
 
 # Generated security reports
 04-ship/security/reports/rollback-evidence/

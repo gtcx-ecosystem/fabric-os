@@ -104,13 +104,13 @@ fabric-os (**I**) **hosts** workloads for lanes **C, L1–L4b, X, A (pilot)**. I
 
 All **I-tier** workloads default **AWS `af-south-1`** per OPS-CLOUD-PLACE-001. GCP ML bridge disabled until Phase 3.
 
-See [`../operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md`](../operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md).
+See [`../../operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md`](../../operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md).
 
 ---
 
 ## Acceptance (INIT-FABRIC-LANE-DEPLOY-MATRIX)
 
-- [x] Each P1 hosting row in [`infra-per-repo-action-matrix-2026-06-05.md`](../operations/coordination/infra-per-repo-action-matrix-2026-06-05.md) tagged with lane ID
+- [x] Each P1 hosting row in [`infra-per-repo-action-matrix-2026-06-05.md`](../../operations/coordination/infra-per-repo-action-matrix-2026-06-05.md) tagged with lane ID
 - [x] New deploy requests cite lane ID in coordination handoff
 - [x] `pnpm fabric:lanes:check` validates JSON lane members vs deploy registry
 

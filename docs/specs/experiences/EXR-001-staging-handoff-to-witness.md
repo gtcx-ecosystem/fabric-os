@@ -2,6 +2,8 @@
 exrId: EXR-001
 title: Staging handoff to witness
 status: p0
+date: 2026-06-12
+owner: fabric-os
 jtbdId: JTBD-staging-substrate-ready
 flowId: flow-staging-handoff
 personaId: sibling-integrator

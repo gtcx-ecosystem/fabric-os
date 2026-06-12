@@ -9,7 +9,7 @@ authority_class: R
 supersedes: simplified D1–D4 domain diagram; flat P-tier "infrastructure intelligence"
 related:
   - ./session-brainstorm-trade-domain-model-2026-06-12.md
-  - ../../pm/spec/trade-ecosystem-lanes.v1.json
+  - ../../pm/spec/trade-ecosystem-lanes.json
   - ../../operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md
 tags: [canon, domain-model, lanes, gtcx-os, fabric, baseline]
 ---
@@ -360,18 +360,18 @@ Proposed **Article IV bis — Trade lanes** (draft for canon-os ratification):
 | **Utilities (U)**      | canon-os, agile-os    | Law + sprints                    |
 | **Program office (B)** | bridge-os             | Fleet assurance                  |
 
-See handoff: [`to-canon-os-trade-ecosystem-lanes-2026-06-12.md`](../operations/coordination/to-canon-os-trade-ecosystem-lanes-2026-06-12.md).
+See handoff: [`to-canon-os-trade-ecosystem-lanes-2026-06-12.md`](../../operations/coordination/to-canon-os-trade-ecosystem-lanes-2026-06-12.md).
 
 ---
 
 ## 8. Verification
 
-| Gate                      | Command                                                                                     | Owner     |
-| ------------------------- | ------------------------------------------------------------------------------------------- | --------- |
-| Lane JSON schema          | `node -e "JSON.parse(require('fs').readFileSync('pm/spec/trade-ecosystem-lanes.v1.json'))"` | fabric-os |
-| Fabric lane deploy matrix | Manual review + future `pnpm fabric:lanes:check`                                            | fabric-os |
-| Bridge registry sync      | `pnpm ecosystem:execution-engine:check` (after bridge update)                               | bridge-os |
-| Canon frame               | `pnpm validate:hub-scope` (canon-os)                                                        | canon-os  |
+| Gate                      | Command                                                                                  | Owner     |
+| ------------------------- | ---------------------------------------------------------------------------------------- | --------- |
+| Lane JSON schema          | `node -e "JSON.parse(require('fs').readFileSync('pm/spec/trade-ecosystem-lanes.json'))"` | fabric-os |
+| Fabric lane deploy matrix | Manual review + future `pnpm fabric:lanes:check`                                         | fabric-os |
+| Bridge registry sync      | `pnpm ecosystem:execution-engine:check` (after bridge update)                            | bridge-os |
+| Canon frame               | `pnpm validate:hub-scope` (canon-os)                                                     | canon-os  |
 
 ---
 

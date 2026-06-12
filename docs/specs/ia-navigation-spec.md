@@ -1,6 +1,8 @@
 ---
 title: IA navigation spec — control plane
+status: current
 date: 2026-06-10
+owner: fabric-os
 ---
 
 # IA navigation spec

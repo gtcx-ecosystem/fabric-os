@@ -17,8 +17,8 @@ Normative documentation from the **2026-06-12 ecosystem domain model session**.
 | [lane-deploy-matrix.md](./lane-deploy-matrix.md)                                                             | SPEC-FABRIC-LANE-DEPLOY-001 | fabric-os deploy obligations by lane        |
 | [initiatives-from-domain-model-2026-06-12.md](./initiatives-from-domain-model-2026-06-12.md)                 | —                           | INIT-\* catalog and dependency graph        |
 
-**Machine registry:** [`../../pm/spec/trade-ecosystem-lanes.v1.json`](../../pm/spec/trade-ecosystem-lanes.v1.json)
+**Machine registry:** [`../../../pm/spec/trade-ecosystem-lanes.json`](../../../pm/spec/trade-ecosystem-lanes.json)
 
-**Handoff:** [`../operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md`](../operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md)
+**Handoff:** [`../../operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md`](../../operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md)
 
-**Share note:** [`../operations/coordination/outbound/share-note-trade-ecosystem-lanes-for-fabric-2026-06-12.md`](../operations/coordination/outbound/share-note-trade-ecosystem-lanes-for-fabric-2026-06-12.md)
+**Share note:** [`../../operations/coordination/outbound/share-note-trade-ecosystem-lanes-for-fabric-2026-06-12.md`](../../operations/coordination/outbound/share-note-trade-ecosystem-lanes-for-fabric-2026-06-12.md)

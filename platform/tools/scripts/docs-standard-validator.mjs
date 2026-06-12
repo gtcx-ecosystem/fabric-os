@@ -79,6 +79,8 @@ const ALLOWED_UPPERCASE_NAMES = new Set([
 
 // ADR filenames are an approved exception per docs-standard-compliance audit.
 const ADR_PATTERN = /^adr-\d+/i;
+// Experience registry IDs (EXR-NNN) and GitBook SUMMARY are approved naming exceptions.
+const EXR_PATTERN = /^exr-\d+/i;
 
 // ---------------------------------------------------------------------------
 // Utilities
@@ -95,6 +97,8 @@ function isSubstantiveDoc(filePath) {
 function isAllowedUppercase(basename) {
   if (ALLOWED_UPPERCASE_NAMES.has(basename)) return true;
   if (ADR_PATTERN.test(basename)) return true;
+  if (EXR_PATTERN.test(basename)) return true;
+  if (basename === 'SUMMARY.md') return true;
   return false;
 }
 

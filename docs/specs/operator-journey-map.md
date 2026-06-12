@@ -1,7 +1,8 @@
 ---
 title: Operator journey map
+status: current
 date: 2026-06-10
-owner: gtcx-infrastructure
+owner: fabric-os
 ---
 
 # Operator journey map

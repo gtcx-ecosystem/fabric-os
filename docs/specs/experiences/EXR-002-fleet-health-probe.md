@@ -2,6 +2,8 @@
 exrId: EXR-002
 title: Fleet health probe
 status: p0
+date: 2026-06-12
+owner: fabric-os
 jtbdId: JTBD-fleet-health-witness
 flowId: flow-fleet-health-witness
 personaId: platform-operator

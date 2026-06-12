@@ -14,6 +14,6 @@ Machine-indexed operational cards for **gtcx-infrastructure** primary roadmap (D
 | ----------------------------------------- | ---------- | ----------------- | ----------- |
 | [terminal-os](./cards/terminal-os.md)     | F1         | EKS static        | delivered   |
 | [compliance-os](./cards/compliance-os.md) | F2         | EKS multi-service | in_progress |
-| [gtcx-markets](./cards/gtcx-markets.md)   | XR-MKT-011 | EKS handoff       | delivered   |
+| [markets-os](./cards/markets-os.md)       | XR-MKT-011 | EKS handoff       | delivered   |
 
 **Harness:** `pnpm daas:cards:check` · witness `audit/evidence/daas-cards-check-latest.json`

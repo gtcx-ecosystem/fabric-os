@@ -1,3 +1,10 @@
+---
+title: SECaaS card — gtcx-intelligence
+status: current
+date: 2026-06-12
+owner: fabric-os
+---
+
 # SECaaS card — gtcx-intelligence
 
 **Sovereign parallel:** `BL-SOC2-01` / `INT-S12-03` (approved 2026-06-10 — blocksIR false)

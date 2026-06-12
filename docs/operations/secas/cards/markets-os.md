@@ -1,3 +1,10 @@
+---
+title: SECaaS card — markets-os
+status: current
+date: 2026-06-12
+owner: fabric-os
+---
+
 # SECaaS card — markets-os
 
 **Lane:** **L4b** · **deployProduct:** **GTCX Cloud** (AGX)  

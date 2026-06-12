@@ -12,7 +12,7 @@ tags: [brainstorm, domain-model, canon, lanes, raw-notes]
 # Session brainstorm — trade ecosystem domain model
 
 > **Purpose:** Preserve the **raw discussion arc** from the 2026-06-11/12 strategy session that produced the trade ecosystem lane taxonomy. This is the narrative SoR before normative specs.  
-> **Normative spec:** [`trade-ecosystem-lanes-spec.md`](./trade-ecosystem-lanes-spec.md) · [`../../pm/spec/trade-ecosystem-lanes.v1.json`](../../pm/spec/trade-ecosystem-lanes.v1.json)
+> **Normative spec:** [`trade-ecosystem-lanes-spec.md`](./trade-ecosystem-lanes-spec.md) · [`../../../pm/spec/trade-ecosystem-lanes.json`](../../../pm/spec/trade-ecosystem-lanes.json)
 
 ---
 
@@ -148,13 +148,13 @@ Protocol (T0) → Pathways/VIA + field capture (L1)
 
 ## 4. Known drift flagged in session
 
-| Item                                   | Issue                                                    |
-| -------------------------------------- | -------------------------------------------------------- |
-| Root `gtcx-ecosystem/README.md`        | Still references `gtcx-docs`; narrow compliance framing  |
-| `fabric-os/README.md`                  | Says "archived" while AGENTS.md active                   |
-| Fable pillar reports (2026-06-11)      | Missing agile-os, canon-os naming, full platform map     |
-| Constitution Article IV                | Planes omit explicit **Trade core** plane for gtcx-os    |
-| bridge `gtcx-execution-engine.v1.json` | Planes list fabric/baseline/canon/bridge — no **C** tier |
+| Item                                | Issue                                                    |
+| ----------------------------------- | -------------------------------------------------------- |
+| Root `gtcx-ecosystem/README.md`     | Still references `gtcx-docs`; narrow compliance framing  |
+| `fabric-os/README.md`               | Says "archived" while AGENTS.md active                   |
+| Fable pillar reports (2026-06-11)   | Missing agile-os, canon-os naming, full platform map     |
+| Constitution Article IV             | Planes omit explicit **Trade core** plane for gtcx-os    |
+| bridge `gtcx-execution-engine.json` | Planes list fabric/baseline/canon/bridge — no **C** tier |
 
 ---
 
@@ -172,7 +172,7 @@ Operator asked to:
 | Artifact               | Path                                                                                              |
 | ---------------------- | ------------------------------------------------------------------------------------------------- |
 | Normative lane spec    | `docs/specs/ecosystem/trade-ecosystem-lanes-spec.md`                                              |
-| Machine registry       | `pm/spec/trade-ecosystem-lanes.v1.json`                                                           |
+| Machine registry       | `pm/spec/trade-ecosystem-lanes.json`                                                              |
 | Initiatives catalog    | `docs/specs/ecosystem/initiatives-from-domain-model-2026-06-12.md`                                |
 | Fabric handoff         | `docs/operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md`     |
 | Share note             | `docs/operations/coordination/outbound/share-note-trade-ecosystem-lanes-for-fabric-2026-06-12.md` |

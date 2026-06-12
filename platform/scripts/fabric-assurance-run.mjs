@@ -10,7 +10,7 @@ import { spawnSync } from 'node:child_process';
 
 const INFRA = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const BRIDGE = join(INFRA, '..', 'bridge-os');
-const WRITE = !process.argv.includes('--check');
+const WRITE = process.argv.includes('--write') || (!process.argv.includes('--check') && !process.argv.includes('--dry-run'));
 const WITNESS = join(INFRA, 'audit/evidence/fabric-assurance-latest.json');
 
 function readJson(p) {
@@ -31,24 +31,33 @@ function buildContextBundle() {
 }
 
 function main() {
-  const evaluate = spawnSync('pnpm', ['ecosystem:assurance:evaluate'], {
+  const evaluate = spawnSync('pnpm', ['ecosystem:assurance:evaluate:write'], {
     cwd: BRIDGE,
     encoding: 'utf8',
     shell: false,
   });
 
+  let evaluateWitness = null;
+  const evalPath = join(BRIDGE, 'pm/ci/assurance-evaluate-latest.json');
+  if (existsSync(evalPath)) {
+    evaluateWitness = readJson(evalPath);
+  }
+
   const witness = {
     schema: 'gtcx://fabric-os/fabric-assurance/v1',
     at: new Date().toISOString(),
     repo: 'fabric-os',
-    initiative: 'INIT-GTCX-SERVICE-FABRIC',
-    story: 'ECO-EE-09',
+    initiative: 'INIT-ASSURANCE-BURN-DOWN',
+    story: 'T35',
     ok: evaluate.status === 0,
     evaluateExitCode: evaluate.status ?? 1,
+    fired: evaluateWitness?.fired ?? [],
+    runs: evaluateWitness?.runs ?? [],
+    blocking: evaluateWitness?.blocking ?? [],
     contextBundle: buildContextBundle(),
     executionOwner: 'fabric-os',
     orchestrator: 'bridge-os',
-    note: 'stub runner — delegates trigger evaluation to bridge-os; fabric executes assurance planes',
+    note: 'fabric executes independent runs from bridge assurance-evaluate witness; runners invoke per assurance-run-catalog',
   };
 
   if (WRITE) {

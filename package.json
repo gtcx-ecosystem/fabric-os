@@ -37,6 +37,7 @@
     "evidence:release-bundle": "node ./platform/tools/control-plane/generate-release-evidence.mjs",
     "agent:next-work": "node platform/scripts/agent-next-work.mjs",
     "fabric:assurance:run": "node platform/scripts/fabric-assurance-run.mjs",
+    "fabric:assurance:run:write": "node platform/scripts/fabric-assurance-run.mjs --write",
     "fabric:assurance:check": "node platform/scripts/fabric-assurance-run.mjs --check",
     "fabric:lanes:check": "node platform/scripts/fabric-lanes-check.mjs",
     "fabric:lanes:check:write": "node platform/scripts/fabric-lanes-check.mjs --write",

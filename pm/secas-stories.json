@@ -40,7 +40,7 @@
       "status": "done",
       "owner": "bridge-os → fabric-os",
       "files": [
-        "bridge-os/pm/spec/security-as-a-service.v1.json",
+        "bridge-os/pm/spec/security-as-a-service.json",
         "bridge-os/platform/scripts/ecosystem/ecosystem-secas-check.mjs",
         "gtcx-docs/docs/governance/protocols/42-security-as-a-service/protocol.md"
       ],
@@ -64,7 +64,11 @@
         "audit/evidence/ext-inf-002-sow-approval-2026-06-10.json",
         "docs/operations/coordination/from-fabric-os-ext-inf-002-sow-approved-2026-06-10.md"
       ],
-      "acceptance": ["pnpm secas:friction:check:write", "pnpm secas:approval:check:write"],
+      "acceptance": [
+        "pnpm secas:friction:check:write",
+        "pnpm secas:approval:check:write",
+        "pnpm secas:pentest:ingest:check:write"
+      ],
       "uat": [
         {
           "text": "Vendor SOW countersign received",
@@ -75,6 +79,11 @@
           "text": "Pen-test window scheduled and witnessed",
           "done": true,
           "note": "2026-06-10 — audit/evidence/pen-test-window-2026-06-10.json (window 2026-06-17..21)"
+        },
+        {
+          "text": "Report ingest scaffold + prerequisites at canonical paths",
+          "done": true,
+          "note": "2026-06-12 — audit/evidence/pen-test-report-ingest-ready-2026-06-12.json; secas:pentest:ingest:check pre-window PASS"
         },
         { "text": "Report ingested to audit/evidence/", "done": false }
       ],

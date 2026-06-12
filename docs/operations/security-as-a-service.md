@@ -72,6 +72,7 @@ pnpm generate:secas-roadmap       # refresh SECaaS execution roadmap
 pnpm secas:friction:check
 pnpm secas:approval:check
 pnpm secas:cards:check
+pnpm secas:pentest:ingest:check:write   # SECAS-S2-01 — pre-window PASS; complete when report ingested
 ```
 
 ## Cross-repo false blocks (baseline-os M3 pattern)
@@ -101,4 +102,4 @@ Fleet reconciliation spec: `bridge-os/pm/spec/sovereign-gate-reconciliation.json
 
 **Next operational (Class R/A):**
 
-- **SEC-PENTEST-01** — schedule live-stack pen-test after vendor ack
+- **SEC-PENTEST-01** — pen-test window 2026-06-17..21; ingest scaffold ready — await vendor report at `audit/evidence/pen-test-report-YYYY-MM-DD.json`

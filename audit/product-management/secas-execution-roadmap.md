@@ -1,9 +1,9 @@
 ---
 title: Execution roadmap — Security-as-a-Service
 status: current
-date: 2026-06-10
-last_reconciled: 2026-06-10T09:28:29.751Z
-owner: gtcx-infrastructure
+date: 2026-06-12
+last_reconciled: 2026-06-12T12:32:20.232Z
+owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true
 generated_by: platform/scripts/generate-secas-execution-roadmap.mjs
@@ -16,7 +16,7 @@ sources:
   - audit/evidence/secas-approval-check-latest.json
 ---
 
-# gtcx-infrastructure SECaaS execution roadmap
+# fabric-os SECaaS execution roadmap
 
 > **Generated file.** Edit `pm/secas-stories.json`, `pm/security-friction-register.json`, or
 > `pm/secas-roadmap.json`, then run `pnpm generate:secas-roadmap`.
@@ -27,9 +27,9 @@ sources:
 
 **Status:** `in_progress`
 
-| Story       | Title                                | Priority | Status      | Owner               |
-| ----------- | ------------------------------------ | -------- | ----------- | ------------------- |
-| SECAS-S2-01 | Live-stack pen-test execution window | P0       | in_progress | gtcx-infrastructure |
+| Story       | Title                                | Priority | Status      | Owner     |
+| ----------- | ------------------------------------ | -------- | ----------- | --------- |
+| SECAS-S2-01 | Live-stack pen-test execution window | P0       | in_progress | fabric-os |
 
 ### SECAS-S2-01: Live-stack pen-test execution window
 
@@ -40,12 +40,14 @@ sources:
 ```bash
 pnpm secas:friction:check:write
 pnpm secas:approval:check:write
+pnpm secas:pentest:ingest:check:write
 ```
 
 **UAT / QA**
 
 - [x] Vendor SOW countersign received (2026-06-10 — audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json)
 - [x] Pen-test window scheduled and witnessed (2026-06-10 — audit/evidence/pen-test-window-2026-06-10.json (window 2026-06-17..21))
+- [x] Report ingest scaffold + prerequisites at canonical paths (2026-06-12 — audit/evidence/pen-test-report-ingest-ready-2026-06-12.json; secas:pentest:ingest:check pre-window PASS)
 - [ ] Report ingested to audit/evidence/
 
 **Blockers:** none
@@ -59,10 +61,10 @@ pnpm secas:approval:check:write
 
 ## Future Phases
 
-| Sprint   | Goal                                       | Status   | Owner               | Stories / Friction |
-| -------- | ------------------------------------------ | -------- | ------------------- | ------------------ |
-| SECAS-S1 | Sovereign register + security friction SoR | complete | gtcx-infrastructure |                    |
-| SECAS-S3 | Fleet IRSA + WAF hardening cards           | complete | gtcx-infrastructure |                    |
+| Sprint   | Goal                                       | Status   | Owner     | Stories / Friction |
+| -------- | ------------------------------------------ | -------- | --------- | ------------------ |
+| SECAS-S1 | Sovereign register + security friction SoR | complete | fabric-os |                    |
+| SECAS-S3 | Fleet IRSA + WAF hardening cards           | complete | fabric-os |                    |
 
 ## Issue Reconciliation
 

@@ -1,7 +1,9 @@
 {
   "schema": "gtcx://fabric-os/session-open-items-reconcile/v1",
   "sessionId": "fabric-os-domain-model-2026-06-12",
-  "reconciledAt": "2026-06-12T15:40:00.000Z",
+  "reconciledAt": "2026-06-12T16:00:00.000Z",
+  "bridgeHandoffAccepted": true,
+  "bridgeClosureBar": "5/5",
   "reconciledBy": "agent:fabric-os",
   "machineWitness": "pm/ci/session-open-items-latest.json",
   "priorWitnessCommit": "6d9d4fd",

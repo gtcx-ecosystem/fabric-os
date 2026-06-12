@@ -2,8 +2,9 @@
   "$schema": "gtcx://workspace/remaining-work/v1",
   "repo": "fabric-os",
   "updated": "2026-06-12",
-  "reconciledAt": "2026-06-12T15:40:00.000Z",
+  "reconciledAt": "2026-06-12T16:00:00.000Z",
   "sessionOpenItems": "pm/ci/session-open-items-latest.json",
+  "bridgeHandoff": "docs/operations/coordination/from-bridge-os-session-open-items-handoff-ack-2026-06-12.md",
   "sessionRef": "fabric-os-domain-model-2026-06-12",
   "items": [
     {
@@ -16,17 +17,6 @@
       "authority": "R",
       "p22": true,
       "notes": "Pre-window fleet health PASS 4/4; window-ready witness; vendor report post 2026-06-21"
-    },
-    {
-      "id": "XR-MKT-RDS-VPC",
-      "title": "VPC peering gtcx-staging ↔ gtx-markets-staging (F10 DR psql)",
-      "ownerRepo": "fabric-os",
-      "status": "in_progress",
-      "authority": "R",
-      "witness": "docs/operations/evidence/vpc-peering-gtcx-markets-staging-2026-06-12.json",
-      "blockedBy": "psql auth fail — peering path verified",
-      "probeWitness": "docs/operations/evidence/vpc-markets-rds-probe-2026-06-12.json",
-      "blocksIR": false
     },
     {
       "id": "XR-MKT-TRADEPASS-001",
@@ -90,13 +80,29 @@
       "status": "complete",
       "witness": "672067b, xr-lane-witness-latest.json",
       "closedAt": "2026-06-12"
+    },
+    {
+      "id": "T23-XR-MKT-RDS-VPC",
+      "title": "Markets staging F10 DR — VPC peering + authority",
+      "ownerRepo": "fabric-os",
+      "status": "done",
+      "witness": "bridge-os T23 seal · vpc-peering-gtcx-markets-staging-2026-06-12.json",
+      "closedAt": "2026-06-12"
+    },
+    {
+      "id": "INIT-GTCX-INFRA-DAAS",
+      "title": "DevOps-as-a-Service program",
+      "ownerRepo": "fabric-os",
+      "status": "done",
+      "witness": "046026f · pm/_tasks sealed",
+      "closedAt": "2026-06-12"
     }
   ],
   "programOffice": {
     "ownerRepo": "bridge-os",
-    "closureBar": "3/5 sessionComplete=false",
-    "blocker": "INIT-EXECUTIVE-GAP-PROGRAM marked done without closureBar.ok witness",
-    "handoff": "docs/operations/coordination/to-bridge-os-init-executive-gap-seal-reconcile-2026-06-12.md"
+    "closureBar": "5/5 sessionComplete=true",
+    "openTasks": 0,
+    "handoff": "bridge-os/docs/operations/coordination/from-session-open-items-handoff-2026-06-12.md"
   },
   "legacyArchive": "docs/operations/coordination"
 }

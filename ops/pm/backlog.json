@@ -45,12 +45,6 @@
       "traceId": null
     },
     {
-      "id": "XR-MKT-RDS-VPC",
-      "ownerRepo": "fabric-os",
-      "status": "in_progress",
-      "traceId": null
-    },
-    {
       "id": "XR-MKT-TRADEPASS-001",
       "ownerRepo": "fabric-os",
       "status": "open",

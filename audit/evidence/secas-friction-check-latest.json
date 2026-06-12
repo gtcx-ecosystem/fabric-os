@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/secas-friction-check/v1",
   "protocol": "P42-SECURITY-AS-A-SERVICE",
-  "checkedAt": "2026-06-12T15:35:33.015Z",
+  "checkedAt": "2026-06-12T15:40:55.308Z",
   "gates": {
     "register": {
       "ok": true

@@ -1,6 +1,15 @@
 {
   "schema": "gtcx://baseline-os/session-open-items/v1",
-  "at": "2026-06-12T15:40:00.000Z",
+  "at": "2026-06-12T16:00:00.000Z",
+  "bridgeHandoff": {
+    "ticket": "XR-BRIDGE-SESSION-OPEN-001",
+    "status": "accepted",
+    "closureBar": "5/5",
+    "sessionComplete": true,
+    "bridgeTasksOpen": 0,
+    "handoff": "bridge-os/docs/operations/coordination/from-session-open-items-handoff-2026-06-12.md",
+    "fabricAck": "docs/operations/coordination/from-bridge-os-session-open-items-handoff-ack-2026-06-12.md"
+  },
   "sessionId": "fabric-os-domain-model-2026-06-12",
   "repo": "fabric-os",
   "repoPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
@@ -131,14 +140,6 @@
       "status": "deferred"
     },
     {
-      "type": "friction",
-      "id": "XR-MKT-RDS-VPC",
-      "title": "F10 DR psql — peering verified, auth credential reconcile",
-      "owner": "fabric-os",
-      "status": "in_progress",
-      "witness": "docs/operations/evidence/vpc-markets-rds-probe-2026-06-12.json"
-    },
-    {
       "type": "handoff",
       "id": "XR-MKT-PROTOCOL-NATIVE-001",
       "title": "Live verifier route deploy + Golden Transaction trace pack",
@@ -248,7 +249,8 @@
     "XR-CANON-TRADE-LANES-001": "open (canon-os)",
     "SECAS-S2-01": "in_progress — awaiting_vendor_report",
     "XR-MKT-PROTOCOL-NATIVE-001": "partial — PNV-1 done; fabric deploy pending",
-    "XR-MKT-RDS-VPC": "partial — peering OK; psql auth pending"
+    "XR-MKT-RDS-VPC": "sealed — bridge T23 F10 authority green",
+    "XR-BRIDGE-SESSION-OPEN-001": "accepted — bridge closure 5/5"
   },
   "fleetBlockers": {
     "complianceBelow85": "13/14 repos",
@@ -291,12 +293,6 @@
     },
     {
       "order": 4,
-      "id": "XR-MKT-RDS-VPC",
-      "owner": "fabric-os+markets-os",
-      "action": "Reconcile gtx-markets/staging/database-url credential for F10 psql closure"
-    },
-    {
-      "order": 5,
       "id": "AGILE-SA-02",
       "owner": "agile-os",
       "action": "ZenHub Phase D closeout"

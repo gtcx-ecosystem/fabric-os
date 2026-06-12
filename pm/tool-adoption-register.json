@@ -8,7 +8,7 @@
   "matrix": "bridge-os/pm/spec/tool-scout-matrix.v1.json",
   "programOffice": "bridge-os",
   "handoff": "bridge-os/docs/operations/coordination/to-fabric-os-agent-tool-scout-handoff-2026-06-12.md",
-  "status": "in_progress",
+  "status": "phase_b_complete",
   "policy": {
     "countryAgnostic": true,
     "executionOwner": "fabric-os TAAS"
@@ -19,7 +19,7 @@
       "tool": "baseline-ai-codeowner-fleet-rollout",
       "owner": "fabric-os",
       "phase": "P0-desk",
-      "status": "planned",
+      "status": "done",
       "source": "bridge-os/pm/tool-scout-register.json"
     },
     {
@@ -27,7 +27,7 @@
       "tool": "napkin-ai",
       "owner": "canon-os",
       "phase": "P0-desk",
-      "status": "in_progress",
+      "status": "done",
       "witness": "canon-os/audit/evidence/tool-scout-napkin-fleet-pilot.json",
       "priority": "P0-fleet",
       "pillars": ["craft", "compliance"],
@@ -38,7 +38,7 @@
       "tool": "adv-pitch-001",
       "owner": "markets-os",
       "phase": "P0-desk",
-      "status": "planned",
+      "status": "done",
       "pillars": ["worldClass", "craft"],
       "source": "bridge-os/pm/tool-scout-register.json"
     },
@@ -47,7 +47,7 @@
       "tool": "figma-mcp",
       "owner": "ledger-ui",
       "phase": "P0-desk",
-      "status": "planned",
+      "status": "done",
       "pillars": ["technicalExcellence", "craft"],
       "source": "bridge-os/pm/tool-scout-register.json"
     },

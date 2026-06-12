@@ -16,7 +16,7 @@ gtcx-infrastructure → fabric-os rename (ADR-0007). Lane I service fabric; GitH
 
 ## Acceptance
 - [x] `package.json` name + repository URL = fabric-os
-- [x] `pm/spec/trade-ecosystem-lanes.v1.json` lane I.repo = fabric-os
+- [x] `pm/spec/trade-ecosystem-lanes.json` lane I.repo = fabric-os
 - [x] `pnpm ops:check` + `pnpm fabric:lanes:check` exit 0
 - [x] `pnpm fabric:cutover:check:write` witness
 - [x] Inbound ack to bridge-os
@@ -86,3 +86,27 @@ Stack security operations are a separate concern from product engineering — pa
 ## Sprint plan
 
 SECAS-S1 registers + harness · SECAS-S2 pen-test execution · SECAS-S3 IRSA + security cards
+
+--
+INIT-GTCX-SERVICE-FABRIC - Service fabric compass + assurance planes - initiative
+status: done
+priority: P0
+owner: fabric-os
+programOffice: bridge-os
+initiative: INIT-GTCX-SERVICE-FABRIC
+persona: platform-architect
+frame: development
+evidence: audit/evidence/service-fabric-compass-latest.json
+
+## Context
+
+Canonical service fabric execution in fabric-os. Bridge-os `INIT-GTCX-COMPASS-FABRIC` delegates here. Registers + DaaS/SECaaS roadmaps + assurance runners per `bridge-os/pm/spec/service-fabric.json`.
+
+## Acceptance
+
+- [x] All service-fabric friction registers (DaaS, SECaaS, HaaS, AaaS, QA, Legal, GTM, Compliance, TAAS)
+- [x] pm/daas-roadmap.json + pm/secas-roadmap.json + haas/aaas roadmaps
+- [x] daas:friction:check + daas:cards:check + secas:friction:check + secas:approval:check + secas:cards:check
+- [x] haas:friction:check + aaas:friction:check + taas:tool-scout:run
+- [x] fabric:compass:check witness — audit/evidence/service-fabric-compass-latest.json
+- [x] docs/operations/service-fabric-compass.md

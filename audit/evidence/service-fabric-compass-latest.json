@@ -1,0 +1,122 @@
+{
+  "schema": "gtcx://fabric-os/service-fabric-compass/v1",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "compassInitiative": "INIT-GTCX-COMPASS-FABRIC",
+  "at": "2026-06-12T05:19:27.128Z",
+  "ok": true,
+  "gates": {
+    "registers": {
+      "P41-DAAS": {
+        "ok": true,
+        "path": "pm/friction-register.json",
+        "status": "complete"
+      },
+      "P42-SECAS": {
+        "ok": true,
+        "path": "pm/security-friction-register.json",
+        "status": "complete"
+      },
+      "HAAS": {
+        "ok": true,
+        "path": "pm/hygiene-friction-register.json",
+        "status": "complete"
+      },
+      "AAAS": {
+        "ok": true,
+        "path": "pm/audit-friction-register.json",
+        "status": "complete"
+      },
+      "QAAS": {
+        "ok": true,
+        "path": "pm/qa-friction-register.json",
+        "status": "planned"
+      },
+      "LEGALAAS": {
+        "ok": true,
+        "path": "pm/legal-friction-register.json",
+        "status": "planned"
+      },
+      "GTMAAS": {
+        "ok": true,
+        "path": "pm/gtm-friction-register.json",
+        "status": "planned"
+      },
+      "COMPLIANCEAAS": {
+        "ok": true,
+        "path": "pm/compliance-friction-register.json",
+        "status": "planned"
+      },
+      "TAAS": {
+        "ok": true,
+        "path": "pm/tool-adoption-register.json",
+        "status": "complete"
+      }
+    },
+    "roadmaps": {
+      "DAAS": {
+        "ok": true,
+        "path": "pm/daas-roadmap.json"
+      },
+      "SECAS": {
+        "ok": true,
+        "path": "pm/secas-roadmap.json"
+      },
+      "HAAS": {
+        "ok": true,
+        "path": "pm/haas-roadmap.json"
+      },
+      "AAAS": {
+        "ok": true,
+        "path": "pm/aaas-roadmap.json"
+      }
+    },
+    "runners": {
+      "daas-friction": {
+        "ok": true,
+        "exit": 0,
+        "script": "platform/scripts/daas-friction-check.mjs"
+      },
+      "daas-cards": {
+        "ok": true,
+        "exit": 0,
+        "script": "platform/scripts/daas-cards-check.mjs"
+      },
+      "secas-friction": {
+        "ok": true,
+        "exit": 0,
+        "script": "platform/scripts/secas-friction-check.mjs"
+      },
+      "secas-approval": {
+        "ok": true,
+        "exit": 0,
+        "script": "platform/scripts/secas-approval-check.mjs"
+      },
+      "secas-cards": {
+        "ok": true,
+        "exit": 0,
+        "script": "platform/scripts/secas-cards-check.mjs"
+      },
+      "haas-friction": {
+        "ok": true,
+        "exit": 0,
+        "script": "platform/scripts/haas-friction-check.mjs"
+      },
+      "aaas-friction": {
+        "ok": true,
+        "exit": 0,
+        "script": "platform/scripts/aaas-friction-check.mjs"
+      },
+      "fabric-assurance": {
+        "ok": true,
+        "exit": 0,
+        "script": "platform/scripts/fabric-assurance-run.mjs"
+      },
+      "taas-tool-scout": {
+        "ok": true,
+        "exit": 0,
+        "script": "platform/scripts/taas-tool-scout-run.mjs"
+      }
+    }
+  },
+  "serviceFabricSpec": "bridge-os/pm/spec/service-fabric.json"
+}

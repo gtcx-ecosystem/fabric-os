@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://baseline-os/session-open-items/v1",
-  "at": "2026-06-12T13:50:32.357Z",
+  "at": "2026-06-12T13:51:35.140Z",
   "repo": "fabric-os",
   "repoPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
   "session": {
@@ -30,8 +30,8 @@
     }
   },
   "git": {
-    "dirtyCount": 3,
-    "commitsSinceSession": 19
+    "dirtyCount": 5,
+    "commitsSinceSession": 20
   },
   "productionWeek": null,
   "intake": null,
@@ -45,7 +45,7 @@
       "n": 1
     },
     {
-      "task": "Git-clean fabric-os (3 uncommitted path(s) in working tree)",
+      "task": "Git-clean fabric-os (5 uncommitted path(s) in working tree)",
       "owner": "fabric-os",
       "command": "micro-commit conventional + push when GATE-PUSH green",
       "doneWhen": "working tree clean; ahead=0",
@@ -54,6 +54,16 @@
     }
   ],
   "completed": [
+    {
+      "kind": "commit",
+      "detail": "d9dc059 chore(pm): sync session witnesses after git settlement batch.",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "fde97b6 chore(repo): ignore local .claude/skills symlinks.",
+      "source": "git log"
+    },
     {
       "kind": "commit",
       "detail": "ff8eb3d chore(session): refresh open-items witness and launch focus.",
@@ -143,11 +153,6 @@
       "kind": "commit",
       "detail": "14a0e5f fix(pm): repair launch-focus.config.json trailing comma after witness prune.",
       "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "07b7f92 docs(secas): consume sprint authority witness and refresh SECAS-S2 ingest gate.",
-      "source": "git log"
     }
   ],
   "openItems": [
@@ -163,14 +168,16 @@
     {
       "type": "blocker",
       "id": "uncommitted-work",
-      "title": "3 uncommitted path(s) in working tree",
+      "title": "5 uncommitted path(s) in working tree",
       "owner": "fabric-os",
       "source": "git status",
       "status": "open",
       "sample": [
-        "M  .gitignore",
-        " M pm/ci/settlement-commit-latest.json",
-        " M pm/ci/settlement-push-latest.json"
+        " M .baseline/launch-focus.json",
+        " M audit/dr-fire-drill-evidence-2026-05-31.md",
+        " M audit/evidence/injection-suite-latest.json",
+        " M audit/pen-test-intake-evidence-2026-05-31.md",
+        "MM pm/ci/settlement-commit-latest.json"
       ]
     }
   ],

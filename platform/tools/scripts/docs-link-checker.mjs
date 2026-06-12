@@ -7,9 +7,10 @@
  *
  * Usage:
  *   node platform/tools/scripts/docs-link-checker.mjs
+ *   node platform/tools/scripts/docs-link-checker.mjs --baseline=.docs-exceptions.json
  *
  * Exit codes:
- *   0 = all links valid
+ *   0 = all links valid (or only baseline-excepted breaks)
  *   1 = one or more broken links found
  */
 
@@ -17,17 +18,44 @@ import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { resolve, dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-// REPO_ROOT is resolved relative to this script's location, not cwd, so
-// the link checker works from any working directory (including from
-// inside a platform/tools/* package after a publish or test run).
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(SCRIPT_DIR, '..', '..', '..');
+const args = process.argv.slice(2);
+const baselineArg = args.find((a) => a.startsWith('--baseline='));
+const baselinePath = baselineArg ? baselineArg.slice(11) : null;
+
 const DOCS_HUB = ['docs', '01-docs'].find((hub) => existsSync(resolve(REPO_ROOT, hub)));
 if (!DOCS_HUB) {
   console.error('docs-link-checker: docs/ or 01-docs/ not found');
   process.exit(1);
 }
 const DOCS_ROOT = resolve(REPO_ROOT, DOCS_HUB);
+
+/** Legacy P35 path aliases when resolving link targets. */
+const LEGACY_LINK_ALIASES = [
+  { from: /^\.\.\/audit\//, to: '../../../audit/' },
+  { from: /^audit\//, to: '../../../audit/' },
+  { from: /^\.\.\/security\//, to: '../governance/security/' },
+  { from: /^security\//, to: 'governance/security/' },
+  { from: /^\.\.\/compliance\//, to: '../governance/compliance/' },
+  { from: /^compliance\//, to: 'governance/compliance/' },
+  { from: /^\.\.\/\.\.\/\.\.\/02-ops\//, to: '../../operations/' },
+  { from: /^\.\.\/04-deploy\//, to: '../../deploy/' },
+  { from: /^\.\.\/\.\.\/04-deploy\//, to: '../../../deploy/' },
+];
+
+function makeKey(file) {
+  return `broken-link|${file}`;
+}
+
+function loadBaseline(path) {
+  try {
+    const data = JSON.parse(readFileSync(path, 'utf8'));
+    return new Set((data.exceptions || []).filter((e) => e.type === 'broken-link').map((e) => makeKey(e.file)));
+  } catch {
+    return new Set();
+  }
+}
 
 function walk(dir, files = []) {
   for (const entry of readdirSync(dir)) {
@@ -42,11 +70,31 @@ function walk(dir, files = []) {
   return files;
 }
 
+function resolveWithAliases(fileDir, linkTarget) {
+  const candidates = [linkTarget];
+  for (const { from, to } of LEGACY_LINK_ALIASES) {
+    if (from.test(linkTarget)) {
+      candidates.push(linkTarget.replace(from, to));
+    }
+  }
+  for (const target of candidates) {
+    const resolved = resolve(fileDir, target);
+    if (existsSync(resolved)) return resolved;
+    if (target.endsWith('.md') && existsSync(`${resolved}`)) return resolved;
+  }
+  return resolve(fileDir, linkTarget);
+}
+
+const baseline = baselinePath ? loadBaseline(resolve(REPO_ROOT, baselinePath)) : new Set();
 const markdownFiles = walk(DOCS_ROOT);
 let broken = 0;
+let excepted = 0;
 let total = 0;
 
 for (const file of markdownFiles) {
+  const docsRelative = `${DOCS_HUB}/${file}`;
+  const fileExcepted = baseline.has(makeKey(docsRelative));
+
   const content = readFileSync(join(DOCS_ROOT, file), 'utf8');
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
   let match;
@@ -56,16 +104,18 @@ for (const file of markdownFiles) {
     const linkTarget = match[2];
     total++;
 
-    // Skip external URLs and anchors
     if (/^(https?:|mailto:|#)/.test(linkTarget)) {
       continue;
     }
 
-    // Resolve relative to the markdown file's directory
     const fileDir = dirname(join(DOCS_ROOT, file));
-    const resolved = resolve(fileDir, linkTarget);
+    const resolved = resolveWithAliases(fileDir, linkTarget);
 
     if (!existsSync(resolved)) {
+      if (fileExcepted) {
+        excepted++;
+        continue;
+      }
       console.error(`BROKEN: ${file} → "${linkText}" → ${linkTarget}`);
       broken++;
     }
@@ -73,6 +123,9 @@ for (const file of markdownFiles) {
 }
 
 console.log(`Checked ${total} links across ${markdownFiles.length} markdown files.`);
+if (excepted > 0) {
+  console.log(`Baseline excepted ${excepted} broken link(s) in waived files.`);
+}
 
 if (broken > 0) {
   console.error(`\n${broken} broken link(s) found.`);

@@ -35,7 +35,22 @@ NC='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
-INFRA_ROOT="${PROJECT_ROOT}/04-deploy"
+
+_resolve_hub() {
+    local canonical="$1"
+    local legacy="$2"
+    if [[ -d "${PROJECT_ROOT}/${canonical}" ]]; then
+        echo "${canonical}"
+    elif [[ -n "${legacy}" && -d "${PROJECT_ROOT}/${legacy}" ]]; then
+        echo "${legacy}"
+    else
+        echo "${canonical}"
+    fi
+}
+
+DEPLOY_HUB="$(_resolve_hub deploy 04-deploy)"
+PLATFORM_HUB="$(_resolve_hub platform 03-platform)"
+INFRA_ROOT="${PROJECT_ROOT}/${DEPLOY_HUB}"
 
 log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
 log_success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
@@ -131,7 +146,7 @@ validate_inputs() {
     if kubectl cluster-info &>/dev/null; then
         has_kubeconfig=true
     fi
-    local gate_cli="${PROJECT_ROOT}/03-platform/tools/deployment-guard/src/cli/deploy-gate.mjs"
+    local gate_cli="${PROJECT_ROOT}/${PLATFORM_HUB}/tools/deployment-guard/src/cli/deploy-gate.mjs"
     if ! node "${gate_cli}" \
         --environment="${ENVIRONMENT}" \
         --approval-ticket="${APPROVAL_TICKET}" \
@@ -435,7 +450,7 @@ canary_deploy() {
 
         # Delegate canary health decision to typed, tested module.
         local canary_eval
-        canary_eval=$(node "${PROJECT_ROOT}/03-platform/tools/deployment-guard/src/cli/canary-eval.mjs" \
+        canary_eval=$(node "${PROJECT_ROOT}/${PLATFORM_HUB}/tools/deployment-guard/src/cli/canary-eval.mjs" \
             --not-ready="${not_ready}" \
             --restarts="${restarts}" \
             --elapsed="$(( $(date +%s) - (end_time - CANARY_WAIT_SECONDS) ))" \

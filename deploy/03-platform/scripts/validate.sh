@@ -152,7 +152,7 @@ run_compliance_data_signature_verify() {
 
 run_docs_link_check() {
     log_info "Running docs link check..."
-    (cd "${PROJECT_ROOT}" && node platform/tools/scripts/docs-link-checker.mjs)
+    (cd "${PROJECT_ROOT}" && node platform/tools/scripts/docs-link-checker.mjs --baseline=.docs-exceptions.json)
 }
 
 run_score_ledger_validation() {

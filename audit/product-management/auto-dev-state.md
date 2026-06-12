@@ -53,6 +53,9 @@ last_reconciled: 2026-06-12T14:45:00.000Z
 - **Blocked:** vendor report ingest until post 2026-06-21 window
 - **Fleet health:** `pen-test-pre-window-fleet-health-2026-06-12.json` — PASS 4/4 (2026-06-12)
 - **P24 ack:** `outbound/to-markets-os-xr-mkt-protocol-native-ack-2026-06-12.md`
+- **VPC peering:** `docs/operations/evidence/vpc-peering-gtcx-markets-staging-2026-06-12.json` (XR-MKT-RDS-VPC partial)
+- **TradePass ack:** `outbound/to-markets-os-xr-mkt-tradepass-ack-2026-06-12.md`
+- **Fleet refresh:** cross-repo-health PASS 4/4 @ 2026-06-12T15:17:27Z
 
 ## Evidence
 

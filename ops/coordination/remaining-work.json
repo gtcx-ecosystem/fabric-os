@@ -2,7 +2,7 @@
   "$schema": "gtcx://workspace/remaining-work/v1",
   "repo": "fabric-os",
   "updated": "2026-06-12",
-  "reconciledAt": "2026-06-12T14:55:00.000Z",
+  "reconciledAt": "2026-06-12T15:20:00.000Z",
   "sessionRef": "fabric-os-domain-model-2026-06-12",
   "items": [
     {
@@ -15,6 +15,26 @@
       "authority": "R",
       "p22": true,
       "notes": "Pre-window fleet health PASS 4/4; window-ready witness; vendor report post 2026-06-21"
+    },
+    {
+      "id": "XR-MKT-RDS-VPC",
+      "title": "VPC peering gtcx-staging ↔ gtx-markets-staging (F10 DR psql)",
+      "ownerRepo": "fabric-os",
+      "status": "in_progress",
+      "authority": "R",
+      "witness": "docs/operations/evidence/vpc-peering-gtcx-markets-staging-2026-06-12.json",
+      "blockedBy": "in-vpc psql probe pending",
+      "blocksIR": false
+    },
+    {
+      "id": "XR-MKT-TRADEPASS-001",
+      "title": "TradePass qualified counterparty programme coordination",
+      "ownerRepo": "fabric-os",
+      "status": "open",
+      "authority": "R",
+      "handoff": "docs/operations/coordination/from-markets-os-tradepass-qualified-counterparty-2026-06-12.md",
+      "ack": "docs/operations/coordination/outbound/to-markets-os-xr-mkt-tradepass-ack-2026-06-12.md",
+      "blocksIR": false
     },
     {
       "id": "XR-FABRIC-TRADE-LANES-001-ack",

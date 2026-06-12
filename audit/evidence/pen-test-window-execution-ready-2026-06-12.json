@@ -9,7 +9,7 @@
   "fleetHealth": {
     "result": "PASS",
     "servicesHealthy": "4/4",
-    "probedAt": "2026-06-12T14:50:26.389Z",
+    "probedAt": "2026-06-12T15:17:27.140Z",
     "witness": "audit/evidence/pen-test-pre-window-fleet-health-2026-06-12.json"
   },
   "preparedBy": "agent:fabric-os",

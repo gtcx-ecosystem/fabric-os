@@ -53,6 +53,15 @@ Direct `gtcx-os/protocols` handoff:
 - authorized-signer registry contract; and
 - purpose-bound verification request, receipt, and rejection contracts.
 
+`gtcx-os/protocols` PNV-2 is implemented in commit `90517f09`:
+
+- live fail-closed `POST /v1/protocol-manifests/verify` route;
+- multibase Ed25519 manifest-signature verification;
+- signer authorization, revocation, and purpose-bound replay enforcement;
+- TradePass, GeoTag, GCI, VaultMark, PvP, and PANX authority adapters;
+- signed, digest-bound verification receipts; and
+- mandatory rejection-case and lifecycle regression tests.
+
 ## Runtime Contract
 
 Markets calls:
@@ -81,9 +90,8 @@ Markets exposes authenticated append-only traces at:
 
 ## Fabric Execution Plan
 
-1. Deploy the `gtcx-os/protocols` verifier route after its owner publishes the
-   signing preimage, signer registry, authority adapters, and signed receipt
-   implementation.
+1. Deploy `gtcx-os/protocols` commit `90517f09` with its signer registry,
+   revocation source, receipt signer, and authority dependencies configured.
 2. Inject verifier URL and token into Markets through the adopted secret and
    deployment controls; do not commit either value.
 3. Provision required distributed replay and revocation dependencies and make
@@ -114,11 +122,10 @@ handoff.
 
 ## Residual Gap
 
-The Markets boundary and the `gtcx-os/protocols` PNV-1 signing and receipt
-contract are implemented. The live verifier route, signer-registry runtime,
-authority adapters, signed receipt issuer, Fabric deployment configuration,
-and live Golden Transaction trace pack remain required before claiming
-complete protocol-native execution.
+The Markets boundary and `gtcx-os/protocols` PNV-1/PNV-2 verifier are
+implemented. Fabric deployment configuration, live authority dependency
+configuration, and the live Golden Transaction trace pack remain required
+before claiming complete protocol-native execution.
 
 ## What This Document Does NOT Cover
 

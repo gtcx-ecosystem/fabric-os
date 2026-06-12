@@ -1,0 +1,24 @@
+{
+  "schema": "gtcx.digitalRailStagingWitness.v1",
+  "date": "2026-06-12",
+  "repo": "fabric-os",
+  "program": "PROG-DIGITAL-RAIL-WAVE-0",
+  "ticket": "XR-FABRIC-RAIL-003",
+  "wave": 0,
+  "status": "scaffold",
+  "policySoR": "markets-os/platform/contracts/ecosystem/digital-rail-policy.json",
+  "gtcxOsWire": {
+    "digitalRail": "gtcx-os/platform/protocols/03-platform/packages/digital-rail",
+    "pvpClose": "gtcx-os/platform/protocols/03-platform/protocols/pvp",
+    "commit": "643a342f"
+  },
+  "stagingPatch": "deploy/kubernetes/overlays/staging/patches/digital-rail-staging-env.yaml",
+  "rails": {
+    "tradfi-register": { "stagingEnabled": true, "smoke": "witness-only" },
+    "evm-erc3643": { "stagingEnabled": true, "smoke": "pending-besu-overlay" },
+    "stellar-settlement": { "stagingEnabled": false, "smoke": "profile-gated" },
+    "canton-hub": { "stagingEnabled": false, "smoke": "future" }
+  },
+  "programmeManifest": "pm/digital-rail-programme.json",
+  "blocksIR": false
+}

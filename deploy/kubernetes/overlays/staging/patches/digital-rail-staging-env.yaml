@@ -1,0 +1,18 @@
+# Wave 0 continental digital-rail manifest binding (XR-FABRIC-RAIL-003).
+# Adapter SoR: gtcx-os @gtcx/digital-rail — fabric owns runtime env + deploy witness only.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gtcx-protocols
+spec:
+  template:
+    spec:
+      containers:
+        - name: protocols
+          env:
+            - name: GTCX_DIGITAL_RAIL_PRIMARY
+              value: tradfi-register
+            - name: GTCX_DIGITAL_RAIL_ENABLED
+              value: tradfi-register,evm-erc3643
+            - name: GTCX_DIGITAL_RAIL_PROFILE_REF
+              value: staging-continental-wave0

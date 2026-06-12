@@ -1,0 +1,34 @@
+{
+  "$schema": "gtcx://fabric-os/digital-rail-programme/v1",
+  "schemaVersion": 1,
+  "program": "PROG-DIGITAL-RAIL-WAVE-0",
+  "ticket": "XR-FABRIC-RAIL-003",
+  "initiative": "INIT-DIGITAL-RAIL-WAVE-0",
+  "parent": "XR-BRIDGE-CONT-CAPITAL-001",
+  "owner": "fabric-os",
+  "status": "wave0_scaffold",
+  "ackDate": "2026-06-12",
+  "bridgeOutbound": "bridge-os/docs/operations/coordination/to-fabric-os-digital-rail-runtime-2026-06-12.md",
+  "inboundAck": "docs/operations/coordination/from-bridge-os-digital-rail-runtime-2026-06-12.md",
+  "executionPlan": "docs/operations/coordination/xr-bridge-rail-003-digital-rail-execution-plan-2026-06-12.md",
+  "policySoR": "markets-os/platform/contracts/ecosystem/digital-rail-policy.json",
+  "gtcxOsDependencies": {
+    "XR-GTCX-DIGITAL-RAIL-001": "done",
+    "XR-GTCX-PVP-RAIL-002": "done",
+    "commit": "643a342f"
+  },
+  "siblingProgramme": "PROG-TOKENIZATION-001",
+  "rails": {
+    "tradfi-register": { "wave": 0, "stagingDefault": true, "status": "witness" },
+    "evm-erc3643": { "wave": 0, "stagingDefault": false, "status": "scaffold" },
+    "stellar-settlement": { "wave": 1, "stagingDefault": false, "status": "template" },
+    "canton-hub": { "wave": 3, "stagingDefault": false, "status": "future" }
+  },
+  "deliverables": {
+    "FR-001": "done",
+    "FR-002": "scaffold",
+    "FR-003": "template",
+    "FR-004": "planned",
+    "FR-005": "scaffold"
+  }
+}

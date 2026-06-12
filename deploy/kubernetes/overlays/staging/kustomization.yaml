@@ -130,6 +130,10 @@ patches:
     target:
       kind: Deployment
       name: gtcx-protocols
+  - path: patches/digital-rail-staging-env.yaml
+    target:
+      kind: Deployment
+      name: gtcx-protocols
   - path: patches/protocols-probes-staging.yaml
     target:
       kind: Deployment

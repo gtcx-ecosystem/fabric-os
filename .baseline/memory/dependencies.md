@@ -29,6 +29,7 @@
 | Program | Originating handoff | Status | Evidence |
 | --- | --- | --- | --- |
 | **PROG-TOKENIZATION-001** / XR-MKT-FABRIC-001 | markets-os → fabric-os | **acknowledged** 2026-06-11 | `docs/operations/coordination/from-fabric-os-xr-mkt-fabric-001-ack-2026-06-11.md`, `xr-mkt-fabric-001-tokenization-execution-plan-2026-06-11.md` |
+| **PROG-DIGITAL-RAIL-WAVE-0** / XR-FABRIC-RAIL-003 | bridge-os → fabric-os | **acknowledged** 2026-06-12 | `docs/operations/coordination/from-bridge-os-digital-rail-runtime-2026-06-12.md`, `xr-bridge-rail-003-digital-rail-execution-plan-2026-06-12.md` |
 
 **Canonical identity:** `fabric-os` (legacy: `gtcx-infrastructure`) — `bridge-os/pm/spec/service-fabric.json`, ADR-0007.
 

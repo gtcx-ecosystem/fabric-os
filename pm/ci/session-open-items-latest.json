@@ -1,187 +1,43 @@
 {
   "schema": "gtcx://baseline-os/session-open-items/v1",
-  "at": "2026-06-11T18:41:54.008Z",
+  "at": "2026-06-12T13:50:18.167Z",
   "repo": "fabric-os",
   "repoPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
   "session": {
-    "startedAt": "2026-06-11T18:36:26.274Z",
-    "agentTrace": "gtcx-agent-5f5e1ed2-d677-402a-80fc-60bf60681a8e"
+    "startedAt": "2026-06-12T13:03:44.111Z",
+    "agentTrace": "gtcx-agent-66f615ce-fdbe-4771-b3fe-0ac9d23e9193"
   },
   "transcript": {
-    "path": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-gtcx-infrastructure/agent-transcripts/87ffe45a-fae9-45f4-9e10-c31016b9e964/87ffe45a-fae9-45f4-9e10-c31016b9e964.jsonl",
-    "lineCount": 1111,
-    "userTurns": 93,
-    "userQueries": [
-      "baseline start",
-      "# Status Update\n\n  ### Done\n\n  - Raised full Ghana/tokenization vision to Fabric via docs/operations/coordination/to-fabric-os-ghana-tokenization-platform-\n    scope-2026-06-11.md.\n\n  - Defined parallel Markets backend and ledger-ui design tracks.\n  - Included ownership boundaries, lifecycle, phased rollout, legal gates, and acceptance criteria.\n  - Reported initiative to baseline-os coordination hub.\n  - pnpm docs:standard:check passed.\n  - Committed and pushed 03e4d46.\n\n  ### Next priority\n\n  ",
-      "please forensically analyze this chat transcript for the explicity detail -- use it to extract any and all relevant details for the product roadmaps, new specs, requirements, etc. /Users/amanianai/Sites/gtcx-markets\\ -\\ 6.11",
-      "can we update the name of gtcx-markets to markets-os and gtcx-infrastructure to fabric-os to avoid future confusion",
-      "prioritize: rename, markets-os",
-      "next?",
-      "Your action items\n\n  1. Reopen workspace in Cursor at markets-os (old gtcx-markets path is gone).\n  2. Commit & push (shell was unavailable here):\n\n     cd ~/Sites/gtcx-ecosystem/markets-os\n     git add -A && git commit -m \"chore(repo): rename gtcx-markets to markets-os\"\n     git push\n     cd ../bridge-os && git add pm/spec/ecosystem-repo-aliases.json \\\n       platform/scripts/ecosystem/lib/resolve-repo-id.mjs config/ pm/spec/\n     git commit -m \"feat(ecosystem): register markets-os canonical",
-      "--flag \" Commit & push (shell was unavailable here):\n\n     cd ~/Sites/gtcx-ecosystem/markets-os\n     git add -A && git commit -m \"chore(repo): rename gtcx-markets to markets-os\"\n     git push\n     cd ../bridge-os && git add pm/spec/ecosystem-repo-aliases.json \\\n       platform/scripts/ecosystem/lib/resolve-repo-id.mjs config/ pm/spec/\n     git commit -m \"feat(ecosystem): register markets-os canonical repo alias\"\n     git push\"",
-      "--flag \"Same pattern for baseline-os, gtcx-infrastructure, gtcx-os if you want those hub/doc updates on main.\"",
-      "continue",
-      "execute roadmap",
-      "## Status Update\n\n  ### Done\n\n  - Forensic transcript trace: audit/transcript-product-forensic-2026-06-11.md\n  - Canonical requirements: docs/specs/ghana-tokenization-platform-requirements.md\n  - Phased strategy: docs/strategy/ghana-tokenization-product-roadmap.md\n  - Added PRD, operator persona, JTBD, user flow, EXR-004, UAT scenarios, navigation requirements, and ledger-ui handoff.\n  - Added initiative INIT-GHANA-TOKENIZATION-PLATFORM.\n  - Added seven executable GH-TKN-* feature-backlog items.",
-      "do not anchor tokenization to any country -- we should always be configuration-first and country agnostic.",
-      "do not anchor tokenization to any country -- we should always be configuration-first and country agnostic.",
-      "backlog: initiative: african financial markets regulatory adapter \"we need to understand the financial regulatory environment in every african jurisdiction relevant to capital markets, digital assets, investment advisory, securities exchanges, instituional capital raising, taxes, special economic zones, bilateral trade agreements and treaties, credit and insurance requirements and agencies, commerical banking and lending requirments, common trade finance and private credit requirements, terms, e",
-      "excellent. next: gtcx-infrastructure updated to fabric-os?",
-      "--flag \" Say push if you want these three repos pushed to origin.\" --status local folders have not been renamed i.e. fabric-os and markets-os",
-      "I am working on the cli and viewing the local fodler",
-      "[Image]\n\n[Image #1]",
-      "update the local folder and ensure all names match to avoid issues later.",
-      "bridge-os   │ ~/Sites/gtcx-ecosystem/bridge-os   │ github.com/gtcx-ecosystem/bridgeOS  UPDATE",
-      "bridge-os   │ ~/Sites/gtcx-ecosystem/bridge-os   │ github.com/gtcx-ecosystem/bridgeOS  UPDATE",
-      "Why are you using symlinks?",
-      "not possible to rename these repos?",
-      "please audit and triple check your work in terms of references to gtcx-markets gtcxMarkets and gtcx-infrastructure",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "ottom line\n\n  The rename work itself was sound. The gap was bridge-os fleet metadata still listing gtcx-markets as the active ZenHub\n  repo and operational docs/alert URLs not swept. Those are fixed for the paths that affect live tooling; historical\n  evidence and npm package scopes were left alone on purpose.\n\n--resolve",
-      "--RESOLVE Intentional remaining references (do not delete)\n\n  ┌─────────────────────────┬─────────────────────────────────────────────────────────────────┐\n  │ Category                │ Examples                                                        │\n  ├─────────────────────────┼─────────────────────────────────────────────────────────────────┤\n  │ Alias resolution        │ ecosystem-repo-aliases.json legacyIds                        │\n  │ Rename ADRs             │ ADR-0006, ADR-0007        ",
-      "--RESOLVE The background scans finished. Here is what they found:\n\n  Ecosystem-wide total: ~10,260 matching lines for gtcx-markets, gtcxMarkets, or gtcx-infrastructure (all file types,\n  including historical audit evidence).\n\n  Per-repo (excluding audit/evidence and dated audit markdown):\n\n  ┌────────────────┬───────┐\n  │ Repo           │ Lines │\n  ├────────────────┼───────┤\n  │ gtcx-os        │ 3,725 │\n  │ fabric-os      │ 1,179 │\n  │ baseline-os    │ 831   │\n  │ bridge-os      │ 346   │\n  │ te",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "fixing the reference is not important for old audit files.",
-      "done?",
-      "@gtx-markets/* npm scope\n  • zenhub-config.json commit (secret-risk gated; refresh via pnpm ecosystem:zenhub:discover) -- explain",
-      "Optional local WIP (doesn’t block anything): bridge-os uncommitted pm/ program JSON + sync templates from the bulk sweep\n  — operational gate already passes without them. -- resolve",
-      "Optional local WIP (doesn’t block anything): bridge-os uncommitted pm/ program JSON + sync templates from the bulk sweep\n  — operational gate already passes without them. -- resolve",
-      "--flag Push bridge-os main (6 commits ahead) if you want these on GitHub — say push and I'll run it.",
-      "continue",
-      "feedback for market-os? \"    > markets-os@0.1.0 roadmap:check /Users/amanianai/Sites/gtcx-ecosystem/gtcx-markets\n    > node platform/scripts/validate-feature-roadmap.mjs\n\n    feature roadmap validation PASSED — 0 warning(s)\n\n• Ran pnpm docs:standard:check\n  └\n    > markets-os@0.1.0 docs:standard:check /Users/amanianai/Sites/gtcx-ecosystem/gtcx-markets\n    … +15 lines (ctrl + t to view transcript)\n\n    ACCEPTANCE PASSED — 12 invariants hold\n\n───────────────────────────────────────────────────────",
-      "--flag  \"Sprint 82 (tokenization UI) stays active; this initiative is icebox until you want to pull AFM-REG-001 into an \n                                                                                                                             \n        active sprint.\" roadmaps and prioritization should be lead by our world class product teams not me. do we have a     \n                                                                                                                             \n ",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "execute",
-      "ensure that you take a step back to be thoughtful vs. reactive in your approach to solving for this. We strive for technical excellence, compliance, craft, world-class, and trust and safety in everything we do.",
-      "ok, sounds. after this completed we would begin planning for a spec that more holistically addresses \"icebox is correctly modeled. What's missing is a scheduled ceremony harness — retros and sprint seal are event-triggered;\n  planning/review aren't on a weekly clock yet.\n\n  I can draft sprint-ceremony-cadence.json and wire a workflow_dispatch + Monday/Friday cron in bridge-os if you want that\n  landed as the fleet standard.\n\n  ⬢ Finished Find sprint ceremony specs and scripts in fleet\n\n    Re",
-      "I had to flag this for fabric-os, \"[Pasted text #3 +10 lines]\" how can we enforce this with stronger compliance,           \n  efficiency, automation?                                                                                                    \n                                                                                                                             \n\n  Searching the codebase for sprint ceremony automation, PM ownership rules, and what already enforces team-led\n  prioritiz",
-      "Shared planning with fabric-os as a P24 durable handoff — no harness code, no P22 changes, no fleet witnesses implemented.\n\n  Where it lives\n\n  ┌───────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────┐\n  │ Repo                      │ Path                                                                                         │\n  ├───────────────────────────┼─────────────────────────────────────────────────────────────────────────",
-      "Leverage this as a sounding board...do not take it as a directive, allow it to make your final solution even better.",
-      "--flag If you want to move from sounding board to execution, the highest-leverage next step is Phase A only — draft\n  sprint-authority.json as normative contract, then fabric F0 review in parallel. No harness until the contract is signed\n  off by product + programme personas.",
-      "don't forget that we previously had a gtcx-agile for this reason it was deemed that we would need a centralized and robust home for all of this to be managed",
-      "don't forget that we previously had a gtcx-agile for this reason it was deemed that we would need a centralized and robust home for all of this to be managed",
-      "[Image]\n\n[Image #1] this is actually and excellent catch!",
-      "gtcx-agile was never movd out of gtcx-os, it doesn't belong in this folder and neither does gtcx-agentic",
-      "also gtcx-os still includes a numebred folder 05-audit withing gtcx-os/platform",
-      "agentic should be in the ROOT of gtcx-os",
-      "execute",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "continue",
-      "agile-os = gtcx-agile, right?",
-      "ok, great.",
-      "execute",
-      "EXECUTE",
-      "EXECUTE",
-      "execution-mode: execute_roadmap",
-      "┌─────────────────┬──────────────────────────────────────────────────────────────────────────────────────┐\n  │ Story           │ Blocker                                                                              │\n  ├─────────────────┼──────────────────────────────────────────────────────────────────────────────────────┤\n  │ PW-1-05         │ Production deploy witnesses — Class A (owner-repo dry-run or CI deploy green)        │\n  │ Fleet git clean │ bridge-os + canon-os + others still dirty/un",
-      "APPROVED",
-      "CONTINUE",
-      "approved",
-      "approved",
-      "execute",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "continue",
-      "execute",
-      "backlog cleared?",
-      "next?",
-      "have we run audits of all of the repos?",
-      "retrospectives, ci, session notes, have been translated into backlog items?",
-      "all apps / platforms deployed in production?",
-      "agile-os functional and tested?",
-      "agile-os functional and tested?",
-      "The consolidation and Fabric synchronization completed before the interruption. I’m closing out with the shareable note location,\n  published commits, and the one Fabric documentation-gate issue that remains unrelated to this handoff.\n\n• Updated Plan\n  └ ✔ Inspect existing specs, handoff, and documentation constraints\n    ✔ Create raw discussion record and comprehensive feature reference\n    ✔ Expand Fabric handoff and create shareable note\n    ✔ Verify, commit, push, and synchronize Fabric OS\n\n",
-      "Subject: Trade ecosystem lanes — fabric-os handoff (XR-FABRIC-TRADE-LANES-001)\n\n  Date: 2026-06-12\n  Authority: Class R — start tagging without waiting on canon ratification\n\n  TL;DR\n\n  We fixed the ecosystem map from a strategy session:\n\n  • fabric-os = I (Infra) — deploy/operate; you are not the trade core\n  • gtcx-os = C (Trade infrastructure core) — protocols, CRX/SGX/AGX/Pathways, mobile, hardware\n  • baseline-os = A (AI OS) — 7-layer agent runtime; not infra\n  • canon-os + agile-os = U (Ut",
-      "session:open-items",
-      "--flag \"If you want that closed out, the natural next slice would be: add @baselineos/vault (or bridge delegation), generate\n  pnpm-lock.yaml, add a minimal ceremony/zenhub smoke test, and run the scheduled workflow once via workflow_dispatch.\n\n\"",
-      "--flag \"If useful, I can run a production deploy gap report per repo (profile vs last green workflow vs smoke URL vs proof\n  artifact).\"",
-      "--flag \"If you want that closed, the next build would be something like ecosystem:retro:promote (merge\n  roadmap-proposals-from-retro.json + session-open-items backlogCandidates into pm/_tasks raw intake, then run\n  ecosystem:tasks:intake). I can implement that if you want.\"",
-      "--flag \"If you want full parity, the next concrete work would be: add markets-os to five-core fleet, extend master-audit to\n  all 16 repos, and optionally re-run forensic audits on any repo you care about for deep review.\"",
-      "--flag \"If useful, I can run a production deploy gap report per repo (profile vs last green workflow vs smoke URL vs proof\n  artifact).",
-      "--flag \" All lane taxonomy + matrix tagging changes are local only. Per your note: say commit if you want these micro-committed\n   in fabric-os.\"",
-      "--flag \"Re-run\n\n  cd fabric-os\n  node ../baseline-os/platform/packages/baselineos/dist/cli/bin.js session:open-items\n  # or --json\n\n  Say commit to micro-commit the lane taxonomy + matrix work (21 paths).\""
-    ],
-    "mentionedIds": [
-      "XR-MKT-FABRIC-001",
-      "XR-MKT-011",
-      "XR-MKT-LEDGER-TKN-001",
-      "INIT-GHANA-TOKENIZATION-PLATFORM",
-      "INIT-GHANA",
-      "INIT-TOKENIZATION",
-      "INIT-AFM-REG-ADAPTER",
-      "AFM-REG-001",
-      "AFM-REG-002",
-      "AFM-REG-003",
-      "INIT-PRODUCTION-WEEK",
-      "SPR-82-TOKENIZATION-UI",
-      "INIT-SPRINT-CEREMONY-ENFORCE",
-      "INIT-SPRINT-AUTHORITY",
-      "T1",
-      "T2",
-      "T3",
-      "T4",
-      "T5",
-      "T6",
-      "T7",
-      "T8",
-      "T9",
-      "T10",
-      "T11",
-      "T12",
-      "XR-FABRIC-SPRINT-AUTH-001",
-      "INIT-AGILE-EXTRACTION",
-      "INIT-GTCX-OS-PLATFORM-HYGIENE",
-      "INIT-AGILE-EXTRACTION-",
-      "BL-CANON-CUTOVER-01",
-      "INIT-DOCUMENTATION-ARCHIVAL",
-      "BL-DOC-ARCH-01",
-      "INIT-GTCX-CONVERGENCE",
-      "INIT-GTCX-WORKSPACE-CONVERGENCE",
-      "T16",
-      "XR-MKT-FABRIC-002",
-      "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
-      "INIT-FABRIC-LANE-DEPLOY-MATRIX",
-      "INIT-GTCX-CONSTITUTION-ART-IV-BIS",
-      "INIT-CANON-INST-F-006",
-      "INIT-PROTOCOL-46-TRADE-OBJECT-CONTINUITY",
-      "INIT-BRIDGE-LANES-REGISTRY-SYNC",
-      "INIT-GTCX-CONVERGENCE-FRAME",
-      "INIT-FABRIC-README-SOR-",
-      "XR-FABRIC-TRADE-LANES-001",
-      "T0",
-      "XR-BRIDGE-LANES-REGISTRY-001",
-      "XR-CANON-TRADE-LANES-001",
-      "XR-BRIDGE-LANES-REGISTRY-SYNC",
-      "INIT-WORKSPACE-PLANE",
-      "INIT-TRUST-CLOUD",
-      "INIT-CONTROL-PLANE",
-      "INIT-GTCX-ADMIN"
-    ]
+    "path": null,
+    "lineCount": 0,
+    "userTurns": 0,
+    "userQueries": [],
+    "mentionedIds": []
   },
   "p22": {
     "backlogClear": false,
     "next": {
-      "storyId": "LAUNCH-PLAN-01",
-      "title": "Advance launch planning",
-      "track": "launch",
-      "workClass": "ops-docs",
-      "blocked": false
+      "storyId": "SECAS-S2-01",
+      "title": "Live-stack pen-test execution window",
+      "priority": "P0",
+      "status": "in_progress",
+      "implementationClass": "ops-docs",
+      "source": "work-register"
+    },
+    "selection": {
+      "tier": "resume-in_progress",
+      "reason": "Story already in_progress in backlog"
     }
   },
   "git": {
-    "dirtyCount": 21,
-    "commitsSinceSession": 0
+    "dirtyCount": 2,
+    "commitsSinceSession": 17
   },
   "productionWeek": null,
   "intake": null,
   "actionable": [
     {
-      "task": "Advance launch planning",
+      "task": "Live-stack pen-test execution window",
       "owner": "fabric-os",
       "command": "baseline next · execute in fabric-os",
       "doneWhen": "P22 story done + auditNotes",
@@ -189,7 +45,7 @@
       "n": 1
     },
     {
-      "task": "Git-clean fabric-os (21 uncommitted path(s) in working tree)",
+      "task": "Git-clean fabric-os (2 uncommitted path(s) in working tree)",
       "owner": "fabric-os",
       "command": "micro-commit conventional + push when GATE-PUSH green",
       "doneWhen": "working tree clean; ahead=0",
@@ -199,234 +55,111 @@
   ],
   "completed": [
     {
-      "kind": "session-outcome",
-      "detail": "**Short answer:** We've run **fleet gate audits** across the ecosystem, but **not** a uniform full forensic/master audit on every repo. Coverage depends on which audit layer you mean. ## By audit typ",
-      "source": "transcript"
+      "kind": "commit",
+      "detail": "04657e1 chore(pm): refresh settlement witness after git micro-commits.",
+      "source": "git log"
     },
     {
-      "kind": "session-outcome",
-      "detail": "**No.** Not all apps/platforms are deployed to production. What we sealed is **production-readiness and deploy dry-run witnesses** — not live production cutover. ## What “16/16 production-ready” actu",
-      "source": "transcript"
+      "kind": "commit",
+      "detail": "67883db docs(ops): reconcile fabric-os rename refs and P22 register.",
+      "source": "git log"
     },
     {
-      "kind": "session-outcome",
-      "detail": "**Short answer:** agile-os is **partially functional** for fleet PM orchestration, but **not fully tested** and **not live on ZenHub** yet. ## What works (verified in-session) | Check | Result | |--",
-      "source": "transcript"
+      "kind": "commit",
+      "detail": "c857f0f chore(pm): refresh roadmaps, session witnesses, and baseline memory.",
+      "source": "git log"
     },
     {
-      "kind": "session-outcome",
-      "detail": "**Handoff verified.** Your closure note matches what’s on disk and on `origin`. ## Confirmed | Item | Evidence | |------|----------| | Markets commit | `1eff555` — `docs(product): consolidate capita",
-      "source": "transcript"
+      "kind": "commit",
+      "detail": "02d99b2 fix(platform): resolve P35 hub paths in fabric assurance scripts.",
+      "source": "git log"
     },
     {
-      "kind": "session-outcome",
-      "detail": "## Proceed Brief **Next:** Complete XR-FABRIC-TRADE-LANES-001 immediate sprint — matrix lane tagging, handoff `laneId`, log entry **Because:** Class R handoff from ecosystem strategy session; fabri",
-      "source": "transcript"
+      "kind": "commit",
+      "detail": "f5a47d5 chore(audit): update archive manifest and legacy repo-id scans.",
+      "source": "git log"
     },
     {
-      "kind": "session-outcome",
-      "detail": "## Session open items **Repo:** fabric-os · **Transcript:** 111 lines, 23 user turns · **Open count:** 14 **Witness:** `pm/ci/session-open-items-latest.json` (written by `baseline session:open-item",
-      "source": "transcript"
+      "kind": "commit",
+      "detail": "3ba4f49 chore(audit): archive 2026-06-12 witnesses and retire stale evidence.",
+      "source": "git log"
     },
     {
-      "kind": "session-outcome",
-      "detail": "## Proceed Brief **Next:** Close agile-os test gaps — vault link, lockfile, smoke harness, CI workflow fix **Because:** Prior session flagged agile-os as partially functional (vault missing, no loc",
-      "source": "transcript"
+      "kind": "commit",
+      "detail": "17ba726 chore(audit): refresh evidence witness latest JSON outputs.",
+      "source": "git log"
     },
     {
-      "kind": "session-outcome",
-      "detail": "## Fleet audit parity — done ### 1. markets-os → five-core fleet Removed the `markets-os` / `gtcx-docs` exclusion in `run-five-core-fleet-audit.mjs`. ```bash pnpm ecosystem:audit:five-core:fleet:wr",
-      "source": "transcript"
+      "kind": "commit",
+      "detail": "5d963e7 feat(secas): add pen-test report ingest helper for SECAS-S2-01.",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "94c3567 fix(test): baseline docs links and P35 deploy hub resolution.",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "b399724 fix(test): resolve docs hub paths in link and runbook validators",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "b7a31c0 docs(coordination): add owner frontmatter and repair broken witness links",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "7332f8f docs(standard): fix frontmatter, links, and EXR naming exceptions",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "6e730c1 chore(audit): restore ecosystem matrix and SOC2 evidence witnesses",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "2fe7dc8 chore(audit): restore IR witness artifacts and pass security gates",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "dd75330 fix(test): resolve P35 deploy/platform paths in policy gates and validate.sh",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "14a0e5f fix(pm): repair launch-focus.config.json trailing comma after witness prune.",
+      "source": "git log"
+    },
+    {
+      "kind": "commit",
+      "detail": "07b7f92 docs(secas): consume sprint authority witness and refresh SECAS-S2 ingest gate.",
+      "source": "git log"
     }
   ],
   "openItems": [
     {
       "type": "story",
-      "id": "LAUNCH-PLAN-01",
-      "title": "Advance launch planning",
+      "id": "SECAS-S2-01",
+      "title": "Live-stack pen-test execution window",
       "owner": "fabric-os",
       "source": "P22 agent:next-work",
-      "status": "selected"
-    },
-    {
-      "type": "handoff",
-      "id": null,
-      "title": "Executing the fabric-os trade-lanes sprint: reading the handoff specs and inspecting local uncommitted changes. [REDACTE",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "deferred",
-      "id": "XR-FABRIC-TRADE-LANES-001",
-      "title": "## Proceed Brief **Next:** Complete XR-FABRIC-TRADE-LANES-001 immediate sprint — matrix lane tagging, handoff `laneId`, ",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "handoff",
-      "id": "XR-FABRIC-TRADE-LANES-001",
-      "title": "## Proceed Brief **Next:** Complete XR-FABRIC-TRADE-LANES-001 immediate sprint — matrix lane tagging, handoff `laneId`, ",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "approval",
-      "id": "XR-FABRIC-TRADE-LANES-001",
-      "title": "## Proceed Brief **Next:** Complete XR-FABRIC-TRADE-LANES-001 immediate sprint — matrix lane tagging, handoff `laneId`, ",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "task",
-      "id": "XR-BRIDGE-LANES-REGISTRY-SYNC",
-      "title": "### Next work item\n- **Type:** Task\n- **ID:** `XR-BRIDGE-LANES-REGISTRY-SYNC` (owner: bridge-os) · fabric follow-up: `pn",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "handoff",
-      "id": null,
-      "title": "## Session open items **Repo:** fabric-os · **Transcript:** 111 lines, 23 user turns · **Open count:** 14 **Witness:** `",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "approval",
-      "id": null,
-      "title": "## Session open items **Repo:** fabric-os · **Transcript:** 111 lines, 23 user turns · **Open count:** 14 **Witness:** `",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "deferred",
-      "id": null,
-      "title": "## Proceed Brief **Next:** Close agile-os test gaps — vault link, lockfile, smoke harness, CI workflow fix **Because:** ",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "task",
-      "id": null,
-      "title": "### Next work item\n- **Type:** Task\n- **ID:** agile-os push + CI re-run\n- **Owner:** agile-os\n- **Because:** Uncommitted",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "approval",
-      "id": null,
-      "title": "## Production deploy gap report **Witness:** `bridge-os/pm/ci/production-deploy-gap-report-latest.json` **Policy:** PW-1",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "approval",
-      "id": null,
-      "title": "## Production deploy gap report (refreshed) **Witness:** `bridge-os/pm/ci/production-deploy-gap-report-latest.json` **Po",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "handoff",
-      "id": null,
-      "title": "**Lane taxonomy is already committed** in fabric-os — five micro-commits on `main`: | SHA | Message | |-----|---------| ",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
+      "status": "in_progress",
+      "because": "Story already in_progress in backlog"
     },
     {
       "type": "blocker",
       "id": "uncommitted-work",
-      "title": "21 uncommitted path(s) in working tree",
+      "title": "2 uncommitted path(s) in working tree",
       "owner": "fabric-os",
       "source": "git status",
       "status": "open",
-      "sample": [
-        " M .baseline/launch-focus.json",
-        " M .baseline/memory/session-last-start.json",
-        " M .baseline/memory/session.md",
-        " M audit/archive/2026-06-11/audit/agentic-innovation-audit-2026-06-11.md",
-        " M audit/archive/2026-06-11/audit/compliance-security-audit-2026-06-11.md",
-        " M audit/archive/2026-06-11/audit/product-excellence-audit-2026-06-11.md",
-        " M audit/archive/2026-06-11/audit/production-grade-audit-2026-06-11.md",
-        " M audit/archive/2026-06-11/audit/repo-hygiene-audit-2026-06-11.md",
-        " M audit/archive/ARCHIVE-MANIFEST.json",
-        " M audit/evidence/agentic-innovation-audit-latest.json",
-        " M audit/evidence/composite-audit-latest.json",
-        " D audit/evidence/master-audit-2026-06-10.json",
-        " M audit/evidence/production-grade-audit-latest.json",
-        " M audit/evidence/repo-hygiene-audit-latest.json",
-        " M pm/ci/session-open-items-latest.json"
-      ]
+      "sample": ["MM pm/ci/settlement-commit-latest.json", "?? .claude/skills/"]
     }
   ],
-  "threads": [
-    "--flag \"If useful, I can run a production deploy gap report per repo (profile vs last green workflow vs smoke URL vs pro",
-    "--flag \"If you want that closed, the next build would be something like ecosystem:retro:promote (merge",
-    "--flag \"If you want full parity, the next concrete work would be: add markets-os to five-core fleet, extend master-audit",
-    "--flag \" All lane taxonomy + matrix tagging changes are local only. Per your note: say commit if you want these micro-co",
-    "--flag \"Re-run"
-  ],
-  "backlogCandidates": [
-    "XR-MKT-FABRIC-001",
-    "XR-MKT-011",
-    "XR-MKT-LEDGER-TKN-001",
-    "INIT-GHANA-TOKENIZATION-PLATFORM",
-    "INIT-GHANA",
-    "INIT-TOKENIZATION",
-    "INIT-AFM-REG-ADAPTER",
-    "INIT-PRODUCTION-WEEK",
-    "INIT-SPRINT-CEREMONY-ENFORCE",
-    "INIT-SPRINT-AUTHORITY",
-    "T1",
-    "T2",
-    "T3",
-    "T4",
-    "T5",
-    "T6",
-    "T7",
-    "T8",
-    "T9",
-    "T10",
-    "T11",
-    "T12",
-    "XR-FABRIC-SPRINT-AUTH-001",
-    "INIT-AGILE-EXTRACTION",
-    "INIT-GTCX-OS-PLATFORM-HYGIENE",
-    "INIT-AGILE-EXTRACTION-",
-    "BL-CANON-CUTOVER-01",
-    "INIT-DOCUMENTATION-ARCHIVAL",
-    "BL-DOC-ARCH-01",
-    "INIT-GTCX-CONVERGENCE",
-    "INIT-GTCX-WORKSPACE-CONVERGENCE",
-    "T16",
-    "XR-MKT-FABRIC-002",
-    "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
-    "INIT-FABRIC-LANE-DEPLOY-MATRIX",
-    "INIT-GTCX-CONSTITUTION-ART-IV-BIS",
-    "INIT-CANON-INST-F-006",
-    "INIT-PROTOCOL-46-TRADE-OBJECT-CONTINUITY",
-    "INIT-BRIDGE-LANES-REGISTRY-SYNC",
-    "INIT-GTCX-CONVERGENCE-FRAME",
-    "INIT-FABRIC-README-SOR-",
-    "XR-FABRIC-TRADE-LANES-001",
-    "T0",
-    "XR-BRIDGE-LANES-REGISTRY-001",
-    "XR-CANON-TRADE-LANES-001",
-    "XR-BRIDGE-LANES-REGISTRY-SYNC",
-    "INIT-WORKSPACE-PLANE",
-    "INIT-TRUST-CLOUD",
-    "INIT-CONTROL-PLANE",
-    "INIT-GTCX-ADMIN"
-  ]
+  "threads": [],
+  "backlogCandidates": []
 }

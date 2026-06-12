@@ -142,10 +142,16 @@
     {
       "type": "handoff",
       "id": "XR-MKT-PROTOCOL-NATIVE-001",
-      "title": "Live verifier route deploy + Golden Transaction trace pack",
+      "title": "Live verifier deploy — secrets, e7525dfa image, Markets inject, Golden Transaction",
       "owner": "fabric-os",
-      "status": "open",
-      "witness": "audit/evidence/protocol-verifier-deploy-ready-2026-06-12.json"
+      "status": "blocked",
+      "authority": "A",
+      "witness": "audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json",
+      "commands": [
+        "pnpm protocol:verifier:staging:populate",
+        "kubectl rollout restart deploy/gtcx-protocols-staging -n gtcx-staging",
+        "pnpm protocol:golden-transaction:probe:write"
+      ]
     },
     {
       "type": "handoff",

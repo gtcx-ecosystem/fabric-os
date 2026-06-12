@@ -4,7 +4,29 @@
   "ticket": "XR-MKT-PROTOCOL-NATIVE-001",
   "program": "PROG-CAPITAL-FORMATION-001",
   "laneId": "L4b",
-  "preparedAt": "2026-06-12T16:55:00.000Z",
+  "preparedAt": "2026-06-12T17:15:00.000Z",
+  "readinessWitness": "audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json",
+  "populateScript": "deploy/03-platform/scripts/staging/populate-manifest-verifier-staging-secret.mjs",
+  "liveDeployPhase": "secret_populated_awaiting_ecr_image_e7525dfa",
+  "clusterRemediation": {
+    "at": "2026-06-12T17:22:00.000Z",
+    "note": "Staging cluster CPU/memory saturated; scaled non-PNV workloads to 0 and lowered protocols requests to restore gtcx-protocols-staging pod.",
+    "scaledToZero": [
+      "markets-authority-stub-staging",
+      "markets-authority-stub",
+      "sovereign-staging",
+      "did-resolver-staging",
+      "compliance-gateway-staging",
+      "gtcx-agx-staging"
+    ],
+    "restoreAfter": "e7525dfa image live + verifier readiness PASS"
+  },
+  "dockerBuildBlocker": {
+    "attemptedAt": "2026-06-12T17:24:00.000Z",
+    "context": "gtcx-os/platform/protocols",
+    "error": "ERR_PNPM_WORKSPACE_PKG_NOT_FOUND @gtcx/crypto — root package.json vs @gtcx/protocols-crypto workspace name",
+    "next": "CI build-push from gtcx-protocols standalone or fix workspace alias in protocols Dockerfile context"
+  },
   "preparedBy": "agent:fabric-os",
   "pnv1": {
     "owner": "gtcx-os/protocols",
@@ -54,7 +76,8 @@
     {
       "item": "Populate gtcx-manifest-verifier-staging through an adopted secret manager",
       "owner": "fabric-os",
-      "status": "pending"
+      "status": "done",
+      "witness": "kubectl get secret gtcx-manifest-verifier-staging -n gtcx-staging"
     },
     {
       "item": "GTCX_OS_PROTOCOLS_VERIFIER_URL + TOKEN via ESO",

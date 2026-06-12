@@ -1,0 +1,34 @@
+{
+  "schema": "gtcx://fabric-os/protocol-verifier-staging-readiness/v1",
+  "id": "PROTOCOL-VERIFIER-STAGING-READINESS-2026-06-12",
+  "ticket": "XR-MKT-PROTOCOL-NATIVE-001",
+  "checkedAt": "2026-06-12T17:26:07.975Z",
+  "namespace": "gtcx-staging",
+  "deployment": "gtcx-protocols-staging",
+  "secret": {
+    "name": "gtcx-manifest-verifier-staging",
+    "exists": true
+  },
+  "image": "348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-protocols:v0.4.6",
+  "pnv2": {
+    "requiredCommit": "e7525dfa",
+    "imageContainsCommit": false
+  },
+  "configGate": {
+    "ok": true,
+    "exitCode": 0
+  },
+  "readyEndpoint": {
+    "ok": true,
+    "body": "{\"ready\":true}",
+    "stderr": null
+  },
+  "blockers": [
+    "deploy image containing e7525dfa",
+    "inject Markets GTCX_OS_PROTOCOLS_VERIFIER_URL + TOKEN",
+    "live Golden Transaction trace pack"
+  ],
+  "ok": false,
+  "repo": "fabric-os",
+  "clusterRemediation": "Scaled non-PNV staging deployments to 0; protocols requests lowered to cpu=50m memory=256Mi; deployment strategy Recreate."
+}

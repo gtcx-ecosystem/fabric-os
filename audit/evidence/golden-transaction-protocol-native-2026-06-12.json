@@ -1,0 +1,15 @@
+{
+  "schema": "gtcx://fabric-os/golden-transaction-protocol-native/v1",
+  "id": "GOLDEN-TXN-PROTOCOL-NATIVE-2026-06-12",
+  "ticket": "XR-MKT-PROTOCOL-NATIVE-001",
+  "probedAt": "2026-06-12T17:11:37.683Z",
+  "ok": false,
+  "phase": "blocked_prerequisites",
+  "prerequisites": {
+    "verifierUrl": false,
+    "verifierToken": false,
+    "readinessWitness": "audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json"
+  },
+  "note": "Live registration→admission trace pack not executed — populate verifier secrets, deploy e7525dfa image, inject Markets credentials first.",
+  "repo": "fabric-os"
+}

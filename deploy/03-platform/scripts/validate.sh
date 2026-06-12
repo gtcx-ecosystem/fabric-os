@@ -66,6 +66,7 @@ run_policy_checks() {
     (cd "${PROJECT_ROOT}" && pnpm check:fine-tune-workflow-policy)
     (cd "${PROJECT_ROOT}" && pnpm check:workflow-image-contract)
     (cd "${PROJECT_ROOT}" && pnpm check:security-control-boundaries)
+    (cd "${PROJECT_ROOT}" && pnpm check:protocol-verifier-staging-contract)
 }
 
 run_replay_protection_tests() {

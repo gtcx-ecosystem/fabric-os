@@ -26,6 +26,7 @@
     "check:workflow-image-contract": "node platform/tools/policy/check-workflow-image-contract.mjs",
     "check:security-control-boundaries": "node platform/tools/policy/check-security-control-boundaries.mjs",
     "check:k8s-policy": "node platform/tools/policy/check-k8s-policy.mjs",
+    "check:protocol-verifier-staging-contract": "node platform/scripts/check-protocol-verifier-staging-contract.mjs",
     "check:workspace-root-cleanliness": "python3 platform/scripts/ops/check-workspace-root-cleanliness.py",
     "check:workspace-root-cleanliness:strict": "python3 platform/scripts/ops/check-workspace-root-cleanliness.py --strict",
     "signal:import-cost-stats": "node platform/scripts/ops/import-baseline-cost-stats.mjs",

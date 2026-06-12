@@ -4,7 +4,7 @@
   "ticket": "XR-MKT-PROTOCOL-NATIVE-001",
   "program": "PROG-CAPITAL-FORMATION-001",
   "laneId": "L4b",
-  "preparedAt": "2026-06-12T15:35:00.000Z",
+  "preparedAt": "2026-06-12T16:55:00.000Z",
   "preparedBy": "agent:fabric-os",
   "pnv1": {
     "owner": "gtcx-os/protocols",
@@ -18,8 +18,43 @@
       "purpose-bound verification request/receipt/rejection"
     ]
   },
+  "pnv2": {
+    "owner": "gtcx-os/protocols",
+    "commit": "90517f09",
+    "status": "implemented",
+    "capabilities": [
+      "live fail-closed verification route",
+      "Ed25519 manifest signature verification",
+      "signer authorization and revocation",
+      "purpose-bound distributed replay enforcement",
+      "signed digest-bound verification receipts"
+    ]
+  },
+  "pnv3": {
+    "owner": "fabric-os",
+    "status": "deployment-contract-implemented",
+    "configGate": "pnpm check:protocol-verifier-staging-contract",
+    "capabilities": [
+      "non-optional signer registry secret reference",
+      "non-optional revocation source secret reference",
+      "non-optional receipt signer secret reference",
+      "pinned verifier authority, receipt key id, and receipt TTL",
+      "distributed replay configuration validation",
+      "normal pnpm test path enforcement"
+    ]
+  },
   "fabricDeployPrerequisites": [
     { "item": "Live verifier route in staging", "owner": "fabric-os", "status": "pending" },
+    {
+      "item": "Fail-closed verifier deployment configuration contract",
+      "owner": "fabric-os",
+      "status": "implemented"
+    },
+    {
+      "item": "Populate gtcx-manifest-verifier-staging through an adopted secret manager",
+      "owner": "fabric-os",
+      "status": "pending"
+    },
     {
       "item": "GTCX_OS_PROTOCOLS_VERIFIER_URL + TOKEN via ESO",
       "owner": "fabric-os",
@@ -28,7 +63,7 @@
     {
       "item": "Replay/revocation dependency readiness probes",
       "owner": "fabric-os",
-      "status": "pending"
+      "status": "configuration-implemented-live-evidence-pending"
     },
     { "item": "Markets trace route health probe", "owner": "fabric-os", "status": "pending" },
     {

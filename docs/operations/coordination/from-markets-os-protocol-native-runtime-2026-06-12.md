@@ -123,9 +123,19 @@ handoff.
 ## Residual Gap
 
 The Markets boundary and `gtcx-os/protocols` PNV-1/PNV-2 verifier are
-implemented. Fabric deployment configuration, live authority dependency
-configuration, and the live Golden Transaction trace pack remain required
-before claiming complete protocol-native execution.
+implemented. Fabric PNV-3 now defines non-optional staging secret references
+for the signer registry, revocation source, and receipt signing key; pins the
+verifier authority and receipt policy; and validates the distributed replay
+dependency through:
+
+```text
+pnpm check:protocol-verifier-staging-contract
+```
+
+Live secret population, deployment of a PNV-2-capable image, live authority
+dependency configuration, Markets deployment injection, and the live Golden
+Transaction trace pack remain required before claiming complete
+protocol-native execution.
 
 ## What This Document Does NOT Cover
 

@@ -37,6 +37,30 @@ spec:
                   key: api-key
             - name: GTCX_API_KEY_SCOPES
               value: 'admin:audit,protocol:read,protocol:write'
+            # Protocol-native Markets verifier authority inputs (PNV-3).
+            # These are deliberately non-optional: the verifier must fail closed
+            # when signer, revocation, or receipt-signing authority is unavailable.
+            - name: GTCX_MANIFEST_SIGNER_REGISTRY
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-manifest-verifier-staging
+                  key: signer-registry-json
+            - name: GTCX_MANIFEST_REVOCATION_JSON
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-manifest-verifier-staging
+                  key: revocation-json
+            - name: GTCX_MANIFEST_RECEIPT_SIGNING_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gtcx-manifest-verifier-staging
+                  key: receipt-signing-key
+            - name: GTCX_MANIFEST_RECEIPT_KEY_ID
+              value: manifest-receipt-staging-v1
+            - name: GTCX_MANIFEST_VERIFIER_AUTHORITY
+              value: gtcx-os/protocols
+            - name: GTCX_MANIFEST_RECEIPT_TTL_MS
+              value: '86400000'
             # TradePass auth token for Wire #2 evidence submit (INT-S9-01).
             # Optional: pod starts without it; protocols falls back to stub/
             # dev-mode until the secret key is populated.

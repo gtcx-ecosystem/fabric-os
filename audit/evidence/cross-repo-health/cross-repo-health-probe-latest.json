@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "testType": "cross-repo-health-probe",
   "storyId": "S1-13",
-  "timestamp": "2026-06-13T06:37:01.817Z",
+  "timestamp": "2026-06-13T06:37:48.145Z",
   "environment": "staging",
   "overall": "PASS",
   "services": [
@@ -14,7 +14,7 @@
       "error": null,
       "body": {
         "status": "up",
-        "timestamp": "2026-06-13T06:35:58.532Z",
+        "timestamp": "2026-06-13T06:36:43.192Z",
         "database": {
           "status": "up",
           "details": {
@@ -36,13 +36,13 @@
         "audit-trail": {
           "status": "up",
           "details": {
-            "lastAppend": "2026-06-13T06:35:58.532Z",
+            "lastAppend": "2026-06-13T06:36:43.192Z",
             "chainVerified": true
           }
         }
       },
       "transport": "curl",
-      "latencyMs": 2281,
+      "latencyMs": 2027,
       "required": true
     },
     {
@@ -53,7 +53,7 @@
       "error": null,
       "body": {
         "status": "up",
-        "timestamp": "2026-06-13T06:35:58.502Z",
+        "timestamp": "2026-06-13T06:36:43.438Z",
         "database": {
           "status": "up",
           "details": {
@@ -75,13 +75,13 @@
         "audit-trail": {
           "status": "up",
           "details": {
-            "lastAppend": "2026-06-13T06:35:58.502Z",
+            "lastAppend": "2026-06-13T06:36:43.438Z",
             "chainVerified": true
           }
         }
       },
       "transport": "fetch",
-      "latencyMs": 2220,
+      "latencyMs": 2235,
       "required": true
     },
     {
@@ -93,7 +93,7 @@
       "body": {
         "service": "intelligence-sdk",
         "version": "0.1.0",
-        "uptime": 279694,
+        "uptime": 279719,
         "status": "healthy",
         "dependencies": {
           "inference_backend": {
@@ -110,7 +110,7 @@
           "jobs": {
             "anomaly": {
               "enabled": true,
-              "lastRun": "2026-06-13T06:34:24.837Z",
+              "lastRun": "2026-06-13T06:34:44.663Z",
               "runCount": 932
             },
             "trend": {
@@ -137,7 +137,7 @@
         }
       },
       "transport": "curl",
-      "latencyMs": 2523,
+      "latencyMs": 3038,
       "required": true
     },
     {
@@ -148,7 +148,7 @@
       "error": "Command failed: kubectl exec -n gtcx-staging deploy/compliance-gateway-staging -- wget -qO- http://127.0.0.1:8500/health\nerror: timed out waiting for the condition\n",
       "body": "error code: 525",
       "transport": "curl",
-      "latencyMs": 65800,
+      "latencyMs": 67213,
       "required": false
     }
   ],

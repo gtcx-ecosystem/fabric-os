@@ -1,0 +1,87 @@
+{
+  "$schema": "gtcx://bridge-os/product-goals/v1",
+  "version": "1.0.0",
+  "repo": "fabric-os",
+  "tier": "platform",
+  "updated": "2026-06-13",
+  "vision": {
+    "statement": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
+    "horizon": "2026-2028"
+  },
+  "mission": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
+  "northStarMetric": {
+    "name": "Fabric OS milestone witness",
+    "target": "ecosystem:product-culture:check PASS + composite ≥85",
+    "witness": "audit/evidence/five-pillar-latest.json"
+  },
+  "valueProposition": {
+    "for": "Operators and integrators consuming Fabric OS",
+    "who": "need shippable outcomes traced to PRD and active milestone",
+    "product": "Fabric OS",
+    "that": "Service fabric execution — DaaS, SECaaS, fleet env, deploy choreography",
+    "unlike": "Ad-hoc docs and sprint theater without product-goals trace",
+    "we": "Fabric OS — Service fabric execution — DaaS, SECaaS, fleet env, deploy choreography"
+  },
+  "customers": {
+    "primarySegment": "GTCX fleet integrators — fabric-os",
+    "icp": "platform-engineer",
+    "buyerPersonas": [],
+    "soR": "pm/product/customers/"
+  },
+  "competition": {
+    "alternatives": ["Generic SaaS without protocol trace"],
+    "differentiation": "Service fabric execution — DaaS, SECaaS, fleet env, deploy choreography",
+    "soR": "pm/product/market-research/"
+  },
+  "gtm": {
+    "tier": "GR-T2-partial",
+    "motion": "Integrator pilot / enterprise / sovereign",
+    "channels": [],
+    "pilotWindowDays": {
+      "min": 30,
+      "max": 90
+    }
+  },
+  "activeMilestone": {
+    "id": "SECAS-S2-01 pen-test window 2026-06-17..21",
+    "title": "SECAS-S2-01 pen-test window 2026-06-17..21",
+    "shippableOutcome": "Pen-test window ~2026-06-17..21; ingest prep PASS; vendor report Class S parallel",
+    "targetDate": "2026-Q3",
+    "programmeId": "PROG-SECAS-PENTEST",
+    "prdRefs": ["prd-product-charter"],
+    "headStoryId": "SECAS-S2-01",
+    "acceptanceChecks": [
+      {
+        "id": "composite-85",
+        "label": "Composite ≥85",
+        "check": "composite85"
+      },
+      {
+        "id": "demo",
+        "label": "Demo walkthrough evidence",
+        "witness": "audit/evidence/demo-readiness-{repo}.json"
+      }
+    ]
+  },
+  "definitionOfDone": {
+    "story": [
+      "prdRef or capability id",
+      "acceptance criteria",
+      "tests or witness command",
+      "auditNotes on done"
+    ],
+    "milestone": [
+      "all acceptanceChecks pass",
+      "independent QA when shipClaim",
+      "UAT linked when customer-facing"
+    ],
+    "forbidden": ["done without PRD trace", "ROADMAP-COMPLETE without shippableOutcome"]
+  },
+  "productIntegrity": {
+    "prdIndex": "pm/product/prd-index.json",
+    "prdsDir": "pm/product/prds/",
+    "capabilityMatrix": "docs/strategy/product-capability-matrix-*.md",
+    "executionRoadmap": "docs/strategy/execution-roadmap.md",
+    "storyMustTraceTo": ["prdRef", "capabilityId", "activeMilestone.id"]
+  }
+}

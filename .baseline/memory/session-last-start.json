@@ -1,12 +1,12 @@
 {
-  "startedAt": "2026-06-13T04:41:08.603Z",
+  "startedAt": "2026-06-13T05:26:32.248Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-5fd5e3c3-2e35-41af-92f2-f4d2e5ec34c5",
+    "id": "gtcx-agent-c3ca4bb0-9af6-4cf2-9574-e860fee18292",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-c2062d27b723d6db8c5bf43ebd18dae7-6e22937c194d4a04-01"
+    "traceparent": "00-225d394f89c0a9c57e184ec17df320d0-bd065a5bd7f6b794-01"
   },
   "nextWork": {
     "protocol": "22-agent-work-selection",
@@ -20,8 +20,8 @@
       "bridgeUrl": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/ecosystem-persona-bridge-2026-06.md",
       "instruction": "Read persona doc before work; re-select persona on task switch (Phase 4)."
     },
-    "traceId": "6da995f8-d6b1-4ba6-a9fc-04d8aaf3ce5d",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=6da995f8-d6b1-4ba6-a9fc-04d8aaf3ce5d",
+    "traceId": "744ac4ae-3e8e-4ed5-93ad-9384de606b5f",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=744ac4ae-3e8e-4ed5-93ad-9384de606b5f",
     "ok": true,
     "backlogClear": false,
     "next": {
@@ -42,17 +42,21 @@
       "personaDocUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/governance/institutional/personas/security-engineer.md",
       "next": "SECAS-S2-01 — Live-stack pen-test execution window",
       "because": "Story already in_progress in backlog",
-      "blockedUntil": "none",
-      "override": "stop | correct: | story ID"
+      "blockedUntil": "vendor report post 2026-06-21 · window 2026-06-17..2026-06-21",
+      "override": "stop | correct: | story ID",
+      "authorityClass": "R",
+      "phase": "awaiting_vendor_report"
     },
     "communicationPolicy": {
       "protocol": "26-agent-proceed-confirmation",
       "version": "1.2.0",
       "statusUpdateSections": [
+        "Execution mode",
         "Done",
-        "Next priority",
-        "Approval needed"
+        "Next work item",
+        "Parallel sovereign gates"
       ],
+      "forbiddenStatusUpdateSections": [],
       "forbiddenReplyPatterns": [
         "Your call",
         "Two options",
@@ -64,7 +68,13 @@
         "Want me to",
         "anything on the P1 list",
         "I can push",
-        "I can help"
+        "I can help",
+        "Approval needed: SECAS-S2-01-INGEST",
+        "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
+        "EXT-INF-013 — ZWCMP",
+        "Approval needed: SECAS-S2-01-INGEST",
+        "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
+        "EXT-INF-013 — ZWCMP"
       ]
     },
     "agentInstructions": [
@@ -76,20 +86,20 @@
       "After push/status reports: Status Update (Done → Next priority from this JSON → Approval needed if any), then implement.",
       "FORBIDDEN: \"Your call\", \"Two options\", \"Want me to tackle…\", \"anything on the P1 list?\", repo pick menus.",
       "Do not ask the user which story or repo to pick — P22 already selected.",
-      "Use THIS repo agent:next-work next / nextWorkItem. Baseline M3 ceiling is parallel witness — not fleet Next work.",
-      "FORBIDDEN: Proceed Brief Next = \"Hold at external-pilot ceiling\" outside baseline-os.",
-      "FORBIDDEN: SECAS-S2-01 / BG-10-10 / BG-10-11 as Next work item when repo ≠ fabric-os — use fleetOwnerRedirect + Approval needed only.",
-      "FORBIDDEN: synthetic milestone assurance-vendor-deliverables — owner is fabric-os (SECAS-S2-01 / BG-10-10 ingest).",
-      "FORBIDDEN: Next work item Owner = \"security + compliance\" for vendor pen-test/SOC2 — use fabric-os."
+      "fabric-os owner: copy statusUpdateClosure.parallelSovereignGatesMarkdown under ### Parallel sovereign gates.",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
+      "fabric-os owner: copy statusUpdateClosure.parallelSovereignGatesMarkdown under ### Parallel sovereign gates.",
+      "FORBIDDEN: ### Approval needed for SECAS-S2-01-INGEST / BG-10-10/11 — blocksIR:false → Parallel sovereign gates with What/Why/Implication.",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update."
     ],
-    "automatableExhausted": false,
+    "automatableExhausted": true,
     "message": "Launch implement queue: 1 Class R items (fabric-os).",
     "launchFocus": {
       "schema": "gtcx.launchFocus.v1",
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-13T04:41:08.598Z",
+      "provisionedAt": "2026-06-13T05:26:32.242Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -175,16 +185,12 @@
       "currentRepo": "fabric-os",
       "isCeilingRepo": false,
       "witnessStatus": "ceiling-prep-pass",
-      "externalBlockers": [
-        "BG-10-10 vendor pen-test report (fabric-os)",
-        "BG-10-11 SOC 2 Type I letter (auditor)"
-      ],
       "forbiddenProceedBriefNext": [
         "Hold at external-pilot ceiling",
         "Class R exhausted (baseline M3)",
         "assurance in_progress · P22 backlog clear"
       ],
-      "rule": "Use THIS repo agent:next-work next / nextWorkItem. Baseline M3 ceiling is parallel witness — not fleet Next work.",
+      "rule": "Use THIS repo agent:next-work next / nextWorkItem. Vendor assurance implement is fabric-os only.",
       "bg1010Owner": "fabric-os",
       "bg1010AsNextWorkItemAllowed": true,
       "vendorAssuranceOwner": "fabric-os",
@@ -198,7 +204,14 @@
         "security + compliance",
         "security+compliance",
         "compliance + security"
-      ]
+      ],
+      "consumerAllowlist": [
+        "canon-os",
+        "bridge-os",
+        "fabric-os",
+        "agile-os"
+      ],
+      "vendorAssuranceExempt": false
     },
     "vendorAssuranceScope": {
       "ownerRepo": "fabric-os",
@@ -218,32 +231,137 @@
         "security+compliance",
         "compliance + security"
       ],
-      "siblingRule": "Pen-test report + SOC 2 Type I attestation implement/ingest is fabric-os — not \"security + compliance\" in consumer repos.",
-      "approvalSection": "Approval needed",
-      "blocksIR": false
+      "approvalSection": "omit",
+      "blocksIR": false,
+      "statusUpdateRule": "fabric-os only: SECAS-S2-01-INGEST + BG-10-10/11 under ### Parallel sovereign gates (blocksIR:false — not Approval needed)"
     },
     "parallelClassS": [
       {
-        "blocker": "BG-10-10 vendor pen-test report (fabric-os)",
+        "gateId": "SECAS-S2-01-INGEST",
+        "blocker": "SECAS-S2-01-INGEST",
+        "authorityClass": "A",
         "blocksIR": false,
-        "section": "Approval needed",
+        "statusUpdateSection": "Parallel sovereign gates",
         "ownerRepo": "fabric-os",
-        "notNextWorkItemUnlessOwner": "fabric-os"
+        "doesNotBlock": "SECAS-S2-01",
+        "gateType": "external-calendar-custody",
+        "what": "Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path",
+        "why": "Agent cannot receive or ingest vendor security artifact before the execution window closes",
+        "implication": "No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands",
+        "who": "External pen-test vendor delivers report; fabric-os operator runs ingest ceremony",
+        "when": "Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21)",
+        "unblockAction": "Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21"
       },
       {
-        "blocker": "BG-10-11 SOC 2 Type I letter (auditor)",
+        "gateId": "BG-10-10",
+        "blocker": "BG-10-10",
+        "authorityClass": "A",
         "blocksIR": false,
-        "section": "Approval needed",
+        "statusUpdateSection": "Parallel sovereign gates",
         "ownerRepo": "fabric-os",
-        "notNextWorkItemUnlessOwner": "fabric-os"
+        "doesNotBlock": "SECAS-S2-01",
+        "gateType": "external-vendor-execution",
+        "what": "Vendor executes live-stack pen test during contracted calendar window",
+        "why": "Agent cannot pull forward vendor execution or receive report before window",
+        "implication": "Witness prep and friction checks continue; ingest blocked until report delivery",
+        "who": "External pen-test vendor",
+        "when": "2026-06-17..2026-06-21",
+        "unblockAction": "Vendor report delivery; ingest post 2026-06-21"
+      },
+      {
+        "gateId": "BG-10-11",
+        "blocker": "BG-10-11",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "statusUpdateSection": "Parallel sovereign gates",
+        "ownerRepo": "fabric-os",
+        "doesNotBlock": "SECAS-S2-01",
+        "gateType": "external-auditor-artifact",
+        "what": "SOC 2 Type I opinion letter from auditor",
+        "why": "Agent cannot countersign or synthesize auditor attestation",
+        "implication": "Does not block pen-test window prep or fleet program office queue",
+        "who": "External auditor",
+        "when": "Parallel track — not on SECAS pen-test calendar",
+        "unblockAction": "Auditor opinion letter to compliance evidence path"
       }
     ],
+    "gateExplainer": {
+      "schema": "gtcx://baseline-os/gate-explainer/v1",
+      "section": "Parallel sovereign gates",
+      "preamble": "**Not operator approval to continue fleet work.** External human/vendor artifacts with **blocksIR: false** — implement queue continues; fabric-os owner witnesses only.",
+      "operatorActionRequired": false,
+      "blocksIR": false,
+      "gates": [
+        {
+          "gateId": "SECAS-S2-01-INGEST",
+          "authorityClass": "A",
+          "gateType": "external-calendar-custody",
+          "blocksIR": false,
+          "doesNotBlock": "SECAS-S2-01",
+          "phase": "awaiting_vendor_report",
+          "what": "Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path",
+          "why": "Agent cannot receive or ingest vendor security artifact before the execution window closes",
+          "when": "Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21)",
+          "implication": "No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands",
+          "who": "External pen-test vendor delivers report; fabric-os operator runs ingest ceremony",
+          "unblockAction": "Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21",
+          "statusUpdateSection": "Parallel sovereign gates"
+        },
+        {
+          "gateId": "BG-10-10",
+          "authorityClass": "A",
+          "gateType": "external-vendor-execution",
+          "blocksIR": false,
+          "doesNotBlock": "SECAS-S2-01",
+          "what": "Vendor executes live-stack pen test during contracted calendar window",
+          "why": "Agent cannot pull forward vendor execution or receive report before window",
+          "when": "2026-06-17..2026-06-21",
+          "implication": "Witness prep and friction checks continue; ingest blocked until report delivery",
+          "who": "External pen-test vendor",
+          "unblockAction": "Vendor report delivery; ingest post 2026-06-21",
+          "statusUpdateSection": "Parallel sovereign gates"
+        },
+        {
+          "gateId": "BG-10-11",
+          "authorityClass": "S",
+          "gateType": "external-auditor-artifact",
+          "blocksIR": false,
+          "doesNotBlock": "SECAS-S2-01",
+          "what": "SOC 2 Type I opinion letter from auditor",
+          "why": "Agent cannot countersign or synthesize auditor attestation",
+          "when": "Parallel track — not on SECAS pen-test calendar",
+          "implication": "Does not block pen-test window prep or fleet program office queue",
+          "who": "External auditor",
+          "unblockAction": "Auditor opinion letter to compliance evidence path",
+          "statusUpdateSection": "Parallel sovereign gates"
+        }
+      ]
+    },
+    "statusUpdateClosure": {
+      "schema": "gtcx://fabric-os/secas-status-update-closure/v2",
+      "phase": "awaiting_vendor_report",
+      "sections": [
+        "Execution mode",
+        "Done",
+        "Next work item",
+        "Parallel sovereign gates"
+      ],
+      "forbiddenSections": [],
+      "forbiddenGateIds": [
+        "EXT-INF-013"
+      ],
+      "forbiddenPhrases": [
+        "Approval needed: SECAS-S2-01-INGEST",
+        "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
+        "omit in bridge/agile/canon"
+      ],
+      "parallelSovereignGatesMarkdown": "**Not operator approval to continue fleet work.** External human/vendor artifacts with **blocksIR: false** — implement queue continues; fabric-os owner witnesses only.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS pen-test calendar · **Implication:** Does not block pen-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
+      "rule": "Copy parallelSovereignGatesMarkdown under ### Parallel sovereign gates — FORBIDDEN: terse Approval needed one-liners"
+    },
     "proceedBriefGuard": {
       "nextMustComeFrom": "this repo P22 JSON (next / nextWorkItem)",
       "forbiddenSources": [
         "baseline-os/audit/evidence/external-pilot-ceiling-latest.json",
-        "baseline-os roadmap:progress:report M3 headline",
-        "fabric-os stale roadmap-automatable-exhaust witness",
         "agent-synthesized assurance-vendor-deliverables milestone"
       ],
       "forbiddenNextPhrases": [
@@ -262,40 +380,29 @@
         "compliance + security"
       ]
     },
-    "ownerRepoRedirect": {
+    "statusUpdateRouting": {
+      "schema": "gtcx://baseline-os/vendor-assurance-status-update-routing/v4",
+      "role": "owner",
       "ownerRepo": "fabric-os",
-      "storyId": "SECAS-S2-01",
-      "title": "SECAS-S2-01 live-stack pen-test execution window",
-      "p22Command": "pnpm --dir ../fabric-os agent:next-work --json",
-      "because": "Vendor pen-test report + SOC 2 Type I ingest — fabric-os owner (SECAS/BG-10-10); sibling repos witness only",
-      "switchWorkspace": true,
-      "witnessStories": [
-        "BG-10-10",
-        "BG-10-11",
-        "BG-10-12"
-      ]
-    },
-    "fleetOwnerRedirect": {
-      "ownerRepo": "fabric-os",
-      "storyId": "SECAS-S2-01",
-      "title": "SECAS-S2-01 live-stack pen-test execution window",
-      "p22Command": "pnpm --dir ../fabric-os agent:next-work --json",
-      "because": "Vendor pen-test report + SOC 2 Type I ingest — fabric-os owner (SECAS/BG-10-10); sibling repos witness only",
-      "switchWorkspace": true,
-      "witnessStories": [
-        "BG-10-10",
-        "BG-10-11",
-        "BG-10-12"
-      ],
-      "section": "agentInstructions",
-      "notNextWorkItemInThisRepo": false,
-      "witnessOnlyInSiblingRepos": false
+      "headStoryId": "SECAS-S2-01",
+      "approvalSection": "omit",
+      "approvalNeeded": {
+        "omit": true,
+        "reason": "Vendor gates are blocksIR:false — Parallel sovereign gates only"
+      },
+      "parallelSovereignGates": {
+        "include": true,
+        "ingestGateId": "SECAS-S2-01-INGEST"
+      },
+      "parallelClassSSection": "Parallel sovereign gates",
+      "blocksIR": false,
+      "spec": "bridge-os/pm/spec/vendor-assurance-status-update-routing.json"
     },
     "hubScopeGuard": {
       "ok": true,
       "applies": false
     }
   },
-  "gitChanged": 40,
+  "gitChanged": 29,
   "authorityClass": "R"
 }

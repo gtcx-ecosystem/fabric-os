@@ -30,7 +30,7 @@
       "score100": 60,
       "weight": 20,
       "freshFivePillar": true,
-      "versionBloatHits": 1
+      "versionBloatHits": 5
     },
     "independent-replay": {
       "score100": 65,

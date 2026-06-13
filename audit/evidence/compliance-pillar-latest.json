@@ -256,7 +256,7 @@
           "weight": 40,
           "severity": "P2",
           "optional": false,
-          "detail": "1 dated sibling(s) with -latest witness — e.g. audit/gtm-audit-2026-06-05.md",
+          "detail": "5 dated sibling(s) with -latest witness — e.g. audit/agentic-innovation-audit-2026-06-13.md",
           "protocol": "P32"
         }
       ],
@@ -816,7 +816,7 @@
       "categoryId": "anti-version-bloat-p32",
       "label": "No dated audit/evidence siblings when *-latest.* exists",
       "severity": "P2",
-      "detail": "1 dated sibling(s) with -latest witness — e.g. audit/gtm-audit-2026-06-05.md"
+      "detail": "5 dated sibling(s) with -latest witness — e.g. audit/agentic-innovation-audit-2026-06-13.md"
     },
     {
       "id": "pm-folder-check",

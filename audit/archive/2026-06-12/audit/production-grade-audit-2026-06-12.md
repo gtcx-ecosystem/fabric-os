@@ -1,6 +1,6 @@
 # Production-grade quality & enterprise deployment — fabric-os (2026-06-12)
 
-**Score:** 80/100 (raw 80) · **Status:** probe-gates-only
+**Score:** 100/100 (raw 100) · **Status:** probe-gates-only
 
 ## Metrics (0–100 rubric categories)
 
@@ -22,4 +22,4 @@
 
 ## Gaps
 
-- p35Strict
+- none

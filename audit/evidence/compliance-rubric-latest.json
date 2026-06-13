@@ -1,20 +1,20 @@
 {
   "schema": "gtcx://audit/compliance-rubric/v1",
   "repo": "fabric-os",
-  "date": "2026-06-12",
+  "date": "2026-06-13",
   "score100": 69,
   "categories": {
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
       "weight": 8,
-      "score100": 65,
+      "score100": 100,
       "protocol": "P35",
       "items": [
         {
           "id": "p35-strict-pass",
           "label": "P35 layout strict GREEN",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 35,
           "severity": "P1",
           "optional": false,
@@ -252,7 +252,7 @@
           "weight": 40,
           "severity": "P2",
           "optional": false,
-          "detail": "5 dated sibling(s) with -latest witness — e.g. audit/agentic-innovation-audit-2026-06-12.md",
+          "detail": "1 dated sibling(s) with -latest witness — e.g. audit/gtm-audit-2026-06-05.md",
           "protocol": "P32"
         }
       ],
@@ -435,7 +435,7 @@
     "agentic-harness-p22-p28": {
       "label": "Agentic harness (P22–P28)",
       "weight": 10,
-      "score100": 85,
+      "score100": 100,
       "protocol": "P22-P28",
       "items": [
         {
@@ -474,8 +474,8 @@
         {
           "id": "mcp-or-hub-exception",
           "label": "MCP hub or hub-repo exception",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 15,
           "severity": "P2",
           "optional": false,
@@ -801,13 +801,6 @@
   },
   "violations": [
     {
-      "id": "p35-strict-pass",
-      "categoryId": "layout-p35",
-      "label": "P35 layout strict GREEN",
-      "severity": "P1",
-      "detail": "p35Strict"
-    },
-    {
       "id": "no-version-fork-filenames",
       "categoryId": "anti-version-bloat-p32",
       "label": "No -v2/-v3 filename forks outside pm/spec/*.vN.json",
@@ -819,7 +812,7 @@
       "categoryId": "anti-version-bloat-p32",
       "label": "No dated audit/evidence siblings when *-latest.* exists",
       "severity": "P2",
-      "detail": "5 dated sibling(s) with -latest witness — e.g. audit/agentic-innovation-audit-2026-06-12.md"
+      "detail": "1 dated sibling(s) with -latest witness — e.g. audit/gtm-audit-2026-06-05.md"
     },
     {
       "id": "pm-folder-check",
@@ -862,13 +855,6 @@
       "label": "pm/readiness-snapshot.json (generated)",
       "severity": "P2",
       "detail": "pm/readiness-snapshot.json"
-    },
-    {
-      "id": "mcp-or-hub-exception",
-      "categoryId": "agentic-harness-p22-p28",
-      "label": "MCP hub or hub-repo exception",
-      "severity": "P2",
-      "detail": "MCP hub or hub repo"
     },
     {
       "id": "roadmap-readme",

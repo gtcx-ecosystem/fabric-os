@@ -1,54 +1,54 @@
 {
   "schema": "gtcx://audit/craft-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-12",
-  "score100": 70,
+  "date": "2026-06-13",
+  "score100": 0,
   "published": false,
   "provisional": true,
   "blockedBy": "compliance",
   "unlockThreshold100": 85,
   "metrics": {
     "selectivity-ingredients": {
-      "score100": 93,
+      "score100": 0,
       "weight": 22,
       "sourceIds": ["ai-maturity", "innovation-originality", "technical-moat"],
       "confidence": "C",
-      "source": "audit-output"
+      "source": "missing"
     },
     "process-composition": {
-      "score100": 87,
+      "score100": 0,
       "weight": 22,
       "sourceIds": ["production-readiness", "ecosystem-integration", "ai-maturity"],
       "confidence": "C",
-      "source": "audit-output"
+      "source": "missing"
     },
     "taste-operator-finish": {
-      "score100": 100,
+      "score100": 0,
       "weight": 18,
       "sourceIds": ["ux-product-design"],
       "confidence": "C",
-      "source": "audit-output"
+      "source": "missing"
     },
     "restraint-anti-commodity": {
-      "score100": 90,
+      "score100": 0,
       "weight": 18,
       "sourceIds": ["ux-product-design", "documentation", "hallucination-resilience"],
       "confidence": "C",
-      "source": "audit-output"
+      "source": "missing"
     },
     "uniqueness-provenance": {
-      "score100": 100,
+      "score100": 0,
       "weight": 20,
       "sourceIds": ["innovation-originality", "technical-moat", "enterprise-readiness"],
       "confidence": "C",
-      "source": "audit-output"
+      "source": "missing"
     }
   },
-  "hasRubric": true,
+  "hasRubric": false,
   "rubricSpec": "pm/spec/craft-rubric.json",
   "rubricVersion": "1.0.0",
-  "capped": true,
-  "capReasons": ["quality-scaffold"],
+  "capped": false,
+  "capReasons": [],
   "craftFlags": {
     "interchangeable": false,
     "aiSlop": false

@@ -366,7 +366,25 @@
       "to": "audit/archive/2026-06-13/audit/repo-hygiene-audit-2026-06-13.md",
       "reason": "dated-sibling-when-latest-exists",
       "at": "2026-06-13T14:53:36.826Z"
+    },
+    {
+      "from": "audit/evidence/pen-test-window-2026-06-10.json",
+      "to": "audit/archive/2026-06-13/audit/evidence/pen-test-window-2026-06-10.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-13T16:55:05.220Z"
+    },
+    {
+      "from": "audit/evidence/session-open-items-reconcile-2026-06-12.json",
+      "to": "audit/archive/2026-06-13/audit/evidence/session-open-items-reconcile-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-13T16:55:05.220Z"
+    },
+    {
+      "from": "audit/evidence/session-triage-domain-model-2026-06-12.json",
+      "to": "audit/archive/2026-06-13/audit/evidence/session-triage-domain-model-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-13T16:55:05.220Z"
     }
   ],
-  "updated": "2026-06-13T14:53:36.826Z"
+  "updated": "2026-06-13T16:55:05.220Z"
 }

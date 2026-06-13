@@ -115,7 +115,7 @@
     "postRoadmapAudit": "01-docs/05-audit/post-roadmap-session-2026-05-30.md",
     "externalRegister": "01-docs/05-audit/external-dependencies-register-2026-05-31.md",
     "pilotCriteria": "01-docs/05-audit/pilot-success-criteria.md",
-    "gtmAudit": "01-docs/05-audit/gtm-audit-2026-06-05.md",
+    "gtmAudit": "audit/gtm-audit-2026-06-05.md",
     "repoHygieneAudit": "01-docs/05-audit/repo-hygiene-2026-06-05.md",
     "bankGradeAudit": "01-docs/05-audit/bank-grade-audit-2026-06-07.md",
     "bankGradeIndex": "01-docs/05-audit/bank-grade-2026-06-07.md",
@@ -153,7 +153,7 @@
         "tier": "GR-T3",
         "regulatorPath": "GR-T4-scaffolded"
       },
-      "index": "01-docs/05-audit/gtm-audit-2026-06-05.md"
+      "index": "audit/gtm-audit-2026-06-05.md"
     }
   },
   "gtmReadiness": {

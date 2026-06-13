@@ -43,11 +43,11 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 
 **LAUNCH-PLAN-01/02/03 are done** — do not re-select; zwcmp-unblock work lives in `.baseline/launch-focus.json` workSet.
 
-| Artifact          | Path                                                     |
-| ----------------- | -------------------------------------------------------- |
-| Cross-repo bridge | `01-docs/04-ops/coordination/cross-repo-agent-bridge.md` |
-| Latest audit      | `01-docs/05-audit/engineering-audit-2026-06-07.md`       |
-| GTM audit         | `01-docs/05-audit/gtm-audit-2026-06-05.md`               |
+| Artifact          | Path                                                                             |
+| ----------------- | -------------------------------------------------------------------------------- |
+| Cross-repo bridge | `01-docs/04-ops/coordination/cross-repo-agent-bridge.md`                         |
+| Latest audit      | `01-docs/05-audit/engineering-audit-2026-06-07.md`                               |
+| GTM audit         | `audit/gtm-audit-2026-06-05.md` · witness `audit/evidence/gtm-audit-latest.json` |
 
 **Cross-repo:** S-XR-1 **closed** — XR-101/201 done. S-XR-2 **closed** — XR-202/301/302 done. S-XR-3: XR-401 **done**, XR-402 **ready**, XR-405 **done**. S-XR-4: XR-507 **done**, XR-508 **done**.
 **Approval needed (Class S — parallel, `blocksIR: false`):** EXT-INF-002/013/014/015/016 — do **not** freeze implement queue. Nav: [human-gate-navigation](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/01-docs/04-ops/human-gate-navigation.md).  

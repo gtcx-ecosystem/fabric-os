@@ -1,0 +1,25 @@
+{
+  "schema": "gtcx://fabric-os/gtm-audit-latest/v1",
+  "repo": "fabric-os",
+  "legacyRepo": "gtcx-infrastructure",
+  "auditDate": "2026-06-05",
+  "path": "audit/gtm-audit-2026-06-05.md",
+  "readinessOutcome": {
+    "tier": "GR-T3",
+    "integratorPilot": "GR-T2-partial",
+    "ecosystemSovereign": "below-GR-T2",
+    "regulatorPath": "GR-T4-scaffolded"
+  },
+  "scores": {
+    "assetScore100": 35,
+    "regulatoryScore100": 85,
+    "commercialScore100": 10
+  },
+  "launchFocusMapping": {
+    "library": "GR-T1",
+    "integratorPilot": "GR-T2-partial",
+    "ecosystemSovereign": "below-GR-T2"
+  },
+  "updated": "2026-06-13",
+  "note": "Canonical path restored under audit/ — replaces stale 01-docs/05-audit/ reference."
+}

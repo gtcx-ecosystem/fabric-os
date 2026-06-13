@@ -51,6 +51,8 @@
     "agent:next-work": "node platform/scripts/agent-next-work.mjs",
     "fabric:assurance:run": "node platform/scripts/fabric-assurance-run.mjs",
     "fabric:assurance:run:write": "node platform/scripts/fabric-assurance-run.mjs --write",
+    "fabric:assurance:composite-lift": "node ../bridge-os/platform/scripts/ecosystem/run-composite-lift.mjs",
+    "fabric:assurance:composite-lift:write": "node ../bridge-os/platform/scripts/ecosystem/run-composite-lift.mjs --write",
     "fabric:assurance:check": "node platform/scripts/fabric-assurance-run.mjs --check",
     "fabric:lanes:check": "node platform/scripts/fabric-lanes-check.mjs",
     "fabric:lanes:check:write": "node platform/scripts/fabric-lanes-check.mjs --write",

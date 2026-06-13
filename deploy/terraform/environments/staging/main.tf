@@ -405,6 +405,7 @@ module "waf" {
   aws_region        = var.region
   allow_audit_paths             = true
   allow_markets_authority_paths = true
+  allow_terraos_staging_web     = true
 }
 
 # -----------------------------------------------------------------------------

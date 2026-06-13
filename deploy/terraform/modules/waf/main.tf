@@ -49,6 +49,12 @@ variable "allow_markets_authority_paths" {
   default     = false
 }
 
+variable "allow_terraos_staging_web" {
+  description = "Allow terraos.staging.gtcx.trade web UAT (Next.js + PWA assets; non-browser curl)"
+  type        = bool
+  default     = false
+}
+
 resource "aws_wafv2_web_acl" "main" {
   name        = "${var.name_prefix}-waf-${var.aws_region}"
   description = "OWASP CRS + BotControl + RateLimit for ${var.name_prefix}"
@@ -160,12 +166,47 @@ resource "aws_wafv2_web_acl" "main" {
     }
   }
 
+  # INF-TERRA-WAF-01 — terra-os staging web UAT (complete_roadmap JTBD on live stack).
+  dynamic "rule" {
+    for_each = var.allow_terraos_staging_web ? [1] : []
+    content {
+      name     = "AllowTerraOSStagingWeb"
+      priority = 2
+
+      action {
+        allow {}
+      }
+
+      statement {
+        byte_match_statement {
+          search_string         = "terraos.staging.gtcx.trade"
+          positional_constraint = "EXACTLY"
+          field_to_match {
+            single_header {
+              name = "host"
+            }
+          }
+          text_transformation {
+            priority = 0
+            type     = "LOWERCASE"
+          }
+        }
+      }
+
+      visibility_config {
+        cloudwatch_metrics_enabled = true
+        metric_name                = "AllowTerraOSStagingWebMetric"
+        sampled_requests_enabled   = true
+      }
+    }
+  }
+
   # XR-MKT-011 / S39-01 — markets authority trace capture (non-browser fetch + Bearer).
   dynamic "rule" {
     for_each = var.allow_markets_authority_paths ? [1] : []
     content {
       name     = "AllowMarketsAuthorityEndpoints"
-      priority = 2
+      priority = 3
 
       action {
         allow {}
@@ -278,7 +319,7 @@ resource "aws_wafv2_web_acl" "main" {
   # AWS Managed Rule: OWASP Core Rule Set
   rule {
     name     = "AWSManagedRulesCommonRuleSet"
-    priority = 3
+    priority = 4
     override_action {
       none {}
     }
@@ -298,7 +339,7 @@ resource "aws_wafv2_web_acl" "main" {
   # AWS Managed Rule: Known Bad Inputs
   rule {
     name     = "AWSManagedRulesKnownBadInputsRuleSet"
-    priority = 4
+    priority = 5
     override_action {
       none {}
     }
@@ -318,7 +359,7 @@ resource "aws_wafv2_web_acl" "main" {
   # Rate Limiting — per IP
   rule {
     name     = "RateLimitPerIP"
-    priority = 5
+    priority = 6
     action {
       block {}
     }
@@ -338,7 +379,7 @@ resource "aws_wafv2_web_acl" "main" {
   # AWS Managed Rule: Bot Control (optional, lower priority)
   rule {
     name     = "AWSManagedRulesBotControlRuleSet"
-    priority = 6
+    priority = 7
     override_action {
       none {}
     }

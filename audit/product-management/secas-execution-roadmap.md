@@ -1,8 +1,8 @@
 ---
 title: Execution roadmap — Security-as-a-Service
 status: current
-date: 2026-06-12
-last_reconciled: 2026-06-12T14:51:08.154Z
+date: 2026-06-13
+last_reconciled: 2026-06-13T21:11:36.333Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true
@@ -54,10 +54,12 @@ pnpm secas:pentest:ingest:check:write
 
 ## Class S — Approval needed (parallel, blocksIR false)
 
-| ID          | Status   | Title                           |
-| ----------- | -------- | ------------------------------- |
-| EXT-INF-002 | approved | Live-stack pen-test vendor SOW  |
-| BL-SOC2-01  | approved | SOC 2 Type I auditor engagement |
+| ID                 | Status   | Title                                            |
+| ------------------ | -------- | ------------------------------------------------ |
+| EXT-INF-002        | approved | Live-stack pen-test vendor SOW                   |
+| BL-SOC2-01         | approved | SOC 2 Type I auditor engagement                  |
+| SECAS-S2-01-INGEST | approved | Vendor pen-test report ingest after window close |
+| EXT-INF-013        | approved | ZWCMP pilot owner + cadence call                 |
 
 ## Future Phases
 

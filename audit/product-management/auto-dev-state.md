@@ -30,12 +30,12 @@ last_reconciled: 2026-06-13T00:41:00.000Z
 
 ## Execute-roadmap (2026-06-12)
 
-| Story       | Outcome                                                                                                     |
-| ----------- | ----------------------------------------------------------------------------------------------------------- |
-| S4-07       | **done** — root cause was stale P35 paths (`04-deploy`/`03-platform`); policy + validate.sh fixed           |
-| IR-WITNESS  | **done** — ecosystem matrix restore, prompt semver pin, hygiene workflow SHA+node floor, docs-standard 45→0 |
-| SECAS-S2-01 | **blocked** — `awaiting_vendor_report` until pen-test window 2026-06-17..21                                 |
-| LANE-SPRINT | **done** — DaaS cards laneId, pen-test L4a/L4b/T0, xr-lane-witness, coordination closeout                   |
+| Story       | Outcome                                                                                                          |
+| ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| S4-07       | **done** — root cause was stale P35 paths (`04-deploy`/`03-platform`); policy + validate.sh fixed                |
+| IR-WITNESS  | **done** — ecosystem matrix restore, prompt semver pin, hygiene workflow SHA+node floor, docs-standard 45→0      |
+| SECAS-S2-01 | **blocked** — `awaiting_vendor_report` until pen-test window **2026-06-17..21** · ingest dry-run PASS 2026-06-13 |
+| LANE-SPRINT | **done** — DaaS cards laneId, pen-test L4a/L4b/T0, xr-lane-witness, coordination closeout                        |
 
 ## complete_roadmap witness (2026-06-12)
 

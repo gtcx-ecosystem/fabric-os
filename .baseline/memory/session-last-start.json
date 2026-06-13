@@ -1,12 +1,12 @@
 {
-  "startedAt": "2026-06-12T13:03:44.111Z",
+  "startedAt": "2026-06-13T04:41:08.603Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-66f615ce-fdbe-4771-b3fe-0ac9d23e9193",
+    "id": "gtcx-agent-5fd5e3c3-2e35-41af-92f2-f4d2e5ec34c5",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-38cbc0f471b4467d2c33188497393ea2-a31f95315bc63162-01"
+    "traceparent": "00-c2062d27b723d6db8c5bf43ebd18dae7-6e22937c194d4a04-01"
   },
   "nextWork": {
     "protocol": "22-agent-work-selection",
@@ -20,8 +20,8 @@
       "bridgeUrl": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/ecosystem-persona-bridge-2026-06.md",
       "instruction": "Read persona doc before work; re-select persona on task switch (Phase 4)."
     },
-    "traceId": "aef5532d-2c00-437b-a925-bef5a0d2aca8",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=aef5532d-2c00-437b-a925-bef5a0d2aca8",
+    "traceId": "6da995f8-d6b1-4ba6-a9fc-04d8aaf3ce5d",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=6da995f8-d6b1-4ba6-a9fc-04d8aaf3ce5d",
     "ok": true,
     "backlogClear": false,
     "next": {
@@ -75,16 +75,21 @@
       "Refresh audit/product-management/auto-dev-state.md after completion.",
       "After push/status reports: Status Update (Done → Next priority from this JSON → Approval needed if any), then implement.",
       "FORBIDDEN: \"Your call\", \"Two options\", \"Want me to tackle…\", \"anything on the P1 list?\", repo pick menus.",
-      "Do not ask the user which story or repo to pick — P22 already selected."
+      "Do not ask the user which story or repo to pick — P22 already selected.",
+      "Use THIS repo agent:next-work next / nextWorkItem. Baseline M3 ceiling is parallel witness — not fleet Next work.",
+      "FORBIDDEN: Proceed Brief Next = \"Hold at external-pilot ceiling\" outside baseline-os.",
+      "FORBIDDEN: SECAS-S2-01 / BG-10-10 / BG-10-11 as Next work item when repo ≠ fabric-os — use fleetOwnerRedirect + Approval needed only.",
+      "FORBIDDEN: synthetic milestone assurance-vendor-deliverables — owner is fabric-os (SECAS-S2-01 / BG-10-10 ingest).",
+      "FORBIDDEN: Next work item Owner = \"security + compliance\" for vendor pen-test/SOC2 — use fabric-os."
     ],
     "automatableExhausted": false,
-    "message": "Launch implement queue: 2 Class R items (fabric-os).",
+    "message": "Launch implement queue: 1 Class R items (fabric-os).",
     "launchFocus": {
       "schema": "gtcx.launchFocus.v1",
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-12T13:03:44.107Z",
+      "provisionedAt": "2026-06-13T04:41:08.598Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -94,7 +99,7 @@
           "library": "GR-T1",
           "integratorPilot": "GR-T2-partial",
           "ecosystemSovereign": "below-GR-T2",
-          "index": "01-docs/05-audit/gtm-audit-2026-06-05.md"
+          "index": "audit/gtm-audit-2026-06-05.md"
         }
       },
       "sessionMode": "implement",
@@ -110,13 +115,6 @@
             "workClass": "ops-docs",
             "authorityClass": "S",
             "lane": "p22-head"
-          },
-          {
-            "storyId": "S4-07",
-            "title": "pnpm test quick 1/359 flake investigation",
-            "workClass": "code",
-            "lane": "work-register",
-            "because": "Only pending IR-class code story in P22 manifest"
           }
         ],
         "plan": [],
@@ -127,13 +125,6 @@
             "workClass": "ops-docs",
             "lane": "secas",
             "because": "SECAS-S2 in_progress; window 2026-06-17..21"
-          },
-          {
-            "storyId": "XR-FABRIC-SPRINT-AUTH-001",
-            "title": "Consume bridge fleet-sprint-orientation-latest.json",
-            "workClass": "ops-docs",
-            "lane": "coordination",
-            "because": "L2 sprint authority eval delivered; await bridge witness"
           }
         ],
         "human": [
@@ -154,19 +145,12 @@
           "workClass": "ops-docs",
           "authorityClass": "S",
           "lane": "p22-head"
-        },
-        {
-          "storyId": "S4-07",
-          "title": "pnpm test quick 1/359 flake investigation",
-          "workClass": "code",
-          "lane": "work-register",
-          "because": "Only pending IR-class code story in P22 manifest"
         }
       ],
       "workSetCounts": {
-        "implement": 2,
+        "implement": 1,
         "plan": 0,
-        "witness": 2,
+        "witness": 1,
         "human": 1
       },
       "sources": [
@@ -182,10 +166,136 @@
       "agentInstructions": [
         "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
         "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
-        "IMPLEMENT mode — drain 1 item(s) toward app launch / GTM."
+        "WITNESS mode — human gates only."
       ]
+    },
+    "baselineM3CeilingScope": {
+      "schema": "gtcx://baseline-os/baseline-m3-ceiling-scope/v1",
+      "appliesToRepo": "baseline-os",
+      "currentRepo": "fabric-os",
+      "isCeilingRepo": false,
+      "witnessStatus": "ceiling-prep-pass",
+      "externalBlockers": [
+        "BG-10-10 vendor pen-test report (fabric-os)",
+        "BG-10-11 SOC 2 Type I letter (auditor)"
+      ],
+      "forbiddenProceedBriefNext": [
+        "Hold at external-pilot ceiling",
+        "Class R exhausted (baseline M3)",
+        "assurance in_progress · P22 backlog clear"
+      ],
+      "rule": "Use THIS repo agent:next-work next / nextWorkItem. Baseline M3 ceiling is parallel witness — not fleet Next work.",
+      "bg1010Owner": "fabric-os",
+      "bg1010AsNextWorkItemAllowed": true,
+      "vendorAssuranceOwner": "fabric-os",
+      "vendorAssuranceHeadStory": "SECAS-S2-01",
+      "forbiddenSyntheticMilestones": [
+        "assurance-vendor-deliverables",
+        "vendor-deliverables",
+        "m3-vendor-closure"
+      ],
+      "forbiddenOwners": [
+        "security + compliance",
+        "security+compliance",
+        "compliance + security"
+      ]
+    },
+    "vendorAssuranceScope": {
+      "ownerRepo": "fabric-os",
+      "headStoryId": "SECAS-S2-01",
+      "witnessStories": [
+        "BG-10-10",
+        "BG-10-11",
+        "BG-10-12"
+      ],
+      "forbiddenSyntheticNextWorkItems": [
+        "assurance-vendor-deliverables",
+        "vendor-deliverables",
+        "m3-vendor-closure"
+      ],
+      "forbiddenOwners": [
+        "security + compliance",
+        "security+compliance",
+        "compliance + security"
+      ],
+      "siblingRule": "Pen-test report + SOC 2 Type I attestation implement/ingest is fabric-os — not \"security + compliance\" in consumer repos.",
+      "approvalSection": "Approval needed",
+      "blocksIR": false
+    },
+    "parallelClassS": [
+      {
+        "blocker": "BG-10-10 vendor pen-test report (fabric-os)",
+        "blocksIR": false,
+        "section": "Approval needed",
+        "ownerRepo": "fabric-os",
+        "notNextWorkItemUnlessOwner": "fabric-os"
+      },
+      {
+        "blocker": "BG-10-11 SOC 2 Type I letter (auditor)",
+        "blocksIR": false,
+        "section": "Approval needed",
+        "ownerRepo": "fabric-os",
+        "notNextWorkItemUnlessOwner": "fabric-os"
+      }
+    ],
+    "proceedBriefGuard": {
+      "nextMustComeFrom": "this repo P22 JSON (next / nextWorkItem)",
+      "forbiddenSources": [
+        "baseline-os/audit/evidence/external-pilot-ceiling-latest.json",
+        "baseline-os roadmap:progress:report M3 headline",
+        "fabric-os stale roadmap-automatable-exhaust witness",
+        "agent-synthesized assurance-vendor-deliverables milestone"
+      ],
+      "forbiddenNextPhrases": [
+        "Hold at external-pilot ceiling",
+        "Class R exhausted (baseline M3)",
+        "assurance in_progress · P22 backlog clear"
+      ],
+      "forbiddenNextWorkItemIds": [
+        "assurance-vendor-deliverables",
+        "vendor-deliverables",
+        "m3-vendor-closure"
+      ],
+      "forbiddenNextWorkItemOwners": [
+        "security + compliance",
+        "security+compliance",
+        "compliance + security"
+      ]
+    },
+    "ownerRepoRedirect": {
+      "ownerRepo": "fabric-os",
+      "storyId": "SECAS-S2-01",
+      "title": "SECAS-S2-01 live-stack pen-test execution window",
+      "p22Command": "pnpm --dir ../fabric-os agent:next-work --json",
+      "because": "Vendor pen-test report + SOC 2 Type I ingest — fabric-os owner (SECAS/BG-10-10); sibling repos witness only",
+      "switchWorkspace": true,
+      "witnessStories": [
+        "BG-10-10",
+        "BG-10-11",
+        "BG-10-12"
+      ]
+    },
+    "fleetOwnerRedirect": {
+      "ownerRepo": "fabric-os",
+      "storyId": "SECAS-S2-01",
+      "title": "SECAS-S2-01 live-stack pen-test execution window",
+      "p22Command": "pnpm --dir ../fabric-os agent:next-work --json",
+      "because": "Vendor pen-test report + SOC 2 Type I ingest — fabric-os owner (SECAS/BG-10-10); sibling repos witness only",
+      "switchWorkspace": true,
+      "witnessStories": [
+        "BG-10-10",
+        "BG-10-11",
+        "BG-10-12"
+      ],
+      "section": "agentInstructions",
+      "notNextWorkItemInThisRepo": false,
+      "witnessOnlyInSiblingRepos": false
+    },
+    "hubScopeGuard": {
+      "ok": true,
+      "applies": false
     }
   },
-  "gitChanged": 103,
+  "gitChanged": 40,
   "authorityClass": "R"
 }

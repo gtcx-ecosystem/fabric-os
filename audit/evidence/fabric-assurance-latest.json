@@ -1,11 +1,11 @@
 {
   "schema": "gtcx://fabric-os/fabric-assurance/v1",
-  "at": "2026-06-13T07:10:09.715Z",
+  "at": "2026-06-14T09:44:36.024Z",
   "repo": "fabric-os",
   "initiative": "INIT-ASSURANCE-BURN-DOWN",
   "story": "T35",
   "dryRun": false,
-  "ok": true,
+  "ok": false,
   "evaluateExitCode": 0,
   "fired": [
     {
@@ -38,37 +38,37 @@
     },
     {
       "id": "FORWARD-50",
-      "reason": "forwardQueuePct 84.9 >= 50",
+      "reason": "forwardQueuePct 85.3 >= 50",
       "runs": ["qa-smoke", "five-core-partial-A1-A5"],
       "blocks": false,
       "delegateTo": "fabric-os"
     },
     {
       "id": "FORWARD-75",
-      "reason": "forwardQueuePct 84.9 >= 75",
+      "reason": "forwardQueuePct 85.3 >= 75",
       "runs": ["five-core-full", "uat-independent"],
       "blocks": false,
       "delegateTo": "fabric-os"
     },
     {
-      "id": "ROADMAP-75",
-      "reason": "roadmapPct 100 >= 75",
-      "runs": ["five-core-full"],
+      "id": "MILESTONE-OPEN",
+      "reason": "productMilestoneOpen (4 repo(s))",
+      "runs": ["qa-smoke", "story-acceptance-witness"],
       "blocks": false,
       "delegateTo": "fabric-os"
     },
     {
-      "id": "ROADMAP-90",
-      "reason": "roadmapPct 100 >= 90",
-      "runs": ["five-core-exit-audit", "uat-independent"],
+      "id": "FEATURE-DONE",
+      "reason": "feature acceptance under milestone mode",
+      "runs": ["qa-smoke", "uat-independent", "story-acceptance-witness"],
       "blocks": false,
       "delegateTo": "fabric-os"
     },
     {
       "id": "BACKLOG-CLEAR",
-      "reason": "backlogClear · exit audit/UAT witnesses required",
+      "reason": "backlogClear · exit witnesses green",
       "runs": ["five-core-exit-audit", "uat-exit"],
-      "blocks": true,
+      "blocks": false,
       "delegateTo": "fabric-os"
     }
   ],
@@ -129,6 +129,14 @@
       "storyRef": "ECO-UAT-01"
     },
     {
+      "id": "story-acceptance-witness",
+      "label": "Story acceptance witness",
+      "lane": "qa",
+      "delegate": "bridge-os",
+      "command": "pnpm settlement:gate:story-done",
+      "independent": false
+    },
+    {
       "id": "five-core-exit-audit",
       "label": "Exit audit — engineering + compliance fleet rollup",
       "lane": "audit",
@@ -148,12 +156,7 @@
       "storyRef": "ECO-UAT-01"
     }
   ],
-  "blocking": [
-    {
-      "id": "BACKLOG-CLEAR",
-      "runs": ["five-core-exit-audit", "uat-exit"]
-    }
-  ],
+  "blocking": [],
   "executed": [
     {
       "id": "qa-smoke",
@@ -163,7 +166,7 @@
       "skipped": false,
       "command": "pnpm ecosystem:fleet:verify:all --no-build --json",
       "exitCode": 0,
-      "output": "        },\n        \"baselineSession\": {\n          \"ok\": true,\n          \"detail\": \"ok\"\n        },\n        \"skills\": {\n          \"cursor\": 15,\n          \"claude\": 15,\n          \"ok\": true\n        },\n        \"cursor\": {\n          \"ok\": true\n        },\n        \"agentic\": {\n          \"ok\": true,\n          \"hasCursorRollout\": true,\n          \"schema\": \"gtcx.agentic.bridge.v1\"\n        },\n        \"autonomy\": {\n          \"ok\": true,\n          \"level\": \"full\"\n        },\n        \"layout\": {\n          \"ok\": true\n        },\n        \"ops\": {\n          \"ok\": true,\n          \"detail\": \"pass\"\n        },\n        \"gitPush\": {\n          \"ok\": true,\n          \"ahead\": 0,\n          \"agentSandbox\": false\n        },\n        \"build\": {\n          \"ok\": true,\n          \"skipped\": true\n        }\n      }\n    }\n  ]\n}\n"
+      "output": "        },\n        \"baselineSession\": {\n          \"ok\": true,\n          \"detail\": \"ok\"\n        },\n        \"skills\": {\n          \"cursor\": 15,\n          \"claude\": 15,\n          \"ok\": true\n        },\n        \"cursor\": {\n          \"ok\": true\n        },\n        \"agentic\": {\n          \"ok\": true,\n          \"hasCursorRollout\": true,\n          \"schema\": \"gtcx.agentic.bridge.v1\"\n        },\n        \"autonomy\": {\n          \"ok\": true,\n          \"level\": \"full\"\n        },\n        \"layout\": {\n          \"ok\": true\n        },\n        \"ops\": {\n          \"ok\": true,\n          \"detail\": \"pass\"\n        },\n        \"gitPush\": {\n          \"ok\": true,\n          \"ahead\": 1,\n          \"agentSandbox\": false\n        },\n        \"build\": {\n          \"ok\": true,\n          \"skipped\": true\n        }\n      }\n    }\n  ]\n}\n"
     },
     {
       "id": "five-core-partial-A1-A5",
@@ -183,58 +186,43 @@
       "skipped": false,
       "command": "pnpm ecosystem:five-pillar:stress:fleet:write",
       "exitCode": 0,
-      "output": "k\nOK bridge-os composite=57 mode=partial-unlock\nOK canon-os composite=93 mode=full-unlock\nOK compliance-os composite=59 mode=partial-unlock\nOK exploration-os composite=67 mode=partial-unlock\nOK fabric-os composite=59 mode=partial-unlock\nOK griot-ai composite=59 mode=partial-unlock\nOK gtcx-os composite=59 mode=partial-unlock\nOK ledger-ui composite=59 mode=partial-unlock\nOK markets-os composite=59 mode=partial-unlock\nOK nyota-ai composite=67 mode=partial-unlock\nOK sensei-os composite=59 mode=partial-unlock\nOK terminal-os composite=59 mode=partial-unlock\nOK terra-os composite=82 mode=full-unlock\nOK veritas-ai composite=59 mode=partial-unlock\n\nStress: fullUnlock=2/16 compliance<85=12 noRubric=4\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/five-pillar-fleet-stress-latest.json\n"
+      "output": "9 mode=partial-unlock\nOK bridge-os composite=59 mode=partial-unlock\nOK canon-os composite=99 mode=full-unlock\nOK compliance-os composite=91 mode=full-unlock\nOK exploration-os composite=91 mode=full-unlock\nOK fabric-os composite=99 mode=full-unlock\nOK griot-ai composite=59 mode=partial-unlock\nOK gtcx-os composite=99 mode=full-unlock\nOK ledger-ui composite=99 mode=full-unlock\nOK markets-os composite=59 mode=partial-unlock\nOK nyota-ai composite=59 mode=partial-unlock\nOK sensei-os composite=91 mode=full-unlock\nOK terminal-os composite=100 mode=full-unlock\nOK terra-os composite=59 mode=partial-unlock\nOK veritas-ai composite=99 mode=full-unlock\n\nStress: fullUnlock=10/16 compliance<85=6 noRubric=0\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/five-pillar-fleet-stress-latest.json\n"
     },
     {
       "id": "uat-independent",
       "label": "Independent QA — fleet session replay per repo",
       "witness": "bridge-os/audit/evidence/ecosystem-fleet-uat-latest.json",
-      "ok": true,
+      "ok": false,
       "skipped": false,
       "command": "pnpm ecosystem:fleet:uat:run",
-      "exitCode": 0,
-      "output": "ode\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"markets-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"nyota-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"sensei-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terminal-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terra-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"veritas-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    }\n  ],\n  \"ok\": true\n}\n"
+      "exitCode": 1,
+      "output": "      \"name\": \"markets-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"nyota-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"sensei-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terminal-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terra-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"veritas-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    }\n  ],\n  \"ok\": false\n}\n ELIFECYCLE  Command failed with exit code 1.\n"
     },
     {
       "id": "five-core-exit-audit",
       "label": "Exit audit — engineering + compliance fleet rollup",
       "witness": "bridge-os/pm/ci/documentation-audit-fleet-latest.json",
-      "ok": true,
+      "ok": false,
       "skipped": false,
       "command": "pnpm ecosystem:documentation-audit:check:fleet:write",
-      "exitCode": 0,
-      "output": "ed: ai-slop\nOK gtcx-os — composite=93 compliance=100 TE=96 craft=82 forensic=78\nOK ledger-ui — composite=83 compliance=100 TE=94 craft=55 forensic=74\n  craft capped: ai-slop\nOK markets-os — composite=80 compliance=100 TE=87 craft=55 forensic=72\n  craft capped: ai-slop\nOK nyota-ai — composite=74 compliance=100 TE=80 craft=48 forensic=52\nOK sensei-os — composite=77 compliance=100 TE=84 craft=51 forensic=64\nOK terminal-os — composite=87 compliance=100 TE=96 craft=55 forensic=83\n  craft capped: ai-slop\nOK terra-os — composite=80 compliance=100 TE=86 craft=55 forensic=71\n  craft capped: ai-slop\nOK veritas-ai — composite=88 compliance=100 TE=94 craft=54 forensic=85\n\nPASS compliance — 16/16 repos\nwitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/documentation-audit-fleet-latest.json\n"
+      "exitCode": 1,
+      "output": " — composite=98 compliance=100 TE=98 craft=92 forensic=92\nOK gtcx-os — composite=93 compliance=100 TE=96 craft=82 forensic=79\nOK ledger-ui — composite=97 compliance=100 TE=98 craft=91 forensic=91\nFAIL markets-os — composite=95 compliance=90 TE=99 craft=93 forensic=94\nFAIL nyota-ai — composite=95 compliance=88 TE=99 craft=94 forensic=94\nFAIL sensei-os — composite=89 compliance=88 TE=95 craft=87 forensic=79\nOK terminal-os — composite=98 compliance=100 TE=99 craft=92 forensic=91\nFAIL terra-os — composite=92 compliance=88 TE=97 craft=92 forensic=87\nOK veritas-ai — composite=97 compliance=100 TE=98 craft=88 forensic=90\n\nFAIL compliance — 10/16 repos\nwitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/documentation-audit-fleet-latest.json\n ELIFECYCLE  Command failed with exit code 1.\n"
     },
     {
       "id": "uat-exit",
       "label": "Exit UAT — independent fleet session replay",
       "witness": "bridge-os/audit/evidence/ecosystem-fleet-uat-latest.json",
-      "ok": true,
+      "ok": false,
       "skipped": false,
       "command": "pnpm ecosystem:fleet:uat:run",
-      "exitCode": 0,
-      "output": "ode\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"markets-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"nyota-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"sensei-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terminal-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terra-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"veritas-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    }\n  ],\n  \"ok\": true\n}\n"
+      "exitCode": 1,
+      "output": "      \"name\": \"markets-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"nyota-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"sensei-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terminal-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terra-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"veritas-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    }\n  ],\n  \"ok\": false\n}\n ELIFECYCLE  Command failed with exit code 1.\n"
     }
   ],
   "blockingSatisfaction": {
     "ok": true,
-    "requiredRunIds": ["five-core-exit-audit", "uat-exit"],
-    "runResults": [
-      {
-        "runId": "five-core-exit-audit",
-        "witnessPath": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/documentation-audit-fleet-latest.json",
-        "ok": true,
-        "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/documentation-audit-fleet-latest.json",
-        "ageHours": 0.03765166666666667
-      },
-      {
-        "runId": "uat-exit",
-        "witnessPath": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/audit/evidence/ecosystem-fleet-uat-latest.json",
-        "ok": true,
-        "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/audit/evidence/ecosystem-fleet-uat-latest.json",
-        "ageHours": 0.0000033333333333333333
-      }
-    ],
+    "requiredRunIds": [],
+    "runResults": [],
     "failures": []
   },
   "contextBundle": {

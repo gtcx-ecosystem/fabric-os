@@ -73,7 +73,9 @@
     "execute_roadmap @ 2026-06-13T17:35Z — SECAS friction/approval/cards/ingest/window PASS; lanes + daas + fabric:assurance:check PASS; bridge rollup + regression 8/8 PASS; phase awaiting_vendor_report unchanged",
     "execute_roadmap @ 2026-06-14T08:26Z — SECAS friction/approval/cards/ingest/window PASS; ingest dry-run synthetic PASS; lanes + daas + fabric:assurance:check PASS; bridge secas rollup 8/8 PASS; phase awaiting_vendor_report unchanged",
     "execute_roadmap @ 2026-06-14T08:41Z — SECAS friction/approval/cards/ingest/window PASS; ingest dry-run synthetic PASS; lanes + daas + fabric:assurance:check PASS; bridge secas rollup 8/8 PASS; phase awaiting_vendor_report unchanged",
-    "execute_roadmap @ 2026-06-14T08:53Z — SECAS friction/approval/cards/ingest/window PASS; lanes + daas + fabric:assurance:check PASS; bridge rollup + regression 8/8 PASS; phase awaiting_vendor_report unchanged"
+    "execute_roadmap @ 2026-06-14T08:53Z — SECAS friction/approval/cards/ingest/window PASS; lanes + daas + fabric:assurance:check PASS; bridge rollup + regression 8/8 PASS; phase awaiting_vendor_report unchanged",
+    "execute_roadmap @ 2026-06-14T09:19Z — SECAS friction/approval/cards/ingest/window PASS; lanes + daas + fabric:assurance:check PASS; bridge rollup + regression 8/8 PASS; phase awaiting_vendor_report unchanged",
+    "COMPOSITE-RESTORE-100 @ 2026-06-14 — P29 docs→ops migration LINKaaS repair; five-pillar composite100 100; trust independent-replay 100; p35 strict GREEN"
   ],
   "assurance": {
     "fabricAssuranceCheck": "pass",

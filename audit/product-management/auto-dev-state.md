@@ -18,8 +18,15 @@ last_reconciled: 2026-06-13T04:41:00.000Z
 ## Active Phase
 
 - **ID:** SECAS-S2
-- **Status:** in_progress (3/4 UAT — pre-window gates green 2026-06-13)
-- **Reason:** Pen-test window **2026-06-17..21**; vendor report ingest pending (`awaiting_vendor_report`); execute_roadmap witness cycle PASS @ 2026-06-14T08:41Z.
+- **Status:** in_progress (3/4 UAT — pre-window gates green 2026-06-14)
+- **Reason:** Pen-test window **2026-06-17..21**; vendor report ingest pending (`awaiting_vendor_report`); five-pillar composite **100/100** restored 2026-06-14.
+
+## COMPOSITE-RESTORE-100 (2026-06-14)
+
+- **Outcome:** **done** — `five-pillar-latest.json` composite100 **100** · trust **100** · independent-replay **100**
+- **Root cause:** P29 domain prose under `docs/` + broken internal links post-migration (195 → 0)
+- **Fix:** migrate to `ops/*/narrative/` + `audit/archive/legacy-docs-audit/` · repair LINKaaS · restore evidence witnesses · `human-gates.manifest.json`
+- **Gates:** `p35-layout-check --strict` PASS · `documentation-links` broken=0 · `documentation-audit` ok=true
 
 ## Next Work
 

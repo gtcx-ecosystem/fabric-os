@@ -4,17 +4,17 @@
   "repoKind": "infra",
   "date": "2026-06-14",
   "auditType": "documentation-pillar",
-  "ok": false,
-  "composite100": 95,
+  "ok": true,
+  "composite100": 98,
   "pillars": {
     "compliance": {
-      "score100": 90,
-      "openP1": 1,
+      "score100": 100,
+      "openP1": 0,
       "source": "documentation-pack"
     },
     "technicalExcellence": {
-      "score100": 98,
-      "score100Raw": 98,
+      "score100": 99,
+      "score100Raw": 99,
       "packTe100": 100,
       "capped": false,
       "source": "pack+forensic-links"
@@ -43,31 +43,24 @@
   "forensic": {
     "axes": {
       "structural": 100,
-      "naming": 88,
-      "frontmatter": 98,
+      "naming": 85,
+      "frontmatter": 97,
       "links": 100,
       "agentic": 85
     },
-    "score100": 94,
+    "score100": 93,
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
-      "markdownFileCount": 560,
-      "brokenLinks": 24,
+      "markdownFileCount": 450,
+      "brokenLinks": 0,
       "scaffoldFileCount": 0,
       "aiSlopFileCount": 0
     }
   },
   "pack": {
-    "score100": 90,
-    "openP1": 1,
-    "violations": [
-      {
-        "packId": "JURISDICTION-SOR",
-        "itemId": "no-ops-under-docs",
-        "severity": "P1",
-        "detail": "ops dupes under docs/: gtm, security"
-      }
-    ]
+    "score100": 100,
+    "openP1": 0,
+    "violations": []
   }
 }

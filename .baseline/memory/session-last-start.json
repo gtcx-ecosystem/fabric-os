@@ -1,29 +1,21 @@
 {
-  "startedAt": "2026-06-13T06:21:02.398Z",
+  "startedAt": "2026-06-14T10:15:37.984Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-e6254d7c-f54c-4cd1-8c87-5ae90e21c0fd",
+    "id": "gtcx-agent-737524af-3e84-4468-8563-9ea67d90ba5e",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-34ac57ad4c5d829e815f9ea3d0006406-42abb545a2c09217-01"
+    "traceparent": "00-715756cf118da570535752150f32d206-4e253c812322b865-01"
   },
   "nextWork": {
-    "protocol": "22-agent-work-selection",
-    "repo": "fabric-os",
-    "frame": "development",
-    "persona": {
-      "institutional": "security-engineer",
-      "mcp": "security",
-      "frame": "regulatory-audit",
-      "docUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/governance/institutional/personas/security-engineer.md",
-      "bridgeUrl": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/ecosystem-persona-bridge-2026-06.md",
-      "instruction": "Read persona doc before work; re-select persona on task switch (Phase 4)."
-    },
-    "traceId": "b4fbdf86-a17d-437f-b935-af3700f7af3c",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=b4fbdf86-a17d-437f-b935-af3700f7af3c",
+    "traceId": "55949647-e703-4f70-923b-4e2c9ee69df4",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=55949647-e703-4f70-923b-4e2c9ee69df4",
     "ok": true,
     "backlogClear": false,
+    "protocol": "22-agent-work-selection",
+    "repo": "fabric-os",
+    "frame": "regulatory-audit",
     "next": {
       "storyId": "SECAS-S2-01",
       "title": "Live-stack pen-test execution window",
@@ -37,15 +29,19 @@
       "reason": "Story already in_progress in backlog"
     },
     "proceedBrief": {
-      "activePersona": "security-engineer",
-      "frame": "regulatory-audit",
-      "personaDocUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/governance/institutional/personas/security-engineer.md",
       "next": "SECAS-S2-01 — Live-stack pen-test execution window",
       "because": "Story already in_progress in backlog",
       "blockedUntil": "vendor report post 2026-06-21 · window 2026-06-17..2026-06-21",
       "override": "stop | correct: | story ID",
       "authorityClass": "R",
-      "phase": "awaiting_vendor_report"
+      "phase": "awaiting_vendor_report",
+      "activePersona": "security-engineer",
+      "frame": "regulatory-audit",
+      "personaDocUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/institutional/personas/security-engineer.md",
+      "personaDocPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md",
+      "voice": "Threat-aware, formal, zero casual delegation",
+      "embodies": "CISO-delegated security lead",
+      "goalOrientationBrief": "## Goal orientation\n**North star:** Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability\n**Milestone:** SECAS-S2-01 pen-test window 2026-06-17..21\n**Shippable:** Pen-test window ~2026-06-17..21; ingest prep PASS; vendor report Class S parallel\n**PRD refs:** prd-product-charter\n**Product team:** Fabric OS (`platform-engineer`)"
     },
     "communicationPolicy": {
       "protocol": "26-agent-proceed-confirmation",
@@ -74,12 +70,18 @@
         "EXT-INF-013 — ZWCMP",
         "Approval needed: SECAS-S2-01-INGEST",
         "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
+        "EXT-INF-013 — ZWCMP",
+        "Approval needed: SECAS-S2-01-INGEST",
+        "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
         "EXT-INF-013 — ZWCMP"
       ]
     },
     "agentInstructions": [
-      "Phase 4: adopt persona **security-engineer** (regulatory-audit) — read https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/governance/institutional/personas/security-engineer.md",
-      "Include **Active persona** + **Frame** in Proceed Brief and Status Update (P26).",
+      "Phase 4: adopt persona **security-engineer** (regulatory-audit) — read local `/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md` first (docUrl link-only); adopt voice: Threat-aware, formal, zero casual delegation",
+      "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
+      "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
+      "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
+      "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
       "Mark SECAS-S2-01 in_progress in docs/operations/agent-work-selection.md before coding.",
       "Update audit/product-management execution roadmaps and work register when complete.",
       "Refresh audit/product-management/auto-dev-state.md after completion.",
@@ -88,18 +90,26 @@
       "Do not ask the user which story or repo to pick — P22 already selected.",
       "fabric-os owner: copy statusUpdateClosure.parallelSovereignGatesMarkdown under ### Parallel sovereign gates.",
       "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
+      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
+      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
+      "fabric-os owner: copy statusUpdateClosure.parallelSovereignGatesMarkdown under ### Parallel sovereign gates.",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
       "fabric-os owner: copy statusUpdateClosure.parallelSovereignGatesMarkdown under ### Parallel sovereign gates.",
       "FORBIDDEN: ### Approval needed for SECAS-S2-01-INGEST / BG-10-10/11 — blocksIR:false → Parallel sovereign gates with What/Why/Implication.",
-      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update."
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
+      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
+      "Product team: **Fabric OS** — primary persona `platform-engineer` — Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
+      "Goal orientation: milestone `SECAS-S2-01 pen-test window 2026-06-17..21` — shippable: Pen-test window ~2026-06-17..21; ingest prep PASS; vendor report Class S parallel",
+      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item."
     ],
     "automatableExhausted": true,
-    "message": "Launch implement queue: 1 Class R items (fabric-os).",
+    "message": "WITNESS mode — SECAS calendar gate (awaiting_vendor_report); Class R exhausted until vendor report post 2026-06-21.",
     "launchFocus": {
       "schema": "gtcx.launchFocus.v1",
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-13T06:21:02.391Z",
+      "provisionedAt": "2026-06-14T10:15:37.973Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -112,21 +122,13 @@
           "index": "audit/gtm-audit-2026-06-05.md"
         }
       },
-      "sessionMode": "implement",
+      "sessionMode": "witness",
       "activePhase": {
         "id": "zwcmp-unblock",
         "label": "ZWCMP pilot + Global South 10x deploy"
       },
       "workSet": {
-        "implement": [
-          {
-            "storyId": "SECAS-S2-01",
-            "title": "Live-stack pen-test execution window",
-            "workClass": "ops-docs",
-            "authorityClass": "S",
-            "lane": "p22-head"
-          }
-        ],
+        "implement": [],
         "plan": [],
         "witness": [
           {
@@ -151,14 +153,14 @@
       "activeWorkSet": [
         {
           "storyId": "SECAS-S2-01",
-          "title": "Live-stack pen-test execution window",
+          "title": "Pen-test window witness prep — report ingest scaffolding",
           "workClass": "ops-docs",
-          "authorityClass": "S",
-          "lane": "p22-head"
+          "lane": "secas",
+          "because": "SECAS-S2 in_progress; window 2026-06-17..21"
         }
       ],
       "workSetCounts": {
-        "implement": 1,
+        "implement": 0,
         "plan": 0,
         "witness": 1,
         "human": 1
@@ -398,11 +400,150 @@
       "blocksIR": false,
       "spec": "bridge-os/pm/spec/vendor-assurance-status-update-routing.json"
     },
+    "persona": {
+      "institutional": "security-engineer",
+      "mcp": "security",
+      "frame": "regulatory-audit",
+      "docUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/institutional/personas/security-engineer.md",
+      "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md",
+      "bridgeUrl": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-persona-bridge-2026-06.md",
+      "instruction": "Phase 4: read persona.docPath first (local canon-os); docUrl is human link-only — private repo blocks anonymous fetch.",
+      "voice": {
+        "institutional": "security-engineer",
+        "frame": "regulatory-audit",
+        "role": "Security Engineer",
+        "tone": "Threat-aware, formal, zero casual delegation",
+        "voice": "Risk → control → evidence → attestation path",
+        "embodies": "CISO-delegated security lead",
+        "formality": "formal",
+        "forbidden": [
+          "your move",
+          "your turn",
+          "tell me what you think",
+          "tell me which",
+          "i'll walk you through",
+          "walk you through screen by screen",
+          "hop in",
+          "give it a spin",
+          "when you're ready",
+          "feel free to",
+          "let me know what you think",
+          "ping me when",
+          "shoot me a",
+          "happy to help",
+          "no worries",
+          "awesome sauce",
+          "game-changer casual",
+          "buddy",
+          "hey there",
+          "super excited",
+          "if you want",
+          "if you'd like",
+          "want me to implement",
+          "should i implement",
+          "can implement",
+          "in the next session",
+          "happy to implement",
+          "would you like me to",
+          "we could implement",
+          "say commit",
+          "say push if you want",
+          "when you get a chance"
+        ],
+        "operatorGuidance": {
+          "forbidden": [
+            "your move:",
+            "tell me when you've",
+            "open this and tell me"
+          ],
+          "required": [
+            "Operator entry:",
+            "Verification path:",
+            "execute probes in-session (P27)",
+            "report command + exit code"
+          ],
+          "demoWalkthrough": {
+            "bad": "Your move: open http://localhost:3000/login, sign in, and tell me what you think.",
+            "good": "**Operator entry:** `http://localhost:3000/login` — credentials `demo@kt.com` / `demo123`. Primary path: `/ecosystem` → `/index54`. I will verify each surface in-session and report probe results before the next layer."
+          }
+        },
+        "sessionReminder": "Embody **Security Engineer** — CISO-delegated security lead.\nTone: Threat-aware, formal, zero casual delegation\nVoice pattern: Risk → control → evidence → attestation path\nForbidden: casual delegation (\"Your move\", \"tell me what you think\", engagement bait).\nDemo guidance example: **Operator entry:** `http://localhost:3000/login` — credentials `demo@kt.com` / `demo123`. Primary path: `/ecosystem` → `/index54`. I will verify each surface in-session and report probe results before the next layer."
+      }
+    },
+    "productTeam": {
+      "schema": "gtcx://bridge-os/product-team-context/v1",
+      "utilized": true,
+      "teamName": "Fabric OS",
+      "primary": "platform-engineer",
+      "secondary": [
+        "security-engineer",
+        "protocol-engineer"
+      ],
+      "mission": "Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
+      "frame": "development",
+      "profilesSoR": "pm/spec/repo-persona-profiles.json"
+    },
+    "goalOrientation": {
+      "schema": "gtcx://bridge-os/goal-orientation/v1",
+      "gtmTier": "GR-T2-partial",
+      "northStar": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
+      "activeMilestone": "SECAS-S2-01 pen-test window 2026-06-17..21",
+      "shippableOutcome": "Pen-test window ~2026-06-17..21; ingest prep PASS; vendor report Class S parallel",
+      "prdRefs": [
+        "prd-product-charter"
+      ],
+      "programmeId": "PROG-SECAS-PENTEST",
+      "headStoryId": "SECAS-S2-01",
+      "workMustTraceTo": [
+        "prdRef",
+        "capabilityId",
+        "activeMilestone.id"
+      ],
+      "recalibrate": "pnpm ecosystem:clarity:report:brief"
+    },
+    "engineeringLane": {
+      "role": "platform-engineering",
+      "abstractedLanes": {
+        "securityAssurance": "fabric-os",
+        "documentationAudit": "canon-os",
+        "legalOps": "agile-os + Parallel sovereign gates"
+      },
+      "forbiddenInNextWorkItem": [
+        "audit triage",
+        "pen-test SOW",
+        "legal approval",
+        "doc promotion implement"
+      ]
+    },
+    "goalTrace": {
+      "schema": "gtcx://bridge-os/goal-trace/v1",
+      "repo": "fabric-os",
+      "nextStoryId": "SECAS-S2-01",
+      "headStoryId": "SECAS-S2-01",
+      "programmeId": "PROG-SECAS-PENTEST",
+      "milestone": "SECAS-S2-01 pen-test window 2026-06-17..21",
+      "shippableOutcome": "Pen-test window ~2026-06-17..21; ingest prep PASS; vendor report Class S parallel",
+      "gtmTier": "GR-T2-partial",
+      "aligned": true,
+      "recalibrate": "pnpm ecosystem:clarity:report:brief"
+    },
+    "personaReadGate": {
+      "ok": true,
+      "institutional": "security-engineer",
+      "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md",
+      "docHash": "8900a6bc85434c6f3cd30f587a51c4710c00791f271b9c517a45c77dd27db5b6",
+      "readAt": "2026-06-14T09:38:34.544Z"
+    },
+    "engineeringLaneAbstraction": {
+      "applies": false,
+      "tier": "platform",
+      "repoId": "fabric-os"
+    },
     "hubScopeGuard": {
       "ok": true,
       "applies": false
     }
   },
-  "gitChanged": 20,
+  "gitChanged": 17,
   "authorityClass": "R"
 }

@@ -14,18 +14,18 @@ method: ripgrep provider/env/code scan + implementation file trace (not sample r
 
 ## Executive summary
 
-| Finding                                                                                              | Severity | Evidence                                                                     |
-| ---------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
-| **No fleet RevOps/CommOps engine** — fabric owns deploy secrets, not billing/comms substrate         | P0       | `service-fabric.json` has P41/P42 only; RevOps/CommOps `planned` in ORE spec |
-| **5+ independent Stripe integrations** across product repos                                          | P0       | terminal-os, sensei-os, nyota-ai, compliance-os, gtcx-os mobile billing      |
-| **3+ SMS/email provider stacks** (SendGrid, Africa's Talking, Twilio) duplicated                     | P0       | terra-os, nyota-ai, sensei-os (amani-email), canon historical amani          |
-| **Flutterwave** as second payment rail (griot-ai, gtcx-os mobile) — no fabric registry               | P1       | `griot-ai/platform/.../flutterwave.js`                                       |
-| **markets-os** owns trade/capital-call payments (wire, escrow, authority) — **PayOps**, not RevOps   | —        | fund-api, custody-api — 100+ payment surfaces                                |
-| **compliance-os** Stripe Invoicing is most production-shaped SaaS billing                            | —        | `caas/src/lib/billing.ts` + DPA subprocessor mention                         |
-| **terra-os** has strongest **CommOps code** (provider abstraction) but **per-repo secrets**          | P1       | `notification_providers.py`                                                  |
-| **ledger-ui / veritas-ai / exploration-os** — UI or protocol webhooks only; no SaaS billing provider | —        | templates, expo-notifications, TradePass webhooks                            |
-| **canon-os / agile-os / bridge-os** — strategy & partnership refs only (Flutterwave, AT, Twilio)     | —        | decks, audits, tool-scout Resend                                             |
-| **fabric-os** — terminal SM paths include stripe key slot; **no shared comm/billing SM contract**    | P1       | `gtcx/terminal-os/{staging,production}/api-keys`                             |
+| Finding                                                                                              | Severity | Evidence                                                                 |
+| ---------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------ |
+| **No fleet RevOps/CommOps module** — fabric owns deploy secrets, not billing/comms substrate         | P0       | `service-fabric.json` has P41/P42 only; RevOps/CommOps `planned` in CORE |
+| **5+ independent Stripe integrations** across product repos                                          | P0       | terminal-os, sensei-os, nyota-ai, compliance-os, gtcx-os mobile billing  |
+| **3+ SMS/email provider stacks** (SendGrid, Africa's Talking, Twilio) duplicated                     | P0       | terra-os, nyota-ai, sensei-os (amani-email), canon historical amani      |
+| **Flutterwave** as second payment rail (griot-ai, gtcx-os mobile) — no fabric registry               | P1       | `griot-ai/platform/.../flutterwave.js`                                   |
+| **markets-os** owns trade/capital-call payments (wire, escrow, authority) — **PayOps**, not RevOps   | —        | fund-api, custody-api — 100+ payment surfaces                            |
+| **compliance-os** Stripe Invoicing is most production-shaped SaaS billing                            | —        | `caas/src/lib/billing.ts` + DPA subprocessor mention                     |
+| **terra-os** has strongest **CommOps code** (provider abstraction) but **per-repo secrets**          | P1       | `notification_providers.py`                                              |
+| **ledger-ui / veritas-ai / exploration-os** — UI or protocol webhooks only; no SaaS billing provider | —        | templates, expo-notifications, TradePass webhooks                        |
+| **canon-os / agile-os / bridge-os** — strategy & partnership refs only (Flutterwave, AT, Twilio)     | —        | decks, audits, tool-scout Resend                                         |
+| **fabric-os** — terminal SM paths include stripe key slot; **no shared comm/billing SM contract**    | P1       | `gtcx/terminal-os/{staging,production}/api-keys`                         |
 
 **Verdict:** Fabric **should** own RevOps + CommOps **substrate** (keys, webhooks, DPAs, fleet checks). Product repos own **domain money flows** (SaaS tier, concession fee, capital call, settlement). Centralization is justified by **provider duplication**, not by merging terra payments with terminal Stripe.
 
@@ -213,7 +213,7 @@ method: ripgrep provider/env/code scan + implementation file trace (not sample r
 ## Next forensic actions (Class R)
 
 1. **Provider inventory script** — `platform/scripts/revops-fleet-provider-inventory.mjs` scanning all 16 repos → `audit/evidence/revops-fleet-inventory-latest.json`.
-2. **Extend ORE** — wire RevOps/CommOps from `planned` → `active` with friction registers.
+2. **Extend CORE** — wire RevOps/CommOps from `planned` → `active` with friction registers.
 3. **DPA sweep** — compliance-os `dpa-template.md` + canon subprocessor templates → fleet register.
 4. **Webhook matrix PR** — fabric `infra-per-repo-action-matrix` addendum.
 
@@ -222,7 +222,7 @@ method: ripgrep provider/env/code scan + implementation file trace (not sample r
 ## Related artifacts
 
 - [ops-programs.md](../operations/ops-programs.md)
-- [ops-runtime-engines.md](../operations/ops-runtime-engines.md)
+- [core.md](../operations/core.md)
 - `bridge-os/pm/spec/ops-programs-registry.json`
 - `bridge-os/pm/spec/service-fabric.json`
 - terra-os `docs/specs/ga-readiness-audit.md` § notifications + payments

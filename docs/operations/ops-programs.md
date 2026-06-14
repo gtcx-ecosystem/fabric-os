@@ -27,7 +27,7 @@ Product engineering stays in **owner repos**. Specialist **Ops lanes** run in pa
 
 Machine registry: `bridge-os/pm/spec/ops-programs-registry.json`
 
-**Runtime engines:** [ops-runtime-engines.md](./ops-runtime-engines.md) — each Ops lane as sense→reason→act→learn intelligence with trust fortress and innovation moat.
+**Runtime engine:** [core.md](./core.md) — **CORE** (Centralized Ops Runtime Engine); each Ops lane is a CORE module.
 
 ## Four-plane model (Ops naming)
 

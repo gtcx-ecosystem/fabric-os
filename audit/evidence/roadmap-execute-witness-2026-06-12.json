@@ -77,7 +77,8 @@
     "execute_roadmap @ 2026-06-14T09:19Z — SECAS friction/approval/cards/ingest/window PASS; lanes + daas + fabric:assurance:check PASS; bridge rollup + regression 8/8 PASS; phase awaiting_vendor_report unchanged",
     "COMPOSITE-RESTORE-100 @ 2026-06-14 — P29 docs→ops migration LINKaaS repair; five-pillar composite100 100; trust independent-replay 100; p35 strict GREEN",
     "execute_roadmap @ 2026-06-14T10:15Z — SECAS friction/approval/cards/ingest/window PASS; ingest dry-run synthetic PASS; lanes + daas PASS; bridge rollup 8/8 PASS; phase awaiting_vendor_report unchanged",
-    "execute_roadmap @ 2026-06-14T11:02Z — SECAS window:readiness:write PASS; ingest dry-run PASS; lanes + daas PASS; bridge rollup 8/8 PASS; composite 100/100 held"
+    "execute_roadmap @ 2026-06-14T11:02Z — SECAS window:readiness:write PASS; ingest dry-run PASS; lanes + daas PASS; bridge rollup 8/8 PASS; composite 100/100 held",
+    "execute_roadmap @ 2026-06-14T11:45Z — full SECAS pre-window bundle PASS; bridge rollup 8/8; trace 5c542da7; phase awaiting_vendor_report unchanged"
   ],
   "assurance": {
     "fabricAssuranceCheck": "pass",

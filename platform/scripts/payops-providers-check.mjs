@@ -11,6 +11,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
 const ECOSYSTEM = join(ROOT, '..');
 const REGISTER = join(ROOT, 'pm/payops-friction-register.json');
+const SUBSTRATE = join(ROOT, 'pm/payops-substrate-contract.json');
 const DOMAIN_REGISTRY = join(BRIDGE, 'pm/spec/payops-domain-registry.json');
 const OPS = join(ROOT, 'docs/operations/payops-as-a-service.md');
 const OUT = join(ROOT, 'audit/evidence/payops-fleet-inventory-latest.json');
@@ -47,8 +48,22 @@ function scanConsumers(indicators, provider) {
 function main() {
   const gates = {};
   gates.register = { ok: existsSync(REGISTER) };
+  gates.substrateContract = { ok: existsSync(SUBSTRATE) };
   gates.domainRegistry = { ok: existsSync(DOMAIN_REGISTRY) };
   gates.opsDoc = { ok: existsSync(OPS) };
+
+  let webhookCount = 0;
+  if (existsSync(SUBSTRATE)) {
+    const sub = JSON.parse(readFileSync(SUBSTRATE, 'utf8'));
+    webhookCount = sub.webhookIngress?.length ?? 0;
+    gates.webhookMatrix = { ok: webhookCount >= 4, count: webhookCount };
+    gates.smPaths = {
+      ok: Boolean(sub.secretsManager?.stripe?.staging && sub.secretsManager?.flutterwave?.staging),
+    };
+  } else {
+    gates.webhookMatrix = { ok: false, count: 0 };
+    gates.smPaths = { ok: false };
+  }
 
   const stripeConsumers = scanConsumers(STRIPE_INDICATORS, 'stripe');
   const flutterwaveConsumers = scanConsumers(FLUTTERWAVE_INDICATORS, 'flutterwave');
@@ -72,7 +87,13 @@ function main() {
     gates.openP0 = { ok: false, count: 0 };
   }
 
-  const structuralOk = gates.register.ok && gates.domainRegistry.ok && gates.opsDoc.ok;
+  const structuralOk =
+    gates.register.ok &&
+    gates.substrateContract.ok &&
+    gates.domainRegistry.ok &&
+    gates.opsDoc.ok &&
+    gates.webhookMatrix.ok &&
+    gates.smPaths.ok;
 
   const witness = {
     schema: 'gtcx://fabric-os/payops-fleet-inventory/v1',
@@ -83,7 +104,8 @@ function main() {
     inventory: {
       stripeConsumers: stripeLive,
       flutterwaveConsumers: flutterwaveLive,
-      substrateStatus: 'planned',
+      substrateStatus: existsSync(SUBSTRATE) ? 'contract-defined' : 'planned',
+      webhookIngressCount: webhookCount,
     },
     openP0,
     ok: structuralOk,

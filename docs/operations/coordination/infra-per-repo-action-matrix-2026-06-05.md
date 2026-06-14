@@ -129,6 +129,22 @@ Full list: register §7 in gtcx-docs.
 
 ---
 
+## PayOps webhook ingress matrix
+
+> **SoR:** `pm/payops-substrate-contract.json` · **Ops lane:** PayOps (execution) · **Owner:** fabric-os WAF + EKS ingress
+
+| Repo          | Path                      | Provider    | Substrate consumer | WAF                |
+| ------------- | ------------------------- | ----------- | ------------------ | ------------------ |
+| terminal-os   | `/api/stripe/webhook`     | Stripe      | yes (ESO live)     | fabric-eks-ingress |
+| sensei-os     | `/stripe-webhook`         | Stripe      | pending migrate    | fabric-eks-ingress |
+| compliance-os | `/billing/stripe/webhook` | Stripe      | pending migrate    | fabric-eks-ingress |
+| nyota-ai      | `/webhooks/stripe`        | Stripe      | pending migrate    | fabric-eks-ingress |
+| griot-ai      | `/webhooks/flutterwave`   | Flutterwave | pending migrate    | fabric-eks-ingress |
+
+**SM paths:** `gtcx/shared/{staging,production}/payops/{stripe,flutterwave}` — see PayOps substrate contract.
+
+---
+
 ## Post-P0 handoffs (owner repos)
 
 | Repo           | Action                                                               |

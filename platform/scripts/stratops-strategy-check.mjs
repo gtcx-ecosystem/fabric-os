@@ -64,6 +64,15 @@ gates.liveProgrammes = {
   count: programmeCount,
 };
 
+const programmeLaneMap = strategyReg?.programmeLaneMap ?? [];
+const programmeIds = new Set((programmes?.programmes ?? []).map((p) => p.id));
+const mappedCount = programmeLaneMap.filter((m) => programmeIds.has(m.programmeId)).length;
+gates.programmeLaneMap = {
+  ok: programmeLaneMap.length >= 5 && mappedCount >= 5,
+  mapped: mappedCount,
+  total: programmeLaneMap.length,
+};
+
 const structuralOk = Object.values(gates).every((g) => g.ok);
 
 const witness = {

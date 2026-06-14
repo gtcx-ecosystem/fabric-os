@@ -78,6 +78,21 @@ function main() {
     gates.runners[id] = { ok: r.ok, exit: r.exit, script };
   }
 
+  for (const svc of spec.services ?? []) {
+    if (!svc.fleetCheck) continue;
+    if (svc.id === 'COMPASS' || svc.fleetCheck === 'fabric:compass:check') continue;
+    const ownerCwd = svc.harnessOwner === 'bridge-os' ? BRIDGE : ROOT;
+    const r = spawnSync('pnpm', [svc.fleetCheck], { cwd: ownerCwd, encoding: 'utf8', timeout: 120_000 });
+    const key = `fleet-${svc.id.toLowerCase()}`;
+    gates.runners[key] = {
+      ok: r.status === 0,
+      exit: r.status ?? 1,
+      fleetCheck: svc.fleetCheck,
+      serviceId: svc.id,
+      cwd: svc.harnessOwner ?? 'fabric-os',
+    };
+  }
+
   const registersOk = Object.values(gates.registers).every((g) => g.ok);
   const roadmapsOk = Object.values(gates.roadmaps).every((g) => g.ok);
   const coreRunnersOk = ['daas-friction', 'daas-cards', 'secas-friction', 'secas-approval', 'secas-cards'].every(

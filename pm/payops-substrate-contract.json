@@ -1,0 +1,72 @@
+{
+  "$schema": "gtcx://fabric-os/payops-substrate-contract/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-14",
+  "opsLane": "PayOps",
+  "owner": "fabric-os",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "principle": "Shared billing provider custody on fabric — product repos consume via ESO; RevOps never holds keys.",
+  "status": "contract-defined",
+  "secretsManager": {
+    "stripe": {
+      "staging": "gtcx/shared/staging/payops/stripe",
+      "production": "gtcx/shared/production/payops/stripe",
+      "keys": ["STRIPE_SECRET_KEY", "STRIPE_WEBHOOK_SECRET", "STRIPE_PUBLISHABLE_KEY"]
+    },
+    "flutterwave": {
+      "staging": "gtcx/shared/staging/payops/flutterwave",
+      "production": "gtcx/shared/production/payops/flutterwave",
+      "keys": ["FLUTTERWAVE_SECRET_KEY", "FLUTTERWAVE_PUBLIC_KEY", "FLUTTERWAVE_WEBHOOK_HASH"]
+    },
+    "legacyTerminalPath": {
+      "staging": "gtcx/terminal-os/staging/api-keys",
+      "production": "gtcx/terminal-os/production/api-keys",
+      "note": "Migrate to shared payops paths — terminal remains first substrate consumer"
+    }
+  },
+  "webhookIngress": [
+    {
+      "repo": "terminal-os",
+      "path": "/api/stripe/webhook",
+      "provider": "stripe",
+      "layer": "domain",
+      "substrateConsumer": true,
+      "waf": "fabric-eks-ingress"
+    },
+    {
+      "repo": "sensei-os",
+      "path": "/stripe-webhook",
+      "provider": "stripe",
+      "layer": "domain",
+      "substrateConsumer": "pending",
+      "waf": "fabric-eks-ingress"
+    },
+    {
+      "repo": "compliance-os",
+      "path": "/billing/stripe/webhook",
+      "provider": "stripe",
+      "layer": "domain",
+      "substrateConsumer": "pending",
+      "waf": "fabric-eks-ingress"
+    },
+    {
+      "repo": "nyota-ai",
+      "path": "/webhooks/stripe",
+      "provider": "stripe",
+      "layer": "domain",
+      "substrateConsumer": "pending",
+      "waf": "fabric-eks-ingress"
+    },
+    {
+      "repo": "griot-ai",
+      "path": "/webhooks/flutterwave",
+      "provider": "flutterwave",
+      "layer": "domain",
+      "substrateConsumer": "pending",
+      "waf": "fabric-eks-ingress"
+    }
+  ],
+  "meteringWitness": "audit/evidence/payops-metering-rollup-latest.json",
+  "harness": ["pnpm payops:providers:check:write"],
+  "frictionCloses": ["PAY-SUB-01", "PAY-SUB-02"]
+}

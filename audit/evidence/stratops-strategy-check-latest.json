@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/stratops-strategy-check/v1",
   "opsLane": "StratOps",
-  "checkedAt": "2026-06-14T10:25:40.382Z",
+  "checkedAt": "2026-06-14T10:31:26.922Z",
   "owner": "bridge-os",
   "registerHost": "bridge-os",
   "gates": {
@@ -48,9 +48,14 @@
     "fleetNorthStar": {
       "ok": true,
       "goal": "GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail"
+    },
+    "programmeLaneMap": {
+      "ok": true,
+      "mapped": 7,
+      "total": 7
     }
   },
   "openFrictionP0": 0,
-  "openFrictionTotal": 3,
+  "openFrictionTotal": 2,
   "ok": true
 }

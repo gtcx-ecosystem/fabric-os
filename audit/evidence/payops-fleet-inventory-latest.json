@@ -1,16 +1,26 @@
 {
   "schema": "gtcx://fabric-os/payops-fleet-inventory/v1",
   "opsLane": "PayOps",
-  "checkedAt": "2026-06-14T10:21:59.300Z",
+  "checkedAt": "2026-06-14T10:31:45.907Z",
   "owner": "fabric-os",
   "gates": {
     "register": {
+      "ok": true
+    },
+    "substrateContract": {
       "ok": true
     },
     "domainRegistry": {
       "ok": true
     },
     "opsDoc": {
+      "ok": true
+    },
+    "webhookMatrix": {
+      "ok": true,
+      "count": 5
+    },
+    "smPaths": {
       "ok": true
     },
     "stripeDuplication": {
@@ -21,8 +31,8 @@
     },
     "openP0": {
       "ok": true,
-      "count": 3,
-      "ids": ["PAY-FLEET-01", "PAY-FLEET-02", "PAY-SUB-01"]
+      "count": 2,
+      "ids": ["PAY-FLEET-01", "PAY-FLEET-02"]
     }
   },
   "inventory": {
@@ -54,8 +64,9 @@
         "paths": ["platform/src/api/routes/billing.ts", "billing/flutterwave.js"]
       }
     ],
-    "substrateStatus": "planned"
+    "substrateStatus": "contract-defined",
+    "webhookIngressCount": 5
   },
-  "openP0": 3,
+  "openP0": 2,
   "ok": true
 }

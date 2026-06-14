@@ -1,0 +1,39 @@
+{
+  "schema": "gtcx://fabric-os/fleet-threat-check/v1",
+  "opsLane": "SecOps",
+  "checkedAt": "2026-06-14T10:47:15.775Z",
+  "owner": "bridge-os",
+  "register": "bridge-os/pm/spec/fleet-threat-register.json",
+  "gates": {
+    "register": {
+      "ok": true
+    },
+    "riskRegisterLink": {
+      "ok": true
+    },
+    "socPlan": {
+      "ok": true
+    },
+    "anomalyDetector": {
+      "ok": true
+    },
+    "threatCount": {
+      "ok": true,
+      "count": 4
+    },
+    "internalFindings": {
+      "ok": true,
+      "count": 3
+    },
+    "threatIntelFeed": {
+      "ok": true,
+      "count": 1,
+      "note": "TI operationalization planned for SOC L3"
+    },
+    "socMaturity": {
+      "ok": true,
+      "target": "L3"
+    }
+  },
+  "ok": true
+}

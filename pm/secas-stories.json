@@ -274,6 +274,30 @@
         }
       ],
       "blockers": null
+    },
+    {
+      "id": "SECAS-S5-01",
+      "sprint": "SECAS-S5",
+      "title": "Unified fleet risk + active threat registers",
+      "priority": "P0",
+      "status": "in_progress",
+      "owner": "bridge-os",
+      "files": [
+        "bridge-os/pm/spec/fleet-risk-register.json",
+        "bridge-os/pm/spec/fleet-threat-register.json",
+        "audit/evidence/fleet-risk-check-latest.json",
+        "audit/evidence/fleet-threat-check-latest.json"
+      ],
+      "acceptance": ["pnpm fleet:risk:check:write", "pnpm fleet:threat:check:write"],
+      "uat": [
+        { "text": "Machine JSON risk register links SEC + legal + product threats", "done": true },
+        { "text": "Active threat register feeds SOC L3 plan", "done": true },
+        {
+          "text": "Product threat models non-stub (markets, terminal, intelligence)",
+          "done": false
+        }
+      ],
+      "blockers": "product repos own app threat model content — fabric indexes only"
     }
   ]
 }

@@ -38,6 +38,20 @@
       "status": "pending",
       "dependsOn": "SECAS-S2",
       "items": ["SEC-CSIRT-01", "SEC-SUPPLY-01", "SEC-VULN-01", "SEC-PTREM-01"]
+    },
+    {
+      "id": "SECAS-S5",
+      "name": "Continuous assurance (purple team, AI red-team, PQC, product threat models)",
+      "status": "pending",
+      "dependsOn": "SECAS-S4",
+      "items": [
+        "RISK-FLEET-01",
+        "THR-FLEET-01",
+        "SECAS-S5-02",
+        "SECAS-S5-03",
+        "SECAS-S5-04",
+        "SECAS-S5-05"
+      ]
     }
   ]
 }

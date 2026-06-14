@@ -1,0 +1,45 @@
+{
+  "schema": "gtcx://fabric-os/secas-supply-chain-check/v1",
+  "storyId": "SECAS-S4-02",
+  "frictionId": "SEC-SUPPLY-01",
+  "checkedAt": "2026-06-14T10:47:16.022Z",
+  "owner": "fabric-os",
+  "gates": {
+    "frictionItem": {
+      "ok": true,
+      "status": "pending",
+      "storyId": "SECAS-S4-02"
+    },
+    "repoProbe": {
+      "ok": true,
+      "repos": [
+        {
+          "repo": "fabric-os",
+          "present": true,
+          "packageJson": true
+        },
+        {
+          "repo": "markets-os",
+          "present": true,
+          "packageJson": true
+        },
+        {
+          "repo": "compliance-os",
+          "present": true,
+          "packageJson": true
+        },
+        {
+          "repo": "terminal-os",
+          "present": true,
+          "packageJson": true
+        }
+      ]
+    },
+    "ciPolicy": {
+      "ok": true,
+      "note": "Full Trivy/Semgrep fleet rollup queued — structural probe only"
+    }
+  },
+  "ok": true,
+  "phase": "structural"
+}

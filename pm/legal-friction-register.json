@@ -14,7 +14,28 @@
       "title": "Pen-test SOW sovereign sign-off",
       "blocksIR": false,
       "class": "S",
-      "productRepoPattern": "ops/legal/manifest.json → href only"
+      "productRepoPattern": "ops/legal/manifest.json → href only",
+      "linkedRisk": "bridge-os/pm/spec/fleet-risk-register.json#RISK-LEGAL-001"
+    },
+    {
+      "id": "LEGAL-SOC2-01",
+      "priority": "P1",
+      "status": "open",
+      "title": "SOC 2 Type I auditor MSA execution",
+      "blocksIR": false,
+      "class": "S",
+      "linkedRisk": "bridge-os/pm/spec/fleet-risk-register.json#RISK-LEGAL-002",
+      "note": "Sovereign approved — procurement parallel; harden like SECAS friction depth"
+    },
+    {
+      "id": "LEGAL-PROGRAM-01",
+      "priority": "P1",
+      "status": "open",
+      "title": "Legal friction register parity with SECAS harness depth",
+      "blocksIR": false,
+      "class": "R",
+      "harness": "pnpm ecosystem:legal-program:check:write",
+      "because": "Gap list item 6 — legal program needs machine witnesses like secas:*"
     }
   ]
 }

@@ -92,6 +92,38 @@ After pen-test ingest (`SECAS-S2-01`), the standing **SecOps engineering** wave 
 
 S4 friction: `SEC-CSIRT-01`, `SEC-SUPPLY-01`, `SEC-VULN-01`, `SEC-PTREM-01` in `pm/security-friction-register.json`.
 
+```bash
+pnpm secas:supply-chain:check:write   # SECAS-S4-02 structural (no vendor dep)
+```
+
+## SECAS-S5 — Continuous assurance (queued)
+
+| Doc            | Path                                                             |
+| -------------- | ---------------------------------------------------------------- |
+| Program        | `docs/operations/secas/SECAS-S5-continuous-assurance-program.md` |
+| Fleet risk SoR | `bridge-os/pm/spec/fleet-risk-register.json`                     |
+| Active threats | `bridge-os/pm/spec/fleet-threat-register.json`                   |
+| PQC register   | `bridge-os/pm/spec/crypto-agility-register.json`                 |
+
+```bash
+pnpm fleet:risk:check:write
+pnpm fleet:threat:check:write
+```
+
+## World-class gap status (2026-06-14)
+
+| Priority | Item                                                      | Status                                                        |
+| -------- | --------------------------------------------------------- | ------------------------------------------------------------- |
+| 1        | Unified fleet risk register (machine JSON)                | **in_progress** — register + harness; product TM stubs remain |
+| 2        | Active threat register → SOC L3                           | **in_progress** — register + harness; TI feed planned         |
+| 3        | Product AI threat models (markets, terminal, Mythos)      | **open** — stubs/missing in owner repos                       |
+| 4        | SECAS-S4 harnesses (CSIRT, supply-chain, vuln)            | **partial** — S4-02 structural PASS; CSIRT/vuln pending       |
+| 5        | SECAS-S5 proposal (purple team, bounty, PQC, AI red-team) | **drafted** — roadmap + program doc                           |
+| 6        | Legal program parity                                      | **thin** — `legal-friction-register` minimal vs SECAS depth   |
+| 7        | SOC L2→L3 (SIEM, on-call, anomaly→IR)                     | **planned** — `soc-operations.md` L2 partial                  |
+
+**Resolved?** SECAS-S4/S5 **blueprint** yes (SoR pattern matches compliance/legal). **Harnesses + product threat content** — not yet world-class.
+
 ## Cross-repo false blocks (baseline-os M3 pattern)
 
 Repos that label Class S items **blocked** on security/compliance are usually **false blocks** per

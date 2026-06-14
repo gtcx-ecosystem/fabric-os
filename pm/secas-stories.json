@@ -54,9 +54,9 @@
     {
       "id": "SECAS-S2-01",
       "sprint": "SECAS-S2",
-      "title": "Live-stack pen-test execution window",
+      "title": "Pen-test ingest scaffolding (internal prep)",
       "priority": "P0",
-      "status": "in_progress",
+      "status": "done",
       "owner": "fabric-os",
       "frictionIds": ["SEC-PENTEST-01"],
       "files": [
@@ -88,9 +88,14 @@
           "done": true,
           "note": "2026-06-12 — ingest-ready + window-execution-ready witnesses; secas:pentest:ingest:check pre-window PASS; dry-run fixture validated"
         },
-        { "text": "Report ingested to audit/evidence/", "done": false }
+        {
+          "text": "Report ingested to audit/evidence/",
+          "done": false,
+          "note": "Post-launch external — BG-10-10-REPORT + internal ingest ceremony; NOT internal roadmap"
+        }
       ],
-      "blockers": "awaiting_vendor_report — calendar gate 2026-06-17..21; pnpm secas:pentest:report:ingest when delivered"
+      "blockers": null,
+      "postLaunchExternal": ["BG-10-10", "BG-10-10-REPORT"]
     },
     {
       "id": "SECAS-S3-01",
@@ -252,7 +257,7 @@
           "done": false
         }
       ],
-      "blockers": "awaiting_vendor_report — ingest first via secas:pentest:report:ingest"
+      "blockers": "postLaunchExternal BG-10-10-REPORT — then SECAS-S4-04 remediation track"
     },
     {
       "id": "SECAS-S4-05",

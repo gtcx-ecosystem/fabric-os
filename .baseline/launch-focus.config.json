@@ -19,25 +19,10 @@
   "implementStatuses": ["pending", "in_progress"],
   "parseOpenIds": [],
   "staticImplement": [],
-  "staticWitness": [
-    {
-      "storyId": "SECAS-S2-01",
-      "title": "Pen-test window witness prep — report ingest scaffolding",
-      "workClass": "ops-docs",
-      "lane": "secas",
-      "because": "SECAS-S2 in_progress; window 2026-06-17..21"
-    }
-  ],
-  "staticHuman": [
-    {
-      "storyId": "EXT-INF-013",
-      "title": "ZWCMP pilot owner + cadence call",
-      "authorityClass": "S",
-      "owner": "Leadership",
-      "lane": "zwcmp-unblock",
-      "because": "Class S human gate — blocksIR false"
-    }
-  ],
+  "staticWitness": [],
+  "staticHuman": [],
+  "postLaunchExternalSoR": "ops/coordination/post-launch-external-gates.json",
+  "internalHumanSoR": "ops/coordination/internal-human-gates.json",
   "planningQueue": [],
   "forbidden": [
     "Ask operator to run master-audit before starting work",

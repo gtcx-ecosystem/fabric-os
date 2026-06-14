@@ -50,36 +50,39 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 | GTM audit         | `audit/gtm-audit-2026-06-05.md` · witness `audit/evidence/gtm-audit-latest.json` |
 
 **Cross-repo:** S-XR-1 **closed** — XR-101/201 done. S-XR-2 **closed** — XR-202/301/302 done. S-XR-3: XR-401 **done**, XR-402 **ready**, XR-405 **done**. S-XR-4: XR-507 **done**, XR-508 **done**.
-**Approval needed (Class S — parallel, `blocksIR: false`):** EXT-INF-002/013/014/015/016 — do **not** freeze implement queue. Nav: [human-gate-navigation](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/01-docs/04-ops/human-gate-navigation.md).  
-**Non-selectable in P22 (external class):** same IDs + S4-03, XR-403–404 — agents skip **that story ID**, not all IR.
+
+**External/vendor gates — NOT on this register:** [`ops/coordination/post-launch-external-gates.json`](../../ops/coordination/post-launch-external-gates.json) (BG-10-10, BG-10-11, vendor report). **Internal human — NOT P22:** [`ops/coordination/internal-human-gates.json`](../../ops/coordination/internal-human-gates.json).
+
+**Forbidden:** Listing EXT-INF-_ or BG-10-_ on internal execution roadmaps, launch-focus human queue, or P22 next work.
 
 ## Work register (Protocol 22 — explicit backlog)
 
-| ID                        | Title                                                          | P   | Status      | Class    |
-| ------------------------- | -------------------------------------------------------------- | --- | ----------- | -------- |
-| IR-2.1                    | Dependabot tier-3 merges                                       | P2  | blocked     | external |
-| IR-2.2                    | AI SDK v5→v6 migration branch + eval regression                | P1  | done        | code     |
-| IR-2.3                    | CodeQL/Trivy SARIF upload graceful when Code Security disabled | P0  | done        | code     |
-| IR-3.1                    | WORM upload workflow                                           | P1  | done        | code     |
-| IR-3.2                    | Document operator live path for runtime-evidence-check         | P1  | done        | ops-docs |
-| IR-3.4                    | Expand `gtcx-ctl validate-environment` in CI                   | P1  | done        | code     |
-| IR-3.5                    | Refresh DR fire-drill dated artifact                           | P1  | done        | ops-docs |
-| IR-4.1                    | USSD path soak test in CI                                      | P1  | done        | code     |
-| IR-5.1                    | Cross-repo-contract token                                      | P2  | done        | code     |
-| IR-5.2                    | Re-run ecosystem-repo-review; ledger ≥9.0 matrix green         | P2  | done        | ops-docs |
-| LAUNCH-PLAN-01            | Reconcile execution-roadmap + work register                    | P1  | done        | plan     |
-| LAUNCH-PLAN-02            | Refresh auto-dev-state for launch/GTM                          | P1  | done        | plan     |
-| LAUNCH-PLAN-03            | Global South 10x plan status row update                        | P1  | done        | plan     |
-| GTM-AUDIT                 | Lane-5 GTM completeness audit                                  | P1  | done        | plan     |
-| S2-13                     | Pen-test SOW signature                                         | P0  | blocked     | external |
-| S4-03                     | PRD-002 Tier B: align TradePass DID doc resolver contract      | P1  | blocked     | external |
-| P22-INFRA-01              | Protocol 22 adoption — manifest + script + CI                  | P0  | done        | ops-docs |
-| S4-04                     | deployment-guard typecheck regression                          | P1  | done        | code     |
-| S4-05                     | audit-signer + compliance-gateway lint regressions             | P1  | done        | code     |
-| S4-06                     | README gaps (12 dirs) per repo-hygiene audit                   | P0  | done        | code     |
-| S4-07                     | pnpm test quick 1/359 flake investigation                      | P2  | done        | code     |
-| SECAS-S2-01               | Live-stack pen-test execution window                           | P0  | in_progress | ops-docs |
-| XR-FABRIC-SPRINT-AUTH-001 | Sprint authority L2 read contract witness                      | P1  | done        | ops-docs |
+| ID                        | Title                                                          | P   | Status  | Class    |
+| ------------------------- | -------------------------------------------------------------- | --- | ------- | -------- |
+| IR-2.1                    | Dependabot tier-3 merges                                       | P2  | blocked | external |
+| IR-2.2                    | AI SDK v5→v6 migration branch + eval regression                | P1  | done    | code     |
+| IR-2.3                    | CodeQL/Trivy SARIF upload graceful when Code Security disabled | P0  | done    | code     |
+| IR-3.1                    | WORM upload workflow                                           | P1  | done    | code     |
+| IR-3.2                    | Document operator live path for runtime-evidence-check         | P1  | done    | ops-docs |
+| IR-3.4                    | Expand `gtcx-ctl validate-environment` in CI                   | P1  | done    | code     |
+| IR-3.5                    | Refresh DR fire-drill dated artifact                           | P1  | done    | ops-docs |
+| IR-4.1                    | USSD path soak test in CI                                      | P1  | done    | code     |
+| IR-5.1                    | Cross-repo-contract token                                      | P2  | done    | code     |
+| IR-5.2                    | Re-run ecosystem-repo-review; ledger ≥9.0 matrix green         | P2  | done    | ops-docs |
+| LAUNCH-PLAN-01            | Reconcile execution-roadmap + work register                    | P1  | done    | plan     |
+| LAUNCH-PLAN-02            | Refresh auto-dev-state for launch/GTM                          | P1  | done    | plan     |
+| LAUNCH-PLAN-03            | Global South 10x plan status row update                        | P1  | done    | plan     |
+| GTM-AUDIT                 | Lane-5 GTM completeness audit                                  | P1  | done    | plan     |
+| S2-13                     | Pen-test SOW signature                                         | P0  | done    | external |
+| S4-03                     | PRD-002 Tier B: align TradePass DID doc resolver contract      | P1  | blocked | external |
+| P22-INFRA-01              | Protocol 22 adoption — manifest + script + CI                  | P0  | done    | ops-docs |
+| S4-04                     | deployment-guard typecheck regression                          | P1  | done    | code     |
+| S4-05                     | audit-signer + compliance-gateway lint regressions             | P1  | done    | code     |
+| S4-06                     | README gaps (12 dirs) per repo-hygiene audit                   | P0  | done    | code     |
+| S4-07                     | pnpm test quick 1/359 flake investigation                      | P2  | done    | code     |
+| SECAS-S2-01               | Pen-test ingest scaffolding (internal prep)                    | P0  | done    | ops-docs |
+| SECAS-S4-02               | Fleet supply-chain security gates                              | P0  | pending | code     |
+| XR-FABRIC-SPRINT-AUTH-001 | Sprint authority L2 read contract witness                      | P1  | done    | ops-docs |
 
 ## Implementation classes
 
@@ -99,7 +102,8 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 ## Forbidden
 
 - Asking the user which story to pick when this manifest and roadmap exist.
-- Starting external-class stories (EXT-INF-002/013/014/015/016, S4-03, INF-86 post-ceremony) without explicit human authorization.
+- Starting external-class stories (S4-03, XR-403–404, EXT-INF-_, BG-10-_, S2-13 vendor tail) without explicit human authorization.
+- Raising post-launch external gates on internal roadmaps, launch-focus, or P22 (use post-launch-external-gates.json only).
 - Silently skipping a story that is implementable in the current frame.
 
 ## After each story

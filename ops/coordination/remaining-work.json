@@ -12,13 +12,12 @@
     {
       "id": "SECAS-S2-01",
       "storyId": "SECAS-S2-01",
-      "title": "Pen-test window execution + vendor report ingest",
+      "title": "Pen-test ingest scaffolding (internal prep)",
       "ownerRepo": "fabric-os",
-      "status": "in_progress",
-      "blockedUntil": "2026-06-21",
+      "status": "done",
       "authority": "R",
-      "p22": true,
-      "notes": "Ingest Class A approved 2026-06-12; awaiting vendor report post 2026-06-21; pre-window gates PASS"
+      "p22": false,
+      "notes": "Internal prep complete 2026-06-14; vendor execution/report → postLaunchExternal SoR only"
     },
     {
       "id": "XR-MKT-PROTOCOL-NATIVE-001-GT",
@@ -69,20 +68,18 @@
       "handoff": "docs/operations/coordination/to-bridge-os-init-world-class-secops-2026-06-14.md",
       "ack": "bridge-os/docs/operations/coordination/from-fabric-os-init-world-class-secops-raise-2026-06-14.md",
       "blocksIR": false
-    },
-    {
-      "id": "EXT-INF-013",
-      "title": "ZWCMP pilot owner + cadence",
-      "ownerRepo": "Leadership",
-      "status": "approved",
-      "authority": "S",
-      "witness": "audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json",
-      "seal": "docs/operations/coordination/from-fabric-os-ext-inf-013-approved-2026-06-12.md",
-      "postApprovalOwner": "GTM / Program Lead",
-      "unblocks": ["EXT-INF-014"],
-      "blocksIR": false
     }
   ],
+  "postLaunchExternal": {
+    "soR": "ops/coordination/post-launch-external-gates.json",
+    "agentRoadmapEligible": false,
+    "note": "Vendor/auditor calendar — NOT internal roadmap or P22"
+  },
+  "internalHuman": {
+    "soR": "ops/coordination/internal-human-gates.json",
+    "agentRoadmapEligible": false,
+    "note": "GTCX team actions — NOT agent P22"
+  },
   "siblingWitness": [
     {
       "id": "markets-os-SPR-82",

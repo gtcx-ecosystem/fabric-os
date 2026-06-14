@@ -1,0 +1,66 @@
+{
+  "$schema": "gtcx://fabric-os/post-launch-external-gates/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-14",
+  "normativeDoc": "docs/operations/agent-work-selection.md",
+  "principle": "External/vendor/auditor artifacts — NOT on internal execution roadmaps, NOT P22-selectable, NOT launch-focus human queue.",
+  "agentRoadmapEligible": false,
+  "p22Selectable": false,
+  "statusUpdateSection": "Post-launch external (calendar witness only — omit from internal roadmap)",
+  "gates": [
+    {
+      "id": "BG-10-10",
+      "aliases": ["EXT-INF-002-VENDOR-EXEC", "H-05-VENDOR", "SEC-PENTEST-01-EXEC"],
+      "title": "Vendor live-stack pen-test execution",
+      "actor": "external-vendor",
+      "actorName": "Contracted pen-test vendor (SensePost)",
+      "authorityClass": "A",
+      "blocksIR": false,
+      "blocksClaims": ["pen-test complete"],
+      "window": "2026-06-17..2026-06-21",
+      "unblockAction": "Vendor executes test during contracted window; delivers report file",
+      "internalFollowUp": "SECAS-S2-01-INGEST ceremony after file lands (internal — see internal-human-gates.json)",
+      "witness": "audit/evidence/pen-test-window-2026-06-10.json"
+    },
+    {
+      "id": "BG-10-10-REPORT",
+      "aliases": ["SEC-PENTEST-01-REPORT"],
+      "title": "Vendor pen-test report delivery",
+      "actor": "external-vendor",
+      "authorityClass": "A",
+      "blocksIR": false,
+      "blocksClaims": ["pen-test complete", "SECAS-S2 UAT"],
+      "earliest": "2026-06-21",
+      "unblockAction": "Vendor delivers signed report JSON/PDF to GTCX intake path",
+      "internalFollowUp": "pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>"
+    },
+    {
+      "id": "BG-10-11",
+      "aliases": ["EXT-INF-016-OPINION", "BL-SOC2-01-OPINION"],
+      "title": "SOC 2 Type I auditor opinion letter",
+      "actor": "external-auditor",
+      "authorityClass": "S",
+      "blocksIR": false,
+      "blocksClaims": ["SOC 2 attested", "SOC 2 Type I attested"],
+      "unblockAction": "External auditor publishes Type I opinion letter",
+      "note": "Auditor engagement/MSA approved internally 2026-06-10 — opinion artifact is external only"
+    }
+  ],
+  "forbiddenOnInternalRoadmap": [
+    "EXT-INF-002",
+    "EXT-INF-013",
+    "EXT-INF-014",
+    "EXT-INF-015",
+    "EXT-INF-016",
+    "BG-10-10",
+    "BG-10-11",
+    "SECAS-S2-01-INGEST",
+    "S2-13"
+  ],
+  "agentInstructions": [
+    "Do NOT list post-launch external gates in agent-work-selection work register tables.",
+    "Do NOT select EXT-INF-* or BG-10-10/11 in P22.",
+    "Do NOT put vendor/auditor gates in launch-focus human or implement workSet.",
+    "Calendar witness only — optional one-line in Status Update Post-launch external section."
+  ]
+}

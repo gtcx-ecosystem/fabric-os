@@ -1,0 +1,70 @@
+{
+  "$schema": "gtcx://fabric-os/internal-human-gates/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-14",
+  "normativeDoc": "docs/operations/human-gate-navigation.md",
+  "principle": "GTCX team (@amanianai, Legal, Security, GTM) — NOT agent P22; NOT internal execution roadmap stories.",
+  "agentRoadmapEligible": false,
+  "p22Selectable": false,
+  "statusUpdateSection": "Internal human (GTCX — not agent)",
+  "gates": [
+    {
+      "id": "EXT-INF-014",
+      "title": "ZWCMP DPA + pilot agreement signature",
+      "owner": "Founder / Legal / GTM",
+      "authorityClass": "S",
+      "status": "open",
+      "blocksIR": false,
+      "unblockAction": "Sign DPA + pilot PDFs; file under audit/vendor-outreach/zwcmp/"
+    },
+    {
+      "id": "EXT-INF-015",
+      "title": "Indemnified SLA legal review + insurance quote",
+      "owner": "Legal / GTM",
+      "authorityClass": "S",
+      "status": "open",
+      "blocksIR": false,
+      "unblockAction": "Legal memo + insurance quote on verification-sla-draft.md base"
+    },
+    {
+      "id": "SECAS-S2-01-INGEST",
+      "title": "Pen-test report ingest ceremony (after vendor file)",
+      "owner": "Security / fabric-os",
+      "authorityClass": "A",
+      "status": "approved",
+      "blocksIR": false,
+      "calendarGate": "2026-06-21",
+      "unblockAction": "Place vendor report JSON; pnpm secas:pentest:report:ingest -- --input=<file>",
+      "dependsOnPostLaunch": ["BG-10-10-REPORT"]
+    },
+    {
+      "id": "H-03",
+      "title": "Sovereign CSP countersign ceremony",
+      "owner": "Designated internal human (gtcx-agentic)",
+      "authorityClass": "S",
+      "status": "awaiting-human",
+      "blocksIR": false,
+      "unblockAction": "gtcx-agentic H-03 ceremony witness"
+    }
+  ],
+  "closed": [
+    {
+      "id": "EXT-INF-002",
+      "title": "Pen-test vendor SOW",
+      "status": "approved",
+      "closedAt": "2026-06-10"
+    },
+    {
+      "id": "EXT-INF-013",
+      "title": "ZWCMP pilot owner + cadence",
+      "status": "approved",
+      "closedAt": "2026-06-12"
+    },
+    {
+      "id": "BL-SOC2-01",
+      "title": "SOC 2 Type I auditor engagement + MSA",
+      "status": "approved",
+      "closedAt": "2026-06-10"
+    }
+  ]
+}

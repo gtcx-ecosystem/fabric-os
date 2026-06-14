@@ -114,13 +114,22 @@ function main() {
   lines.push('');
   for (const story of activeStories) lines.push(renderStory(story));
 
-  lines.push('## Class S — Approval needed (parallel, blocksIR false)');
+  lines.push('## Post-launch external (NOT internal roadmap)');
   lines.push('');
-  lines.push('| ID | Status | Title |');
-  lines.push('| --- | --- | --- |');
-  for (const item of sovereign.items ?? []) {
-    lines.push(`| ${item.id} | ${item.status} | ${item.title} |`);
-  }
+  lines.push('> Vendor/auditor calendar artifacts — **excluded from P22 and agent work.**');
+  lines.push('> SoR: [`ops/coordination/post-launch-external-gates.json`](../../ops/coordination/post-launch-external-gates.json)');
+  lines.push('');
+  lines.push('| ID | Actor | Window / earliest | blocksIR |');
+  lines.push('| --- | --- | --- | --- |');
+  lines.push('| BG-10-10 | External pen-test vendor | 2026-06-17..21 | false |');
+  lines.push('| BG-10-10-REPORT | External pen-test vendor | post 2026-06-21 | false |');
+  lines.push('| BG-10-11 | External auditor (SOC 2 opinion) | parallel track | false |');
+  lines.push('');
+  lines.push('## Internal human (GTCX — NOT agent P22)');
+  lines.push('');
+  lines.push('> SoR: [`ops/coordination/internal-human-gates.json`](../../ops/coordination/internal-human-gates.json)');
+  lines.push('');
+  lines.push('_Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SOC2-01 engagement_');
   lines.push('');
 
   lines.push('## Future Phases');

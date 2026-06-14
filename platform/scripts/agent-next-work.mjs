@@ -48,6 +48,10 @@ const OPS_DOCS_RE = /\b(Author `docs\/|manifest|Protocol \d+|roadmap reconcile|r
 const EXTERNAL_RE =
   /\b(human selection|human SOW|CISO decision|Supabase unpause|DNS zone:write|protocols contract|pen-test vendor|npm publish|EXT-INF|legal review|insurance quote|indemnified|DPA|pilot agreement|human signature)\b/i;
 
+/** Never P22-selectable — post-launch external or internal-human SoR only */
+const POST_LAUNCH_OR_HUMAN_ID_RE =
+  /^(EXT-INF-\d+|BG-10-10|BG-10-11|BG-10-10-REPORT|S2-13|H-03|H-05|BL-SOC2-01|SECAS-S2-01-INGEST)$/;
+
 function parsePriority(p) {
   const n = Number.parseInt(String(p).replace(/\D/g, ''), 10);
   return Number.isFinite(n) ? n : 9;
@@ -164,7 +168,13 @@ function parseSessionInProgress(md) {
   return inProgress;
 }
 
+function isP22Selectable(story) {
+  if (POST_LAUNCH_OR_HUMAN_ID_RE.test(story.id)) return false;
+  return true;
+}
+
 function isAutomatable(story, frame) {
+  if (!isP22Selectable(story)) return false;
   if (['blocked', 'done', 'deferred'].includes(story.status)) return false;
   if (frame === 'development') {
     if (story.implementationClass === 'external' || story.implementationClass === 'evidence-capture') {

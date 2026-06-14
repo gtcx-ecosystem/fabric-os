@@ -37,11 +37,19 @@ pnpm agent:next-work
 
 ## Three lanes (never conflate)
 
-| Lane                | Who                         | Blocks code merges?        | Blocks claims?          | P26 bucket                               |
-| ------------------- | --------------------------- | -------------------------- | ----------------------- | ---------------------------------------- |
-| **Implement**       | Agent Class R               | No                         | No                      | **Next priority**                        |
-| **Witness**         | Agent Class R in owner repo | No                         | No                      | **Next priority** or **Sibling witness** |
-| **Approval needed** | Human Class S/A             | **No** (`blocksIR: false`) | Yes — named claims only | **Approval needed**                      |
+| Lane                     | Who                           | On internal roadmap?                       | P22?   | P26 bucket                               |
+| ------------------------ | ----------------------------- | ------------------------------------------ | ------ | ---------------------------------------- |
+| **Implement**            | Agent Class R                 | Yes                                        | Yes    | **Next work item**                       |
+| **Internal human**       | GTCX team (@amanianai, Legal) | **No** — `internal-human-gates.json`       | **No** | **Internal human** (omit from agent)     |
+| **Post-launch external** | Vendor / auditor              | **No** — `post-launch-external-gates.json` | **No** | **Post-launch external** (calendar only) |
+
+Legacy table (still valid for blocksIR semantics):
+
+| Lane                | Who                         | Blocks code merges?        | Blocks claims?          |
+| ------------------- | --------------------------- | -------------------------- | ----------------------- |
+| **Implement**       | Agent Class R               | No                         | No                      |
+| **Witness**         | Agent Class R in owner repo | No                         | No                      |
+| **Approval needed** | Human Class S/A (internal)  | **No** (`blocksIR: false`) | Yes — named claims only |
 
 **`blocked` in a work register** on an EXT-INF row means **do not auto-select that story ID** — it does **not** mean stop other IR/witness work.
 

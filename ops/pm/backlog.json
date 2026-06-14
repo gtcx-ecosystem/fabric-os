@@ -4,11 +4,11 @@
   "updated": "2026-06-14",
   "syncSource": "pnpm pm:sync",
   "active": {
-    "storyId": "SECAS-S2-01",
-    "title": "Live-stack pen-test execution window",
-    "status": "in_progress",
-    "owner": null,
-    "tier": "resume-in_progress"
+    "storyId": "SECAS-S4-02",
+    "title": "Fleet supply-chain security gates",
+    "status": "pending",
+    "owner": "fabric-os",
+    "tier": "secas-s4-implement"
   },
   "backlogClear": false,
   "stories": [
@@ -39,9 +39,9 @@
   ],
   "crossRepoRefs": [
     {
-      "id": "SECAS-S2-01",
+      "id": "SECAS-S4-02",
       "ownerRepo": "fabric-os",
-      "status": "in_progress",
+      "status": "pending",
       "traceId": null
     },
     {
@@ -66,12 +66,6 @@
       "id": "INIT-GTCX-TWO-PRODUCT-DEPLOY-WITNESS",
       "ownerRepo": "gtcx-os",
       "status": "deferred",
-      "traceId": null
-    },
-    {
-      "id": "EXT-INF-013",
-      "ownerRepo": "Leadership",
-      "status": "approved",
       "traceId": null
     }
   ],

@@ -22,8 +22,8 @@
     },
     {
       "id": "SECAS-S2",
-      "name": "Pen-test execution post EXT-INF-002 approval",
-      "status": "in_progress",
+      "name": "Pen-test ingest scaffolding (internal prep complete)",
+      "status": "complete",
       "items": ["SEC-PENTEST-01"]
     },
     {

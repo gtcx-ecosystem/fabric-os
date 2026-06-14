@@ -384,7 +384,55 @@
       "to": "audit/archive/2026-06-13/audit/evidence/session-triage-domain-model-2026-06-12.json",
       "reason": "stale-dated-active-tree",
       "at": "2026-06-13T16:55:05.220Z"
+    },
+    {
+      "from": "audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json",
+      "to": "audit/archive/2026-06-13/audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-13T22:38:35.954Z"
+    },
+    {
+      "from": "audit/evidence/pen-test-report-ingest-ready-2026-06-12.json",
+      "to": "audit/archive/2026-06-13/audit/evidence/pen-test-report-ingest-ready-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-13T22:38:35.954Z"
+    },
+    {
+      "from": "audit/evidence/protocol-verifier-deploy-ready-2026-06-12.json",
+      "to": "audit/archive/2026-06-13/audit/evidence/protocol-verifier-deploy-ready-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-13T22:38:35.954Z"
+    },
+    {
+      "from": "audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json",
+      "to": "audit/archive/2026-06-13/audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-13T22:38:35.954Z"
+    },
+    {
+      "from": "audit/evidence/secas-pentest-report-ingest-approval-2026-06-12.json",
+      "to": "audit/archive/2026-06-13/audit/evidence/secas-pentest-report-ingest-approval-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-13T22:38:35.954Z"
+    },
+    {
+      "from": "audit/dr-fire-drill-evidence-2026-05-31.md",
+      "to": "audit/archive/2026-06-14/audit/dr-fire-drill-evidence-2026-05-31.md",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-14T05:47:30.460Z"
+    },
+    {
+      "from": "audit/evidence/roadmap-automatable-exhaust-2026-06-12.json",
+      "to": "audit/archive/2026-06-14/audit/evidence/roadmap-automatable-exhaust-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-14T05:47:30.460Z"
+    },
+    {
+      "from": "audit/pen-test-intake-evidence-2026-05-31.md",
+      "to": "audit/archive/2026-06-14/audit/pen-test-intake-evidence-2026-05-31.md",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-14T05:47:30.460Z"
     }
   ],
-  "updated": "2026-06-13T16:55:05.220Z"
+  "updated": "2026-06-14T05:47:30.460Z"
 }

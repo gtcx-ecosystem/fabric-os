@@ -1,8 +1,10 @@
 {
   "$schema": "gtcx://workspace/remaining-work/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-12",
-  "reconciledAt": "2026-06-12T21:58:00.000Z",
+  "updated": "2026-06-14",
+  "reconciledAt": "2026-06-14T12:00:00.000Z",
+  "forensicPack": "pm/ci/session-forensic-2026-06-14.md",
+  "reconcileWitness": "audit/evidence/session-open-items-reconcile-2026-06-14.json",
   "sessionOpenItems": "pm/ci/session-open-items-latest.json",
   "bridgeHandoff": "docs/operations/coordination/from-bridge-os-session-open-items-handoff-ack-2026-06-12.md",
   "sessionRef": "fabric-os-domain-model-2026-06-12",
@@ -80,6 +82,30 @@
     }
   ],
   "closedRecently": [
+    {
+      "id": "SECAS-S4-01",
+      "title": "CSIRT operating model + IR runbook",
+      "ownerRepo": "fabric-os",
+      "status": "done",
+      "witness": "7320a41 · secas:csirt:check:write PASS",
+      "closedAt": "2026-06-14"
+    },
+    {
+      "id": "INIT-STRATOPS",
+      "title": "StratOps strategy registry + harness",
+      "ownerRepo": "fabric-os",
+      "status": "done",
+      "witness": "stratops:strategy:check:write PASS",
+      "closedAt": "2026-06-14"
+    },
+    {
+      "id": "INIT-ECOSYSTEMOPS",
+      "title": "EcosystemOps network registry + harness",
+      "ownerRepo": "fabric-os",
+      "status": "done",
+      "witness": "ecosystemops:network:check:write PASS",
+      "closedAt": "2026-06-14"
+    },
     {
       "id": "S4-07",
       "title": "pnpm test P35 deploy/platform path drift",

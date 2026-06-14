@@ -3,16 +3,17 @@
 **Initiative:** `INIT-GTCX-INFRA-SECAS` · **Protocol:** P42  
 **Primary owner:** gtcx-infrastructure (co-primary with DaaS — not bridge-os program office)
 
-| Artifact             | Path                                                    |
-| -------------------- | ------------------------------------------------------- |
-| Ops entry            | [security-as-a-service.md](../security-as-a-service.md) |
-| Roadmap              | `pm/secas-roadmap.json`                                 |
-| Stories              | `pm/secas-stories.json`                                 |
-| Operational friction | `pm/security-friction-register.json`                    |
-| Class S sovereign    | `pm/sovereign-approval-register.json`                   |
-| Execution roadmap    | `audit/product-management/secas-execution-roadmap.md`   |
-| Task inbox           | `pm/_tasks` — `INIT-GTCX-INFRA-SECAS`                   |
-| Fleet harness        | `pnpm --dir ../bridge-os ecosystem:secas:check`         |
+| Artifact             | Path                                                                                   |
+| -------------------- | -------------------------------------------------------------------------------------- |
+| Ops entry            | [security-as-a-service.md](../security-as-a-service.md)                                |
+| Roadmap              | `pm/secas-roadmap.json`                                                                |
+| Stories              | `pm/secas-stories.json`                                                                |
+| Operational friction | `pm/security-friction-register.json`                                                   |
+| Class S sovereign    | `pm/sovereign-approval-register.json`                                                  |
+| Execution roadmap    | `audit/product-management/secas-execution-roadmap.md`                                  |
+| S4 program           | [SECAS-S4-security-engineering-program.md](./SECAS-S4-security-engineering-program.md) |
+| Task inbox           | `pm/_tasks` — `INIT-GTCX-INFRA-SECAS`                                                  |
+| Fleet harness        | `pnpm --dir ../bridge-os ecosystem:secas:check`                                        |
 
 ```bash
 pnpm secas:friction:check

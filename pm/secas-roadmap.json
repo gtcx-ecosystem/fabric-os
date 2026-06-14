@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/secas-roadmap/v1",
   "version": "1.0.0",
-  "updated": "2026-06-10",
+  "updated": "2026-06-14",
   "program": "Security-as-a-Service",
   "initiative": "INIT-GTCX-INFRA-SECAS",
   "protocol": "P42-SECURITY-AS-A-SERVICE",
@@ -29,6 +29,13 @@
       "name": "Fleet IRSA + WAF hardening cards",
       "status": "complete",
       "items": []
+    },
+    {
+      "id": "SECAS-S4",
+      "name": "Security engineering operating program (CSIRT, supply chain, vuln cadence)",
+      "status": "pending",
+      "dependsOn": "SECAS-S2",
+      "items": ["SEC-CSIRT-01", "SEC-SUPPLY-01", "SEC-VULN-01", "SEC-PTREM-01"]
     }
   ]
 }

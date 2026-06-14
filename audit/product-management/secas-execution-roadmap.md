@@ -1,8 +1,8 @@
 ---
 title: Execution roadmap — Security-as-a-Service
 status: current
-date: 2026-06-13
-last_reconciled: 2026-06-13T21:11:36.333Z
+date: 2026-06-14
+last_reconciled: 2026-06-14T09:29:20.082Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true
@@ -63,10 +63,11 @@ pnpm secas:pentest:ingest:check:write
 
 ## Future Phases
 
-| Sprint   | Goal                                       | Status   | Owner     | Stories / Friction |
-| -------- | ------------------------------------------ | -------- | --------- | ------------------ |
-| SECAS-S1 | Sovereign register + security friction SoR | complete | fabric-os |                    |
-| SECAS-S3 | Fleet IRSA + WAF hardening cards           | complete | fabric-os |                    |
+| Sprint   | Goal                                                                       | Status   | Owner     | Stories / Friction                                             |
+| -------- | -------------------------------------------------------------------------- | -------- | --------- | -------------------------------------------------------------- |
+| SECAS-S1 | Sovereign register + security friction SoR                                 | complete | fabric-os |                                                                |
+| SECAS-S3 | Fleet IRSA + WAF hardening cards                                           | complete | fabric-os |                                                                |
+| SECAS-S4 | Security engineering operating program (CSIRT, supply chain, vuln cadence) | pending  | fabric-os | `SEC-CSIRT-01`, `SEC-SUPPLY-01`, `SEC-VULN-01`, `SEC-PTREM-01` |
 
 ## Issue Reconciliation
 
@@ -75,6 +76,10 @@ pnpm secas:pentest:ingest:check:write
 | `SEC-PENTEST-01`             | `pm/security-friction-register.json` | SECAS-S2-01     | in_progress |
 | `SEC-WAF-01`                 | `pm/security-friction-register.json` | —               | done        |
 | `SEC-IRSA-01`                | `pm/security-friction-register.json` | SECAS-S3-01     | done        |
+| `SEC-CSIRT-01`               | `pm/security-friction-register.json` | SECAS-S4-01     | pending     |
+| `SEC-SUPPLY-01`              | `pm/security-friction-register.json` | SECAS-S4-02     | pending     |
+| `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | pending     |
+| `SEC-PTREM-01`               | `pm/security-friction-register.json` | SECAS-S4-04     | pending     |
 | P42 hub protocol publication | `pm/_tasks`                          | gtcx-docs       | done        |
 
 ## Unblock Order

@@ -75,6 +75,18 @@ pnpm secas:cards:check
 pnpm secas:pentest:ingest:check:write   # SECAS-S2-01 — pre-window PASS; complete when report ingested
 ```
 
+## SECAS-S4 — security engineering program (queued)
+
+After pen-test ingest (`SECAS-S2-01`), the standing **security engineering** wave covers CSIRT, supply chain, vuln cadence, and remediation — parallel to compliance-os **INT-REF** lifts.
+
+| Doc                | Path                                                             |
+| ------------------ | ---------------------------------------------------------------- |
+| Program            | `docs/operations/secas/SECAS-S4-security-engineering-program.md` |
+| IR runbook (draft) | `docs/operations/secas/runbooks/incident-response.md`            |
+| Stories            | `pm/secas-stories.json` — `SECAS-S4-01` … `SECAS-S4-05`          |
+
+S4 friction: `SEC-CSIRT-01`, `SEC-SUPPLY-01`, `SEC-VULN-01`, `SEC-PTREM-01` in `pm/security-friction-register.json`.
+
 ## Cross-repo false blocks (baseline-os M3 pattern)
 
 Repos that label Class S items **blocked** on security/compliance are usually **false blocks** per

@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/security-friction-register/v1",
   "version": "1.0.0",
-  "updated": "2026-06-10",
+  "updated": "2026-06-14",
   "program": "Security-as-a-Service",
   "initiative": "INIT-GTCX-INFRA-SECAS",
   "protocol": "P42-SECURITY-AS-A-SERVICE",
@@ -47,6 +47,59 @@
       "matrixRef": "INF-PER-REPO-001#compliance-os",
       "executionStatus": "done",
       "witness": "audit/evidence/secas-irsa-compliance-os-2026-06-10.json",
+      "blocksIR": false
+    },
+    {
+      "id": "SEC-CSIRT-01",
+      "priority": "P0",
+      "status": "pending",
+      "repo": "fabric-os",
+      "title": "CSIRT / SOC operating model + IR runbook SoR",
+      "symptom": "No standing incident response operating model witness — persona exists, ops SoR thin",
+      "sprint": "SECAS-S4",
+      "storyId": "SECAS-S4-01",
+      "infraAction": "Publish IR runbook, escalation matrix, drill evidence path; wire secas:csirt:check",
+      "acceptance": "audit/evidence/secas-csirt-operating-model-latest.json",
+      "blocksIR": false
+    },
+    {
+      "id": "SEC-SUPPLY-01",
+      "priority": "P0",
+      "status": "pending",
+      "repo": "fabric-os",
+      "title": "Fleet supply-chain security gates",
+      "symptom": "Container/dependency CVE policy not fleet-witnessed",
+      "sprint": "SECAS-S4",
+      "storyId": "SECAS-S4-02",
+      "infraAction": "secas:supply-chain:check rollup — Trivy/Semgrep or CI witness paths",
+      "acceptance": "audit/evidence/secas-supply-chain-check-latest.json",
+      "blocksIR": false
+    },
+    {
+      "id": "SEC-VULN-01",
+      "priority": "P1",
+      "status": "pending",
+      "repo": "fabric-os",
+      "title": "Standing vulnerability management cadence",
+      "symptom": "Friction register lacks weekly triage witness + SLA tiers",
+      "sprint": "SECAS-S4",
+      "storyId": "SECAS-S4-03",
+      "infraAction": "secas:vuln-cadence:check — open SEC-* items have owner + unblock",
+      "acceptance": "audit/evidence/secas-vuln-cadence-latest.json",
+      "blocksIR": false
+    },
+    {
+      "id": "SEC-PTREM-01",
+      "priority": "P0",
+      "status": "pending",
+      "repo": "fabric-os",
+      "title": "Pen-test findings remediation + re-test witness",
+      "symptom": "Remediation track starts after vendor report ingest",
+      "dependsOn": "SEC-PENTEST-01",
+      "sprint": "SECAS-S4",
+      "storyId": "SECAS-S4-04",
+      "infraAction": "Map findings to owners; closure witness post-remediation",
+      "acceptance": "audit/evidence/pen-test-remediation-closure-latest.json",
       "blocksIR": false
     }
   ]

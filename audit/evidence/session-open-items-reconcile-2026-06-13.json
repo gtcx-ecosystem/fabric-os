@@ -1,8 +1,9 @@
 {
   "schema": "gtcx://fabric-os/session-open-items-reconcile/v1",
-  "at": "2026-06-13T13:20:00.000Z",
+  "at": "2026-06-13T14:00:00.000Z",
   "repo": "fabric-os",
   "ticket": "XR-FABRIC-SESSION-OPEN-003",
+  "verdict": "fabric-os P22 unchanged; bridge closure bar 2/5 blocks sessionComplete",
   "forensicPack": "docs/operations/coordination/session-forensic-fabric-os-session-open-items-2026-06-13.md",
   "transcriptExcerpts": "docs/operations/coordination/session-transcript-excerpts-session-open-items-2026-06-13.md",
   "machineWitness": "pm/ci/session-open-items-latest.json",
@@ -12,12 +13,28 @@
     "witness": "bridge-os/pm/ci/session-closure-bar-latest.json",
     "sessionComplete": false,
     "requiredPass": 2,
-    "requiredTotal": 5
+    "requiredTotal": 5,
+    "failing": ["zenhub-sor", "git-settlement", "initiative-closure-witness"]
   },
   "reconciledOpenCount": 4,
   "transcriptNoiseStripped": 0,
   "transcript": {
     "id": "35ccef1b-c866-463c-9b4e-0d81b44b01ad",
-    "workspace": "Users-amanianai"
-  }
+    "pointer": "agent-transcript:35ccef1b",
+    "workspace": "Users-amanianai",
+    "lineCount": 37,
+    "userTurns": 5,
+    "inGit": "excerpts-only"
+  },
+  "sessionArcs": ["probe", "diagnose", "raise", "transcript-gap", "forensic-standard"],
+  "keyFindings": [
+    "bridge session:open-items exit 1 = closure bar not schema failure",
+    "INIT-EXECUTIVE-GAP-PROGRAM done without closureBar.ok",
+    "home workspace transcript requires forensic pack for bridge intake"
+  ],
+  "risks": [
+    "sessionComplete false blocks fleet handoff",
+    "witness churn blocks git-settlement",
+    "markets-os transcript bleed in bridge witness"
+  ]
 }

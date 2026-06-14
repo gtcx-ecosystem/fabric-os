@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/session-open-items-raise-bridge/v1",
-  "at": "2026-06-13T13:20:00.000Z",
+  "at": "2026-06-13T14:00:00.000Z",
   "from": "fabric-os",
   "to": "bridge-os",
   "protocol": "P24",
@@ -12,17 +12,20 @@
   "outbound": "docs/operations/coordination/to-bridge-os-session-open-items-forensic-2026-06-13.md",
   "forensicSummary": "docs/operations/coordination/session-forensic-fabric-os-session-open-items-2026-06-13.md",
   "transcriptExcerpts": "docs/operations/coordination/session-transcript-excerpts-session-open-items-2026-06-13.md",
+  "reconcileWitness": "audit/evidence/session-open-items-reconcile-2026-06-13.json",
   "inboundAck": "bridge-os/docs/operations/coordination/from-fabric-os-session-open-items-forensic-2026-06-13.md",
+  "machineHandoff": "bridge-os/pm/spec/session-open-items-handoff-fabric-2026-06-13.json",
   "p22": {
     "head": {
       "id": "SECAS-S2-01",
       "owner": "fabric-os",
       "phase": "awaiting_vendor_report"
     },
-    "initiative": "INIT-GTCX-INFRA-SECAS"
+    "initiative": "INIT-GTCX-INFRA-SECAS",
+    "unchangedThisSession": true
   },
   "git": {
-    "head": "b23e733",
+    "head": "2dd44f0",
     "settlementPending": true
   },
   "bridgeClosureBar": {
@@ -34,14 +37,32 @@
   },
   "transcript": {
     "id": "35ccef1b-c866-463c-9b4e-0d81b44b01ad",
+    "pointer": "agent-transcript:35ccef1b",
     "workspace": "Users-amanianai",
-    "userTurns": 4,
+    "userTurns": 5,
     "path": "/Users/amanianai/.cursor/projects/Users-amanianai/agent-transcripts/35ccef1b-c866-463c-9b4e-0d81b44b01ad/35ccef1b-c866-463c-9b4e-0d81b44b01ad.jsonl",
-    "lineCount": 30
+    "lineCount": 37,
+    "inGit": "excerpts-only"
+  },
+  "sessionArcs": [
+    "session-open-items-probe",
+    "closure-bar-diagnosis",
+    "p24-bridge-raise",
+    "transcript-completeness",
+    "forensic-standard-agile-template"
+  ],
+  "shippedCommits": {
+    "fabric-os": ["48da1f4", "2dd44f0"],
+    "bridge-os": ["7c85516", "9dc170d"]
   },
   "actionableForBridge": [
+    "T48 intake — XR-FABRIC-SESSION-OPEN-003",
     "INIT-EXECUTIVE-GAP-PROGRAM closureBar.ok witness reconcile",
     "zenhub-sor hub plan issue gate fix",
     "bridge-os git settlement + session:open-items green"
+  ],
+  "programmeDesign": [
+    "BL-TRANSCRIPT-PORT — home workspace transcript attach",
+    "BL-FORENSIC-STANDARD — agile-os forensic template for all bridge raises"
   ]
 }

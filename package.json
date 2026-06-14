@@ -73,6 +73,8 @@
     "secas:pentest:ingest:check": "node platform/scripts/secas-pentest-ingest-check.mjs",
     "secas:pentest:ingest:check:write": "node platform/scripts/secas-pentest-ingest-check.mjs --write",
     "secas:pentest:report:ingest": "node platform/scripts/secas-pentest-report-ingest.mjs",
+    "secas:pentest:remediation:check": "node platform/scripts/secas-pentest-remediation-check.mjs",
+    "secas:pentest:remediation:check:write": "node platform/scripts/secas-pentest-remediation-check.mjs --write",
     "secas:window:readiness": "node platform/scripts/secas-pentest-window-readiness.mjs",
     "secas:window:readiness:write": "node platform/scripts/secas-pentest-window-readiness.mjs --write",
     "secas:supply-chain:check": "node platform/scripts/secas-supply-chain-check.mjs",

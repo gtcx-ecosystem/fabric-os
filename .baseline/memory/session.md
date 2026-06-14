@@ -301,3 +301,14 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
   - `node --check` on modified scripts pass
   - Prettier check pass on modified files
 - **Next (P22):** `SECAS-S4-05` — Expand SECaaS cards (terminal-os, fabric-os self, bridge witness repos) — Class R
+
+
+## SECAS-S4-05 — DONE (2026-06-14)
+
+- **Commits:** `6a609ba` (P22/roadmap path fix), `dee6545` (SECaaS cards)
+- **Cards added:** `docs/operations/secas/cards/{terminal-os,fabric-os,bridge-os}.md`
+- **Index updated:** `docs/operations/secas/cards/README.md`
+- **Harness updated:** `platform/scripts/secas-cards-check.mjs` — 6 required cards
+- **Witness:** `pnpm secas:cards:check:write` PASS
+- **Work register:** SECAS-S4-05 marked `done`
+- **Next (P22):** `SECAS-S4-04` — Pen-test findings remediation track (persona: security-engineer, frame: regulatory-audit)

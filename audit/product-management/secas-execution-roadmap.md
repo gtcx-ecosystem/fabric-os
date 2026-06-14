@@ -100,8 +100,10 @@ pnpm secas:pentest:remediation:check:write
 
 **UAT / QA**
 
-- [ ] Vendor report findings mapped to owners (fabric + product)
-- [ ] Critical/high findings closed or accepted-risk documented (Class S)
+- [x] Findings register + closure tracker scaffold created at canonical paths (`audit/evidence/pen-test-findings-register-latest.json`, `audit/evidence/pen-test-remediation-closure-latest.json`)
+- [x] `secas:pentest:remediation:check:write` PASS (phase `awaiting_vendor_report`)
+- [ ] Vendor report findings mapped to owners (fabric + product) — pending BG-10-10-REPORT
+- [ ] Critical/high findings closed or accepted-risk documented (Class S) — pending BG-10-10-REPORT
 
 **Blockers:** postLaunchExternal BG-10-10-REPORT — then SECAS-S4-04 remediation track
 

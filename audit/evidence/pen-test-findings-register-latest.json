@@ -1,0 +1,20 @@
+{
+  "schema": "gtcx.penTestFindingsRegister.v1",
+  "storyId": "SECAS-S4-04",
+  "frictionId": "SEC-PTREM-01",
+  "program": "INIT-GTCX-INFRA-SECAS",
+  "updatedAt": "2026-06-14T19:02:00.000Z",
+  "updatedBy": "agent:fabric-os",
+  "phase": "awaiting_vendor_report",
+  "reportSource": null,
+  "findings": [],
+  "owners": {
+    "fabric-os": ["platform-engineer", "security-engineer"],
+    "compliance-os": ["security-engineer"],
+    "markets-os": ["security-engineer"],
+    "gtcx-intelligence": ["security-engineer"],
+    "terminal-os": ["security-engineer"],
+    "protocols-t0": ["protocol-engineer", "security-engineer"]
+  },
+  "notes": "Register scaffold created pre-window. Findings will be mapped here after vendor report ingest (SECAS-S2-01)."
+}

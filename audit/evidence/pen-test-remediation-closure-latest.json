@@ -1,0 +1,13 @@
+{
+  "schema": "gtcx.penTestRemediationClosure.v1",
+  "storyId": "SECAS-S4-04",
+  "frictionId": "SEC-PTREM-01",
+  "program": "INIT-GTCX-INFRA-SECAS",
+  "updatedAt": "2026-06-14T19:02:00.000Z",
+  "updatedBy": "agent:fabric-os",
+  "phase": "awaiting_vendor_report",
+  "closures": [],
+  "reTests": [],
+  "acceptedRisks": [],
+  "notes": "Closure tracker scaffold created pre-window. Remediation and re-test evidence will be recorded here after vendor report ingest."
+}

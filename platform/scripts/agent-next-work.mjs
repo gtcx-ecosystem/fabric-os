@@ -99,7 +99,7 @@ function storyOrdinal(id) {
 function parseWorkRegister(md) {
   const stories = new Map();
   const rowRe =
-    /^\|\s*(S\d+-\d+|SECAS-S\d+-\d+|IR-\d+\.\d+|P22-[A-Z]+-\d+)\s*\|\s*([^|]+?)\s*\|\s*(P\d)\s*\|\s*(pending|in_progress|blocked|done|deferred)\s*\|\s*([^|]+?)\s*\|/gm;
+    /^\|\s*(S\d+-\d+|SECAS-S\d+-\d+|IR-\d+\.\d+|P22-[A-Z]+-\d+)\s*\|\s*([^|]+?)\s*\|\s*(P\d)\s*\|\s*(pending|in_progress|blocked|done|deferred|structural done)\s*\|\s*([^|]+?)\s*\|/gm;
   let match;
   while ((match = rowRe.exec(md)) !== null) {
     const [, id, title, priority, status, classCol] = match;

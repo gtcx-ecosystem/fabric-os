@@ -1,0 +1,40 @@
+{
+  "$schema": "gtcx://pm/shipping-tracks/v1",
+  "repo": "fabric-os",
+  "productName": "fabric-os",
+  "updated": "2026-06-14",
+  "tracks": [
+    {
+      "id": "fleet-gates",
+      "label": "Fleet gates",
+      "subtitle": "P35 + assurance fabric",
+      "progressPct": 100,
+      "statusNote": "SECAS / DaaS / HaaS programme SoR"
+    },
+    {
+      "id": "shipping-culture",
+      "label": "Shipping culture PM",
+      "subtitle": "pm/ R1 folder",
+      "progressPct": 100,
+      "statusNote": "INIT-SHIPPING-CULTURE rollout"
+    },
+    {
+      "id": "product-depth",
+      "label": "Assurance delivery",
+      "subtitle": "ZenHub + friction registers",
+      "progressPct": 85,
+      "statusNote": "fabric-os executes parallel Class S lanes"
+    }
+  ],
+  "narrative": {
+    "currentPhase": "assurance fabric owner — SECAS ingest awaiting vendor report",
+    "nextMilestone": "pm:folder:check R1 green + pm:shipping:report witness"
+  },
+  "bottomLine": {
+    "position": "Fabric gates green; vendor report ingest calendar-gated.",
+    "gatingWork": "None for pm folder R1.",
+    "nextStrategicMove": "pnpm pm:folder:check && pnpm agent:next-work",
+    "auditComposite100": 100
+  },
+  "fiveCoreSyncedAt": "2026-06-14"
+}

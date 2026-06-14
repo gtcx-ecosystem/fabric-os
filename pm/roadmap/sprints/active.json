@@ -1,0 +1,14 @@
+{
+  "$schema": "gtcx://pm/sprint-active/v1",
+  "schemaVersion": 1,
+  "repo": "fabric-os",
+  "sprintId": "SPR-2026-06",
+  "updated": "2026-06-14",
+  "description": "Fabric assurance sprint — SECAS witness + DaaS substrate.",
+  "goals": ["SECAS-S2-01 ingest readiness", "pm folder R1 compliance"],
+  "tasks": [],
+  "uat": {
+    "matrixRef": "pm/roadmap/uat/",
+    "scenarios": []
+  }
+}

@@ -312,3 +312,14 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - **Witness:** `pnpm secas:cards:check:write` PASS
 - **Work register:** SECAS-S4-05 marked `done`
 - **Next (P22):** `SECAS-S4-04` — Pen-test findings remediation track (persona: security-engineer, frame: regulatory-audit)
+
+
+## SECAS-S4-04 — DONE (scaffold) (2026-06-14)
+
+- **Commit:** `e7c8af9`
+- **Scaffold:** `audit/evidence/pen-test-findings-register-latest.json`, `audit/evidence/pen-test-remediation-closure-latest.json`
+- **Script:** `platform/scripts/secas-pentest-remediation-check.mjs` + `pnpm secas:pentest:remediation:check[:write]`
+- **Witness:** `pnpm secas:pentest:remediation:check:write` PASS (phase `awaiting_vendor_report`)
+- **Work register:** SECAS-S4-04 `structural done`; SEC-PTREM-01 `executionStatus: structural done`
+- **P22 state:** implement queue reconciled; external/vendor gates remain parallel
+- **validate-all:** 53/55 pass — pre-existing Docs Standard (27) + Ecosystem Integration Matrix failures

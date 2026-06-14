@@ -12,20 +12,22 @@ method: ripgrep provider/env/code scan + implementation file trace (not sample r
 
 > **Correction:** Prior analysis sampled fabric-os, terra-os, and terminal-os only. This audit covers the **full GTCX fleet** per `bridge-os/pm/spec/ecosystem-repo-aliases.json` and the 16-repo assurance stress set.
 
+> **Ops reclassification (2026-06-14):** **RevOps** = CRO office (pricing, economics, GTM revenue). **PayOps** = payment _execution_ (Stripe substrate, webhooks, checkout, payouts). This audit's provider-centralization findings are **PayOps substrate** work — not RevOps strategy.
+
 ## Executive summary
 
-| Finding                                                                                              | Severity | Evidence                                                                 |
-| ---------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------ |
-| **No fleet RevOps/CommOps module** — fabric owns deploy secrets, not billing/comms substrate         | P0       | `service-fabric.json` has P41/P42 only; RevOps/CommOps `planned` in CORE |
-| **5+ independent Stripe integrations** across product repos                                          | P0       | terminal-os, sensei-os, nyota-ai, compliance-os, gtcx-os mobile billing  |
-| **3+ SMS/email provider stacks** (SendGrid, Africa's Talking, Twilio) duplicated                     | P0       | terra-os, nyota-ai, sensei-os (amani-email), canon historical amani      |
-| **Flutterwave** as second payment rail (griot-ai, gtcx-os mobile) — no fabric registry               | P1       | `griot-ai/platform/.../flutterwave.js`                                   |
-| **markets-os** owns trade/capital-call payments (wire, escrow, authority) — **PayOps**, not RevOps   | —        | fund-api, custody-api — 100+ payment surfaces                            |
-| **compliance-os** Stripe Invoicing is most production-shaped SaaS billing                            | —        | `caas/src/lib/billing.ts` + DPA subprocessor mention                     |
-| **terra-os** has strongest **CommOps code** (provider abstraction) but **per-repo secrets**          | P1       | `notification_providers.py`                                              |
-| **ledger-ui / veritas-ai / exploration-os** — UI or protocol webhooks only; no SaaS billing provider | —        | templates, expo-notifications, TradePass webhooks                        |
-| **canon-os / agile-os / bridge-os** — strategy & partnership refs only (Flutterwave, AT, Twilio)     | —        | decks, audits, tool-scout Resend                                         |
-| **fabric-os** — terminal SM paths include stripe key slot; **no shared comm/billing SM contract**    | P1       | `gtcx/terminal-os/{staging,production}/api-keys`                         |
+| Finding                                                                                                  | Severity | Evidence                                                                  |
+| -------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------- |
+| **No fleet PayOps substrate / CommOps module** — fabric owns deploy secrets, not billing/comms execution | P0       | `service-fabric.json` has P41/P42; PayOps substrate `planned` in registry |
+| **5+ independent Stripe integrations** across product repos                                              | P0       | terminal-os, sensei-os, nyota-ai, compliance-os, gtcx-os mobile billing   |
+| **3+ SMS/email provider stacks** (SendGrid, Africa's Talking, Twilio) duplicated                         | P0       | terra-os, nyota-ai, sensei-os (amani-email), canon historical amani       |
+| **Flutterwave** as second payment rail (griot-ai, gtcx-os mobile) — no fabric registry                   | P1       | `griot-ai/platform/.../flutterwave.js`                                    |
+| **markets-os** owns trade/capital-call payments (wire, escrow, authority) — **PayOps**, not RevOps       | —        | fund-api, custody-api — 100+ payment surfaces                             |
+| **compliance-os** Stripe Invoicing is most production-shaped SaaS billing                                | —        | `caas/src/lib/billing.ts` + DPA subprocessor mention                      |
+| **terra-os** has strongest **CommOps code** (provider abstraction) but **per-repo secrets**              | P1       | `notification_providers.py`                                               |
+| **ledger-ui / veritas-ai / exploration-os** — UI or protocol webhooks only; no SaaS billing provider     | —        | templates, expo-notifications, TradePass webhooks                         |
+| **canon-os / agile-os / bridge-os** — strategy & partnership refs only (Flutterwave, AT, Twilio)         | —        | decks, audits, tool-scout Resend                                          |
+| **fabric-os** — terminal SM paths include stripe key slot; **no shared comm/billing SM contract**        | P1       | `gtcx/terminal-os/{staging,production}/api-keys`                          |
 
 **Verdict:** Fabric **should** own RevOps + CommOps **substrate** (keys, webhooks, DPAs, fleet checks). Product repos own **domain money flows** (SaaS tier, concession fee, capital call, settlement). Centralization is justified by **provider duplication**, not by merging terra payments with terminal Stripe.
 
@@ -155,15 +157,15 @@ method: ripgrep provider/env/code scan + implementation file trace (not sample r
 
 ## Service fabric & Ops engine alignment
 
-| Service             | Status in `service-fabric.json` | Fleet reality                                                      |
-| ------------------- | ------------------------------- | ------------------------------------------------------------------ |
-| P41 DevOps/InfraOps | complete                        | terminal ESO — partial RevOps custody                              |
-| P42 SecOps          | complete                        | webhook WAF not per-provider                                       |
-| GTMAAS / **BizOps** | planned (register active)       | `pm/gtm-friction-register.json`; pilot-readiness in bridge-os      |
-| **PayOps** (domain) | active (distributed registry)   | `payops-domain-registry.json` — markets live; terra M-Pesa stub    |
-| RevOps (substrate)  | **missing**                     | 5 Stripe + 1 Flutterwave — centralize keys only, not PayOps domain |
-| CommOps             | **missing**                     | 3 provider stacks                                                  |
-| LegalOps            | planned                         | DPA mentions Stripe in compliance-os only                          |
+| Service             | Status in `service-fabric.json` | Fleet reality                                                   |
+| ------------------- | ------------------------------- | --------------------------------------------------------------- |
+| P41 DevOps/InfraOps | complete                        | terminal ESO — partial RevOps custody                           |
+| P42 SecOps          | complete                        | webhook WAF not per-provider                                    |
+| GTMAAS / **RevOps** | planned (register active)       | CRO lane — GTM revenue; `pm/gtm-friction-register.json`         |
+| **PayOps** (domain) | active                          | `payops-domain-registry.json` — markets live; terra M-Pesa stub |
+| PayOps substrate    | **missing**                     | 5 Stripe + 1 Flutterwave — fabric PayOps execution (not RevOps) |
+| CommOps             | **missing**                     | 3 provider stacks                                               |
+| LegalOps            | planned                         | DPA mentions Stripe in compliance-os only                       |
 
 ---
 

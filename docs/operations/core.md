@@ -41,7 +41,7 @@ flowchart LR
 | **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`                           |
 | **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                               |
 | **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                                    |
-| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, ProductOps, DesignOps, HROps, BizOps, PayOps, `blocksIR: false` |
+| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, ProductOps, DesignOps, HROps, RevOps, PayOps, `blocksIR: false` |
 
 **Meta-learning rule:** Every CORE run writes **decision provenance** — what was sensed, which rubric fired, what was tried, exit code, witness path. The next cycle reasons over history, not chat memory.
 
@@ -189,47 +189,37 @@ flowchart LR
 
 **Functional product:** **TeamaaS** — `bridge-os/pm/spec/hrops-workforce-registry.json` · `INIT-PRODUCT-TEAM-MODEL-R6`
 
-### BizOps
+### RevOps
 
-| Dimension             | Specification                                                                                                        |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| **Runtime**           | GTM friction register, pilot-readiness scorecard, LOI/DTF queues, enterprise-pilot DoD, partner onboarding witnesses |
-| **Agentic team**      | `product-strategist` (lead) · bridge program office · markets-os GTM liaisons (read-only cards)                      |
-| **Intelligence loop** | Pilot gap signal → friction item → Class S intake or Class R enablement → GTM-PACK / demo witness → rollup           |
-| **Innovation moat**   | **Proof-first GTM once** — product repos link `ops/gtm/manifest.json`; no duplicate GTM backlog in product `pm/`     |
-| **Trust fortress**    | Class S LOI/DTF under **Parallel sovereign gates**; `blocksIR: false`; hub-scope blocks product GTM in P22           |
-| **Magic**             | One pilot-readiness headline — legal + security + deploy + GTM trace — without product PM owning company GTM         |
-| **Business outcomes** | GR-T2 pilot closes; design-partner velocity; shippable ≠ roadmap-complete witness                                    |
+| Dimension             | Specification                                                                                                              |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Runtime**           | Pricing strategy, unit economics, revenue analytics, GTM revenue motion, pilot revenue witnesses, business-model economics |
+| **Agentic team**      | `product-strategist` (lead) · bridge program office · FinOps witness for spend/revenue ratio                               |
+| **Intelligence loop** | Revenue signal → economics rubric → pricing/GTM adjustment → pilot revenue witness → fleet rollup                          |
+| **Innovation moat**   | **CRO intelligence once** — PRD economics + GTM friction + revenue analytics in one lane, not scattered in product PM      |
+| **Trust fortress**    | Class S LOI/DTF under parallel gates; RevOps never holds Stripe keys or webhook secrets                                    |
+| **Magic**             | One revenue headline — pricing, pilot motion, unit economics, time-to-first-dollar — without payment-rail runbooks         |
+| **Business outcomes** | GR-T2 pilot revenue clarity; margin-aware GTM; honest economics in Proceed Brief                                           |
 
-**Functional product:** **GTMaaS** — `pm/gtm-friction-register.json` · [gtm-as-a-service.md](./gtm-as-a-service.md)
-
-### RevOps _(planned)_
-
-| Dimension             | Specification                                                                                  |
-| --------------------- | ---------------------------------------------------------------------------------------------- |
-| **Runtime**           | Stripe/subscription substrate, webhook ingress, metering rollup witness, billing health checks |
-| **Agentic team**      | `product-strategist` (pricing witness) · `platform-architect` (ingress) · finance Class S      |
-| **Intelligence loop** | Usage signal → rollup → invoice readiness → dunning or upgrade path → revenue witness          |
-| **Innovation moat**   | **Revenue infrastructure once** — terminal-os, compliance-os share provider contract           |
-| **Trust fortress**    | PCI SAQ A boundary; subprocessor register; LegalOps DPA; no raw card data in product pods      |
-| **Magic**             | Product defines tier; CORE delivers live billing + webhook + seal — pilot revenue same sprint  |
-| **Business outcomes** | Time-to-first-dollar ↓; unified revenue telemetry; fewer payment incidents                     |
-
-**Boundary:** RevOps is **substrate only** — domain payment logic is **PayOps** in owner repos (see below).
+**Functional product:** **GTMaaS** (GTM revenue track) — `pm/gtm-friction-register.json` · [gtm-as-a-service.md](./gtm-as-a-service.md)
 
 ### PayOps
 
-| Dimension             | Specification                                                                                                          |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Runtime**           | Domain payment orchestration per repo — capital calls, escrow, settlements, wire, M-Pesa, concession fees, checkout UX |
-| **Agentic team**      | `trade-analyst` (markets-os) · `field-inspector` (terra-os) · `product-strategist` (SaaS checkout) — owner-repo lead   |
-| **Intelligence loop** | Domain payment gap → owner-repo fix → authority/reconciliation witness → fleet domain registry hygiene                 |
-| **Innovation moat**   | **Domain rails stay local** — trade authority URLs and gov fee schedules never collapse into Stripe RevOps             |
-| **Trust fortress**    | Regulatory models per lane; RevOps keys consumed via contract — PayOps never duplicates provider custody in fabric     |
-| **Magic**             | markets-os closes capital call with wire PDF + authority seal; terra-os fee path distinct from terminal SaaS tier      |
-| **Business outcomes** | Trade settlement integrity; sovereign gov payments; SaaS checkout without cross-contaminating regulatory models        |
+| Dimension             | Specification                                                                                                    |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **Runtime**           | Billing substrate (Stripe, Flutterwave, webhooks, metering) + in-product checkout + domain payout workflows      |
+| **Agentic team**      | `platform-architect` (substrate) · `trade-analyst` (markets) · `field-inspector` (terra) — owner-repo for domain |
+| **Intelligence loop** | Provider gap → substrate fix or domain workflow → webhook/metering witness → payops registry hygiene             |
+| **Innovation moat**   | **Payment execution once** — shared SM paths and webhook matrix; domain rails (trade, gov) stay in owner repos   |
+| **Trust fortress**    | PCI SAQ A boundary; LegalOps DPA; no raw card data in product pods; RevOps never touches provider custody        |
+| **Magic**             | Product defines tier (RevOps); PayOps delivers live checkout + webhook + payout rail — same sprint               |
+| **Business outcomes** | Time-to-first-dollar execution; fewer payment incidents; trade/gov rails never collapsed into SaaS Stripe        |
 
 **Fleet registry:** `bridge-os/pm/spec/payops-domain-registry.json` · Forensic: [ecosystem-revops-commops-forensic-2026-06-14.md](../../audit/ecosystem-revops-commops-forensic-2026-06-14.md)
+
+### BizOps _(legacy — merged into RevOps)_
+
+> **BizOps** display name retired 2026-06-14. Commercial GTM friction and pilot revenue motion live under **RevOps** (CRO office). Machine ID **GTMaaS** unchanged.
 
 ### CommOps _(planned)_
 
@@ -305,12 +295,12 @@ flowchart LR
 
 ## Implementation sequence
 
-| Phase          | CORE lanes                                                                                           | Deliverable                                                                     |
-| -------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **ProductOps**, **DesignOps**, **HROps**, **BizOps**, **PayOps** | Persona roster + utilization + product-culture + ux-sor + GTM + PayOps registry |
-| **Next**       | RevOps, CommOps                                                                                      | Provider substrate only — keys/webhooks/metering; not PayOps domain logic       |
-| **Then**       | MLOps, AIOps depth                                                                                   | Eval promotion gate wired to every model/agent release                          |
-| **Continuous** | All                                                                                                  | `core-runtime-engine-protocol.json` harness per lane                            |
+| Phase          | CORE lanes                                                                                           | Deliverable                                                       |
+| -------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **ProductOps**, **DesignOps**, **HROps**, **RevOps**, **PayOps** | RevOps CRO active (GTMaaS); PayOps domain live; substrate planned |
+| **Next**       | PayOps substrate, CommOps                                                                            | fabric SM + webhook matrix + `payops:providers:check`             |
+| **Then**       | MLOps, AIOps depth                                                                                   | Eval promotion gate wired to every model/agent release            |
+| **Continuous** | All                                                                                                  | `core-runtime-engine-protocol.json` harness per lane              |
 
 ---
 

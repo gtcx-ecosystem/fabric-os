@@ -9,7 +9,8 @@ initiative: INIT-GTCX-SERVICE-FABRIC
 
 # GTM-as-a-Service — GTCX Service Fabric
 
-> **Ops lane:** **BizOps** · **Functional product:** **GTMaaS** (stable machine ID)
+> **Ops lane:** **RevOps** (CRO office) · **Functional product:** **GTMaaS** (GTM revenue track; stable machine ID)  
+> **Legacy:** BizOps display name → RevOps (2026-06-14)
 
 **Normative:** `canon-os/docs/governance/protocols/44-fabric-consumption/protocol.md`  
 **Machine spec:** `bridge-os/pm/spec/service-fabric.json`  

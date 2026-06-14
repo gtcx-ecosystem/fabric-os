@@ -2,7 +2,7 @@
 title: Execution roadmap — SecOps
 status: current
 date: 2026-06-14
-last_reconciled: 2026-06-14T14:19:09.089Z
+last_reconciled: 2026-06-14T20:31:27.206Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true
@@ -86,8 +86,6 @@ pnpm secas:vuln-cadence:check:write
 
 **Blockers:** none
 
-**Audit notes:** 2026-06-14 — harness PASS; SEC-VULN-01 closed
-
 ### SECAS-S4-04: Pen-test findings remediation track + re-test witness
 
 **Files:** audit/evidence/pen-test-findings-register-latest.json, audit/evidence/pen-test-remediation-closure-latest.json
@@ -100,10 +98,8 @@ pnpm secas:pentest:remediation:check:write
 
 **UAT / QA**
 
-- [x] Findings register + closure tracker scaffold created at canonical paths (`audit/evidence/pen-test-findings-register-latest.json`, `audit/evidence/pen-test-remediation-closure-latest.json`)
-- [x] `secas:pentest:remediation:check:write` PASS (phase `awaiting_vendor_report`)
-- [ ] Vendor report findings mapped to owners (fabric + product) — pending BG-10-10-REPORT
-- [ ] Critical/high findings closed or accepted-risk documented (Class S) — pending BG-10-10-REPORT
+- [ ] Vendor report findings mapped to owners (fabric + product)
+- [ ] Critical/high findings closed or accepted-risk documented (Class S)
 
 **Blockers:** postLaunchExternal BG-10-10-REPORT — then SECAS-S4-04 remediation track
 
@@ -119,8 +115,8 @@ pnpm secas:cards:check:write
 
 **UAT / QA**
 
-- [x] Cards indexed in docs/operations/secas/cards/README.md
-- [x] secas:cards:check includes new card paths
+- [ ] Cards indexed in docs/operations/secas/cards/README.md
+- [ ] secas:cards:check includes new card paths
 
 **Blockers:** none
 
@@ -159,7 +155,7 @@ _Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SO
 | `SEC-IRSA-01`                | `pm/security-friction-register.json` | SECAS-S3-01     | done    |
 | `SEC-CSIRT-01`               | `pm/security-friction-register.json` | SECAS-S4-01     | done    |
 | `SEC-SUPPLY-01`              | `pm/security-friction-register.json` | SECAS-S4-02     | done    |
-| `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | closed  |
+| `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | done    |
 | `SEC-PTREM-01`               | `pm/security-friction-register.json` | SECAS-S4-04     | pending |
 | P42 hub protocol publication | `pm/_tasks`                          | gtcx-docs       | done    |
 

@@ -155,14 +155,14 @@ method: ripgrep provider/env/code scan + implementation file trace (not sample r
 
 ## Service fabric & Ops engine alignment
 
-| Service             | Status in `service-fabric.json` | Fleet reality                             |
-| ------------------- | ------------------------------- | ----------------------------------------- |
-| P41 DevOps/InfraOps | complete                        | terminal ESO — partial RevOps custody     |
-| P42 SecOps          | complete                        | webhook WAF not per-provider              |
-| RevOps              | **missing**                     | 5 Stripe + 1 Flutterwave implementations  |
-| CommOps             | **missing**                     | 3 provider stacks                         |
-| GTMAAS              | planned                         | partnership refs in canon/agile           |
-| LegalOps            | planned                         | DPA mentions Stripe in compliance-os only |
+| Service             | Status in `service-fabric.json` | Fleet reality                                                 |
+| ------------------- | ------------------------------- | ------------------------------------------------------------- |
+| P41 DevOps/InfraOps | complete                        | terminal ESO — partial RevOps custody                         |
+| P42 SecOps          | complete                        | webhook WAF not per-provider                                  |
+| GTMAAS / **BizOps** | planned (register active)       | `pm/gtm-friction-register.json`; pilot-readiness in bridge-os |
+| RevOps              | **missing**                     | 5 Stripe + 1 Flutterwave implementations                      |
+| CommOps             | **missing**                     | 3 provider stacks                                             |
+| LegalOps            | planned                         | DPA mentions Stripe in compliance-os only                     |
 
 ---
 

@@ -41,7 +41,7 @@ flowchart LR
 | **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`               |
 | **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                   |
 | **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                        |
-| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, `blocksIR: false`                                   |
+| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, BizOps, `blocksIR: false`                           |
 
 **Meta-learning rule:** Every CORE run writes **decision provenance** — what was sensed, which rubric fired, what was tried, exit code, witness path. The next cycle reasons over history, not chat memory.
 
@@ -147,6 +147,20 @@ flowchart LR
 | **Magic**             | `pnpm agent:next-work` — one story, one owner, no menus — fleet moves as one organism       |
 | **Business outcomes** | Roadmap % true; sprint seals mean something; icebox clears with evidence                    |
 
+### BizOps
+
+| Dimension             | Specification                                                                                                        |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Runtime**           | GTM friction register, pilot-readiness scorecard, LOI/DTF queues, enterprise-pilot DoD, partner onboarding witnesses |
+| **Agentic team**      | `product-strategist` (lead) · bridge program office · markets-os GTM liaisons (read-only cards)                      |
+| **Intelligence loop** | Pilot gap signal → friction item → Class S intake or Class R enablement → GTM-PACK / demo witness → rollup           |
+| **Innovation moat**   | **Proof-first GTM once** — product repos link `ops/gtm/manifest.json`; no duplicate GTM backlog in product `pm/`     |
+| **Trust fortress**    | Class S LOI/DTF under **Parallel sovereign gates**; `blocksIR: false`; hub-scope blocks product GTM in P22           |
+| **Magic**             | One pilot-readiness headline — legal + security + deploy + GTM trace — without product PM owning company GTM         |
+| **Business outcomes** | GR-T2 pilot closes; design-partner velocity; shippable ≠ roadmap-complete witness                                    |
+
+**Functional product:** **GTMaaS** — `pm/gtm-friction-register.json` · [gtm-as-a-service.md](./gtm-as-a-service.md)
+
 ### RevOps _(planned)_
 
 | Dimension             | Specification                                                                                  |
@@ -233,12 +247,12 @@ flowchart LR
 
 ## Implementation sequence
 
-| Phase          | CORE lanes                         | Deliverable                                                        |
-| -------------- | ---------------------------------- | ------------------------------------------------------------------ |
-| **Now**        | SecOps, DevOps, InfraOps, FleetOps | Witness cycles, cards, rollups — **operational**                   |
-| **Next**       | RevOps, CommOps                    | Provider registry + SM paths + webhook matrix + friction registers |
-| **Then**       | MLOps, AIOps depth                 | Eval promotion gate wired to every model/agent release             |
-| **Continuous** | All                                | `core-runtime-engine-protocol.json` harness per lane               |
+| Phase          | CORE lanes                                     | Deliverable                                                             |
+| -------------- | ---------------------------------------------- | ----------------------------------------------------------------------- |
+| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **BizOps** | Witness cycles, cards, rollups — **operational**; GTM friction register |
+| **Next**       | RevOps, CommOps                                | Provider registry + SM paths + webhook matrix + friction registers      |
+| **Then**       | MLOps, AIOps depth                             | Eval promotion gate wired to every model/agent release                  |
+| **Continuous** | All                                            | `core-runtime-engine-protocol.json` harness per lane                    |
 
 ---
 

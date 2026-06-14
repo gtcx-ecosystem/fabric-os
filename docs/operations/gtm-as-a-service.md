@@ -9,8 +9,11 @@ initiative: INIT-GTCX-SERVICE-FABRIC
 
 # GTM-as-a-Service — GTCX Service Fabric
 
+> **Ops lane:** **BizOps** · **Functional product:** **GTMaaS** (stable machine ID)
+
 **Normative:** `canon-os/docs/governance/protocols/44-fabric-consumption/protocol.md`  
 **Machine spec:** `bridge-os/pm/spec/service-fabric.json`  
+**CORE module:** [core.md](./core.md#bizops) · **Ops registry:** [ops-programs.md](./ops-programs.md)  
 **Friction SoR:** `pm/gtm-friction-register.json`
 
 ## Obligation

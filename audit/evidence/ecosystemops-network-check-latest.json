@@ -1,0 +1,56 @@
+{
+  "schema": "gtcx://fabric-os/ecosystemops-network-check/v1",
+  "opsLane": "EcosystemOps",
+  "checkedAt": "2026-06-14T10:44:26.513Z",
+  "owner": "bridge-os",
+  "publishRepo": "ecosystem-os",
+  "gates": {
+    "networkRegistry": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/ecosystemops-network-registry.json"
+    },
+    "frictionRegister": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/ecosystemops-friction-register.json"
+    },
+    "tradeLanes": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/trade-ecosystem-lanes.json"
+    },
+    "stratopsRegistry": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/stratops-strategy-registry.json"
+    },
+    "docServices": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/documentation-services.json"
+    },
+    "opsDoc": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/operations/ecosystemops-as-a-service.md"
+    },
+    "ecosystemOsPresent": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/ecosystem-os"
+    },
+    "ecosystemopsLane": {
+      "ok": true,
+      "lane": "EcosystemOps"
+    },
+    "frictionLane": {
+      "ok": true,
+      "lane": "EcosystemOps"
+    },
+    "networkDomains": {
+      "ok": true,
+      "present": ["partnerships", "developerEngagement", "communities", "productEcosystem"],
+      "required": ["partnerships", "developerEngagement", "communities", "productEcosystem"]
+    },
+    "stratopsLink": {
+      "ok": true,
+      "programmes": 7
+    }
+  },
+  "openFriction": 4,
+  "ok": true
+}

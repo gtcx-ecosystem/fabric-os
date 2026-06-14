@@ -35,13 +35,13 @@ flowchart LR
   I[Innovation Moat] -.-> L
 ```
 
-| Stage      | What runs                                                                  | GTCX anchors                                                                                               |
-| ---------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **Sense**  | Telemetry, friction registers, fleet witnesses, cost stats, threat signals | `pm/*-friction-register.json`, `audit/evidence/*-latest.json`, Prometheus/CloudTrail                       |
-| **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`                                     |
-| **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                                         |
-| **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                                              |
-| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, StratOps, ProductOps, DesignOps, HROps, RevOps, PayOps, `blocksIR: false` |
+| Stage      | What runs                                                                  | GTCX anchors                                                                                                             |
+| ---------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Sense**  | Telemetry, friction registers, fleet witnesses, cost stats, threat signals | `pm/*-friction-register.json`, `audit/evidence/*-latest.json`, Prometheus/CloudTrail                                     |
+| **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`                                                   |
+| **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                                                       |
+| **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                                                            |
+| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, StratOps, EcosystemOps, ProductOps, DesignOps, HROps, RevOps, PayOps, `blocksIR: false` |
 
 **Meta-learning rule:** Every CORE run writes **decision provenance** — what was sensed, which rubric fired, what was tried, exit code, witness path. The next cycle reasons over history, not chat memory.
 
@@ -160,6 +160,20 @@ flowchart LR
 | **Business outcomes** | GR-T2 → sovereign scale path; economies of scale visible; defensible continental trade stack; durable enterprise pilot readiness            |
 
 **Functional product:** **StratAAS** — `bridge-os/pm/spec/stratops-strategy-registry.json` · [stratops-as-a-service.md](./stratops-as-a-service.md)
+
+### EcosystemOps
+
+| Dimension             | Specification                                                                                                            |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Runtime**           | Partner enablement, developer programs, community champions, product-ecosystem growth, ecosystem-os publish coordination |
+| **Agentic team**      | `product-strategist` · `protocol-engineer` (partner/dev programs) · ecosystem-os publish liaison                         |
+| **Intelligence loop** | Network gap → enablement kit or DevRel index → community witness → partner adoption rollup → StratOps growth feedback    |
+| **Innovation moat**   | **Network once** — one integrator-facing surface; partners build on trade lanes without N× bespoke onboarding decks      |
+| **Trust fortress**    | Class S LOI/MOU under LegalOps; EcosystemOps runs enablement only; RevOps owns commercial witnesses                      |
+| **Magic**             | Partner or developer onboards to live sandbox + publish path — not a scattered doc hunt across 16 repos                  |
+| **Business outcomes** | Integrator pilot velocity; developer time-to-first-API; community-led adoption at continental scale                      |
+
+**Functional product:** **EcosystemAAS** — `bridge-os/pm/spec/ecosystemops-network-registry.json` · [ecosystemops-as-a-service.md](./ecosystemops-as-a-service.md)
 
 ### ProductOps
 
@@ -309,12 +323,12 @@ flowchart LR
 
 ## Implementation sequence
 
-| Phase          | CORE lanes                                                                                                         | Deliverable                                                         |
-| -------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
-| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **StratOps**, **ProductOps**, **DesignOps**, **HROps**, **RevOps**, **PayOps** | StratOps north star active; RevOps CRO (GTMaaS); PayOps domain live |
-| **Next**       | PayOps substrate, CommOps                                                                                          | fabric SM + webhook matrix + `payops:providers:check`               |
-| **Then**       | MLOps, AIOps depth                                                                                                 | Eval promotion gate wired to every model/agent release              |
-| **Continuous** | All                                                                                                                | `core-runtime-engine-protocol.json` harness per lane                |
+| Phase          | CORE lanes                                                                                                                           | Deliverable                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **StratOps**, **EcosystemOps**, **ProductOps**, **DesignOps**, **HROps**, **RevOps**, **PayOps** | StratOps + EcosystemOps active; PayOps contract-defined |
+| **Next**       | PayOps substrate, CommOps                                                                                                            | fabric SM + webhook matrix + `payops:providers:check`   |
+| **Then**       | MLOps, AIOps depth                                                                                                                   | Eval promotion gate wired to every model/agent release  |
+| **Continuous** | All                                                                                                                                  | `core-runtime-engine-protocol.json` harness per lane    |
 
 ---
 
@@ -323,6 +337,7 @@ flowchart LR
 ```bash
 pnpm fabric:compass:check            # service fabric registers + runners
 pnpm stratops:strategy:check:write   # StratOps structural gate
+pnpm ecosystemops:network:check:write # EcosystemOps network gate
 pnpm agent:next-work --json          # FleetOps selection + persona
 pnpm ecosystem:assurance:evaluate    # need-based assure trigger
 pnpm ecosystem:progress:report --markdown

@@ -9,7 +9,7 @@ initiative: INIT-GTCX-EXECUTION-ENGINE
 # StratOps — strategy and enterprise-building
 
 > **Ops lane:** **StratOps** · **Functional product:** **StratAAS** (strategy-as-a-service)  
-> **Coordinates with:** ProductOps (per-repo PRD/milestones), FleetOps (P22 execution), RevOps (tactical CRO economics)
+> **Coordinates with:** ProductOps (per-repo PRD/milestones), **EcosystemOps** (partners/dev/community programs), FleetOps (P22 execution), RevOps (tactical CRO economics)
 
 **Strategy registry SoR:** `bridge-os/pm/spec/stratops-strategy-registry.json`  
 **Friction SoR:** `bridge-os/pm/spec/stratops-friction-register.json`
@@ -20,7 +20,7 @@ StratOps owns **where the company compounds** — not how a single repo ships ne
 
 | Pillar                 | Question                                                | StratOps owns                                                                                 | RevOps / ProductOps own                             |
 | ---------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| **Growth**             | How do pilots become production and distribution scale? | GR-T2 → sovereign trajectory, partnership-led expansion, pilot conversion semantics           | Tier pricing, checkout, monthly revenue rollup      |
+| **Growth**             | How do pilots become production and distribution scale? | GR-T2 → sovereign trajectory, partnership-led expansion _(programs → **EcosystemOps**)_       | Tier pricing, checkout, monthly revenue rollup      |
 | **Scale**              | How do we add lanes/repos without linear ops cost?      | CORE + service-fabric thesis, fleet programme capacity, agentic throughput at ecosystem scope | Per-repo sprint execution, deploy apply             |
 | **Economies of scale** | Where does marginal cost fall as the fleet grows?       | Shared substrate leverage (DaaS, SECaaS, PayOps, StratAAS), unified economics _frame_         | AWS line items, Stripe wiring, CAC/LTV spreadsheets |
 | **Sustainability**     | Can we grow without burning trust or margin?            | Trust-speed duality, bank-grade brand durability, institutional evidence (not chat memory)    | —                                                   |
@@ -30,12 +30,12 @@ Machine registry: `strategicPillars` in `stratops-strategy-registry.json`.
 
 ## Owns
 
-- **Growth** — fleet north star, integrator pilot → production path, partnership coalition
+- **Growth** — fleet north star, integrator pilot → production path _(partner enablement → **EcosystemOps**)_
 - **Scale** — company/product roadmap at fleet level, live programmes, execution-engine graph
 - **Economies of scale** — why shared CORE beats per-repo ops; marginal cost story for investors and product leads
 - **Sustainability** — durable operating model (business + institutional), enterprise pilot DoD, goal orientation
 - **Moats** — defensibility narrative wired to CORE `innovationMoat` pillars
-- **Partnerships** — enterprise/government pilot readiness, institutional intelligence consumption
+- **Partnerships** — coalition priority at strategy level; enablement → **EcosystemOps**
 - **Enterprise-building** — milestone semantics, long-horizon goals and definitions of done
 
 ## Does not own

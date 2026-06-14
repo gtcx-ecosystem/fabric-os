@@ -1,45 +1,220 @@
 {
-  "schema": "gtcx://fabric-os/secas-supply-chain-check/v1",
+  "schema": "gtcx://fabric-os/secas-supply-chain-check/v2",
   "storyId": "SECAS-S4-02",
   "frictionId": "SEC-SUPPLY-01",
-  "checkedAt": "2026-06-14T10:47:16.022Z",
+  "checkedAt": "2026-06-14T14:18:28.467Z",
   "owner": "fabric-os",
+  "policy": {
+    "json": "pm/spec/supply-chain-cve-policy.json",
+    "doc": "docs/operations/secas/supply-chain-policy.md"
+  },
   "gates": {
     "frictionItem": {
       "ok": true,
       "status": "pending",
       "storyId": "SECAS-S4-02"
     },
-    "repoProbe": {
+    "policyDoc": {
+      "ok": true,
+      "missing": []
+    },
+    "repoRollup": {
       "ok": true,
       "repos": [
         {
           "repo": "fabric-os",
           "present": true,
-          "packageJson": true
+          "packageJson": true,
+          "lockfile": true,
+          "ci": {
+            "ok": true,
+            "files": [
+              "build-push-anomaly-detector.yml",
+              "build-push-ecr.yml",
+              "chaos-test.yml",
+              "ci.yml",
+              "cross-repo-contract.yml",
+              "cross-repo-health.yml",
+              "dast-zap.yml",
+              "debug-oidc.yml",
+              "dependabot-triage.yml",
+              "deploy-staging.yml",
+              "distribution-snapshot.yml",
+              "docs-site-build.yml",
+              "dr-test-quarterly.yml",
+              "dr-test.yml",
+              "eval-pipeline.yml",
+              "hygiene.yml",
+              "injection-suite-weekly.yml",
+              "secret-scan.yml",
+              "security-evidence.yml",
+              "slsa-provenance.yml"
+            ],
+            "matched": [
+              "build-push-ecr.yml:trivy",
+              "ci.yml:pnpm audit",
+              "ci.yml:trivy",
+              "ci.yml:audit-with-acceptance",
+              "ci.yml:dependency-audit",
+              "ci.yml:dependency audit",
+              "security-evidence.yml:pnpm audit",
+              "security-evidence.yml:trivy",
+              "security-evidence.yml:audit-with-acceptance",
+              "security-evidence.yml:dependency-audit",
+              "security-evidence.yml:dependency audit"
+            ],
+            "validateAll": false
+          },
+          "audit": {
+            "ok": true,
+            "verdict": "partial",
+            "exitCode": null,
+            "timedOut": true,
+            "registryReachable": false,
+            "vulnerabilities": null
+          },
+          "ok": true
         },
         {
           "repo": "markets-os",
           "present": true,
-          "packageJson": true
+          "packageJson": true,
+          "lockfile": true,
+          "ci": {
+            "ok": true,
+            "files": [
+              "ai-codeowner-review.yml",
+              "ci.yml",
+              "deploy.yml",
+              "hygiene.yml",
+              "weekly-staging-dry-run.yml"
+            ],
+            "matched": ["ci.yml:pnpm audit", "ci.yml:trivy", "ci.yml:dependency audit"],
+            "validateAll": false
+          },
+          "audit": {
+            "ok": true,
+            "verdict": "partial",
+            "exitCode": null,
+            "timedOut": true,
+            "registryReachable": false,
+            "vulnerabilities": null
+          },
+          "ok": true
         },
         {
           "repo": "compliance-os",
           "present": true,
-          "packageJson": true
+          "packageJson": true,
+          "lockfile": true,
+          "ci": {
+            "ok": true,
+            "files": [
+              "a11y-axe.yml",
+              "ai-codeowner-review.yml",
+              "cd-production.yml",
+              "cd-staging.yml",
+              "ci.yml",
+              "codeql.yml",
+              "desktop-build.yml",
+              "execution-evidence.yml",
+              "hygiene.yml",
+              "lighthouse-ci.yml",
+              "load-baseline.yml",
+              "secret-scan.yml",
+              "validate-data-source.yml"
+            ],
+            "matched": ["ci.yml:pnpm audit", "ci.yml:trivy", "ci.yml:dependency audit"],
+            "validateAll": false
+          },
+          "audit": {
+            "ok": true,
+            "verdict": "partial",
+            "exitCode": null,
+            "timedOut": true,
+            "registryReachable": false,
+            "vulnerabilities": null
+          },
+          "ok": true
         },
         {
           "repo": "terminal-os",
           "present": true,
-          "packageJson": true
+          "packageJson": true,
+          "lockfile": true,
+          "ci": {
+            "ok": true,
+            "files": [
+              "backup-audit.yml",
+              "ci.yml",
+              "desktop-build.yml",
+              "docker-build.yml",
+              "docs-standard.yml",
+              "e2e.yml",
+              "hygiene.yml",
+              "lighthouse-ci.yml",
+              "load-test.yml",
+              "preview.yml",
+              "rag-config.yml",
+              "ux-audit.yml",
+              "ux-measurement.yml",
+              "vrt.yml"
+            ],
+            "matched": ["ci.yml:pnpm audit", "ci.yml:dependency-audit", "ci.yml:dependency audit"],
+            "validateAll": false
+          },
+          "audit": {
+            "ok": true,
+            "verdict": "partial",
+            "exitCode": null,
+            "timedOut": true,
+            "registryReachable": false,
+            "vulnerabilities": null
+          },
+          "ok": true
         }
       ]
     },
-    "ciPolicy": {
+    "fabricCi": {
       "ok": true,
-      "note": "Full Trivy/Semgrep fleet rollup queued — structural probe only"
+      "files": [
+        "build-push-anomaly-detector.yml",
+        "build-push-ecr.yml",
+        "chaos-test.yml",
+        "ci.yml",
+        "cross-repo-contract.yml",
+        "cross-repo-health.yml",
+        "dast-zap.yml",
+        "debug-oidc.yml",
+        "dependabot-triage.yml",
+        "deploy-staging.yml",
+        "distribution-snapshot.yml",
+        "docs-site-build.yml",
+        "dr-test-quarterly.yml",
+        "dr-test.yml",
+        "eval-pipeline.yml",
+        "hygiene.yml",
+        "injection-suite-weekly.yml",
+        "secret-scan.yml",
+        "security-evidence.yml",
+        "slsa-provenance.yml"
+      ],
+      "matched": [
+        "build-push-ecr.yml:trivy",
+        "ci.yml:pnpm audit",
+        "ci.yml:trivy",
+        "ci.yml:audit-with-acceptance",
+        "ci.yml:dependency-audit",
+        "ci.yml:dependency audit",
+        "security-evidence.yml:pnpm audit",
+        "security-evidence.yml:trivy",
+        "security-evidence.yml:audit-with-acceptance",
+        "security-evidence.yml:dependency-audit",
+        "security-evidence.yml:dependency audit"
+      ],
+      "validateAll": false
     }
   },
   "ok": true,
-  "phase": "structural"
+  "phase": "fleet-rollup"
 }

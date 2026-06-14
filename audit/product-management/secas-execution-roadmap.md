@@ -2,7 +2,7 @@
 title: Execution roadmap — SecOps
 status: current
 date: 2026-06-14
-last_reconciled: 2026-06-14T13:33:45.060Z
+last_reconciled: 2026-06-14T14:19:09.089Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true
@@ -30,7 +30,7 @@ sources:
 | Story       | Title                                                                   | Priority | Status  | Owner     |
 | ----------- | ----------------------------------------------------------------------- | -------- | ------- | --------- |
 | SECAS-S4-01 | CSIRT / SOC operating model + incident response runbook SoR             | P0       | done    | fabric-os |
-| SECAS-S4-02 | Fleet supply-chain security gates (container + dependency scan witness) | P0       | pending | fabric-os |
+| SECAS-S4-02 | Fleet supply-chain security gates (container + dependency scan witness) | P0       | done    | fabric-os |
 | SECAS-S4-03 | Standing vulnerability management cadence + friction register hygiene   | P1       | pending | fabric-os |
 | SECAS-S4-04 | Pen-test findings remediation track + re-test witness                   | P0       | pending | fabric-os |
 | SECAS-S4-05 | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2       | pending | fabric-os |
@@ -54,7 +54,7 @@ pnpm secas:csirt:check:write
 
 ### SECAS-S4-02: Fleet supply-chain security gates (container + dependency scan witness)
 
-**Files:** platform/scripts/secas-supply-chain-check.mjs, audit/evidence/secas-supply-chain-check-latest.json
+**Files:** platform/scripts/secas-supply-chain-check.mjs, pm/spec/supply-chain-cve-policy.json, docs/operations/secas/supply-chain-policy.md, audit/evidence/secas-supply-chain-check-latest.json
 
 **Acceptance**
 
@@ -64,8 +64,8 @@ pnpm secas:supply-chain:check:write
 
 **UAT / QA**
 
-- [ ] Critical/high CVE policy documented with fleet rollup witness
-- [ ] fabric-os + 3 product repos probed in harness
+- [x] Critical/high CVE policy documented with fleet rollup witness
+- [x] fabric-os + 3 product repos probed in harness
 
 **Blockers:** none
 
@@ -154,7 +154,7 @@ _Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SO
 | `SEC-WAF-01`                 | `pm/security-friction-register.json` | —               | done    |
 | `SEC-IRSA-01`                | `pm/security-friction-register.json` | SECAS-S3-01     | done    |
 | `SEC-CSIRT-01`               | `pm/security-friction-register.json` | SECAS-S4-01     | done    |
-| `SEC-SUPPLY-01`              | `pm/security-friction-register.json` | SECAS-S4-02     | pending |
+| `SEC-SUPPLY-01`              | `pm/security-friction-register.json` | SECAS-S4-02     | done    |
 | `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | pending |
 | `SEC-PTREM-01`               | `pm/security-friction-register.json` | SECAS-S4-04     | pending |
 | P42 hub protocol publication | `pm/_tasks`                          | gtcx-docs       | done    |

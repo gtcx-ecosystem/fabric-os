@@ -95,7 +95,7 @@ S4 friction: `SEC-CSIRT-01`, `SEC-SUPPLY-01`, `SEC-VULN-01`, `SEC-PTREM-01` in `
 
 ```bash
 pnpm secas:csirt:check:write         # SECAS-S4-01 structural
-pnpm secas:supply-chain:check:write   # SECAS-S4-02 structural (no vendor dep)
+pnpm secas:supply-chain:check:write   # SECAS-S4-02 fleet rollup (policy + 4-repo witness)
 ```
 
 ## SECAS-S5 — Continuous assurance (queued)

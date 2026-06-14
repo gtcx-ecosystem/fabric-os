@@ -188,25 +188,28 @@
       "sprint": "SECAS-S4",
       "title": "Fleet supply-chain security gates (container + dependency scan witness)",
       "priority": "P0",
-      "status": "pending",
+      "status": "done",
       "owner": "fabric-os",
       "frictionIds": ["SEC-SUPPLY-01"],
       "files": [
         "platform/scripts/secas-supply-chain-check.mjs",
+        "pm/spec/supply-chain-cve-policy.json",
+        "docs/operations/secas/supply-chain-policy.md",
         "audit/evidence/secas-supply-chain-check-latest.json"
       ],
       "acceptance": ["pnpm secas:supply-chain:check:write"],
       "uat": [
         {
           "text": "Critical/high CVE policy documented with fleet rollup witness",
-          "done": false
+          "done": true
         },
         {
           "text": "fabric-os + 3 product repos probed in harness",
-          "done": false
+          "done": true
         }
       ],
-      "blockers": null
+      "blockers": null,
+      "auditNotes": "2026-06-14 — fleet rollup PASS (4/4 repos); policy + witness v2; terminal-os CI dependency-audit job added"
     },
     {
       "id": "SECAS-S4-03",

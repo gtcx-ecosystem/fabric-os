@@ -81,7 +81,7 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 | S4-06                     | README gaps (12 dirs) per repo-hygiene audit                   | P0  | done    | code     |
 | S4-07                     | pnpm test quick 1/359 flake investigation                      | P2  | done    | code     |
 | SECAS-S2-01               | Pen-test ingest scaffolding (internal prep)                    | P0  | done    | ops-docs |
-| SECAS-S4-02               | Fleet supply-chain security gates                              | P0  | pending | code     |
+| SECAS-S4-02               | Fleet supply-chain security gates                              | P0  | done    | code     |
 | XR-FABRIC-SPRINT-AUTH-001 | Sprint authority L2 read contract witness                      | P1  | done    | ops-docs |
 
 ## Implementation classes
@@ -98,6 +98,19 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 1. **Work register** (this file) — authoritative for `IR-*` and `P22-*` items.
 2. **`execution-roadmap.md`** — sprint tables (`S1-*`, `S2-*`, `S3-*`, `S4-*`); `**done**` / `**closed**` → done.
 3. **`.baseline/memory/session.md`** — active session state and next recommendations.
+
+## Gate lifecycle (normative — fleet)
+
+| Lane                                      | On internal roadmap? | P22? | System of record                                             |
+| ----------------------------------------- | -------------------- | ---- | ------------------------------------------------------------ |
+| **Engineering** (Class R)                 | Yes                  | Yes  | This manifest + execution roadmap                            |
+| **Internal human** (GTCX team)            | No                   | No   | `fabric-os/ops/coordination/internal-human-gates.json`       |
+| **Post-launch external** (vendor/auditor) | No                   | No   | `fabric-os/ops/coordination/post-launch-external-gates.json` |
+| **Formal GTM adoption**                   | No                   | No   | agile-os GTM programme · LegalOps / RevOps                   |
+
+**Forbidden:** EXT-INF-\*, vendor pen-test calendar (BG-10-10), SOC 2 opinion (BG-10-11), or SECAS vendor wait on engineering/GTM sprint boards.
+
+Spec: `bridge-os/pm/spec/gate-lifecycle-taxonomy.json`
 
 ## Forbidden
 

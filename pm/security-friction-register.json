@@ -71,14 +71,16 @@
     {
       "id": "SEC-SUPPLY-01",
       "priority": "P0",
-      "status": "pending",
+      "status": "closed",
       "repo": "fabric-os",
       "title": "Fleet supply-chain security gates",
       "symptom": "Container/dependency CVE policy not fleet-witnessed",
       "sprint": "SECAS-S4",
       "storyId": "SECAS-S4-02",
+      "witness": "audit/evidence/secas-supply-chain-check-latest.json",
       "infraAction": "secas:supply-chain:check rollup — Trivy/Semgrep or CI witness paths",
       "acceptance": "audit/evidence/secas-supply-chain-check-latest.json",
+      "executionStatus": "done",
       "blocksIR": false
     },
     {

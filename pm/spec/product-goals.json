@@ -43,13 +43,13 @@
     }
   },
   "activeMilestone": {
-    "id": "SECAS-S4-supply-chain",
-    "title": "SECAS-S4 — fleet supply-chain security gates",
-    "shippableOutcome": "secas:supply-chain:check PASS; fleet rollup witness; composite ≥100",
+    "id": "SECAS-S4-vuln-cadence",
+    "title": "SECAS-S4 — standing vulnerability management cadence",
+    "shippableOutcome": "secas:vuln-cadence:check PASS; friction register hygiene witness",
     "targetDate": "2026-Q3",
     "programmeId": "PROG-SECAS-ENGINEERING",
     "prdRefs": ["prd-product-charter"],
-    "headStoryId": "SECAS-S4-02",
+    "headStoryId": "SECAS-S4-03",
     "postLaunchExternalSoR": "ops/coordination/post-launch-external-gates.json",
     "acceptanceChecks": [
       {

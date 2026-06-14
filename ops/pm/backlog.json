@@ -4,8 +4,8 @@
   "updated": "2026-06-14",
   "syncSource": "pnpm pm:sync",
   "active": {
-    "storyId": "SECAS-S4-02",
-    "title": "Fleet supply-chain security gates",
+    "storyId": "SECAS-S4-03",
+    "title": "Standing vulnerability management cadence + friction register hygiene",
     "status": "pending",
     "owner": "fabric-os",
     "tier": "secas-s4-implement"
@@ -41,8 +41,8 @@
     {
       "id": "SECAS-S4-02",
       "ownerRepo": "fabric-os",
-      "status": "pending",
-      "traceId": null
+      "status": "done",
+      "traceId": "cf827559-f370-4b74-b539-0935d0653e7a"
     },
     {
       "id": "XR-MKT-PROTOCOL-NATIVE-001-GT",

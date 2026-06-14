@@ -15,10 +15,10 @@ autonomy_level: 'sovereign'
 # GTCX Infrastructure — Repository Overview
 
 > **Last updated:** 2026-06-02
-> **Latest master audit:** [`master-audit-2026-06-02.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/master-audit-2026-06-02.md)
-> **Latest full audit:** [`full-audit-2026-05-31.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/full-audit-2026-05-31.md)
-> **Execution roadmap:** [`execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md)
-> **Machine status:** [`latest.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/evidence/five-pillar-latest.json)
+> **Latest master audit:** [`master-audit-2026-06-02.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/master-audit-2026-06-02.md)
+> **Latest full audit:** [`full-audit-2026-05-31.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/full-audit-2026-05-31.md)
+> **Execution roadmap:** [`execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md)
+> **Machine status:** [`latest.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/evidence/five-pillar-latest.json)
 > **Single source of truth:** This document is the canonical entry point. If you find conflicting information, this document wins.
 
 ---
@@ -33,15 +33,15 @@ autonomy_level: 'sovereign'
 
 ### 1.1 Current Audit Status
 
-| Item                         | Current State                                                                                                                                                                                                                                     |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Latest master audit          | [`01-docs/05-audit/master-audit-post-sprint-2026-05-27.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/master-audit-post-sprint-2026-05-27.md) |
-| 10/10 remediation plan       | [`01-docs/05-audit/10-10-remediation-plan-2026-05-27.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/10-10-remediation-plan-2026-05-27.md)     |
-| Composite score              | 9.0 / 10                                                                                                                                                                                                                                          |
-| Investor lens                | 8.9 / 10                                                                                                                                                                                                                                          |
-| Enterprise buyer lens        | 8.6 / 10                                                                                                                                                                                                                                          |
-| African Sovereign / DFI lens | 6.7 / 10                                                                                                                                                                                                                                          |
-| Main blockers                | Production Kustomize, docs-site build, replay lint, Terraform fmt, PagerDuty key, audit endpoint rate limits                                                                                                                                      |
+| Item                         | Current State                                                                                                                                                                                                                                                               |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Latest master audit          | [`01-docs/05-audit/master-audit-post-sprint-2026-05-27.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/master-audit-post-sprint-2026-05-27.md) |
+| 10/10 remediation plan       | [`01-docs/05-audit/10-10-remediation-plan-2026-05-27.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/10-10-remediation-plan-2026-05-27.md)     |
+| Composite score              | 9.0 / 10                                                                                                                                                                                                                                                                    |
+| Investor lens                | 8.9 / 10                                                                                                                                                                                                                                                                    |
+| Enterprise buyer lens        | 8.6 / 10                                                                                                                                                                                                                                                                    |
+| African Sovereign / DFI lens | 6.7 / 10                                                                                                                                                                                                                                                                    |
+| Main blockers                | Production Kustomize, docs-site build, replay lint, Terraform fmt, PagerDuty key, audit endpoint rate limits                                                                                                                                                                |
 
 ---
 
@@ -329,11 +329,11 @@ Key controls active in production:
 
 ### 7.3 Audit Trail
 
-| Document                                                                                                                                                                                                                       | Date       | Score                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------------- |
-| [master-audit-2026-05-17.md](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/master-audit-2026-05-17.md)                         | 2026-05-17 | 5.9/10 (capped)           |
-| [master-audit-2026-05-12-updated.md](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/master-audit-2026-05-12-updated.md) | 2026-05-12 | 8.85/10 (prior, inflated) |
-| [10-10-roadmap-2026-05-17.md](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/10-10-roadmap-2026-05-17.md)                       | 2026-05-17 | Target: 10.0              |
+| Document                                                                                                                                                                                                                                                 | Date       | Score                     |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------- |
+| [master-audit-2026-05-17.md](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/master-audit-2026-05-17.md)                         | 2026-05-17 | 5.9/10 (capped)           |
+| [master-audit-2026-05-12-updated.md](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/master-audit-2026-05-12-updated.md) | 2026-05-12 | 8.85/10 (prior, inflated) |
+| [10-10-roadmap-2026-05-17.md](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/10-10-roadmap-2026-05-17.md)                       | 2026-05-17 | Target: 10.0              |
 
 ---
 
@@ -388,7 +388,7 @@ Key deliverables:
 
 ### 9.3 Path to 10.0
 
-Per the [10/10 roadmap](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/10-10-roadmap-2026-05-17.md):
+Per the [10/10 roadmap](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/10-10-roadmap-2026-05-17.md):
 
 | Milestone         | Target Core | Key Unlocks                                                                            |
 | ----------------- | ----------- | -------------------------------------------------------------------------------------- |
@@ -430,4 +430,4 @@ Per the [10/10 roadmap](../../audit/archive/legacy-docs-audit/archive/legacy-doc
 
 ---
 
-_This document is generated from repo state and audit artifacts. For the canonical source of truth on scores and findings, see [master-audit-post-sprint-2026-05-27.md](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/master-audit-post-sprint-2026-05-27.md)._
+_This document is generated from repo state and audit artifacts. For the canonical source of truth on scores and findings, see [master-audit-post-sprint-2026-05-27.md](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/master-audit-post-sprint-2026-05-27.md)._

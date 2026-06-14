@@ -19,7 +19,7 @@ review_cycle: 'on-change'
 
 > **Team:** [Team Definition](../team.md)  
 > **Backlog:** [Backlog](../backlog.md)  
-> **Execution plan (canonical):** [`01-docs/05-audit/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md)
+> **Execution plan (canonical):** [`01-docs/05-audit/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md)
 
 ## Committed
 

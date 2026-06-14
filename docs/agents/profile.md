@@ -166,5 +166,5 @@ When working on `gtcx-infrastructure`:
 ## Related
 
 - [Sprint Planning](../agile/sprint-planning.md)
-- [Execution Roadmap](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md)
+- [Execution Roadmap](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md)
 - [AGENTS.md](../../AGENTS.md)

@@ -19,7 +19,7 @@ This directory contains agile documentation for the GTCX infrastructure.
 ## Contents
 
 > **Looking for the current execution plan?** It lives at
-> [`01-docs/05-audit/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md),
+> [`01-docs/05-audit/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md),
 > not under this directory. The roadmap files below tagged
 > `(template)` or `(superseded)` should not be used for current
 > sprint planning.

@@ -21,7 +21,7 @@ How `gtcx-infrastructure` documentation governs itself and where it deliberately
 - [`../README.md`](../README.md) is the master index and single source of navigation truth.
 - Repo-local docs may deviate from Protocol 1 v2.0 canonical taxonomy only when the repo has a stable audience-specific collection that would become less legible if forcibly flattened.
 - Cross-repo references use absolute GitHub URLs (Protocol 1 §Cross-Repo Reference Rules).
-- Historical evidence remains in place under [`../audit/historical-cycles/`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/); it is not deleted during standards work.
+- Historical evidence remains in place under [`../audit/historical-cycles/`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/); it is not deleted during standards work.
 
 ## Current state (2026-05-24, post-hygiene-cleanup)
 
@@ -29,20 +29,20 @@ The repo has **12 of 12 Protocol 1 v2.0 canonical folders** plus **3 documented 
 
 ### Canonical folders (all present)
 
-| Folder                                                                                                                                                        | Purpose                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [`../overview/`](../overview/)                                                                                                                                | Strategic overview, current metrics, honest gaps      |
-| [`../gitbook/`](../gitbook/)                                                                                                                                  | External-facing product docs (Astro Starlight source) |
-| [`../gtm/`](../../ops/gtm/narrative/)                                                                                                                         | Go-to-market evidence pack (numbered 00–13)           |
-| [`../governance/`](./)                                                                                                                                        | This folder — trust portal, model cards, governance   |
-| [`../security/`](../../../../ops/security/narrative/)                                                                                                         | Threat models, key ceremonies, VDP                    |
-| [`../compliance/`](../../../../ops/compliance/narrative/)                                                                                                     | DPIA, SOC 2 evidence, framework assessments           |
-| [`../audit/`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/) | Master audits, scoring, evidence ledger               |
-| [`../architecture/`](../architecture/)                                                                                                                        | System design, ADRs (under `decisions/`), principles  |
-| [`../engineering/`](../engineering/)                                                                                                                          | Build, integration, cross-repo coordination           |
-| [`../operations/`](../operations/)                                                                                                                            | Runbooks, release governance, CI-CD, drills           |
-| [`../api/`](../api/)                                                                                                                                          | OpenAPI spec for compliance-gateway                   |
-| [`../reference/`](../reference/)                                                                                                                              | Glossary, changelog, reference content                |
+| Folder                                                                                                                                                                                  | Purpose                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| [`../overview/`](../overview/)                                                                                                                                                          | Strategic overview, current metrics, honest gaps      |
+| [`../gitbook/`](../gitbook/)                                                                                                                                                            | External-facing product docs (Astro Starlight source) |
+| [`../gtm/`](../../ops/gtm/narrative/)                                                                                                                                                   | Go-to-market evidence pack (numbered 00–13)           |
+| [`../governance/`](./)                                                                                                                                                                  | This folder — trust portal, model cards, governance   |
+| [`../security/`](../../../../ops/security/narrative/)                                                                                                                                   | Threat models, key ceremonies, VDP                    |
+| [`../compliance/`](../../../../ops/compliance/narrative/)                                                                                                                               | DPIA, SOC 2 evidence, framework assessments           |
+| [`../audit/`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/) | Master audits, scoring, evidence ledger               |
+| [`../architecture/`](../architecture/)                                                                                                                                                  | System design, ADRs (under `decisions/`), principles  |
+| [`../engineering/`](../engineering/)                                                                                                                                                    | Build, integration, cross-repo coordination           |
+| [`../operations/`](../operations/)                                                                                                                                                      | Runbooks, release governance, CI-CD, drills           |
+| [`../api/`](../api/)                                                                                                                                                                    | OpenAPI spec for compliance-gateway                   |
+| [`../reference/`](../reference/)                                                                                                                                                        | Glossary, changelog, reference content                |
 
 ### Documented exceptions (3 folders Protocol 1 v2.0 doesn't name)
 
@@ -90,6 +90,6 @@ When this repo is not the authority for a referenced concept:
 
 - [`./README.md`](./README.md) — governance corpus index
 - [`../README.md`](../README.md) — docs index
-- [`../audit/docs-standard-compliance-2026-05-24-cycle-2.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/docs-standard-compliance-2026-05-24-cycle-2.md) — most recent docs-standard self-attestation
+- [`../audit/docs-standard-compliance-2026-05-24-cycle-2.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/docs-standard-compliance-2026-05-24-cycle-2.md) — most recent docs-standard self-attestation
 - Protocol 1 v2.0: https://github.com/gtcx-ecosystem/canon-os/blob/main/system-sop/1-protocols/1-docs-structure/protocol.md
 - Protocol 13: https://github.com/gtcx-ecosystem/canon-os/blob/main/system-sop/1-protocols/13-architecture-diagrams/protocol.md

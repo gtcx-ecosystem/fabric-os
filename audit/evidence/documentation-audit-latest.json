@@ -52,8 +52,8 @@
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
-      "markdownFileCount": 457,
-      "brokenLinks": 1,
+      "markdownFileCount": 464,
+      "brokenLinks": 0,
       "scaffoldFileCount": 0,
       "aiSlopFileCount": 0
     }

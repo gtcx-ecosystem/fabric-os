@@ -19,7 +19,7 @@ Index of documents in `01-docs/05-audit/agile/sprints`.
 ## Documents
 
 > **Looking for the current sprint?** See the canonical execution plan
-> at [`01-docs/05-audit/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md).
+> at [`01-docs/05-audit/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md).
 > The files below are sprint snapshots, not the active backlog.
 
 - [sprint 2026 05 phase2 9plus roadmap](./sprint-2026-05-phase2-9plus-roadmap.md) — superseded

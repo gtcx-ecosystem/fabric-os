@@ -1,16 +1,16 @@
 {
-  "startedAt": "2026-06-14T10:15:37.984Z",
+  "startedAt": "2026-06-14T11:19:19.316Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-737524af-3e84-4468-8563-9ea67d90ba5e",
+    "id": "gtcx-agent-2386dfa5-69ca-4788-acac-aabbbac2d49e",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-715756cf118da570535752150f32d206-4e253c812322b865-01"
+    "traceparent": "00-dba636360acaf7bef9933ead66f3134f-c7aa362f28b6537a-01"
   },
   "nextWork": {
-    "traceId": "55949647-e703-4f70-923b-4e2c9ee69df4",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=55949647-e703-4f70-923b-4e2c9ee69df4",
+    "traceId": "b9055f64-bbcd-4e27-b6df-41fa762de786",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=b9055f64-bbcd-4e27-b6df-41fa762de786",
     "ok": true,
     "backlogClear": false,
     "protocol": "22-agent-work-selection",
@@ -109,7 +109,7 @@
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-14T10:15:37.973Z",
+      "provisionedAt": "2026-06-14T11:19:19.302Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -532,7 +532,7 @@
       "institutional": "security-engineer",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md",
       "docHash": "8900a6bc85434c6f3cd30f587a51c4710c00791f271b9c517a45c77dd27db5b6",
-      "readAt": "2026-06-14T09:38:34.544Z"
+      "readAt": "2026-06-14T10:48:30.359Z"
     },
     "engineeringLaneAbstraction": {
       "applies": false,
@@ -544,6 +544,6 @@
       "applies": false
     }
   },
-  "gitChanged": 17,
+  "gitChanged": 5,
   "authorityClass": "R"
 }

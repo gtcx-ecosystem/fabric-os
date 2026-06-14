@@ -24,7 +24,7 @@ autonomy_level: 'permissioned'
 
 ## 1. Purpose
 
-Define the authority, responsibilities, and accountability of the Chief Information Security Officer (CISO) at GTCX. This role is a standing member of the Board Security Committee per the [`Board Security Committee Charter`](../../../../ops/compliance/narrative/board-security-committee-charter.md).
+Define the authority, responsibilities, and accountability of the Chief Information Security Officer (CISO) at GTCX. This role is a standing member of the Board Security Committee per the [`Board Security Committee Charter`](../../ops/compliance/narrative/board-security-committee-charter.md).
 
 ## 2. Authority
 

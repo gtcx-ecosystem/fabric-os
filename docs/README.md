@@ -33,7 +33,7 @@ Seven-hub layout (Protocol 29/30). **Path contract:** [`config/sor-map.json`](..
 > **Doc-site architecture.** This repo has ONE public doc-site, not three.
 >
 > - **Source of truth** (markdown): [`01-docs/gitbook/docs-site/`](gitbook/docs-site/README.md) — what gets published at `gtcx.trade/compliance`.
-> - **Build pipeline**: [`03-platform/tools/docs-site/`](../03-platform/tools/docs-site/README.md) — Astro Starlight static site generator. Its `03-platform/scripts/sync-content.mjs` mirrors the source above into `03-platform/src/content/01-docs/` (gitignored) before each build.
+> - **Build pipeline**: [`platform/tools/docs-site/`](../platform/tools/docs-site/README.md) — Astro Starlight static site generator. Its `03-platform/scripts/sync-content.mjs` mirrors the source above into `03-platform/src/content/01-docs/` (gitignored) before each build.
 > - **Internal docs** (this tree, `01-docs/`): for the engineering team, agents, and operators — not published to gtcx.trade.
 >
 > The "three doc-site implementations" finding in the 2026-05-30 audit was a misreading of the directory layout. The build pipeline and the source are intentionally separated; the internal docs are a different surface entirely.
@@ -79,8 +79,8 @@ Seven-hub layout (Protocol 29/30). **Path contract:** [`config/sor-map.json`](..
 
 ## 2. Plans & Roadmaps
 
-**Canonical execution plan:** [`audit/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md) — reconciled 3-sprint plan with every open audit finding as a story.
-**Machine-readable status:** [`audit/latest.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/latest.json).
+**Canonical execution plan:** [`audit/execution-roadmap.md`](../audit/execution-roadmap.md) — reconciled 3-sprint plan with every open audit finding as a story.
+**Machine-readable status:** [`audit/latest.json`](../audit/latest.json).
 **Strategic milestones:** [`roadmap/roadmap-2026-07-13.md`](roadmap/roadmap-2026-07-13.md).
 
 Other:
@@ -210,35 +210,35 @@ Other:
 
 ## 8. Compliance
 
-- [Compliance Requirements](../../../../ops/compliance/narrative/compliance-requirements.md) — Regulatory requirements matrix
-- [Controls Matrix](../../../../ops/compliance/narrative/controls-matrix.md) — Security controls mapping
-- [Regulatory Framework](../../../../ops/compliance/narrative/regulatory-framework.md) — Multi-jurisdiction regulatory map
-- [SOC2 Evidence Pipeline](../../../../ops/compliance/narrative/soc2-evidence-pipeline.md) — Automated SOC2 evidence collection
-- [Compliance Templates Overview](../../../../ops/compliance/narrative/compliance-templates-overview.md) — Per-jurisdiction config templates
-- [Accessibility Checklist](../../../../ops/compliance/narrative/accessibility-checklist.md) — WCAG compliance checklist
-- [Board Security Committee Charter](../../../../ops/compliance/narrative/board-security-committee-charter.md) — Board oversight charter
-- [Data Classification Policy](../../../../ops/compliance/narrative/data-classification-policy.md) — Data sensitivity classification
-- [Data Retention Policy](../../../../ops/compliance/narrative/data-retention-policy.md) — Data lifecycle and retention rules
-- [Risk Register](../../../../ops/compliance/narrative/risk-register.md) — Enterprise risk register
-- [Separation of Duties Matrix](../../../../ops/compliance/narrative/separation-of-duties-matrix.md) — SoD control matrix
-- [Vendor Risk Program](../../../../ops/compliance/narrative/vendor-risk-program.md) — Third-party risk management
+- [Compliance Requirements](../ops/compliance/narrative/compliance-requirements.md) — Regulatory requirements matrix
+- [Controls Matrix](../ops/compliance/narrative/controls-matrix.md) — Security controls mapping
+- [Regulatory Framework](../ops/compliance/narrative/regulatory-framework.md) — Multi-jurisdiction regulatory map
+- [SOC2 Evidence Pipeline](../ops/compliance/narrative/soc2-evidence-pipeline.md) — Automated SOC2 evidence collection
+- [Compliance Templates Overview](../ops/compliance/narrative/compliance-templates-overview.md) — Per-jurisdiction config templates
+- [Accessibility Checklist](../ops/compliance/narrative/accessibility-checklist.md) — WCAG compliance checklist
+- [Board Security Committee Charter](../ops/compliance/narrative/board-security-committee-charter.md) — Board oversight charter
+- [Data Classification Policy](../ops/compliance/narrative/data-classification-policy.md) — Data sensitivity classification
+- [Data Retention Policy](../ops/compliance/narrative/data-retention-policy.md) — Data lifecycle and retention rules
+- [Risk Register](../ops/compliance/narrative/risk-register.md) — Enterprise risk register
+- [Separation of Duties Matrix](../ops/compliance/narrative/separation-of-duties-matrix.md) — SoD control matrix
+- [Vendor Risk Program](../ops/compliance/narrative/vendor-risk-program.md) — Third-party risk management
 
 ### ISO 27001 Annex A Policies
 
-- [A05 Information Security Policy](../../../../ops/compliance/narrative/policies/a05-information-security-policy.md) — Top-level security policy
-- [A06 Organization of Information Security](../../../../ops/compliance/narrative/policies/a06-organization-of-information-security.md) — Security roles and responsibilities
-- [A07 Human Resource Security](../../../../ops/compliance/narrative/policies/a07-human-resource-security.md) — Personnel security controls
-- [A08 Asset Management](../../../../ops/compliance/narrative/policies/a08-asset-management.md) — Asset inventory and handling
-- [A09 Access Control](../../../../ops/compliance/narrative/policies/a09-access-control.md) — Access management policy
-- [A10 Cryptography](../../../../ops/compliance/narrative/policies/a10-cryptography.md) — Cryptographic controls policy
-- [A11 Physical Security](../../../../ops/compliance/narrative/policies/a11-physical-security.md) — Physical and environmental security
-- [A12 Operations Security](../../../../ops/compliance/narrative/policies/a12-operations-security.md) — Operational security procedures
-- [A13 Communications Security](../../../../ops/compliance/narrative/policies/a13-communications-security.md) — Network and transfer security
-- [A14 System Acquisition](../../../../ops/compliance/narrative/policies/a14-system-acquisition.md) — Secure development and procurement
-- [A15 Supplier Relationships](../../../../ops/compliance/narrative/policies/a15-supplier-relationships.md) — Supply chain security
-- [A16 Incident Management](../../../../ops/compliance/narrative/policies/a16-incident-management.md) — Security incident procedures
-- [A17 Business Continuity](../../../../ops/compliance/narrative/policies/a17-business-continuity.md) — BCM and disaster recovery
-- [A18 Compliance](../../../../ops/compliance/narrative/policies/a18-compliance.md) — Legal and regulatory compliance
+- [A05 Information Security Policy](../ops/compliance/narrative/policies/a05-information-security-policy.md) — Top-level security policy
+- [A06 Organization of Information Security](../ops/compliance/narrative/policies/a06-organization-of-information-security.md) — Security roles and responsibilities
+- [A07 Human Resource Security](../ops/compliance/narrative/policies/a07-human-resource-security.md) — Personnel security controls
+- [A08 Asset Management](../ops/compliance/narrative/policies/a08-asset-management.md) — Asset inventory and handling
+- [A09 Access Control](../ops/compliance/narrative/policies/a09-access-control.md) — Access management policy
+- [A10 Cryptography](../ops/compliance/narrative/policies/a10-cryptography.md) — Cryptographic controls policy
+- [A11 Physical Security](../ops/compliance/narrative/policies/a11-physical-security.md) — Physical and environmental security
+- [A12 Operations Security](../ops/compliance/narrative/policies/a12-operations-security.md) — Operational security procedures
+- [A13 Communications Security](../ops/compliance/narrative/policies/a13-communications-security.md) — Network and transfer security
+- [A14 System Acquisition](../ops/compliance/narrative/policies/a14-system-acquisition.md) — Secure development and procurement
+- [A15 Supplier Relationships](../ops/compliance/narrative/policies/a15-supplier-relationships.md) — Supply chain security
+- [A16 Incident Management](../ops/compliance/narrative/policies/a16-incident-management.md) — Security incident procedures
+- [A17 Business Continuity](../ops/compliance/narrative/policies/a17-business-continuity.md) — BCM and disaster recovery
+- [A18 Compliance](../ops/compliance/narrative/policies/a18-compliance.md) — Legal and regulatory compliance
 
 ---
 
@@ -274,33 +274,33 @@ Other:
 
 ### Assessments
 
-- [Implementation Truth](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/implementation-truth.md) — What exists vs. what is missing
-- [Remediation Plan 10x10](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/remediation/remediation-plan-10x10.md) — 10-point fix list
-- [Ecosystem Integration](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/ecosystem-integration-assessment.md) — Cross-repo dependencies
-- [GTM Q2 Africa](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/gtm-q2-africa-assessment.md) — Ghana pilot infrastructure needs
-- [Pilot Agreement Template](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/pilot-agreement-template.md) — Partner pilot agreement scaffold
-- [Pilot Success Criteria](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/pilot-success-criteria.md) — Pilot evaluation metrics
+- [Implementation Truth](../audit/archive/legacy-docs-audit/implementation-truth.md) — What exists vs. what is missing
+- [Remediation Plan 10x10](../audit/archive/legacy-docs-audit/remediation/remediation-plan-10x10.md) — 10-point fix list
+- [Ecosystem Integration](../audit/archive/legacy-docs-audit/ecosystem-integration-assessment.md) — Cross-repo dependencies
+- [GTM Q2 Africa](../audit/archive/legacy-docs-audit/gtm-q2-africa-assessment.md) — Ghana pilot infrastructure needs
+- [Pilot Agreement Template](../audit/archive/legacy-docs-audit/pilot-agreement-template.md) — Partner pilot agreement scaffold
+- [Pilot Success Criteria](../audit/archive/legacy-docs-audit/pilot-success-criteria.md) — Pilot evaluation metrics
 
 ### Audit Cycles
 
-- [Auto Dev State](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/auto-dev-state.md) — Autonomous development state tracker
-- [2026-05-04 Cycle 2](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-cycle-2.md) — Audit cycle 2 results
-- [2026-05-04 Cycle 3](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-cycle-3.md) — Audit cycle 3 results
-- [2026-05-04 Cycle 4](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-cycle-4.md) — Audit cycle 4 results
-- [2026-05-04 Full Audit](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-full-audit.md) — Complete audit report
-- [2026-05-05 Cycle 5](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-05-cycle-5.md) — Audit cycle 5 results
-- [2026-05-05 Cycle 6](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-05-cycle-6.md) — Audit cycle 6 results
-- [2026-05-05 Cycle 7 Final](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-05-cycle-7-final.md) — Final audit cycle results
+- [Auto Dev State](../audit/archive/legacy-docs-audit/historical-cycles/auto-dev-state.md) — Autonomous development state tracker
+- [2026-05-04 Cycle 2](../audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-cycle-2.md) — Audit cycle 2 results
+- [2026-05-04 Cycle 3](../audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-cycle-3.md) — Audit cycle 3 results
+- [2026-05-04 Cycle 4](../audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-cycle-4.md) — Audit cycle 4 results
+- [2026-05-04 Full Audit](../audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-full-audit.md) — Complete audit report
+- [2026-05-05 Cycle 5](../audit/archive/legacy-docs-audit/historical-cycles/2026-05-05-cycle-5.md) — Audit cycle 5 results
+- [2026-05-05 Cycle 6](../audit/archive/legacy-docs-audit/historical-cycles/2026-05-05-cycle-6.md) — Audit cycle 6 results
+- [2026-05-05 Cycle 7 Final](../audit/archive/legacy-docs-audit/historical-cycles/2026-05-05-cycle-7-final.md) — Final audit cycle results
 
 ### QA Reviews
 
-- [Production Readiness Evidence](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/production-readiness-evidence-2026-05-08.md) — Production readiness evidence package
-- [Documentation Coverage Proposal](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-documentation-coverage-proposal.md) — Documentation-as-Code CI enforcement
-- [Hardening Strategy](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md) — Institutional hardening (Bash-to-Go, Merkle Anchoring)
-- [Sovereign Stack Whitepaper](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md) — Technical guide for government deployment
-- [Infrastructure Improvement Roadmap](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-infrastructure-improvement-roadmap.md) — Findings and remediation roadmap
-- [Innovation Roadmap](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-innovation-roadmap.md) — Long-term vision (PQC, Agentic Compliance)
-- [Innovation Spec Suite](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-innovation-spec-suite.md) — Specs for future core features
+- [Production Readiness Evidence](../audit/archive/legacy-docs-audit/production-readiness-evidence-2026-05-08.md) — Production readiness evidence package
+- [Documentation Coverage Proposal](../audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-documentation-coverage-proposal.md) — Documentation-as-Code CI enforcement
+- [Hardening Strategy](../audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md) — Institutional hardening (Bash-to-Go, Merkle Anchoring)
+- [Sovereign Stack Whitepaper](../audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md) — Technical guide for government deployment
+- [Infrastructure Improvement Roadmap](../audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-infrastructure-improvement-roadmap.md) — Findings and remediation roadmap
+- [Innovation Roadmap](../audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-innovation-roadmap.md) — Long-term vision (PQC, Agentic Compliance)
+- [Innovation Spec Suite](../audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-innovation-spec-suite.md) — Specs for future core features
 
 ---
 
@@ -439,7 +439,7 @@ Other:
 | Handle an incident             | [Incident Response](operations/runbooks/incident-response.md)                                                                                                    |
 | Understand a past decision     | [Decisions (ADRs)](#4-decisions-adrs)                                                                                                                            |
 | Review security posture        | [Security Framework](../ops/security/narrative/security-framework.md)                                                                                            |
-| Check compliance status        | [Controls Matrix](../../../../ops/compliance/narrative/controls-matrix.md)                                                                                       |
+| Check compliance status        | [Controls Matrix](../ops/compliance/narrative/controls-matrix.md)                                                                                                |
 | Write documentation            | [Docs Writing Guide](reference/docs-writing-guide.md)                                                                                                            |
 | Add a new package              | [Add Package Workflow](agents/workflows/add-package.md)                                                                                                          |
 | Cut a release                  | [Cut Release Workflow](agents/workflows/cut-release.md)                                                                                                          |

@@ -28,7 +28,7 @@ Markdown source for `gtcx.trade/compliance` — the public-facing documentation 
 
 ## Build target
 
-Astro Starlight, configured in [`03-platform/tools/docs-site/`](../../../03-platform/tools/docs-site/README.md). The build script in that package mirrors this directory into `03-platform/src/content/01-docs/` before Astro reads it, so the markdown source stays in one place. The deployment target (Cloudflare Pages / S3 + CloudFront) is decided per-environment in the deploy workflow, not in this markdown source — frontmatter is standard YAML and portable across any static-site generator.
+Astro Starlight, configured in [`platform/tools/docs-site/`](../../../platform/tools/docs-site/README.md). The build script in that package mirrors this directory into `03-platform/src/content/01-docs/` before Astro reads it, so the markdown source stays in one place. The deployment target (Cloudflare Pages / S3 + CloudFront) is decided per-environment in the deploy workflow, not in this markdown source — frontmatter is standard YAML and portable across any static-site generator.
 
 ## Editorial conventions
 

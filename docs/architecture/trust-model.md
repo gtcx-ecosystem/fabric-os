@@ -156,4 +156,4 @@ This design means GTCX cannot revoke a producer's access by compromising a centr
 ## Reference
 
 - [system-overview.md](core/system-overview.md)
-- [cryptographic-inventory.md](../../../../ops/security/narrative/security-architecture.md)
+- [cryptographic-inventory.md](../../ops/security/narrative/security-architecture.md)

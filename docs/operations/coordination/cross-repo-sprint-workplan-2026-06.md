@@ -12,7 +12,7 @@ review_cycle: weekly
 # Cross-repo sprint workplan — fabric-os unified register
 
 **Planning lens:** Ecosystem dependencies requiring fabric-os action or blocked on infrastructure, reconciled across three parallel XR numbering schemes.  
-**Canonical XR-### SoR:** [`gtcx-protocols/01-docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md`](../../../../gtcx-protocols/01-docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md)  
+**Canonical XR-### SoR:** [`gtcx-protocols/01-docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md`](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/operations/coordination/cross-repo-sprint-workplan-2026-06.md)  
 **Bridge (live):** [`cross-repo-agent-bridge.md`](cross-repo-agent-bridge.md) · **Log:** [`cross-repo-agent-log.md`](cross-repo-agent-log.md)
 
 ---

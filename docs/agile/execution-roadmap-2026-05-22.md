@@ -16,16 +16,16 @@ trust_score: 60
 autonomy_level: 'permissioned'
 ---
 
-> **SUPERSEDED 2026-05-31** — Current source of truth: [`01-docs/05-audit/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md).
+> **SUPERSEDED 2026-05-31** — Current source of truth: [`audit/execution-roadmap.md`](../../audit/execution-roadmap.md).
 
 # GTCX Infrastructure — Execution Roadmap
 
 **Cycle:** May 2026
 **Status:** Cycle 1 closed (Sprints 1–6 + R2–R5 hygiene). Cycle 2 in flight (Sprints 7–12).
 **Predecessor docs:**
-[`01-docs/05-audit/master-audit-2026-05-17.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/master-audit-2026-05-17.md) ·
-[`01-docs/05-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) ·
-[`01-docs/05-audit/repo-overlay.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/repo-overlay.md)
+[`audit/archive/legacy-docs-audit/master-audit-2026-05-17.md`](../../audit/archive/legacy-docs-audit/master-audit-2026-05-17.md) ·
+[`audit/archive/legacy-docs-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) ·
+[`audit/archive/legacy-docs-audit/repo-overlay.md`](../../audit/archive/legacy-docs-audit/repo-overlay.md)
 
 ## Executive Summary
 
@@ -94,7 +94,7 @@ Compressed retrospective form. Full per-sprint detail in commit history under ea
 
 **Stories closed:** SGN-001 (gateway emits signed records), SGN-002 (K8s runtime policy), SGN-003 (chain verification endpoint), SGN-004 (fail-closed in production), SGN-005 (bounded chain with checkpoint hash), SGN-006 (audit-signer promoted to workspace package), SGN-007 (NATS+WORM durable sink), SGN-008 (trust telemetry Grafana dashboard).
 
-**Evidence:** [`01-docs/05-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) §Phase 2.
+**Evidence:** [`audit/archive/legacy-docs-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) §Phase 2.
 
 **Velocity:** 13 planned / 21 delivered (added durable-sink + sanitization work mid-sprint).
 
@@ -104,7 +104,7 @@ Compressed retrospective form. Full per-sprint detail in commit history under ea
 
 **Stories closed:** DEF-001 (Zod schema on body), DEF-002 (delimited untrusted-context block in prompt), DEF-003 (per-principal token budget), DEF-004 (per-principal QPS limiter), DEF-005 (rename shadowed `runtimePolicy`), DEF-006 (cost metrics counter), DEF-007 (daily prompt-injection self-test suite).
 
-**Evidence:** [`03-platform/tools/compliance-gateway/src/schemas.mjs`](../../03-platform/tools/compliance-gateway/src/schemas.mjs), [`03-platform/tools/compliance-gateway/src/budget.mjs`](../../03-platform/tools/compliance-gateway/src/budget.mjs), [`03-platform/tools/eval-pipeline/injection-suite.mjs`](../../03-platform/tools/eval-pipeline/injection-suite.mjs).
+**Evidence:** [`03-platform/tools/compliance-gateway/src/schemas.mjs`](../../platform/tools/compliance-gateway/src/schemas.mjs), [`03-platform/tools/compliance-gateway/src/budget.mjs`](../../platform/tools/compliance-gateway/src/budget.mjs), [`03-platform/tools/eval-pipeline/injection-suite.mjs`](../../platform/tools/eval-pipeline/injection-suite.mjs).
 
 **Velocity:** 13 planned / 17 delivered.
 
@@ -175,7 +175,7 @@ Compressed retrospective form. Full per-sprint detail in commit history under ea
 
 **Acceptance criteria:**
 
-- [ ] RFP at [`01-docs/05-audit/pen-test-rfp-2026.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/pen-test-rfp-2026.md) sent to SensePost, Nclose, Bishop Fox (US fallback).
+- [ ] RFP at [`audit/pen-test-rfp-2026.md`](../../audit/pen-test-rfp-2026.md) sent to SensePost, Nclose, Bishop Fox (US fallback).
 - [ ] NDAs sent to each vendor.
 - [ ] Calendar invites for bid Q&A sessions placed (target 2026-06-05).
 - [ ] Receipt confirmed by all three vendors within 72 hours.
@@ -192,7 +192,7 @@ Compressed retrospective form. Full per-sprint detail in commit history under ea
 
 **Acceptance criteria:**
 
-- [ ] Outreach template at [`01-docs/05-audit/soc2-engagement-2026.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/soc2-engagement-2026.md) sent to Schellman, A-LIGN, BDO South Africa, Mazars.
+- [ ] Outreach template at [`audit/archive/legacy-docs-audit/soc2-engagement-2026.md`](../../audit/archive/legacy-docs-audit/soc2-engagement-2026.md) sent to Schellman, A-LIGN, BDO South Africa, Mazars.
 - [ ] Standard NDA attached.
 - [ ] Receipt confirmed by ≥3 of 4 firms within 72 hours.
 
@@ -889,14 +889,14 @@ Cycle 2 closes when **all** of the following are true:
 
 ## References
 
-- Master audit: [`01-docs/05-audit/master-audit-2026-05-17.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/master-audit-2026-05-17.md)
-- Full audit (Round 4): [`01-docs/05-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/full-audit-2026-05-22.md)
-- Repo audit overlay: [`01-docs/05-audit/repo-overlay.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/repo-overlay.md)
-- SIGNAL scorecard: [`01-docs/05-audit/signal-scorecard.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/signal-scorecard.json)
-- Score evidence ledger: [`01-docs/05-audit/score-evidence-ledger.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/score-evidence-ledger.json)
-- Coverage gate rationale: [`01-docs/05-audit/coverage-gate-rationale.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/coverage-gate-rationale.md)
-- Pen-test RFP: [`01-docs/05-audit/pen-test-rfp-2026.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/pen-test-rfp-2026.md)
-- SOC 2 engagement plan: [`01-docs/05-audit/soc2-engagement-2026.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/soc2-engagement-2026.md)
+- Master audit: [`audit/archive/legacy-docs-audit/master-audit-2026-05-17.md`](../../audit/archive/legacy-docs-audit/master-audit-2026-05-17.md)
+- Full audit (Round 4): [`audit/archive/legacy-docs-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/full-audit-2026-05-22.md)
+- Repo audit overlay: [`audit/archive/legacy-docs-audit/repo-overlay.md`](../../audit/archive/legacy-docs-audit/repo-overlay.md)
+- SIGNAL scorecard: [`audit/signal-scorecard.json`](../../audit/signal-scorecard.json)
+- Score evidence ledger: [`audit/score-evidence-ledger.json`](../../audit/score-evidence-ledger.json)
+- Coverage gate rationale: [`audit/archive/legacy-docs-audit/coverage-gate-rationale.md`](../../audit/archive/legacy-docs-audit/coverage-gate-rationale.md)
+- Pen-test RFP: [`audit/pen-test-rfp-2026.md`](../../audit/pen-test-rfp-2026.md)
+- SOC 2 engagement plan: [`audit/archive/legacy-docs-audit/soc2-engagement-2026.md`](../../audit/archive/legacy-docs-audit/soc2-engagement-2026.md)
 - Tenant onboarding runbook: [`01-docs/04-ops/runbooks/tenant-onboarding.md`](../operations/runbooks/tenant-onboarding.md)
 - Audit-flush deployment runbook: [`01-docs/04-ops/runbooks/audit-flush-deployment.md`](../operations/runbooks/audit-flush-deployment.md)
 - ADR-022 (audit-query pluggable store): [`01-docs/architecture/decisions/ADR-022-pluggable-audit-query-store.md`](../architecture/decisions/ADR-022-pluggable-audit-query-store.md)

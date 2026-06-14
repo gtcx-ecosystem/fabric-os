@@ -22,7 +22,7 @@ protocol: canon-os/01-docs/governance/protocols/24-cross-repo-coordination/proto
 | [`README.md`](README.md)                                                         | Thread index + inbound tracker                      |
 
 **Ecosystem canonical bridge (read for global P0):**  
-[`gtcx-protocols/01-docs/operations/coordination/cross-repo-agent-bridge.md`](../../../../gtcx-protocols/01-docs/operations/coordination/cross-repo-agent-bridge.md)
+[`gtcx-protocols/01-docs/operations/coordination/cross-repo-agent-bridge.md`](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/operations/coordination/cross-repo-agent-bridge.md)
 
 **Agentic log (append-only):**  
 [gtcx-agentic agent-coordination-log](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/01-docs/04-ops/coordination/agent-coordination-log.md)

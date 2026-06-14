@@ -24,7 +24,7 @@ review_cycle: on-change
 
 **Ecosystem push all ahead repos:** `pnpm --dir ../gtcx-agentic ecosystem:push-all`
 
-**Full index:** [`baseline-os/01-docs/cli/agent-cheatsheet.md`](../../../baseline-os/01-docs/cli/agent-cheatsheet.md)
+**Full index:** [`baseline-os/01-docs/cli/agent-cheatsheet.md`](https://github.com/gtcx-ecosystem/baseline-os/blob/main/01-docs/cli/agent-cheatsheet.md)
 
 **Normative git (gtcx-core):** [agent-git-workflow.md](https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/operations/agent-git-workflow.md)
 

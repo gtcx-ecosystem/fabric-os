@@ -84,6 +84,6 @@ Terraform modules provision AWS resources (EKS, RDS, ElastiCache, S3, IAM) with 
 
 ## References
 
-- [Execution Roadmap (canonical)](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md)
+- [Execution Roadmap (canonical)](../../audit/execution-roadmap.md)
 - [Product Backlog](backlog.md)
 - [Sprint Planning](sprint-planning.md)

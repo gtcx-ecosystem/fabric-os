@@ -16,7 +16,7 @@ autonomy_level: 'permissioned'
 
 **Scope:** All GTCX production services deployed to frontier regions  
 **Status:** v0.1.0 implemented and integrated into compliance-gateway  
-**Related:** [Resilience Framework](../specs/resilience-framework.md), [Replay Guard](../operations/runbooks/replay-guard-failure.md), [`03-platform/tools/low-bandwidth`](../../03-platform/tools/low-bandwidth/)
+**Related:** [Resilience Framework](../specs/resilience-framework.md), [Replay Guard](../operations/runbooks/replay-guard-failure.md), [`platform/tools/low-bandwidth`](../../platform/tools/low-bandwidth/)
 
 ---
 
@@ -162,7 +162,7 @@ Alerting: PagerDuty alert if > 5% of active devices in a region are in `offline`
 
 ## 8. References
 
-- [`03-platform/tools/low-bandwidth`](../../03-platform/tools/low-bandwidth/) — v0.1.0 implementation
-- [`03-platform/tools/compliance-gateway/src/server.mjs`](../../03-platform/tools/compliance-gateway/src/server.mjs) — gateway integration
+- [`platform/tools/low-bandwidth`](../../platform/tools/low-bandwidth/) — v0.1.0 implementation
+- [`platform/tools/compliance-gateway/src/server.mjs`](../../platform/tools/compliance-gateway/src/server.mjs) — gateway integration
 - [Resilience Framework](../specs/resilience-framework.md)
 - [Replay Guard Model Card](../governance/model-cards/replay-guard-model-card.md)

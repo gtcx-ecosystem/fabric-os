@@ -432,7 +432,13 @@
       "to": "audit/archive/2026-06-14/audit/pen-test-intake-evidence-2026-05-31.md",
       "reason": "stale-dated-active-tree",
       "at": "2026-06-14T05:47:30.460Z"
+    },
+    {
+      "from": "audit/evidence/session-open-items-reconcile-2026-06-13.json",
+      "to": "audit/archive/2026-06-14/audit/evidence/session-open-items-reconcile-2026-06-13.json",
+      "reason": "superseded-by-newer-dated-sibling",
+      "at": "2026-06-14T13:25:13.333Z"
     }
   ],
-  "updated": "2026-06-14T05:47:30.460Z"
+  "updated": "2026-06-14T13:25:13.333Z"
 }

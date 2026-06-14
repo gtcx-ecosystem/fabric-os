@@ -70,6 +70,8 @@
       "ack": "bridge-os/docs/operations/coordination/from-fabric-os-init-world-class-secops-raise-2026-06-14.md",
       "blocksIR": false
     },
+    {
+      "id": "EXT-INF-013",
       "title": "ZWCMP pilot owner + cadence",
       "ownerRepo": "Leadership",
       "status": "approved",

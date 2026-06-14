@@ -37,8 +37,8 @@ Before any deployment:
 
 ## Environments
 
-| Environment   | Namespace         | Command                                                                         |
-| ------------- | ----------------- | ------------------------------------------------------------------------------- |
+| Environment   | Namespace         | Command                                                                           |
+| ------------- | ----------------- | --------------------------------------------------------------------------------- |
 | `development` | `gtcx-dev`        | `./04-deploy/03-platform/scripts/deploy.sh development`                           |
 | `staging`     | `gtcx-staging`    | `./04-deploy/03-platform/scripts/deploy.sh staging` _(requires human approval)_   |
 | `production`  | `gtcx-production` | `./04-deploy/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-XXX` |
@@ -193,7 +193,7 @@ Escalate to human review immediately if:
 
 ## Reference
 
-- [`04-deploy/03-platform/scripts/deploy.sh`](../../../04-deploy/03-platform/scripts/deploy.sh) — deploy script
+- [`04-deploy/03-platform/scripts/deploy.sh`](../../../deploy/03-platform/scripts/deploy.sh) — deploy script
 - [`01-docs/01-agents/safety-rules.md`](../../agents/workflows/agent-safety-rules.md) — authority tiers
 - [`01-docs/architecture/system-overview.md`](../../architecture/system-overview.md) — full stack overview
 - [`01-docs/04-ops/runbooks/migrate.md`](./migrate.md) — migration process

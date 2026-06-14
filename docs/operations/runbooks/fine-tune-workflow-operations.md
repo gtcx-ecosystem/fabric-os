@@ -24,7 +24,7 @@ This runbook does **not** change the enablement policy in [fine-tune-workflow-en
 
 ## Script
 
-Use [04-deploy/03-platform/scripts/fine-tune-workflow.sh](../../../04-deploy/03-platform/scripts/fine-tune-workflow.sh).
+Use [04-deploy/03-platform/scripts/fine-tune-workflow.sh](../../../deploy/03-platform/scripts/fine-tune-workflow.sh).
 
 The script assumes:
 
@@ -142,4 +142,4 @@ If the issue is in the serving path, use the normal deploy rollback flow in [dep
 
 - [fine-tune-workflow-enablement.md](./fine-tune-workflow-enablement.md)
 - [deploy.md](./deploy.md)
-- [04-deploy/terraform/modules/workflow-orchestration/main.tf](../../../04-deploy/terraform/modules/workflow-orchestration/main.tf)
+- [04-deploy/terraform/modules/workflow-orchestration/main.tf](../../../deploy/terraform/modules/workflow-orchestration/main.tf)

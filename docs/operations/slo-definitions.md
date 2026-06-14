@@ -16,7 +16,7 @@ autonomy_level: 'permissioned'
 
 Per ADR-016 (fail-closed audit signing) and ADR-017 (adaptive policy tuning), the substrate behaves differently under degraded conditions than under healthy ones. SLIs/SLOs are the contract that defines "healthy."
 
-This doc enumerates every SLI we measure, the SLO target for each, and the operational consequences of breaching it. Prometheus recording rules live at [`04-deploy/monitoring/rules/slo-recording-rules.yml`](../../04-deploy/monitoring/rules/slo-recording-rules.yml). Alertmanager routing for SLO burn-rate breaches lives at [`04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`](../../04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml).
+This doc enumerates every SLI we measure, the SLO target for each, and the operational consequences of breaching it. Prometheus recording rules live at [`04-deploy/monitoring/rules/slo-recording-rules.yml`](../../deploy/monitoring/rules/slo-recording-rules.yml). Alertmanager routing for SLO burn-rate breaches lives at [`04-deploy/monitoring/alerts/slo-burn-rate-alerts.yml`](../../deploy/monitoring/alerts/slo-burn-rate-alerts.yml).
 
 ## Why SLIs/SLOs matter for compliance substrate
 
@@ -89,7 +89,7 @@ Per the [Google SRE workbook](https://sre.google/workbook/implementing-slos/) co
 | audit signing = 1.000 | **zero budget** — every miss is investigated | Any sign-failure increments the audit-anomaly alert (immediate)                                |
 | audit flush lag < 60s | 5% of time window permitted                  | At 5 min sustained lag → critical                                                              |
 
-Burn-rate alerting is wired in [`04-deploy/monitoring/rules/slo-recording-rules.yml`](../../04-deploy/monitoring/rules/slo-recording-rules.yml) (existing) + Alertmanager routing.
+Burn-rate alerting is wired in [`04-deploy/monitoring/rules/slo-recording-rules.yml`](../../deploy/monitoring/rules/slo-recording-rules.yml) (existing) + Alertmanager routing.
 
 ## Operational Consequences of Breach
 
@@ -115,7 +115,7 @@ A regulator's SOC 2 Type 1 or pen-test auditor verifies SLO compliance by:
 
 1. Reading this doc to learn the targets.
 2. Querying Prometheus for each `slo:*` recording rule against the relevant window.
-3. Cross-referencing against [`01-docs/05-audit/score-evidence-ledger.json`](../audit/score-evidence-ledger.json) entries for the period.
+3. Cross-referencing against [`01-docs/05-audit/score-evidence-ledger.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/score-evidence-ledger.json) entries for the period.
 4. Spot-checking the `compliance_gateway_audit_records_total{action="query:success"}` series against `compliance_gateway_requests_total{route="/v1/query",status="200"}` for the 100% audit-signing SLO.
 
 Every series above is exposed at `/metrics` on every gateway + sidecar pod. No vendor-specific instrumentation required.
@@ -125,7 +125,7 @@ Every series above is exposed at `/metrics` on every gateway + sidecar pod. No v
 - ADR-014 — NATS JetStream audit transport (audit flush lag SLO is the durability contract)
 - ADR-016 — Fail-closed audit signing (the 1.000 signing SLO is the contract)
 - ADR-017 — Adaptive policy tuning (latency p95 < 5000ms drives the auto-degrade behavior)
-- [`01-docs/05-audit/repo-overlay.md`](../audit/repo-overlay.md) — repo-specific stricter caps
-- [`01-docs/05-audit/full-audit-2026-05-22.md`](../audit/full-audit-2026-05-22.md) Phase 5 — production readiness assessment
+- [`01-docs/05-audit/repo-overlay.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/repo-overlay.md) — repo-specific stricter caps
+- [`01-docs/05-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) Phase 5 — production readiness assessment
 - [`01-docs/04-ops/runbooks/`](./runbooks/) — 25 operational runbooks covering each escalation path
 - Google SRE workbook on SLOs: https://sre.google/workbook/implementing-slos/

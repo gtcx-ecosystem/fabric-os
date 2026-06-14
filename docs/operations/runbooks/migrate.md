@@ -194,8 +194,8 @@ Escalate to human review immediately if:
 
 ## Reference
 
-- [`04-deploy/03-platform/scripts/migrate.sh`](../../../04-deploy/03-platform/scripts/migrate.sh) — migration runner
-- [`04-deploy/03-platform/scripts/test-audit-immutability.sh`](../../../04-deploy/03-platform/scripts/test-audit-immutability.sh) — live audit immutability fixture
+- [`04-deploy/03-platform/scripts/migrate.sh`](../../../deploy/03-platform/scripts/migrate.sh) — migration runner
+- [`04-deploy/03-platform/scripts/test-audit-immutability.sh`](../../../deploy/03-platform/scripts/test-audit-immutability.sh) — live audit immutability fixture
 - [`03-platform/tools/scripts/check_docs.py`](../../../03-platform/tools/scripts/check_docs.py) — migration doc validation
 - [`01-docs/01-agents/workflows/agent-safety-rules.md`](../../agents/workflows/agent-safety-rules.md) — authority tiers
 - [`01-docs/architecture/system-overview.md`](../../architecture/system-overview.md) — system overview

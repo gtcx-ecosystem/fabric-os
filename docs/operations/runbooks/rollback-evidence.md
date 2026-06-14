@@ -52,7 +52,7 @@ Production example:
 
 ## Automatic Capture
 
-[04-deploy/03-platform/scripts/deploy.sh](../../../04-deploy/03-platform/scripts/deploy.sh) now attempts to capture rollback evidence automatically after `--rollback` completes or a production health-check rollback is triggered.
+[04-deploy/03-platform/scripts/deploy.sh](../../../deploy/03-platform/scripts/deploy.sh) now attempts to capture rollback evidence automatically after `--rollback` completes or a production health-check rollback is triggered.
 
 If the automatic capture fails, run the command manually and preserve the output directory.
 

@@ -11,7 +11,7 @@ tags: ['coordination', 'pen-test', 'secas-s2']
 
 # Pen-test window scheduled
 
-**Witness:** [`audit/evidence/pen-test-window-2026-06-10.json`](../../../audit/evidence/pen-test-window-2026-06-10.json)
+**Witness:** [`audit/evidence/pen-test-window-2026-06-10.json`](../../../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/evidence/pen-test-window-2026-06-10.json)
 
 ## Window
 

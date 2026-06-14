@@ -12,7 +12,7 @@ tags: ['coordination', 'ext-inf-002', 'pen-test', 'procurement']
 
 **Work ID:** EXT-INF-002-COUNTERSIGN  
 **Parent:** EXT-INF-002 (sovereign SOW approved 2026-06-10)  
-**Evidence:** [`audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json`](../../../audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json)
+**Evidence:** [`audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json`](../../../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json)
 
 ## Summary
 

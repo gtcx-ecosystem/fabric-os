@@ -12,7 +12,7 @@ tags: ['coordination', 'bl-soc2-01', 'soc2', 'assurance']
 
 **Work ID:** BL-SOC2-01-MSA  
 **Parent:** BL-SOC2-01 (auditor engagement approved 2026-06-10)  
-**Evidence:** [`audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json`](../../../audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json)
+**Evidence:** [`audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json`](../../../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json)
 
 ## Summary
 

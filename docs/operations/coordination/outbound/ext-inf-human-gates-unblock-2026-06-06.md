@@ -11,21 +11,21 @@ owner: fabric-os
 
 ## Not agent-automatable
 
-| Gate                  | ID              | Owner                  | What they deliver                                                                                           | Due (target) |
-| --------------------- | --------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------- | ------------ |
-| Pen-test SOW          | **EXT-INF-002** | Security + procurement | Signed vendor SOW; links ecosystem H-05 / INT-S12-01                                                        | 2026-06-13   |
-| ZWCMP pilot owner     | **EXT-INF-013** | Leadership             | Named owner + first cadence call in [`pilot-success-criteria.md`](../../../audit/pilot-success-criteria.md) | 2026-06-07   |
-| DPA + pilot agreement | **EXT-INF-014** | Legal + pilot owner    | Signed DPA (ZW ↔ af-south-1) + pilot PDFs under `01-docs/05-audit/vendor-outreach/zwcmp/`                   | 2026-06-21   |
-| Indemnified SLA       | **EXT-INF-015** | Legal                  | SLA v1.0 legal review + insurance quote (`verification-sla-draft.md` base)                                  | 2026-06-21   |
-| SOC 2 Type I auditor  | **EXT-INF-016** | CISO + Finance         | Auditor engagement + budget (distinct from EXT-INF-013 pilot owner)                                         | pending      |
+| Gate                  | ID              | Owner                  | What they deliver                                                                                                                                                  | Due (target) |
+| --------------------- | --------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ |
+| Pen-test SOW          | **EXT-INF-002** | Security + procurement | Signed vendor SOW; links ecosystem H-05 / INT-S12-01                                                                                                               | 2026-06-13   |
+| ZWCMP pilot owner     | **EXT-INF-013** | Leadership             | Named owner + first cadence call in [`pilot-success-criteria.md`](../../../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/pilot-success-criteria.md) | 2026-06-07   |
+| DPA + pilot agreement | **EXT-INF-014** | Legal + pilot owner    | Signed DPA (ZW ↔ af-south-1) + pilot PDFs under `01-docs/05-audit/vendor-outreach/zwcmp/`                                                                          | 2026-06-21   |
+| Indemnified SLA       | **EXT-INF-015** | Legal                  | SLA v1.0 legal review + insurance quote (`verification-sla-draft.md` base)                                                                                         | 2026-06-21   |
+| SOC 2 Type I auditor  | **EXT-INF-016** | CISO + Finance         | Auditor engagement + budget (distinct from EXT-INF-013 pilot owner)                                                                                                | pending      |
 
 ## Cross-repo pen-test (EXT-INF-002)
 
-| Repo              | Role                                                                                                                                                                                               |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| gtcx-intelligence | INT-S12-01 witness — [outbound chase](https://github.com/gtcx-ecosystem/gtcx-intelligence/blob/main/01-docs/04-ops/coordination/outbound/to-human-security-int-s12-01-pentest-chase-2026-06-06.md) |
-| gtcx-core         | Vendor pack delivered — infra live-stack test owner                                                                                                                                                |
-| fabric-os         | Intake evidence [`pen-test-intake-evidence-2026-05-31.md`](../../../audit/pen-test-intake-evidence-2026-05-31.md); **S2-13** blocked until SOW                                                     |
+| Repo              | Role                                                                                                                                                                                                  |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| gtcx-intelligence | INT-S12-01 witness — [outbound chase](https://github.com/gtcx-ecosystem/gtcx-intelligence/blob/main/01-docs/04-ops/coordination/outbound/to-human-security-int-s12-01-pentest-chase-2026-06-06.md)    |
+| gtcx-core         | Vendor pack delivered — infra live-stack test owner                                                                                                                                                   |
+| fabric-os         | Intake evidence [`pen-test-intake-evidence-2026-05-31.md`](../../../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/pen-test-intake-evidence-2026-05-31.md); **S2-13** blocked until SOW |
 
 ## Agent boundary
 
@@ -35,4 +35,4 @@ owner: fabric-os
 
 ## Register
 
-[`external-dependencies-register-2026-05-31.md`](../../../audit/external-dependencies-register-2026-05-31.md)
+[`external-dependencies-register-2026-05-31.md`](../../../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/external-dependencies-register-2026-05-31.md)

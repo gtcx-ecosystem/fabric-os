@@ -224,6 +224,6 @@ The ecosystem currently has approximately 60 real assertions across 4 test files
 
 - [Resilience Framework](./resilience-framework.md) -- Degradation tiers and offline mode capabilities that drive offline test scenarios
 - [CI/CD Pipeline](./cicd-pipeline.md) -- Pipeline stages, quality gates, and enforcement mechanisms
-- [Security Policy](../security/security-policy.md) -- Security policy framework informing security test requirements
+- [Security Policy](../../../../ops/security/narrative/security-policy.md) -- Security policy framework informing security test requirements
 - Testing principles align with the ecosystem engineering standards and the repo-local quality gates documented here.
 - [Infrastructure Architecture](../architecture/infrastructure-architecture-overview.md) -- Deployment topology informing integration and E2E test environments

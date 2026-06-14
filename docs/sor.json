@@ -56,7 +56,7 @@
   },
   "pointerOnly": {
     "description": "Stub or index — canonical prose lives in gtcx-docs or ops/",
-    "paths": ["docs/governance/", "docs/compliance/"]
+    "paths": ["docs/governance/"]
   },
   "shipPaths": {
     "terraform": "deploy/terraform",

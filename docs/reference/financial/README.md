@@ -26,5 +26,5 @@ This directory contains GTCX financial policies, frameworks, and planning docume
 
 ## Related
 
-- [`01-docs/10-compliance/data-retention-policy.md`](../compliance/data-retention-policy.md)
-- [`01-docs/10-compliance/vendor-risk-program.md`](../compliance/vendor-risk-program.md)
+- [`01-docs/10-compliance/data-retention-policy.md`](../../../../ops/compliance/narrative/data-retention-policy.md)
+- [`01-docs/10-compliance/vendor-risk-program.md`](../../../../ops/compliance/narrative/vendor-risk-program.md)

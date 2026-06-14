@@ -52,35 +52,35 @@ Seven-hub layout (Protocol 29/30). **Path contract:** [`config/sor-map.json`](..
 
 ### Plans
 
-- [Bank-Grade 10x Remediation Plan](gtm/plans/bank-grade-10x-remediation-plan.md) — Institutional-grade hardening roadmap
-- [Global South 10x Plan](gtm/plans/global-south-10x-plan.md) — Africa-first market entry strategy
-- [Moat Execution Plan](gtm/plans/moat-execution-plan.md) — Competitive differentiation execution
+- [Bank-Grade 10x Remediation Plan](../ops/gtm/narrative/plans/bank-grade-10x-remediation-plan.md) — Institutional-grade hardening roadmap
+- [Global South 10x Plan](../ops/gtm/narrative/plans/global-south-10x-plan.md) — Africa-first market entry strategy
+- [Moat Execution Plan](../ops/gtm/narrative/plans/moat-execution-plan.md) — Competitive differentiation execution
 
 ### Regulatory
 
-- [Incident Response Plan v1](gtm/regulatory/incident-response-plan-v1.md) — Regulatory incident handling
-- [ISO 27001 ISMS Scope](gtm/regulatory/iso27001-isms-scope.md) — ISMS boundary definition
-- [PCI DSS Scoping](gtm/regulatory/pci-dss-scoping.md) — Cardholder data environment scope
-- [Pentest Scope RFP](gtm/regulatory/pentest-scope-rfp.md) — Penetration testing request for proposal
-- [Regulatory Notification Templates](gtm/regulatory/regulatory-notification-templates.md) — Breach and incident notification templates
-- [RTO/RPO Resolution](gtm/regulatory/rto-rpo-resolution.md) — Recovery time and point objectives
-- [SOC2 Readiness Checklist](gtm/regulatory/soc2-readiness-checklist.md) — SOC2 Type II readiness tracker
+- [Incident Response Plan v1](../ops/gtm/narrative/regulatory/incident-response-plan-v1.md) — Regulatory incident handling
+- [ISO 27001 ISMS Scope](../ops/gtm/narrative/regulatory/iso27001-isms-scope.md) — ISMS boundary definition
+- [PCI DSS Scoping](../ops/gtm/narrative/regulatory/pci-dss-scoping.md) — Cardholder data environment scope
+- [Pentest Scope RFP](../ops/gtm/narrative/regulatory/pentest-scope-rfp.md) — Penetration testing request for proposal
+- [Regulatory Notification Templates](../ops/gtm/narrative/regulatory/regulatory-notification-templates.md) — Breach and incident notification templates
+- [RTO/RPO Resolution](../ops/gtm/narrative/regulatory/rto-rpo-resolution.md) — Recovery time and point objectives
+- [SOC2 Readiness Checklist](../ops/gtm/narrative/regulatory/soc2-readiness-checklist.md) — SOC2 Type II readiness tracker
 
 ### Sandbox Application
 
-- [Architecture Overview](gtm/sandbox-application/architecture-overview.md) — Sandbox deployment architecture
-- [Data Residency Proof](gtm/sandbox-application/data-residency-proof.md) — Jurisdictional data sovereignty evidence
-- [Encryption Statement](gtm/sandbox-application/encryption-statement.md) — Cryptographic controls statement
-- [Internal Security Assessment](gtm/sandbox-application/internal-security-assessment.md) — Pre-submission security review
-- [KYC Retention Schedule](gtm/sandbox-application/kyc-retention-schedule.md) — Identity data lifecycle policy
-- [Pre-Submission Agenda](gtm/sandbox-application/pre-submission-agenda.md) — Regulatory meeting preparation
+- [Architecture Overview](../ops/gtm/narrative/sandbox-application/architecture-overview.md) — Sandbox deployment architecture
+- [Data Residency Proof](../ops/gtm/narrative/sandbox-application/data-residency-proof.md) — Jurisdictional data sovereignty evidence
+- [Encryption Statement](../ops/gtm/narrative/sandbox-application/encryption-statement.md) — Cryptographic controls statement
+- [Internal Security Assessment](../ops/gtm/narrative/sandbox-application/internal-security-assessment.md) — Pre-submission security review
+- [KYC Retention Schedule](../ops/gtm/narrative/sandbox-application/kyc-retention-schedule.md) — Identity data lifecycle policy
+- [Pre-Submission Agenda](../ops/gtm/narrative/sandbox-application/pre-submission-agenda.md) — Regulatory meeting preparation
 
 ---
 
 ## 2. Plans & Roadmaps
 
-**Canonical execution plan:** [`audit/execution-roadmap.md`](audit/execution-roadmap.md) — reconciled 3-sprint plan with every open audit finding as a story.
-**Machine-readable status:** [`audit/latest.json`](audit/latest.json).
+**Canonical execution plan:** [`audit/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md) — reconciled 3-sprint plan with every open audit finding as a story.
+**Machine-readable status:** [`audit/latest.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/latest.json).
 **Strategic milestones:** [`roadmap/roadmap-2026-07-13.md`](roadmap/roadmap-2026-07-13.md).
 
 Other:
@@ -181,64 +181,64 @@ Other:
 
 ## 7. Security
 
-- [Security Framework](security/security-framework.md) — Zero-trust, crypto standards
-- [Security Architecture](security/security-architecture.md) — Defense-in-depth architecture
-- [Security Policy](security/security-policy.md) — Organizational security policy
-- [Threat Model](security/threat-model.md) — System-wide threat analysis
-- [Threat Model Template](security/threat-model-template.md) — Blank threat model scaffold
-- [Secrets Management](security/secrets-management.md) — Secret storage and rotation
-- [Defense Readiness](security/defense-readiness.md) — CMMC L2 readiness
-- [NIST 800-53 Mapping](security/nist-800-53-mapping.md) — NIST control mapping
-- [FIPS Assessment](security/fips-assessment.md) — FIPS 140-2/3 compliance assessment
-- [STIG Compliance](security/stig-compliance.md) — DISA STIG compliance status
-- [Zero Trust Assessment](security/zero-trust-assessment.md) — Zero-trust maturity evaluation
-- [Data Flow](security/data-flow.md) — Data flow diagrams and classification
-- [Tokenization Architecture](security/tokenization-architecture.md) — Token vault and PCI tokenization
-- [Key Ceremony Runbook](security/key-ceremony-runbook.md) — HSM key generation ceremony
-- [Signed Commits Policy](security/signed-commits-policy.md) — Git commit signing enforcement
-- [Cosign CI Integration](security/cosign-ci-integration.md) — Container image signing in CI
-- [Audit Integrity Verification](security/audit-integrity-verification.md) — Audit log tamper detection
-- [Break Glass Procedure](security/break-glass-procedure.md) — Emergency access escalation
-- [Bug Bounty Policy](security/bug-bounty-policy.md) — Vulnerability disclosure program
-- [Forensic Readiness](security/forensic-readiness.md) — Digital forensics preparation
-- [Red Team Playbook](security/red-team-playbook.md) — Adversary simulation scenarios
-- [RASP Integration Guide](security/rasp-integration-guide.md) — Runtime application self-protection
-- [Security Training Program](security/security-training-program.md) — Security awareness and training
-- [SOC Requirements](security/soc-requirements.md) — Security operations center requirements
+- [Security Framework](../ops/security/narrative/security-framework.md) — Zero-trust, crypto standards
+- [Security Architecture](../ops/security/narrative/security-architecture.md) — Defense-in-depth architecture
+- [Security Policy](../ops/security/narrative/security-policy.md) — Organizational security policy
+- [Threat Model](../ops/security/narrative/threat-model.md) — System-wide threat analysis
+- [Threat Model Template](../ops/security/narrative/threat-model-template.md) — Blank threat model scaffold
+- [Secrets Management](../ops/security/narrative/secrets-management.md) — Secret storage and rotation
+- [Defense Readiness](../ops/security/narrative/defense-readiness.md) — CMMC L2 readiness
+- [NIST 800-53 Mapping](../ops/security/narrative/nist-800-53-mapping.md) — NIST control mapping
+- [FIPS Assessment](../ops/security/narrative/fips-assessment.md) — FIPS 140-2/3 compliance assessment
+- [STIG Compliance](../ops/security/narrative/stig-compliance.md) — DISA STIG compliance status
+- [Zero Trust Assessment](../ops/security/narrative/zero-trust-assessment.md) — Zero-trust maturity evaluation
+- [Data Flow](../ops/security/narrative/data-flow.md) — Data flow diagrams and classification
+- [Tokenization Architecture](../ops/security/narrative/tokenization-architecture.md) — Token vault and PCI tokenization
+- [Key Ceremony Runbook](../ops/security/narrative/key-ceremony-runbook.md) — HSM key generation ceremony
+- [Signed Commits Policy](../ops/security/narrative/signed-commits-policy.md) — Git commit signing enforcement
+- [Cosign CI Integration](../ops/security/narrative/cosign-ci-integration.md) — Container image signing in CI
+- [Audit Integrity Verification](../ops/security/narrative/audit-integrity-verification.md) — Audit log tamper detection
+- [Break Glass Procedure](../ops/security/narrative/break-glass-procedure.md) — Emergency access escalation
+- [Bug Bounty Policy](../ops/security/narrative/bug-bounty-policy.md) — Vulnerability disclosure program
+- [Forensic Readiness](../ops/security/narrative/forensic-readiness.md) — Digital forensics preparation
+- [Red Team Playbook](../ops/security/narrative/red-team-playbook.md) — Adversary simulation scenarios
+- [RASP Integration Guide](../ops/security/narrative/rasp-integration-guide.md) — Runtime application self-protection
+- [Security Training Program](../ops/security/narrative/security-training-program.md) — Security awareness and training
+- [SOC Requirements](../ops/security/narrative/soc-requirements.md) — Security operations center requirements
 
 ---
 
 ## 8. Compliance
 
-- [Compliance Requirements](compliance/compliance-requirements.md) — Regulatory requirements matrix
-- [Controls Matrix](compliance/controls-matrix.md) — Security controls mapping
-- [Regulatory Framework](compliance/regulatory-framework.md) — Multi-jurisdiction regulatory map
-- [SOC2 Evidence Pipeline](compliance/soc2-evidence-pipeline.md) — Automated SOC2 evidence collection
-- [Compliance Templates Overview](compliance/compliance-templates-overview.md) — Per-jurisdiction config templates
-- [Accessibility Checklist](compliance/accessibility-checklist.md) — WCAG compliance checklist
-- [Board Security Committee Charter](compliance/board-security-committee-charter.md) — Board oversight charter
-- [Data Classification Policy](compliance/data-classification-policy.md) — Data sensitivity classification
-- [Data Retention Policy](compliance/data-retention-policy.md) — Data lifecycle and retention rules
-- [Risk Register](compliance/risk-register.md) — Enterprise risk register
-- [Separation of Duties Matrix](compliance/separation-of-duties-matrix.md) — SoD control matrix
-- [Vendor Risk Program](compliance/vendor-risk-program.md) — Third-party risk management
+- [Compliance Requirements](../../../../ops/compliance/narrative/compliance-requirements.md) — Regulatory requirements matrix
+- [Controls Matrix](../../../../ops/compliance/narrative/controls-matrix.md) — Security controls mapping
+- [Regulatory Framework](../../../../ops/compliance/narrative/regulatory-framework.md) — Multi-jurisdiction regulatory map
+- [SOC2 Evidence Pipeline](../../../../ops/compliance/narrative/soc2-evidence-pipeline.md) — Automated SOC2 evidence collection
+- [Compliance Templates Overview](../../../../ops/compliance/narrative/compliance-templates-overview.md) — Per-jurisdiction config templates
+- [Accessibility Checklist](../../../../ops/compliance/narrative/accessibility-checklist.md) — WCAG compliance checklist
+- [Board Security Committee Charter](../../../../ops/compliance/narrative/board-security-committee-charter.md) — Board oversight charter
+- [Data Classification Policy](../../../../ops/compliance/narrative/data-classification-policy.md) — Data sensitivity classification
+- [Data Retention Policy](../../../../ops/compliance/narrative/data-retention-policy.md) — Data lifecycle and retention rules
+- [Risk Register](../../../../ops/compliance/narrative/risk-register.md) — Enterprise risk register
+- [Separation of Duties Matrix](../../../../ops/compliance/narrative/separation-of-duties-matrix.md) — SoD control matrix
+- [Vendor Risk Program](../../../../ops/compliance/narrative/vendor-risk-program.md) — Third-party risk management
 
 ### ISO 27001 Annex A Policies
 
-- [A05 Information Security Policy](compliance/policies/a05-information-security-policy.md) — Top-level security policy
-- [A06 Organization of Information Security](compliance/policies/a06-organization-of-information-security.md) — Security roles and responsibilities
-- [A07 Human Resource Security](compliance/policies/a07-human-resource-security.md) — Personnel security controls
-- [A08 Asset Management](compliance/policies/a08-asset-management.md) — Asset inventory and handling
-- [A09 Access Control](compliance/policies/a09-access-control.md) — Access management policy
-- [A10 Cryptography](compliance/policies/a10-cryptography.md) — Cryptographic controls policy
-- [A11 Physical Security](compliance/policies/a11-physical-security.md) — Physical and environmental security
-- [A12 Operations Security](compliance/policies/a12-operations-security.md) — Operational security procedures
-- [A13 Communications Security](compliance/policies/a13-communications-security.md) — Network and transfer security
-- [A14 System Acquisition](compliance/policies/a14-system-acquisition.md) — Secure development and procurement
-- [A15 Supplier Relationships](compliance/policies/a15-supplier-relationships.md) — Supply chain security
-- [A16 Incident Management](compliance/policies/a16-incident-management.md) — Security incident procedures
-- [A17 Business Continuity](compliance/policies/a17-business-continuity.md) — BCM and disaster recovery
-- [A18 Compliance](compliance/policies/a18-compliance.md) — Legal and regulatory compliance
+- [A05 Information Security Policy](../../../../ops/compliance/narrative/policies/a05-information-security-policy.md) — Top-level security policy
+- [A06 Organization of Information Security](../../../../ops/compliance/narrative/policies/a06-organization-of-information-security.md) — Security roles and responsibilities
+- [A07 Human Resource Security](../../../../ops/compliance/narrative/policies/a07-human-resource-security.md) — Personnel security controls
+- [A08 Asset Management](../../../../ops/compliance/narrative/policies/a08-asset-management.md) — Asset inventory and handling
+- [A09 Access Control](../../../../ops/compliance/narrative/policies/a09-access-control.md) — Access management policy
+- [A10 Cryptography](../../../../ops/compliance/narrative/policies/a10-cryptography.md) — Cryptographic controls policy
+- [A11 Physical Security](../../../../ops/compliance/narrative/policies/a11-physical-security.md) — Physical and environmental security
+- [A12 Operations Security](../../../../ops/compliance/narrative/policies/a12-operations-security.md) — Operational security procedures
+- [A13 Communications Security](../../../../ops/compliance/narrative/policies/a13-communications-security.md) — Network and transfer security
+- [A14 System Acquisition](../../../../ops/compliance/narrative/policies/a14-system-acquisition.md) — Secure development and procurement
+- [A15 Supplier Relationships](../../../../ops/compliance/narrative/policies/a15-supplier-relationships.md) — Supply chain security
+- [A16 Incident Management](../../../../ops/compliance/narrative/policies/a16-incident-management.md) — Security incident procedures
+- [A17 Business Continuity](../../../../ops/compliance/narrative/policies/a17-business-continuity.md) — BCM and disaster recovery
+- [A18 Compliance](../../../../ops/compliance/narrative/policies/a18-compliance.md) — Legal and regulatory compliance
 
 ---
 
@@ -274,33 +274,33 @@ Other:
 
 ### Assessments
 
-- [Implementation Truth](audit/implementation-truth.md) — What exists vs. what is missing
-- [Remediation Plan 10x10](audit/remediation/remediation-plan-10x10.md) — 10-point fix list
-- [Ecosystem Integration](audit/ecosystem-integration-assessment.md) — Cross-repo dependencies
-- [GTM Q2 Africa](audit/gtm-q2-africa-assessment.md) — Ghana pilot infrastructure needs
-- [Pilot Agreement Template](audit/pilot-agreement-template.md) — Partner pilot agreement scaffold
-- [Pilot Success Criteria](audit/pilot-success-criteria.md) — Pilot evaluation metrics
+- [Implementation Truth](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/implementation-truth.md) — What exists vs. what is missing
+- [Remediation Plan 10x10](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/remediation/remediation-plan-10x10.md) — 10-point fix list
+- [Ecosystem Integration](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/ecosystem-integration-assessment.md) — Cross-repo dependencies
+- [GTM Q2 Africa](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/gtm-q2-africa-assessment.md) — Ghana pilot infrastructure needs
+- [Pilot Agreement Template](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/pilot-agreement-template.md) — Partner pilot agreement scaffold
+- [Pilot Success Criteria](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/pilot-success-criteria.md) — Pilot evaluation metrics
 
 ### Audit Cycles
 
-- [Auto Dev State](audit/historical-cycles/auto-dev-state.md) — Autonomous development state tracker
-- [2026-05-04 Cycle 2](audit/historical-cycles/2026-05-04-cycle-2.md) — Audit cycle 2 results
-- [2026-05-04 Cycle 3](audit/historical-cycles/2026-05-04-cycle-3.md) — Audit cycle 3 results
-- [2026-05-04 Cycle 4](audit/historical-cycles/2026-05-04-cycle-4.md) — Audit cycle 4 results
-- [2026-05-04 Full Audit](audit/historical-cycles/2026-05-04-full-audit.md) — Complete audit report
-- [2026-05-05 Cycle 5](audit/historical-cycles/2026-05-05-cycle-5.md) — Audit cycle 5 results
-- [2026-05-05 Cycle 6](audit/historical-cycles/2026-05-05-cycle-6.md) — Audit cycle 6 results
-- [2026-05-05 Cycle 7 Final](audit/historical-cycles/2026-05-05-cycle-7-final.md) — Final audit cycle results
+- [Auto Dev State](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/auto-dev-state.md) — Autonomous development state tracker
+- [2026-05-04 Cycle 2](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-cycle-2.md) — Audit cycle 2 results
+- [2026-05-04 Cycle 3](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-cycle-3.md) — Audit cycle 3 results
+- [2026-05-04 Cycle 4](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-cycle-4.md) — Audit cycle 4 results
+- [2026-05-04 Full Audit](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-04-full-audit.md) — Complete audit report
+- [2026-05-05 Cycle 5](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-05-cycle-5.md) — Audit cycle 5 results
+- [2026-05-05 Cycle 6](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-05-cycle-6.md) — Audit cycle 6 results
+- [2026-05-05 Cycle 7 Final](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/historical-cycles/2026-05-05-cycle-7-final.md) — Final audit cycle results
 
 ### QA Reviews
 
-- [Production Readiness Evidence](audit/production-readiness-evidence-2026-05-08.md) — Production readiness evidence package
-- [Documentation Coverage Proposal](audit/qa-reviews/2026-05-05-documentation-coverage-proposal.md) — Documentation-as-Code CI enforcement
-- [Hardening Strategy](audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md) — Institutional hardening (Bash-to-Go, Merkle Anchoring)
-- [Sovereign Stack Whitepaper](audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md) — Technical guide for government deployment
-- [Infrastructure Improvement Roadmap](audit/qa-reviews/2026-05-05-infrastructure-improvement-roadmap.md) — Findings and remediation roadmap
-- [Innovation Roadmap](audit/qa-reviews/2026-05-05-innovation-roadmap.md) — Long-term vision (PQC, Agentic Compliance)
-- [Innovation Spec Suite](audit/qa-reviews/2026-05-05-innovation-spec-suite.md) — Specs for future core features
+- [Production Readiness Evidence](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/production-readiness-evidence-2026-05-08.md) — Production readiness evidence package
+- [Documentation Coverage Proposal](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-documentation-coverage-proposal.md) — Documentation-as-Code CI enforcement
+- [Hardening Strategy](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-gtcx-hardening-strategy.md) — Institutional hardening (Bash-to-Go, Merkle Anchoring)
+- [Sovereign Stack Whitepaper](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-gtcx-sovereign-stack-whitepaper.md) — Technical guide for government deployment
+- [Infrastructure Improvement Roadmap](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-infrastructure-improvement-roadmap.md) — Findings and remediation roadmap
+- [Innovation Roadmap](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-innovation-roadmap.md) — Long-term vision (PQC, Agentic Compliance)
+- [Innovation Spec Suite](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/qa-reviews/2026-05-05-innovation-spec-suite.md) — Specs for future core features
 
 ---
 
@@ -438,13 +438,13 @@ Other:
 | Deploy to production           | [Deploy Runbook](operations/runbooks/deploy.md)                                                                                                                  |
 | Handle an incident             | [Incident Response](operations/runbooks/incident-response.md)                                                                                                    |
 | Understand a past decision     | [Decisions (ADRs)](#4-decisions-adrs)                                                                                                                            |
-| Review security posture        | [Security Framework](security/security-framework.md)                                                                                                             |
-| Check compliance status        | [Controls Matrix](compliance/controls-matrix.md)                                                                                                                 |
+| Review security posture        | [Security Framework](../ops/security/narrative/security-framework.md)                                                                                            |
+| Check compliance status        | [Controls Matrix](../../../../ops/compliance/narrative/controls-matrix.md)                                                                                       |
 | Write documentation            | [Docs Writing Guide](reference/docs-writing-guide.md)                                                                                                            |
 | Add a new package              | [Add Package Workflow](agents/workflows/add-package.md)                                                                                                          |
 | Cut a release                  | [Cut Release Workflow](agents/workflows/cut-release.md)                                                                                                          |
 | Understand the tech stack      | [Tech Stack](engineering/tech-stack/tech-stack.md)                                                                                                               |
-| Review threat model            | [Threat Model](security/threat-model.md)                                                                                                                         |
+| Review threat model            | [Threat Model](../ops/security/narrative/threat-model.md)                                                                                                        |
 | Check audit history            | [Assessments & Audit](#11-assessments--audit)                                                                                                                    |
 | Understand agent roles         | [Role Identification Guide](agents/roles/role-identification-guide.md)                                                                                           |
 | Check SLOs                     | [Performance SLOs](reference/performance-slos.md)                                                                                                                |

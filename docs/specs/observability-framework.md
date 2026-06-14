@@ -212,7 +212,7 @@ Any modification to a historical entry breaks the chain, and the daily integrity
 ## Deep Dives
 
 - [Resilience Framework](./resilience-framework.md) -- SLOs, error budgets, and alerting thresholds that drive observability configuration
-- [Security Policy](../security/security-policy.md) -- Audit requirements, data protection standards, and PII handling rules
+- [Security Policy](../../../../ops/security/narrative/security-policy.md) -- Audit requirements, data protection standards, and PII handling rules
 - [Infrastructure Architecture](../architecture/infrastructure-architecture-overview.md) -- Deployment topology, Kubernetes configuration, and monitoring infrastructure
-- [Data Protection](../compliance/data-classification-policy.md) -- Data classification and retention policies governing telemetry storage
+- [Data Protection](../../../../ops/compliance/narrative/data-classification-policy.md) -- Data classification and retention policies governing telemetry storage
 - Shared ecosystem architecture guidance informs cross-service dependency monitoring.

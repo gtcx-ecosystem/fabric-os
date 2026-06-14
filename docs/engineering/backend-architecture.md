@@ -198,7 +198,7 @@ Security posture is managed through three components:
 
 CI gates include weekly container image scans and weekly `pnpm audit` dependency checks. Critical CVEs block release.
 
-Refer to [`01-docs/10-compliance/soc2-evidence-pipeline.md`](../compliance/soc2-evidence-pipeline.md) for SOC2 evidence collection.
+Refer to [`01-docs/10-compliance/soc2-evidence-pipeline.md`](../../../../ops/compliance/narrative/soc2-evidence-pipeline.md) for SOC2 evidence collection.
 
 ---
 

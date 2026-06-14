@@ -37,13 +37,13 @@ Move from **point-in-time pen-test** to **continuous security engineering**:
 
 ## Stories (SoR: `pm/secas-stories.json`)
 
-| ID          | Title                                    | Priority | Starts when                       |
-| ----------- | ---------------------------------------- | -------- | --------------------------------- |
-| SECAS-S4-01 | CSIRT / SOC operating model + IR runbook | P0       | S4 kickoff (parallel to S2 close) |
-| SECAS-S4-02 | Fleet supply-chain security gates        | P0       | Immediately (no vendor dep)       |
-| SECAS-S4-03 | Vuln management cadence                  | P1       | S4 kickoff                        |
-| SECAS-S4-04 | Pen-test findings remediation            | P0       | **After** vendor report ingest    |
-| SECAS-S4-05 | Expand SECaaS cards                      | P2       | S4 kickoff                        |
+| ID          | Title                                    | Priority | Starts when                                |
+| ----------- | ---------------------------------------- | -------- | ------------------------------------------ |
+| SECAS-S4-01 | CSIRT / SOC operating model + IR runbook | P0       | Parallel to S2 witness (`blocksIR: false`) |
+| SECAS-S4-02 | Fleet supply-chain security gates        | P0       | Immediately (no vendor dep)                |
+| SECAS-S4-03 | Vuln management cadence                  | P1       | S4 kickoff                                 |
+| SECAS-S4-04 | Pen-test findings remediation            | P0       | **After** vendor report ingest             |
+| SECAS-S4-05 | Expand SECaaS cards                      | P2       | S4 kickoff                                 |
 
 ## Authority split (unchanged from P42)
 

@@ -80,19 +80,21 @@ pnpm secas:cards:check
 pnpm secas:pentest:ingest:check:write   # SECAS-S2-01 — pre-window PASS; complete when report ingested
 ```
 
-## SECAS-S4 — SecOps engineering program (queued)
+## SECAS-S4 — SecOps engineering program (in progress)
 
-After pen-test ingest (`SECAS-S2-01`), the standing **SecOps engineering** wave covers CSIRT, supply chain, vuln cadence, and remediation — parallel to **ComplianceOps** INT-REF lifts.
+Standing **SecOps engineering** wave runs **parallel** to pen-test witness (`SECAS-S2-01`, `blocksIR: false`) — CSIRT, supply chain, vuln cadence, remediation.
 
-| Doc                | Path                                                             |
-| ------------------ | ---------------------------------------------------------------- |
-| Program            | `docs/operations/secas/SECAS-S4-security-engineering-program.md` |
-| IR runbook (draft) | `docs/operations/secas/runbooks/incident-response.md`            |
-| Stories            | `pm/secas-stories.json` — `SECAS-S4-01` … `SECAS-S4-05`          |
+| Doc         | Path                                                             |
+| ----------- | ---------------------------------------------------------------- |
+| Program     | `docs/operations/secas/SECAS-S4-security-engineering-program.md` |
+| CSIRT model | `docs/operations/secas/csirt-operating-model.md`                 |
+| IR runbook  | `docs/operations/secas/runbooks/incident-response.md`            |
+| Stories     | `pm/secas-stories.json` — `SECAS-S4-01` … `SECAS-S4-05`          |
 
 S4 friction: `SEC-CSIRT-01`, `SEC-SUPPLY-01`, `SEC-VULN-01`, `SEC-PTREM-01` in `pm/security-friction-register.json`.
 
 ```bash
+pnpm secas:csirt:check:write         # SECAS-S4-01 structural
 pnpm secas:supply-chain:check:write   # SECAS-S4-02 structural (no vendor dep)
 ```
 
@@ -112,15 +114,15 @@ pnpm fleet:threat:check:write
 
 ## World-class gap status (2026-06-14)
 
-| Priority | Item                                                      | Status                                                        |
-| -------- | --------------------------------------------------------- | ------------------------------------------------------------- |
-| 1        | Unified fleet risk register (machine JSON)                | **in_progress** — register + harness; product TM stubs remain |
-| 2        | Active threat register → SOC L3                           | **in_progress** — register + harness; TI feed planned         |
-| 3        | Product AI threat models (markets, terminal, Mythos)      | **open** — stubs/missing in owner repos                       |
-| 4        | SECAS-S4 harnesses (CSIRT, supply-chain, vuln)            | **partial** — S4-02 structural PASS; CSIRT/vuln pending       |
-| 5        | SECAS-S5 proposal (purple team, bounty, PQC, AI red-team) | **drafted** — roadmap + program doc                           |
-| 6        | Legal program parity                                      | **thin** — `legal-friction-register` minimal vs SECAS depth   |
-| 7        | SOC L2→L3 (SIEM, on-call, anomaly→IR)                     | **planned** — `soc-operations.md` L2 partial                  |
+| Priority | Item                                                      | Status                                                            |
+| -------- | --------------------------------------------------------- | ----------------------------------------------------------------- |
+| 1        | Unified fleet risk register (machine JSON)                | **in_progress** — register + harness; product TM stubs remain     |
+| 2        | Active threat register → SOC L3                           | **in_progress** — register + harness; TI feed planned             |
+| 3        | Product AI threat models (markets, terminal, Mythos)      | **open** — stubs/missing in owner repos                           |
+| 4        | SECAS-S4 harnesses (CSIRT, supply-chain, vuln)            | **partial** — S4-01 + S4-02 structural PASS; vuln cadence pending |
+| 5        | SECAS-S5 proposal (purple team, bounty, PQC, AI red-team) | **drafted** — roadmap + program doc                               |
+| 6        | Legal program parity                                      | **thin** — `legal-friction-register` minimal vs SECAS depth       |
+| 7        | SOC L2→L3 (SIEM, on-call, anomaly→IR)                     | **planned** — `soc-operations.md` L2 partial                      |
 
 **Resolved?** SECAS-S4/S5 **blueprint** yes (SoR pattern matches compliance/legal). **Harnesses + product threat content** — not yet world-class.
 

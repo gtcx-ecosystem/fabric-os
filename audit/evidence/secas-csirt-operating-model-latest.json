@@ -1,0 +1,31 @@
+{
+  "schema": "gtcx://fabric-os/secas-csirt-check/v1",
+  "storyId": "SECAS-S4-01",
+  "frictionId": "SEC-CSIRT-01",
+  "checkedAt": "2026-06-14T10:58:07.847Z",
+  "owner": "fabric-os",
+  "gates": {
+    "frictionItem": {
+      "ok": true,
+      "status": "closed",
+      "storyId": "SECAS-S4-01"
+    },
+    "irRunbook": {
+      "ok": true,
+      "missing": []
+    },
+    "operatingModel": {
+      "ok": true,
+      "missing": []
+    },
+    "socOpsLink": {
+      "ok": true
+    },
+    "drillEvidence": {
+      "ok": true,
+      "files": ["secas-ir-drill-2026-06-14.json"]
+    }
+  },
+  "ok": true,
+  "phase": "structural"
+}

@@ -54,12 +54,14 @@
     {
       "id": "SEC-CSIRT-01",
       "priority": "P0",
-      "status": "pending",
+      "status": "closed",
       "repo": "fabric-os",
       "title": "CSIRT / SOC operating model + IR runbook SoR",
       "symptom": "No standing incident response operating model witness — persona exists, ops SoR thin",
       "sprint": "SECAS-S4",
       "storyId": "SECAS-S4-01",
+      "witness": "audit/evidence/secas-csirt-operating-model-latest.json",
+      "drillWitness": "audit/evidence/secas-ir-drill-2026-06-14.json",
       "infraAction": "Publish IR runbook, escalation matrix, drill evidence path; wire secas:csirt:check",
       "acceptance": "audit/evidence/secas-csirt-operating-model-latest.json",
       "blocksIR": false

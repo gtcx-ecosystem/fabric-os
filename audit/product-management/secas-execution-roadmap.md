@@ -63,11 +63,11 @@ pnpm secas:pentest:ingest:check:write
 
 ## Future Phases
 
-| Sprint   | Goal                                                                       | Status   | Owner     | Stories / Friction                                             |
-| -------- | -------------------------------------------------------------------------- | -------- | --------- | -------------------------------------------------------------- |
-| SECAS-S1 | Sovereign register + security friction SoR                                 | complete | fabric-os |                                                                |
-| SECAS-S3 | Fleet IRSA + WAF hardening cards                                           | complete | fabric-os |                                                                |
-| SECAS-S4 | Security engineering operating program (CSIRT, supply chain, vuln cadence) | pending  | fabric-os | `SEC-CSIRT-01`, `SEC-SUPPLY-01`, `SEC-VULN-01`, `SEC-PTREM-01` |
+| Sprint   | Goal                                                                       | Status      | Owner     | Stories / Friction                                                       |
+| -------- | -------------------------------------------------------------------------- | ----------- | --------- | ------------------------------------------------------------------------ |
+| SECAS-S1 | Sovereign register + security friction SoR                                 | complete    | fabric-os |                                                                          |
+| SECAS-S3 | Fleet IRSA + WAF hardening cards                                           | complete    | fabric-os |                                                                          |
+| SECAS-S4 | Security engineering operating program (CSIRT, supply chain, vuln cadence) | in_progress | fabric-os | `SEC-CSIRT-01` done; `SEC-SUPPLY-01`, `SEC-VULN-01`, `SEC-PTREM-01` open |
 
 ## Issue Reconciliation
 
@@ -76,7 +76,7 @@ pnpm secas:pentest:ingest:check:write
 | `SEC-PENTEST-01`             | `pm/security-friction-register.json` | SECAS-S2-01     | in_progress |
 | `SEC-WAF-01`                 | `pm/security-friction-register.json` | —               | done        |
 | `SEC-IRSA-01`                | `pm/security-friction-register.json` | SECAS-S3-01     | done        |
-| `SEC-CSIRT-01`               | `pm/security-friction-register.json` | SECAS-S4-01     | pending     |
+| `SEC-CSIRT-01`               | `pm/security-friction-register.json` | SECAS-S4-01     | done        |
 | `SEC-SUPPLY-01`              | `pm/security-friction-register.json` | SECAS-S4-02     | pending     |
 | `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | pending     |
 | `SEC-PTREM-01`               | `pm/security-friction-register.json` | SECAS-S4-04     | pending     |

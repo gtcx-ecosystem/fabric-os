@@ -35,8 +35,9 @@
     {
       "id": "SECAS-S4",
       "name": "Security engineering operating program (CSIRT, supply chain, vuln cadence)",
-      "status": "pending",
+      "status": "in_progress",
       "dependsOn": "SECAS-S2",
+      "parallelTo": "SECAS-S2",
       "items": ["SEC-CSIRT-01", "SEC-SUPPLY-01", "SEC-VULN-01", "SEC-PTREM-01"]
     },
     {

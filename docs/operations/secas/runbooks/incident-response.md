@@ -1,6 +1,6 @@
 ---
 title: Incident response runbook (SECaaS)
-status: draft
+status: current
 date: 2026-06-14
 owner: fabric-os
 story: SECAS-S4-01
@@ -9,7 +9,7 @@ friction: SEC-CSIRT-01
 
 # Incident response runbook
 
-> **Draft** — SECAS-S4-01 will promote to `current` with drill witness at `audit/evidence/secas-csirt-operating-model-latest.json`.
+> **Current** — CSIRT operating model at [csirt-operating-model.md](../csirt-operating-model.md); harness witness at `audit/evidence/secas-csirt-operating-model-latest.json`.
 
 ## Scope
 

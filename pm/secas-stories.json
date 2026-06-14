@@ -153,26 +153,30 @@
       "sprint": "SECAS-S4",
       "title": "CSIRT / SOC operating model + incident response runbook SoR",
       "priority": "P0",
-      "status": "pending",
+      "status": "done",
       "owner": "fabric-os",
       "frictionIds": ["SEC-CSIRT-01"],
       "files": [
         "docs/operations/secas/SECAS-S4-security-engineering-program.md",
+        "docs/operations/secas/csirt-operating-model.md",
         "docs/operations/secas/runbooks/incident-response.md",
-        "audit/evidence/secas-csirt-operating-model-latest.json"
+        "audit/evidence/secas-csirt-operating-model-latest.json",
+        "audit/evidence/secas-ir-drill-2026-06-14.json"
       ],
       "acceptance": ["pnpm secas:csirt:check:write"],
       "uat": [
         {
           "text": "CSIRT roles, escalation matrix, and on-call contract documented",
-          "done": false
+          "done": true,
+          "note": "csirt-operating-model.md published 2026-06-14"
         },
         {
           "text": "Tabletop / drill evidence path defined and witnessed",
-          "done": false
+          "done": true,
+          "note": "audit/evidence/secas-ir-drill-2026-06-14.json tabletop PASS"
         }
       ],
-      "blockers": "SECAS-S2-01 calendar gate — S4 starts after pen-test report ingest"
+      "blockers": null
     },
     {
       "id": "SECAS-S4-02",

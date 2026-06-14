@@ -157,15 +157,15 @@ method: ripgrep provider/env/code scan + implementation file trace (not sample r
 
 ## Service fabric & Ops engine alignment
 
-| Service             | Status in `service-fabric.json` | Fleet reality                                                   |
-| ------------------- | ------------------------------- | --------------------------------------------------------------- |
-| P41 DevOps/InfraOps | complete                        | terminal ESO — partial RevOps custody                           |
-| P42 SecOps          | complete                        | webhook WAF not per-provider                                    |
-| GTMAAS / **RevOps** | planned (register active)       | CRO lane — GTM revenue; `pm/gtm-friction-register.json`         |
-| **PayOps** (domain) | active                          | `payops-domain-registry.json` — markets live; terra M-Pesa stub |
-| PayOps substrate    | **missing**                     | 5 Stripe + 1 Flutterwave — fabric PayOps execution (not RevOps) |
-| CommOps             | **missing**                     | 3 provider stacks                                               |
-| LegalOps            | planned                         | DPA mentions Stripe in compliance-os only                       |
+| Service             | Status in `service-fabric.json` | Fleet reality                                                 |
+| ------------------- | ------------------------------- | ------------------------------------------------------------- |
+| P41 DevOps/InfraOps | complete                        | terminal ESO — partial PayOps substrate custody               |
+| P42 SecOps          | complete                        | webhook WAF not per-provider                                  |
+| GTMAAS / **RevOps** | planned (register active)       | CRO lane — GTM + economics registers                          |
+| **PayOps**          | active (harness + friction)     | `payops:providers:check` — 3 Stripe consumers detected        |
+| PayOps substrate    | **missing**                     | 5 Stripe + 1 Flutterwave — fabric SM + webhook matrix pending |
+| CommOps             | **missing**                     | 3 provider stacks                                             |
+| LegalOps            | planned                         | DPA mentions Stripe in compliance-os only                     |
 
 ---
 

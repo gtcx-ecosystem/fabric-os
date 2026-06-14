@@ -60,7 +60,16 @@
       "notes": "Partial xr-lane-witness; sovereign-cloud-e2e-latest.json pending"
     },
     {
-      "id": "EXT-INF-013",
+      "id": "INIT-WORLD-CLASS-SECOPS",
+      "storyId": "T46",
+      "title": "World-class SecOps gap program (7 items)",
+      "ownerRepo": "fabric-os",
+      "status": "open",
+      "authority": "R",
+      "handoff": "docs/operations/coordination/to-bridge-os-init-world-class-secops-2026-06-14.md",
+      "ack": "bridge-os/docs/operations/coordination/from-fabric-os-init-world-class-secops-raise-2026-06-14.md",
+      "blocksIR": false
+    },
       "title": "ZWCMP pilot owner + cadence",
       "ownerRepo": "Leadership",
       "status": "approved",

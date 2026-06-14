@@ -35,13 +35,13 @@ flowchart LR
   I[Innovation Moat] -.-> L
 ```
 
-| Stage      | What runs                                                                  | GTCX anchors                                                                              |
-| ---------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| **Sense**  | Telemetry, friction registers, fleet witnesses, cost stats, threat signals | `pm/*-friction-register.json`, `audit/evidence/*-latest.json`, Prometheus/CloudTrail      |
-| **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`                    |
-| **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                        |
-| **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                             |
-| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, ProductOps, DesignOps, BizOps, PayOps, `blocksIR: false` |
+| Stage      | What runs                                                                  | GTCX anchors                                                                                     |
+| ---------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Sense**  | Telemetry, friction registers, fleet witnesses, cost stats, threat signals | `pm/*-friction-register.json`, `audit/evidence/*-latest.json`, Prometheus/CloudTrail             |
+| **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`                           |
+| **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                               |
+| **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                                    |
+| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, ProductOps, DesignOps, HROps, BizOps, PayOps, `blocksIR: false` |
 
 **Meta-learning rule:** Every CORE run writes **decision provenance** — what was sensed, which rubric fired, what was tried, exit code, witness path. The next cycle reasons over history, not chat memory.
 
@@ -175,6 +175,20 @@ flowchart LR
 
 **Functional product:** **UXaaS** — `bridge-os/pm/spec/ux-sor-registry.json` · Protocol P21
 
+### HROps
+
+| Dimension             | Specification                                                                                                                     |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Runtime**           | Persona roster per repo, voice embodiment, utilization proof, story-persona bind, agile squad charters, hiring backlog visibility |
+| **Agentic team**      | `agile-coach` (human ceremony) · `protocol-engineer` (agentic roster) · canon institutional personas (SoR)                        |
+| **Intelligence loop** | Utilization gap → persona rebind → voice/conduct witness → honest-done check → fleet team rollup                                  |
+| **Innovation moat**   | **Institutional workforce once** — agents embody roles from canon, not generic chat; GATE-PERSONA-READ on commit                  |
+| **Trust fortress**    | Human hiring/comp Class S only; HROps tracks visibility — never agent-signs employment or legal HR actions                        |
+| **Magic**             | Every repo session names Active persona + Frame; utilization witness proves the right team worked the milestone                   |
+| **Business outcomes** | World-class agentic product teams; honest Done semantics; squad clarity without sprint-count theater                              |
+
+**Functional product:** **TeamaaS** — `bridge-os/pm/spec/hrops-workforce-registry.json` · `INIT-PRODUCT-TEAM-MODEL-R6`
+
 ### BizOps
 
 | Dimension             | Specification                                                                                                        |
@@ -291,12 +305,12 @@ flowchart LR
 
 ## Implementation sequence
 
-| Phase          | CORE lanes                                                                                | Deliverable                                                               |
-| -------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **ProductOps**, **DesignOps**, **BizOps**, **PayOps** | Distributed domain registry; product-culture + ux-sor + GTM witnesses     |
-| **Next**       | RevOps, CommOps                                                                           | Provider substrate only — keys/webhooks/metering; not PayOps domain logic |
-| **Then**       | MLOps, AIOps depth                                                                        | Eval promotion gate wired to every model/agent release                    |
-| **Continuous** | All                                                                                       | `core-runtime-engine-protocol.json` harness per lane                      |
+| Phase          | CORE lanes                                                                                           | Deliverable                                                                     |
+| -------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **ProductOps**, **DesignOps**, **HROps**, **BizOps**, **PayOps** | Persona roster + utilization + product-culture + ux-sor + GTM + PayOps registry |
+| **Next**       | RevOps, CommOps                                                                                      | Provider substrate only — keys/webhooks/metering; not PayOps domain logic       |
+| **Then**       | MLOps, AIOps depth                                                                                   | Eval promotion gate wired to every model/agent release                          |
+| **Continuous** | All                                                                                                  | `core-runtime-engine-protocol.json` harness per lane                            |
 
 ---
 

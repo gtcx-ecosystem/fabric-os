@@ -1,5 +1,5 @@
 ---
-title: GTCX Ops programs — DevOps, SecOps, InfraOps, MLOps, AIOps, ProductOps, DesignOps, HROps, RevOps, PayOps
+title: GTCX Ops programs — DevOps, SecOps, InfraOps, MLOps, AIOps, StratOps, ProductOps, DesignOps, HROps, RevOps, PayOps
 status: current
 date: 2026-06-14
 owner: fabric-os
@@ -7,7 +7,7 @@ owner: fabric-os
 
 # GTCX Ops programs
 
-> **Operator vocabulary:** **DevOps**, **SecOps**, **InfraOps**, **MLOps**, **AIOps**, **ProductOps**, **DesignOps**, **HROps**, **RevOps**, **PayOps**, **CommOps**, **LegalOps**, **ComplianceOps**.  
+> **Operator vocabulary:** **DevOps**, **SecOps**, **InfraOps**, **MLOps**, **AIOps**, **StratOps**, **ProductOps**, **DesignOps**, **HROps**, **RevOps**, **PayOps**, **CommOps**, **LegalOps**, **ComplianceOps**.  
 > **Legacy display:** **BizOps** → folded into **RevOps** (CRO office); machine ID **GTMaaS** unchanged.  
 > **Functional products (stable machine IDs):** DaaS, SECaaS — protocols P41/P42, initiatives, `pnpm` script prefixes unchanged.
 
@@ -25,6 +25,7 @@ Product engineering stays in **owner repos**. Specialist **Ops lanes** run in pa
 | **ComplianceOps** | Regulatory evidence, reference-grade lifts, risk/compliance registers           | compliance-os                           | INT-REF                    | —           | compliance-os `pnpm agent:next-work`                      |
 | **LegalOps**      | Class S sovereign gates — SOW, DTF, EXT-INF, human signatures                   | agile-os · register canon-os            | Legal program              | —           | `ecosystem:legal-program:check`                           |
 | **FleetOps**      | Intake, witness rollup, ZenHub, coordination                                    | bridge-os                               | —                          | P22 harness | `pnpm ecosystem:secas:rollup:write`                       |
+| **StratOps**      | Vision, partnerships, company roadmap, enterprise-building, fleet north star    | bridge-os (+ canon institutional)       | **StratAAS**               | GOAL        | [stratops-as-a-service.md](./stratops-as-a-service.md)    |
 | **ProductOps**    | PRD SoR, product-goals, milestone DoD, shippable ≠ roadmap-complete             | bridge-os                               | _(protocol)_               | PDC         | `pnpm ecosystem:product-culture:check`                    |
 | **DesignOps**     | UX SoR, EXR packs, journey spine, design system, pm/ux traceability             | bridge-os (+ ledger-ui design SoR)      | **UXaaS**                  | P21         | `pnpm ecosystem:ux-sor:check:fleet`                       |
 | **HROps**         | Workforce — persona roster, voice embodiment, squad utilization, hiring backlog | bridge-os (+ agile-os human ceremony)   | **TeamaaS**                | PTM-R6      | `pnpm ecosystem:product-team-honest-done:check`           |
@@ -45,6 +46,7 @@ Machine registry: `bridge-os/pm/spec/ops-programs-registry.json`
 | Delivery    | **DevOps** + **InfraOps**     | fabric-os                         | Handoff only — no `kubectl apply` in product PM     |
 | Security    | **SecOps**                    | fabric-os                         | Stack security handoff + evidence                   |
 | Normative   | Assurance / **ComplianceOps** | canon · protocols · compliance-os | Witness parallel — never blocks IR                  |
+| Strategy    | **StratOps**                  | bridge-os · canon-os              | Fleet north star + programmes (`blocksIR: false`)   |
 | Product     | **ProductOps**                | bridge-os                         | PRD + milestone trace parallel (`blocksIR: false`)  |
 | Experience  | **DesignOps**                 | bridge-os · ledger-ui             | UX SoR parallel — not feature UI implementation     |
 | Workforce   | **HROps**                     | bridge-os · agile-os              | Persona roster + utilization (`blocksIR: false`)    |
@@ -64,6 +66,15 @@ Machine registry: `bridge-os/pm/spec/ops-programs-registry.json`
 Forensic SoR (PayOps execution inventory): [ecosystem-revops-commops-forensic-2026-06-14.md](../../audit/ecosystem-revops-commops-forensic-2026-06-14.md)
 
 > **Note:** Forensic filename predates this split — _RevOps_ in that doc meant payment-provider centralization; that work is **PayOps substrate**, not CRO RevOps.
+
+## StratOps vs ProductOps vs FleetOps vs RevOps
+
+|                 | **StratOps**                                               | **ProductOps**                         | **FleetOps**                  | **RevOps**                      |
+| --------------- | ---------------------------------------------------------- | -------------------------------------- | ----------------------------- | ------------------------------- |
+| **Horizon**     | Years → quarters (fleet north star)                        | Quarters → sprints (repo milestone)    | Now (next story)              | Quarters (revenue economics)    |
+| **Owns**        | Vision, partnerships, company roadmap, enterprise-building | Per-repo PRD, product-goals, shippable | P22, intake, witness rollups  | Pricing, GTM revenue, economics |
+| **Examples**    | `ecosystem-fleet-goals-registry`, `fleet-live-programmes`  | `prd-index`, `product-goals.json`      | `pnpm agent:next-work`        | `gtm-friction-register`         |
+| **Coordinates** | Product team via programmes + goal orientation             | Implements fleet programme heads       | Executes selected engineering | Revenue motion within strategy  |
 
 ## HROps vs FleetOps vs ProductOps
 
@@ -104,6 +115,8 @@ Forensic SoR (PayOps execution inventory): [ecosystem-revops-commops-forensic-20
 | ComplianceOps       | `compliance-officer`                                                            | regulatory-audit            |
 | MLOps / AIOps       | `security-engineer` + product ML owner                                          | development                 |
 | LegalOps            | Human + compliance-officer witness                                              | regulatory-audit            |
+| FleetOps            | `protocol-engineer`                                                             | development                 |
+| StratOps            | `product-strategist` (lead) · `protocol-engineer` (programmes)                  | trading-floor               |
 | ProductOps          | `product-strategist`                                                            | trading-floor               |
 | DesignOps           | `product-designer`                                                              | development                 |
 | HROps               | `agile-coach` · `protocol-engineer`                                             | development                 |
@@ -127,6 +140,7 @@ Forensic SoR (PayOps execution inventory): [ecosystem-revops-commops-forensic-20
 | UXaaS                   | DesignOps functional product                     |
 | TeamaaS                 | HROps functional product                         |
 | GTMaaS                  | RevOps functional product (CRO / GTM revenue)    |
+| StratAAS                | StratOps functional product (fleet strategy)     |
 | BizOps                  | _legacy alias → RevOps_                          |
 | PayOps domain registry  | `bridge-os/pm/spec/payops-domain-registry.json`  |
 | QAAS                    | QA ship-gate _(not DesignOps — independent UAT)_ |
@@ -138,9 +152,10 @@ Spec: `bridge-os/pm/spec/engineering-lane-abstraction-protocol.json`
 - Product P22 **Next work item** = engineering only.
 - SecOps gates → **Parallel sovereign gates** / **Parallel assurance lane** — fabric-os owner.
 - LegalOps → **Parallel sovereign gates** — agile-os / canon.
+- StratOps → **Parallel strategy lane** — fleet north star, programmes, goal orientation (`blocksIR: false`).
 - ProductOps → **Parallel product lane** — bridge-os product-culture protocol (`blocksIR: false`).
 - DesignOps → **Parallel experience lane** — bridge-os UX SoR + ledger-ui design canon (`blocksIR: false`).
 - HROps → **Parallel workforce lane** — bridge-os persona roster + agile-os squad ceremony (`blocksIR: false`).
 - RevOps → **Parallel revenue lane** (CRO) — pricing, economics, GTM revenue (`blocksIR: false`).
 - PayOps → **Payment execution** — fabric substrate + owner-repo payout workflows (`blocksIR: false` for integration gaps).
-- Redirect: `security` → fabric-os · `legal` → agile-os · `gtm` → fabric-os · `revenue` → bridge-os · `product` → bridge-os · `ux` → bridge-os · `workforce` → bridge-os · `payments` → fabric-os · `payments-domain` → owner repo · `documentation` → canon-os.
+- Redirect: `security` → fabric-os · `legal` → agile-os · `strategy` → bridge-os · `gtm` → fabric-os · `revenue` → bridge-os · `product` → bridge-os · `ux` → bridge-os · `workforce` → bridge-os · `payments` → fabric-os · `payments-domain` → owner repo · `documentation` → canon-os.

@@ -35,13 +35,13 @@ flowchart LR
   I[Innovation Moat] -.-> L
 ```
 
-| Stage      | What runs                                                                  | GTCX anchors                                                                                     |
-| ---------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| **Sense**  | Telemetry, friction registers, fleet witnesses, cost stats, threat signals | `pm/*-friction-register.json`, `audit/evidence/*-latest.json`, Prometheus/CloudTrail             |
-| **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`                           |
-| **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                               |
-| **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                                    |
-| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, ProductOps, DesignOps, HROps, RevOps, PayOps, `blocksIR: false` |
+| Stage      | What runs                                                                  | GTCX anchors                                                                                               |
+| ---------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Sense**  | Telemetry, friction registers, fleet witnesses, cost stats, threat signals | `pm/*-friction-register.json`, `audit/evidence/*-latest.json`, Prometheus/CloudTrail                       |
+| **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`                                     |
+| **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                                         |
+| **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                                              |
+| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, StratOps, ProductOps, DesignOps, HROps, RevOps, PayOps, `blocksIR: false` |
 
 **Meta-learning rule:** Every CORE run writes **decision provenance** — what was sensed, which rubric fired, what was tried, exit code, witness path. The next cycle reasons over history, not chat memory.
 
@@ -147,17 +147,31 @@ flowchart LR
 | **Magic**             | `pnpm agent:next-work` — one story, one owner, no menus — fleet moves as one organism       |
 | **Business outcomes** | Roadmap % true; sprint seals mean something; icebox clears with evidence                    |
 
+### StratOps
+
+| Dimension             | Specification                                                                                                                  |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Runtime**           | Fleet north star, live programmes, goal orientation, enterprise pilot DoD, trade-domain vision, partnership coalition witness  |
+| **Agentic team**      | `product-strategist` (lead) · `protocol-engineer` (programmes) · canon institutional baseline (read-only SoR)                  |
+| **Intelligence loop** | Clarity gap → programme recalibration → fleet goals hygiene → pilot readiness witness → progress rollup                        |
+| **Innovation moat**   | **Strategy once** — company roadmap and partnerships defined fleet-wide; product teams execute programmes, not reinvent vision |
+| **Trust fortress**    | Goal orientation required in P22; `ROADMAP-COMPLETE` never substitutes for north-star trace; Class S partnerships human-only   |
+| **Magic**             | One clarity headline — north star, active programme, milestone trace — before engineering starts                               |
+| **Business outcomes** | GR-T2 integrator pilot coherence; enterprise/government pilot readiness; honest long-horizon milestone semantics               |
+
+**Functional product:** **StratAAS** — `bridge-os/pm/spec/stratops-strategy-registry.json` · [stratops-as-a-service.md](./stratops-as-a-service.md)
+
 ### ProductOps
 
-| Dimension             | Specification                                                                                                |
-| --------------------- | ------------------------------------------------------------------------------------------------------------ |
-| **Runtime**           | PRD index, product-goals, active milestone DoD, story→PRD trace, enterprise-pilot product gates              |
-| **Agentic team**      | `product-strategist` (lead) · bridge program office · product-repo PM liaisons (read-only cards)             |
-| **Intelligence loop** | Milestone gap → product-culture check → PRD/goal hygiene → shippable witness → fleet rollup                  |
-| **Innovation moat**   | **PRD dictates, roadmap executes** — `ROADMAP-COMPLETE ≠ shippable`; one product-culture protocol fleet-wide |
-| **Trust fortress**    | Proceed Brief must cite milestone + PRD ref; P22 engineering never substitutes for product definition        |
-| **Magic**             | One headline: active milestone, shippable outcome, PRD trace — without sprint-count theater                  |
-| **Business outcomes** | Honest done semantics; pilot-ready product integrity; feature work traces to customer value                  |
+| Dimension             | Specification                                                                                                 |
+| --------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Runtime**           | PRD index, product-goals, active milestone DoD, story→PRD trace (consumes StratOps enterprise-pilot template) |
+| **Agentic team**      | `product-strategist` (lead) · bridge program office · product-repo PM liaisons (read-only cards)              |
+| **Intelligence loop** | Milestone gap → product-culture check → PRD/goal hygiene → shippable witness → fleet rollup                   |
+| **Innovation moat**   | **PRD dictates, roadmap executes** — `ROADMAP-COMPLETE ≠ shippable`; one product-culture protocol fleet-wide  |
+| **Trust fortress**    | Proceed Brief must cite milestone + PRD ref; P22 engineering never substitutes for product definition         |
+| **Magic**             | One headline: active milestone, shippable outcome, PRD trace — without sprint-count theater                   |
+| **Business outcomes** | Honest done semantics; pilot-ready product integrity; feature work traces to customer value                   |
 
 **Protocol:** `INIT-PRODUCT-DEVELOPMENT-CULTURE` — `bridge-os/pm/spec/product-development-culture-protocol.json`
 
@@ -295,12 +309,12 @@ flowchart LR
 
 ## Implementation sequence
 
-| Phase          | CORE lanes                                                                                           | Deliverable                                                       |
-| -------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **ProductOps**, **DesignOps**, **HROps**, **RevOps**, **PayOps** | RevOps CRO active (GTMaaS); PayOps domain live; substrate planned |
-| **Next**       | PayOps substrate, CommOps                                                                            | fabric SM + webhook matrix + `payops:providers:check`             |
-| **Then**       | MLOps, AIOps depth                                                                                   | Eval promotion gate wired to every model/agent release            |
-| **Continuous** | All                                                                                                  | `core-runtime-engine-protocol.json` harness per lane              |
+| Phase          | CORE lanes                                                                                                         | Deliverable                                                         |
+| -------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **StratOps**, **ProductOps**, **DesignOps**, **HROps**, **RevOps**, **PayOps** | StratOps north star active; RevOps CRO (GTMaaS); PayOps domain live |
+| **Next**       | PayOps substrate, CommOps                                                                                          | fabric SM + webhook matrix + `payops:providers:check`               |
+| **Then**       | MLOps, AIOps depth                                                                                                 | Eval promotion gate wired to every model/agent release              |
+| **Continuous** | All                                                                                                                | `core-runtime-engine-protocol.json` harness per lane                |
 
 ---
 
@@ -308,6 +322,7 @@ flowchart LR
 
 ```bash
 pnpm fabric:compass:check            # service fabric registers + runners
+pnpm stratops:strategy:check:write   # StratOps structural gate
 pnpm agent:next-work --json          # FleetOps selection + persona
 pnpm ecosystem:assurance:evaluate    # need-based assure trigger
 pnpm ecosystem:progress:report --markdown

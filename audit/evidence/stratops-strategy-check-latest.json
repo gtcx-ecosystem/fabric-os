@@ -1,0 +1,56 @@
+{
+  "schema": "gtcx://fabric-os/stratops-strategy-check/v1",
+  "opsLane": "StratOps",
+  "checkedAt": "2026-06-14T10:25:40.382Z",
+  "owner": "bridge-os",
+  "registerHost": "bridge-os",
+  "gates": {
+    "strategyRegistry": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/stratops-strategy-registry.json"
+    },
+    "frictionRegister": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/stratops-friction-register.json"
+    },
+    "fleetGoals": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/ecosystem-fleet-goals-registry.json"
+    },
+    "goalOrientation": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/goal-orientation-protocol.json"
+    },
+    "liveProgrammes": {
+      "ok": true,
+      "count": 7
+    },
+    "executionEngine": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/gtcx-execution-engine.json"
+    },
+    "enterprisePilotDoD": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/enterprise-pilot-dod.json"
+    },
+    "opsDoc": {
+      "ok": true,
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/operations/stratops-as-a-service.md"
+    },
+    "stratopsLane": {
+      "ok": true,
+      "lane": "StratOps"
+    },
+    "frictionLane": {
+      "ok": true,
+      "lane": "StratOps"
+    },
+    "fleetNorthStar": {
+      "ok": true,
+      "goal": "GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail"
+    }
+  },
+  "openFrictionP0": 0,
+  "openFrictionTotal": 3,
+  "ok": true
+}

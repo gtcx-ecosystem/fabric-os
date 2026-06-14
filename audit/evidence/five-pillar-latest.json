@@ -827,66 +827,49 @@
         "engineering-production": {
           "score100": 100,
           "weight": 18,
-          "sourceIds": [
-            "production-readiness"
-          ],
+          "sourceIds": ["production-readiness"],
           "confidence": "A",
           "source": "audit-output"
         },
         "security-depth": {
           "score100": 100,
           "weight": 16,
-          "sourceIds": [
-            "security"
-          ],
+          "sourceIds": ["security"],
           "confidence": "A",
           "source": "audit-output"
         },
         "product-ux-quality": {
           "score100": 100,
           "weight": 14,
-          "sourceIds": [
-            "ux-product-design"
-          ],
+          "sourceIds": ["ux-product-design"],
           "confidence": "A",
           "source": "audit-output"
         },
         "ecosystem-integration": {
           "score100": 100,
           "weight": 12,
-          "sourceIds": [
-            "ecosystem-integration"
-          ],
+          "sourceIds": ["ecosystem-integration"],
           "confidence": "A",
           "source": "audit-output"
         },
         "innovation-ip": {
           "score100": 100,
           "weight": 12,
-          "sourceIds": [
-            "innovation-originality",
-            "technical-moat"
-          ],
+          "sourceIds": ["innovation-originality", "technical-moat"],
           "confidence": "A",
           "source": "audit-output"
         },
         "ai-agentic-maturity": {
           "score100": 100,
           "weight": 14,
-          "sourceIds": [
-            "ai-maturity",
-            "hallucination-resilience"
-          ],
+          "sourceIds": ["ai-maturity", "hallucination-resilience"],
           "confidence": "A",
           "source": "audit-output"
         },
         "enterprise-bank-grade": {
           "score100": 100,
           "weight": 14,
-          "sourceIds": [
-            "enterprise-readiness",
-            "bank-grade-auditability"
-          ],
+          "sourceIds": ["enterprise-readiness", "bank-grade-auditability"],
           "confidence": "A",
           "source": "audit-output"
         }
@@ -908,53 +891,35 @@
         "selectivity-ingredients": {
           "score100": 100,
           "weight": 22,
-          "sourceIds": [
-            "ai-maturity",
-            "innovation-originality",
-            "technical-moat"
-          ],
+          "sourceIds": ["ai-maturity", "innovation-originality", "technical-moat"],
           "confidence": "A",
           "source": "audit-output"
         },
         "process-composition": {
           "score100": 100,
           "weight": 22,
-          "sourceIds": [
-            "production-readiness",
-            "ecosystem-integration",
-            "ai-maturity"
-          ],
+          "sourceIds": ["production-readiness", "ecosystem-integration", "ai-maturity"],
           "confidence": "A",
           "source": "audit-output"
         },
         "taste-operator-finish": {
           "score100": 100,
           "weight": 18,
-          "sourceIds": [
-            "ux-product-design"
-          ],
+          "sourceIds": ["ux-product-design"],
           "confidence": "A",
           "source": "audit-output"
         },
         "restraint-anti-commodity": {
           "score100": 100,
           "weight": 18,
-          "sourceIds": [
-            "ux-product-design",
-            "documentation",
-            "hallucination-resilience"
-          ],
+          "sourceIds": ["ux-product-design", "documentation", "hallucination-resilience"],
           "confidence": "A",
           "source": "audit-output"
         },
         "uniqueness-provenance": {
           "score100": 100,
           "weight": 20,
-          "sourceIds": [
-            "innovation-originality",
-            "technical-moat",
-            "enterprise-readiness"
-          ],
+          "sourceIds": ["innovation-originality", "technical-moat", "enterprise-readiness"],
           "confidence": "A",
           "source": "audit-output"
         }
@@ -982,9 +947,7 @@
           "qualityAvg100": 100,
           "worldClassBar100": 95,
           "gap100": 0,
-          "sourceIds": [
-            "documentation"
-          ]
+          "sourceIds": ["documentation"]
         },
         "security-world-class": {
           "score100": 100,
@@ -992,9 +955,7 @@
           "qualityAvg100": 100,
           "worldClassBar100": 98,
           "gap100": 0,
-          "sourceIds": [
-            "security"
-          ]
+          "sourceIds": ["security"]
         },
         "devops-observability": {
           "score100": 100,
@@ -1002,9 +963,7 @@
           "qualityAvg100": 100,
           "worldClassBar100": 95,
           "gap100": 0,
-          "sourceIds": [
-            "production-readiness"
-          ]
+          "sourceIds": ["production-readiness"]
         },
         "agentic-trust": {
           "score100": 100,
@@ -1012,10 +971,7 @@
           "qualityAvg100": 100,
           "worldClassBar100": 95,
           "gap100": 0,
-          "sourceIds": [
-            "ai-maturity",
-            "hallucination-resilience"
-          ]
+          "sourceIds": ["ai-maturity", "hallucination-resilience"]
         },
         "ecosystem-moat": {
           "score100": 100,
@@ -1023,10 +979,7 @@
           "qualityAvg100": 100,
           "worldClassBar100": 95,
           "gap100": 0,
-          "sourceIds": [
-            "ecosystem-integration",
-            "technical-moat"
-          ]
+          "sourceIds": ["ecosystem-integration", "technical-moat"]
         },
         "enterprise-sovereign": {
           "score100": 100,
@@ -1034,10 +987,7 @@
           "qualityAvg100": 100,
           "worldClassBar100": 95,
           "gap100": 0,
-          "sourceIds": [
-            "enterprise-readiness",
-            "bank-grade-auditability"
-          ]
+          "sourceIds": ["enterprise-readiness", "bank-grade-auditability"]
         },
         "repo-hygiene-world-class": {
           "score100": 100,
@@ -1045,10 +995,7 @@
           "qualityAvg100": 100,
           "worldClassBar100": 95,
           "gap100": 0,
-          "sourceIds": [
-            "repo-folder-hygiene",
-            "spec-drift"
-          ]
+          "sourceIds": ["repo-folder-hygiene", "spec-drift"]
         },
         "spec-truth": {
           "score100": 100,
@@ -1056,9 +1003,7 @@
           "qualityAvg100": 100,
           "worldClassBar100": 95,
           "gap100": 0,
-          "sourceIds": [
-            "spec-drift"
-          ]
+          "sourceIds": ["spec-drift"]
         },
         "global-south-resilience": {
           "score100": 100,
@@ -1066,10 +1011,7 @@
           "qualityAvg100": 100,
           "worldClassBar100": 90,
           "gap100": 0,
-          "sourceIds": [
-            "production-readiness",
-            "ux-product-design"
-          ]
+          "sourceIds": ["production-readiness", "ux-product-design"]
         }
       },
       "hasRubric": true,
@@ -1094,21 +1036,7 @@
         "confidence-grade": {
           "score100": 100,
           "weight": 20,
-          "grades": [
-            "A",
-            "A",
-            "A",
-            "A",
-            "A",
-            "A",
-            "A",
-            "A",
-            "A",
-            "A",
-            "A",
-            "A",
-            "A"
-          ],
+          "grades": ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
           "publishBlocked": false
         },
         "anti-hallucination": {

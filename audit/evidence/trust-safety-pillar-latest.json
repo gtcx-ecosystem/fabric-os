@@ -19,21 +19,7 @@
     "confidence-grade": {
       "score100": 100,
       "weight": 20,
-      "grades": [
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A"
-      ],
+      "grades": ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
       "publishBlocked": false
     },
     "anti-hallucination": {

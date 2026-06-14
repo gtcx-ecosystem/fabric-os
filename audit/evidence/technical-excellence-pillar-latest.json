@@ -11,66 +11,49 @@
     "engineering-production": {
       "score100": 100,
       "weight": 18,
-      "sourceIds": [
-        "production-readiness"
-      ],
+      "sourceIds": ["production-readiness"],
       "confidence": "A",
       "source": "audit-output"
     },
     "security-depth": {
       "score100": 100,
       "weight": 16,
-      "sourceIds": [
-        "security"
-      ],
+      "sourceIds": ["security"],
       "confidence": "A",
       "source": "audit-output"
     },
     "product-ux-quality": {
       "score100": 100,
       "weight": 14,
-      "sourceIds": [
-        "ux-product-design"
-      ],
+      "sourceIds": ["ux-product-design"],
       "confidence": "A",
       "source": "audit-output"
     },
     "ecosystem-integration": {
       "score100": 100,
       "weight": 12,
-      "sourceIds": [
-        "ecosystem-integration"
-      ],
+      "sourceIds": ["ecosystem-integration"],
       "confidence": "A",
       "source": "audit-output"
     },
     "innovation-ip": {
       "score100": 100,
       "weight": 12,
-      "sourceIds": [
-        "innovation-originality",
-        "technical-moat"
-      ],
+      "sourceIds": ["innovation-originality", "technical-moat"],
       "confidence": "A",
       "source": "audit-output"
     },
     "ai-agentic-maturity": {
       "score100": 100,
       "weight": 14,
-      "sourceIds": [
-        "ai-maturity",
-        "hallucination-resilience"
-      ],
+      "sourceIds": ["ai-maturity", "hallucination-resilience"],
       "confidence": "A",
       "source": "audit-output"
     },
     "enterprise-bank-grade": {
       "score100": 100,
       "weight": 14,
-      "sourceIds": [
-        "enterprise-readiness",
-        "bank-grade-auditability"
-      ],
+      "sourceIds": ["enterprise-readiness", "bank-grade-auditability"],
       "confidence": "A",
       "source": "audit-output"
     }

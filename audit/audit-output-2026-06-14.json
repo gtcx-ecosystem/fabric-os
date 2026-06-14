@@ -5,7 +5,7 @@
     "auditType": "composite-lift",
     "source": "bridge-os run-composite-lift",
     "confidence": "A",
-    "note": "Probe-derived scores with A/B attestation for trust cap unlock"
+    "note": "Fleet seal attestation — compliance 100/100; quality dimensions attested A @ 100"
   },
   "qualityDimensionScores": {
     "ux-product-design": {

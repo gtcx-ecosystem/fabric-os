@@ -109,7 +109,9 @@ for (const file of markdownFiles) {
     }
 
     const fileDir = dirname(join(DOCS_ROOT, file));
-    const resolved = resolveWithAliases(fileDir, linkTarget);
+    // Strip URL fragments and query strings before resolving the file path.
+    const targetPath = linkTarget.split('#')[0].split('?')[0];
+    const resolved = resolveWithAliases(fileDir, targetPath);
 
     if (!existsSync(resolved)) {
       if (fileExcepted) {

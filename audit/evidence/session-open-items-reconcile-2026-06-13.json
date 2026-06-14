@@ -1,0 +1,22 @@
+{
+  "schema": "gtcx://fabric-os/session-open-items-reconcile/v1",
+  "at": "2026-06-13T13:20:00.000Z",
+  "repo": "fabric-os",
+  "ticket": "XR-FABRIC-SESSION-OPEN-003",
+  "forensicPack": "docs/operations/coordination/session-forensic-fabric-os-session-open-items-2026-06-13.md",
+  "machineWitness": "pm/ci/session-open-items-latest.json",
+  "raiseWitness": "pm/ci/session-open-items-raise-bridge-latest.json",
+  "outboundTicket": "docs/operations/coordination/to-bridge-os-session-open-items-forensic-2026-06-13.md",
+  "bridgeClosureBar": {
+    "witness": "bridge-os/pm/ci/session-closure-bar-latest.json",
+    "sessionComplete": false,
+    "requiredPass": 2,
+    "requiredTotal": 5
+  },
+  "reconciledOpenCount": 4,
+  "transcriptNoiseStripped": 0,
+  "transcript": {
+    "id": "35ccef1b-c866-463c-9b4e-0d81b44b01ad",
+    "workspace": "Users-amanianai"
+  }
+}

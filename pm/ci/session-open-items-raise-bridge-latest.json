@@ -1,0 +1,44 @@
+{
+  "schema": "gtcx://fabric-os/session-open-items-raise-bridge/v1",
+  "at": "2026-06-13T13:20:00.000Z",
+  "from": "fabric-os",
+  "to": "bridge-os",
+  "protocol": "P24",
+  "ticket": "XR-FABRIC-SESSION-OPEN-003",
+  "priorTicket": "XR-BRIDGE-SESSION-OPEN-001",
+  "initiative": "INIT-SESSION-OPEN-ITEMS",
+  "implementStoryId": "SECAS-S2-01",
+  "witness": "pm/ci/session-open-items-latest.json",
+  "outbound": "docs/operations/coordination/to-bridge-os-session-open-items-forensic-2026-06-13.md",
+  "forensicSummary": "docs/operations/coordination/session-forensic-fabric-os-session-open-items-2026-06-13.md",
+  "inboundAck": "bridge-os/docs/operations/coordination/from-fabric-os-session-open-items-forensic-2026-06-13.md",
+  "p22": {
+    "head": {
+      "id": "SECAS-S2-01",
+      "owner": "fabric-os",
+      "phase": "awaiting_vendor_report"
+    },
+    "initiative": "INIT-GTCX-INFRA-SECAS"
+  },
+  "git": {
+    "head": "b23e733",
+    "settlementPending": true
+  },
+  "bridgeClosureBar": {
+    "requiredPass": 2,
+    "requiredTotal": 5,
+    "sessionComplete": false,
+    "failing": ["zenhub-sor", "git-settlement", "initiative-closure-witness"],
+    "witness": "bridge-os/pm/ci/session-closure-bar-latest.json"
+  },
+  "transcript": {
+    "id": "35ccef1b-c866-463c-9b4e-0d81b44b01ad",
+    "workspace": "Users-amanianai",
+    "userTurns": 3
+  },
+  "actionableForBridge": [
+    "INIT-EXECUTIVE-GAP-PROGRAM closureBar.ok witness reconcile",
+    "zenhub-sor hub plan issue gate fix",
+    "bridge-os git settlement + session:open-items green"
+  ]
+}

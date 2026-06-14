@@ -3,7 +3,7 @@
   "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
   "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
   "statePath": ".baseline/launch-focus.json",
-  "provisionedAt": "2026-06-14T11:24:27.458Z",
+  "provisionedAt": "2026-06-14T17:24:51.289Z",
   "repo": "fabric-os",
   "northStar": {
     "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -16,48 +16,39 @@
       "index": "audit/gtm-audit-2026-06-05.md"
     }
   },
-  "sessionMode": "witness",
+  "sessionMode": "implement",
   "activePhase": {
     "id": "zwcmp-unblock",
     "label": "ZWCMP pilot + Global South 10x deploy"
   },
   "workSet": {
-    "implement": [],
-    "plan": [],
-    "witness": [
+    "implement": [
       {
-        "storyId": "SECAS-S2-01",
-        "title": "Pen-test window witness prep — report ingest scaffolding",
-        "workClass": "ops-docs",
-        "lane": "secas",
-        "because": "SECAS-S2 in_progress; window 2026-06-17..21"
+        "storyId": "SECAS-S4-04",
+        "title": "Pen-test findings remediation track + re-test witness",
+        "workClass": "code",
+        "authorityClass": "R",
+        "lane": "p22-head"
       }
     ],
-    "human": [
-      {
-        "storyId": "EXT-INF-013",
-        "title": "ZWCMP pilot owner + cadence call",
-        "authorityClass": "S",
-        "owner": "Leadership",
-        "lane": "zwcmp-unblock",
-        "because": "Class S human gate — blocksIR false"
-      }
-    ]
+    "plan": [],
+    "witness": [],
+    "human": []
   },
   "activeWorkSet": [
     {
-      "storyId": "SECAS-S2-01",
-      "title": "Pen-test window witness prep — report ingest scaffolding",
-      "workClass": "ops-docs",
-      "lane": "secas",
-      "because": "SECAS-S2 in_progress; window 2026-06-17..21"
+      "storyId": "SECAS-S4-04",
+      "title": "Pen-test findings remediation track + re-test witness",
+      "workClass": "code",
+      "authorityClass": "R",
+      "lane": "p22-head"
     }
   ],
   "workSetCounts": {
-    "implement": 0,
+    "implement": 1,
     "plan": 0,
-    "witness": 1,
-    "human": 1
+    "witness": 0,
+    "human": 0
   },
   "sources": [
     "audit/product-management/execution-roadmap.md",
@@ -72,6 +63,6 @@
   "agentInstructions": [
     "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
     "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
-    "WITNESS mode — human gates only."
+    "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle."
   ]
 }

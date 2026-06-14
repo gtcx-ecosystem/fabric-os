@@ -117,8 +117,8 @@ pnpm secas:cards:check:write
 
 **UAT / QA**
 
-- [ ] Cards indexed in docs/operations/secas/cards/README.md
-- [ ] secas:cards:check includes new card paths
+- [x] Cards indexed in docs/operations/secas/cards/README.md
+- [x] secas:cards:check includes new card paths
 
 **Blockers:** none
 

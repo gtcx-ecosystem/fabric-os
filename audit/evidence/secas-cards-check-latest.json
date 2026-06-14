@@ -1,8 +1,8 @@
 {
   "schema": "gtcx://fabric-os/secas-cards-check/v1",
   "protocol": "P42-SECURITY-AS-A-SERVICE",
-  "sprint": "SECAS-S3",
-  "checkedAt": "2026-06-14T10:50:01.377Z",
+  "sprint": "SECAS-S4",
+  "checkedAt": "2026-06-14T17:23:23.817Z",
   "owner": "fabric-os",
   "gates": {
     "index": {
@@ -20,6 +20,18 @@
       "gtcx-intelligence": {
         "ok": true,
         "path": "docs/operations/secas/cards/gtcx-intelligence.md"
+      },
+      "terminal-os": {
+        "ok": true,
+        "path": "docs/operations/secas/cards/terminal-os.md"
+      },
+      "fabric-os": {
+        "ok": true,
+        "path": "docs/operations/secas/cards/fabric-os.md"
+      },
+      "bridge-os": {
+        "ok": true,
+        "path": "docs/operations/secas/cards/bridge-os.md"
       }
     },
     "s3FrictionCards": {

@@ -83,7 +83,8 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 | SECAS-S2-01               | Pen-test ingest scaffolding (internal prep)                             | P0  | done    | ops-docs |
 | SECAS-S4-02               | Fleet supply-chain security gates                                       | P0  | done    | code     |
 | SECAS-S4-03               | Standing vulnerability management cadence                               | P1  | done    | code     |
-| SECAS-S4-05               | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2  | pending | code     |
+| SECAS-S4-05               | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2  | done    | code     |
+| SECAS-S5-01               | Unified fleet risk + active threat registers                            | P0  | pending | external |
 | XR-FABRIC-SPRINT-AUTH-001 | Sprint authority L2 read contract witness                               | P1  | done    | ops-docs |
 
 ## Implementation classes

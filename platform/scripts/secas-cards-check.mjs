@@ -16,7 +16,14 @@ const OUT = join(ROOT, 'audit/evidence/secas-cards-check-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
 
-const REQUIRED = ['compliance-os', 'markets-os', 'gtcx-intelligence'];
+const REQUIRED = [
+  'compliance-os',
+  'markets-os',
+  'gtcx-intelligence',
+  'terminal-os',
+  'fabric-os',
+  'bridge-os',
+];
 const gates = { index: { ok: existsSync(INDEX) }, cards: {} };
 
 for (const repo of REQUIRED) {
@@ -45,7 +52,7 @@ const ok = gates.index.ok && cardOk && gates.s3FrictionCards.ok;
 const witness = {
   schema: 'gtcx://fabric-os/secas-cards-check/v1',
   protocol: 'P42-SECURITY-AS-A-SERVICE',
-  sprint: 'SECAS-S3',
+  sprint: 'SECAS-S4',
   checkedAt: new Date().toISOString(),
   owner: 'fabric-os',
   gates,

@@ -141,7 +141,7 @@ function roadmapPriority(id) {
 
 function parseRoadmapStories(md, source = 'execution-roadmap') {
   const stories = new Map();
-  const rowRe = /^\| \*{0,2}((?:SECAS-|DAAS-)?S\d+(?:-\d+)?)\*{0,2} \|(.+)$/gm;
+  const rowRe = /^\| \*{0,2}((?:SECAS-|DAAS-)?S\d+-\d+|S\d+-\d+)\*{0,2} \|(.+)$/gm;
   let match;
   while ((match = rowRe.exec(md)) !== null) {
     const [, id, rowTail] = match;

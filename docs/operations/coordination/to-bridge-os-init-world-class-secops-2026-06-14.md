@@ -19,12 +19,12 @@ taskId: T46
 
 fabric-os requests **bridge-os program office** to own intake, ZenHub planning, and fleet reconcile for **INIT-WORLD-CLASS-SECOPS** (`T46`).
 
-| Field | Value |
-| ----- | ----- |
-| Task | `bridge-os/pm/_tasks` → `T46` |
-| Intake witness | `bridge-os/pm/ci/work-intake-latest.json` |
-| Execution owner | **fabric-os** (SECaaS / SecOps engineering) |
-| P22 head (unchanged) | `SECAS-S2-01` witness · `blocksIR: false` |
+| Field                | Value                                       |
+| -------------------- | ------------------------------------------- |
+| Task                 | `bridge-os/pm/_tasks` → `T46`               |
+| Intake witness       | `bridge-os/pm/ci/work-intake-latest.json`   |
+| Execution owner      | **fabric-os** (SECaaS / SecOps engineering) |
+| P22 head (unchanged) | `SECAS-S2-01` witness · `blocksIR: false`   |
 
 ## Gap program (7 items — reconcile 2026-06-14)
 

@@ -2,6 +2,7 @@
 title: 'Outbound — Session open-items forensic raise (fabric-os → bridge-os)'
 status: open
 date: 2026-06-14
+owner: fabric-os
 from: fabric-os
 to: bridge-os
 ticket: XR-FABRIC-SESSION-OPEN-004

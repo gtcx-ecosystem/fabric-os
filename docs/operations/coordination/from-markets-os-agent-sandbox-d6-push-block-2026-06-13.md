@@ -2,6 +2,7 @@
 title: 'URGENT inbound — markets-os agent D6 git push blocked'
 status: open
 date: 2026-06-13
+owner: fabric-os
 from: markets-os
 to: fabric-os
 ticket: XR-MKT-AGENT-D6-001

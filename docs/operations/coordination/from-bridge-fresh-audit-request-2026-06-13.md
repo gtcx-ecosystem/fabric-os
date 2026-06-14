@@ -2,6 +2,7 @@
 title: 'ACK — Fresh audit cycle (XR-BRIDGE-FRESH-AUDIT-001)'
 status: current
 date: 2026-06-13
+owner: fabric-os
 from: bridge-os
 to: fabric-os
 ticket: XR-BRIDGE-FRESH-AUDIT-001
@@ -14,11 +15,11 @@ protocol: P24
 
 ## Evidence received
 
-| Artifact | Result |
-| -------- | ------ |
+| Artifact            | Result                                                     |
+| ------------------- | ---------------------------------------------------------- |
 | Five-core composite | **100/100** · `audit/evidence/composite-audit-latest.json` |
-| Fabric assurance | **PASS** · `audit/evidence/fabric-assurance-latest.json` |
-| `ops:check` | exit **0** |
+| Fabric assurance    | **PASS** · `audit/evidence/fabric-assurance-latest.json`   |
+| `ops:check`         | exit **0**                                                 |
 
 ## Owner actions
 

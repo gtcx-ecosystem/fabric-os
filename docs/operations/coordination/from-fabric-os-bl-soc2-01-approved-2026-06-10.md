@@ -11,7 +11,7 @@ tags: ['coordination', 'bl-soc2-01', 'soc2', 'assurance']
 # BL-SOC2-01 — SOC 2 Type I auditor sovereign approval
 
 **Work ID:** BL-SOC2-01 / INT-S12-03 / BG-10-11  
-**Evidence:** [`audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json`](../../../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json)
+**Evidence:** [`audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json`](../../../audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json)
 
 ## Summary
 
@@ -27,8 +27,8 @@ Sovereign operator approved **SOC 2 Type I auditor engagement** on 2026-06-10. R
 
 ## Remaining (procurement execution)
 
-| Step                    | Owner               | Status                                                                                                                                                                    |
-| ----------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Auditor MSA/SOW         | CISO + Finance      | **approved** 2026-06-10 — [MSA witness](../../../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json) |
-| Type I fieldwork window | fabric-os + auditor | after MSA signing                                                                                                                                                         |
-| Attestation publish     | fabric-os           | after auditor report                                                                                                                                                      |
+| Step                    | Owner               | Status                                                                                                             |
+| ----------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Auditor MSA/SOW         | CISO + Finance      | **approved** 2026-06-10 — [MSA witness](../../../audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json) |
+| Type I fieldwork window | fabric-os + auditor | after MSA signing                                                                                                  |
+| Attestation publish     | fabric-os           | after auditor report                                                                                               |

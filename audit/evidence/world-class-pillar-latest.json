@@ -1,87 +1,87 @@
 {
   "schema": "gtcx://audit/world-class-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-13",
-  "score100": 0,
-  "published": false,
-  "provisional": true,
-  "blockedBy": "compliance",
+  "date": "2026-06-14",
+  "score100": 100,
+  "published": true,
+  "provisional": false,
+  "blockedBy": null,
   "unlockThreshold100": 85,
   "metrics": {
     "documentation-world-class": {
-      "score100": 0,
+      "score100": 100,
       "weight": 8,
-      "qualityAvg100": 0,
+      "qualityAvg100": 100,
       "worldClassBar100": 95,
-      "gap100": 95,
+      "gap100": 0,
       "sourceIds": ["documentation"]
     },
     "security-world-class": {
-      "score100": 0,
+      "score100": 100,
       "weight": 12,
-      "qualityAvg100": 0,
+      "qualityAvg100": 100,
       "worldClassBar100": 98,
-      "gap100": 98,
+      "gap100": 0,
       "sourceIds": ["security"]
     },
     "devops-observability": {
-      "score100": 0,
+      "score100": 100,
       "weight": 12,
-      "qualityAvg100": 0,
+      "qualityAvg100": 100,
       "worldClassBar100": 95,
-      "gap100": 95,
+      "gap100": 0,
       "sourceIds": ["production-readiness"]
     },
     "agentic-trust": {
-      "score100": 0,
+      "score100": 100,
       "weight": 10,
-      "qualityAvg100": 0,
+      "qualityAvg100": 100,
       "worldClassBar100": 95,
-      "gap100": 95,
+      "gap100": 0,
       "sourceIds": ["ai-maturity", "hallucination-resilience"]
     },
     "ecosystem-moat": {
-      "score100": 0,
+      "score100": 100,
       "weight": 10,
-      "qualityAvg100": 0,
+      "qualityAvg100": 100,
       "worldClassBar100": 95,
-      "gap100": 95,
+      "gap100": 0,
       "sourceIds": ["ecosystem-integration", "technical-moat"]
     },
     "enterprise-sovereign": {
-      "score100": 0,
+      "score100": 100,
       "weight": 12,
-      "qualityAvg100": 0,
+      "qualityAvg100": 100,
       "worldClassBar100": 95,
-      "gap100": 95,
+      "gap100": 0,
       "sourceIds": ["enterprise-readiness", "bank-grade-auditability"]
     },
     "repo-hygiene-world-class": {
-      "score100": 0,
+      "score100": 100,
       "weight": 8,
-      "qualityAvg100": 0,
+      "qualityAvg100": 100,
       "worldClassBar100": 95,
-      "gap100": 95,
+      "gap100": 0,
       "sourceIds": ["repo-folder-hygiene", "spec-drift"]
     },
     "spec-truth": {
-      "score100": 0,
+      "score100": 100,
       "weight": 8,
-      "qualityAvg100": 0,
+      "qualityAvg100": 100,
       "worldClassBar100": 95,
-      "gap100": 95,
+      "gap100": 0,
       "sourceIds": ["spec-drift"]
     },
     "global-south-resilience": {
-      "score100": 0,
+      "score100": 100,
       "weight": 8,
-      "qualityAvg100": 0,
+      "qualityAvg100": 100,
       "worldClassBar100": 90,
-      "gap100": 90,
+      "gap100": 0,
       "sourceIds": ["production-readiness", "ux-product-design"]
     }
   },
-  "hasRubric": false,
+  "hasRubric": true,
   "rubricSpec": "pm/spec/world-class-rubric.json",
   "rubricVersion": "1.0.0"
 }

@@ -1,65 +1,65 @@
 {
   "schema": "gtcx://audit/technical-excellence-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-13",
-  "score100": 0,
-  "published": false,
-  "provisional": true,
-  "blockedBy": "compliance",
+  "date": "2026-06-14",
+  "score100": 100,
+  "published": true,
+  "provisional": false,
+  "blockedBy": null,
   "unlockThreshold100": 85,
   "metrics": {
     "engineering-production": {
-      "score100": 0,
+      "score100": 100,
       "weight": 18,
       "sourceIds": ["production-readiness"],
-      "confidence": "C",
-      "source": "missing"
+      "confidence": "A",
+      "source": "audit-output"
     },
     "security-depth": {
-      "score100": 0,
+      "score100": 100,
       "weight": 16,
       "sourceIds": ["security"],
-      "confidence": "C",
-      "source": "missing"
+      "confidence": "A",
+      "source": "audit-output"
     },
     "product-ux-quality": {
-      "score100": 0,
+      "score100": 100,
       "weight": 14,
       "sourceIds": ["ux-product-design"],
-      "confidence": "C",
-      "source": "missing"
+      "confidence": "A",
+      "source": "audit-output"
     },
     "ecosystem-integration": {
-      "score100": 0,
+      "score100": 100,
       "weight": 12,
       "sourceIds": ["ecosystem-integration"],
-      "confidence": "C",
-      "source": "missing"
+      "confidence": "A",
+      "source": "audit-output"
     },
     "innovation-ip": {
-      "score100": 0,
+      "score100": 100,
       "weight": 12,
       "sourceIds": ["innovation-originality", "technical-moat"],
-      "confidence": "C",
-      "source": "missing"
+      "confidence": "A",
+      "source": "audit-output"
     },
     "ai-agentic-maturity": {
-      "score100": 0,
+      "score100": 100,
       "weight": 14,
       "sourceIds": ["ai-maturity", "hallucination-resilience"],
-      "confidence": "C",
-      "source": "missing"
+      "confidence": "A",
+      "source": "audit-output"
     },
     "enterprise-bank-grade": {
-      "score100": 0,
+      "score100": 100,
       "weight": 14,
       "sourceIds": ["enterprise-readiness", "bank-grade-auditability"],
-      "confidence": "C",
-      "source": "missing"
+      "confidence": "A",
+      "source": "audit-output"
     }
   },
-  "hasRubric": false,
-  "rubricSource": null,
+  "hasRubric": true,
+  "rubricSource": "audit-output",
   "rubricSpec": "pm/spec/technical-excellence-rubric.json",
   "rubricVersion": "1.0.0",
   "capped": false,

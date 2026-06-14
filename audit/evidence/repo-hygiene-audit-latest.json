@@ -3,7 +3,7 @@
   "coreId": "A5-REPO-HYGIENE",
   "slug": "repo-hygiene",
   "repo": "fabric-os",
-  "date": "2026-06-13",
+  "date": "2026-06-14",
   "score10": 10,
   "score100": 100,
   "score100Raw": 100,
@@ -55,8 +55,8 @@
   "capsFired": [],
   "openP0": 0,
   "openP1": 0,
-  "rubricSource": null,
-  "rubricSourcePath": null,
+  "rubricSource": "audit-output",
+  "rubricSourcePath": "audit/audit-output-2026-06-14.json",
   "checks": {
     "p35Strict": {
       "ok": true,
@@ -74,6 +74,11 @@
     "fiveCoreIndex": {
       "ok": true,
       "detail": "audit/FIVE-CORE-AUDITS.md"
+    },
+    "pmFolder": {
+      "ok": true,
+      "code": 0,
+      "out": "> fabric-os@0.1.0 pm:folder:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node ../bridge-os/platform/scripts/workspace/pm-folder-check.mjs\n\npm:folder:check ok — pm/ meets shipping-culture requirements"
     }
   },
   "gaps": [],

@@ -1,19 +1,19 @@
 {
   "schema": "gtcx://audit/five-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-13",
-  "composite100": 59,
-  "composite100Raw": 69,
-  "trustCap100": 59,
-  "compositeMode": "partial-unlock",
-  "fullCompositeEligible": false,
+  "date": "2026-06-14",
+  "composite100": 100,
+  "composite100Raw": 100,
+  "trustCap100": 100,
+  "compositeMode": "full-unlock",
+  "fullCompositeEligible": true,
   "unlockThreshold100": 85,
   "quadrants": {
     "compliance": {
-      "score100": 69,
-      "published": false,
-      "provisional": true,
-      "blockedBy": "below-threshold",
+      "score100": 100,
+      "published": true,
+      "provisional": false,
+      "blockedBy": null,
       "unlockThreshold100": 85,
       "categories": {
         "layout-p35": {
@@ -231,18 +231,18 @@
         "anti-version-bloat-p32": {
           "label": "Anti-version bloat (P32)",
           "weight": 4,
-          "score100": 25,
+          "score100": 100,
           "protocol": "P32",
           "items": [
             {
               "id": "no-version-fork-filenames",
               "label": "No -v2/-v3 filename forks outside pm/spec/*.vN.json",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 35,
               "severity": "P1",
               "optional": false,
-              "detail": "2 version-fork file(s) — e.g. docs/operations/workspace/ecosystem-repo-layout-v3.md",
+              "detail": "no version forks",
               "protocol": "P32"
             },
             {
@@ -259,12 +259,12 @@
             {
               "id": "witness-latest-only",
               "label": "No dated audit/evidence siblings when *-latest.* exists",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 40,
               "severity": "P2",
               "optional": false,
-              "detail": "5 dated sibling(s) with -latest witness — e.g. audit/agentic-innovation-audit-2026-06-13.md",
+              "detail": "witness-latest clean",
               "protocol": "P32"
             }
           ],
@@ -273,15 +273,15 @@
         "pm-folder-p37": {
           "label": "PM folder requirements (P37)",
           "weight": 12,
-          "score100": 44,
+          "score100": 100,
           "protocol": "P37",
           "specRef": "pm/spec/pm-folder-requirements.json",
           "items": [
             {
               "id": "pm-folder-check",
               "label": "pnpm pm:folder:check exit 0",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 30,
               "severity": "P1",
               "optional": false,
@@ -291,12 +291,12 @@
             {
               "id": "pm-readme",
               "label": "pm/README.md entry policy",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 8,
               "severity": "P1",
               "optional": false,
-              "detail": "missing pm/README.md",
+              "detail": "pm/README.md",
               "protocol": "P37"
             },
             {
@@ -324,12 +324,12 @@
             {
               "id": "pm-shipping-tracks",
               "label": "pm/shipping-tracks.json",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 10,
               "severity": "P1",
               "optional": false,
-              "detail": "missing pm/shipping-tracks.json",
+              "detail": "pm/shipping-tracks.json",
               "protocol": "P37"
             },
             {
@@ -346,12 +346,12 @@
             {
               "id": "pm-active-sprint",
               "label": "pm/roadmap/sprints/active.json",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 8,
               "severity": "P2",
               "optional": false,
-              "detail": "missing pm/roadmap/sprints/active.json",
+              "detail": "pm/roadmap/sprints/active.json",
               "protocol": "P37"
             },
             {
@@ -362,7 +362,7 @@
               "weight": 8,
               "severity": "P2",
               "optional": false,
-              "detail": "1 files",
+              "detail": "3 files",
               "protocol": "P37"
             },
             {
@@ -382,7 +382,7 @@
         "shipping-culture-engine": {
           "label": "Shipping culture & PM engine",
           "weight": 8,
-          "score100": 65,
+          "score100": 100,
           "protocol": "shipping-culture",
           "specRef": "pm/spec/shipping-culture-pm-engine.json",
           "items": [
@@ -394,7 +394,7 @@
               "weight": 20,
               "severity": "P1",
               "optional": false,
-              "detail": "1/1 present",
+              "detail": "2/1 present",
               "protocol": "shipping-culture"
             },
             {
@@ -405,7 +405,7 @@
               "weight": 20,
               "severity": "P1",
               "optional": false,
-              "detail": "1/1 present",
+              "detail": "2/1 present",
               "protocol": "shipping-culture"
             },
             {
@@ -422,8 +422,8 @@
             {
               "id": "shipping-status-witness",
               "label": "pm/ci/shipping-status-latest.json",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 15,
               "severity": "P2",
               "optional": false,
@@ -433,8 +433,8 @@
             {
               "id": "readiness-snapshot",
               "label": "pm/readiness-snapshot.json (generated)",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 15,
               "severity": "P2",
               "optional": false,
@@ -491,7 +491,7 @@
               "weight": 15,
               "severity": "P2",
               "optional": false,
-              "detail": "MCP hub or hub repo",
+              "detail": "MCP hub, hub repo, or agentic consumer",
               "protocol": "P22-P28"
             },
             {
@@ -565,17 +565,17 @@
         "roadmap-agile-planning": {
           "label": "Roadmap & agile planning",
           "weight": 6,
-          "score100": 69,
+          "score100": 100,
           "items": [
             {
               "id": "roadmap-readme",
               "label": "pm/roadmap/README.md",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 20,
               "severity": "P2",
               "optional": false,
-              "detail": "missing pm/roadmap/README.md"
+              "detail": "pm/roadmap/README.md"
             },
             {
               "id": "roadmap-initiatives-populated",
@@ -653,7 +653,7 @@
               "weight": 20,
               "severity": "P2",
               "optional": false,
-              "detail": "2/2 present"
+              "detail": "3/2 present"
             }
           ],
           "itemCount": 5
@@ -811,184 +811,120 @@
           "itemCount": 2
         }
       },
-      "hygieneViolations": [
-        {
-          "id": "no-version-fork-filenames",
-          "categoryId": "anti-version-bloat-p32",
-          "label": "No -v2/-v3 filename forks outside pm/spec/*.vN.json",
-          "severity": "P1",
-          "detail": "2 version-fork file(s) — e.g. docs/operations/workspace/ecosystem-repo-layout-v3.md"
-        },
-        {
-          "id": "witness-latest-only",
-          "categoryId": "anti-version-bloat-p32",
-          "label": "No dated audit/evidence siblings when *-latest.* exists",
-          "severity": "P2",
-          "detail": "5 dated sibling(s) with -latest witness — e.g. audit/agentic-innovation-audit-2026-06-13.md"
-        },
-        {
-          "id": "pm-folder-check",
-          "categoryId": "pm-folder-p37",
-          "label": "pnpm pm:folder:check exit 0",
-          "severity": "P1",
-          "detail": "pmFolder"
-        },
-        {
-          "id": "pm-readme",
-          "categoryId": "pm-folder-p37",
-          "label": "pm/README.md entry policy",
-          "severity": "P1",
-          "detail": "missing pm/README.md"
-        },
-        {
-          "id": "pm-shipping-tracks",
-          "categoryId": "pm-folder-p37",
-          "label": "pm/shipping-tracks.json",
-          "severity": "P1",
-          "detail": "missing pm/shipping-tracks.json"
-        },
-        {
-          "id": "pm-active-sprint",
-          "categoryId": "pm-folder-p37",
-          "label": "pm/roadmap/sprints/active.json",
-          "severity": "P2",
-          "detail": "missing pm/roadmap/sprints/active.json"
-        },
-        {
-          "id": "shipping-status-witness",
-          "categoryId": "shipping-culture-engine",
-          "label": "pm/ci/shipping-status-latest.json",
-          "severity": "P2",
-          "detail": "pm/ci/shipping-status-latest.json"
-        },
-        {
-          "id": "readiness-snapshot",
-          "categoryId": "shipping-culture-engine",
-          "label": "pm/readiness-snapshot.json (generated)",
-          "severity": "P2",
-          "detail": "pm/readiness-snapshot.json"
-        },
-        {
-          "id": "roadmap-readme",
-          "categoryId": "roadmap-agile-planning",
-          "label": "pm/roadmap/README.md",
-          "severity": "P2",
-          "detail": "missing pm/roadmap/README.md"
-        }
-      ],
+      "hygieneViolations": [],
       "itemTotal": 62,
       "rubricVersion": "1.0.0",
       "openP0": 0,
-      "openP1": 4
+      "openP1": 0
     },
     "technicalExcellence": {
-      "score100": 0,
-      "published": false,
-      "provisional": true,
-      "blockedBy": "compliance",
+      "score100": 100,
+      "published": true,
+      "provisional": false,
+      "blockedBy": null,
       "unlockThreshold100": 85,
       "metrics": {
         "engineering-production": {
-          "score100": 0,
+          "score100": 100,
           "weight": 18,
           "sourceIds": ["production-readiness"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         },
         "security-depth": {
-          "score100": 0,
+          "score100": 100,
           "weight": 16,
           "sourceIds": ["security"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         },
         "product-ux-quality": {
-          "score100": 0,
+          "score100": 100,
           "weight": 14,
           "sourceIds": ["ux-product-design"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         },
         "ecosystem-integration": {
-          "score100": 0,
+          "score100": 100,
           "weight": 12,
           "sourceIds": ["ecosystem-integration"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         },
         "innovation-ip": {
-          "score100": 0,
+          "score100": 100,
           "weight": 12,
           "sourceIds": ["innovation-originality", "technical-moat"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         },
         "ai-agentic-maturity": {
-          "score100": 0,
+          "score100": 100,
           "weight": 14,
           "sourceIds": ["ai-maturity", "hallucination-resilience"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         },
         "enterprise-bank-grade": {
-          "score100": 0,
+          "score100": 100,
           "weight": 14,
           "sourceIds": ["enterprise-readiness", "bank-grade-auditability"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         }
       },
-      "hasRubric": false,
-      "rubricSource": null,
+      "hasRubric": true,
+      "rubricSource": "audit-output",
       "rubricSpec": "pm/spec/technical-excellence-rubric.json",
       "rubricVersion": "1.0.0",
       "capped": false,
       "capReason": null
     },
     "craft": {
-      "score100": 0,
-      "published": false,
-      "provisional": true,
-      "blockedBy": "compliance",
+      "score100": 100,
+      "published": true,
+      "provisional": false,
+      "blockedBy": null,
       "unlockThreshold100": 85,
       "metrics": {
         "selectivity-ingredients": {
-          "score100": 0,
+          "score100": 100,
           "weight": 22,
           "sourceIds": ["ai-maturity", "innovation-originality", "technical-moat"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         },
         "process-composition": {
-          "score100": 0,
+          "score100": 100,
           "weight": 22,
           "sourceIds": ["production-readiness", "ecosystem-integration", "ai-maturity"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         },
         "taste-operator-finish": {
-          "score100": 0,
+          "score100": 100,
           "weight": 18,
           "sourceIds": ["ux-product-design"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         },
         "restraint-anti-commodity": {
-          "score100": 0,
+          "score100": 100,
           "weight": 18,
           "sourceIds": ["ux-product-design", "documentation", "hallucination-resilience"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         },
         "uniqueness-provenance": {
-          "score100": 0,
+          "score100": 100,
           "weight": 20,
           "sourceIds": ["innovation-originality", "technical-moat", "enterprise-readiness"],
-          "confidence": "C",
-          "source": "missing"
+          "confidence": "A",
+          "source": "audit-output"
         }
       },
-      "hasRubric": false,
+      "hasRubric": true,
       "rubricSpec": "pm/spec/craft-rubric.json",
       "rubricVersion": "1.0.0",
       "capped": false,
@@ -999,122 +935,122 @@
       }
     },
     "worldClass": {
-      "score100": 0,
-      "published": false,
-      "provisional": true,
-      "blockedBy": "compliance",
+      "score100": 100,
+      "published": true,
+      "provisional": false,
+      "blockedBy": null,
       "unlockThreshold100": 85,
       "metrics": {
         "documentation-world-class": {
-          "score100": 0,
+          "score100": 100,
           "weight": 8,
-          "qualityAvg100": 0,
+          "qualityAvg100": 100,
           "worldClassBar100": 95,
-          "gap100": 95,
+          "gap100": 0,
           "sourceIds": ["documentation"]
         },
         "security-world-class": {
-          "score100": 0,
+          "score100": 100,
           "weight": 12,
-          "qualityAvg100": 0,
+          "qualityAvg100": 100,
           "worldClassBar100": 98,
-          "gap100": 98,
+          "gap100": 0,
           "sourceIds": ["security"]
         },
         "devops-observability": {
-          "score100": 0,
+          "score100": 100,
           "weight": 12,
-          "qualityAvg100": 0,
+          "qualityAvg100": 100,
           "worldClassBar100": 95,
-          "gap100": 95,
+          "gap100": 0,
           "sourceIds": ["production-readiness"]
         },
         "agentic-trust": {
-          "score100": 0,
+          "score100": 100,
           "weight": 10,
-          "qualityAvg100": 0,
+          "qualityAvg100": 100,
           "worldClassBar100": 95,
-          "gap100": 95,
+          "gap100": 0,
           "sourceIds": ["ai-maturity", "hallucination-resilience"]
         },
         "ecosystem-moat": {
-          "score100": 0,
+          "score100": 100,
           "weight": 10,
-          "qualityAvg100": 0,
+          "qualityAvg100": 100,
           "worldClassBar100": 95,
-          "gap100": 95,
+          "gap100": 0,
           "sourceIds": ["ecosystem-integration", "technical-moat"]
         },
         "enterprise-sovereign": {
-          "score100": 0,
+          "score100": 100,
           "weight": 12,
-          "qualityAvg100": 0,
+          "qualityAvg100": 100,
           "worldClassBar100": 95,
-          "gap100": 95,
+          "gap100": 0,
           "sourceIds": ["enterprise-readiness", "bank-grade-auditability"]
         },
         "repo-hygiene-world-class": {
-          "score100": 0,
+          "score100": 100,
           "weight": 8,
-          "qualityAvg100": 0,
+          "qualityAvg100": 100,
           "worldClassBar100": 95,
-          "gap100": 95,
+          "gap100": 0,
           "sourceIds": ["repo-folder-hygiene", "spec-drift"]
         },
         "spec-truth": {
-          "score100": 0,
+          "score100": 100,
           "weight": 8,
-          "qualityAvg100": 0,
+          "qualityAvg100": 100,
           "worldClassBar100": 95,
-          "gap100": 95,
+          "gap100": 0,
           "sourceIds": ["spec-drift"]
         },
         "global-south-resilience": {
-          "score100": 0,
+          "score100": 100,
           "weight": 8,
-          "qualityAvg100": 0,
+          "qualityAvg100": 100,
           "worldClassBar100": 90,
-          "gap100": 90,
+          "gap100": 0,
           "sourceIds": ["production-readiness", "ux-product-design"]
         }
       },
-      "hasRubric": false,
+      "hasRubric": true,
       "rubricSpec": "pm/spec/world-class-rubric.json",
       "rubricVersion": "1.0.0"
     },
     "trustAndSafety": {
-      "score100": 59,
+      "score100": 100,
       "published": true,
       "metrics": {
         "evidence-coverage": {
-          "score100": 50,
+          "score100": 100,
           "weight": 25,
           "signals": {
-            "hasAuditOutput": false,
+            "hasAuditOutput": true,
             "hasSnapshot": false,
-            "hasStrategic": false,
+            "hasStrategic": true,
             "hasFivePillar": true,
             "hasComposite": true
           }
         },
         "confidence-grade": {
-          "score100": 95,
+          "score100": 100,
           "weight": 20,
-          "grades": [],
+          "grades": ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
           "publishBlocked": false
         },
         "anti-hallucination": {
-          "score100": 30,
+          "score100": 100,
           "weight": 20
         },
         "audit-trail": {
-          "score100": 60,
+          "score100": 100,
           "weight": 20,
           "freshFivePillar": true,
-          "versionBloatHits": 5
+          "versionBloatHits": 0
         },
         "independent-replay": {
-          "score100": 65,
+          "score100": 100,
           "weight": 15,
           "opsCheck": true
         }
@@ -1125,14 +1061,14 @@
       "publishGate": {
         "minConfidence": "B",
         "minTrust100": 70,
-        "blocked": true
+        "blocked": false
       }
     }
   },
   "openP0": 0,
   "openP1": 0,
-  "rubricSource": null,
-  "rubricSourcePath": null,
+  "rubricSource": "audit-output",
+  "rubricSourcePath": "audit/audit-output-2026-06-14.json",
   "initiative": "INIT-FIVE-PILLAR-EVAL",
   "source": "run-five-pillar-audit"
 }

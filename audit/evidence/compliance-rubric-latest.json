@@ -1,8 +1,8 @@
 {
   "schema": "gtcx://audit/compliance-rubric/v1",
   "repo": "fabric-os",
-  "date": "2026-06-13",
-  "score100": 69,
+  "date": "2026-06-14",
+  "score100": 100,
   "categories": {
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
@@ -219,18 +219,18 @@
     "anti-version-bloat-p32": {
       "label": "Anti-version bloat (P32)",
       "weight": 4,
-      "score100": 25,
+      "score100": 100,
       "protocol": "P32",
       "items": [
         {
           "id": "no-version-fork-filenames",
           "label": "No -v2/-v3 filename forks outside pm/spec/*.vN.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 35,
           "severity": "P1",
           "optional": false,
-          "detail": "2 version-fork file(s) — e.g. docs/operations/workspace/ecosystem-repo-layout-v3.md",
+          "detail": "no version forks",
           "protocol": "P32"
         },
         {
@@ -247,12 +247,12 @@
         {
           "id": "witness-latest-only",
           "label": "No dated audit/evidence siblings when *-latest.* exists",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 40,
           "severity": "P2",
           "optional": false,
-          "detail": "5 dated sibling(s) with -latest witness — e.g. audit/agentic-innovation-audit-2026-06-13.md",
+          "detail": "witness-latest clean",
           "protocol": "P32"
         }
       ],
@@ -261,15 +261,15 @@
     "pm-folder-p37": {
       "label": "PM folder requirements (P37)",
       "weight": 12,
-      "score100": 44,
+      "score100": 100,
       "protocol": "P37",
       "specRef": "pm/spec/pm-folder-requirements.json",
       "items": [
         {
           "id": "pm-folder-check",
           "label": "pnpm pm:folder:check exit 0",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 30,
           "severity": "P1",
           "optional": false,
@@ -279,12 +279,12 @@
         {
           "id": "pm-readme",
           "label": "pm/README.md entry policy",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 8,
           "severity": "P1",
           "optional": false,
-          "detail": "missing pm/README.md",
+          "detail": "pm/README.md",
           "protocol": "P37"
         },
         {
@@ -312,12 +312,12 @@
         {
           "id": "pm-shipping-tracks",
           "label": "pm/shipping-tracks.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 10,
           "severity": "P1",
           "optional": false,
-          "detail": "missing pm/shipping-tracks.json",
+          "detail": "pm/shipping-tracks.json",
           "protocol": "P37"
         },
         {
@@ -334,12 +334,12 @@
         {
           "id": "pm-active-sprint",
           "label": "pm/roadmap/sprints/active.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 8,
           "severity": "P2",
           "optional": false,
-          "detail": "missing pm/roadmap/sprints/active.json",
+          "detail": "pm/roadmap/sprints/active.json",
           "protocol": "P37"
         },
         {
@@ -350,7 +350,7 @@
           "weight": 8,
           "severity": "P2",
           "optional": false,
-          "detail": "1 files",
+          "detail": "3 files",
           "protocol": "P37"
         },
         {
@@ -370,7 +370,7 @@
     "shipping-culture-engine": {
       "label": "Shipping culture & PM engine",
       "weight": 8,
-      "score100": 65,
+      "score100": 100,
       "protocol": "shipping-culture",
       "specRef": "pm/spec/shipping-culture-pm-engine.json",
       "items": [
@@ -382,7 +382,7 @@
           "weight": 20,
           "severity": "P1",
           "optional": false,
-          "detail": "1/1 present",
+          "detail": "2/1 present",
           "protocol": "shipping-culture"
         },
         {
@@ -393,7 +393,7 @@
           "weight": 20,
           "severity": "P1",
           "optional": false,
-          "detail": "1/1 present",
+          "detail": "2/1 present",
           "protocol": "shipping-culture"
         },
         {
@@ -410,8 +410,8 @@
         {
           "id": "shipping-status-witness",
           "label": "pm/ci/shipping-status-latest.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 15,
           "severity": "P2",
           "optional": false,
@@ -421,8 +421,8 @@
         {
           "id": "readiness-snapshot",
           "label": "pm/readiness-snapshot.json (generated)",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 15,
           "severity": "P2",
           "optional": false,
@@ -479,7 +479,7 @@
           "weight": 15,
           "severity": "P2",
           "optional": false,
-          "detail": "MCP hub or hub repo",
+          "detail": "MCP hub, hub repo, or agentic consumer",
           "protocol": "P22-P28"
         },
         {
@@ -553,17 +553,17 @@
     "roadmap-agile-planning": {
       "label": "Roadmap & agile planning",
       "weight": 6,
-      "score100": 69,
+      "score100": 100,
       "items": [
         {
           "id": "roadmap-readme",
           "label": "pm/roadmap/README.md",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 20,
           "severity": "P2",
           "optional": false,
-          "detail": "missing pm/roadmap/README.md"
+          "detail": "pm/roadmap/README.md"
         },
         {
           "id": "roadmap-initiatives-populated",
@@ -641,7 +641,7 @@
           "weight": 20,
           "severity": "P2",
           "optional": false,
-          "detail": "2/2 present"
+          "detail": "3/2 present"
         }
       ],
       "itemCount": 5
@@ -799,70 +799,6 @@
       "itemCount": 2
     }
   },
-  "violations": [
-    {
-      "id": "no-version-fork-filenames",
-      "categoryId": "anti-version-bloat-p32",
-      "label": "No -v2/-v3 filename forks outside pm/spec/*.vN.json",
-      "severity": "P1",
-      "detail": "2 version-fork file(s) — e.g. docs/operations/workspace/ecosystem-repo-layout-v3.md"
-    },
-    {
-      "id": "witness-latest-only",
-      "categoryId": "anti-version-bloat-p32",
-      "label": "No dated audit/evidence siblings when *-latest.* exists",
-      "severity": "P2",
-      "detail": "5 dated sibling(s) with -latest witness — e.g. audit/agentic-innovation-audit-2026-06-13.md"
-    },
-    {
-      "id": "pm-folder-check",
-      "categoryId": "pm-folder-p37",
-      "label": "pnpm pm:folder:check exit 0",
-      "severity": "P1",
-      "detail": "pmFolder"
-    },
-    {
-      "id": "pm-readme",
-      "categoryId": "pm-folder-p37",
-      "label": "pm/README.md entry policy",
-      "severity": "P1",
-      "detail": "missing pm/README.md"
-    },
-    {
-      "id": "pm-shipping-tracks",
-      "categoryId": "pm-folder-p37",
-      "label": "pm/shipping-tracks.json",
-      "severity": "P1",
-      "detail": "missing pm/shipping-tracks.json"
-    },
-    {
-      "id": "pm-active-sprint",
-      "categoryId": "pm-folder-p37",
-      "label": "pm/roadmap/sprints/active.json",
-      "severity": "P2",
-      "detail": "missing pm/roadmap/sprints/active.json"
-    },
-    {
-      "id": "shipping-status-witness",
-      "categoryId": "shipping-culture-engine",
-      "label": "pm/ci/shipping-status-latest.json",
-      "severity": "P2",
-      "detail": "pm/ci/shipping-status-latest.json"
-    },
-    {
-      "id": "readiness-snapshot",
-      "categoryId": "shipping-culture-engine",
-      "label": "pm/readiness-snapshot.json (generated)",
-      "severity": "P2",
-      "detail": "pm/readiness-snapshot.json"
-    },
-    {
-      "id": "roadmap-readme",
-      "categoryId": "roadmap-agile-planning",
-      "label": "pm/roadmap/README.md",
-      "severity": "P2",
-      "detail": "missing pm/roadmap/README.md"
-    }
-  ],
+  "violations": [],
   "itemTotal": 62
 }

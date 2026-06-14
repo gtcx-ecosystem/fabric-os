@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/stratops-strategy-check/v1",
   "opsLane": "StratOps",
-  "checkedAt": "2026-06-14T10:31:26.922Z",
+  "checkedAt": "2026-06-14T10:39:57.694Z",
   "owner": "bridge-os",
   "registerHost": "bridge-os",
   "gates": {
@@ -53,9 +53,14 @@
       "ok": true,
       "mapped": 7,
       "total": 7
+    },
+    "strategicPillars": {
+      "ok": true,
+      "present": ["growth", "scale", "economiesOfScale", "sustainability", "moats"],
+      "required": ["growth", "scale", "economiesOfScale", "sustainability", "moats"]
     }
   },
   "openFrictionP0": 0,
-  "openFrictionTotal": 2,
+  "openFrictionTotal": 4,
   "ok": true
 }

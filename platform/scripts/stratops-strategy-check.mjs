@@ -73,6 +73,21 @@ gates.programmeLaneMap = {
   total: programmeLaneMap.length,
 };
 
+const pillars = strategyReg?.strategicPillars ?? {};
+const requiredPillars = strategyReg?.strategicFocus?.pillars ?? [
+  'growth',
+  'scale',
+  'economiesOfScale',
+  'sustainability',
+  'moats',
+];
+const pillarKeys = requiredPillars.filter((k) => Boolean(pillars[k]));
+gates.strategicPillars = {
+  ok: pillarKeys.length === requiredPillars.length,
+  present: pillarKeys,
+  required: requiredPillars,
+};
+
 const structuralOk = Object.values(gates).every((g) => g.ok);
 
 const witness = {

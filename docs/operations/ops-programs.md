@@ -15,24 +15,24 @@ Product engineering stays in **owner repos**. Specialist **Ops lanes** run in pa
 
 ## Ops lane registry
 
-| Ops lane          | What it owns                                                                    | Execution owner                         | Functional product (ID)    | Protocol    | Operator entry                                            |
-| ----------------- | ------------------------------------------------------------------------------- | --------------------------------------- | -------------------------- | ----------- | --------------------------------------------------------- |
-| **InfraOps**      | Cloud substrate — Terraform, EKS, VPC, IAM, WAF, secrets SM, cost               | fabric-os                               | DaaS (substrate)           | P41         | `pnpm daas:friction:check` · `deploy/terraform/`          |
-| **DevOps**        | Deploy choreography — handoffs, smoke, fleet health, env warm/cold              | fabric-os                               | DaaS (delivery)            | P41 · P40   | [devops-as-a-service.md](./devops-as-a-service.md)        |
-| **SecOps**        | Stack security — WAF apply, IRSA, pen-test window, CSIRT, vuln cadence          | fabric-os                               | **SECaaS**                 | P42         | [security-as-a-service.md](./security-as-a-service.md)    |
-| **MLOps**         | Model lifecycle — training, serving, eval, cost-router ML bridge                | gtcx-intelligence (+ fabric GCP bridge) | _(product program)_        | —           | gtcx-intelligence `09-security/` + fabric `gcp-ml-bridge` |
-| **AIOps**         | AI runtime assurance — anomaly detection, injection red-team, agent tool guard  | fabric-os + intelligence                | _(harness)_                | —           | `anomaly-detector` · eval-pipeline injection suite        |
-| **ComplianceOps** | Regulatory evidence, reference-grade lifts, risk/compliance registers           | compliance-os                           | INT-REF                    | —           | compliance-os `pnpm agent:next-work`                      |
-| **LegalOps**      | Class S sovereign gates — SOW, DTF, EXT-INF, human signatures                   | agile-os · register canon-os            | Legal program              | —           | `ecosystem:legal-program:check`                           |
-| **FleetOps**      | Intake, witness rollup, ZenHub, coordination                                    | bridge-os                               | —                          | P22 harness | `pnpm ecosystem:secas:rollup:write`                       |
-| **StratOps**      | Vision, partnerships, company roadmap, enterprise-building, fleet north star    | bridge-os (+ canon institutional)       | **StratAAS**               | GOAL        | [stratops-as-a-service.md](./stratops-as-a-service.md)    |
-| **ProductOps**    | PRD SoR, product-goals, milestone DoD, shippable ≠ roadmap-complete             | bridge-os                               | _(protocol)_               | PDC         | `pnpm ecosystem:product-culture:check`                    |
-| **DesignOps**     | UX SoR, EXR packs, journey spine, design system, pm/ux traceability             | bridge-os (+ ledger-ui design SoR)      | **UXaaS**                  | P21         | `pnpm ecosystem:ux-sor:check:fleet`                       |
-| **HROps**         | Workforce — persona roster, voice embodiment, squad utilization, hiring backlog | bridge-os (+ agile-os human ceremony)   | **TeamaaS**                | PTM-R6      | `pnpm ecosystem:product-team-honest-done:check`           |
-| **RevOps**        | CRO office — pricing, unit economics, revenue analytics, GTM revenue motion     | bridge-os (+ fabric register host)      | **GTMaaS** _(+ economics)_ | P44         | [revops-as-a-service.md](./revops-as-a-service.md)        |
-| **PayOps**        | Payment _execution_ — billing rails, Stripe/webhooks, checkout, payouts         | fabric-os substrate + product repos     | **PayOps**                 | —           | [payops-as-a-service.md](./payops-as-a-service.md)        |
-| **CommOps**       | Email, SMS, push providers, deliverability _(planned)_                          | fabric-os                               | _(planned)_                | —           | [core.md](./core.md#commops-planned)                      |
-| **FinOps**        | Cloud + token + SaaS spend attribution                                          | fabric-os                               | _(extends InfraOps)_       | —           | `baseline cost-stats`                                     |
+| Ops lane          | What it owns                                                                      | Execution owner                         | Functional product (ID)    | Protocol    | Operator entry                                            |
+| ----------------- | --------------------------------------------------------------------------------- | --------------------------------------- | -------------------------- | ----------- | --------------------------------------------------------- |
+| **InfraOps**      | Cloud substrate — Terraform, EKS, VPC, IAM, WAF, secrets SM, cost                 | fabric-os                               | DaaS (substrate)           | P41         | `pnpm daas:friction:check` · `deploy/terraform/`          |
+| **DevOps**        | Deploy choreography — handoffs, smoke, fleet health, env warm/cold                | fabric-os                               | DaaS (delivery)            | P41 · P40   | [devops-as-a-service.md](./devops-as-a-service.md)        |
+| **SecOps**        | Stack security — WAF apply, IRSA, pen-test window, CSIRT, vuln cadence            | fabric-os                               | **SECaaS**                 | P42         | [security-as-a-service.md](./security-as-a-service.md)    |
+| **MLOps**         | Model lifecycle — training, serving, eval, cost-router ML bridge                  | gtcx-intelligence (+ fabric GCP bridge) | _(product program)_        | —           | gtcx-intelligence `09-security/` + fabric `gcp-ml-bridge` |
+| **AIOps**         | AI runtime assurance — anomaly detection, injection red-team, agent tool guard    | fabric-os + intelligence                | _(harness)_                | —           | `anomaly-detector` · eval-pipeline injection suite        |
+| **ComplianceOps** | Regulatory evidence, reference-grade lifts, risk/compliance registers             | compliance-os                           | INT-REF                    | —           | compliance-os `pnpm agent:next-work`                      |
+| **LegalOps**      | Class S sovereign gates — SOW, DTF, EXT-INF, human signatures                     | agile-os · register canon-os            | Legal program              | —           | `ecosystem:legal-program:check`                           |
+| **FleetOps**      | Intake, witness rollup, ZenHub, coordination                                      | bridge-os                               | —                          | P22 harness | `pnpm ecosystem:secas:rollup:write`                       |
+| **StratOps**      | Vision, growth, scale, moats, partnerships, fleet north star, enterprise-building | bridge-os (+ canon institutional)       | **StratAAS**               | GOAL        | [stratops-as-a-service.md](./stratops-as-a-service.md)    |
+| **ProductOps**    | PRD SoR, product-goals, milestone DoD, shippable ≠ roadmap-complete               | bridge-os                               | _(protocol)_               | PDC         | `pnpm ecosystem:product-culture:check`                    |
+| **DesignOps**     | UX SoR, EXR packs, journey spine, design system, pm/ux traceability               | bridge-os (+ ledger-ui design SoR)      | **UXaaS**                  | P21         | `pnpm ecosystem:ux-sor:check:fleet`                       |
+| **HROps**         | Workforce — persona roster, voice embodiment, squad utilization, hiring backlog   | bridge-os (+ agile-os human ceremony)   | **TeamaaS**                | PTM-R6      | `pnpm ecosystem:product-team-honest-done:check`           |
+| **RevOps**        | CRO office — pricing, unit economics, revenue analytics, GTM revenue motion       | bridge-os (+ fabric register host)      | **GTMaaS** _(+ economics)_ | P44         | [revops-as-a-service.md](./revops-as-a-service.md)        |
+| **PayOps**        | Payment _execution_ — billing rails, Stripe/webhooks, checkout, payouts           | fabric-os substrate + product repos     | **PayOps**                 | —           | [payops-as-a-service.md](./payops-as-a-service.md)        |
+| **CommOps**       | Email, SMS, push providers, deliverability _(planned)_                            | fabric-os                               | _(planned)_                | —           | [core.md](./core.md#commops-planned)                      |
+| **FinOps**        | Cloud + token + SaaS spend attribution                                            | fabric-os                               | _(extends InfraOps)_       | —           | `baseline cost-stats`                                     |
 
 Machine registry: `bridge-os/pm/spec/ops-programs-registry.json`
 
@@ -40,18 +40,18 @@ Machine registry: `bridge-os/pm/spec/ops-programs-registry.json`
 
 ## Four-plane model (Ops naming)
 
-| Plane       | Ops name                      | Owner                             | Product repo                                        |
-| ----------- | ----------------------------- | --------------------------------- | --------------------------------------------------- |
-| Engineering | **Product engineering**       | Product repo                      | Features, app security, app threat models           |
-| Delivery    | **DevOps** + **InfraOps**     | fabric-os                         | Handoff only — no `kubectl apply` in product PM     |
-| Security    | **SecOps**                    | fabric-os                         | Stack security handoff + evidence                   |
-| Normative   | Assurance / **ComplianceOps** | canon · protocols · compliance-os | Witness parallel — never blocks IR                  |
-| Strategy    | **StratOps**                  | bridge-os · canon-os              | Fleet north star + programmes (`blocksIR: false`)   |
-| Product     | **ProductOps**                | bridge-os                         | PRD + milestone trace parallel (`blocksIR: false`)  |
-| Experience  | **DesignOps**                 | bridge-os · ledger-ui             | UX SoR parallel — not feature UI implementation     |
-| Workforce   | **HROps**                     | bridge-os · agile-os              | Persona roster + utilization (`blocksIR: false`)    |
-| Revenue     | **RevOps** (CRO)              | bridge-os · fabric-os             | Pricing, economics, GTM revenue — not payment rails |
-| Revenue     | **PayOps** (execution)        | fabric-os substrate + product     | Billing, checkout, payouts, webhooks                |
+| Plane       | Ops name                      | Owner                             | Product repo                                         |
+| ----------- | ----------------------------- | --------------------------------- | ---------------------------------------------------- |
+| Engineering | **Product engineering**       | Product repo                      | Features, app security, app threat models            |
+| Delivery    | **DevOps** + **InfraOps**     | fabric-os                         | Handoff only — no `kubectl apply` in product PM      |
+| Security    | **SecOps**                    | fabric-os                         | Stack security handoff + evidence                    |
+| Normative   | Assurance / **ComplianceOps** | canon · protocols · compliance-os | Witness parallel — never blocks IR                   |
+| Strategy    | **StratOps**                  | bridge-os · canon-os              | Growth, scale, moats, north star (`blocksIR: false`) |
+| Product     | **ProductOps**                | bridge-os                         | PRD + milestone trace parallel (`blocksIR: false`)   |
+| Experience  | **DesignOps**                 | bridge-os · ledger-ui             | UX SoR parallel — not feature UI implementation      |
+| Workforce   | **HROps**                     | bridge-os · agile-os              | Persona roster + utilization (`blocksIR: false`)     |
+| Revenue     | **RevOps** (CRO)              | bridge-os · fabric-os             | Pricing, economics, GTM revenue — not payment rails  |
+| Revenue     | **PayOps** (execution)        | fabric-os substrate + product     | Billing, checkout, payouts, webhooks                 |
 
 ## RevOps vs PayOps (strategy vs execution)
 
@@ -69,12 +69,12 @@ Forensic SoR (PayOps execution inventory): [ecosystem-revops-commops-forensic-20
 
 ## StratOps vs ProductOps vs FleetOps vs RevOps
 
-|                 | **StratOps**                                               | **ProductOps**                         | **FleetOps**                  | **RevOps**                      |
-| --------------- | ---------------------------------------------------------- | -------------------------------------- | ----------------------------- | ------------------------------- |
-| **Horizon**     | Years → quarters (fleet north star)                        | Quarters → sprints (repo milestone)    | Now (next story)              | Quarters (revenue economics)    |
-| **Owns**        | Vision, partnerships, company roadmap, enterprise-building | Per-repo PRD, product-goals, shippable | P22, intake, witness rollups  | Pricing, GTM revenue, economics |
-| **Examples**    | `ecosystem-fleet-goals-registry`, `fleet-live-programmes`  | `prd-index`, `product-goals.json`      | `pnpm agent:next-work`        | `gtm-friction-register`         |
-| **Coordinates** | Product team via programmes + goal orientation             | Implements fleet programme heads       | Executes selected engineering | Revenue motion within strategy  |
+|                 | **StratOps**                                                                | **ProductOps**                         | **FleetOps**                  | **RevOps**                        |
+| --------------- | --------------------------------------------------------------------------- | -------------------------------------- | ----------------------------- | --------------------------------- |
+| **Horizon**     | Years → quarters (growth, scale, moats)                                     | Quarters → sprints (repo milestone)    | Now (next story)              | Quarters (tactical CRO economics) |
+| **Owns**        | Growth, economies of scale, sustainability, moats, partnerships, north star | Per-repo PRD, product-goals, shippable | P22, intake, witness rollups  | Pricing, unit econ, GTM revenue   |
+| **Examples**    | `ecosystem-fleet-goals-registry`, `fleet-live-programmes`                   | `prd-index`, `product-goals.json`      | `pnpm agent:next-work`        | `gtm-friction-register`           |
+| **Coordinates** | Product team via programmes + goal orientation                              | Implements fleet programme heads       | Executes selected engineering | Revenue motion within strategy    |
 
 ## HROps vs FleetOps vs ProductOps
 
@@ -152,7 +152,7 @@ Spec: `bridge-os/pm/spec/engineering-lane-abstraction-protocol.json`
 - Product P22 **Next work item** = engineering only.
 - SecOps gates → **Parallel sovereign gates** / **Parallel assurance lane** — fabric-os owner.
 - LegalOps → **Parallel sovereign gates** — agile-os / canon.
-- StratOps → **Parallel strategy lane** — fleet north star, programmes, goal orientation (`blocksIR: false`).
+- StratOps → **Parallel strategy lane** — growth, scale, moats, north star, programmes (`blocksIR: false`).
 - ProductOps → **Parallel product lane** — bridge-os product-culture protocol (`blocksIR: false`).
 - DesignOps → **Parallel experience lane** — bridge-os UX SoR + ledger-ui design canon (`blocksIR: false`).
 - HROps → **Parallel workforce lane** — bridge-os persona roster + agile-os squad ceremony (`blocksIR: false`).

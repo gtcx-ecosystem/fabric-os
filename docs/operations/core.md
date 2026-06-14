@@ -149,15 +149,15 @@ flowchart LR
 
 ### StratOps
 
-| Dimension             | Specification                                                                                                                  |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **Runtime**           | Fleet north star, live programmes, goal orientation, enterprise pilot DoD, trade-domain vision, partnership coalition witness  |
-| **Agentic team**      | `product-strategist` (lead) · `protocol-engineer` (programmes) · canon institutional baseline (read-only SoR)                  |
-| **Intelligence loop** | Clarity gap → programme recalibration → fleet goals hygiene → pilot readiness witness → progress rollup                        |
-| **Innovation moat**   | **Strategy once** — company roadmap and partnerships defined fleet-wide; product teams execute programmes, not reinvent vision |
-| **Trust fortress**    | Goal orientation required in P22; `ROADMAP-COMPLETE` never substitutes for north-star trace; Class S partnerships human-only   |
-| **Magic**             | One clarity headline — north star, active programme, milestone trace — before engineering starts                               |
-| **Business outcomes** | GR-T2 integrator pilot coherence; enterprise/government pilot readiness; honest long-horizon milestone semantics               |
+| Dimension             | Specification                                                                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Runtime**           | Growth thesis, scale model, economies-of-scale narrative, sustainability bar, moat registry, fleet north star, programmes, goal orientation |
+| **Agentic team**      | `product-strategist` (lead) · `protocol-engineer` (programmes) · canon institutional baseline (read-only SoR)                               |
+| **Intelligence loop** | Clarity gap → pillar recalibration → programme/moat hygiene → pilot readiness witness → progress rollup                                     |
+| **Innovation moat**   | **Strategy once** — growth/scale/moat story fleet-wide; CORE lanes prove execution; competitors copy repos not the witness graph            |
+| **Trust fortress**    | Goal orientation required in P22; sustainable growth ≠ roadmap-complete theater; Class S partnerships human-only                            |
+| **Magic**             | One strategic headline — growth vector, scale lever, active moat, programme trace — before engineering starts                               |
+| **Business outcomes** | GR-T2 → sovereign scale path; economies of scale visible; defensible continental trade stack; durable enterprise pilot readiness            |
 
 **Functional product:** **StratAAS** — `bridge-os/pm/spec/stratops-strategy-registry.json` · [stratops-as-a-service.md](./stratops-as-a-service.md)
 

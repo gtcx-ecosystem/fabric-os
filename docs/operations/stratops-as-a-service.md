@@ -9,44 +9,68 @@ initiative: INIT-GTCX-EXECUTION-ENGINE
 # StratOps — strategy and enterprise-building
 
 > **Ops lane:** **StratOps** · **Functional product:** **StratAAS** (strategy-as-a-service)  
-> **Coordinates with:** ProductOps (per-repo PRD/milestones), FleetOps (P22 execution), RevOps (CRO economics)
+> **Coordinates with:** ProductOps (per-repo PRD/milestones), FleetOps (P22 execution), RevOps (tactical CRO economics)
 
 **Strategy registry SoR:** `bridge-os/pm/spec/stratops-strategy-registry.json`  
 **Friction SoR:** `bridge-os/pm/spec/stratops-friction-register.json`
 
+## Strategic focus
+
+StratOps owns **where the company compounds** — not how a single repo ships next week.
+
+| Pillar                 | Question                                                | StratOps owns                                                                                 | RevOps / ProductOps own                             |
+| ---------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| **Growth**             | How do pilots become production and distribution scale? | GR-T2 → sovereign trajectory, partnership-led expansion, pilot conversion semantics           | Tier pricing, checkout, monthly revenue rollup      |
+| **Scale**              | How do we add lanes/repos without linear ops cost?      | CORE + service-fabric thesis, fleet programme capacity, agentic throughput at ecosystem scope | Per-repo sprint execution, deploy apply             |
+| **Economies of scale** | Where does marginal cost fall as the fleet grows?       | Shared substrate leverage (DaaS, SECaaS, PayOps, StratAAS), unified economics _frame_         | AWS line items, Stripe wiring, CAC/LTV spreadsheets |
+| **Sustainability**     | Can we grow without burning trust or margin?            | Trust-speed duality, bank-grade brand durability, institutional evidence (not chat memory)    | —                                                   |
+| **Moats**              | What is defensible for years?                           | Company moat registry, continental stack narrative, CORE innovation moat rollup               | Single-feature UX, one-repo security patch          |
+
+Machine registry: `strategicPillars` in `stratops-strategy-registry.json`.
+
 ## Owns
 
-- Company and fleet **north star** — vision, GR-T2 integrator pilot, continental capital narrative
-- **Company / product roadmap** at fleet level — live programmes, execution-engine graph, trade-domain lanes
-- **Partnerships** — coalition structure, enterprise/government pilot readiness, institutional intelligence
-- **Enterprise-building** — pilot DoD template, milestone semantics, long-horizon goals and definitions of done
-- **Goal orientation** — every session traces work to north star, milestone, or programme head
+- **Growth** — fleet north star, integrator pilot → production path, partnership coalition
+- **Scale** — company/product roadmap at fleet level, live programmes, execution-engine graph
+- **Economies of scale** — why shared CORE beats per-repo ops; marginal cost story for investors and product leads
+- **Sustainability** — durable operating model (business + institutional), enterprise pilot DoD, goal orientation
+- **Moats** — defensibility narrative wired to CORE `innovationMoat` pillars
+- **Partnerships** — enterprise/government pilot readiness, institutional intelligence consumption
+- **Enterprise-building** — milestone semantics, long-horizon goals and definitions of done
 
 ## Does not own
 
 - Per-repo PRD index and `product-goals.json` → **ProductOps**
 - P22 next-story selection and witness rollups → **FleetOps**
-- Pricing, unit economics, GTM revenue motion → **RevOps**
+- Pricing tactics, unit economics models, GTM revenue motion → **RevOps** (inside StratOps frame)
 - Payment checkout and provider keys → **PayOps**
+- Lane-level CORE execution → **InfraOps / DevOps / SecOps** (StratOps sets why; CORE runs how)
 - Institutional persona canon text → **canon-os** (StratOps consumes, does not author constitution)
 
-## StratOps vs ProductOps vs FleetOps vs RevOps
+## StratOps vs RevOps (strategy vs CRO)
 
-|                  | **StratOps**                                              | **ProductOps**                         | **FleetOps**           | **RevOps**                       |
-| ---------------- | --------------------------------------------------------- | -------------------------------------- | ---------------------- | -------------------------------- |
-| **Horizon**      | Years → quarters (fleet north star)                       | Quarters → sprints (repo milestone)    | Now (next story)       | Quarters (revenue economics)     |
-| **Question**     | _Where are we going and with whom?_                       | _What are we building this milestone?_ | _What runs next?_      | _How do we make money?_          |
-| **Examples**     | `ecosystem-fleet-goals-registry`, `fleet-live-programmes` | `prd-index`, `product-goals`           | `pnpm agent:next-work` | `gtm-friction-register`, pricing |
-| **Partnerships** | Coalition, enterprise pilot, government rail              | Pilot feature scope in PRD             | Intake tickets only    | LOI/DTF revenue witnesses        |
+|               | **StratOps**                                                        | **RevOps**                                                          |
+| ------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| **Horizon**   | Years → quarters                                                    | Quarters → months                                                   |
+| **Economics** | Economies of scale, margin _thesis_, sustainable growth             | Unit economics, pricing, revenue analytics, pilot revenue witnesses |
+| **Moats**     | Company-level defensibility registry                                | Proof-first GTM revenue motion (GTMaaS)                             |
+| **Example**   | "Shared PayOps substrate lowers marginal cost per new SaaS product" | "Terminal tier-2 price point and time-to-first-dollar"              |
+
+## StratOps vs ProductOps vs FleetOps
+
+|                 | **StratOps**                                 | **ProductOps**                         | **FleetOps**      |
+| --------------- | -------------------------------------------- | -------------------------------------- | ----------------- |
+| **Question**    | _Where are we going and how do we compound?_ | _What are we building this milestone?_ | _What runs next?_ |
+| **Growth link** | Programme heads, north star, moat story      | PRD + shippable DoD                    | P22 selection     |
 
 ## Operator entry
 
 ```bash
-# From bridge-os (canonical clarity report)
+# Fleet clarity — north star + programmes + pillar trace
 pnpm ecosystem:clarity:report:write
 
-# From fabric-os (structural StratOps gate)
+# Structural StratOps gate (pillars + programme map)
 pnpm stratops:strategy:check:write
 ```
 
-**CORE module:** [core.md](./core.md#stratops)
+**CORE module:** [core.md](./core.md#stratops) · **Innovation moat rollup:** [core.md](./core.md#innovation-moat)

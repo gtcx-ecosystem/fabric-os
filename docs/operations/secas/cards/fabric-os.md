@@ -26,5 +26,5 @@ Infra control drift or CI gate failure → `ops/coordination/outbound/to-gtcx-ag
 ## Re-probe
 
 ```bash
-node platform/tools/platform/scripts/validate-all.mjs
+node platform/tools/scripts/validate-all.mjs
 ```

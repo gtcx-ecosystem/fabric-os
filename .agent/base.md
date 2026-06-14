@@ -23,7 +23,7 @@
 pnpm install
 
 # Run all validation gates (17 gates: coverage, static, security, build)
-node platform/tools/platform/scripts/validate-all.mjs
+node platform/tools/scripts/validate-all.mjs
 
 # Run tests for a specific tool
 node --test platform/tools/<tool>/tests/**/*.test.mjs

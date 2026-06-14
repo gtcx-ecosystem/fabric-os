@@ -59,7 +59,7 @@ Kimi Code CLI provides these tools for GTCX Infrastructure development:
 pnpm install
 
 # Run all validation gates (17 gates: coverage, static, security, build)
-node platform/tools/platform/scripts/validate-all.mjs
+node platform/tools/scripts/validate-all.mjs
 
 # Run tests for a specific tool
 node --test platform/tools/<tool>/tests/**/*.test.mjs
@@ -115,7 +115,7 @@ Command: **`execute-roadmap`** (not `roadmap`).
 
 1. Read `../gtcx-docs/03-platform/tools/roadmap/roadmap-framework/AGENT-START.md`
 2. Read `commands/execute-roadmap.md` and `prompts/roadmap/roadmap-reconcile-execute-prompt.md`
-3. In fabric-os, update `audit/product-management/execution-roadmap.md` (or `audit/product-management/secas-execution-roadmap.md` for SecOps); execute until active phase done
+3. Update the canonical execution roadmap for the repo (in fabric-os: `audit/product-management/execution-roadmap.md` or `audit/product-management/secas-execution-roadmap.md`); execute until active phase done
 4. Quick: `prompts/shareable/execute-roadmap-prompt-RUN.md`
 
 Provider-agnostic — Claude, Codex, Gemini, Kimi, Cursor, etc.

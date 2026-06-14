@@ -438,7 +438,49 @@
       "to": "audit/archive/2026-06-14/audit/evidence/session-open-items-reconcile-2026-06-13.json",
       "reason": "superseded-by-newer-dated-sibling",
       "at": "2026-06-14T13:25:13.333Z"
+    },
+    {
+      "from": "audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json",
+      "to": "audit/archive/2026-06-14/audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-14T15:47:10.578Z"
+    },
+    {
+      "from": "audit/evidence/ext-inf-002-sow-approval-2026-06-10.json",
+      "to": "audit/archive/2026-06-14/audit/evidence/ext-inf-002-sow-approval-2026-06-10.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-14T15:47:10.578Z"
+    },
+    {
+      "from": "audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json",
+      "to": "audit/archive/2026-06-14/audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-14T18:00:43.123Z"
+    },
+    {
+      "from": "audit/evidence/ext-inf-002-sow-approval-2026-06-10.json",
+      "to": "audit/archive/2026-06-14/audit/evidence/ext-inf-002-sow-approval-2026-06-10.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-14T18:00:43.123Z"
+    },
+    {
+      "from": "audit/evidence/golden-transaction-protocol-native-2026-06-12.json",
+      "to": "audit/archive/2026-06-14/audit/evidence/golden-transaction-protocol-native-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-14T18:00:43.123Z"
+    },
+    {
+      "from": "audit/evidence/pen-test-window-2026-06-10.json",
+      "to": "audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-14T18:00:43.123Z"
+    },
+    {
+      "from": "audit/evidence/waf-terraform-apply-2026-06-13.json",
+      "to": "audit/archive/2026-06-14/audit/evidence/waf-terraform-apply-2026-06-13.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-14T18:00:43.123Z"
     }
   ],
-  "updated": "2026-06-14T13:25:13.333Z"
+  "updated": "2026-06-14T18:00:43.123Z"
 }

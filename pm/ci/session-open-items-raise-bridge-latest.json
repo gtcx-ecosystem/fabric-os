@@ -1,68 +1,57 @@
 {
   "schema": "gtcx://fabric-os/session-open-items-raise-bridge/v1",
-  "at": "2026-06-13T14:00:00.000Z",
+  "at": "2026-06-14T17:19:50.000Z",
   "from": "fabric-os",
   "to": "bridge-os",
   "protocol": "P24",
-  "ticket": "XR-FABRIC-SESSION-OPEN-003",
-  "priorTicket": "XR-BRIDGE-SESSION-OPEN-001",
+  "ticket": "XR-FABRIC-SESSION-OPEN-004",
+  "priorTicket": "XR-FABRIC-SESSION-OPEN-003",
   "initiative": "INIT-SESSION-OPEN-ITEMS",
-  "implementStoryId": "SECAS-S2-01",
+  "implementStoryId": "SECAS-S4-05",
   "witness": "pm/ci/session-open-items-latest.json",
-  "outbound": "docs/operations/coordination/to-bridge-os-session-open-items-forensic-2026-06-13.md",
-  "forensicSummary": "docs/operations/coordination/session-forensic-fabric-os-session-open-items-2026-06-13.md",
-  "transcriptExcerpts": "docs/operations/coordination/session-transcript-excerpts-session-open-items-2026-06-13.md",
-  "reconcileWitness": "audit/evidence/session-open-items-reconcile-2026-06-13.json",
-  "inboundAck": "bridge-os/docs/operations/coordination/from-fabric-os-session-open-items-forensic-2026-06-13.md",
-  "machineHandoff": "bridge-os/pm/spec/session-open-items-handoff-fabric-2026-06-13.json",
+  "outbound": "docs/operations/coordination/to-bridge-os-session-open-items-forensic-2026-06-14.md",
+  "forensicSummary": "docs/operations/coordination/session-forensic-fabric-os-session-open-items-2026-06-14.md",
+  "inboundAck": "bridge-os/docs/operations/coordination/from-fabric-os-session-open-items-forensic-2026-06-14.md",
+  "machineHandoff": "bridge-os/pm/spec/session-open-items-handoff-fabric-2026-06-14.json",
   "p22": {
     "head": {
-      "id": "SECAS-S2-01",
+      "id": "SECAS-S4-05",
       "owner": "fabric-os",
-      "phase": "awaiting_vendor_report"
-    },
-    "initiative": "INIT-GTCX-INFRA-SECAS",
-    "unchangedThisSession": true
+      "status": "pending"
+    }
   },
   "git": {
-    "head": "2dd44f0",
+    "dirtyCount": 34,
     "settlementPending": true
   },
   "bridgeClosureBar": {
     "requiredPass": 2,
     "requiredTotal": 5,
     "sessionComplete": false,
-    "failing": ["zenhub-sor", "git-settlement", "initiative-closure-witness"],
+    "failing": ["program-office-ops", "git-settlement", "initiative-closure-witness"],
     "witness": "bridge-os/pm/ci/session-closure-bar-latest.json"
   },
   "transcript": {
-    "id": "35ccef1b-c866-463c-9b4e-0d81b44b01ad",
-    "pointer": "agent-transcript:35ccef1b",
-    "workspace": "Users-amanianai",
-    "userTurns": 5,
-    "path": "/Users/amanianai/.cursor/projects/Users-amanianai/agent-transcripts/35ccef1b-c866-463c-9b4e-0d81b44b01ad/35ccef1b-c866-463c-9b4e-0d81b44b01ad.jsonl",
-    "lineCount": 37,
-    "inGit": "excerpts-only"
-  },
-  "sessionArcs": [
-    "session-open-items-probe",
-    "closure-bar-diagnosis",
-    "p24-bridge-raise",
-    "transcript-completeness",
-    "forensic-standard-agile-template"
-  ],
-  "shippedCommits": {
-    "fabric-os": ["48da1f4", "2dd44f0"],
-    "bridge-os": ["7c85516", "9dc170d"]
+    "fabric": {
+      "id": "d0bfedab-a143-456d-9740-14ab22cf4b49",
+      "workspace": "Sites-gtcx-ecosystem-fabric-os",
+      "userTurns": 14,
+      "lineCount": 255,
+      "attached": true
+    },
+    "bridge": {
+      "id": "bdc86706-b58e-46a6-8083-28218bd2966f",
+      "workspace": "Sites-gtcx-ecosystem-bridge-os",
+      "userTurns": 8,
+      "lineCount": 103,
+      "attached": true
+    }
   },
   "actionableForBridge": [
-    "T48 intake — XR-FABRIC-SESSION-OPEN-003",
-    "INIT-EXECUTIVE-GAP-PROGRAM closureBar.ok witness reconcile",
-    "zenhub-sor hub plan issue gate fix",
-    "bridge-os git settlement + session:open-items green"
-  ],
-  "programmeDesign": [
-    "BL-TRANSCRIPT-PORT — home workspace transcript attach",
-    "BL-FORENSIC-STANDARD — agile-os forensic template for all bridge raises"
+    "ops:harness — ecosystem:documentation-archival:check:fleet",
+    "ops:harness — ecosystem:secas:witness:rollup:check",
+    "INIT-EXECUTIVE-GAP-PROGRAM closureBar.ok reconcile",
+    "bridge-os git settlement",
+    "T48 / XR-FABRIC-SESSION-OPEN-004 intake closure"
   ]
 }

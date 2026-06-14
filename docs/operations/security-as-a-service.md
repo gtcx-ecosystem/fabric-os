@@ -1,13 +1,18 @@
 ---
-title: Security-as-a-Service (SECaaS)
+title: SecOps (SECaaS functional product)
 status: current
-date: 2026-06-10
+date: 2026-06-14
 owner: fabric-os
 protocol: P42-SECURITY-AS-A-SERVICE
 initiative: INIT-GTCX-INFRA-SECAS
+opsLane: SecOps
 ---
 
-# Security-as-a-Service — gtcx-infrastructure co-primary program
+# SecOps — fabric-os stack security program
+
+> **Ops vocabulary:** **SecOps** — WAF, IRSA, pen-test, CSIRT, vuln cadence, security evidence.  
+> **Functional product ID:** **SECaaS** — stable in protocols, `pnpm secas:*`, and `SECAS-S*` stories.  
+> **Registry:** [ops-programs.md](./ops-programs.md) · `bridge-os/pm/spec/ops-programs-registry.json`
 
 **Normative:** `canon-os/.../42-security-as-a-service/protocol.md`  
 **Machine spec:** `bridge-os/pm/spec/security-as-a-service.json`  
@@ -20,7 +25,7 @@ initiative: INIT-GTCX-INFRA-SECAS
 
 ## Obligation
 
-Stack security operations (WAF, IRSA, network policy, pen-test **execution**, security evidence) are a **separate concern** from product engineering — parallel to **DaaS** (P41) and **assurance normative** (protocols/core).
+**SecOps** stack security (WAF, IRSA, network policy, pen-test **execution**, CSIRT, vuln cadence, security evidence) is a **separate concern** from product engineering — parallel to **DevOps/InfraOps** (DaaS, P41) and **ComplianceOps** / assurance normative (protocols/core).
 
 Product PM does **not** own pen-test scheduling, WAF apply, or sovereign SOW signature.
 
@@ -50,14 +55,14 @@ Witness: `audit/evidence/ext-inf-002-sow-approval-2026-06-10.json`
 2. Stack security handoff → `to-fabric-os-{topic}-YYYY-MM-DD.md`
 3. Re-probe when `from-fabric-os-*` security seal **delivered**
 
-## Four-plane model
+## Four-plane model (Ops naming)
 
-| Plane           | Owner                      | Product engineering                                   |
-| --------------- | -------------------------- | ----------------------------------------------------- |
-| **Engineering** | Product repo               | Features, tests, app security controls                |
-| **DaaS**        | gtcx-infrastructure        | Deploy handoff only (P41)                             |
-| **SECaaS**      | **gtcx-infrastructure**    | Stack security handoff — WAF, IRSA, pen-test window   |
-| **Assurance**   | gtcx-core + gtcx-protocols | Normative only — witness parallel (`blocksIR: false`) |
+| Plane           | Ops lane            | Owner                      | Product engineering                                   |
+| --------------- | ------------------- | -------------------------- | ----------------------------------------------------- |
+| **Engineering** | Product engineering | Product repo               | Features, tests, app security controls                |
+| **Delivery**    | DevOps              | fabric-os                  | Deploy handoff only (P41)                             |
+| **Security**    | **SecOps**          | **fabric-os**              | Stack security handoff — WAF, IRSA, pen-test window   |
+| **Assurance**   | ComplianceOps       | gtcx-core + gtcx-protocols | Normative only — witness parallel (`blocksIR: false`) |
 
 ## Infra interface
 
@@ -67,17 +72,17 @@ Witness: `audit/evidence/ext-inf-002-sow-approval-2026-06-10.json`
 4. Seal with `from-fabric-os-*` + `audit/evidence/secas-*-latest.json`
 
 ```bash
-pnpm agent:next-work              # P22 — infra programs (DaaS + SECaaS)
-pnpm generate:secas-roadmap       # refresh SECaaS execution roadmap
+pnpm agent:next-work              # P22 — infra programs (DevOps + SecOps)
+pnpm generate:secas-roadmap       # refresh SecOps execution roadmap
 pnpm secas:friction:check
 pnpm secas:approval:check
 pnpm secas:cards:check
 pnpm secas:pentest:ingest:check:write   # SECAS-S2-01 — pre-window PASS; complete when report ingested
 ```
 
-## SECAS-S4 — security engineering program (queued)
+## SECAS-S4 — SecOps engineering program (queued)
 
-After pen-test ingest (`SECAS-S2-01`), the standing **security engineering** wave covers CSIRT, supply chain, vuln cadence, and remediation — parallel to compliance-os **INT-REF** lifts.
+After pen-test ingest (`SECAS-S2-01`), the standing **SecOps engineering** wave covers CSIRT, supply chain, vuln cadence, and remediation — parallel to **ComplianceOps** INT-REF lifts.
 
 | Doc                | Path                                                             |
 | ------------------ | ---------------------------------------------------------------- |

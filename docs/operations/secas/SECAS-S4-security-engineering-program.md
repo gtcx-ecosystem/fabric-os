@@ -1,20 +1,22 @@
 ---
-title: SECAS-S4 — Security engineering operating program
+title: SECAS-S4 — SecOps engineering operating program
 status: current
 date: 2026-06-14
 owner: fabric-os
 initiative: INIT-GTCX-INFRA-SECAS
 protocol: P42-SECURITY-AS-A-SERVICE
+opsLane: SecOps
 dependsOn: SECAS-S2-01
 ---
 
-# SECAS-S4 — World-class security engineering (beyond pen-test)
+# SECAS-S4 — World-class SecOps engineering (beyond pen-test)
 
-> **Position:** Pen-test (`SECAS-S2`) is **external validation**. S4 is the **standing security engineering function** — CSIRT, supply chain, vuln cadence, remediation — mirroring how compliance-os runs **INT-REF** reference-grade lifts parallel to legal attestation.
+> **Ops lane:** **SecOps** (functional product **SECaaS**).  
+> **Position:** Pen-test (`SECAS-S2`) is **external validation**. S4 is the **standing SecOps engineering function** — CSIRT, supply chain, vuln cadence, remediation — mirroring how **ComplianceOps** runs **INT-REF** reference-grade lifts parallel to legal attestation.
 
-## Institutional mirror (compliance ↔ security)
+## Institutional mirror (ComplianceOps ↔ SecOps)
 
-| Function        | Compliance parallel      | Security (SECaaS)                        |
+| Function        | ComplianceOps parallel   | SecOps (SECaaS functional)               |
 | --------------- | ------------------------ | ---------------------------------------- |
 | Persona         | `compliance-officer`     | `security-engineer`                      |
 | Execution owner | compliance-os            | **fabric-os**                            |

@@ -1,13 +1,18 @@
 ---
-title: DevOps-as-a-Service (DaaS)
+title: DevOps & InfraOps (DaaS functional product)
 status: current
-date: 2026-06-10
+date: 2026-06-14
 owner: fabric-os
 protocol: P41-DEVOPS-AS-A-SERVICE
 initiative: INIT-GTCX-INFRA-DAAS
+opsLanes: [DevOps, InfraOps]
 ---
 
-# DevOps-as-a-Service — gtcx-infrastructure primary program
+# DevOps & InfraOps — fabric-os primary delivery program
+
+> **Ops vocabulary:** **DevOps** (deploy choreography, fleet health) + **InfraOps** (Terraform, EKS, cloud substrate).  
+> **Functional product ID:** **DaaS** — stable in protocols, `pnpm daas:*`, and `DAAS-S*` stories.  
+> **Registry:** [ops-programs.md](./ops-programs.md) · `bridge-os/pm/spec/ops-programs-registry.json`
 
 **Normative:** `canon-os/.../41-devops-as-a-service/protocol.md`  
 **Machine spec:** `bridge-os/pm/spec/devops-as-a-service.json`  
@@ -17,15 +22,16 @@ initiative: INIT-GTCX-INFRA-DAAS
 
 ## Obligation
 
-Infrastructure and DevOps are a **separate concern** from product engineering — parallel to security, compliance, and GTM. Product PM does **not** lead infra execution. **gtcx-infrastructure** owns deployability per repo and actively unblocks the fleet.
+**DevOps** and **InfraOps** are **separate concerns** from product engineering — parallel to **SecOps**, **ComplianceOps**, and **LegalOps**. Product PM does **not** lead infra execution. **fabric-os** owns deployability per repo and actively unblocks the fleet.
 
-## Three-plane model
+## Four-plane model (Ops naming)
 
-| Plane           | Owner                         | Product engineering                  |
-| --------------- | ----------------------------- | ------------------------------------ |
-| **Engineering** | Product repo                  | Features, tests, `deployment:smoke`  |
-| **DaaS**        | **gtcx-infrastructure**       | Handoff only — never `kubectl apply` |
-| **Assurance**   | assurance / legal / protocols | Witness parallel (`blocksIR: false`) |
+| Plane           | Ops lane                 | Owner                 | Product engineering                                  |
+| --------------- | ------------------------ | --------------------- | ---------------------------------------------------- |
+| **Engineering** | Product engineering      | Product repo          | Features, tests, `deployment:smoke`                  |
+| **Delivery**    | **DevOps**               | fabric-os             | Handoff only — never `kubectl apply` in product repo |
+| **Substrate**   | **InfraOps**             | fabric-os             | Terraform, EKS, IAM, WAF substrate                   |
+| **Assurance**   | ComplianceOps / LegalOps | canon · compliance-os | Witness parallel (`blocksIR: false`)                 |
 
 ## Product interface
 

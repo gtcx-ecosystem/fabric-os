@@ -18,16 +18,17 @@ witness: pm/ci/session-open-items-latest.json
 
 ## Coordination handoff
 
-| Field                | Value                                                                                                                          |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **From repo**        | fabric-os (vendor assurance owner)                                                                                             |
-| **To repo**          | bridge-os (program office)                                                                                                     |
-| **Ticket**           | `XR-FABRIC-SESSION-OPEN-003`                                                                                                   |
-| **Prior ticket**     | `XR-BRIDGE-SESSION-OPEN-001` (reconciled 2026-06-12)                                                                           |
-| **Witness**          | [`pm/ci/session-open-items-latest.json`](../../../pm/ci/session-open-items-latest.json)                                        |
-| **Forensic summary** | [`session-forensic-fabric-os-session-open-items-2026-06-13.md`](./session-forensic-fabric-os-session-open-items-2026-06-13.md) |
-| **Transcript**       | `35ccef1b-c866-463c-9b4e-0d81b44b01ad` (home workspace · 3 user turns)                                                         |
-| **Resume when**      | bridge-os posts inbound ack + closure bar 5/5                                                                                  |
+| Field                   | Value                                                                                                                            |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **From repo**           | fabric-os (vendor assurance owner)                                                                                               |
+| **To repo**             | bridge-os (program office)                                                                                                       |
+| **Ticket**              | `XR-FABRIC-SESSION-OPEN-003`                                                                                                     |
+| **Prior ticket**        | `XR-BRIDGE-SESSION-OPEN-001` (reconciled 2026-06-12)                                                                             |
+| **Witness**             | [`pm/ci/session-open-items-latest.json`](../../../pm/ci/session-open-items-latest.json)                                          |
+| **Forensic summary**    | [`session-forensic-fabric-os-session-open-items-2026-06-13.md`](./session-forensic-fabric-os-session-open-items-2026-06-13.md)   |
+| **Transcript**          | `35ccef1b-c866-463c-9b4e-0d81b44b01ad` (home workspace · 4 user turns · ID only in git)                                          |
+| **Transcript excerpts** | [`session-transcript-excerpts-session-open-items-2026-06-13.md`](./session-transcript-excerpts-session-open-items-2026-06-13.md) |
+| **Resume when**         | bridge-os posts inbound ack + closure bar 5/5                                                                                    |
 
 ---
 

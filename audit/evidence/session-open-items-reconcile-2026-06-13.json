@@ -4,6 +4,7 @@
   "repo": "fabric-os",
   "ticket": "XR-FABRIC-SESSION-OPEN-003",
   "forensicPack": "docs/operations/coordination/session-forensic-fabric-os-session-open-items-2026-06-13.md",
+  "transcriptExcerpts": "docs/operations/coordination/session-transcript-excerpts-session-open-items-2026-06-13.md",
   "machineWitness": "pm/ci/session-open-items-latest.json",
   "raiseWitness": "pm/ci/session-open-items-raise-bridge-latest.json",
   "outboundTicket": "docs/operations/coordination/to-bridge-os-session-open-items-forensic-2026-06-13.md",

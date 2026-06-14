@@ -16,6 +16,7 @@ relatedWitnesses:
   - pm/ci/session-open-items-latest.json
   - pm/ci/session-open-items-raise-bridge-latest.json
   - audit/evidence/session-open-items-reconcile-2026-06-13.json
+  - docs/operations/coordination/session-transcript-excerpts-session-open-items-2026-06-13.md
   - bridge-os/pm/ci/session-closure-bar-latest.json
 ---
 

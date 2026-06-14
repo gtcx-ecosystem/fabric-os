@@ -11,6 +11,7 @@
   "witness": "pm/ci/session-open-items-latest.json",
   "outbound": "docs/operations/coordination/to-bridge-os-session-open-items-forensic-2026-06-13.md",
   "forensicSummary": "docs/operations/coordination/session-forensic-fabric-os-session-open-items-2026-06-13.md",
+  "transcriptExcerpts": "docs/operations/coordination/session-transcript-excerpts-session-open-items-2026-06-13.md",
   "inboundAck": "bridge-os/docs/operations/coordination/from-fabric-os-session-open-items-forensic-2026-06-13.md",
   "p22": {
     "head": {
@@ -34,7 +35,9 @@
   "transcript": {
     "id": "35ccef1b-c866-463c-9b4e-0d81b44b01ad",
     "workspace": "Users-amanianai",
-    "userTurns": 3
+    "userTurns": 4,
+    "path": "/Users/amanianai/.cursor/projects/Users-amanianai/agent-transcripts/35ccef1b-c866-463c-9b4e-0d81b44b01ad/35ccef1b-c866-463c-9b4e-0d81b44b01ad.jsonl",
+    "lineCount": 30
   },
   "actionableForBridge": [
     "INIT-EXECUTIVE-GAP-PROGRAM closureBar.ok witness reconcile",

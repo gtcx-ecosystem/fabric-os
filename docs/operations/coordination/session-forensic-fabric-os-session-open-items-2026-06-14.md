@@ -44,6 +44,19 @@ tags: [forensic, session-open-items, closure-bar, bridge-raise, secas]
 | task    | T48              | bridge-os   | Prior session-open raise — in progress |
 | idea    | Nitro/APEX       | baseline-os | Planning only — not fabric implement   |
 
+## Intake received — 2026-06-14T20:20Z
+
+**Source:** baseline-os forensic audit (`f23974ff4`) · P27 executed in-session.
+**Action:** Baseline-os filed `audit/session-open-items-forensic-2026-06-14.md` and raised roadmap intake to bridge-os + agile-os.
+
+| Target    | Ticket                         | Status |
+| --------- | ------------------------------ | ------ |
+| bridge-os | XR-BASELINE-ROADMAP-INTAKE-001 | sent   |
+| agile-os  | XR-AGILE-ROADMAP-INTAKE-001    | sent   |
+
+**Recommended spine:** PROG-BASELINE-PLATFORM → PROG-APEX-ENGINE / PROG-NITRO-AI / PROG-DOC-PROGRAM / PROG-LCP-FLEET.
+**Fabric-os stance:** Acknowledged; no Class R implement action until bridge/agile define infra dependencies.
+
 ---
 
 ## Bridge closure bar (linked)

@@ -42,10 +42,11 @@
 
 - Pre-existing `pnpm lint` failures in workspace packages (no Class R story assigned).
 - External/vendor gates remain parallel: EXT-INF-002/013/014/015, BL-SOC2-01 MSA execution.
+- Baseline-os roadmap intake (XR-BASELINE-ROADMAP-INTAKE-001 / XR-AGILE-ROADMAP-INTAKE-001) filed and raised to bridge-os + agile-os; fabric-os ack recorded pending program definition.
 
 ### Next (Class R)
 
-- Commit hygiene pass; refresh `audit/latest.json` if warranted; otherwise witness mode.
+- Witness mode: refresh `audit/latest.json` and run `validate-all`; no fabric-os implement queue items.
 
 ---
 

@@ -86,7 +86,7 @@ Standing **SecOps engineering** wave runs **parallel** to pen-test witness (`SEC
 
 | Doc         | Path                                                             |
 | ----------- | ---------------------------------------------------------------- |
-| Program     | `docs/operations/secas/SECAS-S4-security-engineering-program.md` |
+| Program     | `docs/operations/secas/secas-s4-security-engineering-program.md` |
 | CSIRT model | `docs/operations/secas/csirt-operating-model.md`                 |
 | IR runbook  | `docs/operations/secas/runbooks/incident-response.md`            |
 | Stories     | `pm/secas-stories.json` — `SECAS-S4-01` … `SECAS-S4-05`          |
@@ -102,7 +102,7 @@ pnpm secas:supply-chain:check:write   # SECAS-S4-02 fleet rollup (policy + 4-rep
 
 | Doc            | Path                                                             |
 | -------------- | ---------------------------------------------------------------- |
-| Program        | `docs/operations/secas/SECAS-S5-continuous-assurance-program.md` |
+| Program        | `docs/operations/secas/secas-s5-continuous-assurance-program.md` |
 | Fleet risk SoR | `bridge-os/pm/spec/fleet-risk-register.json`                     |
 | Active threats | `bridge-os/pm/spec/fleet-threat-register.json`                   |
 | PQC register   | `bridge-os/pm/spec/crypto-agility-register.json`                 |

@@ -1,3 +1,14 @@
+---
+title: 'Standing vulnerability management cadence (SECAS-S4-03)'
+status: current
+date: 2026-06-14
+owner: fabric-os
+role: security-engineer
+tier: operational
+tags: ['secas', 'vulnerability', 'cadence']
+review_cycle: weekly
+---
+
 # Standing vulnerability management cadence (SECAS-S4-03)
 
 **Owner:** fabric-os · **Friction:** `SEC-VULN-01` · **Witness:** `audit/evidence/secas-vuln-cadence-latest.json`

@@ -13,7 +13,7 @@
 | Operational friction | `pm/security-friction-register.json`                                                   |
 | Class S sovereign    | `pm/sovereign-approval-register.json`                                                  |
 | Execution roadmap    | `audit/product-management/secas-execution-roadmap.md`                                  |
-| S4 program           | [SECAS-S4-security-engineering-program.md](./SECAS-S4-security-engineering-program.md) |
+| S4 program           | [secas-s4-security-engineering-program.md](./secas-s4-security-engineering-program.md) |
 | Task inbox           | `pm/_tasks` — `INIT-GTCX-INFRA-SECAS`                                                  |
 | Fleet harness        | `pnpm --dir ../bridge-os ecosystem:secas:check`                                        |
 

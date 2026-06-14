@@ -37,7 +37,7 @@ sources:
 
 ### SECAS-S4-01: CSIRT / SOC operating model + incident response runbook SoR
 
-**Files:** docs/operations/secas/SECAS-S4-security-engineering-program.md, docs/operations/secas/csirt-operating-model.md, docs/operations/secas/runbooks/incident-response.md, audit/evidence/secas-csirt-operating-model-latest.json, audit/evidence/secas-ir-drill-2026-06-14.json
+**Files:** docs/operations/secas/secas-s4-security-engineering-program.md, docs/operations/secas/csirt-operating-model.md, docs/operations/secas/runbooks/incident-response.md, audit/evidence/secas-csirt-operating-model-latest.json, audit/evidence/secas-ir-drill-2026-06-14.json
 
 **Acceptance**
 

@@ -52,4 +52,4 @@ GTCX fleet security incidents affecting staging or production substrate owned by
 ## Related
 
 - Persona: `canon-os/.../personas/security-engineer.md`
-- Program: [SECAS-S4-security-engineering-program.md](../SECAS-S4-security-engineering-program.md)
+- Program: [secas-s4-security-engineering-program.md](../secas-s4-security-engineering-program.md)

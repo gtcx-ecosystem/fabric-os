@@ -35,13 +35,13 @@ flowchart LR
   I[Innovation Moat] -.-> L
 ```
 
-| Stage      | What runs                                                                  | GTCX anchors                                                                         |
-| ---------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| **Sense**  | Telemetry, friction registers, fleet witnesses, cost stats, threat signals | `pm/*-friction-register.json`, `audit/evidence/*-latest.json`, Prometheus/CloudTrail |
-| **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`               |
-| **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                   |
-| **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                        |
-| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, ProductOps, DesignOps, BizOps, `blocksIR: false`    |
+| Stage      | What runs                                                                  | GTCX anchors                                                                              |
+| ---------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **Sense**  | Telemetry, friction registers, fleet witnesses, cost stats, threat signals | `pm/*-friction-register.json`, `audit/evidence/*-latest.json`, Prometheus/CloudTrail      |
+| **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`                    |
+| **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                        |
+| **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                             |
+| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, ProductOps, DesignOps, BizOps, PayOps, `blocksIR: false` |
 
 **Meta-learning rule:** Every CORE run writes **decision provenance** — what was sensed, which rubric fired, what was tried, exit code, witness path. The next cycle reasons over history, not chat memory.
 
@@ -196,10 +196,26 @@ flowchart LR
 | **Runtime**           | Stripe/subscription substrate, webhook ingress, metering rollup witness, billing health checks |
 | **Agentic team**      | `product-strategist` (pricing witness) · `platform-architect` (ingress) · finance Class S      |
 | **Intelligence loop** | Usage signal → rollup → invoice readiness → dunning or upgrade path → revenue witness          |
-| **Innovation moat**   | **Revenue infrastructure once** — terminal-os, compliance-os, terra-os share provider contract |
+| **Innovation moat**   | **Revenue infrastructure once** — terminal-os, compliance-os share provider contract           |
 | **Trust fortress**    | PCI SAQ A boundary; subprocessor register; LegalOps DPA; no raw card data in product pods      |
 | **Magic**             | Product defines tier; CORE delivers live billing + webhook + seal — pilot revenue same sprint  |
 | **Business outcomes** | Time-to-first-dollar ↓; unified revenue telemetry; fewer payment incidents                     |
+
+**Boundary:** RevOps is **substrate only** — domain payment logic is **PayOps** in owner repos (see below).
+
+### PayOps
+
+| Dimension             | Specification                                                                                                          |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Runtime**           | Domain payment orchestration per repo — capital calls, escrow, settlements, wire, M-Pesa, concession fees, checkout UX |
+| **Agentic team**      | `trade-analyst` (markets-os) · `field-inspector` (terra-os) · `product-strategist` (SaaS checkout) — owner-repo lead   |
+| **Intelligence loop** | Domain payment gap → owner-repo fix → authority/reconciliation witness → fleet domain registry hygiene                 |
+| **Innovation moat**   | **Domain rails stay local** — trade authority URLs and gov fee schedules never collapse into Stripe RevOps             |
+| **Trust fortress**    | Regulatory models per lane; RevOps keys consumed via contract — PayOps never duplicates provider custody in fabric     |
+| **Magic**             | markets-os closes capital call with wire PDF + authority seal; terra-os fee path distinct from terminal SaaS tier      |
+| **Business outcomes** | Trade settlement integrity; sovereign gov payments; SaaS checkout without cross-contaminating regulatory models        |
+
+**Fleet registry:** `bridge-os/pm/spec/payops-domain-registry.json` · Forensic: [ecosystem-revops-commops-forensic-2026-06-14.md](../../audit/ecosystem-revops-commops-forensic-2026-06-14.md)
 
 ### CommOps _(planned)_
 
@@ -275,12 +291,12 @@ flowchart LR
 
 ## Implementation sequence
 
-| Phase          | CORE lanes                                                                    | Deliverable                                                               |
-| -------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **ProductOps**, **DesignOps**, **BizOps** | Witness cycles, cards, rollups — product-culture + ux-sor + GTM registers |
-| **Next**       | RevOps, CommOps                                                               | Provider registry + SM paths + webhook matrix + friction registers        |
-| **Then**       | MLOps, AIOps depth                                                            | Eval promotion gate wired to every model/agent release                    |
-| **Continuous** | All                                                                           | `core-runtime-engine-protocol.json` harness per lane                      |
+| Phase          | CORE lanes                                                                                | Deliverable                                                               |
+| -------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **ProductOps**, **DesignOps**, **BizOps**, **PayOps** | Distributed domain registry; product-culture + ux-sor + GTM witnesses     |
+| **Next**       | RevOps, CommOps                                                                           | Provider substrate only — keys/webhooks/metering; not PayOps domain logic |
+| **Then**       | MLOps, AIOps depth                                                                        | Eval promotion gate wired to every model/agent release                    |
+| **Continuous** | All                                                                                       | `core-runtime-engine-protocol.json` harness per lane                      |
 
 ---
 

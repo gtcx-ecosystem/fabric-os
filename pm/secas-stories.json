@@ -81,7 +81,7 @@
         {
           "text": "Pen-test window scheduled and witnessed",
           "done": true,
-          "note": "2026-06-10 — audit/evidence/pen-test-window-2026-06-10.json (window 2026-06-17..21)"
+          "note": "2026-06-10 — audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json (window 2026-06-17..21; archived per retention policy)"
         },
         {
           "text": "Report ingest scaffold + prerequisites at canonical paths",

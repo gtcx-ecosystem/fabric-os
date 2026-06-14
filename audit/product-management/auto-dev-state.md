@@ -150,7 +150,7 @@ last_reconciled: 2026-06-14T10:15:00.000Z
 
 ## Evidence
 
-- `audit/evidence/pen-test-window-2026-06-10.json` — window scheduled
+- `audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json` — window scheduled (archived per evidence retention policy)
 - `audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json` — fleet PASS 4/4
 - `audit/product-management/secas-execution-roadmap.md` — SECAS-S2 active
 - `audit/product-management/execution-roadmap.md` — DAAS complete

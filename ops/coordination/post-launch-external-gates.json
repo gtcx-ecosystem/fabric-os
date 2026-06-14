@@ -20,7 +20,7 @@
       "window": "2026-06-17..2026-06-21",
       "unblockAction": "Vendor executes test during contracted window; delivers report file",
       "internalFollowUp": "SECAS-S2-01-INGEST ceremony after file lands (internal — see internal-human-gates.json)",
-      "witness": "audit/evidence/pen-test-window-2026-06-10.json"
+      "witness": "audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json"
     },
     {
       "id": "BG-10-10-REPORT",

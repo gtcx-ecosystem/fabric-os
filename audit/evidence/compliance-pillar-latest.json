@@ -2,7 +2,7 @@
   "schema": "gtcx://audit/compliance-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-14",
-  "score100": 100,
+  "score100": 97,
   "published": true,
   "provisional": false,
   "blockedBy": null,
@@ -11,14 +11,14 @@
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
       "weight": 8,
-      "score100": 100,
+      "score100": 65,
       "protocol": "P35",
       "items": [
         {
           "id": "p35-strict-pass",
           "label": "P35 layout strict GREEN",
-          "pass": true,
-          "score100": 100,
+          "pass": false,
+          "score100": 0,
           "weight": 35,
           "severity": "P1",
           "optional": false,
@@ -803,9 +803,17 @@
       "itemCount": 2
     }
   },
-  "hygieneViolations": [],
+  "hygieneViolations": [
+    {
+      "id": "p35-strict-pass",
+      "categoryId": "layout-p35",
+      "label": "P35 layout strict GREEN",
+      "severity": "P1",
+      "detail": "p35Strict"
+    }
+  ],
   "itemTotal": 62,
   "rubricVersion": "1.0.0",
   "openP0": 0,
-  "openP1": 0
+  "openP1": 1
 }

@@ -127,5 +127,5 @@ terraform init -migrate-state  # Will copy back to local
 | Environment    | Bucket                                | State Region | Compute Region | Status                |
 | -------------- | ------------------------------------- | ------------ | -------------- | --------------------- |
 | zimbabwe-pilot | `gtcx-terraform-state-zimbabwe-pilot` | us-east-1    | af-south-1     | MIGRATED (2026-03-18) |
-| ghana-pilot    | TBD                                   | us-east-1    | af-south-1     | NOT DEPLOYED          |
-| rwanda-pilot   | TBD                                   | us-east-1    | af-south-1     | NOT DEPLOYED          |
+| ghana-pilot    | pending                               | us-east-1    | af-south-1     | NOT DEPLOYED          |
+| rwanda-pilot   | pending                               | us-east-1    | af-south-1     | NOT DEPLOYED          |

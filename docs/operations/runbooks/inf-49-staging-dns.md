@@ -26,7 +26,7 @@ Canonical three-layer model (trust anchors, CSP rules, per-company operators): *
 
 ## What this runbook does NOT cover
 
-- **Key ceremony.** Authority DIDs ship with `key_status: "placeholder"` and `key_ceremony_blocked_by` references. Replacing placeholders with real regulator-attested keys is `gtcx-protocols#61` — out of scope here.
+- **Key ceremony.** Authority DIDs ship with `key_status: "stub"` and `key_ceremony_blocked_by` references. Replacing placeholders with real regulator-attested keys is `gtcx-protocols#61` — out of scope here.
 
 ---
 
@@ -126,7 +126,7 @@ After the manual two-pass works, replace the second pass with cluster-side autom
 ```bash
 # IRSA role for external-dns (write access to gtcx.trade hosted zone only).
 # Scaffold in 04-deploy/terraform/modules/external-dns-irsa/ — not yet created.
-# Ticket: gtcx-infrastructure#TBD.
+# Ticket: gtcx-infrastructure#pending.
 
 helm repo add external-dns https://kubernetes-sigs.github.io/external-dns/
 helm upgrade --install external-dns external-dns/external-dns \
@@ -152,9 +152,9 @@ helm upgrade --install external-dns external-dns/external-dns \
 
 ## Open follow-ups (NOT in INF-49 scope)
 
-| Item                                                                                             | Where                                                            | Owner           |
-| ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- | --------------- |
-| Production HSM keys for authority DIDs (`key_status: production`)                                | `gtcx-protocols#61`, infra **#86**                               | compliance-lead |
+| Item                                                                                             | Where                                                              | Owner           |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | --------------- |
+| Production HSM keys for authority DIDs (`key_status: production`)                                | `gtcx-protocols#61`, infra **#86**                                 | compliance-lead |
 | Production DNS (`gtcx.trade` apex, not staging)                                                  | `gtcx-infrastructure/04-deploy/terraform/environments/production/` | platform-lead   |
 | `external-dns-irsa` Terraform module                                                             | `gtcx-infrastructure/04-deploy/terraform/modules/`                 | platform-lead   |
 | WAF `/health` allow (bare curl / monitors) — **IaC in `modules/waf`**; `terraform apply` staging | `04-deploy/terraform/modules/waf/main.tf` (`AllowHealthEndpoint`)  | platform-lead   |

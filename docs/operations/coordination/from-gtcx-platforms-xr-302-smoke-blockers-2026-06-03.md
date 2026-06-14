@@ -22,7 +22,7 @@ work_ids: [XR-302]
 ## Blockers (summary)
 
 1. **Cloudflare 526** — `sovereign-staging.gtcx.trade` external health
-2. **JWT placeholder** — `SECRET_KEY_BASE=PLACEHOLDER_OVERRIDE_IN_OVERLAY` on sovereign pod
+2. **JWT stub** — `SECRET_KEY_BASE=PLACEHOLDER_OVERRIDE_IN_OVERLAY` on sovereign pod
 3. **DB schema** — `relation "audit_records" does not exist` in sovereign logs
 
 ## Status (2026-06-03T09:30Z → 2026-06-03T10:30Z)

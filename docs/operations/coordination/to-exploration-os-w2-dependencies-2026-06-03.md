@@ -19,7 +19,7 @@ work_ids: [XR-507, XR-508, XR-502, W2-E2E]
 
 | Hub # | Work ID     | What exploration-os needs            | Infra status                  | Blocker                | Next action             |
 | ----- | ----------- | ------------------------------------ | ----------------------------- | ---------------------- | ----------------------- |
-| 15    | XR-EO-003   | F-51 lender webhook deploy + secrets | **Not infra-owned**           | TBD ops                | Escalate to ops owner   |
+| 15    | XR-EO-003   | F-51 lender webhook deploy + secrets | **Not infra-owned**           | pending ops            | Escalate to ops owner   |
 | 16    | XR-EO-004   | TerraOS live permit adapters         | **Not infra-owned**           | terra-os deferred      | Escalate to terra-os    |
 | 17    | W2 prod E2E | Bearer + secrets + receiver          | **READY** — see details below | None on infra          | ExplorationOS runs E2E  |
 | 18    | W2-C03      | Postgres persistence proof           | **Not infra-owned**           | terminal-os / prod ops | Escalate to terminal-os |

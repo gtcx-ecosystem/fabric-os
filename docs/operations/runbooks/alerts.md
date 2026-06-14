@@ -57,11 +57,11 @@ anchor rules apply.
 
 ### protocolhigherrorrate
 
-| Field    | Value                                           |
-| -------- | ----------------------------------------------- |
-| Severity | critical                                        |
+| Field    | Value                                             |
+| -------- | ------------------------------------------------- |
+| Severity | critical                                          |
 | Source   | `04-deploy/monitoring/alerts/protocol-alerts.yml` |
-| Impact   | A protocol handler is failing >5% of requests   |
+| Impact   | A protocol handler is failing >5% of requests     |
 
 **Detection signal:** `gtcx_protocol_errors_total / gtcx_protocol_requests_total > 0.05` for 5m.
 
@@ -80,21 +80,21 @@ anchor rules apply.
 
 ### protocolhighlatency
 
-| Field    | Value                                           |
-| -------- | ----------------------------------------------- |
-| Severity | warning                                         |
+| Field    | Value                                             |
+| -------- | ------------------------------------------------- |
+| Severity | warning                                           |
 | Source   | `04-deploy/monitoring/alerts/protocol-alerts.yml` |
-| Impact   | p99 latency exceeds 2s — user-visible slowness  |
+| Impact   | p99 latency exceeds 2s — user-visible slowness    |
 
 **Triage:** Check NATS broker latency, DB connection pool saturation, recent traffic spike. Compare against k6 soak baseline in `03-platform/tools/load-tests/`.
 
 ### protocolserverdown
 
-| Field    | Value                                           |
-| -------- | ----------------------------------------------- |
-| Severity | critical                                        |
+| Field    | Value                                             |
+| -------- | ------------------------------------------------- |
+| Severity | critical                                          |
 | Source   | `04-deploy/monitoring/alerts/protocol-alerts.yml` |
-| Impact   | Total protocol outage                           |
+| Impact   | Total protocol outage                             |
 
 **Triage:** Verify pod status (`kubectl get pods -n gtcx -l app=gtcx-protocols`), check recent ALB target health, inspect node health.
 
@@ -126,7 +126,7 @@ See `04-deploy/monitoring/alerts/audit-anomaly.yml` and `audit-trust-alerts.yml`
 
 For LLM-tier alerts: check `compliance_gateway_cost_usd_total`, the provider fallback chain state at `/v1/providers`, and per-principal budget exhaustion in `/v1/budget`.
 
-For ANISA/Cortex/Veritas/PANX: see the corresponding intelligence service runbook (TBD per service — to be expanded as the intelligence stack lands).
+For ANISA/Cortex/Veritas/PANX: see the corresponding intelligence service runbook (pending per service — to be expanded as the intelligence stack lands).
 
 ---
 
@@ -159,7 +159,7 @@ p99 latency breach on AGX. Compare against the recent deploy timeline; common ca
 
 ---
 
-## Stub sections — runbook content TBD
+## Stub sections — runbook content pending
 
 > The following sections were anchor-backfilled on 2026-05-31 so the
 > `runbook_url` anchor-existence gate could be turned on. Each stub names

@@ -193,5 +193,5 @@ All protocol messages use bandwidth-aware encoding:
 
 ## Reference
 
-- [system-overview.md](system-overview.md)
+- [system-overview.md](core/system-overview.md)
 - [offline-architecture.md](offline-architecture.md)

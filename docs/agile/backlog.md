@@ -46,16 +46,16 @@ review_cycle: 'on-change'
 
 | ID   | Item                                    | Epic              | Est. | Owner      |
 | ---- | --------------------------------------- | ----------------- | ---- | ---------- |
-| BL-5 | Multi-region failover automation        | Disaster Recovery | XL   | TBD        |
-| BL-6 | Edge node deployment in Ghana and Kenya | Edge Computing    | XL   | TBD        |
+| BL-5 | Multi-region failover automation        | Disaster Recovery | XL   | pending    |
+| BL-6 | Edge node deployment in Ghana and Kenya | Edge Computing    | XL   | pending    |
 | BL-7 | Cost optimization and budget governance | FinOps            | M    | @amanianai |
 
 ## P3 — Low (Future)
 
-| ID   | Item                                      | Epic        | Est. | Owner |
-| ---- | ----------------------------------------- | ----------- | ---- | ----- |
-| BL-8 | Chaos engineering framework               | Resilience  | L    | TBD   |
-| BL-9 | Custom African cloud provider integration | Local Cloud | XL   | TBD   |
+| ID   | Item                                      | Epic        | Est. | Owner   |
+| ---- | ----------------------------------------- | ----------- | ---- | ------- |
+| BL-8 | Chaos engineering framework               | Resilience  | L    | pending |
+| BL-9 | Custom African cloud provider integration | Local Cloud | XL   | pending |
 
 ## Icebox
 

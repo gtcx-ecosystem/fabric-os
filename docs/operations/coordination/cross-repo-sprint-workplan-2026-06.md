@@ -63,7 +63,7 @@ Three parallel numbering schemes exist across the ecosystem. This register adopt
 | -------- | -------------------------------------------------- | ------------------------- | ----------------- |
 | XR-008   | exploration-os re-audit F-33/H-F prod              | audit agent               | blocked on XR-507 |
 | XR-012   | Audit v2 dual-output publish + ingest              | gtcx-docs, agentic, agile | in_progress       |
-| XR-016   | Lender webhook owner + Supabase secrets            | TBD owner                 | blocked           |
+| XR-016   | Lender webhook owner + Supabase secrets            | pending owner             | blocked           |
 | XR-018   | Protocol 24 coordination check in CI               | Tier-2 repos              | in_progress       |
 | XR-021   | First sovereign ratification ceremony              | sovereign program         | open              |
 | XR-022   | Pen-test vendor selection                          | Security / gtcx-core      | open              |
@@ -393,7 +393,7 @@ Move licence intelligence from staging fixtures toward production path.
 | ------ | --------------------------------------- | ------------------------- | ----------------------------- | ------ | ----------------------- |
 | XR-008 | exploration-os re-audit F-33/H-F prod   | audit agent               | blocked on XR-507             | S-XR-1 | Audit narrative         |
 | XR-012 | Audit v2 dual-output publish + ingest   | gtcx-docs, agentic, agile | in_progress                   | S-XR-4 | Forensic ingest         |
-| XR-016 | Lender webhook owner + Supabase secrets | TBD owner                 | blocked                       | S-XR-2 | F-51 prod notify        |
+| XR-016 | Lender webhook owner + Supabase secrets | pending owner             | blocked                       | S-XR-2 | F-51 prod notify        |
 | XR-018 | Protocol 24 coordination check in CI    | Tier-2 repos              | in_progress                   | S-XR-4 | Hygiene gate            |
 | XR-021 | First sovereign ratification ceremony   | sovereign program         | open                          | S-XR-3 | ISO, date, signer DID   |
 | XR-022 | Pen-test vendor selection               | Security / gtcx-core      | **done** (SensePost selected) | S-XR-3 | D9 completion           |
@@ -405,15 +405,15 @@ Move licence intelligence from staging fixtures toward production path.
 
 ## Risk register (cross-repo)
 
-| Risk                                       | Likelihood | Impact | Mitigation                                          |
-| ------------------------------------------ | ---------- | ------ | --------------------------------------------------- |
-| Wrong INF-86 algorithm applied to DID doc  | Medium     | High   | XR-401 sign-off; schema discriminated union shipped |
-| Mobile keygen desync from staging DID      | Medium     | Med    | Use SM only; documented in bridge                   |
-| Intelligence placeholder SDK left deployed | Medium     | High   | XR-201 acceptance checks full SDK metrics           |
-| P25 prod blocked on terra-os adapters      | High       | Med    | Fixture path for S-XR-4; terra inbound ticket       |
-| NPM publish credentials missing            | Medium     | Med    | Human escalation for XR-509/510                     |
-| Cloudflare zone:write token missing        | Medium     | Med    | Dashboard manual action or new token for XR-507     |
-| Supabase project stays paused              | Medium     | Med    | Ops dashboard unpause for XR-508                    |
+| Risk                                      | Likelihood | Impact | Mitigation                                          |
+| ----------------------------------------- | ---------- | ------ | --------------------------------------------------- |
+| Wrong INF-86 algorithm applied to DID doc | Medium     | High   | XR-401 sign-off; schema discriminated union shipped |
+| Mobile keygen desync from staging DID     | Medium     | Med    | Use SM only; documented in bridge                   |
+| Intelligence stub SDK left deployed       | Medium     | High   | XR-201 acceptance checks full SDK metrics           |
+| P25 prod blocked on terra-os adapters     | High       | Med    | Fixture path for S-XR-4; terra inbound ticket       |
+| NPM publish credentials missing           | Medium     | Med    | Human escalation for XR-509/510                     |
+| Cloudflare zone:write token missing       | Medium     | Med    | Dashboard manual action or new token for XR-507     |
+| Supabase project stays paused             | Medium     | Med    | Ops dashboard unpause for XR-508                    |
 
 ---
 

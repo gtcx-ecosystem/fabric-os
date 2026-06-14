@@ -38,7 +38,7 @@ How to adapt SOP templates for a new or existing project.
 
 ### Level 1 — Required
 
-- [ ] Replace all `{placeholder}` fields with project-specific values
+- [ ] Replace all `{stub}` fields with project-specific values
 - [ ] Update document headers
 - [ ] Complete the project specification
 

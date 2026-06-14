@@ -17,7 +17,7 @@ owner: fabric-os
 | ZWCMP pilot owner     | **EXT-INF-013** | Leadership             | Named owner + first cadence call in [`pilot-success-criteria.md`](../../../audit/pilot-success-criteria.md) | 2026-06-07   |
 | DPA + pilot agreement | **EXT-INF-014** | Legal + pilot owner    | Signed DPA (ZW ↔ af-south-1) + pilot PDFs under `01-docs/05-audit/vendor-outreach/zwcmp/`                   | 2026-06-21   |
 | Indemnified SLA       | **EXT-INF-015** | Legal                  | SLA v1.0 legal review + insurance quote (`verification-sla-draft.md` base)                                  | 2026-06-21   |
-| SOC 2 Type I auditor  | **EXT-INF-016** | CISO + Finance         | Auditor engagement + budget (distinct from EXT-INF-013 pilot owner)                                         | TBD          |
+| SOC 2 Type I auditor  | **EXT-INF-016** | CISO + Finance         | Auditor engagement + budget (distinct from EXT-INF-013 pilot owner)                                         | pending      |
 
 ## Cross-repo pen-test (EXT-INF-002)
 

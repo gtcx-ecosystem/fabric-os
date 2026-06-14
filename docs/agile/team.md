@@ -47,7 +47,7 @@ This squad manages all `fabric-os` work in ClickUp. Source of truth for sprint c
 | Status sync      | Bi-directional sync between git sprint docs and ClickUp        | Scrum Master + Automation |
 | Release tracking | Mark tasks complete, update milestones, notify stakeholders    | Product Manager           |
 
-**ClickUp List ID:** TBD (set during onboarding)
+**ClickUp List ID:** pending (set during onboarding)
 
 ## Roles & Responsibilities
 
@@ -85,7 +85,7 @@ This squad manages all `fabric-os` work in ClickUp. Source of truth for sprint c
 
 | Field                | Value                                                                                                                                                                                                |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Name**             | TBD                                                                                                                                                                                                  |
+| **Name**             | pending                                                                                                                                                                                              |
 | **Type**             | —                                                                                                                                                                                                    |
 | **Responsibilities** | Lead technical direction for multi-region networking, CDN, edge computing, and data sovereignty. Document network architecture. Organize technical reviews. Verify connectivity and latency targets. |
 | **Accountable For**  | Network reliability, latency targets, data sovereignty compliance, edge deployment success                                                                                                           |

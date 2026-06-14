@@ -161,5 +161,5 @@ The maximum offline queue duration across all components is **30 days**. After 3
 
 ## Reference
 
-- [system-overview.md](system-overview.md)
+- [system-overview.md](core/system-overview.md)
 - [production-store-integration.md](../operations/runbooks/production-store-integration.md)

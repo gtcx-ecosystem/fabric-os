@@ -42,16 +42,16 @@ xr-id: XR-201
 ## Historical state (pre-completion — reference only)
 
 ```bash
-# Pre-completion probe results (orchestrator placeholder era)
+# Pre-completion probe results (orchestrator stub era)
 curl -s -o /dev/null -w "%{http_code}" https://intelligence-staging.gtcx.trade/health
-# → 200 (placeholder did not enforce auth on /health)
+# → 200 (stub did not enforce auth on /health)
 
-# /live and /ready returned 401 without auth (placeholder behavior)
+# /live and /ready returned 401 without auth (stub behavior)
 curl -s -o /dev/null -w "%{http_code}" https://intelligence-staging.gtcx.trade/live
 # → 401
 ```
 
-**Root cause:** The `intelligence-orchestrator` service currently deployed is a **placeholder** that does not enforce auth on `/health`. The full intelligence SDK with auth-gated routes needs to be deployed.
+**Root cause:** The `intelligence-orchestrator` service currently deployed is a **stub** that does not enforce auth on `/health`. The full intelligence SDK with auth-gated routes needs to be deployed.
 
 ---
 
@@ -100,7 +100,7 @@ kubectl rollout status deployment/intelligence-orchestrator -n intelligence
 
 ### 2. Full SDK image
 
-**Problem:** The orchestrator placeholder image is deployed. Need the full intelligence SDK image.
+**Problem:** The orchestrator stub image is deployed. Need the full intelligence SDK image.
 
 **Where to get it:**
 
@@ -239,7 +239,7 @@ Once auth gate is confirmed, append to agent log and notify gtcx-intelligence:
 
 **Critical discovery:** The `intelligence-orchestrator` Deployment and Service are **not present** in `fabric-os/04-deploy/kubernetes/`. This means:
 
-1. The orchestrator placeholder was deployed by some other mechanism (manual, other repo CI, or older manifest since deleted)
+1. The orchestrator stub was deployed by some other mechanism (manual, other repo CI, or older manifest since deleted)
 2. Infrastructure cannot complete XR-201 without either:
    - Obtaining the deployment manifest from gtcx-intelligence
    - Creating the deployment manifest with intelligence-provided image details

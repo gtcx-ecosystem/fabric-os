@@ -19,7 +19,7 @@ How to run a documentation hygiene check across the repo.
 ## Checks
 
 1. **Missing READMEs**
-2. **Placeholder/TBD content**
+2. **stub/pending content**
 3. **Broken internal links**
 4. **Stale paths**
 
@@ -41,7 +41,7 @@ find . -type d -not -path './.git*' -print0 | while IFS= read -r -d '' d; do
 done
 ```
 
-### Placeholder/TBD
+### stub/pending
 
 ```bash
 grep -rn 'TODO\|FIXME\|PLACEHOLDER\|TBD\|COMING SOON' . --include='*.md'

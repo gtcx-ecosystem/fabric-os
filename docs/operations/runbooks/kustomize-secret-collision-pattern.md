@@ -17,7 +17,7 @@ Kustomize `secretGenerator` creates secrets with **hash-suffixed names**.
 secretGenerator:
   - name: compliance-gateway-audit-key
     literals:
-      - AUDIT_SIGNING_KEY_B64=placeholder
+      - AUDIT_SIGNING_KEY_B64=stub
 ```
 
 After `kustomize build`, the secret becomes:
@@ -26,11 +26,11 @@ After `kustomize build`, the secret becomes:
 name: compliance-gateway-audit-key-4c79fk655h
 ```
 
-If an overlay patches a Deployment to reference `compliance-gateway-audit-key` (without the hash suffix), kustomize **silently replaces** the reference with the hash-suffixed placeholder secret. The overlay's manual secret is ignored.
+If an overlay patches a Deployment to reference `compliance-gateway-audit-key` (without the hash suffix), kustomize **silently replaces** the reference with the hash-suffixed stub secret. The overlay's manual secret is ignored.
 
 ## Impact
 
-- The pod receives the **placeholder value** instead of the real secret
+- The pod receives the **stub value** instead of the real secret
 - The service crashes or operates with invalid credentials
 - **Silent failure** — no error during `kustomize build`
 
@@ -44,7 +44,7 @@ secretKeyRef:
   key: AUDIT_SIGNING_KEY_B64
 ```
 
-But base `secretGenerator` also created `compliance-gateway-audit-key` → kustomize generated `compliance-gateway-audit-key-staging-4c79fk655h` and **replaced** the overlay reference with the placeholder.
+But base `secretGenerator` also created `compliance-gateway-audit-key` → kustomize generated `compliance-gateway-audit-key-staging-4c79fk655h` and **replaced** the overlay reference with the stub.
 
 **Fix applied:** Renamed manual secret to `gtcx-compliance-gateway-audit-key-staging` (with `gtcx-` prefix) so it no longer collided with the base secret name.
 
@@ -112,7 +112,7 @@ kustomize build 04-deploy/kubernetes/overlays/staging | grep -E "name:.*audit-ke
 | ---------- | ---------------------------------------------- | ------------------ |
 | staging    | `gtcx-compliance-gateway-audit-key-staging`    | ✅ Fixed (ER-2-04) |
 | pen-test   | `gtcx-compliance-gateway-audit-key-pen-test`   | ✅ Fixed (S1-07)   |
-| production | `gtcx-compliance-gateway-audit-key-production` | 🔄 TBD             |
+| production | `gtcx-compliance-gateway-audit-key-production` | 🔄 pending         |
 
 ## References
 

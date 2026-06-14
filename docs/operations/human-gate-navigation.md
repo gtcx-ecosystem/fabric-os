@@ -12,7 +12,7 @@ review_cycle: on-change
 
 **Problem:** Repos treat **EXT-INF-002** (pen-test SOW), **H-03**, and other Class **S** gates as **whole-repo blocked** — idle agents, frozen IR, or stories parked in **Deferred**. That is wrong for almost all ecosystem gates.
 
-**SoR:** [`human-gates.manifest.json`](../coordination/human-gates.manifest.json) — field **`blocksIR: false`** is normative.
+**SoR:** [`human-gates.manifest.json`](../../ops/coordination/human-gates.manifest.json) — field **`blocksIR: false`** is normative.
 
 ---
 
@@ -115,7 +115,7 @@ pnpm agent:human-gates:check    # exit 0
 
 | Doc             | Path                                                                                                                                                                                |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Manifest        | [`human-gates.manifest.json`](../coordination/human-gates.manifest.json)                                                                                                            |
+| Manifest        | [`human-gates.manifest.json`](../../ops/coordination/human-gates.manifest.json)                                                                                                     |
 | Register        | [human-external-blocker-register-2026-06.md](https://github.com/gtcx-ecosystem/baseline-os/blob/main/01-docs/04-ops/coordination/human-external-blocker-register-2026-06.md)        |
 | H-05 packet     | [ext-inf-002-pen-test-h05-packet-2026-06-05.md](https://github.com/gtcx-ecosystem/baseline-os/blob/main/01-docs/04-ops/coordination/ext-inf-002-pen-test-h05-packet-2026-06-05.md)  |
 | Playbook F1–F7  | [ecosystem-unblock-playbook](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/ecosystem-unblock-playbook-2026-06-06.md)                       |

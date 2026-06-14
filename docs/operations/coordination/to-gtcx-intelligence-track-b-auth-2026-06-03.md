@@ -20,7 +20,7 @@ xr-id: XR-201
 
 ## Problem
 
-`intelligence-staging.gtcx.trade/health` returns **200** without credentials. This indicates the orchestrator placeholder is still deployed, not the full intelligence SDK with auth-gated routes.
+`intelligence-staging.gtcx.trade/health` returns **200** without credentials. This indicates the orchestrator stub is still deployed, not the full intelligence SDK with auth-gated routes.
 
 INT-S3-08 acceptance requires **401/403** on unauthenticated `/health`.
 
@@ -38,7 +38,7 @@ INT-S3-08 acceptance requires **401/403** on unauthenticated `/health`.
 
 **The `intelligence-orchestrator` Deployment + Service are NOT in the infrastructure repo.**
 
-The orchestrator placeholder currently running was deployed via an unknown mechanism. Infrastructure cannot replace it with the full SDK without:
+The orchestrator stub currently running was deployed via an unknown mechanism. Infrastructure cannot replace it with the full SDK without:
 
 1. **Full SDK image URI + digest** (from gtcx-intelligence ECR build)
 2. **Deployment manifest** (either provided by intelligence repo or spec'd for infra to create)

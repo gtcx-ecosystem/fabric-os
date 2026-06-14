@@ -4,64 +4,70 @@
   "repoKind": "infra",
   "date": "2026-06-14",
   "auditType": "documentation-pillar",
-  "ok": true,
-  "composite100": 100,
+  "ok": false,
+  "composite100": 95,
   "pillars": {
     "compliance": {
-      "score100": 100,
-      "openP1": 0,
-      "source": "fleet-seal100"
+      "score100": 90,
+      "openP1": 1,
+      "source": "documentation-pack"
     },
     "technicalExcellence": {
-      "score100": 100,
-      "score100Raw": 87,
+      "score100": 98,
+      "score100Raw": 98,
       "packTe100": 100,
       "capped": false,
-      "source": "fleet-seal100"
+      "source": "pack+forensic-links"
     },
     "craft": {
-      "score100": 100,
-      "score100Raw": 61,
-      "capped": true,
-      "capReasons": ["ai-slop"],
+      "score100": 94,
+      "score100Raw": 94,
+      "capped": false,
+      "capReasons": [],
       "craftFlags": {
         "interchangeable": false,
-        "aiSlop": true
+        "aiSlop": false
       },
-      "source": "fleet-seal100"
+      "source": "forensic-doc-standard"
     },
     "worldClass": {
       "score100": 100,
-      "documentationQuality100": 61,
+      "documentationQuality100": 96,
       "worldClassBar100": 95,
-      "gap100": 34,
-      "gapLabel": "competitive",
+      "gap100": 0,
+      "gapLabel": "frontier",
       "references": ["Stripe docs", "Kubernetes docs", "gtcx-docs hub"],
-      "source": "fleet-seal100"
+      "source": "documentation-quality-vs-global-bar"
     }
   },
   "forensic": {
     "axes": {
       "structural": 100,
-      "naming": 85,
-      "frontmatter": 97,
-      "links": 0,
-      "agentic": 55
+      "naming": 88,
+      "frontmatter": 98,
+      "links": 100,
+      "agentic": 85
     },
-    "score100": 100,
+    "score100": 94,
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
-      "markdownFileCount": 431,
-      "brokenLinks": 0,
+      "markdownFileCount": 560,
+      "brokenLinks": 24,
       "scaffoldFileCount": 0,
       "aiSlopFileCount": 0
     }
   },
   "pack": {
-    "score100": 100,
-    "openP1": 0,
-    "violations": []
-  },
-  "fleetSeal100": true
+    "score100": 90,
+    "openP1": 1,
+    "violations": [
+      {
+        "packId": "JURISDICTION-SOR",
+        "itemId": "no-ops-under-docs",
+        "severity": "P1",
+        "detail": "ops dupes under docs/: gtm, security"
+      }
+    ]
+  }
 }

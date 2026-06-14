@@ -37,7 +37,7 @@ Each category has SLIs at multiple time windows because regulators read evidence
 | `sli-availability-agx-30d`                | gtcx-agx successful (non-5xx) HTTP requests over rolling 30 days | `slo:agx:availability:ratio_30d`       | ≥ 99.5%    |
 | `sli-availability-protocols-30d`          | gtcx-protocols same                                              | `slo:protocols:availability:ratio_30d` | ≥ 99.5%    |
 | `sli-availability-anisa-30d`              | anisa intelligence service same                                  | `slo:anisa:availability:ratio_30d`     | ≥ 99.0%    |
-| `sli-availability-compliance-gateway-30d` | compliance-gateway same                                          | TBD — add recording rule               | ≥ 99.5%    |
+| `sli-availability-compliance-gateway-30d` | compliance-gateway same                                          | pending — add recording rule           | ≥ 99.5%    |
 
 **Why ≥99.5%:** corresponds to ~3.6 hours of downtime per month. Pilot-grade. Production-grade target moves to 99.9% (~43 minutes / month) once the dual-region failover lands.
 
@@ -68,15 +68,15 @@ These are the regulator-facing SLIs. Per ADR-014 (NATS transport) and ADR-016 (f
 
 | SLI ID                              | What it measures                                     | Recording rule                                            | Target SLO                |
 | ----------------------------------- | ---------------------------------------------------- | --------------------------------------------------------- | ------------------------- |
-| `sli-tenant-isolation-leak-rate`    | Cross-tenant data appearances in /v1/query responses | TBD — eval-pipeline mirror                                | 0 (any non-zero is a P0)  |
+| `sli-tenant-isolation-leak-rate`    | Cross-tenant data appearances in /v1/query responses | pending — eval-pipeline mirror                            | 0 (any non-zero is a P0)  |
 | `sli-tenant-budget-exhaustion-rate` | 429 responses per tenant over 1h                     | `rate(compliance_gateway_throttle_total[1h])` by tenantId | Informational; not capped |
 
 ### Capacity SLIs
 
-| SLI ID                      | What it measures                                | Recording rule                                             | Target SLO                               |
-| --------------------------- | ----------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------- |
-| `sli-hpa-target-attainment` | HPA achieves target replica count within window | TBD — derived from `kube_horizontalpodautoscaler_status_*` | ≥ 95% (HPA matches desired within 2 min) |
-| `sli-soak-test-pass`        | k6 soak test pass rate over weekly runs         | CI gate                                                    | ≥ 1.0 (any failure blocks release)       |
+| SLI ID                      | What it measures                                | Recording rule                                                 | Target SLO                               |
+| --------------------------- | ----------------------------------------------- | -------------------------------------------------------------- | ---------------------------------------- |
+| `sli-hpa-target-attainment` | HPA achieves target replica count within window | pending — derived from `kube_horizontalpodautoscaler_status_*` | ≥ 95% (HPA matches desired within 2 min) |
+| `sli-soak-test-pass`        | k6 soak test pass rate over weekly runs         | CI gate                                                        | ≥ 1.0 (any failure blocks release)       |
 
 ## Error Budgets
 

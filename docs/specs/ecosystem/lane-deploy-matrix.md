@@ -53,7 +53,7 @@ fabric-os (**I**) **hosts** workloads for lanes **C, L1–L4b, X, A (pilot)**. I
 | ------------------ | --------------------------------------- | ---------------------------- |
 | terminal-os        | EKS namespace, staging routes           | terminal-os EKS coordination |
 | gtcx-intelligence  | Auth gate, SDK deploy                   | XR-201 runbook               |
-| nyota-ai, griot-ai | Hosting per repo register when promoted | TBD — link repo register     |
+| nyota-ai, griot-ai | Hosting per repo register when promoted | pending — link repo register |
 
 ### L3 — Compliance & attestation
 

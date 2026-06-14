@@ -1,9 +1,12 @@
 {
   "schema": "gtcx://bridge-os/settlement-commit/v1",
-  "at": "2026-06-14T05:57:13.106Z",
+  "at": "2026-06-14T08:45:06.376Z",
   "repo": "fabric-os",
-  "ok": true,
-  "stagedFiles": 4,
-  "errors": [],
+  "ok": false,
+  "stagedFiles": 109,
+  "errors": [
+    "GATE-COMMIT BLOCK: 109 staged files > max 25 — split into micro-commits",
+    "GATE-COMMIT BLOCK: 1046 staged lines > max 600 — micro-commit required"
+  ],
   "warnings": []
 }

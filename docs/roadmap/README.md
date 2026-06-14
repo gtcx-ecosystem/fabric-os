@@ -20,7 +20,7 @@ owner: 'gtcx-infrastructure'
 
 ## Status
 
-Machine-readable scorecard + open findings: [`01-docs/05-audit/latest.json`](../audit/latest.json).
+Machine-readable scorecard + open findings: [`01-docs/05-audit/latest.json`](../../audit/evidence/five-pillar-latest.json).
 
 ## Historical (superseded)
 

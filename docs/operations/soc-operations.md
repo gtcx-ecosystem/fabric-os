@@ -136,7 +136,7 @@ Define the architecture, staffing, procedures, and metrics for a 24/7 Security O
 | 3     | 24/7 coverage launch         | 2027-Q1     | $150K–$250K/year |
 | 4     | Threat intel platform + SOAR | 2027-Q2     | $40K–$100K/year  |
 | 5     | L4 maturity (MTTR < 1h)      | 2027-Q3     | Operational      |
-| 6     | L5 maturity (AI-assisted)    | 2028        | TBD              |
+| 6     | L5 maturity (AI-assisted)    | 2028        | pending          |
 
 ---
 

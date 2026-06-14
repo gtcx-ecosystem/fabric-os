@@ -13,6 +13,16 @@ Service fabric execution layer: AWS/EKS/Terraform, DaaS/SECaaS, staging/prod dep
 
 **Edit SoR:** this repo (`fabric-os`). P34 monorepo shadow is browse/cache only — see [repo-redirects](https://gtcx.trade/ecosystem/01-docs/operations/ecosystem/repo-redirects).
 
+## Quick Start
+
+```bash
+git clone https://github.com/gtcx-ecosystem/fabric-os.git && cd fabric-os
+pnpm install
+pnpm ops:check
+```
+
+See [`docs/README.md`](./docs/README.md) for the documentation index and [`AGENTS.md`](./AGENTS.md) for agent session entry.
+
 ## Governance
 
 | Document        | Path                                                                           |

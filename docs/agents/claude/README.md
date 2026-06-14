@@ -7,4 +7,4 @@
 
 Synced content mirrors [`AGENTS.md`](../../../AGENTS.md) / [`.agent/`](../../../.agent/). Claude-only addenda: `.agent/claude.partial.md`.
 
-**Workspace:** [`workspace/`](../../../02-ops/) · **Universal:** [`universal/`](../universal/)
+**Workspace:** [`workspace/`](../../../ops/) · **Universal:** [`universal/`](../universal/)

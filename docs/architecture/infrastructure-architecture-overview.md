@@ -60,8 +60,8 @@ DevOps tooling, deployment automation, and security framework for the entire GTC
 
 | Package                     | Purpose                                                                |
 | --------------------------- | ---------------------------------------------------------------------- |
-| 04-deploy/edge-proxy          | Edge proxy configuration and deployment for field environments         |
-| 04-deploy/migrations          | Database migration tooling and schema versioning                       |
+| 04-deploy/edge-proxy        | Edge proxy configuration and deployment for field environments         |
+| 04-deploy/migrations        | Database migration tooling and schema versioning                       |
 | 03-platform/tools/scripts   | Deployment and setup automation consumed by CI/CD pipelines            |
 | 03-platform/tools/templates | Project templates, documentation standards, and engineering principles |
 
@@ -123,15 +123,15 @@ Mesh networking between nearby field sites enables peer-to-peer data sharing eve
 - [Infrastructure Overview](infrastructure-overview.md) -- High-level architecture of the deployment stack
 - Digital Infrastructure Framework (`./digital-infrastructure-framework.md`) -- End-to-end digital infrastructure design
 - Six-Month Deployment Roadmap (`./six-month-deployment-roadmap.md`) -- Phased deployment plan across environments
-- [Security Policies](../security/security-policy.md) -- Security policy framework and standards
-- [Access Control](../../04-deploy/security/policies/access-control.md) -- Access control policies and role definitions
-- [Data Protection](../compliance/data-classification-policy.md) -- Data protection and encryption standards
+- [Security Policies](../../../../ops/security/narrative/security-policy.md) -- Security policy framework and standards
+- [Access Control](../../deploy/security/policies/access-control.md) -- Access control policies and role definitions
+- [Data Protection](../../../../ops/compliance/narrative/data-classification-policy.md) -- Data protection and encryption standards
 - [Incident Response](../operations/runbooks/incident-response.md) -- Security incident response procedures
 - Edge Proxy Overview (`./edge-proxy-overview.md`) -- Edge proxy architecture for field connectivity
 - Compliance OS Overview (`./compliance-os-overview.md`) -- Compliance operating system and automation
 - [Migrations Overview](migrations-overview.md) -- Data and service migration strategies
 - Infrastructure Economics (`./infrastructure-economics.md`) -- Cost modeling and optimization
-- [Compliance Templates](../compliance/compliance-templates-overview.md) -- Compliance template engine overview
+- [Compliance Templates](../../../../ops/compliance/narrative/compliance-templates-overview.md) -- Compliance template engine overview
 - Storage as Infrastructure (`./storage-as-infrastructure.md`) -- Storage architecture and data persistence
 - [Resilience Framework](../specs/resilience-framework.md) -- SPOF analysis, recovery targets, degradation tiers, and chaos testing
 - [Testing Framework](../specs/testing-framework.md) -- Test strategy, coverage targets, and CI test gates

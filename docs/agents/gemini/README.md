@@ -4,4 +4,4 @@
 | -------- | ------------------------------------------------- |
 | Entry    | [`.gemini/GEMINI.md`](../../../.gemini/GEMINI.md) |
 
-**Workspace:** [`workspace/`](../../../02-ops/) · **Universal:** [`universal/`](../universal/)
+**Workspace:** [`workspace/`](../../../ops/) · **Universal:** [`universal/`](../universal/)

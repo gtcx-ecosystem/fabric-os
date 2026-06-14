@@ -54,7 +54,7 @@ Bearer-token permissions follow the principal model:
 - `tools:read` — can call `/v1/tools`
 - `providers:read` — can call `/v1/providers`
 
-A token may carry multiple permissions. Token issuance and rotation: see [`../security/credential-rotation-log.md`](../security/credential-rotation-log.md).
+A token may carry multiple permissions. Token issuance and rotation: see [`../security/credential-rotation-log.md`](../../../../ops/security/narrative/credential-rotation-log.md).
 
 ## Error responses
 
@@ -110,5 +110,5 @@ The gateway intentionally does **not** expose:
 - [`../architecture/system-overview.md`](../architecture/system-overview.md) — system architecture
 - [`../architecture/compliance-substrate-deep-dive.md`](../architecture/compliance-substrate-deep-dive.md) — long-form architecture + failure modes
 - [`../operations/runbooks/deploy.md`](../operations/runbooks/deploy.md) — deployment runbook
-- [`../security/threat-model-2026-05.md`](../security/threat-model-2026-05.md) — STRIDE coverage of API surface
+- [`../security/threat-model-2026-05.md`](../../../../ops/security/narrative/threat-model-2026-05.md) — STRIDE coverage of API surface
 - Source: [`03-platform/tools/compliance-gateway/src/server.mjs`](../../03-platform/tools/compliance-gateway/src/server.mjs)

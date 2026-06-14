@@ -1,8 +1,8 @@
 ---
-title: Execution roadmap — Security-as-a-Service
+title: Execution roadmap — SecOps
 status: current
 date: 2026-06-14
-last_reconciled: 2026-06-14T09:29:20.082Z
+last_reconciled: 2026-06-14T09:47:58.171Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true
@@ -16,12 +16,12 @@ sources:
   - audit/evidence/secas-approval-check-latest.json
 ---
 
-# fabric-os SECaaS execution roadmap
+# fabric-os SecOps execution roadmap
 
 > **Generated file.** Edit `pm/secas-stories.json`, `pm/security-friction-register.json`, or
 > `pm/secas-roadmap.json`, then run `pnpm generate:secas-roadmap`.
 
-**Co-primary program:** Security-as-a-Service (SECaaS) — parallel to DaaS, not product PM.
+**Ops lane:** SecOps · **Functional product:** SECaaS — parallel to DevOps/InfraOps (DaaS), not product PM.
 
 ## Active Phase: SECAS-S2 — Pen-test execution post EXT-INF-002 approval
 

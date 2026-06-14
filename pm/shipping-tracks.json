@@ -9,7 +9,7 @@
       "label": "Fleet gates",
       "subtitle": "P35 + assurance fabric",
       "progressPct": 100,
-      "statusNote": "SECAS / DaaS / HaaS programme SoR"
+      "statusNote": "SecOps / DevOps / InfraOps programme SoR (DaaS · SECaaS IDs stable)"
     },
     {
       "id": "shipping-culture",
@@ -27,7 +27,7 @@
     }
   ],
   "narrative": {
-    "currentPhase": "assurance fabric owner — SECAS ingest awaiting vendor report",
+    "currentPhase": "assurance fabric owner — SecOps ingest awaiting vendor report",
     "nextMilestone": "pm:folder:check R1 green + pm:shipping:report witness"
   },
   "bottomLine": {

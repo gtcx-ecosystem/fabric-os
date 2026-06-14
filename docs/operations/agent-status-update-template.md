@@ -75,6 +75,13 @@ Spec: `pm/spec/agent-communication-protocol.json` (P45)
 - Protocol 28 class **A** or **S** only — **`blocksIR: false`** gates are parallel, not repo frozen.
 - Omit the heading when empty. Message **ends** here — no follow-up questions.
 
+### Parallel sovereign gates (fabric-os SecOps / LegalOps)
+
+- Use when vendor assurance, pen-test ingest, SOC2, or Class S legal gates are **calendar/custody waits** (`blocksIR: false`).
+- **Ops vocabulary:** **SecOps** (functional product SECaaS), **LegalOps**, **ComplianceOps** — see [ops-programs.md](./ops-programs.md).
+- Each gate: **What** · **Why** · **Implication** · **Who** · **When** · **Unblock** · `blocksIR: false` · **Does not block** engineering/IR.
+- **Forbidden:** terse `Approval needed: SECAS-S2-01-INGEST` one-liners on product repos — witness repos omit entirely.
+
 ---
 
 ## Task list (multi-step work)

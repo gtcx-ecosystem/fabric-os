@@ -48,6 +48,6 @@ if (WRITE) {
 for (const [k, v] of Object.entries(gates)) {
   console.log(`${v.ok !== false ? 'OK' : 'FAIL'} ${k}${v.count != null ? ` (${v.count})` : ''}`);
 }
-console.log(`\n${ok ? 'PASS' : 'FAIL'} — SECaaS friction gates`);
+console.log(`\n${ok ? 'PASS' : 'FAIL'} — SecOps friction gates`);
 if (WRITE) console.log(`witness: ${OUT}`);
 process.exit(ok ? 0 : 1);

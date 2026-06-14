@@ -86,7 +86,7 @@ function main() {
   const now = new Date().toISOString();
   const lines = [];
   lines.push('---');
-  lines.push('title: Execution roadmap — DevOps-as-a-Service');
+  lines.push('title: Execution roadmap — DevOps & InfraOps');
   lines.push('status: current');
   lines.push(`date: ${now.slice(0, 10)}`);
   lines.push(`last_reconciled: ${now}`);
@@ -109,13 +109,13 @@ function main() {
   lines.push('> **Generated file.** Edit `pm/daas-stories.json`, `pm/friction-register.json`, or');
   lines.push('> `pm/daas-roadmap.json`, then run `pnpm generate:roadmap`.');
   lines.push('');
-  lines.push('**Primary program:** DevOps-as-a-Service (DaaS) — not product ECO sprints.');
+  lines.push('**Ops lanes:** DevOps & InfraOps · **Functional product:** DaaS — not product ECO sprints.');
   lines.push('');
   if (allComplete) {
     lines.push('## Program status: **complete** (all DAAS sprints sealed)');
     lines.push('');
     lines.push(
-      '**Co-primary program:** Security-as-a-Service — see `audit/product-management/secas-execution-roadmap.md`.',
+      '**Co-primary program:** SecOps (SECaaS) — see `audit/product-management/secas-execution-roadmap.md`.',
     );
     lines.push('');
   }

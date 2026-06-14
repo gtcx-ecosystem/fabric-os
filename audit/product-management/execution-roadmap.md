@@ -1,8 +1,8 @@
 ---
-title: Execution roadmap — DevOps-as-a-Service
+title: Execution roadmap — DevOps & InfraOps
 status: current
-date: 2026-06-12
-last_reconciled: 2026-06-12T14:44:33.158Z
+date: 2026-06-14
+last_reconciled: 2026-06-14T09:47:58.502Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-DAAS
 generated: true
@@ -20,17 +20,17 @@ sources:
 > **Generated file.** Edit `pm/daas-stories.json`, `pm/friction-register.json`, or
 > `pm/daas-roadmap.json`, then run `pnpm generate:roadmap`.
 
-**Primary program:** DevOps-as-a-Service (DaaS) — not product ECO sprints.
+**Ops lanes:** DevOps & InfraOps · **Functional product:** DaaS — not product ECO sprints.
 
 ## Program status: **complete** (all DAAS sprints sealed)
 
-**Co-primary program:** Security-as-a-Service — see `audit/product-management/secas-execution-roadmap.md`.
+**Co-primary program:** SecOps (SECaaS) — see `audit/product-management/secas-execution-roadmap.md`.
 
 ## Active Phase: DAAS-S3 — Cost witness + env schedule automation
 
 **Status:** `complete`
 
-**Live probe:** AGX `api/health` → **200** (fleet witness 2026-06-10).
+**Live probe:** AGX `api/health` → **200** (fleet witness 2026-06-14).
 
 | Story      | Title                                                      | Priority | Status | Owner     |
 | ---------- | ---------------------------------------------------------- | -------- | ------ | --------- |
@@ -89,6 +89,7 @@ pnpm daas:fleet:health
 | `F1`                         | `pm/friction-register.json` | DAAS-S2-01      | done              |
 | `F2`                         | `pm/friction-register.json` | DAAS-S3-01      | done              |
 | `F6`                         | `pm/friction-register.json` | DAAS-S3-02      | done              |
+| `XR-MKT-RDS-VPC`             | `pm/friction-register.json` | —               | done              |
 | P41 hub protocol publication | `pm/_tasks`                 | gtcx-docs       | done (`a34baa8a`) |
 
 ## Unblock Order

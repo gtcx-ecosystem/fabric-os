@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "updated": "2026-06-14",
   "program": "Security-as-a-Service",
+  "opsLane": "SecOps",
+  "opsDisplayProgram": "SecOps",
   "initiative": "INIT-GTCX-INFRA-SECAS",
   "protocol": "P42-SECURITY-AS-A-SERVICE",
   "owner": "fabric-os",

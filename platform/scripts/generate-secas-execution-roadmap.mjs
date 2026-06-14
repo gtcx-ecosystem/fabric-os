@@ -76,7 +76,7 @@ function main() {
   const now = new Date().toISOString();
   const lines = [];
   lines.push('---');
-  lines.push('title: Execution roadmap — Security-as-a-Service');
+  lines.push('title: Execution roadmap — SecOps');
   lines.push('status: current');
   lines.push(`date: ${now.slice(0, 10)}`);
   lines.push(`last_reconciled: ${now}`);
@@ -93,12 +93,12 @@ function main() {
   if (existsSync(APPROVAL_EVIDENCE)) lines.push('  - audit/evidence/secas-approval-check-latest.json');
   lines.push('---');
   lines.push('');
-  lines.push('# fabric-os SECaaS execution roadmap');
+  lines.push('# fabric-os SecOps execution roadmap');
   lines.push('');
   lines.push('> **Generated file.** Edit `pm/secas-stories.json`, `pm/security-friction-register.json`, or');
   lines.push('> `pm/secas-roadmap.json`, then run `pnpm generate:secas-roadmap`.');
   lines.push('');
-  lines.push('**Co-primary program:** Security-as-a-Service (SECaaS) — parallel to DaaS, not product PM.');
+  lines.push('**Ops lane:** SecOps · **Functional product:** SECaaS — parallel to DevOps/InfraOps (DaaS), not product PM.');
   lines.push('');
   lines.push(`## Active Phase: ${activeSprint?.id ?? 'SECAS-S1'} — ${activeSprint?.name ?? 'SECaaS'}`);
   lines.push('');

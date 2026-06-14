@@ -5,10 +5,10 @@
   "tier": "platform",
   "updated": "2026-06-13",
   "vision": {
-    "statement": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
+    "statement": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
     "horizon": "2026-2028"
   },
-  "mission": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
+  "mission": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
   "northStarMetric": {
     "name": "Fabric OS milestone witness",
     "target": "ecosystem:product-culture:check PASS + composite ≥85",
@@ -18,9 +18,9 @@
     "for": "Operators and integrators consuming Fabric OS",
     "who": "need shippable outcomes traced to PRD and active milestone",
     "product": "Fabric OS",
-    "that": "Service fabric execution — DaaS, SECaaS, fleet env, deploy choreography",
+    "that": "Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
     "unlike": "Ad-hoc docs and sprint theater without product-goals trace",
-    "we": "Fabric OS — Service fabric execution — DaaS, SECaaS, fleet env, deploy choreography"
+    "we": "Fabric OS — DevOps, InfraOps, SecOps, fleet env, deploy choreography"
   },
   "customers": {
     "primarySegment": "GTCX fleet integrators — fabric-os",
@@ -30,7 +30,7 @@
   },
   "competition": {
     "alternatives": ["Generic SaaS without protocol trace"],
-    "differentiation": "Service fabric execution — DaaS, SECaaS, fleet env, deploy choreography",
+    "differentiation": "Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
     "soR": "pm/product/market-research/"
   },
   "gtm": {

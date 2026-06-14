@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "updated": "2026-06-10",
   "program": "DevOps-as-a-Service",
+  "opsLanes": ["DevOps", "InfraOps"],
+  "opsDisplayProgram": "DevOps & InfraOps",
   "initiative": "INIT-GTCX-INFRA-DAAS",
   "protocol": "P41-DEVOPS-AS-A-SERVICE",
   "owner": "fabric-os",

@@ -2,7 +2,9 @@
 
 **Lane:** **I — Infra** (cloud control plane for the GTCX trade ecosystem)
 
-Service fabric execution layer: AWS/EKS/Terraform, DaaS/SECaaS, staging/prod deploy, and fleet infra assurance. **Trade infrastructure core (C)** lives in sibling **`gtcx-os`** — fabric **runs** it; fabric does not define trade protocols or platform desks.
+Service fabric execution layer: AWS/EKS/Terraform, **DevOps · InfraOps · SecOps** (DaaS/SECaaS functional products), staging/prod deploy, and fleet infra assurance. **Trade infrastructure core (C)** lives in sibling **`gtcx-os`** — fabric **runs** it; fabric does not define trade protocols or platform desks.
+
+| Ops programs | [`docs/operations/ops-programs.md`](./docs/operations/ops-programs.md) |
 
 | Resource               | Path                                                                                                                                                   |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |

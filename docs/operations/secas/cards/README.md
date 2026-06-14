@@ -1,6 +1,8 @@
-# SECaaS per-repo security cards
+# SecOps per-repo security cards
 
-Per-repo Security-as-a-Service action cards for stack security operators.
+> **Ops lane:** SecOps · **Functional product:** SECaaS · **Registry:** [ops-programs.md](../../ops-programs.md)
+
+Per-repo stack security action cards for SecOps operators.
 
 | Card                                        | Repo / lane       | laneId | Focus                                         |
 | ------------------------------------------- | ----------------- | ------ | --------------------------------------------- |

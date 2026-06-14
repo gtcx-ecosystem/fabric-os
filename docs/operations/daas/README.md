@@ -1,14 +1,17 @@
 ---
-title: DevOps-as-a-Service — per-repo cards
+title: DevOps & InfraOps — per-repo cards
 status: current
-date: 2026-06-10
-owner: gtcx-infrastructure
+date: 2026-06-14
+owner: fabric-os
 protocol: P41-DEVOPS-AS-A-SERVICE
+opsLanes: [DevOps, InfraOps]
 ---
 
-# DaaS per-repo cards
+# DevOps & InfraOps per-repo cards
 
-Machine-indexed operational cards for **gtcx-infrastructure** primary roadmap (DAAS-S2+).
+> **Functional product:** DaaS · **Registry:** [ops-programs.md](../ops-programs.md)
+
+Machine-indexed operational cards for fabric-os primary roadmap (DAAS-S2+).
 
 | Card                                      | Friction   | Deploy mode       | Status      |
 | ----------------------------------------- | ---------- | ----------------- | ----------- |

@@ -1,0 +1,61 @@
+{
+  "schema": "gtcx://fabric-os/payops-fleet-inventory/v1",
+  "opsLane": "PayOps",
+  "checkedAt": "2026-06-14T10:21:59.300Z",
+  "owner": "fabric-os",
+  "gates": {
+    "register": {
+      "ok": true
+    },
+    "domainRegistry": {
+      "ok": true
+    },
+    "opsDoc": {
+      "ok": true
+    },
+    "stripeDuplication": {
+      "ok": false,
+      "count": 3,
+      "repos": ["terminal-os", "sensei-os", "compliance-os"],
+      "note": "Target: fabric PayOps substrate — until then expect >1"
+    },
+    "openP0": {
+      "ok": true,
+      "count": 3,
+      "ids": ["PAY-FLEET-01", "PAY-FLEET-02", "PAY-SUB-01"]
+    }
+  },
+  "inventory": {
+    "stripeConsumers": [
+      {
+        "repo": "terminal-os",
+        "provider": "stripe",
+        "present": true,
+        "paths": ["platform/web/lib/stripe", "app/api/stripe"]
+      },
+      {
+        "repo": "sensei-os",
+        "provider": "stripe",
+        "present": true,
+        "paths": ["platform/apps/api/src/services/stripe.ts"]
+      },
+      {
+        "repo": "compliance-os",
+        "provider": "stripe",
+        "present": true,
+        "paths": ["platform/services/caas/src/lib/billing.ts"]
+      }
+    ],
+    "flutterwaveConsumers": [
+      {
+        "repo": "griot-ai",
+        "provider": "flutterwave",
+        "present": true,
+        "paths": ["platform/src/api/routes/billing.ts", "billing/flutterwave.js"]
+      }
+    ],
+    "substrateStatus": "planned"
+  },
+  "openP0": 3,
+  "ok": true
+}

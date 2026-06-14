@@ -201,7 +201,7 @@ flowchart LR
 | **Magic**             | One revenue headline — pricing, pilot motion, unit economics, time-to-first-dollar — without payment-rail runbooks         |
 | **Business outcomes** | GR-T2 pilot revenue clarity; margin-aware GTM; honest economics in Proceed Brief                                           |
 
-**Functional product:** **GTMaaS** (GTM revenue track) — `pm/gtm-friction-register.json` · [gtm-as-a-service.md](./gtm-as-a-service.md)
+**Functional product:** **GTMaaS** (GTM revenue track) — `pm/gtm-friction-register.json` · [revops-as-a-service.md](./revops-as-a-service.md) · [gtm-as-a-service.md](./gtm-as-a-service.md)
 
 ### PayOps
 
@@ -215,7 +215,7 @@ flowchart LR
 | **Magic**             | Product defines tier (RevOps); PayOps delivers live checkout + webhook + payout rail — same sprint               |
 | **Business outcomes** | Time-to-first-dollar execution; fewer payment incidents; trade/gov rails never collapsed into SaaS Stripe        |
 
-**Fleet registry:** `bridge-os/pm/spec/payops-domain-registry.json` · Forensic: [ecosystem-revops-commops-forensic-2026-06-14.md](../../audit/ecosystem-revops-commops-forensic-2026-06-14.md)
+**Fleet registry:** `bridge-os/pm/spec/payops-domain-registry.json` · **Friction:** `pm/payops-friction-register.json` · [payops-as-a-service.md](./payops-as-a-service.md)
 
 ### BizOps _(legacy — merged into RevOps)_
 

@@ -48,11 +48,11 @@ method: ripgrep provider/env/code scan + implementation file trace (not sample r
 
 | Class                         | Owner repos                                               | Provider examples                           | Ops lane                   |
 | ----------------------------- | --------------------------------------------------------- | ------------------------------------------- | -------------------------- |
-| **SaaS subscription**         | terminal-os, sensei-os, nyota-ai, compliance-os, griot-ai | Stripe, Flutterwave                         | **RevOps**                 |
-| **Usage / invoicing**         | compliance-os, gtcx-os veritas (tier math only)           | Stripe Invoicing                            | **RevOps**                 |
-| **Gov / concession fees**     | terra-os                                                  | M-Pesa stub, manual record                  | **PayOps** (product)       |
-| **Trade / capital formation** | markets-os                                                | Wire, escrow, authority URL, custody ledger | **PayOps** (product)       |
-| **Marketplace payout**        | gtcx-os `@gtcx/billing`                                   | Stripe Connect, Flutterwave                 | **RevOps** + product split |
+| **SaaS subscription**         | terminal-os, sensei-os, nyota-ai, compliance-os, griot-ai | Stripe, Flutterwave                         | **PayOps** (execution)     |
+| **Usage / invoicing**         | compliance-os, gtcx-os veritas (tier math only)           | Stripe Invoicing                            | **PayOps** (execution)     |
+| **Gov / concession fees**     | terra-os                                                  | M-Pesa stub, manual record                  | **PayOps** (domain)        |
+| **Trade / capital formation** | markets-os                                                | Wire, escrow, authority URL, custody ledger | **PayOps** (domain)        |
+| **Marketplace payout**        | gtcx-os `@gtcx/billing`                                   | Stripe Connect, Flutterwave                 | **PayOps** + product split |
 | **In-app only**               | compliance-os, ledger-ui                                  | AuditLog notifications — no external send   | Product                    |
 | **Protocol webhooks**         | veritas-ai, nyota-ai, terminal-os                         | HMAC webhooks — not billing                 | SecOps ingress             |
 
@@ -171,13 +171,13 @@ method: ripgrep provider/env/code scan + implementation file trace (not sample r
 
 ## Centralization forensic recommendation
 
-### Centralize in fabric (RevOps + CommOps engines)
+### Centralize in fabric (PayOps substrate + CommOps engines)
 
 1. **Provider registry** — Stripe (accounts per env), SendGrid, Africa's Talking, Twilio, Resend, Flutterwave — with owner repo consumption map.
 2. **SM path contract** — e.g. `gtcx/shared/staging/rev/stripe`, `gtcx/shared/staging/comm/sendgrid`.
 3. **Webhook ingress matrix** — extend infra-per-repo-action-matrix.
 4. **Env name contract** — gtcx-protocols / Protocol 19 alignment (single `STRIPE_WEBHOOK_SECRET` naming).
-5. **Fleet harness** — `revops:providers:check`, `commops:deliverability:check`.
+5. **Fleet harness** — `payops:providers:check`, `commops:deliverability:check`.
 6. **LegalOps subprocessor index** — one SoR linking compliance-os DPA + fleet vendors.
 
 ### Keep in product repos (PayOps / engineering)
@@ -199,24 +199,24 @@ method: ripgrep provider/env/code scan + implementation file trace (not sample r
 
 ## P0–P2 findings register
 
-| ID            | Sev | Finding                                                                           | Owner                    |
-| ------------- | --- | --------------------------------------------------------------------------------- | ------------------------ |
-| REV-FLEET-01  | P0  | Five Stripe integrations without shared webhook/secret contract                   | fabric-os RevOps         |
-| COMM-FLEET-01 | P0  | SendGrid + AT + Twilio implemented 3×; no deliverability SoR                      | fabric-os CommOps        |
-| REV-FLEET-02  | P0  | Flutterwave (griot) + Stripe (4 repos) — dual SaaS rails unregistered             | fabric RevOps            |
-| FABRIC-01     | P1  | Fabric SM only documents terminal-os; terra/sensei/nyota/compliance/griot absent  | fabric InfraOps          |
-| LEGAL-01      | P1  | Subprocessor list not fleet-unified for Stripe/Twilio/SendGrid/Flutterwave        | LegalOps + compliance-os |
-| GTCX-OS-01    | P1  | `gtcx-os` monorepo still holds billing package — extraction drift risk            | bridge + product repos   |
-| TERRA-01      | P2  | M-Pesa/mobile_money still STUB — PayOps not production                            | terra-os                 |
-| MKT-01        | —   | markets-os payment surface is trade-domain — classify PayOps not RevOps           | markets-os               |
-| DOC-01        | P2  | canon/agile partnership docs reference AT/Flutterwave without fleet registry link | canon-os                 |
+| ID            | Sev | Finding                                                                           | Owner                      |
+| ------------- | --- | --------------------------------------------------------------------------------- | -------------------------- |
+| REV-FLEET-01  | P0  | Five Stripe integrations without shared webhook/secret contract                   | fabric-os PayOps substrate |
+| COMM-FLEET-01 | P0  | SendGrid + AT + Twilio implemented 3×; no deliverability SoR                      | fabric-os CommOps          |
+| REV-FLEET-02  | P0  | Flutterwave (griot) + Stripe (4 repos) — dual SaaS rails unregistered             | fabric PayOps substrate    |
+| FABRIC-01     | P1  | Fabric SM only documents terminal-os; terra/sensei/nyota/compliance/griot absent  | fabric InfraOps            |
+| LEGAL-01      | P1  | Subprocessor list not fleet-unified for Stripe/Twilio/SendGrid/Flutterwave        | LegalOps + compliance-os   |
+| GTCX-OS-01    | P1  | `gtcx-os` monorepo still holds billing package — extraction drift risk            | bridge + product repos     |
+| TERRA-01      | P2  | M-Pesa/mobile_money still STUB — PayOps not production                            | terra-os                   |
+| MKT-01        | —   | markets-os payment surface is trade-domain — classify PayOps not RevOps           | markets-os                 |
+| DOC-01        | P2  | canon/agile partnership docs reference AT/Flutterwave without fleet registry link | canon-os                   |
 
 ---
 
 ## Next forensic actions (Class R)
 
-1. **Provider inventory script** — `platform/scripts/revops-fleet-provider-inventory.mjs` scanning all 16 repos → `audit/evidence/revops-fleet-inventory-latest.json`.
-2. **Extend CORE** — wire RevOps/CommOps from `planned` → `active` with friction registers.
+1. **Provider inventory script** — `pnpm payops:providers:check:write` → `audit/evidence/payops-fleet-inventory-latest.json`.
+2. **Extend CORE** — PayOps substrate + CommOps from `planned` → `active` with friction registers.
 3. **DPA sweep** — compliance-os `dpa-template.md` + canon subprocessor templates → fleet register.
 4. **Webhook matrix PR** — fabric `infra-per-repo-action-matrix` addendum.
 

@@ -14,7 +14,7 @@ initiative: INIT-GTCX-SERVICE-FABRIC
 
 **Normative:** `canon-os/docs/governance/protocols/44-fabric-consumption/protocol.md`  
 **Machine spec:** `bridge-os/pm/spec/service-fabric.json`  
-**CORE module:** [core.md](./core.md#bizops) · **Ops registry:** [ops-programs.md](./ops-programs.md)  
+**CORE module:** [core.md](./core.md#revops) · **CRO doc:** [revops-as-a-service.md](./revops-as-a-service.md)  
 **Friction SoR:** `pm/gtm-friction-register.json`
 
 ## Obligation

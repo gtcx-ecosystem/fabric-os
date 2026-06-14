@@ -1,0 +1,23 @@
+{
+  "schema": "gtcx://fabric-os/revops-friction-check/v1",
+  "opsLane": "RevOps",
+  "checkedAt": "2026-06-14T10:21:59.520Z",
+  "owner": "bridge-os",
+  "registerHost": "fabric-os",
+  "gates": {
+    "revopsRegister": {
+      "ok": true
+    },
+    "gtmRegister": {
+      "ok": true
+    },
+    "opsDoc": {
+      "ok": true
+    },
+    "revopsLane": {
+      "ok": true,
+      "lane": "RevOps"
+    }
+  },
+  "ok": true
+}

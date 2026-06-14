@@ -1,0 +1,47 @@
+{
+  "$schema": "gtcx://fabric-os/payops-friction-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-14",
+  "program": "PayOps",
+  "opsLane": "PayOps",
+  "opsDisplayProgram": "PayOps",
+  "initiative": "INIT-GTCX-SERVICE-FABRIC",
+  "owner": "fabric-os",
+  "principle": "Payment execution friction — billing substrate, webhooks, checkout rails. Revenue strategy lives in RevOps (CRO), not here.",
+  "items": [
+    {
+      "id": "PAY-FLEET-01",
+      "priority": "P0",
+      "status": "open",
+      "title": "Five Stripe integrations without shared webhook/secret contract",
+      "blocksIR": false,
+      "class": "R",
+      "finding": "REV-FLEET-01"
+    },
+    {
+      "id": "PAY-FLEET-02",
+      "priority": "P0",
+      "status": "open",
+      "title": "Flutterwave + Stripe dual SaaS rails unregistered in fabric substrate",
+      "blocksIR": false,
+      "class": "R",
+      "finding": "REV-FLEET-02"
+    },
+    {
+      "id": "PAY-SUB-01",
+      "priority": "P0",
+      "status": "open",
+      "title": "Fabric SM path contract for shared billing providers",
+      "blocksIR": false,
+      "class": "R"
+    },
+    {
+      "id": "PAY-SUB-02",
+      "priority": "P1",
+      "status": "open",
+      "title": "Webhook ingress matrix in infra-per-repo-action-matrix",
+      "blocksIR": false,
+      "class": "R"
+    }
+  ]
+}

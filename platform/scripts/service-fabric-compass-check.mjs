@@ -16,7 +16,18 @@ const OUT = join(ROOT, 'audit/evidence/service-fabric-compass-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
 
+function resolveRegisterPath(registerSpec) {
+  if (registerSpec.startsWith('bridge-os/')) {
+    return join(BRIDGE, registerSpec.slice('bridge-os/'.length));
+  }
+  for (const prefix of ['fabric-os/', 'gtcx-infrastructure/']) {
+    if (registerSpec.startsWith(prefix)) return join(ROOT, registerSpec.slice(prefix.length));
+  }
+  return join(ROOT, registerSpec);
+}
+
 function fabricRegisterRel(registerSpec) {
+  if (registerSpec.startsWith('bridge-os/')) return registerSpec;
   for (const prefix of ['fabric-os/', 'gtcx-infrastructure/']) {
     if (registerSpec.startsWith(prefix)) return registerSpec.slice(prefix.length);
   }
@@ -35,7 +46,7 @@ function main() {
   for (const svc of spec.services ?? []) {
     if (!svc.register) continue;
     const rel = fabricRegisterRel(svc.register);
-    const path = join(ROOT, rel);
+    const path = resolveRegisterPath(svc.register);
     gates.registers[svc.id] = { ok: existsSync(path), path: rel, status: svc.status };
   }
 

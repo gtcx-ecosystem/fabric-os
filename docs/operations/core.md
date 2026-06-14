@@ -41,7 +41,7 @@ flowchart LR
 | **Reason** | Persona + RAG + rubric + cost-router + decision cards                      | `repo-persona-profiles`, baseline-os MCP/RAG, `five-pillar-evaluation`               |
 | **Act**    | P27 in-session execution; Class R/A/S split                                | Protocol 27, fabric REM delegation, ZenHub `REM-*`                                   |
 | **Learn**  | Witness → patterns; eval-gated tool scout; meta-learning cards             | `.baseline/memory/patterns.md`, TAAS eval, `agent-tool-scout`                        |
-| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, BizOps, `blocksIR: false`                           |
+| **Gate**   | Parallel sovereign lanes — never freeze product IR                         | SecOps, LegalOps, ComplianceOps, ProductOps, DesignOps, BizOps, `blocksIR: false`    |
 
 **Meta-learning rule:** Every CORE run writes **decision provenance** — what was sensed, which rubric fired, what was tried, exit code, witness path. The next cycle reasons over history, not chat memory.
 
@@ -147,6 +147,34 @@ flowchart LR
 | **Magic**             | `pnpm agent:next-work` — one story, one owner, no menus — fleet moves as one organism       |
 | **Business outcomes** | Roadmap % true; sprint seals mean something; icebox clears with evidence                    |
 
+### ProductOps
+
+| Dimension             | Specification                                                                                                |
+| --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Runtime**           | PRD index, product-goals, active milestone DoD, story→PRD trace, enterprise-pilot product gates              |
+| **Agentic team**      | `product-strategist` (lead) · bridge program office · product-repo PM liaisons (read-only cards)             |
+| **Intelligence loop** | Milestone gap → product-culture check → PRD/goal hygiene → shippable witness → fleet rollup                  |
+| **Innovation moat**   | **PRD dictates, roadmap executes** — `ROADMAP-COMPLETE ≠ shippable`; one product-culture protocol fleet-wide |
+| **Trust fortress**    | Proceed Brief must cite milestone + PRD ref; P22 engineering never substitutes for product definition        |
+| **Magic**             | One headline: active milestone, shippable outcome, PRD trace — without sprint-count theater                  |
+| **Business outcomes** | Honest done semantics; pilot-ready product integrity; feature work traces to customer value                  |
+
+**Protocol:** `INIT-PRODUCT-DEVELOPMENT-CULTURE` — `bridge-os/pm/spec/product-development-culture-protocol.json`
+
+### DesignOps
+
+| Dimension             | Specification                                                                                                      |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Runtime**           | UX SoR registry, EXR packs, operator journey spine, pm/ux scaffold + deep traceability, ledger-ui design canon     |
+| **Agentic team**      | `product-designer` (lead) · ledger-ui design SoR · bridge UX harness                                               |
+| **Intelligence loop** | Craft/TE gap → ux-sor pack fail → scaffold or deep uplift → EXR validate → ux-sor fleet witness                    |
+| **Innovation moat**   | **Auditable UX once** — scaffold ≠ deep; pilot repos prove pm/ux traceability before Craft scoring unlocks         |
+| **Trust fortress**    | P21 parallel lane; demo/EXR paths persona-routed; no blank-form or dashboard-as-report anti-patterns in acceptance |
+| **Magic**             | Product ships UI; DesignOps proves journey + EXR + traceability — operator demos with evidence, not wireframes     |
+| **Business outcomes** | Craft pillar lift; demo-ready surfaces; continental UX consistency via shared design system                        |
+
+**Functional product:** **UXaaS** — `bridge-os/pm/spec/ux-sor-registry.json` · Protocol P21
+
 ### BizOps
 
 | Dimension             | Specification                                                                                                        |
@@ -247,12 +275,12 @@ flowchart LR
 
 ## Implementation sequence
 
-| Phase          | CORE lanes                                     | Deliverable                                                             |
-| -------------- | ---------------------------------------------- | ----------------------------------------------------------------------- |
-| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **BizOps** | Witness cycles, cards, rollups — **operational**; GTM friction register |
-| **Next**       | RevOps, CommOps                                | Provider registry + SM paths + webhook matrix + friction registers      |
-| **Then**       | MLOps, AIOps depth                             | Eval promotion gate wired to every model/agent release                  |
-| **Continuous** | All                                            | `core-runtime-engine-protocol.json` harness per lane                    |
+| Phase          | CORE lanes                                                                    | Deliverable                                                               |
+| -------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **Now**        | SecOps, DevOps, InfraOps, FleetOps, **ProductOps**, **DesignOps**, **BizOps** | Witness cycles, cards, rollups — product-culture + ux-sor + GTM registers |
+| **Next**       | RevOps, CommOps                                                               | Provider registry + SM paths + webhook matrix + friction registers        |
+| **Then**       | MLOps, AIOps depth                                                            | Eval promotion gate wired to every model/agent release                    |
+| **Continuous** | All                                                                           | `core-runtime-engine-protocol.json` harness per lane                      |
 
 ---
 

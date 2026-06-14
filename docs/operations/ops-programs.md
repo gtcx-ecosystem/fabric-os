@@ -1,5 +1,5 @@
 ---
-title: GTCX Ops programs — DevOps, SecOps, InfraOps, MLOps, AIOps, BizOps
+title: GTCX Ops programs — DevOps, SecOps, InfraOps, MLOps, AIOps, ProductOps, DesignOps, BizOps
 status: current
 date: 2026-06-14
 owner: fabric-os
@@ -7,7 +7,7 @@ owner: fabric-os
 
 # GTCX Ops programs
 
-> **Operator vocabulary:** **DevOps**, **SecOps**, **InfraOps**, **MLOps**, **AIOps**, **BizOps**, **RevOps**, **CommOps**, **LegalOps**, **ComplianceOps**.  
+> **Operator vocabulary:** **DevOps**, **SecOps**, **InfraOps**, **MLOps**, **AIOps**, **ProductOps**, **DesignOps**, **BizOps**, **RevOps**, **CommOps**, **LegalOps**, **ComplianceOps**.  
 > **Functional products (stable machine IDs):** DaaS, SECaaS — protocols P41/P42, initiatives, `pnpm` script prefixes unchanged.
 
 Product engineering stays in **owner repos**. Specialist **Ops lanes** run in parallel (`blocksIR: false`) on fabric-os, bridge-os, compliance-os, agile-os, and intelligence surfaces.
@@ -24,6 +24,8 @@ Product engineering stays in **owner repos**. Specialist **Ops lanes** run in pa
 | **ComplianceOps** | Regulatory evidence, reference-grade lifts, risk/compliance registers          | compliance-os                           | INT-REF                 | —           | compliance-os `pnpm agent:next-work`                      |
 | **LegalOps**      | Class S sovereign gates — SOW, DTF, EXT-INF, human signatures                  | agile-os · register canon-os            | Legal program           | —           | `ecosystem:legal-program:check`                           |
 | **FleetOps**      | Intake, witness rollup, ZenHub, coordination                                   | bridge-os                               | —                       | P22 harness | `pnpm ecosystem:secas:rollup:write`                       |
+| **ProductOps**    | PRD SoR, product-goals, milestone DoD, shippable ≠ roadmap-complete            | bridge-os                               | _(protocol)_            | PDC         | `pnpm ecosystem:product-culture:check`                    |
+| **DesignOps**     | UX SoR, EXR packs, journey spine, design system, pm/ux traceability            | bridge-os (+ ledger-ui design SoR)      | **UXaaS**               | P21         | `pnpm ecosystem:ux-sor:check:fleet`                       |
 | **BizOps**        | GTM execution, pilot DoD, LOI/DTF, partner motion, business metrics witnesses  | fabric-os (+ bridge program office)     | **GTMaaS**              | P44         | [gtm-as-a-service.md](./gtm-as-a-service.md)              |
 | **RevOps**        | Billing provider substrate, webhooks, metering rollup _(planned)_              | fabric-os                               | _(planned)_             | —           | [core.md](./core.md#revops-planned)                       |
 | **CommOps**       | Email, SMS, push providers, deliverability _(planned)_                         | fabric-os                               | _(planned)_             | —           | [core.md](./core.md#commops-planned)                      |
@@ -35,13 +37,15 @@ Machine registry: `bridge-os/pm/spec/ops-programs-registry.json`
 
 ## Four-plane model (Ops naming)
 
-| Plane       | Ops name                      | Owner                             | Product repo                                      |
-| ----------- | ----------------------------- | --------------------------------- | ------------------------------------------------- |
-| Engineering | **Product engineering**       | Product repo                      | Features, app security, app threat models         |
-| Delivery    | **DevOps** + **InfraOps**     | fabric-os                         | Handoff only — no `kubectl apply` in product PM   |
-| Security    | **SecOps**                    | fabric-os                         | Stack security handoff + evidence                 |
-| Normative   | Assurance / **ComplianceOps** | canon · protocols · compliance-os | Witness parallel — never blocks IR                |
-| Business    | **BizOps**                    | fabric-os · bridge-os             | GTM / pilot friction parallel (`blocksIR: false`) |
+| Plane       | Ops name                      | Owner                             | Product repo                                       |
+| ----------- | ----------------------------- | --------------------------------- | -------------------------------------------------- |
+| Engineering | **Product engineering**       | Product repo                      | Features, app security, app threat models          |
+| Delivery    | **DevOps** + **InfraOps**     | fabric-os                         | Handoff only — no `kubectl apply` in product PM    |
+| Security    | **SecOps**                    | fabric-os                         | Stack security handoff + evidence                  |
+| Normative   | Assurance / **ComplianceOps** | canon · protocols · compliance-os | Witness parallel — never blocks IR                 |
+| Product     | **ProductOps**                | bridge-os                         | PRD + milestone trace parallel (`blocksIR: false`) |
+| Experience  | **DesignOps**                 | bridge-os · ledger-ui             | UX SoR parallel — not feature UI implementation    |
+| Business    | **BizOps**                    | fabric-os · bridge-os             | GTM / pilot friction parallel (`blocksIR: false`)  |
 
 ## Product repos under new attack surfaces (AI, Mythos, quantum)
 
@@ -74,23 +78,27 @@ Machine registry: `bridge-os/pm/spec/ops-programs-registry.json`
 | ComplianceOps       | `compliance-officer`                        | regulatory-audit |
 | MLOps / AIOps       | `security-engineer` + product ML owner      | development      |
 | LegalOps            | Human + compliance-officer witness          | regulatory-audit |
+| ProductOps          | `product-strategist`                        | trading-floor    |
+| DesignOps           | `product-designer`                          | development      |
 | BizOps              | `product-strategist`                        | trading-floor    |
 | RevOps / CommOps    | `product-strategist` + `platform-architect` | development      |
 | Product engineering | persona per repo                            | development      |
 
 ## Stable IDs (do not rename in machine artifacts)
 
-| Legacy / functional     | Ops display name          |
-| ----------------------- | ------------------------- |
-| `INIT-GTCX-INFRA-DAAS`  | DevOps + InfraOps         |
-| `INIT-GTCX-INFRA-SECAS` | SecOps                    |
-| `pnpm daas:*`           | DevOps / InfraOps harness |
-| `pnpm secas:*`          | SecOps harness            |
-| `DAAS-S*` stories       | DevOps sprint IDs         |
-| `SECAS-S*` stories      | SecOps sprint IDs         |
-| DaaS                    | DevOps functional product |
-| SECaaS                  | SecOps functional product |
-| GTMaaS                  | BizOps functional product |
+| Legacy / functional     | Ops display name                                 |
+| ----------------------- | ------------------------------------------------ |
+| `INIT-GTCX-INFRA-DAAS`  | DevOps + InfraOps                                |
+| `INIT-GTCX-INFRA-SECAS` | SecOps                                           |
+| `pnpm daas:*`           | DevOps / InfraOps harness                        |
+| `pnpm secas:*`          | SecOps harness                                   |
+| `DAAS-S*` stories       | DevOps sprint IDs                                |
+| `SECAS-S*` stories      | SecOps sprint IDs                                |
+| DaaS                    | DevOps functional product                        |
+| SECaaS                  | SecOps functional product                        |
+| UXaaS                   | DesignOps functional product                     |
+| GTMaaS                  | BizOps functional product                        |
+| QAAS                    | QA ship-gate _(not DesignOps — independent UAT)_ |
 
 ## Cross-repo routing
 
@@ -100,4 +108,6 @@ Spec: `bridge-os/pm/spec/engineering-lane-abstraction-protocol.json`
 - SecOps gates → **Parallel sovereign gates** / **Parallel assurance lane** — fabric-os owner.
 - LegalOps → **Parallel sovereign gates** — agile-os / canon.
 - BizOps → **Parallel business lane** — fabric-os register + bridge program office (`blocksIR: false`).
-- Redirect: `security` → fabric-os · `legal` → agile-os · `gtm` → fabric-os · `documentation` → canon-os.
+- ProductOps → **Parallel product lane** — bridge-os product-culture protocol (`blocksIR: false`).
+- DesignOps → **Parallel experience lane** — bridge-os UX SoR + ledger-ui design canon (`blocksIR: false`).
+- Redirect: `security` → fabric-os · `legal` → agile-os · `gtm` → fabric-os · `product` → bridge-os · `ux` → bridge-os · `documentation` → canon-os.

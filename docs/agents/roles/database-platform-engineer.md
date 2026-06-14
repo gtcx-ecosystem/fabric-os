@@ -146,6 +146,6 @@ Owns the schema and sync protocol for edge SQLite instances. Ensures that data o
 | Backup policy              | `01-docs/engineering/4-data/backup-policy.md`              |
 | Edge sync design           | `01-docs/engineering/4-data/edge-sync.md`                  |
 | DB restore runbook         | `01-docs/04-ops/runbooks/db-restore.md`                    |
-| Migration files            | `04-deploy/db/migrations/`                                   |
-| Edge SQLite schema         | `04-deploy/db/edge/`                                         |
+| Migration files            | `04-deploy/db/migrations/`                                 |
+| Edge SQLite schema         | `04-deploy/db/edge/`                                       |
 | Safety rules               | `01-docs/01-agents/workflows/safety-rules.md`              |

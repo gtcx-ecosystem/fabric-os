@@ -114,8 +114,8 @@ terraform apply
 
 Documentation for the _deployment_ of these components is maintained here. Functional and code-level documentation resides in the `sensei-ai` repository.
 
-| Script                                                    | Purpose                                     |
-| :-------------------------------------------------------- | :------------------------------------------ |
+| Script                                                      | Purpose                                     |
+| :---------------------------------------------------------- | :------------------------------------------ |
 | `04-deploy/migrations/03-platform/scripts/generate_docs.py` | Generate deployment documentation templates |
 | `04-deploy/migrations/03-platform/scripts/check_docs.py`    | Audit deployment doc completeness           |
 

@@ -28,7 +28,7 @@ review_cycle: 'on-change'
 | SSM parameter (key ARN) | `/gtcx/production/kms/signing-key-arn`                                         | ✅ Live    |
 | IRSA role               | `arn:aws:iam::348389439381:role/gtcx-production-platforms-irsa`                | ✅ Live    |
 | CloudWatch alarm        | `unexpected-kms-sign-production`                                               | ✅ Live    |
-| ServiceAccount manifest | `04-deploy/kubernetes/base/service-accounts/gtcx-platforms.yaml`                 | ✅ In repo |
+| ServiceAccount manifest | `04-deploy/kubernetes/base/service-accounts/gtcx-platforms.yaml`               | ✅ In repo |
 
 ## Required from Platforms Team (`gtcx-platforms`)
 

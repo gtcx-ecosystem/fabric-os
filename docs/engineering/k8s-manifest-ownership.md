@@ -31,16 +31,16 @@ gtcx-protocols/deploy/                    ← Application team
 
 ### Specific conflicts
 
-| Resource              | Infrastructure repo                                           | Protocols repo                               | Conflict                                             |
-| --------------------- | ------------------------------------------------------------- | -------------------------------------------- | ---------------------------------------------------- |
-| **Service mesh**      | `overlays/production/linkerd/` (Linkerd mTLS)                 | `deploy/k8s/istio-mtls.yaml` (Istio mTLS)    | Two different service meshes. Can't run both.        |
-| **Network policy**    | `overlays/production/network-policies.yaml`                   | `deploy/k8s/network-policy.yaml`             | Two policy sets, likely overlapping or contradicting |
+| Resource              | Infrastructure repo                                             | Protocols repo                               | Conflict                                             |
+| --------------------- | --------------------------------------------------------------- | -------------------------------------------- | ---------------------------------------------------- |
+| **Service mesh**      | `overlays/production/linkerd/` (Linkerd mTLS)                   | `deploy/k8s/istio-mtls.yaml` (Istio mTLS)    | Two different service meshes. Can't run both.        |
+| **Network policy**    | `overlays/production/network-policies.yaml`                     | `deploy/k8s/network-policy.yaml`             | Two policy sets, likely overlapping or contradicting |
 | **Prometheus alerts** | `04-deploy/monitoring/alerts/protocol-alerts.yml`               | `deploy/monitoring/prometheus-alerts.yaml`   | Duplicate alert definitions for same service         |
 | **SLO rules**         | `04-deploy/monitoring/rules/slo-recording-rules.yml`            | `deploy/monitoring/slo-recording-rules.yaml` | Duplicate recording rules                            |
 | **Deployment**        | `04-deploy/kubernetes/base/services/api.yaml`                   | `deploy/k8s/deployment.yaml`                 | Two deployment manifests for protocols               |
 | **Service**           | `04-deploy/kubernetes/base/services/protocols.yaml` (ClusterIP) | `deploy/k8s/service.yaml`                    | Two service definitions                              |
-| **HPA**               | Defined in `base/services/api.yaml`                           | `deploy/k8s/hpa.yaml`                        | Duplicate autoscaling config                         |
-| **PDB**               | Defined in `base/services/api.yaml`                           | `deploy/k8s/pdb.yaml`                        | Duplicate disruption budget                          |
+| **HPA**               | Defined in `base/services/api.yaml`                             | `deploy/k8s/hpa.yaml`                        | Duplicate autoscaling config                         |
+| **PDB**               | Defined in `base/services/api.yaml`                             | `deploy/k8s/pdb.yaml`                        | Duplicate disruption budget                          |
 
 ### Risk
 
@@ -55,15 +55,15 @@ gtcx-protocols/deploy/                    ← Application team
 
 ### Principle: App teams own app manifests. Platform team owns platform boundaries.
 
-| Concern                                | Owner              | Repo                                                                  | Rationale                                             |
-| -------------------------------------- | ------------------ | --------------------------------------------------------------------- | ----------------------------------------------------- |
-| Deployment spec (replicas, image, env) | **Protocols**      | `gtcx-protocols/deploy/k8s/deployment.yaml`                           | App team knows resource needs, startup args, env vars |
-| Service definition                     | **Protocols**      | `gtcx-protocols/deploy/k8s/service.yaml`                              | App team knows which ports to expose                  |
-| HPA (autoscaling)                      | **Protocols**      | `gtcx-protocols/deploy/k8s/hpa.yaml`                                  | App team knows scaling characteristics                |
-| PDB (disruption budget)                | **Protocols**      | `gtcx-protocols/deploy/k8s/pdb.yaml`                                  | App team knows availability requirements              |
-| ConfigMap                              | **Protocols**      | `gtcx-protocols/deploy/k8s/configmap.yaml`                            | App-specific configuration                            |
-| Migration job                          | **Protocols**      | `gtcx-protocols/deploy/k8s/migration-job.yaml`                        | App owns schema migrations                            |
-| Prometheus alerts                      | **Protocols**      | `gtcx-protocols/deploy/monitoring/prometheus-alerts.yaml`             | App team knows what to alert on                       |
+| Concern                                | Owner              | Repo                                                                    | Rationale                                             |
+| -------------------------------------- | ------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------- |
+| Deployment spec (replicas, image, env) | **Protocols**      | `gtcx-protocols/deploy/k8s/deployment.yaml`                             | App team knows resource needs, startup args, env vars |
+| Service definition                     | **Protocols**      | `gtcx-protocols/deploy/k8s/service.yaml`                                | App team knows which ports to expose                  |
+| HPA (autoscaling)                      | **Protocols**      | `gtcx-protocols/deploy/k8s/hpa.yaml`                                    | App team knows scaling characteristics                |
+| PDB (disruption budget)                | **Protocols**      | `gtcx-protocols/deploy/k8s/pdb.yaml`                                    | App team knows availability requirements              |
+| ConfigMap                              | **Protocols**      | `gtcx-protocols/deploy/k8s/configmap.yaml`                              | App-specific configuration                            |
+| Migration job                          | **Protocols**      | `gtcx-protocols/deploy/k8s/migration-job.yaml`                          | App owns schema migrations                            |
+| Prometheus alerts                      | **Protocols**      | `gtcx-protocols/deploy/monitoring/prometheus-alerts.yaml`               | App team knows what to alert on                       |
 | Namespace                              | **Infrastructure** | `gtcx-infrastructure/04-deploy/kubernetes/base/`                        | Platform owns namespace lifecycle                     |
 | Network policy                         | **Infrastructure** | `gtcx-infrastructure/04-deploy/kubernetes/overlays/`                    | Platform owns security boundaries                     |
 | Service mesh (Linkerd)                 | **Infrastructure** | `gtcx-infrastructure/04-deploy/kubernetes/overlays/production/linkerd/` | Platform decision — one mesh for all services         |

@@ -143,10 +143,10 @@ Owns incident response runbooks for all operational failure modes. Runbooks foll
 | -------------------- | ---------------------------------------------------- |
 | Release gate policy  | `01-docs/engineering/5-devops/release-gates.md`      |
 | Deployment process   | `01-docs/engineering/5-devops/deployment-process.md` |
-| SLO definitions      | `04-deploy/observability/slos/`                        |
-| Alerting rules       | `04-deploy/observability/alerts/`                      |
+| SLO definitions      | `04-deploy/observability/slos/`                      |
+| Alerting rules       | `04-deploy/observability/alerts/`                    |
 | Runbook template     | `01-docs/04-ops/runbooks/template.md`                |
 | Runbook index        | `01-docs/04-ops/runbooks/`                           |
-| Observability config | `04-deploy/observability/`                             |
+| Observability config | `04-deploy/observability/`                           |
 | CI/CD workflows      | `.github/workflows/`                                 |
 | Safety rules         | `01-docs/01-agents/workflows/safety-rules.md`        |

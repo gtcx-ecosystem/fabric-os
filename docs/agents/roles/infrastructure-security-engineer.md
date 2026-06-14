@@ -145,6 +145,6 @@ Keeps `01-docs/09-security/threat-model.md` current as infrastructure changes in
 | Threat model            | `01-docs/09-security/threat-model.md`          |
 | IAM policy register     | `01-docs/09-security/iam-policy-register.md`   |
 | Secret rotation runbook | `01-docs/04-ops/runbooks/secret-rotation.md`   |
-| Terraform IAM modules   | `04-deploy/terraform/modules/iam/`               |
-| External Secrets config | `04-deploy/k8s/base/external-secrets/`           |
+| Terraform IAM modules   | `04-deploy/terraform/modules/iam/`             |
+| External Secrets config | `04-deploy/k8s/base/external-secrets/`         |
 | Safety rules            | `01-docs/01-agents/workflows/safety-rules.md`  |

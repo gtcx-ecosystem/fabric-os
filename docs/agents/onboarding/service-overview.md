@@ -128,13 +128,13 @@ gtcx-infrastructure/
 
 | File                                           | Purpose                                                    |
 | ---------------------------------------------- | ---------------------------------------------------------- |
-| `04-deploy/docker/docker-compose.infra.yml`      | Local infrastructure services — start here first           |
-| `04-deploy/kubernetes/base/`                     | Shared K8s resources for all environments                  |
-| `04-deploy/kubernetes/overlays/production/`      | Production-specific manifests — changes require approval   |
-| `04-deploy/terraform/modules/database/`          | Dual RDS provisioning with deletion protection on audit DB |
-| `04-deploy/terraform/environments/template/`     | Scaffold for new environments                              |
-| `04-deploy/03-platform/scripts/deploy.sh`        | Canonical deployment entry point                           |
-| `04-deploy/03-platform/scripts/migrate.sh`       | Migration runner with dry-run and environment guards       |
+| `04-deploy/docker/docker-compose.infra.yml`    | Local infrastructure services — start here first           |
+| `04-deploy/kubernetes/base/`                   | Shared K8s resources for all environments                  |
+| `04-deploy/kubernetes/overlays/production/`    | Production-specific manifests — changes require approval   |
+| `04-deploy/terraform/modules/database/`        | Dual RDS provisioning with deletion protection on audit DB |
+| `04-deploy/terraform/environments/template/`   | Scaffold for new environments                              |
+| `04-deploy/03-platform/scripts/deploy.sh`      | Canonical deployment entry point                           |
+| `04-deploy/03-platform/scripts/migrate.sh`     | Migration runner with dry-run and environment guards       |
 | `03-platform/tools/scripts/security-status.js` | Security posture scanner                                   |
 
 ---

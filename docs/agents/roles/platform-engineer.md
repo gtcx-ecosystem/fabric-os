@@ -142,7 +142,7 @@ Owns the Kubernetes-layer response for platform incidents: pod eviction, namespa
 | --------------------------- | ----------------------------------------------------- |
 | Kustomize overlay standards | `01-docs/engineering/2-platform/overlay-standards.md` |
 | RBAC audit methodology      | `01-docs/engineering/2-platform/rbac-audit.md`        |
-| Network policy baseline     | `04-deploy/k8s/base/network-policies/`                  |
+| Network policy baseline     | `04-deploy/k8s/base/network-policies/`                |
 | Pod security standards      | `01-docs/engineering/2-platform/pod-security.md`      |
 | Platform incident runbook   | `01-docs/04-ops/runbooks/platform-incident.md`        |
 | Safety rules                | `01-docs/01-agents/workflows/safety-rules.md`         |

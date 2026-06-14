@@ -67,8 +67,8 @@ In this order — no exceptions:
 
 These areas require explicit human review before any change ships:
 
-| Component             | Area                                                    |
-| --------------------- | ------------------------------------------------------- |
+| Component               | Area                                                    |
+| ----------------------- | ------------------------------------------------------- |
 | `04-deploy/terraform/`  | State management, IAM, secrets configuration            |
 | `04-deploy/kubernetes/` | RBAC, network policies, secret manifests                |
 | `04-deploy/security/`   | Security scanning policies, firewall rules, TLS configs |

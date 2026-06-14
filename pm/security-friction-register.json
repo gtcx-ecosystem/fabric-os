@@ -86,14 +86,16 @@
     {
       "id": "SEC-VULN-01",
       "priority": "P1",
-      "status": "pending",
+      "status": "closed",
       "repo": "fabric-os",
       "title": "Standing vulnerability management cadence",
       "symptom": "Friction register lacks weekly triage witness + SLA tiers",
       "sprint": "SECAS-S4",
       "storyId": "SECAS-S4-03",
+      "witness": "audit/evidence/secas-vuln-cadence-latest.json",
       "infraAction": "secas:vuln-cadence:check — open SEC-* items have owner + unblock",
       "acceptance": "audit/evidence/secas-vuln-cadence-latest.json",
+      "executionStatus": "done",
       "blocksIR": false
     },
     {

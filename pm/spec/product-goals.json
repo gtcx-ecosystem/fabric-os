@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repo": "fabric-os",
   "tier": "platform",
-  "updated": "2026-06-13",
+  "updated": "2026-06-14",
   "vision": {
     "statement": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
     "horizon": "2026-2028"
@@ -43,13 +43,13 @@
     }
   },
   "activeMilestone": {
-    "id": "SECAS-S4-vuln-cadence",
-    "title": "SECAS-S4 — standing vulnerability management cadence",
-    "shippableOutcome": "secas:vuln-cadence:check PASS; friction register hygiene witness",
+    "id": "SECAS-S4-pentest-remediation",
+    "title": "SECAS-S4 — pen-test findings remediation track",
+    "shippableOutcome": "secas:pentest:remediation:check PASS; findings mapped to owners",
     "targetDate": "2026-Q3",
     "programmeId": "PROG-SECAS-ENGINEERING",
     "prdRefs": ["prd-product-charter"],
-    "headStoryId": "SECAS-S4-03",
+    "headStoryId": "SECAS-S4-04",
     "postLaunchExternalSoR": "ops/coordination/post-launch-external-gates.json",
     "acceptanceChecks": [
       {

@@ -1,0 +1,61 @@
+{
+  "schema": "gtcx://fabric-os/secas-vuln-cadence-check/v1",
+  "storyId": "SECAS-S4-03",
+  "frictionId": "SEC-VULN-01",
+  "checkedAt": "2026-06-14T15:40:53.781Z",
+  "owner": "fabric-os",
+  "policy": {
+    "json": "pm/spec/vuln-cadence-policy.json",
+    "doc": "docs/operations/secas/vuln-cadence.md"
+  },
+  "gates": {
+    "frictionItem": {
+      "ok": true,
+      "status": "closed",
+      "storyId": "SECAS-S4-03"
+    },
+    "policyJson": {
+      "ok": true,
+      "triageFrequency": "weekly"
+    },
+    "policyDoc": {
+      "ok": true,
+      "missing": []
+    },
+    "supplyChainAlignment": {
+      "ok": true
+    },
+    "openSecHygiene": {
+      "ok": true,
+      "count": 1,
+      "items": [
+        {
+          "id": "SEC-PTREM-01",
+          "status": "pending",
+          "repo": "fabric-os",
+          "owner": true,
+          "unblock": true,
+          "acceptance": true,
+          "ok": true
+        }
+      ]
+    },
+    "weeklyTriage": {
+      "ok": true,
+      "witnessPath": "audit/evidence/secas-vuln-cadence-latest.json"
+    }
+  },
+  "openSecItems": [
+    {
+      "id": "SEC-PTREM-01",
+      "status": "pending",
+      "repo": "fabric-os",
+      "owner": true,
+      "unblock": true,
+      "acceptance": true,
+      "ok": true
+    }
+  ],
+  "ok": true,
+  "phase": "cadence-hygiene"
+}

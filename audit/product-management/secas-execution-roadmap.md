@@ -31,7 +31,7 @@ sources:
 | ----------- | ----------------------------------------------------------------------- | -------- | ------- | --------- |
 | SECAS-S4-01 | CSIRT / SOC operating model + incident response runbook SoR             | P0       | done    | fabric-os |
 | SECAS-S4-02 | Fleet supply-chain security gates (container + dependency scan witness) | P0       | done    | fabric-os |
-| SECAS-S4-03 | Standing vulnerability management cadence + friction register hygiene   | P1       | pending | fabric-os |
+| SECAS-S4-03 | Standing vulnerability management cadence + friction register hygiene   | P1       | done    | fabric-os |
 | SECAS-S4-04 | Pen-test findings remediation track + re-test witness                   | P0       | pending | fabric-os |
 | SECAS-S4-05 | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2       | pending | fabric-os |
 
@@ -71,7 +71,7 @@ pnpm secas:supply-chain:check:write
 
 ### SECAS-S4-03: Standing vulnerability management cadence + friction register hygiene
 
-**Files:** pm/security-friction-register.json, audit/evidence/secas-vuln-cadence-latest.json
+**Files:** pm/spec/vuln-cadence-policy.json, docs/operations/secas/vuln-cadence.md, platform/scripts/secas-vuln-cadence-check.mjs, pm/security-friction-register.json, audit/evidence/secas-vuln-cadence-latest.json
 
 **Acceptance**
 
@@ -81,10 +81,12 @@ pnpm secas:vuln-cadence:check:write
 
 **UAT / QA**
 
-- [ ] Weekly vuln triage witness + SLA tiers (P0/P1/P2)
-- [ ] Open SEC-\* friction items have owner + unblock action
+- [x] Weekly vuln triage witness + SLA tiers (P0/P1/P2)
+- [x] Open SEC-\* friction items have owner + unblock action
 
 **Blockers:** none
+
+**Audit notes:** 2026-06-14 — harness PASS; SEC-VULN-01 closed
 
 ### SECAS-S4-04: Pen-test findings remediation track + re-test witness
 
@@ -155,7 +157,7 @@ _Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SO
 | `SEC-IRSA-01`                | `pm/security-friction-register.json` | SECAS-S3-01     | done    |
 | `SEC-CSIRT-01`               | `pm/security-friction-register.json` | SECAS-S4-01     | done    |
 | `SEC-SUPPLY-01`              | `pm/security-friction-register.json` | SECAS-S4-02     | done    |
-| `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | pending |
+| `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | closed  |
 | `SEC-PTREM-01`               | `pm/security-friction-register.json` | SECAS-S4-04     | pending |
 | P42 hub protocol publication | `pm/_tasks`                          | gtcx-docs       | done    |
 

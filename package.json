@@ -79,6 +79,8 @@
     "secas:supply-chain:check:write": "node platform/scripts/secas-supply-chain-check.mjs --write",
     "secas:csirt:check": "node platform/scripts/secas-csirt-check.mjs",
     "secas:csirt:check:write": "node platform/scripts/secas-csirt-check.mjs --write",
+    "secas:vuln-cadence:check": "node platform/scripts/secas-vuln-cadence-check.mjs",
+    "secas:vuln-cadence:check:write": "node platform/scripts/secas-vuln-cadence-check.mjs --write",
     "fleet:risk:check": "node platform/scripts/fleet-risk-check.mjs",
     "fleet:risk:check:write": "node platform/scripts/fleet-risk-check.mjs --write",
     "fleet:threat:check": "node platform/scripts/fleet-threat-check.mjs",

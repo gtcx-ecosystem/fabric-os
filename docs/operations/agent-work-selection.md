@@ -82,6 +82,7 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 | S4-07                     | pnpm test quick 1/359 flake investigation                      | P2  | done    | code     |
 | SECAS-S2-01               | Pen-test ingest scaffolding (internal prep)                    | P0  | done    | ops-docs |
 | SECAS-S4-02               | Fleet supply-chain security gates                              | P0  | done    | code     |
+| SECAS-S4-03               | Standing vulnerability management cadence                      | P1  | done    | code     |
 | XR-FABRIC-SPRINT-AUTH-001 | Sprint authority L2 read contract witness                      | P1  | done    | ops-docs |
 
 ## Implementation classes

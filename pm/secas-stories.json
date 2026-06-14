@@ -216,10 +216,13 @@
       "sprint": "SECAS-S4",
       "title": "Standing vulnerability management cadence + friction register hygiene",
       "priority": "P1",
-      "status": "pending",
+      "status": "done",
       "owner": "fabric-os",
       "frictionIds": ["SEC-VULN-01"],
       "files": [
+        "pm/spec/vuln-cadence-policy.json",
+        "docs/operations/secas/vuln-cadence.md",
+        "platform/scripts/secas-vuln-cadence-check.mjs",
         "pm/security-friction-register.json",
         "audit/evidence/secas-vuln-cadence-latest.json"
       ],
@@ -227,14 +230,15 @@
       "uat": [
         {
           "text": "Weekly vuln triage witness + SLA tiers (P0/P1/P2)",
-          "done": false
+          "done": true
         },
         {
           "text": "Open SEC-* friction items have owner + unblock action",
-          "done": false
+          "done": true
         }
       ],
-      "blockers": null
+      "blockers": null,
+      "auditNotes": "2026-06-14 — vuln cadence policy + harness PASS; open SEC-* hygiene 2/2"
     },
     {
       "id": "SECAS-S4-04",

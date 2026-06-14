@@ -1,0 +1,38 @@
+{
+  "$schema": "gtcx://fabric-os/vuln-cadence-policy/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-14",
+  "owner": "fabric-os",
+  "storyId": "SECAS-S4-03",
+  "frictionId": "SEC-VULN-01",
+  "cadence": {
+    "triageFrequency": "weekly",
+    "triageDay": "Monday",
+    "witnessPath": "audit/evidence/secas-vuln-cadence-latest.json",
+    "rollupCommand": "pnpm secas:vuln-cadence:check:write"
+  },
+  "slaTiers": {
+    "P0": {
+      "label": "Critical production / active exploit",
+      "responseHours": 4,
+      "remediationHours": 24,
+      "escalation": "CSIRT on-call + platform lead"
+    },
+    "P1": {
+      "label": "High severity / fleet-wide dependency",
+      "responseHours": 24,
+      "remediationHours": 72,
+      "escalation": "SecOps weekly triage + sprint intake"
+    },
+    "P2": {
+      "label": "Moderate / low / accepted-risk track",
+      "responseDays": 7,
+      "remediationDays": 30,
+      "escalation": "Friction register hygiene review"
+    }
+  },
+  "severityAlignment": "pm/spec/supply-chain-cve-policy.json",
+  "frictionRegister": "pm/security-friction-register.json",
+  "policyDoc": "docs/operations/secas/vuln-cadence.md",
+  "witness": "audit/evidence/secas-vuln-cadence-latest.json"
+}

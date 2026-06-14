@@ -169,13 +169,13 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - [ ] Re-read `.baseline/memory/pitfalls.md`
 - [ ] Run `pnpm agent:next-work` to confirm next story
 
-## Session bootstrap (2026-06-14 11:19:19 UTC)
+## Session bootstrap (2026-06-14 15:57:31 UTC)
 
 - **Command:** `agent start` (baseline-os repo-session-core)
 - **Repo:** fabric-os
-- **Next work:** SECAS-S2-01 — Live-stack pen-test execution window
+- **Next work:** SECAS-S1 — Sovereign register + security friction SoR
 - **Blocked:** no
-- **Git:** 5 changed path(s)
+- **Git:** 24 changed path(s)
 
 
 ## Session — 2026-06-05 (continued)
@@ -279,3 +279,25 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 | validate-all | **55/55** | all gates pass |
 
 **Next (P22):** witness mode — `backlogClear: true` pending recompute
+
+
+---
+
+## Session bootstrap — 2026-06-14T19:02+02:00
+
+- **Command:** `baseline start`
+- **Repo:** fabric-os
+- **Persona / frame:** platform-architect · development
+- **Resolved:** `audit/execution-roadmap.md` file-not-found + P22 selection anomalies
+- **Changes:**
+  - Created `audit/execution-roadmap.md` redirect to `audit/product-management/execution-roadmap.md`
+  - Updated `AGENTS.md`, `.kimi/AGENTS.md`, `.agent/execute-roadmap-pointer.md`, `docs/INDEX.md`, `docs/operations/agent-work-selection.md` to canonical path
+  - Updated `audit/latest.json` `evidence.executionRoadmap` to canonical path
+  - Added `SECAS-S4-05` to work register
+  - Fixed `platform/scripts/agent-next-work.mjs` to recognize `complete` as done
+  - Fixed `platform/scripts/lib/agent-launch-focus.mjs` Class S hard-coding → derive R/S from story state
+- **Verification:**
+  - `pnpm agent:work-selection:check` 9/9 pass
+  - `node --check` on modified scripts pass
+  - Prettier check pass on modified files
+- **Next (P22):** `SECAS-S4-05` — Expand SECaaS cards (terminal-os, fabric-os self, bridge witness repos) — Class R

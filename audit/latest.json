@@ -111,7 +111,7 @@
     "IR-2–IR-6: dimension lifts per ir-10-10-roadmap.md (XC track separate)."
   ],
   "evidence": {
-    "executionRoadmap": "01-docs/05-audit/execution-roadmap.md",
+    "executionRoadmap": "audit/product-management/execution-roadmap.md",
     "postRoadmapAudit": "01-docs/05-audit/post-roadmap-session-2026-05-30.md",
     "externalRegister": "01-docs/05-audit/external-dependencies-register-2026-05-31.md",
     "pilotCriteria": "01-docs/05-audit/pilot-success-criteria.md",

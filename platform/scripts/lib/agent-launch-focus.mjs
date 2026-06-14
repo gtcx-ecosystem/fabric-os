@@ -32,7 +32,11 @@ function parseGtmTiers(latestJson) {
       index: j?.lanes?.gtmReadiness?.index,
     };
   } catch {
-    return { library: 'GR-T1', integratorPilot: 'GR-T2-partial', ecosystemSovereign: 'below-GR-T2' };
+    return {
+      library: 'GR-T1',
+      integratorPilot: 'GR-T2-partial',
+      ecosystemSovereign: 'below-GR-T2',
+    };
   }
 }
 
@@ -52,7 +56,7 @@ function parseTableStories(md, idPattern, allowedStatuses) {
   const items = [];
   const re = new RegExp(
     `\\|\\s*(${idPattern.source})\\s*\\|([^|\\n]+)\\|([^|\\n]*)\\|([^|\\n]*)\\|([^|\\n]*)\\|`,
-    'gim',
+    'gim'
   );
   let m;
   while ((m = re.exec(md)) !== null) {
@@ -66,7 +70,7 @@ function parseTableStories(md, idPattern, allowedStatuses) {
       storyId,
       title,
       workClass: 'ops-docs',
-      authorityClass: status === 'human' ? 'S' : 'S',
+      authorityClass: status === 'human' ? 'S' : 'R',
       lane: 'roadmap-parse',
       because: `Roadmap/register status: ${status}`,
     });
@@ -76,7 +80,8 @@ function parseTableStories(md, idPattern, allowedStatuses) {
 
 function parseOpenIdRows(md, allowedIds) {
   const items = [];
-  const re = /\|\s*([A-Z][A-Z0-9-]+)\s*\|[^|\n]*\|[^|\n]*\|\s*(\*\*)?(partial|pending|open|in_progress)(\*\*)?/gi;
+  const re =
+    /\|\s*([A-Z][A-Z0-9-]+)\s*\|[^|\n]*\|[^|\n]*\|\s*(\*\*)?(partial|pending|open|in_progress)(\*\*)?/gi;
   let m;
   while ((m = re.exec(md)) !== null) {
     const id = m[1];
@@ -173,7 +178,8 @@ export function buildLaunchFocusFromConfig(repoRoot, config, nextWork = {}) {
   const launchFocus = {
     schema: LAUNCH_SCHEMA,
     normativeDoc: config.normativeDoc ?? '01-docs/04-ops/agent-launch-focus.md',
-    hubDoc: 'https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md',
+    hubDoc:
+      'https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md',
     statePath: STATE_PATH,
     provisionedAt: new Date().toISOString(),
     repo: config.repo,
@@ -211,7 +217,7 @@ function buildInstructions(config, sessionMode, implementCount, planCount) {
     lines.push(`IMPLEMENT mode — drain ${implementCount} item(s) toward app launch / GTM.`);
   } else if (sessionMode === 'plan') {
     lines.push(
-      `PLAN mode — ${planCount} Class R planning tasks; reconcile roadmaps and coordination; do not idle.`,
+      `PLAN mode — ${planCount} Class R planning tasks; reconcile roadmaps and coordination; do not idle.`
     );
   } else {
     lines.push('WITNESS mode — human gates only.');
@@ -239,7 +245,12 @@ export function attachLaunchFocus(nextWork, repoRoot) {
         storyId: p22Head.storyId,
         title: p22Head.title ?? p22Head.storyId,
         workClass: p22Head.implementationClass ?? 'code',
-        authorityClass: 'S',
+        authorityClass:
+          p22Head.implementationClass === 'external' ||
+          p22Head.status === 'awaiting-human' ||
+          p22Head.blocked
+            ? 'S'
+            : 'R',
         lane: 'p22-head',
       },
       ...launchFocus.workSet.implement,
@@ -251,7 +262,7 @@ export function attachLaunchFocus(nextWork, repoRoot) {
 
   if (calendarGate) {
     launchFocus.workSet.implement = launchFocus.workSet.implement.filter(
-      (item) => item.storyId !== SECAS_CALENDAR_HEAD,
+      (item) => item.storyId !== SECAS_CALENDAR_HEAD
     );
     launchFocus.workSetCounts.implement = launchFocus.workSet.implement.length;
     launchFocus.sessionMode = 'witness';
@@ -271,7 +282,7 @@ export function attachLaunchFocus(nextWork, repoRoot) {
       config,
       'witness',
       0,
-      launchFocus.workSet.plan.length,
+      launchFocus.workSet.plan.length
     );
     nextWork.backlogClear = false;
     nextWork.automatableExhausted = true;
@@ -333,7 +344,7 @@ export function attachLaunchFocus(nextWork, repoRoot) {
       }
       nextWork.agentInstructions = [
         ...(nextWork.agentInstructions ?? []).filter(
-          (line) => !/do NOT start new feature code/i.test(line),
+          (line) => !/do NOT start new feature code/i.test(line)
         ),
         `${head.storyId} = Class R — implement in-session; INT-S12-01/02/03 = Class S witness only.`,
         'bankGrade backlogClear = external attestation ceiling — not idle.',
@@ -345,8 +356,7 @@ export function attachLaunchFocus(nextWork, repoRoot) {
     const head = launchFocus.workSet.plan[0];
     const witnessHead = launchFocus.workSet.witness[0];
     const humanHead = launchFocus.workSet.human[0];
-    const p22KeepsHead =
-      nextWork.next?.storyId && nextWork.next.storyId !== 'LAUNCH-PLAN-01';
+    const p22KeepsHead = nextWork.next?.storyId && nextWork.next.storyId !== 'LAUNCH-PLAN-01';
     if (!p22KeepsHead) {
       const fallback = head ?? witnessHead ?? humanHead;
       if (fallback) {

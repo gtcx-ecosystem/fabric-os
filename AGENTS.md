@@ -54,7 +54,7 @@ Before making any code changes, architectural decisions, or recommendations, com
 8. Run `git status` — uncommitted changes, modified files
 9. Run `git log --oneline -10` — recent work, current branch
 10. Check `workstream/` or `.baseline/memory/session.md` for active tasks
-11. Read `audit/execution-roadmap.md` — **canonical execution plan** (3 sprints, 35 stories, all open findings). Anything `pending` or `in_progress` there is fair game; anything `done` does NOT need re-doing.
+11. Read `audit/product-management/execution-roadmap.md` — **canonical execution plan**. Anything `pending` or `in_progress` there is fair game; anything `done` does NOT need re-doing.
 12. Read `audit/latest.json` — machine-readable scores, gate state, open leadership decisions.
 
 ### Phase 4: Select Persona & Frame (30 sec)
@@ -166,10 +166,10 @@ pnpm agent:work-selection:check
 | Artifact | Path |
 | -------- | ---- |
 | Manifest (work register) | `docs/operations/agent-work-selection.md` |
-| Execution roadmap | `audit/execution-roadmap.md` |
+| Execution roadmap | `audit/product-management/execution-roadmap.md` |
 | Selection script | `platform/scripts/agent-next-work.mjs` |
 | Adoption check | `platform/scripts/check-agent-work-selection.mjs` |
-| Session pointer | `audit/auto-dev-state.md` |
+| Session pointer | `audit/product-management/auto-dev-state.md` |
 
 **Implementation classes:**
 - `code` — scripts, tests, gates, CI, Terraform, K8s manifests → **select in development frame**
@@ -325,7 +325,7 @@ Command: **`execute-roadmap`** (not `roadmap`).
 
 1. Read `../canon-os/03-platform/tools/roadmap/roadmap-framework/AGENT-START.md`
 2. Read `commands/execute-roadmap.md` and `prompts/roadmap/roadmap-reconcile-execute-prompt.md`
-3. Update `01-docs/strategy/execution-roadmap.md` or `01-docs/05-audit/execution-roadmap.md`; execute until active phase done
+3. In fabric-os, update `audit/product-management/execution-roadmap.md` (or `audit/product-management/secas-execution-roadmap.md` for SecOps); execute until active phase done
 4. Quick: `prompts/shareable/execute-roadmap-prompt-RUN.md`
 
 Provider-agnostic — Claude, Codex, Gemini, Kimi, Cursor, etc.

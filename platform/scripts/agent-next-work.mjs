@@ -17,7 +17,9 @@ const REPO_ROOT = join(__dirname, '../..');
 const THIS_REPO = 'fabric-os';
 
 function emitP22(payload, ctx = {}) {
-  console.log(JSON.stringify(finalizeOwnerP22(THIS_REPO, payload, { tier: 'platform', ...ctx }), null, 2));
+  console.log(
+    JSON.stringify(finalizeOwnerP22(THIS_REPO, payload, { tier: 'platform', ...ctx }), null, 2)
+  );
 }
 
 function resolvePaths() {
@@ -44,7 +46,8 @@ const STORY_ID_RE = /^(S\d+-\d+|SECAS-S\d+-\d+|IR-\d+\.\d+|P22-[A-Z]+-\d+)$/;
 
 const EVIDENCE_RE =
   /\b(manual UAT|staging probe with live creds|operator step|live RDS restore)\b/i;
-const OPS_DOCS_RE = /\b(Author `docs\/|manifest|Protocol \d+|roadmap reconcile|runbook|operator live path)\b/i;
+const OPS_DOCS_RE =
+  /\b(Author `docs\/|manifest|Protocol \d+|roadmap reconcile|runbook|operator live path)\b/i;
 const EXTERNAL_RE =
   /\b(human selection|human SOW|CISO decision|Supabase unpause|DNS zone:write|protocols contract|pen-test vendor|npm publish|EXT-INF|legal review|insurance quote|indemnified|DPA|pilot agreement|human signature)\b/i;
 
@@ -114,7 +117,10 @@ function parseWorkRegister(md) {
 }
 
 function deriveStatusFromRowTail(rowTail) {
-  if (/\*\*(done|closed)\*\*/i.test(rowTail) || /\b(done|closed)\b/i.test(rowTail)) {
+  if (
+    /\*\*(done|closed|complete)\*\*/i.test(rowTail) ||
+    /\b(done|closed|complete)\b/i.test(rowTail)
+  ) {
     return 'done';
   }
   if (/\*\*blocked\*\*/i.test(rowTail) || /\bblocked\b/i.test(rowTail)) return 'blocked';
@@ -177,7 +183,10 @@ function isAutomatable(story, frame) {
   if (!isP22Selectable(story)) return false;
   if (['blocked', 'done', 'deferred'].includes(story.status)) return false;
   if (frame === 'development') {
-    if (story.implementationClass === 'external' || story.implementationClass === 'evidence-capture') {
+    if (
+      story.implementationClass === 'external' ||
+      story.implementationClass === 'evidence-capture'
+    ) {
       return false;
     }
     return story.implementationClass === 'code' || story.implementationClass === 'ops-docs';
@@ -212,7 +221,7 @@ function selectNext(allStories, options) {
         s.source === 'work-register' &&
         s.status === 'pending' &&
         isAutomatable(s, frame) &&
-        !s.id.startsWith('LAUNCH-PLAN'),
+        !s.id.startsWith('LAUNCH-PLAN')
     )
     .sort(compareStories);
   if (registerPending.length > 0) {
@@ -228,7 +237,7 @@ function selectNext(allStories, options) {
       (s) =>
         (s.id.startsWith('P22-') || s.id.startsWith('IR-')) &&
         s.status === 'pending' &&
-        isAutomatable(s, frame),
+        isAutomatable(s, frame)
     )
     .sort(compareStories);
   if (p22Pending.length > 0) {
@@ -241,10 +250,7 @@ function selectNext(allStories, options) {
 
   const remainder = [...allStories.values()]
     .filter(
-      (s) =>
-        s.status === 'pending' &&
-        isAutomatable(s, frame) &&
-        !s.id.startsWith('LAUNCH-PLAN'),
+      (s) => s.status === 'pending' && isAutomatable(s, frame) && !s.id.startsWith('LAUNCH-PLAN')
     )
     .sort(compareStories);
   if (remainder.length > 0) {
@@ -287,7 +293,7 @@ function main() {
   if (existsSync(PATHS.secasRoadmap)) {
     for (const [k, v] of parseRoadmapStories(
       readFileSync(PATHS.secasRoadmap, 'utf8'),
-      'secas-roadmap',
+      'secas-roadmap'
     )) {
       if (!allStories.has(k)) allStories.set(k, v);
     }

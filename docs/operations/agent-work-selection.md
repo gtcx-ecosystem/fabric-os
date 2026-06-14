@@ -19,12 +19,12 @@ adoption_status: established
 
 ## Canonical paths
 
-| Artifact                           | Path                                      |
-| ---------------------------------- | ----------------------------------------- |
-| Execution roadmap (story register) | `01-docs/audit/execution-roadmap.md`      |
-| Session pointer                    | `01-docs/audit/auto-dev-state.md`         |
-| Baseline session memory            | `.baseline/memory/session.md`             |
-| Selection script                   | `03-platform/scripts/agent-next-work.mjs` |
+| Artifact                           | Path                                            |
+| ---------------------------------- | ----------------------------------------------- |
+| Execution roadmap (story register) | `audit/product-management/execution-roadmap.md` |
+| Session pointer                    | `01-docs/audit/auto-dev-state.md`               |
+| Baseline session memory            | `.baseline/memory/session.md`                   |
+| Selection script                   | `03-platform/scripts/agent-next-work.mjs`       |
 
 ## Commands
 
@@ -57,33 +57,34 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 
 ## Work register (Protocol 22 — explicit backlog)
 
-| ID                        | Title                                                          | P   | Status  | Class    |
-| ------------------------- | -------------------------------------------------------------- | --- | ------- | -------- |
-| IR-2.1                    | Dependabot tier-3 merges                                       | P2  | blocked | external |
-| IR-2.2                    | AI SDK v5→v6 migration branch + eval regression                | P1  | done    | code     |
-| IR-2.3                    | CodeQL/Trivy SARIF upload graceful when Code Security disabled | P0  | done    | code     |
-| IR-3.1                    | WORM upload workflow                                           | P1  | done    | code     |
-| IR-3.2                    | Document operator live path for runtime-evidence-check         | P1  | done    | ops-docs |
-| IR-3.4                    | Expand `gtcx-ctl validate-environment` in CI                   | P1  | done    | code     |
-| IR-3.5                    | Refresh DR fire-drill dated artifact                           | P1  | done    | ops-docs |
-| IR-4.1                    | USSD path soak test in CI                                      | P1  | done    | code     |
-| IR-5.1                    | Cross-repo-contract token                                      | P2  | done    | code     |
-| IR-5.2                    | Re-run ecosystem-repo-review; ledger ≥9.0 matrix green         | P2  | done    | ops-docs |
-| LAUNCH-PLAN-01            | Reconcile execution-roadmap + work register                    | P1  | done    | plan     |
-| LAUNCH-PLAN-02            | Refresh auto-dev-state for launch/GTM                          | P1  | done    | plan     |
-| LAUNCH-PLAN-03            | Global South 10x plan status row update                        | P1  | done    | plan     |
-| GTM-AUDIT                 | Lane-5 GTM completeness audit                                  | P1  | done    | plan     |
-| S2-13                     | Pen-test SOW signature                                         | P0  | done    | external |
-| S4-03                     | PRD-002 Tier B: align TradePass DID doc resolver contract      | P1  | blocked | external |
-| P22-INFRA-01              | Protocol 22 adoption — manifest + script + CI                  | P0  | done    | ops-docs |
-| S4-04                     | deployment-guard typecheck regression                          | P1  | done    | code     |
-| S4-05                     | audit-signer + compliance-gateway lint regressions             | P1  | done    | code     |
-| S4-06                     | README gaps (12 dirs) per repo-hygiene audit                   | P0  | done    | code     |
-| S4-07                     | pnpm test quick 1/359 flake investigation                      | P2  | done    | code     |
-| SECAS-S2-01               | Pen-test ingest scaffolding (internal prep)                    | P0  | done    | ops-docs |
-| SECAS-S4-02               | Fleet supply-chain security gates                              | P0  | done    | code     |
-| SECAS-S4-03               | Standing vulnerability management cadence                      | P1  | done    | code     |
-| XR-FABRIC-SPRINT-AUTH-001 | Sprint authority L2 read contract witness                      | P1  | done    | ops-docs |
+| ID                        | Title                                                                   | P   | Status  | Class    |
+| ------------------------- | ----------------------------------------------------------------------- | --- | ------- | -------- |
+| IR-2.1                    | Dependabot tier-3 merges                                                | P2  | blocked | external |
+| IR-2.2                    | AI SDK v5→v6 migration branch + eval regression                         | P1  | done    | code     |
+| IR-2.3                    | CodeQL/Trivy SARIF upload graceful when Code Security disabled          | P0  | done    | code     |
+| IR-3.1                    | WORM upload workflow                                                    | P1  | done    | code     |
+| IR-3.2                    | Document operator live path for runtime-evidence-check                  | P1  | done    | ops-docs |
+| IR-3.4                    | Expand `gtcx-ctl validate-environment` in CI                            | P1  | done    | code     |
+| IR-3.5                    | Refresh DR fire-drill dated artifact                                    | P1  | done    | ops-docs |
+| IR-4.1                    | USSD path soak test in CI                                               | P1  | done    | code     |
+| IR-5.1                    | Cross-repo-contract token                                               | P2  | done    | code     |
+| IR-5.2                    | Re-run ecosystem-repo-review; ledger ≥9.0 matrix green                  | P2  | done    | ops-docs |
+| LAUNCH-PLAN-01            | Reconcile execution-roadmap + work register                             | P1  | done    | plan     |
+| LAUNCH-PLAN-02            | Refresh auto-dev-state for launch/GTM                                   | P1  | done    | plan     |
+| LAUNCH-PLAN-03            | Global South 10x plan status row update                                 | P1  | done    | plan     |
+| GTM-AUDIT                 | Lane-5 GTM completeness audit                                           | P1  | done    | plan     |
+| S2-13                     | Pen-test SOW signature                                                  | P0  | done    | external |
+| S4-03                     | PRD-002 Tier B: align TradePass DID doc resolver contract               | P1  | blocked | external |
+| P22-INFRA-01              | Protocol 22 adoption — manifest + script + CI                           | P0  | done    | ops-docs |
+| S4-04                     | deployment-guard typecheck regression                                   | P1  | done    | code     |
+| S4-05                     | audit-signer + compliance-gateway lint regressions                      | P1  | done    | code     |
+| S4-06                     | README gaps (12 dirs) per repo-hygiene audit                            | P0  | done    | code     |
+| S4-07                     | pnpm test quick 1/359 flake investigation                               | P2  | done    | code     |
+| SECAS-S2-01               | Pen-test ingest scaffolding (internal prep)                             | P0  | done    | ops-docs |
+| SECAS-S4-02               | Fleet supply-chain security gates                                       | P0  | done    | code     |
+| SECAS-S4-03               | Standing vulnerability management cadence                               | P1  | done    | code     |
+| SECAS-S4-05               | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2  | pending | code     |
+| XR-FABRIC-SPRINT-AUTH-001 | Sprint authority L2 read contract witness                               | P1  | done    | ops-docs |
 
 ## Implementation classes
 
@@ -97,7 +98,7 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 ## Status sources
 
 1. **Work register** (this file) — authoritative for `IR-*` and `P22-*` items.
-2. **`execution-roadmap.md`** — sprint tables (`S1-*`, `S2-*`, `S3-*`, `S4-*`); `**done**` / `**closed**` → done.
+2. **`audit/product-management/execution-roadmap.md`** — sprint tables (`S1-*`, `S2-*`, `S3-*`, `S4-*`); `**done**` / `**closed**` → done.
 3. **`.baseline/memory/session.md`** — active session state and next recommendations.
 
 ## Gate lifecycle (normative — fleet)
@@ -122,7 +123,7 @@ Spec: `bridge-os/pm/spec/gate-lifecycle-taxonomy.json`
 
 ## After each story
 
-1. Mark done in work register and/or `01-docs/05-audit/execution-roadmap.md`.
+1. Mark done in work register and/or `audit/product-management/execution-roadmap.md`.
 2. Run `pnpm agent:next-work` for the next ID.
 3. Refresh `01-docs/05-audit/auto-dev-state.md` and `.baseline/memory/session.md`.
 4. Micro-commit; run `node 03-platform/tools/scripts/validate-all.mjs` when touching repo gates.

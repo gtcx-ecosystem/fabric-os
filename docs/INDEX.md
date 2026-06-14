@@ -27,31 +27,31 @@ Machine alias for [`README.md`](./README.md). Agents: start at **README** for na
 
 ## sor-map paths (selected)
 
-| Key                   | Path                                         |
-| --------------------- | -------------------------------------------- |
-| `auditEntry`          | `05-audit/AGENT-START.md`                    |
-| `auditEvidence`       | `05-audit/evidence/`                         |
-| `auditNarrativeIndex` | `01-docs/audit/`                             |
-| `agentsCanonical`     | `01-docs/agents/`                            |
-| `executionRoadmap`    | `01-docs/audit/execution-roadmap.md`         |
-| `autoDevState`        | `01-docs/audit/auto-dev-state.md`            |
-| `agentWorkSelection`  | `01-docs/operations/agent-work-selection.md` |
-| `platformTools`       | `03-platform/tools/`                         |
-| `platformScripts`     | `03-platform/scripts/`                       |
-| `deployRoot`          | `04-deploy/`                                 |
-| `deployScripts`       | `04-deploy/03-platform/scripts/`             |
-| `deployTerraform`     | `04-deploy/terraform/`                       |
-| `deployKubernetes`    | `04-deploy/kubernetes/`                      |
-| `opsDomains`          | `02-ops/`                                    |
-| `workstream`          | `06-workstream/`                             |
-| `governanceTierB`     | `01-docs/operations/repo/`                   |
-| `docsIamap`           | `01-docs/README.md`                          |
-| `docsIndex`           | `01-docs/INDEX.md`                           |
-| `toolchainSoR`        | `config/toolchain/`                          |
-| `sorMap`              | `config/sor-map.json`                        |
-| `pathsModule`         | `config/paths.mjs`                           |
-| `repoKind`            | `config/repo-kind.json`                      |
-| `governanceSpine`     | `config/governance-spine.json`               |
-| `opsManifest`         | `config/ops.manifest.json`                   |
+| Key                   | Path                                            |
+| --------------------- | ----------------------------------------------- |
+| `auditEntry`          | `05-audit/AGENT-START.md`                       |
+| `auditEvidence`       | `05-audit/evidence/`                            |
+| `auditNarrativeIndex` | `01-docs/audit/`                                |
+| `agentsCanonical`     | `01-docs/agents/`                               |
+| `executionRoadmap`    | `audit/product-management/execution-roadmap.md` |
+| `autoDevState`        | `01-docs/audit/auto-dev-state.md`               |
+| `agentWorkSelection`  | `01-docs/operations/agent-work-selection.md`    |
+| `platformTools`       | `03-platform/tools/`                            |
+| `platformScripts`     | `03-platform/scripts/`                          |
+| `deployRoot`          | `04-deploy/`                                    |
+| `deployScripts`       | `04-deploy/03-platform/scripts/`                |
+| `deployTerraform`     | `04-deploy/terraform/`                          |
+| `deployKubernetes`    | `04-deploy/kubernetes/`                         |
+| `opsDomains`          | `02-ops/`                                       |
+| `workstream`          | `06-workstream/`                                |
+| `governanceTierB`     | `01-docs/operations/repo/`                      |
+| `docsIamap`           | `01-docs/README.md`                             |
+| `docsIndex`           | `01-docs/INDEX.md`                              |
+| `toolchainSoR`        | `config/toolchain/`                             |
+| `sorMap`              | `config/sor-map.json`                           |
+| `pathsModule`         | `config/paths.mjs`                              |
+| `repoKind`            | `config/repo-kind.json`                         |
+| `governanceSpine`     | `config/governance-spine.json`                  |
+| `opsManifest`         | `config/ops.manifest.json`                      |
 
 Full narrative index: [`01-docs/README.md`](./README.md)

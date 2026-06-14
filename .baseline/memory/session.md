@@ -1,5 +1,56 @@
 # Session State
 
+> **Last updated:** 2026-06-14T19:41+02:00
+> **Agent:** platform-architect (development frame)
+> **Protocol compliance:** P22, P26, P27, P28 active
+> **Current sprint:** SECAS-S4 — pen-test remediation track (structural done; awaiting vendor report)
+> **Sprint roadmap:** `audit/product-management/secas-execution-roadmap.md`
+
+---
+
+## Baseline session — 2026-06-14T19:41+02:00
+
+### Done this session
+
+| ID | What | Evidence |
+|----|------|----------|
+| HYGIENE-01 | Remove forbidden `01-docs/` root directory | `ops:check` PASS |
+| HYGIENE-02 | Restore `ext-inf-002` approval evidence to `audit/evidence/` | files in canonical location |
+| HYGIENE-03 | Fix docs-standard violations (missing indices, frontmatter, naming, broken links) | docs-standard-validator PASS |
+| HYGIENE-04 | Add missing README/index files under `docs/` | 6 new index files |
+| HYGIENE-05 | Rename SECAS program files to lowercase-with-hyphens | refs updated |
+| HYGIENE-06 | Fix docs-link-checker fragment handling | `pnpm test` docs link check PASS |
+| HYGIENE-07 | Restore ecosystem integration matrix files | `audit/ecosystem-integration-matrix-2026-06-07.json` + `.md` |
+| WITNESS | `validate-all` 55/55 gates pass | command exit 0 |
+| WITNESS | `pnpm test` pass | command exit 0 |
+| WITNESS | `pnpm typecheck` pass | command exit 0 |
+| WITNESS | `pnpm format:check` pass | command exit 0 |
+
+### State
+
+| Signal | Value |
+|--------|-------|
+| P22 | `backlogClear: false` — implement queue reconciled; external/human gates parallel |
+| `validate-all` | **55/55 PASS** |
+| `pnpm test` | **PASS** |
+| `pnpm typecheck` | **PASS** |
+| `pnpm format:check` | **PASS** |
+| `pnpm lint` | pre-existing failures in replay-protection, compliance-data, anomaly-detector, ussd-handler (unrelated to this session) |
+| Git | `main` · 50+ changed paths · uncommitted |
+
+### Open
+
+- Pre-existing `pnpm lint` failures in workspace packages (no Class R story assigned).
+- External/vendor gates remain parallel: EXT-INF-002/013/014/015, BL-SOC2-01 MSA execution.
+
+### Next (Class R)
+
+- Commit hygiene pass; refresh `audit/latest.json` if warranted; otherwise witness mode.
+
+---
+
+# Session State
+
 > **Last updated:** 2026-06-05T12:00+02:00
 > **Agent:** platform-architect (development frame)
 > **Protocol compliance:** P22, P26, P27, P28 active

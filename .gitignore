@@ -98,6 +98,12 @@ out/
 # Local Baseline initialization artifacts (never tracked)
 .baseline/config.json
 .baseline/memory.db
+
+# Generated DR fire-drill evidence placeholder (live dated artifact committed via operator run)
+audit/dr-fire-drill-evidence-*.md
+
+# Forbidden P35 v5 root extraction artifact
+01-docs/
 baseline.config.json
 
 # Operator-local (never commit)

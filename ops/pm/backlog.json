@@ -4,11 +4,11 @@
   "updated": "2026-06-14",
   "syncSource": "pnpm pm:sync",
   "active": {
-    "storyId": "SECAS-S4-03",
-    "title": "Standing vulnerability management cadence + friction register hygiene",
+    "storyId": "SECAS-S1",
+    "title": "Sovereign register + security friction SoR",
     "status": "pending",
-    "owner": "fabric-os",
-    "tier": "secas-s4-implement"
+    "owner": null,
+    "tier": "backlog"
   },
   "backlogClear": false,
   "stories": [
@@ -39,10 +39,10 @@
   ],
   "crossRepoRefs": [
     {
-      "id": "SECAS-S4-02",
+      "id": "SECAS-S2-01",
       "ownerRepo": "fabric-os",
       "status": "done",
-      "traceId": "cf827559-f370-4b74-b539-0935d0653e7a"
+      "traceId": null
     },
     {
       "id": "XR-MKT-PROTOCOL-NATIVE-001-GT",
@@ -66,6 +66,12 @@
       "id": "INIT-GTCX-TWO-PRODUCT-DEPLOY-WITNESS",
       "ownerRepo": "gtcx-os",
       "status": "deferred",
+      "traceId": null
+    },
+    {
+      "id": "INIT-WORLD-CLASS-SECOPS",
+      "ownerRepo": "fabric-os",
+      "status": "open",
       "traceId": null
     }
   ],

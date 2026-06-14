@@ -5,6 +5,7 @@
 Service fabric execution layer: AWS/EKS/Terraform, **DevOps · InfraOps · SecOps** (DaaS/SECaaS functional products), staging/prod deploy, and fleet infra assurance. **Trade infrastructure core (C)** lives in sibling **`gtcx-os`** — fabric **runs** it; fabric does not define trade protocols or platform desks.
 
 | Ops programs | [`docs/operations/ops-programs.md`](./docs/operations/ops-programs.md) |
+| **CORE** | [`docs/operations/core.md`](./docs/operations/core.md) — Centralized Ops Runtime Engine |
 
 | Resource               | Path                                                                                                                                                   |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |

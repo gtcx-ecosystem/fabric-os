@@ -296,7 +296,7 @@
       "sprint": "SECAS-S5",
       "title": "Unified fleet risk + active threat registers",
       "priority": "P0",
-      "status": "in_progress",
+      "status": "done",
       "owner": "bridge-os",
       "files": [
         "bridge-os/pm/spec/fleet-risk-register.json",

@@ -13,9 +13,9 @@ tags: ['coordination', 'pen-test', 'secas-s2', 'ext-inf-002']
 
 **Prerequisite:** EXT-INF-002 sovereign approval recorded (`audit/evidence/ext-inf-002-sow-approval-2026-06-10.json`).
 
-**Countersign:** approved 2026-06-10 — [`ext-inf-002-countersign-approval-2026-06-10.json`](../../../audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json).
+**Countersign:** approved 2026-06-10 — [`ext-inf-002-countersign-approval-2026-06-10.json`](../../../audit/archive/2026-06-14/audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json).
 
-**Window:** scheduled 2026-06-17..21 — [`pen-test-window-2026-06-10.json`](../../../audit/evidence/pen-test-window-2026-06-10.json) · [seal](./from-fabric-os-pen-test-window-scheduled-2026-06-10.md).
+**Window:** scheduled 2026-06-17..21 — [`pen-test-window-2026-06-10.json`](../../../audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json) · [seal](./from-fabric-os-pen-test-window-scheduled-2026-06-10.md).
 
 **Next:** Ingest vendor report after window execution.
 

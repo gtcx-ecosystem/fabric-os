@@ -1,0 +1,12 @@
+{
+  "schema": "gtcx://bridge-os/settlement-story-scope/v1",
+  "at": "2026-06-14T20:32:35.934Z",
+  "repo": "fabric-os",
+  "ok": true,
+  "scopeCheck": {
+    "ok": true,
+    "skipped": true
+  },
+  "errors": 0,
+  "warnings": 0
+}

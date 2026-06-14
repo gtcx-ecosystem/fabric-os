@@ -14,10 +14,10 @@ work_ids: [XR-302]
 **Action required:** Resolve three blockers so platforms can run `pnpm smoke:signed-edge-tenant:evidence` and close P4-07.
 
 **Canonical ticket (platforms outbound):**  
-[`gtcx-platforms/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md`](../../../../gtcx-platforms/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md)
+[`gtcx-platforms/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md`](https://github.com/gtcx-ecosystem/gtcx-platforms/blob/main/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md)
 
 **Reply template (infra fills):**  
-[`gtcx-platforms/01-docs/operations/coordination/from-fabric-os-xr-302-smoke-blockers-TEMPLATE.md`](../../../../gtcx-platforms/01-docs/operations/coordination/from-fabric-os-xr-302-smoke-blockers-TEMPLATE.md)
+[`gtcx-platforms/01-docs/operations/coordination/from-fabric-os-xr-302-smoke-blockers-TEMPLATE.md`](https://github.com/gtcx-ecosystem/gtcx-platforms/blob/main/01-docs/operations/coordination/from-fabric-os-xr-302-smoke-blockers-TEMPLATE.md)
 
 ## Blockers (summary)
 

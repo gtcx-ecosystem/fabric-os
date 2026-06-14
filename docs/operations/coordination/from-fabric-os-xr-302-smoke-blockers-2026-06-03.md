@@ -11,7 +11,7 @@ work_ids: [XR-302]
 
 # Outbound from fabric-os — XR-302 smoke blockers resolved
 
-**Reply to:** [`gtcx-platforms/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md`](../../../../gtcx-platforms/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md)
+**Reply to:** [`gtcx-platforms/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md`](https://github.com/gtcx-ecosystem/gtcx-platforms/blob/main/01-docs/operations/coordination/to-fabric-os-xr-302-smoke-blockers-2026-06-03.md)
 
 ## Summary
 

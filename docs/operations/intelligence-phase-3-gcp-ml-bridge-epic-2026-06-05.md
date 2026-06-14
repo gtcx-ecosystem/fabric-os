@@ -9,9 +9,9 @@ epic_id: INF-PHASE3-GCP-BRIDGE-001
 
 # Epic — GCP→AWS ML bridge (Phase 3)
 
-**Ecosystem placement:** [`canon-os/01-docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md`](../../../canon-os/01-docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md)
+**Ecosystem placement:** [`canon-os/01-docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md`](https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md)
 
-**Intelligence roadmap:** [`gtcx-intelligence/01-docs/roadmap/global-trade-phase-3-ml-pipeline.md`](../../../gtcx-intelligence/01-docs/roadmap/global-trade-phase-3-ml-pipeline.md)
+**Intelligence roadmap:** [`gtcx-intelligence/01-docs/roadmap/global-trade-phase-3-ml-pipeline.md`](https://github.com/gtcx-ecosystem/gtcx-intelligence/blob/main/01-docs/roadmap/global-trade-phase-3-ml-pipeline.md)
 
 ## Goal
 

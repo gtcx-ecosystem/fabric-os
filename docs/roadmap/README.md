@@ -9,10 +9,10 @@ owner: 'gtcx-infrastructure'
 
 ## Canonical plans
 
-| Doc                                                                                                                                                                                                                                     | Role                                                             |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| [`01-docs/05-audit/ir-10-10-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/ir-10-10-roadmap.md)   | **IR 7.6 → 10.0** — internal engineering dimensions              |
-| [`01-docs/05-audit/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/execution-roadmap.md) | Sprint stories + acceptance commands (S1–S3 done; IR-1+ forward) |
+| Doc                                                                                                                | Role                                                             |
+| ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| [`audit/archive/legacy-docs-audit/ir-10-10-roadmap.md`](../../audit/archive/legacy-docs-audit/ir-10-10-roadmap.md) | **IR 7.6 → 10.0** — internal engineering dimensions              |
+| [`audit/execution-roadmap.md`](../../audit/execution-roadmap.md)                                                   | Sprint stories + acceptance commands (S1–S3 done; IR-1+ forward) |
 
 ## Strategic milestones (longer horizon)
 
@@ -20,7 +20,7 @@ owner: 'gtcx-infrastructure'
 
 ## Status
 
-Machine-readable scorecard + open findings: [`01-docs/05-audit/latest.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/evidence/five-pillar-latest.json).
+Machine-readable scorecard + open findings: [`audit/latest.json`](../../audit/latest.json).
 
 ## Historical (superseded)
 

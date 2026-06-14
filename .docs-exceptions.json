@@ -1453,6 +1453,12 @@
       "file": "docs/governance/regulatory",
       "detail": "Subdirectory missing README.md or index.md",
       "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/overview/README.md",
+      "detail": "Link target does not exist anywhere in repo: audit/archive/legacy-docs-audit/master-audit-2026-05-12-updated.md",
+      "reviewBy": "2026-06-30"
     }
   ]
 }

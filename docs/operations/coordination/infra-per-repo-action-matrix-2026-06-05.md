@@ -14,14 +14,14 @@ laneRegistry: pm/spec/trade-ecosystem-lanes.json
 
 **Audience:** fabric-os agents only.
 
-**Problem this solves:** The ecosystem register ([`repo-register-2026-06-05.md`](../../../../canon-os/01-docs/architecture/cloud-placement/repo-register-2026-06-05.md)) describes **every repo’s cloud posture**. This file says **what fabric-os must do** for each repo — and what is **not** infra’s job.
+**Problem this solves:** The ecosystem register ([`repo-register-2026-06-05.md`](https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/architecture/cloud-placement/repo-register-2026-06-05.md)) describes **every repo’s cloud posture**. This file says **what fabric-os must do** for each repo — and what is **not** infra’s job.
 
 **Read order:**
 
 1. **This file** — execution checklist
 2. [`cloud-placement-aws-control-plane-2026-06-05.md`](./cloud-placement-aws-control-plane-2026-06-05.md) — scope boundaries
 3. [`README.md`](./README.md) — XR sprint IDs (staging E2E, INF-86, etc.)
-4. Ecosystem SoR: [`canon-os/.../cloud-placement/README.md`](../../../../canon-os/01-docs/architecture/cloud-placement/README.md)
+4. Ecosystem SoR: [`canon-os/.../cloud-placement/README.md`](https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/architecture/cloud-placement/README.md)
 
 ---
 

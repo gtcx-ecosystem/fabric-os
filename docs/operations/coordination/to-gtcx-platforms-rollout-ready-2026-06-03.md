@@ -26,7 +26,7 @@ Infra is **ready** to receive image push and execute rollout. No blockers on inf
 
 1. Push `gtcx-sovereign:staging` image to ECR
 2. Push `gtcx-agx:staging` image to ECR
-3. Notify infra via append to [`gtcx-protocols/.../cross-repo-agent-log.md`](../../../../gtcx-protocols/01-docs/operations/coordination/cross-repo-agent-log.md) or ping in this repo's bridge
+3. Notify infra via append to [`gtcx-protocols/.../cross-repo-agent-log.md`](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/operations/coordination/cross-repo-agent-log.md) or ping in this repo's bridge
 
 ## What infra will do after push notification
 

@@ -190,5 +190,5 @@ P0 post-mortem template lives at `01-docs/04-ops/post-mortems/templates/audit-in
 - ADR-016 — Fail-Closed Audit Signing (signing posture)
 - [`audit-signing-key-rotation.md`](./audit-signing-key-rotation.md) — companion runbook
 - [`audit-flush-deployment.md`](./audit-flush-deployment.md) — sidecar operational reference
-- [`01-docs/09-security/threat-model-2026-05.md`](../../../../ops/security/narrative/threat-model-2026-05.md) — STRIDE source-of-truth
+- [`ops/security/narrative/threat-model-2026-05.md`](../../../ops/security/narrative/threat-model-2026-05.md) — STRIDE source-of-truth
 - [`01-docs/architecture/compliance-substrate-deep-dive.md`](../../architecture/compliance-substrate-deep-dive.md) — Layer 2 architecture

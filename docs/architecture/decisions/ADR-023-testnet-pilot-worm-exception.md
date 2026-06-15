@@ -1,15 +1,16 @@
 ---
 title: 'ADR-023: Testnet-Pilot WORM Bucket Architectural Exception'
-status: 'accepted'
-date: '2026-05-27'
-owner: 'infrastructure-lead'
-role: 'security-architect'
-tier: 'critical'
-tags: ['architecture', 'security', 'audit', 'worm', 'testnet-pilot', 'compliance']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: accepted
+date: 2026-05-27
+owner: infrastructure-lead
+tier: critical
+tags: [['architecture', 'security', 'audit', 'worm', 'testnet-pilot', 'compliance']]
+review_cycle: on-change
+document_type: architecture
+role: security-architect
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # ADR-023: Testnet-Pilot WORM Bucket Architectural Exception

@@ -1,15 +1,16 @@
 ---
 title: 'ADR-024: Durable Offline Audit Queue'
-status: 'proposed'
-date: '2026-06-02'
-owner: 'platform-engineering'
-role: 'frontier-infra-engineer'
-tier: 'critical'
-tags: ['architecture', 'audit', 'resilience', 'compliance', 'global-south']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-06-02/m2-hardening'
+status: proposed
+date: 2026-06-02
+owner: platform-engineering
+tier: critical
+tags: [['architecture', 'audit', 'resilience', 'compliance', 'global-south']]
+review_cycle: on-change
+document_type: architecture
+role: frontier-infra-engineer
+agent_id: agent://gtcx-infrastructure/2026-06-02/m2-hardening
 trust_score: 70
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # ADR-024: Durable Offline Audit Queue

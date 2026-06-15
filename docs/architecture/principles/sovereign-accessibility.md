@@ -1,15 +1,16 @@
 ---
 title: 'Sovereign Accessibility Principles'
-status: 'current'
-date: '2026-05-27'
-owner: 'frontier-infra-engineer'
-role: 'frontier-infra-engineer'
-tier: 'standard'
-tags: ['architecture', 'infrastructure', 'testing', 'frontend', 'network']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: frontier-infra-engineer
+tier: standard
+tags: [['architecture', 'infrastructure', 'testing', 'frontend', 'network']]
+review_cycle: on-change
+document_type: architecture
+role: frontier-infra-engineer
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Sovereign Accessibility Principles

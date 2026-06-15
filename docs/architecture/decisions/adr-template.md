@@ -1,15 +1,16 @@
 ---
 title: 'ADR-{number}: {title}'
-status: 'superseded'
-date: '2026-05-27'
-owner: 'frontier-infra-engineer'
-role: 'frontier-infra-engineer'
-tier: 'informational'
-tags: ['architecture', 'infrastructure', 'frontend', 'database', 'agentic']
-review_cycle: 'monthly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: superseded
+date: 2026-05-27
+owner: frontier-infra-engineer
+tier: informational
+tags: [['architecture', 'infrastructure', 'frontend', 'database', 'agentic']]
+review_cycle: monthly
+document_type: architecture
+role: frontier-infra-engineer
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # ADR-{number}: {title}

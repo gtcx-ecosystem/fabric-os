@@ -6,7 +6,7 @@
   "owner": "fabric-os",
   "initiative": "INIT-GTCX-SERVICE-FABRIC",
   "principle": "Shared billing provider custody on fabric — product repos consume via ESO; RevOps never holds keys.",
-  "status": "contract-defined",
+  "status": "migration-in-progress",
   "secretsManager": {
     "stripe": {
       "staging": "gtcx/shared/staging/payops/stripe",
@@ -67,6 +67,8 @@
     }
   ],
   "meteringWitness": "audit/evidence/payops-metering-rollup-latest.json",
-  "harness": ["pnpm payops:providers:check:write"],
+  "harness": ["pnpm payops:providers:check:write", "pnpm payops:substrate:readiness:write"],
+  "migrationHandoff": "docs/operations/coordination/inbound/to-b/to-payops-fleet-substrate-migration-2026-06-15.md",
+  "populateScript": "platform/scripts/staging/populate-payops-staging-sm.sh",
   "frictionCloses": ["PAY-SUB-01", "PAY-SUB-02"]
 }

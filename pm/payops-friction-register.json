@@ -16,7 +16,11 @@
       "title": "Five Stripe integrations without shared webhook/secret contract",
       "blocksIR": false,
       "class": "R",
-      "finding": "REV-FLEET-01"
+      "finding": "REV-FLEET-01",
+      "handoff": "XR-FABRIC-PAYOPS-001",
+      "repos": ["terminal-os", "sensei-os", "compliance-os", "nyota-ai"],
+      "fabricMilestone": "populate script + P24 handoff filed 2026-06-15",
+      "acceptance": "stripeDuplication count ≤1 in payops-fleet-inventory witness"
     },
     {
       "id": "PAY-FLEET-02",
@@ -25,7 +29,23 @@
       "title": "Flutterwave + Stripe dual SaaS rails unregistered in fabric substrate",
       "blocksIR": false,
       "class": "R",
-      "finding": "REV-FLEET-02"
+      "finding": "REV-FLEET-02",
+      "handoff": "XR-FABRIC-PAYOPS-001",
+      "repos": ["griot-ai"],
+      "fabricMilestone": "shared flutterwave SM path + handoff 2026-06-15",
+      "acceptance": "griot-ai ESO on gtcx/shared/*/payops/flutterwave"
+    },
+    {
+      "id": "PAY-SUB-03",
+      "priority": "P0",
+      "status": "done",
+      "title": "PayOps SM populate script + fleet migration handoff",
+      "blocksIR": false,
+      "class": "R",
+      "witness": "audit/evidence/payops-substrate-readiness-latest.json",
+      "handoff": "docs/operations/coordination/inbound/to-b/to-payops-fleet-substrate-migration-2026-06-15.md",
+      "closedAt": "2026-06-15",
+      "note": "SM --apply remains Class A; structural readiness PASS without live keys"
     },
     {
       "id": "PAY-SUB-01",

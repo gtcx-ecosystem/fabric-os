@@ -13,7 +13,13 @@ const ECOSYSTEM = join(ROOT, '..');
 const REGISTER = join(ROOT, 'pm/payops-friction-register.json');
 const SUBSTRATE = join(ROOT, 'pm/payops-substrate-contract.json');
 const DOMAIN_REGISTRY = join(BRIDGE, 'pm/spec/payops-domain-registry.json');
-const OPS = join(ROOT, 'docs/operations/payops-as-a-service.md');
+const POPULATE = join(ROOT, 'platform/scripts/staging/populate-payops-staging-sm.sh');
+const HANDOFF = join(
+  ROOT,
+  'docs/operations/coordination/inbound/to-b/to-payops-fleet-substrate-migration-2026-06-15.md',
+);
+const READINESS = join(ROOT, 'audit/evidence/payops-substrate-readiness-latest.json');
+const OPS = join(ROOT, 'docs/operations/platform-services/payops-as-a-service.md');
 const OUT = join(ROOT, 'audit/evidence/payops-fleet-inventory-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
@@ -51,6 +57,9 @@ function main() {
   gates.substrateContract = { ok: existsSync(SUBSTRATE) };
   gates.domainRegistry = { ok: existsSync(DOMAIN_REGISTRY) };
   gates.opsDoc = { ok: existsSync(OPS) };
+  gates.populateScript = { ok: existsSync(POPULATE) };
+  gates.fleetHandoff = { ok: existsSync(HANDOFF) };
+  gates.substrateReadiness = { ok: existsSync(READINESS) };
 
   let webhookCount = 0;
   if (existsSync(SUBSTRATE)) {
@@ -93,7 +102,9 @@ function main() {
     gates.domainRegistry.ok &&
     gates.opsDoc.ok &&
     gates.webhookMatrix.ok &&
-    gates.smPaths.ok;
+    gates.smPaths.ok &&
+    gates.populateScript.ok &&
+    gates.fleetHandoff.ok;
 
   const witness = {
     schema: 'gtcx://fabric-os/payops-fleet-inventory/v1',

@@ -30,7 +30,16 @@ initiative: INIT-GTCX-SERVICE-FABRIC
 
 Webhook ingress matrix lives in `pm/payops-substrate-contract.json#webhookIngress` and [`infra-per-repo-action-matrix`](../coordination/infra-per-repo-action-matrix-2026-06-05.md#payops-webhook-ingress-matrix).
 
-**Open P0:** `PAY-FLEET-01` / `PAY-FLEET-02` — consolidate live Stripe/Flutterwave consumers onto substrate (structural contract done; execution pending).
+**Open P0:** `PAY-FLEET-01` / `PAY-FLEET-02` — product-repo ESO cutover (P24 `XR-FABRIC-PAYOPS-001`). Fabric slice **done:** `PAY-SUB-03` (populate script + handoff).
+
+## Migration wave (2026-06-15)
+
+| Step               | Owner         | Status                                                   |
+| ------------------ | ------------- | -------------------------------------------------------- |
+| Substrate contract | fabric-os     | done (`PAY-SUB-01/02`)                                   |
+| SM populate script | fabric-os     | done — `pnpm payops:substrate:populate:dry-run`          |
+| Fleet P24 handoff  | fabric-os     | `to-b/to-payops-fleet-substrate-migration-2026-06-15.md` |
+| ESO cutover        | product repos | **open** — terminal-os first                             |
 
 ## Owns
 
@@ -45,8 +54,9 @@ Webhook ingress matrix lives in `pm/payops-substrate-contract.json#webhookIngres
 ## Operator entry
 
 ```bash
-pnpm payops:providers:check
 pnpm payops:providers:check:write
+pnpm payops:substrate:readiness:write
+pnpm payops:substrate:populate:dry-run
 cat pm/payops-friction-register.json
 ```
 

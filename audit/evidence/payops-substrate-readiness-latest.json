@@ -1,0 +1,31 @@
+{
+  "schema": "gtcx://fabric-os/payops-substrate-readiness/v1",
+  "checkedAt": "2026-06-15T19:22:40.433Z",
+  "opsLane": "PayOps",
+  "gates": {
+    "substrateContract": {
+      "ok": true
+    },
+    "populateScript": {
+      "ok": true
+    },
+    "fleetHandoff": {
+      "ok": true
+    },
+    "meteringWitness": {
+      "ok": true
+    },
+    "smStripeStaging": {
+      "ok": false,
+      "path": "gtcx/shared/staging/payops/stripe",
+      "advisory": true
+    },
+    "smFlutterwaveStaging": {
+      "ok": false,
+      "path": "gtcx/shared/staging/payops/flutterwave",
+      "advisory": true
+    }
+  },
+  "ok": true,
+  "note": "SM existence advisory until Class A key populate — structural readiness passes without AWS"
+}

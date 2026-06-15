@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/payops-fleet-inventory/v1",
   "opsLane": "PayOps",
-  "checkedAt": "2026-06-14T10:31:45.907Z",
+  "checkedAt": "2026-06-15T19:22:40.815Z",
   "owner": "fabric-os",
   "gates": {
     "register": {
@@ -14,6 +14,15 @@
       "ok": true
     },
     "opsDoc": {
+      "ok": true
+    },
+    "populateScript": {
+      "ok": true
+    },
+    "fleetHandoff": {
+      "ok": true
+    },
+    "substrateReadiness": {
       "ok": true
     },
     "webhookMatrix": {

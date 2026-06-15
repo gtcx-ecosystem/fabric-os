@@ -1,0 +1,13 @@
+{
+  "$schema": "gtcx://fabric-os/bug-bounty-ops/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15",
+  "storyId": "SECAS-S5-05",
+  "opsLane": "SecOps",
+  "status": "operational-stub",
+  "policyDoc": "ops/security/narrative/bug-bounty-policy.md",
+  "triageRunbook": "docs/operations/secas/runbooks/bug-bounty-triage.md",
+  "scope": ["*.gtcx.trade", "staging-*.gtcx.trade"],
+  "safeHarbor": true,
+  "blocksIR": false
+}

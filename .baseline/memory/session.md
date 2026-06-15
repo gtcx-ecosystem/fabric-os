@@ -1,14 +1,58 @@
 # Session State
 
-> **Last updated:** 2026-06-14T19:41+02:00
-> **Agent:** platform-architect (development frame)
+> **Last updated:** 2026-06-15T19:08+00:00
+> **Agent:** platform-architect / security-engineer (regulatory-audit frame)
 > **Protocol compliance:** P22, P26, P27, P28 active
 > **Current sprint:** SECAS-S4 — pen-test remediation track (structural done; awaiting vendor report)
 > **Sprint roadmap:** `audit/product-management/secas-execution-roadmap.md`
 
 ---
 
-## Baseline session — 2026-06-14T19:41+02:00
+## Handoff — 2026-06-15
+
+### Done this session
+
+| ID | What | Evidence |
+|----|------|----------|
+| INIT-OPS-LANES-OPERATIONALIZE | All 17 Ops lanes operational — rollup harness | `bridge-os` `pnpm ecosystem:ops-lanes-100:check` **17/17 PASS** · witness `pm/ci/ops-lanes-100/rollup-latest.json` |
+| DesignOps Wave 1 | Fleet UX SoR 17/17 · hub gate 9/9 | `bridge-os` designops-check · friction register closed |
+| AIOps substrate | fabric-os harness | `pnpm aiops:check:write` PASS · foundation 97/100 |
+| MLOps rollup fix | Witness via aiops-fleet until baseline `mlops:check` | `bridge-os` `93cd07e` |
+| SECAS-S4-04 | Remediation scaffold sealed | `pnpm secas:pentest:remediation:check:write` PASS · phase `awaiting_vendor_report` |
+
+### State
+
+| Signal | Value |
+|--------|-------|
+| P22 (fabric-os) | `SECAS-S4-04` in_progress · blocked until vendor ingest **2026-06-21+** |
+| Ops lanes rollup | **17/17 PASS** · P0 16/16 |
+| bridge-os handoff | `sessions/handoffs/handoff-init-ego-program-001-2026-06-15.md` |
+| bridge-os closure bar | **INCOMPLETE** (2/5) — cutover-links, ops:check, git-settlement |
+| Git fabric-os | `feature/fabric-ops-w1` · uncommitted witness churn |
+
+### Open / parallel (Class A/S — blocksIR: false)
+
+- `SECAS-S2-01-INGEST` — vendor report ingest on/after **2026-06-21**
+- `BG-10-10` — pen-test execution window **2026-06-17..2026-06-21**
+- `BG-10-11` — SOC 2 Type I opinion (parallel)
+- `baseline-os` — dedicated `mlops:check` harness not yet landed (rollup uses aiops-fleet witness)
+
+### Next (Class R)
+
+- **fabric-os:** SECAS-S4-04 witness prep until vendor report; no ingest before calendar
+- **bridge-os:** Program sprint backlog / Product culture R2 (`sprint-backlog` per hub handoff)
+- **Pitfall:** IA/P48 churn deletes `bridge-os/docs/specs/` — restore with `git checkout HEAD -- docs/specs/`
+
+### Operator bootstrap
+
+```bash
+cd fabric-os && pnpm agent:next-work
+cd bridge-os && pnpm session:handoff:check
+cd bridge-os && pnpm ecosystem:ops-lanes-100:check:write
+```
+
+---
+
 
 ### Done this session
 
@@ -221,13 +265,13 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - [ ] Re-read `.baseline/memory/pitfalls.md`
 - [ ] Run `pnpm agent:next-work` to confirm next story
 
-## Session bootstrap (2026-06-15 06:31:02 UTC)
+## Session bootstrap (2026-06-15 18:13:48 UTC)
 
 - **Command:** `agent start` (baseline-os repo-session-core)
 - **Repo:** fabric-os
-- **Next work:** SECAS-S2-01 — fabric SECAS pen-test + vendor report ingest
+- **Next work:** COMPOSITE-RESTORE-100 — Restore composite ≥100 (current 59) — SECAS-S4-supply-chain
 - **Blocked:** no
-- **Git:** 24 changed path(s)
+- **Git:** 29 changed path(s)
 
 
 ## Session — 2026-06-05 (continued)

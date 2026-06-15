@@ -1,11 +1,19 @@
 {
   "schema": "gtcx://bridge-os/settlement-story-scope/v1",
-  "at": "2026-06-15T05:20:34.440Z",
+  "at": "2026-06-15T05:47:41.694Z",
   "repo": "fabric-os",
   "ok": true,
   "scopeCheck": {
     "ok": true,
-    "skipped": true
+    "storyId": "INIT-GTCX-INFRA-SECAS",
+    "activeOwner": "fabric-os",
+    "repo": "fabric-os",
+    "expectedScope": {
+      "repo": "fabric-os",
+      "capabilityId": null,
+      "prdRef": null,
+      "crossRepo": false
+    }
   },
   "errors": 0,
   "warnings": 0

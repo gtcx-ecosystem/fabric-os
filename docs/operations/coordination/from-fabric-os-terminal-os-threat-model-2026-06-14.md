@@ -2,6 +2,7 @@
 title: 'Outbound — terminal-os product threat model'
 status: open
 date: 2026-06-14
+owner: fabric-os
 from: fabric-os
 to: terminal-os
 ticket: XR-TERMINAL-THREAT-MODEL-001

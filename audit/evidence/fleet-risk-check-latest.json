@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/fleet-risk-check/v1",
   "opsLane": "SecOps",
-  "checkedAt": "2026-06-15T19:37:55.907Z",
+  "checkedAt": "2026-06-15T19:48:32.717Z",
   "owner": "bridge-os",
   "executionOwner": "fabric-os",
   "register": "bridge-os/pm/spec/fleet-risk-register.json",

@@ -3,8 +3,11 @@ title: 'Initiatives catalog — trade ecosystem domain model session'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: [[initiatives, roadmap, canon, fabric, bridge]]
+review_cycle: on-change
+document_type: protocol
 initiative: INIT-GTCX-TRADE-ECOSYSTEM-LANES
-tags: [initiatives, roadmap, canon, fabric, bridge]
 ---
 
 # Initiatives catalog — from domain model session

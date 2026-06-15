@@ -1,0 +1,37 @@
+{
+  "$schema": "gtcx://fabric-os/finops-friction-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15",
+  "opsLane": "FinOps",
+  "owner": "fabric-os",
+  "bridgeSoR": "bridge-os/pm/spec/finops-friction-register.json",
+  "policySoR": "bridge-os/pm/spec/environment-cost-policy.json",
+  "governanceSoR": "bridge-os/pm/spec/aws-cost-governance.json",
+  "items": [
+    {
+      "id": "FINOPS-F1",
+      "title": "FinOps harness finops:check:write",
+      "priority": "P0",
+      "status": "done",
+      "owner": "fabric-os",
+      "acceptance": "pnpm finops:check:write exit 0",
+      "closedAt": "2026-06-15"
+    },
+    {
+      "id": "FINOPS-F2",
+      "title": "Lane-attribution tags not enforced on all Terraform modules",
+      "priority": "P1",
+      "status": "open",
+      "owner": "fabric-os",
+      "acceptance": "cost-profile module + staging/testnet witnesses green"
+    },
+    {
+      "id": "FINOPS-F3",
+      "title": "Token spend rollup not wired to baseline cost-stats fleet witness",
+      "priority": "P1",
+      "status": "open",
+      "owner": "fabric-os",
+      "acceptance": "finops witness links bridge aws-cost-weekly + cost-stats path"
+    }
+  ]
+}

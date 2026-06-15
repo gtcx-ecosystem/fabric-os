@@ -2,15 +2,12 @@
 title: 'Repo hygiene protocol — gtcx-infrastructure'
 status: current
 date: 2026-06-06
-owner: 'gtcx-infrastructure'
-role: protocol-architect
+owner: gtcx-infrastructure
 tier: standard
-tags: ['operations', 'repo-hygiene']
+tags: [['operations', 'repo-hygiene']]
 review_cycle: on-change
-related:
-  - ./root-allowlist.json
-  - https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/governance/protocols/31-ecosystem-root-allowlist/protocol.md
-  - https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/governance/protocols/33-ecosystem-repo-governance-spine/protocol.md
+document_type: runbook
+role: protocol-architect
 ---
 
 # Repo hygiene protocol — gtcx-infrastructure

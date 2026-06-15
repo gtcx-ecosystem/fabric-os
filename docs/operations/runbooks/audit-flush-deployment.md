@@ -1,15 +1,16 @@
 ---
 title: 'Audit-Flush Sidecar — Deployment Runbook'
-status: 'current'
-date: '2026-05-27'
-owner: 'platform-engineering'
-review_cycle: 'on-change'
-tags: ['operations', 'audit', 'compliance-gateway']
-role: 'protocol-architect'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: platform-engineering
+tier: standard
+tags: [['operations', 'audit', 'compliance-gateway']]
+review_cycle: on-change
+document_type: runbook
+role: protocol-architect
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
-tier: 'standard'
+autonomy_level: permissioned
 ---
 
 # Audit-Flush Sidecar Deployment

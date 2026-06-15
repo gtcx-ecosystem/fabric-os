@@ -3,6 +3,10 @@ title: 'Manual Cloudflare — compliance.gtcx.trade (Hub #17)'
 status: current
 date: 2026-06-08
 owner: gtcx-infrastructure
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 hub_blocker: 17
 ---
 

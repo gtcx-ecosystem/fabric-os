@@ -2,11 +2,12 @@
 title: 'Code of Conduct'
 status: current
 date: 2026-06-06
-owner: 'gtcx-infrastructure'
-role: protocol-architect
+owner: gtcx-infrastructure
 tier: strategic
-tags: ['governance', 'conduct']
+tags: [['governance', 'conduct']]
 review_cycle: annual
+document_type: runbook
+role: protocol-architect
 ---
 
 # Code of Conduct

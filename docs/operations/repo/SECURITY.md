@@ -2,11 +2,12 @@
 title: 'Security Policy'
 status: current
 date: 2026-06-06
-owner: 'gtcx-infrastructure'
-role: security-engineer
+owner: gtcx-infrastructure
 tier: controlled
-tags: ['security', 'disclosure']
+tags: [['security', 'disclosure']]
 review_cycle: quarterly
+document_type: runbook
+role: security-engineer
 ---
 
 # Security policy

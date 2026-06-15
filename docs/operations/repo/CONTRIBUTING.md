@@ -2,11 +2,12 @@
 title: 'Contributing Guidelines'
 status: current
 date: 2026-06-06
-owner: 'gtcx-infrastructure'
-role: protocol-architect
+owner: gtcx-infrastructure
 tier: standard
-tags: ['governance', 'contributing']
+tags: [['governance', 'contributing']]
 review_cycle: on-change
+document_type: runbook
+role: protocol-architect
 ---
 
 # Contributing to gtcx-infrastructure

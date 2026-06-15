@@ -1,15 +1,16 @@
 ---
 title: 'Disaster Recovery Runbook — GTCX Production'
-status: 'current'
-date: '2026-05-27'
-owner: 'crypto-security-engineer'
-role: 'crypto-security-engineer'
-tier: 'critical'
-tags: ['crypto', 'compliance', 'infrastructure', 'testing', 'api']
-review_cycle: 'quarterly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: crypto-security-engineer
+tier: critical
+tags: [['crypto', 'compliance', 'infrastructure', 'testing', 'api']]
+review_cycle: quarterly
+document_type: runbook
+role: crypto-security-engineer
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Disaster Recovery Runbook — GTCX Production

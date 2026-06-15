@@ -1,11 +1,12 @@
 ---
 title: 'Alert Runbooks'
-status: 'current'
-date: '2026-05-30'
-owner: 'infrastructure-lead'
-tier: 'critical'
-tags: ['runbook', 'alerts', 'incident-response']
-review_cycle: 'on-change'
+status: current
+date: 2026-05-30
+owner: infrastructure-lead
+tier: critical
+tags: [['runbook', 'alerts', 'incident-response']]
+review_cycle: on-change
+document_type: runbook
 ---
 
 # Alert Runbooks

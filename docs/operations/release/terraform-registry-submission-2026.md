@@ -1,15 +1,16 @@
 ---
 title: 'Terraform Registry Submission — terraform-aws-compliance-db'
-status: 'draft'
-date: '2026-05-27'
-owner: 'devops-lead'
-tier: 'standard'
-tags: ['external', 'terraform-registry', 'distribution']
-review_cycle: 'on-change'
-role: 'protocol-architect'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: draft
+date: 2026-05-27
+owner: devops-lead
+tier: standard
+tags: [['external', 'terraform-registry', 'distribution']]
+review_cycle: on-change
+document_type: runbook
+role: protocol-architect
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Terraform Registry Submission — `terraform-aws-compliance-db`

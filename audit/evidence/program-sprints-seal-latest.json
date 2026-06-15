@@ -44,8 +44,11 @@
     "initiative": "INIT-OPS-LANES-OPERATIONALIZE",
     "sprints": "bridge-os/pm/spec/ops-lanes-sprints.json",
     "sealHarness": "pnpm --dir ../bridge-os ecosystem:ops-lanes-sprints:seal:write",
-    "witness": "bridge-os/pm/ci/ops-lanes-100/sprints-seal-latest.json"
+    "witness": "bridge-os/pm/ci/ops-lanes-100/sprints-seal-latest.json",
+    "status": "complete",
+    "sprintsSealed": "4/4",
+    "lanes11pr": "17/17"
   },
   "ok": true,
-  "note": "All fabric-os program sprints sealed. P22 may still head SECAS-S4-04 as calendar witness — not an unsealed sprint."
+  "note": "All fabric program sprints (DAAS+SECAS) and all ops-lane sprints (OPS-SPRINT-W0..W3) sealed. P22 may still head SECAS-S4-04 as calendar witness — not an unsealed sprint."
 }

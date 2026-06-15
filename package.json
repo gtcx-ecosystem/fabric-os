@@ -113,6 +113,8 @@
     "aaas:friction:check:write": "node platform/scripts/aaas-friction-check.mjs --write",
     "legal:friction:check": "node platform/scripts/legal-friction-check.mjs",
     "legal:friction:check:write": "node platform/scripts/legal-friction-check.mjs --write",
+    "legalops:check": "node platform/scripts/legalops-check.mjs",
+    "legalops:check:write": "node platform/scripts/legalops-check.mjs --write",
     "payops:providers:check": "node platform/scripts/payops-providers-check.mjs",
     "payops:providers:check:write": "node platform/scripts/payops-providers-check.mjs --write",
     "payops:substrate:readiness": "node platform/scripts/payops-substrate-readiness.mjs",

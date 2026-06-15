@@ -1,0 +1,22 @@
+{
+  "$schema": "gtcx://fabric-os/legalops-as-a-service/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15",
+  "opsLane": "LegalOps",
+  "owner": "fabric-os",
+  "programOffice": "agile-os",
+  "registerOwner": "agile-os",
+  "initiative": "INIT-ECOSYSTEM-LEGAL-PROGRAM",
+  "protocol": "P45-LEGAL-AS-A-SERVICE",
+  "artifacts": {
+    "frictionRegister": "pm/legal-friction-register.json",
+    "opsEntry": "docs/operations/coordination/inbound/to-a/to-agile-os-secops-complianceops-clearance-escalation-2026-06-15.md",
+    "witness": "audit/evidence/legalops-check-latest.json",
+    "programmeSpec": "agile-os/pm/spec/legalops-as-a-service.json"
+  },
+  "harness": {
+    "check": "pnpm legalops:check",
+    "checkWrite": "pnpm legalops:check:write",
+    "friction": "pnpm legal:friction:check:write"
+  }
+}

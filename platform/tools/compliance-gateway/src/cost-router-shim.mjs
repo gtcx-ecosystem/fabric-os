@@ -24,12 +24,18 @@ async function loadBaselineRouter() {
     baselineRouter = false;
     return false;
   }
-  const candidates = [
-    join(__dirname, '../../../../baseline-os/packages/baselineos/dist/core/cost-router.js'),
-    join(__dirname, '../../../../baseline-os/packages/baselineos/src/core/cost-router.ts'),
-    join(__dirname, '../../../../baseline-os/03-platform/packages/baselineos/dist/core/cost-router.js'),
-    join(__dirname, '../../../../baseline-os/03-platform/packages/baselineos/src/core/cost-router.ts'),
+  const vendorCandidates = [
+    join(__dirname, '../../../vendor/baselineos/dist/core/cost-router.js'),
+    join(__dirname, '../../../vendor/baselineos/src/core/cost-router.ts'),
   ];
+  const ecosystemCandidates = [
+    join(__dirname, '../../../../../baseline-os/platform/packages/baselineos/dist/core/cost-router.js'),
+    join(__dirname, '../../../../../baseline-os/platform/packages/baselineos/src/core/cost-router.ts'),
+  ];
+  const candidates =
+    process.env.GTCX_COST_ROUTER_VENDOR_ONLY === '1'
+      ? vendorCandidates
+      : [...ecosystemCandidates, ...vendorCandidates];
   for (const path of candidates) {
     try {
       const mod = await import(pathToFileURL(path).href);

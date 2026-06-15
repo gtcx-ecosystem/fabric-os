@@ -10,7 +10,7 @@
   "unlockThreshold100": 85,
   "quadrants": {
     "compliance": {
-      "score100": 97,
+      "score100": 100,
       "published": true,
       "provisional": false,
       "blockedBy": null,
@@ -19,14 +19,14 @@
         "layout-p35": {
           "label": "Layout & workspace (P35 v5)",
           "weight": 8,
-          "score100": 65,
+          "score100": 100,
           "protocol": "P35",
           "items": [
             {
               "id": "p35-strict-pass",
               "label": "P35 layout strict GREEN",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 35,
               "severity": "P1",
               "optional": false,
@@ -811,19 +811,11 @@
           "itemCount": 2
         }
       },
-      "hygieneViolations": [
-        {
-          "id": "p35-strict-pass",
-          "categoryId": "layout-p35",
-          "label": "P35 layout strict GREEN",
-          "severity": "P1",
-          "detail": "p35Strict"
-        }
-      ],
+      "hygieneViolations": [],
       "itemTotal": 62,
       "rubricVersion": "1.0.0",
       "openP0": 0,
-      "openP1": 1
+      "openP1": 0
     },
     "technicalExcellence": {
       "score100": 100,
@@ -1076,7 +1068,7 @@
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-14.json",
+  "rubricSourcePath": "audit/audit-output-2026-06-15.json",
   "initiative": "INIT-FIVE-PILLAR-EVAL",
   "source": "run-five-pillar-audit"
 }

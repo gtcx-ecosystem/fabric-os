@@ -17,7 +17,7 @@ import { fileURLToPath } from 'node:url';
 const PKG_ROOT = dirname(fileURLToPath(import.meta.url));
 const BASELINE_ROUTER = join(
   PKG_ROOT,
-  '../../../../baseline-os/packages/baselineos/dist/core/cost-router.js',
+  '../../../vendor/baselineos/dist/core/cost-router.js',
 );
 
 function ensureBaselineRouterStub() {
@@ -65,7 +65,7 @@ describe('cost-router-shim — import failure fallback', () => {
         const result = await selectProviderViaBaseline('hello', { getProviders: () => [] });
         console.log(JSON.stringify({ result }));
       `;
-      const r = runInChild(code);
+      const r = runInChild(code, { GTCX_COST_ROUTER_VENDOR_ONLY: '1' });
       assert.strictEqual(r.status, 0, r.stderr);
       const parsed = JSON.parse(r.stdout.trim());
       assert.strictEqual(parsed.result, null);
@@ -104,7 +104,7 @@ describe('cost-router-shim — provider matching branches', () => {
         const noDecision = await selectProviderViaBaseline('no-decision', { getProviders: () => providers });
         console.log(JSON.stringify({ byId, byModel, byProvider, noMatch, noDecision }));
       `;
-      const r = runInChild(code);
+      const r = runInChild(code, { GTCX_COST_ROUTER_VENDOR_ONLY: '1' });
       assert.strictEqual(r.status, 0, r.stderr);
       const parsed = JSON.parse(r.stdout.trim());
       assert.deepStrictEqual(parsed.byId, { name: 'prov-a', model: 'm-a' });

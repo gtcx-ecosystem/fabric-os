@@ -1,8 +1,12 @@
 ---
-title: SOC 2 Readiness Checklist
+title: 'SOC 2 Readiness Checklist'
 status: current
 date: 2026-06-07
 owner: crypto-security-engineer
+tier: critical
+tags: ['protocol', 'documentation', 'governance']
+review_cycle: on-change
+document_type: protocol
 ---
 
 # SOC 2 Readiness Checklist

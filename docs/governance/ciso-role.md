@@ -1,15 +1,16 @@
 ---
 title: 'Chief Information Security Officer (CISO) Role Definition'
-status: 'current'
-date: '2026-05-27'
-owner: 'ceo'
-role: 'ciso'
-tier: 'critical'
-tags: ['governance', 'security', 'ciso', 'role-definition', 'compliance']
-review_cycle: 'annual'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: ceo
+tier: critical
+tags: [['governance', 'security', 'ciso', 'role-definition', 'compliance']]
+review_cycle: annual
+document_type: protocol
+role: ciso
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Chief Information Security Officer (CISO) Role Definition

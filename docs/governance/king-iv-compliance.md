@@ -1,15 +1,16 @@
 ---
 title: 'King IV Governance Compliance Mapping'
-status: 'current'
-date: '2026-05-27'
-owner: 'ceo'
-role: 'ceo'
-tier: 'critical'
-tags: ['governance', 'king-iv', 'south-africa', 'compliance', 'government-grade']
-review_cycle: 'annual'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: ceo
+tier: critical
+tags: [['governance', 'king-iv', 'south-africa', 'compliance', 'government-grade']]
+review_cycle: annual
+document_type: protocol
+role: ceo
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # King IV Governance Compliance Mapping

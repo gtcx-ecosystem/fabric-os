@@ -1,0 +1,11 @@
+# =============================================================================
+# griot-ai-staging — Namespace (PayOps primary consumer)
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: griot-ai-staging
+  labels:
+    app.kubernetes.io/part-of: gtcx
+    app.kubernetes.io/component: griot-ai
+    environment: staging

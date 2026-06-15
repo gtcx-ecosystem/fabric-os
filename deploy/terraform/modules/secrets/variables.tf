@@ -77,6 +77,18 @@ variable "nyota_ai_service_account" {
   default     = "nyota-ai-sa"
 }
 
+variable "griot_ai_namespace" {
+  description = "Kubernetes namespace for griot-ai PayOps ESO"
+  type        = string
+  default     = "griot-ai-staging"
+}
+
+variable "griot_ai_service_account" {
+  description = "Service account for griot-ai PayOps ESO IRSA"
+  type        = string
+  default     = "griot-ai-sa"
+}
+
 variable "terra_os_namespace" {
   description = "Kubernetes namespace for terra-os ESO (INF-TERRA)"
   type        = string

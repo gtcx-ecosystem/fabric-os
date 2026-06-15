@@ -47,6 +47,7 @@ resource "aws_iam_policy" "terminal_os_secrets_reader" {
       ]
       Resource = [
         aws_secretsmanager_secret.terminal_os_api_keys.arn,
+        aws_secretsmanager_secret.payops_flutterwave.arn,
         aws_secretsmanager_secret.payops_stripe.arn,
       ]
     }]

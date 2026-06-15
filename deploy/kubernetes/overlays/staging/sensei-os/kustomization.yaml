@@ -9,4 +9,5 @@ namespace: sensei-os-staging
 resources:
   - namespace.yaml
   - secret-store.yaml
+  - external-secret-payops-flutterwave.yaml
   - external-secret-payops-stripe.yaml

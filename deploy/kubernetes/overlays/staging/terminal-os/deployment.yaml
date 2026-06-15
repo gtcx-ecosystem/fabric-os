@@ -62,10 +62,17 @@ spec:
               value: https://terminal-staging.gtcx.trade
             - name: NEXT_TELEMETRY_DISABLED
               value: '1'
+            - name: PAYOPS_PRIMARY_PROVIDER
+              value: flutterwave
+            - name: PAYOPS_SECONDARY_PROVIDER
+              value: stripe
           envFrom:
             - secretRef:
                 name: terminal-os-secrets
                 optional: false
+            - secretRef:
+                name: terminal-os-payops-flutterwave
+                optional: true
             - secretRef:
                 name: terminal-os-payops-stripe
                 optional: true

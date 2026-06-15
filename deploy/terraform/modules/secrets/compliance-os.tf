@@ -117,6 +117,7 @@ resource "aws_iam_policy" "compliance_os_secrets_reader" {
         aws_secretsmanager_secret.compliance_os_vxa.arn,
         aws_secretsmanager_secret.compliance_os_minio.arn,
         aws_secretsmanager_secret.payops_stripe.arn,
+        aws_secretsmanager_secret.payops_flutterwave.arn,
       ]
     }]
   })

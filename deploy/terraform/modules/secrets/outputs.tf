@@ -138,3 +138,8 @@ output "nyota_ai_secrets_role_arn" {
   description = "IRSA role ARN for nyota-ai PayOps ESO"
   value       = aws_iam_role.nyota_ai_secrets.arn
 }
+
+output "griot_ai_secrets_role_arn" {
+  description = "IRSA role ARN for griot-ai PayOps ESO"
+  value       = aws_iam_role.griot_ai_secrets.arn
+}

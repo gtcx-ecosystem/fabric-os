@@ -27,6 +27,7 @@ resource "aws_iam_policy" "sensei_os_secrets_reader" {
         "secretsmanager:DescribeSecret",
       ]
       Resource = [
+        aws_secretsmanager_secret.payops_flutterwave.arn,
         aws_secretsmanager_secret.payops_stripe.arn,
       ]
     }]

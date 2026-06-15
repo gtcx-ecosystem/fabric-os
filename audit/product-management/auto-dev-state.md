@@ -10,16 +10,16 @@ last_reconciled: 2026-06-14T10:15:00.000Z
 
 ## Programs
 
-| Program                           | Status                                                       |
-| --------------------------------- | ------------------------------------------------------------ |
-| **DAAS** (INIT-GTCX-INFRA-DAAS)   | **complete** — S1–S3 sealed                                  |
-| **SECAS** (INIT-GTCX-INFRA-SECAS) | **internal sealed** · S4 scaffold · vendor calendar parallel |
+| Program                           | Status                                                     |
+| --------------------------------- | ---------------------------------------------------------- |
+| **DAAS** (INIT-GTCX-INFRA-DAAS)   | **complete** — S1–S3 sealed                                |
+| **SECAS** (INIT-GTCX-INFRA-SECAS) | **complete** (internal Class R) · vendor calendar parallel |
 
 ## Active Phase
 
-- **ID:** FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE
-- **Status:** internal Class R **sealed** (SecOps + ComplianceOps harness PASS)
-- **Reason:** Vendor pen-test/SOW/SOC gates remain parallel external only (`blocksIR: false`)
+- **ID:** SECAS-VENDOR-CALENDAR
+- **Status:** parallel external only — `blocksIR: false`
+- **Reason:** All internal SecOps stories sealed; execution awaits `BG-10-10-REPORT` post **2026-06-21**
 
 ## Fleet SecOps + ComplianceOps internal clearance (2026-06-15)
 

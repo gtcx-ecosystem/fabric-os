@@ -1,15 +1,16 @@
 ---
 title: 'Guide: Identifying Roles That Should Be Added'
-status: 'current'
-date: '2026-05-27'
-owner: 'frontier-infra-engineer'
-role: 'frontier-infra-engineer'
-tier: 'informational'
-tags: ['compliance', 'infrastructure', 'frontend', 'governance', 'ux']
-review_cycle: 'monthly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: frontier-infra-engineer
+tier: informational
+tags: [['compliance', 'infrastructure', 'frontend', 'governance', 'ux']]
+review_cycle: monthly
+document_type: protocol
+role: frontier-infra-engineer
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Guide: Identifying Roles That Should Be Added

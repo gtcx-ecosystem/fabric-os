@@ -1,15 +1,16 @@
 ---
 title: '1-agentic Integration — gtcx-infrastructure'
-status: 'current'
-date: '2026-05-27'
-owner: 'quality-evidence-lead'
-role: 'quality-evidence-lead'
-tier: 'informational'
-tags: ['security', 'architecture', 'infrastructure', 'frontend', 'devops']
-review_cycle: 'monthly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: quality-evidence-lead
+tier: informational
+tags: [['security', 'architecture', 'infrastructure', 'frontend', 'devops']]
+review_cycle: monthly
+document_type: onboarding
+role: quality-evidence-lead
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # 1-agentic Integration — gtcx-infrastructure

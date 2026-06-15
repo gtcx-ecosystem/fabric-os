@@ -3,6 +3,10 @@ title: 'Witness — S1-03 ioredis added to platforms shared deps'
 status: done
 date: 2026-06-05
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 target: gtcx-platforms
 work_id: S1-03
 ---

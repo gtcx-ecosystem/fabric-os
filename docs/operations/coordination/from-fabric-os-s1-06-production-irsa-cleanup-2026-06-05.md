@@ -3,6 +3,10 @@ title: 'Witness — S1-06 production IRSA trust cleanup'
 status: verified
 date: 2026-06-05
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 work_id: S1-06
 ---
 

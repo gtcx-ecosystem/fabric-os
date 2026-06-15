@@ -3,6 +3,10 @@ title: 'Witness — S1-05 Terraform IRSA drift captured'
 status: verified
 date: 2026-06-05
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 work_id: S1-05 / INF-86 / XR-405
 ---
 

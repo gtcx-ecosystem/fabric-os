@@ -2,7 +2,11 @@
 title: 'Inbound — INT-S13-01 staging rollout (infra)'
 status: open
 date: 2026-06-06
-owner: agent:platform-architect
+owner: 'agent:platform-architect'
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: gtcx-intelligence
 story_id: INT-S13-01

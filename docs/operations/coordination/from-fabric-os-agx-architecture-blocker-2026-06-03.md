@@ -3,6 +3,10 @@ title: 'From fabric-os — AGX staging ARM64-only blocker'
 status: closed
 date: 2026-06-03
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 to: gtcx-platforms
 priority: P0
 blocking: XR-302 / P4-07

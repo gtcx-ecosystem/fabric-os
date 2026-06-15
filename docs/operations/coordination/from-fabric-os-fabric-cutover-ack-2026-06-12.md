@@ -1,8 +1,12 @@
 ---
-title: Inbound ack — fabric-os cutover (INIT-FABRIC-OS-CUTOVER)
+title: 'Inbound ack — fabric-os cutover (INIT-FABRIC-OS-CUTOVER)'
 status: done
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: bridge-os
 initiative: INIT-FABRIC-OS-CUTOVER

@@ -2,16 +2,17 @@
 title: 'Inbound — terminal-os staging live (W2-OPS-001)'
 status: live
 date: 2026-06-04
+owner: platform-architect
+tier: standard
+tags: [['coordination', 'w2-ops', 'terminal-os', 'staging']]
+review_cycle: on-change
+document_type: runbook
+role: protocol-architect
 from: fabric-os
 to: terminal-os, compliance-os
 priority: P0
 hub_blocker: 17
 story: W2-OPS-001
-owner: platform-architect
-role: protocol-architect
-tier: standard
-tags: ['coordination', 'w2-ops', 'terminal-os', 'staging']
-review_cycle: on-change
 ---
 
 # Inbound — terminal-os staging live

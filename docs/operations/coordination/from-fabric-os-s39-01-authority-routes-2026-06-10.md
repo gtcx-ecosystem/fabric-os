@@ -3,6 +3,10 @@ title: 'Seal — S39-01 authority routes (XR-MKT-011)'
 status: delivered
 date: 2026-06-10
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: markets-os
 ticket: XR-MKT-011

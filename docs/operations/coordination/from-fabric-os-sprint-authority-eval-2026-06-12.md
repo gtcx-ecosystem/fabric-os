@@ -3,6 +3,10 @@ title: 'Evaluation — Sprint authority read contract (fabric-os L2)'
 status: delivered
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: bridge-os
 ticket: XR-FABRIC-SPRINT-AUTH-001

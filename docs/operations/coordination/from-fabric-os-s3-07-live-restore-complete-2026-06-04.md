@@ -3,9 +3,11 @@ title: 'Outbound — S3-07 live RDS restore complete'
 status: current
 date: 2026-06-04
 owner: fabric-os
-work_id: S3-07
 tier: informational
-tags: ['coordination', 's3-07', 'dr', 'evidence']
+tags: [['coordination', 's3-07', 'dr', 'evidence']]
+review_cycle: on-change
+document_type: runbook
+work_id: S3-07
 ---
 
 # Outbound — S3-07 live RDS restore (staging operational)

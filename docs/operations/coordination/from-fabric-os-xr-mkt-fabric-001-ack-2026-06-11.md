@@ -3,6 +3,10 @@ title: 'outbound-ack — XR-MKT-FABRIC-001 tokenization program'
 status: current
 date: 2026-06-11
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 canonical_repo: fabric-os
 to: markets-os, ledger-ui, bridge-os, baseline-os

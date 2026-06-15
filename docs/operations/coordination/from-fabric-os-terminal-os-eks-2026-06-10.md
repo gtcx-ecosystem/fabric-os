@@ -1,8 +1,12 @@
 ---
-title: Seal — terminal-os EKS staging (F1)
+title: 'Seal — terminal-os EKS staging (F1)'
 status: delivered
 date: 2026-06-10
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: terminal-os
 friction: F1

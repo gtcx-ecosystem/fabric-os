@@ -3,6 +3,10 @@ title: 'Witness — ER-2-02 ENABLE_COST_ROUTER rollout on intelligence-staging'
 status: verified
 date: 2026-06-05
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 work_id: INT-R2-03 / ER-2-02
 ---
 

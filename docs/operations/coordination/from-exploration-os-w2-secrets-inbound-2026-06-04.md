@@ -3,6 +3,10 @@ title: 'Inbound copy — W2 secrets (exploration-os consumer, hub #17.1)'
 status: current
 date: 2026-06-05
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: exploration-os
 to: fabric-os
 hub_blocker: 17

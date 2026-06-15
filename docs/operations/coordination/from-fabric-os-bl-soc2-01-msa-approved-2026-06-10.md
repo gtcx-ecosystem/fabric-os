@@ -1,11 +1,14 @@
 ---
-title: BL-SOC2-01 — Auditor MSA execution approved
+title: 'BL-SOC2-01 — Auditor MSA execution approved'
 status: current
 date: 2026-06-10
 owner: fabric-os
+tier: operating
+tags: [['coordination', 'bl-soc2-01', 'soc2', 'assurance']]
+review_cycle: on-change
+document_type: runbook
 from: human:sovereign
 authorityClass: S
-tags: ['coordination', 'bl-soc2-01', 'soc2', 'assurance']
 ---
 
 # BL-SOC2-01 — Auditor MSA execution approved

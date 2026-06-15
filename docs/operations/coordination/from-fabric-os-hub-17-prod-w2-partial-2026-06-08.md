@@ -2,8 +2,12 @@
 title: 'Witness — Hub #17 prod W2 deploy (partial — DNS pending)'
 status: partial
 date: 2026-06-08
-updated: 2026-06-08
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
+updated: 2026-06-08
 hub_blocker: 17
 er1: ER-1-10
 authority_class: A

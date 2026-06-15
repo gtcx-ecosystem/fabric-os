@@ -3,8 +3,12 @@ title: 'Inbound — XR-EO-006 production KMS key allows staging platforms IRSA'
 status: current
 date: 2026-06-06
 owner: fabric-os
-work_ids: [XR-EO-006, INF-86, XR-405]
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 document_id: COORD-XR-EO-006-INFRA-001
+work_ids: [XR-EO-006, INF-86, XR-405]
 ---
 
 # XR-EO-006 — KMS cross-environment signing (staging → production key)

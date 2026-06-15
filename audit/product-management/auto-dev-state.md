@@ -10,16 +10,21 @@ last_reconciled: 2026-06-14T10:15:00.000Z
 
 ## Programs
 
-| Program                           | Status                                                     |
-| --------------------------------- | ---------------------------------------------------------- |
-| **DAAS** (INIT-GTCX-INFRA-DAAS)   | **complete** — S1–S3 sealed                                |
-| **SECAS** (INIT-GTCX-INFRA-SECAS) | **complete** (internal Class R) · vendor calendar parallel |
+| Program                           | Status                                                 |
+| --------------------------------- | ------------------------------------------------------ |
+| **DAAS** (INIT-GTCX-INFRA-DAAS)   | **complete** — S1–S3 sealed                            |
+| **SECAS** (INIT-GTCX-INFRA-SECAS) | **complete** — S1–S5 sealed · vendor calendar parallel |
 
 ## Active Phase
 
-- **ID:** SECAS-VENDOR-CALENDAR
-- **Status:** parallel external only — `blocksIR: false`
-- **Reason:** All internal SecOps stories sealed; execution awaits `BG-10-10-REPORT` post **2026-06-21**
+- **ID:** PROGRAM-SPRINTS-COMPLETE
+- **Status:** all fabric-os program sprints sealed (DAAS S1–S3 · SECAS S1–S5)
+- **Parallel:** vendor calendar `SECAS-VENDOR-CALENDAR` — `blocksIR: false` · earliest ingest **2026-06-21**
+
+## SECAS-S5 sprint seal (2026-06-15)
+
+- **Harness:** `secas:purple-team` · `product-threat` · `ai-redteam:rollup` · `pqc:check` · `bounty-ops` — all **PASS**
+- **Witness:** `pm/secas-roadmap.json` SECAS-S5 **complete**
 
 ## Fleet SecOps + ComplianceOps internal clearance (2026-06-15)
 

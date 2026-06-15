@@ -25,7 +25,7 @@ sources:
 
 ## Active Phase: SECAS-S4 — Security engineering operating program (CSIRT, supply chain, vuln cadence)
 
-**Status:** `in_progress`
+**Status:** `complete` (internal Class R · vendor calendar parallel)
 
 | Story       | Title                                                                   | Priority | Status | Owner     |
 | ----------- | ----------------------------------------------------------------------- | -------- | ------ | --------- |
@@ -141,12 +141,12 @@ _Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SO
 
 ## Future Phases
 
-| Sprint   | Goal                                                                        | Status   | Owner     | Stories / Friction                                                                          |
-| -------- | --------------------------------------------------------------------------- | -------- | --------- | ------------------------------------------------------------------------------------------- |
-| SECAS-S1 | Sovereign register + security friction SoR                                  | complete | fabric-os |                                                                                             |
-| SECAS-S2 | Pen-test ingest scaffolding (internal prep complete)                        | complete | fabric-os | `SEC-PENTEST-01`                                                                            |
-| SECAS-S3 | Fleet IRSA + WAF hardening cards                                            | complete | fabric-os |                                                                                             |
-| SECAS-S5 | Continuous assurance (purple team, AI red-team, PQC, product threat models) | pending  | fabric-os | `RISK-FLEET-01`, `THR-FLEET-01`, `SECAS-S5-02`, `SECAS-S5-03`, `SECAS-S5-04`, `SECAS-S5-05` |
+| Sprint   | Goal                                                                        | Status   | Owner     | Stories / Friction                                  |
+| -------- | --------------------------------------------------------------------------- | -------- | --------- | --------------------------------------------------- |
+| SECAS-S1 | Sovereign register + security friction SoR                                  | complete | fabric-os |                                                     |
+| SECAS-S2 | Pen-test ingest scaffolding (internal prep complete)                        | complete | fabric-os | `SEC-PENTEST-01`                                    |
+| SECAS-S3 | Fleet IRSA + WAF hardening cards                                            | complete | fabric-os |                                                     |
+| SECAS-S5 | Continuous assurance (purple team, AI red-team, PQC, product threat models) | complete | fabric-os | `SECAS-S5-01`–`SECAS-S5-05` harness PASS 2026-06-15 |
 
 ## Issue Reconciliation
 

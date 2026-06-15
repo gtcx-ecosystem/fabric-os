@@ -1,0 +1,19 @@
+{
+  "schema": "gtcx://fabric-os/secas-pqc-check/v1",
+  "storyId": "SECAS-S5-04",
+  "checkedAt": "2026-06-15T19:37:56.387Z",
+  "register": "bridge-os/pm/spec/crypto-agility-register.json",
+  "gates": {
+    "register": {
+      "ok": true
+    },
+    "inventory": {
+      "ok": true,
+      "count": 2
+    },
+    "harnessRef": {
+      "ok": true
+    }
+  },
+  "ok": true
+}

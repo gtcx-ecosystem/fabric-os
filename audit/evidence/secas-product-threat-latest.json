@@ -1,21 +1,11 @@
 {
-  "schema": "gtcx://fabric-os/fleet-risk-check/v1",
-  "opsLane": "SecOps",
-  "checkedAt": "2026-06-15T19:37:55.907Z",
-  "owner": "bridge-os",
-  "executionOwner": "fabric-os",
-  "register": "bridge-os/pm/spec/fleet-risk-register.json",
+  "schema": "gtcx://fabric-os/secas-product-threat/v1",
+  "storyId": "SECAS-S5-02",
+  "checkedAt": "2026-06-15T19:37:55.912Z",
   "gates": {
-    "register": {
-      "ok": true
-    },
-    "riskCount": {
+    "fleetRiskHarness": {
       "ok": true,
-      "count": 10
-    },
-    "sources": {
-      "ok": true,
-      "missing": []
+      "exit": 0
     },
     "productThreatModels": {
       "ok": true,
@@ -36,14 +26,7 @@
           "path": "gtcx-os/platform/intelligence/01-docs/security/threat-model.md"
         }
       }
-    },
-    "openP0Risks": {
-      "ok": true,
-      "count": 3,
-      "ids": ["RISK-SEC-001", "RISK-SEC-002", "RISK-SEC-003"]
     }
   },
-  "openP0": 3,
-  "productThreatGap": false,
   "ok": true
 }

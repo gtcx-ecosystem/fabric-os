@@ -369,6 +369,46 @@
         }
       ],
       "blockers": "product repos own app threat model content — fabric indexes only"
+    },
+    {
+      "id": "SECAS-S5-02",
+      "sprint": "SECAS-S5",
+      "title": "Product-line threat models — markets, terminal",
+      "priority": "P0",
+      "status": "done",
+      "owner": "fabric-os",
+      "acceptance": ["pnpm secas:product-threat:check:write"],
+      "closedAt": "2026-06-15"
+    },
+    {
+      "id": "SECAS-S5-03",
+      "sprint": "SECAS-S5",
+      "title": "AI / Mythos threat model + red-team fleet rollup",
+      "priority": "P0",
+      "status": "done",
+      "owner": "fabric-os",
+      "acceptance": ["pnpm secas:ai-redteam:rollup:write"],
+      "closedAt": "2026-06-15"
+    },
+    {
+      "id": "SECAS-S5-04",
+      "sprint": "SECAS-S5",
+      "title": "PQC crypto-agility register + harness",
+      "priority": "P2",
+      "status": "done",
+      "owner": "fabric-os",
+      "acceptance": ["pnpm secas:pqc:check:write"],
+      "closedAt": "2026-06-15"
+    },
+    {
+      "id": "SECAS-S5-05",
+      "sprint": "SECAS-S5",
+      "title": "Bug bounty program operationalization",
+      "priority": "P1",
+      "status": "done",
+      "owner": "fabric-os",
+      "acceptance": ["pnpm secas:bounty-ops:check:write"],
+      "closedAt": "2026-06-15"
     }
   ]
 }

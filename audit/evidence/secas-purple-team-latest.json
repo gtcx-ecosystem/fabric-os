@@ -1,0 +1,16 @@
+{
+  "schema": "gtcx://fabric-os/secas-purple-team/v1",
+  "checkedAt": "2026-06-15T19:37:55.647Z",
+  "gates": {
+    "policy": {
+      "ok": true
+    },
+    "runbook": {
+      "ok": true
+    },
+    "nextWindow": {
+      "ok": true
+    }
+  },
+  "ok": true
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "gtcx://fabric-os/secas-bounty-ops/v1",
+  "storyId": "SECAS-S5-05",
+  "checkedAt": "2026-06-15T19:37:56.643Z",
+  "gates": {
+    "opsSpec": {
+      "ok": true
+    },
+    "policyDoc": {
+      "ok": true
+    },
+    "triageRunbook": {
+      "ok": true
+    },
+    "safeHarbor": {
+      "ok": true
+    }
+  },
+  "ok": true
+}

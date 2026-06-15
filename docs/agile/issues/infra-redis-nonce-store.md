@@ -1,15 +1,16 @@
 ---
 title: 'Redis nonce-store spec for signed-edge envelope validation'
-status: 'current'
-date: '2026-05-27'
-owner: 'platform-engineering'
-tier: 'critical'
-tags: ['redis', 'nonce', 'replay-protection', 'signed-edge', 'infra']
-review_cycle: 'on-change'
-role: 'protocol-architect'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: platform-engineering
+tier: critical
+tags: [['redis', 'nonce', 'replay-protection', 'signed-edge', 'infra']]
+review_cycle: on-change
+document_type: protocol
+role: protocol-architect
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Redis Nonce-Store — INFRA Issue

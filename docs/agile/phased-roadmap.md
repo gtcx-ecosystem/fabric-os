@@ -1,16 +1,17 @@
 ---
 title: '[Product Name] — Phased Roadmap (template)'
-status: 'template'
-template_note: 'Scaffold file with placeholder text. Not a current roadmap. Canonical execution plan: 01-docs/05-audit/execution-roadmap.md.'
-date: '2026-05-27'
-owner: 'product-lead'
-role: 'product-lead'
-tier: 'standard'
-tags: ['infrastructure', 'testing', 'devops', 'mobile', 'telemetry']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: template
+date: 2026-05-27
+owner: product-lead
+tier: standard
+tags: [['infrastructure', 'testing', 'devops', 'mobile', 'telemetry']]
+review_cycle: on-change
+document_type: protocol
+role: product-lead
+template_note: Scaffold file with placeholder text. Not a current roadmap. Canonical execution plan: 01-docs/05-audit/execution-roadmap.md.
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # [Product Name] — Phased Roadmap

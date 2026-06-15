@@ -3,6 +3,10 @@ title: 'gtcx-infrastructure — agile lens'
 status: current
 date: 2026-06-05
 owner: gtcx-infrastructure
+tier: operating
+tags: ['protocol', 'documentation']
+review_cycle: on-change
+document_type: protocol
 ---
 
 # gtcx-infrastructure — agile lens

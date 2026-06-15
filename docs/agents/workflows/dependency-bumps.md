@@ -1,11 +1,12 @@
 ---
 title: 'Dependency-Bump Triage'
-status: 'current'
-date: '2026-05-30'
-owner: 'platform-engineering'
-tier: 'standard'
-tags: ['dependencies', 'dependabot', 'ci']
-review_cycle: 'on-change'
+status: current
+date: 2026-05-30
+owner: platform-engineering
+tier: standard
+tags: [['dependencies', 'dependabot', 'ci']]
+review_cycle: on-change
+document_type: protocol
 ---
 
 # Dependency-Bump Triage

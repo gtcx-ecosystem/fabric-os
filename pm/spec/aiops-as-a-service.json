@@ -1,0 +1,66 @@
+{
+  "$schema": "gtcx://fabric-os/aiops-as-a-service/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15",
+  "protocolId": "P49-AIOPS-AS-A-SERVICE",
+  "title": "AIOps-as-a-Service",
+  "opsLane": "AIOps",
+  "opsDisplayTitle": "AIOps",
+  "opsRegistry": "bridge-os/pm/spec/ops-programs-registry.json",
+  "initiative": "INIT-GTCX-FABRIC-AIOPS",
+  "status": "active",
+  "hubProtocolTarget": "canon-os/docs/governance/protocols/49-aiops-as-a-service/protocol.md",
+  "principle": "AI operations as a first-class lane: anomaly detection, eval-gated automation signals, injection red-team evidence, and agent reliability witnesses. AIOps does not own model training (MLOps / gtcx-intelligence); it operates fleet AI reliability and agent conduct surfaces.",
+  "threePlanes": {
+    "engineering": { "owner": "product-repo", "pmLeads": true, "blocksIRDefault": false },
+    "aiops": {
+      "owner": "fabric-os",
+      "coOwner": "gtcx-intelligence",
+      "pmLeads": false,
+      "primaryRoadmap": true,
+      "blocksIRDefault": false
+    },
+    "assurance": { "owner": "fabric-os + bridge-os", "pmLeads": false, "blocksIRDefault": false }
+  },
+  "ownerSplit": {
+    "fabricOs": [
+      "pm/spec/aiops-as-a-service.json",
+      "pm/aiops-friction-register.json",
+      "pm/aiops-signals-register.json",
+      "docs/operations/aiops-as-a-service.md",
+      "docs/operations/aiops-agentic-team.md",
+      "platform/scripts/aiops-check.mjs",
+      "platform/scripts/tests/aiops-check.test.mjs",
+      "audit/evidence/aiops-check-latest.json"
+    ],
+    "intelligenceOwner": ["model serving runtime", "inference eval rubrics"],
+    "bridgeOs": ["ecosystem:aiops:check:fleet", "pm/ci/aiops-fleet-latest.json"],
+    "mlopsBridge": ["pm/spec/mlops-bridge-contract.json", "deploy/terraform/modules/gcp-ml-bridge/"]
+  },
+  "artifacts": {
+    "spec": "pm/spec/aiops-as-a-service.json",
+    "runbook": "docs/operations/aiops-as-a-service.md",
+    "teamCharter": "docs/operations/aiops-agentic-team.md",
+    "frictionRegister": "pm/aiops-friction-register.json",
+    "signalsRegister": "pm/aiops-signals-register.json",
+    "mlopsBridge": "pm/spec/mlops-bridge-contract.json",
+    "check": "platform/scripts/aiops-check.mjs",
+    "checkTest": "platform/scripts/tests/aiops-check.test.mjs",
+    "witness": "audit/evidence/aiops-check-latest.json",
+    "fleetWitness": "../bridge-os/pm/ci/aiops-fleet-latest.json"
+  },
+  "harness": {
+    "check": "pnpm aiops:check",
+    "write": "pnpm aiops:check:write",
+    "fleet": "pnpm --dir ../bridge-os ecosystem:aiops:check:fleet:write"
+  },
+  "persona": {
+    "primary": "security-engineer",
+    "secondary": ["platform-architect", "protocol-engineer"],
+    "frame": "development"
+  },
+  "authority": {
+    "class": "A",
+    "note": "Lane operationalization is Class A; day-to-day check runs are Class R."
+  }
+}

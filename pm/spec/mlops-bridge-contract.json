@@ -1,0 +1,27 @@
+{
+  "$schema": "gtcx://fabric-os/mlops-bridge-contract/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15",
+  "title": "MLOps bridge — fabric-os substrate contract",
+  "opsLane": "MLOps",
+  "mlopsOwner": "gtcx-intelligence",
+  "fabricBridgeOwner": "fabric-os",
+  "status": "scaffold",
+  "principle": "MLOps lane ownership stays with gtcx-intelligence. fabric-os owns deploy substrate: GCP ML bridge terraform, eval-pipeline CI witness, and fleet handoff.",
+  "fabricArtifacts": {
+    "terraform": "deploy/terraform/modules/gcp-ml-bridge/",
+    "evalPipeline": "platform/tools/eval-pipeline/",
+    "modelCards": [
+      "docs/governance/model-cards/anomaly-detector-model-card.md",
+      "docs/governance/model-cards/eval-pipeline-model-card.md"
+    ],
+    "ci": ".github/workflows/eval-pipeline.yml"
+  },
+  "intelligenceDeliverables": [
+    "pm/spec/mlops-as-a-service.json",
+    "docs/operations/mlops-as-a-service.md",
+    "platform/scripts/mlops-check.mjs",
+    "audit/evidence/mlops-check-latest.json"
+  ],
+  "handoff": "docs/operations/coordination/inbound/to-gtcx-intelligence-mlops-lane-2026-06-15.md"
+}

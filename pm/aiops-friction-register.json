@@ -1,0 +1,35 @@
+{
+  "$schema": "gtcx://fabric-os/aiops-friction-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15",
+  "lane": "AIOps",
+  "owner": "fabric-os",
+  "coOwner": "gtcx-intelligence",
+  "status": "open",
+  "items": [
+    {
+      "id": "AOF-001",
+      "title": "P49 hub protocol not yet published in canon-os",
+      "priority": "P1",
+      "status": "open",
+      "owner": "canon-os",
+      "evidence": "canon-os/docs/governance/protocols/49-aiops-as-a-service/protocol.md"
+    },
+    {
+      "id": "AOF-002",
+      "title": "MLOps lane scaffold owned by gtcx-intelligence",
+      "priority": "P0",
+      "status": "open",
+      "owner": "gtcx-intelligence",
+      "evidence": "docs/operations/coordination/inbound/to-gtcx-intelligence-mlops-lane-2026-06-15.md"
+    },
+    {
+      "id": "AOF-003",
+      "title": "Injection suite witness periodic refresh",
+      "priority": "P2",
+      "status": "in_progress",
+      "owner": "fabric-os",
+      "evidence": "audit/evidence/injection-suite-latest.json"
+    }
+  ]
+}

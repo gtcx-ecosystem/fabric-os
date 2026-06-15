@@ -1,0 +1,69 @@
+{
+  "$schema": "gtcx://fabric-os/aiops-check-witness/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15T14:19:54.763Z",
+  "repo": "fabric-os",
+  "lane": "AIOps",
+  "protocolId": "P49-AIOPS-AS-A-SERVICE",
+  "overall": "PASS",
+  "foundationScore100": 100,
+  "transformationalScore100": 81,
+  "pillars": [
+    {
+      "id": "compliance",
+      "score": 100,
+      "evidence": "spec+runbook+registers"
+    },
+    {
+      "id": "technicalExcellence",
+      "score": 100,
+      "evidence": "check+tests+scripts"
+    },
+    {
+      "id": "craft",
+      "score": 100,
+      "evidence": "frontmatter"
+    },
+    {
+      "id": "worldClass",
+      "score": 100,
+      "evidence": "docs six-pack subset"
+    },
+    {
+      "id": "trustAndSafety",
+      "score": 100,
+      "evidence": "authority+redaction"
+    },
+    {
+      "id": "creativityInnovation",
+      "score": 100,
+      "evidence": "signals paths"
+    },
+    {
+      "id": "commercialValue",
+      "score": 100,
+      "evidence": "injection-suite"
+    },
+    {
+      "id": "defensiveMoat",
+      "score": 100,
+      "evidence": "anomaly-detector"
+    },
+    {
+      "id": "agenticEmpowerment",
+      "score": 100,
+      "evidence": "harness"
+    },
+    {
+      "id": "productEcosystemIntegration",
+      "score": 85,
+      "evidence": "handoff"
+    },
+    {
+      "id": "ipMagic",
+      "score": 0,
+      "evidence": "P49 hub"
+    }
+  ],
+  "errors": []
+}

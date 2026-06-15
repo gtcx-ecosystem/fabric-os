@@ -3,15 +3,14 @@ title: 'Trade ecosystem lanes — normative specification'
 status: draft
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: [[canon, domain-model, lanes, gtcx-os, fabric, baseline]]
+review_cycle: on-change
+document_type: protocol
 document_id: SPEC-TRADE-LANES-001
 initiative: INIT-GTCX-TRADE-ECOSYSTEM-LANES
 authority_class: R
-supersedes: simplified D1–D4 domain diagram; flat P-tier "infrastructure intelligence"
-related:
-  - ./session-brainstorm-trade-domain-model-2026-06-12.md
-  - ../../pm/spec/trade-ecosystem-lanes.json
-  - ../../operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md
-tags: [canon, domain-model, lanes, gtcx-os, fabric, baseline]
+supersedes: simplified D1–D4 domain diagram; flat P-tier "infrastructure intelligence
 ---
 
 # Trade ecosystem lanes — normative specification

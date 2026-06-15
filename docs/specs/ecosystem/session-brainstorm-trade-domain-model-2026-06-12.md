@@ -3,10 +3,13 @@ title: 'Session brainstorm — trade ecosystem domain model (raw discussion)'
 status: draft
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: [[brainstorm, domain-model, canon, lanes, raw-notes]]
+review_cycle: on-change
+document_type: protocol
 session_id: fabric-os-domain-model-2026-06-12
 participants: operator, ecosystem-strategy-agent
 source: cursor-session-0bc17772
-tags: [brainstorm, domain-model, canon, lanes, raw-notes]
 ---
 
 # Session brainstorm — trade ecosystem domain model

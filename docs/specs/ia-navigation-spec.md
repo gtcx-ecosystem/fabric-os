@@ -1,8 +1,12 @@
 ---
-title: IA navigation spec — control plane
+title: 'IA navigation spec — control plane'
 status: current
 date: 2026-06-10
 owner: fabric-os
+tier: operating
+tags: ['protocol', 'documentation']
+review_cycle: on-change
+document_type: protocol
 ---
 
 # IA navigation spec

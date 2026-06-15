@@ -3,10 +3,13 @@ title: 'Lane deploy matrix — fabric-os obligations by trade lane'
 status: draft
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: [[fabric, deploy, lanes, eks, staging]]
+review_cycle: on-change
+document_type: protocol
 document_id: SPEC-FABRIC-LANE-DEPLOY-001
 initiative: INIT-FABRIC-LANE-DEPLOY-MATRIX
 parent: SPEC-TRADE-LANES-001
-tags: [fabric, deploy, lanes, eks, staging]
 ---
 
 # Lane deploy matrix — fabric-os obligations

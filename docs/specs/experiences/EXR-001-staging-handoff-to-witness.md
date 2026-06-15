@@ -1,9 +1,13 @@
 ---
-exrId: EXR-001
-title: Staging handoff to witness
+title: 'Staging handoff to witness'
 status: p0
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['protocol', 'documentation']
+review_cycle: on-change
+document_type: protocol
+exrId: EXR-001
 jtbdId: JTBD-staging-substrate-ready
 flowId: flow-staging-handoff
 personaId: sibling-integrator

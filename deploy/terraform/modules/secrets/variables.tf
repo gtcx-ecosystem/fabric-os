@@ -53,6 +53,30 @@ variable "terminal_os_service_account" {
   default     = "terminal-os-sa"
 }
 
+variable "sensei_os_namespace" {
+  description = "Kubernetes namespace for sensei-os PayOps ESO"
+  type        = string
+  default     = "sensei-os-staging"
+}
+
+variable "sensei_os_service_account" {
+  description = "Service account for sensei-os PayOps ESO IRSA"
+  type        = string
+  default     = "sensei-os-sa"
+}
+
+variable "nyota_ai_namespace" {
+  description = "Kubernetes namespace for nyota-ai PayOps ESO"
+  type        = string
+  default     = "nyota-ai-staging"
+}
+
+variable "nyota_ai_service_account" {
+  description = "Service account for nyota-ai PayOps ESO IRSA"
+  type        = string
+  default     = "nyota-ai-sa"
+}
+
 variable "terra_os_namespace" {
   description = "Kubernetes namespace for terra-os ESO (INF-TERRA)"
   type        = string

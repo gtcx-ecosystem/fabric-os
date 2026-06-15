@@ -140,9 +140,9 @@ Full list: register §7 in gtcx-docs.
 | Repo          | Path                      | Provider    | Substrate consumer | WAF                |
 | ------------- | ------------------------- | ----------- | ------------------ | ------------------ |
 | terminal-os   | `/api/stripe/webhook`     | Stripe      | yes (ESO live)     | fabric-eks-ingress |
-| sensei-os     | `/stripe-webhook`         | Stripe      | pending migrate    | fabric-eks-ingress |
-| compliance-os | `/billing/stripe/webhook` | Stripe      | pending migrate    | fabric-eks-ingress |
-| nyota-ai      | `/webhooks/stripe`        | Stripe      | pending migrate    | fabric-eks-ingress |
+| compliance-os | `/billing/stripe/webhook` | Stripe      | yes (ESO manifest) | fabric-eks-ingress |
+| sensei-os     | `/stripe-webhook`         | Stripe      | yes (ESO manifest) | fabric-eks-ingress |
+| nyota-ai      | `/webhooks/stripe`        | Stripe      | yes (ESO manifest) | fabric-eks-ingress |
 | griot-ai      | `/webhooks/flutterwave`   | Flutterwave | pending migrate    | fabric-eks-ingress |
 
 **SM paths:** `gtcx/shared/{staging,production}/payops/{stripe,flutterwave}` — see PayOps substrate contract.

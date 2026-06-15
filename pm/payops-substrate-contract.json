@@ -38,7 +38,7 @@
       "path": "/stripe-webhook",
       "provider": "stripe",
       "layer": "domain",
-      "substrateConsumer": "pending",
+      "substrateConsumer": true,
       "waf": "fabric-eks-ingress"
     },
     {
@@ -46,7 +46,7 @@
       "path": "/billing/stripe/webhook",
       "provider": "stripe",
       "layer": "domain",
-      "substrateConsumer": "pending",
+      "substrateConsumer": true,
       "waf": "fabric-eks-ingress"
     },
     {
@@ -54,7 +54,7 @@
       "path": "/webhooks/stripe",
       "provider": "stripe",
       "layer": "domain",
-      "substrateConsumer": "pending",
+      "substrateConsumer": true,
       "waf": "fabric-eks-ingress"
     },
     {

@@ -31,7 +31,8 @@ protocol: P41-DEVOPS-AS-A-SERVICE
 
 1. GHCR `imagePullSecret` via ESO (`compliance-os-ghcr-pull` ← `gtcx/compliance-os/staging/ghcr-pull-token`)
 2. Non-W2 service secrets (api, caas, core12, via, vxa, minio) via ESO
-3. Attach `imagePullSecrets: [compliance-os-ghcr-pull]` on **all** GHCR deployments
+3. **PayOps** — `compliance-os-payops-stripe` ← `gtcx/shared/staging/payops/stripe` (caas billing)
+4. Attach `imagePullSecrets: [compliance-os-ghcr-pull]` on **all** GHCR deployments
 
 ## Apply path
 

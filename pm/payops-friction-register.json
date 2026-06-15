@@ -19,7 +19,7 @@
       "finding": "REV-FLEET-01",
       "handoff": "XR-FABRIC-PAYOPS-001",
       "repos": ["terminal-os", "sensei-os", "compliance-os", "nyota-ai"],
-      "fabricMilestone": "ESO manifest + IRSA for shared stripe path 2026-06-15; SM --apply Class A pending",
+      "fabricMilestone": "ESO manifests for terminal/compliance/sensei/nyota 2026-06-15; product envFrom + SM apply Class A pending",
       "acceptance": "stripeDuplication count ≤1 in payops-fleet-inventory witness"
     },
     {

@@ -1,0 +1,11 @@
+# =============================================================================
+# sensei-os-staging — Namespace (PayOps secrets substrate)
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sensei-os-staging
+  labels:
+    app.kubernetes.io/part-of: gtcx
+    app.kubernetes.io/component: sensei-os
+    environment: staging

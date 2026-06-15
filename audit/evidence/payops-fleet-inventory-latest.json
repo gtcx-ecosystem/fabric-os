@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/payops-fleet-inventory/v1",
   "opsLane": "PayOps",
-  "checkedAt": "2026-06-15T19:22:40.815Z",
+  "checkedAt": "2026-06-15T19:30:17.097Z",
   "owner": "fabric-os",
   "gates": {
     "register": {

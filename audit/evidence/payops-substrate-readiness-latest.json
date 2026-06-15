@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/payops-substrate-readiness/v1",
-  "checkedAt": "2026-06-15T19:22:40.433Z",
+  "checkedAt": "2026-06-15T19:30:16.885Z",
   "opsLane": "PayOps",
   "gates": {
     "substrateContract": {
@@ -14,6 +14,17 @@
     },
     "meteringWitness": {
       "ok": true
+    },
+    "esoConsumerManifests": {
+      "ok": true,
+      "count": 4,
+      "expected": 4,
+      "paths": [
+        "deploy/kubernetes/overlays/staging/terminal-os/external-secret-payops-stripe.yaml",
+        "deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml",
+        "deploy/kubernetes/overlays/staging/sensei-os/external-secret-payops-stripe.yaml",
+        "deploy/kubernetes/overlays/staging/nyota-ai/external-secret-payops-stripe.yaml"
+      ]
     },
     "smStripeStaging": {
       "ok": false,

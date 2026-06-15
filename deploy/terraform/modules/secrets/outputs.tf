@@ -128,3 +128,13 @@ output "payops_sm_secret_names" {
     aws_secretsmanager_secret.payops_flutterwave.name,
   ]
 }
+
+output "sensei_os_secrets_role_arn" {
+  description = "IRSA role ARN for sensei-os PayOps ESO"
+  value       = aws_iam_role.sensei_os_secrets.arn
+}
+
+output "nyota_ai_secrets_role_arn" {
+  description = "IRSA role ARN for nyota-ai PayOps ESO"
+  value       = aws_iam_role.nyota_ai_secrets.arn
+}

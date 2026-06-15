@@ -1,0 +1,11 @@
+# =============================================================================
+# nyota-ai-staging — Namespace (PayOps secrets substrate)
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nyota-ai-staging
+  labels:
+    app.kubernetes.io/part-of: gtcx
+    app.kubernetes.io/component: nyota-ai
+    environment: staging

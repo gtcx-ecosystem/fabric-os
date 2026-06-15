@@ -45,7 +45,7 @@ The `gtcx-core` monorepo publishes individual packages under the `@gtcx/*` scope
 ## 2. Adding Dependencies
 
 ```bash
-# In the target repo root
+## In the target repo root
 pnpm add @gtcx/crypto @gtcx/types
 pnpm add -D @gtcx/schemas
 ```
@@ -87,10 +87,10 @@ This replaces the inline Ed25519 and ES256 verification with the shared `@gtcx/c
 ## 5. Verification
 
 ```bash
-# Check adoption in a repo
+## Check adoption in a repo
 grep -r '"@gtcx/' package.json pnpm-workspace.yaml 03-platform/packages/*/package.json | wc -l
 
-# Check across all sibling repos
+## Check across all sibling repos
 for repo in gtcx-protocols gtcx-platforms gtcx-intelligence gtcx-mobile gtcx-markets; do
   echo "=== $repo ==="
   grep -c '"@gtcx/' "../$repo/package.json" 2>/dev/null || echo "0"

@@ -13,6 +13,8 @@ document_id: OPS-AGENT-LOOKUP-001
 
 # Agent command lookup
 
+## Overview
+
 **Mnemonic:** `session` → `next` → `gates` → `hub` → `push`
 
 | Remember  | Run from `gtcx-infrastructure`                                                        |

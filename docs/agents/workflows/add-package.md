@@ -99,23 +99,23 @@ k8s/{service-name}/
 **Docker service:**
 
 ```
-# Add service to docker-compose.yml
-# Never hardcode credentials — use environment variables or secret manager references
+## Add service to docker-compose.yml
+## Never hardcode credentials — use environment variables or secret manager references
 ```
 
 **Node.js automation script:**
 
 ```
 03-platform/tools/{name}.mjs
-# Add to package.json scripts
+## Add to package.json scripts
 ```
 
 **Database migration:**
 
 ```
-# Add sequential migration file
-# Never modify migrations that have already run in any environment
-# Never touch gtcx_audit in application migrations
+## Add sequential migration file
+## Never modify migrations that have already run in any environment
+## Never touch gtcx_audit in application migrations
 ```
 
 ---

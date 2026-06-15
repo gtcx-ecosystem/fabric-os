@@ -37,7 +37,7 @@ Security-sensitive ADRs (affecting secrets management, network policies, IAM, or
 ## Pre-Flight
 
 ```bash
-# Review existing ADRs to understand context and avoid contradictions
+## Review existing ADRs to understand context and avoid contradictions
 ls 01-docs/architecture/decisions/ | sort
 ```
 

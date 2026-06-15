@@ -81,7 +81,7 @@ car
 ### Step 2: Add Dependencies
 
 ```bash
-# In the service repo
+## In the service repo
 pnpm add @gtcx/protocols-crypto @gtcx/protocols-schemas @gtcx/protocols-domain
 ```
 
@@ -261,7 +261,7 @@ When opening adoption PRs in service repos, use this template:
 Shared packages follow SemVer. Platform Engineering publishes updates:
 
 ```bash
-# In gtcx-core repo
+## In gtcx-core repo
 pnpm version patch  # or minor/major
 pnpm publish
 ```

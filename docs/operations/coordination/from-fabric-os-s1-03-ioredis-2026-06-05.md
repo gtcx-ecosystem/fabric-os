@@ -44,10 +44,10 @@ With `ioredis` installed:
 ```bash
 cd /Users/amanianai/Sites/gtcx-ecosystem/gtcx-platforms
 grep ioredis platforms/shared/package.json
-# → "ioredis": "^5.10.1"
+## → "ioredis": "^5.10.1"
 
 pnpm install --no-frozen-lockfile
-# → lockfile updated
+## → lockfile updated
 ```
 
 ## Next steps

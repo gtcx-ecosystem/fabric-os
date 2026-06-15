@@ -55,13 +55,13 @@ autonomy_level: permissioned
 ## Verification Commands
 
 ```bash
-# Verify IRSA role trust
+## Verify IRSA role trust
 aws iam get-role --role-name gtcx-production-platforms-irsa
 
-# Verify KMS key policy
+## Verify KMS key policy
 aws kms get-key-policy --key-id ffd06311-3c16-4951-9d4b-c4ebc1632e3e --policy-name default
 
-# Verify SSM parameters
+## Verify SSM parameters
 aws ssm get-parameter --name /gtcx/production/kms/signing-key-id
 aws ssm get-parameter --name /gtcx/production/kms/signing-key-arn
 ```

@@ -56,7 +56,7 @@ kubectl rollout status deployment/gtcx-agx-staging -n gtcx-staging
 
 ```bash
 curl -sS -o /dev/null -w "%{http_code}\n" https://api.staging.gtcx.trade/api/health
-# Expected: 200
+## Expected: 200
 ```
 
 ## Ref

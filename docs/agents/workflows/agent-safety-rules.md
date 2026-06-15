@@ -70,21 +70,21 @@ NEVER:
 ### Commit message format
 
 ```bash
-# Format
+## Format
 type(scope): description
 
-# Types: feat, fix, docs, style, refactor, test, chore
-# Scope: component or module affected
-# Description: imperative mood, lowercase, no period
+## Types: feat, fix, docs, style, refactor, test, chore
+## Scope: component or module affected
+## Description: imperative mood, lowercase, no period
 
-# Good examples
+## Good examples
 feat(auth): add oauth2 integration with google
 fix(transactions): resolve decimal precision error
 docs(api): update endpoint documentation for v2
 refactor(core): extract validation logic to shared module
 test(payments): add edge case for negative amounts
 
-# Bad examples
+## Bad examples
 "Fixed stuff"
 "WIP"
 "made changes"
@@ -419,17 +419,17 @@ Before_Creating_PR:
 ### Recovery commands
 
 ```bash
-# Undo last commit (not pushed)
+## Undo last commit (not pushed)
 git reset --soft HEAD~1
 
-# Revert a pushed commit
+## Revert a pushed commit
 git revert <commit-hash>
 
-# Emergency branch reset (CAREFUL — destructive)
+## Emergency branch reset (CAREFUL — destructive)
 git fetch origin
 git reset --hard origin/main
 
-# Stash work in progress
+## Stash work in progress
 git stash save "WIP: description"
 ```
 

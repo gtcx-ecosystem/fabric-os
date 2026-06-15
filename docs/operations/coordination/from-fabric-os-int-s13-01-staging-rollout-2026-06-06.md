@@ -22,14 +22,14 @@ story_id: INT-S13-01
 ## Operator commands (Class R — run in-session)
 
 ```bash
-# 1) Build + push (fabric-os, Docker + AWS CLI required)
+## 1) Build + push (fabric-os, Docker + AWS CLI required)
 bash 04-deploy/03-platform/scripts/build-push.sh intelligence-sdk --version=b0488d2d955471f439b824309dd5e15264d4ce53
 
-# 2) Roll staging
+## 2) Roll staging
 kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
 kubectl rollout status deployment/intelligence-orchestrator -n intelligence --timeout=300s
 
-# 3) Intelligence evidence (after pod Ready)
+## 3) Intelligence evidence (after pod Ready)
 cd ../gtcx-intelligence
 pnpm evidence:capture-cost-router-staging --staging-url https://intelligence-staging.gtcx.trade
 ```

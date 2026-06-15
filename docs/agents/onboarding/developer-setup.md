@@ -40,17 +40,17 @@ autonomy_level: permissioned
 ## Clone & Install
 
 ```bash
-# 1. Clone the repository
+## 1. Clone the repository
 git clone https://github.com/gtcx-ecosystem/gtcx-infrastructure
 cd gtcx-infrastructure
 
-# 2. Install Node dependencies
+## 2. Install Node dependencies
 pnpm install
 
-# 3. Verify the build
+## 3. Verify the build
 pnpm build
 
-# 4. Run lint and typecheck
+## 4. Run lint and typecheck
 pnpm lint && pnpm typecheck
 ```
 
@@ -63,13 +63,13 @@ There is no `.env.example` at the repo root — environment configuration is man
 All local backing services (databases, observability stack) are defined in `04-deploy/docker/docker-compose.infra.yml`:
 
 ```bash
-# Start infrastructure services only (PostgreSQL, Redis, Prometheus, Grafana, Jaeger, Loki)
+## Start infrastructure services only (PostgreSQL, Redis, Prometheus, Grafana, Jaeger, Loki)
 docker compose -f 04-deploy/docker/docker-compose.infra.yml up -d
 
-# Verify all services are healthy
+## Verify all services are healthy
 docker compose -f 04-deploy/docker/docker-compose.infra.yml ps
 
-# Start full local dev stack (application services + infrastructure)
+## Start full local dev stack (application services + infrastructure)
 docker compose -f 04-deploy/docker/docker-compose.dev.yml up -d
 ```
 
@@ -88,23 +88,23 @@ docker compose -f 04-deploy/docker/docker-compose.dev.yml up -d
 ## Running Scripts
 
 ```bash
-# Run all tests
+## Run all tests
 pnpm test
 
-# Lint and typecheck
+## Lint and typecheck
 pnpm lint
 pnpm typecheck
 
-# Run the security scanner
+## Run the security scanner
 node 03-platform/tools/scripts/security-status.js
 
-# Bootstrap a new environment
+## Bootstrap a new environment
 ./04-deploy/03-platform/scripts/setup.sh
 
-# Run database migrations (development — autonomous)
+## Run database migrations (development — autonomous)
 ./04-deploy/03-platform/scripts/migrate.sh development
 
-# Run migrations with dry-run (staging/production — always dry-run first)
+## Run migrations with dry-run (staging/production — always dry-run first)
 ./04-deploy/03-platform/scripts/migrate.sh staging --dry-run
 ```
 
@@ -118,7 +118,7 @@ For Terraform work, copy the environment template:
 
 ```bash
 cp 04-deploy/terraform/environments/template/ 04-deploy/terraform/environments/my-env
-# Edit terraform.tfvars with environment-specific values
+## Edit terraform.tfvars with environment-specific values
 ```
 
 ---

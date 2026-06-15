@@ -45,7 +45,7 @@ GTCX Protocol provides six sovereign verification protocols for commodity supply
 
 ```bash
 pnpm add @gtcx/sdk
-# or
+## or
 npm install @gtcx/sdk
 ```
 
@@ -104,7 +104,7 @@ console.log(`Valid: ${result.valid}, Role: ${credential.credentialSubject.role}`
 ```
 
 ```python
-# Python
+## Python
 credential = await client.tradepass.resolve("did:gtcx:tp_a1b2c3d4e5f67890")
 result = await client.tradepass.verify(credential)
 print(f"Valid: {result.valid}")

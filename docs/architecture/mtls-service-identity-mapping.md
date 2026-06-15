@@ -128,13 +128,13 @@ Each phase requires:
 ## 5. Verification
 
 ```bash
-# Check mesh status for all pods
+## Check mesh status for all pods
 node 03-platform/tools/scripts/verify-mesh-injection.mjs
 
-# Check authorization policies
+## Check authorization policies
 linkerd authz -n gtcx
 
-# Check TLS status per pod
+## Check TLS status per pod
 linkerd viz stat -n gtcx --from deploy/
 ```
 

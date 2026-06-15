@@ -79,7 +79,7 @@ Use `sensei-ai` for local runtime development of those components.
 This repo owns deployment-facing docs, templates, and infrastructure wiring.
 
 ```bash
-# Audit migration deployment docs from the repo root
+## Audit migration deployment docs from the repo root
 python 04-deploy/migrations/03-platform/scripts/check_docs.py
 ```
 
@@ -88,7 +88,7 @@ python 04-deploy/migrations/03-platform/scripts/check_docs.py
 For national or institutional deployments, use the Terraform modules and Kubernetes overlays:
 
 ```bash
-# Example: Deploying to a jurisdictional node
+## Example: Deploying to a jurisdictional node
 cd 04-deploy/terraform/environments/zimbabwe-pilot
 terraform apply
 ```

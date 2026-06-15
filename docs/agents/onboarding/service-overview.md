@@ -188,15 +188,15 @@ gtcx-infrastructure/
 ## Running Locally
 
 ```bash
-# Start infrastructure services
+## Start infrastructure services
 docker compose -f 04-deploy/docker/docker-compose.infra.yml up -d
 
-# Services available at:
-# PostgreSQL (app)    localhost:5432
-# PostgreSQL (audit)  localhost:5433
-# Grafana             http://localhost:3030
-# Prometheus          http://localhost:9090
-# Jaeger              http://localhost:16686
+## Services available at:
+## PostgreSQL (app)    localhost:5432
+## PostgreSQL (audit)  localhost:5433
+## Grafana             http://localhost:3030
+## Prometheus          http://localhost:9090
+## Jaeger              http://localhost:16686
 ```
 
 For full setup instructions, see [developer-setup.md](developer-setup.md).

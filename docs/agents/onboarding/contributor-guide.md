@@ -44,7 +44,7 @@ Complete the [Developer Setup](developer-setup.md) before contributing. Ensure a
 | `refactor/` | Restructuring (no behavior change) | `refactor/extract-db-migration-util`   |
 
 ```bash
-# Create a new branch
+## Create a new branch
 git checkout main
 git pull origin main
 git checkout -b feature/{short-description}
@@ -120,13 +120,13 @@ feat(postgres)!: split gtcx_audit to dedicated cluster — requires migration
 **Formatter:** Prettier — run via `pnpm format`
 
 ```bash
-# Check linting
+## Check linting
 pnpm lint
 
-# Format code
+## Format code
 pnpm format
 
-# Check formatting without writing
+## Check formatting without writing
 pnpm format:check
 ```
 

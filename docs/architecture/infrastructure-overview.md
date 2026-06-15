@@ -92,21 +92,21 @@ This directory contains all infrastructure-as-code for deploying GTCX across any
 ### Local Development
 
 ```bash
-# Start all services locally
+## Start all services locally
 ./03-platform/scripts/setup.sh
 docker compose -f docker/docker-compose.dev.yml up
 
-# Run migrations
+## Run migrations
 ./03-platform/scripts/migrate.sh development
 
-# Seed development data
+## Seed development data
 ./03-platform/scripts/seed.sh
 ```
 
 ### Staging Deployment
 
 ```bash
-# Deploy to Kubernetes staging
+## Deploy to Kubernetes staging
 kubectl apply -k kubernetes/overlays/staging/
 ./03-platform/scripts/deploy.sh staging
 ```
@@ -114,7 +114,7 @@ kubectl apply -k kubernetes/overlays/staging/
 ### Production Deployment
 
 ```bash
-# Requires government sign-off
+## Requires government sign-off
 ./03-platform/scripts/deploy.sh production --approval-ticket=GTCX-XXX
 ```
 

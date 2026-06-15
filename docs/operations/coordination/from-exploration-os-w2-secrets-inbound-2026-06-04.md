@@ -14,6 +14,8 @@ hub_blocker: 17
 
 # Inbound copy — exploration-os W2 secrets (hub #17.1)
 
+## Overview
+
 **Canonical in exploration-os:** `exploration-os/01-docs/04-ops/coordination/to-fabric-os-w2-secrets-inbound-2026-06-04.md`
 
 **Canonical sealing spec:** `compliance-os/01-docs/04-ops/coordination/to-fabric-os-w2-secrets-inbound-2026-06-04.md`

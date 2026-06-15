@@ -28,17 +28,17 @@ Get local infrastructure running and understand the repo in under 10 minutes.
 ## Fastest Path: Start Local Services
 
 ```bash
-# Clone
+## Clone
 git clone https://github.com/gtcx-ecosystem/gtcx-infrastructure
 cd gtcx-infrastructure
 
-# Install Node dependencies
+## Install Node dependencies
 pnpm install
 
-# Start all local infrastructure services
+## Start all local infrastructure services
 docker compose -f 04-deploy/docker/docker-compose.infra.yml up -d
 
-# Confirm everything is up
+## Confirm everything is up
 docker compose -f 04-deploy/docker/docker-compose.infra.yml ps
 ```
 
@@ -68,13 +68,13 @@ That gives you two PostgreSQL instances, Redis, Prometheus, Grafana, Jaeger, and
 Before changing any live infrastructure, always run a plan:
 
 ```bash
-# Navigate to the environment you want to inspect
+## Navigate to the environment you want to inspect
 cd 04-deploy/terraform/environments/{env}
 
-# Initialize (first time only)
+## Initialize (first time only)
 terraform init
 
-# View what would change — never apply without reviewing this
+## View what would change — never apply without reviewing this
 terraform plan
 ```
 
@@ -85,16 +85,16 @@ No automated apply runs without human review. See [ci-cd.md](../../operations/ci
 ## First Workflow: Apply a Kubernetes Change
 
 ```bash
-# Lint manifests
+## Lint manifests
 pnpm lint
 
-# Preview what would change (dry run)
+## Preview what would change (dry run)
 kubectl diff -k 04-deploy/kubernetes/overlays/development
 
-# Apply to development namespace
+## Apply to development namespace
 kubectl apply -k 04-deploy/kubernetes/overlays/development
 
-# Staging and production require human approval — use deploy.sh
+## Staging and production require human approval — use deploy.sh
 ./04-deploy/03-platform/scripts/deploy.sh staging
 ./04-deploy/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-123
 ```
@@ -104,16 +104,16 @@ kubectl apply -k 04-deploy/kubernetes/overlays/development
 ## First Workflow: Run Database Migrations
 
 ```bash
-# Development — autonomous, no approval required
+## Development — autonomous, no approval required
 ./04-deploy/03-platform/scripts/migrate.sh development
 
-# Staging — always dry-run first
+## Staging — always dry-run first
 ./04-deploy/03-platform/scripts/migrate.sh staging --dry-run
 ./04-deploy/03-platform/scripts/migrate.sh staging
 
-# Production — requires explicit approval
+## Production — requires explicit approval
 ./04-deploy/03-platform/scripts/migrate.sh production --dry-run
-# After review: ./04-deploy/03-platform/scripts/migrate.sh production
+## After review: ./04-deploy/03-platform/scripts/migrate.sh production
 ```
 
 ---

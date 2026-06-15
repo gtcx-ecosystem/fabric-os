@@ -32,12 +32,12 @@ Agents **run** verifiable commands themselves. They do not outsource runnable wo
 ## Quality-gate scripts
 
 ```bash
-# Quick validation (V2–V3)
+## Quick validation (V2–V3)
 pnpm lint
 pnpm typecheck
 pnpm test
 
-# Full validation (V2–V4)
+## Full validation (V2–V4)
 pnpm test:full
 node 03-platform/tools/scripts/validate-all.mjs
 ```

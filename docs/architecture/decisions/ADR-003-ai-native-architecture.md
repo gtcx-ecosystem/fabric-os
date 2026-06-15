@@ -82,7 +82,7 @@ if (result.success) {
 AI agents receive standardized context:
 
 ```yaml
-# Agent context for [AI System] workflow
+## Agent context for [AI System] workflow
 context:
   product: signal
   content_type: market_brief

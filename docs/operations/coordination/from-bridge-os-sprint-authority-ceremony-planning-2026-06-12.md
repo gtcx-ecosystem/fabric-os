@@ -282,7 +282,7 @@ Use this to validate the contract:
 ## Suggested fabric-os next command
 
 ```bash
-# After reading this handoff — evaluate only; no fleet mutation required
+## After reading this handoff — evaluate only; no fleet mutation required
 pnpm agent:next-work --json
 pnpm ops:check   # when evaluating bridge witness paths
 ```

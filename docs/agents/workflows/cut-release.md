@@ -143,13 +143,13 @@ Do not proceed without explicit confirmation.
 Apply the change to staging and verify behavior before production.
 
 ```bash
-# Terraform (with ticket)
+## Terraform (with ticket)
 terraform apply --approval-ticket=GTCX-XXX plan.tfplan
 
-# Kubernetes
+## Kubernetes
 kubectl apply -f <manifest> --approval-ticket=GTCX-XXX
 
-# Docker
+## Docker
 docker compose up -d
 ```
 

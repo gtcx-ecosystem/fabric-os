@@ -82,29 +82,29 @@ Infrastructure requirements, reference architecture, and deployment procedures.
 ### 3.2 Deployment Sequence
 
 ```bash
-# 1. Build and push image
+## 1. Build and push image
 {build command}
 
-# 2. Run database migrations (staging)
+## 2. Run database migrations (staging)
 {migration command} --env staging
 
-# 3. Deploy to staging
+## 3. Deploy to staging
 {deploy command} --env staging
 
-# 4. Validate staging
+## 4. Validate staging
 {smoke test or health check command}
 
-# 5. Deploy to production (requires approval)
+## 5. Deploy to production (requires approval)
 {deploy command} --env production
 
-# 6. Validate production
+## 6. Validate production
 {health check command}
 ```
 
 ### 3.3 CI/CD Pipeline
 
 ```yaml
-# Adapt to your CI system (GitHub Actions, GitLab CI, CircleCI, etc.)
+## Adapt to your CI system (GitHub Actions, GitLab CI, CircleCI, etc.)
 on:
   push:
     branches: [main, staging]
@@ -143,18 +143,18 @@ jobs:
 ### Key rotation
 
 ```bash
-# Rotate {secret name}
+## Rotate {secret name}
 {rotation command}
-# Update services
+## Update services
 {restart/redeploy command}
 ```
 
 ### Database failover
 
 ```bash
-# Trigger manual failover
+## Trigger manual failover
 {failover command}
-# Verify replica is primary
+## Verify replica is primary
 {verification command}
 ```
 
@@ -172,20 +172,20 @@ jobs:
 ### Application rollback
 
 ```bash
-# List recent deployments
+## List recent deployments
 {list revisions command}
 
-# Roll back to previous version
+## Roll back to previous version
 {rollback command} --to-revision={revision-id}
 ```
 
 ### Database rollback
 
 ```bash
-# Revert last migration
+## Revert last migration
 {migration revert command}
 
-# Point-in-time recovery (last resort)
+## Point-in-time recovery (last resort)
 {pitr command} --point-in-time {timestamp}
 ```
 

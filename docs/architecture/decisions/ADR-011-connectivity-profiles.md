@@ -97,7 +97,7 @@ Full Article (2,000 words, 5 images)
 Content transformation happens at distribution:
 
 ```yaml
-# In distribution config
+## In distribution config
 profiles:
   standard:
     format: full

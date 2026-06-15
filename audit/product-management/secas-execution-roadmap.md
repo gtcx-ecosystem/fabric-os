@@ -1,8 +1,8 @@
 ---
 title: Execution roadmap — SecOps
 status: current
-date: 2026-06-14
-last_reconciled: 2026-06-14T20:37:29.092Z
+date: 2026-06-15
+last_reconciled: 2026-06-15T09:20:55.716Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true
@@ -33,7 +33,7 @@ sources:
 | SECAS-S4-02 | Fleet supply-chain security gates (container + dependency scan witness) | P0       | done    | fabric-os |
 | SECAS-S4-03 | Standing vulnerability management cadence + friction register hygiene   | P1       | done    | fabric-os |
 | SECAS-S4-04 | Pen-test findings remediation track + re-test witness                   | P0       | pending | fabric-os |
-| SECAS-S4-05 | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2       | pending | fabric-os |
+| SECAS-S4-05 | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2       | done    | fabric-os |
 
 ### SECAS-S4-01: CSIRT / SOC operating model + incident response runbook SoR
 
@@ -115,8 +115,8 @@ pnpm secas:cards:check:write
 
 **UAT / QA**
 
-- [ ] Cards indexed in docs/operations/secas/cards/README.md
-- [ ] secas:cards:check includes new card paths
+- [x] Cards indexed in docs/operations/secas/cards/README.md
+- [x] secas:cards:check includes new card paths
 
 **Blockers:** none
 
@@ -152,7 +152,7 @@ _Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SO
 | ---------------------------- | ------------------------------------ | --------------- | ------- |
 | `SEC-PENTEST-01`             | `pm/security-friction-register.json` | SECAS-S2-01     | done    |
 | `SEC-WAF-01`                 | `pm/security-friction-register.json` | —               | done    |
-| `SEC-IRSA-01`                | `pm/security-friction-register.json` | SECAS-S3-01     | done    |
+| `SEC-IRSA-01`                | `pm/security-friction-register.json` | —               | done    |
 | `SEC-CSIRT-01`               | `pm/security-friction-register.json` | SECAS-S4-01     | done    |
 | `SEC-SUPPLY-01`              | `pm/security-friction-register.json` | SECAS-S4-02     | done    |
 | `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | done    |

@@ -138,6 +138,7 @@
       "blockers": null,
       "blocksIR": false
     },
+    {
       "sprint": "SECAS-S3",
       "title": "Compliance-os staging IRSA least-privilege review",
       "priority": "P1",
@@ -310,7 +311,7 @@
       "sprint": "SECAS-S4",
       "title": "Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos",
       "priority": "P2",
-      "status": "pending",
+      "status": "done",
       "owner": "fabric-os",
       "files": [
         "docs/operations/secas/cards/terminal-os.md",
@@ -321,11 +322,11 @@
       "uat": [
         {
           "text": "Cards indexed in docs/operations/secas/cards/README.md",
-          "done": false
+          "done": true
         },
         {
           "text": "secas:cards:check includes new card paths",
-          "done": false
+          "done": true
         }
       ],
       "blockers": null

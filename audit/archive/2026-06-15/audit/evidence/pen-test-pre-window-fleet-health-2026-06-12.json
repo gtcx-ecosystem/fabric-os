@@ -1,0 +1,20 @@
+{
+  "schema": "gtcx.penTestPreWindowFleetHealth.v1",
+  "id": "PEN-TEST-PRE-WINDOW-FLEET-2026-06-12",
+  "storyId": "SECAS-S2-01",
+  "frictionId": "SEC-PENTEST-01",
+  "program": "INIT-GTCX-INFRA-SECAS",
+  "probedAt": "2026-06-14T10:57:31.534Z",
+  "probedBy": "agent:fabric-os",
+  "command": "pnpm secas:window:readiness",
+  "result": "PASS",
+  "servicesHealthy": "3/3 required",
+  "witness": "audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json",
+  "environment": "staging",
+  "window": {
+    "start": "2026-06-17",
+    "end": "2026-06-21"
+  },
+  "blocksIR": false,
+  "repo": "fabric-os"
+}

@@ -1,9 +1,13 @@
 ---
 title: 'Agent Execution Obligation — Protocol 27 Adoption'
 status: established
-protocol: canon-os/01-docs/governance/protocols/27-agent-execution-obligation/
 date: 2026-06-03
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
+protocol: canon-os/01-docs/governance/protocols/27-agent-execution-obligation/
 ---
 
 # Agent Execution Obligation — Protocol 27 Adoption

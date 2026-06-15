@@ -3,6 +3,10 @@ title: 'Agent launch focus — fabric-os'
 status: current
 date: 2026-06-06
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 document_id: OPS-AGENT-LAUNCH-INFRA
 ---
 

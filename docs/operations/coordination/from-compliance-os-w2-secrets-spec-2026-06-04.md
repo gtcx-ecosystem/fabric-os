@@ -2,8 +2,12 @@
 title: 'Inbound — W2 hub #17 secrets spec (from compliance-os)'
 status: received
 date: 2026-06-05
-updated: 2026-06-08
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
+updated: 2026-06-08
 from: compliance-os
 to: fabric-os
 priority: P0

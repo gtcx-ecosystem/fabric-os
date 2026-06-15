@@ -3,9 +3,11 @@ title: 'Agent staging execution — W2 / Hub #17 (P27)'
 status: current
 date: 2026-06-05
 owner: fabric-os
-document_id: OPS-AGENT-STAGING-EXEC
 tier: critical
-tags: ['agents', 'staging', 'w2', 'protocol-27']
+tags: [['agents', 'staging', 'w2', 'protocol-27']]
+review_cycle: on-change
+document_type: runbook
+document_id: OPS-AGENT-STAGING-EXEC
 ---
 
 # Agent staging execution — W2 / Hub #17

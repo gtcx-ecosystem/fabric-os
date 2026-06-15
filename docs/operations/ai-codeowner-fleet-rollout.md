@@ -1,8 +1,12 @@
 ---
-title: AI CODEOWNER fleet rollout
+title: 'AI CODEOWNER fleet rollout'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 initiative: INIT-AGENT-TOOL-SCOUT
 pilot: PILOT-CODEOWNER-FLEET
 ---

@@ -1,12 +1,13 @@
 ---
-title: Agent Proceed Brief — template (Protocol 26 + P45)
+title: 'Agent Proceed Brief — template (Protocol 26 + P45)'
 status: current
 date: 2026-06-12
 owner: baseline-os
-document_id: OPS-AGENT-PROCEED-BRIEF
 tier: standard
-tags: [agents, protocol-26, protocol-45, communication]
+tags: [[agents, protocol-26, protocol-45, communication]]
 review_cycle: on-change
+document_type: runbook
+document_id: OPS-AGENT-PROCEED-BRIEF
 ---
 
 # Proceed Brief — template

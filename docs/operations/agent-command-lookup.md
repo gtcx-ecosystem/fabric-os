@@ -2,12 +2,13 @@
 title: 'Agent command lookup (gtcx-infrastructure)'
 status: current
 date: 2026-06-07
-owner: 'gtcx-infrastructure'
+owner: gtcx-infrastructure
+tier: standard
+tags: [['agents', 'commands', 'cheatsheet']]
+review_cycle: on-change
+document_type: runbook
 role: protocol-architect
 document_id: OPS-AGENT-LOOKUP-001
-tier: standard
-tags: ['agents', 'commands', 'cheatsheet']
-review_cycle: on-change
 ---
 
 # Agent command lookup

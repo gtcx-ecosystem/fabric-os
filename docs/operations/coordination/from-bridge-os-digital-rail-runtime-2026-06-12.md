@@ -3,6 +3,10 @@ title: 'Ack — Digital rail runtime (bridge-os → fabric-os)'
 status: done
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: bridge-os
 to: fabric-os
 ticket: XR-FABRIC-RAIL-003

@@ -1,3 +1,15 @@
+---
+title: 'AWS cost optimization (T7)'
+status: current
+date: 2026-06-15
+owner: canon-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
+goals: 'Hub documentation — runbook'
+---
+
 # AWS cost optimization (T7)
 
 **Owner:** `gtcx-infrastructure`  

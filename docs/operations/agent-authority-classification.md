@@ -1,9 +1,13 @@
 ---
 title: 'Agent Authority Classification — Protocol 28 Reference'
 status: current
-protocol: canon-os/01-docs/governance/protocols/28-agent-authority-classification/
 date: 2026-06-03
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
+protocol: canon-os/01-docs/governance/protocols/28-agent-authority-classification/
 ---
 
 # Agent Authority Classification — Protocol 28 Reference

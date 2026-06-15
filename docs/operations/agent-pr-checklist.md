@@ -3,6 +3,10 @@ title: 'Agent PR witness checklist (SIGNAL INF-003)'
 status: current
 date: 2026-06-05
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # Agent PR witness checklist

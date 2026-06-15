@@ -1,10 +1,12 @@
 ---
-title: Coordination handoff — template (P24 + P45)
+title: 'Coordination handoff — template (P24 + P45)'
 status: current
 date: 2026-06-12
 owner: baseline-os
 tier: standard
-tags: [agents, protocol-24, protocol-45]
+tags: [[agents, protocol-24, protocol-45]]
+review_cycle: on-change
+document_type: runbook
 ---
 
 # Coordination handoff

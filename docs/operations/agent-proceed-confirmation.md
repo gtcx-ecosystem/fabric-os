@@ -1,10 +1,14 @@
 ---
 title: 'Agent Proceed Confirmation — Protocol 26 Adoption'
 status: established
-protocol: canon-os/01-docs/governance/protocols/26-agent-proceed-confirmation/
 date: 2026-06-03
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 document_id: OPS-APC-001
+protocol: canon-os/01-docs/governance/protocols/26-agent-proceed-confirmation/
 ---
 
 # Agent Proceed Confirmation — Protocol 26 Adoption

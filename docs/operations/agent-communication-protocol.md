@@ -1,12 +1,13 @@
 ---
-title: Agent communication protocol (P45)
+title: 'Agent communication protocol (P45)'
 status: current
 date: 2026-06-12
 owner: baseline-os
-document_id: OPS-AGENT-COMMUNICATION
 tier: critical
-tags: [agents, protocol-45, communication, p26]
+tags: [[agents, protocol-45, communication, p26]]
 review_cycle: on-change
+document_type: runbook
+document_id: OPS-AGENT-COMMUNICATION
 ---
 
 # Agent communication protocol (P45)

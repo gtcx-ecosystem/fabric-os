@@ -2,10 +2,14 @@
 title: 'Inbound — W2 hub #17 staging deploy blockers (from compliance-os)'
 status: archived
 date: 2026-06-05
+owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 archived_date: 2026-06-08
 from: compliance-os
 to: fabric-os
-owner: fabric-os
 priority: P1
 hub_blocker: 17
 er1: ER-1-10

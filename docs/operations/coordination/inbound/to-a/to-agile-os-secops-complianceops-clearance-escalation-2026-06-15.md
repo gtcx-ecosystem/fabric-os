@@ -3,6 +3,10 @@ title: 'Outbound â€” Fleet SecOps/ComplianceOps internal clearance (fabric-os â†
 status: sent
 date: 2026-06-15
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: agile-os
 ticket: XR-FABRIC-SECOPS-CLEARANCE-002

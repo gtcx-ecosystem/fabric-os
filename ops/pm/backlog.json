@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://workspace/pm-backlog/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-14",
+  "updated": "2026-06-15",
   "syncSource": "ecosystem:intake:populate",
   "active": null,
   "backlogClear": false,
@@ -112,15 +112,6 @@
       "intakeSource": "fabric-os/pm/secas-stories.json"
     },
     {
-      "id": "SECAS-S5-01",
-      "title": "Unified fleet risk + active threat registers",
-      "status": "in_progress",
-      "priority": "P0",
-      "owner": "fabric-os",
-      "sprint": "SPR-2026-06-INTAKE",
-      "intakeSource": "fabric-os/pm/secas-stories.json"
-    },
-    {
       "id": "SECAS-S2-01",
       "title": "fabric SECAS pen-test + vendor report ingest",
       "status": "in_progress",
@@ -164,6 +155,24 @@
       "owner": "fabric-os",
       "sprint": "SPR-2026-06-INTAKE",
       "intakeSource": "terra-os/pm/ci/session-open-items-latest.json#backlogCandidates"
+    },
+    {
+      "id": "XR-BASELINE-ROADMAP-INTAKE-001",
+      "title": "XR-BASELINE-ROADMAP-INTAKE-001",
+      "status": "open",
+      "priority": "P2",
+      "owner": "fabric-os",
+      "sprint": "SPR-2026-06-INTAKE",
+      "intakeSource": "fabric-os/pm/ci/session-open-items-latest.json#backlogCandidates"
+    },
+    {
+      "id": "XR-KIMI-BRIDGE-FABRIC-CLOSURE-001",
+      "title": "XR-KIMI-BRIDGE-FABRIC-CLOSURE-001",
+      "status": "open",
+      "priority": "P2",
+      "owner": "fabric-os",
+      "sprint": "SPR-2026-06-INTAKE",
+      "intakeSource": "fabric-os/pm/ci/session-open-items-latest.json#backlogCandidates"
     }
   ],
   "crossRepoRefs": [

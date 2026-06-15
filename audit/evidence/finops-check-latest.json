@@ -1,0 +1,37 @@
+{
+  "$schema": "gtcx://fabric-os/finops-check-witness/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15T20:37:04.886Z",
+  "repo": "fabric-os",
+  "lane": "FinOps",
+  "protocolId": "P48-FINOPS-AS-A-SERVICE",
+  "gates": {
+    "spec": {
+      "ok": true
+    },
+    "opsDoc": {
+      "ok": true
+    },
+    "frictionRegister": {
+      "ok": true
+    },
+    "policySoR": {
+      "ok": true
+    },
+    "governanceSoR": {
+      "ok": true
+    },
+    "infraWitness": {
+      "ok": true
+    },
+    "openP0": {
+      "ok": true,
+      "count": 0,
+      "ids": []
+    }
+  },
+  "openP0": 0,
+  "ok": true,
+  "fleetWitness": true,
+  "handoff": "XR-BRIDGE-CORE-OPS-FABRIC-W1-001"
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "gtcx://fabric-os/commops-check-witness/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15T20:37:05.786Z",
+  "repo": "fabric-os",
+  "lane": "CommOps",
+  "protocolId": "P53-COMMOPS-AS-A-SERVICE",
+  "gates": {
+    "spec": {
+      "ok": true
+    },
+    "opsDoc": {
+      "ok": true
+    },
+    "frictionRegister": {
+      "ok": true
+    },
+    "substrateContract": {
+      "ok": true
+    },
+    "deliverabilityWitness": {
+      "ok": true
+    },
+    "openP0": {
+      "ok": true,
+      "count": 1,
+      "ids": ["COMMOPS-F2"]
+    },
+    "channelMatrix": {
+      "ok": true,
+      "count": 3
+    }
+  },
+  "ok": true,
+  "fleetWitness": true,
+  "handoff": "XR-BRIDGE-CORE-OPS-FABRIC-W1-001"
+}

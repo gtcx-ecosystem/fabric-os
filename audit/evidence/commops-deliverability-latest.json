@@ -1,0 +1,42 @@
+{
+  "$schema": "gtcx://fabric-os/commops-deliverability/v1",
+  "updated": "2026-06-15T20:37:05.214Z",
+  "repo": "fabric-os",
+  "lane": "CommOps",
+  "channels": [
+    {
+      "id": "email-sendgrid",
+      "provider": "sendgrid",
+      "status": "planned"
+    },
+    {
+      "id": "sms-africas-talking",
+      "provider": "africas-talking",
+      "status": "planned"
+    },
+    {
+      "id": "sms-twilio",
+      "provider": "twilio",
+      "status": "planned"
+    }
+  ],
+  "gates": {
+    "substrate": {
+      "ok": true
+    },
+    "channelCount": {
+      "ok": true,
+      "count": 3
+    },
+    "dkimRequired": {
+      "ok": true
+    },
+    "spfRequired": {
+      "ok": true
+    },
+    "bounceIngressDeclared": {
+      "ok": true
+    }
+  },
+  "ok": true
+}

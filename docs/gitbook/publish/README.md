@@ -1,14 +1,49 @@
 ---
-title: 'publish — README'
-status: current
-date: 2026-06-15
-owner: fabric-os
-document_type: overview
-tier: operating
-tags: ['documentation']
-review_cycle: on-change
+title: 'GitBook'
+status: 'current'
+date: '2026-05-27'
+owner: 'crypto-security-engineer'
+role: 'crypto-security-engineer'
+tier: 'critical'
+tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
+review_cycle: 'quarterly'
+agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+trust_score: 95
+autonomy_level: 'sovereign'
 ---
 
-# publish
+# GitBook
 
-> See [`FOLDER-SPEC.md`](./FOLDER-SPEC.md) when present.
+External-facing documentation published to GitBook. This section contains the public protocol documentation — quickstarts, integration guides, governance, and API reference.
+
+## Contents
+
+| Document                                               | Description                                                      | Audience                   |
+| ------------------------------------------------------ | ---------------------------------------------------------------- | -------------------------- |
+| [quickstart.md](./publish/quickstart.md)               | Get started with the GTCX Protocol SDK in under 10 minutes       | External developers        |
+| [integration-guide.md](./publish/integration-guide.md) | Full integration walkthrough — identity, provenance, settlement  | Platform integrators       |
+| [governance.md](./publish/governance.md)               | Network governance, validator participation, protocol versioning | Institutional participants |
+
+## Publishing
+
+This folder is the source for the external GitBook publication. Files here are written for an external audience — buyers, platform builders, government integrators, and institutional validators.
+
+**Important distinctions:**
+
+- Documents here must not contain internal implementation detail, security findings, or operational procedures
+- Internal engineering reference stays in `../3-engineering/`
+- Compliance and audit detail stays in `../4-operations/`
+
+## What Belongs Here
+
+- Protocol quickstarts for external developers
+- SDK integration walkthroughs for platform builders
+- Public governance documentation
+- External-facing API reference
+
+## What Does NOT Belong Here
+
+- Internal engineering standards → `../3-engineering/`
+- Security threat models → `../3-engineering/security/`
+- Operational runbooks → `../4-operations/`
+- Internal compliance controls → `../4-operations/compliance/`

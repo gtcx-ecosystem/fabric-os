@@ -1,18 +1,18 @@
 ---
 title: 'Sprint Current — gtcx-infrastructure'
-status: 'current'
-date: '2026-05-27'
-sprintId: 'S46'
+status: current
+date: 2026-05-27
 owner: 'infrastructure@gtcx.trade'
-dates:
+tier: standard
+tags: [['documentation', 'agile']]
+review_cycle: on-change
+document_type: protocol
+role: protocol-architect
+sprintId: S46
 commitments: []
-role: 'protocol-architect'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
-tier: 'standard'
-tags: ['documentation', 'agile']
-review_cycle: 'on-change'
+autonomy_level: permissioned
 ---
 
 # Sprint Current — gtcx-infrastructure

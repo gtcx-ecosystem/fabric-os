@@ -1,18 +1,19 @@
 ---
 title: 'Sprint Phase 2: 9+ Production-Readiness Roadmap (superseded)'
-status: 'superseded'
-superseded_by: '01-docs/05-audit/execution-roadmap.md'
-superseded_on: '2026-05-31'
-superseded_reason: '7.5 → 9+ baseline is stale; actual reconciled baseline is 6.8/6.2 per execution-roadmap.md Q3. Phase 2 stories absorbed into S2-* of the reconciled plan.'
-date: '2026-05-27'
-owner: 'frontier-infra-engineer'
-role: 'frontier-infra-engineer'
-tier: 'standard'
-tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: superseded
+date: 2026-05-27
+owner: frontier-infra-engineer
+tier: standard
+tags: [['security', 'crypto', 'compliance', 'architecture', 'infrastructure']]
+review_cycle: on-change
+document_type: protocol
+role: frontier-infra-engineer
+superseded_by: 01-docs/05-audit/execution-roadmap.md
+superseded_on: 2026-05-31
+superseded_reason: 7.5 → 9+ baseline is stale; actual reconciled baseline is 6.8/6.2 per execution-roadmap.md Q3. Phase 2 stories absorbed into S2-* of the reconciled plan.
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Sprint Phase 2: 9+ Production-Readiness Roadmap

@@ -1,15 +1,16 @@
 ---
 title: 'Air-Gapped Deployment Architecture'
-status: 'current'
-date: '2026-05-27'
-owner: 'platform-engineering'
-role: 'platform-engineering'
-tier: 'critical'
-tags: ['architecture', 'air-gapped', 'offline', 'government-grade', 'disconnected']
-review_cycle: 'quarterly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: platform-engineering
+tier: critical
+tags: [['architecture', 'air-gapped', 'offline', 'government-grade', 'disconnected']]
+review_cycle: quarterly
+document_type: architecture
+role: platform-engineering
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Air-Gapped Deployment Architecture

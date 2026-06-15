@@ -1,15 +1,16 @@
 ---
 title: 'ADR-016: Fail-Closed Audit Signing in Production'
-status: 'accepted'
-date: '2026-05-27'
-owner: 'platform-engineering'
-role: 'security-architect'
-tier: 'critical'
-tags: ['architecture', 'security', 'audit', 'compliance', 'governance']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: accepted
+date: 2026-05-27
+owner: platform-engineering
+tier: critical
+tags: [['architecture', 'security', 'audit', 'compliance', 'governance']]
+review_cycle: on-change
+document_type: architecture
+role: security-architect
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # ADR-016: Fail-Closed Audit Signing in Production

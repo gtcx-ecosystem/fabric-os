@@ -1,18 +1,19 @@
 ---
 title: 'Fabric OS — Agile Team'
-status: 'current'
-date: '2026-05-27'
-id: TEAM-INFRA
-version: '1.0'
-effective_date: '2026-05-27'
+status: current
+date: 2026-05-27
 owner: 'infrastructure@gtcx.trade'
-role: 'protocol-architect'
-agent_id: 'agent://fabric-os/2026-05-27/session-backfill'
+tier: standard
+tags: [['documentation', 'agile']]
+review_cycle: on-change
+document_type: protocol
+role: protocol-architect
+id: TEAM-INFRA
+version: 1.0
+effective_date: 2026-05-27
+agent_id: agent://fabric-os/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
-tier: 'standard'
-tags: ['documentation', 'agile']
-review_cycle: 'on-change'
+autonomy_level: permissioned
 ---
 
 # Fabric OS — Agile Team

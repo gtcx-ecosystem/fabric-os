@@ -3,7 +3,10 @@ title: 'Agent topology — gtcx-infrastructure (SIGNAL INF-012)'
 status: current
 date: 2026-06-05
 owner: gtcx-infrastructure
-tags: ['signal', 'architecture', 'agents']
+tier: operating
+tags: [['signal', 'architecture', 'agents']]
+review_cycle: on-change
+document_type: architecture
 ---
 
 # Agent topology — gtcx-infrastructure

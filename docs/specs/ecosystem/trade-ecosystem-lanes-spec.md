@@ -96,7 +96,7 @@ supersedes: simplified D1–D4 domain diagram; flat P-tier "infrastructure intel
 | **A**     | AI OS                            | Platform support      | baseline-os                  | Lang, Frame, Studio, Persona, Autonomy, Experience, Govern; vault; MCP; offline/USSD  |
 | **I**     | Infra                            | Platform support      | fabric-os                    | AWS EKS, terraform, SM/ESO, WAF, IAM, staging/prod                                    |
 | **U**     | Utilities                        | Platform support      | canon-os, agile-os           | Law + doc utilities; fleet ZenHub/sprint graph                                        |
-| **B**     | Program office                   | Platform support      | bridge-os                    | Five-pillar gates, PM engine, fleet harness, cutover witness                          |
+| **B**     | Program office                   | Platform support      | bridge-os                    | Foundation-tier (F-PiLLAR) gates, PM engine, fleet harness, cutover witness           |
 | **P-gov** | Governance protocols             | Utility sub-lane      | canon-os                     | P1–P45 agent/fleet law — **not** trade protocols                                      |
 
 ---
@@ -308,7 +308,7 @@ Plus: vault, MCP, offline queue, USSD adapter, GTCX ID continuity.
 
 ### 4.13 B — Program office (bridge-os)
 
-**Job:** Fleet gates, PM engine, ecosystem rollout, five-pillar harness, cutover witness.
+**Job:** Fleet gates, PM engine, ecosystem rollout, foundation-tier harness, cutover witness.
 
 **fabric-os obligation:** Consume bridge fleet checks; publish infra witnesses to `audit/evidence/`; execute REM stories delegated via service fabric.
 

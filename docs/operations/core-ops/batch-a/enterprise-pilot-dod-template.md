@@ -20,7 +20,7 @@ Normative checklist for **Qwilr** and fleet enterprise pilot packs under TAAS. C
 1. **Problem framing** — institutional buyer outcome (proof, not vibes)
 2. **Security posture** — link compliance-os trust matrix + fabric staging boundary
 3. **Pilot scope** — repos, duration, budget cap (`pm/tool-adoption-register.json`)
-4. **Success metrics** — five-pillar lift cited in witness JSON
+4. **Success metrics** — foundation-tier composite lift cited in witness JSON
 5. **Embedded witnesses** — links to `audit/evidence/tool-scout-*-pilot.json` in owner repos
 6. **Expansion gate** — promote only after PostHog pilot proof witness green
 

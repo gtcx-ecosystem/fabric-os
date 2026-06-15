@@ -1,10 +1,11 @@
 {
   "$schema": "gtcx://fabric-os/aiops-friction-register/v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-06-15",
   "lane": "AIOps",
-  "owner": "fabric-os",
-  "coOwner": "gtcx-os/platform/intelligence",
+  "owner": "bridge-os",
+  "coOwner": "baseline-os",
+  "substrateOwner": "fabric-os",
   "status": "open",
   "items": [
     {
@@ -17,20 +18,28 @@
     },
     {
       "id": "AOF-002",
-      "title": "MLOps lane scaffold owned by gtcx-os/platform/intelligence",
+      "title": "MLOps lane check not yet implemented in baseline-os",
       "priority": "P0",
       "status": "open",
-      "owner": "gtcx-os",
-      "ownerPath": "platform/intelligence",
-      "evidence": "docs/operations/coordination/inbound/to-gtcx-os-platform-intelligence-mlops-lane-2026-06-15.md"
+      "owner": "baseline-os",
+      "evidence": "docs/operations/coordination/inbound/to-baseline-os-mlops-lane-2026-06-15.md"
     },
     {
       "id": "AOF-003",
-      "title": "Injection suite witness periodic refresh",
-      "priority": "P2",
+      "title": "AIOps fleet program witness in bridge-os",
+      "priority": "P1",
       "status": "in_progress",
-      "owner": "fabric-os",
-      "evidence": "audit/evidence/injection-suite-latest.json"
+      "owner": "bridge-os",
+      "evidence": "pm/ci/aiops-fleet-latest.json"
+    },
+    {
+      "id": "AOF-004",
+      "title": "Legacy gtcx-intelligence owner refs in fleet specs",
+      "priority": "P0",
+      "status": "in_progress",
+      "owner": "bridge-os",
+      "evidence": "pm/spec/ops-lanes-100-plan.json",
+      "note": "Repoint to bridge-os + baseline-os; gtcx-os/platform/intelligence is product runtime only"
     }
   ]
 }

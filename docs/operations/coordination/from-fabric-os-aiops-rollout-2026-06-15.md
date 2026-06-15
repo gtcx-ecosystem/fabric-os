@@ -10,6 +10,6 @@ document_type: coordination
 
 **From:** `fabric-os` · **Branch:** `feature/ai-mlops` · **Protocol:** P49-AIOPS-AS-A-SERVICE
 
-**To:** `bridge-os` (fleet witness), `canon-os` (P49 hub), `gtcx-os/platform/intelligence` (MLOps owner)
+**To:** `bridge-os` (AIOps program + fleet witness), `baseline-os` (MLOps + AI runtime), `canon-os` (P49 hub)
 
-Scaffold: spec, registers, `pnpm aiops:check`, handoff docs.
+Lanes do **not** run through `gtcx-os` or legacy `gtcx-intelligence`. fabric-os supplies substrate witness only.

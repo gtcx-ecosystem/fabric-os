@@ -12,7 +12,15 @@ protocol: 'P49'
 
 # AIOps-as-a-Service
 
-AIOps operates fleet AI reliability: anomaly detection, eval gates, injection red-team evidence, and agent conduct integration. MLOps model lifecycle is owned by `gtcx-os/platform/intelligence`; fabric-os owns substrate signals and the GCP ML bridge.
+AIOps lane ownership is **bridge-os** (fleet program office) + **baseline-os** (AI OS runtime). fabric-os hosts **substrate signals** only: anomaly detection, eval gates, injection red-team evidence, and GCP ML bridge deploy artifacts.
+
+## Ownership
+
+| Role               | Repo        |
+| ------------------ | ----------- |
+| AIOps program      | bridge-os   |
+| AI runtime / MLOps | baseline-os |
+| Deploy substrate   | fabric-os   |
 
 ## Harness
 

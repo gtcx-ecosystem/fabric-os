@@ -84,9 +84,26 @@ export function evaluateLane() {
   const scripts = readJson('package.json')?.scripts ?? {};
   const injection = readJson('audit/evidence/injection-suite-latest.json');
 
+  if (!mlopsBridge?.mlopsOwner || mlopsBridge.mlopsOwner !== 'baseline-os') {
+    errors.push('mlops-bridge-contract: mlopsOwner must be baseline-os');
+  }
+  if (!mlopsBridge?.aiopsProgramOwner || mlopsBridge.aiopsProgramOwner !== 'bridge-os') {
+    errors.push('mlops-bridge-contract: aiopsProgramOwner must be bridge-os');
+  }
+  if (
+    !pathOk('docs/operations/coordination/inbound/to-baseline-os-mlops-lane-2026-06-15.md') ||
+    !pathOk('docs/operations/coordination/inbound/to-bridge-os-ai-mlops-lane-2026-06-15.md')
+  ) {
+    errors.push('missing bridge-os / baseline-os handoff docs');
+  }
+  if (spec?.threePlanes?.aiops?.owner !== 'bridge-os') {
+    errors.push('aiops-as-a-service: lane owner must be bridge-os');
+  }
+
   const scores = {
     compliance: {
-      score: spec && runbook && friction && signals && mlopsBridge ? 100 : 0,
+      score:
+        spec && runbook && friction && signals && mlopsBridge && errors.length === 0 ? 100 : 0,
       evidence: 'spec+runbook+registers',
     },
     technicalExcellence: {

@@ -1,17 +1,34 @@
 {
   "$schema": "gtcx://fabric-os/mlops-bridge-contract/v1",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "updated": "2026-06-15",
   "title": "MLOps bridge — fabric-os substrate contract",
   "opsLane": "MLOps",
-  "mlopsOwner": {
-    "repo": "gtcx-os",
-    "path": "platform/intelligence",
-    "legacyRepoId": "gtcx-intelligence"
-  },
+  "mlopsOwner": "baseline-os",
+  "aiopsProgramOwner": "bridge-os",
   "fabricBridgeOwner": "fabric-os",
   "status": "scaffold",
-  "principle": "MLOps lane ownership is gtcx-os/platform/intelligence (formerly standalone gtcx-intelligence). fabric-os owns deploy substrate: GCP ML bridge terraform, eval-pipeline CI witness, and fleet handoff.",
+  "principle": "MLOps and AIOps lanes run through baseline-os (AI OS: cost-router, eval, model governance) and bridge-os (fleet program office, witnesses, registry). fabric-os supplies deploy substrate only — not lane ownership. Product ML runtime in gtcx-os/platform/intelligence is out of ops-lane scope.",
+  "ownerSplit": {
+    "baselineOs": [
+      "pm/spec/mlops-as-a-service.json",
+      "docs/specs/runtime/cost-router.md",
+      "platform/packages/baselineos/src/core/cost-router.ts",
+      "pnpm mlops:check (to implement)"
+    ],
+    "bridgeOs": [
+      "pm/spec/ops-programs-registry.json",
+      "pm/spec/ops-lanes-100-plan.json",
+      "ecosystem:aiops:check:fleet",
+      "pm/ci/aiops-fleet-latest.json"
+    ],
+    "fabricOs": [
+      "deploy/terraform/modules/gcp-ml-bridge/",
+      "platform/tools/eval-pipeline/",
+      "platform/tools/anomaly-detector/",
+      "pm/spec/mlops-bridge-contract.json"
+    ]
+  },
   "fabricArtifacts": {
     "terraform": "deploy/terraform/modules/gcp-ml-bridge/",
     "evalPipeline": "platform/tools/eval-pipeline/",
@@ -21,11 +38,9 @@
     ],
     "ci": ".github/workflows/eval-pipeline.yml"
   },
-  "intelligenceDeliverables": [
-    "gtcx-os/platform/intelligence/pm/spec/mlops-as-a-service.json",
-    "gtcx-os/platform/intelligence/docs/operations/mlops-as-a-service.md",
-    "gtcx-os/platform/intelligence/platform/scripts/mlops-check.mjs",
-    "gtcx-os/platform/intelligence/audit/evidence/mlops-check-latest.json"
-  ],
-  "handoff": "docs/operations/coordination/inbound/to-gtcx-os-platform-intelligence-mlops-lane-2026-06-15.md"
+  "handoffs": {
+    "baselineOs": "docs/operations/coordination/inbound/to-baseline-os-mlops-lane-2026-06-15.md",
+    "bridgeOs": "docs/operations/coordination/inbound/to-bridge-os-ai-mlops-lane-2026-06-15.md"
+  },
+  "forbiddenOwners": ["gtcx-os", "gtcx-intelligence", "gtcx-os/platform/intelligence"]
 }

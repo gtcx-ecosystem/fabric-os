@@ -19,11 +19,11 @@ protocol: 'P49'
 
 ## Authority
 
-| Decision           | Authority                             |
-| ------------------ | ------------------------------------- |
-| New AI signal ID   | Class A                               |
-| Daily witness run  | Class R                               |
-| MLOps runtime spec | `gtcx-os/platform/intelligence` owner |
+| Decision           | Authority                                        |
+| ------------------ | ------------------------------------------------ |
+| New AI signal ID   | Class A                                          |
+| Daily witness run  | Class R                                          |
+| MLOps runtime spec | `baseline-os` owner · `bridge-os` program office |
 
 ## Forbidden
 

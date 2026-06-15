@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/aiops-check-witness/v1",
   "version": "1.0.0",
-  "updated": "2026-06-15T14:35:46.526Z",
+  "updated": "2026-06-15T16:33:37.167Z",
   "repo": "fabric-os",
   "lane": "AIOps",
   "protocolId": "P49-AIOPS-AS-A-SERVICE",

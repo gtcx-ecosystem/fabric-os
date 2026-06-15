@@ -1,8 +1,12 @@
 ---
-title: SECaaS card — gtcx-intelligence
+title: 'SECaaS card — gtcx-intelligence'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # SECaaS card — gtcx-intelligence

@@ -1,8 +1,12 @@
 ---
-title: Incident response runbook (SECaaS)
+title: 'Incident response runbook (SECaaS)'
 status: current
 date: 2026-06-14
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 story: SECAS-S4-01
 friction: SEC-CSIRT-01
 ---

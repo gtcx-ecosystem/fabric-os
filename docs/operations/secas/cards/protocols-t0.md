@@ -1,8 +1,12 @@
 ---
-title: SECaaS card — protocols (T0 industry rail)
+title: 'SECaaS card — protocols (T0 industry rail)'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation', 'protocol']
+review_cycle: on-change
+document_type: runbook
 laneId: T0
 deployProduct: protocol-rail
 friction: SEC-PENTEST-01

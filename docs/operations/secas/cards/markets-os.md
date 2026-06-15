@@ -1,8 +1,12 @@
 ---
-title: SECaaS card — markets-os
+title: 'SECaaS card — markets-os'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # SECaaS card — markets-os

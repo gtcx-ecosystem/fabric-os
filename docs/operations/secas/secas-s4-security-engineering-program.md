@@ -1,8 +1,12 @@
 ---
-title: SECAS-S4 — SecOps engineering operating program
+title: 'SECAS-S4 — SecOps engineering operating program'
 status: current
 date: 2026-06-14
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 initiative: INIT-GTCX-INFRA-SECAS
 protocol: P42-SECURITY-AS-A-SERVICE
 opsLane: SecOps

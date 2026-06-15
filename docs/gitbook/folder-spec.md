@@ -4,21 +4,21 @@ status: current
 date: 2026-06-15
 owner: fabric-os
 document_type: folder-spec
-tier: standard
-tags: ['documentation', 'provisioning']
+tier: operating
+tags: ['documentation', 'gitbook']
 review_cycle: on-change
 ---
 
 # `docs/gitbook/` — provisioning
 
-> Parent: [`docs/FOLDER-SPEC.md`](../FOLDER-SPEC.md)
+> **Parent:** [`docs/FOLDER-SPEC.md`](../FOLDER-SPEC.md)
 
 ## Purpose
 
-GitBook publish source (SUMMARY.md + chapters) for **fabric-os**.
+gitbook/ narrative and specs for fabric-os.
 
 ## Agent rules
 
-1. Read parent `docs/FOLDER-SPEC.md` before adding files
-2. Set `document_type` in frontmatter
-3. Update `docs/CHANGELOG.md` on structural changes
+1. Read `docs/INDEX.md` and parent `FOLDER-SPEC.md` first
+2. Set `document_type` per canon-os `docs-document-types.json`
+3. Log structural changes in `docs/CHANGELOG.md`

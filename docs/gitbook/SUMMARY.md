@@ -9,6 +9,8 @@ review_cycle: on-change
 document_type: gitbook-chapter
 ---
 
+# GitBook summary
+
 - [blog/README](blog/README.md)
 - [blog/audit-signer-launch-2026-05](blog/audit-signer-launch-2026-05.md)
 - [docs-site/README](docs-site/README.md)

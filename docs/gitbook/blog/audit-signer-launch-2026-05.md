@@ -170,13 +170,13 @@ Each piece is designed to compose with the others, but each works standalone. Pi
 Three commands tell you whether `@gtcx/audit-signer` is real:
 
 ```bash
-# 1. The published artifact exists
+## 1. The published artifact exists
 npm view @gtcx/audit-signer
 
-# 2. It installs clean
+## 2. It installs clean
 mkdir test && cd test && npm init -y && npm install @gtcx/audit-signer
 
-# 3. The verifier rejects tampering
+## 3. The verifier rejects tampering
 node -e "
 import('@gtcx/audit-signer').then(m => {
   const { privateKey, publicKey } = m.generateKeyPair();

@@ -34,7 +34,7 @@ A third party with only the NDJSON file can verify all of the above offline.
 
 ```bash
 npm install @gtcx/audit-signer
-# or
+## or
 pnpm add @gtcx/audit-signer
 ```
 

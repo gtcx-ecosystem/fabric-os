@@ -3,6 +3,10 @@ title: Conventions
 status: current
 date: 2026-06-06
 owner: gtcx-infrastructure
+tier: operating
+tags: ['protocol', 'documentation']
+review_cycle: on-change
+document_type: protocol
 ---
 
 <!-- AGENT-SYNC:START -->
@@ -33,19 +37,19 @@ owner: gtcx-infrastructure
 # Install dependencies
 pnpm install
 
-# Run all validation gates (17 gates: coverage, static, security, build)
+## Run all validation gates (17 gates: coverage, static, security, build)
 node 03-platform/tools/scripts/validate-all.mjs
 
-# Run tests for a specific tool
+## Run tests for a specific tool
 node --test 03-platform/tools/<tool>/tests/**/*.test.mjs
 
-# Regenerate agent-sync docs
+## Regenerate agent-sync docs
 pnpm agent:sync
 
-# Docker build (example: audit-flush)
+## Docker build (example: audit-flush)
 docker build -t audit-flush:latest 03-platform/tools/audit-flush/
 
-# Terraform (staging)
+## Terraform (staging)
 cd 04-deploy/terraform/environments/staging && terraform plan -var-file=terraform.tfvars
 ```
 
@@ -135,7 +139,7 @@ When a story is **blocked on a sibling repo** or you **hand off** cross-repo wor
 
 ```bash
 baseline start
-# or: pnpm agent:start   # P22 bootstrap only — not full INST-003 chain
+## or: pnpm agent:start   # P22 bootstrap only — not full INST-003 chain
 ```
 
 Optional: `pnpm agent:start --json` · legacy alias `pnpm agent:session-start` (same as `agent:start`).
@@ -184,7 +188,7 @@ Emit **one** brief, then work. Human may **stop**, **correct:**, or story ID —
 
 ```bash
 pnpm session
-# or: baseline session
+## or: baseline session
 pnpm session --json
 ```
 

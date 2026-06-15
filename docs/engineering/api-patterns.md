@@ -35,7 +35,7 @@ Reference patterns and conventions for designing consistent, scalable APIs.
 ### Resource naming conventions
 
 ```
-# Standard CRUD
+## Standard CRUD
 GET    /resources              # List
 GET    /resources/{id}         # Get one
 POST   /resources              # Create
@@ -43,7 +43,7 @@ PUT    /resources/{id}         # Full update
 PATCH  /resources/{id}         # Partial update
 DELETE /resources/{id}         # Delete
 
-# Nested resources
+## Nested resources
 GET    /users/{userId}/transactions
 GET    /transactions/{id}/audit-log
 POST   /transactions/{id}/confirm

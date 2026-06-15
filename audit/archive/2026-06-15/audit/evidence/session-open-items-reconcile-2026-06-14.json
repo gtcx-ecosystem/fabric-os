@@ -1,0 +1,76 @@
+{
+  "schema": "gtcx://fabric-os/session-open-items-reconcile/v1",
+  "sessionId": "fabric-os-ops-security-2026-06-14",
+  "reconciledAt": "2026-06-14T12:00:00.000Z",
+  "reconciledBy": "agent:fabric-os",
+  "machineWitness": "pm/ci/session-open-items-latest.json",
+  "forensicPack": "pm/ci/session-forensic-2026-06-14.md",
+  "transcriptId": "e6196bcc-bdcc-44b2-b959-7d9a9d2fc6fd",
+  "headCommit": "5ae7e67",
+  "git": {
+    "branch": "main",
+    "ahead": 0,
+    "behind": 0,
+    "synced": true,
+    "dirtyCount": 2,
+    "dirtyNote": "hook witness churn only — launch-focus, settlement-push"
+  },
+  "p22": {
+    "headStoryId": "SECAS-S2-01",
+    "phase": "awaiting_vendor_report",
+    "blockedUntil": "2026-06-21",
+    "blocksIR": false,
+    "backlogClear": false
+  },
+  "openItemsReconciled": {
+    "machineCount": 15,
+    "authoritativeCount": 8,
+    "transcriptNoiseCount": 11,
+    "filterRule": "exclude openItems where source=transcript and id=null"
+  },
+  "gates": {
+    "secasCsirt": { "command": "pnpm secas:csirt:check", "exitCode": 0, "result": "PASS" },
+    "secasSupplyChain": {
+      "command": "pnpm secas:supply-chain:check",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    "fleetRisk": { "command": "pnpm fleet:risk:check", "exitCode": 0, "result": "PASS" },
+    "ecosystemopsNetwork": {
+      "command": "pnpm ecosystemops:network:check",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    "fabricCompass": {
+      "command": "pnpm fabric:compass:check",
+      "exitCode": 0,
+      "result": "PASS",
+      "runnerFails": ["fabric-assurance", "fleet-teamaas"]
+    }
+  },
+  "closedThisSession": [
+    "SECAS-S4-01",
+    "StratOps harness",
+    "EcosystemOps harness",
+    "Fleet risk/threat registers",
+    "PayOps substrate contract",
+    "RevOps forensic audit",
+    "Compass recursion fix",
+    "Pen-test intake SoR restore",
+    "Ops naming display layer"
+  ],
+  "nextClassR": [
+    "SECAS-S4-03",
+    "PAY-FLEET-01",
+    "ECO-PART-01",
+    "ECO-DEV-01",
+    "fabric-assurance runner",
+    "fleet-teamaas runner"
+  ],
+  "parallelClassS": [
+    { "id": "SECAS-S2-01-INGEST", "blocksIR": false },
+    { "id": "BG-10-10", "blocksIR": false },
+    { "id": "BG-10-11", "blocksIR": false },
+    { "id": "EXT-INF-013", "blocksIR": false }
+  ]
+}

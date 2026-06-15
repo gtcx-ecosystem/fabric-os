@@ -59,8 +59,8 @@ Evidence artifacts (SQL dump + JSON with RTO/RPO ms) are uploaded automatically.
 Before starting recovery:
 
 - Backup snapshots available for audit store and protocol state
-- Redis/Postgres adapters configured for production stores (see [production-store-integration.md](production-store-integration.md))
-- Access to release runbook for rollback steps (see [release.md](release.md))
+- Redis/Postgres adapters configured for production stores (see [production-store-integration.md](../sre/production-store-integration.md))
+- Access to release runbook for rollback steps (see [release.md](../sre/release.md))
 - Incident commander declared and team notified
 
 ---
@@ -176,7 +176,7 @@ All tests must pass and the runtime-smoke evidence must be parity-clean before r
 If validation fails after restore, roll back to the last known-good release:
 
 1. Identify the last known-good release tag from `git log --tags`.
-2. Deploy that tag via the [release runbook](release.md).
+2. Deploy that tag via the [release runbook](../sre/release.md).
 3. Re-run the restore procedure starting at Step 3 using the backup that aligns with that release.
 
 Prefer forward-fix patch releases over destructive state rollback once consumers may have received data.
@@ -197,5 +197,5 @@ Document all test results. Update this runbook after each test.
 
 ## Reference
 
-- [production-store-integration.md](production-store-integration.md)
-- [release.md](release.md)
+- [production-store-integration.md](../sre/production-store-integration.md)
+- [release.md](../sre/release.md)

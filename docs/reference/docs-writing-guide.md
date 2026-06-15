@@ -113,7 +113,7 @@ Never use bare fenced code blocks without a language tag.
 
 ```markdown
 <!-- Good -->
-See [trust model](../architecture/trust-model.md)
+See [trust model](../architecture/narratives/trust-model.md)
 
 <!-- Bad -->
 See trust model (`Users/dev/3-protocols/01-docs/architecture/trust-model.md`)
@@ -130,7 +130,7 @@ If two documents need the same information, one links to the other. Pick the can
 ```markdown
 <!-- Good -->
 
-For authentication details, see [trust-model.md](../architecture/trust-model.md).
+For authentication details, see [trust-model.md](../architecture/narratives/trust-model.md).
 
 <!-- Bad -->
 
@@ -156,10 +156,10 @@ System design, component diagrams, trust model, and ADRs.
 
 ## Contents
 
-| Document                                                 | Description                              |
-| -------------------------------------------------------- | ---------------------------------------- |
-| [system-overview.md](../architecture/system-overview.md) | Three-layer stack, components, data flow |
-| [decisions/](../architecture/decisions/)                 | Architectural Decision Records           |
+| Document                                                            | Description                              |
+| ------------------------------------------------------------------- | ---------------------------------------- |
+| [system-overview.md](../architecture/narratives/system-overview.md) | Three-layer stack, components, data flow |
+| [decisions/](../architecture/decisions/)                            | Architectural Decision Records           |
 
 ## What Belongs Here
 

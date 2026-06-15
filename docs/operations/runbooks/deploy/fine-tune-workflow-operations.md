@@ -137,10 +137,10 @@ For evidence and rollback records, capture:
 - post-suspend `status` output
 - follow-up deployment or config rollback if the workflow surfaced a serving issue
 
-If the issue is in the serving path, use the normal deploy rollback flow in [deploy.md](./deploy.md).
+If the issue is in the serving path, use the normal deploy rollback flow in [deploy.md](../audit-dr/deploy.md).
 
 ## Reference
 
 - [fine-tune-workflow-enablement.md](./fine-tune-workflow-enablement.md)
-- [deploy.md](./deploy.md)
+- [deploy.md](../audit-dr/deploy.md)
 - [04-deploy/terraform/modules/workflow-orchestration/main.tf](../../../deploy/terraform/modules/workflow-orchestration/main.tf)

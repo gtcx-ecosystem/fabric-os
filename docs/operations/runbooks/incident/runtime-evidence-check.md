@@ -74,7 +74,7 @@ pnpm ctl evidence release-bundle \
   --output-dir=./evidence-out
 ```
 
-See [Release Evidence Bundle](./release-evidence.md) for full options.
+See [Release Evidence Bundle](../sre/release-evidence.md) for full options.
 
 ## Failure Modes
 
@@ -90,7 +90,7 @@ See [Release Evidence Bundle](./release-evidence.md) for full options.
 
 - **Never bypass** this gate in CI. A failing `runtime-evidence-check` means the release pipeline cannot produce auditable artifacts.
 - If the failure is a **false positive** (e.g., temporary NPM registry outage), retry the job. Do not merge with a red gate.
-- The `--build-only` flag intentionally skips AWS upload. For WORM upload, use the separate `worm-upload` command documented in [Release Evidence Bundle](./release-evidence.md).
+- The `--build-only` flag intentionally skips AWS upload. For WORM upload, use the separate `worm-upload` command documented in [Release Evidence Bundle](../sre/release-evidence.md).
 - Keep generated evidence directories out of git. They are CI artifacts, not source code.
 
 ## Evidence

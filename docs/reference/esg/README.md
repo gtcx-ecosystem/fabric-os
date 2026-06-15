@@ -24,5 +24,5 @@ This directory contains Environmental, Social, and Governance policies and repor
 
 ## Related
 
-- [`01-docs/governance/king-iv-compliance.md`](../governance/king-iv-compliance.md)
-- [`01-docs/governance/ethics-policy.md`](../governance/ethics-policy.md)
+- [`01-docs/governance/king-iv-compliance.md`](../../governance/king-iv-compliance.md)
+- [`01-docs/governance/ethics-policy.md`](../../governance/ethics-policy.md)

@@ -1,6 +1,6 @@
 # SecOps per-repo security cards
 
-> **Ops lane:** SecOps · **Functional product:** SECaaS · **Registry:** [ops-programs.md](../../ops-programs.md)
+> **Ops lane:** SecOps · **Functional product:** SECaaS · **Registry:** [ops-programs.md](../../core-ops/batch-a/ops-programs.md)
 
 Per-repo stack security action cards for SecOps operators.
 

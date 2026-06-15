@@ -28,7 +28,7 @@ autonomy_level: permissioned
 Before setting `enable_fine_tune_workflow = true` in any Terraform environment:
 
 1. Pin `curator_image`, `trainer_image`, `evaluator_image`, and `promoter_image` to immutable SHA or release tags.
-2. Create an evidence manifest JSON file based on [fine-tune-workflow-enable-evidence.example.json](../fine-tune-workflow-enable-evidence.example.json).
+2. Create an evidence manifest JSON file based on [fine-tune-workflow-enable-evidence.example.json](../../fine-tune-workflow-enable-evidence.example.json).
 3. Set `enablement_evidence_manifest` to the relative path of that evidence file from the Terraform environment directory.
 4. Run the policy guard:
    `pnpm check:fine-tune-workflow-policy`

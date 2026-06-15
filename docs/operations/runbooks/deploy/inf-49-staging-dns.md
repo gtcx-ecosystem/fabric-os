@@ -23,7 +23,7 @@ This runbook walks through bringing public DNS for the staging environment under
 
 ## Architecture (authorities vs operators)
 
-Canonical three-layer model (trust anchors, CSP rules, per-company operators): **gtcx-protocols** [`01-docs/reference/architecture/trust-layers-and-did-resolution.md`](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/reference/architecture/trust-layers-and-did-resolution.md) (infra pointer: [`01-docs/reference/architecture/trust-layers-and-did-resolution.md`](../../reference/architecture/trust-layers-and-did-resolution.md)).
+Canonical three-layer model (trust anchors, CSP rules, per-company operators): **gtcx-protocols** [`01-docs/reference/architecture/trust-layers-and-did-resolution.md`](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/reference/architecture/trust-layers-and-did-resolution.md) (infra pointer: [`01-docs/reference/architecture/trust-layers-and-did-resolution.md`](../../../architecture/narratives/trust-layers-and-did-resolution.md)).
 
 ## What this runbook does NOT cover
 

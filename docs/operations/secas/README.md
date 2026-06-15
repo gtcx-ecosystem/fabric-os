@@ -1,13 +1,13 @@
 # SecOps (SECaaS functional product) — operator index
 
 > **Ops lane:** **SecOps** · **Functional product:** SECaaS · **Initiative:** `INIT-GTCX-INFRA-SECAS` · **Protocol:** P42  
-> **Registry:** [ops-programs.md](../ops-programs.md)  
+> **Registry:** [ops-programs.md](../core-ops/batch-a/ops-programs.md)  
 > **Primary owner:** fabric-os (co-primary with DevOps/InfraOps — not bridge-os program office)
 
 | Artifact             | Path                                                                                   |
 | -------------------- | -------------------------------------------------------------------------------------- |
-| Ops entry            | [security-as-a-service.md](../security-as-a-service.md)                                |
-| All Ops lanes        | [ops-programs.md](../ops-programs.md)                                                  |
+| Ops entry            | [security-as-a-service.md](../platform-services/security-as-a-service.md)              |
+| All Ops lanes        | [ops-programs.md](../core-ops/batch-a/ops-programs.md)                                 |
 | Roadmap              | `pm/secas-roadmap.json`                                                                |
 | Stories              | `pm/secas-stories.json`                                                                |
 | Operational friction | `pm/security-friction-register.json`                                                   |

@@ -69,5 +69,5 @@ If the automatic capture fails, run the command manually and preserve the output
 
 ## Related
 
-- [deploy.md](./deploy.md)
-- [fine-tune-workflow-operations.md](./fine-tune-workflow-operations.md)
+- [deploy.md](../audit-dr/deploy.md)
+- [fine-tune-workflow-operations.md](../deploy/fine-tune-workflow-operations.md)

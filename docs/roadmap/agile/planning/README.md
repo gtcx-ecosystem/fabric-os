@@ -11,4 +11,4 @@ review_cycle: on-change
 
 # planning
 
-> See [`FOLDER-SPEC.md`](./FOLDER-SPEC.md) when present.
+> See [`FOLDER-SPEC.md`](../folder-spec.md) when present.

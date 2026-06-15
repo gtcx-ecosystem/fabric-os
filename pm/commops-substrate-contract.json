@@ -1,0 +1,35 @@
+{
+  "$schema": "gtcx://fabric-os/commops-substrate-contract/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15",
+  "owner": "fabric-os",
+  "channels": [
+    {
+      "id": "email-sendgrid",
+      "provider": "sendgrid",
+      "stagingSm": "gtcx/shared/staging/commops/sendgrid",
+      "productionSm": "gtcx/shared/production/commops/sendgrid",
+      "status": "planned"
+    },
+    {
+      "id": "sms-africas-talking",
+      "provider": "africas-talking",
+      "stagingSm": "gtcx/shared/staging/commops/africas-talking",
+      "productionSm": "gtcx/shared/production/commops/africas-talking",
+      "status": "planned"
+    },
+    {
+      "id": "sms-twilio",
+      "provider": "twilio",
+      "stagingSm": "gtcx/shared/staging/commops/twilio",
+      "productionSm": "gtcx/shared/production/commops/twilio",
+      "status": "planned"
+    }
+  ],
+  "deliverability": {
+    "dkimRequired": true,
+    "spfRequired": true,
+    "bounceWebhookIngress": "fabric-os/deploy/kubernetes/overlays/staging/commops/"
+  },
+  "forensicRef": "audit/archive/2026-06-15/audit/ecosystem-revops-commops-forensic-2026-06-14.md"
+}

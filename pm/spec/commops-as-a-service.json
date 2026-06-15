@@ -1,0 +1,35 @@
+{
+  "$schema": "gtcx://fabric-os/commops-as-a-service/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15",
+  "protocolId": "P53-COMMOPS-AS-A-SERVICE",
+  "title": "CommOps-as-a-Service",
+  "opsLane": "CommOps",
+  "initiative": "INIT-OPS-LANES-OPERATIONALIZE",
+  "status": "active",
+  "principle": "fabric-os owns shared communications substrate (SM paths, deliverability witnesses); product repos own channel UX.",
+  "ownerSplit": {
+    "fabricOs": [
+      "pm/spec/commops-as-a-service.json",
+      "pm/commops-friction-register.json",
+      "pm/commops-substrate-contract.json",
+      "platform/scripts/commops-check.mjs",
+      "platform/scripts/commops-deliverability-check.mjs",
+      "audit/evidence/commops-check-latest.json"
+    ],
+    "bridgeOs": ["pm/ci/ops-lanes-100/commops-fleet-latest.json"]
+  },
+  "artifacts": {
+    "spec": "pm/spec/commops-as-a-service.json",
+    "substrateContract": "pm/commops-substrate-contract.json",
+    "frictionRegister": "pm/commops-friction-register.json",
+    "opsEntry": "docs/operations/commops-as-a-service.md",
+    "witness": "audit/evidence/commops-check-latest.json",
+    "deliverabilityWitness": "audit/evidence/commops-deliverability-latest.json"
+  },
+  "harness": {
+    "check": "pnpm commops:check",
+    "checkWrite": "pnpm commops:check:write",
+    "deliverability": "pnpm commops:deliverability:check:write"
+  }
+}

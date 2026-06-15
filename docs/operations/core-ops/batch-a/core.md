@@ -117,15 +117,15 @@ flowchart LR
 
 ### ComplianceOps
 
-| Dimension             | Specification                                                                                                  |
-| --------------------- | -------------------------------------------------------------------------------------------------------------- |
-| **Runtime**           | INT-REF lifts, five-pillar audits, reference-grade dimensions, regulatory evidence packs                       |
-| **Agentic team**      | `compliance-officer` (lead) · `security-engineer` · legal witness for attestations                             |
-| **Intelligence loop** | Rubric gap → INT story → dimension lift → composite witness → fleet stress report                              |
-| **Innovation moat**   | **Portable compliance intelligence** — Core12 graph, GCI credential, cross-framework reference                 |
-| **Trust fortress**    | Separation of duties; evidence pipeline; no normative text duplicated in product repos                         |
-| **Magic**             | Product ships; compliance dimension lifts in parallel — composite crosses deploy bar without stopping features |
-| **Business outcomes** | Enterprise procurement velocity; regulator-ready exports                                                       |
+| Dimension             | Specification                                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Runtime**           | INT-REF lifts, multi-pillar audits (F-PiLLAR + T-PiLLAR), reference-grade dimensions, regulatory evidence packs |
+| **Agentic team**      | `compliance-officer` (lead) · `security-engineer` · legal witness for attestations                              |
+| **Intelligence loop** | Rubric gap → INT story → dimension lift → composite witness → fleet stress report                               |
+| **Innovation moat**   | **Portable compliance intelligence** — Core12 graph, GCI credential, cross-framework reference                  |
+| **Trust fortress**    | Separation of duties; evidence pipeline; no normative text duplicated in product repos                          |
+| **Magic**             | Product ships; compliance dimension lifts in parallel — composite crosses deploy bar without stopping features  |
+| **Business outcomes** | Enterprise procurement velocity; regulator-ready exports                                                        |
 
 ### LegalOps
 

@@ -452,3 +452,12 @@ Other:
 | Review CI/CD pipeline          | [CI/CD](operations/ci-cd/ci-cd.md)                                                                                                                                                           |
 | Understand data governance     | [Data Governance](specs/data-governance.md)                                                                                                                                                  |
 | Review error budgets           | [AGX](./operations/runbooks/audit-dr/agx-error-budget.md) / [ANISA](./operations/runbooks/audit-dr/anisa-error-budget.md) / [Protocols](./operations/runbooks/sre/protocols-error-budget.md) |
+
+## Multi-pillar evaluation (fleet — RAG/MCP)
+
+GTCX evaluation is **multi-pillar** (F-PiLLAR gates T-PiLLAR). **Do not** describe the model as "five pillars only."
+
+| Resource              | Path                                                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **This repo pointer** | [`reference/evaluation/multi-pillar-audit.md`](./reference/evaluation/multi-pillar-audit.md)                       |
+| **Fleet agent index** | [canon-os](https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/audit/multi-pillar-agent-index.md) |

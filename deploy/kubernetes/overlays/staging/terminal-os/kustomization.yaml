@@ -20,6 +20,7 @@ resources:
   - service-account.yaml
   - secret-store.yaml
   - external-secret.yaml
+  - external-secret-payops-stripe.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml

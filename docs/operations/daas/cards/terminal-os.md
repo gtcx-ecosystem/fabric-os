@@ -31,8 +31,9 @@ protocol: P41-DEVOPS-AS-A-SERVICE
 
 1. EKS namespace + IRSA (`terminal-os-aws-secrets` SecretStore)
 2. ExternalSecret mirror for `COMPLIANCE_OS_TERMINAL_API_KEY` from AWS SM
-3. ALB ingress `terminal-staging.gtcx.trade`
-4. ECR image `gtcx-terminal-os:latest`
+3. **PayOps** — `terminal-os-payops-stripe` ExternalSecret from `gtcx/shared/staging/payops/stripe` (XR-FABRIC-PAYOPS-001)
+4. ALB ingress `terminal-staging.gtcx.trade`
+5. ECR image `gtcx-terminal-os:latest`
 
 ## Apply path
 
@@ -44,11 +45,12 @@ kubectl get pods -n terminal-os-staging
 
 ## Verification (2026-06-10)
 
-| Probe                                      | Result                           |
-| ------------------------------------------ | -------------------------------- |
-| `terminal-os-secrets` ExternalSecret       | **SecretSynced True**            |
-| Pod `terminal-os-*`                        | **1/1 Running**                  |
-| `GET https://terminal-staging.gtcx.trade/` | **403** (WAF — origin reachable) |
+| Probe                                      | Result                                              |
+| ------------------------------------------ | --------------------------------------------------- |
+| `terminal-os-secrets` ExternalSecret       | **SecretSynced True**                               |
+| `terminal-os-payops-stripe` ExternalSecret | **SecretSynced True** (post TF apply + SM populate) |
+| Pod `terminal-os-*`                        | **1/1 Running**                                     |
+| `GET https://terminal-staging.gtcx.trade/` | **403** (WAF — origin reachable)                    |
 
 ## Product handback
 

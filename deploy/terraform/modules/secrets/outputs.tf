@@ -110,3 +110,21 @@ output "terra_os_sm_secret_names" {
     "terraos/staging/app-secrets",
   ]
 }
+
+output "payops_stripe_secret_arn" {
+  description = "ARN of shared PayOps Stripe secret shell"
+  value       = aws_secretsmanager_secret.payops_stripe.arn
+}
+
+output "payops_flutterwave_secret_arn" {
+  description = "ARN of shared PayOps Flutterwave secret shell"
+  value       = aws_secretsmanager_secret.payops_flutterwave.arn
+}
+
+output "payops_sm_secret_names" {
+  description = "AWS SM secret names (shells) for shared PayOps providers"
+  value = [
+    aws_secretsmanager_secret.payops_stripe.name,
+    aws_secretsmanager_secret.payops_flutterwave.name,
+  ]
+}

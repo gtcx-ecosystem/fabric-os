@@ -66,6 +66,9 @@ spec:
             - secretRef:
                 name: terminal-os-secrets
                 optional: false
+            - secretRef:
+                name: terminal-os-payops-stripe
+                optional: true
           resources:
             requests:
               cpu: 100m

@@ -2,13 +2,14 @@
 title: 'Sprint Phase 3 — June 2026: Hardening + External Readiness (Revamped)'
 status: archival-inventory
 date: 2026-06-05
-last_reconciled: 2026-06-12
 owner: gtcx-infrastructure
-role: platform-architect
-frame: development
 tier: critical
-tags: ['sprint', 'roadmap', 'hardening', 'audit', 'zwcmp']
+tags: [['sprint', 'roadmap', 'hardening', 'audit', 'zwcmp']]
 review_cycle: weekly
+document_type: protocol
+role: platform-architect
+last_reconciled: 2026-06-12
+frame: development
 ---
 
 # Sprint Phase 3 — June 2026: Hardening + External Readiness (Revamped)

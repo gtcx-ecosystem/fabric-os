@@ -105,22 +105,22 @@ export async function verifyDidSignature(integrity) {
 #### Phase B1: Staging Validation (Week 1)
 
 ```bash
-# 1. Install Linkerd CLI
+## 1. Install Linkerd CLI
 linkerd install --crds | kubectl apply -f -
 linkerd install | kubectl apply -f -
 linkerd check
 
-# 2. Inject data plane into staging namespaces
+## 2. Inject data plane into staging namespaces
 kubectl annotate ns gtcx-staging linkerd.io/inject=enabled
 kubectl annotate ns intelligence-staging linkerd.io/inject=enabled
 
-# 3. Restart deployments to pick up sidecars
+## 3. Restart deployments to pick up sidecars
 kubectl rollout restart deployment -n gtcx-staging
 kubectl rollout restart deployment -n intelligence-staging
 
-# 4. Verify
+## 4. Verify
 linkerd viz stat deploy -n gtcx-staging
-# Expected: all rows show MESHED=yes, SUCCESS=100%, TLS=ok
+## Expected: all rows show MESHED=yes, SUCCESS=100%, TLS=ok
 ```
 
 #### Phase B2: Production Rollout (Week 2)
@@ -167,27 +167,27 @@ linkerd viz stat deploy -n gtcx-staging
 #### Execution Plan
 
 ```bash
-# 1. Coordinate team freeze — everyone pushes current work
-# 2. Admin creates backup fork
+## 1. Coordinate team freeze — everyone pushes current work
+## 2. Admin creates backup fork
 git clone https://github.com/gtcx-ecosystem/gtcx-infrastructure.git gtcx-infrastructure-purge
 cd gtcx-infrastructure-purge
 
-# 3. Run filter-repo
+## 3. Run filter-repo
 git filter-repo \
   --path-glob '04-deploy/terraform/**/*.tfstate*' \
   --path-glob '04-deploy/terraform/**/.terraform/**' \
   --path-glob '04-deploy/terraform/**/.terraform.lock.hcl' \
   --invert-paths
 
-# 4. Verify
+## 4. Verify
 git log --all --full-history -- '**/.terraform/**'
 git log --all --full-history -- '**/*.tfstate*'
 
-# 5. Force-push (requires disabling branch protection temporarily)
+## 5. Force-push (requires disabling branch protection temporarily)
 git push origin --force --all
 git push origin --force --tags
 
-# 6. Notify team to re-clone
+## 6. Notify team to re-clone
 ```
 
 **Acceptance criteria:**

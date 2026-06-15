@@ -1,24 +1,12 @@
 ---
-title: 'reference/ — folder provisioning'
+title: 'reference/ provisioning'
 status: current
 date: 2026-06-15
 owner: fabric-os
 document_type: folder-spec
 tier: standard
-tags: ['documentation', 'provisioning']
+tags: ['documentation']
 review_cycle: on-change
 ---
 
-# `docs/reference/` — provisioning
-
-> Parent: [`docs/FOLDER-SPEC.md`](../FOLDER-SPEC.md)
-
-## Purpose
-
-Templates, guides, glossary, examples for **fabric-os**.
-
-## Agent rules
-
-1. Read parent `docs/FOLDER-SPEC.md` before adding files
-2. Set `document_type` in frontmatter
-3. Update `docs/CHANGELOG.md` on structural changes
+# `reference/ provisioning`

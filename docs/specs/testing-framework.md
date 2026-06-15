@@ -227,4 +227,4 @@ The ecosystem currently has approximately 60 real assertions across 4 test files
 - [CI/CD Pipeline](./cicd-pipeline.md) -- Pipeline stages, quality gates, and enforcement mechanisms
 - [Security Policy](../../ops/security/narrative/security-policy.md) -- Security policy framework informing security test requirements
 - Testing principles align with the ecosystem engineering standards and the repo-local quality gates documented here.
-- [Infrastructure Architecture](../architecture/infrastructure-architecture-overview.md) -- Deployment topology informing integration and E2E test environments
+- [Infrastructure Architecture](../architecture/narratives/infrastructure-architecture-overview.md) -- Deployment topology informing integration and E2E test environments

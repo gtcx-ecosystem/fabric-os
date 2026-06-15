@@ -19,6 +19,6 @@ Normative documentation from the **2026-06-12 ecosystem domain model session**.
 
 **Machine registry:** [`../../../pm/spec/trade-ecosystem-lanes.json`](../../../pm/spec/trade-ecosystem-lanes.json)
 
-**Handoff:** [`../../operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md`](../../operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md)
+**Handoff:** [`../../operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md`](../../operations/coordination/inbound/fleet-a/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md)
 
 **Share note:** [`../../operations/coordination/outbound/share-note-trade-ecosystem-lanes-for-fabric-2026-06-12.md`](../../operations/coordination/outbound/share-note-trade-ecosystem-lanes-for-fabric-2026-06-12.md)

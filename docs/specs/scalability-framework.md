@@ -226,5 +226,5 @@ The protocol layer is designed to be commodity-agnostic. `commodityType` is a st
 - [Resilience Framework](./resilience-framework.md) -- SPOF mitigation, degradation tiers, and recovery targets that bound scaling decisions
 - [Observability Framework](./observability-framework.md) -- Performance metrics, alerting thresholds, and dashboards for monitoring scaling behavior
 - [CI/CD Pipeline](./cicd-pipeline.md) -- Canary deployment and auto-rollback mechanisms that protect against scaling-induced regressions
-- [Infrastructure Architecture](../architecture/infrastructure-architecture-overview.md) -- Kubernetes cluster configuration, Terraform structure, and edge deployment topology
+- [Infrastructure Architecture](../architecture/narratives/infrastructure-architecture-overview.md) -- Kubernetes cluster configuration, Terraform structure, and edge deployment topology
 - Shared ecosystem architecture guidance informs service topology, three-tier architecture, and the cross-cutting intelligence layer.

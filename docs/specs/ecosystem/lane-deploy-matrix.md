@@ -107,7 +107,7 @@ fabric-os (**I**) **hosts** workloads for lanes **C, L1–L4b, X, A (pilot)**. I
 
 All **I-tier** workloads default **AWS `af-south-1`** per OPS-CLOUD-PLACE-001. GCP ML bridge disabled until Phase 3.
 
-See [`../../operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md`](../../operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md).
+See [`../../operations/coordination/cloud-placement-aws-control-plane-2026-06-05.md`](../../operations/coordination/sessions/cloud-placement-aws-control-plane-2026-06-05.md).
 
 ---
 

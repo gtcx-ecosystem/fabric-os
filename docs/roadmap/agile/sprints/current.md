@@ -17,9 +17,9 @@ autonomy_level: permissioned
 
 # Sprint Current — gtcx-infrastructure
 
-> **Team:** [Team Definition](../team.md)  
-> **Backlog:** [Backlog](../backlog.md)  
-> **Execution plan (canonical):** [`audit/execution-roadmap.md`](../../../audit/execution-roadmap.md)
+> **Team:** [Team Definition](../planning/backlog/team.md)  
+> **Backlog:** [Backlog](../planning/backlog/backlog.md)  
+> **Execution plan (canonical):** [`audit/execution-roadmap.md`](../planning/roadmaps/execution-roadmap-2026-05-22.md)
 
 ## Committed
 

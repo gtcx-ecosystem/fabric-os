@@ -85,6 +85,6 @@ Terraform modules provision AWS resources (EKS, RDS, ElastiCache, S3, IAM) with 
 
 ## References
 
-- [Execution Roadmap (canonical)](../../audit/execution-roadmap.md)
+- [Execution Roadmap (canonical)](../roadmaps/execution-roadmap-2026-05-22.md)
 - [Product Backlog](backlog.md)
 - [Sprint Planning](sprint-planning.md)

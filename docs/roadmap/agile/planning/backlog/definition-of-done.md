@@ -89,6 +89,6 @@ When DoD cannot be met:
 
 ## Reference
 
-- [`01-docs/devops/release/release-checklist.md`](../operations/release/release-checklist.md) — release gate checklist
-- [`01-docs/04-ops/runbooks/quality-runbook.md`](../operations/runbooks/quality-runbook.md) — full gate sequence
+- [`01-docs/devops/release/release-checklist.md`](../../../../operations/release/release-checklist.md) — release gate checklist
+- [`01-docs/04-ops/runbooks/quality-runbook.md`](../../../../operations/runbooks/sre/quality-runbook.md) — full gate sequence
 - `01-docs/05-audit/agile/qa-test-plan.md` (`./6-testing/uat/uat-evidence-log.md`) — UAT evidence log

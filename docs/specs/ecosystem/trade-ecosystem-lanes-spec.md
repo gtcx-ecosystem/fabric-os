@@ -359,7 +359,7 @@ Proposed **Article IV bis — Trade lanes** (draft for canon-os ratification):
 | **Utilities (U)**      | canon-os, agile-os    | Law + sprints                    |
 | **Program office (B)** | bridge-os             | Fleet assurance                  |
 
-See handoff: [`to-canon-os-trade-ecosystem-lanes-2026-06-12.md`](../../operations/coordination/to-canon-os-trade-ecosystem-lanes-2026-06-12.md).
+See handoff: [`to-canon-os-trade-ecosystem-lanes-2026-06-12.md`](../../operations/coordination/inbound/to-a/to-canon-os-trade-ecosystem-lanes-2026-06-12.md).
 
 ---
 

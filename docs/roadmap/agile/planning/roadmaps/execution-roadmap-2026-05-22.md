@@ -17,7 +17,7 @@ trust_score: 60
 autonomy_level: permissioned
 ---
 
-> **SUPERSEDED 2026-05-31** — Current source of truth: [`audit/execution-roadmap.md`](../../audit/execution-roadmap.md).
+> **SUPERSEDED 2026-05-31** — Current source of truth: [`audit/execution-roadmap.md`](./execution-roadmap-2026-05-22.md).
 
 # GTCX Infrastructure — Execution Roadmap
 
@@ -404,7 +404,7 @@ Cross-references:
 - [x] `X-GTCX-Tenant-Id` lowercase ISO-2 country code → per-tenant namespace per ADR-015.
 - [x] `totalMatched` computed as `min(matched, limit + 1)` for scalability; `truncated` flag is the load-bearing indicator.
 - [x] `outcome` taxonomy stored as-received (mobile's 4-state enum coexists with our internal event types).
-- [x] Pluggable store interface — in-memory (dev), NDJSON-file (staging, durable across restarts), future WORM (production). See [ADR-022](../architecture/decisions/ADR-022-pluggable-audit-query-store.md).
+- [x] Pluggable store interface — in-memory (dev), NDJSON-file (staging, durable across restarts), future WORM (production). See [ADR-022](../../../../architecture/decisions/batch-b/ADR-022-pluggable-audit-query-store.md).
 - [x] Audit-of-the-query: every successful query signs an `audit-query.served` record into our own audit chain.
 - [x] Prometheus metrics: `compliance_gateway_audit_query_requests_total{status,tenantId}` + truncation counter.
 
@@ -435,7 +435,7 @@ Cross-references:
 
 1. Branch `feat/audit-bundles-verifier` — 8 commits landed (schemas, canonical, DID resolver, envelope verifier, chain validator, nonce gate, handler, `audit-bundle.received` self-signing). **PR [#56](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/56) open**.
 2. Branch `feat/audit-query` — 7 commits landed (schemas, in-memory store, handler, server wire, audit-of-the-query signing, NDJSON store, Prometheus metrics). **PR [#58](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/58) open**.
-3. On `main`: OpenAPI 3.1 spec expanded to 12 endpoints incl. `/audit/query` (`c7c02e4`); [ADR-022](../architecture/decisions/ADR-022-pluggable-audit-query-store.md) on pluggable store (`7630af8`).
+3. On `main`: OpenAPI 3.1 spec expanded to 12 endpoints incl. `/audit/query` (`c7c02e4`); [ADR-022](../../../../architecture/decisions/batch-b/ADR-022-pluggable-audit-query-store.md) on pluggable store (`7630af8`).
 4. Production wiring for `/audit/bundles` (real TradePass URL) lands as a follow-up commit once gtcx-protocols#60 deploys.
 
 ### Pre-standup status (2026-05-25)
@@ -488,7 +488,7 @@ Cross-references:
 
 **Acceptance criteria:**
 
-- [ ] Each runbook section in [`01-docs/04-ops/runbooks/tenant-onboarding.md`](../operations/runbooks/tenant-onboarding.md) has an "Observed time" line added.
+- [ ] Each runbook section in [`01-docs/04-ops/runbooks/tenant-onboarding.md`](../../../../operations/runbooks/incident/tenant-onboarding.md) has an "Observed time" line added.
 - [ ] SLA statement updated if total exceeded 2 hours; otherwise confirmed as ≤ 2h.
 - [ ] Any pain points discovered are captured as P2 tickets in `01-docs/05-audit/agile/backlog.md`.
 
@@ -898,8 +898,8 @@ Cycle 2 closes when **all** of the following are true:
 - Coverage gate rationale: [`audit/archive/legacy-docs-audit/coverage-gate-rationale.md`](../../audit/archive/legacy-docs-audit/coverage-gate-rationale.md)
 - Pen-test RFP: [`audit/pen-test-rfp-2026.md`](../../audit/pen-test-rfp-2026.md)
 - SOC 2 engagement plan: [`audit/archive/legacy-docs-audit/soc2-engagement-2026.md`](../../audit/archive/legacy-docs-audit/soc2-engagement-2026.md)
-- Tenant onboarding runbook: [`01-docs/04-ops/runbooks/tenant-onboarding.md`](../operations/runbooks/tenant-onboarding.md)
-- Audit-flush deployment runbook: [`01-docs/04-ops/runbooks/audit-flush-deployment.md`](../operations/runbooks/audit-flush-deployment.md)
-- ADR-022 (audit-query pluggable store): [`01-docs/architecture/decisions/ADR-022-pluggable-audit-query-store.md`](../architecture/decisions/ADR-022-pluggable-audit-query-store.md)
-- OpenAPI spec: [`01-docs/api/openapi.yaml`](../api/openapi.yaml) — 12 endpoints incl. `/audit/bundles` + `/audit/query`
+- Tenant onboarding runbook: [`01-docs/04-ops/runbooks/tenant-onboarding.md`](../../../../operations/runbooks/incident/tenant-onboarding.md)
+- Audit-flush deployment runbook: [`01-docs/04-ops/runbooks/audit-flush-deployment.md`](../../../../operations/runbooks/audit-dr/audit-flush-deployment.md)
+- ADR-022 (audit-query pluggable store): [`01-docs/architecture/decisions/ADR-022-pluggable-audit-query-store.md`](../../../../architecture/decisions/batch-b/ADR-022-pluggable-audit-query-store.md)
+- OpenAPI spec: [`01-docs/api/openapi.yaml`](../../../../api/openapi.yaml) — 12 endpoints incl. `/audit/bundles` + `/audit/query`
 - Ecosystem audit framework: [`gtcx-agentic/audit/SCORING_FRAMEWORK.md`](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/audit/SCORING_FRAMEWORK.md)

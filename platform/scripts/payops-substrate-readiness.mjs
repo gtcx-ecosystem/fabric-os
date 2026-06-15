@@ -16,11 +16,19 @@ const HANDOFF = join(
   'docs/operations/coordination/inbound/to-b/to-payops-fleet-substrate-migration-2026-06-15.md',
 );
 const METERING = join(ROOT, 'audit/evidence/payops-metering-rollup-latest.json');
-const ESO_MANIFESTS = [
+const PRIMARY_FLUTTERWAVE_MANIFESTS = [
+  'deploy/kubernetes/overlays/staging/terminal-os/external-secret-payops-flutterwave.yaml',
+  'deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml',
+  'deploy/kubernetes/overlays/staging/sensei-os/external-secret-payops-flutterwave.yaml',
+  'deploy/kubernetes/overlays/staging/nyota-ai/external-secret-payops-flutterwave.yaml',
+  'deploy/kubernetes/overlays/staging/griot-ai/external-secrets-payops.yaml',
+];
+const SECONDARY_STRIPE_MANIFESTS = [
   'deploy/kubernetes/overlays/staging/terminal-os/external-secret-payops-stripe.yaml',
   'deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml',
   'deploy/kubernetes/overlays/staging/sensei-os/external-secret-payops-stripe.yaml',
   'deploy/kubernetes/overlays/staging/nyota-ai/external-secret-payops-stripe.yaml',
+  'deploy/kubernetes/overlays/staging/griot-ai/external-secrets-payops.yaml',
 ];
 const OUT = join(ROOT, 'audit/evidence/payops-substrate-readiness-latest.json');
 const WRITE = process.argv.includes('--write');
@@ -34,46 +42,75 @@ function awsSecretExists(secretId) {
   return r.status === 0;
 }
 
+function manifestReady(relPaths, needle) {
+  return relPaths.filter((p) => {
+    const abs = join(ROOT, p);
+    if (!existsSync(abs)) return false;
+    if (!needle) return true;
+    return readFileSync(abs, 'utf8').includes(needle);
+  });
+}
+
 const gates = {
   substrateContract: { ok: existsSync(SUBSTRATE) },
+  providerPriority: { ok: false },
   populateScript: { ok: existsSync(POPULATE) },
   fleetHandoff: { ok: existsSync(HANDOFF) },
   meteringWitness: { ok: existsSync(METERING) },
-  esoConsumerManifests: { ok: false, count: 0, paths: [] },
-  smStripeStaging: { ok: false, advisory: true },
+  primaryFlutterwaveEso: { ok: false, count: 0, expected: PRIMARY_FLUTTERWAVE_MANIFESTS.length },
+  secondaryStripeEso: { ok: false, count: 0, expected: SECONDARY_STRIPE_MANIFESTS.length },
   smFlutterwaveStaging: { ok: false, advisory: true },
+  smStripeStaging: { ok: false, advisory: true },
 };
 
 if (existsSync(SUBSTRATE)) {
   const sub = JSON.parse(readFileSync(SUBSTRATE, 'utf8'));
-  const stripePath = sub.secretsManager?.stripe?.staging;
+  gates.providerPriority = {
+    ok:
+      sub.providerPriority?.primary === 'flutterwave' &&
+      sub.providerPriority?.secondary === 'stripe',
+    primary: sub.providerPriority?.primary,
+    secondary: sub.providerPriority?.secondary,
+  };
   const fwPath = sub.secretsManager?.flutterwave?.staging;
-  if (stripePath) gates.smStripeStaging = { ok: awsSecretExists(stripePath), path: stripePath, advisory: true };
+  const stripePath = sub.secretsManager?.stripe?.staging;
   if (fwPath) gates.smFlutterwaveStaging = { ok: awsSecretExists(fwPath), path: fwPath, advisory: true };
+  if (stripePath) gates.smStripeStaging = { ok: awsSecretExists(stripePath), path: stripePath, advisory: true };
 }
 
-const esoPresent = ESO_MANIFESTS.filter((p) => existsSync(join(ROOT, p)));
-gates.esoConsumerManifests = {
-  ok: esoPresent.length === ESO_MANIFESTS.length,
-  count: esoPresent.length,
-  expected: ESO_MANIFESTS.length,
-  paths: esoPresent,
+const fwPresent = manifestReady(PRIMARY_FLUTTERWAVE_MANIFESTS, 'payops/flutterwave');
+gates.primaryFlutterwaveEso = {
+  ok: fwPresent.length === PRIMARY_FLUTTERWAVE_MANIFESTS.length,
+  count: fwPresent.length,
+  expected: PRIMARY_FLUTTERWAVE_MANIFESTS.length,
+  paths: fwPresent,
+};
+
+const stripePresent = manifestReady(SECONDARY_STRIPE_MANIFESTS, 'payops/stripe');
+gates.secondaryStripeEso = {
+  ok: stripePresent.length === SECONDARY_STRIPE_MANIFESTS.length,
+  count: stripePresent.length,
+  expected: SECONDARY_STRIPE_MANIFESTS.length,
+  paths: stripePresent,
 };
 
 const ok =
   gates.substrateContract.ok &&
+  gates.providerPriority.ok &&
   gates.populateScript.ok &&
   gates.fleetHandoff.ok &&
   gates.meteringWitness.ok &&
-  gates.esoConsumerManifests.ok;
+  gates.primaryFlutterwaveEso.ok &&
+  gates.secondaryStripeEso.ok;
 
 const witness = {
   schema: 'gtcx://fabric-os/payops-substrate-readiness/v1',
   checkedAt: new Date().toISOString(),
   opsLane: 'PayOps',
+  providerPriority: { primary: 'flutterwave', secondary: 'stripe' },
   gates,
   ok,
-  note: 'SM existence advisory until Class A key populate — structural readiness passes without AWS',
+  note: 'Flutterwave primary + Stripe secondary — SM existence advisory until Class A populate',
 };
 
 if (WRITE) {
@@ -83,7 +120,15 @@ if (WRITE) {
 
 for (const [k, v] of Object.entries(gates)) {
   const tag = v.advisory && !v.ok ? 'ADVISORY' : v.ok !== false ? 'OK' : 'FAIL';
-  console.log(`${tag} ${k}${v.path ? ` (${v.path})` : ''}`);
+  const extra =
+    v.count != null && v.expected != null
+      ? ` (${v.count}/${v.expected})`
+      : v.path
+        ? ` (${v.path})`
+        : v.primary
+          ? ` (${v.primary}/${v.secondary})`
+          : '';
+  console.log(`${tag} ${k}${extra}`);
 }
 console.log(`\n${ok ? 'PASS' : 'FAIL'} — PayOps substrate readiness`);
 if (WRITE) console.log(`witness: ${OUT}`);

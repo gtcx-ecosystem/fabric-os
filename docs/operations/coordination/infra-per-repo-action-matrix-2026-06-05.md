@@ -137,15 +137,17 @@ Full list: register §7 in gtcx-docs.
 
 > **SoR:** `pm/payops-substrate-contract.json` · **Ops lane:** PayOps (execution) · **Owner:** fabric-os WAF + EKS ingress
 
-| Repo          | Path                      | Provider    | Substrate consumer | WAF                |
-| ------------- | ------------------------- | ----------- | ------------------ | ------------------ |
-| terminal-os   | `/api/stripe/webhook`     | Stripe      | yes (ESO live)     | fabric-eks-ingress |
-| compliance-os | `/billing/stripe/webhook` | Stripe      | yes (ESO manifest) | fabric-eks-ingress |
-| sensei-os     | `/stripe-webhook`         | Stripe      | yes (ESO manifest) | fabric-eks-ingress |
-| nyota-ai      | `/webhooks/stripe`        | Stripe      | yes (ESO manifest) | fabric-eks-ingress |
-| griot-ai      | `/webhooks/flutterwave`   | Flutterwave | pending migrate    | fabric-eks-ingress |
+> **SoR:** `pm/payops-substrate-contract.json` · **Priority:** Flutterwave **primary** · Stripe **secondary**
 
-**SM paths:** `gtcx/shared/{staging,production}/payops/{stripe,flutterwave}` — see PayOps substrate contract.
+| Repo          | Primary path (Flutterwave)     | Secondary path (Stripe)   | Substrate | WAF                |
+| ------------- | ------------------------------ | ------------------------- | --------- | ------------------ |
+| terminal-os   | `/webhooks/flutterwave`        | `/api/stripe/webhook`     | yes       | fabric-eks-ingress |
+| compliance-os | `/billing/flutterwave/webhook` | `/billing/stripe/webhook` | yes       | fabric-eks-ingress |
+| sensei-os     | `/flutterwave-webhook`         | `/stripe-webhook`         | yes       | fabric-eks-ingress |
+| nyota-ai      | `/webhooks/flutterwave`        | `/webhooks/stripe`        | yes       | fabric-eks-ingress |
+| griot-ai      | `/webhooks/flutterwave`        | `/webhooks/stripe`        | yes       | fabric-eks-ingress |
+
+**SM paths:** `gtcx/shared/{staging,production}/payops/{flutterwave,stripe}` — Flutterwave populated first.
 
 ---
 

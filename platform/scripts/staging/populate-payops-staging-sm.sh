@@ -34,7 +34,18 @@ put_secret() {
   fi
 }
 
-# Placeholders when env unset — replace before --apply in staging.
+# Primary rail first (Flutterwave), then secondary (Stripe).
+FLUTTERWAVE_JSON="$(jq -nc \
+  --arg sk "${FLUTTERWAVE_SECRET_KEY:-FLWSECK_TEST_REPLACE_ME}" \
+  --arg pk "${FLUTTERWAVE_PUBLIC_KEY:-FLWPUBK_TEST_REPLACE_ME}" \
+  --arg hash "${FLUTTERWAVE_WEBHOOK_HASH:-${FLUTTERWAVE_SECRET_HASH:-REPLACE_ME}}" \
+  '{
+    FLUTTERWAVE_SECRET_KEY: $sk,
+    FLUTTERWAVE_PUBLIC_KEY: $pk,
+    FLUTTERWAVE_WEBHOOK_HASH: $hash,
+    FLUTTERWAVE_SECRET_HASH: $hash
+  }')"
+
 STRIPE_JSON="$(jq -nc \
   --arg sk "${STRIPE_SECRET_KEY:-sk_test_REPLACE_ME}" \
   --arg wh "${STRIPE_WEBHOOK_SECRET:-whsec_REPLACE_ME}" \
@@ -42,25 +53,17 @@ STRIPE_JSON="$(jq -nc \
   '{
     STRIPE_SECRET_KEY: $sk,
     STRIPE_WEBHOOK_SECRET: $wh,
-    STRIPE_PUBLISHABLE_KEY: $pk
+    STRIPE_PUBLISHABLE_KEY: $pk,
+    PAYOPS_PRIMARY_PROVIDER: "flutterwave",
+    PAYOPS_SECONDARY_PROVIDER: "stripe"
   }')"
 
-FLUTTERWAVE_JSON="$(jq -nc \
-  --arg sk "${FLUTTERWAVE_SECRET_KEY:-FLWSECK_TEST_REPLACE_ME}" \
-  --arg pk "${FLUTTERWAVE_PUBLIC_KEY:-FLWPUBK_TEST_REPLACE_ME}" \
-  --arg hash "${FLUTTERWAVE_WEBHOOK_HASH:-REPLACE_ME}" \
-  '{
-    FLUTTERWAVE_SECRET_KEY: $sk,
-    FLUTTERWAVE_PUBLIC_KEY: $pk,
-    FLUTTERWAVE_WEBHOOK_HASH: $hash
-  }')"
-
-put_secret "${STRIPE_SECRET_ID}" "${STRIPE_JSON}"
 put_secret "${FLUTTERWAVE_SECRET_ID}" "${FLUTTERWAVE_JSON}"
+put_secret "${STRIPE_SECRET_ID}" "${STRIPE_JSON}"
 
-echo "==> PayOps staging SM paths:"
-echo "    ${STRIPE_SECRET_ID}"
-echo "    ${FLUTTERWAVE_SECRET_ID}"
+echo "==> PayOps staging SM paths (primary → secondary):"
+echo "    ${FLUTTERWAVE_SECRET_ID}  [primary]"
+echo "    ${STRIPE_SECRET_ID}  [secondary]"
 if [[ "${DRY_RUN}" -eq 1 ]]; then
   echo "==> Re-run with --apply after exporting real provider keys (Class A)."
 fi

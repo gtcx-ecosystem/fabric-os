@@ -65,11 +65,19 @@ function main() {
   if (existsSync(SUBSTRATE)) {
     const sub = JSON.parse(readFileSync(SUBSTRATE, 'utf8'));
     webhookCount = sub.webhookIngress?.length ?? 0;
-    gates.webhookMatrix = { ok: webhookCount >= 4, count: webhookCount };
+    gates.providerPriority = {
+      ok:
+        sub.providerPriority?.primary === 'flutterwave' &&
+        sub.providerPriority?.secondary === 'stripe',
+      primary: sub.providerPriority?.primary,
+      secondary: sub.providerPriority?.secondary,
+    };
+    gates.webhookMatrix = { ok: webhookCount >= 8, count: webhookCount };
     gates.smPaths = {
-      ok: Boolean(sub.secretsManager?.stripe?.staging && sub.secretsManager?.flutterwave?.staging),
+      ok: Boolean(sub.secretsManager?.flutterwave?.staging && sub.secretsManager?.stripe?.staging),
     };
   } else {
+    gates.providerPriority = { ok: false };
     gates.webhookMatrix = { ok: false, count: 0 };
     gates.smPaths = { ok: false };
   }
@@ -101,6 +109,7 @@ function main() {
     gates.substrateContract.ok &&
     gates.domainRegistry.ok &&
     gates.opsDoc.ok &&
+    gates.providerPriority.ok &&
     gates.webhookMatrix.ok &&
     gates.smPaths.ok &&
     gates.populateScript.ok &&

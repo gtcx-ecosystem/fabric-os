@@ -2,12 +2,19 @@
   "schema": "gtcx://fabric-os/payops-metering-rollup/v1",
   "updated": "2026-06-15",
   "opsLane": "PayOps",
-  "status": "scaffold",
-  "rollup": {
-    "stripeConsumers": ["terminal-os", "sensei-os", "compliance-os", "nyota-ai"],
-    "flutterwaveConsumers": ["griot-ai"],
-    "substrateTarget": "gtcx/shared/{env}/payops/{stripe,flutterwave}",
-    "migrationTicket": "XR-FABRIC-PAYOPS-001"
+  "providerPriority": {
+    "primary": "flutterwave",
+    "secondary": "stripe"
   },
-  "note": "Metering automation pending product-repo ESO cutover — witness scaffold for substrate contract"
+  "fleet": {
+    "flutterwaveConsumers": ["terminal-os", "sensei-os", "compliance-os", "nyota-ai", "griot-ai"],
+    "stripeConsumers": ["terminal-os", "sensei-os", "compliance-os", "nyota-ai", "griot-ai"],
+    "substrateTarget": "gtcx/shared/{env}/payops/{flutterwave,stripe}",
+    "routingEnv": {
+      "PAYOPS_PRIMARY_PROVIDER": "flutterwave",
+      "PAYOPS_SECONDARY_PROVIDER": "stripe"
+    }
+  },
+  "status": "substrate-wired",
+  "note": "Primary Flutterwave ESO fleet-wide; Stripe secondary for international/legacy checkout."
 }

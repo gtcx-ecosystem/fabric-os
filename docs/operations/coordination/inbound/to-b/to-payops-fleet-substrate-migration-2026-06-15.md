@@ -17,33 +17,34 @@ initiative: INIT-GTCX-SERVICE-FABRIC
 
 ## Raise
 
-fabric-os is consolidating **Stripe** and **Flutterwave** provider custody onto shared PayOps SM paths. Product repos must consume keys via **ESO** from fabric substrate — not repo-local secrets.
+fabric-os is consolidating billing provider custody onto shared PayOps SM paths with **Flutterwave primary** and **Stripe secondary**. Product repos consume keys via **ESO** — not repo-local secrets.
 
 | Field       | Value                                                    |
 | ----------- | -------------------------------------------------------- |
 | Friction    | `PAY-FLEET-01`, `PAY-FLEET-02`                           |
 | Contract    | `fabric-os/pm/payops-substrate-contract.json`            |
+| Priority    | **Flutterwave primary** · **Stripe secondary**           |
 | SM populate | `platform/scripts/staging/populate-payops-staging-sm.sh` |
 | Harness     | `pnpm payops:substrate:readiness:write`                  |
 
 ## Shared SM paths (staging)
 
-| Provider    | Path                                     |
-| ----------- | ---------------------------------------- |
-| Stripe      | `gtcx/shared/staging/payops/stripe`      |
-| Flutterwave | `gtcx/shared/staging/payops/flutterwave` |
+| Rail        | Provider    | Path                                     |
+| ----------- | ----------- | ---------------------------------------- |
+| **Primary** | Flutterwave | `gtcx/shared/staging/payops/flutterwave` |
+| Secondary   | Stripe      | `gtcx/shared/staging/payops/stripe`      |
 
-**Legacy migrate:** `gtcx/terminal-os/staging/api-keys` → shared stripe path (terminal-os first consumer).
+**Env routing:** `PAYOPS_PRIMARY_PROVIDER=flutterwave` · `PAYOPS_SECONDARY_PROVIDER=stripe`
 
 ## Per-repo actions (owner repo — Class R)
 
-| Repo              | Provider    | Webhook path              | `substrateConsumer` | Action                                                |
-| ----------------- | ----------- | ------------------------- | ------------------- | ----------------------------------------------------- |
-| **terminal-os**   | stripe      | `/api/stripe/webhook`     | `true`              | Wire ESO to shared path; deprecate legacy SM          |
-| **sensei-os**     | stripe      | `/stripe-webhook`         | pending → **true**  | ESO + remove local stripe service keys                |
-| **compliance-os** | stripe      | `/billing/stripe/webhook` | pending → **true**  | ESO from shared path in caas billing                  |
-| **nyota-ai**      | stripe      | `/webhooks/stripe`        | pending → **true**  | Migrate `services/stripe_billing.py` to substrate env |
-| **griot-ai**      | flutterwave | `/webhooks/flutterwave`   | pending → **true**  | ESO + billing route uses shared flutterwave SM        |
+| Repo              | Primary (Flutterwave)    | Secondary (Stripe)        | Action                                       |
+| ----------------- | ------------------------ | ------------------------- | -------------------------------------------- |
+| **terminal-os**   | `/webhooks/flutterwave`  | `/api/stripe/webhook`     | ESO both rails; checkout prefers Flutterwave |
+| **sensei-os**     | `/flutterwave-webhook`   | `/stripe-webhook`         | ESO both rails                               |
+| **compliance-os** | `/billing/flutterwave/…` | `/billing/stripe/webhook` | caas envFrom primary then secondary          |
+| **nyota-ai**      | `/webhooks/flutterwave`  | `/webhooks/stripe`        | Migrate billing service to substrate env     |
+| **griot-ai**      | `/webhooks/flutterwave`  | `/webhooks/stripe`        | ESO wired — use `FLUTTERWAVE_SECRET_HASH`    |
 
 ## fabric-os done (this handoff)
 

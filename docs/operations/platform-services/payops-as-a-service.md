@@ -21,10 +21,14 @@ initiative: INIT-GTCX-SERVICE-FABRIC
 
 ## Substrate contract (SM + webhooks)
 
-| Provider        | Staging SM path                          | Production SM path                          |
-| --------------- | ---------------------------------------- | ------------------------------------------- |
-| **Stripe**      | `gtcx/shared/staging/payops/stripe`      | `gtcx/shared/production/payops/stripe`      |
-| **Flutterwave** | `gtcx/shared/staging/payops/flutterwave` | `gtcx/shared/production/payops/flutterwave` |
+**Provider priority:** **Flutterwave primary** · **Stripe secondary** — see `pm/payops-substrate-contract.json#providerPriority`.
+
+| Rail          | Provider        | Staging SM path                          | Production SM path                          |
+| ------------- | --------------- | ---------------------------------------- | ------------------------------------------- |
+| **Primary**   | **Flutterwave** | `gtcx/shared/staging/payops/flutterwave` | `gtcx/shared/production/payops/flutterwave` |
+| **Secondary** | **Stripe**      | `gtcx/shared/staging/payops/stripe`      | `gtcx/shared/production/payops/stripe`      |
+
+Pods receive `PAYOPS_PRIMARY_PROVIDER=flutterwave` and `PAYOPS_SECONDARY_PROVIDER=stripe` via deployment env or SM bundle.
 
 **Legacy migrate:** `gtcx/terminal-os/{staging,production}/api-keys` → shared payops paths.
 

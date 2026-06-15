@@ -31,7 +31,7 @@ protocol: P41-DEVOPS-AS-A-SERVICE
 
 1. EKS namespace + IRSA (`terminal-os-aws-secrets` SecretStore)
 2. ExternalSecret mirror for `COMPLIANCE_OS_TERMINAL_API_KEY` from AWS SM
-3. **PayOps** — `terminal-os-payops-stripe` ExternalSecret from `gtcx/shared/staging/payops/stripe` (XR-FABRIC-PAYOPS-001)
+3. **PayOps** — `terminal-os-payops-flutterwave` (primary) + `terminal-os-payops-stripe` (secondary) from shared SM paths
 4. ALB ingress `terminal-staging.gtcx.trade`
 5. ECR image `gtcx-terminal-os:latest`
 

@@ -1,34 +1,69 @@
 {
   "$schema": "gtcx://fabric-os/payops-substrate-contract/v1",
-  "version": "1.0.0",
-  "updated": "2026-06-14",
+  "version": "1.1.0",
+  "updated": "2026-06-15",
   "opsLane": "PayOps",
   "owner": "fabric-os",
   "initiative": "INIT-GTCX-SERVICE-FABRIC",
   "principle": "Shared billing provider custody on fabric — product repos consume via ESO; RevOps never holds keys.",
   "status": "migration-in-progress",
+  "providerPriority": {
+    "primary": "flutterwave",
+    "secondary": "stripe",
+    "env": {
+      "PAYOPS_PRIMARY_PROVIDER": "flutterwave",
+      "PAYOPS_SECONDARY_PROVIDER": "stripe"
+    },
+    "note": "Global South default rail — Flutterwave checkout/M-Pesa/card; Stripe fallback for international cards and legacy flows."
+  },
   "secretsManager": {
+    "flutterwave": {
+      "rail": "primary",
+      "staging": "gtcx/shared/staging/payops/flutterwave",
+      "production": "gtcx/shared/production/payops/flutterwave",
+      "keys": [
+        "FLUTTERWAVE_SECRET_KEY",
+        "FLUTTERWAVE_PUBLIC_KEY",
+        "FLUTTERWAVE_WEBHOOK_HASH",
+        "FLUTTERWAVE_SECRET_HASH"
+      ]
+    },
     "stripe": {
+      "rail": "secondary",
       "staging": "gtcx/shared/staging/payops/stripe",
       "production": "gtcx/shared/production/payops/stripe",
       "keys": ["STRIPE_SECRET_KEY", "STRIPE_WEBHOOK_SECRET", "STRIPE_PUBLISHABLE_KEY"]
     },
-    "flutterwave": {
-      "staging": "gtcx/shared/staging/payops/flutterwave",
-      "production": "gtcx/shared/production/payops/flutterwave",
-      "keys": ["FLUTTERWAVE_SECRET_KEY", "FLUTTERWAVE_PUBLIC_KEY", "FLUTTERWAVE_WEBHOOK_HASH"]
-    },
     "legacyTerminalPath": {
       "staging": "gtcx/terminal-os/staging/api-keys",
       "production": "gtcx/terminal-os/production/api-keys",
-      "note": "Migrate to shared payops paths — terminal remains first substrate consumer"
+      "note": "Migrate to shared payops paths — deprecate repo-local billing keys"
     }
   },
   "webhookIngress": [
     {
       "repo": "terminal-os",
+      "path": "/webhooks/flutterwave",
+      "provider": "flutterwave",
+      "rail": "primary",
+      "layer": "domain",
+      "substrateConsumer": true,
+      "waf": "fabric-eks-ingress"
+    },
+    {
+      "repo": "terminal-os",
       "path": "/api/stripe/webhook",
       "provider": "stripe",
+      "rail": "secondary",
+      "layer": "domain",
+      "substrateConsumer": true,
+      "waf": "fabric-eks-ingress"
+    },
+    {
+      "repo": "sensei-os",
+      "path": "/flutterwave-webhook",
+      "provider": "flutterwave",
+      "rail": "primary",
       "layer": "domain",
       "substrateConsumer": true,
       "waf": "fabric-eks-ingress"
@@ -37,6 +72,16 @@
       "repo": "sensei-os",
       "path": "/stripe-webhook",
       "provider": "stripe",
+      "rail": "secondary",
+      "layer": "domain",
+      "substrateConsumer": true,
+      "waf": "fabric-eks-ingress"
+    },
+    {
+      "repo": "compliance-os",
+      "path": "/billing/flutterwave/webhook",
+      "provider": "flutterwave",
+      "rail": "primary",
       "layer": "domain",
       "substrateConsumer": true,
       "waf": "fabric-eks-ingress"
@@ -45,6 +90,16 @@
       "repo": "compliance-os",
       "path": "/billing/stripe/webhook",
       "provider": "stripe",
+      "rail": "secondary",
+      "layer": "domain",
+      "substrateConsumer": true,
+      "waf": "fabric-eks-ingress"
+    },
+    {
+      "repo": "nyota-ai",
+      "path": "/webhooks/flutterwave",
+      "provider": "flutterwave",
+      "rail": "primary",
       "layer": "domain",
       "substrateConsumer": true,
       "waf": "fabric-eks-ingress"
@@ -53,6 +108,7 @@
       "repo": "nyota-ai",
       "path": "/webhooks/stripe",
       "provider": "stripe",
+      "rail": "secondary",
       "layer": "domain",
       "substrateConsumer": true,
       "waf": "fabric-eks-ingress"
@@ -61,6 +117,16 @@
       "repo": "griot-ai",
       "path": "/webhooks/flutterwave",
       "provider": "flutterwave",
+      "rail": "primary",
+      "layer": "domain",
+      "substrateConsumer": true,
+      "waf": "fabric-eks-ingress"
+    },
+    {
+      "repo": "griot-ai",
+      "path": "/webhooks/stripe",
+      "provider": "stripe",
+      "rail": "secondary",
       "layer": "domain",
       "substrateConsumer": "pending",
       "waf": "fabric-eks-ingress"

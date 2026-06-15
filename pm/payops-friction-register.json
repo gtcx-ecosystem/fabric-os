@@ -25,15 +25,17 @@
     {
       "id": "PAY-FLEET-02",
       "priority": "P0",
-      "status": "open",
-      "title": "Flutterwave + Stripe dual SaaS rails unregistered in fabric substrate",
+      "status": "done",
+      "title": "Flutterwave primary + Stripe secondary fleet substrate",
       "blocksIR": false,
       "class": "R",
       "finding": "REV-FLEET-02",
       "handoff": "XR-FABRIC-PAYOPS-001",
-      "repos": ["griot-ai"],
-      "fabricMilestone": "shared flutterwave SM path + handoff 2026-06-15",
-      "acceptance": "griot-ai ESO on gtcx/shared/*/payops/flutterwave"
+      "repos": ["griot-ai", "terminal-os", "sensei-os", "compliance-os", "nyota-ai"],
+      "fabricMilestone": "Flutterwave primary ESO all fleet repos + griot overlay 2026-06-15",
+      "witness": "audit/evidence/payops-substrate-readiness-latest.json",
+      "closedAt": "2026-06-15",
+      "acceptance": "providerPriority primary=flutterwave; primaryFlutterwaveEso 5/5"
     },
     {
       "id": "PAY-SUB-03",

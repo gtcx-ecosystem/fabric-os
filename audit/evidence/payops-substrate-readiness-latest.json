@@ -1,10 +1,19 @@
 {
   "schema": "gtcx://fabric-os/payops-substrate-readiness/v1",
-  "checkedAt": "2026-06-15T19:30:16.885Z",
+  "checkedAt": "2026-06-15T19:33:57.696Z",
   "opsLane": "PayOps",
+  "providerPriority": {
+    "primary": "flutterwave",
+    "secondary": "stripe"
+  },
   "gates": {
     "substrateContract": {
       "ok": true
+    },
+    "providerPriority": {
+      "ok": true,
+      "primary": "flutterwave",
+      "secondary": "stripe"
     },
     "populateScript": {
       "ok": true
@@ -15,28 +24,41 @@
     "meteringWitness": {
       "ok": true
     },
-    "esoConsumerManifests": {
+    "primaryFlutterwaveEso": {
       "ok": true,
-      "count": 4,
-      "expected": 4,
+      "count": 5,
+      "expected": 5,
+      "paths": [
+        "deploy/kubernetes/overlays/staging/terminal-os/external-secret-payops-flutterwave.yaml",
+        "deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml",
+        "deploy/kubernetes/overlays/staging/sensei-os/external-secret-payops-flutterwave.yaml",
+        "deploy/kubernetes/overlays/staging/nyota-ai/external-secret-payops-flutterwave.yaml",
+        "deploy/kubernetes/overlays/staging/griot-ai/external-secrets-payops.yaml"
+      ]
+    },
+    "secondaryStripeEso": {
+      "ok": true,
+      "count": 5,
+      "expected": 5,
       "paths": [
         "deploy/kubernetes/overlays/staging/terminal-os/external-secret-payops-stripe.yaml",
         "deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml",
         "deploy/kubernetes/overlays/staging/sensei-os/external-secret-payops-stripe.yaml",
-        "deploy/kubernetes/overlays/staging/nyota-ai/external-secret-payops-stripe.yaml"
+        "deploy/kubernetes/overlays/staging/nyota-ai/external-secret-payops-stripe.yaml",
+        "deploy/kubernetes/overlays/staging/griot-ai/external-secrets-payops.yaml"
       ]
-    },
-    "smStripeStaging": {
-      "ok": false,
-      "path": "gtcx/shared/staging/payops/stripe",
-      "advisory": true
     },
     "smFlutterwaveStaging": {
       "ok": false,
       "path": "gtcx/shared/staging/payops/flutterwave",
       "advisory": true
+    },
+    "smStripeStaging": {
+      "ok": false,
+      "path": "gtcx/shared/staging/payops/stripe",
+      "advisory": true
     }
   },
   "ok": true,
-  "note": "SM existence advisory until Class A key populate — structural readiness passes without AWS"
+  "note": "Flutterwave primary + Stripe secondary — SM existence advisory until Class A populate"
 }

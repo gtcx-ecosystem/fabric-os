@@ -528,7 +528,13 @@
       "to": "audit/archive/2026-06-15/audit/ecosystem-revops-commops-forensic-2026-06-14.md",
       "reason": "stale-dated-active-tree",
       "at": "2026-06-15T11:04:47.531Z"
+    },
+    {
+      "from": "audit/evidence/roadmap-execute-witness-2026-06-12.json",
+      "to": "audit/archive/2026-06-15/audit/evidence/roadmap-execute-witness-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-15T11:12:20.721Z"
     }
   ],
-  "updated": "2026-06-15T11:04:47.531Z"
+  "updated": "2026-06-15T11:12:20.721Z"
 }

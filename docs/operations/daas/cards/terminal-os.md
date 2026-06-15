@@ -1,11 +1,15 @@
 ---
-title: DaaS card — terminal-os
+title: 'DaaS card — terminal-os'
 status: delivered
 date: 2026-06-10
+owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 laneId: L2
 deployProduct: product-hosted
 friction: F1
-owner: fabric-os
 productOwner: terminal-os
 protocol: P41-DEVOPS-AS-A-SERVICE
 ---

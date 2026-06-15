@@ -2,9 +2,13 @@
 title: 'Partial witness — terraos staging ESO + web pod (INF-TERRA)'
 status: current
 date: 2026-06-10
+owner: terra-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: terra-os
-owner: terra-os
 ---
 
 # Partial closure witness — terraos staging

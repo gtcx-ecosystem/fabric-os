@@ -3,6 +3,10 @@ title: 'Handoff — Trade ecosystem lanes → bridge-os registry sync'
 status: done
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: bridge-os
 ticket: XR-BRIDGE-LANES-REGISTRY-001

@@ -3,6 +3,10 @@ title: 'Outbound — ER-1-08 infra ack for protocols ecosystem log'
 status: ready
 date: 2026-06-04
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation', 'protocol']
+review_cycle: on-change
+document_type: runbook
 target: gtcx-protocols
 ---
 

@@ -3,6 +3,10 @@ title: 'PROG-DIGITAL-RAIL-WAVE-0 — cross-repo execution plan'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 canonical_repo: fabric-os
 program: PROG-DIGITAL-RAIL-WAVE-0
 ticket: XR-FABRIC-RAIL-003

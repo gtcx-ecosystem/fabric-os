@@ -2,8 +2,12 @@
 title: 'Witness — Hub #17 staging blockers (infra reply to compliance-os)'
 status: ready-for-operator
 date: 2026-06-05
-eso_fix: 2026-06-05
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
+eso_fix: 2026-06-05
 to: compliance-os
 from: fabric-os
 priority: P1

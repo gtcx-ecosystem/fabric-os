@@ -1,11 +1,15 @@
 ---
-title: DaaS card — compliance-os
+title: 'DaaS card — compliance-os'
 status: done
 date: 2026-06-10
+owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 laneId: L3
 deployProduct: product-hosted
 friction: F2
-owner: fabric-os
 productOwner: compliance-os
 protocol: P41-DEVOPS-AS-A-SERVICE
 ---

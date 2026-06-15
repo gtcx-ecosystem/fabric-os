@@ -3,10 +3,13 @@ title: 'Session forensic — fabric-os workspace open-items (2026-06-15)'
 status: current
 date: 2026-06-15
 owner: fabric-os
+tier: operating
+tags: [[forensic, session-open-items, secas, honest-done]]
+review_cycle: on-change
+document_type: runbook
 session: ccb1a1fa-bcc5-4e96-99ab-fda1f7cf5fbc
 ticket: XR-FABRIC-SESSION-OPEN-005
 protocol: P24
-tags: [forensic, session-open-items, secas, honest-done]
 ---
 
 # Session forensic — fabric-os · 2026-06-15

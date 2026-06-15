@@ -3,6 +3,10 @@ title: 'Outbound — Session open-items forensic raise (fabric-os → bridge-os)
 status: open
 date: 2026-06-14
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: bridge-os
 ticket: XR-FABRIC-SESSION-OPEN-004

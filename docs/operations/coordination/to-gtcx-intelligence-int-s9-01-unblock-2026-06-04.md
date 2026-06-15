@@ -3,6 +3,10 @@ title: 'Outbound — INT-S9-01 staging smoke unblocked'
 status: sent
 date: 2026-06-04
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 target: gtcx-intelligence
 ---
 

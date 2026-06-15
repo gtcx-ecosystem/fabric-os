@@ -3,7 +3,10 @@ title: 'XR-201 runbook — intelligence-staging auth gate'
 status: current
 date: 2026-06-03
 owner: fabric-os
-xr-id: XR-201
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # XR-201 runbook: intelligence-staging auth gate

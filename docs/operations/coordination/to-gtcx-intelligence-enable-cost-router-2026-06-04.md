@@ -3,6 +3,10 @@ title: 'Outbound — ENABLE_COST_ROUTER unblocks INT-S8-01'
 status: ready
 date: 2026-06-04
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: gtcx-intelligence
 work_id: INT-R2-03 / INT-S8-01 / ER-2

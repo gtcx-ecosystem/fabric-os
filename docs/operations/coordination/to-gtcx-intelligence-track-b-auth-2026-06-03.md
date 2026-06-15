@@ -2,10 +2,13 @@
 title: 'Outbound — gtcx-intelligence Track B auth gate (XR-201)'
 status: current
 date: 2026-06-03
+owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: gtcx-intelligence
-owner: fabric-os
-xr-id: XR-201
 ---
 
 # Outbound: gtcx-intelligence Track B auth gate

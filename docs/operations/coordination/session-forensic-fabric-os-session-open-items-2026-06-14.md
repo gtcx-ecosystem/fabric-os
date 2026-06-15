@@ -3,11 +3,13 @@ title: 'Session forensic — fabric-os workspace open-items + bridge raise'
 status: current
 date: 2026-06-14
 owner: fabric-os
+tier: controlled
+tags: [[forensic, session-open-items, closure-bar, bridge-raise, secas]]
+review_cycle: on-change
+document_type: runbook
 session: fabric-workspace-d0bfedab
 ticket: XR-FABRIC-SESSION-OPEN-004
 protocol: P24
-tier: controlled
-tags: [forensic, session-open-items, closure-bar, bridge-raise, secas]
 ---
 
 # Session forensic — fabric-os · 2026-06-14

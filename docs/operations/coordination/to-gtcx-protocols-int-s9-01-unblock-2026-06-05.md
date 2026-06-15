@@ -3,6 +3,10 @@ title: 'Infra handoff — INT-S9-01 unblock'
 status: in_progress
 date: 2026-06-05
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation', 'protocol']
+review_cycle: on-change
+document_type: runbook
 work_id: INT-S9-01
 ---
 

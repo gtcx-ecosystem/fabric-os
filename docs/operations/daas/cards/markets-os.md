@@ -1,11 +1,15 @@
 ---
-title: DaaS card — markets-os (pilot reference)
+title: 'DaaS card — markets-os (pilot reference)'
 status: delivered
 date: 2026-06-10
+owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 laneId: L4b
 deployProduct: GTCX Cloud
 friction: XR-MKT-011
-owner: fabric-os
 productOwner: markets-os
 protocol: P40 + P41
 ---

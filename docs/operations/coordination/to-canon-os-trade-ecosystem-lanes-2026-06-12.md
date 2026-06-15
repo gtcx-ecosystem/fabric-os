@@ -3,6 +3,10 @@ title: 'Handoff — Trade ecosystem lanes → canon-os ratification'
 status: open
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: canon-os
 ticket: XR-CANON-TRADE-LANES-001

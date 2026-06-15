@@ -3,6 +3,10 @@ title: 'Session transcript excerpts — home workspace session open-items raise'
 status: reference
 date: 2026-06-13
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 source_transcript: 35ccef1b-c866-463c-9b4e-0d81b44b01ad
 ticket: XR-FABRIC-SESSION-OPEN-003
 forensic_pack: docs/operations/coordination/session-forensic-fabric-os-session-open-items-2026-06-13.md

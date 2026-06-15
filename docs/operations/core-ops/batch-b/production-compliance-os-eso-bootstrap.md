@@ -15,7 +15,7 @@ approval_ticket: GTCX-XXX
 
 Hub **#17** prod close at `https://compliance.gtcx.trade`. Staging Phase A is **complete**; this runbook delivers Phase B (Class A).
 
-**Raise:** [`hub-17-prod-w2-close-raise-2026-06-08.md`](coordination/outbound/hub-17-prod-w2-close-raise-2026-06-08.md)  
+**Raise:** [`hub-17-prod-w2-close-raise-2026-06-08.md`](../../coordination/outbound/hub-17-prod-w2-close-raise-2026-06-08.md)  
 **Spec:** compliance-os [`to-fabric-os-w2-secrets-inbound-2026-06-04.md`](https://github.com/gtcx-ecosystem/compliance-os/blob/main/01-docs/04-ops/coordination/to-fabric-os-w2-secrets-inbound-2026-06-04.md)
 
 ## Prerequisites

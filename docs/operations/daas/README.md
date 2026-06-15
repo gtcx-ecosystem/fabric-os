@@ -9,7 +9,7 @@ opsLanes: [DevOps, InfraOps]
 
 # DevOps & InfraOps per-repo cards
 
-> **Functional product:** DaaS · **Registry:** [ops-programs.md](../ops-programs.md)
+> **Functional product:** DaaS · **Registry:** [ops-programs.md](../core-ops/batch-a/ops-programs.md)
 
 Machine-indexed operational cards for fabric-os primary roadmap (DAAS-S2+).
 

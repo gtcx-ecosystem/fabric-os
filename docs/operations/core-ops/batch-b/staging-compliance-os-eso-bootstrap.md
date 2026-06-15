@@ -44,7 +44,7 @@ terraform apply -var-file=terraform.tfvars \
 
 Requires `gh auth` (read) for GHCR token. App bundles use staging placeholders until compliance-os supplies real values.
 
-See also [`to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md`](coordination/to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md).
+See also [`to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md`](../../coordination/inbound/to-b/to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md).
 
 ## 2b. Publish `compliance-web` image (amd64)
 

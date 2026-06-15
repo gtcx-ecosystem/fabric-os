@@ -39,4 +39,4 @@ cat pm/revops-friction-register.json
 pnpm ecosystem:fabric:check   # from bridge-os cwd sibling
 ```
 
-**CORE module:** [core.md](./core.md#revops)
+**CORE module:** [core.md](../core-ops/batch-a/core.md#revops)

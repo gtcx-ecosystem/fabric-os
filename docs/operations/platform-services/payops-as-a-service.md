@@ -28,7 +28,7 @@ initiative: INIT-GTCX-SERVICE-FABRIC
 
 **Legacy migrate:** `gtcx/terminal-os/{staging,production}/api-keys` → shared payops paths.
 
-Webhook ingress matrix lives in `pm/payops-substrate-contract.json#webhookIngress` and [`infra-per-repo-action-matrix`](./coordination/infra-per-repo-action-matrix-2026-06-05.md#payops-webhook-ingress-matrix).
+Webhook ingress matrix lives in `pm/payops-substrate-contract.json#webhookIngress` and [`infra-per-repo-action-matrix`](../coordination/infra-per-repo-action-matrix-2026-06-05.md#payops-webhook-ingress-matrix).
 
 **Open P0:** `PAY-FLEET-01` / `PAY-FLEET-02` — consolidate live Stripe/Flutterwave consumers onto substrate (structural contract done; execution pending).
 
@@ -50,4 +50,4 @@ pnpm payops:providers:check:write
 cat pm/payops-friction-register.json
 ```
 
-**CORE module:** [core.md](./core.md#payops)
+**CORE module:** [core.md](../core-ops/batch-a/core.md#payops)

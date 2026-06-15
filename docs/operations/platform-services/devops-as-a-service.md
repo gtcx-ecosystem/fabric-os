@@ -16,7 +16,7 @@ opsLanes: [DevOps, InfraOps]
 
 > **Ops vocabulary:** **DevOps** (deploy choreography, fleet health) + **InfraOps** (Terraform, EKS, cloud substrate).  
 > **Functional product ID:** **DaaS** — stable in protocols, `pnpm daas:*`, and `DAAS-S*` stories.  
-> **Registry:** [ops-programs.md](./ops-programs.md) · `bridge-os/pm/spec/ops-programs-registry.json`
+> **Registry:** [ops-programs.md](../core-ops/batch-a/ops-programs.md) · `bridge-os/pm/spec/ops-programs-registry.json`
 
 **Normative:** `canon-os/.../41-devops-as-a-service/protocol.md`  
 **Machine spec:** `bridge-os/pm/spec/devops-as-a-service.json`  

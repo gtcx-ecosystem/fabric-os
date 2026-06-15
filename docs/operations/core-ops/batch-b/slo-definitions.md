@@ -128,5 +128,5 @@ Every series above is exposed at `/metrics` on every gateway + sidecar pod. No v
 - ADR-017 — Adaptive policy tuning (latency p95 < 5000ms drives the auto-degrade behavior)
 - [`audit/archive/legacy-docs-audit/repo-overlay.md`](../../audit/archive/legacy-docs-audit/repo-overlay.md) — repo-specific stricter caps
 - [`audit/archive/legacy-docs-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) Phase 5 — production readiness assessment
-- [`01-docs/04-ops/runbooks/`](./runbooks/) — 25 operational runbooks covering each escalation path
+- [`docs/operations/runbooks/`](../../runbooks/README.md) — 25 operational runbooks covering each escalation path
 - Google SRE workbook on SLOs: https://sre.google/workbook/implementing-slos/

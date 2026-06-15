@@ -50,4 +50,4 @@ pnpm ecosystemops:network:check:write
 pnpm ecosystem:clarity:report:write   # from bridge-os — programmes + partner context
 ```
 
-**CORE module:** [core.md](./core.md#ecosystemops)
+**CORE module:** [core.md](../core-ops/batch-a/core.md#ecosystemops)

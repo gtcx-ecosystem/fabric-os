@@ -195,6 +195,6 @@ All inter-service calls must be instrumented with distributed traces.
 
 ## On-Call
 
-See [runbook-template.md](../../operations/runbooks/runbook-template.md) for on-call rotation and incident response procedures.
+See [runbook-template.md](../runbooks/incident/runbook-template.md) for on-call rotation and incident response procedures.
 
 **Monitoring tool access**: All engineers have read access. Write access (creating/editing dashboards, alert rules) requires [Platform / SRE] team approval.

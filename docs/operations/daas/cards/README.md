@@ -1,6 +1,6 @@
 # DevOps & InfraOps per-repo cards
 
-> **Ops lanes:** DevOps (delivery) + InfraOps (substrate) · **Functional product:** DaaS · **Registry:** [ops-programs.md](../../ops-programs.md)
+> **Ops lanes:** DevOps (delivery) + InfraOps (substrate) · **Functional product:** DaaS · **Registry:** [ops-programs.md](../../core-ops/batch-a/ops-programs.md)
 
 Per-repo action cards for staging fleet operators.
 

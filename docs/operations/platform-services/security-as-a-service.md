@@ -16,7 +16,7 @@ opsLane: SecOps
 
 > **Ops vocabulary:** **SecOps** — WAF, IRSA, pen-test, CSIRT, vuln cadence, security evidence.  
 > **Functional product ID:** **SECaaS** — stable in protocols, `pnpm secas:*`, and `SECAS-S*` stories.  
-> **Registry:** [ops-programs.md](./ops-programs.md) · `bridge-os/pm/spec/ops-programs-registry.json`
+> **Registry:** [ops-programs.md](../core-ops/batch-a/ops-programs.md) · `bridge-os/pm/spec/ops-programs-registry.json`
 
 **Normative:** `canon-os/.../42-security-as-a-service/protocol.md`  
 **Machine spec:** `bridge-os/pm/spec/security-as-a-service.json`  

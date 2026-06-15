@@ -14,4 +14,4 @@ redirect: ./core.md
 
 **ORE v1** was renamed to **CORE** — **C**entralized **O**ps **R**untime **E**ngine.
 
-**Canonical:** [core.md](./core.md)
+**Canonical:** [core.md](../batch-a/core.md)

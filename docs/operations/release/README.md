@@ -14,7 +14,7 @@ autonomy_level: 'sovereign'
 
 # Release Governance
 
-Release-gate procedures and supporting policies. The actual release runbook is at [`../runbooks/release.md`](../runbooks/release.md); this folder holds the policy-level documents the runbook references.
+Release-gate procedures and supporting policies. The actual release runbook is at [`../runbooks/release.md`](../runbooks/sre/release.md); this folder holds the policy-level documents the runbook references.
 
 ## Contents
 
@@ -27,6 +27,6 @@ Release-gate procedures and supporting policies. The actual release runbook is a
 
 ## Related
 
-- [`../runbooks/release.md`](../runbooks/release.md) — release runbook
-- [`../runbooks/release-evidence.md`](../runbooks/release-evidence.md) — evidence-bundle collection
-- [`../../architecture/decisions/ADR-021-npm-publish-discipline.md`](../../architecture/decisions/ADR-021-npm-publish-discipline.md) — npm publish discipline
+- [`../runbooks/release.md`](../runbooks/sre/release.md) — release runbook
+- [`../runbooks/release-evidence.md`](../runbooks/sre/release-evidence.md) — evidence-bundle collection
+- [`../../architecture/decisions/ADR-021-npm-publish-discipline.md`](../../architecture/decisions/batch-b/ADR-021-npm-publish-discipline.md) — npm publish discipline

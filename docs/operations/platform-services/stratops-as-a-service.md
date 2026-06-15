@@ -77,4 +77,4 @@ pnpm ecosystem:clarity:report:write
 pnpm stratops:strategy:check:write
 ```
 
-**CORE module:** [core.md](./core.md#stratops) · **Innovation moat rollup:** [core.md](./core.md#innovation-moat)
+**CORE module:** [core.md](../core-ops/batch-a/core.md#stratops) · **Innovation moat rollup:** [core.md](../core-ops/batch-a/core.md#innovation-moat)

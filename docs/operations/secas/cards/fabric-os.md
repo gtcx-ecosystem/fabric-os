@@ -1,8 +1,12 @@
 ---
-title: SECaaS card — fabric-os self
+title: 'SECaaS card — fabric-os self'
 status: current
 date: 2026-06-14
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # SECaaS card — fabric-os self

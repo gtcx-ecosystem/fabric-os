@@ -3,6 +3,10 @@ title: 'Staging — Intelligence ESO bootstrap'
 status: current
 date: 2026-06-02
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # Staging — Intelligence ESO bootstrap

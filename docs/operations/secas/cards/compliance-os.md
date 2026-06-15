@@ -1,9 +1,13 @@
 ---
-title: SECaaS card — compliance-os
+title: 'SECaaS card — compliance-os'
 status: done
 date: 2026-06-10
-friction: SEC-IRSA-01
 owner: gtcx-infrastructure
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
+friction: SEC-IRSA-01
 ---
 
 # SECaaS card — compliance-os

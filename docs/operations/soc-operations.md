@@ -1,15 +1,16 @@
 ---
 title: 'Security Operations Center (SOC) Operations Plan'
-status: 'current'
-date: '2026-05-27'
-owner: 'ciso'
-role: 'ciso'
-tier: 'critical'
-tags: ['soc', 'security-operations', 'siem', 'monitoring', 'government-grade']
-review_cycle: 'quarterly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: ciso
+tier: critical
+tags: [['soc', 'security-operations', 'siem', 'monitoring', 'government-grade']]
+review_cycle: quarterly
+document_type: runbook
+role: ciso
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Security Operations Center (SOC) Operations Plan

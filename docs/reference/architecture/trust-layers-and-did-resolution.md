@@ -1,11 +1,12 @@
 ---
 title: 'Trust Layers and Authority DID Resolution (cross-repo)'
-status: 'current'
-date: '2026-06-01'
-owner: 'platform-lead'
-tier: 'critical'
-tags: ['architecture', 'csp', 'inf-49', 'staging']
-review_cycle: 'on-change'
+status: current
+date: 2026-06-01
+owner: platform-lead
+tier: critical
+tags: [['architecture', 'csp', 'inf-49', 'staging']]
+review_cycle: on-change
+document_type: protocol
 ---
 
 # Trust Layers and Authority DID Resolution

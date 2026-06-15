@@ -1,8 +1,12 @@
 ---
-title: StratOps — strategy and enterprise-building
+title: 'StratOps — strategy and enterprise-building'
 status: current
 date: 2026-06-14
 owner: bridge-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 initiative: INIT-GTCX-EXECUTION-ENGINE
 ---
 

@@ -2,6 +2,11 @@
 title: 'ADR-0007: Rename gtcx-infrastructure to fabric-os'
 status: accepted
 date: 2026-06-12
+owner: quality-evidence-lead
+tier: operating
+tags: ['protocol', 'documentation']
+review_cycle: on-change
+document_type: protocol
 ---
 
 # ADR-0007: Rename gtcx-infrastructure to fabric-os

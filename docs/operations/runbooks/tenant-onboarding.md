@@ -1,15 +1,16 @@
 ---
 title: 'Tenant Onboarding Runbook'
-status: 'current'
-date: '2026-05-27'
-owner: 'platform-engineering'
-review_cycle: 'monthly'
-tags: ['operations', 'tenancy', 'compliance-gateway']
-role: 'protocol-architect'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: platform-engineering
+tier: standard
+tags: [['operations', 'tenancy', 'compliance-gateway']]
+review_cycle: monthly
+document_type: onboarding
+role: protocol-architect
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
-tier: 'standard'
+autonomy_level: permissioned
 ---
 
 # Tenant Onboarding — Compliance Gateway

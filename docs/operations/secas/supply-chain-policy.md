@@ -1,8 +1,12 @@
 ---
-title: Fleet supply-chain CVE policy
+title: 'Fleet supply-chain CVE policy'
 status: current
 date: 2026-06-14
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 storyId: SECAS-S4-02
 frictionId: SEC-SUPPLY-01
 opsLane: SecOps

@@ -1,8 +1,12 @@
 ---
-title: Service fabric compass
+title: 'Service fabric compass'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 initiative: INIT-GTCX-COMPASS-FABRIC
 ---
 

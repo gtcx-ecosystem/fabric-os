@@ -1,8 +1,12 @@
 ---
-title: Layout v5 pointer — fabric-os
+title: 'Layout v5 pointer — fabric-os'
 status: current
 date: 2026-06-13
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # Layout v5 — local SoR pointer

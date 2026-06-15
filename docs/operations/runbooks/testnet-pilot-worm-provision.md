@@ -1,15 +1,16 @@
 ---
 title: 'Testnet-Pilot WORM Audit Bucket — Provision & Verify'
-status: 'current'
-date: '2026-05-27'
-owner: 'infrastructure-lead'
-role: 'sre'
-tier: 'critical'
-tags: ['worm', 'audit', 'testnet-pilot', 'terraform', 's3']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: infrastructure-lead
+tier: critical
+tags: [['worm', 'audit', 'testnet-pilot', 'terraform', 's3']]
+review_cycle: on-change
+document_type: runbook
+role: sre
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Testnet-Pilot WORM Audit Bucket — Provision & Verify

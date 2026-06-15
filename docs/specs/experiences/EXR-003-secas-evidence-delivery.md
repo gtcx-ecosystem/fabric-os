@@ -1,9 +1,13 @@
 ---
-exrId: EXR-003
-title: SECaaS evidence delivery
+title: 'SECaaS evidence delivery'
 status: p0
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['protocol', 'documentation']
+review_cycle: on-change
+document_type: protocol
+exrId: EXR-003
 jtbdId: JTBD-security-evidence-path
 flowId: flow-secas-pentest-evidence
 personaId: security-operator

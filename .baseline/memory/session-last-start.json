@@ -1,24 +1,25 @@
 {
-  "startedAt": "2026-06-15T05:29:19.629Z",
+  "startedAt": "2026-06-15T06:31:02.671Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-994650e7-ebab-4aaf-97ac-c0321e2dd3ac",
+    "id": "gtcx-agent-d17cb69f-53b4-4d6b-8be8-7e746d030bca",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-ade67c2a22c667cdf6c3f4731d2eaf66-d8af99e56113fe4b-01"
+    "traceparent": "00-fbf62311fb6303dd67194934157ebff3-1a9739861e649fa8-01"
   },
   "nextWork": {
-    "traceId": "16745aa0-298b-49d4-8a12-f9d35591b878",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=16745aa0-298b-49d4-8a12-f9d35591b878",
+    "traceId": "808606d1-ed6d-4bc6-8d99-264a701bd535",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=808606d1-ed6d-4bc6-8d99-264a701bd535",
     "ok": true,
     "backlogClear": false,
-    "frame": "development",
+    "frame": "regulatory-audit",
     "protocol": "22-agent-work-selection",
     "repo": "fabric-os",
     "message": "Human gates parallel — implement queue reconciled; see work register.",
     "agentInstructions": [
-      "Phase 4: adopt persona **platform-architect** (development) — read local `/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md` first (docUrl link-only); adopt voice: Systems-oriented, reliability-focused, cost-conscious",
+      "Persona read gate BLOCKED: persona switched (platform-architect → security-engineer). Run `pnpm persona:read-witness --write` after reading persona doc.",
+      "Phase 4: adopt persona **security-engineer** (regulatory-audit) — read local `/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md` first (docUrl link-only); adopt voice: Threat-aware, formal, zero casual delegation",
       "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
       "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
       "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
@@ -27,8 +28,15 @@
       "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
       "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle.",
       "Do not recycle LAUNCH-PLAN-01 — work register marks LAUNCH-PLAN-01/02/03 done.",
+      "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
+      "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
+      "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
+      "FORBIDDEN: ### Approval needed for SECAS-S2-01-INGEST / BG-10-10/11 on product repos — Parallel sovereign gates (fabric-os calendar witness only).",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
       "Product team: **Fabric OS** — primary persona `platform-engineer` — Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
       "Goal orientation: milestone `SECAS-S4-pentest-remediation` — shippable: secas:pentest:remediation:check PASS; findings mapped to owners",
@@ -39,7 +47,7 @@
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-15T05:29:19.495Z",
+      "provisionedAt": "2026-06-15T06:31:02.638Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -99,7 +107,7 @@
       ],
       "rule": "Use THIS repo agent:next-work next / nextWorkItem. Vendor assurance implement is fabric-os only.",
       "bg1010Owner": "fabric-os",
-      "bg1010AsNextWorkItemAllowed": false,
+      "bg1010AsNextWorkItemAllowed": true,
       "vendorAssuranceOwner": "fabric-os",
       "vendorAssuranceHeadStory": "SECAS-S2-01",
       "forbiddenSyntheticMilestones": [
@@ -141,6 +149,168 @@
       "approvalSection": "omit",
       "blocksIR": false,
       "statusUpdateRule": "fabric-os only: vendor calendar under ### Parallel sovereign gates — omit from product/engineering Status Updates"
+    },
+    "next": {
+      "storyId": "SECAS-S2-01",
+      "title": "fabric SECAS pen-test + vendor report ingest",
+      "status": "in_progress"
+    },
+    "automatableExhausted": true,
+    "parallelClassS": [
+      {
+        "gateId": "SECAS-S2-01-INGEST",
+        "blocker": "SECAS-S2-01-INGEST",
+        "authorityClass": "A",
+        "blocksIR": false,
+        "statusUpdateSection": "Parallel sovereign gates",
+        "ownerRepo": "fabric-os",
+        "doesNotBlock": "SECAS-S2-01",
+        "gateType": "external-calendar-custody",
+        "what": "Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path",
+        "why": "Agent cannot receive or ingest vendor security artifact before the execution window closes",
+        "implication": "No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands",
+        "who": "External pen-test vendor delivers report; fabric-os operator runs ingest ceremony",
+        "when": "Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21)",
+        "unblockAction": "Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21"
+      },
+      {
+        "gateId": "BG-10-10",
+        "blocker": "BG-10-10",
+        "authorityClass": "A",
+        "blocksIR": false,
+        "statusUpdateSection": "Parallel sovereign gates",
+        "ownerRepo": "fabric-os",
+        "doesNotBlock": "SECAS-S2-01",
+        "gateType": "external-vendor-execution",
+        "what": "Vendor executes live-stack pen test during contracted calendar window",
+        "why": "Agent cannot pull forward vendor execution or receive report before window",
+        "implication": "Witness prep and friction checks continue; ingest blocked until report delivery",
+        "who": "External pen-test vendor",
+        "when": "2026-06-17..2026-06-21",
+        "unblockAction": "Vendor report delivery; ingest post 2026-06-21"
+      },
+      {
+        "gateId": "BG-10-11",
+        "blocker": "BG-10-11",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "statusUpdateSection": "Parallel sovereign gates",
+        "ownerRepo": "fabric-os",
+        "doesNotBlock": "SECAS-S2-01",
+        "gateType": "external-auditor-artifact",
+        "what": "SOC 2 Type I opinion letter from auditor",
+        "why": "Agent cannot countersign or synthesize auditor attestation",
+        "implication": "Does not block pen-test window prep or fleet program office queue",
+        "who": "External auditor",
+        "when": "Parallel track — not on SECAS pen-test calendar",
+        "unblockAction": "Auditor opinion letter to compliance evidence path"
+      }
+    ],
+    "proceedBrief": {
+      "blockedUntil": "vendor report post 2026-06-21 · window 2026-06-17..2026-06-21",
+      "authorityClass": "R",
+      "phase": "awaiting_vendor_report",
+      "activePersona": "security-engineer",
+      "frame": "regulatory-audit",
+      "personaDocUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/institutional/personas/security-engineer.md",
+      "personaDocPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md",
+      "voice": "Threat-aware, formal, zero casual delegation",
+      "embodies": "CISO-delegated security lead",
+      "goalOrientationBrief": "## Goal orientation\n**North star:** Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability\n**Milestone:** SECAS-S4 — pen-test findings remediation track\n**Shippable:** secas:pentest:remediation:check PASS; findings mapped to owners\n**PRD refs:** prd-product-charter\n**Product team:** Fabric OS (`platform-engineer`)"
+    },
+    "communicationPolicy": {
+      "statusUpdateSections": [
+        "Execution mode",
+        "Done",
+        "Next work item",
+        "Parallel sovereign gates"
+      ],
+      "forbiddenStatusUpdateSections": [],
+      "forbiddenReplyPatterns": [
+        "Approval needed: SECAS-S2-01-INGEST",
+        "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
+        "EXT-INF-013 — ZWCMP",
+        "Approval needed: SECAS-S2-01-INGEST",
+        "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
+        "EXT-INF-013 — ZWCMP",
+        "Approval needed: SECAS-S2-01-INGEST",
+        "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
+        "EXT-INF-013 — ZWCMP"
+      ]
+    },
+    "gateExplainer": {
+      "schema": "gtcx://baseline-os/gate-explainer/v1",
+      "section": "Parallel sovereign gates",
+      "preamble": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.",
+      "operatorActionRequired": false,
+      "blocksIR": false,
+      "gates": [
+        {
+          "gateId": "SECAS-S2-01-INGEST",
+          "authorityClass": "A",
+          "gateType": "external-calendar-custody",
+          "blocksIR": false,
+          "doesNotBlock": "SECAS-S2-01",
+          "phase": "awaiting_vendor_report",
+          "what": "Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path",
+          "why": "Agent cannot receive or ingest vendor security artifact before the execution window closes",
+          "when": "Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21)",
+          "implication": "No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands",
+          "who": "External pen-test vendor delivers report; fabric-os operator runs ingest ceremony",
+          "unblockAction": "Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21",
+          "statusUpdateSection": "Parallel sovereign gates"
+        },
+        {
+          "gateId": "BG-10-10",
+          "authorityClass": "A",
+          "gateType": "external-vendor-execution",
+          "blocksIR": false,
+          "doesNotBlock": "SECAS-S2-01",
+          "what": "Vendor executes live-stack pen test during contracted calendar window",
+          "why": "Agent cannot pull forward vendor execution or receive report before window",
+          "when": "2026-06-17..2026-06-21",
+          "implication": "Witness prep and friction checks continue; ingest blocked until report delivery",
+          "who": "External pen-test vendor",
+          "unblockAction": "Vendor report delivery; ingest post 2026-06-21",
+          "statusUpdateSection": "Parallel sovereign gates"
+        },
+        {
+          "gateId": "BG-10-11",
+          "authorityClass": "S",
+          "gateType": "external-auditor-artifact",
+          "blocksIR": false,
+          "doesNotBlock": "SECAS-S2-01",
+          "what": "SOC 2 Type I opinion letter from auditor",
+          "why": "Agent cannot countersign or synthesize auditor attestation",
+          "when": "Parallel track — not on SECAS pen-test calendar",
+          "implication": "Does not block pen-test window prep or fleet program office queue",
+          "who": "External auditor",
+          "unblockAction": "Auditor opinion letter to compliance evidence path",
+          "statusUpdateSection": "Parallel sovereign gates"
+        }
+      ]
+    },
+    "statusUpdateClosure": {
+      "schema": "gtcx://fabric-os/secas-status-update-closure/v2",
+      "phase": "awaiting_vendor_report",
+      "sections": [
+        "Execution mode",
+        "Done",
+        "Next work item",
+        "Parallel sovereign gates"
+      ],
+      "forbiddenSections": [],
+      "forbiddenGateIds": [
+        "EXT-INF-013"
+      ],
+      "forbiddenPhrases": [
+        "Approval needed: SECAS-S2-01-INGEST",
+        "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
+        "omit in bridge/agile/canon"
+      ],
+      "parallelSovereignGatesMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS pen-test calendar · **Implication:** Does not block pen-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
+      "postLaunchExternalMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS pen-test calendar · **Implication:** Does not block pen-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
+      "rule": "Copy postLaunchExternalMarkdown under ### Parallel sovereign gates — FORBIDDEN on product/engineering roadmaps"
     },
     "proceedBriefGuard": {
       "nextMustComeFrom": "this repo P22 JSON (next / nextWorkItem)",
@@ -188,20 +358,20 @@
     },
     "persona": {
       "institutional": "platform-engineer",
-      "mcp": "builder",
+      "mcp": "security",
       "frame": "development",
       "docUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/institutional/personas/platform-engineer.md",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "bridgeUrl": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-persona-bridge-2026-06.md",
       "instruction": "Phase 4: read persona.docPath first (local canon-os); docUrl is human link-only — private repo blocks anonymous fetch.",
       "voice": {
-        "institutional": "platform-architect",
-        "frame": "development",
-        "role": "Principal Platform Architect",
-        "tone": "Systems-oriented, reliability-focused, cost-conscious",
-        "voice": "Architecture → trade-offs → decision → implementation plan → probe",
-        "embodies": "Platform lead accountable for fleet reliability",
-        "formality": "professional",
+        "institutional": "security-engineer",
+        "frame": "regulatory-audit",
+        "role": "Security Engineer",
+        "tone": "Threat-aware, formal, zero casual delegation",
+        "voice": "Risk → control → evidence → attestation path",
+        "embodies": "CISO-delegated security lead",
+        "formality": "formal",
         "forbidden": [
           "your move",
           "your turn",
@@ -234,7 +404,7 @@
           "we could implement",
           "say commit",
           "say push if you want",
-          "just run it locally"
+          "when you get a chance"
         ],
         "operatorGuidance": {
           "forbidden": [
@@ -253,17 +423,8 @@
             "good": "**Operator entry:** `http://localhost:3000/login` — credentials `demo@kt.com` / `demo123`. Primary path: `/ecosystem` → `/index54`. I will verify each surface in-session and report probe results before the next layer."
           }
         },
-        "sessionReminder": "Embody **Principal Platform Architect** — Platform lead accountable for fleet reliability.\nTone: Systems-oriented, reliability-focused, cost-conscious\nVoice pattern: Architecture → trade-offs → decision → implementation plan → probe\nForbidden: casual delegation (\"Your move\", \"tell me what you think\", engagement bait).\nDemo guidance example: **Operator entry:** `http://localhost:3000/login` — credentials `demo@kt.com` / `demo123`. Primary path: `/ecosystem` → `/index54`. I will verify each surface in-session and report probe results before the next layer."
+        "sessionReminder": "Embody **Security Engineer** — CISO-delegated security lead.\nTone: Threat-aware, formal, zero casual delegation\nVoice pattern: Risk → control → evidence → attestation path\nForbidden: casual delegation (\"Your move\", \"tell me what you think\", engagement bait).\nDemo guidance example: **Operator entry:** `http://localhost:3000/login` — credentials `demo@kt.com` / `demo123`. Primary path: `/ecosystem` → `/index54`. I will verify each surface in-session and report probe results before the next layer."
       }
-    },
-    "proceedBrief": {
-      "activePersona": "platform-architect",
-      "frame": "development",
-      "personaDocUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/institutional/personas/platform-architect.md",
-      "personaDocPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
-      "voice": "Systems-oriented, reliability-focused, cost-conscious",
-      "embodies": "Platform lead accountable for fleet reliability",
-      "goalOrientationBrief": "## Goal orientation\n**North star:** Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability\n**Milestone:** SECAS-S4 — pen-test findings remediation track\n**Shippable:** secas:pentest:remediation:check PASS; findings mapped to owners\n**PRD refs:** prd-product-charter\n**Product team:** Fabric OS (`platform-engineer`)"
     },
     "productTeam": {
       "schema": "gtcx://bridge-os/product-team-context/v1",
@@ -313,7 +474,7 @@
     "goalTrace": {
       "schema": "gtcx://bridge-os/goal-trace/v2",
       "repo": "fabric-os",
-      "nextStoryId": null,
+      "nextStoryId": "SECAS-S2-01",
       "headStoryId": "SECAS-S4-04",
       "declaredTrace": null,
       "programmeId": "PROG-SECAS-PENTEST",
@@ -327,11 +488,20 @@
       "activeStoryId": "INIT-GTCX-INFRA-SECAS"
     },
     "personaReadGate": {
-      "ok": true,
-      "institutional": "platform-architect",
-      "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
-      "docHash": "4b239bed1d75d5861d796739c8c23793333484cee4be727150a6ed934fd42aab",
-      "readAt": "2026-06-15T05:27:22.263Z"
+      "ok": false,
+      "blocked": true,
+      "institutional": "security-engineer",
+      "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md",
+      "docHash": "8900a6bc85434c6f3cd30f587a51c4710c00791f271b9c517a45c77dd27db5b6",
+      "witness": {
+        "schema": "gtcx://bridge-os/persona-read-witness/v1",
+        "institutional": "platform-architect",
+        "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
+        "docHash": "4b239bed1d75d5861d796739c8c23793333484cee4be727150a6ed934fd42aab",
+        "readAt": "2026-06-15T05:57:05.307Z"
+      },
+      "reason": "persona switched (platform-architect → security-engineer)",
+      "witnessCommand": "pnpm persona:read-witness --write"
     },
     "engineeringLaneAbstraction": {
       "applies": false,
@@ -342,6 +512,7 @@
       "ok": true,
       "applies": false
     },
+    "personaReadGateBlocked": true,
     "activeStory": {
       "id": "INIT-GTCX-INFRA-SECAS",
       "title": "INIT-GTCX-INFRA-SECAS",
@@ -359,7 +530,10 @@
       "ok": true,
       "witnessPath": ".baseline/session/story-persona-bind-latest.json",
       "storyId": "INIT-GTCX-INFRA-SECAS"
-    }
+    },
+    "sessionStartBlocked": true,
+    "sessionStartBlockedReason": "persona switched (platform-architect → security-engineer)",
+    "blockedUntil": "pnpm persona:read-witness --write"
   },
   "modelProfile": null,
   "nitroStack": null,
@@ -369,6 +543,6 @@
     "witness": null,
     "error": "baselineos CLI not built"
   },
-  "gitChanged": 12,
+  "gitChanged": 24,
   "authorityClass": "R"
 }

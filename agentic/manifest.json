@@ -56,5 +56,11 @@
     "P22": "work selection from local pm/backlog.json",
     "P27": "agents run terraform/kubectl/aws in-session",
     "P35": "infra repo — deploy/ owns ship paths"
+  },
+  "auditModel": {
+    "id": "multi-pillar-11pr",
+    "agentIndex": "../canon-os/docs/governance/audit/multi-pillar-agent-index.md",
+    "normativeSpec": "../baseline-os/docs/specs/audit/fractal-multi-pillar-audit.md",
+    "assuranceLane": "fabric:assurance:run:write"
   }
 }

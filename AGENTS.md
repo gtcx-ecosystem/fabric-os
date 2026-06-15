@@ -23,6 +23,20 @@ This repo operates within the GTCX ecosystem. All agents must reference the cano
 
 **Registry:** See `canon-os/docs/governance/REGISTRY.md` for the full document index.
 
+### 1.5.2 Multi-pillar audit and independent assurance
+
+GTCX evaluation is **multi-pillar** (Foundation tier F-PiLLAR + Transformational tier T-PiLLAR). fabric-os runs the **independent assurance lane** — not owner-repo self-QA (`ecosystem:five-pillar:protocol-loop:write`).
+
+| Resource | Path |
+| -------- | ---- |
+| Hub agent index | `canon-os/docs/governance/audit/multi-pillar-agent-index.md` |
+| Normative spec | `baseline-os/docs/specs/audit/fractal-multi-pillar-audit.md` |
+| Fleet runbook | `bridge-os/audit/runbooks/MULTI-PILLAR.md` |
+| Independent assurance | `pnpm fabric:assurance:run:write` |
+| Fleet verify witness | `pnpm ecosystem:fleet:verify:all:write` (bridge-os) |
+
+Legacy witness filename `audit/evidence/five-pillar-latest.json` remains frozen (repo-scope foundation composite).
+
 ### 1.5.1 Ecosystem cloud placement (OPS-CLOUD-PLACE-001)
 
 All infrastructure work defaults to **AWS** (`af-south-1`). GCP is used only for the intelligence ML bridge (`deploy/terraform/modules/gcp-ml-bridge/`), disabled until Phase 3.

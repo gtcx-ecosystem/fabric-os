@@ -18,7 +18,7 @@ autonomy_level: 'sovereign'
 > **Latest master audit:** [`master-audit-2026-06-02.md`](../../audit/archive/legacy-docs-audit/master-audit-2026-06-02.md)
 > **Latest full audit:** [`full-audit-2026-05-31.md`](../../audit/archive/legacy-docs-audit/full-audit-2026-05-31.md)
 > **Execution roadmap:** [`execution-roadmap.md`](../../audit/execution-roadmap.md)
-> **Machine status:** [`latest.json`](../../audit/evidence/five-pillar-latest.json)
+> **Machine status:** [`five-pillar-latest.json`](../../audit/evidence/five-pillar-latest.json) (repo-scope foundation composite; full model: [multi-pillar agent index](https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/audit/multi-pillar-agent-index.md))
 > **Single source of truth:** This document is the canonical entry point. If you find conflicting information, this document wins.
 
 ---

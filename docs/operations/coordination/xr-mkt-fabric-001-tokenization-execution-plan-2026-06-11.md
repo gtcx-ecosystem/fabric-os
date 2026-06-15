@@ -3,6 +3,10 @@ title: 'PROG-TOKENIZATION-001 — cross-repo execution plan'
 status: current
 date: 2026-06-11
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 canonical_repo: fabric-os
 program: PROG-TOKENIZATION-001
 ticket: XR-MKT-FABRIC-001

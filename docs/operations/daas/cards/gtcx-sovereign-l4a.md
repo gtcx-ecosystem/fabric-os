@@ -1,11 +1,15 @@
 ---
-title: DaaS card — GTCX Sovereign (L4a bundle)
+title: 'DaaS card — GTCX Sovereign (L4a bundle)'
 status: current
 date: 2026-06-12
+owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 laneId: L4a
 deployProduct: GTCX Sovereign
 friction: XR-301
-owner: fabric-os
 productOwner: gtcx-os
 protocol: P41-DEVOPS-AS-A-SERVICE
 ---

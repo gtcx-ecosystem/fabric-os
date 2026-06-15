@@ -149,7 +149,9 @@
     "rag:eval": "node ../baseline-os/platform/packages/rag-eval/dist/cli.js --golden config/baseline/rag-eval-golden.json --mock config/baseline/rag-eval-mock-corpus.json --out audit/evidence/rag-eval-latest.json",
     "agent:conduct:check": "node ../bridge-os/platform/scripts/checks/check-agent-conduct-local.mjs",
     "agent:auto-dev:check": "node ../bridge-os/platform/scripts/checks/check-agent-auto-dev-local.mjs",
-    "pm:folder:check": "node ../bridge-os/platform/scripts/workspace/pm-folder-check.mjs"
+    "pm:folder:check": "node ../bridge-os/platform/scripts/workspace/pm-folder-check.mjs",
+    "aiops:check": "node platform/scripts/aiops-check.mjs",
+    "aiops:check:write": "node platform/scripts/aiops-check.mjs --write"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

@@ -10,7 +10,7 @@ document_type: runbook
 protocol: P42
 ---
 
-# SOC operations
+## SOC operations
 
 Canonical SoR for fleet risk register `socPlan` source and SecOps CSIRT program.
 

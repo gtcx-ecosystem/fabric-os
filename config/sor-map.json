@@ -9,7 +9,7 @@
     "auditNarrativeIndex": "audit/",
     "executionRoadmap": "audit/product-management/execution-roadmap.md",
     "autoDevState": "audit/product-management/auto-dev-state.md",
-    "agentsCanonical": "docs/agents/",
+    "agentsCanonical": "docs/operations/agents/",
     "agentWorkSelection": "docs/operations/agent-work-selection.md",
     "governanceTierB": "docs/operations/repo/",
     "docsIamap": "docs/README.md",

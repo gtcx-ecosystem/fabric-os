@@ -2,9 +2,11 @@
   "$schema": "gtcx://ecosystem/layout-contract/v5",
   "version": "5.1.0",
   "updated": "2026-06-08",
-  "owner": "bridge-os",
-  "sor": "bridge-os/config/ecosystem-layout-contract.json",
-  "prose": "bridge-os/docs/ecosystem-layout-v5.md",
+  "owner": "fabric-os",
+  "sor": {
+    "contract": "config/layout-contract.json",
+    "prose": "docs/operations/workspace/ecosystem-repo-layout-v5.md"
+  },
   "policy": {
     "numberedPaths": "forbidden-for-new-work",
     "strictGate": "p35-layout-check --strict",
@@ -67,7 +69,7 @@
       "docs/README.md",
       "docs/INDEX.md",
       "docs/conventions.md",
-      "docs/agents/README.md",
+      "docs/operations/agents/README.md",
       "docs/operations/repo/root-allowlist.json",
       "docs/operations/repo/repo-hygiene-protocol.md",
       "docs/operations/repo/CODE_OF_CONDUCT.md",
@@ -75,8 +77,6 @@
       "docs/operations/repo/SECURITY.md"
     ],
     "allowedTopLevelFolders": [
-      "agents",
-      "agile",
       "api",
       "architecture",
       "cli",

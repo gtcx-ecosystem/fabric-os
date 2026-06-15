@@ -98,6 +98,10 @@ export function checkAssurance() {
   return errors;
 }
 
+function firstExistingPath(candidates) {
+  return candidates.find((rel) => existsSync(join(repoRoot(), rel))) ?? null;
+}
+
 export function checkProductManagement() {
   const errors = [];
   for (const rel of ['ops/pm/manifest.json', 'ops/pm/backlog.json']) {
@@ -108,8 +112,13 @@ export function checkProductManagement() {
       errors.push('ops/pm/backlog.json: stories must be array');
     }
   }
-  const agileDocs = join(repoRoot(), 'docs/agile');
-  if (!existsSync(agileDocs)) {
+  const agileBridge =
+    firstExistingPath([
+      'docs/agile/roadmap.md',
+      'docs/roadmap/agile/planning/roadmaps/roadmap.md',
+      'docs/roadmap/agile/README.md',
+    ]) ?? (existsSync(join(repoRoot(), 'docs/agile')) ? 'docs/agile' : null);
+  if (!agileBridge) {
     errors.push('docs/agile (gtcx-agile bridge — create roadmap.md or run rollout)');
   }
   return errors;
@@ -230,12 +239,13 @@ function checkWorkspaceReadmes() {
 
 function checkAgentsFolder() {
   const errors = [];
-  for (const rel of [
-    'docs/agents/README.md',
-    'docs/agents/universal/README.md',
-    'docs/agents/cursor/README.md',
-  ]) {
-    if (!existsSync(join(repoRoot(), rel))) errors.push(rel);
+  const required = [
+    ['docs/operations/agents/README.md', 'docs/agents/README.md'],
+    ['docs/operations/agents/universal/README.md', 'docs/agents/universal/README.md'],
+    ['docs/operations/agents/cursor/README.md', 'docs/agents/cursor/README.md'],
+  ];
+  for (const candidates of required) {
+    if (!firstExistingPath(candidates)) errors.push(candidates[0]);
   }
   return errors;
 }

@@ -9,7 +9,7 @@ tags: ['documentation', 'provisioning']
 review_cycle: on-change
 ---
 
-# `docs/agile/` — provisioning
+# `docs/roadmap/agile/` — provisioning
 
 > Parent: [`docs/FOLDER-SPEC.md`](../FOLDER-SPEC.md)
 

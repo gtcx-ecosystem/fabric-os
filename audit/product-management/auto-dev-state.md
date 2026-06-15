@@ -21,6 +21,13 @@ last_reconciled: 2026-06-14T10:15:00.000Z
 - **Status:** in_progress (3/4 UAT — pre-window gates green 2026-06-14)
 - **Reason:** Pen-test window **2026-06-17..21**; vendor report ingest pending (`awaiting_vendor_report`); five-pillar composite **100/100** restored 2026-06-14.
 
+## COMPOSITE-RESTORE-100 (2026-06-15 — cycle 2)
+
+- **Outcome:** **done** — composite100 **59 → 100** after `fdd47cf` removed IA shadow stubs
+- **Root cause:** P35 gates still required `docs/agents/` while W4 IA canonical is `docs/operations/agents/` + `docs/roadmap/agile/`
+- **Fix:** align `check-domain.mjs`, `layout-contract.json` (local sor contract), `sor-map.json` — no duplicate shadow folders
+- **Gates:** `pnpm ops:check` PASS · P35 strict 100/100 · fleet uplift witness composite100 **100**
+
 ## COMPOSITE-RESTORE-100 (2026-06-15)
 
 - **Outcome:** **done** — composite100 **59 → 100** after W4 IA uplift drift

@@ -9,7 +9,7 @@ tags: ['documentation', 'provisioning']
 review_cycle: on-change
 ---
 
-# `docs/agents/` — provisioning
+# `docs/operations/agents/` — provisioning
 
 > Parent: [`docs/FOLDER-SPEC.md`](../FOLDER-SPEC.md)
 

@@ -2,40 +2,24 @@
   "$schema": "gtcx://fabric-os/aiops-signals-register/v1",
   "version": "1.0.0",
   "updated": "2026-06-15",
-  "lane": "AIOps",
-  "owner": "fabric-os",
+  "opsLane": "AIOps",
   "signals": [
     {
-      "id": "AIS-001",
-      "name": "anomaly-detector",
-      "type": "batch-metrics",
-      "deploy": "deploy/kubernetes/base/services/anomaly-detector.yaml",
-      "modelCard": "docs/governance/model-cards/anomaly-detector-model-card.md",
-      "tool": "platform/tools/anomaly-detector/detector.mjs",
+      "id": "agent-conduct-drift",
+      "source": "bridge-os/pm/ci/agent-conduct-latest.json",
+      "severity": "P1",
       "status": "active"
     },
     {
-      "id": "AIS-002",
-      "name": "eval-pipeline",
-      "type": "eval-gate",
-      "deploy": ".github/workflows/eval-pipeline.yml",
-      "modelCard": "docs/governance/model-cards/eval-pipeline-model-card.md",
-      "tool": "platform/tools/eval-pipeline/eval.mjs",
+      "id": "settlement-gate-fail",
+      "source": "pm/ci/settlement-commit-latest.json",
+      "severity": "P1",
       "status": "active"
     },
     {
-      "id": "AIS-003",
-      "name": "injection-suite",
-      "type": "red-team",
-      "evidence": "audit/evidence/injection-suite-latest.json",
-      "status": "active"
-    },
-    {
-      "id": "AIS-004",
-      "name": "fleet-threat-register",
-      "type": "threat-intel",
-      "register": "bridge-os/pm/spec/fleet-threat-register.json",
-      "check": "platform/scripts/fleet-threat-check.mjs",
+      "id": "assurance-milestone-block",
+      "source": "bridge-os/pm/ci/assurance-milestone-block-latest.json",
+      "severity": "P2",
       "status": "active"
     }
   ]

@@ -1,77 +1,34 @@
 {
   "$schema": "gtcx://fabric-os/aiops-as-a-service/v1",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "updated": "2026-06-15",
-  "protocolId": "P53-AIOPS-AS-A-SERVICE",
-  "title": "AIOps-as-a-Service — fabric substrate witness",
+  "protocolId": "P49-AIOPS-AS-A-SERVICE",
+  "title": "AIOps-as-a-Service (substrate)",
   "opsLane": "AIOps",
-  "opsDisplayTitle": "AIOps",
-  "opsRegistry": "bridge-os/pm/spec/ops-programs-registry.json",
   "initiative": "INIT-GTCX-BRIDGE-AI-ML-OPS",
   "status": "active",
-  "hubProtocolTarget": "canon-os/docs/governance/protocols/53-aiops-as-a-service/protocol.md",
-  "principle": "AIOps lane ownership is bridge-os (fleet program office, witnesses, agent conduct integration) + baseline-os (AI OS runtime). fabric-os hosts substrate signals only: anomaly-detector deploy, eval-pipeline CI witness, injection red-team evidence.",
-  "threePlanes": {
-    "engineering": { "owner": "product-repo", "pmLeads": true, "blocksIRDefault": false },
-    "aiops": {
-      "owner": "bridge-os",
-      "coOwner": "baseline-os",
-      "pmLeads": true,
-      "primaryRoadmap": true,
-      "blocksIRDefault": false
-    },
-    "substrate": {
-      "owner": "fabric-os",
-      "pmLeads": false,
-      "blocksIRDefault": false
-    }
-  },
+  "hubProtocolTarget": "canon-os/docs/governance/protocols/49-aiops-as-a-service/protocol.md",
+  "principle": "fabric-os supplies agentic reliability substrate; bridge-os runs fleet gate; baseline-os owns MLOps.",
   "ownerSplit": {
-    "bridgeOs": [
-      "pm/spec/ops-programs-registry.json",
-      "ecosystem:aiops:check:fleet",
-      "pm/ci/aiops-fleet-latest.json",
-      "pm/spec/ops-lanes-100-plan.json"
-    ],
-    "baselineOs": [
-      "docs/specs/runtime/cost-router.md",
-      "platform/packages/baselineos/src/core/cost-router.ts",
-      "agent conduct + AI runtime integration"
-    ],
     "fabricOs": [
       "pm/spec/aiops-as-a-service.json",
       "pm/aiops-friction-register.json",
       "pm/aiops-signals-register.json",
       "platform/scripts/aiops-check.mjs",
-      "audit/evidence/aiops-check-latest.json",
-      "pm/spec/mlops-bridge-contract.json"
-    ]
+      "audit/evidence/aiops-check-latest.json"
+    ],
+    "bridgeOs": ["ecosystem:aiops:check:fleet", "pm/ci/aiops-fleet-latest.json"],
+    "baselineOs": ["mlops:check", "pm/spec/mlops-as-a-service.json"]
   },
   "artifacts": {
     "spec": "pm/spec/aiops-as-a-service.json",
-    "runbook": "docs/operations/aiops-as-a-service.md",
-    "teamCharter": "docs/operations/aiops-agentic-team.md",
     "frictionRegister": "pm/aiops-friction-register.json",
     "signalsRegister": "pm/aiops-signals-register.json",
-    "mlopsBridge": "pm/spec/mlops-bridge-contract.json",
-    "check": "platform/scripts/aiops-check.mjs",
-    "checkTest": "platform/scripts/tests/aiops-check.test.mjs",
-    "witness": "audit/evidence/aiops-check-latest.json",
-    "fleetWitness": "../bridge-os/pm/ci/aiops-fleet-latest.json"
+    "opsEntry": "docs/operations/aiops-as-a-service.md",
+    "witness": "audit/evidence/aiops-check-latest.json"
   },
   "harness": {
     "check": "pnpm aiops:check",
-    "write": "pnpm aiops:check:write",
-    "fleet": "pnpm --dir ../bridge-os ecosystem:aiops:check:fleet:write"
-  },
-  "persona": {
-    "primary": "security-engineer",
-    "secondary": ["platform-architect", "protocol-engineer"],
-    "frame": "development"
-  },
-  "authority": {
-    "class": "A",
-    "note": "Lane ownership is bridge-os + baseline-os; fabric check is substrate witness only."
-  },
-  "forbiddenOwners": ["gtcx-os", "gtcx-intelligence"]
+    "checkWrite": "pnpm aiops:check:write"
+  }
 }

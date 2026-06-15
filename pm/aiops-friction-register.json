@@ -1,45 +1,27 @@
 {
   "$schema": "gtcx://fabric-os/aiops-friction-register/v1",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "updated": "2026-06-15",
-  "lane": "AIOps",
-  "owner": "bridge-os",
-  "coOwner": "baseline-os",
-  "substrateOwner": "fabric-os",
-  "status": "open",
+  "opsLane": "AIOps",
+  "owner": "fabric-os",
   "items": [
     {
-      "id": "AOF-001",
-      "title": "P53 AIOps hub protocol published in canon-os",
+      "id": "AIOPS-ANOM-01",
       "priority": "P1",
-      "status": "done",
-      "owner": "canon-os",
-      "evidence": "canon-os/docs/governance/protocols/53-aiops-as-a-service/protocol.md"
+      "status": "open",
+      "title": "Fleet anomaly signal rollup from agent conduct witnesses",
+      "because": "P49 requires anomaly detector wired to pm/ci agent-conduct fleet",
+      "owner": "fabric-os",
+      "blocksIR": false
     },
     {
-      "id": "AOF-002",
-      "title": "MLOps lane check implemented in baseline-os",
-      "priority": "P0",
-      "status": "done",
-      "owner": "baseline-os",
-      "evidence": "baseline-os/audit/evidence/mlops-check-latest.json"
-    },
-    {
-      "id": "AOF-003",
-      "title": "AIOps fleet program witness in bridge-os",
-      "priority": "P1",
-      "status": "in_progress",
+      "id": "AIOPS-RED-01",
+      "priority": "P2",
+      "status": "open",
+      "title": "Prompt-injection red-team evidence register",
+      "because": "Class S red-team cadence not yet automated",
       "owner": "bridge-os",
-      "evidence": "pm/ci/aiops-fleet-latest.json"
-    },
-    {
-      "id": "AOF-004",
-      "title": "Legacy gtcx-intelligence owner refs in fleet specs",
-      "priority": "P0",
-      "status": "in_progress",
-      "owner": "bridge-os",
-      "evidence": "pm/spec/ops-lanes-100-plan.json",
-      "note": "Repoint to bridge-os + baseline-os; gtcx-os/platform/intelligence is product runtime only"
+      "blocksIR": false
     }
   ]
 }

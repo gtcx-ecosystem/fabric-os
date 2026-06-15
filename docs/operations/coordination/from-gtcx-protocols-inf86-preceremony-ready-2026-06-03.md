@@ -3,6 +3,10 @@ title: 'From gtcx-protocols — INF-86 preceremony ready (XR-402)'
 status: done
 date: 2026-06-03
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation', 'protocol']
+review_cycle: on-change
+document_type: runbook
 from: gtcx-protocols
 priority: P0
 work_ids: [XR-402]

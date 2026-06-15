@@ -3,6 +3,10 @@ title: 'Inbound — ER-1-08 hub ack from gtcx-core'
 status: acknowledged
 date: 2026-06-04
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 source: gtcx-core
 ---
 

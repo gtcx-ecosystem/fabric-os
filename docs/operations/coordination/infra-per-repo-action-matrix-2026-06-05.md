@@ -3,6 +3,10 @@ title: 'Infra per-repo action matrix (execution view)'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 role: platform-engineer
 document_id: INF-PER-REPO-001
 parent: cloud-placement-aws-control-plane-2026-06-05.md

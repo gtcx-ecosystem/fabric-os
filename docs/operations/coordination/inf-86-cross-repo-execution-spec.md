@@ -3,6 +3,10 @@ title: 'INF-86 Cross-Repo Execution Spec'
 status: current
 date: 2026-06-03
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 to: all repos
 priority: P0
 work_ids: [XR-401, XR-402, XR-403]

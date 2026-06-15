@@ -3,6 +3,10 @@ title: 'Outbound — Hub #17 prod status (compliance-os witness)'
 status: current
 date: 2026-06-08
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 to: compliance-os
 from: fabric-os
 priority: P0

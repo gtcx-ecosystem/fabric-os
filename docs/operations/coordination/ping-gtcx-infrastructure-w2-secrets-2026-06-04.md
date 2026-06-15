@@ -3,6 +3,10 @@ title: 'Ping — W2 prod E2E secrets confirmation (fabric-os)'
 status: current
 date: 2026-06-04
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: compliance-os coordination hub
 to: fabric-os
 work_id: W2-E2E / #17

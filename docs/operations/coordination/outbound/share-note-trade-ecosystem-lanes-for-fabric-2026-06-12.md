@@ -3,11 +3,14 @@ title: 'Share note — trade ecosystem lanes for fabric-os team'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: [[share, fabric, lanes, handoff]]
+review_cycle: on-change
+document_type: runbook
 audience: fabric-os builders, platform operators, sibling integrators
 copy_paste: true
 laneId: I
 ticket: XR-FABRIC-TRADE-LANES-001
-tags: [share, fabric, lanes, handoff]
 ---
 
 # Share note — trade ecosystem lanes (fabric-os)

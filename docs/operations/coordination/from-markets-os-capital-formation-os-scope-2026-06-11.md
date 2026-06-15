@@ -3,6 +3,10 @@ title: 'Handoff — Capital Formation OS Expanded Programme Scope'
 status: open
 date: 2026-06-11
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: markets-os
 to: fabric-os
 ticket: XR-MKT-FABRIC-002

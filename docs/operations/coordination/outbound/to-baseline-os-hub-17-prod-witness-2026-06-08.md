@@ -3,13 +3,16 @@ title: 'Outbound — Hub #17 prod close witness (baseline-os tracking)'
 status: closed
 date: 2026-06-08
 owner: fabric-os
+tier: operating
+tags: [['coordination', 'witness', 'hub-17']]
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: baseline-os
 priority: P1
 hub_blocker: 17
 er1: ER-1-10
 authority_class: R
-tags: ['coordination', 'witness', 'hub-17']
 ---
 
 # Outbound — Hub #17 prod close witness

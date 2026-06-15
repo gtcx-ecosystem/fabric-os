@@ -3,6 +3,10 @@ title: 'Inbound — XR-302 P4-07 smoke blockers from gtcx-platforms'
 status: done
 date: 2026-06-03
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: gtcx-platforms
 to: fabric-os
 priority: P0

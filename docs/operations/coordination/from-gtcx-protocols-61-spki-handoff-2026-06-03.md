@@ -1,11 +1,15 @@
 ---
 title: 'MESSAGE — gtcx-protocols issue #61 SPKI handoff (XR-402 complete)'
 status: sent
-comment_url: 'https://github.com/gtcx-ecosystem/gtcx-protocols/issues/61#issuecomment-4612133251'
 date: 2026-06-03
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation', 'protocol']
+review_cycle: on-change
+document_type: runbook
+comment_url: https://github.com/gtcx-ecosystem/gtcx-protocols/issues/61#issuecomment-4612133251
 to: gtcx-protocols
-issue: 'https://github.com/gtcx-ecosystem/gtcx-protocols/issues/61'
+issue: https://github.com/gtcx-ecosystem/gtcx-protocols/issues/61
 ---
 
 # Copy/paste — gtcx-protocols issue #61 (XR-402 complete)

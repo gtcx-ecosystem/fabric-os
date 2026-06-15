@@ -2,14 +2,13 @@
 title: 'Coordination — Infra staging operator DID deploy (DONE)'
 status: done
 date: 2026-06-02
-updated: 2026-06-03
 owner: fabric-os
-role: platform-engineer
 tier: critical
-tags: ['coordination', 'infrastructure', 'staging', 'tradepass', 'did']
+tags: [['coordination', 'infrastructure', 'staging', 'tradepass', 'did']]
 review_cycle: on-change
-related:
-  - ../../../gtm/handoffs/staging-audit-e2e-credentials-2026-06-02.md
+document_type: runbook
+role: platform-engineer
+updated: 2026-06-03
 ---
 
 # Coordination — Infra staging operator DID deploy (DONE)

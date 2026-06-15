@@ -3,6 +3,10 @@ title: 'outbound — Markets brokerage staging deploy for Golden Transaction'
 status: open
 date: 2026-06-12
 owner: markets-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: markets-os
 ticket: XR-MKT-PROTOCOL-NATIVE-001

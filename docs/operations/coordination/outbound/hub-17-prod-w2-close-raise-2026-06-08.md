@@ -3,6 +3,11 @@ title: 'Outbound — Hub #17 prod W2 close (fabric-os owner)'
 status: current
 date: 2026-06-08
 owner: fabric-os
+tier: operating
+tags: [['coordination', 'outbound', 'hub-17', 'w2', 'prod', 'class-a']]
+review_cycle: on-change
+document_type: runbook
+document_id: INFRA-OUT-HUB17-PROD-001
 from: fabric-os
 to: compliance-os, exploration-os, terminal-os, baseline-os
 priority: P0
@@ -12,8 +17,6 @@ work_id: W2-E2E / XR-502 / XR-503 / XR-504
 authority_class: A
 authorization_artifact: compliance-os/01-docs/04-ops/coordination/to-fabric-os-w2-secrets-inbound-2026-06-04.md
 protocol: canon-os/01-docs/governance/protocols/24-cross-repo-coordination/protocol.md
-document_id: INFRA-OUT-HUB17-PROD-001
-tags: ['coordination', 'outbound', 'hub-17', 'w2', 'prod', 'class-a']
 ---
 
 # Outbound — Hub #17 prod W2 close (infra owner)

@@ -3,6 +3,10 @@ title: 'Handoff — TradePass and Markets Qualified Counterparty Programme'
 status: open
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: markets-os
 to: fabric-os
 ticket: XR-MKT-TRADEPASS-001

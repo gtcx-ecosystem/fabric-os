@@ -2,9 +2,13 @@
 title: 'Inbound — TerraOS staging deploy blockers (from terra-os)'
 status: current
 date: 2026-06-10
+owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: terra-os
 to: fabric-os
-owner: fabric-os
 priority: P1
 work_id: CI-TERRA-20260609-02
 blocking: true

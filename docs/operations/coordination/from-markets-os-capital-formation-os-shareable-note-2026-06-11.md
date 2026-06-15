@@ -3,6 +3,10 @@ title: 'Shareable Note — Capital Formation OS Expanded Product Direction'
 status: current
 date: 2026-06-11
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: markets-os
 to: fabric-os
 program: PROG-CAPITAL-FORMATION-001

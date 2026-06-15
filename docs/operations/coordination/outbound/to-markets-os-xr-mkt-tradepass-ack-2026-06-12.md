@@ -3,6 +3,10 @@ title: 'outbound-ack — XR-MKT-TRADEPASS-001'
 status: accepted
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: markets-os, gtcx-os
 ticket: XR-MKT-TRADEPASS-001

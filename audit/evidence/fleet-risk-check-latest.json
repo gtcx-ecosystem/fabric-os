@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/fleet-risk-check/v1",
   "opsLane": "SecOps",
-  "checkedAt": "2026-06-14T10:47:15.564Z",
+  "checkedAt": "2026-06-15T05:33:52.429Z",
   "owner": "bridge-os",
   "executionOwner": "fabric-os",
   "register": "bridge-os/pm/spec/fleet-risk-register.json",
@@ -22,7 +22,7 @@
       "probe": {
         "RISK-PRODUCT-001": {
           "repo": "markets-os",
-          "status": "stub",
+          "status": "missing",
           "path": "markets-os/docs/security/threat-model.md"
         },
         "RISK-PRODUCT-002": {
@@ -32,7 +32,7 @@
         },
         "RISK-PRODUCT-003": {
           "repo": "gtcx-intelligence",
-          "status": "stub",
+          "status": "present",
           "path": "gtcx-os/platform/intelligence/01-docs/security/threat-model.md"
         }
       }

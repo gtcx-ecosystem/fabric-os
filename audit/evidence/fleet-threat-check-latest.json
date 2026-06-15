@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/fleet-threat-check/v1",
   "opsLane": "SecOps",
-  "checkedAt": "2026-06-14T10:47:15.775Z",
+  "checkedAt": "2026-06-15T05:31:58.583Z",
   "owner": "bridge-os",
   "register": "bridge-os/pm/spec/fleet-threat-register.json",
   "gates": {

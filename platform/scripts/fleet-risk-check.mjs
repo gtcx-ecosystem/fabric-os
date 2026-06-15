@@ -34,7 +34,7 @@ function threatModelStatus(relPath) {
   const abs = resolve(relPath);
   if (!existsSync(abs)) return 'missing';
   const text = readFileSync(abs, 'utf8');
-  if (/link stub|doc integrity|TODO|stub/i.test(text)) return 'stub';
+  if (/(?:^|\n)\s*Link stub\s*[-–]\s*doc integrity|\bTODO:\b|^\s*stub\s*$/i.test(text)) return 'stub';
   if (text.length < 400) return 'thin';
   return 'present';
 }

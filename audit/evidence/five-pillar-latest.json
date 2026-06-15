@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://audit/five-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-14",
+  "date": "2026-06-15",
   "composite100": 100,
   "composite100Raw": 100,
   "trustCap100": 100,

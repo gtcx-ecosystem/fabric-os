@@ -1,0 +1,28 @@
+{
+  "schema": "gtcx://bridge-os/story-persona-bind/v2",
+  "boundAt": "2026-06-15T05:29:19.628Z",
+  "repoId": "fabric-os",
+  "storyId": "INIT-GTCX-INFRA-SECAS",
+  "owner": "fabric-os",
+  "productTeam": {
+    "teamName": "Fabric OS",
+    "primary": "platform-engineer",
+    "frame": "development",
+    "profilesSoR": "pm/spec/repo-persona-profiles.json"
+  },
+  "gtmTrace": true,
+  "programmeId": null,
+  "initiative": "INIT-GTCX-INFRA-SECAS",
+  "capabilityId": null,
+  "prdRef": null,
+  "expectedScope": {
+    "repo": "fabric-os",
+    "capabilityId": null,
+    "prdRef": null,
+    "crossRepo": false
+  },
+  "sessionProof": {
+    "personaReadWitness": ".baseline/session/persona-read-latest.json",
+    "boundInSession": true
+  }
+}

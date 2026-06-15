@@ -4,6 +4,9 @@ status: open
 date: 2026-06-15
 owner: fabric-os
 tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: terminal-os, sensei-os, compliance-os, nyota-ai, griot-ai
 ticket: XR-FABRIC-PAYOPS-001

@@ -3,10 +3,11 @@ title: 'Standing vulnerability management cadence (SECAS-S4-03)'
 status: current
 date: 2026-06-14
 owner: fabric-os
-role: security-engineer
 tier: operational
-tags: ['secas', 'vulnerability', 'cadence']
+tags: [['secas', 'vulnerability', 'cadence']]
 review_cycle: weekly
+document_type: runbook
+role: security-engineer
 ---
 
 # Standing vulnerability management cadence (SECAS-S4-03)

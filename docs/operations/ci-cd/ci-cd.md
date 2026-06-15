@@ -72,6 +72,6 @@ Before a release tag is cut:
 
 ## Reference
 
-- [`01-docs/04-ops/runbooks/quality-runbook.md`](../../operations/runbooks/quality-runbook.md) — triage order when gates fail
+- [`01-docs/04-ops/runbooks/quality-runbook.md`](../runbooks/sre/quality-runbook.md) — triage order when gates fail
 - [`01-docs/04-ops/release/ga-release-checklist.md`](../../operations/release/ga-release-checklist.md) — release checklist
-- [`01-docs/01-agents/workflows/tasks/cut-release.md`](../../agents/workflows/cut-release.md) — release task playbook
+- [`01-docs/01-agents/workflows/tasks/cut-release.md`](../agents/workflows/cut-release.md) — release task playbook

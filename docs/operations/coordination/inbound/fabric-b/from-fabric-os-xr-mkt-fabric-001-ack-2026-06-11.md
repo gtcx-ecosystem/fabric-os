@@ -43,7 +43,7 @@ Fabric acknowledges **XR-MKT-FABRIC-001** on 2026-06-11.
 - **Orchestration role:** dependency graph, parallel workplan, milestone tracking,
   acceptance evidence — **not** SoR for identity, title, compliance decisions,
   custody, settlement finality, or Markets transaction state
-- **Execution plan:** [`xr-mkt-fabric-001-tokenization-execution-plan-2026-06-11.md`](./xr-mkt-fabric-001-tokenization-execution-plan-2026-06-11.md)
+- **Execution plan:** [`xr-mkt-fabric-001-tokenization-execution-plan-2026-06-11.md`](../../xr-mkt-fabric-001-tokenization-execution-plan-2026-06-11.md)
 
 ## Acceptance criteria (handoff §)
 

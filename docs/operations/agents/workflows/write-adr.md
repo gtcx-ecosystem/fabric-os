@@ -139,5 +139,5 @@ ADRs in `Proposed` status are complete and reviewable. Do not change status to `
 
 ## Reference
 
-- [`01-docs/architecture/decisions/`](../../architecture/decisions/) — ADR index and template
+- [`01-docs/architecture/decisions/`](../../../architecture/decisions/README.md) — ADR index and template
 - [`01-docs/01-agents/workflows/safety-rules.md`](agent-safety-rules.md) — approval requirements

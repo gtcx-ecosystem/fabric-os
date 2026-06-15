@@ -1,41 +1,19 @@
 ---
-title: 'AIOps-as-a-Service'
+title: 'AIOps (agentic reliability substrate)'
 status: current
 date: 2026-06-15
 owner: fabric-os
-tier: operating
-tags: ['runbook', 'aiops', 'ops-lane', 'P53']
-review_cycle: on-change
-document_type: runbook
-protocol: 'P53'
+protocol: P49-AIOPS-AS-A-SERVICE
+initiative: INIT-GTCX-BRIDGE-AI-ML-OPS
 ---
 
-# AIOps-as-a-Service
+# AIOps — fabric-os substrate
 
-AIOps lane ownership is **bridge-os** (fleet program office) + **baseline-os** (AI OS runtime). fabric-os hosts **substrate signals** only: anomaly detection, eval gates, injection red-team evidence, and GCP ML bridge deploy artifacts.
+**Spec:** `pm/spec/aiops-as-a-service.json`  
+**Fleet gate:** bridge-os `pnpm ecosystem:aiops:check:fleet:write`
 
-## Ownership
-
-| Role               | Repo        |
-| ------------------ | ----------- |
-| AIOps program      | bridge-os   |
-| AI runtime / MLOps | baseline-os |
-| Deploy substrate   | fabric-os   |
-
-## Harness
+fabric-os owns anomaly signal registers and agent-tool guard evidence. MLOps remains **baseline-os**.
 
 ```bash
-pnpm aiops:check
 pnpm aiops:check:write
-pnpm --dir ../bridge-os ecosystem:aiops:check:fleet:write
 ```
-
-## Artifacts
-
-| Artifact     | Path                                     |
-| ------------ | ---------------------------------------- |
-| Spec         | `pm/spec/aiops-as-a-service.json`        |
-| MLOps bridge | `pm/spec/mlops-bridge-contract.json`     |
-| Signals      | `pm/aiops-signals-register.json`         |
-| Friction     | `pm/aiops-friction-register.json`        |
-| Witness      | `audit/evidence/aiops-check-latest.json` |

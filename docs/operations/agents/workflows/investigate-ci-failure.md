@@ -146,4 +146,4 @@ When escalating: state the gate that failed, the full error output, the root cau
 ## Reference
 
 - [`01-docs/01-agents/workflows/safety-rules.md`](agent-safety-rules.md) — what requires escalation
-- [`01-docs/04-ops/runbooks/quality-runbook.md`](../../operations/runbooks/quality-runbook.md) — full gate sequence
+- [`01-docs/04-ops/runbooks/quality-runbook.md`](../../runbooks/sre/quality-runbook.md) — full gate sequence

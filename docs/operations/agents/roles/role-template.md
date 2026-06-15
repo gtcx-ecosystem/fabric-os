@@ -92,7 +92,7 @@ Before working in this role, read in order:
 
 ## Reference
 
-- [`01-docs/architecture/`](../../architecture/system-overview.md) — architecture overview
-- [`01-docs/architecture/decisions/`](../../architecture/decisions/) — all ADRs
+- [`01-docs/architecture/`](../../../architecture/narratives/system-overview.md) — architecture overview
+- [`01-docs/architecture/decisions/`](../../../architecture/decisions/README.md) — all ADRs
 - [`01-docs/01-agents/workflows/safety-rules.md`](../workflows/agent-safety-rules.md) — escalation triggers
 - `1-agentic/archetypes/{role-archetype}` — canonical archetype definition

@@ -30,7 +30,7 @@ Session-start protocol for any agent or contributor entering this repo.
 In this order — no exceptions:
 
 1. `01-docs/architecture/system-overview.md` — environment topology and service boundaries
-2. [Trust layers & authority DIDs](../../reference/architecture/trust-layers-and-did-resolution.md) — INF-49 / protocols #60 (canonical spec in gtcx-protocols)
+2. [Trust layers & authority DIDs](../../../architecture/narratives/trust-layers-and-did-resolution.md) — INF-49 / protocols #60 (canonical spec in gtcx-protocols)
 3. `01-docs/architecture/decisions/` — ADRs (understand why infra is configured the way it is)
 4. `01-docs/04-ops/runbooks/quality-runbook.md` — gate sequence and failure triage
 5. `01-docs/01-agents/workflows/safety-rules.md` — before making any change
@@ -115,4 +115,4 @@ See `01-docs/04-ops/runbooks/quality-runbook.md` for the full gate sequence and 
 
 - [`safety-rules.md`](../workflows/agent-safety-rules.md) — what requires human approval
 - [`context-recovery.md`](./context-recovery.md) — how to recover agent context across sessions
-- [`01-docs/04-ops/runbooks/quality-runbook.md`](../../operations/runbooks/quality-runbook.md) — full pre-commit gate sequence
+- [`01-docs/04-ops/runbooks/quality-runbook.md`](../../runbooks/sre/quality-runbook.md) — full pre-commit gate sequence

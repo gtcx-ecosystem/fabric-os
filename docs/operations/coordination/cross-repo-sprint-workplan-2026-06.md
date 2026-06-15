@@ -217,13 +217,13 @@ Restore platforms staging services; complete INT-S3-08 evidence chain.
 
 #### XR-301 / XR-302 — Platforms ECR
 
-| Field          | Value                                                                                                |
-| -------------- | ---------------------------------------------------------------------------------------------------- |
-| **Owner**      | gtcx-platforms → infra rollout                                                                       |
-| **Assessment** | **ready** / **in-progress**                                                                          |
-| **Plan**       | `pnpm docker:push:sovereign:staging`; `pnpm docker:push:agx:staging`; infra rollout; smoke URLs      |
-| **Acceptance** | `sovereign-staging.gtcx.trade/health` not placeholder; `api.staging.gtcx.trade/api/health` 200       |
-| **Infra ask**  | See [`to-gtcx-platforms-rollout-ready-2026-06-03.md`](to-gtcx-platforms-rollout-ready-2026-06-03.md) |
+| Field          | Value                                                                                                               |
+| -------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Owner**      | gtcx-platforms → infra rollout                                                                                      |
+| **Assessment** | **ready** / **in-progress**                                                                                         |
+| **Plan**       | `pnpm docker:push:sovereign:staging`; `pnpm docker:push:agx:staging`; infra rollout; smoke URLs                     |
+| **Acceptance** | `sovereign-staging.gtcx.trade/health` not placeholder; `api.staging.gtcx.trade/api/health` 200                      |
+| **Infra ask**  | See [`to-gtcx-platforms-rollout-ready-2026-06-03.md`](./inbound/to-b/to-gtcx-platforms-rollout-ready-2026-06-03.md) |
 
 #### XR-303 / XR-510 — Portal primitives publish chain
 

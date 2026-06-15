@@ -19,7 +19,7 @@ authorityClass: S
 
 ## Summary
 
-Sovereign operator approved **vendor pen-test SOW countersign** on 2026-06-10. fabric-os may proceed with pen-test window scheduling per [`pen-test-kickoff-prep-2026-06-10.md`](./pen-test-kickoff-prep-2026-06-10.md).
+Sovereign operator approved **vendor pen-test SOW countersign** on 2026-06-10. fabric-os may proceed with pen-test window scheduling per [`pen-test-kickoff-prep-2026-06-10.md`](../../sessions/pen-test-kickoff-prep-2026-06-10.md).
 
 ## Remaining (Class R/A — fabric-os)
 

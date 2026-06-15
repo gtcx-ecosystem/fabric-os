@@ -1,9 +1,9 @@
 {
   "schema": "gtcx://bridge-os/settlement-push/v1",
-  "at": "2026-06-15T11:02:45.881Z",
+  "at": "2026-06-15T11:10:27.149Z",
   "repo": "fabric-os",
   "branch": "main",
   "ok": true,
   "errors": [],
-  "warnings": ["pushing protected branch main"]
+  "warnings": ["nothing to push", "pushing protected branch main"]
 }

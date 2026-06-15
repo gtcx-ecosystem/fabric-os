@@ -522,7 +522,13 @@
       "to": "audit/archive/2026-06-15/audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json",
       "reason": "stale-dated-active-tree",
       "at": "2026-06-15T09:57:01.691Z"
+    },
+    {
+      "from": "audit/ecosystem-revops-commops-forensic-2026-06-14.md",
+      "to": "audit/archive/2026-06-15/audit/ecosystem-revops-commops-forensic-2026-06-14.md",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-15T11:04:47.531Z"
     }
   ],
-  "updated": "2026-06-15T09:57:01.691Z"
+  "updated": "2026-06-15T11:04:47.531Z"
 }

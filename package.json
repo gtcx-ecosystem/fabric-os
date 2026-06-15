@@ -172,6 +172,8 @@
     "pm:folder:check": "node ../bridge-os/platform/scripts/workspace/pm-folder-check.mjs",
     "aiops:check": "node platform/scripts/aiops-check.mjs",
     "aiops:check:write": "node platform/scripts/aiops-check.mjs --write",
+    "fabric:ops-lanes-11pr:check": "node platform/scripts/fabric-ops-lanes-11pr-check.mjs",
+    "fabric:ops-lanes-11pr:check:write": "node platform/scripts/fabric-ops-lanes-11pr-check.mjs --write",
     "mlops:cost-router-staging-probe": "node platform/scripts/mlops-cost-router-staging-probe.mjs",
     "mlops:cost-router-staging-probe:write": "node platform/scripts/mlops-cost-router-staging-probe.mjs --write"
   },

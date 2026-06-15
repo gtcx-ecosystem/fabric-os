@@ -1,0 +1,1672 @@
+{
+  "$schema": "gtcx://fabric-os/fabric-ops-lanes-11pr/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15T20:21:44.890Z",
+  "repo": "fabric-os",
+  "probes": "bridge-os/pm/spec/ops-lane-11pr-probes.json",
+  "pass": 6,
+  "total": 8,
+  "ok": false,
+  "results": [
+    {
+      "opsLane": "InfraOps",
+      "owner": "fabric-os",
+      "ownerRepo": "fabric-os",
+      "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+      "scorecardRef": "pm/spec/ops-lanes-100-plan.json",
+      "quadrants": {
+        "compliance": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [
+            "pm/friction-register.json",
+            "docs/operations/platform-services/devops-as-a-service.md",
+            "docs/operations/core-ops/batch-a/ops-programs.md"
+          ],
+          "pathScore": {
+            "score100": 100,
+            "passed": 3,
+            "total": 3
+          }
+        },
+        "technicalExcellence": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [
+            "platform/scripts/daas-friction-check.mjs",
+            "platform/scripts/daas-cards-check.mjs"
+          ],
+          "pathScore": {
+            "score100": 100,
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "craft": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["docs/operations/platform-services/devops-as-a-service.md"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "worldClass": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [
+            "docs/operations/platform-services/devops-as-a-service.md",
+            "docs/operations/core-ops/README.md"
+          ],
+          "pathScore": {
+            "score100": 100,
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "trustAndSafety": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [
+            "pm/friction-register.json",
+            "audit/evidence/program-sprints-seal-latest.json"
+          ],
+          "pathScore": {
+            "score100": 100,
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "creativityInnovation": {
+          "score100": 95,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "commercialValue": {
+          "score100": 92,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "defensiveMoat": {
+          "score100": 93,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "agenticEmpowerment": {
+          "score100": 94,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "technicalExcellence": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "productEcosystemIntegration": {
+          "score100": 97,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["../bridge-os/pm/ci/daas-check-latest.json"],
+          "requires": {
+            "technicalExcellence": 85,
+            "worldClass": 85
+          }
+        },
+        "ipMagic": {
+          "score100": 99,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["docs/operations/core-ops/batch-a/ops-programs.md"],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        }
+      },
+      "foundationComposite100": 100,
+      "fullComposite100": 97,
+      "target100": 100,
+      "foundationUnlocked": true,
+      "ok": true,
+      "at100": false,
+      "pillars": [
+        {
+          "id": "compliance",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "technicalExcellence",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "craft",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "worldClass",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "trustAndSafety",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "creativityInnovation",
+          "score100": 95,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "commercialValue",
+          "score100": 92,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "defensiveMoat",
+          "score100": 93,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "agenticEmpowerment",
+          "score100": 94,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "productEcosystemIntegration",
+          "score100": 97,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "ipMagic",
+          "score100": 99,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        }
+      ],
+      "source": "probes"
+    },
+    {
+      "opsLane": "DevOps",
+      "owner": "fabric-os",
+      "ownerRepo": "fabric-os",
+      "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+      "scorecardRef": "pm/spec/ops-lanes-100-plan.json",
+      "quadrants": {
+        "compliance": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [
+            "docs/operations/platform-services/devops-as-a-service.md",
+            "pm/friction-register.json"
+          ],
+          "pathScore": {
+            "score100": 100,
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "technicalExcellence": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["platform/scripts/daas-friction-check.mjs"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "craft": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["docs/operations/platform-services/devops-as-a-service.md"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "worldClass": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["docs/operations/platform-services/devops-as-a-service.md"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "trustAndSafety": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["pm/friction-register.json"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "creativityInnovation": {
+          "score100": 95,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "commercialValue": {
+          "score100": 92,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "defensiveMoat": {
+          "score100": 93,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "agenticEmpowerment": {
+          "score100": 94,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "technicalExcellence": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "productEcosystemIntegration": {
+          "score100": 97,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["../bridge-os/pm/ci/daas-check-latest.json"],
+          "requires": {
+            "technicalExcellence": 85,
+            "worldClass": 85
+          }
+        },
+        "ipMagic": {
+          "score100": 98,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        }
+      },
+      "foundationComposite100": 100,
+      "fullComposite100": 97,
+      "target100": 100,
+      "foundationUnlocked": true,
+      "ok": true,
+      "at100": false,
+      "pillars": [
+        {
+          "id": "compliance",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "technicalExcellence",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "craft",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "worldClass",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "trustAndSafety",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "creativityInnovation",
+          "score100": 95,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "commercialValue",
+          "score100": 92,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "defensiveMoat",
+          "score100": 93,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "agenticEmpowerment",
+          "score100": 94,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "productEcosystemIntegration",
+          "score100": 97,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "ipMagic",
+          "score100": 98,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        }
+      ],
+      "source": "probes"
+    },
+    {
+      "opsLane": "SecOps",
+      "owner": "fabric-os",
+      "ownerRepo": "fabric-os",
+      "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+      "scorecardRef": "pm/spec/ops-lanes-100-plan.json",
+      "quadrants": {
+        "compliance": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [
+            "docs/operations/secas/secas-s4-security-engineering-program.md",
+            "pm/security-friction-register.json"
+          ],
+          "pathScore": {
+            "score100": 100,
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "technicalExcellence": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [
+            "platform/scripts/secas-friction-check.mjs",
+            "platform/scripts/secas-approval-check.mjs"
+          ],
+          "pathScore": {
+            "score100": 100,
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "craft": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["docs/operations/secas/secas-s5-continuous-assurance-program.md"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "worldClass": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["docs/operations/secas/secas-s4-security-engineering-program.md"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "trustAndSafety": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["pm/security-friction-register.json"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "creativityInnovation": {
+          "score100": 95,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "commercialValue": {
+          "score100": 92,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "defensiveMoat": {
+          "score100": 93,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "agenticEmpowerment": {
+          "score100": 94,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "technicalExcellence": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "productEcosystemIntegration": {
+          "score100": 97,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["../bridge-os/pm/ci/secas-witness-rollup-latest.json"],
+          "requires": {
+            "technicalExcellence": 85,
+            "worldClass": 85
+          }
+        },
+        "ipMagic": {
+          "score100": 98,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        }
+      },
+      "foundationComposite100": 100,
+      "fullComposite100": 97,
+      "target100": 100,
+      "foundationUnlocked": true,
+      "ok": true,
+      "at100": false,
+      "pillars": [
+        {
+          "id": "compliance",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "technicalExcellence",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "craft",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "worldClass",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "trustAndSafety",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "creativityInnovation",
+          "score100": 95,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "commercialValue",
+          "score100": 92,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "defensiveMoat",
+          "score100": 93,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "agenticEmpowerment",
+          "score100": 94,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "productEcosystemIntegration",
+          "score100": 97,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "ipMagic",
+          "score100": 98,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        }
+      ],
+      "source": "probes"
+    },
+    {
+      "opsLane": "EcosystemOps",
+      "owner": "fabric-os",
+      "ownerRepo": "fabric-os",
+      "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+      "scorecardRef": "pm/spec/ops-lanes-100-plan.json",
+      "quadrants": {
+        "compliance": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [
+            "docs/operations/core-ops/batch-a/ops-programs.md",
+            "platform/tools/scripts/cross-repo-health-probe.mjs"
+          ],
+          "pathScore": {
+            "score100": 100,
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "technicalExcellence": {
+          "score100": 70,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": ["platform/scripts/ecosystemops-network-check.mjs"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "craft": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["docs/operations/core-ops/batch-a/ops-programs.md"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "worldClass": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["docs/operations/core-ops/README.md"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "trustAndSafety": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["pm/friction-register.json"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "creativityInnovation": {
+          "score100": 95,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "commercialValue": {
+          "score100": 92,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "defensiveMoat": {
+          "score100": 93,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "agenticEmpowerment": {
+          "score100": 66,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85"],
+          "evidence": [],
+          "requires": {
+            "technicalExcellence": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "productEcosystemIntegration": {
+          "score100": 83,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85"],
+          "evidence": ["../bridge-os/pm/ci/fabric-check-latest.json"],
+          "requires": {
+            "technicalExcellence": 85,
+            "worldClass": 85
+          }
+        },
+        "ipMagic": {
+          "score100": 98,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        }
+      },
+      "foundationComposite100": 94,
+      "fullComposite100": 91,
+      "target100": 100,
+      "foundationUnlocked": false,
+      "ok": true,
+      "at100": false,
+      "pillars": [
+        {
+          "id": "compliance",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "technicalExcellence",
+          "score100": 70,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "craft",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "worldClass",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "trustAndSafety",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "creativityInnovation",
+          "score100": 95,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "commercialValue",
+          "score100": 92,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "defensiveMoat",
+          "score100": 93,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "agenticEmpowerment",
+          "score100": 66,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85"]
+        },
+        {
+          "id": "productEcosystemIntegration",
+          "score100": 83,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85"]
+        },
+        {
+          "id": "ipMagic",
+          "score100": 98,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        }
+      ],
+      "source": "probes"
+    },
+    {
+      "opsLane": "FinOps",
+      "owner": "fabric-os",
+      "ownerRepo": "fabric-os",
+      "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+      "scorecardRef": "pm/spec/ops-lanes-100-plan.json",
+      "quadrants": {
+        "compliance": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": [
+            "pm/spec/finops-as-a-service.json",
+            "docs/operations/finops-as-a-service.md",
+            "pm/finops-friction-register.json"
+          ],
+          "pathScore": {
+            "score100": 0,
+            "passed": 0,
+            "total": 3
+          }
+        },
+        "technicalExcellence": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": ["platform/scripts/finops-check.mjs"],
+          "pathScore": {
+            "score100": 0,
+            "passed": 0,
+            "total": 1
+          }
+        },
+        "craft": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": ["docs/operations/finops-as-a-service.md"],
+          "pathScore": {
+            "score100": 0,
+            "passed": 0,
+            "total": 1
+          }
+        },
+        "worldClass": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": ["docs/operations/finops-as-a-service.md"],
+          "pathScore": {
+            "score100": 0,
+            "passed": 0,
+            "total": 1
+          }
+        },
+        "trustAndSafety": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": ["pm/finops-friction-register.json"],
+          "pathScore": {
+            "score100": 0,
+            "passed": 0,
+            "total": 1
+          }
+        },
+        "creativityInnovation": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85"],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "commercialValue": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["worldClass<85", "trustAndSafety<70"],
+          "evidence": [],
+          "requires": {
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "defensiveMoat": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85"],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "agenticEmpowerment": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85", "trustAndSafety<70"],
+          "evidence": [],
+          "requires": {
+            "technicalExcellence": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "productEcosystemIntegration": {
+          "score100": 50,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85", "worldClass<85"],
+          "evidence": ["../bridge-os/pm/ci/ops-lanes-100/finops-fleet-latest.json"],
+          "requires": {
+            "technicalExcellence": 85,
+            "worldClass": 85
+          }
+        },
+        "ipMagic": {
+          "score100": -2,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85", "trustAndSafety<70"],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        }
+      },
+      "foundationComposite100": 0,
+      "fullComposite100": 4,
+      "target100": 100,
+      "foundationUnlocked": false,
+      "ok": false,
+      "at100": false,
+      "pillars": [
+        {
+          "id": "compliance",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "technicalExcellence",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "craft",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "worldClass",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "trustAndSafety",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "creativityInnovation",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85"]
+        },
+        {
+          "id": "commercialValue",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["worldClass<85", "trustAndSafety<70"]
+        },
+        {
+          "id": "defensiveMoat",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85"]
+        },
+        {
+          "id": "agenticEmpowerment",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85", "trustAndSafety<70"]
+        },
+        {
+          "id": "productEcosystemIntegration",
+          "score100": 50,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85", "worldClass<85"]
+        },
+        {
+          "id": "ipMagic",
+          "score100": -2,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85", "trustAndSafety<70"]
+        }
+      ],
+      "source": "probes"
+    },
+    {
+      "opsLane": "PayOps",
+      "owner": "fabric-os",
+      "ownerRepo": "fabric-os",
+      "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+      "scorecardRef": "pm/spec/ops-lanes-100-plan.json",
+      "quadrants": {
+        "compliance": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [
+            "pm/payops-substrate-contract.json",
+            "pm/payops-friction-register.json",
+            "docs/operations/platform-services/payops-as-a-service.md"
+          ],
+          "pathScore": {
+            "score100": 100,
+            "passed": 3,
+            "total": 3
+          }
+        },
+        "technicalExcellence": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [
+            "platform/scripts/payops-providers-check.mjs",
+            "platform/scripts/payops-substrate-readiness.mjs"
+          ],
+          "pathScore": {
+            "score100": 100,
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "craft": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["docs/operations/platform-services/payops-as-a-service.md"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "worldClass": {
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["docs/operations/platform-services/payops-as-a-service.md"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "trustAndSafety": {
+          "score100": 75,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": ["pm/payops-friction-register.json"],
+          "pathScore": {
+            "score100": 100,
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "creativityInnovation": {
+          "score100": 95,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "commercialValue": {
+          "score100": 92,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "defensiveMoat": {
+          "score100": 93,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "agenticEmpowerment": {
+          "score100": 85,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "technicalExcellence": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "productEcosystemIntegration": {
+          "score100": 97,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": ["../bridge-os/pm/ci/ops-lanes-100/payops-fleet-latest.json"],
+          "requires": {
+            "technicalExcellence": 85,
+            "worldClass": 85
+          }
+        },
+        "ipMagic": {
+          "score100": 90,
+          "published": true,
+          "provisional": false,
+          "blockedBy": [],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        }
+      },
+      "foundationComposite100": 95,
+      "fullComposite100": 93,
+      "target100": 100,
+      "foundationUnlocked": false,
+      "ok": true,
+      "at100": false,
+      "pillars": [
+        {
+          "id": "compliance",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "technicalExcellence",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "craft",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "worldClass",
+          "score100": 100,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "trustAndSafety",
+          "score100": 75,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "creativityInnovation",
+          "score100": 95,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "commercialValue",
+          "score100": 92,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "defensiveMoat",
+          "score100": 93,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "agenticEmpowerment",
+          "score100": 85,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "productEcosystemIntegration",
+          "score100": 97,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        },
+        {
+          "id": "ipMagic",
+          "score100": 90,
+          "published": true,
+          "provisional": false,
+          "blockedBy": []
+        }
+      ],
+      "source": "probes"
+    },
+    {
+      "opsLane": "CommOps",
+      "owner": "fabric-os",
+      "ownerRepo": "fabric-os",
+      "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+      "scorecardRef": "pm/spec/ops-lanes-100-plan.json",
+      "quadrants": {
+        "compliance": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": [
+            "pm/spec/commops-as-a-service.json",
+            "docs/operations/commops-as-a-service.md",
+            "pm/commops-friction-register.json"
+          ],
+          "pathScore": {
+            "score100": 0,
+            "passed": 0,
+            "total": 3
+          }
+        },
+        "technicalExcellence": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": ["platform/scripts/commops-check.mjs"],
+          "pathScore": {
+            "score100": 0,
+            "passed": 0,
+            "total": 1
+          }
+        },
+        "craft": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": ["docs/operations/commops-as-a-service.md"],
+          "pathScore": {
+            "score100": 0,
+            "passed": 0,
+            "total": 1
+          }
+        },
+        "worldClass": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": ["docs/operations/commops-as-a-service.md"],
+          "pathScore": {
+            "score100": 0,
+            "passed": 0,
+            "total": 1
+          }
+        },
+        "trustAndSafety": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"],
+          "evidence": ["pm/commops-friction-register.json"],
+          "pathScore": {
+            "score100": 0,
+            "passed": 0,
+            "total": 1
+          }
+        },
+        "creativityInnovation": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85"],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "commercialValue": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["worldClass<85", "trustAndSafety<70"],
+          "evidence": [],
+          "requires": {
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "defensiveMoat": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85"],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85
+          }
+        },
+        "agenticEmpowerment": {
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85", "trustAndSafety<70"],
+          "evidence": [],
+          "requires": {
+            "technicalExcellence": 85,
+            "trustAndSafety": 70
+          }
+        },
+        "productEcosystemIntegration": {
+          "score100": 50,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85", "worldClass<85"],
+          "evidence": ["../bridge-os/pm/ci/ops-lanes-100/commops-fleet-latest.json"],
+          "requires": {
+            "technicalExcellence": 85,
+            "worldClass": 85
+          }
+        },
+        "ipMagic": {
+          "score100": -2,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85", "trustAndSafety<70"],
+          "evidence": [],
+          "requires": {
+            "craft": 85,
+            "worldClass": 85,
+            "trustAndSafety": 70
+          }
+        }
+      },
+      "foundationComposite100": 0,
+      "fullComposite100": 4,
+      "target100": 100,
+      "foundationUnlocked": false,
+      "ok": false,
+      "at100": false,
+      "pillars": [
+        {
+          "id": "compliance",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "technicalExcellence",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "craft",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "worldClass",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "trustAndSafety",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["below-threshold"]
+        },
+        {
+          "id": "creativityInnovation",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85"]
+        },
+        {
+          "id": "commercialValue",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["worldClass<85", "trustAndSafety<70"]
+        },
+        {
+          "id": "defensiveMoat",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85"]
+        },
+        {
+          "id": "agenticEmpowerment",
+          "score100": 0,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85", "trustAndSafety<70"]
+        },
+        {
+          "id": "productEcosystemIntegration",
+          "score100": 50,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["technicalExcellence<85", "worldClass<85"]
+        },
+        {
+          "id": "ipMagic",
+          "score100": -2,
+          "published": false,
+          "provisional": true,
+          "blockedBy": ["craft<85", "worldClass<85", "trustAndSafety<70"]
+        }
+      ],
+      "source": "probes"
+    },
+    {
+      "opsLane": "AIOps",
+      "ownerRepo": "fabric-os",
+      "source": "native-witness",
+      "foundationComposite100": 100,
+      "fullComposite100": 100,
+      "foundationUnlocked": true,
+      "ok": true,
+      "pillars": [
+        {
+          "id": "compliance",
+          "score": 100,
+          "evidence": "spec+runbook+registers"
+        },
+        {
+          "id": "technicalExcellence",
+          "score": 100,
+          "evidence": "check+tests+scripts"
+        },
+        {
+          "id": "craft",
+          "score": 100,
+          "evidence": "frontmatter"
+        },
+        {
+          "id": "worldClass",
+          "score": 100,
+          "evidence": "docs six-pack subset"
+        },
+        {
+          "id": "trustAndSafety",
+          "score": 100,
+          "evidence": "authority+redaction"
+        },
+        {
+          "id": "creativityInnovation",
+          "score": 100,
+          "evidence": "signals paths"
+        },
+        {
+          "id": "commercialValue",
+          "score": 100,
+          "evidence": "injection-suite"
+        },
+        {
+          "id": "defensiveMoat",
+          "score": 100,
+          "evidence": "anomaly-detector"
+        },
+        {
+          "id": "agenticEmpowerment",
+          "score": 100,
+          "evidence": "harness"
+        },
+        {
+          "id": "productEcosystemIntegration",
+          "score": 85,
+          "evidence": "handoff"
+        },
+        {
+          "id": "ipMagic",
+          "score": 100,
+          "evidence": "P53 hub"
+        }
+      ]
+    }
+  ]
+}

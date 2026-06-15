@@ -1,8 +1,12 @@
 ---
-title: SOC operations — canonical index
+title: 'SOC operations — canonical index'
 status: current
 date: 2026-06-15
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 protocol: P42
 ---
 

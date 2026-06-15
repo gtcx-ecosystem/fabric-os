@@ -2,6 +2,11 @@
 title: 'Inbound ack — Multi-pillar assurance lane'
 status: done
 date: 2026-06-15
+owner: canon-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: canon-os
 to: fabric-os
 ticket: XR-FABRIC-MPR-AGENT-001

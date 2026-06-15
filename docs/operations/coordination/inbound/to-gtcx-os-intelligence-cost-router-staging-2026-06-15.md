@@ -3,6 +3,9 @@ title: 'Inbound — cost-router staging image rebuild (intelligence owner)'
 status: current
 date: 2026-06-15
 owner: fabric-os
+tier: operating
+tags: ['coordination', 'documentation']
+review_cycle: on-change
 document_type: coordination
 ---
 

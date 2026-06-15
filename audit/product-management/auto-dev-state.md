@@ -21,6 +21,14 @@ last_reconciled: 2026-06-14T10:15:00.000Z
 - **Status:** in_progress (3/4 UAT — pre-window gates green 2026-06-14)
 - **Reason:** Pen-test window **2026-06-17..21**; vendor report ingest pending (`awaiting_vendor_report`); five-pillar composite **100/100** restored 2026-06-14.
 
+## SECAS-S2-01 prep cycle (2026-06-15)
+
+- **Phase:** `awaiting_vendor_report` · window **2026-06-17..21** · ingest earliest **2026-06-21**
+- **Harness sweep:** friction · approval · cards · ingest · automation · parallel-lane · window-readiness · remediation · supply-chain · vuln-cadence · **csirt** · fabric:lanes — all **PASS**
+- **Fix:** `secas-csirt-check` soc-ops path → `docs/operations/core-ops/batch-b/soc-operations.md` (W4 IA)
+- **Synthetic ingest:** `pen-test-report-synthetic.json --dry-run` PASS
+- **Bridge rollup:** `ecosystem-secas-witness-rollup --write` **8/8** · `storyComplete=false`
+
 ## COMPOSITE-RESTORE-100 (2026-06-15 — cycle 2)
 
 - **Outcome:** **done** — composite100 **59 → 100** after `fdd47cf` removed IA shadow stubs

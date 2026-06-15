@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/secas-csirt-check/v1",
   "storyId": "SECAS-S4-01",
   "frictionId": "SEC-CSIRT-01",
-  "checkedAt": "2026-06-14T10:58:07.847Z",
+  "checkedAt": "2026-06-15T12:35:53.088Z",
   "owner": "fabric-os",
   "gates": {
     "frictionItem": {
@@ -19,7 +19,8 @@
       "missing": []
     },
     "socOpsLink": {
-      "ok": true
+      "ok": true,
+      "path": "docs/operations/core-ops/batch-b/soc-operations.md"
     },
     "drillEvidence": {
       "ok": true,

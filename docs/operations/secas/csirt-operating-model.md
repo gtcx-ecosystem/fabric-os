@@ -60,7 +60,7 @@ Persona SoR: `canon-os/docs/governance/institutional/personas/security-engineer.
 | Ack SLA       | SEV-1: 15 min · SEV-2: 1 h · SEV-3: next business day              |
 | Out of scope  | Product-only bugs without security impact → owner repo             |
 
-**L2 managed SOC** (business-hours playbooks): see [soc-operations.md](../soc-operations.md).  
+**L2 managed SOC** (business-hours playbooks): see [soc-operations.md](../core-ops/batch-b/soc-operations.md).  
 **L3 24/7 SIEM** target: 2027-Q1 per SOC roadmap — CSIRT model above bridges L1→L3.
 
 ## Drill cadence

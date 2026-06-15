@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/secas-vuln-cadence-check/v1",
   "storyId": "SECAS-S4-03",
   "frictionId": "SEC-VULN-01",
-  "checkedAt": "2026-06-14T15:40:53.781Z",
+  "checkedAt": "2026-06-15T12:35:18.804Z",
   "owner": "fabric-os",
   "policy": {
     "json": "pm/spec/vuln-cadence-policy.json",

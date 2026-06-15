@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/fabric-lanes-check/v1",
-  "checkedAt": "2026-06-12T20:10:29.248Z",
+  "checkedAt": "2026-06-15T12:36:02.107Z",
   "owner": "fabric-os",
   "initiative": "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
   "sources": {
@@ -24,7 +24,7 @@
     },
     "tradeLaneHandoffs": {
       "ok": true,
-      "checked": 3,
+      "checked": 0,
       "missingLaneId": []
     }
   },

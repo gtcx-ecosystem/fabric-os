@@ -12,7 +12,10 @@ const REGISTER = join(ROOT, 'pm/security-friction-register.json');
 const FRICTION_ID = 'SEC-CSIRT-01';
 const IR_RUNBOOK = join(ROOT, 'docs/operations/secas/runbooks/incident-response.md');
 const OPERATING_MODEL = join(ROOT, 'docs/operations/secas/csirt-operating-model.md');
-const SOC_OPS = join(ROOT, 'docs/operations/soc-operations.md');
+const SOC_OPS_CANDIDATES = [
+  join(ROOT, 'docs/operations/soc-operations.md'),
+  join(ROOT, 'docs/operations/core-ops/batch-b/soc-operations.md'),
+];
 const EVIDENCE_DIR = join(ROOT, 'audit/evidence');
 const OUT = join(EVIDENCE_DIR, 'secas-csirt-operating-model-latest.json');
 const WRITE = process.argv.includes('--write');
@@ -58,8 +61,10 @@ gates.operatingModel = {
   ...hasSections(modelText, ['## Escalation matrix', '## On-call contract', '## Drill cadence']),
 };
 
+const socOpsPath = SOC_OPS_CANDIDATES.find((p) => existsSync(p)) ?? null;
 gates.socOpsLink = {
-  ok: existsSync(SOC_OPS) && modelText.includes('soc-operations.md'),
+  ok: Boolean(socOpsPath) && modelText.includes('soc-operations.md'),
+  path: socOpsPath ? socOpsPath.slice(ROOT.length + 1) : null,
 };
 
 gates.drillEvidence = drillWitnessPresent();

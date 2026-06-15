@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/secas-supply-chain-check/v2",
   "storyId": "SECAS-S4-02",
   "frictionId": "SEC-SUPPLY-01",
-  "checkedAt": "2026-06-14T14:18:28.467Z",
+  "checkedAt": "2026-06-15T12:35:14.299Z",
   "owner": "fabric-os",
   "policy": {
     "json": "pm/spec/supply-chain-cve-policy.json",
@@ -11,7 +11,7 @@
   "gates": {
     "frictionItem": {
       "ok": true,
-      "status": "pending",
+      "status": "closed",
       "storyId": "SECAS-S4-02"
     },
     "policyDoc": {

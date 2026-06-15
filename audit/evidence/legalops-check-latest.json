@@ -1,0 +1,31 @@
+{
+  "$schema": "gtcx://fabric-os/legalops-check-witness/v1",
+  "updated": "2026-06-15T20:48:52.026Z",
+  "repo": "fabric-os",
+  "lane": "LegalOps",
+  "gates": {
+    "spec": {
+      "ok": true
+    },
+    "frictionRegister": {
+      "ok": true
+    },
+    "programmeSpec": {
+      "ok": true
+    },
+    "fleetProtocol": {
+      "ok": true
+    },
+    "fleetWitness": {
+      "ok": true
+    },
+    "opsLane": {
+      "ok": true
+    },
+    "registerOwner": {
+      "ok": true
+    }
+  },
+  "ok": true,
+  "fleetWitness": true
+}

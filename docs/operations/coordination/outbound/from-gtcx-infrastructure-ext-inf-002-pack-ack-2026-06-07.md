@@ -3,10 +3,13 @@ title: 'Outbound — EXT-INF-002 vendor pack receipt ack'
 status: current
 date: 2026-06-07
 owner: fabric-os
+tier: operating
+tags: [['coordination', 'outbound', 'ext-inf-002', 'witness']]
+review_cycle: on-change
+document_type: runbook
 to: gtcx-core
 from: fabric-os
 protocol: canon-os/01-docs/governance/protocols/24-cross-repo-coordination/protocol.md
-tags: ['coordination', 'outbound', 'ext-inf-002', 'witness']
 ---
 
 # Outbound — EXT-INF-002 vendor pack receipt (gtcx-core)

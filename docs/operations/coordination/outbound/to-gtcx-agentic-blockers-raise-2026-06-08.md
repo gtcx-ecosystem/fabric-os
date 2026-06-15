@@ -3,12 +3,15 @@ title: 'Outbound — fabric-os blockers raise (human + XC)'
 status: current
 date: 2026-06-08
 owner: fabric-os
+tier: operating
+tags: [['coordination', 'outbound', 'human-gates', 'ext-inf', 'witness']]
+review_cycle: on-change
+document_type: runbook
+document_id: INFRA-OUT-AGENTIC-BLOCKERS-001
 to: gtcx-agentic
 from: fabric-os
 protocol: canon-os/01-docs/governance/protocols/24-cross-repo-coordination/protocol.md
-document_id: INFRA-OUT-AGENTIC-BLOCKERS-001
 priority: P0
-tags: ['coordination', 'outbound', 'human-gates', 'ext-inf', 'witness']
 ---
 
 # Outbound — raise blockers to gtcx-agentic

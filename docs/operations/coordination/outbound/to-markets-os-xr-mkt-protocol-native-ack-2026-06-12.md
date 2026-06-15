@@ -3,6 +3,10 @@ title: 'outbound-ack — XR-MKT-PROTOCOL-NATIVE-001'
 status: accepted
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: markets-os
 ticket: XR-MKT-PROTOCOL-NATIVE-001

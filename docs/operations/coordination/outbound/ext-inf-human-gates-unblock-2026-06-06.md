@@ -3,6 +3,10 @@ title: 'EXT-INF human gates — who unblocks (fabric-os)'
 status: current
 date: 2026-06-06
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # EXT-INF human gates — unblock matrix (XC track)

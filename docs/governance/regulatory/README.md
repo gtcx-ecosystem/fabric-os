@@ -11,4 +11,4 @@ review_cycle: on-change
 
 # regulatory
 
-> See [`FOLDER-SPEC.md`](./FOLDER-SPEC.md) when present.
+> See [`folder-spec.md`](../folder-spec.md) when present.

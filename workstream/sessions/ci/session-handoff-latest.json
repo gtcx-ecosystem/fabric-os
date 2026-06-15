@@ -13,7 +13,15 @@
     "title": "Pen-test findings remediation track + re-test witness",
     "status": "in_progress"
   },
-  "git": {
+  "parallelLanes": [
+    {
+      "id": "AI-MLOPS",
+      "branch": "feature/ai-mlops",
+      "next": "MOF-002-ROLLout",
+      "witness": "audit/evidence/mlops-cost-router-staging-probe-latest.json",
+      "status": "staging-probe-fail"
+    }
+  ],
     "branch": "feature/ai-mlops",
     "recent": [
       "baf6f95 docs(session): handoff 2026-06-15 — ops lanes 17/17, SECAS-S4-04 calendar",

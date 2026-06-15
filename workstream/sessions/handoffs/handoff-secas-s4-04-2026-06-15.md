@@ -52,6 +52,20 @@ _Closure bar not run._
 - commit: 93d803d chore(ops): refresh assurance and pillar witnesses; remove stale sessions/ root directory
 - commit: 9f816fe fix(secas): owner-accountable supply-chain gate, esbuild override, layout/root fixes
 
+## Parallel lane — AI/MLOps (`feature/ai-mlops`)
+
+| ID | What | Evidence |
+| --- | --- | --- |
+| Lane ownership | AIOps → **bridge-os** + **baseline-os**; fabric = substrate only | `7e636f8`, bridge `26c67b7`, canon `52d8708e` |
+| Hub protocols | **P52** MLOps · **P53** AIOps (not P49/P50 — collision avoided) | `canon-os/docs/governance/protocols/52-mlops-as-a-service/` |
+| baseline-os harness | `pnpm mlops:check:write` PASS | `baseline-os` branch `feature/mlops-lane` `bfd2d9ee0` |
+| Fleet witness | fabric substrate + baseline MLOps rollup PASS | `pnpm --dir ../bridge-os ecosystem:aiops:check:fleet:write` |
+| **MOF-002** | Staging probe: health `enableCostRouter=true` but pod **missing** `baselineos/cost-router` | `pnpm mlops:cost-router-staging-probe:write` → FAIL · `56f6d9b` |
+
+**MOF-002 unblock:** `gtcx-os/platform/intelligence` rebuild SDK image (Dockerfile has baselineos COPY) → ECR push → update `deploy/kubernetes/overlays/staging/intelligence/deployment.yaml` image tag → re-probe must PASS.
+
+Handoff: `docs/operations/coordination/inbound/to-gtcx-os-intelligence-cost-router-staging-2026-06-15.md`
+
 ## Current P22 head
 
 `SECAS-S4-04` — Pen-test findings remediation track + re-test witness (in_progress, —)

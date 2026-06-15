@@ -21,6 +21,13 @@ last_reconciled: 2026-06-14T10:15:00.000Z
 - **Status:** in_progress (3/4 UAT — pre-window gates green 2026-06-14)
 - **Reason:** Pen-test window **2026-06-17..21**; vendor report ingest pending (`awaiting_vendor_report`); five-pillar composite **100/100** restored 2026-06-14.
 
+## COMPOSITE-RESTORE-100 (2026-06-15)
+
+- **Outcome:** **done** — composite100 **59 → 100** after W4 IA uplift drift
+- **Root cause:** `docs/agents/` + `docs/agile/` missing (IA moved to `docs/operations/agents/`); P22 manifest at `docs/operations/agent-work-selection.md` displaced to agent-spine
+- **Fix:** P35 bridge indexes at `docs/agents/` + `docs/agile/roadmap.md`; restore P22 manifest; `run-five-pillar-fleet-uplift --repo fabric-os --write`
+- **Gates:** `pnpm ops:check` PASS · `agent:work-selection:check` 9/9 · P35 strict 100/100
+
 ## COMPOSITE-RESTORE-100 (2026-06-14)
 
 - **Outcome:** **done** — `five-pillar-latest.json` composite100 **100** · trust **100** · independent-replay **100**

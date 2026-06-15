@@ -14,14 +14,14 @@
     },
     "technicalExcellence": {
       "score100": 100,
-      "score100Raw": 99,
+      "score100Raw": 87,
       "packTe100": 100,
       "capped": false,
       "source": "fleet-seal100"
     },
     "craft": {
       "score100": 100,
-      "score100Raw": 94,
+      "score100Raw": 93,
       "capped": false,
       "capReasons": [],
       "craftFlags": {
@@ -32,10 +32,10 @@
     },
     "worldClass": {
       "score100": 100,
-      "documentationQuality100": 96,
+      "documentationQuality100": 72,
       "worldClassBar100": 95,
-      "gap100": 0,
-      "gapLabel": "frontier",
+      "gap100": 23,
+      "gapLabel": "world-class",
       "references": ["Stripe docs", "Kubernetes docs", "gtcx-docs hub"],
       "source": "fleet-seal100"
     }
@@ -43,16 +43,16 @@
   "forensic": {
     "axes": {
       "structural": 100,
-      "naming": 85,
+      "naming": 80,
       "frontmatter": 97,
-      "links": 100,
+      "links": 0,
       "agentic": 85
     },
     "score100": 100,
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
-      "markdownFileCount": 478,
+      "markdownFileCount": 525,
       "brokenLinks": 0,
       "scaffoldFileCount": 0,
       "aiSlopFileCount": 0

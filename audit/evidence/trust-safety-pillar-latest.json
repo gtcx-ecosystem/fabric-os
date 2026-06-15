@@ -2,7 +2,7 @@
   "schema": "gtcx://audit/trust-safety-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-15",
-  "score100": 92,
+  "score100": 100,
   "published": true,
   "metrics": {
     "evidence-coverage": {
@@ -19,21 +19,7 @@
     "confidence-grade": {
       "score100": 100,
       "weight": 20,
-      "grades": [
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A",
-        "A"
-      ],
+      "grades": ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
       "publishBlocked": false
     },
     "anti-hallucination": {
@@ -47,9 +33,9 @@
       "versionBloatHits": 0
     },
     "independent-replay": {
-      "score100": 45,
+      "score100": 100,
       "weight": 15,
-      "opsCheck": false
+      "opsCheck": true
     }
   },
   "mode": "envelope-cap",

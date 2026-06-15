@@ -2,19 +2,19 @@
   "schema": "gtcx://audit/compliance-rubric/v1",
   "repo": "fabric-os",
   "date": "2026-06-15",
-  "score100": 69,
+  "score100": 100,
   "categories": {
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
       "weight": 8,
-      "score100": 45,
+      "score100": 100,
       "protocol": "P35",
       "items": [
         {
           "id": "p35-strict-pass",
           "label": "P35 layout strict GREEN",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 35,
           "severity": "P1",
           "optional": false,
@@ -35,8 +35,8 @@
         {
           "id": "root-allowlist",
           "label": "Root allowlist / workspace root cleanliness",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 20,
           "severity": "P2",
           "optional": false,
@@ -135,14 +135,14 @@
     "ops-domains-p29": {
       "label": "Operational domains (P29)",
       "weight": 6,
-      "score100": 50,
+      "score100": 100,
       "protocol": "P29",
       "items": [
         {
           "id": "ops-check-pass",
           "label": "pnpm ops:check exit 0",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 50,
           "severity": "P1",
           "optional": false,
@@ -435,7 +435,7 @@
     "agentic-harness-p22-p28": {
       "label": "Agentic harness (P22–P28)",
       "weight": 10,
-      "score100": 75,
+      "score100": 100,
       "protocol": "P22-P28",
       "items": [
         {
@@ -463,8 +463,8 @@
         {
           "id": "agent-work-selection-check",
           "label": "pnpm agent:work-selection:check",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 25,
           "severity": "P1",
           "optional": false,
@@ -799,35 +799,6 @@
       "itemCount": 2
     }
   },
-  "violations": [
-    {
-      "id": "p35-strict-pass",
-      "categoryId": "layout-p35",
-      "label": "P35 layout strict GREEN",
-      "severity": "P1",
-      "detail": "p35Strict"
-    },
-    {
-      "id": "root-allowlist",
-      "categoryId": "layout-p35",
-      "label": "Root allowlist / workspace root cleanliness",
-      "severity": "P2",
-      "detail": "opsCheck"
-    },
-    {
-      "id": "ops-check-pass",
-      "categoryId": "ops-domains-p29",
-      "label": "pnpm ops:check exit 0",
-      "severity": "P1",
-      "detail": "opsCheck"
-    },
-    {
-      "id": "agent-work-selection-check",
-      "categoryId": "agentic-harness-p22-p28",
-      "label": "pnpm agent:work-selection:check",
-      "severity": "P1",
-      "detail": "workSelection"
-    }
-  ],
+  "violations": [],
   "itemTotal": 62
 }

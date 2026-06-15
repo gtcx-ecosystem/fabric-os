@@ -1,19 +1,20 @@
 ---
 title: 'GTCX Infrastructure — Execution Roadmap (superseded)'
-status: 'superseded'
-superseded_by: '01-docs/05-audit/execution-roadmap.md'
-superseded_on: '2026-05-31'
-superseded_reason: 'Sprints 7–12 plan replaced by the reconciled 3-sprint plan (35 stories from the 2026-05-30 audit cluster + GTM).'
-date: '2026-05-27'
-last_updated: '2026-05-25'
-owner: 'platform-engineering'
-tier: 'critical'
-tags: ['agile', 'roadmap', 'sprint-plan', 'audit', 'superseded']
-review_cycle: 'on-change'
-role: 'protocol-architect'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: superseded
+date: 2026-05-27
+owner: platform-engineering
+tier: critical
+tags: [['agile', 'roadmap', 'sprint-plan', 'audit', 'superseded']]
+review_cycle: on-change
+document_type: protocol
+role: protocol-architect
+superseded_by: 01-docs/05-audit/execution-roadmap.md
+superseded_on: 2026-05-31
+superseded_reason: Sprints 7–12 plan replaced by the reconciled 3-sprint plan (35 stories from the 2026-05-30 audit cluster + GTM).
+last_updated: 2026-05-25
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 > **SUPERSEDED 2026-05-31** — Current source of truth: [`audit/execution-roadmap.md`](../../audit/execution-roadmap.md).
@@ -84,7 +85,7 @@ A story is "ready" to pull into a sprint only when:
 
 ---
 
-# Closed Sprints (Cycle 1)
+## Closed Sprints (Cycle 1)
 
 Compressed retrospective form. Full per-sprint detail in commit history under each `feat(*)` commit.
 
@@ -158,7 +159,7 @@ Compressed retrospective form. Full per-sprint detail in commit history under ea
 
 ---
 
-# Forward Sprints (Cycle 2)
+## Forward Sprints (Cycle 2)
 
 ## Sprint 7 — External Engagement Activation
 
@@ -797,7 +798,7 @@ Sprint 12 will be re-detailed when its dependencies are confirmed.
 
 ---
 
-# Cross-Sprint Concerns
+## Cross-Sprint Concerns
 
 ## Risk Register (consolidated)
 

@@ -1,18 +1,19 @@
 ---
 title: 'Internal Completion Roadmap (Cycle 2.5) (superseded)'
-status: 'superseded'
-superseded_by: '01-docs/05-audit/execution-roadmap.md'
-superseded_on: '2026-05-31'
-superseded_reason: 'Cycle 2.5 four-sprint plan replaced by the reconciled 3-sprint plan in 01-docs/05-audit/execution-roadmap.md.'
-date: '2026-05-27'
-owner: 'platform-engineering'
-tier: 'critical'
-tags: ['agile', 'roadmap', 'sprint-plan', 'internal-only']
-review_cycle: 'on-change'
-role: 'protocol-architect'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: superseded
+date: 2026-05-27
+owner: platform-engineering
+tier: critical
+tags: [['agile', 'roadmap', 'sprint-plan', 'internal-only']]
+review_cycle: on-change
+document_type: protocol
+role: protocol-architect
+superseded_by: 01-docs/05-audit/execution-roadmap.md
+superseded_on: 2026-05-31
+superseded_reason: Cycle 2.5 four-sprint plan replaced by the reconciled 3-sprint plan in 01-docs/05-audit/execution-roadmap.md.
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Internal Completion Roadmap — Cycle 2.5
@@ -48,7 +49,7 @@ The main execution roadmap (`execution-roadmap-2026-05-22.md`) mixes internal an
 
 ---
 
-# Sprint INT-A — Close Audit Residuals (P0)
+## Sprint INT-A — Close Audit Residuals (P0)
 
 **Goal:** Every P1+ residual from the round-4 full audit that I can address from this session is closed.
 
@@ -125,7 +126,7 @@ The main execution roadmap (`execution-roadmap-2026-05-22.md`) mixes internal an
 
 ---
 
-# Sprint INT-B — Substrate Completion + ADRs (P0)
+## Sprint INT-B — Substrate Completion + ADRs (P0)
 
 **Goal:** Add the Redis-backed adaptive state behind a feature flag (so it's ready when scale warrants without flag-day urgency), and write the ADRs documenting the major substrate decisions Cycle 1 made implicitly.
 
@@ -185,7 +186,7 @@ The main execution roadmap (`execution-roadmap-2026-05-22.md`) mixes internal an
 
 ---
 
-# Sprint INT-C — Distribution Prep Drafts (P1)
+## Sprint INT-C — Distribution Prep Drafts (P1)
 
 **Goal:** Produce deployable-quality drafts for distribution work. The drafts can be reviewed and shipped without further engineering effort.
 
@@ -287,7 +288,7 @@ The main execution roadmap (`execution-roadmap-2026-05-22.md`) mixes internal an
 
 ---
 
-# Sprint INT-D — Compliance Prep Drafts (P2)
+## Sprint INT-D — Compliance Prep Drafts (P2)
 
 **Goal:** Two compliance artifacts that the SOC 2 auditor will ask for on day one. Drafts now means the auditor's kickoff is faster.
 
@@ -339,7 +340,7 @@ The main execution roadmap (`execution-roadmap-2026-05-22.md`) mixes internal an
 
 ---
 
-# Cross-Sprint
+## Cross-Sprint
 
 ## Dependency graph
 

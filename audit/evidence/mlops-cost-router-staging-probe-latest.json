@@ -1,0 +1,37 @@
+{
+  "$schema": "gtcx://fabric-os/mlops-cost-router-staging-probe/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15T18:04:10.150Z",
+  "storyId": "MOF-002",
+  "stagingUrl": "https://intelligence-staging.gtcx.trade",
+  "overall": "FAIL",
+  "health": {
+    "ok": true,
+    "enableCostRouter": true,
+    "status": "healthy",
+    "imageNote": "health flag alone insufficient — pod must import baselineos/cost-router"
+  },
+  "podImport": {
+    "ok": false,
+    "error": "Cannot find module 'baselineos/cost-router'\nRequire stack:\n- /app/[eval]",
+    "stderr": "command terminated with exit code 1\n"
+  },
+  "deployment": {
+    "namespace": "intelligence",
+    "name": "intelligence-orchestrator",
+    "manifest": "deploy/kubernetes/overlays/staging/intelligence/deployment.yaml"
+  },
+  "remediation": {
+    "owner": "gtcx-os/platform/intelligence",
+    "steps": [
+      "node 03-platform/scripts/prepare-baseline-os-for-ci.mjs",
+      "node 03-platform/tools/verify-cost-router-v1.1-consume.mjs",
+      "docker build -f 03-platform/intelligence/sdk/Dockerfile .",
+      "push to ECR gtcx-intelligence-sdk — update fabric deployment image tag",
+      "kubectl rollout status deployment/intelligence-orchestrator -n intelligence"
+    ]
+  },
+  "errors": [
+    "pod import failed: Cannot find module 'baselineos/cost-router'\nRequire stack:\n- /app/[eval]"
+  ]
+}

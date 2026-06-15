@@ -1,15 +1,16 @@
 ---
 title: 'Vault Dynamic Credentials — SIGNAL L4 Infrastructure Spec'
-status: 'current'
-date: '2026-05-27'
-owner: 'quality-evidence-lead'
-role: 'quality-evidence-lead'
-tier: 'informational'
-tags: ['security', 'crypto', 'compliance', 'architecture', 'infrastructure']
-review_cycle: 'monthly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: quality-evidence-lead
+tier: informational
+tags: [['security', 'crypto', 'compliance', 'architecture', 'infrastructure']]
+review_cycle: monthly
+document_type: protocol
+role: quality-evidence-lead
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Vault Dynamic Credentials — SIGNAL L4 Infrastructure Spec

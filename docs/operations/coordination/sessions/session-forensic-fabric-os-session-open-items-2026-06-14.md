@@ -79,4 +79,4 @@ Failing: program-office-ops (harness), git-settlement, initiative-closure-witnes
 
 ## Raise
 
-Outbound: [`to-bridge-os-session-open-items-forensic-2026-06-14.md`](./to-bridge-os-session-open-items-forensic-2026-06-14.md)
+Outbound: [`to-bridge-os-session-open-items-forensic-2026-06-14.md`](../inbound/to-a/to-bridge-os-session-open-items-forensic-2026-06-14.md)

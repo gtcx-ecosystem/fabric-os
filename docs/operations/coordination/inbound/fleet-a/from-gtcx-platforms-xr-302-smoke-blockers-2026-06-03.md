@@ -39,4 +39,4 @@ work_ids: [XR-302]
 | 2 Secrets (`SECRET_KEY_BASE` + `TRADEPASS_JWT_SECRET`)         | **done**     | AWS SM `gtcx-secrets-staging-cdkk972mcc` updated; pods rolling-restarted; env verified            |
 | 3 Migrations (`audit_records` + `outbox` + `idempotency_keys`) | **done**     | K8s Job `migrate-shared-entities` created all 3 tables + indexes; pods restarted; no more `42P01` |
 
-**Reply posted:** [`from-fabric-os-xr-302-smoke-blockers-2026-06-03.md`](from-fabric-os-xr-302-smoke-blockers-2026-06-03.md)
+**Reply posted:** [`from-fabric-os-xr-302-smoke-blockers-2026-06-03.md`](../fabric-b/from-fabric-os-xr-302-smoke-blockers-2026-06-03.md)

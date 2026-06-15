@@ -24,7 +24,7 @@ blocksIR: false
 > **Fabric role:** Program orchestration only. Authority SoR remains with named
 > product, protocol, institution, and human owners below.
 
-**Ack:** [`from-fabric-os-xr-mkt-fabric-001-ack-2026-06-11.md`](./from-fabric-os-xr-mkt-fabric-001-ack-2026-06-11.md)  
+**Ack:** [`from-fabric-os-xr-mkt-fabric-001-ack-2026-06-11.md`](./inbound/fabric-b/from-fabric-os-xr-mkt-fabric-001-ack-2026-06-11.md)  
 **Originating handoff:** markets-os `to-fabric-os-tokenization-platform-scope-2026-06-11.md`
 
 ---

@@ -61,10 +61,10 @@ protocol: canon-os/01-docs/governance/protocols/24-cross-repo-coordination/proto
 | Artifact                    | Path                                                                                                                                                                                                 | Status      |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | W2 prod secrets spec        | [compliance-os `to-fabric-os-w2-secrets-inbound-2026-06-04.md`](https://github.com/gtcx-ecosystem/compliance-os/blob/main/01-docs/04-ops/coordination/to-fabric-os-w2-secrets-inbound-2026-06-04.md) | **current** |
-| Infra received copy         | [`from-compliance-os-w2-secrets-spec-2026-06-04.md`](../from-compliance-os-w2-secrets-spec-2026-06-04.md)                                                                                            | received    |
-| Staging blockers (archived) | [`from-compliance-os-w2-hub-17-staging-blockers-2026-06-05.md`](../from-compliance-os-w2-hub-17-staging-blockers-2026-06-05.md)                                                                      | **closed**  |
-| Staging witness             | [`to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md`](../to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md)                                                                | delivered   |
-| Staging secrets sealed      | [`from-fabric-os-w2-secrets-sealed-2026-06-05.md`](../from-fabric-os-w2-secrets-sealed-2026-06-05.md)                                                                                                | sealed      |
+| Infra received copy         | [`from-compliance-os-w2-secrets-spec-2026-06-04.md`](../inbound/fleet-a/from-compliance-os-w2-secrets-spec-2026-06-04.md)                                                                            | received    |
+| Staging blockers (archived) | [`from-compliance-os-w2-hub-17-staging-blockers-2026-06-05.md`](../inbound/fleet-a/from-compliance-os-w2-hub-17-staging-blockers-2026-06-05.md)                                                      | **closed**  |
+| Staging witness             | [`to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md`](../inbound/to-b/to-compliance-os-hub-17-staging-blockers-witness-2026-06-05.md)                                                   | delivered   |
+| Staging secrets sealed      | [`from-fabric-os-w2-secrets-sealed-2026-06-05.md`](../inbound/fabric-b/from-fabric-os-w2-secrets-sealed-2026-06-05.md)                                                                               | sealed      |
 
 ---
 
@@ -72,13 +72,13 @@ protocol: canon-os/01-docs/governance/protocols/24-cross-repo-coordination/proto
 
 **Scaffold (2026-06-08):** Terraform W2 SM shell, production K8s overlay, operator scripts, and bootstrap runbook are in-repo. Operator apply + evidence post remains.
 
-| Artifact          | Path                                                                                           |
-| ----------------- | ---------------------------------------------------------------------------------------------- |
-| Bootstrap runbook | [`production-compliance-os-eso-bootstrap.md`](../../production-compliance-os-eso-bootstrap.md) |
-| K8s overlay       | `04-deploy/kubernetes/overlays/production/compliance-os/`                                      |
-| Populate SM       | `03-platform/scripts/production/populate-compliance-os-prod-sm.sh`                             |
-| Install ESO       | `03-platform/scripts/production/install-compliance-os-eso.sh`                                  |
-| Terraform         | `04-deploy/terraform/environments/production/main.tf` → `module.secrets`                       |
+| Artifact          | Path                                                                                                            |
+| ----------------- | --------------------------------------------------------------------------------------------------------------- |
+| Bootstrap runbook | [`production-compliance-os-eso-bootstrap.md`](../../core-ops/batch-b/production-compliance-os-eso-bootstrap.md) |
+| K8s overlay       | `04-deploy/kubernetes/overlays/production/compliance-os/`                                                       |
+| Populate SM       | `03-platform/scripts/production/populate-compliance-os-prod-sm.sh`                                              |
+| Install ESO       | `03-platform/scripts/production/install-compliance-os-eso.sh`                                                   |
+| Terraform         | `04-deploy/terraform/environments/production/main.tf` → `module.secrets`                                        |
 
 ### Terraform / AWS SM (prod shells)
 
@@ -148,4 +148,4 @@ Witness file: `01-docs/04-ops/coordination/from-fabric-os-hub-17-prod-w2-sealed-
 - Ticket map: [compliance-os `w2-hub-17-ticket-map-2026-06-05.md`](https://github.com/gtcx-ecosystem/compliance-os/blob/main/01-docs/04-ops/coordination/w2-hub-17-ticket-map-2026-06-05.md)
 - Hub locker draft: [compliance-os `hub-inbound-w2-locker-17-draft-2026-06-04.md`](https://github.com/gtcx-ecosystem/compliance-os/blob/main/01-docs/04-ops/coordination/hub-inbound-w2-locker-17-draft-2026-06-04.md)
 - Baseline witness: [`to-baseline-os-hub-17-prod-witness-2026-06-08.md`](./to-baseline-os-hub-17-prod-witness-2026-06-08.md)
-- Bootstrap runbook: [`staging-compliance-os-eso-bootstrap.md`](../../staging-compliance-os-eso-bootstrap.md) (staging pattern for prod)
+- Bootstrap runbook: [`staging-compliance-os-eso-bootstrap.md`](../../core-ops/batch-b/staging-compliance-os-eso-bootstrap.md) (staging pattern for prod)

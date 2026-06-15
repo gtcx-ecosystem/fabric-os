@@ -15,7 +15,7 @@ protocol: P24
 # Session forensic — home workspace session open-items & bridge raise
 
 > **Purpose:** Durable triaged record of a short **home-workspace** Cursor session — fleet `session:open-items` probe, closure-bar diagnosis, P24 raise to bridge-os, transcript completeness correction, and forensic doc standardisation (agile-os reference).  
-> **Handoff to program office:** [`to-bridge-os-session-open-items-forensic-2026-06-13.md`](./to-bridge-os-session-open-items-forensic-2026-06-13.md)
+> **Handoff to program office:** [`to-bridge-os-session-open-items-forensic-2026-06-13.md`](../inbound/to-a/to-bridge-os-session-open-items-forensic-2026-06-13.md)
 
 ---
 
@@ -214,16 +214,16 @@ No new engineering commits in fabric-os product code this session — only coord
 
 ## 9. Acceptance & links
 
-| Gate                | Evidence                                                                                                                         |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Forensic doc        | this file                                                                                                                        |
-| Transcript excerpts | [`session-transcript-excerpts-session-open-items-2026-06-13.md`](./session-transcript-excerpts-session-open-items-2026-06-13.md) |
-| Machine witness     | `pm/ci/session-open-items-latest.json`                                                                                           |
-| Raise payload       | `pm/ci/session-open-items-raise-bridge-latest.json`                                                                              |
-| Reconcile witness   | `audit/evidence/session-open-items-reconcile-2026-06-13.json`                                                                    |
-| Outbound P24        | [`to-bridge-os-session-open-items-forensic-2026-06-13.md`](./to-bridge-os-session-open-items-forensic-2026-06-13.md)             |
-| Bridge inbound      | `bridge-os/docs/operations/coordination/from-fabric-os-session-open-items-forensic-2026-06-13.md`                                |
-| Closure bar green   | `bridge-os/pm/ci/session-closure-bar-latest.json` · 5/5 · `sessionComplete: true`                                                |
+| Gate                | Evidence                                                                                                                           |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Forensic doc        | this file                                                                                                                          |
+| Transcript excerpts | [`session-transcript-excerpts-session-open-items-2026-06-13.md`](./session-transcript-excerpts-session-open-items-2026-06-13.md)   |
+| Machine witness     | `pm/ci/session-open-items-latest.json`                                                                                             |
+| Raise payload       | `pm/ci/session-open-items-raise-bridge-latest.json`                                                                                |
+| Reconcile witness   | `audit/evidence/session-open-items-reconcile-2026-06-13.json`                                                                      |
+| Outbound P24        | [`to-bridge-os-session-open-items-forensic-2026-06-13.md`](../inbound/to-a/to-bridge-os-session-open-items-forensic-2026-06-13.md) |
+| Bridge inbound      | `bridge-os/docs/operations/coordination/from-fabric-os-session-open-items-forensic-2026-06-13.md`                                  |
+| Closure bar green   | `bridge-os/pm/ci/session-closure-bar-latest.json` · 5/5 · `sessionComplete: true`                                                  |
 
 ---
 

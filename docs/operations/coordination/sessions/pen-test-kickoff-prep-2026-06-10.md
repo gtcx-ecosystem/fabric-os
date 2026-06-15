@@ -18,7 +18,7 @@ authorityClass: A
 
 **Countersign:** approved 2026-06-10 — [`ext-inf-002-countersign-approval-2026-06-10.json`](../../../audit/archive/2026-06-14/audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json).
 
-**Window:** scheduled 2026-06-17..21 — [`audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json`](../../../audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json) · [seal](./from-fabric-os-pen-test-window-scheduled-2026-06-10.md).
+**Window:** scheduled 2026-06-17..21 — [`audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json`](../../../audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json) · [seal](../inbound/fabric-a/from-fabric-os-pen-test-window-scheduled-2026-06-10.md).
 
 **Next:** Ingest vendor report after window execution.
 

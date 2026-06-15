@@ -30,10 +30,10 @@ authority_class: R
 
 ## Blocking public close
 
-| Item                            | Owner                     | Action                                                                                                      |
-| ------------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `compliance.gtcx.trade` **525** | **operator / Cloudflare** | CNAME → ALB — [`compliance-os-prod-cloudflare-dns.md`](../../runbooks/compliance-os-prod-cloudflare-dns.md) |
-| Terminal key alignment          | infra + terminal-os       | Set `COMPLIANCE_OS_TERMINAL_API_KEY` in prod SM to match terminal-os prod receiver                          |
+| Item                            | Owner                     | Action                                                                                                               |
+| ------------------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `compliance.gtcx.trade` **525** | **operator / Cloudflare** | CNAME → ALB — [`compliance-os-prod-cloudflare-dns.md`](../../runbooks/audit-dr/compliance-os-prod-cloudflare-dns.md) |
+| Terminal key alignment          | infra + terminal-os       | Set `COMPLIANCE_OS_TERMINAL_API_KEY` in prod SM to match terminal-os prod receiver                                   |
 
 ## compliance-os actions (Class R — after DNS 201)
 
@@ -49,4 +49,4 @@ Finalize hub locker draft → baseline-os when exploration retest also green.
 
 ## Witness
 
-[`from-fabric-os-hub-17-prod-w2-partial-2026-06-08.md`](../from-fabric-os-hub-17-prod-w2-partial-2026-06-08.md)
+[`from-fabric-os-hub-17-prod-w2-partial-2026-06-08.md`](../inbound/fabric-a/from-fabric-os-hub-17-prod-w2-partial-2026-06-08.md)

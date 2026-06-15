@@ -15,7 +15,7 @@ role: platform-engineer
 **Canonical ecosystem spec (SoR: gtcx-docs):** [`canon-os/01-docs/architecture/cloud-placement/README.md`](https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/architecture/cloud-placement/README.md) → [`gtcx-ecosystem-2026-06-05.md`](https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md) · **Per-repo register:** [`repo-register-2026-06-05.md`](https://github.com/gtcx-ecosystem/canon-os/blob/main/01-docs/architecture/cloud-placement/repo-register-2026-06-05.md)
 
 > **Infra agents — start here for “what do I do per repo?”**  
-> [`infra-per-repo-action-matrix-2026-06-05.md`](./infra-per-repo-action-matrix-2026-06-05.md) (P0/P1 checklist; owner vs infra split)
+> [`infra-per-repo-action-matrix-2026-06-05.md`](../infra-per-repo-action-matrix-2026-06-05.md) (P0/P1 checklist; owner vs infra split)
 
 ## Infra owns (optimize here)
 
@@ -45,7 +45,7 @@ role: platform-engineer
 
 ## GCP bridge (when Phase 3 starts)
 
-**Epic + module:** [`intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md`](../intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md) · `04-deploy/terraform/modules/gcp-ml-bridge/` (disabled until GCP SA `unique_id` supplied).
+**Epic + module:** [`intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md`](../../core-ops/batch-a/intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md) · `04-deploy/terraform/modules/gcp-ml-bridge/` (disabled until GCP SA `unique_id` supplied).
 
 - WIF OIDC + IAM role `gtcx-<env>-intelligence-gcp-ml-bridge`
 - S3 model bucket + DynamoDB registry from existing `ml-pipeline` module

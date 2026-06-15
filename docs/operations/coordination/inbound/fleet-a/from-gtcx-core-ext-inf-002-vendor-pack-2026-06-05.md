@@ -33,4 +33,4 @@ Acknowledged outbound from gtcx-core: [`to-fabric-os-ext-inf-002-vendor-pack-202
 
 ## Outbound reply
 
-[`outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md`](./outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md)
+[`outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md`](../../outbound/from-fabric-os-ext-inf-002-pack-ack-2026-06-07.md)

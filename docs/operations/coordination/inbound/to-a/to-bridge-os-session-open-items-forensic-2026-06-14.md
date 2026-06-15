@@ -23,17 +23,17 @@ witness: pm/ci/session-open-items-latest.json
 
 ## Coordination handoff
 
-| Field                | Value                                                                                                                          |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **From repo**        | fabric-os                                                                                                                      |
-| **To repo**          | bridge-os (program office)                                                                                                     |
-| **Ticket**           | `XR-FABRIC-SESSION-OPEN-004`                                                                                                   |
-| **Prior ticket**     | `XR-FABRIC-SESSION-OPEN-003` (2026-06-13)                                                                                      |
-| **Witness**          | [`pm/ci/session-open-items-latest.json`](../../../pm/ci/session-open-items-latest.json)                                        |
-| **Forensic summary** | [`session-forensic-fabric-os-session-open-items-2026-06-14.md`](./session-forensic-fabric-os-session-open-items-2026-06-14.md) |
-| **Transcript**       | `d0bfedab-a143-456d-9740-14ab22cf4b49` · workspace `Sites-gtcx-ecosystem-fabric-os` · 255 lines · 14 user turns                |
-| **Bridge witness**   | `bridge-os/pm/ci/session-closure-bar-latest.json`                                                                              |
-| **Resume when**      | bridge closure bar 5/5 · `pnpm session:open-items` exit 0                                                                      |
+| Field                | Value                                                                                                                                       |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **From repo**        | fabric-os                                                                                                                                   |
+| **To repo**          | bridge-os (program office)                                                                                                                  |
+| **Ticket**           | `XR-FABRIC-SESSION-OPEN-004`                                                                                                                |
+| **Prior ticket**     | `XR-FABRIC-SESSION-OPEN-003` (2026-06-13)                                                                                                   |
+| **Witness**          | [`pm/ci/session-open-items-latest.json`](../../../pm/ci/session-open-items-latest.json)                                                     |
+| **Forensic summary** | [`session-forensic-fabric-os-session-open-items-2026-06-14.md`](../../sessions/session-forensic-fabric-os-session-open-items-2026-06-14.md) |
+| **Transcript**       | `d0bfedab-a143-456d-9740-14ab22cf4b49` · workspace `Sites-gtcx-ecosystem-fabric-os` · 255 lines · 14 user turns                             |
+| **Bridge witness**   | `bridge-os/pm/ci/session-closure-bar-latest.json`                                                                                           |
+| **Resume when**      | bridge closure bar 5/5 · `pnpm session:open-items` exit 0                                                                                   |
 
 ---
 

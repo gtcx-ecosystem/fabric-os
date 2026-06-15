@@ -23,17 +23,17 @@ witness: pm/ci/session-open-items-latest.json
 
 ## Coordination handoff
 
-| Field                   | Value                                                                                                                            |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| **From repo**           | fabric-os (vendor assurance owner)                                                                                               |
-| **To repo**             | bridge-os (program office)                                                                                                       |
-| **Ticket**              | `XR-FABRIC-SESSION-OPEN-003`                                                                                                     |
-| **Prior ticket**        | `XR-BRIDGE-SESSION-OPEN-001` (reconciled 2026-06-12)                                                                             |
-| **Witness**             | [`pm/ci/session-open-items-latest.json`](../../../pm/ci/session-open-items-latest.json)                                          |
-| **Forensic summary**    | [`session-forensic-fabric-os-session-open-items-2026-06-13.md`](./session-forensic-fabric-os-session-open-items-2026-06-13.md)   |
-| **Transcript**          | `35ccef1b-c866-463c-9b4e-0d81b44b01ad` · `agent-transcript:35ccef1b` · 37 lines · 5 turns (ID + excerpts in git)                 |
-| **Transcript excerpts** | [`session-transcript-excerpts-session-open-items-2026-06-13.md`](./session-transcript-excerpts-session-open-items-2026-06-13.md) |
-| **Resume when**         | bridge-os posts inbound ack + closure bar 5/5                                                                                    |
+| Field                   | Value                                                                                                                                         |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **From repo**           | fabric-os (vendor assurance owner)                                                                                                            |
+| **To repo**             | bridge-os (program office)                                                                                                                    |
+| **Ticket**              | `XR-FABRIC-SESSION-OPEN-003`                                                                                                                  |
+| **Prior ticket**        | `XR-BRIDGE-SESSION-OPEN-001` (reconciled 2026-06-12)                                                                                          |
+| **Witness**             | [`pm/ci/session-open-items-latest.json`](../../../pm/ci/session-open-items-latest.json)                                                       |
+| **Forensic summary**    | [`session-forensic-fabric-os-session-open-items-2026-06-13.md`](../../sessions/session-forensic-fabric-os-session-open-items-2026-06-13.md)   |
+| **Transcript**          | `35ccef1b-c866-463c-9b4e-0d81b44b01ad` · `agent-transcript:35ccef1b` · 37 lines · 5 turns (ID + excerpts in git)                              |
+| **Transcript excerpts** | [`session-transcript-excerpts-session-open-items-2026-06-13.md`](../../sessions/session-transcript-excerpts-session-open-items-2026-06-13.md) |
+| **Resume when**         | bridge-os posts inbound ack + closure bar 5/5                                                                                                 |
 
 ---
 
@@ -47,7 +47,7 @@ Home-workspace session ran `pnpm session:open-items` across **bridge-os** (progr
 
 **5-phase arc:** probe → diagnose → raise → transcript gap → forensic standard (agile-os template).
 
-**Full forensic pack:** [`session-forensic-fabric-os-session-open-items-2026-06-13.md`](./session-forensic-fabric-os-session-open-items-2026-06-13.md) · excerpts [`session-transcript-excerpts-session-open-items-2026-06-13.md`](./session-transcript-excerpts-session-open-items-2026-06-13.md)
+**Full forensic pack:** [`session-forensic-fabric-os-session-open-items-2026-06-13.md`](../../sessions/session-forensic-fabric-os-session-open-items-2026-06-13.md) · excerpts [`session-transcript-excerpts-session-open-items-2026-06-13.md`](../../sessions/session-transcript-excerpts-session-open-items-2026-06-13.md)
 
 fabric-os requests bridge program office to **accept intake**, fix closure-bar gates, and refresh fleet reconcile.
 

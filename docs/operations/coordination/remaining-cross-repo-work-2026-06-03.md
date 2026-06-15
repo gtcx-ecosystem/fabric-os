@@ -94,7 +94,7 @@ to: baseline-os coordination hub + sibling repos
 
 **Sibling docs:**
 
-- Infra outbound: [`to-gtcx-platforms-rollout-ready-2026-06-03.md`](to-gtcx-platforms-rollout-ready-2026-06-03.md)
+- Infra outbound: [`to-gtcx-platforms-rollout-ready-2026-06-03.md`](./inbound/to-b/to-gtcx-platforms-rollout-ready-2026-06-03.md)
 - Platforms bridge: `gtcx-platforms/01-docs/operations/coordination/cross-repo-agent-bridge.md`
 - Platforms staging live: `gtcx-platforms/01-docs/operations/coordination/staging-live-2026-06-02.md`
 

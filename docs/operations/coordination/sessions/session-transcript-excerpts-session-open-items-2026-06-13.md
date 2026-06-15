@@ -18,7 +18,7 @@ forensic_pack: docs/operations/coordination/session-forensic-fabric-os-session-o
 > **Lines:** 37 · **User turns:** 5 (deduped below) · **Workspace:** `Users-amanianai` (home)  
 > **Pointer:** `agent-transcript:35ccef1b`
 
-**Related:** [`session-forensic-fabric-os-session-open-items-2026-06-13.md`](./session-forensic-fabric-os-session-open-items-2026-06-13.md) · [`to-bridge-os-session-open-items-forensic-2026-06-13.md`](./to-bridge-os-session-open-items-forensic-2026-06-13.md)
+**Related:** [`session-forensic-fabric-os-session-open-items-2026-06-13.md`](./session-forensic-fabric-os-session-open-items-2026-06-13.md) · [`to-bridge-os-session-open-items-forensic-2026-06-13.md`](../inbound/to-a/to-bridge-os-session-open-items-forensic-2026-06-13.md)
 
 **jq access:**
 

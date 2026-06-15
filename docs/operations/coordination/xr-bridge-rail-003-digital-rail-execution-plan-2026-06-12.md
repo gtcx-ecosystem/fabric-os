@@ -24,7 +24,7 @@ blocksIR: false
 > **Fabric role:** Runtime orchestration, keys, DR, staging deploy — **not** adapter interface SoR
 > (gtcx-os) or capital-markets transaction kernel (markets-os).
 
-**Ack:** [`from-bridge-os-digital-rail-runtime-2026-06-12.md`](./from-bridge-os-digital-rail-runtime-2026-06-12.md)  
+**Ack:** [`from-bridge-os-digital-rail-runtime-2026-06-12.md`](./inbound/bridge/from-bridge-os-digital-rail-runtime-2026-06-12.md)  
 **Originating handoff:** bridge-os `to-fabric-os-digital-rail-runtime-2026-06-12.md`
 
 ---

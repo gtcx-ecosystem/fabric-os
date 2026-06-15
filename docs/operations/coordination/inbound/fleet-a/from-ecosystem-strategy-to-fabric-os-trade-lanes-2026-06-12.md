@@ -112,7 +112,7 @@ A multi-hour ecosystem strategy session produced a **corrected domain model** fo
 | **I**   | _(this repo)_                             | —                          |
 | **U/B** | link only                                 | deploy canon/agile/bridge  |
 
-Full matrix: [`lane-deploy-matrix.md`](../../specs/ecosystem/lane-deploy-matrix.md).
+Full matrix: [`lane-deploy-matrix.md`](../../../../specs/ecosystem/lane-deploy-matrix.md).
 
 ---
 

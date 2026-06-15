@@ -8,9 +8,25 @@
 
 ---
 
-## Handoff — 2026-06-15
+## Handoff — 2026-06-15 (latest)
 
-### Done this session
+**Artifact:** `workstream/sessions/handoffs/handoff-secas-s4-04-2026-06-15.md`  
+**Witness:** `workstream/sessions/ci/session-handoff-latest.json`
+
+| Track | P22 head | Branch | Next |
+| --- | --- | --- | --- |
+| SECAS (primary) | `SECAS-S4-04` awaiting vendor report 2026-06-21+ | `feature/ai-mlops` | Remediation witness only — no ingest before calendar |
+| AI/MLOps (parallel) | `MOF-002` in_progress | `feature/ai-mlops` | Intelligence image rebuild + staging rollout |
+
+```bash
+pnpm session:handoff:write   # refresh hand-off
+pnpm agent:next-work
+pnpm mlops:cost-router-staging-probe:write
+```
+
+---
+
+## Handoff — 2026-06-15 (earlier)
 
 | ID | What | Evidence |
 |----|------|----------|

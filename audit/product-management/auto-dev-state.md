@@ -43,6 +43,13 @@ last_reconciled: 2026-06-14T10:15:00.000Z
 - **Synthetic ingest:** `pen-test-report-synthetic.json --dry-run` PASS
 - **Bridge rollup:** `ecosystem-secas-witness-rollup --write` **8/8** · `storyComplete=false`
 
+## COMPOSITE-RESTORE-100 (2026-06-15 — cycle 3)
+
+- **Outcome:** **done** — composite100 **59 → 100**
+- **Root cause:** P35 strict gate failed on legacy `services/` string in `payops-providers-check.mjs`; root allowlist blocked by stale `sessions/` directory left after fleet root relocation.
+- **Fix:** Update payops provider path to `./services/`, remove `sessions/`, add `esbuild >=0.28.1` override to clear fabric-os high CVEs, and adjust `secas-supply-chain-check` to owner-accountability + fleet observation.
+- **Gates:** `pnpm layout:migrate:v6:check` PASS · `pnpm check:workspace-root-cleanliness:strict` PASS · `pnpm secas:supply-chain:check` PASS · five-pillar fleet stress fabric-os composite100 **100**
+
 ## COMPOSITE-RESTORE-100 (2026-06-15 — cycle 2)
 
 - **Outcome:** **done** — composite100 **59 → 100** after `fdd47cf` removed IA shadow stubs

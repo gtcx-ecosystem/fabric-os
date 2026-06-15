@@ -2,7 +2,7 @@
 title: Execution roadmap — SecOps
 status: current
 date: 2026-06-15
-last_reconciled: 2026-06-15T16:28:59.182Z
+last_reconciled: 2026-06-15T18:20:10.707Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true

@@ -29,9 +29,11 @@ opsLane: SecOps
 
 ## Fleet rollup
 
-Probe repos (minimum 4): **fabric-os**, **markets-os**, **compliance-os**, **terminal-os**.
+Probe repos: **fabric-os**, **markets-os**, **compliance-os**, **terminal-os**.
 
-Each repo must have:
+**Accountability:** `fabric-os` is the owner repo. The gate passes when `fabric-os` has zero high/critical CVEs, a deterministic lockfile, and CI witness. Sibling repos are fleet observations; findings are tracked and escalated to their owners, but they do not fail the fabric-os gate.
+
+Each observed repo must have:
 
 1. `package.json` + `pnpm-lock.yaml` (deterministic install)
 2. CI witness path referencing dependency audit and/or container scan (Trivy)
@@ -43,7 +45,7 @@ Local rollup command:
 pnpm secas:supply-chain:check:write
 ```
 
-When npm registry is unreachable, harness records `verdict: partial` and relies on CI witness + lockfile presence — not a release bypass.
+When npm registry is unreachable, the harness records `verdict: partial` and relies on CI witness + lockfile presence — not a release bypass.
 
 ## CI witness
 

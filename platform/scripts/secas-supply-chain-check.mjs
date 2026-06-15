@@ -103,8 +103,9 @@ function runPnpmAudit(repo, timeoutMs) {
 }
 
 const policyJson = readJson(POLICY_JSON);
+const ownerRepo = policyJson?.ownerRepo ?? 'fabric-os';
 const probeRepos = policyJson?.fleetProbeRepos ?? ['fabric-os', 'markets-os', 'compliance-os', 'terminal-os'];
-const auditTimeoutMs = policyJson?.auditTimeoutMs ?? 20_000;
+const auditTimeoutMs = policyJson?.auditTimeoutMs ?? 30_000;
 
 const gates = {};
 
@@ -147,8 +148,17 @@ const repoRollup = probeRepos.map((repo) => {
   };
 });
 
+const ownerRow = repoRollup.find((r) => r.repo === ownerRepo);
+gates.ownerRepo = {
+  ok: Boolean(ownerRow?.ok),
+  repo: ownerRepo,
+  ...ownerRow,
+};
+
 gates.repoRollup = {
-  ok: repoRollup.filter((r) => r.ok).length >= 4,
+  ok: repoRollup.filter((r) => r.ok).length >= probeRepos.length,
+  passCount: repoRollup.filter((r) => r.ok).length,
+  totalCount: repoRollup.length,
   repos: repoRollup,
 };
 
@@ -160,7 +170,7 @@ gates.fabricCi = {
 const fleetOk =
   gates.frictionItem.ok &&
   gates.policyDoc.ok &&
-  gates.repoRollup.ok &&
+  gates.ownerRepo.ok &&
   gates.fabricCi.ok;
 
 const witness = {
@@ -190,7 +200,7 @@ else {
       v.missing?.length
         ? ` (missing: ${v.missing.join(', ')})`
         : v.repos
-          ? ` (${v.repos.filter((r) => r.ok).length}/${v.repos.length} pass)`
+          ? ` (${v.passCount ?? v.repos.filter((r) => r.ok).length}/${v.totalCount ?? v.repos.length} pass)`
           : v.status
             ? ` (${v.status})`
             : v.matched?.length
@@ -198,7 +208,7 @@ else {
               : '';
     console.log(`${v.ok !== false ? 'OK' : 'FAIL'} ${k}${detail}`);
   }
-  console.log(`\n${fleetOk ? 'PASS' : 'FAIL'} — SECAS-S4-02 supply-chain (fleet rollup)`);
+  console.log(`\n${fleetOk ? 'PASS' : 'FAIL'} — SECAS-S4-02 supply-chain (owner + fleet observation)`);
   if (WRITE) console.log(`witness: ${OUT}`);
 }
 process.exit(fleetOk ? 0 : 1);

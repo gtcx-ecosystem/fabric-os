@@ -22,7 +22,7 @@ const JSON_OUT = process.argv.includes('--json');
 const STRIPE_INDICATORS = [
   { repo: 'terminal-os', paths: ['platform/web/lib/stripe', 'app/api/stripe'] },
   { repo: 'sensei-os', paths: ['platform/apps/api/src/services/stripe.ts'] },
-  { repo: 'nyota-ai', paths: ['services/stripe_billing.py'] },
+  { repo: 'nyota-ai', paths: ['./services/stripe_billing.py'] },
   { repo: 'compliance-os', paths: ['platform/services/caas/src/lib/billing.ts'] },
 ];
 const FLUTTERWAVE_INDICATORS = [

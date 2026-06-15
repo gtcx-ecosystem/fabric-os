@@ -7,7 +7,7 @@ tier: operating
 tags: ['agentic-team', 'aiops', 'persona']
 review_cycle: on-change
 document_type: runbook
-protocol: 'P49'
+protocol: 'P53'
 ---
 
 # AIOps — agentic team charter

@@ -1,13 +1,13 @@
 {
   "$schema": "gtcx://fabric-os/aiops-check-witness/v1",
   "version": "1.0.0",
-  "updated": "2026-06-15T16:37:24.593Z",
+  "updated": "2026-06-15T16:41:03.532Z",
   "repo": "fabric-os",
   "lane": "AIOps",
-  "protocolId": "P49-AIOPS-AS-A-SERVICE",
+  "protocolId": "P53-AIOPS-AS-A-SERVICE",
   "overall": "PASS",
   "foundationScore100": 100,
-  "transformationalScore100": 81,
+  "transformationalScore100": 98,
   "pillars": [
     {
       "id": "compliance",
@@ -61,8 +61,8 @@
     },
     {
       "id": "ipMagic",
-      "score": 0,
-      "evidence": "P49 hub"
+      "score": 100,
+      "evidence": "P53 hub"
     }
   ],
   "errors": []

@@ -147,8 +147,8 @@ export function evaluateLane() {
       evidence: 'handoff',
     },
     ipMagic: {
-      score: pathOk('canon-os/docs/governance/protocols/49-aiops-as-a-service/protocol.md') ? 100 : 0,
-      evidence: 'P49 hub',
+      score: pathOk('canon-os/docs/governance/protocols/53-aiops-as-a-service/protocol.md') ? 100 : 0,
+      evidence: 'P53 hub',
     },
   };
 
@@ -172,7 +172,7 @@ export function evaluateLane() {
     updated: new Date().toISOString(),
     repo: 'fabric-os',
     lane: 'AIOps',
-    protocolId: 'P49-AIOPS-AS-A-SERVICE',
+    protocolId: 'P53-AIOPS-AS-A-SERVICE',
     overall,
     foundationScore100,
     transformationalScore100,

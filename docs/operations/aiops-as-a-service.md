@@ -4,10 +4,10 @@ status: current
 date: 2026-06-15
 owner: fabric-os
 tier: operating
-tags: ['runbook', 'aiops', 'ops-lane', 'P49']
+tags: ['runbook', 'aiops', 'ops-lane', 'P53']
 review_cycle: on-change
 document_type: runbook
-protocol: 'P49'
+protocol: 'P53'
 ---
 
 # AIOps-as-a-Service

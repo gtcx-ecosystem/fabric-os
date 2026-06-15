@@ -10,11 +10,11 @@
   "items": [
     {
       "id": "AOF-001",
-      "title": "P49 hub protocol not yet published in canon-os",
+      "title": "P53 AIOps hub protocol published in canon-os",
       "priority": "P1",
-      "status": "open",
+      "status": "done",
       "owner": "canon-os",
-      "evidence": "canon-os/docs/governance/protocols/49-aiops-as-a-service/protocol.md"
+      "evidence": "canon-os/docs/governance/protocols/53-aiops-as-a-service/protocol.md"
     },
     {
       "id": "AOF-002",

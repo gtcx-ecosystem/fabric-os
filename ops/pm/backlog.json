@@ -122,11 +122,12 @@
     {
       "id": "SECAS-S2-01",
       "title": "fabric SECAS pen-test + vendor report ingest",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P2",
       "owner": "fabric-os",
       "sprint": "SPR-2026-06-INTAKE",
-      "intakeSource": "bridge-os/pm/ci/session-open-items-latest.json#openItems"
+      "intakeSource": "bridge-os/pm/ci/session-open-items-latest.json#openItems",
+      "auditNotes": "2026-06-15 — internal prep sealed; vendor ingest awaits BG-10-10-REPORT"
     },
     {
       "id": "XR-FABRIC-SPRIN",

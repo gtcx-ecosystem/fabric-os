@@ -350,7 +350,8 @@
         { "text": "Active threat register feeds SOC L3 plan", "done": true },
         {
           "text": "Product threat models non-stub (markets, terminal, intelligence)",
-          "done": false
+          "done": true,
+          "note": "2026-06-15 — fleet:risk:check productThreatModels PASS"
         }
       ],
       "blockers": "product repos own app threat model content — fabric indexes only"

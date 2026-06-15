@@ -102,11 +102,12 @@
     {
       "id": "INIT-GTCX-INFRA-SECAS",
       "title": "INIT-GTCX-INFRA-SECAS",
-      "status": "in_progress",
-      "priority": "P2",
+      "status": "done",
+      "priority": "P0",
       "owner": "fabric-os",
-      "sprint": "SPR-2026-06-INTAKE",
-      "intakeSource": "fabric-os/pm/ci/session-open-items-latest.json#openItems"
+      "sprint": "SECAS",
+      "intakeSource": "pm/secas-stories.json",
+      "auditNotes": "2026-06-15 — internal SecOps Class R sealed; vendor calendar parallel"
     },
     {
       "id": "SECAS-S4-04",

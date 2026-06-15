@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repo": "fabric-os",
   "tier": "platform",
-  "updated": "2026-06-14",
+  "updated": "2026-06-15",
   "vision": {
     "statement": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
     "horizon": "2026-2028"
@@ -43,15 +43,28 @@
     }
   },
   "activeMilestone": {
-    "id": "SECAS-S4-pentest-remediation",
-    "title": "SECAS-S4 — pen-test findings remediation track",
-    "shippableOutcome": "secas:pentest:remediation:check PASS; findings mapped to owners",
-    "targetDate": "2026-Q3",
+    "id": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
+    "title": "Fleet internal SecOps + ComplianceOps clearance",
+    "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+    "targetDate": "2026-06-15",
     "programmeId": "PROG-SECAS-ENGINEERING",
     "prdRefs": ["prd-product-charter"],
     "headStoryId": "SECAS-S4-04",
+    "clearanceRegister": "../bridge-os/pm/spec/internal-secops-complianceops-clearance.json",
     "postLaunchExternalSoR": "ops/coordination/post-launch-external-gates.json",
     "acceptanceChecks": [
+      {
+        "id": "secops-internal-clearance",
+        "label": "SecOps internal Class R sealed",
+        "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+        "actual": "PASS"
+      },
+      {
+        "id": "complianceops-fleet",
+        "label": "ComplianceOps fleet harness",
+        "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
+        "actual": "PASS"
+      },
       {
         "id": "composite-85",
         "label": "Composite ≥85",

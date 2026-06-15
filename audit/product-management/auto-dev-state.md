@@ -10,16 +10,24 @@ last_reconciled: 2026-06-14T10:15:00.000Z
 
 ## Programs
 
-| Program                           | Status                                  |
-| --------------------------------- | --------------------------------------- |
-| **DAAS** (INIT-GTCX-INFRA-DAAS)   | **complete** — S1–S3 sealed             |
-| **SECAS** (INIT-GTCX-INFRA-SECAS) | S1/S3 **complete** · S2 **in_progress** |
+| Program                           | Status                                                       |
+| --------------------------------- | ------------------------------------------------------------ |
+| **DAAS** (INIT-GTCX-INFRA-DAAS)   | **complete** — S1–S3 sealed                                  |
+| **SECAS** (INIT-GTCX-INFRA-SECAS) | **internal sealed** · S4 scaffold · vendor calendar parallel |
 
 ## Active Phase
 
-- **ID:** SECAS-S2
-- **Status:** in_progress (3/4 UAT — pre-window gates green 2026-06-14)
-- **Reason:** Pen-test window **2026-06-17..21**; vendor report ingest pending (`awaiting_vendor_report`); five-pillar composite **100/100** restored 2026-06-14.
+- **ID:** FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE
+- **Status:** internal Class R **sealed** (SecOps + ComplianceOps harness PASS)
+- **Reason:** Vendor pen-test/SOW/SOC gates remain parallel external only (`blocksIR: false`)
+
+## Fleet SecOps + ComplianceOps internal clearance (2026-06-15)
+
+- **Register:** `bridge-os/pm/spec/internal-secops-complianceops-clearance.json`
+- **SecOps:** `ecosystem:secas:check` **12/12** · rollup **8/8** · `fleet:risk:check` **PASS**
+- **ComplianceOps:** `complianceops:check` **PASS** · fleet witness **PASS**
+- **Witness:** `audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json`
+- **Execution pending (external):** SECAS-S4-04 findings mapping post `BG-10-10-REPORT`
 
 ## SECAS-S2-01 prep cycle (2026-06-15)
 

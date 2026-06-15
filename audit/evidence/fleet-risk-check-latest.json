@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/fleet-risk-check/v1",
   "opsLane": "SecOps",
-  "checkedAt": "2026-06-15T05:33:52.429Z",
+  "checkedAt": "2026-06-15T15:16:15.291Z",
   "owner": "bridge-os",
   "executionOwner": "fabric-os",
   "register": "bridge-os/pm/spec/fleet-risk-register.json",
@@ -18,17 +18,17 @@
       "missing": []
     },
     "productThreatModels": {
-      "ok": false,
+      "ok": true,
       "probe": {
         "RISK-PRODUCT-001": {
           "repo": "markets-os",
-          "status": "missing",
-          "path": "markets-os/docs/security/threat-model.md"
+          "status": "present",
+          "path": "markets-os/ops/security/threat-model.md"
         },
         "RISK-PRODUCT-002": {
           "repo": "terminal-os",
-          "status": "missing",
-          "path": "terminal-os/docs/security/threat-model.md"
+          "status": "present",
+          "path": "terminal-os/ops/security/threat-model.md"
         },
         "RISK-PRODUCT-003": {
           "repo": "gtcx-intelligence",
@@ -39,18 +39,11 @@
     },
     "openP0Risks": {
       "ok": true,
-      "count": 6,
-      "ids": [
-        "RISK-SEC-001",
-        "RISK-SEC-002",
-        "RISK-SEC-003",
-        "RISK-PRODUCT-001",
-        "RISK-PRODUCT-002",
-        "RISK-PRODUCT-003"
-      ]
+      "count": 3,
+      "ids": ["RISK-SEC-001", "RISK-SEC-002", "RISK-SEC-003"]
     }
   },
-  "openP0": 6,
-  "productThreatGap": true,
+  "openP0": 3,
+  "productThreatGap": false,
   "ok": true
 }

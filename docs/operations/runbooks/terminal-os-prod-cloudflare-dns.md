@@ -37,5 +37,5 @@ Use **DNS only** (proxied=false) so TLS terminates at the ALB.
 
 ```bash
 curl -sS -o /dev/null -w '%{http_code}\n' https://terminal.gtcx.trade/api/health
-# expect 200
+## expect 200
 ```

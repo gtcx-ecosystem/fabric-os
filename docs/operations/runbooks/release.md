@@ -123,10 +123,10 @@ Use the smallest rollback action that contains impact. Do not reach for destruct
 ### Tag/Release Delete Commands
 
 ```bash
-# Delete the remote tag
+## Delete the remote tag
 git push --delete origin vX.Y.Z
 
-# Delete the local tag
+## Delete the local tag
 git tag -d vX.Y.Z
 ```
 

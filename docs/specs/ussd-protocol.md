@@ -71,13 +71,13 @@ USSD strings are limited to **182 characters** (GSM 7-bit encoding). GTCX uses a
 **Example flows:**
 
 ```
-# Check commodity price
+## Check commodity price
 *384*1*ZW*maize# → "Maize (ZW): $285/tonne. Trend: +2.3%"
 
-# Initiate trade
+## Initiate trade
 *384*2*ZW*maize*10*1234# → "Trade T-8291 initiated. 10t maize @ $285. Confirm? 1=Yes 0=No"
 
-# Confirm trade
+## Confirm trade
 *384*2*8291*1*1234# → "Trade T-8291 confirmed. SMS receipt sent."
 ```
 
@@ -161,7 +161,7 @@ Supported languages at launch: **English, Shona, Ndebele, Swahili, Zulu, French*
 ### 6.1 USSD Handler Service
 
 ```yaml
-# 04-deploy/kubernetes/base/services/ussd-handler.yaml (planned)
+## 04-deploy/kubernetes/base/services/ussd-handler.yaml (planned)
 apiVersion: apps/v1
 kind: Deployment
 metadata:

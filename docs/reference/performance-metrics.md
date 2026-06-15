@@ -136,31 +136,31 @@ autonomy_level: permissioned
 ### Custom Application Metrics
 
 ```
-# Scoring
+## Scoring
 [svc]_scoring_duration_seconds{profile, tier}       -- histogram
 [svc]_scoring_total{profile, tier, result}           -- counter
 [svc]_scoring_upstream_duration_seconds{service}     -- histogram
 
-# Assessments
+## Assessments
 [svc]_assessments_created_total{type, tier}          -- counter
 [svc]_assessments_submitted_total{type, tier}        -- counter
 [svc]_assessments_scored_total{result}               -- counter
 
-# Credentials
+## Credentials
 [svc]_credentials_issued_total{type, tier}           -- counter
 [svc]_credentials_verified_total{status}             -- counter
 [svc]_credentials_revoked_total                      -- counter
 
-# Webhooks
+## Webhooks
 [svc]_webhook_deliveries_total{event, status}        -- counter
 [svc]_webhook_delivery_duration_seconds{event}       -- histogram
 [svc]_webhook_retry_queue_depth                      -- gauge
 
-# Circuit Breakers
+## Circuit Breakers
 [svc]_circuit_breaker_state{service}                 -- gauge (0=closed, 1=open, 2=half-open)
 [svc]_circuit_breaker_failures_total{service}        -- counter
 
-# WebSocket
+## WebSocket
 [svc]_websocket_connections_active                   -- gauge
 [svc]_websocket_messages_sent_total{channel}         -- counter
 ```

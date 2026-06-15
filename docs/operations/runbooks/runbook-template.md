@@ -68,39 +68,39 @@ Handoff: Every [Monday] at [09:00 UTC]. Outgoing on-call must document any unres
 #### High Error Rate
 
 ```bash
-# Check recent logs for errors
+## Check recent logs for errors
 [log query command]
 
-# Check DB connection pool
+## Check DB connection pool
 [query or command]
 
-# Rollback if caused by recent deploy
+## Rollback if caused by recent deploy
 [rollback command]
 ```
 
 #### High Latency
 
 ```bash
-# Check slow query log
+## Check slow query log
 [query command]
 
-# Check cache hit rate
+## Check cache hit rate
 [command]
 
-# Check instance count (scale if needed)
+## Check instance count (scale if needed)
 [scale command]
 ```
 
 #### Service Down / Health Check Failing
 
 ```bash
-# Check service status
+## Check service status
 [status command]
 
-# Check recent deployment
+## Check recent deployment
 [deployment status command]
 
-# Restart service (last resort)
+## Restart service (last resort)
 [restart command]
 ```
 
@@ -122,10 +122,10 @@ Handoff: Every [Monday] at [09:00 UTC]. Outgoing on-call must document any unres
 ### Application Rollback
 
 ```bash
-# List recent deployments
+## List recent deployments
 [list revisions command]
 
-# Roll back to previous version
+## Roll back to previous version
 [rollback command]
 ```
 
@@ -134,10 +134,10 @@ Expected recovery time: [N] minutes.
 ### Database Rollback (Last Resort)
 
 ```bash
-# Identify target restore point
+## Identify target restore point
 [command]
 
-# Restore (this will cause downtime)
+## Restore (this will cause downtime)
 [restore command]
 ```
 
@@ -176,7 +176,7 @@ A post-mortem is required for all P0 and P1 incidents.
 Post-mortem must be completed within [N] business days. Use this template:
 
 ```markdown
-# Post-Mortem: [Incident Name] — [YYYY-MM-DD]
+## Post-Mortem: [Incident Name] — [YYYY-MM-DD]
 
 **Severity**: [P0/P1]
 **Duration**: [Start time] → [End time] ([N] minutes)

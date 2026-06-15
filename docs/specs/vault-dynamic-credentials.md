@@ -171,7 +171,7 @@ vault write pki/roles/intelligence \
 Automatically injects Vault Agent as a sidecar into annotated pods.
 
 ```yaml
-# Pod annotation to trigger injection
+## Pod annotation to trigger injection
 vault.hashicorp.com/agent-inject: 'true'
 vault.hashicorp.com/role: 'intelligence-prod'
 vault.hashicorp.com/agent-inject-secret-db-creds: 'database/creds/intelligence-prod'

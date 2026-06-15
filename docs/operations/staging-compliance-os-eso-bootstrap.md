@@ -63,7 +63,7 @@ Or fix and re-run `CD / Staging` on `compliance-os` `main` (workflow_dispatch).
 
 ```bash
 kubectl apply -k 04-deploy/kubernetes/overlays/staging/compliance-os/
-# or
+## or
 ./03-platform/scripts/staging/install-compliance-os-eso.sh
 ```
 

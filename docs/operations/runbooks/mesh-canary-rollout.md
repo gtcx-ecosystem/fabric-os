@@ -58,7 +58,7 @@ kubectl rollout restart deployment/otel-collector -n gtcx
 
 ```bash
 linkerd viz stat deploy -n gtcx
-# Expect: meshed=true, mTLS=100% for restarted pods
+## Expect: meshed=true, mTLS=100% for restarted pods
 ```
 
 **Rollback:**
@@ -174,15 +174,15 @@ kubectl apply -f 04-deploy/kubernetes/overlays/production/linkerd/mesh-policies.
 If critical service degradation is detected:
 
 ```bash
-# 1. Remove injection annotation
+## 1. Remove injection annotation
 kubectl annotate namespace gtcx linkerd.io/inject- disabled
 
-# 2. Restart all deployments to remove sidecars
+## 2. Restart all deployments to remove sidecars
 kubectl rollout restart deployment -n gtcx
 
-# 3. Verify no sidecars present
+## 3. Verify no sidecars present
 kubectl get pods -n gtcx -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.spec.containers[*].name}{"\n"}{end}' | grep linkerd-proxy
-# Should return nothing
+## Should return nothing
 ```
 
 ---

@@ -39,17 +39,17 @@ kubectl -n gtcx-staging rollout status deployment/compliance-gateway-staging --t
 ## Import LLM dashboard
 
 ```bash
-# Port-forward Grafana
+## Port-forward Grafana
 kubectl -n gtcx-monitoring port-forward svc/grafana 3000:3000
 
-# Import 04-deploy/monitoring/dashboards/llm-ops.json via UI or API
+## Import 04-deploy/monitoring/dashboards/llm-ops.json via UI or API
 ```
 
 ## Verify scrape
 
 ```bash
 kubectl -n gtcx-monitoring port-forward svc/prometheus 9090:9090
-# Open http://localhost:9090/targets — compliance-gateway pod should be UP
+## Open http://localhost:9090/targets — compliance-gateway pod should be UP
 ```
 
 ## Baseline cost-stats (monthly review)

@@ -31,11 +31,11 @@ role: sre
 ## Quick Start
 
 ```bash
-# Staging operational DB
+## Staging operational DB
 ENV=staging DB_TYPE=operational \
   ./04-deploy/03-platform/scripts/rds-live-restore.sh operational staging
 
-# Staging audit DB
+## Staging audit DB
 ENV=staging DB_TYPE=audit \
   ./04-deploy/03-platform/scripts/rds-live-restore.sh audit staging
 ```

@@ -37,20 +37,20 @@ autonomy_level: permissioned
 ## Detection
 
 ```promql
-# Replay guard is down — no successful verifications in 2 min
+## Replay guard is down — no successful verifications in 2 min
 sum(rate(replay_protection_total[2m])) == 0
 
-# Redis nonce store unreachable (fallen back to memory)
+## Redis nonce store unreachable (fallen back to memory)
 replay_guard_redis_connected == 0
 
-# High rejection rate (possible clock skew spike)
+## High rejection rate (possible clock skew spike)
 sum(rate(replay_protection_total{code=~"REPLAY_FUTURE|REPLAY_STALE"}[5m]))
   / sum(rate(replay_protection_total[5m])) > 0.5
 
-# Replay attack indicator — nonce rejections spiking
+## Replay attack indicator — nonce rejections spiking
 sum(rate(replay_protection_total{code="REPLAY_NONCE"}[5m])) > 30
 
-# Delayed offline replay events
+## Delayed offline replay events
 sum(rate(replay_protection_total{code="REPLAY_OK"}[15m])) by (region)
   * on() group_left() (replay_protection_clock_skew_ms_bucket{le="+Inf"} > 300000)
 ```
@@ -128,7 +128,7 @@ kubectl rollout status deployment/gtcx-replay-guard -n gtcx --timeout=120s
 ### Validate recovery
 
 ```bash
-# Should return 200 with allowed: true
+## Should return 200 with allowed: true
 curl -s http://gtcx-replay-guard.gtcx:8400/v1/replay/verify \
   -H "Content-Type: application/json" \
   -d '{

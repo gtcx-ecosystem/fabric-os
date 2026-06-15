@@ -70,10 +70,10 @@ Machine registry: `strategicPillars` in `stratops-strategy-registry.json`.
 ## Operator entry
 
 ```bash
-# Fleet clarity — north star + programmes + pillar trace
+## Fleet clarity — north star + programmes + pillar trace
 pnpm ecosystem:clarity:report:write
 
-# Structural StratOps gate (pillars + programme map)
+## Structural StratOps gate (pillars + programme map)
 pnpm stratops:strategy:check:write
 ```
 

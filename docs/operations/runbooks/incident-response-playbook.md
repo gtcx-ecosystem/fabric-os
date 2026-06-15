@@ -55,17 +55,17 @@ autonomy_level: permissioned
 ### Initial Triage Checklist
 
 ```bash
-# 1. Confirm the incident is real (not test data or drill)
+## 1. Confirm the incident is real (not test data or drill)
 kubectl get pods -n gtcx --all-namespaces
 aws eks describe-cluster --name gtcx-production --region af-south-1
 
-# 2. Check if staging is also affected (infrastructure vs application)
+## 2. Check if staging is also affected (infrastructure vs application)
 kubectl get pods -n gtcx-staging --all-namespaces
 
-# 3. Check AWS Service Health Dashboard
+## 3. Check AWS Service Health Dashboard
 open https://health.aws.amazon.com/health/status
 
-# 4. Check CloudWatch alarms
+## 4. Check CloudWatch alarms
 aws cloudwatch describe-alarms --state-value ALARM --region af-south-1
 ```
 
@@ -90,28 +90,28 @@ aws cloudwatch describe-alarms --state-value ALARM --region af-south-1
 **Immediate Actions:**
 
 ```bash
-# 1. Verify EKS control plane
+## 1. Verify EKS control plane
 aws eks describe-cluster --name gtcx-production --region af-south-1
-# Look for: status = ACTIVE, endpoint accessible
+## Look for: status = ACTIVE, endpoint accessible
 
-# 2. Check node status
+## 2. Check node status
 kubectl get nodes
-# If nodes NotReady, check ASG:
+## If nodes NotReady, check ASG:
 aws autoscaling describe-scaling-activities \
   --auto-scaling-group-name gtcx-production-nodes \
   --region af-south-1
 
-# 3. Check RDS status
+## 3. Check RDS status
 aws rds describe-db-instances \
   --db-instance-identifier gtcx-production-operational \
   --region af-south-1
-# Look for: DBInstanceStatus = available
+## Look for: DBInstanceStatus = available
 
-# 4. If RDS is rebooting/upgrading, check maintenance window
+## 4. If RDS is rebooting/upgrading, check maintenance window
 aws rds describe-db-instances \
   --query 'DBInstances[0].PendingModifiedValues'
 
-# 5. Check WAF — are we blocking our own traffic?
+## 5. Check WAF — are we blocking our own traffic?
 aws wafv2 get-sampled-requests \
   --web-acl-arn $(terraform output -raw waf_acl_arn) \
   --rule-name gtcx-rate-limit \
@@ -139,28 +139,28 @@ aws wafv2 get-sampled-requests \
 **Immediate Actions:**
 
 ```bash
-# 1. PRESERVE EVIDENCE FIRST
-# Do NOT restart pods or delete resources before forensic capture
+## 1. PRESERVE EVIDENCE FIRST
+## Do NOT restart pods or delete resources before forensic capture
 
-# 2. Capture pod state
+## 2. Capture pod state
 kubectl get pods -n gtcx -o yaml > /tmp/incident-$(date +%s)-pods.yaml
 kubectl describe pods -n gtcx > /tmp/incident-$(date +%s)-describe.txt
 
-# 3. Capture logs (before they rotate)
+## 3. Capture logs (before they rotate)
 kubectl logs -n gtcx --all-containers --prefix > /tmp/incident-$(date +%s)-logs.txt
 
-# 4. Capture CloudTrail (last 1 hour)
+## 4. Capture CloudTrail (last 1 hour)
 aws cloudtrail lookup-events \
   --start-time $(date -u -d '1 hour ago' +%Y-%m-%dT%H:%M:%SZ) \
   --end-time $(date -u +%Y-%m-%dT%H:%M:%SZ) \
   --region af-south-1 \
   > /tmp/incident-$(date +%s)-cloudtrail.json
 
-# 5. Check IAM role assumption history
+## 5. Check IAM role assumption history
 aws iam get-role --role-name gtcx-production-shared-deploy \
   --query 'Role.AssumeRolePolicyDocument'
 
-# 6. Revoke compromised credentials (if applicable)
+## 6. Revoke compromised credentials (if applicable)
 aws iam update-assume-role-policy \
   --role-name gtcx-production-shared-deploy \
   --policy-document file://emergency-revoke-policy.json
@@ -188,14 +188,14 @@ DO NOT deploy to production until all-clear.
 **Immediate Actions:**
 
 ```bash
-# 1. Identify failing component
+## 1. Identify failing component
 kubectl get pods -n gtcx
 kubectl top pods -n gtcx
 
-# 2. Check resource exhaustion
+## 2. Check resource exhaustion
 kubectl describe node $(kubectl get nodes -o jsonpath='{.items[0].metadata.name}')
 
-# 3. Check RDS connections
+## 3. Check RDS connections
 aws cloudwatch get-metric-statistics \
   --namespace AWS/RDS \
   --metric-name DatabaseConnections \
@@ -206,10 +206,10 @@ aws cloudwatch get-metric-statistics \
   --statistics Average \
   --region af-south-1
 
-# 4. If connection pool exhausted, restart application pods
+## 4. If connection pool exhausted, restart application pods
 kubectl rollout restart deployment/gtcx-auth-gateway -n gtcx
 
-# 5. If node CPU/memory high, scale node group
+## 5. If node CPU/memory high, scale node group
 aws eks update-nodegroup-config \
   --cluster-name gtcx-production \
   --nodegroup-name gtcx-production-nodes \
@@ -235,17 +235,17 @@ aws eks update-nodegroup-config \
 Before declaring "all clear," verify:
 
 ```bash
-# 1. All pods healthy
+## 1. All pods healthy
 kubectl get pods -n gtcx
-# Expected: All pods Running, 0 CrashLoopBackOff
+## Expected: All pods Running, 0 CrashLoopBackOff
 
-# 2. Error rate < 1%
-# Check Prometheus: rate(intelligence_errors_total[5m]) / rate(intelligence_requests_total[5m]) < 0.01
+## 2. Error rate < 1%
+## Check Prometheus: rate(intelligence_errors_total[5m]) / rate(intelligence_requests_total[5m]) < 0.01
 
-# 3. Latency P95 < 500ms
-# Check Prometheus: histogram_quantile(0.95, rate(intelligence_request_duration_ms_bucket[5m])) < 500
+## 3. Latency P95 < 500ms
+## Check Prometheus: histogram_quantile(0.95, rate(intelligence_request_duration_ms_bucket[5m])) < 500
 
-# 4. RDS connections stable
+## 4. RDS connections stable
 aws cloudwatch get-metric-statistics \
   --namespace AWS/RDS \
   --metric-name DatabaseConnections \
@@ -256,10 +256,10 @@ aws cloudwatch get-metric-statistics \
   --statistics Average \
   --region af-south-1
 
-# 5. Anomaly detector passes
+## 5. Anomaly detector passes
 kubectl create job --from=cronjob/anomaly-detector anomaly-detector-verify -n gtcx
 kubectl logs -n gtcx job/anomaly-detector-verify
-# Expected: {"type":"anomaly.detector.healthy","rulesEvaluated":5}
+## Expected: {"type":"anomaly.detector.healthy","rulesEvaluated":5}
 ```
 
 ---
@@ -281,18 +281,18 @@ kubectl logs -n gtcx job/anomaly-detector-verify
 All forensic evidence must be copied to WORM storage within 24 hours:
 
 ```bash
-# Create incident folder in WORM bucket
+## Create incident folder in WORM bucket
 aws s3api put-object \
   --bucket gtcx-worm-audit-production-af-south-1 \
   --key incidents/2026-05-13-outage/ \
   --region af-south-1
 
-# Upload evidence
+## Upload evidence
 aws s3 cp /tmp/incident-*.yaml s3://gtcx-worm-audit-production-af-south-1/incidents/2026-05-13-outage/
 aws s3 cp /tmp/incident-*.txt s3://gtcx-worm-audit-production-af-south-1/incidents/2026-05-13-outage/
 aws s3 cp /tmp/incident-*.json s3://gtcx-worm-audit-production-af-south-1/incidents/2026-05-13-outage/
 
-# Verify Object Lock
+## Verify Object Lock
 aws s3api get-object-retention \
   --bucket gtcx-worm-audit-production-af-south-1 \
   --key incidents/2026-05-13-outage/incident-logs.txt \
@@ -302,7 +302,7 @@ aws s3api get-object-retention \
 ### Retrospective Template
 
 ```markdown
-# Incident Retrospective: [Title]
+## Incident Retrospective: [Title]
 
 ## Timeline
 
@@ -360,14 +360,14 @@ RDS `max_connections` (100) exceeded by connection leak in auth-gateway v1.2.3.
 ### Complete Service Shutdown (Nuclear Option)
 
 ```bash
-# Only IC or CTO can authorize
+## Only IC or CTO can authorize
 aws eks update-nodegroup-config \
   --cluster-name gtcx-production \
   --nodegroup-name gtcx-production-nodes \
   --scaling-config minSize=0,maxSize=0,desiredSize=0 \
   --region af-south-1
 
-# Restore
+## Restore
 aws eks update-nodegroup-config \
   --cluster-name gtcx-production \
   --nodegroup-name gtcx-production-nodes \
@@ -378,7 +378,7 @@ aws eks update-nodegroup-config \
 ### WAF Emergency Allow-All
 
 ```bash
-# Temporarily disable all WAF rules (last resort)
+## Temporarily disable all WAF rules (last resort)
 aws wafv2 update-web-acl \
   --name gtcx-production-waf-af-south-1 \
   --scope REGIONAL \
@@ -392,13 +392,13 @@ aws wafv2 update-web-acl \
 ### RDS Emergency Snapshot & Restore
 
 ```bash
-# Create immediate snapshot
+## Create immediate snapshot
 aws rds create-db-snapshot \
   --db-instance-identifier gtcx-production-operational \
   --db-snapshot-identifier gtcx-production-operational-emergency-$(date +%s) \
   --region af-south-1
 
-# Restore from snapshot (if needed)
+## Restore from snapshot (if needed)
 aws rds restore-db-instance-from-db-snapshot \
   --db-instance-identifier gtcx-production-operational-restored \
   --db-snapshot-identifier <snapshot-id> \

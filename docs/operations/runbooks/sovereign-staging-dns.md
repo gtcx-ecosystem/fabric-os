@@ -99,13 +99,13 @@ Add this DNS record in Cloudflare for `gtcx.trade`:
 Once the certificate status changes to `ISSUED`:
 
 ```bash
-# Verify certificate is issued
+## Verify certificate is issued
 aws acm describe-certificate \
   --certificate-arn arn:aws:acm:af-south-1:348389439381:certificate/9f7149a3-26db-4dee-bce5-b5a3cd29fe16 \
   --region af-south-1 \
   --query 'Certificate.Status'
 
-# Add certificate to ALB listener
+## Add certificate to ALB listener
 LISTENER_ARN=$(aws elbv2 describe-listeners \
   --load-balancer-arn arn:aws:elasticloadbalancing:af-south-1:348389439381:loadbalancer/app/k8s-gtcxstagingapi-295a96727a/c71b6e1f69c8e8a2 \
   --region af-south-1 \
@@ -141,13 +141,13 @@ kubectl apply -f 04-deploy/kubernetes/overlays/staging/ingress.yaml
 After all steps complete:
 
 ```bash
-# Should return 200, no redirect
+## Should return 200, no redirect
 curl -sI https://sovereign-staging.gtcx.trade/health
 
-# Expected:
-# HTTP/2 200
-# server: cloudflare
-# (no Location header)
+## Expected:
+## HTTP/2 200
+## server: cloudflare
+## (no Location header)
 ```
 
 ---

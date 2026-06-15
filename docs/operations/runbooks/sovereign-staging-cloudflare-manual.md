@@ -30,7 +30,7 @@ Verify:
 aws acm describe-certificate \
   --certificate-arn arn:aws:acm:af-south-1:348389439381:certificate/9f7149a3-26db-4dee-bce5-b5a3cd29fe16 \
   --region af-south-1 --query 'Certificate.Status'
-# Wait until it returns "ISSUED"
+## Wait until it returns "ISSUED"
 ```
 
 ---
@@ -64,8 +64,8 @@ Verify:
 
 ```bash
 curl -sI https://sovereign-staging.gtcx.trade/health
-# Should NO LONGER show: location: http://gtcx.trade
-# May show 526 or 404 (expected until cert + CNAME are fixed)
+## Should NO LONGER show: location: http://gtcx.trade
+## May show 526 or 404 (expected until cert + CNAME are fixed)
 ```
 
 If still 301 after 60s: **Caching** → **Configuration** → **Purge Everything**
@@ -86,7 +86,7 @@ Verify:
 
 ```bash
 dig +short sovereign-staging.gtcx.trade
-# Should return Cloudflare IPs (104.21.x.x / 172.67.x.x)
+## Should return Cloudflare IPs (104.21.x.x / 172.67.x.x)
 ```
 
 ---
@@ -110,7 +110,7 @@ aws elbv2 add-listener-certificates \
 Then update the ingress annotation so the controller keeps it:
 
 ```yaml
-# 04-deploy/kubernetes/overlays/staging/ingress.yaml
+## 04-deploy/kubernetes/overlays/staging/ingress.yaml
 alb.ingress.kubernetes.io/certificate-arn: |
   arn:aws:acm:af-south-1:348389439381:certificate/8929e5a0-a4ec-4acf-86f8-945993e1f0c3,
   arn:aws:acm:af-south-1:348389439381:certificate/9f7149a3-26db-4dee-bce5-b5a3cd29fe16

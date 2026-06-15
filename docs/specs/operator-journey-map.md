@@ -11,6 +11,8 @@ document_type: protocol
 
 # Operator journey map
 
+## Overview
+
 Control-plane journeys for **gtcx-infrastructure** (not end-user trade flows).
 
 ```mermaid

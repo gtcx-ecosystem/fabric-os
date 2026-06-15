@@ -44,7 +44,7 @@ The reader should know what the document is about within the first two sentences
 **Good:**
 
 ```markdown
-# Disaster Recovery Runbook
+## Disaster Recovery Runbook
 
 Recovery procedures for protocol services and state stores. RTO: 4 hours. RPO: 15 minutes.
 
@@ -56,7 +56,7 @@ Recovery procedures for protocol services and state stores. RTO: 4 hours. RPO: 1
 **Bad:**
 
 ```markdown
-# Disaster Recovery Runbook
+## Disaster Recovery Runbook
 
 ## Background
 
@@ -150,7 +150,7 @@ A folder README contains exactly:
 3. **"What Belongs Here" and "What Does NOT Belong Here"** sections
 
 ```markdown
-# Architecture
+## Architecture
 
 System design, component diagrams, trust model, and ADRs.
 

@@ -34,12 +34,12 @@ Migrate Terraform state from local filesystem to S3 + DynamoDB backend for produ
 ## Step 1: Create S3 Bucket and DynamoDB Table
 
 ```bash
-# Variables
+## Variables
 REGION="af-south-1"
 BUCKET="gtcx-terraform-state-${ENVIRONMENT}"
 TABLE="gtcx-terraform-locks"
 
-# Create versioned S3 bucket
+## Create versioned S3 bucket
 aws s3api create-bucket \
   --bucket ${BUCKET} \
   --region ${REGION} \
@@ -60,7 +60,7 @@ aws s3api put-public-access-block \
   --public-access-block-configuration \
     BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
 
-# Create DynamoDB lock table
+## Create DynamoDB lock table
 aws dynamodb create-table \
   --table-name ${TABLE} \
   --attribute-definitions AttributeName=LockID,AttributeType=S \
@@ -90,24 +90,24 @@ terraform {
 ```bash
 cd 04-deploy/terraform/environments/zimbabwe-pilot
 
-# Initialize with new backend — Terraform will detect the change
-# and offer to copy existing state
+## Initialize with new backend — Terraform will detect the change
+## and offer to copy existing state
 terraform init -migrate-state
 
-# Verify state was migrated
+## Verify state was migrated
 terraform plan  # Should show no changes
 ```
 
 ## Step 4: Verify
 
 ```bash
-# Confirm remote state exists
+## Confirm remote state exists
 aws s3 ls s3://${BUCKET}/infrastructure/
 
-# Confirm lock table is accessible
+## Confirm lock table is accessible
 aws dynamodb describe-table --table-name ${TABLE} --region ${REGION}
 
-# Remove local state file (now in S3)
+## Remove local state file (now in S3)
 rm terraform.tfstate terraform.tfstate.backup
 ```
 
@@ -116,8 +116,8 @@ rm terraform.tfstate terraform.tfstate.backup
 If migration fails:
 
 ```bash
-# State is still in local terraform.tfstate.backup
-# Revert the backend block in main.tf
+## State is still in local terraform.tfstate.backup
+## Revert the backend block in main.tf
 terraform init -migrate-state  # Will copy back to local
 ```
 

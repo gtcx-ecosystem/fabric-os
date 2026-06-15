@@ -11,6 +11,8 @@ document_type: runbook
 
 # Layout v5 — local SoR pointer
 
+## Overview
+
 | Artifact         | Path                                                                                                                         |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | Machine contract | [`../../../../bridge-os/config/ecosystem-layout-contract.json`](../../../../bridge-os/config/ecosystem-layout-contract.json) |

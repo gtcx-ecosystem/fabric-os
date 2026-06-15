@@ -28,26 +28,26 @@ autonomy_level: permissioned
 ## Steps
 
 ```bash
-# 1. Fresh clone
+## 1. Fresh clone
  git clone https://github.com/gtcx-ecosystem/gtcx-infrastructure.git gtcx-infrastructure-purge
  cd gtcx-infrastructure-purge
 
-# 2. Run filter-repo to remove Terraform artifacts from ALL history
+## 2. Run filter-repo to remove Terraform artifacts from ALL history
  git filter-repo \
    --path-glob '04-deploy/terraform/**/*.tfstate*' \
    --path-glob '04-deploy/terraform/**/.terraform/**' \
    --path-glob '04-deploy/terraform/**/.terraform.lock.hcl' \
    --invert-paths
 
-# 3. Verify nothing remains
+## 3. Verify nothing remains
  git log --all --full-history -- '04-deploy/terraform/**/.terraform/**'
  git log --all --full-history -- '04-deploy/terraform/**/*.tfstate*'
 
-# 4. Force-push to origin (DESTRUCTIVE — requires admin)
+## 4. Force-push to origin (DESTRUCTIVE — requires admin)
  git push origin --force --all
  git push origin --force --tags
 
-# 5. Notify the team to re-clone
+## 5. Notify the team to re-clone
 ```
 
 ## Prevention

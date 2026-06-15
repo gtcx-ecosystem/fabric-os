@@ -28,10 +28,10 @@ ECR tag **`audit-tradepass-auth-amd64`** (commit `764fb83` bearer fix, **linux/a
 ```bash
 cd gtcx-infrastructure
 node 03-platform/scripts/staging/generate-compliance-gateway-audit-signing-key.mjs
-# Creates secret compliance-gateway-audit-key-staging
+## Creates secret compliance-gateway-audit-key-staging
 
 node 03-platform/scripts/staging/patch-compliance-gateway-auth-tokens.mjs
-# Patches COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON from AWS SM AUDIT_TOKEN
+## Patches COMPLIANCE_GATEWAY_AUTH_TOKENS_JSON from AWS SM AUDIT_TOKEN
 ```
 
 ## 3. Apply + post-apply env (protocols Bearer path)
@@ -51,7 +51,7 @@ kubectl rollout restart deployment/compliance-gateway-staging -n gtcx-staging
 ## 4. Verify
 
 ```bash
-# In-cluster resolver (from a debug pod or gateway logs): TradePass GET with Bearer → 200
+## In-cluster resolver (from a debug pod or gateway logs): TradePass GET with Bearer → 200
 cd gtcx-mobile
 pnpm staging:sync-env-from-sm
 pnpm staging:pilot-smoke -- --e2e

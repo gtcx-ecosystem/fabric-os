@@ -44,10 +44,10 @@ autonomy_level: permissioned
 ### Detection
 
 ```bash
-# Check node AZ distribution
+## Check node AZ distribution
 kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.metadata.labels.topology\.kubernetes\.io/zone}{"\n"}{end}'
 
-# Check AZ health
+## Check AZ health
 aws ec2 describe-availability-zones --region af-south-1 \
   --query 'AvailabilityZones[].{Name:ZoneName,State:State}'
 ```
@@ -55,27 +55,27 @@ aws ec2 describe-availability-zones --region af-south-1 \
 ### Response
 
 ```bash
-# 1. Verify ASG is launching replacement nodes in healthy AZs
+## 1. Verify ASG is launching replacement nodes in healthy AZs
 aws autoscaling describe-scaling-activities \
   --auto-scaling-group-name gtcx-production-nodes \
   --region af-south-1
 
-# 2. If nodes don't recover automatically, force ASG to replace
+## 2. If nodes don't recover automatically, force ASG to replace
 aws autoscaling start-instance-refresh \
   --auto-scaling-group-name gtcx-production-nodes \
   --strategy Rolling \
   --region af-south-1
 
-# 3. Verify pod rescheduling
+## 3. Verify pod rescheduling
 kubectl get pods -n gtcx -o wide
-# Pods should reschedule to nodes in healthy AZs
+## Pods should reschedule to nodes in healthy AZs
 
-# 4. Verify RDS failover completed
+## 4. Verify RDS failover completed
 aws rds describe-db-instances \
   --db-instance-identifier gtcx-production-operational \
   --region af-south-1 \
   --query 'DBInstances[0].AvailabilityZone'
-# Should show AZ different from failed one
+## Should show AZ different from failed one
 ```
 
 ### Verification
@@ -110,18 +110,18 @@ RDS Multi-AZ automatically fails over to standby. No manual action required for 
 ### Manual Failover (if auto-failover doesn't occur)
 
 ```bash
-# Force failover for operational DB
+## Force failover for operational DB
 aws rds reboot-db-instance \
   --db-instance-identifier gtcx-production-operational \
   --force-failover \
   --region af-south-1
 
-# Monitor failover progress
+## Monitor failover progress
 aws rds describe-db-instances \
   --db-instance-identifier gtcx-production-operational \
   --region af-south-1 \
   --query 'DBInstances[0].DBInstanceStatus'
-# Wait for "available"
+## Wait for "available"
 ```
 
 ### Verification
@@ -156,22 +156,22 @@ aws eks describe-cluster --name gtcx-production --region af-south-1 \
 ```bash
 cd 04-deploy/terraform/environments/production
 
-# Taint the failed cluster resource
+## Taint the failed cluster resource
 terraform taint module.eks.aws_eks_cluster.main
 
-# Re-apply (creates new cluster, preserves other resources)
+## Re-apply (creates new cluster, preserves other resources)
 terraform apply -auto-approve
 
-# Re-deploy all workloads
+## Re-deploy all workloads
 kubectl apply -f 04-deploy/kubernetes/base/services/
 ```
 
 **Option C: Failover to staging**
 
 ```bash
-# Emergency DNS cutover to staging
-# Update Route53 or external DNS to point to staging ALB
-# Notify: This is degraded service, not full recovery
+## Emergency DNS cutover to staging
+## Update Route53 or external DNS to point to staging ALB
+## Notify: This is degraded service, not full recovery
 ```
 
 ---
@@ -191,41 +191,41 @@ kubectl apply -f 04-deploy/kubernetes/base/services/
 **Step 1: Assess Impact**
 
 ```bash
-# Check AWS Service Health Dashboard
+## Check AWS Service Health Dashboard
 open https://health.aws.amazon.com/health/status
 
-# Verify region is down (not just our VPC)
+## Verify region is down (not just our VPC)
 aws ec2 describe-instances --region af-south-1 2>&1
-# Expected: timeout or service error
+## Expected: timeout or service error
 ```
 
 **Step 2: Bootstrap DR Region**
 
 ```bash
-# Target region: us-east-1
+## Target region: us-east-1
 export AWS_REGION=us-east-1
 
-# 1. Create emergency VPC in us-east-1
-# (Use Terraform with region override)
+## 1. Create emergency VPC in us-east-1
+## (Use Terraform with region override)
 cd 04-deploy/terraform/environments/production
 terraform apply -var='region=us-east-1' -target=module.vpc -auto-approve
 
-# 2. Restore RDS from cross-region snapshot
-# (Note: RDS snapshots are NOT automatically cross-region — this is a gap)
-# Manual step: Create snapshot in af-south-1, copy to us-east-1, restore
+## 2. Restore RDS from cross-region snapshot
+## (Note: RDS snapshots are NOT automatically cross-region — this is a gap)
+## Manual step: Create snapshot in af-south-1, copy to us-east-1, restore
 aws rds create-db-snapshot \
   --db-instance-identifier gtcx-production-operational \
   --db-snapshot-identifier gtcx-dr-operational-$(date +%s) \
   --region af-south-1
 
-# 3. Copy snapshot to us-east-1
+## 3. Copy snapshot to us-east-1
 aws rds copy-db-snapshot \
   --source-db-snapshot-identifier arn:aws:rds:af-south-1:348389439381:snapshot:gtcx-dr-operational-... \
   --target-db-snapshot-identifier gtcx-dr-operational-us-east-1 \
   --source-region af-south-1 \
   --region us-east-1
 
-# 4. Restore from snapshot in us-east-1
+## 4. Restore from snapshot in us-east-1
 aws rds restore-db-instance-from-db-snapshot \
   --db-instance-identifier gtcx-dr-operational \
   --db-snapshot-identifier gtcx-dr-operational-us-east-1 \
@@ -235,7 +235,7 @@ aws rds restore-db-instance-from-db-snapshot \
 **Step 3: Verify WORM Data in DR Region**
 
 ```bash
-# WORM audit data is already in us-east-1 via S3 replication
+## WORM audit data is already in us-east-1 via S3 replication
 aws s3 ls s3://gtcx-worm-audit-production-replica-us-east-1/ --region us-east-1
 ```
 
@@ -248,18 +248,18 @@ aws s3 ls s3://gtcx-worm-audit-production-replica-us-east-1/ --region us-east-1
 ### Immediate Response
 
 ```bash
-# 1. PRESERVE EVIDENCE
-# Capture CloudTrail before it rotates
+## 1. PRESERVE EVIDENCE
+## Capture CloudTrail before it rotates
 aws cloudtrail lookup-events \
   --start-time $(date -u -d '24 hours ago' +%Y-%m-%dT%H:%M:%SZ) \
   --end-time $(date -u +%Y-%m-%dT%H:%M:%SZ) \
   --region af-south-1 \
   > /tmp/incident-cloudtrail-$(date +%s).json
 
-# 2. Check WORM tamper attempts
+## 2. Check WORM tamper attempts
 aws s3api get-bucket-policy --bucket gtcx-worm-audit-production-af-south-1 --region af-south-1
 
-# 3. Verify WORM Object Lock is intact
+## 3. Verify WORM Object Lock is intact
 aws s3api get-object-retention \
   --bucket gtcx-worm-audit-production-af-south-1 \
   --key <latest-audit-object> \
@@ -269,21 +269,21 @@ aws s3api get-object-retention \
 ### Recovery from Last Known Good State
 
 ```bash
-# 1. Identify last known good snapshot
+## 1. Identify last known good snapshot
 aws rds describe-db-snapshots \
   --db-instance-identifier gtcx-production-operational \
   --region af-south-1 \
   --query 'DBSnapshots[*].{ID:DBSnapshotIdentifier,Time:SnapshotCreateTime}' \
   | jq 'sort_by(.Time) | reverse | .[0:5]'
 
-# 2. Restore from snapshot
+## 2. Restore from snapshot
 aws rds restore-db-instance-from-db-snapshot \
   --db-instance-identifier gtcx-production-operational-recovered \
   --db-snapshot-identifier <last-good-snapshot> \
   --region af-south-1
 
-# 3. Verify data integrity
-# Run application health checks, compare critical table row counts
+## 3. Verify data integrity
+## Run application health checks, compare critical table row counts
 ```
 
 ---
@@ -295,31 +295,31 @@ aws rds restore-db-instance-from-db-snapshot \
 ### Emergency Stop
 
 ```bash
-# 1. If destroy is still running, CANCEL IT
-# Terraform does not have a built-in cancel, but you can:
-# - Kill the terraform process
-# - Or let it finish and re-create
+## 1. If destroy is still running, CANCEL IT
+## Terraform does not have a built-in cancel, but you can:
+## - Kill the terraform process
+## - Or let it finish and re-create
 
-# 2. Check what was deleted
+## 2. Check what was deleted
 terraform show
-# Or check AWS Console
+## Or check AWS Console
 ```
 
 ### Recovery
 
 ```bash
-# Option A: Terraform state is intact — just re-apply
+## Option A: Terraform state is intact — just re-apply
 cd 04-deploy/terraform/environments/production
 terraform plan
 terraform apply -auto-approve
 
-# Option B: State file corrupted — restore from S3 versioning
+## Option B: State file corrupted — restore from S3 versioning
 aws s3api list-object-versions \
   --bucket gtcx-terraform-state-production \
   --prefix environments/production/terraform.tfstate \
   --region us-east-1
 
-# Restore previous version
+## Restore previous version
 aws s3api get-object \
   --bucket gtcx-terraform-state-production \
   --key environments/production/terraform.tfstate \
@@ -327,7 +327,7 @@ aws s3api get-object \
   --region us-east-1 \
   terraform.tfstate
 
-# Then re-initialize and apply
+## Then re-initialize and apply
 terraform init
 terraform apply -auto-approve
 ```
@@ -339,13 +339,13 @@ terraform apply -auto-approve
 ### RDS Snapshots
 
 ```bash
-# Automated snapshots (daily, 30-day retention)
+## Automated snapshots (daily, 30-day retention)
 aws rds describe-db-snapshots \
   --snapshot-type automated \
   --db-instance-identifier gtcx-production-operational \
   --region af-south-1
 
-# Manual snapshot (before risky operations)
+## Manual snapshot (before risky operations)
 aws rds create-db-snapshot \
   --db-instance-identifier gtcx-production-operational \
   --db-snapshot-identifier pre-change-$(date +%Y%m%d-%H%M%S) \
@@ -355,24 +355,24 @@ aws rds create-db-snapshot \
 ### EKS State
 
 ```bash
-# EKS cluster is managed — AWS handles control plane backups
-# For workload state, rely on:
-# - GitOps (manifests in git)
-# - RDS for application state
-# - S3 for object storage
-# - WORM for audit logs
+## EKS cluster is managed — AWS handles control plane backups
+## For workload state, rely on:
+## - GitOps (manifests in git)
+## - RDS for application state
+## - S3 for object storage
+## - WORM for audit logs
 ```
 
 ### S3 WORM Audit Data
 
 ```bash
-# Primary: af-south-1
+## Primary: af-south-1
 aws s3 ls s3://gtcx-worm-audit-production-af-south-1/ --region af-south-1
 
-# Replica: us-east-1 (cross-region replication)
+## Replica: us-east-1 (cross-region replication)
 aws s3 ls s3://gtcx-worm-audit-production-replica-us-east-1/ --region us-east-1
 
-# Object Lock prevents deletion
+## Object Lock prevents deletion
 aws s3api get-object-lock-configuration \
   --bucket gtcx-worm-audit-production-af-south-1 \
   --region af-south-1

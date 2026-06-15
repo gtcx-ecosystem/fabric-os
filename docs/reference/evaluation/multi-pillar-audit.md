@@ -6,6 +6,7 @@ owner: fabric-os
 tier: critical
 tags: ['evaluation', 'multi-pillar', 'rag', 'mcp']
 review_cycle: on-change
+document_type: overview
 document_id: DOC-EVAL-MPR-POINTER
 ---
 

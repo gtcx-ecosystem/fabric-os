@@ -79,5 +79,17 @@
   "engineDriven": {
     "note": "Not stored under docs/ — see pm/manifest.json (P36)",
     "manifest": "pm/manifest.json"
+  },
+  "iaExemptions": {
+    "denseExemptPathPrefixes": [
+      "docs/operations",
+      "docs/operations/batch-a",
+      "docs/operations/batch-b",
+      "docs/operations/batch-c",
+      "docs/operations/coordination",
+      "docs/overview/product",
+      "docs/reference/archive"
+    ],
+    "readmeExemptPathPrefixes": ["docs/reference/archive"]
   }
 }

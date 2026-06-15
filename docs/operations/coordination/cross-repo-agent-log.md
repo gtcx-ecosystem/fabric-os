@@ -3,8 +3,11 @@ title: 'Cross-repo agent activity log — fabric-os'
 status: current
 date: 2026-06-03
 owner: fabric-os
-document_id: INFRA-COORD-LOG-001
+tier: operating
+tags: ['runbook', 'documentation']
 review_cycle: append-only
+document_type: runbook
+document_id: INFRA-COORD-LOG-001
 ---
 
 # Cross-repo agent activity log (fabric-os)

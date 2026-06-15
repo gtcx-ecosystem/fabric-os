@@ -3,10 +3,13 @@ title: 'Cross-repo sprint workplan — fabric-os unified register'
 status: current
 date: 2026-06-05
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: weekly
+document_type: runbook
 role: platform-engineer
 document_id: INFRA-COORD-SPRINT-2026-06
 sprint_horizon: 2026-06-03 → 2026-06-28
-review_cycle: weekly
 ---
 
 # Cross-repo sprint workplan — fabric-os unified register

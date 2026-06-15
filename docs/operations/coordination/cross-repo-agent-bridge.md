@@ -3,10 +3,11 @@ title: 'Cross-repo agent bridge — fabric-os'
 status: current
 date: 2026-06-06
 owner: fabric-os
-role: platform-engineer
 tier: critical
-tags: ['coordination', 'bridge', 'agents', 'protocol-24']
+tags: [['coordination', 'bridge', 'agents', 'protocol-24']]
 review_cycle: daily
+document_type: runbook
+role: platform-engineer
 protocol: canon-os/01-docs/governance/protocols/24-cross-repo-coordination/protocol.md
 ---
 

@@ -3,7 +3,7 @@
   "coreId": "A3-AGENTIC-INNOVATION",
   "slug": "agentic-innovation",
   "repo": "fabric-os",
-  "date": "2026-06-14",
+  "date": "2026-06-15",
   "score10": 10,
   "score100": 100,
   "score100Raw": 100,
@@ -43,7 +43,7 @@
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-14.json",
+  "rubricSourcePath": "audit/audit-output-2026-06-15.json",
   "checks": {
     "agenticManifest": {
       "ok": true,

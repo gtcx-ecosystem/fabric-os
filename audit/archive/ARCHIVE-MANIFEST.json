@@ -480,7 +480,31 @@
       "to": "audit/archive/2026-06-14/audit/evidence/waf-terraform-apply-2026-06-13.json",
       "reason": "stale-dated-active-tree",
       "at": "2026-06-14T18:00:43.123Z"
+    },
+    {
+      "from": "audit/evidence/secas-pentest-report-ingest-approval-2026-06-12.json",
+      "to": "audit/archive/2026-06-15/audit/evidence/secas-pentest-report-ingest-approval-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-15T06:23:08.129Z"
+    },
+    {
+      "from": "audit/audit-output-2026-06-14.json",
+      "to": "audit/archive/2026-06-15/audit/audit-output-2026-06-14.json",
+      "reason": "superseded-by-newer-dated-sibling",
+      "at": "2026-06-15T06:24:10.486Z"
+    },
+    {
+      "from": "audit/evidence/session-open-items-reconcile-2026-06-14.json",
+      "to": "audit/archive/2026-06-15/audit/evidence/session-open-items-reconcile-2026-06-14.json",
+      "reason": "superseded-by-newer-dated-sibling",
+      "at": "2026-06-15T07:57:14.634Z"
+    },
+    {
+      "from": "pm/ci/session-forensic-2026-06-14.md",
+      "to": "audit/archive/2026-06-15/pm/ci/session-forensic-2026-06-14.md",
+      "reason": "superseded-by-newer-dated-sibling",
+      "at": "2026-06-15T07:57:14.634Z"
     }
   ],
-  "updated": "2026-06-14T18:00:43.123Z"
+  "updated": "2026-06-15T07:57:14.634Z"
 }

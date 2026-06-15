@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/fabric-assurance/v1",
-  "at": "2026-06-14T15:51:41.754Z",
+  "at": "2026-06-15T06:31:27.726Z",
   "repo": "fabric-os",
   "initiative": "INIT-ASSURANCE-BURN-DOWN",
   "story": "T35",
@@ -189,7 +189,7 @@
       "skipped": false,
       "command": "pnpm ecosystem:fleet:verify:all --no-build --json",
       "exitCode": 1,
-      "output": "    \"detail\": \"ok\"\n        },\n        \"skills\": {\n          \"cursor\": 15,\n          \"claude\": 15,\n          \"ok\": true\n        },\n        \"cursor\": {\n          \"ok\": true\n        },\n        \"agentic\": {\n          \"ok\": true,\n          \"hasCursorRollout\": true,\n          \"schema\": \"gtcx.agentic.bridge.v1\"\n        },\n        \"autonomy\": {\n          \"ok\": true,\n          \"level\": \"full\"\n        },\n        \"layout\": {\n          \"ok\": false,\n          \"exit\": 1\n        },\n        \"ops\": {\n          \"ok\": true,\n          \"detail\": \"pass\"\n        },\n        \"gitPush\": {\n          \"ok\": true,\n          \"ahead\": 5,\n          \"agentSandbox\": false\n        },\n        \"build\": {\n          \"ok\": true,\n          \"skipped\": true\n        }\n      }\n    }\n  ]\n}\n ELIFECYCLE  Command failed with exit code 1.\n"
+      "output": "    \"detail\": \"ok\"\n        },\n        \"skills\": {\n          \"cursor\": 15,\n          \"claude\": 15,\n          \"ok\": true\n        },\n        \"cursor\": {\n          \"ok\": true\n        },\n        \"agentic\": {\n          \"ok\": true,\n          \"hasCursorRollout\": true,\n          \"schema\": \"gtcx.agentic.bridge.v1\"\n        },\n        \"autonomy\": {\n          \"ok\": true,\n          \"level\": \"full\"\n        },\n        \"layout\": {\n          \"ok\": false,\n          \"exit\": 1\n        },\n        \"ops\": {\n          \"ok\": true,\n          \"detail\": \"pass\"\n        },\n        \"gitPush\": {\n          \"ok\": true,\n          \"ahead\": 0,\n          \"agentSandbox\": false\n        },\n        \"build\": {\n          \"ok\": true,\n          \"skipped\": true\n        }\n      }\n    }\n  ]\n}\n ELIFECYCLE  Command failed with exit code 1.\n"
     },
     {
       "id": "five-core-partial-A1-A5",
@@ -209,7 +209,7 @@
       "skipped": false,
       "command": "pnpm ecosystem:five-pillar:stress:fleet:write",
       "exitCode": 0,
-      "output": " mode=partial-unlock\nOK canon-os composite=92 mode=full-unlock\nOK compliance-os composite=99 mode=full-unlock\nOK ecosystem-os composite=48 mode=partial-unlock\nOK exploration-os composite=99 mode=full-unlock\nOK fabric-os composite=100 mode=full-unlock\nOK griot-ai composite=59 mode=partial-unlock\nOK gtcx-os composite=99 mode=full-unlock\nOK ledger-ui composite=99 mode=full-unlock\nOK markets-os composite=97 mode=full-unlock\nOK nyota-ai composite=59 mode=partial-unlock\nOK sensei-os composite=99 mode=full-unlock\nOK terminal-os composite=100 mode=full-unlock\nOK terra-os composite=59 mode=partial-unlock\nOK veritas-ai composite=99 mode=full-unlock\n\nStress: fullUnlock=11/17 compliance<85=6 noRubric=1\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/five-pillar-fleet-stress-latest.json\n"
+      "output": "osite=92 mode=full-unlock\nOK canon-os composite=92 mode=full-unlock\nOK compliance-os composite=97 mode=full-unlock\nOK ecosystem-os composite=59 mode=partial-unlock\nOK exploration-os composite=97 mode=full-unlock\nOK fabric-os composite=100 mode=full-unlock\nOK griot-ai composite=97 mode=full-unlock\nOK gtcx-os composite=100 mode=full-unlock\nOK ledger-ui composite=100 mode=full-unlock\nOK markets-os composite=100 mode=full-unlock\nOK nyota-ai composite=97 mode=full-unlock\nOK sensei-os composite=97 mode=full-unlock\nOK terminal-os composite=100 mode=full-unlock\nOK terra-os composite=97 mode=full-unlock\nOK veritas-ai composite=100 mode=full-unlock\n\nStress: fullUnlock=16/17 compliance<85=1 noRubric=0\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/five-pillar-fleet-stress-latest.json\n"
     },
     {
       "id": "uat-independent",
@@ -268,14 +268,14 @@
         "witnessPath": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-verify-latest.json",
         "ok": true,
         "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-verify-latest.json",
-        "ageHours": 0.06921888888888889
+        "ageHours": 14.731988611111111
       },
       {
         "runId": "story-acceptance-witness",
-        "witnessPath": null,
-        "ok": false,
-        "reason": "missing",
-        "path": null
+        "witnessPath": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/settlement-story-done-latest.json",
+        "ok": true,
+        "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/settlement-story-done-latest.json",
+        "ageHours": 9.053518055555555
       },
       {
         "runId": "fabric-assurance-run",
@@ -296,7 +296,7 @@
         "witnessPath": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/documentation-audit-fleet-latest.json",
         "ok": true,
         "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/documentation-audit-fleet-latest.json",
-        "ageHours": 0.06582083333333333
+        "ageHours": 0.1085325
       },
       {
         "runId": "uat-exit",
@@ -307,13 +307,6 @@
       }
     ],
     "failures": [
-      {
-        "kind": "run",
-        "runId": "story-acceptance-witness",
-        "ok": false,
-        "reason": "missing",
-        "path": null
-      },
       {
         "kind": "run",
         "runId": "fabric-assurance-run",

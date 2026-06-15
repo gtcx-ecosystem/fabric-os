@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://audit/strategic-depth/v1",
   "repo": "fabric-os",
-  "date": "2026-06-14",
+  "date": "2026-06-15",
   "status": "composite-lift",
   "frameworksRun": ["ECOSYSTEM-FIT", "INNOVATION-MOAT-90D"],
   "frameworkScores": {

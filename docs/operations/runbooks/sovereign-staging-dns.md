@@ -1,7 +1,12 @@
 ---
+title: 'Runbook: Route `sovereign-staging.gtcx.trade` to Sovereign Staging Service'
 status: current
 date: 2026-06-02
 owner: gtcx-infrastructure
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # Runbook: Route `sovereign-staging.gtcx.trade` to Sovereign Staging Service

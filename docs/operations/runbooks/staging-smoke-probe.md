@@ -1,15 +1,16 @@
 ---
 title: 'Staging Smoke Probe — In-Cluster Runtime Evidence'
-status: 'current'
-date: '2026-05-27'
-owner: 'sre'
-role: 'sre'
-tier: 'critical'
-tags: ['runtime', 'smoke', 'evidence', 'staging', 'kubernetes']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: sre
+tier: critical
+tags: [['runtime', 'smoke', 'evidence', 'staging', 'kubernetes']]
+review_cycle: on-change
+document_type: runbook
+role: sre
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Staging Smoke Probe — In-Cluster Runtime Evidence

@@ -1,11 +1,12 @@
 ---
 title: 'INF-50–52 — Staging audit API deploy'
 status: current
-date: '2026-06-02'
+date: 2026-06-02
 owner: platform-lead
 tier: critical
-tags: ['operations', 'audit', 'staging', 'inf-50', 'inf-51', 'inf-52']
+tags: [['operations', 'audit', 'staging', 'inf-50', 'inf-51', 'inf-52']]
 review_cycle: on-change
+document_type: runbook
 ---
 
 # INF-50–52 — Staging audit API deploy

@@ -1,7 +1,12 @@
 ---
+title: 'Manual Cloudflare Steps — sovereign-staging.gtcx.trade'
 status: current
 date: 2026-06-02
 owner: gtcx-infrastructure
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # Manual Cloudflare Steps — sovereign-staging.gtcx.trade

@@ -1,15 +1,16 @@
 ---
 title: 'Runtime Evidence Check'
-status: 'current'
-date: '2026-06-05'
-owner: 'sre'
-role: 'sre'
-tier: 'standard'
-tags: ['security', 'compliance', 'ci', 'release-evidence']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-06-05/ir-32'
+status: current
+date: 2026-06-05
+owner: sre
+tier: standard
+tags: [['security', 'compliance', 'ci', 'release-evidence']]
+review_cycle: on-change
+document_type: runbook
+role: sre
+agent_id: agent://gtcx-infrastructure/2026-06-05/ir-32
 trust_score: 70
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Runtime Evidence Check

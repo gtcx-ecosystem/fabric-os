@@ -1,15 +1,16 @@
 ---
 title: 'Linkerd Mesh Canary Rollout Strategy'
-status: 'current'
-date: '2026-05-27'
-owner: 'platform-engineering'
-role: 'frontier-infra-engineer'
-tier: 'critical'
-tags: ['linkerd', 'mtls', 'mesh', 'canary', 'rollout', 'deployment']
-review_cycle: 'quarterly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: platform-engineering
+tier: critical
+tags: [['linkerd', 'mtls', 'mesh', 'canary', 'rollout', 'deployment']]
+review_cycle: quarterly
+document_type: runbook
+role: frontier-infra-engineer
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Linkerd Mesh Canary Rollout Strategy

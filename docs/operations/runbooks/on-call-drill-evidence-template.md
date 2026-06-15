@@ -1,15 +1,16 @@
 ---
 title: 'On-Call Drill Evidence Log'
-status: 'current'
-date: '2026-05-27'
-owner: 'frontier-infra-engineer'
-role: 'frontier-infra-engineer'
-tier: 'critical'
-tags: ['security', 'compliance', 'infrastructure', 'api', 'frontend']
-review_cycle: 'quarterly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: frontier-infra-engineer
+tier: critical
+tags: [['security', 'compliance', 'infrastructure', 'api', 'frontend']]
+review_cycle: quarterly
+document_type: runbook
+role: frontier-infra-engineer
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # On-Call Drill Evidence Log

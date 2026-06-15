@@ -1,12 +1,13 @@
 ---
 title: 'Live RDS Restore — Operator Runbook (S3-07)'
-status: 'current'
-date: '2026-06-05'
-owner: 'sre'
-role: 'sre'
-tier: 'critical'
-tags: ['dr', 'rds', 'restore', 'pit', 'evidence']
-review_cycle: 'quarterly'
+status: current
+date: 2026-06-05
+owner: sre
+tier: critical
+tags: [['dr', 'rds', 'restore', 'pit', 'evidence']]
+review_cycle: quarterly
+document_type: runbook
+role: sre
 ---
 
 # Live RDS Restore — Operator Runbook (S3-07)

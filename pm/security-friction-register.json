@@ -111,7 +111,7 @@
       "infraAction": "Map findings to owners; closure witness post-remediation",
       "acceptance": "audit/evidence/pen-test-remediation-closure-latest.json",
       "executionStatus": "structural done",
-      "executionNote": "Scaffold created 2026-06-14 (findings register, closure tracker, check script). Remediation mapping blocked on BG-10-10-REPORT.",
+      "executionNote": "Scaffold sealed 2026-06-15 (internalScopeComplete). Remediation mapping blocked on BG-10-10-REPORT.",
       "blocksIR": false
     }
   ]

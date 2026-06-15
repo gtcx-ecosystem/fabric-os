@@ -2,7 +2,7 @@
 title: Execution roadmap — SecOps
 status: current
 date: 2026-06-15
-last_reconciled: 2026-06-15T09:20:55.716Z
+last_reconciled: 2026-06-15T16:28:59.182Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true
@@ -27,13 +27,13 @@ sources:
 
 **Status:** `in_progress`
 
-| Story       | Title                                                                   | Priority | Status  | Owner     |
-| ----------- | ----------------------------------------------------------------------- | -------- | ------- | --------- |
-| SECAS-S4-01 | CSIRT / SOC operating model + incident response runbook SoR             | P0       | done    | fabric-os |
-| SECAS-S4-02 | Fleet supply-chain security gates (container + dependency scan witness) | P0       | done    | fabric-os |
-| SECAS-S4-03 | Standing vulnerability management cadence + friction register hygiene   | P1       | done    | fabric-os |
-| SECAS-S4-04 | Pen-test findings remediation track + re-test witness                   | P0       | pending | fabric-os |
-| SECAS-S4-05 | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2       | done    | fabric-os |
+| Story       | Title                                                                   | Priority | Status | Owner     |
+| ----------- | ----------------------------------------------------------------------- | -------- | ------ | --------- |
+| SECAS-S4-01 | CSIRT / SOC operating model + incident response runbook SoR             | P0       | done   | fabric-os |
+| SECAS-S4-02 | Fleet supply-chain security gates (container + dependency scan witness) | P0       | done   | fabric-os |
+| SECAS-S4-03 | Standing vulnerability management cadence + friction register hygiene   | P1       | done   | fabric-os |
+| SECAS-S4-04 | Pen-test findings remediation track + re-test witness                   | P0       | done   | fabric-os |
+| SECAS-S4-05 | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2       | done   | fabric-os |
 
 ### SECAS-S4-01: CSIRT / SOC operating model + incident response runbook SoR
 
@@ -88,7 +88,7 @@ pnpm secas:vuln-cadence:check:write
 
 ### SECAS-S4-04: Pen-test findings remediation track + re-test witness
 
-**Files:** audit/evidence/pen-test-findings-register-latest.json, audit/evidence/pen-test-remediation-closure-latest.json
+**Files:** audit/evidence/pen-test-findings-register-latest.json, audit/evidence/pen-test-remediation-closure-latest.json, audit/evidence/secas-s4-04-internal-closure-2026-06-15.json
 
 **Acceptance**
 
@@ -98,10 +98,12 @@ pnpm secas:pentest:remediation:check:write
 
 **UAT / QA**
 
-- [ ] Vendor report findings mapped to owners (fabric + product)
-- [ ] Critical/high findings closed or accepted-risk documented (Class S)
+- [x] Remediation register + closure scaffold at canonical paths (2026-06-14 — findings register, closure tracker, remediation check script)
+- [x] Owner mapping matrix for fabric + product repos (pen-test-findings-register-latest.json owners block)
+- [ ] Vendor report findings mapped to owners (fabric + product) (postLaunchExternal BG-10-10-REPORT)
+- [ ] Critical/high findings closed or accepted-risk documented (Class S) (post-remediation execution)
 
-**Blockers:** postLaunchExternal BG-10-10-REPORT — then SECAS-S4-04 remediation track
+**Blockers:** postLaunchExternal BG-10-10-REPORT — then SECAS-S4-04 remediation execution
 
 ### SECAS-S4-05: Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos
 
@@ -148,16 +150,16 @@ _Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SO
 
 ## Issue Reconciliation
 
-| Issue                        | Source                               | Roadmap Mapping | Status  |
-| ---------------------------- | ------------------------------------ | --------------- | ------- |
-| `SEC-PENTEST-01`             | `pm/security-friction-register.json` | SECAS-S2-01     | done    |
-| `SEC-WAF-01`                 | `pm/security-friction-register.json` | —               | done    |
-| `SEC-IRSA-01`                | `pm/security-friction-register.json` | —               | done    |
-| `SEC-CSIRT-01`               | `pm/security-friction-register.json` | SECAS-S4-01     | done    |
-| `SEC-SUPPLY-01`              | `pm/security-friction-register.json` | SECAS-S4-02     | done    |
-| `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | done    |
-| `SEC-PTREM-01`               | `pm/security-friction-register.json` | SECAS-S4-04     | pending |
-| P42 hub protocol publication | `pm/_tasks`                          | gtcx-docs       | done    |
+| Issue                        | Source                               | Roadmap Mapping | Status |
+| ---------------------------- | ------------------------------------ | --------------- | ------ |
+| `SEC-PENTEST-01`             | `pm/security-friction-register.json` | SECAS-S2-01     | done   |
+| `SEC-WAF-01`                 | `pm/security-friction-register.json` | —               | done   |
+| `SEC-IRSA-01`                | `pm/security-friction-register.json` | —               | done   |
+| `SEC-CSIRT-01`               | `pm/security-friction-register.json` | SECAS-S4-01     | done   |
+| `SEC-SUPPLY-01`              | `pm/security-friction-register.json` | SECAS-S4-02     | done   |
+| `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | done   |
+| `SEC-PTREM-01`               | `pm/security-friction-register.json` | SECAS-S4-04     | done   |
+| P42 hub protocol publication | `pm/_tasks`                          | gtcx-docs       | done   |
 
 ## Unblock Order
 

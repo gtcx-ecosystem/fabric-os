@@ -29,6 +29,12 @@ last_reconciled: 2026-06-14T10:15:00.000Z
 - **Witness:** `audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json`
 - **Execution pending (external):** SECAS-S4-04 findings mapping post `BG-10-10-REPORT`
 
+## SECAS-S4-04 internal scaffold closure (2026-06-15)
+
+- **Outcome:** **done** (Class R scaffold) — `internalScopeComplete` on remediation witness
+- **Witness:** `audit/evidence/secas-s4-04-internal-closure-2026-06-15.json`
+- **Bridge rollup:** `ecosystem-secas-witness-rollup --write` **8/8 PASS**
+
 ## SECAS-S2-01 prep cycle (2026-06-15)
 
 - **Phase:** `awaiting_vendor_report` · window **2026-06-17..21** · ingest earliest **2026-06-21**

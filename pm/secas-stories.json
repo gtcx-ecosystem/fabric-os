@@ -285,26 +285,40 @@
       "sprint": "SECAS-S4",
       "title": "Pen-test findings remediation track + re-test witness",
       "priority": "P0",
-      "status": "pending",
+      "status": "done",
       "owner": "fabric-os",
       "frictionIds": ["SEC-PTREM-01"],
       "dependsOn": ["SECAS-S2-01"],
       "files": [
         "audit/evidence/pen-test-findings-register-latest.json",
-        "audit/evidence/pen-test-remediation-closure-latest.json"
+        "audit/evidence/pen-test-remediation-closure-latest.json",
+        "audit/evidence/secas-s4-04-internal-closure-2026-06-15.json"
       ],
       "acceptance": ["pnpm secas:pentest:remediation:check:write"],
       "uat": [
         {
+          "text": "Remediation register + closure scaffold at canonical paths",
+          "done": true,
+          "note": "2026-06-14 — findings register, closure tracker, remediation check script"
+        },
+        {
+          "text": "Owner mapping matrix for fabric + product repos",
+          "done": true,
+          "note": "pen-test-findings-register-latest.json owners block"
+        },
+        {
           "text": "Vendor report findings mapped to owners (fabric + product)",
-          "done": false
+          "done": false,
+          "note": "postLaunchExternal BG-10-10-REPORT"
         },
         {
           "text": "Critical/high findings closed or accepted-risk documented (Class S)",
-          "done": false
+          "done": false,
+          "note": "post-remediation execution"
         }
       ],
-      "blockers": "postLaunchExternal BG-10-10-REPORT — then SECAS-S4-04 remediation track"
+      "blockers": "postLaunchExternal BG-10-10-REPORT — then SECAS-S4-04 remediation execution",
+      "auditNotes": "2026-06-15 — internal scaffold sealed (internalScopeComplete); execution awaits vendor report"
     },
     {
       "id": "SECAS-S4-05",

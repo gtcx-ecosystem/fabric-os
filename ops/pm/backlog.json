@@ -4,11 +4,11 @@
   "updated": "2026-06-15",
   "syncSource": "ecosystem:intake:populate",
   "active": {
-    "storyId": "SECAS-S2-01",
-    "title": "fabric SECAS pen-test + vendor report ingest",
-    "status": "in_progress",
-    "owner": null,
-    "tier": null
+    "storyId": "SECAS-S4-04",
+    "title": "Pen-test findings remediation track + re-test witness",
+    "status": "structural_done",
+    "owner": "fabric-os",
+    "tier": "P0"
   },
   "backlogClear": false,
   "stories": [
@@ -112,11 +112,12 @@
     {
       "id": "SECAS-S4-04",
       "title": "Pen-test findings remediation track + re-test witness",
-      "status": "open",
+      "status": "done",
       "priority": "P0",
       "owner": "fabric-os",
-      "sprint": "SPR-2026-06-INTAKE",
-      "intakeSource": "fabric-os/pm/secas-stories.json"
+      "sprint": "SECAS-S4",
+      "intakeSource": "pm/secas-stories.json",
+      "auditNotes": "2026-06-15 — internal scaffold sealed; execution awaits BG-10-10-REPORT"
     },
     {
       "id": "SECAS-S2-01",

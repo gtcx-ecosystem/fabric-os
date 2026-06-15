@@ -1,85 +1,65 @@
 {
   "schema": "gtcx://fabric-os/session-open-items-reconcile/v1",
   "sessionId": "fabric-os-secas-honest-done-2026-06-15",
-  "reconciledAt": "2026-06-15T07:55:00.000Z",
+  "reconciledAt": "2026-06-15T10:55:20.357Z",
   "reconciledBy": "agent:fabric-os",
+  "revision": 2,
   "machineWitness": "pm/ci/session-open-items-latest.json",
   "forensicPack": "pm/ci/session-forensic-2026-06-15.md",
   "transcriptId": "ccb1a1fa-bcc5-4e96-99ab-fda1f7cf5fbc",
-  "headCommit": "958ee64",
+  "headCommit": "fa0bc18",
   "git": {
     "branch": "main",
-    "ahead": 2,
-    "behind": 0,
-    "synced": false,
-    "dirtyCount": 28,
-    "dirtyNote": "audit uplift witnesses + session forensic artifacts pending commit"
+    "ahead": 0,
+    "synced": true,
+    "dirtyCount": 48,
+    "dirtyNote": "W4 docs IA uplift batches 53–72 + pillar witness churn + forensic rev2"
   },
   "p22": {
-    "headStoryId": "SECAS-S2-01",
-    "phase": "awaiting_vendor_report",
-    "blockedUntil": "2026-06-21",
-    "blocksIR": false,
-    "backlogClear": false
+    "headStoryId": "COMPOSITE-RESTORE-100",
+    "composite100": 59,
+    "reason": "milestone-drift — workspace:product-management + workspace:agents FAIL after IA uplift",
+    "secasParallel": "SECAS-S2-01 in_progress awaiting_vendor_report",
+    "blocksIR": false
   },
   "openItemsReconciled": {
-    "machineCount": 11,
-    "authoritativeCount": 5,
+    "machineCount": 12,
+    "authoritativeCount": 6,
     "transcriptNoiseCount": 6,
     "filterRule": "exclude openItems where source=transcript and id=null"
   },
   "gates": {
-    "opsCheck": { "command": "pnpm ops:check", "exitCode": 0, "result": "PASS" },
-    "p35Strict": {
-      "command": "p35-layout-check --repo fabric-os --strict",
-      "exitCode": 0,
-      "result": "PASS"
+    "opsCheck": {
+      "command": "pnpm ops:check",
+      "exitCode": 1,
+      "result": "FAIL — workspace:product-management (docs/agile), workspace:agents (docs/agents/*)"
+    },
+    "closureBar": {
+      "score": "3/5",
+      "at": "2026-06-15T10:55:15.414Z",
+      "failing": ["program-office-ops", "git-settlement"]
+    },
+    "fivePillarComposite": {
+      "composite100": 59,
+      "witness": "audit/evidence/five-pillar-latest.json"
     },
     "secasIngestAutomation": {
       "command": "pnpm secas:ingest:automation:check:write",
       "exitCode": 0,
-      "result": "PASS"
-    },
-    "secasParallelLane": {
-      "command": "pnpm secas:parallel-lane:check:write",
-      "exitCode": 0,
-      "result": "PASS"
-    },
-    "goalTraceFleet": {
-      "command": "pnpm --dir ../bridge-os ecosystem:goal-trace:check:write",
-      "exitCode": 0,
-      "result": "PASS"
-    },
-    "honestDone": {
-      "command": "pnpm --dir ../bridge-os ecosystem:product-team-honest-done:check",
-      "exitCode": 1,
-      "result": "7/8 pillars — pillar 8 fleet five-pillar"
-    },
-    "fivePillarFabric": {
-      "composite100": 100,
-      "mode": "full-unlock",
-      "witness": "audit/evidence/five-pillar-latest.json"
+      "result": "PASS (prior session)"
     }
   },
   "closedThisSession": [
     "SECAS-S2-02",
-    "XR-FABRIC-SEC-LEGAL-P0-06",
-    "P35 strict root hub",
-    "fabric-os five-pillar 100/100",
-    "honest-done pillar 3 goal-trace",
-    "honest-done pillar 6 security/legal"
+    "closure bar initiative-closure (rev2)",
+    "docs(ia) W4 batches 53–72 committed",
+    "forensic rev1 d72a155"
   ],
-  "nextClassR": ["git-settlement", "INIT-FIVE-PILLAR-FLEET-100 sibling repos", "LEGAL-PROGRAM-01"],
-  "parallelClassS": [
-    { "id": "SECAS-S2-01-INGEST", "blocksIR": false },
-    { "id": "BG-10-10", "blocksIR": false },
-    { "id": "BG-10-11", "blocksIR": false },
-    { "id": "EXT-INF-013", "blocksIR": false }
+  "nextClassR": [
+    "COMPOSITE-RESTORE-100",
+    "workspace:product-management fix (docs/agile roadmap)",
+    "workspace:agents fix (docs/agents READMEs)",
+    "git-settlement / W4 IA batch commits"
   ],
-  "closureBar": {
-    "ok": false,
-    "requiredPass": 2,
-    "requiredTotal": 5,
-    "failing": ["program-office-ops", "git-settlement", "initiative-closure-witness"]
-  }
+  "parallelClassS": [{ "id": "SECAS-S2-01-INGEST", "blocksIR": false }]
 }

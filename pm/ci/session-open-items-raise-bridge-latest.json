@@ -1,6 +1,7 @@
 {
   "schema": "gtcx://fabric-os/session-open-items-raise-bridge/v1",
-  "at": "2026-06-15T07:55:00.000Z",
+  "at": "2026-06-15T10:55:20.357Z",
+  "revision": 2,
   "from": "fabric-os",
   "to": "bridge-os",
   "protocol": "P24",
@@ -8,42 +9,57 @@
   "priorTicket": "XR-FABRIC-SESSION-OPEN-004",
   "initiative": "INIT-SESSION-OPEN-ITEMS",
   "witness": "pm/ci/session-open-items-latest.json",
-  "outbound": "docs/operations/coordination/to-bridge-os-session-open-items-forensic-2026-06-15.md",
+  "outbound": "docs/operations/coordination/inbound/to-a/to-bridge-os-session-open-items-forensic-2026-06-15.md",
   "forensicPack": "pm/ci/session-forensic-2026-06-15.md",
   "reconcileWitness": "audit/evidence/session-open-items-reconcile-2026-06-15.json",
   "p22": {
     "head": {
-      "id": "SECAS-S2-01",
+      "id": "COMPOSITE-RESTORE-100",
       "owner": "fabric-os",
+      "status": "selected",
+      "composite100": 59,
+      "reason": "milestone-drift"
+    },
+    "parallel": {
+      "id": "SECAS-S2-01",
       "status": "in_progress",
-      "phase": "awaiting_vendor_report"
+      "phase": "awaiting_vendor_report",
+      "blocksIR": false
     }
   },
   "git": {
-    "dirtyCount": 28,
-    "ahead": 2,
+    "dirtyCount": 48,
+    "ahead": 0,
+    "synced": true,
     "settlementPending": true
   },
   "fabricClosureBar": {
-    "requiredPass": 2,
+    "requiredPass": 3,
     "requiredTotal": 5,
     "sessionComplete": false,
-    "failing": ["program-office-ops", "git-settlement", "initiative-closure-witness"]
+    "score": "3/5",
+    "failing": ["program-office-ops", "git-settlement"],
+    "improvedSinceRev1": ["initiative-closure-witness"]
   },
   "transcript": {
     "fabric": {
       "id": "ccb1a1fa-bcc5-4e96-99ab-fda1f7cf5fbc",
       "workspace": "Sites-gtcx-ecosystem-fabric-os",
-      "userTurns": 8,
-      "lineCount": 92,
+      "userTurns": 11,
+      "lineCount": 113,
       "attached": true
     }
   },
   "actionableForBridge": [
     "XR-FABRIC-SESSION-OPEN-005 inbound ack",
-    "INIT-EXECUTIVE-GAP-PROGRAM closureBar.ok reconcile",
     "INIT-FIVE-PILLAR-FLEET-100 honest-done pillar 8 programme",
-    "honest-done pillar 8 — 13 repos below 100/100 per pillar"
+    "honest-done pillar 8 — 13 repos below 100/100 per pillar",
+    "program-office-ops — bridge ops:check closure harness"
   ],
-  "shippedThisSession": ["SECAS-S2-02", "fabric-os five-pillar 100/100", "honest-done pillar 3 + 6"]
+  "shippedThisSession": [
+    "SECAS-S2-02",
+    "fabric-os five-pillar 100/100 (958ee64 — later regressed)",
+    "honest-done pillar 3 + 6",
+    "W4 docs IA batches 53–72"
+  ]
 }

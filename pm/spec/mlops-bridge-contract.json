@@ -1,13 +1,17 @@
 {
   "$schema": "gtcx://fabric-os/mlops-bridge-contract/v1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "updated": "2026-06-15",
   "title": "MLOps bridge — fabric-os substrate contract",
   "opsLane": "MLOps",
-  "mlopsOwner": "gtcx-intelligence",
+  "mlopsOwner": {
+    "repo": "gtcx-os",
+    "path": "platform/intelligence",
+    "legacyRepoId": "gtcx-intelligence"
+  },
   "fabricBridgeOwner": "fabric-os",
   "status": "scaffold",
-  "principle": "MLOps lane ownership stays with gtcx-intelligence. fabric-os owns deploy substrate: GCP ML bridge terraform, eval-pipeline CI witness, and fleet handoff.",
+  "principle": "MLOps lane ownership is gtcx-os/platform/intelligence (formerly standalone gtcx-intelligence). fabric-os owns deploy substrate: GCP ML bridge terraform, eval-pipeline CI witness, and fleet handoff.",
   "fabricArtifacts": {
     "terraform": "deploy/terraform/modules/gcp-ml-bridge/",
     "evalPipeline": "platform/tools/eval-pipeline/",
@@ -18,10 +22,10 @@
     "ci": ".github/workflows/eval-pipeline.yml"
   },
   "intelligenceDeliverables": [
-    "pm/spec/mlops-as-a-service.json",
-    "docs/operations/mlops-as-a-service.md",
-    "platform/scripts/mlops-check.mjs",
-    "audit/evidence/mlops-check-latest.json"
+    "gtcx-os/platform/intelligence/pm/spec/mlops-as-a-service.json",
+    "gtcx-os/platform/intelligence/docs/operations/mlops-as-a-service.md",
+    "gtcx-os/platform/intelligence/platform/scripts/mlops-check.mjs",
+    "gtcx-os/platform/intelligence/audit/evidence/mlops-check-latest.json"
   ],
-  "handoff": "docs/operations/coordination/inbound/to-gtcx-intelligence-mlops-lane-2026-06-15.md"
+  "handoff": "docs/operations/coordination/inbound/to-gtcx-os-platform-intelligence-mlops-lane-2026-06-15.md"
 }

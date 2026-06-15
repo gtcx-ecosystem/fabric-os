@@ -10,12 +10,12 @@
   "initiative": "INIT-GTCX-FABRIC-AIOPS",
   "status": "active",
   "hubProtocolTarget": "canon-os/docs/governance/protocols/49-aiops-as-a-service/protocol.md",
-  "principle": "AI operations as a first-class lane: anomaly detection, eval-gated automation signals, injection red-team evidence, and agent reliability witnesses. AIOps does not own model training (MLOps / gtcx-intelligence); it operates fleet AI reliability and agent conduct surfaces.",
+  "principle": "AI operations as a first-class lane: anomaly detection, eval-gated automation signals, injection red-team evidence, and agent reliability witnesses. AIOps does not own model training (MLOps / gtcx-os/platform/intelligence); it operates fleet AI reliability and agent conduct surfaces.",
   "threePlanes": {
     "engineering": { "owner": "product-repo", "pmLeads": true, "blocksIRDefault": false },
     "aiops": {
       "owner": "fabric-os",
-      "coOwner": "gtcx-intelligence",
+      "coOwner": "gtcx-os/platform/intelligence",
       "pmLeads": false,
       "primaryRoadmap": true,
       "blocksIRDefault": false

@@ -10,6 +10,6 @@ document_type: coordination
 
 **From:** `fabric-os` · **Branch:** `feature/ai-mlops` · **Protocol:** P49-AIOPS-AS-A-SERVICE
 
-**To:** `bridge-os` (fleet witness), `canon-os` (P49 hub), `gtcx-intelligence` (MLOps owner)
+**To:** `bridge-os` (fleet witness), `canon-os` (P49 hub), `gtcx-os/platform/intelligence` (MLOps owner)
 
 Scaffold: spec, registers, `pnpm aiops:check`, handoff docs.

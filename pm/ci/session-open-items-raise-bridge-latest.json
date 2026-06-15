@@ -1,57 +1,49 @@
 {
   "schema": "gtcx://fabric-os/session-open-items-raise-bridge/v1",
-  "at": "2026-06-14T17:19:50.000Z",
+  "at": "2026-06-15T07:55:00.000Z",
   "from": "fabric-os",
   "to": "bridge-os",
   "protocol": "P24",
-  "ticket": "XR-FABRIC-SESSION-OPEN-004",
-  "priorTicket": "XR-FABRIC-SESSION-OPEN-003",
+  "ticket": "XR-FABRIC-SESSION-OPEN-005",
+  "priorTicket": "XR-FABRIC-SESSION-OPEN-004",
   "initiative": "INIT-SESSION-OPEN-ITEMS",
-  "implementStoryId": "SECAS-S4-05",
   "witness": "pm/ci/session-open-items-latest.json",
-  "outbound": "docs/operations/coordination/to-bridge-os-session-open-items-forensic-2026-06-14.md",
-  "forensicSummary": "docs/operations/coordination/session-forensic-fabric-os-session-open-items-2026-06-14.md",
-  "inboundAck": "bridge-os/docs/operations/coordination/from-fabric-os-session-open-items-forensic-2026-06-14.md",
-  "machineHandoff": "bridge-os/pm/spec/session-open-items-handoff-fabric-2026-06-14.json",
+  "outbound": "docs/operations/coordination/to-bridge-os-session-open-items-forensic-2026-06-15.md",
+  "forensicPack": "pm/ci/session-forensic-2026-06-15.md",
+  "reconcileWitness": "audit/evidence/session-open-items-reconcile-2026-06-15.json",
   "p22": {
     "head": {
-      "id": "SECAS-S4-05",
+      "id": "SECAS-S2-01",
       "owner": "fabric-os",
-      "status": "pending"
+      "status": "in_progress",
+      "phase": "awaiting_vendor_report"
     }
   },
   "git": {
-    "dirtyCount": 34,
+    "dirtyCount": 28,
+    "ahead": 2,
     "settlementPending": true
   },
-  "bridgeClosureBar": {
+  "fabricClosureBar": {
     "requiredPass": 2,
     "requiredTotal": 5,
     "sessionComplete": false,
-    "failing": ["program-office-ops", "git-settlement", "initiative-closure-witness"],
-    "witness": "bridge-os/pm/ci/session-closure-bar-latest.json"
+    "failing": ["program-office-ops", "git-settlement", "initiative-closure-witness"]
   },
   "transcript": {
     "fabric": {
-      "id": "d0bfedab-a143-456d-9740-14ab22cf4b49",
+      "id": "ccb1a1fa-bcc5-4e96-99ab-fda1f7cf5fbc",
       "workspace": "Sites-gtcx-ecosystem-fabric-os",
-      "userTurns": 14,
-      "lineCount": 255,
-      "attached": true
-    },
-    "bridge": {
-      "id": "bdc86706-b58e-46a6-8083-28218bd2966f",
-      "workspace": "Sites-gtcx-ecosystem-bridge-os",
       "userTurns": 8,
-      "lineCount": 103,
+      "lineCount": 92,
       "attached": true
     }
   },
   "actionableForBridge": [
-    "ops:harness — ecosystem:documentation-archival:check:fleet",
-    "ops:harness — ecosystem:secas:witness:rollup:check",
+    "XR-FABRIC-SESSION-OPEN-005 inbound ack",
     "INIT-EXECUTIVE-GAP-PROGRAM closureBar.ok reconcile",
-    "bridge-os git settlement",
-    "T48 / XR-FABRIC-SESSION-OPEN-004 intake closure"
-  ]
+    "INIT-FIVE-PILLAR-FLEET-100 honest-done pillar 8 programme",
+    "honest-done pillar 8 — 13 repos below 100/100 per pillar"
+  ],
+  "shippedThisSession": ["SECAS-S2-02", "fabric-os five-pillar 100/100", "honest-done pillar 3 + 6"]
 }

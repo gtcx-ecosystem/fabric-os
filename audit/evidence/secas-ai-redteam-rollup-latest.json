@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/secas-ai-redteam-rollup/v1",
   "storyId": "SECAS-S5-03",
-  "checkedAt": "2026-06-15T19:37:56.156Z",
+  "checkedAt": "2026-06-15T19:48:33.019Z",
   "gates": {
     "evalPipeline": {
       "ok": true

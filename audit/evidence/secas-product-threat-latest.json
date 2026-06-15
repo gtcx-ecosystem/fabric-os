@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/secas-product-threat/v1",
   "storyId": "SECAS-S5-02",
-  "checkedAt": "2026-06-15T19:37:55.912Z",
+  "checkedAt": "2026-06-15T19:48:32.720Z",
   "gates": {
     "fleetRiskHarness": {
       "ok": true,

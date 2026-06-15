@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/program-sprints-seal/v1",
-  "checkedAt": "2026-06-15T19:45:00.000Z",
+  "checkedAt": "2026-06-15T20:15:00.000Z",
   "repo": "fabric-os",
   "mode": "complete_all_sprints",
   "stopSignal": "program_sprints_complete",
@@ -28,6 +28,8 @@
     "path": "ops/pm/backlog.json"
   },
   "harness": {
+    "daas": "pnpm daas:friction:check:write",
+    "secas": "pnpm secas:friction:check:write",
     "secasS5": [
       "pnpm secas:purple-team:check:write",
       "pnpm secas:product-threat:check:write",

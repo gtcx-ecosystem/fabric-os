@@ -204,11 +204,12 @@
     {
       "id": "LEGAL-PROGRAM-01",
       "title": "Legal friction register parity with SECAS harness depth",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P2",
       "owner": "fabric-os",
       "sprint": "SPR-2026-06-INTAKE",
-      "intakeSource": "fabric-os/pm/ci/session-open-items-latest.json#openItems"
+      "intakeSource": "fabric-os/pm/ci/session-open-items-latest.json#openItems",
+      "auditNotes": "2026-06-15 — P45 register depth + legal:friction:check harness PASS"
     }
   ],
   "crossRepoRefs": [

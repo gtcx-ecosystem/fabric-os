@@ -1,0 +1,44 @@
+{
+  "schema": "gtcx://fabric-os/legal-friction-check/v1",
+  "protocol": "P45-LEGAL-AS-A-SERVICE",
+  "storyId": "LEGAL-PROGRAM-01",
+  "checkedAt": "2026-06-15T16:33:43.106Z",
+  "gates": {
+    "register": {
+      "ok": true
+    },
+    "manifest": {
+      "ok": true
+    },
+    "opsDoc": {
+      "ok": true
+    },
+    "opsLane": {
+      "ok": true
+    },
+    "protocol": {
+      "ok": true
+    },
+    "harnessDepth": {
+      "ok": true
+    },
+    "sovereignCrosswalk": {
+      "ok": true,
+      "missing": []
+    },
+    "blocksIR": {
+      "ok": true
+    },
+    "parallelLaneWitness": {
+      "ok": true
+    },
+    "fleetLegalProgram": {
+      "ok": true
+    },
+    "programItemClosed": {
+      "ok": true
+    }
+  },
+  "itemCount": 4,
+  "ok": true
+}

@@ -95,6 +95,8 @@
     "haas:friction:check:write": "node platform/scripts/haas-friction-check.mjs --write",
     "aaas:friction:check": "node platform/scripts/aaas-friction-check.mjs",
     "aaas:friction:check:write": "node platform/scripts/aaas-friction-check.mjs --write",
+    "legal:friction:check": "node platform/scripts/legal-friction-check.mjs",
+    "legal:friction:check:write": "node platform/scripts/legal-friction-check.mjs --write",
     "payops:providers:check": "node platform/scripts/payops-providers-check.mjs",
     "payops:providers:check:write": "node platform/scripts/payops-providers-check.mjs --write",
     "revops:friction:check": "node platform/scripts/revops-friction-check.mjs",

@@ -1,0 +1,11 @@
+{
+  "$schema": "gtcx://ops/legal/v1",
+  "repo": "fabric-os",
+  "updated": "2026-06-15",
+  "fabricRegister": "pm/legal-friction-register.json",
+  "fabricDoc": "docs/operations/platform-services/legal-as-a-service.md",
+  "sovereignRegister": "pm/sovereign-approval-register.json",
+  "blocksIRDefault": false,
+  "protocol": "P44-FABRIC-CONSUMPTION",
+  "note": "Legal SoR for service fabric — product repos link href only; Class S under Parallel sovereign gates"
+}

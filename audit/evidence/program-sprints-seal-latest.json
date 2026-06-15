@@ -1,0 +1,43 @@
+{
+  "schema": "gtcx://fabric-os/program-sprints-seal/v1",
+  "checkedAt": "2026-06-15T19:45:00.000Z",
+  "repo": "fabric-os",
+  "mode": "complete_all_sprints",
+  "stopSignal": "program_sprints_complete",
+  "programs": [
+    {
+      "id": "INIT-GTCX-INFRA-DAAS",
+      "roadmap": "pm/daas-roadmap.json",
+      "sprints": ["DAAS-S1", "DAAS-S2", "DAAS-S3"],
+      "status": "complete"
+    },
+    {
+      "id": "INIT-GTCX-INFRA-SECAS",
+      "roadmap": "pm/secas-roadmap.json",
+      "sprints": ["SECAS-S1", "SECAS-S2", "SECAS-S3", "SECAS-S4", "SECAS-S5"],
+      "status": "complete"
+    }
+  ],
+  "ecosystem": {
+    "source": "bridge-os/pnpm ecosystem:progress:report",
+    "sprintsSealed": "16/16",
+    "sprintBar": "100%"
+  },
+  "backlog": {
+    "opsPmBacklogClear": true,
+    "path": "ops/pm/backlog.json"
+  },
+  "harness": {
+    "secasS5": [
+      "pnpm secas:purple-team:check:write",
+      "pnpm secas:product-threat:check:write",
+      "pnpm secas:ai-redteam:rollup:write",
+      "pnpm secas:pqc:check:write",
+      "pnpm secas:bounty-ops:check:write"
+    ],
+    "allPass": true
+  },
+  "parallelOnly": ["SECAS-S4-04 vendor findings ingest (≥ 2026-06-21)", "BG-10-10", "BG-10-11"],
+  "ok": true,
+  "note": "All fabric-os program sprints sealed. P22 may still head SECAS-S4-04 as calendar witness — not an unsealed sprint."
+}

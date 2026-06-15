@@ -1,17 +1,18 @@
 ---
 title: 'On-Call Drill #002 — Replay Guard Redis Outage'
-status: 'completed'
-date: '2026-05-27'
-drill_id: 'DRILL-002'
-scenario: 'Redis nonce store becomes unreachable in production'
-owner: 'frontier-infra-engineer'
-role: 'sre-oncall'
-tier: 'critical'
-tags: ['drill', 'redis', 'replay-guard', 'resilience', 'incident-response']
-review_cycle: 'quarterly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: completed
+date: 2026-05-27
+owner: frontier-infra-engineer
+tier: critical
+tags: [['drill', 'redis', 'replay-guard', 'resilience', 'incident-response']]
+review_cycle: quarterly
+document_type: runbook
+role: sre-oncall
+drill_id: DRILL-002
+scenario: Redis nonce store becomes unreachable in production
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # On-Call Drill #002 — Replay Guard Redis Outage

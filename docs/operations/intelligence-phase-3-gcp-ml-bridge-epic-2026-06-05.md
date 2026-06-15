@@ -3,6 +3,10 @@ title: 'Epic — Intelligence Phase 3 GCP→AWS ML bridge (Terraform)'
 status: planned
 date: 2026-06-05
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 partner: gtcx-intelligence
 epic_id: INF-PHASE3-GCP-BRIDGE-001
 ---

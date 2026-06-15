@@ -1,8 +1,12 @@
 ---
-title: MCP / RAG setup (Model B)
+title: 'MCP / RAG setup (Model B)'
 status: current
 date: 2026-06-08
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # MCP / RAG setup — gtcx-infrastructure

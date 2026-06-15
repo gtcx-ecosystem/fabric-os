@@ -3,9 +3,11 @@ title: 'Deployment — ExplorationOS SIR Verifier + Supabase Migrations'
 status: partial
 date: 2026-06-03
 owner: gtcx-infrastructure
-role: platform-engineer
 tier: critical
-tags: ['deployment', 'exploration-os', 'sir-verifier', 'supabase', 'cloudflare']
+tags: [['deployment', 'exploration-os', 'sir-verifier', 'supabase', 'cloudflare']]
+review_cycle: on-change
+document_type: runbook
+role: platform-engineer
 ---
 
 # ExplorationOS SIR Verifier + Supabase Migrations (2026-06-03)

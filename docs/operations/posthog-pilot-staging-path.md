@@ -1,8 +1,12 @@
 ---
-title: PostHog self-host pilot staging path
+title: 'PostHog self-host pilot staging path'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 initiative: INIT-AGENT-TOOL-SCOUT
 pilot: PILOT-POSTHOG-PILOT-PROOF
 ---

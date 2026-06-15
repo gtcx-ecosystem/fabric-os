@@ -3,6 +3,10 @@ title: 'Unified LLM cost router — infrastructure consumer'
 status: current
 date: 2026-06-03
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 ---
 
 # Compliance-gateway → baseline-os cost router

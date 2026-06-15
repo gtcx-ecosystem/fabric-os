@@ -1,8 +1,12 @@
 ---
-title: GTM-as-a-Service (GTMaaS)
+title: 'GTM-as-a-Service (GTMaaS)'
 status: current
 date: 2026-06-10
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 protocol: P44-FABRIC-CONSUMPTION
 initiative: INIT-GTCX-SERVICE-FABRIC
 ---

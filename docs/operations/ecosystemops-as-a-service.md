@@ -1,8 +1,12 @@
 ---
-title: EcosystemOps — partnerships, developer engagement, and network growth
+title: 'EcosystemOps — partnerships, developer engagement, and network growth'
 status: current
 date: 2026-06-14
 owner: bridge-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 initiative: INIT-GTCX-EXECUTION-ENGINE
 ---
 

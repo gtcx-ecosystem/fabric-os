@@ -3,6 +3,10 @@ title: 'Production — compliance-os ESO bootstrap (Hub #17 Phase B)'
 status: current
 date: 2026-06-08
 owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 hub_blocker: 17
 approval_ticket: GTCX-XXX
 ---

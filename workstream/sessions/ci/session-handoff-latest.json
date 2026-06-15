@@ -1,0 +1,46 @@
+{
+  "schema": "gtcx://fabric-os/session-handoff/v1",
+  "at": "2026-06-15T19:08:41.308Z",
+  "repo": "fabric-os",
+  "story": "SECAS-S4-04",
+  "persona": "platform-engineer",
+  "frame": "development",
+  "handoffPath": "workstream/sessions/handoffs/handoff-secas-s4-04-2026-06-15.md",
+  "sessionComplete": false,
+  "closureBar": null,
+  "nextWorkItem": {
+    "storyId": "SECAS-S4-04",
+    "title": "Pen-test findings remediation track + re-test witness",
+    "status": "in_progress"
+  },
+  "git": {
+    "branch": "feature/ai-mlops",
+    "recent": [
+      "baf6f95 docs(session): handoff 2026-06-15 — ops lanes 17/17, SECAS-S4-04 calendar",
+      "bbc01e6 docs(provisioning): p48 metadata backfill — fabric-os batch 1",
+      "26716be docs(evaluation): pass-3 multi-pillar prose scrub (DOC-MPR-FLEET-SCRUB-003).",
+      "928f983 chore(secas): refresh pen-test remediation witness timestamp.",
+      "838caca docs(evaluation): wire multi-pillar fleet pointer and scrub five-pillar prose.",
+      "0a9220a docs(audit): wire multi-pillar assurance lane into agent entry points.",
+      "93d803d chore(ops): refresh assurance and pillar witnesses; remove stale sessions/ root directory",
+      "9f816fe fix(secas): owner-accountable supply-chain gate, esbuild override, layout/root fixes"
+    ],
+    "ahead": 36,
+    "dirty": [
+      "M .baseline/launch-focus.json",
+      " M .baseline/memory/session-last-start.json",
+      " M .baseline/session/story-persona-bind-latest.json",
+      " M ops/pm/backlog.json",
+      " M package.json",
+      " M pm/ci/session-open-items-latest.json",
+      " M pm/ci/settlement-commit-latest.json",
+      " M pm/ci/settlement-push-latest.json",
+      " M pm/ci/settlement-story-scope-latest.json",
+      "?? .baseline/session/ego-latest.json",
+      "?? .baseline/session/ego-latest.md",
+      "?? platform/scripts/ecosystem/",
+      "?? sessions/",
+      "?? workstream/sessions/"
+    ]
+  }
+}

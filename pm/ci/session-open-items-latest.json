@@ -1,59 +1,51 @@
 {
   "schema": "gtcx://baseline-os/session-open-items/v1",
-  "at": "2026-06-15T10:55:20.357Z",
+  "at": "2026-06-15T19:08:34.655Z",
   "repo": "fabric-os",
   "repoPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
-  "session": {
-    "startedAt": "2026-06-15T06:31:02.671Z",
-    "agentTrace": "gtcx-agent-d17cb69f-53b4-4d6b-8be8-7e746d030bca"
+  "synthesis": {
+    "role": "inventory-snapshot",
+    "notHandoff": true,
+    "protocol": "51-session-forensic-synthesis",
+    "handoffProtocol": "49-session-handoff-archive",
+    "snapshotPath": "sessions/ci/snapshots/session-open-items-unknown-2026-06-15T19-08-34-655Z.json"
   },
+  "session": {
+    "startedAt": "2026-06-15T18:13:48.755Z",
+    "agentTrace": "gtcx-agent-2a03c7d4-ed90-4fd2-85ce-fe480bd70175"
+  },
+  "ledger": null,
   "transcript": {
-    "path": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-fabric-os/agent-transcripts/ccb1a1fa-bcc5-4e96-99ab-fda1f7cf5fbc/ccb1a1fa-bcc5-4e96-99ab-fda1f7cf5fbc.jsonl",
-    "lineCount": 113,
-    "userTurns": 11,
-    "userQueries": [
-      "baseline start",
-      "intake: priority: p0 6. Centralized security/legal — program exists, execution partial                                                                                                                                                                                         \n                                                                                                                                                                                                                                    ",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "continue",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "session:open-items forensic-audit",
-      "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
-      "session:open-items forensic-audit",
-      "session:open-items forensic-audit"
-    ],
-    "mentionedIds": [
-      "INIT-GTCX-INFRA-SECAS",
-      "T2",
-      "XR-FABRIC-SEC-LEGAL-P0-06",
-      "INIT-FIVE-PILLAR-FLEET-100",
-      "INIT-SESSION-OPEN-ITEMS",
-      "INIT-EXECUTIVE-GAP-PROGRAM",
-      "XR-FABRIC-SESSION-OPEN-005"
-    ]
+    "path": null,
+    "lineCount": 0,
+    "userTurns": 0,
+    "userQueries": [],
+    "mentionedIds": []
   },
   "p22": {
     "backlogClear": false,
     "next": {
-      "storyId": "COMPOSITE-RESTORE-100",
-      "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain"
-    },
-    "selection": {
-      "tier": "milestone-drift",
-      "reason": "Composite drift — 59/100"
+      "storyId": "SECAS-S4-04",
+      "title": "Pen-test findings remediation track + re-test witness",
+      "status": "in_progress"
     }
   },
   "git": {
-    "dirtyCount": 48,
-    "commitsSinceSession": 20
+    "dirtyCount": 11,
+    "commitsSinceSession": 8,
+    "artifacts": {
+      "commitCount": 8,
+      "pathsCreated": 4,
+      "pathsModified": 34,
+      "pathsDeleted": 6,
+      "uncommittedPaths": 10
+    }
   },
   "productionWeek": null,
   "intake": null,
   "actionable": [
     {
-      "task": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain",
+      "task": "Pen-test findings remediation track + re-test witness",
       "owner": "fabric-os",
       "command": "baseline next · execute in fabric-os",
       "doneWhen": "P22 story done + auditNotes",
@@ -61,7 +53,7 @@
       "n": 1
     },
     {
-      "task": "Git-clean fabric-os (48 uncommitted path(s) in working tree)",
+      "task": "Git-clean fabric-os (11 uncommitted path(s) in working tree)",
       "owner": "fabric-os",
       "command": "micro-commit conventional + push when GATE-PUSH green",
       "doneWhen": "working tree clean; ahead=0",
@@ -72,154 +64,53 @@
   "completed": [
     {
       "kind": "commit",
-      "detail": "fa0bc18 docs(ia): w4 strict IA uplift — fabric-os batch 72",
+      "detail": "baf6f95 docs(session): handoff 2026-06-15 — ops lanes 17/17, SECAS-S4-04 calendar",
       "source": "git log"
     },
     {
       "kind": "commit",
-      "detail": "fded8d2 docs(ia): w4 strict IA uplift — fabric-os batch 71",
+      "detail": "bbc01e6 docs(provisioning): p48 metadata backfill — fabric-os batch 1",
       "source": "git log"
     },
     {
       "kind": "commit",
-      "detail": "549a622 docs(ia): w4 strict IA uplift — fabric-os batch 70",
+      "detail": "26716be docs(evaluation): pass-3 multi-pillar prose scrub (DOC-MPR-FLEET-SCRUB-003).",
       "source": "git log"
     },
     {
       "kind": "commit",
-      "detail": "c083224 docs(ia): w4 strict IA uplift — fabric-os batch 69",
+      "detail": "928f983 chore(secas): refresh pen-test remediation witness timestamp.",
       "source": "git log"
     },
     {
       "kind": "commit",
-      "detail": "8c34dff docs(ia): w4 strict IA uplift — fabric-os batch 68",
+      "detail": "838caca docs(evaluation): wire multi-pillar fleet pointer and scrub five-pillar prose.",
       "source": "git log"
     },
     {
       "kind": "commit",
-      "detail": "bf3fa09 docs(ia): w4 strict IA uplift — fabric-os batch 67",
+      "detail": "0a9220a docs(audit): wire multi-pillar assurance lane into agent entry points.",
       "source": "git log"
     },
     {
       "kind": "commit",
-      "detail": "2b00d35 docs(ia): w4 strict IA uplift — fabric-os batch 66",
+      "detail": "93d803d chore(ops): refresh assurance and pillar witnesses; remove stale sessions/ root directory",
       "source": "git log"
     },
     {
       "kind": "commit",
-      "detail": "a67f49b docs(ia): w4 strict IA uplift — fabric-os batch 65",
+      "detail": "9f816fe fix(secas): owner-accountable supply-chain gate, esbuild override, layout/root fixes",
       "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "ef34cc1 docs(ia): w4 strict IA uplift — fabric-os batch 64",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "751ffe2 docs(ia): w4 strict IA uplift — fabric-os batch 63",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "fabd100 docs(ia): w4 strict IA uplift — fabric-os batch 62",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "69c5bda docs(ia): w4 strict IA uplift — fabric-os batch 61",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "f2bee81 docs(ia): w4 strict IA uplift — fabric-os batch 60",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "6dae75d docs(ia): w4 strict IA uplift — fabric-os batch 59",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "e70217a docs(ia): w4 strict IA uplift — fabric-os batch 58",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "2a45048 docs(ia): w4 strict IA uplift — fabric-os batch 57",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "47e0fee docs(ia): w4 strict IA uplift — fabric-os batch 56",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "1ec0228 docs(ia): w4 strict IA uplift — fabric-os batch 55",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "76013ff docs(ia): w4 strict IA uplift — fabric-os batch 54",
-      "source": "git log"
-    },
-    {
-      "kind": "commit",
-      "detail": "ddcebdf docs(ia): w4 strict IA uplift — fabric-os batch 53",
-      "source": "git log"
-    },
-    {
-      "kind": "session-outcome",
-      "detail": "The honest-done re-run completed in ~7.5 minutes with **exit 1** — same shape as the earlier run. **6/8 pillars PASS**, including **pillar 6** (centralized security/legal), so **SECAS-S2-02** is hold",
-      "source": "transcript"
-    },
-    {
-      "kind": "session-outcome",
-      "detail": "Continuing from the honest-done failures: running P22 selection and diagnosing pillars 3 and 8. [REDACTED]",
-      "source": "transcript"
-    },
-    {
-      "kind": "session-outcome",
-      "detail": "Goal trace is passing now. Checking pillar 8 and re-running honest-done. [REDACTED]",
-      "source": "transcript"
-    },
-    {
-      "kind": "session-outcome",
-      "detail": "Pillar 3 is fixed — 7/8 pillars pass. Investigating pillar 8 fleet five-pillar gaps. [REDACTED]",
-      "source": "transcript"
-    },
-    {
-      "kind": "session-outcome",
-      "detail": "## Proceed Brief **Active persona:** platform-architect · **Frame:** development **Next:** Honest-done progressed to **7/8**; fabric-os five-pillar restored **100/100** via P35 strict fix. **Becaus",
-      "source": "transcript"
-    },
-    {
-      "kind": "session-outcome",
-      "detail": "The fleet five-pillar stress run completed in ~7 minutes with **exit 0**. **Headline:** `fullUnlock=15/17` · `compliance<85=2` · witness written to `bridge-os/pm/ci/five-pillar-fleet-stress-latest.js",
-      "source": "transcript"
-    },
-    {
-      "kind": "session-outcome",
-      "detail": "## Proceed Brief **Active persona:** platform-architect · **Frame:** development **Next:** Session forensic complete — bridge raise `XR-FABRIC-SESSION-OPEN-005` filed; git settlement remains Class R",
-      "source": "transcript"
-    },
-    {
-      "kind": "session-outcome",
-      "detail": "The fabric-os closure bar check finished with **exit 1** (~74s). **Score: 3/5** — `sessionComplete: false` | Check | Status | |-------|--------| | cutover-operational | PASS | | zenhub-sor | PASS | ",
-      "source": "transcript"
     }
   ],
   "openItems": [
     {
       "type": "story",
-      "id": "COMPOSITE-RESTORE-100",
-      "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain",
+      "id": "SECAS-S4-04",
+      "title": "Pen-test findings remediation track + re-test witness",
       "owner": "fabric-os",
       "source": "P22 agent:next-work",
-      "status": "selected",
-      "because": "Composite drift — 59/100"
+      "status": "in_progress"
     },
     {
       "type": "task",
@@ -231,114 +122,968 @@
       "because": "PM SoR"
     },
     {
-      "type": "task",
-      "id": null,
-      "title": "### Next work item\n\n- **Type:** Story\n- **ID:** `SECAS-S2-01`\n- **Title:** Pen-test vendor report ingest (post-window Cl",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "deferred",
-      "id": null,
-      "title": "The fleet check run finished in about **8.5 minutes** with **exit 1**. **Passed** - `ecosystem:legal-program:check:write",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "deferred",
-      "id": null,
-      "title": "## Proceed Brief **Active persona:** platform-architect · **Frame:** development **Next:** Honest-done progressed to **7",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "approval",
-      "id": null,
-      "title": "## Proceed Brief **Active persona:** platform-architect · **Frame:** development **Next:** Honest-done progressed to **7",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "task",
-      "id": null,
-      "title": "### Next work item\n\n- **Type:** Story\n- **ID:** `SECAS-S2-01`\n- **Title:** Pen-test vendor report ingest (Class S parall",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "handoff",
-      "id": "XR-FABRIC-SESSION-OPEN-005",
-      "title": "## Proceed Brief **Active persona:** platform-architect · **Frame:** development **Next:** Session forensic complete — b",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "approval",
-      "id": "XR-FABRIC-SESSION-OPEN-005",
-      "title": "## Proceed Brief **Active persona:** platform-architect · **Frame:** development **Next:** Session forensic complete — b",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "task",
-      "id": null,
-      "title": "### Next work item\n\n- **Type:** Task\n- **ID:** `GIT-SETTLEMENT-FABRIC`\n- **Title:** Git-clean + push fabric-os (ahead=3,",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
-      "type": "deferred",
-      "id": null,
-      "title": "The fabric-os closure bar check finished with **exit 1** (~74s). **Score: 3/5** — `sessionComplete: false` | Check | Sta",
-      "owner": "session",
-      "source": "transcript",
-      "status": "open"
-    },
-    {
       "type": "blocker",
       "id": "uncommitted-work",
-      "title": "48 uncommitted path(s) in working tree",
+      "title": "11 uncommitted path(s) in working tree",
       "owner": "fabric-os",
       "source": "git status",
       "status": "open",
       "sample": [
-        "MM .baseline/launch-focus.json",
-        "R  audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json -> audit/archive/2026-06-15/audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json",
-        "R  audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json -> audit/archive/2026-06-15/audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json",
-        "R  audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json -> audit/archive/2026-06-15/audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json",
-        "M  audit/archive/ARCHIVE-MANIFEST.json",
-        "M  audit/evidence/compliance-pillar-latest.json",
-        "M  audit/evidence/compliance-rubric-latest.json",
-        "M  audit/evidence/craft-pillar-latest.json",
-        "M  audit/evidence/five-pillar-latest.json",
-        " M audit/evidence/session-open-items-reconcile-2026-06-15.json",
-        "M  audit/evidence/technical-excellence-pillar-latest.json",
-        "M  audit/evidence/trust-safety-pillar-latest.json",
-        "M  audit/evidence/world-class-pillar-latest.json",
-        "M  ops/pm/backlog.json",
-        "M  platform/scripts/secas-friction-check.mjs"
+        " M .baseline/launch-focus.json",
+        " M .baseline/memory/session-last-start.json",
+        " M .baseline/session/story-persona-bind-latest.json",
+        " M ops/pm/backlog.json",
+        " M package.json",
+        " M pm/ci/settlement-commit-latest.json",
+        " M pm/ci/settlement-push-latest.json",
+        " M pm/ci/settlement-story-scope-latest.json",
+        "?? .baseline/session/ego-latest.json",
+        "?? .baseline/session/ego-latest.md",
+        "?? platform/scripts/ecosystem/"
       ]
     }
   ],
-  "threads": [
-    "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups ne",
-    "session:open-items forensic-audit"
-  ],
-  "backlogCandidates": [
-    "INIT-GTCX-INFRA-SECAS",
-    "T2",
-    "XR-FABRIC-SEC-LEGAL-P0-06",
-    "INIT-FIVE-PILLAR-FLEET-100",
-    "INIT-SESSION-OPEN-ITEMS",
-    "INIT-EXECUTIVE-GAP-PROGRAM",
-    "XR-FABRIC-SESSION-OPEN-005"
-  ]
+  "threads": [],
+  "backlogCandidates": [],
+  "trackedItems": {
+    "schema": "gtcx://baseline-os/session-tracked-items/v1",
+    "spec": "baseline-os/pm/spec/session-tracked-items.json",
+    "agentReference": "sessions/TRACKED-ITEMS.md",
+    "counts": {
+      "featuresWorked": 2,
+      "bugs": 0,
+      "violations": 0,
+      "flags": 0,
+      "intakeItems": 0,
+      "blockers": 1,
+      "ciInsights": 0,
+      "gems": 0,
+      "coordination": 0,
+      "approvals": 0,
+      "commits": 8,
+      "artifacts": 44,
+      "protocolAdherence": 0,
+      "operatorSignals": 0,
+      "decisions": 0
+    },
+    "measurement": {
+      "commitCount": 8,
+      "pathsCreated": 4,
+      "pathsModified": 34,
+      "pathsDeleted": 6,
+      "protocolsObserved": 0,
+      "protocolsIgnored": 0
+    },
+    "order": [
+      "featuresWorked",
+      "commits",
+      "artifacts",
+      "protocolAdherence",
+      "bugs",
+      "violations",
+      "flags",
+      "intakeItems",
+      "blockers",
+      "ciInsights",
+      "gems",
+      "decisions",
+      "operatorSignals",
+      "coordination",
+      "approvals"
+    ],
+    "buckets": {
+      "featuresWorked": {
+        "label": "Features / stories worked",
+        "items": [
+          {
+            "id": "SECAS-S4-04",
+            "category": "featuresWorked",
+            "type": "story",
+            "summary": "Pen-test findings remediation track + re-test witness",
+            "refs": ["SECAS-S4-04"],
+            "status": "in_progress",
+            "severity": null,
+            "source": "P22 agent:next-work",
+            "at": null
+          },
+          {
+            "id": "INIT-GTCX-INFRA-SECAS",
+            "category": "featuresWorked",
+            "type": "task",
+            "summary": "INIT-GTCX-INFRA-SECAS",
+            "refs": ["INIT-GTCX-INFRA-SECAS"],
+            "status": "in_progress",
+            "severity": null,
+            "source": "pm/_tasks",
+            "at": null
+          }
+        ],
+        "count": 2
+      },
+      "bugs": {
+        "label": "Bugs",
+        "items": [],
+        "count": 0
+      },
+      "violations": {
+        "label": "Violations",
+        "items": [],
+        "count": 0
+      },
+      "flags": {
+        "label": "Flags",
+        "items": [],
+        "count": 0
+      },
+      "intakeItems": {
+        "label": "Intake items",
+        "items": [],
+        "count": 0
+      },
+      "blockers": {
+        "label": "Blockers",
+        "items": [
+          {
+            "id": "uncommitted-work",
+            "category": "blockers",
+            "type": "blocker",
+            "summary": "11 uncommitted path(s) in working tree",
+            "refs": ["uncommitted-work"],
+            "status": "open",
+            "severity": null,
+            "source": "git status",
+            "at": null
+          }
+        ],
+        "count": 1
+      },
+      "ciInsights": {
+        "label": "CI / gate insights",
+        "items": [],
+        "count": 0
+      },
+      "gems": {
+        "label": "Gems & learning",
+        "items": [],
+        "count": 0
+      },
+      "coordination": {
+        "label": "Coordination",
+        "items": [],
+        "count": 0
+      },
+      "approvals": {
+        "label": "Approvals pending",
+        "items": [],
+        "count": 0
+      },
+      "commits": {
+        "label": "Commits",
+        "items": [
+          {
+            "id": "baf6f955701c46e3f1ad1ac51577719222ff3f34",
+            "category": "commits",
+            "type": "commit.session",
+            "summary": "docs(session): handoff 2026-06-15 — ops lanes 17/17, SECAS-S4-04 calendar",
+            "refs": ["baf6f955701c"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git",
+            "at": "2026-06-15 21:08:04 +0200",
+            "meta": {
+              "fullSha": "baf6f955701c46e3f1ad1ac51577719222ff3f34"
+            }
+          },
+          {
+            "id": "bbc01e6e03e0cb67d983f5a07a3a79b40a2c9ed7",
+            "category": "commits",
+            "type": "commit.session",
+            "summary": "docs(provisioning): p48 metadata backfill — fabric-os batch 1",
+            "refs": ["bbc01e6e03e0"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git",
+            "at": "2026-06-15 21:07:55 +0200",
+            "meta": {
+              "fullSha": "bbc01e6e03e0cb67d983f5a07a3a79b40a2c9ed7"
+            }
+          },
+          {
+            "id": "26716be0e39b8362e7a5c02eed673cd03335c406",
+            "category": "commits",
+            "type": "commit.session",
+            "summary": "docs(evaluation): pass-3 multi-pillar prose scrub (DOC-MPR-FLEET-SCRUB-003).",
+            "refs": ["26716be0e39b"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git",
+            "at": "2026-06-15 21:00:27 +0200",
+            "meta": {
+              "fullSha": "26716be0e39b8362e7a5c02eed673cd03335c406"
+            }
+          },
+          {
+            "id": "928f9832a2943091e3ee1ddd4a486e7818ac55e6",
+            "category": "commits",
+            "type": "commit.session",
+            "summary": "chore(secas): refresh pen-test remediation witness timestamp.",
+            "refs": ["928f9832a294"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git",
+            "at": "2026-06-15 20:58:22 +0200",
+            "meta": {
+              "fullSha": "928f9832a2943091e3ee1ddd4a486e7818ac55e6"
+            }
+          },
+          {
+            "id": "838caca40ac3597c2bba6f946a5ed89ffbcb2c2f",
+            "category": "commits",
+            "type": "commit.session",
+            "summary": "docs(evaluation): wire multi-pillar fleet pointer and scrub five-pillar prose.",
+            "refs": ["838caca40ac3"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git",
+            "at": "2026-06-15 20:41:46 +0200",
+            "meta": {
+              "fullSha": "838caca40ac3597c2bba6f946a5ed89ffbcb2c2f"
+            }
+          },
+          {
+            "id": "0a9220aedaf881b0aa46cdfc17410963dd25f267",
+            "category": "commits",
+            "type": "commit.session",
+            "summary": "docs(audit): wire multi-pillar assurance lane into agent entry points.",
+            "refs": ["0a9220aedaf8"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git",
+            "at": "2026-06-15 20:22:39 +0200",
+            "meta": {
+              "fullSha": "0a9220aedaf881b0aa46cdfc17410963dd25f267"
+            }
+          },
+          {
+            "id": "93d803db390212766dae8bb14c084ca86e19ca6f",
+            "category": "commits",
+            "type": "commit.session",
+            "summary": "chore(ops): refresh assurance and pillar witnesses; remove stale sessions/ root directory",
+            "refs": ["93d803db3902"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git",
+            "at": "2026-06-15 20:21:07 +0200",
+            "meta": {
+              "fullSha": "93d803db390212766dae8bb14c084ca86e19ca6f"
+            }
+          },
+          {
+            "id": "9f816fedbfc496b72cec305a5ef1a4ac372a35ba",
+            "category": "commits",
+            "type": "commit.session",
+            "summary": "fix(secas): owner-accountable supply-chain gate, esbuild override, layout/root fixes",
+            "refs": ["9f816fedbfc4"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git",
+            "at": "2026-06-15 20:20:56 +0200",
+            "meta": {
+              "fullSha": "9f816fedbfc496b72cec305a5ef1a4ac372a35ba"
+            }
+          }
+        ],
+        "count": 8
+      },
+      "artifacts": {
+        "label": "Files & folders",
+        "items": [
+          {
+            "id": ".baseline/memory/session-last-start.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: .baseline/memory/session-last-start.json (uncommitted)",
+            "refs": [".baseline/memory/session-last-start.json"],
+            "status": "open",
+            "severity": null,
+            "source": "git-status",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": ".baseline/memory/session.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: .baseline/memory/session.md",
+            "refs": [".baseline/memory/session.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": ".baseline/session/ego-latest.json",
+            "category": "artifacts",
+            "type": "artifact.file.created",
+            "summary": "created: .baseline/session/ego-latest.json (uncommitted)",
+            "refs": [".baseline/session/ego-latest.json"],
+            "status": "open",
+            "severity": null,
+            "source": "git-status",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "??"
+            }
+          },
+          {
+            "id": ".baseline/session/ego-latest.md",
+            "category": "artifacts",
+            "type": "artifact.file.created",
+            "summary": "created: .baseline/session/ego-latest.md (uncommitted)",
+            "refs": [".baseline/session/ego-latest.md"],
+            "status": "open",
+            "severity": null,
+            "source": "git-status",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "??"
+            }
+          },
+          {
+            "id": ".baseline/session/story-persona-bind-latest.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: .baseline/session/story-persona-bind-latest.json (uncommitted)",
+            "refs": [".baseline/session/story-persona-bind-latest.json"],
+            "status": "open",
+            "severity": null,
+            "source": "git-status",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "agentic/manifest.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: agentic/manifest.json",
+            "refs": ["agentic/manifest.json"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "AGENTS.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: AGENTS.md",
+            "refs": ["AGENTS.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "audit/evidence/fabric-assurance-latest.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: audit/evidence/fabric-assurance-latest.json",
+            "refs": ["audit/evidence/fabric-assurance-latest.json"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "audit/evidence/secas-pentest-remediation-check-latest.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: audit/evidence/secas-pentest-remediation-check-latest.json",
+            "refs": ["audit/evidence/secas-pentest-remediation-check-latest.json"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "audit/evidence/secas-supply-chain-check-latest.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: audit/evidence/secas-supply-chain-check-latest.json",
+            "refs": ["audit/evidence/secas-supply-chain-check-latest.json"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "audit/product-management/auto-dev-state.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: audit/product-management/auto-dev-state.md",
+            "refs": ["audit/product-management/auto-dev-state.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "audit/product-management/execution-roadmap.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: audit/product-management/execution-roadmap.md",
+            "refs": ["audit/product-management/execution-roadmap.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "audit/product-management/secas-execution-roadmap.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: audit/product-management/secas-execution-roadmap.md",
+            "refs": ["audit/product-management/secas-execution-roadmap.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "baseline/launch-focus.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: baseline/launch-focus.json (uncommitted)",
+            "refs": ["baseline/launch-focus.json"],
+            "status": "open",
+            "severity": null,
+            "source": "git-status",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/operations/aiops-as-a-service.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/operations/aiops-as-a-service.md",
+            "refs": ["docs/operations/aiops-as-a-service.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/operations/coordination/from-fabric-os-aiops-rollout-2026-06-15.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/operations/coordination/from-fabric-os-aiops-rollout-2026-06-15.md",
+            "refs": ["docs/operations/coordination/from-fabric-os-aiops-rollout-2026-06-15.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/operations/coordination/inbound/from-canon-os-multi-pillar-agent-discovery-2026-06-15.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/operations/coordination/inbound/from-canon-os-multi-pillar-agent-discovery-2026-06-15.md",
+            "refs": [
+              "docs/operations/coordination/inbound/from-canon-os-multi-pillar-agent-discovery-2026-06-15.md"
+            ],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/operations/coordination/inbound/to-baseline-os-mlops-lane-2026-06-15.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/operations/coordination/inbound/to-baseline-os-mlops-lane-2026-06-15.md",
+            "refs": [
+              "docs/operations/coordination/inbound/to-baseline-os-mlops-lane-2026-06-15.md"
+            ],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/operations/coordination/inbound/to-bridge-os-ai-mlops-lane-2026-06-15.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/operations/coordination/inbound/to-bridge-os-ai-mlops-lane-2026-06-15.md",
+            "refs": [
+              "docs/operations/coordination/inbound/to-bridge-os-ai-mlops-lane-2026-06-15.md"
+            ],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/operations/coordination/inbound/to-gtcx-os-intelligence-cost-router-staging-2026-06-15.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/operations/coordination/inbound/to-gtcx-os-intelligence-cost-router-staging-2026-06-15.md",
+            "refs": [
+              "docs/operations/coordination/inbound/to-gtcx-os-intelligence-cost-router-staging-2026-06-15.md"
+            ],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/operations/core-ops/batch-a/core.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/operations/core-ops/batch-a/core.md",
+            "refs": ["docs/operations/core-ops/batch-a/core.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/operations/core-ops/batch-a/enterprise-pilot-dod-template.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/operations/core-ops/batch-a/enterprise-pilot-dod-template.md",
+            "refs": ["docs/operations/core-ops/batch-a/enterprise-pilot-dod-template.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/operations/secas/supply-chain-policy.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/operations/secas/supply-chain-policy.md",
+            "refs": ["docs/operations/secas/supply-chain-policy.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/operations/soc-operations.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/operations/soc-operations.md",
+            "refs": ["docs/operations/soc-operations.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/overview/README.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/overview/README.md",
+            "refs": ["docs/overview/README.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/README.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/README.md",
+            "refs": ["docs/README.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "docs/reference/evaluation/multi-pillar-audit.md",
+            "category": "artifacts",
+            "type": "artifact.file.created",
+            "summary": "created: docs/reference/evaluation/multi-pillar-audit.md",
+            "refs": ["docs/reference/evaluation/multi-pillar-audit.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "A"
+            }
+          },
+          {
+            "id": "docs/specs/ecosystem/trade-ecosystem-lanes-spec.md",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: docs/specs/ecosystem/trade-ecosystem-lanes-spec.md",
+            "refs": ["docs/specs/ecosystem/trade-ecosystem-lanes-spec.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "ops/pm/backlog.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: ops/pm/backlog.json (uncommitted)",
+            "refs": ["ops/pm/backlog.json"],
+            "status": "open",
+            "severity": null,
+            "source": "git-status",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "package.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: package.json",
+            "refs": ["package.json"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "platform/scripts/ecosystem/",
+            "category": "artifacts",
+            "type": "artifact.folder",
+            "summary": "created: platform/scripts/ecosystem/ (uncommitted)",
+            "refs": ["platform/scripts/ecosystem/"],
+            "status": "open",
+            "severity": null,
+            "source": "git-status",
+            "at": null,
+            "meta": {
+              "kind": "folder",
+              "gitStatus": "??"
+            }
+          },
+          {
+            "id": "platform/scripts/payops-providers-check.mjs",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: platform/scripts/payops-providers-check.mjs",
+            "refs": ["platform/scripts/payops-providers-check.mjs"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "platform/scripts/secas-supply-chain-check.mjs",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: platform/scripts/secas-supply-chain-check.mjs",
+            "refs": ["platform/scripts/secas-supply-chain-check.mjs"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "pm/ci/settlement-commit-latest.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: pm/ci/settlement-commit-latest.json (uncommitted)",
+            "refs": ["pm/ci/settlement-commit-latest.json"],
+            "status": "open",
+            "severity": null,
+            "source": "git-status",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "pm/ci/settlement-push-latest.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: pm/ci/settlement-push-latest.json (uncommitted)",
+            "refs": ["pm/ci/settlement-push-latest.json"],
+            "status": "open",
+            "severity": null,
+            "source": "git-status",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "pm/ci/settlement-story-scope-latest.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: pm/ci/settlement-story-scope-latest.json (uncommitted)",
+            "refs": ["pm/ci/settlement-story-scope-latest.json"],
+            "status": "open",
+            "severity": null,
+            "source": "git-status",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "pm/spec/supply-chain-cve-policy.json",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: pm/spec/supply-chain-cve-policy.json",
+            "refs": ["pm/spec/supply-chain-cve-policy.json"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "pnpm-lock.yaml",
+            "category": "artifacts",
+            "type": "artifact.file.modified",
+            "summary": "modified: pnpm-lock.yaml",
+            "refs": ["pnpm-lock.yaml"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "M"
+            }
+          },
+          {
+            "id": "sessions/archive/README.md",
+            "category": "artifacts",
+            "type": "artifact.file.deleted",
+            "summary": "deleted: sessions/archive/README.md",
+            "refs": ["sessions/archive/README.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "D"
+            }
+          },
+          {
+            "id": "sessions/ci/README.md",
+            "category": "artifacts",
+            "type": "artifact.file.deleted",
+            "summary": "deleted: sessions/ci/README.md",
+            "refs": ["sessions/ci/README.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "D"
+            }
+          },
+          {
+            "id": "sessions/handoffs/README.md",
+            "category": "artifacts",
+            "type": "artifact.file.deleted",
+            "summary": "deleted: sessions/handoffs/README.md",
+            "refs": ["sessions/handoffs/README.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "D"
+            }
+          },
+          {
+            "id": "sessions/README.md",
+            "category": "artifacts",
+            "type": "artifact.file.deleted",
+            "summary": "deleted: sessions/README.md",
+            "refs": ["sessions/README.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "D"
+            }
+          },
+          {
+            "id": "sessions/retrospectives/README.md",
+            "category": "artifacts",
+            "type": "artifact.file.deleted",
+            "summary": "deleted: sessions/retrospectives/README.md",
+            "refs": ["sessions/retrospectives/README.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "D"
+            }
+          },
+          {
+            "id": "sessions/transcripts/README.md",
+            "category": "artifacts",
+            "type": "artifact.file.deleted",
+            "summary": "deleted: sessions/transcripts/README.md",
+            "refs": ["sessions/transcripts/README.md"],
+            "status": "resolved",
+            "severity": null,
+            "source": "git-log",
+            "at": null,
+            "meta": {
+              "kind": "file",
+              "gitStatus": "D"
+            }
+          }
+        ],
+        "count": 44
+      },
+      "protocolAdherence": {
+        "label": "Protocol adherence",
+        "items": [],
+        "count": 0
+      },
+      "operatorSignals": {
+        "label": "Operator signals",
+        "items": [],
+        "count": 0
+      },
+      "decisions": {
+        "label": "Decisions",
+        "items": [],
+        "count": 0
+      }
+    }
+  }
 }

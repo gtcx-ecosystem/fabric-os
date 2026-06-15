@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/secas-supply-chain-check/v2",
   "storyId": "SECAS-S4-02",
   "frictionId": "SEC-SUPPLY-01",
-  "checkedAt": "2026-06-15T12:35:14.299Z",
+  "checkedAt": "2026-06-15T18:08:50.995Z",
   "owner": "fabric-os",
   "policy": {
     "json": "pm/spec/supply-chain-cve-policy.json",
@@ -18,8 +18,70 @@
       "ok": true,
       "missing": []
     },
-    "repoRollup": {
+    "ownerRepo": {
       "ok": true,
+      "repo": "fabric-os",
+      "present": true,
+      "packageJson": true,
+      "lockfile": true,
+      "ci": {
+        "ok": true,
+        "files": [
+          "build-push-anomaly-detector.yml",
+          "build-push-ecr.yml",
+          "chaos-test.yml",
+          "ci.yml",
+          "cross-repo-contract.yml",
+          "cross-repo-health.yml",
+          "dast-zap.yml",
+          "debug-oidc.yml",
+          "dependabot-triage.yml",
+          "deploy-staging.yml",
+          "distribution-snapshot.yml",
+          "docs-site-build.yml",
+          "dr-test-quarterly.yml",
+          "dr-test.yml",
+          "eval-pipeline.yml",
+          "hygiene.yml",
+          "injection-suite-weekly.yml",
+          "secret-scan.yml",
+          "security-evidence.yml",
+          "slsa-provenance.yml"
+        ],
+        "matched": [
+          "build-push-ecr.yml:trivy",
+          "ci.yml:pnpm audit",
+          "ci.yml:trivy",
+          "ci.yml:audit-with-acceptance",
+          "ci.yml:dependency-audit",
+          "ci.yml:dependency audit",
+          "security-evidence.yml:pnpm audit",
+          "security-evidence.yml:trivy",
+          "security-evidence.yml:audit-with-acceptance",
+          "security-evidence.yml:dependency-audit",
+          "security-evidence.yml:dependency audit"
+        ],
+        "validateAll": false
+      },
+      "audit": {
+        "ok": true,
+        "verdict": "pass",
+        "exitCode": 1,
+        "timedOut": false,
+        "registryReachable": true,
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 1,
+          "high": 0,
+          "critical": 0
+        }
+      }
+    },
+    "repoRollup": {
+      "ok": false,
+      "passCount": 2,
+      "totalCount": 4,
       "repos": [
         {
           "repo": "fabric-os",
@@ -67,11 +129,17 @@
           },
           "audit": {
             "ok": true,
-            "verdict": "partial",
-            "exitCode": null,
-            "timedOut": true,
-            "registryReachable": false,
-            "vulnerabilities": null
+            "verdict": "pass",
+            "exitCode": 1,
+            "timedOut": false,
+            "registryReachable": true,
+            "vulnerabilities": {
+              "info": 0,
+              "low": 0,
+              "moderate": 1,
+              "high": 0,
+              "critical": 0
+            }
           },
           "ok": true
         },
@@ -93,14 +161,20 @@
             "validateAll": false
           },
           "audit": {
-            "ok": true,
-            "verdict": "partial",
-            "exitCode": null,
-            "timedOut": true,
-            "registryReachable": false,
-            "vulnerabilities": null
+            "ok": false,
+            "verdict": "fail",
+            "exitCode": 1,
+            "timedOut": false,
+            "registryReachable": true,
+            "vulnerabilities": {
+              "info": 0,
+              "low": 1,
+              "moderate": 3,
+              "high": 3,
+              "critical": 1
+            }
           },
-          "ok": true
+          "ok": false
         },
         {
           "repo": "compliance-os",
@@ -130,8 +204,8 @@
           "audit": {
             "ok": true,
             "verdict": "partial",
-            "exitCode": null,
-            "timedOut": true,
+            "exitCode": 1,
+            "timedOut": false,
             "registryReachable": false,
             "vulnerabilities": null
           },
@@ -164,14 +238,20 @@
             "validateAll": false
           },
           "audit": {
-            "ok": true,
-            "verdict": "partial",
-            "exitCode": null,
-            "timedOut": true,
-            "registryReachable": false,
-            "vulnerabilities": null
+            "ok": false,
+            "verdict": "fail",
+            "exitCode": 1,
+            "timedOut": false,
+            "registryReachable": true,
+            "vulnerabilities": {
+              "info": 0,
+              "low": 1,
+              "moderate": 6,
+              "high": 3,
+              "critical": 0
+            }
           },
-          "ok": true
+          "ok": false
         }
       ]
     },

@@ -103,9 +103,9 @@ All production and staging connection strings come from AWS Secrets Manager — 
 For local development, engineers use the Docker Compose init scripts which create the local databases with default credentials:
 
 ```bash
-# Local PostgreSQL credentials (Docker Compose — not secret)
-# Operational DB:  user=gtcx, password=gtcx, db=gtcx_development, port=5432
-# Audit DB:        user=gtcx_audit, password=gtcx_audit, db=gtcx_audit, port=5433
+## Local PostgreSQL credentials (Docker Compose — not secret)
+## Operational DB:  user=gtcx, password=gtcx, db=gtcx_development, port=5432
+## Audit DB:        user=gtcx_audit, password=gtcx_audit, db=gtcx_audit, port=5433
 ```
 
 These credentials are local-only and never used outside Docker Compose.
@@ -140,51 +140,51 @@ Production deployments require an approval ticket (`--approval-ticket=GTCX-NNN`)
 ### First-Time Local Setup
 
 ```bash
-# Clone repo
+## Clone repo
 git clone https://github.com/gtcx-ecosystem/gtcx-infrastructure
 cd gtcx-infrastructure
 
-# Install Node dependencies
+## Install Node dependencies
 pnpm install
 
-# Start local infrastructure services
+## Start local infrastructure services
 docker compose -f 04-deploy/docker/docker-compose.infra.yml up -d
 
-# Verify all services are running
+## Verify all services are running
 docker compose -f 04-deploy/docker/docker-compose.infra.yml ps
 ```
 
 ### New Environment (Staging/Production)
 
 ```bash
-# Copy the Terraform environment template
+## Copy the Terraform environment template
 cp -r 04-deploy/terraform/environments/template 04-deploy/terraform/environments/{env}
 
-# Fill in environment-specific variables
+## Fill in environment-specific variables
 vi 04-deploy/terraform/environments/{env}/terraform.tfvars
 
-# Initialize and plan (never apply without reviewing the plan)
+## Initialize and plan (never apply without reviewing the plan)
 cd 04-deploy/terraform/environments/{env}
 terraform init
 terraform plan
 
-# After human review of the plan:
+## After human review of the plan:
 terraform apply
 ```
 
 ### Applying K8s Changes to a New Environment
 
 ```bash
-# Create the overlay directory if it doesn't exist
+## Create the overlay directory if it doesn't exist
 mkdir -p 04-deploy/kubernetes/overlays/{env}
 
-# Verify what would change before applying
+## Verify what would change before applying
 kubectl diff -k 04-deploy/kubernetes/overlays/{env}
 
-# Apply (development only — autonomous)
+## Apply (development only — autonomous)
 kubectl apply -k 04-deploy/kubernetes/overlays/development
 
-# Staging and production use deploy.sh
+## Staging and production use deploy.sh
 ./04-deploy/03-platform/scripts/deploy.sh staging
 ./04-deploy/03-platform/scripts/deploy.sh production --approval-ticket=GTCX-NNN
 ```

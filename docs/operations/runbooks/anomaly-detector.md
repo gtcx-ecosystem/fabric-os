@@ -51,13 +51,13 @@ The anomaly detector is a batch evaluation tool that queries Prometheus for metr
 ### Check Current Status
 
 ```bash
-# List recent jobs
+## List recent jobs
 kubectl get jobs -n gtcx -l app=anomaly-detector
 
-# View CronJob schedule
+## View CronJob schedule
 kubectl get cronjob anomaly-detector -n gtcx
 
-# Check latest job logs
+## Check latest job logs
 kubectl logs -n gtcx -l app=anomaly-detector --tail=50
 ```
 
@@ -71,10 +71,10 @@ kubectl logs -n gtcx job/anomaly-detector-manual --follow
 ### View Prometheus Metrics
 
 ```bash
-# Port-forward Prometheus
+## Port-forward Prometheus
 kubectl port-forward -n monitoring svc/prometheus 9090:9090
 
-# Query in browser: http://localhost:9090
+## Query in browser: http://localhost:9090
 ```
 
 ---
@@ -139,10 +139,10 @@ kubectl describe pod -n gtcx -l app=anomaly-detector
 **Resolution:**
 
 ```bash
-# Check node resources
+## Check node resources
 kubectl top nodes
 
-# If nodes are full, scale EKS node group
+## If nodes are full, scale EKS node group
 aws eks update-nodegroup-config \
   --cluster-name gtcx-staging \
   --nodegroup-name gtcx-staging-nodes \
@@ -179,12 +179,12 @@ kubectl get pods -n monitoring -l app=prometheus
 **Resolution:**
 
 ```bash
-# If Prometheus is missing, redeploy
+## If Prometheus is missing, redeploy
 kubectl apply -f 04-deploy/kubernetes/base/services/monitoring.yaml
 
-# If namespace is wrong, verify service DNS:
+## If namespace is wrong, verify service DNS:
 kubectl get svc -n monitoring
-# Expected: prometheus.monitoring.svc.cluster.local:9090
+## Expected: prometheus.monitoring.svc.cluster.local:9090
 ```
 
 ---
@@ -225,16 +225,16 @@ kubectl get svc -n monitoring
 The image tag is `latest` with `imagePullPolicy: Always`. To deploy a new version:
 
 ```bash
-# 1. Push changes to main (triggers CI build)
+## 1. Push changes to main (triggers CI build)
 git push origin main
 
-# 2. Verify image in ECR
+## 2. Verify image in ECR
 aws ecr describe-images \
   --repository-name gtcx-anomaly-detector \
   --image-ids imageTag=latest \
   --region af-south-1
 
-# 3. Trigger manual job to verify
+## 3. Trigger manual job to verify
 kubectl create job --from=cronjob/anomaly-detector anomaly-detector-verify -n gtcx
 kubectl logs -n gtcx job/anomaly-detector-verify --follow
 ```
@@ -242,12 +242,12 @@ kubectl logs -n gtcx job/anomaly-detector-verify --follow
 ### Modify Schedule
 
 ```bash
-# Edit CronJob schedule (e.g., every 2 minutes for testing)
+## Edit CronJob schedule (e.g., every 2 minutes for testing)
 kubectl patch cronjob anomaly-detector -n gtcx \
   --type merge \
   -p '{"spec":{"schedule":"*/2 * * * *"}}'
 
-# Revert to production schedule
+## Revert to production schedule
 kubectl patch cronjob anomaly-detector -n gtcx \
   --type merge \
   -p '{"spec":{"schedule":"*/5 * * * *"}}'
@@ -256,7 +256,7 @@ kubectl patch cronjob anomaly-detector -n gtcx \
 ### Rotate Alert Webhook Secret
 
 ```bash
-# Update ALERT_WEBHOOK_URL in gtcx-secrets
+## Update ALERT_WEBHOOK_URL in gtcx-secrets
 kubectl patch secret gtcx-secrets -n gtcx \
   --type merge \
   -p '{"stringData":{"ALERT_WEBHOOK_URL":"https://hooks.new-url.com/..."}}'

@@ -17,20 +17,20 @@ work_id: S1-05 / INF-86 / XR-405
 ```bash
 cd 04-deploy/terraform/environments/staging
 
-# 1. Added irsa_platform module to main.tf
-# 2. Fixed irsa-platform module KMS policy bug (split statements)
-# 3. Imported existing role and policy into Terraform state
+## 1. Added irsa_platform module to main.tf
+## 2. Fixed irsa-platform module KMS policy bug (split statements)
+## 3. Imported existing role and policy into Terraform state
 
 terraform init
 terraform import module.irsa_platform.aws_iam_role.platforms gtcx-staging-platforms-irsa
 terraform import 'module.irsa_platform.aws_iam_role_policy.platforms_kms[0]' gtcx-staging-platforms-irsa:gtcx-staging-platforms-kms-sign
 
-# 4. Applied tag alignment
+## 4. Applied tag alignment
 terraform apply -target=module.irsa_platform -auto-approve
 
-# 5. Verified 0 changes
+## 5. Verified 0 changes
 terraform plan -target=module.irsa_platform
-# → "no differences, so no changes are needed"
+## → "no differences, so no changes are needed"
 ```
 
 ## Role details

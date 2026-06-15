@@ -123,7 +123,7 @@ Follow [Keep a Changelog](https://keepachangelog.com/) conventions.
 All releases are tagged in Git:
 
 ```bash
-# Create and push release tag
+## Create and push release tag
 git tag -a v1.4.0 -m "Release v1.4.0"
 git push origin v1.4.0
 ```

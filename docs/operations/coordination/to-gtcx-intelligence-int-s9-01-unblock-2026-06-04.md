@@ -30,7 +30,7 @@ Added `/v1/evidence/submit` to `AllowAuditAndTradePassEndpoints` WAF rule (ByteM
 curl -X POST -H "Authorization: Bearer $GTCX_API_KEY" \
   -d '{"signalId":"int-s9-01-smoke",...}' \
   https://api.staging.gtcx.trade/v1/evidence/submit
-# → 200 {"evidenceId":"88ae9690-bffb-42f0-a68e-83ac6c2e4729","status":"submitted",...}
+## → 200 {"evidenceId":"88ae9690-bffb-42f0-a68e-83ac6c2e4729","status":"submitted",...}
 ```
 
 ## Next step

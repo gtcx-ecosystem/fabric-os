@@ -50,12 +50,12 @@ authority_class: R
 ## Downstream retest commands (Class R — post-infra)
 
 ```bash
-# exploration-os
+## exploration-os
 export COMPLIANCE_OS_URL=https://compliance.gtcx.trade
 export COMPLIANCE_OS_INTAKE_API_KEY=<from infra SM path>
 npm run w2:prod:retest
 
-# compliance-os
+## compliance-os
 export COMPLIANCE_OS_TERMINAL_OS_URL="https://<terminal-prod>"
 export COMPLIANCE_OS_TERMINAL_API_KEY="<from-vault>"
 pnpm w2:terminal-patch-proof

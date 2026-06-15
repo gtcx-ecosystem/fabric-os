@@ -37,12 +37,12 @@ RDS Multi-AZ failover is automatic. Typical duration: 60-120 seconds.
 **Monitoring**:
 
 ```bash
-# Check current primary AZ
+## Check current primary AZ
 aws rds describe-db-instances \
   --db-instance-identifier gtcx-${ENV}-operational \
   --query 'DBInstances[0].[AvailabilityZone,DBInstanceStatus,MultiAZ]'
 
-# Check RDS events for recent failovers
+## Check RDS events for recent failovers
 aws rds describe-events \
   --source-identifier gtcx-${ENV}-operational \
   --source-type db-instance \
@@ -54,12 +54,12 @@ aws rds describe-events \
 ## Manual Failover (Planned Maintenance)
 
 ```bash
-# Trigger failover (for testing or maintenance)
+## Trigger failover (for testing or maintenance)
 aws rds reboot-db-instance \
   --db-instance-identifier gtcx-${ENV}-operational \
   --force-failover
 
-# Monitor progress
+## Monitor progress
 watch -n 5 "aws rds describe-db-instances \
   --db-instance-identifier gtcx-${ENV}-operational \
   --query 'DBInstances[0].[DBInstanceStatus,AvailabilityZone]'"
@@ -72,10 +72,10 @@ watch -n 5 "aws rds describe-db-instances \
 Applications should use connection pooling with retry logic. Verify:
 
 ```bash
-# Check application pods reconnected
+## Check application pods reconnected
 kubectl logs -n gtcx -l app=gtcx-api --tail=50 | grep -i "database\|connection\|pool"
 
-# Check readiness probes
+## Check readiness probes
 kubectl get pods -n gtcx -l app=gtcx-api -o wide
 ```
 

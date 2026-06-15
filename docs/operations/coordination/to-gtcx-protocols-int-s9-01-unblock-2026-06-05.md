@@ -19,7 +19,7 @@ work_id: INT-S9-01
 `api.staging.gtcx.trade/v1/evidence/submit` already routes to `gtcx-protocols-staging:8300` via the catch-all `/` path in the ALB ingress:
 
 ```yaml
-# 04-deploy/kubernetes/overlays/staging/ingress.yaml
+## 04-deploy/kubernetes/overlays/staging/ingress.yaml
 - host: api.staging.gtcx.trade
   http:
     paths:
@@ -71,7 +71,7 @@ curl -s -o /dev/null -w "%{http_code}" \
   -H "Authorization: Bearer $GTCX_API_KEY" \
   -d '{"evidence":"test"}' \
   https://api.staging.gtcx.trade/v1/evidence/submit
-# Expected: 200
+## Expected: 200
 ```
 
 ## Cross-references

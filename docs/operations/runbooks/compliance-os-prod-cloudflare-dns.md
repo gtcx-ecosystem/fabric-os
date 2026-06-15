@@ -43,7 +43,7 @@ kubectl get ingress compliance-os -n compliance-os-production \
 ```bash
 export CLOUDFLARE_API_TOKEN="<zone DNS Edit>"
 export ALB_DNS="k8s-gtcxproductionapi-527ebd7716-1025454332.af-south-1.elb.amazonaws.com"
-# DNS only (recommended first — avoids 525 during ACM handshake):
+## DNS only (recommended first — avoids 525 during ACM handshake):
 export CLOUDFLARE_PROXIED=false
 bash 04-deploy/03-platform/scripts/attach-compliance-os-prod-domain.sh
 ```
@@ -61,7 +61,7 @@ bash 04-deploy/03-platform/scripts/attach-compliance-os-prod-domain.sh
 
 ```bash
 curl -sS -o /dev/null -w "%{http_code}\n" https://compliance.gtcx.trade/
-# Expect 200/301/307 — not 525
+## Expect 200/301/307 — not 525
 
 INTAKE_KEY="$(aws secretsmanager get-secret-value \
   --secret-id gtcx/compliance-os/production/w2 --region af-south-1 \
@@ -71,7 +71,7 @@ curl -sS -o /dev/null -w "%{http_code}\n" -X POST \
   -H "Authorization: Bearer ${INTAKE_KEY}" \
   -H "Content-Type: application/json" \
   --data-binary @../compliance-os/apps/web/fixtures/licence-intelligence/ag-invest-kasai-handoff.json
-# Expect 201
+## Expect 201
 ```
 
 ## Downstream (compliance-os — Class R after DNS)

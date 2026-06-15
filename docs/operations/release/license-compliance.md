@@ -48,11 +48,11 @@ Run before every release. Use the project's package manager to generate this lis
 ### Production Dependencies
 
 ```
-# Generate with:
-# npm: npx license-checker --production --csv > licenses.csv
-# pnpm: pnpm licenses list
-# python: pip-licenses --format=csv > licenses.csv
-# rust: cargo license
+## Generate with:
+## npm: npx license-checker --production --csv > licenses.csv
+## pnpm: pnpm licenses list
+## python: pip-licenses --format=csv > licenses.csv
+## rust: cargo license
 ```
 
 | Package   | Version   | License      | Status       | Notes                     |

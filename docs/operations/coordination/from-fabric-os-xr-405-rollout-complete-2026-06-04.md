@@ -45,13 +45,13 @@ item: XR-405
 ## Verification commands
 
 ```bash
-# Check pod health
+## Check pod health
 kubectl get pod -n gtcx-staging -l app=sovereign
 kubectl exec -n gtcx-staging deployment/sovereign-staging -- wget -qO- http://localhost:3001/api/health
 
-# Check IRSA
+## Check IRSA
 ekubectl get pod -n gtcx-staging -l app=sovereign -o jsonpath='{.items[0].spec.containers[0].env[?(@.name=="AWS_ROLE_ARN")].value}'
-# Expected: arn:aws:iam::348389439381:role/gtcx-staging-platforms-irsa
+## Expected: arn:aws:iam::348389439381:role/gtcx-staging-platforms-irsa
 ```
 
 ## Next steps (platforms)

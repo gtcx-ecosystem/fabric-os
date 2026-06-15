@@ -45,13 +45,13 @@ document_type: runbook
 ## Historical state (pre-completion — reference only)
 
 ```bash
-# Pre-completion probe results (orchestrator stub era)
+## Pre-completion probe results (orchestrator stub era)
 curl -s -o /dev/null -w "%{http_code}" https://intelligence-staging.gtcx.trade/health
-# → 200 (stub did not enforce auth on /health)
+## → 200 (stub did not enforce auth on /health)
 
-# /live and /ready returned 401 without auth (stub behavior)
+## /live and /ready returned 401 without auth (stub behavior)
 curl -s -o /dev/null -w "%{http_code}" https://intelligence-staging.gtcx.trade/live
-# → 401
+## → 401
 ```
 
 **Root cause:** The `intelligence-orchestrator` service currently deployed is a **stub** that does not enforce auth on `/health`. The full intelligence SDK with auth-gated routes needs to be deployed.
@@ -75,13 +75,13 @@ curl -s -o /dev/null -w "%{http_code}" https://intelligence-staging.gtcx.trade/l
 
 ```bash
 kubectl get secret -n intelligence intelligence-secrets
-# Expected: Secret exists, type Opaque
+## Expected: Secret exists, type Opaque
 
 kubectl get externalsecret -n intelligence
-# Expected: intelligence-secrets Ready=True
+## Expected: intelligence-secrets Ready=True
 
 kubectl get secretstore -n intelligence
-# Expected: intelligence-aws-secrets Valid=True
+## Expected: intelligence-aws-secrets Valid=True
 ```
 
 ---
@@ -129,7 +129,7 @@ kubectl rollout status deployment/intelligence-orchestrator -n intelligence
 
 ```bash
 kubectl get secret -n intelligence intelligence-secrets -o jsonpath='{.data}'
-# Should contain: ANTHROPIC_API_KEY, OPENAI_API_KEY, DATABASE_URL, AUTH_API_KEYS, AUTH_KEY_ROLES
+## Should contain: ANTHROPIC_API_KEY, OPENAI_API_KEY, DATABASE_URL, AUTH_API_KEYS, AUTH_KEY_ROLES
 ```
 
 If missing, check:
@@ -152,7 +152,7 @@ If missing, check:
 **If intelligence repo does not provide manifests, infrastructure creates:**
 
 ```yaml
-# 04-deploy/kubernetes/base/services/intelligence-deployment.yaml
+## 04-deploy/kubernetes/base/services/intelligence-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -202,31 +202,31 @@ spec:
 ### Step 4: Apply deployment
 
 ```bash
-# If manifest added to overlay
+## If manifest added to overlay
 kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
 
-# Or apply directly
+## Or apply directly
 kubectl apply -f 04-deploy/kubernetes/base/services/intelligence-deployment.yaml
 ```
 
 ### Step 5: Verify auth gate
 
 ```bash
-# Unauthenticated should fail
+## Unauthenticated should fail
 curl -s -o /dev/null -w "%{http_code}" https://intelligence-staging.gtcx.trade/health
-# Expected: 401 or 403
+## Expected: 401 or 403
 
-# Authenticated should succeed
+## Authenticated should succeed
 curl -H "Authorization: Bearer $VALID_TOKEN" \
   -s -o /dev/null -w "%{http_code}" \
   https://intelligence-staging.gtcx.trade/health
-# Expected: 200
+## Expected: 200
 
-# EAP key route
+## EAP key route
 curl -H "X-EAP-Key: $EAP_KEY" \
   -s -o /dev/null -w "%{http_code}" \
   https://intelligence-staging.gtcx.trade/v1/eap/keys
-# Expected: 200
+## Expected: 200
 ```
 
 ### Step 6: Ping intelligence

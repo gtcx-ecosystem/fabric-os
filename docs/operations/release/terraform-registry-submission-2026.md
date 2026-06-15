@@ -41,32 +41,32 @@ Submission package + verification checklist for listing the module on `registry.
 Run these against the standalone repo (`github.com/amani-amina-anai/terraform-aws-compliance-db`):
 
 ```bash
-# Clone fresh
+## Clone fresh
 git clone https://github.com/amani-amina-anai/terraform-aws-compliance-db.git
 cd terraform-aws-compliance-db
 
-# 1. Format
+## 1. Format
 terraform fmt -check -recursive
-# Expected: empty output (clean)
+## Expected: empty output (clean)
 
-# 2. Validate
+## 2. Validate
 terraform init -backend=false
 terraform validate
-# Expected: "Success! The configuration is valid."
+## Expected: "Success! The configuration is valid."
 
-# 3. README structure
+## 3. README structure
 grep -c "^## Usage" README.md      # expected: 1
 grep -c "^## Inputs" README.md     # expected: 1
 grep -c "^## Outputs" README.md    # expected: 1
 grep -c "^## Resources" README.md  # expected: 1
 
-# 4. Repo metadata
+## 4. Repo metadata
 gh repo view --json description,licenseInfo,defaultBranchRef
-# Expected: description present, license MIT, default branch main
+## Expected: description present, license MIT, default branch main
 
-# 5. No private deps
+## 5. No private deps
 grep -rE "source\s*=\s*\"[^\"]*://[^\"]*\"" *.tf
-# Expected: only public sources (registry.terraform.io/...)
+## Expected: only public sources (registry.terraform.io/...)
 ```
 
 ## Submission steps

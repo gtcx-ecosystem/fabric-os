@@ -51,7 +51,7 @@ aws iam update-assume-role-policy \
 ```bash
 aws iam get-role --role-name gtcx-production-platforms-irsa --region af-south-1 | \
   jq '.Role.AssumeRolePolicyDocument | fromjson | .Statement | length'
-# → 2 (was 3)
+## → 2 (was 3)
 ```
 
 ## Cross-references

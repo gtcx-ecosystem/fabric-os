@@ -30,10 +30,10 @@ GTCX supports automated and manual rollback with full evidence capture.
 ## Manual Rollback
 
 ```bash
-# Rollback production to previous revision
+## Rollback production to previous revision
 pnpm ctl deploy rollback --environment=production
 
-# Capture evidence
+## Capture evidence
 pnpm ctl evidence rollback-capture --environment=production --reason="SLO breach"
 ```
 

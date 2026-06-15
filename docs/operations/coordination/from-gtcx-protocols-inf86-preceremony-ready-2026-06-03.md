@@ -29,5 +29,5 @@ work_ids: [XR-402]
 ```bash
 cd ../gtcx-protocols
 pnpm check:inf86-xr401-preceremony
-# ✅ Passed before ceremony
+## ✅ Passed before ceremony
 ```

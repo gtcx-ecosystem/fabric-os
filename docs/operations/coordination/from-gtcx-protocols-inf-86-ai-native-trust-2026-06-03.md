@@ -11,6 +11,8 @@ document_type: runbook
 
 # INF-86 AI-native trust — canonical in gtcx-protocols
 
+## Overview
+
 **Do not fork** custodian / witness / SPKI procedure into local runbooks without linking canonical text.
 
 | Resource            | URL                                                                                                                                       |

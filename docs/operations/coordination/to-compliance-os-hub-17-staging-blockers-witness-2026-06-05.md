@@ -41,8 +41,8 @@ Operator run found **`ClusterSecretStore/gtcx-aws-secrets-manager` not found**. 
 **Manifest:** `04-deploy/kubernetes/overlays/staging/compliance-os/external-secrets.yaml`
 
 ```yaml
-# ExternalSecret: compliance-os-ghcr-pull
-# Syncs .dockerconfigjson from AWS SM → K8s Secret (type: kubernetes.io/dockerconfigjson)
+## ExternalSecret: compliance-os-ghcr-pull
+## Syncs .dockerconfigjson from AWS SM → K8s Secret (type: kubernetes.io/dockerconfigjson)
 ```
 
 **Operator action required:**

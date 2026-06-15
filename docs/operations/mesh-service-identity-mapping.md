@@ -77,13 +77,13 @@ metadata:
 ## 4. Verification Commands
 
 ```bash
-# Check mesh status for all pods
+## Check mesh status for all pods
 linkerd viz stat deploy -n gtcx
 
-# Verify mTLS is active between two services
+## Verify mTLS is active between two services
 linkerd viz tap deploy/gtcx-agx -n gtcx --to deploy/gtcx-protocols
 
-# Check authorization policy enforcement
+## Check authorization policy enforcement
 linkerd authz -n gtcx
 ```
 

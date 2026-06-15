@@ -39,11 +39,11 @@ role: platform-engineer
 ### Smoke test
 
 ```bash
-# Verifier page loads with pepper
+## Verifier page loads with pepper
  curl -sL "https://4d98ac1c.exploration-os-verifier.pages.dev/sir" | grep "__SIR_VERIFIER_PEPPER__"
-# → window.__SIR_VERIFIER_PEPPER__ = '4189e32dde002481bdc8f046d20877a20ff3750a185f75d6b38113026ac47507'
+## → window.__SIR_VERIFIER_PEPPER__ = '4189e32dde002481bdc8f046d20877a20ff3750a185f75d6b38113026ac47507'
 
-# Signed test package verifies correctly
+## Signed test package verifies correctly
 node -e "
 const pkg = JSON.parse(require('fs').readFileSync('/tmp/signed-test.sir.json'));
 // canonical hash + HMAC signature both valid

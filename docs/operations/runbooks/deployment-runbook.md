@@ -68,7 +68,7 @@ vpc_cidr           = "10.0.0.0/16"
 ```bash
 terraform init
 terraform plan -out=plan.tfplan
-# Review plan carefully
+## Review plan carefully
 terraform apply plan.tfplan
 ```
 
@@ -79,13 +79,13 @@ terraform apply plan.tfplan
 ### 2.1 Build and Apply
 
 ```bash
-# Development
+## Development
 kustomize build 04-deploy/kubernetes/overlays/development | kubectl apply -f -
 
-# Staging
+## Staging
 kustomize build 04-deploy/kubernetes/overlays/staging | kubectl apply -f -
 
-# Production
+## Production
 kustomize build 04-deploy/kubernetes/overlays/production | kubectl apply -f -
 ```
 
@@ -115,7 +115,7 @@ This deploys from `04-deploy/k8s/intelligence/` — the dedicated intelligence m
 Apply init scripts from Docker infrastructure:
 
 ```bash
-# Connect to operational database
+## Connect to operational database
 psql $DATABASE_URL < 04-deploy/docker/init-03-platform/scripts/01-init.sql
 ```
 
@@ -134,13 +134,13 @@ See `01-docs/09-security/secrets-management.md` for the full secrets strategy.
 Quick reference:
 
 ```bash
-# Development: direct kubectl
+## Development: direct kubectl
 kubectl create secret generic gtcx-secrets \
   --from-literal=DATABASE_URL="postgres://..." \
   --from-literal=SECRET_KEY_BASE="$(openssl rand -hex 64)" \
   -n gtcx
 
-# Production: use Sealed Secrets or External Secrets Operator
+## Production: use Sealed Secrets or External Secrets Operator
 ```
 
 ---
@@ -150,11 +150,11 @@ kubectl create secret generic gtcx-secrets \
 Production network policies (`04-deploy/kubernetes/overlays/production/network-policies.yaml`) hardcode `cidr: 10.0.0.0/8` as the internal network range. If your VPC uses a different CIDR:
 
 ```bash
-# Option 1: sed replacement
+## Option 1: sed replacement
 sed -i 's|10.0.0.0/8|172.16.0.0/12|g' 04-deploy/kubernetes/overlays/production/network-policies.yaml
 
-# Option 2: kustomize patch
-# Add a strategic merge patch in the production overlay's kustomization.yaml
+## Option 2: kustomize patch
+## Add a strategic merge patch in the production overlay's kustomization.yaml
 ```
 
 This affects lines 80 and 148 of `network-policies.yaml`.
@@ -180,26 +180,26 @@ After deployment, verify:
 ### Kubernetes Rollback
 
 ```bash
-# Check rollout history
+## Check rollout history
 kubectl rollout history deployment/{service} -n gtcx
 
-# Rollback to previous revision
+## Rollback to previous revision
 kubectl rollout undo deployment/{service} -n gtcx
 
-# Rollback to specific revision
+## Rollback to specific revision
 kubectl rollout undo deployment/{service} --to-revision=N -n gtcx
 ```
 
 ### Terraform Rollback
 
 ```bash
-# Review state
+## Review state
 terraform show
 
-# Import previous state if needed
+## Import previous state if needed
 terraform state pull > backup.tfstate
 
-# Targeted destroy and recreate
+## Targeted destroy and recreate
 terraform destroy -target=module.{module_name}
 terraform apply
 ```
@@ -207,10 +207,10 @@ terraform apply
 ### Full Environment Teardown (destructive)
 
 ```bash
-# Kubernetes resources
+## Kubernetes resources
 kustomize build 04-deploy/kubernetes/overlays/{env} | kubectl delete -f -
 
-# Terraform (requires confirmation)
+## Terraform (requires confirmation)
 cd 04-deploy/terraform/environments/{country}-{env}
 terraform destroy
 ```

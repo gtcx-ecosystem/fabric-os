@@ -37,7 +37,7 @@ terraform plan -var-file=terraform.tfvars \
   -target=module.secrets.aws_secretsmanager_secret.compliance_os_ghcr_pull \
   -target=module.secrets.aws_secretsmanager_secret.compliance_os_w2 \
   -out=hub17-prod.plan
-# Review plan + second-person sign-off, then:
+## Review plan + second-person sign-off, then:
 terraform apply hub17-prod.plan
 ```
 
@@ -46,7 +46,7 @@ terraform apply hub17-prod.plan
 Align terminal key with terminal-os prod receiver when available:
 
 ```bash
-# Optional: reuse terminal-os prod admin key
+## Optional: reuse terminal-os prod admin key
 export COMPLIANCE_OS_TERMINAL_API_KEY="<from terminal-os prod SM>"
 export TERMINAL_OS_URL="https://terminal.gtcx.trade"
 ./03-platform/scripts/production/populate-compliance-os-prod-sm.sh
@@ -87,7 +87,7 @@ kubectl get secretstore,externalsecret,sa,ingress -n compliance-os-production
 kubectl get pods -n compliance-os-production -l app=web-app
 kubectl exec -n compliance-os-production deploy/web-app -- env | grep -E '^COMPLIANCE_OS_' | cut -d= -f1
 
-# Intake smoke — expect 201
+## Intake smoke — expect 201
 export COMPLIANCE_OS_URL=https://compliance.gtcx.trade
 export COMPLIANCE_OS_INTAKE_API_KEY="$(aws secretsmanager get-secret-value \
   --secret-id gtcx/compliance-os/production/w2 --region af-south-1 \

@@ -42,7 +42,7 @@ export COMPLIANCE_OS_URL=https://compliance.gtcx.trade
 export COMPLIANCE_OS_TERMINAL_OS_URL="https://terminal.gtcx.trade"  # confirm prod URL
 export COMPLIANCE_OS_TERMINAL_API_KEY="<from infra SM / terminal-os prod>"
 pnpm w2:terminal-patch-proof
-# → 01-docs/05-audit/w2-hub-17-cos-patch-latest.json
+## → 01-docs/05-audit/w2-hub-17-cos-patch-latest.json
 ```
 
 Finalize hub locker draft → baseline-os when exploration retest also green.

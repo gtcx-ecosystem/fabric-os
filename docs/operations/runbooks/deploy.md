@@ -144,10 +144,10 @@ The script runs these steps in order:
 ## Rollback
 
 ```bash
-# Roll back production to the previous image
+## Roll back production to the previous image
 ./04-deploy/03-platform/scripts/deploy.sh production --rollback
 
-# Roll back staging
+## Roll back staging
 ./04-deploy/03-platform/scripts/deploy.sh staging --rollback
 ```
 

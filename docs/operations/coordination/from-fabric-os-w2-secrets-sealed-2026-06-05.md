@@ -15,10 +15,10 @@ work_id: W2-E2E / #17 / XR-502
 ## What was done
 
 ```bash
-# 1. Created namespace (did not exist)
+## 1. Created namespace (did not exist)
 kubectl create namespace compliance-os-staging
 
-# 2. Created Secret with generated values
+## 2. Created Secret with generated values
 kubectl create secret generic compliance-os-w2-secrets \
   --namespace=compliance-os-staging \
   --from-literal=COMPLIANCE_OS_INTAKE_API_KEY="<generated>" \

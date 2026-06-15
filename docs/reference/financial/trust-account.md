@@ -1,15 +1,16 @@
 ---
 title: 'Customer Fund Segregation & Trust Account Framework'
-status: 'current'
-date: '2026-05-27'
-owner: 'cfo'
-role: 'cfo'
-tier: 'critical'
-tags: ['financial', 'trust-account', 'fund-segregation', 'bank-grade', 'compliance']
-review_cycle: 'quarterly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: cfo
+tier: critical
+tags: [['financial', 'trust-account', 'fund-segregation', 'bank-grade', 'compliance']]
+review_cycle: quarterly
+document_type: protocol
+role: cfo
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Customer Fund Segregation & Trust Account Framework

@@ -1,15 +1,16 @@
 ---
 title: 'Accounting Policies'
-status: 'current'
-date: '2026-05-27'
-owner: 'cfo'
-role: 'cfo'
-tier: 'critical'
-tags: ['financial', 'accounting', 'gaap', 'ifrs', 'investment-grade']
-review_cycle: 'annual'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: cfo
+tier: critical
+tags: [['financial', 'accounting', 'gaap', 'ifrs', 'investment-grade']]
+review_cycle: annual
+document_type: protocol
+role: cfo
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Accounting Policies

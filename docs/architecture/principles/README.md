@@ -27,5 +27,5 @@ Design principles that guide every architectural decision in this repo. These si
 ## Related
 
 - [`../decisions/`](../decisions/) — ADR register (21 ADRs)
-- [`../system-overview.md`](../system-overview.md) — substrate architecture
+- [`../system-overview.md`](../narratives/system-overview.md) — substrate architecture
 - [`../../overview/README.md`](../../overview/README.md) — repo overview

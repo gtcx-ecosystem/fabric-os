@@ -17,7 +17,7 @@ autonomy_level: permissioned
 
 **Scope:** All GTCX production services deployed to frontier regions  
 **Status:** v0.1.0 implemented and integrated into compliance-gateway  
-**Related:** [Resilience Framework](../specs/resilience-framework.md), [Replay Guard](../operations/runbooks/replay-guard-failure.md), [`platform/tools/low-bandwidth`](../../platform/tools/low-bandwidth/)
+**Related:** [Resilience Framework](../specs/resilience-framework.md), [Replay Guard](../operations/runbooks/sre/replay-guard-failure.md), [`platform/tools/low-bandwidth`](../../platform/tools/low-bandwidth/)
 
 ---
 

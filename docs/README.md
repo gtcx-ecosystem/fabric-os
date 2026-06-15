@@ -43,8 +43,8 @@ Seven-hub layout (Protocol 29/30). **Path contract:** [`config/sor-map.json`](..
 ## 0. Start Here
 
 - [Documentation Governance](governance/documentation-deviations.md) — Repo-local documentation rules and approved taxonomy deviations
-- [Orientation](agents/onboarding/orientation.md) — **canonical onboarding entry point** (other onboarding files are deprecated; see [agents/onboarding/README.md](agents/onboarding/README.md))
-- [Agent Safety Rules](agents/workflows/agent-safety-rules.md) — Three-tier authority structure
+- [Orientation](./operations/agents/onboarding/orientation.md) — **canonical onboarding entry point** (other onboarding files are deprecated; see [agents/onboarding/README.md](./operations/agents/onboarding/README.md))
+- [Agent Safety Rules](./operations/agents/workflows/agent-safety-rules.md) — Three-tier authority structure
 
 ---
 
@@ -85,9 +85,9 @@ Seven-hub layout (Protocol 29/30). **Path contract:** [`config/sor-map.json`](..
 
 Other:
 
-- [Sprint: Production Readiness](agile/sprints/sprint-2026-05-production-readiness.md) — May 2026 production readiness sprint
-- [Executive Summary](agile/executive-summary.md) — High-level project status
-- [Priority Framework](agile/priority-framework.md) — Task prioritization methodology
+- [Sprint: Production Readiness](./roadmap/agile/sprints/sprint-2026-05-production-readiness.md) — May 2026 production readiness sprint
+- [Executive Summary](./roadmap/agile/planning/backlog/executive-summary.md) — High-level project status
+- [Priority Framework](./roadmap/agile/planning/backlog/priority-framework.md) — Task prioritization methodology
 
 > Files under `agile/` named `phased-roadmap.md`, `sprint-roadmap.md`,
 > `execution-roadmap-2026-05-22.md`, `roadmap-2026-05-25.md`,
@@ -99,31 +99,31 @@ Other:
 
 ## 3. Architecture
 
-- [System Overview](architecture/system-overview.md) — Three-layer stack, deployment model, trust zones
-- [Infrastructure Architecture](architecture/infrastructure-architecture-overview.md) — 4-tier deployment, K8s topology, edge mesh
-- [Infrastructure Overview](architecture/infrastructure-overview.md) — Same code everywhere, config differs
-- [Trust Model](architecture/trust-model.md) — Zero-trust boundaries, Byzantine fault tolerance
-- [Network Architecture](architecture/network-architecture.md) — Topology, mesh resilience, peer discovery
-- [Offline Architecture](architecture/offline-architecture.md) — Offline-first design, CRDT sync
-- [Migrations Overview](architecture/migrations-overview.md) — MABA/KORA/AMANI data transformation stack
-- [K8s Probes Rationale](architecture/k8s-probes-rationale.md) — Liveness, readiness, and startup probe design
+- [System Overview](./architecture/narratives/system-overview.md) — Three-layer stack, deployment model, trust zones
+- [Infrastructure Architecture](./architecture/narratives/infrastructure-architecture-overview.md) — 4-tier deployment, K8s topology, edge mesh
+- [Infrastructure Overview](./architecture/narratives/infrastructure-overview.md) — Same code everywhere, config differs
+- [Trust Model](./architecture/narratives/trust-model.md) — Zero-trust boundaries, Byzantine fault tolerance
+- [Network Architecture](./architecture/narratives/network-architecture.md) — Topology, mesh resilience, peer discovery
+- [Offline Architecture](./architecture/narratives/offline-architecture.md) — Offline-first design, CRDT sync
+- [Migrations Overview](./architecture/narratives/migrations-overview.md) — MABA/KORA/AMANI data transformation stack
+- [K8s Probes Rationale](./architecture/narratives/k8s-probes-rationale.md) — Liveness, readiness, and startup probe design
 
 ---
 
 ## 4. Decisions (ADRs)
 
-- [ADR-001](architecture/decisions/ADR-001-monorepo-structure.md) — Monorepo structure
-- [ADR-002](architecture/decisions/ADR-002-commodity-agnostic-design.md) — Commodity-agnostic design
-- [ADR-003](architecture/decisions/ADR-003-ai-native-architecture.md) — AI-native architecture
-- [ADR-004](architecture/decisions/ADR-004-offline-first-mobile.md) — Offline-first mobile
-- [ADR-005](architecture/decisions/ADR-005-jurisdiction-plugins.md) — Jurisdiction plugins
-- [ADR-006](architecture/decisions/ADR-006-package-boundaries.md) — Package boundaries
-- [ADR-007](architecture/decisions/ADR-007-kustomize-over-helm.md) — Kustomize over Helm
-- [ADR-008](architecture/decisions/ADR-008-dual-database-architecture.md) — Dual database architecture
-- [ADR-011](architecture/decisions/ADR-011-connectivity-profiles.md) — Connectivity profiles
-- [ADR-013 mTLS Service Mesh](architecture/decisions/ADR-013-mtls-service-mesh.md) — mTLS service mesh decision
-- [ADR-009 Error Taxonomy](architecture/decisions/ADR-009-error-taxonomy.md) — Standardized error classification
-- [ADR-010 In-Memory Stub Guards](architecture/decisions/ADR-010-in-memory-stub-guards.md) — Test double safety boundaries
+- [ADR-001](./architecture/decisions/batch-a/ADR-001-monorepo-structure.md) — Monorepo structure
+- [ADR-002](./architecture/decisions/batch-a/ADR-002-commodity-agnostic-design.md) — Commodity-agnostic design
+- [ADR-003](./architecture/decisions/batch-a/ADR-003-ai-native-architecture.md) — AI-native architecture
+- [ADR-004](./architecture/decisions/batch-a/ADR-004-offline-first-mobile.md) — Offline-first mobile
+- [ADR-005](./architecture/decisions/batch-a/ADR-005-jurisdiction-plugins.md) — Jurisdiction plugins
+- [ADR-006](./architecture/decisions/batch-a/ADR-006-package-boundaries.md) — Package boundaries
+- [ADR-007](./architecture/decisions/batch-a/ADR-007-kustomize-over-helm.md) — Kustomize over Helm
+- [ADR-008](./architecture/decisions/batch-a/ADR-008-dual-database-architecture.md) — Dual database architecture
+- [ADR-011](./architecture/decisions/batch-a/ADR-011-connectivity-profiles.md) — Connectivity profiles
+- [ADR-013 mTLS Service Mesh](./architecture/decisions/batch-a/ADR-013-mtls-service-mesh.md) — mTLS service mesh decision
+- [ADR-009 Error Taxonomy](./architecture/decisions/batch-a/ADR-009-error-taxonomy.md) — Standardized error classification
+- [ADR-010 In-Memory Stub Guards](./architecture/decisions/batch-a/ADR-010-in-memory-stub-guards.md) — Test double safety boundaries
 - [ADR Guide](architecture/decisions/adr-guide.md) — How to write an ADR
 - [ADR Template](architecture/decisions/adr-template.md) — Blank ADR scaffold
 
@@ -152,30 +152,30 @@ Other:
 
 ## 6. Operations (Runbooks)
 
-- [Deploy](operations/runbooks/deploy.md) — Canary deployment, approval gates, rollback
-- [Deployment Runbook](operations/runbooks/deployment-runbook.md) — Step-by-step deployment procedure
-- [Migrate](operations/runbooks/migrate.md) — Database migration procedures
-- [Release](operations/runbooks/release.md) — Release gate and evidence
-- [Release Evidence](operations/runbooks/release-evidence.md) — Release evidence collection
-- [Rollback Evidence](operations/runbooks/rollback-evidence.md) — Rollback evidence collection
-- [Disaster Recovery](operations/runbooks/disaster-recovery.md) — DR failover and restore
-- [Incident Response](operations/runbooks/incident-response.md) — Incident handling procedure
-- [Monitoring](operations/runbooks/monitoring.md) — Observability and alerting
-- [Database Failover](operations/runbooks/database-failover.md) — Database failover procedure
-- [Automated Rollback](operations/runbooks/automated-rollback.md) — Automatic rollback triggers and flow
-- [Terraform State Migration](operations/runbooks/terraform-state-migration.md) — Terraform state move procedure
-- [Quality Runbook](operations/runbooks/quality-runbook.md) — CI triage order
-- [Production Store Integration](operations/runbooks/production-store-integration.md) — Store integration procedure
-- [Replay Guard Failure](operations/runbooks/replay-guard-failure.md) — Replay protection failure response
-- [Fine-Tune Workflow Enablement](operations/runbooks/fine-tune-workflow-enablement.md) — ML fine-tune workflow setup
-- [Fine-Tune Workflow Operations](operations/runbooks/fine-tune-workflow-operations.md) — ML fine-tune workflow day-2 ops
-- [Intelligence Evidence](operations/runbooks/intelligence-evidence.md) — AI/ML evidence collection
-- [Intelligence Error Rate](operations/runbooks/intelligence-error-rate.md) — AI/ML error rate monitoring
-- [Latency SLO Breach](operations/runbooks/latency-slo-breach.md) — Latency SLO violation response
-- [AGX Error Budget](operations/runbooks/agx-error-budget.md) — AGX error budget tracking
-- [ANISA Error Budget](operations/runbooks/anisa-error-budget.md) — ANISA error budget tracking
-- [Protocols Error Budget](operations/runbooks/protocols-error-budget.md) — Protocols error budget tracking
-- [Runbook Template](operations/runbooks/runbook-template.md) — Blank runbook scaffold
+- [Deploy](./operations/runbooks/audit-dr/deploy.md) — Canary deployment, approval gates, rollback
+- [Deployment Runbook](./operations/runbooks/audit-dr/deployment-runbook.md) — Step-by-step deployment procedure
+- [Migrate](./operations/runbooks/sre/migrate.md) — Database migration procedures
+- [Release](./operations/runbooks/sre/release.md) — Release gate and evidence
+- [Release Evidence](./operations/runbooks/sre/release-evidence.md) — Release evidence collection
+- [Rollback Evidence](./operations/runbooks/incident/rollback-evidence.md) — Rollback evidence collection
+- [Disaster Recovery](./operations/runbooks/deploy/disaster-recovery.md) — DR failover and restore
+- [Incident Response](./operations/runbooks/deploy/incident-response.md) — Incident handling procedure
+- [Monitoring](./operations/runbooks/sre/monitoring.md) — Observability and alerting
+- [Database Failover](./operations/runbooks/audit-dr/database-failover.md) — Database failover procedure
+- [Automated Rollback](./operations/runbooks/audit-dr/automated-rollback.md) — Automatic rollback triggers and flow
+- [Terraform State Migration](./operations/runbooks/incident/terraform-state-migration.md) — Terraform state move procedure
+- [Quality Runbook](./operations/runbooks/sre/quality-runbook.md) — CI triage order
+- [Production Store Integration](./operations/runbooks/sre/production-store-integration.md) — Store integration procedure
+- [Replay Guard Failure](./operations/runbooks/sre/replay-guard-failure.md) — Replay protection failure response
+- [Fine-Tune Workflow Enablement](./operations/runbooks/deploy/fine-tune-workflow-enablement.md) — ML fine-tune workflow setup
+- [Fine-Tune Workflow Operations](./operations/runbooks/deploy/fine-tune-workflow-operations.md) — ML fine-tune workflow day-2 ops
+- [Intelligence Evidence](./operations/runbooks/deploy/intelligence-evidence.md) — AI/ML evidence collection
+- [Intelligence Error Rate](./operations/runbooks/deploy/intelligence-error-rate.md) — AI/ML error rate monitoring
+- [Latency SLO Breach](./operations/runbooks/sre/latency-slo-breach.md) — Latency SLO violation response
+- [AGX Error Budget](./operations/runbooks/audit-dr/agx-error-budget.md) — AGX error budget tracking
+- [ANISA Error Budget](./operations/runbooks/audit-dr/anisa-error-budget.md) — ANISA error budget tracking
+- [Protocols Error Budget](./operations/runbooks/sre/protocols-error-budget.md) — Protocols error budget tracking
+- [Runbook Template](./operations/runbooks/incident/runbook-template.md) — Blank runbook scaffold
 
 ---
 
@@ -265,8 +265,8 @@ Other:
 - [QA Process](operations/qa/qa-process.md) — Quality assurance workflow
 - [Release Checklist](operations/release/release-checklist.md) — Pre-release verification steps
 - [Legal Sign-off](operations/release/legal-sign-off.md) — Legal review gate
-- [Analytics Setup](operations/analytics-setup.md) — Analytics instrumentation
-- [Terraform History Purge Runbook](operations/runbooks/terraform-history-purge.md) — Terraform state history cleanup
+- [Analytics Setup](./operations/platform-services/analytics-setup.md) — Analytics instrumentation
+- [Terraform History Purge Runbook](./operations/runbooks/incident/terraform-history-purge.md) — Terraform state history cleanup
 
 ---
 
@@ -308,64 +308,64 @@ Other:
 
 ### Onboarding
 
-- [Orientation](agents/onboarding/orientation.md) — Repo map, environment topology, key commands
-- [Developer Quickstart](agents/onboarding/developer-quickstart.md) — Fast-track setup guide
-- [Developer Setup](agents/onboarding/developer-setup.md) — Full development environment setup
-- [Agent Guide](agents/onboarding/agent-guide.md) — Agent behavior and conventions
-- [Agentic Integration](agents/onboarding/agentic-integration.md) — Agentic system integration patterns
-- [Context Recovery](agents/onboarding/context-recovery.md) — Session context restoration
-- [Contributor Guide](agents/onboarding/contributor-guide.md) — Contribution workflow
-- [Project Adaptation Guide](agents/onboarding/project-adaptation-guide.md) — Adapting to project conventions
-- [Quick Reference](agents/onboarding/quick-reference.md) — Command and path cheat sheet
-- [Service Overview](agents/onboarding/service-overview.md) — Service catalog and ownership
+- [Orientation](./operations/agents/onboarding/orientation.md) — Repo map, environment topology, key commands
+- [Developer Quickstart](./operations/agents/onboarding/developer-quickstart.md) — Fast-track setup guide
+- [Developer Setup](./operations/agents/onboarding/developer-setup.md) — Full development environment setup
+- [Agent Guide](./operations/agents/onboarding/agent-guide.md) — Agent behavior and conventions
+- [Agentic Integration](./operations/agents/onboarding/agentic-integration.md) — Agentic system integration patterns
+- [Context Recovery](./operations/agents/onboarding/context-recovery.md) — Session context restoration
+- [Contributor Guide](./operations/agents/onboarding/contributor-guide.md) — Contribution workflow
+- [Project Adaptation Guide](./operations/agents/onboarding/project-adaptation-guide.md) — Adapting to project conventions
+- [Quick Reference](./operations/agents/onboarding/quick-reference.md) — Command and path cheat sheet
+- [Service Overview](./operations/agents/onboarding/service-overview.md) — Service catalog and ownership
 
 ### Roles
 
-- [Bureau Chiefs](agents/roles/bureau-chiefs.md) — Bureau chief responsibilities
-- [Contributors](agents/roles/contributors.md) — Contributor role definition
-- [Database Platform Engineer](agents/roles/database-platform-engineer.md) — Database engineering role
-- [DevOps SRE Engineer](agents/roles/devops-sre-engineer.md) — DevOps/SRE role
-- [Editor in Chief](agents/roles/editor-in-chief.md) — Editorial oversight role
-- [Infrastructure Security Engineer](agents/roles/infrastructure-security-engineer.md) — Security engineering role
-- [Platform Engineer](agents/roles/platform-engineer.md) — Platform engineering role
-- [Role Identification Guide](agents/roles/role-identification-guide.md) — How to identify your role
-- [Role Template](agents/roles/role-template.md) — Blank role definition scaffold
+- [Bureau Chiefs](./operations/agents/roles/bureau-chiefs.md) — Bureau chief responsibilities
+- [Contributors](./operations/agents/roles/contributors.md) — Contributor role definition
+- [Database Platform Engineer](./operations/agents/roles/database-platform-engineer.md) — Database engineering role
+- [DevOps SRE Engineer](./operations/agents/roles/devops-sre-engineer.md) — DevOps/SRE role
+- [Editor in Chief](./operations/agents/roles/editor-in-chief.md) — Editorial oversight role
+- [Infrastructure Security Engineer](./operations/agents/roles/infrastructure-security-engineer.md) — Security engineering role
+- [Platform Engineer](./operations/agents/roles/platform-engineer.md) — Platform engineering role
+- [Role Identification Guide](./operations/agents/roles/role-identification-guide.md) — How to identify your role
+- [Role Template](./operations/agents/roles/role-template.md) — Blank role definition scaffold
 
 ### Workflows
 
-- [Agent Safety Rules](agents/workflows/agent-safety-rules.md) — Three-tier authority structure
-- [Agent Checklist](agents/workflows/agent-checklist.md) — Pre-flight checklist
-- [Approval Flows](agents/workflows/approval-flows.md) — Change approval routing
-- [Add Package](agents/workflows/add-package.md) — New package addition workflow
-- [Add Secondary Component](agents/workflows/add-secondary-component.md) — Secondary component workflow
-- [Cut Release](agents/workflows/cut-release.md) — Release cut procedure
-- [Investigate CI Failure](agents/workflows/investigate-ci-failure.md) — CI failure triage
-- [Story Lifecycle](agents/workflows/story-lifecycle.md) — Story from creation to done
-- [Write ADR](agents/workflows/write-adr.md) — ADR authoring workflow
+- [Agent Safety Rules](./operations/agents/workflows/agent-safety-rules.md) — Three-tier authority structure
+- [Agent Checklist](./operations/agents/workflows/agent-checklist.md) — Pre-flight checklist
+- [Approval Flows](./operations/agents/workflows/approval-flows.md) — Change approval routing
+- [Add Package](./operations/agents/workflows/add-package.md) — New package addition workflow
+- [Add Secondary Component](./operations/agents/workflows/add-secondary-component.md) — Secondary component workflow
+- [Cut Release](./operations/agents/workflows/cut-release.md) — Release cut procedure
+- [Investigate CI Failure](./operations/agents/workflows/investigate-ci-failure.md) — CI failure triage
+- [Story Lifecycle](./operations/agents/workflows/story-lifecycle.md) — Story from creation to done
+- [Write ADR](./operations/agents/workflows/write-adr.md) — ADR authoring workflow
 
 ### Governance
 
-- [Conflict of Interest](agents/governance/conflict-of-interest.md) — COI disclosure policy
-- [Editorial Independence](agents/governance/editorial-independence.md) — Editorial autonomy policy
+- [Conflict of Interest](./operations/agents/governance/conflict-of-interest.md) — COI disclosure policy
+- [Editorial Independence](./operations/agents/governance/editorial-independence.md) — Editorial autonomy policy
 
 ### Structure
 
-- [Tech Team](agents/structure/tech-team.md) — Team structure and ownership
+- [Tech Team](./operations/agents/structure/tech-team.md) — Team structure and ownership
 
 ---
 
 ## 13. Agile
 
-- [Backlog](agile/backlog.md) — Product backlog
-- [Feature Backlog](agile/feature-backlog.md) — Feature-level backlog
-- [Epic](agile/epic.md) — Epic definitions
-- [Sprint Planning](agile/sprint-planning.md) — Sprint planning process
-- [Definition of Done](agile/definition-of-done.md) — Done criteria
-- [Definition of Ready](agile/definition-of-ready.md) — Ready criteria
-- [QA Test Plan](agile/qa-test-plan.md) — QA testing strategy
-- [UAT Test Plan](agile/uat-test-plan.md) — User acceptance testing
-- [Retrospective](agile/retrospective.md) — Sprint retrospective template
-- [Doc Hygiene Runbook](agile/doc-hygiene-runbook.md) — Documentation maintenance procedure
+- [Backlog](./roadmap/agile/planning/backlog/backlog.md) — Product backlog
+- [Feature Backlog](./roadmap/agile/planning/backlog/feature-backlog.md) — Feature-level backlog
+- [Epic](./roadmap/agile/planning/backlog/epic.md) — Epic definitions
+- [Sprint Planning](./roadmap/agile/planning/backlog/sprint-planning.md) — Sprint planning process
+- [Definition of Done](./roadmap/agile/planning/backlog/definition-of-done.md) — Done criteria
+- [Definition of Ready](./roadmap/agile/planning/backlog/definition-of-ready.md) — Ready criteria
+- [QA Test Plan](./roadmap/agile/planning/backlog/qa-test-plan.md) — QA testing strategy
+- [UAT Test Plan](./roadmap/agile/planning/backlog/uat-test-plan.md) — User acceptance testing
+- [Retrospective](./roadmap/agile/planning/backlog/retrospective.md) — Sprint retrospective template
+- [Doc Hygiene Runbook](./roadmap/agile/planning/backlog/doc-hygiene-runbook.md) — Documentation maintenance procedure
 
 ---
 
@@ -380,9 +380,9 @@ Other:
 
 ## 15. External
 
-- [Governance](gitbook/governance.md) — Public governance model
-- [Integration Guide](gitbook/integration-guide.md) — Third-party integration guide
-- [Quickstart](gitbook/quickstart.md) — External developer quickstart
+- [Governance](./gitbook/publish/governance.md) — Public governance model
+- [Integration Guide](./gitbook/publish/integration-guide.md) — Third-party integration guide
+- [Quickstart](./gitbook/publish/quickstart.md) — External developer quickstart
 
 ---
 
@@ -408,8 +408,8 @@ Other:
 ### Research
 
 - [Alternative Network Concepts](reference/alternative-network-concepts.md) — Alternative networking approaches
-- [Competitors](reference/competitors.md) — Competitive landscape analysis
-- [Industry Landscape](reference/industry-landscape.md) — Market and industry overview
+- [Competitors](./reference/guides/market/competitors.md) — Competitive landscape analysis
+- [Industry Landscape](./reference/guides/market/industry-landscape.md) — Market and industry overview
 
 ---
 
@@ -431,24 +431,24 @@ Other:
 
 ## How to Find Something
 
-| I need to...                   | Go to                                                                                                                                                            |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Set up my dev environment      | [Developer Quickstart](agents/onboarding/developer-quickstart.md)                                                                                                |
-| Understand the system          | [System Overview](architecture/system-overview.md)                                                                                                               |
-| Deploy to production           | [Deploy Runbook](operations/runbooks/deploy.md)                                                                                                                  |
-| Handle an incident             | [Incident Response](operations/runbooks/incident-response.md)                                                                                                    |
-| Understand a past decision     | [Decisions (ADRs)](#4-decisions-adrs)                                                                                                                            |
-| Review security posture        | [Security Framework](../ops/security/narrative/security-framework.md)                                                                                            |
-| Check compliance status        | [Controls Matrix](../ops/compliance/narrative/controls-matrix.md)                                                                                                |
-| Write documentation            | [Docs Writing Guide](reference/docs-writing-guide.md)                                                                                                            |
-| Add a new package              | [Add Package Workflow](agents/workflows/add-package.md)                                                                                                          |
-| Cut a release                  | [Cut Release Workflow](agents/workflows/cut-release.md)                                                                                                          |
-| Understand the tech stack      | [Tech Stack](engineering/tech-stack/tech-stack.md)                                                                                                               |
-| Review threat model            | [Threat Model](../ops/security/narrative/threat-model.md)                                                                                                        |
-| Check audit history            | [Assessments & Audit](#11-assessments--audit)                                                                                                                    |
-| Understand agent roles         | [Role Identification Guide](agents/roles/role-identification-guide.md)                                                                                           |
-| Check SLOs                     | [Performance SLOs](reference/performance-slos.md)                                                                                                                |
-| Prepare for sandbox submission | [Sandbox Application](#sandbox-application)                                                                                                                      |
-| Review CI/CD pipeline          | [CI/CD](operations/ci-cd/ci-cd.md)                                                                                                                               |
-| Understand data governance     | [Data Governance](specs/data-governance.md)                                                                                                                      |
-| Review error budgets           | [AGX](operations/runbooks/agx-error-budget.md) / [ANISA](operations/runbooks/anisa-error-budget.md) / [Protocols](operations/runbooks/protocols-error-budget.md) |
+| I need to...                   | Go to                                                                                                                                                                                        |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Set up my dev environment      | [Developer Quickstart](./operations/agents/onboarding/developer-quickstart.md)                                                                                                               |
+| Understand the system          | [System Overview](./architecture/narratives/system-overview.md)                                                                                                                              |
+| Deploy to production           | [Deploy Runbook](./operations/runbooks/audit-dr/deploy.md)                                                                                                                                   |
+| Handle an incident             | [Incident Response](./operations/runbooks/deploy/incident-response.md)                                                                                                                       |
+| Understand a past decision     | [Decisions (ADRs)](#4-decisions-adrs)                                                                                                                                                        |
+| Review security posture        | [Security Framework](../ops/security/narrative/security-framework.md)                                                                                                                        |
+| Check compliance status        | [Controls Matrix](../ops/compliance/narrative/controls-matrix.md)                                                                                                                            |
+| Write documentation            | [Docs Writing Guide](reference/docs-writing-guide.md)                                                                                                                                        |
+| Add a new package              | [Add Package Workflow](./operations/agents/workflows/add-package.md)                                                                                                                         |
+| Cut a release                  | [Cut Release Workflow](./operations/agents/workflows/cut-release.md)                                                                                                                         |
+| Understand the tech stack      | [Tech Stack](engineering/tech-stack/tech-stack.md)                                                                                                                                           |
+| Review threat model            | [Threat Model](../ops/security/narrative/threat-model.md)                                                                                                                                    |
+| Check audit history            | [Assessments & Audit](#11-assessments--audit)                                                                                                                                                |
+| Understand agent roles         | [Role Identification Guide](./operations/agents/roles/role-identification-guide.md)                                                                                                          |
+| Check SLOs                     | [Performance SLOs](reference/performance-slos.md)                                                                                                                                            |
+| Prepare for sandbox submission | [Sandbox Application](#sandbox-application)                                                                                                                                                  |
+| Review CI/CD pipeline          | [CI/CD](operations/ci-cd/ci-cd.md)                                                                                                                                                           |
+| Understand data governance     | [Data Governance](specs/data-governance.md)                                                                                                                                                  |
+| Review error budgets           | [AGX](./operations/runbooks/audit-dr/agx-error-budget.md) / [ANISA](./operations/runbooks/audit-dr/anisa-error-budget.md) / [Protocols](./operations/runbooks/sre/protocols-error-budget.md) |

@@ -245,9 +245,9 @@ Scheduled:
 
 ## Documentation References
 
-- [system-overview.md](../architecture/system-overview.md) — full infrastructure map
-- [trust-model.md](../architecture/trust-model.md) — zero-trust security zones
-- [network-architecture.md](../architecture/network-architecture.md) — network topology and PANX transport
-- [deploy runbook](../operations/runbooks/deploy.md) — deployment procedures
-- [migrate runbook](../operations/runbooks/migrate.md) — migration discipline
+- [system-overview.md](../architecture/narratives/system-overview.md) — full infrastructure map
+- [trust-model.md](../architecture/narratives/trust-model.md) — zero-trust security zones
+- [network-architecture.md](../architecture/narratives/network-architecture.md) — network topology and PANX transport
+- [deploy runbook](../operations/runbooks/audit-dr/deploy.md) — deployment procedures
+- [migrate runbook](../operations/runbooks/sre/migrate.md) — migration discipline
 - [ci-cd.md](../operations/ci-cd/ci-cd.md) — CI gates and pipeline

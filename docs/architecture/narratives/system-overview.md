@@ -210,7 +210,7 @@ pnpm lint && pnpm typecheck
 
 ## Reference
 
-- [`01-docs/01-agents/orientation.md`](../agents/onboarding/orientation.md) — session-start reading order
-- [`01-docs/01-agents/safety-rules.md`](../agents/workflows/agent-safety-rules.md) — authority tiers
-- [`01-docs/4-operations/runbooks/deploy.md`](../operations/runbooks/deploy.md) — deploy process
-- [`01-docs/4-operations/runbooks/migrate.md`](../operations/runbooks/migrate.md) — migration discipline
+- [`01-docs/01-agents/orientation.md`](../../operations/agents/onboarding/orientation.md) — session-start reading order
+- [`01-docs/01-agents/safety-rules.md`](../../operations/agents/workflows/agent-safety-rules.md) — authority tiers
+- [`01-docs/4-operations/runbooks/deploy.md`](../../operations/runbooks/audit-dr/deploy.md) — deploy process
+- [`01-docs/4-operations/runbooks/migrate.md`](../../operations/runbooks/sre/migrate.md) — migration discipline

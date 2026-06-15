@@ -18,11 +18,11 @@ External-facing documentation published to GitBook. This section contains the pu
 
 ## Contents
 
-| Document                                     | Description                                                      | Audience                   |
-| -------------------------------------------- | ---------------------------------------------------------------- | -------------------------- |
-| [quickstart.md](quickstart.md)               | Get started with the GTCX Protocol SDK in under 10 minutes       | External developers        |
-| [integration-guide.md](integration-guide.md) | Full integration walkthrough — identity, provenance, settlement  | Platform integrators       |
-| [governance.md](governance.md)               | Network governance, validator participation, protocol versioning | Institutional participants |
+| Document                                               | Description                                                      | Audience                   |
+| ------------------------------------------------------ | ---------------------------------------------------------------- | -------------------------- |
+| [quickstart.md](./publish/quickstart.md)               | Get started with the GTCX Protocol SDK in under 10 minutes       | External developers        |
+| [integration-guide.md](./publish/integration-guide.md) | Full integration walkthrough — identity, provenance, settlement  | Platform integrators       |
+| [governance.md](./publish/governance.md)               | Network governance, validator participation, protocol versioning | Institutional participants |
 
 ## Publishing
 

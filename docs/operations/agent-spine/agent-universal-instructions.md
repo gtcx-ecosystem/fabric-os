@@ -176,7 +176,7 @@ After substantive work (not at cold session start), close with this frame:
 
 ### Human gates — navigation (mandatory)
 
-Read [`human-gate-navigation.md`](../human-gate-navigation.md) before treating any gate as repo-wide **blocked**.
+Read [`human-gate-navigation.md`](../../human-gate-navigation.md) before treating any gate as repo-wide **blocked**.
 
 **EXT-INF-002 / H-05 / INT-S12-01 (pen-test SOW):**
 

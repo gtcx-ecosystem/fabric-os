@@ -42,10 +42,10 @@ The compliance-gateway HTTP API is the substrate's primary surface for consumers
 
 Two distinct auth modes coexist on the gateway:
 
-| Mode            | Where used                                                       | Headers                                                                                                                                                     |
-| --------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Bearer**      | All `/v1/*` endpoints + `/health` (unauth) + `/metrics` (unauth) | `Authorization: Bearer <token>`                                                                                                                             |
-| **Signed-edge** | `/audit/bundles` (mobile contract)                               | 9-field signed envelope per [`01-docs/04-ops/runbooks/audit-signing-key-rotation.md`](../operations/runbooks/audit-signing-key-rotation.md) §canonical form |
+| Mode            | Where used                                                       | Headers                                                                                                                                                              |
+| --------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Bearer**      | All `/v1/*` endpoints + `/health` (unauth) + `/metrics` (unauth) | `Authorization: Bearer <token>`                                                                                                                                      |
+| **Signed-edge** | `/audit/bundles` (mobile contract)                               | 9-field signed envelope per [`01-docs/04-ops/runbooks/audit-signing-key-rotation.md`](../operations/runbooks/audit-dr/audit-signing-key-rotation.md) §canonical form |
 
 Bearer-token permissions follow the principal model:
 
@@ -93,7 +93,7 @@ The canonical OpenAPI spec carries version metadata under `info.version` in `ope
 
 The [`openapi.yaml`](./openapi.yaml) covers all 12 documented endpoints (full request / response / error schemas), including the two mobile-contract endpoints: `/audit/bundles` (PR [#56](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/56), `feat/audit-bundles-verifier`) and `/audit/query` (PR [#58](https://github.com/gtcx-ecosystem/gtcx-infrastructure/pull/58), `feat/audit-query`). Both are documented even though their implementations live on feature branches; with the feature flags off (`AUDIT_BUNDLES_ENABLED`, `AUDIT_QUERY_ENABLED`) the endpoints return 404 (default route), and the spec documents the active-flag behavior.
 
-The pluggable store architecture backing `/audit/query` is documented in [ADR-022](../architecture/decisions/ADR-022-pluggable-audit-query-store.md).
+The pluggable store architecture backing `/audit/query` is documented in [ADR-022](../architecture/decisions/batch-b/ADR-022-pluggable-audit-query-store.md).
 
 ## What's NOT in this API
 
@@ -107,8 +107,8 @@ The gateway intentionally does **not** expose:
 ## Related documents
 
 - [`openapi.yaml`](./openapi.yaml) — canonical spec
-- [`../architecture/system-overview.md`](../architecture/system-overview.md) — system architecture
-- [`../architecture/compliance-substrate-deep-dive.md`](../architecture/compliance-substrate-deep-dive.md) — long-form architecture + failure modes
-- [`../operations/runbooks/deploy.md`](../operations/runbooks/deploy.md) — deployment runbook
+- [`../architecture/system-overview.md`](../architecture/narratives/system-overview.md) — system architecture
+- [`../architecture/compliance-substrate-deep-dive.md`](../architecture/narratives/compliance-substrate-deep-dive.md) — long-form architecture + failure modes
+- [`../operations/runbooks/deploy.md`](../operations/runbooks/audit-dr/deploy.md) — deployment runbook
 - [`../ops/security/narrative/threat-model-2026-05.md`](../../ops/security/narrative/threat-model-2026-05.md) — STRIDE coverage of API surface
 - Source: [`platform/tools/compliance-gateway/src/server.mjs`](../../platform/tools/compliance-gateway/src/server.mjs)

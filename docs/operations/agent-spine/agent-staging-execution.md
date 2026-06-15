@@ -33,7 +33,7 @@ Paths: `04-deploy/terraform/modules/secrets/terminal-os.tf`, overlay under `04-d
 
 ## compliance-os (Hub #17)
 
-Follow [staging-compliance-os-eso-bootstrap.md](./staging-compliance-os-eso-bootstrap.md) **by executing**, not forwarding:
+Follow [staging-compliance-os-eso-bootstrap.md](../core-ops/batch-b/staging-compliance-os-eso-bootstrap.md) **by executing**, not forwarding:
 
 ```bash
 ./03-platform/scripts/staging/populate-compliance-os-staging-sm.sh

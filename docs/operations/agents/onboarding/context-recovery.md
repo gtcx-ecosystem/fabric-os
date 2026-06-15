@@ -145,5 +145,5 @@ When any of these appear: run Quick Recovery before continuing.
 
 - [`orientation.md`](./orientation.md) — codebase map and session-start reading order
 - [`../4-workflows/safety-rules.md`](../workflows/agent-safety-rules.md) — what requires human approval
-- [`../../architecture/decisions/`](../../architecture/decisions/) — all ADRs
+- [`../../architecture/decisions/`](../../../architecture/decisions/README.md) — all ADRs
 - Session transcripts are not canonical repo documentation; recover context from `01-docs/README.md`, `CLAUDE.md`, and recent git history instead.

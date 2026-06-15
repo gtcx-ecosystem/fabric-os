@@ -78,7 +78,7 @@ terraform init
 terraform plan
 ```
 
-No automated apply runs without human review. See [ci-cd.md](../../operations/ci-cd/ci-cd.md) for the full approval gate.
+No automated apply runs without human review. See [ci-cd.md](../../ci-cd/ci-cd.md) for the full approval gate.
 
 ---
 
@@ -150,9 +150,9 @@ Two databases are a hard constraint. They are never merged:
 
 - [service-overview.md](service-overview.md) — what this repo manages and why
 - [developer-setup.md](developer-setup.md) — full prerequisites and environment setup
-- [system-overview.md](../../architecture/system-overview.md) — complete infrastructure architecture
-- [deploy runbook](../../operations/runbooks/deploy.md) — step-by-step deployment
-- [migrate runbook](../../operations/runbooks/migrate.md) — migration discipline
+- [system-overview.md](../../../architecture/narratives/system-overview.md) — complete infrastructure architecture
+- [deploy runbook](../../runbooks/audit-dr/deploy.md) — step-by-step deployment
+- [migrate runbook](../../runbooks/sre/migrate.md) — migration discipline
 - [safety-rules.md](../workflows/agent-safety-rules.md) — what requires human approval
 
 ---

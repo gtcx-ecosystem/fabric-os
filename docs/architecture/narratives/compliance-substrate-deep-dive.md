@@ -15,7 +15,7 @@ autonomy_level: permissioned
 
 # Compliance Substrate — Architecture Deep Dive
 
-The [docs-site architecture page](../gitbook/docs-site/architecture.md) is the one-pager. This is the long-form reference: failure modes, performance characteristics, scaling story, and the design choices that didn't fit on the one-pager. Read this when you need to operate, extend, or audit the substrate.
+The [docs-site architecture page](../../gitbook/docs-site/architecture.md) is the one-pager. This is the long-form reference: failure modes, performance characteristics, scaling story, and the design choices that didn't fit on the one-pager. Read this when you need to operate, extend, or audit the substrate.
 
 ## Three layers, four primitives
 
@@ -125,7 +125,7 @@ Measured on a `t3.medium` EKS node, single replica, mock LLM provider returning 
 | Audit event for query result |  0.5ms | 1.2ms | 2.1ms |
 | HTTP response serialization  |  0.2ms | 0.5ms | 0.9ms |
 
-LLM call dominates. Everything around it is sub-2ms at p99. The architectural conclusion: the LLM provider's latency is the SLI we tune for (per [SLO doc](../operations/slo-definitions.md) `sli-latency-compliance-gateway-p95` < 5000ms).
+LLM call dominates. Everything around it is sub-2ms at p99. The architectural conclusion: the LLM provider's latency is the SLI we tune for (per [SLO doc](../../operations/core-ops/batch-b/slo-definitions.md) `sli-latency-compliance-gateway-p95` < 5000ms).
 
 ## Layer 2 — Audit
 
@@ -280,10 +280,10 @@ If you find yourself wanting any of these, write the ADR explaining what the sub
 
 ## References
 
-- Diagram + contract: [`01-docs/gitbook/docs-site/architecture.md`](../gitbook/docs-site/architecture.md)
+- Diagram + contract: [`01-docs/gitbook/docs-site/architecture.md`](../../gitbook/docs-site/architecture.md)
 - ADR-014 NATS audit transport · ADR-015 per-tenant subject routing · ADR-016 fail-closed signing · ADR-017 adaptive policy · ADR-018 pen-test overlay · ADR-019 workspace discipline · ADR-020 coverage thresholds
 - [`ops/security/narrative/threat-model-2026-05.md`](../../ops/security/narrative/threat-model-2026-05.md) — STRIDE companion to this doc
-- [`01-docs/04-ops/slo-definitions.md`](../operations/slo-definitions.md) — SLIs/SLOs for each layer
+- [`01-docs/04-ops/slo-definitions.md`](../../operations/core-ops/batch-b/slo-definitions.md) — SLIs/SLOs for each layer
 - [`ops/compliance/narrative/dpia-2026-05.md`](../../ops/compliance/narrative/dpia-2026-05.md) — data-protection layer companion
 - [`audit/archive/legacy-docs-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) — substrate-as-shipped audit
 - [`audit/signal-scorecard.json`](../../audit/signal-scorecard.json) — SIGNAL agentic-maturity scorecard at 9.60/10

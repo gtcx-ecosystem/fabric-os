@@ -127,16 +127,16 @@ Mesh networking between nearby field sites enables peer-to-peer data sharing eve
 - [Security Policies](../../ops/security/narrative/security-policy.md) -- Security policy framework and standards
 - [Access Control](../../deploy/security/policies/access-control.md) -- Access control policies and role definitions
 - [Data Protection](../../ops/compliance/narrative/data-classification-policy.md) -- Data protection and encryption standards
-- [Incident Response](../operations/runbooks/incident-response.md) -- Security incident response procedures
+- [Incident Response](../../operations/runbooks/deploy/incident-response.md) -- Security incident response procedures
 - Edge Proxy Overview (`./edge-proxy-overview.md`) -- Edge proxy architecture for field connectivity
 - Compliance OS Overview (`./compliance-os-overview.md`) -- Compliance operating system and automation
 - [Migrations Overview](migrations-overview.md) -- Data and service migration strategies
 - Infrastructure Economics (`./infrastructure-economics.md`) -- Cost modeling and optimization
 - [Compliance Templates](../../ops/compliance/narrative/compliance-templates-overview.md) -- Compliance template engine overview
 - Storage as Infrastructure (`./storage-as-infrastructure.md`) -- Storage architecture and data persistence
-- [Resilience Framework](../specs/resilience-framework.md) -- SPOF analysis, recovery targets, degradation tiers, and chaos testing
-- [Testing Framework](../specs/testing-framework.md) -- Test strategy, coverage targets, and CI test gates
-- [Observability Framework](../specs/observability-framework.md) -- Metrics, logging, tracing, and alerting
-- [CI/CD Pipeline](../specs/cicd-pipeline.md) -- Pipeline stages, quality gates, and deployment strategy
-- [Scalability Framework](../specs/scalability-framework.md) -- Capacity planning, horizontal scaling, and load testing
-- [Data Governance](../specs/data-governance.md) -- Data classification, sovereignty, and retention policies
+- [Resilience Framework](../../specs/resilience-framework.md) -- SPOF analysis, recovery targets, degradation tiers, and chaos testing
+- [Testing Framework](../../specs/testing-framework.md) -- Test strategy, coverage targets, and CI test gates
+- [Observability Framework](../../specs/observability-framework.md) -- Metrics, logging, tracing, and alerting
+- [CI/CD Pipeline](../../specs/cicd-pipeline.md) -- Pipeline stages, quality gates, and deployment strategy
+- [Scalability Framework](../../specs/scalability-framework.md) -- Capacity planning, horizontal scaling, and load testing
+- [Data Governance](../../specs/data-governance.md) -- Data classification, sovereignty, and retention policies

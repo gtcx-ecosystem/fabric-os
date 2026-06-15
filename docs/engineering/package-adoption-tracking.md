@@ -1,15 +1,16 @@
 ---
 title: 'Cross-Repo Package Adoption Tracking'
-status: 'current'
-date: '2026-05-27'
-owner: 'frontier-infra-engineer'
-role: 'platform-engineer'
-tier: 'critical'
-tags: ['ecosystem', 'packages', 'tracking', 'm3']
-review_cycle: 'weekly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: frontier-infra-engineer
+tier: critical
+tags: [['ecosystem', 'packages', 'tracking', 'm3']]
+review_cycle: weekly
+document_type: architecture
+role: platform-engineer
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Cross-Repo Package Adoption Tracking

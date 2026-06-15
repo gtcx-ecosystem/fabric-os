@@ -1,15 +1,16 @@
 ---
-title: 'Quickstart'
-status: 'current'
-date: '2026-05-27'
-owner: 'frontier-infra-engineer'
-role: 'frontier-infra-engineer'
-tier: 'informational'
-tags: ['crypto', 'compliance', 'infrastructure', 'testing', 'api']
-review_cycle: 'monthly'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+title: Quickstart
+status: current
+date: 2026-05-27
+owner: frontier-infra-engineer
+tier: informational
+tags: [['crypto', 'compliance', 'infrastructure', 'testing', 'api']]
+review_cycle: monthly
+document_type: gitbook-chapter
+role: frontier-infra-engineer
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Quickstart

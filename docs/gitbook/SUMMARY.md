@@ -1,8 +1,12 @@
 ---
-title: GitBook summary
+title: 'GitBook summary'
 status: current
 date: 2026-06-12
 owner: fabric-os
+tier: operating
+tags: ['gitbook-chapter', 'documentation']
+review_cycle: on-change
+document_type: gitbook-chapter
 ---
 
 - [blog/README](blog/README.md)

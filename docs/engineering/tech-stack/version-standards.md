@@ -1,12 +1,13 @@
 ---
 title: 'Version Standards'
-status: 'current'
-date: '2026-05-28'
-owner: 'gtcx-infrastructure'
-role: 'platform-engineer'
-tier: 'standard'
-tags: ['documentation', 'engineering']
-review_cycle: 'on-change'
+status: current
+date: 2026-05-28
+owner: gtcx-infrastructure
+tier: standard
+tags: [['documentation', 'engineering']]
+review_cycle: on-change
+document_type: architecture
+role: platform-engineer
 ---
 
 # Version Standards

@@ -1,15 +1,16 @@
 ---
 title: 'terraform-aws-compliance-db — Dual-Database Pattern'
-status: 'draft'
-date: '2026-05-27'
-owner: 'platform-engineering'
-tier: 'standard'
-tags: ['docs-site', 'compliance-db', 'terraform', 'reference']
-review_cycle: 'on-change'
-role: 'protocol-architect'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: draft
+date: 2026-05-27
+owner: platform-engineering
+tier: standard
+tags: [['docs-site', 'compliance-db', 'terraform', 'reference']]
+review_cycle: on-change
+document_type: gitbook-chapter
+role: protocol-architect
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # `terraform-aws-compliance-db`

@@ -1,15 +1,16 @@
 ---
 title: 'Board Charter'
-status: 'current'
-date: '2026-05-27'
-owner: 'ceo'
-role: 'ceo'
-tier: 'critical'
-tags: ['governance', 'board', 'charter', 'king-iv', 'investment-grade']
-review_cycle: 'annual'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+status: current
+date: 2026-05-27
+owner: ceo
+tier: critical
+tags: [['governance', 'board', 'charter', 'king-iv', 'investment-grade']]
+review_cycle: annual
+document_type: protocol
+role: ceo
+agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
 trust_score: 60
-autonomy_level: 'permissioned'
+autonomy_level: permissioned
 ---
 
 # Board Charter

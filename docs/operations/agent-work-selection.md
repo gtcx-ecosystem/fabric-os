@@ -81,6 +81,7 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 | S4-06                     | README gaps (12 dirs) per repo-hygiene audit                            | P0  | done            | code     |
 | S4-07                     | pnpm test quick 1/359 flake investigation                               | P2  | done            | code     |
 | SECAS-S2-01               | Pen-test ingest scaffolding (internal prep)                             | P0  | done            | ops-docs |
+| SECAS-S2-02               | Automated ingest witness + milestone unblock + parallel-lane messaging    | P0  | done            | code     |
 | SECAS-S4-02               | Fleet supply-chain security gates                                       | P0  | done            | code     |
 | SECAS-S4-03               | Standing vulnerability management cadence                               | P1  | done            | code     |
 | SECAS-S4-04               | Pen-test findings remediation track + re-test witness                   | P0  | structural done | code     |

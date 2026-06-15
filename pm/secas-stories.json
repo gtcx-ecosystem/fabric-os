@@ -98,7 +98,46 @@
       "postLaunchExternal": ["BG-10-10", "BG-10-10-REPORT"]
     },
     {
-      "id": "SECAS-S3-01",
+      "id": "SECAS-S2-02",
+      "sprint": "SECAS-S2",
+      "title": "Automated ingest witness + milestone unblock + parallel-lane messaging",
+      "priority": "P0",
+      "status": "done",
+      "owner": "fabric-os",
+      "frictionIds": ["SEC-PENTEST-01"],
+      "intakeRef": "XR-FABRIC-SEC-LEGAL-P0-06",
+      "files": [
+        "platform/scripts/secas-ingest-automation-witness.mjs",
+        "platform/scripts/secas-parallel-lane-check.mjs",
+        "audit/evidence/secas-ingest-automation-latest.json",
+        "audit/evidence/secas-parallel-lane-check-latest.json",
+        "../bridge-os/pm/ci/secas-ingest-automation-latest.json"
+      ],
+      "acceptance": [
+        "pnpm secas:ingest:automation:check:write",
+        "pnpm secas:parallel-lane:check:write",
+        "pnpm --dir ../bridge-os ecosystem:secas-ingest-automation:check:write"
+      ],
+      "uat": [
+        {
+          "text": "Fleet ingest automation witness derived from live ingest check (not static calendar stub)",
+          "done": true,
+          "note": "secas:ingest:automation:check:write PASS — live-derived witness syncs to bridge-os"
+        },
+        {
+          "text": "Report ingest chains milestone unblock (remediation register + automation witness)",
+          "done": true,
+          "note": "secas-pentest-report-ingest.mjs chains ingest + remediation + automation witnesses"
+        },
+        {
+          "text": "Parallel-lane messaging harness PASS — product repos never get vendor gates as Next work item",
+          "done": true,
+          "note": "secas:parallel-lane:check:write PASS — 8/8 routing checks"
+        }
+      ],
+      "blockers": null,
+      "blocksIR": false
+    },
       "sprint": "SECAS-S3",
       "title": "Compliance-os staging IRSA least-privilege review",
       "priority": "P1",

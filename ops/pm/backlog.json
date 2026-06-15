@@ -173,11 +173,27 @@
       "owner": "fabric-os",
       "sprint": "SPR-2026-06-INTAKE",
       "intakeSource": "fabric-os/pm/ci/session-open-items-latest.json#backlogCandidates"
+    },
+    {
+      "id": "SECAS-S2-02",
+      "title": "Automated ingest witness + milestone unblock + parallel-lane messaging",
+      "status": "done",
+      "priority": "P0",
+      "owner": "fabric-os",
+      "sprint": "SECAS-S2",
+      "intakeSource": "operator:intake:priority-p0-6-centralized-security-legal",
+      "intakeRef": "XR-FABRIC-SEC-LEGAL-P0-06"
     }
   ],
   "crossRepoRefs": [
     {
       "id": "SECAS-S2-01",
+      "ownerRepo": "fabric-os",
+      "status": "done",
+      "traceId": null
+    },
+    {
+      "id": "SECAS-S2-02",
       "ownerRepo": "fabric-os",
       "status": "done",
       "traceId": null

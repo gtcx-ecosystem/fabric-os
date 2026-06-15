@@ -30,12 +30,13 @@
     {
       "id": "LEGAL-PROGRAM-01",
       "priority": "P1",
-      "status": "open",
+      "status": "in_progress",
       "title": "Legal friction register parity with SECAS harness depth",
       "blocksIR": false,
       "class": "R",
       "harness": "pnpm ecosystem:legal-program:check:write",
-      "because": "Gap list item 6 — legal program needs machine witnesses like secas:*"
+      "because": "Gap list item 6 — SECAS-S2-02 closed ingest automation; legal register depth remains",
+      "note": "SECAS ingest automation + parallel-lane messaging done 2026-06-15 (SECAS-S2-02)"
     }
   ]
 }

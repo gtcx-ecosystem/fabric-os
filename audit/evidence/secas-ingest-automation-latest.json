@@ -1,0 +1,48 @@
+{
+  "schema": "gtcx://bridge-os/secas-ingest-automation/v1",
+  "generatedAt": "2026-06-15T05:37:59.160Z",
+  "storyId": "SECAS-S2-01",
+  "intakeStoryId": "SECAS-S2-02",
+  "owner": "fabric-os",
+  "window": {
+    "start": "2026-06-17",
+    "end": "2026-06-21",
+    "timezone": "Africa/Johannesburg",
+    "witness": "audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json"
+  },
+  "automationReady": true,
+  "preWindowClassR": {
+    "ingestScript": "fabric-os/platform/scripts/secas-pentest-report-ingest.mjs",
+    "checkScript": "fabric-os/platform/scripts/secas-pentest-ingest-check.mjs",
+    "witnessPath": "audit/evidence/secas-ingest-automation-latest.json",
+    "status": "PASS",
+    "phase": "awaiting_vendor_report"
+  },
+  "postWindowAutomation": {
+    "trigger": "calendar >= 2026-06-21T23:59:59Z OR report ingested",
+    "command": "pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>",
+    "onSuccess": "milestoneUnblock → SECAS-S4-04 remediation track + fleet P0 redirect",
+    "onMissingReport": null,
+    "chain": [
+      "secas:pentest:report:ingest",
+      "secas:pentest:ingest:check:write",
+      "secas:pentest:remediation:check:write",
+      "secas:ingest:automation:check:write"
+    ]
+  },
+  "milestoneUnblock": {
+    "ready": false,
+    "phase": "awaiting_vendor_report",
+    "note": "Pre-window Class R automation wired; vendor report delivery Class S until window closes"
+  },
+  "parallelLane": {
+    "blocksIR": false,
+    "productRepoRule": "Legal/security gates under Parallel sovereign gates — never Next work item",
+    "routingSpec": "bridge-os/pm/spec/vendor-assurance-status-update-routing.json"
+  },
+  "blockedReason": null,
+  "sources": {
+    "ingestCheck": "audit/evidence/secas-pentest-ingest-check-latest.json",
+    "remediationCheck": "audit/evidence/secas-pentest-remediation-check-latest.json"
+  }
+}

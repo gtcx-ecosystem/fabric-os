@@ -1,0 +1,46 @@
+{
+  "schema": "gtcx://fabric-os/secas-parallel-lane-check/v1",
+  "storyId": "SECAS-S2-02",
+  "checkedAt": "2026-06-15T05:37:58.681Z",
+  "ok": true,
+  "checks": {
+    "routingSpec": {
+      "ok": true,
+      "detail": "vendor-assurance-status-update-routing blocksIR:false"
+    },
+    "legalProgramForbiddenP22": {
+      "ok": true,
+      "detail": "ecosystem-legal-program-protocol forbids vendor gates in product P22"
+    },
+    "fabricOwnerRouting": {
+      "ok": true,
+      "detail": "fabric-os includes Parallel sovereign gates section"
+    },
+    "witnessReposOmit": {
+      "ok": true,
+      "detail": "witness repos omit vendor gates from Status Update"
+    },
+    "postLaunchBlocksIR": {
+      "ok": true,
+      "detail": "post-launch-external-gates all blocksIR:false"
+    },
+    "internalHumanBlocksIR": {
+      "ok": true,
+      "detail": "internal-human-gates all blocksIR:false"
+    },
+    "manifestExplainer": {
+      "ok": true,
+      "detail": "SECAS-S2-01-INGEST in human-gates.manifest with explainer fields"
+    },
+    "clarityFleetHead": {
+      "ok": true,
+      "detail": "fleet clarity labels assurance as parallel lane (not product head)"
+    }
+  },
+  "failures": [],
+  "messaging": {
+    "productTeams": "Engineering continues — vendor/legal gates are Parallel sovereign gates (blocksIR:false)",
+    "fabricOs": "List under ### Parallel sovereign gates with What/Why/Implication — never Approval needed one-liners",
+    "witnessRepos": "Omit vendor gates; use fleetOwnerRedirect to fabric-os"
+  }
+}

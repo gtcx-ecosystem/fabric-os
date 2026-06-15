@@ -30,7 +30,7 @@ fabric-os requests **bridge-os program office** to own intake, ZenHub planning, 
 
 1. **Fleet risk register** — IN_PROGRESS (`fleet-risk-register.json` + harness PASS)
 2. **Active threat register** — IN_PROGRESS (`fleet-threat-register.json` + harness PASS)
-3. **Product AI threat models** — OPEN (markets-os, terminal-os, intelligence/Mythos — owner repos)
+3. **Product AI threat models** — RESOLVED for markets-os and terminal-os (`docs/security/threat-model.md` created and fleet-risk probe passes); gtcx-intelligence threat model already fleet-indexed and present
 4. **SECAS-S4 harnesses** — PARTIAL (S4-01 done; S4-02 structural; S4-03 pending)
 5. **SECAS-S5 continuous assurance** — DRAFTED (program doc; harnesses not operational)
 6. **Legal program parity** — OPEN (`legal-friction-register` thin vs SECAS)
@@ -44,7 +44,7 @@ fabric-os requests **bridge-os program office** to own intake, ZenHub planning, 
 
 1. Ack inbound — `from-fabric-os-init-world-class-secops-raise-2026-06-14.md`
 2. Keep `T46` structured with fabric-os execution owner; program office tracks ZenHub epic when promoted from `raw`
-3. Delegate item **#3** to owner repos via P24 tickets (markets-os, terminal-os, gtcx-intelligence)
+3. ~~Delegate item **#3** to owner repos via P24 tickets~~ — DONE in-session for markets-os and terminal-os; gtcx-intelligence already indexed
 4. Fleet rollup witness — include `INIT-WORLD-CLASS-SECOPS` in `INIT-SESSION-OPEN-ITEMS-notes.json` wave map
 5. Do **not** surface pen-test / BG-10 gates on product-repo P22 — fabric-os only (vendor assurance routing)
 

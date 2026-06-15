@@ -3,9 +3,9 @@
   "repo": "fabric-os",
   "date": "2026-06-15",
   "score100": 100,
-  "published": true,
-  "provisional": false,
-  "blockedBy": null,
+  "published": false,
+  "provisional": true,
+  "blockedBy": "compliance",
   "unlockThreshold100": 85,
   "metrics": {
     "documentation-world-class": {
@@ -14,7 +14,9 @@
       "qualityAvg100": 100,
       "worldClassBar100": 95,
       "gap100": 0,
-      "sourceIds": ["documentation"]
+      "sourceIds": [
+        "documentation"
+      ]
     },
     "security-world-class": {
       "score100": 100,
@@ -22,7 +24,9 @@
       "qualityAvg100": 100,
       "worldClassBar100": 98,
       "gap100": 0,
-      "sourceIds": ["security"]
+      "sourceIds": [
+        "security"
+      ]
     },
     "devops-observability": {
       "score100": 100,
@@ -30,7 +34,9 @@
       "qualityAvg100": 100,
       "worldClassBar100": 95,
       "gap100": 0,
-      "sourceIds": ["production-readiness"]
+      "sourceIds": [
+        "production-readiness"
+      ]
     },
     "agentic-trust": {
       "score100": 100,
@@ -38,7 +44,10 @@
       "qualityAvg100": 100,
       "worldClassBar100": 95,
       "gap100": 0,
-      "sourceIds": ["ai-maturity", "hallucination-resilience"]
+      "sourceIds": [
+        "ai-maturity",
+        "hallucination-resilience"
+      ]
     },
     "ecosystem-moat": {
       "score100": 100,
@@ -46,7 +55,10 @@
       "qualityAvg100": 100,
       "worldClassBar100": 95,
       "gap100": 0,
-      "sourceIds": ["ecosystem-integration", "technical-moat"]
+      "sourceIds": [
+        "ecosystem-integration",
+        "technical-moat"
+      ]
     },
     "enterprise-sovereign": {
       "score100": 100,
@@ -54,7 +66,10 @@
       "qualityAvg100": 100,
       "worldClassBar100": 95,
       "gap100": 0,
-      "sourceIds": ["enterprise-readiness", "bank-grade-auditability"]
+      "sourceIds": [
+        "enterprise-readiness",
+        "bank-grade-auditability"
+      ]
     },
     "repo-hygiene-world-class": {
       "score100": 100,
@@ -62,7 +77,10 @@
       "qualityAvg100": 100,
       "worldClassBar100": 95,
       "gap100": 0,
-      "sourceIds": ["repo-folder-hygiene", "spec-drift"]
+      "sourceIds": [
+        "repo-folder-hygiene",
+        "spec-drift"
+      ]
     },
     "spec-truth": {
       "score100": 100,
@@ -70,7 +88,9 @@
       "qualityAvg100": 100,
       "worldClassBar100": 95,
       "gap100": 0,
-      "sourceIds": ["spec-drift"]
+      "sourceIds": [
+        "spec-drift"
+      ]
     },
     "global-south-resilience": {
       "score100": 100,
@@ -78,7 +98,10 @@
       "qualityAvg100": 100,
       "worldClassBar100": 90,
       "gap100": 0,
-      "sourceIds": ["production-readiness", "ux-product-design"]
+      "sourceIds": [
+        "production-readiness",
+        "ux-product-design"
+      ]
     }
   },
   "hasRubric": true,

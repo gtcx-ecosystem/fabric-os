@@ -504,7 +504,25 @@
       "to": "audit/archive/2026-06-15/pm/ci/session-forensic-2026-06-14.md",
       "reason": "superseded-by-newer-dated-sibling",
       "at": "2026-06-15T07:57:14.634Z"
+    },
+    {
+      "from": "audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json",
+      "to": "audit/archive/2026-06-15/audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-15T09:57:01.691Z"
+    },
+    {
+      "from": "audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json",
+      "to": "audit/archive/2026-06-15/audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-15T09:57:01.691Z"
+    },
+    {
+      "from": "audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json",
+      "to": "audit/archive/2026-06-15/audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-15T09:57:01.691Z"
     }
   ],
-  "updated": "2026-06-15T07:57:14.634Z"
+  "updated": "2026-06-15T09:57:01.691Z"
 }

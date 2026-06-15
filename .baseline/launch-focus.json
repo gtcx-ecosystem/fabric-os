@@ -3,7 +3,7 @@
   "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
   "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
   "statePath": ".baseline/launch-focus.json",
-  "provisionedAt": "2026-06-15T09:39:54.547Z",
+  "provisionedAt": "2026-06-15T10:43:26.191Z",
   "repo": "fabric-os",
   "northStar": {
     "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -16,20 +16,36 @@
       "index": "audit/gtm-audit-2026-06-05.md"
     }
   },
-  "sessionMode": "plan",
+  "sessionMode": "implement",
   "activePhase": {
     "id": "zwcmp-unblock",
     "label": "ZWCMP pilot + Global South 10x deploy"
   },
   "workSet": {
-    "implement": [],
+    "implement": [
+      {
+        "storyId": "SECAS-S4-04",
+        "title": "Pen-test findings remediation track + re-test witness",
+        "workClass": "code",
+        "authorityClass": "R",
+        "lane": "p22-head"
+      }
+    ],
     "plan": [],
     "witness": [],
     "human": []
   },
-  "activeWorkSet": [],
+  "activeWorkSet": [
+    {
+      "storyId": "SECAS-S4-04",
+      "title": "Pen-test findings remediation track + re-test witness",
+      "workClass": "code",
+      "authorityClass": "R",
+      "lane": "p22-head"
+    }
+  ],
   "workSetCounts": {
-    "implement": 0,
+    "implement": 1,
     "plan": 0,
     "witness": 0,
     "human": 0

@@ -34,10 +34,8 @@
     "gitbook",
     "governance",
     "operations",
-    "overview",
     "reference",
     "roadmap",
-    "specs",
     "business"
   ],
   "narrativePointersOnly": ["assurance", "coordination", "gtm", "legal", "security"],
@@ -49,14 +47,14 @@
       "docs/foundation/",
       "docs/conventions.md",
       "docs/architecture/",
-      "docs/specs/",
       "docs/operations/",
-      "docs/roadmap/"
+      "docs/roadmap/",
+      "docs/business/"
     ]
   },
   "pointerOnly": {
     "description": "Stub or index — canonical prose lives in gtcx-docs or ops/",
-    "paths": ["docs/governance/"]
+    "paths": ["docs/governance/", "docs/reference/", "docs/specs/"]
   },
   "shipPaths": {
     "terraform": "deploy/terraform",
@@ -89,9 +87,7 @@
       "docs/operations/batch-a",
       "docs/operations/batch-b",
       "docs/operations/batch-c",
-      "docs/operations/coordination",
-      "docs/overview/product",
-      "docs/reference/archive"
+      "docs/operations/coordination"
     ],
     "readmeExemptPathPrefixes": ["docs/reference/archive"]
   }

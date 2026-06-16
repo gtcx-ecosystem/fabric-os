@@ -139,5 +139,5 @@ When Redis or Postgres become unavailable, the protocol layer emits error-level 
 
 - [incident-response.md](../deploy/incident-response.md)
 - [production-store-integration.md](production-store-integration.md)
-- [01-docs/reference/performance-slos.md](../../../reference/performance-slos.md)
+- [performance-slos.md](../../runbooks/sre/performance-slos.md)
 - [ADR-010 In-Memory Stub Guards](../../../architecture/decisions/batch-a/ADR-010-in-memory-stub-guards.md)

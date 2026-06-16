@@ -14,6 +14,7 @@
 | Class S sovereign    | `pm/sovereign-approval-register.json`                                                  |
 | Execution roadmap    | `audit/product-management/secas-execution-roadmap.md`                                  |
 | S4 program           | [secas-s4-security-engineering-program.md](./secas-s4-security-engineering-program.md) |
+| Bug bounty policy    | [bug-bounty-policy.md](./bug-bounty-policy.md)                                         |
 | Task inbox           | `pm/_tasks` — `INIT-GTCX-INFRA-SECAS`                                                  |
 | Fleet harness        | `pnpm --dir ../bridge-os ecosystem:secas:check`                                        |
 

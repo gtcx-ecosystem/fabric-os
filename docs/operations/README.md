@@ -24,10 +24,10 @@ _Generated: 2026-05-17_
 
 ## Cross-reference
 
-| Layer          | Path               | Role                                 |
-| -------------- | ------------------ | ------------------------------------ |
-| Foundation     | `docs/foundation/` | Charter, vision, goals               |
-| **Operations** | `docs/operations/` | Human runbooks + agent ops narrative |
-| Machine ops    | `ops/`             | P29 domain manifests — link only     |
+| Layer          | Path               | Role                             |
+| -------------- | ------------------ | -------------------------------- |
+| Foundation     | `docs/foundation/` | Charter, vision, goals           |
+| **Operations** | `docs/operations/` | Human runbooks + agent ops docs  |
+| Machine ops    | `ops/`             | P29 domain manifests — link only |
 
 > **Pack:** [`../../canon-os/pm/spec/docs-operations-pack.json`](../../canon-os/pm/spec/docs-operations-pack.json)

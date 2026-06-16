@@ -1,33 +1,34 @@
 ---
-title: 'Architecture'
-status: 'current'
-date: '2026-05-27'
-owner: 'protocol-architect'
-role: 'protocol-architect'
-tier: 'strategic'
-tags: ['architecture', 'design']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
-trust_score: 95
-autonomy_level: 'sovereign'
+title: 'architecture/ — system design SoR'
+status: current
+date: 2026-06-16
+owner: fabric-os
+document_type: architecture
+tier: critical
+tags: ['documentation', 'architecture']
+review_cycle: on-change
 ---
 
-# Architecture
+# `docs/architecture/` — fabric-os
 
-This directory contains architecture documentation for the GTCX infrastructure.
+> **Pack:** [`../../canon-os/pm/spec/docs-architecture-pack.json`](../../canon-os/pm/spec/docs-architecture-pack.json)  
+> **Foundation:** [`../foundation/`](../foundation/) · **Business:** [`../business/`](../business/)
 
-## Contents
+## Cross-reference
 
-- anomaly-detection.md
-- infrastructure-architecture-overview.md
-- infrastructure-overview.md
-- k8s-probes-rationale.md
-- migrations-overview.md
-- network-architecture.md
-- offline-architecture.md
-- system-overview.md
-- trust-model.md
+| Layer            | Path                 | Role                                |
+| ---------------- | -------------------- | ----------------------------------- |
+| Foundation       | `docs/foundation/`   | Why — charter, vision, goals        |
+| Business         | `docs/business/`     | Market and customer context         |
+| **Architecture** | `docs/architecture/` | How — specs, ADRs, integration      |
+| Reference        | `docs/reference/`    | Templates only (post-decomposition) |
 
----
+## Subfolders
 
-_Generated: 2026-05-17_
+| Folder         | Contents                                       |
+| -------------- | ---------------------------------------------- |
+| `specs/`       | Backend, frontend, data, design, testing specs |
+| `decisions/`   | ADR-\* architecture decision records           |
+| `integration/` | Cross-service and fleet integration            |
+| `pillars/`     | 11-pillar audit narrative                      |
+| `security/`    | Threat models (link `ops/security/`)           |

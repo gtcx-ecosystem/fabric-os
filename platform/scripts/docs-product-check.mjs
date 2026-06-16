@@ -163,6 +163,17 @@ function main() {
   }
 
   if (productExists) {
+    const hasProductRoadmap = existsSync(join(productDir, 'roadmap')) || existsSync(join(productDir, 'roadmap.md'));
+    gates.push(
+      gate(
+        'forbid:product-roadmap',
+        !hasProductRoadmap,
+        hasProductRoadmap ? 'docs/product/roadmap* is forbidden — use docs/roadmap/' : 'ok',
+      ),
+    );
+  }
+
+  if (productExists) {
     const loose = readdirSync(productDir, { withFileTypes: true })
       .filter((e) => e.isFile() && e.name.endsWith('.md') && !['README.md', 'FOLDER-SPEC.md'].includes(e.name))
       .map((e) => e.name);

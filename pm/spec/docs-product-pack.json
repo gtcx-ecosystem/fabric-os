@@ -4,7 +4,7 @@
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "title": "Docs product pack — fabric-os",
-  "principle": "Product experience SoR lives under docs/product/. Foundation holds why; business holds market and ICP; product holds personas, JTBD, workflows, journeys, and UX research. Technical design-system specs remain under docs/architecture/specs/design/.",
+  "principle": "Product experience SoR lives under docs/product/. Foundation holds why; business holds market and ICP; product holds surfaces, journeys, acceptance/UAT scenarios, and product-facing requirements. Technical ADRs/specs remain under docs/architecture/. Roadmaps are forbidden here and live only under docs/roadmap/.",
   "requiredRootFiles": [
     {
       "path": "docs/product/README.md",
@@ -35,36 +35,62 @@
       ],
       "forbidden": ["GTM ICP prose — belongs in docs/business/customers/"]
     },
-    "prds": {
-      "purpose": "Product requirement documents — narrative PRDs linked from pm/product/",
-      "allowedDocTypes": ["prd", "overview"],
+    "surfaces": {
+      "purpose": "Surface inventory, navigation structures, permissions/roles — product-facing truth",
+      "allowedDocTypes": ["product", "overview"],
       "required": ["README.md"],
-      "optional": true,
-      "sourcePatterns": ["pm/product/prds/"]
+      "canonicalFiles": ["surface-inventory.md", "navigation-map.md", "permissions-and-roles.md"]
     },
-    "roadmap": {
-      "purpose": "Product roadmap narrative — executive summary links foundation/roadmap.md",
-      "allowedDocTypes": ["overview", "product"],
+    "requirements": {
+      "purpose": "Product requirements from the user/operator lens (not market sizing; not system architecture)",
+      "allowedDocTypes": ["product", "overview"],
+      "required": ["README.md"],
+      "canonicalFiles": [
+        "functional-requirements.md",
+        "non-functional-experience.md",
+        "accessibility.md"
+      ]
+    },
+    "acceptance": {
+      "purpose": "Definition of done, UAT scenarios, regression critical paths — links to witness commands",
+      "allowedDocTypes": ["product", "overview"],
+      "required": ["README.md"],
+      "canonicalFiles": [
+        "definition-of-done-product.md",
+        "uat-scenarios.md",
+        "regression-critical-paths.md"
+      ]
+    },
+    "prds": {
+      "purpose": "Pointer-only narrative index to pm/product/prds/ (no duplicate PRD state)",
+      "allowedDocTypes": ["overview"],
       "required": ["README.md"],
       "optional": true,
-      "sourcePatterns": ["docs/strategy/roadmap/", "docs/roadmap/"]
+      "note": "Machine PRDs remain under pm/product/prds/"
+    },
+    "research": {
+      "purpose": "Product discovery notes only if not market/ICP (otherwise belongs in docs/business/research/)",
+      "allowedDocTypes": ["product", "overview"],
+      "required": ["README.md"],
+      "optional": true
     }
   },
   "forbiddenAtProductRoot": [
     "Loose narrative *.md except README.md and FOLDER-SPEC.md",
     "Duplicate foundation vision/mission prose",
-    "Duplicate business ICP or pricing prose"
+    "Duplicate business ICP or pricing prose",
+    "Any roadmap docs — roadmaps live under docs/roadmap/ only"
   ],
   "profiles": {
     "product": {
       "productRequired": true,
-      "requiredSubfolders": ["ux"],
-      "optionalSubfolders": ["prds", "roadmap"]
+      "requiredSubfolders": ["ux", "surfaces", "requirements", "acceptance"],
+      "optionalSubfolders": ["prds", "research"]
     },
     "fleet-documentation": {
       "productRequired": true,
-      "requiredSubfolders": ["ux"],
-      "optionalSubfolders": ["roadmap"]
+      "requiredSubfolders": ["ux", "surfaces", "requirements", "acceptance"],
+      "optionalSubfolders": ["research"]
     },
     "constitution-standards": {
       "productRequired": false,
@@ -72,7 +98,7 @@
     },
     "platform": {
       "productRequired": false,
-      "optionalSubfolders": ["ux", "roadmap"]
+      "optionalSubfolders": ["ux", "surfaces", "requirements", "acceptance"]
     }
   },
   "crossReference": {
@@ -81,10 +107,6 @@
       {
         "foundation": "goals.md",
         "product": "ux/northern-stars.md"
-      },
-      {
-        "foundation": "roadmap.md",
-        "product": "roadmap/"
       }
     ],
     "referenceDecompose": {

@@ -1,6 +1,6 @@
 {
   "$schema": "gtcx://canon-os/docs-architecture-pack/v1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "title": "Docs architecture pack — fabric-os",
@@ -28,7 +28,7 @@
         "testing": "test strategy, coverage contracts",
         "product": "technical product specs only — not GTM PRD prose"
       },
-      "sourcePatterns": ["docs/reference/specs/", "docs/engineering/system-design/"],
+      "sourcePatterns": ["docs/_archive/specs/", "docs/engineering/system-design/"],
       "forbidden": ["loose *.md at specs/ root beyond README and index"]
     },
     "decisions": {
@@ -52,7 +52,7 @@
       "allowedDocTypes": ["architecture"],
       "required": ["README.md"],
       "optional": true,
-      "sourcePatterns": ["docs/reference/architecture/", "docs/engineering/integration/"]
+      "sourcePatterns": ["docs/_archive/architecture/", "docs/engineering/integration/"]
     },
     "security": {
       "purpose": "Threat models, security architecture — narrative; machine evidence in ops/security/",
@@ -77,6 +77,28 @@
     "Protocol bodies — belongs in docs/governance/protocols/",
     "Duplicate of docs/engineering/ without cross-link"
   ],
+  "contentBar": {
+    "product": {
+      "minAdrFiles": 1,
+      "specNests": ["backend", "frontend", "data", "design", "testing"],
+      "minNarrativeSpecFiles": 1
+    },
+    "fleet-documentation": {
+      "minAdrFiles": 1,
+      "specNests": ["backend", "frontend", "data", "design", "testing"],
+      "minNarrativeSpecFiles": 1
+    },
+    "platform": {
+      "minAdrFiles": 1,
+      "specNests": ["backend", "frontend", "data", "design", "testing"],
+      "minNarrativeSpecFiles": 1
+    },
+    "constitution-standards": {
+      "minAdrFiles": 0,
+      "specNests": [],
+      "minNarrativeSpecFiles": 0
+    }
+  },
   "profiles": {
     "constitution-standards": {
       "architectureRequired": true,
@@ -123,26 +145,26 @@
       }
     ],
     "referenceDecompose": {
-      "docs/reference/specs/": "relocate → docs/architecture/specs/; pointer stub at reference",
-      "docs/reference/architecture/": "relocate → docs/architecture/integration/ or merge",
-      "docs/reference/audits/": "relocate → docs/governance/audit/ (not architecture)",
+      "docs/_archive/specs/": "relocate → docs/architecture/specs/; pointer stub at _archive",
+      "docs/_archive/architecture/": "relocate → docs/architecture/integration/ or merge",
+      "docs/_archive/audits/": "relocate → docs/governance/audit/ (not architecture)",
       "docs/engineering/system-design/": "cross-link from architecture/README — do not fork"
     }
   },
   "sourcePriority": [
     "docs/architecture/",
     "docs/engineering/system-design/",
-    "docs/reference/specs/ (until decomposed)",
+    "docs/_archive/specs/ (until decomposed)",
     "archive/docs-reference-legacy/"
   ],
   "afterMigration": {
-    "referenceSpecs": "pointer README only at docs/reference/specs/",
+    "referenceSpecs": "pointer README only at docs/_archive/specs/",
     "engineering": "retain for implementation detail; architecture/README links down"
   },
   "enforcement": {
     "check": "pnpm docs:architecture:check",
     "fleetCheck": "pnpm ecosystem:docs:architecture:fleet",
-    "decompose": "pnpm docs:reference:decompose",
+    "decompose": "pnpm docs:_archive:decompose",
     "witness": "audit/evidence/docs-architecture-latest.json",
     "fleetWitness": "audit/evidence/fleet-docs-architecture-latest.json",
     "stubPacksForbidden": true,
@@ -152,7 +174,8 @@
       "spec:resolved-full",
       "required subfolders per profile",
       "no loose narrative at architecture root",
-      "reference/specs decomposed"
+      "_archive/specs decomposed",
+      "contentBar: adr-min, spec-nests, narrative-spec-min"
     ]
   },
   "relatedSpecs": [

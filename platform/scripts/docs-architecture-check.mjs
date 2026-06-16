@@ -17,6 +17,70 @@ function gate(id, ok, detail = null) {
   return { id, ok, ...(detail ? { detail } : {}) };
 }
 
+function isPointerMarkdown(text) {
+  return /status:\s*pointer/i.test(text) || /\*\*Canonical SoR:\*\*/.test(text);
+}
+
+function countNarrativeSpecFiles(specsDir, exempt = new Set(['README.md', 'index.md', 'FOLDER-SPEC.md'])) {
+  if (!existsSync(specsDir)) return 0;
+  let count = 0;
+  const walk = (dir) => {
+    for (const ent of readdirSync(dir, { withFileTypes: true })) {
+      const p = join(dir, ent.name);
+      if (ent.isDirectory()) {
+        walk(p);
+        continue;
+      }
+      if (!ent.name.endsWith('.md') || exempt.has(ent.name)) continue;
+      const text = readFileSync(p, 'utf8');
+      if (isPointerMarkdown(text)) continue;
+      count += 1;
+    }
+  };
+  walk(specsDir);
+  return count;
+}
+
+function applyContentBarGates(gates, archDir, contentBar) {
+  if (!contentBar) return;
+
+  if (contentBar.minAdrFiles > 0) {
+    const decisionsDir = join(archDir, 'decisions');
+    const adrs =
+      existsSync(decisionsDir)
+        ? readdirSync(decisionsDir).filter((n) => /^ADR-\d+/i.test(n) && n.endsWith('.md'))
+        : [];
+    gates.push(
+      gate(
+        'content:adr-min',
+        adrs.length >= contentBar.minAdrFiles,
+        `ADR count ${adrs.length}/${contentBar.minAdrFiles}`,
+      ),
+    );
+  }
+
+  for (const nest of contentBar.specNests ?? []) {
+    gates.push(
+      gate(
+        `content:spec-nest:${nest}`,
+        existsSync(join(archDir, 'specs', nest, 'README.md')),
+        `docs/architecture/specs/${nest}/README.md`,
+      ),
+    );
+  }
+
+  if (contentBar.minNarrativeSpecFiles > 0) {
+    const count = countNarrativeSpecFiles(join(archDir, 'specs'));
+    gates.push(
+      gate(
+        'content:spec-narrative-min',
+        count >= contentBar.minNarrativeSpecFiles,
+        `${count} narrative spec files (min ${contentBar.minNarrativeSpecFiles})`,
+      ),
+    );
+  }
+}
+
 function main() {
   const gates = [];
   const resolution = resolveDocsPack(REPO, PACK);
@@ -118,6 +182,7 @@ function main() {
     gates.push(
       gate('no-adr-at-root', adrRoot.length === 0, adrRoot.length ? `move to decisions/: ${adrRoot.join(', ')}` : 'ok'),
     );
+    applyContentBarGates(gates, archDir, spec.contentBar?.[profileKey] ?? spec.contentBar?.product);
   }
 
   emit(gates, repoName, resolution, profileKey);

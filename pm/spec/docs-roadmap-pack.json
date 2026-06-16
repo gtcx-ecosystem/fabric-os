@@ -1,0 +1,85 @@
+{
+  "$schema": "gtcx://canon-os/docs-roadmap-pack/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-16",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "title": "Docs roadmap pack — fabric-os",
+  "principle": "Anything that is “what we are building next” lives under docs/roadmap/ (or is linked from it). No other docs layer may contain roadmap narrative. Foundation roadmap.md becomes pointer-only to docs/roadmap/roadmap-current.md.",
+  "requiredRootFiles": [
+    {
+      "path": "docs/roadmap/README.md",
+      "role": "index + lane definitions + pointer rules"
+    },
+    {
+      "path": "docs/roadmap/FOLDER-SPEC.md",
+      "role": "repo-local mirror of this pack"
+    },
+    {
+      "path": "docs/roadmap/roadmap-current.md",
+      "role": "single executive rollup (only “current” file)"
+    }
+  ],
+  "requiredSubfolders": {
+    "technical": {
+      "purpose": "Technical roadmap lane — links to docs/architecture/specs/* + pm/* execution truth",
+      "required": ["README.md", "roadmap.md"]
+    },
+    "ux-design": {
+      "purpose": "UX/design roadmap lane — links to docs/product/*",
+      "required": ["README.md", "roadmap.md"]
+    },
+    "gtm": {
+      "purpose": "GTM roadmap lane — links to ops/gtm/* + docs/business/* (no duplication of ops manifests)",
+      "required": ["README.md", "roadmap.md"]
+    },
+    "legal": {
+      "purpose": "Legal lane — links to ops/legal/* and/or docs/operations/legalops-* (narrative only)",
+      "required": ["README.md", "roadmap.md"]
+    },
+    "compliance": {
+      "purpose": "Compliance lane — links to ops/compliance/* + docs/operations/compliance/* (narrative only)",
+      "required": ["README.md", "roadmap.md"]
+    },
+    "partnerships": {
+      "purpose": "Partnerships lane — links to docs/business/partnerships/* (+ ops bindings if any)",
+      "required": ["README.md", "roadmap.md"]
+    },
+    "archive": {
+      "purpose": "Immutable dated snapshots (roadmap-YYYY-MM-DD.md)",
+      "required": ["README.md"],
+      "optional": true
+    }
+  },
+  "forbiddenDuplicates": [
+    "docs/foundation/roadmap.md must be pointer-only to docs/roadmap/roadmap-current.md",
+    "No roadmaps under docs/strategy/**",
+    "No roadmaps under docs/overview/**",
+    "No roadmaps under docs/product/roadmap/**",
+    "No roadmaps under docs/architecture/roadmap/**"
+  ],
+  "profiles": {
+    "product": {
+      "roadmapRequired": true
+    },
+    "fleet-documentation": {
+      "roadmapRequired": true
+    },
+    "constitution-standards": {
+      "roadmapRequired": false,
+      "allowed": "pointer-only README.md is allowed"
+    },
+    "platform": {
+      "roadmapRequired": true
+    }
+  },
+  "enforcement": {
+    "check": "pnpm docs:roadmap:check",
+    "witness": "audit/evidence/docs-roadmap-latest.json",
+    "gateSchema": "v1",
+    "fleetCheck": "pnpm ecosystem:docs:roadmap:fleet",
+    "fleetWitness": "audit/evidence/fleet-docs-roadmap-latest.json",
+    "bootstrap": "node platform/scripts/fleet-docs-roadmap-bootstrap.mjs --write --all"
+  },
+  "repo": "fabric-os",
+  "upstreamSpec": "../canon-os/pm/spec/docs-roadmap-pack.json"
+}

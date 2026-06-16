@@ -189,7 +189,7 @@ function main() {
     const def = spec.requiredSubfolders?.[sub];
     if (!def?.sourcePatterns?.length) continue;
     for (const pattern of def.sourcePatterns) {
-      if (!pattern.startsWith('docs/reference/')) continue;
+      if (!pattern.startsWith('docs/_archive/')) continue;
       if (!hasNarrativeInReference(REPO, pattern)) continue;
       const targetDir = join(businessDir, sub);
       const decomposed =
@@ -208,7 +208,7 @@ function main() {
   }
 
   for (const [refPath] of Object.entries(spec.crossReference?.referenceDecompose ?? {})) {
-    if (!refPath.startsWith('docs/reference/') && !refPath.startsWith('docs/overview/')) continue;
+    if (!refPath.startsWith('docs/_archive/') && !refPath.startsWith('docs/overview/')) continue;
     if (!hasNarrativeInReference(REPO, refPath)) continue;
     gates.push(
       gate(

@@ -1,10 +1,9 @@
 {
   "$schema": "gtcx://canon-os/docs-business-pack/v1",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-CORE-IA-V1",
-  "repo": "fabric-os",
-  "upstreamSpec": "../canon-os/pm/spec/docs-business-pack.json",
+  "masterSpec": "pm/spec/docs-ia-initiative.json",
   "title": "Docs business pack — fabric-os",
   "principle": "Business depth lives under docs/business/. Foundation holds summaries and links down. reference/product and overview/product decompose here. archive/docs/business/*.md promotes to docs/business/research/ — never business root.",
   "requiredRootFiles": [
@@ -154,8 +153,9 @@
       "allowed": "docs/business/README.md pointers to ecosystem-os only"
     },
     "platform": {
-      "businessRequired": false,
-      "optionalSubfolders": ["strategy", "research"]
+      "businessRequired": true,
+      "requiredSubfolders": ["market", "customers", "economics", "strategy", "research"],
+      "optionalSubfolders": ["case-studies", "use-cases", "partnerships", "sales", "domain"]
     }
   },
   "crossReference": {
@@ -179,7 +179,7 @@
       }
     ],
     "referenceDecompose": {
-      "docs/reference/product/": "pointer stubs → docs/business/{subfolder}/",
+      "docs/_archive/product/": "pointer stubs → docs/business/{subfolder}/",
       "docs/overview/product/": "pointer stubs or delete when empty",
       "archive/docs/business/": "promote → docs/business/research/ (+ case-studies, use-cases)"
     }
@@ -190,7 +190,7 @@
     "archive/superseded/p35-docs-retired/product/",
     "archive/docs/business/",
     "docs/overview/product/",
-    "docs/reference/product/"
+    "docs/_archive/product/"
   ],
   "afterMigration": {
     "overviewProduct": "pointer README only or delete when empty",
@@ -200,6 +200,27 @@
   "enforcement": {
     "check": "pnpm docs:business:check",
     "fleetCheck": "pnpm ecosystem:docs:business:fleet",
-    "witness": "audit/evidence/docs-business-latest.json"
-  }
+    "decompose": "pnpm docs:_archive:decompose",
+    "witness": "audit/evidence/docs-business-latest.json",
+    "fleetWitness": "audit/evidence/fleet-docs-business-latest.json",
+    "stubPacksForbidden": true,
+    "gateSchema": "gtcx://canon-os/docs-business-check/v2",
+    "requiredGates": [
+      "spec:not-stub",
+      "spec:resolved-full",
+      "required subfolders + READMEs",
+      "canonical files per profile",
+      "reference decompose (no narrative in docs/_archive/product)"
+    ]
+  },
+  "relatedSpecs": [
+    "pm/spec/docs-foundation-pack.json",
+    "pm/spec/docs-architecture-pack.json",
+    "pm/spec/docs-ia-initiative.json",
+    "pm/spec/docs-layer-cross-reference.json",
+    "pm/spec/docs-folder-provisioning.json",
+    "pm/spec/docs-foundation-ia-rollout.json"
+  ],
+  "repo": "fabric-os",
+  "upstreamSpec": "../canon-os/pm/spec/docs-business-pack.json"
 }

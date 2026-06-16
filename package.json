@@ -191,7 +191,9 @@
     "docs:architecture:check": "node platform/scripts/docs-architecture-check.mjs",
     "docs:architecture:check:write": "node platform/scripts/docs-architecture-check.mjs --write",
     "docs:product:check": "node platform/scripts/docs-product-check.mjs",
-    "docs:product:check:write": "node platform/scripts/docs-product-check.mjs --write"
+    "docs:product:check:write": "node platform/scripts/docs-product-check.mjs --write",
+    "docs:roadmap:check": "node platform/scripts/docs-roadmap-check.mjs",
+    "docs:roadmap:check:write": "node platform/scripts/docs-roadmap-check.mjs --write"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

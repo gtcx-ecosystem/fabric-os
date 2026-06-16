@@ -1,0 +1,98 @@
+{
+  "$schema": "gtcx://canon-os/docs-operations-pack/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-16",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "title": "Docs operations pack — fabric-os",
+  "principle": "Human runbooks and agent ops narrative live under docs/operations/. P29 machine manifests stay under ops/ — link only, never duplicate domain state.",
+  "requiredRootFiles": [
+    {
+      "path": "docs/operations/README.md",
+      "role": "index + cross-ref (foundation ↔ operations ↔ ops/)"
+    },
+    {
+      "path": "docs/operations/FOLDER-SPEC.md",
+      "role": "repo-local mirror of this pack"
+    }
+  ],
+  "requiredSubfolders": {
+    "runbooks": {
+      "purpose": "Operator runbooks — deployment, incident, recovery",
+      "allowedDocTypes": ["runbook", "architecture"],
+      "required": ["README.md"],
+      "sourcePatterns": ["docs/_archive/guides/", "docs/reference/guides/"]
+    },
+    "deployment": {
+      "purpose": "Release and environment narratives — links ops/deploy bindings",
+      "allowedDocTypes": ["runbook", "architecture"],
+      "required": ["README.md"]
+    },
+    "agent-spine": {
+      "purpose": "Agent universal instructions, P22 brief, git workflow prose",
+      "allowedDocTypes": ["runbook", "overview"],
+      "required": ["README.md"],
+      "canonicalFiles": ["agent-universal-instructions.md"],
+      "sourcePatterns": ["docs/agents/", "docs/operations/agent-universal-instructions.md"]
+    },
+    "remediation": {
+      "purpose": "Incident remediation playbooks — narrative only",
+      "allowedDocTypes": ["runbook"],
+      "required": ["README.md"],
+      "optional": true
+    },
+    "coordination": {
+      "purpose": "Cross-repo coordination narratives — bridge handoffs",
+      "allowedDocTypes": ["runbook", "overview"],
+      "required": ["README.md"],
+      "optional": true,
+      "hubNote": "canon-os + bridge-os host fleet coordination indexes"
+    }
+  },
+  "forbiddenAtOperationsRoot": [
+    "Duplicate ops/ domain manifests (compliance, security, gtm JSON)",
+    "Protocol bodies — belongs in docs/governance/protocols/",
+    "Loose narrative *.md except README.md and FOLDER-SPEC.md when subfolders exist"
+  ],
+  "profiles": {
+    "product": {
+      "operationsRequired": true,
+      "requiredSubfolders": ["runbooks", "deployment", "agent-spine"],
+      "optionalSubfolders": ["remediation", "coordination"]
+    },
+    "fleet-documentation": {
+      "operationsRequired": true,
+      "requiredSubfolders": ["runbooks", "agent-spine", "coordination"],
+      "optionalSubfolders": ["deployment", "remediation"]
+    },
+    "constitution-standards": {
+      "operationsRequired": false,
+      "allowed": "docs/operations/README.md pointer to ecosystem-os + canon-os ops narratives"
+    },
+    "platform": {
+      "operationsRequired": true,
+      "requiredSubfolders": ["runbooks", "deployment", "agent-spine"],
+      "optionalSubfolders": ["remediation", "coordination"]
+    }
+  },
+  "crossReference": {
+    "opsMachineSoR": "ops/",
+    "foundationLinks": [
+      {
+        "foundation": "goals.md",
+        "operations": "runbooks/"
+      }
+    ],
+    "referenceDecompose": {
+      "docs/_archive/guides/": "relocate → docs/operations/runbooks/; pointer at _archive"
+    }
+  },
+  "enforcement": {
+    "check": "pnpm docs:operations:check",
+    "fleetCheck": "pnpm ecosystem:docs:operations:fleet",
+    "witness": "audit/evidence/docs-operations-latest.json",
+    "fleetWitness": "audit/evidence/fleet-docs-operations-latest.json",
+    "bootstrap": "node platform/scripts/fleet-docs-operations-bootstrap.mjs --write --all"
+  },
+  "repo": "fabric-os",
+  "upstreamSpec": "../canon-os/pm/spec/docs-operations-pack.json"
+}

@@ -10,6 +10,7 @@ const STUB_MAX_BYTES = 1200;
 export function packKind(spec) {
   if (!spec) return 'unknown';
   if (Array.isArray(spec.requiredFiles) && spec.requiredFiles.length > 0) return 'foundation';
+  if (spec.requiredSubfolders && spec.$schema?.includes('agents-pack')) return 'agents';
   if (spec.requiredSubfolders && spec.$schema?.includes('agents')) return 'agents';
   if (spec.requiredSubfolders && spec.$schema?.includes('roadmap')) return 'roadmap';
   if (spec.requiredSubfolders && spec.$schema?.includes('operations')) return 'operations';
@@ -44,8 +45,14 @@ export function readJson(path) {
 }
 
 export function resolveDocsPack(repoRoot, packName, options = {}) {
-  const localPath = join(repoRoot, 'pm/spec', packName);
-  const canonPath = join(repoRoot, '../canon-os/pm/spec', packName);
+  const canonicalName =
+    packName === 'docs-agents-pack.json' && existsSync(join(repoRoot, 'pm/spec/agents-pack.json'))
+      ? 'agents-pack.json'
+      : packName === 'docs-agents-pack.json'
+        ? 'agents-pack.json'
+        : packName;
+  const localPath = join(repoRoot, 'pm/spec', canonicalName);
+  const canonPath = join(repoRoot, '../canon-os/pm/spec', canonicalName);
   const pathsTried = [];
 
   let local = null;

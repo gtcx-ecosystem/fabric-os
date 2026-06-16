@@ -2,8 +2,8 @@
   "$schema": "gtcx://canon-os/session-chain/v1",
   "reads": [
     "docs/foundation/README.md",
-    "docs/agents/bootstrap/README.md",
-    "docs/agents/capabilities/authority-matrix.md",
+    "agents/bootstrap/README.md",
+    "agents/capabilities/authority-matrix.md",
     "docs/operations/agent-spine/agent-universal-instructions.md"
   ]
 }

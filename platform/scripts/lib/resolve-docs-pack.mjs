@@ -10,6 +10,7 @@ const STUB_MAX_BYTES = 1200;
 export function packKind(spec) {
   if (!spec) return 'unknown';
   if (Array.isArray(spec.requiredFiles) && spec.requiredFiles.length > 0) return 'foundation';
+  if (spec.requiredSubfolders && spec.$schema?.includes('product')) return 'product';
   if (spec.requiredSubfolders && spec.$schema?.includes('architecture')) return 'architecture';
   if (spec.requiredSubfolders) return 'business';
   return 'unknown';

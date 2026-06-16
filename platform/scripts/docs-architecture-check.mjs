@@ -91,7 +91,7 @@ function main() {
     const def = spec.requiredSubfolders?.[sub];
     if (!def?.sourcePatterns?.length) continue;
     for (const pattern of def.sourcePatterns) {
-      if (!pattern.startsWith('docs/reference/')) continue;
+      if (!pattern.startsWith('docs/_archive/')) continue;
       if (!hasNarrativeInPath(REPO, pattern)) continue;
       const targetDir = join(archDir, sub);
       const hasTarget =
@@ -104,7 +104,7 @@ function main() {
   }
 
   for (const [refPath] of Object.entries(spec.crossReference?.referenceDecompose ?? {})) {
-    if (!refPath.startsWith('docs/reference/specs')) continue;
+    if (!refPath.startsWith('docs/_archive/specs')) continue;
     if (!hasNarrativeInPath(REPO, refPath)) continue;
     gates.push(gate(`decompose:${refPath}`, false, `reference specs must decompose to docs/architecture/specs/`));
   }

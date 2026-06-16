@@ -1,0 +1,106 @@
+{
+  "$schema": "gtcx://canon-os/docs-product-pack/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-16",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "title": "Docs product pack — fabric-os",
+  "principle": "Product experience SoR lives under docs/product/. Foundation holds why; business holds market and ICP; product holds personas, JTBD, workflows, journeys, and UX research. Technical design-system specs remain under docs/architecture/specs/design/.",
+  "requiredRootFiles": [
+    {
+      "path": "docs/product/README.md",
+      "role": "index + cross-ref table (foundation ↔ business ↔ product ↔ architecture)"
+    },
+    {
+      "path": "docs/product/FOLDER-SPEC.md",
+      "role": "repo-local provisioning mirror of this pack"
+    }
+  ],
+  "requiredSubfolders": {
+    "ux": {
+      "purpose": "Personas, jobs-to-be-done, workflows, journeys, information architecture, UX research",
+      "allowedDocTypes": ["product", "ux-research", "overview"],
+      "required": ["README.md"],
+      "canonicalFiles": [
+        "personas.md",
+        "job-to-be-done.md",
+        "northern-stars.md",
+        "information-architecture.md",
+        "user-flow-diagrams.md",
+        "critical-workflows.md",
+        "user-journey-maps.md"
+      ],
+      "sourcePatterns": [
+        "docs/_archive/product/ux-research/",
+        "docs/architecture/specs/design/ux-research/"
+      ],
+      "forbidden": ["GTM ICP prose — belongs in docs/business/customers/"]
+    },
+    "prds": {
+      "purpose": "Product requirement documents — narrative PRDs linked from pm/product/",
+      "allowedDocTypes": ["prd", "overview"],
+      "required": ["README.md"],
+      "optional": true,
+      "sourcePatterns": ["pm/product/prds/"]
+    },
+    "roadmap": {
+      "purpose": "Product roadmap narrative — executive summary links foundation/roadmap.md",
+      "allowedDocTypes": ["overview", "product"],
+      "required": ["README.md"],
+      "optional": true,
+      "sourcePatterns": ["docs/strategy/roadmap/", "docs/roadmap/"]
+    }
+  },
+  "forbiddenAtProductRoot": [
+    "Loose narrative *.md except README.md and FOLDER-SPEC.md",
+    "Duplicate foundation vision/mission prose",
+    "Duplicate business ICP or pricing prose"
+  ],
+  "profiles": {
+    "product": {
+      "productRequired": true,
+      "requiredSubfolders": ["ux"],
+      "optionalSubfolders": ["prds", "roadmap"]
+    },
+    "fleet-documentation": {
+      "productRequired": true,
+      "requiredSubfolders": ["ux"],
+      "optionalSubfolders": ["roadmap"]
+    },
+    "constitution-standards": {
+      "productRequired": false,
+      "allowed": "docs/product/README.md pointer to fleet product repos and ecosystem-os"
+    },
+    "platform": {
+      "productRequired": false,
+      "optionalSubfolders": ["ux", "roadmap"]
+    }
+  },
+  "crossReference": {
+    "spec": "pm/spec/docs-layer-cross-reference.json",
+    "foundationLinks": [
+      {
+        "foundation": "goals.md",
+        "product": "ux/northern-stars.md"
+      },
+      {
+        "foundation": "roadmap.md",
+        "product": "roadmap/"
+      }
+    ],
+    "referenceDecompose": {
+      "docs/_archive/product/ux-research/": "relocate → docs/product/ux/",
+      "docs/architecture/specs/design/ux-research/": "relocate → docs/product/ux/ (pointer stub left in architecture)"
+    }
+  },
+  "enforcement": {
+    "check": "pnpm docs:product:check",
+    "fleetCheck": "pnpm ecosystem:docs:product:fleet",
+    "witness": "audit/evidence/docs-product-latest.json",
+    "fleetWitness": "audit/evidence/fleet-docs-product-latest.json",
+    "gateSchema": "v2",
+    "stubForbidden": true,
+    "bootstrap": "node platform/scripts/fleet-docs-product-bootstrap.mjs --write --all"
+  },
+  "repo": "fabric-os",
+  "upstreamSpec": "../canon-os/pm/spec/docs-product-pack.json"
+}

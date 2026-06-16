@@ -1,0 +1,56 @@
+{
+  "$schema": "gtcx://canon-os/docs-foundation-pack/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-16",
+  "initiative": "INIT-DOCS-FOUNDATION-IA-V1",
+  "repo": "fabric-os",
+  "upstreamSpec": "../canon-os/pm/spec/docs-foundation-pack.json",
+  "title": "Docs foundation pack — fabric-os",
+  "requiredFiles": [
+    {
+      "path": "docs/foundation/README.md",
+      "role": "index"
+    },
+    {
+      "path": "docs/foundation/constitution.md",
+      "role": "charter"
+    },
+    {
+      "path": "docs/foundation/manifesto.md",
+      "role": "manifesto"
+    },
+    {
+      "path": "docs/foundation/vision.md",
+      "role": "vision"
+    },
+    {
+      "path": "docs/foundation/mission.md",
+      "role": "mission"
+    },
+    {
+      "path": "docs/foundation/goals.md",
+      "role": "goals"
+    },
+    {
+      "path": "docs/foundation/milestones.md",
+      "role": "milestones"
+    },
+    {
+      "path": "docs/foundation/roadmap.md",
+      "role": "roadmap"
+    }
+  ],
+  "machineMirror": {
+    "path": "pm/spec/product-goals.json",
+    "schema": "gtcx://bridge-os/product-goals/v1"
+  },
+  "fleetConstitution": {
+    "repo": "canon-os",
+    "path": "../canon-os/docs/governance/constitution/GTCX-CONSTITUTION.md",
+    "requiredArticles": ["I", "III", "V"]
+  },
+  "enforcement": {
+    "check": "pnpm docs:foundation:check",
+    "witness": "audit/evidence/docs-foundation-latest.json"
+  }
+}

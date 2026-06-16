@@ -1,0 +1,73 @@
+{
+  "schema": "gtcx://canon-os/docs-foundation-check/v1",
+  "repo": "fabric-os",
+  "at": "2026-06-16T06:09:01.045Z",
+  "ok": true,
+  "gates": [
+    {
+      "id": "spec",
+      "ok": true,
+      "detail": "pm/spec/docs-foundation-pack.json"
+    },
+    {
+      "id": "file:foundation/README.md",
+      "ok": true,
+      "detail": "docs/foundation/README.md"
+    },
+    {
+      "id": "file:foundation/constitution.md",
+      "ok": true,
+      "detail": "docs/foundation/constitution.md"
+    },
+    {
+      "id": "file:foundation/manifesto.md",
+      "ok": true,
+      "detail": "docs/foundation/manifesto.md"
+    },
+    {
+      "id": "file:foundation/vision.md",
+      "ok": true,
+      "detail": "docs/foundation/vision.md"
+    },
+    {
+      "id": "file:foundation/mission.md",
+      "ok": true,
+      "detail": "docs/foundation/mission.md"
+    },
+    {
+      "id": "file:foundation/goals.md",
+      "ok": true,
+      "detail": "docs/foundation/goals.md"
+    },
+    {
+      "id": "file:foundation/milestones.md",
+      "ok": true,
+      "detail": "docs/foundation/milestones.md"
+    },
+    {
+      "id": "file:foundation/roadmap.md",
+      "ok": true,
+      "detail": "docs/foundation/roadmap.md"
+    },
+    {
+      "id": "fleet-constitution",
+      "ok": true,
+      "detail": "../canon-os/docs/governance/constitution/GTCX-CONSTITUTION.md"
+    },
+    {
+      "id": "sync:vision",
+      "ok": true,
+      "detail": "vision.md mirrors product-goals.json"
+    },
+    {
+      "id": "sync:mission",
+      "ok": true,
+      "detail": "mission.md mirrors product-goals.json"
+    },
+    {
+      "id": "sync:milestone",
+      "ok": true,
+      "detail": "milestones.md references FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE"
+    }
+  ]
+}

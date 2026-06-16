@@ -3,7 +3,7 @@
   "schema": "gtcx.docs.sor.v1",
   "repo": "fabric-os",
   "repoKind": "infra-platform",
-  "updated": "2026-06-15",
+  "updated": "2026-06-16",
   "narrativeRoot": "docs/",
   "rootSorMap": "config/sor-map.json",
   "layoutContract": "config/layout-contract.json",
@@ -27,6 +27,7 @@
     }
   },
   "allowedTopLevel": [
+    "foundation",
     "api",
     "architecture",
     "engineering",
@@ -36,7 +37,8 @@
     "overview",
     "reference",
     "roadmap",
-    "specs"
+    "specs",
+    "business"
   ],
   "narrativePointersOnly": ["assurance", "coordination", "gtm", "legal", "security"],
   "documentDriven": {
@@ -44,6 +46,7 @@
     "paths": [
       "docs/README.md",
       "docs/INDEX.md",
+      "docs/foundation/",
       "docs/conventions.md",
       "docs/architecture/",
       "docs/specs/",

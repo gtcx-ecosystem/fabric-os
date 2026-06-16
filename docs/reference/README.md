@@ -1,29 +1,19 @@
 ---
-title: 'reference — templates and indexes only'
-status: current
+title: 'reference — pointer hub'
+status: pointer
 date: 2026-06-16
 owner: fabric-os
-document_type: folder-spec
-tier: operating
+document_type: overview
 review_cycle: on-change
 ---
 
-# reference
+# docs/reference/
 
-> **Decomposed:** product narrative → [`../business/`](../business/) · agent summaries → [`../foundation/`](../foundation/)  
-> **Spec:** [`../../canon-os/pm/spec/docs-layer-cross-reference.json`](../../canon-os/pm/spec/docs-layer-cross-reference.json)
+> **Canonical SoR:** decomposed per `docs-business-pack.json` + `docs-architecture-pack.json`.
 
-## Allowed after decomposition
+| Remaining                      | Role                                           |
+| ------------------------------ | ---------------------------------------------- |
+| [`guides/`](./guides/)         | Writing guides, glossary, integration patterns |
+| [`glossary.md`](./glossary.md) | Cannon / fleet glossary                        |
 
-| Subfolder    | Purpose                     |
-| ------------ | --------------------------- |
-| `templates/` | Copy targets                |
-| `glossary/`  | Terms                       |
-| `guides/`    | Thin API/quickstart indexes |
-
-## Pointer zones (do not expand)
-
-| Former path         | Canonical SoR    |
-| ------------------- | ---------------- |
-| `product/`          | `docs/business/` |
-| `overview/product/` | `docs/business/` |
+Business narrative → `docs/business/` · Technical specs → `docs/architecture/` · Runbooks → `docs/operations/runbooks/`

@@ -1,29 +1,28 @@
 ---
-title: 'Roadmap'
-status: 'current'
-date: '2026-05-31'
-owner: 'gtcx-infrastructure'
+title: 'roadmap/ — single home for roadmaps'
+status: current
+date: 2026-06-16
+owner: fabric-os
+document_type: roadmap
+tier: critical
+tags: ['documentation', 'roadmap']
+review_cycle: on-change
 ---
 
-# Roadmap
+# `docs/roadmap/` — fabric-os
 
-## Canonical plans
+## Lanes
 
-| Doc                                                                                                                | Role                                                             |
-| ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
-| [`audit/archive/legacy-docs-audit/ir-10-10-roadmap.md`](../../audit/archive/legacy-docs-audit/ir-10-10-roadmap.md) | **IR 7.6 → 10.0** — internal engineering dimensions              |
-| [`audit/execution-roadmap.md`](../../audit/execution-roadmap.md)                                                   | Sprint stories + acceptance commands (S1–S3 done; IR-1+ forward) |
+- technical/
+- ux-design/
+- gtm/
+- legal/
+- compliance/
+- partnerships/
 
-## Strategic milestones (longer horizon)
+## Pointer rules
 
-- [`roadmap-2026-07-13.md`](./roadmap-2026-07-13.md) — quarterly milestones, not the sprint backlog.
-
-## Status
-
-Machine-readable scorecard + open findings: [`audit/latest.json`](../../audit/latest.json).
-
-## Historical (superseded)
-
-Older roadmap artifacts under `01-docs/05-audit/agile/` are superseded by the
-execution plan above. Their `status:` frontmatter is marked
-`superseded`; do not consult them for current planning.
+- technical → `docs/architecture/specs/` + `pm/`
+- ux-design → `docs/product/`
+- gtm → `ops/gtm/` + `docs/business/`
+- legal/compliance → `ops/` + `docs/operations/`

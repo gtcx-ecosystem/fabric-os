@@ -1,24 +1,16 @@
 ---
-title: 'roadmap/ — folder provisioning'
+title: 'FOLDER-SPEC — docs/roadmap/'
 status: current
-date: 2026-06-15
+date: 2026-06-16
 owner: fabric-os
-document_type: folder-spec
-tier: standard
-tags: ['documentation', 'provisioning']
+document_type: roadmap
+tier: critical
+tags: ['documentation', 'roadmap']
 review_cycle: on-change
 ---
 
-# `docs/roadmap/` — provisioning
+# FOLDER-SPEC — `docs/roadmap/`
 
-> Parent: [`docs/FOLDER-SPEC.md`](../FOLDER-SPEC.md)
+Normative pack: `pm/spec/docs-roadmap-pack.json` (upstream canon-os).
 
-## Purpose
-
-Strategy and execution pointers for **fabric-os**.
-
-## Agent rules
-
-1. Read parent `docs/FOLDER-SPEC.md` before adding files
-2. Set `document_type` in frontmatter
-3. Update `docs/CHANGELOG.md` on structural changes
+Single home for all roadmap lanes.

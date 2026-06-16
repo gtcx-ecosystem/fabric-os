@@ -46,6 +46,10 @@ goals: 'Business narrative SoR — decomposed from reference/product and overvie
 | `case-studies/` | sector case studies                                                                 |
 | `use-cases/`    | stakeholder use cases                                                               |
 
+## Hub note (constitution-standards)
+
+Fleet product domain narrative lives in **[ecosystem-os/docs/business/domain/](../../ecosystem-os/docs/business/domain/)** — fabric-os keeps pointers and cross-reference tables only.
+
 ## Agent rules
 
 1. Read `docs/foundation/` before P22; use `docs/business/` for market/customer depth.

@@ -1,11 +1,205 @@
 {
   "$schema": "gtcx://canon-os/docs-business-pack/v1",
-  "version": "1.1.0",
+  "version": "1.2.0",
+  "updated": "2026-06-16",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
   "repo": "fabric-os",
   "upstreamSpec": "../canon-os/pm/spec/docs-business-pack.json",
-  "initiative": "INIT-DOCS-FOUNDATION-IA-V1",
+  "title": "Docs business pack — fabric-os",
+  "principle": "Business depth lives under docs/business/. Foundation holds summaries and links down. reference/product and overview/product decompose here. archive/docs/business/*.md promotes to docs/business/research/ — never business root.",
+  "requiredRootFiles": [
+    {
+      "path": "docs/business/README.md",
+      "role": "index + cross-ref table (foundation ↔ business ↔ former reference/overview/archive)"
+    },
+    {
+      "path": "docs/business/FOLDER-SPEC.md",
+      "role": "repo-local provisioning mirror of this pack"
+    }
+  ],
+  "requiredSubfolders": {
+    "market": {
+      "purpose": "Market sizing, problem/solution, stakeholder analysis",
+      "allowedDocTypes": ["overview", "gtm-brief"],
+      "required": ["README.md"],
+      "canonicalFiles": [
+        "primary-market.md",
+        "secondary-market.md",
+        "tertiary-market.md",
+        "problem.md",
+        "stakeholder-analysis.md"
+      ],
+      "sourcePatterns": [
+        "archive/superseded/p35-docs-retired/product/{primary-market,secondary-market,tertiary-market,problem,stakeholder-analysis}.md",
+        "docs/overview/product/",
+        "docs/reference/product/"
+      ]
+    },
+    "customers": {
+      "purpose": "ICP, personas, core audiences, early adopters",
+      "allowedDocTypes": ["overview", "gtm-brief"],
+      "required": ["README.md"],
+      "canonicalFiles": [
+        "core-audiences.md",
+        "ideal-customer-profile.md",
+        "personas.md",
+        "early-stage-adopter.md"
+      ],
+      "foundationLink": "docs/foundation/mission.md → customers/",
+      "sourcePatterns": [
+        "archive/superseded/p35-docs-retired/product/{core-audiences,ideal-customer-profile,personas,early-stage-adopter}.md"
+      ]
+    },
+    "economics": {
+      "purpose": "Business model, pricing, revenue, product metrics",
+      "allowedDocTypes": ["overview", "gtm-brief"],
+      "required": ["README.md"],
+      "canonicalFiles": [
+        "business-model.md",
+        "pricing.md",
+        "revenue-streams.md",
+        "product-metrics.md",
+        "analytics-registry.md"
+      ],
+      "foundationLink": "docs/foundation/goals.md → economics/",
+      "sourcePatterns": [
+        "archive/superseded/p35-docs-retired/product/{business-model,pricing,revenue-streams,product-metrics,analytics-registry}.md"
+      ]
+    },
+    "strategy": {
+      "purpose": "Executive narrative detail — complements foundation vision/mission summaries",
+      "allowedDocTypes": ["overview", "gtm-brief"],
+      "required": ["README.md"],
+      "canonicalFiles": [
+        "executive-summary.md",
+        "solution.md",
+        "ecosystem-integration.md",
+        "implementation-truth.md"
+      ],
+      "foundationLink": "docs/foundation/vision.md → strategy/executive-summary.md",
+      "sourcePatterns": [
+        "archive/superseded/p35-docs-retired/product/{executive-summary,solution,ecosystem-integration,implementation-truth}.md"
+      ]
+    },
+    "research": {
+      "purpose": "Long-form strategic research — promoted from archive/docs/business/; not session-mandatory",
+      "allowedDocTypes": ["overview", "gtm-brief"],
+      "required": ["README.md"],
+      "forbiddenAtParent": "Loose research *.md at docs/business/ root — use research/ only",
+      "canonicalFiles": [
+        "industry-transformation.md",
+        "funding-analysis.md",
+        "capital-markets-playbook.md",
+        "ecosystem-overview.md",
+        "master-voice.md",
+        "research-portfolio-blueprint.md"
+      ],
+      "optionalFiles": ["competitive-benchmarks.md", "market-research/*.md"],
+      "sourcePatterns": ["archive/docs/business/*.md"],
+      "promoteRule": "archive/docs/business/{file}.md → docs/business/research/{file}.md (exclude README.md; case-studies/ and use-cases/ stay as sibling subfolders)"
+    },
+    "case-studies": {
+      "purpose": "Sector and pilot case studies",
+      "allowedDocTypes": ["overview", "gtm-brief"],
+      "required": ["README.md"],
+      "sourcePatterns": ["archive/docs/business/case-studies/"]
+    },
+    "use-cases": {
+      "purpose": "Stakeholder-specific use cases",
+      "allowedDocTypes": ["overview", "gtm-brief"],
+      "required": ["README.md"],
+      "sourcePatterns": ["archive/docs/business/use-cases/"]
+    },
+    "partnerships": {
+      "purpose": "Partner and channel narrative",
+      "allowedDocTypes": ["overview", "gtm-brief"],
+      "required": ["README.md"],
+      "optional": true,
+      "sourcePatterns": ["docs/reference/partnerships/"]
+    },
+    "sales": {
+      "purpose": "Sales enablement, procurement, demo scripts",
+      "allowedDocTypes": ["overview", "gtm-brief", "runbook"],
+      "required": ["README.md"],
+      "optional": true,
+      "sourcePatterns": ["docs/reference/sales/"]
+    },
+    "domain": {
+      "purpose": "Fleet or repo domain narrative (commodities, verticals)",
+      "allowedDocTypes": ["overview", "gtm-brief"],
+      "required": ["README.md"],
+      "optional": true,
+      "hubNote": "canon-os hub → pointers to ecosystem-os/docs/business/domain/",
+      "sourcePatterns": ["docs/reference/domain/"]
+    }
+  },
+  "forbiddenAtBusinessRoot": [
+    "Loose narrative *.md except README.md and FOLDER-SPEC.md",
+    "research/*.md at parent — must be under research/",
+    "Duplicate of foundation/ vision.md or mission.md prose"
+  ],
+  "profiles": {
+    "product": {
+      "businessRequired": true,
+      "requiredSubfolders": ["market", "customers", "economics", "strategy", "research"],
+      "optionalSubfolders": ["case-studies", "use-cases", "partnerships", "sales", "domain"]
+    },
+    "fleet-documentation": {
+      "businessRequired": true,
+      "requiredSubfolders": ["market", "customers", "research", "domain"],
+      "optionalSubfolders": ["economics", "strategy", "case-studies", "partnerships", "sales"]
+    },
+    "constitution-standards": {
+      "businessRequired": false,
+      "allowed": "docs/business/README.md pointers to ecosystem-os only"
+    },
+    "platform": {
+      "businessRequired": false,
+      "optionalSubfolders": ["strategy", "research"]
+    }
+  },
+  "crossReference": {
+    "spec": "pm/spec/docs-layer-cross-reference.json",
+    "foundationLinks": [
+      {
+        "foundation": "vision.md",
+        "business": "strategy/executive-summary.md"
+      },
+      {
+        "foundation": "mission.md",
+        "business": "customers/"
+      },
+      {
+        "foundation": "goals.md",
+        "business": "economics/product-metrics.md"
+      },
+      {
+        "foundation": "roadmap.md",
+        "business": "strategy/"
+      }
+    ],
+    "referenceDecompose": {
+      "docs/reference/product/": "pointer stubs → docs/business/{subfolder}/",
+      "docs/overview/product/": "pointer stubs or delete when empty",
+      "archive/docs/business/": "promote → docs/business/research/ (+ case-studies, use-cases)"
+    }
+  },
+  "sourcePriority": [
+    "pm/spec/product-goals.json",
+    "docs/foundation/",
+    "archive/superseded/p35-docs-retired/product/",
+    "archive/docs/business/",
+    "docs/overview/product/",
+    "docs/reference/product/"
+  ],
+  "afterMigration": {
+    "overviewProduct": "pointer README only or delete when empty",
+    "referenceProduct": "pointer stubs to docs/business/",
+    "referenceAllowed": ["templates", "glossary", "guides"]
+  },
   "enforcement": {
     "check": "pnpm docs:business:check",
+    "fleetCheck": "pnpm ecosystem:docs:business:fleet",
     "witness": "audit/evidence/docs-business-latest.json"
   }
 }

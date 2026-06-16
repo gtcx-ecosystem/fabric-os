@@ -1,24 +1,14 @@
 ---
-title: 'operations/ — folder provisioning'
+title: 'FOLDER-SPEC — docs/operations/'
 status: current
-date: 2026-06-15
+date: 2026-06-16
 owner: fabric-os
 document_type: folder-spec
-tier: standard
-tags: ['documentation', 'provisioning']
+tier: critical
+tags: ['documentation', 'operations']
 review_cycle: on-change
 ---
 
-# `docs/operations/` — provisioning
+# FOLDER-SPEC — `docs/operations/`
 
-> Parent: [`docs/FOLDER-SPEC.md`](../FOLDER-SPEC.md)
-
-## Purpose
-
-Runbooks and ops narrative (P29 domains under ops/) for **fabric-os**.
-
-## Agent rules
-
-1. Read parent `docs/FOLDER-SPEC.md` before adding files
-2. Set `document_type` in frontmatter
-3. Update `docs/CHANGELOG.md` on structural changes
+Normative pack: [`../../pm/spec/docs-operations-pack.json`](../../pm/spec/docs-operations-pack.json)

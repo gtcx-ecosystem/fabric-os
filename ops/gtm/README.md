@@ -1,10 +1,10 @@
-# workspace/gtm — gtcx-infrastructure
+# ops/gtm — fabric-os
 
-Go-to-market **scope** (pen-test in/out, SOC controls owned, procurement).
+Go-to-market **scope** machine register (pen-test in/out, SOC controls owned, procurement).
 
 | Artifact | Path                               |
 | -------- | ---------------------------------- |
 | Manifest | [`manifest.json`](./manifest.json) |
 | Scope    | [`scope.json`](./scope.json)       |
 
-**Narrative:** [`01-docs/08-gtm/`](../../01-docs/08-gtm/) — pen-test, SOC, inbound-tickets buyer slices.
+**Docs index:** [`docs/roadmap/gtm/README.md`](../../docs/roadmap/gtm/README.md)

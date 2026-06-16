@@ -1,31 +1,31 @@
 {
   "$schema": "gtcx://workspace/assurance-programs-index/v1",
-  "repo": "gtcx-infrastructure",
-  "updated": "2026-06-08",
+  "repo": "fabric-os",
+  "updated": "2026-06-16",
   "programs": [
     {
       "id": "pen-test",
-      "narrative": "01-docs/07-assurance/programs/pen-test.md",
+      "docPath": "docs/operations/runbooks/assurance/pen-test.md",
       "status": "not-applicable"
     },
     {
       "id": "soc2",
-      "narrative": "01-docs/07-assurance/programs/soc2.md",
+      "docPath": "docs/operations/runbooks/assurance/soc2.md",
       "status": "not-applicable"
     },
     {
       "id": "pilot",
-      "narrative": "01-docs/07-assurance/programs/pilot.md",
+      "docPath": "docs/operations/runbooks/assurance/pilot.md",
       "status": "not-applicable"
     },
     {
       "id": "attestation",
-      "narrative": "01-docs/07-assurance/programs/attestation.md",
+      "docPath": "docs/operations/runbooks/assurance/attestation.md",
       "status": "not-applicable"
     },
     {
       "id": "legal-dpa",
-      "narrative": "01-docs/07-assurance/programs/legal-dpa.md",
+      "docPath": "docs/operations/runbooks/assurance/legal-dpa.md",
       "status": "not-applicable"
     }
   ]

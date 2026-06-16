@@ -1,6 +1,6 @@
 {
   "$schema": "gtcx://legal/gates-lens/v1",
-  "repo": "gtcx-infrastructure",
+  "repo": "fabric-os",
   "updated": "2026-06-09",
   "attestationGates": "ops/attestation/gates.local.json",
   "authorityClass": "S",

@@ -1,6 +1,6 @@
-# workspace/compliance — gtcx-infrastructure
+# ops/compliance — fabric-os
 
-Standards gaps and compliance evidence index.
+Standards gaps and compliance evidence index (machine layer).
 
 | Artifact | Path                                           |
 | -------- | ---------------------------------------------- |
@@ -8,5 +8,5 @@ Standards gaps and compliance evidence index.
 | Evidence | [`evidence-index.json`](./evidence-index.json) |
 | Gaps     | [`gaps.json`](./gaps.json)                     |
 
-**Narrative:** [`01-docs/10-compliance/README.md`](../../01-docs/10-compliance/README.md)  
-**Standards SoR:** [gtcx-docs compliance](https://github.com/gtcx-ecosystem/gtcx-docs/tree/main/01-docs/10-compliance/)
+**Docs index:** [`docs/roadmap/compliance/README.md`](../../docs/roadmap/compliance/README.md)  
+**Fleet standards SoR:** [canon-os compliance](https://github.com/gtcx-ecosystem/canon-os/tree/main/docs/governance/compliance/)

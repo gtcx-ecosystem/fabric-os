@@ -1,13 +1,13 @@
 {
-  "$schema": "gtcx://02-ops/attestation/witness/v1",
-  "repo": "gtcx-infrastructure",
+  "$schema": "gtcx://ops/attestation/witness/v1",
+  "repo": "fabric-os",
   "updated": "2026-06-08",
   "paths": {
-    "evidence": "02-ops/attestation/witness/evidence-index.json",
-    "narrative": "01-docs/05-audit/README.md",
-    "latest": "01-docs/05-audit/latest.json"
+    "evidence": "ops/attestation/witness/evidence-index.json",
+    "docsIndex": "audit/README.md",
+    "latest": "audit/latest.json"
   },
   "sor": {
-    "deploymentProof": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/05-audit/evidence/deployment-proof-index.md"
+    "deploymentProof": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/audit/evidence/deployment-proof-index.md"
   }
 }

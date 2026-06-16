@@ -1,6 +1,6 @@
 {
   "$schema": "gtcx://workspace/gtm-scope/v1",
-  "repo": "gtcx-infrastructure",
+  "repo": "fabric-os",
   "updated": "2026-06-08",
   "penTest": {
     "inScope": [],
@@ -10,6 +10,6 @@
     "controlsOwned": []
   },
   "procurement": {
-    "sor": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/08-gtm/procurement-packet-index.md"
+    "sor": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/roadmap/gtm/procurement-packet-index.md"
   }
 }

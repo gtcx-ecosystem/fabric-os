@@ -195,7 +195,9 @@
     "docs:roadmap:check": "node platform/scripts/docs-roadmap-check.mjs",
     "docs:roadmap:check:write": "node platform/scripts/docs-roadmap-check.mjs --write",
     "docs:operations:check": "node platform/scripts/docs-operations-check.mjs",
-    "docs:operations:check:write": "node platform/scripts/docs-operations-check.mjs --write"
+    "docs:operations:check:write": "node platform/scripts/docs-operations-check.mjs --write",
+    "docs:agents:check": "node platform/scripts/docs-agents-check.mjs",
+    "docs:agents:check:write": "node platform/scripts/docs-agents-check.mjs --write"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

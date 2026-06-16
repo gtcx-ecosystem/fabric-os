@@ -1,0 +1,144 @@
+{
+  "schema": "gtcx://canon-os/docs-agents-check/v1",
+  "repo": "fabric-os",
+  "profile": "platform",
+  "at": "2026-06-16T15:48:41.154Z",
+  "ok": true,
+  "gates": [
+    {
+      "id": "spec:local-present",
+      "ok": true,
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-agents-pack.json"
+    },
+    {
+      "id": "spec:not-stub",
+      "ok": true,
+      "detail": "full local pack"
+    },
+    {
+      "id": "spec:resolved-full",
+      "ok": true,
+      "detail": "resolved full agents pack"
+    },
+    {
+      "id": "profile",
+      "ok": true,
+      "detail": "platform"
+    },
+    {
+      "id": "root:docs/agents/README.md",
+      "ok": true,
+      "detail": "docs/agents/README.md"
+    },
+    {
+      "id": "root:docs/agents/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "docs/agents/FOLDER-SPEC.md"
+    },
+    {
+      "id": "root:docs/agents/pillar-scorecard.md",
+      "ok": true,
+      "detail": "docs/agents/pillar-scorecard.md"
+    },
+    {
+      "id": "root-readme:separation",
+      "ok": true,
+      "detail": "README cites separation"
+    },
+    {
+      "id": "root-readme:pack-link",
+      "ok": true,
+      "detail": "README cites pack"
+    },
+    {
+      "id": "root-folder-spec:pack-link",
+      "ok": true,
+      "detail": "FOLDER-SPEC cites pack"
+    },
+    {
+      "id": "subfolder:bootstrap",
+      "ok": true,
+      "detail": "docs/agents/bootstrap/"
+    },
+    {
+      "id": "subfolder-file:bootstrap/README.md",
+      "ok": true,
+      "detail": "docs/agents/bootstrap/README.md"
+    },
+    {
+      "id": "subfolder-file:bootstrap/session-chain.json",
+      "ok": true,
+      "detail": "docs/agents/bootstrap/session-chain.json"
+    },
+    {
+      "id": "subfolder-file:bootstrap/provider-routes.json",
+      "ok": true,
+      "detail": "docs/agents/bootstrap/provider-routes.json"
+    },
+    {
+      "id": "subfolder:capabilities",
+      "ok": true,
+      "detail": "docs/agents/capabilities/"
+    },
+    {
+      "id": "subfolder-file:capabilities/README.md",
+      "ok": true,
+      "detail": "docs/agents/capabilities/README.md"
+    },
+    {
+      "id": "subfolder-file:capabilities/authority-matrix.md",
+      "ok": true,
+      "detail": "docs/agents/capabilities/authority-matrix.md"
+    },
+    {
+      "id": "subfolder-file:capabilities/forbidden-actions.md",
+      "ok": true,
+      "detail": "docs/agents/capabilities/forbidden-actions.md"
+    },
+    {
+      "id": "subfolder:playbooks",
+      "ok": true,
+      "detail": "docs/agents/playbooks/"
+    },
+    {
+      "id": "subfolder-file:playbooks/README.md",
+      "ok": true,
+      "detail": "docs/agents/playbooks/README.md"
+    },
+    {
+      "id": "subfolder:personas",
+      "ok": true,
+      "detail": "docs/agents/personas/"
+    },
+    {
+      "id": "subfolder-file:personas/README.md",
+      "ok": true,
+      "detail": "docs/agents/personas/README.md"
+    },
+    {
+      "id": "subfolder:integrations",
+      "ok": true,
+      "detail": "docs/agents/integrations/"
+    },
+    {
+      "id": "subfolder-file:integrations/README.md",
+      "ok": true,
+      "detail": "docs/agents/integrations/README.md"
+    },
+    {
+      "id": "subfolder-file:integrations/cross-repo-handoffs.md",
+      "ok": true,
+      "detail": "docs/agents/integrations/cross-repo-handoffs.md"
+    },
+    {
+      "id": "bootstrap:session-chain-valid",
+      "ok": true,
+      "detail": "session-chain shape"
+    },
+    {
+      "id": "bootstrap:provider-routes-valid",
+      "ok": true,
+      "detail": "provider-routes shape"
+    }
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "$schema": "gtcx://canon-os/docs-agents-pack/v1",
+  "version": "1.1.0",
+  "updated": "2026-06-16",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "wave": "W10",
+  "title": "Docs agents pack — fabric-os",
+  "principle": "docs/agents/ is the repo-local agent-capability slice only. Fleet bootstrap law, persona registry, P22 engine, and runtime/MCP live in bridge-os and baseline-os — link, never fork. Primary pillar: Agentic Empowerment & Orchestration (P9).",
+  "sorTiers": {
+    "canon-os": {
+      "role": "constitution + protocol law",
+      "house": [
+        "docs/governance/protocols/ (P22–P45 normative text)",
+        "docs/agents/provisioning/AGENT-INIT-CANON.md (fleet init canon — hub only)",
+        "pm/agent-provisioning-bundle.json"
+      ],
+      "productRepos": "pointer only — link to canon-os; do not copy protocol bodies"
+    },
+    "bridge-os": {
+      "role": "agentic hub — fleet orchestration + sync templates",
+      "house": [
+        "config/ecosystem-provider-bootstrap-registry.json (P39 machine SoR)",
+        "pm/spec/repo-persona-profiles.json",
+        "pm/spec/agent-conduct-protocol.json",
+        "pm/spec/product-lead-directive-protocol.json",
+        "platform/scripts/sync/templates/docs/agents/ (seed stubs — not runtime SoR)",
+        "pnpm agent:next-work · ecosystem:* fleet gates"
+      ],
+      "productRepos": "consume via checkout path ../bridge-os — never duplicate JSON registries"
+    },
+    "baseline-os": {
+      "role": "platform runtime — session, MCP, ACR, communication spec",
+      "house": [
+        "pm/spec/agent-communication-protocol.json (P45 machine SoR)",
+        "docs/operations/agent-spine/ universal instructions source for sync",
+        "platform/packages/baselineos (MCP: search, index, baseline_agent_onboard)",
+        "config/baseline/model-b-knowledge.mjs (RAG index roots)",
+        "docs/reference/intelligence/GTCX-AI-INTELLIGENCE-CHARTER.md"
+      ],
+      "productRepos": "link from docs/agents/integrations/ — do not fork runtime docs"
+    },
+    "ownerRepoLocal": {
+      "role": "repo-scoped agent slice under docs/agents/",
+      "house": [
+        "docs/agents/bootstrap/session-chain.json (repo read order — may reference fleet paths)",
+        "docs/agents/bootstrap/provider-routes.json (links to AGENTS.md + dot dirs — not prose copies)",
+        "docs/agents/capabilities/authority-matrix.md (repo Class R/A/S map)",
+        "docs/agents/capabilities/forbidden-actions.md (repo-specific)",
+        "docs/agents/playbooks/ (repo-only agent tasks)",
+        "docs/agents/personas/README.md (index — link bridge persona profiles)",
+        "docs/agents/integrations/cross-repo-handoffs.md (this repo XR wiring)"
+      ],
+      "forbidden": [
+        "Fleet persona profile bodies",
+        "Provider bootstrap prose (AGENTS.md / CLAUDE.md content)",
+        "P22/P27 protocol text",
+        "bridge-os or baseline-os JSON registries",
+        "Per-provider markdown trees when provider-routes.json suffices"
+      ]
+    }
+  },
+  "pillarContract": {
+    "compliance": {
+      "primary": true,
+      "artifacts": [
+        "docs/agents/bootstrap/provider-routes.json",
+        "docs/agents/capabilities/authority-matrix.md",
+        "docs/agents/FOLDER-SPEC.md"
+      ],
+      "gates": [
+        "pnpm agent:provider-bootstrap:check",
+        "no duplicate CLAUDE.md/GEMINI.md under docs/agents/"
+      ],
+      "minBar": "P39 R5 pass — index-only provider stubs",
+      "witness": "audit/evidence/docs-agents-compliance-latest.json"
+    },
+    "technicalExcellence": {
+      "secondary": true,
+      "artifacts": [
+        "docs/agents/bootstrap/session-chain.json",
+        "docs/agents/integrations/README.md"
+      ],
+      "gates": ["pnpm docs:agents:check", "session-chain resolves all paths"],
+      "minBar": "all bootstrap paths exist on disk"
+    },
+    "craft": {
+      "secondary": true,
+      "artifacts": ["docs/agents/README.md"],
+      "gates": ["no-loose-narrative-at-agents-root except README + FOLDER-SPEC + pillar-scorecard"],
+      "minBar": "provider READMEs ≤40 lines; link-only"
+    },
+    "worldClass": {
+      "secondary": true,
+      "artifacts": ["docs/agents/bootstrap/README.md", "docs/agents/pillar-scorecard.md"],
+      "gates": ["time-to-first-success path documented with commands + exit codes"],
+      "minBar": "session chain ≤8 reads before P22"
+    },
+    "trustAndSafety": {
+      "primary": true,
+      "artifacts": [
+        "docs/agents/capabilities/authority-matrix.md",
+        "docs/agents/capabilities/forbidden-actions.md"
+      ],
+      "gates": ["P28 classes mapped", "secrets never in playbooks"],
+      "minBar": "trust floor ≥70 for repo agents layer witness"
+    },
+    "creativityInnovation": {
+      "notApplicable": true,
+      "reason": "Novel capability belongs in product/architecture layers; agents layer routes to them"
+    },
+    "commercialValue": {
+      "notApplicable": true,
+      "reason": "GTM prose lives in docs/business/ and docs/roadmap/gtm/"
+    },
+    "defensiveMoat": {
+      "secondary": true,
+      "artifacts": ["docs/agents/personas/README.md"],
+      "gates": ["links to pm persona profiles — no forked persona bodies"],
+      "minBar": "persona SoR remains pm/spec/repo-persona-profiles.json"
+    },
+    "agenticEmpowerment": {
+      "primary": true,
+      "artifacts": [
+        "docs/agents/bootstrap/",
+        "docs/agents/capabilities/",
+        "docs/agents/playbooks/"
+      ],
+      "gates": ["pnpm docs:agents:check", "workspace:agents pass"],
+      "minBar": "repo agents layer ≥85 on P9 dimension at repo audit order",
+      "witness": "audit/evidence/docs-agents-latest.json"
+    },
+    "ecosystemIntegration": {
+      "primary": true,
+      "artifacts": [
+        "docs/agents/integrations/README.md",
+        "docs/agents/integrations/cross-repo-handoffs.md"
+      ],
+      "gates": ["bridge manifest link", "owner-repo switch rules documented"],
+      "minBar": "XR handoff template linked from integrations/"
+    },
+    "ipMagic": {
+      "notApplicable": true,
+      "reason": "Signature operator moments live in docs/product/acceptance/ and EXR surfaces"
+    }
+  },
+  "requiredRootFiles": [
+    {
+      "path": "docs/agents/README.md",
+      "role": "layer index — session purpose, pillar scorecard link, separation matrix"
+    },
+    {
+      "path": "docs/agents/FOLDER-SPEC.md",
+      "role": "repo-local mirror of this pack"
+    },
+    {
+      "path": "docs/agents/pillar-scorecard.md",
+      "role": "11PR self-assessment for this layer — links to fleet rubric"
+    }
+  ],
+  "requiredSubfolders": {
+    "bootstrap": {
+      "purpose": "Session entry — read order, provider routes, links to AGENTS.md / .agent/ (no prose duplication)",
+      "allowedDocTypes": ["onboarding", "folder-spec"],
+      "required": ["README.md", "session-chain.json", "provider-routes.json"],
+      "forbidden": [
+        "Full copies of AGENTS.md or CLAUDE.md",
+        "Protocol bodies — docs/governance/",
+        "P22/P27 execution prose — docs/operations/agent-spine/"
+      ]
+    },
+    "capabilities": {
+      "purpose": "What agents may do in this repo — commands, tools, authority classes, forbidden actions",
+      "allowedDocTypes": ["onboarding", "runbook"],
+      "required": ["README.md", "authority-matrix.md", "forbidden-actions.md"],
+      "machineLinks": ["ops/pm/", "ops/attestation/", "pm/spec/repo-persona-profiles.json"]
+    },
+    "playbooks": {
+      "purpose": "Repo-scoped agent task playbooks (investigate CI, write ADR, dependency bump) — not operator incident runbooks",
+      "allowedDocTypes": ["onboarding", "runbook"],
+      "required": ["README.md"],
+      "sourcePatterns": ["docs/operations/agents/workflows/"],
+      "forbidden": ["Duplicate docs/operations/runbooks/ content"]
+    },
+    "personas": {
+      "purpose": "Index to institutional personas — link pm profiles, do not fork persona markdown",
+      "allowedDocTypes": ["onboarding"],
+      "required": ["README.md"]
+    },
+    "integrations": {
+      "purpose": "MCP, bridge-os, cross-repo agent handoffs, fleet harness entry",
+      "allowedDocTypes": ["onboarding", "architecture"],
+      "required": ["README.md", "cross-repo-handoffs.md"]
+    }
+  },
+  "allRequiredSubfolders": ["bootstrap", "capabilities", "playbooks", "personas", "integrations"],
+  "profileSubfolderPolicy": "All profiles use allRequiredSubfolders — no optional subfolders. Profiles may differ on hub-only paths (e.g. docs/agents/provisioning/ on canon-os) but never on the five subfolders.",
+  "forbiddenAtAgentsRoot": [
+    "Provider-specific prose trees (cursor/, claude/, …) — use bootstrap/provider-routes.json",
+    "SOP archive sprawl — decompose to playbooks/ or link ecosystem-os",
+    "Loose *.md except README.md, FOLDER-SPEC.md, pillar-scorecard.md",
+    "Duplicate ops/ domain folders (security, compliance, gtm)",
+    "Machine JSON except bootstrap/*.json"
+  ],
+  "profiles": {
+    "constitution-standards": {
+      "agentsRequired": true,
+      "requiredSubfolders": ["bootstrap", "capabilities", "playbooks", "personas", "integrations"],
+      "note": "Hub hosts fleet agent init canon link; all five subfolders required fleet-wide"
+    },
+    "product": {
+      "agentsRequired": true,
+      "requiredSubfolders": ["bootstrap", "capabilities", "playbooks", "personas", "integrations"]
+    },
+    "platform": {
+      "agentsRequired": true,
+      "requiredSubfolders": ["bootstrap", "capabilities", "playbooks", "personas", "integrations"]
+    },
+    "fleet-documentation": {
+      "agentsRequired": true,
+      "requiredSubfolders": ["bootstrap", "capabilities", "playbooks", "personas", "integrations"]
+    }
+  },
+  "sessionChain": {
+    "description": "Machine + human read order before pnpm agent:next-work",
+    "machine": "docs/agents/bootstrap/session-chain.json",
+    "defaultHumanOrder": [
+      "docs/foundation/README.md",
+      "canon-os:docs/governance/constitution/GTCX-CONSTITUTION.md (fleet — via checkout)",
+      "canon-os:docs/agents/provisioning/AGENT-INIT-CANON.md (fleet — hub canon)",
+      "docs/agents/bootstrap/README.md",
+      "docs/agents/capabilities/authority-matrix.md",
+      "docs/operations/agent-spine/agent-universal-instructions.md"
+    ],
+    "maxReads": 8
+  },
+  "crossReference": {
+    "operationsAgentSpine": "docs/operations/agent-spine/",
+    "governanceProtocols": "docs/governance/protocols/",
+    "fleetInitCanon": "canon-os:docs/agents/provisioning/AGENT-INIT-CANON.md",
+    "personaProfiles": "bridge-os:pm/spec/repo-persona-profiles.json",
+    "providerBootstrapRegistry": "bridge-os:config/ecosystem-provider-bootstrap-registry.json",
+    "agentCommunicationSpec": "baseline-os:pm/spec/agent-communication-protocol.json",
+    "agentSyncTemplates": "bridge-os:platform/scripts/sync/templates/docs/agents/",
+    "separationMatrix": "pm/spec/docs-folder-pillar-contract.json#separationMatrix"
+  },
+  "migration": {
+    "from": [
+      "docs/operations/agents/",
+      "docs/reference/agent-sops/",
+      "docs/_archive/agent-sops/",
+      "per-provider folders at docs/agents/{cursor,claude,...}"
+    ],
+    "to": {
+      "workflows": "docs/agents/playbooks/",
+      "providerStubs": "bootstrap/provider-routes.json",
+      "onboardingSOPs": "playbooks/ or pointer to ecosystem-os"
+    },
+    "pointerStubAt": "docs/operations/agents/README.md"
+  },
+  "enforcement": {
+    "check": "pnpm docs:agents:check",
+    "fleetCheck": "pnpm ecosystem:docs:agents:fleet",
+    "witness": "audit/evidence/docs-agents-latest.json",
+    "fleetWitness": "audit/evidence/fleet-docs-agents-latest.json",
+    "bootstrap": "node platform/scripts/fleet-docs-agents-bootstrap.mjs --write --all",
+    "gateSchema": "gtcx://canon-os/docs-agents-check/v1",
+    "requiredGates": [
+      "spec:resolved-full",
+      "pillarContract:complete",
+      "subfolder:bootstrap",
+      "subfolder:capabilities",
+      "subfolder:playbooks",
+      "subfolder:personas",
+      "subfolder:integrations",
+      "bootstrap:session-chain-valid",
+      "bootstrap:provider-routes-valid",
+      "no-duplicate-bootstrap-prose",
+      "separation:agent-spine-not-in-agents",
+      "workspace:agents-compatible"
+    ]
+  },
+  "relatedSpecs": [
+    "pm/spec/docs-folder-pillar-contract.json",
+    "pm/spec/docs-operations-pack.json",
+    "pm/spec/docs-ia-initiative.json",
+    "pm/spec/docs-folder-provisioning.json",
+    "docs/governance/protocols/provider-agnostic-agent-bootstrap/protocol.md"
+  ],
+  "repo": "fabric-os",
+  "upstreamSpec": "../canon-os/pm/spec/docs-agents-pack.json"
+}

@@ -1,30 +1,29 @@
 ---
-title: 'Reference'
-status: 'current'
-date: '2026-05-27'
-owner: 'frontier-infra-engineer'
-role: 'frontier-infra-engineer'
-tier: 'informational'
-tags: ['reference', 'glossary']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
-trust_score: 95
-autonomy_level: 'sovereign'
+title: 'reference — templates and indexes only'
+status: current
+date: 2026-06-16
+owner: fabric-os
+document_type: folder-spec
+tier: operating
+review_cycle: on-change
 ---
 
-# Reference
+# reference
 
-This directory contains reference documentation for the GTCX infrastructure.
+> **Decomposed:** product narrative → [`../business/`](../business/) · agent summaries → [`../foundation/`](../foundation/)  
+> **Spec:** [`../../canon-os/pm/spec/docs-layer-cross-reference.json`](../../canon-os/pm/spec/docs-layer-cross-reference.json)
 
-## Contents
+## Allowed after decomposition
 
-- cannon-glossary.md
-- changelog.md
-- docs-writing-guide.md
-- glossary.md
-- performance-metrics.md
-- performance-slos.md
+| Subfolder    | Purpose                     |
+| ------------ | --------------------------- |
+| `templates/` | Copy targets                |
+| `glossary/`  | Terms                       |
+| `guides/`    | Thin API/quickstart indexes |
 
----
+## Pointer zones (do not expand)
 
-_Generated: 2026-05-17_
+| Former path         | Canonical SoR    |
+| ------------------- | ---------------- |
+| `product/`          | `docs/business/` |
+| `overview/product/` | `docs/business/` |

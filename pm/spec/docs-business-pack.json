@@ -1,0 +1,11 @@
+{
+  "$schema": "gtcx://canon-os/docs-business-pack/v1",
+  "version": "1.1.0",
+  "repo": "fabric-os",
+  "upstreamSpec": "../canon-os/pm/spec/docs-business-pack.json",
+  "initiative": "INIT-DOCS-FOUNDATION-IA-V1",
+  "enforcement": {
+    "check": "pnpm docs:business:check",
+    "witness": "audit/evidence/docs-business-latest.json"
+  }
+}

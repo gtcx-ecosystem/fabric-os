@@ -185,7 +185,9 @@
     "mlops:cost-router-staging-probe": "node platform/scripts/mlops-cost-router-staging-probe.mjs",
     "mlops:cost-router-staging-probe:write": "node platform/scripts/mlops-cost-router-staging-probe.mjs --write",
     "docs:foundation:check": "node platform/scripts/docs-foundation-check.mjs",
-    "docs:foundation:check:write": "node platform/scripts/docs-foundation-check.mjs --write"
+    "docs:foundation:check:write": "node platform/scripts/docs-foundation-check.mjs --write",
+    "docs:business:check": "node platform/scripts/docs-business-check.mjs",
+    "docs:business:check:write": "node platform/scripts/docs-business-check.mjs --write"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

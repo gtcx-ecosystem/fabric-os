@@ -187,7 +187,9 @@
     "docs:foundation:check": "node platform/scripts/docs-foundation-check.mjs",
     "docs:foundation:check:write": "node platform/scripts/docs-foundation-check.mjs --write",
     "docs:business:check": "node platform/scripts/docs-business-check.mjs",
-    "docs:business:check:write": "node platform/scripts/docs-business-check.mjs --write"
+    "docs:business:check:write": "node platform/scripts/docs-business-check.mjs --write",
+    "docs:architecture:check": "node platform/scripts/docs-architecture-check.mjs",
+    "docs:architecture:check:write": "node platform/scripts/docs-architecture-check.mjs --write"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

@@ -41,6 +41,14 @@ Market, customer, and economics depth: [`../business/`](../business/) — cross-
 
 Market, customer, and economics depth: [`../business/`](../business/) — cross-ref table links foundation summaries to canonical business files.
 
+## Business layer (detail)
+
+Market, customer, and economics depth: [`../business/`](../business/) — cross-ref table links foundation summaries to canonical business files.
+
+## Business layer (detail)
+
+Market, customer, and economics depth: [`../business/`](../business/) — cross-ref table links foundation summaries to canonical business files.
+
 ## Session read order
 
 1. This README → `constitution.md` → fleet constitution Articles I, III, V

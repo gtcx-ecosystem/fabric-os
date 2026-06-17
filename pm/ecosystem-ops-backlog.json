@@ -53,12 +53,14 @@
       "lane": "FleetOps",
       "title": "COO Wave 2 — fleet-wide ops-pack.json + ops:consumption:check stubs",
       "priority": "P0",
-      "status": "in_progress",
+      "status": "done",
       "ownerRepo": "fabric-os",
       "authorityClass": "R",
       "blocksIR": false,
       "acceptance": "ecosystem:ops-consumption:check:fleet pass on all product/platform repos",
-      "programmeItem": true
+      "programmeItem": true,
+      "closedAt": "2026-06-17",
+      "note": "ecosystem-ops-pack-rollout.mjs --fleet --write · 15/15 fleet consumption PASS"
     },
     {
       "id": "OPS-COO-W2-002",

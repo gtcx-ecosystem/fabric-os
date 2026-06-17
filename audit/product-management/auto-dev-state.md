@@ -21,6 +21,13 @@ last_reconciled: 2026-06-17T13:05:00.000Z
 - **Status:** all fabric-os program sprints sealed (DAAS S1–S3 · SECAS S1–S5)
 - **Parallel:** vendor calendar `SECAS-VENDOR-CALENDAR` — `blocksIR: false` · earliest ingest **2026-06-21**
 
+## execute-roadmap reconcile (2026-06-17 — cycle 2)
+
+- **COO Wave 2 OPS-COO-W2-001:** **done** — `ecosystem-ops-pack-rollout.mjs --fleet --write` · fleet `ops:consumption:check` **15/15 PASS**
+- **COO Wave 2 OPS-COO-W2-002:** **done** — ops ceremony substance evaluator + witness
+- **COO Wave 2 OPS-COO-W2-003:** **open** — strict lane rollup 17/17 · `fabric:ops:check:strict`
+- **SECAS-S4-04:** vendor calendar parallel · `awaiting_vendor_report` until **2026-06-21+**
+
 ## execute-roadmap reconcile (2026-06-17)
 
 - **Outcome:** DAAS + SECAS program sprints sealed; `validate-all` **55/55 PASS**

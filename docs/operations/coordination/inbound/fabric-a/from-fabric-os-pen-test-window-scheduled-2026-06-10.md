@@ -14,7 +14,7 @@ authorityClass: A
 
 # Pen-test window scheduled
 
-**Witness:** [`audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json`](../../../audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json)
+**Witness:** [`audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json`](../../../../audit/archive/legacy-docs-audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json)
 
 ## Window
 

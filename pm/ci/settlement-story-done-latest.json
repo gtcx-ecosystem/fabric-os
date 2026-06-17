@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://bridge-os/settlement-story-done/v1",
-  "at": "2026-06-17T09:45:45.152Z",
+  "at": "2026-06-17T09:50:48.761Z",
   "storyId": "SECAS-S4-04",
-  "ok": false,
-  "errors": ["GATE-FEATURE-DONE BLOCK: pipeline failed for SECAS-S4-04", "  owner-uat: exit 1"]
+  "ok": true,
+  "errors": []
 }

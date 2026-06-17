@@ -1,0 +1,103 @@
+{
+  "schema": "gtcx://canon-os/docs-root-check/v1",
+  "repo": "fabric-os",
+  "at": "2026-06-17T04:10:11.548Z",
+  "ok": true,
+  "gates": [
+    {
+      "id": "docs:present",
+      "ok": true,
+      "detail": "docs/"
+    },
+    {
+      "id": "root-file:README.md",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "root-file:INDEX.md",
+      "ok": true,
+      "detail": "INDEX.md"
+    },
+    {
+      "id": "root-file:sor.json",
+      "ok": true,
+      "detail": "sor.json"
+    },
+    {
+      "id": "root-file:conventions.md",
+      "ok": true,
+      "detail": "conventions.md"
+    },
+    {
+      "id": "root-file:CHANGELOG.md",
+      "ok": true,
+      "detail": "CHANGELOG.md"
+    },
+    {
+      "id": "root-file:FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "FOLDER-SPEC.md"
+    },
+    {
+      "id": "top-level:allowed",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbidden:pointer:overview",
+      "ok": true,
+      "detail": "pointer-only or remove"
+    },
+    {
+      "id": "forbidden:pointer:specs",
+      "ok": true,
+      "detail": "pointer-only or remove"
+    },
+    {
+      "id": "forbidden:pointer:strategy",
+      "ok": true,
+      "detail": "pointer-only or remove"
+    },
+    {
+      "id": "forbidden:pointer:engineering",
+      "ok": true,
+      "detail": "pointer-only or remove"
+    },
+    {
+      "id": "forbidden:pointer:roadmap",
+      "ok": true,
+      "detail": "pointer-only or remove"
+    },
+    {
+      "id": "forbidden:absent:agile",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "forbidden:absent:agents",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "forbidden:absent:governance",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "forbidden:absent:onboarding",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "forbidden:absent:api",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "forbidden:absent:_archive",
+      "ok": true,
+      "detail": "absent"
+    }
+  ]
+}

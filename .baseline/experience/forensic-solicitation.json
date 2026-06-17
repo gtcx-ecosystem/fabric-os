@@ -1,6 +1,6 @@
 {
   "$schema": "gtcx://baseline-os/experience-forensic-solicitation/v1",
-  "updatedAt": "2026-06-17T09:50:48.547Z",
+  "updatedAt": "2026-06-17T12:41:50.219Z",
   "programId": "FORENSIC-AI-001",
   "moveSet": "forensic-onboarding",
   "prompts": [
@@ -39,7 +39,7 @@
       "id": "forensic-confirm-team",
       "type": "confirm",
       "priority": 7,
-      "message": "Likely team members from workspace files: gtcx-docs, bridge-os, quality-evidence-lead, prithvi, alexander. Correct?",
+      "message": "Likely team members from workspace files: canon-os, gtcx-docs, bridge-os, quality-evidence-lead, prithvi. Correct?",
       "gapQuestionId": "Q-AMBIENT-TEAM-CONFIRM"
     },
     {

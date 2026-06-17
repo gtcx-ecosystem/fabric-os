@@ -3,7 +3,7 @@
   "coreId": "A4-COMPLIANCE-SECURITY",
   "slug": "compliance-security",
   "repo": "fabric-os",
-  "date": "2026-06-15",
+  "date": "2026-06-17",
   "score10": 10,
   "score100": 100,
   "score100Raw": 100,
@@ -56,7 +56,7 @@
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-15.json",
+  "rubricSourcePath": "audit/audit-output-2026-06-17.json",
   "checks": {
     "noEnvInGit": {
       "ok": true,

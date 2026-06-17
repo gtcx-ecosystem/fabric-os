@@ -1,20 +1,20 @@
 {
   "schema": "gtcx://audit/compliance-rubric/v1",
   "repo": "fabric-os",
-  "date": "2026-06-16",
-  "score100": 97,
+  "date": "2026-06-17",
+  "score100": 100,
   "categories": {
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
       "weight": 8,
-      "score100": 65,
+      "score100": 100,
       "protocol": "P35",
       "items": [
         {
           "id": "p35-strict-pass",
           "label": "P35 layout strict GREEN",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 35,
           "severity": "P1",
           "optional": false,
@@ -126,7 +126,7 @@
           "weight": 15,
           "severity": "P2",
           "optional": false,
-          "detail": "3/1 present",
+          "detail": "4/1 present",
           "protocol": "P33"
         }
       ],
@@ -182,7 +182,7 @@
       "items": [
         {
           "id": "docs-sor-manifest",
-          "label": "docs/sor.json or docs/INDEX.md or 01-docs/manifest.json",
+          "label": "docs/sor.json or docs/INDEX.md or docs/manifest.json",
           "pass": true,
           "score100": 100,
           "weight": 40,
@@ -199,7 +199,7 @@
           "weight": 30,
           "severity": "P2",
           "optional": false,
-          "detail": "2/1 present",
+          "detail": "3/1 present",
           "protocol": "P32"
         },
         {
@@ -382,7 +382,7 @@
           "weight": 20,
           "severity": "P1",
           "optional": false,
-          "detail": "2/1 present",
+          "detail": "3/1 present",
           "protocol": "shipping-culture"
         },
         {
@@ -393,7 +393,7 @@
           "weight": 20,
           "severity": "P1",
           "optional": false,
-          "detail": "2/1 present",
+          "detail": "3/1 present",
           "protocol": "shipping-culture"
         },
         {
@@ -799,14 +799,6 @@
       "itemCount": 2
     }
   },
-  "violations": [
-    {
-      "id": "p35-strict-pass",
-      "categoryId": "layout-p35",
-      "label": "P35 layout strict GREEN",
-      "severity": "P1",
-      "detail": "p35Strict"
-    }
-  ],
+  "violations": [],
   "itemTotal": 62
 }

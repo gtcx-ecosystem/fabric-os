@@ -12,16 +12,16 @@ review_cycle: on-change
 # `docs/architecture/` — fabric-os
 
 > **Pack:** [`../../canon-os/pm/spec/docs-architecture-pack.json`](../../canon-os/pm/spec/docs-architecture-pack.json)  
-> **Foundation:** [`../foundation/`](../foundation/) · **Business:** [`../business/`](../business/)
+> **Foundation:** [`../../archive/legacy-docs-top-level/foundation/`](../../archive/legacy-docs-top-level/foundation/) · **Business:** [`../../archive/legacy-docs-top-level/business/`](../../archive/legacy-docs-top-level/business/)
 
 ## Cross-reference
 
-| Layer            | Path                 | Role                                |
-| ---------------- | -------------------- | ----------------------------------- |
-| Foundation       | `docs/foundation/`   | Why — charter, vision, goals        |
-| Business         | `docs/business/`     | Market and customer context         |
-| **Architecture** | `docs/architecture/` | How — specs, ADRs, integration      |
-| Reference        | `docs/reference/`    | Templates only (post-decomposition) |
+| Layer            | Path                                        | Role                                |
+| ---------------- | ------------------------------------------- | ----------------------------------- |
+| Foundation       | `archive/legacy-docs-top-level/foundation/` | Why — charter, vision, goals        |
+| Business         | `archive/legacy-docs-top-level/business/`   | Market and customer context         |
+| **Architecture** | `docs/architecture/`                        | How — specs, ADRs, integration      |
+| Reference        | `docs/reference/`                           | Templates only (post-decomposition) |
 
 ## Subfolders
 

@@ -256,5 +256,5 @@ The substrate's design accommodates emergency rotation because the old public ke
 - ADR-016 — Fail-Closed Audit Signing in Production (requires key rotation on compromise)
 - ADR-021 — npm Publish Discipline (the @gtcx/audit-signer used by auditors)
 - [`audit-chain-incident-response.md`](./audit-chain-incident-response.md) — sibling runbook
-- [`ops/security/narrative/credential-rotation-log.md`](../../../ops/security/narrative/credential-rotation-log.md) — historical rotation record
-- [`ops/security/narrative/threat-model-2026-05.md`](../../../ops/security/narrative/threat-model-2026-05.md) — T-1, E-1, E-3 threat categories
+- [`ops/security/narrative/credential-rotation-log.md`](../../../../ops/security/narrative/credential-rotation-log.md) — historical rotation record
+- [`ops/security/narrative/threat-model-2026-05.md`](../../../../ops/security/narrative/threat-model-2026-05.md) — T-1, E-1, E-3 threat categories

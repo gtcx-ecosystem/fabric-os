@@ -1,27 +1,28 @@
 {
-  "startedAt": "2026-06-15T06:31:02.671Z",
+  "startedAt": "2026-06-17T07:47:36.505Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-d17cb69f-53b4-4d6b-8be8-7e746d030bca",
+    "id": "gtcx-agent-14bfd454-26ce-40c0-89d0-2640c05e6c70",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-fbf62311fb6303dd67194934157ebff3-1a9739861e649fa8-01"
+    "traceparent": "00-0b9143f9b0e6f9daf41f1f871267920e-b039a7312b2da14c-01"
   },
   "nextWork": {
-    "traceId": "808606d1-ed6d-4bc6-8d99-264a701bd535",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=808606d1-ed6d-4bc6-8d99-264a701bd535",
+    "traceId": "1a3475b6-df32-477f-9d92-870cebccd0a4",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=1a3475b6-df32-477f-9d92-870cebccd0a4",
     "ok": true,
     "backlogClear": false,
-    "frame": "regulatory-audit",
+    "frame": "development",
     "protocol": "22-agent-work-selection",
     "repo": "fabric-os",
     "message": "Human gates parallel — implement queue reconciled; see work register.",
     "agentInstructions": [
-      "Persona read gate BLOCKED: persona switched (platform-architect → security-engineer). Run `pnpm persona:read-witness --write` after reading persona doc.",
-      "Phase 4: adopt persona **security-engineer** (regulatory-audit) — read local `/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md` first (docUrl link-only); adopt voice: Threat-aware, formal, zero casual delegation",
+      "Milestone drift: composite 59 < 100. Restore composite before feature work.",
+      "Phase 4: adopt persona **platform-architect** (development) — read local `/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md` first (docUrl link-only); adopt voice: Systems-oriented, reliability-focused, cost-conscious",
       "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
       "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
+      "Milestone drift: composite 59 < 100. Restore composite before feature work.",
       "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
       "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
       "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
@@ -39,7 +40,7 @@
       "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
       "Product team: **Fabric OS** — primary persona `platform-engineer` — Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
-      "Goal orientation: milestone `SECAS-S4-pentest-remediation` — shippable: secas:pentest:remediation:check PASS; findings mapped to owners",
+      "Goal orientation: milestone `FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE` — shippable: SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item."
     ],
     "launchFocus": {
@@ -47,7 +48,7 @@
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-15T06:31:02.638Z",
+      "provisionedAt": "2026-06-17T07:47:36.401Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -99,7 +100,7 @@
       "appliesToRepo": "baseline-os",
       "currentRepo": "fabric-os",
       "isCeilingRepo": false,
-      "witnessStatus": "ceiling-prep-pass",
+      "witnessStatus": "fail",
       "forbiddenProceedBriefNext": [
         "Hold at external-pilot ceiling",
         "Class R exhausted (baseline M3)",
@@ -107,7 +108,7 @@
       ],
       "rule": "Use THIS repo agent:next-work next / nextWorkItem. Vendor assurance implement is fabric-os only.",
       "bg1010Owner": "fabric-os",
-      "bg1010AsNextWorkItemAllowed": true,
+      "bg1010AsNextWorkItemAllowed": false,
       "vendorAssuranceOwner": "fabric-os",
       "vendorAssuranceHeadStory": "SECAS-S2-01",
       "forbiddenSyntheticMilestones": [
@@ -151,11 +152,10 @@
       "statusUpdateRule": "fabric-os only: vendor calendar under ### Parallel sovereign gates — omit from product/engineering Status Updates"
     },
     "next": {
-      "storyId": "SECAS-S2-01",
-      "title": "fabric SECAS pen-test + vendor report ingest",
-      "status": "in_progress"
+      "storyId": "COMPOSITE-RESTORE-100",
+      "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain"
     },
-    "automatableExhausted": true,
+    "automatableExhausted": false,
     "parallelClassS": [
       {
         "gateId": "SECAS-S2-01-INGEST",
@@ -210,13 +210,15 @@
       "blockedUntil": "vendor report post 2026-06-21 · window 2026-06-17..2026-06-21",
       "authorityClass": "R",
       "phase": "awaiting_vendor_report",
-      "activePersona": "security-engineer",
-      "frame": "regulatory-audit",
-      "personaDocUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/institutional/personas/security-engineer.md",
-      "personaDocPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md",
-      "voice": "Threat-aware, formal, zero casual delegation",
-      "embodies": "CISO-delegated security lead",
-      "goalOrientationBrief": "## Goal orientation\n**North star:** Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability\n**Milestone:** SECAS-S4 — pen-test findings remediation track\n**Shippable:** secas:pentest:remediation:check PASS; findings mapped to owners\n**PRD refs:** prd-product-charter\n**Product team:** Fabric OS (`platform-engineer`)"
+      "activePersona": "platform-architect",
+      "frame": "development",
+      "personaDocUrl": "https://gtcx-ecosystem.gitbook.io/gtcx-ecosystem/governance/institutional/personas/platform-architect",
+      "personaDocPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
+      "voice": "Systems-oriented, reliability-focused, cost-conscious",
+      "embodies": "Platform lead accountable for fleet reliability",
+      "personaConfidence": 0.8928571428571428,
+      "personaSource": "work-item-manifest",
+      "goalOrientationBrief": "## Goal orientation\n**Fleet north star:** GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail\n**Quarter:** Ship · surfaces · GTM · operational AI\n**Head programme:** `PROG-CONTINENTAL-CAPITAL` → `markets-os`\n**Repo north star:** Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability\n**Milestone:** Fleet internal SecOps + ComplianceOps clearance\n**Shippable:** SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only\n**PRD refs:** prd-product-charter\n**Product team:** Fabric OS (`platform-engineer`)"
     },
     "communicationPolicy": {
       "statusUpdateSections": [
@@ -358,20 +360,20 @@
     },
     "persona": {
       "institutional": "platform-engineer",
-      "mcp": "security",
+      "mcp": "agile",
       "frame": "development",
-      "docUrl": "https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/institutional/personas/platform-engineer.md",
+      "docUrl": "https://gtcx-ecosystem.gitbook.io/gtcx-ecosystem/governance/institutional/personas/platform-engineer",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "bridgeUrl": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-persona-bridge-2026-06.md",
       "instruction": "Phase 4: read persona.docPath first (local canon-os); docUrl is human link-only — private repo blocks anonymous fetch.",
       "voice": {
-        "institutional": "security-engineer",
-        "frame": "regulatory-audit",
-        "role": "Security Engineer",
-        "tone": "Threat-aware, formal, zero casual delegation",
-        "voice": "Risk → control → evidence → attestation path",
-        "embodies": "CISO-delegated security lead",
-        "formality": "formal",
+        "institutional": "platform-architect",
+        "frame": "development",
+        "role": "Principal Platform Architect",
+        "tone": "Systems-oriented, reliability-focused, cost-conscious",
+        "voice": "Architecture → trade-offs → decision → implementation plan → probe",
+        "embodies": "Platform lead accountable for fleet reliability",
+        "formality": "professional",
         "forbidden": [
           "your move",
           "your turn",
@@ -404,7 +406,7 @@
           "we could implement",
           "say commit",
           "say push if you want",
-          "when you get a chance"
+          "just run it locally"
         ],
         "operatorGuidance": {
           "forbidden": [
@@ -423,8 +425,192 @@
             "good": "**Operator entry:** `http://localhost:3000/login` — credentials `demo@kt.com` / `demo123`. Primary path: `/ecosystem` → `/index54`. I will verify each surface in-session and report probe results before the next layer."
           }
         },
-        "sessionReminder": "Embody **Security Engineer** — CISO-delegated security lead.\nTone: Threat-aware, formal, zero casual delegation\nVoice pattern: Risk → control → evidence → attestation path\nForbidden: casual delegation (\"Your move\", \"tell me what you think\", engagement bait).\nDemo guidance example: **Operator entry:** `http://localhost:3000/login` — credentials `demo@kt.com` / `demo123`. Primary path: `/ecosystem` → `/index54`. I will verify each surface in-session and report probe results before the next layer."
-      }
+        "sessionReminder": "Embody **Principal Platform Architect** — Platform lead accountable for fleet reliability.\nTone: Systems-oriented, reliability-focused, cost-conscious\nVoice pattern: Architecture → trade-offs → decision → implementation plan → probe\nForbidden: casual delegation (\"Your move\", \"tell me what you think\", engagement bait).\nDemo guidance example: **Operator entry:** `http://localhost:3000/login` — credentials `demo@kt.com` / `demo123`. Primary path: `/ecosystem` → `/index54`. I will verify each surface in-session and report probe results before the next layer."
+      },
+      "confidence": 0.8928571428571428,
+      "team": null,
+      "manifestId": null,
+      "manifestPath": null,
+      "layers": {
+        "frame": {
+          "active": [
+            "development"
+          ],
+          "tags": [
+            "['documentation', 'agents', 'provisioning']",
+            "[\"documentation\", \"index\"]",
+            "['documentation', 'architecture']",
+            "['documentation', 'cli']",
+            "['documentation']",
+            "['protocol', 'documentation']",
+            "['architecture', 'documentation']",
+            "[\"documentation\", \"architecture\"]",
+            "[[\"documentation\", \"architecture\"]]",
+            "['documentation', 'product']",
+            "['documentation', 'specs']",
+            "['protocol', 'documentation', 'governance']",
+            "[[\"documentation\", \"specs\"]]",
+            "[gtm, apex, models, routing, capability-compounding]",
+            "[gtm, autonomy, trust, sis, dfi, africa, onboarding]",
+            "[gtm, experience, interaction, onboarding, africa]",
+            "[gtm, frame, context-engineering, onboarding, africa]",
+            "[gtm, govern, sis, dfi, africa, onboarding]",
+            "[\"documentation\", \"specs\"]",
+            "[[\"gtm\", \"deployment\", \"workshop\"]]",
+            "[gtm, lang, onboarding, developer-docs, business-case]",
+            "[gtm, persona, synthesis, onboarding, africa]",
+            "[gtm, business-case, dfi, bank, operator, trade-finance, africa]",
+            "[gtm, studio, production, sep, onboarding, africa]",
+            "[[\"feature\", \"desktop\", \"ux\", \"confidence\", \"s2\"]]",
+            "[[\"feature\", \"baseline\", \"onboarding\", \"s2\"]]",
+            "[[\"feature\", \"pilot\", \"reference-deployment\", \"s2\"]]",
+            "[[\"feature\", \"studio\", \"evidence\", \"review\"]]",
+            "[[\"feature\", \"offline\", \"ussd\", \"resilience\", \"field\"]]",
+            "[[\"feature\", \"vault\", \"credentials\", \"security\"]]",
+            "[[\"feature\", \"status\", \"release\", \"trust\"]]",
+            "[[\"feature\", \"npm\", \"mcp\", \"install\", \"developer-experience\"]]",
+            "[[\"product\", \"features\", \"llm-routing\", \"cost-router\", \"tokens\"]]",
+            "[\"product\", \"features\", \"prd\", \"roadmap\"]",
+            "[[\"product\", \"features\", \"layers\", \"surfaces\", \"roadmap\"]]",
+            "[[\"product\", \"prd\", \"requirements\", \"roadmap\"]]",
+            "[documentation]",
+            "[[\"architecture\", \"agentic-maturity\", \"models\", \"apex\", \"strategy\"]]",
+            "[[\"apex\", \"research\", \"evaluation\", \"routing\", \"agentic-maturity\"]]",
+            "[[strategy, investment, engineering, milestones, gaps]]"
+          ],
+          "confidence": 0.75
+        },
+        "lang": {
+          "expressions": [
+            "docs:foundation:check",
+            "ops:check",
+            "agent:bootstrap:check",
+            "ecosystem:migration:score",
+            "test",
+            "build",
+            "Lang",
+            "produce",
+            "Platform",
+            "when",
+            "document_type:",
+            "init",
+            "bench",
+            "Protocol",
+            "Governance",
+            "run",
+            "warm",
+            "is",
+            "layer:critical-mass:report",
+            "audit:govern-pack:check",
+            "preflight",
+            "The",
+            "audit",
+            "to",
+            "verify:release",
+            "apex",
+            "audit:apex-pack:check",
+            "cost-route",
+            "exec",
+            "Autonomy:",
+            "truth",
+            "trust",
+            "autonomy:plan",
+            "experience",
+            "audit:experience-pack:check",
+            "config",
+            "experience:post-llm-gate",
+            "test:experience-ambient-smoke",
+            "test:experience-post-llm-gate",
+            "variables",
+            "in",
+            "frame",
+            "--filter",
+            "audit:frame-pack:check",
+            "compounds",
+            "govern:migrate",
+            "govern:profile",
+            "session",
+            "docs:api",
+            "kill-switch",
+            "evidence-export",
+            "configuration",
+            "definition",
+            "captured",
+            "Value",
+            "metrics",
+            "baseline:evidence:pack",
+            "baseline",
+            "lang:promote",
+            "export"
+          ],
+          "commands": [
+            "baseline start",
+            "baseline session:",
+            "Baseline start",
+            "Baseline session",
+            "pnpm ops:check",
+            "pnpm agent:conduct:check",
+            "pnpm agent:auto-dev:check",
+            "Baseline surface",
+            "baseline session:open-items",
+            "baseline engineer",
+            "pnpm docs:foundation:check",
+            "pnpm docs:business:check",
+            "pnpm docs:architecture:check",
+            "pnpm docs:product:check",
+            "pnpm docs:ia:check",
+            "pnpm ecosystem:docs:product:fleet",
+            "pnpm docs:roadmap:check",
+            "pnpm agile:check",
+            "pnpm ecosystem:sprint-authority:check",
+            "pnpm ecosystem:goal-orientation:check",
+            "pnpm ecosystem:ceremony:check",
+            "pnpm --dir",
+            "pnpm pm:sync",
+            "pnpm ecosystem:progress:report",
+            "pnpm agent:next-work",
+            "pnpm roadmap:check",
+            "pnpm settlement:gate:sprint-seal",
+            "pnpm ecosystem:ceremony:planning",
+            "pnpm ecosystem:ceremony:review",
+            "pnpm ecosystem:ceremony:retrospective",
+            "pnpm intake",
+            "pnpm ecosystem:tasks:intake",
+            "pnpm ecosystem:zenhub:plan",
+            "pnpm ecosystem:zenhub:apply",
+            "pnpm ecosystem:sprint:orientation:write",
+            "pnpm fabric:assurance:run:write",
+            "baseline command",
+            "baseline intake",
+            "baseline next",
+            "baseline operator"
+          ]
+        },
+        "studio": {
+          "deliverables": [
+            "folder-spec",
+            "docs-integrity-pack",
+            "relocation-report",
+            "deliverable"
+          ],
+          "provenanceRequired": true
+        },
+        "govern": null,
+        "experience": null,
+        "skills": [
+          "doc-standard",
+          "docs-machine-readable",
+          "compliance-audit"
+        ],
+        "knowledgeBases": [],
+        "forensicSource": "forensic-parse"
+      },
+      "spine": null,
+      "tags": [
+        "documentation-program"
+      ],
+      "source": "work-item-manifest",
+      "docUrlKind": "gitbook-stable"
     },
     "productTeam": {
       "schema": "gtcx://bridge-os/product-team-context/v1",
@@ -440,11 +626,52 @@
       "profilesSoR": "pm/spec/repo-persona-profiles.json"
     },
     "goalOrientation": {
-      "schema": "gtcx://bridge-os/goal-orientation/v1",
+      "schema": "gtcx://bridge-os/goal-orientation/v1.1",
+      "registrySoR": "pm/spec/ecosystem-fleet-goals-registry.json",
+      "registryVersion": "1.1.0",
+      "motto": "AI-native company that eats its own operating model",
+      "fleetNorthStar": "GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail",
+      "fleetMilestone": "Pilot ship ready (legal + security + deploy + GTM trace)",
       "gtmTier": "GR-T2-partial",
+      "headProgrammeId": "PROG-CONTINENTAL-CAPITAL",
+      "headProductRepo": "markets-os",
+      "quarterPillars": {
+        "id": "GTCX-Q3-2026",
+        "title": "Ship · surfaces · GTM · operational AI",
+        "targetDate": "2026-Q3",
+        "pillars": [
+          {
+            "id": "ship",
+            "label": "Shipping",
+            "passTest": "Named releases with demo/staging/pilot paths that run",
+            "primaryWitness": "markets-os/audit/evidence/pilot-golden-transaction-latest.json"
+          },
+          {
+            "id": "surfaces",
+            "label": "Beautiful surfaces",
+            "passTest": "Operator + buyer journeys intentional (Surface + Agency)",
+            "primaryWitness": "gtcx-os/pm/ci/documentation-matrix-latest.json"
+          },
+          {
+            "id": "gtm",
+            "label": "GTM",
+            "passTest": "Ecosystem OS category story with Venture + Agency assets in market",
+            "primaryWitness": "ecosystem-os/docs/business/portfolio/product-portfolio.md"
+          },
+          {
+            "id": "operational-ai",
+            "label": "AI OS operational",
+            "passTest": "agent:next-work → execute → witness on real fleet work",
+            "primaryWitness": "agile-os/pm/ci/sprint-authority-check-latest.json"
+          }
+        ]
+      },
+      "quarterTitle": "Ship · surfaces · GTM · operational AI",
+      "quarterId": "GTCX-Q3-2026",
+      "recalibrate": "pnpm ecosystem:clarity:report:brief",
       "northStar": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
-      "activeMilestone": "SECAS-S4 — pen-test findings remediation track",
-      "shippableOutcome": "secas:pentest:remediation:check PASS; findings mapped to owners",
+      "activeMilestone": "Fleet internal SecOps + ComplianceOps clearance",
+      "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
       "prdRefs": [
         "prd-product-charter"
       ],
@@ -455,7 +682,56 @@
         "capabilityId",
         "activeMilestone.id"
       ],
-      "recalibrate": "pnpm ecosystem:clarity:report:brief"
+      "programmeHead": null,
+      "clarityBrief": "pnpm ecosystem:clarity:report:brief",
+      "clarityWitness": "bridge-os/pm/ci/ecosystem-clarity-report-latest.json",
+      "ceremonyWitness": "bridge-os/pm/ci/agile-ceremony-sync-latest.json",
+      "openMilestoneCount": null
+    },
+    "fleetGoalsRegistry": {
+      "version": "1.1.0",
+      "updated": "2026-06-17",
+      "path": "pm/spec/ecosystem-fleet-goals-registry.json"
+    },
+    "quarterPillars": {
+      "id": "GTCX-Q3-2026",
+      "title": "Ship · surfaces · GTM · operational AI",
+      "targetDate": "2026-Q3",
+      "pillars": [
+        {
+          "id": "ship",
+          "label": "Shipping",
+          "passTest": "Named releases with demo/staging/pilot paths that run",
+          "primaryWitness": "markets-os/audit/evidence/pilot-golden-transaction-latest.json"
+        },
+        {
+          "id": "surfaces",
+          "label": "Beautiful surfaces",
+          "passTest": "Operator + buyer journeys intentional (Surface + Agency)",
+          "primaryWitness": "gtcx-os/pm/ci/documentation-matrix-latest.json"
+        },
+        {
+          "id": "gtm",
+          "label": "GTM",
+          "passTest": "Ecosystem OS category story with Venture + Agency assets in market",
+          "primaryWitness": "ecosystem-os/docs/business/portfolio/product-portfolio.md"
+        },
+        {
+          "id": "operational-ai",
+          "label": "AI OS operational",
+          "passTest": "agent:next-work → execute → witness on real fleet work",
+          "primaryWitness": "agile-os/pm/ci/sprint-authority-check-latest.json"
+        }
+      ]
+    },
+    "fleetNorthStarBlock": {
+      "goal": "GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail",
+      "gtmTier": "GR-T2-partial",
+      "evidence": "fabric-os/audit/evidence/gtm-audit-latest.json",
+      "milestone": "Pilot ship ready (legal + security + deploy + GTM trace)",
+      "milestoneWitness": "pm/ci/pilot-readiness-report-latest.json",
+      "headProgrammeId": "PROG-CONTINENTAL-CAPITAL",
+      "headProductRepo": "markets-os"
     },
     "engineeringLane": {
       "role": "platform-engineering",
@@ -471,37 +747,158 @@
         "doc promotion implement"
       ]
     },
-    "goalTrace": {
-      "schema": "gtcx://bridge-os/goal-trace/v2",
-      "repo": "fabric-os",
-      "nextStoryId": "SECAS-S2-01",
-      "headStoryId": "SECAS-S4-04",
-      "declaredTrace": null,
-      "programmeId": "PROG-SECAS-PENTEST",
-      "milestone": "SECAS-S4 — pen-test findings remediation track",
-      "shippableOutcome": "secas:pentest:remediation:check PASS; findings mapped to owners",
+    "compositeDrift": {
+      "schema": "gtcx://bridge-os/composite-drift/v1",
+      "current": 59,
+      "required": 100,
+      "milestone": "SECAS-S4-supply-chain",
+      "forced": true
+    },
+    "nextWorkItem": {
+      "type": "story",
+      "typeLabel": "Story",
+      "id": "COMPOSITE-RESTORE-100",
+      "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain",
+      "owner": "fabric-os",
+      "state": "in_progress",
+      "because": "composite 59 < 100 for milestone SECAS-S4-supply-chain · traces PROG-CONTINENTAL-CAPITAL",
+      "gtmTrace": true,
+      "programmeId": "PROG-SECAS-ENGINEERING",
+      "milestoneId": "Fleet internal SecOps + ComplianceOps clearance",
       "gtmTier": "GR-T2-partial",
       "capabilityId": null,
-      "milestoneDoD": null,
+      "prdRef": null,
+      "milestoneDoD": {
+        "milestoneId": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
+        "title": "Fleet internal SecOps + ComplianceOps clearance",
+        "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+        "acceptanceChecks": [
+          {
+            "id": "secops-internal-clearance",
+            "label": "SecOps internal Class R sealed",
+            "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "complianceops-fleet",
+            "label": "ComplianceOps fleet harness",
+            "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "composite-85",
+            "label": "Composite ≥85",
+            "check": "composite85"
+          },
+          {
+            "id": "demo",
+            "label": "Demo walkthrough evidence",
+            "witness": "audit/evidence/demo-readiness-{repo}.json"
+          }
+        ]
+      }
+    },
+    "selection": {
+      "tier": "milestone-drift",
+      "reason": "Composite drift — 59/100"
+    },
+    "goalTrace": {
+      "schema": "gtcx://bridge-os/goal-trace/v2.1",
+      "repo": "fabric-os",
+      "nextStoryId": "COMPOSITE-RESTORE-100",
+      "headStoryId": "SECAS-S4-04",
+      "headProgrammeId": "PROG-CONTINENTAL-CAPITAL",
+      "headProductRepo": "markets-os",
+      "quarterPillars": {
+        "id": "GTCX-Q3-2026",
+        "title": "Ship · surfaces · GTM · operational AI",
+        "targetDate": "2026-Q3",
+        "pillars": [
+          {
+            "id": "ship",
+            "label": "Shipping",
+            "passTest": "Named releases with demo/staging/pilot paths that run",
+            "primaryWitness": "markets-os/audit/evidence/pilot-golden-transaction-latest.json"
+          },
+          {
+            "id": "surfaces",
+            "label": "Beautiful surfaces",
+            "passTest": "Operator + buyer journeys intentional (Surface + Agency)",
+            "primaryWitness": "gtcx-os/pm/ci/documentation-matrix-latest.json"
+          },
+          {
+            "id": "gtm",
+            "label": "GTM",
+            "passTest": "Ecosystem OS category story with Venture + Agency assets in market",
+            "primaryWitness": "ecosystem-os/docs/business/portfolio/product-portfolio.md"
+          },
+          {
+            "id": "operational-ai",
+            "label": "AI OS operational",
+            "passTest": "agent:next-work → execute → witness on real fleet work",
+            "primaryWitness": "agile-os/pm/ci/sprint-authority-check-latest.json"
+          }
+        ]
+      },
+      "fleetNorthStar": "GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail",
+      "declaredTrace": null,
+      "programmeId": "PROG-CONTINENTAL-CAPITAL",
+      "milestone": "Fleet internal SecOps + ComplianceOps clearance",
+      "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+      "gtmTier": "GR-T2-partial",
+      "capabilityId": null,
+      "milestoneDoD": {
+        "milestoneId": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
+        "title": "Fleet internal SecOps + ComplianceOps clearance",
+        "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+        "acceptanceChecks": [
+          {
+            "id": "secops-internal-clearance",
+            "label": "SecOps internal Class R sealed",
+            "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "complianceops-fleet",
+            "label": "ComplianceOps fleet harness",
+            "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "composite-85",
+            "label": "Composite ≥85",
+            "check": "composite85"
+          },
+          {
+            "id": "demo",
+            "label": "Demo walkthrough evidence",
+            "witness": "audit/evidence/demo-readiness-{repo}.json"
+          }
+        ]
+      },
       "aligned": true,
       "recalibrate": "pnpm ecosystem:clarity:report:brief",
-      "activeStoryId": "INIT-GTCX-INFRA-SECAS"
+      "activeStoryId": "SECAS-S4-04"
+    },
+    "backlogClearApproach": {
+      "schema": "gtcx://bridge-os/backlog-clear-approach/v1",
+      "phase": "far",
+      "escalate": false,
+      "backlogClear": false,
+      "manifestPct": 40,
+      "openAutomatable": 13,
+      "automatableExhausted": false,
+      "sessionOpenItemsCount": 0,
+      "protocol": "pm/spec/backlog-clear-approach-protocol.json",
+      "fleetMonitor": "pnpm --dir ../agile-os ecosystem:backlog-clear-approach:monitor:write",
+      "bridgeEvaluate": "pnpm ecosystem:backlog-clear-approach:evaluate:write"
     },
     "personaReadGate": {
-      "ok": false,
-      "blocked": true,
-      "institutional": "security-engineer",
-      "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/security-engineer.md",
-      "docHash": "8900a6bc85434c6f3cd30f587a51c4710c00791f271b9c517a45c77dd27db5b6",
-      "witness": {
-        "schema": "gtcx://bridge-os/persona-read-witness/v1",
-        "institutional": "platform-architect",
-        "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
-        "docHash": "4b239bed1d75d5861d796739c8c23793333484cee4be727150a6ed934fd42aab",
-        "readAt": "2026-06-15T05:57:05.307Z"
-      },
-      "reason": "persona switched (platform-architect → security-engineer)",
-      "witnessCommand": "pnpm persona:read-witness --write"
+      "ok": true,
+      "institutional": "platform-engineer",
+      "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
+      "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703",
+      "readAt": "2026-06-16T13:00:40.401Z"
     },
     "engineeringLaneAbstraction": {
       "applies": false,
@@ -512,10 +909,9 @@
       "ok": true,
       "applies": false
     },
-    "personaReadGateBlocked": true,
     "activeStory": {
-      "id": "INIT-GTCX-INFRA-SECAS",
-      "title": "INIT-GTCX-INFRA-SECAS",
+      "id": "SECAS-S4-04",
+      "title": "Pen-test findings remediation track + re-test witness",
       "owner": "fabric-os",
       "productTeam": {
         "teamName": "Fabric OS",
@@ -529,11 +925,8 @@
     "storyPersonaBind": {
       "ok": true,
       "witnessPath": ".baseline/session/story-persona-bind-latest.json",
-      "storyId": "INIT-GTCX-INFRA-SECAS"
-    },
-    "sessionStartBlocked": true,
-    "sessionStartBlockedReason": "persona switched (platform-architect → security-engineer)",
-    "blockedUntil": "pnpm persona:read-witness --write"
+      "storyId": "SECAS-S4-04"
+    }
   },
   "modelProfile": null,
   "nitroStack": null,
@@ -543,6 +936,6 @@
     "witness": null,
     "error": "baselineos CLI not built"
   },
-  "gitChanged": 24,
+  "gitChanged": 346,
   "authorityClass": "R"
 }

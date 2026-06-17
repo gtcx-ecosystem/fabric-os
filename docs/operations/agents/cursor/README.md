@@ -1,11 +1,3 @@
-# Cursor — gtcx-infrastructure
+# Cursor — fabric-os
 
-| Resource            | Path                                            |
-| ------------------- | ----------------------------------------------- |
-| **Canonical entry** | [`AGENTS.md`](../../../AGENTS.md)               |
-| Rules               | [`.cursor/rules/`](../../../.cursor/rules/)     |
-| CLI config          | [`.cursor/cli.json`](../../../.cursor/cli.json) |
-
-Cursor reads **`AGENTS.md`** at repo root. Synced blocks come from [`.agent/`](../../../.agent/) via `pnpm agent:sync`.
-
-**Workspace:** [`workspace/`](../../../ops/) · **Protocols:** [`universal/`](../universal/)
+Cursor CLI/IDE permissions: `.cursor/cli.json`, `.cursor/permissions.json`.

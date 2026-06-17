@@ -100,7 +100,7 @@
       "createIfMissing": true
     },
     {
-      "path": "01-docs/conventions.md",
+      "path": "docs/conventions.md",
       "partials": [
         "base.md",
         "audit-pointer.md",

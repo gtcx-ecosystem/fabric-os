@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://canon-os/docs-foundation-check/v2",
   "repo": "fabric-os",
-  "at": "2026-06-17T02:23:26.001Z",
+  "at": "2026-06-17T12:29:00.116Z",
   "ok": false,
   "spec": {
     "localPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-foundation-pack.json",
@@ -31,72 +31,57 @@
     },
     {
       "id": "file:foundation/README.md",
-      "ok": true,
+      "ok": false,
       "detail": "docs/foundation/README.md"
     },
     {
       "id": "file:foundation/constitution.md",
-      "ok": true,
+      "ok": false,
       "detail": "docs/foundation/constitution.md"
     },
     {
       "id": "file:foundation/manifesto.md",
-      "ok": true,
+      "ok": false,
       "detail": "docs/foundation/manifesto.md"
     },
     {
       "id": "file:foundation/vision.md",
-      "ok": true,
+      "ok": false,
       "detail": "docs/foundation/vision.md"
     },
     {
       "id": "file:foundation/mission.md",
-      "ok": true,
+      "ok": false,
       "detail": "docs/foundation/mission.md"
     },
     {
       "id": "file:foundation/goals.md",
-      "ok": true,
+      "ok": false,
       "detail": "docs/foundation/goals.md"
     },
     {
       "id": "file:foundation/milestones.md",
-      "ok": true,
+      "ok": false,
       "detail": "docs/foundation/milestones.md"
     },
     {
       "id": "file:foundation/roadmap.md",
-      "ok": true,
+      "ok": false,
       "detail": "docs/foundation/roadmap.md"
     },
     {
-      "id": "readme:index",
-      "ok": true,
-      "detail": "README index or freshness table"
-    },
-    {
-      "id": "readme:business-link",
-      "ok": false,
-      "detail": "README links to docs/business/ for detail layer"
-    },
-    {
-      "id": "constitution:fleet-link",
-      "ok": true,
-      "detail": "constitution.md → fleet constitution"
-    },
-    {
       "id": "sync:vision",
-      "ok": true,
+      "ok": false,
       "detail": "vision.md mirrors product-goals.json"
     },
     {
       "id": "sync:mission",
-      "ok": true,
+      "ok": false,
       "detail": "mission.md mirrors product-goals.json"
     },
     {
       "id": "sync:milestone",
-      "ok": true,
+      "ok": false,
       "detail": "milestones.md references FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE"
     }
   ]

@@ -3,7 +3,7 @@ title: Auto-development state
 status: current
 date: 2026-06-10
 owner: gtcx-infrastructure
-last_reconciled: 2026-06-17T16:05:00.000Z
+last_reconciled: 2026-06-17T17:15:00.000Z
 ---
 
 # Auto-Development State
@@ -20,6 +20,14 @@ last_reconciled: 2026-06-17T16:05:00.000Z
 - **ID:** PROGRAM-SPRINTS-COMPLETE
 - **Status:** all fabric-os program sprints sealed (DAAS S1–S3 · SECAS S1–S5)
 - **Parallel:** vendor calendar `SECAS-VENDOR-CALENDAR` — `blocksIR: false` · earliest ingest **2026-06-21**
+
+## execute-roadmap reconcile (2026-06-17 — cycle 3)
+
+- **Staging substrate restore:** AGX + sovereign `CrashLoopBackOff` — RDS password drift on `gtcx_admin`
+- **Fix:** `sync-agx-staging-database-url.sh` + sovereign `DATABASE_URL` patch from AGX secret · rollouts **1/1 Running**
+- **Fleet health:** `pnpm daas:fleet:health --write` **PASS** — sovereign/agx/intelligence **200**
+- **Pen-test window:** `secas:window:readiness:write` **PASS** — window **2026-06-17..21** · ingest earliest **2026-06-21**
+- **SECAS-S4-04:** scaffold PASS · `awaiting_vendor_report` · execution blocked until vendor ingest
 
 ## execute-roadmap reconcile (2026-06-17 — cycle 2)
 

@@ -143,3 +143,13 @@ output "griot_ai_secrets_role_arn" {
   description = "IRSA role ARN for griot-ai PayOps ESO"
   value       = aws_iam_role.griot_ai_secrets.arn
 }
+
+output "venture_os_secrets_role_arn" {
+  description = "IRSA role ARN for venture-os ESO (DEPLOY-02)"
+  value       = aws_iam_role.venture_os_secrets.arn
+}
+
+output "venture_os_api_keys_secret_name" {
+  description = "Secrets Manager name for venture-os API keys bundle"
+  value       = aws_secretsmanager_secret.venture_os_api_keys.name
+}

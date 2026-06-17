@@ -8,6 +8,7 @@
   "required_files": ["README.md", "AGENTS.md", "CHANGELOG.md"],
   "required_directories": [
     "archive",
+    "agile",
     "docs",
     "ops",
     "platform",
@@ -52,6 +53,7 @@
   ],
   "allowed_directories": [
     "archive",
+    "agile",
     "docs",
     "ops",
     "platform",

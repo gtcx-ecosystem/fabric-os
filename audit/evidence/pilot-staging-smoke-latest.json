@@ -1,0 +1,127 @@
+{
+  "$schema": "gtcx://fabric-os/pilot-staging-smoke/v1",
+  "storyId": "Q3-FABRIC-01",
+  "programmeId": "PROG-CONTINENTAL-CAPITAL",
+  "quarterPillarId": "ship",
+  "quarterId": "GTCX-Q3-2026",
+  "generatedAt": "2026-06-17T07:31:29.591Z",
+  "repo": "fabric-os",
+  "ok": true,
+  "checks": {
+    "fleetHealth": {
+      "ok": true,
+      "exitCode": 0,
+      "summary": {
+        "total": 4,
+        "healthy": 3,
+        "unhealthy": 1,
+        "requiredUnhealthy": 0
+      }
+    },
+    "stagingIngress": {
+      "ok": true,
+      "probes": [
+        {
+          "id": "markets-agx",
+          "owner": "markets-os",
+          "url": "https://api.staging.gtcx.trade/api/health",
+          "pillar": "ship",
+          "probe": {
+            "url": "https://api.staging.gtcx.trade/api/health",
+            "status": 200,
+            "ok": true,
+            "latencyMs": 1633,
+            "error": null
+          }
+        },
+        {
+          "id": "gtcx-sovereign",
+          "owner": "gtcx-os",
+          "url": "https://sovereign-staging.gtcx.trade/api/health",
+          "pillar": "surfaces",
+          "probe": {
+            "url": "https://sovereign-staging.gtcx.trade/api/health",
+            "status": 200,
+            "ok": true,
+            "latencyMs": 1429,
+            "error": null
+          }
+        },
+        {
+          "id": "gtcx-intelligence",
+          "owner": "gtcx-os",
+          "url": "https://intelligence-staging.gtcx.trade/health",
+          "pillar": "surfaces",
+          "probe": {
+            "url": "https://intelligence-staging.gtcx.trade/health",
+            "status": 200,
+            "ok": true,
+            "latencyMs": 1427,
+            "error": null
+          }
+        }
+      ]
+    },
+    "gtcxDocumentationMatrix": {
+      "path": "/Users/amanianai/Sites/gtcx-ecosystem/gtcx-os/pm/ci/documentation-matrix-latest.json",
+      "ok": true,
+      "surfaceCount": 8,
+      "surfacesOk": 8,
+      "surfaces": [
+        {
+          "id": "sgx",
+          "ok": true,
+          "errors": [],
+          "gitbook": true
+        },
+        {
+          "id": "crx",
+          "ok": true,
+          "errors": [],
+          "gitbook": true
+        },
+        {
+          "id": "agx",
+          "ok": true,
+          "errors": [],
+          "gitbook": true
+        },
+        {
+          "id": "pathways",
+          "ok": true,
+          "errors": [],
+          "gitbook": true
+        },
+        {
+          "id": "gtcx-app",
+          "ok": true,
+          "errors": [],
+          "gitbook": true
+        },
+        {
+          "id": "hardware",
+          "ok": true,
+          "errors": [],
+          "gitbook": true
+        },
+        {
+          "id": "intelligence",
+          "ok": true,
+          "errors": [],
+          "gitbook": true
+        },
+        {
+          "id": "infrastructure",
+          "ok": true,
+          "errors": [],
+          "gitbook": true
+        }
+      ]
+    }
+  },
+  "acceptance": {
+    "marketsPilotHealth": true,
+    "gtcxSurfacesMatrix": true,
+    "witnessPath": "audit/evidence/pilot-staging-smoke-latest.json"
+  }
+}

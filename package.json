@@ -130,6 +130,8 @@
     "taas:tool-scout:run": "node platform/scripts/taas-tool-scout-run.mjs",
     "taas:tool-scout:run:write": "node platform/scripts/taas-tool-scout-run.mjs --write",
     "daas:fleet:health": "node platform/tools/scripts/cross-repo-health-probe.mjs",
+    "pilot:staging-smoke": "node platform/scripts/pilot-staging-smoke.mjs",
+    "pilot:staging-smoke:write": "node platform/scripts/pilot-staging-smoke.mjs --write",
     "infra:vpc:markets-rds:probe": "node platform/scripts/vpc-markets-rds-probe.mjs",
     "agent:launch:check": "node ../gtcx-agentic/platform/scripts/check-agent-launch-focus.mjs",
     "agent:work-selection:check": "node platform/scripts/check-agent-work-selection.mjs",
@@ -199,7 +201,13 @@
     "docs:agents:check": "node platform/scripts/agents-check.mjs",
     "docs:agents:check:write": "node platform/scripts/agents-check.mjs --write",
     "agents:check": "node platform/scripts/agents-check.mjs",
-    "agents:check:write": "node platform/scripts/agents-check.mjs --write"
+    "agents:check:write": "node platform/scripts/agents-check.mjs --write",
+    "docs:agile:check": "node platform/scripts/agile-check.mjs",
+    "docs:agile:check:write": "node platform/scripts/agile-check.mjs --write",
+    "agile:check": "node platform/scripts/agile-check.mjs",
+    "agile:check:write": "node platform/scripts/agile-check.mjs --write",
+    "docs:fractal-mpr:check": "node platform/scripts/docs-fractal-mpr-check.mjs",
+    "docs:pack:pillar-contract:check": "node platform/scripts/docs-pack-pillar-contract-check.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://bridge-os/feature-done-pipeline/v2",
-  "generatedAt": "2026-06-17T09:50:48.760Z",
+  "generatedAt": "2026-06-17T09:52:20.394Z",
   "ok": true,
   "resolved": {
     "storyId": "SECAS-S4-04",
@@ -32,7 +32,7 @@
           "id": "qa-smoke",
           "ok": true,
           "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-verify-latest.json",
-          "ageHours": 44.70715722222222
+          "ageHours": 44.732796666666665
         }
       ]
     },
@@ -56,7 +56,7 @@
       "id": "owner-uat",
       "ok": true,
       "exitCode": 0,
-      "stdout": "{\n  \"ok\": true,\n  \"method\": \"baseline-os/repo-session-core\",\n  \"command\": \"node \\\"/Users/amanianai/Sites/gtcx-ecosystem/baseline-os/platform/scripts/ecosystem/repo-session-core.mjs\\\" --json\",\n  \"forensicCompliance\": {\n    \"ok\": true,\n    \"sessionId\": \"98990b5f-c129-43fa-ad02-1de85c92cf03\",\n    \"witness\": \"workstream/sessions/ci/session-forensic-compliance-latest.json\",\n    \"steps\": [\n      {\n        \"step\": \"session:init\",\n        \"ok\": true\n      },\n      {\n        \"step\": \"session:record\",\n        \"ok\": true,\n        \"type\": \"session.compliance\",\n        \"recorded\": true\n      }\n    ],\n    \"errors\": [],\n    \"agentObligation\": [\n      \"session:record --type gem|bug|ci.finding during substantive work\",\n      \"session:open-items at session closure or handoff\"\n    ]\n  },\n  \"forensicAi\": {\n    \"ok\": true,\n    \"skipped\": false,\n    \"bootstrapped\": true,\n    \"companyName\": \"GTCX\",\n    \"orgSource\": \"explicit\",\n    \"reason\": null,\n    \"graphNodes\": 1,\n    \"pendingQuestions\": [\n      \"Q-AMBIENT-ORG-CONFIRM\",\n      \"Q-AMBIENT-TEAM-CONFIRM\",\n      \"Q-CLIENT-LIST-5\",\n      \"Q-COMPETITOR-CORE\"\n    ],\n    \"witnessPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/audit/evidence/forensic-ai-latest.json\",\n    \"ambientWitnessPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/.baseline/forensic-ai/ambient-context.json\",\n    \"experienceSolicitationPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/.baseline/experience/forensic-solicitation.json\",\n    \"solicitOrg\": false,\n    \"co",
+      "stdout": "{\n  \"ok\": true,\n  \"method\": \"baseline-os/repo-session-core\",\n  \"command\": \"node \\\"/Users/amanianai/Sites/gtcx-ecosystem/baseline-os/platform/scripts/ecosystem/repo-session-core.mjs\\\" --json\",\n  \"forensicCompliance\": {\n    \"ok\": true,\n    \"sessionId\": \"acbfb6b3-3b7e-4eda-8b7d-44afe7578879\",\n    \"witness\": \"workstream/sessions/ci/session-forensic-compliance-latest.json\",\n    \"steps\": [\n      {\n        \"step\": \"session:init\",\n        \"ok\": true\n      },\n      {\n        \"step\": \"session:record\",\n        \"ok\": true,\n        \"type\": \"session.compliance\",\n        \"recorded\": true\n      }\n    ],\n    \"errors\": [],\n    \"agentObligation\": [\n      \"session:record --type gem|bug|ci.finding during substantive work\",\n      \"session:open-items at session closure or handoff\"\n    ]\n  },\n  \"forensicAi\": {\n    \"ok\": true,\n    \"skipped\": false,\n    \"bootstrapped\": true,\n    \"companyName\": \"GTCX\",\n    \"orgSource\": \"explicit\",\n    \"reason\": null,\n    \"graphNodes\": 1,\n    \"pendingQuestions\": [\n      \"Q-AMBIENT-ORG-CONFIRM\",\n      \"Q-AMBIENT-TEAM-CONFIRM\",\n      \"Q-CLIENT-LIST-5\",\n      \"Q-COMPETITOR-CORE\"\n    ],\n    \"witnessPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/audit/evidence/forensic-ai-latest.json\",\n    \"ambientWitnessPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/.baseline/forensic-ai/ambient-context.json\",\n    \"experienceSolicitationPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/.baseline/experience/forensic-solicitation.json\",\n    \"solicitOrg\": false,\n    \"co",
       "stderr": "",
       "detail": "owner-uat fabric-os session"
     },

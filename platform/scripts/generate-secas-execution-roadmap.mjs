@@ -28,21 +28,25 @@ function renderStory(story) {
   const lines = [];
   lines.push(`### ${story.id}: ${story.title}`);
   lines.push('');
-  lines.push(`**Files:** ${story.files.join(story.files.length > 1 ? ', ' : '')}`);
-  lines.push('');
+  if (story.files?.length) {
+    lines.push(`**Files:** ${story.files.join(story.files.length > 1 ? ', ' : '')}`);
+    lines.push('');
+  }
   lines.push('**Acceptance**');
   lines.push('');
   lines.push('```bash');
-  for (const cmd of story.acceptance) lines.push(cmd);
+  for (const cmd of story.acceptance ?? []) lines.push(cmd);
   lines.push('```');
   lines.push('');
-  lines.push('**UAT / QA**');
-  lines.push('');
-  for (const item of story.uat) {
-    const note = item.note ? ` (${item.note})` : '';
-    lines.push(`- [${checkbox(item.done)}] ${item.text}${note}`);
+  if (story.uat?.length) {
+    lines.push('**UAT / QA**');
+    lines.push('');
+    for (const item of story.uat) {
+      const note = item.note ? ` (${item.note})` : '';
+      lines.push(`- [${checkbox(item.done)}] ${item.text}${note}`);
+    }
+    lines.push('');
   }
-  lines.push('');
   lines.push(`**Blockers:** ${story.blockers ?? 'none'}`);
   lines.push('');
   return lines.join('\n');
@@ -68,10 +72,14 @@ function main() {
   const storiesDoc = readJson(STORIES_JSON);
   const sovereign = existsSync(SOVEREIGN_JSON) ? readJson(SOVEREIGN_JSON) : { items: [] };
   const stories = storiesDoc.stories ?? [];
-  const activeSprint =
-    roadmap.sprints.find((s) => s.status !== 'complete') ?? roadmap.sprints.at(-1);
-  const activeStories = stories.filter((s) => s.sprint === activeSprint?.id);
-  const futureSprints = roadmap.sprints.filter((s) => s.id !== activeSprint?.id);
+  const openSprint = roadmap.sprints.find((s) => s.status !== 'complete');
+  const activeSprint = openSprint ?? null;
+  const activeStories = activeSprint
+    ? stories.filter((s) => s.sprint === activeSprint.id)
+    : [];
+  const futureSprints = activeSprint
+    ? roadmap.sprints.filter((s) => s.id !== activeSprint.id)
+    : roadmap.sprints;
 
   const now = new Date().toISOString();
   const lines = [];
@@ -100,19 +108,24 @@ function main() {
   lines.push('');
   lines.push('**Ops lane:** SecOps · **Functional product:** SECaaS — parallel to DevOps/InfraOps (DaaS), not product PM.');
   lines.push('');
-  lines.push(`## Active Phase: ${activeSprint?.id ?? 'SECAS-S1'} — ${activeSprint?.name ?? 'SECaaS'}`);
+  lines.push(`## Active Phase: ${activeSprint ? `${activeSprint.id} — ${activeSprint.name}` : 'PROGRAM-SPRINTS-COMPLETE — all SECaaS program sprints sealed'}`);
   lines.push('');
-  lines.push(`**Status:** \`${activeSprint?.status ?? 'blocked'}\``);
+  lines.push(`**Status:** \`${activeSprint?.status ?? 'complete'}\``);
   lines.push('');
-  lines.push('| Story | Title | Priority | Status | Owner |');
-  lines.push('| --- | --- | --- | --- | --- |');
-  for (const story of activeStories) {
-    lines.push(
-      `| ${story.id} | ${story.title} | ${story.priority} | ${story.status} | ${story.owner} |`,
-    );
+  if (activeStories.length > 0) {
+    lines.push('| Story | Title | Priority | Status | Owner |');
+    lines.push('| --- | --- | --- | --- | --- |');
+    for (const story of activeStories) {
+      lines.push(
+        `| ${story.id} | ${story.title} | ${story.priority} | ${story.status} | ${story.owner} |`,
+      );
+    }
+    lines.push('');
+    for (const story of activeStories) lines.push(renderStory(story));
+  } else {
+    lines.push('_All SECaaS program sprints (S1–S5) sealed. Vendor calendar gates run in parallel — see below._');
+    lines.push('');
   }
-  lines.push('');
-  for (const story of activeStories) lines.push(renderStory(story));
 
   lines.push('## Post-launch external (NOT internal roadmap)');
   lines.push('');

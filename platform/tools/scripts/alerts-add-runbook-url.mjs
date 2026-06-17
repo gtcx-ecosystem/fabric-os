@@ -23,9 +23,9 @@ import { fileURLToPath } from 'node:url';
 
 const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 const ALERTS_DIR = join(REPO_ROOT, 'deploy', 'monitoring', 'alerts');
-const RUNBOOK_PATH = join(REPO_ROOT, 'docs', 'operations', 'runbooks', 'alerts.md');
+const RUNBOOK_PATH = join(REPO_ROOT, 'docs', 'operations', 'runbooks', 'audit-dr', 'alerts.md');
 const RUNBOOK_BASE =
-  'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/docs/operations/runbooks/alerts.md';
+  'https://github.com/gtcx-ecosystem/fabric-os/blob/main/docs/operations/runbooks/audit-dr/alerts.md';
 
 const checkOnly = process.argv.includes('--check');
 

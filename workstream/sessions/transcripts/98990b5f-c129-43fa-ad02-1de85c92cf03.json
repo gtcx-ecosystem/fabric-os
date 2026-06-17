@@ -1,0 +1,10 @@
+{
+  "schema": "gtcx://fabric-os/session-transcript-index/v1",
+  "sessionId": "98990b5f-c129-43fa-ad02-1de85c92cf03",
+  "repo": "fabric-os",
+  "startedAt": "2026-06-17T09:50:47.822Z",
+  "ledgerPath": "workstream/sessions/ledger/98990b5f-c129-43fa-ad02-1de85c92cf03.json",
+  "transcriptPath": null,
+  "operatorSource": null,
+  "handoffPath": null
+}

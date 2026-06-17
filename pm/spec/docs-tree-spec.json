@@ -1,0 +1,192 @@
+{
+  "$schema": "gtcx://canon-os/docs-tree-spec/v1",
+  "status": "draft",
+  "updated": "2026-06-16",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "protocol": "docs/governance/protocols/48-docs-provisioning-standard/protocol.md",
+  "title": "Docs tree spec — composed from per-folder specs (when approved)",
+  "principle": "Composed from pm/spec/docs-folders/ one folder at a time. Do not enforce until INDEX queue entries are approved. Specs use updated date only — no semver version fields.",
+  "incrementalProgram": {
+    "index": "pm/spec/docs-folders/INDEX.json",
+    "next": "01-foundation",
+    "composeWhen": "all required folder specs status approved"
+  },
+  "masterOf": [
+    "docs/ top-level taxonomy",
+    "docs/ root six-pack",
+    "universal folder + file invariants",
+    "forbidden and deprecated paths",
+    "profile → required layers"
+  ],
+  "composeLayerDetailFrom": [
+    "pm/spec/docs-foundation-pack.json",
+    "pm/spec/docs-business-pack.json",
+    "pm/spec/docs-architecture-pack.json",
+    "pm/spec/docs-product-pack.json",
+    "pm/spec/docs-roadmap-pack.json",
+    "pm/spec/docs-operations-pack.json"
+  ],
+  "repoRootHubs": {
+    "outsideDocs": [
+      { "id": "agile", "path": "agile/", "pack": "pm/spec/agile-pack.json" },
+      { "id": "agents", "path": "agents/", "pack": "pm/spec/agents-pack.json" }
+    ],
+    "forbiddenUnderDocs": ["docs/agile", "docs/agents"]
+  },
+  "universal": {
+    "docsRootRequired": [
+      { "path": "docs/README.md", "role": "human map" },
+      { "path": "docs/INDEX.md", "role": "agent manifest" },
+      { "path": "docs/sor.json", "role": "machine SoR" },
+      { "path": "docs/conventions.md", "role": "naming + frontmatter" },
+      { "path": "docs/CHANGELOG.md", "role": "structural changelog" },
+      { "path": "docs/FOLDER-SPEC.md", "role": "root provisioning mirror" }
+    ],
+    "layerRootAllowlist": [
+      "README.md",
+      "FOLDER-SPEC.md",
+      "pillar-scorecard.md",
+      "index.md",
+      "INDEX.md"
+    ],
+    "foundationRootExtra": [
+      "constitution.md",
+      "manifesto.md",
+      "vision.md",
+      "mission.md",
+      "goals.md",
+      "milestones.md",
+      "roadmap.md"
+    ],
+    "roadmapRootExtra": ["roadmap-current.md"],
+    "everyFolder": {
+      "requiresReadme": true,
+      "folderSpecWhen": { "mdCountGte": 3, "orSubfolderCountGte": 1 },
+      "topLevelLayerRequiresFolderSpec": true
+    },
+    "everyMarkdown": {
+      "requiresFrontmatter": true,
+      "requiresDocumentType": true,
+      "exemptBasenames": ["CHANGELOG.md"],
+      "exemptRoles": ["README.md", "FOLDER-SPEC.md", "INDEX.md", "index.md"],
+      "pointerStatusExempt": true,
+      "registry": "pm/spec/docs-document-types.json"
+    },
+    "allowedNestedDirPatterns": [
+      "^slice-\\d{2}$",
+      "^in-repo$",
+      "^narrative$",
+      "^templates$",
+      "^publish$",
+      "^evidence$",
+      "^archive$",
+      "^workflows$",
+      "^planning$",
+      "^slices$",
+      "^sprint-\\d+$"
+    ],
+    "intakeZones": {
+      "prefixes": ["docs/_archive/", "docs/reference/"],
+      "rule": "decompose target — README required per folder; narrative allowed until decompose witness green"
+    },
+    "forbiddenUnderDocsAbsent": [
+      { "path": "docs/agile", "canonical": "agile/" },
+      { "path": "docs/agents", "canonical": "agents/" }
+    ],
+    "deprecatedDecompose": [
+      { "path": "docs/overview", "canonical": "docs/business/" },
+      { "path": "docs/specs", "canonical": "docs/architecture/specs/" },
+      { "path": "docs/strategy", "canonical": "docs/business/opportunity/" },
+      { "path": "docs/engineering", "canonical": "docs/architecture/" },
+      { "path": "docs/roadmap", "canonical": "agile/roadmaps/" },
+      { "path": "docs/onboarding", "canonical": "docs/operations/" },
+      { "path": "docs/api", "canonical": "docs/architecture/integration/" },
+      { "path": "docs/_archive", "canonical": "archive/" }
+    ]
+  },
+  "profiles": {
+    "product": {
+      "allowedTopLevel": [
+        "foundation",
+        "business",
+        "architecture",
+        "product",
+        "operations",
+        "gitbook",
+        "reference"
+      ],
+      "requiredLayers": [
+        { "id": "foundation", "pack": "docs-foundation-pack.json" },
+        { "id": "business", "pack": "docs-business-pack.json" },
+        { "id": "architecture", "pack": "docs-architecture-pack.json" },
+        { "id": "product", "pack": "docs-product-pack.json" },
+        { "id": "operations", "pack": "docs-operations-pack.json" }
+      ],
+      "auxiliaryTopLevel": {
+        "gitbook": { "requires": ["README.md", "SUMMARY.md"], "optional": true },
+        "reference": { "requires": ["README.md"], "intake": true, "optional": true }
+      }
+    },
+    "platform": {
+      "inherits": "product"
+    },
+    "constitution-standards": {
+      "allowedTopLevel": [
+        "foundation",
+        "business",
+        "architecture",
+        "product",
+        "operations",
+        "governance",
+        "reference",
+        "gitbook"
+      ],
+      "requiredLayers": [
+        { "id": "foundation", "pack": "docs-foundation-pack.json" },
+        { "id": "governance", "pack": null, "requires": ["docs/governance/README.md"] }
+      ],
+      "optionalLayers": [
+        { "id": "business", "pack": "docs-business-pack.json" },
+        { "id": "architecture", "pack": "docs-architecture-pack.json" },
+        { "id": "product", "pack": "docs-product-pack.json" },
+        { "id": "operations", "pack": "docs-operations-pack.json" }
+      ],
+      "auxiliaryTopLevel": {
+        "reference": { "requires": ["README.md"], "intake": true },
+        "gitbook": { "requires": ["README.md", "SUMMARY.md"], "optional": true }
+      }
+    },
+    "fleet-documentation": {
+      "allowedTopLevel": [
+        "foundation",
+        "business",
+        "architecture",
+        "product",
+        "operations",
+        "gitbook",
+        "reference"
+      ],
+      "requiredLayers": [
+        { "id": "foundation", "pack": "docs-foundation-pack.json" },
+        { "id": "business", "pack": "docs-business-pack.json" }
+      ],
+      "optionalLayers": [
+        { "id": "architecture", "pack": "docs-architecture-pack.json" },
+        { "id": "product", "pack": "docs-product-pack.json" },
+        { "id": "operations", "pack": "docs-operations-pack.json" }
+      ],
+      "auxiliaryTopLevel": {
+        "gitbook": { "requires": ["README.md", "SUMMARY.md"] },
+        "reference": { "requires": ["README.md"], "intake": true, "optional": true }
+      }
+    }
+  },
+  "enforcement": {
+    "check": "pnpm docs:tree:check",
+    "checkStrict": "pnpm docs:tree:check:strict",
+    "fleet": "pnpm ecosystem:docs:tree:fleet",
+    "witness": "audit/evidence/docs-tree-latest.json",
+    "fleetWitness": "audit/evidence/docs-tree-fleet-latest.json",
+    "wiredIn": "pnpm docs:ia:check — blocked until spec status approved"
+  }
+}

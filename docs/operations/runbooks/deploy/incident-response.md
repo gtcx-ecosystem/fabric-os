@@ -159,5 +159,5 @@ Conduct a post-mortem within 48 hours (P1) or 72 hours (P2):
 
 - [disaster-recovery.md](disaster-recovery.md)
 - [monitoring.md](../sre/monitoring.md)
-- [ops/compliance/controls-matrix.md](../../../ops/compliance/narrative/controls-matrix.md)
-- [ops/security/narrative/security-architecture.md](../../../ops/security/narrative/security-architecture.md)
+- [ops/compliance/controls-matrix.md](../../../../ops/compliance/narrative/controls-matrix.md)
+- [ops/security/narrative/security-architecture.md](../../../../ops/security/narrative/security-architecture.md)

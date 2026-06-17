@@ -1,11 +1,11 @@
 {
   "schema": "gtcx://baseline-os/ego/v1",
   "schemaAlias": "gtcx://baseline-os/agent-embodiment/v1",
-  "compiledAt": "2026-06-17T09:50:48.695Z",
+  "compiledAt": "2026-06-17T12:41:52.245Z",
   "repo": "fabric-os",
   "storyId": "SECAS-S4-04",
   "persona": {
-    "institutional": "platform-engineer",
+    "institutional": "platform-architect",
     "frame": "development",
     "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
     "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703"
@@ -21,7 +21,7 @@
   },
   "forbiddenPatternCount": 40,
   "mdPath": ".baseline/session/ego-latest.md",
-  "mdHash": "7d4ce061db5a25ae3b070e090da1759c2d8ee39d474845b15c88b1031626eb19",
+  "mdHash": "43ab5f0fec6199d4f8a77c1713854fa767709f87cbb556aa6b2a4563cb45baa5",
   "layers": [
     "anti-assistant",
     "constitution",
@@ -36,7 +36,7 @@
   "gates": {
     "personaReadGate": {
       "ok": true,
-      "institutional": "platform-engineer",
+      "institutional": "platform-architect",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703",
       "readAt": "2026-06-17T09:44:32.250Z"

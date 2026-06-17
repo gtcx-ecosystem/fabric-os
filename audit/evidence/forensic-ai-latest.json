@@ -1,7 +1,7 @@
 {
   "programId": "FORENSIC-AI-001",
   "storyId": "FORENSIC-AI-001",
-  "updatedAt": "2026-06-17T09:50:48.548Z",
+  "updatedAt": "2026-06-17T12:41:50.220Z",
   "companyName": "GTCX",
   "orgSource": "explicit",
   "ambient": {
@@ -53,6 +53,7 @@
       ]
     },
     "teamHints": [
+      "canon-os",
       "gtcx-docs",
       "bridge-os",
       "quality-evidence-lead",
@@ -121,7 +122,7 @@
     },
     {
       "id": "Q-AMBIENT-TEAM-CONFIRM",
-      "prompt": "Confirm team roster inferred from workspace: gtcx-docs, bridge-os, quality-evidence-lead, prithvi, alexander, context.repo.owner.",
+      "prompt": "Confirm team roster inferred from workspace: canon-os, gtcx-docs, bridge-os, quality-evidence-lead, prithvi, alexander.",
       "gapNodeTypes": ["role"],
       "contextualLeverage": 8,
       "status": "pending"
@@ -145,51 +146,51 @@
     {
       "passId": "FRP-P0-ambient",
       "protocolId": "FRP-P1",
-      "completedAt": "2026-06-17T09:50:48.548Z"
+      "completedAt": "2026-06-17T12:41:50.220Z"
     },
     {
       "passId": "FRP-P1-entity",
       "protocolId": "FRP-P1",
-      "completedAt": "2026-06-17T09:50:48.548Z",
+      "completedAt": "2026-06-17T12:41:50.220Z",
       "nodeCount": 1
     },
     {
       "passId": "FRP-P2-vertical",
       "protocolId": "FRP-P2",
-      "completedAt": "2026-06-17T09:50:48.548Z"
+      "completedAt": "2026-06-17T12:41:50.220Z"
     },
     {
       "passId": "FRP-P4-regulatory",
       "protocolId": "FRP-P4",
-      "completedAt": "2026-06-17T09:50:48.548Z"
+      "completedAt": "2026-06-17T12:41:50.220Z"
     },
     {
       "passId": "FRP-P5-org-shape",
       "protocolId": "FRP-P5",
-      "completedAt": "2026-06-17T09:50:48.548Z"
+      "completedAt": "2026-06-17T12:41:50.220Z"
     },
     {
       "passId": "FRP-P6-gaps",
       "protocolId": "FRP-P6",
-      "completedAt": "2026-06-17T09:50:48.548Z",
+      "completedAt": "2026-06-17T12:41:50.220Z",
       "questionCount": 4
     },
     {
       "passId": "FRP-P7-merge",
       "protocolId": "FRP-P7",
-      "completedAt": "2026-06-17T09:50:48.548Z",
+      "completedAt": "2026-06-17T12:41:50.220Z",
       "nodeCount": 1,
       "edgeCount": 0
     },
     {
       "passId": "hydrate-layers",
       "protocolId": "hydrate",
-      "completedAt": "2026-06-17T09:50:48.548Z"
+      "completedAt": "2026-06-17T12:41:50.220Z"
     },
     {
       "passId": "complete",
       "protocolId": "complete",
-      "completedAt": "2026-06-17T09:50:48.548Z"
+      "completedAt": "2026-06-17T12:41:50.220Z"
     }
   ],
   "hydratedPaths": [

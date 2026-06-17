@@ -1,23 +1,33 @@
 {
   "$schema": "gtcx://canon-os/docs-roadmap-pack/v1",
-  "version": "1.0.0",
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "title": "Docs roadmap pack — fabric-os",
-  "principle": "Anything that is “what we are building next” lives under docs/roadmap/ (or is linked from it). No other docs layer may contain roadmap narrative. Foundation roadmap.md becomes pointer-only to docs/roadmap/roadmap-current.md.",
+  "canonicalPath": "agile/roadmaps",
+  "principle": "Roadmap lane narratives live under agile/roadmaps/. Executive lens: docs/foundation/roadmap.md. Legacy docs/roadmap/ → pointer-only.",
   "requiredRootFiles": [
     {
-      "path": "docs/roadmap/README.md",
+      "path": "agile/roadmaps/README.md",
       "role": "index + lane definitions + pointer rules"
-    },
-    {
-      "path": "docs/roadmap/FOLDER-SPEC.md",
-      "role": "repo-local mirror of this pack"
-    },
-    {
-      "path": "docs/roadmap/roadmap-current.md",
-      "role": "single executive rollup (only “current” file)"
     }
+  ],
+  "canonicalLaneFiles": [
+    "technical.md",
+    "gtm.md",
+    "legal.md",
+    "partnerships.md",
+    "ux-design.md",
+    "compliance.md"
+  ],
+  "legacyPointer": {
+    "path": "docs/roadmap/",
+    "canonical": "agile/roadmaps/",
+    "rule": "pointer-only README if folder exists"
+  },
+  "_deprecatedRequiredRootFiles": [
+    "docs/roadmap/README.md",
+    "docs/roadmap/FOLDER-SPEC.md",
+    "docs/roadmap/roadmap-current.md"
   ],
   "requiredSubfolders": {
     "technical": {
@@ -39,6 +49,11 @@
     "compliance": {
       "purpose": "Compliance lane — links to ops/compliance/* + docs/operations/compliance/* (narrative only)",
       "required": ["README.md", "roadmap.md"]
+    },
+    "agile": {
+      "purpose": "Pointer stub only — canonical agile hub is repo-root agile/; pack: agile-pack.json; reference: agile-os",
+      "required": ["README.md"],
+      "packRef": "pm/spec/agile-pack.json"
     },
     "partnerships": {
       "purpose": "Partnerships lane — links to docs/business/partnerships/* (+ ops bindings if any)",
@@ -81,5 +96,89 @@
     "bootstrap": "node platform/scripts/fleet-docs-roadmap-bootstrap.mjs --write --all"
   },
   "repo": "fabric-os",
-  "upstreamSpec": "../canon-os/pm/spec/docs-roadmap-pack.json"
+  "upstreamSpec": "../canon-os/pm/spec/docs-roadmap-pack.json",
+  "pillarContract": {
+    "compliance": {
+      "primary": true,
+      "artifacts": ["docs/roadmap/README.md"],
+      "gates": ["pnpm docs:roadmap:check"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    },
+    "technicalExcellence": {
+      "secondary": true,
+      "artifacts": ["docs/roadmap/technical/"],
+      "gates": ["lane READMEs"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    },
+    "craft": {
+      "secondary": true,
+      "artifacts": ["docs/roadmap/README.md"],
+      "gates": ["single-home lanes"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    },
+    "worldClass": {
+      "secondary": true,
+      "artifacts": ["docs/roadmap/README.md"],
+      "gates": ["prioritization rubric"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    },
+    "trustAndSafety": {
+      "secondary": true,
+      "artifacts": ["docs/roadmap/compliance/"],
+      "gates": ["compliance lane"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    },
+    "creativityInnovation": {
+      "notApplicable": true,
+      "reason": "Innovation narratives live in docs/product/ and docs/architecture/; this layer routes only",
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    },
+    "commercialValue": {
+      "primary": true,
+      "artifacts": ["docs/roadmap/gtm/", "docs/roadmap/partnerships/"],
+      "gates": ["GTM lane"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    },
+    "defensiveMoat": {
+      "secondary": true,
+      "artifacts": ["docs/roadmap/README.md"],
+      "gates": ["fleet decision trace"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    },
+    "agenticEmpowerment": {
+      "secondary": true,
+      "artifacts": ["docs/roadmap/agile/README.md"],
+      "gates": ["pointer to agile/ hub"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    },
+    "ecosystemIntegration": {
+      "primary": true,
+      "artifacts": ["docs/roadmap/README.md"],
+      "gates": ["XR + pm links"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    },
+    "ipMagic": {
+      "notApplicable": true,
+      "reason": "IP magic scored in docs/product/acceptance and reference implementations",
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
+    }
+  },
+  "fractalMpr": {
+    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "layerWitness": "audit/evidence/mpr-roadmap-layer-latest.json",
+    "scorecard": "docs/roadmap/pillar-scorecard.md",
+    "rollupFrom": ["file", "folder"],
+    "scorecardIsReadOnlyRollup": true
+  }
 }

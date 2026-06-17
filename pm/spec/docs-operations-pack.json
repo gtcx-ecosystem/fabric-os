@@ -1,6 +1,5 @@
 {
   "$schema": "gtcx://canon-os/docs-operations-pack/v1",
-  "version": "1.0.0",
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "title": "Docs operations pack — fabric-os",
@@ -32,7 +31,7 @@
       "allowedDocTypes": ["runbook", "overview"],
       "required": ["README.md"],
       "canonicalFiles": ["agent-universal-instructions.md"],
-      "sourcePatterns": ["docs/agents/", "docs/operations/agent-universal-instructions.md"]
+      "sourcePatterns": ["agents/", "docs/operations/agent-universal-instructions.md"]
     },
     "remediation": {
       "purpose": "Incident remediation playbooks — narrative only",
@@ -94,5 +93,89 @@
     "bootstrap": "node platform/scripts/fleet-docs-operations-bootstrap.mjs --write --all"
   },
   "repo": "fabric-os",
-  "upstreamSpec": "../canon-os/pm/spec/docs-operations-pack.json"
+  "upstreamSpec": "../canon-os/pm/spec/docs-operations-pack.json",
+  "pillarContract": {
+    "compliance": {
+      "primary": true,
+      "artifacts": ["docs/operations/FOLDER-SPEC.md"],
+      "gates": ["pnpm docs:operations:check"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    },
+    "technicalExcellence": {
+      "primary": true,
+      "artifacts": ["docs/operations/runbooks/", "docs/operations/deployment/"],
+      "gates": ["commands + exit codes"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    },
+    "craft": {
+      "secondary": true,
+      "artifacts": ["docs/operations/README.md"],
+      "gates": ["runbook index"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    },
+    "worldClass": {
+      "primary": true,
+      "artifacts": ["docs/operations/runbooks/"],
+      "gates": ["global ops bars"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    },
+    "trustAndSafety": {
+      "primary": true,
+      "artifacts": ["docs/operations/agent-spine/"],
+      "gates": ["P27 execution obligation"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    },
+    "creativityInnovation": {
+      "notApplicable": true,
+      "reason": "Innovation narratives live in docs/product/ and docs/architecture/; this layer routes only",
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    },
+    "commercialValue": {
+      "secondary": true,
+      "artifacts": ["docs/operations/README.md"],
+      "gates": ["pilot unblock path"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    },
+    "defensiveMoat": {
+      "secondary": true,
+      "artifacts": ["docs/operations/deployment/"],
+      "gates": ["proprietary deploy choreography"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    },
+    "agenticEmpowerment": {
+      "primary": true,
+      "artifacts": ["docs/operations/agent-spine/"],
+      "gates": ["agent ops narrative"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    },
+    "ecosystemIntegration": {
+      "secondary": true,
+      "artifacts": ["docs/operations/integrations/"],
+      "gates": ["cross-repo runbooks"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    },
+    "ipMagic": {
+      "notApplicable": true,
+      "reason": "IP magic scored in docs/product/acceptance and reference implementations",
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-operations-layer-latest.json"
+    }
+  },
+  "fractalMpr": {
+    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "layerWitness": "audit/evidence/mpr-operations-layer-latest.json",
+    "scorecard": "docs/operations/pillar-scorecard.md",
+    "rollupFrom": ["file", "folder"],
+    "scorecardIsReadOnlyRollup": true
+  }
 }

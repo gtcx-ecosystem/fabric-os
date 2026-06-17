@@ -280,5 +280,12 @@
   ],
   "rootHub": "agents/",
   "repo": "fabric-os",
-  "upstreamSpec": "../canon-os/pm/spec/agents-pack.json"
+  "upstreamSpec": "../canon-os/pm/spec/agents-pack.json",
+  "fractalMpr": {
+    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "layerWitness": "audit/evidence/mpr-agents-layer-latest.json",
+    "scorecard": "agents/pillar-scorecard.md",
+    "rollupFrom": ["file", "folder"],
+    "scorecardIsReadOnlyRollup": true
+  }
 }

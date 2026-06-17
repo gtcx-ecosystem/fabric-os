@@ -1,6 +1,5 @@
 {
   "$schema": "gtcx://canon-os/docs-foundation-pack/v1",
-  "version": "1.0.0",
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-FOUNDATION-IA-V1",
   "repo": "fabric-os",

@@ -222,5 +222,89 @@
     "pm/spec/docs-foundation-ia-rollout.json"
   ],
   "repo": "fabric-os",
-  "upstreamSpec": "../canon-os/pm/spec/docs-business-pack.json"
+  "upstreamSpec": "../canon-os/pm/spec/docs-business-pack.json",
+  "pillarContract": {
+    "compliance": {
+      "primary": true,
+      "artifacts": ["docs/business/FOLDER-SPEC.md"],
+      "gates": ["pnpm docs:business:check"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    },
+    "technicalExcellence": {
+      "secondary": true,
+      "artifacts": ["docs/business/research/"],
+      "gates": ["no loose md at business root"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    },
+    "craft": {
+      "secondary": true,
+      "artifacts": ["docs/business/README.md"],
+      "gates": ["cross-ref table"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    },
+    "worldClass": {
+      "secondary": true,
+      "artifacts": ["docs/business/market/"],
+      "gates": ["ICP + market depth"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    },
+    "trustAndSafety": {
+      "secondary": true,
+      "artifacts": ["docs/business/customers/"],
+      "gates": ["audience claims sourced"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    },
+    "creativityInnovation": {
+      "notApplicable": true,
+      "reason": "Innovation narratives live in docs/product/ and docs/architecture/; this layer routes only",
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    },
+    "commercialValue": {
+      "primary": true,
+      "artifacts": ["docs/business/market/", "docs/business/economics/"],
+      "gates": ["GTM trace"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    },
+    "defensiveMoat": {
+      "primary": true,
+      "artifacts": ["docs/business/strategy/"],
+      "gates": ["differentiation narrative"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    },
+    "agenticEmpowerment": {
+      "secondary": true,
+      "artifacts": ["docs/business/README.md"],
+      "gates": ["agent read order link"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    },
+    "ecosystemIntegration": {
+      "secondary": true,
+      "artifacts": ["docs/business/partnerships/"],
+      "gates": ["XR handoff links"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    },
+    "ipMagic": {
+      "notApplicable": true,
+      "reason": "IP magic scored in docs/product/acceptance and reference implementations",
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-business-layer-latest.json"
+    }
+  },
+  "fractalMpr": {
+    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "layerWitness": "audit/evidence/mpr-business-layer-latest.json",
+    "scorecard": "docs/business/pillar-scorecard.md",
+    "rollupFrom": ["file", "folder"],
+    "scorecardIsReadOnlyRollup": true
+  }
 }

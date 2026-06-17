@@ -1,14 +1,14 @@
 {
   "$schema": "gtcx://canon-os/docs-product-pack/v1",
-  "version": "1.0.0",
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "title": "Docs product pack — fabric-os",
-  "principle": "Product experience SoR lives under docs/product/. Foundation holds why; business holds market and ICP; product holds surfaces, journeys, acceptance/UAT scenarios, and product-facing requirements. Technical ADRs/specs remain under docs/architecture/. Roadmaps are forbidden here and live only under docs/roadmap/.",
+  "principle": "docs/product/ = UX narrative ONLY (docs/product/ux/). PRDs → pm/product/prds/. Ceremony → agile/. Requirements → docs/architecture/requirements/. See hub-separation-matrix.json.",
+  "separationMatrix": "pm/spec/repo-provisioning/hub-separation-matrix.json",
   "requiredRootFiles": [
     {
       "path": "docs/product/README.md",
-      "role": "index + cross-ref table (foundation ↔ business ↔ product ↔ architecture)"
+      "role": "index + separation table (ux ↔ agile ↔ pm/product)"
     },
     {
       "path": "docs/product/FOLDER-SPEC.md",
@@ -17,80 +17,78 @@
   ],
   "requiredSubfolders": {
     "ux": {
-      "purpose": "Personas, jobs-to-be-done, workflows, journeys, information architecture, UX research",
+      "purpose": "Product users — operators, practitioners, on-screen actors. NOT customers (docs/business/customers/).",
       "allowedDocTypes": ["product", "ux-research", "overview"],
       "required": ["README.md"],
       "canonicalFiles": [
-        "personas.md",
-        "job-to-be-done.md",
+        "users.md",
         "northern-stars.md",
+        "job-to-be-done.md",
         "information-architecture.md",
         "user-flow-diagrams.md",
         "critical-workflows.md",
         "user-journey-maps.md"
       ],
-      "sourcePatterns": [
-        "docs/_archive/product/ux-research/",
-        "docs/architecture/specs/design/ux-research/"
-      ],
-      "forbidden": ["GTM ICP prose — belongs in docs/business/customers/"]
-    },
-    "surfaces": {
-      "purpose": "Surface inventory, navigation structures, permissions/roles — product-facing truth",
-      "allowedDocTypes": ["product", "overview"],
-      "required": ["README.md"],
-      "canonicalFiles": ["surface-inventory.md", "navigation-map.md", "permissions-and-roles.md"]
-    },
-    "requirements": {
-      "purpose": "Product requirements from the user/operator lens (not market sizing; not system architecture)",
-      "allowedDocTypes": ["product", "overview"],
-      "required": ["README.md"],
-      "canonicalFiles": [
-        "functional-requirements.md",
-        "non-functional-experience.md",
-        "accessibility.md"
+      "legacyMigrate": {
+        "personas.md": "users.md — customer ≠ user; buy-side stays in docs/business/customers/"
+      },
+      "forbidden": [
+        "Customer / ICP / buyer prose — docs/business/customers/",
+        "UAT scenarios — agile/qa-uat.md",
+        "PRD bodies — pm/product/prds/",
+        "Functional requirements catalog — docs/architecture/requirements/"
       ]
-    },
-    "acceptance": {
-      "purpose": "Definition of done, UAT scenarios, regression critical paths — links to witness commands",
-      "allowedDocTypes": ["product", "overview"],
-      "required": ["README.md"],
-      "canonicalFiles": [
-        "definition-of-done-product.md",
-        "uat-scenarios.md",
-        "regression-critical-paths.md"
-      ]
-    },
-    "prds": {
-      "purpose": "Pointer-only narrative index to pm/product/prds/ (no duplicate PRD state)",
-      "allowedDocTypes": ["overview"],
-      "required": ["README.md"],
-      "optional": true,
-      "note": "Machine PRDs remain under pm/product/prds/"
-    },
-    "research": {
-      "purpose": "Product discovery notes only if not market/ICP (otherwise belongs in docs/business/research/)",
-      "allowedDocTypes": ["product", "overview"],
-      "required": ["README.md"],
-      "optional": true
     }
   },
+  "forbiddenSubfolders": {
+    "requirements": {
+      "migrateTo": "docs/architecture/requirements/",
+      "reason": "REQ-001 hub-separation"
+    },
+    "acceptance": {
+      "migrateTo": "agile/qa-uat.md",
+      "reason": "UAT-001 hub-separation"
+    },
+    "surfaces": {
+      "migrateTo": "docs/product/ux/flows/",
+      "reason": "SURF-001 hub-separation"
+    },
+    "roadmaps": {
+      "migrateTo": "agile/roadmaps/",
+      "reason": "ROAD-001 hub-separation"
+    },
+    "scrum": {
+      "migrateTo": "agile/",
+      "reason": "CER-001 hub-separation"
+    },
+    "prds": {
+      "migrateTo": "pm/product/prds/",
+      "reason": "PRD-001 hub-separation"
+    },
+    "research": {
+      "migrateTo": "docs/business/ or docs/product/ux/",
+      "reason": "market vs ux lens"
+    }
+  },
+  "_deprecatedSubfoldersRemoved": "surfaces, requirements, acceptance, prds — see forbiddenSubfolders",
   "forbiddenAtProductRoot": [
     "Loose narrative *.md except README.md and FOLDER-SPEC.md",
     "Duplicate foundation vision/mission prose",
     "Duplicate business ICP or pricing prose",
-    "Any roadmap docs — roadmaps live under docs/roadmap/ only"
+    "Any roadmap docs — agile/roadmaps/ only",
+    "pillar-scorecard.md at product root — use agile/pillar-scorecard.md",
+    "Duplicate acceptance/UAT — agile/qa-uat.md only"
   ],
   "profiles": {
     "product": {
       "productRequired": true,
-      "requiredSubfolders": ["ux", "surfaces", "requirements", "acceptance"],
-      "optionalSubfolders": ["prds", "research"]
+      "requiredSubfolders": ["ux"],
+      "optionalSubfolders": []
     },
     "fleet-documentation": {
       "productRequired": true,
-      "requiredSubfolders": ["ux", "surfaces", "requirements", "acceptance"],
-      "optionalSubfolders": ["research"]
+      "requiredSubfolders": ["ux"],
+      "optionalSubfolders": []
     },
     "constitution-standards": {
       "productRequired": false,
@@ -98,7 +96,7 @@
     },
     "platform": {
       "productRequired": false,
-      "optionalSubfolders": ["ux", "surfaces", "requirements", "acceptance"]
+      "optionalSubfolders": ["ux"]
     }
   },
   "crossReference": {
@@ -122,6 +120,92 @@
     "gateSchema": "v2",
     "stubForbidden": true,
     "bootstrap": "node platform/scripts/fleet-docs-product-bootstrap.mjs --write --all"
+  },
+  "pillarContract": {
+    "compliance": {
+      "primary": true,
+      "artifacts": ["docs/product/FOLDER-SPEC.md"],
+      "gates": ["pnpm docs:product:check"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    },
+    "technicalExcellence": {
+      "secondary": true,
+      "artifacts": ["docs/product/ux/critical-workflows.md"],
+      "gates": ["workflow specs"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    },
+    "craft": {
+      "primary": true,
+      "artifacts": ["docs/product/ux/users.md", "docs/product/ux/journeys/"],
+      "gates": ["operator journey quality"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    },
+    "worldClass": {
+      "secondary": true,
+      "artifacts": ["agile/qa-uat.md"],
+      "gates": ["acceptance bars"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    },
+    "trustAndSafety": {
+      "secondary": true,
+      "artifacts": ["docs/product/ux/critical-workflows.md"],
+      "gates": ["authority + safety paths"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    },
+    "creativityInnovation": {
+      "secondary": true,
+      "artifacts": ["docs/product/ux/journeys/"],
+      "gates": ["novel operator patterns"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    },
+    "commercialValue": {
+      "primary": true,
+      "artifacts": ["docs/product/ux/job-to-be-done.md"],
+      "gates": ["JTBD → business value"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    },
+    "defensiveMoat": {
+      "secondary": true,
+      "artifacts": ["agile/qa-uat.md"],
+      "gates": ["signature UX"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    },
+    "agenticEmpowerment": {
+      "secondary": true,
+      "artifacts": ["docs/product/ux/critical-workflows.md"],
+      "gates": ["agent-operable journeys"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    },
+    "ecosystemIntegration": {
+      "secondary": true,
+      "artifacts": ["docs/product/README.md"],
+      "gates": ["roadmap + architecture links"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    },
+    "ipMagic": {
+      "primary": true,
+      "artifacts": ["agile/qa-uat.md"],
+      "gates": ["operator-wow acceptance"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-product-layer-latest.json"
+    }
+  },
+  "fractalMpr": {
+    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "layerWitness": "audit/evidence/mpr-product-layer-latest.json",
+    "scorecard": "agile/pillar-scorecard.md",
+    "rollupFrom": ["file", "folder"],
+    "scorecardIsReadOnlyRollup": true
   },
   "repo": "fabric-os",
   "upstreamSpec": "../canon-os/pm/spec/docs-product-pack.json"

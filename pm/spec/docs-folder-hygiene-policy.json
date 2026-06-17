@@ -1,0 +1,86 @@
+{
+  "$schema": "gtcx://canon-os/docs-folder-hygiene-policy/v1",
+  "updated": "2026-06-16",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "wave": "W13",
+  "title": "Docs folder hygiene — sprawl gates per P48 + IA layers",
+  "principle": "One concept one path. Layer roots are indexes, not dumping grounds. agile/ and agents/ live at repo root only — never under docs/. Legacy top-level folders (docs/specs, docs/strategy, docs/overview) must be pointer-only after decomposition.",
+  "forbiddenTopLevelWithBodies": [
+    {
+      "path": "docs/specs",
+      "canonical": "docs/architecture/specs/",
+      "reason": "P46 — specs nest under architecture only"
+    },
+    {
+      "path": "docs/strategy",
+      "canonical": "docs/business/strategy/",
+      "reason": "Strategy narrative belongs in business layer"
+    },
+    {
+      "path": "docs/overview",
+      "canonical": "docs/business/",
+      "reason": "overview/ deprecated — use foundation + business"
+    },
+    {
+      "path": "docs/engineering",
+      "canonical": "docs/architecture/",
+      "reason": "engineering/ decomposes to architecture subfolders"
+    }
+  ],
+  "forbiddenUnderDocsAbsent": [
+    {
+      "path": "docs/agile",
+      "canonical": "agile/",
+      "reason": "P35 v5 — agile hub is repo-root agile/ only; no shadow under docs/"
+    },
+    {
+      "path": "docs/agents",
+      "canonical": "agents/",
+      "reason": "P35 v5 — agents hub is repo-root agents/ only; no shadow under docs/"
+    }
+  ],
+  "layerRootAllowlist": {
+    "docs/foundation/": [
+      "README.md",
+      "FOLDER-SPEC.md",
+      "pillar-scorecard.md",
+      "constitution.md",
+      "manifesto.md",
+      "vision.md",
+      "mission.md",
+      "goals.md",
+      "milestones.md",
+      "roadmap.md"
+    ],
+    "docs/business/": ["README.md", "FOLDER-SPEC.md", "pillar-scorecard.md"],
+    "docs/architecture/": ["README.md", "FOLDER-SPEC.md", "pillar-scorecard.md"],
+    "docs/product/": ["README.md", "FOLDER-SPEC.md", "pillar-scorecard.md"],
+    "docs/roadmap/": ["README.md", "FOLDER-SPEC.md", "pillar-scorecard.md"],
+    "docs/operations/": ["README.md", "FOLDER-SPEC.md", "pillar-scorecard.md"],
+    "agile/": [
+      "README.md",
+      "FOLDER-SPEC.md",
+      "pillar-scorecard.md",
+      "intake.md",
+      "planning.md",
+      "qa-uat.md",
+      "zenhub.md",
+      "cpo.md",
+      "roadmap.md",
+      "team.md"
+    ],
+    "agents/": ["README.md", "FOLDER-SPEC.md", "pillar-scorecard.md"]
+  },
+  "thresholds": {
+    "maxLooseMdAtLayerRoot": 0,
+    "maxLooseMdAtOperationsRoot": 2,
+    "maxMdPerFolderBeforeSlice": 15,
+    "pointerOnlyLegacyFolders": true
+  },
+  "enforcement": {
+    "check": "pnpm docs:folder-hygiene:check",
+    "fleetCheck": "pnpm ecosystem:docs:folder-hygiene:fleet",
+    "remediate": "pnpm ecosystem:docs:hygiene:remediate -- --repo"
+  },
+  "fleetWitness": "audit/evidence/docs-folder-hygiene-fleet-latest.json"
+}

@@ -1,3 +1,3 @@
 # Reference — evaluation
 
-Evaluation frameworks and rubrics placeholder.
+Evaluation frameworks and rubrics index.

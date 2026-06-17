@@ -1,0 +1,168 @@
+{
+  "$schema": "gtcx://canon-os/docs-document-types/v1",
+  "updated": "2026-06-15",
+  "protocol": "docs/governance/protocols/48-docs-provisioning-standard/protocol.md",
+  "title": "Fleet document type registry — format, machine spec, quality bars",
+  "globalFrontmatter": {
+    "required": ["title", "status", "date", "owner", "tier", "tags", "review_cycle"],
+    "recommended": ["role", "document_id", "goals", "agent_id"],
+    "machineReadable": {
+      "document_type": "string — key from this registry",
+      "schema_version": "semver of doc body contract",
+      "content_hash": "optional witness"
+    }
+  },
+  "qualityScale": {
+    "minPublish100": 85,
+    "worldClass100": 95,
+    "dimensions": ["completeness", "accuracy", "agentNavigability", "freshness", "linkIntegrity"]
+  },
+  "docTypes": {
+    "protocol": {
+      "label": "Governance protocol",
+      "pathHints": ["docs/governance/protocols/**/protocol.md"],
+      "contentSections": ["Purpose", "Scope", "Requirements", "Enforcement", "Metadata"],
+      "goalsField": "required in frontmatter or ## Goals",
+      "qualityBar": {
+        "minScore100": 90,
+        "mustHave": ["normative RFC2119 language", "verification command", "owner + review_cycle"],
+        "agentChecks": ["pnpm validate", "linked from REGISTRY or INDEX"]
+      }
+    },
+    "prd": {
+      "label": "Product requirements document",
+      "pathHints": ["docs/business/**", "docs/product/**", "pm/product/prds/**"],
+      "contentSections": [
+        "Problem",
+        "Goals",
+        "Non-goals",
+        "Users",
+        "Requirements",
+        "Success metrics",
+        "Open questions"
+      ],
+      "goalsField": "required",
+      "qualityBar": {
+        "minScore100": 85,
+        "mustHave": ["measurable success metrics", "explicit non-goals", "owner persona"],
+        "minWords": 800
+      }
+    },
+    "adr": {
+      "label": "Architecture decision record",
+      "pathHints": ["docs/architecture/decisions/**", "**/ADR-*.md"],
+      "contentSections": ["Context", "Decision", "Consequences", "Status"],
+      "qualityBar": {
+        "minScore100": 85,
+        "mustHave": ["dated context", "rejected alternatives", "status field"]
+      }
+    },
+    "architecture": {
+      "label": "Technical architecture narrative",
+      "pathHints": ["docs/architecture/**", "!**/decisions/**"],
+      "contentSections": [
+        "Overview",
+        "Components",
+        "Data flows",
+        "Trust boundaries",
+        "Operational concerns"
+      ],
+      "qualityBar": {
+        "minScore100": 88,
+        "mustHave": ["diagram or mermaid block", "integration map links", "SLO/ops pointer"],
+        "minWords": 600
+      }
+    },
+    "runbook": {
+      "label": "Operations runbook",
+      "pathHints": ["docs/operations/**", "docs/engineering/runbooks/**"],
+      "contentSections": ["Purpose", "Prerequisites", "Procedure", "Verification", "Rollback"],
+      "qualityBar": {
+        "minScore100": 90,
+        "mustHave": ["verification commands with expected exit codes", "owner on-call role"]
+      }
+    },
+    "api-reference": {
+      "label": "API / contract reference",
+      "pathHints": ["docs/api/**", "docs/reference/api/**"],
+      "contentSections": ["Overview", "Authentication", "Endpoints", "Errors", "Examples"],
+      "qualityBar": {
+        "minScore100": 88,
+        "mustHave": ["OpenAPI or typed contract link", "example request/response"]
+      }
+    },
+    "onboarding": {
+      "label": "Developer / operator onboarding",
+      "pathHints": ["docs/onboarding/**", "docs/engineering/getting-started/**"],
+      "contentSections": ["Quick start", "Prerequisites", "First success path", "Next steps"],
+      "qualityBar": {
+        "minScore100": 85,
+        "mustHave": ["copy-paste commands", "time-to-first-success < 15 min path"]
+      }
+    },
+    "gitbook-chapter": {
+      "label": "GitBook publish chapter",
+      "pathHints": ["docs/gitbook/**"],
+      "contentSections": ["Summary", "Audience", "Body", "Related links"],
+      "qualityBar": {
+        "minScore100": 85,
+        "mustHave": ["listed in SUMMARY.md", "no orphan pages"]
+      }
+    },
+    "gtm-brief": {
+      "label": "GTM / executive evidence",
+      "pathHints": ["ops/gtm/**", "docs/overview/**"],
+      "contentSections": ["Executive summary", "Problem", "Solution", "Evidence", "CTA"],
+      "qualityBar": {
+        "minScore100": 85,
+        "mustHave": ["verifiable claims with evidence links"]
+      }
+    },
+    "audit-evidence": {
+      "label": "Audit / compliance evidence doc",
+      "pathHints": ["audit/**", "docs/reference/audits/**"],
+      "contentSections": ["Scope", "Method", "Findings", "Remediation", "Witness"],
+      "qualityBar": {
+        "minScore100": 90,
+        "mustHave": ["command + exit code witness", "date + auditor owner"]
+      }
+    },
+    "folder-spec": {
+      "label": "Folder provisioning spec",
+      "pathHints": ["**/FOLDER-SPEC.md", "docs/FOLDER-SPEC.md"],
+      "contentSections": [
+        "Purpose",
+        "Allowed doc types",
+        "Required files",
+        "Nesting rules",
+        "Agent rules"
+      ],
+      "qualityBar": {
+        "minScore100": 95,
+        "mustHave": ["maps to docs-folder-provisioning.json entry"]
+      }
+    },
+    "formal-legal": {
+      "label": "Formal legal / commercial document (PDF lane)",
+      "pathHints": ["docs/reference/templates/formal/**", "deploy/formal-docs/**"],
+      "contentSections": [
+        "Cover metadata",
+        "Legal notices",
+        "Document particulars",
+        "Commercial terms",
+        "Governing provisions",
+        "Execution / signatures"
+      ],
+      "goalsField": "optional — use instance manifest goals",
+      "qualityBar": {
+        "minScore100": 95,
+        "mustHave": [
+          "validated instance YAML against schema",
+          "legal review witness for status final",
+          "document_id and version in frontmatter"
+        ],
+        "agentChecks": ["pnpm publish:formal:validate"]
+      }
+    }
+  }
+}

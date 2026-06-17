@@ -6,6 +6,7 @@
   "principle": "GTCX team (@amanianai, Legal, Security, GTM) — NOT agent P22; NOT internal execution roadmap stories.",
   "agentRoadmapEligible": false,
   "p22Selectable": false,
+  "blocksAnyRepo": false,
   "statusUpdateSection": "Internal human (GTCX — not agent)",
   "gates": [
     {

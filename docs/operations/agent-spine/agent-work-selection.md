@@ -52,9 +52,9 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 
 **Cross-repo:** S-XR-1 **closed** — XR-101/201 done. S-XR-2 **closed** — XR-202/301/302 done. S-XR-3: XR-401 **done**, XR-402 **ready**, XR-405 **done**. S-XR-4: XR-507 **done**, XR-508 **done**.
 
-**External/vendor gates — NOT on this register:** [`ops/coordination/post-launch-external-gates.json`](../../ops/coordination/post-launch-external-gates.json) (BG-10-10, BG-10-11, vendor report). **Internal human — NOT P22:** [`ops/coordination/internal-human-gates.json`](../../ops/coordination/internal-human-gates.json).
+**External/vendor gates — NOT on this register:** [`ops/coordination/post-launch-external-gates.json`](../../ops/coordination/post-launch-external-gates.json) · [`ops/coordination/human-gates.manifest.json`](../../ops/coordination/human-gates.manifest.json) (partnerships/legal/GTM lanes). **Internal human — NOT P22:** [`ops/coordination/internal-human-gates.json`](../../ops/coordination/internal-human-gates.json).
 
-**Forbidden:** Listing EXT-INF-_ or BG-10-_ on internal execution roadmaps, launch-focus human queue, or P22 next work.
+**Lane isolation:** [`docs/operations/protocols/product-roadmap-lane-isolation.md`](../../protocols/product-roadmap-lane-isolation.md) — pilot/LOI/countersign gates never block engineering P22.
 
 ## Work register (Protocol 22 — explicit backlog)
 

@@ -54,25 +54,6 @@
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
-      "id": "BL-SOC2-01",
-      "title": "SOC 2 Type II auditor engagement and opinion track",
-      "type": "story",
-      "priority": "P2",
-      "status": "open",
-      "owner": "fabric-os",
-      "sprint": "SPR-2026-06-INTAKE",
-      "pipeline": "Product Backlog",
-      "program": "Security-as-a-Service",
-      "prdRef": "PRD-secas-stack-security",
-      "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "Auditor MSA countersigned",
-        "SOC 2 evidence path published",
-        "Opinion window scheduled"
-      ],
-      "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
-    },
-    {
       "id": "INIT-EXEC-GAP",
       "title": "Executive execution gap seal reconcile",
       "type": "initiative",

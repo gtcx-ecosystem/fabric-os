@@ -1,0 +1,58 @@
+{
+  "$schema": "gtcx://fabric-os/product-milestones/v1",
+  "repo": "fabric-os",
+  "updated": "2026-06-17",
+  "sources": [
+    "pm/execution-roadmap.md",
+    "pm/spec/product-goals.json",
+    "agile/roadmaps/technical.md"
+  ],
+  "active": {
+    "product": "Q3-FABRIC-03",
+    "programme": "PROG-CONTINENTAL-CAPITAL"
+  },
+  "product": [
+    {
+      "id": "Q3-FABRIC-01",
+      "title": "Pilot staging smoke witness",
+      "layer": "product",
+      "status": "done"
+    },
+    {
+      "id": "Q3-FABRIC-02",
+      "title": "Golden transaction substrate witness",
+      "layer": "product",
+      "status": "done"
+    },
+    {
+      "id": "Q3-FABRIC-03",
+      "title": "SECAS supply-chain fleet gates",
+      "layer": "product",
+      "status": "pending"
+    },
+    {
+      "id": "Q3-FABRIC-04",
+      "title": "Fleet observability witness",
+      "layer": "product",
+      "status": "done"
+    },
+    {
+      "id": "XR-FABRIC-SESSION-OPEN-004",
+      "title": "Session open items hygiene + closure bar",
+      "layer": "product",
+      "status": "in_progress"
+    }
+  ],
+  "business": [
+    {
+      "id": "BM-P1-zambia-pilot",
+      "title": "Zambia MMMD pilot commercial go-live",
+      "layer": "business",
+      "status": "awaiting-human",
+      "roadmapLane": "partnerships",
+      "humanGate": "BM-ZM-PILOT-01",
+      "readinessWitness": "terra-os/audit/evidence/pilot-zambia-readiness-latest.json",
+      "note": "Technical readiness PASS — Class S countersign only; not on engineering P22"
+    }
+  ]
+}

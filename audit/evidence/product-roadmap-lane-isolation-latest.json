@@ -1,0 +1,10 @@
+{
+  "schema": "gtcx://fabric-os/product-roadmap-lane-isolation/v1",
+  "checkedAt": "2026-06-17T18:23:22.583Z",
+  "repo": "fabric-os",
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "productLanesChecked": 3,
+  "executionFilesChecked": 3
+}

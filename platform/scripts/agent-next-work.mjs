@@ -53,7 +53,7 @@ const EXTERNAL_RE =
 
 /** Never P22-selectable — post-launch external or internal-human SoR only */
 const POST_LAUNCH_OR_HUMAN_ID_RE =
-  /^(EXT-INF-\d+|BG-10-10|BG-10-11|BG-10-10-REPORT|S2-13|H-03|H-05|BL-SOC2-01|SECAS-S2-01-INGEST)$/;
+  /^(EXT-INF-\d+|BG-10-10|BG-10-11|BG-10-10-REPORT|S2-13|H-03|H-05|BL-SOC2-01|BL-OPERATOR|BM-|SECAS-S2-01-INGEST)$/;
 
 function parsePriority(p) {
   const n = Number.parseInt(String(p).replace(/\D/g, ''), 10);

@@ -137,6 +137,10 @@ run(
   'Ecosystem Integration Matrix',
   'node platform/tools/scripts/ecosystem-integration-matrix-check.mjs',
 );
+run(
+  'Product Roadmap Lane Isolation',
+  'node platform/scripts/check-product-roadmap-lane-isolation.mjs --write',
+);
 
 // =============================================================================
 // 3. Security Validators

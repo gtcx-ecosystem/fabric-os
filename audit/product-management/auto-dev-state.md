@@ -21,6 +21,13 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 - **Status:** all fabric-os program sprints sealed (DAAS S1–S3 · SECAS S1–S5)
 - **Parallel:** vendor calendar `SECAS-VENDOR-CALENDAR` — `blocksIR: false` · `blocksAnyRepo: false` · deferred-post-launch only
 
+## execute-roadmap reconcile (2026-06-17 — product roadmap lane isolation)
+
+- **Enforcement:** `pnpm product-roadmap:lane:check:write` **PASS** — external/pilot gates scrubbed from engineering backlog
+- **Lanes:** `agile/roadmaps/{technical,gtm,legal,partnerships,compliance}.md` + `ops/coordination/human-gates.manifest.json`
+- **MMMD / ZWCMP:** `BM-ZM-PILOT-01` · `EXT-INF-014` on partnerships lane only — technical readiness PASS does not block P22
+- **Removed from product backlog:** `BL-SOC2-01` → compliance lane manifest
+
 ## execute-roadmap reconcile (2026-06-17 — pen-test block removal)
 
 - **Directive:** No vendor/pen-test blocks on any repo — internal engineering closure only

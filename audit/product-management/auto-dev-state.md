@@ -21,6 +21,14 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 - **Status:** all fabric-os program sprints sealed (DAAS S1–S3 · SECAS S1–S5)
 - **Parallel:** vendor calendar `SECAS-VENDOR-CALENDAR` — `blocksIR: false` · earliest ingest **2026-06-21**
 
+## execute-roadmap reconcile (2026-06-17 — cycle 4)
+
+- **CommOps staging deploy:** `kubectl apply -k deploy/kubernetes/overlays/staging/commops/` — bounce webhook **1/1 Running**
+- **TLS unblock:** ACM `commops-staging.gtcx.trade` (`4d666fa3-…`) + Cloudflare CNAME + ingress cert ARN
+- **Probe:** `https://commops-staging.gtcx.trade/health` → **200**
+- **Deliverability:** `commops:deliverability:check:write` **PASS** — `stagingHealthLive` green
+- **SECAS parallel:** `secas:ingest:automation:check:write` **PASS** · `awaiting_vendor_report` until **2026-06-21+**
+
 ## execute-roadmap reconcile (2026-06-17 — cycle 3)
 
 - **Staging substrate restore:** AGX + sovereign `CrashLoopBackOff` — RDS password drift on `gtcx_admin`

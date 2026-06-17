@@ -1,0 +1,21 @@
+{
+  "schema": "gtcx://fabric-os/commops-staging-dns-unblock/v1",
+  "id": "COMMOPS-STAGING-DNS-UNBLOCK-2026-06-17",
+  "checkedAt": "2026-06-17T18:05:00.000Z",
+  "repo": "fabric-os",
+  "hostname": "commops-staging.gtcx.trade",
+  "blocker": "Overlay not applied; ALB lacked ACM SAN for commops-staging.gtcx.trade",
+  "resolution": {
+    "vaultKey": "CLOUDFLARE_DNS_API_TOKEN",
+    "dnsCname": "k8s-gtcxstagingapi-295a96727a-1533822930.af-south-1.elb.amazonaws.com",
+    "proxied": false,
+    "acmCertArn": "arn:aws:acm:af-south-1:348389439381:certificate/4d666fa3-427d-45b5-a460-e4a8032cb4c5",
+    "kubectlApply": "deploy/kubernetes/overlays/staging/commops/"
+  },
+  "probes": {
+    "cloudflareDnsApi": "200",
+    "httpsHealth": 200,
+    "healthBody": "ok commops-bounce-webhook"
+  },
+  "ok": true
+}

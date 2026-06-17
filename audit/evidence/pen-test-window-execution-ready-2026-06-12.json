@@ -5,11 +5,11 @@
   "frictionId": "SEC-PENTEST-01",
   "program": "INIT-GTCX-INFRA-SECAS",
   "status": "ready_for_window",
-  "preparedAt": "2026-06-17T17:11:31.736Z",
+  "preparedAt": "2026-06-17T18:06:17.399Z",
   "fleetHealth": {
     "result": "PASS",
     "servicesHealthy": "3/3 required",
-    "probedAt": "2026-06-17T17:11:31.736Z",
+    "probedAt": "2026-06-17T18:06:17.399Z",
     "witness": "audit/evidence/pen-test-pre-window-fleet-health-2026-06-12.json"
   },
   "preparedBy": "agent:fabric-os",

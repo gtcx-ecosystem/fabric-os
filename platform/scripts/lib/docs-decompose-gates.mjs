@@ -4,7 +4,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-export const DECOMPOSE_EXEMPT_FILES = new Set(['README.md', 'FOLDER-SPEC.md', 'index.md']);
+export const DECOMPOSE_EXEMPT_FILES = new Set(['README.md', 'FOLDER-SPEC.md', 'index.md', 'pillar-scorecard.md']);
 export const DECOMPOSE_EXEMPT_DIRS = new Set(['agentic', 'roadmap', '.git']);
 
 export function isPointerStub(filePath) {
@@ -42,7 +42,7 @@ export function hasNarrativeInPath(repoRoot, pattern) {
   return countNarrativeMarkdown(join(repoRoot, rel)) > 0;
 }
 
-export function looseMarkdownAtRoot(dir, allowed = ['README.md', 'FOLDER-SPEC.md']) {
+export function looseMarkdownAtRoot(dir, allowed = ['README.md', 'FOLDER-SPEC.md', 'pillar-scorecard.md']) {
   if (!existsSync(dir)) return [];
   return readdirSync(dir, { withFileTypes: true })
     .filter((e) => e.isFile() && e.name.endsWith('.md') && !allowed.includes(e.name))

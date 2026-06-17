@@ -2,7 +2,7 @@
   "schema": "gtcx://audit/craft-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-17",
-  "score100": 100,
+  "score100": 98,
   "published": true,
   "provisional": false,
   "blockedBy": null,
@@ -16,7 +16,7 @@
       "source": "audit-output"
     },
     "process-composition": {
-      "score100": 100,
+      "score100": 95,
       "weight": 22,
       "sourceIds": ["production-readiness", "ecosystem-integration", "ai-maturity"],
       "confidence": "A",
@@ -30,7 +30,7 @@
       "source": "audit-output"
     },
     "restraint-anti-commodity": {
-      "score100": 100,
+      "score100": 95,
       "weight": 18,
       "sourceIds": ["ux-product-design", "documentation", "hallucination-resilience"],
       "confidence": "A",

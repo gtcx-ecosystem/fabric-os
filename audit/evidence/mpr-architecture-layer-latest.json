@@ -1,0 +1,76 @@
+{
+  "schema": "gtcx://canon-os/mpr-layer-witness-stub/v1",
+  "scope": "layer",
+  "layer": "architecture",
+  "path": "docs/architecture/",
+  "repo": "fabric-os",
+  "evaluatedAt": "2026-06-16T16:56:31.852Z",
+  "published": false,
+  "pillarTarget": 85,
+  "fullComposite100": null,
+  "foundationComposite100": null,
+  "trustCap100": null,
+  "rollupFrom": {
+    "file": "audit/evidence/mpr-files/architecture/",
+    "folder": "docs/architecture/",
+    "packCheck": "pnpm docs:architecture:check"
+  },
+  "quadrants": {
+    "compliance": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    },
+    "technicalExcellence": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    },
+    "craft": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    },
+    "worldClass": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    },
+    "trustAndSafety": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    },
+    "creativityInnovation": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    },
+    "commercialValue": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    },
+    "defensiveMoat": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    },
+    "agenticEmpowerment": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    },
+    "ecosystemIntegration": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    },
+    "ipMagic": {
+      "score100": null,
+      "published": false,
+      "provisional": true
+    }
+  },
+  "note": "Bootstrap stub — publish via bridge run-five-pillar-audit.mjs --scope layer when live"
+}

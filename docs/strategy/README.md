@@ -9,6 +9,6 @@ review_cycle: on-change
 
 # docs/strategy — relocated
 
-**Canonical path:** [`docs/business/opportunity/`](../docs/business/opportunity/)
+**Canonical path:** [`docs/strategy/fleet-ops-hub.md`](./fleet-ops-hub.md) · archived business context in [`archive/legacy-docs-top-level/business/`](../../archive/legacy-docs-top-level/business/)
 
 P0 legacy scrub — do not add new files here.

@@ -5,14 +5,14 @@
   "tier": "platform",
   "updated": "2026-06-17",
   "vision": {
-    "statement": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
+    "statement": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
     "horizon": "2026-2028"
   },
   "mission": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
   "northStarMetric": {
-    "name": "Fabric OS milestone witness",
-    "target": "ecosystem:product-culture:check PASS + composite ≥85",
-    "witness": "audit/evidence/five-pillar-latest.json"
+    "name": "SECAS-S4-02 supply-chain gates PASS",
+    "target": "Witness: audit/evidence/secas-supply-chain-check-latest.json",
+    "witness": "audit/evidence/secas-supply-chain-check-latest.json"
   },
   "valueProposition": {
     "for": "Operators and integrators consuming Fabric OS",
@@ -44,7 +44,7 @@
   },
   "activeMilestone": {
     "id": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
-    "title": "Fleet internal SecOps + ComplianceOps clearance",
+    "title": "SECAS-S4-supply-chain",
     "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
     "targetDate": "2026-06-15",
     "programmeId": "PROG-SECAS-ENGINEERING",

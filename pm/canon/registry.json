@@ -1,0 +1,24 @@
+{
+  "$schema": "gtcx://canon-os/product-canon-registry/v1",
+  "productId": "{repo-name}",
+  "version": "0.1.0",
+  "status": "draft",
+  "updated": "2026-06-17",
+  "owner": "{repo-name}",
+  "goalsRef": "pm/spec/product-goals.json",
+  "milestones": [],
+  "composition": {
+    "features": [],
+    "services": [],
+    "infra": [],
+    "experience": [],
+    "commercial": []
+  },
+  "bundles": [],
+  "narrativeIndex": {
+    "vision": "docs/foundation/vision.md",
+    "roadmap": "docs/foundation/roadmap.md",
+    "uxReadme": "docs/product/ux/README.md",
+    "customersReadme": "docs/business/customers/README.md"
+  }
+}

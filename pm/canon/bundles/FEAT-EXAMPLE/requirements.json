@@ -1,0 +1,23 @@
+{
+  "$schema": "gtcx://canon-os/product-canon-requirements/v1",
+  "bundleId": "FEAT-EXAMPLE",
+  "version": "0.1.0",
+  "functional": [
+    {
+      "id": "FR-EX-001",
+      "statement": "The system SHALL …",
+      "priority": "P0",
+      "acceptance": ["Given … When … Then …"],
+      "surfaces": ["surface-id"],
+      "verifyCommand": "pnpm test --filter example"
+    }
+  ],
+  "nonFunctional": [
+    {
+      "id": "NFR-EX-001",
+      "category": "performance",
+      "statement": "p95 latency < 200ms",
+      "verifyCommand": "pnpm perf:smoke"
+    }
+  ]
+}

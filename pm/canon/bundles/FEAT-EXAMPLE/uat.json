@@ -1,0 +1,16 @@
+{
+  "$schema": "gtcx://canon-os/product-canon-uat/v1",
+  "bundleId": "FEAT-EXAMPLE",
+  "version": "0.1.0",
+  "scenarios": [
+    {
+      "id": "UAT-EX-001",
+      "title": "Happy path",
+      "preconditions": [],
+      "steps": ["Step 1", "Step 2"],
+      "expected": "Observable outcome",
+      "verifyCommand": "pnpm uat:example",
+      "expectedExitCode": 0
+    }
+  ]
+}

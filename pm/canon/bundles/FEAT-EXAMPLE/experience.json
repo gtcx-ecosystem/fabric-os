@@ -1,0 +1,25 @@
+{
+  "$schema": "gtcx://canon-os/product-canon-experience/v1",
+  "bundleId": "FEAT-EXAMPLE",
+  "version": "0.1.0",
+  "operatorPersonas": ["OP-ANALYST"],
+  "surfaces": [
+    {
+      "id": "surface-example",
+      "route": "/example",
+      "states": ["idle", "loading", "success", "error"],
+      "transitions": [
+        { "from": "idle", "event": "submit", "to": "loading" },
+        { "from": "loading", "event": "ok", "to": "success" }
+      ],
+      "acceptance": ["FR-EX-001"]
+    }
+  ],
+  "flows": [
+    {
+      "id": "flow-example",
+      "steps": ["surface-example:idle", "surface-example:success"]
+    }
+  ],
+  "narrativeRef": "docs/product/ux/flows/flow-example.md"
+}

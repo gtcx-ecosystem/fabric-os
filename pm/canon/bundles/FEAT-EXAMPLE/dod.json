@@ -1,0 +1,20 @@
+{
+  "$schema": "gtcx://canon-os/product-canon-dod/v1",
+  "bundleId": "FEAT-EXAMPLE",
+  "version": "0.1.0",
+  "inherits": "agile/scrum/definition-of-done.md",
+  "checklist": [
+    {
+      "id": "DOD-EX-001",
+      "item": "All FR-* acceptance verified",
+      "verifyCommand": "pnpm canon:bundle:check",
+      "required": true
+    },
+    {
+      "id": "DOD-EX-002",
+      "item": "UAT scenarios green",
+      "verifyCommand": "pnpm uat:example",
+      "required": true
+    }
+  ]
+}

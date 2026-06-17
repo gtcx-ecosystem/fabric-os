@@ -1,0 +1,28 @@
+{
+  "$schema": "gtcx://canon-os/product-canon-bundle-manifest/v1",
+  "bundleId": "FEAT-EXAMPLE",
+  "productId": "{repo-name}",
+  "version": "0.1.0",
+  "status": "draft",
+  "updated": "2026-06-17",
+  "title": "Example feature — replace",
+  "owner": "{repo-name}",
+  "authorityClass": "R",
+  "goalIds": ["GOAL-EXAMPLE"],
+  "milestoneIds": ["M1"],
+  "composition": {
+    "services": [],
+    "infra": [],
+    "experience": [],
+    "commercial": []
+  },
+  "slices": {
+    "charter": { "path": "charter.json", "version": "0.1.0", "status": "draft" },
+    "requirements": { "path": "requirements.json", "version": "0.1.0", "status": "draft" },
+    "experience": { "path": "experience.json", "version": "0.1.0", "status": "draft" },
+    "dod": { "path": "dod.json", "version": "0.1.0", "status": "draft" },
+    "uat": { "path": "uat.json", "version": "0.1.0", "status": "draft" }
+  },
+  "narrativeRefs": {},
+  "initiativeRef": null
+}

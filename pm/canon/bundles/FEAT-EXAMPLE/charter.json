@@ -1,0 +1,13 @@
+{
+  "$schema": "gtcx://canon-os/product-canon-charter/v1",
+  "bundleId": "FEAT-EXAMPLE",
+  "version": "0.1.0",
+  "problem": "What user/system pain this feature resolves",
+  "goals": ["Measurable outcome 1"],
+  "nonGoals": ["Explicit out of scope"],
+  "successMetrics": [
+    { "id": "SM-1", "metric": "Description", "target": "value", "verify": "command or query" }
+  ],
+  "dependencies": [],
+  "openQuestions": []
+}

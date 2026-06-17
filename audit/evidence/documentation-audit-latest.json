@@ -5,22 +5,22 @@
   "date": "2026-06-17",
   "auditType": "documentation-pillar",
   "ok": true,
-  "composite100": 100,
+  "composite100": 84,
   "pillars": {
     "compliance": {
       "score100": 100,
       "openP1": 0,
-      "source": "fleet-seal100"
+      "source": "documentation-pack"
     },
     "technicalExcellence": {
-      "score100": 100,
+      "score100": 87,
       "score100Raw": 87,
       "packTe100": 100,
       "capped": false,
-      "source": "fleet-seal100"
+      "source": "pack+forensic-links"
     },
     "craft": {
-      "score100": 100,
+      "score100": 73,
       "score100Raw": 73,
       "capped": false,
       "capReasons": [],
@@ -28,16 +28,16 @@
         "interchangeable": false,
         "aiSlop": false
       },
-      "source": "fleet-seal100"
+      "source": "forensic-doc-standard"
     },
     "worldClass": {
-      "score100": 100,
+      "score100": 71,
       "documentationQuality100": 67,
       "worldClassBar100": 95,
       "gap100": 28,
       "gapLabel": "competitive",
       "references": ["Stripe docs", "Kubernetes docs", "gtcx-docs hub"],
-      "source": "fleet-seal100"
+      "source": "documentation-quality-vs-global-bar"
     }
   },
   "forensic": {
@@ -48,13 +48,13 @@
       "links": 0,
       "agentic": 85
     },
-    "score100": 100,
+    "score100": 72,
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
       "markdownFileCount": 438,
-      "brokenLinks": 0,
-      "scaffoldFileCount": 0,
+      "brokenLinks": 257,
+      "scaffoldFileCount": 5,
       "aiSlopFileCount": 0
     }
   },
@@ -69,6 +69,5 @@
         "detail": "missing one of: docs/agents/README.md, agents/README.md, docs/agents/"
       }
     ]
-  },
-  "fleetSeal100": true
+  }
 }

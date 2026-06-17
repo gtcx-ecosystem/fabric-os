@@ -15,4 +15,4 @@ Reference documents for the fabric-os core architecture.
 
 ## Contents
 
-- [system-overview](system-overview.md)
+- [system-overview](core/system-overview.md)

@@ -7,4 +7,4 @@ owner: fabric-os
 
 # Legal DPA program
 
-Placeholder — legal lens: `ops/legal/`.
+Index — legal lens: `ops/legal/`.

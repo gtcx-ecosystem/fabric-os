@@ -1,0 +1,63 @@
+{
+  "$schema": "gtcx://canon-os/docs-folder-spec-item/v1",
+  "level": "L1",
+  "id": "00-docs-root",
+  "path": "docs/",
+  "status": "draft",
+  "updated": "2026-06-16",
+  "canonicalTree": "pm/spec/repo-provisioning/canonical-docs-tree.json",
+  "title": "docs/ root — P48 six-pack + layer taxonomy",
+  "purpose": "Agent entry and machine SoR for the documentation tree. Indexes only — no narrative at docs/ root.",
+  "structure": {
+    "mode": "closed",
+    "allowedChildFolders": [
+      "foundation",
+      "business",
+      "architecture",
+      "product",
+      "operations",
+      "gitbook",
+      "reference"
+    ],
+    "forbiddenChildFolders": [
+      "overview",
+      "specs",
+      "strategy",
+      "engineering",
+      "roadmap",
+      "agile",
+      "agents",
+      "governance",
+      "onboarding",
+      "api",
+      "_archive"
+    ]
+  },
+  "rootFiles": {
+    "mode": "closed",
+    "allowlist": [
+      "README.md",
+      "INDEX.md",
+      "sor.json",
+      "conventions.md",
+      "CHANGELOG.md",
+      "FOLDER-SPEC.md"
+    ]
+  },
+  "childSpecs": [
+    "01-foundation",
+    "02-business",
+    "03-architecture",
+    "04-product",
+    "05-operations",
+    "06-gitbook",
+    "07-reference"
+  ],
+  "profileVariants": {
+    "constitution-standards": {
+      "extraAllowedChildFolders": ["governance"],
+      "extraChildSpec": "08-governance",
+      "note": "canon-os hub only — product repos omit governance/"
+    }
+  }
+}

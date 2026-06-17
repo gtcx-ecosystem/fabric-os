@@ -2,11 +2,11 @@
   "schema": "gtcx://audit/five-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-17",
-  "evaluatedAt": "2026-06-17T09:49:53.837Z",
-  "gitHead": "87ba20185b226d6db79d98ffabe7014b39a48a53",
-  "composite100": 100,
+  "evaluatedAt": "2026-06-17T13:58:59.300Z",
+  "gitHead": "73ebce9d94f98941b858166cad11262b42da5ea3",
+  "composite100": 99,
   "composite100Raw": 100,
-  "trustCap100": 100,
+  "trustCap100": 99,
   "compositeMode": "full-unlock",
   "fullCompositeEligible": true,
   "unlockThreshold100": 85,
@@ -1021,7 +1021,7 @@
       "rubricVersion": "1.0.0"
     },
     "trustAndSafety": {
-      "score100": 100,
+      "score100": 99,
       "published": true,
       "metrics": {
         "evidence-coverage": {
@@ -1052,7 +1052,7 @@
           "versionBloatHits": 0
         },
         "independent-replay": {
-          "score100": 100,
+          "score100": 90,
           "weight": 15,
           "opsCheck": true
         }
@@ -1069,9 +1069,9 @@
   },
   "multiPillar": {
     "schema": "gtcx://baseline-os/multi-pillar-repo-extension/v1",
-    "foundationComposite100": 100,
+    "foundationComposite100": 99,
     "fullComposite100": 96,
-    "trustCap100": 100,
+    "trustCap100": 99,
     "weights": {
       "compliance": 0,
       "technicalExcellence": 0.15,
@@ -1118,7 +1118,7 @@
         "checks": []
       },
       "trustAndSafety": {
-        "score100": 100,
+        "score100": 99,
         "published": true,
         "provisional": false,
         "blockedBy": [],

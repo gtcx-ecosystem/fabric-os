@@ -1,0 +1,74 @@
+{
+  "schema": "gtcx://bridge-os/feature-done-pipeline/v2",
+  "generatedAt": "2026-06-17T09:45:45.152Z",
+  "ok": false,
+  "resolved": {
+    "storyId": "SECAS-S4-04",
+    "source": "arg",
+    "ownerRepo": "fabric-os"
+  },
+  "steps": [
+    {
+      "id": "protocol-loop",
+      "ok": true,
+      "exitCode": 0,
+      "stdout": "\n> bridge-os@0.1.0 ecosystem:five-pillar:protocol-loop:write /Users/amanianai/Sites/gtcx-ecosystem/bridge-os\n> node platform/scripts/ecosystem/run-five-pillar-protocol-loop.mjs --write \"--\" \"--repo\" \"fabric-os\" \"--max-iter\" \"1\"\n\niter 1/1 — C=100 TE=100 craft=100 WC=100 trust=100 gaps=0\n\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/five-pillar-protocol-loop-latest.json\n\n=== five-pillar protocol-loop PASS — fabric-os ===\n",
+      "stderr": "",
+      "detail": "pnpm ecosystem:five-pillar:protocol-loop:write -- --repo fabric-os --max-iter 1"
+    },
+    {
+      "id": "independent-qa-check",
+      "ok": true,
+      "skipped": false,
+      "detail": "independent QA witness fresh",
+      "witnesses": [
+        {
+          "id": "fabric-assurance",
+          "ok": false,
+          "reason": "witness-not-ok",
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/audit/evidence/fabric-assurance-latest.json"
+        },
+        {
+          "id": "qa-smoke",
+          "ok": true,
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-verify-latest.json",
+          "ageHours": 44.62326222222222
+        }
+      ]
+    },
+    {
+      "id": "qa-story-ship",
+      "ok": true,
+      "exitCode": 0,
+      "stdout": "\n> bridge-os@0.1.0 ecosystem:qa:story-ship:check /Users/amanianai/Sites/gtcx-ecosystem/bridge-os\n> node platform/scripts/ecosystem/check-qa-story-ship.mjs \"--\" \"--id\" \"SECAS-S4-04\"\n\necosystem:qa:story-ship:check OK — SECAS-S4-04\n",
+      "stderr": "",
+      "detail": "pnpm ecosystem:qa:story-ship:check -- --id SECAS-S4-04"
+    },
+    {
+      "id": "assurance-evaluate",
+      "ok": true,
+      "exitCode": 0,
+      "stdout": "\n> bridge-os@0.1.0 ecosystem:assurance:evaluate:write /Users/amanianai/Sites/gtcx-ecosystem/bridge-os\n> node platform/scripts/ecosystem/ecosystem-assurance-evaluate.mjs --write\n\necosystem:assurance:evaluate write OK\n  signals: forward 87.6% · roadmap 62.4% · sprint 57.5%\n  fired: PROG-25, PROG-50, FORWARD-50, FORWARD-75, BACKLOG-CLEAR-APPROACH\n  blocking: none\n  run hygiene-touch-paths: exit 1\n  run qa-smoke: exit 1\n  run rag-index-freshness-check: exit 0\n  run five-core-partial-A1-A5: exit skip\n  run five-core-full: exit skip\n  run uat-independent: exit skip\n  run engine-layer-parity-11pr: exit 254\n  run roadmap-goal-milestone-review: exit 0\n  run session-open-items-forensic: exit 1\n  witness: pm/ci/assurance-evaluate-latest.json\n",
+      "stderr": "",
+      "detail": "pnpm ecosystem:assurance:evaluate:write"
+    },
+    {
+      "id": "owner-uat",
+      "ok": false,
+      "exitCode": 1,
+      "stdout": "{\n  \"ok\": false,\n  \"method\": \"baseline-os/repo-session-core\",\n  \"command\": \"node \\\"/Users/amanianai/Sites/gtcx-ecosystem/baseline-os/platform/scripts/ecosystem/repo-session-core.mjs\\\" --json\",\n  \"exitCode\": 1,\n  \"error\": \"Expected ',' or ']' after array element in JSON at position 65170 (line 1510 column 8)\"\n}\n",
+      "stderr": "",
+      "detail": "owner-uat fabric-os session"
+    },
+    {
+      "id": "milestone-dod-witness",
+      "ok": true,
+      "detail": "milestoneProgress.completedStories appended for SECAS-S4-04"
+    }
+  ],
+  "trigger": "FEATURE-DONE",
+  "initiative": "INIT-PRODUCT-TEAM-MODEL-R6",
+  "implementStory": "PTM-R6-04",
+  "spec": "pm/spec/assurance-triggers.json",
+  "loopSpec": "pm/spec/harness-protocol-loop.json"
+}

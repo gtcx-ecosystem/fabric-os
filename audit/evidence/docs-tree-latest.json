@@ -1,0 +1,475 @@
+{
+  "schema": "gtcx://canon-os/docs-tree-witness/v1",
+  "generatedAt": "2026-06-17T02:24:44.753Z",
+  "repo": "fabric-os",
+  "strict": false,
+  "structureOnly": true,
+  "profile": "platform",
+  "pass": true,
+  "metrics": {
+    "mdFiles": 0,
+    "folders": 0,
+    "missingReadme": 0,
+    "missingFrontmatter": 0,
+    "missingDocumentType": 0,
+    "unknownTopLevel": 0
+  },
+  "gates": [
+    {
+      "id": "spec:present",
+      "ok": true,
+      "detail": "2026-06-16"
+    },
+    {
+      "id": "profile",
+      "ok": true,
+      "detail": "platform"
+    },
+    {
+      "id": "root:README.md",
+      "ok": true,
+      "detail": "docs/README.md"
+    },
+    {
+      "id": "root:INDEX.md",
+      "ok": true,
+      "detail": "docs/INDEX.md"
+    },
+    {
+      "id": "root:sor.json",
+      "ok": true,
+      "detail": "docs/sor.json"
+    },
+    {
+      "id": "root:conventions.md",
+      "ok": true,
+      "detail": "docs/conventions.md"
+    },
+    {
+      "id": "root:CHANGELOG.md",
+      "ok": true,
+      "detail": "docs/CHANGELOG.md"
+    },
+    {
+      "id": "root:FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "docs/FOLDER-SPEC.md"
+    },
+    {
+      "id": "absent:docs-agile",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "absent:docs-agents",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "top-level:allowlist",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "deprecated:overview",
+      "ok": true,
+      "detail": "pointer-only"
+    },
+    {
+      "id": "deprecated:specs",
+      "ok": true,
+      "detail": "pointer-only"
+    },
+    {
+      "id": "deprecated:strategy",
+      "ok": true,
+      "detail": "pointer-only"
+    },
+    {
+      "id": "deprecated:engineering",
+      "ok": true,
+      "detail": "pointer-only"
+    },
+    {
+      "id": "deprecated:roadmap",
+      "ok": true,
+      "detail": "pointer-only"
+    },
+    {
+      "id": "layer:required:foundation",
+      "ok": true,
+      "detail": "docs/foundation"
+    },
+    {
+      "id": "pack:required:docs/foundation/README.md",
+      "ok": true,
+      "detail": "docs/foundation/README.md"
+    },
+    {
+      "id": "pack:required:docs/foundation/constitution.md",
+      "ok": true,
+      "detail": "docs/foundation/constitution.md"
+    },
+    {
+      "id": "pack:required:docs/foundation/manifesto.md",
+      "ok": true,
+      "detail": "docs/foundation/manifesto.md"
+    },
+    {
+      "id": "pack:required:docs/foundation/vision.md",
+      "ok": true,
+      "detail": "docs/foundation/vision.md"
+    },
+    {
+      "id": "pack:required:docs/foundation/mission.md",
+      "ok": true,
+      "detail": "docs/foundation/mission.md"
+    },
+    {
+      "id": "pack:required:docs/foundation/goals.md",
+      "ok": true,
+      "detail": "docs/foundation/goals.md"
+    },
+    {
+      "id": "pack:required:docs/foundation/milestones.md",
+      "ok": true,
+      "detail": "docs/foundation/milestones.md"
+    },
+    {
+      "id": "pack:required:docs/foundation/roadmap.md",
+      "ok": true,
+      "detail": "docs/foundation/roadmap.md"
+    },
+    {
+      "id": "layer:root-sprawl:foundation",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "layer:required:business",
+      "ok": true,
+      "detail": "docs/business"
+    },
+    {
+      "id": "pack:required:docs/business/README.md",
+      "ok": true,
+      "detail": "docs/business/README.md"
+    },
+    {
+      "id": "pack:required:docs/business/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "docs/business/FOLDER-SPEC.md"
+    },
+    {
+      "id": "pack:subfolder:business/market",
+      "ok": true,
+      "detail": "docs/business/market/"
+    },
+    {
+      "id": "pack:subfolder-readme:business/market",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:business/customers",
+      "ok": true,
+      "detail": "docs/business/customers/"
+    },
+    {
+      "id": "pack:subfolder-readme:business/customers",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:business/economics",
+      "ok": true,
+      "detail": "docs/business/economics/"
+    },
+    {
+      "id": "pack:subfolder-readme:business/economics",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:business/strategy",
+      "ok": true,
+      "detail": "docs/business/strategy/"
+    },
+    {
+      "id": "pack:subfolder-readme:business/strategy",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:business/research",
+      "ok": true,
+      "detail": "docs/business/research/"
+    },
+    {
+      "id": "pack:subfolder-readme:business/research",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:business/case-studies",
+      "ok": true,
+      "detail": "docs/business/case-studies/"
+    },
+    {
+      "id": "pack:subfolder-readme:business/case-studies",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:business/use-cases",
+      "ok": true,
+      "detail": "docs/business/use-cases/"
+    },
+    {
+      "id": "pack:subfolder-readme:business/use-cases",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:business/partnerships",
+      "ok": true,
+      "detail": "docs/business/partnerships/"
+    },
+    {
+      "id": "pack:subfolder-readme:business/partnerships",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:business/sales",
+      "ok": true,
+      "detail": "docs/business/sales/"
+    },
+    {
+      "id": "pack:subfolder-readme:business/sales",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:business/domain",
+      "ok": true,
+      "detail": "docs/business/domain/"
+    },
+    {
+      "id": "pack:subfolder-readme:business/domain",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "layer:root-sprawl:business",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "layer:required:architecture",
+      "ok": true,
+      "detail": "docs/architecture"
+    },
+    {
+      "id": "pack:required:docs/architecture/README.md",
+      "ok": true,
+      "detail": "docs/architecture/README.md"
+    },
+    {
+      "id": "pack:required:docs/architecture/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "docs/architecture/FOLDER-SPEC.md"
+    },
+    {
+      "id": "pack:subfolder:architecture/specs",
+      "ok": true,
+      "detail": "docs/architecture/specs/"
+    },
+    {
+      "id": "pack:subfolder-readme:architecture/specs",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:architecture/requirements",
+      "ok": true,
+      "detail": "docs/architecture/requirements/"
+    },
+    {
+      "id": "pack:subfolder-readme:architecture/requirements",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:architecture/decisions",
+      "ok": true,
+      "detail": "docs/architecture/decisions/"
+    },
+    {
+      "id": "pack:subfolder-readme:architecture/decisions",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:architecture/diagrams",
+      "ok": true,
+      "detail": "docs/architecture/diagrams/"
+    },
+    {
+      "id": "pack:subfolder-readme:architecture/diagrams",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:architecture/integration",
+      "ok": true,
+      "detail": "docs/architecture/integration/"
+    },
+    {
+      "id": "pack:subfolder-readme:architecture/integration",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:architecture/security",
+      "ok": true,
+      "detail": "docs/architecture/security/"
+    },
+    {
+      "id": "pack:subfolder-readme:architecture/security",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:architecture/pillars",
+      "ok": true,
+      "detail": "docs/architecture/pillars/"
+    },
+    {
+      "id": "pack:subfolder-readme:architecture/pillars",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "layer:root-sprawl:architecture",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "layer:required:product",
+      "ok": true,
+      "detail": "docs/product"
+    },
+    {
+      "id": "pack:required:docs/product/README.md",
+      "ok": true,
+      "detail": "docs/product/README.md"
+    },
+    {
+      "id": "pack:required:docs/product/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "docs/product/FOLDER-SPEC.md"
+    },
+    {
+      "id": "pack:subfolder:product/ux",
+      "ok": true,
+      "detail": "docs/product/ux/"
+    },
+    {
+      "id": "pack:subfolder-readme:product/ux",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "layer:root-sprawl:product",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "layer:required:operations",
+      "ok": true,
+      "detail": "docs/operations"
+    },
+    {
+      "id": "pack:required:docs/operations/README.md",
+      "ok": true,
+      "detail": "docs/operations/README.md"
+    },
+    {
+      "id": "pack:required:docs/operations/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "docs/operations/FOLDER-SPEC.md"
+    },
+    {
+      "id": "pack:subfolder:operations/runbooks",
+      "ok": true,
+      "detail": "docs/operations/runbooks/"
+    },
+    {
+      "id": "pack:subfolder-readme:operations/runbooks",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:operations/deployment",
+      "ok": true,
+      "detail": "docs/operations/deployment/"
+    },
+    {
+      "id": "pack:subfolder-readme:operations/deployment",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:operations/agent-spine",
+      "ok": true,
+      "detail": "docs/operations/agent-spine/"
+    },
+    {
+      "id": "pack:subfolder-readme:operations/agent-spine",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:operations/remediation",
+      "ok": true,
+      "detail": "docs/operations/remediation/"
+    },
+    {
+      "id": "pack:subfolder-readme:operations/remediation",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:operations/coordination",
+      "ok": true,
+      "detail": "docs/operations/coordination/"
+    },
+    {
+      "id": "pack:subfolder-readme:operations/coordination",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "layer:root-sprawl:operations",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "aux:gitbook:README.md",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "aux:gitbook:SUMMARY.md",
+      "ok": true,
+      "detail": "SUMMARY.md"
+    },
+    {
+      "id": "aux:reference:README.md",
+      "ok": true,
+      "detail": "README.md"
+    }
+  ],
+  "failed": []
+}

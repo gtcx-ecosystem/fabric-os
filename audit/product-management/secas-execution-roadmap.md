@@ -1,8 +1,8 @@
 ---
 title: Execution roadmap — SecOps
 status: current
-date: 2026-06-15
-last_reconciled: 2026-06-15T18:20:10.707Z
+date: 2026-06-17
+last_reconciled: 2026-06-17T13:01:55.750Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-SECAS
 generated: true
@@ -23,104 +23,11 @@ sources:
 
 **Ops lane:** SecOps · **Functional product:** SECaaS — parallel to DevOps/InfraOps (DaaS), not product PM.
 
-## Active Phase: SECAS-S4 — Security engineering operating program (CSIRT, supply chain, vuln cadence)
+## Active Phase: PROGRAM-SPRINTS-COMPLETE — all SECaaS program sprints sealed
 
-**Status:** `complete` (internal Class R · vendor calendar parallel)
+**Status:** `complete`
 
-| Story       | Title                                                                   | Priority | Status | Owner     |
-| ----------- | ----------------------------------------------------------------------- | -------- | ------ | --------- |
-| SECAS-S4-01 | CSIRT / SOC operating model + incident response runbook SoR             | P0       | done   | fabric-os |
-| SECAS-S4-02 | Fleet supply-chain security gates (container + dependency scan witness) | P0       | done   | fabric-os |
-| SECAS-S4-03 | Standing vulnerability management cadence + friction register hygiene   | P1       | done   | fabric-os |
-| SECAS-S4-04 | Pen-test findings remediation track + re-test witness                   | P0       | done   | fabric-os |
-| SECAS-S4-05 | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2       | done   | fabric-os |
-
-### SECAS-S4-01: CSIRT / SOC operating model + incident response runbook SoR
-
-**Files:** docs/operations/secas/secas-s4-security-engineering-program.md, docs/operations/secas/csirt-operating-model.md, docs/operations/secas/runbooks/incident-response.md, audit/evidence/secas-csirt-operating-model-latest.json, audit/evidence/secas-ir-drill-2026-06-14.json
-
-**Acceptance**
-
-```bash
-pnpm secas:csirt:check:write
-```
-
-**UAT / QA**
-
-- [x] CSIRT roles, escalation matrix, and on-call contract documented (csirt-operating-model.md published 2026-06-14)
-- [x] Tabletop / drill evidence path defined and witnessed (audit/evidence/secas-ir-drill-2026-06-14.json tabletop PASS)
-
-**Blockers:** none
-
-### SECAS-S4-02: Fleet supply-chain security gates (container + dependency scan witness)
-
-**Files:** platform/scripts/secas-supply-chain-check.mjs, pm/spec/supply-chain-cve-policy.json, docs/operations/secas/supply-chain-policy.md, audit/evidence/secas-supply-chain-check-latest.json
-
-**Acceptance**
-
-```bash
-pnpm secas:supply-chain:check:write
-```
-
-**UAT / QA**
-
-- [x] Critical/high CVE policy documented with fleet rollup witness
-- [x] fabric-os + 3 product repos probed in harness
-
-**Blockers:** none
-
-### SECAS-S4-03: Standing vulnerability management cadence + friction register hygiene
-
-**Files:** pm/spec/vuln-cadence-policy.json, docs/operations/secas/vuln-cadence.md, platform/scripts/secas-vuln-cadence-check.mjs, pm/security-friction-register.json, audit/evidence/secas-vuln-cadence-latest.json
-
-**Acceptance**
-
-```bash
-pnpm secas:vuln-cadence:check:write
-```
-
-**UAT / QA**
-
-- [x] Weekly vuln triage witness + SLA tiers (P0/P1/P2)
-- [x] Open SEC-\* friction items have owner + unblock action
-
-**Blockers:** none
-
-### SECAS-S4-04: Pen-test findings remediation track + re-test witness
-
-**Files:** audit/evidence/pen-test-findings-register-latest.json, audit/evidence/pen-test-remediation-closure-latest.json, audit/evidence/secas-s4-04-internal-closure-2026-06-15.json
-
-**Acceptance**
-
-```bash
-pnpm secas:pentest:remediation:check:write
-```
-
-**UAT / QA**
-
-- [x] Remediation register + closure scaffold at canonical paths (2026-06-14 — findings register, closure tracker, remediation check script)
-- [x] Owner mapping matrix for fabric + product repos (pen-test-findings-register-latest.json owners block)
-- [ ] Vendor report findings mapped to owners (fabric + product) (postLaunchExternal BG-10-10-REPORT)
-- [ ] Critical/high findings closed or accepted-risk documented (Class S) (post-remediation execution)
-
-**Blockers:** postLaunchExternal BG-10-10-REPORT — then SECAS-S4-04 remediation execution
-
-### SECAS-S4-05: Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos
-
-**Files:** docs/operations/secas/cards/terminal-os.md, docs/operations/secas/cards/fabric-os.md, docs/operations/secas/cards/bridge-os.md
-
-**Acceptance**
-
-```bash
-pnpm secas:cards:check:write
-```
-
-**UAT / QA**
-
-- [x] Cards indexed in docs/operations/secas/cards/README.md
-- [x] secas:cards:check includes new card paths
-
-**Blockers:** none
+_All SECaaS program sprints (S1–S5) sealed. Vendor calendar gates run in parallel — see below._
 
 ## Post-launch external (NOT internal roadmap)
 
@@ -141,12 +48,13 @@ _Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SO
 
 ## Future Phases
 
-| Sprint   | Goal                                                                        | Status   | Owner     | Stories / Friction                                  |
-| -------- | --------------------------------------------------------------------------- | -------- | --------- | --------------------------------------------------- |
-| SECAS-S1 | Sovereign register + security friction SoR                                  | complete | fabric-os |                                                     |
-| SECAS-S2 | Pen-test ingest scaffolding (internal prep complete)                        | complete | fabric-os | `SEC-PENTEST-01`                                    |
-| SECAS-S3 | Fleet IRSA + WAF hardening cards                                            | complete | fabric-os |                                                     |
-| SECAS-S5 | Continuous assurance (purple team, AI red-team, PQC, product threat models) | complete | fabric-os | `SECAS-S5-01`–`SECAS-S5-05` harness PASS 2026-06-15 |
+| Sprint   | Goal                                                                        | Status   | Owner     | Stories / Friction                                                        |
+| -------- | --------------------------------------------------------------------------- | -------- | --------- | ------------------------------------------------------------------------- |
+| SECAS-S1 | Sovereign register + security friction SoR                                  | complete | fabric-os |                                                                           |
+| SECAS-S2 | Pen-test ingest scaffolding (internal prep complete)                        | complete | fabric-os | `SEC-PENTEST-01`                                                          |
+| SECAS-S3 | Fleet IRSA + WAF hardening cards                                            | complete | fabric-os |                                                                           |
+| SECAS-S4 | Security engineering operating program (CSIRT, supply chain, vuln cadence)  | complete | fabric-os | `SEC-CSIRT-01`, `SEC-SUPPLY-01`, `SEC-VULN-01`, `SEC-PTREM-01`            |
+| SECAS-S5 | Continuous assurance (purple team, AI red-team, PQC, product threat models) | complete | fabric-os | `SECAS-S5-01`, `SECAS-S5-02`, `SECAS-S5-03`, `SECAS-S5-04`, `SECAS-S5-05` |
 
 ## Issue Reconciliation
 

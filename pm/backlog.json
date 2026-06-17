@@ -91,7 +91,7 @@
       "title": "Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos",
       "type": "story",
       "priority": "P2",
-      "status": "open",
+      "status": "done",
       "owner": "fabric-os",
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
@@ -103,6 +103,7 @@
         "Cards indexed in docs/operations/secas/cards/README.md",
         "secas:cards:check includes new card paths"
       ],
+      "auditNotes": "2026-06-14 — SECaaS cards harness PASS",
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {

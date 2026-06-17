@@ -1,0 +1,25 @@
+# =============================================================================
+# venture-os — Staging Service
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: venture-os
+  namespace: venture-os-staging
+  labels:
+    app: venture-os
+    tier: frontend
+    environment: staging
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /api/health
+    alb.ingress.kubernetes.io/success-codes: '200'
+spec:
+  type: ClusterIP
+  selector:
+    app: venture-os
+    environment: staging
+  ports:
+    - name: http
+      port: 3000
+      targetPort: http
+      protocol: TCP

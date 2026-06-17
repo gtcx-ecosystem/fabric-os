@@ -1,0 +1,165 @@
+{
+  "schema": "gtcx://canon-os/docs-folder-hygiene-witness/v1",
+  "generatedAt": "2026-06-17T02:09:28.661Z",
+  "repo": "fabric-os",
+  "policyUpdated": "2026-06-16",
+  "pass": true,
+  "strict": true,
+  "metrics": {
+    "totalMd": 569,
+    "topLevelFolders": [
+      {
+        "name": "operations",
+        "mdCount": 301,
+        "looseRoot": 0
+      },
+      {
+        "name": "architecture",
+        "mdCount": 97,
+        "looseRoot": 0
+      },
+      {
+        "name": "business",
+        "mdCount": 43,
+        "looseRoot": 0
+      },
+      {
+        "name": "product",
+        "mdCount": 35,
+        "looseRoot": 0
+      },
+      {
+        "name": "governance",
+        "mdCount": 16,
+        "looseRoot": 7
+      },
+      {
+        "name": "gitbook",
+        "mdCount": 15,
+        "looseRoot": 0
+      },
+      {
+        "name": "foundation",
+        "mdCount": 10,
+        "looseRoot": 7
+      },
+      {
+        "name": "reference",
+        "mdCount": 8,
+        "looseRoot": 1
+      },
+      {
+        "name": "api",
+        "mdCount": 2,
+        "looseRoot": 1
+      },
+      {
+        "name": "roadmap",
+        "mdCount": 2,
+        "looseRoot": 0
+      },
+      {
+        "name": "engineering",
+        "mdCount": 1,
+        "looseRoot": 0
+      },
+      {
+        "name": "overview",
+        "mdCount": 1,
+        "looseRoot": 0
+      }
+    ]
+  },
+  "gates": [
+    {
+      "id": "policy:present",
+      "ok": true,
+      "detail": "2026-06-16"
+    },
+    {
+      "id": "docs:present",
+      "ok": true
+    },
+    {
+      "id": "absent:docs-agile",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "absent:docs-agents",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "legacy:docs-specs",
+      "ok": true,
+      "detail": "absent or pointer-only"
+    },
+    {
+      "id": "legacy:docs-strategy",
+      "ok": true,
+      "detail": "absent or pointer-only"
+    },
+    {
+      "id": "legacy:docs-overview",
+      "ok": true,
+      "detail": "absent or pointer-only"
+    },
+    {
+      "id": "legacy:docs-engineering",
+      "ok": true,
+      "detail": "absent or pointer-only"
+    },
+    {
+      "id": "sprawl:docsfoundation",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "sprawl:docsbusiness",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "sprawl:docsarchitecture",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "sprawl:docsproduct",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "sprawl:docsroadmap",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "sprawl:docsoperations",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "sprawl:agile",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "sprawl:agents",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "id": "duplicate:docs-specs",
+      "ok": true,
+      "detail": "pointer-only"
+    },
+    {
+      "id": "canonical:architecture-specs",
+      "ok": true,
+      "detail": "docs/architecture/specs/ present"
+    }
+  ],
+  "failed": []
+}

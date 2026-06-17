@@ -1,10 +1,15 @@
 {
   "$schema": "gtcx://workspace/pm-backlog/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-15",
+  "updated": "2026-06-17",
   "syncSource": "pnpm pm:sync",
-  "active": null,
-  "backlogClear": true,
+  "active": {
+    "storyId": "COMPOSITE-RESTORE-100",
+    "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain",
+    "owner": null,
+    "tier": "milestone-drift"
+  },
+  "backlogClear": false,
   "stories": [
     {
       "id": "DAAS-S3-01",
@@ -28,12 +33,6 @@
       "id": "DAAS-S2",
       "status": "done",
       "title": "Per-repo DaaS cards + ingress matrix publish",
-      "owner": "fabric-os"
-    },
-    {
-      "id": "SECAS-S5",
-      "status": "done",
-      "title": "Continuous assurance sprint sealed",
       "owner": "fabric-os"
     }
   ],
@@ -71,7 +70,7 @@
     {
       "id": "INIT-WORLD-CLASS-SECOPS",
       "ownerRepo": "fabric-os",
-      "status": "done",
+      "status": "open",
       "traceId": null
     }
   ],

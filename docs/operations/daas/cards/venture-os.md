@@ -1,6 +1,6 @@
 ---
 title: 'DaaS card — venture-os'
-status: pending
+status: delivered
 date: 2026-06-17
 owner: fabric-os
 tier: operating
@@ -58,13 +58,14 @@ export PUSH=1
 ./platform/scripts/staging/populate-venture-os-staging-sm.sh
 ```
 
-## Verification (pending first deploy)
+## Verification (2026-06-17)
 
-| Probe                                               | Result  |
-| --------------------------------------------------- | ------- |
-| `venture-os-secrets` ExternalSecret                 | pending |
-| Pod `venture-os-*`                                  | pending |
-| `GET https://venture-staging.gtcx.trade/api/health` | pending |
+| Probe                                               | Result                                      |
+| --------------------------------------------------- | ------------------------------------------- |
+| `venture-os-secrets` ExternalSecret                 | **SecretSynced True**                       |
+| Pod `venture-os-*`                                  | **1/1 Running**                             |
+| ALB origin `GET /api/health` (Host header)          | **200** `{"status":"ok"}`                   |
+| `GET https://venture-staging.gtcx.trade/api/health` | **525** (Cloudflare — CNAME to ALB pending) |
 
 ## Product handback
 
@@ -72,4 +73,4 @@ When seal **delivered**: venture-os runs `pnpm ops:check` and records URL in `au
 
 ## Seal
 
-Status **pending** — overlay + terraform wired; live URL after DEPLOY-02.
+Status **delivered** — EKS origin live 2026-06-17; public hostname pending Cloudflare DNS alignment.

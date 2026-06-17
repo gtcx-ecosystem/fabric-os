@@ -21,7 +21,7 @@
 | Needs | Owner | Status |
 | --- | --- | --- |
 | ~~**Hub #17 prod W2 close**~~ | **gtcx-infrastructure** | **done** 2026-06-05 — `compliance.gtcx.trade` + `terminal.gtcx.trade`; baseline-os locker `7d98352b2` |
-| **Hub #18 prod Postgres** | terminal-os + **gtcx-infrastructure** | **open** — prod audit `DATABASE_URL` + `workflow:persistence-proof` |
+| **Hub #18 prod Postgres** | terminal-os + **fabric-os** | **closed** — `w2-locker-18-terminal-evidence.json` prod-slice-pass; SM `DATABASE_URL` + `POSTGRES_URL` alias script |
 | EXT-INF-003 WORM recurrence on main | Infra operator | open |
 
 ## Program orchestration (fabric-os)

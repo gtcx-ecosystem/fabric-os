@@ -1,0 +1,51 @@
+{
+  "$schema": "gtcx://fabric-os/ecosystem-ops-backlog/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-17",
+  "owner": "fabric-os",
+  "initiative": "INIT-FABRIC-OPS-COO-W1",
+  "principle": "Reason layer — every open item links frictionRef to a lane register. Registers are sense; this backlog is reason; REM-* in owner pm/ is act.",
+  "items": [
+    {
+      "id": "OPS-COO-W1-001",
+      "frictionRef": "COMMOPS-F2",
+      "lane": "CommOps",
+      "title": "Fleet SM populate for SendGrid / Africa's Talking / Twilio",
+      "priority": "P0",
+      "status": "open",
+      "ownerRepo": "fabric-os",
+      "authorityClass": "R",
+      "blocksIR": false,
+      "acceptance": "populate script + ESO cutover per product repo",
+      "register": "pm/commops-friction-register.json"
+    },
+    {
+      "id": "OPS-COO-W1-002",
+      "frictionRef": "COMMOPS-F3",
+      "lane": "CommOps",
+      "title": "Deliverability witness wired to staging ingress",
+      "priority": "P1",
+      "status": "open",
+      "ownerRepo": "fabric-os",
+      "authorityClass": "R",
+      "blocksIR": false,
+      "acceptance": "commops-deliverability-check PASS with live bounce webhook",
+      "register": "pm/commops-friction-register.json"
+    },
+    {
+      "id": "OPS-COO-W1-003",
+      "frictionRef": null,
+      "lane": "FleetOps",
+      "title": "COO Wave 1 — pilot ops:consumption:check on markets-os, terminal-os, baseline-os",
+      "priority": "P0",
+      "status": "done",
+      "ownerRepo": "fabric-os",
+      "authorityClass": "R",
+      "blocksIR": false,
+      "acceptance": "ops:consumption:check exit 0 on three pilot repos",
+      "closedAt": "2026-06-17",
+      "note": "Programme item — pilot green on markets-os, terminal-os, baseline-os",
+      "programmeItem": true
+    }
+  ]
+}

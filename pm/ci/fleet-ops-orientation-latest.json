@@ -1,0 +1,13 @@
+{
+  "$schema": "gtcx://fabric-os/fleet-ops-orientation/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-17",
+  "ok": true,
+  "owner": "fabric-os",
+  "initiative": "INIT-FABRIC-OPS-COO-W1",
+  "openP0": 2,
+  "backlogPath": "pm/ecosystem-ops-backlog.json",
+  "laneWitness": "audit/evidence/fabric-ops-lanes-11pr-latest.json",
+  "pilotRepos": ["markets-os", "terminal-os", "baseline-os"],
+  "note": "Wave 1 orientation scaffold — expands after ops ceremony substance evaluator"
+}

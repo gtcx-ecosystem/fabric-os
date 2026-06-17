@@ -1,0 +1,73 @@
+{
+  "schema": "gtcx://bridge-os/ops-consumption-check/v1",
+  "at": "2026-06-17T14:00:01.698Z",
+  "repo": "fabric-os",
+  "profile": "fleet-ops",
+  "ok": true,
+  "gates": [
+    {
+      "id": "spec:resolved",
+      "ok": true,
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/ops-pack.json"
+    },
+    {
+      "id": "profile",
+      "ok": true,
+      "detail": "fleet-ops"
+    },
+    {
+      "id": "ops:root",
+      "ok": true,
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/ops"
+    },
+    {
+      "id": "file:ops/coo.md",
+      "ok": true
+    },
+    {
+      "id": "coo:fabric-pointer",
+      "ok": true,
+      "detail": "ops/coo.md must cite fabric-os COO"
+    },
+    {
+      "id": "coo:charter-link",
+      "ok": true,
+      "detail": "ops/coo.md must link fleet-ops-hub"
+    },
+    {
+      "id": "file:ops/FOLDER-SPEC.md",
+      "ok": true
+    },
+    {
+      "id": "lane:legal",
+      "ok": true,
+      "detail": "ops/legal/manifest.json"
+    },
+    {
+      "id": "lane:legal:hub-owner",
+      "ok": true,
+      "detail": "COO hub owns lane registers in pm/"
+    },
+    {
+      "id": "lane:compliance",
+      "ok": true,
+      "detail": "ops/compliance/manifest.json"
+    },
+    {
+      "id": "lane:compliance:hub-owner",
+      "ok": true,
+      "detail": "COO hub owns lane registers in pm/"
+    },
+    {
+      "id": "lane:gtm",
+      "ok": true,
+      "detail": "ops/gtm/manifest.json"
+    },
+    {
+      "id": "lane:gtm:hub-owner",
+      "ok": true,
+      "detail": "COO hub owns lane registers in pm/"
+    }
+  ],
+  "pack": "/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/spec/ops-pack.json"
+}

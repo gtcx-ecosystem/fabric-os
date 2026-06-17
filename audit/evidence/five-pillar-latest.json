@@ -1,9 +1,9 @@
 {
   "schema": "gtcx://audit/five-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-16",
-  "evaluatedAt": "2026-06-16T04:25:18.249Z",
-  "gitHead": "d4f5279bad8b0a1f8261f89a69f736752e18bc9e",
+  "date": "2026-06-17",
+  "evaluatedAt": "2026-06-17T08:21:48.653Z",
+  "gitHead": "ddbb9a74a1887b88690c23351fc982eb5f201706",
   "composite100": 100,
   "composite100Raw": 100,
   "trustCap100": 100,
@@ -12,7 +12,7 @@
   "unlockThreshold100": 85,
   "quadrants": {
     "compliance": {
-      "score100": 97,
+      "score100": 100,
       "published": true,
       "provisional": false,
       "blockedBy": null,
@@ -21,14 +21,14 @@
         "layout-p35": {
           "label": "Layout & workspace (P35 v5)",
           "weight": 8,
-          "score100": 65,
+          "score100": 100,
           "protocol": "P35",
           "items": [
             {
               "id": "p35-strict-pass",
               "label": "P35 layout strict GREEN",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 35,
               "severity": "P1",
               "optional": false,
@@ -140,7 +140,7 @@
               "weight": 15,
               "severity": "P2",
               "optional": false,
-              "detail": "3/1 present",
+              "detail": "4/1 present",
               "protocol": "P33"
             }
           ],
@@ -196,7 +196,7 @@
           "items": [
             {
               "id": "docs-sor-manifest",
-              "label": "docs/sor.json or docs/INDEX.md or 01-docs/manifest.json",
+              "label": "docs/sor.json or docs/INDEX.md or docs/manifest.json",
               "pass": true,
               "score100": 100,
               "weight": 40,
@@ -213,7 +213,7 @@
               "weight": 30,
               "severity": "P2",
               "optional": false,
-              "detail": "2/1 present",
+              "detail": "3/1 present",
               "protocol": "P32"
             },
             {
@@ -396,7 +396,7 @@
               "weight": 20,
               "severity": "P1",
               "optional": false,
-              "detail": "2/1 present",
+              "detail": "3/1 present",
               "protocol": "shipping-culture"
             },
             {
@@ -407,7 +407,7 @@
               "weight": 20,
               "severity": "P1",
               "optional": false,
-              "detail": "2/1 present",
+              "detail": "3/1 present",
               "protocol": "shipping-culture"
             },
             {
@@ -813,19 +813,11 @@
           "itemCount": 2
         }
       },
-      "hygieneViolations": [
-        {
-          "id": "p35-strict-pass",
-          "categoryId": "layout-p35",
-          "label": "P35 layout strict GREEN",
-          "severity": "P1",
-          "detail": "p35Strict"
-        }
-      ],
+      "hygieneViolations": [],
       "itemTotal": 62,
       "rubricVersion": "1.0.0",
       "openP0": 0,
-      "openP1": 1
+      "openP1": 0
     },
     "technicalExcellence": {
       "score100": 100,
@@ -1094,7 +1086,7 @@
     },
     "quadrants": {
       "compliance": {
-        "score100": 97,
+        "score100": 100,
         "published": true,
         "provisional": false,
         "blockedBy": [],
@@ -1213,7 +1205,7 @@
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-15.json",
+  "rubricSourcePath": "audit/audit-output-2026-06-17.json",
   "initiative": "INIT-FIVE-PILLAR-EVAL",
   "source": "run-five-pillar-audit"
 }

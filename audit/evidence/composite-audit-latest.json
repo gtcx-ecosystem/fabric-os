@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://audit/composite/v2",
   "repo": "fabric-os",
-  "date": "2026-06-15",
+  "date": "2026-06-17",
   "composite100": 100,
   "composite100Raw": 100,
   "productionReady": true,
@@ -145,5 +145,5 @@
   "source": "run-five-core-audit",
   "status": "rubric-driven",
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-15.json"
+  "rubricSourcePath": "audit/audit-output-2026-06-17.json"
 }

@@ -1,6 +1,6 @@
 # EGO — GTCX operator self (compiled)
 
-**Repo:** fabric-os · **Story:** SECAS-S4-04 · **Compiled:** 2026-06-17T09:46:47.315Z
+**Repo:** fabric-os · **Story:** SECAS-S4-04 · **Compiled:** 2026-06-17T09:50:48.695Z
 
 *Persona defines the role. EGO embodies it for this session.*
 

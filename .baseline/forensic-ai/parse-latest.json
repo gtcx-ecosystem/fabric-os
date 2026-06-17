@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://baseline-os/forensic-parse-artifact/v1",
   "programId": "FORENSIC-PARSE-001",
-  "parsedAt": "2026-06-17T09:46:47.039Z",
+  "parsedAt": "2026-06-17T09:50:48.468Z",
   "repo": "fabric-os",
   "corpus": {
     "docs": {
@@ -263,20 +263,20 @@
       ]
     },
     "sessions": {
-      "ledgerCount": 18,
+      "ledgerCount": 23,
       "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-ecosystem-os/agent-transcripts/33b42501-125e-4598-b1ef-5cc0a596b218/33b42501-125e-4598-b1ef-5cc0a596b218.jsonl",
-      "transcriptLines": 124,
+      "transcriptLines": 158,
       "userQueryCount": 13
     }
   },
   "layerBindings": {
     "persona": {
       "primary": "platform-engineer",
-      "confidence": 0.95,
+      "confidence": 0.96,
       "candidates": [
         {
           "personaId": "platform-engineer",
-          "weight": 18
+          "weight": 23
         },
         {
           "personaId": "platform-architect",
@@ -398,7 +398,13 @@
       "commands": [
         "baseline start",
         "pnpm agent:next-work",
-        "pnpm ops:check"
+        "pnpm ops:check",
+        "pnpm install",
+        "pnpm is",
+        "pnpm store",
+        "pnpm behavior",
+        "pnpm isn",
+        "pnpm supports"
       ]
     },
     "studio": {
@@ -753,7 +759,7 @@
       "refs": [
         "platform-engineer"
       ],
-      "confidence": 0.95
+      "confidence": 0.96
     },
     {
       "id": "lang:docs:foundation:check",

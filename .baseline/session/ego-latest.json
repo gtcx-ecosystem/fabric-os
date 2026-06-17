@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://baseline-os/ego/v1",
   "schemaAlias": "gtcx://baseline-os/agent-embodiment/v1",
-  "compiledAt": "2026-06-17T09:46:47.315Z",
+  "compiledAt": "2026-06-17T09:50:48.695Z",
   "repo": "fabric-os",
   "storyId": "SECAS-S4-04",
   "persona": {
@@ -21,7 +21,7 @@
   },
   "forbiddenPatternCount": 40,
   "mdPath": ".baseline/session/ego-latest.md",
-  "mdHash": "e84ed01f83994fc0b05b4475a0e3e4a69af732de771d7e0f73ee4dc67827ee66",
+  "mdHash": "7d4ce061db5a25ae3b070e090da1759c2d8ee39d474845b15c88b1031626eb19",
   "layers": [
     "anti-assistant",
     "constitution",

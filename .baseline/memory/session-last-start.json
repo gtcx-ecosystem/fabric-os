@@ -1,16 +1,16 @@
 {
-  "startedAt": "2026-06-17T09:46:46.278Z",
+  "startedAt": "2026-06-17T09:50:47.822Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-a18191d7-2f28-4324-aee2-408909be601b",
+    "id": "gtcx-agent-98990b5f-c129-43fa-ad02-1de85c92cf03",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-0b3c46eedceae40caefc14872ca61d74-16fba5e88b7e282f-01"
+    "traceparent": "00-8874e58b56c8048c84e15a5197e31875-1ffcf1e28bf04c88-01"
   },
   "nextWork": {
-    "traceId": "eb11929c-10dd-4a50-8e73-5238394bcb58",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=eb11929c-10dd-4a50-8e73-5238394bcb58",
+    "traceId": "4e53d40a-c507-4587-9599-2d10b1ddc86b",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=4e53d40a-c507-4587-9599-2d10b1ddc86b",
     "ok": true,
     "backlogClear": false,
     "frame": "development",
@@ -48,7 +48,7 @@
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-17T09:46:46.247Z",
+      "provisionedAt": "2026-06-17T09:50:47.800Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
@@ -854,6 +854,6 @@
     "witness": null,
     "error": "baselineos CLI not built"
   },
-  "gitChanged": 47,
+  "gitChanged": 31,
   "authorityClass": "R"
 }

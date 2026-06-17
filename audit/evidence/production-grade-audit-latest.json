@@ -4,14 +4,14 @@
   "slug": "production-grade",
   "repo": "fabric-os",
   "date": "2026-06-17",
-  "score10": 8.5,
-  "score100": 85,
-  "score100Raw": 85,
+  "score10": 10,
+  "score100": 100,
+  "score100Raw": 100,
   "status": "rubric-driven",
   "source": "run-five-core-audit",
   "metrics": {
     "production-readiness": {
-      "score100": 85,
+      "score100": 100,
       "weight": 1,
       "confidence": "A",
       "source": "audit-output"
@@ -64,11 +64,11 @@
       "detail": "pm ci gates or manifest"
     },
     "p35Strict": {
-      "ok": false,
-      "code": 1,
-      "out": "{\n  \"ok\": false,\n  \"protocol\": \"35-ecosystem-workspace-world-class/v5.0.0\",\n  \"engine\": \"layout-spec-enforce/v1\",\n  \"contractVersion\": \"5.1.0\",\n  \"contractPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/config/layout-contract.json\",\n  \"mode\": \"strict\",\n  \"repo\": \"fabric-os\",\n  \"repoRoot\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os\",\n  \"repoKind\": \"product\",\n  \"layoutVersion\": \"v5\",\n  \"resolvedHubs\": {\n    \"agentic\": {\n      \"path\": \"agentic\",\n      \"kind\": \"v5\"\n    },\n    \"agents\": {\n      \"path\": null,\n      \"kind\": \"missing\"\n    },\n    \"archive\": {\n      \"path\": \"archive\",\n    "
+      "ok": true,
+      "code": 0,
+      "out": "{\n  \"ok\": true,\n  \"protocol\": \"35-ecosystem-workspace-world-class/v5.0.0\",\n  \"engine\": \"layout-spec-enforce/v1\",\n  \"contractVersion\": \"5.1.0\",\n  \"contractPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/config/layout-contract.json\",\n  \"mode\": \"strict\",\n  \"repo\": \"fabric-os\",\n  \"repoRoot\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os\",\n  \"repoKind\": \"product\",\n  \"layoutVersion\": \"v5\",\n  \"resolvedHubs\": {\n    \"agentic\": {\n      \"path\": \"agentic\",\n      \"kind\": \"v5\"\n    },\n    \"agents\": {\n      \"path\": null,\n      \"kind\": \"missing\"\n    },\n    \"archive\": {\n      \"path\": \"archive\",\n     "
     }
   },
-  "gaps": ["p35Strict"],
+  "gaps": [],
   "runbook": "audit/runbooks/A2-production-grade.md"
 }

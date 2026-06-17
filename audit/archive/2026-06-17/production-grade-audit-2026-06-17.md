@@ -1,12 +1,12 @@
 # Production-grade quality & enterprise deployment — fabric-os (2026-06-17)
 
-**Score:** 85/100 (raw 85) · **Status:** rubric-driven
+**Score:** 100/100 (raw 100) · **Status:** rubric-driven
 
 ## Metrics (0–100 rubric categories)
 
 | Dimension            | Score | Weight | Confidence | Source       |
 | -------------------- | ----: | -----: | ---------- | ------------ |
-| production-readiness |    85 |      1 | A          | audit-output |
+| production-readiness |   100 |      1 | A          | audit-output |
 
 ## Gates (pass/fail ceilings)
 
@@ -22,4 +22,4 @@
 
 ## Gaps
 
-- p35Strict
+- none

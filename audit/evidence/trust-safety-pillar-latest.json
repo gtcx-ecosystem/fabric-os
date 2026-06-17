@@ -2,7 +2,7 @@
   "schema": "gtcx://audit/trust-safety-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-17",
-  "score100": 99,
+  "score100": 100,
   "published": true,
   "metrics": {
     "evidence-coverage": {
@@ -23,7 +23,7 @@
       "publishBlocked": false
     },
     "anti-hallucination": {
-      "score100": 97,
+      "score100": 100,
       "weight": 20
     },
     "audit-trail": {

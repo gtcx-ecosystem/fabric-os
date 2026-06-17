@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/secas-csirt-check/v1",
   "storyId": "SECAS-S4-01",
   "frictionId": "SEC-CSIRT-01",
-  "checkedAt": "2026-06-15T12:35:53.088Z",
+  "checkedAt": "2026-06-17T17:57:13.575Z",
   "owner": "fabric-os",
   "gates": {
     "frictionItem": {

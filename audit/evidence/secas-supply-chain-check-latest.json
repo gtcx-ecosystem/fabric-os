@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/secas-supply-chain-check/v2",
   "storyId": "SECAS-S4-02",
   "frictionId": "SEC-SUPPLY-01",
-  "checkedAt": "2026-06-17T08:22:46.417Z",
+  "checkedAt": "2026-06-17T17:58:29.361Z",
   "owner": "fabric-os",
   "policy": {
     "json": "pm/spec/supply-chain-cve-policy.json",
@@ -19,7 +19,7 @@
       "missing": []
     },
     "ownerRepo": {
-      "ok": false,
+      "ok": true,
       "repo": "fabric-os",
       "present": true,
       "packageJson": true,
@@ -64,23 +64,23 @@
         "validateAll": false
       },
       "audit": {
-        "ok": false,
-        "verdict": "fail",
+        "ok": true,
+        "verdict": "pass",
         "exitCode": 1,
         "timedOut": false,
         "registryReachable": true,
         "vulnerabilities": {
           "info": 0,
           "low": 0,
-          "moderate": 2,
-          "high": 1,
+          "moderate": 1,
+          "high": 0,
           "critical": 0
         }
       }
     },
     "repoRollup": {
       "ok": false,
-      "passCount": 1,
+      "passCount": 2,
       "totalCount": 4,
       "repos": [
         {
@@ -128,20 +128,20 @@
             "validateAll": false
           },
           "audit": {
-            "ok": false,
-            "verdict": "fail",
+            "ok": true,
+            "verdict": "pass",
             "exitCode": 1,
             "timedOut": false,
             "registryReachable": true,
             "vulnerabilities": {
               "info": 0,
               "low": 0,
-              "moderate": 2,
-              "high": 1,
+              "moderate": 1,
+              "high": 0,
               "critical": 0
             }
           },
-          "ok": false
+          "ok": true
         },
         {
           "repo": "markets-os",
@@ -170,7 +170,7 @@
               "info": 0,
               "low": 1,
               "moderate": 8,
-              "high": 4,
+              "high": 3,
               "critical": 1
             }
           },
@@ -204,8 +204,8 @@
           "audit": {
             "ok": true,
             "verdict": "partial",
-            "exitCode": 1,
-            "timedOut": false,
+            "exitCode": null,
+            "timedOut": true,
             "registryReachable": false,
             "vulnerabilities": null
           },
@@ -295,6 +295,6 @@
       "validateAll": false
     }
   },
-  "ok": false,
+  "ok": true,
   "phase": "fleet-rollup"
 }

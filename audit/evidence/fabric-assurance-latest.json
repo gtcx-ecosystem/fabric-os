@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/fabric-assurance/v1",
-  "at": "2026-06-15T18:13:52.492Z",
+  "at": "2026-06-17T07:47:53.295Z",
   "repo": "fabric-os",
   "initiative": "INIT-ASSURANCE-BURN-DOWN",
   "story": "T35",
@@ -24,14 +24,14 @@
     },
     {
       "id": "FORWARD-50",
-      "reason": "forwardQueuePct 86.7 >= 50",
+      "reason": "forwardQueuePct 84.3 >= 50",
       "runs": ["qa-smoke", "five-core-partial-A1-A5"],
       "blocks": false,
       "delegateTo": "fabric-os"
     },
     {
       "id": "FORWARD-75",
-      "reason": "forwardQueuePct 86.7 >= 75",
+      "reason": "forwardQueuePct 84.3 >= 75",
       "runs": ["five-core-full", "uat-independent"],
       "blocks": false,
       "delegateTo": "fabric-os"
@@ -114,13 +114,13 @@
     },
     {
       "id": "five-core-full",
-      "label": "Five-core full fleet stress",
-      "witness": "bridge-os/pm/ci/five-pillar-fleet-stress-latest.json",
+      "label": "Fleet foundational + transformational pillars stress",
+      "witness": "bridge-os/pm/ci/fleet-pillars-stress-latest.json",
       "ok": true,
       "skipped": false,
-      "command": "pnpm ecosystem:five-pillar:stress:fleet:write",
+      "command": "pnpm ecosystem:fleet:pillars:stress:write",
       "exitCode": 0,
-      "output": "K canon-os composite=59 mode=partial-unlock\nOK compliance-os composite=59 mode=partial-unlock\nOK ecosystem-os composite=99 mode=partial-unlock\nOK exploration-os composite=59 mode=partial-unlock\nOK fabric-os composite=59 mode=partial-unlock\nOK griot-ai composite=59 mode=partial-unlock\nOK gtcx-os composite=99 mode=full-unlock\nOK ledger-ui composite=59 mode=partial-unlock\nOK markets-os composite=99 mode=full-unlock\nOK nyota-ai composite=59 mode=partial-unlock\nOK sensei-os composite=59 mode=partial-unlock\nOK terminal-os composite=59 mode=partial-unlock\nOK terra-os composite=59 mode=partial-unlock\nOK veritas-ai composite=59 mode=partial-unlock\n\nStress: fullUnlock=3/17 compliance<85=13 noRubric=0\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/five-pillar-fleet-stress-latest.json\n"
+      "output": "=partial-unlock\nFAIL compliance-os composite=59 mode=partial-unlock\nFAIL ecosystem-os composite=59 mode=partial-unlock\nFAIL exploration-os composite=59 mode=partial-unlock\nFAIL fabric-os composite=59 mode=partial-unlock\nFAIL griot-ai composite=59 mode=partial-unlock\nFAIL gtcx-os composite=59 mode=partial-unlock\nFAIL ledger-ui composite=59 mode=partial-unlock\nFAIL markets-os composite=59 mode=partial-unlock\nFAIL nyota-ai composite=59 mode=partial-unlock\nFAIL sensei-os composite=59 mode=partial-unlock\nFAIL terminal-os composite=59 mode=partial-unlock\nFAIL terra-os composite=59 mode=partial-unlock\nFAIL veritas-ai composite=59 mode=partial-unlock\n\nStress: fullUnlock=0/17 compliance<85=17 noRubric=0\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-pillars-stress-latest.json\n"
     },
     {
       "id": "uat-independent",

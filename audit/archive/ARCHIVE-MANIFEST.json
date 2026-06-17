@@ -534,7 +534,79 @@
       "to": "audit/archive/2026-06-15/audit/evidence/roadmap-execute-witness-2026-06-12.json",
       "reason": "stale-dated-active-tree",
       "at": "2026-06-15T11:12:20.721Z"
+    },
+    {
+      "from": "audit/audit-output-2026-06-15.json",
+      "to": "audit/archive/2026-06-17/audit/audit-output-2026-06-15.json",
+      "reason": "superseded-by-newer-dated-sibling",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "audit/dr-fire-drill-evidence-2026-05-31.md",
+      "to": "audit/archive/2026-06-17/audit/dr-fire-drill-evidence-2026-05-31.md",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json",
+      "to": "audit/archive/2026-06-17/audit/evidence/bl-soc2-01-auditor-approval-2026-06-10.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json",
+      "to": "audit/archive/2026-06-17/audit/evidence/bl-soc2-01-msa-execution-approval-2026-06-10.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json",
+      "to": "audit/archive/2026-06-17/audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+      "to": "audit/archive/2026-06-17/audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "audit/evidence/secas-ir-drill-2026-06-14.json",
+      "to": "audit/archive/2026-06-17/audit/evidence/secas-ir-drill-2026-06-14.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "audit/evidence/secas-pentest-report-ingest-approval-2026-06-12.json",
+      "to": "audit/archive/2026-06-17/audit/evidence/secas-pentest-report-ingest-approval-2026-06-12.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "audit/evidence/secas-s4-04-internal-closure-2026-06-15.json",
+      "to": "audit/archive/2026-06-17/audit/evidence/secas-s4-04-internal-closure-2026-06-15.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "audit/evidence/session-open-items-reconcile-2026-06-15.json",
+      "to": "audit/archive/2026-06-17/audit/evidence/session-open-items-reconcile-2026-06-15.json",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "audit/pen-test-intake-evidence-2026-05-31.md",
+      "to": "audit/archive/2026-06-17/audit/pen-test-intake-evidence-2026-05-31.md",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
+    },
+    {
+      "from": "pm/ci/session-forensic-2026-06-15.md",
+      "to": "audit/archive/2026-06-17/pm/ci/session-forensic-2026-06-15.md",
+      "reason": "stale-dated-active-tree",
+      "at": "2026-06-17T10:37:41.544Z"
     }
   ],
-  "updated": "2026-06-15T11:12:20.721Z"
+  "updated": "2026-06-17T10:37:41.544Z"
 }

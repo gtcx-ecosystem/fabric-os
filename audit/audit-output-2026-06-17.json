@@ -4,7 +4,7 @@
     "date": "2026-06-17",
     "auditType": "composite-lift",
     "source": "bridge-os run-composite-lift",
-    "confidence": "B",
+    "confidence": "A",
     "note": "Probe-derived scores with A/B attestation for trust cap unlock"
   },
   "qualityDimensionScores": {

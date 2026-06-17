@@ -7,4 +7,4 @@ owner: fabric-os
 
 # Attestation program
 
-Placeholder — machine gates: `ops/attestation/`.
+Index — machine gates: `ops/attestation/`.

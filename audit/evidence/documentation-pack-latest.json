@@ -3,7 +3,7 @@
   "repo": "fabric-os",
   "repoKind": "infra",
   "isPilot": true,
-  "date": "2026-06-12",
+  "date": "2026-06-17",
   "ok": true,
   "score100": 100,
   "pillar": "compliance",
@@ -57,7 +57,7 @@
       "label": "Agent onboarding surfaces",
       "pillar": "compliance",
       "required": true,
-      "score100": 100,
+      "score100": 50,
       "items": [
         {
           "id": "agents-md",
@@ -70,8 +70,8 @@
           "id": "agents-readme",
           "label": "docs/agents/README.md or agent index",
           "severity": "P2",
-          "pass": true,
-          "detail": "docs/agents/README.md"
+          "pass": false,
+          "detail": "missing one of: docs/agents/README.md, agents/README.md, docs/agents/"
         }
       ]
     },
@@ -202,7 +202,7 @@
           "label": "Broken internal links in docs/ ≤25",
           "severity": "P2",
           "pass": false,
-          "detail": "198 broken / 420 files"
+          "detail": "257 broken / 438 files"
         }
       ]
     },
@@ -221,25 +221,16 @@
           "detail": "README missing ## Quick start"
         }
       ]
-    },
-    {
-      "id": "API-PACK",
-      "label": "API documentation when api tree present",
-      "pillar": "technicalExcellence",
-      "required": false,
-      "score100": 100,
-      "items": [
-        {
-          "id": "api-readme",
-          "label": "docs/api/README.md when docs/api/ exists",
-          "severity": "P2",
-          "pass": true,
-          "detail": "docs/api/README.md"
-        }
-      ]
     }
   ],
-  "violations": [],
+  "violations": [
+    {
+      "packId": "AGENT-OPS",
+      "itemId": "agents-readme",
+      "severity": "P2",
+      "detail": "missing one of: docs/agents/README.md, agents/README.md, docs/agents/"
+    }
+  ],
   "openP0": 0,
   "openP1": 0
 }

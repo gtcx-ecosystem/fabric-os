@@ -46,6 +46,47 @@
       "closedAt": "2026-06-17",
       "note": "Programme item — pilot green on markets-os, terminal-os, baseline-os",
       "programmeItem": true
+    },
+    {
+      "id": "OPS-COO-W2-001",
+      "frictionRef": null,
+      "lane": "FleetOps",
+      "title": "COO Wave 2 — fleet-wide ops-pack.json + ops:consumption:check stubs",
+      "priority": "P0",
+      "status": "in_progress",
+      "ownerRepo": "fabric-os",
+      "authorityClass": "R",
+      "blocksIR": false,
+      "acceptance": "ecosystem:ops-consumption:check:fleet pass on all product/platform repos",
+      "programmeItem": true
+    },
+    {
+      "id": "OPS-COO-W2-002",
+      "frictionRef": null,
+      "lane": "FleetOps",
+      "title": "COO Wave 2 — ops ceremony substance evaluator + witness",
+      "priority": "P0",
+      "status": "done",
+      "ownerRepo": "fabric-os",
+      "authorityClass": "R",
+      "blocksIR": false,
+      "acceptance": "ecosystem:ops-ceremony:review:write PASS with substance checks",
+      "programmeItem": true,
+      "closedAt": "2026-06-17",
+      "note": "run-ops-ceremony-cadence.mjs + substance evaluator; witness pm/ci/ops-ceremony-cadence-latest.json"
+    },
+    {
+      "id": "OPS-COO-W2-003",
+      "frictionRef": null,
+      "lane": "FleetOps",
+      "title": "COO Wave 2 — strict lane rollup 17/17 (fabric:ops:check:strict green)",
+      "priority": "P1",
+      "status": "open",
+      "ownerRepo": "fabric-os",
+      "authorityClass": "R",
+      "blocksIR": false,
+      "acceptance": "ecosystem:ops-lanes-11pr rollup ok:true · fabric:ops:check:strict exit 0",
+      "programmeItem": true
     }
   ]
 }

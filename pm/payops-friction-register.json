@@ -13,6 +13,7 @@
       "id": "PAY-FLEET-01",
       "priority": "P0",
       "status": "open",
+      "owner": "fabric-os",
       "title": "Five Stripe integrations without shared webhook/secret contract",
       "blocksIR": false,
       "class": "R",

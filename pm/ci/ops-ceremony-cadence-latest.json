@@ -1,0 +1,63 @@
+{
+  "schema": "gtcx://bridge-os/ops-ceremony-cadence-run/v1",
+  "at": "2026-06-17T15:22:29.625Z",
+  "ceremony": "laneReview",
+  "label": "Ops lane review",
+  "owner": "fabric-os COO",
+  "weekday": "thursday",
+  "ok": true,
+  "failedRequired": 0,
+  "stepsOk": true,
+  "substance": {
+    "ok": true,
+    "checks": [
+      {
+        "id": "fabric-ops-lanes-11pr witness present",
+        "ok": true,
+        "required": true
+      },
+      {
+        "id": "open P0 friction items have ownerRepo",
+        "ok": true,
+        "required": true,
+        "detail": "COMMOPS-F2, PAY-FLEET-01"
+      },
+      {
+        "id": "ecosystem-ops-backlog items link frictionRef",
+        "ok": true,
+        "required": true
+      }
+    ],
+    "openP0Count": 2
+  },
+  "results": [
+    {
+      "id": "fabric-ops-lean",
+      "required": true,
+      "command": "pnpm --dir ../fabric-os fabric:ops:check",
+      "ok": true,
+      "exitCode": 0,
+      "durationMs": 10364,
+      "outputTail": "-os) ===\n\nOK spec\nOK runbook\nOK frictionRegister\nOK productManifest\nOK fleetProtocol\nOK fleetWitness\nOK opsLane\nOK registerOwner\nOK specOwner\n\nPASS\n\n> bridge-os@0.1.0 ecosystem:ops-authority:check /Users/amanianai/Sites/gtcx-ecosystem/bridge-os\n> node platform/scripts/ecosystem/check-ops-authority.mjs\n\n=== ecosystem:ops-authority:check ===\n\nOK spec:ops-authority — pm/spec/ops-authority.json\nOK spec:ops-home-placement\nOK spec:ops-pack\nOK fabric:charter — docs/strategy/fleet-ops-hub.md\nOK fabric:coo-md — ops/coo.md\nOK fabric:ops-backlog — pm/ecosystem-ops-backlog.json\nOK fabric:lane-witness — audit/evidence/fabric-ops-lanes-11pr-latest.json\nOK backlog:schema — items array\nOK rollup:witness-present\n\nWarnings:\n  - ops-lanes 11pr rollup ok:false — Wave 1 does not require 17/17\n\nPASS — 9/9 gates"
+    },
+    {
+      "id": "ops-authority",
+      "required": true,
+      "command": "pnpm ecosystem:ops-authority:check",
+      "ok": true,
+      "exitCode": 0,
+      "durationMs": 3727,
+      "outputTail": "> bridge-os@0.1.0 ecosystem:ops-authority:check /Users/amanianai/Sites/gtcx-ecosystem/bridge-os\n> node platform/scripts/ecosystem/check-ops-authority.mjs\n\n=== ecosystem:ops-authority:check ===\n\nOK spec:ops-authority — pm/spec/ops-authority.json\nOK spec:ops-home-placement\nOK spec:ops-pack\nOK fabric:charter — docs/strategy/fleet-ops-hub.md\nOK fabric:coo-md — ops/coo.md\nOK fabric:ops-backlog — pm/ecosystem-ops-backlog.json\nOK fabric:lane-witness — audit/evidence/fabric-ops-lanes-11pr-latest.json\nOK backlog:schema — items array\nOK rollup:witness-present\n\nWarnings:\n  - ops-lanes 11pr rollup ok:false — Wave 1 does not require 17/17\n\nPASS — 9/9 gates"
+    },
+    {
+      "id": "ops-lanes-rollup",
+      "required": false,
+      "command": "pnpm ecosystem:ops-lanes-11pr:check",
+      "ok": false,
+      "exitCode": 1,
+      "durationMs": 120159,
+      "outputTail": "> bridge-os@0.1.0 ecosystem:ops-lanes-11pr:check /Users/amanianai/Sites/gtcx-ecosystem/bridge-os\n> node platform/scripts/ecosystem/ecosystem-ops-lanes-11pr-check.mjs"
+    }
+  ],
+  "witness": "fabric-os/pm/ci/ops-ceremony-cadence-latest.json"
+}

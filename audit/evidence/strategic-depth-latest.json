@@ -5,8 +5,8 @@
   "status": "composite-lift",
   "frameworksRun": ["ECOSYSTEM-FIT", "INNOVATION-MOAT-90D"],
   "frameworkScores": {
-    "ECOSYSTEM-FIT": 100,
-    "INNOVATION-MOAT-90D": 100
+    "ECOSYSTEM-FIT": 85,
+    "INNOVATION-MOAT-90D": 85
   },
   "dimensionHints": {
     "ecosystem-integration": 100,
@@ -14,7 +14,7 @@
     "technical-moat": 100,
     "enterprise-readiness": 100
   },
-  "strategicInsightScore100": 100,
+  "strategicInsightScore100": 85,
   "bundle": "strategic-depth",
   "source": "run-composite-lift"
 }

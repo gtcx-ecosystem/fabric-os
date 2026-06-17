@@ -19,7 +19,7 @@
 | `Q3-FABRIC-01` | **done** | `pnpm pilot:staging-smoke:write` → `audit/evidence/pilot-staging-smoke-latest.json`                               |
 | `Q3-FABRIC-02` | **done** | `pnpm pilot:golden-transaction-substrate:write` → `audit/evidence/pilot-golden-transaction-substrate-latest.json` |
 | `Q3-FABRIC-03` | pending  | SECAS supply-chain — after S4-04 window                                                                           |
-| `Q3-FABRIC-04` | pending  | Observability dashboards                                                                                          |
+| `Q3-FABRIC-04` | **done** | `pnpm pilot:fleet-observability:write` → `pm/ci/fleet-observability-latest.json`                                  |
 
 ## Blockers
 
@@ -30,6 +30,6 @@
 
 ## Next story
 
-`Q3-FABRIC-04` or markets-os `pilot:golden-transaction:gates` — lift `PROG-CONTINENTAL-GT` from partial-no-staging-probe.
+Next: `Q3-FABRIC-03` (SECAS supply-chain) after vendor window; keep SECAS-S4-04 remediation witnesses fresh until ingest.
 
 **Normative hierarchy:** `agile-os/pm/spec/fleet-work-hierarchy-protocol.json`

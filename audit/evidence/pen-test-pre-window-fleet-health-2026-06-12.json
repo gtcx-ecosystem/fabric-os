@@ -4,7 +4,7 @@
   "storyId": "SECAS-S2-01",
   "frictionId": "SEC-PENTEST-01",
   "program": "INIT-GTCX-INFRA-SECAS",
-  "probedAt": "2026-06-15T12:32:46.512Z",
+  "probedAt": "2026-06-17T08:52:02.237Z",
   "probedBy": "agent:fabric-os",
   "command": "pnpm secas:window:readiness",
   "result": "PASS",

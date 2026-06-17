@@ -2,7 +2,7 @@
   "$schema": "gtcx://baseline-os/frame-graph",
   "graphId": "graph-org-gtcx",
   "organizationRef": "org-gtcx",
-  "updatedAt": "2026-06-17T09:50:48.547Z",
+  "updatedAt": "2026-06-17T12:41:50.219Z",
   "worldModelMode": "low-public-signal",
   "completenessProfile": "enterprise-pilot",
   "lowPublicSignal": true,
@@ -16,7 +16,7 @@
         "protocolId": "FRP-P1",
         "source": "user-input",
         "passId": "FRP-P1-entity",
-        "recordedAt": "2026-06-17T09:50:48.546Z"
+        "recordedAt": "2026-06-17T12:41:50.218Z"
       }
     }
   ],
@@ -33,7 +33,7 @@
     },
     {
       "templateId": "Q-AMBIENT-TEAM-CONFIRM",
-      "prompt": "Confirm team roster inferred from workspace: gtcx-docs, bridge-os, quality-evidence-lead, prithvi, alexander, context.repo.owner.",
+      "prompt": "Confirm team roster inferred from workspace: canon-os, gtcx-docs, bridge-os, quality-evidence-lead, prithvi, alexander.",
       "gapNodeTypes": [
         "role"
       ],

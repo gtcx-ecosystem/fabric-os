@@ -2,8 +2,8 @@
   "schema": "gtcx://audit/five-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-17",
-  "evaluatedAt": "2026-06-17T15:07:21.247Z",
-  "gitHead": "e2cb469f30abe286d956382231f81bcd7c45b693",
+  "evaluatedAt": "2026-06-17T15:09:10.194Z",
+  "gitHead": "4763543134f0767412764e081ed391514dd54903",
   "composite100": 97,
   "composite100Raw": 97,
   "trustCap100": 99,
@@ -12,7 +12,7 @@
   "unlockThreshold100": 85,
   "quadrants": {
     "compliance": {
-      "score100": 97,
+      "score100": 100,
       "published": true,
       "provisional": false,
       "blockedBy": null,
@@ -21,14 +21,14 @@
         "layout-p35": {
           "label": "Layout & workspace (P35 v5)",
           "weight": 8,
-          "score100": 65,
+          "score100": 100,
           "protocol": "P35",
           "items": [
             {
               "id": "p35-strict-pass",
               "label": "P35 layout strict GREEN",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 35,
               "severity": "P1",
               "optional": false,
@@ -813,19 +813,11 @@
           "itemCount": 2
         }
       },
-      "hygieneViolations": [
-        {
-          "id": "p35-strict-pass",
-          "categoryId": "layout-p35",
-          "label": "P35 layout strict GREEN",
-          "severity": "P1",
-          "detail": "p35Strict"
-        }
-      ],
+      "hygieneViolations": [],
       "itemTotal": 62,
       "rubricVersion": "1.0.0",
       "openP0": 0,
-      "openP1": 1
+      "openP1": 0
     },
     "technicalExcellence": {
       "score100": 97,
@@ -1094,7 +1086,7 @@
     },
     "quadrants": {
       "compliance": {
-        "score100": 97,
+        "score100": 100,
         "published": true,
         "provisional": false,
         "blockedBy": [],

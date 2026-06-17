@@ -52,7 +52,7 @@
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
-      "markdownFileCount": 502,
+      "markdownFileCount": 501,
       "brokenLinks": 0,
       "scaffoldFileCount": 0,
       "aiSlopFileCount": 0
@@ -61,6 +61,13 @@
   "pack": {
     "score100": 100,
     "openP1": 0,
-    "violations": []
+    "violations": [
+      {
+        "packId": "AGENT-OPS",
+        "itemId": "agents-readme",
+        "severity": "P2",
+        "detail": "missing one of: docs/agents/README.md, agents/README.md, docs/agents/"
+      }
+    ]
   }
 }

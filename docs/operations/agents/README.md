@@ -1,18 +1,15 @@
 ---
-title: 'Agent operations'
+title: 'docs/operations/agents — relocated'
 status: current
-date: 2026-06-14
+date: 2026-06-16
 owner: fabric-os
-role: platform-architect
+document_type: onboarding
 tier: informational
-tags: ['operations', 'agents']
 review_cycle: on-change
 ---
 
-# Agent operations
+# `docs/operations/agents/` — relocated
 
-Runbooks and references for agent operations in fabric-os.
+**Canonical harness hub:** [`../../../agents/README.md`](../../../agents/README.md)
 
-## Contents
-
-- [agent-git-workflow](agent-git-workflow.md)
+Playbooks and provider routes live at repo-root `agents/` per P35 v5.

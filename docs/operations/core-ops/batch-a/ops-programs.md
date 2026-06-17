@@ -69,7 +69,7 @@ Machine registry: `bridge-os/pm/spec/ops-programs-registry.json`
 | **Owner**    | bridge-os (+ fabric register host)                                                                      | fabric-os (substrate) · product repos (domain workflows)                                             |
 | **Persona**  | `product-strategist`                                                                                    | `platform-architect` (substrate) · `trade-analyst` / `field-inspector` (domain)                      |
 
-Forensic SoR (PayOps execution inventory): [ecosystem-revops-commops-forensic-2026-06-14.md](../../audit/archive/2026-06-15/audit/ecosystem-revops-commops-forensic-2026-06-14.md)
+Forensic SoR (PayOps execution inventory): [ecosystem-revops-commops-forensic-2026-06-14.md](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/2026-06-15/audit/ecosystem-revops-commops-forensic-2026-06-14.md)
 
 > **Note:** Forensic filename predates this split — _RevOps_ in that doc meant payment-provider centralization; that work is **PayOps substrate**, not CRO RevOps.
 

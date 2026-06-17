@@ -2,14 +2,14 @@
   "schema": "gtcx://audit/technical-excellence-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-17",
-  "score100": 100,
+  "score100": 97,
   "published": true,
   "provisional": false,
   "blockedBy": null,
   "unlockThreshold100": 85,
   "metrics": {
     "engineering-production": {
-      "score100": 100,
+      "score100": 85,
       "weight": 18,
       "sourceIds": ["production-readiness"],
       "confidence": "A",

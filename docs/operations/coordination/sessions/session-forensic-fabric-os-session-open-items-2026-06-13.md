@@ -101,12 +101,12 @@ Witness: `bridge-os/pm/ci/session-open-items-latest.json` · `fabric-os/pm/ci/se
 
 ### 3.5 fabric-os P22 context (informational — not session engineering work)
 
-| Signal           | Value                                                                                                                             |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| P22 head         | `SECAS-S2-01` · phase `awaiting_vendor_report`                                                                                    |
-| Initiative       | `INIT-GTCX-INFRA-SECAS` · in_progress                                                                                             |
-| Class A ingest   | post **2026-06-21** · fabric-os only                                                                                              |
-| Pre-window gates | PASS (prior arc — see [`session-forensic-2026-06-14.md`](../../../audit/archive/2026-06-15/pm/ci/session-forensic-2026-06-14.md)) |
+| Signal           | Value                                                                                                                                                          |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| P22 head         | `SECAS-S2-01` · phase `awaiting_vendor_report`                                                                                                                 |
+| Initiative       | `INIT-GTCX-INFRA-SECAS` · in_progress                                                                                                                          |
+| Class A ingest   | post **2026-06-21** · fabric-os only                                                                                                                           |
+| Pre-window gates | PASS (prior arc — see [`session-forensic-2026-06-14.md`](../../../../audit/archive/legacy-docs-audit/archive/2026-06-15/pm/ci/session-forensic-2026-06-14.md)) |
 
 ---
 
@@ -229,4 +229,4 @@ No new engineering commits in fabric-os product code this session — only coord
 
 ## What this document does NOT cover
 
-Multi-day fabric-os SECAS/Ops arc (2026-06-11 → 2026-06-14) — see [`session-forensic-2026-06-14.md`](../../../audit/archive/2026-06-15/pm/ci/session-forensic-2026-06-14.md) and [`pm/ci/session-forensic-2026-06-14.md`](../../../audit/archive/2026-06-15/pm/ci/session-forensic-2026-06-14.md). Canonical navigation and live vendor report ingest — owner-repo coordination only.
+Multi-day fabric-os SECAS/Ops arc (2026-06-11 → 2026-06-14) — see [`session-forensic-2026-06-14.md`](../../../../audit/archive/legacy-docs-audit/archive/2026-06-15/pm/ci/session-forensic-2026-06-14.md) and [`pm/ci/session-forensic-2026-06-14.md`](../../../../audit/archive/legacy-docs-audit/archive/2026-06-15/pm/ci/session-forensic-2026-06-14.md). Canonical navigation and live vendor report ingest — owner-repo coordination only.

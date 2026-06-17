@@ -12,6 +12,8 @@ export function packKind(spec) {
   if (Array.isArray(spec.requiredFiles) && spec.requiredFiles.length > 0) return 'foundation';
   if (spec.requiredSubfolders && spec.$schema?.includes('agents-pack')) return 'agents';
   if (spec.requiredSubfolders && spec.$schema?.includes('agents')) return 'agents';
+  if (spec.$schema?.includes('agile-pack')) return 'agile';
+  if (spec.canonicalPath === 'agile') return 'agile';
   if (spec.requiredSubfolders && spec.$schema?.includes('roadmap')) return 'roadmap';
   if (spec.requiredSubfolders && spec.$schema?.includes('operations')) return 'operations';
   if (spec.requiredSubfolders && spec.$schema?.includes('product')) return 'product';
@@ -50,7 +52,11 @@ export function resolveDocsPack(repoRoot, packName, options = {}) {
       ? 'agents-pack.json'
       : packName === 'docs-agents-pack.json'
         ? 'agents-pack.json'
-        : packName;
+        : packName === 'docs-agile-pack.json' && existsSync(join(repoRoot, 'pm/spec/agile-pack.json'))
+          ? 'agile-pack.json'
+          : packName === 'docs-agile-pack.json'
+            ? 'agile-pack.json'
+            : packName;
   const localPath = join(repoRoot, 'pm/spec', canonicalName);
   const canonPath = join(repoRoot, '../canon-os/pm/spec', canonicalName);
   const pathsTried = [];

@@ -2,17 +2,17 @@
   "schema": "gtcx://audit/five-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-17",
-  "evaluatedAt": "2026-06-17T15:03:49.992Z",
-  "gitHead": "0395f86ec52a15be135b33eaaaaf884c8aa0a920",
-  "composite100": 99,
+  "evaluatedAt": "2026-06-17T15:06:10.361Z",
+  "gitHead": "5dcf70b53c8e868aca328ec3c5fb48f2d9efe2c9",
+  "composite100": 100,
   "composite100Raw": 100,
-  "trustCap100": 99,
+  "trustCap100": 100,
   "compositeMode": "full-unlock",
   "fullCompositeEligible": true,
   "unlockThreshold100": 85,
   "quadrants": {
     "compliance": {
-      "score100": 100,
+      "score100": 97,
       "published": true,
       "provisional": false,
       "blockedBy": null,
@@ -21,14 +21,14 @@
         "layout-p35": {
           "label": "Layout & workspace (P35 v5)",
           "weight": 8,
-          "score100": 100,
+          "score100": 65,
           "protocol": "P35",
           "items": [
             {
               "id": "p35-strict-pass",
               "label": "P35 layout strict GREEN",
-              "pass": true,
-              "score100": 100,
+              "pass": false,
+              "score100": 0,
               "weight": 35,
               "severity": "P1",
               "optional": false,
@@ -813,11 +813,19 @@
           "itemCount": 2
         }
       },
-      "hygieneViolations": [],
+      "hygieneViolations": [
+        {
+          "id": "p35-strict-pass",
+          "categoryId": "layout-p35",
+          "label": "P35 layout strict GREEN",
+          "severity": "P1",
+          "detail": "p35Strict"
+        }
+      ],
       "itemTotal": 62,
       "rubricVersion": "1.0.0",
       "openP0": 0,
-      "openP1": 0
+      "openP1": 1
     },
     "technicalExcellence": {
       "score100": 100,
@@ -1021,7 +1029,7 @@
       "rubricVersion": "1.0.0"
     },
     "trustAndSafety": {
-      "score100": 99,
+      "score100": 100,
       "published": true,
       "metrics": {
         "evidence-coverage": {
@@ -1052,7 +1060,7 @@
           "versionBloatHits": 0
         },
         "independent-replay": {
-          "score100": 90,
+          "score100": 100,
           "weight": 15,
           "opsCheck": true
         }
@@ -1069,9 +1077,9 @@
   },
   "multiPillar": {
     "schema": "gtcx://baseline-os/multi-pillar-repo-extension/v1",
-    "foundationComposite100": 99,
+    "foundationComposite100": 100,
     "fullComposite100": 96,
-    "trustCap100": 99,
+    "trustCap100": 100,
     "weights": {
       "compliance": 0,
       "technicalExcellence": 0.15,
@@ -1086,7 +1094,7 @@
     },
     "quadrants": {
       "compliance": {
-        "score100": 100,
+        "score100": 97,
         "published": true,
         "provisional": false,
         "blockedBy": [],
@@ -1118,7 +1126,7 @@
         "checks": []
       },
       "trustAndSafety": {
-        "score100": 99,
+        "score100": 100,
         "published": true,
         "provisional": false,
         "blockedBy": [],

@@ -1,28 +1,14 @@
 ---
-title: 'roadmap/ — single home for roadmaps'
-status: current
-date: 2026-06-16
+title: 'docs/roadmap — pointer'
+status: pointer
+date: 2026-06-17
 owner: fabric-os
-document_type: roadmap
-tier: critical
-tags: ['documentation', 'roadmap']
+document_type: overview
 review_cycle: on-change
 ---
 
-# `docs/roadmap/` — fabric-os
+# docs/roadmap — relocated
 
-## Lanes
+> **Canonical SoR:** [`../../agile/roadmaps/`](../../agile/roadmaps/)
 
-- technical/
-- ux-design/
-- gtm/
-- legal/
-- compliance/
-- partnerships/
-
-## Pointer rules
-
-- technical → `docs/architecture/specs/` + `pm/`
-- ux-design → `docs/product/`
-- gtm → `ops/gtm/` + `docs/business/`
-- legal/compliance → `ops/` + `docs/operations/`
+Do not add new files here. See [`PRODUCT-DELIVERY-IA.md`](../../canon-os/pm/spec/repo-provisioning/PRODUCT-DELIVERY-IA.md).

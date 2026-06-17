@@ -1,3 +1,3 @@
 # Reference — ESG
 
-ESG reference material placeholder.
+ESG reference material index.

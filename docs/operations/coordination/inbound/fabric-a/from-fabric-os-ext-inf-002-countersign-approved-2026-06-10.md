@@ -15,7 +15,7 @@ authorityClass: S
 
 **Work ID:** EXT-INF-002-COUNTERSIGN  
 **Parent:** EXT-INF-002 (sovereign SOW approved 2026-06-10)  
-**Evidence:** [`audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json`](../../../audit/archive/2026-06-14/audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json)
+**Evidence:** [`audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json`](../../../../audit/archive/legacy-docs-audit/archive/2026-06-14/audit/evidence/ext-inf-002-countersign-approval-2026-06-10.json)
 
 ## Summary
 

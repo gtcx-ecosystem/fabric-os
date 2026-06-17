@@ -17,7 +17,7 @@ autonomy_level: permissioned
 
 `gtcx-infrastructure` owns all deployment, IaC, and operational tooling for the GTCX ecosystem. It has no application logic. It orchestrates, deploys, and operates the services defined in other repos.
 
-**Compliance boundary:** `gtcx-infrastructure` also owns platform-level compliance (SOC 2, pen-test, shared policies). Service repos inherit platform compliance and only maintain application-layer controls. See [`platform-compliance-governance.md`](../../ops/compliance/narrative/platform-compliance-governance.md).
+**Compliance boundary:** `gtcx-infrastructure` also owns platform-level compliance (SOC 2, pen-test, shared policies). Service repos inherit platform compliance and only maintain application-layer controls. See [`platform-compliance-governance.md`](../../../../ops/compliance/narrative/platform-compliance-governance.md).
 
 ---
 

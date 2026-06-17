@@ -1,0 +1,43 @@
+{
+  "$schema": "gtcx://baseline-os/frame-question-catalog/v1",
+  "updatedAt": "2026-06-17T07:47:38.832Z",
+  "storyId": "FRP-P6",
+  "questions": [
+    {
+      "id": "Q-AMBIENT-ORG-CONFIRM",
+      "prompt": "Workspace context points to \"SIS Inspections\" — confirm or correct if needed.",
+      "gapNodeTypes": [
+        "organization"
+      ],
+      "contextualLeverage": 11,
+      "status": "pending"
+    },
+    {
+      "id": "Q-AMBIENT-TEAM-CONFIRM",
+      "prompt": "Confirm team roster inferred from workspace: gtcx-docs, bridge-os, quality-evidence-lead, prithvi, alexander, context.repo.owner.",
+      "gapNodeTypes": [
+        "role"
+      ],
+      "contextualLeverage": 8,
+      "status": "pending"
+    },
+    {
+      "id": "Q-CLIENT-LIST-5",
+      "prompt": "List up to five anchor clients or segments for GTCX (industry: unknown).",
+      "gapNodeTypes": [
+        "client"
+      ],
+      "contextualLeverage": 8,
+      "status": "pending"
+    },
+    {
+      "id": "Q-COMPETITOR-CORE",
+      "prompt": "Who are the top 2–3 competitors to GTCX in your market?",
+      "gapNodeTypes": [
+        "competitor"
+      ],
+      "contextualLeverage": 7,
+      "status": "pending"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/fabric-ops-lanes-11pr/v1",
   "version": "1.0.0",
-  "updated": "2026-06-15T20:37:10.994Z",
+  "updated": "2026-06-17T15:45:12.639Z",
   "repo": "fabric-os",
   "probes": "bridge-os/pm/spec/ops-lane-11pr-probes.json",
   "pass": 8,

@@ -98,4 +98,4 @@ pnpm evidence:production-readiness
 
 - [fine-tune-workflow-enablement.md](./fine-tune-workflow-enablement.md)
 - [rollback-evidence.md](../incident/rollback-evidence.md)
-- [ops/security/narrative/secrets-management.md](../../../ops/security/narrative/secrets-management.md)
+- [ops/security/narrative/secrets-management.md](../../../../ops/security/narrative/secrets-management.md)

@@ -1,9 +1,9 @@
 {
   "schema": "gtcx://baseline-os/ego/v1",
   "schemaAlias": "gtcx://baseline-os/agent-embodiment/v1",
-  "compiledAt": "2026-06-17T07:47:39.318Z",
+  "compiledAt": "2026-06-17T09:46:47.315Z",
   "repo": "fabric-os",
-  "storyId": "COMPOSITE-RESTORE-100",
+  "storyId": "SECAS-S4-04",
   "persona": {
     "institutional": "platform-engineer",
     "frame": "development",
@@ -21,7 +21,7 @@
   },
   "forbiddenPatternCount": 40,
   "mdPath": ".baseline/session/ego-latest.md",
-  "mdHash": "70848bc9c62cfb112c7984c35a21c6b99802c9387db24eeb8cbfa351bf0013c9",
+  "mdHash": "e84ed01f83994fc0b05b4475a0e3e4a69af732de771d7e0f73ee4dc67827ee66",
   "layers": [
     "anti-assistant",
     "constitution",
@@ -39,21 +39,20 @@
       "institutional": "platform-engineer",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703",
-      "readAt": "2026-06-16T13:00:40.401Z"
+      "readAt": "2026-06-17T09:44:32.250Z"
     },
     "constitutionReadGate": {
-      "ok": false,
-      "blocked": true,
+      "ok": true,
       "articles": [
         "I",
         "III",
         "V"
       ],
       "bundleHash": "5440d51f4280ddb4b4d036aa801a86df6d9038c678208f9c1725c4a3474a86f1",
-      "reason": "no constitution read witness — run pnpm constitution:read-witness --write",
-      "witnessCommand": "pnpm constitution:read-witness --write"
+      "readAt": "2026-06-17T09:41:32.293Z",
+      "document": "docs/governance/constitution/GTCX-CONSTITUTION.md"
     },
     "personaReadGateBlocked": false,
-    "constitutionReadGateBlocked": true
+    "constitutionReadGateBlocked": false
   }
 }

@@ -1,6 +1,6 @@
 # EGO — GTCX operator self (compiled)
 
-**Repo:** fabric-os · **Story:** COMPOSITE-RESTORE-100 · **Compiled:** 2026-06-17T07:47:39.318Z
+**Repo:** fabric-os · **Story:** SECAS-S4-04 · **Compiled:** 2026-06-17T09:46:47.315Z
 
 *Persona defines the role. EGO embodies it for this session.*
 
@@ -204,10 +204,10 @@ When this persona is active:
 
 ## Layer 5 — Work focus (P22)
 
-**Story ID:** COMPOSITE-RESTORE-100
-**Title:** Restore composite ≥100 (current 59) — SECAS-S4-supply-chain
+**Story ID:** SECAS-S4-04
+**Title:** Pen-test findings remediation track + re-test witness
 **Authority class:** R
-**Because:** Composite drift — 59/100
+**Because:** Human gates parallel — implement queue reconciled; see work register.
 
 ---
 
@@ -215,9 +215,9 @@ When this persona is active:
 
 ## Proceed Brief (Protocol 26)
 
-- **Next action:** Implement COMPOSITE-RESTORE-100
-- **Story ID:** COMPOSITE-RESTORE-100
-- **Because:** Composite drift — 59/100
+- **Next action:** Implement SECAS-S4-04
+- **Story ID:** SECAS-S4-04
+- **Because:** Human gates parallel — implement queue reconciled; see work register.
 - **Authority class (P28):** R
 - **Authorization:** Protocol 22 selection + repo roadmap (no menu)
 - **Active persona:** platform-engineer (agile)
@@ -225,13 +225,13 @@ When this persona is active:
 - **Voice:** Systems-oriented, reliability-focused, cost-conscious
 - **Embodies:** Platform lead accountable for fleet reliability
 - **Persona doc:** https://gtcx-ecosystem.gitbook.io/gtcx-ecosystem/governance/institutional/personas/platform-engineer
-- **Persona selection:** source work-item-manifest · confidence 0.89
+- **Persona selection:** source work-item-manifest · confidence 0.93
 
 ### Spine (Forensic · EGO · APEX · Nitro)
 - **Forensic AI:** ok · org GTCX · source explicit · graph 1 nodes · pending 4
 - **Forensic witness:** /Users/amanianai/Sites/gtcx-ecosystem/fabric-os/audit/evidence/forensic-ai-latest.json
 - **Experience prompts:** /Users/amanianai/Sites/gtcx-ecosystem/fabric-os/.baseline/experience/forensic-solicitation.json
-- **Parse AI:** persona platform-engineer · initiatives 185
+- **Parse AI:** persona platform-engineer · initiatives 171
 - **Parse witness:** audit/evidence/forensic-parse-latest.json
 - **EGO:** compiled · path .baseline/session/ego-latest.md
 

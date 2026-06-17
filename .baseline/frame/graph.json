@@ -2,7 +2,7 @@
   "$schema": "gtcx://baseline-os/frame-graph",
   "graphId": "graph-org-gtcx",
   "organizationRef": "org-gtcx",
-  "updatedAt": "2026-06-17T07:47:38.828Z",
+  "updatedAt": "2026-06-17T09:46:47.157Z",
   "worldModelMode": "low-public-signal",
   "completenessProfile": "enterprise-pilot",
   "lowPublicSignal": true,
@@ -16,7 +16,7 @@
         "protocolId": "FRP-P1",
         "source": "user-input",
         "passId": "FRP-P1-entity",
-        "recordedAt": "2026-06-17T07:47:38.823Z"
+        "recordedAt": "2026-06-17T09:46:47.155Z"
       }
     }
   ],

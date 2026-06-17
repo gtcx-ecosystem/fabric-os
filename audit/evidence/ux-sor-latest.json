@@ -4,18 +4,36 @@
   "repoKind": "infra",
   "pilotDeep": false,
   "ok": false,
-  "score100": 75,
-  "openP1": 1,
-  "openP2": 0,
-  "itemsPass": 3,
+  "score100": 0,
+  "openP1": 2,
+  "openP2": 2,
+  "itemsPass": 0,
   "itemsTotal": 4,
   "violations": [
     {
       "packId": "UX-P21-CORE",
+      "itemId": "exr-pack",
+      "severity": "P1",
+      "detail": "missing one of: docs/specs/experiences/exr-pack.yaml, docs/architecture/specs/experiences/exr-pack.yaml"
+    },
+    {
+      "packId": "UX-P21-CORE",
       "itemId": "exr-pack-valid",
       "severity": "P1",
-      "detail": "FAIL: governance block required"
+      "detail": "no exr-pack.yaml"
+    },
+    {
+      "packId": "UX-P21-CORE",
+      "itemId": "journey-spine",
+      "severity": "P2",
+      "detail": "missing one of: docs/specs/operator-journey-map.md, docs/architecture/specs/in-repo/operator-journey-map.md, docs/specs/operator-journey-map.md"
+    },
+    {
+      "packId": "UX-P21-CORE",
+      "itemId": "ia-spec",
+      "severity": "P2",
+      "detail": "missing one of: docs/specs/ia-navigation-spec.md, docs/architecture/specs/ia-navigation-spec.md, docs/specs/ia-navigation-spec.md"
     }
   ],
-  "at": "2026-06-15T20:48:46.624Z"
+  "at": "2026-06-17T15:51:26.694Z"
 }

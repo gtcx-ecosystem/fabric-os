@@ -1,0 +1,29 @@
+# =============================================================================
+# venture-os-staging — Kustomize overlay
+# =============================================================================
+# DEPLOY-02: EKS deployment for venture-os staging (GTM / venture intelligence).
+#
+# Apply: kubectl apply -k deploy/kubernetes/overlays/staging/venture-os/
+#
+# Prerequisites:
+#   1. Terraform apply module.secrets (venture-os.tf) — IRSA role + empty SM shell.
+#   2. Populate AWS SM: platform/scripts/staging/populate-venture-os-staging-sm.sh
+#   3. ECR image `gtcx-venture-os` built and pushed from venture-os repo.
+# =============================================================================
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: venture-os-staging
+
+resources:
+  - namespace.yaml
+  - service-account.yaml
+  - secret-store.yaml
+  - external-secret.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+images:
+  - name: 348389439381.dkr.ecr.af-south-1.amazonaws.com/gtcx-venture-os
+    newTag: latest

@@ -1,0 +1,11 @@
+# =============================================================================
+# venture-os-staging namespace
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: venture-os-staging
+  labels:
+    app.kubernetes.io/part-of: gtcx
+    app.kubernetes.io/component: venture-os
+    environment: staging

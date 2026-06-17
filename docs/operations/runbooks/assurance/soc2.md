@@ -7,4 +7,4 @@ owner: fabric-os
 
 # SOC2 program
 
-Placeholder — link compliance lane [`../../../roadmap/compliance/README.md`](../../../roadmap/compliance/README.md).
+Index — link compliance lane [`../../../roadmap/compliance/README.md`](../../../roadmap/compliance/README.md).

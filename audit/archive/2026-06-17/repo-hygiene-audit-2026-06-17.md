@@ -1,6 +1,6 @@
 # Repo hygiene, documentation & spec SoR — fabric-os (2026-06-17)
 
-**Score:** 100/100 (raw 100) · **Status:** probe-gates-only
+**Score:** 70/100 (raw 80) · **Status:** probe-gates-only
 
 ## Metrics (0–100 rubric categories)
 
@@ -14,14 +14,14 @@
 
 | Gate                   | Result | Severity | Cap if fail |
 | ---------------------- | ------ | -------- | ----------- |
-| p35-strict-pass        | PASS   | P1       | 70          |
+| p35-strict-pass        | FAIL   | P1       | 70          |
 | docs-sor-present       | PASS   | P1       | 75          |
 | pm-folder-requirements | PASS   | P2       | 85          |
 
 ## Caps fired
 
-- none
+- **gate-p35-strict-pass** → ceiling 70 (p35-strict-pass)
 
 ## Gaps
 
-- none
+- p35Strict

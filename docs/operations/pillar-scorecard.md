@@ -15,7 +15,7 @@ review_cycle: on-change
 
 - Policy: [`../../canon-os/pm/spec/docs-fractal-mpr-policy.json`](../../canon-os/pm/spec/docs-fractal-mpr-policy.json)
 - Pack: [`../../pm/spec/docs-operations-pack.json`](../../pm/spec/docs-operations-pack.json#pillarContract)
-- **Layer witness (SoR):** [`audit/evidence/mpr-operations-layer-latest.json`](audit/evidence/mpr-operations-layer-latest.json)
+- **Layer witness (SoR):** [`audit/evidence/mpr-operations-layer-latest.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/evidence/mpr-operations-layer-latest.json)
 
 **Composite target:** **85/100** per profile at layer audit order.
 

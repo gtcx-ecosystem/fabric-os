@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://baseline-os/forensic-parse-artifact/v1",
   "programId": "FORENSIC-PARSE-001",
-  "parsedAt": "2026-06-17T09:50:48.468Z",
+  "parsedAt": "2026-06-17T12:41:50.126Z",
   "repo": "fabric-os",
   "corpus": {
     "docs": {
@@ -258,28 +258,62 @@
         "INIT-OPS-LANES-OPERATIONALIZE",
         "INIT-GTCX-EXECUTION-ENGINE",
         "BL-OPERATOR-01",
+        "INIT-DOCS-PROVISIONING",
+        "ECO-DOC-001",
+        "DOC-001",
+        "INIT-DOCS",
+        "INIT-CANON",
+        "INIT-DOC-FLEET-PUBLISH",
+        "DOC-FLEET-PUBLISH",
+        "INIT-DOC",
+        "INIT-DOCS-CORE-IA",
+        "INIT-DOCS-CORE-IA-V1",
+        "INIT-DOCS-IA-FLEET-ROLLUP",
+        "INIT-DOCS-PROVISIONING-V1",
+        "XR-CANON-LEGACY-SCRUB-001",
+        "XR-CANON-LEGACY-SCRUB-002",
+        "XR-CANON-FABRIC-INTERACT-001",
+        "INIT-FLEET-OS-CONTRACT",
+        "ECO-OS-001",
+        "ECO-OS-002",
+        "INIT-ECOSYSTEM-OS-MONOREPO",
+        "INIT-ECOSYSTEM-OS-MIGRATION",
+        "ECO-PRODUCT",
         "ECO-OS-SHIP-001",
-        "ECO-OS-001"
+        "INIT-GTCX-Q3-2026",
+        "INIT-001"
       ]
     },
     "sessions": {
-      "ledgerCount": 23,
-      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-ecosystem-os/agent-transcripts/33b42501-125e-4598-b1ef-5cc0a596b218/33b42501-125e-4598-b1ef-5cc0a596b218.jsonl",
-      "transcriptLines": 158,
-      "userQueryCount": 13
+      "ledgerCount": 26,
+      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-canon-os/agent-transcripts/23c98ff2-e5b4-4ff2-9809-8e543fc0905a/23c98ff2-e5b4-4ff2-9809-8e543fc0905a.jsonl",
+      "transcriptLines": 3642,
+      "userQueryCount": 30
     }
   },
   "layerBindings": {
     "persona": {
       "primary": "platform-engineer",
-      "confidence": 0.96,
+      "confidence": 0.8676470588235294,
       "candidates": [
         {
           "personaId": "platform-engineer",
-          "weight": 23
+          "weight": 25
         },
         {
           "personaId": "platform-architect",
+          "weight": 3
+        },
+        {
+          "personaId": "protocol-engineer",
+          "weight": 2
+        },
+        {
+          "personaId": "compliance-officer",
+          "weight": 2
+        },
+        {
+          "personaId": "documentation-architect",
           "weight": 2
         }
       ]
@@ -395,14 +429,45 @@
       ],
       "commands": [
         "baseline start",
+        "baseline session",
+        "Baseline start",
+        "pnpm --dir",
+        "pnpm docs:foundation:check",
+        "pnpm ecosystem:docs:foundation:fleet",
+        "pnpm docs:ia:check",
+        "Baseline today",
+        "pnpm audit:five-pillar:run",
+        "pnpm docs:ia:check:strict",
+        "pnpm docs:fleet:foundation:write",
+        "pnpm docs:reference:decompose",
+        "pnpm docs:business:check",
+        "pnpm docs:business:check:write",
+        "pnpm docs:fleet:business:write",
         "pnpm agent:next-work",
+        "pnpm docs:reference:archive:relocate:write",
+        "baseline and",
+        "pnpm validate:legacy-repo-id",
+        "pnpm validate",
+        "baseline noise",
+        "baseline or",
+        "pnpm secas:pentest:remediation:check:write",
+        "baseline reset",
+        "baseline scaffolding",
+        "pnpm session",
+        "baseline CLI",
         "pnpm ops:check",
-        "pnpm install",
-        "pnpm is",
-        "pnpm store",
-        "pnpm behavior",
-        "pnpm isn",
-        "pnpm supports"
+        "baseline session:open-items",
+        "pnpm validate:publish",
+        "baseline artifacts",
+        "pnpm ecosystem:docs:business:fleet",
+        "pnpm docs:fleet:business:upgrade:write",
+        "pnpm docs:architecture:check",
+        "pnpm ecosystem:docs:architecture:fleet",
+        "pnpm docs:fleet:architecture:write",
+        "pnpm docs:fleet:foundation:upgrade:write",
+        "pnpm docs:fleet:architecture:upgrade:write",
+        "pnpm docs:fleet:foundation:check",
+        "pnpm kept"
       ]
     },
     "studio": {
@@ -425,20 +490,37 @@
       "BL-SOC2-01-MSA",
       "BL-TRANSCRIPT-PORT",
       "BL-WITNESS",
+      "DOC-001",
       "DOC-EVAL-MPR-POINTER",
+      "DOC-FLEET-PUBLISH",
       "DOC-PROGRAM",
+      "ECO-DOC-001",
       "ECO-ENV-07",
       "ECO-OS-001",
+      "ECO-OS-002",
       "ECO-OS-SHIP-001",
+      "ECO-PRODUCT",
       "FORENSIC-STANDARD",
+      "INIT-001",
       "INIT-AFM-PROGRAMME-2026",
       "INIT-AFM-REG-ADAPTER",
       "INIT-AGENT-TOOL-SCOUT",
       "INIT-BRIDGE-LANES-REGISTRY-SYNC",
+      "INIT-CANON",
       "INIT-CANON-INST-F-006",
       "INIT-DIGITAL-RAIL-WAVE-0",
+      "INIT-DOC",
+      "INIT-DOC-FLEET-PUBLISH",
+      "INIT-DOCS",
+      "INIT-DOCS-CORE-IA",
+      "INIT-DOCS-CORE-IA-V1",
       "INIT-DOCS-FOUNDATION-IA-V1",
+      "INIT-DOCS-IA-FLEET-ROLLUP",
+      "INIT-DOCS-PROVISIONING",
+      "INIT-DOCS-PROVISIONING-V1",
       "INIT-DOCS-PROVISIONING-V1-W2",
+      "INIT-ECOSYSTEM-OS-MIGRATION",
+      "INIT-ECOSYSTEM-OS-MONOREPO",
       "INIT-ECOSYSTEM-README-REFRESH",
       "INIT-EXEC-GAP",
       "INIT-EXECUTIVE-GAP",
@@ -449,6 +531,7 @@
       "INIT-FABRIC-OS-CUTOVER",
       "INIT-FABRIC-README-SOR-",
       "INIT-FIVE-PILLAR-FLEET-100",
+      "INIT-FLEET-OS-CONTRACT",
       "INIT-GTCX-APPLE-CONTINUITY-MODEL",
       "INIT-GTCX-BRIDGE-AI-ML-OPS",
       "INIT-GTCX-COMPASS-FABRIC",
@@ -460,6 +543,7 @@
       "INIT-GTCX-INFRA-DEPLOY",
       "INIT-GTCX-INFRA-SECAS",
       "INIT-GTCX-OS-PLATFORM-HYGIENE",
+      "INIT-GTCX-Q3-2026",
       "INIT-GTCX-SERVICE-FABRIC",
       "INIT-GTCX-SPRINT-AUTHORITY",
       "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
@@ -557,6 +641,9 @@
       "XR-BRIDGE-SESSION-OPEN-001",
       "XR-BRIDGE-TOOL-SCOUT-001",
       "XR-BRIDGE-VENDOR-ROUTING-001",
+      "XR-CANON-FABRIC-INTERACT-001",
+      "XR-CANON-LEGACY-SCRUB-001",
+      "XR-CANON-LEGACY-SCRUB-002",
       "XR-CANON-TRADE-LANES-001",
       "XR-EO-003",
       "XR-EO-004",
@@ -589,7 +676,7 @@
       "XR-MKT-TRADEPASS-001",
       "XR-TERMINAL-THREAT-MODEL-001"
     ],
-    "tags": ["session-corpus"]
+    "tags": ["session-corpus", "documentation-program"]
   },
   "ingestSignals": [
     {
@@ -657,6 +744,14 @@
       "confidence": 0.85
     },
     {
+      "id": "initiative:DOC-001",
+      "kind": "initiative",
+      "text": "Active initiative reference: DOC-001",
+      "source": "docs+sessions",
+      "refs": ["DOC-001"],
+      "confidence": 0.85
+    },
+    {
       "id": "initiative:DOC-EVAL-MPR-POINTER",
       "kind": "initiative",
       "text": "Active initiative reference: DOC-EVAL-MPR-POINTER",
@@ -665,11 +760,27 @@
       "confidence": 0.85
     },
     {
+      "id": "initiative:DOC-FLEET-PUBLISH",
+      "kind": "initiative",
+      "text": "Active initiative reference: DOC-FLEET-PUBLISH",
+      "source": "docs+sessions",
+      "refs": ["DOC-FLEET-PUBLISH"],
+      "confidence": 0.85
+    },
+    {
       "id": "initiative:DOC-PROGRAM",
       "kind": "initiative",
       "text": "Active initiative reference: DOC-PROGRAM",
       "source": "docs+sessions",
       "refs": ["DOC-PROGRAM"],
+      "confidence": 0.85
+    },
+    {
+      "id": "initiative:ECO-DOC-001",
+      "kind": "initiative",
+      "text": "Active initiative reference: ECO-DOC-001",
+      "source": "docs+sessions",
+      "refs": ["ECO-DOC-001"],
       "confidence": 0.85
     },
     {
@@ -689,36 +800,12 @@
       "confidence": 0.85
     },
     {
-      "id": "initiative:ECO-OS-SHIP-001",
-      "kind": "initiative",
-      "text": "Active initiative reference: ECO-OS-SHIP-001",
-      "source": "docs+sessions",
-      "refs": ["ECO-OS-SHIP-001"],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:FORENSIC-STANDARD",
-      "kind": "initiative",
-      "text": "Active initiative reference: FORENSIC-STANDARD",
-      "source": "docs+sessions",
-      "refs": ["FORENSIC-STANDARD"],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:INIT-AFM-PROGRAMME-2026",
-      "kind": "initiative",
-      "text": "Active initiative reference: INIT-AFM-PROGRAMME-2026",
-      "source": "docs+sessions",
-      "refs": ["INIT-AFM-PROGRAMME-2026"],
-      "confidence": 0.85
-    },
-    {
       "id": "persona:platform-engineer",
       "kind": "persona",
       "text": "Dominant persona signal: platform-engineer",
       "source": "sessions+transcript",
       "refs": ["platform-engineer"],
-      "confidence": 0.96
+      "confidence": 0.8676470588235294
     },
     {
       "id": "lang:docs:foundation:check",
@@ -801,41 +888,41 @@
       "confidence": 0.7
     },
     {
-      "id": "query:b7775adb",
+      "id": "query:81beab72",
       "kind": "operator-intent",
-      "text": "Wednesday, Jun 17, 2026, 11:27 AM (UTC+2)\n\nyes, pillars should be adapted specifically to agency in a fractal way",
+      "text": "execute_roadmap",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:96214227",
+      "id": "query:37c30ebd",
       "kind": "operator-intent",
-      "text": "Wednesday, Jun 17, 2026, 11:29 AM (UTC+2)\n\ni prefere scors.?",
+      "text": "status of documentation and repo structure work?",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:221b206e",
+      "id": "query:81beab72",
       "kind": "operator-intent",
-      "text": "Wednesday, Jun 17, 2026, 11:30 AM (UTC+2)\n\n• Hard gates: which pillars block “ship” for Agency (license? trust? craft?) all do.",
+      "text": "execute_roadmap",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:2db39f31",
+      "id": "query:81beab72",
       "kind": "operator-intent",
-      "text": "Wednesday, Jun 17, 2026, 11:32 AM (UTC+2)\n\nboth",
+      "text": "execute_roadmap",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:ca3bfc5f",
+      "id": "query:81beab72",
       "kind": "operator-intent",
-      "text": "Wednesday, Jun 17, 2026, 11:40 AM (UTC+2)\n\nexecute_roadmap",
+      "text": "execute_roadmap",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65

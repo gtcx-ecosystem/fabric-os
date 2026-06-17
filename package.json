@@ -134,6 +134,8 @@
     "daas:fleet:health": "node platform/tools/scripts/cross-repo-health-probe.mjs",
     "pilot:staging-smoke": "node platform/scripts/pilot-staging-smoke.mjs",
     "pilot:staging-smoke:write": "node platform/scripts/pilot-staging-smoke.mjs --write",
+    "pilot:fleet-observability": "node platform/scripts/fleet-observability-witness.mjs",
+    "pilot:fleet-observability:write": "node platform/scripts/fleet-observability-witness.mjs --write",
     "infra:vpc:markets-rds:probe": "node platform/scripts/vpc-markets-rds-probe.mjs",
     "agent:launch:check": "node ../gtcx-agentic/platform/scripts/check-agent-launch-focus.mjs",
     "agent:work-selection:check": "node platform/scripts/check-agent-work-selection.mjs",

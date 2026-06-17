@@ -1,0 +1,179 @@
+{
+  "$schema": "gtcx://fabric-os/fleet-observability/v1",
+  "storyId": "Q3-FABRIC-04",
+  "programmeId": "PROG-CONTINENTAL-CAPITAL",
+  "quarterPillarId": "operational-ai",
+  "quarterId": "GTCX-Q3-2026",
+  "generatedAt": "2026-06-17T08:14:20.145Z",
+  "repo": "fabric-os",
+  "ok": true,
+  "namespace": "gtcx-staging",
+  "dashboards": {
+    "ecosystemOverview": "gtcx-infrastructure/monitoring/dashboards/ecosystem-overview.json",
+    "protocolHealth": "gtcx-infrastructure/monitoring/dashboards/protocol-health.json",
+    "note": "Grafana JSON models version-controlled in gtcx-infrastructure"
+  },
+  "alertRoutes": [
+    {
+      "severity": "critical",
+      "channel": "PagerDuty → on-call phone",
+      "ackSla": "5 min",
+      "escalation": "Auto-escalate to team lead after 15 min",
+      "doc": "docs/architecture/specs/backend/observability-framework.md#alert-routing"
+    },
+    {
+      "severity": "warning",
+      "channel": "Slack #gtcx-alerts",
+      "ackSla": "30 min",
+      "escalation": "Escalate to on-call after 2 hours",
+      "doc": "docs/operations/runbooks/sre/monitoring.md"
+    },
+    {
+      "severity": "pilot-ship-gate",
+      "channel": "bridge-os pilot-readiness rollup",
+      "ackSla": "weekly GT gates + staging smoke",
+      "escalation": "pnpm ecosystem:pilot:readiness:report:write",
+      "doc": "bridge-os/pm/ci/pilot-readiness-report-latest.json"
+    }
+  ],
+  "checks": {
+    "pilotNamespaces": {
+      "ok": true,
+      "namespace": "gtcx-staging",
+      "marketsOk": true,
+      "gtcxOk": true,
+      "deployments": [
+        {
+          "id": "gtcx-agx-staging",
+          "owner": "markets-os",
+          "pillar": "ship",
+          "required": true,
+          "present": true,
+          "scaledDown": false,
+          "healthy": true,
+          "ready": 1,
+          "desired": 1,
+          "available": 1
+        },
+        {
+          "id": "markets-brokerage-protocol-trace",
+          "owner": "markets-os",
+          "pillar": "ship",
+          "required": true,
+          "present": true,
+          "scaledDown": false,
+          "healthy": true,
+          "ready": 1,
+          "desired": 1,
+          "available": 1
+        },
+        {
+          "id": "markets-authority-stub-staging",
+          "owner": "markets-os",
+          "pillar": "ship",
+          "required": false,
+          "note": "Optional stub — may scale to zero outside authority drills",
+          "present": true,
+          "scaledDown": true,
+          "healthy": true,
+          "ready": 0,
+          "desired": 0,
+          "available": 0
+        },
+        {
+          "id": "sovereign-staging",
+          "owner": "gtcx-os",
+          "pillar": "surfaces",
+          "required": true,
+          "present": true,
+          "scaledDown": false,
+          "healthy": true,
+          "ready": 1,
+          "desired": 1,
+          "available": 1
+        },
+        {
+          "id": "gtcx-protocols-staging",
+          "owner": "gtcx-os",
+          "pillar": "surfaces",
+          "required": true,
+          "present": true,
+          "scaledDown": false,
+          "healthy": true,
+          "ready": 1,
+          "desired": 1,
+          "available": 1
+        },
+        {
+          "id": "did-resolver-staging",
+          "owner": "gtcx-os",
+          "pillar": "surfaces",
+          "required": false,
+          "note": "Optional — scale-to-zero when DID path not in pilot slice",
+          "present": true,
+          "scaledDown": true,
+          "healthy": true,
+          "ready": 0,
+          "desired": 0,
+          "available": 0
+        }
+      ]
+    },
+    "pilotShipGates": {
+      "pilotShipReady": false,
+      "shipGates": [
+        {
+          "id": "DEPLOY-STAGING",
+          "domain": "deploy",
+          "title": "Staging API health (required services)",
+          "ownerRepo": "fabric-os",
+          "status": "PASS",
+          "ok": true,
+          "detail": "3/4 healthy",
+          "nextCommand": "pnpm --dir fabric-os daas:fleet:health --write"
+        },
+        {
+          "id": "PROG-COMPLIANCE-DEPLOY",
+          "domain": "product",
+          "title": "Compliance-os pilot deploy gate",
+          "ownerRepo": "compliance-os",
+          "status": "deploy-ready",
+          "ok": true,
+          "composite100": 95,
+          "nextCommand": "pnpm --dir ../compliance-os agent:next-work --json"
+        },
+        {
+          "id": "PROG-CONTINENTAL-GT",
+          "domain": "product",
+          "title": "Markets-os GT / brokerage staging trace",
+          "ownerRepo": "markets-os",
+          "status": "staging-trace-pass",
+          "ok": true,
+          "composite100": 59,
+          "witness": "markets-os/audit/evidence/golden-transaction-markets-staging-2026-06-12.json",
+          "gatesWitness": "markets-os/audit/evidence/pilot-golden-transaction-latest.json",
+          "nextCommand": "pnpm --dir ../markets-os agent:next-work --json",
+          "note": "Weekly GT gates + live brokerage→protocols staging trace PASS"
+        }
+      ],
+      "witnesses": {
+        "stagingSmoke": true,
+        "gtSubstrate": true,
+        "marketsGt": true,
+        "marketsStagingTrace": true
+      },
+      "witnessesFreshWithin7d": {
+        "stagingSmoke": true,
+        "gtSubstrate": true,
+        "marketsGt": true,
+        "marketsStagingTrace": true
+      }
+    }
+  },
+  "acceptance": {
+    "marketsOsNamespace": true,
+    "gtcxOsNamespace": true,
+    "witnessPath": "pm/ci/fleet-observability-latest.json",
+    "alertRoutesDocumented": true
+  }
+}

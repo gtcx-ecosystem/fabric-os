@@ -1,6 +1,6 @@
 {
   "$schema": "gtcx://baseline-os/frame-question-catalog/v1",
-  "updatedAt": "2026-06-17T09:50:48.548Z",
+  "updatedAt": "2026-06-17T12:41:50.220Z",
   "storyId": "FRP-P6",
   "questions": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "id": "Q-AMBIENT-TEAM-CONFIRM",
-      "prompt": "Confirm team roster inferred from workspace: gtcx-docs, bridge-os, quality-evidence-lead, prithvi, alexander, context.repo.owner.",
+      "prompt": "Confirm team roster inferred from workspace: canon-os, gtcx-docs, bridge-os, quality-evidence-lead, prithvi, alexander.",
       "gapNodeTypes": [
         "role"
       ],

@@ -56,6 +56,13 @@ last_reconciled: 2026-06-17T13:05:00.000Z
 - **Synthetic ingest:** `pen-test-report-synthetic.json --dry-run` PASS
 - **Bridge rollup:** `ecosystem-secas-witness-rollup --write` **8/8** · `storyComplete=false`
 
+## COMPOSITE-RESTORE-100 (2026-06-17 — cycle 4)
+
+- **Outcome:** **done** — composite100 **97 → 100** · trustCap **100**
+- **Root cause:** P35 strict failed on forbidden stub dirs (`docs/business/`, `docs/foundation/`, `docs/pm/`, `docs/docs/`) from link-stub pass; `production-readiness` probe capped TE at 85; trust anti-hallucination capped at 99
+- **Fix:** remove P35-forbidden stubs; repair 6 broken internal links; reword scaffold placeholders; `run-composite-lift --seal100` (no link stubs) after P35 GREEN
+- **Gates:** `p35-layout-check --strict` PASS · `documentation-audit` brokenLinks=0 scaffold=0 · `five-pillar-latest.json` composite100 **100**
+
 ## COMPOSITE-RESTORE-100 (2026-06-15 — cycle 3)
 
 - **Outcome:** **done** — composite100 **59 → 100**

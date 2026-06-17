@@ -53,6 +53,18 @@ variable "terminal_os_service_account" {
   default     = "terminal-os-sa"
 }
 
+variable "venture_os_namespace" {
+  description = "Kubernetes namespace for venture-os ESO (DEPLOY-02)"
+  type        = string
+  default     = "venture-os-staging"
+}
+
+variable "venture_os_service_account" {
+  description = "Service account for venture-os ESO IRSA"
+  type        = string
+  default     = "venture-os-sa"
+}
+
 variable "sensei_os_namespace" {
   description = "Kubernetes namespace for sensei-os PayOps ESO"
   type        = string

@@ -1,0 +1,134 @@
+{
+  "schema": "gtcx://canon-os/repo-provision-check/v1",
+  "repo": "fabric-os",
+  "profile": "platform",
+  "at": "2026-06-17T07:22:06.005Z",
+  "ok": true,
+  "gates": [
+    {
+      "id": "L0:docs",
+      "ok": true,
+      "detail": "docs"
+    },
+    {
+      "id": "L0:agile",
+      "ok": true,
+      "detail": "agile"
+    },
+    {
+      "id": "L0:pm",
+      "ok": true,
+      "detail": "pm"
+    },
+    {
+      "id": "L0:agents",
+      "ok": true,
+      "detail": "agents"
+    },
+    {
+      "id": "L0:ops",
+      "ok": true,
+      "detail": "ops"
+    },
+    {
+      "id": "L0:audit",
+      "ok": true,
+      "detail": "audit"
+    },
+    {
+      "id": "L0:platform",
+      "ok": true,
+      "detail": "platform"
+    },
+    {
+      "id": "L0:workstream",
+      "ok": true,
+      "detail": "workstream"
+    },
+    {
+      "id": "L0:archive",
+      "ok": true,
+      "detail": "archive"
+    },
+    {
+      "id": "L0:deploy",
+      "ok": true,
+      "detail": "deploy"
+    },
+    {
+      "id": "L0:config",
+      "ok": true,
+      "detail": "config"
+    },
+    {
+      "id": "L0:forbidden:agentic",
+      "ok": true,
+      "detail": "agentic/ absent"
+    },
+    {
+      "id": "L1:workstream/README.md",
+      "ok": true,
+      "detail": "workstream/README.md"
+    },
+    {
+      "id": "L1:workstream/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "workstream/FOLDER-SPEC.md"
+    },
+    {
+      "id": "L1:workstream/sprints/current.md",
+      "ok": true,
+      "detail": "workstream/sprints/current.md"
+    },
+    {
+      "id": "L1:deploy/README.md",
+      "ok": true,
+      "detail": "deploy/README.md"
+    },
+    {
+      "id": "L1:deploy/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "deploy/FOLDER-SPEC.md"
+    },
+    {
+      "id": "L1:archive/README.md",
+      "ok": true,
+      "detail": "archive/README.md"
+    },
+    {
+      "id": "L1:config/README.md",
+      "ok": true,
+      "detail": "config/README.md"
+    },
+    {
+      "id": "L1:config/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "config/FOLDER-SPEC.md"
+    },
+    {
+      "id": "L1:config/repo-kind.json",
+      "ok": true,
+      "detail": "config/repo-kind.json"
+    },
+    {
+      "id": "L1:config/sor-map.json",
+      "ok": true,
+      "detail": "config/sor-map.json"
+    },
+    {
+      "id": "L1:config/governance-spine.json",
+      "ok": true,
+      "detail": "config/governance-spine.json"
+    },
+    {
+      "id": "L1:config/baseline/baseline.config.json",
+      "ok": true,
+      "detail": "config/baseline/baseline.config.json"
+    },
+    {
+      "id": "L1:agents/README.md",
+      "ok": true,
+      "detail": "agents/README.md"
+    }
+  ]
+}

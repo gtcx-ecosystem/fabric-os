@@ -16,7 +16,7 @@ authorityClass: S
 
 **Work ID:** EXT-INF-013 / S3-01  
 **Authority:** Class S — sovereign human approval recorded  
-**Evidence:** [`audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json`](../../../audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json)
+**Evidence:** [`audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json`](../../../../audit/archive/legacy-docs-audit/evidence/ext-inf-013-zwcmp-pilot-owner-approval-2026-06-12.json)
 
 ## Summary
 

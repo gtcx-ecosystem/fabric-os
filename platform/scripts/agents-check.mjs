@@ -2,7 +2,7 @@
 /**
  * agents:check — strict agents/ root hub per resolved agents-pack.json
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { repoRootFromImportMeta } from './lib/repo-root.mjs';
 import { profileKeyFromTier, readProductTier, resolveDocsPack } from './lib/resolve-docs-pack.mjs';
@@ -12,6 +12,16 @@ const WRITE = process.argv.includes('--write');
 const WITNESS = join(REPO, 'audit/evidence/agents-latest.json');
 const PACK = 'agents-pack.json';
 const AGENTS_HUB = 'agents';
+const FORBIDDEN_PROVIDER_DIRS = ['cursor', 'claude', 'codex', 'copilot', 'gemini', 'kimi', 'universal'];
+const ALLOWED_AGENTS_ROOT = new Set(['README.md', 'FOLDER-SPEC.md', 'pillar-scorecard.md', 'manifest.json']);
+
+function listDirSafe(dir) {
+  try {
+    return readdirSync(dir);
+  } catch {
+    return [];
+  }
+}
 
 function gate(id, ok, detail = null) {
   return { id, ok, ...(detail ? { detail } : {}) };
@@ -54,9 +64,9 @@ function main() {
   gates.push(gate('hub:root-agents', existsSync(agentsDir), 'agents/ at repo root'));
   gates.push(
     gate(
-      'migration:no-docs-agents-sprawl',
-      !existsSync(join(legacyDocsAgents, 'bootstrap')) && !existsSync(join(legacyDocsAgents, 'capabilities')),
-      'docs/agents/ must be pointer-only after rehome',
+      'migration:no-docs-agents',
+      !existsSync(legacyDocsAgents),
+      existsSync(legacyDocsAgents) ? 'delete docs/agents/ — use repo-root agents/' : 'absent',
     ),
   );
 
@@ -114,6 +124,25 @@ function main() {
     } catch {
       gates.push(gate('bootstrap:provider-routes-valid', false, 'invalid JSON'));
     }
+  }
+
+  const forbiddenProviders = FORBIDDEN_PROVIDER_DIRS.filter((d) => existsSync(join(agentsDir, d)));
+  gates.push(gate('no-forbidden-provider-trees', forbiddenProviders.length === 0, forbiddenProviders.join(', ') || 'none'));
+
+  gates.push(gate('no-sops-sprawl', !existsSync(join(agentsDir, 'sops')), 'agents/sops/ forbidden'));
+
+  const hubOnly = ['provisioning'];
+  const looseRoot = listDirSafe(agentsDir).filter(
+    (n) => !ALLOWED_AGENTS_ROOT.has(n) && !spec.allRequiredSubfolders?.includes(n) && !hubOnly.includes(n),
+  );
+  gates.push(gate('no-loose-agents-root', looseRoot.length === 0, looseRoot.join(', ') || 'clean'));
+
+  const opsShadow = join(REPO, 'docs/operations/agents');
+  if (existsSync(opsShadow)) {
+    const shadowEntries = listDirSafe(opsShadow).filter((n) => n !== 'README.md');
+    gates.push(
+      gate('no-ops-agents-shadow', shadowEntries.length === 0, shadowEntries.length ? shadowEntries.join(', ') : 'pointer only'),
+    );
   }
 
   emit(gates, repoName, resolution, profileKey);

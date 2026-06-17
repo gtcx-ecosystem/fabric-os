@@ -83,12 +83,14 @@
       "lane": "FleetOps",
       "title": "COO Wave 2 — strict lane rollup 17/17 (fabric:ops:check:strict green)",
       "priority": "P1",
-      "status": "open",
+      "status": "done",
       "ownerRepo": "fabric-os",
       "authorityClass": "R",
       "blocksIR": false,
       "acceptance": "ecosystem:ops-lanes-11pr rollup ok:true · fabric:ops:check:strict exit 0",
-      "programmeItem": true
+      "programmeItem": true,
+      "closedAt": "2026-06-17",
+      "note": "resolveRegisterPath bridge-os fix · ops doc pointers · ecosystem:fabric:check 20/20 · fabric:ops:check:strict exit 0 (~206s)"
     }
   ]
 }

@@ -116,7 +116,7 @@ A regulator's SOC 2 Type 1 or pen-test auditor verifies SLO compliance by:
 
 1. Reading this doc to learn the targets.
 2. Querying Prometheus for each `slo:*` recording rule against the relevant window.
-3. Cross-referencing against [`audit/score-evidence-ledger.json`](../../audit/score-evidence-ledger.json) entries for the period.
+3. Cross-referencing against [`audit/score-evidence-ledger.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/score-evidence-ledger.json) entries for the period.
 4. Spot-checking the `compliance_gateway_audit_records_total{action="query:success"}` series against `compliance_gateway_requests_total{route="/v1/query",status="200"}` for the 100% audit-signing SLO.
 
 Every series above is exposed at `/metrics` on every gateway + sidecar pod. No vendor-specific instrumentation required.
@@ -126,7 +126,7 @@ Every series above is exposed at `/metrics` on every gateway + sidecar pod. No v
 - ADR-014 — NATS JetStream audit transport (audit flush lag SLO is the durability contract)
 - ADR-016 — Fail-closed audit signing (the 1.000 signing SLO is the contract)
 - ADR-017 — Adaptive policy tuning (latency p95 < 5000ms drives the auto-degrade behavior)
-- [`audit/archive/legacy-docs-audit/repo-overlay.md`](../../audit/archive/legacy-docs-audit/repo-overlay.md) — repo-specific stricter caps
-- [`audit/archive/legacy-docs-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) Phase 5 — production readiness assessment
+- [`audit/archive/legacy-docs-audit/repo-overlay.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/repo-overlay.md) — repo-specific stricter caps
+- [`audit/archive/legacy-docs-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) Phase 5 — production readiness assessment
 - [`docs/operations/runbooks/`](../../runbooks/README.md) — 25 operational runbooks covering each escalation path
 - Google SRE workbook on SLOs: https://sre.google/workbook/implementing-slos/

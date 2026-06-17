@@ -2,6 +2,7 @@
 title: 'pillar-scorecard — docs/operations/'
 status: current
 date: 2026-06-16
+owner: fabric-os
 document_type: folder-spec
 tier: operating
 tags: ['documentation', 'multi-pillar', 'fractal-mpr']

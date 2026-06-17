@@ -47,7 +47,7 @@ Protocol performance targets and KPI reference for the GTCX Protocol layer.
 Performance budgets are enforced in CI via `03-platform/scripts/check-performance-baseline.mjs`.
 
 ```bash
-pnpm perf:check
+node platform/tools/scripts/check-performance-baseline.mjs
 ```
 
 Baseline is stored in `benchmarks/` and refreshed with `pnpm perf:refresh`.

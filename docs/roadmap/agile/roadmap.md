@@ -1,3 +1,10 @@
+---
+title: fabric-os agile roadmap lens
+status: current
+date: 2026-06-17
+owner: fabric-os
+---
+
 # fabric-os — agile lens
 
 > **Fleet backlog:** `../agile-os/pm/ecosystem-sprint-backlog.json`

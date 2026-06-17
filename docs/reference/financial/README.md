@@ -1,3 +1,3 @@
 # Reference — financial
 
-Financial reference material placeholder.
+Financial reference material index.

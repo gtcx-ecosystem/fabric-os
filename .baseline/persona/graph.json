@@ -1,0 +1,21 @@
+{
+  "schema": "gtcx://baseline-os/persona-graph",
+  "updatedAt": "2026-06-16T03:21:00.159Z",
+  "nodes": [
+    {
+      "id": "persona:platform-architect",
+      "kind": "institutional",
+      "title": "Platform Architect",
+      "tier": "P0",
+      "institutionalAnchor": "platform-architect",
+      "tags": [
+        "platform",
+        "architecture"
+      ],
+      "promotionState": "institutional",
+      "confidence": 1,
+      "source": "institutional"
+    }
+  ],
+  "edges": []
+}

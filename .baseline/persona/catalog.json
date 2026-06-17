@@ -1,0 +1,41 @@
+{
+  "schema": "gtcx://baseline-os/persona-catalog",
+  "updatedAt": "2026-06-16T03:21:00.159Z",
+  "entries": [
+    {
+      "id": "persona:platform-architect",
+      "title": "Platform Architect (institutional)",
+      "tags": [
+        "platform",
+        "architecture"
+      ],
+      "frameTags": [
+        "@baseline-os"
+      ],
+      "institutionalAnchor": "platform-architect",
+      "skills": [
+        "ai-mcp-rag-operator"
+      ],
+      "biasProfile": {
+        "rigor": 0.85,
+        "speed": 0.55,
+        "riskTolerance": 0.35
+      },
+      "promotionState": "institutional",
+      "library": "institutional"
+    }
+  ],
+  "tagIndex": {
+    "platform": [
+      "persona:platform-architect"
+    ],
+    "architecture": [
+      "persona:platform-architect"
+    ]
+  },
+  "frameTagIndex": {
+    "@baseline-os": [
+      "persona:platform-architect"
+    ]
+  }
+}

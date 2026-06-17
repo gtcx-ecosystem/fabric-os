@@ -1,7 +1,35 @@
 # Execution roadmap — fabric-os
 
-> Generated scaffold for INIT-FIVE-PILLAR-FLEET-100. Reconcile via `pnpm pm:sync`.
+> **Last reconciled:** 2026-06-17 · `execute-roadmap` · Q3 ship pillar (`PROG-CONTINENTAL-CAPITAL`)
 
-## Active milestone
+## Active programme
 
-- **INIT-FIVE-PILLAR-FLEET-100** — fleet five-pillar 100/100 uplift
+| Field              | Value                                                                  |
+| ------------------ | ---------------------------------------------------------------------- |
+| Quarter            | `GTCX-Q3-2026` · pillar **ship**                                       |
+| Programme          | `PROG-CONTINENTAL-CAPITAL`                                             |
+| Initiative         | `INIT-GTCX-Q3-2026` (fleet tree in agile-os)                           |
+| Head story (SECAS) | `SECAS-S4-04` — **blocked** `awaiting_vendor_report` until 2026-06-21+ |
+| Parallel Q3 ship   | `Q3-FABRIC-*` — substrate witnesses (not blocked on SECAS)             |
+
+## Phase — Q3 ship substrate (active)
+
+| Story          | Status   | UAT / witness                                                                                                     |
+| -------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
+| `Q3-FABRIC-01` | **done** | `pnpm pilot:staging-smoke:write` → `audit/evidence/pilot-staging-smoke-latest.json`                               |
+| `Q3-FABRIC-02` | **done** | `pnpm pilot:golden-transaction-substrate:write` → `audit/evidence/pilot-golden-transaction-substrate-latest.json` |
+| `Q3-FABRIC-03` | pending  | SECAS supply-chain — after S4-04 window                                                                           |
+| `Q3-FABRIC-04` | pending  | Observability dashboards                                                                                          |
+
+## Blockers
+
+| ID                                 | Owner           | Note                                                                  |
+| ---------------------------------- | --------------- | --------------------------------------------------------------------- |
+| `SECAS-S4-04`                      | vendor calendar | Remediation scaffold green; ingest after 2026-06-21                   |
+| `fabric:assurance` uat-independent | bridge catalog  | Non-blocking for GT substrate choreography; witness documents partial |
+
+## Next story
+
+`Q3-FABRIC-04` or markets-os `pilot:golden-transaction:gates` — lift `PROG-CONTINENTAL-GT` from partial-no-staging-probe.
+
+**Normative hierarchy:** `agile-os/pm/spec/fleet-work-hierarchy-protocol.json`

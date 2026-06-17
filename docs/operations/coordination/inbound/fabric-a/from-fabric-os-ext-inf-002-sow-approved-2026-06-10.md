@@ -16,7 +16,7 @@ authorityClass: S
 
 **Work ID:** EXT-INF-002 / S2-13  
 **Authority:** Class S — sovereign human approval recorded  
-**Evidence:** [`audit/evidence/ext-inf-002-sow-approval-2026-06-10.json`](../../../audit/evidence/ext-inf-002-sow-approval-2026-06-10.json)
+**Evidence:** [`audit/evidence/ext-inf-002-sow-approval-2026-06-10.json`](../../../../audit/archive/legacy-docs-audit/evidence/ext-inf-002-sow-approval-2026-06-10.json)
 
 ## Summary
 
@@ -24,12 +24,12 @@ Sovereign operator approved the **live-stack pen-test vendor SOW path** on 2026-
 
 ## Preconditions met
 
-| Check                     | Status                                                                                                                                                      |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| DAAS-S1 staging substrate | complete — AGX `/api/health` 200, authority trace 7/7                                                                                                       |
-| validate-all              | 55/55                                                                                                                                                       |
-| Vendor pack ack           | [`from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md`](../../outbound/from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md)                 |
-| Five-core composite       | see [`audit/latest.json`](../../../audit/latest.json) · [`audit/evidence/composite-audit-latest.json`](../../../audit/evidence/composite-audit-latest.json) |
+| Check                     | Status                                                                                                                                                                                                                |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| DAAS-S1 staging substrate | complete — AGX `/api/health` 200, authority trace 7/7                                                                                                                                                                 |
+| validate-all              | 55/55                                                                                                                                                                                                                 |
+| Vendor pack ack           | [`from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md`](../../outbound/from-gtcx-infrastructure-ext-inf-002-pack-ack-2026-06-07.md)                                                                           |
+| Five-core composite       | see [`audit/latest.json`](../../../../audit/archive/legacy-docs-audit/latest.json) · [`audit/evidence/composite-audit-latest.json`](../../../../audit/archive/legacy-docs-audit/evidence/composite-audit-latest.json) |
 
 ## Remaining (procurement execution — not repo-blocked)
 

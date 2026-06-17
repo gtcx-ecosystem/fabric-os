@@ -82,33 +82,38 @@ function main() {
   const profile = spec?.profiles?.[profileKey] ?? spec?.profiles?.product;
   gates.push(gate('profile', !!profile, profileKey));
 
-  const roadmapDir = join(REPO, 'docs/roadmap');
+  const canonicalPath = spec.canonicalPath ?? 'agile/roadmaps';
+  const roadmapDir = join(REPO, canonicalPath);
   const roadmapExists = existsSync(roadmapDir);
+  const legacyRoadmapDir = join(REPO, 'docs/roadmap');
 
-  if (!profile?.roadmapRequired && !roadmapExists) {
+  if (!profile?.roadmapRequired && !roadmapExists && !existsSync(legacyRoadmapDir)) {
     gates.push(gate('roadmap-optional-skip', true, `${profileKey} — roadmap not required`));
     emit(gates, repoName, resolution, profileKey);
     return;
   }
 
   if (profileKey === 'constitution-standards') {
-    // Hub: pointer discipline only — do not require lane scaffolds.
-    gates.push(gate('hub:readme', existsSync(join(roadmapDir, 'README.md')), 'docs/roadmap/README.md'));
+    gates.push(gate('hub:readme', existsSync(join(roadmapDir, 'README.md')) || isLegacyPointerOnly(legacyRoadmapDir), 'agile/roadmaps or pointer'));
     emit(gates, repoName, resolution, profileKey);
     return;
   }
 
-  for (const entry of spec.requiredRootFiles ?? []) {
-    gates.push(gate(`root:${entry.path}`, existsSync(join(REPO, entry.path)), entry.path));
+  gates.push(gate(`canonical:${canonicalPath}`, existsSync(roadmapDir), canonicalPath));
+  gates.push(gate(`canonical-readme:${canonicalPath}/README.md`, existsSync(join(roadmapDir, 'README.md')), `${canonicalPath}/README.md`));
+
+  for (const file of spec.canonicalLaneFiles ?? ['technical.md', 'gtm.md']) {
+    gates.push(gate(`lane:${file}`, existsSync(join(roadmapDir, file)), `${canonicalPath}/${file}`));
   }
 
-  for (const [sub, def] of Object.entries(spec.requiredSubfolders ?? {})) {
-    if (def?.optional) continue;
-    const dir = join(roadmapDir, sub);
-    gates.push(gate(`subfolder:${sub}`, existsSync(dir), `docs/roadmap/${sub}/`));
-    for (const f of def?.required ?? []) {
-      gates.push(gate(`subfolder-file:${sub}/${f}`, existsSync(join(dir, f)), `docs/roadmap/${sub}/${f}`));
-    }
+  if (existsSync(legacyRoadmapDir)) {
+    gates.push(
+      gate(
+        'legacy:docs-roadmap-pointer',
+        isLegacyPointerOnly(legacyRoadmapDir),
+        'docs/roadmap/ must be pointer-only → agile/roadmaps/',
+      ),
+    );
   }
 
   for (const rel of ['docs/strategy', 'docs/overview', 'docs/product', 'docs/architecture']) {
@@ -116,7 +121,7 @@ function main() {
       gate(
         `no-roadmap-outside:${rel}`,
         !hasRoadmapNarrativeAt(REPO, rel),
-        `no roadmap narrative under ${rel}/ (must live under docs/roadmap/)`,
+        `no roadmap narrative under ${rel}/ (lanes → ${canonicalPath}/)`,
       ),
     );
   }
@@ -126,18 +131,26 @@ function main() {
     const text = readFileSync(foundationRoadmap, 'utf8');
     const isPointer =
       /status:\s*pointer/i.test(text) ||
-      /docs\/roadmap\/roadmap-current\.md/i.test(text) ||
+      /agile\/roadmaps/i.test(text) ||
       /\*\*Canonical SoR:\*\*/.test(text);
     gates.push(
       gate(
         'foundation:roadmap-pointer',
         isPointer,
-        'docs/foundation/roadmap.md must pointer-only → docs/roadmap/roadmap-current.md',
+        'docs/foundation/roadmap.md must link executive lens → agile/roadmaps/',
       ),
     );
   }
 
   emit(gates, repoName, resolution, profileKey);
+}
+
+function isLegacyPointerOnly(dir) {
+  if (!existsSync(dir)) return true;
+  const readme = join(dir, 'README.md');
+  if (!existsSync(readme)) return false;
+  const text = readFileSync(readme, 'utf8');
+  return /status:\s*pointer/i.test(text) || /agile\/roadmaps/i.test(text) || /\*\*Canonical SoR:\*\*/.test(text);
 }
 
 function emit(gates, repoName, resolution, profileKey = null) {

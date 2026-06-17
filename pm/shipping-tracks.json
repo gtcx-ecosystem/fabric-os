@@ -34,7 +34,7 @@
     "position": "Fabric gates green; vendor report ingest calendar-gated.",
     "gatingWork": "None for pm folder R1.",
     "nextStrategicMove": "pnpm pm:folder:check && pnpm agent:next-work",
-    "auditComposite100": 91
+    "auditComposite100": 100
   },
   "fiveCoreSyncedAt": "2026-06-17"
 }

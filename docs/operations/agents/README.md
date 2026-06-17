@@ -10,6 +10,6 @@ review_cycle: on-change
 
 # `docs/operations/agents/` — relocated
 
-**Canonical harness hub:** [`../../../agents/README.md`](../../../agents/README.md)
+**Canonical harness hub:** [`../../../agentic/README.md`](../../../agentic/README.md)
 
 Playbooks and provider routes live at repo-root `agents/` per P35 v5.

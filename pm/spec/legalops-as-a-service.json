@@ -1,22 +1,30 @@
 {
   "$schema": "gtcx://fabric-os/legalops-as-a-service/v1",
-  "version": "1.0.0",
-  "updated": "2026-06-15",
+  "version": "1.1.0",
+  "updated": "2026-06-17",
   "opsLane": "LegalOps",
   "owner": "fabric-os",
-  "programOffice": "agile-os",
-  "registerOwner": "agile-os",
+  "registerOwner": "fabric-os",
+  "canonRegister": "canon-os/ops/coordination/hub-narrative/human-gates.manifest.json",
   "initiative": "INIT-ECOSYSTEM-LEGAL-PROGRAM",
   "protocol": "P45-LEGAL-AS-A-SERVICE",
+  "status": "operational",
+  "principle": "fabric-os owns LegalOps lane — friction register, harness, runbook, and fleet witnesses. Class S gates are parallel (blocksIR: false); canon holds human-gates manifest href only.",
   "artifacts": {
+    "spec": "pm/spec/legalops-as-a-service.json",
+    "runbook": "docs/operations/legalops-as-a-service.md",
     "frictionRegister": "pm/legal-friction-register.json",
-    "opsEntry": "docs/operations/coordination/inbound/to-a/to-agile-os-secops-complianceops-clearance-escalation-2026-06-15.md",
+    "manifest": "ops/legal/manifest.json",
+    "harness": "platform/scripts/legalops-check.mjs",
+    "frictionHarness": "platform/scripts/legal-friction-check.mjs",
+    "fleetProtocol": "bridge-os/pm/spec/ecosystem-legal-program-protocol.json",
     "witness": "audit/evidence/legalops-check-latest.json",
-    "programmeSpec": "agile-os/pm/spec/legalops-as-a-service.json"
+    "fleetWitness": "bridge-os/pm/ci/ops-lanes-100/legalops-fleet-latest.json"
   },
   "harness": {
     "check": "pnpm legalops:check",
     "checkWrite": "pnpm legalops:check:write",
-    "friction": "pnpm legal:friction:check:write"
+    "friction": "pnpm legal:friction:check:write",
+    "fleet": "pnpm --dir ../bridge-os ecosystem:legal-program:check:write"
   }
 }

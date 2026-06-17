@@ -32,7 +32,7 @@ initiative: INIT-GTCX-EXECUTION-ENGINE
 - LOI/DTF, pilot revenue economics, tier pricing → **RevOps** (GTMaaS)
 - PRD and shippable milestone DoD → **ProductOps**
 - Protocol text and audit methodology → **canon-os**
-- Legal partner agreement countersign → **LegalOps** / **agile-os** (Class S)
+- Legal partner agreement countersign → **LegalOps** / **fabric-os** (Class S)
 
 ## EcosystemOps vs StratOps vs RevOps
 

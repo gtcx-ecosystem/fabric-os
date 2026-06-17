@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/legal-friction-check/v1",
   "protocol": "P45-LEGAL-AS-A-SERVICE",
   "storyId": "LEGAL-PROGRAM-01",
-  "checkedAt": "2026-06-15T16:33:43.106Z",
+  "checkedAt": "2026-06-17T13:31:33.538Z",
   "gates": {
     "register": {
       "ok": true

@@ -27,7 +27,7 @@ Product engineering stays in **owner repos**. Specialist **Ops lanes** run in pa
 | **MLOps**         | Model lifecycle — training, serving, eval, cost-router ML bridge                | gtcx-intelligence (+ fabric GCP bridge) | _(product program)_        | —           | gtcx-intelligence `09-security/` + fabric `gcp-ml-bridge`                            |
 | **AIOps**         | AI runtime assurance — anomaly detection, injection red-team, agent tool guard  | fabric-os + intelligence                | _(harness)_                | —           | `anomaly-detector` · eval-pipeline injection suite                                   |
 | **ComplianceOps** | Regulatory evidence, reference-grade lifts, risk/compliance registers           | compliance-os                           | INT-REF                    | —           | compliance-os `pnpm agent:next-work`                                                 |
-| **LegalOps**      | Class S sovereign gates — SOW, DTF, EXT-INF, human signatures                   | agile-os · register canon-os            | Legal program              | —           | `ecosystem:legal-program:check`                                                      |
+| **LegalOps**      | Class S sovereign gates — SOW, DTF, EXT-INF, human signatures                   | fabric-os · canon human-gates manifest  | Legal program              | P45         | `pnpm legalops:check:write` · `ecosystem:legal-program:check`                        |
 | **FleetOps**      | Intake, witness rollup, ZenHub, coordination                                    | bridge-os                               | —                          | P22 harness | `pnpm ecosystem:secas:rollup:write`                                                  |
 | **StratOps**      | Growth, scale, moats, sustainability, fleet north star, enterprise-building     | bridge-os (+ canon institutional)       | **StratAAS**               | GOAL        | [stratops-as-a-service.md](../../platform-services/stratops-as-a-service.md)         |
 | **EcosystemOps**  | Partnerships, dev engagement, communities, product-ecosystem network growth     | bridge-os (+ ecosystem-os publish)      | **EcosystemAAS**           | NET         | [ecosystemops-as-a-service.md](../../platform-services/ecosystemops-as-a-service.md) |
@@ -128,7 +128,7 @@ Forensic SoR (PayOps execution inventory): [ecosystem-revops-commops-forensic-20
 | DevOps / InfraOps   | `platform-architect`                                                            | development                 |
 | ComplianceOps       | `compliance-officer`                                                            | regulatory-audit            |
 | MLOps / AIOps       | `security-engineer` + product ML owner                                          | development                 |
-| LegalOps            | Human + compliance-officer witness                                              | regulatory-audit            |
+| LegalOps            | `compliance-officer` + human sovereign witness                                  | regulatory-audit            |
 | FleetOps            | `protocol-engineer`                                                             | development                 |
 | StratOps            | `product-strategist` (lead) · `protocol-engineer` (programmes)                  | trading-floor               |
 | EcosystemOps        | `product-strategist` · `protocol-engineer` (partner/dev programs)               | trading-floor               |
@@ -167,7 +167,7 @@ Spec: `bridge-os/pm/spec/engineering-lane-abstraction-protocol.json`
 
 - Product P22 **Next work item** = engineering only.
 - SecOps gates → **Parallel sovereign gates** / **Parallel assurance lane** — fabric-os owner.
-- LegalOps → **Parallel sovereign gates** — agile-os / canon.
+- LegalOps → **Parallel sovereign gates** — fabric-os / canon.
 - StratOps → **Parallel strategy lane** — growth, scale, moats, north star (`blocksIR: false`).
 - EcosystemOps → **Parallel network lane** — partnerships, developer engagement, communities (`blocksIR: false`).
 - ProductOps → **Parallel product lane** — bridge-os product-culture protocol (`blocksIR: false`).

@@ -14,6 +14,8 @@ opsLane: LegalOps
 
 # Legal-as-a-Service — GTCX Service Fabric
 
+> **Canonical runbook:** [legalops-as-a-service.md](../legalops-as-a-service.md) — fabric-os owns LegalOps lane (2026-06-17).
+
 **Normative:** `canon-os/docs/governance/protocols/44-fabric-consumption/protocol.md`  
 **Machine spec:** `bridge-os/pm/spec/service-fabric.json`  
 **Friction SoR:** `pm/legal-friction-register.json`  

@@ -132,7 +132,7 @@ flowchart LR
 | Dimension             | Specification                                                                                       |
 | --------------------- | --------------------------------------------------------------------------------------------------- |
 | **Runtime**           | Class S gate manifest, SOW/DTF/EXT-INF registers, human-gates routing                               |
-| **Agentic team**      | Human sovereign · `compliance-officer` (intake witness) · agile-os ceremony owner                   |
+| **Agentic team**      | Human sovereign · `compliance-officer` (intake witness) · fabric-os lane owner                      |
 | **Intelligence loop** | Gate detected → explainer card → Approval needed (not blocked) → human sign → witness JSON          |
 | **Innovation moat**   | **Explainer-first legal gates** — no false blocks; fleet keeps executing                            |
 | **Trust fortress**    | Class S never agent-signed; durable inbound tickets; canon register SoR                             |

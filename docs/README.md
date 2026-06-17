@@ -15,19 +15,19 @@ document_type: index
 
 ## Start here
 
-| Surface                    | Path                                                                                                               |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Docs IA map                | [`INDEX.md`](./INDEX.md)                                                                                           |
-| Agent work selection       | [`operations/agent-spine/agent-work-selection.md`](./operations/agent-spine/agent-work-selection.md)               |
-| Execution roadmap (DaaS)   | [`../audit/product-management/execution-roadmap.md`](../audit/product-management/execution-roadmap.md)             |
-| Execution roadmap (SECaaS) | [`../audit/product-management/secas-execution-roadmap.md`](../audit/product-management/secas-execution-roadmap.md) |
-| Auto-dev state             | [`../audit/product-management/auto-dev-state.md`](../audit/product-management/auto-dev-state.md)                   |
-| Audit entry                | [`../audit/AGENT-START.md`](../audit/AGENT-START.md)                                                               |
-| Agents (canonical)         | [`operations/agents/README.md`](./operations/agents/README.md)                                                     |
-| Runbooks                   | [`operations/runbooks/`](./operations/runbooks/)                                                                   |
-| Architecture narratives    | [`architecture/narratives/`](./architecture/narratives/)                                                           |
-| SECaaS operations          | [`operations/secas/`](./operations/secas/)                                                                         |
-| GTM ops domain             | [`../ops/gtm/README.md`](../ops/gtm/README.md)                                                                     |
+| Surface                    | Path                                                                                                                                                                                                |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Docs IA map                | [`INDEX.md`](./INDEX.md)                                                                                                                                                                            |
+| Agent work selection       | [`operations/agent-spine/agent-work-selection.md`](./operations/agent-spine/agent-work-selection.md)                                                                                                |
+| Execution roadmap (DaaS)   | [`../audit/product-management/execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/product-management/execution-roadmap.md)             |
+| Execution roadmap (SECaaS) | [`../audit/product-management/secas-execution-roadmap.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/product-management/secas-execution-roadmap.md) |
+| Auto-dev state             | [`../audit/product-management/auto-dev-state.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/product-management/auto-dev-state.md)                   |
+| Audit entry                | [`../audit/AGENT-START.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/AGENT-START.md)                                                               |
+| Agents (canonical)         | [`operations/agents/README.md`](./operations/agents/README.md)                                                                                                                                      |
+| Runbooks                   | [`operations/runbooks/`](./operations/runbooks/)                                                                                                                                                    |
+| Architecture narratives    | [`architecture/narratives/`](./architecture/narratives/)                                                                                                                                            |
+| SECaaS operations          | [`operations/secas/`](./operations/secas/)                                                                                                                                                          |
+| GTM ops domain             | [`../ops/gtm/README.md`](../ops/gtm/README.md)                                                                                                                                                      |
 
 ## Layout v3 hubs
 

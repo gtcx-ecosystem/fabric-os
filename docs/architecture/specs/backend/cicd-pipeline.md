@@ -219,6 +219,6 @@ Feature Branch ──→ PR ──→ main ──→ Staging (auto) ──→ Pr
 - [Testing Framework](./testing-framework.md) -- Test types, coverage targets, and property-based testing requirements enforced by this pipeline
 - [Resilience Framework](./resilience-framework.md) -- Recovery targets and degradation tiers that inform deployment safety
 - [Infrastructure Architecture](../architecture/narratives/infrastructure-architecture-overview.md) -- Kubernetes cluster configuration, Terraform structure, and edge deployment topology
-- [Security Policies](../../ops/security/narrative/security-policy.md) -- Security scanning requirements and vulnerability management policy
+- [Security Policies](../../../../ops/security/narrative/security-policy.md) -- Security scanning requirements and vulnerability management policy
 - [Observability Framework](./observability-framework.md) -- Metrics and alerting that drive canary health checks
 - Terraform configurations: `gtcx-infrastructure/04-deploy/terraform/`

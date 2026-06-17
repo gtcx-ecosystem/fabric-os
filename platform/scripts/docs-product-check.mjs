@@ -18,6 +18,12 @@ function gate(id, ok, detail = null) {
   return { id, ok, ...(detail ? { detail } : {}) };
 }
 
+function isPointerOnly(filePath) {
+  if (!existsSync(filePath)) return false;
+  const text = readFileSync(filePath, 'utf8');
+  return /status:\s*pointer/i.test(text) || /\*\*Canonical SoR:\*\*/.test(text);
+}
+
 function main() {
   const gates = [];
   const resolution = resolveDocsPack(REPO, PACK);
@@ -168,14 +174,35 @@ function main() {
       gate(
         'forbid:product-roadmap',
         !hasProductRoadmap,
-        hasProductRoadmap ? 'docs/product/roadmap* is forbidden — use docs/roadmap/' : 'ok',
+        hasProductRoadmap ? 'docs/product/roadmap* forbidden — use agile/roadmaps/' : 'ok',
+      ),
+    );
+    for (const forbidden of ['requirements', 'acceptance', 'surfaces', 'prds', 'roadmaps', 'scrum', 'research']) {
+      const p = join(productDir, forbidden);
+      if (!existsSync(p)) {
+        gates.push(gate(`forbid:product-${forbidden}`, true, 'ok'));
+        continue;
+      }
+      gates.push(
+        gate(
+          `forbid:product-${forbidden}`,
+          isPointerOnly(join(p, 'README.md')),
+          `docs/product/${forbidden}/ must be pointer or absent — migrate per PRODUCT-DELIVERY-IA`,
+        ),
+      );
+    }
+    gates.push(
+      gate(
+        'ux:users',
+        existsSync(join(productDir, 'ux/users.md')) || existsSync(join(productDir, 'ux/personas.md')),
+        'docs/product/ux/users.md (migrate from personas.md)',
       ),
     );
   }
 
   if (productExists) {
     const loose = readdirSync(productDir, { withFileTypes: true })
-      .filter((e) => e.isFile() && e.name.endsWith('.md') && !['README.md', 'FOLDER-SPEC.md'].includes(e.name))
+      .filter((e) => e.isFile() && e.name.endsWith('.md') && !['README.md', 'FOLDER-SPEC.md', 'pillar-scorecard.md'].includes(e.name))
       .map((e) => e.name);
     gates.push(
       gate(

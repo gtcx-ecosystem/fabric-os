@@ -1,0 +1,28 @@
+{
+  "schema": "gtcx://fabric-os/secas-s4-04-internal-closure/v1",
+  "storyId": "S4-04",
+  "program": "INIT-GTCX-INFRA-SECAS",
+  "closedAt": "2026-06-17T18:20:00.000Z",
+  "closureType": "internal-engineering-complete",
+  "internalScopeComplete": true,
+  "storyComplete": true,
+  "phase": "internal_closure_complete",
+  "vendorTrack": {
+    "status": "deferred-post-launch",
+    "soR": "ops/coordination/post-launch-external-gates.json",
+    "blocksIR": false,
+    "blocksAnyRepo": false
+  },
+  "uat": {
+    "internal": "4/4 Class R complete",
+    "external": "deferred-post-launch calendar witness only — not an engineering block"
+  },
+  "witnesses": [
+    "audit/evidence/secas-pentest-remediation-check-latest.json",
+    "audit/evidence/secas-pentest-ingest-check-latest.json",
+    "audit/evidence/pen-test-findings-register-latest.json",
+    "audit/evidence/pen-test-remediation-closure-latest.json"
+  ],
+  "blocksIR": false,
+  "blocksAnyRepo": false
+}

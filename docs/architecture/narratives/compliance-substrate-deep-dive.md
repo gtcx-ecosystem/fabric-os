@@ -282,8 +282,8 @@ If you find yourself wanting any of these, write the ADR explaining what the sub
 
 - Diagram + contract: [`01-docs/gitbook/docs-site/architecture.md`](../../gitbook/docs-site/architecture.md)
 - ADR-014 NATS audit transport · ADR-015 per-tenant subject routing · ADR-016 fail-closed signing · ADR-017 adaptive policy · ADR-018 pen-test overlay · ADR-019 workspace discipline · ADR-020 coverage thresholds
-- [`ops/security/narrative/threat-model-2026-05.md`](../../ops/security/narrative/threat-model-2026-05.md) — STRIDE companion to this doc
+- [`ops/security/narrative/threat-model-2026-05.md`](../../../../ops/security/narrative/threat-model-2026-05.md) — STRIDE companion to this doc
 - [`01-docs/04-ops/slo-definitions.md`](../../operations/core-ops/batch-b/slo-definitions.md) — SLIs/SLOs for each layer
-- [`ops/compliance/narrative/dpia-2026-05.md`](../../ops/compliance/narrative/dpia-2026-05.md) — data-protection layer companion
-- [`audit/archive/legacy-docs-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) — substrate-as-shipped audit
-- [`audit/signal-scorecard.json`](../../audit/signal-scorecard.json) — SIGNAL agentic-maturity scorecard at 9.60/10
+- [`ops/compliance/narrative/dpia-2026-05.md`](../../../../ops/compliance/narrative/dpia-2026-05.md) — data-protection layer companion
+- [`audit/archive/legacy-docs-audit/full-audit-2026-05-22.md`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/archive/legacy-docs-audit/full-audit-2026-05-22.md) — substrate-as-shipped audit
+- [`audit/signal-scorecard.json`](../../audit/archive/legacy-docs-audit/archive/legacy-docs-audit/signal-scorecard.json) — SIGNAL agentic-maturity scorecard at 9.60/10

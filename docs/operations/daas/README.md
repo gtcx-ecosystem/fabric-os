@@ -16,6 +16,7 @@ Machine-indexed operational cards for fabric-os primary roadmap (DAAS-S2+).
 | Card                                      | Friction   | Deploy mode       | Status      |
 | ----------------------------------------- | ---------- | ----------------- | ----------- |
 | [terminal-os](./cards/terminal-os.md)     | F1         | EKS static        | delivered   |
+| [venture-os](./cards/venture-os.md)       | F1         | EKS static        | pending     |
 | [compliance-os](./cards/compliance-os.md) | F2         | EKS multi-service | in_progress |
 | [markets-os](./cards/markets-os.md)       | XR-MKT-011 | EKS handoff       | delivered   |
 

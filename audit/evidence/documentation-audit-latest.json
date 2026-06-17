@@ -5,7 +5,7 @@
   "date": "2026-06-17",
   "auditType": "documentation-pillar",
   "ok": true,
-  "composite100": 84,
+  "composite100": 94,
   "pillars": {
     "compliance": {
       "score100": 100,
@@ -13,8 +13,8 @@
       "source": "documentation-pack"
     },
     "technicalExcellence": {
-      "score100": 87,
-      "score100Raw": 87,
+      "score100": 99,
+      "score100Raw": 99,
       "packTe100": 100,
       "capped": false,
       "source": "pack+forensic-links"
@@ -31,11 +31,11 @@
       "source": "forensic-doc-standard"
     },
     "worldClass": {
-      "score100": 71,
-      "documentationQuality100": 67,
+      "score100": 96,
+      "documentationQuality100": 91,
       "worldClassBar100": 95,
-      "gap100": 28,
-      "gapLabel": "competitive",
+      "gap100": 4,
+      "gapLabel": "frontier",
       "references": ["Stripe docs", "Kubernetes docs", "gtcx-docs hub"],
       "source": "documentation-quality-vs-global-bar"
     }
@@ -44,17 +44,17 @@
     "axes": {
       "structural": 100,
       "naming": 79,
-      "frontmatter": 98,
-      "links": 0,
+      "frontmatter": 97,
+      "links": 100,
       "agentic": 85
     },
-    "score100": 72,
+    "score100": 92,
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
-      "markdownFileCount": 438,
-      "brokenLinks": 257,
-      "scaffoldFileCount": 5,
+      "markdownFileCount": 501,
+      "brokenLinks": 6,
+      "scaffoldFileCount": 10,
       "aiSlopFileCount": 0
     }
   },

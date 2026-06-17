@@ -60,6 +60,8 @@ resource "aws_iam_policy" "terra_os_secrets_reader" {
         aws_secretsmanager_secret.terra_os_rds.arn,
         aws_secretsmanager_secret.terra_os_redis.arn,
         "arn:aws:secretsmanager:*:*:secret:${local.terra_os_sm_prefix}/app-secrets*",
+        aws_secretsmanager_secret.commops_sendgrid.arn,
+        aws_secretsmanager_secret.commops_africas_talking.arn,
       ]
     }]
   })

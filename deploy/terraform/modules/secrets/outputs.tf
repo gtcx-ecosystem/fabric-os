@@ -129,6 +129,30 @@ output "payops_sm_secret_names" {
   ]
 }
 
+output "commops_sendgrid_secret_arn" {
+  description = "ARN of shared CommOps SendGrid secret shell"
+  value       = aws_secretsmanager_secret.commops_sendgrid.arn
+}
+
+output "commops_africas_talking_secret_arn" {
+  description = "ARN of shared CommOps Africa's Talking secret shell"
+  value       = aws_secretsmanager_secret.commops_africas_talking.arn
+}
+
+output "commops_twilio_secret_arn" {
+  description = "ARN of shared CommOps Twilio secret shell"
+  value       = aws_secretsmanager_secret.commops_twilio.arn
+}
+
+output "commops_sm_secret_names" {
+  description = "AWS SM secret names (shells) for shared CommOps providers"
+  value = [
+    aws_secretsmanager_secret.commops_sendgrid.name,
+    aws_secretsmanager_secret.commops_africas_talking.name,
+    aws_secretsmanager_secret.commops_twilio.name,
+  ]
+}
+
 output "sensei_os_secrets_role_arn" {
   description = "IRSA role ARN for sensei-os PayOps ESO"
   value       = aws_iam_role.sensei_os_secrets.arn

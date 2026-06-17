@@ -12,12 +12,14 @@
       "lane": "CommOps",
       "title": "Fleet SM populate for SendGrid / Africa's Talking / Twilio",
       "priority": "P0",
-      "status": "open",
+      "status": "done",
       "ownerRepo": "fabric-os",
       "authorityClass": "R",
       "blocksIR": false,
       "acceptance": "populate script + ESO cutover per product repo",
-      "register": "pm/commops-friction-register.json"
+      "register": "pm/commops-friction-register.json",
+      "closedAt": "2026-06-17",
+      "note": "populate-commops-staging-sm.sh · terra-os pilot ESO · commops:substrate:readiness PASS"
     },
     {
       "id": "OPS-COO-W1-002",

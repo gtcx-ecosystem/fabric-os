@@ -26,6 +26,7 @@ last_reconciled: 2026-06-17T16:05:00.000Z
 - **COO Wave 2 OPS-COO-W2-001:** **done** — `ecosystem-ops-pack-rollout.mjs --fleet --write` · fleet `ops:consumption:check` **15/15 PASS**
 - **COO Wave 2 OPS-COO-W2-002:** **done** — ops ceremony substance evaluator + witness
 - **COO Wave 2 OPS-COO-W2-003:** **done** — `ecosystem:fabric:check` **20/20** · `fabric:ops:check:strict` exit 0 · fleet lanes **17/17**
+- **COO Wave 1 OPS-COO-W1-001:** **done** — CommOps SM populate script + terra-os pilot ESO cutover · `commops:substrate:readiness` PASS
 - **SECAS-S4-04:** vendor calendar parallel · `awaiting_vendor_report` until **2026-06-21+**
 
 ## execute-roadmap reconcile (2026-06-17)

@@ -33,8 +33,18 @@ protocol: P53
 ```bash
 pnpm commops:check:write
 pnpm commops:deliverability:check:write
+pnpm commops:substrate:populate:dry-run
+pnpm commops:substrate:readiness:write
 ```
 
-## Open P0
+## SM populate (Class A keys for `--apply`)
 
-`COMMOPS-F2` — fleet SM populate + product-repo ESO cutover (terra-os notification stack first).
+```bash
+pnpm commops:substrate:populate:dry-run
+# export SENDGRID_API_KEY, AFRICASTALKING_* , TWILIO_* then:
+pnpm commops:substrate:populate
+```
+
+## Open P1
+
+`COMMOPS-F3` — deliverability witness wired to staging ingress.

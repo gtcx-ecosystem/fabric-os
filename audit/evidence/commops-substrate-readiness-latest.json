@@ -1,0 +1,44 @@
+{
+  "schema": "gtcx://fabric-os/commops-substrate-readiness/v1",
+  "checkedAt": "2026-06-17T16:51:21.720Z",
+  "opsLane": "CommOps",
+  "gates": {
+    "substrateContract": {
+      "ok": true
+    },
+    "populateScript": {
+      "ok": true
+    },
+    "populateDryRun": {
+      "ok": true,
+      "exitCode": 0
+    },
+    "fleetHandoff": {
+      "ok": true
+    },
+    "terraPilotEso": {
+      "ok": true,
+      "path": "terra-os/deploy/infra/k8s/external-secrets/terraos-secrets-staging.yaml"
+    },
+    "fabricTerraSendgridEso": {
+      "ok": true
+    },
+    "smSendgridStaging": {
+      "ok": false,
+      "path": "gtcx/shared/staging/commops/sendgrid",
+      "advisory": true
+    },
+    "smAfricasTalkingStaging": {
+      "ok": false,
+      "path": "gtcx/shared/staging/commops/africas-talking",
+      "advisory": true
+    },
+    "smTwilioStaging": {
+      "ok": false,
+      "path": "gtcx/shared/staging/commops/twilio",
+      "advisory": true
+    }
+  },
+  "ok": true,
+  "note": "SM existence advisory until Class A populate --apply"
+}

@@ -18,9 +18,11 @@
       "id": "COMMOPS-F2",
       "title": "Fleet SM populate for SendGrid / Africa's Talking / Twilio",
       "priority": "P0",
-      "status": "open",
+      "status": "done",
       "owner": "fabric-os",
-      "acceptance": "populate script + ESO cutover per product repo"
+      "acceptance": "populate script + ESO cutover per product repo",
+      "closedAt": "2026-06-17",
+      "note": "populate-commops-staging-sm.sh + terra-os ESO cutover pilot; fleet handoff XR-FABRIC-COMMOPS-001"
     },
     {
       "id": "COMMOPS-F3",

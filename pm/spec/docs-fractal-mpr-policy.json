@@ -1,0 +1,175 @@
+{
+  "$schema": "gtcx://canon-os/docs-fractal-mpr-policy/v1",
+  "updated": "2026-06-16",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "wave": "W12",
+  "title": "Docs fractal multi-pillar policy — all documentation layers",
+  "principle": "Every docs layer, folder, and file earns 11-pillar scores via published MPR witnesses — not folder existence or self-assessed tables. Parents roll up only from published children.",
+  "normative": "../baseline-os/docs/specs/audit/fractal-multi-pillar-audit.md",
+  "metaSpec": "pm/spec/docs-folder-pillar-contract.json",
+  "scopes": {
+    "file": {
+      "witnessSchema": "gtcx://baseline-os/mpr-file-witness/v1",
+      "witnessPattern": "audit/evidence/mpr-files/{layer}/{basename}.json",
+      "status": "planned",
+      "note": "XR-BRIDGE-MULTI-PILLAR-001 extension — file probes per ceremony doc"
+    },
+    "folder": {
+      "witnessSchema": "gtcx://baseline-os/mpr-folder-witness/v1",
+      "rollupFrom": "file",
+      "status": "planned"
+    },
+    "layer": {
+      "witnessSchema": "gtcx://baseline-os/mpr-layer-witness/v1",
+      "rollupFrom": "folder",
+      "status": "bootstrap"
+    },
+    "repo": {
+      "witnessSchema": "gtcx://audit/five-pillar/v1",
+      "rollupFrom": "layer",
+      "complianceGate100": true,
+      "status": "live"
+    }
+  },
+  "workOrders": ["task", "story", "feature", "initiative", "program", "repo"],
+  "repoIdResolution": {
+    "preferDirectoryName": true,
+    "packageNameAliases": {
+      "baseline": "baseline-os",
+      "fifty-four": "terminal-os",
+      "@gtcx/griot-ai": "griot-ai"
+    }
+  },
+  "profiles": {
+    "referenceImpl": {
+      "pillarTarget": 100,
+      "repos": ["agile-os", "canon-os", "bridge-os", "baseline-os"],
+      "note": "Fleet constitution + CPO + bridge program offices — 11×100 at layer order when published"
+    },
+    "product": {
+      "pillarTarget": 85,
+      "note": "≥85/100 per pillar at repo audit order; Compliance = 100 at repo to publish composite"
+    },
+    "constitution-standards": {
+      "pillarTarget": 100,
+      "note": "Hub pointer layers — witness + rollup link required; bodies scored in reference repos"
+    }
+  },
+  "layers": [
+    {
+      "id": "foundation",
+      "path": "docs/foundation/",
+      "pack": "pm/spec/docs-foundation-pack.json",
+      "check": "pnpm docs:foundation:check",
+      "scorecard": "docs/foundation/pillar-scorecard.md",
+      "layerWitness": "audit/evidence/mpr-foundation-layer-latest.json",
+      "packWitness": "audit/evidence/docs-foundation-latest.json",
+      "primaryPillars": ["compliance", "trustAndSafety", "agenticEmpowerment"]
+    },
+    {
+      "id": "business",
+      "path": "docs/business/",
+      "pack": "pm/spec/docs-business-pack.json",
+      "check": "pnpm docs:business:check",
+      "scorecard": "docs/business/pillar-scorecard.md",
+      "layerWitness": "audit/evidence/mpr-business-layer-latest.json",
+      "packWitness": "audit/evidence/docs-business-latest.json",
+      "primaryPillars": ["commercialValue", "defensiveMoat"]
+    },
+    {
+      "id": "architecture",
+      "path": "docs/architecture/",
+      "pack": "pm/spec/docs-architecture-pack.json",
+      "check": "pnpm docs:architecture:check",
+      "scorecard": "docs/architecture/pillar-scorecard.md",
+      "layerWitness": "audit/evidence/mpr-architecture-layer-latest.json",
+      "packWitness": "audit/evidence/docs-architecture-latest.json",
+      "primaryPillars": ["technicalExcellence", "ecosystemIntegration", "trustAndSafety"]
+    },
+    {
+      "id": "product",
+      "path": "docs/product/",
+      "pack": "pm/spec/docs-product-pack.json",
+      "check": "pnpm docs:product:check",
+      "scorecard": "docs/product/pillar-scorecard.md",
+      "layerWitness": "audit/evidence/mpr-product-layer-latest.json",
+      "packWitness": "audit/evidence/docs-product-latest.json",
+      "primaryPillars": ["commercialValue", "craft", "ipMagic"]
+    },
+    {
+      "id": "roadmap",
+      "path": "docs/roadmap/",
+      "pack": "pm/spec/docs-roadmap-pack.json",
+      "check": "pnpm docs:roadmap:check",
+      "scorecard": "docs/roadmap/pillar-scorecard.md",
+      "layerWitness": "audit/evidence/mpr-roadmap-layer-latest.json",
+      "packWitness": "audit/evidence/docs-roadmap-latest.json",
+      "primaryPillars": ["commercialValue", "ecosystemIntegration"]
+    },
+    {
+      "id": "agile",
+      "path": "agile/",
+      "pack": "pm/spec/agile-pack.json",
+      "check": "pnpm agile:check",
+      "scorecard": "agile/pillar-scorecard.md",
+      "layerWitness": "audit/evidence/mpr-agile-layer-latest.json",
+      "packWitness": "audit/evidence/agile-latest.json",
+      "primaryPillars": ["commercialValue", "ecosystemIntegration", "agenticEmpowerment"],
+      "fleetCpoSoR": "agile-os"
+    },
+    {
+      "id": "operations",
+      "path": "docs/operations/",
+      "pack": "pm/spec/docs-operations-pack.json",
+      "check": "pnpm docs:operations:check",
+      "scorecard": "docs/operations/pillar-scorecard.md",
+      "layerWitness": "audit/evidence/mpr-operations-layer-latest.json",
+      "packWitness": "audit/evidence/docs-operations-latest.json",
+      "primaryPillars": ["technicalExcellence", "trustAndSafety", "worldClass"]
+    },
+    {
+      "id": "agents",
+      "path": "agents/",
+      "pack": "pm/spec/agents-pack.json",
+      "check": "pnpm agents:check",
+      "scorecard": "agents/pillar-scorecard.md",
+      "layerWitness": "audit/evidence/mpr-agents-layer-latest.json",
+      "packWitness": "audit/evidence/agents-latest.json",
+      "primaryPillars": ["agenticEmpowerment", "compliance", "ecosystemIntegration"]
+    }
+  ],
+  "rollupRules": {
+    "publishOnlyFromChildren": true,
+    "repoComplianceMust100": true,
+    "scorecardIsReadOnlyRollup": true,
+    "forbidSelfAssessedWithoutWitness": true
+  },
+  "enforcement": {
+    "check": "pnpm docs:fractal-mpr:check",
+    "packContractCheck": "pnpm docs:pack:pillar-contract:check",
+    "fleetCheck": "pnpm ecosystem:docs:fractal-mpr:fleet",
+    "bootstrap": "pnpm ecosystem:docs:fractal-mpr:bootstrap",
+    "iaComposite": "pnpm docs:ia:check includes docs:fractal-mpr:check",
+    "phases": {
+      "bootstrap": {
+        "requires": [
+          "policy-present",
+          "pack-pillarContract-complete",
+          "layer-scorecard-with-witness-link",
+          "layer-witness-stub",
+          "pack-fractalMpr-block"
+        ],
+        "strict": false
+      },
+      "strict": {
+        "requires": [
+          "layer-witness-published",
+          "composite-meets-profile-target",
+          "repo-compliance-100"
+        ],
+        "flag": "--strict"
+      }
+    }
+  },
+  "fleetWitness": "audit/evidence/docs-fractal-mpr-fleet-latest.json"
+}

@@ -19,11 +19,11 @@ Acknowledged outbound from gtcx-core: [`to-fabric-os-ext-inf-002-vendor-pack-202
 
 ## Pack summary
 
-| Field     | Value                                                                                                                                                                    |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Artifacts | 22 (library-scope KAT, fuzz, threat matrix, CI refs)                                                                                                                     |
-| Manifest  | [`vendor-pen-test-pack-manifest-latest.json`](https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/05-audit/evidence/vendor-pen-test-pack-manifest-latest.json) |
-| Scope     | Complements infra [`pen-test-intake-evidence-2026-05-31.md`](../../../audit/pen-test-intake-evidence-2026-05-31.md) — not substitute for live-stack test                 |
+| Field     | Value                                                                                                                                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Artifacts | 22 (library-scope KAT, fuzz, threat matrix, CI refs)                                                                                                                                  |
+| Manifest  | [`vendor-pen-test-pack-manifest-latest.json`](https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/05-audit/evidence/vendor-pen-test-pack-manifest-latest.json)              |
+| Scope     | Complements infra [`pen-test-intake-evidence-2026-05-31.md`](../../../../audit/archive/legacy-docs-audit/pen-test-intake-evidence-2026-05-31.md) — not substitute for live-stack test |
 
 ## Infra posture
 

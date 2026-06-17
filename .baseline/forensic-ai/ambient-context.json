@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://baseline-os/forensic-ambient-context/v1",
-  "discoveredAt": "2026-06-17T09:50:48.544Z",
+  "discoveredAt": "2026-06-17T12:41:50.217Z",
   "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
   "repoId": "fabric-os",
   "filesScanned": 180,
@@ -395,6 +395,7 @@
     ]
   },
   "teamHints": [
+    "canon-os",
     "gtcx-docs",
     "bridge-os",
     "quality-evidence-lead",

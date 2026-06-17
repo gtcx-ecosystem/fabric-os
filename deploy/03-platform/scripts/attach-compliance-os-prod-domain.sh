@@ -3,14 +3,14 @@
 # Usage: CLOUDFLARE_API_TOKEN=<token> ALB_DNS=<alb-hostname> ./attach-compliance-os-prod-domain.sh
 set -euo pipefail
 
-TOKEN="${CLOUDFLARE_API_TOKEN:-}"
+TOKEN="${CLOUDFLARE_API_TOKEN:-${CLOUDFLARE_DNS_API_TOKEN:-}}"
 ZONE_NAME="${CLOUDFLARE_ZONE_NAME:-gtcx.trade}"
 RECORD_NAME="${CLOUDFLARE_COMPLIANCE_HOST:-compliance}"
 ALB_DNS="${ALB_DNS:-}"
 PROXIED="${CLOUDFLARE_PROXIED:-false}"
 
 if [[ -z "$TOKEN" ]]; then
-  echo "ERROR: Set CLOUDFLARE_API_TOKEN (Zone DNS Edit on gtcx.trade)."
+  echo "ERROR: Set CLOUDFLARE_API_TOKEN or CLOUDFLARE_DNS_API_TOKEN (Zone DNS Edit on gtcx.trade)."
   exit 1
 fi
 

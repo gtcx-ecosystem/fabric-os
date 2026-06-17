@@ -1,0 +1,20 @@
+{
+  "schema": "gtcx://fabric-os/venture-staging-dns-unblock/v1",
+  "id": "VENTURE-STAGING-DNS-UNBLOCK-2026-06-17",
+  "checkedAt": "2026-06-17T17:38:00.000Z",
+  "repo": "fabric-os",
+  "hostname": "venture-staging.gtcx.trade",
+  "blocker": "CLOUDFLARE_API_TOKEN lacked Zone DNS Edit; ALB served wrong ACM SAN",
+  "resolution": {
+    "vaultKey": "CLOUDFLARE_DNS_API_TOKEN",
+    "dnsCname": "k8s-gtcxstagingapi-295a96727a-1533822930.af-south-1.elb.amazonaws.com",
+    "proxied": false,
+    "acmCertArn": "arn:aws:acm:af-south-1:348389439381:certificate/5fb27ff7-3e2c-499b-93d1-1bc7cb8aa62a"
+  },
+  "probes": {
+    "cloudflareDnsApi": "200",
+    "httpsHealth": 200,
+    "healthBody": "status ok venture-os"
+  },
+  "ok": true
+}

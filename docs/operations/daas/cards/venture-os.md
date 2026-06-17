@@ -60,12 +60,26 @@ export PUSH=1
 
 ## Verification (2026-06-17)
 
-| Probe                                               | Result                                      |
-| --------------------------------------------------- | ------------------------------------------- |
-| `venture-os-secrets` ExternalSecret                 | **SecretSynced True**                       |
-| Pod `venture-os-*`                                  | **1/1 Running**                             |
-| ALB origin `GET /api/health` (Host header)          | **200** `{"status":"ok"}`                   |
-| `GET https://venture-staging.gtcx.trade/api/health` | **525** (Cloudflare — CNAME to ALB pending) |
+| Probe                                               | Result                                                            |
+| --------------------------------------------------- | ----------------------------------------------------------------- |
+| `venture-os-secrets` ExternalSecret                 | **SecretSynced True**                                             |
+| Pod `venture-os-*`                                  | **1/1 Running**                                                   |
+| ALB origin `GET /api/health` (Host header)          | **200** `{"status":"ok"}`                                         |
+| `GET https://venture-staging.gtcx.trade/api/health` | **200** — ACM `venture-staging.gtcx.trade` + Cloudflare DNS CNAME |
+
+## DNS + TLS (fabric-os)
+
+```bash
+# Vault: CLOUDFLARE_DNS_API_TOKEN (Zone DNS Edit — not Workers-only CLOUDFLARE_API_TOKEN)
+set -a && source ~/.baseline/env && set +a
+export CLOUDFLARE_API_TOKEN="$(baseline vault get CLOUDFLARE_DNS_API_TOKEN --trust-score 100)"
+export ALB_DNS="k8s-gtcxstagingapi-295a96727a-1533822930.af-south-1.elb.amazonaws.com"
+export CLOUDFLARE_COMPLIANCE_HOST="venture-staging"
+export CLOUDFLARE_PROXIED="false"
+deploy/03-platform/scripts/attach-compliance-os-prod-domain.sh
+```
+
+ACM cert: `arn:aws:acm:af-south-1:348389439381:certificate/5fb27ff7-3e2c-499b-93d1-1bc7cb8aa62a` (ingress annotation on `venture-os` ALB).
 
 ## Product handback
 
@@ -73,4 +87,4 @@ When seal **delivered**: venture-os runs `pnpm ops:check` and records URL in `au
 
 ## Seal
 
-Status **delivered** — EKS origin live 2026-06-17; public hostname pending Cloudflare DNS alignment.
+Status **delivered** — EKS origin + public hostname live 2026-06-17.

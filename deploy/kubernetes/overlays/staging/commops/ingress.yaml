@@ -1,0 +1,51 @@
+# =============================================================================
+# commops-staging — ALB Ingress (SendGrid bounce + Twilio status webhooks)
+# =============================================================================
+# Routes commops-staging.gtcx.trade to the bounce webhook receiver.
+# SendGrid Event Webhook URL: https://commops-staging.gtcx.trade/webhooks/sendgrid/events
+# =============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: commops-bounce-webhook
+  namespace: commops-staging
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:af-south-1:348389439381:certificate/8929e5a0-a4ec-4acf-86f8-945993e1f0c3,arn:aws:acm:af-south-1:348389439381:certificate/137fb6d0-a13e-4113-994d-6401578eca8a
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/success-codes: '200'
+    alb.ingress.kubernetes.io/group.name: gtcx-staging-api
+    alb.ingress.kubernetes.io/wafv2-acl-arn: arn:aws:wafv2:af-south-1:348389439381:regional/webacl/gtcx-staging-waf-af-south-1/c918a5e4-bbae-4385-aa6e-e135469c250f
+    external-dns.alpha.kubernetes.io/hostname: commops-staging.gtcx.trade
+    external-dns.alpha.kubernetes.io/ttl: '60'
+spec:
+  ingressClassName: alb
+  rules:
+    - host: commops-staging.gtcx.trade
+      http:
+        paths:
+          - path: /webhooks/sendgrid/events
+            pathType: Exact
+            backend:
+              service:
+                name: commops-bounce-webhook
+                port:
+                  number: 8080
+          - path: /webhooks/twilio/status
+            pathType: Exact
+            backend:
+              service:
+                name: commops-bounce-webhook
+                port:
+                  number: 8080
+          - path: /health
+            pathType: Exact
+            backend:
+              service:
+                name: commops-bounce-webhook
+                port:
+                  number: 8080

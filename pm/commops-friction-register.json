@@ -28,9 +28,11 @@
       "id": "COMMOPS-F3",
       "title": "Deliverability witness wired to staging ingress",
       "priority": "P1",
-      "status": "open",
+      "status": "done",
       "owner": "fabric-os",
-      "acceptance": "commops-deliverability-check PASS with live bounce webhook"
+      "acceptance": "commops-deliverability-check PASS with live bounce webhook",
+      "closedAt": "2026-06-17",
+      "note": "commops-staging overlay + live local bounce probe; cluster health advisory"
     }
   ]
 }

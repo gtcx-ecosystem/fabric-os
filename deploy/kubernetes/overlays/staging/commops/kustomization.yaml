@@ -1,0 +1,26 @@
+# =============================================================================
+# commops-staging — Kustomize overlay
+# =============================================================================
+# COMMOPS-F3: deliverability bounce webhook ingress for SendGrid + Twilio.
+#
+# Apply: kubectl apply -k deploy/kubernetes/overlays/staging/commops/
+#
+# SendGrid Event Webhook: https://commops-staging.gtcx.trade/webhooks/sendgrid/events
+# =============================================================================
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: commops-staging
+
+resources:
+  - namespace.yaml
+  - configmap-server.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+labels:
+  - includeSelectors: true
+    pairs:
+      gtcx.io/ops-lane: commops
+      environment: staging

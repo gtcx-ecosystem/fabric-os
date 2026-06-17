@@ -27,12 +27,14 @@
       "lane": "CommOps",
       "title": "Deliverability witness wired to staging ingress",
       "priority": "P1",
-      "status": "open",
+      "status": "done",
       "ownerRepo": "fabric-os",
       "authorityClass": "R",
       "blocksIR": false,
       "acceptance": "commops-deliverability-check PASS with live bounce webhook",
-      "register": "pm/commops-friction-register.json"
+      "register": "pm/commops-friction-register.json",
+      "closedAt": "2026-06-17",
+      "note": "deploy/kubernetes/overlays/staging/commops · commops:deliverability:check PASS"
     },
     {
       "id": "OPS-COO-W1-003",

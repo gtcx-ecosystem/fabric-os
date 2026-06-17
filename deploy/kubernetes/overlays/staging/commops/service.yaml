@@ -1,0 +1,20 @@
+# =============================================================================
+# commops-staging — bounce webhook Service
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: commops-bounce-webhook
+  namespace: commops-staging
+  labels:
+    app: commops-bounce-webhook
+    environment: staging
+spec:
+  type: ClusterIP
+  selector:
+    app: commops-bounce-webhook
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+      protocol: TCP

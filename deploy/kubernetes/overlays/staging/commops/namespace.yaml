@@ -1,0 +1,11 @@
+# =============================================================================
+# commops-staging — namespace
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: commops-staging
+  labels:
+    app.kubernetes.io/part-of: gtcx
+    app.kubernetes.io/component: commops
+    environment: staging

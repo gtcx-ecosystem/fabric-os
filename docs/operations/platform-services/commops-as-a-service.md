@@ -47,4 +47,4 @@ pnpm commops:substrate:populate
 
 ## Open P1
 
-`COMMOPS-F3` — deliverability witness wired to staging ingress.
+None — deliverability ingress sealed (`COMMOPS-F3` done).

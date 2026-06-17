@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+/**
+ * CommOps bounce / event webhook receiver (staging scaffold).
+ * Accepts SendGrid Event Webhook POSTs and Twilio status callbacks.
+ */
+import http from 'node:http';
+
+const PORT = Number(process.env.PORT ?? 8080);
+const HOST = process.env.HOST ?? '0.0.0.0';
+
+function readBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on('data', (c) => chunks.push(c));
+    req.on('end', () => resolve(Buffer.concat(chunks)));
+    req.on('error', reject);
+  });
+}
+
+const server = http.createServer(async (req, res) => {
+  const url = new URL(req.url ?? '/', `http://${req.headers.host ?? 'localhost'}`);
+
+  if (req.method === 'GET' && (url.pathname === '/health' || url.pathname === '/ready')) {
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(JSON.stringify({ ok: true, service: 'commops-bounce-webhook', path: url.pathname }));
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/webhooks/sendgrid/events') {
+    const body = await readBody(req);
+    console.log(
+      JSON.stringify({
+        at: new Date().toISOString(),
+        provider: 'sendgrid',
+        bytes: body.length,
+        contentType: req.headers['content-type'] ?? '',
+      }),
+    );
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(JSON.stringify({ received: true, provider: 'sendgrid' }));
+    return;
+  }
+
+  if (req.method === 'POST' && url.pathname === '/webhooks/twilio/status') {
+    const body = await readBody(req);
+    console.log(
+      JSON.stringify({
+        at: new Date().toISOString(),
+        provider: 'twilio',
+        bytes: body.length,
+        contentType: req.headers['content-type'] ?? '',
+      }),
+    );
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(JSON.stringify({ received: true, provider: 'twilio' }));
+    return;
+  }
+
+  res.writeHead(404, { 'content-type': 'application/json' });
+  res.end(JSON.stringify({ error: 'not_found', path: url.pathname }));
+});
+
+server.listen(PORT, HOST, () => {
+  console.log(`commops-bounce-webhook listening on ${HOST}:${PORT}`);
+});

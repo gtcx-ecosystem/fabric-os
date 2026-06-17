@@ -35,7 +35,13 @@
   "deliverability": {
     "dkimRequired": true,
     "spfRequired": true,
-    "bounceWebhookIngress": "fabric-os/deploy/kubernetes/overlays/staging/commops/"
+    "bounceWebhookIngress": "deploy/kubernetes/overlays/staging/commops/",
+    "bounceWebhookHost": "commops-staging.gtcx.trade",
+    "bounceWebhookPaths": {
+      "sendgrid": "/webhooks/sendgrid/events",
+      "twilio": "/webhooks/twilio/status"
+    },
+    "healthPath": "/health"
   },
   "forensicRef": "audit/archive/2026-06-15/audit/ecosystem-revops-commops-forensic-2026-06-14.md"
 }

@@ -7,4 +7,4 @@ owner: fabric-os
 
 # Pilot program
 
-Placeholder.
+Index — pilot assurance runbook (see fleet ops hub).

@@ -61,6 +61,7 @@
     "Do NOT list post-launch external gates in agent-work-selection work register tables.",
     "Do NOT select EXT-INF-* or BG-10-10/11 in P22.",
     "Do NOT put vendor/auditor gates in launch-focus human or implement workSet.",
+    "Vendor/pen-test calendar is post-launch external only — blocksIR: false · blocksAnyRepo: false on all repos.",
     "Calendar witness only — optional one-line in Status Update Post-launch external section."
   ]
 }

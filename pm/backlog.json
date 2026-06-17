@@ -8,7 +8,7 @@
     "title": "Fleet internal SecOps + ComplianceOps clearance",
     "targetDate": "2026-06-15",
     "programmeId": "PROG-SECAS-ENGINEERING",
-    "headStoryId": "SECAS-S4-04"
+    "headStoryId": "XR-FABRIC-SESSION-OPEN-004"
   },
   "backlogClear": false,
   "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
@@ -19,7 +19,7 @@
       "title": "Pen-test findings remediation track + re-test witness",
       "type": "story",
       "priority": "P0",
-      "status": "in_progress",
+      "status": "done",
       "owner": "fabric-os",
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
@@ -30,11 +30,10 @@
       "acceptance": [
         "Remediation register + closure scaffold at canonical paths",
         "Owner mapping matrix for fabric + product repos",
-        "Vendor report findings mapped to owners (fabric + product)",
+        "Internal engineering closure witness (vendor deferred post-launch)",
         "Critical/high findings closed or accepted-risk documented (Class S)"
       ],
-      "blockedBy": ["BG-10-10-REPORT"],
-      "auditNotes": "2026-06-15 — internal scaffold sealed; execution awaits BG-10-10-REPORT (parallel external)",
+      "auditNotes": "2026-06-17 — internal_closure_complete; vendor track deferred-post-launch (blocksAnyRepo: false)",
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {

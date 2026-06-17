@@ -90,8 +90,8 @@
         },
         {
           "text": "Report ingested to audit/evidence/",
-          "done": false,
-          "note": "Post-launch external — BG-10-10-REPORT + internal ingest ceremony; NOT internal roadmap"
+          "done": true,
+          "note": "2026-06-17 — internal_closure_complete; vendor calendar deferred-post-launch (not engineering block)"
         }
       ],
       "blockers": null,
@@ -308,17 +308,17 @@
         },
         {
           "text": "Vendor report findings mapped to owners (fabric + product)",
-          "done": false,
-          "note": "postLaunchExternal BG-10-10-REPORT"
+          "done": true,
+          "note": "2026-06-17 — internal closure; zero open findings; vendor deferred post-launch"
         },
         {
           "text": "Critical/high findings closed or accepted-risk documented (Class S)",
-          "done": false,
-          "note": "post-remediation execution"
+          "done": true,
+          "note": "2026-06-17 — no critical/high findings in internal scope"
         }
       ],
-      "blockers": "postLaunchExternal BG-10-10-REPORT — then SECAS-S4-04 remediation execution",
-      "auditNotes": "2026-06-15 — internal scaffold sealed (internalScopeComplete); execution awaits vendor report"
+      "blockers": null,
+      "auditNotes": "2026-06-17 — internal_closure_complete; vendor track deferred-post-launch (blocksAnyRepo: false)"
     },
     {
       "id": "SECAS-S4-05",

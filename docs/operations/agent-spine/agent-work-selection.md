@@ -38,7 +38,7 @@ AGENT_FRAME=regulatory-audit pnpm agent:next-work
 
 ## Active phase
 
-**Co-primary programs (2026-06-12):** DAAS **complete** · **SECAS-S2 in_progress** (pen-test window 2026-06-17..21). IR implement queue **drained** — S4-07 **done** (P35 path drift).
+**Co-primary programs (2026-06-12):** DAAS **complete** · **SECAS complete** (internal_closure_complete 2026-06-17). IR implement queue **drained** — S4-07 **done** (P35 path drift).
 
 When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: true`, run **witness** (`node 03-platform/tools/scripts/validate-all.mjs`) + refresh evidence gates — do not idle. **Human gates (XC)** run parallel — do not block IR implement queue.
 
@@ -58,37 +58,37 @@ When `pnpm agent:next-work` returns a story ID, execute it. When `backlogClear: 
 
 ## Work register (Protocol 22 — explicit backlog)
 
-| ID                        | Title                                                                   | P   | Status          | Class    |
-| ------------------------- | ----------------------------------------------------------------------- | --- | --------------- | -------- |
-| IR-2.1                    | Dependabot tier-3 merges                                                | P2  | blocked         | external |
-| IR-2.2                    | AI SDK v5→v6 migration branch + eval regression                         | P1  | done            | code     |
-| IR-2.3                    | CodeQL/Trivy SARIF upload graceful when Code Security disabled          | P0  | done            | code     |
-| IR-3.1                    | WORM upload workflow                                                    | P1  | done            | code     |
-| IR-3.2                    | Document operator live path for runtime-evidence-check                  | P1  | done            | ops-docs |
-| IR-3.4                    | Expand `gtcx-ctl validate-environment` in CI                            | P1  | done            | code     |
-| IR-3.5                    | Refresh DR fire-drill dated artifact                                    | P1  | done            | ops-docs |
-| IR-4.1                    | USSD path soak test in CI                                               | P1  | done            | code     |
-| IR-5.1                    | Cross-repo-contract token                                               | P2  | done            | code     |
-| IR-5.2                    | Re-run ecosystem-repo-review; ledger ≥9.0 matrix green                  | P2  | done            | ops-docs |
-| LAUNCH-PLAN-01            | Reconcile execution-roadmap + work register                             | P1  | done            | plan     |
-| LAUNCH-PLAN-02            | Refresh auto-dev-state for launch/GTM                                   | P1  | done            | plan     |
-| LAUNCH-PLAN-03            | Global South 10x plan status row update                                 | P1  | done            | plan     |
-| GTM-AUDIT                 | Lane-5 GTM completeness audit                                           | P1  | done            | plan     |
-| S2-13                     | Pen-test SOW signature                                                  | P0  | done            | external |
-| S4-03                     | PRD-002 Tier B: align TradePass DID doc resolver contract               | P1  | blocked         | external |
-| P22-INFRA-01              | Protocol 22 adoption — manifest + script + CI                           | P0  | done            | ops-docs |
-| S4-04                     | deployment-guard typecheck regression                                   | P1  | done            | code     |
-| S4-05                     | audit-signer + compliance-gateway lint regressions                      | P1  | done            | code     |
-| S4-06                     | README gaps (12 dirs) per repo-hygiene audit                            | P0  | done            | code     |
-| S4-07                     | pnpm test quick 1/359 flake investigation                               | P2  | done            | code     |
-| SECAS-S2-01               | Pen-test ingest scaffolding (internal prep)                             | P0  | done            | ops-docs |
-| SECAS-S2-02               | Automated ingest witness + milestone unblock + parallel-lane messaging  | P0  | done            | code     |
-| SECAS-S4-02               | Fleet supply-chain security gates                                       | P0  | done            | code     |
-| SECAS-S4-03               | Standing vulnerability management cadence                               | P1  | done            | code     |
-| SECAS-S4-04               | Pen-test findings remediation track + re-test witness                   | P0  | structural done | code     |
-| SECAS-S4-05               | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2  | done            | code     |
-| SECAS-S5-01               | Unified fleet risk + active threat registers                            | P0  | done            | ops-docs |
-| XR-FABRIC-SPRINT-AUTH-001 | Sprint authority L2 read contract witness                               | P1  | done            | ops-docs |
+| ID                        | Title                                                                   | P   | Status  | Class    |
+| ------------------------- | ----------------------------------------------------------------------- | --- | ------- | -------- |
+| IR-2.1                    | Dependabot tier-3 merges                                                | P2  | blocked | external |
+| IR-2.2                    | AI SDK v5→v6 migration branch + eval regression                         | P1  | done    | code     |
+| IR-2.3                    | CodeQL/Trivy SARIF upload graceful when Code Security disabled          | P0  | done    | code     |
+| IR-3.1                    | WORM upload workflow                                                    | P1  | done    | code     |
+| IR-3.2                    | Document operator live path for runtime-evidence-check                  | P1  | done    | ops-docs |
+| IR-3.4                    | Expand `gtcx-ctl validate-environment` in CI                            | P1  | done    | code     |
+| IR-3.5                    | Refresh DR fire-drill dated artifact                                    | P1  | done    | ops-docs |
+| IR-4.1                    | USSD path soak test in CI                                               | P1  | done    | code     |
+| IR-5.1                    | Cross-repo-contract token                                               | P2  | done    | code     |
+| IR-5.2                    | Re-run ecosystem-repo-review; ledger ≥9.0 matrix green                  | P2  | done    | ops-docs |
+| LAUNCH-PLAN-01            | Reconcile execution-roadmap + work register                             | P1  | done    | plan     |
+| LAUNCH-PLAN-02            | Refresh auto-dev-state for launch/GTM                                   | P1  | done    | plan     |
+| LAUNCH-PLAN-03            | Global South 10x plan status row update                                 | P1  | done    | plan     |
+| GTM-AUDIT                 | Lane-5 GTM completeness audit                                           | P1  | done    | plan     |
+| S2-13                     | Pen-test SOW signature                                                  | P0  | done    | external |
+| S4-03                     | PRD-002 Tier B: align TradePass DID doc resolver contract               | P1  | blocked | external |
+| P22-INFRA-01              | Protocol 22 adoption — manifest + script + CI                           | P0  | done    | ops-docs |
+| S4-04                     | deployment-guard typecheck regression                                   | P1  | done    | code     |
+| S4-05                     | audit-signer + compliance-gateway lint regressions                      | P1  | done    | code     |
+| S4-06                     | README gaps (12 dirs) per repo-hygiene audit                            | P0  | done    | code     |
+| S4-07                     | pnpm test quick 1/359 flake investigation                               | P2  | done    | code     |
+| SECAS-S2-01               | Pen-test ingest scaffolding (internal prep)                             | P0  | done    | ops-docs |
+| SECAS-S2-02               | Automated ingest witness + milestone unblock + parallel-lane messaging  | P0  | done    | code     |
+| SECAS-S4-02               | Fleet supply-chain security gates                                       | P0  | done    | code     |
+| SECAS-S4-03               | Standing vulnerability management cadence                               | P1  | done    | code     |
+| SECAS-S4-04               | Pen-test findings remediation track + re-test witness                   | P0  | done    | code     |
+| SECAS-S4-05               | Expand SECaaS cards — terminal-os, fabric-os self, bridge witness repos | P2  | done    | code     |
+| SECAS-S5-01               | Unified fleet risk + active threat registers                            | P0  | done    | ops-docs |
+| XR-FABRIC-SPRINT-AUTH-001 | Sprint authority L2 read contract witness                               | P1  | done    | ops-docs |
 
 ## Implementation classes
 

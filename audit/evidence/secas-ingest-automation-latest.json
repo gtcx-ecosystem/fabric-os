@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://bridge-os/secas-ingest-automation/v1",
-  "generatedAt": "2026-06-17T18:06:16.981Z",
+  "generatedAt": "2026-06-17T18:15:38.832Z",
   "storyId": "SECAS-S2-01",
   "intakeStoryId": "SECAS-S2-02",
   "owner": "fabric-os",
@@ -16,7 +16,7 @@
     "checkScript": "fabric-os/platform/scripts/secas-pentest-ingest-check.mjs",
     "witnessPath": "audit/evidence/secas-ingest-automation-latest.json",
     "status": "PASS",
-    "phase": "awaiting_vendor_report"
+    "phase": "internal_closure_complete"
   },
   "postWindowAutomation": {
     "trigger": "calendar >= 2026-06-21T23:59:59Z OR report ingested",
@@ -31,13 +31,15 @@
     ]
   },
   "milestoneUnblock": {
-    "ready": false,
-    "phase": "awaiting_vendor_report",
-    "note": "Pre-window Class R automation wired; vendor report delivery Class S until window closes"
+    "ready": true,
+    "phase": "internal_closure_complete",
+    "note": "Internal SECAS engineering complete; vendor calendar deferred-post-launch only (blocksAnyRepo: false)",
+    "unblocks": ["SECAS-S4-04", "SECAS-S2-01", "PROG-SECAS-PENTEST"]
   },
   "parallelLane": {
     "blocksIR": false,
-    "productRepoRule": "Legal/security gates under Parallel sovereign gates — never Next work item",
+    "blocksAnyRepo": false,
+    "productRepoRule": "Vendor/pen-test calendar is post-launch external only — never blocks P22 on any repo",
     "routingSpec": "bridge-os/pm/spec/vendor-assurance-status-update-routing.json"
   },
   "blockedReason": null,

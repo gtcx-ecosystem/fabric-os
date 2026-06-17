@@ -19,7 +19,14 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 
 - **ID:** PROGRAM-SPRINTS-COMPLETE
 - **Status:** all fabric-os program sprints sealed (DAAS S1–S3 · SECAS S1–S5)
-- **Parallel:** vendor calendar `SECAS-VENDOR-CALENDAR` — `blocksIR: false` · earliest ingest **2026-06-21**
+- **Parallel:** vendor calendar `SECAS-VENDOR-CALENDAR` — `blocksIR: false` · `blocksAnyRepo: false` · deferred-post-launch only
+
+## execute-roadmap reconcile (2026-06-17 — pen-test block removal)
+
+- **Directive:** No vendor/pen-test blocks on any repo — internal engineering closure only
+- **Witness:** `audit/evidence/secas-s4-04-internal-closure-2026-06-17.json` · phase `internal_closure_complete`
+- **Stories:** `SECAS-S4-04` · `SECAS-S2-01` — **done** (vendor track `deferred-post-launch`)
+- **Gates:** `secas:pentest:remediation:check:write` · `secas:pentest:ingest:check:write` · `secas:ingest:automation:check:write` refreshed
 
 ## execute-roadmap reconcile (2026-06-17 — cycle 4)
 

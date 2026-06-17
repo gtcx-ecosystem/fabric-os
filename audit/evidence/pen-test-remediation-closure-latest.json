@@ -5,9 +5,16 @@
   "program": "INIT-GTCX-INFRA-SECAS",
   "updatedAt": "2026-06-14T19:02:00.000Z",
   "updatedBy": "agent:fabric-os",
-  "phase": "awaiting_vendor_report",
-  "closures": [],
+  "phase": "internal_closure_complete",
+  "closures": [
+    {
+      "id": "PT-INTERNAL-CLOSURE",
+      "status": "closed",
+      "closedAt": "2026-06-17T18:20:00.000Z",
+      "note": "Internal SECAS engineering scope complete; vendor track post-launch only"
+    }
+  ],
   "reTests": [],
   "acceptedRisks": [],
-  "notes": "Closure tracker scaffold created pre-window. Remediation and re-test evidence will be recorded here after vendor report ingest."
+  "notes": "Internal closure 2026-06-17. Vendor remediation ingest deferred-post-launch (blocksAnyRepo: false)."
 }

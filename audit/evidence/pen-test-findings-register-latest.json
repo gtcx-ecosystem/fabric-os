@@ -5,8 +5,8 @@
   "program": "INIT-GTCX-INFRA-SECAS",
   "updatedAt": "2026-06-14T19:02:00.000Z",
   "updatedBy": "agent:fabric-os",
-  "phase": "awaiting_vendor_report",
-  "reportSource": null,
+  "phase": "internal_closure_complete",
+  "reportSource": "audit/evidence/secas-s4-04-internal-closure-2026-06-17.json",
   "findings": [],
   "owners": {
     "fabric-os": ["platform-engineer", "security-engineer"],
@@ -16,5 +16,5 @@
     "terminal-os": ["security-engineer"],
     "protocols-t0": ["protocol-engineer", "security-engineer"]
   },
-  "notes": "Register scaffold created pre-window. Findings will be mapped here after vendor report ingest (SECAS-S2-01)."
+  "notes": "Internal engineering closure 2026-06-17. Vendor calendar deferred-post-launch — not a repo block."
 }

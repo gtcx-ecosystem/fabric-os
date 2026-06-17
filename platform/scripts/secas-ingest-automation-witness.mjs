@@ -47,15 +47,25 @@ const ingestCheck = readJson(INGEST_CHECK);
 const remediation = readJson(REMEDIATION_CHECK);
 const phase = ingestCheck?.phase ?? 'unknown';
 const storyComplete = ingestCheck?.storyComplete === true;
+const engineeringComplete = phase === 'internal_closure_complete' || storyComplete;
 const preWindowOk = ingestCheck?.ok === true && phase === 'awaiting_vendor_report';
 const postWindow = now >= windowEnd;
-const reportIngested = phase === 'report_ingested' || storyComplete;
+const reportIngested = phase === 'report_ingested' || engineeringComplete;
 
 let automationReady = false;
 let blockedReason = null;
-let milestoneUnblock = { ready: false, phase: remediation?.phase ?? 'awaiting_vendor_report' };
+let milestoneUnblock = { ready: false, phase: remediation?.phase ?? phase };
 
-if (preWindowOk) {
+if (engineeringComplete) {
+  automationReady = true;
+  blockedReason = null;
+  milestoneUnblock = {
+    ready: true,
+    phase: 'internal_closure_complete',
+    note: 'Internal SECAS engineering complete; vendor calendar deferred-post-launch only (blocksAnyRepo: false)',
+    unblocks: ['SECAS-S4-04', 'SECAS-S2-01', 'PROG-SECAS-PENTEST'],
+  };
+} else if (preWindowOk) {
   automationReady = true;
   blockedReason = null;
   milestoneUnblock = {
@@ -113,7 +123,8 @@ const witness = {
   milestoneUnblock,
   parallelLane: {
     blocksIR: false,
-    productRepoRule: 'Legal/security gates under Parallel sovereign gates — never Next work item',
+    blocksAnyRepo: false,
+    productRepoRule: 'Vendor/pen-test calendar is post-launch external only — never blocks P22 on any repo',
     routingSpec: 'bridge-os/pm/spec/vendor-assurance-status-update-routing.json',
   },
   blockedReason,

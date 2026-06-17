@@ -4,9 +4,9 @@
   "slug": "repo-hygiene",
   "repo": "fabric-os",
   "date": "2026-06-17",
-  "score10": 10,
-  "score100": 100,
-  "score100Raw": 100,
+  "score10": 7,
+  "score100": 70,
+  "score100Raw": 80,
   "status": "probe-gates-only",
   "source": "run-five-core-audit",
   "metrics": {
@@ -33,7 +33,7 @@
     {
       "id": "p35-strict-pass",
       "label": "P35 layout strict",
-      "pass": true,
+      "pass": false,
       "severity": "P1",
       "cap100": 70
     },
@@ -52,16 +52,23 @@
       "cap100": 85
     }
   ],
-  "capsFired": [],
+  "capsFired": [
+    {
+      "id": "gate-p35-strict-pass",
+      "label": "Gate failed: P35 layout strict",
+      "ceiling100": 70,
+      "trigger": "p35-strict-pass"
+    }
+  ],
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
   "rubricSourcePath": "audit/audit-output-2026-06-17.json",
   "checks": {
     "p35Strict": {
-      "ok": true,
-      "code": 0,
-      "out": "{\n  \"ok\": true,\n  \"protocol\": \"35-ecosystem-workspace-world-class/v5.0.0\",\n  \"engine\": \"layout-spec-enforce/v1\",\n  \"contractVersion\": \"5.1.0\",\n  \"contractPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/config/layout-contract.json\",\n  \"mode\": \"strict\",\n  \"repo\": \"fabric-os\",\n  \"repoRoot\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os\",\n  \"repoKind\": \"product\",\n  \"layoutVersion\": \"v5\",\n  \"resolvedHubs\": {\n    \"agentic\": {\n      \"path\": \"agentic\",\n      \"kind\": \"v5\"\n    },\n    \"agents\": {\n      \"path\": null,\n      \"kind\": \"missing\"\n    },\n    \"archive\": {\n      \"path\": \"archive\",\n     "
+      "ok": false,
+      "code": 1,
+      "out": "{\n  \"ok\": false,\n  \"protocol\": \"35-ecosystem-workspace-world-class/v5.0.0\",\n  \"engine\": \"layout-spec-enforce/v1\",\n  \"contractVersion\": \"5.1.0\",\n  \"contractPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/config/layout-contract.json\",\n  \"mode\": \"strict\",\n  \"repo\": \"fabric-os\",\n  \"repoRoot\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os\",\n  \"repoKind\": \"product\",\n  \"layoutVersion\": \"v5\",\n  \"resolvedHubs\": {\n    \"agentic\": {\n      \"path\": \"agentic\",\n      \"kind\": \"v5\"\n    },\n    \"agents\": {\n      \"path\": null,\n      \"kind\": \"missing\"\n    },\n    \"archive\": {\n      \"path\": \"archive\",\n    "
     },
     "docsSor": {
       "ok": true,
@@ -81,6 +88,6 @@
       "out": "> fabric-os@0.1.0 pm:folder:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node ../bridge-os/platform/scripts/workspace/pm-folder-check.mjs\n\npm:folder:check ok — pm/ meets shipping-culture requirements"
     }
   },
-  "gaps": [],
+  "gaps": ["p35Strict"],
   "runbook": "audit/runbooks/A5-repo-hygiene.md"
 }

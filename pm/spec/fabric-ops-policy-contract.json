@@ -1,0 +1,98 @@
+{
+  "$schema": "gtcx://fabric-os/fabric-ops-policy-contract/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-18",
+  "ownerRepo": "fabric-os",
+  "contractPath": "fabric-os/pm/spec/fabric-ops-policy-contract.json",
+  "localContractPath": "ops/fabric-contract.json",
+  "witnessPath": "audit/evidence/fabric-ops-policy-contract-latest.json",
+  "purpose": "Enforce local repo synchronization with centralized Fabric OS operational policies and ops functions.",
+  "requiredDomains": [
+    {
+      "id": "compliance",
+      "label": "Compliance policy and evidence",
+      "centralRef": "fabric-os/ops/compliance/manifest.json",
+      "requiredLocalRefs": [
+        "ops/compliance/manifest.json",
+        "audit/evidence/compliance-pillar-latest.json"
+      ]
+    },
+    {
+      "id": "apiTokens",
+      "label": "API token and secret handling",
+      "centralRef": "fabric-os/ops/security/narrative/secrets-management.md",
+      "requiredLocalRefs": ["ops/security/manifest.json", "config/ops.manifest.json"]
+    },
+    {
+      "id": "deployment",
+      "label": "Deployment and environment profile",
+      "centralRef": "fabric-os/docs/operations/deployment/README.md",
+      "requiredLocalRefs": ["docs/operations/deployment-profile.json", "config/ops.manifest.json"]
+    },
+    {
+      "id": "security",
+      "label": "Security posture and incident controls",
+      "centralRef": "fabric-os/ops/security/manifest.json",
+      "requiredLocalRefs": [
+        "ops/security/manifest.json",
+        "SECURITY.md",
+        "docs/operations/repo/SECURITY.md"
+      ]
+    },
+    {
+      "id": "observability",
+      "label": "Operational observability and readiness",
+      "centralRef": "fabric-os/ops/attestation/manifest.json",
+      "requiredLocalRefs": ["ops/attestation/manifest.json", "docs/operations/observability.md"]
+    },
+    {
+      "id": "evidence",
+      "label": "Audit evidence and witness contract",
+      "centralRef": "fabric-os/ops/attestation/witness/manifest.json",
+      "requiredLocalRefs": [
+        "audit/evidence/five-pillar-latest.json",
+        "audit/evidence/ops-latest.json"
+      ]
+    },
+    {
+      "id": "opsConsumption",
+      "label": "COO ops consumption",
+      "centralRef": "fabric-os/ops/coo.md",
+      "requiredLocalRefs": ["ops/coo.md", "pm/spec/ops-pack.json", "ops/manifest.json"]
+    }
+  ],
+  "fleetRepos": [
+    "agile-os",
+    "baseline-os",
+    "bridge-os",
+    "canon-os",
+    "compliance-os",
+    "ecosystem-os",
+    "exploration-os",
+    "fabric-os",
+    "griot-ai",
+    "gtcx-os",
+    "ledger-ui",
+    "markets-os",
+    "nyota-ai",
+    "sensei-os",
+    "terminal-os",
+    "terra-os",
+    "venture-os",
+    "veritas-ai"
+  ],
+  "localContractSchema": {
+    "$schema": "gtcx://fabric-os/local-fabric-ops-contract/v1",
+    "repo": "<repo>",
+    "contractVersion": "1.0.0",
+    "centralPolicyContract": "fabric-os/pm/spec/fabric-ops-policy-contract.json",
+    "updated": "YYYY-MM-DD",
+    "domains": [
+      {
+        "id": "compliance",
+        "centralRef": "fabric-os/ops/compliance/manifest.json",
+        "localRefs": ["..."]
+      }
+    ]
+  }
+}

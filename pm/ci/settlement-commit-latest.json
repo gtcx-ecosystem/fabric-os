@@ -1,9 +1,9 @@
 {
   "schema": "gtcx://bridge-os/settlement-commit/v1",
-  "at": "2026-06-18T07:28:26.326Z",
+  "at": "2026-06-18T07:28:27.977Z",
   "repo": "fabric-os",
   "ok": true,
-  "stagedFiles": 1,
+  "stagedFiles": 8,
   "errors": [],
   "warnings": []
 }

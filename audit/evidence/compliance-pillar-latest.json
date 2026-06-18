@@ -2,23 +2,23 @@
   "schema": "gtcx://audit/compliance-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-18",
-  "score100": 69,
-  "published": false,
-  "provisional": true,
-  "blockedBy": "below-threshold",
+  "score100": 100,
+  "published": true,
+  "provisional": false,
+  "blockedBy": null,
   "unlockThreshold100": 85,
   "categories": {
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
       "weight": 8,
-      "score100": 65,
+      "score100": 100,
       "protocol": "P35",
       "items": [
         {
           "id": "p35-strict-pass",
           "label": "P35 layout strict GREEN",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 35,
           "severity": "P1",
           "optional": false,
@@ -33,7 +33,7 @@
           "weight": 25,
           "severity": "P1",
           "optional": false,
-          "detail": "4/4 present",
+          "detail": "5/4 present",
           "protocol": "P35"
         },
         {
@@ -439,14 +439,14 @@
     "agentic-harness-p22-p28": {
       "label": "Agentic harness (P22–P28)",
       "weight": 10,
-      "score100": 80,
+      "score100": 100,
       "protocol": "P22-P28",
       "items": [
         {
           "id": "agentic-manifest",
           "label": "agentic/manifest.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 20,
           "severity": "P1",
           "optional": false,
@@ -595,17 +595,17 @@
     "agentic-product-team": {
       "label": "World-class agentic product team signals",
       "weight": 8,
-      "score100": 80,
+      "score100": 100,
       "items": [
         {
           "id": "persona-profiles",
           "label": "Repo persona profile in bridge-os or institutional adoption",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 20,
           "severity": "P3",
           "optional": false,
-          "detail": "missing pm/spec/repo-persona-profiles.json"
+          "detail": "agentic/manifest.json"
         },
         {
           "id": "conduct-protocol-adoption",
@@ -628,8 +628,8 @@
           "detail": "2/1 present"
         },
         {
-          "id": "multi-pillar-or-five-core-runbook",
-          "label": "multi-pillar or five-core audit runbook",
+          "id": "five-pillar-or-five-core-runbook",
+          "label": "Five-pillar or five-core audit runbook",
           "pass": true,
           "score100": 100,
           "weight": 20,
@@ -742,18 +742,18 @@
           "detail": "audit/evidence or attestation"
         },
         {
-          "id": "multi-pillar-witness",
-          "label": "audit/evidence/multi-pillar-latest.json",
+          "id": "five-pillar-witness",
+          "label": "audit/evidence/five-pillar-latest.json",
           "pass": true,
           "score100": 100,
           "weight": 25,
           "severity": "P2",
           "optional": false,
-          "detail": "audit/evidence/multi-pillar-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json"
         },
         {
-          "id": "rollup-or-five-core",
-          "label": "rollup-audit or five-core witnesses",
+          "id": "composite-or-five-core",
+          "label": "composite-audit or five-core witnesses",
           "pass": true,
           "score100": 100,
           "weight": 25,
@@ -803,31 +803,9 @@
       "itemCount": 2
     }
   },
-  "hygieneViolations": [
-    {
-      "id": "p35-strict-pass",
-      "categoryId": "layout-p35",
-      "label": "P35 layout strict GREEN",
-      "severity": "P1",
-      "detail": "p35Strict"
-    },
-    {
-      "id": "agentic-manifest",
-      "categoryId": "agentic-harness-p22-p28",
-      "label": "agentic/manifest.json",
-      "severity": "P1",
-      "detail": "agentic/manifest.json"
-    },
-    {
-      "id": "persona-profiles",
-      "categoryId": "agentic-product-team",
-      "label": "Repo persona profile in bridge-os or institutional adoption",
-      "severity": "P3",
-      "detail": "missing pm/spec/repo-persona-profiles.json"
-    }
-  ],
+  "hygieneViolations": [],
   "itemTotal": 62,
   "rubricVersion": "1.0.0",
   "openP0": 0,
-  "openP1": 2
+  "openP1": 0
 }

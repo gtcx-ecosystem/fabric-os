@@ -3,9 +3,9 @@
   "repo": "fabric-os",
   "date": "2026-06-18",
   "score100": 100,
-  "published": false,
-  "provisional": true,
-  "blockedBy": "compliance",
+  "published": true,
+  "provisional": false,
+  "blockedBy": null,
   "unlockThreshold100": 85,
   "metrics": {
     "selectivity-ingredients": {

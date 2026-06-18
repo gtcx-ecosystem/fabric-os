@@ -1,16 +1,15 @@
 ---
 title: 'Contributing Guidelines'
 status: current
-date: 2026-06-06
-owner: gtcx-infrastructure
-tier: standard
-tags: [['governance', 'contributing']]
-review_cycle: on-change
-document_type: runbook
+date: 2026-06-18
+owner: fabric-os
 role: protocol-architect
+tier: standard
+tags: ['governance', 'contributing']
+review_cycle: on-change
 ---
 
-# Contributing to gtcx-infrastructure
+# Contributing to fabric-os
 
 ## Quick start
 
@@ -19,22 +18,21 @@ pnpm install
 pnpm ops:check
 ```
 
-Adjust commands for repo-specific entry (see root `README.md`).
+See the root `README.md` and `AGENTS.md` before changing infrastructure, deploy, or governance paths.
 
 ## Quality gates
 
-All contributions **must** pass:
+All contributions must pass the relevant repo gates:
 
-1. **Layout** — `pnpm check:workspace-root-cleanliness:strict`
-2. **Documents** — `pnpm check:repo-document-manifest:strict` (when wired)
-3. **Ops** — `pnpm ops:check`
-4. **Typecheck** — `pnpm typecheck` (when defined)
-5. **Lint** — `pnpm lint` (when defined)
-6. **Tests** — `pnpm test` or `pnpm test:ci` (when defined)
+1. Layout - `pnpm check:workspace-root-cleanliness:strict`
+2. Ops - `pnpm ops:check`
+3. Typecheck - `pnpm typecheck` when defined
+4. Lint - `pnpm lint` when defined
+5. Tests - `pnpm test` or targeted Node tests when behavior changes
 
 ## Commit convention
 
-[Conventional Commits](https://www.conventionalcommits.org/):
+Use Conventional Commits:
 
 ```text
 feat(scope): subject
@@ -43,19 +41,12 @@ docs(scope): subject
 chore(scope): subject
 ```
 
-One concern per commit. Do not push unless requested.
-
-## Pull request process
-
-1. Branch from `main`
-2. Run quality gates locally
-3. Update docs when behavior changes
-4. Request review from a code owner
+Keep each commit scoped to one concern.
 
 ## Security
 
-See [`SECURITY.md`](./SECURITY.md) for coordinated disclosure — do not open public issues for vulnerabilities.
+See [`SECURITY.md`](./SECURITY.md) for coordinated disclosure. Do not open public issues for vulnerabilities.
 
 ## Agents
 
-When using AI agents: read root `AGENTS.md` and run `pnpm agent:next-work` (Protocol 22) before coding.
+AI agents must read root `AGENTS.md`, run `pnpm agent:next-work`, and follow Protocol 22 work selection before coding.

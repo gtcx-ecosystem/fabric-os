@@ -1,34 +1,34 @@
 {
-  "schema": "gtcx://audit/multi-pillar/v1",
+  "schema": "gtcx://audit/five-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-17",
-  "evaluatedAt": "2026-06-17T17:56:36.929Z",
-  "gitHead": "85716c2bd5eed564e87c2606c5f71e2aed434d03",
-  "composite100": 100,
-  "composite100Raw": 100,
-  "trustCap100": 100,
-  "compositeMode": "full-unlock",
-  "fullCompositeEligible": true,
+  "date": "2026-06-18",
+  "evaluatedAt": "2026-06-18T03:18:29.428Z",
+  "gitHead": "8732d574511cf2a83fc56ab9924a398b17c26bc8",
+  "composite100": 59,
+  "composite100Raw": 69,
+  "trustCap100": 92,
+  "compositeMode": "partial-unlock",
+  "fullCompositeEligible": false,
   "unlockThreshold100": 85,
   "quadrants": {
     "compliance": {
-      "score100": 100,
-      "published": true,
-      "provisional": false,
-      "blockedBy": null,
+      "score100": 69,
+      "published": false,
+      "provisional": true,
+      "blockedBy": "below-threshold",
       "unlockThreshold100": 85,
       "categories": {
         "layout-p35": {
           "label": "Layout & workspace (P35 v5)",
           "weight": 8,
-          "score100": 100,
+          "score100": 45,
           "protocol": "P35",
           "items": [
             {
               "id": "p35-strict-pass",
               "label": "P35 layout strict GREEN",
-              "pass": true,
-              "score100": 100,
+              "pass": false,
+              "score100": 0,
               "weight": 35,
               "severity": "P1",
               "optional": false,
@@ -43,14 +43,14 @@
               "weight": 25,
               "severity": "P1",
               "optional": false,
-              "detail": "5/4 present",
+              "detail": "4/4 present",
               "protocol": "P35"
             },
             {
               "id": "root-allowlist",
               "label": "Root allowlist / workspace root cleanliness",
-              "pass": true,
-              "score100": 100,
+              "pass": false,
+              "score100": 0,
               "weight": 20,
               "severity": "P2",
               "optional": false,
@@ -149,14 +149,14 @@
         "ops-domains-p29": {
           "label": "Operational domains (P29)",
           "weight": 6,
-          "score100": 100,
+          "score100": 50,
           "protocol": "P29",
           "items": [
             {
               "id": "ops-check-pass",
               "label": "pnpm ops:check exit 0",
-              "pass": true,
-              "score100": 100,
+              "pass": false,
+              "score100": 0,
               "weight": 50,
               "severity": "P1",
               "optional": false,
@@ -449,14 +449,14 @@
         "agentic-harness-p22-p28": {
           "label": "Agentic harness (P22–P28)",
           "weight": 10,
-          "score100": 100,
+          "score100": 80,
           "protocol": "P22-P28",
           "items": [
             {
               "id": "agentic-manifest",
               "label": "agentic/manifest.json",
-              "pass": true,
-              "score100": 100,
+              "pass": false,
+              "score100": 0,
               "weight": 20,
               "severity": "P1",
               "optional": false,
@@ -605,17 +605,17 @@
         "agentic-product-team": {
           "label": "World-class agentic product team signals",
           "weight": 8,
-          "score100": 100,
+          "score100": 80,
           "items": [
             {
               "id": "persona-profiles",
               "label": "Repo persona profile in bridge-os or institutional adoption",
-              "pass": true,
-              "score100": 100,
+              "pass": false,
+              "score100": 0,
               "weight": 20,
               "severity": "P3",
               "optional": false,
-              "detail": "agentic/manifest.json"
+              "detail": "missing pm/spec/repo-persona-profiles.json"
             },
             {
               "id": "conduct-protocol-adoption",
@@ -638,8 +638,8 @@
               "detail": "2/1 present"
             },
             {
-              "id": "multi-pillar-or-five-core-runbook",
-              "label": "multi-pillar or five-core audit runbook",
+              "id": "five-pillar-or-five-core-runbook",
+              "label": "Five-pillar or five-core audit runbook",
               "pass": true,
               "score100": 100,
               "weight": 20,
@@ -752,18 +752,18 @@
               "detail": "audit/evidence or attestation"
             },
             {
-              "id": "multi-pillar-witness",
-              "label": "audit/evidence/multi-pillar-latest.json",
+              "id": "five-pillar-witness",
+              "label": "audit/evidence/five-pillar-latest.json",
               "pass": true,
               "score100": 100,
               "weight": 25,
               "severity": "P2",
               "optional": false,
-              "detail": "audit/evidence/multi-pillar-latest.json"
+              "detail": "audit/evidence/five-pillar-latest.json"
             },
             {
-              "id": "rollup-or-five-core",
-              "label": "rollup-audit or five-core witnesses",
+              "id": "composite-or-five-core",
+              "label": "composite-audit or five-core witnesses",
               "pass": true,
               "score100": 100,
               "weight": 25,
@@ -813,17 +813,53 @@
           "itemCount": 2
         }
       },
-      "hygieneViolations": [],
+      "hygieneViolations": [
+        {
+          "id": "p35-strict-pass",
+          "categoryId": "layout-p35",
+          "label": "P35 layout strict GREEN",
+          "severity": "P1",
+          "detail": "p35Strict"
+        },
+        {
+          "id": "root-allowlist",
+          "categoryId": "layout-p35",
+          "label": "Root allowlist / workspace root cleanliness",
+          "severity": "P2",
+          "detail": "opsCheck"
+        },
+        {
+          "id": "ops-check-pass",
+          "categoryId": "ops-domains-p29",
+          "label": "pnpm ops:check exit 0",
+          "severity": "P1",
+          "detail": "opsCheck"
+        },
+        {
+          "id": "agentic-manifest",
+          "categoryId": "agentic-harness-p22-p28",
+          "label": "agentic/manifest.json",
+          "severity": "P1",
+          "detail": "agentic/manifest.json"
+        },
+        {
+          "id": "persona-profiles",
+          "categoryId": "agentic-product-team",
+          "label": "Repo persona profile in bridge-os or institutional adoption",
+          "severity": "P3",
+          "detail": "missing pm/spec/repo-persona-profiles.json"
+        }
+      ],
       "itemTotal": 62,
       "rubricVersion": "1.0.0",
       "openP0": 0,
-      "openP1": 0
+      "openP1": 3
     },
     "technicalExcellence": {
       "score100": 100,
-      "published": true,
-      "provisional": false,
-      "blockedBy": null,
+      "published": false,
+      "provisional": true,
+      "blockedBy": "compliance",
       "unlockThreshold100": 85,
       "metrics": {
         "engineering-production": {
@@ -885,9 +921,9 @@
     },
     "craft": {
       "score100": 100,
-      "published": true,
-      "provisional": false,
-      "blockedBy": null,
+      "published": false,
+      "provisional": true,
+      "blockedBy": "compliance",
       "unlockThreshold100": 85,
       "metrics": {
         "selectivity-ingredients": {
@@ -938,9 +974,9 @@
     },
     "worldClass": {
       "score100": 100,
-      "published": true,
-      "provisional": false,
-      "blockedBy": null,
+      "published": false,
+      "provisional": true,
+      "blockedBy": "compliance",
       "unlockThreshold100": 85,
       "metrics": {
         "documentation-world-class": {
@@ -1021,7 +1057,7 @@
       "rubricVersion": "1.0.0"
     },
     "trustAndSafety": {
-      "score100": 100,
+      "score100": 92,
       "published": true,
       "metrics": {
         "evidence-coverage": {
@@ -1052,9 +1088,9 @@
           "versionBloatHits": 0
         },
         "independent-replay": {
-          "score100": 100,
+          "score100": 45,
           "weight": 15,
-          "opsCheck": true
+          "opsCheck": false
         }
       },
       "mode": "envelope-cap",
@@ -1069,9 +1105,9 @@
   },
   "multiPillar": {
     "schema": "gtcx://baseline-os/multi-pillar-repo-extension/v1",
-    "foundationComposite100": 100,
-    "fullComposite100": 96,
-    "trustCap100": 100,
+    "foundationComposite100": 92,
+    "fullComposite100": 92,
+    "trustCap100": 92,
     "weights": {
       "compliance": 0,
       "technicalExcellence": 0.15,
@@ -1086,39 +1122,39 @@
     },
     "quadrants": {
       "compliance": {
-        "score100": 100,
-        "published": true,
-        "provisional": false,
+        "score100": 69,
+        "published": false,
+        "provisional": true,
         "blockedBy": [],
         "confidence": "B",
         "checks": []
       },
       "technicalExcellence": {
         "score100": 100,
-        "published": true,
-        "provisional": false,
-        "blockedBy": [],
+        "published": false,
+        "provisional": true,
+        "blockedBy": ["compliance"],
         "confidence": "B",
         "checks": []
       },
       "craft": {
         "score100": 100,
-        "published": true,
-        "provisional": false,
-        "blockedBy": [],
+        "published": false,
+        "provisional": true,
+        "blockedBy": ["compliance"],
         "confidence": "B",
         "checks": []
       },
       "worldClass": {
         "score100": 100,
-        "published": true,
-        "provisional": false,
-        "blockedBy": [],
+        "published": false,
+        "provisional": true,
+        "blockedBy": ["compliance"],
         "confidence": "B",
         "checks": []
       },
       "trustAndSafety": {
-        "score100": 100,
+        "score100": 92,
         "published": true,
         "provisional": false,
         "blockedBy": [],
@@ -1186,7 +1222,7 @@
         }
       },
       "ipMagic": {
-        "score100": 98,
+        "score100": 95,
         "published": true,
         "provisional": false,
         "blockedBy": [],
@@ -1206,6 +1242,6 @@
   "openP1": 0,
   "rubricSource": "audit-output",
   "rubricSourcePath": "audit/audit-output-2026-06-17.json",
-  "initiative": "INIT-multi-pillar-EVAL",
-  "source": "run-multi-pillar-audit"
+  "initiative": "INIT-FIVE-PILLAR-EVAL",
+  "source": "run-five-pillar-audit"
 }

@@ -72,5 +72,5 @@
       "provisional": true
     }
   },
-  "note": "Bootstrap stub — publish via bridge run-five-pillar-audit.mjs --scope layer when live"
+  "note": "Bootstrap stub — publish via bridge run-multi-pillar-audit.mjs --scope layer when live"
 }

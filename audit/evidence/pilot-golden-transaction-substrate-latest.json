@@ -114,8 +114,8 @@
             "label": "Five-core partial A1–A5",
             "lane": "audit",
             "delegate": "fabric-os",
-            "command": "pnpm audit:five-pillar:run -- --repo <target> --write",
-            "witness": "audit/evidence/five-pillar-latest.json",
+            "command": "pnpm review:multi-pillar:run -- --repo <target> --write",
+            "witness": "audit/evidence/multi-pillar-latest.json",
             "independent": true,
             "targetRepo": "bridge-os"
           },
@@ -124,8 +124,8 @@
             "label": "Five-core full fleet stress",
             "lane": "audit",
             "delegate": "fabric-os",
-            "command": "pnpm ecosystem:five-pillar:stress:fleet:write",
-            "witness": "bridge-os/pm/ci/five-pillar-fleet-stress-latest.json",
+            "command": "pnpm ecosystem:multi-pillar:stress:fleet:write",
+            "witness": "bridge-os/pm/ci/multi-pillar-fleet-stress-latest.json",
             "independent": true,
             "targetRepo": "bridge-os"
           },
@@ -146,11 +146,11 @@
           {
             "id": "five-core-partial-A1-A5",
             "label": "Five-core partial A1–A5",
-            "witness": "audit/evidence/five-pillar-latest.json",
+            "witness": "audit/evidence/multi-pillar-latest.json",
             "ok": true,
             "skipped": true,
             "reason": "requires-target",
-            "command": "pnpm audit:five-pillar:run -- --repo <target> --write",
+            "command": "pnpm review:multi-pillar:run -- --repo <target> --write",
             "exitCode": 0
           },
           {
@@ -161,7 +161,7 @@
             "skipped": false,
             "command": "pnpm ecosystem:fleet:pillars:stress:write",
             "exitCode": 0,
-            "output": "=partial-unlock\nFAIL compliance-os composite=59 mode=partial-unlock\nFAIL ecosystem-os composite=59 mode=partial-unlock\nFAIL exploration-os composite=59 mode=partial-unlock\nFAIL fabric-os composite=59 mode=partial-unlock\nFAIL griot-ai composite=59 mode=partial-unlock\nFAIL gtcx-os composite=59 mode=partial-unlock\nFAIL ledger-ui composite=59 mode=partial-unlock\nFAIL markets-os composite=59 mode=partial-unlock\nFAIL nyota-ai composite=59 mode=partial-unlock\nFAIL sensei-os composite=59 mode=partial-unlock\nFAIL terminal-os composite=59 mode=partial-unlock\nFAIL terra-os composite=59 mode=partial-unlock\nFAIL veritas-ai composite=59 mode=partial-unlock\n\nStress: fullUnlock=0/17 compliance<85=17 noRubric=0\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-pillars-stress-latest.json\n"
+            "output": "=partial-unlock\nFAIL compliance-os rollup=59 mode=partial-unlock\nFAIL ecosystem-os rollup=59 mode=partial-unlock\nFAIL exploration-os rollup=59 mode=partial-unlock\nFAIL fabric-os rollup=59 mode=partial-unlock\nFAIL griot-ai rollup=59 mode=partial-unlock\nFAIL gtcx-os rollup=59 mode=partial-unlock\nFAIL ledger-ui rollup=59 mode=partial-unlock\nFAIL markets-os rollup=59 mode=partial-unlock\nFAIL nyota-ai rollup=59 mode=partial-unlock\nFAIL sensei-os rollup=59 mode=partial-unlock\nFAIL terminal-os rollup=59 mode=partial-unlock\nFAIL terra-os rollup=59 mode=partial-unlock\nFAIL veritas-ai rollup=59 mode=partial-unlock\n\nStress: fullUnlock=0/17 compliance<85=17 noRubric=0\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-pillars-stress-latest.json\n"
           },
           {
             "id": "uat-independent",

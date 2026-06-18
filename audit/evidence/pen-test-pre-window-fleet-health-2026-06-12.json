@@ -1,6 +1,6 @@
 {
   "schema": "gtcx.penTestPreWindowFleetHealth.v1",
-  "id": "PEN-TEST-PRE-WINDOW-FLEET-2026-06-12",
+  "id": "security-test-PRE-WINDOW-FLEET-2026-06-12",
   "storyId": "SECAS-S2-01",
   "frictionId": "SEC-PENTEST-01",
   "program": "INIT-GTCX-INFRA-SECAS",

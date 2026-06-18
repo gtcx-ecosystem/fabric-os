@@ -4,6 +4,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { repoRootFromImportMeta } from './lib/repo-root.mjs';
 import { profileKeyFromTier, readProductTier, resolveDocsPack } from './lib/resolve-docs-pack.mjs';
 
@@ -11,14 +12,10 @@ const REPO = repoRootFromImportMeta(import.meta.url);
 const WRITE = process.argv.includes('--write');
 const WITNESS = join(REPO, 'audit/evidence/docs-foundation-latest.json');
 const PACK = 'docs-foundation-pack.json';
-const PRODUCT_GOALS = join(REPO, 'pm/spec/product-goals.json');
+const CANON_SYNTH = join(REPO, '../canon-os/platform/scripts/synthesize-product-canon.mjs');
 
 function gate(id, ok, detail = null) {
   return { id, ok, ...(detail ? { detail } : {}) };
-}
-
-function stripMd(text) {
-  return text.replace(/\*\*/g, '').replace(/`/g, '');
 }
 
 function main() {
@@ -84,42 +81,28 @@ function main() {
     gates.push(gate('fleet-constitution', existsSync(join(REPO, fleetPath)), fleetPath));
   }
 
-  if (existsSync(PRODUCT_GOALS)) {
-    const goals = JSON.parse(readFileSync(PRODUCT_GOALS, 'utf8'));
-    const visionMd = existsSync(join(REPO, 'docs/foundation/vision.md'))
-      ? readFileSync(join(REPO, 'docs/foundation/vision.md'), 'utf8')
-      : '';
-    const missionMd = existsSync(join(REPO, 'docs/foundation/mission.md'))
-      ? readFileSync(join(REPO, 'docs/foundation/mission.md'), 'utf8')
-      : '';
-    const milestonesMd = existsSync(join(REPO, 'docs/foundation/milestones.md'))
-      ? readFileSync(join(REPO, 'docs/foundation/milestones.md'), 'utf8')
-      : '';
-
-    if (goals.vision?.statement) {
+  if (existsSync(join(REPO, 'docs/foundation/vision.md')) || existsSync(join(REPO, 'docs/canon'))) {
+    const synthScript = existsSync(CANON_SYNTH)
+      ? CANON_SYNTH
+      : join(REPO, 'platform/scripts/synthesize-product-canon.mjs');
+    if (existsSync(synthScript)) {
+      const result = spawnSync('node', [synthScript, '--check'], {
+        cwd: REPO,
+        encoding: 'utf8',
+      });
       gates.push(
         gate(
-          'sync:vision',
-          stripMd(visionMd).includes(goals.vision.statement.slice(0, 40)),
-          'vision.md mirrors product-goals.json',
+          'canon:synthesize:check',
+          result.status === 0,
+          result.status === 0 ? 'docs → pm/canon fresh' : 'run pnpm canon:synthesize',
         ),
       );
-    }
-    if (goals.mission) {
+    } else {
       gates.push(
         gate(
-          'sync:mission',
-          stripMd(missionMd).includes(goals.mission.slice(0, 40)),
-          'mission.md mirrors product-goals.json',
-        ),
-      );
-    }
-    if (goals.activeMilestone?.id) {
-      gates.push(
-        gate(
-          'sync:milestone',
-          milestonesMd.includes(goals.activeMilestone.id),
-          `milestones.md references ${goals.activeMilestone.id}`,
+          'canon:strategy-present',
+          existsSync(join(REPO, 'pm/canon/strategy.json')),
+          'pm/canon/strategy.json from canon:synthesize',
         ),
       );
     }

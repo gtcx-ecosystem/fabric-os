@@ -21,6 +21,8 @@ Mandatory agent and operator narrative for **Fabric OS**. Read before `pnpm agen
 
 Fleet law: [`../canon-os/docs/governance/constitution/GTCX-CONSTITUTION.md`](../canon-os/docs/governance/constitution/GTCX-CONSTITUTION.md)
 
+**Business layer:** market, customers, and economics — [`../business/README.md`](../business/README.md)
+
 ## Pack (8 files)
 
 | File                                 | Role                   |

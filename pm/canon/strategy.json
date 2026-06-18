@@ -1,0 +1,40 @@
+{
+  "_generated": true,
+  "_synthesisVersion": "1.1.0",
+  "_source": "docs/foundation/vision.md+docs/foundation/mission.md+docs/foundation/goals.md+docs/foundation/milestones.md+docs/foundation/roadmap.md",
+  "$schema": "gtcx://canon-os/product-canon-strategy/v1",
+  "productId": "fabric-os",
+  "repo": "fabric-os",
+  "updated": "2026-06-18",
+  "vision": {
+    "statement": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
+    "horizon": "2026-2028"
+  },
+  "mission": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
+  "northStarMetric": {
+    "name": "SECAS-S4-02 supply-chain gates PASS",
+    "target": "Witness: audit/evidence/secas-supply-chain-check-latest.json Witness: audit/evidence/secas-supply-chain-check-latest.json",
+    "witness": "audit/evidence/secas-supply-chain-check-latest.json"
+  },
+  "goals": [
+    {
+      "id": "G1",
+      "title": "SECAS-S4-supply-chain",
+      "outcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+      "measure": "Witness: audit/evidence/secas-supply-chain-check-latest.json"
+    },
+    {
+      "id": "G2",
+      "title": "Foundation IA (fleet)",
+      "outcome": "`docs/foundation/` eight-file pack (`INIT-DOCS-FOUNDATION-IA-V1`).",
+      "measure": "`pnpm docs:foundation:check`"
+    }
+  ],
+  "narrativeSources": {
+    "vision": "docs/foundation/vision.md",
+    "mission": "docs/foundation/mission.md",
+    "goals": "docs/foundation/goals.md",
+    "milestones": "docs/foundation/milestones.md",
+    "roadmap": "docs/foundation/roadmap.md"
+  }
+}

@@ -1,22 +1,14 @@
 # Product canon — engineering entry
 
-**Authoritative registry:** [`registry.json`](./registry.json)
+**Generated** — do not edit. Author strategy in `docs/foundation/` and bundles in `docs/canon/`; run `pnpm canon:synthesize`.
 
-This folder is the **versioned implementation spec** for this product. Engineering, QA, and agents implement against **`pm/canon/`**, not narrative under `docs/`.
+**Product:** fabric-os · **Version:** 0.1.0 · **Status:** draft
 
-| Need                       | Path                               |
-| -------------------------- | ---------------------------------- |
-| What are we building?      | `registry.json` → `bundles[]`      |
-| Feature spec (full bundle) | `bundles/FEAT-*/manifest.json`     |
-| Requirements + acceptance  | `bundles/FEAT-*/requirements.json` |
-| UAT + verify commands      | `bundles/FEAT-*/uat.json`          |
-| DoD checklist              | `bundles/FEAT-*/dod.json`          |
-| Service / infra contracts  | `services/`, `infra/`              |
+| Need | Path |
+| ---- | ---- |
+| Registry | `registry.json` |
+| Strategy (from docs/) | `strategy.json` |
+| Feature bundles | `bundles/FEAT-*/manifest.json` |
 
-**Narrative context** (why, journey stories): `docs/` — always links here via `canonRef`.
+Synthesis: `canon-os/platform/scripts/synthesize-product-canon.mjs`
 
-```bash
-pnpm canon:bundle:check    # validate canon before sprint promotion
-```
-
-Protocol: canon-os `pm/spec/product-canon-protocol.json`

@@ -1,11 +1,15 @@
 {
+  "_generated": true,
+  "_synthesisVersion": "1.1.0",
+  "_source": "docs/foundation/",
   "$schema": "gtcx://canon-os/product-canon-registry/v1",
-  "productId": "{repo-name}",
+  "productId": "fabric-os",
   "version": "0.1.0",
   "status": "draft",
-  "updated": "2026-06-17",
-  "owner": "{repo-name}",
-  "goalsRef": "pm/spec/product-goals.json",
+  "updated": "2026-06-18",
+  "owner": "fabric-os",
+  "goalsRef": "pm/canon/strategy.json",
+  "strategyRef": "pm/canon/strategy.json",
   "milestones": [],
   "composition": {
     "features": [],
@@ -17,8 +21,10 @@
   "bundles": [],
   "narrativeIndex": {
     "vision": "docs/foundation/vision.md",
+    "mission": "docs/foundation/mission.md",
+    "goals": "docs/foundation/goals.md",
+    "milestones": "docs/foundation/milestones.md",
     "roadmap": "docs/foundation/roadmap.md",
-    "uxReadme": "docs/product/ux/README.md",
-    "customersReadme": "docs/business/customers/README.md"
+    "architectureReadme": "docs/architecture/README.md"
   }
 }

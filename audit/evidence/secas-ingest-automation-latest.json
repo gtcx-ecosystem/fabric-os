@@ -8,7 +8,7 @@
     "start": "2026-06-17",
     "end": "2026-06-21",
     "timezone": "Africa/Johannesburg",
-    "witness": "audit/archive/2026-06-14/audit/evidence/pen-test-window-2026-06-10.json"
+    "witness": "audit/archive/2026-06-14/audit/evidence/security-test-window-2026-06-10.json"
   },
   "automationReady": true,
   "preWindowClassR": {
@@ -39,7 +39,7 @@
   "parallelLane": {
     "blocksIR": false,
     "blocksAnyRepo": false,
-    "productRepoRule": "Vendor/pen-test calendar is post-launch external only — never blocks P22 on any repo",
+    "productRepoRule": "Vendor/security-test calendar is post-launch external only — never blocks P22 on any repo",
     "routingSpec": "bridge-os/pm/spec/vendor-assurance-status-update-routing.json"
   },
   "blockedReason": null,

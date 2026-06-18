@@ -1,33 +1,24 @@
 ---
-title: 'Operations'
-status: 'current'
-date: '2026-05-27'
-owner: 'frontier-infra-engineer'
-role: 'frontier-infra-engineer'
-tier: 'critical'
-tags: ['operations', 'runbooks']
-review_cycle: 'on-change'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
-trust_score: 95
-autonomy_level: 'sovereign'
+title: 'operations — README'
+status: current
+date: 2026-06-15
+owner: fabric-os
+document_type: overview
+tier: operating
+tags: ['documentation']
+review_cycle: on-change
 ---
 
-# Operations
+# operations
 
-This directory contains operations documentation for the GTCX infrastructure.
-
-## Contents
-
----
-
-_Generated: 2026-05-17_
+> See [`FOLDER-SPEC.md`](./FOLDER-SPEC.md) when present.
 
 ## Cross-reference
 
-| Layer          | Path               | Role                             |
-| -------------- | ------------------ | -------------------------------- |
-| Foundation     | `docs/foundation/` | Charter, vision, goals           |
-| **Operations** | `docs/operations/` | Human runbooks + agent ops docs  |
-| Machine ops    | `ops/`             | P29 domain manifests — link only |
+| Layer          | Path               | Role                                 |
+| -------------- | ------------------ | ------------------------------------ |
+| Foundation     | `docs/foundation/` | Charter, vision, goals               |
+| **Operations** | `docs/operations/` | Human runbooks + agent ops narrative |
+| Machine ops    | `ops/`             | P29 domain manifests — link only     |
 
 > **Pack:** [`../../canon-os/pm/spec/docs-operations-pack.json`](../../canon-os/pm/spec/docs-operations-pack.json)

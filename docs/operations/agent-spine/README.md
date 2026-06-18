@@ -1,14 +1,14 @@
 ---
-title: 'agent-spine — README'
+title: 'operations/agent-spine'
 status: current
-date: 2026-06-15
+date: 2026-06-16
 owner: fabric-os
-document_type: overview
-tier: operating
-tags: ['documentation']
+document_type: runbook
+tier: critical
+tags: ['documentation', 'operations']
 review_cycle: on-change
 ---
 
-# agent-spine
+# Agent spine
 
-> See [`FOLDER-SPEC.md`](../folder-spec.md) when present.
+Universal agent instructions and P22 brief prose.

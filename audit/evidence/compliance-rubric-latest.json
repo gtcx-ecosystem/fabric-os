@@ -1,20 +1,20 @@
 {
   "schema": "gtcx://audit/compliance-rubric/v1",
   "repo": "fabric-os",
-  "date": "2026-06-17",
-  "score100": 100,
+  "date": "2026-06-18",
+  "score100": 69,
   "categories": {
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
       "weight": 8,
-      "score100": 100,
+      "score100": 45,
       "protocol": "P35",
       "items": [
         {
           "id": "p35-strict-pass",
           "label": "P35 layout strict GREEN",
-          "pass": true,
-          "score100": 100,
+          "pass": false,
+          "score100": 0,
           "weight": 35,
           "severity": "P1",
           "optional": false,
@@ -29,14 +29,14 @@
           "weight": 25,
           "severity": "P1",
           "optional": false,
-          "detail": "5/4 present",
+          "detail": "4/4 present",
           "protocol": "P35"
         },
         {
           "id": "root-allowlist",
           "label": "Root allowlist / workspace root cleanliness",
-          "pass": true,
-          "score100": 100,
+          "pass": false,
+          "score100": 0,
           "weight": 20,
           "severity": "P2",
           "optional": false,
@@ -135,14 +135,14 @@
     "ops-domains-p29": {
       "label": "Operational domains (P29)",
       "weight": 6,
-      "score100": 100,
+      "score100": 50,
       "protocol": "P29",
       "items": [
         {
           "id": "ops-check-pass",
           "label": "pnpm ops:check exit 0",
-          "pass": true,
-          "score100": 100,
+          "pass": false,
+          "score100": 0,
           "weight": 50,
           "severity": "P1",
           "optional": false,
@@ -435,14 +435,14 @@
     "agentic-harness-p22-p28": {
       "label": "Agentic harness (P22–P28)",
       "weight": 10,
-      "score100": 100,
+      "score100": 80,
       "protocol": "P22-P28",
       "items": [
         {
           "id": "agentic-manifest",
           "label": "agentic/manifest.json",
-          "pass": true,
-          "score100": 100,
+          "pass": false,
+          "score100": 0,
           "weight": 20,
           "severity": "P1",
           "optional": false,
@@ -591,17 +591,17 @@
     "agentic-product-team": {
       "label": "World-class agentic product team signals",
       "weight": 8,
-      "score100": 100,
+      "score100": 80,
       "items": [
         {
           "id": "persona-profiles",
           "label": "Repo persona profile in bridge-os or institutional adoption",
-          "pass": true,
-          "score100": 100,
+          "pass": false,
+          "score100": 0,
           "weight": 20,
           "severity": "P3",
           "optional": false,
-          "detail": "agentic/manifest.json"
+          "detail": "missing pm/spec/repo-persona-profiles.json"
         },
         {
           "id": "conduct-protocol-adoption",
@@ -624,8 +624,8 @@
           "detail": "2/1 present"
         },
         {
-          "id": "multi-pillar-or-five-core-runbook",
-          "label": "multi-pillar or five-core audit runbook",
+          "id": "five-pillar-or-five-core-runbook",
+          "label": "Five-pillar or five-core audit runbook",
           "pass": true,
           "score100": 100,
           "weight": 20,
@@ -738,18 +738,18 @@
           "detail": "audit/evidence or attestation"
         },
         {
-          "id": "multi-pillar-witness",
-          "label": "audit/evidence/multi-pillar-latest.json",
+          "id": "five-pillar-witness",
+          "label": "audit/evidence/five-pillar-latest.json",
           "pass": true,
           "score100": 100,
           "weight": 25,
           "severity": "P2",
           "optional": false,
-          "detail": "audit/evidence/multi-pillar-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json"
         },
         {
-          "id": "rollup-or-five-core",
-          "label": "rollup-audit or five-core witnesses",
+          "id": "composite-or-five-core",
+          "label": "composite-audit or five-core witnesses",
           "pass": true,
           "score100": 100,
           "weight": 25,
@@ -799,6 +799,42 @@
       "itemCount": 2
     }
   },
-  "violations": [],
+  "violations": [
+    {
+      "id": "p35-strict-pass",
+      "categoryId": "layout-p35",
+      "label": "P35 layout strict GREEN",
+      "severity": "P1",
+      "detail": "p35Strict"
+    },
+    {
+      "id": "root-allowlist",
+      "categoryId": "layout-p35",
+      "label": "Root allowlist / workspace root cleanliness",
+      "severity": "P2",
+      "detail": "opsCheck"
+    },
+    {
+      "id": "ops-check-pass",
+      "categoryId": "ops-domains-p29",
+      "label": "pnpm ops:check exit 0",
+      "severity": "P1",
+      "detail": "opsCheck"
+    },
+    {
+      "id": "agentic-manifest",
+      "categoryId": "agentic-harness-p22-p28",
+      "label": "agentic/manifest.json",
+      "severity": "P1",
+      "detail": "agentic/manifest.json"
+    },
+    {
+      "id": "persona-profiles",
+      "categoryId": "agentic-product-team",
+      "label": "Repo persona profile in bridge-os or institutional adoption",
+      "severity": "P3",
+      "detail": "missing pm/spec/repo-persona-profiles.json"
+    }
+  ],
   "itemTotal": 62
 }

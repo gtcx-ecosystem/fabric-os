@@ -16,7 +16,7 @@ const NA_IP = {
 const LAYER_ARTIFACTS = {
   foundation: {
     compliance: { primary: true, artifacts: ['docs/foundation/README.md', 'docs/foundation/constitution.md'], gates: ['pnpm docs:foundation:check'] },
-    technicalExcellence: { secondary: true, artifacts: ['docs/foundation/goals.md'], gates: ['pm/spec/product-goals.json sync'] },
+    technicalExcellence: { secondary: true, artifacts: ['docs/foundation/goals.md'], gates: ['pnpm canon:synthesize:check'] },
     craft: { secondary: true, artifacts: ['docs/foundation/README.md'], gates: ['session read order ≤8'] },
     worldClass: { secondary: true, artifacts: ['docs/foundation/milestones.md'], gates: ['milestone exit criteria'] },
     trustAndSafety: { primary: true, artifacts: ['docs/foundation/constitution.md'], gates: ['fleet constitution link'] },

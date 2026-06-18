@@ -3,12 +3,13 @@ title: 'accessibility'
 status: current
 date: 2026-06-16
 owner: fabric-os
-document_type: product
+document_type: architecture
 tier: critical
-tags: ['documentation', 'product']
+tags: ['documentation', 'architecture']
 review_cycle: on-change
 ---
 
-# Accessibility
 
-Accessibility requirements and review checklist for **fabric-os**.
+# accessibility
+
+System requirements for **fabric-os**.

@@ -1,16 +1,15 @@
 ---
-title: 'functional requirements'
+title: 'functional-requirements'
 status: current
 date: 2026-06-16
 owner: fabric-os
-document_type: product
+document_type: architecture
 tier: critical
-tags: ['documentation', 'product']
+tags: ['documentation', 'architecture']
 review_cycle: on-change
 ---
 
-# Functional requirements
 
-User/operator-facing functional requirements for **fabric-os**.
+# functional requirements
 
-- Requirement statements only; link execution truth to `pm/`.
+System requirements for **fabric-os**.

@@ -9,6 +9,7 @@ tags: ['documentation', 'architecture']
 review_cycle: on-change
 ---
 
+
 # non functional requirements
 
 System requirements for **fabric-os**.

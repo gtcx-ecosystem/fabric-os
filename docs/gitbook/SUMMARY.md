@@ -3,8 +3,10 @@ title: 'GitBook SUMMARY'
 status: current
 date: 2026-06-17
 owner: fabric-os
-document_type: overview
+tier: operating
+tags: ['overview', 'documentation']
 review_cycle: on-change
+document_type: overview
 ---
 
 # Summary

@@ -2,10 +2,11 @@
 title: 'pillar-scorecard — docs/foundation/'
 status: current
 date: 2026-06-16
-document_type: folder-spec
+owner: fabric-os
 tier: operating
-tags: ['documentation', 'multi-pillar', 'fractal-mpr']
+tags: [['documentation', 'multi-pillar', 'fractal-mpr']]
 review_cycle: on-change
+document_type: folder-spec
 ---
 
 # Pillar scorecard — `docs/foundation/`

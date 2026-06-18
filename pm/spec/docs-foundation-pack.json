@@ -40,13 +40,18 @@
     }
   ],
   "machineMirror": {
-    "path": "pm/spec/product-goals.json",
-    "schema": "gtcx://bridge-os/product-goals/v1"
+    "path": "pm/canon/strategy.json",
+    "schema": "gtcx://canon-os/product-canon-strategy/v1",
+    "syncRule": "pnpm canon:synthesize"
   },
   "fleetConstitution": {
     "repo": "canon-os",
     "path": "../canon-os/docs/governance/constitution/GTCX-CONSTITUTION.md",
-    "requiredArticles": ["I", "III", "V"]
+    "requiredArticles": [
+      "I",
+      "III",
+      "V"
+    ]
   },
   "enforcement": {
     "check": "pnpm docs:foundation:check",

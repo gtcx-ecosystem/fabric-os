@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://canon-os/docs-foundation-check/v2",
   "repo": "fabric-os",
-  "at": "2026-06-17T12:29:00.116Z",
+  "at": "2026-06-18T03:09:30.685Z",
   "ok": false,
   "spec": {
     "localPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-foundation-pack.json",
@@ -31,58 +31,63 @@
     },
     {
       "id": "file:foundation/README.md",
-      "ok": false,
+      "ok": true,
       "detail": "docs/foundation/README.md"
     },
     {
       "id": "file:foundation/constitution.md",
-      "ok": false,
+      "ok": true,
       "detail": "docs/foundation/constitution.md"
     },
     {
       "id": "file:foundation/manifesto.md",
-      "ok": false,
+      "ok": true,
       "detail": "docs/foundation/manifesto.md"
     },
     {
       "id": "file:foundation/vision.md",
-      "ok": false,
+      "ok": true,
       "detail": "docs/foundation/vision.md"
     },
     {
       "id": "file:foundation/mission.md",
-      "ok": false,
+      "ok": true,
       "detail": "docs/foundation/mission.md"
     },
     {
       "id": "file:foundation/goals.md",
-      "ok": false,
+      "ok": true,
       "detail": "docs/foundation/goals.md"
     },
     {
       "id": "file:foundation/milestones.md",
-      "ok": false,
+      "ok": true,
       "detail": "docs/foundation/milestones.md"
     },
     {
       "id": "file:foundation/roadmap.md",
-      "ok": false,
+      "ok": true,
       "detail": "docs/foundation/roadmap.md"
     },
     {
-      "id": "sync:vision",
-      "ok": false,
-      "detail": "vision.md mirrors product-goals.json"
+      "id": "readme:index",
+      "ok": true,
+      "detail": "README index or freshness table"
     },
     {
-      "id": "sync:mission",
+      "id": "readme:business-link",
       "ok": false,
-      "detail": "mission.md mirrors product-goals.json"
+      "detail": "README links to docs/business/ for detail layer"
     },
     {
-      "id": "sync:milestone",
+      "id": "constitution:fleet-link",
+      "ok": true,
+      "detail": "constitution.md → fleet constitution"
+    },
+    {
+      "id": "canon:synthesize:check",
       "ok": false,
-      "detail": "milestones.md references FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE"
+      "detail": "run pnpm canon:synthesize"
     }
   ]
 }

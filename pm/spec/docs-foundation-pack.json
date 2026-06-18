@@ -52,5 +52,89 @@
   "enforcement": {
     "check": "pnpm docs:foundation:check",
     "witness": "audit/evidence/docs-foundation-latest.json"
+  },
+  "pillarContract": {
+    "compliance": {
+      "primary": true,
+      "artifacts": ["docs/foundation/README.md", "docs/foundation/constitution.md"],
+      "gates": ["pnpm docs:foundation:check"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    },
+    "technicalExcellence": {
+      "secondary": true,
+      "artifacts": ["docs/foundation/goals.md"],
+      "gates": ["pnpm canon:synthesize:check"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    },
+    "craft": {
+      "secondary": true,
+      "artifacts": ["docs/foundation/README.md"],
+      "gates": ["session read order ≤8"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    },
+    "worldClass": {
+      "secondary": true,
+      "artifacts": ["docs/foundation/milestones.md"],
+      "gates": ["milestone exit criteria"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    },
+    "trustAndSafety": {
+      "primary": true,
+      "artifacts": ["docs/foundation/constitution.md"],
+      "gates": ["fleet constitution link"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    },
+    "creativityInnovation": {
+      "notApplicable": true,
+      "reason": "Innovation narratives live in docs/product/ and docs/architecture/; this layer routes only",
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    },
+    "commercialValue": {
+      "secondary": true,
+      "artifacts": ["docs/foundation/goals.md"],
+      "gates": ["links docs/business/"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    },
+    "defensiveMoat": {
+      "secondary": true,
+      "artifacts": ["docs/foundation/vision.md"],
+      "gates": ["unique repo charter"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    },
+    "agenticEmpowerment": {
+      "primary": true,
+      "artifacts": ["docs/foundation/README.md"],
+      "gates": ["P22 session chain"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    },
+    "ecosystemIntegration": {
+      "secondary": true,
+      "artifacts": ["docs/foundation/roadmap.md"],
+      "gates": ["pm/ + docs/roadmap links"],
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    },
+    "ipMagic": {
+      "notApplicable": true,
+      "reason": "IP magic scored in docs/product/acceptance and reference implementations",
+      "minBar": "≥85 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-foundation-layer-latest.json"
+    }
+  },
+  "fractalMpr": {
+    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "layerWitness": "audit/evidence/mpr-foundation-layer-latest.json",
+    "scorecard": "docs/foundation/pillar-scorecard.md",
+    "rollupFrom": ["file", "folder"],
+    "scorecardIsReadOnlyRollup": true
   }
 }

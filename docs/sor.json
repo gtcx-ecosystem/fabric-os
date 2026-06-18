@@ -102,12 +102,19 @@
     ],
     "readmeExemptPathPrefixes": ["docs/reference/archive"],
     "depthExemptPathPrefixes": [
-      "docs/reference/archive",
-      "docs/reference/templates",
-      "docs/architecture/specs/layers",
-      "docs/gitbook/business",
       "docs/architecture/operations",
-      "docs/architecture/specs/_project"
+      "docs/architecture/specs/_project",
+      "docs/architecture/specs/architecture",
+      "docs/architecture/specs/layers",
+      "docs/architecture/specs/operations",
+      "docs/gitbook/business",
+      "docs/reference/archive",
+      "docs/reference/templates"
+    ],
+    "shadowExemptPathPrefixes": [
+      "docs/reference/architecture",
+      "docs/reference/operations",
+      "docs/operations/governance"
     ]
   }
 }

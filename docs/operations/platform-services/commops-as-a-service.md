@@ -41,7 +41,7 @@ pnpm commops:substrate:readiness:write
 
 ```bash
 pnpm commops:substrate:populate:dry-run
-# export SENDGRID_API_KEY, AFRICASTALKING_* , TWILIO_* then:
+## export SENDGRID_API_KEY, AFRICASTALKING_* , TWILIO_* then:
 pnpm commops:substrate:populate
 ```
 

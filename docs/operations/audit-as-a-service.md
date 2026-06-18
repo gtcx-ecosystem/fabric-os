@@ -3,8 +3,10 @@ title: 'Audit-as-a-Service (pointer)'
 status: pointer
 date: 2026-06-17
 owner: fabric-os
-document_type: pointer
+tier: operating
+tags: ['pointer', 'documentation']
 review_cycle: on-change
+document_type: pointer
 ---
 
 # Audit-as-a-Service

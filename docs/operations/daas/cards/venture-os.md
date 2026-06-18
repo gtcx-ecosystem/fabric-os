@@ -37,7 +37,7 @@ protocol: P41-DEVOPS-AS-A-SERVICE
 ## Apply path
 
 ```bash
-# From fabric-os (after terraform apply module.secrets + SM populate)
+## From fabric-os (after terraform apply module.secrets + SM populate)
 kubectl apply -k deploy/kubernetes/overlays/staging/venture-os/
 kubectl get externalsecret -n venture-os-staging
 kubectl get pods -n venture-os-staging
@@ -70,7 +70,7 @@ export PUSH=1
 ## DNS + TLS (fabric-os)
 
 ```bash
-# Vault: CLOUDFLARE_DNS_API_TOKEN (Zone DNS Edit — not Workers-only CLOUDFLARE_API_TOKEN)
+## Vault: CLOUDFLARE_DNS_API_TOKEN (Zone DNS Edit — not Workers-only CLOUDFLARE_API_TOKEN)
 set -a && source ~/.baseline/env && set +a
 export CLOUDFLARE_API_TOKEN="$(baseline vault get CLOUDFLARE_DNS_API_TOKEN --trust-score 100)"
 export ALB_DNS="k8s-gtcxstagingapi-295a96727a-1533822930.af-south-1.elb.amazonaws.com"

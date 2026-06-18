@@ -82,7 +82,7 @@ The helper emits:
 In `gtcx-intelligence`, load those variables into your shell and run:
 
 ```bash
-# cwd: gtcx-intelligence
+## cwd: gtcx-intelligence
 pnpm evidence:external-providers
 pnpm evidence:deployment-smoke
 pnpm evidence:production-readiness

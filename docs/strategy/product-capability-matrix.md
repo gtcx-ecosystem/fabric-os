@@ -1,3 +1,15 @@
+---
+title: 'Product capability matrix — fabric-os'
+status: current
+date: 2026-06-15
+owner: fabric-os
+tier: operating
+tags: ['overview', 'documentation']
+review_cycle: on-change
+document_type: overview
+goals: 'Hub documentation — overview'
+---
+
 # Product capability matrix — fabric-os
 
 > **SoR:** PRD features → shippable capabilities. Stories must trace to a row here or a `prdRef`.

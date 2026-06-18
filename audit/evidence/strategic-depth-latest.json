@@ -2,7 +2,7 @@
   "schema": "gtcx://audit/strategic-depth/v1",
   "repo": "fabric-os",
   "date": "2026-06-17",
-  "status": "composite-lift",
+  "status": "layer-rollup",
   "frameworksRun": ["ECOSYSTEM-FIT", "INNOVATION-MOAT-90D"],
   "frameworkScores": {
     "ECOSYSTEM-FIT": 100,
@@ -16,5 +16,5 @@
   },
   "strategicInsightScore100": 100,
   "bundle": "strategic-depth",
-  "source": "run-composite-lift"
+  "source": "run-layer-rollup"
 }

@@ -116,7 +116,7 @@ export function checkScorecardWitnessLink(scorecardPath, witnessRel, target, gat
   gates.push(
     gate(
       `${prefix}:scorecard-target`,
-      new RegExp(`${target}|compositeTarget|rollup`).test(text),
+      new RegExp(`${target}|rollupTarget|rollup`).test(text),
       `scorecard documents target ${target}/100 or rollup`,
     ),
   );
@@ -168,13 +168,22 @@ export function checkLayerWitnessStub(witnessPath, layer, repoName, target, stri
         witness.published ? 'published' : 'published:false — run MPR scoped audit',
       ),
     );
-    const composite = witness.fullComposite100 ?? witness.composite100;
-    if (typeof composite === 'number') {
+    const rollupScore = witness.fullComposite100 ?? witness.composite100;
+    if (typeof rollupScore === 'number') {
       gates.push(
-        gate(`${prefix}:layer-witness-composite`, composite >= target, `composite ${composite}/${target}`),
+        gate(`${prefix}:layer-witness-rollup`, rollupScore >= target, `rollup ${rollupScore}/${target}`),
       );
     } else {
-      gates.push(gate(`${prefix}:layer-witness-composite`, false, 'no composite score'));
+      gates.push(gate(`${prefix}:layer-witness-rollup`, false, 'no rollup score'));
+    }
+  } else if (witness.published === true) {
+    const rollupScore = witness.fullComposite100 ?? witness.composite100;
+    if (typeof rollupScore === 'number') {
+      gates.push(
+        gate(`${prefix}:layer-witness-rollup`, rollupScore >= target, `rollup ${rollupScore}/${target}`),
+      );
+    } else {
+      gates.push(gate(`${prefix}:layer-witness-rollup`, false, 'no rollup score'));
     }
   } else {
     gates.push(

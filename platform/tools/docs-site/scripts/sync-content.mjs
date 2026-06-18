@@ -6,13 +6,18 @@
 // We rewrite the slug for `index.md` -> `index.md` (root page) and
 // strip the `README.md` (not part of the public docs).
 
+import { existsSync } from 'node:fs';
 import { mkdir, readdir, readFile, writeFile, rm, stat } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '..', '..', '..', '..');
-const sourceDir = join(repoRoot, '01-docs', 'gitbook', 'docs-site');
+const SOURCE_CANDIDATES = [
+  join(repoRoot, 'docs', 'gitbook', 'docs-site'),
+  join(repoRoot, '01-docs', 'gitbook', 'docs-site'),
+];
+const sourceDir = SOURCE_CANDIDATES.find((p) => existsSync(p));
 const targetDir = resolve(__dirname, '..', 'src', 'content', 'docs');
 
 const SKIP_FILES = new Set(['README.md']);
@@ -48,6 +53,10 @@ async function syncFile(name) {
 }
 
 async function main() {
+  if (!sourceDir) {
+    console.error(`source directory missing (tried: ${SOURCE_CANDIDATES.join(', ')})`);
+    process.exit(1);
+  }
   try {
     await stat(sourceDir);
   } catch {

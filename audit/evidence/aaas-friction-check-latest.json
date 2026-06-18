@@ -2,9 +2,9 @@
   "schema": "gtcx://fabric-os/aaas-friction-check/v1",
   "initiative": "INIT-GTCX-SERVICE-FABRIC",
   "service": "AAAS",
-  "checkedAt": "2026-06-12T03:43:59.070Z",
+  "checkedAt": "2026-06-18T17:20:47.491Z",
   "owner": "fabric-os",
-  "harness": "bridge-os/review:five-core:run",
+  "harness": "bridge-os/audit:five-core:run",
   "gates": {
     "register": {
       "ok": true

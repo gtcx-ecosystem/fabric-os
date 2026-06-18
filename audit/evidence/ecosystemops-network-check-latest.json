@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/ecosystemops-network-check/v1",
   "opsLane": "EcosystemOps",
-  "checkedAt": "2026-06-14T10:44:26.513Z",
+  "checkedAt": "2026-06-18T17:14:27.179Z",
   "owner": "bridge-os",
   "publishRepo": "ecosystem-os",
   "gates": {

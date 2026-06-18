@@ -1,11 +1,11 @@
 {
   "schema": "gtcx://fabric-os/secas-approval-check/v1",
   "protocol": "P42-SECURITY-AS-A-SERVICE",
-  "checkedAt": "2026-06-15T12:32:45.413Z",
+  "checkedAt": "2026-06-18T17:14:27.178Z",
   "approvalNeeded": [],
   "approved": [
     {
-      "id": "EXT-REF",
+      "id": "EXT-INF-002",
       "approvedAt": "2026-06-10"
     },
     {
@@ -17,7 +17,7 @@
       "approvedAt": "2026-06-12"
     },
     {
-      "id": "EXT-REF",
+      "id": "EXT-INF-013",
       "approvedAt": "2026-06-12"
     }
   ],

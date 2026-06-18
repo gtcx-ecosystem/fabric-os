@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/daas-friction-check/v1",
   "protocol": "P41-DEVOPS-AS-A-SERVICE",
-  "checkedAt": "2026-06-15T19:54:53.193Z",
+  "checkedAt": "2026-06-18T17:14:09.262Z",
   "owner": "fabric-os",
   "gates": {
     "register": {

@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/payops-substrate-readiness/v1",
-  "checkedAt": "2026-06-15T19:33:57.696Z",
+  "checkedAt": "2026-06-18T17:14:30.750Z",
   "opsLane": "PayOps",
   "providerPriority": {
     "primary": "flutterwave",

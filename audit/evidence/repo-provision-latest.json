@@ -2,7 +2,7 @@
   "schema": "gtcx://canon-os/repo-provision-check/v1",
   "repo": "fabric-os",
   "profile": "platform",
-  "at": "2026-06-18T03:51:47.893Z",
+  "at": "2026-06-18T03:54:11.850Z",
   "ok": true,
   "gates": [
     {

@@ -1,8 +1,11 @@
 ---
-title: Product roadmap lane isolation
+title: 'Product roadmap lane isolation'
 status: current
 date: 2026-06-17
 owner: fabric-os
+tier: operating
+tags: ['protocol', 'documentation']
+review_cycle: on-change
 document_type: protocol
 ---
 

@@ -3,7 +3,7 @@
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "wave": "W11b",
-  "title": "Docs agile pack — fabric-os",
+  "title": "Agile hub pack — fabric-os",
   "principle": "agile-os is the tactical Chief Product Officer (CPO) of the GTCX ecosystem. Each repo owns repo-root agile/ (P35 hub — not under docs/) — local ceremony workspace plugging into the CPO loop. Fleet backlog and ceremony law stay in agile-os.",
   "cpoRole": {
     "fleetCpoRepo": "agile-os",

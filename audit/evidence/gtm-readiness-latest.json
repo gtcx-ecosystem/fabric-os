@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://audit/gtm-readiness/v1",
   "repo": "fabric-os",
-  "assessedAt": "2026-06-17T13:23:16.651Z",
+  "assessedAt": "2026-06-17T18:17:54.922Z",
   "source": "machine-inference",
   "stage": "S2",
   "stageName": "Pilot Ready",

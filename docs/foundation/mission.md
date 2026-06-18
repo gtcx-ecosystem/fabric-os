@@ -7,7 +7,6 @@ document_type: overview
 tier: critical
 tags: ['foundation']
 review_cycle: on-change
-
 ---
 
 # fabric-os — mission

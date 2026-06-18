@@ -7,7 +7,6 @@ document_type: overview
 tier: critical
 tags: ['foundation']
 review_cycle: on-change
-
 ---
 
 # fabric-os — milestones
@@ -39,7 +38,6 @@ review_cycle: on-change
 
 - **Label:** Demo walkthrough evidence
 - **Witness:** audit/evidence/demo-readiness-{repo}.json
-
 
 ## Machine mirror (generated)
 

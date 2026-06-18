@@ -2,6 +2,11 @@
 title: 'Inbound — W2-OPS-002 POSTGRES_URL unblocked (terminal-os)'
 status: closed
 date: 2026-06-17
+owner: fabric-os
+tier: operating
+tags: ['runbook', 'documentation']
+review_cycle: on-change
+document_type: runbook
 from: fabric-os
 to: terminal-os
 protocol: P24

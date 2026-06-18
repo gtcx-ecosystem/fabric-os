@@ -3,7 +3,7 @@
   "repo": "fabric-os",
   "updated": "2026-06-15",
   "fabricRegister": "pm/legal-friction-register.json",
-  "fabricDoc": "docs/operations/platform-services/legal-as-a-service.md",
+  "fabricDoc": "docs/operations/legalops-as-a-service.md",
   "sovereignRegister": "pm/sovereign-approval-register.json",
   "blocksIRDefault": false,
   "protocol": "P44-FABRIC-CONSUMPTION",

@@ -14,7 +14,7 @@ const BRIDGE = join(ROOT, '..', 'bridge-os');
 const REGISTER = join(ROOT, 'pm/legal-friction-register.json');
 const SOVEREIGN = join(ROOT, 'pm/sovereign-approval-register.json');
 const MANIFEST = join(ROOT, 'ops/legal/manifest.json');
-const OPS = join(ROOT, 'docs/operations/platform-services/legal-as-a-service.md');
+const OPS = join(ROOT, 'docs/operations/legalops-as-a-service.md');
 const PARALLEL_WITNESS = join(ROOT, 'audit/evidence/secas-parallel-lane-check-latest.json');
 const FLEET_WITNESS = join(BRIDGE, 'pm/ci/ecosystem-legal-program-latest.json');
 const OUT = join(ROOT, 'audit/evidence/legal-friction-check-latest.json');
@@ -46,7 +46,9 @@ const gates = {
 const reg = readJson(REGISTER);
 if (reg) {
   gates.opsLane = { ok: reg.opsLane === 'LegalOps' && reg.owner === 'fabric-os' };
-  gates.protocol = { ok: reg.protocol === 'P45-LEGAL-AS-A-SERVICE' && Boolean(reg.harness?.fabric) };
+  gates.protocol = {
+    ok: reg.protocol === 'P45-LEGAL-AS-A-SERVICE' && Boolean(reg.harness?.fabric),
+  };
   gates.harnessDepth = {
     ok: Boolean(reg.harness?.fabric && reg.harness?.fleet && reg.harness?.parallelLane),
   };

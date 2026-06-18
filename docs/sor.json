@@ -87,8 +87,16 @@
       "docs/operations/batch-a",
       "docs/operations/batch-b",
       "docs/operations/batch-c",
-      "docs/operations/coordination"
+      "docs/operations/coordination",
+      "docs/reference/archive",
+      "docs/reference/audits",
+      "docs/architecture/specs",
+      "docs/architecture/specs/product-scopes",
+      "docs/business/strategy",
+      "docs/business/research",
+      "docs/specs"
     ],
-    "readmeExemptPathPrefixes": ["docs/reference/archive"]
+    "readmeExemptPathPrefixes": ["docs/reference/archive"],
+    "depthExemptPathPrefixes": ["docs/reference/archive", "docs/reference/templates"]
   }
 }

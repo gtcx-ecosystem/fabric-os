@@ -38,7 +38,7 @@
         "docs/architecture/decisions/batch-b/ADR-015-per-tenant-jetstream-subject-routing.md",
         "docs/architecture/decisions/batch-b/ADR-016-fail-closed-audit-signing.md",
         "docs/architecture/decisions/batch-b/ADR-017-adaptive-policy-tuning.md",
-        "docs/architecture/decisions/batch-b/ADR-018-pen-test-contained-overlay.md",
+        "docs/architecture/decisions/batch-b/ADR-018-security-test-contained-overlay.md",
         "docs/architecture/decisions/batch-b/ADR-019-workspace-boundary-discipline.md",
         "docs/architecture/decisions/batch-b/ADR-020-per-package-coverage-thresholds.md",
         "docs/architecture/decisions/batch-b/ADR-021-npm-publish-discipline.md",
@@ -234,7 +234,7 @@
         "XR-FABRIC-SESSION-OPEN-003",
         "XR-FABRIC-SESSION-OPEN-004",
         "BL-TRANSCRIPT-PORT",
-        "INIT-FIVE-PILLAR-FLEET-100",
+        "INIT-multi-pillar-FLEET-100",
         "XR-FABRIC-SESSION-OPEN-005",
         "XR-CANON-TRADE-LANES-001",
         "XR-EO-003",
@@ -347,7 +347,7 @@
         "[['architecture', 'audit', 'tenancy', 'messaging']]",
         "[['architecture', 'security', 'audit', 'compliance', 'governance']]",
         "[['architecture', 'resilience', 'audit', 'observability']]",
-        "[['architecture', 'security', 'pen-test', 'isolation']]",
+        "[['architecture', 'security', 'security-test', 'isolation']]",
         "[['architecture', 'monorepo', 'packages', 'hygiene']]",
         "[['architecture', 'testing', 'coverage', 'quality-gates']]",
         "[['architecture', 'security', 'supply-chain', 'distribution', 'npm']]",
@@ -438,7 +438,7 @@
         "pnpm ecosystem:docs:foundation:fleet",
         "pnpm docs:ia:check",
         "Baseline today",
-        "pnpm audit:five-pillar:run",
+        "pnpm review:multi-pillar:run",
         "pnpm docs:ia:check:strict",
         "pnpm docs:fleet:foundation:write",
         "pnpm docs:reference:decompose",
@@ -537,7 +537,7 @@
       "INIT-FABRIC-LANE-DEPLOY-MATRIX",
       "INIT-FABRIC-OS-CUTOVER",
       "INIT-FABRIC-README-SOR-",
-      "INIT-FIVE-PILLAR-FLEET-100",
+      "INIT-multi-pillar-FLEET-100",
       "INIT-FLEET-OS-CONTRACT",
       "INIT-GTCX-APPLE-CONTINUITY-MODEL",
       "INIT-GTCX-BRIDGE-AI-ML-OPS",
@@ -685,7 +685,7 @@
     ],
     "tags": [
       "session-corpus",
-      "documentation-program"
+      "documentation initiative"
     ]
   },
   "ingestSignals": [

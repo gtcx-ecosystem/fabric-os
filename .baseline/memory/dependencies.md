@@ -6,11 +6,11 @@
 
 | Needs | From Repo / Owner | Status | ETA | Blocking |
 | --- | --- | --- | --- | --- |
-| EXT-INF-002 pen-test SOW | Human Security + **gtcx-agentic** H-05 chase | **open** | 2026-06-13 | S2-13, live-stack pen-test |
-| EXT-INF-013 ZWCMP pilot owner | GTM / Program Lead | **approved** | 2026-06-12 | EXT-INF-014 unblocked |
-| EXT-INF-014 DPA + pilot agreement | Legal | **open** | 2026-06-21 | ZWCMP signature |
-| EXT-INF-015 indemnified SLA | Legal | **open** | 2026-06-21 | Pilot agreement |
-| EXT-INF-016 SOC 2 Type I auditor | CISO + Finance | **open** | TBD | Bank-grade B.1 |
+| EXT-REF security-test SOW | Human Security + **gtcx-agentic** H-05 chase | **open** | 2026-06-13 | S2-13, live-stack security-test |
+| EXT-REF ZWCMP pilot owner | GTM / Program Lead | **approved** | 2026-06-12 | EXT-REF unblocked |
+| EXT-REF DPA + pilot agreement | Legal | **open** | 2026-06-21 | ZWCMP signature |
+| EXT-REF indemnified SLA | Legal | **open** | 2026-06-21 | Pilot agreement |
+| EXT-REF SOC 2 Type I auditor | CISO + Finance | **open** | TBD | Bank-grade B.1 |
 | H-03 sovereign countersign | Human CSP (**gtcx-agentic** ceremony) | **awaiting-human** | TBD | XR-518, MA-003 / #61 scale |
 | S4-03 PRD-002 Tier B contract | **gtcx-protocols** | **blocked-sibling** | TBD | Audit route Tier B |
 
@@ -22,7 +22,7 @@
 | --- | --- | --- |
 | ~~**Hub #17 prod W2 close**~~ | **gtcx-infrastructure** | **done** 2026-06-05 — `compliance.gtcx.trade` + `terminal.gtcx.trade`; baseline-os locker `7d98352b2` |
 | **Hub #18 prod Postgres** | terminal-os + **fabric-os** | **closed** — `w2-locker-18-terminal-evidence.json` prod-slice-pass; SM `DATABASE_URL` + `POSTGRES_URL` alias script |
-| EXT-INF-003 WORM recurrence on main | Infra operator | open |
+| EXT-REF WORM recurrence on main | Infra operator | open |
 
 ## Program orchestration (fabric-os)
 
@@ -48,7 +48,7 @@
 | --- | --- | --- |
 | gtcx-protocols | SPKI DER + SHA-256 (XR-402) | done 2026-06-03 |
 | gtcx-intelligence | orchestrator manifest + cost router | done |
-| gtcx-core | EXT-INF-002 vendor pack ack | done 2026-06-07 |
+| gtcx-core | EXT-REF vendor pack ack | done 2026-06-07 |
 
 ## Engineering witness (not XC blockers)
 

@@ -2,7 +2,7 @@
   "repo": "fabric-os",
   "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
   "northStar": {
-    "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
+    "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
     "repoRole": "Deploy EKS/testnet, secrets, observability — unblock intelligence, markets, protocols.",
     "notTheGoal": "Re-run IR audit cluster each session to discover priorities."
   },

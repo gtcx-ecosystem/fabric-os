@@ -3,10 +3,10 @@
   "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
   "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
   "statePath": ".baseline/launch-focus.json",
-  "provisionedAt": "2026-06-17T18:08:11.907Z",
+  "provisionedAt": "2026-06-18T03:04:28.614Z",
   "repo": "fabric-os",
   "northStar": {
-    "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
+    "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
     "repoRole": "Deploy EKS/testnet, secrets, observability — unblock intelligence, markets, protocols.",
     "notTheGoal": "Re-run IR audit cluster each session to discover priorities.",
     "gtmTier": {
@@ -46,7 +46,7 @@
   ],
   "agentInstructions": [
     "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
-    "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
+    "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
     "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle."
   ]
 }

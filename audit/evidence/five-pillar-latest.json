@@ -1,5 +1,5 @@
 {
-  "schema": "gtcx://audit/five-pillar/v1",
+  "schema": "gtcx://audit/multi-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-18",
   "evaluatedAt": "2026-06-18T03:18:29.428Z",
@@ -638,8 +638,8 @@
               "detail": "2/1 present"
             },
             {
-              "id": "five-pillar-or-five-core-runbook",
-              "label": "Five-pillar or five-core audit runbook",
+              "id": "multi-pillar-or-five-core-runbook",
+              "label": "multi-pillar or five-core audit runbook",
               "pass": true,
               "score100": 100,
               "weight": 20,
@@ -752,18 +752,18 @@
               "detail": "audit/evidence or attestation"
             },
             {
-              "id": "five-pillar-witness",
-              "label": "audit/evidence/five-pillar-latest.json",
+              "id": "multi-pillar-witness",
+              "label": "audit/evidence/multi-pillar-latest.json",
               "pass": true,
               "score100": 100,
               "weight": 25,
               "severity": "P2",
               "optional": false,
-              "detail": "audit/evidence/five-pillar-latest.json"
+              "detail": "audit/evidence/multi-pillar-latest.json"
             },
             {
-              "id": "composite-or-five-core",
-              "label": "composite-audit or five-core witnesses",
+              "id": "rollup-or-five-core",
+              "label": "rollup-audit or five-core witnesses",
               "pass": true,
               "score100": 100,
               "weight": 25,
@@ -1242,6 +1242,6 @@
   "openP1": 0,
   "rubricSource": "audit-output",
   "rubricSourcePath": "audit/audit-output-2026-06-17.json",
-  "initiative": "INIT-FIVE-PILLAR-EVAL",
-  "source": "run-five-pillar-audit"
+  "initiative": "INIT-multi-pillar-EVAL",
+  "source": "run-multi-pillar-audit"
 }

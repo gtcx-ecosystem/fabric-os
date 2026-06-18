@@ -1,10 +1,14 @@
 ---
-title: README
+title: 'docs/operations/governance — pointer'
 status: current
-date: 2026-06-14
+date: 2026-06-15
 owner: fabric-os
+document_type: pointer
+tier: standard
+tags: ['documentation']
+review_cycle: on-change
 ---
 
-# README
+# Pointer
 
-Link stub — doc integrity (INIT-PRODUCT-TEAM-MODEL-R5).
+> **Canonical layer:** see top-level folder per four-layer IA initiative.

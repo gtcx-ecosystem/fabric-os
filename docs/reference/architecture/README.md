@@ -1,14 +1,14 @@
 ---
-title: 'architecture — README'
+title: 'docs/reference/architecture — pointer'
 status: current
 date: 2026-06-15
 owner: fabric-os
-document_type: overview
-tier: operating
+document_type: pointer
+tier: standard
 tags: ['documentation']
 review_cycle: on-change
 ---
 
-# architecture
+# Pointer
 
-> See [`FOLDER-SPEC.md`](./FOLDER-SPEC.md) when present.
+> **Canonical layer:** see top-level folder per four-layer IA initiative.

@@ -4,7 +4,7 @@
   "service": "AAAS",
   "checkedAt": "2026-06-12T03:43:59.070Z",
   "owner": "fabric-os",
-  "harness": "bridge-os/audit:five-core:run",
+  "harness": "bridge-os/review:five-core:run",
   "gates": {
     "register": {
       "ok": true

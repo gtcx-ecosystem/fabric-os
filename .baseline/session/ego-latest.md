@@ -249,7 +249,7 @@ When this persona is active:
 ## Layer 5 — Work focus (P22)
 
 **Story ID:** SECAS-S4-04
-**Title:** Pen-test findings remediation track + re-test witness
+**Title:** security-test findings remediation track + re-test witness
 **Authority class:** R
 **Because:** Human gates parallel — implement queue reconciled; see work register.
 

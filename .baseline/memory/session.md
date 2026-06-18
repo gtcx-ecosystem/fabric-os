@@ -3,7 +3,7 @@
 > **Last updated:** 2026-06-15T19:08+00:00
 > **Agent:** platform-architect / security-engineer (regulatory-audit frame)
 > **Protocol compliance:** P22, P26, P27, P28 active
-> **Current sprint:** SECAS-S4 — pen-test remediation track (structural done; awaiting vendor report)
+> **Current sprint:** SECAS-S4 — security-test remediation track (structural done; awaiting vendor report)
 > **Sprint roadmap:** `audit/product-management/secas-execution-roadmap.md`
 
 ---
@@ -49,7 +49,7 @@ pnpm mlops:cost-router-staging-probe:write
 ### Open / parallel (Class A/S — blocksIR: false)
 
 - `SECAS-S2-01-INGEST` — vendor report ingest on/after **2026-06-21**
-- `BG-10-10` — pen-test execution window **2026-06-17..2026-06-21**
+- `BG-10-10` — security-test execution window **2026-06-17..2026-06-21**
 - `BG-10-11` — SOC 2 Type I opinion (parallel)
 - `baseline-os` — dedicated `mlops:check` harness not yet landed (rollup uses aiops-fleet witness)
 
@@ -101,7 +101,7 @@ cd bridge-os && pnpm ecosystem:ops-lanes-100:check:write
 ### Open
 
 - Pre-existing `pnpm lint` failures in workspace packages (no Class R story assigned).
-- External/vendor gates remain parallel: EXT-INF-002/013/014/015, BL-SOC2-01 MSA execution.
+- External/vendor gates remain parallel: EXT-REF/013/014/015, BL-SOC2-01 MSA execution.
 - Baseline-os roadmap intake (XR-BASELINE-ROADMAP-INTAKE-001 / XR-AGILE-ROADMAP-INTAKE-001) filed and raised to bridge-os + agile-os; fabric-os ack recorded pending program definition.
 
 ### Next (Class R)
@@ -175,7 +175,7 @@ cd bridge-os && pnpm ecosystem:ops-lanes-100:check:write
 | S2-09 | INF-86 pilot ceremony | `hold` | Waiting for XR-401 unblock |
 | S2-10 | Verifier DNS (XR-507 / S3-09) | **`done`** (2026-06-05) | CNAME + Pages custom domain; smoke 200 + pepper |
 | S2-11 | Supabase unpause (XR-508 / S3-10) | **`done`** (2026-06-05) | Project active; `financing_applications` REST 200 |
-| S2-13 | Pen-test SOW signature | `intake ready` | Human SOW signature pending (EXT-INF-002) |
+| S2-13 | security-test SOW signature | `intake ready` | Human SOW signature pending (EXT-REF) |
 | S3-06 | Publish primitives | `done` | `publish-npm` job in slsa-provenance.yml; tag-triggered; gate in validate-all; needs NPM_TOKEN secret |
 | S3-07 | DR live RDS restore | `done` | Live PITR staging operational 2026-06-04 — `01-docs/05-audit/evidence/rds-restore/rds-restore-operational-staging-20260604-080937.json` (RTO ~20m, RPO 0); side instance deleted |
 | IR-3.5 | Refresh DR fire-drill dated artifact | `done` | Updated from 2026-05-31 structural placeholder to 2026-06-04 live evidence; `01-docs/05-audit/dr-fire-drill-evidence-2026-06-04.md` |
@@ -238,10 +238,10 @@ kubectl get pod -n terminal-os-staging
 
 | ID | Blocker | Owner |
 |----|---------|-------|
-| EXT-INF-002 | Pen-test SOW signature | Leadership |
-| EXT-INF-013 | SOC 2 Type I auditor | CISO + Finance |
-| EXT-INF-014 | ZWCMP DPA + pilot agreement | Founder / GTM |
-| EXT-INF-015 | Indemnified-SLA legal review | Legal / GTM |
+| EXT-REF | security-test SOW signature | Leadership |
+| EXT-REF | SOC 2 Type I auditor | CISO + Finance |
+| EXT-REF | ZWCMP DPA + pilot agreement | Founder / GTM |
+| EXT-REF | Indemnified-SLA legal review | Legal / GTM |
 
 ---
 
@@ -285,7 +285,7 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 
 - **Command:** `agent start` (baseline-os repo-session-core)
 - **Repo:** fabric-os
-- **Next work:** SECAS-S4-04 — Pen-test findings remediation track + re-test witness
+- **Next work:** SECAS-S4-04 — security-test findings remediation track + re-test witness
 - **Blocked:** no
 - **Git:** 50 changed path(s)
 
@@ -307,7 +307,7 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - **Implement queue:** Drained (0 items)
 - **Plan queue:** Drained (LAUNCH-PLAN-01/02/03 done)
 - **validate-all:** 46/46 gates pass
-- **Cross-repo:** XR-401/405/507/508 done; XR-402 ready; EXT-INF-002/013/014/015/016 remain human blockers
+- **Cross-repo:** XR-401/405/507/508 done; XR-402 ready; EXT-REF/013/014/015/016 remain human blockers
 - **Next computed:** IR dimension lifts (IR-3.4, IR-4.1, IR-5.2, IR-6.4) or external/human actions
 
 ### W2-E2E UNBLOCK — 2026-06-05
@@ -348,7 +348,7 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 ### Next (Class R)
 
 - Docs Standard drift: 27 violations (mostly `01-docs/01-agents/*` + cross-repo `gtcx-agentic` links) — baseline or fix in dedicated hygiene pass
-- EXT-INF-002 pen-test SOW — Class S parallel (not repo-blocked)
+- EXT-REF security-test SOW — Class S parallel (not repo-blocked)
 
 ---
 
@@ -423,13 +423,13 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - **Harness updated:** `platform/scripts/secas-cards-check.mjs` — 6 required cards
 - **Witness:** `pnpm secas:cards:check:write` PASS
 - **Work register:** SECAS-S4-05 marked `done`
-- **Next (P22):** `SECAS-S4-04` — Pen-test findings remediation track (persona: security-engineer, frame: regulatory-audit)
+- **Next (P22):** `SECAS-S4-04` — security-test findings remediation track (persona: security-engineer, frame: regulatory-audit)
 
 
 ## SECAS-S4-04 — DONE (scaffold) (2026-06-14)
 
 - **Commit:** `e7c8af9`
-- **Scaffold:** `audit/evidence/pen-test-findings-register-latest.json`, `audit/evidence/pen-test-remediation-closure-latest.json`
+- **Scaffold:** `audit/evidence/security-test-findings-register-latest.json`, `audit/evidence/security-test-remediation-closure-latest.json`
 - **Script:** `platform/scripts/secas-pentest-remediation-check.mjs` + `pnpm secas:pentest:remediation:check[:write]`
 - **Witness:** `pnpm secas:pentest:remediation:check:write` PASS (phase `awaiting_vendor_report`)
 - **Work register:** SECAS-S4-04 `structural done`; SEC-PTREM-01 `executionStatus: structural done`

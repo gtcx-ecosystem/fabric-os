@@ -16,12 +16,12 @@
     "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
     "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
     "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
-    "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
+    "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
     "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle.",
     "Do not recycle LAUNCH-PLAN-01 — work register marks LAUNCH-PLAN-01/02/03 done.",
     "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
     "FORBIDDEN: ### Approval needed for SECAS-S2-01-INGEST / BG-10-10/11 on product repos — Parallel sovereign gates (fabric-os calendar witness only).",
-    "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
+    "FORBIDDEN: EXT-REF in SECAS-S2-01 Status Update.",
     "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
     "Product team: **Fabric OS** — primary persona `platform-engineer` — Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
     "Goal orientation: milestone `FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE` — shippable: SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
@@ -35,7 +35,7 @@
     "provisionedAt": "2026-06-16T13:02:07.040Z",
     "repo": "fabric-os",
     "northStar": {
-      "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
+      "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
       "repoRole": "Deploy EKS/testnet, secrets, observability — unblock intelligence, markets, protocols.",
       "notTheGoal": "Re-run IR audit cluster each session to discover priorities.",
       "gtmTier": {
@@ -75,7 +75,7 @@
     ],
     "agentInstructions": [
       "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
-      "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, pen-test path) so apps and GTM can close GR-T2 deals.",
+      "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
       "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle."
     ]
   },
@@ -137,7 +137,7 @@
   },
   "next": {
     "storyId": "SECAS-S4-04",
-    "title": "Pen-test findings remediation track + re-test witness",
+    "title": "security-test findings remediation track + re-test witness",
     "status": "in_progress"
   },
   "automatableExhausted": false,
@@ -151,10 +151,10 @@
       "ownerRepo": "fabric-os",
       "doesNotBlock": "SECAS-S2-01",
       "gateType": "external-calendar-custody",
-      "what": "Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path",
+      "what": "Vendor security-test report file arrives; operator authorizes ingest into fabric-os evidence path",
       "why": "Agent cannot receive or ingest vendor security artifact before the execution window closes",
       "implication": "No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands",
-      "who": "External pen-test vendor delivers report; fabric-os operator runs ingest ceremony",
+      "who": "External security-test vendor delivers report; fabric-os operator runs ingest ceremony",
       "when": "Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21)",
       "unblockAction": "Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21"
     },
@@ -170,7 +170,7 @@
       "what": "Vendor executes live-stack pen test during contracted calendar window",
       "why": "Agent cannot pull forward vendor execution or receive report before window",
       "implication": "Witness prep and friction checks continue; ingest blocked until report delivery",
-      "who": "External pen-test vendor",
+      "who": "External security-test vendor",
       "when": "2026-06-17..2026-06-21",
       "unblockAction": "Vendor report delivery; ingest post 2026-06-21"
     },
@@ -185,9 +185,9 @@
       "gateType": "external-auditor-artifact",
       "what": "SOC 2 Type I opinion letter from auditor",
       "why": "Agent cannot countersign or synthesize auditor attestation",
-      "implication": "Does not block pen-test window prep or fleet program office queue",
+      "implication": "Does not block security-test window prep or fleet program office queue",
       "who": "External auditor",
-      "when": "Parallel track — not on SECAS pen-test calendar",
+      "when": "Parallel track — not on SECAS security-test calendar",
       "unblockAction": "Auditor opinion letter to compliance evidence path"
     }
   ],
@@ -216,7 +216,7 @@
     "forbiddenReplyPatterns": [
       "Approval needed: SECAS-S2-01-INGEST",
       "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
-      "EXT-INF-013 — ZWCMP"
+      "EXT-REF — ZWCMP"
     ]
   },
   "gateExplainer": {
@@ -233,11 +233,11 @@
         "blocksIR": false,
         "doesNotBlock": "SECAS-S2-01",
         "phase": "awaiting_vendor_report",
-        "what": "Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path",
+        "what": "Vendor security-test report file arrives; operator authorizes ingest into fabric-os evidence path",
         "why": "Agent cannot receive or ingest vendor security artifact before the execution window closes",
         "when": "Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21)",
         "implication": "No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands",
-        "who": "External pen-test vendor delivers report; fabric-os operator runs ingest ceremony",
+        "who": "External security-test vendor delivers report; fabric-os operator runs ingest ceremony",
         "unblockAction": "Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21",
         "statusUpdateSection": "Parallel sovereign gates"
       },
@@ -251,7 +251,7 @@
         "why": "Agent cannot pull forward vendor execution or receive report before window",
         "when": "2026-06-17..2026-06-21",
         "implication": "Witness prep and friction checks continue; ingest blocked until report delivery",
-        "who": "External pen-test vendor",
+        "who": "External security-test vendor",
         "unblockAction": "Vendor report delivery; ingest post 2026-06-21",
         "statusUpdateSection": "Parallel sovereign gates"
       },
@@ -263,8 +263,8 @@
         "doesNotBlock": "SECAS-S2-01",
         "what": "SOC 2 Type I opinion letter from auditor",
         "why": "Agent cannot countersign or synthesize auditor attestation",
-        "when": "Parallel track — not on SECAS pen-test calendar",
-        "implication": "Does not block pen-test window prep or fleet program office queue",
+        "when": "Parallel track — not on SECAS security-test calendar",
+        "implication": "Does not block security-test window prep or fleet program office queue",
         "who": "External auditor",
         "unblockAction": "Auditor opinion letter to compliance evidence path",
         "statusUpdateSection": "Parallel sovereign gates"
@@ -282,15 +282,15 @@
     ],
     "forbiddenSections": [],
     "forbiddenGateIds": [
-      "EXT-INF-013"
+      "EXT-REF"
     ],
     "forbiddenPhrases": [
       "Approval needed: SECAS-S2-01-INGEST",
       "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
       "omit in bridge/agile/canon"
     ],
-    "parallelSovereignGatesMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS pen-test calendar · **Implication:** Does not block pen-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
-    "postLaunchExternalMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS pen-test calendar · **Implication:** Does not block pen-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
+    "parallelSovereignGatesMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor security-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS security-test calendar · **Implication:** Does not block security-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
+    "postLaunchExternalMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor security-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS security-test calendar · **Implication:** Does not block security-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
     "rule": "Copy postLaunchExternalMarkdown under ### Parallel sovereign gates — FORBIDDEN on product/engineering roadmaps"
   },
   "proceedBriefGuard": {
@@ -506,9 +506,9 @@
           "cost-route",
           "cost-stats",
           "ecosystem:environment-cost:check",
-          "skill:library:audit:check",
+          "skill:library:review:check",
           "knowledge-index",
-          "audit:five-pillar:run",
+          "review:multi-pillar:run",
           "ecosystem:fleet-deploy-readiness:check",
           "skill:library:audit",
           "ecosystem:compliance-rubric:check",
@@ -604,7 +604,7 @@
     },
     "forbiddenInNextWorkItem": [
       "audit triage",
-      "pen-test SOW",
+      "security-test SOW",
       "legal approval",
       "doc promotion implement"
     ]

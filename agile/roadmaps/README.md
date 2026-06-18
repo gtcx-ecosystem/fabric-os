@@ -11,12 +11,7 @@ review_cycle: on-change
 
 # `agile/roadmaps/` — fabric-os
 
-Lane narratives roll up to the **business roadmap** (GTM · legal · compliance · partnerships).  
-The **technical/product roadmap** (`technical.md`, `ux-design.md`, `pm/roadmap/product-milestones.json`) is **Class R engineering only** — no external or pilot blockers.
-
-**Enforcement:** `pnpm product-roadmap:lane:check` · spec: `canon-os/pm/spec/product-roadmap-lane-isolation-protocol.json`
-
-Executive one-pager: [`../../docs/foundation/roadmap.md`](../../docs/foundation/roadmap.md).
+Lane narratives. Executive one-pager: [`../../docs/foundation/roadmap.md`](../../docs/foundation/roadmap.md).
 
 | Lane         | File                                   |
 | ------------ | -------------------------------------- |

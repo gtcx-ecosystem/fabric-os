@@ -35,6 +35,10 @@ Fleet law: [`../canon-os/docs/governance/constitution/GTCX-CONSTITUTION.md`](../
 | [milestones.md](./milestones.md)     | Active milestone       |
 | [roadmap.md](./roadmap.md)           | Executive narrative    |
 
+## Business layer (detail)
+
+Market, customer, and economics depth: [`../business/`](../business/) — cross-ref table links foundation summaries to canonical business files.
+
 ## Session read order
 
 1. This README → `constitution.md` → fleet constitution Articles I, III, V

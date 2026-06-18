@@ -1,5 +1,11 @@
-# fabric-os — agile lens
+---
+status: pointer
+---
 
-Fleet backlog: `../agile-os/pm/ecosystem-sprint-backlog.json` (sibling repo).
+# `docs/roadmap/agile/` — relocated
 
-Local roadmap: [`roadmap.md`](./roadmap.md)
+**Canonical agile hub:** [`../../../agile/README.md`](../../../agile/README.md)
+
+Sprint ceremony, CPO connection, and 11-pillar scorecard live at repo-root `agile/` per P35 v5 — not under `docs/roadmap/`.
+
+Pack: [`../../../canon-os/pm/spec/agile-pack.json`](../../../canon-os/pm/spec/agile-pack.json)

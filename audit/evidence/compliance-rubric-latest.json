@@ -7,7 +7,7 @@
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
       "weight": 8,
-      "score100": 45,
+      "score100": 65,
       "protocol": "P35",
       "items": [
         {
@@ -35,8 +35,8 @@
         {
           "id": "root-allowlist",
           "label": "Root allowlist / workspace root cleanliness",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 20,
           "severity": "P2",
           "optional": false,
@@ -135,14 +135,14 @@
     "ops-domains-p29": {
       "label": "Operational domains (P29)",
       "weight": 6,
-      "score100": 50,
+      "score100": 100,
       "protocol": "P29",
       "items": [
         {
           "id": "ops-check-pass",
           "label": "pnpm ops:check exit 0",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 50,
           "severity": "P1",
           "optional": false,
@@ -806,20 +806,6 @@
       "label": "P35 layout strict GREEN",
       "severity": "P1",
       "detail": "p35Strict"
-    },
-    {
-      "id": "root-allowlist",
-      "categoryId": "layout-p35",
-      "label": "Root allowlist / workspace root cleanliness",
-      "severity": "P2",
-      "detail": "opsCheck"
-    },
-    {
-      "id": "ops-check-pass",
-      "categoryId": "ops-domains-p29",
-      "label": "pnpm ops:check exit 0",
-      "severity": "P1",
-      "detail": "opsCheck"
     },
     {
       "id": "agentic-manifest",

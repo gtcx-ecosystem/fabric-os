@@ -17,7 +17,8 @@
     "workstream",
     "config",
     "agentic",
-    "pm"
+    "pm",
+    "agents"
   ],
   "allowed_files": [
     ".dockerignore",
@@ -62,7 +63,8 @@
     "workstream",
     "config",
     "agentic",
-    "pm"
+    "pm",
+    "agents"
   ],
   "allowed_dot_directories": [
     ".github",

@@ -25,6 +25,9 @@
     "goals": "docs/foundation/goals.md",
     "milestones": "docs/foundation/milestones.md",
     "roadmap": "docs/foundation/roadmap.md",
+    "uxReadme": "docs/product/ux/README.md",
+    "customersReadme": "docs/business/customers/README.md",
+    "strategyReadme": "docs/business/strategy/README.md",
     "architectureReadme": "docs/architecture/README.md"
   }
 }

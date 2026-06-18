@@ -1,5 +1,5 @@
 ---
-title: 'agents/bootstrap'
+title: 'agents/playbooks'
 status: current
 date: 2026-06-16
 owner: fabric-os
@@ -9,6 +9,6 @@ tags: ['documentation', 'agents']
 review_cycle: on-change
 ---
 
-# Bootstrap
+# Playbooks
 
-Session entry — read order, provider routes. Link `AGENTS.md` and dot dirs; do not duplicate prose.
+Repo-scoped agent task playbooks — not operator incident runbooks.

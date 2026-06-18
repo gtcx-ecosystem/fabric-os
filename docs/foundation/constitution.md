@@ -7,7 +7,6 @@ document_type: protocol
 tier: critical
 tags: ['foundation']
 review_cycle: on-change
-
 ---
 
 # fabric-os — repo charter
@@ -18,8 +17,8 @@ review_cycle: on-change
 
 ## Repo role
 
-| In scope | Out of scope |
-| -------- | ------------ |
+| In scope                                                            | Out of scope                                                                                  |
+| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | Platform/runtime services for the fleet · Agent harness and tooling | Product feature delivery in platform cwd when owner is product repo · Forking canon protocols |
 
 ## Non-negotiables

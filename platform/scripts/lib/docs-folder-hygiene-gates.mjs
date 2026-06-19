@@ -135,7 +135,7 @@ export function sprawlMetrics(repoRoot) {
     .map((e) => ({
       name: e.name,
       mdCount: countMdFiles(join(docs, e.name)),
-      looseRoot: looseMdAtRoot(join(docs, e.name), ['README.md', 'FOLDER-SPEC.md', 'pillar-scorecard.md', 'index.md', 'SUMMARY.md']).length,
+      looseRoot: looseMdAtRoot(join(docs, e.name), ['README.md', 'FOLDER-SPEC.md', 'scorecard.md', 'index.md', 'SUMMARY.md']).length,
     }))
     .sort((a, b) => b.mdCount - a.mdCount);
   return {

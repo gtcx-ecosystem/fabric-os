@@ -115,7 +115,7 @@ function allowedNestedDir(name, patterns) {
   return patterns.some((p) => new RegExp(p).test(name));
 }
 
-function collectPackPaths(repoRoot, packName, profileKey = 'product') {
+export function collectPackPaths(repoRoot, packName, profileKey = 'product') {
   const resolution = resolveDocsPack(repoRoot, packName);
   const pack = resolution.resolved;
   if (!pack || !resolution.resolvedIsFull) return { requiredFiles: [], subfolders: new Set(), optionalSubfolders: new Set() };
@@ -231,6 +231,11 @@ export function validateDocsTree(repoRoot, options = {}) {
       const layerAbs = join(repoRoot, layerPath);
       if (existsSync(layerAbs)) {
         const allow = layerRootAllowlist(spec, layer.id);
+        for (const rf of requiredFiles) {
+          if (rf.startsWith(`${layerPath}/`) && rf.split('/').length === 3) {
+            allow.add(rf.split('/').pop());
+          }
+        }
         const loose = looseMarkdownAtRoot(layerAbs, [...allow]);
         gates.push(gate(`layer:root-sprawl:${layer.id}`, loose.length === 0, loose.length ? loose.join(', ') : 'clean'));
       }

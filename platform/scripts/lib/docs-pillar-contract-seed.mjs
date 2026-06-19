@@ -84,12 +84,38 @@ const LAYER_ARTIFACTS = {
     technicalExcellence: { primary: true, artifacts: ['docs/operations/runbooks/', 'docs/operations/deployment/'], gates: ['commands + exit codes'] },
     craft: { secondary: true, artifacts: ['docs/operations/README.md'], gates: ['runbook index'] },
     worldClass: { primary: true, artifacts: ['docs/operations/runbooks/'], gates: ['global ops bars'] },
-    trustAndSafety: { primary: true, artifacts: ['docs/operations/agent-spine/'], gates: ['P27 execution obligation'] },
+    trustAndSafety: { primary: true, artifacts: ['docs/operations/agent-init/'], gates: ['P27 execution obligation'] },
     creativityInnovation: NA_INNOVATION,
     commercialValue: { secondary: true, artifacts: ['docs/operations/README.md'], gates: ['pilot unblock path'] },
     defensiveMoat: { secondary: true, artifacts: ['docs/operations/deployment/'], gates: ['proprietary deploy choreography'] },
-    agenticEmpowerment: { primary: true, artifacts: ['docs/operations/agent-spine/'], gates: ['agent ops narrative'] },
+    agenticEmpowerment: { primary: true, artifacts: ['docs/operations/agent-init/'], gates: ['agent ops narrative'] },
     ecosystemIntegration: { secondary: true, artifacts: ['docs/operations/integrations/'], gates: ['cross-repo runbooks'] },
+    ipMagic: NA_IP,
+  },
+  research: {
+    compliance: { primary: true, artifacts: ['docs/research/FOLDER-SPEC.md'], gates: ['intake-only — decompose or archive'] },
+    technicalExcellence: { secondary: true, artifacts: ['docs/research/README.md'], gates: ['no permanent SoR'] },
+    craft: { secondary: true, artifacts: ['docs/research/README.md'], gates: ['intake index'] },
+    worldClass: { secondary: true, artifacts: ['docs/research/README.md'], gates: ['decompose targets documented'] },
+    trustAndSafety: { secondary: true, artifacts: ['docs/research/README.md'], gates: ['source attribution on intake'] },
+    creativityInnovation: { primary: true, artifacts: ['docs/research/'], gates: ['research → strategy/product decomposition'] },
+    commercialValue: { primary: true, artifacts: ['docs/research/'], gates: ['market insight intake'] },
+    defensiveMoat: { secondary: true, artifacts: ['docs/research/README.md'], gates: ['no duplicate BMC essays'] },
+    agenticEmpowerment: { secondary: true, artifacts: ['docs/research/README.md'], gates: ['agent intake rules'] },
+    ecosystemIntegration: { secondary: true, artifacts: ['docs/research/README.md'], gates: ['owner-repo handoff links'] },
+    ipMagic: NA_IP,
+  },
+  publishing: {
+    compliance: { primary: true, artifacts: ['docs/publishing/FOLDER-SPEC.md'], gates: ['publish register alignment'] },
+    technicalExcellence: { secondary: true, artifacts: ['docs/publishing/gitbook/'], gates: ['SUMMARY + build paths'] },
+    craft: { primary: true, artifacts: ['docs/publishing/README.md'], gates: ['publish index quality'] },
+    worldClass: { secondary: true, artifacts: ['docs/publishing/gitbook/'], gates: ['fleet publish bars'] },
+    trustAndSafety: { secondary: true, artifacts: ['docs/publishing/README.md'], gates: ['no draft-as-published claims'] },
+    creativityInnovation: NA_INNOVATION,
+    commercialValue: { secondary: true, artifacts: ['docs/publishing/README.md'], gates: ['GTM channel map'] },
+    defensiveMoat: { secondary: true, artifacts: ['docs/publishing/README.md'], gates: ['canonical vs publish lane'] },
+    agenticEmpowerment: { secondary: true, artifacts: ['docs/publishing/README.md'], gates: ['operator publish runbook links'] },
+    ecosystemIntegration: { primary: true, artifacts: ['docs/publishing/gitbook/'], gates: ['ecosystem-os operator docs'] },
     ipMagic: NA_IP,
   },
 };
@@ -125,7 +151,7 @@ export function scorecardBody(layer, target, witnessRel, packRel, primaryPillars
     return `| ${id} | ${role} | pack contract | MPR witness rollup | ${target} |`;
   }).join('\n');
   return `---
-title: 'pillar-scorecard — ${layer.path}'
+title: 'scorecard — ${layer.path}'
 status: current
 date: 2026-06-16
 document_type: folder-spec

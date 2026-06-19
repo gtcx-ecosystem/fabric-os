@@ -37,6 +37,11 @@ export function isStubPack(spec, rawBytes = 0) {
 
   const hasSubfolders = spec.requiredSubfolders && Object.keys(spec.requiredSubfolders).length > 0;
   const hasRootFiles = Array.isArray(spec.requiredRootFiles) && spec.requiredRootFiles.length > 0;
+  if (spec.$schema?.includes('docs-strategy-pack') && hasProfiles && hasRootFiles) return false;
+  if (spec.$schema?.includes('docs-architecture-pack') && hasProfiles && hasRootFiles) return false;
+  // v2 BMC business pack — flat canvas; requiredSubfolders intentionally empty
+  if (spec.$schema?.includes('docs-business-pack') && hasProfiles && hasRootFiles) return false;
+  if (spec.fleetCanonical === true && hasProfiles) return false;
   if (hasProfiles && hasSubfolders && hasRootFiles) return false;
   if (spec.upstreamSpec && rawBytes > 0 && rawBytes <= STUB_MAX_BYTES) return true;
   return !hasProfiles || !hasSubfolders || !hasRootFiles;
@@ -113,9 +118,21 @@ export function resolveDocsPack(repoRoot, packName, options = {}) {
   };
 }
 
-export function profileKeyFromTier(tier) {
+export function profileKeyFromTier(tier, repoRoot = null) {
   if (tier === 'fleet-documentation') return 'fleet-documentation';
   if (tier === 'canon-service' || tier === 'program-office') return 'constitution-standards';
+  if (tier === 'platform-runtime') return 'platform-runtime';
+  if (repoRoot) {
+    const sorPath = join(repoRoot, 'docs/sor.json');
+    if (existsSync(sorPath)) {
+      try {
+        const kind = JSON.parse(readFileSync(sorPath, 'utf8')).repoKind;
+        if (kind === 'platform-runtime') return 'platform-runtime';
+      } catch {
+        /* ignore */
+      }
+    }
+  }
   if (tier === 'platform' || tier === 'fleet-agile' || tier === 'monorepo-root') return 'platform';
   return 'product';
 }

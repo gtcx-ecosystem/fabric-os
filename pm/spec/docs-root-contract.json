@@ -1,0 +1,119 @@
+{
+  "$schema": "gtcx://canon-os/docs-root-contract/v1",
+  "updated": "2026-06-19",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "protocol": "docs/governance/protocols/48-docs-provisioning-standard/protocol.md",
+  "title": "P48 docs root contract — roles, thin instances, templates",
+  "legacyAliases": ["docs-six-pack", "six-pack", "four-pack"],
+  "principle": "Required root files fleet-wide (count may change — contract is authoritative); repo-specific substance only. Fleet IA law lives in canon-os — owner repos link, never fork read-order tables or provisioning specs.",
+  "templates": {
+    "base": "docs/reference/templates/docs/types/",
+    "files": {
+      "README.template.md": "human map — profile, layer table, central spec links",
+      "INDEX.template.md": "agent manifest — forbidden paths, sor note, fleet read-order link",
+      "conventions.template.md": "repo naming deltas + link to hub conventions",
+      "CHANGELOG.template.md": "structural changelog header",
+      "sor.template.json": "machine path variants — copy and fill"
+    }
+  },
+  "files": {
+    "README.md": {
+      "audience": "human",
+      "required": true,
+      "mustContain": [
+        "repo profile / north star (1–3 sentences)",
+        "top-level docs/ folder table with links",
+        "link to canon-os IA-PILLAR-MAP.md",
+        "link to canon-os 00-docs-root.json"
+      ],
+      "mustNotContain": [
+        "full agent read-order chain duplicated from IA-PILLAR-MAP",
+        "copied pm/spec/docs-folders provisioning tables",
+        "11PR self-assessed score tables"
+      ],
+      "maxRecommendedLines": 120,
+      "hubException": "canon-os may carry extended governance index below the standard header block"
+    },
+    "INDEX.md": {
+      "audience": "agent",
+      "required": true,
+      "document_type": "index",
+      "mustContain": [
+        "forbidden paths at docs/ root (repo-specific)",
+        "link to governance/docs-ia/IA-PILLAR-MAP.md for fleet read order",
+        "link to docs/sor.json for path variants",
+        "gate commands for this repo profile"
+      ],
+      "mustNotContain": [
+        "full layer × pillar tables",
+        "narrative vision/mission prose",
+        "duplicated conventions naming rules"
+      ],
+      "maxRecommendedLines": 45
+    },
+    "conventions.md": {
+      "audience": "both",
+      "required": true,
+      "mustContain": [
+        "link to canon-os docs/conventions.md for fleet naming law",
+        "repo-specific build/run commands if non-default",
+        "repo-specific naming deltas only"
+      ],
+      "mustNotContain": [
+        "agent read order",
+        "layer IA maps",
+        "full fleet protocol copies (hub only)"
+      ],
+      "maxRecommendedLines": 80,
+      "hubException": "canon-os is fleet conventions SoR — full body allowed"
+    },
+    "CHANGELOG.md": {
+      "audience": "both",
+      "required": true,
+      "mustContain": ["header stating structural-only scope"],
+      "appendOn": [
+        "folder create/rename/delete",
+        "root contract role change",
+        "sor.json path variant change"
+      ],
+      "mustNotContain": ["story completion", "sprint seals", "code release notes"]
+    },
+    "sor.json": {
+      "audience": "machine",
+      "required": true,
+      "schema": "gtcx://docs/sor/v1",
+      "mustContain": [
+        "repo",
+        "repoKind",
+        "updated",
+        "paths or pathVariants for physical ≠ logical layers"
+      ],
+      "mustNotContain": ["narrative prose", "11PR scores"]
+    },
+    "FOLDER-SPEC.md": {
+      "audience": "agent",
+      "required": false,
+      "profile": "canon-os-hub-only",
+      "note": "Only canon-os ships docs/FOLDER-SPEC.md. Other repos link central spec from README."
+    }
+  },
+  "scorecard": {
+    "location": "per layer — NOT docs/ root",
+    "pattern": "docs/{layer}/scorecard.md or docs/primitives/{layer}/scorecard.md",
+    "also": ["agile/scorecard.md", "agents/scorecard.md"],
+    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "scorecardIsReadOnlyRollup": true
+  },
+  "fleetSoR": {
+    "readOrder": "docs/governance/docs-ia/IA-PILLAR-MAP.md",
+    "readOrderMachine": "pm/spec/docs-ia-pillar-map.json",
+    "docsRootSpec": "pm/spec/docs-folders/00-docs-root.json",
+    "namingLaw": "docs/conventions.md",
+    "folderSpecs": "pm/spec/docs-folders/"
+  },
+  "enforcement": {
+    "check": "pnpm docs:root-contract:check",
+    "witness": "audit/evidence/docs-root-contract-latest.json",
+    "status": "live"
+  }
+}

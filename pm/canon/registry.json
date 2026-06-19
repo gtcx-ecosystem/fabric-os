@@ -6,7 +6,7 @@
   "productId": "fabric-os",
   "version": "0.1.0",
   "status": "draft",
-  "updated": "2026-06-18",
+  "updated": "2026-06-19",
   "owner": "fabric-os",
   "goalsRef": "pm/canon/strategy.json",
   "strategyRef": "pm/canon/strategy.json",
@@ -28,6 +28,6 @@
     "uxReadme": "docs/product/ux/README.md",
     "customersReadme": "docs/business/customers/README.md",
     "strategyReadme": "docs/business/strategy/README.md",
-    "architectureReadme": "docs/architecture/README.md"
+    "architectureReadme": "docs/primitives/architecture/README.md"
   }
 }

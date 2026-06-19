@@ -42,5 +42,10 @@
     "productTeams": "Engineering continues — vendor/legal gates are Parallel sovereign gates (blocksIR:false)",
     "fabricOs": "List under ### Parallel sovereign gates with What/Why/Implication — never Approval needed one-liners",
     "witnessRepos": "Omit vendor gates; use fleetOwnerRedirect to fabric-os"
+  },
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
   }
 }

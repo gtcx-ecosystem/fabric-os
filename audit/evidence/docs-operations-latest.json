@@ -1,0 +1,89 @@
+{
+  "schema": "gtcx://canon-os/docs-operations-check/v1",
+  "repo": "fabric-os",
+  "profile": "platform",
+  "at": "2026-06-19T19:10:56.239Z",
+  "ok": true,
+  "gates": [
+    {
+      "id": "spec:local-present",
+      "ok": true,
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-operations-pack.json"
+    },
+    {
+      "id": "spec:not-stub",
+      "ok": true,
+      "detail": "full local pack"
+    },
+    {
+      "id": "spec:resolved-full",
+      "ok": true,
+      "detail": "resolved full operations pack"
+    },
+    {
+      "id": "profile",
+      "ok": true,
+      "detail": "platform"
+    },
+    {
+      "id": "root:docs/operations/README.md",
+      "ok": true,
+      "detail": "docs/operations/README.md"
+    },
+    {
+      "id": "root:docs/operations/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "docs/operations/FOLDER-SPEC.md"
+    },
+    {
+      "id": "root-readme:cross-ref",
+      "ok": true,
+      "detail": "README cross-ref"
+    },
+    {
+      "id": "root-readme:ops-link",
+      "ok": true,
+      "detail": "README must link ops/ machine SoR"
+    },
+    {
+      "id": "root-folder-spec:pack-link",
+      "ok": true,
+      "detail": "FOLDER-SPEC cites pack"
+    },
+    {
+      "id": "subfolder:runbooks",
+      "ok": true,
+      "detail": "docs/operations/runbooks/"
+    },
+    {
+      "id": "subfolder-file:runbooks/README.md",
+      "ok": true,
+      "detail": "docs/operations/runbooks/README.md"
+    },
+    {
+      "id": "subfolder:deployment",
+      "ok": true,
+      "detail": "docs/operations/deployment/"
+    },
+    {
+      "id": "subfolder-file:deployment/README.md",
+      "ok": true,
+      "detail": "docs/operations/deployment/README.md"
+    },
+    {
+      "id": "subfolder:agent-init",
+      "ok": true,
+      "detail": "docs/operations/agent-init/"
+    },
+    {
+      "id": "subfolder-file:agent-init/README.md",
+      "ok": true,
+      "detail": "docs/operations/agent-init/README.md"
+    },
+    {
+      "id": "canonical:agent-init/agent-universal-instructions.md",
+      "ok": true,
+      "detail": "docs/operations/agent-init/agent-universal-instructions.md"
+    }
+  ]
+}

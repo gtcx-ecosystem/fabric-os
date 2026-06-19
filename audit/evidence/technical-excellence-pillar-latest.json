@@ -63,5 +63,10 @@
   "rubricSpec": "pm/spec/technical-excellence-rubric.json",
   "rubricVersion": "1.0.0",
   "capped": false,
-  "capReason": null
+  "capReason": null,
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

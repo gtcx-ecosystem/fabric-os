@@ -35,5 +35,10 @@
       "detail": "missing one of: docs/specs/ia-navigation-spec.md, docs/architecture/specs/ia-navigation-spec.md, docs/specs/ia-navigation-spec.md"
     }
   ],
-  "at": "2026-06-19T02:27:03.031Z"
+  "at": "2026-06-19T02:27:03.031Z",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

@@ -1,0 +1,250 @@
+{
+  "schema": "gtcx://canon-os/product-charter-check/v1",
+  "at": "2026-06-19T07:57:40.154Z",
+  "repo": "fabric-os",
+  "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+  "ok": true,
+  "score": {
+    "earned": 20.5,
+    "possible": 22,
+    "pct": 93.2,
+    "rag": "green"
+  },
+  "registry": {
+    "dialect": "sharded-v2-forensic",
+    "count": 6,
+    "workflowSteps": 1,
+    "specGaps": 0,
+    "path": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/feature-registry/manifest.json",
+    "forensic": true
+  },
+  "counts": {
+    "features": 6,
+    "workflowSteps": 1,
+    "specGaps": 0,
+    "prdFeatures": 5,
+    "personas": 4,
+    "jtbd": 3,
+    "jtbdCatalog": 0,
+    "e2eWorkflows": 0,
+    "flows": 3,
+    "exr": 0,
+    "workflows": 0,
+    "forensicSurfaces": 0
+  },
+  "gates": [
+    {
+      "id": "foundation:vision.md",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "vision.md"
+    },
+    {
+      "id": "foundation:mission.md",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "mission.md"
+    },
+    {
+      "id": "foundation:goals.md",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "goals.md"
+    },
+    {
+      "id": "foundation:milestones.md",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "milestones.md"
+    },
+    {
+      "id": "product-goals:present",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "ok"
+    },
+    {
+      "id": "product-goals:productGoals",
+      "ok": true,
+      "optional": false,
+      "weight": 1
+    },
+    {
+      "id": "product-goals:shippingGoals",
+      "ok": true,
+      "optional": true,
+      "weight": 1
+    },
+    {
+      "id": "product-goals:gtmGoals",
+      "ok": true,
+      "optional": true,
+      "weight": 1
+    },
+    {
+      "id": "product-goals:activeMilestone",
+      "ok": true,
+      "optional": false,
+      "weight": 1
+    },
+    {
+      "id": "strategy:no-assurance-in-north-star",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "ok"
+    },
+    {
+      "id": "strategy:no-assurance-in-mission",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "ok"
+    },
+    {
+      "id": "strategy:milestone-not-deploy-gate",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "ok"
+    },
+    {
+      "id": "prd-charter:present",
+      "ok": true,
+      "optional": false,
+      "weight": 1
+    },
+    {
+      "id": "prd-charter:sections",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "6 sections"
+    },
+    {
+      "id": "prd-index:present",
+      "ok": true,
+      "optional": false,
+      "weight": 1
+    },
+    {
+      "id": "prd-index:milestone-sync",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "ok"
+    },
+    {
+      "id": "prd-index:features",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "5 slugs"
+    },
+    {
+      "id": "registry:present",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "sharded-v2-forensic (6)"
+    },
+    {
+      "id": "registry:min-features",
+      "ok": true,
+      "optional": true,
+      "weight": 1,
+      "detail": "6 features"
+    },
+    {
+      "id": "registry:forensic-v2",
+      "ok": true,
+      "optional": true,
+      "weight": 1,
+      "detail": "workflowSteps=1 specGaps=0"
+    },
+    {
+      "id": "jtbd:catalog",
+      "ok": false,
+      "optional": true,
+      "weight": 1,
+      "detail": "missing pm/ux/jtbd/catalog.json"
+    },
+    {
+      "id": "workflows:e2e-catalog",
+      "ok": false,
+      "optional": true,
+      "weight": 1,
+      "detail": "missing e2e-catalog"
+    },
+    {
+      "id": "forensic:spec-impl-audit",
+      "ok": false,
+      "optional": true,
+      "weight": 1,
+      "detail": "missing forensic-feature-audit-latest.json"
+    },
+    {
+      "id": "ux:personas",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "4 personas"
+    },
+    {
+      "id": "ux:jtbd",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "3/3 complete"
+    },
+    {
+      "id": "ux:flows",
+      "ok": true,
+      "optional": false,
+      "weight": 1,
+      "detail": "3 flows"
+    },
+    {
+      "id": "exr:pack",
+      "ok": false,
+      "optional": true,
+      "weight": 1,
+      "detail": "0 files"
+    },
+    {
+      "id": "exr:frontmatter",
+      "ok": false,
+      "optional": true,
+      "weight": 1,
+      "detail": "0/0 with personaId+jtbdId"
+    },
+    {
+      "id": "workflows:spine",
+      "ok": false,
+      "optional": true,
+      "weight": 1,
+      "detail": "0 workflows"
+    },
+    {
+      "id": "review:11pr-witness",
+      "ok": true,
+      "optional": true,
+      "weight": 1,
+      "detail": "multi-pillar-latest.json"
+    },
+    {
+      "id": "review:feature-matrix",
+      "ok": true,
+      "optional": true,
+      "weight": 1,
+      "detail": "registry 6"
+    }
+  ],
+  "activeMilestone": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
+  "referenceTier": "product"
+}

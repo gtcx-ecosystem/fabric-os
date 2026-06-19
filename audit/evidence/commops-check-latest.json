@@ -33,5 +33,10 @@
   },
   "ok": true,
   "fleetWitness": true,
-  "handoff": "XR-BRIDGE-CORE-OPS-FABRIC-W1-001"
+  "handoff": "XR-BRIDGE-CORE-OPS-FABRIC-W1-001",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

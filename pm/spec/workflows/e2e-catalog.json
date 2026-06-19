@@ -1,0 +1,182 @@
+{
+  "$schema": "gtcx://fabric-os/e2e-workflow-catalog/v1",
+  "repo": "fabric-os",
+  "updated": "2026-06-19",
+  "workflows": [
+    {
+      "id": "WF-FABRIC-DEMO-001",
+      "exrRef": "SECAS-S4-02",
+      "title": "Integrator demo — fabric assurance spine",
+      "featureTier": "core",
+      "jtbdIds": ["JTBD-FABRIC-DEPLOY-001"],
+      "persona": "platform-engineer",
+      "witness": "audit/evidence/demo-readiness-fabric-os.json",
+      "runbook": "pm/product/prds/prd-product-charter.md",
+      "steps": [
+        {
+          "order": 1,
+          "action": "Verify fabric ops contracts",
+          "route": null,
+          "exit": "pnpm fabric:ops-contracts:check exit 0",
+          "impl": "platform/scripts/fabric-ops-policy-contract-check.mjs",
+          "verifyCommand": "pnpm fabric:ops-contracts:check"
+        },
+        {
+          "order": 2,
+          "action": "Run fabric assurance composite",
+          "route": null,
+          "exit": "Assurance witness green",
+          "impl": "platform/scripts/fabric-assurance-run.mjs",
+          "verifyCommand": "pnpm fabric:assurance:check"
+        },
+        {
+          "order": 3,
+          "action": "Validate service fabric compass",
+          "route": null,
+          "exit": "Lane map current",
+          "impl": "platform/scripts/service-fabric-compass-check.mjs",
+          "verifyCommand": "pnpm fabric:compass:check"
+        }
+      ]
+    },
+    {
+      "id": "WF-SECAS-SUPPLY-001",
+      "exrRef": "SECAS-S4-02",
+      "title": "Supply-chain gates — SECAS S4-02",
+      "featureTier": "core",
+      "jtbdIds": ["JTBD-FABRIC-SUPPLY-001"],
+      "persona": "platform-engineer",
+      "witness": "audit/evidence/secas-supply-chain-check-latest.json",
+      "steps": [
+        {
+          "order": 1,
+          "action": "SECAS friction pre-check",
+          "route": null,
+          "exit": "Friction witness pass",
+          "impl": "platform/scripts/secas-friction-check.mjs",
+          "verifyCommand": "pnpm secas:friction:check"
+        },
+        {
+          "order": 2,
+          "action": "SECAS approval lane",
+          "route": null,
+          "exit": "Approval cards valid",
+          "impl": "platform/scripts/secas-approval-check.mjs",
+          "verifyCommand": "pnpm secas:approval:check"
+        },
+        {
+          "order": 3,
+          "action": "Supply-chain gate",
+          "route": null,
+          "exit": "SECAS-S4-02 PASS",
+          "impl": "platform/scripts/secas-supply-chain-check.mjs",
+          "verifyCommand": "pnpm secas:supply-chain:check"
+        }
+      ]
+    },
+    {
+      "id": "WF-SECAS-PENTEST-001",
+      "exrRef": "SECAS-S4-04",
+      "title": "Pentest window readiness and remediation",
+      "featureTier": "competitive",
+      "jtbdIds": ["JTBD-FABRIC-SECOPS-001"],
+      "persona": "security-engineer",
+      "witness": "audit/evidence/secas-pentest-remediation-check-latest.json",
+      "steps": [
+        {
+          "order": 1,
+          "action": "Pentest ingest scaffold",
+          "route": null,
+          "exit": "Ingest check pass",
+          "impl": "platform/scripts/secas-pentest-ingest-check.mjs",
+          "verifyCommand": "pnpm secas:pentest:ingest:check"
+        },
+        {
+          "order": 2,
+          "action": "Window readiness probe",
+          "route": null,
+          "exit": "Window witness current",
+          "impl": "platform/scripts/secas-pentest-window-readiness.mjs",
+          "verifyCommand": "pnpm secas:window:readiness"
+        },
+        {
+          "order": 3,
+          "action": "Remediation witness",
+          "route": null,
+          "exit": "Remediation check pass",
+          "impl": "platform/scripts/secas-pentest-remediation-check.mjs",
+          "verifyCommand": "pnpm secas:pentest:remediation:check"
+        }
+      ]
+    },
+    {
+      "id": "WF-FLEET-OBS-001",
+      "exrRef": "SECAS-S4-02",
+      "title": "Fleet observability and health probes",
+      "featureTier": "competitive",
+      "jtbdIds": ["JTBD-FABRIC-OBS-001"],
+      "persona": "platform-engineer",
+      "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+      "steps": [
+        {
+          "order": 1,
+          "action": "Cross-repo health probe",
+          "route": null,
+          "exit": "Fleet health witness",
+          "impl": "platform/tools/scripts/cross-repo-health-probe.mjs",
+          "verifyCommand": "pnpm daas:fleet:health"
+        },
+        {
+          "order": 2,
+          "action": "Fleet risk register check",
+          "route": null,
+          "exit": "Risk matrix pass",
+          "impl": "platform/scripts/fleet-risk-check.mjs",
+          "verifyCommand": "pnpm fleet:risk:check"
+        },
+        {
+          "order": 3,
+          "action": "Fleet threat posture",
+          "route": null,
+          "exit": "Threat witness pass",
+          "impl": "platform/scripts/fleet-threat-check.mjs",
+          "verifyCommand": "pnpm fleet:threat:check"
+        }
+      ]
+    },
+    {
+      "id": "WF-DEPLOY-CHOREO-001",
+      "exrRef": "SECAS-S4-02",
+      "title": "Deploy choreography — cutover and lanes",
+      "featureTier": "core",
+      "jtbdIds": ["JTBD-FABRIC-DEPLOY-001"],
+      "persona": "platform-engineer",
+      "steps": [
+        {
+          "order": 1,
+          "action": "Fabric lanes alignment",
+          "route": null,
+          "exit": "11PR lanes pass",
+          "impl": "platform/scripts/fabric-lanes-check.mjs",
+          "verifyCommand": "pnpm fabric:lanes:check"
+        },
+        {
+          "order": 2,
+          "action": "Cutover readiness",
+          "route": null,
+          "exit": "Cutover witness green",
+          "impl": "platform/scripts/fabric-cutover-check.mjs",
+          "verifyCommand": "pnpm fabric:cutover:check"
+        },
+        {
+          "order": 3,
+          "action": "Ops lanes 11PR strict",
+          "route": null,
+          "exit": "Strict ops pass",
+          "impl": "platform/scripts/fabric-ops-lanes-11pr-check.mjs",
+          "verifyCommand": "pnpm fabric:ops-lanes-11pr:check"
+        }
+      ]
+    }
+  ]
+}

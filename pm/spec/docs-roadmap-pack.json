@@ -177,7 +177,7 @@
   "fractalMpr": {
     "policy": "pm/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-roadmap-layer-latest.json",
-    "scorecard": "docs/roadmap/pillar-scorecard.md",
+    "scorecard": "docs/roadmap/scorecard.md",
     "rollupFrom": ["file", "folder"],
     "scorecardIsReadOnlyRollup": true
   }

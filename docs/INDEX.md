@@ -1,57 +1,37 @@
 ---
-title: 'GTCX Infrastructure — docs INDEX (layout v3)'
+title: 'Docs index (agent manifest)'
 status: current
-date: 2026-06-06
-owner: gtcx-infrastructure
-tier: standard
-tags: ['docs', 'ia', 'layout-v3']
+date: '2026-06-19'
+owner: fabric-os
+document_type: index
+tier: critical
+review_cycle: on-change
 ---
 
-# Docs INDEX — layout v3 IA map
+# Documentation index — fabric-os
 
-Machine alias for [`README.md`](./README.md). Agents: start at **README** for narrative; use this table for **path contract** lookups (`01-docs/INDEX.md`).
+Agent manifest (P48 thin instance). **Human map:** [README.md](README.md)
 
-**Canonical path contract:** [`config/sor-map.json`](../config/sor-map.json) · [`config/paths.mjs`](../config/paths.mjs)
+## Fleet normative (link — do not duplicate)
 
-## Layout v3 IA map (hubs)
+- **Read order + layers:** [canon-os IA-PILLAR-MAP.md](https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/docs-ia/IA-PILLAR-MAP.md)
+- **Docs root contract:** [docs-root-contract.json](https://github.com/gtcx-ecosystem/canon-os/blob/main/pm/spec/docs-root-contract.json)
+- **Docs root spec:** [canon-os 00-docs-root](https://github.com/gtcx-ecosystem/canon-os/blob/main/pm/spec/docs-folders/00-docs-root.json)
+- **Path variants:** [sor.json](sor.json)
 
-| Hub        | Path             | Role                                    |
-| ---------- | ---------------- | --------------------------------------- |
-| Archive    | `00-archive/`    | Retired artifacts                       |
-| Docs       | `01-docs/`       | Internal documentation (this tree)      |
-| Ops        | `02-ops/`        | PM, coordination, attestation domains   |
-| Platform   | `03-platform/`   | Workspace packages + agent scripts      |
-| Deploy     | `04-deploy/`     | Terraform, Kubernetes, operator scripts |
-| Audit      | `05-audit/`      | Audit entry + evidence hub              |
-| Workstream | `06-workstream/` | Active workstream coordination          |
+## Forbidden at docs/ root
 
-## sor-map paths (selected)
+overview/, specs/, strategy/ at root — decompose to canonical layers. agile/, agents/ under docs/.
 
-| Key                   | Path                                            |
-| --------------------- | ----------------------------------------------- |
-| `auditEntry`          | `05-audit/AGENT-START.md`                       |
-| `auditEvidence`       | `05-audit/evidence/`                            |
-| `auditNarrativeIndex` | `01-docs/audit/`                                |
-| `agentsCanonical`     | `01-docs/agents/`                               |
-| `executionRoadmap`    | `audit/product-management/execution-roadmap.md` |
-| `autoDevState`        | `01-docs/audit/auto-dev-state.md`               |
-| `agentWorkSelection`  | `01-docs/operations/agent-work-selection.md`    |
-| `platformTools`       | `03-platform/tools/`                            |
-| `platformScripts`     | `03-platform/scripts/`                          |
-| `deployRoot`          | `04-deploy/`                                    |
-| `deployScripts`       | `04-deploy/03-platform/scripts/`                |
-| `deployTerraform`     | `04-deploy/terraform/`                          |
-| `deployKubernetes`    | `04-deploy/kubernetes/`                         |
-| `opsDomains`          | `02-ops/`                                       |
-| `workstream`          | `06-workstream/`                                |
-| `governanceTierB`     | `01-docs/operations/repo/`                      |
-| `docsIamap`           | `01-docs/README.md`                             |
-| `docsIndex`           | `01-docs/INDEX.md`                              |
-| `toolchainSoR`        | `config/toolchain/`                             |
-| `sorMap`              | `config/sor-map.json`                           |
-| `pathsModule`         | `config/paths.mjs`                              |
-| `repoKind`            | `config/repo-kind.json`                         |
-| `governanceSpine`     | `config/governance-spine.json`                  |
-| `opsManifest`         | `config/ops.manifest.json`                      |
+## Repo-specific entry paths
 
-Full narrative index: [`01-docs/README.md`](./README.md)
+| Concern    | Path                         |
+| ---------- | ---------------------------- |
+| Foundation | [`foundation/`](foundation/) |
+| Product    | [product/](product/)         |
+
+## Gates
+
+```bash
+pnpm docs:ia:check
+```

@@ -76,5 +76,10 @@
     }
   },
   "gaps": [],
-  "runbook": "audit/runbooks/A4-compliance-security.md"
+  "runbook": "audit/runbooks/A4-compliance-security.md",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

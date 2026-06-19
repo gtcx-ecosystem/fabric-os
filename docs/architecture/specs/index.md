@@ -9,5 +9,4 @@ tags: ['documentation', 'architecture']
 review_cycle: on-change
 ---
 
-
 # Architecture specs index

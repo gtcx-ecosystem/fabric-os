@@ -9,7 +9,6 @@ tags: ['documentation', 'architecture']
 review_cycle: on-change
 ---
 
-
 # Specs
 
 System and surface specifications per `docs-architecture-pack.json`.

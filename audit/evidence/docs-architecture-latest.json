@@ -1,0 +1,139 @@
+{
+  "schema": "gtcx://canon-os/docs-architecture-check/v2",
+  "repo": "fabric-os",
+  "profile": "platform",
+  "at": "2026-06-19T19:10:56.086Z",
+  "ok": true,
+  "spec": {
+    "localPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-architecture-pack.json",
+    "localIsStub": false,
+    "resolvedIsFull": true
+  },
+  "gates": [
+    {
+      "id": "spec:local-present",
+      "ok": true,
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-architecture-pack.json"
+    },
+    {
+      "id": "spec:not-stub",
+      "ok": true,
+      "detail": "full local pack"
+    },
+    {
+      "id": "spec:resolved-full",
+      "ok": true,
+      "detail": "resolved full architecture pack"
+    },
+    {
+      "id": "profile",
+      "ok": true,
+      "detail": "platform"
+    },
+    {
+      "id": "root:docs/architecture/README.md",
+      "ok": true,
+      "detail": "docs/architecture/README.md"
+    },
+    {
+      "id": "root:docs/architecture/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "docs/architecture/FOLDER-SPEC.md"
+    },
+    {
+      "id": "root-readme:cross-ref",
+      "ok": true,
+      "detail": "README cross-ref table"
+    },
+    {
+      "id": "root-readme:business-link",
+      "ok": true,
+      "detail": "README links business layer"
+    },
+    {
+      "id": "root-folder-spec:pack-link",
+      "ok": true,
+      "detail": "FOLDER-SPEC cites pack"
+    },
+    {
+      "id": "subfolder:specs",
+      "ok": true,
+      "detail": "docs/architecture/specs/"
+    },
+    {
+      "id": "subfolder-file:specs/README.md",
+      "ok": true,
+      "detail": "docs/architecture/specs/README.md"
+    },
+    {
+      "id": "subfolder-file:specs/index.md",
+      "ok": true,
+      "detail": "docs/architecture/specs/index.md"
+    },
+    {
+      "id": "subfolder:decisions",
+      "ok": true,
+      "detail": "docs/architecture/decisions/"
+    },
+    {
+      "id": "subfolder-file:decisions/README.md",
+      "ok": true,
+      "detail": "docs/architecture/decisions/README.md"
+    },
+    {
+      "id": "subfolder:requirements",
+      "ok": true,
+      "detail": "docs/architecture/requirements/"
+    },
+    {
+      "id": "subfolder-file:requirements/README.md",
+      "ok": true,
+      "detail": "docs/architecture/requirements/README.md"
+    },
+    {
+      "id": "no-loose-narrative-at-root",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "no-adr-at-root",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "content:adr-min",
+      "ok": true,
+      "detail": "ADR count 1/1"
+    },
+    {
+      "id": "content:spec-nest:backend",
+      "ok": true,
+      "detail": "docs/architecture/specs/backend/README.md"
+    },
+    {
+      "id": "content:spec-nest:frontend",
+      "ok": true,
+      "detail": "docs/architecture/specs/frontend/README.md"
+    },
+    {
+      "id": "content:spec-nest:data",
+      "ok": true,
+      "detail": "docs/architecture/specs/data/README.md"
+    },
+    {
+      "id": "content:spec-nest:design",
+      "ok": true,
+      "detail": "docs/architecture/specs/design/README.md"
+    },
+    {
+      "id": "content:spec-nest:testing",
+      "ok": true,
+      "detail": "docs/architecture/specs/testing/README.md"
+    },
+    {
+      "id": "content:spec-narrative-min",
+      "ok": true,
+      "detail": "1 narrative spec files (min 1)"
+    }
+  ]
+}

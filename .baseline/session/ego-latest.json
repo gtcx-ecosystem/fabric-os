@@ -1,9 +1,9 @@
 {
   "schema": "gtcx://baseline-os/ego/v1",
   "schemaAlias": "gtcx://baseline-os/agent-embodiment/v1",
-  "compiledAt": "2026-06-17T12:41:52.245Z",
+  "compiledAt": "2026-06-18T08:37:31.937Z",
   "repo": "fabric-os",
-  "storyId": "SECAS-S4-04",
+  "storyId": "ROLLUP-RESTORE-100",
   "persona": {
     "institutional": "platform-architect",
     "frame": "development",
@@ -21,7 +21,7 @@
   },
   "forbiddenPatternCount": 40,
   "mdPath": ".baseline/session/ego-latest.md",
-  "mdHash": "43ab5f0fec6199d4f8a77c1713854fa767709f87cbb556aa6b2a4563cb45baa5",
+  "mdHash": "987f8aa9d230f2aac9de58a54a4d964990ae83d27cf19831fd443e6f2bbcc702",
   "layers": [
     "anti-assistant",
     "constitution",
@@ -39,7 +39,7 @@
       "institutional": "platform-architect",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703",
-      "readAt": "2026-06-17T09:44:32.250Z"
+      "readAt": "2026-06-18T08:36:32.220Z"
     },
     "constitutionReadGate": {
       "ok": true,

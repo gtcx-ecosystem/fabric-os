@@ -2,7 +2,7 @@
   "schema": "gtcx://canon-os/docs-roadmap-check/v1",
   "repo": "fabric-os",
   "profile": "platform",
-  "at": "2026-06-17T09:12:26.792Z",
+  "at": "2026-06-19T19:10:56.177Z",
   "ok": true,
   "spec": {
     "localPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-roadmap-pack.json",
@@ -95,6 +95,11 @@
       "id": "no-roadmap-outside:docs/architecture",
       "ok": true,
       "detail": "no roadmap narrative under docs/architecture/ (lanes → agile/roadmaps/)"
+    },
+    {
+      "id": "foundation:roadmap-pointer",
+      "ok": true,
+      "detail": "docs/foundation/roadmap.md must link executive lens → agile/roadmaps/"
     }
   ]
 }

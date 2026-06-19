@@ -1,8 +1,8 @@
 {
   "schema": "gtcx://canon-os/docs-foundation-check/v2",
   "repo": "fabric-os",
-  "at": "2026-06-18T03:09:30.685Z",
-  "ok": false,
+  "at": "2026-06-19T19:10:55.917Z",
+  "ok": true,
   "spec": {
     "localPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-foundation-pack.json",
     "localIsStub": false,
@@ -76,7 +76,7 @@
     },
     {
       "id": "readme:business-link",
-      "ok": false,
+      "ok": true,
       "detail": "README links to docs/business/ for detail layer"
     },
     {
@@ -86,8 +86,8 @@
     },
     {
       "id": "canon:synthesize:check",
-      "ok": false,
-      "detail": "run pnpm canon:synthesize"
+      "ok": true,
+      "detail": "docs → pm/canon fresh"
     }
   ]
 }

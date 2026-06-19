@@ -1,14 +1,14 @@
 {
   "schema": "gtcx://canon-os/docs-tree-witness/v1",
-  "generatedAt": "2026-06-17T02:24:44.753Z",
+  "generatedAt": "2026-06-19T21:05:51.825Z",
   "repo": "fabric-os",
-  "strict": false,
-  "structureOnly": true,
+  "strict": true,
+  "structureOnly": false,
   "profile": "platform",
   "pass": true,
   "metrics": {
-    "mdFiles": 0,
-    "folders": 0,
+    "mdFiles": 238,
+    "folders": 82,
     "missingReadme": 0,
     "missingFrontmatter": 0,
     "missingDocumentType": 0,
@@ -18,7 +18,7 @@
     {
       "id": "spec:present",
       "ok": true,
-      "detail": "2026-06-16"
+      "detail": "2026-06-19"
     },
     {
       "id": "profile",
@@ -51,11 +51,6 @@
       "detail": "docs/CHANGELOG.md"
     },
     {
-      "id": "root:FOLDER-SPEC.md",
-      "ok": true,
-      "detail": "docs/FOLDER-SPEC.md"
-    },
-    {
       "id": "absent:docs-agile",
       "ok": true,
       "detail": "ok"
@@ -69,31 +64,6 @@
       "id": "top-level:allowlist",
       "ok": true,
       "detail": "ok"
-    },
-    {
-      "id": "deprecated:overview",
-      "ok": true,
-      "detail": "pointer-only"
-    },
-    {
-      "id": "deprecated:specs",
-      "ok": true,
-      "detail": "pointer-only"
-    },
-    {
-      "id": "deprecated:strategy",
-      "ok": true,
-      "detail": "pointer-only"
-    },
-    {
-      "id": "deprecated:engineering",
-      "ok": true,
-      "detail": "pointer-only"
-    },
-    {
-      "id": "deprecated:roadmap",
-      "ok": true,
-      "detail": "pointer-only"
     },
     {
       "id": "layer:required:foundation",
@@ -421,12 +391,12 @@
       "detail": "README.md"
     },
     {
-      "id": "pack:subfolder:operations/agent-spine",
+      "id": "pack:subfolder:operations/agent-init",
       "ok": true,
-      "detail": "docs/operations/agent-spine/"
+      "detail": "docs/operations/agent-init/"
     },
     {
-      "id": "pack:subfolder-readme:operations/agent-spine",
+      "id": "pack:subfolder-readme:operations/agent-init",
       "ok": true,
       "detail": "README.md"
     },

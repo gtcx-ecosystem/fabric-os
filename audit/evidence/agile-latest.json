@@ -2,7 +2,7 @@
   "schema": "gtcx://canon-os/agile-check/v1",
   "repo": "fabric-os",
   "profile": "platform",
-  "at": "2026-06-17T02:00:30.513Z",
+  "at": "2026-06-19T19:10:56.209Z",
   "ok": true,
   "gates": [
     {
@@ -86,17 +86,17 @@
       "detail": "README cites CPO connection"
     },
     {
-      "id": "root-readme:pillar-scorecard",
+      "id": "root-readme:scorecard",
       "ok": true,
-      "detail": "README links pillar scorecard"
+      "detail": "README links scorecard"
     },
     {
-      "id": "pillar-scorecard:eleven-pillars",
+      "id": "scorecard:eleven-pillars",
       "ok": true,
       "detail": "all 11 pillars listed"
     },
     {
-      "id": "pillar-scorecard:target",
+      "id": "scorecard:target",
       "ok": true,
       "detail": "pillar target 85/100 documented"
     },
@@ -194,6 +194,11 @@
       "id": "ops-manifest:agileDocs",
       "ok": true,
       "detail": "ops/pm/manifest.json local.agileDocs = agile"
+    },
+    {
+      "id": "shadow:docs/roadmap/agile",
+      "ok": true,
+      "detail": "docs/roadmap/agile/ must be pointer-only to agile/"
     }
   ]
 }

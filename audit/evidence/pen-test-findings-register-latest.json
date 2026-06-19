@@ -16,5 +16,10 @@
     "terminal-os": ["security-engineer"],
     "protocols-t0": ["protocol-engineer", "security-engineer"]
   },
-  "notes": "Internal engineering closure 2026-06-17. Vendor calendar deferred-post-launch — not a repo block."
+  "notes": "Internal engineering closure 2026-06-17. Vendor calendar deferred-post-launch — not a repo block.",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

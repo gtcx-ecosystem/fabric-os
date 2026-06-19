@@ -16,5 +16,10 @@
     }
   },
   "status": "substrate-wired",
-  "note": "Primary Flutterwave ESO fleet-wide; Stripe secondary for international/legacy checkout."
+  "note": "Primary Flutterwave ESO fleet-wide; Stripe secondary for international/legacy checkout.",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

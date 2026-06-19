@@ -1,18 +1,30 @@
 {
   "$schema": "gtcx://bridge-os/prd-index/v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repo": "fabric-os",
-  "updated": "2026-06-13",
+  "updated": "2026-06-19",
   "productGoals": "pm/spec/product-goals.json",
   "prds": [
     {
       "id": "prd-product-charter",
       "path": "pm/product/prds/prd-product-charter.md",
-      "title": "fabric-os product charter",
-      "status": "draft",
-      "milestones": ["M1"],
-      "features": [],
-      "capabilityIds": []
+      "title": "Fabric OS product charter",
+      "status": "active",
+      "milestones": ["FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE"],
+      "features": [
+        "secops-clearance",
+        "complianceops-harness",
+        "supply-chain-gates",
+        "fleet-observability",
+        "deploy-choreography"
+      ],
+      "capabilityIds": [
+        "secops-clearance",
+        "complianceops-harness",
+        "supply-chain-gates",
+        "fleet-observability",
+        "deploy-choreography"
+      ]
     }
   ]
 }

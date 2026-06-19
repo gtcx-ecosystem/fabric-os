@@ -30,11 +30,15 @@
     "foundation",
     "api",
     "architecture",
-    "engineering",
+    "_archive",
     "gitbook",
     "governance",
     "operations",
+    "primitives",
+    "product",
+    "publishing",
     "reference",
+    "research",
     "roadmap",
     "business"
   ],
@@ -98,9 +102,20 @@
       "docs/architecture/specs/layers",
       "docs/architecture/specs/layers/packs",
       "docs/architecture/specs/layers/guides",
-      "docs/reference/skills"
+      "docs/reference/skills",
+      "docs/_archive",
+      "docs/primitives",
+      "docs/publishing",
+      "docs/research",
+      "docs/engineering",
+      "docs/operations/core-ops",
+      "docs/operations/platform-services",
+      "docs/operations/secas",
+      "docs/operations/workspace",
+      "docs/architecture/specs/_project",
+      "docs/reference/archived"
     ],
-    "readmeExemptPathPrefixes": ["docs/reference/archive"],
+    "folderSpecExemptPathPrefixes": ["docs/_archive"],
     "depthExemptPathPrefixes": [
       "docs/architecture/operations",
       "docs/architecture/specs/_project",
@@ -109,12 +124,17 @@
       "docs/architecture/specs/operations",
       "docs/gitbook/business",
       "docs/reference/archive",
-      "docs/reference/templates"
+      "docs/reference/templates",
+      "docs/architecture/specs/layers/packs",
+      "docs/operations/compliance/evidence",
+      "docs/reference/archived"
     ],
     "shadowExemptPathPrefixes": [
       "docs/reference/architecture",
       "docs/reference/operations",
       "docs/operations/governance"
-    ]
-  }
+    ],
+    "readmeExemptPathPrefixes": ["docs/reference/archive"]
+  },
+  "deprecatedTopLevel": ["specs", "strategy", "overview", "engineering"]
 }

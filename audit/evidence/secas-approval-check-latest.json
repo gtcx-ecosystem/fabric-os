@@ -5,7 +5,7 @@
   "approvalNeeded": [],
   "approved": [
     {
-      "id": "EXT-INF-002",
+      "id": "EXT-REF",
       "approvedAt": "2026-06-10"
     },
     {
@@ -17,7 +17,7 @@
       "approvedAt": "2026-06-12"
     },
     {
-      "id": "EXT-INF-013",
+      "id": "EXT-REF",
       "approvedAt": "2026-06-12"
     }
   ],

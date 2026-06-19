@@ -1,0 +1,129 @@
+{
+  "$schema": "gtcx://canon-os/docs-canon-pack/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-19",
+  "initiative": "INIT-PRODUCT-DELIVERY-COMPILE-V1",
+  "title": "Docs canon pack — engineering authoring layer",
+  "principle": "docs/canon/ is the human/agent SoR for feature engineering contracts. pm/canon/ is generated only via pnpm canon:synthesize. Synced from docs/product/roadmap/features/ for FEAT metadata.",
+  "protocol": "product-canon-synthesis-protocol.json",
+  "contract": "config/product-canon-contract.json",
+  "requiredRootFiles": [
+    {
+      "path": "docs/canon/README.md",
+      "role": "engineering authoring entry + compile commands"
+    },
+    {
+      "path": "docs/canon/product.md",
+      "role": "composition register — milestones, bundle index, narrativeIndex"
+    }
+  ],
+  "requiredSubfolders": {
+    "bundles": {
+      "purpose": "FEAT-* feature bundles — charter, requirements, experience, dod, uat canon-json blocks",
+      "pattern": "FEAT-*.md",
+      "requiredSlices": ["charter", "requirements", "experience", "dod", "uat"],
+      "template": "pm/templates/product-canon/authoring/FEAT-EXAMPLE.md"
+    }
+  },
+  "optionalSubfolders": {
+    "services": { "pattern": "SVC-*.md" },
+    "infra": { "pattern": "INF-*.md" },
+    "experience": { "pattern": "EXR-*.md" },
+    "commercial": { "pattern": "COM-*.md" }
+  },
+  "forbidden": [
+    "Hand-editing pm/canon/*.json",
+    "Sprint ceremony state in docs/canon/",
+    "Duplicate initiative/story queues — docs/product/roadmap/"
+  ],
+  "profiles": {
+    "product": {
+      "canonRequired": true,
+      "minBundles": 1
+    },
+    "constitution-standards": {
+      "canonRequired": false,
+      "allowed": "docs/canon/README.md pointer + template only (canon-os hub)"
+    },
+    "platform": {
+      "canonRequired": true,
+      "minBundles": 1
+    }
+  },
+  "enforcement": {
+    "check": "pnpm docs:canon:check",
+    "synthesizeCheck": "pnpm canon:synthesize:check",
+    "witness": "audit/evidence/docs-canon-latest.json",
+    "fleetCheck": "pnpm ecosystem:docs:canon:fleet",
+    "fleetWitness": "audit/evidence/fleet-docs-canon-latest.json"
+  },
+  "pillarContract": {
+    "compliance": {
+      "primary": true,
+      "artifacts": ["docs/canon/bundles/*/requirements", "docs/canon/README.md"],
+      "gates": ["pnpm docs:canon:check", "pnpm canon:synthesize:check"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    },
+    "technicalExcellence": {
+      "primary": true,
+      "artifacts": ["docs/canon/bundles/*/requirements", "docs/canon/bundles/*/experience"],
+      "gates": ["pnpm canon:bundle:check"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    },
+    "craft": {
+      "secondary": true,
+      "artifacts": ["docs/canon/bundles/*/charter"],
+      "gates": ["bundle completeness"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    },
+    "worldClass": {
+      "primary": true,
+      "artifacts": ["docs/canon/bundles/*/uat", "docs/canon/bundles/*/dod"],
+      "gates": ["verifyCommand present on P0 FR"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    },
+    "trustAndSafety": {
+      "primary": true,
+      "artifacts": ["docs/canon/bundles/*/requirements NFR", "docs/canon/bundles/*/dod"],
+      "gates": ["pnpm canon:bundle:check"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    },
+    "creativityInnovation": {
+      "secondary": true,
+      "artifacts": ["docs/canon/bundles/*/experience flows"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    },
+    "commercialValue": {
+      "secondary": true,
+      "artifacts": ["docs/canon/bundles/*/charter successMetrics"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    },
+    "defensiveMoat": {
+      "secondary": true,
+      "artifacts": ["docs/canon/bundles/*/commercial optional"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    },
+    "agenticEmpowerment": {
+      "primary": true,
+      "artifacts": ["docs/canon/bundles/*/uat verifyCommand", "pm/ci/canon-synthesize-latest.json"],
+      "gates": ["pnpm canon:synthesize:check"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    },
+    "ecosystemIntegration": {
+      "secondary": true,
+      "artifacts": ["docs/canon/bundles/*/infra", "docs/canon/product.md narrativeIndex"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    },
+    "ipMagic": {
+      "secondary": true,
+      "artifacts": ["docs/canon/bundles/*/experience signature surfaces"],
+      "witness": "audit/evidence/mpr-canon-layer-latest.json"
+    }
+  },
+  "fractalMpr": {
+    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "layerWitness": "audit/evidence/mpr-canon-layer-latest.json",
+    "scorecard": "docs/reference/canon/scorecard.md",
+    "rollupFrom": ["file", "folder"]
+  }
+}

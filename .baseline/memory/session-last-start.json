@@ -1,16 +1,16 @@
 {
-  "startedAt": "2026-06-17T12:41:49.849Z",
+  "startedAt": "2026-06-18T08:37:29.202Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-7f09e1d6-e8d9-49f4-b362-c4da165f1f06",
+    "id": "gtcx-agent-4742bc52-0605-4a13-96ba-cbe014d12099",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-42e30dfa8c65964192458170361e2387-6b2078348c27ad3d-01"
+    "traceparent": "00-3b9d45e0a3ae0d5976de295c2daaf28e-dfc2606c4f19877c-01"
   },
   "nextWork": {
-    "traceId": "e87c5f9e-bae0-497e-990b-3d30bda2f0d0",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=e87c5f9e-bae0-497e-990b-3d30bda2f0d0",
+    "traceId": "8df1e2cf-eb8f-48d7-b5e7-757caf072397",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=8df1e2cf-eb8f-48d7-b5e7-757caf072397",
     "ok": true,
     "backlogClear": false,
     "frame": "development",
@@ -18,9 +18,11 @@
     "repo": "fabric-os",
     "message": "Human gates parallel — implement queue reconciled; see work register.",
     "agentInstructions": [
+      "Milestone drift: rollup 59 < 100. Restore rollup before feature work.",
       "Phase 4: adopt persona **platform-architect** (development) — read local `/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md` first (docUrl link-only); adopt voice: Systems-oriented, reliability-focused, cost-conscious",
       "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
       "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
+      "Milestone drift: rollup 59 < 100. Restore rollup before feature work.",
       "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
       "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
       "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
@@ -31,7 +33,6 @@
       "FORBIDDEN: EXT-REF in SECAS-S2-01 Status Update.",
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
-      "Goal trace: head story `AFM-REG-003` (PROG-CONTINENTAL-CAPITAL) — current P22 `SECAS-S4-04` should advance milestone or switch to head.",
       "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
       "FORBIDDEN: EXT-REF in SECAS-S2-01 Status Update.",
       "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
@@ -40,15 +41,14 @@
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
       "Product team: **Fabric OS** — primary persona `platform-engineer` — Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
       "Goal orientation: milestone `FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE` — shippable: SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
-      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
-      "Goal trace: head story `AFM-REG-003` (PROG-CONTINENTAL-CAPITAL) — current P22 `SECAS-S4-04` should advance milestone or switch to head."
+      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item."
     ],
     "launchFocus": {
       "schema": "gtcx.launchFocus.v1",
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-17T12:41:48.545Z",
+      "provisionedAt": "2026-06-18T08:37:27.415Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
@@ -100,7 +100,7 @@
       "appliesToRepo": "baseline-os",
       "currentRepo": "fabric-os",
       "isCeilingRepo": false,
-      "witnessStatus": "fail",
+      "witnessStatus": "ceiling-prep-pass",
       "forbiddenProceedBriefNext": [
         "Hold at external-pilot ceiling",
         "Class R exhausted (baseline M3)",
@@ -151,66 +151,81 @@
       "blocksIR": false,
       "statusUpdateRule": "fabric-os only: vendor calendar under ### Parallel sovereign gates — omit from product/engineering Status Updates"
     },
-    "next": {
-      "storyId": "SECAS-S4-04",
-      "title": "security-test findings remediation track + re-test witness",
-      "status": "in_progress"
-    },
     "automatableExhausted": false,
     "parallelClassS": [
       {
-        "gateId": "SECAS-S2-01-INGEST",
-        "blocker": "SECAS-S2-01-INGEST",
-        "authorityClass": "A",
-        "blocksIR": false,
-        "statusUpdateSection": "Parallel sovereign gates",
-        "ownerRepo": "fabric-os",
-        "doesNotBlock": "SECAS-S2-01",
-        "gateType": "external-calendar-custody",
-        "what": "Vendor security-test report file arrives; operator authorizes ingest into fabric-os evidence path",
-        "why": "Agent cannot receive or ingest vendor security artifact before the execution window closes",
-        "implication": "No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands",
-        "who": "External security-test vendor delivers report; fabric-os operator runs ingest ceremony",
-        "when": "Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21)",
-        "unblockAction": "Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21"
-      },
-      {
-        "gateId": "BG-10-10",
-        "blocker": "BG-10-10",
-        "authorityClass": "A",
-        "blocksIR": false,
-        "statusUpdateSection": "Parallel sovereign gates",
-        "ownerRepo": "fabric-os",
-        "doesNotBlock": "SECAS-S2-01",
-        "gateType": "external-vendor-execution",
-        "what": "Vendor executes live-stack pen test during contracted calendar window",
-        "why": "Agent cannot pull forward vendor execution or receive report before window",
-        "implication": "Witness prep and friction checks continue; ingest blocked until report delivery",
-        "who": "External security-test vendor",
-        "when": "2026-06-17..2026-06-21",
-        "unblockAction": "Vendor report delivery; ingest post 2026-06-21"
-      },
-      {
-        "gateId": "BG-10-11",
-        "blocker": "BG-10-11",
+        "gateId": "XR-516",
         "authorityClass": "S",
         "blocksIR": false,
+        "what": "SPEC §17 co-author sign-off",
+        "why": "Engineering + Security co-authors sign SPEC §17 attestation; hub updates register witness only.",
+        "unblockAction": "ecosystem-os/ops/gtm/inbound-tickets/to-human-xr-516-spec17-signoff-2026-06-12.md",
+        "implication": "Hub automatable backlog clear — fleet engineering continues in owner repos in parallel",
+        "doesNotBlock": "owner-repo Class R implement queue",
         "statusUpdateSection": "Parallel sovereign gates",
-        "ownerRepo": "fabric-os",
-        "doesNotBlock": "SECAS-S2-01",
-        "gateType": "external-auditor-artifact",
-        "what": "SOC 2 Type I opinion letter from auditor",
-        "why": "Agent cannot countersign or synthesize auditor attestation",
-        "implication": "Does not block security-test window prep or fleet program office queue",
-        "who": "External auditor",
-        "when": "Parallel track — not on SECAS security-test calendar",
-        "unblockAction": "Auditor opinion letter to compliance evidence path"
+        "registerOnly": true
+      },
+      {
+        "gateId": "EXT-REF",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "what": "ZWCMP DPA + pilot agreement signature",
+        "why": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+        "unblockAction": "Sign DPA + pilot PDFs; file under audit/vendor-outreach/zwcmp/",
+        "implication": "Engineering lane continues — register-only parallel sovereign gate",
+        "doesNotBlock": "owner-repo Class R implement queue",
+        "statusUpdateSection": "Parallel sovereign gates",
+        "registerOnly": true,
+        "roadmapLane": "partnerships",
+        "readinessWitness": null
+      },
+      {
+        "gateId": "EXT-REF",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "what": "Indemnified SLA legal review + insurance quote",
+        "why": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+        "unblockAction": "Legal memo + insurance quote on verification-sla-draft.md base",
+        "implication": "Engineering lane continues — register-only parallel sovereign gate",
+        "doesNotBlock": "owner-repo Class R implement queue",
+        "statusUpdateSection": "Parallel sovereign gates",
+        "registerOnly": true,
+        "roadmapLane": "legal",
+        "readinessWitness": null
+      },
+      {
+        "gateId": "BM-ZM-PILOT-01",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "what": "Zambia MMMD 60-day pilot contract or countersigned LOI",
+        "why": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+        "unblockAction": "Countersign 60-day MMMD pilot contract or LOI; file witness under audit/vendor-outreach/zm-mmmd/",
+        "implication": "Engineering lane continues — register-only parallel sovereign gate",
+        "doesNotBlock": "BM-P1-zambia-pilot",
+        "statusUpdateSection": "Parallel sovereign gates",
+        "registerOnly": true,
+        "roadmapLane": "partnerships",
+        "readinessWitness": "terra-os/audit/evidence/pilot-zambia-readiness-latest.json"
+      },
+      {
+        "gateId": "BL-SOC2-01",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "what": "SOC 2 Type II auditor opinion track",
+        "why": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+        "unblockAction": "Auditor publishes Type I/II opinion letter — witness under audit/evidence/",
+        "implication": "Engineering lane continues — register-only parallel sovereign gate",
+        "doesNotBlock": "owner-repo Class R implement queue",
+        "statusUpdateSection": "Parallel sovereign gates",
+        "registerOnly": true,
+        "roadmapLane": "compliance",
+        "readinessWitness": null
       }
     ],
     "proceedBrief": {
       "blockedUntil": "vendor report post 2026-06-21 · window 2026-06-17..2026-06-21",
       "authorityClass": "R",
-      "phase": "awaiting_vendor_report",
+      "phase": "internal_closure_complete",
       "activePersona": "platform-architect",
       "frame": "development",
       "personaDocUrl": "https://gtcx-ecosystem.gitbook.io/gtcx-ecosystem/governance/institutional/personas/platform-architect",
@@ -219,7 +234,7 @@
       "embodies": "Platform lead accountable for fleet reliability",
       "personaConfidence": 0.9523809523809523,
       "personaSource": "work-item-manifest",
-      "goalOrientationBrief": "## Goal orientation\n**Fleet north star:** GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail\n**Quarter:** Ship · surfaces · GTM · operational AI\n**Head programme:** `PROG-CONTINENTAL-CAPITAL` → `markets-os`\n**Repo north star:** Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability\n**Milestone:** Fleet internal SecOps + ComplianceOps clearance\n**Shippable:** SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only\n**PRD refs:** prd-product-charter\n**Product team:** Fabric OS (`platform-engineer`)"
+      "goalOrientationBrief": "## Goal orientation\n**Fleet north star:** GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail\n**Quarter:** Ship · surfaces · GTM · operational AI\n**Head programme:** `PROG-CONTINENTAL-CAPITAL` → `markets-os`\n**Repo north star:** Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability\n**Milestone:** SECAS-S4-supply-chain\n**Shippable:** SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only\n**PRD refs:** prd-product-charter\n**Product team:** Fabric OS (`platform-engineer`)"
     },
     "communicationPolicy": {
       "statusUpdateSections": [
@@ -254,7 +269,7 @@
           "gateType": "external-calendar-custody",
           "blocksIR": false,
           "doesNotBlock": "SECAS-S2-01",
-          "phase": "awaiting_vendor_report",
+          "phase": "internal_closure_complete",
           "what": "Vendor security-test report file arrives; operator authorizes ingest into fabric-os evidence path",
           "why": "Agent cannot receive or ingest vendor security artifact before the execution window closes",
           "when": "Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21)",
@@ -295,7 +310,7 @@
     },
     "statusUpdateClosure": {
       "schema": "gtcx://fabric-os/secas-status-update-closure/v2",
-      "phase": "awaiting_vendor_report",
+      "phase": "internal_closure_complete",
       "sections": [
         "Execution mode",
         "Done",
@@ -345,11 +360,11 @@
       "approvalSection": "omit",
       "approvalNeeded": {
         "omit": true,
-        "reason": "Vendor gates are blocksIR:false — Parallel sovereign gates only (fabric-os owner)"
+        "reason": "blocksIR:false human gates → Parallel sovereign gates (product-roadmap-lane-isolation)"
       },
       "parallelSovereignGates": {
         "include": true,
-        "ingestGateId": "SECAS-S2-01-INGEST"
+        "registerOnly": true
       },
       "postLaunchExternal": {
         "include": true,
@@ -643,8 +658,8 @@
       "quarterTitle": "Ship · surfaces · GTM · operational AI",
       "quarterId": "GTCX-Q3-2026",
       "recalibrate": "pnpm ecosystem:clarity:report:brief",
-      "northStar": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
-      "activeMilestone": "Fleet internal SecOps + ComplianceOps clearance",
+      "northStar": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
+      "activeMilestone": "SECAS-S4-supply-chain",
       "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
       "prdRefs": [
         "prd-product-charter"
@@ -721,10 +736,69 @@
         "doc promotion implement"
       ]
     },
+    "compositeDrift": {
+      "schema": "gtcx://bridge-os/rollup-drift/v1",
+      "current": 59,
+      "required": 100,
+      "milestone": "SECAS-S4-supply-chain",
+      "forced": true
+    },
+    "next": {
+      "storyId": "ROLLUP-RESTORE-100",
+      "title": "Restore rollup ≥100 (current 59) — SECAS-S4-supply-chain"
+    },
+    "nextWorkItem": {
+      "type": "story",
+      "typeLabel": "Story",
+      "id": "ROLLUP-RESTORE-100",
+      "title": "Restore rollup ≥100 (current 59) — SECAS-S4-supply-chain",
+      "owner": "fabric-os",
+      "state": "in_progress",
+      "because": "rollup 59 < 100 for milestone SECAS-S4-supply-chain · traces PROG-CONTINENTAL-CAPITAL",
+      "gtmTrace": true,
+      "programmeId": "PROG-SECAS-ENGINEERING",
+      "milestoneId": "SECAS-S4-supply-chain",
+      "gtmTier": "GR-T2-partial",
+      "capabilityId": null,
+      "prdRef": null,
+      "milestoneDoD": {
+        "milestoneId": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
+        "title": "SECAS-S4-supply-chain",
+        "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+        "acceptanceChecks": [
+          {
+            "id": "secops-internal-clearance",
+            "label": "SecOps internal Class R sealed",
+            "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "complianceops-fleet",
+            "label": "ComplianceOps fleet harness",
+            "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "rollup-85",
+            "label": "Composite ≥85",
+            "check": "composite85"
+          },
+          {
+            "id": "demo",
+            "label": "Demo walkthrough evidence",
+            "witness": "audit/evidence/demo-readiness-{repo}.json"
+          }
+        ]
+      }
+    },
+    "selection": {
+      "tier": "milestone-drift",
+      "reason": "Rollup drift — 59/100"
+    },
     "goalTrace": {
       "schema": "gtcx://bridge-os/goal-trace/v2.1",
       "repo": "fabric-os",
-      "nextStoryId": "SECAS-S4-04",
+      "nextStoryId": "ROLLUP-RESTORE-100",
       "headStoryId": "XR-FABRIC-SESSION-OPEN-004",
       "headProgrammeId": "PROG-CONTINENTAL-CAPITAL",
       "headProductRepo": "markets-os",
@@ -762,12 +836,40 @@
       "fleetNorthStar": "GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail",
       "declaredTrace": null,
       "programmeId": "PROG-CONTINENTAL-CAPITAL",
-      "milestone": "Fleet internal SecOps + ComplianceOps clearance",
+      "milestone": "SECAS-S4-supply-chain",
       "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
       "gtmTier": "GR-T2-partial",
       "capabilityId": null,
-      "milestoneDoD": null,
-      "aligned": false,
+      "milestoneDoD": {
+        "milestoneId": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
+        "title": "SECAS-S4-supply-chain",
+        "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+        "acceptanceChecks": [
+          {
+            "id": "secops-internal-clearance",
+            "label": "SecOps internal Class R sealed",
+            "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "complianceops-fleet",
+            "label": "ComplianceOps fleet harness",
+            "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "rollup-85",
+            "label": "Composite ≥85",
+            "check": "composite85"
+          },
+          {
+            "id": "demo",
+            "label": "Demo walkthrough evidence",
+            "witness": "audit/evidence/demo-readiness-{repo}.json"
+          }
+        ]
+      },
+      "aligned": true,
       "recalibrate": "pnpm ecosystem:clarity:report:brief"
     },
     "backlogClearApproach": {
@@ -775,8 +877,8 @@
       "phase": "far",
       "escalate": false,
       "backlogClear": false,
-      "manifestPct": 40,
-      "openAutomatable": 13,
+      "manifestPct": 50,
+      "openAutomatable": 12,
       "automatableExhausted": false,
       "sessionOpenItemsCount": 0,
       "protocol": "pm/spec/backlog-clear-approach-protocol.json",
@@ -788,16 +890,142 @@
       "institutional": "platform-architect",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703",
-      "readAt": "2026-06-17T09:44:32.250Z"
+      "readAt": "2026-06-18T08:36:32.220Z"
     },
     "engineeringLaneAbstraction": {
       "applies": false,
       "tier": "platform",
       "repoId": "fabric-os"
     },
+    "humanGateAbstraction": {
+      "schema": "gtcx://bridge-os/human-gate-engineering-abstraction/v1",
+      "applies": true,
+      "hubCoordinationTier": false,
+      "forbiddenAsNextWorkItem": [
+        "XR-516"
+      ],
+      "engineeringRedirect": {
+        "type": "Fleet owner engineering",
+        "id": "FLEET-OWNER-markets-os",
+        "storyId": "AFM-REG-003",
+        "title": "Continental capital + digital-rail Wave 0",
+        "ownerRepo": "markets-os",
+        "owner": "markets-os",
+        "p22Command": "pnpm --dir ../markets-os agent:next-work --json",
+        "switchWorkspace": true,
+        "because": "Sprint 86 AFM-REG-003; ADR-0007 Class A parallel; Wave 0 owner repos",
+        "source": "fleet-live-programmes"
+      },
+      "rule": "Class S / human / legal / security register rows → Parallel sovereign gates or register witness — never Next work item for engineering"
+    },
+    "engineeringRedirect": {
+      "type": "Fleet owner engineering",
+      "id": "FLEET-OWNER-markets-os",
+      "storyId": "AFM-REG-003",
+      "title": "Continental capital + digital-rail Wave 0",
+      "ownerRepo": "markets-os",
+      "owner": "markets-os",
+      "p22Command": "pnpm --dir ../markets-os agent:next-work --json",
+      "switchWorkspace": true,
+      "because": "Sprint 86 AFM-REG-003; ADR-0007 Class A parallel; Wave 0 owner repos",
+      "source": "fleet-live-programmes"
+    },
+    "registerWitness": {
+      "parallelClassS": [
+        {
+          "gateId": "XR-516",
+          "authorityClass": "S",
+          "blocksIR": false,
+          "status": "blocked",
+          "what": "SPEC §17 co-author sign-off",
+          "whyAgentCannotExecute": "Engineering + Security co-authors sign SPEC §17 attestation; hub updates register witness only.",
+          "unblockAction": "ecosystem-os/ops/gtm/inbound-tickets/to-human-xr-516-spec17-signoff-2026-06-12.md",
+          "implication": "Hub automatable backlog clear — fleet engineering continues in owner repos in parallel",
+          "doesNotBlock": "owner-repo Class R implement queue",
+          "owner": "human",
+          "registerOnly": true,
+          "inboundTicket": "canon-os/ops/gtm/inbound-tickets/to-human-xr-516-*.md"
+        },
+        {
+          "gateId": "EXT-REF",
+          "authorityClass": "S",
+          "blocksIR": false,
+          "status": "open",
+          "what": "ZWCMP DPA + pilot agreement signature",
+          "whyAgentCannotExecute": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+          "unblockAction": "Sign DPA + pilot PDFs; file under audit/vendor-outreach/zwcmp/",
+          "implication": "Engineering lane continues — register-only parallel sovereign gate",
+          "doesNotBlock": "owner-repo Class R implement queue",
+          "owner": "Founder / Legal / GTM",
+          "registerOnly": true,
+          "roadmapLane": "partnerships",
+          "readinessWitness": null
+        },
+        {
+          "gateId": "EXT-REF",
+          "authorityClass": "S",
+          "blocksIR": false,
+          "status": "open",
+          "what": "Indemnified SLA legal review + insurance quote",
+          "whyAgentCannotExecute": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+          "unblockAction": "Legal memo + insurance quote on verification-sla-draft.md base",
+          "implication": "Engineering lane continues — register-only parallel sovereign gate",
+          "doesNotBlock": "owner-repo Class R implement queue",
+          "owner": "Legal / GTM",
+          "registerOnly": true,
+          "roadmapLane": "legal",
+          "readinessWitness": null
+        },
+        {
+          "gateId": "BM-ZM-PILOT-01",
+          "authorityClass": "S",
+          "blocksIR": false,
+          "status": "open",
+          "what": "Zambia MMMD 60-day pilot contract or countersigned LOI",
+          "whyAgentCannotExecute": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+          "unblockAction": "Countersign 60-day MMMD pilot contract or LOI; file witness under audit/vendor-outreach/zm-mmmd/",
+          "implication": "Engineering lane continues — register-only parallel sovereign gate",
+          "doesNotBlock": "BM-P1-zambia-pilot",
+          "owner": "Founder / Legal / GTM",
+          "registerOnly": true,
+          "roadmapLane": "partnerships",
+          "readinessWitness": "terra-os/audit/evidence/pilot-zambia-readiness-latest.json"
+        },
+        {
+          "gateId": "BL-SOC2-01",
+          "authorityClass": "S",
+          "blocksIR": false,
+          "status": "open",
+          "what": "SOC 2 Type II auditor opinion track",
+          "whyAgentCannotExecute": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+          "unblockAction": "Auditor publishes Type I/II opinion letter — witness under audit/evidence/",
+          "implication": "Engineering lane continues — register-only parallel sovereign gate",
+          "doesNotBlock": "owner-repo Class R implement queue",
+          "owner": "external auditor",
+          "registerOnly": true,
+          "roadmapLane": "compliance",
+          "readinessWitness": null
+        }
+      ],
+      "criticalPathRow": "| **P0** | XR-516 | human | **blocked** | ratification |",
+      "placement": "Parallel sovereign gates — not Next work item"
+    },
+    "statusUpdateSections": {
+      "parallelSovereignGates": "- **Class S** · `XR-516` · **Lane:** partnerships · **What:** SPEC §17 co-author sign-off · **Unblock:** ecosystem-os/ops/gtm/inbound-tickets/to-human-xr-516-spec17-signoff-2026-06-12.md · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-REF` · **Lane:** partnerships · **What:** ZWCMP DPA + pilot agreement signature · **Unblock:** Sign DPA + pilot PDFs; file under audit/vendor-outreach/zwcmp/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-REF` · **Lane:** legal · **What:** Indemnified SLA legal review + insurance quote · **Unblock:** Legal memo + insurance quote on verification-sla-draft.md base · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `BM-ZM-PILOT-01` · **Lane:** partnerships · **What:** Zambia MMMD 60-day pilot contract or countersigned LOI · **Unblock:** Countersign 60-day MMMD pilot contract or LOI; file witness under audit/vendor-outreach/zm-mmmd/ · **blocksIR:** false · **Does not block:** `BM-P1-zambia-pilot` · **Readiness:** `terra-os/audit/evidence/pilot-zambia-readiness-latest.json`\n- **Class S** · `BL-SOC2-01` · **Lane:** compliance · **What:** SOC 2 Type II auditor opinion track · **Unblock:** Auditor publishes Type I/II opinion letter — witness under audit/evidence/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`"
+    },
     "hubScopeGuard": {
       "ok": true,
       "applies": false
+    },
+    "fleetOwnerRedirect": {
+      "ownerRepo": "markets-os",
+      "storyId": "AFM-REG-003",
+      "title": "Continental capital + digital-rail Wave 0",
+      "p22Command": "pnpm --dir ../markets-os agent:next-work --json",
+      "because": "Sprint 86 AFM-REG-003; ADR-0007 Class A parallel; Wave 0 owner repos",
+      "switchWorkspace": true,
+      "notNextWorkItemInHub": false,
+      "hubRegisterOnly": false
     }
   },
   "modelProfile": null,
@@ -808,6 +1036,6 @@
     "witness": null,
     "error": "baselineos CLI not built"
   },
-  "gitChanged": 50,
+  "gitChanged": 37,
   "authorityClass": "R"
 }

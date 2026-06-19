@@ -221,7 +221,7 @@ function main() {
 
   if (businessExists) {
     const loose = readdirSync(businessDir, { withFileTypes: true })
-      .filter((e) => e.isFile() && e.name.endsWith('.md') && !['README.md', 'FOLDER-SPEC.md', 'pillar-scorecard.md'].includes(e.name))
+      .filter((e) => e.isFile() && e.name.endsWith('.md') && !['README.md', 'FOLDER-SPEC.md', 'scorecard.md'].includes(e.name))
       .map((e) => e.name);
     gates.push(
       gate(

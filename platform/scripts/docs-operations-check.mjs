@@ -44,8 +44,11 @@ function main() {
   }
 
   const tier = readProductTier(REPO);
-  const profileKey = profileKeyFromTier(tier);
-  const profile = spec.profiles?.[profileKey] ?? spec.profiles?.product;
+  const profileKey = profileKeyFromTier(tier, REPO);
+  let profile = spec.profiles?.[profileKey] ?? spec.profiles?.product;
+  if (profile?.extends && spec.profiles?.[profile.extends]) {
+    profile = { ...spec.profiles[profile.extends], ...profile };
+  }
   gates.push(gate('profile', !!profile, profileKey));
 
   const opsDir = join(REPO, 'docs/operations');

@@ -149,17 +149,17 @@ function main() {
     );
     gates.push(gate('root-readme:cpo', /cpo\.md|CPO|Chief Product Officer/i.test(text), 'README cites CPO connection'));
     gates.push(
-      gate('root-readme:pillar-scorecard', /pillar-scorecard/i.test(text), 'README links pillar scorecard'),
+      gate('root-readme:scorecard', /scorecard/i.test(text), 'README links scorecard'),
     );
   }
 
-  const scorecardPath = join(agileDir, 'pillar-scorecard.md');
+  const scorecardPath = join(agileDir, 'scorecard.md');
   if (existsSync(scorecardPath)) {
     const sc = readFileSync(scorecardPath, 'utf8');
     const missingInSc = PILLAR_IDS.filter((id) => !new RegExp(id, 'i').test(sc));
     gates.push(
       gate(
-        'pillar-scorecard:eleven-pillars',
+        'scorecard:eleven-pillars',
         missingInSc.length === 0,
         missingInSc.length ? `missing: ${missingInSc.join(', ')}` : 'all 11 pillars listed',
       ),
@@ -167,7 +167,7 @@ function main() {
     const target = profile?.pillarTarget ?? 85;
     gates.push(
       gate(
-        'pillar-scorecard:target',
+        'scorecard:target',
         new RegExp(`${target}|100\\/100|compositeTarget`).test(sc),
         `pillar target ${target}/100 documented`,
       ),

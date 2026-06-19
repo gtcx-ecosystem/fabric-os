@@ -169,14 +169,19 @@ function main() {
   }
 
   if (productExists) {
-    const hasProductRoadmap = existsSync(join(productDir, 'roadmap')) || existsSync(join(productDir, 'roadmap.md'));
-    gates.push(
-      gate(
-        'forbid:product-roadmap',
-        !hasProductRoadmap,
-        hasProductRoadmap ? 'docs/product/roadmap* forbidden — use agile/roadmaps/' : 'ok',
-      ),
-    );
+    const p57RoadmapAllowed = requiredSubs.includes('roadmap');
+    if (!p57RoadmapAllowed) {
+      const hasProductRoadmap = existsSync(join(productDir, 'roadmap')) || existsSync(join(productDir, 'roadmap.md'));
+      gates.push(
+        gate(
+          'forbid:product-roadmap',
+          !hasProductRoadmap,
+          hasProductRoadmap ? 'docs/product/roadmap* forbidden — use agile/roadmaps/' : 'ok',
+        ),
+      );
+    } else {
+      gates.push(gate('forbid:product-roadmap', true, 'P57 — docs/product/roadmap/ is required SoR'));
+    }
     for (const forbidden of ['requirements', 'acceptance', 'surfaces', 'prds', 'roadmaps', 'scrum', 'research']) {
       const p = join(productDir, forbidden);
       if (!existsSync(p)) {
@@ -202,7 +207,7 @@ function main() {
 
   if (productExists) {
     const loose = readdirSync(productDir, { withFileTypes: true })
-      .filter((e) => e.isFile() && e.name.endsWith('.md') && !['README.md', 'FOLDER-SPEC.md', 'pillar-scorecard.md'].includes(e.name))
+      .filter((e) => e.isFile() && e.name.endsWith('.md') && !['README.md', 'FOLDER-SPEC.md', 'scorecard.md'].includes(e.name))
       .map((e) => e.name);
     gates.push(
       gate(

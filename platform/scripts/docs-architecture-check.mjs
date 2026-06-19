@@ -174,7 +174,8 @@ function main() {
   }
 
   if (existsSync(archDir)) {
-    const loose = looseMarkdownAtRoot(archDir);
+    const requiredBasenames = (spec.requiredRootFiles ?? []).map((e) => e.path.split('/').pop());
+    const loose = looseMarkdownAtRoot(archDir, ['README.md', 'FOLDER-SPEC.md', 'scorecard.md', ...requiredBasenames]);
     gates.push(
       gate('no-loose-narrative-at-root', loose.length === 0, loose.length ? `relocate: ${loose.join(', ')}` : 'ok'),
     );

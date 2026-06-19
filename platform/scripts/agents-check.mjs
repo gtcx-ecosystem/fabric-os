@@ -83,7 +83,7 @@ function main() {
   const rootReadme = join(agentsDir, 'README.md');
   if (existsSync(rootReadme)) {
     const text = readFileSync(rootReadme, 'utf8');
-    gates.push(gate('root-readme:separation', /agent-spine|operations/i.test(text), 'README cites separation'));
+    gates.push(gate('root-readme:separation', /agent-init|operations/i.test(text), 'README cites separation'));
     gates.push(gate('root-readme:pack-link', /agents-pack/i.test(text), 'README cites pack'));
   }
 

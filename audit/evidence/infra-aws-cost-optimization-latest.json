@@ -94,5 +94,10 @@
     "governanceCheck": "pnpm --dir ../bridge-os env:governance:check"
   },
   "applyRequired": "terraform apply staging + testnet-pilot when infra window opens (Class A for production-adjacent)",
-  "ok": true
+  "ok": true,
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

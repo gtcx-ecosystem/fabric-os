@@ -1,0 +1,235 @@
+{
+  "schema": "gtcx://canon-os/docs-business-check/v2",
+  "repo": "fabric-os",
+  "profile": "platform",
+  "at": "2026-06-19T19:10:56.033Z",
+  "ok": true,
+  "spec": {
+    "localPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-business-pack.json",
+    "localIsStub": false,
+    "upstreamPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/pm/spec/docs-business-pack.json",
+    "resolvedIsFull": true
+  },
+  "gates": [
+    {
+      "id": "spec:local-present",
+      "ok": true,
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-business-pack.json"
+    },
+    {
+      "id": "spec:not-stub",
+      "ok": true,
+      "detail": "full local pack"
+    },
+    {
+      "id": "spec:resolved-full",
+      "ok": true,
+      "detail": "resolved via /Users/amanianai/Sites/gtcx-ecosystem/canon-os/pm/spec/docs-business-pack.json"
+    },
+    {
+      "id": "profile",
+      "ok": true,
+      "detail": "platform"
+    },
+    {
+      "id": "root:docs/business/README.md",
+      "ok": true,
+      "detail": "docs/business/README.md"
+    },
+    {
+      "id": "root:docs/business/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "docs/business/FOLDER-SPEC.md"
+    },
+    {
+      "id": "root-readme:cross-ref",
+      "ok": true,
+      "detail": "README must link foundation ↔ business (cross-ref table)"
+    },
+    {
+      "id": "root-folder-spec:pack-link",
+      "ok": true,
+      "detail": "FOLDER-SPEC must cite docs-business-pack.json"
+    },
+    {
+      "id": "subfolder:market",
+      "ok": true,
+      "detail": "docs/business/market/"
+    },
+    {
+      "id": "subfolder-readme:market",
+      "ok": true,
+      "detail": "docs/business/market/README.md"
+    },
+    {
+      "id": "canonical:market/primary-market.md",
+      "ok": true,
+      "detail": "docs/business/market/primary-market.md"
+    },
+    {
+      "id": "canonical:market/secondary-market.md",
+      "ok": true,
+      "detail": "docs/business/market/secondary-market.md"
+    },
+    {
+      "id": "canonical:market/tertiary-market.md",
+      "ok": true,
+      "detail": "docs/business/market/tertiary-market.md"
+    },
+    {
+      "id": "canonical:market/problem.md",
+      "ok": true,
+      "detail": "docs/business/market/problem.md"
+    },
+    {
+      "id": "canonical:market/stakeholder-analysis.md",
+      "ok": true,
+      "detail": "docs/business/market/stakeholder-analysis.md"
+    },
+    {
+      "id": "subfolder:customers",
+      "ok": true,
+      "detail": "docs/business/customers/"
+    },
+    {
+      "id": "subfolder-readme:customers",
+      "ok": true,
+      "detail": "docs/business/customers/README.md"
+    },
+    {
+      "id": "canonical:customers/core-audiences.md",
+      "ok": true,
+      "detail": "docs/business/customers/core-audiences.md"
+    },
+    {
+      "id": "canonical:customers/ideal-customer-profile.md",
+      "ok": true,
+      "detail": "docs/business/customers/ideal-customer-profile.md"
+    },
+    {
+      "id": "canonical:customers/personas.md",
+      "ok": true,
+      "detail": "docs/business/customers/personas.md"
+    },
+    {
+      "id": "canonical:customers/early-stage-adopter.md",
+      "ok": true,
+      "detail": "docs/business/customers/early-stage-adopter.md"
+    },
+    {
+      "id": "subfolder:economics",
+      "ok": true,
+      "detail": "docs/business/economics/"
+    },
+    {
+      "id": "subfolder-readme:economics",
+      "ok": true,
+      "detail": "docs/business/economics/README.md"
+    },
+    {
+      "id": "canonical:economics/business-model.md",
+      "ok": true,
+      "detail": "docs/business/economics/business-model.md"
+    },
+    {
+      "id": "canonical:economics/pricing.md",
+      "ok": true,
+      "detail": "docs/business/economics/pricing.md"
+    },
+    {
+      "id": "canonical:economics/revenue-streams.md",
+      "ok": true,
+      "detail": "docs/business/economics/revenue-streams.md"
+    },
+    {
+      "id": "canonical:economics/product-metrics.md",
+      "ok": true,
+      "detail": "docs/business/economics/product-metrics.md"
+    },
+    {
+      "id": "canonical:economics/analytics-registry.md",
+      "ok": true,
+      "detail": "docs/business/economics/analytics-registry.md"
+    },
+    {
+      "id": "subfolder:strategy",
+      "ok": true,
+      "detail": "docs/business/strategy/"
+    },
+    {
+      "id": "subfolder-readme:strategy",
+      "ok": true,
+      "detail": "docs/business/strategy/README.md"
+    },
+    {
+      "id": "canonical:strategy/executive-summary.md",
+      "ok": true,
+      "detail": "docs/business/strategy/executive-summary.md"
+    },
+    {
+      "id": "canonical:strategy/solution.md",
+      "ok": true,
+      "detail": "docs/business/strategy/solution.md"
+    },
+    {
+      "id": "canonical:strategy/ecosystem-integration.md",
+      "ok": true,
+      "detail": "docs/business/strategy/ecosystem-integration.md"
+    },
+    {
+      "id": "canonical:strategy/implementation-truth.md",
+      "ok": true,
+      "detail": "docs/business/strategy/implementation-truth.md"
+    },
+    {
+      "id": "subfolder:research",
+      "ok": true,
+      "detail": "docs/business/research/"
+    },
+    {
+      "id": "subfolder-readme:research",
+      "ok": true,
+      "detail": "docs/business/research/README.md"
+    },
+    {
+      "id": "canonical:research/industry-transformation.md",
+      "ok": true,
+      "detail": "docs/business/research/industry-transformation.md"
+    },
+    {
+      "id": "canonical:research/funding-analysis.md",
+      "ok": true,
+      "detail": "docs/business/research/funding-analysis.md"
+    },
+    {
+      "id": "canonical:research/capital-markets-playbook.md",
+      "ok": true,
+      "detail": "docs/business/research/capital-markets-playbook.md"
+    },
+    {
+      "id": "canonical:research/ecosystem-overview.md",
+      "ok": true,
+      "detail": "docs/business/research/ecosystem-overview.md"
+    },
+    {
+      "id": "canonical:research/master-voice.md",
+      "ok": true,
+      "detail": "docs/business/research/master-voice.md"
+    },
+    {
+      "id": "canonical:research/research-portfolio-blueprint.md",
+      "ok": true,
+      "detail": "docs/business/research/research-portfolio-blueprint.md"
+    },
+    {
+      "id": "no-loose-research-at-root",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "research-folder",
+      "ok": true,
+      "detail": "docs/business/research/"
+    }
+  ]
+}

@@ -7,6 +7,7 @@ role: platform-architect
 tier: standard
 tags: ['workspace', 'layout', 'p35']
 review_cycle: on-change
+document_type: overview
 related:
   - ../../../config/layout-contract.json
 ---

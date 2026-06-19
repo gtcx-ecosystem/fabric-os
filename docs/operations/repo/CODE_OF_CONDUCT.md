@@ -7,6 +7,7 @@ role: protocol-architect
 tier: strategic
 tags: ['governance', 'conduct']
 review_cycle: annual
+document_type: overview
 ---
 
 # Code of Conduct

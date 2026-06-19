@@ -7,6 +7,7 @@ role: protocol-architect
 tier: standard
 tags: ['governance', 'contributing']
 review_cycle: on-change
+document_type: overview
 ---
 
 # Contributing to fabric-os

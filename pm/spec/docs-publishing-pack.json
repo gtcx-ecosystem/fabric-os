@@ -1,0 +1,120 @@
+{
+  "$schema": "gtcx://canon-os/docs-publishing-pack/v1",
+  "updated": "2026-06-19",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "title": "Docs publishing pack — fleet",
+  "principle": "GitBook and publish channels under docs/publishing/. Canonical prose lives in strategy/product/operations.",
+  "requiredRootFiles": [
+    {
+      "path": "docs/publishing/README.md",
+      "role": "publish index"
+    },
+    {
+      "path": "docs/publishing/FOLDER-SPEC.md",
+      "role": "pointer to pm/spec/docs-folders/13-publishing.json"
+    }
+  ],
+  "requiredSubfolders": {
+    "gitbook": {
+      "required": ["README.md"],
+      "purpose": "GitBook SUMMARY and publish config"
+    }
+  },
+  "profiles": {
+    "product": {
+      "publishingRequired": false
+    },
+    "platform": {
+      "publishingRequired": false
+    }
+  },
+  "enforcement": {
+    "check": "pnpm docs:publishing:check",
+    "witness": "audit/evidence/docs-publishing-latest.json"
+  },
+  "fractalMpr": {
+    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "layerWitness": "audit/evidence/mpr-publishing-layer-latest.json",
+    "scorecard": "docs/publishing/scorecard.md",
+    "rollupFrom": ["file", "folder"],
+    "scorecardIsReadOnlyRollup": true,
+    "optional": true
+  },
+  "pillarContract": {
+    "compliance": {
+      "primary": true,
+      "artifacts": ["docs/publishing/FOLDER-SPEC.md"],
+      "gates": ["publish register alignment"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    },
+    "technicalExcellence": {
+      "secondary": true,
+      "artifacts": ["docs/publishing/gitbook/"],
+      "gates": ["SUMMARY + build paths"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    },
+    "craft": {
+      "primary": true,
+      "artifacts": ["docs/publishing/README.md"],
+      "gates": ["publish index quality"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    },
+    "worldClass": {
+      "secondary": true,
+      "artifacts": ["docs/publishing/gitbook/"],
+      "gates": ["fleet publish bars"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    },
+    "trustAndSafety": {
+      "secondary": true,
+      "artifacts": ["docs/publishing/README.md"],
+      "gates": ["no draft-as-published claims"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    },
+    "creativityInnovation": {
+      "notApplicable": true,
+      "reason": "Innovation narratives live in docs/product/ and docs/architecture/; this layer routes only",
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    },
+    "commercialValue": {
+      "secondary": true,
+      "artifacts": ["docs/publishing/README.md"],
+      "gates": ["GTM channel map"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    },
+    "defensiveMoat": {
+      "secondary": true,
+      "artifacts": ["docs/publishing/README.md"],
+      "gates": ["canonical vs publish lane"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    },
+    "agenticEmpowerment": {
+      "secondary": true,
+      "artifacts": ["docs/publishing/README.md"],
+      "gates": ["operator publish runbook links"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    },
+    "ecosystemIntegration": {
+      "primary": true,
+      "artifacts": ["docs/publishing/gitbook/"],
+      "gates": ["ecosystem-os operator docs"],
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    },
+    "ipMagic": {
+      "notApplicable": true,
+      "reason": "IP magic scored in docs/product/acceptance and reference implementations",
+      "minBar": "≥100 layer order; reference hubs 100",
+      "witness": "audit/evidence/mpr-publishing-layer-latest.json"
+    }
+  }
+}

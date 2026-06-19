@@ -26,7 +26,7 @@
       "allowedDocTypes": ["runbook", "architecture"],
       "required": ["README.md"]
     },
-    "agent-spine": {
+    "agent-init": {
       "purpose": "Agent universal instructions, P22 brief, git workflow prose",
       "allowedDocTypes": ["runbook", "overview"],
       "required": ["README.md"],
@@ -55,12 +55,12 @@
   "profiles": {
     "product": {
       "operationsRequired": true,
-      "requiredSubfolders": ["runbooks", "deployment", "agent-spine"],
+      "requiredSubfolders": ["runbooks", "deployment", "agent-init"],
       "optionalSubfolders": ["remediation", "coordination"]
     },
     "fleet-documentation": {
       "operationsRequired": true,
-      "requiredSubfolders": ["runbooks", "agent-spine", "coordination"],
+      "requiredSubfolders": ["runbooks", "agent-init", "coordination"],
       "optionalSubfolders": ["deployment", "remediation"]
     },
     "constitution-standards": {
@@ -69,7 +69,7 @@
     },
     "platform": {
       "operationsRequired": true,
-      "requiredSubfolders": ["runbooks", "deployment", "agent-spine"],
+      "requiredSubfolders": ["runbooks", "deployment", "agent-init"],
       "optionalSubfolders": ["remediation", "coordination"]
     }
   },
@@ -125,7 +125,7 @@
     },
     "trustAndSafety": {
       "primary": true,
-      "artifacts": ["docs/operations/agent-spine/"],
+      "artifacts": ["docs/operations/agent-init/"],
       "gates": ["P27 execution obligation"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
@@ -152,7 +152,7 @@
     },
     "agenticEmpowerment": {
       "primary": true,
-      "artifacts": ["docs/operations/agent-spine/"],
+      "artifacts": ["docs/operations/agent-init/"],
       "gates": ["agent ops narrative"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
@@ -174,7 +174,7 @@
   "fractalMpr": {
     "policy": "pm/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-operations-layer-latest.json",
-    "scorecard": "docs/operations/pillar-scorecard.md",
+    "scorecard": "docs/operations/scorecard.md",
     "rollupFrom": ["file", "folder"],
     "scorecardIsReadOnlyRollup": true
   }

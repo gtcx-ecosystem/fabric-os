@@ -303,7 +303,7 @@
   "fractalMpr": {
     "policy": "pm/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-business-layer-latest.json",
-    "scorecard": "docs/business/pillar-scorecard.md",
+    "scorecard": "docs/business/scorecard.md",
     "rollupFrom": ["file", "folder"],
     "scorecardIsReadOnlyRollup": true
   }

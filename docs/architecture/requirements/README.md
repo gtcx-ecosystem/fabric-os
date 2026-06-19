@@ -9,7 +9,6 @@ tags: ['documentation', 'architecture']
 review_cycle: on-change
 ---
 
-
 # Requirements
 
 Functional and non-functional requirements catalog (system lens). Delivery trace: `agile/requirements/trace.md`.

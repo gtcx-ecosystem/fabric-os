@@ -1,0 +1,105 @@
+{
+  "schema": "gtcx://canon-os/docs-product-check/v1",
+  "repo": "fabric-os",
+  "profile": "platform",
+  "at": "2026-06-19T19:10:56.136Z",
+  "ok": true,
+  "spec": {
+    "localPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-product-pack.json",
+    "localIsStub": false,
+    "upstreamPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/pm/spec/docs-product-pack.json",
+    "resolvedIsFull": true
+  },
+  "gates": [
+    {
+      "id": "spec:local-present",
+      "ok": true,
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-product-pack.json"
+    },
+    {
+      "id": "spec:not-stub",
+      "ok": true,
+      "detail": "full local pack"
+    },
+    {
+      "id": "spec:resolved-full",
+      "ok": true,
+      "detail": "resolved full product pack"
+    },
+    {
+      "id": "profile",
+      "ok": true,
+      "detail": "platform"
+    },
+    {
+      "id": "root:docs/product/README.md",
+      "ok": true,
+      "detail": "docs/product/README.md"
+    },
+    {
+      "id": "root:docs/product/FOLDER-SPEC.md",
+      "ok": true,
+      "detail": "docs/product/FOLDER-SPEC.md"
+    },
+    {
+      "id": "root-readme:cross-ref",
+      "ok": true,
+      "detail": "README must link foundation ↔ product (cross-ref table)"
+    },
+    {
+      "id": "root-folder-spec:pack-link",
+      "ok": true,
+      "detail": "FOLDER-SPEC must cite docs-product-pack.json"
+    },
+    {
+      "id": "forbid:product-roadmap",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbid:product-requirements",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbid:product-acceptance",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbid:product-surfaces",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbid:product-prds",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbid:product-roadmaps",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbid:product-scrum",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "forbid:product-research",
+      "ok": true,
+      "detail": "ok"
+    },
+    {
+      "id": "ux:users",
+      "ok": true,
+      "detail": "docs/product/ux/users.md (migrate from personas.md)"
+    },
+    {
+      "id": "no-loose-narrative-at-root",
+      "ok": true,
+      "detail": "ok"
+    }
+  ]
+}

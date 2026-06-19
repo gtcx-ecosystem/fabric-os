@@ -33,5 +33,10 @@
   "gaps": ["S2:demoWalkthrough", "S2:syntheticFixtures", "S2:featureMatrix90"],
   "qualitativeForensic": null,
   "deepAuditCommand": "/gtm cursor command + audit/gtm-readiness-YYYY-MM-DD.md",
-  "note": "Machine inference — run /gtm for buyer-grade qualitative assessment"
+  "note": "Machine inference — run /gtm for buyer-grade qualitative assessment",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

@@ -8,5 +8,10 @@
   "knowledgeFileCount": 895,
   "index": null,
   "evalGolden": "config/baseline/rag-eval-golden.json",
-  "mcpDoc": "docs/operations/mcp-setup.md"
+  "mcpDoc": "docs/operations/mcp-setup.md",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

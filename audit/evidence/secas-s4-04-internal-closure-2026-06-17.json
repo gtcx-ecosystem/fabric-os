@@ -24,5 +24,10 @@
     "audit/evidence/security-test-remediation-closure-latest.json"
   ],
   "blocksIR": false,
-  "blocksAnyRepo": false
+  "blocksAnyRepo": false,
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

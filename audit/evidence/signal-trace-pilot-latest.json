@@ -4,7 +4,7 @@
   "title": "Cross-repo trace correlation pilot",
   "checkedAt": "2026-06-05T14:00:00.000Z",
   "trace_id": "a1b2c3d4-e5f6-4789-a012-3456789abcde",
-  "coordination_ref": "01-docs/04-ops/coordination/cross-repo-agent-log.md",
+  "coordination_ref": "docs/operations/coordination/cross-repo-agent-log.md",
   "span_marker": {
     "gtcx.trace_id": "a1b2c3d4-e5f6-4789-a012-3456789abcde",
     "gtcx.service": "compliance-gateway",
@@ -12,5 +12,10 @@
     "timestamp": "2026-06-05T14:00:00.000Z"
   },
   "agent_next_work": "03-platform/scripts/agent-next-work.mjs emits traceId on every invocation",
-  "validator": "node 03-platform/tools/scripts/validate-trace-correlation.mjs"
+  "validator": "node 03-platform/tools/scripts/validate-trace-correlation.mjs",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

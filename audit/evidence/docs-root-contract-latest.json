@@ -102,5 +102,10 @@
     "iaMap": "github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/docs-ia/IA-PILLAR-MAP.md",
     "rootContract": "github.com/gtcx-ecosystem/canon-os/blob/main/pm/spec/docs-root-contract.json",
     "docsRootSpec": "github.com/gtcx-ecosystem/canon-os/blob/main/pm/spec/docs-folders/00-docs-root.json"
+  },
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
   }
 }

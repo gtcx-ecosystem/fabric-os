@@ -2,7 +2,7 @@
   "$schema": "gtcx://pm/backlog/v1",
   "version": "1.0.0",
   "repo": "fabric-os",
-  "updated": "2026-06-15",
+  "updated": "2026-06-19",
   "activeMilestone": {
     "id": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
     "title": "Fleet internal SecOps + ComplianceOps clearance",
@@ -35,6 +35,29 @@
       ],
       "auditNotes": "2026-06-17 — internal_closure_complete; vendor track deferred-post-launch (blocksAnyRepo: false)",
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
+    },
+    {
+      "id": "OPS-PRD-ROUTING-001",
+      "title": "Ops lane PRD/spec routing matrix",
+      "type": "story",
+      "priority": "P0",
+      "status": "open",
+      "owner": "fabric-os",
+      "sprint": "SPR-2026-06-INTAKE",
+      "pipeline": "Product Backlog",
+      "program": "Fleet Ops product canon",
+      "initiative": "INIT-FABRIC-OPS-PRD-ROUTING",
+      "prdRef": "prd-product-charter",
+      "capabilityId": "ops-prd-routing",
+      "acceptance": [
+        "DaaS and SECaaS are seeded first because they already have PRDs and initiatives",
+        "Every remaining Ops lane has an owner-routed PRD/spec coverage row rather than Fabric OS pretending to own all lanes",
+        "Matrix records ownerRepo, visionRef, goalsRef, milestoneRef, initiativeRef, prdRef, forensicFeatureSpecRef, 11PillarAuditRef, witnessRef, and status",
+        "Fabric-owned lanes route to Fabric artifacts; Agile-owned, Compliance-owned, Baseline-owned, Bridge-owned, and product-owned lanes route to owner repos",
+        "Check fails when a required Ops lane lacks owner-routed PRD/spec coverage"
+      ],
+      "auditNotes": "2026-06-19 — intake from PRD-charter review: operational 11PR coverage exists, but Terminal OS-depth product charter and forensic feature-spec coverage is not in place for all Ops functions.",
+      "intakeSource": "operator:--intake --backlog p0"
     },
     {
       "id": "T46",

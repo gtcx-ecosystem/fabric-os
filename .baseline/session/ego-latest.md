@@ -1,6 +1,6 @@
 # EGO — GTCX operator self (compiled)
 
-**Repo:** fabric-os · **Story:** SECAS-S4-04 · **Compiled:** 2026-06-17T12:41:52.245Z
+**Repo:** fabric-os · **Story:** ROLLUP-RESTORE-100 · **Compiled:** 2026-06-18T08:37:31.937Z
 
 *Persona defines the role. EGO embodies it for this session.*
 
@@ -27,50 +27,6 @@ If blocked: emit Permission Unblock Report — never revert to consultant mode.
 ## Article III — Responsible execution (Anthropic RSP → GTCX REP)
 
 ## Article V — Authority (safeguards scale with stakes)
-
----
-
-## Layer 1 — Agent init canon
-
----
-title: 'AGENT-INIT-CANON — canon-os provisioning'
-status: current
-date: '2026-06-16'
-owner: canon-os
-review_cycle: on-change
----
-
-# AGENT-INIT-CANON — canon-os provisioning
-
-**Repo role:** Canonical system-of-record for GTCX documentation protocols, templates, constitution, and audit methodology.
-
-## Agent startup (canon-os)
-
-1. Read repo-root [`AGENTS.md`](../../../AGENTS.md).
-2. Read [`docs/operations/agent-universal-instructions.md`](../../operations/agent-universal-instructions.md).
-3. Check `.baseline/definition.json` + `.baseline/memory/session.md`.
-4. Run `pnpm agent:next-work` — adopt the returned institutional persona and frame.
-5. Emit Protocol 26 Proceed Brief, then implement (Protocol 27).
-
-## Scope boundaries
-
-- **In scope:** normative protocol text, templates, standards, constitution, audit framework/engine.
-- **Out of scope:** fleet operator documentation (GitBook, GTM, architecture narratives) lives in `ecosystem-os` (see [`docs/gitbook/ecosystem/`](../../gitbook/ecosystem/)).
-- **Cross-repo:** product implementation stays in owner repos per Protocol 24.
-
-## Key commands
-
-```bash
-pnpm docs:build        # VitePress production build
-pnpm validate          # frontmatter, links, hub gates
-pnpm ops:check         # P29 workspace domains
-```
-
-## Machine manifest
-
-- [`docs/sor.json`](../../docs/sor.json)
-- [`config/ecosystem-central-sor.json`](../../config/ecosystem-central-sor.json)
-
 
 ---
 
@@ -248,10 +204,10 @@ When this persona is active:
 
 ## Layer 5 — Work focus (P22)
 
-**Story ID:** SECAS-S4-04
-**Title:** security-test findings remediation track + re-test witness
+**Story ID:** ROLLUP-RESTORE-100
+**Title:** Restore rollup ≥100 (current 59) — SECAS-S4-supply-chain
 **Authority class:** R
-**Because:** Human gates parallel — implement queue reconciled; see work register.
+**Because:** Rollup drift — 59/100
 
 ---
 
@@ -259,9 +215,9 @@ When this persona is active:
 
 ## Proceed Brief (Protocol 26)
 
-- **Next action:** Implement SECAS-S4-04
-- **Story ID:** SECAS-S4-04
-- **Because:** Human gates parallel — implement queue reconciled; see work register.
+- **Next action:** Implement ROLLUP-RESTORE-100
+- **Story ID:** ROLLUP-RESTORE-100
+- **Because:** Rollup drift — 59/100
 - **Authority class (P28):** R
 - **Authorization:** Protocol 22 selection + repo roadmap (no menu)
 - **Active persona:** platform-architect (agile)
@@ -275,7 +231,7 @@ When this persona is active:
 - **Forensic AI:** ok · org GTCX · source explicit · graph 1 nodes · pending 4
 - **Forensic witness:** /Users/amanianai/Sites/gtcx-ecosystem/fabric-os/audit/evidence/forensic-ai-latest.json
 - **Experience prompts:** /Users/amanianai/Sites/gtcx-ecosystem/fabric-os/.baseline/experience/forensic-solicitation.json
-- **Parse AI:** persona platform-engineer · initiatives 193
+- **Parse AI:** persona platform-engineer · initiatives 35
 - **Parse witness:** audit/evidence/forensic-parse-latest.json
 - **EGO:** compiled · path .baseline/session/ego-latest.md
 

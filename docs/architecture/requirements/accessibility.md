@@ -9,7 +9,6 @@ tags: ['documentation', 'architecture']
 review_cycle: on-change
 ---
 
-
 # accessibility
 
 System requirements for **fabric-os**.

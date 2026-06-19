@@ -14,6 +14,29 @@
     "target": "Witness: audit/evidence/secas-supply-chain-check-latest.json",
     "witness": "audit/evidence/secas-supply-chain-check-latest.json"
   },
+  "productGoals": [
+    {
+      "id": "PG1",
+      "title": "Fleet security clearance",
+      "outcome": "SecOps and ComplianceOps can promote fleet infrastructure with clear evidence and no hidden gating ambiguity",
+      "measure": "SecOps internal Class R sealed and ComplianceOps fleet harness PASS",
+      "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json"
+    },
+    {
+      "id": "PG2",
+      "title": "Supply-chain trust",
+      "outcome": "Supply-chain gates remain provably green across the fleet deploy substrate",
+      "measure": "SECAS-S4-02 supply-chain gates PASS",
+      "witness": "audit/evidence/secas-supply-chain-check-latest.json"
+    },
+    {
+      "id": "PG3",
+      "title": "Operational deploy choreography",
+      "outcome": "Fleet integrators can rely on one coherent deploy and observability substrate for staged promotion",
+      "measure": "Demo walkthrough evidence and fleet health witnesses remain current",
+      "witness": "audit/evidence/demo-readiness-{repo}.json"
+    }
+  ],
   "valueProposition": {
     "for": "Operators and integrators consuming Fabric OS",
     "who": "need shippable outcomes traced to PRD and active milestone",
@@ -41,6 +64,40 @@
       "min": 30,
       "max": 90
     }
+  },
+  "gtmGoals": [
+    {
+      "id": "GTM1",
+      "title": "Integrator deploy substrate pilots",
+      "outcome": "GR-T2 pilots promote infrastructure with SecOps clearance evidence",
+      "measure": "Demo walkthrough + supply-chain gates PASS",
+      "motion": "Integrator pilot",
+      "tier": "GR-T2-partial"
+    }
+  ],
+  "shippingGoals": {
+    "schema": "gtcx://pm/shipping-goals/v1",
+    "note": "Assurance and delivery bars — not product or GTM goals.",
+    "goals": [
+      {
+        "id": "SG1",
+        "label": "SecOps and ComplianceOps clearance",
+        "target": "internal clearance sealed and fleet compliance harness PASS",
+        "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json"
+      },
+      {
+        "id": "SG2",
+        "label": "Supply-chain gates",
+        "target": "SECAS-S4-02 supply-chain gates PASS",
+        "witness": "audit/evidence/secas-supply-chain-check-latest.json"
+      },
+      {
+        "id": "SG3",
+        "label": "PRD traceability",
+        "target": "100% in-flight work traces to prdRef, capabilityId, or activeMilestone.id",
+        "witness": "pm/product/prd-index.json"
+      }
+    ]
   },
   "activeMilestone": {
     "id": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",

@@ -1207,5 +1207,10 @@
   "rubricSource": "audit-output",
   "rubricSourcePath": "audit/audit-output-2026-06-17.json",
   "initiative": "INIT-multi-pillar-EVAL",
-  "source": "run-multi-pillar-audit"
+  "source": "run-multi-pillar-audit",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

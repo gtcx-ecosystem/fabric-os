@@ -33,7 +33,7 @@
         "RISK-PRODUCT-003": {
           "repo": "gtcx-intelligence",
           "status": "present",
-          "path": "gtcx-os/platform/intelligence/01-docs/security/threat-model.md"
+          "path": "gtcx-os/platform/intelligence/docs/security/threat-model.md"
         }
       }
     },
@@ -45,5 +45,10 @@
   },
   "openP0": 3,
   "productThreatGap": false,
-  "ok": true
+  "ok": true,
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

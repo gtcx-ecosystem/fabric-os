@@ -197,5 +197,10 @@
     "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/.baseline/persona/graph.json",
     "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/baseline.config.json",
     "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/.baseline/frame/question-catalog.json"
-  ]
+  ],
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

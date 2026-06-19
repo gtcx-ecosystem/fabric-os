@@ -9,8 +9,8 @@
   "ok": true,
   "namespace": "gtcx-staging",
   "dashboards": {
-    "ecosystemOverview": "gtcx-infrastructure/monitoring/dashboards/ecosystem-overview.json",
-    "protocolHealth": "gtcx-infrastructure/monitoring/dashboards/protocol-health.json",
+    "ecosystemOverview": "fabric-os/monitoring/dashboards/ecosystem-overview.json",
+    "protocolHealth": "fabric-os/monitoring/dashboards/protocol-health.json",
     "note": "Grafana JSON models version-controlled in gtcx-infrastructure"
   },
   "alertRoutes": [
@@ -175,5 +175,10 @@
     "gtcxOsNamespace": true,
     "witnessPath": "pm/ci/fleet-observability-latest.json",
     "alertRoutesDocumented": true
+  },
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
   }
 }

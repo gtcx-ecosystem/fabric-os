@@ -148,5 +148,10 @@
   },
   "executionOwner": "fabric-os",
   "orchestrator": "bridge-os",
-  "note": "fabric executed independent catalog runs; blocking satisfaction evaluated from witnesses"
+  "note": "fabric executed independent catalog runs; blocking satisfaction evaluated from witnesses",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

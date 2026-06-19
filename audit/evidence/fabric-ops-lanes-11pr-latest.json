@@ -24,9 +24,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "technicalExcellence",
@@ -34,9 +32,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "craft",
@@ -44,9 +40,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "worldClass",
@@ -54,9 +48,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "trustAndSafety",
@@ -64,9 +56,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "creativityInnovation",
@@ -74,9 +64,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "commercialValue",
@@ -84,9 +72,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "defensiveMoat",
@@ -94,9 +80,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "agenticEmpowerment",
@@ -104,9 +88,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "productEcosystemIntegration",
@@ -114,9 +96,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "ipMagic",
@@ -124,9 +104,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         }
       ],
       "sourceWitnesses": [
@@ -154,9 +132,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "technicalExcellence",
@@ -164,9 +140,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "craft",
@@ -174,9 +148,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "worldClass",
@@ -184,9 +156,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "trustAndSafety",
@@ -194,9 +164,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "creativityInnovation",
@@ -204,9 +172,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "commercialValue",
@@ -214,9 +180,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "defensiveMoat",
@@ -224,9 +188,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "agenticEmpowerment",
@@ -234,9 +196,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "productEcosystemIntegration",
@@ -244,9 +204,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         },
         {
           "id": "ipMagic",
@@ -254,9 +212,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/daas-friction-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/daas-friction-check-latest.json"]
         }
       ],
       "sourceWitnesses": [
@@ -448,9 +404,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         },
         {
           "id": "technicalExcellence",
@@ -458,9 +412,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         },
         {
           "id": "craft",
@@ -468,9 +420,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         },
         {
           "id": "worldClass",
@@ -478,9 +428,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         },
         {
           "id": "trustAndSafety",
@@ -488,9 +436,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         },
         {
           "id": "creativityInnovation",
@@ -498,9 +444,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         },
         {
           "id": "commercialValue",
@@ -508,9 +452,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         },
         {
           "id": "defensiveMoat",
@@ -518,9 +460,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         },
         {
           "id": "agenticEmpowerment",
@@ -528,9 +468,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         },
         {
           "id": "productEcosystemIntegration",
@@ -538,9 +476,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         },
         {
           "id": "ipMagic",
@@ -548,9 +484,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/ecosystemops-network-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/ecosystemops-network-check-latest.json"]
         }
       ],
       "sourceWitnesses": [
@@ -578,9 +512,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         },
         {
           "id": "technicalExcellence",
@@ -588,9 +520,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         },
         {
           "id": "craft",
@@ -598,9 +528,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         },
         {
           "id": "worldClass",
@@ -608,9 +536,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         },
         {
           "id": "trustAndSafety",
@@ -618,9 +544,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         },
         {
           "id": "creativityInnovation",
@@ -628,9 +552,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         },
         {
           "id": "commercialValue",
@@ -638,9 +560,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         },
         {
           "id": "defensiveMoat",
@@ -648,9 +568,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         },
         {
           "id": "agenticEmpowerment",
@@ -658,9 +576,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         },
         {
           "id": "productEcosystemIntegration",
@@ -668,9 +584,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         },
         {
           "id": "ipMagic",
@@ -678,9 +592,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/finops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/finops-check-latest.json"]
         }
       ],
       "sourceWitnesses": [
@@ -855,9 +767,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         },
         {
           "id": "technicalExcellence",
@@ -865,9 +775,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         },
         {
           "id": "craft",
@@ -875,9 +783,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         },
         {
           "id": "worldClass",
@@ -885,9 +791,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         },
         {
           "id": "trustAndSafety",
@@ -895,9 +799,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         },
         {
           "id": "creativityInnovation",
@@ -905,9 +807,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         },
         {
           "id": "commercialValue",
@@ -915,9 +815,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         },
         {
           "id": "defensiveMoat",
@@ -925,9 +823,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         },
         {
           "id": "agenticEmpowerment",
@@ -935,9 +831,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         },
         {
           "id": "productEcosystemIntegration",
@@ -945,9 +839,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         },
         {
           "id": "ipMagic",
@@ -955,9 +847,7 @@
           "published": true,
           "provisional": false,
           "blockedBy": [],
-          "evidence": [
-            "audit/evidence/commops-check-latest.json"
-          ]
+          "evidence": ["audit/evidence/commops-check-latest.json"]
         }
       ],
       "sourceWitnesses": [
@@ -1035,5 +925,10 @@
         }
       ]
     }
-  ]
+  ],
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

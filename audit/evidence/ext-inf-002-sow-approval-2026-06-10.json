@@ -20,5 +20,10 @@
     "gtcx-infrastructure: schedule live-stack security-test window after vendor ack"
   ],
   "repo": "gtcx-infrastructure",
-  "commitAtApproval": "47d099d"
+  "commitAtApproval": "47d099d",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

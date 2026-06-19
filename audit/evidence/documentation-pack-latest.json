@@ -232,5 +232,10 @@
     }
   ],
   "openP0": 0,
-  "openP1": 0
+  "openP1": 0,
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

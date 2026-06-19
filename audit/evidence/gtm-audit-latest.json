@@ -21,5 +21,10 @@
     "ecosystemSovereign": "below-GR-T2"
   },
   "updated": "2026-06-13",
-  "note": "Canonical path restored under audit/ — replaces stale 01-docs/05-audit/ reference."
+  "note": "Canonical path restored under audit/ — replaces stale docs/05-audit/ reference.",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

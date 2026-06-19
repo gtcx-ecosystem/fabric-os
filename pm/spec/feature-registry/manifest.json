@@ -1,0 +1,33 @@
+{
+  "$schema": "gtcx://fabric-os/feature-registry/v1",
+  "repo": "fabric-os",
+  "updated": "2026-06-19",
+  "purpose": "Forensic product catalog — P56 charter + registry wave (bootstrap from prd-index)",
+  "pillarLegend": {
+    "F1": "compliance",
+    "F2": "technicalExcellence",
+    "F3": "craft",
+    "F4": "worldClass",
+    "F5": "trustAndSafety",
+    "T6": "creativityInnovation",
+    "T7": "commercialValue",
+    "T8": "defensiveMoat",
+    "T9": "agenticEmpowerment",
+    "T10": "ecosystemIntegration",
+    "T11": "ipMagic"
+  },
+  "prdIndex": "pm/product/prd-index.json",
+  "syncCommand": "pnpm pm:feature-matrix:sync",
+  "featureCount": 6,
+  "shards": [
+    "pm/spec/feature-registry/shards/shard-01-core-capabilities.json",
+    "pm/spec/feature-registry/shards/shard-02-workflows-forensic.json"
+  ],
+  "forensic": {
+    "jtbdCatalog": "pm/ux/jtbd/catalog.json",
+    "e2eCatalog": "pm/spec/workflows/e2e-catalog.json",
+    "auditOutput": "pm/ci/forensic-feature-audit-latest.json",
+    "featureTiers": ["core", "competitive", "moat", "foundation"],
+    "featureClasses": ["capability", "workflow-step", "spec-gap"]
+  }
+}

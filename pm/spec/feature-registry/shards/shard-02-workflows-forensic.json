@@ -1,0 +1,26 @@
+{
+  "features": [
+    {
+      "id": "FABRIC-WF-001",
+      "capabilityId": "FABRIC-001",
+      "name": "fabric-os demo path (workflow step 1)",
+      "domain": "fabric-os",
+      "featureTier": "core",
+      "featureClass": "workflow-step",
+      "workflowId": "WF-FABRIC-DEMO-001",
+      "workflowStep": 1,
+      "jtbdIds": [],
+      "prdRef": "prd-product-charter",
+      "status": "catalog",
+      "coveragePercent": 50,
+      "evidence": "audit/evidence/demo-readiness-fabric-os.json",
+      "specRef": "pm/product/prds/prd-product-charter.md",
+      "pillars": ["F4", "T7", "T10"],
+      "plane": "product",
+      "persona": "product-engineer",
+      "phase": "M1",
+      "gtmCritical": true,
+      "forensicStatus": "catalog"
+    }
+  ]
+}

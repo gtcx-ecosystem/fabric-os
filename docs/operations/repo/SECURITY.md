@@ -7,6 +7,7 @@ role: security-engineer
 tier: controlled
 tags: ['security', 'disclosure']
 review_cycle: quarterly
+document_type: overview
 ---
 
 # Security policy

@@ -14,11 +14,28 @@
   },
   "stagingPatch": "deploy/kubernetes/overlays/staging/patches/digital-rail-staging-env.yaml",
   "rails": {
-    "tradfi-register": { "stagingEnabled": true, "smoke": "witness-only" },
-    "evm-erc3643": { "stagingEnabled": true, "smoke": "pending-besu-overlay" },
-    "stellar-settlement": { "stagingEnabled": false, "smoke": "profile-gated" },
-    "canton-hub": { "stagingEnabled": false, "smoke": "future" }
+    "tradfi-register": {
+      "stagingEnabled": true,
+      "smoke": "witness-only"
+    },
+    "evm-erc3643": {
+      "stagingEnabled": true,
+      "smoke": "pending-besu-overlay"
+    },
+    "stellar-settlement": {
+      "stagingEnabled": false,
+      "smoke": "profile-gated"
+    },
+    "canton-hub": {
+      "stagingEnabled": false,
+      "smoke": "future"
+    }
   },
   "programmeManifest": "pm/digital-rail-programme.json",
-  "blocksIR": false
+  "blocksIR": false,
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

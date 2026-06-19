@@ -72,5 +72,10 @@
       "provisional": true
     }
   },
-  "note": "Bootstrap stub — publish via bridge run-multi-pillar-audit.mjs --scope layer when live"
+  "note": "Bootstrap stub — publish via bridge run-multi-pillar-audit.mjs --scope layer when live",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

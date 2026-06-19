@@ -7,6 +7,7 @@ role: protocol-architect
 tier: standard
 tags: ['operations', 'repo-hygiene']
 review_cycle: on-change
+document_type: protocol
 related:
   - ./root-allowlist.json
   - https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/protocols/31-ecosystem-root-allowlist/protocol.md

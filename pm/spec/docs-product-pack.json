@@ -203,7 +203,7 @@
   "fractalMpr": {
     "policy": "pm/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-product-layer-latest.json",
-    "scorecard": "agile/pillar-scorecard.md",
+    "scorecard": "docs/product/scorecard.md",
     "rollupFrom": ["file", "folder"],
     "scorecardIsReadOnlyRollup": true
   },

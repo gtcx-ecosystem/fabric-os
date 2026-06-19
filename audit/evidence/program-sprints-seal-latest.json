@@ -50,5 +50,10 @@
     "lanes11pr": "17/17"
   },
   "ok": true,
-  "note": "All fabric program sprints (DAAS+SECAS) and all ops-lane sprints (OPS-SPRINT-W0..W3) sealed. P22 may still head SECAS-S4-04 as calendar witness — not an unsealed sprint."
+  "note": "All fabric program sprints (DAAS+SECAS) and all ops-lane sprints (OPS-SPRINT-W0..W3) sealed. P22 may still head SECAS-S4-04 as calendar witness — not an unsealed sprint.",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

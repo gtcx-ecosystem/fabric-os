@@ -246,5 +246,10 @@
     }
   ],
   "activeMilestone": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
-  "referenceTier": "product"
+  "referenceTier": "product",
+  "migrationRecord": {
+    "policy": "T67",
+    "scrubbedAt": "2026-06-19",
+    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
+  }
 }

@@ -281,7 +281,7 @@
   "fractalMpr": {
     "policy": "pm/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-architecture-layer-latest.json",
-    "scorecard": "docs/architecture/pillar-scorecard.md",
+    "scorecard": "docs/primitives/architecture/scorecard.md",
     "rollupFrom": ["file", "folder"],
     "scorecardIsReadOnlyRollup": true
   }

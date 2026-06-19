@@ -32,7 +32,7 @@
       "role": "platform runtime — session, MCP, ACR, communication spec",
       "house": [
         "pm/spec/agent-communication-protocol.json (P45 machine SoR)",
-        "docs/operations/agent-spine/ universal instructions source for sync",
+        "docs/operations/agent-init/ universal instructions source for sync",
         "platform/packages/baselineos (MCP: search, index, baseline_agent_onboard)",
         "config/baseline/model-b-knowledge.mjs (RAG index roots)",
         "docs/reference/intelligence/GTCX-AI-INTELLIGENCE-CHARTER.md"
@@ -155,7 +155,7 @@
       "forbidden": [
         "Full copies of AGENTS.md or CLAUDE.md",
         "Protocol bodies — docs/governance/",
-        "P22/P27 execution prose — docs/operations/agent-spine/"
+        "P22/P27 execution prose — docs/operations/agent-init/"
       ]
     },
     "capabilities": {
@@ -219,12 +219,12 @@
       "canon-os:agents/provisioning/AGENT-INIT-CANON.md (fleet — hub canon)",
       "agents/bootstrap/README.md",
       "agents/capabilities/authority-matrix.md",
-      "docs/operations/agent-spine/agent-universal-instructions.md"
+      "docs/operations/agent-init/agent-universal-instructions.md"
     ],
     "maxReads": 8
   },
   "crossReference": {
-    "operationsAgentSpine": "docs/operations/agent-spine/",
+    "operationsAgentInit": "docs/operations/agent-init/",
     "governanceProtocols": "docs/governance/protocols/",
     "fleetInitCanon": "canon-os:agents/provisioning/AGENT-INIT-CANON.md",
     "personaProfiles": "bridge-os:pm/spec/repo-persona-profiles.json",
@@ -267,7 +267,7 @@
       "bootstrap:session-chain-valid",
       "bootstrap:provider-routes-valid",
       "no-duplicate-bootstrap-prose",
-      "separation:agent-spine-not-in-agents",
+      "separation:agent-init-not-in-agents",
       "workspace:agents-compatible"
     ]
   },
@@ -284,7 +284,7 @@
   "fractalMpr": {
     "policy": "pm/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-agents-layer-latest.json",
-    "scorecard": "agents/pillar-scorecard.md",
+    "scorecard": "agents/scorecard.md",
     "rollupFrom": ["file", "folder"],
     "scorecardIsReadOnlyRollup": true
   }

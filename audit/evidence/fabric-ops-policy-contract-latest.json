@@ -125,7 +125,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -261,7 +261,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -397,7 +397,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -533,7 +533,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -669,7 +669,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -805,7 +805,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -941,7 +941,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1077,7 +1077,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1213,7 +1213,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1349,7 +1349,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1485,7 +1485,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1621,7 +1621,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1757,7 +1757,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1893,7 +1893,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -2029,7 +2029,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -2165,7 +2165,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -2301,7 +2301,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -2437,7 +2437,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/multi-pillar-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",

@@ -1,0 +1,85 @@
+{
+  "$schema": "gtcx://canon-os/docs-engineering-pack/v1",
+  "updated": "2026-06-19",
+  "initiative": "INIT-PRODUCT-DELIVERY-BASELINE-PHASE4",
+  "title": "Docs engineering pack — baseline-os",
+  "principle": "Implementation depth under docs/engineering/. Architecture holds ADRs, integration maps, and thin spec index nests only.",
+  "requiredRootFiles": [
+    { "path": "docs/engineering/README.md", "role": "implementation index" },
+    { "path": "docs/engineering/FOLDER-SPEC.md", "role": "provisioning mirror" }
+  ],
+  "requiredSubfolders": {
+    "archive": { "required": ["README.md"], "purpose": "Decomposed _project legacy archive" },
+    "cli": { "required": ["README.md"], "purpose": "CLI and developer guides" },
+    "layers": { "required": ["README.md"], "purpose": "Seven-layer primitive essays" },
+    "monitoring": { "required": ["README.md"], "purpose": "SLOs and performance" },
+    "principles": { "required": ["README.md"], "purpose": "Design principles" },
+    "runtime": { "required": ["README.md"], "purpose": "Machine runtime contracts" },
+    "specs": {
+      "required": ["README.md"],
+      "purpose": "Layer packs, schemas, overview essays — no _project or experiences (Phase 5 decomposed)",
+      "allowedChildFolders": [
+        "layers",
+        "schemas",
+        "overview",
+        "api",
+        "audit",
+        "reference",
+        "legacy-layers"
+      ],
+      "forbiddenChildFolders": ["_project", "experiences"]
+    }
+  },
+  "forbiddenAtEngineeringRoot": ["ADR-*.md", "Loose GTM prose"],
+  "profiles": {
+    "platform": {
+      "engineeringRequired": true,
+      "requiredSubfolders": ["cli", "layers", "runtime", "specs"]
+    }
+  },
+  "enforcement": {
+    "check": "pnpm docs:engineering:check",
+    "witness": "audit/evidence/docs-engineering-latest.json"
+  },
+  "fractalMpr": {
+    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "layerWitness": "audit/evidence/mpr-engineering-layer-latest.json",
+    "scorecard": "docs/engineering/scorecard.md",
+    "rollupFrom": ["file", "folder"],
+    "scorecardIsReadOnlyRollup": true
+  },
+  "pillarContract": {
+    "compliance": {
+      "primary": true,
+      "gates": ["pnpm docs:engineering:check"],
+      "witness": "audit/evidence/mpr-engineering-layer-latest.json"
+    },
+    "technicalExcellence": {
+      "primary": true,
+      "witness": "audit/evidence/mpr-engineering-layer-latest.json"
+    },
+    "agenticEmpowerment": {
+      "primary": true,
+      "witness": "audit/evidence/mpr-engineering-layer-latest.json"
+    },
+    "craft": { "secondary": true, "witness": "audit/evidence/mpr-engineering-layer-latest.json" },
+    "worldClass": {
+      "secondary": true,
+      "witness": "audit/evidence/mpr-engineering-layer-latest.json"
+    },
+    "trustAndSafety": {
+      "secondary": true,
+      "witness": "audit/evidence/mpr-engineering-layer-latest.json"
+    },
+    "ecosystemIntegration": {
+      "secondary": true,
+      "witness": "audit/evidence/mpr-engineering-layer-latest.json"
+    },
+    "commercialValue": { "notApplicable": true, "reason": "docs/strategy/" },
+    "defensiveMoat": { "notApplicable": true, "reason": "docs/strategy/" },
+    "creativityInnovation": { "notApplicable": true, "reason": "docs/research/" },
+    "ipMagic": { "notApplicable": true, "reason": "docs/product/canon/" }
+  },
+  "repo": "baseline-os",
+  "upstreamSpec": "../canon-os/pm/spec/docs-architecture-pack.json"
+}

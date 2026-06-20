@@ -145,7 +145,7 @@ export function buildFractalMprBlock(layerWitness, scorecard) {
   };
 }
 
-export function scorecardBody(layer, target, witnessRel, packRel, primaryPillars) {
+export function scorecardBody(layer, target, witnessRel, packRel, primaryPillars, repo = 'canon-os') {
   const rows = PILLAR_IDS.map((id) => {
     const role = primaryPillars.includes(id) ? 'primary' : id.includes('creativity') || id === 'ipMagic' ? 'N/A' : 'secondary';
     return `| ${id} | ${role} | pack contract | MPR witness rollup | ${target} |`;
@@ -154,6 +154,7 @@ export function scorecardBody(layer, target, witnessRel, packRel, primaryPillars
 title: 'scorecard — ${layer.path}'
 status: current
 date: 2026-06-16
+owner: ${repo}
 document_type: folder-spec
 tier: operating
 tags: ['documentation', 'multi-pillar', 'fractal-mpr']

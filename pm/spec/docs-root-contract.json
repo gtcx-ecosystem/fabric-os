@@ -71,23 +71,14 @@
       "audience": "both",
       "required": true,
       "mustContain": ["header stating structural-only scope"],
-      "appendOn": [
-        "folder create/rename/delete",
-        "root contract role change",
-        "sor.json path variant change"
-      ],
+      "appendOn": ["folder create/rename/delete", "root contract role change", "sor.json path variant change"],
       "mustNotContain": ["story completion", "sprint seals", "code release notes"]
     },
     "sor.json": {
       "audience": "machine",
       "required": true,
       "schema": "gtcx://docs/sor/v1",
-      "mustContain": [
-        "repo",
-        "repoKind",
-        "updated",
-        "paths or pathVariants for physical ≠ logical layers"
-      ],
+      "mustContain": ["repo", "repoKind", "updated", "paths or pathVariants for physical ≠ logical layers"],
       "mustNotContain": ["narrative prose", "11PR scores"]
     },
     "FOLDER-SPEC.md": {

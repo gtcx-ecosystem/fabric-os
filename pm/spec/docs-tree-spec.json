@@ -42,10 +42,7 @@
     },
     "docsRootRequired": [
       { "path": "docs/README.md", "role": "human map — profile, layer table, central IA links" },
-      {
-        "path": "docs/INDEX.md",
-        "role": "agent manifest — forbidden paths, sor note, fleet read-order link"
-      },
+      { "path": "docs/INDEX.md", "role": "agent manifest — forbidden paths, sor note, fleet read-order link" },
       { "path": "docs/sor.json", "role": "machine SoR — repoKind, path variants" },
       { "path": "docs/conventions.md", "role": "repo deltas + link to hub naming law" },
       { "path": "docs/CHANGELOG.md", "role": "structural changelog only" }
@@ -53,7 +50,13 @@
     "docsRootRequiredHubOnly": [
       { "path": "docs/FOLDER-SPEC.md", "role": "root provisioning mirror — canon-os only" }
     ],
-    "layerRootAllowlist": ["README.md", "FOLDER-SPEC.md", "scorecard.md", "index.md", "INDEX.md"],
+    "layerRootAllowlist": [
+      "README.md",
+      "FOLDER-SPEC.md",
+      "scorecard.md",
+      "index.md",
+      "INDEX.md"
+    ],
     "foundationRootExtra": [
       "constitution.md",
       "manifesto.md",

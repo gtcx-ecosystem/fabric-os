@@ -1,72 +1,47 @@
 {
   "schema": "gtcx://canon-os/docs-folder-hygiene-witness/v1",
-  "generatedAt": "2026-06-17T02:09:28.661Z",
+  "generatedAt": "2026-06-19T21:58:38.891Z",
   "repo": "fabric-os",
   "policyUpdated": "2026-06-16",
-  "pass": true,
-  "strict": true,
+  "pass": false,
+  "strict": false,
   "metrics": {
-    "totalMd": 569,
+    "totalMd": 238,
     "topLevelFolders": [
       {
+        "name": "reference",
+        "mdCount": 54,
+        "looseRoot": 1
+      },
+      {
+        "name": "business",
+        "mdCount": 52,
+        "looseRoot": 0
+      },
+      {
         "name": "operations",
-        "mdCount": 301,
+        "mdCount": 52,
         "looseRoot": 0
       },
       {
         "name": "architecture",
-        "mdCount": 97,
-        "looseRoot": 0
+        "mdCount": 32,
+        "looseRoot": 1
       },
       {
-        "name": "business",
-        "mdCount": 43,
+        "name": "gitbook",
+        "mdCount": 22,
         "looseRoot": 0
       },
       {
         "name": "product",
-        "mdCount": 35,
-        "looseRoot": 0
-      },
-      {
-        "name": "governance",
-        "mdCount": 16,
-        "looseRoot": 7
-      },
-      {
-        "name": "gitbook",
-        "mdCount": 15,
+        "mdCount": 12,
         "looseRoot": 0
       },
       {
         "name": "foundation",
         "mdCount": 10,
         "looseRoot": 7
-      },
-      {
-        "name": "reference",
-        "mdCount": 8,
-        "looseRoot": 1
-      },
-      {
-        "name": "api",
-        "mdCount": 2,
-        "looseRoot": 1
-      },
-      {
-        "name": "roadmap",
-        "mdCount": 2,
-        "looseRoot": 0
-      },
-      {
-        "name": "engineering",
-        "mdCount": 1,
-        "looseRoot": 0
-      },
-      {
-        "name": "overview",
-        "mdCount": 1,
-        "looseRoot": 0
       }
     ]
   },
@@ -122,16 +97,11 @@
     },
     {
       "id": "sprawl:docsarchitecture",
-      "ok": true,
-      "detail": "clean"
+      "ok": false,
+      "detail": "relocate: legacy-README.md"
     },
     {
       "id": "sprawl:docsproduct",
-      "ok": true,
-      "detail": "clean"
-    },
-    {
-      "id": "sprawl:docsroadmap",
       "ok": true,
       "detail": "clean"
     },
@@ -147,24 +117,17 @@
     },
     {
       "id": "sprawl:agents",
-      "ok": true,
-      "detail": "clean"
+      "ok": false,
+      "detail": "relocate: pillar-scorecard.md"
     },
     {
       "id": "duplicate:docs-specs",
       "ok": true,
-      "detail": "pointer-only"
-    },
-    {
-      "id": "canonical:architecture-specs",
-      "ok": true,
-      "detail": "docs/architecture/specs/ present"
+      "detail": "no top-level docs/specs"
     }
   ],
-  "failed": [],
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "failed": [
+    "sprawl:docsarchitecture",
+    "sprawl:agents"
+  ]
 }

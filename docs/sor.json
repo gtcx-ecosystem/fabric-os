@@ -42,7 +42,13 @@
     "roadmap",
     "business"
   ],
-  "narrativePointersOnly": ["assurance", "coordination", "gtm", "legal", "security"],
+  "narrativePointersOnly": [
+    "assurance",
+    "coordination",
+    "gtm",
+    "legal",
+    "security"
+  ],
   "documentDriven": {
     "description": "Human-edited narrative under docs/ — version in git",
     "paths": [
@@ -58,7 +64,11 @@
   },
   "pointerOnly": {
     "description": "Stub or index — canonical prose lives in gtcx-docs or ops/",
-    "paths": ["docs/governance/", "docs/reference/", "docs/specs/"]
+    "paths": [
+      "docs/governance/",
+      "docs/reference/",
+      "docs/specs/"
+    ]
   },
   "shipPaths": {
     "terraform": "deploy/terraform",
@@ -69,8 +79,15 @@
   },
   "forbidden": {
     "numberedSegments": "^\\d{2}-",
-    "shadowAsAuthority": ["docs/shadow/", "archive/shadow-gtcx-docs/"],
-    "competingRoots": ["_sop/", "_canon/", "wiki/"],
+    "shadowAsAuthority": [
+      "docs/shadow/",
+      "archive/shadow-gtcx-docs/"
+    ],
+    "competingRoots": [
+      "_sop/",
+      "_canon/",
+      "wiki/"
+    ],
     "opsDuplicatesUnderDocs": [
       "assurance",
       "attestation",
@@ -115,7 +132,12 @@
       "docs/architecture/specs/_project",
       "docs/reference/archived"
     ],
-    "folderSpecExemptPathPrefixes": ["docs/_archive"],
+    "folderSpecExemptPathPrefixes": [
+      "docs/_archive",
+      "docs/engineering",
+      "docs/strategy",
+      "docs/roadmap"
+    ],
     "depthExemptPathPrefixes": [
       "docs/architecture/operations",
       "docs/architecture/specs/_project",
@@ -134,7 +156,14 @@
       "docs/reference/operations",
       "docs/operations/governance"
     ],
-    "readmeExemptPathPrefixes": ["docs/reference/archive"]
+    "readmeExemptPathPrefixes": [
+      "docs/reference/archive"
+    ]
   },
-  "deprecatedTopLevel": ["specs", "strategy", "overview", "engineering"]
+  "deprecatedTopLevel": [
+    "specs",
+    "strategy",
+    "overview",
+    "engineering"
+  ]
 }

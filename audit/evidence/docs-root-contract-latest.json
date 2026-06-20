@@ -1,9 +1,9 @@
 {
   "schema": "gtcx://canon-os/docs-root-contract-check/v1",
-  "generatedAt": "2026-06-19T18:03:33.531Z",
+  "generatedAt": "2026-06-19T22:19:15.219Z",
   "repo": "fabric-os",
   "profile": "product",
-  "pass": true,
+  "pass": false,
   "strict": false,
   "gates": [
     {
@@ -68,12 +68,12 @@
     },
     {
       "id": "readme:central-ia",
-      "ok": true,
+      "ok": false,
       "detail": "links fleet IA or docs-root spec"
     },
     {
       "id": "readme:root-contract",
-      "ok": true,
+      "ok": false,
       "detail": "mentions P48 docs root contract"
     },
     {
@@ -97,15 +97,13 @@
       "detail": "infra-platform"
     }
   ],
-  "failed": [],
+  "failed": [
+    "readme:central-ia",
+    "readme:root-contract"
+  ],
   "fleetSoR": {
     "iaMap": "github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/docs-ia/IA-PILLAR-MAP.md",
     "rootContract": "github.com/gtcx-ecosystem/canon-os/blob/main/pm/spec/docs-root-contract.json",
     "docsRootSpec": "github.com/gtcx-ecosystem/canon-os/blob/main/pm/spec/docs-folders/00-docs-root.json"
-  },
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
   }
 }

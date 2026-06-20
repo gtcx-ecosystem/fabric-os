@@ -3,7 +3,7 @@
  * repo:provision:check — L0 eleven hubs + L1 required stubs (draft-final specs)
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { basename, join } from 'node:path';
 import { repoRootFromImportMeta } from './lib/repo-root.mjs';
 import { profileKeyFromTier, readProductTier } from './lib/resolve-docs-pack.mjs';
 
@@ -33,7 +33,7 @@ function hubProfile(repoName) {
 
 function main() {
   const gates = [];
-  const repoName = JSON.parse(readFileSync(join(REPO, 'package.json'), 'utf8')).name;
+  const repoName = basename(REPO);
   const profile = hubProfile(repoName);
 
   for (const hub of L0_HUBS) {

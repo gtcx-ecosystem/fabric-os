@@ -28,6 +28,6 @@
     "uxReadme": "docs/product/ux/README.md",
     "customersReadme": "docs/business/customers/README.md",
     "strategyReadme": "docs/business/strategy/README.md",
-    "architectureReadme": "docs/primitives/architecture/README.md"
+    "architectureReadme": "docs/architecture/README.md"
   }
 }

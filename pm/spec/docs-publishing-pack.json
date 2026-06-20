@@ -16,7 +16,9 @@
   ],
   "requiredSubfolders": {
     "gitbook": {
-      "required": ["README.md"],
+      "required": [
+        "README.md"
+      ],
       "purpose": "GitBook SUMMARY and publish config"
     }
   },
@@ -35,44 +37,67 @@
   "fractalMpr": {
     "policy": "pm/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-publishing-layer-latest.json",
-    "scorecard": "docs/publishing/scorecard.md",
-    "rollupFrom": ["file", "folder"],
+    "scorecard": "docs/gitbook/publish/scorecard.md",
+    "rollupFrom": [
+      "file",
+      "folder"
+    ],
     "scorecardIsReadOnlyRollup": true,
     "optional": true
   },
   "pillarContract": {
     "compliance": {
       "primary": true,
-      "artifacts": ["docs/publishing/FOLDER-SPEC.md"],
-      "gates": ["publish register alignment"],
+      "artifacts": [
+        "docs/publishing/FOLDER-SPEC.md"
+      ],
+      "gates": [
+        "publish register alignment"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-publishing-layer-latest.json"
     },
     "technicalExcellence": {
       "secondary": true,
-      "artifacts": ["docs/publishing/gitbook/"],
-      "gates": ["SUMMARY + build paths"],
+      "artifacts": [
+        "docs/publishing/gitbook/"
+      ],
+      "gates": [
+        "SUMMARY + build paths"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-publishing-layer-latest.json"
     },
     "craft": {
       "primary": true,
-      "artifacts": ["docs/publishing/README.md"],
-      "gates": ["publish index quality"],
+      "artifacts": [
+        "docs/publishing/README.md"
+      ],
+      "gates": [
+        "publish index quality"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-publishing-layer-latest.json"
     },
     "worldClass": {
       "secondary": true,
-      "artifacts": ["docs/publishing/gitbook/"],
-      "gates": ["fleet publish bars"],
+      "artifacts": [
+        "docs/publishing/gitbook/"
+      ],
+      "gates": [
+        "fleet publish bars"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-publishing-layer-latest.json"
     },
     "trustAndSafety": {
       "secondary": true,
-      "artifacts": ["docs/publishing/README.md"],
-      "gates": ["no draft-as-published claims"],
+      "artifacts": [
+        "docs/publishing/README.md"
+      ],
+      "gates": [
+        "no draft-as-published claims"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-publishing-layer-latest.json"
     },
@@ -84,29 +109,45 @@
     },
     "commercialValue": {
       "secondary": true,
-      "artifacts": ["docs/publishing/README.md"],
-      "gates": ["GTM channel map"],
+      "artifacts": [
+        "docs/publishing/README.md"
+      ],
+      "gates": [
+        "GTM channel map"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-publishing-layer-latest.json"
     },
     "defensiveMoat": {
       "secondary": true,
-      "artifacts": ["docs/publishing/README.md"],
-      "gates": ["canonical vs publish lane"],
+      "artifacts": [
+        "docs/publishing/README.md"
+      ],
+      "gates": [
+        "canonical vs publish lane"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-publishing-layer-latest.json"
     },
     "agenticEmpowerment": {
       "secondary": true,
-      "artifacts": ["docs/publishing/README.md"],
-      "gates": ["operator publish runbook links"],
+      "artifacts": [
+        "docs/publishing/README.md"
+      ],
+      "gates": [
+        "operator publish runbook links"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-publishing-layer-latest.json"
     },
     "ecosystemIntegration": {
       "primary": true,
-      "artifacts": ["docs/publishing/gitbook/"],
-      "gates": ["ecosystem-os operator docs"],
+      "artifacts": [
+        "docs/publishing/gitbook/"
+      ],
+      "gates": [
+        "ecosystem-os operator docs"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-publishing-layer-latest.json"
     },

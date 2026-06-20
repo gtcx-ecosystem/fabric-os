@@ -17,34 +17,80 @@
   "requiredSubfolders": {
     "runbooks": {
       "purpose": "Operator runbooks — deployment, incident, recovery",
-      "allowedDocTypes": ["runbook", "architecture"],
-      "required": ["README.md"],
-      "sourcePatterns": ["docs/_archive/guides/", "docs/reference/guides/"]
+      "allowedDocTypes": [
+        "runbook",
+        "architecture"
+      ],
+      "required": [
+        "README.md"
+      ],
+      "sourcePatterns": [
+        "docs/_archive/guides/",
+        "docs/reference/guides/"
+      ]
     },
     "deployment": {
       "purpose": "Release and environment narratives — links ops/deploy bindings",
-      "allowedDocTypes": ["runbook", "architecture"],
-      "required": ["README.md"]
+      "allowedDocTypes": [
+        "runbook",
+        "architecture"
+      ],
+      "required": [
+        "README.md"
+      ]
     },
     "agent-init": {
-      "purpose": "Agent universal instructions, P22 brief, git workflow prose",
-      "allowedDocTypes": ["runbook", "overview"],
-      "required": ["README.md"],
-      "canonicalFiles": ["agent-universal-instructions.md"],
-      "sourcePatterns": ["agents/", "docs/operations/agent-universal-instructions.md"]
+      "purpose": "Repo agent entry — session start, P22/P27 prose, git workflow. Fleet init → canon-os AGENT-INIT-CANON.",
+      "allowedDocTypes": [
+        "runbook",
+        "overview"
+      ],
+      "required": [
+        "README.md"
+      ],
+      "canonicalFiles": [
+        "agent-universal-instructions.md"
+      ],
+      "sourcePatterns": [
+        "agents/",
+        "docs/operations/agent-universal-instructions.md"
+      ]
     },
     "remediation": {
       "purpose": "Incident remediation playbooks — narrative only",
-      "allowedDocTypes": ["runbook"],
-      "required": ["README.md"],
+      "allowedDocTypes": [
+        "runbook"
+      ],
+      "required": [
+        "README.md"
+      ],
       "optional": true
     },
     "coordination": {
       "purpose": "Cross-repo coordination narratives — bridge handoffs",
-      "allowedDocTypes": ["runbook", "overview"],
-      "required": ["README.md"],
+      "allowedDocTypes": [
+        "runbook",
+        "overview"
+      ],
+      "required": [
+        "README.md"
+      ],
       "optional": true,
       "hubNote": "canon-os + bridge-os host fleet coordination indexes"
+    },
+    "compliance": {
+      "purpose": "Platform-runtime typed compliance instance artifacts — see docs-operations-compliance-nest.json",
+      "allowedDocTypes": [
+        "runbook",
+        "overview",
+        "assessment"
+      ],
+      "required": [
+        "README.md"
+      ],
+      "optional": true,
+      "platformRuntimeOnly": true,
+      "nestSpec": "pm/spec/docs-operations-compliance-nest.json"
     }
   },
   "forbiddenAtOperationsRoot": [
@@ -55,13 +101,32 @@
   "profiles": {
     "product": {
       "operationsRequired": true,
-      "requiredSubfolders": ["runbooks", "deployment", "agent-init"],
-      "optionalSubfolders": ["remediation", "coordination"]
+      "requiredSubfolders": [
+        "runbooks",
+        "deployment",
+        "agent-init"
+      ],
+      "optionalSubfolders": [
+        "remediation",
+        "coordination",
+        "workspace",
+        "repo",
+        "protocols",
+        "templates",
+        "compliance"
+      ]
     },
     "fleet-documentation": {
       "operationsRequired": true,
-      "requiredSubfolders": ["runbooks", "agent-init", "coordination"],
-      "optionalSubfolders": ["deployment", "remediation"]
+      "requiredSubfolders": [
+        "runbooks",
+        "agent-init",
+        "coordination"
+      ],
+      "optionalSubfolders": [
+        "deployment",
+        "remediation"
+      ]
     },
     "constitution-standards": {
       "operationsRequired": false,
@@ -69,8 +134,41 @@
     },
     "platform": {
       "operationsRequired": true,
-      "requiredSubfolders": ["runbooks", "deployment", "agent-init"],
-      "optionalSubfolders": ["remediation", "coordination"]
+      "requiredSubfolders": [
+        "runbooks",
+        "deployment",
+        "agent-init"
+      ],
+      "optionalSubfolders": [
+        "remediation",
+        "coordination",
+        "workspace",
+        "repo",
+        "protocols",
+        "templates",
+        "compliance"
+      ]
+    },
+    "platform-runtime": {
+      "operationsRequired": true,
+      "extends": "platform",
+      "requiredSubfolders": [
+        "runbooks",
+        "deployment",
+        "agent-init",
+        "compliance"
+      ],
+      "optionalSubfolders": [
+        "remediation",
+        "coordination",
+        "workspace",
+        "repo",
+        "protocols",
+        "templates",
+        "compliance"
+      ],
+      "complianceNestSpec": "pm/spec/docs-operations-compliance-nest.json",
+      "complianceNestCheck": "pnpm docs:compliance-nest:check"
     }
   },
   "crossReference": {
@@ -97,36 +195,57 @@
   "pillarContract": {
     "compliance": {
       "primary": true,
-      "artifacts": ["docs/operations/FOLDER-SPEC.md"],
-      "gates": ["pnpm docs:operations:check"],
+      "artifacts": [
+        "docs/operations/FOLDER-SPEC.md"
+      ],
+      "gates": [
+        "pnpm docs:operations:check"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
     },
     "technicalExcellence": {
       "primary": true,
-      "artifacts": ["docs/operations/runbooks/", "docs/operations/deployment/"],
-      "gates": ["commands + exit codes"],
+      "artifacts": [
+        "docs/operations/runbooks/",
+        "docs/operations/deployment/"
+      ],
+      "gates": [
+        "commands + exit codes"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
     },
     "craft": {
       "secondary": true,
-      "artifacts": ["docs/operations/README.md"],
-      "gates": ["runbook index"],
+      "artifacts": [
+        "docs/operations/README.md"
+      ],
+      "gates": [
+        "runbook index"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
     },
     "worldClass": {
       "primary": true,
-      "artifacts": ["docs/operations/runbooks/"],
-      "gates": ["global ops bars"],
+      "artifacts": [
+        "docs/operations/runbooks/"
+      ],
+      "gates": [
+        "global ops bars"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
     },
     "trustAndSafety": {
       "primary": true,
-      "artifacts": ["docs/operations/agent-init/"],
-      "gates": ["P27 execution obligation"],
+      "artifacts": [
+        "docs/operations/agent-init/"
+      ],
+      "gates": [
+        "P27 execution obligation"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
     },
@@ -138,29 +257,45 @@
     },
     "commercialValue": {
       "secondary": true,
-      "artifacts": ["docs/operations/README.md"],
-      "gates": ["pilot unblock path"],
+      "artifacts": [
+        "docs/operations/README.md"
+      ],
+      "gates": [
+        "pilot unblock path"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
     },
     "defensiveMoat": {
       "secondary": true,
-      "artifacts": ["docs/operations/deployment/"],
-      "gates": ["proprietary deploy choreography"],
+      "artifacts": [
+        "docs/operations/deployment/"
+      ],
+      "gates": [
+        "proprietary deploy choreography"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
     },
     "agenticEmpowerment": {
       "primary": true,
-      "artifacts": ["docs/operations/agent-init/"],
-      "gates": ["agent ops narrative"],
+      "artifacts": [
+        "docs/operations/agent-init/"
+      ],
+      "gates": [
+        "agent ops narrative"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
     },
     "ecosystemIntegration": {
       "secondary": true,
-      "artifacts": ["docs/operations/integrations/"],
-      "gates": ["cross-repo runbooks"],
+      "artifacts": [
+        "docs/operations/integrations/"
+      ],
+      "gates": [
+        "cross-repo runbooks"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"
     },
@@ -175,7 +310,10 @@
     "policy": "pm/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-operations-layer-latest.json",
     "scorecard": "docs/operations/scorecard.md",
-    "rollupFrom": ["file", "folder"],
+    "rollupFrom": [
+      "file",
+      "folder"
+    ],
     "scorecardIsReadOnlyRollup": true
   }
 }

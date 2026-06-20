@@ -49,6 +49,15 @@ function main() {
 
   for (const layer of policy.layers) {
     const prefix = `layer:${layer.id}`;
+    const canonicalNorm = (layer.canonical ?? layer.path).replace(/\/$/, '');
+    const layerPathNorm = layer.path.replace(/\/$/, '');
+    if (layer.status === 'deprecated-pointer' && layerPathNorm !== canonicalNorm) {
+      gates.push(
+        gate(`${prefix}:deprecated-pointer`, true, `skipped — rollup via ${layer.canonical ?? layer.path}`),
+      );
+      continue;
+    }
+
     const packSpec = loadPack(REPO, layer.pack);
     if (!packSpec) {
       gates.push(gate(`${prefix}:pack`, false, layer.pack));

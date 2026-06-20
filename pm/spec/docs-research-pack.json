@@ -29,79 +29,122 @@
   "fractalMpr": {
     "policy": "pm/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-research-layer-latest.json",
-    "scorecard": "docs/research/scorecard.md",
-    "rollupFrom": ["file", "folder"],
+    "scorecard": "docs/business/research/scorecard.md",
+    "rollupFrom": [
+      "file",
+      "folder"
+    ],
     "scorecardIsReadOnlyRollup": true,
     "optional": true
   },
   "pillarContract": {
     "compliance": {
       "primary": true,
-      "artifacts": ["docs/research/FOLDER-SPEC.md"],
-      "gates": ["intake-only — decompose or archive"],
+      "artifacts": [
+        "docs/research/FOLDER-SPEC.md"
+      ],
+      "gates": [
+        "intake-only — decompose or archive"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-research-layer-latest.json"
     },
     "technicalExcellence": {
       "secondary": true,
-      "artifacts": ["docs/research/README.md"],
-      "gates": ["no permanent SoR"],
+      "artifacts": [
+        "docs/research/README.md"
+      ],
+      "gates": [
+        "no permanent SoR"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-research-layer-latest.json"
     },
     "craft": {
       "secondary": true,
-      "artifacts": ["docs/research/README.md"],
-      "gates": ["intake index"],
+      "artifacts": [
+        "docs/research/README.md"
+      ],
+      "gates": [
+        "intake index"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-research-layer-latest.json"
     },
     "worldClass": {
       "secondary": true,
-      "artifacts": ["docs/research/README.md"],
-      "gates": ["decompose targets documented"],
+      "artifacts": [
+        "docs/research/README.md"
+      ],
+      "gates": [
+        "decompose targets documented"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-research-layer-latest.json"
     },
     "trustAndSafety": {
       "secondary": true,
-      "artifacts": ["docs/research/README.md"],
-      "gates": ["source attribution on intake"],
+      "artifacts": [
+        "docs/research/README.md"
+      ],
+      "gates": [
+        "source attribution on intake"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-research-layer-latest.json"
     },
     "creativityInnovation": {
       "primary": true,
-      "artifacts": ["docs/research/"],
-      "gates": ["research → strategy/product decomposition"],
+      "artifacts": [
+        "docs/research/"
+      ],
+      "gates": [
+        "research → strategy/product decomposition"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-research-layer-latest.json"
     },
     "commercialValue": {
       "primary": true,
-      "artifacts": ["docs/research/"],
-      "gates": ["market insight intake"],
+      "artifacts": [
+        "docs/research/"
+      ],
+      "gates": [
+        "market insight intake"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-research-layer-latest.json"
     },
     "defensiveMoat": {
       "secondary": true,
-      "artifacts": ["docs/research/README.md"],
-      "gates": ["no duplicate BMC essays"],
+      "artifacts": [
+        "docs/research/README.md"
+      ],
+      "gates": [
+        "no duplicate BMC essays"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-research-layer-latest.json"
     },
     "agenticEmpowerment": {
       "secondary": true,
-      "artifacts": ["docs/research/README.md"],
-      "gates": ["agent intake rules"],
+      "artifacts": [
+        "docs/research/README.md"
+      ],
+      "gates": [
+        "agent intake rules"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-research-layer-latest.json"
     },
     "ecosystemIntegration": {
       "secondary": true,
-      "artifacts": ["docs/research/README.md"],
-      "gates": ["owner-repo handoff links"],
+      "artifacts": [
+        "docs/research/README.md"
+      ],
+      "gates": [
+        "owner-repo handoff links"
+      ],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-research-layer-latest.json"
     },

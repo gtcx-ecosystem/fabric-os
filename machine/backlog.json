@@ -135,7 +135,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet assurance",
-      "acceptance": ["Composite 100/100 held", "validate-all 55/55", "ops:check green"],
+      "acceptance": ["Composite 100/100 held", "validate-all 55/55", "operations:check green"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
@@ -255,7 +255,7 @@
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-002",
       "acceptance": ["pnpm daas:friction:check:write"],
-      "intakeSource": "local:pm/daas-stories.json"
+      "intakeSource": "local:machine/daas-stories.json"
     },
     {
       "id": "DAAS-S1-02",
@@ -269,8 +269,8 @@
       "initiative": "INIT-GTCX-INFRA-DAAS",
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-002",
-      "acceptance": ["pnpm daas:fleet:health", "pnpm ops:check"],
-      "intakeSource": "local:pm/daas-stories.json"
+      "acceptance": ["pnpm daas:fleet:health", "pnpm operations:check"],
+      "intakeSource": "local:machine/daas-stories.json"
     },
     {
       "id": "DAAS-S2-01",
@@ -285,7 +285,7 @@
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-001",
       "acceptance": ["pnpm daas:cards:check:write"],
-      "intakeSource": "local:pm/daas-stories.json"
+      "intakeSource": "local:machine/daas-stories.json"
     },
     {
       "id": "DAAS-S3-01",
@@ -303,7 +303,7 @@
         "kubectl get externalsecret -n compliance-os-staging",
         "pnpm --dir ../compliance-os w2:staging-prereq-check"
       ],
-      "intakeSource": "local:pm/daas-stories.json"
+      "intakeSource": "local:machine/daas-stories.json"
     },
     {
       "id": "DAAS-S3-02",
@@ -318,7 +318,7 @@
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-001",
       "acceptance": ["pnpm daas:fleet:health"],
-      "intakeSource": "local:pm/daas-stories.json"
+      "intakeSource": "local:machine/daas-stories.json"
     },
     {
       "id": "SECAS-S2-01",
@@ -333,7 +333,7 @@
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
       "acceptance": ["pnpm secas:pentest:ingest:check:write"],
-      "intakeSource": "local:pm/secas-stories.json"
+      "intakeSource": "local:machine/secas-stories.json"
     },
     {
       "id": "SECAS-S4-01",
@@ -348,7 +348,7 @@
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
       "acceptance": ["pnpm secas:csirt:check:write"],
-      "intakeSource": "local:pm/secas-stories.json"
+      "intakeSource": "local:machine/secas-stories.json"
     },
     {
       "id": "SECAS-S4-02",
@@ -363,7 +363,7 @@
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
       "acceptance": ["pnpm secas:supply-chain:check:write"],
-      "intakeSource": "local:pm/secas-stories.json"
+      "intakeSource": "local:machine/secas-stories.json"
     },
     {
       "id": "SECAS-S4-03",
@@ -378,7 +378,7 @@
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
       "acceptance": ["pnpm secas:vuln-cadence:check:write"],
-      "intakeSource": "local:pm/secas-stories.json"
+      "intakeSource": "local:machine/secas-stories.json"
     },
     {
       "id": "SECAS-S5-01",
@@ -393,7 +393,7 @@
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
       "acceptance": ["pnpm fleet:risk:check:write", "pnpm fleet:threat:check:write"],
-      "intakeSource": "local:pm/secas-stories.json"
+      "intakeSource": "local:machine/secas-stories.json"
     }
   ],
   "crossRepoRefs": [

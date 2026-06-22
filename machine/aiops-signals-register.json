@@ -12,7 +12,7 @@
     },
     {
       "id": "settlement-gate-fail",
-      "source": "pm/ci/settlement-commit-latest.json",
+      "source": "machine/ci/settlement-commit-latest.json",
       "severity": "P1",
       "status": "active"
     },

@@ -10,7 +10,7 @@
       "priority": "P1",
       "status": "open",
       "title": "Fleet anomaly signal rollup from agent conduct witnesses",
-      "because": "P49 requires anomaly detector wired to pm/ci agent-conduct fleet",
+      "because": "P49 requires anomaly detector wired to machine/ci agent-conduct fleet",
       "owner": "fabric-os",
       "blocksIR": false
     },

@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/fabric-assurance/v1",
-  "at": "2026-06-17T07:47:53.295Z",
+  "at": "2026-06-22T23:05:25.056Z",
   "repo": "fabric-os",
   "initiative": "INIT-ASSURANCE-BURN-DOWN",
   "story": "T35",
@@ -10,29 +10,41 @@
   "fired": [
     {
       "id": "PROG-25",
-      "reason": "sprintProgressPct 57 >= 25",
+      "reason": "sprintProgressPct 54.8 >= 25",
       "runs": ["hygiene-touch-paths"],
       "blocks": false,
       "delegateTo": "fabric-os"
     },
     {
       "id": "PROG-50",
-      "reason": "sprintProgressPct 57 >= 50",
+      "reason": "sprintProgressPct 54.8 >= 50",
       "runs": ["qa-smoke", "rag-index-freshness-check"],
       "blocks": false,
       "delegateTo": "fabric-os"
     },
     {
       "id": "FORWARD-50",
-      "reason": "forwardQueuePct 84.3 >= 50",
+      "reason": "forwardQueuePct 86.6 >= 50",
       "runs": ["qa-smoke", "five-core-partial-A1-A5"],
       "blocks": false,
       "delegateTo": "fabric-os"
     },
     {
       "id": "FORWARD-75",
-      "reason": "forwardQueuePct 84.3 >= 75",
+      "reason": "forwardQueuePct 86.6 >= 75",
       "runs": ["five-core-full", "uat-independent"],
+      "blocks": false,
+      "delegateTo": "fabric-os"
+    },
+    {
+      "id": "BACKLOG-CLEAR-APPROACH",
+      "reason": "backlogClear approaching: bridge-os(approaching), compliance-os(approaching)",
+      "runs": [
+        "engine-layer-parity-11pr",
+        "five-core-full",
+        "roadmap-goal-milestone-review",
+        "session-open-items-forensic"
+      ],
       "blocks": false,
       "delegateTo": "fabric-os"
     }
@@ -73,18 +85,18 @@
       "label": "Five-core partial A1–A5",
       "lane": "audit",
       "delegate": "fabric-os",
-      "command": "pnpm review:multi-pillar:run -- --repo <target> --write",
-      "witness": "audit/evidence/multi-pillar-latest.json",
+      "command": "pnpm audit:five-pillar:run -- --repo <target> --write",
+      "witness": "audit/evidence/five-pillar-latest.json",
       "independent": true,
       "targetRepo": "bridge-os"
     },
     {
       "id": "five-core-full",
-      "label": "Five-core full fleet stress",
+      "label": "Fleet foundational + transformational pillars stress",
       "lane": "audit",
       "delegate": "fabric-os",
-      "command": "pnpm ecosystem:multi-pillar:stress:fleet:write",
-      "witness": "bridge-os/pm/ci/multi-pillar-fleet-stress-latest.json",
+      "command": "pnpm ecosystem:fleet:pillars:stress:write",
+      "witness": "bridge-os/pm/ci/fleet-pillars-stress-latest.json",
       "independent": true,
       "targetRepo": "bridge-os"
     },
@@ -98,6 +110,36 @@
       "independent": true,
       "storyRef": "ECO-UAT-01",
       "targetRepo": "bridge-os"
+    },
+    {
+      "id": "engine-layer-parity-11pr",
+      "label": "11-pillar engine-layer parity audit",
+      "lane": "audit",
+      "delegate": "owner-repo",
+      "command": "pnpm audit:engine-layer-parity:11pr --write",
+      "witness": "audit/evidence/engine-layer-parity-11pr-latest.json",
+      "independent": true,
+      "targetRepo": "bridge-os"
+    },
+    {
+      "id": "roadmap-goal-milestone-review",
+      "label": "Fleet clarity — roadmap / goal / milestone DoD review",
+      "lane": "qa",
+      "delegate": "bridge-os",
+      "command": "pnpm ecosystem:clarity:report:write",
+      "witness": "bridge-os/pm/ci/ecosystem-clarity-report-latest.json",
+      "independent": false,
+      "targetRepo": "bridge-os"
+    },
+    {
+      "id": "session-open-items-forensic",
+      "label": "Session open-items forensic — archives + retrospectives",
+      "lane": "qa",
+      "delegate": "owner-repo",
+      "command": "pnpm session:open-items --write",
+      "witness": "pm/ci/session-open-items-latest.json",
+      "independent": true,
+      "targetRepo": "bridge-os"
     }
   ],
   "blocking": [],
@@ -105,22 +147,22 @@
     {
       "id": "five-core-partial-A1-A5",
       "label": "Five-core partial A1–A5",
-      "witness": "audit/evidence/multi-pillar-latest.json",
+      "witness": "audit/evidence/five-pillar-latest.json",
       "ok": true,
       "skipped": true,
       "reason": "requires-target",
-      "command": "pnpm review:multi-pillar:run -- --repo <target> --write",
+      "command": "pnpm audit:five-pillar:run -- --repo <target> --write",
       "exitCode": 0
     },
     {
       "id": "five-core-full",
       "label": "Fleet foundational + transformational pillars stress",
       "witness": "bridge-os/pm/ci/fleet-pillars-stress-latest.json",
-      "ok": true,
+      "ok": false,
       "skipped": false,
       "command": "pnpm ecosystem:fleet:pillars:stress:write",
-      "exitCode": 0,
-      "output": "=partial-unlock\nFAIL compliance-os rollup=59 mode=partial-unlock\nFAIL ecosystem-os rollup=59 mode=partial-unlock\nFAIL exploration-os rollup=59 mode=partial-unlock\nFAIL fabric-os rollup=59 mode=partial-unlock\nFAIL griot-ai rollup=59 mode=partial-unlock\nFAIL gtcx-os rollup=59 mode=partial-unlock\nFAIL ledger-ui rollup=59 mode=partial-unlock\nFAIL markets-os rollup=59 mode=partial-unlock\nFAIL nyota-ai rollup=59 mode=partial-unlock\nFAIL sensei-os rollup=59 mode=partial-unlock\nFAIL terminal-os rollup=59 mode=partial-unlock\nFAIL terra-os rollup=59 mode=partial-unlock\nFAIL veritas-ai rollup=59 mode=partial-unlock\n\nStress: fullUnlock=0/17 compliance<85=17 noRubric=0\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-pillars-stress-latest.json\n"
+      "exitCode": 1,
+      "output": "run-fleet-pillars-stress.mjs --write\n\nFAIL agile-os composite=59 mode=partial-unlock\nFAIL baseline-os composite=92 mode=partial-unlock\nFAIL bridge-os composite=59 mode=partial-unlock\nFAIL canon-os composite=59 mode=partial-unlock\nOK compliance-os composite=99 mode=full-unlock\nFAIL ecosystem-os composite=59 mode=partial-unlock\nFAIL exploration-os composite=59 mode=partial-unlock\nFAIL fabric-os composite=59 mode=partial-unlock\nFAIL griot-ai composite=59 mode=partial-unlock\nFAIL gtcx-os composite=59 mode=partial-unlock\nFAIL inspection-os composite=31 mode=partial-unlock\nFAIL ledger-os composite=59 mode=partial-unlock\nOK ledger-ui composite=99 mode=full-unlock\nOK markets-os composite=99 mode=full-unlock\nFAIL nyota-ai composite=59 mode=partial-unlock\nOK sensei-os composite=100 mode=full-unlock\n"
     },
     {
       "id": "uat-independent",
@@ -130,7 +172,7 @@
       "skipped": false,
       "command": "pnpm ecosystem:fleet:uat:run",
       "exitCode": 1,
-      "output": "      \"name\": \"markets-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"nyota-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"sensei-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terminal-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terra-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"veritas-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    }\n  ],\n  \"ok\": false\n}\n ELIFECYCLE  Command failed with exit code 1.\n"
+      "output": "\n> bridge-os@0.1.0 ecosystem:fleet:uat:run /Users/amanianai/Sites/gtcx-ecosystem/bridge-os\n> node platform/scripts/ecosystem/ecosystem-fleet-uat.mjs --all --quick --write\n\n"
     }
   ],
   "blockingSatisfaction": {
@@ -141,17 +183,12 @@
   },
   "contextBundle": {
     "baselineConfig": "config/baseline/baseline.config.json",
-    "persona": "pm/spec/repo-persona-profiles.json",
+    "persona": "machine/spec/repo-persona-profiles.json",
     "skills": "bridge-os/pm/spec/skills-ecosystem-map.json",
     "ragWitness": "audit/evidence/rag-model-b-fabric-os-latest.json",
     "triggers": "bridge-os/pm/spec/assurance-triggers.json"
   },
   "executionOwner": "fabric-os",
   "orchestrator": "bridge-os",
-  "note": "fabric executed independent catalog runs; blocking satisfaction evaluated from witnesses",
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "note": "fabric executed independent catalog runs; blocking satisfaction evaluated from witnesses"
 }

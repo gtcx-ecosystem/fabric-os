@@ -3,7 +3,7 @@
   "coreId": "A2-PRODUCTION-GRADE",
   "slug": "production-grade",
   "repo": "fabric-os",
-  "date": "2026-06-17",
+  "date": "2026-06-22",
   "score10": 10,
   "score100": 100,
   "score100Raw": 100,
@@ -44,7 +44,7 @@
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-17.json",
+  "rubricSourcePath": "audit/audit-output-2026-06-22.json",
   "checks": {
     "ciPipeline": {
       "ok": true,
@@ -53,7 +53,7 @@
     "opsCheck": {
       "ok": true,
       "code": 0,
-      "out": "> fabric-os@0.1.0 ops:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> pnpm workspace:check && pnpm check:workspace-root-cleanliness:strict\n\n\n> fabric-os@0.1.0 workspace:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node platform/scripts/workspace/check.mjs\n\nworkspace:root OK\nworkspace:coordination OK\nworkspace:compliance OK\nworkspace:gtm OK\nworkspace:attestation OK\nworkspace:product-management OK\nworkspace:security OK\nworkspace:assurance-programs OK\nworkspace:audit OK\nworkspace:operations OK\nworkspace:readmes OK\nworkspace:agents OK\nworkspace:legal OK\n\n> fabric-os@0.1.0 check:"
+      "out": "> fabric-os@0.1.0 ops:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> pnpm operations:check\n\n\n> fabric-os@0.1.0 operations:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> pnpm workspace:check && pnpm check:workspace-root-cleanliness:strict\n\n\n> fabric-os@0.1.0 workspace:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node platform/scripts/workspace/check.mjs\n\nworkspace:root OK\nworkspace:coordination OK\nworkspace:compliance OK\nworkspace:gtm OK\nworkspace:attestation OK\nworkspace:product-management OK\nworkspace:security OK\nworkspace:assurance-programs OK\nworkspace:audit OK\n"
     },
     "deployPath": {
       "ok": true,
@@ -66,14 +66,9 @@
     "p35Strict": {
       "ok": true,
       "code": 0,
-      "out": "{\n  \"ok\": true,\n  \"protocol\": \"35-ecosystem-workspace-world-class/v5.0.0\",\n  \"engine\": \"layout-spec-enforce/v1\",\n  \"contractVersion\": \"5.1.0\",\n  \"contractPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/config/layout-contract.json\",\n  \"mode\": \"strict\",\n  \"repo\": \"fabric-os\",\n  \"repoRoot\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os\",\n  \"repoKind\": \"product\",\n  \"layoutVersion\": \"v5\",\n  \"resolvedHubs\": {\n    \"agentic\": {\n      \"path\": \"agentic\",\n      \"kind\": \"v5\"\n    },\n    \"agents\": {\n      \"path\": null,\n      \"kind\": \"missing\"\n    },\n    \"archive\": {\n      \"path\": \"archive\",\n     "
+      "out": "{\n  \"ok\": true,\n  \"protocol\": \"35-ecosystem-workspace-world-class/v5.0.0\",\n  \"engine\": \"layout-spec-enforce/v1\",\n  \"contractVersion\": \"5.1.0\",\n  \"contractPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/config/ecosystem-layout-contract.json\",\n  \"mode\": \"strict\",\n  \"repo\": \"fabric-os\",\n  \"repoRoot\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os\",\n  \"repoKind\": \"product\",\n  \"layoutVersion\": \"v5\",\n  \"resolvedHubs\": {\n    \"agentic\": {\n      \"path\": \"agentic\",\n      \"kind\": \"v5\"\n    },\n    \"agents\": {\n      \"path\": \"agents\",\n      \"kind\": \"v5\"\n    },\n    \"archive\": {\n      \"path\": \"archiv"
     }
   },
   "gaps": [],
-  "runbook": "audit/runbooks/A2-production-grade.md",
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "runbook": "audit/runbooks/A2-production-grade.md"
 }

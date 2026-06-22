@@ -15,7 +15,7 @@ Commercial pilot and ministry partner gates. **Not on the technical/product P22 
 
 | SoR                  | Path                                                                                                                            |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Human gates manifest | [`ops/coordination/human-gates.manifest.json`](../../ops/coordination/human-gates.manifest.json)                                |
+| Human gates manifest | [`operations/coordination/human-gates.manifest.json`](../../ops/coordination/human-gates.manifest.json)                         |
 | Terra pilot script   | [`terra-os/docs/business/pilot/zambia-mmmd-pilot-script.md`](../../../terra-os/docs/business/pilot/zambia-mmmd-pilot-script.md) |
 
 ## Active partnerships

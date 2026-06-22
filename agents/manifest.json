@@ -43,7 +43,7 @@
     "precedence": "GTCX P22/P26/P27/P28 win over skill HARD-GATEs — see ../bridge-os/docs/skills/README.md#precedence-vs-gtcx-protocols"
   },
   "directiveSources": {
-    "primary": "pm/",
+    "primary": "machine/",
     "ecosystemPlan": "../bridge-os/pm/",
     "rejected": ["fat-hub-in-product-repo"]
   },
@@ -53,7 +53,7 @@
     "scope": "bridge-os = coordination + ZenHub SoR; fabric-os = infra assurance runner"
   },
   "protocols": {
-    "P22": "work selection from local pm/backlog.json",
+    "P22": "work selection from local machine/backlog.json",
     "P27": "agents run terraform/kubectl/aws in-session",
     "P35": "infra repo — deploy/ owns ship paths"
   },

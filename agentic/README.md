@@ -19,4 +19,4 @@ review_cycle: on-change
 
 ## Boundaries
 
-Do not place runtime code, platform packages, PM plans, docs hubs, or ops domains under this directory. Use `platform/`, `pm/`, `docs/`, and `ops/` for those concerns.
+Do not place runtime code, platform packages, PM plans, docs hubs, or ops domains under this directory. Use `platform/`, `machine/`, `docs/`, and `operations/` for those concerns.

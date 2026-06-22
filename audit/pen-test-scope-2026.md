@@ -63,7 +63,7 @@ Pentest scope **must not collapse** sovereign gov rails, cloud exchange, and pro
 
 **Out of lane scope for this engagement:** ledger-ui (X) static hosting, baseline vault (A), canon/agile utilities (U).
 
-Registry: `pm/spec/trade-ecosystem-lanes.json` · fabric witness: `audit/evidence/fabric-lanes-check-latest.json`
+Registry: `machine/spec/trade-ecosystem-lanes.json` · fabric witness: `audit/evidence/fabric-lanes-check-latest.json`
 
 ### 2.2 Out-of-Scope
 

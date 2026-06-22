@@ -2,7 +2,7 @@
   "schema": "gtcx://audit/fleet-diagnostic-snapshot/v1",
   "repo": "fabric-os",
   "tier": "platform",
-  "refreshedAt": "2026-06-17T18:17:54.922Z",
+  "refreshedAt": "2026-06-22T17:35:17.026Z",
   "sessionPhase": "close",
   "diagnostics": {
     "engineering": {
@@ -19,32 +19,32 @@
       "trustCap100": 100,
       "compliance100": 100,
       "published": true,
-      "witnessPath": "audit/evidence/multi-pillar-latest.json",
-      "evaluatedAt": "2026-06-17T17:56:36.929Z",
-      "ageHours": 0.24501462877061633,
+      "witnessPath": "audit/evidence/five-pillar-latest.json",
+      "evaluatedAt": "2026-06-19T02:18:35.941Z",
+      "ageHours": 48.76069890882704,
       "stale": false,
-      "refreshCommand": "pnpm review:multi-pillar:run --repo <repo> --write"
+      "refreshCommand": "pnpm audit:multi-pillar:run --repo <repo> --write"
     },
     "master": {
       "score10": 10,
       "score100": 100,
       "productionReady": true,
       "gaps": [],
-      "witnessPath": "audit/evidence/rollup-audit-latest.json",
-      "ageHours": 3.126862058037652,
+      "witnessPath": "audit/evidence/composite-audit-latest.json",
+      "ageHours": 48.760702185804575,
       "stale": false,
       "refreshCommand": "pnpm ecosystem:master:audit --repo <repo> --write"
     },
     "gtm": {
-      "stage": "S2",
-      "stageName": "Pilot Ready",
-      "status": "not_ready",
-      "score100": 36,
+      "stage": "S1",
+      "stageName": "MVP",
+      "status": "partial",
+      "score100": 21,
       "gates": {
         "readme": true,
         "packageOrMakefile": true,
         "devEntry": true,
-        "opsCheckPass": true,
+        "opsCheckPass": false,
         "agentNextWork": true,
         "demoWalkthrough": false,
         "syntheticFixtures": false,
@@ -63,7 +63,7 @@
         "sbom": false,
         "cveClear": false
       },
-      "gaps": ["S2:demoWalkthrough", "S2:syntheticFixtures", "S2:featureMatrix90"],
+      "gaps": ["S1:opsCheckPass"],
       "witnessPath": "audit/evidence/gtm-readiness-latest.json",
       "qualitativeForensic": null,
       "deepAuditRecommended": true,
@@ -71,14 +71,9 @@
     }
   },
   "rollup": {
-    "avgScore100": 80,
+    "avgScore100": 77,
     "anyStale": true,
     "pilotReady": false,
     "deployBarMet": true
-  },
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
   }
 }

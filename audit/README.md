@@ -8,4 +8,4 @@ Audit workflow entry for this repository.
 | **Framework**     | `gtcx-agentic/03-platform/tools/audit-framework/` |
 | **Evidence sink** | `01-docs/05-audit/`                               |
 
-Run layout gates before claiming audit complete: `pnpm ops:check`.
+Run layout gates before claiming audit complete: `pnpm operations:check`.

@@ -11,4 +11,4 @@ review_cycle: on-change
 
 # ux-design roadmap
 
-Lane narrative for **fabric-os**. Link execution truth to `pm/` — do not duplicate backlog JSON.
+Lane narrative for **fabric-os**. Link execution truth to `machine/` — do not duplicate backlog JSON.

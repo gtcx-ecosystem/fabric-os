@@ -10,4 +10,4 @@ See `bridge-os/pm/spec/five-core-audits.json`.
 | A4-COMPLIANCE-SECURITY | `audit/compliance-security-audit-{date}.md` |
 | A5-REPO-HYGIENE        | `audit/repo-hygiene-audit-{date}.md`        |
 
-Archived 1 legacy reports → `audit/archive/superseded/audits/`
+Archived 0 legacy reports → `audit/archive/superseded/audits/`

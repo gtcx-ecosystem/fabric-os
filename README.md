@@ -21,7 +21,7 @@ Service fabric execution layer: AWS/EKS/Terraform, **DevOps · InfraOps · SecOp
 ```bash
 git clone https://github.com/gtcx-ecosystem/fabric-os.git && cd fabric-os
 pnpm install
-pnpm ops:check
+pnpm operations:check
 ```
 
 See [`docs/README.md`](./docs/README.md) for the documentation index and [`AGENTS.md`](./AGENTS.md) for agent session entry.

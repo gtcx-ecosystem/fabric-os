@@ -24,7 +24,7 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 ## execute-roadmap reconcile (2026-06-17 — product roadmap lane isolation)
 
 - **Enforcement:** `pnpm product-roadmap:lane:check:write` **PASS** — external/pilot gates scrubbed from engineering backlog
-- **Lanes:** `agile/roadmaps/{technical,gtm,legal,partnerships,compliance}.md` + `ops/coordination/human-gates.manifest.json`
+- **Lanes:** `agile/roadmaps/{technical,gtm,legal,partnerships,compliance}.md` + `operations/coordination/human-gates.manifest.json`
 - **MMMD / ZWCMP:** `BM-ZM-PILOT-01` · `EXT-INF-014` on partnerships lane only — technical readiness PASS does not block P22
 - **Removed from product backlog:** `BL-SOC2-01` → compliance lane manifest
 
@@ -53,9 +53,9 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 
 ## execute-roadmap reconcile (2026-06-17 — cycle 2)
 
-- **COO Wave 2 OPS-COO-W2-001:** **done** — `ecosystem-ops-pack-rollout.mjs --fleet --write` · fleet `ops:consumption:check` **15/15 PASS**
+- **COO Wave 2 OPS-COO-W2-001:** **done** — `ecosystem-ops-pack-rollout.mjs --fleet --write` · fleet `operations:consumption:check` **15/15 PASS**
 - **COO Wave 2 OPS-COO-W2-002:** **done** — ops ceremony substance evaluator + witness
-- **COO Wave 2 OPS-COO-W2-003:** **done** — `ecosystem:fabric:check` **20/20** · `fabric:ops:check:strict` exit 0 · fleet lanes **17/17**
+- **COO Wave 2 OPS-COO-W2-003:** **done** — `ecosystem:fabric:check` **20/20** · `fabric:operations:check:strict` exit 0 · fleet lanes **17/17**
 - **COO Wave 1 OPS-COO-W1-001:** **done** — CommOps SM populate script + terra-os pilot ESO cutover · `commops:substrate:readiness` PASS
 - **COO Wave 1 OPS-COO-W1-002:** **done** — bounce webhook staging ingress · `commops:deliverability:check` PASS
 - **SECAS-S4-04:** vendor calendar parallel · `awaiting_vendor_report` until **2026-06-21+**
@@ -71,7 +71,7 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 - **Blocked (parallel):** `BG-10-10-REPORT` vendor findings mapping + remediation execution (Class A/S)
 
 - **Harness:** `secas:purple-team` · `product-threat` · `ai-redteam:rollup` · `pqc:check` · `bounty-ops` — all **PASS**
-- **Witness:** `pm/secas-roadmap.json` SECAS-S5 **complete**
+- **Witness:** `machine/secas-roadmap.json` SECAS-S5 **complete**
 
 ## Fleet SecOps + ComplianceOps internal clearance (2026-06-15)
 
@@ -114,20 +114,20 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 - **Outcome:** **done** — composite100 **59 → 100** after `fdd47cf` removed IA shadow stubs
 - **Root cause:** P35 gates still required `docs/agents/` while W4 IA canonical is `docs/operations/agents/` + `docs/roadmap/agile/`
 - **Fix:** align `check-domain.mjs`, `layout-contract.json` (local sor contract), `sor-map.json` — no duplicate shadow folders
-- **Gates:** `pnpm ops:check` PASS · P35 strict 100/100 · fleet uplift witness composite100 **100**
+- **Gates:** `pnpm operations:check` PASS · P35 strict 100/100 · fleet uplift witness composite100 **100**
 
 ## COMPOSITE-RESTORE-100 (2026-06-15)
 
 - **Outcome:** **done** — composite100 **59 → 100** after W4 IA uplift drift
 - **Root cause:** `docs/agents/` + `docs/agile/` missing (IA moved to `docs/operations/agents/`); P22 manifest at `docs/operations/agent-work-selection.md` displaced to agent-spine
 - **Fix:** P35 bridge indexes at `docs/agents/` + `docs/agile/roadmap.md`; restore P22 manifest; `run-five-pillar-fleet-uplift --repo fabric-os --write`
-- **Gates:** `pnpm ops:check` PASS · `agent:work-selection:check` 9/9 · P35 strict 100/100
+- **Gates:** `pnpm operations:check` PASS · `agent:work-selection:check` 9/9 · P35 strict 100/100
 
 ## COMPOSITE-RESTORE-100 (2026-06-14)
 
 - **Outcome:** **done** — `five-pillar-latest.json` composite100 **100** · trust **100** · independent-replay **100**
 - **Root cause:** P29 domain prose under `docs/` + broken internal links post-migration (195 → 0)
-- **Fix:** migrate to `ops/*/narrative/` + `audit/archive/legacy-docs-audit/` · repair LINKaaS · restore evidence witnesses · `human-gates.manifest.json`
+- **Fix:** migrate to `operations/*/narrative/` + `audit/archive/legacy-docs-audit/` · repair LINKaaS · restore evidence witnesses · `human-gates.manifest.json`
 - **Gates:** `p35-layout-check --strict` PASS · `documentation-links` broken=0 · `documentation-audit` ok=true
 
 ## Session EXECUTE reconcile (2026-06-14)
@@ -188,7 +188,7 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 
 - **Mode:** `complete_roadmap` — automatable queue exhausted; calendar gate on SECAS-S2-01
 - **Witness:** `audit/evidence/roadmap-automatable-exhaust-2026-06-12.json`
-- **Gates:** validate-all 55/55 · pnpm test · ops:check · DAAS/SECAS/fabric lanes PASS
+- **Gates:** validate-all 55/55 · pnpm test · operations:check · DAAS/SECAS/fabric lanes PASS
 - **roadmapComplete:** false until vendor report ingest (post 2026-06-21)
 
 ## execute_roadmap witness (2026-06-12)
@@ -209,7 +209,7 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 ## Session open-items reconcile (2026-06-12)
 
 - **Session:** `fabric-os-domain-model-2026-06-12`
-- **Machine witness:** `pm/ci/session-open-items-latest.json` · `audit/evidence/session-open-items-reconcile-2026-06-12.json`
+- **Machine witness:** `machine/ci/session-open-items-latest.json` · `audit/evidence/session-open-items-reconcile-2026-06-12.json`
 - **Lane sprint:** CLOSED · DAAS sealed · git 0 ahead
 - **P22:** SECAS-S2-01 `awaiting_vendor_report` · ingest **Class A approved** 2026-06-12 (post-2026-06-21 execution)
 - **EXT-INF-013:** ZWCMP pilot owner cadence **Class S approved** 2026-06-12 — EXT-INF-014 unblocked

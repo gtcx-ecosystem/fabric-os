@@ -1,17 +1,17 @@
 {
   "schema": "gtcx://audit/gtm-readiness/v1",
   "repo": "fabric-os",
-  "assessedAt": "2026-06-17T18:17:54.922Z",
+  "assessedAt": "2026-06-22T17:35:17.022Z",
   "source": "machine-inference",
-  "stage": "S2",
-  "stageName": "Pilot Ready",
-  "status": "not_ready",
-  "score100": 36,
+  "stage": "S1",
+  "stageName": "MVP",
+  "status": "partial",
+  "score100": 21,
   "gates": {
     "readme": true,
     "packageOrMakefile": true,
     "devEntry": true,
-    "opsCheckPass": true,
+    "opsCheckPass": false,
     "agentNextWork": true,
     "demoWalkthrough": false,
     "syntheticFixtures": false,
@@ -30,13 +30,8 @@
     "sbom": false,
     "cveClear": false
   },
-  "gaps": ["S2:demoWalkthrough", "S2:syntheticFixtures", "S2:featureMatrix90"],
+  "gaps": ["S1:opsCheckPass"],
   "qualitativeForensic": null,
   "deepAuditCommand": "/gtm cursor command + audit/gtm-readiness-YYYY-MM-DD.md",
-  "note": "Machine inference — run /gtm for buyer-grade qualitative assessment",
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "note": "Machine inference — run /gtm for buyer-grade qualitative assessment"
 }

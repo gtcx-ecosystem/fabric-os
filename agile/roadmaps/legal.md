@@ -13,11 +13,11 @@ review_cycle: on-change
 
 Class S ratification, DPA, SLA, and countersign tracks. **Not P22-selectable.**
 
-| SoR                     | Path                                                                                             |
-| ----------------------- | ------------------------------------------------------------------------------------------------ |
-| Legal friction register | [`pm/legal-friction-register.json`](../../pm/legal-friction-register.json)                       |
-| Internal human gates    | [`ops/coordination/internal-human-gates.json`](../../ops/coordination/internal-human-gates.json) |
-| Human gates manifest    | [`ops/coordination/human-gates.manifest.json`](../../ops/coordination/human-gates.manifest.json) |
+| SoR                     | Path                                                                                                    |
+| ----------------------- | ------------------------------------------------------------------------------------------------------- |
+| Legal friction register | [`machine/legal-friction-register.json`](../../pm/legal-friction-register.json)                         |
+| Internal human gates    | [`operations/coordination/internal-human-gates.json`](../../ops/coordination/internal-human-gates.json) |
+| Human gates manifest    | [`operations/coordination/human-gates.manifest.json`](../../ops/coordination/human-gates.manifest.json) |
 
 ## Open gates
 

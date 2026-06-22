@@ -16,7 +16,7 @@ Assurance programme, SOC 2, SECAS engineering witnesses. **Vendor calendar defer
 | SoR                  | Path                                                                                                                               |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | SECAS execution      | [`audit/product-management/secas-execution-roadmap.md`](../../audit/product-management/secas-execution-roadmap.md)                 |
-| Post-launch external | [`ops/coordination/post-launch-external-gates.json`](../../ops/coordination/post-launch-external-gates.json)                       |
+| Post-launch external | [`operations/coordination/post-launch-external-gates.json`](../../ops/coordination/post-launch-external-gates.json)                |
 | Internal closure     | [`audit/evidence/secas-s4-04-internal-closure-2026-06-17.json`](../../audit/evidence/secas-s4-04-internal-closure-2026-06-17.json) |
 
 ## Programme status

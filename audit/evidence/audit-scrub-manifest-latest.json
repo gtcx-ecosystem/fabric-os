@@ -1,25 +1,15 @@
 {
   "schema": "gtcx.auditScrubManifest.v1",
   "repo": "fabric-os",
-  "date": "2026-06-12",
+  "date": "2026-06-22",
   "initiative": "INIT-AUDIT-CONSOLIDATION",
   "dryRun": false,
-  "moved": [
-    {
-      "from": "legacy-repo-id-audit-2026-06-12.md",
-      "to": "audit/archive/superseded/audits/legacy-repo-id-audit-2026-06-12.md"
-    }
-  ],
+  "moved": [],
   "fiveCoreOnly": [
     "audit/product-excellence-audit-{date}.md",
     "audit/production-grade-audit-{date}.md",
     "audit/agentic-innovation-audit-{date}.md",
     "audit/compliance-security-audit-{date}.md",
     "audit/repo-hygiene-audit-{date}.md"
-  ],
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  ]
 }

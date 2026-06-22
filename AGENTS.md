@@ -1,11 +1,11 @@
 # AGENTS.md — Fabric OS
 
 > **Applies to:** ALL AI agents operating on this codebase  
-> **Layout:** P35 v5 — `platform/`, `deploy/`, `docs/`, `ops/`, `audit/`, `workstream/`, `agentic/`, `pm/`  
+> **Layout:** P35 v5 — `platform/`, `deploy/`, `docs/`, `operations/`, `audit/`, `workstream/`, `agentic/`, `machine/`  
 > **Date:** 2026-06-09  
 > **Version:** 2.0
 
-**Owner repo:** AWS/K8s/Terraform control plane. Run `pnpm ops:check` and `pnpm agent:next-work` every session.
+**Owner repo:** AWS/K8s/Terraform control plane. Run `pnpm operations:check` and `pnpm agent:next-work` every session.
 ## 1.5 GTCX Institutional Baseline
 
 This repo operates within the GTCX ecosystem. All agents must reference the canonical organizational baseline:
@@ -531,7 +531,7 @@ Template: `01-docs/04-ops/agent-status-update-template.md` · Spec: P26 §3b (gt
 
 ```bash
 pnpm workspace:check
-pnpm pm:sync
+pnpm machine:sync
 ```
 
 Spec: [P29 Agent Workspace Domains](https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/protocols/29-agent-workspace-domains/protocol.md)
@@ -545,7 +545,7 @@ Spec: [P29 Agent Workspace Domains](https://github.com/gtcx-ecosystem/canon-os/b
 | Gate             | Command                                        |
 | ---------------- | ---------------------------------------------- |
 | Root cleanliness | `pnpm check:workspace-root-cleanliness:strict` |
-| Ops domains      | `pnpm ops:check`                               |
+| Ops domains      | `pnpm operations:check`                               |
 | Work selection   | `pnpm agent:next-work` (Protocol 22)           |
 
 Tier B docs: [`docs/operations/repo/`](./docs/operations/repo/) · Audit entry: [`audit/AGENT-START.md`](./audit/AGENT-START.md)

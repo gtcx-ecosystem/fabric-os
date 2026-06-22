@@ -1,14 +1,14 @@
 {
   "schema": "gtcx://canon-os/docs-tree-witness/v1",
-  "generatedAt": "2026-06-19T22:04:23.555Z",
+  "generatedAt": "2026-06-22T17:31:52.195Z",
   "repo": "fabric-os",
   "strict": true,
   "structureOnly": false,
   "profile": "platform",
   "pass": true,
   "metrics": {
-    "mdFiles": 238,
-    "folders": 82,
+    "mdFiles": 244,
+    "folders": 83,
     "missingReadme": 0,
     "missingFrontmatter": 0,
     "missingDocumentType": 0,
@@ -417,6 +417,16 @@
     },
     {
       "id": "pack:subfolder-readme:operations/coordination",
+      "ok": true,
+      "detail": "README.md"
+    },
+    {
+      "id": "pack:subfolder:operations/compliance",
+      "ok": true,
+      "detail": "docs/operations/compliance/"
+    },
+    {
+      "id": "pack:subfolder-readme:operations/compliance",
       "ok": true,
       "detail": "README.md"
     },

@@ -33,4 +33,4 @@ review_cycle: on-change
 
 ## Sync
 
-`pnpm pm:sync` → `ops/pm/backlog.json`
+`pnpm machine:sync` → `operations/machine/backlog.json`

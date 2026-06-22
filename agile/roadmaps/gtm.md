@@ -17,7 +17,7 @@ Commercial motion, pilot tiers, and launch waves. **Rolls up to business roadmap
 | ------------- | ---------------------------------------------------------------------- |
 | GTM audit     | [`audit/gtm-audit-2026-06-05.md`](../../audit/gtm-audit-2026-06-05.md) |
 | Launch focus  | [`.baseline/launch-focus.json`](../../.baseline/launch-focus.json)     |
-| Product goals | [`pm/spec/product-goals.json`](../../pm/spec/product-goals.json)       |
+| Product goals | [`machine/spec/product-goals.json`](../../pm/spec/product-goals.json)  |
 
 ## Active motion
 

@@ -8,7 +8,7 @@ owner: fabric-os
 # fabric-os — agile lens
 
 > **Fleet backlog:** `../agile-os/pm/ecosystem-sprint-backlog.json`
-> **Local backlog:** `ops/pm/backlog.json` — refresh with `pnpm pm:sync`
+> **Local backlog:** `operations/machine/backlog.json` — refresh with `pnpm machine:sync`
 
 ## Local execution roadmap
 

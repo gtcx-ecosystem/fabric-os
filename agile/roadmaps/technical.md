@@ -15,8 +15,8 @@ review_cycle: on-change
 
 | Source             | Path                                                                                                               |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| Product milestones | [`pm/roadmap/product-milestones.json`](../../pm/roadmap/product-milestones.json)                                   |
-| Execution truth    | [`pm/execution-roadmap.md`](../../pm/execution-roadmap.md)                                                         |
+| Product milestones | [`machine/roadmap/product-milestones.json`](../../pm/roadmap/product-milestones.json)                              |
+| Execution truth    | [`machine/execution-roadmap.md`](../../pm/execution-roadmap.md)                                                    |
 | P22 work register  | [`docs/operations/agent-spine/agent-work-selection.md`](../../docs/operations/agent-spine/agent-work-selection.md) |
 
 ## Active engineering

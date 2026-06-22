@@ -1,0 +1,22 @@
+{
+  "schema": "gtcx://canon-os/hub-agent-card/v1",
+  "hub": "fabric-os",
+  "role": "ops-assurance",
+  "displayName": "Fabric OS — compliance, security, legal assurance",
+  "initiative": "ADP-S2-AGENT-CARDS",
+  "extends": "P59-ecosystem-federation",
+  "ownedProtocols": ["P28-classification", "fabric-ops-policy", "attestation"],
+  "ownedSpecs": ["pm/spec/fabric-ops-policy-contract.json"],
+  "entrypoints": {
+    "opsContractsCheck": "pnpm fabric:ops-contracts:check",
+    "opsCheck": "pnpm fabric:ops:check",
+    "assuranceRun": "pnpm fabric:assurance:run:write"
+  },
+  "witnesses": ["audit/evidence/fabric-ops-contracts-latest.json"],
+  "escalation": {
+    "blocker": "operator",
+    "classA": "operator",
+    "classS": "operator"
+  },
+  "delegatesTo": ["bridge-os/ecosystem:five-core-audits:check"]
+}

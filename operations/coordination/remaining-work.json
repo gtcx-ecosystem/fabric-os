@@ -3,9 +3,9 @@
   "repo": "fabric-os",
   "updated": "2026-06-14",
   "reconciledAt": "2026-06-14T12:00:00.000Z",
-  "forensicPack": "pm/ci/session-forensic-2026-06-14.md",
+  "forensicPack": "machine/ci/session-forensic-2026-06-14.md",
   "reconcileWitness": "audit/evidence/session-open-items-reconcile-2026-06-14.json",
-  "sessionOpenItems": "pm/ci/session-open-items-latest.json",
+  "sessionOpenItems": "machine/ci/session-open-items-latest.json",
   "bridgeHandoff": "docs/operations/coordination/from-bridge-os-session-open-items-handoff-ack-2026-06-12.md",
   "sessionRef": "fabric-os-domain-model-2026-06-12",
   "items": [
@@ -71,12 +71,12 @@
     }
   ],
   "postLaunchExternal": {
-    "soR": "ops/coordination/post-launch-external-gates.json",
+    "soR": "operations/coordination/post-launch-external-gates.json",
     "agentRoadmapEligible": false,
     "note": "Vendor/auditor calendar — NOT internal roadmap or P22"
   },
   "internalHuman": {
-    "soR": "ops/coordination/internal-human-gates.json",
+    "soR": "operations/coordination/internal-human-gates.json",
     "agentRoadmapEligible": false,
     "note": "GTCX team actions — NOT agent P22"
   },
@@ -143,7 +143,7 @@
       "title": "DevOps-as-a-Service program",
       "ownerRepo": "fabric-os",
       "status": "done",
-      "witness": "046026f · pm/_tasks sealed",
+      "witness": "046026f · machine/_tasks sealed",
       "closedAt": "2026-06-12"
     }
   ],

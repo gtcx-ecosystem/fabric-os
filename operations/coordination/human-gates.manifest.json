@@ -3,8 +3,8 @@
   "schema": "gtcx.humanGates.manifest.v1",
   "updated": "2026-06-17",
   "normativeDoc": "canon-os/pm/spec/product-roadmap-lane-isolation-protocol.json",
-  "fabricInternalHumanSoR": "ops/coordination/internal-human-gates.json",
-  "postLaunchExternalSoR": "ops/coordination/post-launch-external-gates.json",
+  "fabricInternalHumanSoR": "operations/coordination/internal-human-gates.json",
+  "postLaunchExternalSoR": "operations/coordination/post-launch-external-gates.json",
   "agentRoadmapEligible": false,
   "p22Selectable": false,
   "gates": [

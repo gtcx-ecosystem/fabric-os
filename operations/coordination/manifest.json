@@ -4,9 +4,9 @@
   "protocol": "gtcx-docs/01-docs/governance/protocols/24-cross-repo-coordination/protocol.md",
   "hubPlane": null,
   "paths": {
-    "remainingWork": "ops/coordination/remaining-work.json",
-    "outbound": "ops/coordination/outbound",
-    "inbound": "ops/coordination/inbound",
+    "remainingWork": "operations/coordination/remaining-work.json",
+    "outbound": "operations/coordination/outbound",
+    "inbound": "operations/coordination/inbound",
     "legacyArchive": "docs/operations/coordination"
   },
   "ecosystemBridge": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/cross-repo-agent-bridge.md",

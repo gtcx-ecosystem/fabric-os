@@ -1,4 +1,4 @@
-# ops/gtm — fabric-os
+# operations/gtm — fabric-os
 
 Go-to-market **scope** machine register (pen-test in/out, SOC controls owned, procurement).
 

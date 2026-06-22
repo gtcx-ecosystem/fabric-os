@@ -3,7 +3,7 @@
   "repo": "fabric-os",
   "updated": "2026-06-16",
   "paths": {
-    "posture": "ops/security/posture.json",
+    "posture": "operations/security/posture.json",
     "docsIndex": "docs/architecture/security/README.md"
   },
   "sor": {

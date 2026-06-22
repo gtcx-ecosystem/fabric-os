@@ -1,4 +1,4 @@
-# ops/security — fabric-os
+# operations/security — fabric-os
 
 Security **posture** machine register — controls, vulnerability tracking, incident hooks. Human docs live under `docs/`, not here.
 

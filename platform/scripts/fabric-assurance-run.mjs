@@ -8,6 +8,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { assessBlockingSatisfaction } from '../../../bridge-os/platform/scripts/lib/assurance-blocking-satisfaction.mjs';
+import { resolveBridgeSpec } from './lib/path-aliases.mjs';
 
 const FABRIC = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const ECO = join(FABRIC, '..');
@@ -15,8 +16,8 @@ const BRIDGE = join(ECO, 'bridge-os');
 const WRITE = process.argv.includes('--write') || (!process.argv.includes('--check') && !process.argv.includes('--dry-run'));
 const CHECK = process.argv.includes('--check');
 const WITNESS = join(FABRIC, 'audit/evidence/fabric-assurance-latest.json');
-const EVALUATE = join(BRIDGE, 'machine/ci/assurance-evaluate-latest.json');
-const CATALOG = join(BRIDGE, 'machine/spec/assurance-run-catalog.json');
+const EVALUATE = resolveBridgeSpec(BRIDGE, 'pm/ci/assurance-evaluate-latest.json');
+const CATALOG = resolveBridgeSpec(BRIDGE, 'pm/spec/assurance-run-catalog.json');
 
 const COMMAND_ALIASES = {
   'pnpm ecosystem:fleet:uat:run': 'pnpm ecosystem:fleet:uat:run',

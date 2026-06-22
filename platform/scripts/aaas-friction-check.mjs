@@ -7,12 +7,13 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { resolveOpsDoc } from './lib/path-aliases.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
 const REGISTER = join(ROOT, 'machine/audit-friction-register.json');
 const ROADMAP = join(ROOT, 'machine/aaas-roadmap.json');
-const OPS = join(ROOT, 'docs/operations/audit-as-a-service.md');
+const OPS = join(ROOT, resolveOpsDoc(ROOT, 'audit-as-a-service.md'));
 const COMPOSITE = join(ROOT, 'audit/evidence/composite-audit-latest.json');
 const OUT = join(ROOT, 'audit/evidence/aaas-friction-check-latest.json');
 const WRITE = process.argv.includes('--write');

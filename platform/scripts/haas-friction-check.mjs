@@ -7,11 +7,13 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { assessBlockingSatisfaction } from '../../../bridge-os/platform/scripts/lib/assurance-blocking-satisfaction.mjs';
+import { resolveOpsDoc } from './lib/path-aliases.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const REGISTER = join(ROOT, 'machine/hygiene-friction-register.json');
 const ROADMAP = join(ROOT, 'machine/haas-roadmap.json');
-const OPS = join(ROOT, 'docs/operations/hygiene-as-a-service.md');
+const OPS = join(ROOT, resolveOpsDoc(ROOT, 'hygiene-as-a-service.md'));
 const OUT = join(ROOT, 'audit/evidence/haas-friction-check-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');

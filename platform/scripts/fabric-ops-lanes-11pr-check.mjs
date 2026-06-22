@@ -10,10 +10,23 @@ import { evaluateOpsLane } from '../../../bridge-os/platform/scripts/lib/ops-lan
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
-const PROBES = join(BRIDGE, 'machine/spec/ops-lane-11pr-probes.json');
 const OUT = join(ROOT, 'audit/evidence/fabric-ops-lanes-11pr-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
+
+function resolveBridgeSpec(rel) {
+  const candidates = [
+    join(BRIDGE, rel),
+    join(BRIDGE, rel.replace(/^pm\//, 'machine/')),
+    join(BRIDGE, rel.replace(/^machine\//, 'pm/')),
+  ];
+  for (const path of candidates) {
+    if (existsSync(path)) return path;
+  }
+  return candidates[0];
+}
+
+const PROBES = resolveBridgeSpec('pm/spec/ops-lane-11pr-probes.json');
 
 const FOUNDATION_KEYS = [
   'compliance',

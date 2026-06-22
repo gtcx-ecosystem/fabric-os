@@ -13,8 +13,8 @@
       "status": "done",
       "owner": "fabric-os",
       "files": [
-        "pm/friction-register.json",
-        "pm/daas-roadmap.json",
+        "machine/friction-register.json",
+        "machine/daas-roadmap.json",
         "audit/evidence/daas-friction-check-latest.json"
       ],
       "acceptance": ["pnpm daas:friction:check:write"],
@@ -37,7 +37,7 @@
         ".github/workflows/cross-repo-health.yml",
         "audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json"
       ],
-      "acceptance": ["pnpm daas:fleet:health", "pnpm ops:check"],
+      "acceptance": ["pnpm daas:fleet:health", "pnpm operations:check"],
       "uat": [
         { "text": "Canonical pnpm daas:fleet:health command exists", "done": true },
         { "text": "Scheduled workflow uses P35 paths", "done": true },

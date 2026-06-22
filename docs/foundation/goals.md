@@ -11,7 +11,7 @@ review_cycle: on-change
 
 # fabric-os — goals
 
-> **Generated mirror:** [`pm/canon/strategy.json`](../../pm/canon/strategy.json) — `pnpm canon:synthesize`
+> **Generated mirror:** [`machine/canon/strategy.json`](../../pm/canon/strategy.json) — `pnpm canon:synthesize`
 
 ## Active program
 

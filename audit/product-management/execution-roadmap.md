@@ -8,17 +8,17 @@ program: INIT-GTCX-INFRA-DAAS
 generated: true
 generated_by: platform/scripts/generate-execution-roadmap.mjs
 sources:
-  - pm/daas-roadmap.json
-  - pm/friction-register.json
-  - pm/daas-stories.json
+  - machine/daas-roadmap.json
+  - machine/friction-register.json
+  - machine/daas-stories.json
   - audit/evidence/daas-friction-check-latest.json
   - audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json
 ---
 
 # fabric-os execution roadmap
 
-> **Generated file.** Edit `pm/daas-stories.json`, `pm/friction-register.json`, or
-> `pm/daas-roadmap.json`, then run `pnpm generate:roadmap`.
+> **Generated file.** Edit `machine/daas-stories.json`, `machine/friction-register.json`, or
+> `machine/daas-roadmap.json`, then run `pnpm generate:roadmap`.
 
 **Ops lanes:** DevOps & InfraOps · **Functional product:** DaaS — not product ECO sprints.
 
@@ -82,15 +82,15 @@ pnpm daas:fleet:health
 
 ## Issue Reconciliation
 
-| Issue                        | Source                      | Roadmap Mapping | Status            |
-| ---------------------------- | --------------------------- | --------------- | ----------------- |
-| `F-AGX-01`                   | `pm/friction-register.json` | DAAS-S1-03      | done              |
-| `XR-MKT-011`                 | `pm/friction-register.json` | DAAS-S1-04      | done              |
-| `F1`                         | `pm/friction-register.json` | DAAS-S2-01      | done              |
-| `F2`                         | `pm/friction-register.json` | DAAS-S3-01      | done              |
-| `F6`                         | `pm/friction-register.json` | DAAS-S3-02      | done              |
-| `XR-MKT-RDS-VPC`             | `pm/friction-register.json` | —               | done              |
-| P41 hub protocol publication | `pm/_tasks`                 | gtcx-docs       | done (`a34baa8a`) |
+| Issue                        | Source                           | Roadmap Mapping | Status            |
+| ---------------------------- | -------------------------------- | --------------- | ----------------- |
+| `F-AGX-01`                   | `machine/friction-register.json` | DAAS-S1-03      | done              |
+| `XR-MKT-011`                 | `machine/friction-register.json` | DAAS-S1-04      | done              |
+| `F1`                         | `machine/friction-register.json` | DAAS-S2-01      | done              |
+| `F2`                         | `machine/friction-register.json` | DAAS-S3-01      | done              |
+| `F6`                         | `machine/friction-register.json` | DAAS-S3-02      | done              |
+| `XR-MKT-RDS-VPC`             | `machine/friction-register.json` | —               | done              |
+| P41 hub protocol publication | `machine/_tasks`                 | gtcx-docs       | done (`a34baa8a`) |
 
 ## Unblock Order
 

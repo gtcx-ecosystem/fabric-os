@@ -29,5 +29,5 @@ review_cycle: on-change
 
 ## Central SoR
 
-- [`pm/canon/strategy.json`](../../pm/canon/strategy.json) (generated — `pnpm canon:synthesize`)
+- [`machine/canon/strategy.json`](../../pm/canon/strategy.json) (generated — `pnpm canon:synthesize`)
 - [`docs/sor.json`](../sor.json)

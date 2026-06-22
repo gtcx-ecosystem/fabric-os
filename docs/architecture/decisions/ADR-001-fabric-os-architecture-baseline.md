@@ -23,7 +23,7 @@ Proposed
 
 - Specs live under `specs/{backend,frontend,data,design,testing}/`
 - Architecture decisions are recorded only as `ADR-NNN-*.md` under `decisions/`
-- Machine evidence remains in `ops/` and `audit/`; product UX in `docs/product/`
+- Machine evidence remains in `operations/` and `audit/`; product UX in `docs/product/`
 
 ## Consequences
 

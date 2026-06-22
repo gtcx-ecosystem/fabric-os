@@ -41,4 +41,4 @@ review_cycle: on-change
 
 ## Machine mirror (generated)
 
-[`pm/canon/strategy.json`](../../pm/canon/strategy.json) — `pnpm canon:synthesize` — `activeMilestone`
+[`machine/canon/strategy.json`](../../pm/canon/strategy.json) — `pnpm canon:synthesize` — `activeMilestone`

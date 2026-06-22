@@ -12,4 +12,4 @@ goals: 'customers canonical — fabric-os'
 
 # Personas
 
-Buyer/engineering personas for **Fabric OS** — see `pm/product/customers/` for machine SoR.
+Buyer/engineering personas for **Fabric OS** — see `machine/product/customers/` for machine SoR.

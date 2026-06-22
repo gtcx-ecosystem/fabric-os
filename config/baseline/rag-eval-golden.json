@@ -13,8 +13,8 @@
     {
       "id": "pm-hub",
       "query": "pm manifest roadmap initiatives",
-      "expectedSources": ["pm/manifest.json", "pm/README.md"],
-      "tags": ["pm", "engine"]
+      "expectedSources": ["machine/manifest.json", "machine/README.md"],
+      "tags": ["machine", "engine"]
     },
     {
       "id": "rag-config",

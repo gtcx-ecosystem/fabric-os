@@ -35,7 +35,7 @@ document_type: index
 | ---------- | ------------- | --------------------------------------- |
 | Archive    | `archive/`    | Retired artifacts                       |
 | Docs       | `docs/`       | Internal documentation (this tree)      |
-| Ops        | `ops/`        | PM, coordination, attestation domains   |
+| Ops        | `operations/` | PM, coordination, attestation domains   |
 | Platform   | `platform/`   | Workspace packages + agent scripts      |
 | Deploy     | `deploy/`     | Terraform, Kubernetes, operator scripts |
 | Audit      | `audit/`      | Audit entry + evidence hub              |

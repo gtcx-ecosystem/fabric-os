@@ -8,18 +8,18 @@ program: INIT-GTCX-INFRA-SECAS
 generated: true
 generated_by: platform/scripts/generate-secas-execution-roadmap.mjs
 sources:
-  - pm/secas-roadmap.json
-  - pm/security-friction-register.json
-  - pm/secas-stories.json
-  - pm/sovereign-approval-register.json
+  - machine/secas-roadmap.json
+  - machine/security-friction-register.json
+  - machine/secas-stories.json
+  - machine/sovereign-approval-register.json
   - audit/evidence/secas-friction-check-latest.json
   - audit/evidence/secas-approval-check-latest.json
 ---
 
 # fabric-os SecOps execution roadmap
 
-> **Generated file.** Edit `pm/secas-stories.json`, `pm/security-friction-register.json`, or
-> `pm/secas-roadmap.json`, then run `pnpm generate:secas-roadmap`.
+> **Generated file.** Edit `machine/secas-stories.json`, `machine/security-friction-register.json`, or
+> `machine/secas-roadmap.json`, then run `pnpm generate:secas-roadmap`.
 
 **Ops lane:** SecOps · **Functional product:** SECaaS — parallel to DevOps/InfraOps (DaaS), not product PM.
 
@@ -32,7 +32,7 @@ _All SECaaS program sprints (S1–S5) sealed. Vendor calendar gates run in paral
 ## Post-launch external (NOT internal roadmap)
 
 > Vendor/auditor calendar artifacts — **excluded from P22 and agent work.**
-> SoR: [`ops/coordination/post-launch-external-gates.json`](../../ops/coordination/post-launch-external-gates.json)
+> SoR: [`operations/coordination/post-launch-external-gates.json`](../../ops/coordination/post-launch-external-gates.json)
 
 | ID              | Actor                            | Window / earliest | blocksIR |
 | --------------- | -------------------------------- | ----------------- | -------- |
@@ -42,7 +42,7 @@ _All SECaaS program sprints (S1–S5) sealed. Vendor calendar gates run in paral
 
 ## Internal human (GTCX — NOT agent P22)
 
-> SoR: [`ops/coordination/internal-human-gates.json`](../../ops/coordination/internal-human-gates.json)
+> SoR: [`operations/coordination/internal-human-gates.json`](../../ops/coordination/internal-human-gates.json)
 
 _Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SOC2-01 engagement_
 
@@ -58,16 +58,16 @@ _Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SO
 
 ## Issue Reconciliation
 
-| Issue                        | Source                               | Roadmap Mapping | Status |
-| ---------------------------- | ------------------------------------ | --------------- | ------ |
-| `SEC-PENTEST-01`             | `pm/security-friction-register.json` | SECAS-S2-01     | done   |
-| `SEC-WAF-01`                 | `pm/security-friction-register.json` | —               | done   |
-| `SEC-IRSA-01`                | `pm/security-friction-register.json` | —               | done   |
-| `SEC-CSIRT-01`               | `pm/security-friction-register.json` | SECAS-S4-01     | done   |
-| `SEC-SUPPLY-01`              | `pm/security-friction-register.json` | SECAS-S4-02     | done   |
-| `SEC-VULN-01`                | `pm/security-friction-register.json` | SECAS-S4-03     | done   |
-| `SEC-PTREM-01`               | `pm/security-friction-register.json` | SECAS-S4-04     | done   |
-| P42 hub protocol publication | `pm/_tasks`                          | gtcx-docs       | done   |
+| Issue                        | Source                                    | Roadmap Mapping | Status |
+| ---------------------------- | ----------------------------------------- | --------------- | ------ |
+| `SEC-PENTEST-01`             | `machine/security-friction-register.json` | SECAS-S2-01     | done   |
+| `SEC-WAF-01`                 | `machine/security-friction-register.json` | —               | done   |
+| `SEC-IRSA-01`                | `machine/security-friction-register.json` | —               | done   |
+| `SEC-CSIRT-01`               | `machine/security-friction-register.json` | SECAS-S4-01     | done   |
+| `SEC-SUPPLY-01`              | `machine/security-friction-register.json` | SECAS-S4-02     | done   |
+| `SEC-VULN-01`                | `machine/security-friction-register.json` | SECAS-S4-03     | done   |
+| `SEC-PTREM-01`               | `machine/security-friction-register.json` | SECAS-S4-04     | done   |
+| P42 hub protocol publication | `machine/_tasks`                          | gtcx-docs       | done   |
 
 ## Unblock Order
 

@@ -20,7 +20,7 @@
     "deployScripts": "deploy/platform/scripts/",
     "deployTerraform": "deploy/terraform/",
     "deployKubernetes": "deploy/kubernetes/",
-    "opsDomains": "ops/",
+    "opsDomains": "operations/",
     "workstream": "workstream/",
     "toolchainSoR": "config/toolchain/",
     "sorMap": "config/sor-map.json",
@@ -34,7 +34,7 @@
     "05-audit/": "audit/",
     "03-platform/": "platform/",
     "04-deploy/": "deploy/",
-    "02-ops/": "ops/",
+    "02-ops/": "operations/",
     "06-workstream/": "workstream/",
     "tools/": "platform/tools/",
     "infra/": "deploy/"

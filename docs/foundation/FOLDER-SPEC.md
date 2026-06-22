@@ -13,4 +13,4 @@ review_cycle: on-change
 
 > Parent: [`docs/FOLDER-SPEC.md`](../FOLDER-SPEC.md)
 
-Required: eight pack files + README with freshness table. Run `pnpm canon:synthesize` after edits — never hand-edit `pm/canon/`.
+Required: eight pack files + README with freshness table. Run `pnpm canon:synthesize` after edits — never hand-edit `machine/canon/`.

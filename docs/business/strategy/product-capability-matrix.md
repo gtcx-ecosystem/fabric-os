@@ -16,13 +16,13 @@ goals: 'Hub documentation — overview'
 
 ## Active milestone
 
-See `pm/spec/product-goals.json` → `activeMilestone`.
+See `machine/spec/product-goals.json` → `activeMilestone`.
 
 ## Capability map
 
-| Capability ID | PRD ref             | Feature              | Shippable outcome      | Status      | Witness          |
-| ------------- | ------------------- | -------------------- | ---------------------- | ----------- | ---------------- |
-| CAP-001       | prd-product-charter | Core product surface | Demoable operator path | in-progress | `pnpm ops:check` |
+| Capability ID | PRD ref             | Feature              | Shippable outcome      | Status      | Witness                 |
+| ------------- | ------------------- | -------------------- | ---------------------- | ----------- | ----------------------- |
+| CAP-001       | prd-product-charter | Core product surface | Demoable operator path | in-progress | `pnpm operations:check` |
 
 ## Rules
 

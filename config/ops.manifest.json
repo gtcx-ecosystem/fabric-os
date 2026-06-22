@@ -8,25 +8,25 @@
   "hubs": {
     "archive": "archive",
     "docs": "docs",
-    "ops": "ops",
+    "operations": "operations",
     "platform": "platform",
     "audit": "audit",
     "deploy": "deploy",
     "workstream": "workstream",
     "agentic": "agentic",
-    "pm": "pm"
+    "machine": "machine"
   },
   "domains": {
-    "pm": "ops/pm",
-    "gtm": "ops/gtm",
-    "operations": "ops",
-    "coordination": "ops/coordination",
-    "compliance": "ops/compliance",
-    "attestation": "ops/attestation",
-    "security": "ops/security",
-    "assurance": "ops/assurance",
-    "witness": "ops/attestation/witness",
-    "audit": "ops/attestation/witness"
+    "machine": "operations/machine",
+    "gtm": "operations/gtm",
+    "operations": "operations",
+    "coordination": "operations/coordination",
+    "compliance": "operations/compliance",
+    "attestation": "operations/attestation",
+    "security": "operations/security",
+    "assurance": "operations/assurance",
+    "witness": "operations/attestation/witness",
+    "audit": "operations/attestation/witness"
   },
   "code": {
     "archive": "archive",
@@ -43,9 +43,9 @@
     "workstream": "workstream"
   },
   "commands": {
-    "check": "pnpm ops:check",
-    "pmSync": "pnpm pm:sync",
-    "pmStatus": "pnpm pm:status"
+    "check": "pnpm operations:check",
+    "pmSync": "pnpm machine:sync",
+    "pmStatus": "pnpm machine:status"
   },
   "docs": {
     "map": "01-docs/README.md",
@@ -55,7 +55,7 @@
   },
   "aliases": {
     "01-docs/": "01-docs/",
-    "ops/": "02-ops/",
+    "operations/": "02-ops/",
     "03-docs/": "01-docs/",
     "05-ops/": "02-ops/",
     "01-agents/": "03-platform/agents/",
@@ -90,7 +90,7 @@
   "legacyHubAliases": {
     "00-archive": "archive",
     "01-docs": "docs",
-    "02-ops": "ops",
+    "02-ops": "operations",
     "03-platform": "platform",
     "04-deploy": "deploy",
     "05-audit": "audit",

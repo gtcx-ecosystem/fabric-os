@@ -11,4 +11,4 @@ review_cycle: on-change
 
 # Security architecture
 
-Threat models and security narrative — link `ops/security/` for machine evidence.
+Threat models and security narrative — link `operations/security/` for machine evidence.

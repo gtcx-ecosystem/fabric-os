@@ -31,4 +31,4 @@ review_cycle: on-change
 | `decisions/`   | ADR-\* architecture decision records           |
 | `integration/` | Cross-service and fleet integration            |
 | `pillars/`     | 11-pillar audit narrative                      |
-| `security/`    | Threat models (link `ops/security/`)           |
+| `security/`    | Threat models (link `operations/security/`)    |

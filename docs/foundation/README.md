@@ -13,7 +13,7 @@ goals: 'Mandatory agent narrative before P22'
 # `docs/foundation/` — fabric-os
 
 > **Initiative:** `INIT-DOCS-FOUNDATION-IA-V1` · **Fleet spec:** [`../../canon-os/pm/spec/docs-foundation-pack.json`](../../canon-os/pm/spec/docs-foundation-pack.json)  
-> **Machine mirror (generated):** [`pm/canon/strategy.json`](../../pm/canon/strategy.json) — run `pnpm canon:synthesize`
+> **Machine mirror (generated):** [`machine/canon/strategy.json`](../../pm/canon/strategy.json) — run `pnpm canon:synthesize`
 
 ## Purpose
 

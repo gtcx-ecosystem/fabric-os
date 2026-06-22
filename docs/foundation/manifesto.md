@@ -18,7 +18,7 @@ Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability
 ## Principles
 
 1. **Proof over permission** — witnesses and gates, not narrative consensus.
-2. **PRD traceability** — stories link to pm/canon bundles and active milestone.
+2. **PRD traceability** — stories link to machine/canon bundles and active milestone.
 3. **Fleet integration** — protocol clients and harness, not standalone silos.
 
 ## Related

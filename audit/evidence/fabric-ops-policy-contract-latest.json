@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/fabric-ops-policy-contract-check/v1",
-  "at": "2026-06-22T18:07:05.574Z",
+  "at": "2026-06-22T18:13:17.769Z",
   "repo": "fabric-os",
   "contract": "fabric-os/pm/spec/fabric-ops-policy-contract.json",
   "localContractPath": "ops/fabric-contract.json",
@@ -492,7 +492,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, docs/operations/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -522,7 +522,7 @@
         {
           "id": "domain:observability:local-ref",
           "ok": true,
-          "detail": "operations/attestation/manifest.json"
+          "detail": "operations/attestation/manifest.json, docs/operations/observability.md"
         },
         {
           "id": "domain:evidence:present",
@@ -552,7 +552,7 @@
         {
           "id": "domain:opsConsumption:local-ref",
           "ok": true,
-          "detail": "operations/manifest.json"
+          "detail": "operations/coo.md, machine/spec/ops-pack.json, operations/manifest.json"
         }
       ],
       "localContractRel": "ops/fabric-contract.json"
@@ -1040,7 +1040,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -1177,7 +1177,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -1618,7 +1618,7 @@
         {
           "id": "domain:observability:local-ref",
           "ok": true,
-          "detail": "operations/attestation/manifest.json, docs/operations/observability.md"
+          "detail": "operations/attestation/manifest.json"
         },
         {
           "id": "domain:evidence:present",
@@ -2208,12 +2208,12 @@
         {
           "id": "local-contract-present",
           "ok": true,
-          "detail": "operations/fabric-contract.json"
+          "detail": "ops/fabric-contract.json"
         },
         {
           "id": "local-contract-json",
           "ok": true,
-          "detail": "operations/fabric-contract.json"
+          "detail": "ops/fabric-contract.json"
         },
         {
           "id": "schema",
@@ -2336,7 +2336,7 @@
           "detail": "operations/coo.md, machine/spec/ops-pack.json, operations/manifest.json"
         }
       ],
-      "localContractRel": "operations/fabric-contract.json"
+      "localContractRel": "ops/fabric-contract.json"
     },
     {
       "repo": "venture-os",

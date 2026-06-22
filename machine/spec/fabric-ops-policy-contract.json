@@ -34,7 +34,11 @@
       "id": "deployment",
       "label": "Deployment and environment profile",
       "centralRef": "fabric-os/docs/operations/deployment/README.md",
-      "requiredLocalRefs": ["docs/operations/deployment-profile.json", "config/ops.manifest.json"]
+      "requiredLocalRefs": [
+        "docs/operations/deployment/deployment-profile.json",
+        "docs/operations/deployment-profile.json",
+        "config/ops.manifest.json"
+      ]
     },
     {
       "id": "security",

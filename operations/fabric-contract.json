@@ -21,7 +21,10 @@
     {
       "id": "deployment",
       "centralRef": "fabric-os/docs/operations/deployment/README.md",
-      "localRefs": ["config/ops.manifest.json"]
+      "localRefs": [
+        "docs/operations/deployment/deployment-profile.json",
+        "config/ops.manifest.json"
+      ]
     },
     {
       "id": "security",

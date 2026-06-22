@@ -1,0 +1,98 @@
+{
+  "$schema": "gtcx://canon-os/agent-consumption-contract/v1",
+  "layoutVersion": "v3",
+  "repo": "fabric-os",
+  "updated": "2026-06-23",
+  "runtimeProvider": {
+    "repo": "baseline-os",
+    "role": "AI runtime + reference fixture",
+    "specAuthority": "canon-os",
+    "methodologyOwners": {
+      "folderAuditDocs": "canon-os",
+      "fiveCoreAudit": "bridge-os",
+      "opsPolicy": "fabric-os"
+    },
+    "note": "Run baseline-os CLI for session spine. Copy baseline fixture shapes for PHASE-*; L1 specs and standards live in canon-os only. fabric-os owns ops policy verification — baseline is fixture, not spec authority."
+  },
+  "baselineOsRootRel": "../baseline-os",
+  "baselineosBinRel": "platform/packages/baselineos/dist/cli/bin.js",
+  "ecosystemScriptsRel": "platform/scripts/ecosystem",
+  "satelliteAgentStartRel": "platform/scripts/agent-start.mjs",
+  "legacyPathFragments": [
+    "baseline-os/packages/baselineos",
+    "../baseline-os/packages/baselineos",
+    "packages/baselineos/dist/cli.js",
+    "03-platform/packages/baselineos"
+  ],
+  "legacyPathPatterns": ["(?<![/-])packages/baselineos/dist/cli\\.js"],
+  "shims": {
+    "ecosystemScripts": {
+      "next": "work-next.mjs",
+      "gates": "human-gates-check.mjs",
+      "hub": "hub-sync.mjs"
+    },
+    "packageJson": {
+      "session": "node ../baseline-os/platform/packages/baselineos/dist/cli/bin.js session",
+      "next": "node ../baseline-os/platform/scripts/ecosystem/work-next.mjs",
+      "gates": "node ../baseline-os/platform/scripts/ecosystem/human-gates-check.mjs",
+      "hub": "node ../baseline-os/platform/scripts/ecosystem/hub-sync.mjs",
+      "mcp": "node ../baseline-os/platform/packages/baselineos/dist/cli/bin.js serve --mcp-only",
+      "serve": "node ../baseline-os/platform/packages/baselineos/dist/cli/bin.js serve --port 3141"
+    }
+  },
+  "commands": {
+    "session": "pnpm session",
+    "next": "pnpm next",
+    "gates": "pnpm gates",
+    "hub": "pnpm hub",
+    "p22Local": "pnpm agent:next-work",
+    "mcp": "pnpm mcp",
+    "serve": "pnpm serve"
+  },
+  "fixtureCopyTargets": {
+    "PHASE_TAXONOMY": [
+      "config/folders.json",
+      "platform/scripts/lib/folder-registry.mjs",
+      "operations/",
+      "operations/fabric-contract.json"
+    ],
+    "PHASE_DOCS": ["docs/ layer tree per machine/spec/docs-folders/"],
+    "PHASE_CANON": ["config/product-canon-contract.json", "docs/canon/"],
+    "referenceRepo": "baseline-os",
+    "standardSoR": "../canon-os/config/ecosystem-central-sor.json",
+    "canonConsumptionPin": "config/canon-os-consumption.json"
+  },
+  "distStaleCheck": {
+    "bin": "../baseline-os/platform/packages/baselineos/dist/cli/bin.js",
+    "src": "../baseline-os/platform/packages/baselineos/src/cli/bin.ts",
+    "rebuild": "cd ../baseline-os && pnpm --filter baselineos build"
+  },
+  "pmEngine": {
+    "ownerRepo": "bridge-os",
+    "bridgeHub": "bridge-os",
+    "pmHub": "machine",
+    "satelliteManifest": {
+      "standaloneProductEcosystem": true,
+      "directiveSource": "bridge-os-p22",
+      "nextWorkScript": "agent:next-work",
+      "integrations": {
+        "agentRuntime": "baseline-os",
+        "sharedCatalogs": "read-only"
+      }
+    }
+  },
+  "completionLoop": {
+    "owner": "per-repo",
+    "configPath": "machine/completion-model.json",
+    "commands": {
+      "next": "pnpm next",
+      "select": "pnpm agent:next-work",
+      "sync": "pnpm machine:sync"
+    }
+  },
+  "hubRole": {
+    "tier": "platform",
+    "execution": "ops-policy-verifier-of-record",
+    "note": "fabric-os publishes central ops contract; consumes baseline runtime + canon standards only"
+  }
+}

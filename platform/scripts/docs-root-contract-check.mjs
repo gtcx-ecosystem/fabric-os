@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * P48 — docs root contract gate (thin instances)
- * Spec: pm/spec/docs-root-contract.json
+ * Spec: machine/spec/docs-root-contract.json
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -31,7 +31,7 @@ function gate(id, ok, detail = null) {
 
 function loadRootContract() {
   for (const path of [
-    join(REPO, 'pm/spec/docs-root-contract.json'),
+    join(REPO, 'machine/spec/docs-root-contract.json'),
     join(REPO, '../canon-os/pm/spec/docs-root-contract.json'),
   ]) {
     if (existsSync(path)) return JSON.parse(readFileSync(path, 'utf8'));

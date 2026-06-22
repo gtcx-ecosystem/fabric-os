@@ -54,7 +54,7 @@ function main() {
     gate(
       'spec:local-present',
       !!resolution.localPath || existsSync(join(REPO, '../canon-os/pm/spec', PACK)),
-      resolution.localPath ?? 'missing pm/spec/docs-roadmap-pack.json',
+      resolution.localPath ?? 'missing machine/spec/docs-roadmap-pack.json',
     ),
   );
   gates.push(

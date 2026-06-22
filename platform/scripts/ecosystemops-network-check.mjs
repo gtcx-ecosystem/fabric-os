@@ -15,11 +15,11 @@ const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
 
 const PATHS = {
-  networkRegistry: join(BRIDGE, 'pm/spec/ecosystemops-network-registry.json'),
-  frictionRegister: join(BRIDGE, 'pm/spec/ecosystemops-friction-register.json'),
-  tradeLanes: join(BRIDGE, 'pm/spec/trade-ecosystem-lanes.json'),
-  stratopsRegistry: join(BRIDGE, 'pm/spec/stratops-strategy-registry.json'),
-  docServices: join(BRIDGE, 'pm/spec/documentation-services.json'),
+  networkRegistry: join(BRIDGE, 'machine/spec/ecosystemops-network-registry.json'),
+  frictionRegister: join(BRIDGE, 'machine/spec/ecosystemops-friction-register.json'),
+  tradeLanes: join(BRIDGE, 'machine/spec/trade-ecosystem-lanes.json'),
+  stratopsRegistry: join(BRIDGE, 'machine/spec/stratops-strategy-registry.json'),
+  docServices: join(BRIDGE, 'machine/spec/documentation-services.json'),
   opsDoc: join(ROOT, 'docs/operations/ecosystemops-as-a-service.md'),
   ecosystemOsPresent: ECOSYSTEM_OS,
 };

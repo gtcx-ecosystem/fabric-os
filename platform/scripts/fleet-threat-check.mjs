@@ -9,8 +9,8 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
-const REGISTER = join(BRIDGE, 'pm/spec/fleet-threat-register.json');
-const RISK_REGISTER = join(BRIDGE, 'pm/spec/fleet-risk-register.json');
+const REGISTER = join(BRIDGE, 'machine/spec/fleet-threat-register.json');
+const RISK_REGISTER = join(BRIDGE, 'machine/spec/fleet-risk-register.json');
 const SOC = join(ROOT, 'docs/operations/soc-operations.md');
 const ANOMALY = join(ROOT, 'platform/tools/anomaly-detector');
 const OUT = join(ROOT, 'audit/evidence/fleet-threat-check-latest.json');

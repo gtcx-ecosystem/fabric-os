@@ -20,13 +20,13 @@ function main() {
   gates.push(
     gate(
       'policy:docs-fractal-mpr',
-      existsSync(join(REPO, 'pm/spec/docs-fractal-mpr-policy.json')),
-      'pm/spec/docs-fractal-mpr-policy.json',
+      existsSync(join(REPO, 'machine/spec/docs-fractal-mpr-policy.json')),
+      'machine/spec/docs-fractal-mpr-policy.json',
     ),
   );
 
   for (const packFile of PACKS_WITH_CONTRACT) {
-    const spec = loadPack(REPO, `pm/spec/${packFile}`);
+    const spec = loadPack(REPO, `machine/spec/${packFile}`);
     const prefix = `pack:${packFile.replace('.json', '')}`;
     if (!spec) {
       gates.push(gate(`${prefix}:present`, false, 'pack missing'));

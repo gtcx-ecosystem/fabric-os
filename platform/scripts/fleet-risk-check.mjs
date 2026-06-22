@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
 const ECOSYSTEM = join(ROOT, '..');
-const REGISTER = join(BRIDGE, 'pm/spec/fleet-risk-register.json');
+const REGISTER = join(BRIDGE, 'machine/spec/fleet-risk-register.json');
 const OUT = join(ROOT, 'audit/evidence/fleet-risk-check-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');

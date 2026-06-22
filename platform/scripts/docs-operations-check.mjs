@@ -26,7 +26,7 @@ function main() {
     gate(
       'spec:local-present',
       !!resolution.localPath || existsSync(join(REPO, '../canon-os/pm/spec', PACK)),
-      resolution.localPath ?? 'missing pm/spec/docs-operations-pack.json',
+      resolution.localPath ?? 'missing machine/spec/docs-operations-pack.json',
     ),
   );
   gates.push(gate('spec:not-stub', !resolution.localIsStub, resolution.localIsStub ? 'upgrade pack' : 'full local pack'));
@@ -85,7 +85,7 @@ function main() {
   if (existsSync(rootReadme)) {
     const text = readFileSync(rootReadme, 'utf8');
     gates.push(gate('root-readme:cross-ref', /cross-ref/i.test(text) && /foundation/i.test(text), 'README cross-ref'));
-    gates.push(gate('root-readme:ops-link', /\bops\//i.test(text), 'README must link ops/ machine SoR'));
+    gates.push(gate('root-readme:ops-link', /\bops\//i.test(text), 'README must link operations/ machine SoR'));
   }
 
   const folderSpec = join(opsDir, 'FOLDER-SPEC.md');

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Generate audit/product-management/secas-execution-roadmap.md from SECaaS SoR JSON.
- * Sources: pm/secas-roadmap.json, pm/security-friction-register.json, pm/secas-stories.json
+ * Sources: machine/secas-roadmap.json, machine/security-friction-register.json, machine/secas-stories.json
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -9,10 +9,10 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const OUT = join(ROOT, 'audit/product-management/secas-execution-roadmap.md');
-const ROADMAP_JSON = join(ROOT, 'pm/secas-roadmap.json');
-const FRICTION_JSON = join(ROOT, 'pm/security-friction-register.json');
-const STORIES_JSON = join(ROOT, 'pm/secas-stories.json');
-const SOVEREIGN_JSON = join(ROOT, 'pm/sovereign-approval-register.json');
+const ROADMAP_JSON = join(ROOT, 'machine/secas-roadmap.json');
+const FRICTION_JSON = join(ROOT, 'machine/security-friction-register.json');
+const STORIES_JSON = join(ROOT, 'machine/secas-stories.json');
+const SOVEREIGN_JSON = join(ROOT, 'machine/sovereign-approval-register.json');
 const FRICTION_EVIDENCE = join(ROOT, 'audit/evidence/secas-friction-check-latest.json');
 const APPROVAL_EVIDENCE = join(ROOT, 'audit/evidence/secas-approval-check-latest.json');
 
@@ -93,18 +93,18 @@ function main() {
   lines.push('generated: true');
   lines.push('generated_by: platform/scripts/generate-secas-execution-roadmap.mjs');
   lines.push('sources:');
-  lines.push('  - pm/secas-roadmap.json');
-  lines.push('  - pm/security-friction-register.json');
-  lines.push('  - pm/secas-stories.json');
-  lines.push('  - pm/sovereign-approval-register.json');
+  lines.push('  - machine/secas-roadmap.json');
+  lines.push('  - machine/security-friction-register.json');
+  lines.push('  - machine/secas-stories.json');
+  lines.push('  - machine/sovereign-approval-register.json');
   if (existsSync(FRICTION_EVIDENCE)) lines.push('  - audit/evidence/secas-friction-check-latest.json');
   if (existsSync(APPROVAL_EVIDENCE)) lines.push('  - audit/evidence/secas-approval-check-latest.json');
   lines.push('---');
   lines.push('');
   lines.push('# fabric-os SecOps execution roadmap');
   lines.push('');
-  lines.push('> **Generated file.** Edit `pm/secas-stories.json`, `pm/security-friction-register.json`, or');
-  lines.push('> `pm/secas-roadmap.json`, then run `pnpm generate:secas-roadmap`.');
+  lines.push('> **Generated file.** Edit `machine/secas-stories.json`, `machine/security-friction-register.json`, or');
+  lines.push('> `machine/secas-roadmap.json`, then run `pnpm generate:secas-roadmap`.');
   lines.push('');
   lines.push('**Ops lane:** SecOps · **Functional product:** SECaaS — parallel to DevOps/InfraOps (DaaS), not product PM.');
   lines.push('');
@@ -130,7 +130,7 @@ function main() {
   lines.push('## Post-launch external (NOT internal roadmap)');
   lines.push('');
   lines.push('> Vendor/auditor calendar artifacts — **excluded from P22 and agent work.**');
-  lines.push('> SoR: [`ops/coordination/post-launch-external-gates.json`](../../ops/coordination/post-launch-external-gates.json)');
+  lines.push('> SoR: [`operations/coordination/post-launch-external-gates.json`](../../ops/coordination/post-launch-external-gates.json)');
   lines.push('');
   lines.push('| ID | Actor | Window / earliest | blocksIR |');
   lines.push('| --- | --- | --- | --- |');
@@ -140,7 +140,7 @@ function main() {
   lines.push('');
   lines.push('## Internal human (GTCX — NOT agent P22)');
   lines.push('');
-  lines.push('> SoR: [`ops/coordination/internal-human-gates.json`](../../ops/coordination/internal-human-gates.json)');
+  lines.push('> SoR: [`operations/coordination/internal-human-gates.json`](../../ops/coordination/internal-human-gates.json)');
   lines.push('');
   lines.push('_Open: EXT-INF-014, EXT-INF-015, H-03 · Closed: EXT-INF-002, EXT-INF-013, BL-SOC2-01 engagement_');
   lines.push('');
@@ -165,10 +165,10 @@ function main() {
       roadmap.sprints.find((s) => s.items?.includes(item.id))?.id ??
       '—';
     lines.push(
-      `| \`${item.id}\` | \`pm/security-friction-register.json\` | ${mapping} | ${frictionRoadmapStatus(item, stories)} |`,
+      `| \`${item.id}\` | \`machine/security-friction-register.json\` | ${mapping} | ${frictionRoadmapStatus(item, stories)} |`,
     );
   }
-  lines.push('| P42 hub protocol publication | `pm/_tasks` | gtcx-docs | done |');
+  lines.push('| P42 hub protocol publication | `machine/_tasks` | gtcx-docs | done |');
   lines.push('');
   lines.push('## Unblock Order');
   lines.push('');

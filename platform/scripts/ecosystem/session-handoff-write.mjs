@@ -112,7 +112,7 @@ function renderHandoff({ bind, openItems, closureBar, nextWork, git }) {
 
   const evidence = [
     '- `workstream/sessions/ci/session-closure-bar-latest.json`',
-    '- `pm/ci/session-open-items-latest.json`',
+    '- `machine/ci/session-open-items-latest.json`',
     '- `workstream/sessions/ci/session-handoff-latest.json`',
     '- `.baseline/session/story-persona-bind-latest.json`',
   ].join('\n');
@@ -188,9 +188,9 @@ ${evidence}
 
 function main() {
   const bind = readJson(join(ROOT, '.baseline/session/story-persona-bind-latest.json'));
-  const openItems = readJson(join(ROOT, 'pm/ci/session-open-items-latest.json'));
+  const openItems = readJson(join(ROOT, 'machine/ci/session-open-items-latest.json'));
   const closureBar =
-    openItems?.closureBar ?? readJson(join(ROOT, 'pm/ci/session-closure-bar-latest.json'));
+    openItems?.closureBar ?? readJson(join(ROOT, 'machine/ci/session-closure-bar-latest.json'));
   const nextWork = runNextWork();
   const git = gitSummary();
 

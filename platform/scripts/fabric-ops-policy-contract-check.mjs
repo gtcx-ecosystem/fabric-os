@@ -2,7 +2,7 @@
 /**
  * Fabric Ops policy contract checker.
  *
- * Enforces that local repos carry an ops/fabric-contract.json manifest pointing
+ * Enforces that local repos carry an operations/fabric-contract.json manifest pointing
  * at the centralized Fabric OS operational policy contract.
  *
  * Usage:
@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const ECOSYSTEM = join(ROOT, '..');
-const SPEC_PATH = join(ROOT, 'pm/spec/fabric-ops-policy-contract.json');
+const SPEC_PATH = join(ROOT, 'machine/spec/fabric-ops-policy-contract.json');
 const OUT = join(ROOT, 'audit/evidence/fabric-ops-policy-contract-latest.json');
 const WRITE = process.argv.includes('--write');
 const ADOPT = process.argv.includes('--adopt');

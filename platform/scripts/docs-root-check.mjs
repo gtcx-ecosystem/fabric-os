@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * docs:root:check — enforce pm/spec/docs-folders/00-docs-root.json
+ * docs:root:check — enforce machine/spec/docs-folders/00-docs-root.json
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -17,7 +17,7 @@ function gate(id, ok, detail = null) {
 }
 
 function loadSpec() {
-  const local = join(REPO, 'pm/spec/docs-folders/00-docs-root.json');
+  const local = join(REPO, 'machine/spec/docs-folders/00-docs-root.json');
   const canon = join(REPO, '../canon-os/pm/spec/docs-folders/00-docs-root.json');
   const path = existsSync(local) ? local : canon;
   return JSON.parse(readFileSync(path, 'utf8'));

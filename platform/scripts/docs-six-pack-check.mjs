@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * P48 v1.2 — docs six-pack thin-instance gate
- * Spec: pm/spec/docs-six-pack.json
+ * Spec: machine/spec/docs-six-pack.json
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -30,7 +30,7 @@ function gate(id, ok, detail = null) {
 }
 
 function loadSixPackSpec() {
-  const local = join(REPO, 'pm/spec/docs-six-pack.json');
+  const local = join(REPO, 'machine/spec/docs-six-pack.json');
   const canon = join(REPO, '../canon-os/pm/spec/docs-six-pack.json');
   const path = existsSync(local) ? local : canon;
   if (!existsSync(path)) return null;

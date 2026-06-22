@@ -14,8 +14,8 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const OUT = join(ROOT, 'audit/evidence/fabric-cutover-check-latest.json');
 const BRIDGE_REG = join(ROOT, '../bridge-os/config/zenhub-ecosystem-registry.json');
 const DEPLOY_REG = join(ROOT, '../bridge-os/config/fleet-deploy-readiness-registry.json');
-const LANES = join(ROOT, 'pm/spec/trade-ecosystem-lanes.json');
-const TASKS = join(ROOT, 'pm/_tasks');
+const LANES = join(ROOT, 'machine/spec/trade-ecosystem-lanes.json');
+const TASKS = join(ROOT, 'machine/_tasks');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
 
@@ -70,10 +70,10 @@ if (existsSync(DEPLOY_REG)) {
 const tasksText = existsSync(TASKS) ? readFileSync(TASKS, 'utf8') : '';
 gates.tasksOwner = {
   ok: !tasksText.includes('Owner: gtcx-infrastructure') && !tasksText.startsWith('# gtcx-infrastructure task inbox'),
-  detail: 'pm/_tasks header uses fabric-os',
+  detail: 'machine/_tasks header uses fabric-os',
 };
 
-gates.opsCheck = runPnpm('ops:check');
+gates.opsCheck = runPnpm('operations:check');
 gates.lanesCheck = runPnpm('fabric:lanes:check');
 
 const ok = Object.values(gates).every((g) => g.ok);

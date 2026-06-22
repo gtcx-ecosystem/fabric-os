@@ -10,7 +10,7 @@ import { evaluateOpsLane } from '../../../bridge-os/platform/scripts/lib/ops-lan
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
-const PROBES = join(BRIDGE, 'pm/spec/ops-lane-11pr-probes.json');
+const PROBES = join(BRIDGE, 'machine/spec/ops-lane-11pr-probes.json');
 const OUT = join(ROOT, 'audit/evidence/fabric-ops-lanes-11pr-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');

@@ -15,8 +15,8 @@ const BRIDGE = join(ECO, 'bridge-os');
 const WRITE = process.argv.includes('--write') || (!process.argv.includes('--check') && !process.argv.includes('--dry-run'));
 const CHECK = process.argv.includes('--check');
 const WITNESS = join(FABRIC, 'audit/evidence/fabric-assurance-latest.json');
-const EVALUATE = join(BRIDGE, 'pm/ci/assurance-evaluate-latest.json');
-const CATALOG = join(BRIDGE, 'pm/spec/assurance-run-catalog.json');
+const EVALUATE = join(BRIDGE, 'machine/ci/assurance-evaluate-latest.json');
+const CATALOG = join(BRIDGE, 'machine/spec/assurance-run-catalog.json');
 
 const COMMAND_ALIASES = {
   'pnpm ecosystem:fleet:uat:run': 'pnpm ecosystem:fleet:uat:run',
@@ -37,7 +37,7 @@ function buildContextBundle() {
     : null;
   return {
     baselineConfig,
-    persona: 'pm/spec/repo-persona-profiles.json',
+    persona: 'machine/spec/repo-persona-profiles.json',
     skills: 'bridge-os/pm/spec/skills-ecosystem-map.json',
     ragWitness: 'audit/evidence/rag-model-b-fabric-os-latest.json',
     triggers: 'bridge-os/pm/spec/assurance-triggers.json',

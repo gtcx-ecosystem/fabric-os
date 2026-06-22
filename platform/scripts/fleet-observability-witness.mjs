@@ -200,7 +200,7 @@ function main() {
     acceptance: {
       marketsOsNamespace: cluster.marketsOk,
       gtcxOsNamespace: cluster.gtcxOk,
-      witnessPath: 'pm/ci/fleet-observability-latest.json',
+      witnessPath: 'machine/ci/fleet-observability-latest.json',
       alertRoutesDocumented: true,
     },
   };
@@ -224,7 +224,7 @@ function main() {
   console.log(`Overall:           ${witness.ok ? 'PASS' : 'FAIL'}\n`);
 
   if (WRITE) {
-    const ciOut = join(REPO_ROOT, 'pm/ci/fleet-observability-latest.json');
+    const ciOut = join(REPO_ROOT, 'machine/ci/fleet-observability-latest.json');
     const auditOut = join(REPO_ROOT, 'audit/evidence/fleet-observability-latest.json');
     mkdirSync(dirname(ciOut), { recursive: true });
     mkdirSync(dirname(auditOut), { recursive: true });

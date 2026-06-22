@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Generate audit/product-management/execution-roadmap.md from DaaS SoR JSON.
- * Sources: pm/daas-roadmap.json, pm/friction-register.json, pm/daas-stories.json
+ * Sources: machine/daas-roadmap.json, machine/friction-register.json, machine/daas-stories.json
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -9,9 +9,9 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const OUT = join(ROOT, 'audit/product-management/execution-roadmap.md');
-const ROADMAP_JSON = join(ROOT, 'pm/daas-roadmap.json');
-const FRICTION_JSON = join(ROOT, 'pm/friction-register.json');
-const STORIES_JSON = join(ROOT, 'pm/daas-stories.json');
+const ROADMAP_JSON = join(ROOT, 'machine/daas-roadmap.json');
+const FRICTION_JSON = join(ROOT, 'machine/friction-register.json');
+const STORIES_JSON = join(ROOT, 'machine/daas-stories.json');
 const FLEET_EVIDENCE = join(
   ROOT,
   'audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json',
@@ -95,9 +95,9 @@ function main() {
   lines.push('generated: true');
   lines.push('generated_by: platform/scripts/generate-execution-roadmap.mjs');
   lines.push('sources:');
-  lines.push('  - pm/daas-roadmap.json');
-  lines.push('  - pm/friction-register.json');
-  lines.push('  - pm/daas-stories.json');
+  lines.push('  - machine/daas-roadmap.json');
+  lines.push('  - machine/friction-register.json');
+  lines.push('  - machine/daas-stories.json');
   if (existsSync(FRICTION_EVIDENCE)) lines.push('  - audit/evidence/daas-friction-check-latest.json');
   if (existsSync(FLEET_EVIDENCE)) {
     lines.push('  - audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json');
@@ -106,8 +106,8 @@ function main() {
   lines.push('');
   lines.push('# fabric-os execution roadmap');
   lines.push('');
-  lines.push('> **Generated file.** Edit `pm/daas-stories.json`, `pm/friction-register.json`, or');
-  lines.push('> `pm/daas-roadmap.json`, then run `pnpm generate:roadmap`.');
+  lines.push('> **Generated file.** Edit `machine/daas-stories.json`, `machine/friction-register.json`, or');
+  lines.push('> `machine/daas-roadmap.json`, then run `pnpm generate:roadmap`.');
   lines.push('');
   lines.push('**Ops lanes:** DevOps & InfraOps · **Functional product:** DaaS — not product ECO sprints.');
   lines.push('');
@@ -159,10 +159,10 @@ function main() {
       roadmap.sprints.find((s) => s.items?.includes(item.id))?.id ??
       '—';
     lines.push(
-      `| \`${item.id}\` | \`pm/friction-register.json\` | ${mapping} | ${frictionRoadmapStatus(item, stories)} |`,
+      `| \`${item.id}\` | \`machine/friction-register.json\` | ${mapping} | ${frictionRoadmapStatus(item, stories)} |`,
     );
   }
-  lines.push('| P41 hub protocol publication | `pm/_tasks` | gtcx-docs | done (`a34baa8a`) |');
+  lines.push('| P41 hub protocol publication | `machine/_tasks` | gtcx-docs | done (`a34baa8a`) |');
   lines.push('');
   lines.push('## Unblock Order');
   lines.push('');

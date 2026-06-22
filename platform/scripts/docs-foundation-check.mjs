@@ -94,15 +94,15 @@ function main() {
         gate(
           'canon:synthesize:check',
           result.status === 0,
-          result.status === 0 ? 'docs → pm/canon fresh' : 'run pnpm canon:synthesize',
+          result.status === 0 ? 'docs → machine/canon fresh' : 'run pnpm canon:synthesize',
         ),
       );
     } else {
       gates.push(
         gate(
           'canon:strategy-present',
-          existsSync(join(REPO, 'pm/canon/strategy.json')),
-          'pm/canon/strategy.json from canon:synthesize',
+          existsSync(join(REPO, 'machine/canon/strategy.json')),
+          'machine/canon/strategy.json from canon:synthesize',
         ),
       );
     }

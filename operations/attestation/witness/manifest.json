@@ -3,7 +3,7 @@
   "repo": "fabric-os",
   "updated": "2026-06-08",
   "paths": {
-    "evidence": "ops/attestation/witness/evidence-index.json",
+    "evidence": "operations/attestation/witness/evidence-index.json",
     "docsIndex": "audit/README.md",
     "latest": "audit/latest.json"
   },

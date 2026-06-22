@@ -6,7 +6,7 @@
     "standards": "https://github.com/gtcx-ecosystem/canon-os/tree/main/docs/governance/compliance/",
     "soc2TypeII": "https://github.com/gtcx-ecosystem/canon-os/blob/main/docs/roadmap/compliance/soc2-evidence-pipeline.md"
   },
-  "evidenceIndex": "ops/compliance/evidence-index.json",
+  "evidenceIndex": "operations/compliance/evidence-index.json",
   "docsIndex": "docs/roadmap/compliance/README.md",
   "assuranceProcedure": "workspace/assurance"
 }

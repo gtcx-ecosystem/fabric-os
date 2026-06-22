@@ -3,7 +3,7 @@
   "repo": "fabric-os",
   "updated": "2026-06-16",
   "paths": {
-    "programs": "ops/assurance/programs.json",
+    "programs": "operations/assurance/programs.json",
     "docsDir": "docs/operations/runbooks/assurance"
   },
   "sor": {

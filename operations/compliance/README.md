@@ -1,4 +1,4 @@
-# ops/compliance — fabric-os
+# operations/compliance — fabric-os
 
 Standards gaps and compliance evidence index (machine layer).
 

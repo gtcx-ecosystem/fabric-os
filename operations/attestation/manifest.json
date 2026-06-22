@@ -5,9 +5,9 @@
   "framework": "https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/assurance-agent-framework.md",
   "hubRegister": "https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/coordination/human-external-blocker-register-2026-06.md",
   "paths": {
-    "gates": "ops/attestation/gates.local.json",
-    "evidence": "ops/attestation/evidence-index.json",
-    "runners": "ops/attestation/runners.json",
+    "gates": "operations/attestation/gates.local.json",
+    "evidence": "operations/attestation/evidence-index.json",
+    "runners": "operations/attestation/runners.json",
     "docsIndex": "docs/operations/runbooks/assurance/README.md"
   }
 }

@@ -19,7 +19,7 @@
 | `Q3-FABRIC-01` | **done** | `pnpm pilot:staging-smoke:write` → `audit/evidence/pilot-staging-smoke-latest.json`                               |
 | `Q3-FABRIC-02` | **done** | `pnpm pilot:golden-transaction-substrate:write` → `audit/evidence/pilot-golden-transaction-substrate-latest.json` |
 | `Q3-FABRIC-03` | pending  | SECAS supply-chain                                                                                                |
-| `Q3-FABRIC-04` | **done** | `pnpm pilot:fleet-observability:write` → `pm/ci/fleet-observability-latest.json`                                  |
+| `Q3-FABRIC-04` | **done** | `pnpm pilot:fleet-observability:write` → `machine/ci/fleet-observability-latest.json`                             |
 
 ## Blockers
 

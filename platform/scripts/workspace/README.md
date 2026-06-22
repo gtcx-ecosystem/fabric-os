@@ -1,6 +1,6 @@
 # Workspace PM scripts
 
-BaselineOS PM v3 sync helpers wired from root `package.json` (`workspace:check`, `pm:sync`, `pm:status`).
+BaselineOS PM v3 sync helpers wired from root `package.json` (`workspace:check`, `machine:sync`, `machine:status`).
 
 | Script          | Purpose                             |
 | --------------- | ----------------------------------- |

@@ -5,7 +5,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const POLICY = join(ROOT, 'pm/spec/purple-team-cadence.json');
+const POLICY = join(ROOT, 'machine/spec/purple-team-cadence.json');
 const RUNBOOK = join(ROOT, 'docs/operations/secas/runbooks/purple-team-cadence.md');
 const OUT = join(ROOT, 'audit/evidence/secas-purple-team-latest.json');
 const WRITE = process.argv.includes('--write');

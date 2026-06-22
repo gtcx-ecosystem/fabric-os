@@ -2,9 +2,9 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const path = 'ops/pm/backlog.json';
+const path = 'operations/machine/backlog.json';
 if (!existsSync(join(process.cwd(), path))) {
-  console.error('pm:status — run pnpm pm:sync first');
+  console.error('machine:status — run pnpm machine:sync first');
   process.exit(1);
 }
 const b = JSON.parse(readFileSync(join(process.cwd(), path), 'utf8'));

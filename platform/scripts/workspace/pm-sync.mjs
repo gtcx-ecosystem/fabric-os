@@ -10,7 +10,7 @@ console.log(
       active: backlog.active?.storyId ?? null,
       storyCount: backlog.stories.length,
       crossRepoCount: backlog.crossRepoRefs.length,
-      output: 'ops/pm/backlog.json',
+      output: 'operations/machine/backlog.json',
     },
     null,
     2,

@@ -10,8 +10,8 @@ import { spawnSync } from 'node:child_process';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const ECOSYSTEM = join(ROOT, '..');
-const REGISTER = join(ROOT, 'pm/security-friction-register.json');
-const POLICY_JSON = join(ROOT, 'pm/spec/supply-chain-cve-policy.json');
+const REGISTER = join(ROOT, 'machine/security-friction-register.json');
+const POLICY_JSON = join(ROOT, 'machine/spec/supply-chain-cve-policy.json');
 const POLICY_DOC = join(ROOT, 'docs/operations/secas/supply-chain-policy.md');
 const FRICTION_ID = 'SEC-SUPPLY-01';
 const OUT = join(ROOT, 'audit/evidence/secas-supply-chain-check-latest.json');
@@ -180,7 +180,7 @@ const witness = {
   checkedAt: new Date().toISOString(),
   owner: 'fabric-os',
   policy: {
-    json: 'pm/spec/supply-chain-cve-policy.json',
+    json: 'machine/spec/supply-chain-cve-policy.json',
     doc: 'docs/operations/secas/supply-chain-policy.md',
   },
   gates,

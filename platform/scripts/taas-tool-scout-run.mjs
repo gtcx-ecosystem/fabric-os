@@ -8,8 +8,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const REGISTER = join(ROOT, 'pm/tool-adoption-register.json');
-const BRIDGE_REGISTER = join(ROOT, '..', 'bridge-os', 'pm/tool-scout-register.json');
+const REGISTER = join(ROOT, 'machine/tool-adoption-register.json');
+const BRIDGE_REGISTER = join(ROOT, '..', 'bridge-os', 'machine/tool-scout-register.json');
 const OUT = join(ROOT, 'audit/evidence/tool-scout-fabric-execution-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');

@@ -20,8 +20,8 @@ export function readJson(rel) {
 }
 
 function schemaVersion() {
-  const rel = existsSync(join(repoRoot(), 'ops/manifest.json'))
-    ? 'ops/manifest.json'
+  const rel = existsSync(join(repoRoot(), 'operations/manifest.json'))
+    ? 'operations/manifest.json'
     : 'workspace/manifest.json';
   const { data } = readJson(rel);
   return data?.schema ?? 'gtcx.workspace.manifest.v1';
@@ -35,8 +35,8 @@ const VALID_SCHEMAS = new Set([
 
 export function checkRootManifest() {
   const errors = [];
-  const rel = existsSync(join(repoRoot(), 'ops/manifest.json'))
-    ? 'ops/manifest.json'
+  const rel = existsSync(join(repoRoot(), 'operations/manifest.json'))
+    ? 'operations/manifest.json'
     : 'workspace/manifest.json';
   const { missing, parseError, data } = readJson(rel);
   if (missing) errors.push(missing);
@@ -50,14 +50,14 @@ export function checkRootManifest() {
 export function checkCoordination() {
   const errors = [];
   for (const rel of [
-    'ops/coordination/manifest.json',
-    'ops/coordination/remaining-work.json',
+    'operations/coordination/manifest.json',
+    'operations/coordination/remaining-work.json',
   ]) {
     const { missing, parseError } = readJson(rel);
     if (missing) errors.push(missing);
     if (parseError) errors.push(parseError);
   }
-  for (const dir of ['ops/coordination/outbound', 'ops/coordination/inbound']) {
+  for (const dir of ['operations/coordination/outbound', 'operations/coordination/inbound']) {
     if (!existsSync(join(repoRoot(), dir))) errors.push(dir);
   }
   return errors;
@@ -66,19 +66,19 @@ export function checkCoordination() {
 export function checkAttestation() {
   const errors = [];
   for (const rel of [
-    'ops/attestation/manifest.json',
-    'ops/attestation/gates.local.json',
-    'ops/attestation/evidence-index.json',
-    'ops/attestation/runners.json',
+    'operations/attestation/manifest.json',
+    'operations/attestation/gates.local.json',
+    'operations/attestation/evidence-index.json',
+    'operations/attestation/runners.json',
   ]) {
     const { missing, parseError, data } = readJson(rel);
     if (missing) errors.push(missing);
     if (parseError) errors.push(parseError);
     if (rel.endsWith('gates.local.json') && data && !Array.isArray(data.gates)) {
-      errors.push('ops/attestation/gates.local.json: gates must be array');
+      errors.push('operations/attestation/gates.local.json: gates must be array');
     }
     if (rel.endsWith('runners.json') && data && !Array.isArray(data.runners)) {
-      errors.push('ops/attestation/runners.json: runners must be array');
+      errors.push('operations/attestation/runners.json: runners must be array');
     }
   }
   return errors;
@@ -87,12 +87,12 @@ export function checkAttestation() {
 /** @deprecated v1 — use checkAttestation for v2+ */
 export function checkAssurance() {
   const errors = [];
-  for (const rel of ['ops/assurance/gates.local.json', 'ops/assurance/evidence-index.json']) {
+  for (const rel of ['operations/assurance/gates.local.json', 'operations/assurance/evidence-index.json']) {
     const { missing, parseError, data } = readJson(rel);
     if (missing) errors.push(missing);
     if (parseError) errors.push(parseError);
     if (rel.endsWith('gates.local.json') && data && !Array.isArray(data.gates)) {
-      errors.push('ops/assurance/gates.local.json: gates must be array');
+      errors.push('operations/assurance/gates.local.json: gates must be array');
     }
   }
   return errors;
@@ -104,12 +104,12 @@ function firstExistingPath(candidates) {
 
 export function checkProductManagement() {
   const errors = [];
-  for (const rel of ['ops/pm/manifest.json', 'ops/pm/backlog.json']) {
+  for (const rel of ['operations/machine/manifest.json', 'operations/machine/backlog.json']) {
     const { missing, parseError, data } = readJson(rel);
     if (missing) errors.push(missing);
     if (parseError) errors.push(parseError);
     if (rel.endsWith('backlog.json') && data && !Array.isArray(data.stories)) {
-      errors.push('ops/pm/backlog.json: stories must be array');
+      errors.push('operations/machine/backlog.json: stories must be array');
     }
   }
   const agileBridge =
@@ -127,9 +127,9 @@ export function checkProductManagement() {
 export function checkCompliance() {
   const errors = [];
   for (const rel of [
-    'ops/compliance/manifest.json',
-    'ops/compliance/evidence-index.json',
-    'ops/compliance/gaps.json',
+    'operations/compliance/manifest.json',
+    'operations/compliance/evidence-index.json',
+    'operations/compliance/gaps.json',
   ]) {
     const { missing, parseError } = readJson(rel);
     if (missing) errors.push(missing);
@@ -140,47 +140,47 @@ export function checkCompliance() {
 
 export function checkGtm() {
   const errors = [];
-  const { missing, parseError } = readJson('ops/gtm/manifest.json');
+  const { missing, parseError } = readJson('operations/gtm/manifest.json');
   if (missing) errors.push(missing);
   if (parseError) errors.push(parseError);
-  const scope = readJson('ops/gtm/scope.json');
+  const scope = readJson('operations/gtm/scope.json');
   if (scope.missing) errors.push(scope.missing);
   if (scope.parseError) errors.push(scope.parseError);
-  const gtmReadme = ['ops/gtm/README.md', 'docs/08-gtm/README.md'].find((p) =>
+  const gtmReadme = ['operations/gtm/README.md', 'docs/08-gtm/README.md'].find((p) =>
     existsSync(join(repoRoot(), p)),
   );
-  if (!gtmReadme) errors.push('ops/gtm/README.md');
+  if (!gtmReadme) errors.push('operations/gtm/README.md');
   return errors;
 }
 
 export function checkSecurity() {
   const errors = [];
-  for (const rel of ['ops/security/manifest.json', 'ops/security/posture.json']) {
+  for (const rel of ['operations/security/manifest.json', 'operations/security/posture.json']) {
     const { missing, parseError } = readJson(rel);
     if (missing) errors.push(missing);
     if (parseError) errors.push(parseError);
   }
-  if (!existsSync(join(repoRoot(), 'ops/security/README.md')) && !existsSync(join(repoRoot(), 'docs/09-security/README.md'))) {
-    errors.push('ops/security/README.md');
+  if (!existsSync(join(repoRoot(), 'operations/security/README.md')) && !existsSync(join(repoRoot(), 'docs/09-security/README.md'))) {
+    errors.push('operations/security/README.md');
   }
   return errors;
 }
 
 export function checkAssurancePrograms() {
   const errors = [];
-  for (const rel of ['ops/assurance/manifest.json', 'ops/assurance/programs.json']) {
+  for (const rel of ['operations/assurance/manifest.json', 'operations/assurance/programs.json']) {
     const { missing, parseError, data } = readJson(rel);
     if (missing) errors.push(missing);
     if (parseError) errors.push(parseError);
     if (rel.endsWith('programs.json') && data && !Array.isArray(data.programs)) {
-      errors.push('ops/assurance/programs.json: programs must be array');
+      errors.push('operations/assurance/programs.json: programs must be array');
     }
   }
   if (
-    !existsSync(join(repoRoot(), 'ops/assurance/programs/README.md')) &&
+    !existsSync(join(repoRoot(), 'operations/assurance/programs/README.md')) &&
     !existsSync(join(repoRoot(), 'docs/07-assurance/programs/README.md'))
   ) {
-    errors.push('ops/assurance/programs/README.md');
+    errors.push('operations/assurance/programs/README.md');
   }
   return errors;
 }
@@ -188,17 +188,17 @@ export function checkAssurancePrograms() {
 export function checkAudit() {
   const errors = [];
   for (const rel of [
-    'ops/attestation/witness/manifest.json',
-    'ops/attestation/witness/evidence-index.json',
+    'operations/attestation/witness/manifest.json',
+    'operations/attestation/witness/evidence-index.json',
   ]) {
     const { missing, parseError, data } = readJson(rel);
     if (missing) errors.push(missing);
     if (parseError) errors.push(parseError);
     if (rel.endsWith('evidence-index.json') && data && !Array.isArray(data.artifacts)) {
-      errors.push('ops/attestation/witness/evidence-index.json: artifacts must be array');
+      errors.push('operations/attestation/witness/evidence-index.json: artifacts must be array');
     }
   }
-  for (const rel of ['ops/attestation/witness/README.md', 'audit/README.md']) {
+  for (const rel of ['operations/attestation/witness/README.md', 'audit/README.md']) {
     if (!existsSync(join(repoRoot(), rel))) errors.push(rel);
   }
   return errors;
@@ -206,12 +206,12 @@ export function checkAudit() {
 
 export function checkOperations() {
   const errors = [];
-  for (const rel of ['ops/manifest.json', 'ops/verify.json']) {
+  for (const rel of ['operations/manifest.json', 'operations/verify.json']) {
     const { missing, parseError, data } = readJson(rel);
     if (missing) errors.push(missing);
     if (parseError) errors.push(parseError);
     if (rel.endsWith('verify.json') && data && !Array.isArray(data.commands)) {
-      errors.push('ops/verify.json: commands must be array');
+      errors.push('operations/verify.json: commands must be array');
     }
   }
   if (!existsSync(join(repoRoot(), 'docs/operations/README.md'))) {
@@ -223,14 +223,14 @@ export function checkOperations() {
 function checkWorkspaceReadmes() {
   const errors = [];
   for (const rel of [
-    'ops/coordination/README.md',
-    'ops/pm/README.md',
-    'ops/gtm/README.md',
-    'ops/compliance/README.md',
-    'ops/attestation/README.md',
-    'ops/security/README.md',
-    'ops/assurance/README.md',
-    'ops/README.md',
+    'operations/coordination/README.md',
+    'operations/machine/README.md',
+    'operations/gtm/README.md',
+    'operations/compliance/README.md',
+    'operations/attestation/README.md',
+    'operations/security/README.md',
+    'operations/assurance/README.md',
+    'operations/README.md',
   ]) {
     if (!existsSync(join(repoRoot(), rel))) errors.push(rel);
   }
@@ -252,8 +252,8 @@ function checkAgentsFolder() {
 
 function checkLegalLens() {
   const errors = [];
-  if (!existsSync(join(repoRoot(), 'ops/legal/gates.json')))
-    errors.push('ops/legal/gates.json');
+  if (!existsSync(join(repoRoot(), 'operations/legal/gates.json')))
+    errors.push('operations/legal/gates.json');
   return errors;
 }
 

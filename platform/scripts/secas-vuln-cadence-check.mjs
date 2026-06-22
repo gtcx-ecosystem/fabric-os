@@ -8,9 +8,9 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const REGISTER = join(ROOT, 'pm/security-friction-register.json');
-const POLICY_JSON = join(ROOT, 'pm/spec/vuln-cadence-policy.json');
-const SUPPLY_POLICY = join(ROOT, 'pm/spec/supply-chain-cve-policy.json');
+const REGISTER = join(ROOT, 'machine/security-friction-register.json');
+const POLICY_JSON = join(ROOT, 'machine/spec/vuln-cadence-policy.json');
+const SUPPLY_POLICY = join(ROOT, 'machine/spec/supply-chain-cve-policy.json');
 const POLICY_DOC = join(ROOT, 'docs/operations/secas/vuln-cadence.md');
 const FRICTION_ID = 'SEC-VULN-01';
 const OUT = join(ROOT, 'audit/evidence/secas-vuln-cadence-latest.json');
@@ -120,7 +120,7 @@ const witness = {
   checkedAt: new Date().toISOString(),
   owner: 'fabric-os',
   policy: {
-    json: 'pm/spec/vuln-cadence-policy.json',
+    json: 'machine/spec/vuln-cadence-policy.json',
     doc: 'docs/operations/secas/vuln-cadence.md',
   },
   gates,

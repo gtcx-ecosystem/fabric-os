@@ -1,5 +1,5 @@
 /**
- * product-management sync — local P22 state → ops/pm/backlog.json
+ * product-management sync — local P22 state → operations/machine/backlog.json
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
@@ -95,7 +95,7 @@ function runNextWork(scriptRel) {
 }
 
 function loadCrossRepoRefs() {
-  const rw = readJson('ops/coordination/remaining-work.json');
+  const rw = readJson('operations/coordination/remaining-work.json');
   if (!rw?.items?.length) return [];
   return rw.items.map((item) => ({
     id: item.id ?? item.storyId ?? null,
@@ -106,7 +106,7 @@ function loadCrossRepoRefs() {
 }
 
 export function syncProductManagement() {
-  const pmManifest = readJson('pm/manifest.json');
+  const pmManifest = readJson('machine/manifest.json');
   const rootManifest = readJson('workspace/manifest.json');
   const repo = rootManifest?.repo ?? pmManifest?.repo ?? 'unknown';
 
@@ -124,7 +124,7 @@ export function syncProductManagement() {
     $schema: 'gtcx://workspace/pm-backlog/v1',
     repo,
     updated: new Date().toISOString().slice(0, 10),
-    syncSource: 'pnpm pm:sync',
+    syncSource: 'pnpm machine:sync',
     active: nextJson?.next
       ? {
           storyId: nextJson.next.storyId,
@@ -141,7 +141,7 @@ export function syncProductManagement() {
     roadmapPath,
   };
 
-  const out = pmManifest?.sync?.output ?? 'ops/pm/backlog.json';
+  const out = pmManifest?.sync?.output ?? 'operations/machine/backlog.json';
   writeJson(out, backlog);
   return backlog;
 }

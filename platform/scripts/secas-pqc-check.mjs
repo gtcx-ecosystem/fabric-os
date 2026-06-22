@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
-const REGISTER = join(BRIDGE, 'pm/spec/crypto-agility-register.json');
+const REGISTER = join(BRIDGE, 'machine/spec/crypto-agility-register.json');
 const OUT = join(ROOT, 'audit/evidence/secas-pqc-check-latest.json');
 const WRITE = process.argv.includes('--write');
 

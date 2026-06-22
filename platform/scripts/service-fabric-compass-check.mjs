@@ -11,7 +11,7 @@ import { spawnSync } from 'node:child_process';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
-const SPEC = join(BRIDGE, 'pm/spec/service-fabric.json');
+const SPEC = join(BRIDGE, 'machine/spec/service-fabric.json');
 const OUT = join(ROOT, 'audit/evidence/service-fabric-compass-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
@@ -51,10 +51,10 @@ function main() {
   }
 
   for (const [id, rel] of [
-    ['DAAS', 'pm/daas-roadmap.json'],
-    ['SECAS', 'pm/secas-roadmap.json'],
-    ['HAAS', 'pm/haas-roadmap.json'],
-    ['AAAS', 'pm/aaas-roadmap.json'],
+    ['DAAS', 'machine/daas-roadmap.json'],
+    ['SECAS', 'machine/secas-roadmap.json'],
+    ['HAAS', 'machine/haas-roadmap.json'],
+    ['AAAS', 'machine/aaas-roadmap.json'],
   ]) {
     gates.roadmaps[id] = { ok: existsSync(join(ROOT, rel)), path: rel };
   }

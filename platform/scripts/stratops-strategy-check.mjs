@@ -14,13 +14,13 @@ const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
 
 const PATHS = {
-  strategyRegistry: join(BRIDGE, 'pm/spec/stratops-strategy-registry.json'),
-  frictionRegister: join(BRIDGE, 'pm/spec/stratops-friction-register.json'),
-  fleetGoals: join(BRIDGE, 'pm/spec/ecosystem-fleet-goals-registry.json'),
-  goalOrientation: join(BRIDGE, 'pm/spec/goal-orientation-protocol.json'),
-  liveProgrammes: join(BRIDGE, 'pm/spec/fleet-live-programmes.json'),
-  executionEngine: join(BRIDGE, 'pm/spec/gtcx-execution-engine.json'),
-  enterprisePilotDoD: join(BRIDGE, 'pm/spec/enterprise-pilot-dod.json'),
+  strategyRegistry: join(BRIDGE, 'machine/spec/stratops-strategy-registry.json'),
+  frictionRegister: join(BRIDGE, 'machine/spec/stratops-friction-register.json'),
+  fleetGoals: join(BRIDGE, 'machine/spec/ecosystem-fleet-goals-registry.json'),
+  goalOrientation: join(BRIDGE, 'machine/spec/goal-orientation-protocol.json'),
+  liveProgrammes: join(BRIDGE, 'machine/spec/fleet-live-programmes.json'),
+  executionEngine: join(BRIDGE, 'machine/spec/gtcx-execution-engine.json'),
+  enterprisePilotDoD: join(BRIDGE, 'machine/spec/enterprise-pilot-dod.json'),
   opsDoc: join(ROOT, 'docs/operations/stratops-as-a-service.md'),
 };
 

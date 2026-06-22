@@ -14,9 +14,9 @@
       "status": "done",
       "owner": "fabric-os",
       "files": [
-        "pm/sovereign-approval-register.json",
-        "pm/security-friction-register.json",
-        "pm/secas-roadmap.json",
+        "machine/sovereign-approval-register.json",
+        "machine/security-friction-register.json",
+        "machine/secas-roadmap.json",
         "audit/evidence/secas-friction-check-latest.json",
         "audit/evidence/secas-approval-check-latest.json"
       ],
@@ -233,7 +233,7 @@
       "frictionIds": ["SEC-SUPPLY-01"],
       "files": [
         "platform/scripts/secas-supply-chain-check.mjs",
-        "pm/spec/supply-chain-cve-policy.json",
+        "machine/spec/supply-chain-cve-policy.json",
         "docs/operations/secas/supply-chain-policy.md",
         "audit/evidence/secas-supply-chain-check-latest.json"
       ],
@@ -260,10 +260,10 @@
       "owner": "fabric-os",
       "frictionIds": ["SEC-VULN-01"],
       "files": [
-        "pm/spec/vuln-cadence-policy.json",
+        "machine/spec/vuln-cadence-policy.json",
         "docs/operations/secas/vuln-cadence.md",
         "platform/scripts/secas-vuln-cadence-check.mjs",
-        "pm/security-friction-register.json",
+        "machine/security-friction-register.json",
         "audit/evidence/secas-vuln-cadence-latest.json"
       ],
       "acceptance": ["pnpm secas:vuln-cadence:check:write"],

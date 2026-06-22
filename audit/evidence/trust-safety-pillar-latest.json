@@ -1,8 +1,8 @@
 {
   "schema": "gtcx://audit/trust-safety-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-19",
-  "score100": 100,
+  "date": "2026-06-22",
+  "score100": 90,
   "published": true,
   "metrics": {
     "evidence-coverage": {
@@ -33,9 +33,9 @@
       "versionBloatHits": 0
     },
     "independent-replay": {
-      "score100": 100,
+      "score100": 35,
       "weight": 15,
-      "opsCheck": true
+      "opsCheck": false
     }
   },
   "mode": "envelope-cap",
@@ -45,10 +45,5 @@
     "minConfidence": "B",
     "minTrust100": 70,
     "blocked": false
-  },
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
   }
 }

@@ -1,11 +1,11 @@
 {
   "schema": "gtcx://audit/craft-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-19",
+  "date": "2026-06-22",
   "score100": 100,
-  "published": true,
-  "provisional": false,
-  "blockedBy": null,
+  "published": false,
+  "provisional": true,
+  "blockedBy": "esl:ESL-2",
   "unlockThreshold100": 85,
   "metrics": {
     "selectivity-ingredients": {
@@ -53,9 +53,6 @@
     "interchangeable": false,
     "aiSlop": false
   },
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "eslRequired": "ESL-2",
+  "eslActive": "ESL-1"
 }

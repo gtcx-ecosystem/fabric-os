@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/fabric-ops-policy-contract-check/v1",
-  "at": "2026-06-22T18:13:17.769Z",
+  "at": "2026-06-22T18:15:55.896Z",
   "repo": "fabric-os",
   "contract": "fabric-os/pm/spec/fabric-ops-policy-contract.json",
   "localContractPath": "ops/fabric-contract.json",
@@ -537,7 +537,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -766,7 +766,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -811,7 +811,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/composite-audit-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -903,7 +903,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -948,7 +948,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1222,7 +1222,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1999,7 +1999,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -2044,7 +2044,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",

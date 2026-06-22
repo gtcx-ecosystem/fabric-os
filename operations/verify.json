@@ -11,7 +11,7 @@
     },
     {
       "id": "pm-sync",
-      "command": "pnpm pm:sync",
+      "command": "pnpm machine:sync",
       "authorityClass": "R",
       "when": "before-p22-proceed"
     }

@@ -1,4 +1,4 @@
-# ops/ — fabric-os fleet COO reference
+# operations/ — fabric-os fleet COO reference
 
 Repo-local mirror of [`../bridge-os/pm/spec/ops-pack.json`](../bridge-os/pm/spec/ops-pack.json) profile **fleet-ops**.
 
@@ -8,4 +8,4 @@ Repo-local mirror of [`../bridge-os/pm/spec/ops-pack.json`](../bridge-os/pm/spec
 | [`manifest.json`](./manifest.json) | P29 workspace domains                           |
 | `legal/`, `compliance/`, `gtm/`    | Lane consumption manifests (hub owns registers) |
 
-Product repos keep a **thin** `ops/` — see charter [`docs/strategy/fleet-ops-hub.md`](../docs/strategy/fleet-ops-hub.md).
+Product repos keep a **thin** `operations/` — see charter [`docs/strategy/fleet-ops-hub.md`](../docs/strategy/fleet-ops-hub.md).

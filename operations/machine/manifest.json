@@ -1,0 +1,29 @@
+{
+  "$schema": "gtcx://ops/pm/v1",
+  "repo": "fabric-os",
+  "updated": "2026-06-16",
+  "agileHub": {
+    "repo": "gtcx-agile",
+    "crossRepoWorkplan": "https://github.com/gtcx-ecosystem/gtcx-agile/blob/main/01-docs/06-coordination/cross-repo-sprint-workplan-2026-06.md",
+    "ecosystemReconcile": "https://github.com/gtcx-ecosystem/gtcx-agile/blob/main/01-docs/sprints/ecosystem-reconcile-program-2026-06.md",
+    "v1Tracker": "https://github.com/gtcx-ecosystem/gtcx-agile/blob/main/01-docs/v1-shipping/execution-tracker.json",
+    "agentBridge": "https://github.com/gtcx-ecosystem/gtcx-agile/blob/main/01-docs/06-coordination/agent-bridge.md"
+  },
+  "local": {
+    "agileDocs": "agile",
+    "executionRoadmap": null,
+    "workSelection": "docs/operations/agent-work-selection.md",
+    "autoDevState": "audit/auto-dev-state.md",
+    "nextWorkScript": "platform/scripts/agent-next-work.mjs"
+  },
+  "sync": {
+    "command": "pnpm machine:sync",
+    "output": "operations/machine/backlog.json"
+  },
+  "agileReference": {
+    "hub": "agile-os",
+    "referenceImpl": "../agile-os/agile",
+    "fleetBacklog": "../agile-os/pm/ecosystem-sprint-backlog.json",
+    "strategy": "../agile-os/docs/strategy/fleet-agile-hub.md"
+  }
+}

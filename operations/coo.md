@@ -28,7 +28,7 @@ review_cycle: on-change
 | Product programme | L2   | `docs/operations/coordination/*` only           |
 | Ops COO           | L3   | Friction registers, ops backlog, lane harnesses |
 
-Does **not** write `pm/ecosystem-sprint-backlog.json` (agile-os CPO) or product `active.json`.
+Does **not** write `machine/ecosystem-sprint-backlog.json` (agile-os CPO) or product `active.json`.
 
 ## COO loop
 
@@ -39,7 +39,7 @@ Does **not** write `pm/ecosystem-sprint-backlog.json` (agile-os CPO) or product 
 ## Harness
 
 ```bash
-pnpm fabric:ops:check
+pnpm fabric:operations:check
 pnpm fabric:ops-lanes-11pr:check:write
 ```
 

@@ -3,17 +3,20 @@
   "repo": "fabric-os",
   "contractVersion": "1.0.0",
   "centralPolicyContract": "fabric-os/pm/spec/fabric-ops-policy-contract.json",
-  "updated": "2026-06-18",
+  "updated": "2026-06-22",
   "domains": [
     {
       "id": "compliance",
       "centralRef": "fabric-os/ops/compliance/manifest.json",
-      "localRefs": ["ops/compliance/manifest.json", "audit/evidence/compliance-pillar-latest.json"]
+      "localRefs": [
+        "operations/compliance/manifest.json",
+        "audit/evidence/compliance-pillar-latest.json"
+      ]
     },
     {
       "id": "apiTokens",
       "centralRef": "fabric-os/ops/security/narrative/secrets-management.md",
-      "localRefs": ["ops/security/manifest.json", "config/ops.manifest.json"]
+      "localRefs": ["operations/security/manifest.json", "config/ops.manifest.json"]
     },
     {
       "id": "deployment",
@@ -23,12 +26,12 @@
     {
       "id": "security",
       "centralRef": "fabric-os/ops/security/manifest.json",
-      "localRefs": ["ops/security/manifest.json", "docs/operations/repo/SECURITY.md"]
+      "localRefs": ["operations/security/manifest.json", "docs/operations/repo/SECURITY.md"]
     },
     {
       "id": "observability",
       "centralRef": "fabric-os/ops/attestation/manifest.json",
-      "localRefs": ["ops/attestation/manifest.json"]
+      "localRefs": ["operations/attestation/manifest.json"]
     },
     {
       "id": "evidence",
@@ -38,7 +41,7 @@
     {
       "id": "opsConsumption",
       "centralRef": "fabric-os/ops/coo.md",
-      "localRefs": ["ops/coo.md", "pm/spec/ops-pack.json", "ops/manifest.json"]
+      "localRefs": ["operations/coo.md", "machine/spec/ops-pack.json", "operations/manifest.json"]
     }
   ]
 }

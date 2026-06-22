@@ -1,21 +1,19 @@
 ---
-title: 'Fabric ops assurance'
+title: Fabric ops assurance
 document_type: canon-feature-bundle
 bundleId: FEAT-FABRIC-OPS-ASSURANCE
-version: '0.1.0'
+version: 0.1.0
 status: in_progress
-updated: '2026-06-22'
+updated: 2026-06-22
 owner: fabric-os
 initiative: INIT-GTCX-INFRA-SECAS
-goalIds:
-  - GOAL-FABRIC-OPS
-milestoneIds:
-  - M1
-composition:
-  services: []
-  infra: []
-  experience: []
-  commercial: []
+goalIds: ['GOAL-FABRIC-OPS']
+milestoneIds: ['M1']
+composition: []
+services: []
+infra: []
+experience: []
+commercial: []
 planRef: docs/product/roadmap/features/FEAT-FABRIC-OPS-ASSURANCE.md
 ---
 

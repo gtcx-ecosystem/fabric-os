@@ -1,7 +1,7 @@
 {
   "programId": "FORENSIC-AI-001",
   "storyId": "FORENSIC-AI-001",
-  "updatedAt": "2026-06-18T08:37:29.625Z",
+  "updatedAt": "2026-06-22T19:48:26.008Z",
   "companyName": "GTCX",
   "orgSource": "explicit",
   "ambient": {
@@ -159,51 +159,51 @@
     {
       "passId": "FRP-P0-ambient",
       "protocolId": "FRP-P1",
-      "completedAt": "2026-06-18T08:37:29.625Z"
+      "completedAt": "2026-06-22T19:48:26.008Z"
     },
     {
       "passId": "FRP-P1-entity",
       "protocolId": "FRP-P1",
-      "completedAt": "2026-06-18T08:37:29.625Z",
+      "completedAt": "2026-06-22T19:48:26.008Z",
       "nodeCount": 1
     },
     {
       "passId": "FRP-P2-vertical",
       "protocolId": "FRP-P2",
-      "completedAt": "2026-06-18T08:37:29.625Z"
+      "completedAt": "2026-06-22T19:48:26.008Z"
     },
     {
       "passId": "FRP-P4-regulatory",
       "protocolId": "FRP-P4",
-      "completedAt": "2026-06-18T08:37:29.625Z"
+      "completedAt": "2026-06-22T19:48:26.008Z"
     },
     {
       "passId": "FRP-P5-org-shape",
       "protocolId": "FRP-P5",
-      "completedAt": "2026-06-18T08:37:29.625Z"
+      "completedAt": "2026-06-22T19:48:26.008Z"
     },
     {
       "passId": "FRP-P6-gaps",
       "protocolId": "FRP-P6",
-      "completedAt": "2026-06-18T08:37:29.625Z",
+      "completedAt": "2026-06-22T19:48:26.008Z",
       "questionCount": 4
     },
     {
       "passId": "FRP-P7-merge",
       "protocolId": "FRP-P7",
-      "completedAt": "2026-06-18T08:37:29.625Z",
+      "completedAt": "2026-06-22T19:48:26.008Z",
       "nodeCount": 1,
       "edgeCount": 0
     },
     {
       "passId": "hydrate-layers",
       "protocolId": "hydrate",
-      "completedAt": "2026-06-18T08:37:29.625Z"
+      "completedAt": "2026-06-22T19:48:26.008Z"
     },
     {
       "passId": "complete",
       "protocolId": "complete",
-      "completedAt": "2026-06-18T08:37:29.625Z"
+      "completedAt": "2026-06-22T19:48:26.008Z"
     }
   ],
   "hydratedPaths": [

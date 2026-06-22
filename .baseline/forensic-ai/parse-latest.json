@@ -1,58 +1,79 @@
 {
   "schema": "gtcx://baseline-os/forensic-parse-artifact/v1",
   "programId": "FORENSIC-PARSE-001",
-  "parsedAt": "2026-06-18T08:37:29.538Z",
+  "parsedAt": "2026-06-22T19:48:25.941Z",
   "repo": "fabric-os",
   "corpus": {
     "docs": {
-      "filesScanned": 223,
+      "filesScanned": 328,
       "paths": [
         "docs/CHANGELOG.md",
-        "docs/FOLDER-SPEC.md",
         "docs/INDEX.md",
         "docs/README.md",
         "docs/architecture/FOLDER-SPEC.md",
         "docs/architecture/README.md",
         "docs/architecture/decisions/ADR-001-fabric-os-architecture-baseline.md",
+        "docs/architecture/decisions/FOLDER-SPEC.md",
         "docs/architecture/decisions/README.md",
+        "docs/architecture/diagrams/FOLDER-SPEC.md",
+        "docs/architecture/diagrams/README.md",
+        "docs/architecture/in-repo/README.md",
+        "docs/architecture/integration/FOLDER-SPEC.md",
         "docs/architecture/integration/README.md",
-        "docs/architecture/pillar-scorecard.md",
+        "docs/architecture/integration/narrative/README.md",
+        "docs/architecture/integration/narrative/legacy-README.md",
+        "docs/architecture/pillars/FOLDER-SPEC.md",
+        "docs/architecture/pillars/README.md",
+        "docs/architecture/requirements/FOLDER-SPEC.md",
         "docs/architecture/requirements/README.md",
         "docs/architecture/requirements/accessibility.md",
         "docs/architecture/requirements/functional-requirements.md",
         "docs/architecture/requirements/non-functional-requirements.md",
+        "docs/architecture/scorecard.md",
+        "docs/architecture/security/FOLDER-SPEC.md",
         "docs/architecture/security/README.md",
+        "docs/architecture/specs/FOLDER-SPEC.md",
         "docs/architecture/specs/README.md",
         "docs/architecture/specs/backend/README.md",
         "docs/architecture/specs/data/README.md",
         "docs/architecture/specs/design/README.md",
         "docs/architecture/specs/frontend/README.md",
         "docs/architecture/specs/index.md",
-        "docs/architecture/specs/pillar-scorecard.md",
+        "docs/architecture/specs/legacy-FOLDER-SPEC.md",
+        "docs/architecture/specs/legacy-README.md",
         "docs/architecture/specs/system-overview.md",
         "docs/architecture/specs/testing/README.md",
         "docs/business/FOLDER-SPEC.md",
         "docs/business/README.md",
+        "docs/business/case-studies/FOLDER-SPEC.md",
         "docs/business/case-studies/README.md",
+        "docs/business/customers/FOLDER-SPEC.md",
         "docs/business/customers/README.md",
         "docs/business/customers/core-audiences.md",
         "docs/business/customers/early-stage-adopter.md",
         "docs/business/customers/ideal-customer-profile.md",
         "docs/business/customers/personas.md",
+        "docs/business/domain/FOLDER-SPEC.md",
         "docs/business/domain/README.md",
+        "docs/business/economics/FOLDER-SPEC.md",
         "docs/business/economics/README.md",
         "docs/business/economics/analytics-registry.md",
         "docs/business/economics/business-model.md",
         "docs/business/economics/pricing.md",
         "docs/business/economics/product-metrics.md",
         "docs/business/economics/revenue-streams.md",
+        "docs/business/market/FOLDER-SPEC.md",
         "docs/business/market/README.md",
         "docs/business/market/primary-market.md",
         "docs/business/market/problem.md",
         "docs/business/market/secondary-market.md",
         "docs/business/market/stakeholder-analysis.md",
         "docs/business/market/tertiary-market.md",
-        "docs/business/pillar-scorecard.md",
+        "docs/business/overview/FOLDER-SPEC.md",
+        "docs/business/overview/README.md",
+        "docs/business/partnerships/FOLDER-SPEC.md",
+        "docs/business/partnerships/README.md",
+        "docs/business/research/FOLDER-SPEC.md",
         "docs/business/research/README.md",
         "docs/business/research/capital-markets-playbook.md",
         "docs/business/research/ecosystem-overview.md",
@@ -60,83 +81,38 @@
         "docs/business/research/industry-transformation.md",
         "docs/business/research/master-voice.md",
         "docs/business/research/research-portfolio-blueprint.md",
+        "docs/business/research/scorecard.md",
+        "docs/business/sales/FOLDER-SPEC.md",
         "docs/business/sales/README.md",
-        "docs/business/strategy/README.md",
-        "docs/business/strategy/ecosystem-integration.md",
-        "docs/business/strategy/executive-summary.md",
-        "docs/business/strategy/implementation-truth.md",
-        "docs/business/strategy/solution.md",
-        "docs/business/use-cases/README.md",
-        "docs/conventions.md",
-        "docs/engineering/FOLDER-SPEC.md",
-        "docs/engineering/README.md",
-        "docs/foundation/FOLDER-SPEC.md",
-        "docs/foundation/README.md",
-        "docs/foundation/constitution.md",
-        "docs/foundation/goals.md",
-        "docs/foundation/manifesto.md",
-        "docs/foundation/milestones.md",
-        "docs/foundation/mission.md",
-        "docs/foundation/pillar-scorecard.md",
-        "docs/foundation/roadmap.md",
-        "docs/foundation/vision.md",
-        "docs/gitbook/FOLDER-SPEC.md",
-        "docs/gitbook/README.md",
-        "docs/gitbook/SUMMARY.md",
-        "docs/gitbook/blog/README.md",
-        "docs/gitbook/blog/audit-signer-launch-2026-05.md",
-        "docs/gitbook/docs-site/README.md",
-        "docs/gitbook/docs-site/architecture.md"
+        "docs/business/scorecard.md",
+        "docs/business/strategy/FOLDER-SPEC.md",
+        "docs/business/strategy/README.md"
       ],
       "initiativeIds": [
         "INIT-DOCS-FOUNDATION-IA-V1",
         "INIT-DOCS-PROVISIONING-V1-W2",
+        "INIT-GTCX-INFRA-SECAS",
         "XR-518",
         "INIT-PRODUCT-TEAM-MODEL-R5",
+        "INIT-AGENT-TOOL-SCOUT",
+        "XR-BRIDGE-TOOL-SCOUT-001",
+        "INIT-GTCX-INFRA-DAAS",
+        "INIT-FABRIC-OPS-PRD-ROUTING",
         "DOC-MPR-FLEET-SCRUB-003",
-        "INIT-GTCX-INFRA-SECAS",
-        "XR-516",
-        "INIT-DOCS-PROVISIONING",
-        "ECO-DOC-001",
-        "DOC-001",
-        "INIT-DOCS",
-        "INIT-CANON",
-        "INIT-DOC-FLEET-PUBLISH",
-        "DOC-FLEET-PUBLISH",
-        "INIT-DOC",
-        "INIT-DOCS-CORE-IA",
-        "INIT-DOCS-CORE-IA-V1",
-        "INIT-DOCS-IA-FLEET-ROLLUP",
-        "INIT-DOCS-PROVISIONING-V1",
-        "XR-303",
-        "XR-CANON-LEGACY-SCRUB-001",
-        "XR-CANON-LEGACY-SCRUB-002",
-        "XR-CANON-FABRIC-INTERACT-001",
-        "INIT-FLEET-OS-CONTRACT",
-        "ECO-OS-001",
-        "ECO-OS-002",
-        "INIT-ECOSYSTEM-OS-MONOREPO",
-        "INIT-ECOSYSTEM-OS-MIGRATION",
-        "ECO-PRODUCT",
-        "ECO-OS-SHIP-001",
-        "INIT-GTCX-Q3-2026",
-        "INIT-001",
-        "INIT-EXECUTIVE-GAP-PROGRAM",
-        "BL-MPR-01",
-        "BL-MPR-08"
+        "INIT-M5-"
       ]
     },
     "sessions": {
-      "ledgerCount": 27,
-      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-canon-os/agent-transcripts/23c98ff2-e5b4-4ff2-9809-8e543fc0905a/23c98ff2-e5b4-4ff2-9809-8e543fc0905a.jsonl",
-      "transcriptLines": 4407,
-      "userQueryCount": 30
+      "ledgerCount": 29,
+      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-terminal-os/agent-transcripts/3da4db96-edcd-44ae-b33b-9000a59d5910/3da4db96-edcd-44ae-b33b-9000a59d5910.jsonl",
+      "transcriptLines": 302,
+      "userQueryCount": 20
     }
   },
   "layerBindings": {
     "persona": {
       "primary": "platform-engineer",
-      "confidence": 0.8571428571428572,
+      "confidence": 0.9032258064516129,
       "candidates": [
         {
           "personaId": "platform-engineer",
@@ -144,19 +120,7 @@
         },
         {
           "personaId": "platform-architect",
-          "weight": 4
-        },
-        {
-          "personaId": "protocol-engineer",
-          "weight": 2
-        },
-        {
-          "personaId": "compliance-officer",
-          "weight": 2
-        },
-        {
-          "personaId": "documentation-architect",
-          "weight": 2
+          "weight": 6
         }
       ]
     },
@@ -166,52 +130,57 @@
       ],
       "tags": [
         "['documentation']",
-        "['docs', 'ia', 'layout-v3']",
+        "['docs', 'ia', 'p48']",
         "['documentation', 'architecture']",
-        "[['documentation', 'multi-pillar', 'fractal-mpr']]",
+        "['documentation', 'architecture/decisions']",
+        "['documentation', 'architecture/diagrams']",
+        "['documentation', 'architecture/integration']",
+        "['pointer', 'documentation']",
+        "['documentation', 'architecture/pillars']",
+        "['documentation', 'architecture/requirements']",
+        "['documentation', 'multi-pillar', 'fractal-mpr']",
+        "['documentation', 'architecture/security']",
+        "['documentation', 'architecture/specs']",
+        "['documentation', 'specs']",
         "['documentation', 'business']",
+        "['documentation', 'business/case-studies']",
+        "['documentation', 'business/customers']",
         "['business']",
-        "['protocol', 'documentation']",
-        "['documentation', 'engineering']",
-        "['foundation']",
+        "['documentation', 'business/domain']",
+        "['documentation', 'business/economics']",
+        "['documentation', 'business/market']",
+        "['documentation', 'overview']",
+        "['documentation', 'business/partnerships']",
+        "['documentation', 'business/research']",
+        "['documentation', 'business/sales']",
+        "['documentation', 'business/strategy']",
+        "['documentation', 'strategy']",
         "['overview', 'documentation']",
+        "['documentation', 'business/use-cases']",
+        "['protocol', 'documentation']",
+        "['foundation']",
         "['external', 'blog', 'distribution']",
         "[['blog', 'launch', 'audit-signer', 'distribution']]",
+        "['documentation', 'gitbook/docs-site']",
         "['external', 'docs-site', 'distribution']",
         "[['docs-site', 'architecture']]",
         "[['docs-site', 'audit-signer', 'reference']]",
         "[['docs-site', 'compliance-db', 'terraform', 'reference']]",
         "[['docs-site', 'mcp', 'compliance-gateway', 'reference']]",
         "[['docs-site', 'distribution', 'compliance']]",
-        "['security', 'compliance', 'infrastructure', 'api', 'frontend']",
-        "['documentation', 'gitbook']",
-        "[['security', 'compliance', 'infrastructure', 'api', 'frontend']]",
-        "[['crypto', 'compliance', 'infrastructure', 'testing', 'api']]",
-        "['gitbook-chapter', 'documentation', 'governance']",
-        "['gitbook-chapter', 'documentation']",
-        "['documentation', 'operations']",
-        "['documentation', 'overview']",
-        "['documentation', 'product']",
-        "['documentation', 'reference']",
-        "[['security', 'compliance', 'architecture', 'infrastructure', 'testing']]",
-        "['reference', 'guides']",
-        "['onboarding', 'documentation']",
-        "[['security', 'infrastructure', 'api', 'frontend', 'database']]",
-        "[['architecture', 'infrastructure', 'api', 'frontend', 'database']]",
-        "[['security', 'crypto', 'compliance', 'architecture', 'infrastructure']]",
-        "['documentation', 'roadmap']",
-        "['documentation', 'specs']",
-        "['protocol', 'documentation', 'governance']",
-        "['documentation', 'strategy']",
-        "['strategy', 'protocol', 'coo', 'documentation']",
-        "['documentation', 'agile', 'roadmap']"
+        "['security', 'compliance', 'infrastructure', 'api', 'frontend']"
       ],
       "confidence": 0.75
     },
     "lang": {
       "expressions": [
         "docs:foundation:check",
+        "docs:ia:check",
+        "docs:tree:check",
         "when",
+        "operations:check",
+        "fabric:ops-contracts:check",
+        "canon:synthesize",
         "agent:sync",
         "install",
         "vault",
@@ -225,93 +194,88 @@
         "--dir",
         "session",
         "agent:next-work",
-        "canon:synthesize",
         "add",
+        "taas:tool-scout:run",
+        "taas:tool-scout:run:write",
+        "fabric:ops-lanes-11pr:check",
+        "fabric:operations:check",
+        "daas:friction:check",
+        "secas:friction:check",
+        "ecosystemops:network:check",
+        "finops:check",
+        "payops:substrate:readiness",
+        "commops:check",
+        "aiops:check",
         "fabric:ops:check",
-        "ops:consumption:check",
-        "ecosystem:ops-authority:check",
-        "ops:check",
-        "next",
-        "mlops:check:write",
-        "MLOps",
-        "mlops:cost-router-staging-probe:write",
-        "Baseline start",
-        "ecosystem:docs:foundation:fleet",
-        "docs:ia:check",
-        "Baseline today",
-        "review:multi-pillar:run",
-        "docs:ia:check:strict",
-        "docs:fleet:foundation:write",
-        "docs:reference:decompose",
-        "docs:business:check",
-        "docs:business:check:write",
-        "docs:fleet:business:write",
-        "docs:reference:archive:relocate:write",
-        "and",
-        "validate:legacy-repo-id",
-        "validate",
-        "noise",
-        "or",
-        "secas:pentest:remediation:check:write",
-        "reset",
-        "scaffolding",
-        "CLI",
-        "session:open-items",
-        "validate:publish",
-        "artifacts",
-        "ecosystem:docs:business:fleet",
-        "docs:fleet:business:upgrade:write",
-        "docs:architecture:check",
-        "ecosystem:docs:architecture:fleet",
-        "docs:fleet:architecture:write",
-        "docs:fleet:foundation:upgrade:write",
-        "docs:fleet:architecture:upgrade:write",
-        "docs:fleet:foundation:check",
-        "kept",
-        "docs:product:check",
-        "ecosystem:docs:product:fleet"
+        "daas:friction:check:write",
+        "daas:cards:check:write",
+        "daas:fleet:health",
+        "payops:providers:check:write",
+        "payops:substrate:readiness:write",
+        "secas:friction:check:write",
+        "secas:approval:check:write",
+        "secas:supply-chain:check:write",
+        "check:workspace-root-cleanliness:strict",
+        "typecheck",
+        "lint",
+        "test",
+        "aaas:friction:check",
+        "aaas:friction:check:write",
+        "commops:check:write",
+        "commops:deliverability:check:write",
+        "ecosystemops:network:check:write",
+        "finops:check:write",
+        "infra:cost:audit:write",
+        "haas:friction:check",
+        "haas:friction:check:write",
+        "legalops:check",
+        "legalops:check:write",
+        "legal:friction:check:write",
+        "secas:supply-chain:check",
+        "secas:approval:check",
+        "secas:vuln-cadence:check"
       ],
       "commands": [
         "baseline start",
-        "baseline session",
-        "Baseline start",
-        "pnpm --dir",
-        "pnpm docs:foundation:check",
-        "pnpm ecosystem:docs:foundation:fleet",
-        "pnpm docs:ia:check",
-        "Baseline today",
-        "pnpm review:multi-pillar:run",
-        "pnpm docs:ia:check:strict",
-        "pnpm docs:fleet:foundation:write",
-        "pnpm docs:reference:decompose",
-        "pnpm docs:business:check",
-        "pnpm docs:business:check:write",
-        "pnpm docs:fleet:business:write",
+        "baseline context",
         "pnpm agent:next-work",
-        "pnpm docs:reference:archive:relocate:write",
-        "baseline and",
-        "pnpm validate:legacy-repo-id",
-        "pnpm validate",
-        "baseline noise",
-        "baseline or",
-        "pnpm secas:pentest:remediation:check:write",
-        "baseline reset",
-        "baseline scaffolding",
-        "pnpm session",
-        "baseline CLI",
         "pnpm ops:check",
-        "baseline session:open-items",
-        "pnpm validate:publish",
-        "baseline artifacts",
-        "pnpm ecosystem:docs:business:fleet",
-        "pnpm docs:fleet:business:upgrade:write",
-        "pnpm docs:architecture:check",
-        "pnpm ecosystem:docs:architecture:fleet",
-        "pnpm docs:fleet:architecture:write",
-        "pnpm docs:fleet:foundation:upgrade:write",
-        "pnpm docs:fleet:architecture:upgrade:write",
-        "pnpm docs:fleet:foundation:check",
-        "pnpm kept"
+        "pnpm agent:protocols:check",
+        "pnpm agent:conduct:check",
+        "pnpm agent:auto-dev:check",
+        "pnpm dev",
+        "baseline session",
+        "baseline next",
+        "baseline gates",
+        "baseline hub",
+        "pnpm session",
+        "pnpm pm:surface-gtm-roadmaps:audit",
+        "pnpm docs:product:check",
+        "pnpm pm:surface-execution:close",
+        "pnpm pm:surface-execution:check",
+        "pnpm pm:surface-forensic-pack:publish",
+        "pnpm pm:surface-forensic-pack:close",
+        "pnpm --dir",
+        "pnpm docs:ia:check",
+        "pnpm docs:tree:check",
+        "pnpm fabric:ops:check",
+        "pnpm fabric:ops:check:strict",
+        "pnpm fabric:ops-contracts:check",
+        "pnpm agile:check",
+        "pnpm ops:consumption:check",
+        "pnpm next",
+        "pnpm gates",
+        "pnpm hub",
+        "pnpm mcp",
+        "baseline to",
+        "baseline wiring",
+        "baseline shapes",
+        "baseline serve",
+        "pnpm serve",
+        "pnpm agent:consumption:check",
+        "pnpm --filter",
+        "baseline mirror",
+        "pnpm docs:pack:pillar-contract:check"
       ]
     },
     "studio": {
@@ -319,8 +283,7 @@
         "folder-spec",
         "docs-integrity-pack",
         "relocation-report",
-        "folder-spec",
-        "deliverable"
+        "folder-spec"
       ],
       "provenanceRequired": true
     },
@@ -331,90 +294,25 @@
       "compliance-audit"
     ],
     "initiatives": [
-      "BL-MPR-01",
-      "BL-MPR-08",
-      "DOC-001",
-      "DOC-FLEET-PUBLISH",
       "DOC-MPR-FLEET-SCRUB-003",
-      "ECO-DOC-001",
-      "ECO-OS-001",
-      "ECO-OS-002",
-      "ECO-OS-SHIP-001",
-      "ECO-PRODUCT",
-      "INIT-001",
-      "INIT-CANON",
-      "INIT-DOC",
-      "INIT-DOC-FLEET-PUBLISH",
-      "INIT-DOCS",
-      "INIT-DOCS-CORE-IA",
-      "INIT-DOCS-CORE-IA-V1",
+      "INIT-AGENT-TOOL-SCOUT",
       "INIT-DOCS-FOUNDATION-IA-V1",
-      "INIT-DOCS-IA-FLEET-ROLLUP",
-      "INIT-DOCS-PROVISIONING",
-      "INIT-DOCS-PROVISIONING-V1",
       "INIT-DOCS-PROVISIONING-V1-W2",
-      "INIT-ECOSYSTEM-OS-MIGRATION",
-      "INIT-ECOSYSTEM-OS-MONOREPO",
-      "INIT-EXECUTIVE-GAP-PROGRAM",
-      "INIT-FLEET-OS-CONTRACT",
+      "INIT-FABRIC-OPS-PRD-ROUTING",
+      "INIT-GTCX-INFRA-DAAS",
       "INIT-GTCX-INFRA-SECAS",
-      "INIT-GTCX-Q3-2026",
+      "INIT-M5-",
       "INIT-PRODUCT-TEAM-MODEL-R5",
-      "XR-303",
-      "XR-516",
       "XR-518",
-      "XR-CANON-FABRIC-INTERACT-001",
-      "XR-CANON-LEGACY-SCRUB-001",
-      "XR-CANON-LEGACY-SCRUB-002"
+      "XR-BRIDGE-TOOL-SCOUT-001"
     ],
     "tags": [
       "docs/business",
       "docs/foundation",
-      "session-corpus",
-      "documentation initiative"
+      "session-corpus"
     ]
   },
   "ingestSignals": [
-    {
-      "id": "initiative:BL-MPR-01",
-      "kind": "initiative",
-      "text": "Active initiative reference: BL-MPR-01",
-      "source": "docs+sessions",
-      "refs": [
-        "BL-MPR-01"
-      ],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:BL-MPR-08",
-      "kind": "initiative",
-      "text": "Active initiative reference: BL-MPR-08",
-      "source": "docs+sessions",
-      "refs": [
-        "BL-MPR-08"
-      ],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:DOC-001",
-      "kind": "initiative",
-      "text": "Active initiative reference: DOC-001",
-      "source": "docs+sessions",
-      "refs": [
-        "DOC-001"
-      ],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:DOC-FLEET-PUBLISH",
-      "kind": "initiative",
-      "text": "Active initiative reference: DOC-FLEET-PUBLISH",
-      "source": "docs+sessions",
-      "refs": [
-        "DOC-FLEET-PUBLISH"
-      ],
-      "confidence": 0.85
-    },
     {
       "id": "initiative:DOC-MPR-FLEET-SCRUB-003",
       "kind": "initiative",
@@ -426,102 +324,102 @@
       "confidence": 0.85
     },
     {
-      "id": "initiative:ECO-DOC-001",
+      "id": "initiative:INIT-AGENT-TOOL-SCOUT",
       "kind": "initiative",
-      "text": "Active initiative reference: ECO-DOC-001",
+      "text": "Active initiative reference: INIT-AGENT-TOOL-SCOUT",
       "source": "docs+sessions",
       "refs": [
-        "ECO-DOC-001"
+        "INIT-AGENT-TOOL-SCOUT"
       ],
       "confidence": 0.85
     },
     {
-      "id": "initiative:ECO-OS-001",
+      "id": "initiative:INIT-DOCS-FOUNDATION-IA-V1",
       "kind": "initiative",
-      "text": "Active initiative reference: ECO-OS-001",
+      "text": "Active initiative reference: INIT-DOCS-FOUNDATION-IA-V1",
       "source": "docs+sessions",
       "refs": [
-        "ECO-OS-001"
+        "INIT-DOCS-FOUNDATION-IA-V1"
       ],
       "confidence": 0.85
     },
     {
-      "id": "initiative:ECO-OS-002",
+      "id": "initiative:INIT-DOCS-PROVISIONING-V1-W2",
       "kind": "initiative",
-      "text": "Active initiative reference: ECO-OS-002",
+      "text": "Active initiative reference: INIT-DOCS-PROVISIONING-V1-W2",
       "source": "docs+sessions",
       "refs": [
-        "ECO-OS-002"
+        "INIT-DOCS-PROVISIONING-V1-W2"
       ],
       "confidence": 0.85
     },
     {
-      "id": "initiative:ECO-OS-SHIP-001",
+      "id": "initiative:INIT-FABRIC-OPS-PRD-ROUTING",
       "kind": "initiative",
-      "text": "Active initiative reference: ECO-OS-SHIP-001",
+      "text": "Active initiative reference: INIT-FABRIC-OPS-PRD-ROUTING",
       "source": "docs+sessions",
       "refs": [
-        "ECO-OS-SHIP-001"
+        "INIT-FABRIC-OPS-PRD-ROUTING"
       ],
       "confidence": 0.85
     },
     {
-      "id": "initiative:ECO-PRODUCT",
+      "id": "initiative:INIT-GTCX-INFRA-DAAS",
       "kind": "initiative",
-      "text": "Active initiative reference: ECO-PRODUCT",
+      "text": "Active initiative reference: INIT-GTCX-INFRA-DAAS",
       "source": "docs+sessions",
       "refs": [
-        "ECO-PRODUCT"
+        "INIT-GTCX-INFRA-DAAS"
       ],
       "confidence": 0.85
     },
     {
-      "id": "initiative:INIT-001",
+      "id": "initiative:INIT-GTCX-INFRA-SECAS",
       "kind": "initiative",
-      "text": "Active initiative reference: INIT-001",
+      "text": "Active initiative reference: INIT-GTCX-INFRA-SECAS",
       "source": "docs+sessions",
       "refs": [
-        "INIT-001"
+        "INIT-GTCX-INFRA-SECAS"
       ],
       "confidence": 0.85
     },
     {
-      "id": "initiative:INIT-CANON",
+      "id": "initiative:INIT-M5-",
       "kind": "initiative",
-      "text": "Active initiative reference: INIT-CANON",
+      "text": "Active initiative reference: INIT-M5-",
       "source": "docs+sessions",
       "refs": [
-        "INIT-CANON"
+        "INIT-M5-"
       ],
       "confidence": 0.85
     },
     {
-      "id": "initiative:INIT-DOC",
+      "id": "initiative:INIT-PRODUCT-TEAM-MODEL-R5",
       "kind": "initiative",
-      "text": "Active initiative reference: INIT-DOC",
+      "text": "Active initiative reference: INIT-PRODUCT-TEAM-MODEL-R5",
       "source": "docs+sessions",
       "refs": [
-        "INIT-DOC"
+        "INIT-PRODUCT-TEAM-MODEL-R5"
       ],
       "confidence": 0.85
     },
     {
-      "id": "initiative:INIT-DOC-FLEET-PUBLISH",
+      "id": "initiative:XR-518",
       "kind": "initiative",
-      "text": "Active initiative reference: INIT-DOC-FLEET-PUBLISH",
+      "text": "Active initiative reference: XR-518",
       "source": "docs+sessions",
       "refs": [
-        "INIT-DOC-FLEET-PUBLISH"
+        "XR-518"
       ],
       "confidence": 0.85
     },
     {
-      "id": "initiative:INIT-DOCS",
+      "id": "initiative:XR-BRIDGE-TOOL-SCOUT-001",
       "kind": "initiative",
-      "text": "Active initiative reference: INIT-DOCS",
+      "text": "Active initiative reference: XR-BRIDGE-TOOL-SCOUT-001",
       "source": "docs+sessions",
       "refs": [
-        "INIT-DOCS"
+        "XR-BRIDGE-TOOL-SCOUT-001"
       ],
       "confidence": 0.85
     },
@@ -533,7 +431,7 @@
       "refs": [
         "platform-engineer"
       ],
-      "confidence": 0.8571428571428572
+      "confidence": 0.9032258064516129
     },
     {
       "id": "lang:docs:foundation:check",
@@ -546,12 +444,62 @@
       "confidence": 0.7
     },
     {
+      "id": "lang:docs:ia:check",
+      "kind": "lang",
+      "text": "Lang expression observed: docs:ia:check",
+      "source": "docs",
+      "refs": [
+        "docs:ia:check"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "lang:docs:tree:check",
+      "kind": "lang",
+      "text": "Lang expression observed: docs:tree:check",
+      "source": "docs",
+      "refs": [
+        "docs:tree:check"
+      ],
+      "confidence": 0.7
+    },
+    {
       "id": "lang:when",
       "kind": "lang",
       "text": "Lang expression observed: when",
       "source": "docs",
       "refs": [
         "when"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "lang:operations:check",
+      "kind": "lang",
+      "text": "Lang expression observed: operations:check",
+      "source": "docs",
+      "refs": [
+        "operations:check"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "lang:fabric:ops-contracts:check",
+      "kind": "lang",
+      "text": "Lang expression observed: fabric:ops-contracts:check",
+      "source": "docs",
+      "refs": [
+        "fabric:ops-contracts:check"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "lang:canon:synthesize",
+      "kind": "lang",
+      "text": "Lang expression observed: canon:synthesize",
+      "source": "docs",
+      "refs": [
+        "canon:synthesize"
       ],
       "confidence": 0.7
     },
@@ -586,91 +534,41 @@
       "confidence": 0.7
     },
     {
-      "id": "lang:cost-route",
-      "kind": "lang",
-      "text": "Lang expression observed: cost-route",
-      "source": "docs",
-      "refs": [
-        "cost-route"
-      ],
-      "confidence": 0.7
-    },
-    {
-      "id": "lang:cost-stats",
-      "kind": "lang",
-      "text": "Lang expression observed: cost-stats",
-      "source": "docs",
-      "refs": [
-        "cost-stats"
-      ],
-      "confidence": 0.7
-    },
-    {
-      "id": "lang:agent:vault:verify",
-      "kind": "lang",
-      "text": "Lang expression observed: agent:vault:verify",
-      "source": "docs",
-      "refs": [
-        "agent:vault:verify"
-      ],
-      "confidence": 0.7
-    },
-    {
-      "id": "lang:ecosystem:repo:report-work",
-      "kind": "lang",
-      "text": "Lang expression observed: ecosystem:repo:report-work",
-      "source": "docs",
-      "refs": [
-        "ecosystem:repo:report-work"
-      ],
-      "confidence": 0.7
-    },
-    {
-      "id": "lang:start",
-      "kind": "lang",
-      "text": "Lang expression observed: start",
-      "source": "docs",
-      "refs": [
-        "start"
-      ],
-      "confidence": 0.7
-    },
-    {
-      "id": "query:7906198",
+      "id": "query:2be8117f",
       "kind": "operator-intent",
-      "text": "complete work",
+      "text": "canon-os is your standards SoR. Every consumer is writes: false — read-only. Link, never fork.\n\n  Resolve, don't copy (paths published in config/ecosystem-central-sor.json):\n  - Protocols → docs/governance/protocols/ (index …/README.md); co",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:7906198",
+      "id": "query:6186ba93",
       "kind": "operator-intent",
-      "text": "complete work",
+      "text": "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:de312ca7",
+      "id": "query:6186ba93",
       "kind": "operator-intent",
-      "text": "continue",
+      "text": "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:b158f775",
+      "id": "query:3abdf7f1",
       "kind": "operator-intent",
-      "text": "execute",
+      "text": "baseline-os is your AI runtime provider + the reference fixture. Run it; copy its shapes; but the standard lives in canon-os, not here.\n\n  (1) Run its CLI — your session spine. Wire via your config/agent-consumption-contract.json: baselineo",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:b158f775",
+      "id": "query:99e55f7d",
       "kind": "operator-intent",
-      "text": "execute",
+      "text": "Align YOUR repo to the fabric-os ops contracts\n  \n  TASK: Ensure this repo has the fabric-os operational contract surface in place. Class R, in-session. Standard SoR: canon-os L1-operations.json; methodology owner: fabric-os. Link, don't fo",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65

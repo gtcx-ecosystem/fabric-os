@@ -1,16 +1,16 @@
 {
-  "startedAt": "2026-06-18T08:37:29.202Z",
+  "startedAt": "2026-06-22T19:48:25.556Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-4742bc52-0605-4a13-96ba-cbe014d12099",
+    "id": "gtcx-agent-aeeab5d6-3cd5-410e-a013-7f9329e1899a",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-3b9d45e0a3ae0d5976de295c2daaf28e-dfc2606c4f19877c-01"
+    "traceparent": "00-b598d18822cb665b441745b4aa112488-0148fcd70c3f3e1d-01"
   },
   "nextWork": {
-    "traceId": "8df1e2cf-eb8f-48d7-b5e7-757caf072397",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=8df1e2cf-eb8f-48d7-b5e7-757caf072397",
+    "traceId": "cc3ec490-3ea5-4524-8df8-ed188ced6048",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=cc3ec490-3ea5-4524-8df8-ed188ced6048",
     "ok": true,
     "backlogClear": false,
     "frame": "development",
@@ -18,11 +18,11 @@
     "repo": "fabric-os",
     "message": "Human gates parallel — implement queue reconciled; see work register.",
     "agentInstructions": [
-      "Milestone drift: rollup 59 < 100. Restore rollup before feature work.",
+      "Milestone drift: composite 59 < 100. Restore composite before feature work.",
       "Phase 4: adopt persona **platform-architect** (development) — read local `/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md` first (docUrl link-only); adopt voice: Systems-oriented, reliability-focused, cost-conscious",
       "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
       "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
-      "Milestone drift: rollup 59 < 100. Restore rollup before feature work.",
+      "Milestone drift: composite 59 < 100. Restore composite before feature work.",
       "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
       "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
       "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
@@ -30,14 +30,14 @@
       "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle.",
       "Do not recycle LAUNCH-PLAN-01 — work register marks LAUNCH-PLAN-01/02/03 done.",
       "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
-      "FORBIDDEN: EXT-REF in SECAS-S2-01 Status Update.",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
       "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
-      "FORBIDDEN: EXT-REF in SECAS-S2-01 Status Update.",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
       "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
       "FORBIDDEN: ### Approval needed for SECAS-S2-01-INGEST / BG-10-10/11 on product repos — Parallel sovereign gates (fabric-os calendar witness only).",
-      "FORBIDDEN: EXT-REF in SECAS-S2-01 Status Update.",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
       "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
       "Product team: **Fabric OS** — primary persona `platform-engineer` — Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
       "Goal orientation: milestone `FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE` — shippable: SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
@@ -48,7 +48,7 @@
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-18T08:37:27.415Z",
+      "provisionedAt": "2026-06-22T19:48:23.498Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
@@ -166,7 +166,7 @@
         "registerOnly": true
       },
       {
-        "gateId": "EXT-REF",
+        "gateId": "EXT-INF-014",
         "authorityClass": "S",
         "blocksIR": false,
         "what": "ZWCMP DPA + pilot agreement signature",
@@ -180,7 +180,7 @@
         "readinessWitness": null
       },
       {
-        "gateId": "EXT-REF",
+        "gateId": "EXT-INF-015",
         "authorityClass": "S",
         "blocksIR": false,
         "what": "Indemnified SLA legal review + insurance quote",
@@ -247,13 +247,13 @@
       "forbiddenReplyPatterns": [
         "Approval needed: SECAS-S2-01-INGEST",
         "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
-        "EXT-REF — ZWCMP",
+        "EXT-INF-013 — ZWCMP",
         "Approval needed: SECAS-S2-01-INGEST",
         "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
-        "EXT-REF — ZWCMP",
+        "EXT-INF-013 — ZWCMP",
         "Approval needed: SECAS-S2-01-INGEST",
         "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
-        "EXT-REF — ZWCMP"
+        "EXT-INF-013 — ZWCMP"
       ]
     },
     "gateExplainer": {
@@ -270,11 +270,11 @@
           "blocksIR": false,
           "doesNotBlock": "SECAS-S2-01",
           "phase": "internal_closure_complete",
-          "what": "Vendor security-test report file arrives; operator authorizes ingest into fabric-os evidence path",
+          "what": "Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path",
           "why": "Agent cannot receive or ingest vendor security artifact before the execution window closes",
           "when": "Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21)",
           "implication": "No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands",
-          "who": "External security-test vendor delivers report; fabric-os operator runs ingest ceremony",
+          "who": "External pen-test vendor delivers report; fabric-os operator runs ingest ceremony",
           "unblockAction": "Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21",
           "statusUpdateSection": "Parallel sovereign gates"
         },
@@ -288,7 +288,7 @@
           "why": "Agent cannot pull forward vendor execution or receive report before window",
           "when": "2026-06-17..2026-06-21",
           "implication": "Witness prep and friction checks continue; ingest blocked until report delivery",
-          "who": "External security-test vendor",
+          "who": "External pen-test vendor",
           "unblockAction": "Vendor report delivery; ingest post 2026-06-21",
           "statusUpdateSection": "Parallel sovereign gates"
         },
@@ -300,8 +300,8 @@
           "doesNotBlock": "SECAS-S2-01",
           "what": "SOC 2 Type I opinion letter from auditor",
           "why": "Agent cannot countersign or synthesize auditor attestation",
-          "when": "Parallel track — not on SECAS security-test calendar",
-          "implication": "Does not block security-test window prep or fleet program office queue",
+          "when": "Parallel track — not on SECAS pen-test calendar",
+          "implication": "Does not block pen-test window prep or fleet program office queue",
           "who": "External auditor",
           "unblockAction": "Auditor opinion letter to compliance evidence path",
           "statusUpdateSection": "Parallel sovereign gates"
@@ -319,15 +319,15 @@
       ],
       "forbiddenSections": [],
       "forbiddenGateIds": [
-        "EXT-REF"
+        "EXT-INF-013"
       ],
       "forbiddenPhrases": [
         "Approval needed: SECAS-S2-01-INGEST",
         "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
         "omit in bridge/agile/canon"
       ],
-      "parallelSovereignGatesMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor security-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS security-test calendar · **Implication:** Does not block security-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
-      "postLaunchExternalMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor security-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS security-test calendar · **Implication:** Does not block security-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
+      "parallelSovereignGatesMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS pen-test calendar · **Implication:** Does not block pen-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
+      "postLaunchExternalMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS pen-test calendar · **Implication:** Does not block pen-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
       "rule": "Copy postLaunchExternalMarkdown under ### Parallel sovereign gates — FORBIDDEN on product/engineering roadmaps"
     },
     "proceedBriefGuard": {
@@ -731,30 +731,30 @@
       },
       "forbiddenInNextWorkItem": [
         "audit triage",
-        "security-test SOW",
+        "pen-test SOW",
         "legal approval",
         "doc promotion implement"
       ]
     },
     "compositeDrift": {
-      "schema": "gtcx://bridge-os/rollup-drift/v1",
+      "schema": "gtcx://bridge-os/composite-drift/v1",
       "current": 59,
       "required": 100,
       "milestone": "SECAS-S4-supply-chain",
       "forced": true
     },
     "next": {
-      "storyId": "ROLLUP-RESTORE-100",
-      "title": "Restore rollup ≥100 (current 59) — SECAS-S4-supply-chain"
+      "storyId": "COMPOSITE-RESTORE-100",
+      "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain"
     },
     "nextWorkItem": {
       "type": "story",
       "typeLabel": "Story",
-      "id": "ROLLUP-RESTORE-100",
-      "title": "Restore rollup ≥100 (current 59) — SECAS-S4-supply-chain",
+      "id": "COMPOSITE-RESTORE-100",
+      "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain",
       "owner": "fabric-os",
       "state": "in_progress",
-      "because": "rollup 59 < 100 for milestone SECAS-S4-supply-chain · traces PROG-CONTINENTAL-CAPITAL",
+      "because": "composite 59 < 100 for milestone SECAS-S4-supply-chain · traces PROG-CONTINENTAL-CAPITAL",
       "gtmTrace": true,
       "programmeId": "PROG-SECAS-ENGINEERING",
       "milestoneId": "SECAS-S4-supply-chain",
@@ -779,7 +779,7 @@
             "actual": "PASS"
           },
           {
-            "id": "rollup-85",
+            "id": "composite-85",
             "label": "Composite ≥85",
             "check": "composite85"
           },
@@ -793,12 +793,12 @@
     },
     "selection": {
       "tier": "milestone-drift",
-      "reason": "Rollup drift — 59/100"
+      "reason": "Composite drift — 59/100"
     },
     "goalTrace": {
       "schema": "gtcx://bridge-os/goal-trace/v2.1",
       "repo": "fabric-os",
-      "nextStoryId": "ROLLUP-RESTORE-100",
+      "nextStoryId": "COMPOSITE-RESTORE-100",
       "headStoryId": "XR-FABRIC-SESSION-OPEN-004",
       "headProgrammeId": "PROG-CONTINENTAL-CAPITAL",
       "headProductRepo": "markets-os",
@@ -858,7 +858,7 @@
             "actual": "PASS"
           },
           {
-            "id": "rollup-85",
+            "id": "composite-85",
             "label": "Composite ≥85",
             "check": "composite85"
           },
@@ -877,8 +877,8 @@
       "phase": "far",
       "escalate": false,
       "backlogClear": false,
-      "manifestPct": 50,
-      "openAutomatable": 12,
+      "manifestPct": 48,
+      "openAutomatable": 13,
       "automatableExhausted": false,
       "sessionOpenItemsCount": 0,
       "protocol": "pm/spec/backlog-clear-approach-protocol.json",
@@ -890,7 +890,7 @@
       "institutional": "platform-architect",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703",
-      "readAt": "2026-06-18T08:36:32.220Z"
+      "readAt": "2026-06-22T19:13:39.540Z"
     },
     "engineeringLaneAbstraction": {
       "applies": false,
@@ -904,21 +904,12 @@
       "forbiddenAsNextWorkItem": [
         "XR-516"
       ],
-      "engineeringRedirect": {
-        "type": "Fleet owner engineering",
-        "id": "FLEET-OWNER-markets-os",
-        "storyId": "AFM-REG-003",
-        "title": "Continental capital + digital-rail Wave 0",
-        "ownerRepo": "markets-os",
-        "owner": "markets-os",
-        "p22Command": "pnpm --dir ../markets-os agent:next-work --json",
-        "switchWorkspace": true,
-        "because": "Sprint 86 AFM-REG-003; ADR-0007 Class A parallel; Wave 0 owner repos",
-        "source": "fleet-live-programmes"
-      },
-      "rule": "Class S / human / legal / security register rows → Parallel sovereign gates or register witness — never Next work item for engineering"
+      "localAgileAnchor": true,
+      "sessionPriorityLocked": false,
+      "engineeringRedirectSuppressed": true,
+      "rule": "Local agile P22 anchor — fleet engineeringRedirect deferred (ACOM-WI-002 / product-repo local next)"
     },
-    "engineeringRedirect": {
+    "deferredFleetRedirect": {
       "type": "Fleet owner engineering",
       "id": "FLEET-OWNER-markets-os",
       "storyId": "AFM-REG-003",
@@ -928,7 +919,9 @@
       "p22Command": "pnpm --dir ../markets-os agent:next-work --json",
       "switchWorkspace": true,
       "because": "Sprint 86 AFM-REG-003; ADR-0007 Class A parallel; Wave 0 owner repos",
-      "source": "fleet-live-programmes"
+      "source": "fleet-live-programmes",
+      "placement": "Deferred — not Next work item",
+      "reason": "Owner repo has local P22 next — fleet live programmes are context only"
     },
     "registerWitness": {
       "parallelClassS": [
@@ -947,7 +940,7 @@
           "inboundTicket": "canon-os/ops/gtm/inbound-tickets/to-human-xr-516-*.md"
         },
         {
-          "gateId": "EXT-REF",
+          "gateId": "EXT-INF-014",
           "authorityClass": "S",
           "blocksIR": false,
           "status": "open",
@@ -962,7 +955,7 @@
           "readinessWitness": null
         },
         {
-          "gateId": "EXT-REF",
+          "gateId": "EXT-INF-015",
           "authorityClass": "S",
           "blocksIR": false,
           "status": "open",
@@ -1011,21 +1004,16 @@
       "placement": "Parallel sovereign gates — not Next work item"
     },
     "statusUpdateSections": {
-      "parallelSovereignGates": "- **Class S** · `XR-516` · **Lane:** partnerships · **What:** SPEC §17 co-author sign-off · **Unblock:** ecosystem-os/ops/gtm/inbound-tickets/to-human-xr-516-spec17-signoff-2026-06-12.md · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-REF` · **Lane:** partnerships · **What:** ZWCMP DPA + pilot agreement signature · **Unblock:** Sign DPA + pilot PDFs; file under audit/vendor-outreach/zwcmp/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-REF` · **Lane:** legal · **What:** Indemnified SLA legal review + insurance quote · **Unblock:** Legal memo + insurance quote on verification-sla-draft.md base · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `BM-ZM-PILOT-01` · **Lane:** partnerships · **What:** Zambia MMMD 60-day pilot contract or countersigned LOI · **Unblock:** Countersign 60-day MMMD pilot contract or LOI; file witness under audit/vendor-outreach/zm-mmmd/ · **blocksIR:** false · **Does not block:** `BM-P1-zambia-pilot` · **Readiness:** `terra-os/audit/evidence/pilot-zambia-readiness-latest.json`\n- **Class S** · `BL-SOC2-01` · **Lane:** compliance · **What:** SOC 2 Type II auditor opinion track · **Unblock:** Auditor publishes Type I/II opinion letter — witness under audit/evidence/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`"
+      "parallelSovereignGates": "- **Class S** · `XR-516` · **Lane:** partnerships · **What:** SPEC §17 co-author sign-off · **Unblock:** ecosystem-os/ops/gtm/inbound-tickets/to-human-xr-516-spec17-signoff-2026-06-12.md · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-INF-014` · **Lane:** partnerships · **What:** ZWCMP DPA + pilot agreement signature · **Unblock:** Sign DPA + pilot PDFs; file under audit/vendor-outreach/zwcmp/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-INF-015` · **Lane:** legal · **What:** Indemnified SLA legal review + insurance quote · **Unblock:** Legal memo + insurance quote on verification-sla-draft.md base · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `BM-ZM-PILOT-01` · **Lane:** partnerships · **What:** Zambia MMMD 60-day pilot contract or countersigned LOI · **Unblock:** Countersign 60-day MMMD pilot contract or LOI; file witness under audit/vendor-outreach/zm-mmmd/ · **blocksIR:** false · **Does not block:** `BM-P1-zambia-pilot` · **Readiness:** `terra-os/audit/evidence/pilot-zambia-readiness-latest.json`\n- **Class S** · `BL-SOC2-01` · **Lane:** compliance · **What:** SOC 2 Type II auditor opinion track · **Unblock:** Auditor publishes Type I/II opinion letter — witness under audit/evidence/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`"
+    },
+    "p22SelectionPolicy": {
+      "schema": "gtcx://bridge-os/p22-local-agile-anchor/v1",
+      "rule": "Product repo local next wins — engineeringRedirect moved to deferredFleetRedirect",
+      "localNext": "COMPOSITE-RESTORE-100"
     },
     "hubScopeGuard": {
       "ok": true,
       "applies": false
-    },
-    "fleetOwnerRedirect": {
-      "ownerRepo": "markets-os",
-      "storyId": "AFM-REG-003",
-      "title": "Continental capital + digital-rail Wave 0",
-      "p22Command": "pnpm --dir ../markets-os agent:next-work --json",
-      "because": "Sprint 86 AFM-REG-003; ADR-0007 Class A parallel; Wave 0 owner repos",
-      "switchWorkspace": true,
-      "notNextWorkItemInHub": false,
-      "hubRegisterOnly": false
     }
   },
   "modelProfile": null,
@@ -1036,6 +1024,6 @@
     "witness": null,
     "error": "baselineos CLI not built"
   },
-  "gitChanged": 37,
+  "gitChanged": 33,
   "authorityClass": "R"
 }

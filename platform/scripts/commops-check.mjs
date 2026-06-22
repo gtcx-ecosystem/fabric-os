@@ -16,7 +16,10 @@ const JSON_OUT = process.argv.includes('--json');
 const SPEC = join(ROOT, 'machine/spec/commops-as-a-service.json');
 const SUBSTRATE = join(ROOT, 'machine/commops-substrate-contract.json');
 const REGISTER = join(ROOT, 'machine/commops-friction-register.json');
-const OPS = join(ROOT, 'docs/operations/commops-as-a-service.md');
+const OPS_CANDIDATES = [
+  'docs/operations/commops-as-a-service.md',
+  'docs/operations/runbooks/commops-as-a-service.md',
+];
 const DELIV = join(ROOT, 'audit/evidence/commops-deliverability-latest.json');
 
 function openP0() {
@@ -33,7 +36,7 @@ function runDeliverability() {
 
 const gates = {
   spec: { ok: existsSync(SPEC) },
-  opsDoc: { ok: existsSync(OPS) },
+  opsDoc: { ok: OPS_CANDIDATES.some((rel) => existsSync(join(ROOT, rel))) },
   frictionRegister: { ok: existsSync(REGISTER) },
   substrateContract: { ok: existsSync(SUBSTRATE) },
   deliverabilityWitness: { ok: existsSync(DELIV) },

@@ -16,7 +16,10 @@ const JSON_OUT = process.argv.includes('--json');
 
 const SPEC = join(ROOT, 'machine/spec/finops-as-a-service.json');
 const REGISTER = join(ROOT, 'machine/finops-friction-register.json');
-const OPS = join(ROOT, 'docs/operations/finops-as-a-service.md');
+const OPS_CANDIDATES = [
+  'docs/operations/finops-as-a-service.md',
+  'docs/operations/runbooks/finops-as-a-service.md',
+];
 const INFRA_WITNESS = join(ROOT, 'audit/evidence/infra-aws-cost-optimization-latest.json');
 
 function openP0() {
@@ -33,7 +36,7 @@ function runInfraAudit() {
 
 const gates = {
   spec: { ok: existsSync(SPEC) },
-  opsDoc: { ok: existsSync(OPS) },
+  opsDoc: { ok: OPS_CANDIDATES.some((rel) => existsSync(join(ROOT, rel))) },
   frictionRegister: { ok: existsSync(REGISTER) },
   policySoR: { ok: existsSync(join(BRIDGE, 'machine/spec/environment-cost-policy.json')) },
   governanceSoR: { ok: existsSync(join(BRIDGE, 'machine/spec/aws-cost-governance.json')) },

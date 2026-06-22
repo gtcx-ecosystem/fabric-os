@@ -4,7 +4,7 @@
   "updated": "2026-06-17",
   "owner": "fabric-os",
   "initiative": "INIT-FABRIC-OPS-COO-W1",
-  "principle": "Reason layer — every open item links frictionRef to a lane register. Registers are sense; this backlog is reason; REM-* in owner pm/ is act.",
+  "principle": "Reason layer — every open item links frictionRef to a lane register. Registers are sense; this backlog is reason; REM-* in owner machine/ is act.",
   "items": [
     {
       "id": "OPS-COO-W1-001",
@@ -17,7 +17,7 @@
       "authorityClass": "R",
       "blocksIR": false,
       "acceptance": "populate script + ESO cutover per product repo",
-      "register": "pm/commops-friction-register.json",
+      "register": "machine/commops-friction-register.json",
       "closedAt": "2026-06-17",
       "note": "populate-commops-staging-sm.sh · terra-os pilot ESO · commops:substrate:readiness PASS"
     },
@@ -32,7 +32,7 @@
       "authorityClass": "R",
       "blocksIR": false,
       "acceptance": "commops-deliverability-check PASS with live bounce webhook",
-      "register": "pm/commops-friction-register.json",
+      "register": "machine/commops-friction-register.json",
       "closedAt": "2026-06-17",
       "note": "deploy/kubernetes/overlays/staging/commops · commops:deliverability:check PASS"
     },
@@ -40,13 +40,13 @@
       "id": "OPS-COO-W1-003",
       "frictionRef": null,
       "lane": "FleetOps",
-      "title": "COO Wave 1 — pilot ops:consumption:check on markets-os, terminal-os, baseline-os",
+      "title": "COO Wave 1 — pilot operations:consumption:check on markets-os, terminal-os, baseline-os",
       "priority": "P0",
       "status": "done",
       "ownerRepo": "fabric-os",
       "authorityClass": "R",
       "blocksIR": false,
-      "acceptance": "ops:consumption:check exit 0 on three pilot repos",
+      "acceptance": "operations:consumption:check exit 0 on three pilot repos",
       "closedAt": "2026-06-17",
       "note": "Programme item — pilot green on markets-os, terminal-os, baseline-os",
       "programmeItem": true
@@ -55,7 +55,7 @@
       "id": "OPS-COO-W2-001",
       "frictionRef": null,
       "lane": "FleetOps",
-      "title": "COO Wave 2 — fleet-wide ops-pack.json + ops:consumption:check stubs",
+      "title": "COO Wave 2 — fleet-wide ops-pack.json + operations:consumption:check stubs",
       "priority": "P0",
       "status": "done",
       "ownerRepo": "fabric-os",
@@ -79,22 +79,22 @@
       "acceptance": "ecosystem:ops-ceremony:review:write PASS with substance checks",
       "programmeItem": true,
       "closedAt": "2026-06-17",
-      "note": "run-ops-ceremony-cadence.mjs + substance evaluator; witness pm/ci/ops-ceremony-cadence-latest.json"
+      "note": "run-ops-ceremony-cadence.mjs + substance evaluator; witness machine/ci/ops-ceremony-cadence-latest.json"
     },
     {
       "id": "OPS-COO-W2-003",
       "frictionRef": null,
       "lane": "FleetOps",
-      "title": "COO Wave 2 — strict lane rollup 17/17 (fabric:ops:check:strict green)",
+      "title": "COO Wave 2 — strict lane rollup 17/17 (fabric:operations:check:strict green)",
       "priority": "P1",
       "status": "done",
       "ownerRepo": "fabric-os",
       "authorityClass": "R",
       "blocksIR": false,
-      "acceptance": "ecosystem:ops-lanes-11pr rollup ok:true · fabric:ops:check:strict exit 0",
+      "acceptance": "ecosystem:ops-lanes-11pr rollup ok:true · fabric:operations:check:strict exit 0",
       "programmeItem": true,
       "closedAt": "2026-06-17",
-      "note": "resolveRegisterPath bridge-os fix · ops doc pointers · ecosystem:fabric:check 20/20 · fabric:ops:check:strict exit 0 (~206s)"
+      "note": "resolveRegisterPath bridge-os fix · ops doc pointers · ecosystem:fabric:check 20/20 · fabric:operations:check:strict exit 0 (~206s)"
     }
   ]
 }

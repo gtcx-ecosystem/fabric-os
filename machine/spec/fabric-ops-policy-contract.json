@@ -4,7 +4,7 @@
   "updated": "2026-06-18",
   "ownerRepo": "fabric-os",
   "contractPath": "fabric-os/pm/spec/fabric-ops-policy-contract.json",
-  "localContractPath": "ops/fabric-contract.json",
+  "localContractPath": "operations/fabric-contract.json",
   "witnessPath": "audit/evidence/fabric-ops-policy-contract-latest.json",
   "purpose": "Enforce local repo synchronization with centralized Fabric OS operational policies and ops functions.",
   "requiredDomains": [
@@ -13,7 +13,7 @@
       "label": "Compliance policy and evidence",
       "centralRef": "fabric-os/ops/compliance/manifest.json",
       "requiredLocalRefs": [
-        "ops/compliance/manifest.json",
+        "operations/compliance/manifest.json",
         "audit/evidence/compliance-pillar-latest.json"
       ]
     },
@@ -21,7 +21,7 @@
       "id": "apiTokens",
       "label": "API token and secret handling",
       "centralRef": "fabric-os/ops/security/narrative/secrets-management.md",
-      "requiredLocalRefs": ["ops/security/manifest.json", "config/ops.manifest.json"]
+      "requiredLocalRefs": ["operations/security/manifest.json", "config/ops.manifest.json"]
     },
     {
       "id": "deployment",
@@ -34,7 +34,7 @@
       "label": "Security posture and incident controls",
       "centralRef": "fabric-os/ops/security/manifest.json",
       "requiredLocalRefs": [
-        "ops/security/manifest.json",
+        "operations/security/manifest.json",
         "SECURITY.md",
         "docs/operations/repo/SECURITY.md"
       ]
@@ -43,7 +43,10 @@
       "id": "observability",
       "label": "Operational observability and readiness",
       "centralRef": "fabric-os/ops/attestation/manifest.json",
-      "requiredLocalRefs": ["ops/attestation/manifest.json", "docs/operations/observability.md"]
+      "requiredLocalRefs": [
+        "operations/attestation/manifest.json",
+        "docs/operations/observability.md"
+      ]
     },
     {
       "id": "evidence",
@@ -58,7 +61,11 @@
       "id": "opsConsumption",
       "label": "COO ops consumption",
       "centralRef": "fabric-os/ops/coo.md",
-      "requiredLocalRefs": ["ops/coo.md", "pm/spec/ops-pack.json", "ops/manifest.json"]
+      "requiredLocalRefs": [
+        "operations/coo.md",
+        "machine/spec/ops-pack.json",
+        "operations/manifest.json"
+      ]
     }
   ],
   "fleetRepos": [

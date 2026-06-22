@@ -4,11 +4,11 @@
   "updated": "2026-06-19",
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "protocol": "docs/governance/protocols/48-docs-provisioning-standard/protocol.md",
-  "rootContractSpec": "pm/spec/docs-root-contract.json",
+  "rootContractSpec": "machine/spec/docs-root-contract.json",
   "title": "Docs tree spec — composed from per-folder specs (when approved)",
-  "principle": "Composed from pm/spec/docs-folders/ one folder at a time. Do not enforce until INDEX queue entries are approved. Specs use updated date only — no semver version fields.",
+  "principle": "Composed from machine/spec/docs-folders/ one folder at a time. Do not enforce until INDEX queue entries are approved. Specs use updated date only — no semver version fields.",
   "incrementalProgram": {
-    "index": "pm/spec/docs-folders/INDEX.json",
+    "index": "machine/spec/docs-folders/INDEX.json",
     "next": "01-foundation",
     "composeWhen": "all required folder specs status approved"
   },
@@ -20,29 +20,32 @@
     "profile → required layers"
   ],
   "composeLayerDetailFrom": [
-    "pm/spec/docs-foundation-pack.json",
-    "pm/spec/docs-business-pack.json",
-    "pm/spec/docs-architecture-pack.json",
-    "pm/spec/docs-product-pack.json",
-    "pm/spec/docs-roadmap-pack.json",
-    "pm/spec/docs-operations-pack.json"
+    "machine/spec/docs-foundation-pack.json",
+    "machine/spec/docs-business-pack.json",
+    "machine/spec/docs-architecture-pack.json",
+    "machine/spec/docs-product-pack.json",
+    "machine/spec/docs-roadmap-pack.json",
+    "machine/spec/docs-operations-pack.json"
   ],
   "repoRootHubs": {
     "outsideDocs": [
-      { "id": "agile", "path": "agile/", "pack": "pm/spec/agile-pack.json" },
-      { "id": "agents", "path": "agents/", "pack": "pm/spec/agents-pack.json" }
+      { "id": "agile", "path": "agile/", "pack": "machine/spec/agile-pack.json" },
+      { "id": "agents", "path": "agents/", "pack": "machine/spec/agents-pack.json" }
     ],
     "forbiddenUnderDocs": ["docs/agile", "docs/agents"]
   },
   "universal": {
     "rootContract": {
-      "spec": "pm/spec/docs-root-contract.json",
+      "spec": "machine/spec/docs-root-contract.json",
       "principle": "thin instances — link fleet SoR; repo-specific substance only",
       "templates": "docs/reference/templates/docs/types/"
     },
     "docsRootRequired": [
       { "path": "docs/README.md", "role": "human map — profile, layer table, central IA links" },
-      { "path": "docs/INDEX.md", "role": "agent manifest — forbidden paths, sor note, fleet read-order link" },
+      {
+        "path": "docs/INDEX.md",
+        "role": "agent manifest — forbidden paths, sor note, fleet read-order link"
+      },
       { "path": "docs/sor.json", "role": "machine SoR — repoKind, path variants" },
       { "path": "docs/conventions.md", "role": "repo deltas + link to hub naming law" },
       { "path": "docs/CHANGELOG.md", "role": "structural changelog only" }
@@ -50,13 +53,7 @@
     "docsRootRequiredHubOnly": [
       { "path": "docs/FOLDER-SPEC.md", "role": "root provisioning mirror — canon-os only" }
     ],
-    "layerRootAllowlist": [
-      "README.md",
-      "FOLDER-SPEC.md",
-      "scorecard.md",
-      "index.md",
-      "INDEX.md"
-    ],
+    "layerRootAllowlist": ["README.md", "FOLDER-SPEC.md", "scorecard.md", "index.md", "INDEX.md"],
     "foundationRootExtra": [
       "constitution.md",
       "manifesto.md",
@@ -78,7 +75,7 @@
       "exemptBasenames": ["CHANGELOG.md"],
       "exemptRoles": ["README.md", "FOLDER-SPEC.md", "INDEX.md", "index.md"],
       "pointerStatusExempt": true,
-      "registry": "pm/spec/docs-document-types.json"
+      "registry": "machine/spec/docs-document-types.json"
     },
     "allowedNestedDirPatterns": [
       "^slice-\\d{2}$",

@@ -14,7 +14,7 @@
       "status": "catalog",
       "coveragePercent": 50,
       "evidence": "audit/evidence/demo-readiness-fabric-os.json",
-      "specRef": "pm/product/prds/prd-product-charter.md",
+      "specRef": "machine/product/prds/prd-product-charter.md",
       "pillars": ["F4", "T7", "T10"],
       "plane": "product",
       "persona": "product-engineer",

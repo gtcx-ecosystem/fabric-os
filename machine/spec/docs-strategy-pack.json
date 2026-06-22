@@ -5,11 +5,9 @@
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "title": "Docs strategy pack — 11-pillar flat primitive (fleet)",
   "principle": "Strategy synthesizes how we win — one flat essay per strategic theme derived from 11PR. BMC → business primitive. Capability matrix / INIT bodies → product/roadmap/. Architecture bodies → architecture primitive. No GTM function silos (sales/, partnerships/).",
-  "pathVariants": [
-    "docs/primitives/strategy/"
-  ],
+  "pathVariants": ["docs/primitives/strategy/"],
   "parentNest": "09-primitives-nest",
-  "centralFolderSpec": "pm/spec/docs-folders/10-strategy.json",
+  "centralFolderSpec": "machine/spec/docs-folders/10-strategy.json",
   "requiredRootFiles": [
     {
       "path": "docs/strategy/README.md",
@@ -18,90 +16,55 @@
     {
       "path": "docs/strategy/market-thesis.md",
       "role": "P7 Commercial · P6 Creativity — category, timing, why now",
-      "primaryPillars": [
-        "commercialValue",
-        "creativityInnovation"
-      ]
+      "primaryPillars": ["commercialValue", "creativityInnovation"]
     },
     {
       "path": "docs/strategy/competitive-position.md",
       "role": "P8 Moat · P4 World-class — differentiation and category bar",
-      "primaryPillars": [
-        "defensiveMoat",
-        "worldClass"
-      ]
+      "primaryPillars": ["defensiveMoat", "worldClass"]
     },
     {
       "path": "docs/strategy/customer-strategy.md",
       "role": "P7 Commercial · P5 Trust — ICP, JTBD, buying committee",
-      "primaryPillars": [
-        "commercialValue",
-        "trustAndSafety"
-      ]
+      "primaryPillars": ["commercialValue", "trustAndSafety"]
     },
     {
       "path": "docs/strategy/go-to-market.md",
       "role": "P7 Commercial · P10 Integration — motions, channels, ecosystem GTM",
-      "primaryPillars": [
-        "commercialValue",
-        "ecosystemIntegration"
-      ]
+      "primaryPillars": ["commercialValue", "ecosystemIntegration"]
     },
     {
       "path": "docs/strategy/growth-strategy.md",
       "role": "P7 Commercial · P4 World-class · P10 Integration — scale, expansion loops, fleet adoption",
-      "primaryPillars": [
-        "commercialValue",
-        "worldClass",
-        "ecosystemIntegration"
-      ]
+      "primaryPillars": ["commercialValue", "worldClass", "ecosystemIntegration"]
     },
     {
       "path": "docs/strategy/global-south-strategy.md",
       "role": "P7 Commercial · P5 Trust · P6 Creativity — inclusive growth, emerging markets, local resilience",
-      "primaryPillars": [
-        "commercialValue",
-        "trustAndSafety",
-        "creativityInnovation"
-      ]
+      "primaryPillars": ["commercialValue", "trustAndSafety", "creativityInnovation"]
     },
     {
       "path": "docs/strategy/value-and-proof.md",
       "role": "P8 Moat · P11 IP magic · P3 Craft — narrative, proof, quality bar",
-      "primaryPillars": [
-        "defensiveMoat",
-        "ipMagic",
-        "craft"
-      ]
+      "primaryPillars": ["defensiveMoat", "ipMagic", "craft"]
     },
     {
       "path": "docs/strategy/innovation-thesis.md",
       "role": "P6 Creativity · P9 Agentic — strategic bets and agentic edge",
-      "primaryPillars": [
-        "creativityInnovation",
-        "agenticEmpowerment"
-      ]
+      "primaryPillars": ["creativityInnovation", "agenticEmpowerment"]
     },
     {
       "path": "docs/strategy/trust-and-compliance-strategy.md",
       "role": "P1 Compliance · P5 Trust — regulatory posture and market entry",
-      "primaryPillars": [
-        "compliance",
-        "trustAndSafety"
-      ]
+      "primaryPillars": ["compliance", "trustAndSafety"]
     },
     {
       "path": "docs/strategy/technical-credibility.md",
       "role": "P2 TE · P3 Craft — technical differentiation for market",
-      "primaryPillars": [
-        "technicalExcellence",
-        "craft"
-      ]
+      "primaryPillars": ["technicalExcellence", "craft"]
     }
   ],
-  "allowedRootExtras": [
-    "scorecard.md"
-  ],
+  "allowedRootExtras": ["scorecard.md"],
   "forbiddenSubfolders": {
     "narrative": {
       "reason": "Decomposed — foundation + architecture + product/roadmap"
@@ -181,16 +144,11 @@
   },
   "referenceImpl": "baseline-os/pm/spec/docs-strategy-pack.json",
   "fractalMpr": {
-    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "policy": "machine/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-strategy-layer-latest.json",
     "scorecard": "docs/business/scorecard.md",
-    "scorecardVariants": [
-      "docs/strategy/scorecard.md"
-    ],
-    "rollupFrom": [
-      "file",
-      "folder"
-    ],
+    "scorecardVariants": ["docs/strategy/scorecard.md"],
+    "rollupFrom": ["file", "folder"],
     "scorecardIsReadOnlyRollup": true
   },
   "pillarContract": {
@@ -200,35 +158,23 @@
         "docs/strategy/trust-and-compliance-strategy.md",
         "docs/strategy/global-south-strategy.md"
       ],
-      "gates": [
-        "pnpm docs:strategy:check"
-      ],
+      "gates": ["pnpm docs:strategy:check"],
       "witness": "audit/evidence/mpr-strategy-layer-latest.json"
     },
     "technicalExcellence": {
       "secondary": true,
-      "artifacts": [
-        "docs/strategy/technical-credibility.md",
-        "docs/primitives/architecture/"
-      ],
+      "artifacts": ["docs/strategy/technical-credibility.md", "docs/primitives/architecture/"],
       "witness": "audit/evidence/mpr-strategy-layer-latest.json"
     },
     "craft": {
       "secondary": true,
-      "artifacts": [
-        "docs/strategy/value-and-proof.md"
-      ],
-      "gates": [
-        "one SoR — no duplicate of product/roadmap bodies"
-      ],
+      "artifacts": ["docs/strategy/value-and-proof.md"],
+      "gates": ["one SoR — no duplicate of product/roadmap bodies"],
       "witness": "audit/evidence/mpr-strategy-layer-latest.json"
     },
     "worldClass": {
       "primary": true,
-      "artifacts": [
-        "docs/strategy/competitive-position.md",
-        "docs/strategy/growth-strategy.md"
-      ],
+      "artifacts": ["docs/strategy/competitive-position.md", "docs/strategy/growth-strategy.md"],
       "witness": "audit/evidence/mpr-strategy-layer-latest.json"
     },
     "trustAndSafety": {
@@ -272,9 +218,7 @@
     },
     "agenticEmpowerment": {
       "secondary": true,
-      "artifacts": [
-        "docs/strategy/innovation-thesis.md"
-      ],
+      "artifacts": ["docs/strategy/innovation-thesis.md"],
       "witness": "audit/evidence/mpr-strategy-layer-latest.json"
     },
     "ecosystemIntegration": {
@@ -288,9 +232,7 @@
     },
     "ipMagic": {
       "secondary": true,
-      "artifacts": [
-        "docs/strategy/value-and-proof.md"
-      ],
+      "artifacts": ["docs/strategy/value-and-proof.md"],
       "reason": "Deep IP / UAT magic scored in docs/product/canon/",
       "witness": "audit/evidence/mpr-strategy-layer-latest.json"
     }

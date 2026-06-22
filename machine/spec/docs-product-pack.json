@@ -3,12 +3,12 @@
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "title": "Docs product pack — fabric-os",
-  "principle": "docs/product/ = UX narrative ONLY (docs/product/ux/). PRDs → pm/product/prds/. Ceremony → agile/. Requirements → docs/architecture/requirements/. See hub-separation-matrix.json.",
-  "separationMatrix": "pm/spec/repo-provisioning/hub-separation-matrix.json",
+  "principle": "docs/product/ = UX narrative ONLY (docs/product/ux/). PRDs → machine/product/prds/. Ceremony → agile/. Requirements → docs/architecture/requirements/. See hub-separation-matrix.json.",
+  "separationMatrix": "machine/spec/repo-provisioning/hub-separation-matrix.json",
   "requiredRootFiles": [
     {
       "path": "docs/product/README.md",
-      "role": "index + separation table (ux ↔ agile ↔ pm/product)"
+      "role": "index + separation table (ux ↔ agile ↔ machine/product)"
     },
     {
       "path": "docs/product/FOLDER-SPEC.md",
@@ -35,7 +35,7 @@
       "forbidden": [
         "Customer / ICP / buyer prose — docs/business/customers/",
         "UAT scenarios — agile/qa-uat.md",
-        "PRD bodies — pm/product/prds/",
+        "PRD bodies — machine/product/prds/",
         "Functional requirements catalog — docs/architecture/requirements/"
       ]
     }
@@ -62,7 +62,7 @@
       "reason": "CER-001 hub-separation"
     },
     "prds": {
-      "migrateTo": "pm/product/prds/",
+      "migrateTo": "machine/product/prds/",
       "reason": "PRD-001 hub-separation"
     },
     "research": {
@@ -100,7 +100,7 @@
     }
   },
   "crossReference": {
-    "spec": "pm/spec/docs-layer-cross-reference.json",
+    "spec": "machine/spec/docs-layer-cross-reference.json",
     "foundationLinks": [
       {
         "foundation": "goals.md",
@@ -201,7 +201,7 @@
     }
   },
   "fractalMpr": {
-    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "policy": "machine/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-product-layer-latest.json",
     "scorecard": "docs/product/scorecard.md",
     "rollupFrom": ["file", "folder"],

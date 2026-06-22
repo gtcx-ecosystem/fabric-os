@@ -16,17 +16,17 @@
     "T10": "ecosystemIntegration",
     "T11": "ipMagic"
   },
-  "prdIndex": "pm/product/prd-index.json",
-  "syncCommand": "pnpm pm:feature-matrix:sync",
+  "prdIndex": "machine/product/prd-index.json",
+  "syncCommand": "pnpm machine:feature-matrix:sync",
   "featureCount": 6,
   "shards": [
-    "pm/spec/feature-registry/shards/shard-01-core-capabilities.json",
-    "pm/spec/feature-registry/shards/shard-02-workflows-forensic.json"
+    "machine/spec/feature-registry/shards/shard-01-core-capabilities.json",
+    "machine/spec/feature-registry/shards/shard-02-workflows-forensic.json"
   ],
   "forensic": {
-    "jtbdCatalog": "pm/ux/jtbd/catalog.json",
-    "e2eCatalog": "pm/spec/workflows/e2e-catalog.json",
-    "auditOutput": "pm/ci/forensic-feature-audit-latest.json",
+    "jtbdCatalog": "machine/ux/jtbd/catalog.json",
+    "e2eCatalog": "machine/spec/workflows/e2e-catalog.json",
+    "auditOutput": "machine/ci/forensic-feature-audit-latest.json",
     "featureTiers": ["core", "competitive", "moat", "foundation"],
     "featureClasses": ["capability", "workflow-step", "spec-gap"]
   }

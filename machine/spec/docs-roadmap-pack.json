@@ -31,59 +31,37 @@
   ],
   "requiredSubfolders": {
     "technical": {
-      "purpose": "Technical roadmap lane — links to docs/architecture/specs/* + pm/* execution truth",
-      "required": [
-        "README.md",
-        "roadmap.md"
-      ]
+      "purpose": "Technical roadmap lane — links to docs/architecture/specs/* + machine/* execution truth",
+      "required": ["README.md", "roadmap.md"]
     },
     "ux-design": {
       "purpose": "UX/design roadmap lane — links to docs/product/*",
-      "required": [
-        "README.md",
-        "roadmap.md"
-      ]
+      "required": ["README.md", "roadmap.md"]
     },
     "gtm": {
-      "purpose": "GTM roadmap lane — links to ops/gtm/* + docs/business/* (no duplication of ops manifests)",
-      "required": [
-        "README.md",
-        "roadmap.md"
-      ]
+      "purpose": "GTM roadmap lane — links to operations/gtm/* + docs/business/* (no duplication of ops manifests)",
+      "required": ["README.md", "roadmap.md"]
     },
     "legal": {
-      "purpose": "Legal lane — links to ops/legal/* and/or docs/operations/legalops-* (narrative only)",
-      "required": [
-        "README.md",
-        "roadmap.md"
-      ]
+      "purpose": "Legal lane — links to operations/legal/* and/or docs/operations/legalops-* (narrative only)",
+      "required": ["README.md", "roadmap.md"]
     },
     "compliance": {
-      "purpose": "Compliance lane — links to ops/compliance/* + docs/operations/compliance/* (narrative only)",
-      "required": [
-        "README.md",
-        "roadmap.md"
-      ]
+      "purpose": "Compliance lane — links to operations/compliance/* + docs/operations/compliance/* (narrative only)",
+      "required": ["README.md", "roadmap.md"]
     },
     "agile": {
       "purpose": "Pointer stub only — canonical agile hub is repo-root agile/; pack: agile-pack.json; reference: agile-os",
-      "required": [
-        "README.md"
-      ],
-      "packRef": "pm/spec/agile-pack.json"
+      "required": ["README.md"],
+      "packRef": "machine/spec/agile-pack.json"
     },
     "partnerships": {
       "purpose": "Partnerships lane — links to docs/business/partnerships/* (+ ops bindings if any)",
-      "required": [
-        "README.md",
-        "roadmap.md"
-      ]
+      "required": ["README.md", "roadmap.md"]
     },
     "archive": {
       "purpose": "Immutable dated snapshots (roadmap-YYYY-MM-DD.md)",
-      "required": [
-        "README.md"
-      ],
+      "required": ["README.md"],
       "optional": true
     }
   },
@@ -122,56 +100,36 @@
   "pillarContract": {
     "compliance": {
       "primary": true,
-      "artifacts": [
-        "docs/roadmap/README.md"
-      ],
-      "gates": [
-        "pnpm docs:roadmap:check"
-      ],
+      "artifacts": ["docs/roadmap/README.md"],
+      "gates": ["pnpm docs:roadmap:check"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
     },
     "technicalExcellence": {
       "secondary": true,
-      "artifacts": [
-        "docs/roadmap/technical/"
-      ],
-      "gates": [
-        "lane READMEs"
-      ],
+      "artifacts": ["docs/roadmap/technical/"],
+      "gates": ["lane READMEs"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
     },
     "craft": {
       "secondary": true,
-      "artifacts": [
-        "docs/roadmap/README.md"
-      ],
-      "gates": [
-        "single-home lanes"
-      ],
+      "artifacts": ["docs/roadmap/README.md"],
+      "gates": ["single-home lanes"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
     },
     "worldClass": {
       "secondary": true,
-      "artifacts": [
-        "docs/roadmap/README.md"
-      ],
-      "gates": [
-        "prioritization rubric"
-      ],
+      "artifacts": ["docs/roadmap/README.md"],
+      "gates": ["prioritization rubric"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
     },
     "trustAndSafety": {
       "secondary": true,
-      "artifacts": [
-        "docs/roadmap/compliance/"
-      ],
-      "gates": [
-        "compliance lane"
-      ],
+      "artifacts": ["docs/roadmap/compliance/"],
+      "gates": ["compliance lane"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
     },
@@ -183,46 +141,29 @@
     },
     "commercialValue": {
       "primary": true,
-      "artifacts": [
-        "docs/roadmap/gtm/",
-        "docs/roadmap/partnerships/"
-      ],
-      "gates": [
-        "GTM lane"
-      ],
+      "artifacts": ["docs/roadmap/gtm/", "docs/roadmap/partnerships/"],
+      "gates": ["GTM lane"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
     },
     "defensiveMoat": {
       "secondary": true,
-      "artifacts": [
-        "docs/roadmap/README.md"
-      ],
-      "gates": [
-        "fleet decision trace"
-      ],
+      "artifacts": ["docs/roadmap/README.md"],
+      "gates": ["fleet decision trace"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
     },
     "agenticEmpowerment": {
       "secondary": true,
-      "artifacts": [
-        "docs/roadmap/agile/README.md"
-      ],
-      "gates": [
-        "pointer to agile/ hub"
-      ],
+      "artifacts": ["docs/roadmap/agile/README.md"],
+      "gates": ["pointer to agile/ hub"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
     },
     "ecosystemIntegration": {
       "primary": true,
-      "artifacts": [
-        "docs/roadmap/README.md"
-      ],
-      "gates": [
-        "XR + pm links"
-      ],
+      "artifacts": ["docs/roadmap/README.md"],
+      "gates": ["XR + pm links"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-roadmap-layer-latest.json"
     },
@@ -234,13 +175,10 @@
     }
   },
   "fractalMpr": {
-    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "policy": "machine/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-roadmap-layer-latest.json",
     "scorecard": "agile/roadmaps/scorecard.md",
-    "rollupFrom": [
-      "file",
-      "folder"
-    ],
+    "rollupFrom": ["file", "folder"],
     "scorecardIsReadOnlyRollup": true
   }
 }

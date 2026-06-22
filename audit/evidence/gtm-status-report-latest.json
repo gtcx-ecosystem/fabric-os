@@ -1,0 +1,22 @@
+{
+  "schema": "gtcx://canon-os/gtm-status-report/v1",
+  "repo": "fabric-os",
+  "generatedAt": "2026-06-22T20:52:14.772Z",
+  "features": [
+    {
+      "featureId": "_rollup",
+      "personaCoverage": "complete",
+      "jtbdLinked": true,
+      "e2eWorkflowId": "e2e-catalog",
+      "deployGate": "red",
+      "uatStatus": "pending",
+      "productionReady": false
+    }
+  ],
+  "rollup": {
+    "productionReadyPct": 21,
+    "personaCompletePct": 100,
+    "e2eLinkedPct": 100,
+    "featureCount": 6
+  }
+}

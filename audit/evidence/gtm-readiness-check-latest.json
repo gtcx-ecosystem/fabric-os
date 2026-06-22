@@ -1,0 +1,39 @@
+{
+  "schema": "gtcx://canon-os/gtm-readiness-witness/v1",
+  "repo": "fabric-os",
+  "generatedAt": "2026-06-22T20:52:14.773Z",
+  "profile": "platform",
+  "dimensions": [
+    {
+      "id": "pillars11pr",
+      "score": 59,
+      "pass": true
+    },
+    {
+      "id": "roadmapHierarchy",
+      "score": 85,
+      "pass": true
+    },
+    {
+      "id": "forensicSpecs",
+      "score": 100,
+      "pass": true
+    },
+    {
+      "id": "readinessStatus",
+      "score": 100,
+      "pass": true
+    },
+    {
+      "id": "backlogPopulation",
+      "score": 66.7,
+      "pass": true
+    },
+    {
+      "id": "reportsAvailable",
+      "score": 100,
+      "pass": true
+    }
+  ],
+  "pass": true
+}

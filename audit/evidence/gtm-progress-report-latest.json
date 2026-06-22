@@ -1,0 +1,69 @@
+{
+  "schema": "gtcx://canon-os/gtm-progress-report/v1",
+  "repo": "fabric-os",
+  "generatedAt": "2026-06-22T20:52:14.771Z",
+  "activeMilestone": {
+    "id": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
+    "title": "SECAS-S4-supply-chain",
+    "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+    "targetDate": "2026-06-15",
+    "programmeId": "PROG-SECAS-ENGINEERING",
+    "prdRefs": ["prd-product-charter"],
+    "headStoryId": "XR-FABRIC-SESSION-OPEN-004",
+    "clearanceRegister": "../bridge-os/pm/spec/internal-secops-complianceops-clearance.json",
+    "postLaunchExternalSoR": "operations/coordination/post-launch-external-gates.json",
+    "acceptanceChecks": [
+      {
+        "id": "secops-internal-clearance",
+        "label": "SecOps internal Class R sealed",
+        "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+        "actual": "PASS"
+      },
+      {
+        "id": "complianceops-fleet",
+        "label": "ComplianceOps fleet harness",
+        "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
+        "actual": "PASS"
+      },
+      {
+        "id": "composite-85",
+        "label": "Composite ≥85",
+        "check": "composite85"
+      },
+      {
+        "id": "demo",
+        "label": "Demo walkthrough evidence",
+        "witness": "audit/evidence/demo-readiness-{repo}.json"
+      }
+    ],
+    "headAdvancedAt": "2026-06-17T09:39:41.207Z",
+    "previousHeadStoryId": "SECAS-S4-04"
+  },
+  "gtmGoals": [
+    {
+      "id": "GTM1",
+      "title": "Integrator deploy substrate pilots",
+      "outcome": "GR-T2 pilots promote infrastructure with SecOps clearance evidence",
+      "measure": "Demo walkthrough + supply-chain gates PASS",
+      "motion": "Integrator pilot",
+      "tier": "GR-T2-partial"
+    }
+  ],
+  "roadmap": {
+    "initiatives": 6,
+    "features": 6,
+    "stories": 25,
+    "tasks": 0,
+    "uatLinked": 0
+  },
+  "backlog": {
+    "totalItems": 25,
+    "gtmTaggedPct": 0,
+    "estimatedPct": 100,
+    "ownerAssignedPct": 100
+  },
+  "readinessSummary": {
+    "status": "partial",
+    "score100": 21
+  }
+}

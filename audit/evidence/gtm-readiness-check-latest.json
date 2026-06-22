@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://canon-os/gtm-readiness-witness/v1",
   "repo": "fabric-os",
-  "generatedAt": "2026-06-22T20:52:14.773Z",
+  "generatedAt": "2026-06-22T21:55:29.634Z",
   "profile": "platform",
   "dimensions": [
     {
@@ -26,7 +26,7 @@
     },
     {
       "id": "backlogPopulation",
-      "score": 66.7,
+      "score": 100,
       "pass": true
     },
     {

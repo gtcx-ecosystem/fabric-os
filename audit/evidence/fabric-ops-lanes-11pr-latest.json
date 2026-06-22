@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/fabric-ops-lanes-11pr/v1",
   "version": "1.0.0",
-  "updated": "2026-06-18T17:19:37.361Z",
+  "updated": "2026-06-22T21:55:29.952Z",
   "repo": "fabric-os",
   "probes": "bridge-os/pm/spec/ops-lane-11pr-probes.json",
   "pass": 8,
@@ -925,10 +925,5 @@
         }
       ]
     }
-  ],
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  ]
 }

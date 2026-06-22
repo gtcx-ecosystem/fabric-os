@@ -1,10 +1,10 @@
 {
   "schema": "gtcx://canon-os/gtm-readiness-check/v1",
-  "generatedAt": "2026-06-22T20:52:14.775Z",
+  "generatedAt": "2026-06-22T21:55:29.640Z",
   "repo": "fabric-os",
   "profile": "platform",
   "ok": true,
-  "composite": 85,
+  "composite": 91,
   "dimensions": [
     {
       "id": "pillars11pr",
@@ -56,11 +56,11 @@
     },
     {
       "id": "backlogPopulation",
-      "score": 66.7,
+      "score": 100,
       "pass": true,
       "detail": {
         "total": 25,
-        "gtmTagged": 0,
+        "gtmTagged": 25,
         "estimated": 25,
         "ownerAssigned": 25,
         "compiled": true,
@@ -89,7 +89,7 @@
   },
   "backlog": {
     "total": 25,
-    "gtmTagged": 0,
+    "gtmTagged": 25,
     "estimated": 25,
     "ownerAssigned": 25,
     "compiled": true,

@@ -1,4 +1,4 @@
-# pm/retrospectives — agent session learning
+# machine/retrospectives — agent session learning
 
 Each agent session and sprint produces a retrospective for 1000x improvement.
 

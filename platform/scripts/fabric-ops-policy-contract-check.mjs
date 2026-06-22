@@ -9,7 +9,7 @@
  *   node platform/scripts/fabric-ops-policy-contract-check.mjs [--write] [--json]
  *   node platform/scripts/fabric-ops-policy-contract-check.mjs --adopt [--json]
  */
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -29,12 +29,43 @@ function relExists(repoRoot, rel) {
   return existsSync(join(repoRoot, rel));
 }
 
+/** PHASE-TAXONOMY: ops↔operations and pm↔machine path aliases. */
+function pathAliases(rel) {
+  const variants = [rel];
+  if (rel.startsWith('operations/')) variants.push(`ops/${rel.slice('operations/'.length)}`);
+  if (rel.startsWith('ops/')) variants.push(`operations/${rel.slice('ops/'.length)}`);
+  if (rel.startsWith('machine/')) variants.push(`pm/${rel.slice('machine/'.length)}`);
+  if (rel.startsWith('pm/')) variants.push(`machine/${rel.slice('pm/'.length)}`);
+  return [...new Set(variants)];
+}
+
+function anyRefExists(repoRoot, rel) {
+  return pathAliases(rel).some((variant) => relExists(repoRoot, variant));
+}
+
 function repoExists(name) {
   return existsSync(join(ECOSYSTEM, name, 'package.json'));
 }
 
+function localContractCandidates(spec) {
+  const paths = [
+    spec.localContractPath,
+    ...(spec.localContractPathAliases ?? []),
+    'ops/fabric-contract.json',
+    'operations/fabric-contract.json',
+  ].filter(Boolean);
+  return [...new Set(paths)];
+}
+
+function resolveLocalContractRel(repoRoot, spec) {
+  for (const rel of localContractCandidates(spec)) {
+    if (relExists(repoRoot, rel)) return rel;
+  }
+  return spec.localContractPath ?? localContractCandidates(spec)[0];
+}
+
 function discoverLocalRefs(repoRoot, domain) {
-  return domain.requiredLocalRefs.filter((rel) => relExists(repoRoot, rel));
+  return domain.requiredLocalRefs.filter((rel) => anyRefExists(repoRoot, rel));
 }
 
 function buildLocalContract(repo, spec) {
@@ -55,12 +86,16 @@ function buildLocalContract(repo, spec) {
 
 function validateRepo(repo, spec) {
   const repoRoot = join(ECOSYSTEM, repo);
-  const localContractRel = spec.localContractPath;
+  const localContractRel = resolveLocalContractRel(repoRoot, spec);
   const localContractPath = join(repoRoot, localContractRel);
   const gates = [];
 
   const present = existsSync(localContractPath);
-  gates.push({ id: 'local-contract-present', ok: present, detail: localContractRel });
+  gates.push({
+    id: 'local-contract-present',
+    ok: present,
+    detail: present ? localContractRel : localContractCandidates(spec).join(' | '),
+  });
 
   let contract = null;
   if (present) {
@@ -83,7 +118,7 @@ function validateRepo(repo, spec) {
           : `missing one of ${domain.requiredLocalRefs.join(', ')}`,
       });
     }
-    return { repo, ok: false, gates };
+    return { repo, ok: false, gates, localContractRel };
   }
 
   gates.push({
@@ -116,16 +151,17 @@ function validateRepo(repo, spec) {
 
     const localRefs = Array.isArray(localDomain.localRefs) ? localDomain.localRefs : [];
     const existingRefs = localRefs.filter((rel) => relExists(repoRoot, rel));
+    const fallbackRefs = existingRefs.length ? existingRefs : discoverLocalRefs(repoRoot, domain);
     gates.push({
       id: `domain:${domain.id}:local-ref`,
-      ok: existingRefs.length > 0,
-      detail: existingRefs.length
-        ? existingRefs.join(', ')
+      ok: fallbackRefs.length > 0,
+      detail: fallbackRefs.length
+        ? fallbackRefs.join(', ')
         : `missing existing localRef for ${domain.id}`,
     });
   }
 
-  return { repo, ok: gates.every((gate) => gate.ok), gates };
+  return { repo, ok: gates.every((gate) => gate.ok), gates, localContractRel };
 }
 
 function main() {
@@ -135,11 +171,13 @@ function main() {
 
   if (ADOPT) {
     for (const repo of repos) {
-      const localContractPath = join(ECOSYSTEM, repo, spec.localContractPath);
+      const repoRoot = join(ECOSYSTEM, repo);
+      const localContractRel = resolveLocalContractRel(repoRoot, spec);
+      const localContractPath = join(repoRoot, localContractRel);
       mkdirSync(dirname(localContractPath), { recursive: true });
       writeFileSync(
         localContractPath,
-        `${JSON.stringify(buildLocalContract(repo, spec), null, 2)}\n`
+        `${JSON.stringify(buildLocalContract(repo, spec), null, 2)}\n`,
       );
     }
   }
@@ -152,6 +190,7 @@ function main() {
     repo: 'fabric-os',
     contract: spec.contractPath,
     localContractPath: spec.localContractPath,
+    localContractPathAliases: localContractCandidates(spec),
     checked: results.length,
     missingRepos,
     ok,
@@ -168,14 +207,15 @@ function main() {
   } else {
     console.log('=== Fabric Ops policy contract check ===\n');
     for (const result of results) {
-      console.log(`${result.ok ? 'OK' : 'FAIL'} ${result.repo}`);
+      const suffix = result.localContractRel ? ` (${result.localContractRel})` : '';
+      console.log(`${result.ok ? 'OK' : 'FAIL'} ${result.repo}${suffix}`);
       for (const gate of result.gates.filter((g) => !g.ok)) {
         console.log(`  - ${gate.id}: ${gate.detail ?? 'failed'}`);
       }
     }
     if (missingRepos.length) console.log(`\nmissing local repos: ${missingRepos.join(', ')}`);
     console.log(
-      `\n${ok ? 'PASS' : 'FAIL'} — ${results.filter((r) => r.ok).length}/${results.length}`
+      `\n${ok ? 'PASS' : 'FAIL'} — ${results.filter((r) => r.ok).length}/${results.length}`,
     );
     if (WRITE) console.log(`witness: ${OUT}`);
   }

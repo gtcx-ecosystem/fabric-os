@@ -176,6 +176,8 @@
     "ops:check": "pnpm operations:check",
     "operations:consumption:check": "node ../bridge-os/platform/scripts/ecosystem/ops-consumption-check.mjs",
     "operations:consumption:check:write": "node ../bridge-os/platform/scripts/ecosystem/ops-consumption-check.mjs --write",
+    "fabric:ops:check": "pnpm fabric:operations:check",
+    "fabric:ops:check:strict": "pnpm fabric:operations:check:strict",
     "fabric:operations:check": "pnpm fabric:ops-contracts:check && pnpm operations:consumption:check && pnpm legalops:check && pnpm --dir ../bridge-os ecosystem:ops-authority:check",
     "fleet:operations:ceremony:review": "pnpm --dir ../bridge-os ecosystem:ops-ceremony:review",
     "fleet:operations:ceremony:review:write": "pnpm --dir ../bridge-os ecosystem:ops-ceremony:review:write",

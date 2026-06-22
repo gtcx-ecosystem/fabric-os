@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://canon-os/product-compile/v1",
-  "generatedAt": "2026-06-22T18:24:51.083Z",
+  "generatedAt": "2026-06-22T19:50:46.451Z",
   "repo": "fabric-os",
   "protocol": "P57-product-delivery-compile",
   "pass": true,
@@ -18,7 +18,7 @@
     {
       "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
       "planRef": "docs/product/roadmap/features/FEAT-FABRIC-OPS-ASSURANCE.md",
-      "changed": false
+      "changed": true
     }
   ],
   "stale": []

@@ -3,7 +3,12 @@
   "repo": "fabric-os",
   "updated": "2026-06-22",
   "syncSource": "pnpm machine:sync",
-  "active": null,
+  "active": {
+    "storyId": "COMPOSITE-RESTORE-100",
+    "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain",
+    "owner": null,
+    "tier": "milestone-drift"
+  },
   "backlogClear": false,
   "stories": [
     {

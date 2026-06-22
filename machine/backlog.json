@@ -26,9 +26,7 @@
       "initiative": "INIT-GTCX-INFRA-DAAS",
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-002",
-      "acceptance": [
-        "pnpm daas:friction:check:write"
-      ],
+      "acceptance": ["pnpm daas:friction:check:write"],
       "intakeSource": "local:machine/daas-stories.json"
     },
     {
@@ -43,10 +41,7 @@
       "initiative": "INIT-GTCX-INFRA-DAAS",
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-002",
-      "acceptance": [
-        "pnpm daas:fleet:health",
-        "pnpm operations:check"
-      ],
+      "acceptance": ["pnpm daas:fleet:health", "pnpm operations:check"],
       "intakeSource": "local:machine/daas-stories.json"
     },
     {
@@ -61,9 +56,7 @@
       "initiative": "INIT-GTCX-INFRA-DAAS",
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-001",
-      "acceptance": [
-        "pnpm daas:cards:check:write"
-      ],
+      "acceptance": ["pnpm daas:cards:check:write"],
       "intakeSource": "local:machine/daas-stories.json"
     },
     {
@@ -96,9 +89,7 @@
       "initiative": "INIT-GTCX-INFRA-DAAS",
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-001",
-      "acceptance": [
-        "pnpm daas:fleet:health"
-      ],
+      "acceptance": ["pnpm daas:fleet:health"],
       "intakeSource": "local:machine/daas-stories.json"
     },
     {
@@ -111,9 +102,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet assurance",
-      "acceptance": [
-        "Triaged intake populate — closure bar reconciled with bridge-os"
-      ],
+      "acceptance": ["Triaged intake populate — closure bar reconciled with bridge-os"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
@@ -126,11 +115,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet assurance",
-      "acceptance": [
-        "Composite 100/100 held",
-        "validate-all 55/55",
-        "operations:check green"
-      ],
+      "acceptance": ["Composite 100/100 held", "validate-all 55/55", "operations:check green"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
@@ -173,9 +158,7 @@
       "initiative": "INIT-GTCX-INFRA-SECAS",
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "pnpm secas:pentest:ingest:check:write"
-      ],
+      "acceptance": ["pnpm secas:pentest:ingest:check:write"],
       "intakeSource": "local:machine/secas-stories.json"
     },
     {
@@ -190,9 +173,7 @@
       "initiative": "INIT-GTCX-INFRA-SECAS",
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "pnpm secas:csirt:check:write"
-      ],
+      "acceptance": ["pnpm secas:csirt:check:write"],
       "intakeSource": "local:machine/secas-stories.json"
     },
     {
@@ -207,9 +188,7 @@
       "initiative": "INIT-GTCX-INFRA-SECAS",
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "pnpm secas:supply-chain:check:write"
-      ],
+      "acceptance": ["pnpm secas:supply-chain:check:write"],
       "intakeSource": "local:machine/secas-stories.json"
     },
     {
@@ -224,9 +203,7 @@
       "initiative": "INIT-GTCX-INFRA-SECAS",
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "pnpm secas:vuln-cadence:check:write"
-      ],
+      "acceptance": ["pnpm secas:vuln-cadence:check:write"],
       "intakeSource": "local:machine/secas-stories.json"
     },
     {
@@ -283,10 +260,7 @@
       "initiative": "INIT-GTCX-INFRA-SECAS",
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "pnpm fleet:risk:check:write",
-        "pnpm fleet:threat:check:write"
-      ],
+      "acceptance": ["pnpm fleet:risk:check:write", "pnpm fleet:threat:check:write"],
       "intakeSource": "local:machine/secas-stories.json"
     },
     {
@@ -316,9 +290,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Roadmap intake items triaged to owner repo"
-      ],
+      "acceptance": ["Roadmap intake items triaged to owner repo"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
@@ -331,9 +303,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
@@ -346,9 +316,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
@@ -361,9 +329,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
@@ -376,9 +342,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
@@ -391,9 +355,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
@@ -406,9 +368,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     },
     {
@@ -421,9 +381,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Closure bar reconciled with bridge-os program office"
-      ],
+      "acceptance": ["Closure bar reconciled with bridge-os program office"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json"
     }
   ],
@@ -446,6 +404,6 @@
   "_generated": {
     "by": "product-compile.mjs",
     "protocol": "P57-product-delivery-compile",
-    "at": "2026-06-22T18:20:22.445Z"
+    "at": "2026-06-22T18:24:51.083Z"
   }
 }

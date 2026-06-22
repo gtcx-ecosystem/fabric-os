@@ -8,8 +8,8 @@
   "status": "draft",
   "updated": "2026-06-20",
   "owner": "fabric-os",
-  "goalsRef": "pm/canon/strategy.json",
-  "strategyRef": "pm/canon/strategy.json",
+  "goalsRef": "machine/canon/strategy.json",
+  "strategyRef": "machine/canon/strategy.json",
   "milestones": [],
   "composition": {
     "features": [],

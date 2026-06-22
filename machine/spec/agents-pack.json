@@ -12,7 +12,7 @@
       "house": [
         "docs/governance/protocols/ (P22–P45 normative text)",
         "agents/provisioning/AGENT-INIT-CANON.md (fleet init canon — hub only)",
-        "pm/agent-provisioning-bundle.json"
+        "machine/agent-provisioning-bundle.json"
       ],
       "productRepos": "pointer only — link to canon-os; do not copy protocol bodies"
     },
@@ -20,9 +20,9 @@
       "role": "agentic hub — fleet orchestration + sync templates",
       "house": [
         "config/ecosystem-provider-bootstrap-registry.json (P39 machine SoR)",
-        "pm/spec/repo-persona-profiles.json",
-        "pm/spec/agent-conduct-protocol.json",
-        "pm/spec/product-lead-directive-protocol.json",
+        "machine/spec/repo-persona-profiles.json",
+        "machine/spec/agent-conduct-protocol.json",
+        "machine/spec/product-lead-directive-protocol.json",
         "platform/scripts/sync/templates/agents/ (seed stubs — not runtime SoR)",
         "pnpm agent:next-work · ecosystem:* fleet gates"
       ],
@@ -31,7 +31,7 @@
     "baseline-os": {
       "role": "platform runtime — session, MCP, ACR, communication spec",
       "house": [
-        "pm/spec/agent-communication-protocol.json (P45 machine SoR)",
+        "machine/spec/agent-communication-protocol.json (P45 machine SoR)",
         "docs/operations/agent-init/ universal instructions source for sync",
         "platform/packages/baselineos (MCP: search, index, baseline_agent_onboard)",
         "config/baseline/model-b-knowledge.mjs (RAG index roots)",
@@ -113,7 +113,7 @@
       "secondary": true,
       "artifacts": ["agents/personas/README.md"],
       "gates": ["links to pm persona profiles — no forked persona bodies"],
-      "minBar": "persona SoR remains pm/spec/repo-persona-profiles.json"
+      "minBar": "persona SoR remains machine/spec/repo-persona-profiles.json"
     },
     "agenticEmpowerment": {
       "primary": true,
@@ -162,7 +162,11 @@
       "purpose": "What agents may do in this repo — commands, tools, authority classes, forbidden actions",
       "allowedDocTypes": ["onboarding", "runbook"],
       "required": ["README.md", "authority-matrix.md", "forbidden-actions.md"],
-      "machineLinks": ["ops/pm/", "ops/attestation/", "pm/spec/repo-persona-profiles.json"]
+      "machineLinks": [
+        "operations/machine/",
+        "operations/attestation/",
+        "machine/spec/repo-persona-profiles.json"
+      ]
     },
     "playbooks": {
       "purpose": "Repo-scoped agent task playbooks (investigate CI, write ADR, dependency bump) — not operator incident runbooks",
@@ -188,7 +192,7 @@
     "Provider-specific prose trees (cursor/, claude/, …) — use bootstrap/provider-routes.json",
     "SOP archive sprawl — decompose to playbooks/ or link ecosystem-os",
     "Loose *.md except README.md, FOLDER-SPEC.md, pillar-scorecard.md",
-    "Duplicate ops/ domain folders (security, compliance, gtm)",
+    "Duplicate operations/ domain folders (security, compliance, gtm)",
     "Machine JSON except bootstrap/*.json"
   ],
   "profiles": {
@@ -227,11 +231,11 @@
     "operationsAgentInit": "docs/operations/agent-init/",
     "governanceProtocols": "docs/governance/protocols/",
     "fleetInitCanon": "canon-os:agents/provisioning/AGENT-INIT-CANON.md",
-    "personaProfiles": "bridge-os:pm/spec/repo-persona-profiles.json",
+    "personaProfiles": "bridge-os:machine/spec/repo-persona-profiles.json",
     "providerBootstrapRegistry": "bridge-os:config/ecosystem-provider-bootstrap-registry.json",
-    "agentCommunicationSpec": "baseline-os:pm/spec/agent-communication-protocol.json",
+    "agentCommunicationSpec": "baseline-os:machine/spec/agent-communication-protocol.json",
     "agentSyncTemplates": "bridge-os:platform/scripts/sync/templates/agents/",
-    "separationMatrix": "pm/spec/docs-folder-pillar-contract.json#separationMatrix"
+    "separationMatrix": "machine/spec/docs-folder-pillar-contract.json#separationMatrix"
   },
   "migration": {
     "from": [
@@ -272,17 +276,17 @@
     ]
   },
   "relatedSpecs": [
-    "pm/spec/docs-folder-pillar-contract.json",
-    "pm/spec/docs-operations-pack.json",
-    "pm/spec/docs-ia-initiative.json",
-    "pm/spec/docs-folder-provisioning.json",
+    "machine/spec/docs-folder-pillar-contract.json",
+    "machine/spec/docs-operations-pack.json",
+    "machine/spec/docs-ia-initiative.json",
+    "machine/spec/docs-folder-provisioning.json",
     "docs/governance/protocols/provider-agnostic-agent-bootstrap/protocol.md"
   ],
   "rootHub": "agents/",
   "repo": "fabric-os",
   "upstreamSpec": "../canon-os/pm/spec/agents-pack.json",
   "fractalMpr": {
-    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "policy": "machine/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-agents-layer-latest.json",
     "scorecard": "agents/scorecard.md",
     "rollupFrom": ["file", "folder"],

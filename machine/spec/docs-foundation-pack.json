@@ -40,7 +40,7 @@
     }
   ],
   "machineMirror": {
-    "path": "pm/canon/strategy.json",
+    "path": "machine/canon/strategy.json",
     "schema": "gtcx://canon-os/product-canon-strategy/v1",
     "syncRule": "pnpm canon:synthesize"
   },
@@ -119,7 +119,7 @@
     "ecosystemIntegration": {
       "secondary": true,
       "artifacts": ["docs/foundation/roadmap.md"],
-      "gates": ["pm/ + docs/roadmap links"],
+      "gates": ["machine/ + docs/roadmap links"],
       "minBar": "≥85 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-foundation-layer-latest.json"
     },
@@ -131,7 +131,7 @@
     }
   },
   "fractalMpr": {
-    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "policy": "machine/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-foundation-layer-latest.json",
     "scorecard": "docs/foundation/scorecard.md",
     "rollupFrom": ["file", "folder"],

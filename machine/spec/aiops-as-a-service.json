@@ -11,19 +11,19 @@
   "principle": "fabric-os supplies agentic reliability substrate; bridge-os runs fleet gate; baseline-os owns MLOps.",
   "ownerSplit": {
     "fabricOs": [
-      "pm/spec/aiops-as-a-service.json",
-      "pm/aiops-friction-register.json",
-      "pm/aiops-signals-register.json",
+      "machine/spec/aiops-as-a-service.json",
+      "machine/aiops-friction-register.json",
+      "machine/aiops-signals-register.json",
       "platform/scripts/aiops-check.mjs",
       "audit/evidence/aiops-check-latest.json"
     ],
-    "bridgeOs": ["ecosystem:aiops:check:fleet", "pm/ci/aiops-fleet-latest.json"],
-    "baselineOs": ["mlops:check", "pm/spec/mlops-as-a-service.json"]
+    "bridgeOs": ["ecosystem:aiops:check:fleet", "machine/ci/aiops-fleet-latest.json"],
+    "baselineOs": ["mlops:check", "machine/spec/mlops-as-a-service.json"]
   },
   "artifacts": {
-    "spec": "pm/spec/aiops-as-a-service.json",
-    "frictionRegister": "pm/aiops-friction-register.json",
-    "signalsRegister": "pm/aiops-signals-register.json",
+    "spec": "machine/spec/aiops-as-a-service.json",
+    "frictionRegister": "machine/aiops-friction-register.json",
+    "signalsRegister": "machine/aiops-signals-register.json",
     "opsEntry": "docs/operations/aiops-as-a-service.md",
     "witness": "audit/evidence/aiops-check-latest.json"
   },

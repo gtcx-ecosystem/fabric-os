@@ -40,13 +40,35 @@
     }
   ],
   "layerRootAllowlist": {
-    "docs/foundation/": ["README.md", "FOLDER-SPEC.md", "scorecard.md", "constitution.md", "manifesto.md", "vision.md", "mission.md", "goals.md", "milestones.md", "roadmap.md"],
+    "docs/foundation/": [
+      "README.md",
+      "FOLDER-SPEC.md",
+      "scorecard.md",
+      "constitution.md",
+      "manifesto.md",
+      "vision.md",
+      "mission.md",
+      "goals.md",
+      "milestones.md",
+      "roadmap.md"
+    ],
     "docs/business/": ["README.md", "FOLDER-SPEC.md", "scorecard.md"],
     "docs/architecture/": ["README.md", "FOLDER-SPEC.md", "scorecard.md"],
     "docs/product/": ["README.md", "FOLDER-SPEC.md", "scorecard.md"],
     "docs/roadmap/": ["README.md", "FOLDER-SPEC.md", "scorecard.md"],
     "docs/operations/": ["README.md", "FOLDER-SPEC.md", "scorecard.md"],
-    "agile/": ["README.md", "FOLDER-SPEC.md", "scorecard.md", "intake.md", "planning.md", "qa-uat.md", "zenhub.md", "cpo.md", "roadmap.md", "team.md"],
+    "agile/": [
+      "README.md",
+      "FOLDER-SPEC.md",
+      "scorecard.md",
+      "intake.md",
+      "planning.md",
+      "qa-uat.md",
+      "zenhub.md",
+      "cpo.md",
+      "roadmap.md",
+      "team.md"
+    ],
     "agents/": ["README.md", "FOLDER-SPEC.md", "scorecard.md"]
   },
   "thresholds": {

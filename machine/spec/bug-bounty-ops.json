@@ -5,7 +5,7 @@
   "storyId": "SECAS-S5-05",
   "opsLane": "SecOps",
   "status": "operational-stub",
-  "policyDoc": "ops/security/narrative/bug-bounty-policy.md",
+  "policyDoc": "operations/security/narrative/bug-bounty-policy.md",
   "triageRunbook": "docs/operations/secas/runbooks/bug-bounty-triage.md",
   "scope": ["*.gtcx.trade", "staging-*.gtcx.trade"],
   "safeHarbor": true,

@@ -10,19 +10,19 @@
   "principle": "fabric-os owns shared communications substrate (SM paths, deliverability witnesses); product repos own channel UX.",
   "ownerSplit": {
     "fabricOs": [
-      "pm/spec/commops-as-a-service.json",
-      "pm/commops-friction-register.json",
-      "pm/commops-substrate-contract.json",
+      "machine/spec/commops-as-a-service.json",
+      "machine/commops-friction-register.json",
+      "machine/commops-substrate-contract.json",
       "platform/scripts/commops-check.mjs",
       "platform/scripts/commops-deliverability-check.mjs",
       "audit/evidence/commops-check-latest.json"
     ],
-    "bridgeOs": ["pm/ci/ops-lanes-100/commops-fleet-latest.json"]
+    "bridgeOs": ["machine/ci/ops-lanes-100/commops-fleet-latest.json"]
   },
   "artifacts": {
-    "spec": "pm/spec/commops-as-a-service.json",
-    "substrateContract": "pm/commops-substrate-contract.json",
-    "frictionRegister": "pm/commops-friction-register.json",
+    "spec": "machine/spec/commops-as-a-service.json",
+    "substrateContract": "machine/commops-substrate-contract.json",
+    "frictionRegister": "machine/commops-friction-register.json",
     "opsEntry": "docs/operations/commops-as-a-service.md",
     "witness": "audit/evidence/commops-check-latest.json",
     "deliverabilityWitness": "audit/evidence/commops-deliverability-latest.json"

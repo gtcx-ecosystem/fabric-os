@@ -21,10 +21,7 @@
   "referenceImplementation": {
     "repo": "agile-os",
     "path": "../agile-os/agile",
-    "templateSlices": [
-      "sprints/slice-01",
-      "sprints/slice-02"
-    ],
+    "templateSlices": ["sprints/slice-01", "sprints/slice-02"],
     "fleetBacklog": "../agile-os/pm/ecosystem-sprint-backlog.json",
     "zenhubPlan": "../agile-os/pm/zenhub-plan.json",
     "zenhubRegistry": "../bridge-os/config/zenhub-ecosystem-registry.json",
@@ -33,11 +30,7 @@
   "pillarContract": {
     "compliance": {
       "primary": true,
-      "artifacts": [
-        "agile/intake.md",
-        "agile/zenhub.md",
-        "agile/scorecard.md"
-      ],
+      "artifacts": ["agile/intake.md", "agile/zenhub.md", "agile/scorecard.md"],
       "gates": [
         "pnpm agile:check",
         "P22 trace documented in intake.md",
@@ -49,50 +42,26 @@
     "technicalExcellence": {
       "primary": false,
       "secondary": true,
-      "artifacts": [
-        "agile/qa-uat.md",
-        "agile/planning.md"
-      ],
-      "gates": [
-        "qa-uat lists CI gates with commands",
-        "planning.md DoR references test/validate"
-      ],
+      "artifacts": ["agile/qa-uat.md", "agile/planning.md"],
+      "gates": ["qa-uat lists CI gates with commands", "planning.md DoR references test/validate"],
       "minBar": "qa-uat.md names repo verify commands with exit-code expectation"
     },
     "craft": {
       "secondary": true,
-      "artifacts": [
-        "agile/README.md",
-        "agile/FOLDER-SPEC.md"
-      ],
-      "gates": [
-        "ceremony surface table in README",
-        "no loose md at agile root"
-      ],
+      "artifacts": ["agile/README.md", "agile/FOLDER-SPEC.md"],
+      "gates": ["ceremony surface table in README", "no loose md at agile root"],
       "minBar": "flat ceremony files ≤500 lines unless reference/strategy exempt"
     },
     "worldClass": {
       "secondary": true,
-      "artifacts": [
-        "agile/planning.md",
-        "agile/scorecard.md"
-      ],
-      "gates": [
-        "prioritization rubric present",
-        "time-to-first-sprint path in README"
-      ],
+      "artifacts": ["agile/planning.md", "agile/scorecard.md"],
+      "gates": ["prioritization rubric present", "time-to-first-sprint path in README"],
       "minBar": "new repo onboard ≤1 day per GOAL-ADOPTION"
     },
     "trustAndSafety": {
       "secondary": true,
-      "artifacts": [
-        "agile/intake.md",
-        "agile/cpo.md"
-      ],
-      "gates": [
-        "Class A/S escalation path in intake",
-        "authority boundary vs agile-os CPO"
-      ],
+      "artifacts": ["agile/intake.md", "agile/cpo.md"],
+      "gates": ["Class A/S escalation path in intake", "authority boundary vs agile-os CPO"],
       "minBar": "no fleet backlog fork in product repos"
     },
     "creativityInnovation": {
@@ -101,53 +70,31 @@
     },
     "commercialValue": {
       "primary": true,
-      "artifacts": [
-        "agile/planning.md",
-        "agile/intake.md"
-      ],
+      "artifacts": ["agile/planning.md", "agile/intake.md"],
       "gates": [
-        "prioritization rubric links pm/ and business value",
+        "prioritization rubric links machine/ and business value",
         "milestone trace in planning"
       ],
       "minBar": "every committed story traces to prdRef or capabilityId",
-      "witness": "ops/pm/backlog.json"
+      "witness": "operations/machine/backlog.json"
     },
     "defensiveMoat": {
       "secondary": true,
-      "artifacts": [
-        "agile/zenhub.md",
-        "agile/cpo.md"
-      ],
-      "gates": [
-        "zenhub dependsOn hygiene",
-        "fleet-only decision trace via agile-os"
-      ],
+      "artifacts": ["agile/zenhub.md", "agile/cpo.md"],
+      "gates": ["zenhub dependsOn hygiene", "fleet-only decision trace via agile-os"],
       "minBar": "product repo links moat SoR — does not duplicate agile-os velocity corpus"
     },
     "agenticEmpowerment": {
       "primary": true,
-      "artifacts": [
-        "agile/intake.md",
-        "agile/planning.md"
-      ],
-      "gates": [
-        "pnpm agent:next-work trace documented",
-        "P22 delegation rules in intake"
-      ],
+      "artifacts": ["agile/intake.md", "agile/planning.md"],
+      "gates": ["pnpm agent:next-work trace documented", "P22 delegation rules in intake"],
       "minBar": "≥95% P22 trace coverage fleet-wide per GOAL-AUTHORITY",
-      "witness": "pm/ci/sprint-authority-check-latest.json"
+      "witness": "machine/ci/sprint-authority-check-latest.json"
     },
     "ecosystemIntegration": {
       "primary": true,
-      "artifacts": [
-        "agile/intake.md",
-        "agile/zenhub.md",
-        "agile/cpo.md"
-      ],
-      "gates": [
-        "ops/pm/manifest.json agileDocs binding",
-        "fleet backlog intake link"
-      ],
+      "artifacts": ["agile/intake.md", "agile/zenhub.md", "agile/cpo.md"],
+      "gates": ["operations/machine/manifest.json agileDocs binding", "fleet backlog intake link"],
       "minBar": "cross-repo items reference ownerRepo + XR id",
       "witness": "audit/evidence/fleet-agile-latest.json"
     },
@@ -203,39 +150,15 @@
   "requiredSubfolders": {
     "roadmaps": {
       "purpose": "Roadmap lane narratives — technical, gtm, legal, partnerships, ux-design",
-      "allowedDocTypes": [
-        "overview",
-        "roadmap"
-      ],
-      "required": [
-        "README.md",
-        "technical.md",
-        "gtm.md"
-      ],
-      "optionalFiles": [
-        "legal.md",
-        "partnerships.md",
-        "ux-design.md",
-        "compliance.md"
-      ],
-      "forbiddenIn": [
-        "docs/roadmap/",
-        "pm/roadmap/",
-        "docs/product/roadmaps/"
-      ]
+      "allowedDocTypes": ["overview", "roadmap"],
+      "required": ["README.md", "technical.md", "gtm.md"],
+      "optionalFiles": ["legal.md", "partnerships.md", "ux-design.md", "compliance.md"],
+      "forbiddenIn": ["docs/roadmap/", "machine/roadmap/", "docs/product/roadmaps/"]
     },
     "scrum": {
       "purpose": "Scrum ceremony — DoD, DoR, standup, story template, epic template",
-      "allowedDocTypes": [
-        "protocol",
-        "runbook",
-        "overview"
-      ],
-      "required": [
-        "README.md",
-        "definition-of-done.md",
-        "definition-of-ready.md"
-      ],
+      "allowedDocTypes": ["protocol", "runbook", "overview"],
+      "required": ["README.md", "definition-of-done.md", "definition-of-ready.md"],
       "optionalFiles": [
         "backlog.md",
         "sprint-planning.md",
@@ -248,41 +171,27 @@
     },
     "requirements": {
       "purpose": "Delivery requirements trace — story/epic ↔ FR ID links; FR prose in docs/architecture/requirements/",
-      "allowedDocTypes": [
-        "overview",
-        "protocol"
-      ],
-      "required": [
-        "README.md",
-        "trace.md"
-      ],
+      "allowedDocTypes": ["overview", "protocol"],
+      "required": ["README.md", "trace.md"],
       "forbidden": [
         "Duplicate functional-requirements catalog — docs/architecture/requirements/ only"
       ]
     },
     "sprints": {
       "purpose": "Active sprint slice — current.md + sealed history",
-      "allowedDocTypes": [
-        "overview",
-        "runbook"
-      ],
-      "required": [
-        "README.md",
-        "current.md"
-      ],
+      "allowedDocTypes": ["overview", "runbook"],
+      "required": ["README.md", "current.md"],
       "templateSource": "agile-os/agile/sprints",
       "optional": true
     },
     "archive": {
       "purpose": "Sealed sprint snapshots",
-      "required": [
-        "README.md"
-      ],
+      "required": ["README.md"],
       "optional": true
     }
   },
   "forbiddenAtAgileRoot": [
-    "Duplicate pm/ecosystem-sprint-backlog.json bodies in product repos",
+    "Duplicate machine/ecosystem-sprint-backlog.json bodies in product repos",
     "Fleet-wide ceremony law — belongs in agile-os",
     "Loose narrative *.md except pack requiredRootFiles + optionalRootFiles"
   ],
@@ -311,49 +220,31 @@
     "product": {
       "agileRequired": true,
       "pillarTarget": 85,
-      "requiredSubfolders": [
-        "scrum",
-        "roadmaps",
-        "requirements"
-      ],
-      "optionalSubfolders": [
-        "sprints",
-        "archive"
-      ]
+      "requiredSubfolders": ["scrum", "roadmaps", "requirements"],
+      "optionalSubfolders": ["sprints", "archive"]
     },
     "platform": {
       "agileRequired": true,
       "pillarTarget": 85,
-      "requiredSubfolders": [
-        "scrum",
-        "roadmaps",
-        "requirements",
-        "sprints"
-      ],
-      "optionalSubfolders": [
-        "archive"
-      ]
+      "requiredSubfolders": ["scrum", "roadmaps", "requirements", "sprints"],
+      "optionalSubfolders": ["archive"]
     },
     "fleet-agile": {
       "agileRequired": true,
       "isReferenceImpl": true,
       "isFleetCpo": true,
       "pillarTarget": 100,
-      "requiredSubfolders": [
-        "scrum",
-        "sprints",
-        "archive"
-      ],
+      "requiredSubfolders": ["scrum", "sprints", "archive"],
       "hubLinks": [
-        "pm/ecosystem-sprint-backlog.json",
-        "pm/execution-roadmap.md",
-        "pm/zenhub-plan.json",
-        "pm/spec/product-goals.json",
-        "pm/product/fleet-agile-hub-prd.md",
+        "machine/ecosystem-sprint-backlog.json",
+        "machine/execution-roadmap.md",
+        "machine/zenhub-plan.json",
+        "machine/spec/product-goals.json",
+        "machine/product/fleet-agile-hub-prd.md",
         "docs/strategy/fleet-agile-hub.md"
       ],
       "hubGates": [
-        "pnpm ops:check",
+        "pnpm operations:check",
         "pnpm ecosystem:ceremony:check",
         "pnpm ecosystem:zenhub:deps:check",
         "pnpm ecosystem:sprint-authority:check"
@@ -363,11 +254,7 @@
       "agileRequired": true,
       "pillarTarget": 85,
       "requiredSubfolders": [],
-      "optionalSubfolders": [
-        "scrum",
-        "sprints",
-        "archive"
-      ]
+      "optionalSubfolders": ["scrum", "sprints", "archive"]
     },
     "constitution-standards": {
       "agileRequired": false,
@@ -376,17 +263,17 @@
   },
   "crossReference": {
     "roadmapParent": "docs/roadmap/",
-    "machinePmSoR": "pm/",
-    "pillarMetaSpec": "pm/spec/docs-folder-pillar-contract.json",
+    "machinePmSoR": "machine/",
+    "pillarMetaSpec": "machine/spec/docs-folder-pillar-contract.json",
     "opsBinding": {
-      "manifest": "ops/pm/manifest.json",
+      "manifest": "operations/machine/manifest.json",
       "localAgileDocsKey": "local.agileDocs",
       "expectedValue": "agile"
     },
     "fleetBacklogIntake": {
       "source": "../agile-os/pm/ecosystem-sprint-backlog.json",
-      "localSlice": "ops/pm/backlog.json",
-      "syncCommand": "pnpm pm:sync"
+      "localSlice": "operations/machine/backlog.json",
+      "syncCommand": "pnpm machine:sync"
     }
   },
   "enforcement": {
@@ -407,13 +294,10 @@
   "repo": "fabric-os",
   "upstreamSpec": "../canon-os/pm/spec/agile-pack.json",
   "fractalMpr": {
-    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "policy": "machine/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-agile-layer-latest.json",
     "scorecard": "agile/scorecard.md",
-    "rollupFrom": [
-      "file",
-      "folder"
-    ],
+    "rollupFrom": ["file", "folder"],
     "scorecardIsReadOnlyRollup": true
   }
 }

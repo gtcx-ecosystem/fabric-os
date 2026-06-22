@@ -5,7 +5,7 @@
   "path": "docs/",
   "status": "draft",
   "updated": "2026-06-16",
-  "canonicalTree": "pm/spec/repo-provisioning/canonical-docs-tree.json",
+  "canonicalTree": "machine/spec/repo-provisioning/canonical-docs-tree.json",
   "title": "docs/ root — P48 six-pack + layer taxonomy",
   "purpose": "Agent entry and machine SoR for the documentation tree. Indexes only — no narrative at docs/ root.",
   "structure": {

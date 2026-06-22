@@ -4,7 +4,7 @@
   "updated": "2026-06-19",
   "initiative": "INIT-PRODUCT-DELIVERY-COMPILE-V1",
   "title": "Docs canon pack — engineering authoring layer",
-  "principle": "docs/canon/ is the human/agent SoR for feature engineering contracts. pm/canon/ is generated only via pnpm canon:synthesize. Synced from docs/product/roadmap/features/ for FEAT metadata.",
+  "principle": "docs/canon/ is the human/agent SoR for feature engineering contracts. machine/canon/ is generated only via pnpm canon:synthesize. Synced from docs/product/roadmap/features/ for FEAT metadata.",
   "protocol": "product-canon-synthesis-protocol.json",
   "contract": "config/product-canon-contract.json",
   "requiredRootFiles": [
@@ -22,7 +22,7 @@
       "purpose": "FEAT-* feature bundles — charter, requirements, experience, dod, uat canon-json blocks",
       "pattern": "FEAT-*.md",
       "requiredSlices": ["charter", "requirements", "experience", "dod", "uat"],
-      "template": "pm/templates/product-canon/authoring/FEAT-EXAMPLE.md"
+      "template": "machine/templates/product-canon/authoring/FEAT-EXAMPLE.md"
     }
   },
   "optionalSubfolders": {
@@ -32,7 +32,7 @@
     "commercial": { "pattern": "COM-*.md" }
   },
   "forbidden": [
-    "Hand-editing pm/canon/*.json",
+    "Hand-editing machine/canon/*.json",
     "Sprint ceremony state in docs/canon/",
     "Duplicate initiative/story queues — docs/product/roadmap/"
   ],
@@ -105,7 +105,10 @@
     },
     "agenticEmpowerment": {
       "primary": true,
-      "artifacts": ["docs/canon/bundles/*/uat verifyCommand", "pm/ci/canon-synthesize-latest.json"],
+      "artifacts": [
+        "docs/canon/bundles/*/uat verifyCommand",
+        "machine/ci/canon-synthesize-latest.json"
+      ],
       "gates": ["pnpm canon:synthesize:check"],
       "witness": "audit/evidence/mpr-canon-layer-latest.json"
     },
@@ -121,7 +124,7 @@
     }
   },
   "fractalMpr": {
-    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "policy": "machine/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-canon-layer-latest.json",
     "scorecard": "docs/reference/canon/scorecard.md",
     "rollupFrom": ["file", "folder"]

@@ -3,7 +3,7 @@
   "version": "1.3.0",
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-CORE-IA-V1",
-  "masterSpec": "pm/spec/docs-ia-initiative.json",
+  "masterSpec": "machine/spec/docs-ia-initiative.json",
   "title": "Docs business pack — fabric-os",
   "principle": "Business depth lives under docs/business/. Foundation holds summaries and links down. reference/product and overview/product decompose here. archive/docs/business/*.md promotes to docs/business/research/ — never business root.",
   "requiredRootFiles": [
@@ -159,7 +159,7 @@
     }
   },
   "crossReference": {
-    "spec": "pm/spec/docs-layer-cross-reference.json",
+    "spec": "machine/spec/docs-layer-cross-reference.json",
     "foundationLinks": [
       {
         "foundation": "vision.md",
@@ -185,7 +185,7 @@
     }
   },
   "sourcePriority": [
-    "pm/spec/product-goals.json",
+    "machine/spec/product-goals.json",
     "docs/foundation/",
     "archive/superseded/p35-docs-retired/product/",
     "archive/docs/business/",
@@ -214,12 +214,12 @@
     ]
   },
   "relatedSpecs": [
-    "pm/spec/docs-foundation-pack.json",
-    "pm/spec/docs-architecture-pack.json",
-    "pm/spec/docs-ia-initiative.json",
-    "pm/spec/docs-layer-cross-reference.json",
-    "pm/spec/docs-folder-provisioning.json",
-    "pm/spec/docs-foundation-ia-rollout.json"
+    "machine/spec/docs-foundation-pack.json",
+    "machine/spec/docs-architecture-pack.json",
+    "machine/spec/docs-ia-initiative.json",
+    "machine/spec/docs-layer-cross-reference.json",
+    "machine/spec/docs-folder-provisioning.json",
+    "machine/spec/docs-foundation-ia-rollout.json"
   ],
   "repo": "fabric-os",
   "upstreamSpec": "../canon-os/pm/spec/docs-business-pack.json",
@@ -301,7 +301,7 @@
     }
   },
   "fractalMpr": {
-    "policy": "pm/spec/docs-fractal-mpr-policy.json",
+    "policy": "machine/spec/docs-fractal-mpr-policy.json",
     "layerWitness": "audit/evidence/mpr-business-layer-latest.json",
     "scorecard": "docs/business/scorecard.md",
     "rollupFrom": ["file", "folder"],

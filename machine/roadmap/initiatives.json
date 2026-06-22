@@ -1,21 +1,9 @@
 {
   "$schema": "gtcx://pm/initiatives/v1",
   "version": "1.2.0",
-  "updated": "2026-06-12",
+  "updated": "2026-06-22",
   "repo": "fabric-os",
   "initiatives": [
-    {
-      "id": "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
-      "title": "Trade ecosystem lane taxonomy",
-      "status": "complete",
-      "completedAt": "2026-06-12",
-      "laneId": "I",
-      "spec": "docs/specs/ecosystem/trade-ecosystem-lanes-spec.md",
-      "machineSpec": "machine/spec/trade-ecosystem-lanes.json",
-      "handoff": "docs/operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md",
-      "ticket": "XR-FABRIC-TRADE-LANES-001",
-      "witness": "audit/evidence/fabric-lanes-check-latest.json"
-    },
     {
       "id": "INIT-FABRIC-LANE-DEPLOY-MATRIX",
       "title": "Deploy matrix by trade lane",
@@ -28,6 +16,19 @@
       "gate": "pnpm fabric:lanes:check"
     },
     {
+      "id": "INIT-FABRIC-OPS-PRD-ROUTING",
+      "title": "INIT-FABRIC-OPS-PRD-ROUTING — fleet ops PRD routing",
+      "status": "open",
+      "priority": "P0",
+      "ownerRepo": "fabric-os",
+      "protocol": "P57-product-delivery-compile",
+      "parentInitiative": null,
+      "goalIds": [],
+      "planRef": "docs/product/roadmap/initiatives/INIT-FABRIC-OPS-PRD-ROUTING.md",
+      "shippableOutcome": "Every ops lane has owner-routed PRD/spec coverage — fabric-os does not pretend to own all fleet ops lanes.",
+      "_compiledFrom": "docs/product/roadmap/initiatives/INIT-FABRIC-OPS-PRD-ROUTING.md"
+    },
+    {
       "id": "INIT-FABRIC-README-SOR-REconcile",
       "title": "fabric-os README vs AGENTS.md SoR reconcile",
       "status": "complete",
@@ -37,33 +38,46 @@
     },
     {
       "id": "INIT-GTCX-INFRA-DAAS",
-      "title": "DevOps-as-a-Service",
-      "status": "complete",
-      "laneId": "I",
-      "protocol": "P41-DEVOPS-AS-A-SERVICE",
-      "laneAwareCards": "2026-06-12",
-      "uxRefs": {
-        "jtbdId": "JTBD-staging-substrate-ready",
-        "flowId": "flow-staging-handoff",
-        "exrId": "EXR-001",
-        "personaIds": ["platform-operator", "sibling-integrator"]
-      },
-      "prd": "machine/product/prds/PRD-daass-operator-substrate.md"
+      "title": "INIT-GTCX-INFRA-DAAS — DevOps-as-a-Service control plane",
+      "status": "in_progress",
+      "priority": "P0",
+      "ownerRepo": "fabric-os",
+      "protocol": "P57-product-delivery-compile",
+      "parentInitiative": null,
+      "goalIds": [],
+      "planRef": "docs/product/roadmap/initiatives/INIT-GTCX-INFRA-DAAS.md",
+      "shippableOutcome": "AWS/K8s/Terraform staging substrate — EKS, secrets, observability, and deploy choreography for fleet product repos.",
+      "_compiledFrom": "docs/product/roadmap/initiatives/INIT-GTCX-INFRA-DAAS.md"
     },
     {
       "id": "INIT-GTCX-INFRA-SECAS",
-      "title": "Security-as-a-Service",
+      "title": "INIT-GTCX-INFRA-SECAS — Security-as-a-Service engineering",
       "status": "in_progress",
+      "priority": "P0",
+      "ownerRepo": "fabric-os",
+      "protocol": "P57-product-delivery-compile",
+      "parentInitiative": null,
+      "goalIds": [],
+      "planRef": "docs/product/roadmap/initiatives/INIT-GTCX-INFRA-SECAS.md",
+      "shippableOutcome": "Fleet SECaaS assurance fabric — friction registers, attestation runners, and internal clearance before vendor pen-test closure.",
+      "_compiledFrom": "docs/product/roadmap/initiatives/INIT-GTCX-INFRA-SECAS.md"
+    },
+    {
+      "id": "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
+      "title": "Trade ecosystem lane taxonomy",
+      "status": "complete",
+      "completedAt": "2026-06-12",
       "laneId": "I",
-      "protocol": "P42-SECURITY-AS-A-SERVICE",
-      "lanePentestScope": "2026-06-12",
-      "uxRefs": {
-        "jtbdId": "JTBD-security-evidence-path",
-        "flowId": "flow-secas-pentest-evidence",
-        "exrId": "EXR-003",
-        "personaIds": ["security-operator", "compliance-buyer"]
-      },
-      "prd": "machine/product/prds/PRD-secas-stack-security.md"
+      "spec": "docs/specs/ecosystem/trade-ecosystem-lanes-spec.md",
+      "machineSpec": "machine/spec/trade-ecosystem-lanes.json",
+      "handoff": "docs/operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md",
+      "ticket": "XR-FABRIC-TRADE-LANES-001",
+      "witness": "audit/evidence/fabric-lanes-check-latest.json"
     }
-  ]
+  ],
+  "_generated": {
+    "by": "product-compile.mjs",
+    "protocol": "P57-product-delivery-compile",
+    "at": "2026-06-22T18:20:22.420Z"
+  }
 }

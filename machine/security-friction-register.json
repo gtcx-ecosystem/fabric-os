@@ -25,7 +25,7 @@
       "preWindowFleetHealthWitness": "audit/evidence/pen-test-pre-window-fleet-health-2026-06-12.json",
       "dependsOn": "EXT-INF-002",
       "dependsOnClass": "S",
-      "postLaunchExternalSoR": "ops/coordination/post-launch-external-gates.json",
+      "postLaunchExternalSoR": "operations/coordination/post-launch-external-gates.json",
       "infraAction": "Internal scaffolding done; vendor calendar in post-launch-external-gates.json",
       "intake": "audit/pen-test-intake-evidence-2026-05-31.md",
       "acceptance": "Internal prep witnesses PASS — vendor report ingest is post-launch external",

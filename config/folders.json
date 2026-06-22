@@ -1,0 +1,70 @@
+{
+  "$schema": "gtcx://canon-os/folder-registry/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-22",
+  "role": "SINGLE SOURCE OF TRUTH for the repo's top-level folder identity. Change a name HERE, in one place, and it flows through every tool/doc that resolves via lib/folder-registry.mjs.",
+  "model": {
+    "id": "Stable internal handle the fleet keys on — NEVER change once published (cross-repo contracts depend on it).",
+    "label": "Human display name — change freely here; flows through everywhere. This is the 'rename in one place' knob.",
+    "path": "Physical folder on disk. Changing this requires a git mv + (for fleet-coupled folders) sibling-repo coordination — so most renames should change LABEL only.",
+    "group": "Conceptual grouping for the organized-root view (no physical nesting)."
+  },
+  "renamePolicy": {
+    "labelOnly": "Default. Want a folder to read as 'Build' or 'Delivery'? Change its label. No folder move, no fleet break. id/path stay stable.",
+    "pathMove": "Only when the folder has LOW fleet coupling (e.g. ops→operations). High-coupling module identities (pm, agile) must NOT move paths via find/replace — keep id/path, float the label.",
+    "newId": "Never rename an id in place. To retire one, add the new id with the old in `aliases` and migrate consumers through the resolver."
+  },
+  "folders": {
+    "docs": { "id": "docs", "label": "Docs", "path": "docs", "group": "source", "role": "Narrative source — humans author what we are building" },
+    "machine": {
+      "id": "machine",
+      "label": "Machine",
+      "path": "machine",
+      "group": "build",
+      "role": "Machine-readable build of docs/ — compiled specs, canon, backlog, CI. Never hand-edit.",
+      "aliases": ["pm"],
+      "shim": "pm → machine (symlink) — back-compat so fleet ../fabric-os/pm/spec/* keeps resolving",
+      "labelHistory": ["pm → Machine (path + label) 2026-06-22 — PHASE-TAXONOMY"]
+    },
+    "agile": {
+      "id": "agile",
+      "label": "Delivery",
+      "path": "agile",
+      "group": "execution",
+      "role": "How we work — process: intake, planning, sprints, QA/UAT, roadmap lanes",
+      "aliases": [],
+      "labelHistory": ["agile → Delivery (display); id/path kept 'agile'"]
+    },
+    "operations": {
+      "id": "operations",
+      "label": "Operations",
+      "path": "operations",
+      "group": "execution",
+      "role": "P29 run register — compliance, security, gtm, machine-sync",
+      "aliases": ["ops"],
+      "labelHistory": ["ops → operations (path moved) 2026-06-22 — PHASE-TAXONOMY"]
+    },
+    "deploy": { "id": "deploy", "label": "Deploy", "path": "deploy", "group": "execution", "role": "Deployment artifacts — docker, k8s, terraform, infra" },
+    "agentic": { "id": "agentic", "label": "Agentic", "path": "agentic", "group": "system", "role": "Agent runtime harness and fleet agentic tooling" },
+    "workstream": { "id": "workstream", "label": "Workstream", "path": "workstream", "group": "coordination", "role": "Live session state — sessions, sprints, status" },
+    "coordination": {
+      "id": "coordination",
+      "label": "Coordination",
+      "path": "operations/coordination",
+      "group": "coordination",
+      "role": "Cross-repo coordination — machine state (operations/coordination) + narrative (docs/operations/coordination)"
+    },
+    "agents": { "id": "agents", "label": "Agents", "path": "agents", "group": "system", "role": "Agent harness — bootstrap, capabilities, playbooks, manifest" },
+    "audit": { "id": "audit", "label": "Audit", "path": "audit", "group": "system", "role": "Cross-cutting evidence/witness plane" },
+    "platform": { "id": "platform", "label": "Platform", "path": "platform", "group": "system", "role": "Engineering layer — scripts, tools, mcp, assets" },
+    "config": { "id": "config", "label": "Config", "path": "config", "group": "system", "role": "Machine config — repo-kind, sor-map, governance-spine, folder registry" },
+    "archive": { "id": "archive", "label": "Archive", "path": "archive", "group": "system", "role": "Cold storage — frozen bundles, provenance only" }
+  },
+  "groups": {
+    "source": "What we're building (authored)",
+    "build": "The compiled machine build of source",
+    "execution": "How work is run and shipped",
+    "coordination": "Live cross-repo + session state",
+    "system": "Harness, evidence, tooling, config, cold storage — the operating substrate"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://canon-os/consumption-contract/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-22",
+  "updated": "2026-06-23",
   "writes": false,
   "principle": "canon-os is standards SoR — resolve paths from published config; never fork normative spec text.",
   "standardsSoR": {
@@ -17,7 +17,10 @@
     "provisioning": "../canon-os/machine/spec/repo-provisioning/",
     "docsFoldersIndex": "../canon-os/machine/spec/docs-folders/INDEX.json",
     "docsIaPillarMap": "../canon-os/machine/spec/docs-ia-pillar-map.json",
+    "auditSaveFormat": "../canon-os/machine/spec/repo-provisioning/L1-audit.json",
     "auditRubric": "../canon-os/platform/tools/audit/audit-framework/UNIVERSAL_RUBRIC.md",
+    "auditEngine": "../canon-os/platform/tools/audit/audit-engine",
+    "fiveCoreRegistry": "../bridge-os/pm/spec/five-core-audits.json",
     "templates": "../canon-os/docs/reference/templates/"
   },
   "folderIdentity": {

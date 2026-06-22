@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://canon-os/contracts-check/v1",
-  "generatedAt": "2026-06-22T19:44:47.640Z",
+  "generatedAt": "2026-06-22T19:55:49.166Z",
   "repo": "fabric-os",
   "pass": true,
   "gates": [
@@ -50,9 +50,24 @@
       "detail": "../canon-os/machine/spec/docs-ia-pillar-map.json"
     },
     {
+      "id": "sor:path:auditSaveFormat",
+      "ok": true,
+      "detail": "../canon-os/machine/spec/repo-provisioning/L1-audit.json"
+    },
+    {
       "id": "sor:path:auditRubric",
       "ok": true,
       "detail": "../canon-os/platform/tools/audit/audit-framework/UNIVERSAL_RUBRIC.md"
+    },
+    {
+      "id": "sor:path:auditEngine",
+      "ok": true,
+      "detail": "../canon-os/platform/tools/audit/audit-engine"
+    },
+    {
+      "id": "sor:path:fiveCoreRegistry",
+      "ok": true,
+      "detail": "../bridge-os/pm/spec/five-core-audits.json"
     },
     {
       "id": "sor:path:templates",

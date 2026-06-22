@@ -11,8 +11,8 @@
 | [`execution-roadmap.md`](./execution-roadmap.md)       | Human roadmap view                     | Generated |
 
 ```bash
-pnpm pm:sync
-pnpm pm:folder:check
+pnpm machine:sync
+pnpm machine:folder:check
 ```
 
 Spec: `bridge-os/pm/spec/pm-folder-requirements.json`

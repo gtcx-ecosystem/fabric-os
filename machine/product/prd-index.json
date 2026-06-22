@@ -3,11 +3,11 @@
   "version": "1.1.0",
   "repo": "fabric-os",
   "updated": "2026-06-19",
-  "productGoals": "pm/spec/product-goals.json",
+  "productGoals": "machine/spec/product-goals.json",
   "prds": [
     {
       "id": "prd-product-charter",
-      "path": "pm/product/prds/prd-product-charter.md",
+      "path": "machine/product/prds/prd-product-charter.md",
       "title": "Fabric OS product charter",
       "status": "active",
       "milestones": ["FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE"],

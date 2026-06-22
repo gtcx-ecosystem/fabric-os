@@ -40,6 +40,6 @@ Copy from JTBD acceptanceCriteria:
 
 ## Links
 
-- `pm/daas-roadmap.json`
-- `pm/ux/README.md`
+- `machine/daas-roadmap.json`
+- `machine/ux/README.md`
 - `docs/operations/daas/cards/`

@@ -4,7 +4,7 @@ title: 'Fabric OS product charter'
 status: current
 date: 2026-06-18
 owner: principal-technical-pm
-productGoalsRef: pm/spec/product-goals.json
+productGoalsRef: machine/spec/product-goals.json
 milestones: [FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE]
 features:
   - secops-clearance
@@ -24,7 +24,7 @@ uxRefs:
 
 # PRD — Fabric OS
 
-> **SoR:** This document dictates product vision and shippable scope. Roadmap stories MUST trace here via `pm/product/prd-index.json`.
+> **SoR:** This document dictates product vision and shippable scope. Roadmap stories MUST trace here via `machine/product/prd-index.json`.
 
 ## Vision
 
@@ -52,7 +52,7 @@ Engineering bars that prove the deploy substrate is safe to ship.
 | -------------------------------------- | ------------------------------------- | -------------------------- | --------------------------------------------------------------------- |
 | SG1 SecOps and ComplianceOps clearance | Internal clearance + fleet harness    | PASS                       | `audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json` |
 | SG2 Supply-chain gates                 | `SECAS-S4-02`                         | PASS                       | `audit/evidence/secas-supply-chain-check-latest.json`                 |
-| SG3 PRD traceability                   | Story -> PRD / capability / milestone | 100% in-flight work traced | `pm/product/prd-index.json`                                           |
+| SG3 PRD traceability                   | Story -> PRD / capability / milestone | 100% in-flight work traced | `machine/product/prd-index.json`                                      |
 
 ## Target customers
 
@@ -114,7 +114,7 @@ Explicit exclusions (prevents scope creep):
 
 ## Links
 
-- Product goals: `pm/spec/product-goals.json`
+- Product goals: `machine/spec/product-goals.json`
 - Capability matrix: `docs/strategy/product-capability-matrix-*.md`
 - Execution roadmap: `docs/strategy/execution-roadmap.md`
-- PRD index: `pm/product/prd-index.json`
+- PRD index: `machine/product/prd-index.json`

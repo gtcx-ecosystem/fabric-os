@@ -36,6 +36,6 @@ From JTBD-security-evidence-path acceptanceCriteria:
 
 ## Links
 
-- `pm/secas-roadmap.json`
+- `machine/secas-roadmap.json`
 - `docs/operations/security-as-a-service.md`
-- `pm/ux/stakeholders/stakeholder-map.md`
+- `machine/ux/stakeholders/stakeholder-map.md`

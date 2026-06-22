@@ -1,8 +1,8 @@
 ---
 title: Execution roadmap — DevOps & InfraOps
 status: current
-date: 2026-06-17
-last_reconciled: 2026-06-17T12:58:25.400Z
+date: 2026-06-22
+last_reconciled: 2026-06-22T19:49:24.887Z
 owner: fabric-os
 program: INIT-GTCX-INFRA-DAAS
 generated: true

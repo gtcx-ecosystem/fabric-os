@@ -1,9 +1,9 @@
 {
   "schema": "gtcx://bridge-os/settlement-push/v1",
-  "at": "2026-06-18T17:01:54.045Z",
+  "at": "2026-06-22T20:49:41.416Z",
   "repo": "fabric-os",
-  "branch": "feature/ai-mlops",
+  "branch": "main",
   "ok": true,
   "errors": [],
-  "warnings": []
+  "warnings": ["pushing protected branch main"]
 }

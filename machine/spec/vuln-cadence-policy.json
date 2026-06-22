@@ -31,8 +31,8 @@
       "escalation": "Friction register hygiene review"
     }
   },
-  "severityAlignment": "pm/spec/supply-chain-cve-policy.json",
-  "frictionRegister": "pm/security-friction-register.json",
+  "severityAlignment": "machine/spec/supply-chain-cve-policy.json",
+  "frictionRegister": "machine/security-friction-register.json",
   "policyDoc": "docs/operations/secas/vuln-cadence.md",
   "witness": "audit/evidence/secas-vuln-cadence-latest.json"
 }

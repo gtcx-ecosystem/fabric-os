@@ -11,7 +11,7 @@
       "jtbdIds": ["JTBD-FABRIC-DEPLOY-001"],
       "persona": "platform-engineer",
       "witness": "audit/evidence/demo-readiness-fabric-os.json",
-      "runbook": "pm/product/prds/prd-product-charter.md",
+      "runbook": "machine/product/prds/prd-product-charter.md",
       "steps": [
         {
           "order": 1,

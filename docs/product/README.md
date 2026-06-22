@@ -16,17 +16,18 @@ review_cycle: on-change
 
 ## Cross-reference
 
-| Layer        | Path                 | Role                                       |
-| ------------ | -------------------- | ------------------------------------------ |
-| Foundation   | `docs/foundation/`   | Why — charter, vision, goals               |
-| Business     | `docs/business/`     | Market, ICP, economics                     |
-| **Product**  | `docs/product/ux/`   | Users, JTBD, journeys, workflows (UX only) |
-| Architecture | `docs/architecture/` | Requirements, specs, ADRs                  |
-| Ceremony     | `agile/`             | Scrum, planning, UAT, roadmap lanes        |
-| Machine      | `machine/`           | PRDs, backlog, CI                          |
+| Layer        | Path                                                   | Role                                                    |
+| ------------ | ------------------------------------------------------ | ------------------------------------------------------- |
+| Foundation   | `docs/foundation/`                                     | Why — charter, vision, goals                            |
+| Business     | `docs/business/`                                       | Market, ICP, economics                                  |
+| **Product**  | `docs/product/ux/` · [`roadmap/`](./roadmap/README.md) | UX + executable plan (compile → `machine/backlog.json`) |
+| Architecture | `docs/architecture/`                                   | Requirements, specs, ADRs                               |
+| Ceremony     | `agile/`                                               | Scrum, planning, UAT, roadmap lanes                     |
+| Machine      | `machine/`                                             | PRDs, backlog, CI                                       |
 
 ## Subfolders
 
-| Folder | Contents                                                  |
-| ------ | --------------------------------------------------------- |
-| `ux/`  | Users, JTBD, journeys, flows — **only** subfolder allowed |
+| Folder     | Contents                                                                 |
+| ---------- | ------------------------------------------------------------------------ |
+| `ux/`      | Users, JTBD, journeys, flows                                             |
+| `roadmap/` | Executable plan (`INIT-*`, `FEAT-*`, `STORY-*`) — `pnpm product:compile` |

@@ -15,12 +15,14 @@ Repo-local inbound work before P22 selection.
 
 ## Sources
 
-| Source          | Path                                                                                           | Role                                  |
-| --------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------- |
-| Human inbox     | `machine/_intake/`                                                                             | Operator-raised items awaiting triage |
-| Machine slice   | `operations/machine/backlog.json`                                                              | Refresh: `pnpm machine:sync`          |
-| Fleet backlog   | [`../agile-os/pm/ecosystem-sprint-backlog.json`](../agile-os/pm/ecosystem-sprint-backlog.json) | Cross-repo programme SoR              |
-| Bridge handoffs | `docs/operations/coordination/`                                                                | Promoted coordination items           |
+| Source          | Path                                                                                           | Role                                             |
+| --------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| Human inbox     | `machine/_intake/`                                                                             | Operator-raised items awaiting triage            |
+| Author plane    | [`docs/product/roadmap/`](../docs/product/roadmap/README.md)                                   | Plan bodies — compile via `pnpm product:compile` |
+| Machine queue   | [`machine/backlog.json`](../machine/backlog.json)                                              | P22 queue (compiled — do not hand-edit)          |
+| Machine slice   | `operations/machine/backlog.json`                                                              | Refresh: `pnpm machine:sync`                     |
+| Fleet backlog   | [`../agile-os/pm/ecosystem-sprint-backlog.json`](../agile-os/pm/ecosystem-sprint-backlog.json) | Cross-repo programme SoR                         |
+| Bridge handoffs | `docs/operations/coordination/`                                                                | Promoted coordination items                      |
 
 ## Intake rules
 

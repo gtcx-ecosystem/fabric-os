@@ -3,7 +3,7 @@
   "updated": "2026-06-16",
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "title": "Docs product pack — fabric-os",
-  "principle": "docs/product/ = UX narrative ONLY (docs/product/ux/). PRDs → machine/product/prds/. Ceremony → agile/. Requirements → docs/architecture/requirements/. See hub-separation-matrix.json.",
+  "principle": "docs/product/ = fast plane: roadmap (executable plan) + ux (operator essays). Compiled → machine/ via P57 product:compile. Lane narratives → agile/roadmaps/.",
   "separationMatrix": "machine/spec/repo-provisioning/hub-separation-matrix.json",
   "requiredRootFiles": [
     {
@@ -38,6 +38,17 @@
         "PRD bodies — machine/product/prds/",
         "Functional requirements catalog — docs/architecture/requirements/"
       ]
+    },
+    "roadmap": {
+      "purpose": "Executable plan SoR — INIT/FEAT/STORY bodies; compiles to machine/roadmap + machine/backlog",
+      "allowedDocTypes": ["product", "roadmap"],
+      "required": ["README.md"],
+      "children": {
+        "initiatives": { "idPattern": "INIT-*", "required": ["README.md"] },
+        "features": { "idPattern": "FEAT-*", "required": ["README.md"] },
+        "stories": { "idPattern": "STORY-*", "required": ["README.md"] }
+      },
+      "forbidden": ["Hand-editing machine/backlog.json — use pnpm product:compile"]
     }
   },
   "forbiddenSubfolders": {
@@ -75,7 +86,7 @@
     "Loose narrative *.md except README.md and FOLDER-SPEC.md",
     "Duplicate foundation vision/mission prose",
     "Duplicate business ICP or pricing prose",
-    "Any roadmap docs — agile/roadmaps/ only",
+    "Any roadmap lane narratives — agile/roadmaps/ only (executable plan lives in docs/product/roadmap/)",
     "pillar-scorecard.md at product root — use agile/pillar-scorecard.md",
     "Duplicate acceptance/UAT — agile/qa-uat.md only"
   ],
@@ -95,8 +106,9 @@
       "allowed": "docs/product/README.md pointer to fleet product repos and ecosystem-os"
     },
     "platform": {
-      "productRequired": false,
-      "optionalSubfolders": ["ux"]
+      "productRequired": true,
+      "requiredSubfolders": ["ux", "roadmap"],
+      "optionalSubfolders": []
     }
   },
   "crossReference": {

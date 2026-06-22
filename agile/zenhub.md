@@ -17,7 +17,7 @@ Board hygiene and label contract for workspace **GTCX**.
 
 | Artifact       | Path                                                                                                       |
 | -------------- | ---------------------------------------------------------------------------------------------------------- |
-| Fleet plan SoR | [`../agile-os/pm/zenhub-plan.json`](../agile-os/pm/zenhub-plan.json)                                       |
+| Fleet plan SoR | [`../agile-os/machine/zenhub-plan.json`](../agile-os/machine/zenhub-plan.json) (alias `pm/`)               |
 | Label registry | [`../bridge-os/config/zenhub-ecosystem-registry.json`](../bridge-os/config/zenhub-ecosystem-registry.json) |
 | Repo plan      | (none — inherit fleet plan)                                                                                |
 

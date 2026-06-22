@@ -10,7 +10,7 @@
   "owner": "fabric-os",
   "primaryRoadmap": true,
   "extends": {
-    "daas": "pm/daas-roadmap.json",
+    "daas": "machine/daas-roadmap.json",
     "p42": "bridge-os/pm/spec/security-as-a-service.json"
   },
   "sprints": [

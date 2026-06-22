@@ -11,7 +11,7 @@ World-class **internal platform** experience in regulated environments:
 | ----------------------- | --------------------------------------------- | ------------------------------------------------- |
 | **Backstage / IDP**     | Self-service templates with default witnesses | DaaS cards + staging scripts per sibling repo     |
 | **Terraform Cloud**     | Plan/apply audit trail                        | `audit/evidence/*-terraform-apply-*.json`         |
-| **SOC 2 program tools** | Sovereign approval separated from engineering | `pm/sovereign-approval-register.json` (P42)       |
+| **SOC 2 program tools** | Sovereign approval separated from engineering | `machine/sovereign-approval-register.json` (P42)  |
 | **GitOps (Argo/Flux)**  | Declarative drift visibility                  | Kustomize overlays + manual agent apply (staging) |
 
 ## Ecosystem convergence comps (trade lane session 2026-06-12)

@@ -39,7 +39,7 @@ Platform operator completes staging change, closes DaaS friction item, or sessio
 ## AI-native touchpoints
 
 - Probe script is agent-executed witness — no dashboard "Run health check" as sole path.
-- Results feed `pm/friction-register.json` via `daas:friction:check:write`.
+- Results feed `machine/friction-register.json` via `daas:friction:check:write`.
 
 ## Engineering hooks
 
@@ -47,9 +47,9 @@ Platform operator completes staging change, closes DaaS friction item, or sessio
 | -------------------- | ---------------------------------------------------- |
 | Fleet health script  | `package.json` → `daas:fleet:health`                 |
 | Probe implementation | `platform/tools/scripts/cross-repo-health-probe.mjs` |
-| Friction register    | `pm/friction-register.json`                          |
+| Friction register    | `machine/friction-register.json`                     |
 | Evidence             | `audit/evidence/cross-repo-health/`                  |
-| DAAS roadmap seal    | `pm/daas-roadmap.json` (S1–S3 complete)              |
+| DAAS roadmap seal    | `machine/daas-roadmap.json` (S1–S3 complete)         |
 
 ## UAT outline
 

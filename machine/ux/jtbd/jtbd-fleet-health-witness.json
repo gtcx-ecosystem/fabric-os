@@ -19,7 +19,7 @@
   "acceptanceCriteria": [
     "`pnpm daas:fleet:health` exits 0 with documented PASS count",
     "`audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json` refreshed",
-    "Open P0 friction in `pm/friction-register.json` is zero or explicitly linked to non-infra blocker",
+    "Open P0 friction in `machine/friction-register.json` is zero or explicitly linked to non-infra blocker",
     "`validate-all` gate count matches repo manifest (55/55 at 2026-06-10)"
   ],
   "priority": "P0",

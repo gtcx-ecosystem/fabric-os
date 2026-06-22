@@ -24,30 +24,30 @@ protocols: [P20-SEF, P21-UX-DOC-OPS, A1-PRODUCT-EXCELLENCE]
 
 ## Owner roster
 
-| Role               | Owner                              | Artifact                                        |
-| ------------------ | ---------------------------------- | ----------------------------------------------- |
-| Principal TPM      | fabric-os                          | `pm/daas-roadmap.json`, `pm/secas-roadmap.json` |
-| Platform architect | fabric-os                          | `deploy/`, `platform/tools/control-plane/`      |
-| Security operator  | fabric-os + Human/Security         | `pm/sovereign-approval-register.json`           |
-| Design / UX        | Principal product designer (fleet) | this tree                                       |
+| Role               | Owner                              | Artifact                                                  |
+| ------------------ | ---------------------------------- | --------------------------------------------------------- |
+| Principal TPM      | fabric-os                          | `machine/daas-roadmap.json`, `machine/secas-roadmap.json` |
+| Platform architect | fabric-os                          | `deploy/`, `platform/tools/control-plane/`                |
+| Security operator  | fabric-os + Human/Security         | `machine/sovereign-approval-register.json`                |
+| Design / UX        | Principal product designer (fleet) | this tree                                                 |
 
-_Formal `pm/team/roster.json` not yet provisioned — roster inferred from program owners._
+_Formal `machine/team/roster.json` not yet provisioned — roster inferred from program owners._
 
 ## Related SoR
 
-| Artifact               | Path                                                                |
-| ---------------------- | ------------------------------------------------------------------- |
-| DaaS program           | `pm/daas-roadmap.json`, `docs/operations/daas/`                     |
-| SECaaS program         | `pm/secas-roadmap.json`, `docs/operations/security-as-a-service.md` |
-| EXR pack               | `docs/specs/experiences/exr-pack.yaml`                              |
-| Operator journey spine | `docs/specs/operator-journey-map.md`                                |
-| Institutional personas | gtcx-docs `docs/governance/institutional/personas/`                 |
+| Artifact               | Path                                                                     |
+| ---------------------- | ------------------------------------------------------------------------ |
+| DaaS program           | `machine/daas-roadmap.json`, `docs/operations/daas/`                     |
+| SECaaS program         | `machine/secas-roadmap.json`, `docs/operations/security-as-a-service.md` |
+| EXR pack               | `docs/specs/experiences/exr-pack.yaml`                                   |
+| Operator journey spine | `docs/specs/operator-journey-map.md`                                     |
+| Institutional personas | gtcx-docs `docs/governance/institutional/personas/`                      |
 
 ## Verification
 
 ```bash
-pnpm pm:sync
-pnpm ops:check
+pnpm machine:sync
+pnpm operations:check
 # Fleet A1 probe (from bridge-os):
 cd ../bridge-os && pnpm audit:five-core:run -- --repo fabric-os --core A1 --write
 ```

@@ -16,12 +16,12 @@ date: 2026-06-10
 
 ## Lagging outcomes
 
-| Outcome                   | Metric                    | Source                               |
-| ------------------------- | ------------------------- | ------------------------------------ |
-| DaaS program sealed       | DAAS-S1–S3 `complete`     | `pm/daas-roadmap.json`               |
-| SECaaS S2 progress        | SEC-PENTEST-01 status     | `pm/security-friction-register.json` |
-| Engineering readiness     | validate-all pass count   | `audit/latest.json`                  |
-| External assurance burden | `externalBlockers.burden` | `audit/latest.json`                  |
+| Outcome                   | Metric                    | Source                                    |
+| ------------------------- | ------------------------- | ----------------------------------------- |
+| DaaS program sealed       | DAAS-S1–S3 `complete`     | `machine/daas-roadmap.json`               |
+| SECaaS S2 progress        | SEC-PENTEST-01 status     | `machine/security-friction-register.json` |
+| Engineering readiness     | validate-all pass count   | `audit/latest.json`                       |
+| External assurance burden | `externalBlockers.burden` | `audit/latest.json`                       |
 
 ## Anti-metrics (do not optimize)
 

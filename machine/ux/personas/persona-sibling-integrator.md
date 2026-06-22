@@ -39,4 +39,4 @@ Engineer in `compliance-os`, `markets-os`, `terminal-os`, or `gtcx-intelligence`
 ## Anti-personas
 
 - **Infra terraform author** — integrators consume handoffs; they do not apply `module.waf` by default
-- **Legal signatory** — sovereign gates stay Class S in `pm/sovereign-approval-register.json`
+- **Legal signatory** — sovereign gates stay Class S in `machine/sovereign-approval-register.json`

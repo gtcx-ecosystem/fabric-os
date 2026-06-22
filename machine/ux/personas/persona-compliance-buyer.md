@@ -32,7 +32,7 @@ External auditor, regulator liaison, or enterprise procurement security reviewer
 ## Success signals
 
 - `audit/latest.json` leadership decisions list sovereign approvals with evidence paths
-- `pm/sovereign-approval-register.json` status matches procurement reality
+- `machine/sovereign-approval-register.json` status matches procurement reality
 - Master audit composite score documented with open external assurance burden
 
 ## Anti-personas

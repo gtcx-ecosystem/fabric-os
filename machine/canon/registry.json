@@ -10,15 +10,141 @@
   "owner": "fabric-os",
   "goalsRef": "machine/canon/strategy.json",
   "strategyRef": "machine/canon/strategy.json",
-  "milestones": [],
+  "milestones": [
+    {
+      "id": "M1",
+      "title": "Fleet ops assurance fabric",
+      "status": "in_progress",
+      "targetDate": "2026-09-01",
+      "bundleIds": ["FEAT-FABRIC-OPS-ASSURANCE"]
+    }
+  ],
   "composition": {
-    "features": [],
+    "features": [
+      {
+        "id": "FEAT-FABRIC-OPS-ASSURANCE",
+        "title": "Fabric ops assurance",
+        "status": "in_progress",
+        "spec": {
+          "_generated": true,
+          "_synthesisVersion": "1.1.0",
+          "_source": "docs/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
+          "$schema": "gtcx://canon-os/product-canon-bundle-manifest/v1",
+          "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
+          "productId": "fabric-os",
+          "version": "0.1.0",
+          "status": "in_progress",
+          "updated": "2026-06-22",
+          "title": "Fabric ops assurance",
+          "owner": "fabric-os",
+          "authorityClass": "R",
+          "goalIds": ["GOAL-FABRIC-OPS"],
+          "milestoneIds": ["M1"],
+          "composition": [],
+          "slices": {
+            "charter": {
+              "path": "charter.json",
+              "version": "0.1.0",
+              "status": "in_progress",
+              "contentHash": "f0782a7c87e32add"
+            },
+            "requirements": {
+              "path": "requirements.json",
+              "version": "0.1.0",
+              "status": "in_progress",
+              "contentHash": "bb7a8276e1a33435"
+            },
+            "experience": {
+              "path": "experience.json",
+              "version": "0.1.0",
+              "status": "in_progress",
+              "contentHash": "fcacd4d8d8b4a118"
+            },
+            "dod": {
+              "path": "dod.json",
+              "version": "0.1.0",
+              "status": "in_progress",
+              "contentHash": "a42e678f94c22d87"
+            },
+            "uat": {
+              "path": "uat.json",
+              "version": "0.1.0",
+              "status": "in_progress",
+              "contentHash": "eb8e45d66d09c8af"
+            }
+          },
+          "narrativeRefs": {},
+          "initiativeRef": null
+        }
+      }
+    ],
     "services": [],
     "infra": [],
     "experience": [],
     "commercial": []
   },
-  "bundles": [],
+  "bundles": [
+    {
+      "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
+      "title": "Fabric ops assurance",
+      "status": "in_progress",
+      "version": "0.1.0",
+      "manifest": {
+        "_generated": true,
+        "_synthesisVersion": "1.1.0",
+        "_source": "docs/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
+        "$schema": "gtcx://canon-os/product-canon-bundle-manifest/v1",
+        "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
+        "productId": "fabric-os",
+        "version": "0.1.0",
+        "status": "in_progress",
+        "updated": "2026-06-22",
+        "title": "Fabric ops assurance",
+        "owner": "fabric-os",
+        "authorityClass": "R",
+        "goalIds": ["GOAL-FABRIC-OPS"],
+        "milestoneIds": ["M1"],
+        "composition": [],
+        "slices": {
+          "charter": {
+            "path": "charter.json",
+            "version": "0.1.0",
+            "status": "in_progress",
+            "contentHash": "f0782a7c87e32add"
+          },
+          "requirements": {
+            "path": "requirements.json",
+            "version": "0.1.0",
+            "status": "in_progress",
+            "contentHash": "bb7a8276e1a33435"
+          },
+          "experience": {
+            "path": "experience.json",
+            "version": "0.1.0",
+            "status": "in_progress",
+            "contentHash": "fcacd4d8d8b4a118"
+          },
+          "dod": {
+            "path": "dod.json",
+            "version": "0.1.0",
+            "status": "in_progress",
+            "contentHash": "a42e678f94c22d87"
+          },
+          "uat": {
+            "path": "uat.json",
+            "version": "0.1.0",
+            "status": "in_progress",
+            "contentHash": "eb8e45d66d09c8af"
+          }
+        },
+        "narrativeRefs": {},
+        "initiativeRef": null
+      },
+      "goalIds": ["GOAL-FABRIC-OPS"],
+      "milestoneIds": ["M1"],
+      "composition": []
+    }
+  ],
   "narrativeIndex": {
     "vision": "docs/foundation/vision.md",
     "mission": "docs/foundation/mission.md",

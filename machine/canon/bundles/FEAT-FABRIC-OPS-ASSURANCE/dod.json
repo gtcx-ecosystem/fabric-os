@@ -1,0 +1,17 @@
+{
+  "_generated": true,
+  "_synthesisVersion": "1.1.0",
+  "_source": "docs/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
+  "$schema": "gtcx://canon-os/product-canon-dod/v1",
+  "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
+  "version": "0.1.0",
+  "inherits": "agile/scrum/definition-of-done.md",
+  "checklist": [
+    {
+      "id": "DOD-FOA-001",
+      "item": "fabric:ops-contracts:check PASS for fabric-os",
+      "verifyCommand": "pnpm fabric:ops-contracts:check",
+      "required": true
+    }
+  ]
+}

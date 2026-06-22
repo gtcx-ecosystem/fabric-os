@@ -1,0 +1,19 @@
+{
+  "_generated": true,
+  "_synthesisVersion": "1.1.0",
+  "_source": "docs/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
+  "$schema": "gtcx://canon-os/product-canon-uat/v1",
+  "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
+  "version": "0.1.0",
+  "scenarios": [
+    {
+      "id": "UAT-FOA-001",
+      "title": "Fleet ops contract verifier green",
+      "preconditions": ["fabric-os checkout"],
+      "steps": ["Run pnpm fabric:ops-contracts:check"],
+      "expected": "Exit 0 with PASS for fabric-os",
+      "verifyCommand": "pnpm fabric:ops-contracts:check",
+      "expectedExitCode": 0
+    }
+  ]
+}

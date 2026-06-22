@@ -1,0 +1,36 @@
+{
+  "_generated": true,
+  "_synthesisVersion": "1.1.0",
+  "_source": "docs/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
+  "$schema": "gtcx://canon-os/product-canon-experience/v1",
+  "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
+  "version": "0.1.0",
+  "operatorPersonas": ["platform-architect"],
+  "surfaces": [
+    {
+      "id": "surface-fabric-ops-check",
+      "route": "cli:fabric:ops:check",
+      "states": ["idle", "running", "pass", "fail"],
+      "transitions": [
+        {
+          "from": "idle",
+          "event": "run",
+          "to": "running"
+        },
+        {
+          "from": "running",
+          "event": "green",
+          "to": "pass"
+        }
+      ],
+      "acceptance": ["FR-FOA-001"]
+    }
+  ],
+  "flows": [
+    {
+      "id": "flow-ops-verify",
+      "steps": ["surface-fabric-ops-check:idle", "surface-fabric-ops-check:pass"]
+    }
+  ],
+  "narrativeRef": "docs/operations/README.md"
+}

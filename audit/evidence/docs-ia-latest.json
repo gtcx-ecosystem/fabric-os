@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://baseline-os/docs-ia-check/v1",
-  "generatedAt": "2026-06-22T18:00:11.770Z",
+  "generatedAt": "2026-06-22T19:44:47.337Z",
   "repo": "fabric-os",
   "ok": true,
   "strict": false,
@@ -34,7 +34,7 @@
       "script": "docs-product-check.mjs",
       "ok": true,
       "exit": 0,
-      "detail": "OK no-loose-narrative-at-root — ok |  | PASS — 18/18"
+      "detail": "OK no-loose-narrative-at-root — ok |  | PASS — 29/29"
     },
     {
       "gateId": "docs:roadmap:check",

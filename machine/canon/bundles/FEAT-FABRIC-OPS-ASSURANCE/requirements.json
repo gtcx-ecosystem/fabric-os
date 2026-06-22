@@ -1,0 +1,21 @@
+{
+  "_generated": true,
+  "_synthesisVersion": "1.1.0",
+  "_source": "docs/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
+  "$schema": "gtcx://canon-os/product-canon-requirements/v1",
+  "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
+  "version": "0.1.0",
+  "functional": [
+    {
+      "id": "FR-FOA-001",
+      "statement": "The fabric verifier SHALL resolve ops and operations alias paths for fleet repos.",
+      "priority": "P0",
+      "acceptance": [
+        "Given a repo with operations/fabric-contract.json When fabric:ops-contracts:check runs Then exit 0"
+      ],
+      "surfaces": ["surface-fabric-ops-check"],
+      "verifyCommand": "pnpm fabric:ops-contracts:check"
+    }
+  ],
+  "nonFunctional": []
+}

@@ -1,0 +1,23 @@
+{
+  "_generated": true,
+  "_synthesisVersion": "1.1.0",
+  "_source": "docs/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
+  "$schema": "gtcx://canon-os/product-canon-charter/v1",
+  "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
+  "version": "0.1.0",
+  "problem": "Fleet repos lack a single verifier for operational contract alignment (ops domains, legal, attestation paths).",
+  "goals": [
+    "Every fleet repo passes fabric:ops-contracts:check against fabric-os central contract"
+  ],
+  "nonGoals": ["Product feature delivery", "ZenHub ceremony ownership"],
+  "successMetrics": [
+    {
+      "id": "SM-FOA-1",
+      "metric": "Fleet ops contract pass rate",
+      "target": "19/19 repos",
+      "verify": "pnpm fabric:ops-contracts:check"
+    }
+  ],
+  "dependencies": ["fabric-os/operations/fabric-contract.json"],
+  "openQuestions": []
+}

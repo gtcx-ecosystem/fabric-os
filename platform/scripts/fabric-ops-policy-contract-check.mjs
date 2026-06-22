@@ -150,7 +150,7 @@ function validateRepo(repo, spec) {
     });
 
     const localRefs = Array.isArray(localDomain.localRefs) ? localDomain.localRefs : [];
-    const existingRefs = localRefs.filter((rel) => relExists(repoRoot, rel));
+    const existingRefs = localRefs.filter((rel) => anyRefExists(repoRoot, rel));
     const fallbackRefs = existingRefs.length ? existingRefs : discoverLocalRefs(repoRoot, domain);
     gates.push({
       id: `domain:${domain.id}:local-ref`,

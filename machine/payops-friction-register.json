@@ -57,7 +57,7 @@
       "title": "Fabric SM path contract for shared billing providers",
       "blocksIR": false,
       "class": "R",
-      "witness": "pm/payops-substrate-contract.json",
+      "witness": "machine/payops-substrate-contract.json",
       "closedAt": "2026-06-14",
       "note": "SM populate + ESO wiring remains InfraOps/PayOps execution"
     },
@@ -68,7 +68,7 @@
       "title": "Webhook ingress matrix in infra-per-repo-action-matrix",
       "blocksIR": false,
       "class": "R",
-      "witness": "pm/payops-substrate-contract.json#webhookIngress",
+      "witness": "machine/payops-substrate-contract.json#webhookIngress",
       "closedAt": "2026-06-14"
     }
   ]

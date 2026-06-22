@@ -3,8 +3,8 @@
   "repo": "fabric-os",
   "updated": "2026-06-17",
   "sources": [
-    "pm/execution-roadmap.md",
-    "pm/spec/product-goals.json",
+    "machine/execution-roadmap.md",
+    "machine/spec/product-goals.json",
     "agile/roadmaps/technical.md"
   ],
   "active": {

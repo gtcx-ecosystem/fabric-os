@@ -8,4 +8,4 @@ Delivery machine — fabric-os owns assurance / infra parallel lanes.
 | [`sprints/`](./sprints/)                 | Active sprint narrative + task breakdown |
 | [`uat/`](./uat/)                         | UAT scenarios and sign-off evidence      |
 
-**Generated:** `pm/execution-roadmap.md` · `pm/readiness-snapshot.json`
+**Generated:** `machine/execution-roadmap.md` · `machine/readiness-snapshot.json`

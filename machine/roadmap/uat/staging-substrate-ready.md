@@ -7,7 +7,7 @@ status: draft
 
 # UAT — Staging substrate ready
 
-Derived from `pm/ux/user-flows/flow-staging-handoff.md` §UAT outline.
+Derived from `machine/ux/user-flows/flow-staging-handoff.md` §UAT outline.
 
 | #   | Scenario                                       | Expected                                              |
 | --- | ---------------------------------------------- | ----------------------------------------------------- |

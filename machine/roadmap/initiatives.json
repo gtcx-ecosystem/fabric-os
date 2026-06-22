@@ -11,7 +11,7 @@
       "completedAt": "2026-06-12",
       "laneId": "I",
       "spec": "docs/specs/ecosystem/trade-ecosystem-lanes-spec.md",
-      "machineSpec": "pm/spec/trade-ecosystem-lanes.json",
+      "machineSpec": "machine/spec/trade-ecosystem-lanes.json",
       "handoff": "docs/operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md",
       "ticket": "XR-FABRIC-TRADE-LANES-001",
       "witness": "audit/evidence/fabric-lanes-check-latest.json"
@@ -48,7 +48,7 @@
         "exrId": "EXR-001",
         "personaIds": ["platform-operator", "sibling-integrator"]
       },
-      "prd": "pm/product/prds/PRD-daass-operator-substrate.md"
+      "prd": "machine/product/prds/PRD-daass-operator-substrate.md"
     },
     {
       "id": "INIT-GTCX-INFRA-SECAS",
@@ -63,7 +63,7 @@
         "exrId": "EXR-003",
         "personaIds": ["security-operator", "compliance-buyer"]
       },
-      "prd": "pm/product/prds/PRD-secas-stack-security.md"
+      "prd": "machine/product/prds/PRD-secas-stack-security.md"
     }
   ]
 }

@@ -8,7 +8,7 @@
   "goals": ["SECAS-S2-01 ingest readiness", "pm folder R1 compliance"],
   "tasks": [],
   "uat": {
-    "matrixRef": "pm/roadmap/uat/",
+    "matrixRef": "machine/roadmap/uat/",
     "scenarios": []
   }
 }

@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://canon-os/docs-fractal-mpr-check/v1",
-  "generatedAt": "2026-06-19T19:10:56.280Z",
+  "generatedAt": "2026-06-22T17:57:20.604Z",
   "repo": "fabric-os",
   "policyUpdated": "2026-06-19",
   "pass": true,
@@ -151,74 +151,14 @@
       "detail": "bootstrap stub (published:false until MPR audit)"
     },
     {
-      "id": "layer:strategy:path",
+      "id": "layer:strategy:deprecated-pointer",
       "ok": true,
-      "detail": "docs/primitives/strategy/"
-    },
-    {
-      "id": "layer:strategy:pillarContract-complete",
-      "ok": true,
-      "detail": "all 11 pillars in pack"
-    },
-    {
-      "id": "layer:strategy:fractalMpr-present",
-      "ok": true,
-      "detail": "fractalMpr block present"
-    },
-    {
-      "id": "layer:strategy:scorecard-exists",
-      "ok": true,
-      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/primitives/strategy/scorecard.md"
-    },
-    {
-      "id": "layer:strategy:scorecard-witness-link",
-      "ok": true,
-      "detail": "scorecard links layer MPR witness (not self-assessed only)"
-    },
-    {
-      "id": "layer:strategy:scorecard-target",
-      "ok": true,
-      "detail": "scorecard documents target 85/100 or rollup"
-    },
-    {
-      "id": "layer:strategy:scorecard-rollup-notice",
-      "ok": true,
-      "detail": "scorecard declares rollup from witness"
-    },
-    {
-      "id": "layer:strategy:scorecard-eleven-pillars",
-      "ok": true,
-      "detail": "all 11 pillars listed"
-    },
-    {
-      "id": "layer:strategy:layer-witness-parse",
-      "ok": true,
-      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/audit/evidence/mpr-strategy-layer-latest.json"
-    },
-    {
-      "id": "layer:strategy:layer-witness-schema",
-      "ok": true,
-      "detail": "gtcx://canon-os/mpr-layer-witness-stub/v1"
-    },
-    {
-      "id": "layer:strategy:layer-witness-scope",
-      "ok": true,
-      "detail": "strategy layer scope"
-    },
-    {
-      "id": "layer:strategy:layer-witness-target",
-      "ok": true,
-      "detail": "target 85"
-    },
-    {
-      "id": "layer:strategy:layer-witness-stub",
-      "ok": true,
-      "detail": "bootstrap stub (published:false until MPR audit)"
+      "detail": "skipped — rollup via docs/business/opportunity/"
     },
     {
       "id": "layer:architecture:path",
       "ok": true,
-      "detail": "docs/primitives/architecture/"
+      "detail": "docs/architecture/"
     },
     {
       "id": "layer:architecture:pillarContract-complete",
@@ -233,7 +173,7 @@
     {
       "id": "layer:architecture:scorecard-exists",
       "ok": true,
-      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/primitives/architecture/scorecard.md"
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/architecture/scorecard.md"
     },
     {
       "id": "layer:architecture:scorecard-witness-link",
@@ -281,74 +221,14 @@
       "detail": "bootstrap stub (published:false until MPR audit)"
     },
     {
-      "id": "layer:engineering:path",
+      "id": "layer:engineering:deprecated-pointer",
       "ok": true,
-      "detail": "docs/engineering/"
-    },
-    {
-      "id": "layer:engineering:pillarContract-complete",
-      "ok": true,
-      "detail": "all 11 pillars in pack"
-    },
-    {
-      "id": "layer:engineering:fractalMpr-present",
-      "ok": true,
-      "detail": "fractalMpr block present"
-    },
-    {
-      "id": "layer:engineering:scorecard-exists",
-      "ok": true,
-      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/engineering/scorecard.md"
-    },
-    {
-      "id": "layer:engineering:scorecard-witness-link",
-      "ok": true,
-      "detail": "scorecard links layer MPR witness (not self-assessed only)"
-    },
-    {
-      "id": "layer:engineering:scorecard-target",
-      "ok": true,
-      "detail": "scorecard documents target 85/100 or rollup"
-    },
-    {
-      "id": "layer:engineering:scorecard-rollup-notice",
-      "ok": true,
-      "detail": "scorecard declares rollup from witness"
-    },
-    {
-      "id": "layer:engineering:scorecard-eleven-pillars",
-      "ok": true,
-      "detail": "all 11 pillars listed"
-    },
-    {
-      "id": "layer:engineering:layer-witness-parse",
-      "ok": true,
-      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/audit/evidence/mpr-engineering-layer-latest.json"
-    },
-    {
-      "id": "layer:engineering:layer-witness-schema",
-      "ok": true,
-      "detail": "gtcx://canon-os/mpr-layer-witness-stub/v1"
-    },
-    {
-      "id": "layer:engineering:layer-witness-scope",
-      "ok": true,
-      "detail": "engineering layer scope"
-    },
-    {
-      "id": "layer:engineering:layer-witness-target",
-      "ok": true,
-      "detail": "target 85"
-    },
-    {
-      "id": "layer:engineering:layer-witness-stub",
-      "ok": true,
-      "detail": "bootstrap stub (published:false until MPR audit)"
+      "detail": "skipped — rollup via docs/architecture/"
     },
     {
       "id": "layer:research:path",
       "ok": true,
-      "detail": "docs/research/"
+      "detail": "docs/business/research/"
     },
     {
       "id": "layer:research:pillarContract-complete",
@@ -363,7 +243,7 @@
     {
       "id": "layer:research:scorecard-exists",
       "ok": true,
-      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/research/scorecard.md"
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/business/research/scorecard.md"
     },
     {
       "id": "layer:research:scorecard-witness-link",
@@ -543,7 +423,7 @@
     {
       "id": "layer:publishing:path",
       "ok": true,
-      "detail": "docs/publishing/"
+      "detail": "docs/gitbook/publish/"
     },
     {
       "id": "layer:publishing:pillarContract-complete",
@@ -558,7 +438,7 @@
     {
       "id": "layer:publishing:scorecard-exists",
       "ok": true,
-      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/publishing/scorecard.md"
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/gitbook/publish/scorecard.md"
     },
     {
       "id": "layer:publishing:scorecard-witness-link",
@@ -608,7 +488,7 @@
     {
       "id": "layer:roadmap:path",
       "ok": true,
-      "detail": "docs/roadmap/"
+      "detail": "agile/roadmaps/"
     },
     {
       "id": "layer:roadmap:pillarContract-complete",
@@ -623,7 +503,7 @@
     {
       "id": "layer:roadmap:scorecard-exists",
       "ok": true,
-      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/roadmap/scorecard.md"
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/agile/roadmaps/scorecard.md"
     },
     {
       "id": "layer:roadmap:scorecard-witness-link",
@@ -865,10 +745,5 @@
       "ok": true,
       "detail": "bootstrap stub (published:false until MPR audit)"
     }
-  ],
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  ]
 }

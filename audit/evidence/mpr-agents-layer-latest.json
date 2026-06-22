@@ -4,7 +4,7 @@
   "layer": "agents",
   "path": "agents/",
   "repo": "fabric-os",
-  "evaluatedAt": "2026-06-16T16:56:31.861Z",
+  "evaluatedAt": "2026-06-22T18:00:00.000Z",
   "published": false,
   "pillarTarget": 85,
   "fullComposite100": null,
@@ -16,66 +16,17 @@
     "packCheck": "pnpm agents:check"
   },
   "quadrants": {
-    "compliance": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    },
-    "technicalExcellence": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    },
-    "craft": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    },
-    "worldClass": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    },
-    "trustAndSafety": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    },
-    "creativityInnovation": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    },
-    "commercialValue": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    },
-    "defensiveMoat": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    },
-    "agenticEmpowerment": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    },
-    "ecosystemIntegration": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    },
-    "ipMagic": {
-      "score100": null,
-      "published": false,
-      "provisional": true
-    }
+    "compliance": { "score100": null, "published": false, "provisional": true },
+    "technicalExcellence": { "score100": null, "published": false, "provisional": true },
+    "craft": { "score100": null, "published": false, "provisional": true },
+    "worldClass": { "score100": null, "published": false, "provisional": true },
+    "trustAndSafety": { "score100": null, "published": false, "provisional": true },
+    "creativityInnovation": { "score100": null, "published": false, "provisional": true },
+    "commercialValue": { "score100": null, "published": false, "provisional": true },
+    "defensiveMoat": { "score100": null, "published": false, "provisional": true },
+    "agenticEmpowerment": { "score100": null, "published": false, "provisional": true },
+    "ecosystemIntegration": { "score100": null, "published": false, "provisional": true },
+    "ipMagic": { "score100": null, "published": false, "provisional": true }
   },
-  "note": "Bootstrap stub — publish via bridge run-multi-pillar-audit.mjs --scope layer when live",
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "note": "Bootstrap stub — publish via bridge run-multi-pillar-audit.mjs --scope layer when live"
 }

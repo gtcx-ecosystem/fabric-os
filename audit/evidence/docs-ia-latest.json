@@ -1,0 +1,107 @@
+{
+  "schema": "gtcx://baseline-os/docs-ia-check/v1",
+  "generatedAt": "2026-06-22T17:56:58.284Z",
+  "repo": "fabric-os",
+  "ok": true,
+  "strict": false,
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "gateSequenceSource": "canon-os/machine/spec/docs-ia-initiative.json",
+  "failures": [],
+  "steps": [
+    {
+      "gateId": "docs:foundation:check",
+      "script": "docs-foundation-check.mjs",
+      "ok": true,
+      "exit": 0,
+      "detail": "OK canon:synthesize:check — docs → machine/canon fresh |  | PASS — 16/16"
+    },
+    {
+      "gateId": "docs:business:check",
+      "script": "docs-business-check.mjs",
+      "ok": true,
+      "exit": 0,
+      "detail": "OK research-folder — docs/business/research/ |  | PASS — 44/44"
+    },
+    {
+      "gateId": "docs:architecture:check",
+      "script": "docs-architecture-check.mjs",
+      "ok": true,
+      "exit": 0,
+      "detail": "OK content:spec-narrative-min — 2 narrative spec files (min 1) |  | PASS — 25/25"
+    },
+    {
+      "gateId": "docs:product:check",
+      "script": "docs-product-check.mjs",
+      "ok": true,
+      "exit": 0,
+      "detail": "OK no-loose-narrative-at-root — ok |  | PASS — 18/18"
+    },
+    {
+      "gateId": "docs:roadmap:check",
+      "script": "docs-roadmap-check.mjs",
+      "ok": true,
+      "exit": 0,
+      "detail": "OK foundation:roadmap-pointer — docs/foundation/roadmap.md must link executive lens → agile/roadmaps/ |  | PASS — 17/17"
+    },
+    {
+      "gateId": "docs:agile:check",
+      "script": "agile-check.mjs",
+      "ok": true,
+      "exit": 0,
+      "detail": "OK absent:docs-agile — absent |  | PASS — 39/39"
+    },
+    {
+      "gateId": "docs:operations:check",
+      "script": "docs-operations-check.mjs",
+      "ok": true,
+      "exit": 0,
+      "detail": "OK canonical:agent-init/agent-universal-instructions.md — docs/operations/agent-init/agent-universal-instructions.md |  | PASS — 16/16"
+    },
+    {
+      "gateId": "docs:compliance-nest:check",
+      "skipped": true,
+      "reason": "no harness script mapped"
+    },
+    {
+      "gateId": "docs:agents:check",
+      "script": "agents-check.mjs",
+      "ok": true,
+      "exit": 0,
+      "detail": "agents:check — PASS (33/33)"
+    },
+    {
+      "gateId": "docs:fractal-mpr:check",
+      "script": "docs-fractal-mpr-check.mjs",
+      "ok": true,
+      "exit": 0,
+      "detail": "OK layer:agents:layer-witness-stub — bootstrap stub (published:false until MPR audit) |  | PASS — 148/148"
+    },
+    {
+      "gateId": "docs:pack:pillar-contract:check",
+      "script": "docs-pack-pillar-contract-check.mjs",
+      "ok": true,
+      "exit": 0,
+      "detail": "OK pack:agents-pack:fractalMpr-present — fractalMpr block present |  | PASS — 25/25"
+    },
+    {
+      "gateId": "validate:dead-links",
+      "skipped": true,
+      "reason": "validate gates require --strict"
+    },
+    {
+      "gateId": "validate:nav-links",
+      "skipped": true,
+      "reason": "validate gates require --strict"
+    },
+    {
+      "gateId": "validate:hub-operations-scope",
+      "skipped": true,
+      "reason": "validate gates require --strict"
+    },
+    {
+      "gateId": "validate:publish",
+      "skipped": true,
+      "reason": "validate gates require --strict"
+    }
+  ]
+}

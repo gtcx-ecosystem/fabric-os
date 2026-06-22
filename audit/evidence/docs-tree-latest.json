@@ -1,14 +1,14 @@
 {
   "schema": "gtcx://canon-os/docs-tree-witness/v1",
-  "generatedAt": "2026-06-22T17:31:52.195Z",
+  "generatedAt": "2026-06-22T17:54:28.538Z",
   "repo": "fabric-os",
-  "strict": true,
+  "strict": false,
   "structureOnly": false,
   "profile": "platform",
   "pass": true,
   "metrics": {
-    "mdFiles": 244,
-    "folders": 83,
+    "mdFiles": 241,
+    "folders": 81,
     "missingReadme": 0,
     "missingFrontmatter": 0,
     "missingDocumentType": 0,

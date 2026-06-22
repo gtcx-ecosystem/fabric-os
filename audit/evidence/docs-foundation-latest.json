@@ -1,10 +1,10 @@
 {
   "schema": "gtcx://canon-os/docs-foundation-check/v2",
   "repo": "fabric-os",
-  "at": "2026-06-19T19:10:55.917Z",
+  "at": "2026-06-22T17:57:20.519Z",
   "ok": true,
   "spec": {
-    "localPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-foundation-pack.json",
+    "localPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/machine/spec/docs-foundation-pack.json",
     "localIsStub": false,
     "resolvedIsFull": true
   },
@@ -12,7 +12,7 @@
     {
       "id": "spec:local-present",
       "ok": true,
-      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/docs-foundation-pack.json"
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/machine/spec/docs-foundation-pack.json"
     },
     {
       "id": "spec:not-stub",
@@ -87,12 +87,7 @@
     {
       "id": "canon:synthesize:check",
       "ok": true,
-      "detail": "docs → pm/canon fresh"
+      "detail": "docs → machine/canon fresh"
     }
-  ],
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  ]
 }

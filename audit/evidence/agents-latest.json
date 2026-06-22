@@ -2,13 +2,13 @@
   "schema": "gtcx://canon-os/agents-check/v1",
   "repo": "fabric-os",
   "profile": "platform",
-  "at": "2026-06-16T16:02:12.216Z",
+  "at": "2026-06-22T17:57:20.557Z",
   "ok": true,
   "gates": [
     {
       "id": "spec:local-present",
       "ok": true,
-      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/agents-pack.json"
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/machine/spec/agents-pack.json"
     },
     {
       "id": "spec:not-stub",
@@ -31,9 +31,9 @@
       "detail": "agents/ at repo root"
     },
     {
-      "id": "migration:no-docs-agents-sprawl",
+      "id": "migration:no-docs-agents",
       "ok": true,
-      "detail": "docs/agents/ must be pointer-only after rehome"
+      "detail": "absent"
     },
     {
       "id": "root:agents/README.md",
@@ -170,10 +170,5 @@
       "ok": true,
       "detail": "pointer only"
     }
-  ],
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  ]
 }

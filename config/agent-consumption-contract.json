@@ -57,7 +57,7 @@
       "operations/fabric-contract.json"
     ],
     "PHASE_DOCS": ["docs/ layer tree per machine/spec/docs-folders/"],
-    "PHASE_CANON": ["config/product-canon-contract.json", "docs/canon/"],
+    "PHASE_CANON": ["config/product-canon-contract.json", "docs/product/canon/"],
     "referenceRepo": "baseline-os",
     "standardSoR": "../canon-os/config/ecosystem-central-sor.json",
     "canonConsumptionPin": "config/canon-os-consumption.json"

@@ -1,154 +1,16 @@
 {
-  "$schema": "gtcx://ecosystem/layout-contract/v5",
-  "version": "5.1.0",
-  "updated": "2026-06-08",
-  "owner": "fabric-os",
+  "$schema": "gtcx://layout-contract/v5-pointer",
+  "repo": "fabric-os",
+  "updated": "2026-06-22",
+  "layoutVersion": "v5",
   "sor": {
-    "contract": "config/layout-contract.json",
-    "prose": "docs/operations/workspace/ecosystem-repo-layout-v5.md"
+    "engine": "bridge-os",
+    "bridge-osRoot": "../bridge-os",
+    "agenticRoot": "../bridge-os",
+    "contract": "../bridge-os/config/ecosystem-layout-contract.json",
+    "prose": "../bridge-os/docs/ecosystem-layout-v5.md",
+    "registry": "../bridge-os/config/ecosystem-world-class-v5-registry.json",
+    "documentManifest": "../bridge-os/config/ecosystem-repo-document-manifest.json"
   },
-  "policy": {
-    "numberedPaths": "forbidden-for-new-work",
-    "strictGate": "p35-layout-check --strict",
-    "legacyAliases": "migration-only-not-pass"
-  },
-  "v5RootHubs": [
-    "agentic",
-    "archive",
-    "audit",
-    "deploy",
-    "docs",
-    "operations",
-    "platform",
-    "machine",
-    "workstream"
-  ],
-  "legacyHubAliases": {
-    "archive": "00-archive",
-    "docs": "01-docs",
-    "operations": "02-ops",
-    "platform": "03-platform",
-    "deploy": "04-deploy",
-    "audit": "05-audit",
-    "workstream": "06-workstream"
-  },
-  "forbidden": {
-    "pathSegmentPattern": "^(00|01|02|03|04|05|06|07|08|09|11)-",
-    "applyTo": ["repo-root", "docs-hub", "all-hubs"],
-    "symlinkHubs": false,
-    "nestedUnderPlatform": ["agentic", "machine"],
-    "docsDuplicatesOfOpsDomains": [
-      "assurance",
-      "attestation",
-      "compliance",
-      "coordination",
-      "gtm",
-      "legal",
-      "security",
-      "witness"
-    ],
-    "rootStrayFolders": ["_reports", "_sop", "_canon", "scripts", "artifacts"]
-  },
-  "rootAllowlist": {
-    "enforceInP35": true,
-    "specUrl": "docs/root-allowlist-spec-v5.md",
-    "manifestPath": "docs/operations/repo/root-allowlist.json",
-    "templatePath": "config/ecosystem-root-allowlist.template.json",
-    "classes": ["REQUIRED", "ALLOWED", "PERMISSIBLE_ON_APPROVAL", "FORBIDDEN"]
-  },
-  "providerBootstrap": {
-    "enforceInP35": true,
-    "protocol": "39-provider-agnostic-agent-bootstrap",
-    "registryPath": "config/ecosystem-provider-bootstrap-registry.json",
-    "specUrl": "docs/provider-bootstrap-enforcement.md"
-  },
-  "docsHub": {
-    "v5Name": "docs",
-    "requiredFiles": [
-      "docs/sor.json",
-      "docs/README.md",
-      "docs/INDEX.md",
-      "docs/conventions.md",
-      "docs/operations/agents/README.md",
-      "docs/operations/repo/root-allowlist.json",
-      "docs/operations/repo/repo-hygiene-protocol.md",
-      "docs/operations/repo/CODE_OF_CONDUCT.md",
-      "docs/operations/repo/CONTRIBUTING.md",
-      "docs/operations/repo/SECURITY.md"
-    ],
-    "allowedTopLevelFolders": [
-      "api",
-      "architecture",
-      "business",
-      "cli",
-      "compliance",
-      "engineering",
-      "examples",
-      "foundation",
-      "gitbook",
-      "governance",
-      "operations",
-      "overview",
-      "product",
-      "reference",
-      "roadmap",
-      "specs",
-      "strategy"
-    ],
-    "narrativePointersOnly": ["assurance", "coordination", "gtm", "legal", "security"]
-  },
-  "auditHub": {
-    "v5Name": "audit",
-    "requiredFiles": ["audit/AGENT-START.md", "audit/README.md"],
-    "evidenceDir": "audit/evidence/",
-    "hygieneReportsDir": "audit/evidence/reports/"
-  },
-  "opsHub": {
-    "v5Name": "operations",
-    "requiredManifests": [
-      "operations/manifest.json",
-      "operations/coordination/manifest.json",
-      "operations/machine/manifest.json",
-      "operations/gtm/manifest.json",
-      "operations/compliance/manifest.json",
-      "operations/attestation/manifest.json",
-      "operations/security/manifest.json",
-      "operations/assurance/manifest.json",
-      "operations/attestation/witness/manifest.json"
-    ]
-  },
-  "agenticHub": {
-    "productRepos": {
-      "contents": ["README.md", "manifest.json"],
-      "schema": "gtcx.agentic.bridge.v1",
-      "forbiddenChildren": ["platform", "machine", "docs", "operations", "03-platform", "01-docs"]
-    },
-    "baselineOs": {
-      "schema": "gtcx.agentic.runtime.v1",
-      "note": "Runtime SoR — not thin-bridge template"
-    }
-  },
-  "repoKinds": ["product", "ecosystem-monorepo-root"],
-  "layoutVersionRequired": "v5",
-  "enforcement": {
-    "engine": "layout-spec-enforce/v1",
-    "passThreshold": 100,
-    "strictRequiresZeroErrors": true,
-    "axisWeights": {
-      "Q1_root_hubs": 30,
-      "Q2_docs_hygiene": 25,
-      "Q3_required_manifest": 20,
-      "Q4_config": 10,
-      "Q5_agentic": 15
-    },
-    "violationCodes": {
-      "HUB_NUMBERED_ONLY": "Physical v5 hub missing; only legacy numbered folder on disk",
-      "DOCS_NUMBERED_SEGMENT": "Path segment matches forbidden NN- pattern under docs/",
-      "DOCS_OPS_DUPLICATE": "P29 ops domain duplicated under docs/ — must live under operations/ only",
-      "ROOT_STRAY": "Root folder not in v5 contract (e.g. _reports/)",
-      "MANIFEST_MISSING": "Required path from ecosystem-repo-document-manifest.json missing",
-      "MANIFEST_LEGACY_ONLY": "Only legacy numbered path exists; v5 path required in strict mode",
-      "LAYOUT_VERSION": "ops.manifest layoutVersion does not match contract"
-    }
-  }
+  "note": "Normative layout SoR is bridge-os — local P35 pointer only (COMPOSITE-RESTORE-100)."
 }

@@ -3,7 +3,7 @@
   "version": "5.0.0",
   "schema_version": "5.0.0",
   "updated": "2026-06-22",
-  "description": "P35 v5 closed-world repo root allowlist for fabric-os.",
+  "description": "P35 v5 closed-world repo root allowlist for fabric-os. Canonical hubs: operations/ + machine/. `ops/` + `pm/` are optional mode-120000 shims (not required_directories — lstat symlink guard). `agentic/` is thin-bridge probe only.",
   "migration_tier": "stable",
   "required_files": ["README.md", "AGENTS.md", "CHANGELOG.md"],
   "required_directories": [
@@ -18,9 +18,7 @@
     "agentic",
     "agents",
     "agile",
-    "machine",
-    "ops",
-    "pm"
+    "machine"
   ],
   "allowed_files": [
     "LICENSE",

@@ -14,7 +14,7 @@
     {
       "id": "shipping-culture",
       "label": "Shipping culture PM",
-      "subtitle": "pm/ R1 folder",
+      "subtitle": "machine/ R1 folder",
       "progressPct": 100,
       "statusNote": "INIT-SHIPPING-CULTURE rollout"
     },
@@ -28,12 +28,12 @@
   ],
   "narrative": {
     "currentPhase": "assurance fabric owner — SecOps ingest awaiting vendor report",
-    "nextMilestone": "pm:folder:check R1 green + pm:shipping:report witness"
+    "nextMilestone": "machine:folder:check R1 green + machine:shipping:report witness"
   },
   "bottomLine": {
     "position": "Fabric gates green; vendor report ingest calendar-gated.",
     "gatingWork": "None for pm folder R1.",
-    "nextStrategicMove": "pnpm pm:folder:check && pnpm agent:next-work",
+    "nextStrategicMove": "pnpm machine:folder:check && pnpm agent:next-work",
     "auditComposite100": 100
   },
   "fiveCoreSyncedAt": "2026-06-17"

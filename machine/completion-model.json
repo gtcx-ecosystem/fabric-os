@@ -8,7 +8,7 @@
   "definitionOfDone": [
     "JTBD acceptanceCriteria met with witness JSON",
     "User flow happy + error paths documented",
-    "EXR pack p0 journeys linked to pm/ux",
+    "EXR pack p0 journeys linked to machine/ux",
     "PRD uxRefs populated",
     "Fleet health and validate-all green at seal"
   ],
@@ -16,5 +16,5 @@
     "daas": { "initiative": "INIT-GTCX-INFRA-DAAS", "status": "complete" },
     "secas": { "initiative": "INIT-GTCX-INFRA-SECAS", "status": "in_progress" }
   },
-  "uxSoR": "pm/ux"
+  "uxSoR": "machine/ux"
 }

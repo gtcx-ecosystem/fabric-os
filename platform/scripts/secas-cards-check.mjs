@@ -8,8 +8,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const ROADMAP = join(ROOT, 'pm/secas-roadmap.json');
-const REGISTER = join(ROOT, 'pm/security-friction-register.json');
+const ROADMAP = join(ROOT, 'machine/secas-roadmap.json');
+const REGISTER = join(ROOT, 'machine/security-friction-register.json');
 const CARDS_DIR = join(ROOT, 'docs/operations/secas/cards');
 const INDEX = join(ROOT, 'docs/operations/secas/README.md');
 const OUT = join(ROOT, 'audit/evidence/secas-cards-check-latest.json');

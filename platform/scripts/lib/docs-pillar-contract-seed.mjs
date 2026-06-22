@@ -24,7 +24,7 @@ const LAYER_ARTIFACTS = {
     commercialValue: { secondary: true, artifacts: ['docs/foundation/goals.md'], gates: ['links docs/business/'] },
     defensiveMoat: { secondary: true, artifacts: ['docs/foundation/vision.md'], gates: ['unique repo charter'] },
     agenticEmpowerment: { primary: true, artifacts: ['docs/foundation/README.md'], gates: ['P22 session chain'] },
-    ecosystemIntegration: { secondary: true, artifacts: ['docs/foundation/roadmap.md'], gates: ['pm/ + docs/roadmap links'] },
+    ecosystemIntegration: { secondary: true, artifacts: ['docs/foundation/roadmap.md'], gates: ['machine/ + docs/roadmap links'] },
     ipMagic: NA_IP,
   },
   business: {
@@ -137,7 +137,7 @@ export function buildPillarContract(layerId, layerWitness, minBar) {
 
 export function buildFractalMprBlock(layerWitness, scorecard) {
   return {
-    policy: 'pm/spec/docs-fractal-mpr-policy.json',
+    policy: 'machine/spec/docs-fractal-mpr-policy.json',
     layerWitness,
     scorecard,
     rollupFrom: ['file', 'folder'],

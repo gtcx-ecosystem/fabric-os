@@ -11,9 +11,9 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 
 export function resolveCanonRoot(fromRepoRoot) {
   const sibling = join(fromRepoRoot, '..', 'canon-os');
-  if (existsSync(join(sibling, 'pm/spec/docs-ia-initiative.json'))) return sibling;
+  if (existsSync(join(sibling, 'machine/spec/docs-ia-initiative.json'))) return sibling;
   const local = join(fromRepoRoot);
-  if (existsSync(join(local, 'pm/spec/docs-ia-initiative.json'))) return local;
+  if (existsSync(join(local, 'machine/spec/docs-ia-initiative.json'))) return local;
   return sibling;
 }
 
@@ -68,8 +68,8 @@ function isHubRepo(repoId) {
  */
 export function selectDocsInitiativeWork(repoId, repoRoot) {
   const canonRoot = resolveCanonRoot(repoRoot);
-  const initiative = loadJson(join(canonRoot, 'pm/spec/docs-ia-initiative.json'));
-  const queue = loadJson(join(canonRoot, 'pm/spec/docs-initiative-p22-queue.json'));
+  const initiative = loadJson(join(canonRoot, 'machine/spec/docs-ia-initiative.json'));
+  const queue = loadJson(join(canonRoot, 'machine/spec/docs-initiative-p22-queue.json'));
 
   if (!initiative || !queue) return null;
   if (initiative.status === 'complete' || queue.status === 'complete') return null;
@@ -177,8 +177,8 @@ function buildDocsInitiativePayload(repoId, repoRoot, canonRoot, initiative, que
       initiative: initiative.initiative,
       phase,
       workItemId: storyId,
-      spec: 'pm/spec/docs-ia-initiative.json',
-      queue: 'pm/spec/docs-initiative-p22-queue.json',
+      spec: 'machine/spec/docs-ia-initiative.json',
+      queue: 'machine/spec/docs-initiative-p22-queue.json',
       blocksHubRedirect: true,
       blocksEngineeringRedirect: true,
       persona: queue.persona ?? initiative.persona ?? 'documentation-architect',
@@ -187,7 +187,7 @@ function buildDocsInitiativePayload(repoId, repoRoot, canonRoot, initiative, que
     },
     agentInstructions: [
       `Documentation initiative **${storyId}** — execute in **${repoId}** cwd; do not switch to product engineering until witness sealed.`,
-      `Read ${initiative.machineSpecs?.initiative ?? 'pm/spec/docs-ia-initiative.json'} before edits.`,
+      `Read ${initiative.machineSpecs?.initiative ?? 'machine/spec/docs-ia-initiative.json'} before edits.`,
       ...(item.commands ?? []).map((c) => `Run: \`${c}\``),
       'Micro-commit per slice (≤25 files); refresh audit/evidence witnesses after gates.',
       'Do not ask the operator which story to pick.',

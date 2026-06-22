@@ -7,8 +7,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const REGISTER = join(ROOT, 'pm/security-friction-register.json');
-const ROADMAP = join(ROOT, 'pm/secas-roadmap.json');
+const REGISTER = join(ROOT, 'machine/security-friction-register.json');
+const ROADMAP = join(ROOT, 'machine/secas-roadmap.json');
 const OPS = join(ROOT, 'docs/operations/platform-services/security-as-a-service.md');
 const OUT = join(ROOT, 'audit/evidence/secas-friction-check-latest.json');
 const WRITE = process.argv.includes('--write');

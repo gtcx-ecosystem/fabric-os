@@ -18,7 +18,7 @@ function gate(id, ok, detail = null) {
 }
 
 function loadL1(id) {
-  const local = join(REPO, `pm/spec/repo-provisioning/${id}.json`);
+  const local = join(REPO, `machine/spec/repo-provisioning/${id}.json`);
   const canon = join(REPO, `../canon-os/pm/spec/repo-provisioning/${id}.json`);
   const path = existsSync(local) ? local : canon;
   return existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : null;

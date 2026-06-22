@@ -8,7 +8,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const REGISTER = join(ROOT, 'pm/security-friction-register.json');
+const REGISTER = join(ROOT, 'machine/security-friction-register.json');
 const FRICTION_ID = 'SEC-CSIRT-01';
 const IR_RUNBOOK = join(ROOT, 'docs/operations/secas/runbooks/incident-response.md');
 const OPERATING_MODEL = join(ROOT, 'docs/operations/secas/csirt-operating-model.md');

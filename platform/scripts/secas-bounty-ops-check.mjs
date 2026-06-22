@@ -5,8 +5,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const OPS = join(ROOT, 'pm/spec/bug-bounty-ops.json');
-const POLICY = join(ROOT, 'ops/security/narrative/bug-bounty-policy.md');
+const OPS = join(ROOT, 'machine/spec/bug-bounty-ops.json');
+const POLICY = join(ROOT, 'operations/security/narrative/bug-bounty-policy.md');
 const TRIAGE = join(ROOT, 'docs/operations/secas/runbooks/bug-bounty-triage.md');
 const OUT = join(ROOT, 'audit/evidence/secas-bounty-ops-latest.json');
 const WRITE = process.argv.includes('--write');

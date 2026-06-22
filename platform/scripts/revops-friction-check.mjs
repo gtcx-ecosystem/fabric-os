@@ -8,8 +8,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const REVOPS_REG = join(ROOT, 'pm/revops-friction-register.json');
-const GTM_REG = join(ROOT, 'pm/gtm-friction-register.json');
+const REVOPS_REG = join(ROOT, 'machine/revops-friction-register.json');
+const GTM_REG = join(ROOT, 'machine/gtm-friction-register.json');
 const OPS = join(ROOT, 'docs/operations/revops-as-a-service.md');
 const OUT = join(ROOT, 'audit/evidence/revops-friction-check-latest.json');
 const WRITE = process.argv.includes('--write');

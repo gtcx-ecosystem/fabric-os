@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const SUBSTRATE = join(ROOT, 'pm/payops-substrate-contract.json');
+const SUBSTRATE = join(ROOT, 'machine/payops-substrate-contract.json');
 const POPULATE = join(ROOT, 'platform/scripts/staging/populate-payops-staging-sm.sh');
 const HANDOFF = join(
   ROOT,

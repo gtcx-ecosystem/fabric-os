@@ -46,20 +46,20 @@ const results = [];
 // GTM + compliance: preserve folder tree under docs/roadmap/
 results.push({
   label: 'gtm',
-  ...moveTree('ops/gtm/narrative', 'docs/roadmap/gtm'),
+  ...moveTree('operations/gtm/narrative', 'docs/roadmap/gtm'),
 });
 
 results.push({
   label: 'compliance',
-  ...moveTree('ops/compliance/narrative', 'docs/roadmap/compliance'),
+  ...moveTree('operations/compliance/narrative', 'docs/roadmap/compliance'),
 });
 
 // Security: one full doc → secas; stubs removed after README catalog (handled below)
-if (moveFile('ops/security/narrative/bug-bounty-policy.md', 'docs/operations/secas/bug-bounty-policy.md')) {
+if (moveFile('operations/security/narrative/bug-bounty-policy.md', 'docs/operations/secas/bug-bounty-policy.md')) {
   results.push({ label: 'bug-bounty-policy', moved: 1 });
 }
 
-const secDir = join(root, 'ops/security/narrative');
+const secDir = join(root, 'operations/security/narrative');
 if (existsSync(secDir)) {
   let removed = 0;
   const walk = (d) => {

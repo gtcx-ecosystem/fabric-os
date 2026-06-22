@@ -53,16 +53,16 @@ export function readJson(path) {
 
 export function resolveDocsPack(repoRoot, packName, options = {}) {
   const canonicalName =
-    packName === 'docs-agents-pack.json' && existsSync(join(repoRoot, 'pm/spec/agents-pack.json'))
+    packName === 'docs-agents-pack.json' && existsSync(join(repoRoot, 'machine/spec/agents-pack.json'))
       ? 'agents-pack.json'
       : packName === 'docs-agents-pack.json'
         ? 'agents-pack.json'
-        : packName === 'docs-agile-pack.json' && existsSync(join(repoRoot, 'pm/spec/agile-pack.json'))
+        : packName === 'docs-agile-pack.json' && existsSync(join(repoRoot, 'machine/spec/agile-pack.json'))
           ? 'agile-pack.json'
           : packName === 'docs-agile-pack.json'
             ? 'agile-pack.json'
             : packName;
-  const localPath = join(repoRoot, 'pm/spec', canonicalName);
+  const localPath = join(repoRoot, 'machine/spec', canonicalName);
   const canonPath = join(repoRoot, '../canon-os/pm/spec', canonicalName);
   const pathsTried = [];
 
@@ -138,7 +138,7 @@ export function profileKeyFromTier(tier, repoRoot = null) {
 }
 
 export function readProductTier(repoRoot) {
-  const goalsPath = join(repoRoot, 'pm/spec/product-goals.json');
+  const goalsPath = join(repoRoot, 'machine/spec/product-goals.json');
   if (!existsSync(goalsPath)) return null;
   try {
     return JSON.parse(readFileSync(goalsPath, 'utf8')).tier ?? null;

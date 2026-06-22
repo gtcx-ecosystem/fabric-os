@@ -7,7 +7,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const REGISTER = join(ROOT, 'pm/sovereign-approval-register.json');
+const REGISTER = join(ROOT, 'machine/sovereign-approval-register.json');
 const OUT = join(ROOT, 'audit/evidence/secas-approval-check-latest.json');
 const WRITE = process.argv.includes('--write');
 

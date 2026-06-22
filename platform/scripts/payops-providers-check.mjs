@@ -10,9 +10,9 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
 const ECOSYSTEM = join(ROOT, '..');
-const REGISTER = join(ROOT, 'pm/payops-friction-register.json');
-const SUBSTRATE = join(ROOT, 'pm/payops-substrate-contract.json');
-const DOMAIN_REGISTRY = join(BRIDGE, 'pm/spec/payops-domain-registry.json');
+const REGISTER = join(ROOT, 'machine/payops-friction-register.json');
+const SUBSTRATE = join(ROOT, 'machine/payops-substrate-contract.json');
+const DOMAIN_REGISTRY = join(BRIDGE, 'machine/spec/payops-domain-registry.json');
 const POPULATE = join(ROOT, 'platform/scripts/staging/populate-payops-staging-sm.sh');
 const HANDOFF = join(
   ROOT,

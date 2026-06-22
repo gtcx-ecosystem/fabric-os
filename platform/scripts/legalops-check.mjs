@@ -9,10 +9,10 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
-const REGISTER = join(ROOT, 'pm/legal-friction-register.json');
-const SPEC = join(ROOT, 'pm/spec/legalops-as-a-service.json');
+const REGISTER = join(ROOT, 'machine/legal-friction-register.json');
+const SPEC = join(ROOT, 'machine/spec/legalops-as-a-service.json');
 const RUNBOOK = join(ROOT, 'docs/operations/legalops-as-a-service.md');
-const MANIFEST = join(ROOT, 'ops/legal/manifest.json');
+const MANIFEST = join(ROOT, 'operations/legal/manifest.json');
 const OUT = join(ROOT, 'audit/evidence/legalops-check-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
@@ -22,8 +22,8 @@ const gates = {
   runbook: { ok: existsSync(RUNBOOK) },
   frictionRegister: { ok: existsSync(REGISTER) },
   productManifest: { ok: existsSync(MANIFEST) },
-  fleetProtocol: { ok: existsSync(join(BRIDGE, 'pm/spec/ecosystem-legal-program-protocol.json')) },
-  fleetWitness: { ok: existsSync(join(BRIDGE, 'pm/ci/ops-lanes-100/legalops-fleet-latest.json')) },
+  fleetProtocol: { ok: existsSync(join(BRIDGE, 'machine/spec/ecosystem-legal-program-protocol.json')) },
+  fleetWitness: { ok: existsSync(join(BRIDGE, 'machine/ci/ops-lanes-100/legalops-fleet-latest.json')) },
 };
 
 if (gates.frictionRegister.ok) {

@@ -11,7 +11,7 @@ export function gate(id, ok, detail = null) {
 }
 
 export function loadTreeSpec(repoRoot) {
-  const local = join(repoRoot, 'pm/spec/docs-tree-spec.json');
+  const local = join(repoRoot, 'machine/spec/docs-tree-spec.json');
   const canon = join(repoRoot, '../canon-os/pm/spec/docs-tree-spec.json');
   const path = existsSync(local) ? local : canon;
   if (!existsSync(path)) return null;
@@ -19,7 +19,7 @@ export function loadTreeSpec(repoRoot) {
 }
 
 export function loadDocTypes(repoRoot) {
-  const local = join(repoRoot, 'pm/spec/docs-document-types.json');
+  const local = join(repoRoot, 'machine/spec/docs-document-types.json');
   const canon = join(repoRoot, '../canon-os/pm/spec/docs-document-types.json');
   const path = existsSync(local) ? local : canon;
   if (!existsSync(path)) return null;

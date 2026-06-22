@@ -23,11 +23,11 @@ function readJson(path) {
   }
 }
 
-const routing = readJson(join(BRIDGE, 'pm/spec/vendor-assurance-status-update-routing.json'));
-const legalProtocol = readJson(join(BRIDGE, 'pm/spec/ecosystem-legal-program-protocol.json'));
-const postLaunch = readJson(join(ROOT, 'ops/coordination/post-launch-external-gates.json'));
-const internalHuman = readJson(join(ROOT, 'ops/coordination/internal-human-gates.json'));
-const humanManifest = readJson(join(ROOT, 'ops/coordination/human-gates.manifest.json'));
+const routing = readJson(join(BRIDGE, 'machine/spec/vendor-assurance-status-update-routing.json'));
+const legalProtocol = readJson(join(BRIDGE, 'machine/spec/ecosystem-legal-program-protocol.json'));
+const postLaunch = readJson(join(ROOT, 'operations/coordination/post-launch-external-gates.json'));
+const internalHuman = readJson(join(ROOT, 'operations/coordination/internal-human-gates.json'));
+const humanManifest = readJson(join(ROOT, 'operations/coordination/human-gates.manifest.json'));
 
 const checks = {
   routingSpec: {

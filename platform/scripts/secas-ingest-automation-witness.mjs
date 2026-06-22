@@ -16,7 +16,7 @@ const INGEST_READY = join(ROOT, 'audit/evidence/pen-test-report-ingest-ready-202
 const INGEST_CHECK = join(ROOT, 'audit/evidence/secas-pentest-ingest-check-latest.json');
 const REMEDIATION_CHECK = join(ROOT, 'audit/evidence/secas-pentest-remediation-check-latest.json');
 const FABRIC_OUT = join(ROOT, 'audit/evidence/secas-ingest-automation-latest.json');
-const BRIDGE_OUT = join(BRIDGE, 'pm/ci/secas-ingest-automation-latest.json');
+const BRIDGE_OUT = join(BRIDGE, 'machine/ci/secas-ingest-automation-latest.json');
 const WRITE = process.argv.includes('--write');
 
 function readJson(path) {

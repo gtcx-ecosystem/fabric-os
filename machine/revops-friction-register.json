@@ -9,7 +9,7 @@
   "owner": "bridge-os",
   "registerHost": "fabric-os",
   "principle": "CRO office friction — pricing, unit economics, revenue analytics, GTM revenue motion. Payment rails live in PayOps.",
-  "extends": ["pm/gtm-friction-register.json"],
+  "extends": ["machine/gtm-friction-register.json"],
   "items": [
     {
       "id": "REV-ECON-01",

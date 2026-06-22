@@ -2,8 +2,8 @@
 /**
  * Fabric Ops policy contract checker.
  *
- * Enforces that local repos carry an operations/fabric-contract.json manifest pointing
- * at the centralized Fabric OS operational policy contract.
+ * Enforces that local repos carry ops/fabric-contract.json or operations/fabric-contract.json
+ * (PHASE-TAXONOMY alias) pointing at the centralized Fabric OS operational policy contract.
  *
  * Usage:
  *   node platform/scripts/fabric-ops-policy-contract-check.mjs [--write] [--json]

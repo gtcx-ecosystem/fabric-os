@@ -1,7 +1,7 @@
 ---
 title: 'scorecard — agents/'
 status: current
-date: 2026-06-22
+date: 2026-06-16
 owner: fabric-os
 document_type: folder-spec
 tier: operating
@@ -13,9 +13,9 @@ review_cycle: on-change
 
 **Read-only rollup** — scores come from published MPR witnesses, not manual entry.
 
-- Policy: [`machine/spec/docs-fractal-mpr-policy.json`](../machine/spec/docs-fractal-mpr-policy.json)
-- Pack: [`machine/spec/agents-pack.json`](../machine/spec/agents-pack.json#pillarContract)
-- **Layer witness (SoR):** [`audit/evidence/mpr-agents-layer-latest.json`](../audit/evidence/mpr-agents-layer-latest.json)
+- Policy: [`../../canon-os/pm/spec/docs-fractal-mpr-policy.json`](../../canon-os/pm/spec/docs-fractal-mpr-policy.json)
+- Pack: [`../../pm/spec/agents-pack.json`](../../pm/spec/agents-pack.json#pillarContract)
+- **Layer witness (SoR):** [`audit/evidence/mpr-agents-layer-latest.json`](audit/evidence/mpr-agents-layer-latest.json)
 
 **Composite target:** **85/100** per profile at layer audit order.
 

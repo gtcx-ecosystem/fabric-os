@@ -34,4 +34,5 @@ overview/, specs/, strategy/ at root — decompose to canonical layers. agile/, 
 
 ```bash
 pnpm docs:ia:check
+pnpm docs:tree:check
 ```

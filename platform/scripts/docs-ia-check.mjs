@@ -1,59 +1,131 @@
 #!/usr/bin/env node
 /**
- * Docs IA gate — sor-map keys indexed, hub READMEs 8/8, INDEX.md present.
+ * docs:ia:check — layered documentation IA gate (harness grammar).
+ * Resolves gateSequence from canon docs-ia-initiative (our language → harness).
+ *
+ * Usage: node docs-ia-check.mjs [--write] [--strict]
  */
-import { existsSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { spawnSync } from 'node:child_process';
 
-import { DOCS_INDEX_PATH, REPO_ROOT, loadSorMap } from '../../config/paths.mjs';
+import { repoRootFromImportMeta } from './lib/repo-root.mjs';
 
-const HUB_READMES = [
-  '00-archive/README.md',
-  '01-docs/README.md',
-  '02-ops/README.md',
-  '03-platform/README.md',
-  '04-deploy/README.md',
-  '05-audit/README.md',
-  '06-workstream/README.md',
+const REPO = repoRootFromImportMeta(import.meta.url);
+const WRITE = process.argv.includes('--write');
+const STRICT = process.argv.includes('--strict');
+const WITNESS = join(REPO, 'audit/evidence/docs-ia-latest.json');
+const REPO_ID = JSON.parse(readFileSync(join(REPO, 'package.json'), 'utf8')).name;
+
+/** pnpm script id → platform/scripts entry (harness resolution table). */
+const SCRIPT_MAP = {
+  'docs:foundation:check': 'docs-foundation-check.mjs',
+  'docs:business:check': 'docs-business-check.mjs',
+  'docs:architecture:check': 'docs-architecture-check.mjs',
+  'docs:product:check': 'docs-product-check.mjs',
+  'docs:ux:check': 'docs-ux-check.mjs',
+  'docs:canon:check': 'docs-canon-check.mjs',
+  'docs:research:check': 'docs-research-check.mjs',
+  'docs:roadmap:check': 'docs-roadmap-check.mjs',
+  'docs:agile:check': 'agile-check.mjs',
+  'docs:operations:check': 'docs-operations-check.mjs',
+  'docs:agents:check': 'agents-check.mjs',
+  'docs:fractal-mpr:check': 'docs-fractal-mpr-check.mjs',
+  'docs:pack:pillar-contract:check': 'docs-pack-pillar-contract-check.mjs',
+};
+
+const DEFAULT_SEQUENCE = [
+  'docs:foundation:check',
+  'docs:business:check',
+  'docs:architecture:check',
+  'docs:product:check',
+  'docs:roadmap:check',
+  'docs:agile:check',
+  'docs:operations:check',
+  'docs:agents:check',
+  'docs:fractal-mpr:check',
+  'docs:pack:pillar-contract:check',
 ];
 
-const failures = [];
-
-if (!existsSync(DOCS_INDEX_PATH)) {
-  failures.push('missing 01-docs/INDEX.md (tooling alias to README + sor-map table)');
-}
-
-const indexText = existsSync(DOCS_INDEX_PATH) ? readFileSync(DOCS_INDEX_PATH, 'utf8') : '';
-const readmeText = existsSync(join(REPO_ROOT, '01-docs/README.md'))
-  ? readFileSync(join(REPO_ROOT, '01-docs/README.md'), 'utf8')
-  : '';
-const iaCorpus = `${indexText}\n${readmeText}`;
-
-if (!/config\/sor-map\.json/.test(iaCorpus)) {
-  failures.push('01-docs IA must reference config/sor-map.json');
-}
-
-if (!/Layout v3 IA map|Agent IA map/i.test(iaCorpus)) {
-  failures.push('01-docs README/INDEX missing Layout v3 IA map section');
-}
-
-const sor = loadSorMap();
-for (const [key, rel] of Object.entries(sor.paths ?? {})) {
-  if (typeof rel !== 'string') continue;
-  const needle = rel.replace(/\/$/, '');
-  if (!iaCorpus.includes(needle) && !iaCorpus.includes(key)) {
-    failures.push(`sor-map paths.${key} (${rel}) not indexed in 01-docs/INDEX.md or README.md`);
+function loadGateSequence() {
+  const candidates = [
+    join(REPO, '../canon-os/machine/spec/docs-ia-initiative.json'),
+    join(REPO, '../canon-os/pm/spec/docs-ia-initiative.json'),
+    join(REPO, 'machine/spec/docs-ia-initiative.json'),
+  ];
+  for (const path of candidates) {
+    if (!existsSync(path)) continue;
+    const seq = JSON.parse(readFileSync(path, 'utf8')).enforcement?.gateSequence;
+    if (Array.isArray(seq) && seq.length) return seq;
   }
+  return DEFAULT_SEQUENCE;
 }
 
-for (const rel of HUB_READMES) {
-  if (!existsSync(join(REPO_ROOT, rel))) failures.push(`missing hub README: ${rel}`);
+function runScript(scriptRel, extraArgs = []) {
+  const abs = join(REPO, 'platform/scripts', scriptRel);
+  if (!existsSync(abs)) {
+    return { ok: false, exit: 2, detail: `missing ${scriptRel}` };
+  }
+  const r = spawnSync(process.execPath, [abs, ...extraArgs], {
+    cwd: REPO,
+    encoding: 'utf8',
+    maxBuffer: 8 * 1024 * 1024,
+  });
+  const tail = `${r.stdout ?? ''}${r.stderr ?? ''}`.trim().split('\n').slice(-3).join(' | ');
+  return { ok: (r.status ?? 1) === 0, exit: r.status ?? 1, detail: tail };
 }
 
-if (failures.length) {
-  console.error('docs IA check failed:');
-  for (const f of failures) console.error(`  - ${f}`);
-  process.exit(1);
+function main() {
+  const sequence = loadGateSequence();
+  const steps = [];
+  const failures = [];
+
+  console.log('\n=== docs:ia:check (layer rollup) ===\n');
+
+  for (const gateId of sequence) {
+    const script = SCRIPT_MAP[gateId];
+    if (!script) {
+      if (gateId.startsWith('validate:') && !STRICT) {
+        steps.push({ gateId, skipped: true, reason: 'validate gates require --strict' });
+        continue;
+      }
+      steps.push({ gateId, skipped: true, reason: 'no harness script mapped' });
+      continue;
+    }
+
+    const extra = gateId === 'docs:fractal-mpr:check' && STRICT ? ['--strict'] : [];
+    const result = runScript(script, extra);
+    steps.push({ gateId, script, ...result });
+    const label = result.ok ? 'OK' : 'FAIL';
+    console.log(`${label} ${gateId} — exit ${result.exit}`);
+    if (!result.ok) failures.push(gateId);
+  }
+
+  const ran = steps.filter((s) => !s.skipped);
+  const ok = failures.length === 0;
+  console.log(
+    `\n${ok ? 'PASS' : 'FAIL'} — docs:ia:check ${ran.length - failures.length}/${ran.length}`,
+  );
+
+  const payload = {
+    schema: 'gtcx://baseline-os/docs-ia-check/v1',
+    generatedAt: new Date().toISOString(),
+    repo: REPO_ID,
+    ok,
+    strict: STRICT,
+    initiative: 'INIT-DOCS-CORE-IA-V1',
+    gateSequenceSource: 'canon-os/machine/spec/docs-ia-initiative.json',
+    failures,
+    steps,
+  };
+
+  if (WRITE) {
+    mkdirSync(dirname(WITNESS), { recursive: true });
+    writeFileSync(WITNESS, `${JSON.stringify(payload, null, 2)}\n`);
+    console.log(`witness: ${WITNESS.replace(`${REPO}/`, '')}`);
+  }
+
+  process.exit(ok ? 0 : 1);
 }
 
-console.log('docs IA check passed (fabric-os).');
+main();

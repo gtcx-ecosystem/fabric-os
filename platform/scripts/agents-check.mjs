@@ -13,7 +13,7 @@ const WITNESS = join(REPO, 'audit/evidence/agents-latest.json');
 const PACK = 'agents-pack.json';
 const AGENTS_HUB = 'agents';
 const FORBIDDEN_PROVIDER_DIRS = ['cursor', 'claude', 'codex', 'copilot', 'gemini', 'kimi', 'universal'];
-const ALLOWED_AGENTS_ROOT = new Set(['README.md', 'FOLDER-SPEC.md', 'pillar-scorecard.md', 'manifest.json']);
+const ALLOWED_AGENTS_ROOT = new Set(['README.md', 'FOLDER-SPEC.md', 'pillar-scorecard.md', 'scorecard.md', 'manifest.json']);
 
 function listDirSafe(dir) {
   try {

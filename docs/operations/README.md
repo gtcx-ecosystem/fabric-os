@@ -15,10 +15,10 @@ review_cycle: on-change
 
 ## Cross-reference
 
-| Layer          | Path               | Role                                 |
-| -------------- | ------------------ | ------------------------------------ |
-| Foundation     | `docs/foundation/` | Charter, vision, goals               |
-| **Operations** | `docs/operations/` | Human runbooks + agent ops narrative |
-| Machine ops    | `operations/`      | P29 domain manifests — link only     |
+| Layer          | Path                               | Role                                           |
+| -------------- | ---------------------------------- | ---------------------------------------------- |
+| Foundation     | `docs/foundation/`                 | Charter, vision, goals                         |
+| **Operations** | `docs/operations/`                 | Human runbooks + agent ops narrative           |
+| Machine ops    | [`operations/`](../../operations/) | P29 domain manifests — link only (`ops/` shim) |
 
 > **Pack:** [`../../canon-os/pm/spec/docs-operations-pack.json`](../../canon-os/pm/spec/docs-operations-pack.json)

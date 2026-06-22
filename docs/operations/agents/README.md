@@ -7,8 +7,8 @@ document_type: overview
 review_cycle: on-change
 ---
 
-# Operations Agents
+# Operations agents (pointer)
 
-This directory mirrors the agent workspace entrypoint for Protocol 29 workspace checks.
+**Canonical harness:** [`../../../agents/`](../../../agents/) — bootstrap, capabilities, playbooks.
 
-Canonical agent workspace: [`../../../agents/`](../../../agents/)
+Legacy provider trees archived under [`../../../archive/legacy-docs-operations-agents-shadow/`](../../../archive/legacy-docs-operations-agents-shadow/).

@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/fabric-ops-lanes-11pr/v1",
   "version": "1.0.0",
-  "updated": "2026-06-22T21:55:29.952Z",
+  "updated": "2026-06-22T22:21:11.444Z",
   "repo": "fabric-os",
   "probes": "bridge-os/pm/spec/ops-lane-11pr-probes.json",
   "pass": 8,
@@ -599,7 +599,7 @@
         {
           "path": "audit/evidence/finops-check-latest.json",
           "schema": "gtcx://fabric-os/finops-check-witness/v1",
-          "checkedAt": "2026-06-18T17:14:09.263Z",
+          "checkedAt": "2026-06-22T22:21:08.901Z",
           "openP0": 0
         }
       ]
@@ -854,7 +854,7 @@
         {
           "path": "audit/evidence/commops-check-latest.json",
           "schema": "gtcx://fabric-os/commops-check-witness/v1",
-          "checkedAt": "2026-06-18T17:14:09.263Z",
+          "checkedAt": "2026-06-22T22:21:09.881Z",
           "openP0": 0
         }
       ]

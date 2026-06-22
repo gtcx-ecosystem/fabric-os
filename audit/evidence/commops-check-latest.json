@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/commops-check-witness/v1",
   "version": "1.0.0",
-  "updated": "2026-06-18T17:14:09.263Z",
+  "updated": "2026-06-22T22:21:09.881Z",
   "repo": "fabric-os",
   "lane": "CommOps",
   "protocolId": "P53-COMMOPS-AS-A-SERVICE",
@@ -33,10 +33,5 @@
   },
   "ok": true,
   "fleetWitness": true,
-  "handoff": "XR-BRIDGE-CORE-OPS-FABRIC-W1-001",
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "handoff": "XR-BRIDGE-CORE-OPS-FABRIC-W1-001"
 }

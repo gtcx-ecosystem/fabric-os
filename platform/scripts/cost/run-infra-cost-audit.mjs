@@ -26,10 +26,10 @@ const POLICY_SOR = 'bridge-os/pm/spec/environment-cost-policy.json';
 const GOVERNANCE_SOR = 'bridge-os/pm/spec/aws-cost-governance.json';
 
 const BRIDGE_WITNESSES = [
-  'pm/ci/eco-env-07-terraform-cost-profile-latest.json',
-  'pm/ci/eco-env-08-nat-endpoints-latest.json',
-  'pm/ci/aws-cost-weekly.json',
-  'pm/ci/aws-budgets-latest.json',
+  'machine/ci/eco-env-07-terraform-cost-profile-latest.json',
+  'machine/ci/eco-env-08-nat-endpoints-latest.json',
+  'machine/ci/aws-cost-weekly.json',
+  'machine/ci/aws-budgets-latest.json',
 ];
 
 function readText(path) {
@@ -107,8 +107,8 @@ const gates = {
   testnetTfvars: assertTfvars(TESTNET_TFVARS, 'ephemeral'),
   stagingWiring: assertModuleWiring('staging'),
   testnetWiring: assertModuleWiring('testnet-pilot'),
-  policySoR: { ok: existsSync(join(BRIDGE, 'pm/spec/environment-cost-policy.json')) },
-  governanceSoR: { ok: existsSync(join(BRIDGE, 'pm/spec/aws-cost-governance.json')) },
+  policySoR: { ok: existsSync(join(BRIDGE, 'machine/spec/environment-cost-policy.json')) },
+  governanceSoR: { ok: existsSync(join(BRIDGE, 'machine/spec/aws-cost-governance.json')) },
   bridgeWitnesses: linkBridgeWitnesses(),
   terraformTest: runTerraformTest(),
 };

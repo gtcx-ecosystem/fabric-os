@@ -10,7 +10,7 @@ import { spawnSync } from 'node:child_process';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const ECO = join(ROOT, '..');
-const SUBSTRATE = join(ROOT, 'pm/commops-substrate-contract.json');
+const SUBSTRATE = join(ROOT, 'machine/commops-substrate-contract.json');
 const POPULATE = join(ROOT, 'platform/scripts/staging/populate-commops-staging-sm.sh');
 const HANDOFF = join(
   ROOT,

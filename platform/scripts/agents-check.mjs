@@ -37,7 +37,7 @@ function main() {
     gate(
       'spec:local-present',
       !!resolution.localPath || existsSync(join(REPO, '../canon-os/pm/spec', PACK)),
-      resolution.localPath ?? 'missing pm/spec/agents-pack.json',
+      resolution.localPath ?? 'missing machine/spec/agents-pack.json',
     ),
   );
   gates.push(gate('spec:not-stub', !resolution.localIsStub, resolution.localIsStub ? 'upgrade pack' : 'full local pack'));

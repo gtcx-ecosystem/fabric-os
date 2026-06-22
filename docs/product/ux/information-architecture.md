@@ -13,4 +13,4 @@ review_cycle: on-change
 
 **Fabric OS** doc entry: `docs/foundation/` → `docs/product/ux/` → `docs/architecture/`.
 
-Primary surfaces map to `pm/product/` machine SoR.
+Primary surfaces map to `machine/product/` machine SoR.

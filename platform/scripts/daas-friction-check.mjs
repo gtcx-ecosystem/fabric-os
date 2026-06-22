@@ -8,8 +8,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const REGISTER = join(ROOT, 'pm/friction-register.json');
-const ROADMAP = join(ROOT, 'pm/daas-roadmap.json');
+const REGISTER = join(ROOT, 'machine/friction-register.json');
+const ROADMAP = join(ROOT, 'machine/daas-roadmap.json');
 const OPS = join(ROOT, 'docs/operations/platform-services/devops-as-a-service.md');
 const OUT = join(ROOT, 'audit/evidence/daas-friction-check-latest.json');
 const WRITE = process.argv.includes('--write');

@@ -42,13 +42,7 @@
     "roadmap",
     "business"
   ],
-  "narrativePointersOnly": [
-    "assurance",
-    "coordination",
-    "gtm",
-    "legal",
-    "security"
-  ],
+  "narrativePointersOnly": ["assurance", "coordination", "gtm", "legal", "security"],
   "documentDriven": {
     "description": "Human-edited narrative under docs/ — version in git",
     "paths": [
@@ -63,12 +57,8 @@
     ]
   },
   "pointerOnly": {
-    "description": "Stub or index — canonical prose lives in gtcx-docs or ops/",
-    "paths": [
-      "docs/governance/",
-      "docs/reference/",
-      "docs/specs/"
-    ]
+    "description": "Stub or index — canonical prose lives in gtcx-docs or operations/",
+    "paths": ["docs/governance/", "docs/reference/", "docs/specs/"]
   },
   "shipPaths": {
     "terraform": "deploy/terraform",
@@ -79,15 +69,8 @@
   },
   "forbidden": {
     "numberedSegments": "^\\d{2}-",
-    "shadowAsAuthority": [
-      "docs/shadow/",
-      "archive/shadow-gtcx-docs/"
-    ],
-    "competingRoots": [
-      "_sop/",
-      "_canon/",
-      "wiki/"
-    ],
+    "shadowAsAuthority": ["docs/shadow/", "archive/shadow-gtcx-docs/"],
+    "competingRoots": ["_sop/", "_canon/", "wiki/"],
     "opsDuplicatesUnderDocs": [
       "assurance",
       "attestation",
@@ -99,8 +82,8 @@
     ]
   },
   "engineDriven": {
-    "note": "Not stored under docs/ — see pm/manifest.json (P36)",
-    "manifest": "pm/manifest.json"
+    "note": "Not stored under docs/ — see machine/manifest.json (P36)",
+    "manifest": "machine/manifest.json"
   },
   "iaExemptions": {
     "denseExemptPathPrefixes": [
@@ -156,14 +139,7 @@
       "docs/reference/operations",
       "docs/operations/governance"
     ],
-    "readmeExemptPathPrefixes": [
-      "docs/reference/archive"
-    ]
+    "readmeExemptPathPrefixes": ["docs/reference/archive"]
   },
-  "deprecatedTopLevel": [
-    "specs",
-    "strategy",
-    "overview",
-    "engineering"
-  ]
+  "deprecatedTopLevel": ["specs", "strategy", "overview", "engineering"]
 }

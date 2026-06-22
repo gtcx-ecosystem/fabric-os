@@ -13,9 +13,9 @@ const OUT = join(ROOT, 'audit/evidence/commops-check-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
 
-const SPEC = join(ROOT, 'pm/spec/commops-as-a-service.json');
-const SUBSTRATE = join(ROOT, 'pm/commops-substrate-contract.json');
-const REGISTER = join(ROOT, 'pm/commops-friction-register.json');
+const SPEC = join(ROOT, 'machine/spec/commops-as-a-service.json');
+const SUBSTRATE = join(ROOT, 'machine/commops-substrate-contract.json');
+const REGISTER = join(ROOT, 'machine/commops-friction-register.json');
 const OPS = join(ROOT, 'docs/operations/commops-as-a-service.md');
 const DELIV = join(ROOT, 'audit/evidence/commops-deliverability-latest.json');
 

@@ -25,9 +25,9 @@ function readJson(rel) {
   }
 }
 
-const spec = readJson('pm/spec/aiops-as-a-service.json');
-const friction = readJson('pm/aiops-friction-register.json');
-const signals = readJson('pm/aiops-signals-register.json');
+const spec = readJson('machine/spec/aiops-as-a-service.json');
+const friction = readJson('machine/aiops-friction-register.json');
+const signals = readJson('machine/aiops-signals-register.json');
 const scripts = readJson('package.json')?.scripts ?? {};
 
 const scores = {

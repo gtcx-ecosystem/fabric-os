@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Protocol 22 — deterministic next-work selection for fabric-os.
- * Sources: pm/manifest.json local paths — work register, DAAS/SECAS roadmaps,
+ * Sources: machine/manifest.json local paths — work register, DAAS/SECAS roadmaps,
  * .baseline/memory/session.md (session pointer).
  */
 import { readFileSync, existsSync } from 'node:fs';
@@ -29,7 +29,7 @@ function resolvePaths() {
     secasRoadmap: join(REPO_ROOT, 'audit/product-management/secas-execution-roadmap.md'),
     session: join(REPO_ROOT, '.baseline/memory/session.md'),
   };
-  const manifestJson = join(REPO_ROOT, 'pm/manifest.json');
+  const manifestJson = join(REPO_ROOT, 'machine/manifest.json');
   if (!existsSync(manifestJson)) return paths;
   try {
     const pm = JSON.parse(readFileSync(manifestJson, 'utf8'));

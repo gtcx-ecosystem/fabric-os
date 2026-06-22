@@ -1,3 +1,3 @@
 # Reference — security
 
-Security reference index. Canonical SECaaS ops: [`../../operations/secas/`](../../operations/secas/).
+Security reference index. Canonical SECaaS operations: [`../../operations/secas/`](../../operations/secas/).

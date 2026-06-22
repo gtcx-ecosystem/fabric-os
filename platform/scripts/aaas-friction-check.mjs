@@ -10,8 +10,8 @@ import { spawnSync } from 'node:child_process';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
-const REGISTER = join(ROOT, 'pm/audit-friction-register.json');
-const ROADMAP = join(ROOT, 'pm/aaas-roadmap.json');
+const REGISTER = join(ROOT, 'machine/audit-friction-register.json');
+const ROADMAP = join(ROOT, 'machine/aaas-roadmap.json');
 const OPS = join(ROOT, 'docs/operations/audit-as-a-service.md');
 const COMPOSITE = join(ROOT, 'audit/evidence/composite-audit-latest.json');
 const OUT = join(ROOT, 'audit/evidence/aaas-friction-check-latest.json');

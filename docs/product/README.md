@@ -23,7 +23,7 @@ review_cycle: on-change
 | **Product**  | `docs/product/ux/`   | Users, JTBD, journeys, workflows (UX only) |
 | Architecture | `docs/architecture/` | Requirements, specs, ADRs                  |
 | Ceremony     | `agile/`             | Scrum, planning, UAT, roadmap lanes        |
-| Machine      | `pm/`                | PRDs, backlog, CI                          |
+| Machine      | `machine/`           | PRDs, backlog, CI                          |
 
 ## Subfolders
 

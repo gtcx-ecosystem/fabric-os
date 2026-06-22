@@ -79,7 +79,7 @@ function main() {
     gate(
       'spec:local-present',
       !!resolution.localPath || existsSync(join(REPO, '../canon-os/pm/spec', PACK)),
-      resolution.localPath ?? 'missing pm/spec/agile-pack.json',
+      resolution.localPath ?? 'missing machine/spec/agile-pack.json',
     ),
   );
   gates.push(gate('spec:not-stub', !resolution.localIsStub, resolution.localIsStub ? 'upgrade pack' : 'full local pack'));
@@ -225,7 +225,7 @@ function main() {
     gates.push(
       gate(
         'hub:cpo-product-goals',
-        existsSync(join(REPO, 'pm/spec/product-goals.json')),
+        existsSync(join(REPO, 'machine/spec/product-goals.json')),
         'agile-os product-goals SoR',
       ),
     );
@@ -238,17 +238,17 @@ function main() {
     );
   }
 
-  const manifestPath = join(REPO, spec.crossReference?.opsBinding?.manifest ?? 'ops/pm/manifest.json');
+  const manifestPath = join(REPO, spec.crossReference?.opsBinding?.manifest ?? 'operations/machine/manifest.json');
   if (existsSync(manifestPath)) {
     try {
       const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
       const expected = spec.crossReference?.opsBinding?.expectedValue ?? 'agile';
       const actual = manifest?.local?.agileDocs;
       gates.push(
-        gate('ops-manifest:agileDocs', actual === expected, `ops/pm/manifest.json local.agileDocs = ${expected}`),
+        gate('ops-manifest:agileDocs', actual === expected, `operations/machine/manifest.json local.agileDocs = ${expected}`),
       );
     } catch {
-      gates.push(gate('ops-manifest:parse', false, 'ops/pm/manifest.json invalid JSON'));
+      gates.push(gate('ops-manifest:parse', false, 'operations/machine/manifest.json invalid JSON'));
     }
   }
 

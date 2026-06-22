@@ -8,8 +8,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const ROADMAP = join(ROOT, 'pm/daas-roadmap.json');
-const REGISTER = join(ROOT, 'pm/friction-register.json');
+const ROADMAP = join(ROOT, 'machine/daas-roadmap.json');
+const REGISTER = join(ROOT, 'machine/friction-register.json');
 const CARDS_DIR = join(ROOT, 'docs/operations/daas/cards');
 const INDEX = join(ROOT, 'docs/operations/daas/README.md');
 const OUT = join(ROOT, 'audit/evidence/daas-cards-check-latest.json');

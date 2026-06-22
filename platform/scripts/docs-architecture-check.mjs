@@ -91,7 +91,7 @@ function main() {
   const profile = spec?.profiles?.[profileKey] ?? spec?.profiles?.product;
 
   gates.push(
-    gate('spec:local-present', !!resolution.localPath || existsSync(join(REPO, '../canon-os/pm/spec', PACK)), resolution.localPath ?? 'missing pm/spec/docs-architecture-pack.json'),
+    gate('spec:local-present', !!resolution.localPath || existsSync(join(REPO, '../canon-os/pm/spec', PACK)), resolution.localPath ?? 'missing machine/spec/docs-architecture-pack.json'),
   );
   gates.push(
     gate(

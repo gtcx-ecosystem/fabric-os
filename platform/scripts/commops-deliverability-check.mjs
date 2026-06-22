@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { spawn, spawnSync } from 'node:child_process';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const SUBSTRATE = join(ROOT, 'pm/commops-substrate-contract.json');
+const SUBSTRATE = join(ROOT, 'machine/commops-substrate-contract.json');
 const OUT = join(ROOT, 'audit/evidence/commops-deliverability-latest.json');
 const OVERLAY = join(ROOT, 'deploy/kubernetes/overlays/staging/commops');
 const SERVER = join(ROOT, 'platform/tools/commops-bounce-webhook/server.mjs');

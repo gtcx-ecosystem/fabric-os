@@ -1,0 +1,40 @@
+{
+  "$schema": "gtcx://canon-os/consumption-contract/v1",
+  "repo": "fabric-os",
+  "updated": "2026-06-22",
+  "writes": false,
+  "principle": "canon-os is standards SoR — resolve paths from published config; never fork normative spec text.",
+  "standardsSoR": {
+    "repo": "canon-os",
+    "centralSoR": "../canon-os/config/ecosystem-central-sor.json",
+    "fleetContractsRegistry": "../canon-os/machine/spec/canon-os-fleet-contracts.json",
+    "rolloutProgram": "../canon-os/machine/spec/fleet-repo-rollout-program.json"
+  },
+  "resolvePaths": {
+    "protocols": "../canon-os/docs/governance/protocols/",
+    "protocolIndex": "../canon-os/docs/governance/protocols/README.md",
+    "constitution": "../canon-os/docs/governance/constitution/",
+    "provisioning": "../canon-os/machine/spec/repo-provisioning/",
+    "docsFoldersIndex": "../canon-os/machine/spec/docs-folders/INDEX.json",
+    "docsIaPillarMap": "../canon-os/machine/spec/docs-ia-pillar-map.json",
+    "auditRubric": "../canon-os/platform/tools/audit/audit-framework/UNIVERSAL_RUBRIC.md",
+    "templates": "../canon-os/docs/reference/templates/"
+  },
+  "folderIdentity": {
+    "registry": "config/folders.json",
+    "renamePolicy": "config/folder-rename-policy.json",
+    "resolver": "platform/scripts/lib/folder-registry.mjs"
+  },
+  "consumerPins": {
+    "localRegistry": "machine/spec/canon-os-fleet-contracts.json",
+    "CANON-DOCS-IA-V1": "config/docs-ia-contract.json",
+    "CANON-DOCS-PILLAR-V1": "machine/spec/docs-folder-pillar-contract.json",
+    "CANON-PRODUCT-CANON-V1": "config/product-canon-contract.json"
+  },
+  "gates": [
+    "pnpm canon:contracts:check",
+    "pnpm docs:ia:check",
+    "pnpm docs:pack:pillar-contract:check",
+    "pnpm canon:synthesize:check"
+  ]
+}

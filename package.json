@@ -194,6 +194,8 @@
     "docs:tree:check:write": "node platform/scripts/docs-tree-check.mjs --write",
     "canon:synthesize": "node ../canon-os/platform/scripts/synthesize-product-canon.mjs --write",
     "canon:synthesize:check": "node ../canon-os/platform/scripts/synthesize-product-canon.mjs --check",
+    "canon:contracts:check": "node platform/scripts/check-canon-os-consumption.mjs",
+    "canon:contracts:check:write": "node platform/scripts/check-canon-os-consumption.mjs --write",
     "product:compile": "node ../canon-os/platform/scripts/product-compile.mjs --write --skip-canon",
     "product:compile:check": "node ../canon-os/platform/scripts/product-compile.mjs --check",
     "workspace:check": "node platform/scripts/workspace/check.mjs",

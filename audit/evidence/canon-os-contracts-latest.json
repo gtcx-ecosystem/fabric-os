@@ -1,0 +1,118 @@
+{
+  "schema": "gtcx://canon-os/contracts-check/v1",
+  "generatedAt": "2026-06-22T19:44:47.640Z",
+  "repo": "fabric-os",
+  "pass": true,
+  "gates": [
+    {
+      "id": "consumption:present",
+      "ok": true,
+      "detail": "config/canon-os-consumption.json"
+    },
+    {
+      "id": "consumption:writes-false",
+      "ok": true,
+      "detail": "writes: false"
+    },
+    {
+      "id": "sor:ecosystem-central",
+      "ok": true,
+      "detail": "../canon-os/config/ecosystem-central-sor.json"
+    },
+    {
+      "id": "sor:path:protocols",
+      "ok": true,
+      "detail": "../canon-os/docs/governance/protocols/"
+    },
+    {
+      "id": "sor:path:protocolIndex",
+      "ok": true,
+      "detail": "../canon-os/docs/governance/protocols/README.md"
+    },
+    {
+      "id": "sor:path:constitution",
+      "ok": true,
+      "detail": "../canon-os/docs/governance/constitution/"
+    },
+    {
+      "id": "sor:path:provisioning",
+      "ok": true,
+      "detail": "../canon-os/machine/spec/repo-provisioning/"
+    },
+    {
+      "id": "sor:path:docsFoldersIndex",
+      "ok": true,
+      "detail": "../canon-os/machine/spec/docs-folders/INDEX.json"
+    },
+    {
+      "id": "sor:path:docsIaPillarMap",
+      "ok": true,
+      "detail": "../canon-os/machine/spec/docs-ia-pillar-map.json"
+    },
+    {
+      "id": "sor:path:auditRubric",
+      "ok": true,
+      "detail": "../canon-os/platform/tools/audit/audit-framework/UNIVERSAL_RUBRIC.md"
+    },
+    {
+      "id": "sor:path:templates",
+      "ok": true,
+      "detail": "../canon-os/docs/reference/templates/"
+    },
+    {
+      "id": "registry:local-pin",
+      "ok": true,
+      "detail": "machine/spec/canon-os-fleet-contracts.json"
+    },
+    {
+      "id": "registry:writes-false",
+      "ok": true,
+      "detail": "writes: false"
+    },
+    {
+      "id": "registry:sor",
+      "ok": true,
+      "detail": "../canon-os/machine/spec/canon-os-fleet-contracts.json"
+    },
+    {
+      "id": "pin:CANON-PRODUCT-CANON-V1",
+      "ok": true,
+      "detail": "config/product-canon-contract.json → ../canon-os/config/product-canon-contract.json"
+    },
+    {
+      "id": "pin:CANON-DOCS-IA-V1",
+      "ok": true,
+      "detail": "config/docs-ia-contract.json → ../bridge-os/config/docs-ia-contract.json"
+    },
+    {
+      "id": "pin:CANON-DOCS-PILLAR-V1",
+      "ok": true,
+      "detail": "machine/spec/docs-folder-pillar-contract.json → ../canon-os/machine/spec/docs-folder-pillar-contract.json"
+    },
+    {
+      "id": "rollout:writes-false",
+      "ok": true,
+      "detail": "writes: false"
+    },
+    {
+      "id": "rollout:sor",
+      "ok": true,
+      "detail": "../canon-os/machine/spec/fleet-repo-rollout-program.json"
+    },
+    {
+      "id": "folder-rename:sor",
+      "ok": true,
+      "detail": "../canon-os/config/folder-rename-policy.json"
+    },
+    {
+      "id": "folder-registry:resolver",
+      "ok": true,
+      "detail": "platform/scripts/lib/folder-registry.mjs"
+    },
+    {
+      "id": "folder-registry:config",
+      "ok": true,
+      "detail": "config/folders.json"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "gtcx://canon-os/fleet-contracts-consumer/v1",
+  "writes": false,
+  "sor": "../canon-os/machine/spec/canon-os-fleet-contracts.json",
+  "acceptedAt": "2026-06-22",
+  "consumerPins": {
+    "CANON-DOCS-IA-V1": "config/docs-ia-contract.json",
+    "CANON-DOCS-PILLAR-V1": "machine/spec/docs-folder-pillar-contract.json",
+    "CANON-PRODUCT-CANON-V1": "config/product-canon-contract.json"
+  },
+  "enforcement": {
+    "registryCheck": "pnpm canon:contracts:check",
+    "witness": "audit/evidence/canon-os-contracts-latest.json"
+  }
+}

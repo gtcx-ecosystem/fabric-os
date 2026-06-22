@@ -1,0 +1,9 @@
+{
+  "$schema": "gtcx://canon-os/folder-rename-policy-pin/v1",
+  "writes": false,
+  "sor": "../canon-os/config/folder-rename-policy.json",
+  "localRegistry": "config/folders.json",
+  "localResolver": "platform/scripts/lib/folder-registry.mjs",
+  "acceptedAt": "2026-06-22",
+  "note": "Normative rename tiers and procedure live in canon-os — resolve via sor; never hardcode cross-repo folder paths."
+}

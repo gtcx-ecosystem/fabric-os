@@ -1,0 +1,10 @@
+{
+  "$schema": "gtcx://ecosystem/docs-ia-contract-pin/v1",
+  "contractId": "CANON-DOCS-IA-V1",
+  "version": "1.3.1",
+  "sor": "../bridge-os/config/docs-ia-contract.json",
+  "acceptedAt": "2026-06-22",
+  "writes": false,
+  "gate": "pnpm docs:ia:check",
+  "note": "Enforcement contract hosted by bridge-os; normative specs in canon-os machine/spec/docs-folders/"
+}

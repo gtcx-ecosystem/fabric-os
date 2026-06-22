@@ -1,0 +1,8 @@
+{
+  "$schema": "gtcx://canon-os/fleet-repo-rollout-program-pin/v1",
+  "repo": "fabric-os",
+  "writes": false,
+  "sor": "../canon-os/machine/spec/fleet-repo-rollout-program.json",
+  "acceptedAt": "2026-06-22",
+  "note": "Execute phases Class R in-repo; record completion in canon-os agent-coordination-log.md"
+}

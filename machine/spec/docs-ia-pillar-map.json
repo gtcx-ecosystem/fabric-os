@@ -1,0 +1,6 @@
+{
+  "$schema": "gtcx://canon-os/spec-pin/v1",
+  "writes": false,
+  "sor": "../canon-os/machine/spec/docs-ia-pillar-map.json",
+  "acceptedAt": "2026-06-22"
+}

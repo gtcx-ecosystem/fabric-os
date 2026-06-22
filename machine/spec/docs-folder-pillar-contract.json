@@ -1,0 +1,9 @@
+{
+  "$schema": "gtcx://canon-os/spec-pin/v1",
+  "contractId": "CANON-DOCS-PILLAR-V1",
+  "version": "1.0.0",
+  "writes": false,
+  "sor": "../canon-os/machine/spec/docs-folder-pillar-contract.json",
+  "acceptedAt": "2026-06-22",
+  "gate": "pnpm docs:pack:pillar-contract:check"
+}

@@ -13,7 +13,7 @@
   "extends": {
     "p40": "bridge-os/pm/spec/deployment-choreography.json",
     "matrix": "docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md",
-    "friction": "pm/friction-register.json"
+    "friction": "machine/friction-register.json"
   },
   "sprints": [
     {
@@ -37,7 +37,7 @@
   ],
   "forbidden": [
     "product PM owning infra execution stories",
-    "bridge-os pm/_tasks carrying infra cluster apply",
+    "bridge-os machine/_tasks carrying infra cluster apply",
     "blocksIR true for staging 503/401"
   ]
 }

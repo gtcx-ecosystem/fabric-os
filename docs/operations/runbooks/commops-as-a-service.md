@@ -18,9 +18,9 @@ deliverability evidence, and central secret paths. Product repos own channel UX.
 
 | Artifact             | Path                                                | Role                        |
 | -------------------- | --------------------------------------------------- | --------------------------- |
-| CommOps spec         | `pm/spec/commops-as-a-service.json`                 | Lane contract               |
-| Substrate contract   | `pm/commops-substrate-contract.json`                | Channel and secret contract |
-| Friction register    | `pm/commops-friction-register.json`                 | CommOps friction state      |
+| CommOps spec         | `machine/spec/commops-as-a-service.json`            | Lane contract               |
+| Substrate contract   | `machine/commops-substrate-contract.json`           | Channel and secret contract |
+| Friction register    | `machine/commops-friction-register.json`            | CommOps friction state      |
 | CommOps check        | `platform/scripts/commops-check.mjs`                | Local lane gate             |
 | Deliverability check | `platform/scripts/commops-deliverability-check.mjs` | Deliverability witness gate |
 | Latest witness       | `audit/evidence/commops-check-latest.json`          | Local CommOps witness       |

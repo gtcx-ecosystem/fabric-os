@@ -18,8 +18,8 @@ five-core probe consumption, and Fabric assurance witness production.
 
 | Artifact          | Path                                             | Role                           |
 | ----------------- | ------------------------------------------------ | ------------------------------ |
-| Audit register    | `pm/audit-friction-register.json`                | AAAS friction state            |
-| Roadmap           | `pm/aaas-roadmap.json`                           | Fabric-owned AAAS roadmap      |
+| Audit register    | `machine/audit-friction-register.json`           | AAAS friction state            |
+| Roadmap           | `machine/aaas-roadmap.json`                      | Fabric-owned AAAS roadmap      |
 | Composite witness | `audit/evidence/composite-audit-latest.json`     | Latest composite audit witness |
 | AAAS check        | `platform/scripts/aaas-friction-check.mjs`       | Local AAAS gate                |
 | Latest witness    | `audit/evidence/aaas-friction-check-latest.json` | Local AAAS witness             |

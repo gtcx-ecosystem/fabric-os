@@ -19,8 +19,8 @@ readiness witnesses. Revenue strategy remains RevOps-owned.
 
 | Artifact                 | Path                                                     | Role                                   |
 | ------------------------ | -------------------------------------------------------- | -------------------------------------- |
-| Substrate contract       | `pm/payops-substrate-contract.json`                      | Provider, secret, and ingress contract |
-| Friction register        | `pm/payops-friction-register.json`                       | PayOps friction state                  |
+| Substrate contract       | `machine/payops-substrate-contract.json`                 | Provider, secret, and ingress contract |
+| Friction register        | `machine/payops-friction-register.json`                  | PayOps friction state                  |
 | Provider inventory       | `platform/scripts/payops-providers-check.mjs`            | Fleet provider duplication gate        |
 | Readiness check          | `platform/scripts/payops-substrate-readiness.mjs`        | Substrate readiness gate               |
 | Populate script          | `platform/scripts/staging/populate-payops-staging-sm.sh` | Class A secret population entry        |

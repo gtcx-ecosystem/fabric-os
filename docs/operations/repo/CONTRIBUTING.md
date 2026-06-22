@@ -16,7 +16,7 @@ document_type: overview
 
 ```bash
 pnpm install
-pnpm ops:check
+pnpm operations:check
 ```
 
 See the root `README.md` and `AGENTS.md` before changing infrastructure, deploy, or governance paths.
@@ -26,7 +26,7 @@ See the root `README.md` and `AGENTS.md` before changing infrastructure, deploy,
 All contributions must pass the relevant repo gates:
 
 1. Layout - `pnpm check:workspace-root-cleanliness:strict`
-2. Ops - `pnpm ops:check`
+2. Ops - `pnpm operations:check`
 3. Typecheck - `pnpm typecheck` when defined
 4. Lint - `pnpm lint` when defined
 5. Tests - `pnpm test` or targeted Node tests when behavior changes

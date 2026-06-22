@@ -16,9 +16,9 @@ Fabric OS acknowledges the Bridge OS Tool Scout handoff for
 
 ## Scope
 
-- Maintain `pm/tool-adoption-register.json`.
+- Maintain `machine/tool-adoption-register.json`.
 - Track Fabric-owned pilot witnesses under `audit/evidence/`.
-- Consume Bridge OS `pm/tool-scout-register.json` as the program register.
+- Consume Bridge OS `machine/tool-scout-register.json` as the program register.
 - Keep the tool scout runner country-agnostic.
 
 ## Verification

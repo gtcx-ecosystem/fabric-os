@@ -18,8 +18,8 @@ fleet health, staging coordination, and evidence-backed operational readiness.
 
 | Artifact          | Path                                                 | Role                            |
 | ----------------- | ---------------------------------------------------- | ------------------------------- |
-| Friction register | `pm/friction-register.json`                          | DaaS friction and closure state |
-| Roadmap           | `pm/daas-roadmap.json`                               | Fabric-owned delivery roadmap   |
+| Friction register | `machine/friction-register.json`                     | DaaS friction and closure state |
+| Roadmap           | `machine/daas-roadmap.json`                          | Fabric-owned delivery roadmap   |
 | Cards check       | `platform/scripts/daas-cards-check.mjs`              | Per-repo DaaS card gate         |
 | Friction check    | `platform/scripts/daas-friction-check.mjs`           | DevOps lane gate                |
 | Fleet health      | `platform/tools/scripts/cross-repo-health-probe.mjs` | Runtime fleet probe             |

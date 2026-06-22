@@ -31,7 +31,7 @@ We acknowledge receipt within 5 business days and aim for initial assessment wit
 
 ## Scope
 
-In scope: this repository's code, configs, and deploy artifacts under `platform/`, `deploy/`, `ops/`, and related governance evidence.
+In scope: this repository's code, configs, and deploy artifacts under `platform/`, `deploy/`, `operations/`, and related governance evidence.
 
 Out of scope: third-party services unless explicitly integrated in this repo's deploy path.
 

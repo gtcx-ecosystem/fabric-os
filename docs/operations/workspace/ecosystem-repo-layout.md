@@ -25,16 +25,16 @@ This repo follows the P35 v5 hub layout declared in [`config/layout-contract.jso
 - `audit/`
 - `deploy/`
 - `docs/`
-- `ops/`
+- `operations/`
 - `platform/`
-- `pm/`
+- `machine/`
 - `workstream/`
 
 Numbered legacy hubs are migration aliases only and do not satisfy strict layout gates.
 
 ## Docs hub
 
-The `docs/` hub contains narrative, reference, and operational documentation. Ops-domain system-of-record artifacts live in `ops/`; docs may point to them but should not duplicate ops domain manifests.
+The `docs/` hub contains narrative, reference, and operational documentation. Ops-domain system-of-record artifacts live in `operations/`; docs may point to them but should not duplicate ops domain manifests.
 
 ## Enforcement
 
@@ -42,5 +42,5 @@ Run the strict layout and ops gates before closing governance changes:
 
 ```bash
 pnpm check:workspace-root-cleanliness:strict
-pnpm ops:check
+pnpm operations:check
 ```

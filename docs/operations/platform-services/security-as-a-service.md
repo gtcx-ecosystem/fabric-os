@@ -18,9 +18,9 @@ security friction tracking, and fleet-facing security witnesses.
 
 | Artifact           | Path                                              | Role                               |
 | ------------------ | ------------------------------------------------- | ---------------------------------- |
-| Security register  | `pm/security-friction-register.json`              | SecOps friction and closure state  |
-| Roadmap            | `pm/secas-roadmap.json`                           | Fabric-owned security roadmap      |
-| Security manifest  | `ops/security/manifest.json`                      | Local security operations manifest |
+| Security register  | `machine/security-friction-register.json`         | SecOps friction and closure state  |
+| Roadmap            | `machine/secas-roadmap.json`                      | Fabric-owned security roadmap      |
+| Security manifest  | `operations/security/manifest.json`               | Local security operations manifest |
 | Friction check     | `platform/scripts/secas-friction-check.mjs`       | SecOps lane gate                   |
 | Approval check     | `platform/scripts/secas-approval-check.mjs`       | Approval witness gate              |
 | Supply-chain check | `platform/scripts/secas-supply-chain-check.mjs`   | Supply-chain evidence gate         |

@@ -11,4 +11,4 @@ review_cycle: on-change
 
 # Deployment
 
-Release and environment narratives — link `ops/deploy/` manifests.
+Release and environment narratives — link `operations/deploy/` manifests.

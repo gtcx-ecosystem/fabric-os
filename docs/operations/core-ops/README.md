@@ -31,5 +31,5 @@ coordination, cost, payments, communications, and assurance evidence.
 
 ```bash
 pnpm fabric:ops-lanes-11pr:check
-pnpm fabric:ops:check
+pnpm fabric:operations:check
 ```

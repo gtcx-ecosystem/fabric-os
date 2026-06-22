@@ -11,4 +11,4 @@ review_cycle: on-change
 
 # Runbooks
 
-Operator runbooks — narrative only; machine bindings in `ops/`.
+Operator runbooks — narrative only; machine bindings in `operations/`.

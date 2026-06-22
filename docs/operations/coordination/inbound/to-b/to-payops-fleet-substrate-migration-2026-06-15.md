@@ -21,8 +21,8 @@ credentials to central provider paths:
 
 | Artifact          | Path                                                    |
 | ----------------- | ------------------------------------------------------- |
-| Contract          | `pm/payops-substrate-contract.json`                     |
-| Friction register | `pm/payops-friction-register.json`                      |
+| Contract          | `machine/payops-substrate-contract.json`                |
+| Friction register | `machine/payops-friction-register.json`                 |
 | Readiness witness | `audit/evidence/payops-substrate-readiness-latest.json` |
 | Inventory witness | `audit/evidence/payops-fleet-inventory-latest.json`     |
 
@@ -30,5 +30,5 @@ credentials to central provider paths:
 
 Product repos consume the Fabric-managed ExternalSecret manifests and route
 payment webhooks through the ingress paths listed in
-`pm/payops-substrate-contract.json`. Secret population remains Class A and is
+`machine/payops-substrate-contract.json`. Secret population remains Class A and is
 not executed by agents without an authorization artifact.

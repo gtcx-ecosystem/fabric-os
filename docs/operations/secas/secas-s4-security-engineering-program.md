@@ -19,9 +19,9 @@ evidence.
 
 | Artifact             | Path                                                  |
 | -------------------- | ----------------------------------------------------- |
-| Roadmap              | `pm/secas-roadmap.json`                               |
-| Friction register    | `pm/security-friction-register.json`                  |
-| Security manifest    | `ops/security/manifest.json`                          |
+| Roadmap              | `machine/secas-roadmap.json`                          |
+| Friction register    | `machine/security-friction-register.json`             |
+| Security manifest    | `operations/security/manifest.json`                   |
 | Friction witness     | `audit/evidence/secas-friction-check-latest.json`     |
 | Supply-chain witness | `audit/evidence/secas-supply-chain-check-latest.json` |
 

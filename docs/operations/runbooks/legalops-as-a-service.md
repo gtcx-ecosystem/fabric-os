@@ -25,9 +25,9 @@ authorized humans.
 
 | Artifact             | Path                                                                | Role                                       |
 | -------------------- | ------------------------------------------------------------------- | ------------------------------------------ |
-| LegalOps spec        | `pm/spec/legalops-as-a-service.json`                                | Lane contract and artifact map             |
-| Friction register    | `pm/legal-friction-register.json`                                   | Fabric-owned legal friction and gate state |
-| Local manifest       | `ops/legal/manifest.json`                                           | Local repo LegalOps pointer                |
+| LegalOps spec        | `machine/spec/legalops-as-a-service.json`                           | Lane contract and artifact map             |
+| Friction register    | `machine/legal-friction-register.json`                              | Fabric-owned legal friction and gate state |
+| Local manifest       | `operations/legal/manifest.json`                                    | Local repo LegalOps pointer                |
 | Local harness        | `platform/scripts/legalops-check.mjs`                               | Structural lane check                      |
 | Friction harness     | `platform/scripts/legal-friction-check.mjs`                         | Register depth check                       |
 | Local witness        | `audit/evidence/legalops-check-latest.json`                         | Latest Fabric LegalOps witness             |
@@ -67,14 +67,14 @@ pnpm --dir ../bridge-os ecosystem:legal-program:check:write
 Run the Fabric Ops aggregate gate:
 
 ```bash
-pnpm fabric:ops:check
+pnpm fabric:operations:check
 ```
 
 ## Agent Handling
 
 When a LegalOps item appears during implementation:
 
-1. Check `pm/legal-friction-register.json` for the canonical row.
+1. Check `machine/legal-friction-register.json` for the canonical row.
 2. If the row is Class R, update the Fabric-owned artifact and refresh the
    witness.
 3. If the row is Class S, record only the blocker state and unblock path in the
@@ -90,4 +90,4 @@ LegalOps is operational when:
 - `pnpm legal:friction:check:write` writes a passing witness.
 - `pnpm --dir ../bridge-os ecosystem:legal-program:check:write` writes the fleet
   witness.
-- `pnpm fabric:ops:check` includes the LegalOps gate in a passing aggregate.
+- `pnpm fabric:operations:check` includes the LegalOps gate in a passing aggregate.

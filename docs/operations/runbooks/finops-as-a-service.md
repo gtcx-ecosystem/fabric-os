@@ -18,8 +18,8 @@ fleet cost witnesses. Bridge OS remains the policy system of record.
 
 | Artifact          | Path                                             | Role                 |
 | ----------------- | ------------------------------------------------ | -------------------- |
-| FinOps spec       | `pm/spec/finops-as-a-service.json`               | Lane contract        |
-| Friction register | `pm/finops-friction-register.json`               | Cost friction state  |
+| FinOps spec       | `machine/spec/finops-as-a-service.json`          | Lane contract        |
+| Friction register | `machine/finops-friction-register.json`          | Cost friction state  |
 | Cost audit        | `platform/scripts/cost/run-infra-cost-audit.mjs` | AWS cost evidence    |
 | FinOps check      | `platform/scripts/finops-check.mjs`              | Local lane gate      |
 | Latest witness    | `audit/evidence/finops-check-latest.json`        | Local FinOps witness |

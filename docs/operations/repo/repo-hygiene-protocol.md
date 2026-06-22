@@ -27,7 +27,7 @@ Keep the repository root a closed workspace with only allowlisted bootstrap file
 
 ```bash
 pnpm check:workspace-root-cleanliness:strict
-pnpm ops:check
+pnpm operations:check
 ```
 
 ## Human-owned paths

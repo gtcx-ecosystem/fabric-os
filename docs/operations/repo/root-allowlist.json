@@ -2,14 +2,14 @@
   "$schema": "./root-allowlist.schema.json",
   "version": "5.0.0",
   "schema_version": "5.0.0",
-  "updated": "2026-06-18",
+  "updated": "2026-06-22",
   "description": "P35 v5 closed-world repo root allowlist for fabric-os.",
   "migration_tier": "stable",
   "required_files": ["README.md", "AGENTS.md", "CHANGELOG.md"],
   "required_directories": [
     "archive",
     "docs",
-    "ops",
+    "operations",
     "platform",
     "deploy",
     "audit",
@@ -18,6 +18,8 @@
     "agentic",
     "agents",
     "agile",
+    "machine",
+    "ops",
     "pm"
   ],
   "allowed_files": [
@@ -43,7 +45,7 @@
   "allowed_directories": [
     "archive",
     "docs",
-    "ops",
+    "operations",
     "platform",
     "deploy",
     "audit",
@@ -52,6 +54,8 @@
     "agentic",
     "agents",
     "agile",
+    "machine",
+    "ops",
     "pm"
   ],
   "allowed_dot_directories": [
@@ -74,7 +78,7 @@
   "forbidden_root_names": {
     "00-archive": "Use archive/ (P35 v5).",
     "01-docs": "Use docs/ (P35 v5).",
-    "02-ops": "Use ops/ (P35 v5).",
+    "02-ops": "Use operations/ (P35 v5).",
     "03-platform": "Use platform/ (P35 v5).",
     "04-deploy": "Use deploy/ (P35 v5).",
     "05-audit": "Use audit/ (P35 v5).",
@@ -106,6 +110,6 @@
   "relocate_hints": {
     "audits": "audit/",
     "repo_policy": "docs/operations/repo/",
-    "p29_domains": "ops/"
+    "p29_domains": "operations/"
   }
 }

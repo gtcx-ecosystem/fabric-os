@@ -221,6 +221,7 @@
     "agent:conduct:check": "node ../bridge-os/platform/scripts/checks/check-agent-conduct-local.mjs",
     "agent:auto-dev:check": "node ../bridge-os/platform/scripts/checks/check-agent-auto-dev-local.mjs",
     "machine:folder:check": "node ../bridge-os/platform/scripts/workspace/pm-folder-check.mjs",
+    "pm:folder:check": "node ../bridge-os/platform/scripts/workspace/pm-folder-check.mjs",
     "aiops:check": "node platform/scripts/aiops-check.mjs",
     "aiops:check:write": "node platform/scripts/aiops-check.mjs --write",
     "fabric:ops-lanes-11pr:check": "node platform/scripts/fabric-ops-lanes-11pr-check.mjs",

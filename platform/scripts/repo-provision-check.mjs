@@ -31,6 +31,17 @@ function hubProfile(repoName) {
   return profileKeyFromTier(readProductTier(REPO));
 }
 
+function isThinAgenticBridge() {
+  const manifest = join(REPO, 'agentic/manifest.json');
+  if (!existsSync(manifest)) return false;
+  try {
+    const doc = JSON.parse(readFileSync(manifest, 'utf8'));
+    return doc.schema === 'gtcx.agentic.bridge.v1' || doc.role === 'thin-bridge';
+  } catch {
+    return false;
+  }
+}
+
 function main() {
   const gates = [];
   const repoName = basename(REPO);
@@ -40,7 +51,7 @@ function main() {
     gates.push(gate(`L0:${hub}`, existsSync(join(REPO, hub)), hub));
   }
 
-  gates.push(gate('L0:forbidden:agentic', !existsSync(join(REPO, 'agentic')), 'agentic/ absent'));
+  gates.push(gate('L0:forbidden:agentic', !existsSync(join(REPO, 'agentic')) || isThinAgenticBridge(), 'agentic/ absent or thin-bridge only'));
 
   const l1Checks = [
     { id: 'L1-workstream', files: ['workstream/README.md', 'workstream/FOLDER-SPEC.md', 'workstream/sprints/current.md'] },

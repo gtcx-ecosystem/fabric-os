@@ -109,6 +109,13 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 - **Fix:** Update payops provider path to `./services/`, remove `sessions/`, add `esbuild >=0.28.1` override to clear fabric-os high CVEs, and adjust `secas-supply-chain-check` to owner-accountability + fleet observation.
 - **Gates:** `pnpm layout:migrate:v6:check` PASS · `pnpm check:workspace-root-cleanliness:strict` PASS · `pnpm secas:supply-chain:check` PASS · five-pillar fleet stress fabric-os composite100 **100**
 
+## COMPOSITE-RESTORE-100 (2026-06-22 — cycle 4)
+
+- **Outcome:** **done** — composite100 **59 → 100** after ops bridge + P37/P22 gate fixes
+- **Root cause:** `ops:check` failed (missing `docs/agile` + `docs/agents` bridges); `pm:folder:check` alias missing; P22 manifest absent
+- **Fix:** P35 bridge indexes; `docs/operations/agent-work-selection.md`; `pm:folder:check` alias; layout contract pointer; root allowlist v5
+- **Gates:** `pnpm ops:check` PASS · `pnpm pm:folder:check` PASS · `agent:work-selection:check` 9/9 · composite lift **100**
+
 ## COMPOSITE-RESTORE-100 (2026-06-15 — cycle 2)
 
 - **Outcome:** **done** — composite100 **59 → 100** after `fdd47cf` removed IA shadow stubs

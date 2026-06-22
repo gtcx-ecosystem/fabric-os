@@ -1,7 +1,7 @@
 # AGENTS.md — Fabric OS
 
 > **Applies to:** ALL AI agents operating on this codebase  
-> **Layout:** P35 v5 — `platform/`, `deploy/`, `docs/`, `operations/`, `audit/`, `workstream/`, `agentic/`, `machine/`  
+> **Layout:** P35 v5 — `platform/`, `deploy/`, `docs/`, `operations/`, `audit/`, `workstream/`, `agents/`, `machine/`  
 > **Date:** 2026-06-09  
 > **Version:** 2.0
 

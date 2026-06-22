@@ -2,8 +2,8 @@
   "schema": "gtcx://canon-os/repo-provision-check/v1",
   "repo": "fabric-os",
   "profile": "platform",
-  "at": "2026-06-19T21:58:43.549Z",
-  "ok": false,
+  "at": "2026-06-22T20:00:26.553Z",
+  "ok": true,
   "gates": [
     {
       "id": "L0:docs",
@@ -62,7 +62,7 @@
     },
     {
       "id": "L0:forbidden:agentic",
-      "ok": false,
+      "ok": true,
       "detail": "agentic/ absent"
     },
     {

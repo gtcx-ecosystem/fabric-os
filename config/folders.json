@@ -15,7 +15,13 @@
     "newId": "Never rename an id in place. To retire one, add the new id with the old in `aliases` and migrate consumers through the resolver."
   },
   "folders": {
-    "docs": { "id": "docs", "label": "Docs", "path": "docs", "group": "source", "role": "Narrative source — humans author what we are building" },
+    "docs": {
+      "id": "docs",
+      "label": "Docs",
+      "path": "docs",
+      "group": "source",
+      "role": "Narrative source — humans author what we are building"
+    },
     "machine": {
       "id": "machine",
       "label": "Machine",
@@ -44,21 +50,52 @@
       "aliases": ["ops"],
       "labelHistory": ["ops → operations (path moved) 2026-06-22 — PHASE-TAXONOMY"]
     },
-    "deploy": { "id": "deploy", "label": "Deploy", "path": "deploy", "group": "execution", "role": "Deployment artifacts — docker, k8s, terraform, infra" },
-    "agentic": { "id": "agentic", "label": "Agentic", "path": "agentic", "group": "system", "role": "Agent runtime harness and fleet agentic tooling" },
-    "workstream": { "id": "workstream", "label": "Workstream", "path": "workstream", "group": "coordination", "role": "Live session state — sessions, sprints, status" },
-    "coordination": {
-      "id": "coordination",
-      "label": "Coordination",
-      "path": "operations/coordination",
-      "group": "coordination",
-      "role": "Cross-repo coordination — machine state (operations/coordination) + narrative (docs/operations/coordination)"
+    "deploy": {
+      "id": "deploy",
+      "label": "Deploy",
+      "path": "deploy",
+      "group": "execution",
+      "role": "Deployment artifacts — docker, k8s, terraform, infra"
     },
-    "agents": { "id": "agents", "label": "Agents", "path": "agents", "group": "system", "role": "Agent harness — bootstrap, capabilities, playbooks, manifest" },
-    "audit": { "id": "audit", "label": "Audit", "path": "audit", "group": "system", "role": "Cross-cutting evidence/witness plane" },
-    "platform": { "id": "platform", "label": "Platform", "path": "platform", "group": "system", "role": "Engineering layer — scripts, tools, mcp, assets" },
-    "config": { "id": "config", "label": "Config", "path": "config", "group": "system", "role": "Machine config — repo-kind, sor-map, governance-spine, folder registry" },
-    "archive": { "id": "archive", "label": "Archive", "path": "archive", "group": "system", "role": "Cold storage — frozen bundles, provenance only" }
+    "agents": {
+      "id": "agents",
+      "label": "Agents",
+      "path": "agents",
+      "group": "system",
+      "role": "Agent harness — bootstrap, capabilities, playbooks, manifest.json bridge",
+      "aliases": ["agentic"],
+      "labelHistory": [
+        "agentic/ retired 2026-06-23 — manifest at agents/manifest.json per L0-repo-root"
+      ]
+    },
+    "audit": {
+      "id": "audit",
+      "label": "Audit",
+      "path": "audit",
+      "group": "system",
+      "role": "Cross-cutting evidence/witness plane"
+    },
+    "platform": {
+      "id": "platform",
+      "label": "Platform",
+      "path": "platform",
+      "group": "system",
+      "role": "Engineering layer — scripts, tools, mcp, assets"
+    },
+    "config": {
+      "id": "config",
+      "label": "Config",
+      "path": "config",
+      "group": "system",
+      "role": "Machine config — repo-kind, sor-map, governance-spine, folder registry"
+    },
+    "archive": {
+      "id": "archive",
+      "label": "Archive",
+      "path": "archive",
+      "group": "system",
+      "role": "Cold storage — frozen bundles, provenance only"
+    }
   },
   "groups": {
     "source": "What we're building (authored)",

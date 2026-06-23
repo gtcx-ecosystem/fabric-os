@@ -2,7 +2,7 @@
   "$schema": "gtcx://pm/backlog/v1",
   "version": "1.0.0",
   "repo": "fabric-os",
-  "updated": "2026-06-22",
+  "updated": "2026-06-23",
   "activeMilestone": {
     "id": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
     "title": "Fleet internal SecOps + ComplianceOps clearance",
@@ -26,9 +26,7 @@
       "initiative": "INIT-GTCX-INFRA-DAAS",
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-002",
-      "acceptance": [
-        "pnpm daas:friction:check:write"
-      ],
+      "acceptance": ["pnpm daas:friction:check:write"],
       "intakeSource": "local:machine/daas-stories.json",
       "productGoalId": "PG3",
       "goalId": "GOAL-FABRICS-OPS"
@@ -45,10 +43,7 @@
       "initiative": "INIT-GTCX-INFRA-DAAS",
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-002",
-      "acceptance": [
-        "pnpm daas:fleet:health",
-        "pnpm operations:check"
-      ],
+      "acceptance": ["pnpm daas:fleet:health", "pnpm operations:check"],
       "intakeSource": "local:machine/daas-stories.json",
       "productGoalId": "PG3",
       "goalId": "GOAL-FABRICS-OPS"
@@ -65,9 +60,7 @@
       "initiative": "INIT-GTCX-INFRA-DAAS",
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-001",
-      "acceptance": [
-        "pnpm daas:cards:check:write"
-      ],
+      "acceptance": ["pnpm daas:cards:check:write"],
       "intakeSource": "local:machine/daas-stories.json",
       "productGoalId": "PG3",
       "goalId": "GOAL-FABRICS-OPS"
@@ -104,9 +97,7 @@
       "initiative": "INIT-GTCX-INFRA-DAAS",
       "prdRef": "PRD-daass-operator-substrate",
       "capabilityId": "FABRIC-CAP-001",
-      "acceptance": [
-        "pnpm daas:fleet:health"
-      ],
+      "acceptance": ["pnpm daas:fleet:health"],
       "intakeSource": "local:machine/daas-stories.json",
       "productGoalId": "PG3",
       "goalId": "GOAL-FABRICS-OPS"
@@ -121,9 +112,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet assurance",
-      "acceptance": [
-        "Triaged intake populate — closure bar reconciled with bridge-os"
-      ],
+      "acceptance": ["Triaged intake populate — closure bar reconciled with bridge-os"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG1",
       "goalId": "GOAL-FABRICS-OPS",
@@ -139,11 +128,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet assurance",
-      "acceptance": [
-        "Composite 100/100 held",
-        "validate-all 55/55",
-        "operations:check green"
-      ],
+      "acceptance": ["Composite 100/100 held", "validate-all 55/55", "operations:check green"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG1",
       "goalId": "GOAL-FABRICS-OPS",
@@ -192,9 +177,7 @@
       "initiative": "INIT-GTCX-INFRA-SECAS",
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "pnpm secas:pentest:ingest:check:write"
-      ],
+      "acceptance": ["pnpm secas:pentest:ingest:check:write"],
       "intakeSource": "local:machine/secas-stories.json",
       "productGoalId": "PG1",
       "goalId": "GOAL-FABRICS-OPS"
@@ -211,9 +194,7 @@
       "initiative": "INIT-GTCX-INFRA-SECAS",
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "pnpm secas:csirt:check:write"
-      ],
+      "acceptance": ["pnpm secas:csirt:check:write"],
       "intakeSource": "local:machine/secas-stories.json",
       "productGoalId": "PG1",
       "goalId": "GOAL-FABRICS-OPS"
@@ -230,9 +211,7 @@
       "initiative": "INIT-GTCX-INFRA-SECAS",
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "pnpm secas:supply-chain:check:write"
-      ],
+      "acceptance": ["pnpm secas:supply-chain:check:write"],
       "intakeSource": "local:machine/secas-stories.json",
       "productGoalId": "PG1",
       "goalId": "GOAL-FABRICS-OPS"
@@ -249,9 +228,7 @@
       "initiative": "INIT-GTCX-INFRA-SECAS",
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "pnpm secas:vuln-cadence:check:write"
-      ],
+      "acceptance": ["pnpm secas:vuln-cadence:check:write"],
       "intakeSource": "local:machine/secas-stories.json",
       "productGoalId": "PG1",
       "goalId": "GOAL-FABRICS-OPS"
@@ -314,10 +291,7 @@
       "initiative": "INIT-GTCX-INFRA-SECAS",
       "prdRef": "PRD-secas-stack-security",
       "capabilityId": "FABRIC-CAP-003",
-      "acceptance": [
-        "pnpm fleet:risk:check:write",
-        "pnpm fleet:threat:check:write"
-      ],
+      "acceptance": ["pnpm fleet:risk:check:write", "pnpm fleet:threat:check:write"],
       "intakeSource": "local:machine/secas-stories.json",
       "productGoalId": "PG1",
       "goalId": "GOAL-FABRICS-OPS"
@@ -351,9 +325,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Roadmap intake items triaged to owner repo"
-      ],
+      "acceptance": ["Roadmap intake items triaged to owner repo"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG3",
       "gtmGoalId": "GTM1",
@@ -370,9 +342,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG3",
       "gtmGoalId": "GTM1",
@@ -389,9 +359,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG3",
       "gtmGoalId": "GTM1",
@@ -408,9 +376,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG3",
       "gtmGoalId": "GTM1",
@@ -427,9 +393,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG3",
       "gtmGoalId": "GTM1",
@@ -446,9 +410,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG3",
       "gtmGoalId": "GTM1",
@@ -465,9 +427,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Triaged intake populate"
-      ],
+      "acceptance": ["Triaged intake populate"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG3",
       "gtmGoalId": "GTM1",
@@ -484,9 +444,7 @@
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet coordination",
-      "acceptance": [
-        "Closure bar reconciled with bridge-os program office"
-      ],
+      "acceptance": ["Closure bar reconciled with bridge-os program office"],
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG3",
       "gtmGoalId": "GTM1",
@@ -513,6 +471,43 @@
   "_generated": {
     "by": "product-compile.mjs",
     "protocol": "P57-product-delivery-compile",
-    "at": "2026-06-22T19:50:46.451Z"
+    "at": "2026-06-23T06:48:39.872Z"
+  },
+  "active": {
+    "storyId": "OPS-PRD-ROUTING-001",
+    "title": "Ops lane PRD/spec routing matrix",
+    "status": "open",
+    "owner": "fabric-os",
+    "priority": "P0",
+    "tier": "compiled-backlog"
+  },
+  "execution": {
+    "backlogClear": false,
+    "active": {
+      "storyId": "OPS-PRD-ROUTING-001",
+      "title": "Ops lane PRD/spec routing matrix",
+      "status": "open",
+      "owner": "fabric-os",
+      "priority": "P0",
+      "tier": "compiled-backlog"
+    },
+    "openCount": 13,
+    "totalCount": 25,
+    "doneCount": 12,
+    "openIds": [
+      "INIT-EXEC-GAP",
+      "INIT-FIVE-PILLAR-FLEET-100",
+      "LEGAL-PROGRAM-01",
+      "OPS-PRD-ROUTING-001",
+      "T46",
+      "XR-BASELINE-ROADMAP-INTAKE-001",
+      "XR-FABRIC-RAIL-003",
+      "XR-FABRIC-SESSION-OPEN-004",
+      "XR-FABRIC-SESSION-OPEN-005",
+      "XR-FABRIC-SPRIN",
+      "XR-FABRIC-SPRINT",
+      "XR-FABRIC-SPRINT-AUTH-001",
+      "XR-KIMI-BRIDGE-FABRIC-CLOSURE-001"
+    ]
   }
 }

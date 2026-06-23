@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { trySelectCompiledBacklogP22 } from '../../../bridge-os/platform/scripts/lib/compiled-backlog-p22.mjs';
 /**
  * Protocol 22 — deterministic next-work selection for fabric-os.
  * Sources: machine/manifest.json local paths — work register, DAAS/SECAS roadmaps,
@@ -274,6 +275,24 @@ function attachTrace(payload) {
 }
 
 function main() {
+  const __repoId = typeof THIS_REPO !== 'undefined' ? THIS_REPO : (typeof FLEET_REPO_ID !== 'undefined' ? FLEET_REPO_ID : 'fabric-os');
+  const __compiledP22 = trySelectCompiledBacklogP22(REPO_ROOT, __repoId);
+  if (__compiledP22) {
+    const __emit = (payload) => {
+      if (typeof finalizeOwnerP22 === 'function') {
+        console.log(JSON.stringify(finalizeOwnerP22(__repoId, payload, { tier: 'product', repoRoot: REPO_ROOT }), null, 2));
+      } else if (typeof finalizeP22Payload === 'function') {
+        console.log(JSON.stringify(finalizeP22Payload(__repoId, payload), null, 2));
+      } else if (typeof emitP22 === 'function') {
+        emitP22(payload);
+      } else {
+        console.log(JSON.stringify(payload, null, 2));
+      }
+    };
+    __emit(__compiledP22);
+    process.exit(__compiledP22.ok === false ? 1 : 0);
+  }
+
   const frame = process.env.AGENT_FRAME === 'regulatory-audit' ? 'regulatory-audit' : 'development';
   const PATHS = resolvePaths();
   const allStories = new Map();

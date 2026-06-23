@@ -1,7 +1,8 @@
 ---
+auditNotes: 'P58 gap remediate 2026-06-23: all stories terminal'
 initiative: INIT-GTCX-INFRA-DAAS
 title: 'INIT-GTCX-INFRA-DAAS — DevOps-as-a-Service control plane'
-status: in_progress
+status: done
 priority: P0
 owner: fabric-os
 ---

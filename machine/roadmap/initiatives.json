@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://pm/initiatives/v1",
   "version": "1.2.0",
-  "updated": "2026-06-22",
+  "updated": "2026-06-23",
   "repo": "fabric-os",
   "initiatives": [
     {
@@ -39,7 +39,7 @@
     {
       "id": "INIT-GTCX-INFRA-DAAS",
       "title": "INIT-GTCX-INFRA-DAAS — DevOps-as-a-Service control plane",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "ownerRepo": "fabric-os",
       "protocol": "P57-product-delivery-compile",
@@ -52,7 +52,7 @@
     {
       "id": "INIT-GTCX-INFRA-SECAS",
       "title": "INIT-GTCX-INFRA-SECAS — Security-as-a-Service engineering",
-      "status": "in_progress",
+      "status": "done",
       "priority": "P0",
       "ownerRepo": "fabric-os",
       "protocol": "P57-product-delivery-compile",
@@ -78,6 +78,6 @@
   "_generated": {
     "by": "product-compile.mjs",
     "protocol": "P57-product-delivery-compile",
-    "at": "2026-06-22T19:50:46.440Z"
+    "at": "2026-06-23T07:09:16.269Z"
   }
 }

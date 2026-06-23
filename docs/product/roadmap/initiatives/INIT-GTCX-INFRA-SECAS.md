@@ -1,7 +1,8 @@
 ---
+auditNotes: 'P58 gap remediate 2026-06-23: all stories terminal'
 initiative: INIT-GTCX-INFRA-SECAS
 title: 'INIT-GTCX-INFRA-SECAS — Security-as-a-Service engineering'
-status: in_progress
+status: done
 priority: P0
 owner: fabric-os
 ---

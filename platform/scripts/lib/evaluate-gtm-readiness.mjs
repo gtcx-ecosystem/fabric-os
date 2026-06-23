@@ -5,6 +5,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { evaluateProductCharter } from './evaluate-product-charter.mjs';
+import { isStoryOpen } from '../../../../canon-os/platform/scripts/lib/executable-backlog.mjs';
 
 const STANDARD_PATH = 'machine/spec/gtm-product-readiness-standard.json';
 
@@ -63,7 +64,9 @@ function auditBacklog(repoRoot) {
   let gtmTagged = 0;
   let estimated = 0;
   let ownerAssigned = 0;
+  let openExecutable = 0;
   for (const s of stories) {
+    if (isStoryOpen(s.status)) openExecutable += 1;
     if (s.gtmGoalId || s.goalId || s.productGoalId || s.epicId) gtmTagged += 1;
     if (s.estimate != null || s.points != null || s.status) estimated += 1;
     if (s.owner) ownerAssigned += 1;
@@ -73,7 +76,15 @@ function auditBacklog(repoRoot) {
     /compile|product:compile|machine:sync|pm:sync/.test(sync) ||
     backlog?.compiled === true ||
     existsSync(join(repoRoot, 'machine/ci/product-compile-latest.json'));
-  return { total, gtmTagged, estimated, ownerAssigned, compiled, backlogClear: backlog?.backlogClear === true };
+  return {
+    total,
+    gtmTagged,
+    estimated,
+    ownerAssigned,
+    openExecutable,
+    compiled,
+    backlogClear: backlog?.backlogClear === true,
+  };
 }
 
 function auditRoadmap(repoRoot) {
@@ -318,6 +329,7 @@ function scoreDimension(profile, dimId, metrics, thresholds) {
     return dim('readinessStatus', isRelaxed ? 100 : score, pass, metrics);
   }
   if (dimId === 'backlogPopulation') {
+    const openExec = metrics.openExecutable ?? 0;
     const score =
       metrics.total > 0
         ? pct(metrics.gtmTagged + metrics.estimated + metrics.ownerAssigned, metrics.total * 3)
@@ -327,10 +339,18 @@ function scoreDimension(profile, dimId, metrics, thresholds) {
     const pass =
       isRelaxed ||
       metrics.referencePass ||
+      (metrics.compiled && openExec >= 1) ||
       (metrics.total >= 1 && score >= thresholds.backlogMin) ||
       (metrics.backlogClear && metrics.total >= 1);
-    const display = metrics.referencePass ? 100 : metrics.backlogClear && metrics.total >= 1 ? Math.max(score, 75) : score;
-    return dim('backlogPopulation', display, pass, metrics);
+    const display =
+      metrics.referencePass
+        ? 100
+        : metrics.compiled && openExec >= 1
+          ? Math.max(score, 75)
+          : metrics.backlogClear && metrics.total >= 1
+            ? Math.max(score, 75)
+            : score;
+    return dim('backlogPopulation', display, pass, { ...metrics, openExecutable: openExec });
   }
   if (dimId === 'reportsAvailable') {
     const score = pct(metrics.found, metrics.total);
@@ -393,9 +413,10 @@ export function evaluateGtmReadiness(repoRoot, options = {}) {
         gtmTagged: backlog.gtmTagged,
         estimated: backlog.estimated,
         ownerAssigned: backlog.ownerAssigned,
+        openExecutable: backlog.openExecutable,
         compiled: backlog.compiled,
         backlogClear: backlog.backlogClear,
-        referencePass: referencePass && backlog.total >= 1,
+        referencePass: referencePass && backlog.total >= 1 && backlog.openExecutable >= 1,
       },
       thresholds,
     ),

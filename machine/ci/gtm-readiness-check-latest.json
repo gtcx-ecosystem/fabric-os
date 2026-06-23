@@ -1,18 +1,18 @@
 {
   "schema": "gtcx://canon-os/gtm-readiness-check/v1",
-  "generatedAt": "2026-06-22T21:55:29.640Z",
+  "generatedAt": "2026-06-23T13:23:50.392Z",
   "repo": "fabric-os",
   "profile": "platform",
   "ok": true,
-  "composite": 91,
+  "composite": 98,
   "dimensions": [
     {
       "id": "pillars11pr",
-      "score": 59,
+      "score": 100,
       "pass": true,
       "detail": {
         "witness": true,
-        "composite": 59,
+        "composite": 100,
         "pillarCount": 0,
         "docsIaOk": true
       }
@@ -50,8 +50,8 @@
       "detail": {
         "present": true,
         "path": "audit/evidence/gtm-readiness-latest.json",
-        "status": "partial",
-        "score100": 21
+        "status": "not_ready",
+        "score100": 36
       }
     },
     {
@@ -63,6 +63,7 @@
         "gtmTagged": 25,
         "estimated": 25,
         "ownerAssigned": 25,
+        "openExecutable": 13,
         "compiled": true,
         "backlogClear": false,
         "referencePass": false
@@ -92,14 +93,15 @@
     "gtmTagged": 25,
     "estimated": 25,
     "ownerAssigned": 25,
+    "openExecutable": 13,
     "compiled": true,
     "backlogClear": false
   },
   "readiness": {
     "present": true,
     "path": "audit/evidence/gtm-readiness-latest.json",
-    "status": "partial",
-    "score100": 21
+    "status": "not_ready",
+    "score100": 36
   },
   "charter": {
     "score100": 100,

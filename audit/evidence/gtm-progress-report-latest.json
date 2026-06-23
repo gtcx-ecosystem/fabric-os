@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://canon-os/gtm-progress-report/v1",
   "repo": "fabric-os",
-  "generatedAt": "2026-06-22T21:55:29.632Z",
+  "generatedAt": "2026-06-23T13:23:50.388Z",
   "activeMilestone": {
     "id": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
     "title": "SECAS-S4-supply-chain",
@@ -63,7 +63,7 @@
     "ownerAssignedPct": 100
   },
   "readinessSummary": {
-    "status": "partial",
-    "score100": 21
+    "status": "not_ready",
+    "score100": 36
   }
 }

@@ -1,12 +1,12 @@
 {
   "schema": "gtcx://canon-os/gtm-readiness-witness/v1",
   "repo": "fabric-os",
-  "generatedAt": "2026-06-22T21:55:29.634Z",
+  "generatedAt": "2026-06-23T13:23:50.389Z",
   "profile": "platform",
   "dimensions": [
     {
       "id": "pillars11pr",
-      "score": 59,
+      "score": 100,
       "pass": true
     },
     {

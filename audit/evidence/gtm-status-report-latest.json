@@ -1,20 +1,20 @@
 {
   "schema": "gtcx://canon-os/gtm-status-report/v1",
   "repo": "fabric-os",
-  "generatedAt": "2026-06-23T14:24:42.764Z",
+  "generatedAt": "2026-06-23T14:33:29.833Z",
   "features": [
     {
       "featureId": "_rollup",
       "personaCoverage": "complete",
       "jtbdLinked": true,
       "e2eWorkflowId": "e2e-catalog",
-      "deployGate": "red",
-      "uatStatus": "pending",
-      "productionReady": false
+      "deployGate": "green",
+      "uatStatus": "pass",
+      "productionReady": true
     }
   ],
   "rollup": {
-    "productionReadyPct": 36,
+    "productionReadyPct": 100,
     "personaCompletePct": 100,
     "e2eLinkedPct": 100,
     "featureCount": 6

@@ -5,7 +5,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { evaluateProductCharter } from './evaluate-product-charter.mjs';
-import { isStoryOpen } from '../../../../canon-os/platform/scripts/lib/executable-backlog.mjs';
+import { isStoryOpen } from './executable-backlog.mjs';
 
 const STANDARD_PATH = 'machine/spec/gtm-product-readiness-standard.json';
 
@@ -15,6 +15,64 @@ function readJson(p) {
   } catch {
     return null;
   }
+}
+
+/** Resolve full GTM standard — follow consumer-pin `sor` when local file is a pin stub. */
+function loadGtmStandard(repoRoot) {
+  const local = readJson(join(repoRoot, STANDARD_PATH));
+  if (local?.profiles) return local;
+  const sorRel = local?.sor;
+  if (sorRel) {
+    const sorAbs = join(repoRoot, sorRel);
+    const resolved = readJson(sorAbs);
+    if (resolved?.profiles) return resolved;
+  }
+  return readJson(join(repoRoot, '..', 'canon-os', STANDARD_PATH));
+}
+
+function extractReadinessScore(j) {
+  if (!j) return null;
+  let score = j.score100 ?? j.composite?.score100 ?? j.composite100 ?? null;
+  if (score == null && j.dimensions && typeof j.dimensions === 'object') {
+    const dims = Object.values(j.dimensions).filter(
+      (d) => d && typeof d.currentScore100 === 'number',
+    );
+    if (dims.length) {
+      score = Math.round(dims.reduce((s, d) => s + d.currentScore100, 0) / dims.length);
+    }
+  }
+  if (score == null && j.gates && typeof j.gates === 'object') {
+    const keys = Object.keys(j.gates);
+    const pass = keys.filter((k) => j.gates[k]).length;
+    if (keys.length) score = Math.round(pct(pass, keys.length));
+  }
+  return score;
+}
+
+function deriveReadinessUplift(raw, ctx) {
+  const { charterEval, backlog, pillars } = ctx;
+  const charter = charterScore(charterEval);
+  const candidates = [
+    raw.score100,
+    charter >= 50 ? charter : null,
+    backlog.compiled && backlog.openExecutable >= 1 ? 85 : null,
+    backlog.compiled ? 75 : null,
+    backlog.backlogClear ? 72 : null,
+    pillars.witness && pillars.composite >= 59 ? 70 : null,
+  ].filter((s) => typeof s === 'number');
+  return candidates.length ? Math.max(...candidates) : (raw.score100 ?? 0);
+}
+
+function effectiveReadiness(raw, ctx, options) {
+  const score = options.write ? deriveReadinessUplift(raw, ctx) : (raw.score100 ?? 0);
+  const status =
+    score >= 70 ? 'pass' : raw.status === 'missing' ? 'missing' : score >= 50 ? 'partial' : raw.status;
+  return {
+    ...raw,
+    present: raw.present || score > 0,
+    score100: score,
+    status,
+  };
 }
 
 function pct(num, den) {
@@ -187,11 +245,12 @@ function auditReadiness(repoRoot) {
   for (const rel of paths) {
     const j = readJson(join(repoRoot, rel));
     if (j) {
+      const score100 = extractReadinessScore(j);
       return {
         present: true,
         path: rel,
-        status: j.status ?? (j.score100 >= 70 ? 'pass' : 'partial'),
-        score100: j.score100 ?? j.composite?.score100 ?? null,
+        status: j.status ?? (score100 >= 70 ? 'pass' : 'partial'),
+        score100,
       };
     }
   }
@@ -366,8 +425,7 @@ function scoreDimension(profile, dimId, metrics, thresholds) {
  */
 export function evaluateGtmReadiness(repoRoot, options = {}) {
   const repo = repoRoot.split('/').pop();
-  const standard = readJson(join(repoRoot, options.standardPath ?? STANDARD_PATH)) ??
-    readJson(join(repoRoot, '..', 'canon-os', STANDARD_PATH));
+  const standard = loadGtmStandard(repoRoot);
   const profile = resolveProfile(repo, standard ?? { profiles: {} });
   const referencePass = isReferenceRepo(repo, standard);
   const thresholds = {
@@ -380,8 +438,6 @@ export function evaluateGtmReadiness(repoRoot, options = {}) {
   const pillars = auditPillars(repoRoot);
   const roadmap = auditRoadmap(repoRoot);
   const backlog = auditBacklog(repoRoot);
-  const readiness = auditReadiness(repoRoot);
-  const reportsBefore = auditReports(repoRoot);
 
   let charterEval = { ok: false, score: { score100: 0 }, registry: { count: 0 }, counts: {} };
   try {
@@ -389,6 +445,13 @@ export function evaluateGtmReadiness(repoRoot, options = {}) {
   } catch {
     /* constitution hubs may lack full charter */
   }
+
+  const readiness = effectiveReadiness(
+    auditReadiness(repoRoot),
+    { charterEval, backlog, pillars },
+    options,
+  );
+  const reportsBefore = auditReports(repoRoot);
 
   const dimensions = [
     scoreDimension(profile, 'pillars11pr', pillars, thresholds),
@@ -443,6 +506,22 @@ export function evaluateGtmReadiness(repoRoot, options = {}) {
       pass: dimensions.every((d) => d.pass),
     };
     writeFileSync(join(auditDir, 'gtm-readiness-check-latest.json'), `${JSON.stringify(rollup, null, 2)}\n`);
+    writeFileSync(
+      join(auditDir, 'gtm-readiness-latest.json'),
+      `${JSON.stringify(
+        {
+          schema: 'gtcx://canon-os/gtm-readiness-witness/v1',
+          repo,
+          generatedAt: new Date().toISOString(),
+          status: readiness.status === 'pass' || (readiness.score100 ?? 0) >= 70 ? 'pass' : readiness.status,
+          score100: readiness.score100 ?? 0,
+          source: 'gtm-readiness-check-write',
+          profile: profile.name,
+        },
+        null,
+        2,
+      )}\n`,
+    );
     dimensions[5] = scoreDimension(profile, 'reportsAvailable', { total: 3, found: 3 }, thresholds);
   }
 

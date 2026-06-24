@@ -1,25 +1,23 @@
 {
   "schema": "gtcx://canon-os/product-compile/v1",
-  "generatedAt": "2026-06-22T19:50:46.451Z",
+  "generatedAt": "2026-06-23T13:23:19.683Z",
   "repo": "fabric-os",
   "protocol": "P57-product-delivery-compile",
-  "pass": true,
+  "pass": false,
   "counts": {
     "initiativesCompiled": 3,
     "storiesCompiled": 1,
     "initiativeTotal": 6,
-    "storyTotal": 25
+    "storyTotal": 25,
+    "backlogClear": false,
+    "openStories": 13,
+    "executableGaps": 0
   },
   "hashes": {
-    "initiatives": "e903cd22075c166fb09ab605387861da396f2e43e93379da6279d2791187c319",
-    "backlog": "19c182bf573938e7a3cc027febebc07411c9bcb699eb72d143e9db4fe6471332"
+    "initiatives": "6fa3b24bd3fd7b2d14ea19e2fa25746ef818badd7b38c54b73c6f18e64b444da",
+    "backlog": "9ff1747055b114dd412416e23c4a67c8483610711c0b9e0085b8d1aadf1711ae"
   },
-  "featureSync": [
-    {
-      "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
-      "planRef": "docs/product/roadmap/features/FEAT-FABRIC-OPS-ASSURANCE.md",
-      "changed": true
-    }
-  ],
-  "stale": []
+  "executableGaps": [],
+  "featureSync": [],
+  "stale": ["backlog"]
 }

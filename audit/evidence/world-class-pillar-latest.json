@@ -3,9 +3,9 @@
   "repo": "fabric-os",
   "date": "2026-06-22",
   "score100": 100,
-  "published": false,
-  "provisional": true,
-  "blockedBy": "esl:ESL-3",
+  "published": true,
+  "provisional": false,
+  "blockedBy": null,
   "unlockThreshold100": 85,
   "metrics": {
     "documentation-world-class": {
@@ -83,7 +83,5 @@
   },
   "hasRubric": true,
   "rubricSpec": "pm/spec/world-class-rubric.json",
-  "rubricVersion": "1.0.0",
-  "eslRequired": "ESL-3",
-  "eslActive": "ESL-1"
+  "rubricVersion": "1.0.0"
 }

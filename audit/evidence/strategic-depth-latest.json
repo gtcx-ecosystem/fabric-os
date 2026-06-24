@@ -1,8 +1,8 @@
 {
   "schema": "gtcx://audit/strategic-depth/v1",
   "repo": "fabric-os",
-  "date": "2026-06-17",
-  "status": "layer-rollup",
+  "date": "2026-06-22",
+  "status": "composite-lift",
   "frameworksRun": ["ECOSYSTEM-FIT", "INNOVATION-MOAT-90D"],
   "frameworkScores": {
     "ECOSYSTEM-FIT": 100,
@@ -16,10 +16,5 @@
   },
   "strategicInsightScore100": 100,
   "bundle": "strategic-depth",
-  "source": "run-layer-rollup",
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "source": "run-composite-lift"
 }

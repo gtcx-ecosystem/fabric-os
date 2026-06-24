@@ -1,0 +1,21 @@
+{
+  "document_id": "GTCX-FABR-TS-001",
+  "version": "v1",
+  "status": "draft",
+  "document_type": "tear-sheet",
+  "publish_folder": "fabric-os",
+  "title": "fabric-os — Product Tear Sheet",
+  "subtitle": "Fleet print lane scaffold",
+  "issued_date": "2026-06-24",
+  "client": {
+    "legal_name": "GTCX Ecosystem (internal scaffold)",
+    "short_name": "fabric-os"
+  },
+  "summary": "Print lane scaffold for fabric-os (FEAT-PRINT-R7). Customize before external use.",
+  "highlights": [
+    "Consumes canon-os print engine via bridge-os",
+    "Output under documents/print/output/deals/"
+  ],
+  "legal_witness": null,
+  "note": "Scaffold — not for external distribution until legal review"
+}

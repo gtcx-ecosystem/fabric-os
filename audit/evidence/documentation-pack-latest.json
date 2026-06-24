@@ -3,7 +3,7 @@
   "repo": "fabric-os",
   "repoKind": "infra",
   "isPilot": true,
-  "date": "2026-06-17",
+  "date": "2026-06-23",
   "ok": true,
   "score100": 100,
   "pillar": "compliance",
@@ -57,7 +57,7 @@
       "label": "Agent onboarding surfaces",
       "pillar": "compliance",
       "required": true,
-      "score100": 50,
+      "score100": 100,
       "items": [
         {
           "id": "agents-md",
@@ -70,8 +70,8 @@
           "id": "agents-readme",
           "label": "docs/agents/README.md or agent index",
           "severity": "P2",
-          "pass": false,
-          "detail": "missing one of: docs/agents/README.md, agents/README.md, docs/agents/"
+          "pass": true,
+          "detail": "docs/agents/README.md"
         }
       ]
     },
@@ -133,14 +133,14 @@
       "label": "GTM / demo / deploy narrative",
       "pillar": "compliance",
       "required": true,
-      "score100": 100,
+      "score100": 0,
       "items": [
         {
           "id": "gtm-dod",
           "label": "demo-walkthrough or deployment-profile",
           "severity": "P2",
-          "pass": true,
-          "detail": "docs/operations/deployment-profile.json"
+          "pass": false,
+          "detail": "missing demo-walkthrough or deployment-profile"
         }
       ]
     },
@@ -202,7 +202,7 @@
           "label": "Broken internal links in docs/ ≤25",
           "severity": "P2",
           "pass": false,
-          "detail": "257 broken / 438 files"
+          "detail": "26 broken / 268 files"
         }
       ]
     },
@@ -225,17 +225,12 @@
   ],
   "violations": [
     {
-      "packId": "AGENT-OPS",
-      "itemId": "agents-readme",
+      "packId": "GTM-PACK",
+      "itemId": "gtm-dod",
       "severity": "P2",
-      "detail": "missing one of: docs/agents/README.md, agents/README.md, docs/agents/"
+      "detail": "missing demo-walkthrough or deployment-profile"
     }
   ],
   "openP0": 0,
-  "openP1": 0,
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "openP1": 0
 }

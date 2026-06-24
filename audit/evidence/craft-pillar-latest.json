@@ -3,9 +3,9 @@
   "repo": "fabric-os",
   "date": "2026-06-22",
   "score100": 100,
-  "published": false,
-  "provisional": true,
-  "blockedBy": "esl:ESL-2",
+  "published": true,
+  "provisional": false,
+  "blockedBy": null,
   "unlockThreshold100": 85,
   "metrics": {
     "selectivity-ingredients": {
@@ -52,7 +52,5 @@
   "craftFlags": {
     "interchangeable": false,
     "aiSlop": false
-  },
-  "eslRequired": "ESL-2",
-  "eslActive": "ESL-1"
+  }
 }

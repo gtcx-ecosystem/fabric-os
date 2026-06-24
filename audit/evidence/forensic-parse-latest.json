@@ -1,15 +1,19 @@
 {
   "schema": "gtcx://baseline-os/forensic-parse-artifact/v1",
   "programId": "FORENSIC-PARSE-001",
-  "parsedAt": "2026-06-22T19:48:25.941Z",
+  "parsedAt": "2026-06-22T23:38:23.169Z",
   "repo": "fabric-os",
   "corpus": {
     "docs": {
-      "filesScanned": 328,
+      "filesScanned": 345,
       "paths": [
         "docs/CHANGELOG.md",
         "docs/INDEX.md",
         "docs/README.md",
+        "docs/agents/README.md",
+        "docs/agents/cursor/README.md",
+        "docs/agents/universal/README.md",
+        "docs/agile/roadmap.md",
         "docs/architecture/FOLDER-SPEC.md",
         "docs/architecture/README.md",
         "docs/architecture/decisions/ADR-001-fabric-os-architecture-baseline.md",
@@ -82,37 +86,37 @@
         "docs/business/research/master-voice.md",
         "docs/business/research/research-portfolio-blueprint.md",
         "docs/business/research/scorecard.md",
-        "docs/business/sales/FOLDER-SPEC.md",
-        "docs/business/sales/README.md",
-        "docs/business/scorecard.md",
-        "docs/business/strategy/FOLDER-SPEC.md",
-        "docs/business/strategy/README.md"
+        "docs/business/sales/FOLDER-SPEC.md"
       ],
       "initiativeIds": [
         "INIT-DOCS-FOUNDATION-IA-V1",
         "INIT-DOCS-PROVISIONING-V1-W2",
-        "INIT-GTCX-INFRA-SECAS",
         "XR-518",
         "INIT-PRODUCT-TEAM-MODEL-R5",
         "INIT-AGENT-TOOL-SCOUT",
         "XR-BRIDGE-TOOL-SCOUT-001",
+        "INIT-GTCX-INFRA-SECAS",
         "INIT-GTCX-INFRA-DAAS",
         "INIT-FABRIC-OPS-PRD-ROUTING",
         "DOC-MPR-FLEET-SCRUB-003",
-        "INIT-M5-"
+        "XR-FABRIC-SESSION-OPEN-004",
+        "XR-516",
+        "BL-SOC2-01",
+        "INIT-OPS-LANES-OPERATIONALIZE",
+        "INIT-OPS-LANES-ATIONALIZE"
       ]
     },
     "sessions": {
-      "ledgerCount": 29,
-      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-terminal-os/agent-transcripts/3da4db96-edcd-44ae-b33b-9000a59d5910/3da4db96-edcd-44ae-b33b-9000a59d5910.jsonl",
-      "transcriptLines": 302,
-      "userQueryCount": 20
+      "ledgerCount": 33,
+      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-fabric-os/agent-transcripts/8e477643-199e-41be-a7bd-196eba682a03/8e477643-199e-41be-a7bd-196eba682a03.jsonl",
+      "transcriptLines": 603,
+      "userQueryCount": 30
     }
   },
   "layerBindings": {
     "persona": {
       "primary": "platform-engineer",
-      "confidence": 0.9032258064516129,
+      "confidence": 0.8571428571428572,
       "candidates": [
         {
           "personaId": "platform-engineer",
@@ -120,7 +124,7 @@
         },
         {
           "personaId": "platform-architect",
-          "weight": 6
+          "weight": 10
         }
       ]
     },
@@ -129,6 +133,7 @@
       "tags": [
         "['documentation']",
         "['docs', 'ia', 'p48']",
+        "['documentation', 'agents']",
         "['documentation', 'architecture']",
         "['documentation', 'architecture/decisions']",
         "['documentation', 'architecture/diagrams']",
@@ -165,8 +170,7 @@
         "[['docs-site', 'audit-signer', 'reference']]",
         "[['docs-site', 'compliance-db', 'terraform', 'reference']]",
         "[['docs-site', 'mcp', 'compliance-gateway', 'reference']]",
-        "[['docs-site', 'distribution', 'compliance']]",
-        "['security', 'compliance', 'infrastructure', 'api', 'frontend']"
+        "[['docs-site', 'distribution', 'compliance']]"
       ],
       "confidence": 0.75
     },
@@ -175,11 +179,11 @@
         "docs:foundation:check",
         "docs:ia:check",
         "docs:tree:check",
+        "agent:sync",
+        "agent:next-work",
+        "product:compile",
         "when",
         "operations:check",
-        "fabric:ops-contracts:check",
-        "canon:synthesize",
-        "agent:sync",
         "install",
         "vault",
         "cost-route",
@@ -191,8 +195,13 @@
         "agent:session-start",
         "--dir",
         "session",
-        "agent:next-work",
+        "canon:synthesize",
         "add",
+        "agent:work-selection:check",
+        "ops:check",
+        "fabric:assurance:run:write",
+        "commops:check",
+        "commops:check:write",
         "taas:tool-scout:run",
         "taas:tool-scout:run:write",
         "fabric:ops-lanes-11pr:check",
@@ -202,9 +211,11 @@
         "ecosystemops:network:check",
         "finops:check",
         "payops:substrate:readiness",
-        "commops:check",
         "aiops:check",
         "fabric:ops:check",
+        "finops:check:write",
+        "legalops:check",
+        "legalops:check:write",
         "daas:friction:check:write",
         "daas:cards:check:write",
         "daas:fleet:health",
@@ -219,61 +230,54 @@
         "test",
         "aaas:friction:check",
         "aaas:friction:check:write",
-        "commops:check:write",
         "commops:deliverability:check:write",
         "ecosystemops:network:check:write",
-        "finops:check:write",
         "infra:cost:audit:write",
         "haas:friction:check",
         "haas:friction:check:write",
-        "legalops:check",
-        "legalops:check:write",
-        "legal:friction:check:write",
-        "secas:supply-chain:check",
-        "secas:approval:check",
-        "secas:vuln-cadence:check"
+        "legal:friction:check:write"
       ],
       "commands": [
         "baseline start",
         "baseline context",
-        "pnpm agent:next-work",
         "pnpm ops:check",
-        "pnpm agent:protocols:check",
         "pnpm agent:conduct:check",
         "pnpm agent:auto-dev:check",
-        "pnpm dev",
-        "baseline session",
-        "baseline next",
-        "baseline gates",
-        "baseline hub",
-        "pnpm session",
-        "pnpm pm:surface-gtm-roadmaps:audit",
-        "pnpm docs:product:check",
-        "pnpm pm:surface-execution:close",
-        "pnpm pm:surface-execution:check",
-        "pnpm pm:surface-forensic-pack:publish",
-        "pnpm pm:surface-forensic-pack:close",
+        "Baseline loaded",
+        "pnpm agent:next-work",
         "pnpm --dir",
+        "pnpm fabric:ops-contracts:check",
+        "pnpm ecosystem:five-core-audits:check",
+        "pnpm operations:check",
         "pnpm docs:ia:check",
         "pnpm docs:tree:check",
+        "baseline layered",
         "pnpm fabric:ops:check",
         "pnpm fabric:ops:check:strict",
-        "pnpm fabric:ops-contracts:check",
+        "pnpm operations:consumption:check",
+        "pnpm legalops:check",
+        "pnpm ecosystem:ops-authority:check",
         "pnpm agile:check",
-        "pnpm ops:consumption:check",
+        "pnpm product:compile",
+        "pnpm machine:sync",
+        "pnpm docs:product:check",
+        "pnpm product:compile:check",
+        "pnpm canon:contracts:check:write",
+        "pnpm docs:pack:pillar-contract:check",
+        "pnpm canon:synthesize:check",
+        "pnpm session",
         "pnpm next",
         "pnpm gates",
         "pnpm hub",
         "pnpm mcp",
         "baseline to",
-        "baseline wiring",
-        "baseline shapes",
-        "baseline serve",
         "pnpm serve",
+        "baseline CLI",
         "pnpm agent:consumption:check",
+        "baseline requires",
+        "baseline CLI:",
         "pnpm --filter",
-        "baseline mirror",
-        "pnpm docs:pack:pillar-contract:check"
+        "pnpm repo:provision:check"
       ]
     },
     "studio": {
@@ -282,6 +286,7 @@
     },
     "skills": ["doc-standard", "docs-machine-readable", "repo-hygiene", "compliance-audit"],
     "initiatives": [
+      "BL-SOC2-01",
       "DOC-MPR-FLEET-SCRUB-003",
       "INIT-AGENT-TOOL-SCOUT",
       "INIT-DOCS-FOUNDATION-IA-V1",
@@ -289,14 +294,25 @@
       "INIT-FABRIC-OPS-PRD-ROUTING",
       "INIT-GTCX-INFRA-DAAS",
       "INIT-GTCX-INFRA-SECAS",
-      "INIT-M5-",
+      "INIT-OPS-LANES-ATIONALIZE",
+      "INIT-OPS-LANES-OPERATIONALIZE",
       "INIT-PRODUCT-TEAM-MODEL-R5",
+      "XR-516",
       "XR-518",
-      "XR-BRIDGE-TOOL-SCOUT-001"
+      "XR-BRIDGE-TOOL-SCOUT-001",
+      "XR-FABRIC-SESSION-OPEN-004"
     ],
     "tags": ["docs/business", "docs/foundation", "session-corpus"]
   },
   "ingestSignals": [
+    {
+      "id": "initiative:BL-SOC2-01",
+      "kind": "initiative",
+      "text": "Active initiative reference: BL-SOC2-01",
+      "source": "docs+sessions",
+      "refs": ["BL-SOC2-01"],
+      "confidence": 0.85
+    },
     {
       "id": "initiative:DOC-MPR-FLEET-SCRUB-003",
       "kind": "initiative",
@@ -354,11 +370,19 @@
       "confidence": 0.85
     },
     {
-      "id": "initiative:INIT-M5-",
+      "id": "initiative:INIT-OPS-LANES-ATIONALIZE",
       "kind": "initiative",
-      "text": "Active initiative reference: INIT-M5-",
+      "text": "Active initiative reference: INIT-OPS-LANES-ATIONALIZE",
       "source": "docs+sessions",
-      "refs": ["INIT-M5-"],
+      "refs": ["INIT-OPS-LANES-ATIONALIZE"],
+      "confidence": 0.85
+    },
+    {
+      "id": "initiative:INIT-OPS-LANES-OPERATIONALIZE",
+      "kind": "initiative",
+      "text": "Active initiative reference: INIT-OPS-LANES-OPERATIONALIZE",
+      "source": "docs+sessions",
+      "refs": ["INIT-OPS-LANES-OPERATIONALIZE"],
       "confidence": 0.85
     },
     {
@@ -367,6 +391,14 @@
       "text": "Active initiative reference: INIT-PRODUCT-TEAM-MODEL-R5",
       "source": "docs+sessions",
       "refs": ["INIT-PRODUCT-TEAM-MODEL-R5"],
+      "confidence": 0.85
+    },
+    {
+      "id": "initiative:XR-516",
+      "kind": "initiative",
+      "text": "Active initiative reference: XR-516",
+      "source": "docs+sessions",
+      "refs": ["XR-516"],
       "confidence": 0.85
     },
     {
@@ -386,12 +418,20 @@
       "confidence": 0.85
     },
     {
+      "id": "initiative:XR-FABRIC-SESSION-OPEN-004",
+      "kind": "initiative",
+      "text": "Active initiative reference: XR-FABRIC-SESSION-OPEN-004",
+      "source": "docs+sessions",
+      "refs": ["XR-FABRIC-SESSION-OPEN-004"],
+      "confidence": 0.85
+    },
+    {
       "id": "persona:platform-engineer",
       "kind": "persona",
       "text": "Dominant persona signal: platform-engineer",
       "source": "sessions+transcript",
       "refs": ["platform-engineer"],
-      "confidence": 0.9032258064516129
+      "confidence": 0.8571428571428572
     },
     {
       "id": "lang:docs:foundation:check",
@@ -418,6 +458,30 @@
       "confidence": 0.7
     },
     {
+      "id": "lang:agent:sync",
+      "kind": "lang",
+      "text": "Lang expression observed: agent:sync",
+      "source": "docs",
+      "refs": ["agent:sync"],
+      "confidence": 0.7
+    },
+    {
+      "id": "lang:agent:next-work",
+      "kind": "lang",
+      "text": "Lang expression observed: agent:next-work",
+      "source": "docs",
+      "refs": ["agent:next-work"],
+      "confidence": 0.7
+    },
+    {
+      "id": "lang:product:compile",
+      "kind": "lang",
+      "text": "Lang expression observed: product:compile",
+      "source": "docs",
+      "refs": ["product:compile"],
+      "confidence": 0.7
+    },
+    {
       "id": "lang:when",
       "kind": "lang",
       "text": "Lang expression observed: when",
@@ -431,30 +495,6 @@
       "text": "Lang expression observed: operations:check",
       "source": "docs",
       "refs": ["operations:check"],
-      "confidence": 0.7
-    },
-    {
-      "id": "lang:fabric:ops-contracts:check",
-      "kind": "lang",
-      "text": "Lang expression observed: fabric:ops-contracts:check",
-      "source": "docs",
-      "refs": ["fabric:ops-contracts:check"],
-      "confidence": 0.7
-    },
-    {
-      "id": "lang:canon:synthesize",
-      "kind": "lang",
-      "text": "Lang expression observed: canon:synthesize",
-      "source": "docs",
-      "refs": ["canon:synthesize"],
-      "confidence": 0.7
-    },
-    {
-      "id": "lang:agent:sync",
-      "kind": "lang",
-      "text": "Lang expression observed: agent:sync",
-      "source": "docs",
-      "refs": ["agent:sync"],
       "confidence": 0.7
     },
     {
@@ -474,9 +514,17 @@
       "confidence": 0.7
     },
     {
-      "id": "query:2be8117f",
+      "id": "query:1b648b80",
       "kind": "operator-intent",
-      "text": "canon-os is your standards SoR. Every consumer is writes: false — read-only. Link, never fork.\n\n  Resolve, don't copy (paths published in config/ecosystem-central-sor.json):\n  - Protocols → docs/governance/protocols/ (index …/README.md); co",
+      "text": "conue with fabric-os",
+      "source": "transcript",
+      "refs": [],
+      "confidence": 0.65
+    },
+    {
+      "id": "query:1b648b80",
+      "kind": "operator-intent",
+      "text": "conue with fabric-os",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
@@ -498,17 +546,9 @@
       "confidence": 0.65
     },
     {
-      "id": "query:3abdf7f1",
+      "id": "query:6186ba93",
       "kind": "operator-intent",
-      "text": "baseline-os is your AI runtime provider + the reference fixture. Run it; copy its shapes; but the standard lives in canon-os, not here.\n\n  (1) Run its CLI — your session spine. Wire via your config/agent-consumption-contract.json: baselineo",
-      "source": "transcript",
-      "refs": [],
-      "confidence": 0.65
-    },
-    {
-      "id": "query:99e55f7d",
-      "kind": "operator-intent",
-      "text": "Align YOUR repo to the fabric-os ops contracts\n  \n  TASK: Ensure this repo has the fabric-os operational contract surface in place. Class R, in-session. Standard SoR: canon-os L1-operations.json; methodology owner: fabric-os. Link, don't fo",
+      "text": "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65

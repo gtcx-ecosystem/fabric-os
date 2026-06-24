@@ -3,7 +3,7 @@
   "coreId": "A3-AGENTIC-INNOVATION",
   "slug": "agentic-innovation",
   "repo": "fabric-os",
-  "date": "2026-06-17",
+  "date": "2026-06-22",
   "score10": 10,
   "score100": 100,
   "score100Raw": 100,
@@ -43,7 +43,7 @@
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-17.json",
+  "rubricSourcePath": "audit/audit-output-2026-06-22.json",
   "checks": {
     "agenticManifest": {
       "ok": true,
@@ -69,10 +69,5 @@
     }
   },
   "gaps": [],
-  "runbook": "audit/runbooks/A3-agentic-innovation.md",
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "runbook": "audit/runbooks/A3-agentic-innovation.md"
 }

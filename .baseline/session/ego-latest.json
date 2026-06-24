@@ -1,9 +1,9 @@
 {
   "schema": "gtcx://baseline-os/ego/v1",
   "schemaAlias": "gtcx://baseline-os/agent-embodiment/v1",
-  "compiledAt": "2026-06-22T19:48:29.345Z",
+  "compiledAt": "2026-06-22T23:38:30.862Z",
   "repo": "fabric-os",
-  "storyId": "COMPOSITE-RESTORE-100",
+  "storyId": "unknown",
   "persona": {
     "institutional": "platform-architect",
     "frame": "development",
@@ -19,9 +19,9 @@
     "bundleHash": "5440d51f4280ddb4b4d036aa801a86df6d9038c678208f9c1725c4a3474a86f1",
     "ok": true
   },
-  "forbiddenPatternCount": 32,
+  "forbiddenPatternCount": 40,
   "mdPath": ".baseline/session/ego-latest.md",
-  "mdHash": "11306e62f30d385ee8d71112b132991b228d8ad3ba377b79f1fbc900305cde99",
+  "mdHash": "f3a61ab220365042967db2ff80f09309de8df7304d710c04177c88e9990978b2",
   "layers": [
     "anti-assistant",
     "constitution",
@@ -39,7 +39,7 @@
       "institutional": "platform-architect",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703",
-      "readAt": "2026-06-22T19:13:39.540Z"
+      "readAt": "2026-06-22T23:38:28.544Z"
     },
     "constitutionReadGate": {
       "ok": true,

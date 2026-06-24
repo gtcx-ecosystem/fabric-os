@@ -2,8 +2,8 @@
   "schema": "gtcx://audit/fleet-diagnostic-snapshot/v1",
   "repo": "fabric-os",
   "tier": "platform",
-  "refreshedAt": "2026-06-22T17:35:17.026Z",
-  "sessionPhase": "close",
+  "refreshedAt": "2026-06-24T09:02:17.922Z",
+  "sessionPhase": null,
   "diagnostics": {
     "engineering": {
       "score100": 85,
@@ -20,8 +20,8 @@
       "compliance100": 100,
       "published": true,
       "witnessPath": "audit/evidence/five-pillar-latest.json",
-      "evaluatedAt": "2026-06-19T02:18:35.941Z",
-      "ageHours": 48.76069890882704,
+      "evaluatedAt": "2026-06-22T23:23:24.581Z",
+      "ageHours": 33.648126127929686,
       "stale": false,
       "refreshCommand": "pnpm audit:multi-pillar:run --repo <repo> --write"
     },
@@ -31,20 +31,20 @@
       "productionReady": true,
       "gaps": [],
       "witnessPath": "audit/evidence/composite-audit-latest.json",
-      "ageHours": 48.760702185804575,
+      "ageHours": 33.731770944485135,
       "stale": false,
       "refreshCommand": "pnpm ecosystem:master:audit --repo <repo> --write"
     },
     "gtm": {
-      "stage": "S1",
-      "stageName": "MVP",
-      "status": "partial",
-      "score100": 21,
+      "stage": "S2",
+      "stageName": "Pilot Ready",
+      "status": "not_ready",
+      "score100": 36,
       "gates": {
         "readme": true,
         "packageOrMakefile": true,
         "devEntry": true,
-        "opsCheckPass": false,
+        "opsCheckPass": true,
         "agentNextWork": true,
         "demoWalkthrough": false,
         "syntheticFixtures": false,
@@ -63,7 +63,7 @@
         "sbom": false,
         "cveClear": false
       },
-      "gaps": ["S1:opsCheckPass"],
+      "gaps": ["S2:demoWalkthrough", "S2:syntheticFixtures", "S2:featureMatrix90"],
       "witnessPath": "audit/evidence/gtm-readiness-latest.json",
       "qualitativeForensic": null,
       "deepAuditRecommended": true,
@@ -71,7 +71,7 @@
     }
   },
   "rollup": {
-    "avgScore100": 77,
+    "avgScore100": 80,
     "anyStale": true,
     "pilotReady": false,
     "deployBarMet": true

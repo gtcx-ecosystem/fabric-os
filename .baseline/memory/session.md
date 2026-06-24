@@ -281,13 +281,13 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - [ ] Re-read `.baseline/memory/pitfalls.md`
 - [ ] Run `pnpm agent:next-work` to confirm next story
 
-## Session bootstrap (2026-06-22 19:48:25 UTC)
+## Session bootstrap (2026-06-22 23:38:21 UTC)
 
 - **Command:** `agent start` (baseline-os repo-session-core)
 - **Repo:** fabric-os
-- **Next work:** COMPOSITE-RESTORE-100 — Restore composite ≥100 (current 59) — SECAS-S4-supply-chain
+- **Next work:** unknown
 - **Blocked:** no
-- **Git:** 33 changed path(s)
+- **Git:** 38 changed path(s)
 
 
 ## Session — 2026-06-05 (continued)

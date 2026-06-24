@@ -1,16 +1,16 @@
 {
-  "startedAt": "2026-06-22T19:48:25.556Z",
+  "startedAt": "2026-06-22T23:38:21.829Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-aeeab5d6-3cd5-410e-a013-7f9329e1899a",
+    "id": "gtcx-agent-e0a9fd50-cdcd-4509-8156-6c53b811ed18",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-b598d18822cb665b441745b4aa112488-0148fcd70c3f3e1d-01"
+    "traceparent": "00-98e7a984ed32774cb3f881bb0782133b-36040c476ee18e30-01"
   },
   "nextWork": {
-    "traceId": "cc3ec490-3ea5-4524-8df8-ed188ced6048",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=cc3ec490-3ea5-4524-8df8-ed188ced6048",
+    "traceId": "9048b466-1e6c-476c-aef7-b4f4c4adbdd1",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=9048b466-1e6c-476c-aef7-b4f4c4adbdd1",
     "ok": true,
     "backlogClear": false,
     "frame": "development",
@@ -18,11 +18,9 @@
     "repo": "fabric-os",
     "message": "Human gates parallel — implement queue reconciled; see work register.",
     "agentInstructions": [
-      "Milestone drift: composite 59 < 100. Restore composite before feature work.",
       "Phase 4: adopt persona **platform-architect** (development) — read local `/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md` first (docUrl link-only); adopt voice: Systems-oriented, reliability-focused, cost-conscious",
       "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
       "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
-      "Milestone drift: composite 59 < 100. Restore composite before feature work.",
       "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
       "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
       "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
@@ -48,7 +46,7 @@
       "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
       "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
       "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-22T19:48:23.498Z",
+      "provisionedAt": "2026-06-22T23:38:17.448Z",
       "repo": "fabric-os",
       "northStar": {
         "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
@@ -232,7 +230,7 @@
       "personaDocPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "voice": "Systems-oriented, reliability-focused, cost-conscious",
       "embodies": "Platform lead accountable for fleet reliability",
-      "personaConfidence": 0.9523809523809523,
+      "personaConfidence": 0.98,
       "personaSource": "work-item-manifest",
       "goalOrientationBrief": "## Goal orientation\n**Fleet north star:** GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail\n**Quarter:** Ship · surfaces · GTM · operational AI\n**Head programme:** `PROG-CONTINENTAL-CAPITAL` → `markets-os`\n**Repo north star:** Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability\n**Milestone:** SECAS-S4-supply-chain\n**Shippable:** SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only\n**PRD refs:** prd-product-charter\n**Product team:** Fabric OS (`platform-engineer`)"
     },
@@ -443,7 +441,7 @@
         },
         "sessionReminder": "Embody **Principal Platform Architect** — Platform lead accountable for fleet reliability.\nTone: Systems-oriented, reliability-focused, cost-conscious\nVoice pattern: Architecture → trade-offs → decision → implementation plan → probe\nForbidden: casual delegation (\"Your move\", \"tell me what you think\", engagement bait).\nDemo guidance example: **Operator entry:** `http://localhost:3000/login` — credentials `demo@kt.com` / `demo123`. Primary path: `/ecosystem` → `/index54`. I will verify each surface in-session and report probe results before the next layer."
       },
-      "confidence": 0.9523809523809523,
+      "confidence": 0.98,
       "team": null,
       "manifestId": null,
       "manifestPath": null,
@@ -453,133 +451,160 @@
             "development"
           ],
           "tags": [
-            "['documentation', 'agents', 'provisioning']",
             "[\"documentation\", \"index\"]",
-            "['documentation', 'reference']",
-            "[\"documentation\", \"api\"]",
-            "['documentation']",
-            "[documentation]",
-            "[[\"documentation\", \"reference\"]]",
-            "[[\"baseline\", \"layers\", \"experience\", \"configuration\"]]",
-            "[\"documentation\", \"reference\"]",
-            "['protocol', 'documentation']",
-            "['evaluation', 'multi-pillar', 'rag', 'mcp']",
-            "[\"documentation\", \"governance\"]",
-            "[[\"public-trust\", \"status\", \"release\", \"verification\", \"feature-007\"]]",
-            "['onboarding', 'documentation']",
-            "[[intelligence, ai-governance, rag, corpus]]",
-            "['protocol', 'documentation', 'governance']",
-            "[[\"documentation\", \"legal\", \"draft\"]]",
-            "[[\"mcp\", \"rag\", \"baselineos\", \"fleet\"]]",
-            "[[\"prompts\", \"persona\", \"protocol\", \"registry\"]]",
-            "[[\"mining\", \"compliance\", \"license\", \"esg\"]]",
-            "[[\"mining\", \"remote-ops\", \"terra\", \"field\"]]",
-            "[[\"security\", \"cryptography\", \"inf-86\", \"trust\"]]",
-            "['agents', 'protocols']",
-            "['agile', 'roadmap', 'gtcx-agile']",
-            "['documentation', 'architecture']",
-            "['architecture', 'documentation']",
-            "[\"documentation\", \"architecture\"]",
-            "[[\"documentation\", \"architecture\"]]",
-            "['documentation', 'business']",
-            "[[\"audit\", \"compliance\"]]",
+            "['documentation', 'multi-pillar', 'fractal-mpr']",
+            "['archive', 'forensic', 'decompose']",
+            "[['documentation', 'multi-pillar', 'fractal-mpr']]",
+            "['documentation', 'agents', 'provisioning']",
+            "['documentation', 'agents']",
+            "['documentation', 'provisioning']",
+            "['documentation', 'agile']",
+            "['documentation', 'roadmap']",
+            "['documentation', 'architecture', 'primitives']",
+            "['documentation', 'business', 'primitives']",
+            "['documentation', 'engineering']",
             "['documentation', 'cli']",
-            "['foundation']",
-            "['documentation', 'gitbook']",
-            "[\"documentation\", \"gitbook\"]",
-            "['gitbook-chapter', 'documentation']",
-            "[[\"documentation\", \"gitbook\"]]",
-            "[[documentation, gitbook, lang, getting-started]]",
+            "['documentation', 'specs']",
+            "['documentation', 'foundation', 'primitives']",
             "['documentation', 'operations']",
-            "[\"documentation\", \"operations\"]",
-            "[[\"protocol-22\", \"agents\", \"roadmap\", \"autonomy\"]]"
+            "['documentation', 'overview']",
+            "['documentation', 'strategy']",
+            "['documentation', 'product']",
+            "['documentation', 'publishing']",
+            "['documentation', 'gitbook']",
+            "['documentation', 'reference']",
+            "['documentation', 'research']",
+            "['documentation', 'engineering', 'P57']",
+            "['documentation', 'engineering', 'specs']",
+            "['documentation', 'operations', 'P57']",
+            "['documentation', 'operations', 'agent-init']",
+            "['documentation', 'operations', 'compliance']",
+            "['documentation', 'operations', 'coordination']",
+            "['documentation', 'operations', 'deployment']",
+            "['documentation', 'operations', 'remediation']",
+            "['documentation', 'operations', 'repo']",
+            "['documentation', 'operations', 'runbooks']",
+            "['documentation', 'operations', 'templates']",
+            "['documentation', 'operations', 'workspace']",
+            "['documentation', 'product', 'P57']",
+            "['research', 'intake', '11PR']",
+            "['business', 'research', 'voice']",
+            "['documentation', 'operations', 'archive']",
+            "['operations', 'communication']"
           ],
           "confidence": 0.75
         },
         "lang": {
           "expressions": [
             "docs:foundation:check",
-            "ops:check",
+            "operations:check",
             "agent:bootstrap:check",
             "ecosystem:migration:score",
             "test",
             "build",
-            "clean",
-            "docs:check-links",
-            "suite",
-            "quality:arch-check",
-            "quality:layer-drift",
-            "audit",
-            "workspaces",
-            "typecheck",
-            "from",
-            "override",
-            "lint",
-            "quality:spec-drift",
-            "quality:layer-identity",
-            "quality:secrets",
-            "current",
-            "vitest",
+            "docs:engineering:check",
+            "docs:operations:check",
+            "docs:product:check",
+            "docs:ux:check",
+            "docs:canon:check",
+            "canon:synthesize:check",
+            "docs:research:check",
+            "powers",
+            "engines",
+            "api:dev",
+            "security:audit",
             "verify:release",
-            "verify:operational",
-            "init",
-            "verify",
-            "vault:split-key",
-            "preflight",
-            "agents:export-mcp",
-            "verify:open-source",
-            "test:coverage",
-            "verify:soc2-evidence-doc",
-            "verify:iso27001-evidence-doc",
-            "verify:soc2-controls-wired",
-            "--dir",
-            "verifier",
-            "library",
-            "verify:public-trust-release",
-            "intelligence:corpus:check",
-            "index",
-            "ecosystem:constitution:check",
-            "ecosystem:esl:check",
-            "cost-route",
-            "cost-stats",
-            "ecosystem:environment-cost:check",
-            "skill:library:review:check",
-            "knowledge-index",
-            "review:multi-pillar:run",
-            "ecosystem:fleet-deploy-readiness:check",
-            "skill:library:audit",
-            "ecosystem:compliance-rubric:check",
-            "desktop",
-            "UX",
-            "fields",
-            "rather",
-            "profile",
-            "knowledge",
+            "baseline:verify",
+            "baseline:audit:verify",
+            "quality:layer-identity",
+            "quality:soc2-controls-wired",
+            "Protocol",
+            "directly",
             "is",
+            "ga:check:repo-hygiene:strict",
+            "format",
+            "lint",
+            "format:check",
+            "ga:check:docs-integrity:strict",
+            "uses",
+            "typecheck",
+            "quality:spec-drift",
+            "quality:arch-check",
+            "ecosystem:graph:analyze",
+            "ecosystem:health",
+            "install",
+            "yet",
+            "audit",
+            "updated",
+            "without",
             "-",
-            "data"
+            "before",
+            "--filter",
+            "eval",
+            "9",
+            "validate:rag-config",
+            "rag:eval",
+            "ecosystem:agent-profile:dispatch",
+            "ecosystem:roadmap:sync",
+            "ecosystem:team:dispatch",
+            "ecosystem:team:sync",
+            "--version",
+            "runbook:production-preflight",
+            "if",
+            "start",
+            "session",
+            "agent:start",
+            "agent:session-start",
+            "next"
           ],
           "commands": [
-            "pnpm publish:formal:validate",
-            "pnpm publish:formal:render",
-            "pnpm validate:publish",
-            "pnpm publish:formal:k3",
-            "pnpm publish:formal:k3:sample",
-            "pnpm pnpm",
             "baseline start",
+            "baseline context",
             "pnpm ops:check",
+            "pnpm agent:conduct:check",
+            "pnpm agent:auto-dev:check",
+            "Baseline loaded",
+            "pnpm agent:next-work",
             "pnpm --dir",
-            "pnpm publish:formal:samples",
-            "pnpm publish:formal:ensure",
-            "pnpm publish:formal:pdf"
+            "pnpm fabric:ops-contracts:check",
+            "pnpm ecosystem:five-core-audits:check",
+            "pnpm operations:check",
+            "pnpm docs:ia:check",
+            "pnpm docs:tree:check",
+            "baseline layered",
+            "pnpm fabric:ops:check",
+            "pnpm fabric:ops:check:strict",
+            "pnpm operations:consumption:check",
+            "pnpm legalops:check",
+            "pnpm ecosystem:ops-authority:check",
+            "pnpm agile:check",
+            "pnpm product:compile",
+            "pnpm machine:sync",
+            "pnpm docs:product:check",
+            "pnpm product:compile:check",
+            "pnpm canon:contracts:check:write",
+            "pnpm docs:pack:pillar-contract:check",
+            "pnpm canon:synthesize:check",
+            "pnpm session",
+            "pnpm next",
+            "pnpm gates",
+            "pnpm hub",
+            "pnpm mcp",
+            "baseline to",
+            "pnpm serve",
+            "baseline CLI",
+            "pnpm agent:consumption:check",
+            "baseline requires",
+            "baseline CLI:",
+            "pnpm --filter",
+            "pnpm repo:provision:check"
           ]
         },
         "studio": {
           "deliverables": [
             "folder-spec",
-            "docs-integrity-pack",
             "relocation-report",
-            "deliverable"
+            "docs-integrity-pack"
           ],
           "provenanceRequired": true
         },
@@ -588,6 +613,7 @@
         "skills": [
           "doc-standard",
           "docs-machine-readable",
+          "repo-hygiene",
           "compliance-audit"
         ],
         "knowledgeBases": [],
@@ -736,69 +762,10 @@
         "doc promotion implement"
       ]
     },
-    "compositeDrift": {
-      "schema": "gtcx://bridge-os/composite-drift/v1",
-      "current": 59,
-      "required": 100,
-      "milestone": "SECAS-S4-supply-chain",
-      "forced": true
-    },
-    "next": {
-      "storyId": "COMPOSITE-RESTORE-100",
-      "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain"
-    },
-    "nextWorkItem": {
-      "type": "story",
-      "typeLabel": "Story",
-      "id": "COMPOSITE-RESTORE-100",
-      "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain",
-      "owner": "fabric-os",
-      "state": "in_progress",
-      "because": "composite 59 < 100 for milestone SECAS-S4-supply-chain · traces PROG-CONTINENTAL-CAPITAL",
-      "gtmTrace": true,
-      "programmeId": "PROG-SECAS-ENGINEERING",
-      "milestoneId": "SECAS-S4-supply-chain",
-      "gtmTier": "GR-T2-partial",
-      "capabilityId": null,
-      "prdRef": null,
-      "milestoneDoD": {
-        "milestoneId": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
-        "title": "SECAS-S4-supply-chain",
-        "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
-        "acceptanceChecks": [
-          {
-            "id": "secops-internal-clearance",
-            "label": "SecOps internal Class R sealed",
-            "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
-            "actual": "PASS"
-          },
-          {
-            "id": "complianceops-fleet",
-            "label": "ComplianceOps fleet harness",
-            "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
-            "actual": "PASS"
-          },
-          {
-            "id": "composite-85",
-            "label": "Composite ≥85",
-            "check": "composite85"
-          },
-          {
-            "id": "demo",
-            "label": "Demo walkthrough evidence",
-            "witness": "audit/evidence/demo-readiness-{repo}.json"
-          }
-        ]
-      }
-    },
-    "selection": {
-      "tier": "milestone-drift",
-      "reason": "Composite drift — 59/100"
-    },
     "goalTrace": {
       "schema": "gtcx://bridge-os/goal-trace/v2.1",
       "repo": "fabric-os",
-      "nextStoryId": "COMPOSITE-RESTORE-100",
+      "nextStoryId": null,
       "headStoryId": "XR-FABRIC-SESSION-OPEN-004",
       "headProgrammeId": "PROG-CONTINENTAL-CAPITAL",
       "headProductRepo": "markets-os",
@@ -840,35 +807,7 @@
       "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
       "gtmTier": "GR-T2-partial",
       "capabilityId": null,
-      "milestoneDoD": {
-        "milestoneId": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
-        "title": "SECAS-S4-supply-chain",
-        "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
-        "acceptanceChecks": [
-          {
-            "id": "secops-internal-clearance",
-            "label": "SecOps internal Class R sealed",
-            "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
-            "actual": "PASS"
-          },
-          {
-            "id": "complianceops-fleet",
-            "label": "ComplianceOps fleet harness",
-            "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
-            "actual": "PASS"
-          },
-          {
-            "id": "composite-85",
-            "label": "Composite ≥85",
-            "check": "composite85"
-          },
-          {
-            "id": "demo",
-            "label": "Demo walkthrough evidence",
-            "witness": "audit/evidence/demo-readiness-{repo}.json"
-          }
-        ]
-      },
+      "milestoneDoD": null,
       "aligned": true,
       "recalibrate": "pnpm ecosystem:clarity:report:brief"
     },
@@ -890,7 +829,7 @@
       "institutional": "platform-architect",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703",
-      "readAt": "2026-06-22T19:13:39.540Z"
+      "readAt": "2026-06-22T23:38:03.018Z"
     },
     "engineeringLaneAbstraction": {
       "applies": false,
@@ -904,10 +843,10 @@
       "forbiddenAsNextWorkItem": [
         "XR-516"
       ],
-      "localAgileAnchor": true,
+      "localAgileAnchor": false,
       "sessionPriorityLocked": false,
       "engineeringRedirectSuppressed": true,
-      "rule": "Local agile P22 anchor — fleet engineeringRedirect deferred (ACOM-WI-002 / product-repo local next)"
+      "rule": "Foreign fleet redirect deferred — cwd owner repo implements local backlog; switch only when operator overrides"
     },
     "deferredFleetRedirect": {
       "type": "Fleet owner engineering",
@@ -921,7 +860,7 @@
       "because": "Sprint 86 AFM-REG-003; ADR-0007 Class A parallel; Wave 0 owner repos",
       "source": "fleet-live-programmes",
       "placement": "Deferred — not Next work item",
-      "reason": "Owner repo has local P22 next — fleet live programmes are context only"
+      "reason": "Session priority lock active — operator P0 overrides fleet engineeringRedirect"
     },
     "registerWitness": {
       "parallelClassS": [
@@ -1006,11 +945,6 @@
     "statusUpdateSections": {
       "parallelSovereignGates": "- **Class S** · `XR-516` · **Lane:** partnerships · **What:** SPEC §17 co-author sign-off · **Unblock:** ecosystem-os/ops/gtm/inbound-tickets/to-human-xr-516-spec17-signoff-2026-06-12.md · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-INF-014` · **Lane:** partnerships · **What:** ZWCMP DPA + pilot agreement signature · **Unblock:** Sign DPA + pilot PDFs; file under audit/vendor-outreach/zwcmp/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-INF-015` · **Lane:** legal · **What:** Indemnified SLA legal review + insurance quote · **Unblock:** Legal memo + insurance quote on verification-sla-draft.md base · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `BM-ZM-PILOT-01` · **Lane:** partnerships · **What:** Zambia MMMD 60-day pilot contract or countersigned LOI · **Unblock:** Countersign 60-day MMMD pilot contract or LOI; file witness under audit/vendor-outreach/zm-mmmd/ · **blocksIR:** false · **Does not block:** `BM-P1-zambia-pilot` · **Readiness:** `terra-os/audit/evidence/pilot-zambia-readiness-latest.json`\n- **Class S** · `BL-SOC2-01` · **Lane:** compliance · **What:** SOC 2 Type II auditor opinion track · **Unblock:** Auditor publishes Type I/II opinion letter — witness under audit/evidence/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`"
     },
-    "p22SelectionPolicy": {
-      "schema": "gtcx://bridge-os/p22-local-agile-anchor/v1",
-      "rule": "Product repo local next wins — engineeringRedirect moved to deferredFleetRedirect",
-      "localNext": "COMPOSITE-RESTORE-100"
-    },
     "hubScopeGuard": {
       "ok": true,
       "applies": false
@@ -1024,6 +958,6 @@
     "witness": null,
     "error": "baselineos CLI not built"
   },
-  "gitChanged": 33,
+  "gitChanged": 38,
   "authorityClass": "R"
 }

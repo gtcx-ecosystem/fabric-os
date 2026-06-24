@@ -1,8 +1,8 @@
 {
-  "schema": "gtcx://audit/documentation review/v1",
+  "schema": "gtcx://audit/documentation-audit/v1",
   "repo": "fabric-os",
   "repoKind": "infra",
-  "date": "2026-06-17",
+  "date": "2026-06-22",
   "auditType": "documentation-pillar",
   "ok": true,
   "composite100": 100,
@@ -14,14 +14,14 @@
     },
     "technicalExcellence": {
       "score100": 100,
-      "score100Raw": 99,
+      "score100Raw": 96,
       "packTe100": 100,
       "capped": false,
       "source": "fleet-seal100"
     },
     "craft": {
       "score100": 100,
-      "score100Raw": 93,
+      "score100Raw": 89,
       "capped": false,
       "capReasons": [],
       "craftFlags": {
@@ -32,9 +32,9 @@
     },
     "worldClass": {
       "score100": 100,
-      "documentationQuality100": 96,
+      "documentationQuality100": 92,
       "worldClassBar100": 95,
-      "gap100": 0,
+      "gap100": 3,
       "gapLabel": "frontier",
       "references": ["Stripe docs", "Kubernetes docs", "gtcx-docs hub"],
       "source": "fleet-seal100"
@@ -43,8 +43,8 @@
   "forensic": {
     "axes": {
       "structural": 100,
-      "naming": 79,
-      "frontmatter": 97,
+      "naming": 41,
+      "frontmatter": 98,
       "links": 100,
       "agentic": 85
     },
@@ -52,7 +52,7 @@
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
-      "markdownFileCount": 501,
+      "markdownFileCount": 264,
       "brokenLinks": 0,
       "scaffoldFileCount": 0,
       "aiSlopFileCount": 0
@@ -63,17 +63,12 @@
     "openP1": 0,
     "violations": [
       {
-        "packId": "AGENT-OPS",
-        "itemId": "agents-readme",
+        "packId": "GTM-PACK",
+        "itemId": "gtm-dod",
         "severity": "P2",
-        "detail": "missing one of: docs/agents/README.md, agents/README.md, docs/agents/"
+        "detail": "missing demo-walkthrough or deployment-profile"
       }
     ]
   },
-  "fleetSeal100": true,
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "fleetSeal100": true
 }

@@ -1,0 +1,17 @@
+{
+  "$schema": "gtcx://canon-os/ecosystem-ceremony-contract/v1",
+  "contractId": "CANON-CEREMONY-V1",
+  "version": "1.0.0",
+  "upstream": "canon-os/machine/spec/canon-ceremony-contract.json",
+  "protocol": "P60-session-ceremony-artifacts",
+  "consumerCommands": {
+    "check": "pnpm ceremony:check",
+    "checkWrite": "pnpm ceremony:check:write",
+    "closeWrite": "pnpm ceremony:close:write",
+    "critiqueWrite": "pnpm ceremony:critique:write",
+    "checkpointWrite": "pnpm ceremony:checkpoint:write",
+    "verify": "pnpm ceremony:contract:verify",
+    "baselineVerify": "baseline ceremony contract verify"
+  },
+  "witness": "workstream/sessions/ci/session-ceremony-latest.json"
+}

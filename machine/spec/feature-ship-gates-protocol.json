@@ -1,0 +1,21 @@
+{
+  "$schema": "gtcx://canon-os/feature-ship-gates-protocol/v1",
+  "status": "fleet-pin",
+  "fleetNormative": "canon-os/machine/spec/feature-ship-gates-protocol.json",
+  "threeLayerModel": "canon-os/machine/spec/feature-ship-gates-three-layer-model.json",
+  "fleetMonitor": "agile-os/machine/spec/feature-ship-gates-fleet-protocol.json",
+  "referenceImplementation": "gtcx-os/machine/spec/feature-ship-gates-protocol.json",
+  "maturityRingSpec": "gtcx-os/machine/spec/ship-release-tiers.json",
+  "ownerCommands": {
+    "sync": "pnpm pm:feature-matrix:sync",
+    "check": "pnpm pm:ship-gates:check"
+  },
+  "fleetCommands": {
+    "audit": "pnpm --dir ../agile-os ecosystem:feature-ship-gates:fleet:audit:write",
+    "check": "pnpm --dir ../agile-os ecosystem:feature-ship-gates:fleet:check",
+    "intake": "pnpm --dir ../agile-os ecosystem:feature-ship-gates:intake:write"
+  },
+  "repo": "fabric-os",
+  "updated": "2026-06-24",
+  "pinnedAt": "2026-06-24T08:34:55.440Z"
+}

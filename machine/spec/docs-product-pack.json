@@ -109,6 +109,11 @@
       "productRequired": true,
       "requiredSubfolders": ["ux", "roadmap"],
       "optionalSubfolders": []
+    },
+    "platform-runtime": {
+      "productRequired": true,
+      "requiredSubfolders": ["ux", "roadmap"],
+      "optionalSubfolders": []
     }
   },
   "crossReference": {

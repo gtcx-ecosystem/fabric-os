@@ -2,7 +2,7 @@
   "$schema": "gtcx://bridge-os/product-goals/v1",
   "version": "1.0.0",
   "repo": "fabric-os",
-  "tier": "platform",
+  "tier": "platform-runtime",
   "updated": "2026-06-17",
   "vision": {
     "statement": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
@@ -35,6 +35,13 @@
       "outcome": "Fleet integrators can rely on one coherent deploy and observability substrate for staged promotion",
       "measure": "Demo walkthrough evidence and fleet health witnesses remain current",
       "witness": "audit/evidence/demo-readiness-{repo}.json"
+    },
+    {
+      "id": "PG4",
+      "title": "Fleet ops assurance operational",
+      "outcome": "Security, compliance, legal, and all ops lanes run from centralized programme with parallel assurance — product repos never blocked by vendor calendar",
+      "measure": "fleet-ops-assurance:check PASS + bridge ops-lanes-100 17/17",
+      "witness": "audit/evidence/fleet-ops-assurance-check-latest.json"
     }
   ],
   "valueProposition": {
@@ -96,41 +103,49 @@
         "label": "PRD traceability",
         "target": "100% in-flight work traces to prdRef, capabilityId, or activeMilestone.id",
         "witness": "machine/product/prd-index.json"
+      },
+      {
+        "id": "SG4",
+        "label": "Fleet ops assurance programme",
+        "target": "Master harness PASS; central assurance; ops-lanes-100 sealed",
+        "witness": "audit/evidence/fleet-ops-assurance-check-latest.json"
       }
     ]
   },
   "activeMilestone": {
-    "id": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
-    "title": "SECAS-S4-supply-chain",
-    "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
-    "targetDate": "2026-06-15",
-    "programmeId": "PROG-SECAS-ENGINEERING",
-    "prdRefs": ["prd-product-charter"],
-    "headStoryId": "XR-FABRIC-SESSION-OPEN-004",
+    "id": "FOAP-M1-OPERATIONAL",
+    "title": "Fleet ops assurance operational",
+    "shippableOutcome": "All ops functions have owner-routed PRD, harness, and fleet witness; assurance parallel to engineering",
+    "targetDate": "2026-06-24",
+    "programmeId": "PROG-FLEET-OPS-ASSURANCE",
+    "prdRefs": ["pm/spec/fleet-ops-assurance-program.json"],
+    "headStoryId": "FOAP-007",
     "clearanceRegister": "../bridge-os/pm/spec/internal-secops-complianceops-clearance.json",
     "postLaunchExternalSoR": "operations/coordination/post-launch-external-gates.json",
     "acceptanceChecks": [
       {
-        "id": "secops-internal-clearance",
-        "label": "SecOps internal Class R sealed",
-        "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+        "id": "fleet-ops-assurance",
+        "label": "Master fleet ops assurance harness",
+        "witness": "audit/evidence/fleet-ops-assurance-check-latest.json",
         "actual": "PASS"
       },
       {
-        "id": "complianceops-fleet",
-        "label": "ComplianceOps fleet harness",
-        "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
+        "id": "ops-lanes-100",
+        "label": "Bridge ops-lanes-100 rollup",
+        "witness": "../bridge-os/pm/ci/ops-lanes-100/rollup-latest.json",
         "actual": "PASS"
       },
       {
-        "id": "composite-85",
-        "label": "Composite ≥85",
-        "check": "composite85"
+        "id": "central-assurance",
+        "label": "Central assurance programme",
+        "witness": "audit/evidence/central-assurance-program-latest.json",
+        "actual": "PASS"
       },
       {
-        "id": "demo",
-        "label": "Demo walkthrough evidence",
-        "witness": "audit/evidence/demo-readiness-{repo}.json"
+        "id": "legal-friction",
+        "label": "Legal friction register depth",
+        "witness": "audit/evidence/legal-friction-check-latest.json",
+        "actual": "PASS"
       }
     ],
     "headAdvancedAt": "2026-06-17T09:39:41.207Z",

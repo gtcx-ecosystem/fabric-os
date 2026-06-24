@@ -1,17 +1,21 @@
 {
   "$schema": "gtcx://canon-os/docs-operations-pack/v1",
-  "updated": "2026-06-16",
+  "updated": "2026-06-20",
   "initiative": "INIT-DOCS-CORE-IA-V1",
   "title": "Docs operations pack — fabric-os",
   "principle": "Human runbooks and agent ops narrative live under docs/operations/. P29 machine manifests stay under operations/ — link only, never duplicate domain state.",
+  "fabricContract": {
+    "referenceImplRepo": "baseline-os",
+    "opsFunctionProvider": "fabric-os",
+    "referencePath": "docs/operations/",
+    "subfolderContract": "machine/spec/docs-operations-subfolder-contract.json",
+    "consumptionModel": "Local repos CONSUME fabric-os ops-as-a-service (deployment P40, DaaS P41, SECaaS P42, complianceops P50, mlops P52, aiops P53) via operations/fabric-contract.json + coordination/from-fabric-os-*.md — never duplicate. fabric-only provider zones (core-ops, platform-services, secas) forbidden in local repos.",
+    "fabricOnlyZones": ["core-ops", "platform-services", "secas"]
+  },
   "requiredRootFiles": [
     {
       "path": "docs/operations/README.md",
-      "role": "index + cross-ref (foundation ↔ operations ↔ operations/)"
-    },
-    {
-      "path": "docs/operations/FOLDER-SPEC.md",
-      "role": "repo-local mirror of this pack"
+      "role": "index + central spec link (05-operations.json) + cross-ref (foundation ↔ operations ↔ operations/)"
     }
   ],
   "requiredSubfolders": {
@@ -53,64 +57,163 @@
       "optional": true,
       "platformRuntimeOnly": true,
       "nestSpec": "machine/spec/docs-operations-compliance-nest.json"
+    },
+    "repo": {
+      "purpose": "Repo-specific ops config — CONTRIBUTING, SECURITY, hygiene protocol",
+      "allowedDocTypes": ["overview", "runbook"],
+      "required": ["README.md"],
+      "optional": true
+    },
+    "workspace": {
+      "purpose": "Fleet workspace layout and multi-repo Cursor notes",
+      "allowedDocTypes": ["overview", "runbook"],
+      "required": ["README.md"],
+      "optional": true
+    },
+    "templates": {
+      "purpose": "Reusable ops document templates (not agent-init session templates)",
+      "allowedDocTypes": ["overview", "runbook"],
+      "required": ["README.md"],
+      "optional": true
     }
   },
+  "subfolderContractSpec": "machine/spec/docs-operations-subfolder-contract.json",
   "forbiddenAtOperationsRoot": [
     "Duplicate operations/ domain manifests (compliance, security, gtm JSON)",
     "Protocol bodies — belongs in docs/governance/protocols/",
-    "Loose narrative *.md except README.md and FOLDER-SPEC.md when subfolders exist"
+    "Loose narrative *.md except README.md and scorecard.md when subfolders exist"
   ],
+  "profileDefaults": {
+    "requiredRootFiles": ["README.md"],
+    "requiredSubfolders": [],
+    "optionalSubfolders": [
+      "runbooks",
+      "playbooks",
+      "incidents",
+      "on-call",
+      "agent-init",
+      "deployment",
+      "remediation",
+      "coordination",
+      "repo",
+      "workspace",
+      "templates",
+      "monitoring",
+      "runtime"
+    ],
+    "note": "Only README + archive required (consistency with engineering). Zones optional-but-contracted — present with real content, identical format when present. compliance/ is platform-runtime only. fabric-only zones (core-ops, platform-services, secas) forbidden in local repos."
+  },
   "profiles": {
-    "product": {
+    "reference-impl-primitives": {
       "operationsRequired": true,
-      "requiredSubfolders": ["runbooks", "deployment", "agent-init"],
+      "requiredSubfolders": [],
       "optionalSubfolders": [
+        "runbooks",
+        "playbooks",
+        "incidents",
+        "on-call",
+        "agent-init",
+        "deployment",
         "remediation",
         "coordination",
-        "workspace",
         "repo",
-        "protocols",
+        "workspace",
         "templates",
+        "monitoring",
+        "runtime",
         "compliance"
-      ]
+      ],
+      "subfolderContractEnforced": true,
+      "note": "baseline-os — the fixture. Naturally populates the run-the-system zones + SRE zones."
+    },
+    "platform-runtime": {
+      "operationsRequired": true,
+      "requiredSubfolders": [],
+      "optionalSubfolders": [
+        "runbooks",
+        "playbooks",
+        "incidents",
+        "on-call",
+        "agent-init",
+        "deployment",
+        "remediation",
+        "coordination",
+        "repo",
+        "workspace",
+        "templates",
+        "monitoring",
+        "runtime",
+        "compliance",
+        "core-ops",
+        "platform-services",
+        "secas",
+        "fleet-ops-assurance",
+        "protocols"
+      ],
+      "subfolderContractEnforced": true,
+      "complianceNestSpec": "machine/spec/docs-operations-compliance-nest.json",
+      "complianceNestCheck": "pnpm docs:compliance-nest:check",
+      "note": "fabric-os, gtcx-os. compliance/ allowed. fabric-only zones via iaExtensions on fabric-os."
+    },
+    "platform": {
+      "operationsRequired": true,
+      "requiredSubfolders": [],
+      "optionalSubfolders": [
+        "runbooks",
+        "playbooks",
+        "incidents",
+        "on-call",
+        "agent-init",
+        "deployment",
+        "remediation",
+        "coordination",
+        "repo",
+        "workspace",
+        "templates",
+        "monitoring",
+        "runtime"
+      ],
+      "subfolderContractEnforced": true
+    },
+    "product": {
+      "operationsRequired": true,
+      "requiredSubfolders": [],
+      "optionalSubfolders": [
+        "runbooks",
+        "playbooks",
+        "incidents",
+        "on-call",
+        "agent-init",
+        "deployment",
+        "remediation",
+        "coordination",
+        "repo",
+        "workspace",
+        "templates",
+        "monitoring",
+        "runtime"
+      ],
+      "subfolderContractEnforced": true,
+      "note": "14 product repos. Consume fabric-os ops via links — don't host provider zones."
     },
     "fleet-documentation": {
       "operationsRequired": true,
-      "requiredSubfolders": ["runbooks", "agent-init", "coordination"],
-      "optionalSubfolders": ["deployment", "remediation"]
+      "requiredSubfolders": [],
+      "optionalSubfolders": [
+        "runbooks",
+        "agent-init",
+        "coordination",
+        "deployment",
+        "remediation",
+        "playbooks",
+        "incidents",
+        "on-call"
+      ],
+      "subfolderContractEnforced": true
     },
     "constitution-standards": {
       "operationsRequired": false,
       "allowed": "docs/operations/README.md pointer to ecosystem-os + canon-os ops narratives"
-    },
-    "platform": {
-      "operationsRequired": true,
-      "requiredSubfolders": ["runbooks", "deployment", "agent-init"],
-      "optionalSubfolders": [
-        "remediation",
-        "coordination",
-        "workspace",
-        "repo",
-        "protocols",
-        "templates",
-        "compliance"
-      ]
-    },
-    "platform-runtime": {
-      "operationsRequired": true,
-      "extends": "platform",
-      "requiredSubfolders": ["runbooks", "deployment", "agent-init", "compliance"],
-      "optionalSubfolders": [
-        "remediation",
-        "coordination",
-        "workspace",
-        "repo",
-        "protocols",
-        "templates",
-        "compliance"
-      ],
-      "complianceNestSpec": "machine/spec/docs-operations-compliance-nest.json",
-      "complianceNestCheck": "pnpm docs:compliance-nest:check"
     }
   },
   "crossReference": {

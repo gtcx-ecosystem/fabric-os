@@ -2,7 +2,7 @@
   "$schema": "gtcx://docs/sor/v1",
   "schema": "gtcx.docs.sor.v1",
   "repo": "fabric-os",
-  "repoKind": "infra-platform",
+  "repoKind": "platform-runtime",
   "updated": "2026-06-16",
   "narrativeRoot": "docs/",
   "rootSorMap": "config/sor-map.json",

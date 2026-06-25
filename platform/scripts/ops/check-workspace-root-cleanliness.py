@@ -178,6 +178,7 @@ def allowed_root_names(allowlist: dict) -> set[str]:
     names.update(allowlist.get("allowed_files", []))
     names.update(allowlist.get("allowed_directories", []))
     names.update(allowlist.get("allowed_dot_directories", []))
+    names.update(allowlist.get("permissible_on_approval", {}).keys())
     names.update(allowlist.get("deprecated_files", {}).keys())
     return names
 

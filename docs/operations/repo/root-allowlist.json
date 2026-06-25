@@ -54,8 +54,7 @@
     "agile",
     "machine",
     "ops",
-    "pm",
-    "documents"
+    "pm"
   ],
   "allowed_dot_directories": [
     ".github",
@@ -73,7 +72,14 @@
   ],
   "ignored_prefixes": [".", "node_modules"],
   "ignored_exact": ["node_modules", "tsconfig.tsbuildinfo"],
-  "permissible_on_approval": {},
+  "permissible_on_approval": {
+    "documents": {
+      "approvalId": "OPS-PRD-ROUTING-DOCUMENTS-001",
+      "approvedAt": "2026-06-25",
+      "approver": "fabric-os",
+      "rationale": "Generated DaaS print/PDF output (tear sheets) for deal artifacts; non-template root dir approved for fabric-os."
+    }
+  },
   "forbidden_root_names": {
     "00-archive": "Use archive/ (P35 v5).",
     "01-docs": "Use docs/ (P35 v5).",

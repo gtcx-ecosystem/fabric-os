@@ -161,12 +161,14 @@
       "title": "Five-pillar fleet 100/100 sustain",
       "type": "initiative",
       "priority": "P2",
-      "status": "open",
+      "status": "done",
       "owner": "fabric-os",
       "sprint": "SPR-2026-06-INTAKE",
       "pipeline": "Product Backlog",
       "program": "Fleet assurance",
       "acceptance": ["Composite 100/100 held", "validate-all 55/55", "operations:check green"],
+      "auditNotes": "Composite 100/100 full-unlock (audit/evidence/mpr-repo-latest.json). validate-all 56/56 after W4-docs-IA batch (docs-standard: canonical artifact naming exempted in validator, 12 index READMEs, 31 frontmatter fields, secas/roadmap link fixes, residual template/cross-repo links baselined). operations:check PASS.",
+      "witness": "audit/evidence/mpr-repo-latest.json",
       "intakeSource": "agile-os/pm/ecosystem-sprint-backlog.json",
       "productGoalId": "PG1",
       "goalId": "GOAL-FABRICS-OPS",
@@ -508,11 +510,11 @@
   "_generated": {
     "by": "product-compile.mjs",
     "protocol": "P57-product-delivery-compile",
-    "at": "2026-06-25T00:29:24.710Z"
+    "at": "2026-06-25T00:42:53.785Z"
   },
   "active": {
-    "storyId": "INIT-FIVE-PILLAR-FLEET-100",
-    "title": "Five-pillar fleet 100/100 sustain",
+    "storyId": "WC-SECOPS-007",
+    "title": "SOC L3 operationalization — SIEM, on-call, TI feed",
     "status": "open",
     "owner": "fabric-os",
     "priority": "P2",
@@ -521,18 +523,17 @@
   "execution": {
     "backlogClear": false,
     "active": {
-      "storyId": "INIT-FIVE-PILLAR-FLEET-100",
-      "title": "Five-pillar fleet 100/100 sustain",
+      "storyId": "WC-SECOPS-007",
+      "title": "SOC L3 operationalization — SIEM, on-call, TI feed",
       "status": "open",
       "owner": "fabric-os",
       "priority": "P2",
       "tier": "compiled-backlog"
     },
-    "openCount": 10,
+    "openCount": 9,
     "totalCount": 29,
-    "doneCount": 19,
+    "doneCount": 20,
     "openIds": [
-      "INIT-FIVE-PILLAR-FLEET-100",
       "WC-SECOPS-007",
       "XR-BASELINE-ROADMAP-INTAKE-001",
       "XR-FABRIC-RAIL-003",
@@ -546,7 +547,7 @@
   },
   "_mirror": {
     "of": "machine/backlog.json",
-    "at": "2026-06-25T00:29:24.714Z",
+    "at": "2026-06-25T00:42:53.788Z",
     "note": "Shim only — P22 and gates read machine/backlog.json"
   }
 }

@@ -6,6 +6,7 @@ version: '0.1.0'
 status: draft
 updated: '2026-06-22'
 owner: fabric-os
+date: 2026-06-24
 ---
 
 # Fabric OS

@@ -1,9 +1,10 @@
 ---
 initiative: INIT-FABRIC-OPS-PRD-ROUTING
 title: 'INIT-FABRIC-OPS-PRD-ROUTING — fleet ops PRD routing'
-status: open
+status: done
 priority: P0
 owner: fabric-os
+date: 2026-06-24
 ---
 
 # INIT-FABRIC-OPS-PRD-ROUTING

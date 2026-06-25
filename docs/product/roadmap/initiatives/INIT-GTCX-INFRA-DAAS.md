@@ -5,6 +5,7 @@ title: 'INIT-GTCX-INFRA-DAAS — DevOps-as-a-Service control plane'
 status: done
 priority: P0
 owner: fabric-os
+date: 2026-06-24
 ---
 
 # INIT-GTCX-INFRA-DAAS — DevOps-as-a-Service

@@ -15,13 +15,14 @@ infra: []
 experience: []
 commercial: []
 planRef: docs/product/roadmap/features/FEAT-FABRIC-OPS-ASSURANCE.md
+date: 2026-06-24
 ---
 
 # FEAT-FABRIC-OPS-ASSURANCE — engineering contract
 
 Fleet assurance fabric — `fabric:ops:check`, friction registers, attestation evidence paths.
 
-**Plan SoR:** [`../../product/roadmap/features/FEAT-FABRIC-OPS-ASSURANCE.md`](../../product/roadmap/features/FEAT-FABRIC-OPS-ASSURANCE.md)
+**Plan SoR:** [`../../product/roadmap/features/FEAT-FABRIC-OPS-ASSURANCE.md`](../../roadmap/features/FEAT-FABRIC-OPS-ASSURANCE.md)
 
 ## Charter
 

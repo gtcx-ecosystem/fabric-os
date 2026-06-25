@@ -6,10 +6,11 @@ title: 'FEAT-FABRIC-OPS-ASSURANCE — fleet assurance fabric'
 status: in_progress
 priority: P0
 owner: fabric-os
+date: 2026-06-24
 ---
 
 # FEAT-FABRIC-OPS-ASSURANCE
 
 Assurance fabric gates — independent lane verification, friction registers, and fleet `fabric:ops:check` contract surface.
 
-**Canon bundle:** [`../../../canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md`](../../../canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md)
+**Canon bundle:** [`../../../canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md`](../../canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md)

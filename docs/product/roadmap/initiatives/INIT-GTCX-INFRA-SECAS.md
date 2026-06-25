@@ -5,6 +5,7 @@ title: 'INIT-GTCX-INFRA-SECAS — Security-as-a-Service engineering'
 status: done
 priority: P0
 owner: fabric-os
+date: 2026-06-24
 ---
 
 # INIT-GTCX-INFRA-SECAS — Security-as-a-Service

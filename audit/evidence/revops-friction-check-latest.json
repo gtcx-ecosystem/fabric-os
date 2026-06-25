@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/revops-friction-check/v1",
   "opsLane": "RevOps",
-  "checkedAt": "2026-06-17T15:51:40.218Z",
+  "checkedAt": "2026-06-25T10:35:02.048Z",
   "owner": "bridge-os",
   "registerHost": "fabric-os",
   "gates": {
@@ -19,10 +19,5 @@
       "lane": "RevOps"
     }
   },
-  "ok": false,
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "ok": false
 }

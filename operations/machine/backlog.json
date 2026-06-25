@@ -3,7 +3,7 @@
   "repo": "fabric-os",
   "updated": "2026-06-25",
   "syncSource": "pnpm machine:sync",
-  "active": "FB-004",
+  "active": "FB-005",
   "backlogClear": false,
   "stories": [
     {
@@ -32,13 +32,14 @@
     },
     {
       "id": "FB-004",
-      "status": "in_progress",
+      "status": "done",
       "title": "terminal-os MPR compliance unlock (P35 + ops + agentic harness)",
-      "owner": "fabric-os"
+      "owner": "fabric-os",
+      "evidence": "terminal-os MPR composite 99/100 full-unlock"
     },
     {
       "id": "FB-005",
-      "status": "pending",
+      "status": "in_progress",
       "title": "bridge-os MPR compliance unlock (P35 + ops + agentic harness)",
       "owner": "fabric-os"
     },

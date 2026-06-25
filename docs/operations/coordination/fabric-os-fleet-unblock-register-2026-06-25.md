@@ -20,7 +20,7 @@ Master inventory of work where fabric-os is the owning blocker for sibling-repo 
 | FB-001 | markets-os    | IR-006 / PROD-READY-005      | Staging API credential chain + reachable advisory-api     | infra      | A     | P0       | medium | open   |
 | FB-002 | griot-ai      | STORY-GRIOT-HTTPS-001        | ACM cert + HTTPS listener for api.griot.ai                | infra      | A     | P0       | medium | open   |
 | FB-003 | griot-ai      | STORY-GRIOT-LIVE-STAGING-001 | Live staging substrate witness                            | infra      | A     | P1       | medium | open   |
-| FB-004 | terminal-os   | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness | compliance | R     | P1       | small  | open   |
+| FB-004 | terminal-os   | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness | compliance | R     | P1       | large  | done   |
 | FB-005 | bridge-os     | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness | compliance | R     | P1       | small  | open   |
 | FB-006 | agile-os      | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness | compliance | R     | P2       | small  | open   |
 | FB-007 | canon-os      | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness | compliance | R     | P2       | small  | open   |

@@ -3,8 +3,8 @@
   "repo": "fabric-os",
   "updated": "2026-06-25",
   "syncSource": "pnpm machine:sync",
-  "active": null,
-  "backlogClear": true,
+  "active": "FB-004",
+  "backlogClear": false,
   "stories": [
     {
       "id": "DAAS-S3-01",
@@ -28,6 +28,36 @@
       "id": "DAAS-S2",
       "status": "done",
       "title": "Per-repo DaaS cards + ingress matrix publish",
+      "owner": "fabric-os"
+    },
+    {
+      "id": "FB-004",
+      "status": "in_progress",
+      "title": "terminal-os MPR compliance unlock (P35 + ops + agentic harness)",
+      "owner": "fabric-os"
+    },
+    {
+      "id": "FB-005",
+      "status": "pending",
+      "title": "bridge-os MPR compliance unlock (P35 + ops + agentic harness)",
+      "owner": "fabric-os"
+    },
+    {
+      "id": "FB-001",
+      "status": "pending",
+      "title": "markets-os IR-006 staging API credential chain (PROD-READY-005)",
+      "owner": "fabric-os"
+    },
+    {
+      "id": "FB-002",
+      "status": "pending",
+      "title": "griot-ai api.griot.ai HTTPS ACM cert + listener",
+      "owner": "fabric-os"
+    },
+    {
+      "id": "FB-003",
+      "status": "pending",
+      "title": "griot-ai live staging substrate witness",
       "owner": "fabric-os"
     }
   ],

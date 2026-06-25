@@ -1,0 +1,76 @@
+{
+  "schema": "gtcx://fabric-os/fleet-ops-assurance-check/v1",
+  "storyId": "FOAP-007",
+  "initiative": "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
+  "programId": "PROG-FLEET-OPS-ASSURANCE",
+  "checkedAt": "2026-06-24T17:36:14.324Z",
+  "ok": true,
+  "checks": {
+    "programSpec": {
+      "ok": true
+    },
+    "centralAssurance": {
+      "ok": true,
+      "exitCode": 0,
+      "script": "central-assurance:check"
+    },
+    "maturityLane": {
+      "ok": true,
+      "exitCode": 0,
+      "script": "maturity-lane:check"
+    },
+    "opsRouting": {
+      "ok": true,
+      "exitCode": 0,
+      "script": "ops-prd-routing:check"
+    },
+    "legalFriction": {
+      "ok": true,
+      "exitCode": 0,
+      "script": "legal:friction:check"
+    },
+    "legalOps": {
+      "ok": true,
+      "exitCode": 0,
+      "script": "legalops:check"
+    },
+    "legalProgram01Closed": {
+      "ok": true
+    },
+    "frictionRegister": {
+      "ok": true
+    },
+    "frictionBlocksIR": {
+      "ok": true
+    },
+    "bridgeOpsLanes100": {
+      "ok": true
+    },
+    "bridgeLegalProgram": {
+      "ok": true,
+      "exitCode": 0,
+      "script": "ecosystem:legal-program:check"
+    },
+    "bridgeComplianceOps": {
+      "ok": true
+    },
+    "opsLanes100Witness": {
+      "ok": true
+    },
+    "legalOpsFleetWitness": {
+      "ok": true
+    }
+  },
+  "activeMilestone": "FOAP-M1-OPERATIONAL",
+  "headStoryId": "FOAP-007",
+  "blocksIR": false,
+  "blocksGtmStage": false,
+  "dealQualificationOnly": true,
+  "note": "Fleet ops assurance operational rollup — parallel to product engineering",
+  "lane": "externalAssurance",
+  "blocksEngineeringMaturity": false,
+  "blocksIntegratorPilotGtm": false,
+  "blocksAnyRepo": false,
+  "procurementSegment": "enterpriseUsEu",
+  "policy": "GS-MATURITY-LANE-001"
+}

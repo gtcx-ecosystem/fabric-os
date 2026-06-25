@@ -1,0 +1,19 @@
+{
+  "schema": "gtcx://fabric-os/m3-external-certification/v1",
+  "storyId": "BG-10-10",
+  "updated": "2026-06-24T12:00:00.000Z",
+  "phase": "internal_closure_complete",
+  "storyComplete": true,
+  "blocksIR": false,
+  "blocksAnyRepo": false,
+  "lane": "externalAssurance",
+  "blocksEngineeringMaturity": false,
+  "blocksIntegratorPilotGtm": false,
+  "blocksGtmStage": false,
+  "procurementSegment": "enterpriseUsEu",
+  "dealQualificationOnly": true,
+  "policy": "GS-MATURITY-LANE-001",
+  "note": "Vendor pen-test calendar — parallel track; engineering and integrator-pilot GTM continue",
+  "vendorWindow": "2026-06-17..2026-06-21",
+  "witness": "audit/evidence/secas-s4-04-internal-closure-2026-06-17.json"
+}

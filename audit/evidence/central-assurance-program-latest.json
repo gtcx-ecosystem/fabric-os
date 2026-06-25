@@ -1,0 +1,63 @@
+{
+  "schema": "gtcx://fabric-os/central-assurance-program-check/v1",
+  "storyId": "MATURITY-LANE-FAB-005",
+  "policy": "GS-MATURITY-LANE-001",
+  "checkedAt": "2026-06-24T15:16:26.245Z",
+  "ok": true,
+  "checks": {
+    "programSpec": {
+      "ok": true
+    },
+    "fabricBacklog": {
+      "ok": true
+    },
+    "productReposClean": {
+      "ok": true,
+      "detail": "no open assurance stories in product repos"
+    }
+  },
+  "programme": {
+    "id": "INIT-XR-FLEET-MATURITY-LANES",
+    "openFabricAssuranceStories": [],
+    "productRepoAudits": [
+      {
+        "repoId": "terminal-os",
+        "missingBacklog": false,
+        "violations": []
+      },
+      {
+        "repoId": "markets-os",
+        "missingBacklog": false,
+        "violations": []
+      },
+      {
+        "repoId": "terra-os",
+        "missingBacklog": false,
+        "violations": []
+      },
+      {
+        "repoId": "compliance-os",
+        "missingBacklog": false,
+        "violations": []
+      },
+      {
+        "repoId": "ledger-ui",
+        "missingBacklog": false,
+        "violations": []
+      },
+      {
+        "repoId": "gtcx-os",
+        "missingBacklog": false,
+        "violations": []
+      },
+      {
+        "repoId": "exploration-os",
+        "missingBacklog": false,
+        "violations": []
+      }
+    ]
+  },
+  "blocksEngineeringMaturity": false,
+  "blocksIntegratorPilotGtm": false,
+  "lane": "externalAssurance"
+}

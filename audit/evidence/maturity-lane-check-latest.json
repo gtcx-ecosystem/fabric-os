@@ -1,0 +1,64 @@
+{
+  "schema": "gtcx://fabric-os/maturity-lane-check/v1",
+  "storyId": "MATURITY-LANE-FAB-001",
+  "policy": "GS-MATURITY-LANE-001",
+  "checkedAt": "2026-06-24T15:16:25.836Z",
+  "ok": true,
+  "structural": {
+    "policyPin": {
+      "ok": true
+    },
+    "baselineSor": {
+      "ok": true
+    },
+    "witnessContract": {
+      "ok": true
+    },
+    "parallelLaneCheck": {
+      "ok": true,
+      "detail": "secas-parallel-lane-check witness present"
+    }
+  },
+  "assuranceWitnesses": {
+    "checked": 7,
+    "pass": 7,
+    "fail": 0,
+    "results": [
+      {
+        "ok": true,
+        "failures": [],
+        "path": "audit/evidence/ext-inf-002-sow-approval-2026-06-10.json"
+      },
+      {
+        "ok": true,
+        "failures": [],
+        "path": "audit/evidence/legal-friction-check-latest.json"
+      },
+      {
+        "ok": true,
+        "failures": [],
+        "path": "audit/evidence/legalops-check-latest.json"
+      },
+      {
+        "ok": true,
+        "failures": [],
+        "path": "audit/evidence/m3-external-certification-latest.json"
+      },
+      {
+        "ok": true,
+        "failures": [],
+        "path": "audit/evidence/secas-parallel-lane-check-latest.json"
+      },
+      {
+        "ok": true,
+        "failures": [],
+        "path": "audit/evidence/secas-pentest-ingest-check-latest.json"
+      },
+      {
+        "ok": true,
+        "failures": [],
+        "path": "audit/evidence/secas-pentest-remediation-check-latest.json"
+      }
+    ]
+  }
+}

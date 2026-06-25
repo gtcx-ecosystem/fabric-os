@@ -1,0 +1,9 @@
+{
+  "schema": "gtcx://fabric-os/ops-prd-routing-check/v1",
+  "storyId": "OPS-PRD-ROUTING-001",
+  "checkedAt": "2026-06-24T14:03:40.563Z",
+  "ok": true,
+  "laneCount": 17,
+  "registryLaneCount": 17,
+  "errors": []
+}

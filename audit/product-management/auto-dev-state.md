@@ -21,6 +21,13 @@ last_reconciled: 2026-06-17T17:15:00.000Z
 - **Status:** all fabric-os program sprints sealed (DAAS S1–S3 · SECAS S1–S5)
 - **Parallel:** vendor calendar `SECAS-VENDOR-CALENDAR` — `blocksIR: false` · `blocksAnyRepo: false` · deferred-post-launch only
 
+## execute-roadmap reconcile (2026-06-25 — composite restore + gate recovery)
+
+- **COMPOSITE-RESTORE-100:** composite 59 (partial-unlock) → **100 (full-unlock)**. Root cause: compliance quadrant 69 < 85 from two failing P1 checks — `p35-strict-pass` (documents/ allowlist drift + missing CODE_OF_CONDUCT.md) and `agent:work-selection:check` (missing agent-work-selection.md manifest, deleted by `4bc4b723`). Witness: `audit/evidence/mpr-repo-latest.json` composite100=100.
+- **INIT-EXEC-GAP:** **done** — bridge program-office closure bar green (`bridge-os/pm/ci/session-closure-bar-latest.json` 5/5, sessionComplete+executiveReadComplete; XR-KIMI-BRIDGE-FABRIC-CLOSURE-001 done).
+- **validate-all:** 48/56 → **55/56**. Recovered `agent-next-work` traceId contract regression + restored 7 deletion-fallout gate artifacts (sre/rds-live-restore, audit-dr/alerts, soc2-readiness-checklist, cross-repo-agent-log, agent-topology-2026-q3, incident/staging-monitoring-apply).
+- **INIT-FIVE-PILLAR-FLEET-100 (head, open):** composite 100/100 held ✓ · operations:check green ✓ · **validate-all 55/56** — lone remaining gate `docs-standard` (209 violations: missing frontmatter owner/date + subdir README/index across architecture/business/foundation/product/reference/strategy trees). This is **W4-docs-IA** wave-batch debt, not a session regression.
+
 ## execute-roadmap reconcile (2026-06-17 — product roadmap lane isolation)
 
 - **Enforcement:** `pnpm product-roadmap:lane:check:write` **PASS** — external/pilot gates scrubbed from engineering backlog

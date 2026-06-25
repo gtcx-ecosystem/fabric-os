@@ -3,7 +3,7 @@
   "testType": "cross-repo-health-probe",
   "storyId": "S1-13",
   "laneSeparation": "GS-MATURITY-LANE-001",
-  "timestamp": "2026-06-24T13:46:35.670Z",
+  "timestamp": "2026-06-25T10:21:54.730Z",
   "environment": "staging",
   "engineeringHealth": {
     "overall": "PASS",
@@ -24,7 +24,7 @@
       "error": null,
       "body": {
         "status": "up",
-        "timestamp": "2026-06-24T13:45:30.227Z",
+        "timestamp": "2026-06-25T10:20:51.397Z",
         "database": {
           "status": "up",
           "details": {
@@ -46,13 +46,13 @@
         "audit-trail": {
           "status": "up",
           "details": {
-            "lastAppend": "2026-06-24T13:45:30.227Z",
+            "lastAppend": "2026-06-25T10:20:51.397Z",
             "chainVerified": true
           }
         }
       },
       "transport": "fetch",
-      "latencyMs": 1925,
+      "latencyMs": 1707,
       "required": true
     },
     {
@@ -63,7 +63,7 @@
       "error": null,
       "body": {
         "status": "up",
-        "timestamp": "2026-06-24T13:45:30.183Z",
+        "timestamp": "2026-06-25T10:20:51.347Z",
         "database": {
           "status": "up",
           "details": {
@@ -85,13 +85,13 @@
         "audit-trail": {
           "status": "up",
           "details": {
-            "lastAppend": "2026-06-24T13:45:30.183Z",
+            "lastAppend": "2026-06-25T10:20:51.347Z",
             "chainVerified": true
           }
         }
       },
       "transport": "fetch",
-      "latencyMs": 1867,
+      "latencyMs": 1625,
       "required": true
     },
     {
@@ -103,7 +103,7 @@
       "body": {
         "service": "intelligence-sdk",
         "version": "0.1.0",
-        "uptime": 597426,
+        "uptime": 671548,
         "status": "healthy",
         "dependencies": {
           "inference_backend": {
@@ -120,8 +120,8 @@
           "jobs": {
             "anomaly": {
               "enabled": true,
-              "lastRun": "2026-06-24T13:43:23.835Z",
-              "runCount": 1991
+              "lastRun": "2026-06-25T10:18:23.859Z",
+              "runCount": 2238
             },
             "trend": {
               "enabled": true,
@@ -147,7 +147,7 @@
         }
       },
       "transport": "fetch",
-      "latencyMs": 2019,
+      "latencyMs": 1885,
       "required": true
     },
     {
@@ -158,13 +158,24 @@
       "error": "Command failed: kubectl exec -n gtcx-staging deploy/compliance-gateway-staging -- wget -qO- http://127.0.0.1:8500/health\nerror: timed out waiting for the condition\n",
       "body": "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-js ie8 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if gt IE 8]><!--> <html class=\"no-js\" lang=\"en-US\"> <!--<![endif]-->\n<head>\n\n<title>gtcx.trade | 525: SSL handshake failed</title>\n<meta charset=\"UTF-8\" />\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n<meta http-equiv=\"X-UA-Compa",
       "transport": "fetch",
-      "latencyMs": 67101,
+      "latencyMs": 65290,
+      "required": false
+    },
+    {
+      "name": "exploration-os-verifier",
+      "repo": "exploration-os",
+      "url": "https://verify.explorationos.gtcx.trade/sir/",
+      "status": 200,
+      "error": null,
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>GTCX SIR Verifier — ExplorationOS</title>\n    <style>\n      :root {\n        color-scheme: light dark;\n        --bg: #0f172a;\n        --card: #1e293b;\n        --text: #f8fafc;\n        --muted: #94a3b8;\n        --ok: #22c55e;\n        --bad: #ef4444;\n        --warn: #f59e0b;\n      }\n      * {\n        box-sizing: border-box;\n      }\n      body {",
+      "transport": "fetch",
+      "latencyMs": 1625,
       "required": false
     }
   ],
   "summary": {
-    "total": 4,
-    "healthy": 3,
+    "total": 5,
+    "healthy": 4,
     "unhealthy": 1,
     "requiredUnhealthy": 0
   }

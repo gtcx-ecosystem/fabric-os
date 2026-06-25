@@ -61,6 +61,12 @@ const SERVICES = [
       path: '/health',
     },
   },
+  {
+    name: 'exploration-os-verifier',
+    repo: 'exploration-os',
+    url: 'https://verify.explorationos.gtcx.trade/sir/',
+    required: false,
+  },
 ];
 
 async function probeWithCurl(url) {

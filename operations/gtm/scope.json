@@ -1,15 +1,87 @@
 {
   "$schema": "gtcx://workspace/gtm-scope/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-08",
+  "updated": "2026-06-25",
   "penTest": {
-    "inScope": [],
-    "outOfScope": []
+    "inScope": [
+      {
+        "id": "PT-SCOPE-001",
+        "target": "Fleet staging substrate (EKS + AWS af-south-1)",
+        "owner": "fabric-os",
+        "environment": "staging",
+        "evidence": "deploy/terraform/environments/staging"
+      },
+      {
+        "id": "PT-SCOPE-002",
+        "target": "External-secrets operator + IRSA secret sync",
+        "owner": "fabric-os",
+        "environment": "staging",
+        "evidence": "deploy/kubernetes/overlays/staging/markets-os"
+      },
+      {
+        "id": "PT-SCOPE-003",
+        "target": "Shared service fabric APIs and ingress",
+        "owner": "fabric-os",
+        "environment": "staging",
+        "evidence": "deploy/03-platform"
+      }
+    ],
+    "outOfScope": [
+      {
+        "id": "PT-OUT-001",
+        "target": "Product repo application logic",
+        "owner": "product repos",
+        "note": "markets-os, terminal-os, etc. own their own application-layer pen-test scope."
+      },
+      {
+        "id": "PT-OUT-002",
+        "target": "GCP ML bridge",
+        "owner": "fabric-os",
+        "note": "Disabled until Phase 3 per OPS-CLOUD-PLACE-001."
+      }
+    ]
   },
   "soc": {
-    "controlsOwned": []
+    "controlsOwned": [
+      {
+        "id": "SOC-CC6.1",
+        "title": "Fleet IAM and secrets lifecycle",
+        "status": "operational",
+        "evidence": "deploy/terraform/modules/secrets/markets-os.tf"
+      },
+      {
+        "id": "SOC-CC6.6",
+        "title": "Infrastructure change control and CI gates",
+        "status": "operational",
+        "evidence": ".github/workflows"
+      },
+      {
+        "id": "SOC-CC7.2",
+        "title": "Security monitoring and incident response scaffolding",
+        "status": "partial",
+        "evidence": "docs/operations/secas/csirt-operating-model.md"
+      },
+      {
+        "id": "SOC-CC8.1",
+        "title": "Vendor and supply-chain assurance",
+        "status": "operational",
+        "evidence": "audit/evidence/secas-supply-chain-check-latest.json"
+      }
+    ]
   },
   "procurement": {
-    "sor": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/roadmap/gtm/procurement-packet-index.md"
+    "sor": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/roadmap/gtm/procurement-packet-index.md",
+    "activeVendors": [
+      {
+        "name": "AWS",
+        "category": "cloud",
+        "status": "active"
+      },
+      {
+        "name": "pen-test vendor",
+        "category": "security",
+        "status": "pending-selection"
+      }
+    ]
   }
 }

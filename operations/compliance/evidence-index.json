@@ -1,6 +1,47 @@
 {
   "$schema": "gtcx://workspace/compliance-evidence/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-08",
-  "artifacts": []
+  "updated": "2026-06-25",
+  "artifacts": [
+    {
+      "id": "COMP-EV-001",
+      "type": "pillar-witness",
+      "path": "audit/evidence/compliance-pillar-latest.json",
+      "description": "F-PiLLAR compliance quadrant witness",
+      "authorityClass": "R",
+      "fresh": true
+    },
+    {
+      "id": "COMP-EV-002",
+      "type": "security-audit",
+      "path": "audit/evidence/compliance-security-audit-latest.json",
+      "description": "Compliance-oriented security audit rollup",
+      "authorityClass": "R",
+      "fresh": true
+    },
+    {
+      "id": "COMP-EV-003",
+      "type": "composite-witness",
+      "path": "audit/evidence/composite-audit-latest.json",
+      "description": "Composite audit score and production-ready gate",
+      "authorityClass": "R",
+      "fresh": true
+    },
+    {
+      "id": "COMP-EV-004",
+      "type": "documentation-audit",
+      "path": "audit/evidence/documentation-audit-latest.json",
+      "description": "Documentation coverage and freshness audit",
+      "authorityClass": "R",
+      "fresh": true
+    },
+    {
+      "id": "COMP-EV-005",
+      "type": "repo-hygiene",
+      "path": "audit/evidence/repo-hygiene-audit-latest.json",
+      "description": "Repository hygiene and root cleanliness witness",
+      "authorityClass": "R",
+      "fresh": true
+    }
+  ]
 }

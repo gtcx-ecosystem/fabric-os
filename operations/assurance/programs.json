@@ -1,32 +1,37 @@
 {
   "$schema": "gtcx://workspace/assurance-programs-index/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-16",
+  "updated": "2026-06-25",
   "programs": [
     {
       "id": "pen-test",
       "docPath": "docs/operations/runbooks/assurance/pen-test.md",
-      "status": "not-applicable"
+      "status": "in_prep",
+      "note": "Internal prep complete; vendor execution/report is Class S external gate."
     },
     {
       "id": "soc2",
       "docPath": "docs/operations/runbooks/assurance/soc2.md",
-      "status": "not-applicable"
+      "status": "tracking",
+      "note": "SOC2 evidence pipeline operational; SIEM/DPA gaps tracked in compliance/gaps.json."
     },
     {
       "id": "pilot",
       "docPath": "docs/operations/runbooks/assurance/pilot.md",
-      "status": "not-applicable"
+      "status": "active",
+      "note": "Integrator pilot readiness tracked via fleet-unblock register and FB-001."
     },
     {
       "id": "attestation",
       "docPath": "docs/operations/runbooks/assurance/attestation.md",
-      "status": "not-applicable"
+      "status": "active",
+      "note": "Attestation runners and evidence indexes populated; MPR witness current."
     },
     {
       "id": "legal-dpa",
       "docPath": "docs/operations/runbooks/assurance/legal-dpa.md",
-      "status": "not-applicable"
+      "status": "parallel",
+      "note": "Class S legal gates; tracked via legalops-as-a-service and attestation gates."
     }
   ]
 }

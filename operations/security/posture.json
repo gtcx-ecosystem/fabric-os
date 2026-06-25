@@ -1,14 +1,81 @@
 {
   "$schema": "gtcx://workspace/security-posture/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-08",
-  "controls": [],
+  "updated": "2026-06-25",
+  "controls": [
+    {
+      "id": "SEC-CTRL-001",
+      "domain": "fleet-secops",
+      "name": "Security-as-a-Service friction register",
+      "status": "operational",
+      "evidence": "audit/evidence/secas-friction-check-latest.json",
+      "runner": "pnpm secas:friction:check:write",
+      "reviewCycle": "weekly"
+    },
+    {
+      "id": "SEC-CTRL-002",
+      "domain": "governance",
+      "name": "Security approval and authority witness",
+      "status": "operational",
+      "evidence": "audit/evidence/secas-approval-check-latest.json",
+      "runner": "pnpm secas:approval:check:write",
+      "reviewCycle": "weekly"
+    },
+    {
+      "id": "SEC-CTRL-003",
+      "domain": "supply-chain",
+      "name": "Supply-chain and dependency assurance",
+      "status": "operational",
+      "evidence": "audit/evidence/secas-supply-chain-check-latest.json",
+      "runner": "pnpm secas:supply-chain:check:write",
+      "reviewCycle": "weekly"
+    },
+    {
+      "id": "SEC-CTRL-004",
+      "domain": "incident-response",
+      "name": "CSIRT operating model and IR runbook",
+      "status": "operational",
+      "evidence": "audit/evidence/secas-csirt-operating-model-latest.json",
+      "docs": [
+        "docs/operations/secas/csirt-operating-model.md",
+        "docs/operations/secas/runbooks/incident-response.md"
+      ],
+      "runner": "pnpm secas:csirt:check:write",
+      "reviewCycle": "quarterly"
+    },
+    {
+      "id": "SEC-CTRL-005",
+      "domain": "incident-response",
+      "name": "Internal IR drill evidence",
+      "status": "operational",
+      "evidence": "audit/evidence/secas-ir-drill-2026-06-14.json",
+      "reviewCycle": "quarterly"
+    },
+    {
+      "id": "SEC-CTRL-006",
+      "domain": "threat-detection",
+      "name": "Staging anomaly detector scaffold",
+      "status": "operational",
+      "evidence": "platform/tools/anomaly-detector",
+      "docs": ["docs/operations/runbooks/soc-operations.md"],
+      "reviewCycle": "quarterly"
+    },
+    {
+      "id": "SEC-CTRL-007",
+      "domain": "secrets-management",
+      "name": "Fleet staging secret lifecycle (ESO + IRSA)",
+      "status": "in_progress",
+      "evidence": "deploy/terraform/modules/secrets/markets-os.tf",
+      "docs": ["docs/operations/coordination/fabric-os-fleet-unblock-register-2026-06-25.md"],
+      "reviewCycle": "on-change"
+    }
+  ],
   "vulnerabilities": {
     "open": 0,
     "tracking": []
   },
   "incidentHooks": {
-    "runbook": null,
-    "onCall": null
+    "runbook": "docs/operations/secas/runbooks/incident-response.md",
+    "onCall": "bridge-os/pm/spec/fleet-oncall-roster.json"
   }
 }

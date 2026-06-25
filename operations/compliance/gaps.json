@@ -1,8 +1,42 @@
 {
   "$schema": "gtcx://workspace/compliance-gaps/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-08",
-  "gaps": [],
+  "updated": "2026-06-25",
+  "gaps": [
+    {
+      "id": "COMP-GAP-001",
+      "standard": "SOC2-CC6",
+      "title": "L3 SIEM ingest and retention",
+      "status": "tracking",
+      "severity": "P2",
+      "owner": "fabric-os",
+      "blocksIR": false,
+      "note": "L2 SOC operations active; SIEM selection is Class A vendor gate tracked under WC-SECOPS-007.",
+      "evidence": "docs/operations/runbooks/soc-operations.md"
+    },
+    {
+      "id": "COMP-GAP-002",
+      "standard": "SOC2-CC7",
+      "title": "Production pen-test vendor evidence",
+      "status": "parallel",
+      "severity": "P1",
+      "owner": "fabric-os",
+      "blocksIR": true,
+      "note": "Vendor pen-test report is Class S external gate; internal prep complete (SECAS-S2-01).",
+      "evidence": "operations/coordination/post-launch-external-gates.json"
+    },
+    {
+      "id": "COMP-GAP-003",
+      "standard": "SOC2-CC8",
+      "title": "DPA countersignature register",
+      "status": "parallel",
+      "severity": "P1",
+      "owner": "legal",
+      "blocksIR": true,
+      "note": "Data processing agreements remain Class S legal gates; fabric-os tracks via legalops-as-a-service.",
+      "evidence": "docs/operations/legalops-as-a-service.md"
+    }
+  ],
   "sor": {
     "standards": "https://github.com/gtcx-ecosystem/gtcx-docs/tree/main/docs/roadmap/compliance/",
     "soc2": "https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/roadmap/compliance/soc2-type2/"

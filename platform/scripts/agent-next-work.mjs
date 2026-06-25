@@ -52,9 +52,17 @@ const OPS_DOCS_RE =
 const EXTERNAL_RE =
   /\b(human selection|human SOW|CISO decision|Supabase unpause|DNS zone:write|protocols contract|pen-test vendor|npm publish|EXT-INF|legal review|insurance quote|indemnified|DPA|pilot agreement|human signature)\b/i;
 
+/** Assurance-lane stories — P22 head only when explicitly tagged or in_progress */
+const ASSURANCE_LANE_STORY_RE = /^(SECAS-|BG-10-|EXT-INF-|BL-SOC2-)/;
+
 /** Never P22-selectable — post-launch external or internal-human SoR only */
 const POST_LAUNCH_OR_HUMAN_ID_RE =
   /^(EXT-INF-\d+|BG-10-10|BG-10-11|BG-10-10-REPORT|S2-13|H-03|H-05|BL-SOC2-01|BL-OPERATOR|BM-|SECAS-S2-01-INGEST)$/;
+
+function isAssuranceLaneStory(story) {
+  if (ASSURANCE_LANE_STORY_RE.test(story.id)) return true;
+  return /\blane:\s*externalAssurance\b/i.test(story.title ?? '');
+}
 
 function parsePriority(p) {
   const n = Number.parseInt(String(p).replace(/\D/g, ''), 10);
@@ -177,6 +185,7 @@ function parseSessionInProgress(md) {
 
 function isP22Selectable(story) {
   if (POST_LAUNCH_OR_HUMAN_ID_RE.test(story.id)) return false;
+  if (isAssuranceLaneStory(story) && story.status !== 'in_progress') return false;
   return true;
 }
 
@@ -279,15 +288,13 @@ function main() {
   const __compiledP22 = trySelectCompiledBacklogP22(REPO_ROOT, __repoId);
   if (__compiledP22) {
     const __emit = (payload) => {
-      if (typeof finalizeOwnerP22 === 'function') {
-        console.log(JSON.stringify(finalizeOwnerP22(__repoId, payload, { tier: 'product', repoRoot: REPO_ROOT }), null, 2));
-      } else if (typeof finalizeP22Payload === 'function') {
-        console.log(JSON.stringify(finalizeP22Payload(__repoId, payload), null, 2));
-      } else if (typeof emitP22 === 'function') {
-        emitP22(payload);
-      } else {
-        console.log(JSON.stringify(payload, null, 2));
-      }
+      const finalized =
+        typeof finalizeOwnerP22 === 'function'
+          ? finalizeOwnerP22(__repoId, payload, { tier: 'product', repoRoot: REPO_ROOT })
+          : typeof finalizeP22Payload === 'function'
+            ? finalizeP22Payload(__repoId, payload)
+            : payload;
+      console.log(JSON.stringify(attachTrace(finalized), null, 2));
     };
     __emit(__compiledP22);
     process.exit(__compiledP22.ok === false ? 1 : 0);
@@ -363,8 +370,13 @@ function main() {
     communicationPolicy: {
       protocol: '26-agent-proceed-confirmation',
       version: '1.2.0',
-      statusUpdateSections: ['Execution mode', 'Done', 'Next work item', 'Approval needed'],
-      forbiddenStatusUpdateSections: ['Parallel sovereign gates'],
+      statusUpdateSections: [
+        'Execution mode',
+        'Done',
+        'Next work item',
+        'Parallel assurance lane',
+      ],
+      forbiddenStatusUpdateSections: ['Approval needed'],
       forbiddenReplyPatterns: [
         'Your call',
         'Two options',
@@ -383,7 +395,7 @@ function main() {
       `Mark ${story.id} in_progress in docs/operations/agent-work-selection.md before coding.`,
       'Update audit/product-management execution roadmaps and work register when complete.',
       'Refresh audit/product-management/auto-dev-state.md after completion.',
-      'After push/status reports: Status Update (Done → Next priority from this JSON → Approval needed if any), then implement.',
+      'After push/status reports: Status Update (Done → Next work item → Parallel assurance lane when gates open), then implement.',
       'FORBIDDEN: "Your call", "Two options", "Want me to tackle…", "anything on the P1 list?", repo pick menus.',
       'Do not ask the user which story or repo to pick — P22 already selected.',
     ],

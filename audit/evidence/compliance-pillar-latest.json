@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://audit/compliance-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-22",
+  "date": "2026-06-25",
   "score100": 100,
   "published": true,
   "provisional": false,
@@ -577,7 +577,7 @@
           "weight": 30,
           "severity": "P2",
           "optional": false,
-          "detail": "6 items"
+          "detail": "8 items"
         },
         {
           "id": "uat-scenarios",

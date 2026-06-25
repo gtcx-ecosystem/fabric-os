@@ -1,9 +1,13 @@
 {
-  "schema": "gtcx://audit/fleet-diagnostic-snapshot/v1",
+  "schema": "gtcx://audit/fleet-diagnostic-snapshot/v2",
   "repo": "fabric-os",
   "tier": "platform",
-  "refreshedAt": "2026-06-24T09:02:17.922Z",
+  "refreshedAt": "2026-06-25T03:13:25.951Z",
   "sessionPhase": null,
+  "laneSeparation": {
+    "policy": "GS-MATURITY-LANE-001",
+    "gtmStageModel": "GS-GTM-STAGE-002"
+  },
   "diagnostics": {
     "engineering": {
       "score100": 85,
@@ -15,31 +19,104 @@
       "deepCommand": "full-audit skill in owner repo workspace"
     },
     "multiPillar": {
-      "composite100": 100,
-      "trustCap100": 100,
-      "compliance100": 100,
-      "published": true,
-      "witnessPath": "audit/evidence/five-pillar-latest.json",
-      "evaluatedAt": "2026-06-22T23:23:24.581Z",
-      "ageHours": 33.648126127929686,
+      "composite100": 59,
+      "trustCap100": 84,
+      "compliance100": 69,
+      "published": false,
+      "witnessPath": "audit/evidence/mpr-repo-latest.json",
+      "evaluatedAt": "2026-06-25T03:07:35.557Z",
+      "ageHours": 0.09733138712565104,
       "stale": false,
-      "refreshCommand": "pnpm audit:multi-pillar:run --repo <repo> --write"
+      "refreshCommand": "pnpm audit:mpr:repo:run -- --repo <repo> --write"
     },
     "master": {
-      "score10": 10,
-      "score100": 100,
-      "productionReady": true,
-      "gaps": [],
-      "witnessPath": "audit/evidence/composite-audit-latest.json",
-      "ageHours": 33.731770944485135,
+      "score10": 7.5,
+      "score100": 75,
+      "productionReady": false,
+      "gaps": ["ops:check failed", "P35 strict"],
+      "witnessPath": "audit/evidence/master-audit-latest.json",
+      "ageHours": 0.11067718458387586,
       "stale": false,
       "refreshCommand": "pnpm ecosystem:master:audit --repo <repo> --write"
     },
     "gtm": {
+      "gtmStage": "S2",
+      "gtmStageName": "Pilot Ready",
+      "gtmStageStatus": "not_ready",
       "stage": "S2",
       "stageName": "Pilot Ready",
       "status": "not_ready",
-      "score100": 36,
+      "score100": 50,
+      "productGates": {
+        "readme": true,
+        "packageOrMakefile": true,
+        "devEntry": true,
+        "opsCheckPass": true,
+        "agentNextWork": true,
+        "demoWalkthrough": false,
+        "syntheticFixtures": false,
+        "featureMatrix90": false,
+        "deployWitness": false,
+        "billingOrPricingDoc": false,
+        "repeatableOnboarding": false,
+        "selfServeOrNamedCsm": false,
+        "slaDefined": false,
+        "apiVersioned": false,
+        "changelogCadence": true
+      },
+      "procurementAssurance": {
+        "enterpriseUsEu": {
+          "procurementSegment": "enterpriseUsEu",
+          "label": "Enterprise US/EU procurement",
+          "status": "not_ready",
+          "gaps": [
+            "procurementAssurance.enterpriseUsEu:soc2Path",
+            "procurementAssurance.enterpriseUsEu:penTestReport",
+            "procurementAssurance.enterpriseUsEu:dpaTemplate",
+            "procurementAssurance.enterpriseUsEu:privacyPolicy",
+            "procurementAssurance.enterpriseUsEu:ssoPath",
+            "procurementAssurance.enterpriseUsEu:auditLog"
+          ],
+          "gates": {
+            "soc2Path": false,
+            "penTestReport": false,
+            "dpaTemplate": false,
+            "privacyPolicy": false,
+            "ssoPath": false,
+            "auditLog": false
+          }
+        },
+        "government": {
+          "procurementSegment": "government",
+          "label": "Government procurement",
+          "status": "not_ready",
+          "gaps": [
+            "procurementAssurance.government:fedrampPath",
+            "procurementAssurance.government:fipsCrypto",
+            "procurementAssurance.government:dataResidencyUs"
+          ],
+          "gates": {
+            "fedrampPath": false,
+            "fipsCrypto": false,
+            "dataResidencyUs": false
+          }
+        },
+        "defense": {
+          "procurementSegment": "defense",
+          "label": "Defense procurement",
+          "status": "not_ready",
+          "gaps": [
+            "procurementAssurance.defense:airgapPath",
+            "procurementAssurance.defense:sbom",
+            "procurementAssurance.defense:cveClear"
+          ],
+          "gates": {
+            "airgapPath": false,
+            "sbom": false,
+            "cveClear": false
+          }
+        }
+      },
       "gates": {
         "readme": true,
         "packageOrMakefile": true,
@@ -50,12 +127,18 @@
         "syntheticFixtures": false,
         "featureMatrix90": false,
         "deployWitness": false,
-        "privacyPolicy": false,
+        "repeatableOnboarding": false,
         "billingOrPricingDoc": false,
+        "selfServeOrNamedCsm": false,
+        "slaDefined": false,
+        "apiVersioned": false,
+        "changelogCadence": true,
+        "privacyPolicy": false,
         "soc2Path": false,
         "ssoPath": false,
         "auditLog": false,
         "dpaTemplate": false,
+        "penTestReport": false,
         "fedrampPath": false,
         "fipsCrypto": false,
         "dataResidencyUs": false,
@@ -63,17 +146,229 @@
         "sbom": false,
         "cveClear": false
       },
-      "gaps": ["S2:demoWalkthrough", "S2:syntheticFixtures", "S2:featureMatrix90"],
+      "gateSegments": {
+        "readme": {
+          "value": true,
+          "procurementSegment": "integratorPilot"
+        },
+        "packageOrMakefile": {
+          "value": true,
+          "procurementSegment": "integratorPilot"
+        },
+        "devEntry": {
+          "value": true,
+          "procurementSegment": "integratorPilot"
+        },
+        "opsCheckPass": {
+          "value": true,
+          "procurementSegment": "integratorPilot"
+        },
+        "agentNextWork": {
+          "value": true,
+          "procurementSegment": "integratorPilot"
+        },
+        "demoWalkthrough": {
+          "value": false,
+          "procurementSegment": "integratorPilot"
+        },
+        "syntheticFixtures": {
+          "value": false,
+          "procurementSegment": "integratorPilot"
+        },
+        "featureMatrix90": {
+          "value": false,
+          "procurementSegment": "integratorPilot"
+        },
+        "deployWitness": {
+          "value": false,
+          "procurementSegment": "integratorPilot"
+        },
+        "repeatableOnboarding": {
+          "value": false,
+          "procurementSegment": "integratorPilot"
+        },
+        "billingOrPricingDoc": {
+          "value": false,
+          "procurementSegment": "integratorPilot"
+        },
+        "selfServeOrNamedCsm": {
+          "value": false,
+          "procurementSegment": "integratorPilot"
+        },
+        "slaDefined": {
+          "value": false,
+          "procurementSegment": "integratorPilot"
+        },
+        "apiVersioned": {
+          "value": false,
+          "procurementSegment": "integratorPilot"
+        },
+        "changelogCadence": {
+          "value": true,
+          "procurementSegment": "integratorPilot"
+        },
+        "privacyPolicy": {
+          "value": false,
+          "procurementSegment": "enterpriseUsEu"
+        },
+        "soc2Path": {
+          "value": false,
+          "procurementSegment": "enterpriseUsEu"
+        },
+        "ssoPath": {
+          "value": false,
+          "procurementSegment": "enterpriseUsEu"
+        },
+        "auditLog": {
+          "value": false,
+          "procurementSegment": "enterpriseUsEu"
+        },
+        "dpaTemplate": {
+          "value": false,
+          "procurementSegment": "enterpriseUsEu"
+        },
+        "penTestReport": {
+          "value": false,
+          "procurementSegment": "enterpriseUsEu"
+        },
+        "fedrampPath": {
+          "value": false,
+          "procurementSegment": "government"
+        },
+        "fipsCrypto": {
+          "value": false,
+          "procurementSegment": "government"
+        },
+        "dataResidencyUs": {
+          "value": false,
+          "procurementSegment": "government"
+        },
+        "airgapPath": {
+          "value": false,
+          "procurementSegment": "defense"
+        },
+        "sbom": {
+          "value": false,
+          "procurementSegment": "defense"
+        },
+        "cveClear": {
+          "value": false,
+          "procurementSegment": "defense"
+        }
+      },
+      "gaps": [
+        "S2:demoWalkthrough",
+        "S2:syntheticFixtures",
+        "S2:featureMatrix90",
+        "procurementAssurance.enterpriseUsEu:soc2Path",
+        "procurementAssurance.enterpriseUsEu:penTestReport",
+        "procurementAssurance.enterpriseUsEu:dpaTemplate",
+        "procurementAssurance.enterpriseUsEu:privacyPolicy",
+        "procurementAssurance.enterpriseUsEu:ssoPath",
+        "procurementAssurance.enterpriseUsEu:auditLog",
+        "procurementAssurance.government:fedrampPath",
+        "procurementAssurance.government:fipsCrypto",
+        "procurementAssurance.government:dataResidencyUs",
+        "procurementAssurance.defense:airgapPath",
+        "procurementAssurance.defense:sbom",
+        "procurementAssurance.defense:cveClear"
+      ],
       "witnessPath": "audit/evidence/gtm-readiness-latest.json",
       "qualitativeForensic": null,
       "deepAuditRecommended": true,
-      "note": "Machine inference — run /gtm for buyer-grade qualitative assessment"
+      "note": "GTM stage from product gates only; procurementAssurance gaps affect deal qualification, not stage label",
+      "laneSeparation": {
+        "policy": "GS-MATURITY-LANE-001",
+        "gtmStageModel": "GS-GTM-STAGE-002",
+        "normativeSpec": "../baseline-os/pm/spec/maturity-lane-separation.json",
+        "blocksGtmStage": false
+      },
+      "engineeringMaturity": {
+        "lane": "engineeringMaturity",
+        "score100": 84,
+        "status": "prep-pass",
+        "witnessPath": "audit/evidence/mpr-repo-latest.json",
+        "mprPublished": false
+      },
+      "integratorPilotGtm": {
+        "lane": "integratorPilotGtm",
+        "regionDefault": "Africa / Global South",
+        "tierTarget": "GR-T2-ready",
+        "pilotReady": false,
+        "stage": "S2",
+        "stageName": "Pilot Ready",
+        "status": "not_ready",
+        "score100": 50,
+        "gaps": ["S2:demoWalkthrough", "S2:syntheticFixtures", "S2:featureMatrix90"]
+      },
+      "enterpriseProcurementGtm": {
+        "lane": "enterpriseProcurementGtm",
+        "parallelToEngineering": true,
+        "blocksIntegratorPilotGtm": false,
+        "blocksGtmStage": false,
+        "segments": {
+          "enterpriseUsEu": {
+            "procurementSegment": "enterpriseUsEu",
+            "label": "Enterprise US/EU procurement",
+            "status": "not_ready",
+            "gaps": [
+              "procurementAssurance.enterpriseUsEu:soc2Path",
+              "procurementAssurance.enterpriseUsEu:penTestReport",
+              "procurementAssurance.enterpriseUsEu:dpaTemplate",
+              "procurementAssurance.enterpriseUsEu:privacyPolicy",
+              "procurementAssurance.enterpriseUsEu:ssoPath",
+              "procurementAssurance.enterpriseUsEu:auditLog"
+            ],
+            "gates": {
+              "soc2Path": false,
+              "penTestReport": false,
+              "dpaTemplate": false,
+              "privacyPolicy": false,
+              "ssoPath": false,
+              "auditLog": false
+            }
+          },
+          "government": {
+            "procurementSegment": "government",
+            "label": "Government procurement",
+            "status": "not_ready",
+            "gaps": [
+              "procurementAssurance.government:fedrampPath",
+              "procurementAssurance.government:fipsCrypto",
+              "procurementAssurance.government:dataResidencyUs"
+            ],
+            "gates": {
+              "fedrampPath": false,
+              "fipsCrypto": false,
+              "dataResidencyUs": false
+            }
+          },
+          "defense": {
+            "procurementSegment": "defense",
+            "label": "Defense procurement",
+            "status": "not_ready",
+            "gaps": [
+              "procurementAssurance.defense:airgapPath",
+              "procurementAssurance.defense:sbom",
+              "procurementAssurance.defense:cveClear"
+            ],
+            "gates": {
+              "airgapPath": false,
+              "sbom": false,
+              "cveClear": false
+            }
+          }
+        }
+      }
     }
   },
   "rollup": {
-    "avgScore100": 80,
+    "avgScore100": 67,
     "anyStale": true,
     "pilotReady": false,
-    "deployBarMet": true
+    "integratorPilotReady": false,
+    "engineeringMaturityComplete": false,
+    "enterpriseProcurementReady": false,
+    "deployBarMet": false
   }
 }

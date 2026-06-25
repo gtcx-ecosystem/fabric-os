@@ -126,8 +126,5 @@
       "detail": "no top-level docs/specs"
     }
   ],
-  "failed": [
-    "sprawl:docsarchitecture",
-    "sprawl:agents"
-  ]
+  "failed": ["sprawl:docsarchitecture", "sprawl:agents"]
 }

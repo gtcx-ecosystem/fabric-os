@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://baseline-os/docs-ia-check/v1",
-  "generatedAt": "2026-06-22T19:44:47.337Z",
+  "generatedAt": "2026-06-24T17:46:18.074Z",
   "repo": "fabric-os",
   "ok": true,
   "strict": false,
@@ -55,7 +55,7 @@
       "script": "docs-operations-check.mjs",
       "ok": true,
       "exit": 0,
-      "detail": "OK canonical:agent-init/agent-universal-instructions.md — docs/operations/agent-init/agent-universal-instructions.md |  | PASS — 16/16"
+      "detail": "OK fabric-contract:declared — baseline-os → docs/operations/ |  | PASS — 41/41"
     },
     {
       "gateId": "docs:compliance-nest:check",
@@ -67,7 +67,7 @@
       "script": "agents-check.mjs",
       "ok": true,
       "exit": 0,
-      "detail": "agents:check — PASS (33/33)"
+      "detail": "agents:check — PASS (32/32)"
     },
     {
       "gateId": "docs:fractal-mpr:check",

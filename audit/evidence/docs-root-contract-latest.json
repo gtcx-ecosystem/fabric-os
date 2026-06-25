@@ -97,10 +97,7 @@
       "detail": "infra-platform"
     }
   ],
-  "failed": [
-    "readme:central-ia",
-    "readme:root-contract"
-  ],
+  "failed": ["readme:central-ia", "readme:root-contract"],
   "fleetSoR": {
     "iaMap": "github.com/gtcx-ecosystem/canon-os/blob/main/docs/governance/docs-ia/IA-PILLAR-MAP.md",
     "rootContract": "github.com/gtcx-ecosystem/canon-os/blob/main/pm/spec/docs-root-contract.json",

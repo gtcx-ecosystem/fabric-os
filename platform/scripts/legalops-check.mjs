@@ -6,6 +6,7 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { applyExternalAssuranceLane } from './lib/assurance-lane-witness.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const ECOSYSTEM = join(ROOT, '..');
@@ -63,16 +64,16 @@ if (gates.spec.ok) {
 }
 
 const ok = Object.values(gates).every((g) => g.ok);
-const witness = {
+const witness = applyExternalAssuranceLane({
   $schema: 'gtcx://fabric-os/legalops-check-witness/v1',
   updated: new Date().toISOString(),
   repo: 'fabric-os',
-  lane: 'LegalOps',
+  opsLane: 'LegalOps',
   owner: 'fabric-os',
   gates,
   ok,
   fleetWitness: true,
-};
+});
 
 if (WRITE) {
   mkdirSync(dirname(OUT), { recursive: true });

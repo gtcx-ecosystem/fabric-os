@@ -36,5 +36,5 @@
     "nextStrategicMove": "pnpm machine:folder:check && pnpm agent:next-work",
     "auditComposite100": 100
   },
-  "fiveCoreSyncedAt": "2026-06-22"
+  "fiveCoreSyncedAt": "2026-06-25"
 }

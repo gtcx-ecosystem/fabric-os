@@ -8,6 +8,7 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { applyExternalAssuranceLane } from './lib/assurance-lane-witness.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
@@ -77,7 +78,7 @@ const fleet = readJson(FLEET_WITNESS);
 gates.fleetLegalProgram = { ok: fleet?.ok === true };
 
 const ok = Object.values(gates).every((g) => g.ok !== false);
-const witness = {
+const witness = applyExternalAssuranceLane({
   schema: 'gtcx://fabric-os/legal-friction-check/v1',
   protocol: 'P45-LEGAL-AS-A-SERVICE',
   storyId: 'LEGAL-PROGRAM-01',
@@ -85,7 +86,9 @@ const witness = {
   gates,
   itemCount: reg?.items?.length ?? 0,
   ok,
-};
+  blocksIR: false,
+  blocksAnyRepo: false,
+});
 
 if (WRITE) {
   mkdirSync(dirname(OUT), { recursive: true });

@@ -63,10 +63,11 @@
       "storyId": "T46",
       "title": "World-class SecOps gap program (7 items)",
       "ownerRepo": "fabric-os",
-      "status": "open",
+      "status": "done",
       "authority": "R",
       "handoff": "docs/operations/coordination/to-bridge-os-init-world-class-secops-2026-06-14.md",
       "ack": "bridge-os/docs/operations/coordination/from-fabric-os-init-world-class-secops-raise-2026-06-14.md",
+      "witness": "machine/world-class-secops-gaps.json",
       "blocksIR": false
     }
   ],

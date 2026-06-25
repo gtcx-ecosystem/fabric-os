@@ -175,11 +175,21 @@ async function main() {
   const requiredFailed = failed.filter((r) => r.required);
 
   const report = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     testType: 'cross-repo-health-probe',
     storyId: 'S1-13',
+    laneSeparation: 'GS-MATURITY-LANE-001',
     timestamp: new Date().toISOString(),
     environment: 'staging',
+    engineeringHealth: {
+      overall: requiredFailed.length === 0 ? 'PASS' : 'FAIL',
+      note: 'HTTP service probes only — vendor assurance calendar does not affect engineering lane',
+    },
+    parallelAssurance: {
+      lane: 'externalAssurance',
+      blocksEngineeringMaturity: false,
+      note: 'SECAS vendor calendar tracked in fabric-os assurance witnesses — not probed here',
+    },
     overall: requiredFailed.length === 0 ? 'PASS' : 'FAIL',
     services: results,
     summary: {

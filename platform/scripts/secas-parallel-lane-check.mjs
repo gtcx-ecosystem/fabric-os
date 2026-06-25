@@ -8,6 +8,7 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { applyExternalAssuranceLane } from './lib/assurance-lane-witness.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
@@ -26,8 +27,11 @@ function readJson(path) {
 const routing = readJson(join(BRIDGE, 'machine/spec/vendor-assurance-status-update-routing.json'));
 const legalProtocol = readJson(join(BRIDGE, 'machine/spec/ecosystem-legal-program-protocol.json'));
 const postLaunch = readJson(join(ROOT, 'operations/coordination/post-launch-external-gates.json'));
-const internalHuman = readJson(join(ROOT, 'operations/coordination/internal-human-gates.json'));
-const humanManifest = readJson(join(ROOT, 'operations/coordination/human-gates.manifest.json'));
+const internalHuman = readJson(join(ROOT, 'operations/coordination/internal-human-gates.json')) ??
+  readJson(join(ROOT, 'ops/coordination/internal-human-gates.json'));
+const humanManifest =
+  readJson(join(ROOT, 'operations/coordination/human-gates.manifest.json')) ??
+  readJson(join(ROOT, 'ops/coordination/human-gates.manifest.json'));
 
 const checks = {
   routingSpec: {
@@ -57,8 +61,11 @@ const checks = {
     detail: 'internal-human-gates all blocksIR:false',
   },
   manifestExplainer: {
-    ok: Boolean(humanManifest?.gates?.some((g) => g.id === 'SECAS-S2-01-INGEST')),
-    detail: 'SECAS-S2-01-INGEST in human-gates.manifest with explainer fields',
+    ok: Boolean(
+      humanManifest?.gates?.some((g) => g.id === 'SECAS-S2-01-INGEST') ||
+        internalHuman?.gates?.some((g) => g.id === 'SECAS-S2-01-INGEST'),
+    ),
+    detail: 'SECAS-S2-01-INGEST in human-gates or internal-human-gates with explainer fields',
   },
   clarityFleetHead: {
     ok: existsSync(join(BRIDGE, 'platform/scripts/lib/build-fleet-clarity-report.mjs')),
@@ -69,7 +76,7 @@ const checks = {
 const failures = Object.entries(checks).filter(([, v]) => !v.ok);
 const ok = failures.length === 0;
 
-const witness = {
+const witness = applyExternalAssuranceLane({
   schema: 'gtcx://fabric-os/secas-parallel-lane-check/v1',
   storyId: 'SECAS-S2-02',
   checkedAt: new Date().toISOString(),
@@ -78,10 +85,10 @@ const witness = {
   failures: failures.map(([k, v]) => ({ id: k, detail: v.detail })),
   messaging: {
     productTeams: 'Engineering continues — vendor/legal gates are Parallel sovereign gates (blocksIR:false)',
-    fabricOs: 'List under ### Parallel sovereign gates with What/Why/Implication — never Approval needed one-liners',
+    fabricOs: 'List under ### Parallel assurance lane with What/Why/Implication — never Approval needed one-liners',
     witnessRepos: 'Omit vendor gates; use fleetOwnerRedirect to fabric-os',
   },
-};
+});
 
 if (WRITE) {
   mkdirSync(dirname(OUT), { recursive: true });

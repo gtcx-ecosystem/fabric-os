@@ -118,3 +118,15 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "markets_os_namespace" {
+  description = "Kubernetes namespace for markets-os ESO (PROD-READY-005)"
+  type        = string
+  default     = "markets-os-staging"
+}
+
+variable "markets_os_service_account" {
+  description = "Service account for markets-os ESO IRSA"
+  type        = string
+  default     = "markets-os-sa"
+}

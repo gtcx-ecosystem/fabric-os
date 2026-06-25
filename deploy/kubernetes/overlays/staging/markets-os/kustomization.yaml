@@ -1,0 +1,15 @@
+# =============================================================================
+# markets-os-staging — ESO overlay
+# =============================================================================
+# Applies SecretStore + ExternalSecret for markets-os staging API secrets.
+# Prerequisite: Terraform module.secrets markets-os.tf applied and service
+# account markets-os-sa exists in the markets-os-staging namespace.
+# =============================================================================
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: markets-os-staging
+
+resources:
+  - secret-store.yaml
+  - external-secret.yaml

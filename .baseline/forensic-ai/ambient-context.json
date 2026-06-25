@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://baseline-os/forensic-ambient-context/v1",
-  "discoveredAt": "2026-06-25T04:03:54.210Z",
+  "discoveredAt": "2026-06-25T05:35:18.392Z",
   "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
   "repoId": "fabric-os",
   "filesScanned": 180,
@@ -314,7 +314,7 @@
         },
         {
           "path": ".baseline/forensic-ai/ambient-context.json",
-          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `gtcx\\",
+          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `brid\\",
           "weight": 1
         },
         {

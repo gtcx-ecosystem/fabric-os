@@ -1,6 +1,6 @@
 ---
 title: 'Inbound from markets-os: S120-05 staging API preflight response'
-status: open
+status: waiting-on-operator
 date: 2026-06-25
 owner: fabric-os
 document_type: coordination
@@ -59,11 +59,33 @@ Fabric-os acknowledges the escalation in
 4. Start markets-os staging compose stack.
 5. Re-run dry-run and archive passing witness.
 
-## Verification
+## Current status — 2026-06-25
+
+**Not yet completed.** All fabric-os Class R deliverables are in place. The remaining blocker is Class A live-secret population.
+
+### Missing prerequisite + owning action
+
+AWS Secrets Manager secret `gtcx/markets-os/staging/api-keys` exists as a shell, but the following keys still hold placeholder values and require an **authorized operator** to populate:
+
+- `POSTGRES_PASSWORD`
+- `AUTH_JWT_SECRET`
+- `INTERNAL_SERVICE_TOKEN`
+
+**Owning action:**
+
+```bash
+# In fabric-os, with AWS credentials and the required env vars exported:
+export POSTGRES_PASSWORD="<staging-value>"
+export AUTH_JWT_SECRET="<min-32-chars>"
+export INTERNAL_SERVICE_TOKEN="<staging-value>"
+bash deploy/03-platform/scripts/staging/populate-markets-os-staging-sm.sh
+```
+
+### Verification after operator step
 
 ```bash
 # fabric-os
-bash deploy/03-platform/scripts/staging/populate-markets-os-staging-sm.sh
+pnpm markets:staging:verify
 
 # markets-os
 node platform/scripts/staging/populate-env-from-sm.mjs --write
@@ -73,3 +95,17 @@ GTX_DRY_RUN_TIMEOUT_MS=100 node platform/scripts/run-first-deal-dry-run.mjs prep
   --config platform/scripts/fixtures/first-deal-staging-sample.json \
   --state-folder /tmp/markets-os-ttr-preflight-check
 ```
+
+### Evidence
+
+- Latest verification witness: `audit/evidence/markets-os-staging-chain-verify-latest.json`
+- Runbook: `docs/operations/runbooks/markets-os-staging-api-chain.md`
+- Protocol: `docs/operations/protocols/staging-credential-chain.md`
+
+### Close criteria
+
+This handoff closes when:
+
+1. Operator populates the three live secrets in AWS SM.
+2. `pnpm markets:staging:verify` reports PASS in fabric-os.
+3. markets-os runs the dry-run prepare step successfully and archives a passing witness.

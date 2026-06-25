@@ -1,0 +1,53 @@
+{
+  "$schema": "gtcx://fabric-os/central-assurance-program/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-24",
+  "ticket": "XR-FLEET-MATURITY-LANES-001",
+  "title": "Central external assurance programme — fabric-os sole backlog owner",
+  "owner": "fabric-os",
+  "lane": "externalAssurance",
+  "principle": "Pen-test, SOC2, DPA, pilot LOI, co-design signoffs live in fabric-os backlog only. Product repos reference witness IDs; blocksSprintSeal: false.",
+  "initiative": "INIT-XR-FLEET-MATURITY-LANES",
+  "relatedInitiatives": [
+    "INIT-GTCX-INFRA-SECAS",
+    "INIT-ECOSYSTEM-LEGAL-PROGRAM",
+    "INIT-FLEET-OPS-ASSURANCE-PROGRAM"
+  ],
+  "programmes": [
+    {
+      "id": "PROG-SECAS-EXTERNAL",
+      "title": "SECAS vendor calendar + ingest",
+      "stories": [
+        "SECAS-S2-01",
+        "SECAS-S2-01-INGEST",
+        "SECAS-S4-04",
+        "BG-10-10",
+        "BG-10-10-REPORT",
+        "BG-10-11"
+      ],
+      "witnessPrefix": "audit/evidence/secas-",
+      "blocksEngineeringMaturity": false
+    },
+    {
+      "id": "PROG-LEGAL-EXT-INF",
+      "title": "Legal / partnership Class S gates",
+      "stories": ["EXT-INF-002", "EXT-INF-014", "EXT-INF-015", "H-05", "XR-516", "BM-ZM-PILOT-01"],
+      "register": "machine/legal-friction-register.json",
+      "blocksEngineeringMaturity": false
+    },
+    {
+      "id": "PROG-SOC2-PARALLEL",
+      "title": "SOC2 opinion track",
+      "stories": ["BL-SOC2-01", "BG-10-11"],
+      "blocksEngineeringMaturity": false
+    }
+  ],
+  "productRepoRules": {
+    "forbiddenStoryPatterns": ["BG-10-*", "SECAS-S2-01-INGEST", "BL-SOC2-01", "EXT-INF-*"],
+    "allowedReference": "fabric-os witness path or central-assurance-program.json programme id",
+    "blocksSprintSeal": false,
+    "p22Head": "must not select assurance story when owner !== fabric-os unless explicit ceremony"
+  },
+  "rollupWitness": "audit/evidence/central-assurance-program-latest.json",
+  "checkHarness": "pnpm central-assurance:check:write"
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "gtcx://fabric-os/assurance-lane-witness-fields/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-24",
+  "policy": "GS-MATURITY-LANE-001",
+  "ticket": "XR-FLEET-MATURITY-LANES-001",
+  "title": "External assurance witness — required lane separation fields",
+  "owner": "fabric-os",
+  "appliesTo": [
+    "audit/evidence/secas-*-latest.json",
+    "audit/evidence/legal*-latest.json",
+    "audit/evidence/*pentest*-latest.json",
+    "audit/evidence/*soc2*-latest.json",
+    "audit/evidence/m3-external-certification-latest.json"
+  ],
+  "requiredFields": {
+    "lane": {
+      "const": "externalAssurance",
+      "description": "Witness belongs to parallel assurance track — not engineering maturity"
+    },
+    "blocksEngineeringMaturity": {
+      "const": false
+    },
+    "blocksIntegratorPilotGtm": {
+      "const": false
+    },
+    "blocksGtmStage": {
+      "const": false
+    },
+    "blocksIR": {
+      "default": false,
+      "description": "true only for explicit Class S ceremony with blocksIR in human-gates manifest"
+    },
+    "blocksAnyRepo": {
+      "const": false,
+      "description": "Vendor calendar must never freeze sibling repos"
+    },
+    "procurementSegment": {
+      "enum": ["enterpriseUsEu", "government", "defense", null],
+      "default": "enterpriseUsEu",
+      "description": "Deal qualification segment — not integrator-pilot default"
+    },
+    "dealQualificationOnly": {
+      "const": true,
+      "description": "Evidence qualifies regulated buyers — not v1 Africa release predicate"
+    }
+  },
+  "checkHarness": "pnpm maturity-lane:check:write",
+  "witness": "audit/evidence/maturity-lane-check-latest.json",
+  "coordinationVocabulary": {
+    "statusUpdateSection": "Parallel sovereign gates",
+    "forbiddenPhrases": [
+      "GTM blocked at S4",
+      "blocked at Enterprise",
+      "product not mature because pen-test pending"
+    ],
+    "preferredPhrases": [
+      "Parallel assurance lane — fabric-os owner",
+      "Engineering maturity complete; procurement segment open"
+    ]
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "$schema": "gtcx://fabric-os/fleet-ops-assurance-program/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-24",
+  "id": "PROG-FLEET-OPS-ASSURANCE",
+  "initiative": "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
+  "title": "Fleet Ops Assurance Program — centralized security, compliance, legal, and ops-lane operationalization",
+  "owner": "fabric-os",
+  "coordinatorRepo": "bridge-os",
+  "policyPin": {
+    "repo": "baseline-os",
+    "path": "machine/spec/maturity-lane-separation.json",
+    "maturityLaneId": "GS-MATURITY-LANE-001",
+    "gtmStageModelId": "GS-GTM-STAGE-002"
+  },
+  "principle": "All ops functions (SecOps, LegalOps, ComplianceOps, FleetOps, RevOps, …) have owner-routed PRD, friction register, harness, and fleet witness. External assurance never blocks engineering maturity, integrator-pilot GTM, or gtm.stage labels.",
+  "relatedInitiatives": [
+    "INIT-OPS-LANES-OPERATIONALIZE",
+    "INIT-XR-FLEET-MATURITY-LANES",
+    "INIT-ECOSYSTEM-LEGAL-PROGRAM",
+    "INIT-GTCX-INFRA-SECAS",
+    "INIT-GTCX-INFRA-DAAS",
+    "INIT-GTCX-COMPLIANCE-OPS"
+  ],
+  "artifacts": {
+    "programSpec": "pm/spec/fleet-ops-assurance-program.json",
+    "centralAssurance": "pm/spec/central-assurance-program.json",
+    "opsRoutingMatrix": "pm/spec/ops-lane-prd-routing-matrix.json",
+    "opsRegistry": "../bridge-os/pm/spec/ops-programs-registry.json",
+    "opsLanes100Plan": "../bridge-os/pm/spec/ops-lanes-100-plan.json",
+    "opsLanesSprints": "../bridge-os/pm/spec/ops-lanes-sprints.json",
+    "roadmap": "machine/fleet-ops-assurance-roadmap.json",
+    "stories": "machine/fleet-ops-assurance-stories.json",
+    "frictionRegister": "machine/fleet-ops-friction-register.json",
+    "executionRoadmap": "audit/product-management/fleet-ops-assurance-execution-roadmap.md",
+    "masterHarness": "platform/scripts/fleet-ops-assurance-check.mjs",
+    "masterWitness": "audit/evidence/fleet-ops-assurance-check-latest.json"
+  },
+  "harness": {
+    "master": "pnpm fleet-ops-assurance:check:write",
+    "centralAssurance": "pnpm central-assurance:check:write",
+    "maturityLane": "pnpm maturity-lane:check:write",
+    "opsRouting": "pnpm ops-prd-routing:check:write",
+    "legalFriction": "pnpm legal:friction:check:write",
+    "legalOps": "pnpm legalops:check:write",
+    "bridgeOpsLanes100": "pnpm --dir ../bridge-os ecosystem:ops-lanes-100:check:write",
+    "bridgeOpsSeal": "pnpm --dir ../bridge-os ecosystem:ops-lanes-sprints:seal:write",
+    "bridgeLegalProgram": "pnpm --dir ../bridge-os ecosystem:legal-program:check:write",
+    "bridgeComplianceOps": "pnpm --dir ../bridge-os ecosystem:complianceops:check:fleet:write",
+    "fabricOperations": "pnpm fabric:operations:check"
+  },
+  "opsLanes": [
+    {
+      "opsLane": "SecOps",
+      "ownerRepo": "fabric-os",
+      "functionalProduct": "SECaaS",
+      "initiative": "INIT-GTCX-INFRA-SECAS",
+      "frictionRegister": "machine/security-friction-register.json",
+      "roadmap": "machine/secas-roadmap.json",
+      "harness": [
+        "pnpm secas:friction:check:write",
+        "pnpm --dir ../bridge-os ecosystem:secas:rollup:write"
+      ],
+      "witness": "audit/evidence/secas-parallel-lane-check-latest.json",
+      "fleetWitness": "../bridge-os/pm/ci/secas-witness-rollup-latest.json",
+      "maturity": "operational"
+    },
+    {
+      "opsLane": "LegalOps",
+      "ownerRepo": "fabric-os",
+      "initiative": "INIT-ECOSYSTEM-LEGAL-PROGRAM",
+      "frictionRegister": "machine/legal-friction-register.json",
+      "harness": ["pnpm legal:friction:check:write", "pnpm legalops:check:write"],
+      "witness": "audit/evidence/legal-friction-check-latest.json",
+      "fleetWitness": "../bridge-os/pm/ci/ops-lanes-100/legalops-fleet-latest.json",
+      "maturity": "operational"
+    },
+    {
+      "opsLane": "ComplianceOps",
+      "ownerRepo": "compliance-os",
+      "initiative": "INIT-GTCX-COMPLIANCE-OPS",
+      "frictionRegister": "../compliance-os/machine/complianceops-friction-register.json",
+      "harness": [
+        "pnpm --dir ../compliance-os complianceops:check:write",
+        "pnpm --dir ../bridge-os ecosystem:complianceops:check:fleet:write"
+      ],
+      "fleetWitness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
+      "maturity": "operational",
+      "note": "Compliance product controls — fleet witness via bridge; not external assurance backlog owner"
+    },
+    {
+      "opsLane": "FleetOps",
+      "ownerRepo": "fabric-os",
+      "initiative": "INIT-XR-FLEET-MATURITY-LANES",
+      "program": "pm/spec/central-assurance-program.json",
+      "harness": ["pnpm central-assurance:check:write", "pnpm maturity-lane:check:write"],
+      "witness": "audit/evidence/central-assurance-program-latest.json",
+      "maturity": "operational"
+    },
+    {
+      "opsLane": "InfraOps",
+      "ownerRepo": "fabric-os",
+      "functionalProduct": "DaaS",
+      "initiative": "INIT-GTCX-INFRA-DAAS",
+      "frictionRegister": "machine/friction-register.json",
+      "roadmap": "machine/daas-roadmap.json",
+      "harness": ["pnpm daas:fleet:health"],
+      "fleetWitness": "../bridge-os/pm/ci/daas-check-latest.json",
+      "maturity": "operational"
+    },
+    {
+      "opsLane": "DevOps",
+      "ownerRepo": "fabric-os",
+      "functionalProduct": "DaaS",
+      "harness": ["pnpm --dir ../bridge-os ecosystem:daas:check"],
+      "fleetWitness": "../bridge-os/pm/ci/daas-check-latest.json",
+      "maturity": "operational"
+    }
+  ],
+  "centralAssuranceProgrammes": [
+    {
+      "id": "PROG-SECAS-EXTERNAL",
+      "owner": "fabric-os",
+      "register": "machine/security-friction-register.json",
+      "postLaunchSoR": "ops/coordination/post-launch-external-gates.json",
+      "blocksEngineeringMaturity": false
+    },
+    {
+      "id": "PROG-LEGAL-EXT-INF",
+      "owner": "fabric-os",
+      "register": "machine/legal-friction-register.json",
+      "humanGatesSoR": "ops/coordination/internal-human-gates.json",
+      "blocksEngineeringMaturity": false
+    },
+    {
+      "id": "PROG-SOC2-PARALLEL",
+      "owner": "fabric-os",
+      "blocksEngineeringMaturity": false
+    }
+  ],
+  "productRepoRules": {
+    "forbiddenStoryPatterns": [
+      "BG-10-*",
+      "SECAS-S2-01-INGEST",
+      "BL-SOC2-01",
+      "EXT-INF-*",
+      "LEGAL-*"
+    ],
+    "p22Rule": "Assurance stories selectable only in fabric-os unless lane: externalAssurance ceremony",
+    "statusUpdateRule": "Parallel assurance lane — never Next work item in product repos",
+    "blocksSprintSeal": false,
+    "blocksGtmStage": false
+  },
+  "milestones": [
+    {
+      "id": "FOAP-M1-OPERATIONAL",
+      "title": "Fleet ops assurance operational",
+      "targetDate": "2026-06-24",
+      "acceptance": [
+        "pnpm fleet-ops-assurance:check:write PASS",
+        "pnpm --dir ../bridge-os ecosystem:ops-lanes-100:check:write 17/17",
+        "pnpm central-assurance:check:write PASS",
+        "product repos zero forbidden assurance stories"
+      ]
+    }
+  ],
+  "activeMilestone": "FOAP-M1-OPERATIONAL",
+  "headStoryId": "FOAP-007"
+}

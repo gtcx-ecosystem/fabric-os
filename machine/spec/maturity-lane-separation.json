@@ -1,0 +1,13 @@
+{
+  "$schema": "gtcx://fabric-os/maturity-lane-separation-pin/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-24",
+  "sor": "../baseline-os/pm/spec/maturity-lane-separation.json",
+  "policyId": "GS-MATURITY-LANE-001",
+  "ticket": "XR-FLEET-MATURITY-LANES-001",
+  "owner": "fabric-os",
+  "enforcementHarness": "pnpm maturity-lane:check:write",
+  "witness": "audit/evidence/maturity-lane-check-latest.json",
+  "assuranceWitnessContract": "pm/spec/assurance-lane-witness-fields.json",
+  "centralAssuranceProgram": "pm/spec/central-assurance-program.json"
+}

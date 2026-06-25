@@ -3,8 +3,8 @@
   "scope": "repo",
   "id": "fabric-os",
   "repo": "fabric-os",
-  "evaluatedAt": "2026-06-25T04:50:41.824Z",
-  "gitHead": "31106a73ef28ff7b18f6bcf680b29fa5a42e3dca",
+  "evaluatedAt": "2026-06-25T05:28:44.506Z",
+  "gitHead": "ff3fe40a18ff20c1fbbc27f0c2cccdc1a7ecd90e",
   "date": "2026-06-25",
   "weights": {
     "compliance": 0,

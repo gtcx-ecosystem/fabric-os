@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/fabric-assurance/v1",
-  "at": "2026-06-22T23:39:03.711Z",
+  "at": "2026-06-25T05:36:07.619Z",
   "repo": "fabric-os",
   "initiative": "INIT-ASSURANCE-BURN-DOWN",
   "story": "T35",
@@ -158,11 +158,11 @@
       "id": "five-core-full",
       "label": "Fleet foundational + transformational pillars stress",
       "witness": "bridge-os/pm/ci/fleet-pillars-stress-latest.json",
-      "ok": false,
+      "ok": true,
       "skipped": false,
       "command": "pnpm ecosystem:fleet:pillars:stress:write",
-      "exitCode": 1,
-      "output": "e-os composite=59 mode=partial-unlock\nFAIL baseline-os composite=92 mode=partial-unlock\nFAIL bridge-os composite=59 mode=partial-unlock\nFAIL canon-os composite=59 mode=partial-unlock\nOK compliance-os composite=99 mode=full-unlock\nFAIL ecosystem-os composite=59 mode=partial-unlock\nFAIL exploration-os composite=59 mode=partial-unlock\nOK fabric-os composite=100 mode=full-unlock\nFAIL griot-ai composite=59 mode=partial-unlock\nFAIL gtcx-os composite=59 mode=partial-unlock\nFAIL inspection-os composite=31 mode=partial-unlock\nFAIL ledger-os composite=59 mode=partial-unlock\nOK ledger-ui composite=100 mode=full-unlock\nOK markets-os composite=99 mode=full-unlock\nFAIL nyota-ai composite=59 mode=partial-unlock\nOK sensei-os composite=100 mode=full-unlock\nFAIL terminal-os composite=59 mode=partial-unlock\n"
+      "exitCode": 0,
+      "output": "oration-os composite=100 mode=full-unlock\nOK fabric-os composite=100 mode=full-unlock\nFAIL griot-ai composite=59 mode=partial-unlock\nFAIL gtcx-os composite=91 mode=full-unlock\nFAIL inspection-os composite=31 mode=partial-unlock\nFAIL ledger-os composite=58 mode=partial-unlock\nOK ledger-ui composite=100 mode=full-unlock\nFAIL markets-os composite=91 mode=full-unlock\nFAIL nyota-ai composite=59 mode=partial-unlock\nFAIL sensei-os composite=100 mode=full-unlock\nFAIL terminal-os composite=59 mode=partial-unlock\nFAIL terra-os composite=91 mode=full-unlock\nFAIL venture-os composite=59 mode=partial-unlock\nFAIL veritas-ai composite=59 mode=partial-unlock\n\nStress: fullUnlock=9/20 compliance<85=11 noRubric=2\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-pillars-stress-latest.json\n"
     },
     {
       "id": "uat-independent",
@@ -172,7 +172,7 @@
       "skipped": false,
       "command": "pnpm ecosystem:fleet:uat:run",
       "exitCode": 1,
-      "output": "\n> bridge-os@0.1.0 ecosystem:fleet:uat:run /Users/amanianai/Sites/gtcx-ecosystem/bridge-os\n> node platform/scripts/ecosystem/ecosystem-fleet-uat.mjs --all --quick --write\n\n"
+      "output": "\"name\": \"nyota-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"sensei-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terminal-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"terra-os\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"venture-os\",\n      \"session\": {\n        \"ok\": true,\n        \"skipped\": true\n      },\n      \"ok\": true\n    },\n    {\n      \"name\": \"veritas-ai\",\n      \"session\": {\n        \"ok\": true,\n        \"code\": 0\n      },\n      \"ok\": true\n    }\n  ],\n  \"ok\": false\n}\n ELIFECYCLE  Command failed with exit code 1.\n"
     }
   ],
   "blockingSatisfaction": {

@@ -1,13 +1,14 @@
 {
   "schema": "gtcx://baseline-os/forensic-parse-artifact/v1",
   "programId": "FORENSIC-PARSE-001",
-  "parsedAt": "2026-06-25T04:03:54.052Z",
+  "parsedAt": "2026-06-25T05:35:18.340Z",
   "repo": "fabric-os",
   "corpus": {
     "docs": {
       "filesScanned": 400,
       "paths": [
         "docs/CHANGELOG.md",
+        "docs/FOLDER-SPEC.md",
         "docs/INDEX.md",
         "docs/README.md",
         "docs/agents/README.md",
@@ -21,9 +22,11 @@
         "docs/architecture/decisions/README.md",
         "docs/architecture/diagrams/FOLDER-SPEC.md",
         "docs/architecture/diagrams/README.md",
+        "docs/architecture/in-repo/FOLDER-SPEC.md",
         "docs/architecture/in-repo/README.md",
         "docs/architecture/integration/FOLDER-SPEC.md",
         "docs/architecture/integration/README.md",
+        "docs/architecture/integration/narrative/FOLDER-SPEC.md",
         "docs/architecture/integration/narrative/README.md",
         "docs/architecture/integration/narrative/legacy-README.md",
         "docs/architecture/narratives/README.md",
@@ -83,10 +86,7 @@
         "docs/business/research/README.md",
         "docs/business/research/capital-markets-playbook.md",
         "docs/business/research/ecosystem-overview.md",
-        "docs/business/research/funding-analysis.md",
-        "docs/business/research/industry-transformation.md",
-        "docs/business/research/master-voice.md",
-        "docs/business/research/research-portfolio-blueprint.md"
+        "docs/business/research/funding-analysis.md"
       ],
       "initiativeIds": [
         "INIT-DOCS-FOUNDATION-IA-V1",
@@ -113,9 +113,6 @@
         "XR-201",
         "XR-ID",
         "XR-101",
-        "XR-401",
-        "XR-050",
-        "XR-202",
         "INIT-AGENT-TOOL-SCOUT",
         "XR-BRIDGE-TOOL-SCOUT-001",
         "INIT-XR-FLEET-MATURITY-LANES",
@@ -143,16 +140,16 @@
       ]
     },
     "sessions": {
-      "ledgerCount": 39,
+      "ledgerCount": 43,
       "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-sensei-os/agent-transcripts/d4d220c7-adda-4a34-b714-6a8292bde5d8/d4d220c7-adda-4a34-b714-6a8292bde5d8.jsonl",
-      "transcriptLines": 764,
+      "transcriptLines": 771,
       "userQueryCount": 30
     }
   },
   "layerBindings": {
     "persona": {
       "primary": "platform-engineer",
-      "confidence": 0.8048780487804879,
+      "confidence": 0.7777777777777778,
       "candidates": [
         {
           "personaId": "platform-engineer",
@@ -160,7 +157,7 @@
         },
         {
           "personaId": "platform-architect",
-          "weight": 16
+          "weight": 20
         }
       ]
     },
@@ -344,13 +341,10 @@
       "INIT-XR-FLEET-MATURITY-LANES",
       "XR-000",
       "XR-004",
-      "XR-050",
       "XR-101",
       "XR-104",
       "XR-201",
-      "XR-202",
       "XR-302",
-      "XR-401",
       "XR-402",
       "XR-507",
       "XR-508",
@@ -501,7 +495,7 @@
       "text": "Dominant persona signal: platform-engineer",
       "source": "sessions+transcript",
       "refs": ["platform-engineer"],
-      "confidence": 0.8048780487804879
+      "confidence": 0.7777777777777778
     },
     {
       "id": "lang:docs:foundation:check",

@@ -1,0 +1,38 @@
+{
+  "repo": "fabric-os",
+  "date": "2026-06-25",
+  "score": 10,
+  "productionReady": true,
+  "gaps": [],
+  "checks": {
+    "baselineConfig": {
+      "ok": true,
+      "sor": true,
+      "stub": true
+    },
+    "ops": {
+      "ok": true,
+      "code": 0,
+      "out": "> fabric-os@0.1.0 ops:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> pnpm operations:check\n\n\n> fabric-os@0.1.0 operations:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> pnpm workspace:check && pnpm check:workspace-root-cleanliness:strict\n\n\n> fabric-os@0.1.0 workspace:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node platform/scripts/workspace/check.mjs\n\nworkspace:root OK\nworkspace:coordination OK\nworkspace:compliance OK\nworkspace:gtm OK\nworkspace:attestation OK\nworkspace:product-management OK\nworkspace:security OK\nworkspace:assurance-programs OK\nworkspace:audit OK\nworkspace:operations OK\nworkspace:readmes OK\nworkspace:agents OK\nworkspace:legal OK\n\n> fabric-os@0.1.0 check:workspace-root-cleanliness:strict /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> python3"
+    },
+    "session": {
+      "ok": true,
+      "detail": "session ran"
+    },
+    "p35Strict": {
+      "ok": true,
+      "detail": "pass"
+    },
+    "agentic": {
+      "ok": true
+    },
+    "mcp": {
+      "ok": true,
+      "detail": "optional product"
+    },
+    "gitPush": {
+      "ok": true,
+      "detail": "To https://github.com/gtcx-ecosystem/fabric-os.git\n   fa575193..abae3142  HEAD -"
+    }
+  }
+}

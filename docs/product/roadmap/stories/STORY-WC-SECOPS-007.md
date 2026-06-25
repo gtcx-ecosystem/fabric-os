@@ -2,7 +2,7 @@
 storyId: WC-SECOPS-007
 initiativeId: INIT-WORLD-CLASS-SECOPS
 title: SOC L3 operationalization — SIEM, on-call, TI feed
-status: open
+status: done
 priority: P2
 owner: fabric-os
 lane: engineeringMaturity
@@ -19,9 +19,11 @@ Close WC-07 gap: operational SIEM ingest, on-call paging, and threat-intel feed 
 
 ## Acceptance
 
-- [ ] `pnpm secas:csirt:check:write` PASS (structural + drill)
-- [ ] `fleet-threat-register` TI entries sourced from live feed stub
-- [ ] On-call roster linked in csirt-operating-model.md
+- [x] `pnpm secas:csirt:check:write` PASS (structural + drill)
+- [x] `fleet-threat-register` TI entries sourced from live feed stub (`threatIntelFeed` 1, provider `ti-feed-tbd`)
+- [x] On-call roster linked in csirt-operating-model.md (rotation table + HROps registry SoR)
+
+> SIEM vendor live-feed wiring is Class A (vendor SOW) — tracked separately; stub feed satisfies L3 structural acceptance.
 
 ## QA
 

@@ -13,6 +13,7 @@ const FRICTION_ID = 'SEC-CSIRT-01';
 const IR_RUNBOOK = join(ROOT, 'docs/operations/secas/runbooks/incident-response.md');
 const OPERATING_MODEL = join(ROOT, 'docs/operations/secas/csirt-operating-model.md');
 const SOC_OPS_CANDIDATES = [
+  join(ROOT, 'docs/operations/runbooks/soc-operations.md'),
   join(ROOT, 'docs/operations/soc-operations.md'),
   join(ROOT, 'docs/operations/core-ops/batch-b/soc-operations.md'),
 ];

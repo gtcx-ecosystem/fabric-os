@@ -11,7 +11,12 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
 const REGISTER = join(BRIDGE, 'machine/spec/fleet-threat-register.json');
 const RISK_REGISTER = join(BRIDGE, 'machine/spec/fleet-risk-register.json');
-const SOC = join(ROOT, 'docs/operations/soc-operations.md');
+const SOC_CANDIDATES = [
+  join(ROOT, 'docs/operations/runbooks/soc-operations.md'),
+  join(ROOT, 'docs/operations/soc-operations.md'),
+  join(ROOT, 'docs/operations/core-ops/batch-b/soc-operations.md'),
+];
+const SOC = SOC_CANDIDATES.find((p) => existsSync(p)) ?? SOC_CANDIDATES[0];
 const ANOMALY = join(ROOT, 'platform/tools/anomaly-detector');
 const OUT = join(ROOT, 'audit/evidence/fleet-threat-check-latest.json');
 const WRITE = process.argv.includes('--write');

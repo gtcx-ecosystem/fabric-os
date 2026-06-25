@@ -2,7 +2,7 @@
   "$schema": "gtcx://pm/backlog/v1",
   "version": "1.0.0",
   "repo": "fabric-os",
-  "updated": "2026-06-24",
+  "updated": "2026-06-25",
   "activeMilestone": {
     "id": "FOAP-M1-OPERATIONAL",
     "title": "Fleet ops assurance operational",
@@ -517,11 +517,11 @@
   "_generated": {
     "by": "product-compile.mjs",
     "protocol": "P57-product-delivery-compile",
-    "at": "2026-06-24T17:40:17.174Z"
+    "at": "2026-06-25T00:29:24.710Z"
   },
   "active": {
-    "storyId": "INIT-EXEC-GAP",
-    "title": "Executive execution gap seal reconcile",
+    "storyId": "INIT-FIVE-PILLAR-FLEET-100",
+    "title": "Five-pillar fleet 100/100 sustain",
     "status": "open",
     "owner": "fabric-os",
     "priority": "P2",
@@ -530,18 +530,17 @@
   "execution": {
     "backlogClear": false,
     "active": {
-      "storyId": "INIT-EXEC-GAP",
-      "title": "Executive execution gap seal reconcile",
+      "storyId": "INIT-FIVE-PILLAR-FLEET-100",
+      "title": "Five-pillar fleet 100/100 sustain",
       "status": "open",
       "owner": "fabric-os",
       "priority": "P2",
       "tier": "compiled-backlog"
     },
-    "openCount": 11,
+    "openCount": 10,
     "totalCount": 29,
-    "doneCount": 18,
+    "doneCount": 19,
     "openIds": [
-      "INIT-EXEC-GAP",
       "INIT-FIVE-PILLAR-FLEET-100",
       "WC-SECOPS-007",
       "XR-BASELINE-ROADMAP-INTAKE-001",

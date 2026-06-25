@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://pm/initiatives/v1",
   "version": "1.2.0",
-  "updated": "2026-06-23",
+  "updated": "2026-06-25",
   "repo": "fabric-os",
   "initiatives": [
     {
@@ -18,7 +18,7 @@
     {
       "id": "INIT-FABRIC-OPS-PRD-ROUTING",
       "title": "INIT-FABRIC-OPS-PRD-ROUTING — fleet ops PRD routing",
-      "status": "open",
+      "status": "done",
       "priority": "P0",
       "ownerRepo": "fabric-os",
       "protocol": "P57-product-delivery-compile",
@@ -35,6 +35,19 @@
       "completedAt": "2026-06-12",
       "laneId": "I",
       "parentInitiative": "INIT-GTCX-TRADE-ECOSYSTEM-LANES"
+    },
+    {
+      "id": "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
+      "title": "Fleet Ops Assurance Program",
+      "status": "in_progress",
+      "priority": "P0",
+      "ownerRepo": "fabric-os",
+      "protocol": "P57-product-delivery-compile",
+      "parentInitiative": null,
+      "goalIds": [],
+      "planRef": "docs/product/roadmap/initiatives/INIT-FLEET-OPS-ASSURANCE-PROGRAM.md",
+      "shippableOutcome": null,
+      "_compiledFrom": "docs/product/roadmap/initiatives/INIT-FLEET-OPS-ASSURANCE-PROGRAM.md"
     },
     {
       "id": "INIT-GTCX-INFRA-DAAS",
@@ -73,11 +86,24 @@
       "handoff": "docs/operations/coordination/from-ecosystem-strategy-to-fabric-os-trade-lanes-2026-06-12.md",
       "ticket": "XR-FABRIC-TRADE-LANES-001",
       "witness": "audit/evidence/fabric-lanes-check-latest.json"
+    },
+    {
+      "id": "INIT-XR-FLEET-MATURITY-LANES",
+      "title": "INIT-XR-FLEET-MATURITY-LANES — assurance lane enforcement (fabric-os)",
+      "status": "open",
+      "priority": "P0",
+      "ownerRepo": "fabric-os",
+      "protocol": "P57-product-delivery-compile",
+      "parentInitiative": null,
+      "goalIds": [],
+      "planRef": "docs/product/roadmap/initiatives/INIT-XR-FLEET-MATURITY-LANES.md",
+      "shippableOutcome": "fabric-os centrally owns external assurance (SECAS, LegalOps, SOC2 calendar) as a **parallel lane** — engineering and integrator-pilot GTM never downgrade because vendor or legal events are pending.",
+      "_compiledFrom": "docs/product/roadmap/initiatives/INIT-XR-FLEET-MATURITY-LANES.md"
     }
   ],
   "_generated": {
     "by": "product-compile.mjs",
     "protocol": "P57-product-delivery-compile",
-    "at": "2026-06-23T13:23:19.671Z"
+    "at": "2026-06-25T00:29:24.702Z"
   }
 }

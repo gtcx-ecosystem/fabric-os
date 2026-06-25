@@ -1,7 +1,48 @@
 {
   "$schema": "gtcx://workspace/audit-evidence/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-08",
-  "artifacts": [],
+  "updated": "2026-06-25",
+  "artifacts": [
+    {
+      "id": "AUD-WIT-001",
+      "type": "mpr-witness",
+      "path": "audit/evidence/mpr-repo-latest.json",
+      "description": "Latest multi-pillar repo audit witness",
+      "witnessType": "smoke-json",
+      "fresh": true
+    },
+    {
+      "id": "AUD-WIT-002",
+      "type": "composite-audit",
+      "path": "audit/evidence/composite-audit-latest.json",
+      "description": "Composite audit production-ready gate",
+      "witnessType": "smoke-json",
+      "fresh": true
+    },
+    {
+      "id": "AUD-WIT-003",
+      "type": "documentation-audit",
+      "path": "audit/evidence/documentation-audit-latest.json",
+      "description": "Documentation coverage and link-cleanliness audit",
+      "witnessType": "smoke-json",
+      "fresh": true
+    },
+    {
+      "id": "AUD-WIT-004",
+      "type": "p35-layout",
+      "path": "audit/evidence/p35-layout-check-latest.json",
+      "description": "P35 v5 strict layout witness",
+      "witnessType": "smoke-json",
+      "fresh": true
+    },
+    {
+      "id": "AUD-WIT-005",
+      "type": "fleet-snapshot",
+      "path": "audit/evidence/fleet-clean-audit-2026-06-25.json",
+      "description": "Fleet compliance unlock snapshot",
+      "witnessType": "smoke-json",
+      "fresh": true
+    }
+  ],
   "witnessTypes": ["smoke-json", "screenshot", "deployment-proof", "credentialed-run"]
 }

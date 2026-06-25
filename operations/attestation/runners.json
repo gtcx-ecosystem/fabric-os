@@ -1,7 +1,50 @@
 {
   "$schema": "gtcx://workspace/attestation-runners/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-08",
-  "runners": [],
+  "updated": "2026-06-25",
+  "runners": [
+    {
+      "id": "FABRIC-OPS-CHECK",
+      "command": "pnpm fabric:operations:check",
+      "purpose": "Fleet ops contract and harness gate",
+      "authorityClass": "R",
+      "output": "audit/evidence/fabric-ops-lanes-11pr-latest.json"
+    },
+    {
+      "id": "SECAS-FRICTION",
+      "command": "pnpm secas:friction:check:write",
+      "purpose": "Security-as-a-Service friction register witness",
+      "authorityClass": "R",
+      "output": "audit/evidence/secas-friction-check-latest.json"
+    },
+    {
+      "id": "SECAS-CSIRT",
+      "command": "pnpm secas:csirt:check:write",
+      "purpose": "CSIRT operating model check",
+      "authorityClass": "R",
+      "output": "audit/evidence/secas-csirt-operating-model-latest.json"
+    },
+    {
+      "id": "AAAS-FRICTION",
+      "command": "pnpm aaas:friction:check:write",
+      "purpose": "Audit-as-a-Service friction check",
+      "authorityClass": "R",
+      "output": "audit/evidence/aaas-friction-check-latest.json"
+    },
+    {
+      "id": "DAAS-CARDS",
+      "command": "pnpm daas:cards:check:write",
+      "purpose": "DevOps-as-a-Service card tracker",
+      "authorityClass": "R",
+      "output": "audit/evidence/daas-cards-check-latest.json"
+    },
+    {
+      "id": "MPR-REPO-AUDIT",
+      "command": "node ../bridge-os/platform/scripts/ecosystem/run-mpr-repo-audit.mjs --repo fabric-os --write",
+      "purpose": "Multi-pillar repo audit witness",
+      "authorityClass": "R",
+      "output": "audit/evidence/mpr-repo-latest.json"
+    }
+  ],
   "note": "gtcx-agentic only: populate XR-401 / INF-86 runner commands; other repos leave empty array"
 }

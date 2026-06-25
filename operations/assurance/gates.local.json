@@ -1,11 +1,40 @@
 {
   "$schema": "gtcx://coordination/human-gates-local/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-08",
+  "updated": "2026-06-25",
   "ecosystemManifest": "https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/01-docs/06-coordination/human-gates.manifest.json",
   "ecosystemRegister": "https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/coordination/human-external-blocker-register-2026-06.md",
   "framework": "https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/assurance-agent-framework.md",
-  "gates": [],
-  "siblingWitness": [],
+  "gates": [
+    {
+      "id": "ASSURANCE-FB-001",
+      "class": "A",
+      "domain": "assurance",
+      "title": "markets-os staging API credential chain assurance",
+      "status": "in_progress",
+      "owner": "authorized-operator",
+      "note": "Assurance witness pending operator secret population and markets-os dry-run.",
+      "evidence": "docs/operations/coordination/fabric-os-fleet-unblock-register-2026-06-25.md"
+    },
+    {
+      "id": "ASSURANCE-PENTEST",
+      "class": "S",
+      "domain": "assurance",
+      "title": "Independent pen-test report",
+      "status": "parallel",
+      "owner": "vendor",
+      "note": "External assurance gate; fabric-os owns ingest scaffolding.",
+      "evidence": "operations/coordination/post-launch-external-gates.json"
+    }
+  ],
+  "siblingWitness": [
+    {
+      "id": "INIT-XR-FLEET-MATURITY-LANES",
+      "repo": "multiple",
+      "title": "Cross-repo fleet maturity lane program",
+      "status": "open",
+      "evidence": "audit/evidence/central-assurance-program-latest.json"
+    }
+  ],
   "_instructions": "Populate gates that apply to this repo. Empty arrays are valid. Migrate from docs/operations/human-gates.local.json if present."
 }

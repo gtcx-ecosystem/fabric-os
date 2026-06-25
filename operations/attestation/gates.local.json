@@ -1,11 +1,77 @@
 {
   "$schema": "gtcx://coordination/human-gates-local/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-08",
+  "updated": "2026-06-25",
   "ecosystemManifest": "https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/01-docs/06-coordination/human-gates.manifest.json",
   "ecosystemRegister": "https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/coordination/human-external-blocker-register-2026-06.md",
   "framework": "https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/docs/operations/assurance-agent-framework.md",
-  "gates": [],
-  "siblingWitness": [],
+  "gates": [
+    {
+      "id": "FB-001",
+      "class": "A",
+      "domain": "security",
+      "title": "markets-os staging API credential chain population",
+      "status": "in_progress",
+      "owner": "authorized-operator",
+      "note": "IaC/ESO/runbooks delivered; live secrets (POSTGRES_PASSWORD, AUTH_JWT_SECRET, INTERNAL_SERVICE_TOKEN) require operator population.",
+      "evidence": "docs/operations/coordination/fabric-os-fleet-unblock-register-2026-06-25.md"
+    },
+    {
+      "id": "FB-002",
+      "class": "A",
+      "domain": "security",
+      "title": "griot-ai HTTPS ACM certificate and listener",
+      "status": "open",
+      "owner": "authorized-operator",
+      "note": "ACM cert provisioning and HTTPS listener config for api.griot.ai.",
+      "evidence": "docs/operations/coordination/fabric-os-fleet-unblock-register-2026-06-25.md"
+    },
+    {
+      "id": "FB-003",
+      "class": "A",
+      "domain": "assurance",
+      "title": "griot-ai live staging substrate witness",
+      "status": "open",
+      "owner": "authorized-operator",
+      "note": "Live staging smoke witness after FB-002 completion.",
+      "evidence": "docs/operations/coordination/fabric-os-fleet-unblock-register-2026-06-25.md"
+    },
+    {
+      "id": "LEGAL-DPA-001",
+      "class": "S",
+      "domain": "legal",
+      "title": "Data processing agreement countersignature",
+      "status": "open",
+      "owner": "legal",
+      "note": "Class S — agent tracks only; cannot self-approve.",
+      "evidence": "docs/operations/legalops-as-a-service.md"
+    },
+    {
+      "id": "PENTEST-001",
+      "class": "S",
+      "domain": "gtm",
+      "title": "Production pen-test vendor report",
+      "status": "parallel",
+      "owner": "vendor",
+      "note": "External vendor gate; internal prep complete (SECAS-S2-01).",
+      "evidence": "operations/coordination/post-launch-external-gates.json"
+    }
+  ],
+  "siblingWitness": [
+    {
+      "id": "XR-MKT-PROTOCOL-NATIVE-001-GT",
+      "repo": "markets-os",
+      "title": "Golden Transaction trace — markets-os brokerage staging deploy",
+      "status": "open",
+      "evidence": "docs/operations/coordination/outbound/to-markets-os-brokerage-staging-gt-trace-2026-06-12.md"
+    },
+    {
+      "id": "XR-MKT-TRADEPASS-001",
+      "repo": "markets-os",
+      "title": "TradePass qualified counterparty programme coordination",
+      "status": "open",
+      "evidence": "docs/operations/coordination/outbound/to-markets-os-xr-mkt-tradepass-ack-2026-06-12.md"
+    }
+  ],
   "_instructions": "Populate gates that apply to this repo. Empty arrays are valid. Migrate from docs/operations/human-gates.local.json if present."
 }

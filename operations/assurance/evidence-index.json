@@ -1,8 +1,49 @@
 {
   "$schema": "gtcx://workspace/assurance-evidence/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-08",
-  "artifacts": [],
+  "updated": "2026-06-25",
+  "artifacts": [
+    {
+      "id": "ASSUR-EV-001",
+      "type": "central-program",
+      "path": "audit/evidence/central-assurance-program-latest.json",
+      "description": "Central assurance program cross-repo witness",
+      "authorityClass": "R",
+      "fresh": true
+    },
+    {
+      "id": "ASSUR-EV-002",
+      "type": "aaas-friction",
+      "path": "audit/evidence/aaas-friction-check-latest.json",
+      "description": "Audit-as-a-Service friction check",
+      "authorityClass": "R",
+      "fresh": true
+    },
+    {
+      "id": "ASSUR-EV-003",
+      "type": "daas-cards",
+      "path": "audit/evidence/daas-cards-check-latest.json",
+      "description": "DevOps-as-a-Service card tracker witness",
+      "authorityClass": "R",
+      "fresh": true
+    },
+    {
+      "id": "ASSUR-EV-004",
+      "type": "world-class-pillar",
+      "path": "audit/evidence/world-class-pillar-latest.json",
+      "description": "World-class pillar witness",
+      "authorityClass": "R",
+      "fresh": true
+    },
+    {
+      "id": "ASSUR-EV-005",
+      "type": "fleet-snapshot",
+      "path": "audit/evidence/fleet-clean-audit-2026-06-25.json",
+      "description": "Fleet compliance unlock snapshot",
+      "authorityClass": "R",
+      "fresh": true
+    }
+  ],
   "writePaths": ["docs/operations/evidence/", "audit/evidence/"],
   "forbidden": ["secrets", "unsigned-legal-pdf", "pii-field-captures"]
 }

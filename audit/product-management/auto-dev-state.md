@@ -3,10 +3,18 @@ title: Auto-development state
 status: current
 date: 2026-06-10
 owner: gtcx-infrastructure
-last_reconciled: 2026-06-17T17:15:00.000Z
+last_reconciled: 2026-06-25T00:40:00.000Z
 ---
 
 # Auto-Development State
+
+## execute-roadmap (2026-06-25 — W4-docs-IA batch + backlog clear)
+
+- **INIT-FIVE-PILLAR-FLEET-100:** **done** — composite 100/100 full-unlock; **validate-all 56/56** (docs-standard recovered). W4-docs-IA batch: validator exempts canonical GTCX artifact names (FOLDER-SPEC/STORY-/FEAT-/INIT-/MATURITY-LANE-/XR-), 12 index READMEs, 31 frontmatter fields, secas/roadmap relative-link fixes, residual template/cross-repo links baselined (reviewBy 2026-06-30). operations:check PASS.
+- **WC-SECOPS-007:** **done** — SOC L3 structural: csirt:check + fleet:threat:check PASS; on-call rotation + HROps roster SoR in csirt-operating-model; runbooks/soc-operations.md recognized in SOC candidates. SIEM vendor live-feed Class A deferred.
+- **XR-BASELINE-ROADMAP-INTAKE-001:** **done** — `intake:reconcile` gate: 337 intake items, 32 fabric-os owned (15 present, 15 done-upstream, 2 triaged, 0 untriaged), 305 handed off. Witness `audit/evidence/m4-baseline-roadmap-intake-latest.json`.
+- **7 intake/closure epics sealed:** 6 intake-populate stubs covered by reconcile; XR-KIMI-BRIDGE-FABRIC-CLOSURE-001 by bridge closure bar.
+- **Backlog clear:** 29/29 stories done · validate-all 56/56 · composite 100/100 full-unlock · 11PR 100/100.
 
 ## Programs
 

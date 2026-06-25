@@ -1,39 +1,41 @@
 {
   "schema": "gtcx://canon-os/gtm-progress-report/v1",
   "repo": "fabric-os",
-  "generatedAt": "2026-06-23T15:06:10.455Z",
+  "generatedAt": "2026-06-25T06:49:14.701Z",
   "activeMilestone": {
-    "id": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
-    "title": "SECAS-S4-supply-chain",
-    "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
-    "targetDate": "2026-06-15",
-    "programmeId": "PROG-SECAS-ENGINEERING",
-    "prdRefs": ["prd-product-charter"],
-    "headStoryId": "XR-FABRIC-SESSION-OPEN-004",
+    "id": "FOAP-M1-OPERATIONAL",
+    "title": "Fleet ops assurance operational",
+    "shippableOutcome": "All ops functions have owner-routed PRD, harness, and fleet witness; assurance parallel to engineering",
+    "targetDate": "2026-06-24",
+    "programmeId": "PROG-FLEET-OPS-ASSURANCE",
+    "prdRefs": ["pm/spec/fleet-ops-assurance-program.json"],
+    "headStoryId": "FOAP-007",
     "clearanceRegister": "../bridge-os/pm/spec/internal-secops-complianceops-clearance.json",
     "postLaunchExternalSoR": "operations/coordination/post-launch-external-gates.json",
     "acceptanceChecks": [
       {
-        "id": "secops-internal-clearance",
-        "label": "SecOps internal Class R sealed",
-        "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+        "id": "fleet-ops-assurance",
+        "label": "Master fleet ops assurance harness",
+        "witness": "audit/evidence/fleet-ops-assurance-check-latest.json",
         "actual": "PASS"
       },
       {
-        "id": "complianceops-fleet",
-        "label": "ComplianceOps fleet harness",
-        "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
+        "id": "ops-lanes-100",
+        "label": "Bridge ops-lanes-100 rollup",
+        "witness": "../bridge-os/pm/ci/ops-lanes-100/rollup-latest.json",
         "actual": "PASS"
       },
       {
-        "id": "composite-85",
-        "label": "Composite ≥85",
-        "check": "composite85"
+        "id": "central-assurance",
+        "label": "Central assurance programme",
+        "witness": "audit/evidence/central-assurance-program-latest.json",
+        "actual": "PASS"
       },
       {
-        "id": "demo",
-        "label": "Demo walkthrough evidence",
-        "witness": "audit/evidence/demo-readiness-{repo}.json"
+        "id": "legal-friction",
+        "label": "Legal friction register depth",
+        "witness": "audit/evidence/legal-friction-check-latest.json",
+        "actual": "PASS"
       }
     ],
     "headAdvancedAt": "2026-06-17T09:39:41.207Z",
@@ -50,20 +52,20 @@
     }
   ],
   "roadmap": {
-    "initiatives": 6,
-    "features": 6,
-    "stories": 25,
+    "initiatives": 8,
+    "features": 7,
+    "stories": 29,
     "tasks": 0,
     "uatLinked": 0
   },
   "backlog": {
-    "totalItems": 25,
+    "totalItems": 29,
     "gtmTaggedPct": 100,
     "estimatedPct": 100,
     "ownerAssignedPct": 100
   },
   "readinessSummary": {
     "status": "pass",
-    "score100": 100
+    "score100": 94.7
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://canon-os/gtm-readiness-witness/v1",
   "repo": "fabric-os",
-  "generatedAt": "2026-06-23T15:06:10.455Z",
+  "generatedAt": "2026-06-25T06:49:14.702Z",
   "profile": "platform",
   "dimensions": [
     {
@@ -16,7 +16,7 @@
     },
     {
       "id": "forensicSpecs",
-      "score": 100,
+      "score": 94.7,
       "pass": true
     },
     {

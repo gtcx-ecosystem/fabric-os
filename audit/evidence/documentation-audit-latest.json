@@ -13,8 +13,8 @@
       "source": "documentation-pack"
     },
     "technicalExcellence": {
-      "score100": 97,
-      "score100Raw": 97,
+      "score100": 98,
+      "score100Raw": 98,
       "packTe100": 100,
       "capped": false,
       "source": "pack+forensic-links"
@@ -31,10 +31,10 @@
       "source": "forensic-doc-standard"
     },
     "worldClass": {
-      "score100": 97,
-      "documentationQuality100": 92,
+      "score100": 98,
+      "documentationQuality100": 93,
       "worldClassBar100": 95,
-      "gap100": 3,
+      "gap100": 2,
       "gapLabel": "frontier",
       "references": ["Stripe docs", "Kubernetes docs", "gtcx-docs hub"],
       "source": "documentation-quality-vs-global-bar"
@@ -43,7 +43,7 @@
   "forensic": {
     "axes": {
       "structural": 100,
-      "naming": 41,
+      "naming": 43,
       "frontmatter": 98,
       "links": 100,
       "agentic": 85
@@ -52,7 +52,7 @@
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
-      "markdownFileCount": 312,
+      "markdownFileCount": 328,
       "brokenLinks": 0,
       "scaffoldFileCount": 0,
       "aiSlopFileCount": 0

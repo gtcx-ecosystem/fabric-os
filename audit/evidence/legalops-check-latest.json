@@ -1,8 +1,8 @@
 {
   "$schema": "gtcx://fabric-os/legalops-check-witness/v1",
-  "updated": "2026-06-22T22:21:10.496Z",
+  "updated": "2026-06-24T13:45:17.300Z",
   "repo": "fabric-os",
-  "lane": "LegalOps",
+  "opsLane": "LegalOps",
   "owner": "fabric-os",
   "gates": {
     "spec": {
@@ -34,5 +34,14 @@
     }
   },
   "ok": true,
-  "fleetWitness": true
+  "fleetWitness": true,
+  "lane": "externalAssurance",
+  "blocksEngineeringMaturity": false,
+  "blocksIntegratorPilotGtm": false,
+  "blocksGtmStage": false,
+  "blocksIR": false,
+  "blocksAnyRepo": false,
+  "procurementSegment": "enterpriseUsEu",
+  "dealQualificationOnly": true,
+  "policy": "GS-MATURITY-LANE-001"
 }

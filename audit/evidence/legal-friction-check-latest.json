@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/legal-friction-check/v1",
   "protocol": "P45-LEGAL-AS-A-SERVICE",
   "storyId": "LEGAL-PROGRAM-01",
-  "checkedAt": "2026-06-18T17:09:05.054Z",
+  "checkedAt": "2026-06-24T13:45:17.571Z",
   "gates": {
     "register": {
       "ok": true
@@ -41,9 +41,13 @@
   },
   "itemCount": 4,
   "ok": true,
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "blocksIR": false,
+  "blocksAnyRepo": false,
+  "lane": "externalAssurance",
+  "blocksEngineeringMaturity": false,
+  "blocksIntegratorPilotGtm": false,
+  "blocksGtmStage": false,
+  "procurementSegment": "enterpriseUsEu",
+  "dealQualificationOnly": true,
+  "policy": "GS-MATURITY-LANE-001"
 }

@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/secas-parallel-lane-check/v1",
   "storyId": "SECAS-S2-02",
-  "checkedAt": "2026-06-17T17:15:14.530Z",
+  "checkedAt": "2026-06-24T13:45:17.028Z",
   "ok": true,
   "checks": {
     "routingSpec": {
@@ -30,7 +30,7 @@
     },
     "manifestExplainer": {
       "ok": true,
-      "detail": "SECAS-S2-01-INGEST in human-gates.manifest with explainer fields"
+      "detail": "SECAS-S2-01-INGEST in human-gates or internal-human-gates with explainer fields"
     },
     "clarityFleetHead": {
       "ok": true,
@@ -40,12 +40,16 @@
   "failures": [],
   "messaging": {
     "productTeams": "Engineering continues — vendor/legal gates are Parallel sovereign gates (blocksIR:false)",
-    "fabricOs": "List under ### Parallel sovereign gates with What/Why/Implication — never Approval needed one-liners",
+    "fabricOs": "List under ### Parallel assurance lane with What/Why/Implication — never Approval needed one-liners",
     "witnessRepos": "Omit vendor gates; use fleetOwnerRedirect to fabric-os"
   },
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "lane": "externalAssurance",
+  "blocksEngineeringMaturity": false,
+  "blocksIntegratorPilotGtm": false,
+  "blocksGtmStage": false,
+  "blocksIR": false,
+  "blocksAnyRepo": false,
+  "procurementSegment": "enterpriseUsEu",
+  "dealQualificationOnly": true,
+  "policy": "GS-MATURITY-LANE-001"
 }

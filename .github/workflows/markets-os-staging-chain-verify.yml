@@ -12,13 +12,14 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       - name: Verify markets-os staging chain
         id: verify
         env:
           AWS_REGION: af-south-1
         run: |
+          # Writes local witness + hub witness in bridge-os/pm/ci/
           node platform/scripts/staging/verify-markets-os-staging-chain.mjs --json > audit/evidence/markets-os-staging-chain-verify-latest.json || true
           cat audit/evidence/markets-os-staging-chain-verify-latest.json
 

@@ -81,6 +81,12 @@ const ALLOWED_UPPERCASE_NAMES = new Set([
 const ADR_PATTERN = /^adr-\d+/i;
 // Experience registry IDs (EXR-NNN) and GitBook SUMMARY are approved naming exceptions.
 const EXR_PATTERN = /^exr-\d+/i;
+// Canonical GTCX artifacts use uppercase ID prefixes by ecosystem convention:
+// P35/P33 folder specs (FOLDER-SPEC.md) and roadmap work items
+// (STORY-/FEAT-/INIT-/EPIC-/TASK-/BUG-/GOAL-/PROG-/MATURITY-LANE-/XR-...).
+// These IDs are referenced by machine roadmaps and must not be lowercased.
+const GTCX_ARTIFACT_PATTERN =
+  /^(FOLDER-SPEC\.md$|(STORY|FEAT|INIT|EPIC|TASK|BUG|GOAL|PROG|MATURITY-LANE|XR)-)/;
 
 // ---------------------------------------------------------------------------
 // Utilities
@@ -98,6 +104,7 @@ function isAllowedUppercase(basename) {
   if (ALLOWED_UPPERCASE_NAMES.has(basename)) return true;
   if (ADR_PATTERN.test(basename)) return true;
   if (EXR_PATTERN.test(basename)) return true;
+  if (GTCX_ARTIFACT_PATTERN.test(basename)) return true;
   if (basename === 'SUMMARY.md') return true;
   return false;
 }

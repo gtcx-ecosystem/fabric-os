@@ -37,6 +37,8 @@
     "pilot:golden-transaction-substrate:write": "node platform/scripts/pilot-golden-transaction-substrate.mjs --write",
     "protocol:markets:verifier:populate": "bash deploy/03-platform/scripts/staging/populate-markets-protocol-verifier-sm.sh",
     "protocol:markets:verifier:populate:dry-run": "bash deploy/03-platform/scripts/staging/populate-markets-protocol-verifier-sm.sh --dry-run",
+    "markets:staging:verify": "node platform/scripts/staging/verify-markets-os-staging-chain.mjs",
+    "markets:staging:verify:write": "node platform/scripts/staging/verify-markets-os-staging-chain.mjs --write",
     "protocol:verifier:staging:build-push": "bash deploy/03-platform/scripts/staging/build-push-protocols-pnv2.sh",
     "protocol:verifier:staging:build-push:dry-run": "bash deploy/03-platform/scripts/staging/build-push-protocols-pnv2.sh --dry-run",
     "protocol:verifier:staging:apply-env": "node deploy/03-platform/scripts/staging/apply-protocols-verifier-env.mjs",

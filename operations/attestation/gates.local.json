@@ -13,8 +13,8 @@
       "title": "markets-os staging API credential chain population",
       "status": "in_progress",
       "owner": "authorized-operator",
-      "note": "IaC/ESO/runbooks delivered; live secrets (POSTGRES_PASSWORD, AUTH_JWT_SECRET, INTERNAL_SERVICE_TOKEN) require operator population.",
-      "evidence": "docs/operations/coordination/fabric-os-fleet-unblock-register-2026-06-25.md"
+      "note": "IaC/ESO/runbooks/verification delivered; live secrets (POSTGRES_PASSWORD, AUTH_JWT_SECRET, INTERNAL_SERVICE_TOKEN) require operator population. Verify with pnpm markets:staging:verify.",
+      "evidence": "docs/operations/runbooks/markets-os-staging-api-chain.md"
     },
     {
       "id": "FB-002",

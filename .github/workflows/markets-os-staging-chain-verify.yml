@@ -1,0 +1,32 @@
+name: markets-os staging chain verify
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily at 08:00 SAST (06:00 UTC)
+    - cron: '0 6 * * *'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify markets-os staging chain
+        id: verify
+        env:
+          AWS_REGION: af-south-1
+        run: |
+          node platform/scripts/staging/verify-markets-os-staging-chain.mjs --json > audit/evidence/markets-os-staging-chain-verify-latest.json || true
+          cat audit/evidence/markets-os-staging-chain-verify-latest.json
+
+      - name: Report status
+        run: |
+          if node platform/scripts/staging/verify-markets-os-staging-chain.mjs > /dev/null 2>&1; then
+            echo "markets-os staging chain: READY"
+          else
+            echo "markets-os staging chain: NOT READY (see evidence artifact)"
+            exit 1
+          fi

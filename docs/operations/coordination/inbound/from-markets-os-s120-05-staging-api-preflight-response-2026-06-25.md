@@ -43,6 +43,11 @@ Fabric-os acknowledges the escalation in
 4. **markets-os integration script**:
    - `markets-os/platform/scripts/staging/populate-env-from-sm.mjs --write`
 
+5. **Verification script + runbook**:
+   - `pnpm markets:staging:verify`
+   - `docs/operations/runbooks/markets-os-staging-api-chain.md`
+   - `docs/operations/protocols/staging-credential-chain.md`
+
 ## Class A operator steps remaining
 
 1. Export required secrets in operator shell:

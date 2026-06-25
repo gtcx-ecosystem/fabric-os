@@ -1,0 +1,49 @@
+{
+  "schema": "gtcx://fabric-os/markets-os-staging-chain-verify/v1",
+  "protocol": "FB-001 / PROD-READY-005",
+  "checkedAt": "2026-06-25T11:20:58.945Z",
+  "secretId": "gtcx/markets-os/staging/api-keys",
+  "region": "af-south-1",
+  "gates": [
+    {
+      "id": "aws-secret-shell",
+      "label": "AWS Secrets Manager shell exists",
+      "ok": false,
+      "error": "Command failed: aws secretsmanager describe-secret --secret-id gtcx/markets-os/staging/api-keys --region af-south-1 --output json 2>/dev/null"
+    },
+    {
+      "id": "aws-secret-values",
+      "label": "AWS SM secret has required keys populated",
+      "ok": false,
+      "placeholders": [],
+      "error": "Command failed: aws secretsmanager get-secret-value --secret-id gtcx/markets-os/staging/api-keys --region af-south-1 --output json 2>/dev/null"
+    },
+    {
+      "id": "eso-secretstore",
+      "label": "ESO SecretStore exists in markets-os-staging",
+      "ok": false,
+      "error": "Command failed: kubectl get secretstore markets-os-aws-secrets -n markets-os-staging -o json 2>/dev/null"
+    },
+    {
+      "id": "eso-externalsecret",
+      "label": "ESO ExternalSecret exists in markets-os-staging",
+      "ok": false,
+      "error": "Command failed: kubectl get externalsecret markets-os-secrets -n markets-os-staging -o json 2>/dev/null"
+    },
+    {
+      "id": "k8s-secret",
+      "label": "Synthesized K8s secret markets-os-secrets exists",
+      "ok": false,
+      "error": "Command failed: kubectl get secret markets-os-secrets -n markets-os-staging -o json 2>/dev/null"
+    },
+    {
+      "id": "markets-integration-script",
+      "label": "markets-os populate-env-from-sm.mjs present",
+      "ok": true,
+      "detail": {
+        "path": "../markets-os/platform/scripts/staging/populate-env-from-sm.mjs"
+      }
+    }
+  ],
+  "ok": false
+}

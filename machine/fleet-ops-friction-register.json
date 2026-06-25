@@ -1,0 +1,131 @@
+{
+  "$schema": "gtcx://fabric-os/fleet-ops-friction-register/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-24",
+  "program": "Fleet Ops Assurance Program",
+  "initiative": "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
+  "owner": "fabric-os",
+  "principle": "Rollup of parallel assurance + human gates — blocksIR false; never product P22 head",
+  "harness": {
+    "rollup": "pnpm fleet-ops-assurance:check:write",
+    "secas": "machine/security-friction-register.json",
+    "legal": "machine/legal-friction-register.json",
+    "compliance": "../compliance-os/machine/complianceops-friction-register.json",
+    "postLaunch": "ops/coordination/post-launch-external-gates.json",
+    "internalHuman": "ops/coordination/internal-human-gates.json"
+  },
+  "items": [
+    {
+      "id": "FOAF-SECAS-VENDOR",
+      "priority": "P0",
+      "status": "open",
+      "title": "Vendor pen-test report delivery + ingest ceremony",
+      "programme": "PROG-SECAS-EXTERNAL",
+      "opsLane": "SecOps",
+      "class": "A",
+      "blocksIR": false,
+      "blocksGtmStage": false,
+      "lane": "externalAssurance",
+      "gates": ["BG-10-10", "BG-10-10-REPORT", "SECAS-S2-01-INGEST"],
+      "owner": "fabric-os",
+      "witness": "ops/coordination/post-launch-external-gates.json",
+      "acceptance": "Vendor report ingested; secas:pentest:ingest:check:write PASS"
+    },
+    {
+      "id": "FOAF-SOC2-OPINION",
+      "priority": "P1",
+      "status": "open",
+      "title": "SOC 2 Type I auditor opinion letter",
+      "programme": "PROG-SOC2-PARALLEL",
+      "opsLane": "SecOps",
+      "class": "S",
+      "blocksIR": false,
+      "blocksGtmStage": false,
+      "lane": "externalAssurance",
+      "gates": ["BG-10-11", "BL-SOC2-01"],
+      "owner": "fabric-os",
+      "acceptance": "External auditor opinion on file — procurement segment only"
+    },
+    {
+      "id": "FOAF-LEGAL-ZWCMP",
+      "priority": "P1",
+      "status": "open",
+      "title": "ZWCMP DPA + pilot agreement signature",
+      "programme": "PROG-LEGAL-EXT-INF",
+      "opsLane": "LegalOps",
+      "class": "S",
+      "blocksIR": false,
+      "blocksGtmStage": false,
+      "lane": "externalAssurance",
+      "gates": ["EXT-INF-014"],
+      "owner": "Founder / Legal",
+      "register": "ops/coordination/internal-human-gates.json"
+    },
+    {
+      "id": "FOAF-LEGAL-SLA",
+      "priority": "P2",
+      "status": "open",
+      "title": "Indemnified SLA legal review + insurance quote",
+      "programme": "PROG-LEGAL-EXT-INF",
+      "opsLane": "LegalOps",
+      "class": "S",
+      "blocksIR": false,
+      "blocksGtmStage": false,
+      "gates": ["EXT-INF-015"],
+      "owner": "Legal / GTM"
+    },
+    {
+      "id": "FOAF-LEGAL-H03",
+      "priority": "P2",
+      "status": "open",
+      "title": "Sovereign CSP countersign ceremony",
+      "programme": "PROG-LEGAL-EXT-INF",
+      "opsLane": "LegalOps",
+      "class": "S",
+      "blocksIR": false,
+      "gates": ["H-03"],
+      "owner": "gtcx-agentic"
+    },
+    {
+      "id": "FOAF-COMPLIANCE-11PR",
+      "priority": "P2",
+      "status": "open",
+      "title": "ComplianceOps 11PR foundation score uplift",
+      "programme": "INIT-GTCX-COMPLIANCE-OPS",
+      "opsLane": "ComplianceOps",
+      "class": "R",
+      "blocksIR": false,
+      "owner": "compliance-os",
+      "storyId": "FOAP-009",
+      "acceptance": "ecosystem:complianceops:check:fleet foundation >= 85"
+    },
+    {
+      "id": "FOAF-OPS-11PR-HR-ML",
+      "priority": "P2",
+      "status": "open",
+      "title": "HROps + MLOps 11PR foundation uplift",
+      "opsLane": "HROps",
+      "class": "R",
+      "blocksIR": false,
+      "owner": "agile-os",
+      "storyId": "FOAP-010"
+    }
+  ],
+  "closed": [
+    {
+      "id": "LEGAL-PROGRAM-01",
+      "closedAt": "2026-06-15",
+      "witness": "audit/evidence/legal-friction-check-latest.json"
+    },
+    {
+      "id": "XR-FLEET-MATURITY-LANES-001",
+      "closedAt": "2026-06-24",
+      "witness": "audit/evidence/maturity-lane-check-latest.json"
+    },
+    {
+      "id": "XR-GTM-ASSURANCE-LANE-002",
+      "closedAt": "2026-06-24",
+      "witness": "../bridge-os platform/scripts/audit/check-gtm-assurance-lane.mjs"
+    }
+  ]
+}

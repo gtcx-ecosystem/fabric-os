@@ -1,0 +1,59 @@
+{
+  "$schema": "gtcx://fabric-os/world-class-secops-gaps/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-24",
+  "initiative": "INIT-WORLD-CLASS-SECOPS",
+  "storyId": "T46",
+  "owner": "fabric-os",
+  "coordinator": "bridge-os",
+  "blocksIR": false,
+  "gaps": [
+    {
+      "id": "WC-01",
+      "title": "Unified fleet risk register",
+      "status": "done",
+      "witness": "pnpm fleet:risk:check:write",
+      "note": "bridge-os/pm/spec/fleet-risk-register.json + fabric witness"
+    },
+    {
+      "id": "WC-02",
+      "title": "Active threat register",
+      "status": "done",
+      "witness": "pnpm fleet:threat:check:write"
+    },
+    {
+      "id": "WC-03",
+      "title": "Product AI threat models",
+      "status": "done",
+      "witness": "fleet-risk-check productThreatModels",
+      "note": "markets-os, terminal-os, gtcx-os intelligence indexed"
+    },
+    {
+      "id": "WC-04",
+      "title": "SECAS-S4 harnesses",
+      "status": "done",
+      "witness": "secas roadmap S4 complete"
+    },
+    {
+      "id": "WC-05",
+      "title": "SECAS-S5 continuous assurance",
+      "status": "done",
+      "witness": "machine/secas-roadmap.json SECAS-S5 complete"
+    },
+    {
+      "id": "WC-06",
+      "title": "Legal program parity",
+      "status": "done",
+      "witness": "LEGAL-PROGRAM-01 · legalops:check:write"
+    },
+    {
+      "id": "WC-07",
+      "title": "SOC L2→L3",
+      "status": "in_progress",
+      "witness": "docs/operations/soc-operations.md",
+      "followOn": "WC-SECOPS-007",
+      "note": "Structural docs restored; SIEM/on-call/TI operationalization Class A/R parallel"
+    }
+  ],
+  "nextStories": ["WC-SECOPS-007"]
+}

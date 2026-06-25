@@ -1,0 +1,55 @@
+{
+  "$schema": "gtcx://fabric-os/fleet-ops-assurance-roadmap/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-24",
+  "program": "Fleet Ops Assurance Program",
+  "initiative": "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
+  "owner": "fabric-os",
+  "coordinator": "bridge-os",
+  "extends": {
+    "opsLanes100": "../bridge-os/pm/spec/ops-lanes-100-plan.json",
+    "opsLanesSprints": "../bridge-os/pm/spec/ops-lanes-sprints.json",
+    "centralAssurance": "pm/spec/central-assurance-program.json",
+    "maturityLanes": "../baseline-os/machine/spec/maturity-lane-separation.json"
+  },
+  "sprints": [
+    {
+      "id": "FOAP-S0",
+      "name": "Policy + lane separation (GS-MATURITY-LANE-001 / GS-GTM-STAGE-002)",
+      "status": "complete",
+      "items": ["MATURITY-LANE-FAB-001", "MATURITY-LANE-BRG-001", "XR-GTM-ASSURANCE-LANE-002"]
+    },
+    {
+      "id": "FOAP-S1",
+      "name": "Central assurance programme + witness contract",
+      "status": "complete",
+      "items": ["MATURITY-LANE-FAB-002", "MATURITY-LANE-FAB-005", "OPS-PRD-ROUTING-001"]
+    },
+    {
+      "id": "FOAP-S2",
+      "name": "SecOps + LegalOps friction parity",
+      "status": "complete",
+      "items": ["LEGAL-PROGRAM-01", "SECAS-S1-01", "SECAS-S4-04"]
+    },
+    {
+      "id": "FOAP-S3",
+      "name": "Master harness + fleet rollup operational",
+      "status": "complete",
+      "items": ["FOAP-005", "FOAP-006", "FOAP-007", "FOAP-008"]
+    },
+    {
+      "id": "FOAP-S4",
+      "name": "ComplianceOps + RevOps sustain (11PR uplift)",
+      "status": "complete",
+      "items": ["FOAP-009", "FOAP-010"],
+      "dependsOn": "FOAP-S3"
+    },
+    {
+      "id": "FOAP-S5",
+      "name": "Post-launch external calendar (vendor parallel only)",
+      "status": "parallel",
+      "items": ["BG-10-10", "BG-10-10-REPORT", "BG-10-11", "EXT-INF-014", "EXT-INF-015", "H-03"],
+      "note": "Class A/S — blocksIR false — not engineering P22"
+    }
+  ]
+}

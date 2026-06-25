@@ -1,0 +1,183 @@
+{
+  "$schema": "gtcx://fabric-os/fleet-ops-assurance-stories/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-24",
+  "program": "Fleet Ops Assurance Program",
+  "initiative": "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
+  "owner": "fabric-os",
+  "stories": [
+    {
+      "id": "FOAP-001",
+      "sprint": "FOAP-S1",
+      "title": "Fleet ops assurance program spec + ops routing matrix",
+      "priority": "P0",
+      "status": "done",
+      "owner": "fabric-os",
+      "lane": "externalAssurance",
+      "blocksGtmStage": false,
+      "blocksSprintSeal": false,
+      "files": [
+        "pm/spec/fleet-ops-assurance-program.json",
+        "pm/spec/ops-lane-prd-routing-matrix.json",
+        "pm/spec/central-assurance-program.json"
+      ],
+      "acceptance": ["pnpm ops-prd-routing:check:write", "pnpm central-assurance:check:write"],
+      "uat": [
+        { "text": "All ops lanes in registry have matrix row", "done": true },
+        { "text": "Central assurance programmes defined", "done": true }
+      ],
+      "blockers": null
+    },
+    {
+      "id": "FOAP-002",
+      "sprint": "FOAP-S0",
+      "title": "Maturity lane separation — assurance never blocks engineering",
+      "priority": "P0",
+      "status": "done",
+      "owner": "fabric-os",
+      "lane": "externalAssurance",
+      "blocksGtmStage": false,
+      "files": [
+        "pm/spec/assurance-lane-witness-fields.json",
+        "platform/scripts/maturity-lane-check.mjs"
+      ],
+      "acceptance": ["pnpm maturity-lane:check:write"],
+      "uat": [{ "text": "7/7 assurance witnesses pass lane contract", "done": true }],
+      "blockers": null
+    },
+    {
+      "id": "LEGAL-PROGRAM-01",
+      "sprint": "FOAP-S2",
+      "title": "Legal friction register parity with SECAS harness depth",
+      "priority": "P1",
+      "status": "done",
+      "owner": "fabric-os",
+      "lane": "externalAssurance",
+      "blocksGtmStage": false,
+      "files": [
+        "machine/legal-friction-register.json",
+        "platform/scripts/legal-friction-check.mjs",
+        "operations/legal/manifest.json"
+      ],
+      "acceptance": [
+        "pnpm legal:friction:check:write",
+        "pnpm legalops:check:write",
+        "pnpm --dir ../bridge-os ecosystem:legal-program:check:write"
+      ],
+      "uat": [
+        { "text": "LEGAL-PROGRAM-01 closed in friction register", "done": true },
+        { "text": "Fleet legal-program check PASS", "done": true }
+      ],
+      "blockers": null,
+      "auditNotes": "2026-06-24 — register closed; backlog reconciled via FOAP-007"
+    },
+    {
+      "id": "FOAP-005",
+      "sprint": "FOAP-S3",
+      "title": "Product goals PG4 — fleet ops assurance operational milestone",
+      "priority": "P0",
+      "status": "done",
+      "owner": "fabric-os",
+      "lane": "engineeringMaturity",
+      "files": ["pm/spec/product-goals.json", "machine/backlog.json"],
+      "acceptance": ["pnpm product:compile:check"],
+      "uat": [
+        { "text": "PG4 Fleet ops assurance goal in product-goals.json", "done": false },
+        { "text": "activeMilestone FOAP-M1-OPERATIONAL in backlog", "done": false }
+      ],
+      "blockers": null
+    },
+    {
+      "id": "FOAP-006",
+      "sprint": "FOAP-S3",
+      "title": "Agile lane roadmaps — legal, compliance, ops assurance links",
+      "priority": "P1",
+      "status": "done",
+      "owner": "agile-os",
+      "lane": "engineeringMaturity",
+      "files": [
+        "../agile-os/agile/roadmaps/legal.md",
+        "../agile-os/agile/roadmaps/compliance.md",
+        "fabric-os/agile/roadmaps/legal.md"
+      ],
+      "acceptance": ["pnpm --dir ../agile-os ecosystem:sprint-lane:check:write"],
+      "uat": [
+        { "text": "Legal roadmap links fabric central programme", "done": false },
+        { "text": "Compliance roadmap links ComplianceOps owner", "done": false }
+      ],
+      "blockers": null
+    },
+    {
+      "id": "FOAP-007",
+      "sprint": "FOAP-S3",
+      "title": "Master fleet-ops-assurance-check harness + fabric:operations wire",
+      "priority": "P0",
+      "status": "done",
+      "owner": "fabric-os",
+      "lane": "engineeringMaturity",
+      "files": [
+        "platform/scripts/fleet-ops-assurance-check.mjs",
+        "audit/evidence/fleet-ops-assurance-check-latest.json",
+        "package.json"
+      ],
+      "acceptance": ["pnpm fleet-ops-assurance:check:write", "pnpm fabric:operations:check"],
+      "uat": [
+        { "text": "Master witness PASS", "done": false },
+        { "text": "fabric:operations:check includes fleet-ops-assurance", "done": false }
+      ],
+      "blockers": null
+    },
+    {
+      "id": "FOAP-008",
+      "sprint": "FOAP-S3",
+      "title": "Bridge fleet-ops-assurance rollup witness",
+      "priority": "P1",
+      "status": "done",
+      "owner": "bridge-os",
+      "lane": "engineeringMaturity",
+      "files": [
+        "../bridge-os/platform/scripts/ecosystem/ecosystem-fleet-ops-assurance-check.mjs",
+        "../bridge-os/pm/ci/fleet-ops-assurance-latest.json"
+      ],
+      "acceptance": ["pnpm --dir ../bridge-os ecosystem:fleet-ops-assurance:check:write"],
+      "uat": [{ "text": "Bridge rollup links ops-lanes-100 + central assurance", "done": false }],
+      "blockers": null
+    },
+    {
+      "id": "FOAP-009",
+      "sprint": "FOAP-S4",
+      "title": "ComplianceOps 11PR foundation uplift (COF sustain)",
+      "priority": "P2",
+      "status": "done",
+      "owner": "compliance-os",
+      "lane": "engineeringMaturity",
+      "acceptance": [
+        "pnpm --dir ../compliance-os complianceops:check:write",
+        "pnpm --dir ../bridge-os ecosystem:complianceops:check:fleet:write"
+      ],
+      "uat": [
+        {
+          "text": "ComplianceOps 11PR foundation >= 85",
+          "done": true,
+          "note": "F:100 per ops-lanes-11pr rollup"
+        }
+      ],
+      "blockers": null
+    },
+    {
+      "id": "FOAP-010",
+      "sprint": "FOAP-S4",
+      "title": "HROps + MLOps 11PR foundation uplift",
+      "priority": "P2",
+      "status": "done",
+      "owner": "agile-os",
+      "lane": "engineeringMaturity",
+      "acceptance": ["pnpm --dir ../bridge-os ecosystem:ops-lanes-11pr:check:write"],
+      "uat": [
+        { "text": "HROps foundation >= 85", "done": true, "note": "F:94" },
+        { "text": "MLOps foundation >= 85", "done": true, "note": "F:100" }
+      ],
+      "blockers": null
+    }
+  ]
+}

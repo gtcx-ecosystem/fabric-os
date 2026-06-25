@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/fleet-threat-check/v1",
   "opsLane": "SecOps",
-  "checkedAt": "2026-06-15T05:31:58.583Z",
+  "checkedAt": "2026-06-25T00:44:44.814Z",
   "owner": "bridge-os",
   "register": "bridge-os/pm/spec/fleet-threat-register.json",
   "gates": {
@@ -35,10 +35,5 @@
       "target": "L3"
     }
   },
-  "ok": true,
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "ok": true
 }

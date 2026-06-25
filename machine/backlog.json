@@ -352,7 +352,7 @@
     {
       "id": "WC-SECOPS-007",
       "title": "SOC L3 operationalization — SIEM, on-call, TI feed",
-      "status": "open",
+      "status": "done",
       "priority": "P2",
       "owner": "fabric-os",
       "initiativeId": "INIT-WORLD-CLASS-SECOPS",
@@ -519,11 +519,11 @@
   "_generated": {
     "by": "product-compile.mjs",
     "protocol": "P57-product-delivery-compile",
-    "at": "2026-06-25T00:42:53.785Z"
+    "at": "2026-06-25T00:46:03.076Z"
   },
   "active": {
-    "storyId": "WC-SECOPS-007",
-    "title": "SOC L3 operationalization — SIEM, on-call, TI feed",
+    "storyId": "XR-BASELINE-ROADMAP-INTAKE-001",
+    "title": "Baseline-os roadmap intake reconcile",
     "status": "open",
     "owner": "fabric-os",
     "priority": "P2",
@@ -532,18 +532,17 @@
   "execution": {
     "backlogClear": false,
     "active": {
-      "storyId": "WC-SECOPS-007",
-      "title": "SOC L3 operationalization — SIEM, on-call, TI feed",
+      "storyId": "XR-BASELINE-ROADMAP-INTAKE-001",
+      "title": "Baseline-os roadmap intake reconcile",
       "status": "open",
       "owner": "fabric-os",
       "priority": "P2",
       "tier": "compiled-backlog"
     },
-    "openCount": 9,
+    "openCount": 8,
     "totalCount": 29,
-    "doneCount": 20,
+    "doneCount": 21,
     "openIds": [
-      "WC-SECOPS-007",
       "XR-BASELINE-ROADMAP-INTAKE-001",
       "XR-FABRIC-RAIL-003",
       "XR-FABRIC-SESSION-OPEN-004",

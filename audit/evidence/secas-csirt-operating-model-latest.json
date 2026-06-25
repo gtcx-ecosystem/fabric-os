@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/secas-csirt-check/v1",
   "storyId": "SECAS-S4-01",
   "frictionId": "SEC-CSIRT-01",
-  "checkedAt": "2026-06-17T17:57:13.575Z",
+  "checkedAt": "2026-06-25T00:44:45.020Z",
   "owner": "fabric-os",
   "gates": {
     "frictionItem": {
@@ -20,7 +20,7 @@
     },
     "socOpsLink": {
       "ok": true,
-      "path": "docs/operations/core-ops/batch-b/soc-operations.md"
+      "path": "docs/operations/runbooks/soc-operations.md"
     },
     "drillEvidence": {
       "ok": true,
@@ -28,10 +28,5 @@
     }
   },
   "ok": true,
-  "phase": "structural",
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "phase": "structural"
 }

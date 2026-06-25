@@ -1,7 +1,7 @@
 {
   "_generated": true,
   "_synthesisVersion": "1.1.0",
-  "_source": "docs/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
+  "_source": "docs/product/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
   "$schema": "gtcx://canon-os/product-canon-requirements/v1",
   "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
   "version": "0.1.0",

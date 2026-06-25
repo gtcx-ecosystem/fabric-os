@@ -1,8 +1,8 @@
 {
   "schema": "gtcx://baseline-os/session-ledger-active/v1",
-  "at": "2026-06-22T23:38:30.848Z",
+  "at": "2026-06-25T04:03:58.103Z",
   "repo": "fabric-os",
-  "sessionId": "e0a9fd50-cdcd-4509-8156-6c53b811ed18",
-  "ledgerPath": "workstream/sessions/ledger/e0a9fd50-cdcd-4509-8156-6c53b811ed18.json",
+  "sessionId": "558abbc2-76d0-4758-96df-d5c572f85380",
+  "ledgerPath": "workstream/sessions/ledger/558abbc2-76d0-4758-96df-d5c572f85380.json",
   "protocol": "51-session-forensic-synthesis"
 }

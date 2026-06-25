@@ -1,0 +1,87 @@
+{
+  "schema": "gtcx://fabric-os/baseline-roadmap-intake/v1",
+  "story": "XR-BASELINE-ROADMAP-INTAKE-001",
+  "generatedAt": "2026-06-25T00:49:24.794Z",
+  "source": "agile-os/pm/ecosystem-sprint-backlog.json",
+  "totals": {
+    "intakeItems": 337,
+    "fabricOsOwned": 32,
+    "handedOffToOwnerRepo": 305
+  },
+  "ownerCounts": {
+    "bridge-os": 109,
+    "compliance-os": 2,
+    "sensei-os": 3,
+    "nyota-ai": 2,
+    "veritas-ai": 1,
+    "baseline-os": 53,
+    "terminal-os": 1,
+    "gtcx-os": 34,
+    "ledger-ui": 2,
+    "terra-os": 24,
+    "markets-os": 10,
+    "fabric-os": 32,
+    "gtcx-docs": 1,
+    "agile-os": 37,
+    "canon-os": 25,
+    "griot-ai": 1
+  },
+  "fabricTriage": {
+    "present": 15,
+    "doneUpstream": 15,
+    "openTriaged": 2,
+    "openUntriaged": 0
+  },
+  "detail": {
+    "present": [
+      "XR-FABRIC-SESSION-OPEN-004",
+      "T46",
+      "INIT-EXEC-GAP",
+      "SECAS-S4-05",
+      "SECAS-S4-04",
+      "SECAS-S2-01",
+      "XR-FABRIC-SPRIN",
+      "XR-FABRIC-SPRINT-AUTH-001",
+      "XR-FABRIC-SPRINT",
+      "XR-FABRIC-RAIL-003",
+      "XR-BASELINE-ROADMAP-INTAKE-001",
+      "XR-KIMI-BRIDGE-FABRIC-CLOSURE-001",
+      "XR-FABRIC-SESSION-OPEN-005",
+      "INIT-FIVE-PILLAR-FLEET-100",
+      "LEGAL-PROGRAM-01"
+    ],
+    "doneUpstream": [
+      "ECO-ENV-03",
+      "ECO-ENV-04",
+      "ECO-ENV-05",
+      "ECO-ENV-07",
+      "ECO-ENV-08",
+      "ECO-EE-09",
+      "ECO-EE-11",
+      "ECO-EE-13",
+      "XR-FABRIC-SESSION-OPEN-003",
+      "T49",
+      "INIT-GTCX-INFRA-SECAS",
+      "Q3-FABRIC-01",
+      "Q3-FABRIC-02",
+      "Q3-FABRIC-04",
+      "DOCS-W4-IA-fabric-os"
+    ],
+    "openTriaged": [
+      {
+        "id": "BL-SOC2-01",
+        "disposition": "external-lane",
+        "lane": "externalAssurance",
+        "note": "SOC2 external assurance — Class A auditor track; parallel sovereign gate, not automatable engineering work."
+      },
+      {
+        "id": "Q3-FABRIC-03",
+        "disposition": "done",
+        "lane": "engineeringMaturity",
+        "note": "secas:supply-chain:check PASS + secas:pentest:remediation:check PASS (S4-04 external track) + composite 100 >= 85."
+      }
+    ],
+    "openUntriaged": []
+  },
+  "ok": true
+}

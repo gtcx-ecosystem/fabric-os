@@ -11,4 +11,4 @@ review_cycle: on-change
 
 # `docs/primitives/architecture/`
 
-Scorecard nest — see [`../../architecture/`](../../architecture/).
+Scorecard nest — see [`../../architecture/`](../../../../architecture/README.md).

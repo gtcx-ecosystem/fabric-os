@@ -10,6 +10,6 @@ review_cycle: on-change
 
 # Overview — relocated
 
-**Canonical path:** [`docs/business/`](../business/)
+**Canonical path:** [`docs/business/`](../../../business/README.md)
 
 This folder is a **pointer stub** after W13 docs hygiene decomposition. Do not add new files here.

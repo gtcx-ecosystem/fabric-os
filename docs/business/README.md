@@ -48,7 +48,7 @@ goals: 'Business narrative SoR — decomposed from reference/product and overvie
 
 ## Hub note (constitution-standards)
 
-Fleet product domain narrative lives in **[ecosystem-os/docs/business/domain/](../../ecosystem-os/docs/business/domain/)** — fabric-os keeps pointers and cross-reference tables only.
+Fleet product domain narrative lives in **[ecosystem-os/docs/business/domain/](https://github.com/gtcx-ecosystem/ecosystem-os/blob/main/docs/business/domain/)** — fabric-os keeps pointers and cross-reference tables only.
 
 ## Agent rules
 

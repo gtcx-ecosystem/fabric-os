@@ -10,6 +10,6 @@ review_cycle: on-change
 
 # Strategy — relocated
 
-**Canonical path:** [`docs/business/strategy/`](../business/strategy/)
+**Canonical path:** [`docs/business/strategy/`](../../../business/strategy/README.md)
 
 This folder is a **pointer stub** after W13 docs hygiene decomposition. Do not add new files here.

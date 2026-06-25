@@ -11,6 +11,6 @@ document_type: pointer
 
 # docs/strategy — relocated
 
-**Canonical path:** [`docs/business/opportunity/`](../docs/business/opportunity/)
+**Canonical path:** [`docs/business/`](../README.md)
 
 P0 legacy scrub — do not add new files here.

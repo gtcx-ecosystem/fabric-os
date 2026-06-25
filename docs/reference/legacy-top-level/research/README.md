@@ -11,6 +11,6 @@ review_cycle: on-change
 
 # `docs/research/`
 
-Fractal MPR research router — prose in [`../business/research/`](../business/research/).
+Fractal MPR research router — prose in [`../business/research/`](../../../business/research/README.md).
 
 Pack: [`../../pm/spec/docs-research-pack.json`](../../pm/spec/docs-research-pack.json)

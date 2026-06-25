@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-10T03:13:25.437Z",
+  "generatedAt": "2026-06-25T00:40:53.957Z",
   "exceptions": [
     {
       "type": "broken-link",
@@ -1458,6 +1458,366 @@
       "type": "broken-link",
       "file": "docs/overview/README.md",
       "detail": "Link target does not exist anywhere in repo: audit/archive/legacy-docs-audit/master-audit-2026-05-12-updated.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/FOLDER-SPEC.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-architecture-pack.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/README.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-architecture-pack.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/in-repo/README.md",
+      "detail": "Link target does not exist: ./FOLDER-SPEC.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/integration/narrative/README.md",
+      "detail": "Link target does not exist: ./FOLDER-SPEC.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/integration/narrative/legacy-README.md",
+      "detail": "Link target does not exist: ../docs/architecture/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/architecture/specs/legacy-README.md",
+      "detail": "Link target does not exist: ../docs/architecture/specs/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/business/FOLDER-SPEC.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-business-pack.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/business/README.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-layer-cross-reference.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/business/overview/README.md",
+      "detail": "Link target does not exist: ../docs/business/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/business/research/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/business/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/business/strategy/legacy-README.md",
+      "detail": "Link target does not exist: ../docs/business/opportunity/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/foundation/FOLDER-SPEC.md",
+      "detail": "Link target does not exist: ../FOLDER-SPEC.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/foundation/README.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-foundation-pack.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/foundation/constitution.md",
+      "detail": "Link target does not exist: ../canon-os/docs/governance/constitution/GTCX-CONSTITUTION.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/foundation/roadmap.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-foundation-ia-rollout.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/foundation/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/gitbook/publish/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/README.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-folders/05-operations.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/agent-init/agent-communication-protocol.md",
+      "detail": "Link target does not exist: ../../pm/spec/agent-communication-ux-spec.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/agents/README.md",
+      "detail": "Link target does not exist: ../../../archive/legacy-docs-operations-agents-shadow/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/compliance/README.md",
+      "detail": "Link target does not exist: ./FOLDER-SPEC.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/coordination/from-fabric-os-xr-gtm-assurance-lane-002-ack-2026-06-24.md",
+      "detail": "Link target does not exist: ../../../compliance-os/operations/coordination/outbound/to-fabric-os-gtm-assurance-lane-amendment-2026-06-24.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/deployment/README.md",
+      "detail": "Link target does not exist: ./deployment-profile.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/templates/README.md",
+      "detail": "Link target does not exist: ./FOLDER-SPEC.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/operations/workspace/ecosystem-repo-layout-v5.md",
+      "detail": "Link target does not exist: ../../../../bridge-os/docs/ecosystem-layout-v5.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/product/FOLDER-SPEC.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-product-pack.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/product/README.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-product-pack.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/product/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/FOLDER-SPEC.md",
+      "detail": "Link target does not exist: ../FOLDER-SPEC.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/canon/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/guides/docs-writing-guide.md",
+      "detail": "Link target does not exist: ../architecture/narratives/trust-model.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/guides/glossary.md",
+      "detail": "Link target does not exist: ../operations/release/versioning-policy.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-layer-root/architecture/README.md",
+      "detail": "Link target does not exist: ./FOLDER-SPEC.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/engineering/README.md",
+      "detail": "Link target does not exist: ../architecture/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/overview/README.md",
+      "detail": "Link target does not exist: ../business/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/primitives/FOLDER-SPEC.md",
+      "detail": "Link target does not exist: ../../pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/primitives/architecture/README.md",
+      "detail": "Link target does not exist: ../../architecture/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/primitives/architecture/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/primitives/strategy/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/publishing/FOLDER-SPEC.md",
+      "detail": "Link target does not exist: ../../pm/spec/docs-publishing-pack.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/publishing/README.md",
+      "detail": "Link target does not exist: ../../pm/spec/docs-publishing-pack.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/publishing/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/research/FOLDER-SPEC.md",
+      "detail": "Link target does not exist: ../../pm/spec/docs-research-pack.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/research/README.md",
+      "detail": "Link target does not exist: ../business/research/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/research/scorecard.md",
+      "detail": "Link target does not exist: ../../canon-os/pm/spec/docs-fractal-mpr-policy.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/roadmap/README.md",
+      "detail": "Link target does not exist: ../agile/roadmaps/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/roadmap/agile/README.md",
+      "detail": "Link target does not exist: ../../../agile/README.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/roadmap/planning/README.md",
+      "detail": "Link target does not exist: ./FOLDER-SPEC.md",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/specs/README.md",
+      "detail": "Link target does not exist: ../architecture/specs/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/reference/legacy-top-level/strategy/README.md",
+      "detail": "Link target does not exist: ../business/strategy/",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "broken-link",
+      "file": "docs/strategy/fleet-ops-hub.md",
+      "detail": "Link target does not exist: ../../bridge-os/pm/spec/ops-authority.json",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "naming",
+      "file": "docs/architecture/integration/narrative/legacy-README.md",
+      "detail": "Filename must be lowercase-with-hyphens (got: legacy-README.md)",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "naming",
+      "file": "docs/architecture/specs/legacy-FOLDER-SPEC.md",
+      "detail": "Filename must be lowercase-with-hyphens (got: legacy-FOLDER-SPEC.md)",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "naming",
+      "file": "docs/architecture/specs/legacy-README.md",
+      "detail": "Filename must be lowercase-with-hyphens (got: legacy-README.md)",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "naming",
+      "file": "docs/business/strategy/legacy-FOLDER-SPEC.md",
+      "detail": "Filename must be lowercase-with-hyphens (got: legacy-FOLDER-SPEC.md)",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "naming",
+      "file": "docs/business/strategy/legacy-README.md",
+      "detail": "Filename must be lowercase-with-hyphens (got: legacy-README.md)",
+      "reviewBy": "2026-06-30"
+    },
+    {
+      "type": "naming",
+      "file": "docs/reference/legacy-layer-root/architecture/legacy-FOLDER-SPEC.md",
+      "detail": "Filename must be lowercase-with-hyphens (got: legacy-FOLDER-SPEC.md)",
       "reviewBy": "2026-06-30"
     }
   ]

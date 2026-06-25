@@ -2,18 +2,19 @@
 storyId: OPS-PRD-ROUTING-001
 initiativeId: INIT-FABRIC-OPS-PRD-ROUTING
 title: 'Ops lane PRD/spec routing matrix'
-status: open
+status: done
 priority: P0
 owner: fabric-os
+date: 2026-06-24
 ---
 
 # OPS-PRD-ROUTING-001 — Ops lane PRD/spec routing matrix
 
 ## Acceptance
 
-- DaaS and SECaaS seeded first (existing PRDs and initiatives)
-- Every Ops lane has owner-routed PRD/spec coverage row
-- Matrix records ownerRepo, visionRef, goalsRef, milestoneRef, initiativeRef, prdRef, witnessRef, status
+- [x] DaaS and SECaaS seeded first (existing PRDs and initiatives)
+- [x] Every Ops lane has owner-routed PRD/spec coverage row
+- [x] Matrix records ownerRepo, visionRef, goalsRef, milestoneRef, initiativeRef, prdRef, witnessRef, status
 
 ## Audit notes
 

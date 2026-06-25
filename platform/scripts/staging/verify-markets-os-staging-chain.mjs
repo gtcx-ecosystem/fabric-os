@@ -12,8 +12,11 @@
  * Usage: node platform/scripts/staging/verify-markets-os-staging-chain.mjs [--json]
  */
 import { execSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 
 const REGION = process.env.AWS_REGION || 'af-south-1';
 const SECRET_ID = process.env.MARKETS_OS_SECRET_ID || 'gtcx/markets-os/staging/api-keys';
@@ -161,6 +164,29 @@ function main() {
     gates,
     ok,
   };
+
+  // Hub witness for cross-repo agent discovery (redacted — no secret values)
+  const hubPath = join(ROOT, '..', 'bridge-os', 'pm', 'ci', 'fabric-os-blocker-fb001-latest.json');
+  const hubWitness = {
+    schema: 'gtcx://fabric-os/fleet-blocker-hub-witness/v1',
+    blockerId: 'FB-001',
+    blockedRepo: 'markets-os',
+    blockedStory: 'IR-006',
+    checkedAt: witness.checkedAt,
+    infrastructureReady: gates.find((g) => g.id === 'aws-secret-shell')?.ok === true &&
+                         gates.find((g) => g.id === 'eso-secretstore')?.ok === true &&
+                         gates.find((g) => g.id === 'eso-externalsecret')?.ok === true,
+    secretsPopulated: gates.find((g) => g.id === 'aws-secret-values')?.ok === true,
+    k8sSecretReady: gates.find((g) => g.id === 'k8s-secret')?.ok === true,
+    integrationScriptReady: gates.find((g) => g.id === 'markets-integration-script')?.ok === true,
+    placeholders: gates.find((g) => g.id === 'aws-secret-values')?.placeholders ?? [],
+    ok,
+    verificationCommand: 'pnpm --dir ../fabric-os markets:staging:verify',
+    operatorStep: 'Populate AWS SM gtcx/markets-os/staging/api-keys with POSTGRES_PASSWORD, AUTH_JWT_SECRET, INTERNAL_SERVICE_TOKEN',
+    evidencePath: 'audit/evidence/markets-os-staging-chain-verify-latest.json',
+  };
+  mkdirSync(dirname(hubPath), { recursive: true });
+  writeFileSync(hubPath, `${JSON.stringify(hubWitness, null, 2)}\n`);
 
   if (JSON_OUT) {
     console.log(JSON.stringify(witness, null, 2));

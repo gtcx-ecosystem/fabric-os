@@ -15,21 +15,21 @@ Master inventory of work where fabric-os is the owning blocker for sibling-repo 
 
 ## Active fabric-os-owned blockers
 
-| ID     | Blocked repo  | Blocked work                 | Fabric-os deliverable                                                                                                                         | Type       | Class | Priority | Lift   | Status      |
-| ------ | ------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ----- | -------- | ------ | ----------- |
-| FB-001 | markets-os    | IR-006 / PROD-READY-005      | Staging API credential chain + reachable advisory-api ([runbook](../runbooks/markets-os-staging-api-chain.md), `pnpm markets:staging:verify`) | infra      | A     | P0       | medium | in_progress |
-| FB-002 | griot-ai      | STORY-GRIOT-HTTPS-001        | ACM cert + HTTPS listener for api.griot.ai                                                                                                    | infra      | A     | P0       | medium | open        |
-| FB-003 | griot-ai      | STORY-GRIOT-LIVE-STAGING-001 | Live staging substrate witness                                                                                                                | infra      | A     | P1       | medium | open        |
-| FB-004 | terminal-os   | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness                                                                                     | compliance | R     | P1       | large  | done        |
-| FB-005 | bridge-os     | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness                                                                                     | compliance | R     | P1       | large  | done        |
-| FB-006 | agile-os      | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness                                                                                     | compliance | R     | P2       | small  | open        |
-| FB-007 | canon-os      | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness                                                                                     | compliance | R     | P2       | small  | open        |
-| FB-008 | ecosystem-os  | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness                                                                                     | compliance | R     | P2       | small  | open        |
-| FB-009 | veritas-ai    | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness                                                                                     | compliance | R     | P2       | small  | open        |
-| FB-010 | venture-os    | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness                                                                                     | compliance | R     | P2       | small  | open        |
-| FB-011 | nyota-ai      | MPR compliance unlock        | P35 layout strict GREEN, ops:check green, agentic harness                                                                                     | compliance | R     | P2       | small  | open        |
-| FB-012 | ledger-os     | Foundation rebuild           | Docs SoR, pm folder, real product packs (full=1)                                                                                              | content    | R     | P2       | large  | open        |
-| FB-013 | inspection-os | Foundation rebuild           | Docs SoR, pm folder, real product packs (full=1)                                                                                              | content    | R     | P2       | large  | open        |
+| ID     | Blocked repo  | Blocked work                 | Fabric-os deliverable                                            | Type       | Class | Priority | Status                   |
+| ------ | ------------- | ---------------------------- | ---------------------------------------------------------------- | ---------- | ----- | -------- | ------------------------ |
+| FB-001 | markets-os    | IR-006                       | markets-os staging API credential chain + reachable advisory-api | infra      | A     | P0       | awaiting_operator_action |
+| FB-002 | griot-ai      | STORY-GRIOT-HTTPS-001        | ACM cert + HTTPS listener for griot-staging.gtcx.trade           | infra      | A     | P0       | awaiting_operator_action |
+| FB-003 | griot-ai      | STORY-GRIOT-LIVE-STAGING-001 | Live staging substrate witness                                   | infra      | A     | P1       | open                     |
+| FB-004 | terminal-os   | MPR compliance unlock        | terminal-os MPR compliance unlock                                | compliance | R     | P1       | done                     |
+| FB-005 | bridge-os     | MPR compliance unlock        | bridge-os MPR compliance unlock                                  | compliance | R     | P1       | done                     |
+| FB-006 | agile-os      | MPR compliance unlock        | agile-os MPR compliance unlock                                   | compliance | R     | P2       | open                     |
+| FB-007 | canon-os      | MPR compliance unlock        | canon-os MPR compliance unlock                                   | compliance | R     | P2       | open                     |
+| FB-008 | ecosystem-os  | MPR compliance unlock        | ecosystem-os MPR compliance unlock                               | compliance | R     | P2       | open                     |
+| FB-009 | veritas-ai    | MPR compliance unlock        | veritas-ai MPR compliance unlock                                 | compliance | R     | P2       | open                     |
+| FB-010 | venture-os    | MPR compliance unlock        | venture-os MPR compliance unlock                                 | compliance | R     | P2       | open                     |
+| FB-011 | nyota-ai      | MPR compliance unlock        | nyota-ai MPR compliance unlock                                   | compliance | R     | P2       | open                     |
+| FB-012 | ledger-os     | Foundation rebuild           | ledger-os foundation rebuild                                     | content    | R     | P2       | open                     |
+| FB-013 | inspection-os | Foundation rebuild           | inspection-os foundation rebuild                                 | content    | R     | P2       | open                     |
 
 ## Sequenced execution plan
 

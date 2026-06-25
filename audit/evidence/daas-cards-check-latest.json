@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/daas-cards-check/v1",
   "protocol": "P41-DEVOPS-AS-A-SERVICE",
   "sprint": "DAAS-S2",
-  "checkedAt": "2026-06-12T19:36:15.744Z",
+  "checkedAt": "2026-06-25T10:25:41.363Z",
   "owner": "fabric-os",
   "gates": {
     "index": {
@@ -13,7 +13,7 @@
         "ok": true,
         "exists": true,
         "metaOk": true,
-        "laneId": "L2",
+        "laneId": "daas-s2-terminal",
         "deployProduct": "product-hosted",
         "path": "docs/operations/daas/cards/terminal-os.md"
       },
@@ -21,7 +21,7 @@
         "ok": true,
         "exists": true,
         "metaOk": true,
-        "laneId": "L3",
+        "laneId": "daas-s2-compliance",
         "deployProduct": "product-hosted",
         "path": "docs/operations/daas/cards/compliance-os.md"
       },
@@ -29,7 +29,7 @@
         "ok": true,
         "exists": true,
         "metaOk": true,
-        "laneId": "L4b",
+        "laneId": "daas-s2-markets",
         "deployProduct": "GTCX Cloud",
         "path": "docs/operations/daas/cards/markets-os.md"
       }
@@ -39,10 +39,5 @@
       "missing": []
     }
   },
-  "ok": true,
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "ok": true
 }

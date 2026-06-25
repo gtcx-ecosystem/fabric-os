@@ -17,7 +17,7 @@ const SOVEREIGN = join(ROOT, 'machine/sovereign-approval-register.json');
 const MANIFEST = join(ROOT, 'operations/legal/manifest.json');
 const OPS = join(ROOT, 'docs/operations/legalops-as-a-service.md');
 const PARALLEL_WITNESS = join(ROOT, 'audit/evidence/secas-parallel-lane-check-latest.json');
-const FLEET_WITNESS = join(BRIDGE, 'machine/ci/ecosystem-legal-program-latest.json');
+const FLEET_WITNESS = join(BRIDGE, 'pm/ci/ecosystem-legal-program-latest.json');
 const OUT = join(ROOT, 'audit/evidence/legal-friction-check-latest.json');
 const WRITE = process.argv.includes('--write');
 

@@ -78,9 +78,9 @@ cd deploy/terraform/environments/staging && terraform plan -var-file=terraform.t
 
 To run any forensic audit on this repo (master-audit, full-audit, 10-10-roadmap, repo-overview, doc-cleanup, doc-standard, verification-audit, docs-machine-readable):
 
-1. Read `../gtcx-agentic/audit/AGENT-START.md` — the canonical entry point lists every command, its prompt file, and the output path.
-2. Read the specific command file (`../gtcx-agentic/audit/commands/<command>.md`).
-3. Read the prompt file referenced there (`../gtcx-agentic/audit/prompts/<category>/<file>.md`).
+1. Read `../bridge-os/audit/AGENT-START.md` — the canonical entry point lists every command, its prompt file, and the output path.
+2. Read the specific command file (`../bridge-os/audit/commands/<command>.md`).
+3. Read the prompt file referenced there (`../bridge-os/audit/prompts/<category>/<file>.md`).
 4. Execute the prompt against this repo.
 5. Write the output to the path the command specifies (typically `01-docs/05-audit/<command>-<YYYY-MM-DD>.md`).
 
@@ -90,7 +90,7 @@ The audit registry is provider-agnostic — the same prompts work for Claude, Co
 
 **Canonical policy:** `gtcx-docs/01-docs/governance/protocols/19-agent-credential-access/protocol.md` (see “System-of-Record and Operational Ownership Split”).
 
-- **System-of-record (SoR)**: `gtcx-agentic` Baseline vault (shared provider creds + audited access)
+- **System-of-record (SoR)**: `bridge-os` Baseline vault (shared provider creds + audited access)
 - **Runtime usage owner**: product repo (e.g. `gtcx-intelligence`) owns its runtime secrets
 - **CI/automation owner**: `fabric-os` owns org automation secrets/policy
 - **Contracts only**: `gtcx-protocols` defines env var names, redaction rules, and artifact paths/globs
@@ -103,8 +103,8 @@ The audit registry is provider-agnostic — the same prompts work for Claude, Co
 | ----------------------------- | -------------- | ------------------------------------------------------------- |
 | Route decisions + pricing     | `baseline-os`  | `baseline cost-route --prompt "..." --json`                   |
 | Token usage aggregate         | `baseline-os`  | `baseline cost-stats --json`                                  |
-| Agent vault (populate/verify) | `gtcx-agentic` | `pnpm agent:vault:verify`                                     |
-| Staging vs production keys    | `gtcx-agentic` | `01-docs/operators/vault-environments.md`                     |
+| Agent vault (populate/verify) | `bridge-os` | `pnpm agent:vault:verify`                                     |
+| Staging vs production keys    | `bridge-os` | `01-docs/operators/vault-environments.md`                     |
 | Ecosystem coordination        | `baseline-os`  | `workstream/coordination/ECOSYSTEM-COST-ROUTER-2026-06-03.md` |
 
 **Do not** use `baseline-os/04-ship/docker/.env.staging` for production vault work.
@@ -188,7 +188,7 @@ Emit **one** brief, then work. Human may **stop**, **correct:**, or story ID —
 
 - Gates, dev servers (Metro/Expo background), `adb`, `git push` — in-session.
 - Report **command + exit code**.
-- Harness blocks bare `git push`? **D3:** `pnpm --dir ../gtcx-agentic ecosystem:git-push --repo <name>` · **D5:** `pnpm --dir ../gtcx-agentic ecosystem:push-all`.
+- Harness blocks bare `git push`? **D3:** `pnpm --dir ../bridge-os ecosystem:git-push --repo <name>` · **D5:** `pnpm --dir ../bridge-os ecosystem:push-all`.
 - Blocked after diagnosis D1–D6? **Permission Unblock Report** — not "run locally."
 
 ### P28 — Authority
@@ -283,7 +283,7 @@ Template: `01-docs/04-ops/agent-status-update-template.md` · Spec: P26 §3b (gt
 | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1    | [Unblock playbook F1–F10](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/ecosystem-unblock-playbook-2026-06.md)                                 |
 | 2    | [P26 Status Update + post-pilot gating](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/agent-status-update-and-post-pilot-gating-2026-06-06.md) |
-| 3    | [Human-external register](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/01-docs/04-ops/coordination/human-external-blocker-register-2026-06.md)                              |
+| 3    | [Human-external register](https://github.com/gtcx-ecosystem/bridge-os/blob/main/01-docs/04-ops/coordination/human-external-blocker-register-2026-06.md)                              |
 | 4    | [Cross-repo bridge — Latest updates](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/cross-repo-agent-bridge.md)                                 |
 | 5    | This repo `01-docs/04-ops/agent-work-selection.md` · `01-docs/05-audit/auto-dev-state.md`                                                                                               |
 

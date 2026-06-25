@@ -2,25 +2,25 @@
   "schema": "gtcx://audit/documentation-audit/v1",
   "repo": "fabric-os",
   "repoKind": "infra",
-  "date": "2026-06-22",
+  "date": "2026-06-25",
   "auditType": "documentation-pillar",
   "ok": true,
-  "composite100": 100,
+  "composite100": 96,
   "pillars": {
     "compliance": {
       "score100": 100,
       "openP1": 0,
-      "source": "fleet-seal100"
+      "source": "documentation-pack"
     },
     "technicalExcellence": {
-      "score100": 100,
-      "score100Raw": 96,
+      "score100": 97,
+      "score100Raw": 97,
       "packTe100": 100,
       "capped": false,
-      "source": "fleet-seal100"
+      "source": "pack+forensic-links"
     },
     "craft": {
-      "score100": 100,
+      "score100": 89,
       "score100Raw": 89,
       "capped": false,
       "capReasons": [],
@@ -28,16 +28,16 @@
         "interchangeable": false,
         "aiSlop": false
       },
-      "source": "fleet-seal100"
+      "source": "forensic-doc-standard"
     },
     "worldClass": {
-      "score100": 100,
+      "score100": 97,
       "documentationQuality100": 92,
       "worldClassBar100": 95,
       "gap100": 3,
       "gapLabel": "frontier",
       "references": ["Stripe docs", "Kubernetes docs", "gtcx-docs hub"],
-      "source": "fleet-seal100"
+      "source": "documentation-quality-vs-global-bar"
     }
   },
   "forensic": {
@@ -48,11 +48,11 @@
       "links": 100,
       "agentic": 85
     },
-    "score100": 100,
+    "score100": 85,
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
-      "markdownFileCount": 264,
+      "markdownFileCount": 312,
       "brokenLinks": 0,
       "scaffoldFileCount": 0,
       "aiSlopFileCount": 0
@@ -69,6 +69,5 @@
         "detail": "missing demo-walkthrough or deployment-profile"
       }
     ]
-  },
-  "fleetSeal100": true
+  }
 }

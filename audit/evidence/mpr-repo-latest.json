@@ -3,8 +3,8 @@
   "scope": "repo",
   "id": "fabric-os",
   "repo": "fabric-os",
-  "evaluatedAt": "2026-06-25T00:52:52.987Z",
-  "gitHead": "0a7ea8cb08d94035ab6ad177150473ff94811709",
+  "evaluatedAt": "2026-06-25T04:50:41.824Z",
+  "gitHead": "31106a73ef28ff7b18f6bcf680b29fa5a42e3dca",
   "date": "2026-06-25",
   "weights": {
     "compliance": 0,
@@ -1221,7 +1221,7 @@
     "agentIndex": "canon-os/docs/governance/audit/multi-pillar-agent-index.md"
   },
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-22.json",
+  "rubricSourcePath": "audit/audit-output-2026-06-25.json",
   "initiative": "INIT-FIVE-PILLAR-EVAL",
   "probes": [],
   "calibrationVersion": "1.1.0",

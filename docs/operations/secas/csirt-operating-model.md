@@ -10,7 +10,7 @@ review_cycle: quarterly
 
 # CSIRT operating model
 
-Cross-repo Computer Security Incident Response Team model for GTCX fleet. Complements [`soc-operations.md`](../soc-operations.md).
+Cross-repo Computer Security Incident Response Team model for GTCX fleet. Complements [`soc-operations.md`](../runbooks/soc-operations.md).
 
 ## Escalation matrix
 
@@ -36,5 +36,5 @@ Cross-repo Computer Security Incident Response Team model for GTCX fleet. Comple
 
 ## References
 
-- SOC plan: [`soc-operations.md`](../soc-operations.md)
+- SOC plan: [`soc-operations.md`](../runbooks/soc-operations.md)
 - IR runbook: [`runbooks/incident-response.md`](./runbooks/incident-response.md)

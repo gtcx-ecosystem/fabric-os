@@ -50,6 +50,6 @@ pnpm --dir ../bridge-os ecosystem:ops-lanes-100:check:write
 
 ## Links
 
-- CSIRT operating model: [`secas/csirt-operating-model.md`](./secas/csirt-operating-model.md)
-- Incident response: [`secas/runbooks/incident-response.md`](./secas/runbooks/incident-response.md)
-- Continuous assurance: [`secas/secas-s5-continuous-assurance-program.md`](./secas/secas-s5-continuous-assurance-program.md)
+- CSIRT operating model: [`secas/csirt-operating-model.md`](../secas/csirt-operating-model.md)
+- Incident response: [`secas/runbooks/incident-response.md`](../secas/runbooks/incident-response.md)
+- Continuous assurance: [`secas/secas-s5-continuous-assurance-program.md`](../secas/secas-s5-continuous-assurance-program.md)

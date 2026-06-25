@@ -10,6 +10,7 @@ related: MATURITY-LANE-BRG-001, GS-GTM-STAGE-002
 authorityClass: R
 protocol: P24
 blocksIR: false
+owner: fabric-os
 ---
 
 # To bridge-os — inferGtmReadiness must split lanes (joint closure #5)

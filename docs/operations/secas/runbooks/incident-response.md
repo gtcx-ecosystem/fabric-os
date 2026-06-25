@@ -47,4 +47,4 @@ Witness schema: `gtcx://fabric-os/secas-ir-drill/v1` — redacted, no secrets.
 ## Related
 
 - CSIRT model: [`../csirt-operating-model.md`](../csirt-operating-model.md)
-- SOC operations: [`../../soc-operations.md`](../../soc-operations.md)
+- SOC operations: [`../../soc-operations.md`](../../runbooks/soc-operations.md)

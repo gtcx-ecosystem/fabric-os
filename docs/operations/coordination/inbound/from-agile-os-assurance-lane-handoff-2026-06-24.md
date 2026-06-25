@@ -10,6 +10,7 @@ related: XR-GTM-ASSURANCE-LANE-002
 authorityClass: R
 protocol: P24
 blocksIR: false
+owner: fabric-os
 ---
 
 # Inbound — agile-os assurance lane handoff

@@ -10,6 +10,7 @@ related: GS-MATURITY-LANE-001, GS-GTM-STAGE-002
 authorityClass: R
 protocol: P24
 blocksIR: false
+owner: fabric-os
 ---
 
 # Inbound — bridge-os maturity lane feedback

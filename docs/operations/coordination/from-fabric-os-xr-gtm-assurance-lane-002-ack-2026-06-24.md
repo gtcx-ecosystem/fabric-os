@@ -10,6 +10,7 @@ related: XR-FLEET-MATURITY-LANES-001, GS-GTM-STAGE-002, GS-MATURITY-LANE-001
 authorityClass: R
 protocol: P24
 blocksIR: false
+owner: fabric-os
 ---
 
 # outbound-ack — XR-GTM-ASSURANCE-LANE-002 (fabric-os slice)

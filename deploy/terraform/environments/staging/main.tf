@@ -188,6 +188,18 @@ variable "alb_hosted_zone_id" {
   default     = ""
 }
 
+variable "griot_ai_alb_dns_name" {
+  description = "DNS name of the ALB for griot-staging.gtcx.trade. Leave empty on first apply; set after K8s Ingress creates the ALB."
+  type        = string
+  default     = ""
+}
+
+variable "griot_ai_alb_zone_id" {
+  description = "Hosted zone ID of the ALB for griot-staging.gtcx.trade. af-south-1: Z268VQBMOI5EKX. Set together with griot_ai_alb_dns_name."
+  type        = string
+  default     = ""
+}
+
 variable "tags" {
   description = "Common tags"
   type        = map(string)
@@ -347,6 +359,60 @@ module "route53" {
     Environment = "staging"
     Purpose     = "inf-49-did-resolution"
   })
+}
+
+# -----------------------------------------------------------------------------
+# griot-ai Ingress — ACM cert + Route53 for griot-staging.gtcx.trade
+# -----------------------------------------------------------------------------
+
+module "griot_ai_ingress" {
+  source = "../../modules/griot-ai-ingress"
+
+  environment          = var.environment
+  primary_domain       = "griot-staging.gtcx.trade"
+  griot_ai_apex_domain = "gtcx.trade"
+  include_gtcx_trade_san = false
+  alb_dns_name         = var.griot_ai_alb_dns_name
+  alb_zone_id          = var.griot_ai_alb_zone_id
+
+  tags = merge(var.tags, {
+    Environment = "staging"
+    Purpose     = "fb-002-griot-ai-https"
+  })
+}
+
+resource "kubectl_manifest" "griot_ai_ingress" {
+  yaml_body = <<-YAML
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: griot-api
+      namespace: griot-ai-staging
+      annotations:
+        alb.ingress.kubernetes.io/scheme: internet-facing
+        alb.ingress.kubernetes.io/target-type: ip
+        alb.ingress.kubernetes.io/healthcheck-path: /health
+        alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+        alb.ingress.kubernetes.io/success-codes: "200"
+        alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+        alb.ingress.kubernetes.io/certificate-arn: ${module.griot_ai_ingress.certificate_arn}
+        alb.ingress.kubernetes.io/ssl-redirect: "443"
+    spec:
+      ingressClassName: alb
+      rules:
+        - host: griot-staging.gtcx.trade
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: griot-api
+                    port:
+                      number: 80
+  YAML
+
+  depends_on = [module.griot_ai_ingress]
 }
 
 # -----------------------------------------------------------------------------
@@ -616,4 +682,14 @@ output "intelligence_auth_keys_secret_name" {
 output "intelligence_secrets_role_arn" {
   description = "IRSA role for intelligence-sa (ESO SecretStore JWT)"
   value       = module.secrets.intelligence_secrets_role_arn
+}
+
+output "griot_ai_certificate_arn" {
+  description = "ACM certificate ARN for griot-staging.gtcx.trade HTTPS ingress"
+  value       = module.griot_ai_ingress.certificate_arn
+}
+
+output "griot_ai_a_record_created" {
+  description = "Whether griot-staging.gtcx.trade A record is wired (false on first apply before the ALB exists)"
+  value       = length(module.griot_ai_ingress.certificate_arn) > 0 && var.griot_ai_alb_dns_name != ""
 }

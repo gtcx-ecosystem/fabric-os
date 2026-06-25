@@ -1,0 +1,34 @@
+# =============================================================================
+# griot-ai-staging — ALB HTTPS Ingress (FB-002)
+# =============================================================================
+# Apply after module.griot_ai_ingress has created and validated the ACM cert.
+# Replace ${GRIOT_AI_CERTIFICATE_ARN} with the Terraform output:
+#   terraform output -raw griot_ai_certificate_arn
+# =============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: griot-api
+  namespace: griot-ai-staging
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/success-codes: '200'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: ${GRIOT_AI_CERTIFICATE_ARN}
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+spec:
+  ingressClassName: alb
+  rules:
+    - host: griot-staging.gtcx.trade
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: griot-api
+                port:
+                  number: 80

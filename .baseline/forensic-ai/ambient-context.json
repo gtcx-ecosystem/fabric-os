@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://baseline-os/forensic-ambient-context/v1",
-  "discoveredAt": "2026-06-22T23:38:23.358Z",
+  "discoveredAt": "2026-06-25T04:03:54.210Z",
   "repoRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
   "repoId": "fabric-os",
   "filesScanned": 180,
@@ -294,7 +294,7 @@
       "evidence": [
         {
           "path": ".agent/credentials-pointer.md",
-          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `gtcx",
+          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `brid",
           "weight": 1
         },
         {
@@ -304,7 +304,7 @@
         },
         {
           "path": ".baseline/forensic-ai/ambient-context.json",
-          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `gtcx\"",
+          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `brid\"",
           "weight": 1
         },
         {
@@ -319,17 +319,17 @@
         },
         {
           "path": ".claude/CLAUDE.md",
-          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `gtcx",
+          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `brid",
           "weight": 1
         },
         {
           "path": ".gemini/GEMINI.md",
-          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `gtcx",
+          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `brid",
           "weight": 1
         },
         {
           "path": ".kimi/AGENTS.md",
-          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `gtcx",
+          "snippet": "ystem-of-Record and Operational Ownership Split”). - **System-of-record (SoR)**: `brid",
           "weight": 1
         }
       ]

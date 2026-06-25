@@ -1,98 +1,23 @@
 {
-  "startedAt": "2026-06-22T23:38:21.829Z",
+  "startedAt": "2026-06-25T04:03:53.059Z",
   "repo": "fabric-os",
   "ssot": "baseline-os/platform/scripts/ecosystem/repo-session-core.mjs",
   "agentTrace": {
-    "id": "gtcx-agent-e0a9fd50-cdcd-4509-8156-6c53b811ed18",
+    "id": "gtcx-agent-558abbc2-76d0-4758-96df-d5c572f85380",
     "header": "x-gtcx-agent-trace-id",
     "otelAttribute": "gtcx.agent_trace_id",
-    "traceparent": "00-98e7a984ed32774cb3f881bb0782133b-36040c476ee18e30-01"
+    "traceparent": "00-172818cdef35a41c2cf97834df055592-fda2a07cc1780a42-01"
   },
   "nextWork": {
-    "traceId": "9048b466-1e6c-476c-aef7-b4f4c4adbdd1",
-    "coordinationHint": "Append cross-repo-agent-log row with trace_id=9048b466-1e6c-476c-aef7-b4f4c4adbdd1",
+    "traceId": "b31c2db0-0707-4012-8886-a9608702afeb",
+    "coordinationHint": "Append cross-repo-agent-log row with trace_id=b31c2db0-0707-4012-8886-a9608702afeb",
     "ok": true,
     "backlogClear": false,
-    "frame": "development",
-    "protocol": "22-agent-work-selection",
     "repo": "fabric-os",
-    "message": "Human gates parallel — implement queue reconciled; see work register.",
-    "agentInstructions": [
-      "Phase 4: adopt persona **platform-architect** (development) — read local `/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md` first (docUrl link-only); adopt voice: Systems-oriented, reliability-focused, cost-conscious",
-      "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
-      "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
-      "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
-      "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
-      "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
-      "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
-      "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle.",
-      "Do not recycle LAUNCH-PLAN-01 — work register marks LAUNCH-PLAN-01/02/03 done.",
-      "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
-      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
-      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
-      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
-      "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
-      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
-      "fabric-os owner: copy statusUpdateClosure.postLaunchExternalMarkdown under ### Parallel sovereign gates.",
-      "FORBIDDEN: ### Approval needed for SECAS-S2-01-INGEST / BG-10-10/11 on product repos — Parallel sovereign gates (fabric-os calendar witness only).",
-      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
-      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
-      "Product team: **Fabric OS** — primary persona `platform-engineer` — Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
-      "Goal orientation: milestone `FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE` — shippable: SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
-      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item."
-    ],
-    "launchFocus": {
-      "schema": "gtcx.launchFocus.v1",
-      "normativeDoc": "01-docs/04-ops/agent-launch-focus.md",
-      "hubDoc": "https://github.com/gtcx-ecosystem/gtcx-core/blob/main/01-docs/04-ops/agent-launch-focus.md",
-      "statePath": ".baseline/launch-focus.json",
-      "provisionedAt": "2026-06-22T23:38:17.448Z",
-      "repo": "fabric-os",
-      "northStar": {
-        "outcome": "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
-        "repoRole": "Deploy EKS/testnet, secrets, observability — unblock intelligence, markets, protocols.",
-        "notTheGoal": "Re-run IR audit cluster each session to discover priorities.",
-        "gtmTier": {
-          "library": "GR-T1",
-          "integratorPilot": "GR-T2-partial",
-          "ecosystemSovereign": "below-GR-T2",
-          "index": "audit/gtm-audit-2026-06-05.md"
-        }
-      },
-      "sessionMode": "plan",
-      "activePhase": {
-        "id": "zwcmp-unblock",
-        "label": "ZWCMP pilot + Global South 10x deploy"
-      },
-      "workSet": {
-        "implement": [],
-        "plan": [],
-        "witness": [],
-        "human": []
-      },
-      "activeWorkSet": [],
-      "workSetCounts": {
-        "implement": 0,
-        "plan": 0,
-        "witness": 0,
-        "human": 0
-      },
-      "sources": [
-        "audit/product-management/execution-roadmap.md",
-        "docs/operations/agent-work-selection.md",
-        "audit/latest.json"
-      ],
-      "forbidden": [
-        "Ask operator to run master-audit before starting work",
-        "Story menus when launch-focus.json is provisioned",
-        "Re-select LAUNCH-PLAN-01 when LAUNCH-PLAN-01/02/03 are done in work register"
-      ],
-      "agentInstructions": [
-        "Launch focus (fabric-os) — read .baseline/launch-focus.json before audits.",
-        "Live sovereign pilot substrate (Wire #2, staging/testnet, hub acks, security-test path) so apps and GTM can close GR-T2 deals.",
-        "PLAN mode — 0 Class R planning tasks; reconcile roadmaps and coordination; do not idle."
-      ]
-    },
+    "sor": "machine/backlog.json",
+    "selectionSource": "compiled-backlog",
+    "protocol": "P58-executable-backlog",
+    "message": "Compiled backlog has no open stories.",
     "baselineM3CeilingScope": {
       "schema": "gtcx://baseline-os/baseline-m3-ceiling-scope/v1",
       "appliesToRepo": "baseline-os",
@@ -147,7 +72,8 @@
       ],
       "approvalSection": "omit",
       "blocksIR": false,
-      "statusUpdateRule": "fabric-os only: vendor calendar under ### Parallel sovereign gates — omit from product/engineering Status Updates"
+      "statusUpdateRule": "fabric-os only: vendor calendar under ### Parallel sovereign gates — omit from product/engineering Status Updates",
+      "sessionSection": "Parallel assurance lane"
     },
     "automatableExhausted": false,
     "parallelClassS": [
@@ -232,16 +158,24 @@
       "embodies": "Platform lead accountable for fleet reliability",
       "personaConfidence": 0.98,
       "personaSource": "work-item-manifest",
-      "goalOrientationBrief": "## Goal orientation\n**Fleet north star:** GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail\n**Quarter:** Ship · surfaces · GTM · operational AI\n**Head programme:** `PROG-CONTINENTAL-CAPITAL` → `markets-os`\n**Repo north star:** Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability\n**Milestone:** SECAS-S4-supply-chain\n**Shippable:** SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only\n**PRD refs:** prd-product-charter\n**Product team:** Fabric OS (`platform-engineer`)"
+      "goalOrientationBrief": "## Goal orientation\n**Fleet north star:** GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail\n**Quarter:** Ship · surfaces · GTM · operational AI\n**Head programme:** `PROG-CONTINENTAL-CAPITAL` → `markets-os`\n**Repo north star:** Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability\n**Milestone:** Fleet ops assurance operational\n**Shippable:** All ops functions have owner-routed PRD, harness, and fleet witness; assurance parallel to engineering\n**PRD refs:** pm/spec/fleet-ops-assurance-program.json\n**Product team:** Fabric OS (`platform-engineer`)",
+      "storyId": "COMPOSITE-RESTORE-100",
+      "valueCreated": "Restore composite ≥100 for Fleet ops assurance operational — unlocks shippable BaselineOS runtime proof for integrator GTM (GR-T2-partial)",
+      "scopeId": "own-in-scope",
+      "scopeLabel": "Own repo — in scope",
+      "scope": "own-in-scope — Own repo — in scope",
+      "gtmContribution": "Shipping: Named releases with demo/staging/pilot paths that run · tier GR-T2-partial"
     },
     "communicationPolicy": {
       "statusUpdateSections": [
         "Execution mode",
         "Done",
         "Next work item",
-        "Parallel sovereign gates"
+        "Parallel assurance lane"
       ],
-      "forbiddenStatusUpdateSections": [],
+      "forbiddenStatusUpdateSections": [
+        "Approval needed"
+      ],
       "forbiddenReplyPatterns": [
         "Approval needed: SECAS-S2-01-INGEST",
         "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
@@ -256,7 +190,7 @@
     },
     "gateExplainer": {
       "schema": "gtcx://baseline-os/gate-explainer/v1",
-      "section": "Parallel sovereign gates",
+      "section": "Parallel assurance lane",
       "preamble": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.",
       "operatorActionRequired": false,
       "blocksIR": false,
@@ -307,15 +241,17 @@
       ]
     },
     "statusUpdateClosure": {
-      "schema": "gtcx://fabric-os/secas-status-update-closure/v2",
+      "schema": "gtcx://fabric-os/secas-status-update-closure/v3",
       "phase": "internal_closure_complete",
       "sections": [
         "Execution mode",
         "Done",
         "Next work item",
-        "Parallel sovereign gates"
+        "Parallel assurance lane"
       ],
-      "forbiddenSections": [],
+      "forbiddenSections": [
+        "Approval needed"
+      ],
       "forbiddenGateIds": [
         "EXT-INF-013"
       ],
@@ -324,10 +260,34 @@
         "SECAS-S2-01-INGEST post 2026-06-21 — Class A",
         "omit in bridge/agile/canon"
       ],
+      "parallelAssuranceLaneMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS pen-test calendar · **Implication:** Does not block pen-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
       "parallelSovereignGatesMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS pen-test calendar · **Implication:** Does not block pen-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
       "postLaunchExternalMarkdown": "**Not engineering or GTM roadmap work.** Vendor/auditor calendar artifacts — **blocksIR: false** — formal customer adoption track only; fabric-os witnesses calendar.\n\n- **Class A** · `SECAS-S2-01-INGEST` · **What:** Vendor pen-test report file arrives; operator authorizes ingest into fabric-os evidence path · **Why:** Agent cannot receive or ingest vendor security artifact before the execution window closes · **Unblock:** Place vendor report JSON and run `pnpm secas:pentest:report:ingest -- --input=<vendor-report.json>` on or after 2026-06-21 · **When:** Earliest ingest 2026-06-21 (window 2026-06-17..2026-06-21) · **Implication:** No fleet-wide stop — bridge/agile/canon/product repos omit this gate; fabric-os continues Class R prep until report lands · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class A** · `BG-10-10` · **What:** Vendor executes live-stack pen test during contracted calendar window · **Why:** Agent cannot pull forward vendor execution or receive report before window · **Unblock:** Vendor report delivery; ingest post 2026-06-21 · **When:** 2026-06-17..2026-06-21 · **Implication:** Witness prep and friction checks continue; ingest blocked until report delivery · **blocksIR:** false · **Does not block:** `SECAS-S2-01`\n- **Class S** · `BG-10-11` · **What:** SOC 2 Type I opinion letter from auditor · **Why:** Agent cannot countersign or synthesize auditor attestation · **Unblock:** Auditor opinion letter to compliance evidence path · **When:** Parallel track — not on SECAS pen-test calendar · **Implication:** Does not block pen-test window prep or fleet program office queue · **blocksIR:** false · **Does not block:** `SECAS-S2-01`",
-      "rule": "Copy postLaunchExternalMarkdown under ### Parallel sovereign gates — FORBIDDEN on product/engineering roadmaps"
+      "rule": "Copy parallelAssuranceLaneMarkdown under ### Parallel assurance lane — not Approval needed; not on product/engineering roadmaps"
     },
+    "agentInstructions": [
+      "Milestone drift: composite 59 < 100. Restore composite before feature work.",
+      "Phase 4: adopt persona **platform-architect** (development) — read local `/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md` first (docUrl link-only); adopt voice: Systems-oriented, reliability-focused, cost-conscious",
+      "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
+      "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
+      "Milestone drift: composite 59 < 100. Restore composite before feature work.",
+      "Include **Active persona** + **Frame** + **Voice** in Proceed Brief (P26).",
+      "Forbidden voice: \"Your move\", \"tell me what you think\", casual walkthrough delegation — use Operator entry + P27 probes.",
+      "fabric-os owner: copy statusUpdateClosure.parallelAssuranceLaneMarkdown under ### Parallel assurance lane.",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
+      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
+      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
+      "Engineering lane: you implement product features — fabric-os owns security/QA, canon-os owns doc register, legal is agile-os Class S register.",
+      "fabric-os owner: copy statusUpdateClosure.parallelAssuranceLaneMarkdown under ### Parallel assurance lane.",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
+      "fabric-os owner: copy statusUpdateClosure.parallelAssuranceLaneMarkdown under ### Parallel assurance lane.",
+      "FORBIDDEN: ### Approval needed for SECAS-S2-01-INGEST / BG-10-10/11 — use Parallel assurance lane (blocksIR:false).",
+      "FORBIDDEN: EXT-INF-013 in SECAS-S2-01 Status Update.",
+      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item.",
+      "Product team: **Fabric OS** — primary persona `platform-engineer` — Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
+      "Goal orientation: milestone `FOAP-M1-OPERATIONAL` — shippable: All ops functions have owner-routed PRD, harness, and fleet witness; assurance parallel to engineering",
+      "Non-engineering (security, legal, docs, audit) → parallel lanes — fabric-os / canon-os / agile-os — never product Next work item."
+    ],
     "proceedBriefGuard": {
       "nextMustComeFrom": "this repo P22 JSON (next / nextWorkItem)",
       "forbiddenSources": [
@@ -372,6 +332,7 @@
       "blocksIR": false,
       "spec": "bridge-os/pm/spec/vendor-assurance-status-update-routing.json"
     },
+    "frame": "development",
     "persona": {
       "institutional": "platform-architect",
       "mcp": "agile",
@@ -452,7 +413,16 @@
           ],
           "tags": [
             "[\"documentation\", \"index\"]",
+            "['documentation', 'architecture']",
+            "['architecture', 'data-flow']",
+            "['architecture', 'decisions']",
+            "['architecture', 'integration']",
+            "['architecture', 'knowledge-graph']",
+            "['architecture', 'nfr']",
             "['documentation', 'multi-pillar', 'fractal-mpr']",
+            "['architecture', 'security']",
+            "['architecture', 'system-context']",
+            "['architecture', 'technology-strategy']",
             "['archive', 'forensic', 'decompose']",
             "[['documentation', 'multi-pillar', 'fractal-mpr']]",
             "['documentation', 'agents', 'provisioning']",
@@ -481,16 +451,7 @@
             "['documentation', 'operations', 'compliance']",
             "['documentation', 'operations', 'coordination']",
             "['documentation', 'operations', 'deployment']",
-            "['documentation', 'operations', 'remediation']",
-            "['documentation', 'operations', 'repo']",
-            "['documentation', 'operations', 'runbooks']",
-            "['documentation', 'operations', 'templates']",
-            "['documentation', 'operations', 'workspace']",
-            "['documentation', 'product', 'P57']",
-            "['research', 'intake', '11PR']",
-            "['business', 'research', 'voice']",
-            "['documentation', 'operations', 'archive']",
-            "['operations', 'communication']"
+            "['documentation', 'operations', 'remediation']"
           ],
           "confidence": 0.75
         },
@@ -502,6 +463,11 @@
             "ecosystem:migration:score",
             "test",
             "build",
+            "Platform",
+            "start",
+            "primitives",
+            "decision",
+            "vault",
             "docs:engineering:check",
             "docs:operations:check",
             "docs:product:check",
@@ -550,61 +516,29 @@
             "ecosystem:team:sync",
             "--version",
             "runbook:production-preflight",
-            "if",
-            "start",
-            "session",
-            "agent:start",
-            "agent:session-start",
-            "next"
+            "if"
           ],
           "commands": [
             "baseline start",
-            "baseline context",
-            "pnpm ops:check",
-            "pnpm agent:conduct:check",
-            "pnpm agent:auto-dev:check",
-            "Baseline loaded",
-            "pnpm agent:next-work",
-            "pnpm --dir",
-            "pnpm fabric:ops-contracts:check",
-            "pnpm ecosystem:five-core-audits:check",
-            "pnpm operations:check",
-            "pnpm docs:ia:check",
-            "pnpm docs:tree:check",
-            "baseline layered",
-            "pnpm fabric:ops:check",
-            "pnpm fabric:ops:check:strict",
-            "pnpm operations:consumption:check",
-            "pnpm legalops:check",
-            "pnpm ecosystem:ops-authority:check",
-            "pnpm agile:check",
-            "pnpm product:compile",
-            "pnpm machine:sync",
-            "pnpm docs:product:check",
-            "pnpm product:compile:check",
-            "pnpm canon:contracts:check:write",
-            "pnpm docs:pack:pillar-contract:check",
-            "pnpm canon:synthesize:check",
-            "pnpm session",
-            "pnpm next",
-            "pnpm gates",
-            "pnpm hub",
-            "pnpm mcp",
-            "baseline to",
-            "pnpm serve",
-            "baseline CLI",
-            "pnpm agent:consumption:check",
-            "baseline requires",
-            "baseline CLI:",
-            "pnpm --filter",
-            "pnpm repo:provision:check"
+            "baseline session",
+            "pnpm script",
+            "baseline files",
+            "baseline directory",
+            "baseline file",
+            "pnpm fleet:ceremony:check:write",
+            "baseline completion",
+            "baseline audit",
+            "baseline shows",
+            "pnpm operations:check"
           ]
         },
         "studio": {
           "deliverables": [
             "folder-spec",
             "relocation-report",
-            "docs-integrity-pack"
+            "docs-integrity-pack",
+            "docs-integrity",
+            "deliverable"
           ],
           "provenanceRequired": true
         },
@@ -685,13 +619,13 @@
       "quarterId": "GTCX-Q3-2026",
       "recalibrate": "pnpm ecosystem:clarity:report:brief",
       "northStar": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
-      "activeMilestone": "SECAS-S4-supply-chain",
-      "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+      "activeMilestone": "Fleet ops assurance operational",
+      "shippableOutcome": "All ops functions have owner-routed PRD, harness, and fleet witness; assurance parallel to engineering",
       "prdRefs": [
-        "prd-product-charter"
+        "pm/spec/fleet-ops-assurance-program.json"
       ],
-      "programmeId": "PROG-SECAS-ENGINEERING",
-      "headStoryId": "XR-FABRIC-SESSION-OPEN-004",
+      "programmeId": "PROG-FLEET-OPS-ASSURANCE",
+      "headStoryId": "FOAP-007",
       "workMustTraceTo": [
         "prdRef",
         "capabilityId",
@@ -705,7 +639,7 @@
     },
     "fleetGoalsRegistry": {
       "version": "1.1.0",
-      "updated": "2026-06-17",
+      "updated": "2026-06-24",
       "path": "pm/spec/ecosystem-fleet-goals-registry.json"
     },
     "quarterPillars": {
@@ -762,11 +696,79 @@
         "doc promotion implement"
       ]
     },
+    "compositeDrift": {
+      "schema": "gtcx://bridge-os/composite-drift/v1",
+      "current": 59,
+      "required": 100,
+      "milestone": "SECAS-S4-supply-chain",
+      "forced": true
+    },
+    "next": {
+      "storyId": "COMPOSITE-RESTORE-100",
+      "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain"
+    },
+    "nextWorkItem": {
+      "type": "story",
+      "typeLabel": "Story",
+      "id": "COMPOSITE-RESTORE-100",
+      "title": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain",
+      "owner": "fabric-os",
+      "state": "in_progress",
+      "gtmTrace": true,
+      "programmeId": "PROG-FLEET-OPS-ASSURANCE",
+      "milestoneId": "Fleet ops assurance operational",
+      "gtmTier": "GR-T2-partial",
+      "capabilityId": null,
+      "prdRef": null,
+      "milestoneDoD": {
+        "milestoneId": "FOAP-M1-OPERATIONAL",
+        "title": "Fleet ops assurance operational",
+        "shippableOutcome": "All ops functions have owner-routed PRD, harness, and fleet witness; assurance parallel to engineering",
+        "acceptanceChecks": [
+          {
+            "id": "fleet-ops-assurance",
+            "label": "Master fleet ops assurance harness",
+            "witness": "audit/evidence/fleet-ops-assurance-check-latest.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "ops-lanes-100",
+            "label": "Bridge ops-lanes-100 rollup",
+            "witness": "../bridge-os/pm/ci/ops-lanes-100/rollup-latest.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "central-assurance",
+            "label": "Central assurance programme",
+            "witness": "audit/evidence/central-assurance-program-latest.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "legal-friction",
+            "label": "Legal friction register depth",
+            "witness": "audit/evidence/legal-friction-check-latest.json",
+            "actual": "PASS"
+          }
+        ]
+      },
+      "gtmContribution": "Shipping: Named releases with demo/staging/pilot paths that run · tier GR-T2-partial",
+      "valueCreated": "Restore composite ≥100 for Fleet ops assurance operational — unlocks shippable BaselineOS runtime proof for integrator GTM (GR-T2-partial)",
+      "scopeId": "own-in-scope",
+      "scopeLabel": "Own repo — in scope",
+      "scope": "own-in-scope — Own repo — in scope",
+      "lane": null,
+      "p22Reason": "composite 59 < 100 for milestone SECAS-S4-supply-chain · traces PROG-CONTINENTAL-CAPITAL",
+      "workDescription": "Restore composite ≥100 (current 59) — SECAS-S4-supply-chain · Restore composite ≥100 for Fleet ops assurance operational — unlocks shippable BaselineOS runtime proof for integrator GTM (GR-T2-partial) · own-in-scope — Own repo — in scope"
+    },
+    "selection": {
+      "tier": "milestone-drift",
+      "reason": "Composite drift — 59/100"
+    },
     "goalTrace": {
       "schema": "gtcx://bridge-os/goal-trace/v2.1",
       "repo": "fabric-os",
-      "nextStoryId": null,
-      "headStoryId": "XR-FABRIC-SESSION-OPEN-004",
+      "nextStoryId": "COMPOSITE-RESTORE-100",
+      "headStoryId": "FOAP-007",
       "headProgrammeId": "PROG-CONTINENTAL-CAPITAL",
       "headProductRepo": "markets-os",
       "quarterPillars": {
@@ -803,21 +805,51 @@
       "fleetNorthStar": "GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail",
       "declaredTrace": null,
       "programmeId": "PROG-CONTINENTAL-CAPITAL",
-      "milestone": "SECAS-S4-supply-chain",
-      "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+      "milestone": "Fleet ops assurance operational",
+      "shippableOutcome": "All ops functions have owner-routed PRD, harness, and fleet witness; assurance parallel to engineering",
       "gtmTier": "GR-T2-partial",
       "capabilityId": null,
-      "milestoneDoD": null,
+      "milestoneDoD": {
+        "milestoneId": "FOAP-M1-OPERATIONAL",
+        "title": "Fleet ops assurance operational",
+        "shippableOutcome": "All ops functions have owner-routed PRD, harness, and fleet witness; assurance parallel to engineering",
+        "acceptanceChecks": [
+          {
+            "id": "fleet-ops-assurance",
+            "label": "Master fleet ops assurance harness",
+            "witness": "audit/evidence/fleet-ops-assurance-check-latest.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "ops-lanes-100",
+            "label": "Bridge ops-lanes-100 rollup",
+            "witness": "../bridge-os/pm/ci/ops-lanes-100/rollup-latest.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "central-assurance",
+            "label": "Central assurance programme",
+            "witness": "audit/evidence/central-assurance-program-latest.json",
+            "actual": "PASS"
+          },
+          {
+            "id": "legal-friction",
+            "label": "Legal friction register depth",
+            "witness": "audit/evidence/legal-friction-check-latest.json",
+            "actual": "PASS"
+          }
+        ]
+      },
       "aligned": true,
       "recalibrate": "pnpm ecosystem:clarity:report:brief"
     },
     "backlogClearApproach": {
       "schema": "gtcx://bridge-os/backlog-clear-approach/v1",
-      "phase": "far",
+      "phase": "clear",
       "escalate": false,
-      "backlogClear": false,
-      "manifestPct": 48,
-      "openAutomatable": 13,
+      "backlogClear": true,
+      "manifestPct": 100,
+      "openAutomatable": 0,
       "automatableExhausted": false,
       "sessionOpenItemsCount": 0,
       "protocol": "pm/spec/backlog-clear-approach-protocol.json",
@@ -829,7 +861,7 @@
       "institutional": "platform-architect",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703",
-      "readAt": "2026-06-22T23:38:03.018Z"
+      "readAt": "2026-06-25T00:23:24.073Z"
     },
     "engineeringLaneAbstraction": {
       "applies": false,
@@ -843,10 +875,10 @@
       "forbiddenAsNextWorkItem": [
         "XR-516"
       ],
-      "localAgileAnchor": false,
+      "localAgileAnchor": true,
       "sessionPriorityLocked": false,
       "engineeringRedirectSuppressed": true,
-      "rule": "Foreign fleet redirect deferred — cwd owner repo implements local backlog; switch only when operator overrides"
+      "rule": "Local agile P22 anchor — fleet engineeringRedirect deferred (ACOM-WI-002 / product-repo local next)"
     },
     "deferredFleetRedirect": {
       "type": "Fleet owner engineering",
@@ -860,7 +892,7 @@
       "because": "Sprint 86 AFM-REG-003; ADR-0007 Class A parallel; Wave 0 owner repos",
       "source": "fleet-live-programmes",
       "placement": "Deferred — not Next work item",
-      "reason": "Session priority lock active — operator P0 overrides fleet engineeringRedirect"
+      "reason": "Owner repo has local P22 next — fleet live programmes are context only"
     },
     "registerWitness": {
       "parallelClassS": [
@@ -943,7 +975,106 @@
       "placement": "Parallel sovereign gates — not Next work item"
     },
     "statusUpdateSections": {
-      "parallelSovereignGates": "- **Class S** · `XR-516` · **Lane:** partnerships · **What:** SPEC §17 co-author sign-off · **Unblock:** ecosystem-os/ops/gtm/inbound-tickets/to-human-xr-516-spec17-signoff-2026-06-12.md · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-INF-014` · **Lane:** partnerships · **What:** ZWCMP DPA + pilot agreement signature · **Unblock:** Sign DPA + pilot PDFs; file under audit/vendor-outreach/zwcmp/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-INF-015` · **Lane:** legal · **What:** Indemnified SLA legal review + insurance quote · **Unblock:** Legal memo + insurance quote on verification-sla-draft.md base · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `BM-ZM-PILOT-01` · **Lane:** partnerships · **What:** Zambia MMMD 60-day pilot contract or countersigned LOI · **Unblock:** Countersign 60-day MMMD pilot contract or LOI; file witness under audit/vendor-outreach/zm-mmmd/ · **blocksIR:** false · **Does not block:** `BM-P1-zambia-pilot` · **Readiness:** `terra-os/audit/evidence/pilot-zambia-readiness-latest.json`\n- **Class S** · `BL-SOC2-01` · **Lane:** compliance · **What:** SOC 2 Type II auditor opinion track · **Unblock:** Auditor publishes Type I/II opinion letter — witness under audit/evidence/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`"
+      "nextWorkItem": "- **Type:** Story\n- **ID:** `COMPOSITE-RESTORE-100`\n- **Title:** Restore composite ≥100 (current 59) — SECAS-S4-supply-chain\n- **Owner:** fabric-os\n- **Value created:** Restore composite ≥100 for Fleet ops assurance operational — unlocks shippable BaselineOS runtime proof for integrator GTM (GR-T2-partial)\n- **Scope:** own-in-scope — Own repo — in scope\n- **GTM contribution:** Shipping: Named releases with demo/staging/pilot paths that run · tier GR-T2-partial",
+      "parallelAssuranceLane": "- **Class S** · `XR-516` · **Lane:** partnerships · **What:** SPEC §17 co-author sign-off · **Unblock:** ecosystem-os/ops/gtm/inbound-tickets/to-human-xr-516-spec17-signoff-2026-06-12.md · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-INF-014` · **Lane:** partnerships · **What:** ZWCMP DPA + pilot agreement signature · **Unblock:** Sign DPA + pilot PDFs; file under audit/vendor-outreach/zwcmp/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `EXT-INF-015` · **Lane:** legal · **What:** Indemnified SLA legal review + insurance quote · **Unblock:** Legal memo + insurance quote on verification-sla-draft.md base · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`\n- **Class S** · `BM-ZM-PILOT-01` · **Lane:** partnerships · **What:** Zambia MMMD 60-day pilot contract or countersigned LOI · **Unblock:** Countersign 60-day MMMD pilot contract or LOI; file witness under audit/vendor-outreach/zm-mmmd/ · **blocksIR:** false · **Does not block:** `BM-P1-zambia-pilot` · **Readiness:** `terra-os/audit/evidence/pilot-zambia-readiness-latest.json`\n- **Class S** · `BL-SOC2-01` · **Lane:** compliance · **What:** SOC 2 Type II auditor opinion track · **Unblock:** Auditor publishes Type I/II opinion letter — witness under audit/evidence/ · **blocksIR:** false · **Does not block:** `owner-repo Class R implement queue`"
+    },
+    "p22SelectionPolicy": {
+      "schema": "gtcx://bridge-os/p22-local-agile-anchor/v1",
+      "rule": "Product repo local next wins — engineeringRedirect moved to deferredFleetRedirect",
+      "localNext": "COMPOSITE-RESTORE-100"
+    },
+    "parallelAssuranceLane": [
+      {
+        "gateId": "XR-516",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "lane": "externalAssurance",
+        "blocksEngineeringMaturity": false,
+        "blocksIntegratorPilotGtm": false,
+        "blocksGtmStage": false,
+        "dealQualificationOnly": true,
+        "what": "SPEC §17 co-author sign-off",
+        "why": "Engineering + Security co-authors sign SPEC §17 attestation; hub updates register witness only.",
+        "implication": "Hub automatable backlog clear — fleet engineering continues in owner repos in parallel",
+        "unblockAction": "ecosystem-os/ops/gtm/inbound-tickets/to-human-xr-516-spec17-signoff-2026-06-12.md",
+        "doesNotBlock": "owner-repo Class R implement queue",
+        "statusUpdateSection": "Parallel assurance lane",
+        "registerOnly": true
+      },
+      {
+        "gateId": "EXT-INF-014",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "lane": "externalAssurance",
+        "blocksEngineeringMaturity": false,
+        "blocksIntegratorPilotGtm": false,
+        "blocksGtmStage": false,
+        "dealQualificationOnly": true,
+        "what": "ZWCMP DPA + pilot agreement signature",
+        "why": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+        "implication": "Engineering lane continues — register-only parallel sovereign gate",
+        "unblockAction": "Sign DPA + pilot PDFs; file under audit/vendor-outreach/zwcmp/",
+        "doesNotBlock": "owner-repo Class R implement queue",
+        "statusUpdateSection": "Parallel assurance lane",
+        "registerOnly": true
+      },
+      {
+        "gateId": "EXT-INF-015",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "lane": "externalAssurance",
+        "blocksEngineeringMaturity": false,
+        "blocksIntegratorPilotGtm": false,
+        "blocksGtmStage": false,
+        "dealQualificationOnly": true,
+        "what": "Indemnified SLA legal review + insurance quote",
+        "why": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+        "implication": "Engineering lane continues — register-only parallel sovereign gate",
+        "unblockAction": "Legal memo + insurance quote on verification-sla-draft.md base",
+        "doesNotBlock": "owner-repo Class R implement queue",
+        "statusUpdateSection": "Parallel assurance lane",
+        "registerOnly": true
+      },
+      {
+        "gateId": "BM-ZM-PILOT-01",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "lane": "externalAssurance",
+        "blocksEngineeringMaturity": false,
+        "blocksIntegratorPilotGtm": false,
+        "blocksGtmStage": false,
+        "dealQualificationOnly": true,
+        "what": "Zambia MMMD 60-day pilot contract or countersigned LOI",
+        "why": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+        "implication": "Engineering lane continues — register-only parallel sovereign gate",
+        "unblockAction": "Countersign 60-day MMMD pilot contract or LOI; file witness under audit/vendor-outreach/zm-mmmd/",
+        "doesNotBlock": "BM-P1-zambia-pilot",
+        "statusUpdateSection": "Parallel assurance lane",
+        "registerOnly": true
+      },
+      {
+        "gateId": "BL-SOC2-01",
+        "authorityClass": "S",
+        "blocksIR": false,
+        "lane": "externalAssurance",
+        "blocksEngineeringMaturity": false,
+        "blocksIntegratorPilotGtm": false,
+        "blocksGtmStage": false,
+        "dealQualificationOnly": true,
+        "what": "SOC 2 Type II auditor opinion track",
+        "why": "Class S — agent cannot countersign, ratify, or execute on behalf of humans",
+        "implication": "Engineering lane continues — register-only parallel sovereign gate",
+        "unblockAction": "Auditor publishes Type I/II opinion letter — witness under audit/evidence/",
+        "doesNotBlock": "owner-repo Class R implement queue",
+        "statusUpdateSection": "Parallel assurance lane",
+        "registerOnly": true
+      }
+    ],
+    "laneSeparation": {
+      "policy": "GS-MATURITY-LANE-001",
+      "sessionSurface": "parallelAssuranceLane",
+      "blocksEngineeringMaturity": false,
+      "blocksIntegratorPilotGtm": false
     },
     "hubScopeGuard": {
       "ok": true,
@@ -958,6 +1089,6 @@
     "witness": null,
     "error": "baselineos CLI not built"
   },
-  "gitChanged": 38,
+  "gitChanged": 95,
   "authorityClass": "R"
 }

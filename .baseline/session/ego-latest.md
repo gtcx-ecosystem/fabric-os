@@ -1,6 +1,6 @@
 # EGO — GTCX operator self (compiled)
 
-**Repo:** fabric-os · **Story:** unknown · **Compiled:** 2026-06-22T23:38:30.862Z
+**Repo:** fabric-os · **Story:** COMPOSITE-RESTORE-100 · **Compiled:** 2026-06-25T04:03:58.150Z
 
 *Persona defines the role. EGO embodies it for this session.*
 
@@ -204,10 +204,10 @@ When this persona is active:
 
 ## Layer 5 — Work focus (P22)
 
-**Story ID:** unknown
-**Title:** unknown
+**Story ID:** COMPOSITE-RESTORE-100
+**Title:** Restore composite ≥100 (current 59) — SECAS-S4-supply-chain
 **Authority class:** R
-**Because:** Human gates parallel — implement queue reconciled; see work register.
+**Because:** Composite drift — 59/100
 
 ---
 
@@ -215,9 +215,11 @@ When this persona is active:
 
 ## Proceed Brief (Protocol 26)
 
-- **Next action:** Implement unknown
-- **Story ID:** unknown
-- **Because:** Human gates parallel — implement queue reconciled; see work register.
+- **Next action:** Implement COMPOSITE-RESTORE-100
+- **Story:** `COMPOSITE-RESTORE-100` — Restore composite ≥100 (current 59) — SECAS-S4-supply-chain
+- **Value created:** Restore composite ≥100 for Fleet ops assurance operational — unlocks shippable BaselineOS runtime proof for integrator GTM (GR-T2-partial)
+- **Scope:** own-in-scope — Own repo — in scope
+- **GTM contribution:** Shipping: Named releases with demo/staging/pilot paths that run · tier GR-T2-partial
 - **Authority class (P28):** R
 - **Authorization:** Protocol 22 selection + repo roadmap (no menu)
 - **Active persona:** platform-architect (agile)
@@ -225,20 +227,34 @@ When this persona is active:
 - **Voice:** Systems-oriented, reliability-focused, cost-conscious
 - **Embodies:** Platform lead accountable for fleet reliability
 - **Persona doc:** https://gtcx-ecosystem.gitbook.io/gtcx-ecosystem/governance/institutional/personas/platform-architect
+
+## Goal orientation
+**Fleet north star:** GR-T2 integrator pilot — live sovereign substrate + bank innovation pilots + continental capital rail
+**Quarter:** Ship · surfaces · GTM · operational AI
+**Head programme:** `PROG-CONTINENTAL-CAPITAL` → `markets-os`
+**Repo north star:** Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability
+**Milestone:** Fleet ops assurance operational
+**Shippable:** All ops functions have owner-routed PRD, harness, and fleet witness; assurance parallel to engineering
+**PRD refs:** pm/spec/fleet-ops-assurance-program.json
+**Product team:** Fabric OS (`platform-engineer`)
 - **Persona selection:** source work-item-manifest · confidence 0.98
 
 ### Spine (Forensic · EGO · APEX · Nitro)
 - **Forensic AI:** ok · org GTCX · source explicit · graph 1 nodes · pending 4
 - **Forensic witness:** /Users/amanianai/Sites/gtcx-ecosystem/fabric-os/audit/evidence/forensic-ai-latest.json
 - **Experience prompts:** /Users/amanianai/Sites/gtcx-ecosystem/fabric-os/.baseline/experience/forensic-solicitation.json
-- **Parse AI:** persona platform-engineer · initiatives 15
+- **Parse AI:** persona platform-engineer · initiatives 51
 - **Parse witness:** audit/evidence/forensic-parse-latest.json
 - **EGO:** compiled · path .baseline/session/ego-latest.md
 
 ### Layers (operator surface)
-- **Frame:** development · tags ["documentation", "index"], ['documentation', 'multi-pillar', 'fractal-mpr'], ['archive', 'forensic', 'decompose'], [['documentation', 'multi-pillar', 'fractal-mpr']], ['documentation', 'agents', 'provisioning'], ['documentation', 'agents'], ['documentation', 'provisioning'], ['documentation', 'agile']
-- **Lang:** docs:foundation:check · operations:check · agent:bootstrap:check · ecosystem:migration:score · test · build · docs:engineering:check · docs:operations:check · docs:product:check · docs:ux:check · …
-- **Studio:** folder-spec · relocation-report · docs-integrity-pack
+- **Frame:** development · tags ["documentation", "index"], ['documentation', 'architecture'], ['architecture', 'data-flow'], ['architecture', 'decisions'], ['architecture', 'integration'], ['architecture', 'knowledge-graph'], ['architecture', 'nfr'], ['documentation', 'multi-pillar', 'fractal-mpr']
+- **Lang:** docs:foundation:check · operations:check · agent:bootstrap:check · ecosystem:migration:score · test · build · Platform · start · primitives · decision · …
+- **Studio:** folder-spec · relocation-report · docs-integrity-pack · docs-integrity · deliverable
+
+### Not next
+- `FLEET-OWNER-markets-os` — Continental capital + digital-rail Wave 0
+- **Because deferred:** Sprint 86 AFM-REG-003; ADR-0007 Class A parallel; Wave 0 owner repos
 
 - **Hub playbook:** https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/ecosystem-unblock-playbook-2026-06.md
 - **Hub bridge:** https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/cross-repo-agent-bridge.md

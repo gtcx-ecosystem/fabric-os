@@ -1,11 +1,11 @@
 {
   "schema": "gtcx://baseline-os/forensic-parse-artifact/v1",
   "programId": "FORENSIC-PARSE-001",
-  "parsedAt": "2026-06-22T23:38:23.169Z",
+  "parsedAt": "2026-06-25T04:03:54.052Z",
   "repo": "fabric-os",
   "corpus": {
     "docs": {
-      "filesScanned": 345,
+      "filesScanned": 400,
       "paths": [
         "docs/CHANGELOG.md",
         "docs/INDEX.md",
@@ -26,6 +26,8 @@
         "docs/architecture/integration/README.md",
         "docs/architecture/integration/narrative/README.md",
         "docs/architecture/integration/narrative/legacy-README.md",
+        "docs/architecture/narratives/README.md",
+        "docs/architecture/narratives/agent-topology-2026-q3.md",
         "docs/architecture/pillars/FOLDER-SPEC.md",
         "docs/architecture/pillars/README.md",
         "docs/architecture/requirements/FOLDER-SPEC.md",
@@ -84,39 +86,73 @@
         "docs/business/research/funding-analysis.md",
         "docs/business/research/industry-transformation.md",
         "docs/business/research/master-voice.md",
-        "docs/business/research/research-portfolio-blueprint.md",
-        "docs/business/research/scorecard.md",
-        "docs/business/sales/FOLDER-SPEC.md"
+        "docs/business/research/research-portfolio-blueprint.md"
       ],
       "initiativeIds": [
         "INIT-DOCS-FOUNDATION-IA-V1",
         "INIT-DOCS-PROVISIONING-V1-W2",
         "XR-518",
         "INIT-PRODUCT-TEAM-MODEL-R5",
+        "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
+        "XR-000",
+        "XR-BASELINE-ROADMAP-INTAKE-001",
+        "XR-AGILE-ROADMAP-INTAKE-001",
+        "XR-BRIDGE-FRESH-AUDIT-001",
+        "XR-MKT-AGENT-D6-001",
+        "XR-FABRIC-TRADE-LANES-001",
+        "XR-FABRIC-SPRINT-AUTH-001",
+        "XR-BRIDGE-LANES-REGISTRY-001",
+        "XR-BRIDGE-LANES-REGISTRY-SYNC",
+        "XR-507",
+        "XR-508",
+        "XR-302",
+        "XR-402",
+        "XR-516",
+        "XR-104",
+        "XR-004",
+        "XR-201",
+        "XR-ID",
+        "XR-101",
+        "XR-401",
+        "XR-050",
+        "XR-202",
         "INIT-AGENT-TOOL-SCOUT",
         "XR-BRIDGE-TOOL-SCOUT-001",
+        "INIT-XR-FLEET-MATURITY-LANES",
+        "XR-FLEET-MATURITY-LANES-001",
+        "XR-GTM-ASSURANCE-LANE-002",
+        "XR-FLEET-MATURITY-LANES",
+        "BL-002",
+        "INIT-GLOBAL-SOUTH-GTM",
+        "INIT-BRIDGE-MATURITY-LANE-GATES",
+        "INIT-BASELINE-MATURITY-LANE-SOR",
+        "INIT-AGILE-MATURITY-LANE-CEREMONY",
+        "BL-001",
         "INIT-GTCX-INFRA-SECAS",
         "INIT-GTCX-INFRA-DAAS",
         "INIT-FABRIC-OPS-PRD-ROUTING",
-        "DOC-MPR-FLEET-SCRUB-003",
-        "XR-FABRIC-SESSION-OPEN-004",
-        "XR-516",
-        "BL-SOC2-01",
+        "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
         "INIT-OPS-LANES-OPERATIONALIZE",
-        "INIT-OPS-LANES-ATIONALIZE"
+        "INIT-ECOSYSTEM-LEGAL-PROGRAM",
+        "XR-FLEET-MATURITY-LANES-001-",
+        "BL-SOC2",
+        "INIT-WORLD-CLASS-SECOPS",
+        "XR-BRIDGE-SECOPS-WC-001",
+        "INIT-EXEC-GAP",
+        "DOC-MPR-FLEET-SCRUB-003"
       ]
     },
     "sessions": {
-      "ledgerCount": 33,
-      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-fabric-os/agent-transcripts/8e477643-199e-41be-a7bd-196eba682a03/8e477643-199e-41be-a7bd-196eba682a03.jsonl",
-      "transcriptLines": 603,
+      "ledgerCount": 39,
+      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-sensei-os/agent-transcripts/d4d220c7-adda-4a34-b714-6a8292bde5d8/d4d220c7-adda-4a34-b714-6a8292bde5d8.jsonl",
+      "transcriptLines": 764,
       "userQueryCount": 30
     }
   },
   "layerBindings": {
     "persona": {
       "primary": "platform-engineer",
-      "confidence": 0.8571428571428572,
+      "confidence": 0.8048780487804879,
       "candidates": [
         {
           "personaId": "platform-engineer",
@@ -124,7 +160,7 @@
         },
         {
           "personaId": "platform-architect",
-          "weight": 10
+          "weight": 16
         }
       ]
     },
@@ -141,6 +177,7 @@
         "['documentation', 'architecture/diagrams']",
         "['documentation', 'architecture/integration']",
         "['pointer', 'documentation']",
+        "[['signal', 'architecture', 'agents']]",
         "['documentation', 'architecture/pillars']",
         "['documentation', 'architecture/requirements']",
         "['documentation', 'multi-pillar', 'fractal-mpr']",
@@ -171,8 +208,7 @@
         "[['docs-site', 'architecture']]",
         "[['docs-site', 'audit-signer', 'reference']]",
         "[['docs-site', 'compliance-db', 'terraform', 'reference']]",
-        "[['docs-site', 'mcp', 'compliance-gateway', 'reference']]",
-        "[['docs-site', 'distribution', 'compliance']]"
+        "[['docs-site', 'mcp', 'compliance-gateway', 'reference']]"
       ],
       "confidence": 0.75
     },
@@ -199,71 +235,56 @@
         "session",
         "canon:synthesize",
         "add",
+        "docs:operations:check",
+        "agent:communication:check",
+        "session:render-sample",
+        "ecosystem:agent:communication:check",
         "agent:work-selection:check",
         "ops:check",
         "fabric:assurance:run:write",
-        "commops:check",
-        "commops:check:write",
+        "CEILING-PREP-PASS",
+        "fabric:lanes:check",
+        "daas:cards:check",
+        "ecosystem:lanes:check",
         "taas:tool-scout:run",
         "taas:tool-scout:run:write",
-        "fabric:ops-lanes-11pr:check",
+        "maturity-lane:check:write",
+        "central-assurance:check:write",
         "fabric:operations:check",
+        "daas:fleet:health",
+        "ecosystem:fleet:diagnostic:refresh:write",
+        "fabric:ops-lanes-11pr:check",
         "daas:friction:check",
         "secas:friction:check",
         "ecosystemops:network:check",
         "finops:check",
         "payops:substrate:readiness",
+        "commops:check",
         "aiops:check",
-        "fabric:ops:check",
-        "finops:check:write",
+        "fleet-ops-assurance:check:write",
+        "secas:friction:check:write",
+        "legal:friction:check:write",
         "legalops:check",
         "legalops:check:write",
         "daas:friction:check:write",
         "daas:cards:check:write",
-        "daas:fleet:health",
         "payops:providers:check:write",
         "payops:substrate:readiness:write",
-        "secas:friction:check:write",
         "secas:approval:check:write",
         "secas:supply-chain:check:write",
         "check:workspace-root-cleanliness:strict",
-        "typecheck",
-        "lint",
-        "test",
-        "aaas:friction:check",
-        "aaas:friction:check:write",
-        "commops:deliverability:check:write",
-        "ecosystemops:network:check:write",
-        "infra:cost:audit:write",
-        "haas:friction:check",
-        "haas:friction:check:write",
-        "legal:friction:check:write"
+        "typecheck"
       ],
       "commands": [
-        "baseline start",
-        "baseline context",
-        "pnpm ops:check",
-        "pnpm agent:conduct:check",
-        "pnpm agent:auto-dev:check",
-        "Baseline loaded",
-        "pnpm agent:next-work",
         "pnpm --dir",
-        "pnpm fabric:ops-contracts:check",
-        "pnpm ecosystem:five-core-audits:check",
-        "pnpm operations:check",
+        "pnpm agent:next-work",
         "pnpm docs:ia:check",
         "pnpm docs:tree:check",
-        "baseline layered",
-        "pnpm fabric:ops:check",
-        "pnpm fabric:ops:check:strict",
-        "pnpm operations:consumption:check",
-        "pnpm legalops:check",
-        "pnpm ecosystem:ops-authority:check",
         "pnpm agile:check",
         "pnpm product:compile",
-        "pnpm machine:sync",
-        "pnpm docs:product:check",
         "pnpm product:compile:check",
+        "pnpm docs:product:check",
+        "pnpm canon:contracts:check",
         "pnpm canon:contracts:check:write",
         "pnpm docs:pack:pillar-contract:check",
         "pnpm canon:synthesize:check",
@@ -273,13 +294,26 @@
         "pnpm hub",
         "pnpm mcp",
         "baseline to",
-        "pnpm serve",
+        "baseline spine",
         "baseline CLI",
+        "pnpm serve",
         "pnpm agent:consumption:check",
-        "baseline requires",
-        "baseline CLI:",
         "pnpm --filter",
-        "pnpm repo:provision:check"
+        "pnpm fabric:ops-contracts:check",
+        "pnpm fabric:ops:check",
+        "pnpm operations:check",
+        "pnpm ecosystem:pm:standard:check",
+        "pnpm agile:hierarchy:check",
+        "pnpm repo:provision:check",
+        "pnpm target",
+        "pnpm gtm:readiness:check",
+        "pnpm ops:check",
+        "pnpm runbook:production-preflight",
+        "pnpm add",
+        "baseline start",
+        "baseline session",
+        "Baseline session",
+        "pnpm script"
       ]
     },
     "studio": {
@@ -298,21 +332,57 @@
       "compliance-audit"
     ],
     "initiatives": [
-      "BL-SOC2-01",
+      "BL-001",
+      "BL-002",
+      "BL-SOC2",
       "DOC-MPR-FLEET-SCRUB-003",
       "INIT-AGENT-TOOL-SCOUT",
+      "INIT-AGILE-MATURITY-LANE-CEREMONY",
+      "INIT-BASELINE-MATURITY-LANE-SOR",
+      "INIT-BRIDGE-MATURITY-LANE-GATES",
       "INIT-DOCS-FOUNDATION-IA-V1",
       "INIT-DOCS-PROVISIONING-V1-W2",
+      "INIT-ECOSYSTEM-LEGAL-PROGRAM",
+      "INIT-EXEC-GAP",
       "INIT-FABRIC-OPS-PRD-ROUTING",
+      "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
+      "INIT-GLOBAL-SOUTH-GTM",
       "INIT-GTCX-INFRA-DAAS",
       "INIT-GTCX-INFRA-SECAS",
-      "INIT-OPS-LANES-ATIONALIZE",
+      "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
       "INIT-OPS-LANES-OPERATIONALIZE",
       "INIT-PRODUCT-TEAM-MODEL-R5",
+      "INIT-WORLD-CLASS-SECOPS",
+      "INIT-XR-FLEET-MATURITY-LANES",
+      "XR-000",
+      "XR-004",
+      "XR-050",
+      "XR-101",
+      "XR-104",
+      "XR-201",
+      "XR-202",
+      "XR-302",
+      "XR-401",
+      "XR-402",
+      "XR-507",
+      "XR-508",
       "XR-516",
       "XR-518",
+      "XR-AGILE-ROADMAP-INTAKE-001",
+      "XR-BASELINE-ROADMAP-INTAKE-001",
+      "XR-BRIDGE-FRESH-AUDIT-001",
+      "XR-BRIDGE-LANES-REGISTRY-001",
+      "XR-BRIDGE-LANES-REGISTRY-SYNC",
+      "XR-BRIDGE-SECOPS-WC-001",
       "XR-BRIDGE-TOOL-SCOUT-001",
-      "XR-FABRIC-SESSION-OPEN-004"
+      "XR-FABRIC-SPRINT-AUTH-001",
+      "XR-FABRIC-TRADE-LANES-001",
+      "XR-FLEET-MATURITY-LANES",
+      "XR-FLEET-MATURITY-LANES-001",
+      "XR-FLEET-MATURITY-LANES-001-",
+      "XR-GTM-ASSURANCE-LANE-002",
+      "XR-ID",
+      "XR-MKT-AGENT-D6-001"
     ],
     "tags": [
       "docs/business",
@@ -322,12 +392,32 @@
   },
   "ingestSignals": [
     {
-      "id": "initiative:BL-SOC2-01",
+      "id": "initiative:BL-001",
       "kind": "initiative",
-      "text": "Active initiative reference: BL-SOC2-01",
+      "text": "Active initiative reference: BL-001",
       "source": "docs+sessions",
       "refs": [
-        "BL-SOC2-01"
+        "BL-001"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "initiative:BL-002",
+      "kind": "initiative",
+      "text": "Active initiative reference: BL-002",
+      "source": "docs+sessions",
+      "refs": [
+        "BL-002"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "initiative:BL-SOC2",
+      "kind": "initiative",
+      "text": "Active initiative reference: BL-SOC2",
+      "source": "docs+sessions",
+      "refs": [
+        "BL-SOC2"
       ],
       "confidence": 0.85
     },
@@ -352,6 +442,36 @@
       "confidence": 0.85
     },
     {
+      "id": "initiative:INIT-AGILE-MATURITY-LANE-CEREMONY",
+      "kind": "initiative",
+      "text": "Active initiative reference: INIT-AGILE-MATURITY-LANE-CEREMONY",
+      "source": "docs+sessions",
+      "refs": [
+        "INIT-AGILE-MATURITY-LANE-CEREMONY"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "initiative:INIT-BASELINE-MATURITY-LANE-SOR",
+      "kind": "initiative",
+      "text": "Active initiative reference: INIT-BASELINE-MATURITY-LANE-SOR",
+      "source": "docs+sessions",
+      "refs": [
+        "INIT-BASELINE-MATURITY-LANE-SOR"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "initiative:INIT-BRIDGE-MATURITY-LANE-GATES",
+      "kind": "initiative",
+      "text": "Active initiative reference: INIT-BRIDGE-MATURITY-LANE-GATES",
+      "source": "docs+sessions",
+      "refs": [
+        "INIT-BRIDGE-MATURITY-LANE-GATES"
+      ],
+      "confidence": 0.85
+    },
+    {
       "id": "initiative:INIT-DOCS-FOUNDATION-IA-V1",
       "kind": "initiative",
       "text": "Active initiative reference: INIT-DOCS-FOUNDATION-IA-V1",
@@ -372,6 +492,26 @@
       "confidence": 0.85
     },
     {
+      "id": "initiative:INIT-ECOSYSTEM-LEGAL-PROGRAM",
+      "kind": "initiative",
+      "text": "Active initiative reference: INIT-ECOSYSTEM-LEGAL-PROGRAM",
+      "source": "docs+sessions",
+      "refs": [
+        "INIT-ECOSYSTEM-LEGAL-PROGRAM"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "initiative:INIT-EXEC-GAP",
+      "kind": "initiative",
+      "text": "Active initiative reference: INIT-EXEC-GAP",
+      "source": "docs+sessions",
+      "refs": [
+        "INIT-EXEC-GAP"
+      ],
+      "confidence": 0.85
+    },
+    {
       "id": "initiative:INIT-FABRIC-OPS-PRD-ROUTING",
       "kind": "initiative",
       "text": "Active initiative reference: INIT-FABRIC-OPS-PRD-ROUTING",
@@ -382,92 +522,22 @@
       "confidence": 0.85
     },
     {
-      "id": "initiative:INIT-GTCX-INFRA-DAAS",
+      "id": "initiative:INIT-FLEET-OPS-ASSURANCE-PROGRAM",
       "kind": "initiative",
-      "text": "Active initiative reference: INIT-GTCX-INFRA-DAAS",
+      "text": "Active initiative reference: INIT-FLEET-OPS-ASSURANCE-PROGRAM",
       "source": "docs+sessions",
       "refs": [
-        "INIT-GTCX-INFRA-DAAS"
+        "INIT-FLEET-OPS-ASSURANCE-PROGRAM"
       ],
       "confidence": 0.85
     },
     {
-      "id": "initiative:INIT-GTCX-INFRA-SECAS",
+      "id": "initiative:INIT-GLOBAL-SOUTH-GTM",
       "kind": "initiative",
-      "text": "Active initiative reference: INIT-GTCX-INFRA-SECAS",
+      "text": "Active initiative reference: INIT-GLOBAL-SOUTH-GTM",
       "source": "docs+sessions",
       "refs": [
-        "INIT-GTCX-INFRA-SECAS"
-      ],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:INIT-OPS-LANES-ATIONALIZE",
-      "kind": "initiative",
-      "text": "Active initiative reference: INIT-OPS-LANES-ATIONALIZE",
-      "source": "docs+sessions",
-      "refs": [
-        "INIT-OPS-LANES-ATIONALIZE"
-      ],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:INIT-OPS-LANES-OPERATIONALIZE",
-      "kind": "initiative",
-      "text": "Active initiative reference: INIT-OPS-LANES-OPERATIONALIZE",
-      "source": "docs+sessions",
-      "refs": [
-        "INIT-OPS-LANES-OPERATIONALIZE"
-      ],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:INIT-PRODUCT-TEAM-MODEL-R5",
-      "kind": "initiative",
-      "text": "Active initiative reference: INIT-PRODUCT-TEAM-MODEL-R5",
-      "source": "docs+sessions",
-      "refs": [
-        "INIT-PRODUCT-TEAM-MODEL-R5"
-      ],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:XR-516",
-      "kind": "initiative",
-      "text": "Active initiative reference: XR-516",
-      "source": "docs+sessions",
-      "refs": [
-        "XR-516"
-      ],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:XR-518",
-      "kind": "initiative",
-      "text": "Active initiative reference: XR-518",
-      "source": "docs+sessions",
-      "refs": [
-        "XR-518"
-      ],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:XR-BRIDGE-TOOL-SCOUT-001",
-      "kind": "initiative",
-      "text": "Active initiative reference: XR-BRIDGE-TOOL-SCOUT-001",
-      "source": "docs+sessions",
-      "refs": [
-        "XR-BRIDGE-TOOL-SCOUT-001"
-      ],
-      "confidence": 0.85
-    },
-    {
-      "id": "initiative:XR-FABRIC-SESSION-OPEN-004",
-      "kind": "initiative",
-      "text": "Active initiative reference: XR-FABRIC-SESSION-OPEN-004",
-      "source": "docs+sessions",
-      "refs": [
-        "XR-FABRIC-SESSION-OPEN-004"
+        "INIT-GLOBAL-SOUTH-GTM"
       ],
       "confidence": 0.85
     },
@@ -479,7 +549,7 @@
       "refs": [
         "platform-engineer"
       ],
-      "confidence": 0.8571428571428572
+      "confidence": 0.8048780487804879
     },
     {
       "id": "lang:docs:foundation:check",
@@ -582,41 +652,41 @@
       "confidence": 0.7
     },
     {
-      "id": "query:1b648b80",
+      "id": "query:8bef0352",
       "kind": "operator-intent",
-      "text": "conue with fabric-os",
+      "text": "Thursday, Jun 25, 2026, 2:07 AM (UTC+2)\n\nbaseline start",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:1b648b80",
+      "id": "query:d253f1be",
       "kind": "operator-intent",
-      "text": "conue with fabric-os",
+      "text": "Thursday, Jun 25, 2026, 2:32 AM (UTC+2)\n\nexecute roadmap",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:6186ba93",
+      "id": "query:d3009d5d",
       "kind": "operator-intent",
-      "text": "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
+      "text": "Thursday, Jun 25, 2026, 2:42 AM (UTC+2)\n\nexecute roadmap",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:6186ba93",
+      "id": "query:3f8ec9fd",
       "kind": "operator-intent",
-      "text": "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
+      "text": "Thursday, Jun 25, 2026, 5:01 AM (UTC+2)\n\nexecute roadmap",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:6186ba93",
+      "id": "query:3f8ec9fd",
       "kind": "operator-intent",
-      "text": "Briefly inform the user about the task result and perform any follow-up actions (if needed). If there's no follow-ups needed, don't explicitly say that.",
+      "text": "Thursday, Jun 25, 2026, 5:01 AM (UTC+2)\n\nexecute roadmap",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65

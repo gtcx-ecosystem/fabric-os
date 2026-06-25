@@ -1,10 +1,51 @@
 # Session State
 
-> **Last updated:** 2026-06-15T19:08+00:00
-> **Agent:** platform-architect / security-engineer (regulatory-audit frame)
+> **Last updated:** 2026-06-25T05:45+02:00
+> **Agent:** platform-architect (development frame)
 > **Protocol compliance:** P22, P26, P27, P28 active
-> **Current sprint:** SECAS-S4 — security-test remediation track (structural done; awaiting vendor report)
-> **Sprint roadmap:** `audit/product-management/secas-execution-roadmap.md`
+> **Current sprint:** COMPOSITE-RESTORE-100 — composite witness restored to 100/100
+> **Sprint roadmap:** `audit/product-management/execution-roadmap.md`
+
+---
+
+## COMPOSITE-RESTORE-100 — CLOSED (2026-06-25)
+
+### Done
+
+| ID | What | Evidence |
+|----|------|----------|
+| COMPOSITE-RESTORE-100 | Restore fabric-os composite witness to ≥100 | `audit/evidence/composite-audit-latest.json` **100/100**; `audit/evidence/mpr-repo-latest.json` **100/100** (11PR full-unlock) |
+| LINK-HYGIENE | Fix broken docs links blocking trust-cap independent-replay | `docs/reference/guides/docs-writing-guide.md`, `docs/business/strategy/legacy-README.md`, legacy pointer stubs |
+| DOC-STUBS | Add missing `FOLDER-SPEC.md` stubs (docs root, operations, compliance, templates, architecture in-repo/integration) | 7 new stubs |
+| ARCHIVE-DATED | Archive old dated audit-output and markdown siblings | `audit/archive/2026-06-{17,22,24,25}/` |
+| WITNESS-REFRESH | Regenerate composite, MPR, and documentation audit witnesses | bridge-os `pnpm audit:mpr:repo:run --repo fabric-os --write`; `pnpm ecosystem:documentation-audit:check --repo fabric-os --write` |
+| FORMAT | Apply Prettier to all touched/generated artifacts | `pnpm format:check` **PASS** |
+
+### State
+
+| Signal | Value |
+|--------|-------|
+| P22 | `backlogClear: true` — no open automatable stories |
+| `agent:next-work` | `phase: internal_closure_complete` |
+| `operations:check` | **PASS** |
+| `validate-all` | **56/56 PASS** |
+| `pnpm typecheck` | **PASS** |
+| `pnpm format:check` | **PASS** |
+| `pnpm test` | FAIL — pre-existing `fabric-lanes-check` missing matrix file + `pnpm lint` globals (not introduced by this work) |
+| `pnpm lint` | FAIL — pre-existing `no-undef` globals across workspace packages (not introduced by this work) |
+| Git | `main` · 140+ changed paths · uncommitted |
+
+### Next (Class R)
+
+- Commit composite restore batch.
+- P22 returns to backlog-clear witness mode; no engineering implement items until next compiled backlog story.
+
+### Parallel assurance lane (blocksIR: false)
+
+- `SECAS-S2-01-INGEST` — vendor report ingest on/after **2026-06-21**
+- `BG-10-10` — security-test execution window **2026-06-17..2026-06-21**
+- `BG-10-11` — SOC 2 Type I opinion (parallel)
+- `XR-516`, `EXT-INF-014/015`, `BM-ZM-PILOT-01`, `BL-SOC2-01` — Class S human gates
 
 ---
 
@@ -281,13 +322,13 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - [ ] Re-read `.baseline/memory/pitfalls.md`
 - [ ] Run `pnpm agent:next-work` to confirm next story
 
-## Session bootstrap (2026-06-22 23:38:21 UTC)
+## Session bootstrap (2026-06-25 04:03:53 UTC)
 
 - **Command:** `agent start` (baseline-os repo-session-core)
 - **Repo:** fabric-os
-- **Next work:** unknown
+- **Next work:** COMPOSITE-RESTORE-100 — Restore composite ≥100 (current 59) — SECAS-S4-supply-chain
 - **Blocked:** no
-- **Git:** 38 changed path(s)
+- **Git:** 95 changed path(s)
 
 
 ## Session — 2026-06-05 (continued)

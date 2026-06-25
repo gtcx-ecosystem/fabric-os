@@ -1,9 +1,9 @@
 {
   "schema": "gtcx://baseline-os/ego/v1",
   "schemaAlias": "gtcx://baseline-os/agent-embodiment/v1",
-  "compiledAt": "2026-06-22T23:38:30.862Z",
+  "compiledAt": "2026-06-25T04:03:58.150Z",
   "repo": "fabric-os",
-  "storyId": "unknown",
+  "storyId": "COMPOSITE-RESTORE-100",
   "persona": {
     "institutional": "platform-architect",
     "frame": "development",
@@ -21,7 +21,7 @@
   },
   "forbiddenPatternCount": 40,
   "mdPath": ".baseline/session/ego-latest.md",
-  "mdHash": "f3a61ab220365042967db2ff80f09309de8df7304d710c04177c88e9990978b2",
+  "mdHash": "46a0a534fb2286a5d7d9b7624d7e78206905505c96a57124402b5cc252b41e94",
   "layers": [
     "anti-assistant",
     "constitution",
@@ -29,6 +29,7 @@
     "universal-ops",
     "forbidden",
     "persona",
+    "parse",
     "work",
     "nitro",
     "proceed-brief"
@@ -39,20 +40,33 @@
       "institutional": "platform-architect",
       "docPath": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/docs/governance/institutional/personas/platform-architect.md",
       "docHash": "e71211c56201e59d355b57b47a6dbd60a41cd0e4b13f2e3c8c91c2c163cf7703",
-      "readAt": "2026-06-22T23:38:28.544Z"
+      "readAt": "2026-06-25T00:23:24.073Z"
     },
     "constitutionReadGate": {
-      "ok": true,
+      "ok": false,
+      "blocked": true,
       "articles": [
         "I",
         "III",
         "V"
       ],
       "bundleHash": "5440d51f4280ddb4b4d036aa801a86df6d9038c678208f9c1725c4a3474a86f1",
-      "readAt": "2026-06-17T09:41:32.293Z",
-      "document": "docs/governance/constitution/GTCX-CONSTITUTION.md"
+      "witness": {
+        "schema": "gtcx://baseline-os/constitution-read-witness/v1",
+        "articles": [
+          "I",
+          "III",
+          "V"
+        ],
+        "document": "docs/governance/constitution/GTCX-CONSTITUTION.md",
+        "bundleHash": "5440d51f4280ddb4b4d036aa801a86df6d9038c678208f9c1725c4a3474a86f1",
+        "canonCheckout": "canon-os",
+        "readAt": "2026-06-17T09:41:32.293Z"
+      },
+      "reason": "constitution read witness stale (>7d)",
+      "witnessCommand": "pnpm constitution:read-witness --write"
     },
     "personaReadGateBlocked": false,
-    "constitutionReadGateBlocked": false
+    "constitutionReadGateBlocked": true
   }
 }

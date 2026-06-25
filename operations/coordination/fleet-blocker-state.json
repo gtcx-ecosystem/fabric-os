@@ -5,6 +5,27 @@
   "source": "docs/operations/coordination/fabric-os-fleet-unblock-register-2026-06-25.md",
   "blockers": [
     {
+      "id": "F-prod-06",
+      "blockedRepo": "griot-ai",
+      "blockedStory": "STORY-GRIOT-HTTPS-001",
+      "title": "api.griot.ai production HTTPS ACM cert + ALB listener",
+      "type": "infra",
+      "class": "A",
+      "priority": "P0",
+      "status": "awaiting_operator_action",
+      "infrastructureReady": false,
+      "secretsPopulated": true,
+      "k8sSecretReady": true,
+      "integrationScriptReady": true,
+      "operatorStep": "Add Dynadot CNAME for api.griot.ai ACM validation; apply griot-ai/deploy/infra/k8s/ingress-https.yaml from production-authorized network",
+      "verificationCommand": "pnpm griot:prod:verify",
+      "evidencePath": "audit/evidence/griot-ai-https-prod-verify-latest.json",
+      "runbook": "docs/operations/runbooks/griot-ai-https-production.md",
+      "protocol": "docs/operations/protocols/cross-repo-blocker-discovery.md",
+      "hubWitnessPath": "../bridge-os/pm/ci/fabric-os-blocker-fprod06-latest.json",
+      "blocksIR": false
+    },
+    {
       "id": "FB-001",
       "blockedRepo": "markets-os",
       "blockedStory": "IR-006",

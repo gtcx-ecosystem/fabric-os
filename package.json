@@ -41,6 +41,8 @@
     "markets:staging:verify:write": "node platform/scripts/staging/verify-markets-os-staging-chain.mjs --write",
     "griot:https:verify": "node platform/scripts/staging/verify-griot-ai-https.mjs",
     "griot:https:verify:write": "node platform/scripts/staging/verify-griot-ai-https.mjs --write",
+    "griot:prod:verify": "node platform/scripts/production/verify-griot-ai-https-prod.mjs",
+    "griot:prod:verify:write": "node platform/scripts/production/verify-griot-ai-https-prod.mjs --write",
     "fleet:blockers:sync": "node platform/scripts/sync-fleet-blocker-state.mjs",
     "fleet:blockers:check": "node platform/scripts/sync-fleet-blocker-state.mjs --check",
     "protocol:verifier:staging:build-push": "bash deploy/03-platform/scripts/staging/build-push-protocols-pnv2.sh",

@@ -11,4 +11,4 @@ review_cycle: on-change
 
 # Deployment
 
-Release and environment narratives — link `deploy/` Terraform and [`deployment-profile.json`](./deployment-profile.json).
+Release and environment narratives — link `deploy/` Terraform and [`deploy/`](../../deploy/).

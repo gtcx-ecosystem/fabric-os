@@ -43,7 +43,7 @@ PROCEED_BRIEF → execute (P27) → STATUS_UPDATE (terminal)
 4. **### Parallel sovereign gates** — `blocksIR: false` only; Why + Unblock + Does not block; omit if empty
 5. **### Approval needed** — `blocksIR: true` or Class A custody only; omit if empty
 
-UX craft: [agent-communication-ux-spec.json](../../pm/spec/agent-communication-ux-spec.json) · Template: [agent-status-update-template.md](./agent-status-update-template.md) · Terminal hints: [agent-terminal-presentation.md](./agent-terminal-presentation.md)
+UX craft: [agent-communication-protocol.json](../../../baseline-os/machine/spec/agent-communication-protocol.json) · Template: [agent-status-update-template.md](./agent-status-update-template.md) · Terminal hints: [agent-terminal-presentation.md](./agent-status-update-template.md)
 
 ## Task list (required table)
 

@@ -19,26 +19,25 @@ review_cycle: on-change
 
 **Composite target:** **85/100** per profile at layer audit order.
 
-| Pillar | Role | Artifacts | Gate | Target |
-| ------ | ---- | --------- | ---- | ------ |
-| compliance | secondary | pack contract | MPR witness rollup | 85 |
-| technicalExcellence | secondary | pack contract | MPR witness rollup | 85 |
-| craft | primary | pack contract | MPR witness rollup | 85 |
-| worldClass | secondary | pack contract | MPR witness rollup | 85 |
-| trustAndSafety | secondary | pack contract | MPR witness rollup | 85 |
-| creativityInnovation | N/A | pack contract | MPR witness rollup | 85 |
-| commercialValue | primary | pack contract | MPR witness rollup | 85 |
-| defensiveMoat | primary | pack contract | MPR witness rollup | 85 |
-| agenticEmpowerment | secondary | pack contract | MPR witness rollup | 85 |
-| ecosystemIntegration | secondary | pack contract | MPR witness rollup | 85 |
-| ipMagic | N/A | pack contract | MPR witness rollup | 85 |
+| Pillar               | Role      | Artifacts     | Gate               | Target |
+| -------------------- | --------- | ------------- | ------------------ | ------ |
+| compliance           | secondary | pack contract | MPR witness rollup | 85     |
+| technicalExcellence  | secondary | pack contract | MPR witness rollup | 85     |
+| craft                | primary   | pack contract | MPR witness rollup | 85     |
+| worldClass           | secondary | pack contract | MPR witness rollup | 85     |
+| trustAndSafety       | secondary | pack contract | MPR witness rollup | 85     |
+| creativityInnovation | N/A       | pack contract | MPR witness rollup | 85     |
+| commercialValue      | primary   | pack contract | MPR witness rollup | 85     |
+| defensiveMoat        | primary   | pack contract | MPR witness rollup | 85     |
+| agenticEmpowerment   | secondary | pack contract | MPR witness rollup | 85     |
+| ecosystemIntegration | secondary | pack contract | MPR witness rollup | 85     |
+| ipMagic              | N/A       | pack contract | MPR witness rollup | 85     |
 
 ## Fractal rollup
 
-| Scope | Witness |
-| ----- | ------- |
-| File | `audit/evidence/mpr-files/business/*.json` (planned) |
-| Folder | child file witnesses |
-| Layer | `audit/evidence/mpr-business-layer-latest.json` |
-| Repo | `audit/evidence/five-pillar-latest.json` |
-
+| Scope  | Witness                                              |
+| ------ | ---------------------------------------------------- |
+| File   | `audit/evidence/mpr-files/business/*.json` (planned) |
+| Folder | child file witnesses                                 |
+| Layer  | `audit/evidence/mpr-business-layer-latest.json`      |
+| Repo   | `audit/evidence/five-pillar-latest.json`             |

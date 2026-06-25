@@ -20,7 +20,7 @@ document_type: index
 | Surface                    | Path                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | Docs IA map                | [`INDEX.md`](./INDEX.md)                                                                                           |
-| Agent work selection       | [`operations/agent-spine/agent-work-selection.md`](./operations/agent-spine/agent-work-selection.md)               |
+| Agent work selection       | [`operations/agent-work-selection.md`](./operations/agent-work-selection.md)                                       |
 | Execution roadmap (DaaS)   | [`../audit/product-management/execution-roadmap.md`](../audit/product-management/execution-roadmap.md)             |
 | Execution roadmap (SECaaS) | [`../audit/product-management/secas-execution-roadmap.md`](../audit/product-management/secas-execution-roadmap.md) |
 | Auto-dev state             | [`../audit/product-management/auto-dev-state.md`](../audit/product-management/auto-dev-state.md)                   |

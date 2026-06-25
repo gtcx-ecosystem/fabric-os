@@ -12,7 +12,7 @@ document_id: INFRA-COORD-LOG-001
 
 # Cross-repo agent activity log (fabric-os)
 
-**Monitor:** [`README.md`](README.md) (snapshot) · [`cross-repo-agent-bridge.md`](cross-repo-agent-bridge.md) (live updates)  
+**Monitor:** [`README.md`](README.md) (snapshot) · [`gtcx-protocols cross-repo-agent-log.md`](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/cross-repo-agent-log.md) (live updates)  
 **Ecosystem log (canonical multi-repo):**  
 [`gtcx-protocols/01-docs/operations/coordination/cross-repo-agent-log.md`](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/operations/coordination/cross-repo-agent-log.md)
 
@@ -101,7 +101,7 @@ Append **newest entries at the top** of the table below. One row per meaningful 
 
 ## Hygiene
 
-- When logging **done** for an `XR-*`, update [`README.md`](README.md) and [`cross-repo-agent-bridge.md`](cross-repo-agent-bridge.md) status columns in the same action.
+- When logging **done** for an `XR-*`, update [`README.md`](README.md) and [`gtcx-protocols cross-repo-agent-log.md`](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/docs/operations/coordination/cross-repo-agent-log.md) status columns in the same action.
 - Mirror P0 **done/blocked** to protocols ecosystem log when it affects other repos.
 - Archive when >50 entries → `cross-repo-agent-log-archive-YYYY-MM.md`.
 

@@ -20,7 +20,7 @@ Close WC-07 gap: operational SIEM ingest, on-call paging, and threat-intel feed 
 ## Acceptance
 
 - [x] `pnpm secas:csirt:check:write` PASS (structural + drill)
-- [x] `fleet-threat-register` TI entries sourced from live feed stub (`threatIntelFeed` 1, provider `ti-feed-tbd`)
+- [x] `fleet-threat-register` TI entries sourced from live feed stub (`threatIntelFeed` 1, provider `ti-feed-pending`)
 - [x] On-call roster linked in csirt-operating-model.md (rotation table + HROps registry SoR)
 
 > SIEM vendor live-feed wiring is Class A (vendor SOW) — tracked separately; stub feed satisfies L3 structural acceptance.

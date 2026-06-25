@@ -34,7 +34,7 @@ Same deliverables #1–4 as agile-os (central programme, witness contract, healt
 | bridge defect                              | bridge story          | fabric dependency                           |
 | ------------------------------------------ | --------------------- | ------------------------------------------- |
 | Linear `inferGtmReadiness`                 | `BRG-001`             | witness `blocksGtmStage: false` (`FAB-002`) |
-| `session-open-items` blockedExternal bleed | bridge fix (TBD)      | fabric vocabulary (`FAB-004`)               |
+| `session-open-items` blockedExternal bleed | bridge fix (open)     | fabric vocabulary (`FAB-004`)               |
 | `parallelClassS` in product Proceed Brief  | `BRG-003`             | `BL-002` P22 value compose                  |
 | `evaluate-gtm-readiness` no lane split     | `BRG-002` / canon P58 | `FAB-002` witness ingest                    |
 

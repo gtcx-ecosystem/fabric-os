@@ -11,10 +11,11 @@ review_cycle: on-change
 
 # fabric-os capability matrix
 
-| Capability              | Initiative                    | Feature                     | Status      |
-| ----------------------- | ----------------------------- | --------------------------- | ----------- |
-| DaaS control plane      | `INIT-GTCX-INFRA-DAAS`        | —                           | in_progress |
-| SECaaS assurance fabric | `INIT-GTCX-INFRA-SECAS`       | `FEAT-FABRIC-OPS-ASSURANCE` | in_progress |
-| Fleet ops PRD routing   | `INIT-FABRIC-OPS-PRD-ROUTING` | —                           | open        |
+| Capability              | Initiative                     | Feature                             | Status      |
+| ----------------------- | ------------------------------ | ----------------------------------- | ----------- |
+| DaaS control plane      | `INIT-GTCX-INFRA-DAAS`         | —                                   | in_progress |
+| SECaaS assurance fabric | `INIT-GTCX-INFRA-SECAS`        | `FEAT-FABRIC-OPS-ASSURANCE`         | in_progress |
+| Maturity lane enforce   | `INIT-XR-FLEET-MATURITY-LANES` | `FEAT-FABRIC-MATURITY-LANE-ENFORCE` | open (P0)   |
+| Fleet ops PRD routing   | `INIT-FABRIC-OPS-PRD-ROUTING`  | —                                   | open        |
 
 Lane narratives: [`../../../agile/roadmaps/technical.md`](../../../agile/roadmaps/technical.md)

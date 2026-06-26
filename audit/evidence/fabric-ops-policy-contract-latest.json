@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/fabric-ops-policy-contract-check/v1",
-  "at": "2026-06-22T18:15:55.896Z",
+  "at": "2026-06-26T00:11:51.624Z",
   "repo": "fabric-os",
   "contract": "fabric-os/pm/spec/fabric-ops-policy-contract.json",
   "localContractPath": "ops/fabric-contract.json",
@@ -11,143 +11,6 @@
   "results": [
     {
       "repo": "agile-os",
-      "ok": true,
-      "gates": [
-        {
-          "id": "local-contract-present",
-          "ok": true,
-          "detail": "ops/fabric-contract.json"
-        },
-        {
-          "id": "local-contract-json",
-          "ok": true,
-          "detail": "ops/fabric-contract.json"
-        },
-        {
-          "id": "schema",
-          "ok": true,
-          "detail": "gtcx://fabric-os/local-fabric-ops-contract/v1"
-        },
-        {
-          "id": "contract-version",
-          "ok": true,
-          "detail": "1.0.0"
-        },
-        {
-          "id": "central-policy-contract",
-          "ok": true,
-          "detail": "fabric-os/pm/spec/fabric-ops-policy-contract.json"
-        },
-        {
-          "id": "domain:compliance:present",
-          "ok": true,
-          "detail": "Compliance policy and evidence"
-        },
-        {
-          "id": "domain:compliance:central-ref",
-          "ok": true,
-          "detail": "fabric-os/ops/compliance/manifest.json"
-        },
-        {
-          "id": "domain:compliance:local-ref",
-          "ok": true,
-          "detail": "operations/compliance/manifest.json, audit/evidence/compliance-pillar-latest.json"
-        },
-        {
-          "id": "domain:apiTokens:present",
-          "ok": true,
-          "detail": "API token and secret handling"
-        },
-        {
-          "id": "domain:apiTokens:central-ref",
-          "ok": true,
-          "detail": "fabric-os/ops/security/narrative/secrets-management.md"
-        },
-        {
-          "id": "domain:apiTokens:local-ref",
-          "ok": true,
-          "detail": "operations/security/manifest.json, config/ops.manifest.json"
-        },
-        {
-          "id": "domain:deployment:present",
-          "ok": true,
-          "detail": "Deployment and environment profile"
-        },
-        {
-          "id": "domain:deployment:central-ref",
-          "ok": true,
-          "detail": "fabric-os/docs/operations/deployment/README.md"
-        },
-        {
-          "id": "domain:deployment:local-ref",
-          "ok": true,
-          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
-        },
-        {
-          "id": "domain:security:present",
-          "ok": true,
-          "detail": "Security posture and incident controls"
-        },
-        {
-          "id": "domain:security:central-ref",
-          "ok": true,
-          "detail": "fabric-os/ops/security/manifest.json"
-        },
-        {
-          "id": "domain:security:local-ref",
-          "ok": true,
-          "detail": "operations/security/manifest.json, docs/operations/repo/SECURITY.md"
-        },
-        {
-          "id": "domain:observability:present",
-          "ok": true,
-          "detail": "Operational observability and readiness"
-        },
-        {
-          "id": "domain:observability:central-ref",
-          "ok": true,
-          "detail": "fabric-os/ops/attestation/manifest.json"
-        },
-        {
-          "id": "domain:observability:local-ref",
-          "ok": true,
-          "detail": "operations/attestation/manifest.json"
-        },
-        {
-          "id": "domain:evidence:present",
-          "ok": true,
-          "detail": "Audit evidence and witness contract"
-        },
-        {
-          "id": "domain:evidence:central-ref",
-          "ok": true,
-          "detail": "fabric-os/ops/attestation/witness/manifest.json"
-        },
-        {
-          "id": "domain:evidence:local-ref",
-          "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
-        },
-        {
-          "id": "domain:opsConsumption:present",
-          "ok": true,
-          "detail": "COO ops consumption"
-        },
-        {
-          "id": "domain:opsConsumption:central-ref",
-          "ok": true,
-          "detail": "fabric-os/ops/coo.md"
-        },
-        {
-          "id": "domain:opsConsumption:local-ref",
-          "ok": true,
-          "detail": "operations/coo.md, machine/spec/ops-pack.json, operations/manifest.json"
-        }
-      ],
-      "localContractRel": "ops/fabric-contract.json"
-    },
-    {
-      "repo": "baseline-os",
       "ok": true,
       "gates": [
         {
@@ -284,6 +147,143 @@
       "localContractRel": "ops/fabric-contract.json"
     },
     {
+      "repo": "baseline-os",
+      "ok": true,
+      "gates": [
+        {
+          "id": "local-contract-present",
+          "ok": true,
+          "detail": "ops/fabric-contract.json"
+        },
+        {
+          "id": "local-contract-json",
+          "ok": true,
+          "detail": "ops/fabric-contract.json"
+        },
+        {
+          "id": "schema",
+          "ok": true,
+          "detail": "gtcx://fabric-os/local-fabric-ops-contract/v1"
+        },
+        {
+          "id": "contract-version",
+          "ok": true,
+          "detail": "1.0.0"
+        },
+        {
+          "id": "central-policy-contract",
+          "ok": true,
+          "detail": "fabric-os/pm/spec/fabric-ops-policy-contract.json"
+        },
+        {
+          "id": "domain:compliance:present",
+          "ok": true,
+          "detail": "Compliance policy and evidence"
+        },
+        {
+          "id": "domain:compliance:central-ref",
+          "ok": true,
+          "detail": "fabric-os/ops/compliance/manifest.json"
+        },
+        {
+          "id": "domain:compliance:local-ref",
+          "ok": true,
+          "detail": "operations/compliance/manifest.json, audit/evidence/compliance-pillar-latest.json"
+        },
+        {
+          "id": "domain:apiTokens:present",
+          "ok": true,
+          "detail": "API token and secret handling"
+        },
+        {
+          "id": "domain:apiTokens:central-ref",
+          "ok": true,
+          "detail": "fabric-os/ops/security/narrative/secrets-management.md"
+        },
+        {
+          "id": "domain:apiTokens:local-ref",
+          "ok": true,
+          "detail": "operations/security/manifest.json, config/ops.manifest.json"
+        },
+        {
+          "id": "domain:deployment:present",
+          "ok": true,
+          "detail": "Deployment and environment profile"
+        },
+        {
+          "id": "domain:deployment:central-ref",
+          "ok": true,
+          "detail": "fabric-os/docs/operations/deployment/README.md"
+        },
+        {
+          "id": "domain:deployment:local-ref",
+          "ok": true,
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
+        },
+        {
+          "id": "domain:security:present",
+          "ok": true,
+          "detail": "Security posture and incident controls"
+        },
+        {
+          "id": "domain:security:central-ref",
+          "ok": true,
+          "detail": "fabric-os/ops/security/manifest.json"
+        },
+        {
+          "id": "domain:security:local-ref",
+          "ok": true,
+          "detail": "operations/security/manifest.json, docs/operations/repo/SECURITY.md"
+        },
+        {
+          "id": "domain:observability:present",
+          "ok": true,
+          "detail": "Operational observability and readiness"
+        },
+        {
+          "id": "domain:observability:central-ref",
+          "ok": true,
+          "detail": "fabric-os/ops/attestation/manifest.json"
+        },
+        {
+          "id": "domain:observability:local-ref",
+          "ok": true,
+          "detail": "operations/attestation/manifest.json"
+        },
+        {
+          "id": "domain:evidence:present",
+          "ok": true,
+          "detail": "Audit evidence and witness contract"
+        },
+        {
+          "id": "domain:evidence:central-ref",
+          "ok": true,
+          "detail": "fabric-os/ops/attestation/witness/manifest.json"
+        },
+        {
+          "id": "domain:evidence:local-ref",
+          "ok": true,
+          "detail": "audit/evidence/mpr-repo-latest.json, audit/evidence/ops-latest.json"
+        },
+        {
+          "id": "domain:opsConsumption:present",
+          "ok": true,
+          "detail": "COO ops consumption"
+        },
+        {
+          "id": "domain:opsConsumption:central-ref",
+          "ok": true,
+          "detail": "fabric-os/ops/coo.md"
+        },
+        {
+          "id": "domain:opsConsumption:local-ref",
+          "ok": true,
+          "detail": "operations/coo.md, machine/spec/ops-pack.json, operations/manifest.json"
+        }
+      ],
+      "localContractRel": "ops/fabric-contract.json"
+    },
+    {
       "repo": "bridge-os",
       "ok": true,
       "gates": [
@@ -325,7 +325,7 @@
         {
           "id": "domain:compliance:local-ref",
           "ok": true,
-          "detail": "ops/compliance/manifest.json, audit/evidence/compliance-pillar-latest.json"
+          "detail": "operations/compliance/manifest.json, audit/evidence/compliance-pillar-latest.json"
         },
         {
           "id": "domain:apiTokens:present",
@@ -340,7 +340,7 @@
         {
           "id": "domain:apiTokens:local-ref",
           "ok": true,
-          "detail": "ops/security/manifest.json, config/ops.manifest.json"
+          "detail": "operations/security/manifest.json, config/ops.manifest.json"
         },
         {
           "id": "domain:deployment:present",
@@ -355,7 +355,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -370,7 +370,7 @@
         {
           "id": "domain:security:local-ref",
           "ok": true,
-          "detail": "ops/security/manifest.json, docs/operations/repo/SECURITY.md"
+          "detail": "operations/security/manifest.json, docs/operations/repo/SECURITY.md"
         },
         {
           "id": "domain:observability:present",
@@ -385,7 +385,7 @@
         {
           "id": "domain:observability:local-ref",
           "ok": true,
-          "detail": "ops/attestation/manifest.json"
+          "detail": "operations/attestation/manifest.json"
         },
         {
           "id": "domain:evidence:present",
@@ -400,7 +400,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -415,7 +415,7 @@
         {
           "id": "domain:opsConsumption:local-ref",
           "ok": true,
-          "detail": "pm/spec/ops-pack.json, ops/manifest.json"
+          "detail": "operations/coo.md, machine/spec/ops-pack.json, operations/manifest.json"
         }
       ],
       "localContractRel": "ops/fabric-contract.json"
@@ -629,7 +629,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -674,7 +674,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/composite-audit-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -766,7 +766,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
+          "detail": "config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -1040,7 +1040,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
+          "detail": "config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -1284,7 +1284,7 @@
         {
           "id": "domain:compliance:local-ref",
           "ok": true,
-          "detail": "ops/compliance/manifest.json, audit/evidence/compliance-pillar-latest.json"
+          "detail": "operations/compliance/manifest.json, audit/evidence/compliance-pillar-latest.json"
         },
         {
           "id": "domain:apiTokens:present",
@@ -1299,7 +1299,7 @@
         {
           "id": "domain:apiTokens:local-ref",
           "ok": true,
-          "detail": "ops/security/manifest.json, config/ops.manifest.json"
+          "detail": "operations/security/manifest.json, config/ops.manifest.json"
         },
         {
           "id": "domain:deployment:present",
@@ -1314,7 +1314,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "operations/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -1329,7 +1329,7 @@
         {
           "id": "domain:security:local-ref",
           "ok": true,
-          "detail": "ops/security/manifest.json, docs/operations/repo/SECURITY.md"
+          "detail": "operations/security/manifest.json, docs/operations/repo/SECURITY.md"
         },
         {
           "id": "domain:observability:present",
@@ -1344,7 +1344,7 @@
         {
           "id": "domain:observability:local-ref",
           "ok": true,
-          "detail": "ops/attestation/manifest.json"
+          "detail": "operations/attestation/manifest.json"
         },
         {
           "id": "domain:evidence:present",
@@ -1359,7 +1359,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1374,7 +1374,7 @@
         {
           "id": "domain:opsConsumption:local-ref",
           "ok": true,
-          "detail": "ops/coo.md, pm/spec/ops-pack.json, ops/manifest.json"
+          "detail": "operations/coo.md, machine/spec/ops-pack.json, operations/manifest.json"
         }
       ],
       "localContractRel": "ops/fabric-contract.json"
@@ -1451,7 +1451,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -1496,7 +1496,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/composite-audit-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1588,7 +1588,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -1633,7 +1633,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/composite-audit-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",
@@ -1725,7 +1725,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -2136,7 +2136,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -2273,7 +2273,7 @@
         {
           "id": "domain:deployment:local-ref",
           "ok": true,
-          "detail": "docs/operations/deployment-profile.json, config/ops.manifest.json"
+          "detail": "docs/operations/deployment/deployment-profile.json, config/ops.manifest.json"
         },
         {
           "id": "domain:security:present",
@@ -2318,7 +2318,7 @@
         {
           "id": "domain:evidence:local-ref",
           "ok": true,
-          "detail": "audit/evidence/five-pillar-latest.json"
+          "detail": "audit/evidence/five-pillar-latest.json, audit/evidence/ops-latest.json"
         },
         {
           "id": "domain:opsConsumption:present",

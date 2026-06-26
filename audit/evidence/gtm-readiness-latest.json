@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://canon-os/gtm-readiness-witness/v2",
   "repo": "fabric-os",
-  "assessedAt": "2026-06-26T00:17:53.403Z",
+  "assessedAt": "2026-06-26T00:28:47.451Z",
   "source": "machine-inference",
   "gtmStage": "S2",
   "gtmStageName": "Pilot Ready",

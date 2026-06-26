@@ -2,7 +2,7 @@
   "schema": "gtcx://audit/fleet-diagnostic-snapshot/v2",
   "repo": "fabric-os",
   "tier": "platform",
-  "refreshedAt": "2026-06-26T00:17:53.404Z",
+  "refreshedAt": "2026-06-26T00:28:47.452Z",
   "sessionPhase": "close",
   "laneSeparation": {
     "policy": "GS-MATURITY-LANE-001",
@@ -25,7 +25,7 @@
       "published": true,
       "witnessPath": "audit/evidence/mpr-repo-latest.json",
       "evaluatedAt": "2026-06-26T00:17:52.354Z",
-      "ageHours": 0.0002908526611328125,
+      "ageHours": 0.17331928853352865,
       "stale": false,
       "refreshCommand": "pnpm audit:mpr:repo:run -- --repo <repo> --write"
     },
@@ -35,7 +35,7 @@
       "productionReady": false,
       "gaps": ["ops:check failed", "P35 strict"],
       "witnessPath": "audit/evidence/master-audit-latest.json",
-      "ageHours": 19.522290709703235,
+      "ageHours": 19.703970709703235,
       "stale": false,
       "refreshCommand": "pnpm ecosystem:master:audit --repo <repo> --write"
     },

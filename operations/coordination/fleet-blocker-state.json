@@ -229,6 +229,39 @@
       "verificationCommand": "node ../bridge-os/platform/scripts/ecosystem/run-mpr-repo-audit.mjs --repo inspection-os",
       "evidencePath": "../inspection-os/audit/evidence/mpr-repo-latest.json",
       "blocksIR": false
+    },
+    {
+      "id": "FB-014",
+      "blockedRepo": "terra-os",
+      "blockedStory": "PM-SADC-T1-001",
+      "title": "EXT-TERRA-001 security-test report witness",
+      "type": "assurance",
+      "class": "S",
+      "priority": "P1",
+      "status": "awaiting_vendor_artifact",
+      "infrastructureReady": true,
+      "operatorStep": "Vendor delivers signed security-test report; fabric-os runs ingest ceremony to write terra-os/audit/evidence/security-test-report-latest.json",
+      "verificationCommand": "cat terra-os/audit/evidence/security-test-report-latest.json",
+      "evidencePath": "terra-os/audit/evidence/security-test-report-latest.json",
+      "runbook": "docs/operations/runbooks/assurance/pen-test.md",
+      "protocol": "operations/coordination/post-launch-external-gates.json",
+      "blocksIR": false
+    },
+    {
+      "id": "FB-015",
+      "blockedRepo": "fleet",
+      "blockedStory": "SECAS-S2-01",
+      "title": "SOC 2 Type I auditor opinion letter",
+      "type": "assurance",
+      "class": "S",
+      "priority": "P1",
+      "status": "awaiting_auditor_artifact",
+      "infrastructureReady": true,
+      "operatorStep": "External auditor publishes Type I opinion letter; file witness under audit/evidence/",
+      "verificationCommand": "ls audit/evidence/soc2-type-i-opinion-latest.json",
+      "evidencePath": "audit/evidence/soc2-type-i-opinion-latest.json",
+      "protocol": "operations/coordination/post-launch-external-gates.json",
+      "blocksIR": false
     }
   ]
 }

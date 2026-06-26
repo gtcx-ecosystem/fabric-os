@@ -2,8 +2,8 @@
   "schema": "gtcx://audit/fleet-diagnostic-snapshot/v2",
   "repo": "fabric-os",
   "tier": "platform",
-  "refreshedAt": "2026-06-25T03:13:25.951Z",
-  "sessionPhase": null,
+  "refreshedAt": "2026-06-26T00:17:53.404Z",
+  "sessionPhase": "close",
   "laneSeparation": {
     "policy": "GS-MATURITY-LANE-001",
     "gtmStageModel": "GS-GTM-STAGE-002"
@@ -19,13 +19,13 @@
       "deepCommand": "full-audit skill in owner repo workspace"
     },
     "multiPillar": {
-      "composite100": 59,
-      "trustCap100": 84,
-      "compliance100": 69,
-      "published": false,
+      "composite100": 100,
+      "trustCap100": 100,
+      "compliance100": 100,
+      "published": true,
       "witnessPath": "audit/evidence/mpr-repo-latest.json",
-      "evaluatedAt": "2026-06-25T03:07:35.557Z",
-      "ageHours": 0.09733138712565104,
+      "evaluatedAt": "2026-06-26T00:17:52.354Z",
+      "ageHours": 0.0002908526611328125,
       "stale": false,
       "refreshCommand": "pnpm audit:mpr:repo:run -- --repo <repo> --write"
     },
@@ -35,7 +35,7 @@
       "productionReady": false,
       "gaps": ["ops:check failed", "P35 strict"],
       "witnessPath": "audit/evidence/master-audit-latest.json",
-      "ageHours": 0.11067718458387586,
+      "ageHours": 19.522290709703235,
       "stale": false,
       "refreshCommand": "pnpm ecosystem:master:audit --repo <repo> --write"
     },
@@ -285,10 +285,10 @@
       },
       "engineeringMaturity": {
         "lane": "engineeringMaturity",
-        "score100": 84,
-        "status": "prep-pass",
+        "score100": 100,
+        "status": "complete",
         "witnessPath": "audit/evidence/mpr-repo-latest.json",
-        "mprPublished": false
+        "mprPublished": true
       },
       "integratorPilotGtm": {
         "lane": "integratorPilotGtm",
@@ -363,12 +363,12 @@
     }
   },
   "rollup": {
-    "avgScore100": 67,
+    "avgScore100": 78,
     "anyStale": true,
     "pilotReady": false,
     "integratorPilotReady": false,
-    "engineeringMaturityComplete": false,
+    "engineeringMaturityComplete": true,
     "enterpriseProcurementReady": false,
-    "deployBarMet": false
+    "deployBarMet": true
   }
 }

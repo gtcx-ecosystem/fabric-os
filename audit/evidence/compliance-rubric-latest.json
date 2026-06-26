@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://audit/compliance-rubric/v1",
   "repo": "fabric-os",
-  "date": "2026-06-25",
+  "date": "2026-06-26",
   "score100": 100,
   "categories": {
     "layout-p35": {

@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/fabric-ops-policy-contract-check/v1",
-  "at": "2026-06-26T00:11:51.624Z",
+  "at": "2026-06-26T00:17:56.731Z",
   "repo": "fabric-os",
   "contract": "fabric-os/pm/spec/fabric-ops-policy-contract.json",
   "localContractPath": "ops/fabric-contract.json",

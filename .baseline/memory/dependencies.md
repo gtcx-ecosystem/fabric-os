@@ -1,61 +1,23 @@
 # Cross-Repo Dependencies
 
-> Last updated: 2026-06-11
+> Auto-discovered from package.json, imports, and docs.
 
-## Hard Dependencies (Blocking — XC / Class S)
+## Ecosystem Dependencies
 
-| Needs | From Repo / Owner | Status | ETA | Blocking |
-| --- | --- | --- | --- | --- |
-| EXT-REF security-test SOW | Human Security + **gtcx-agentic** H-05 chase | **open** | 2026-06-13 | S2-13, live-stack security-test |
-| EXT-REF ZWCMP pilot owner | GTM / Program Lead | **approved** | 2026-06-12 | EXT-REF unblocked |
-| EXT-REF DPA + pilot agreement | Legal | **open** | 2026-06-21 | ZWCMP signature |
-| EXT-REF indemnified SLA | Legal | **open** | 2026-06-21 | Pilot agreement |
-| EXT-REF SOC 2 Type I auditor | CISO + Finance | **open** | TBD | Bank-grade B.1 |
-| H-03 sovereign countersign | Human CSP (**gtcx-agentic** ceremony) | **awaiting-human** | TBD | XR-518, MA-003 / #61 scale |
-| S4-03 PRD-002 Tier B contract | **gtcx-protocols** | **blocked-sibling** | TBD | Audit route Tier B |
+No cross-repo dependencies detected in package.json or docs.
 
-**Agentic pickup:** [`to-gtcx-agentic-blockers-raise-2026-06-08.md`](../01-docs/04-ops/coordination/outbound/to-gtcx-agentic-blockers-raise-2026-06-08.md)
+## Hard Dependencies (Blocking)
+| Needs | From Repo | Status | ETA | Blocking Epic |
+|-------|-----------|--------|-----|---------------|
+| | | | | |
 
-## Operator / Class A (not agentic code)
+## Soft Dependencies (Nice to have)
+| Needs | From Repo | Status | ETA |
+|-------|-----------|--------|-----|
+| | | | |
 
-| Needs | Owner | Status |
-| --- | --- | --- |
-| ~~**Hub #17 prod W2 close**~~ | **gtcx-infrastructure** | **done** 2026-06-05 — `compliance.gtcx.trade` + `terminal.gtcx.trade`; baseline-os locker `7d98352b2` |
-| **Hub #18 prod Postgres** | terminal-os + **fabric-os** | **closed** — `w2-locker-18-terminal-evidence.json` prod-slice-pass; SM `DATABASE_URL` + `POSTGRES_URL` alias script |
-| **Ledger OS P4 durable host** | **fabric-os** | **open / recheck FAIL** — STORY-G4-2 inbound ack 2026-06-26; `ledger.gtcx.trade` provisioned but Cloudflare 525 on all HTTP probes; ops must fix origin/TLS handshake or tunnel binding; see `operations/coordination/inbound/from-ledger-os-p4-durable-host-2026-06-26.md` |
-| **markets-os PROD-READY-005 staging API chain** | **fabric-os** (runtime/credentials) | **open** — XR-MARKETS-OS-FRESH-AUDIT-2026-06-27 inbound ack; advisory-api unreachable, credential path missing; see `docs/operations/coordination/from-markets-os-xr-markets-os-fresh-audit-2026-06-27.md` |
-| EXT-REF WORM recurrence on main | Infra operator | open |
-
-## Program orchestration (fabric-os)
-
-| Program | Originating handoff | Status | Evidence |
-| --- | --- | --- | --- |
-| **PROG-TOKENIZATION-001** / XR-MKT-FABRIC-001 | markets-os → fabric-os | **acknowledged** 2026-06-11 | `docs/operations/coordination/from-fabric-os-xr-mkt-fabric-001-ack-2026-06-11.md`, `xr-mkt-fabric-001-tokenization-execution-plan-2026-06-11.md` |
-| **PROG-DIGITAL-RAIL-WAVE-0** / XR-FABRIC-RAIL-003 | bridge-os → fabric-os | **acknowledged** 2026-06-12 | `docs/operations/coordination/from-bridge-os-digital-rail-runtime-2026-06-12.md`, `xr-bridge-rail-003-digital-rail-execution-plan-2026-06-12.md` |
-
-**Canonical identity:** `fabric-os` (legacy: `gtcx-infrastructure`) — `bridge-os/pm/spec/service-fabric.json`, ADR-0007.
-
-## Soft Dependencies
-
-| Needs | From Repo | Status |
-| --- | --- | --- |
-| XR-403 bog.json PR | gtcx-protocols | ready post H-03 |
-| `COMPLIANCE_OS_INTAKE_API_KEY` | compliance-os | ready when asked |
-| ledger-ui UI-GH-00 fixture track | ledger-ui | open — inbound pending |
-| MKT-GH-00 contract freeze | markets-os | in progress (markets-os `03e4d46`) |
-
-## Downstream Consumers (infra delivered)
-
+## Downstream Consumers
 | Repo | What They Need | Status |
-| --- | --- | --- |
-| gtcx-protocols | SPKI DER + SHA-256 (XR-402) | done 2026-06-03 |
-| gtcx-intelligence | orchestrator manifest + cost router | done |
-| gtcx-core | EXT-REF vendor pack ack | done 2026-06-07 |
+|------|---------------|--------|
+| | | |
 
-## Engineering witness (not XC blockers)
-
-| Signal | Value |
-| --- | ---: |
-| validate-all | 50/50 |
-| Lane 1 IR | 7.9 |
-| backlogClear | true |

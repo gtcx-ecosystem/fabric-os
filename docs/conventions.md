@@ -71,7 +71,7 @@ The audit registry is provider-agnostic — the same prompts work for Claude, Co
 
 - **System-of-record (SoR)**: `bridge-os` Baseline vault (shared provider creds + audited access)
 - **Runtime usage owner**: product repo (e.g. `gtcx-intelligence`) owns its runtime secrets
-- **CI/automation owner**: `gtcx-infrastructure` owns org automation secrets/policy
+- **CI/automation owner**: `fabric-os` owns org automation secrets/policy (`gtcx-infrastructure` is a legacy alias)
 - **Contracts only**: `gtcx-protocols` defines env var names, redaction rules, and artifact paths/globs
 
 **Credentialed evidence packs:** run either via vault injection on a dev laptop or in infra-owned CI; write redacted JSON evidence only (no raw secrets).
@@ -83,7 +83,7 @@ The audit registry is provider-agnostic — the same prompts work for Claude, Co
 | Route decisions + pricing     | `baseline-os`  | `baseline cost-route --prompt "..." --json`                   |
 | Token usage aggregate         | `baseline-os`  | `baseline cost-stats --json`                                  |
 | Agent vault (populate/verify) | `bridge-os` | `pnpm agent:vault:verify`                                     |
-| Staging vs production keys    | `bridge-os` | `01-docs/operators/vault-environments.md`                        |
+| Staging vs production keys    | `bridge-os` | `../bridge-os/docs/operators/vault-environments.md`                        |
 | Ecosystem coordination        | `baseline-os`  | `workstream/coordination/ECOSYSTEM-COST-ROUTER-2026-06-03.md` |
 
 **Do not** use `baseline-os/04-deploy/docker/.env.staging` for production vault work.

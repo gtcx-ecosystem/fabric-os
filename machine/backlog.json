@@ -112,7 +112,8 @@
       "canonBundleId": null,
       "frIds": [],
       "planRef": "docs/product/roadmap/stories/STORY-FOAP-007.md",
-      "_compiledFrom": "docs/product/roadmap/stories/STORY-FOAP-007.md"
+      "_compiledFrom": "docs/product/roadmap/stories/STORY-FOAP-007.md",
+      "goalId": "GOAL-FABRICS-OPS"
     },
     {
       "id": "FOAP-009",
@@ -124,7 +125,8 @@
       "canonBundleId": null,
       "frIds": [],
       "planRef": "docs/product/roadmap/stories/STORY-FOAP-009.md",
-      "_compiledFrom": "docs/product/roadmap/stories/STORY-FOAP-009.md"
+      "_compiledFrom": "docs/product/roadmap/stories/STORY-FOAP-009.md",
+      "goalId": "GOAL-FABRICS-OPS"
     },
     {
       "id": "FOAP-010",
@@ -136,7 +138,8 @@
       "canonBundleId": null,
       "frIds": [],
       "planRef": "docs/product/roadmap/stories/STORY-FOAP-010.md",
-      "_compiledFrom": "docs/product/roadmap/stories/STORY-FOAP-010.md"
+      "_compiledFrom": "docs/product/roadmap/stories/STORY-FOAP-010.md",
+      "goalId": "GOAL-FABRICS-OPS"
     },
     {
       "id": "INIT-EXEC-GAP",
@@ -185,7 +188,8 @@
       "frIds": [],
       "planRef": "docs/product/roadmap/stories/STORY-LEGAL-PROGRAM-01.md",
       "_compiledFrom": "docs/product/roadmap/stories/STORY-LEGAL-PROGRAM-01.md",
-      "auditNotes": "2026-06-15 register closed; 2026-06-24 reconciled into FOAP programme backlog"
+      "auditNotes": "2026-06-15 register closed; 2026-06-24 reconciled into FOAP programme backlog",
+      "goalId": "GOAL-FABRICS-OPS"
     },
     {
       "id": "OPS-PRD-ROUTING-001",
@@ -197,7 +201,8 @@
       "canonBundleId": null,
       "frIds": [],
       "planRef": "docs/product/roadmap/stories/STORY-OPS-PRD-ROUTING-001.md",
-      "_compiledFrom": "docs/product/roadmap/stories/STORY-OPS-PRD-ROUTING-001.md"
+      "_compiledFrom": "docs/product/roadmap/stories/STORY-OPS-PRD-ROUTING-001.md",
+      "goalId": "GOAL-FABRICS-OPS"
     },
     {
       "id": "SECAS-S2-01",
@@ -340,7 +345,9 @@
       "canonBundleId": null,
       "frIds": [],
       "planRef": "docs/product/roadmap/stories/STORY-T46.md",
-      "_compiledFrom": "docs/product/roadmap/stories/STORY-T46.md"
+      "_compiledFrom": "docs/product/roadmap/stories/STORY-T46.md",
+      "productGoalId": "PG1",
+      "goalId": "GOAL-FABRICS-OPS"
     },
     {
       "id": "WC-SECOPS-007",
@@ -352,7 +359,9 @@
       "canonBundleId": null,
       "frIds": [],
       "planRef": "docs/product/roadmap/stories/STORY-WC-SECOPS-007.md",
-      "_compiledFrom": "docs/product/roadmap/stories/STORY-WC-SECOPS-007.md"
+      "_compiledFrom": "docs/product/roadmap/stories/STORY-WC-SECOPS-007.md",
+      "productGoalId": "PG1",
+      "goalId": "GOAL-FABRICS-OPS"
     },
     {
       "id": "XR-BASELINE-ROADMAP-INTAKE-001",
@@ -526,7 +535,7 @@
   "_generated": {
     "by": "product-compile.mjs",
     "protocol": "P57-product-delivery-compile",
-    "at": "2026-06-27T08:18:01.476Z"
+    "at": "2026-06-27T12:40:49.620Z"
   },
   "active": null,
   "execution": {

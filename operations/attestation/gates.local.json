@@ -23,7 +23,7 @@
       "title": "griot-ai HTTPS ACM certificate and listener",
       "status": "open",
       "owner": "authorized-operator",
-      "note": "ACM cert provisioning and HTTPS listener config for api.griot.ai.",
+      "note": "ACM cert provisioning and HTTPS listener config for griot-staging.gtcx.trade.",
       "evidence": "docs/operations/coordination/fabric-os-fleet-unblock-register-2026-06-25.md"
     },
     {

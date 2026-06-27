@@ -1,7 +1,8 @@
 ---
+auditNotes: 'P58 gap remediate 2026-06-27: all stories terminal'
 initiativeId: INIT-FLEET-OPS-ASSURANCE-PROGRAM
 title: Fleet Ops Assurance Program
-status: in_progress
+status: done
 priority: P0
 owner: fabric-os
 programmeId: PROG-FLEET-OPS-ASSURANCE

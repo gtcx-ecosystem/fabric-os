@@ -8,6 +8,21 @@ last_reconciled: 2026-06-25T00:40:00.000Z
 
 # Auto-Development State
 
+## Inbound handoff — ledger-os durable host recheck (2026-06-27)
+
+- **Ticket:** XR-LEDGER-OS-FRESH-AUDIT-2026-06-27
+- **Blocked work:** ledger-os `STORY-G4-2` (durable host)
+- **Owner:** fabric-os / ops
+- **Status:** **recheck FAIL** — `ledger.gtcx.trade` provisioned, `ops:institutional-check` PASS, but durable-host HTTP route audit returns Cloudflare `525` on all routes.
+- **Evidence:**
+  - `audit/independent/ledger-os/feedback/audit-response-2026-06-27.md`
+  - `ledger-os/audit/evidence/route-audit-durable-host-2026-06-27.json`
+  - `ledger-os/audit/evidence/route-audit-durable-host-recheck-2026-06-27.json`
+  - `ledger-os/audit/evidence/ledger-corridor-witness-latest.json`
+- **Root cause:** Cloudflare attempting HTTPS origin negotiation against HTTP-only or mis-bound origin; tunnel ingress likely needs `http://localhost:3400` instead of `https://localhost:3400` (or SSL mode adjusted).
+- **Authority:** Class A — operator authorization required; Cloudflare credentials (`CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ZONE_ID`, `CLOUDFLARE_ACCOUNT_ID`) are missing in the current shell.
+- **Completion signal:** `LEDGER_OS_BASE_URL=https://ledger.gtcx.trade pnpm routes:audit:http` PASS; `route-audit-latest.json` `ok: true`.
+
 ## Inbound handoff — markets-os fresh audit (2026-06-27)
 
 - **Ticket:** XR-MARKETS-OS-FRESH-AUDIT-2026-06-27

@@ -8,21 +8,21 @@ variable "environment" {
 }
 
 variable "primary_domain" {
-  description = "Primary griot-ai domain (e.g. api.griot.ai)"
+  description = "Primary griot-ai domain (e.g. griot.gtcx.trade)"
   type        = string
-  default     = "api.griot.ai"
+  default     = "griot.gtcx.trade"
 }
 
 variable "griot_ai_apex_domain" {
-  description = "Apex domain for griot-ai hosted zone"
+  description = "Apex domain for the primary griot-ai hosted zone (e.g. gtcx.trade)"
   type        = string
-  default     = "griot.ai"
+  default     = "gtcx.trade"
 }
 
 variable "include_gtcx_trade_san" {
-  description = "Include griot.gtcx.trade as SAN on the ACM certificate"
+  description = "Include griot.gtcx.trade as SAN on the ACM certificate (only useful when primary_domain is not already under gtcx.trade)"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "gtcx_trade_apex_domain" {

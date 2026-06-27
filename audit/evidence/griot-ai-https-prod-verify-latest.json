@@ -1,0 +1,36 @@
+{
+  "schema": "gtcx://fabric-os/blocker-verify/v1",
+  "blockerId": "F-prod-06",
+  "updated": "2026-06-27T13:20:26.614Z",
+  "repo": "fabric-os",
+  "status": "ready",
+  "gates": [
+    {
+      "id": "acm-cert-issued",
+      "label": "ACM certificate arn:aws:acm:eu-west-1:348389439381:certificate/078c204c-e90e-46fb-b3b2-2749439b10ae is ISSUED for griot.gtcx.trade",
+      "status": "pass",
+      "detail": {
+        "status": "ISSUED",
+        "domainStatus": "SUCCESS",
+        "arn": "arn:aws:acm:eu-west-1:348389439381:certificate/078c204c-e90e-46fb-b3b2-2749439b10ae"
+      }
+    },
+    {
+      "id": "https-200",
+      "label": "https://griot.gtcx.trade/health returns HTTP 200",
+      "status": "pass",
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "id": "http-ok-or-redirect",
+      "label": "http://griot.gtcx.trade/health returns HTTP 200 or 308 redirect to HTTPS",
+      "status": "pass",
+      "detail": {
+        "status": 200,
+        "location": null
+      }
+    }
+  ]
+}

@@ -17,7 +17,7 @@ Fabric-os owns the public HTTPS ingress substrate that unblocks griot-ai `STORY-
 
 - `griot-staging.gtcx.trade` (ACM certificate + Route53 A record + ALB HTTPS listener)
 
-The production endpoint `api.griot.ai` requires a Route53 hosted zone for `griot.ai` that is not present in the staging AWS account; it is out of scope for this staging blocker.
+The canonical production endpoint is `griot.gtcx.trade` (Cloudflare DNS / AWS ACM in `eu-west-1`). `griot.ai` is **not** a GTCX-controlled domain and is out of scope for this staging blocker.
 
 ## Architecture
 

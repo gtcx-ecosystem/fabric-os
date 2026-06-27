@@ -3,15 +3,14 @@
 # =============================================================================
 # Provisions ACM certificate + Route53 records for griot-ai public endpoints.
 #
-# Endpoints:
-#   - api.griot.ai (primary)
-#   - griot.gtcx.trade (SAN, optional)
+# Endpoint:
+#   - <primary_domain> under the gtcx.trade hosted zone (e.g. griot.gtcx.trade)
 #
 # Two-apply pattern:
 #   1. First apply with alb_dns_name = "" creates ACM cert + validation records.
 #   2. Deploy K8s Ingress (griot-ai-staging/griot-api); ALB controller creates ALB.
 #   3. Set alb_dns_name + alb_zone_id from kubectl output; second apply creates
-#      the A record for api.griot.ai.
+#      the A record for <primary_domain>.
 # =============================================================================
 
 locals {
@@ -63,7 +62,7 @@ resource "aws_acm_certificate" "griot_ai" {
 }
 
 # -----------------------------------------------------------------------------
-# Route53 Validation Records — griot.ai zone
+# Route53 Validation Records — primary apex zone
 # -----------------------------------------------------------------------------
 
 resource "aws_route53_record" "griot_ai_validation" {
@@ -101,7 +100,7 @@ resource "aws_route53_record" "gtcx_trade_validation" {
 }
 
 # -----------------------------------------------------------------------------
-# Route53 A Record — api.griot.ai → ALB
+# Route53 A Record — primary domain → ALB
 # -----------------------------------------------------------------------------
 
 resource "aws_route53_record" "griot_ai_a" {

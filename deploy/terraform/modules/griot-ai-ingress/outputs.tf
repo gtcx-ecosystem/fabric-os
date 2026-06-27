@@ -3,7 +3,7 @@
 # =============================================================================
 
 output "certificate_arn" {
-  description = "ACM certificate ARN for api.griot.ai"
+  description = "ACM certificate ARN for griot-ai primary domain"
   value       = aws_acm_certificate.griot_ai.arn
 }
 
@@ -19,7 +19,7 @@ output "certificate_domain_validation" {
 }
 
 output "griot_ai_zone_id" {
-  description = "Route53 hosted zone ID for griot.ai"
+  description = "Route53 hosted zone ID for the primary griot-ai apex domain"
   value       = data.aws_route53_zone.griot_ai.zone_id
 }
 

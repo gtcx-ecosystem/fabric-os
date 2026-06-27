@@ -79,6 +79,23 @@ export function evaluateHonesty({ registry, coverage, composite = {}, opts = {} 
     capsFired: capsFired.length,
   };
 
+  // A high-scoring core whose own metrics are zero/missing/low-confidence is a
+  // laundered ("hollow") composite — the score the gate was built to reject.
+  // Reads composite.cores[].metrics, which contradictionReconciled cannot see.
+  const hollowCeil = opts.hollowCeil ?? 85;
+  const cores = composite?.cores ?? {};
+  const hollowCores = Object.entries(cores)
+    .filter(([, core]) => {
+      const metrics = Object.values(core?.metrics ?? {});
+      if (!metrics.length) return false;
+      const hasHollowMetric = metrics.some(
+        (m) => m.score100 === 0 || m.confidence === 'D' || m.source === 'missing',
+      );
+      return (core?.score100 ?? 0) >= hollowCeil && hasHollowMetric;
+    })
+    .map(([id]) => id);
+  const noHollowCores = { ok: hollowCores.length === 0, hollowCeil, hollowCores };
+
   const registryNonEmpty = { ok: capabilities.length > 0, capabilityCount: capabilities.length };
 
   const authoritative = registry?.status !== 'draft';
@@ -95,6 +112,7 @@ export function evaluateHonesty({ registry, coverage, composite = {}, opts = {} 
     depthVerified,
     veracityDisclosed,
     contradictionReconciled,
+    noHollowCores,
     registryNonEmpty,
     registryAuthoritative,
   };

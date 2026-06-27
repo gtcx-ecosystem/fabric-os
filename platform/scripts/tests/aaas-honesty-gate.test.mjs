@@ -102,6 +102,46 @@ describe('aaas-honesty-gate', () => {
     assert.equal(witness.gates.contradictionReconciled.ok, true);
   });
 
+  it('fails noHollowCores when a high core launders missing/zero metrics', () => {
+    const { witness, ok } = evaluateHonesty({
+      ...clean,
+      composite: {
+        composite100: 100,
+        capsFired: [],
+        cores: {
+          'A5-REPO-HYGIENE': {
+            score100: 100,
+            metrics: {
+              documentation: { score100: 0, confidence: 'D', source: 'missing' },
+              'repo-folder-hygiene': { score100: 0, confidence: 'D', source: 'missing' },
+            },
+          },
+        },
+      },
+    });
+    assert.equal(ok, false);
+    assert.equal(witness.gates.noHollowCores.ok, false);
+    assert.deepEqual(witness.gates.noHollowCores.hollowCores, ['A5-REPO-HYGIENE']);
+  });
+
+  it('passes noHollowCores when a high core has real metrics', () => {
+    const { witness, ok } = evaluateHonesty({
+      ...clean,
+      composite: {
+        composite100: 90,
+        capsFired: [],
+        cores: {
+          'A1-PRODUCT-EXCELLENCE': {
+            score100: 90,
+            metrics: { ux: { score100: 90, confidence: 'A', source: 'audit-output' } },
+          },
+        },
+      },
+    });
+    assert.equal(ok, true);
+    assert.equal(witness.gates.noHollowCores.ok, true);
+  });
+
   it('fails registryNonEmpty for an empty registry', () => {
     const { witness, ok } = evaluateHonesty({
       ...clean,

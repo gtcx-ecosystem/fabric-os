@@ -32,10 +32,16 @@
     },
     {
       "id": "AAAS-S3",
-      "name": "Audit cadence — nightly + pre-merge triggers that run gated audits",
-      "status": "planned",
+      "name": "Audit cadence — nightly heartbeat + freshness gate",
+      "status": "complete",
       "items": ["AAAS-CADENCE-01"],
-      "note": "Spec 2: schedule regular gated audits; flip honesty gate to hard-block once canon registry is populated."
+      "deliverables": [
+        "platform/scripts/aaas-cadence.mjs",
+        "platform/scripts/tests/aaas-cadence.test.mjs",
+        ".github/workflows/aaas-cadence.yml (nightly cron)",
+        "pnpm aaas:cadence[:write]"
+      ],
+      "note": "Nightly refreshes friction + honesty witnesses and surfaces stale witnesses (ASR-007). Pre-merge honesty already in ci.yml. Remaining: flip honesty gate to hard-block once canon registry is populated (ASR-004) and bridge-os five-pillar refresh is wired (ASR-002/007)."
     }
   ]
 }

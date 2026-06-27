@@ -2,9 +2,9 @@
   "schema": "gtcx://fabric-os/aaas-friction-check/v1",
   "initiative": "INIT-GTCX-SERVICE-FABRIC",
   "service": "AAAS",
-  "checkedAt": "2026-06-18T17:20:47.491Z",
+  "checkedAt": "2026-06-27T20:38:47.009Z",
   "owner": "fabric-os",
-  "harness": "bridge-os/review:five-core:run",
+  "harness": "bridge-os/audit:five-core:run",
   "gates": {
     "register": {
       "ok": true
@@ -30,13 +30,15 @@
       "ok": true,
       "count": 0,
       "ids": []
+    },
+    "honestyGate": {
+      "ok": false,
+      "blocking": false,
+      "coveragePct": 100,
+      "worstVerifiedFinding": "Canon registry is draft with a single capability, so honesty-gate coverage cannot yet be exhaustive; audit cadence (Spec 2) is not wired, so audits still run on-demand rather than on a regular trigger.",
+      "failures": ["noHollowCores"]
     }
   },
   "openP0": 0,
-  "ok": true,
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "ok": true
 }

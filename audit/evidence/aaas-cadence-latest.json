@@ -1,0 +1,17 @@
+{
+  "schema": "gtcx://fabric-os/aaas-cadence/v1",
+  "maxAgeDays": 3,
+  "counts": {
+    "total": 5,
+    "fresh": 4,
+    "stale": 1,
+    "unknown": 0
+  },
+  "oldestAgeDays": 5,
+  "stale": ["five-pillar"],
+  "unknown": [],
+  "fresh": ["aaas-friction-check", "aaas-honesty-gate", "composite-audit", "master-audit"],
+  "ok": false,
+  "checkedAt": "2026-06-27T20:38:47.084Z",
+  "repo": "fabric-os"
+}

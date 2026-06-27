@@ -1,0 +1,131 @@
+#!/usr/bin/env node
+/**
+ * AAAS — Audit-as-a-Service cadence runner (AAAS-S3).
+ *
+ * Turns assurance from on-demand into a regular heartbeat: refreshes the friction
+ * + honesty witnesses (--write) and asserts the core witnesses are fresh, so
+ * "witnesses rot" (audit finding ASR-007) becomes a visible, gating signal rather
+ * than silent staleness.
+ *
+ * Usage: node aaas-cadence.mjs [--write] [--json] [--strict] [--max-age-days N]
+ *   --write   regenerate friction + honesty witnesses before checking freshness
+ *   --strict  exit nonzero when any monitored witness is stale or undateable
+ */
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
+
+const DAY = 86_400_000;
+const DATE_FIELDS = ['checkedAt', 'updated', 'evaluatedAt', 'date', 'generatedAt'];
+
+/** First present, parseable date-ish field → epoch ms, else null. */
+export function extractDateMs(obj) {
+  if (!obj || typeof obj !== 'object') return null;
+  for (const f of DATE_FIELDS) {
+    if (obj[f]) {
+      const ms = Date.parse(obj[f]);
+      if (!Number.isNaN(ms)) return ms;
+    }
+  }
+  return null;
+}
+
+/**
+ * Pure freshness evaluation. witnesses: [{ id, dateMs|null }].
+ * A null date is treated as not-verifiable (fails) — absence is not freshness.
+ */
+export function evaluateStaleness({ witnesses, nowMs, maxAgeDays }) {
+  const maxAgeMs = maxAgeDays * DAY;
+  const stale = [];
+  const unknown = [];
+  const fresh = [];
+  let oldestAgeDays = 0;
+  for (const w of witnesses) {
+    if (w.dateMs == null) {
+      unknown.push(w.id);
+      continue;
+    }
+    const ageDays = (nowMs - w.dateMs) / DAY;
+    if (ageDays > oldestAgeDays) oldestAgeDays = ageDays;
+    if (nowMs - w.dateMs > maxAgeMs) stale.push(w.id);
+    else fresh.push(w.id);
+  }
+  const ok = stale.length === 0 && unknown.length === 0;
+  const witness = {
+    schema: 'gtcx://fabric-os/aaas-cadence/v1',
+    maxAgeDays,
+    counts: { total: witnesses.length, fresh: fresh.length, stale: stale.length, unknown: unknown.length },
+    oldestAgeDays: Math.round(oldestAgeDays),
+    stale,
+    unknown,
+    fresh,
+    ok,
+  };
+  return { witness, ok };
+}
+
+// Witnesses whose freshness the cadence guarantees.
+const MONITORED = [
+  'aaas-friction-check-latest.json',
+  'aaas-honesty-gate-latest.json',
+  'composite-audit-latest.json',
+  'five-pillar-latest.json',
+  'master-audit-latest.json',
+];
+
+function main() {
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
+  const WRITE = process.argv.includes('--write');
+  const JSON_OUT = process.argv.includes('--json');
+  const STRICT = process.argv.includes('--strict');
+  const ageIdx = process.argv.indexOf('--max-age-days');
+  const maxAgeDays = ageIdx !== -1 ? Number(process.argv[ageIdx + 1]) : 3;
+  const OUT = join(ROOT, 'audit/evidence/aaas-cadence-latest.json');
+
+  // Heartbeat: refresh the witnesses fabric-os owns locally.
+  if (WRITE) {
+    for (const args of [
+      ['platform/scripts/aaas-friction-check.mjs', '--write'],
+      ['platform/scripts/aaas-honesty-gate.mjs', '--write'],
+    ]) {
+      spawnSync('node', args, { cwd: ROOT, encoding: 'utf8', shell: false });
+    }
+  }
+
+  const witnesses = MONITORED.map((name) => {
+    const path = join(ROOT, 'audit/evidence', name);
+    let dateMs = null;
+    if (existsSync(path)) {
+      try {
+        dateMs = extractDateMs(JSON.parse(readFileSync(path, 'utf8')));
+      } catch {
+        dateMs = null;
+      }
+    }
+    return { id: name.replace(/-latest\.json$/, ''), dateMs };
+  });
+
+  const { witness, ok } = evaluateStaleness({ witnesses, nowMs: Date.now(), maxAgeDays });
+  witness.checkedAt = new Date().toISOString();
+  witness.repo = 'fabric-os';
+
+  mkdirSync(dirname(OUT), { recursive: true });
+  writeFileSync(OUT, `${JSON.stringify(witness, null, 2)}\n`);
+
+  if (JSON_OUT) {
+    console.log(JSON.stringify(witness, null, 2));
+  } else {
+    console.log(`cadence · max-age ${maxAgeDays}d · oldest ${witness.oldestAgeDays}d`);
+    for (const id of witness.fresh) console.log(`OK   ${id}`);
+    for (const id of witness.stale) console.log(`STALE ${id}`);
+    for (const id of witness.unknown) console.log(`UNDATED ${id}`);
+    console.log(`\n${ok ? 'PASS' : 'WARN'} — AAAS cadence freshness (witness: ${OUT})`);
+  }
+
+  process.exit(STRICT && !ok ? 1 : 0);
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}

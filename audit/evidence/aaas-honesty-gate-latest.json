@@ -3,7 +3,7 @@
   "worstVerifiedFinding": "Canon registry is draft with a single capability, so honesty-gate coverage cannot yet be exhaustive; audit cadence (Spec 2) is not wired, so audits still run on-demand rather than on a regular trigger.",
   "repo": "fabric-os",
   "owner": "fabric-os",
-  "checkedAt": "2026-06-27T17:12:28.488Z",
+  "checkedAt": "2026-06-27T20:38:47.055Z",
   "registry": {
     "status": "draft",
     "capabilityCount": 1,
@@ -32,16 +32,16 @@
     },
     "contradictionReconciled": {
       "ok": true,
-      "composite100": 100,
+      "composite100": 90,
       "contradictionCeil": 85,
       "floor": 60,
       "brokenBelowFloor": [],
-      "capsFired": 0
+      "capsFired": 1
     },
     "noHollowCores": {
       "ok": false,
       "hollowCeil": 85,
-      "hollowCores": ["A5-REPO-HYGIENE"]
+      "hollowCores": ["A1-PRODUCT-EXCELLENCE", "A3-AGENTIC-INNOVATION", "A4-COMPLIANCE-SECURITY"]
     },
     "registryNonEmpty": {
       "ok": true,

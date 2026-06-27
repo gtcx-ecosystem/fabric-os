@@ -27,6 +27,8 @@ five-core probe consumption, and Fabric assurance witness production.
 | Coverage claims      | `audit/evidence/aaas-honesty-coverage.json`      | Per-capability audit coverage                     |
 | Honesty witness      | `audit/evidence/aaas-honesty-gate-latest.json`   | Latest honesty-gate witness                       |
 | Coverage denominator | `machine/canon/registry.json`                    | Capabilities the audit must cover (from canon-os) |
+| Cadence runner       | `platform/scripts/aaas-cadence.mjs`              | Nightly heartbeat + witness-freshness gate        |
+| Cadence witness      | `audit/evidence/aaas-cadence-latest.json`        | Latest freshness witness                          |
 
 ## Commands
 
@@ -35,7 +37,21 @@ pnpm aaas:friction:check
 pnpm aaas:friction:check:write
 pnpm aaas:honesty:check          # reject "scored the map, not the territory"
 pnpm aaas:honesty:check:write
+pnpm aaas:cadence                # report witness freshness (ASR-007)
+pnpm aaas:cadence:write          # refresh friction + honesty witnesses, then check
 ```
+
+## Cadence (AAAS-S3)
+
+`platform/scripts/aaas-cadence.mjs` is the assurance heartbeat. `:write` refreshes
+the friction + honesty witnesses, then asserts the monitored witnesses
+(`aaas-friction-check`, `aaas-honesty-gate`, `composite-audit`, `five-pillar`,
+`master-audit`) are within `--max-age-days` (default 3). An undateable witness is
+treated as not-verifiable (fails under `--strict`). Witness:
+`audit/evidence/aaas-cadence-latest.json`. Runs nightly via
+`.github/workflows/aaas-cadence.yml` (advisory; uploads the witness as an
+artifact). `five-pillar` freshness depends on the bridge-os MPR run — staleness
+there is expected until that refresh is wired (ASR-002/007).
 
 ## Honesty gate — protocol
 

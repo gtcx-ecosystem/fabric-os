@@ -1,0 +1,17 @@
+{
+  "schema": "gtcx://fabric-os/aaas-honesty-coverage/v1",
+  "repo": "fabric-os",
+  "updated": "2026-06-27",
+  "note": "Coverage claims for the honesty gate. One entry per capability in machine/canon/registry.json. deepestRouteChecked must be a real path one level past entryRoute.",
+  "entries": [
+    {
+      "capabilityId": "FEAT-FABRIC-OPS-ASSURANCE",
+      "entryRoute": "platform/scripts/aaas-friction-check.mjs",
+      "deepestRouteChecked": "platform/scripts/aaas-honesty-gate.mjs",
+      "veracity": "real",
+      "disclosed": true,
+      "score": 72,
+      "worstFinding": "Canon registry is draft with a single capability, so honesty-gate coverage cannot yet be exhaustive; audit cadence (Spec 2) is not wired, so audits still run on-demand rather than on a regular trigger."
+    }
+  ]
+}

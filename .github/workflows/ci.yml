@@ -131,6 +131,12 @@ jobs:
       - name: Validate score-evidence ledger
         run: node 03-platform/tools/scripts/validate-score-ledger.mjs
 
+      - name: AaaS honesty gate — unit tests
+        run: node --test platform/scripts/tests/aaas-honesty-gate.test.mjs
+
+      - name: AaaS honesty gate — coverage vs canon registry
+        run: pnpm aaas:honesty:check
+
       - name: Security control boundaries
         run: node 03-platform/tools/policy/check-security-control-boundaries.mjs
 

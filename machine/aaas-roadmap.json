@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/aaas-roadmap/v1",
   "version": "1.0.0",
-  "updated": "2026-06-12",
+  "updated": "2026-06-27",
   "program": "Audit-as-a-Service",
   "initiative": "INIT-GTCX-SERVICE-FABRIC",
   "owner": "fabric-os",
@@ -16,6 +16,26 @@
       "name": "Five-core friction runner + witness delegate",
       "status": "complete",
       "items": ["AAAS-RUNNER-01"]
+    },
+    {
+      "id": "AAAS-S2",
+      "name": "Honesty gate — anti-superficiality validator",
+      "status": "complete",
+      "spec": "docs/superpowers/specs/2026-06-27-aaas-honesty-gate-design.md",
+      "items": ["AAAS-HONESTY-01"],
+      "deliverables": [
+        "platform/scripts/aaas-honesty-gate.mjs",
+        "platform/scripts/tests/aaas-honesty-gate.test.mjs",
+        "audit/evidence/aaas-honesty-coverage.json",
+        "wired into aaas-friction-check + CI (surfaced, non-blocking while registry draft)"
+      ]
+    },
+    {
+      "id": "AAAS-S3",
+      "name": "Audit cadence — nightly + pre-merge triggers that run gated audits",
+      "status": "planned",
+      "items": ["AAAS-CADENCE-01"],
+      "note": "Spec 2: schedule regular gated audits; flip honesty gate to hard-block once canon registry is populated."
     }
   ]
 }

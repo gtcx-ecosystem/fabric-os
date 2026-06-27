@@ -1,0 +1,53 @@
+{
+  "schema": "gtcx://fabric-os/aaas-honesty-gate/v1",
+  "worstVerifiedFinding": "Canon registry is draft with a single capability, so honesty-gate coverage cannot yet be exhaustive; audit cadence (Spec 2) is not wired, so audits still run on-demand rather than on a regular trigger.",
+  "repo": "fabric-os",
+  "owner": "fabric-os",
+  "checkedAt": "2026-06-27T14:35:32.681Z",
+  "registry": {
+    "status": "draft",
+    "capabilityCount": 1,
+    "authoritative": false
+  },
+  "coverage": {
+    "required": 1,
+    "claimed": 1,
+    "coveragePct": 100
+  },
+  "gates": {
+    "coverageComplete": {
+      "ok": true,
+      "required": 1,
+      "claimed": 1,
+      "uncovered": []
+    },
+    "depthVerified": {
+      "ok": true,
+      "landingOnly": []
+    },
+    "veracityDisclosed": {
+      "ok": true,
+      "undisclosed": [],
+      "invalidVeracity": []
+    },
+    "contradictionReconciled": {
+      "ok": true,
+      "composite100": 100,
+      "contradictionCeil": 85,
+      "floor": 60,
+      "brokenBelowFloor": [],
+      "capsFired": 0
+    },
+    "registryNonEmpty": {
+      "ok": true,
+      "capabilityCount": 1
+    },
+    "registryAuthoritative": {
+      "ok": true,
+      "authoritative": false,
+      "status": "draft"
+    }
+  },
+  "failures": [],
+  "ok": true
+}

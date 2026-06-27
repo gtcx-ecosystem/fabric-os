@@ -8,6 +8,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { resolveOpsDoc } from './lib/path-aliases.mjs';
+import { evaluateHonesty } from './aaas-honesty-gate.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
@@ -15,6 +16,8 @@ const REGISTER = join(ROOT, 'machine/audit-friction-register.json');
 const ROADMAP = join(ROOT, 'machine/aaas-roadmap.json');
 const OPS = join(ROOT, resolveOpsDoc(ROOT, 'audit-as-a-service.md'));
 const COMPOSITE = join(ROOT, 'audit/evidence/composite-audit-latest.json');
+const CANON = join(ROOT, 'machine/canon/registry.json');
+const COVERAGE = join(ROOT, 'audit/evidence/aaas-honesty-coverage.json');
 const OUT = join(ROOT, 'audit/evidence/aaas-friction-check-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
@@ -50,6 +53,22 @@ if (PROBE && existsSync(join(BRIDGE, 'platform/scripts/ecosystem/run-five-core-a
   });
   gates.fiveCoreProbe = { ok: audit.status === 0, exit: audit.status ?? 1, skipped: false };
   gates.compositeWitness = { ok: existsSync(COMPOSITE) };
+}
+
+// Honesty gate — surfaced here, blocking deferred until the canon registry is
+// populated (registry is draft today). See aaas-roadmap.json + honesty-gate spec.
+{
+  const registry = existsSync(CANON) ? JSON.parse(readFileSync(CANON, 'utf8')) : { status: 'missing', composition: {} };
+  const coverage = existsSync(COVERAGE) ? JSON.parse(readFileSync(COVERAGE, 'utf8')) : { entries: [] };
+  const composite = existsSync(COMPOSITE) ? JSON.parse(readFileSync(COMPOSITE, 'utf8')) : {};
+  const { witness: honesty, ok } = evaluateHonesty({ registry, coverage, composite });
+  gates.honestyGate = {
+    ok,
+    blocking: false,
+    coveragePct: honesty.coverage.coveragePct,
+    worstVerifiedFinding: honesty.worstVerifiedFinding,
+    failures: honesty.failures,
+  };
 }
 
 const structuralOk =

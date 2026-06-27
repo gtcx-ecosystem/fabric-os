@@ -135,6 +135,8 @@
     "haas:friction:check:write": "node platform/scripts/haas-friction-check.mjs --write",
     "aaas:friction:check": "node platform/scripts/aaas-friction-check.mjs",
     "aaas:friction:check:write": "node platform/scripts/aaas-friction-check.mjs --write",
+    "aaas:honesty:check": "node platform/scripts/aaas-honesty-gate.mjs",
+    "aaas:honesty:check:write": "node platform/scripts/aaas-honesty-gate.mjs --write",
     "legal:friction:check": "node platform/scripts/legal-friction-check.mjs",
     "legal:friction:check:write": "node platform/scripts/legal-friction-check.mjs --write",
     "legalops:check": "node platform/scripts/legalops-check.mjs",

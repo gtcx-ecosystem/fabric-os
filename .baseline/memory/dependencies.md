@@ -22,6 +22,8 @@
 | --- | --- | --- |
 | ~~**Hub #17 prod W2 close**~~ | **gtcx-infrastructure** | **done** 2026-06-05 — `compliance.gtcx.trade` + `terminal.gtcx.trade`; baseline-os locker `7d98352b2` |
 | **Hub #18 prod Postgres** | terminal-os + **fabric-os** | **closed** — `w2-locker-18-terminal-evidence.json` prod-slice-pass; SM `DATABASE_URL` + `POSTGRES_URL` alias script |
+| **Ledger OS P4 durable host** | **fabric-os** | **open** — STORY-G4-2 inbound ack 2026-06-26; provision DNS/TLS host and return live URL |
+| **markets-os PROD-READY-005 staging API chain** | **fabric-os** (runtime/credentials) | **open** — XR-MARKETS-OS-FRESH-AUDIT-2026-06-27 inbound ack; advisory-api unreachable, credential path missing; see `docs/operations/coordination/from-markets-os-xr-markets-os-fresh-audit-2026-06-27.md` |
 | EXT-REF WORM recurrence on main | Infra operator | open |
 
 ## Program orchestration (fabric-os)

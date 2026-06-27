@@ -8,6 +8,20 @@ last_reconciled: 2026-06-25T00:40:00.000Z
 
 # Auto-Development State
 
+## Inbound handoff — markets-os fresh audit (2026-06-27)
+
+- **Ticket:** XR-MARKETS-OS-FRESH-AUDIT-2026-06-27
+- **Blocked work:** markets-os `PROD-READY-005`
+- **Owner:** fabric-os (runtime/credential path)
+- **Status:** **acknowledged** — inbound handoff filed at `docs/operations/coordination/from-markets-os-xr-markets-os-fresh-audit-2026-06-27.md`
+- **Evidence:**
+  - `audit/independent/markets-os/feedback/audit-response-2026-06-27.md`
+  - `markets-os/docs/operations/coordination/to-fabric-os-s120-05-staging-api-preflight-2026-06-18.md`
+  - `markets-os/machine/readiness-snapshot.json` (`productionReady: false`, `goNoGo: no-go-production`)
+  - `markets-os/audit/evidence/transaction-test-run-latest.json` (`prepare` phase_fail, advisory-api unreachable)
+- **Authority:** Class A — operator authorization required for live staging credentials.
+- **Completion signal:** `pnpm roadmap:status --id PROD-READY-005` reports unblocked + `transaction-test-run-latest.json` all phases `phase_passed`.
+
 ## execute-roadmap (2026-06-25 — W4-docs-IA batch + backlog clear)
 
 - **INIT-FIVE-PILLAR-FLEET-100:** **done** — composite 100/100 full-unlock; **validate-all 56/56** (docs-standard recovered). W4-docs-IA batch: validator exempts canonical GTCX artifact names (FOLDER-SPEC/STORY-/FEAT-/INIT-/MATURITY-LANE-/XR-), 12 index READMEs, 31 frontmatter fields, secas/roadmap relative-link fixes, residual template/cross-repo links baselined (reviewBy 2026-06-30). operations:check PASS.

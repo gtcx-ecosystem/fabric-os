@@ -322,13 +322,13 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - [ ] Re-read `.baseline/memory/pitfalls.md`
 - [ ] Run `pnpm agent:next-work` to confirm next story
 
-## Session bootstrap (2026-06-25 05:35:18 UTC)
+## Session bootstrap (2026-06-27 13:41:46 UTC)
 
 - **Command:** `agent start` (baseline-os repo-session-core)
 - **Repo:** fabric-os
 - **Next work:** unknown
 - **Blocked:** no
-- **Git:** 44 changed path(s)
+- **Git:** 26 changed path(s)
 
 
 ## Session — 2026-06-05 (continued)
@@ -476,3 +476,37 @@ Staging sovereign pods use the same key alias but assume the staging IRSA role
 - **Work register:** SECAS-S4-04 `structural done`; SEC-PTREM-01 `executionStatus: structural done`
 - **P22 state:** implement queue reconciled; external/vendor gates remain parallel
 - **validate-all:** 53/55 pass — pre-existing Docs Standard (27) + Ecosystem Integration Matrix failures
+
+
+## F-prod-06 — api.griot.ai HTTPS diagnosis (2026-06-27)
+
+### Done
+
+| ID | What | Evidence |
+|----|------|----------|
+| F-prod-06-DIAG | Diagnosed `api.griot.ai` HTTPS failure | ACM cert `6c40f4cf...` is `PENDING_VALIDATION` for `api.griot.ai`; validation CNAME `_63e8eb3807cda8940404d774d406cbed.api.griot.ai` is missing from Dynadot/Afternic; current A record points to Global Accelerator IPs (`13.248.169.48`, `76.223.54.146`) |
+| F-prod-06-RUNBOOK | Updated `docs/operations/runbooks/griot-ai-https-production.md` with exact Dynadot CNAME, DNS repoint target, and AWS/ingress steps | file updated |
+| F-prod-06-VERIFY | Extended `platform/scripts/production/verify-griot-ai-https-prod.mjs` to check `api.griot.ai` ACM validation, CNAME presence, HTTPS/HTTP | script runs; 4/7 gates pass |
+| F-prod-06-WITNESS | Generated failing witness (`--write`) | `audit/evidence/griot-ai-https-prod-verify-latest.json` status `not_ready`; `../bridge-os/pm/ci/fabric-os-blocker-fprod06-latest.json` updated |
+| F-prod-06-REGISTER | Reopened `F-prod-06` in fleet unblock register | status `awaiting_operator_action`; deliverable: `api.griot.ai` production HTTPS verified green |
+| F-prod-06-INBOUND | Filed durable inbound ack in `docs/operations/coordination/inbound/from-griot-ai-f-prod06-2026-06-25.md` | file created |
+
+### State
+
+| Signal | Value |
+|--------|-------|
+| `griot.gtcx.trade` | 🟢 HTTP/2 200 (already green) |
+| `api.griot.ai` | 🔴 TLS `unrecognized name`; pending Dynadot CNAME + DNS repoint |
+| ACM cert `6c40f4cf...` | `PENDING_VALIDATION` for `api.griot.ai` |
+| Griot ALB (`af-south-1`) | `k8s-griotai-griotapi-43e646ace1-668524754.af-south-1.elb.amazonaws.com`; HTTP listener only |
+
+### Blocker
+
+- **Class A operator action required:** Dynadot/Afternic credentials are not available in this session. The exact records to add are documented in the runbook and inbound handoff.
+- **Kubectl/EKS access:** Production cluster API endpoint is not reachable from this shell; ingress apply must run from an operator host with cluster access.
+
+### Next priority
+
+- **Owner:** operator / fabric-os human lead
+- **Action:** Add the Dynadot/Afternic CNAME + repoint `api.griot.ai` A record to the Griot ALB, then apply `../griot-ai/deploy/infra/k8s/ingress-https.yaml`.
+- **Because:** This unblocks ACM validation and terminates TLS on the production ALB for `api.griot.ai`.

@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.0",
-    "@ai-sdk/google": "^3.0.0",
+    "@ai-sdk/google": "^3.0.82",
     "@ai-sdk/openai": "^3.0.0",
     "@gtcx/audit-signer": "workspace:*",
     "@gtcx/compliance-data": "workspace:*",

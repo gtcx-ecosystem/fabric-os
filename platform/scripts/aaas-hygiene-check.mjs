@@ -26,13 +26,16 @@ const JSON_OUT = process.argv.includes('--json');
 const readJson = (p) => (existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : null);
 
 function checkRepo(repo) {
-  // Delegate to the canon-os checker (SoR for folder-hygiene + closed-specs).
-  const res = spawnSync('node', [CHECKER, '--repo', repo], { cwd: join(FLEET, 'canon-os'), encoding: 'utf8' });
+  // Run the canon-os checker DIRECTLY against the repo (cwd=repo) so it uses
+  // canon's FRESH lib + policy (union picks up canon SoR), not each repo's stale
+  // committed copy. Avoids the fleet-wrapper's sync-only-on-write staleness.
+  const checker = join(FLEET, 'canon-os/platform/scripts/docs-folder-hygiene-check.mjs');
+  const res = spawnSync('node', [checker], { cwd: join(FLEET, repo), encoding: 'utf8' });
   const out = `${res.stdout ?? ''}${res.stderr ?? ''}`;
-  const m = out.match(/([A-Z]+)\s+[\w-]+\s+—\s+(\w+)\s+docs:folder-hygiene:check\s+\((\d+)\/(\d+)\)/);
-  const passN = m ? Number(m[3]) : null;
-  const total = m ? Number(m[4]) : null;
-  const clean = m ? m[2] !== 'FAIL' && passN === total : res.status === 0;
+  const m = out.match(/docs:folder-hygiene:check\s+\((\d+)\/(\d+)\)/);
+  const passN = m ? Number(m[1]) : null;
+  const total = m ? Number(m[2]) : null;
+  const clean = m ? passN === total : res.status === 0;
   return { repo, passN, total, clean };
 }
 

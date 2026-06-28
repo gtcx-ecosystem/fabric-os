@@ -1,74 +1,42 @@
 {
   "schema": "gtcx://fabric-os/aaas-hygiene-check/v1",
   "provider": "fabric-os",
-  "checkedAt": "2026-06-28T16:30:05.551Z",
+  "checkedAt": "2026-06-28T17:24:51.958Z",
   "delegatesTo": "canon-os/platform/scripts/fleet-docs-folder-hygiene-check.mjs",
-  "clean": 4,
+  "clean": 12,
   "total": 20,
   "drift": [
     {
-      "repo": "fabric-os",
-      "score": "11/16"
-    },
-    {
       "repo": "bridge-os",
-      "score": "14/16"
+      "score": "15/16"
     },
     {
       "repo": "baseline-os",
-      "score": "11/17"
+      "score": "13/17"
     },
     {
       "repo": "agile-os",
-      "score": "15/17"
-    },
-    {
-      "repo": "ecosystem-os",
-      "score": "15/16"
-    },
-    {
-      "repo": "gtcx-os",
-      "score": "15/16"
+      "score": "16/17"
     },
     {
       "repo": "markets-os",
-      "score": "14/16"
-    },
-    {
-      "repo": "sensei-os",
       "score": "15/16"
     },
     {
-      "repo": "griot-ai",
-      "score": "15/16"
-    },
-    {
-      "repo": "nyota-ai",
-      "score": "14/16"
-    },
-    {
-      "repo": "veritas-ai",
-      "score": "15/16"
-    },
-    {
-      "repo": "venture-os",
-      "score": "15/16"
-    },
-    {
-      "repo": "ledger-ui",
+      "repo": "ledger-os",
       "score": "13/16"
     },
     {
-      "repo": "terminal-os",
-      "score": "14/16"
-    },
-    {
-      "repo": "exploration-os",
+      "repo": "ledger-ui",
       "score": "15/16"
     },
     {
+      "repo": "inspection-os",
+      "score": "12/14"
+    },
+    {
       "repo": "compliance-os",
-      "score": "12/16"
+      "score": "15/16"
     }
   ]
 }

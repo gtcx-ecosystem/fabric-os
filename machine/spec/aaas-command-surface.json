@@ -1,0 +1,116 @@
+{
+  "$schema": "gtcx://fabric-os/aaas-command-surface/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-28",
+  "provider": "fabric-os",
+  "principle": "ONE canonical command surface for the whole fleet. Every legacy audit/report command, slash-command, and registry entry maps to exactly one of these or is retired. fabric-os orchestrates; bridge-os MPR engine scores; canon-os holds coverage. No parallel command vocabularies.",
+  "canonicalCommands": {
+    "aaas:audit": "node platform/scripts/aaas-audit.mjs --pillar <p> [--micro <m>] [--tier foundational|transformational] [--all]  — run pillar/micro audits (delegates to the bridge-os MPR engine)",
+    "aaas:report": "node platform/scripts/aaas-report.mjs <umbrella>  — foundational-readiness | transformational-readiness | mpr-scorecard | remediation-roadmap",
+    "aaas:registry:build": "fleet audit state SoR (built)",
+    "aaas:contract:check": "contract obligations vs state (built)",
+    "aaas:cadence": "freshness heartbeat (built)",
+    "aaas:honesty:check": "coverage/honesty gate (built)",
+    "aaas:scrub": "node platform/scripts/aaas-scrub.mjs  — execute aaas-legacy-scrub-map (archive non-canonical)"
+  },
+  "engine": {
+    "owner": "bridge-os",
+    "entrypoint": "audit:mpr:repo:run (--repo <r>)",
+    "note": "The single scoring engine aaas:audit delegates to. Five-core runner (audit:five-core:run) is RETIRED — superseded by the 11-pillar MPR."
+  },
+  "legacyCommandMap": {
+    "technicalExcellence": [
+      "api-audit",
+      "arch-audit",
+      "deps-audit",
+      "test-audit",
+      "code-quality",
+      "engineering-audit"
+    ],
+    "compliance": [
+      "security-audit",
+      "compliance-audit",
+      "bank-grade-audit",
+      "global-compliance-audit",
+      "external-audit",
+      "compliance-security-audit"
+    ],
+    "worldClass": [
+      "ux-audit",
+      "ux-full",
+      "ux-tasks",
+      "ux-roadmap",
+      "design-check",
+      "spec-drift",
+      "hygiene",
+      "repo-hygiene",
+      "doc-standard",
+      "docs-machine-readable"
+    ],
+    "commercialValue": ["gtm-audit", "sales-audit", "partnership-audit", "gtm"],
+    "defensiveMoat": ["moat-check"],
+    "agenticEmpowerment": ["signal-audit", "signal-full", "signal-roadmap", "signal-tasks"],
+    "production": ["deployment-audit", "prod-readiness", "production-grade-audit"],
+    "trustAndSafety": ["verification-audit"],
+    "mpr-composite (rollup) → aaas:audit --all": [
+      "forensic-audit",
+      "master-audit",
+      "full-audit",
+      "comprehensive-audit",
+      "engineering-audit",
+      "product-excellence-audit",
+      "agentic-innovation-audit"
+    ],
+    "RETIRE (drift/duplicate)": [
+      "five-core:run",
+      "gtm-readiness-check",
+      "gtm-status-report",
+      "gtm-progress-report",
+      "gtm-goal-report",
+      "fresh-platform-audit",
+      "no-bullshit-gtm-full-audit"
+    ]
+  },
+  "scrubFronts": {
+    "1-files": {
+      "owner": "fabric-os(orchestrate)/each-repo",
+      "spec": "aaas-legacy-scrub-map.json",
+      "risk": "low"
+    },
+    "2-registries": {
+      "owner": "canon-os + bridge-os (SoR)",
+      "targets": [
+        "canon-os/platform/tools/audit/audit-framework/commands.json",
+        "canon-os/platform/tools/audit/audit-engine/{catalog,checks,dimensions,frameworks}.json",
+        "bridge-os/platform/tools/audit-framework/commands.json",
+        "bridge-os/audit/FIVE-CORE-AUDITS.md"
+      ],
+      "risk": "high",
+      "via": "P24 handoff"
+    },
+    "3-pnpm-scripts": {
+      "owner": "each-repo",
+      "action": "retire legacy audit/* scripts; keep aaas:* + audit:mpr:repo:run",
+      "risk": "med"
+    },
+    "4-slash-commands": {
+      "owner": "~/.claude/commands",
+      "action": "consolidate ~21 audit-*.md to the canonical surface (or retire)",
+      "risk": "med"
+    },
+    "5-agent-llm-files": {
+      "owner": "each-repo",
+      "targets": ["AGENTS.md", "CLAUDE.md", "GEMINI.md", ".kimi/AGENTS.md", ".cursor/*"],
+      "action": "remove legacy audit command refs; point to aaas:* surface",
+      "risk": "high"
+    }
+  },
+  "executionOrder": [
+    "lock-command-surface (this)",
+    "reconcile-registries(2)",
+    "retire-scripts(3)+slash(4)",
+    "scrub-agent-files(5)",
+    "archive-files(1)",
+    "rebuild registry+contract-check to confirm"
+  ]
+}

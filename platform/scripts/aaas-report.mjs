@@ -98,7 +98,10 @@ function main() {
   if (has('--write')) {
     const dir = join(FLEET, repo, 'audit/reports');
     mkdirSync(dir, { recursive: true });
-    const file = join(dir, `${umbrella}-${(out.match(/witness date: (\S+)/)?.[1]) || 'latest'}.md`);
+    // Filename is the GENERATION date (contract: audit/reports/<type>-YYYY-MM-DD.md);
+    // the witness date is recorded separately in the report body.
+    const genDate = arg('--date') ?? new Date().toISOString().slice(0, 10);
+    const file = join(dir, `${umbrella}-${genDate}.md`);
     writeFileSync(file, out);
     console.log(`report: ${file}`);
   } else {

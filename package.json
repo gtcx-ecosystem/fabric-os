@@ -286,7 +286,8 @@
     "aaas:provision": "node platform/scripts/aaas-provision.mjs",
     "aaas:provision:write": "node platform/scripts/aaas-provision.mjs --write",
     "aaas:audit": "node platform/scripts/aaas-audit.mjs",
-    "aaas:report": "node platform/scripts/aaas-report.mjs"
+    "aaas:report": "node platform/scripts/aaas-report.mjs",
+    "aaas:report:remediation": "node platform/scripts/aaas-remediation-report.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

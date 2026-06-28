@@ -6,11 +6,30 @@
   "service": "AAAS",
   "title": "Audit-as-a-Service contract — fabric-os ↔ repo",
   "principle": "fabric-os centralizes audit/report management. Each repo provides a conformant audit/ + reports/ tree; fabric-os indexes fleet state, enforces freshness + honesty coverage, and owns ecosystem rollups. Engine (rubric/runners) stays in bridge-os; coverage denominator stays in canon-os.",
+  "vocabulary": {
+    "principle": "Three distinct artifact types — never conflate them. audit FINDS it, you REMEDIATE, the report RECORDS what you did, evidence PROVES both.",
+    "audit": {
+      "is": "the assessment / evaluation against the standard — what the state is, what is wrong, how it scores",
+      "answers": "what is the state, what's wrong, how does it score",
+      "folder": "audit/reports/ (dated assessment write-ups) + audit/evidence/ (the proof behind the scores)"
+    },
+    "report": {
+      "is": "the remediation record — what you actually DID about the audit findings, before -> after, outcome",
+      "answers": "what we did about it, the result",
+      "folder": "reports/ (dated remediation reports — each cites the evidence proving the work)"
+    },
+    "evidence": {
+      "is": "proof / verification of both the audit and the report — machine artifacts that show the assessment is real and the remediation actually happened",
+      "answers": "prove the audit is real and the remediation happened",
+      "folder": "audit/evidence/ (witnesses, probe outputs, before/after — current-only, machine)"
+    }
+  },
   "obligations": {
     "repo": {
       "requiredFolders": ["audit/evidence", "audit/reports", "audit/archive", "reports"],
-      "witnessNaming": "audit/evidence/<witness>-latest.json (machine, current-only)",
-      "reportNaming": "audit/reports/<audit-type>-YYYY-MM-DD.md (dated human reports)",
+      "auditAssessment": "audit/reports/<audit-type>-YYYY-MM-DD.md (dated assessment / evaluation write-up)",
+      "remediationReport": "reports/<action>-YYYY-MM-DD.md (dated record of what was DONE; cites evidence)",
+      "evidenceProof": "audit/evidence/<witness>-latest.json (machine proof, current-only — verifies audit + report)",
       "noDatedSiblingsIn": "audit/evidence (dated snapshots live in audit/archive/)",
       "coverageWitness": "audit/evidence/aaas-honesty-coverage.json (per canon registry)",
       "pin": "machine/spec/aaas-audit-contract.pin.json (binds to this SoR)"

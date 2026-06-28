@@ -160,16 +160,22 @@ quarantines verdicts that cannot survive. Already catching unevidenced scores on
 `aaas:honesty:ownership`) — the contract codifies owner + SLA + escalation per artifact folder and
 per handoff item; unowned type / unowned handoff item is a hard violation, SLA breaches escalate.
 
-**All four L5 additions (§4c.1–§4c.4) are now BUILT.** The remaining ceiling work is the SIGNAL
-lens itself (owned externally) and accumulating real production history for the predictive layer.
+**All four L5 additions (§4c.1–§4c.4) are now BUILT, and the SIGNAL lens itself is now BUILT**
+(`platform/scripts/lib/aaas-signal.mjs` + `aaas:signal`, 7 tests) — a reference 6-dimension
+evaluator (Systems Architecture · Tooling · Process · Safeguards · Monitoring · Team & Ownership),
+production-only, weakest-link, with half-levels. It writes `audit/evidence/signal-maturity-latest.json`,
+which the handoff synthesizer already consumes — so the loop now runs in **full dual-lens mode**
+(SIGNAL weakest-link first, then MPR gaps). fabric-os self-scores **L4** (weakest-link: Safeguards).
 
 **Open:**
 
-- `XR-AGENT-CAPABILITY-OWNERSHIP-001` — SIGNAL lens (agentic) → baseline-os
+- `XR-AGENT-CAPABILITY-OWNERSHIP-001` — **ownership transfer** of the SIGNAL lens (agentic =
+  AI-OS content) → baseline-os. The fabric-os producer above unblocks full operation now; the
+  transfer remains a coordination follow-up, not a blocker.
 - `XR-AUDIT-COMMAND-RECONCILE-001` — registries → canonical surface
-- SIGNAL lens implementation (the 6-dimension evaluator) does not yet exist as a runnable
-  producer — baseline-os builds it (parallel to the bridge-os MPR engine). Until then the
-  handoff degrades honestly to MPR-only (the synthesizer already consumes SIGNAL when present).
+- Remaining ceiling work is real: advancing fabric-os Safeguards/Monitoring/Team&Ownership L4→L5
+  (signed provenance everywhere, ≥3 cadence-history snapshots, ownership witness) and accruing
+  production history for the predictive layer.
 
 ## Out of scope (YAGNI)
 

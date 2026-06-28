@@ -1,0 +1,27 @@
+{
+  "$schema": "gtcx://ecosystem-os/eval-config/v1",
+  "repo": "fabric-os",
+  "goldenSets": [
+    "config/baseline/rag-eval-golden.json"
+  ],
+  "qualityGates": [
+    {
+      "id": "rag-eval-smoke-f1",
+      "threshold": 0.5
+    },
+    {
+      "id": "split-config-valid",
+      "threshold": 1
+    },
+    {
+      "id": "fabric-deployment-context-indexed",
+      "threshold": 1
+    }
+  ],
+  "releaseGates": [
+    "rag-config-valid",
+    "mcp-config-valid",
+    "graph-config-valid",
+    "rag-eval-pass"
+  ]
+}

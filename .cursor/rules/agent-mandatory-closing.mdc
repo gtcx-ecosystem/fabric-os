@@ -1,1 +1,116 @@
-../../../bridge-os/.cursor/rules/agent-mandatory-closing.mdc
+---
+description: Mandatory Status Update closing — execution mode + typed next work item
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Agent mandatory closing (P26 §3b + P22 + micro-commits)
+
+> **Template:** `docs/operations/agent-status-update-template.md`  
+> **Normative:** Protocol 26 §3b · Protocol 22 · Protocol 27
+
+## Turn exit override (continuous modes — read first)
+
+When `activeMode` is **`complete_all_sprints`**, **`complete_roadmap`**, or **`complete_milestones`**: the mandatory Status Update applies **only** at sprint boundary, `roadmapExecutionComplete`, `milestoneExecutionComplete`, or **D6 blocker** — **not** after each story or repo.
+
+Between stories/repos in the same wave batch: **commit loop → witness → `pnpm agent:next-work` → continue** — no terminal Status Update.
+
+**One exit predicate** — nothing else ends a turn:
+
+| Allowed close | Forbidden stop (deny-list) |
+|---------------|---------------------------|
+| `roadmapExecutionComplete === true` (complete_roadmap) | Per-repo IA 100/0 on disk |
+| `milestoneExecutionComplete === true` (complete_milestones) | Pack/layer sealed in one repo |
+| Program sprints complete at sprint boundary (complete_all_sprints) | Micro-commit backlog ("N paths uncommitted") |
+| Genuine D6 Permission Unblock Report | `ROADMAP-COMPLETE` while `completionBlocks.length > 0` |
+| Operator `stop` or `correct:` | Next work item = next repo in same W4 batch |
+
+**Before every Status Update** (when `mayCloseTurn` must be true):
+
+```bash
+pnpm agent:next-work --json          # roadmapExecutionComplete, completionBlocks, mayCloseTurn
+pnpm ecosystem:progress:report --markdown
+pnpm ecosystem:auto-dev:check --write
+pnpm ecosystem:turn-exit:check --write
+```
+
+If `mayCloseTurn: false` → **no terminal Status Update**; continue P22 `nextWorkItem` in the same session.
+
+**Wave batch milestone:** Status Update **Milestone** = batch ID (e.g. `W4-docs-IA`), not per-repo seal. SoR: `bridge-os/pm/spec/execution-wave-batches.json`.
+
+## End of every substantive turn
+
+After push/CI reports, cluster tables, or completed work — **close with Status Update**, not a question — **only when `mayCloseTurn: true`** per override above.
+
+Run `pnpm agent:next-work --json` before closing. Use `execution`, `progress`, `nextWorkItem`, `statusUpdateSections`, `mayCloseTurn`, `turnExit`.
+
+```markdown
+## Status Update
+
+### Execution mode
+
+- **Mode:** Execute milestones (`complete_milestones`) · **Batch:** W4-docs-IA · stop when `milestoneExecutionComplete`
+- **Progress:** Milestones … · Sprints … · Stories … · Points …
+
+### Done
+
+- <outcome> — <exit code · SHA · probe>
+
+### Next work item
+
+- **Type:** Initiative | Epic | Story | Task | Sprint | Milestone
+- **ID:** `INIT-AGENTIC-HARNESS`
+- **Title:** <title>
+- **Owner:** <repo>
+- **Value created:** <operator/product/program value>
+- **Scope:** own-in-scope | own-handoff | other-our-scope | other-their-scope — <execution boundary>
+
+### Approval needed
+
+- <Class A/S only — omit section if none>
+```
+
+Then **execute** Class R **Next work item** in the same session when feasible.
+
+**The Status Update is the last block in your reply** — no sentences after `### Approval needed`.
+
+## Next work item — one artifact only
+
+- Source: `pnpm agent:next-work` — `nextWorkItem.typeLabel`, `nextWorkItem.id`, `nextWorkItem.owner`.
+- **One** typed item. Do not list W2-OPS-001 and IR-3.5 then ask which to run.
+- Pending backlog → note as deferred in **Done**, not a menu.
+
+## Post-approval execution (Class R)
+
+When the operator has **already approved** Class R work (deploy, push, restore, execute):
+
+1. **Execute immediately** — do not re-ask with "Want me to…" / "Should I…" / "Do you want me to…"
+2. If the first attempt **failed**, continue remediation in-session (or **Permission Unblock Report** if blocked at D6)
+3. Close with **Status Update** — **Next work item** = remediation; omit **Approval needed** when approval was already given
+4. Treat operator approval as covering the **intent**, not only the first command attempt
+
+## Hard-forbidden closings (never send)
+
+- **Say if you want** / Say if you'd like / let me know if you want
+- **committed next or** / left as local WIP / uncommitted: … (ask operator to choose)
+- **Want me to** / **I can** / **Should I** / **Do you want me to**
+- **Your call** / **Which do you prefer** / numbered repo or story menus
+- **Say push if you want** / verify locally / run in your terminal
+- `### Next priority` as the only orienting header (use **Execution mode** + **Next work item**)
+- Ending with only a table and no **Next work item**
+- **Want me to proceed with X or stay on Y?** (after a valid Status Update)
+- Any question asking operator to pick between two stories/repos
+- Status Update when `completionBlocks.length > 0` without D6 unblock witness or operator stop
+
+## Uncommitted Class R work
+
+If you created or modified files for the current story: **commit** (micro-commit, conventional message). Do **not** ask whether to commit or leave WIP.
+
+**Commit loop = continuation, not pause:** while `git status` dirty on owner repo → pick next file/cluster (GATE-COMMIT 25 files / 600 lines) → commit → repeat until clean → write witness → switch workspace to next repo in batch — **no Status Update**.
+
+## After push / CI green
+
+1. `pnpm agent:next-work` (owner repo)
+2. If `mayCloseTurn: false` → implement next work item (same session)
+3. If `mayCloseTurn: true` → Status Update with **Next work item** (type + id + owner)
+4. Start implementation — no "anything on the P1 list?"

@@ -1,1 +1,34 @@
-../../../bridge-os/.cursor/rules/agent-auto-dev-mode.mdc
+---
+description: Auto-dev execution modes — no per-story stops; quantified progress required
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Auto-dev mode (ecosystem fleet)
+
+**SoR:** `bridge-os/pm/auto-dev-mode.json` · **Wave batches:** `bridge-os/pm/spec/execution-wave-batches.json`
+
+## Default mode: `complete_milestones`
+
+Sprint ceremony repo — execution stop logic is **bridge SoR**. Agents in owner repos follow continuous mode rules via bridge P22.
+
+| Mode | Stop when |
+|------|-----------|
+| `complete_sprint` | Current sprint done |
+| `complete_all_sprints` | All program sprints done |
+| `complete_roadmap` | `roadmapExecutionComplete` |
+| `complete_milestones` | `milestoneExecutionComplete` (**default**) |
+
+## One exit predicate
+
+See `bridge-os/.cursor/rules/agent-auto-dev-mode.mdc` — deny-list + `mayCloseTurn` from `pnpm --dir ../bridge-os ecosystem:turn-exit:check --write`.
+
+## Wave batch
+
+Status Update milestone = batch ID (`W4-docs-IA`), not per-repo seal. Manifest: `bridge-os/pm/spec/execution-wave-batches.json`.
+
+## Guards
+
+- Never **stop after a single story** in continuous auto-dev mode.
+- Never **ask which story is next** — P22 delegated to bridge-os selects the next work item.
+- Never emit a status update **without** a **progress** block.

@@ -1,1 +1,16 @@
-../../../bridge-os/.cursor/rules/protocol-28-agent-authority-classification.mdc
+---
+description: Protocol 28 — S sovereign / A custody / R routine; INF-86 #61 is Class A
+alwaysApply: true
+---
+
+# Protocol 28 — Authority classification (bridge-os)
+
+| Class | Examples in this repo |
+| ----- | --------------------- |
+| **S** | Human legal sign-off, user **stop**, do not commit/push |
+| **A** | XR-401 attestations, `trust:attest:*:write`, protocols log append, `gh` coordination posts when authorized |
+| **R** | `verify:operational`, `agent:next-work`, coordination hygiene |
+
+Trust attestation runners are **Class A** after preceremony gates — execute and write evidence to protocols.
+
+**Spec:** https://github.com/gtcx-ecosystem/gtcx-docs/blob/main/docs/governance/protocols/28-agent-authority-classification/protocol.md

@@ -1,0 +1,36 @@
+{
+  "$schema": "gtcx://ecosystem-os/mcp-config/v1",
+  "repo": "fabric-os",
+  "mode": "consumer",
+  "server": "fabric-os",
+  "tools": [
+    {
+      "id": "fabric.deployment.context.read",
+      "permissionClass": "read",
+      "description": "Read deployment, Kubernetes, Docker, Terraform, and staging readiness context."
+    },
+    {
+      "id": "fabric.operations.context.read",
+      "permissionClass": "read",
+      "description": "Read service fabric, ops lanes, security assurance, and fleet control context."
+    },
+    {
+      "id": "fabric.evidence.write",
+      "permissionClass": "write",
+      "description": "Write local Fabric evidence and graph/RAG/MCP witnesses under audit/evidence."
+    }
+  ],
+  "permissions": [
+    "read:repo-files",
+    "read:deployment-context",
+    "read:operations-context",
+    "write:audit-evidence"
+  ],
+  "humanApprovalRequired": [
+    "write:sibling-repos",
+    "external-network",
+    "deploy",
+    "send-email",
+    "change-git-history"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gtcx://baseline-os/kaleidoscope-ai/mcp-config.schema/v1",
+  "title": "Split MCP config contract",
+  "type": "object",
+  "required": ["$schema", "repo", "mode", "server", "tools", "permissions", "humanApprovalRequired"],
+  "properties": {
+    "$schema": { "const": "gtcx://ecosystem-os/mcp-config/v1" },
+    "repo": { "type": "string" },
+    "mode": { "enum": ["hub", "consumer", "disabled", "exception"] },
+    "server": { "type": "string" },
+    "tools": { "type": "array" },
+    "permissions": { "type": "array" },
+    "humanApprovalRequired": { "type": "array" }
+  },
+  "additionalProperties": true
+}

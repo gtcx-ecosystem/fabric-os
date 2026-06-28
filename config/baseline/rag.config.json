@@ -1,0 +1,50 @@
+{
+  "$schema": "gtcx://ecosystem-os/rag-config/v1",
+  "repo": "fabric-os",
+  "topology": "local",
+  "knowledge": [
+    "README.md",
+    "AGENTS.md",
+    "docs",
+    "pm",
+    "platform",
+    "deploy",
+    "audit"
+  ],
+  "include": [
+    "README.md",
+    "AGENTS.md",
+    "docs/**/*.md",
+    "pm/**/*.json",
+    "machine/spec/**/*.json",
+    "machine/product/**/*.json",
+    "platform/scripts/**/*.mjs",
+    "platform/tools/**/*.mjs",
+    "platform/**/*.md",
+    "deploy/**/*.md",
+    "deploy/**/*.yml",
+    "deploy/**/*.yaml"
+  ],
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/.env*",
+    "**/screening/**",
+    "**/_delete/**",
+    "audit/evidence/**",
+    "audit/archive/_historical/**",
+    "**/audit/archive/_historical/**",
+    "**/.baseline/data/**",
+    "**/.baseline/index/**",
+    "**/.baseline/checkpoints/**",
+    "**/.worktrees/**"
+  ],
+  "paths": {
+    "index": ".baseline/index",
+    "checkpoints": ".baseline/checkpoints"
+  },
+  "eval": {
+    "golden": "config/baseline/rag-eval-golden.json",
+    "mockCorpus": "config/baseline/rag-eval-mock-corpus.json"
+  }
+}

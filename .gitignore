@@ -105,6 +105,7 @@ audit/dr-fire-drill-evidence-*.md
 # Forbidden P35 v5 root extraction artifact
 01-docs/
 baseline.config.json
+!config/baseline/baseline.config.json
 
 # Operator-local (never commit)
 .kube-config-prod

@@ -1,0 +1,11 @@
+{
+  "schema": "gtcx://fabric-os/graph-config-check/v1",
+  "generatedAt": "2026-06-28T18:26:13.706Z",
+  "repo": "fabric-os",
+  "kind": "graph",
+  "ok": true,
+  "config": "config/baseline/graph.config.json",
+  "issues": [],
+  "nodeCount": 6,
+  "edgeTypeCount": 4
+}

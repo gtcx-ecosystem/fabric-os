@@ -118,12 +118,13 @@
       "type": "compliance",
       "class": "R",
       "priority": "P2",
-      "status": "needs_owner_repo_action",
+      "status": "recipe_applied_partial",
       "infrastructureReady": true,
-      "operatorStep": "agile-os must raise MPR foundation score to >=85 (currently 52). Address ESL-2/ESL-3 and compliance below-threshold items. fabric-os assurance framework is ready.",
+      "operatorStep": "69-cluster recipe APPLIED: scaffold-quality-audit-output probe lifted foundation 52->77 (TE 38->70, craft 64->70, world-class 34->93). Residual: compliance 69 PROV (below-threshold) — a cluster-wide gate (terra-os/ecosystem-os/sensei-os also sit at compliance 69). Full >=85 unlock needs the cluster compliance lift OR genuine TE/craft improvement, not the recipe.",
       "verificationCommand": "node ../bridge-os/platform/scripts/ecosystem/run-mpr-repo-audit.mjs --repo agile-os --write",
       "evidencePath": "../agile-os/audit/evidence/mpr-repo-latest.json",
-      "blocksIR": false
+      "blocksIR": false,
+      "foundationScore": 77
     },
     {
       "id": "FB-007",

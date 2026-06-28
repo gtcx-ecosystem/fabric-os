@@ -1,0 +1,212 @@
+{
+  "schema": "gtcx://fabric-os/aaas-contract-check/v1",
+  "provider": "fabric-os",
+  "checkedAt": "2026-06-28T21:37:27.754Z",
+  "contractSor": "machine/spec/aaas-audit-contract.json",
+  "repoCount": 20,
+  "conformant": 20,
+  "nonConformant": 0,
+  "results": [
+    {
+      "repo": "fabric-os",
+      "profile": "platform",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 66
+    },
+    {
+      "repo": "bridge-os",
+      "profile": "hub",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 120
+    },
+    {
+      "repo": "canon-os",
+      "profile": "hub",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 55
+    },
+    {
+      "repo": "baseline-os",
+      "profile": "hub",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 86
+    },
+    {
+      "repo": "agile-os",
+      "profile": "hub",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 26
+    },
+    {
+      "repo": "ecosystem-os",
+      "profile": "hub",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 30
+    },
+    {
+      "repo": "gtcx-os",
+      "profile": "platform",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 44
+    },
+    {
+      "repo": "markets-os",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 50
+    },
+    {
+      "repo": "terra-os",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 36
+    },
+    {
+      "repo": "sensei-os",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 36
+    },
+    {
+      "repo": "griot-ai",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 31
+    },
+    {
+      "repo": "nyota-ai",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 28
+    },
+    {
+      "repo": "veritas-ai",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 31
+    },
+    {
+      "repo": "venture-os",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 18
+    },
+    {
+      "repo": "ledger-os",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 8
+    },
+    {
+      "repo": "ledger-ui",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 33
+    },
+    {
+      "repo": "inspection-os",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 5
+    },
+    {
+      "repo": "terminal-os",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 56
+    },
+    {
+      "repo": "exploration-os",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 35
+    },
+    {
+      "repo": "compliance-os",
+      "profile": "product",
+      "ok": true,
+      "hasPin": true,
+      "missingFolders": [],
+      "missingAudits": [],
+      "staleWitnesses": 0,
+      "legacyStale": 62
+    }
+  ],
+  "ok": true
+}

@@ -156,6 +156,12 @@ emitting `audit/evidence/aaas-cadence-forecast-latest.json`;
 12 tests, `aaas:honesty:adversarial`) — red-teams every MPR verdict (inflation / fabrication /
 missing-provenance / self-contradiction), attaches a content-addressed provenance digest, and
 quarantines verdicts that cannot survive. Already catching unevidenced scores on real fleet data.
+**enforced ownership (§4c.4) BUILT + tested** (`platform/scripts/lib/aaas-ownership.mjs`, 6 tests,
+`aaas:honesty:ownership`) — the contract codifies owner + SLA + escalation per artifact folder and
+per handoff item; unowned type / unowned handoff item is a hard violation, SLA breaches escalate.
+
+**All four L5 additions (§4c.1–§4c.4) are now BUILT.** The remaining ceiling work is the SIGNAL
+lens itself (owned externally) and accumulating real production history for the predictive layer.
 
 **Open:**
 
@@ -164,7 +170,6 @@ quarantines verdicts that cannot survive. Already catching unevidenced scores on
 - SIGNAL lens implementation (the 6-dimension evaluator) does not yet exist as a runnable
   producer — baseline-os builds it (parallel to the bridge-os MPR engine). Until then the
   handoff degrades honestly to MPR-only (the synthesizer already consumes SIGNAL when present).
-- Enforced ownership (§4c.4) — the last L5 addition.
 
 ## Out of scope (YAGNI)
 

@@ -129,6 +129,29 @@
     "evidenceWitness": "audit/evidence/<witness-type>-latest.json",
     "archive": "audit/archive/<group>-YYYY-MM-DD/"
   },
+  "ownership": {
+    "principle": "L5 Team & Ownership (§4c.4): every artifact + handoff item has a codified owner, SLA, and escalation path — machine-checkable via aaas:honesty:ownership, not a doc convention. An artifact past its SLA escalates; a handoff item with no owner is a contract violation.",
+    "artifacts": {
+      "audit/evidence": {
+        "owner": "fabric-os",
+        "slaDays": 7,
+        "escalation": "P24 -> bridge-os (engine)"
+      },
+      "audit/reports": {
+        "owner": "fabric-os",
+        "slaDays": 7,
+        "escalation": "P24 -> bridge-os (engine)"
+      },
+      "audit/handoff": { "owner": "fabric-os", "slaDays": 7, "escalation": "P24 -> repo owner" },
+      "reports": { "owner": "repo", "slaDays": 30, "escalation": "P24 -> repo owner" },
+      "audit/archive": { "owner": "fabric-os", "slaDays": 365, "escalation": "none (cold storage)" }
+    },
+    "handoffItem": {
+      "ownerField": "owner",
+      "slaDays": 14,
+      "escalation": "P24 to the named owner; unowned item = contract violation"
+    }
+  },
   "obligations": {
     "repo": {
       "requiredFolders": [

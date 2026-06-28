@@ -131,3 +131,6 @@ workstream/sessions/transcripts/
 machine/ci/settlement-*-latest.json
 pm/ci/settlement-*-latest.json
 .baseline/memory/session-last-start.json
+.baseline/memory/session-last-start.json
+**/ops-check-latest.json
+**/compliance-witness-latest.json

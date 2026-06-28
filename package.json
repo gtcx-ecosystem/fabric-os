@@ -287,7 +287,9 @@
     "aaas:provision:write": "node platform/scripts/aaas-provision.mjs --write",
     "aaas:audit": "node platform/scripts/aaas-audit.mjs",
     "aaas:report": "node platform/scripts/aaas-report.mjs",
-    "aaas:report:remediation": "node platform/scripts/aaas-remediation-report.mjs"
+    "aaas:report:remediation": "node platform/scripts/aaas-remediation-report.mjs",
+    "aaas:hygiene:check": "node platform/scripts/aaas-hygiene-check.mjs",
+    "aaas:hygiene:check:strict": "node platform/scripts/aaas-hygiene-check.mjs --strict --write"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

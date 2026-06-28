@@ -1,0 +1,15 @@
+{
+  "schema": "gtcx://fabric-os/aaas-cadence-history/v1",
+  "points": [
+    {
+      "ts": "2026-06-28T23:14:07.930Z",
+      "metrics": {
+        "compliance": 69,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 92
+      }
+    }
+  ]
+}

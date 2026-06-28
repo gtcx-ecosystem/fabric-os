@@ -148,7 +148,10 @@ contract), an **SLA**, and an **escalation path**. Ownership is machine-checkabl
 
 **Shipped (fabric-os):** contract v1.1.0 encodes the full model; `audit/handoff` enforced
 fleet-wide (20/20 conformant); **handoff synthesizer (`aaas:handoff`) BUILT + tested**
-(`platform/scripts/lib/aaas-handoff.mjs`, 12 tests) and proven on real fleet MPR data.
+(`platform/scripts/lib/aaas-handoff.mjs`, 12 tests) and proven on real fleet MPR data;
+**predictive cadence (§4c.2) BUILT + tested** (`platform/scripts/lib/aaas-cadence-predict.mjs`,
+12 tests) — trend lines, regression detection, breach forecasting over a history ledger,
+emitting `audit/evidence/aaas-cadence-forecast-latest.json`.
 
 **Open:**
 
@@ -157,8 +160,7 @@ fleet-wide (20/20 conformant); **handoff synthesizer (`aaas:handoff`) BUILT + te
 - SIGNAL lens implementation (the 6-dimension evaluator) does not yet exist as a runnable
   producer — baseline-os builds it (parallel to the bridge-os MPR engine). Until then the
   handoff degrades honestly to MPR-only (the synthesizer already consumes SIGNAL when present).
-- Predictive cadence (§4c.2), adversarial honesty (§4c.3), enforced ownership (§4c.4) — the
-  remaining L5 additions.
+- Adversarial honesty (§4c.3) and enforced ownership (§4c.4) — the remaining L5 additions.
 
 ## Out of scope (YAGNI)
 

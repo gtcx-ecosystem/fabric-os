@@ -128,3 +128,5 @@ pm/ci/settlement-story-scope-latest.json
 workstream/sessions/ci/
 workstream/sessions/ledger/
 workstream/sessions/transcripts/
+machine/ci/settlement-*-latest.json
+pm/ci/settlement-*-latest.json

@@ -64,11 +64,63 @@ It is regenerated on each audit run; closed items drop off as evidence proves th
 1. **Run audit** (fabric-os AaaS): apply MPR lens (bridge-os engine) + SIGNAL lens
    (baseline-os) → write `audit/evidence/*-latest.json` (proof) + `audit/reports/*.md` (assessment).
 2. **Emit handoff** (fabric-os): synthesize findings → `audit/handoff/handoff-<date>.md` (directive).
-3. **Remediate** (repo owner): execute the handoff actions.
-4. **Report** (repo): `reports/<action>-<date>.md` — what was done, cites the evidence.
-5. **Re-verify** (fabric-os): re-run audit → fresh evidence → handoff item closes when its gate clears.
+3. **Remediate**: an agent (Class R) or repo owner (Class A/S) executes the handoff actions.
+4. **Report**: `reports/<action>-<date>.md` — what was done, cites the evidence.
+5. **Re-verify** (fabric-os): re-run audit → fresh evidence → handoff item auto-closes when its gate clears.
 
 Loop cadence: witness freshness ≤ 7d; handoff regenerated on-change-or-weekly.
+
+The loop is designed to **close on itself** (§4c). At L3 a human kicks each step; at L5 an
+agent claims items, remediates, reports, and re-verification closes them unattended —
+human approval only at Class A/S gates.
+
+## 4b. Maturity ladder (current → L5 ceiling)
+
+The design's target ceiling is **SIGNAL L5 across all 6 dimensions / MPR 95+ across all 11
+pillars**. The path is explicit, not aspirational:
+
+| SIGNAL dim           | now | the four additions (§8) that reach L5                            |
+| -------------------- | --- | ---------------------------------------------------------------- |
+| Systems Architecture | L3  | schema-validated, provider-agnostic contracts                    |
+| Tooling              | L1  | §4c.1 autonomous execution — agents run the loop unattended      |
+| Process              | L2  | §4c.1 closed-loop self-healing — regressions auto-reopen items   |
+| Monitoring           | L2  | §4c.2 predictive — trend lines, drift detection, breach forecast |
+| Safeguards           | L2  | §4c.3 adversarial honesty — red-team lens + signed provenance    |
+| Team & Ownership     | L1  | §4c.4 enforced ownership — CODEOWNERS-style binding + SLA        |
+
+The moat pillars (defensiveMoat, ipMagic, agenticEmpowerment) only clear 95 once the
+**self-healing closed loop** (§4c.1) exists — that loop is the thing a funded team cannot
+copy in 90 days.
+
+## 4c. L5 target architecture (the four additions)
+
+These are first-class design elements, not future hopes — without them the design ceilings
+at L3 / mid-80s.
+
+### 4c.1 Closed-loop autonomy → Tooling/Process L5, agenticEmpowerment 95
+
+Handoff items are **machine-executable directives** (structured: action, gate, owner,
+evidence-to-produce), not prose. An agent claims an item, remediates, writes the report,
+and re-verification auto-closes it. Human approval gates only at authority Class A/S
+(secrets, prod, legal). This is the AI-native core — the moat lives here.
+
+### 4c.2 Predictive monitoring → Monitoring L5
+
+The cadence engine tracks per-pillar / per-dimension **trend lines**, detects regressions
+(a closed item reopening), and **forecasts the next threshold breach**. It alerts before
+failure, not after — `aaas:cadence` emits a drift/forecast witness, not just a freshness check.
+
+### 4c.3 Adversarial honesty → Safeguards L5, trustAndSafety 95
+
+A second independent lens **red-teams every verdict** — tries to prove it fabricated or
+score-inflated. Verdicts carry **signed provenance**. The honesty gate audits itself; a
+verdict that cannot survive the red-team lens is quarantined, not published.
+
+### 4c.4 Enforced ownership → Team & Ownership L5
+
+Every artifact + handoff item has a **codified owner** (CODEOWNERS-style binding in the
+contract), an **SLA**, and an **escalation path**. Ownership is machine-checkable via
+`aaas:contract:check`, not a doc convention.
 
 ## 5. Standards & protocols
 

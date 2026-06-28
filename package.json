@@ -287,6 +287,8 @@
     "aaas:provision:write": "node platform/scripts/aaas-provision.mjs --write",
     "aaas:audit": "node platform/scripts/aaas-audit.mjs",
     "aaas:report": "node platform/scripts/aaas-report.mjs",
+    "aaas:handoff": "node platform/scripts/aaas-handoff.mjs",
+    "aaas:handoff:write": "node platform/scripts/aaas-handoff.mjs --write",
     "aaas:report:remediation": "node platform/scripts/aaas-remediation-report.mjs",
     "aaas:hygiene:check": "node platform/scripts/aaas-hygiene-check.mjs",
     "aaas:hygiene:check:strict": "node platform/scripts/aaas-hygiene-check.mjs --strict --write",

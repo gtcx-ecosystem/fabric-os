@@ -136,20 +136,29 @@ contract), an **SLA**, and an **escalation path**. Ownership is machine-checkabl
 
 ## 6. Commands (canonical surface, extended)
 
-| Command                                                       | Does                                             |
-| ------------------------------------------------------------- | ------------------------------------------------ |
-| `aaas:audit --lens mpr\|signal\|all [--repo]`                 | run lens(es) → evidence + assessment             |
-| `aaas:report <umbrella> [--repo]`                             | render assessment write-up                       |
-| `aaas:handoff [--repo]`                                       | synthesize unified handoff from current findings |
-| `aaas:report:remediation`                                     | record what was done (reports/)                  |
-| `aaas:contract:check` / `aaas:cadence` / `aaas:honesty:check` | enforce conformance/freshness/honesty            |
+| Command                                                       | Does                                                                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `aaas:audit --lens mpr\|signal\|all [--repo]`                 | run lens(es) → evidence + assessment                                                                   |
+| `aaas:report <umbrella> [--repo]`                             | render assessment write-up                                                                             |
+| `aaas:handoff [--repo] [--write]` (BUILT)                     | synthesize unified handoff (SIGNAL weakest-link first, then MPR leverage); MPR-only until SIGNAL ships |
+| `aaas:report:remediation`                                     | record what was done (reports/)                                                                        |
+| `aaas:contract:check` / `aaas:cadence` / `aaas:honesty:check` | enforce conformance/freshness/honesty                                                                  |
 
-## 7. Open dependencies
+## 7. Build status + open dependencies
+
+**Shipped (fabric-os):** contract v1.1.0 encodes the full model; `audit/handoff` enforced
+fleet-wide (20/20 conformant); **handoff synthesizer (`aaas:handoff`) BUILT + tested**
+(`platform/scripts/lib/aaas-handoff.mjs`, 12 tests) and proven on real fleet MPR data.
+
+**Open:**
 
 - `XR-AGENT-CAPABILITY-OWNERSHIP-001` — SIGNAL lens (agentic) → baseline-os
 - `XR-AUDIT-COMMAND-RECONCILE-001` — registries → canonical surface
 - SIGNAL lens implementation (the 6-dimension evaluator) does not yet exist as a runnable
-  producer — this design assumes baseline-os builds it (parallel to the bridge-os MPR engine).
+  producer — baseline-os builds it (parallel to the bridge-os MPR engine). Until then the
+  handoff degrades honestly to MPR-only (the synthesizer already consumes SIGNAL when present).
+- Predictive cadence (§4c.2), adversarial honesty (§4c.3), enforced ownership (§4c.4) — the
+  remaining L5 additions.
 
 ## Out of scope (YAGNI)
 

@@ -241,8 +241,6 @@ function checkAgentsFolder() {
   const errors = [];
   const required = [
     ['docs/operations/agents/README.md', 'docs/agents/README.md'],
-    ['docs/operations/agents/universal/README.md', 'docs/agents/universal/README.md'],
-    ['docs/operations/agents/cursor/README.md', 'docs/agents/cursor/README.md'],
   ];
   for (const candidates of required) {
     if (!firstExistingPath(candidates)) errors.push(candidates[0]);

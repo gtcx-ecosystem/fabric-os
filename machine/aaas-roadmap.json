@@ -21,7 +21,7 @@
       "id": "AAAS-S2",
       "name": "Honesty gate — anti-superficiality validator",
       "status": "complete",
-      "spec": "docs/superpowers/specs/2026-06-27-aaas-honesty-gate-design.md",
+      "spec": "docs/architecture/aaas-honesty-gate-design.md",
       "items": ["AAAS-HONESTY-01"],
       "deliverables": [
         "platform/scripts/aaas-honesty-gate.mjs",

@@ -24,7 +24,8 @@
       "nfr-catalog.md",
       "technology-strategy.md",
       "decisions-index.md",
-      "cloudflare-workers-ai-glm-assessment-2026-06-27.md"
+      "cloudflare-workers-ai-glm-assessment-2026-06-27.md",
+      "aaas-honesty-gate-design.md"
     ],
     "optionalPattern": "ADR-{NNN}-{kebab-slug}.md"
   },

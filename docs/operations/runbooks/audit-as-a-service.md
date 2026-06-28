@@ -55,7 +55,7 @@ there is expected until that refresh is wired (ASR-002/007).
 
 ## Honesty gate — protocol
 
-Design: [`docs/superpowers/specs/2026-06-27-aaas-honesty-gate-design.md`](../../../superpowers/specs/2026-06-27-aaas-honesty-gate-design.md).
+Design: [`docs/architecture/aaas-honesty-gate-design.md`](../../architecture/aaas-honesty-gate-design.md).
 
 Every audit must earn its score against the canon capability registry. The
 producer emits `audit/evidence/aaas-honesty-coverage.json`

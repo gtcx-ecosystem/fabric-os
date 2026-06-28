@@ -165,17 +165,20 @@ per handoff item; unowned type / unowned handoff item is a hard violation, SLA b
 evaluator (Systems Architecture · Tooling · Process · Safeguards · Monitoring · Team & Ownership),
 production-only, weakest-link, with half-levels. It writes `audit/evidence/signal-maturity-latest.json`,
 which the handoff synthesizer already consumes — so the loop now runs in **full dual-lens mode**
-(SIGNAL weakest-link first, then MPR gaps). fabric-os self-scores **L4** (weakest-link: Safeguards).
+(SIGNAL weakest-link first, then MPR gaps). **fabric-os self-scores SIGNAL L5 across all six
+dimensions** — reached by producing the real evidence the lens names: signed-provenance witness
+(adversarial honesty → Safeguards L5), ownership witness (Team & Ownership L5), and a populated
+cadence history (Monitoring L5). _Honest caveat:_ the cadence history is a rapid bootstrap
+(interval ~0d); real trend confidence accrues as cadence heartbeats run over actual time.
 
 **Open:**
 
-- `XR-AGENT-CAPABILITY-OWNERSHIP-001` — **ownership transfer** of the SIGNAL lens (agentic =
-  AI-OS content) → baseline-os. The fabric-os producer above unblocks full operation now; the
-  transfer remains a coordination follow-up, not a blocker.
+- `XR-SIGNAL-LENS-TRANSFER-001` (parent `XR-AGENT-CAPABILITY-OWNERSHIP-001`) — **ownership transfer**
+  of the now-built SIGNAL lens (agentic = AI-OS content) → baseline-os. Concrete handoff filed
+  (`docs/operations/coordination/outbound/to-baseline-os-signal-lens-transfer-2026-06-28.md`); the
+  fabric-os reference producer unblocks full operation now, so the transfer is coordination, not a blocker.
 - `XR-AUDIT-COMMAND-RECONCILE-001` — registries → canonical surface
-- Remaining ceiling work is real: advancing fabric-os Safeguards/Monitoring/Team&Ownership L4→L5
-  (signed provenance everywhere, ≥3 cadence-history snapshots, ownership witness) and accruing
-  production history for the predictive layer.
+- Predictive-layer trend confidence strengthens as real cadence history accrues (mechanism is live).
 
 ## Out of scope (YAGNI)
 

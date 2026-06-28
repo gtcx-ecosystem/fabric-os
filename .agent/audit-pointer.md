@@ -1,11 +1,37 @@
 ## Audits (cross-repo)
 
-To run any forensic audit on this repo (master-audit, full-audit, 10-10-roadmap, repo-overview, doc-cleanup, doc-standard, verification-audit, docs-machine-readable):
+Audits + reports are centralized as **Audit-as-a-Service (AaaS)** in `fabric-os`. One
+canonical surface for the whole fleet — do **not** invoke legacy per-concern audit
+commands (master-audit, product-audit, forensic-audit, ux-audit, gtm-audit,
+security-audit, signal-audit, moat-check, 10-10-roadmap, five-core, …). They are
+**retired** in favor of the 11-pillar MPR taxonomy.
 
-1. Read `../gtcx-agentic/audit/AGENT-START.md` — the canonical entry point lists every command, its prompt file, and the output path.
-2. Read the specific command file (`../gtcx-agentic/audit/commands/<command>.md`).
-3. Read the prompt file referenced there (`../gtcx-agentic/audit/prompts/<category>/<file>.md`).
-4. Execute the prompt against this repo.
-5. Write the output to the path the command specifies (typically `01-docs/05-audit/<command>-<YYYY-MM-DD>.md`).
+### Standard (SoR)
 
-The audit registry is provider-agnostic — the same prompts work for Claude, Codex, Gemini, Kimi, Deepseek, Grok, etc.
+`fabric-os/machine/spec/aaas-audit-taxonomy.json` — 11 MPR pillars across two tiers,
+each decomposed into micro-audits:
+
+- **Foundational:** compliance, technicalExcellence, craft, worldClass, trustAndSafety
+- **Transformational:** creativityInnovation, commercialValue, defensiveMoat, agenticEmpowerment, productEcosystemIntegration, ipMagic
+
+### Commands (SoR: `fabric-os/machine/spec/aaas-command-surface.json`)
+
+- `aaas:audit --pillar <p> [--micro <m>] | --tier foundational|transformational | --all`
+  — runs the bridge-os MPR engine (`audit:mpr:repo:run`) and presents the requested taxonomy slice.
+- `aaas:report <foundational-readiness | transformational-readiness | mpr-scorecard | remediation-roadmap>`
+  — rolls up engine witnesses into the four canonical reports.
+
+### Contract
+
+Each repo carries `machine/spec/aaas-audit-contract.pin.json` (bound to the fabric-os
+contract SoR). Witnesses → `audit/evidence/`; dated reports → `audit/reports/`;
+superseded → `audit/archive/`. Freshness + coverage are enforced by fabric-os
+(`aaas:contract:check`, `aaas:cadence`, `aaas:honesty:check`).
+
+### Engine + ownership
+
+- **bridge-os** — MPR scoring engine + universal rubric.
+- **canon-os** — capability registry (the coverage denominator).
+- **fabric-os** — the AaaS lane: orchestration, honesty gate, cadence, contract, fleet index.
+
+Provider-agnostic — the same surface works for Claude, Codex, Gemini, Kimi, Deepseek, Grok, or any agent.

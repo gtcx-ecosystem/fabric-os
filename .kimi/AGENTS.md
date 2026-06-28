@@ -76,15 +76,41 @@ cd deploy/terraform/environments/staging && terraform plan -var-file=terraform.t
 
 ## Audits (cross-repo)
 
-To run any forensic audit on this repo (master-audit, full-audit, 10-10-roadmap, repo-overview, doc-cleanup, doc-standard, verification-audit, docs-machine-readable):
+Audits + reports are centralized as **Audit-as-a-Service (AaaS)** in `fabric-os`. One
+canonical surface for the whole fleet — do **not** invoke legacy per-concern audit
+commands (master-audit, product-audit, forensic-audit, ux-audit, gtm-audit,
+security-audit, signal-audit, moat-check, 10-10-roadmap, five-core, …). They are
+**retired** in favor of the 11-pillar MPR taxonomy.
 
-1. Read `../bridge-os/audit/AGENT-START.md` — the canonical entry point lists every command, its prompt file, and the output path.
-2. Read the specific command file (`../bridge-os/audit/commands/<command>.md`).
-3. Read the prompt file referenced there (`../bridge-os/audit/prompts/<category>/<file>.md`).
-4. Execute the prompt against this repo.
-5. Write the output to the path the command specifies (typically `01-docs/05-audit/<command>-<YYYY-MM-DD>.md`).
+### Standard (SoR)
 
-The audit registry is provider-agnostic — the same prompts work for Claude, Codex, Gemini, Kimi, Deepseek, Grok, etc.
+`fabric-os/machine/spec/aaas-audit-taxonomy.json` — 11 MPR pillars across two tiers,
+each decomposed into micro-audits:
+
+- **Foundational:** compliance, technicalExcellence, craft, worldClass, trustAndSafety
+- **Transformational:** creativityInnovation, commercialValue, defensiveMoat, agenticEmpowerment, productEcosystemIntegration, ipMagic
+
+### Commands (SoR: `fabric-os/machine/spec/aaas-command-surface.json`)
+
+- `aaas:audit --pillar <p> [--micro <m>] | --tier foundational|transformational | --all`
+  — runs the bridge-os MPR engine (`audit:mpr:repo:run`) and presents the requested taxonomy slice.
+- `aaas:report <foundational-readiness | transformational-readiness | mpr-scorecard | remediation-roadmap>`
+  — rolls up engine witnesses into the four canonical reports.
+
+### Contract
+
+Each repo carries `machine/spec/aaas-audit-contract.pin.json` (bound to the fabric-os
+contract SoR). Witnesses → `audit/evidence/`; dated reports → `audit/reports/`;
+superseded → `audit/archive/`. Freshness + coverage are enforced by fabric-os
+(`aaas:contract:check`, `aaas:cadence`, `aaas:honesty:check`).
+
+### Engine + ownership
+
+- **bridge-os** — MPR scoring engine + universal rubric.
+- **canon-os** — capability registry (the coverage denominator).
+- **fabric-os** — the AaaS lane: orchestration, honesty gate, cadence, contract, fleet index.
+
+Provider-agnostic — the same surface works for Claude, Codex, Gemini, Kimi, Deepseek, Grok, or any agent.
 
 ## Credentials: system-of-record + ownership split (cross-repo)
 
@@ -99,13 +125,13 @@ The audit registry is provider-agnostic — the same prompts work for Claude, Co
 
 ## LLM routing + token usage (BaselineOS SoR)
 
-| Concern                       | Owner          | Operator entry                                                |
-| ----------------------------- | -------------- | ------------------------------------------------------------- |
-| Route decisions + pricing     | `baseline-os`  | `baseline cost-route --prompt "..." --json`                   |
-| Token usage aggregate         | `baseline-os`  | `baseline cost-stats --json`                                  |
-| Agent vault (populate/verify) | `bridge-os` | `pnpm agent:vault:verify`                                     |
-| Staging vs production keys    | `bridge-os` | `01-docs/operators/vault-environments.md`                     |
-| Ecosystem coordination        | `baseline-os`  | `workstream/coordination/ECOSYSTEM-COST-ROUTER-2026-06-03.md` |
+| Concern                       | Owner         | Operator entry                                                |
+| ----------------------------- | ------------- | ------------------------------------------------------------- |
+| Route decisions + pricing     | `baseline-os` | `baseline cost-route --prompt "..." --json`                   |
+| Token usage aggregate         | `baseline-os` | `baseline cost-stats --json`                                  |
+| Agent vault (populate/verify) | `bridge-os`   | `pnpm agent:vault:verify`                                     |
+| Staging vs production keys    | `bridge-os`   | `01-docs/operators/vault-environments.md`                     |
+| Ecosystem coordination        | `baseline-os` | `workstream/coordination/ECOSYSTEM-COST-ROUTER-2026-06-03.md` |
 
 **Do not** use `baseline-os/04-ship/docker/.env.staging` for production vault work.
 
@@ -188,7 +214,7 @@ Emit **one** brief, then work. Human may **stop**, **correct:**, or story ID —
 
 - Gates, dev servers (Metro/Expo background), `adb`, `git push` — in-session.
 - Report **command + exit code**.
-- Harness blocks bare `git push`? **D3:** `pnpm --dir ../bridge-os ecosystem:git-push --repo <name>` · **D5:** `pnpm --dir ../bridge-os ecosystem:push-all`.
+- Harness blocks bare `git push`? **D3:** `pnpm --dir ../gtcx-agentic ecosystem:git-push --repo <name>` · **D5:** `pnpm --dir ../gtcx-agentic ecosystem:push-all`.
 - Blocked after diagnosis D1–D6? **Permission Unblock Report** — not "run locally."
 
 ### P28 — Authority
@@ -283,7 +309,7 @@ Template: `01-docs/04-ops/agent-status-update-template.md` · Spec: P26 §3b (gt
 | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1    | [Unblock playbook F1–F10](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/ecosystem-unblock-playbook-2026-06.md)                                 |
 | 2    | [P26 Status Update + post-pilot gating](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/agent-status-update-and-post-pilot-gating-2026-06-06.md) |
-| 3    | [Human-external register](https://github.com/gtcx-ecosystem/bridge-os/blob/main/01-docs/04-ops/coordination/human-external-blocker-register-2026-06.md)                              |
+| 3    | [Human-external register](https://github.com/gtcx-ecosystem/gtcx-agentic/blob/main/01-docs/04-ops/coordination/human-external-blocker-register-2026-06.md)                              |
 | 4    | [Cross-repo bridge — Latest updates](https://github.com/gtcx-ecosystem/gtcx-protocols/blob/main/01-docs/04-ops/coordination/cross-repo-agent-bridge.md)                                 |
 | 5    | This repo `01-docs/04-ops/agent-work-selection.md` · `01-docs/05-audit/auto-dev-state.md`                                                                                               |
 

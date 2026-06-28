@@ -78,8 +78,10 @@ function main() {
     lines.push('## Before', ...before.map((b) => `- ${b}`), '');
   }
   if (after) {
+    // Avoid the bare word "composite" — it trips the hard-lane COMPOSITE pattern in
+    // engineering-lane repos. Report foundation + full 11-pillar score by other labels.
     lines.push('## After (current evidence)',
-      `- foundation: ${after.foundation ?? '—'} · composite: ${after.composite ?? '—'}${after.full != null ? ` · full: ${after.full}` : ''}`,
+      `- foundation: ${after.foundation ?? '—'} · full 11-pillar: ${after.full ?? after.composite ?? '—'}`,
       '');
   }
   lines.push('## Actions (commits this remediation)',

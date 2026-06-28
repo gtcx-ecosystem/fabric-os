@@ -5,8 +5,9 @@
   "provider": "fabric-os",
   "principle": "ONE canonical command surface for the whole fleet. Every legacy audit/report command, slash-command, and registry entry maps to exactly one of these or is retired. fabric-os orchestrates; bridge-os MPR engine scores; canon-os holds coverage. No parallel command vocabularies.",
   "canonicalCommands": {
-    "aaas:audit": "node platform/scripts/aaas-audit.mjs --pillar <p> [--micro <m>] [--tier foundational|transformational] [--all]  — run pillar/micro audits (delegates to the bridge-os MPR engine)",
-    "aaas:report": "node platform/scripts/aaas-report.mjs <umbrella>  — foundational-readiness | transformational-readiness | mpr-scorecard | remediation-roadmap",
+    "aaas:audit": "node platform/scripts/aaas-audit.mjs [--repo <r>] --pillar <p> [--micro <m>] [--tier foundational|transformational] [--all] [--write]  — BUILT. delegates scoring to bridge-os MPR engine, presents taxonomy slice",
+    "aaas:report": "node platform/scripts/aaas-report.mjs <umbrella> [--repo <r>] [--write]  — BUILT. foundational-readiness | transformational-readiness | mpr-scorecard | remediation-roadmap (rolls up engine witnesses)",
+    "aaas:provision": "node platform/scripts/aaas-provision.mjs [--write]  — BUILT. ensure contract folders + thin pin per repo",
     "aaas:registry:build": "fleet audit state SoR (built)",
     "aaas:contract:check": "contract obligations vs state (built)",
     "aaas:cadence": "freshness heartbeat (built)",

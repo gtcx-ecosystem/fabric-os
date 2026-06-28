@@ -40,6 +40,7 @@ document_type: index
 | Architecture | `architecture/` | System design, ADRs, integration              |
 | Product      | `product/`      | Personas, UX, roadmap features                |
 | Operations   | `operations/`   | Human runbooks + agent ops narrative          |
+| Primitives   | `primitives/`   | Reusable design and generated media direction |
 | Reference    | `reference/`    | Templates, glossary — intake until decomposed |
 | GitBook      | `gitbook/`      | Published doc-site source                     |
 

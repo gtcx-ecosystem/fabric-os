@@ -117,7 +117,7 @@
     "updated": "2026-06-28",
     "1-files": "ready — aaas:scrub built, dry-run 571 files; gated on front 2 (else regenerates)",
     "2-registries": "handed off — XR-AUDIT-COMMAND-RECONCILE-001 to canon-os+bridge-os (P24, awaiting ack)",
-    "3-pnpm-scripts": "pending — retire legacy audit/* scripts fleet-wide",
+    "3-pnpm-scripts": "DONE (finding: near no-op) — fleet scan shows audit:* scripts are legitimate: baseline-os mpr/apex/nitro/dojo are the engine + product layer-seals; pm-reconcile/latest:sync/prune-dated are PM machinery; gtcx-os audit:* is product instrumentation. Only drift = five-core, owned by bridge-os (front 2). Dangling five-core refs to sweep after engine retires: ledger-os five-core:check, sensei-os ecosystem:five-core-audits:check (folded into XR-AUDIT-COMMAND-RECONCILE-001).",
     "4-slash-commands": "DONE — 37 legacy audit commands archived to ~/.claude/commands-archive/legacy-audit-scrub-2026-06-28/; canonical aaas-audit + aaas-report installed",
     "5-agent-llm-files": "pending — high-risk, after fronts 2-4 settle"
   }

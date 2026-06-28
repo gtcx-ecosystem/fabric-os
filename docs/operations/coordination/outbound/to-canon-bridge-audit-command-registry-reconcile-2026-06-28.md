@@ -33,6 +33,16 @@ Taxonomy: `fabric-os/machine/spec/aaas-audit-taxonomy.json` (11 pillars, 87 micr
 - `audit/FIVE-CORE-AUDITS.md` — five-core (A1–A5) is **superseded by the 11-pillar MPR**; mark retired, point to the taxonomy.
 - Engine: `audit:mpr:repo:run` stays as the single scorer `aaas:audit` delegates to; **retire `audit:five-core:run`** and stop emitting the superseded five-core witnesses (else the fabric-os scrub re-bloats).
 
+## Downstream five-core sweep (after bridge-os retires the engine)
+
+Two non-owner repos carry dangling pointers to bridge-os's five-core engine. Once
+`audit:five-core:run` is retired, sweep these so they don't point at a dead command:
+
+- `ledger-os` package.json — `five-core:check`
+- `sensei-os` package.json — `ecosystem:five-core-audits:check`
+
+fabric-os will run this sweep on your `done` ack (Class R, no further approval needed).
+
 ## Why this gates the scrub
 
 fabric-os's `aaas:scrub` dry-run = **571 legacy files across 20 repos**. Archiving them is futile until the engine + registries stop producing them. Order: registries(2) → scripts/slash(3,4) → agent-files(5) → archive-files(1).

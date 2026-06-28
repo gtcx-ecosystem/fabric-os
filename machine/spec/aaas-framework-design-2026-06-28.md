@@ -79,7 +79,7 @@ human approval only at Class A/S gates.
 The design's target ceiling is **SIGNAL L5 across all 6 dimensions / MPR 95+ across all 11
 pillars**. The path is explicit, not aspirational:
 
-| SIGNAL dim           | now | the four additions (§8) that reach L5                            |
+| SIGNAL dim           | now | the four additions (§4c) that reach L5                           |
 | -------------------- | --- | ---------------------------------------------------------------- |
 | Systems Architecture | L3  | schema-validated, provider-agnostic contracts                    |
 | Tooling              | L1  | §4c.1 autonomous execution — agents run the loop unattended      |

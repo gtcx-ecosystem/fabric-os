@@ -1,11 +1,11 @@
 {
   "schema": "gtcx://audit/craft-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-26",
+  "date": "2026-06-28",
   "score100": 100,
-  "published": true,
-  "provisional": false,
-  "blockedBy": null,
+  "published": false,
+  "provisional": true,
+  "blockedBy": "compliance",
   "unlockThreshold100": 85,
   "metrics": {
     "selectivity-ingredients": {

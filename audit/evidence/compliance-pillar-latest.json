@@ -1,24 +1,24 @@
 {
   "schema": "gtcx://audit/compliance-pillar/v1",
   "repo": "fabric-os",
-  "date": "2026-06-26",
-  "score100": 100,
-  "published": true,
-  "provisional": false,
-  "blockedBy": null,
+  "date": "2026-06-28",
+  "score100": 69,
+  "published": false,
+  "provisional": true,
+  "blockedBy": "below-threshold",
   "unlockThreshold100": 85,
   "categories": {
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
       "weight": 8,
-      "score100": 100,
+      "score100": 45,
       "protocol": "P35",
       "items": [
         {
           "id": "p35-strict-pass",
           "label": "P35 layout strict GREEN",
-          "pass": true,
-          "score100": 100,
+          "pass": false,
+          "score100": 0,
           "weight": 35,
           "severity": "P1",
           "optional": false,
@@ -39,8 +39,8 @@
         {
           "id": "root-allowlist",
           "label": "Root allowlist / workspace root cleanliness",
-          "pass": true,
-          "score100": 100,
+          "pass": false,
+          "score100": 0,
           "weight": 20,
           "severity": "P2",
           "optional": false,
@@ -139,14 +139,14 @@
     "ops-domains-p29": {
       "label": "Operational domains (P29)",
       "weight": 6,
-      "score100": 100,
+      "score100": 50,
       "protocol": "P29",
       "items": [
         {
           "id": "ops-check-pass",
           "label": "pnpm ops:check exit 0",
-          "pass": true,
-          "score100": 100,
+          "pass": false,
+          "score100": 0,
           "weight": 50,
           "severity": "P1",
           "optional": false,
@@ -450,7 +450,7 @@
           "weight": 20,
           "severity": "P1",
           "optional": false,
-          "detail": "agentic/manifest.json",
+          "detail": "agents/manifest.json (or legacy agentic/manifest.json)",
           "protocol": "P22-P28"
         },
         {
@@ -483,7 +483,7 @@
           "weight": 15,
           "severity": "P2",
           "optional": false,
-          "detail": "MCP hub, hub repo, or agentic consumer",
+          "detail": "MCP hub, hub repo, or agent-manifest consumer",
           "protocol": "P22-P28"
         },
         {
@@ -787,7 +787,7 @@
           "weight": 50,
           "severity": "P2",
           "optional": false,
-          "detail": "deploy directory"
+          "detail": "deploy/ or platform/ infra home (deploy optional)"
         },
         {
           "id": "pm-ci-gates-json",
@@ -803,9 +803,31 @@
       "itemCount": 2
     }
   },
-  "hygieneViolations": [],
+  "hygieneViolations": [
+    {
+      "id": "p35-strict-pass",
+      "categoryId": "layout-p35",
+      "label": "P35 layout strict GREEN",
+      "severity": "P1",
+      "detail": "p35Strict"
+    },
+    {
+      "id": "root-allowlist",
+      "categoryId": "layout-p35",
+      "label": "Root allowlist / workspace root cleanliness",
+      "severity": "P2",
+      "detail": "opsCheck"
+    },
+    {
+      "id": "ops-check-pass",
+      "categoryId": "ops-domains-p29",
+      "label": "pnpm ops:check exit 0",
+      "severity": "P1",
+      "detail": "opsCheck"
+    }
+  ],
   "itemTotal": 62,
   "rubricVersion": "1.0.0",
   "openP0": 0,
-  "openP1": 0
+  "openP1": 2
 }

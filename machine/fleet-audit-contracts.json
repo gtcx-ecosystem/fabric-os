@@ -1,0 +1,45 @@
+{
+  "$schema": "gtcx://fabric-os/fleet-audit-contracts/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-28",
+  "provider": "fabric-os",
+  "contractSor": "machine/spec/aaas-audit-contract.json",
+  "note": "Repos bound to the AaaS audit contract. Each also carries machine/spec/aaas-audit-contract.pin.json. gtcx-markets is a symlink to markets-os (one repo).",
+  "repos": [
+    { "repo": "fabric-os", "auditProfile": "platform", "cadenceDays": 7, "owner": "fabric-os" },
+    { "repo": "bridge-os", "auditProfile": "hub", "cadenceDays": 7, "owner": "bridge-os" },
+    { "repo": "canon-os", "auditProfile": "hub", "cadenceDays": 7, "owner": "canon-os" },
+    { "repo": "baseline-os", "auditProfile": "hub", "cadenceDays": 7, "owner": "baseline-os" },
+    { "repo": "agile-os", "auditProfile": "hub", "cadenceDays": 7, "owner": "agile-os" },
+    { "repo": "ecosystem-os", "auditProfile": "hub", "cadenceDays": 7, "owner": "ecosystem-os" },
+    { "repo": "gtcx-os", "auditProfile": "platform", "cadenceDays": 7, "owner": "gtcx-os" },
+    { "repo": "markets-os", "auditProfile": "product", "cadenceDays": 7, "owner": "markets-os" },
+    { "repo": "terra-os", "auditProfile": "product", "cadenceDays": 7, "owner": "terra-os" },
+    { "repo": "sensei-os", "auditProfile": "product", "cadenceDays": 7, "owner": "sensei-os" },
+    { "repo": "griot-ai", "auditProfile": "product", "cadenceDays": 7, "owner": "griot-ai" },
+    { "repo": "nyota-ai", "auditProfile": "product", "cadenceDays": 7, "owner": "nyota-ai" },
+    { "repo": "veritas-ai", "auditProfile": "product", "cadenceDays": 7, "owner": "veritas-ai" },
+    { "repo": "venture-os", "auditProfile": "product", "cadenceDays": 7, "owner": "venture-os" },
+    { "repo": "ledger-os", "auditProfile": "product", "cadenceDays": 7, "owner": "ledger-os" },
+    { "repo": "ledger-ui", "auditProfile": "product", "cadenceDays": 7, "owner": "ledger-ui" },
+    {
+      "repo": "inspection-os",
+      "auditProfile": "product",
+      "cadenceDays": 7,
+      "owner": "inspection-os"
+    },
+    { "repo": "terminal-os", "auditProfile": "product", "cadenceDays": 7, "owner": "terminal-os" },
+    {
+      "repo": "exploration-os",
+      "auditProfile": "product",
+      "cadenceDays": 7,
+      "owner": "exploration-os"
+    },
+    {
+      "repo": "compliance-os",
+      "auditProfile": "product",
+      "cadenceDays": 7,
+      "owner": "compliance-os"
+    }
+  ]
+}

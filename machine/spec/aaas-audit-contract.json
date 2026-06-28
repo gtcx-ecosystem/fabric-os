@@ -1,0 +1,49 @@
+{
+  "$schema": "gtcx://fabric-os/aaas-audit-contract/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-28",
+  "provider": "fabric-os",
+  "service": "AAAS",
+  "title": "Audit-as-a-Service contract — fabric-os ↔ repo",
+  "principle": "fabric-os centralizes audit/report management. Each repo provides a conformant audit/ + reports/ tree; fabric-os indexes fleet state, enforces freshness + honesty coverage, and owns ecosystem rollups. Engine (rubric/runners) stays in bridge-os; coverage denominator stays in canon-os.",
+  "obligations": {
+    "repo": {
+      "requiredFolders": ["audit/evidence", "audit/reports", "audit/archive", "reports"],
+      "witnessNaming": "audit/evidence/<witness>-latest.json (machine, current-only)",
+      "reportNaming": "audit/reports/<audit-type>-YYYY-MM-DD.md (dated human reports)",
+      "noDatedSiblingsIn": "audit/evidence (dated snapshots live in audit/archive/)",
+      "coverageWitness": "audit/evidence/aaas-honesty-coverage.json (per canon registry)",
+      "pin": "machine/spec/aaas-audit-contract.pin.json (binds to this SoR)"
+    },
+    "provider": {
+      "contractSor": "machine/spec/aaas-audit-contract.json",
+      "bindings": "machine/fleet-audit-contracts.json",
+      "stateRegistry": "machine/fleet-audit-registry.json",
+      "registryBuilder": "platform/scripts/aaas-registry-build.mjs",
+      "contractCheck": "platform/scripts/aaas-contract-check.mjs",
+      "cadence": "platform/scripts/aaas-cadence.mjs",
+      "honestyGate": "platform/scripts/aaas-honesty-gate.mjs",
+      "ecosystemRollups": "audit/fleet/"
+    }
+  },
+  "cadenceSLA": {
+    "witnessMaxAgeDays": 7,
+    "reportCadence": "on-change-or-monthly"
+  },
+  "auditProfiles": {
+    "product": ["mpr", "composite", "honesty", "five-pillar"],
+    "platform": ["mpr", "composite", "honesty"],
+    "hub": ["mpr", "composite", "honesty", "docs-canon"]
+  },
+  "witnessSchemas": {
+    "mpr": "gtcx://baseline-os/multi-pillar-repo-extension/v1",
+    "composite": "gtcx://audit/composite/v2",
+    "honesty": "gtcx://fabric-os/aaas-honesty-gate/v1",
+    "honestyCoverage": "gtcx://fabric-os/aaas-honesty-coverage/v1"
+  },
+  "enforcement": {
+    "mode": "surfaced",
+    "note": "Contract check is advisory until each repo's pin + reports/ + cadence are provisioned, then per-repo hard-block in CI (mirrors the --closed-specs rollout).",
+    "witness": "audit/evidence/aaas-contract-check-latest.json"
+  }
+}

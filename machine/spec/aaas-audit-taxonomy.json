@@ -1,0 +1,176 @@
+{
+  "$schema": "gtcx://fabric-os/aaas-audit-taxonomy/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-28",
+  "provider": "fabric-os",
+  "title": "Canonical fleet audit + report taxonomy — MPR fractal (tier → pillar → micro)",
+  "principle": "The audit/report taxonomy IS the MPR scoring taxonomy. Two tiers, 11 pillars (umbrellas), each with specialized micro-audits (= MPR dimensions). Rollup is native: micro → pillar → foundationComposite (5) → fullComposite (11). No invented layer; legacy types map to exactly one micro or are drift.",
+  "source": {
+    "foundationPillarsAndDimensions": "bridge-os/pm/spec/mpr-evaluation.json",
+    "weightsAndTiers": "baseline-os/machine/spec/fractal-multi-pillar-weight-calibration.json",
+    "engine": "bridge-os/platform/scripts/ecosystem/run-mpr-repo-audit.mjs"
+  },
+  "tiers": {
+    "foundational": {
+      "pillars": ["compliance", "technicalExcellence", "craft", "worldClass", "trustAndSafety"],
+      "composite": "foundationComposite100",
+      "unlockOrder": ["compliance", "technicalExcellence", "craft", "worldClass"],
+      "note": "trustAndSafety is an envelope-cap over the foundation; foundation must unlock (>=85) before transformational scores publish."
+    },
+    "transformational": {
+      "pillars": [
+        "creativityInnovation",
+        "commercialValue",
+        "defensiveMoat",
+        "agenticEmpowerment",
+        "productEcosystemIntegration",
+        "ipMagic"
+      ],
+      "composite": "fullComposite100",
+      "note": "Publishes only after foundation unlock."
+    }
+  },
+  "pillars": {
+    "compliance": {
+      "tier": "foundational",
+      "note": "GTCX core domain — comprehensive framework coverage. The taxonomy defines the FULL canonical set; per-repo applicability is selected by the contract profile (e.g. a UI repo activates security-baseline only; a trade-settlement repo activates LBMA/OECD/AML/sanctions).",
+      "microGroups": {
+        "security": [
+          "security-baseline",
+          "pen-test-attack-surface",
+          "secrets-credential-hygiene",
+          "vulnerability-cve-supply-chain",
+          "threat-model"
+        ],
+        "certifications": ["soc2-type-ii", "iso-27001-isms", "iso-9001-quality"],
+        "data-privacy": ["data-protection-gdpr", "data-residency-sovereignty", "pii-handling"],
+        "commodity-trade-frameworks": [
+          "oecd-due-diligence-minerals",
+          "lbma-responsible-sourcing",
+          "conflict-minerals-3tg",
+          "kimberley-process",
+          "chain-of-custody-provenance",
+          "responsible-sourcing"
+        ],
+        "financial-banking-frameworks": [
+          "aml-kyc",
+          "fatf-travel-rule",
+          "sanctions-screening-ofac",
+          "bank-grade-auditability",
+          "basel-prudential"
+        ]
+      }
+    },
+    "technicalExcellence": {
+      "tier": "foundational",
+      "microGroups": {
+        "code": ["code-quality", "architecture-boundaries", "complexity-maintainability"],
+        "testing": ["unit-coverage", "integration-e2e", "mutation-test-quality"],
+        "interfaces": ["api-contract", "schema-versioning", "backward-compat"],
+        "build-deps": ["deps-health", "build-reproducibility"],
+        "performance": ["latency-throughput", "resource-efficiency"]
+      }
+    },
+    "craft": {
+      "tier": "foundational",
+      "microGroups": {
+        "ingredients": ["selectivity-ingredients", "uniqueness-provenance"],
+        "process": ["process-composition"],
+        "finish": ["taste-operator-finish", "restraint-anti-commodity"]
+      }
+    },
+    "worldClass": {
+      "tier": "foundational",
+      "worldClassBar100": 95,
+      "microGroups": {
+        "product": ["product-competitiveness", "ux-product-design", "global-south-resilience"],
+        "platform": ["security", "devops-observability", "enterprise-sovereign"],
+        "intelligence": ["agentic-trust", "ecosystem-moat"],
+        "docs-hygiene": ["documentation", "repo-hygiene", "spec-truth"]
+      }
+    },
+    "trustAndSafety": {
+      "tier": "foundational",
+      "mode": "envelope-cap",
+      "microAudits": [
+        "evidence-coverage",
+        "confidence-grade",
+        "anti-hallucination",
+        "audit-trail-freshness",
+        "independent-replay"
+      ]
+    },
+    "creativityInnovation": {
+      "tier": "transformational",
+      "lean": true,
+      "microAudits": ["innovation-originality", "novel-patterns", "research-depth"]
+    },
+    "commercialValue": {
+      "tier": "transformational",
+      "microGroups": {
+        "gtm": ["gtm-readiness", "market-fit", "positioning"],
+        "monetization": ["pricing-packaging", "unit-economics"],
+        "pipeline": ["pilot-readiness", "sales-enablement", "partnership"]
+      }
+    },
+    "defensiveMoat": {
+      "tier": "transformational",
+      "microAudits": [
+        "technical-moat",
+        "competitive-differentiation",
+        "ninety-day-copy-test",
+        "network-effects",
+        "data-moat"
+      ]
+    },
+    "agenticEmpowerment": {
+      "tier": "transformational",
+      "microGroups": {
+        "runtime": ["agent-runtime-protocols", "mcp-tooling"],
+        "intelligence": ["ai-maturity", "hallucination-resilience", "rag-eval"],
+        "autonomy": ["autonomous-execution", "self-healing"]
+      }
+    },
+    "productEcosystemIntegration": {
+      "tier": "transformational",
+      "microGroups": {
+        "product": ["feature-completeness", "jtbd-persona-coverage"],
+        "ecosystem": ["ecosystem-integration", "cross-repo-contracts", "interoperability"]
+      }
+    },
+    "ipMagic": {
+      "tier": "transformational",
+      "lean": true,
+      "microAudits": ["ip-uniqueness", "provenance", "defensibility"]
+    }
+  },
+  "reports": {
+    "fractal": "tier report → pillar section → micro sub-section",
+    "umbrellas": [
+      {
+        "id": "foundational-readiness",
+        "covers": ["compliance", "technicalExcellence", "craft", "worldClass", "trustAndSafety"]
+      },
+      {
+        "id": "transformational-readiness",
+        "covers": [
+          "creativityInnovation",
+          "commercialValue",
+          "defensiveMoat",
+          "agenticEmpowerment",
+          "productEcosystemIntegration",
+          "ipMagic"
+        ]
+      },
+      { "id": "mpr-scorecard", "covers": "fullComposite rollup (the headline)" },
+      { "id": "remediation-roadmap", "covers": "cross-cutting findings → prioritized actions" }
+    ]
+  },
+  "rollup": {
+    "foundationComposite100": "weighted rollup of foundation pillars (mpr-evaluation compositeWeights)",
+    "fullComposite100": "weighted rollup of all 11 (fractal-multi-pillar-weight-calibration defaultWeights, phase-aware)",
+    "unlockThreshold100": 85,
+    "worldClassBar100": 95
+  },
+  "uxNote": "UX / product-experience / design (the moat) is first-class across craft (taste-operator-finish, restraint-anti-commodity), worldClass (product-competitiveness), and technicalExcellence (product-ux-quality)."
+}

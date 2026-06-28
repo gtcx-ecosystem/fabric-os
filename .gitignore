@@ -134,3 +134,4 @@ pm/ci/settlement-*-latest.json
 .baseline/memory/session-last-start.json
 **/ops-check-latest.json
 **/compliance-witness-latest.json
+machine/fleet-audit-registry.json

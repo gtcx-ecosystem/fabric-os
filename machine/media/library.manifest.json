@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "repo": "fabric-os",
+  "sourceOfRecord": "canon-os/machine/spec/genai-media-library-protocol.json",
+  "defaultGenerator": "ChatGPT image generation",
+  "storagePrefix": "platform/assets/generated/media/images/",
+  "assetClasses": {
+    "images": {
+      "status": "draft",
+      "categories": [
+        "hero",
+        "workflow",
+        "detail",
+        "field",
+        "team",
+        "product-context",
+        "background"
+      ],
+      "categoryFolders": {
+        "hero": "platform/assets/generated/media/images/hero/",
+        "workflow": "platform/assets/generated/media/images/workflow/",
+        "detail": "platform/assets/generated/media/images/detail/",
+        "field": "platform/assets/generated/media/images/field/",
+        "team": "platform/assets/generated/media/images/team/",
+        "product-context": "platform/assets/generated/media/images/product-context/",
+        "background": "platform/assets/generated/media/images/background/"
+      }
+    }
+  },
+  "promptSets": [
+    {
+      "id": "FABRIC-IMG-HERO-001",
+      "assetClass": "images",
+      "category": "hero",
+      "path": "platform/assets/generated/media/images/hero/",
+      "status": "ready-for-generation",
+      "generator": "ChatGPT image generation",
+      "usage": "hero, presentation, product marketing",
+      "prompt": "Photorealistic editorial image for Fabric OS, the AWS, Kubernetes, Terraform, deployment, and independent assurance control plane. Show a practical infrastructure operations workspace with deployment runbooks, cloud topology context, reliability review, and engineers coordinating release evidence. Natural light, institutional trust, no visible brand logos, no readable text, no fake credentials, no certificates, no seals, no badges, no QR codes, no watermarks."
+    }
+  ],
+  "generatedAssets": []
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/fleet-blocker-state/v1",
   "repo": "fabric-os",
-  "updated": "2026-06-27",
+  "updated": "2026-06-28",
   "source": "docs/operations/coordination/fabric-os-fleet-unblock-register-2026-06-25.md",
   "blockers": [
     {
@@ -133,9 +133,9 @@
       "type": "compliance",
       "class": "R",
       "priority": "P2",
-      "status": "needs_owner_repo_action",
+      "status": "done",
       "infrastructureReady": true,
-      "operatorStep": "canon-os must raise MPR foundation score to >=85 (currently 51). Address ESL-2/ESL-3 and compliance below-threshold items. fabric-os assurance framework is ready.",
+      "operatorStep": "Resolved — canon-os MPR witness (2026-06-27) is foundation 99 / full 99, compliance 100 published, blockedBy []. Register was stale; verified green 2026-06-28.",
       "verificationCommand": "node ../bridge-os/platform/scripts/ecosystem/run-mpr-repo-audit.mjs --repo canon-os --write",
       "evidencePath": "../canon-os/audit/evidence/mpr-repo-latest.json",
       "blocksIR": false

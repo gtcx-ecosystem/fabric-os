@@ -1,0 +1,19 @@
+{
+  "$schema": "gtcx://canon-os/docs-folder-spec-item/v1",
+  "level": "L2",
+  "id": "06-gitbook",
+  "path": "docs/gitbook/",
+  "status": "current",
+  "updated": "2026-06-28",
+  "title": "GitBook — publish mirror (fabric-os local override)",
+  "purpose": "Generated/synced publish surface. Source of truth remains layer folders above. Local override of canon 06-gitbook: adds fabric-os's published spaces (blog, docs-site).",
+  "overrideOf": "canon-os/machine/spec/docs-folders/06-gitbook.json",
+  "structure": {
+    "mode": "closed",
+    "allowedChildFolders": ["publish", "ecosystem", "blog", "docs-site"]
+  },
+  "files": {
+    "mode": "closed",
+    "allowlist": ["README.md", "SUMMARY.md", "FOLDER-SPEC.md"]
+  }
+}

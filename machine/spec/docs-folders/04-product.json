@@ -1,0 +1,37 @@
+{
+  "$schema": "gtcx://canon-os/docs-folder-spec-item/v1",
+  "level": "L2",
+  "id": "04-product",
+  "path": "docs/product/",
+  "status": "current",
+  "updated": "2026-06-28",
+  "layer": 4,
+  "title": "Product — plan + experience (fabric-os local override)",
+  "purpose": "Fast product plane: executable roadmap, product experience, engineering contracts (canon/). Local override of canon 04-product: fabric-os's product-experience home is docs/product/ux/ — the tool-enforced structure (machine/spec/docs-product-pack.json requiredSubfolders + platform/scripts/docs-product-check.mjs) pending canon ux->experience rename adoption.",
+  "overrideOf": "canon-os/machine/spec/docs-folders/04-product.json",
+  "structure": {
+    "mode": "closed",
+    "archiveFolder": "archive",
+    "allowedChildFolders": ["roadmap", "ux", "experience", "demos", "archive", "canon"],
+    "allowlistNotes": {
+      "ux": "fabric-os product-experience home enforced by docs-product-pack requiredSubfolders + docs-product-check.mjs. Canon canonical name is 'experience'; both allowed during migration."
+    },
+    "forbiddenChildFolders": [
+      "roadmaps",
+      "scrum",
+      "surfaces",
+      "requirements",
+      "acceptance",
+      "prds",
+      "research",
+      "publishing",
+      "go-to-market",
+      "_archive"
+    ]
+  },
+  "files": {
+    "mode": "closed",
+    "allowlist": ["README.md", "scorecard.md", "FOLDER-SPEC.md"]
+  },
+  "primaryPillars": ["P1", "P7", "P9", "P11"]
+}

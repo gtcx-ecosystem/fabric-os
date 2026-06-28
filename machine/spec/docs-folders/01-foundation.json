@@ -1,0 +1,29 @@
+{
+  "$schema": "gtcx://canon-os/docs-folder-spec-item/v1",
+  "level": "L2",
+  "id": "01-foundation",
+  "path": "docs/foundation/",
+  "status": "current",
+  "updated": "2026-06-28",
+  "layer": 1,
+  "title": "Foundation — agent mandatory read (fabric-os local override)",
+  "purpose": "Why the repo exists. Every agent reads this layer before P22 work. Local override of canon 01-foundation: adds FOLDER-SPEC.md (repo-local human mirror of this spec).",
+  "overrideOf": "canon-os/machine/spec/docs-folders/01-foundation.json",
+  "structure": { "mode": "flat", "allowedChildFolders": [], "forbiddenChildFolders": ["*"] },
+  "files": {
+    "mode": "closed",
+    "allowlist": [
+      "README.md",
+      "scorecard.md",
+      "FOLDER-SPEC.md",
+      "constitution.md",
+      "manifesto.md",
+      "vision.md",
+      "mission.md",
+      "goals.md",
+      "milestones.md",
+      "roadmap.md"
+    ]
+  },
+  "primaryPillars": ["P1", "P5", "P9"]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "gtcx://canon-os/docs-folder-spec-item/v1",
+  "level": "L2",
+  "id": "03-architecture",
+  "path": "docs/architecture/",
+  "status": "current",
+  "updated": "2026-06-28",
+  "layer": 3,
+  "title": "Architecture — technical shape (fabric-os local override)",
+  "purpose": "Stable system context, integration, data flows, KG, security, NFRs, technology strategy, repo ADRs, and fabric design assessments. Local override of canon 03-architecture: allowlists fabric-os design/assessment docs.",
+  "overrideOf": "canon-os/machine/spec/docs-folders/03-architecture.json",
+  "structure": { "mode": "flat", "allowedChildFolders": [], "forbiddenChildFolders": ["*"] },
+  "files": {
+    "mode": "closed",
+    "allowlist": [
+      "README.md",
+      "scorecard.md",
+      "FOLDER-SPEC.md",
+      "system-context.md",
+      "integration-topology.md",
+      "data-flow.md",
+      "knowledge-graph.md",
+      "security-model.md",
+      "nfr-catalog.md",
+      "technology-strategy.md",
+      "decisions-index.md",
+      "cloudflare-workers-ai-glm-assessment-2026-06-27.md"
+    ],
+    "optionalPattern": "ADR-{NNN}-{kebab-slug}.md"
+  },
+  "primaryPillars": ["P2", "P10", "P5"]
+}

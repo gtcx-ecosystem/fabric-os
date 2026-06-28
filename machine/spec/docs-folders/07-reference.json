@@ -1,0 +1,54 @@
+{
+  "$schema": "gtcx://canon-os/docs-folder-spec-item/v1",
+  "level": "L2",
+  "id": "07-reference",
+  "path": "docs/reference/",
+  "status": "current",
+  "updated": "2026-06-28",
+  "title": "Reference — provisioning targets + fabric reference corpus (fabric-os local override)",
+  "purpose": "Provisioning copy targets (templates/) plus fabric-os's active reference corpus: ADRs, design refs, ESG, financial, security, operations refs, evaluation, guides, canon reference, and legacy holding for provenance. Local override of canon 07-reference: declares fabric's real reference child folders and the glossary index file.",
+  "overrideOf": "canon-os/machine/spec/docs-folders/07-reference.json",
+  "structure": {
+    "mode": "closed",
+    "allowedChildFolders": [
+      "templates",
+      "guides",
+      "evaluation",
+      "gtm",
+      "legal",
+      "canon",
+      "archive",
+      "legacy-top-level",
+      "adr",
+      "design",
+      "esg",
+      "financial",
+      "security",
+      "operations",
+      "legacy-layer-root"
+    ],
+    "allowlistNotes": {
+      "adr|design|esg|financial|security|operations": "fabric-os reference corpus domains — cross-referenced reference material.",
+      "legacy-layer-root|legacy-top-level": "decomposed legacy docs kept for provenance."
+    },
+    "forbiddenChildFolders": [
+      "glossary",
+      "specs",
+      "domain",
+      "audits",
+      "product",
+      "engineering",
+      "api",
+      "_archive"
+    ]
+  },
+  "files": {
+    "mode": "closed",
+    "allowlist": [
+      "README.md",
+      "FOLDER-SPEC.md",
+      "documentation-fleet-coverage-matrix.md",
+      "glossary.md"
+    ]
+  }
+}

@@ -3,31 +3,37 @@
   "level": "L1",
   "id": "00-docs-root",
   "path": "docs/",
-  "status": "draft",
-  "updated": "2026-06-16",
+  "status": "current",
+  "updated": "2026-06-28",
   "canonicalTree": "machine/spec/repo-provisioning/canonical-docs-tree.json",
-  "title": "docs/ root — P48 six-pack + layer taxonomy",
-  "purpose": "Agent entry and machine SoR for the documentation tree. Indexes only — no narrative at docs/ root.",
+  "title": "docs/ root — P48 layer taxonomy (fabric-os local override)",
+  "purpose": "Agent entry and machine SoR for the documentation tree. Indexes only — no narrative at docs/ root. Local override of canon 00-docs-root: declares fabric-os's real layer set (strategy, governance corpus, agile bridge enforced by check-domain.mjs).",
+  "overrideOf": "canon-os/machine/spec/docs-folders/00-docs-root.json",
   "structure": {
     "mode": "closed",
     "allowedChildFolders": [
       "foundation",
       "business",
       "architecture",
+      "strategy",
       "product",
       "operations",
       "gitbook",
-      "reference"
+      "reference",
+      "governance",
+      "agile"
     ],
+    "allowlistNotes": {
+      "strategy": "11-pillar strategy primitive per child spec 10-strategy (canon allows it at docs/ root).",
+      "governance": "fabric-os regulatory corpus (docs/governance/regulatory/) — see local 08-governance override.",
+      "agile": "gtcx-agile bridge folder actively enforced by platform/scripts/workspace/lib/check-domain.mjs (docs/agile/roadmap.md)."
+    },
     "forbiddenChildFolders": [
       "overview",
       "specs",
-      "strategy",
       "engineering",
       "roadmap",
-      "agile",
       "agents",
-      "governance",
       "onboarding",
       "api",
       "_archive"
@@ -48,16 +54,11 @@
     "01-foundation",
     "02-business",
     "03-architecture",
+    "10-strategy",
     "04-product",
     "05-operations",
     "06-gitbook",
-    "07-reference"
-  ],
-  "profileVariants": {
-    "constitution-standards": {
-      "extraAllowedChildFolders": ["governance"],
-      "extraChildSpec": "08-governance",
-      "note": "canon-os hub only — product repos omit governance/"
-    }
-  }
+    "07-reference",
+    "08-governance"
+  ]
 }

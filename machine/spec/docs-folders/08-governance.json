@@ -1,0 +1,23 @@
+{
+  "$schema": "gtcx://canon-os/docs-folder-spec-item/v1",
+  "level": "L2",
+  "id": "08-governance",
+  "path": "docs/governance/",
+  "status": "current",
+  "updated": "2026-06-28",
+  "title": "Governance — fabric-os regulatory corpus (local override)",
+  "purpose": "fabric-os keeps a thin governance corpus for regulatory readiness artifacts (SOC2 etc.). Normative protocols/constitution remain in canon-os. Local override of canon 08-governance (which is constitution-standards hub only): scopes governance/ to fabric's regulatory child folder.",
+  "overrideOf": "canon-os/machine/spec/docs-folders/08-governance.json",
+  "structure": {
+    "mode": "closed",
+    "allowedChildFolders": ["regulatory"],
+    "allowlistNotes": {
+      "regulatory": "fabric-os regulatory readiness corpus (e.g. soc2-readiness-checklist.md). Normative governance stays in canon-os hub."
+    },
+    "forbiddenChildFolders": ["product", "business", "agents"]
+  },
+  "files": {
+    "mode": "closed",
+    "allowlist": ["README.md", "FOLDER-SPEC.md", "index.md"]
+  }
+}

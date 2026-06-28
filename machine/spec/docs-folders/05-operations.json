@@ -1,0 +1,68 @@
+{
+  "$schema": "gtcx://canon-os/docs-folder-spec-item/v1",
+  "level": "L2",
+  "id": "05-operations",
+  "path": "docs/operations/",
+  "status": "current",
+  "updated": "2026-06-28",
+  "title": "Operations — fleet ops taxonomy SoR (fabric-os local override)",
+  "purpose": "Operator and agent ops narrative. fabric-os is the fleet ops taxonomy reference impl. Local override of canon 05-operations: declares fabric's real ops service domains (daas, secas as fabric's actual services; core-ops, platform-services, fleet-ops-assurance, protocols, agents) and the two repo-local index files.",
+  "overrideOf": "canon-os/machine/spec/docs-folders/05-operations.json",
+  "structure": {
+    "mode": "closed",
+    "subfolderContract": "machine/spec/docs-operations-subfolder-contract.json",
+    "archiveFolder": "archive",
+    "allowedChildFolders": [
+      "runbooks",
+      "playbooks",
+      "incidents",
+      "on-call",
+      "agent-init",
+      "agents",
+      "deployment",
+      "remediation",
+      "coordination",
+      "repo",
+      "workspace",
+      "templates",
+      "monitoring",
+      "runtime",
+      "compliance",
+      "documentation",
+      "fleet",
+      "daas",
+      "secas",
+      "core-ops",
+      "platform-services",
+      "fleet-ops-assurance",
+      "protocols",
+      "archive"
+    ],
+    "allowlistNotes": {
+      "daas|secas": "DaaS and SECaaS are fabric-os's actual fabric services — real ops domains, not sprawl.",
+      "core-ops|platform-services": "fabric fleet ops zones (canon fabricOnlyChildFolders.zones).",
+      "fleet-ops-assurance|protocols|agents": "fabric fleet ops assurance program, protocol runbooks, and agent harness narrative (canonical home for docs/agents)."
+    },
+    "forbiddenChildFolders": [
+      "_archive",
+      "agent-spine",
+      "organization",
+      "sprints",
+      "agile",
+      "gtm",
+      "vendor-relations",
+      "specs"
+    ]
+  },
+  "files": {
+    "mode": "closed",
+    "allowlist": [
+      "README.md",
+      "scorecard.md",
+      "FOLDER-SPEC.md",
+      "deployment-profile.json",
+      "agent-work-selection.md",
+      "legalops-as-a-service.md"
+    ]
+  }
+}

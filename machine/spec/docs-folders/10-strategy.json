@@ -1,0 +1,32 @@
+{
+  "$schema": "gtcx://canon-os/docs-folder-spec-item/v1",
+  "level": "L2",
+  "id": "10-strategy",
+  "path": "docs/strategy/",
+  "status": "current",
+  "updated": "2026-06-28",
+  "layer": 2,
+  "title": "Strategy — 11-pillar flat primitive (fabric-os local override)",
+  "purpose": "How we win — pillar-derived strategic essays. Local override of canon 10-strategy: adds fabric-os's fleet-ops strategy hub index.",
+  "overrideOf": "canon-os/machine/spec/docs-folders/10-strategy.json",
+  "structure": { "mode": "flat", "allowedChildFolders": [], "forbiddenChildFolders": ["*"] },
+  "files": {
+    "mode": "closed",
+    "allowlist": [
+      "README.md",
+      "scorecard.md",
+      "fleet-ops-hub.md",
+      "market-thesis.md",
+      "competitive-position.md",
+      "customer-strategy.md",
+      "go-to-market.md",
+      "growth-strategy.md",
+      "global-south-strategy.md",
+      "value-and-proof.md",
+      "innovation-thesis.md",
+      "trust-and-compliance-strategy.md",
+      "technical-credibility.md"
+    ]
+  },
+  "primaryPillars": ["P7", "P8", "P4", "P6", "P10"]
+}

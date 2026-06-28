@@ -10,6 +10,36 @@
         "worldClass": 100,
         "trustAndSafety": 92
       }
+    },
+    {
+      "ts": "2026-06-28T23:49:27.363Z",
+      "metrics": {
+        "compliance": 69,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 92
+      }
+    },
+    {
+      "ts": "2026-06-28T23:49:30.837Z",
+      "metrics": {
+        "compliance": 69,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 92
+      }
+    },
+    {
+      "ts": "2026-06-28T23:49:34.562Z",
+      "metrics": {
+        "compliance": 69,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 92
+      }
     }
   ]
 }

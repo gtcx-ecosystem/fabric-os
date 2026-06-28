@@ -1,14 +1,14 @@
 {
   "schema": "gtcx://fabric-os/aaas-cadence-forecast/v1",
-  "snapshots": 1,
-  "intervalDays": null,
+  "snapshots": 4,
+  "intervalDays": 0,
   "metricCount": 5,
   "regressions": [],
   "forecasts": [],
   "metrics": {
     "compliance": {
       "current": 69,
-      "previous": null,
+      "previous": 69,
       "trend": "flat",
       "slopePerSnapshot": 0,
       "delta": 0,
@@ -19,7 +19,7 @@
     },
     "technicalExcellence": {
       "current": 100,
-      "previous": null,
+      "previous": 100,
       "trend": "flat",
       "slopePerSnapshot": 0,
       "delta": 0,
@@ -30,7 +30,7 @@
     },
     "craft": {
       "current": 100,
-      "previous": null,
+      "previous": 100,
       "trend": "flat",
       "slopePerSnapshot": 0,
       "delta": 0,
@@ -41,7 +41,7 @@
     },
     "worldClass": {
       "current": 100,
-      "previous": null,
+      "previous": 100,
       "trend": "flat",
       "slopePerSnapshot": 0,
       "delta": 0,
@@ -52,7 +52,7 @@
     },
     "trustAndSafety": {
       "current": 92,
-      "previous": null,
+      "previous": 92,
       "trend": "flat",
       "slopePerSnapshot": 0,
       "delta": 0,
@@ -63,6 +63,6 @@
     }
   },
   "ok": true,
-  "checkedAt": "2026-06-28T23:14:07.930Z",
+  "checkedAt": "2026-06-28T23:49:34.562Z",
   "repo": "fabric-os"
 }

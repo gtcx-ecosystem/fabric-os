@@ -1,0 +1,68 @@
+{
+  "schema": "gtcx://fabric-os/aaas-adversarial-honesty/v1",
+  "total": 5,
+  "upheldCount": 4,
+  "quarantinedCount": 1,
+  "quarantined": [
+    {
+      "id": "trustAndSafety",
+      "score": 92,
+      "threshold": 85,
+      "provisional": false,
+      "survives": false,
+      "quarantined": true,
+      "refutedBy": [
+        {
+          "challenge": "fabricated",
+          "detail": "score 92 with no leaf evidence"
+        }
+      ],
+      "provenance": "sha256:217d19e4962ea6af"
+    }
+  ],
+  "upheld": [
+    {
+      "id": "compliance",
+      "score": 69,
+      "threshold": 85,
+      "provisional": true,
+      "survives": true,
+      "quarantined": false,
+      "refutedBy": [],
+      "provenance": "sha256:225ab4f3e4bd2a1a"
+    },
+    {
+      "id": "technicalExcellence",
+      "score": 100,
+      "threshold": 85,
+      "provisional": true,
+      "survives": true,
+      "quarantined": false,
+      "refutedBy": [],
+      "provenance": "sha256:9f20c050ea8492f3"
+    },
+    {
+      "id": "craft",
+      "score": 100,
+      "threshold": 85,
+      "provisional": true,
+      "survives": true,
+      "quarantined": false,
+      "refutedBy": [],
+      "provenance": "sha256:b9c3501e3934b772"
+    },
+    {
+      "id": "worldClass",
+      "score": 100,
+      "threshold": 85,
+      "provisional": true,
+      "survives": true,
+      "quarantined": false,
+      "refutedBy": [],
+      "provenance": "sha256:6dba0cd236f76c41"
+    }
+  ],
+  "ok": false,
+  "repo": "fabric-os",
+  "checkedAt": "2026-06-28T23:49:22.625Z"
+}

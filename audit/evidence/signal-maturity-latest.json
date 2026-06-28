@@ -2,10 +2,10 @@
   "schema": "gtcx://baseline-os/signal-maturity/v1",
   "lens": "SIGNAL",
   "repo": "fabric-os",
-  "checkedAt": "2026-06-28T23:40:16.238Z",
-  "overall": 4,
-  "overallLabel": "L4",
-  "weakestLink": "Safeguards",
+  "checkedAt": "2026-06-28T23:49:34.613Z",
+  "overall": 5,
+  "overallLabel": "L5",
+  "weakestLink": "Systems Architecture",
   "rule": "weakest-link · production-only",
   "dimensions": [
     {
@@ -55,52 +55,49 @@
     },
     {
       "dimension": "Safeguards",
-      "level": 4,
-      "label": "L4",
+      "level": 5,
+      "label": "L5",
       "evidence": [
         "L1: gate/check tooling",
         "L2: honesty gate",
         "L3: adversarial honesty",
-        "L4: commit gates (husky/settlement)"
-      ],
-      "gaps": [
+        "L4: commit gates (husky/settlement)",
         "L5: signed provenance in witnesses"
       ],
-      "primaryBlocker": "L5: signed provenance in witnesses",
-      "gapToNext": "advance to L5"
+      "gaps": [],
+      "primaryBlocker": null,
+      "gapToNext": "at ceiling"
     },
     {
       "dimension": "Monitoring",
-      "level": 4,
-      "label": "L4",
+      "level": 5,
+      "label": "L5",
       "evidence": [
         "L1: evidence witnesses",
         "L2: cadence witness",
         "L3: witness freshness (<=7d)",
-        "L4: predictive forecast"
-      ],
-      "gaps": [
+        "L4: predictive forecast",
         "L5: trend history (>=3 snapshots)"
       ],
-      "primaryBlocker": "L5: trend history (>=3 snapshots)",
-      "gapToNext": "advance to L5"
+      "gaps": [],
+      "primaryBlocker": null,
+      "gapToNext": "at ceiling"
     },
     {
       "dimension": "Team & Ownership",
-      "level": 4,
-      "label": "L4",
+      "level": 5,
+      "label": "L5",
       "evidence": [
         "L1: agent instructions (CLAUDE/AGENTS.md)",
         "L2: contract pin (ownership binding)",
         "L3: ownership codified in contract",
-        "L4: coordination docs (P24)"
-      ],
-      "gaps": [
+        "L4: coordination docs (P24)",
         "L5: ownership check witness"
       ],
-      "primaryBlocker": "L5: ownership check witness",
-      "gapToNext": "advance to L5"
+      "gaps": [],
+      "primaryBlocker": null,
+      "gapToNext": "at ceiling"
     }
   ],
-  "primaryBlocker": "L5: signed provenance in witnesses"
+  "primaryBlocker": null
 }

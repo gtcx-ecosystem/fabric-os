@@ -3,15 +3,15 @@
   "maxAgeDays": 3,
   "counts": {
     "total": 5,
-    "fresh": 4,
+    "fresh": 3,
     "stale": 1,
-    "unknown": 0
+    "unknown": 1
   },
-  "oldestAgeDays": 5,
+  "oldestAgeDays": 6,
   "stale": ["five-pillar"],
-  "unknown": [],
-  "fresh": ["aaas-friction-check", "aaas-honesty-gate", "composite-audit", "master-audit"],
+  "unknown": ["master-audit"],
+  "fresh": ["aaas-friction-check", "aaas-honesty-gate", "composite-audit"],
   "ok": false,
-  "checkedAt": "2026-06-27T20:38:47.084Z",
+  "checkedAt": "2026-06-28T23:49:34.562Z",
   "repo": "fabric-os"
 }

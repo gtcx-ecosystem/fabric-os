@@ -1,0 +1,32 @@
+{
+  "schema": "gtcx://fabric-os/aaas-ship-gates-monitor/v1",
+  "provider": "fabric-os",
+  "layer": "feature (layer-1 of three-layer ship-gates model)",
+  "note": "Fleet coverage monitor only. Per-repo witness is product-repo-owned (pm:feature-matrix:sync). No verdicts fabricated.",
+  "checkedAt": "2026-06-28T20:29:37.030Z",
+  "total": 20,
+  "present": 1,
+  "fresh": 1,
+  "coveragePct": 5,
+  "missing": [
+    "fabric-os",
+    "bridge-os",
+    "canon-os",
+    "baseline-os",
+    "agile-os",
+    "ecosystem-os",
+    "markets-os",
+    "terra-os",
+    "sensei-os",
+    "griot-ai",
+    "nyota-ai",
+    "veritas-ai",
+    "venture-os",
+    "ledger-os",
+    "ledger-ui",
+    "inspection-os",
+    "terminal-os",
+    "exploration-os",
+    "compliance-os"
+  ]
+}

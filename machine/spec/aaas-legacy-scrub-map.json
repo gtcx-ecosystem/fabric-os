@@ -1,0 +1,106 @@
+{
+  "$schema": "gtcx://fabric-os/aaas-legacy-scrub-map/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-28",
+  "provider": "fabric-os",
+  "principle": "Classifies every legacy audit-witness + report type against the canonical MPR taxonomy. KEEP = canonical (a pillar witness, the composite/fractal rollup, or an AaaS-lane artifact). ARCHIVE = drift/superseded/dated-one-off → moved to audit/archive/legacy-scrub-2026-06-28/ per repo (recoverable). Staleness is refreshed by cadence, NOT scrubbed.",
+  "scrubDestination": "audit/archive/legacy-scrub-2026-06-28/",
+  "keep": {
+    "mpr-composite-rollup": ["mpr-repo", "five-pillar"],
+    "mpr-fractal-layers": [
+      "mpr-foundation-layer",
+      "mpr-business-layer",
+      "mpr-architecture-layer",
+      "mpr-product-layer",
+      "mpr-operations-layer",
+      "mpr-engineering-layer",
+      "mpr-canon-layer",
+      "mpr-strategy-layer",
+      "mpr-roadmap-layer",
+      "mpr-research-layer",
+      "mpr-publishing-layer",
+      "mpr-agile-layer",
+      "mpr-agents-layer"
+    ],
+    "foundation-pillar-witnesses": [
+      "compliance-pillar",
+      "technical-excellence-pillar",
+      "craft-pillar",
+      "world-class-pillar",
+      "trust-safety-pillar",
+      "compliance-rubric"
+    ],
+    "aaas-lane": [
+      "aaas-honesty-gate",
+      "aaas-honesty-coverage",
+      "aaas-friction-check",
+      "aaas-cadence",
+      "aaas-contract-check"
+    ],
+    "fleet-diagnostics": ["fleet-diagnostic-snapshot"]
+  },
+  "archive": {
+    "superseded-five-core": {
+      "types": [
+        "composite-audit",
+        "master-audit",
+        "product-excellence-audit",
+        "production-grade-audit",
+        "agentic-innovation-audit",
+        "repo-hygiene-audit",
+        "compliance-security-audit",
+        "documentation-audit"
+      ],
+      "reason": "Five-core (A1–A5) model superseded by the 11-pillar MPR taxonomy; content maps to pillar witnesses."
+    },
+    "gtm-variant-bloat": {
+      "types": [
+        "gtm-readiness-check",
+        "gtm-status-report",
+        "gtm-progress-report",
+        "gtm-goal-report"
+      ],
+      "reason": "Consolidate to commercialValue.gtm-readiness (one witness)."
+    },
+    "forensic-scratch": {
+      "types": ["forensic-parse", "forensic-ai", "session-open-items-forensic"],
+      "reason": "Per-run forensic scratch; not a standing audit witness."
+    },
+    "docs-hygiene-fragments": {
+      "types": [
+        "documentation-pack",
+        "documentation-links",
+        "docs-tree",
+        "docs-root-contract",
+        "docs-ia",
+        "docs-foundation",
+        "docs-six-pack",
+        "docs-root",
+        "docs-folder-provisioning",
+        "repo-provision",
+        "ux-sor"
+      ],
+      "reason": "Fold into worldClass.docs-hygiene + the closed-specs provisioning gate; many overlapping fragments."
+    },
+    "legacy-reports": {
+      "types": [
+        "no-bullshit-gtm-full-audit",
+        "fresh-platform-audit",
+        "institutional-readiness-audit-notes",
+        "platform-uplift-actions-under-8-5",
+        "readiness-model",
+        "signal-assessment",
+        "ux-full-audit",
+        "ux-tasks",
+        "ux-roadmap",
+        "REVIEW-RESP"
+      ],
+      "reason": "One-off/dated narrative reports superseded by the canonical tier reports + mpr-scorecard + remediation-roadmap."
+    }
+  },
+  "execution": {
+    "mode": "non-destructive",
+    "perRepo": "move ARCHIVE-class witnesses (audit/evidence/<type>-latest.json + dated siblings) and reports into audit/archive/legacy-scrub-2026-06-28/, commit (batched under gates), do not push until reviewed.",
+    "rebuild": "after scrub, run aaas:registry:build + aaas:contract:check to confirm the fleet reduces to the canonical set."
+  }
+}

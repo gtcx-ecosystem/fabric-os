@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "0.1.0",
+  "repo": "fabric-os",
+  "canonicalSource": "canon-os/docs/primitives",
+  "defaultGenerator": "ChatGPT image generation",
+  "localDocs": {
+    "assetsPrimitive": "docs/primitives/assets/README.md",
+    "imagesTrack": "docs/primitives/assets/images.md",
+    "designPrimitive": "docs/primitives/design/README.md"
+  },
+  "localManifest": "machine/media/library.manifest.json",
+  "storagePrefix": "platform/assets/generated/media/images/",
+  "status": "pilot"
+}

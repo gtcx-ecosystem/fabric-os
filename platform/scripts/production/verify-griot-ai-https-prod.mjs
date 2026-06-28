@@ -19,7 +19,7 @@ import { execSync } from 'node:child_process';
 const WRITE = process.argv.includes('--write');
 const ROOT = process.cwd();
 const LOCAL_WITNESS = join(ROOT, 'audit/evidence/griot-ai-https-prod-verify-latest.json');
-const HUB_WITNESS = join(ROOT, '../bridge-os/pm/ci/fabric-os-blocker-fprod06-latest.json');
+const HUB_WITNESS = join(ROOT, '../bridge-os/machine/ci/fabric-os-blocker-fprod06-latest.json');
 
 const HTTPS_URL = 'https://griot.gtcx.trade/health';
 const HTTP_URL = 'http://griot.gtcx.trade/health';

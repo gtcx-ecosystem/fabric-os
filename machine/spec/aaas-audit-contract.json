@@ -31,9 +31,10 @@
     "reportCadence": "on-change-or-monthly"
   },
   "auditProfiles": {
-    "product": ["mpr", "composite", "honesty", "five-pillar"],
-    "platform": ["mpr", "composite", "honesty"],
-    "hub": ["mpr", "composite", "honesty", "docs-canon"]
+    "_note": "Required witness TYPES (matched by prefix against audit/evidence/<type>-latest.json). Reconciled to the 11-pillar taxonomy: mpr-repo is the composite the bridge-os engine emits (carries all pillars); aaas-honesty-gate is the anti-superficiality witness. Legacy five-pillar/composite/docs-canon retired.",
+    "product": ["mpr-repo", "aaas-honesty-gate"],
+    "platform": ["mpr-repo", "aaas-honesty-gate"],
+    "hub": ["mpr-repo", "aaas-honesty-gate"]
   },
   "witnessSchemas": {
     "mpr": "gtcx://baseline-os/multi-pillar-repo-extension/v1",

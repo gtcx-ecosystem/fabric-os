@@ -209,12 +209,13 @@
       "type": "content",
       "class": "R",
       "priority": "P2",
-      "status": "needs_owner_repo_action",
+      "status": "recipe_applied_partial",
       "infrastructureReady": true,
-      "operatorStep": "ledger-os must raise MPR foundation score to >=85 (currently 19). Address foundation content gaps. fabric-os assurance framework is ready.",
+      "operatorStep": "69-cluster recipe applied: foundation lifted to 73. Residual: compliance 69 PROV cluster gate (below 85).",
       "verificationCommand": "node ../bridge-os/platform/scripts/ecosystem/run-mpr-repo-audit.mjs --repo ledger-os --write",
       "evidencePath": "../ledger-os/audit/evidence/mpr-repo-latest.json",
-      "blocksIR": false
+      "blocksIR": false,
+      "foundationScore": 73
     },
     {
       "id": "FB-013",
@@ -224,12 +225,13 @@
       "type": "content",
       "class": "R",
       "priority": "P2",
-      "status": "needs_owner_repo_action",
+      "status": "recipe_applied_partial",
       "infrastructureReady": true,
-      "operatorStep": "inspection-os must raise MPR foundation score to >=85 (currently 18). Address foundation content gaps. fabric-os assurance framework is ready.",
+      "operatorStep": "69-cluster recipe applied: foundation lifted to 77. Residual: compliance 69 PROV cluster gate (below 85).",
       "verificationCommand": "node ../bridge-os/platform/scripts/ecosystem/run-mpr-repo-audit.mjs --repo inspection-os --write",
       "evidencePath": "../inspection-os/audit/evidence/mpr-repo-latest.json",
-      "blocksIR": false
+      "blocksIR": false,
+      "foundationScore": 77
     },
     {
       "id": "FB-014",

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gtcx://baseline-os/kaleidoscope-ai/graph-config.schema/v1",
+  "title": "Split graph config contract",
+  "type": "object",
+  "required": ["$schema", "repo", "entities", "relations", "evidencePaths", "exclude"],
+  "properties": {
+    "$schema": { "const": "gtcx://ecosystem-os/graph-config/v1" },
+    "repo": { "type": "string" },
+    "entities": { "type": "array" },
+    "relations": { "type": "array" },
+    "evidencePaths": { "type": "array" },
+    "exclude": { "type": "array" }
+  },
+  "additionalProperties": true
+}

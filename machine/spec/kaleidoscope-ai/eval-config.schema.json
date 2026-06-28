@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gtcx://baseline-os/kaleidoscope-ai/eval-config.schema/v1",
+  "title": "Split eval config contract",
+  "type": "object",
+  "required": ["$schema", "repo", "goldenSets", "qualityGates", "releaseGates"],
+  "properties": {
+    "$schema": { "const": "gtcx://ecosystem-os/eval-config/v1" },
+    "repo": { "type": "string" },
+    "goldenSets": { "type": "array" },
+    "qualityGates": { "type": "array" },
+    "releaseGates": { "type": "array" }
+  },
+  "additionalProperties": true
+}

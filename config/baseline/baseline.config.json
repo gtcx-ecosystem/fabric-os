@@ -1,0 +1,8 @@
+{
+  "$schema": "gtcx://baseline-os/config/v1",
+  "organization": {
+    "name": "GTCX",
+    "voice": "professional and clear",
+    "formality": "neutral"
+  }
+}

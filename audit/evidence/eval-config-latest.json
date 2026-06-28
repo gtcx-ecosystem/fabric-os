@@ -1,0 +1,9 @@
+{
+  "schema": "gtcx://fabric-os/eval-config-check/v1",
+  "generatedAt": "2026-06-28T18:26:13.712Z",
+  "repo": "fabric-os",
+  "kind": "eval",
+  "ok": true,
+  "config": "config/baseline/eval.config.json",
+  "issues": []
+}

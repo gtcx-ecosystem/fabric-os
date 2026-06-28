@@ -129,7 +129,7 @@ export function evaluateHonesty({ registry, coverage, composite = {}, opts = {} 
   const witness = {
     schema: 'gtcx://fabric-os/aaas-honesty-gate/v1',
     worstVerifiedFinding,
-    repo: registry?.productId ?? 'fabric-os',
+    repo: registry?.productId ?? opts.repo ?? 'fabric-os',
     owner: 'fabric-os',
     checkedAt: opts.now ?? new Date().toISOString(),
     registry: {
@@ -165,10 +165,13 @@ function resolveFirst(root, rels) {
 }
 
 function main() {
-  const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
+  const SELF = join(dirname(fileURLToPath(import.meta.url)), '../..');
   const WRITE = process.argv.includes('--write');
   const JSON_OUT = process.argv.includes('--json');
   const strictRegistry = process.argv.includes('--strict-registry');
+  const repoArg = process.argv.includes('--repo') ? process.argv[process.argv.indexOf('--repo') + 1] : null;
+  // --repo runs the gate against a sibling repo; default is this repo (fabric-os).
+  const ROOT = repoArg ? join(SELF, '..', repoArg) : SELF;
 
   const registryPath = resolveFirst(ROOT, ['machine/canon/registry.json', 'pm/canon/registry.json']);
   const coveragePath = join(ROOT, 'audit/evidence/aaas-honesty-coverage.json');
@@ -183,7 +186,7 @@ function main() {
     registry,
     coverage,
     composite,
-    opts: { strictRegistry },
+    opts: { strictRegistry, repo: repoArg ?? undefined },
   });
 
   if (WRITE) {

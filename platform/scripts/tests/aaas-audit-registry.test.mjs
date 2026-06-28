@@ -49,30 +49,41 @@ describe('aaas-audit-registry · summarizeRepoAudit', () => {
 describe('aaas-audit-registry · evaluateConformance', () => {
   const contract = {
     obligations: { repo: { requiredFolders: ['audit/evidence', 'audit/reports', 'reports'] } },
-    auditProfiles: { product: ['mpr', 'composite', 'honesty'] },
+    auditProfiles: { product: ['mpr-repo', 'aaas-honesty-gate'] },
   };
-  it('passes a fully conformant repo', () => {
+  it('passes a fully conformant repo (and ignores legacy stale witnesses)', () => {
     const r = evaluateConformance({
       binding: { repo: 'p', auditProfile: 'product' },
       contract,
       presentFolders: ['audit/evidence', 'audit/reports', 'reports'],
-      repoState: { types: ['mpr-repo', 'composite-audit', 'aaas-honesty-gate'], staleCount: 0 },
+      repoState: {
+        entries: [
+          { type: 'mpr-repo', stale: false },
+          { type: 'aaas-honesty-gate', stale: false },
+          // legacy drift that is stale — must NOT break conformance
+          { type: 'gtm-audit', stale: true },
+          { type: 'forensic-audit', stale: true },
+        ],
+        staleCount: 2,
+      },
       hasPin: true,
     });
     assert.equal(r.ok, true);
+    assert.equal(r.staleWitnesses, 0); // only required witnesses counted
+    assert.equal(r.legacyStale, 2); // legacy drift surfaced separately, non-gating
   });
-  it('fails on missing folder, missing audit type, staleness, or no pin', () => {
+  it('fails on missing folder, missing required audit, stale required witness, or no pin', () => {
     const r = evaluateConformance({
       binding: { repo: 'p', auditProfile: 'product' },
       contract,
       presentFolders: ['audit/evidence'],
-      repoState: { types: ['mpr-repo'], staleCount: 1 },
+      repoState: { entries: [{ type: 'mpr-repo', stale: true }], staleCount: 1 },
       hasPin: false,
     });
     assert.equal(r.ok, false);
     assert.deepEqual(r.missingFolders, ['audit/reports', 'reports']);
-    assert.deepEqual(r.missingAudits.sort(), ['composite', 'honesty']);
-    assert.equal(r.staleWitnesses, 1);
+    assert.deepEqual(r.missingAudits.sort(), ['aaas-honesty-gate']);
+    assert.equal(r.staleWitnesses, 1); // the required mpr-repo witness is stale
     assert.equal(r.hasPin, false);
   });
 });

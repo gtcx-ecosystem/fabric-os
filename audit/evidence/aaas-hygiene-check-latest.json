@@ -1,0 +1,14 @@
+{
+  "schema": "gtcx://fabric-os/aaas-hygiene-check/v1",
+  "provider": "fabric-os",
+  "checkedAt": "2026-06-28T17:48:19.897Z",
+  "delegatesTo": "canon-os/platform/scripts/fleet-docs-folder-hygiene-check.mjs",
+  "clean": 19,
+  "total": 20,
+  "drift": [
+    {
+      "repo": "bridge-os",
+      "score": "14/15"
+    }
+  ]
+}

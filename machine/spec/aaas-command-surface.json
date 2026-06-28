@@ -1,0 +1,125 @@
+{
+  "$schema": "gtcx://fabric-os/aaas-command-surface/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-28",
+  "provider": "fabric-os",
+  "principle": "ONE canonical command surface for the whole fleet. Every legacy audit/report command, slash-command, and registry entry maps to exactly one of these or is retired. fabric-os orchestrates; bridge-os MPR engine scores; canon-os holds coverage. No parallel command vocabularies.",
+  "canonicalCommands": {
+    "aaas:audit": "node platform/scripts/aaas-audit.mjs [--repo <r>] --pillar <p> [--micro <m>] [--tier foundational|transformational] [--all] [--write]  — BUILT. delegates scoring to bridge-os MPR engine, presents taxonomy slice",
+    "aaas:report": "node platform/scripts/aaas-report.mjs <umbrella> [--repo <r>] [--write]  — BUILT. foundational-readiness | transformational-readiness | mpr-scorecard | remediation-roadmap (rolls up engine witnesses)",
+    "aaas:provision": "node platform/scripts/aaas-provision.mjs [--write]  — BUILT. ensure contract folders + thin pin per repo",
+    "aaas:registry:build": "fleet audit state SoR (built)",
+    "aaas:contract:check": "contract obligations vs state (built)",
+    "aaas:cadence": "freshness heartbeat (built)",
+    "aaas:honesty:check": "coverage/honesty gate (built)",
+    "aaas:scrub": "node platform/scripts/aaas-scrub.mjs  — execute aaas-legacy-scrub-map (archive non-canonical)"
+  },
+  "engine": {
+    "owner": "bridge-os",
+    "entrypoint": "audit:mpr:repo:run (--repo <r>)",
+    "note": "The single scoring engine aaas:audit delegates to. Five-core runner (audit:five-core:run) is RETIRED — superseded by the 11-pillar MPR."
+  },
+  "legacyCommandMap": {
+    "technicalExcellence": [
+      "api-audit",
+      "arch-audit",
+      "deps-audit",
+      "test-audit",
+      "code-quality",
+      "engineering-audit"
+    ],
+    "compliance": [
+      "security-audit",
+      "compliance-audit",
+      "bank-grade-audit",
+      "global-compliance-audit",
+      "external-audit",
+      "compliance-security-audit"
+    ],
+    "worldClass": [
+      "ux-audit",
+      "ux-full",
+      "ux-tasks",
+      "ux-roadmap",
+      "design-check",
+      "spec-drift",
+      "hygiene",
+      "repo-hygiene",
+      "doc-standard",
+      "docs-machine-readable"
+    ],
+    "commercialValue": ["gtm-audit", "sales-audit", "partnership-audit", "gtm"],
+    "defensiveMoat": ["moat-check"],
+    "agenticEmpowerment": ["signal-audit", "signal-full", "signal-roadmap", "signal-tasks"],
+    "production": ["deployment-audit", "prod-readiness", "production-grade-audit"],
+    "trustAndSafety": ["verification-audit"],
+    "mpr-composite (rollup) → aaas:audit --all": [
+      "forensic-audit",
+      "master-audit",
+      "full-audit",
+      "comprehensive-audit",
+      "engineering-audit",
+      "product-excellence-audit",
+      "agentic-innovation-audit"
+    ],
+    "RETIRE (drift/duplicate)": [
+      "five-core:run",
+      "gtm-readiness-check",
+      "gtm-status-report",
+      "gtm-progress-report",
+      "gtm-goal-report",
+      "fresh-platform-audit",
+      "no-bullshit-gtm-full-audit"
+    ]
+  },
+  "scrubFronts": {
+    "1-files": {
+      "owner": "fabric-os(orchestrate)/each-repo",
+      "spec": "aaas-legacy-scrub-map.json",
+      "risk": "low"
+    },
+    "2-registries": {
+      "owner": "canon-os + bridge-os (SoR)",
+      "targets": [
+        "canon-os/platform/tools/audit/audit-framework/commands.json",
+        "canon-os/platform/tools/audit/audit-engine/{catalog,checks,dimensions,frameworks}.json",
+        "bridge-os/platform/tools/audit-framework/commands.json",
+        "bridge-os/audit/FIVE-CORE-AUDITS.md"
+      ],
+      "risk": "high",
+      "via": "P24 handoff"
+    },
+    "3-pnpm-scripts": {
+      "owner": "each-repo",
+      "action": "retire legacy audit/* scripts; keep aaas:* + audit:mpr:repo:run",
+      "risk": "med"
+    },
+    "4-slash-commands": {
+      "owner": "~/.claude/commands",
+      "action": "consolidate ~21 audit-*.md to the canonical surface (or retire)",
+      "risk": "med"
+    },
+    "5-agent-llm-files": {
+      "owner": "each-repo",
+      "targets": ["AGENTS.md", "CLAUDE.md", "GEMINI.md", ".kimi/AGENTS.md", ".cursor/*"],
+      "action": "remove legacy audit command refs; point to aaas:* surface",
+      "risk": "high"
+    }
+  },
+  "executionOrder": [
+    "lock-command-surface (this)",
+    "reconcile-registries(2)",
+    "retire-scripts(3)+slash(4)",
+    "scrub-agent-files(5)",
+    "archive-files(1)",
+    "rebuild registry+contract-check to confirm"
+  ],
+  "scrubProgress": {
+    "updated": "2026-06-28",
+    "1-files": "ready — aaas:scrub built, dry-run 571 files; gated on front 2 (else regenerates)",
+    "2-registries": "handed off — XR-AUDIT-COMMAND-RECONCILE-001 to canon-os+bridge-os (P24, awaiting ack)",
+    "3-pnpm-scripts": "DONE (finding: near no-op) — fleet scan shows audit:* scripts are legitimate: baseline-os mpr/apex/nitro/dojo are the engine + product layer-seals; pm-reconcile/latest:sync/prune-dated are PM machinery; gtcx-os audit:* is product instrumentation. Only drift = five-core, owned by bridge-os (front 2). Dangling five-core refs to sweep after engine retires: ledger-os five-core:check, sensei-os ecosystem:five-core-audits:check (folded into XR-AUDIT-COMMAND-RECONCILE-001).",
+    "4-slash-commands": "DONE — 37 legacy audit commands archived to ~/.claude/commands-archive/legacy-audit-scrub-2026-06-28/; canonical aaas-audit + aaas-report installed",
+    "5-agent-llm-files": "PRODUCER FIXED — agent files are autogenerated from bridge-os sync partial templates/.agent/audit-pointer.md; partial repointed to canonical AaaS surface + committed in bridge-os. Fleet regeneration (distribute + agent-sync rollout) handed to bridge-os (XR-AUDIT-COMMAND-RECONCILE-001). Direct edits to generated regions are wrong (DO-NOT-EDIT markers)."
+  }
+}

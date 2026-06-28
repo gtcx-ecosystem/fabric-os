@@ -73,12 +73,20 @@ export function evaluateConformance({ binding, contract, presentFolders, repoSta
 
   const profile = binding?.auditProfile;
   const requiredAudits = contract?.auditProfiles?.[profile] ?? [];
-  const presentTypes = new Set(repoState?.types ?? []);
+  const entries = repoState?.entries ?? [];
+  const matches = (type, req) => type.includes(req);
   const missingAudits = requiredAudits.filter(
-    (t) => ![...presentTypes].some((pt) => pt.includes(t)),
+    (req) => !entries.some((e) => matches(e.type, req)),
   );
 
-  const stale = repoState?.staleCount ?? 0;
+  // Conformance freshness is gated ONLY on the contract's required witnesses —
+  // not on every -latest.json in the dir. Legacy/uncanonical witnesses are a
+  // scrub/hygiene concern (aaas-scrub), never a conformance signal. Without this
+  // the stale count is dominated by drift the contract never asked for.
+  const requiredEntries = entries.filter((e) =>
+    requiredAudits.some((req) => matches(e.type, req)),
+  );
+  const stale = requiredEntries.filter((e) => e.stale).length;
   const ok = missingFolders.length === 0 && missingAudits.length === 0 && stale === 0 && !!hasPin;
   return {
     repo: binding?.repo,
@@ -88,5 +96,6 @@ export function evaluateConformance({ binding, contract, presentFolders, repoSta
     missingFolders,
     missingAudits,
     staleWitnesses: stale,
+    legacyStale: repoState?.staleCount ?? 0,
   };
 }

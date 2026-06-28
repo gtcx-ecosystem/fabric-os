@@ -1,16 +1,170 @@
 {
   "$schema": "gtcx://fabric-os/aaas-audit-contract/v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-06-28",
   "provider": "fabric-os",
   "service": "AAAS",
   "title": "Audit-as-a-Service contract — fabric-os ↔ repo",
   "principle": "fabric-os centralizes audit/report management. Each repo provides a conformant audit/ + reports/ tree; fabric-os indexes fleet state, enforces freshness + honesty coverage, and owns ecosystem rollups. Engine (rubric/runners) stays in bridge-os; coverage denominator stays in canon-os.",
+  "designDoc": "machine/spec/aaas-framework-design-2026-06-28.md",
+  "vocabulary": {
+    "principle": "Four distinct artifact types — never conflate them. The AUDIT finds what's wrong (assessment); the HANDOFF says what to do next (directive); you REMEDIATE; the REPORT records what you did; EVIDENCE proves it happened.",
+    "audit": {
+      "is": "the assessment / evaluation against the standard — what the state is, what is wrong, how it scores",
+      "answers": "what is the state, what's wrong, how does it score",
+      "folder": "audit/reports/ (dated assessment write-ups) + audit/evidence/ (the proof behind the scores)"
+    },
+    "handoff": {
+      "is": "the directive / work-order — the prioritized list of what to do next, synthesized from both lenses (SIGNAL weakest-link first, then MPR threshold gaps by leverage)",
+      "answers": "what should I do next, in what order, and how will I know it's done",
+      "folder": "audit/handoff/ (dated work-orders; each action: closes <finding> · gate <threshold/level> · owner · evidence-to-produce)"
+    },
+    "report": {
+      "is": "the remediation record — what you actually DID about the audit findings, before -> after, outcome",
+      "answers": "what we did about it, the result",
+      "folder": "reports/ (dated remediation reports — each cites the evidence proving the work)"
+    },
+    "evidence": {
+      "is": "proof / verification of audit, handoff, and report — machine artifacts that show the assessment is real and the remediation actually happened",
+      "answers": "prove the audit is real and the remediation happened",
+      "folder": "audit/evidence/ (witnesses, probe outputs, before/after — current-only, machine)"
+    }
+  },
+  "lenses": {
+    "principle": "Two complementary assessment lenses, NOT merged — coexisting views. Both shape this framework and are applied when running audits + giving remediation feedback.",
+    "mpr": {
+      "measures": "readiness breadth",
+      "shape": "11 pillars x score 0-100; foundational + transformational tiers; thresholds 85 unlock / 95 world-class",
+      "owner": "bridge-os",
+      "witness": "audit/evidence/mpr-repo-latest.json"
+    },
+    "signal": {
+      "measures": "agentic maturity depth",
+      "shape": "6 dimensions x level L0-L5; weakest-link = overall; production-only scoring; half-levels",
+      "dimensions": [
+        "Systems Architecture",
+        "Tooling",
+        "Process",
+        "Safeguards",
+        "Monitoring",
+        "Team & Ownership"
+      ],
+      "owner": "baseline-os",
+      "witness": "audit/evidence/signal-maturity-latest.json",
+      "blockedOn": "XR-AGENT-CAPABILITY-OWNERSHIP-001 (SIGNAL evaluator to be built in baseline-os)"
+    },
+    "crossMap": {
+      "Systems Architecture": ["technicalExcellence", "productEcosystemIntegration"],
+      "Tooling": ["technicalExcellence", "agenticEmpowerment"],
+      "Process": ["craft", "worldClass"],
+      "Safeguards": ["compliance", "trustAndSafety"],
+      "Monitoring": ["trustAndSafety"],
+      "Team & Ownership": ["craft", "commercialValue"]
+    }
+  },
+  "lifecycle": {
+    "principle": "A loop designed to close on itself. At L3 a human kicks each step; at L5 an agent runs it unattended, human approval only at authority Class A/S.",
+    "steps": [
+      {
+        "step": 1,
+        "name": "audit",
+        "owner": "fabric-os",
+        "produces": ["audit/evidence/*-latest.json", "audit/reports/*.md"],
+        "command": "aaas:audit --lens all --repo <r>"
+      },
+      {
+        "step": 2,
+        "name": "handoff",
+        "owner": "fabric-os",
+        "produces": ["audit/handoff/handoff-YYYY-MM-DD.md"],
+        "command": "aaas:handoff --repo <r>"
+      },
+      {
+        "step": 3,
+        "name": "remediate",
+        "owner": "agent (Class R) or repo owner (Class A/S)",
+        "produces": ["code/docs/config change"]
+      },
+      {
+        "step": 4,
+        "name": "report",
+        "owner": "repo",
+        "produces": ["reports/<action>-YYYY-MM-DD.md"],
+        "command": "aaas:report:remediation"
+      },
+      {
+        "step": 5,
+        "name": "re-verify",
+        "owner": "fabric-os",
+        "produces": ["fresh audit/evidence/*-latest.json"],
+        "command": "aaas:audit --repo <r>",
+        "note": "handoff item auto-closes when its gate clears"
+      },
+      {
+        "step": 6,
+        "name": "cadence",
+        "owner": "fabric-os",
+        "produces": ["audit/evidence/aaas-cadence-latest.json"],
+        "command": "aaas:cadence",
+        "note": "drift/forecast; reopens regressed items"
+      }
+    ]
+  },
+  "maturityModel": {
+    "ceiling": "SIGNAL L5 across all 6 dimensions / MPR 95+ across all 11 pillars",
+    "signalLevels": ["L0", "L1", "L2", "L3", "L4", "L5"],
+    "signalOverall": "weakest-link (lowest dimension)",
+    "mprThresholds": { "unlock": 85, "worldClass": 95 },
+    "l5Additions": [
+      "closed-loop autonomy — agents run the loop unattended (Tooling/Process L5, agenticEmpowerment 95)",
+      "predictive monitoring — trend lines, drift detection, breach forecast (Monitoring L5)",
+      "adversarial honesty — red-team lens refutes every verdict + signed provenance (Safeguards L5, trustAndSafety 95)",
+      "enforced ownership — CODEOWNERS-style binding + SLA + escalation (Team & Ownership L5)"
+    ]
+  },
+  "namingConventions": {
+    "auditAssessment": "audit/reports/<audit-type>-YYYY-MM-DD.md",
+    "handoffDirective": "audit/handoff/handoff-YYYY-MM-DD.md",
+    "remediationReport": "reports/<action>-YYYY-MM-DD.md",
+    "evidenceWitness": "audit/evidence/<witness-type>-latest.json",
+    "archive": "audit/archive/<group>-YYYY-MM-DD/"
+  },
+  "ownership": {
+    "principle": "L5 Team & Ownership (§4c.4): every artifact + handoff item has a codified owner, SLA, and escalation path — machine-checkable via aaas:honesty:ownership, not a doc convention. An artifact past its SLA escalates; a handoff item with no owner is a contract violation.",
+    "artifacts": {
+      "audit/evidence": {
+        "owner": "fabric-os",
+        "slaDays": 7,
+        "escalation": "P24 -> bridge-os (engine)"
+      },
+      "audit/reports": {
+        "owner": "fabric-os",
+        "slaDays": 7,
+        "escalation": "P24 -> bridge-os (engine)"
+      },
+      "audit/handoff": { "owner": "fabric-os", "slaDays": 7, "escalation": "P24 -> repo owner" },
+      "reports": { "owner": "repo", "slaDays": 30, "escalation": "P24 -> repo owner" },
+      "audit/archive": { "owner": "fabric-os", "slaDays": 365, "escalation": "none (cold storage)" }
+    },
+    "handoffItem": {
+      "ownerField": "owner",
+      "slaDays": 14,
+      "escalation": "P24 to the named owner; unowned item = contract violation"
+    }
+  },
   "obligations": {
     "repo": {
-      "requiredFolders": ["audit/evidence", "audit/reports", "audit/archive", "reports"],
-      "witnessNaming": "audit/evidence/<witness>-latest.json (machine, current-only)",
-      "reportNaming": "audit/reports/<audit-type>-YYYY-MM-DD.md (dated human reports)",
+      "requiredFolders": [
+        "audit/evidence",
+        "audit/reports",
+        "audit/handoff",
+        "audit/archive",
+        "reports"
+      ],
+      "auditAssessment": "audit/reports/<audit-type>-YYYY-MM-DD.md (dated assessment / evaluation write-up)",
+      "handoffDirective": "audit/handoff/handoff-YYYY-MM-DD.md (dated work-order; synthesized from both lenses; each action cites finding/gate/owner/evidence)",
+      "remediationReport": "reports/<action>-YYYY-MM-DD.md (dated record of what was DONE; cites evidence)",
+      "evidenceProof": "audit/evidence/<witness>-latest.json (machine proof, current-only — verifies audit + report)",
       "noDatedSiblingsIn": "audit/evidence (dated snapshots live in audit/archive/)",
       "coverageWitness": "audit/evidence/aaas-honesty-coverage.json (per canon registry)",
       "pin": "machine/spec/aaas-audit-contract.pin.json (binds to this SoR)"
@@ -31,9 +185,10 @@
     "reportCadence": "on-change-or-monthly"
   },
   "auditProfiles": {
-    "product": ["mpr", "composite", "honesty", "five-pillar"],
-    "platform": ["mpr", "composite", "honesty"],
-    "hub": ["mpr", "composite", "honesty", "docs-canon"]
+    "_note": "Required witness TYPES (matched by prefix against audit/evidence/<type>-latest.json). Reconciled to the 11-pillar taxonomy: mpr-repo is the composite the bridge-os engine emits (carries all pillars); aaas-honesty-gate is the anti-superficiality witness. Legacy five-pillar/composite/docs-canon retired.",
+    "product": ["mpr-repo", "aaas-honesty-gate"],
+    "platform": ["mpr-repo", "aaas-honesty-gate"],
+    "hub": ["mpr-repo", "aaas-honesty-gate"]
   },
   "witnessSchemas": {
     "mpr": "gtcx://baseline-os/multi-pillar-repo-extension/v1",

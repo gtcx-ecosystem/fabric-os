@@ -151,7 +151,11 @@ fleet-wide (20/20 conformant); **handoff synthesizer (`aaas:handoff`) BUILT + te
 (`platform/scripts/lib/aaas-handoff.mjs`, 12 tests) and proven on real fleet MPR data;
 **predictive cadence (§4c.2) BUILT + tested** (`platform/scripts/lib/aaas-cadence-predict.mjs`,
 12 tests) — trend lines, regression detection, breach forecasting over a history ledger,
-emitting `audit/evidence/aaas-cadence-forecast-latest.json`.
+emitting `audit/evidence/aaas-cadence-forecast-latest.json`;
+**adversarial honesty (§4c.3) BUILT + tested** (`platform/scripts/lib/aaas-adversarial-honesty.mjs`,
+12 tests, `aaas:honesty:adversarial`) — red-teams every MPR verdict (inflation / fabrication /
+missing-provenance / self-contradiction), attaches a content-addressed provenance digest, and
+quarantines verdicts that cannot survive. Already catching unevidenced scores on real fleet data.
 
 **Open:**
 
@@ -160,7 +164,7 @@ emitting `audit/evidence/aaas-cadence-forecast-latest.json`.
 - SIGNAL lens implementation (the 6-dimension evaluator) does not yet exist as a runnable
   producer — baseline-os builds it (parallel to the bridge-os MPR engine). Until then the
   handoff degrades honestly to MPR-only (the synthesizer already consumes SIGNAL when present).
-- Adversarial honesty (§4c.3) and enforced ownership (§4c.4) — the remaining L5 additions.
+- Enforced ownership (§4c.4) — the last L5 addition.
 
 ## Out of scope (YAGNI)
 

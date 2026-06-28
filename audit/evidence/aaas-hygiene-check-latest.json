@@ -1,42 +1,14 @@
 {
   "schema": "gtcx://fabric-os/aaas-hygiene-check/v1",
   "provider": "fabric-os",
-  "checkedAt": "2026-06-28T17:24:51.958Z",
+  "checkedAt": "2026-06-28T17:48:19.897Z",
   "delegatesTo": "canon-os/platform/scripts/fleet-docs-folder-hygiene-check.mjs",
-  "clean": 12,
+  "clean": 19,
   "total": 20,
   "drift": [
     {
       "repo": "bridge-os",
-      "score": "15/16"
-    },
-    {
-      "repo": "baseline-os",
-      "score": "13/17"
-    },
-    {
-      "repo": "agile-os",
-      "score": "16/17"
-    },
-    {
-      "repo": "markets-os",
-      "score": "15/16"
-    },
-    {
-      "repo": "ledger-os",
-      "score": "13/16"
-    },
-    {
-      "repo": "ledger-ui",
-      "score": "15/16"
-    },
-    {
-      "repo": "inspection-os",
-      "score": "12/14"
-    },
-    {
-      "repo": "compliance-os",
-      "score": "15/16"
+      "score": "14/15"
     }
   ]
 }

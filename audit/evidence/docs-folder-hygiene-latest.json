@@ -1,47 +1,72 @@
 {
   "schema": "gtcx://canon-os/docs-folder-hygiene-witness/v1",
-  "generatedAt": "2026-06-19T21:58:38.891Z",
+  "generatedAt": "2026-06-27T14:56:53.887Z",
   "repo": "fabric-os",
   "policyUpdated": "2026-06-16",
   "pass": false,
   "strict": false,
   "metrics": {
-    "totalMd": 238,
+    "totalMd": 337,
     "topLevelFolders": [
       {
+        "name": "operations",
+        "mdCount": 94,
+        "looseRoot": 2
+      },
+      {
         "name": "reference",
-        "mdCount": 54,
+        "mdCount": 60,
         "looseRoot": 1
       },
       {
         "name": "business",
-        "mdCount": 52,
-        "looseRoot": 0
-      },
-      {
-        "name": "operations",
-        "mdCount": 52,
-        "looseRoot": 0
-      },
-      {
-        "name": "architecture",
-        "mdCount": 32,
-        "looseRoot": 1
-      },
-      {
-        "name": "gitbook",
-        "mdCount": 22,
+        "mdCount": 53,
         "looseRoot": 0
       },
       {
         "name": "product",
-        "mdCount": 12,
+        "mdCount": 46,
+        "looseRoot": 0
+      },
+      {
+        "name": "architecture",
+        "mdCount": 37,
+        "looseRoot": 0
+      },
+      {
+        "name": "gitbook",
+        "mdCount": 23,
         "looseRoot": 0
       },
       {
         "name": "foundation",
         "mdCount": 10,
         "looseRoot": 7
+      },
+      {
+        "name": "agents",
+        "mdCount": 3,
+        "looseRoot": 0
+      },
+      {
+        "name": "governance",
+        "mdCount": 2,
+        "looseRoot": 0
+      },
+      {
+        "name": "strategy",
+        "mdCount": 2,
+        "looseRoot": 1
+      },
+      {
+        "name": "agile",
+        "mdCount": 1,
+        "looseRoot": 1
+      },
+      {
+        "name": "superpowers",
+        "mdCount": 1,
+        "looseRoot": 0
       }
     ]
   },
@@ -57,13 +82,13 @@
     },
     {
       "id": "absent:docs-agile",
-      "ok": true,
-      "detail": "absent"
+      "ok": false,
+      "detail": "delete — canonical: agile/"
     },
     {
       "id": "absent:docs-agents",
-      "ok": true,
-      "detail": "absent"
+      "ok": false,
+      "detail": "delete — canonical: agents/"
     },
     {
       "id": "legacy:docs-specs",
@@ -72,8 +97,8 @@
     },
     {
       "id": "legacy:docs-strategy",
-      "ok": true,
-      "detail": "absent or pointer-only"
+      "ok": false,
+      "detail": "bodies remain — canonical: docs/business/strategy/"
     },
     {
       "id": "legacy:docs-overview",
@@ -97,8 +122,8 @@
     },
     {
       "id": "sprawl:docsarchitecture",
-      "ok": false,
-      "detail": "relocate: legacy-README.md"
+      "ok": true,
+      "detail": "clean"
     },
     {
       "id": "sprawl:docsproduct",
@@ -108,12 +133,12 @@
     {
       "id": "sprawl:docsoperations",
       "ok": true,
-      "detail": "clean"
+      "detail": "relocate: agent-work-selection.md, legalops-as-a-service.md"
     },
     {
       "id": "sprawl:agile",
-      "ok": true,
-      "detail": "clean"
+      "ok": false,
+      "detail": "relocate: roadmap-bridge.md"
     },
     {
       "id": "sprawl:agents",
@@ -126,5 +151,11 @@
       "detail": "no top-level docs/specs"
     }
   ],
-  "failed": ["sprawl:docsarchitecture", "sprawl:agents"]
+  "failed": [
+    "absent:docs-agile",
+    "absent:docs-agents",
+    "legacy:docs-strategy",
+    "sprawl:agile",
+    "sprawl:agents"
+  ]
 }

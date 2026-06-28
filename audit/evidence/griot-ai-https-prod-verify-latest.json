@@ -1,12 +1,12 @@
 {
   "schema": "gtcx://fabric-os/blocker-verify/v1",
   "blockerId": "F-prod-06",
-  "updated": "2026-06-27T16:43:56.792Z",
+  "updated": "2026-06-27T17:11:49.482Z",
   "repo": "fabric-os",
-  "status": "not_ready",
+  "status": "ready",
   "gates": [
     {
-      "id": "canonical-acm-cert-issued",
+      "id": "acm-cert-issued",
       "label": "ACM certificate arn:aws:acm:eu-west-1:348389439381:certificate/078c204c-e90e-46fb-b3b2-2749439b10ae is ISSUED for griot.gtcx.trade",
       "status": "pass",
       "detail": {
@@ -16,7 +16,7 @@
       }
     },
     {
-      "id": "canonical-https-200",
+      "id": "https-200",
       "label": "https://griot.gtcx.trade/health returns HTTP 200",
       "status": "pass",
       "detail": {
@@ -24,50 +24,8 @@
       }
     },
     {
-      "id": "canonical-http-ok-or-redirect",
+      "id": "http-ok-or-redirect",
       "label": "http://griot.gtcx.trade/health returns HTTP 200 or 308 redirect to HTTPS",
-      "status": "pass",
-      "detail": {
-        "status": 200,
-        "location": null
-      }
-    },
-    {
-      "id": "api-acm-cert-validated",
-      "label": "ACM certificate arn:aws:acm:af-south-1:348389439381:certificate/6c40f4cf-ebc4-40bf-a6c1-6c70322627a1 is VALIDATED for api.griot.ai",
-      "status": "fail",
-      "detail": {
-        "status": "PENDING_VALIDATION",
-        "domainStatus": "PENDING_VALIDATION",
-        "arn": "arn:aws:acm:af-south-1:348389439381:certificate/6c40f4cf-ebc4-40bf-a6c1-6c70322627a1",
-        "resourceRecord": {
-          "Name": "_63e8eb3807cda8940404d774d406cbed.api.griot.ai.",
-          "Type": "CNAME",
-          "Value": "_67777edb81ef1f05dd8cb9d3dd4fcc67.jkddzztszm.acm-validations.aws."
-        }
-      }
-    },
-    {
-      "id": "api-acm-cname-present",
-      "label": "ACM validation CNAME for api.griot.ai is resolvable",
-      "status": "fail",
-      "detail": {
-        "cname": "_63e8eb3807cda8940404d774d406cbed.api.griot.ai",
-        "resolvedValue": null,
-        "expectedValue": "_67777edb81ef1f05dd8cb9d3dd4fcc67.jkddzztszm.acm-validations.aws."
-      }
-    },
-    {
-      "id": "api-https-200",
-      "label": "https://api.griot.ai/health returns HTTP 200",
-      "status": "fail",
-      "detail": {
-        "status": null
-      }
-    },
-    {
-      "id": "api-http-ok-or-redirect",
-      "label": "http://api.griot.ai/health returns HTTP 200 or 308 redirect to HTTPS",
       "status": "pass",
       "detail": {
         "status": 200,

@@ -1,59 +1,67 @@
 {
   "schema": "gtcx://audit/composite/v2",
   "repo": "fabric-os",
-  "date": "2026-06-25",
-  "composite100": 100,
-  "composite100Raw": 100,
+  "date": "2026-06-27",
+  "composite100": 90,
+  "composite100Raw": 92,
   "productionReady": true,
   "openP0": 0,
   "openP1": 0,
-  "capsFired": [],
+  "capsFired": [
+    {
+      "id": "gate-p35-strict-pass",
+      "label": "Gate failed: P35 layout strict",
+      "ceiling100": 70,
+      "trigger": "p35-strict-pass",
+      "coreId": "A5-REPO-HYGIENE"
+    }
+  ],
   "cores": {
     "A1-PRODUCT-EXCELLENCE": {
       "slug": "product-excellence",
       "score100": 100,
       "score100Raw": 100,
       "weight": 0.25,
-      "status": "rubric-driven",
+      "status": "probe-gates-only",
       "metrics": {
         "ux-product-design": {
-          "score100": 100,
+          "score100": 0,
           "weight": 1,
-          "confidence": "A",
-          "source": "audit-output"
+          "confidence": "D",
+          "source": "missing"
         },
         "ecosystem-integration": {
-          "score100": 100,
+          "score100": 0,
           "weight": 1,
-          "confidence": "A",
-          "source": "audit-output"
+          "confidence": "D",
+          "source": "missing"
         },
         "innovation-originality": {
-          "score100": 100,
+          "score100": 0,
           "weight": 1,
-          "confidence": "A",
-          "source": "audit-output"
+          "confidence": "D",
+          "source": "missing"
         },
         "technical-moat": {
-          "score100": 100,
+          "score100": 0,
           "weight": 1,
-          "confidence": "A",
-          "source": "audit-output"
+          "confidence": "D",
+          "source": "missing"
         }
       }
     },
     "A2-PRODUCTION-GRADE": {
       "slug": "production-grade",
-      "score100": 100,
-      "score100Raw": 100,
+      "score100": 80,
+      "score100Raw": 80,
       "weight": 0.2,
-      "status": "rubric-driven",
+      "status": "probe-gates-only",
       "metrics": {
         "production-readiness": {
-          "score100": 100,
+          "score100": 0,
           "weight": 1,
-          "confidence": "A",
-          "source": "audit-output"
+          "confidence": "D",
+          "source": "missing"
         }
       }
     },
@@ -62,19 +70,19 @@
       "score100": 100,
       "score100Raw": 100,
       "weight": 0.15,
-      "status": "rubric-driven",
+      "status": "probe-gates-only",
       "metrics": {
         "ai-maturity": {
-          "score100": 100,
+          "score100": 0,
           "weight": 1,
-          "confidence": "A",
-          "source": "audit-output"
+          "confidence": "D",
+          "source": "missing"
         },
         "hallucination-resilience": {
-          "score100": 100,
+          "score100": 0,
           "weight": 1,
-          "confidence": "A",
-          "source": "audit-output"
+          "confidence": "D",
+          "source": "missing"
         }
       }
     },
@@ -83,32 +91,32 @@
       "score100": 100,
       "score100Raw": 100,
       "weight": 0.2,
-      "status": "rubric-driven",
+      "status": "probe-gates-only",
       "metrics": {
         "security": {
-          "score100": 100,
+          "score100": 0,
           "weight": 1,
-          "confidence": "A",
-          "source": "audit-output"
+          "confidence": "D",
+          "source": "missing"
         },
         "enterprise-readiness": {
-          "score100": 100,
+          "score100": 0,
           "weight": 1,
-          "confidence": "A",
-          "source": "audit-output"
+          "confidence": "D",
+          "source": "missing"
         },
         "bank-grade-auditability": {
-          "score100": 100,
+          "score100": 0,
           "weight": 1,
-          "confidence": "A",
-          "source": "audit-output"
+          "confidence": "D",
+          "source": "missing"
         }
       }
     },
     "A5-REPO-HYGIENE": {
       "slug": "repo-hygiene",
-      "score100": 100,
-      "score100Raw": 100,
+      "score100": 70,
+      "score100Raw": 80,
       "weight": 0.2,
       "status": "probe-gates-only",
       "metrics": {
@@ -143,7 +151,7 @@
   "replaces": ["master-audit", "comprehensive-audit", "bank-grade-audit"],
   "initiative": "INIT-AUDIT-CONSOLIDATION",
   "source": "run-five-core-audit",
-  "status": "rubric-driven",
-  "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-25.json"
+  "status": "probe-gates-only",
+  "rubricSource": null,
+  "rubricSourcePath": null
 }

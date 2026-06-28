@@ -142,6 +142,8 @@
     "aaas:registry:build": "node platform/scripts/aaas-registry-build.mjs --write",
     "aaas:contract:check": "node platform/scripts/aaas-contract-check.mjs",
     "aaas:contract:check:write": "node platform/scripts/aaas-contract-check.mjs --write",
+    "aaas:scrub": "node platform/scripts/aaas-scrub.mjs",
+    "aaas:scrub:write": "node platform/scripts/aaas-scrub.mjs --write",
     "legal:friction:check": "node platform/scripts/legal-friction-check.mjs",
     "legal:friction:check:write": "node platform/scripts/legal-friction-check.mjs --write",
     "legalops:check": "node platform/scripts/legalops-check.mjs",

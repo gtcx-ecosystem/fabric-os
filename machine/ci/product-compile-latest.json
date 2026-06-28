@@ -1,9 +1,9 @@
 {
   "schema": "gtcx://canon-os/product-compile/v1",
-  "generatedAt": "2026-06-27T08:18:01.476Z",
+  "generatedAt": "2026-06-27T12:40:49.621Z",
   "repo": "fabric-os",
   "protocol": "P57-product-delivery-compile",
-  "pass": true,
+  "pass": false,
   "counts": {
     "initiativesCompiled": 5,
     "storiesCompiled": 7,
@@ -11,21 +11,15 @@
     "storyTotal": 29,
     "backlogClear": true,
     "openStories": 0,
-    "executableGaps": 2,
+    "executableGaps": 1,
     "ownerWarnings": 0
   },
   "ownerWarnings": [],
   "hashes": {
-    "initiatives": "3fc3127f2ee2f7fc9840aaa4b53098922a0d126fc2501bee3ead70f878e0ab9e",
+    "initiatives": "ea56f7010c526056c7013c4697b628f4901d91d885dfa13e7040247e64a35476",
     "backlog": "ea8c710bc5f03f03744bf2d4020498aa3bfd6427880a8d8c2d4d1b6006d58b08"
   },
   "executableGaps": [
-    {
-      "initiativeId": "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
-      "title": "Fleet Ops Assurance Program",
-      "reason": "no_open_stories",
-      "fix": "Open or add a pending story under initiative INIT-FLEET-OPS-ASSURANCE-PROGRAM → product:compile --write"
-    },
     {
       "initiativeId": "INIT-XR-FLEET-MATURITY-LANES",
       "title": "INIT-XR-FLEET-MATURITY-LANES — assurance lane enforcement (fabric-os)",
@@ -34,5 +28,5 @@
     }
   ],
   "featureSync": [],
-  "stale": []
+  "stale": ["initiatives"]
 }

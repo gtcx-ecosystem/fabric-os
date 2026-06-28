@@ -113,3 +113,18 @@ baseline.config.json
 
 # Local Supabase CLI scratch
 supabase/
+
+# --- per-run telemetry churn (auto-added; keeps trees clean) ---
+.baseline/forensic-ai/
+.baseline/frame/
+.baseline/session/
+.baseline/experience/
+machine/ci/settlement-commit-latest.json
+machine/ci/settlement-push-latest.json
+machine/ci/settlement-story-scope-latest.json
+pm/ci/settlement-commit-latest.json
+pm/ci/settlement-push-latest.json
+pm/ci/settlement-story-scope-latest.json
+workstream/sessions/ci/
+workstream/sessions/ledger/
+workstream/sessions/transcripts/

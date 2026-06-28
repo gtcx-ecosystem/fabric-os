@@ -112,5 +112,13 @@
     "scrub-agent-files(5)",
     "archive-files(1)",
     "rebuild registry+contract-check to confirm"
-  ]
+  ],
+  "scrubProgress": {
+    "updated": "2026-06-28",
+    "1-files": "ready — aaas:scrub built, dry-run 571 files; gated on front 2 (else regenerates)",
+    "2-registries": "handed off — XR-AUDIT-COMMAND-RECONCILE-001 to canon-os+bridge-os (P24, awaiting ack)",
+    "3-pnpm-scripts": "pending — retire legacy audit/* scripts fleet-wide",
+    "4-slash-commands": "DONE — 37 legacy audit commands archived to ~/.claude/commands-archive/legacy-audit-scrub-2026-06-28/; canonical aaas-audit + aaas-report installed",
+    "5-agent-llm-files": "pending — high-risk, after fronts 2-4 settle"
+  }
 }

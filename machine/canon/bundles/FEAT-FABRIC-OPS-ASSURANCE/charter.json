@@ -9,7 +9,10 @@
   "goals": [
     "Every fleet repo passes fabric:ops-contracts:check against fabric-os central contract"
   ],
-  "nonGoals": ["Product feature delivery", "ZenHub ceremony ownership"],
+  "nonGoals": [
+    "Product feature delivery",
+    "ZenHub ceremony ownership"
+  ],
   "successMetrics": [
     {
       "id": "SM-FOA-1",
@@ -18,6 +21,8 @@
       "verify": "pnpm fabric:ops-contracts:check"
     }
   ],
-  "dependencies": ["fabric-os/operations/fabric-contract.json"],
+  "dependencies": [
+    "fabric-os/operations/fabric-contract.json"
+  ],
   "openQuestions": []
 }

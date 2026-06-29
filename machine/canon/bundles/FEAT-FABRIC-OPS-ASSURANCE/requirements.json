@@ -13,7 +13,9 @@
       "acceptance": [
         "Given a repo with operations/fabric-contract.json When fabric:ops-contracts:check runs Then exit 0"
       ],
-      "surfaces": ["surface-fabric-ops-check"],
+      "surfaces": [
+        "surface-fabric-ops-check"
+      ],
       "verifyCommand": "pnpm fabric:ops-contracts:check"
     }
   ],

@@ -11,8 +11,12 @@
   "title": "Fabric ops assurance",
   "owner": "fabric-os",
   "authorityClass": "R",
-  "goalIds": ["GOAL-FABRIC-OPS"],
-  "milestoneIds": ["M1"],
+  "goalIds": [
+    "GOAL-FABRIC-OPS"
+  ],
+  "milestoneIds": [
+    "M1"
+  ],
   "composition": [],
   "slices": {
     "charter": {

@@ -9,8 +9,12 @@
     {
       "id": "UAT-FOA-001",
       "title": "Fleet ops contract verifier green",
-      "preconditions": ["fabric-os checkout"],
-      "steps": ["Run pnpm fabric:ops-contracts:check"],
+      "preconditions": [
+        "fabric-os checkout"
+      ],
+      "steps": [
+        "Run pnpm fabric:ops-contracts:check"
+      ],
       "expected": "Exit 0 with PASS for fabric-os",
       "verifyCommand": "pnpm fabric:ops-contracts:check",
       "expectedExitCode": 0

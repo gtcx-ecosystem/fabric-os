@@ -78,7 +78,8 @@ function runScript(scriptRel, extraArgs = []) {
 function runCanonSynthesizePreflight() {
   const synth = join(REPO, '../canon-os/platform/scripts/synthesize-product-canon.mjs');
   if (!existsSync(synth)) return;
-  spawnSync(process.execPath, [synth, '--write'], {
+  const mode = WRITE ? '--write' : '--check';
+  spawnSync(process.execPath, [synth, mode], {
     cwd: REPO,
     encoding: 'utf8',
     stdio: 'pipe',

@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink.schema/v1",
+  "title": "Kaleidoscope AI trace and eval sink event",
+  "type": "object",
+  "required": [
+    "schema",
+    "eventId",
+    "eventClass",
+    "generatedAt",
+    "repo",
+    "sessionId",
+    "actor",
+    "policy",
+    "risk",
+    "retention"
+  ],
+  "properties": {
+    "schema": { "const": "gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink/v1" },
+    "eventId": { "type": "string", "minLength": 1 },
+    "eventClass": {
+      "enum": [
+        "agent_trace",
+        "retrieval_trace",
+        "eval_result",
+        "approval_boundary",
+        "action_draft",
+        "rollback_hook",
+        "learning_candidate"
+      ]
+    },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "repo": { "type": "string", "minLength": 1 },
+    "resource": {
+      "type": ["string", "null"],
+      "enum": [
+        "fleet",
+        "graph",
+        "query",
+        "decision-room",
+        "signal",
+        "actions",
+        "partner-room",
+        "release",
+        "phase-2",
+        null
+      ]
+    },
+    "sessionId": { "type": "string", "minLength": 1 },
+    "actor": {
+      "type": "object",
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "enum": ["human", "agent", "runner", "service"] },
+        "id": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "inputRefs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ref" }
+    },
+    "noInputReason": { "type": ["string", "null"] },
+    "outputRefs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ref" }
+    },
+    "policy": {
+      "type": "object",
+      "required": ["boundary", "approvalStatus"],
+      "properties": {
+        "boundary": { "enum": ["read", "draft", "write", "external"] },
+        "approvalStatus": {
+          "enum": [
+            "not_required",
+            "draft_pending_approval",
+            "blocked_until_explicit_approval",
+            "approved"
+          ]
+        },
+        "policyRefs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ref" }
+        },
+        "approvalRecord": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "evals": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/eval" }
+    },
+    "risk": {
+      "type": "object",
+      "required": ["severity", "failureMode", "rollbackRequired"],
+      "properties": {
+        "severity": { "enum": ["none", "low", "medium", "high", "critical"] },
+        "failureMode": { "type": "string", "minLength": 1 },
+        "rollbackRequired": { "type": "boolean" },
+        "rollbackRef": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "retention": {
+      "type": "object",
+      "required": ["class", "privacy"],
+      "properties": {
+        "class": {
+          "enum": ["internal", "sensitive", "external-approved", "delete-required"]
+        },
+        "privacy": { "enum": ["none", "redacted", "restricted"] },
+        "ttlDays": { "type": ["integer", "null"], "minimum": 1 }
+      },
+      "additionalProperties": true
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "anyOf": [
+        {
+          "required": ["inputRefs"],
+          "properties": {
+            "inputRefs": { "minItems": 1 }
+          }
+        },
+        {
+          "required": ["noInputReason"],
+          "properties": {
+            "noInputReason": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    }
+  ],
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "required": ["type", "path", "reason"],
+      "properties": {
+        "type": {
+          "enum": [
+            "witness",
+            "doc",
+            "schema",
+            "graph-node",
+            "command",
+            "approval",
+            "trace",
+            "action"
+          ]
+        },
+        "path": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "sourceDate": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "eval": {
+      "type": "object",
+      "required": ["id", "passed"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "passed": { "type": "boolean" },
+        "score": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "details": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

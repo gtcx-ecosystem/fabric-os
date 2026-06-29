@@ -21,14 +21,16 @@ agent-driven operations. It does not run the fleet gate (bridge-os) or own MLOps
 
 ## Artifacts (fabric-os)
 
-| Artifact          | Path                                     |
-| ----------------- | ---------------------------------------- |
-| Spec (SoR)        | `machine/spec/aiops-as-a-service.json`   |
-| Friction register | `machine/aiops-friction-register.json`   |
-| Signals register  | `machine/aiops-signals-register.json`    |
-| Harness           | `platform/scripts/aiops-check.mjs`       |
-| Witness           | `audit/evidence/aiops-check-latest.json` |
-| This runbook      | `docs/operations/aiops-as-a-service.md`  |
+| Artifact                     | Path                                                                 |
+| ---------------------------- | -------------------------------------------------------------------- |
+| Spec (SoR)                   | `machine/spec/aiops-as-a-service.json`                               |
+| Kaleidoscope trace/eval sink | `pm/spec/kaleidoscope-ai/trace-eval-sink.schema.json`                |
+| Kaleidoscope sink runbook    | `docs/operations/platform-services/kaleidoscope-trace-eval-sinks.md` |
+| Friction register            | `machine/aiops-friction-register.json`                               |
+| Signals register             | `machine/aiops-signals-register.json`                                |
+| Harness                      | `platform/scripts/aiops-check.mjs`                                   |
+| Witness                      | `audit/evidence/aiops-check-latest.json`                             |
+| This runbook                 | `docs/operations/aiops-as-a-service.md`                              |
 
 ## Run the check
 

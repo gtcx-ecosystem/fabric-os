@@ -43,13 +43,14 @@ function main() {
   if (JSON_OUT) {
     console.log(JSON.stringify(witness, null, 2));
   } else {
-    console.log(`adversarial honesty · ${witness.repo} · ${witness.upheldCount}/${witness.total} verdicts upheld, ${witness.quarantinedCount} quarantined`);
+    console.log(`adversarial honesty · ${witness.repo} · ${witness.verifiedCount} verified · ${witness.unassessableCount} unassessable (aggregate-only) · ${witness.quarantinedCount} quarantined · of ${witness.total}`);
     for (const q of witness.quarantined) {
       console.log(`  QUARANTINE ${q.id} (${q.score}) — ${q.refutedBy.map((r) => r.challenge).join(', ')}`);
       for (const r of q.refutedBy) console.log(`     · ${r.detail}`);
     }
-    for (const u of witness.upheld) console.log(`  UPHELD ${u.id} (${u.score}) ${u.provenance}`);
-    console.log(`\n${witness.ok ? 'PASS' : 'FAIL'} — adversarial honesty${WRITE ? ' (witness: audit/evidence/aaas-adversarial-honesty-latest.json)' : ''}`);
+    for (const u of witness.upheld) console.log(`  VERIFIED ${u.id} (${u.score}) ${u.provenance}`);
+    for (const u of witness.unassessable) console.log(`  UNASSESSABLE ${u.id} (${u.score}) — aggregate-only, no leaf evidence to challenge`);
+    console.log(`\n${witness.ok ? 'PASS' : 'FAIL'} — adversarial honesty (PASS = nothing refuted; see unassessable for coverage)${WRITE ? ' · witness written' : ''}`);
   }
 
   process.exit(STRICT && !witness.ok ? 1 : 0);

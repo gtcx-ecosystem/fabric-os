@@ -125,14 +125,17 @@ describe('evaluateAdversarial', () => {
     assert.equal(w.upheld[0].provenance.startsWith('sha256:'), true);
   });
 
-  it('upholds sourced aggregates but flags them depth-unverified (non-failing)', () => {
+  it('classifies sourced aggregates as UNASSESSABLE, not verified (coverage honesty, E3)', () => {
     // mirrors real MPR pillars: sourced, scored, no leaf decomposition
     const w = evaluateAdversarial({ verdicts: [
       { id: 'trustAndSafety', score: 77, threshold: 85, source: src, items: [] },
       { id: 'craft', score: 70, threshold: 85, source: src, items: [] },
+      { id: 'verified-one', score: 90, threshold: 85, source: src, items: [{ pass: true }] },
     ] });
-    assert.equal(w.ok, true); // NOT quarantined — the false-positive fix
+    assert.equal(w.ok, true); // nothing refuted
     assert.equal(w.quarantinedCount, 0);
+    assert.equal(w.verifiedCount, 1); // only the one with real evidence is actively verified
+    assert.equal(w.unassessableCount, 2); // aggregates are not counted as verified
     assert.deepEqual(w.depthUnverified.sort(), ['craft', 'trustAndSafety']);
   });
 });

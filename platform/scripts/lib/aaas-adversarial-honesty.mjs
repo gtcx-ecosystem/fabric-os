@@ -125,23 +125,27 @@ export function extractVerdicts(mprWitness) {
 export function evaluateAdversarial({ verdicts, opts = {} }) {
   const judged = (verdicts ?? []).map((v) => redTeamVerdict(v, opts));
   const quarantined = judged.filter((j) => j.quarantined);
-  const upheld = judged.filter((j) => j.survives);
-  // Sourced aggregates with no leaf decomposition: legitimate but lower-confidence.
-  // Surfaced as a non-failing signal, NOT a quarantine.
-  const depthUnverified = judged
-    .filter((j) => j.notes?.some((n) => n.note === 'depth-unverified'))
-    .map((j) => j.id);
+  const survived = judged.filter((j) => j.survives);
+  // Honesty (audit finding E3): a verdict that survived but had NO leaf evidence was
+  // not actively VERIFIED — there was simply nothing to challenge. Reporting it as
+  // "upheld" overstates assurance. Split the survivors: actively-verified (had evidence
+  // to attack and withstood it) vs unassessable (aggregate-only — gate has no signal).
+  const isUnassessable = (j) => j.notes?.some((n) => n.note === 'depth-unverified');
+  const upheld = survived.filter((j) => !isUnassessable(j));
+  const unassessable = survived.filter(isUnassessable);
   return {
     schema: 'gtcx://fabric-os/aaas-adversarial-honesty/v1',
     total: judged.length,
-    upheldCount: upheld.length,
-    quarantinedCount: quarantined.length,
-    depthUnverified,
+    verifiedCount: upheld.length, // actively verified (had evidence, withstood attack)
+    unassessableCount: unassessable.length, // aggregate-only, gate has no signal
+    quarantinedCount: quarantined.length, // refuted
+    upheldCount: upheld.length, // back-compat alias for verifiedCount
+    depthUnverified: unassessable.map((j) => j.id),
     quarantined,
     upheld,
-    // The gate FAILS only on a genuine quarantine (inflated / fabricated-from-nowhere /
-    // no-provenance / self-contradiction). A sourced aggregate without leaf depth is a
-    // confidence note, not a fabrication.
+    unassessable,
+    // FAILS only on a genuine quarantine. Coverage honesty: when unassessableCount is
+    // high, "ok" means "nothing refuted", NOT "everything verified" — read both numbers.
     ok: quarantined.length === 0,
   };
 }

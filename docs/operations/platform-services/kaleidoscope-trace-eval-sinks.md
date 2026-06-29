@@ -107,7 +107,7 @@ Fabric does not approve external use. It records the approval boundary and store
 
 ## Phase 3 MVP
 
-1. Publish `pm/spec/kaleidoscope-ai/trace-eval-sink.schema.json`.
+1. Publish `machine/spec/kaleidoscope-ai/trace-eval-sink.schema.json`.
 2. Add a local sink writer that can emit JSONL events for development use.
 3. Wire read-only Kaleidoscope resources to emit `agent_trace`, `retrieval_trace`, and `eval_result` events.
 4. Wire draft-only resources to emit `approval_boundary` and `action_draft` events.

@@ -47,7 +47,15 @@ function ref(type, path, reason) {
 function event(eventClass, overrides = {}) {
   const sessionId = 'kaleidoscope-phase-3-local-sink';
   const resource = overrides.resource ?? 'decision-room';
-  const eventId = `ktes-${idFor([sessionId, eventClass, resource])}`;
+  const inputRefs = overrides.inputRefs ?? [
+    ref('schema', SCHEMA_REL, 'event schema contract'),
+    ref('doc', RUNBOOK_REL, 'Fabric trace/eval sink runbook'),
+  ];
+  const inputRefKey = inputRefs
+    .map(({ type, path, reason }) => `${type}:${path}:${reason}`)
+    .sort()
+    .join(',');
+  const eventId = `ktes-${idFor([sessionId, eventClass, resource, inputRefKey])}`;
   return {
     schema: 'gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink/v1',
     eventId,
@@ -60,10 +68,7 @@ function event(eventClass, overrides = {}) {
       type: 'runner',
       id: 'platform/scripts/kaleidoscope-trace-eval-sink.mjs',
     },
-    inputRefs: [
-      ref('schema', SCHEMA_REL, 'event schema contract'),
-      ref('doc', RUNBOOK_REL, 'Fabric trace/eval sink runbook'),
-    ],
+    inputRefs,
     outputRefs: overrides.outputRefs ?? [],
     policy: {
       boundary: overrides.boundary ?? 'read',

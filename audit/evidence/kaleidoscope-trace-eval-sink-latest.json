@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink-harness/v1",
-  "generatedAt": "2026-06-29T03:51:43.825Z",
+  "generatedAt": "2026-06-29T04:17:47.707Z",
   "repo": "fabric-os",
   "ok": true,
   "summary": {
@@ -40,7 +40,7 @@
   "events": [
     {
       "schema": "gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink/v1",
-      "eventId": "ktes-17f9d78e8c0b89f1",
+      "eventId": "ktes-2064c51633714cc1",
       "eventClass": "agent_trace",
       "generatedAt": "2026-06-29T00:00:00.000Z",
       "repo": "fabric-os",
@@ -100,7 +100,7 @@
     },
     {
       "schema": "gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink/v1",
-      "eventId": "ktes-475ad884d062b51e",
+      "eventId": "ktes-a4f630564eda92fe",
       "eventClass": "retrieval_trace",
       "generatedAt": "2026-06-29T00:00:00.000Z",
       "repo": "fabric-os",
@@ -160,7 +160,7 @@
     },
     {
       "schema": "gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink/v1",
-      "eventId": "ktes-6d38e9e59d5c0dac",
+      "eventId": "ktes-38bba38413fa57d0",
       "eventClass": "eval_result",
       "generatedAt": "2026-06-29T00:00:00.000Z",
       "repo": "fabric-os",
@@ -227,7 +227,7 @@
     },
     {
       "schema": "gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink/v1",
-      "eventId": "ktes-96b3d0413efc8669",
+      "eventId": "ktes-4f7df1d01d21a9f9",
       "eventClass": "approval_boundary",
       "generatedAt": "2026-06-29T00:00:00.000Z",
       "repo": "fabric-os",
@@ -287,7 +287,7 @@
     },
     {
       "schema": "gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink/v1",
-      "eventId": "ktes-cab58b4c53d6562f",
+      "eventId": "ktes-60ddf93b12e78e9b",
       "eventClass": "action_draft",
       "generatedAt": "2026-06-29T00:00:00.000Z",
       "repo": "fabric-os",
@@ -354,7 +354,7 @@
     },
     {
       "schema": "gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink/v1",
-      "eventId": "ktes-1027eb1bc900d340",
+      "eventId": "ktes-dadefb7e9cb47abf",
       "eventClass": "rollback_hook",
       "generatedAt": "2026-06-29T00:00:00.000Z",
       "repo": "fabric-os",
@@ -412,7 +412,7 @@
     },
     {
       "schema": "gtcx://fabric-os/kaleidoscope-ai/trace-eval-sink/v1",
-      "eventId": "ktes-c546c3f42c8b2734",
+      "eventId": "ktes-5a070e1a21d5bf21",
       "eventClass": "learning_candidate",
       "generatedAt": "2026-06-29T00:00:00.000Z",
       "repo": "fabric-os",

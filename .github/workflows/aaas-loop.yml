@@ -1,0 +1,33 @@
+name: aaas-loop
+
+# Wires the AaaS lifecycle so it actually runs (audit -> handoff -> honesty ->
+# ownership -> cadence). Addresses the self-audit finding E1 ("nothing runs the
+# framework"). Weekly + on push to the AaaS surface; non-blocking (reports state).
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Mondays 06:00 UTC
+  push:
+    branches: [main]
+    paths:
+      - 'platform/scripts/aaas-*.mjs'
+      - 'platform/scripts/lib/aaas-*.mjs'
+      - 'machine/spec/aaas-audit-contract.json'
+  workflow_dispatch: {}
+
+jobs:
+  aaas-loop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Run AaaS lifecycle loop (self, dry-run)
+        run: pnpm aaas:loop
+      - name: Adversarial honesty + ownership gates (strict)
+        run: |
+          node platform/scripts/aaas-adversarial-honesty.mjs --strict
+          node platform/scripts/aaas-ownership-check.mjs --strict

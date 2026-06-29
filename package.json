@@ -297,6 +297,8 @@
     "aaas:provision": "node platform/scripts/aaas-provision.mjs",
     "aaas:provision:write": "node platform/scripts/aaas-provision.mjs --write",
     "aaas:audit": "node platform/scripts/aaas-audit.mjs",
+    "aaas:loop": "node platform/scripts/aaas-loop.mjs",
+    "aaas:loop:write": "node platform/scripts/aaas-loop.mjs --write",
     "aaas:signal": "node platform/scripts/aaas-signal-eval.mjs",
     "aaas:signal:write": "node platform/scripts/aaas-signal-eval.mjs --write",
     "aaas:report": "node platform/scripts/aaas-report.mjs",

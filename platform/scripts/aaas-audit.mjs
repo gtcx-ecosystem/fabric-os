@@ -8,10 +8,10 @@
  * from the per-pillar witnesses the engine writes into the target repo.
  *
  * Usage:
- *   aaas-audit.mjs --repo <name> --pillar <p> [--micro <m>] [--write]
+ *   aaas-audit.mjs --repo <name> [--lens mpr|signal|all] --pillar <p> [--micro <m>] [--write]
  *   aaas-audit.mjs --repo <name> --tier foundational|transformational [--write]
  *   aaas-audit.mjs --repo <name> --all [--write]
- *   (no --repo = current working repo)
+ *   (no --repo = current working repo · default --lens mpr)
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, basename } from 'node:path';
@@ -86,17 +86,40 @@ function present(repo, pillars, micro, taxonomy) {
   console.log('\nReports: node platform/scripts/aaas-report.mjs <umbrella>');
 }
 
+// SIGNAL lens — delegate to the fabric-os reference evaluator (parallel to MPR).
+function runSignal(repo, write) {
+  const signal = join(ROOT, 'platform/scripts/aaas-signal-eval.mjs');
+  if (!existsSync(signal)) { console.error('signal evaluator not found'); return 2; }
+  const args = [signal];
+  if (arg('--repo')) args.push('--repo', repo);
+  if (write) args.push('--write');
+  const res = spawnSync('node', args, { stdio: 'inherit' });
+  return res.status ?? 0;
+}
+
 function main() {
   const taxonomy = readJson(TAXONOMY);
   if (!taxonomy) { console.error('missing taxonomy'); process.exit(1); }
   const repo = arg('--repo') ?? basename(process.cwd());
   const write = has('--write');
+  const lens = arg('--lens') ?? 'mpr';
+  if (!['mpr', 'signal', 'all'].includes(lens)) {
+    console.error(`--lens must be mpr|signal|all (got "${lens}")`); process.exit(1);
+  }
   const pillars = selectPillars(taxonomy);
   const micro = arg('--micro');
 
-  const status = runEngine(repo, write);
-  if (status !== 0) console.error(`\n(engine exited ${status} — presenting any witnesses found)`);
-  present(repo, pillars, micro, taxonomy);
+  let status = 0;
+  if (lens === 'mpr' || lens === 'all') {
+    status = runEngine(repo, write);
+    if (status !== 0) console.error(`\n(engine exited ${status} — presenting any witnesses found)`);
+    present(repo, pillars, micro, taxonomy);
+  }
+  if (lens === 'signal' || lens === 'all') {
+    console.log(`\n--- SIGNAL lens ---`);
+    const s = runSignal(repo, write);
+    if (s !== 0 && status === 0) status = s;
+  }
   process.exit(status);
 }
 

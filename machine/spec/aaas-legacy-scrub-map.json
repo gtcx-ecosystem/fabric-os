@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/aaas-legacy-scrub-map/v1",
   "version": "1.0.0",
-  "updated": "2026-06-28",
+  "updated": "2026-06-29",
   "provider": "fabric-os",
   "principle": "Classifies every legacy audit-witness + report type against the canonical MPR taxonomy. KEEP = canonical (a pillar witness, the composite/fractal rollup, or an AaaS-lane artifact). ARCHIVE = drift/superseded/dated-one-off → moved to audit/archive/legacy-scrub-2026-06-28/ per repo (recoverable). Staleness is refreshed by cadence, NOT scrubbed.",
   "scrubDestination": "audit/archive/legacy-scrub-2026-06-28/",
@@ -77,6 +77,7 @@
         "docs-six-pack",
         "docs-root",
         "docs-folder-provisioning",
+        "repo-hygiene-ref23-witness",
         "repo-provision",
         "ux-sor"
       ],

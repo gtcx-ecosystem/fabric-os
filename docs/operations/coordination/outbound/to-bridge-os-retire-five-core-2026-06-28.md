@@ -25,7 +25,7 @@ it's a **parallel island**, not a replacement. Two audit systems running = drift
 - `bridge-os/platform/scripts/ecosystem/run-five-core-audit.mjs` + `run-composite-lift.mjs` +
   `lib/five-core-rubric-score.mjs` present and live.
 - They generate `*-audit-YYYY-MM-DD.md` + `*-audit-latest.json` (agentic-innovation / compliance-security /
-  product-excellence / production-grade / repo-hygiene, "probe-gates-only") — fabric-os just archived a
+  product-excellence / production-grade / repository-provisioning, "probe-gates-only") — fabric-os just archived a
   set of these as residue.
 - fabric-os now owns the canonical AaaS surface: `aaas:audit --lens mpr|signal|all`, the lifecycle loop
   (`aaas:loop`), handoff/honesty/ownership/cadence — all on `main`.

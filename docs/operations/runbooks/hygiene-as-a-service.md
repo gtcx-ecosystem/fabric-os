@@ -11,7 +11,7 @@ review_cycle: on-change
 
 # Hygiene as a Service
 
-Fabric OS owns repo hygiene controls for the service fabric: root cleanliness,
+Fabric OS owns repo provisioning controls for the service fabric: root cleanliness,
 workspace layout, generated evidence placement, and remediation tracking.
 
 ## System of Record

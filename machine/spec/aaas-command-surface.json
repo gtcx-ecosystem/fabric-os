@@ -44,7 +44,6 @@
       "design-check",
       "spec-drift",
       "hygiene",
-      "repo-hygiene",
       "doc-standard",
       "docs-machine-readable"
     ],

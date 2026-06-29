@@ -11,11 +11,11 @@ review_cycle: on-change
 
 # Repo operations
 
-Repository governance, contributing, and hygiene for **fabric-os**.
+Repository governance, contributing, and provisioning for **fabric-os**.
 
-| Doc                                                    | Role                |
-| ------------------------------------------------------ | ------------------- |
-| [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)             | Community standards |
-| [CONTRIBUTING.md](./CONTRIBUTING.md)                   | Contribution guide  |
-| [SECURITY.md](./SECURITY.md)                           | Security reporting  |
-| [repo-hygiene-protocol.md](./repo-hygiene-protocol.md) | Hygiene protocol    |
+| Doc                                                              | Role                  |
+| ---------------------------------------------------------------- | --------------------- |
+| [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)                       | Community standards   |
+| [CONTRIBUTING.md](./CONTRIBUTING.md)                             | Contribution guide    |
+| [SECURITY.md](./SECURITY.md)                                     | Security reporting    |
+| [repo-provisioning-protocol.md](./repo-provisioning-protocol.md) | Provisioning protocol |

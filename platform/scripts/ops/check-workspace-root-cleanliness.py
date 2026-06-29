@@ -52,8 +52,8 @@ WALKER_SKIP_PREFIXES = (
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Check root cleanliness against 01-docs/operations/repo/root-allowlist.json. "
-            "Optionally emit a deterministic JSON sidecar for repo-hygiene audits."
+            "Check root cleanliness against docs/operations/repo/root-allowlist.json. "
+            "Optionally emit a deterministic JSON sidecar for repo provisioning audits."
         )
     )
     parser.add_argument(
@@ -208,7 +208,7 @@ def find_issues(allowlist: dict, root: pathlib.Path | None = None) -> list[str]:
 
         if any(name.startswith(prefix) for prefix in forbidden_prefixes):
             issues.append(
-                f"Loose artifact `{name}` at repo root; move to `.local/` (see repo-hygiene-protocol)."
+                f"Loose artifact `{name}` at repo root; move to `.local/` (see docs/operations/repo/repo-provisioning-protocol.md)."
             )
             continue
 
@@ -217,7 +217,7 @@ def find_issues(allowlist: dict, root: pathlib.Path | None = None) -> list[str]:
             continue
 
         if name not in allowed:
-            hint = " See 01-docs/operations/repo/repo-hygiene-protocol.md for canonical homes."
+            hint = " See docs/operations/repo/repo-provisioning-protocol.md for canonical homes."
             issues.append(
                 f"Unexpected root entry `{name}` — not in root-allowlist.json.{hint}"
             )
@@ -232,10 +232,10 @@ def find_issues(allowlist: dict, root: pathlib.Path | None = None) -> list[str]:
 def _is_build_artifact(path: str) -> bool:
     """Match BUILD_ARTIFACT_RE but reject source-tree false positives.
 
-    RH-P2-01: 03-platform/scripts/coverage/check-summary.mjs is a coverage CHECKER, not
+    RH-P2-01: platform/scripts/coverage/check-summary.mjs is a coverage CHECKER, not
     coverage output. A path is a build artifact only when the artifact-named
     segment's immediate parent is not a source-container directory like
-    `03-platform/scripts/`, `03-platform/tools/`, `tests/`, `01-docs/`.
+    `platform/scripts/`, `platform/tools/`, `tests/`, `docs/`.
     """
     if not BUILD_ARTIFACT_RE.search(path):
         return False
@@ -269,7 +269,7 @@ def _gitignored_relpaths(paths: list[str]) -> set[str]:
 
 
 def compute_deterministic_axes() -> dict:
-    """Axes 3/6/7/8 of the repo-hygiene scorecard, computed from git state."""
+    """Axes 3/6/7/8 of the repo provisioning scorecard, computed from git state."""
     tracked = subprocess.run(
         ["git", "ls-files"],
         cwd=ROOT,
@@ -355,9 +355,9 @@ def main(argv: list[str] | None = None) -> int:
 
     print("# Workspace Root Cleanliness")
     print("")
-    print("Policy: 01-docs/operations/repo/repo-hygiene-protocol.md")
+    print("Policy: docs/operations/repo/repo-provisioning-protocol.md")
     print(
-        f"Allowlist: 01-docs/operations/repo/root-allowlist.json "
+        f"Allowlist: docs/operations/repo/root-allowlist.json "
         f"(v{allowlist.get('version', '?')}, schema v{allowlist.get('schema_version', '?')})"
     )
     print("")
@@ -388,7 +388,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.json_out:
         sidecar = {
-            "policy_source": "01-docs/operations/repo/repo-hygiene-protocol.md",
+            "policy_source": "docs/operations/repo/repo-provisioning-protocol.md",
             "allowlist_path": str(ALLOWLIST_PATH.relative_to(ROOT)),
             "allowlist_version": allowlist.get("version"),
             "schema_version": allowlist.get("schema_version"),

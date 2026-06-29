@@ -15,6 +15,7 @@ import { summarizeRepoAudit } from './lib/aaas-audit-registry.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const FLEET = join(ROOT, '..');
 const BINDINGS = join(ROOT, 'machine/fleet-audit-contracts.json');
+const SCRUB_MAP = join(ROOT, 'machine/spec/aaas-legacy-scrub-map.json');
 const OUT = join(ROOT, 'machine/fleet-audit-registry.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
@@ -27,11 +28,24 @@ function readJson(p) {
   }
 }
 
-function loadWitnesses(repoRoot) {
+function legacyArchiveTypes(map) {
+  const types = new Set();
+  for (const group of Object.values(map?.archive ?? {})) {
+    for (const type of group.types ?? []) types.add(type);
+  }
+  return types;
+}
+
+function witnessTypeFromFile(name) {
+  return name.replace(/-latest\.json$/, '').replace(/\.json$/, '');
+}
+
+function loadWitnesses(repoRoot, excludedTypes) {
   const dir = join(repoRoot, 'audit/evidence');
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
     .filter((f) => f.endsWith('-latest.json'))
+    .filter((f) => !excludedTypes.has(witnessTypeFromFile(f)))
     .map((f) => ({ file: f, json: readJson(join(dir, f)) }))
     .filter((w) => w.json);
 }
@@ -42,13 +56,14 @@ function main() {
     console.error(`missing bindings: ${BINDINGS}`);
     process.exit(1);
   }
+  const excludedTypes = legacyArchiveTypes(readJson(SCRUB_MAP));
   const nowMs = Date.now();
   const repos = (bindings.repos ?? []).map((b) => {
     const repoRoot = join(FLEET, b.repo);
     if (!existsSync(repoRoot)) return { repo: b.repo, present: false };
     const state = summarizeRepoAudit({
       repo: b.repo,
-      witnesses: loadWitnesses(repoRoot),
+      witnesses: loadWitnesses(repoRoot, excludedTypes),
       nowMs,
       cadenceDays: b.cadenceDays ?? bindings.defaultCadenceDays ?? 7,
     });

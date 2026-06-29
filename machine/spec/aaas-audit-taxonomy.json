@@ -86,7 +86,7 @@
         "product": ["product-competitiveness", "ux-product-design", "global-south-resilience"],
         "platform": ["security", "devops-observability", "enterprise-sovereign"],
         "intelligence": ["agentic-trust", "ecosystem-moat"],
-        "docs-hygiene": ["documentation", "repo-hygiene", "spec-truth"]
+        "docs-hygiene": ["documentation", "repo-provisioning", "spec-truth"]
       }
     },
     "trustAndSafety": {

@@ -11,7 +11,7 @@ const REPO = repoRootFromImportMeta(import.meta.url);
 const WRITE = process.argv.includes('--write');
 const WITNESS = join(REPO, 'audit/evidence/repo-provision-latest.json');
 
-const L0_HUBS = ['docs', 'agile', 'pm', 'agents', 'ops', 'audit', 'platform', 'workstream', 'archive', 'deploy', 'config'];
+const L0_HUBS = ['docs', 'agile', 'machine', 'agents', 'operations', 'audit', 'platform', 'workstream', 'archive', 'deploy', 'config'];
 
 function gate(id, ok, detail = null) {
   return { id, ok, ...(detail ? { detail } : {}) };
@@ -19,7 +19,7 @@ function gate(id, ok, detail = null) {
 
 function loadL1(id) {
   const local = join(REPO, `machine/spec/repo-provisioning/${id}.json`);
-  const canon = join(REPO, `../canon-os/pm/spec/repo-provisioning/${id}.json`);
+  const canon = join(REPO, `../canon-os/machine/spec/repo-provisioning/${id}.json`);
   const path = existsSync(local) ? local : canon;
   return existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : null;
 }
@@ -31,17 +31,6 @@ function hubProfile(repoName) {
   return profileKeyFromTier(readProductTier(REPO));
 }
 
-function isThinAgenticBridge() {
-  const manifest = join(REPO, 'agentic/manifest.json');
-  if (!existsSync(manifest)) return false;
-  try {
-    const doc = JSON.parse(readFileSync(manifest, 'utf8'));
-    return doc.schema === 'gtcx.agentic.bridge.v1' || doc.role === 'thin-bridge';
-  } catch {
-    return false;
-  }
-}
-
 function main() {
   const gates = [];
   const repoName = basename(REPO);
@@ -51,7 +40,7 @@ function main() {
     gates.push(gate(`L0:${hub}`, existsSync(join(REPO, hub)), hub));
   }
 
-  gates.push(gate('L0:forbidden:agentic', !existsSync(join(REPO, 'agentic')) || isThinAgenticBridge(), 'agentic/ absent or thin-bridge only'));
+  gates.push(gate('L0:forbidden:agentic', !existsSync(join(REPO, 'agentic')), 'agentic/ absent'));
 
   const l1Checks = [
     { id: 'L1-workstream', files: ['workstream/README.md', 'workstream/FOLDER-SPEC.md', 'workstream/sprints/current.md'] },

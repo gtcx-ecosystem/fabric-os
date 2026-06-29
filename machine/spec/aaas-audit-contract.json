@@ -1,7 +1,8 @@
 {
   "$schema": "gtcx://fabric-os/aaas-audit-contract/v1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-06-28",
+  "changelog": "1.2.0 adds lenses, lifecycle, maturityModel, namingConventions, ownership (additive; conformance surface unchanged — pins may be re-provisioned). 1.1.0 added the four-artifact vocabulary + audit/handoff.",
   "provider": "fabric-os",
   "service": "AAAS",
   "title": "Audit-as-a-Service contract — fabric-os ↔ repo",

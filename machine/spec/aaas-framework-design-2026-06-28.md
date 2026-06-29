@@ -165,11 +165,15 @@ per handoff item; unowned type / unowned handoff item is a hard violation, SLA b
 evaluator (Systems Architecture · Tooling · Process · Safeguards · Monitoring · Team & Ownership),
 production-only, weakest-link, with half-levels. It writes `audit/evidence/signal-maturity-latest.json`,
 which the handoff synthesizer already consumes — so the loop now runs in **full dual-lens mode**
-(SIGNAL weakest-link first, then MPR gaps). **fabric-os self-scores SIGNAL L5 across all six
-dimensions** — reached by producing the real evidence the lens names: signed-provenance witness
-(adversarial honesty → Safeguards L5), ownership witness (Team & Ownership L5), and a populated
-cadence history (Monitoring L5). _Honest caveat:_ the cadence history is a rapid bootstrap
-(interval ~0d); real trend confidence accrues as cadence heartbeats run over actual time.
+(SIGNAL weakest-link first, then MPR gaps). fabric-os self-scores SIGNAL **L5 (PROVISIONAL)**
+across all six dimensions, reached by producing the evidence the lens names (signed-provenance,
+ownership, cadence-history witnesses). **Why provisional — two honest caveats from the session
+self-audit:** (1) _circularity_ — the SIGNAL rubric and the repo it scores were built together, so
+fabric-os passes existence-based checks because it _contains_ the framework; an independent rubric
+may score differently. (2) _frozen evidence_ — Monitoring L5 rests on a committed 4-snapshot cadence
+history bootstrapped at ~0d interval; delete-and-regenerate resets it below L5. The L5 is therefore
+"L5-capable, evidence frozen at commit," not a reproduced standing property. Treat as provisional
+until an **independent** run (foreign rubric, fresh witnesses) reproduces it.
 
 **Open:**
 

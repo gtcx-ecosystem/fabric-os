@@ -152,8 +152,12 @@ function main() {
   witness.checkedAt = nowIso;
   witness.repo = 'fabric-os';
 
-  mkdirSync(dirname(OUT), { recursive: true });
-  writeFileSync(OUT, `${JSON.stringify(witness, null, 2)}\n`);
+  // Only persist on --write. Read-only/--json/test runs must not mutate the tree
+  // (self-audit: the unconditional write dirtied the working tree on every invocation).
+  if (WRITE) {
+    mkdirSync(dirname(OUT), { recursive: true });
+    writeFileSync(OUT, `${JSON.stringify(witness, null, 2)}\n`);
+  }
 
   // Predictive layer — trends, regressions, breach forecasts (§4c.2).
   const forecast = runPredictive(ROOT, WRITE, nowIso);

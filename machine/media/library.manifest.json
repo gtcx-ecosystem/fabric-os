@@ -39,5 +39,21 @@
       "prompt": "Photorealistic editorial image for Fabric OS, the AWS, Kubernetes, Terraform, deployment, and independent assurance control plane. Show a practical infrastructure operations workspace with deployment runbooks, cloud topology context, reliability review, and engineers coordinating release evidence. Natural light, institutional trust, no visible brand logos, no readable text, no fake credentials, no certificates, no seals, no badges, no QR codes, no watermarks."
     }
   ],
-  "generatedAssets": []
+  "generatedAssets": [
+    {
+      "id": "FABRIC-IMG-HERO-001-A",
+      "promptId": "FABRIC-IMG-HERO-001",
+      "assetClass": "images",
+      "category": "hero",
+      "generator": "ChatGPT image generation",
+      "path": "platform/assets/generated/media/images/hero/hero-001.png",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "sourceGeneratedPath": "/Users/amanianai/.codex/generated_images/019f0d3e-af03-74d3-81f7-feaca6f817b1/ig_02a92070ae36ba85016a41b884a33081938fa970d4ef438b4c.png",
+      "status": "selected",
+      "createdDate": "2026-06-29"
+    }
+  ]
 }

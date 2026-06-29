@@ -1,3 +1,13 @@
+---
+title: 'AaaS framework audit recommendations'
+status: current
+date: 2026-06-28
+owner: fabric-os
+document_type: remediation
+tier: operating
+review_cycle: on-change
+---
+
 # AaaS framework — audit findings & recommendations
 
 _Summary of the audit of the AaaS (MPR + SIGNAL) framework built in fabric-os. Three self-audits plus

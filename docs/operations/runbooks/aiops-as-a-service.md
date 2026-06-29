@@ -1,3 +1,13 @@
+---
+title: 'AIOps-as-a-Service operator runbook'
+status: current
+date: 2026-06-29
+owner: fabric-os
+document_type: runbook
+tier: operating
+review_cycle: on-change
+---
+
 # AIOps-as-a-Service (substrate) — operator runbook
 
 **Protocol:** P49-AIOPS-AS-A-SERVICE · **Lane:** AIOps · **Owner:** fabric-os
@@ -30,7 +40,7 @@ agent-driven operations. It does not run the fleet gate (bridge-os) or own MLOps
 | Signals register             | `machine/aiops-signals-register.json`                                |
 | Harness                      | `platform/scripts/aiops-check.mjs`                                   |
 | Witness                      | `audit/evidence/aiops-check-latest.json`                             |
-| This runbook                 | `docs/operations/aiops-as-a-service.md`                              |
+| This runbook                 | `docs/operations/runbooks/aiops-as-a-service.md`                     |
 
 ## Run the check
 

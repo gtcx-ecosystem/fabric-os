@@ -1,14 +1,13 @@
 # AaaS Framework Design — MPR + SIGNAL dual-lens audit lifecycle
 
-_status: **PARKED (experimental)** · date: 2026-06-28 · owner: fabric-os_
+_status: experimental · date: 2026-06-28 · owner: fabric-os_
 
-> **PRODUCT-LEAD DECISION (2026-06-28): park this workstream.** After three self-audits, the honest
-> finding is that this framework is **off-moat infrastructure** (the org moat is product/UX craft, not
-> measurement infra), it has **never fulfilled its purpose** (0 handoff-driven remediations), it does
-> **not run** (CI billing-locked; loop run for real once), and it was assessed **circularly** (graded by
-> instruments it built). ~75 commits, zero product/user value. Do NOT invest further here without a
-> concrete, user-facing reason. The code is competent and preserved; it is simply not the work.
-> Re-activate only if a real consumer needs it. Pivoting to actual product value.
+> **AUDIT NOTE (2026-06-28).** Three self-audits + one independent audit assessed this framework.
+> Findings: it is measurement infrastructure (the org moat is product/UX craft); it has not yet driven
+> a real handoff remediation (0 to date); it does not currently run (CI Actions billing-locked); and the
+> fabric-os self-score was circular (the rubric rewards existence of artifacts the repo contains). The
+> libs are clean and tested. **Recommendation:** validate value with one real end-to-end remediation in a
+> product repo before further investment. Full audit: `audit/reports/session-self-audit-2026-06-28.md`.
 
 ## Purpose
 

@@ -37,6 +37,26 @@
       "generator": "ChatGPT image generation",
       "usage": "hero, presentation, product marketing",
       "prompt": "Photorealistic editorial image for Fabric OS, the AWS, Kubernetes, Terraform, deployment, and independent assurance control plane. Show a practical infrastructure operations workspace with deployment runbooks, cloud topology context, reliability review, and engineers coordinating release evidence. Natural light, institutional trust, no visible brand logos, no readable text, no fake credentials, no certificates, no seals, no badges, no QR codes, no watermarks."
+    },
+    {
+      "id": "FABRIC-IMG-WORKFLOW-001",
+      "assetClass": "images",
+      "category": "workflow",
+      "path": "platform/assets/generated/media/images/workflow/",
+      "status": "ready-for-generation",
+      "generator": "ChatGPT image generation",
+      "usage": "workflow, documentation, product marketing",
+      "prompt": "Photorealistic editorial workflow image for Fabric OS infrastructure release review. Operators compare deployment evidence, cloud topology, reliability gates, and runbook artifacts around laptops, abstract dashboards, printed runbooks, and a topology board. Natural light, focused, grounded, no visible brand logos, no readable text, no fake credentials, no certificates, no seals, no badges, no QR codes, no watermarks."
+    },
+    {
+      "id": "FABRIC-IMG-DETAIL-001",
+      "assetClass": "images",
+      "category": "detail",
+      "path": "platform/assets/generated/media/images/detail/",
+      "status": "ready-for-generation",
+      "generator": "ChatGPT image generation",
+      "usage": "detail, documentation, product marketing",
+      "prompt": "Photorealistic editorial close-detail image for Fabric OS deployment assurance. Close-up of deployment evidence artifacts on an operations desk: runbook pages, laptop with abstract topology graph, terminal-like dashboard texture, notebook, pen, and infrastructure review materials. No visible brand logos, no readable text, no fake credentials, no certificates, no seals, no badges, no QR codes, no watermarks."
     }
   ],
   "generatedAssets": [
@@ -52,6 +72,36 @@
         "height": 941
       },
       "sourceGeneratedPath": "/Users/amanianai/.codex/generated_images/019f0d3e-af03-74d3-81f7-feaca6f817b1/ig_02a92070ae36ba85016a41b884a33081938fa970d4ef438b4c.png",
+      "status": "selected",
+      "createdDate": "2026-06-29"
+    },
+    {
+      "id": "FABRIC-IMG-WORKFLOW-001-A",
+      "promptId": "FABRIC-IMG-WORKFLOW-001",
+      "assetClass": "images",
+      "category": "workflow",
+      "generator": "ChatGPT image generation",
+      "path": "platform/assets/generated/media/images/workflow/workflow-001.png",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "sourceGeneratedPath": "/Users/amanianai/.codex/generated_images/019f0d3e-af03-74d3-81f7-feaca6f817b1/ig_0fd976d2dadbcb0e016a41c169e5708197b9c3447bc8fd2ce2.png",
+      "status": "selected",
+      "createdDate": "2026-06-29"
+    },
+    {
+      "id": "FABRIC-IMG-DETAIL-001-A",
+      "promptId": "FABRIC-IMG-DETAIL-001",
+      "assetClass": "images",
+      "category": "detail",
+      "generator": "ChatGPT image generation",
+      "path": "platform/assets/generated/media/images/detail/detail-001.png",
+      "dimensions": {
+        "width": 1670,
+        "height": 941
+      },
+      "sourceGeneratedPath": "/Users/amanianai/.codex/generated_images/019f0d3e-af03-74d3-81f7-feaca6f817b1/ig_0fd976d2dadbcb0e016a41c1a9540c8197a266385f65a0fd00.png",
       "status": "selected",
       "createdDate": "2026-06-29"
     }

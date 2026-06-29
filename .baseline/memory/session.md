@@ -39,3 +39,13 @@ focus: "Baseline initialization — discovery and enrichment"
 - Resolve TODOs/FIXMEs flagged in pitfalls.md
 - Verify ecosystem dependencies in dependencies.md
 - Re-run `baseline-init` after significant repo changes
+
+
+## F-prod-06 correction (2026-06-27)
+
+Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot-ai production endpoint is `https://griot.gtcx.trade`.
+
+- Reverted the `api.griot.ai` diagnostic branch.
+- Restored `F-prod-06` status to **closed** for `griot.gtcx.trade`.
+- `griot:prod:verify:write` passes (HTTP/2 200, ACM ISSUED).
+- Related commits: `fabric-os` `d5a6f4f0` and its follow-up revert/closure commit.

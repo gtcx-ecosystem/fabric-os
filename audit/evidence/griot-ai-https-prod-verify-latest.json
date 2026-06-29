@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/blocker-verify/v1",
   "blockerId": "F-prod-06",
-  "updated": "2026-06-27T17:11:49.482Z",
+  "updated": "2026-06-29T00:12:56.005Z",
   "repo": "fabric-os",
   "status": "ready",
   "gates": [

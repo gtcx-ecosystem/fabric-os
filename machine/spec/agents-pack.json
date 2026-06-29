@@ -88,7 +88,7 @@
     },
     "worldClass": {
       "secondary": true,
-      "artifacts": ["agents/bootstrap/README.md", "agents/pillar-scorecard.md"],
+      "artifacts": ["agents/bootstrap/README.md", "agents/scorecard.md"],
       "gates": ["time-to-first-success path documented with commands + exit codes"],
       "minBar": "session chain ≤8 reads before P22"
     },
@@ -143,7 +143,7 @@
       "role": "repo-local mirror of this pack"
     },
     {
-      "path": "agents/pillar-scorecard.md",
+      "path": "agents/scorecard.md",
       "role": "11PR self-assessment for this layer — links to fleet rubric"
     }
   ],
@@ -172,7 +172,7 @@
       "purpose": "Repo-scoped agent task playbooks (investigate CI, write ADR, dependency bump) — not operator incident runbooks",
       "allowedDocTypes": ["onboarding", "runbook"],
       "required": ["README.md"],
-      "sourcePatterns": ["docs/operations/agents/workflows/"],
+      "sourcePatterns": ["agents/playbooks/"],
       "forbidden": ["Duplicate docs/operations/runbooks/ content"]
     },
     "personas": {
@@ -240,7 +240,7 @@
   "migration": {
     "from": [
       "agents/",
-      "docs/operations/agents/",
+      "agents/playbooks/",
       "docs/reference/agent-sops/",
       "docs/_archive/agent-sops/",
       "per-provider folders at agents/{cursor,claude,...}"

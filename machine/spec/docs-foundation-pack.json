@@ -49,6 +49,20 @@
     "path": "../canon-os/docs/governance/constitution/GTCX-CONSTITUTION.md",
     "requiredArticles": ["I", "III", "V"]
   },
+  "profiles": {
+    "platform-runtime": {
+      "foundationRequired": true
+    },
+    "platform": {
+      "foundationRequired": true
+    },
+    "product": {
+      "foundationRequired": true
+    },
+    "constitution-standards": {
+      "foundationRequired": true
+    }
+  },
   "enforcement": {
     "check": "pnpm docs:foundation:check",
     "witness": "audit/evidence/docs-foundation-latest.json"

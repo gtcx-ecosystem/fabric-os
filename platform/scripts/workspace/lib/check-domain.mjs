@@ -240,7 +240,7 @@ function checkWorkspaceReadmes() {
 function checkAgentsFolder() {
   const errors = [];
   const required = [
-    ['docs/operations/agents/README.md', 'docs/agents/README.md'],
+    ['agents/README.md'],
   ];
   for (const candidates of required) {
     if (!firstExistingPath(candidates)) errors.push(candidates[0]);

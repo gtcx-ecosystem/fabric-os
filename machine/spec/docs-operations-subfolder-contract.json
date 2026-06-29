@@ -1,0 +1,330 @@
+{
+  "$schema": "gtcx://canon-os/docs-operations-subfolder-contract/v3",
+  "version": "3.0.0",
+  "updated": "2026-06-21",
+  "initiative": "INIT-DOCS-CORE-IA-V1",
+  "repo": "fabric-os",
+  "role": "platform-runtime-local-contract",
+  "ratifiedSpec": "docs/governance/docs-ia/proposals/DOCS-ENGINEERING-OPERATIONS-SPEC-2026-06-21.md",
+  "principle": "operations/ = HOW IT'S RUN (narrative). Machine state stays in operations/ (repo root) — link only. Every zone provisioned: README + declared format + allowlist. Only README + archive required; zones optional-but-contracted (present with real content, identical format when present). A zone absent from this contract FAILS — no junk-drawer drift. World-class basis: Google SRE (runbook≠playbook≠postmortem, immutable blameless postmortems, on-call).",
+  "referenceImplRepo": "baseline-os",
+  "machineStateSoR": "operations/ (repo root) — P29 manifests, link only",
+  "root": {
+    "allowedFiles": ["README.md", "scorecard.md"],
+    "requiredFiles": ["README.md"],
+    "forbidLooseMdAtRoot": true,
+    "note": "Index + scorecard only; everything else in a contracted zone."
+  },
+  "subfolders": {
+    "runbooks": {
+      "purpose": "One task per file — step-by-step, executable under pressure by someone who didn't build it.",
+      "documentType": "runbook",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{system}-{action}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": [
+        "operator",
+        "processes",
+        "assurance",
+        "audit-dr",
+        "incident",
+        "sre",
+        "archive"
+      ]
+    },
+    "playbooks": {
+      "purpose": "SRE — incident-category decision trees + roles + comms (a category, not one task).",
+      "documentType": "playbook",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{category}-response.md (e.g. sev1-response.md)",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["batch-a", "archive"]
+    },
+    "incidents": {
+      "purpose": "SRE — incident records + postmortems.",
+      "documentType": "incident",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": [
+        "README.md",
+        "CODE_OF_CONDUCT.md",
+        "CONTRIBUTING.md",
+        "SECURITY.md",
+        "root-allowlist.json"
+      ],
+      "forbidLooseMdAtRoot": true,
+      "allowedChildFolders": ["postmortems", "archive"],
+      "childContracts": {
+        "postmortems": {
+          "filePatternRegex": "^\\d{4}-\\d{2}-\\d{2}-[a-z0-9-]+\\.md$",
+          "filePatternHuman": "YYYY-MM-DD-{slug}.md",
+          "immutable": true,
+          "rule": "Date-prefixed, immutable, blameless (Google SRE template)."
+        }
+      }
+    },
+    "on-call": {
+      "purpose": "SRE — escalation, severity levels, being-on-call.",
+      "documentType": "runbook",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md (escalation-policy.md, severity-levels.md)",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["runbooks", "archive"]
+    },
+    "agent-init": {
+      "purpose": "Agent session entry — repo init (fleet init is AGENT-INIT-CANON in canon-os).",
+      "documentType": "overview",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md", "agent-universal-instructions.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["protocols", "templates", "archive"]
+    },
+    "deployment": {
+      "purpose": "Release + environment narratives.",
+      "documentType": "runbook",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["environments", "checklists", "archive"]
+    },
+    "remediation": {
+      "purpose": "Remediation runbooks.",
+      "documentType": "runbook",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["archive"]
+    },
+    "coordination": {
+      "purpose": "Cross-repo coordination — inbound/outbound tickets, registers, witnesses.",
+      "documentType": "overview",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["inbound", "outbound", "registers", "witnesses", "archive"]
+    },
+    "repo": {
+      "purpose": "Repo ops — onboarding, repo-level operating procedures.",
+      "documentType": "runbook",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": [
+        "README.md",
+        "CODE_OF_CONDUCT.md",
+        "CONTRIBUTING.md",
+        "SECURITY.md",
+        "root-allowlist.json"
+      ],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["onboarding", "archive"]
+    },
+    "workspace": {
+      "purpose": "Workspace layouts and conventions.",
+      "documentType": "runbook",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["layouts", "archive"]
+    },
+    "templates": {
+      "purpose": "Operations templates.",
+      "documentType": "overview",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["agent", "mlops", "coordination", "archive"]
+    },
+    "monitoring": {
+      "purpose": "Alerts, dashboards, SLO narratives (receives the engineering→operations move).",
+      "documentType": "runbook",
+      "optional": true,
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["archive"]
+    },
+    "runtime": {
+      "purpose": "Live runtime config/ops narrative (receives the engineering→operations move).",
+      "documentType": "runbook",
+      "optional": true,
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["archive"]
+    },
+    "compliance": {
+      "purpose": "Typed runtime compliance artifacts — platform-runtime profile only (baseline-os, fabric-os).",
+      "documentType": "compliance",
+      "profileOnly": "platform-runtime",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["evaluations", "evidence", "evidence-package", "archive"],
+      "nestSpec": "machine/spec/docs-operations-compliance-nest.json"
+    },
+    "daas": {
+      "purpose": "DevOps-as-a-Service provider cards and repo consumption runbooks.",
+      "documentType": "runbook",
+      "profileOnly": "platform-runtime",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{repo-or-service}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["cards", "archive"]
+    },
+    "core-ops": {
+      "purpose": "fabric-os provider core operations narrative.",
+      "documentType": "overview",
+      "profileOnly": "platform-runtime",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["batch-a", "archive"]
+    },
+    "platform-services": {
+      "purpose": "fabric-os provider platform service runbooks.",
+      "documentType": "runbook",
+      "profileOnly": "platform-runtime",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{service}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["archive"]
+    },
+    "secas": {
+      "purpose": "Security-as-a-Service provider runbooks.",
+      "documentType": "runbook",
+      "profileOnly": "platform-runtime",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{program}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["runbooks", "archive"]
+    },
+    "fleet-ops-assurance": {
+      "purpose": "Fleet operations assurance programme narrative.",
+      "documentType": "overview",
+      "profileOnly": "platform-runtime",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["archive"]
+    },
+    "protocols": {
+      "purpose": "Protocol implementation runbooks and staging credential chains.",
+      "documentType": "runbook",
+      "profileOnly": "platform-runtime",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{slug}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["archive"]
+    }
+  },
+  "decomposeMatrix": {
+    "sprints": "agile/ (repo root)",
+    "agile": "agile/ (repo root)",
+    "scrum": "agile/ (repo root)",
+    "gtm": "docs/strategy/go-to-market.md",
+    "vendor-relations": "docs/primitives/business/",
+    "agent-providers": "docs/operations/coordination/ or docs/primitives/business/",
+    "specs": "docs/engineering/",
+    "audit": "audit/evidence/ (repo root — link only)",
+    "evidence": "audit/evidence/ (repo root — link only)",
+    "batch-a": "docs/archive/",
+    "batch-b": "docs/archive/",
+    "batch-c": "docs/archive/",
+    "reference-mirror": "docs/archive/",
+    "dashboards": "docs/operations/monitoring/",
+    "analytics": "docs/operations/monitoring/",
+    "ux": "docs/product/ux/",
+    "accessibility": "docs/product/ux/",
+    "security": "docs/primitives/architecture/security-model.md (shape) or docs/engineering/security/ (depth)",
+    "production-blockers": "docs/operations/deployment/ or docs/product/roadmap/",
+    "production-deploy": "docs/operations/deployment/",
+    "release": "docs/operations/deployment/",
+    "ga": "docs/operations/deployment/",
+    "drills": "docs/operations/playbooks/",
+    "dr-drills": "docs/operations/playbooks/",
+    "reliability": "docs/operations/monitoring/ or playbooks/",
+    "agents": "docs/operations/agent-init/"
+  },
+  "extensionRule": "Zones beyond this contract require a docs/sor.json iaExtensions declaration with a stated reason. Undeclared extra zone → gate FAIL.",
+  "fabricConsumption": {
+    "note": "fabric-os is the fleet DevOps/Ops-as-a-Service PROVIDER. A local repo's operations/ CONSUMES these functions — it does not duplicate them. Reference IMPLEMENTATION (structure) = baseline-os; ops-function PROVIDER = fabric-os. Consumption is non-blocking (blocksIR: false).",
+    "machineBinding": "operations/fabric-contract.json (repo root) — what this repo consumes; docs/operations/ links to it, never duplicates.",
+    "linkZones": {
+      "deployment": "Local deployment runbooks LINK fabric-os deployment choreography (Protocol 40). Local bindings in operations/deployment-profile.json.",
+      "coordination": "Holds inbound from-fabric-os-*.md acknowledgements + outbound handoffs (Protocol 44 fabric-consumption).",
+      "compliance": "Links fabric-os compliance substrate + compliance-os policy (Protocol 50). Platform-runtime only."
+    },
+    "doNotDuplicate": [
+      "DaaS / SECaaS narrative (link fabric-os platform-services/)",
+      "Supply-chain / vendor assurance (link fabric-os secas/)",
+      "Compliance control register (link compliance-os + fabric-os attestation)",
+      "Friction registers (consume fabric-os/pm/spec/*-friction-register.json via operations/)"
+    ],
+    "services": {
+      "deployment-choreography": "P40 — fabric-os",
+      "devops-as-a-service": "P41 — fabric-os",
+      "security-as-a-service": "P42 — fabric-os",
+      "fabric-consumption": "P44 — consumption contract",
+      "complianceops-as-a-service": "P50 — compliance-os + fabric-os substrate",
+      "mlops-as-a-service": "P52 — baseline-os lane + fabric-os substrate",
+      "aiops-as-a-service": "P53 — bridge-os program + fabric-os substrate"
+    }
+  },
+  "fabricOnlyZones": {
+    "note": "These are fabric-os's PROVIDER zones — allowed ONLY on fabric-os via docs/sor.json iaExtensions. Forbidden in product/local repos (consume via links instead).",
+    "zones": ["core-ops", "platform-services", "secas"],
+    "rule": "A product repo with any of these → gate FAIL (it should be consuming, not hosting the provider zone)."
+  },
+  "fabricContract": {
+    "referenceImplRepo": "baseline-os",
+    "opsFunctionProvider": "fabric-os",
+    "referencePath": "docs/operations/",
+    "machineSoR": "operations/ (repo root)"
+  },
+  "enforcement": {
+    "check": "pnpm docs:operations:check",
+    "witness": "audit/evidence/docs-operations-latest.json",
+    "enforces": [
+      "zone presence",
+      "required README",
+      "allowlist",
+      "filename format (filePatternRegex)"
+    ]
+  }
+}

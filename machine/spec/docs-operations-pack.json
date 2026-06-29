@@ -144,6 +144,7 @@
         "monitoring",
         "runtime",
         "compliance",
+        "daas",
         "core-ops",
         "platform-services",
         "secas",
@@ -240,7 +241,7 @@
   "pillarContract": {
     "compliance": {
       "primary": true,
-      "artifacts": ["docs/operations/FOLDER-SPEC.md"],
+      "artifacts": ["docs/operations/README.md", "machine/spec/docs-operations-pack.json"],
       "gates": ["pnpm docs:operations:check"],
       "minBar": "≥100 layer order; reference hubs 100",
       "witness": "audit/evidence/mpr-operations-layer-latest.json"

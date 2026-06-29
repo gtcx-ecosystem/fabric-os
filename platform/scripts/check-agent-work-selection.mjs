@@ -13,12 +13,12 @@ const ROOT = join(__dirname, '../..');
 const CHECKS = [
   {
     name: 'manifest exists',
-    path: join(ROOT, 'docs/operations/agent-work-selection.md'),
+    path: join(ROOT, 'docs/operations/agent-init/agent-work-selection.md'),
     test: (p) => existsSync(p),
   },
   {
     name: 'manifest has adoption_status',
-    path: join(ROOT, 'docs/operations/agent-work-selection.md'),
+    path: join(ROOT, 'docs/operations/agent-init/agent-work-selection.md'),
     test: (p) => {
       if (!existsSync(p)) return false;
       const content = readFileSync(p, 'utf8');

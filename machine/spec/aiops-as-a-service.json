@@ -24,7 +24,7 @@
     "spec": "machine/spec/aiops-as-a-service.json",
     "frictionRegister": "machine/aiops-friction-register.json",
     "signalsRegister": "machine/aiops-signals-register.json",
-    "opsEntry": "docs/operations/aiops-as-a-service.md",
+    "opsEntry": "docs/operations/runbooks/aiops-as-a-service.md",
     "witness": "audit/evidence/aiops-check-latest.json"
   },
   "harness": {

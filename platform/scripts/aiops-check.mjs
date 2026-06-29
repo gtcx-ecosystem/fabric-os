@@ -41,7 +41,7 @@ export function evaluateLane() {
       evidence: 'harness',
     },
     craft: {
-      score: pathOk('docs/operations/aiops-as-a-service.md') ? 100 : 0,
+      score: pathOk('docs/operations/runbooks/aiops-as-a-service.md') ? 100 : 0,
       evidence: 'runbook',
     },
     worldClass: { score: 85, evidence: 'substrate lane' },

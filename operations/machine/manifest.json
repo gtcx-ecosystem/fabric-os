@@ -12,7 +12,7 @@
   "local": {
     "agileDocs": "agile",
     "executionRoadmap": null,
-    "workSelection": "docs/operations/agent-work-selection.md",
+    "workSelection": "docs/operations/agent-init/agent-work-selection.md",
     "autoDevState": "audit/auto-dev-state.md",
     "nextWorkScript": "platform/scripts/agent-next-work.mjs"
   },

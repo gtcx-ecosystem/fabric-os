@@ -10,7 +10,7 @@
     "executionRoadmap": "audit/product-management/execution-roadmap.md",
     "autoDevState": "audit/product-management/auto-dev-state.md",
     "agentsCanonical": "agents/",
-    "agentWorkSelection": "docs/operations/agent-work-selection.md",
+    "agentWorkSelection": "docs/operations/agent-init/agent-work-selection.md",
     "governanceTierB": "docs/operations/repo/",
     "docsIamap": "docs/README.md",
     "docsIndex": "docs/INDEX.md",

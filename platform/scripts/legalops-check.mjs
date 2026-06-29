@@ -37,7 +37,7 @@ function ecosystemRefExists(ref) {
 }
 
 const spec = existsSync(SPEC) ? JSON.parse(readFileSync(SPEC, 'utf8')) : null;
-const runbookRel = spec?.artifacts?.runbook ?? 'docs/operations/legalops-as-a-service.md';
+const runbookRel = spec?.artifacts?.runbook ?? 'docs/operations/runbooks/legalops-as-a-service.md';
 const fleetProtocolRef =
   spec?.artifacts?.fleetProtocol ?? 'bridge-os/pm/spec/ecosystem-legal-program-protocol.json';
 const fleetWitnessRef =

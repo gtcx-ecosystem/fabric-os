@@ -25,7 +25,7 @@ function emitP22(payload, ctx = {}) {
 
 function resolvePaths() {
   const paths = {
-    manifest: join(REPO_ROOT, 'docs/operations/agent-work-selection.md'),
+    manifest: join(REPO_ROOT, 'docs/operations/agent-init/agent-work-selection.md'),
     roadmap: join(REPO_ROOT, 'audit/product-management/execution-roadmap.md'),
     secasRoadmap: join(REPO_ROOT, 'audit/product-management/secas-execution-roadmap.md'),
     session: join(REPO_ROOT, '.baseline/memory/session.md'),
@@ -392,7 +392,7 @@ function main() {
       ],
     },
     agentInstructions: [
-      `Mark ${story.id} in_progress in docs/operations/agent-work-selection.md before coding.`,
+      `Mark ${story.id} in_progress in docs/operations/agent-init/agent-work-selection.md before coding.`,
       'Update audit/product-management execution roadmaps and work register when complete.',
       'Refresh audit/product-management/auto-dev-state.md after completion.',
       'After push/status reports: Status Update (Done → Next work item → Parallel assurance lane when gates open), then implement.',

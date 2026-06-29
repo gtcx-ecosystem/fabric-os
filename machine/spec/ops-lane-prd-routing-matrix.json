@@ -92,11 +92,11 @@
     {
       "opsLane": "LegalOps",
       "ownerRepo": "fabric-os",
-      "visionRef": "docs/operations/legalops-as-a-service.md",
+      "visionRef": "docs/operations/runbooks/legalops-as-a-service.md",
       "goalsRef": "pm/spec/legalops-as-a-service.json",
       "milestoneRef": "ops/coordination/internal-human-gates.json",
       "initiativeRef": "INIT-ECOSYSTEM-LEGAL-PROGRAM",
-      "prdRef": "docs/operations/legalops-as-a-service.md",
+      "prdRef": "docs/operations/runbooks/legalops-as-a-service.md",
       "witnessRef": "audit/evidence/legalops-check-latest.json",
       "status": "operational"
     },

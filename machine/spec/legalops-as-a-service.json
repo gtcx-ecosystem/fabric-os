@@ -12,7 +12,7 @@
   "principle": "fabric-os owns LegalOps lane — friction register, harness, runbook, and fleet witnesses. Class S gates are parallel (blocksIR: false); canon holds human-gates manifest href only.",
   "artifacts": {
     "spec": "machine/spec/legalops-as-a-service.json",
-    "runbook": "docs/operations/legalops-as-a-service.md",
+    "runbook": "docs/operations/runbooks/legalops-as-a-service.md",
     "frictionRegister": "machine/legal-friction-register.json",
     "manifest": "operations/legal/manifest.json",
     "harness": "platform/scripts/legalops-check.mjs",

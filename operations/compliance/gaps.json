@@ -34,7 +34,7 @@
       "owner": "legal",
       "blocksIR": true,
       "note": "Data processing agreements remain Class S legal gates; fabric-os tracks via legalops-as-a-service.",
-      "evidence": "docs/operations/legalops-as-a-service.md"
+      "evidence": "docs/operations/runbooks/legalops-as-a-service.md"
     }
   ],
   "sor": {

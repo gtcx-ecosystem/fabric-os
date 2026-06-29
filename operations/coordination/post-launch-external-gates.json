@@ -2,7 +2,7 @@
   "$schema": "gtcx://fabric-os/post-launch-external-gates/v1",
   "version": "1.0.0",
   "updated": "2026-06-14",
-  "normativeDoc": "docs/operations/agent-work-selection.md",
+  "normativeDoc": "docs/operations/agent-init/agent-work-selection.md",
   "principle": "External/vendor/auditor artifacts — NOT on internal execution roadmaps, NOT P22-selectable, NOT launch-focus human queue.",
   "agentRoadmapEligible": false,
   "p22Selectable": false,

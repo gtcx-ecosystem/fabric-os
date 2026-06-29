@@ -80,7 +80,7 @@ const LAYER_ARTIFACTS = {
     ipMagic: NA_IP,
   },
   operations: {
-    compliance: { primary: true, artifacts: ['docs/operations/FOLDER-SPEC.md'], gates: ['pnpm docs:operations:check'] },
+    compliance: { primary: true, artifacts: ['docs/operations/README.md', 'machine/spec/docs-operations-pack.json'], gates: ['pnpm docs:operations:check'] },
     technicalExcellence: { primary: true, artifacts: ['docs/operations/runbooks/', 'docs/operations/deployment/'], gates: ['commands + exit codes'] },
     craft: { secondary: true, artifacts: ['docs/operations/README.md'], gates: ['runbook index'] },
     worldClass: { primary: true, artifacts: ['docs/operations/runbooks/'], gates: ['global ops bars'] },

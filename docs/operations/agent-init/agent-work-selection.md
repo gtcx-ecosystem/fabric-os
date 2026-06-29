@@ -29,15 +29,15 @@ Protocol 22 is **established** in this repo. Agents compute the next work unit f
 
 ## Canonical paths (P35 v5)
 
-| Purpose                 | Path                                            |
-| ----------------------- | ----------------------------------------------- |
-| Work-selection manifest | `docs/operations/agent-work-selection.md`       |
-| Selection command       | `platform/scripts/agent-next-work.mjs`          |
-| Machine backlog         | `machine/backlog.json`                          |
-| Execution roadmap       | `audit/product-management/execution-roadmap.md` |
-| Auto-dev state          | `audit/product-management/auto-dev-state.md`    |
-| Session memory          | `.baseline/memory/session.md`                   |
-| Audit entry             | `audit/AGENT-START.md`                          |
+| Purpose                 | Path                                                 |
+| ----------------------- | ---------------------------------------------------- |
+| Work-selection manifest | `docs/operations/agent-init/agent-work-selection.md` |
+| Selection command       | `platform/scripts/agent-next-work.mjs`               |
+| Machine backlog         | `machine/backlog.json`                               |
+| Execution roadmap       | `audit/product-management/execution-roadmap.md`      |
+| Auto-dev state          | `audit/product-management/auto-dev-state.md`         |
+| Session memory          | `.baseline/memory/session.md`                        |
+| Audit entry             | `audit/AGENT-START.md`                               |
 
 ## Commands
 

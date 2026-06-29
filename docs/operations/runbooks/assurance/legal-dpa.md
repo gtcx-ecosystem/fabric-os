@@ -17,7 +17,7 @@ Data processing agreements are Class S legal gates. fabric-os tracks them but do
 
 - `operations/legal/manifest.json`
 - `operations/legal/gates.json`
-- `docs/operations/legalops-as-a-service.md`
+- `docs/operations/runbooks/legalops-as-a-service.md`
 
 ## Status
 

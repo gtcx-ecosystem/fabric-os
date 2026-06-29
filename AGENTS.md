@@ -179,7 +179,7 @@ pnpm agent:work-selection:check
 
 | Artifact | Path |
 | -------- | ---- |
-| Manifest (work register) | `docs/operations/agent-work-selection.md` |
+| Manifest (work register) | `docs/operations/agent-init/agent-work-selection.md` |
 | Execution roadmap | `audit/product-management/execution-roadmap.md` |
 | Selection script | `platform/scripts/agent-next-work.mjs` |
 | Adoption check | `platform/scripts/check-agent-work-selection.mjs` |

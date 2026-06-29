@@ -44,7 +44,7 @@
       "status": "open",
       "owner": "legal",
       "note": "Class S — agent tracks only; cannot self-approve.",
-      "evidence": "docs/operations/legalops-as-a-service.md"
+      "evidence": "docs/operations/runbooks/legalops-as-a-service.md"
     },
     {
       "id": "PENTEST-001",

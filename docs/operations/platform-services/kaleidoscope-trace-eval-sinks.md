@@ -114,6 +114,20 @@ Fabric does not approve external use. It records the approval boundary and store
 5. Add release-gate checks that fail SIGNAL L3 claims when required event classes are missing.
 6. Promote the sink to a managed runtime only after local replay passes.
 
+Local harness:
+
+```bash
+pnpm kaleidoscope:trace-eval-sink:check
+pnpm kaleidoscope:trace-eval-sink:write
+```
+
+Generated development outputs:
+
+| Output             | Path                                                       |
+| ------------------ | ---------------------------------------------------------- |
+| Harness witness    | `audit/evidence/kaleidoscope-trace-eval-sink-latest.json`  |
+| JSONL event stream | `audit/evidence/kaleidoscope-trace-eval-sink-events.jsonl` |
+
 ## Acceptance gates
 
 - Events are append-only and have stable ids.

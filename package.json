@@ -257,6 +257,8 @@
     "validate:eval-config": "node platform/scripts/validate-split-ai-config.mjs --kind eval",
     "validate:eval-config:write": "node platform/scripts/validate-split-ai-config.mjs --kind eval --write",
     "rag:eval": "node platform/scripts/run-rag-eval-smoke.mjs --golden config/baseline/rag-eval-golden.json --mock config/baseline/rag-eval-mock-corpus.json --out audit/evidence/rag-eval-latest.json",
+    "kaleidoscope:trace-eval-sink:check": "node platform/scripts/kaleidoscope-trace-eval-sink.mjs",
+    "kaleidoscope:trace-eval-sink:write": "node platform/scripts/kaleidoscope-trace-eval-sink.mjs --write",
     "agent:conduct:check": "node ../bridge-os/platform/scripts/checks/check-agent-conduct-local.mjs",
     "agent:auto-dev:check": "node ../bridge-os/platform/scripts/checks/check-agent-auto-dev-local.mjs",
     "machine:folder:check": "node ../bridge-os/platform/scripts/workspace/pm-folder-check.mjs",

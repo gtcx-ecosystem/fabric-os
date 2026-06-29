@@ -33,7 +33,7 @@ on:
 
 concurrency:
   group: chaos-${{ github.event.inputs.environment || 'staging' }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   id-token: write
@@ -51,6 +51,7 @@ jobs:
   validate-manifests:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -64,6 +65,7 @@ jobs:
   approve:
     if: github.event.inputs.environment == 'production'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment: production-chaos
     steps:
       - name: Approval gate
@@ -77,6 +79,7 @@ jobs:
     needs: [approve]
     if: github.event_name != 'pull_request' && always() && (needs.approve.result == 'success' || needs.approve.result == 'skipped')
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     environment: ${{ github.event.inputs.environment || 'staging' }}
     outputs:
       baseline_error_rate: ${{ steps.baseline.outputs.error_rate }}
@@ -128,6 +131,7 @@ jobs:
     needs: [setup]
     if: github.event_name != 'pull_request' && contains(fromJSON('["all", "pod-kill"]'), github.event.inputs.experiment || 'all')
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     environment: ${{ github.event.inputs.environment || 'staging' }}
     steps:
       - name: Checkout
@@ -207,6 +211,7 @@ jobs:
     needs: [setup]
     if: github.event_name != 'pull_request' && contains(fromJSON('["all", "network-partition"]'), github.event.inputs.experiment || 'all')
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     environment: ${{ github.event.inputs.environment || 'staging' }}
     steps:
       - name: Checkout
@@ -295,6 +300,7 @@ jobs:
     needs: [setup]
     if: github.event_name != 'pull_request' && contains(fromJSON('["all", "az-failure"]'), github.event.inputs.experiment || 'all')
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     environment: ${{ github.event.inputs.environment || 'staging' }}
     steps:
       - name: Checkout
@@ -375,6 +381,7 @@ jobs:
     needs: [pod-kill, network-partition, az-failure]
     if: github.event_name != 'pull_request' && always()
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Download all reports
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4

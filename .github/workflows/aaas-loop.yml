@@ -14,9 +14,14 @@ on:
       - 'machine/spec/aaas-audit-contract.json'
   workflow_dispatch: {}
 
+concurrency:
+  group: aaas-loop-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   aaas-loop:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4

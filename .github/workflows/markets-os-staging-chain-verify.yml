@@ -6,9 +6,14 @@ on:
     # Daily at 08:00 SAST (06:00 UTC)
     - cron: '0 6 * * *'
 
+concurrency:
+  group: markets-os-staging-chain-verify
+  cancel-in-progress: true
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
     steps:

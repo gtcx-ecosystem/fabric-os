@@ -46,6 +46,9 @@ jobs:
       - name: Workspace root cleanliness
         run: pnpm check:workspace-root-cleanliness:strict
 
+      - name: GitHub Actions cost controls
+        run: pnpm gha:cost-controls:check
+
       - name: Type check
         run: pnpm typecheck
 

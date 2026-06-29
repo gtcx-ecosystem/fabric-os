@@ -19,9 +19,14 @@ permissions:
   id-token: write
   contents: read
 
+concurrency:
+  group: dr-test-${{ github.event.inputs.environment || 'testnet' }}
+  cancel-in-progress: true
+
 jobs:
   dr-test:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     environment: ${{ github.event.inputs.environment || 'testnet' }}
     steps:
       - name: Checkout
@@ -94,6 +99,7 @@ jobs:
 
   canary-rollback:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     environment: ${{ github.event.inputs.environment || 'testnet' }}
     steps:
       - name: Checkout

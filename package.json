@@ -51,6 +51,7 @@
     "protocol:verifier:staging:apply-env:dry-run": "node deploy/03-platform/scripts/staging/apply-protocols-verifier-env.mjs --dry-run",
     "check:workspace-root-cleanliness": "python3 platform/scripts/ops/check-workspace-root-cleanliness.py",
     "check:workspace-root-cleanliness:strict": "python3 platform/scripts/ops/check-workspace-root-cleanliness.py --strict",
+    "gha:cost-controls:check": "node platform/scripts/github-actions-cost-controls-check.mjs",
     "signal:import-cost-stats": "node platform/scripts/ops/import-baseline-cost-stats.mjs",
     "infra:cost:audit": "node platform/scripts/cost/run-infra-cost-audit.mjs",
     "infra:cost:audit:write": "node platform/scripts/cost/run-infra-cost-audit.mjs --write",

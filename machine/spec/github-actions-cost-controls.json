@@ -1,0 +1,35 @@
+{
+  "$schema": "gtcx://fabric-os/github-actions-cost-controls/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-29",
+  "ownerRepo": "fabric-os",
+  "policyDoc": "docs/operations/runbooks/github-actions-cost-controls.md",
+  "checkCommand": "pnpm gha:cost-controls:check",
+  "scope": {
+    "workflowDirectory": ".github/workflows",
+    "fleetDefaultRunner": "ubuntu-latest",
+    "disallowedRunners": ["macos-latest", "macos-13", "macos-14", "windows-latest"],
+    "disallowedDeploymentProviderRefs": ["vercel"],
+    "scheduledWorkflowRequiresConcurrencyCancel": true,
+    "scheduledWorkflowRequiresJobTimeouts": true
+  },
+  "approvalRules": {
+    "macosRunners": {
+      "default": "forbidden",
+      "allowedOnlyWith": [
+        "documented iOS/macOS build requirement",
+        "fabric-os approval",
+        "expiry date",
+        "budget owner"
+      ]
+    },
+    "scheduledWorkflows": {
+      "default": "manual or minimal cadence",
+      "requires": ["owner", "timeout-minutes", "concurrency.cancel-in-progress=true"]
+    },
+    "vercel": {
+      "status": "retired",
+      "rule": "Do not add Vercel deployment or status-check assumptions."
+    }
+  }
+}

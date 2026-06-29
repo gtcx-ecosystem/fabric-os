@@ -310,7 +310,9 @@
     "aaas:report:remediation": "node platform/scripts/aaas-remediation-report.mjs",
     "aaas:hygiene:check": "node platform/scripts/aaas-hygiene-check.mjs",
     "aaas:hygiene:check:strict": "node platform/scripts/aaas-hygiene-check.mjs --strict --write",
-    "aaas:ship-gates:check": "node platform/scripts/aaas-ship-gates-check.mjs"
+    "aaas:ship-gates:check": "node platform/scripts/aaas-ship-gates-check.mjs",
+    "ai-cost:check": "node platform/scripts/ai-cost-check.mjs",
+    "ai-cost:check:write": "node platform/scripts/ai-cost-check.mjs --write"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

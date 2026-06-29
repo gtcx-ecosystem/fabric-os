@@ -1,0 +1,40 @@
+{
+  "schema": "gtcx://fabric-os/ai-cost-check/v1",
+  "generatedAt": "2026-06-29T08:13:11.370Z",
+  "ok": true,
+  "gates": {
+    "governanceSoR": {
+      "ok": true
+    },
+    "budgetPolicySoR": {
+      "ok": true
+    },
+    "fleetManifest": {
+      "ok": true
+    },
+    "budgetsBound": {
+      "ok": true,
+      "unbound": []
+    },
+    "withinFleetCap": {
+      "ok": true,
+      "estimatedMonthlyUsd": 62.68,
+      "capUsd": 2000
+    },
+    "perRepoBudget": {
+      "ok": true,
+      "over": []
+    },
+    "manifestFresh": {
+      "ok": true,
+      "ageDays": 0.75,
+      "maxStaleDays": 14
+    }
+  },
+  "violations": [],
+  "sources": {
+    "governance": "bridge-os/machine/spec/ai-cost-governance.json",
+    "budgets": "bridge-os/machine/spec/repo-persona-profiles.json",
+    "fleetManifest": "bridge-os/machine/ci/ai-cost-manifest-latest.json"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/aaas-audit-contract-pin/v1",
   "sor": "fabric-os/machine/spec/aaas-audit-contract.json",
-  "contractVersion": "1.1.0",
+  "contractVersion": "1.2.0",
   "repo": "fabric-os",
   "auditProfile": "platform",
   "writes": false,

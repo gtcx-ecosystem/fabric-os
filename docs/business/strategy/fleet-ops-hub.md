@@ -12,10 +12,10 @@ goals: 'Hub documentation — fleet COO protocol'
 
 # Fleet ops hub strategy — fabric-os
 
-> **Authority:** [`../../bridge-os/pm/spec/ops-authority.json`](../../bridge-os/pm/spec/ops-authority.json)  
-> **Placement:** [`../../bridge-os/pm/spec/ops-home-placement.json`](../../bridge-os/pm/spec/ops-home-placement.json)  
-> **Service fabric:** [`../../bridge-os/pm/spec/service-fabric.json`](../../bridge-os/pm/spec/service-fabric.json)  
-> **CORE runtime:** [`../../bridge-os/pm/spec/core-runtime-engine-protocol.json`](../../bridge-os/pm/spec/core-runtime-engine-protocol.json)
+> **Authority:** [`../../../../bridge-os/machine/spec/ops-authority.json`](../../../../bridge-os/machine/spec/ops-authority.json)  
+> **Placement:** [`../../../../bridge-os/machine/spec/ops-home-placement.json`](../../../../bridge-os/machine/spec/ops-home-placement.json)  
+> **Service fabric:** [`../../../../bridge-os/machine/spec/service-fabric.json`](../../../../bridge-os/machine/spec/service-fabric.json)  
+> **CORE runtime:** [`../../../../bridge-os/machine/spec/core-runtime-engine-protocol.json`](../../../../bridge-os/machine/spec/core-runtime-engine-protocol.json)
 
 **fabric-os** is the **tactical Chief Operating Officer (COO)** of the GTCX ecosystem. It does not build every product feature; it decides how the fleet runs, deploys, secures, bills, and assures — and what evidence proves operational readiness. Owner repos retain domain runtime; cross-repo ops programme authority lives in fabric-os.
 
@@ -28,7 +28,7 @@ goals: 'Hub documentation — fleet COO protocol'
 | **Product** | L2 programme | `docs/operations/coordination/*`, XR handoffs                       | `pm/roadmap/sprints/active.json`, fleet sprint backlog |
 | **Ops**     | L3 COO       | `pm/ecosystem-ops-backlog.json`, lane witnesses, friction registers | Product sprint backlog (`agile-os`)                    |
 
-See [`sprint-authority.json`](../../bridge-os/pm/spec/sprint-authority.json) for L2 product programme rules — unchanged by COO Wave 1.
+See [`sprint-authority.json`](../../../../bridge-os/machine/spec/sprint-authority.json) for L2 product programme rules — unchanged by COO Wave 1.
 
 ---
 

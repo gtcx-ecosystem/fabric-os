@@ -3,6 +3,7 @@ title: 'Inbound handoff — griot-ai F-prod-06 HTTPS closure (corrected)'
 from: griot-ai
 to: fabric-os
 date: 2026-06-27
+owner: fabric-os
 storyId: STORY-GRIOT-HTTPS-001
 blockerId: F-prod-06
 milestoneId: M5-production-assurance

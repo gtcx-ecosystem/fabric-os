@@ -19,4 +19,4 @@ Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability
 
 ## Machine mirror (generated)
 
-[`machine/canon/strategy.json`](../../pm/canon/strategy.json) — `pnpm canon:synthesize`
+[`machine/canon/strategy.json`](../../machine/canon/strategy.json) — `pnpm canon:synthesize`

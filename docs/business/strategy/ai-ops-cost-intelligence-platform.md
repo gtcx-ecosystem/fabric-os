@@ -1,3 +1,13 @@
+---
+title: 'GTCX AI-Ops and Cost Intelligence Platform'
+status: current
+date: 2026-06-28
+owner: fabric-os
+document_type: strategy
+tier: operating
+review_cycle: on-change
+---
+
 # GTCX AI‑Ops & Cost Intelligence Platform
 
 |                            |                                                                                                                                                                                   |

@@ -26,7 +26,7 @@ Cross-repo Computer Security Incident Response Team model for GTCX fleet. Comple
 - **Primary:** fabric-os SecOps lane (SECAS-S4-01)
 - **Secondary:** bridge-os platform-architect persona for fleet coordination
 - **Class S:** legal countersign, vendor SOW — parallel sovereign gates only
-- **On-call roster (SoR):** HROps workforce registry [`hrops-workforce-registry.json`](../../../../agile-os/pm/spec/hrops-workforce-registry.json) — rotation maintained by bridge program office
+- **On-call roster (SoR):** HROps workforce registry [`hrops-workforce-registry.json`](../../../../agile-os/machine/spec/hrops-workforce-registry.json) — rotation maintained by bridge program office
 - Roster visibility: bridge `ecosystem:product-team:check:write`
 
 ### Rotation

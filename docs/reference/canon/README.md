@@ -13,7 +13,7 @@ review_cycle: on-change
 
 Product canon bundles and feature engineering contracts for **fabric-os**.
 
-| Resource  | Path                                                                             |
-| --------- | -------------------------------------------------------------------------------- |
-| Scorecard | [`scorecard.md`](./scorecard.md)                                                 |
-| Pack      | [`../../../pm/spec/docs-canon-pack.json`](../../../pm/spec/docs-canon-pack.json) |
+| Resource  | Path                                                                                       |
+| --------- | ------------------------------------------------------------------------------------------ |
+| Scorecard | [`scorecard.md`](./scorecard.md)                                                           |
+| Pack      | [`../../../machine/spec/docs-canon-pack.json`](../../../machine/spec/docs-canon-pack.json) |

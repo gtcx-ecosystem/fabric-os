@@ -1,3 +1,13 @@
+---
+title: 'Handoff — GTCX AI-Ops and Cost Intelligence Platform'
+status: current
+date: 2026-06-28
+owner: fabric-os
+document_type: handoff
+tier: operating
+review_cycle: on-change
+---
+
 # Handoff — GTCX AI-Ops & Cost Intelligence Platform
 
 **Audience:** the next agent (any model). You have **none** of the prior chat context. This file + the

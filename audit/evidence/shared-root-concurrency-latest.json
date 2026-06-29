@@ -1,0 +1,530 @@
+{
+  "schema": "gtcx://fabric-os/shared-root-concurrency-check/v1",
+  "checkedAt": "2026-06-29T10:01:58.950Z",
+  "owner": "fabric-os",
+  "initiative": "INIT-HUB-SCOPE-GUARD",
+  "protocol": "P62",
+  "gates": {
+    "ecosystemRootExists": {
+      "ok": true
+    },
+    "noSharedRootWrites": {
+      "ok": false,
+      "count": 16
+    }
+  },
+  "drift": [
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/agile-os/.git",
+      "worktreeCount": 3,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/agile-os",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 2
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/agile-os",
+          "branch": "agent/agile-os-85-uplift-format",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-design-primitives/agile-os",
+          "branch": "feat/media-design-primitives",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/baseline-os/.git",
+      "worktreeCount": 9,
+      "writingWorktreeCount": 2,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/baseline-os",
+          "branch": "protocol/62-agent-worktree-isolation",
+          "isMain": true,
+          "uncommitted": 21
+        },
+        {
+          "path": "/private/tmp/baseline-os-cockpit-shell",
+          "branch": "feat/cockpit-shell-loop",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/private/tmp/baseline-os-p22-persona-gate",
+          "branch": "codex/p22-persona-witness-command",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/private/tmp/baseline-os-p22-persona-read-2026-06-29",
+          "branch": "chore/p22-persona-read-contract-2026-06-29",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/private/tmp/baseline-vault-protocol-clean",
+          "branch": "codex/vault-role-protocol-clean-2026-06-27",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/baseline-os-phase1-wt",
+          "branch": "ai-cost/phase1-clean",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/baseline-os",
+          "branch": "agent/kaleidoscope-tier0-baseline",
+          "isMain": false,
+          "uncommitted": 1
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/baseline-os-commercial",
+          "branch": "agent/baseline-os-signal-l3-evidence-pack",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-design-primitives/baseline-os",
+          "branch": "feat/media-design-primitives",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/.git",
+      "worktreeCount": 5,
+      "writingWorktreeCount": 2,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os",
+          "branch": "protocol/62-agent-worktree-isolation",
+          "isMain": true,
+          "uncommitted": 24
+        },
+        {
+          "path": "/private/tmp/canon-os-agile-workflow-provisioning",
+          "branch": "feat/agile-workflow-provisioning-policy",
+          "isMain": false,
+          "uncommitted": 1
+        },
+        {
+          "path": "/private/tmp/canon-os-session-followups-2026-06-29",
+          "branch": "chore/session-followups-2026-06-29",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/canon-os",
+          "branch": "agent/canon-os-workflow-evidence",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/canon-os/.worktrees/provisioning-folder-model",
+          "branch": "feat/provisioning-folder-model",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/compliance-os/.git",
+      "worktreeCount": 3,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/compliance-os",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 5
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/compliance-os",
+          "branch": "agent/kaleidoscope-tier1-compliance",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-design-primitives-wave2/compliance-os",
+          "branch": "feat/media-design-primitives",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/ecosystem-os/.git",
+      "worktreeCount": 7,
+      "writingWorktreeCount": 2,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/ecosystem-os",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 66
+        },
+        {
+          "path": "/private/tmp/ecosystem-os-qa.N7dY3s",
+          "branch": null,
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/private/tmp/kaleidoscope-pr44-root.pQt0p2/ecosystem-os",
+          "branch": null,
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/private/tmp/kaleidoscope-qa-root.Wn1Izi/ecosystem-os",
+          "branch": null,
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/ecosystem-os",
+          "branch": "agent/kaleidoscope-strict-reproducibility-20260629",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-design-primitives-wave2/ecosystem-os",
+          "branch": "feat/media-design-primitives",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/ecosystem-os/.worktrees/exec-agency",
+          "branch": "exec-agency",
+          "isMain": false,
+          "uncommitted": 3
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/.git",
+      "worktreeCount": 6,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+          "branch": "feat/ai-cost-check",
+          "isMain": true,
+          "uncommitted": 3
+        },
+        {
+          "path": "/private/tmp/fabric-os-gha-cost-controls-2026-06-29",
+          "branch": "chore/gha-cost-controls-2026-06-29",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/private/tmp/fabric-os-qa.IhqdPZ",
+          "branch": null,
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/private/tmp/fabric-vault-protocol-clean",
+          "branch": "codex/vault-role-protocol-clean-2026-06-27",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/fabric-os",
+          "branch": "agent/fabric-os-kaleidoscope-sink-audit-fixes",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-design-primitives/fabric-os",
+          "branch": "feat/media-design-primitives",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/gtcx-markets/.git",
+      "worktreeCount": 5,
+      "writingWorktreeCount": 2,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/markets-os",
+          "branch": "main",
+          "isMain": false,
+          "uncommitted": 1
+        },
+        {
+          "path": "/private/tmp/markets-os-feature-workflow",
+          "branch": "codex/feature-workflow-real-audit",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/markets-os",
+          "branch": "agent/kaleidoscope-tier1-markets",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-design-primitives-wave3/markets-os",
+          "branch": "feat/media-design-primitives",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/markets-os/.claude/worktrees/agile-os-feature-workflow-provisioning",
+          "branch": "worktree-agile-os-feature-workflow-provisioning",
+          "isMain": false,
+          "uncommitted": 1
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/gtcx-os/.git",
+      "worktreeCount": 3,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/gtcx-os",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 1
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/gtcx-os",
+          "branch": "agent/kaleidoscope-tier1-gtcx",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-images/gtcx-os",
+          "branch": "feat/media-images-pilot",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/inspection-os/.git",
+      "worktreeCount": 2,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/inspection-os",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 3
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/inspection-os",
+          "branch": "agent/inspection-os-commercial-evidence",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/ledger-os/.git",
+      "worktreeCount": 3,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/ledger-os",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 2
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/ledger-os",
+          "branch": "agent/kaleidoscope-tier3-ledger",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-design-primitives-wave2/ledger-os",
+          "branch": "feat/media-design-primitives",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/ledger-ui/.git",
+      "worktreeCount": 2,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/ledger-ui",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 5
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/ledger-ui",
+          "branch": "agent/kaleidoscope-tier1-ledger-ui",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/markets-os/.git",
+      "worktreeCount": 5,
+      "writingWorktreeCount": 2,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/markets-os",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 1
+        },
+        {
+          "path": "/private/tmp/markets-os-feature-workflow",
+          "branch": "codex/feature-workflow-real-audit",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/markets-os",
+          "branch": "agent/kaleidoscope-tier1-markets",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-design-primitives-wave3/markets-os",
+          "branch": "feat/media-design-primitives",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/markets-os/.claude/worktrees/agile-os-feature-workflow-provisioning",
+          "branch": "worktree-agile-os-feature-workflow-provisioning",
+          "isMain": false,
+          "uncommitted": 1
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/nyota-ai/.git",
+      "worktreeCount": 2,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/nyota-ai",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 50
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/nyota-ai",
+          "branch": "agent/kaleidoscope-tier2-nyota",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/terminal-os/.git",
+      "worktreeCount": 4,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/terminal-os",
+          "branch": "fix/web-error-states-rollout-2",
+          "isMain": true,
+          "uncommitted": 103
+        },
+        {
+          "path": "/private/tmp/terminal-os-main-fspec",
+          "branch": null,
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/terminal-os",
+          "branch": "agent/kaleidoscope-tier1-terminal",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-design-primitives-wave3/terminal-os",
+          "branch": "feat/media-design-primitives",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/venture-os/.git",
+      "worktreeCount": 3,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/venture-os",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 2
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/venture-os",
+          "branch": "agent/kaleidoscope-tier3-venture",
+          "isMain": false,
+          "uncommitted": 0
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/media-design-primitives-wave3/venture-os",
+          "branch": "feat/media-design-primitives",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    },
+    {
+      "commonDir": "/Users/amanianai/Sites/gtcx-ecosystem/veritas-ai/.git",
+      "worktreeCount": 2,
+      "writingWorktreeCount": 1,
+      "mainCheckoutReadOnlyViolation": true,
+      "worktrees": [
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/veritas-ai",
+          "branch": "main",
+          "isMain": true,
+          "uncommitted": 3
+        },
+        {
+          "path": "/Users/amanianai/Sites/gtcx-ecosystem/.worktrees/kaleidoscope/veritas-ai",
+          "branch": "agent/kaleidoscope-tier2-veritas",
+          "isMain": false,
+          "uncommitted": 0
+        }
+      ]
+    }
+  ],
+  "ok": false
+}

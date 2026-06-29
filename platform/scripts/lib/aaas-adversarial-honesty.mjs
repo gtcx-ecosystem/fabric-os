@@ -48,9 +48,14 @@ export function redTeamChallenges(verdict, opts = {}) {
     refuted.push({ challenge: 'no-provenance', detail: 'verdict carries no source (gitHead/evaluatedAt)' });
   }
 
-  // Fabrication — a non-trivial score with zero supporting evidence, not disclosed provisional.
-  if (typeof verdict.score === 'number' && verdict.score > floor && strength === null && !verdict.provisional) {
-    refuted.push({ challenge: 'fabricated', detail: `score ${verdict.score} with no leaf evidence` });
+  // Fabrication — a non-trivial score with NO leaf evidence AND no provenance source:
+  // genuinely from nowhere. A pillar-level aggregate that has a source but no leaf
+  // decomposition is LEGITIMATE (the engine is the authority for the score) — that is a
+  // depth note (see redTeamVerdict), never a quarantine. Requiring !source here is the
+  // fix for the prior false positive that wrongly quarantined every sourced aggregate.
+  if (typeof verdict.score === 'number' && verdict.score > floor && strength === null
+      && !verdict.provisional && !verdict.source) {
+    refuted.push({ challenge: 'fabricated', detail: `score ${verdict.score} with no evidence and no provenance` });
   }
 
   // Inflation — a high score whose own evidence is mostly failing/zero.
@@ -69,7 +74,17 @@ export function redTeamChallenges(verdict, opts = {}) {
   return refuted;
 }
 
-/** Red-team a single verdict → { id, score, survives, quarantined, refutedBy, provenance }. */
+/** Non-refuting observations about a verdict (do NOT quarantine). */
+export function depthNotes(verdict) {
+  const notes = [];
+  const strength = evidenceStrength(verdict.items);
+  if (strength === null && verdict.source && typeof verdict.score === 'number' && verdict.score > 0) {
+    notes.push({ note: 'depth-unverified', detail: 'pillar-level aggregate (no leaf decomposition) — sourced, lower confidence' });
+  }
+  return notes;
+}
+
+/** Red-team a single verdict → { id, score, survives, quarantined, refutedBy, notes, provenance }. */
 export function redTeamVerdict(verdict, opts = {}) {
   const refutedBy = redTeamChallenges(verdict, opts);
   const survives = refutedBy.length === 0;
@@ -81,6 +96,7 @@ export function redTeamVerdict(verdict, opts = {}) {
     survives,
     quarantined: !survives,
     refutedBy,
+    notes: depthNotes(verdict),
     provenance: provenanceDigest(verdict),
   };
 }
@@ -110,15 +126,22 @@ export function evaluateAdversarial({ verdicts, opts = {} }) {
   const judged = (verdicts ?? []).map((v) => redTeamVerdict(v, opts));
   const quarantined = judged.filter((j) => j.quarantined);
   const upheld = judged.filter((j) => j.survives);
+  // Sourced aggregates with no leaf decomposition: legitimate but lower-confidence.
+  // Surfaced as a non-failing signal, NOT a quarantine.
+  const depthUnverified = judged
+    .filter((j) => j.notes?.some((n) => n.note === 'depth-unverified'))
+    .map((j) => j.id);
   return {
     schema: 'gtcx://fabric-os/aaas-adversarial-honesty/v1',
     total: judged.length,
     upheldCount: upheld.length,
     quarantinedCount: quarantined.length,
+    depthUnverified,
     quarantined,
     upheld,
-    // The gate FAILS if any verdict had to be quarantined — an inflated/fabricated
-    // verdict in the set means the published audit cannot be trusted as-is.
+    // The gate FAILS only on a genuine quarantine (inflated / fabricated-from-nowhere /
+    // no-provenance / self-contradiction). A sourced aggregate without leaf depth is a
+    // confidence note, not a fabrication.
     ok: quarantined.length === 0,
   };
 }

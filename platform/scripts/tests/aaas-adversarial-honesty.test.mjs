@@ -40,9 +40,16 @@ describe('redTeamChallenges', () => {
     assert.ok(r.some((c) => c.challenge === 'inflated'));
   });
 
-  it('refutes a FABRICATED verdict (score, zero evidence, not provisional)', () => {
-    const r = redTeamChallenges({ id: 'x', score: 88, threshold: 85, items: [], source: src });
+  it('refutes a FABRICATED verdict (score, zero evidence AND no provenance)', () => {
+    const r = redTeamChallenges({ id: 'x', score: 88, threshold: 85, items: [], source: null });
     assert.ok(r.some((c) => c.challenge === 'fabricated'));
+  });
+
+  it('does NOT call a SOURCED pillar-level aggregate fabricated (the false-positive fix)', () => {
+    // score with no leaf items but WITH provenance = legitimate MPR aggregate, not fabricated
+    const r = redTeamChallenges({ id: 'trustAndSafety', score: 77, threshold: 85, items: [], source: src });
+    assert.ok(!r.some((c) => c.challenge === 'fabricated'));
+    assert.deepEqual(r, []); // upheld
   });
 
   it('does NOT fabricate-refute a disclosed provisional verdict', () => {
@@ -116,5 +123,16 @@ describe('evaluateAdversarial', () => {
     const w = evaluateAdversarial({ verdicts: [{ id: 'a', score: 90, threshold: 85, source: src, items: [{ pass: true }] }] });
     assert.equal(w.ok, true);
     assert.equal(w.upheld[0].provenance.startsWith('sha256:'), true);
+  });
+
+  it('upholds sourced aggregates but flags them depth-unverified (non-failing)', () => {
+    // mirrors real MPR pillars: sourced, scored, no leaf decomposition
+    const w = evaluateAdversarial({ verdicts: [
+      { id: 'trustAndSafety', score: 77, threshold: 85, source: src, items: [] },
+      { id: 'craft', score: 70, threshold: 85, source: src, items: [] },
+    ] });
+    assert.equal(w.ok, true); // NOT quarantined — the false-positive fix
+    assert.equal(w.quarantinedCount, 0);
+    assert.deepEqual(w.depthUnverified.sort(), ['craft', 'trustAndSafety']);
   });
 });

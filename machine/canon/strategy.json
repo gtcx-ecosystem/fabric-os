@@ -5,7 +5,7 @@
   "$schema": "gtcx://canon-os/product-canon-strategy/v1",
   "productId": "fabric-os",
   "repo": "fabric-os",
-  "updated": "2026-06-27",
+  "updated": "2026-06-29",
   "vision": {
     "statement": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
     "horizon": "2026-2028"

@@ -4,7 +4,7 @@
  *
  * Forces every audit to earn its score against the canon capability registry,
  * rejecting the "scored the map, not the territory" failure mode. Consumes the
- * canon registry (coverage denominator) + five-core composite witness; it owns
+ * canon registry (coverage denominator) + canonical MPR witness; it owns
  * no scoring engine of its own.
  *
  * Usage: node aaas-honesty-gate.mjs [--write] [--json] [--strict-registry]
@@ -60,7 +60,11 @@ export function evaluateHonesty({ registry, coverage, composite = {}, opts = {} 
     invalidVeracity: badVeracity,
   };
 
-  const composite100 = composite?.composite100 ?? null;
+  const composite100 =
+    composite?.fullComposite100 ??
+    composite?.multiPillar?.fullComposite100 ??
+    composite?.composite100 ??
+    null;
   const capsFired = composite?.capsFired ?? [];
   const brokenBelowFloor = entries
     .filter((e) => typeof e.score === 'number' && e.score < floor)
@@ -81,20 +85,26 @@ export function evaluateHonesty({ registry, coverage, composite = {}, opts = {} 
 
   // A high-scoring core whose own metrics are zero/missing/low-confidence is a
   // laundered ("hollow") composite — the score the gate was built to reject.
-  // Reads composite.cores[].metrics, which contradictionReconciled cannot see.
+  // Reads canonical MPR quadrants or legacy composite cores, which
+  // contradictionReconciled cannot see.
   const hollowCeil = opts.hollowCeil ?? 85;
-  const cores = composite?.cores ?? {};
-  const hollowCores = Object.entries(cores)
-    .filter(([, core]) => {
-      const metrics = Object.values(core?.metrics ?? {});
+  const surfaces = composite?.quadrants ?? composite?.multiPillar?.quadrants ?? composite?.cores ?? {};
+  const hollowCores = Object.entries(surfaces)
+    .filter(([, surface]) => {
+      const metrics = Object.values(surface?.metrics ?? {});
       if (!metrics.length) return false;
       const hasHollowMetric = metrics.some(
         (m) => m.score100 === 0 || m.confidence === 'D' || m.source === 'missing',
       );
-      return (core?.score100 ?? 0) >= hollowCeil && hasHollowMetric;
+      return (surface?.score100 ?? 0) >= hollowCeil && hasHollowMetric;
     })
     .map(([id]) => id);
-  const noHollowCores = { ok: hollowCores.length === 0, hollowCeil, hollowCores };
+  const noHollowCores = {
+    ok: hollowCores.length === 0,
+    hollowCeil,
+    hollowCores,
+    source: composite?.quadrants || composite?.multiPillar?.quadrants ? 'mpr-quadrants' : 'legacy-cores',
+  };
 
   const registryNonEmpty = { ok: capabilities.length > 0, capabilityCount: capabilities.length };
 
@@ -125,6 +135,9 @@ export function evaluateHonesty({ registry, coverage, composite = {}, opts = {} 
     .filter(([, g]) => g.ok === false)
     .map(([k]) => k);
   const ok = failures.length === 0;
+  const score100 = Math.round(
+    (Object.values(gates).filter((gate) => gate.ok === true).length / Object.keys(gates).length) * 100,
+  );
 
   const witness = {
     schema: 'gtcx://fabric-os/aaas-honesty-gate/v1',
@@ -146,6 +159,7 @@ export function evaluateHonesty({ registry, coverage, composite = {}, opts = {} 
     },
     gates,
     failures,
+    score100,
     ok,
   };
 
@@ -175,7 +189,10 @@ function main() {
 
   const registryPath = resolveFirst(ROOT, ['machine/canon/registry.json', 'pm/canon/registry.json']);
   const coveragePath = join(ROOT, 'audit/evidence/aaas-honesty-coverage.json');
-  const compositePath = join(ROOT, 'audit/evidence/composite-audit-latest.json');
+  const compositePath = resolveFirst(ROOT, [
+    'audit/evidence/mpr-repo-latest.json',
+    'audit/evidence/composite-audit-latest.json',
+  ]);
   const OUT = join(ROOT, 'audit/evidence/aaas-honesty-gate-latest.json');
 
   const registry = loadJson(registryPath) ?? { status: 'missing', composition: {} };
@@ -206,7 +223,7 @@ function main() {
     for (const [k, g] of Object.entries(witness.gates)) {
       console.log(`${g.ok ? 'OK  ' : 'FAIL'} ${k}`);
     }
-    console.log(`\n${ok ? 'PASS' : 'FAIL'} — AAAS honesty gate`);
+    console.log(`\nAAAS honesty score: ${witness.score100}/100`);
     if (WRITE) console.log(`witness: ${OUT}`);
   }
 

@@ -110,9 +110,9 @@ function runPredictive(ROOT, WRITE, nowIso) {
 const MONITORED = [
   'aaas-friction-check-latest.json',
   'aaas-honesty-gate-latest.json',
-  'composite-audit-latest.json',
-  'five-pillar-latest.json',
-  'master-audit-latest.json',
+  'aaas-adversarial-honesty-latest.json',
+  'mpr-repo-latest.json',
+  'signal-maturity-latest.json',
 ];
 
 function main() {

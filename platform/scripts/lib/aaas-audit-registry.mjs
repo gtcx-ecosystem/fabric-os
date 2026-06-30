@@ -52,6 +52,11 @@ export function summarizeRepoAudit({ repo, witnesses, nowMs, cadenceDays }) {
       ageDays,
       score: extractScore(w.json),
       stale: dateMs == null || nowMs - dateMs > maxAgeMs,
+      acceptable: w.json?.ok !== false && w.json?.pass !== false && w.json?.clean !== false,
+      failures: Array.isArray(w.json?.failures) ? w.json.failures : [],
+      coverageRequired: w.json?.coverage?.required ?? null,
+      coverageClaimed: w.json?.coverage?.claimed ?? null,
+      registryCapabilityCount: w.json?.registry?.capabilityCount ?? null,
     };
   });
   return {
@@ -87,14 +92,55 @@ export function evaluateConformance({ binding, contract, presentFolders, repoSta
     requiredAudits.some((req) => matches(e.type, req)),
   );
   const stale = requiredEntries.filter((e) => e.stale).length;
-  const ok = missingFolders.length === 0 && missingAudits.length === 0 && stale === 0 && !!hasPin;
+  const isProvisioningGap = (entry) => {
+    if (!entry.type?.includes('aaas-honesty-gate') || entry.acceptable !== false) return false;
+    const failures = entry.failures ?? [];
+    const onlyRegistryProvisioning = failures.length > 0
+      && failures.every((f) => ['coverageComplete', 'registryNonEmpty'].includes(f));
+    return onlyRegistryProvisioning
+      && ((entry.coverageRequired ?? 0) === 0 || (entry.registryCapabilityCount ?? 0) === 0);
+  };
+  const provisioningGaps = requiredEntries.filter(isProvisioningGap).map((entry) => ({
+    type: entry.type,
+    reason: 'empty capability registry; honesty coverage not assessable',
+  }));
+  const failedAudits = requiredEntries
+    .filter((entry) => entry.acceptable === false && !isProvisioningGap(entry))
+    .map((entry) => entry.type);
+  const ok =
+    missingFolders.length === 0 &&
+    missingAudits.length === 0 &&
+    stale === 0 &&
+    failedAudits.length === 0 &&
+    !!hasPin;
+  const presentRequiredAudits = requiredAudits.length - missingAudits.length;
+  const freshRequiredAudits = Math.max(0, requiredEntries.length - stale);
+  const acceptableRequiredAudits = requiredEntries.filter(
+    (entry) => entry.acceptable !== false || isProvisioningGap(entry),
+  ).length;
+  const benchmark =
+    required.length +
+    requiredAudits.length +
+    requiredEntries.length +
+    requiredEntries.length +
+    1;
+  const attained =
+    (required.length - missingFolders.length) +
+    presentRequiredAudits +
+    freshRequiredAudits +
+    acceptableRequiredAudits +
+    (hasPin ? 1 : 0);
+  const score100 = benchmark > 0 ? Math.round((attained / benchmark) * 100) : 100;
   return {
     repo: binding?.repo,
     profile,
     ok,
+    score100,
     hasPin: !!hasPin,
     missingFolders,
     missingAudits,
+    failedAudits,
+    provisioningGaps,
     staleWitnesses: stale,
     legacyStale: repoState?.staleCount ?? 0,
   };

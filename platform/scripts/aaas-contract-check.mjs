@@ -64,6 +64,9 @@ function main() {
   });
 
   const conformant = results.filter((r) => r.ok).length;
+  const score100 = results.length
+    ? Math.round(results.reduce((sum, r) => sum + (r.score100 ?? (r.ok ? 100 : 0)), 0) / results.length)
+    : 100;
   const witness = {
     schema: 'gtcx://fabric-os/aaas-contract-check/v1',
     provider: 'fabric-os',
@@ -72,6 +75,7 @@ function main() {
     repoCount: results.length,
     conformant,
     nonConformant: results.length - conformant,
+    score100,
     results,
     ok: conformant === results.length,
   };
@@ -83,7 +87,7 @@ function main() {
   if (JSON_OUT) {
     console.log(JSON.stringify(witness, null, 2));
   } else {
-    console.log(`audit contract — ${conformant}/${results.length} repos conformant`);
+    console.log(`audit contract score: ${score100}/100 · ${conformant}/${results.length} repos at benchmark`);
     for (const r of results) {
       if (r.ok) continue;
       const reasons = [
@@ -91,9 +95,11 @@ function main() {
         !r.hasPin ? 'no-pin' : null,
         r.missingFolders?.length ? `missing-folders:${r.missingFolders.length}` : null,
         r.missingAudits?.length ? `missing-audits:${r.missingAudits.join(',')}` : null,
+        r.failedAudits?.length ? `below-contract:${r.failedAudits.join(',')}` : null,
+        r.provisioningGaps?.length ? `provisioning-gap:${r.provisioningGaps.map((g) => g.type).join(',')}` : null,
         r.staleWitnesses ? `stale:${r.staleWitnesses}` : null,
       ].filter(Boolean);
-      console.log(`  FAIL ${(r.repo + '').padEnd(15)} ${reasons.join(' · ')}`);
+      console.log(`  score=${String(r.score100 ?? 0).padStart(3)}/100 ${(r.repo + '').padEnd(15)} ${reasons.join(' · ')}`);
     }
     if (WRITE) console.log(`\nwitness: ${OUT}`);
   }

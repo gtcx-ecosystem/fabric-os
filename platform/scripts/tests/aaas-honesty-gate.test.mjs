@@ -142,6 +142,26 @@ describe('aaas-honesty-gate', () => {
     assert.equal(witness.gates.noHollowCores.ok, true);
   });
 
+  it('evaluates canonical MPR quadrants instead of requiring legacy cores', () => {
+    const { witness, ok } = evaluateHonesty({
+      ...clean,
+      composite: {
+        fullComposite100: 90,
+        quadrants: {
+          technicalExcellence: {
+            score100: 97,
+            metrics: {
+              engineering: { score100: 95, confidence: 'A', source: 'audit-output' },
+            },
+          },
+        },
+      },
+    });
+    assert.equal(ok, true);
+    assert.equal(witness.gates.contradictionReconciled.composite100, 90);
+    assert.equal(witness.gates.noHollowCores.source, 'mpr-quadrants');
+  });
+
   it('fails registryNonEmpty for an empty registry', () => {
     const { witness, ok } = evaluateHonesty({
       ...clean,

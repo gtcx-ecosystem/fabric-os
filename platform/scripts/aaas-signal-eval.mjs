@@ -78,7 +78,7 @@ const dimChecks = {
     { level: 1, label: 'audit/ tree', pass: has('audit') },
     { level: 2, label: 'evidence + reports folders', pass: has('audit/evidence') && has('audit/reports') },
     { level: 3, label: 'handoff directive folder', pass: has('audit/handoff') },
-    { level: 4, label: 'remediation reports/ folder', pass: has('reports') },
+    { level: 4, label: 'remediation audit/reports folder', pass: has('audit/reports') },
     { level: 5, label: 'lifecycle running (fresh witness)', pass: freshWitness() },
   ],
   Safeguards: [

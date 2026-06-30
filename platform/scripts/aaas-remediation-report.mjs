@@ -5,7 +5,7 @@
  * A *report* records what was DONE about an audit (the remediation), with before
  * -> after and a citation of the *evidence* that proves it. Distinct from the
  * *audit* (assessment, in audit/reports/) and the *evidence* (proof, in
- * audit/evidence/). Writes reports/<action>-YYYY-MM-DD.md in the target repo.
+ * audit/evidence/). Writes audit/reports/remediation/<action>-YYYY-MM-DD.md.
  *
  * Usage:
  *   aaas-remediation-report.mjs --repo <name> --action <slug> --title "..."
@@ -95,11 +95,11 @@ function main() {
 
   const out = lines.join('\n') + '\n';
   if (has('--write')) {
-    const dir = join(repoRoot, 'reports');
+    const dir = join(repoRoot, 'audit/reports/remediation');
     mkdirSync(dir, { recursive: true });
     const file = join(dir, `${action}-${date}.md`);
     writeFileSync(file, out);
-    console.log(`report: reports/${action}-${date}.md`);
+    console.log(`report: audit/reports/remediation/${action}-${date}.md`);
   } else {
     process.stdout.write(out);
   }

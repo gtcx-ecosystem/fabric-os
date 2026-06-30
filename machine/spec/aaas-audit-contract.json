@@ -1,12 +1,12 @@
 {
   "$schema": "gtcx://fabric-os/aaas-audit-contract/v1",
-  "version": "1.2.0",
-  "updated": "2026-06-28",
-  "changelog": "1.2.0 adds lenses, lifecycle, maturityModel, namingConventions, ownership (additive; conformance surface unchanged — pins may be re-provisioned). 1.1.0 added the four-artifact vocabulary + audit/handoff.",
+  "version": "1.3.0",
+  "updated": "2026-06-30",
+  "changelog": "1.3.0 reconciles remediation reports with P35 root hygiene at audit/reports/remediation/ and removes the conflicting top-level reports/ obligation. 1.2.0 added lenses, lifecycle, maturityModel, namingConventions, and ownership.",
   "provider": "fabric-os",
   "service": "AAAS",
   "title": "Audit-as-a-Service contract — fabric-os ↔ repo",
-  "principle": "fabric-os centralizes audit/report management. Each repo provides a conformant audit/ + reports/ tree; fabric-os indexes fleet state, enforces freshness + honesty coverage, and owns ecosystem rollups. Engine (rubric/runners) stays in bridge-os; coverage denominator stays in canon-os.",
+  "principle": "fabric-os centralizes audit/report management. Each repo provides a conformant audit/ tree; fabric-os indexes fleet state, enforces freshness + honesty coverage, and owns ecosystem rollups. Engine (rubric/runners) stays in bridge-os; coverage denominator stays in canon-os.",
   "designDoc": "machine/spec/aaas-framework-design-2026-06-28.md",
   "vocabulary": {
     "principle": "Four distinct artifact types — never conflate them. The AUDIT finds what's wrong (assessment); the HANDOFF says what to do next (directive); you REMEDIATE; the REPORT records what you did; EVIDENCE proves it happened.",
@@ -23,7 +23,7 @@
     "report": {
       "is": "the remediation record — what you actually DID about the audit findings, before -> after, outcome",
       "answers": "what we did about it, the result",
-      "folder": "reports/ (dated remediation reports — each cites the evidence proving the work)"
+      "folder": "audit/reports/remediation/ (dated remediation reports — each cites the evidence proving the work)"
     },
     "evidence": {
       "is": "proof / verification of audit, handoff, and report — machine artifacts that show the assessment is real and the remediation actually happened",
@@ -90,7 +90,7 @@
         "step": 4,
         "name": "report",
         "owner": "repo",
-        "produces": ["reports/<action>-YYYY-MM-DD.md"],
+        "produces": ["audit/reports/remediation/<action>-YYYY-MM-DD.md"],
         "command": "aaas:report:remediation"
       },
       {
@@ -126,7 +126,7 @@
   "namingConventions": {
     "auditAssessment": "audit/reports/<audit-type>-YYYY-MM-DD.md",
     "handoffDirective": "audit/handoff/handoff-YYYY-MM-DD.md",
-    "remediationReport": "reports/<action>-YYYY-MM-DD.md",
+    "remediationReport": "audit/reports/remediation/<action>-YYYY-MM-DD.md",
     "evidenceWitness": "audit/evidence/<witness-type>-latest.json",
     "archive": "audit/archive/<group>-YYYY-MM-DD/"
   },
@@ -144,7 +144,11 @@
         "escalation": "P24 -> bridge-os (engine)"
       },
       "audit/handoff": { "owner": "fabric-os", "slaDays": 7, "escalation": "P24 -> repo owner" },
-      "reports": { "owner": "repo", "slaDays": 30, "escalation": "P24 -> repo owner" },
+      "audit/reports/remediation": {
+        "owner": "repo",
+        "slaDays": 30,
+        "escalation": "P24 -> repo owner"
+      },
       "audit/archive": { "owner": "fabric-os", "slaDays": 365, "escalation": "none (cold storage)" }
     },
     "handoffItem": {
@@ -155,16 +159,10 @@
   },
   "obligations": {
     "repo": {
-      "requiredFolders": [
-        "audit/evidence",
-        "audit/reports",
-        "audit/handoff",
-        "audit/archive",
-        "reports"
-      ],
+      "requiredFolders": ["audit/evidence", "audit/reports", "audit/handoff", "audit/archive"],
       "auditAssessment": "audit/reports/<audit-type>-YYYY-MM-DD.md (dated assessment / evaluation write-up)",
       "handoffDirective": "audit/handoff/handoff-YYYY-MM-DD.md (dated work-order; synthesized from both lenses; each action cites finding/gate/owner/evidence)",
-      "remediationReport": "reports/<action>-YYYY-MM-DD.md (dated record of what was DONE; cites evidence)",
+      "remediationReport": "audit/reports/remediation/<action>-YYYY-MM-DD.md (dated record of what was DONE; cites evidence)",
       "evidenceProof": "audit/evidence/<witness>-latest.json (machine proof, current-only — verifies audit + report)",
       "noDatedSiblingsIn": "audit/evidence (dated snapshots live in audit/archive/)",
       "coverageWitness": "audit/evidence/aaas-honesty-coverage.json (per canon registry)",

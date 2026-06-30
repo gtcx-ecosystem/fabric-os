@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * AAAS — Audit-as-a-Service friction gate; delegates five-core probe to bridge-os harness.
+ * AAAS — Audit-as-a-Service friction gate; delegates the scoring probe to the
+ * bridge-os MPR engine.
  * Usage: node aaas-friction-check.mjs [--write] [--json]
  */
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
@@ -8,16 +9,15 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { resolveOpsDoc } from './lib/path-aliases.mjs';
-import { evaluateHonesty } from './aaas-honesty-gate.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
+const MPR_ENGINE = join(BRIDGE, 'platform/scripts/ecosystem/run-mpr-repo-audit.mjs');
 const REGISTER = join(ROOT, 'machine/audit-friction-register.json');
 const ROADMAP = join(ROOT, 'machine/aaas-roadmap.json');
 const OPS = join(ROOT, resolveOpsDoc(ROOT, 'audit-as-a-service.md'));
-const COMPOSITE = join(ROOT, 'audit/evidence/composite-audit-latest.json');
-const CANON = join(ROOT, 'machine/canon/registry.json');
-const COVERAGE = join(ROOT, 'audit/evidence/aaas-honesty-coverage.json');
+const MPR = join(ROOT, 'audit/evidence/mpr-repo-latest.json');
+const HONESTY = join(ROOT, 'audit/evidence/aaas-honesty-gate-latest.json');
 const OUT = join(ROOT, 'audit/evidence/aaas-friction-check-latest.json');
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
@@ -28,8 +28,8 @@ const gates = {
   roadmap: { ok: existsSync(ROADMAP) },
   opsDoc: { ok: existsSync(OPS) },
   primaryRoadmap: { ok: false },
-  fiveCoreProbe: { ok: false, exit: null, skipped: !PROBE },
-  compositeWitness: { ok: existsSync(COMPOSITE) },
+  mprProbe: { ok: false, exit: null, skipped: !PROBE },
+  mprWitness: { ok: existsSync(MPR) },
   openP0: { ok: true, count: 0 },
 };
 
@@ -43,32 +43,35 @@ if (existsSync(REGISTER)) {
   gates.openP0 = { ok: true, count: openP0.length, ids: openP0.map((i) => i.id) };
 }
 
-if (PROBE && existsSync(join(BRIDGE, 'platform/scripts/ecosystem/run-five-core-audit.mjs'))) {
-  const args = ['audit:five-core:run', '--', '--repo', 'fabric-os', '--probes-only'];
+if (PROBE && existsSync(MPR_ENGINE)) {
+  const args = [MPR_ENGINE, '--repo', 'fabric-os'];
   if (WRITE) args.push('--write');
-  const audit = spawnSync('pnpm', args, {
-    cwd: BRIDGE,
+  const audit = spawnSync('node', args, {
+    cwd: ROOT,
     encoding: 'utf8',
     shell: false,
   });
-  gates.fiveCoreProbe = { ok: audit.status === 0, exit: audit.status ?? 1, skipped: false };
-  gates.compositeWitness = { ok: existsSync(COMPOSITE) };
+  const exit = audit.status ?? 1;
+  gates.mprProbe = {
+    ok: exit === 0 || exit === 2,
+    exit,
+    maturityBelowBenchmark: exit === 2,
+    skipped: false,
+  };
+  gates.mprWitness = { ok: existsSync(MPR) };
 }
 
-// Honesty gate — surfaced here, blocking deferred until the canon registry is
-// populated (registry is draft today). See aaas-roadmap.json + honesty-gate spec.
-{
-  const registry = existsSync(CANON) ? JSON.parse(readFileSync(CANON, 'utf8')) : { status: 'missing', composition: {} };
-  const coverage = existsSync(COVERAGE) ? JSON.parse(readFileSync(COVERAGE, 'utf8')) : { entries: [] };
-  const composite = existsSync(COMPOSITE) ? JSON.parse(readFileSync(COMPOSITE, 'utf8')) : {};
-  const { witness: honesty, ok } = evaluateHonesty({ registry, coverage, composite });
+if (existsSync(HONESTY)) {
+  const honesty = JSON.parse(readFileSync(HONESTY, 'utf8'));
   gates.honestyGate = {
-    ok,
+    ok: honesty.ok === true,
     blocking: false,
-    coveragePct: honesty.coverage.coveragePct,
+    coveragePct: honesty.coverage?.coveragePct ?? null,
     worstVerifiedFinding: honesty.worstVerifiedFinding,
     failures: honesty.failures,
   };
+} else {
+  gates.honestyGate = { ok: false, blocking: false, failures: ['missing-witness'] };
 }
 
 const structuralOk =
@@ -76,7 +79,7 @@ const structuralOk =
   gates.roadmap.ok &&
   gates.opsDoc.ok &&
   gates.primaryRoadmap.ok &&
-  (gates.fiveCoreProbe.skipped || gates.fiveCoreProbe.ok);
+  (gates.mprProbe.skipped || gates.mprProbe.ok);
 
 const witness = {
   schema: 'gtcx://fabric-os/aaas-friction-check/v1',
@@ -84,7 +87,7 @@ const witness = {
   service: 'AAAS',
   checkedAt: new Date().toISOString(),
   owner: 'fabric-os',
-  harness: 'bridge-os/audit:five-core:run',
+  harness: 'bridge-os/audit:mpr:repo:run',
   gates,
   openP0: gates.openP0.count ?? 0,
   ok: structuralOk,

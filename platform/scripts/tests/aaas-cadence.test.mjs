@@ -26,13 +26,13 @@ describe('aaas-cadence · evaluateStaleness', () => {
     const { witness, ok } = evaluateStaleness({
       witnesses: [
         { id: 'composite', dateMs: now - 1 * DAY },
-        { id: 'five-pillar', dateMs: now - 6 * DAY },
+        { id: 'mpr-repo', dateMs: now - 6 * DAY },
       ],
       nowMs: now,
       maxAgeDays: 2,
     });
     assert.equal(ok, false);
-    assert.deepEqual(witness.stale, ['five-pillar']);
+    assert.deepEqual(witness.stale, ['mpr-repo']);
   });
 
   it('treats an unknown/missing date as not-verifiable (fails)', () => {

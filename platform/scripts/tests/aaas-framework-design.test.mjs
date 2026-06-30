@@ -5,7 +5,7 @@
  * Proves the MPR + SIGNAL dual-lens design is fully DOCUMENTED (the contract
  * carries the four-artifact model, both lenses, the lifecycle, the maturity
  * ceiling), ENFORCEABLE (audit/handoff is a required folder), and VERIFIABLE
- * (conformance fails a repo that is missing it). The contract is the single
+ * (conformance scores a repo below benchmark when it is missing it). The contract is the single
  * machine-readable source the checker AND the provisioner both read, so these
  * assertions guard against design/enforcement drift.
  */
@@ -86,7 +86,7 @@ describe('design is DOCUMENTED — contract carries the model', () => {
     const n = contract.namingConventions;
     assert.match(n.handoffDirective, /audit\/handoff\/handoff-/);
     assert.match(n.auditAssessment, /audit\/reports\//);
-    assert.match(n.remediationReport, /^reports\//);
+    assert.match(n.remediationReport, /^audit\/reports\/remediation\//);
     assert.match(n.evidenceWitness, /audit\/evidence\/.*-latest\.json$/);
   });
 });
@@ -94,10 +94,11 @@ describe('design is DOCUMENTED — contract carries the model', () => {
 describe('design is ENFORCEABLE — handoff is a required folder', () => {
   const required = contract.obligations.repo.requiredFolders;
 
-  it('requires all four artifact folders + reports', () => {
-    for (const f of ['audit/evidence', 'audit/reports', 'audit/handoff', 'audit/archive', 'reports']) {
+    it('requires the four audit artifact folders without a conflicting root reports folder', () => {
+    for (const f of ['audit/evidence', 'audit/reports', 'audit/handoff', 'audit/archive']) {
       assert.ok(required.includes(f), `requiredFolders missing ${f}`);
     }
+    assert.equal(required.includes('reports'), false, 'P35 forbids a top-level reports folder');
   });
 
   it('carries a handoff obligation', () => {
@@ -118,20 +119,20 @@ describe('design is VERIFIABLE — conformance reacts to the model', () => {
   });
   const allFolders = contract.obligations.repo.requiredFolders;
 
-  it('FAILS a repo missing audit/handoff (the enforcement bites)', () => {
+    it('scores a repo missing audit/handoff below benchmark (the enforcement bites)', () => {
     const without = allFolders.filter((f) => f !== 'audit/handoff');
     const r = evaluateConformance({ binding, contract, presentFolders: without, repoState, hasPin: true });
     assert.equal(r.ok, false);
     assert.ok(r.missingFolders.includes('audit/handoff'));
   });
 
-  it('PASSES a repo with all folders + pin + fresh required witnesses', () => {
+    it('scores a repo with all folders + pin + fresh required witnesses at benchmark', () => {
     const r = evaluateConformance({ binding, contract, presentFolders: allFolders, repoState, hasPin: true });
     assert.equal(r.ok, true, `expected conformant, got: ${JSON.stringify(r)}`);
     assert.equal(r.missingFolders.length, 0);
   });
 
-  it('FAILS when the contract pin is absent', () => {
+    it('scores below benchmark when the contract pin is absent', () => {
     const r = evaluateConformance({ binding, contract, presentFolders: allFolders, repoState, hasPin: false });
     assert.equal(r.ok, false);
     assert.equal(r.hasPin, false);

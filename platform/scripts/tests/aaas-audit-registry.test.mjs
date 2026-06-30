@@ -44,18 +44,33 @@ describe('aaas-audit-registry · summarizeRepoAudit', () => {
     assert.deepEqual(s.types.sort(), ['aaas-honesty-gate', 'composite-audit', 'mpr-repo']);
     assert.equal(s.staleCount, 2); // composite 30d + undateable honesty
   });
+
+  it('preserves an explicit below-benchmark witness state for contract enforcement', () => {
+    const state = summarizeRepoAudit({
+      repo: 'x',
+      nowMs: Date.parse('2026-06-30T00:00:00Z'),
+      cadenceDays: 7,
+      witnesses: [
+        {
+          file: 'aaas-honesty-gate-latest.json',
+          json: { checkedAt: '2026-06-30T00:00:00Z', score100: 71, ok: false },
+        },
+      ],
+    });
+    assert.equal(state.entries[0].acceptable, false);
+  });
 });
 
 describe('aaas-audit-registry · evaluateConformance', () => {
   const contract = {
-    obligations: { repo: { requiredFolders: ['audit/evidence', 'audit/reports', 'reports'] } },
+    obligations: { repo: { requiredFolders: ['audit/evidence', 'audit/reports', 'audit/handoff'] } },
     auditProfiles: { product: ['mpr-repo', 'aaas-honesty-gate'] },
   };
-  it('passes a fully conformant repo (and ignores legacy stale witnesses)', () => {
+  it('scores a fully conformant repo at benchmark (and ignores legacy stale witnesses)', () => {
     const r = evaluateConformance({
       binding: { repo: 'p', auditProfile: 'product' },
       contract,
-      presentFolders: ['audit/evidence', 'audit/reports', 'reports'],
+      presentFolders: ['audit/evidence', 'audit/reports', 'audit/handoff'],
       repoState: {
         entries: [
           { type: 'mpr-repo', stale: false },
@@ -69,10 +84,11 @@ describe('aaas-audit-registry · evaluateConformance', () => {
       hasPin: true,
     });
     assert.equal(r.ok, true);
+    assert.equal(r.score100, 100);
     assert.equal(r.staleWitnesses, 0); // only required witnesses counted
     assert.equal(r.legacyStale, 2); // legacy drift surfaced separately, non-gating
   });
-  it('fails on missing folder, missing required audit, stale required witness, or no pin', () => {
+  it('scores below benchmark on missing folder, missing required audit, stale required witness, or no pin', () => {
     const r = evaluateConformance({
       binding: { repo: 'p', auditProfile: 'product' },
       contract,
@@ -81,9 +97,54 @@ describe('aaas-audit-registry · evaluateConformance', () => {
       hasPin: false,
     });
     assert.equal(r.ok, false);
-    assert.deepEqual(r.missingFolders, ['audit/reports', 'reports']);
+    assert.deepEqual(r.missingFolders, ['audit/reports', 'audit/handoff']);
     assert.deepEqual(r.missingAudits.sort(), ['aaas-honesty-gate']);
     assert.equal(r.staleWitnesses, 1); // the required mpr-repo witness is stale
     assert.equal(r.hasPin, false);
+    assert.ok(r.score100 < 100);
+  });
+
+  it('scores below benchmark when a required witness explicitly rejects its own evidence', () => {
+    const result = evaluateConformance({
+      binding: { repo: 'x', auditProfile: 'product' },
+      contract,
+      presentFolders: contract.obligations.repo.requiredFolders,
+      hasPin: true,
+      repoState: {
+        entries: [
+          { type: 'mpr-repo', stale: false, acceptable: true },
+          { type: 'aaas-honesty-gate', stale: false, acceptable: false },
+        ],
+      },
+    });
+    assert.equal(result.ok, false);
+    assert.deepEqual(result.failedAudits, ['aaas-honesty-gate']);
+    assert.ok(result.score100 < 100);
+  });
+
+  it('records empty-registry honesty as a provisioning gap instead of a failed audit', () => {
+    const result = evaluateConformance({
+      binding: { repo: 'x', auditProfile: 'product' },
+      contract,
+      presentFolders: contract.obligations.repo.requiredFolders,
+      hasPin: true,
+      repoState: {
+        entries: [
+          { type: 'mpr-repo', stale: false, acceptable: true },
+          {
+            type: 'aaas-honesty-gate',
+            stale: false,
+            acceptable: false,
+            failures: ['coverageComplete', 'registryNonEmpty'],
+            coverageRequired: 0,
+            registryCapabilityCount: 0,
+          },
+        ],
+      },
+    });
+    assert.equal(result.ok, true);
+    assert.equal(result.score100, 100);
+    assert.deepEqual(result.failedAudits, []);
+    assert.equal(result.provisioningGaps.length, 1);
   });
 });

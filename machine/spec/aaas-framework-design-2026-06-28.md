@@ -72,7 +72,7 @@ It is regenerated on each audit run; closed items drop off as evidence proves th
    (baseline-os) → write `audit/evidence/*-latest.json` (proof) + `audit/reports/*.md` (assessment).
 2. **Emit handoff** (fabric-os): synthesize findings → `audit/handoff/handoff-<date>.md` (directive).
 3. **Remediate**: an agent (Class R) or repo owner (Class A/S) executes the handoff actions.
-4. **Report**: `reports/<action>-<date>.md` — what was done, cites the evidence.
+4. **Report**: `audit/reports/remediation/<action>-<date>.md` — what was done, cites the evidence.
 5. **Re-verify** (fabric-os): re-run audit → fresh evidence → handoff item auto-closes when its gate clears.
 
 Loop cadence: witness freshness ≤ 7d; handoff regenerated on-change-or-weekly.

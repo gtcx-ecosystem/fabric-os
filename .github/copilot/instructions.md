@@ -1,4 +1,4 @@
-# GitHub Copilot — gtcx-infrastructure
+# GitHub Copilot — fabric-os
 
 Read [`AGENTS.md`](../../AGENTS.md) before changes. Terminal index: [`01-docs/01-agents/copilot/README.md`](../../01-docs/01-agents/copilot/README.md).
 

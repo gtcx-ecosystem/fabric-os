@@ -2,10 +2,10 @@
 # GTCX Shared Action — Security Scan
 # =============================================================================
 # Reusable composite action for secret scanning and dependency auditing.
-# Consumes the CVE acceptance log from gtcx-infrastructure.
+# Consumes the CVE acceptance log from fabric-os.
 #
 # Usage in service repo workflow:
-#   - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/security-scan@main
+#   - uses: gtcx-ecosystem/fabric-os/.github/actions/security-scan@main
 # =============================================================================
 
 name: 'GTCX Security Scan'
@@ -61,14 +61,14 @@ runs:
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: |
-        # Download the shared audit script from gtcx-infrastructure
+        # Download the shared audit script from fabric-os
         curl -sL \
-          https://raw.githubusercontent.com/gtcx-ecosystem/gtcx-infrastructure/main/03-platform/tools/scripts/audit-with-acceptance.mjs \
+          https://raw.githubusercontent.com/gtcx-ecosystem/fabric-os/main/03-platform/tools/scripts/audit-with-acceptance.mjs \
           > /tmp/audit-with-acceptance.mjs
 
         # Download the shared CVE acceptance log
         curl -sL \
-          https://raw.githubusercontent.com/gtcx-ecosystem/gtcx-infrastructure/main/01-docs/09-security/cve-acceptance-log.md \
+          https://raw.githubusercontent.com/gtcx-ecosystem/fabric-os/main/01-docs/09-security/cve-acceptance-log.md \
           > /tmp/cve-acceptance-log.md
 
         # Run the audit

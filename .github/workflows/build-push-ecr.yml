@@ -5,6 +5,9 @@
 # security scans, and pushes immutable commit-SHA tags to ECR.
 #
 # Image → ECR repo mapping:
+# Note: `gtcx-intelligence-*` values below are ECR repository names only.
+# Source ownership for intelligence bridge work is `bridge-os`; do not
+# checkout or route agents to a standalone `gtcx-intelligence` repo.
 #   intelligence-sdk → gtcx-intelligence-sdk
 #   trainer          → gtcx-intelligence-trainer
 #   redteam          → gtcx-intelligence-redteam
@@ -44,27 +47,6 @@ jobs:
       fail-fast: false
       matrix:
         service:
-          - name: intelligence-sdk
-            dockerfile: 04-deploy/docker/Dockerfile.intelligence
-            context_dir: intelligence
-            target: ''
-            ecr_repos: gtcx-intelligence-sdk
-            source_repos: gtcx-intelligence
-
-          - name: trainer
-            dockerfile: intelligence/intelligence/trainer/Dockerfile
-            context_dir: intelligence
-            target: ''
-            ecr_repos: gtcx-intelligence-trainer
-            source_repos: gtcx-intelligence
-
-          - name: redteam
-            dockerfile: intelligence/intelligence/red-team/Dockerfile
-            context_dir: intelligence
-            target: ''
-            ecr_repos: gtcx-intelligence-redteam
-            source_repos: gtcx-intelligence
-
           - name: protocols
             dockerfile: Dockerfile
             context_dir: protocols
@@ -107,14 +89,6 @@ jobs:
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       # Checkout source repos into paths the Dockerfiles expect
-      - name: Checkout gtcx-intelligence source
-        if: contains(matrix.service.source_repos, 'gtcx-intelligence')
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-        with:
-          repository: gtcx-ecosystem/gtcx-intelligence
-          token: ${{ secrets.GTCX_REPO_TOKEN }}
-          path: intelligence
-
       - name: Checkout gtcx-protocols source
         if: contains(matrix.service.source_repos, 'gtcx-protocols')
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4

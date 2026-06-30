@@ -5,7 +5,7 @@
 # Standardizes: install, lint, typecheck, test, build.
 #
 # Usage in service repo workflow:
-#   - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/build-and-test@main
+#   - uses: gtcx-ecosystem/fabric-os/.github/actions/build-and-test@main
 # =============================================================================
 
 name: 'GTCX Build & Test'

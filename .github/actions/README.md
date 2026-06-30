@@ -9,7 +9,7 @@ Reusable composite actions for all `gtcx-ecosystem/*` service repos.
 Standard build pipeline: install → lint → typecheck → test → build.
 
 ```yaml
-- uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/build-and-test@main
+- uses: gtcx-ecosystem/fabric-os/.github/actions/build-and-test@main
   with:
     node-version: '20.18.0' # optional, default: 20.18.0
     pnpm-version: '9.15.0' # optional, default: 9.15.0
@@ -18,10 +18,10 @@ Standard build pipeline: install → lint → typecheck → test → build.
 
 ### `security-scan`
 
-Secret scanning (TruffleHog) + dependency audit (pnpm audit with CVE acceptance log from gtcx-infrastructure).
+Secret scanning (TruffleHog) + dependency audit (pnpm audit with CVE acceptance log from fabric-os).
 
 ```yaml
-- uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/security-scan@main
+- uses: gtcx-ecosystem/fabric-os/.github/actions/security-scan@main
   with:
     fail-on-high: 'true' # optional, default: true
 ```
@@ -31,7 +31,7 @@ Secret scanning (TruffleHog) + dependency audit (pnpm audit with CVE acceptance 
 Build Docker image → push to ECR → deploy to shared GTCX EKS cluster.
 
 ```yaml
-- uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/deploy-to-eks@main
+- uses: gtcx-ecosystem/fabric-os/.github/actions/deploy-to-eks@main
   with:
     image-name: 'my-service' # required
     k8s-manifest-path: './k8s/' # optional, default: ./k8s/
@@ -66,13 +66,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/build-and-test@main
+- uses: gtcx-ecosystem/fabric-os/.github/actions/build-and-test@main
 
   security:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/security-scan@main
+- uses: gtcx-ecosystem/fabric-os/.github/actions/security-scan@main
 
   deploy:
     needs: [build, security]
@@ -80,7 +80,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v6
-      - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/deploy-to-eks@main
+- uses: gtcx-ecosystem/fabric-os/.github/actions/deploy-to-eks@main
         with:
           image-name: 'gtcx-my-service'
 ```
@@ -91,5 +91,5 @@ These actions use GitHub-hosted runners and GitHub Actions cache (free for publi
 
 ## Support
 
-- **Issues:** File in `gtcx-ecosystem/gtcx-infrastructure`
+- **Issues:** File in `gtcx-ecosystem/fabric-os`
 - **Slack:** #gtcx-platform

@@ -22,13 +22,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/build-and-test@main
+      - uses: gtcx-ecosystem/fabric-os/.github/actions/build-and-test@main
 
   security-scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/security-scan@main
+      - uses: gtcx-ecosystem/fabric-os/.github/actions/security-scan@main
 
   deploy:
     needs: [build-and-test, security-scan]
@@ -36,7 +36,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v6
-      - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/deploy-to-eks@main
+      - uses: gtcx-ecosystem/fabric-os/.github/actions/deploy-to-eks@main
         with:
           image-name: 'gtcx-CHANGE-ME'
           k8s-manifest-path: './k8s/'

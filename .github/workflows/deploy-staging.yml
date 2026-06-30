@@ -38,7 +38,7 @@ jobs:
     timeout-minutes: 15
     # environment: staging # TEMPORARILY DISABLED — OIDC sub claim includes environment
     # which the AWS IAM trust policy does not yet allow. Re-enable after updating
-    # the role trust policy to include repo:gtcx-ecosystem/gtcx-infrastructure:environment:staging
+    # the role trust policy to include repo:gtcx-ecosystem/fabric-os:environment:staging
     steps:
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4

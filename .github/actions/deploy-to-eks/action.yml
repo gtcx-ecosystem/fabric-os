@@ -10,7 +10,7 @@
 #   - K8s manifest must reference image: ${{ vars.ECR_REGISTRY }}/<repo>:${{ github.sha }}
 #
 # Usage in service repo workflow:
-#   - uses: gtcx-ecosystem/gtcx-infrastructure/.github/actions/deploy-to-eks@main
+#   - uses: gtcx-ecosystem/fabric-os/.github/actions/deploy-to-eks@main
 #     with:
 #       image-name: my-service
 #       k8s-manifest-path: ./k8s/
@@ -21,7 +21,7 @@ description: 'Build Docker image, push to ECR, deploy to shared GTCX EKS cluster
 
 inputs:
   image-name:
-    description: 'ECR repository name (e.g., gtcx-intelligence)'
+    description: 'ECR repository name (e.g., compliance-gateway)'
     required: true
   k8s-manifest-path:
     description: 'Path to Kubernetes manifests'

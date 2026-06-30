@@ -21,6 +21,7 @@ const OPS_CANDIDATES = [
   'docs/operations/runbooks/finops-as-a-service.md',
 ];
 const INFRA_WITNESS = join(ROOT, 'audit/evidence/infra-aws-cost-optimization-latest.json');
+const AWS_OPTIMIZATION_EXPORT = join(ROOT, 'audit/evidence/aws-cost-optimization-export-latest.json');
 
 function openP0() {
   if (!existsSync(REGISTER)) return { ok: false, count: -1, ids: [] };
@@ -41,6 +42,7 @@ const gates = {
   policySoR: { ok: existsSync(join(BRIDGE, 'machine/spec/environment-cost-policy.json')) },
   governanceSoR: { ok: existsSync(join(BRIDGE, 'machine/spec/aws-cost-governance.json')) },
   infraWitness: { ok: existsSync(INFRA_WITNESS) },
+  awsOptimizationExport: { ok: existsSync(AWS_OPTIMIZATION_EXPORT) },
   openP0: openP0(),
 };
 
@@ -55,7 +57,8 @@ const requiredOk =
   gates.opsDoc.ok &&
   gates.frictionRegister.ok &&
   gates.policySoR.ok &&
-  gates.governanceSoR.ok;
+  gates.governanceSoR.ok &&
+  gates.awsOptimizationExport.ok;
 
 const witness = {
   $schema: 'gtcx://fabric-os/finops-check-witness/v1',

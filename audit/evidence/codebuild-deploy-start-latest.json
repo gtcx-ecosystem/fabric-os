@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/codebuild-deploy-start/v1",
   "repo": "fabric-os",
-  "generatedAt": "2026-06-30T05:17:55.518Z",
+  "generatedAt": "2026-06-30T10:22:42.400Z",
   "dryRun": false,
   "authorityClass": "R",
   "contract": "machine/spec/deployment-ops-contract.json",
@@ -36,7 +36,7 @@
       },
       {
         "name": "CLASS_A_REF",
-        "value": "audit/evidence/deployment-ops-class-a-approval-2026-06-30.json",
+        "value": "",
         "type": "PLAINTEXT"
       },
       {
@@ -49,7 +49,8 @@
         "value": "",
         "type": "PLAINTEXT"
       }
-    ]
+    ],
+    "sourceVersion": "3fe91998"
   },
   "command": [
     "aws",
@@ -59,13 +60,15 @@
     "af-south-1",
     "--project-name",
     "gtcx-staging-deploy-executor",
+    "--source-version",
+    "3fe91998",
     "--environment-variables-override",
-    "[{\"name\":\"DEPLOY_MODE\",\"value\":\"plan\",\"type\":\"PLAINTEXT\"},{\"name\":\"DEPLOY_ENVIRONMENT\",\"value\":\"staging\",\"type\":\"PLAINTEXT\"},{\"name\":\"DEPLOYMENT_OPS_CONTRACT\",\"value\":\"machine/spec/deployment-ops-contract.json\",\"type\":\"PLAINTEXT\"},{\"name\":\"GITHUB_ACTIONS_CRITICAL_PATH\",\"value\":\"false\",\"type\":\"PLAINTEXT\"},{\"name\":\"CLASS_A_REF\",\"value\":\"audit/evidence/deployment-ops-class-a-approval-2026-06-30.json\",\"type\":\"PLAINTEXT\"},{\"name\":\"GIT_COMMIT\",\"value\":\"\",\"type\":\"PLAINTEXT\"},{\"name\":\"IMAGE_DIGEST\",\"value\":\"\",\"type\":\"PLAINTEXT\"}]"
+    "[{\"name\":\"DEPLOY_MODE\",\"value\":\"plan\",\"type\":\"PLAINTEXT\"},{\"name\":\"DEPLOY_ENVIRONMENT\",\"value\":\"staging\",\"type\":\"PLAINTEXT\"},{\"name\":\"DEPLOYMENT_OPS_CONTRACT\",\"value\":\"machine/spec/deployment-ops-contract.json\",\"type\":\"PLAINTEXT\"},{\"name\":\"GITHUB_ACTIONS_CRITICAL_PATH\",\"value\":\"false\",\"type\":\"PLAINTEXT\"},{\"name\":\"CLASS_A_REF\",\"value\":\"\",\"type\":\"PLAINTEXT\"},{\"name\":\"GIT_COMMIT\",\"value\":\"\",\"type\":\"PLAINTEXT\"},{\"name\":\"IMAGE_DIGEST\",\"value\":\"\",\"type\":\"PLAINTEXT\"}]"
   ],
   "result": {
-    "status": 254,
+    "status": 0,
     "signal": null,
-    "stdout": "",
-    "stderr": "\nAn error occurred (ResourceNotFoundException) when calling the StartBuild operation: Project cannot be found: arn:aws:codebuild:af-south-1:348389439381:project/gtcx-staging-deploy-executor\n"
+    "stdout": "{\n    \"build\": {\n        \"id\": \"gtcx-staging-deploy-executor:e22ac6ec-ab3e-448a-95e8-8c776330c4f1\",\n        \"arn\": \"arn:aws:codebuild:af-south-1:348389439381:build/gtcx-staging-deploy-executor:e22ac6ec-ab3e-448a-95e8-8c776330c4f1\",\n        \"buildNumber\": 10,\n        \"startTime\": \"2026-06-30T12:22:44.705000+02:00\",\n        \"currentPhase\": \"QUEUED\",\n        \"buildStatus\": \"IN_PROGRESS\",\n        \"sourceVersion\": \"3fe91998\",\n        \"projectName\": \"gtcx-staging-deploy-executor\",\n        \"phases\": [\n            {\n                \"phaseType\": \"SUBMITTED\",\n                \"phaseStatus\": \"SUCCEEDED\",\n                \"startTime\": \"2026-06-30T12:22:44.705000+02:00\",\n                \"endTime\": \"2026-06-30T12:22:44.810000+02:00\",\n                \"durationInSeconds\": 0\n            },\n            {\n                \"phaseType\": \"QUEUED\",\n                \"startTime\": \"2026-06-30T12:22:44.810000+02:00\"\n            }\n        ],\n        \"source\": {\n            \"type\": \"GITHUB\",\n            \"location\": \"https://github.com/gtcx-ecosystem/fabric-os.git\",\n            \"gitCloneDepth\": 0,\n            \"buildspec\": \"deploy/codebuild/deploy-buildspec.yml\",\n            \"reportBuildStatus\": false,\n            \"insecureSsl\": false\n        },\n        \"secondarySources\": [],\n        \"secondarySourceVersions\": [],\n        \"artifacts\": {\n            \"location\": \"\",\n            \"overrideArtifactName\": false\n        },\n        \"cache\": {\n            \"type\": \"NO_CACHE\"\n        },\n        \"environment\": {\n            \"type\": \"LINUX_CONTAINER\",\n            \"image\": \"aws/codebuild/standard:7.0\",\n            \"computeType\": \"BUILD_GENERAL1_SMALL\",\n            \"environmentVariables\": [\n                {\n                    \"name\": \"DEPLOYMENT_OPS_CONTRACT\",\n                    \"value\": \"machine/spec/deployment-ops-contract.json\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"DEPLOY_MODE\",\n                    \"value\": \"plan\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"TERRAFORM_LOCK_TABLE_ARN\",\n                    \"value\": \"arn:aws:dynamodb:us-east-1:348389439381:table/gtcx-terraform-locks-staging\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"KUBERNETES_DELIVERY\",\n                    \"value\": \"argocd-in-eks\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"IMAGE_DIGEST\",\n                    \"value\": \"\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"TERRAFORM_STATE_BUCKET_ARN\",\n                    \"value\": \"arn:aws:s3:::gtcx-terraform-state-staging\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"GIT_COMMIT\",\n                    \"value\": \"\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"CLASS_A_REF\",\n                    \"value\": \"\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"EKS_CLUSTER_NAME\",\n                    \"value\": \"gtcx-staging\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"DEPLOY_ENVIRONMENT\",\n                    \"value\": \"staging\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"AWS_REGION\",\n                    \"value\": \"af-south-1\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"GITHUB_ACTIONS_CRITICAL_PATH\",\n                    \"value\": \"false\",\n                    \"type\": \"PLAINTEXT\"\n                },\n                {\n                    \"name\": \"ENVIRONMENT\",\n                    \"value\": \"staging\",\n                    \"type\": \"PLAINTEXT\"\n                }\n            ],\n            \"privilegedMode\": false,\n            \"imagePullCredentialsType\": \"CODEBUILD\"\n        },\n        \"serviceRole\": \"arn:aws:iam::348389439381:role/gtcx-staging-deploy-executor\",\n        \"logs\": {\n            \"deepLink\": \"https://console.aws.amazon.com/cloudwatch/home?region=af-south-1#logsV2:log-groups\",\n            \"cloudWatchLogsArn\": \"arn:aws:logs:af-south-1:348389439381:log-group:null:log-stream:null\",\n            \"cloudWatchLogs\": {\n                \"status\": \"ENABLED\",\n                \"groupName\": \"/aws/codebuild/gtcx-staging-deploy-executor\",\n                \"streamName\": \"deploy\"\n            },\n            \"s3Logs\": {\n                \"status\": \"DISABLED\",\n                \"encryptionDisabled\": false\n            }\n        },\n        \"timeoutInMinutes\": 45,\n        \"queuedTimeoutInMinutes\": 480,\n        \"buildComplete\": false,\n        \"initiator\": \"root\",\n        \"vpcConfig\": {\n            \"vpcId\": \"vpc-0c489ca4ba9c71cc4\",\n            \"subnets\": [\n                \"subnet-0a00dd46d7a51d641\",\n                \"subnet-027c1f5684a264a51\",\n                \"subnet-073c04ee640c128ac\"\n            ],\n            \"securityGroupIds\": [\n                \"sg-020b6689a304eb467\"\n            ]\n        },\n        \"encryptionKey\": \"arn:aws:kms:af-south-1:348389439381:alias/aws/s3\"\n    }\n}\n",
+    "stderr": ""
   }
 }

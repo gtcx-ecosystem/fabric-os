@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/finops-check-witness/v1",
   "version": "1.0.0",
-  "updated": "2026-06-30T04:43:26.933Z",
+  "updated": "2026-06-30T10:22:07.086Z",
   "repo": "fabric-os",
   "lane": "FinOps",
   "protocolId": "P48-FINOPS-AS-A-SERVICE",

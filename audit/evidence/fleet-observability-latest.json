@@ -11,7 +11,7 @@
   "dashboards": {
     "ecosystemOverview": "fabric-os/monitoring/dashboards/ecosystem-overview.json",
     "protocolHealth": "fabric-os/monitoring/dashboards/protocol-health.json",
-    "note": "Grafana JSON models version-controlled in gtcx-infrastructure"
+    "note": "Grafana JSON models version-controlled in fabric-os"
   },
   "alertRoutes": [
     {

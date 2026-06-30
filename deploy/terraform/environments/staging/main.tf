@@ -568,19 +568,19 @@ module "audit_flush_irsa" {
 module "codebuild_deploy_executor" {
   source = "../../modules/codebuild-deploy-executor"
 
-  environment                = var.environment
-  region                     = var.region
-  vpc_id                     = module.vpc.vpc_id
-  private_subnet_ids         = module.vpc.private_subnet_ids
+  environment                   = var.environment
+  region                        = var.region
+  vpc_id                        = module.vpc.vpc_id
+  private_subnet_ids            = module.vpc.private_subnet_ids
   eks_cluster_name              = module.eks.cluster_name
   eks_cluster_security_group_id = module.eks.cluster_security_group_id
   terraform_state_bucket_arn    = "arn:aws:s3:::gtcx-terraform-state-staging"
-  terraform_lock_table_arn   = "arn:aws:dynamodb:us-east-1:${data.aws_caller_identity.current.account_id}:table/gtcx-terraform-locks-staging"
-  evidence_bucket_arns       = [module.worm_audit.bucket_arn]
-  evidence_kms_key_arns      = [module.worm_audit.kms_key_arn]
-  source_type                = "GITHUB"
-  source_location            = "https://github.com/gtcx-ecosystem/fabric-os.git"
-  buildspec                  = "deploy/codebuild/deploy-buildspec.yml"
+  terraform_lock_table_arn      = "arn:aws:dynamodb:us-east-1:${data.aws_caller_identity.current.account_id}:table/gtcx-terraform-locks-staging"
+  evidence_bucket_arns          = [module.worm_audit.bucket_arn]
+  evidence_kms_key_arns         = [module.worm_audit.kms_key_arn]
+  source_type                   = "GITHUB"
+  source_location               = "https://github.com/gtcx-ecosystem/fabric-os.git"
+  buildspec                     = "deploy/codebuild/deploy-buildspec.yml"
 
   tags = merge(var.tags, {
     Environment = "staging"

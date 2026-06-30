@@ -1,129 +1,21 @@
-name: DR Test — Quarterly (Non-Production)
+# Retired GitHub Actions quarterly DR test path.
+#
+# Cluster-reaching DR tests must run from AWS-owned execution or in-cluster
+# controllers, not GitHub Actions, while billing is locked.
+
+name: Retired - Quarterly DR Test
 
 on:
-  schedule:
-    # Quarterly: 1st Monday of Jan, Apr, Jul, Oct at 06:00 UTC
-    - cron: '0 6 1 1,4,7,10 *'
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to test'
-        required: true
-        default: 'testnet'
-        type: choice
-        options:
-          - testnet
-          - staging
 
 permissions:
-  id-token: write
   contents: read
 
-concurrency:
-  group: dr-test-quarterly-${{ github.event.inputs.environment || 'testnet' }}
-  cancel-in-progress: true
-
 jobs:
-  dr-test:
+  retired:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
-    environment: ${{ github.event.inputs.environment || 'testnet' }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-
-      - name: Setup kubectl
-        uses: azure/setup-kubectl@776406bce94f63e41d621b960d78ee25c8b76ede # v4
-        with:
-          version: 'v1.30.0'
-
-      - name: Setup PostgreSQL client
+      - name: Retired path notice
         run: |
-          sudo apt-get update
-          sudo apt-get install -y postgresql-client
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
-        with:
-          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
-          aws-region: af-south-1
-
-      - name: Update kubeconfig
-        run: |
-          aws eks update-kubeconfig --name gtcx-${{ github.event.inputs.environment || 'testnet' }} --region af-south-1
-
-      - name: Port-forward protocol server
-        run: |
-          NAMESPACE="gtcx-${{ github.event.inputs.environment || 'testnet' }}"
-          kubectl port-forward -n "$NAMESPACE" svc/gtcx-protocols 8300:8300 &
-          sleep 5
-
-      - name: Port-forward PostgreSQL
-        run: |
-          NAMESPACE="gtcx-${{ github.event.inputs.environment || 'testnet' }}"
-          kubectl port-forward -n "$NAMESPACE" svc/gtcx-postgres 5432:5432 &
-          kubectl port-forward -n "$NAMESPACE" svc/gtcx-postgres-audit 5433:5432 &
-          sleep 5
-
-      - name: Run DR test
-        env:
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: 5432
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          POSTGRES_DB: gtcx
-          AUDIT_HOST: localhost
-          AUDIT_PORT: 5433
-          AUDIT_USER: ${{ secrets.AUDIT_USER }}
-          AUDIT_PASSWORD: ${{ secrets.AUDIT_PASSWORD }}
-          AUDIT_DB: gtcx_audit
-          PROTOCOL_URL: http://localhost:8300
-          OUTPUT_DIR: 04-deploy/security/reports/dr-evidence/quarterly/${{ github.event.inputs.environment || 'testnet' }}/${{ github.run_id }}
-        run: |
-          bash ./04-deploy/03-platform/scripts/dr-test.sh ${{ github.event.inputs.environment || 'testnet' }}
-
-      - name: Upload DR evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: dr-evidence-quarterly-${{ github.run_id }}
-          path: |
-            /tmp/gtcx_dr_test_*.sql
-            04-deploy/security/reports/dr-evidence/quarterly/${{ github.event.inputs.environment || 'testnet' }}/${{ github.run_id }}/
-          retention-days: 365
-
-      - name: Notify on failure
-        if: failure()
-        run: |
-          echo "::error::Quarterly DR test failed for ${{ github.event.inputs.environment || 'testnet' }}. Check artifacts for evidence."
-
-      - name: Generate quarterly DR report
-        if: always()
-        run: |
-          REPORT_FILE="04-deploy/security/reports/dr-evidence/quarterly/${{ github.event.inputs.environment || 'testnet' }}/${{ github.run_id }}/quarterly-report.md"
-          mkdir -p "$(dirname "$REPORT_FILE")"
-          cat > "$REPORT_FILE" <<EOF
-          # Quarterly DR Test Report
-
-          **Date:** $(date -u +%Y-%m-%dT%H:%M:%SZ)
-          **Environment:** ${{ github.event.inputs.environment || 'testnet' }}
-          **Run ID:** ${{ github.run_id }}
-          **Commit:** ${{ github.sha }}
-          **Type:** Quarterly (non-production)
-
-          ## Results
-
-          See \`dr-evidence.json\` for detailed step-by-step results.
-
-          ## Retention
-
-          This evidence is retained for 365 days per bank-grade audit requirements.
-          EOF
-
-      - name: Upload quarterly report
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: dr-quarterly-report-${{ github.run_id }}
-          path: 04-deploy/security/reports/dr-evidence/quarterly/${{ github.event.inputs.environment || 'testnet' }}/${{ github.run_id }}/quarterly-report.md
-          retention-days: 365
+          echo "This GitHub Actions quarterly DR path is retired."
+          echo "Use Fabric CodeBuild or in-cluster operational runners for cluster-reaching tests."

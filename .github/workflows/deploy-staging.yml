@@ -1,158 +1,21 @@
-# =============================================================================
-# Deploy to Staging
-# =============================================================================
-# Triggered on changes to Kubernetes manifests. Authenticates via OIDC,
-# applies the staging overlay, and verifies rollout health.
+# Retired GitHub Actions staging deploy path.
 #
-# Prerequisites:
-#   - AWS Deploy Role (OIDC) has EKS read/write access
-#   - GitHub Environment "staging" configured with protection rules (optional)
-# =============================================================================
+# Staging deployment execution is owned by AWS CodeBuild + Argo CD, not GitHub
+# Actions, while the billing lock is unresolved.
 
-name: Deploy to Staging
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+name: Retired - Staging Deploy
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '04-deploy/kubernetes/**'
-      - '.github/workflows/deploy-staging.yml'
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch:
 
 permissions:
-  id-token: write
   contents: read
 
-env:
-  AWS_REGION: af-south-1
-  CLUSTER_NAME: gtcx-staging
-  NAMESPACE: gtcx-staging
-
 jobs:
-  deploy:
+  retired:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    # environment: staging # TEMPORARILY DISABLED — OIDC sub claim includes environment
-    # which the AWS IAM trust policy does not yet allow. Re-enable after updating
-    # the role trust policy to include repo:gtcx-ecosystem/fabric-os:environment:staging
     steps:
-      - name: Checkout
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
-        with:
-          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
-
-      - name: Configure kubectl
+      - name: Retired path notice
         run: |
-          aws eks update-kubeconfig \
-            --name "${{ env.CLUSTER_NAME }}" \
-            --region "${{ env.AWS_REGION }}"
-
-      - name: Deploy to staging
-        run: |
-          kubectl apply -k 04-deploy/kubernetes/overlays/staging/
-          echo "### Deployed to staging" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Commit: \`${GITHUB_SHA::8}\`" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Cluster: ${{ env.CLUSTER_NAME }}" >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Deploy intelligence staging overlay
-        run: |
-          kubectl apply -k 04-deploy/kubernetes/overlays/staging/intelligence/
-          echo "- Intelligence staging ingress: **applied**" >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Wait for rollouts
-        run: |
-          set +e
-          FAILED=0
-
-          check_rollout() {
-            local deployment=$1
-            local namespace=$2
-            local critical=$3
-
-            if ! kubectl get deployment "${deployment}" -n "${namespace}" >/dev/null 2>&1; then
-              echo "- ${deployment}: **not found** (skipped)" >> "$GITHUB_STEP_SUMMARY"
-              return 0
-            fi
-
-            echo "Checking rollout for ${deployment}..."
-            if kubectl rollout status "deployment/${deployment}" \
-                -n "${namespace}" --timeout=300s; then
-              echo "- ${deployment}: **healthy**" >> "$GITHUB_STEP_SUMMARY"
-            else
-              echo "- ${deployment}: **FAILED**" >> "$GITHUB_STEP_SUMMARY"
-              if [ "${critical}" = "true" ]; then
-                FAILED=1
-              fi
-            fi
-          }
-
-          # Critical for audit endpoints
-          check_rollout compliance-gateway-staging "${{ env.NAMESPACE }}" true
-          check_rollout gtcx-protocols-staging "${{ env.NAMESPACE }}" true
-
-          # Non-critical — known pre-existing issues (INF-50/51/52 unblock)
-          check_rollout gtcx-agx-staging "${{ env.NAMESPACE }}" false
-
-          # Intelligence orchestrator lives in the intelligence namespace
-          check_rollout intelligence-orchestrator intelligence false
-
-          if [ "$FAILED" -ne 0 ]; then
-            echo "::error::One or more critical deployments failed to rollout"
-            exit 1
-          fi
-
-      - name: Smoke test — compliance-gateway health
-        run: |
-          # Port-forward to compliance-gateway and hit /health
-          kubectl port-forward -n "${{ env.NAMESPACE }}" \
-            "deployment/compliance-gateway-staging" 8080:8500 &
-          PF_PID=$!
-          sleep 5
-
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
-            --max-time 10 \
-            http://localhost:8080/health || echo "000")
-
-          kill $PF_PID 2>/dev/null || true
-
-          if [ "$HTTP_CODE" = "200" ]; then
-            echo "- Smoke test (/health): **passed**" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "- Smoke test (/health): **failed** (HTTP ${HTTP_CODE})" >> "$GITHUB_STEP_SUMMARY"
-            echo "::error::Smoke test failed with HTTP ${HTTP_CODE}"
-            exit 1
-          fi
-
-      - name: Smoke test — audit API reachability (durable evidence)
-        id: audit-smoke
-        run: |
-          OUTPUT_DIR=04-deploy/security/reports/staging-smoke/${{ github.run_id }} \
-            node 03-platform/scripts/staging-audit-probe.mjs
-          echo "- Audit API smoke test: **completed**" >> "$GITHUB_STEP_SUMMARY"
-        env:
-          GITHUB_SHA: ${{ github.sha }}
-          GITHUB_REF_NAME: ${{ github.ref_name }}
-
-      - name: Upload staging smoke evidence
-        if: always() && steps.audit-smoke.outcome != 'skipped'
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: staging-smoke-evidence-${{ github.run_id }}
-          path: 04-deploy/security/reports/staging-smoke/${{ github.run_id }}/
-          retention-days: 365
-
-      - name: Collect rollout evidence on failure
-        if: failure()
-        run: |
-          echo "### Rollout diagnostics" >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-          kubectl get pods -n "${{ env.NAMESPACE }}" >> "$GITHUB_STEP_SUMMARY" 2>&1 || true
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          echo "This GitHub Actions staging deploy path is retired."
+          echo "Use pnpm deployment:codebuild:start -- --environment=staging --mode=plan --write."

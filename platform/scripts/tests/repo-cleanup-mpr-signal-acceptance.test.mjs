@@ -26,6 +26,7 @@ describe('repo cleanup MPR/SIGNAL acceptance CLI', () => {
       'documentationTaxonomyLifecycle',
       'featureSpecRegistryPrd',
       'roadmapGoalsMilestonesWorkstream',
+      'operationalLaneIsolation',
       'foundationalMicroAudits',
       'transformationalMicroAudits',
     ]) {
@@ -36,6 +37,7 @@ describe('repo cleanup MPR/SIGNAL acceptance CLI', () => {
     for (const area of [
       'Feature/spec registry',
       'Roadmap/goals/milestones',
+      'Operational lane isolation',
       'Foundational micro-audits',
       'Transformational micro-audits',
       'Archive recoverability',

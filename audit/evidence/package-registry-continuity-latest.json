@@ -1,0 +1,62 @@
+{
+  "schema": "gtcx://fabric-os/package-registry-continuity-check/v1",
+  "checkedAt": "2026-06-30T13:31:31.267Z",
+  "ok": true,
+  "gates": {
+    "file:spec": {
+      "ok": true,
+      "path": "machine/spec/package-registry-continuity.json"
+    },
+    "file:runbook": {
+      "ok": true,
+      "path": "docs/operations/runbooks/package-registry-continuity.md"
+    },
+    "file:moduleMain": {
+      "ok": true,
+      "path": "deploy/terraform/modules/codeartifact-npm-registry/main.tf"
+    },
+    "file:moduleVars": {
+      "ok": true,
+      "path": "deploy/terraform/modules/codeartifact-npm-registry/variables.tf"
+    },
+    "file:moduleOutputs": {
+      "ok": true,
+      "path": "deploy/terraform/modules/codeartifact-npm-registry/outputs.tf"
+    },
+    "file:moduleTest": {
+      "ok": true,
+      "path": "deploy/terraform/modules/codeartifact-npm-registry/codeartifact-npm-registry.tftest.hcl"
+    },
+    "file:npmReadiness": {
+      "ok": true,
+      "path": "platform/scripts/ci-npm-token-readiness.mjs"
+    },
+    "spec:two-lanes": {
+      "ok": true
+    },
+    "spec:codeartifact-no-npm-token": {
+      "ok": true
+    },
+    "terraform:domain": {
+      "ok": true
+    },
+    "terraform:repository": {
+      "ok": true
+    },
+    "terraform:npmjs-upstream": {
+      "ok": true
+    },
+    "runbook:both-lanes": {
+      "ok": true
+    },
+    "runbook:vault-sor": {
+      "ok": true
+    },
+    "runbook:npm-account-checklist": {
+      "ok": true
+    },
+    "runbook:npm-acceptance": {
+      "ok": true
+    }
+  }
+}

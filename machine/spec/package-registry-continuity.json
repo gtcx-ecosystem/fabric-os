@@ -1,0 +1,40 @@
+{
+  "$schema": "gtcx://fabric-os/package-registry-continuity/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-30",
+  "ownerRepo": "fabric-os",
+  "status": "current",
+  "problem": "Previous npm account access is blocked; package publishing and enterprise runner builds must not depend on that account recovery.",
+  "lanes": {
+    "internalRegistry": {
+      "provider": "aws-codeartifact",
+      "purpose": "Internal CI/build continuity for @gtcx/* packages.",
+      "authorityClass": "A",
+      "systemOfRecord": "fabric-os Terraform + AWS IAM",
+      "terraformModule": "deploy/terraform/modules/codeartifact-npm-registry",
+      "domain": "gtcx-packages",
+      "repository": "npm-internal",
+      "upstream": "public:npmjs",
+      "credentialModel": "AWS IAM session auth; no long-lived NPM_TOKEN required"
+    },
+    "publicNpm": {
+      "provider": "npmjs",
+      "purpose": "Public package distribution when required.",
+      "authorityClass": "S/A",
+      "systemOfRecord": "npm account/org + bridge-os Baseline vault for tokens",
+      "preferredAction": "Create a new npm account/org and secure it with 2FA while old account recovery runs in parallel.",
+      "vaultCredential": "NPM_TOKEN",
+      "fallbackIfScopeUnavailable": "Use new public scope or publish public packages after old scope recovery."
+    }
+  },
+  "decision": "Run both lanes: CodeArtifact unblocks internal builds; new npm account handles public distribution and recovery fallback.",
+  "nonGoals": [
+    "Do not wait for old npm account recovery to unblock internal CI.",
+    "Do not treat AWS Secrets Manager as the npm credential source of truth.",
+    "Do not commit npm or CodeArtifact auth tokens."
+  ],
+  "operatorDocs": [
+    "docs/operations/runbooks/package-registry-continuity.md",
+    "docs/operations/coordination/inbound/from-ledger-ui-npm-token-2026-06-30.md"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "gtcx://fabric-os/ci-npm-token-readiness/v2",
+  "checkedAt": "2026-06-30T13:32:06.462Z",
+  "owner": "fabric-os",
+  "vaultSystemOfRecord": "bridge-os Baseline vault",
+  "runtimePrimitive": "@baselineos/vault",
+  "authorityClass": "R",
+  "credential": "NPM_TOKEN",
+  "tokenUser": "gtcx-protocol",
+  "redaction": "secret value never emitted or written",
+  "execute": false,
+  "gates": {
+    "handoffPresent": {
+      "ok": true,
+      "path": "docs/operations/coordination/inbound/from-ledger-ui-npm-token-2026-06-30.md"
+    },
+    "baselineCliPresent": {
+      "ok": true,
+      "path": "../baseline-os/platform/packages/baselineos/dist/cli/bin.js"
+    },
+    "bridgeVaultVerifyAvailable": {
+      "ok": true,
+      "command": "pnpm --dir ../bridge-os agent:vault:verify"
+    },
+    "canonicalCredentialName": {
+      "ok": true,
+      "expected": "NPM_TOKEN",
+      "actual": "NPM_TOKEN"
+    },
+    "vaultCredentialRetrievable": {
+      "ok": false,
+      "credential": "NPM_TOKEN",
+      "skipped": true,
+      "reason": "Pass --execute to verify Baseline vault retrieval without printing the token."
+    }
+  },
+  "ok": true,
+  "nextAction": "Run ledger-ui build through the approved runner and attach redacted consumption witness.",
+  "operatorCommands": [
+    "pnpm --dir ../bridge-os agent:vault:verify",
+    "node ../baseline-os/platform/packages/baselineos/dist/cli/bin.js vault store NPM_TOKEN --from-env NPM_TOKEN --provider npm --type api-key --min-trust-score 90",
+    "pnpm ci:npm-token:readiness -- --execute --write"
+  ]
+}

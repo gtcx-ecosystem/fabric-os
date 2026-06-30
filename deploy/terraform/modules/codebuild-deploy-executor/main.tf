@@ -85,6 +85,11 @@ resource "aws_iam_role" "deploy" {
   })
 }
 
+resource "aws_iam_role_policy_attachment" "deploy_readonly" {
+  role       = aws_iam_role.deploy.name
+  policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
+}
+
 resource "aws_iam_role_policy" "deploy" {
   name = "${local.name}-policy"
   role = aws_iam_role.deploy.id
@@ -108,6 +113,7 @@ resource "aws_iam_role_policy" "deploy" {
           Effect = "Allow"
           Action = [
             "logs:DescribeLogGroups",
+            "logs:ListTagsForResource",
           ]
           Resource = "*"
         },
@@ -189,12 +195,29 @@ resource "aws_iam_role_policy" "deploy" {
             "iam:GetPolicy",
             "iam:GetPolicyVersion",
             "iam:ListPolicyVersions",
+            "iam:ListInstanceProfiles",
+            "iam:GetInstanceProfile",
           ]
           Resource = [
             "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.name}",
             "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/gtcx-${var.environment}-shared-deploy",
+            "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/gtcx-${var.environment}-*",
             "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/gtcx-*",
+            "arn:aws:iam::${data.aws_caller_identity.current.account_id}:instance-profile/gtcx-*",
           ]
+        },
+        {
+          Sid    = "RdsRead"
+          Effect = "Allow"
+          Action = [
+            "rds:DescribeDBInstances",
+            "rds:DescribeDBParameterGroups",
+            "rds:DescribeDBParameters",
+            "rds:DescribeDBSubnetGroups",
+            "rds:DescribeDBSnapshots",
+            "rds:ListTagsForResource",
+          ]
+          Resource = "arn:aws:rds:${var.region}:${data.aws_caller_identity.current.account_id}:db:gtcx-${var.environment}-*"
         },
         {
           Sid    = "EcrAuth"

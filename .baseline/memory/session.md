@@ -49,3 +49,43 @@ Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot
 - Restored `F-prod-06` status to **closed** for `griot.gtcx.trade`.
 - `griot:prod:verify:write` passes (HTTP/2 200, ACM ISSUED).
 - Related commits: `fabric-os` `d5a6f4f0` and its follow-up revert/closure commit.
+
+## Session bootstrap (2026-06-30 04:17:17 UTC)
+
+- **Command:** `agent start` (baseline-os repo-session-core)
+- **Repo:** fabric-os
+- **Next work:** COMPOSITE-RESTORE-100 — Restore composite ≥100 (current 59) — SECAS-S4-supply-chain
+- **Blocked:** no
+- **Git:** 43 changed path(s)
+
+
+## Session: baseline start — 2026-06-30 07:04 UTC
+
+- **Command:** `baseline start`
+- **Agent:** Kimi Code CLI
+- **Repo:** fabric-os
+- **Persona:** platform-architect (development)
+- **Frame:** development
+
+### What Was Done
+- Loaded AGENTS.md, baseline definition, institutional baseline, repo context.
+- Ran `git status` and `git log --oneline -10`.
+- Read execution roadmap and `audit/latest.json`.
+- Ran `pnpm agent:next-work` → `backlogClear: true`; phase `internal_closure_complete`; head story `SECAS-S4-04`.
+- Adopted `platform-architect` persona (development frame).
+- Ran `node platform/tools/scripts/validate-all.mjs` to refresh evidence gates.
+- Fixed two failing gates:
+  1. **Node Version Floor** — pinned `.github/workflows/aaas-loop.yml` to `node-version: '20.18.0'`.
+  2. **Product Roadmap Lane Isolation** — placed canonical spec at `canon-os/pm/spec/product-roadmap-lane-isolation-protocol.json` (copied from `canon-os/machine/spec/`).
+- Re-ran `validate-all`: **56/56 gates pass**.
+
+### Files Modified
+- `.github/workflows/aaas-loop.yml`
+- `audit/evidence/product-roadmap-lane-isolation-latest.json` (witness refreshed)
+- `canon-os/pm/spec/product-roadmap-lane-isolation-protocol.json` (new, cross-repo alignment)
+- `.baseline/memory/session.md` (this entry)
+
+### Next Steps
+- Operator confirmation requested for micro-commit of Class R changes.
+- Continue backlog-clear protocol: run witness refresh periodically; no open engineering stories.
+- Parallel assurance gates remain calendar-blocked (pen-test window 2026-06-17..2026-06-21; SOC2 auditor opinion letter).

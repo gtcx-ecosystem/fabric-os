@@ -114,6 +114,9 @@ function buildCommands({ environment, mode, region, clusterName, appName, planPa
   add(commands, 'deployment-contract', 'pnpm', ['deployment:ops:contract:check']);
 
   if (['plan', 'terraform-apply'].includes(mode)) {
+    add(commands, 'rotation-lambda-build', 'bash', [
+      'deploy/terraform/modules/secrets/lambda/build.sh',
+    ]);
     add(commands, 'terraform-init', terraformCommand, ['-chdir=' + envDir, 'init', '-input=false']);
     add(commands, 'terraform-plan', terraformCommand, [
       '-chdir=' + envDir,

@@ -8,7 +8,7 @@ tags: [['docs-site', 'mcp', 'compliance-gateway', 'reference']]
 review_cycle: on-change
 document_type: gitbook-chapter
 role: protocol-architect
-agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
+agent_id: agent://fabric-os/2026-05-27/session-backfill
 trust_score: 60
 autonomy_level: permissioned
 ---
@@ -88,7 +88,7 @@ The token must be the same shape as a regular gateway client token; the MCP serv
 
 ## Source
 
-- GitHub: https://github.com/gtcx-ecosystem/gtcx-infrastructure/tree/main/03-platform/tools/compliance-gateway-mcp
+- GitHub: https://github.com/gtcx-ecosystem/fabric-os/tree/main/03-platform/tools/compliance-gateway-mcp
 - npm: pending publish
 
 ## License

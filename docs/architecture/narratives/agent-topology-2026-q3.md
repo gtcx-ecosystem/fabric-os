@@ -1,15 +1,15 @@
 ---
-title: 'Agent topology — gtcx-infrastructure (SIGNAL INF-012)'
+title: 'Agent topology — fabric-os (SIGNAL INF-012)'
 status: current
 date: 2026-06-05
-owner: gtcx-infrastructure
+owner: fabric-os
 tier: operating
 tags: [['signal', 'architecture', 'agents']]
 review_cycle: on-change
 document_type: architecture
 ---
 
-# Agent topology — gtcx-infrastructure
+# Agent topology — fabric-os
 
 Named AI engines with distinct responsibilities (SIGNAL L2→L3 criterion #1).
 

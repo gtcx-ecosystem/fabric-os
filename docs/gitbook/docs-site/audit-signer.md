@@ -8,7 +8,7 @@ tags: [['docs-site', 'audit-signer', 'reference']]
 review_cycle: on-change
 document_type: gitbook-chapter
 role: protocol-architect
-agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
+agent_id: agent://fabric-os/2026-05-27/session-backfill
 trust_score: 60
 autonomy_level: permissioned
 ---
@@ -161,12 +161,12 @@ A verifier with only the NDJSON has everything. No keystore lookup, no key serve
 
 ## Compliance posture
 
-`@gtcx/audit-signer` is the substrate behind GTCX's SIGNAL Supervision S2 (audit trail) and Integrity I2 (audit immutability) controls. The published SIGNAL scorecard for `gtcx-infrastructure` currently scores 9.60/10 with cryptographic evidence pointers that resolve to live, externally verifiable artifacts.
+`@gtcx/audit-signer` is the substrate behind GTCX's SIGNAL Supervision S2 (audit trail) and Integrity I2 (audit immutability) controls. The published SIGNAL scorecard for `fabric-os` currently scores 9.60/10 with cryptographic evidence pointers that resolve to live, externally verifiable artifacts.
 
 ## Source
 
 - npm: https://www.npmjs.com/package/@gtcx/audit-signer
-- GitHub: https://github.com/gtcx-ecosystem/gtcx-infrastructure/tree/main/03-platform/tools/audit-signer
+- GitHub: https://github.com/gtcx-ecosystem/fabric-os/tree/main/03-platform/tools/audit-signer
 
 ## License
 

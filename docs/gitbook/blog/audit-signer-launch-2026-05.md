@@ -8,7 +8,7 @@ tags: [['blog', 'launch', 'audit-signer', 'distribution']]
 review_cycle: on-change
 document_type: gitbook-chapter
 role: protocol-architect
-agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
+agent_id: agent://fabric-os/2026-05-27/session-backfill
 trust_score: 60
 autonomy_level: permissioned
 ---
@@ -195,7 +195,7 @@ If the third command returns `valid: false`, the substrate is doing what it clai
 
 ## License
 
-MIT. Use it, fork it, ship it. If you find a cryptographic concern, please report via GitHub Security Advisories on `gtcx-ecosystem/gtcx-infrastructure` rather than a public issue.
+MIT. Use it, fork it, ship it. If you find a cryptographic concern, please report via GitHub Security Advisories on `gtcx-ecosystem/fabric-os` rather than a public issue.
 
 If you build something on top of this, we'd love to hear about it. The substrate is more valuable when it's load-bearing for more than one organization.
 

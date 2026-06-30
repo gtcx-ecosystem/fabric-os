@@ -8,7 +8,7 @@ tags: [['docs-site', 'distribution', 'compliance']]
 review_cycle: on-change
 document_type: gitbook-chapter
 role: protocol-architect
-agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
+agent_id: agent://fabric-os/2026-05-27/session-backfill
 trust_score: 60
 autonomy_level: permissioned
 ---
@@ -67,6 +67,6 @@ All three primitives are MIT. We rely on adoption signal, not licensing pressure
 
 ## Get involved
 
-- **GitHub:** https://github.com/gtcx-ecosystem/gtcx-infrastructure
+- **GitHub:** https://github.com/gtcx-ecosystem/fabric-os
 - **Security advisories:** GitHub Security Advisories on the parent repository
-- **SIGNAL scorecard:** [`signal-scorecard.json`](https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/05-audit/signal-scorecard.json) — current score: **9.60/10**
+- **SIGNAL scorecard:** [`signal-scorecard.json`](https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/05-audit/signal-scorecard.json) — current score: **9.60/10**

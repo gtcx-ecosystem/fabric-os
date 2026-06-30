@@ -7,7 +7,7 @@ tier: 'standard'
 tags: ['external', 'blog', 'distribution']
 review_cycle: 'on-change'
 role: 'protocol-architect'
-agent_id: 'agent://gtcx-infrastructure/2026-05-27/session-backfill'
+agent_id: 'agent://fabric-os/2026-05-27/session-backfill'
 trust_score: 95
 autonomy_level: 'sovereign'
 ---

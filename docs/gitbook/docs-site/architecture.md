@@ -8,7 +8,7 @@ tags: [['docs-site', 'architecture']]
 review_cycle: on-change
 document_type: gitbook-chapter
 role: protocol-architect
-agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
+agent_id: agent://fabric-os/2026-05-27/session-backfill
 trust_score: 60
 autonomy_level: permissioned
 ---
@@ -86,7 +86,7 @@ A future regulator's auditor can pull any object from the bucket and run `verify
 
 ## Related
 
-- [ADR-014 — NATS JetStream Audit Transport](https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/architecture/decisions/ADR-014-nats-jetstream-audit-transport.md)
-- [ADR-015 — Per-Tenant Subject Routing](https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/architecture/decisions/ADR-015-per-tenant-jetstream-subject-routing.md)
-- [ADR-016 — Fail-Closed Audit Signing](https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/architecture/decisions/ADR-016-fail-closed-audit-signing.md)
-- [SIGNAL Scorecard (v2, 9.60/10)](https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/05-audit/signal-scorecard.json)
+- [ADR-014 — NATS JetStream Audit Transport](https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/architecture/decisions/ADR-014-nats-jetstream-audit-transport.md)
+- [ADR-015 — Per-Tenant Subject Routing](https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/architecture/decisions/ADR-015-per-tenant-jetstream-subject-routing.md)
+- [ADR-016 — Fail-Closed Audit Signing](https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/architecture/decisions/ADR-016-fail-closed-audit-signing.md)
+- [SIGNAL Scorecard (v2, 9.60/10)](https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/05-audit/signal-scorecard.json)

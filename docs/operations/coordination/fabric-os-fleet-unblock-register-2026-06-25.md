@@ -7,6 +7,7 @@ document_type: backlog
 tier: critical
 tags: ['coordination', 'compliance', 'infra', 'unblock']
 document_id: FABRIC-UNBLOCK-REG-001
+review_cycle: on-change
 ---
 
 # fabric-os fleet unblock register

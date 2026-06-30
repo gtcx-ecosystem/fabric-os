@@ -7,6 +7,7 @@ document_type: spec
 tier: critical
 tags: ['ci', 'compliance', 'p35', 'non-blocking', 'spec']
 document_id: FABRIC-NONBLOCK-CI-001
+review_cycle: on-change
 ---
 
 # fabric-os proactive non-blocking CI spec

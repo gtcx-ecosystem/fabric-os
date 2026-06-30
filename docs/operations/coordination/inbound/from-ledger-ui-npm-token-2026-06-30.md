@@ -5,6 +5,9 @@ date: 2026-06-30
 owner: fabric-os
 document_type: coordination-handoff
 source: ledger-ui
+tier: operating
+tags: [fabric-os, coordination]
+review_cycle: on-change
 ---
 
 # Coordination handoff

@@ -11,6 +11,10 @@ authorityClass: R
 protocol: P24
 blocksIR: false
 owner: fabric-os
+document_type: runbook
+tier: operating
+tags: [fabric-os, coordination]
+review_cycle: on-change
 ---
 
 # outbound-ack — XR-GTM-ASSURANCE-LANE-002 (fabric-os slice)

@@ -9,6 +9,7 @@ blocked_work: PROD-READY-005
 document_type: coordination
 tier: critical
 tags: ['coordination', 'markets-os', 'staging', 'credentials', 'protocol-24']
+review_cycle: on-change
 ---
 
 # Inbound handoff — markets-os fresh audit / PROD-READY-005

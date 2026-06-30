@@ -7,6 +7,7 @@ document_type: retrospective
 tier: operating
 tags: ['retrospective', 'blocking', 'compliance', 'infra']
 document_id: FABRIC-BLOCK-RETRO-001
+review_cycle: on-change
 ---
 
 # fabric-os blocking retrospective

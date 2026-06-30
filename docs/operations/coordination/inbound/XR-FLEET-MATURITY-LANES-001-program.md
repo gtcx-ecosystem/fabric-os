@@ -9,6 +9,10 @@ policy: GS-MATURITY-LANE-001
 authorityClass: R
 protocol: P24
 blocksIR: false
+document_type: runbook
+tier: operating
+tags: [fabric-os, coordination]
+review_cycle: on-change
 ---
 
 # XR-FLEET-MATURITY-LANES-001 — program backlog (cross-repo)

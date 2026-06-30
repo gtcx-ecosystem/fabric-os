@@ -9,6 +9,10 @@ blockerId: F-prod-06
 milestoneId: M5-production-assurance
 programmeId: PROG-GRIOT-AI
 status: closed
+document_type: runbook
+tier: operating
+tags: [fabric-os, coordination]
+review_cycle: on-change
 ---
 
 # Inbound handoff: griot-ai `F-prod-06` — HTTPS closure (corrected)

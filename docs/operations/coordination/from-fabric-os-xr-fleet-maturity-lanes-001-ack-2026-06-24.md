@@ -11,6 +11,10 @@ authorityClass: R
 protocol: P24
 blocksIR: false
 owner: fabric-os
+document_type: runbook
+tier: operating
+tags: [fabric-os, coordination]
+review_cycle: on-change
 ---
 
 # outbound-ack — XR-FLEET-MATURITY-LANES-001

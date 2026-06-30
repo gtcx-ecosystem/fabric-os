@@ -13,7 +13,7 @@
 # Prerequisites:
 #   - Docker running
 #   - AWS CLI configured for af-south-1
-#   - Ecosystem repos cloned at the same level as gtcx-infrastructure
+#   - Ecosystem repos cloned at the same level as fabric-os
 # =============================================================================
 
 set -euo pipefail
@@ -33,13 +33,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INFRA_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 REPO_ROOT="$(cd "${INFRA_ROOT}/.." && pwd)"
 ECOSYSTEM_ROOT="${GTCX_ECOSYSTEM_ROOT:-$(cd "${REPO_ROOT}/.." && pwd)}"
-
 require_ecosystem_repos() {
-    if [[ ! -d "${ECOSYSTEM_ROOT}/gtcx-intelligence" ]] || [[ ! -d "${ECOSYSTEM_ROOT}/gtcx-protocols" ]]; then
+    if [[ ! -d "${ECOSYSTEM_ROOT}/gtcx-protocols" ]] || [[ ! -d "${ECOSYSTEM_ROOT}/gtcx-platforms" ]]; then
         log_error "Cannot find required ecosystem repos in ${ECOSYSTEM_ROOT}"
-        log_error "Set GTCX_ECOSYSTEM_ROOT or ensure repos are cloned alongside gtcx-infrastructure:"
-        log_error "  ../gtcx-intelligence"
-        log_error "  ../gtcx-protocols"
+        log_error "Set GTCX_ECOSYSTEM_ROOT or ensure repos are available:"
+        log_error "  - gtcx-protocols"
+        log_error "  - gtcx-platforms"
         exit 1
     fi
 }
@@ -56,7 +55,7 @@ TARGET_SERVICE=""
 
 service_exists() {
     case "$1" in
-        protocols|agx|intelligence-sdk|trainer|redteam|compliance-gateway) return 0 ;;
+        protocols|agx|compliance-gateway) return 0 ;;
         *) return 1 ;;
     esac
 }
@@ -65,9 +64,6 @@ service_dockerfile() {
     case "$1" in
         protocols) echo "Dockerfile" ;;
         agx) echo "${ECOSYSTEM_ROOT}/gtcx-platforms/Dockerfile" ;;
-        intelligence-sdk) echo "${ECOSYSTEM_ROOT}/gtcx-intelligence/intelligence/sdk/Dockerfile" ;;
-        trainer) echo "${ECOSYSTEM_ROOT}/gtcx-intelligence/intelligence/trainer/Dockerfile" ;;
-        redteam) echo "${ECOSYSTEM_ROOT}/gtcx-intelligence/intelligence/red-team/Dockerfile" ;;
         compliance-gateway) echo "03-platform/tools/compliance-gateway/Dockerfile" ;;
         *) return 1 ;;
     esac
@@ -77,7 +73,6 @@ service_context() {
     case "$1" in
         protocols) echo "${ECOSYSTEM_ROOT}/gtcx-protocols" ;;
         agx) echo "${ECOSYSTEM_ROOT}/gtcx-platforms" ;;
-        intelligence-sdk|trainer|redteam) echo "${ECOSYSTEM_ROOT}/gtcx-intelligence" ;;
         compliance-gateway) echo "${REPO_ROOT}" ;;
         *) return 1 ;;
     esac
@@ -87,7 +82,7 @@ service_args() {
     case "$1" in
         protocols) echo "" ;;
         agx) echo "--build-arg PLATFORM=agx --build-arg APP_PORT=3000" ;;
-        intelligence-sdk|trainer|redteam|compliance-gateway) echo "" ;;
+        compliance-gateway) echo "" ;;
         *) return 1 ;;
     esac
 }
@@ -96,15 +91,12 @@ service_ecr_repo() {
     case "$1" in
         protocols) echo "gtcx-protocols" ;;
         agx) echo "gtcx-agx" ;;
-        intelligence-sdk) echo "gtcx-intelligence-sdk" ;;
-        trainer) echo "gtcx-intelligence-trainer" ;;
-        redteam) echo "gtcx-intelligence-redteam" ;;
         compliance-gateway) echo "compliance-gateway" ;;
         *) return 1 ;;
     esac
 }
 
-ALL_SERVICES=(protocols agx intelligence-sdk trainer redteam compliance-gateway)
+ALL_SERVICES=(protocols agx compliance-gateway)
 
 # =============================================================================
 # Parse arguments

@@ -4,7 +4,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ECOSYSTEM_ROOT="${GTCX_ECOSYSTEM_ROOT:-$(cd "${SCRIPT_DIR}/../../../../.." && pwd)}"
-PROTOCOLS_ROOT="${PROTOCOLS_ROOT:-${ECOSYSTEM_ROOT}/gtcx-os/platform/protocols}"
+PROTOCOLS_ROOT="${PROTOCOLS_ROOT:-${ECOSYSTEM_ROOT}/gtcx-protocols}"
 REGION="${AWS_REGION:-af-south-1}"
 ECR_REGISTRY="${ECR_REGISTRY:-348389439381.dkr.ecr.af-south-1.amazonaws.com}"
 TAG="${TAG:-e7525dfa}"

@@ -16,9 +16,9 @@
 
 set -euo pipefail
 
-REPO_URL="https://github.com/gtcx-ecosystem/gtcx-infrastructure.git"
-BACKUP_DIR="/tmp/gtcx-infrastructure-backup-$(date +%s)"
-PURGE_DIR="/tmp/gtcx-infrastructure-purge-$(date +%s)"
+REPO_URL="https://github.com/gtcx-ecosystem/fabric-os.git"
+BACKUP_DIR="/tmp/fabric-os-backup-$(date +%s)"
+PURGE_DIR="/tmp/fabric-os-purge-$(date +%s)"
 
 echo "=== GTCX Terraform History Purge ==="
 echo "Date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"

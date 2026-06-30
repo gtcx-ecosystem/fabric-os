@@ -288,9 +288,7 @@ services:
 
   # ANISA — Cultural Intelligence (FastAPI + gRPC)
   anisa:
-    build:
-      context: ../../../gtcx-intelligence
-      dockerfile: intelligence/anisa/Dockerfile
+    image: gtcx-anisa:latest
     container_name: gtcx-anisa
     environment:
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
@@ -320,9 +318,7 @@ services:
 
   # Intelligence SDK Server (Cortex, Veritas, PANX, Underwriting)
   intelligence-sdk:
-    build:
-      context: ../../../gtcx-intelligence
-      dockerfile: intelligence/sdk/Dockerfile
+    image: gtcx-intelligence-sdk:latest
     container_name: gtcx-intelligence-sdk
     environment:
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}

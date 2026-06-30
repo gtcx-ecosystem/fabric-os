@@ -8,18 +8,19 @@ last_reconciled: 2026-06-25T00:40:00.000Z
 
 # Auto-Development State
 
-## Inbound handoff — ledger-ui NPM_TOKEN provisioning (2026-06-30)
+## Inbound handoff — ledger-ui package registry continuity (2026-06-30)
 
 - **Ticket:** S26-04
-- **Blocked work:** ledger-ui CI/build package installation via npm user `gtcx-protocol`
+- **Blocked work:** ledger-ui CI/build package installation and publishing while previous npm account access is locked
 - **Owner:** fabric-os / infrastructure operator
 - **Status:** **acknowledged** — inbound handoff filed at `docs/operations/coordination/inbound/from-ledger-ui-npm-token-2026-06-30.md`
 - **Evidence:**
   - ledger-ui commits `75d4c735`, `ff766de5`, `7bee324d` — NPM token access instructions and credential-pointer updates.
   - ledger-ui commit `83c61912` — refreshed auto-dev-state and cross-repo deps.
-- **Root cause:** The npm read token for user `gtcx-protocol` has not been provisioned in the infrastructure secret store.
+- **Root cause:** Previous npm account access is blocked; `NPM_TOKEN` is not in Baseline vault, and internal builds need a registry path that does not wait for account recovery.
 - **Authority:** Class A/S — operator / infrastructure owner must create or inject the secret.
-- **Completion signal:** `NPM_TOKEN` is available to approved runners; ledger-ui build succeeds; redacted witness confirms consumption.
+- **Continuity plan:** run both lanes — AWS CodeArtifact internal registry (`deploy/terraform/modules/codeartifact-npm-registry/`) and new/recovered npmjs account for public publishing.
+- **Completion signal:** CodeArtifact is available to approved runners, or `NPM_TOKEN` is available from Baseline vault to approved runners; ledger-ui build succeeds; redacted witness confirms consumption.
 
 ## Inbound handoff — ledger-os durable host recheck (2026-06-27)
 

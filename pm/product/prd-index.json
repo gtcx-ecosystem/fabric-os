@@ -1,0 +1,18 @@
+{
+  "$schema": "gtcx://bridge-os/prd-index/v1",
+  "version": "1.0.0",
+  "repo": "fabric-os",
+  "updated": "2026-06-13",
+  "productGoals": "pm/spec/product-goals.json",
+  "prds": [
+    {
+      "id": "prd-product-charter",
+      "path": "pm/product/prds/prd-product-charter.md",
+      "title": "fabric-os product charter",
+      "status": "draft",
+      "milestones": ["M1"],
+      "features": [],
+      "capabilityIds": []
+    }
+  ]
+}

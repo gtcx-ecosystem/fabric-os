@@ -310,7 +310,9 @@
     "aaas:report:remediation": "node platform/scripts/aaas-remediation-report.mjs",
     "aaas:hygiene:check": "node platform/scripts/aaas-hygiene-check.mjs",
     "aaas:hygiene:check:strict": "node platform/scripts/aaas-hygiene-check.mjs --strict --write",
-    "aaas:ship-gates:check": "node platform/scripts/aaas-ship-gates-check.mjs"
+    "aaas:ship-gates:check": "node platform/scripts/aaas-ship-gates-check.mjs",
+    "repo-cleanup:mpr-signal:acceptance": "node platform/scripts/repo-cleanup-mpr-signal-acceptance.mjs",
+    "repo-cleanup:mpr-signal:acceptance:write": "node platform/scripts/repo-cleanup-mpr-signal-acceptance.mjs --write"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

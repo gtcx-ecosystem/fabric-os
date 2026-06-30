@@ -1,9 +1,9 @@
 {
   "$schema": "gtcx://fabric-os/aws-cost-optimization-export/v1",
   "repo": "fabric-os",
-  "generatedAt": "2026-06-30T10:21:58.061Z",
+  "generatedAt": "2026-06-30T12:14:27.955Z",
   "dryRun": false,
-  "ok": false,
+  "ok": true,
   "region": "af-south-1",
   "hubRegion": "us-east-1",
   "deploymentOpsContract": "machine/spec/deployment-ops-contract.json",
@@ -22,10 +22,12 @@
         "100"
       ],
       "skipped": false,
-      "status": 254,
-      "stdoutJson": null,
+      "status": 0,
+      "stdoutJson": {
+        "items": []
+      },
       "stdout": "",
-      "stderr": "\nAn error occurred (AccessDeniedException) when calling the ListRecommendations operation: AWS account is not enrolled for recommendations.\n",
+      "stderr": "",
       "signal": null
     },
     {
@@ -39,10 +41,13 @@
         "af-south-1"
       ],
       "skipped": false,
-      "status": 254,
-      "stdoutJson": null,
+      "status": 0,
+      "stdoutJson": {
+        "instanceRecommendations": [],
+        "errors": []
+      },
       "stdout": "",
-      "stderr": "\nAn error occurred (OptInRequiredException) when calling the GetEC2InstanceRecommendations operation: Aws account is not registered for recommendation.\n",
+      "stderr": "",
       "signal": null
     },
     {
@@ -56,10 +61,13 @@
         "af-south-1"
       ],
       "skipped": false,
-      "status": 254,
-      "stdoutJson": null,
+      "status": 0,
+      "stdoutJson": {
+        "autoScalingGroupRecommendations": [],
+        "errors": []
+      },
       "stdout": "",
-      "stderr": "\nAn error occurred (OptInRequiredException) when calling the GetAutoScalingGroupRecommendations operation: Aws account is not registered for recommendation.\n",
+      "stderr": "",
       "signal": null
     },
     {
@@ -73,10 +81,13 @@
         "af-south-1"
       ],
       "skipped": false,
-      "status": 254,
-      "stdoutJson": null,
+      "status": 0,
+      "stdoutJson": {
+        "volumeRecommendations": [],
+        "errors": []
+      },
       "stdout": "",
-      "stderr": "\nAn error occurred (OptInRequiredException) when calling the GetEBSVolumeRecommendations operation: Aws account is not registered for recommendation.\n",
+      "stderr": "",
       "signal": null
     },
     {
@@ -90,10 +101,12 @@
         "af-south-1"
       ],
       "skipped": false,
-      "status": 254,
-      "stdoutJson": null,
+      "status": 0,
+      "stdoutJson": {
+        "lambdaFunctionRecommendations": []
+      },
       "stdout": "",
-      "stderr": "\nAn error occurred (OptInRequiredException) when calling the GetLambdaFunctionRecommendations operation: Aws account is not registered for recommendation.\n",
+      "stderr": "",
       "signal": null
     }
   ]

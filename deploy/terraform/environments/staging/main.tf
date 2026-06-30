@@ -44,6 +44,10 @@ terraform {
       source  = "gavinbunney/kubectl"
       version = ">= 1.14"
     }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 4.0"
+    }
   }
 
   backend "s3" {
@@ -67,6 +71,8 @@ provider "aws" {
     })
   }
 }
+
+provider "cloudflare" {}
 
 # -----------------------------------------------------------------------------
 # Variables
@@ -202,6 +208,23 @@ variable "griot_ai_alb_dns_name" {
 
 variable "griot_ai_alb_zone_id" {
   description = "Hosted zone ID of the ALB for griot-staging.gtcx.trade. af-south-1: Z268VQBMOI5EKX. Set together with griot_ai_alb_dns_name."
+  type        = string
+  default     = ""
+}
+
+variable "griot_ai_dns_provider" {
+  description = "Authoritative DNS provider for griot-staging.gtcx.trade. gtcx.trade is currently delegated to Cloudflare."
+  type        = string
+  default     = "cloudflare"
+
+  validation {
+    condition     = contains(["route53", "cloudflare"], lower(var.griot_ai_dns_provider))
+    error_message = "griot_ai_dns_provider must be route53 or cloudflare."
+  }
+}
+
+variable "griot_ai_cloudflare_zone_id" {
+  description = "Cloudflare zone ID for gtcx.trade. Leave empty to look up the zone using CLOUDFLARE_API_TOKEN."
   type        = string
   default     = ""
 }
@@ -381,9 +404,11 @@ module "griot_ai_ingress" {
   include_gtcx_trade_san = false
   alb_dns_name           = var.griot_ai_alb_dns_name
   alb_zone_id            = var.griot_ai_alb_zone_id
-  # gtcx.trade is delegated to Cloudflare; Route53 validation records are not authoritative.
-  # Validation is handled out-of-band; do not block the apply waiting for it.
-  wait_for_validation = false
+  dns_provider           = var.griot_ai_dns_provider
+  cloudflare_zone_id     = var.griot_ai_cloudflare_zone_id
+  # gtcx.trade is delegated to Cloudflare; do not create non-authoritative Route53 records.
+  # ACM validation records are managed in Cloudflare, with validation completion observed after apply.
+  wait_for_validation = var.griot_ai_dns_provider == "route53"
 
   tags = merge(var.tags, {
     Environment = "staging"
@@ -812,5 +837,10 @@ output "griot_ai_certificate_arn" {
 
 output "griot_ai_a_record_created" {
   description = "Whether griot-staging.gtcx.trade A record is wired (false on first apply before the ALB exists)"
-  value       = length(module.griot_ai_ingress.certificate_arn) > 0 && var.griot_ai_alb_dns_name != ""
+  value       = module.griot_ai_ingress.service_dns_record_created
+}
+
+output "griot_ai_dns_provider" {
+  description = "Authoritative DNS provider used for griot-staging.gtcx.trade"
+  value       = module.griot_ai_ingress.dns_provider
 }

@@ -1,13 +1,14 @@
 ---
-title: 'Repo cleanup MPR/SIGNAL acceptance - fabric-os'
+title: 'Repository assurance acceptance - fabric-os'
 status: incomplete
 date: 2026-06-30
 owner: fabric-os
 document_type: audit-report
 authority: fabric-os AaaS/DaaS assurance lane
+protocol_id: FAB-RAAP-001
 ---
 
-# Repo cleanup MPR/SIGNAL acceptance - fabric-os
+# Repository Assurance Acceptance - fabric-os
 
 Decision: **incomplete**
 

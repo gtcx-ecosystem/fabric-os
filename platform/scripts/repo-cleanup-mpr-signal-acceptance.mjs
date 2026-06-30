@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Repo cleanup MPR/SIGNAL acceptance witness.
+ * Repository Assurance and Acceptance Protocol witness.
  *
- * Generates the mandatory report + machine artifact for the repo-cleanup loop
- * defined in docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md. This
- * command is intentionally conservative: it reports "complete" only when
+ * Generates the mandatory report + machine artifact for FAB-RAAP-001, defined
+ * in docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md. This command is
+ * intentionally conservative: it reports "complete" only when
  * existing evidence proves MPR 100/100, SIGNAL L5 / 100, clean worktree, phase
  * evidence, and no blockers. It does not run remediation commands.
  *
@@ -377,15 +377,16 @@ function renderReport(witness) {
     : '- none';
 
   return `---
-title: "Repo cleanup MPR/SIGNAL acceptance - ${witness.repo}"
+title: "Repository assurance acceptance - ${witness.repo}"
 status: ${witness.decision}
 date: ${witness.generatedAt.slice(0, 10)}
 owner: fabric-os
 document_type: audit-report
 authority: fabric-os AaaS/DaaS assurance lane
+protocol_id: FAB-RAAP-001
 ---
 
-# Repo cleanup MPR/SIGNAL acceptance - ${witness.repo}
+# Repository Assurance Acceptance - ${witness.repo}
 
 Decision: **${witness.decision}**
 
@@ -435,7 +436,7 @@ function main() {
   if (JSON_OUT) {
     console.log(JSON.stringify(witness, null, 2));
   } else {
-    console.log(`repo cleanup acceptance — ${witness.repo}: ${witness.decision}`);
+    console.log(`repository assurance acceptance — ${witness.repo}: ${witness.decision}`);
     console.log(`MPR ${witness.mpr.composite100 ?? 'unverified'}/100 · SIGNAL ${witness.signal.level ?? 'unverified'} / ${witness.signal.score100 ?? 'unverified'}`);
     console.log(`blockers: ${witness.blockers.length}`);
     if (WRITE) {

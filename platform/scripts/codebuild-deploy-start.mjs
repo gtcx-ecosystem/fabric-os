@@ -22,6 +22,7 @@ function parseArgs(argv) {
     write: false,
     json: false,
     env: {},
+    secretEnv: {},
   };
 
   for (const arg of argv) {
@@ -43,6 +44,11 @@ function parseArgs(argv) {
       const idx = pair.indexOf('=');
       if (idx === -1) throw new Error('--env must be NAME=VALUE');
       args.env[pair.slice(0, idx)] = pair.slice(idx + 1);
+    } else if (arg.startsWith('--secret-env=')) {
+      const pair = arg.slice('--secret-env='.length);
+      const idx = pair.indexOf('=');
+      if (idx === -1) throw new Error('--secret-env must be NAME=SECRETS_MANAGER_REFERENCE');
+      args.secretEnv[pair.slice(0, idx)] = pair.slice(idx + 1);
     } else {
       throw new Error(`Unknown argument: ${arg}`);
     }
@@ -62,6 +68,7 @@ Modes:
 Notes:
   - Default is dry-run; no AWS call is made without --execute.
   - Production terraform-apply and argocd-sync require --class-a-ref.
+  - Use --secret-env=NAME=SECRET_ID for CodeBuild SECRETS_MANAGER variables.
   - GitHub Actions is not used as the production deploy executor.`;
 }
 
@@ -69,12 +76,26 @@ function readJson(rel) {
   return JSON.parse(readFileSync(join(ROOT, rel), 'utf8'));
 }
 
-function codebuildEnv(name, value) {
+function codebuildEnv(name, value, type = 'PLAINTEXT') {
   return {
     name,
     value: String(value),
-    type: 'PLAINTEXT',
+    type,
   };
+}
+
+function assertSafePlaintextEnv(env, secretEnv) {
+  const secretNames = new Set(Object.keys(secretEnv));
+  const sensitiveName = /(TOKEN|SECRET|PASSWORD|API_KEY|ACCESS_KEY|PRIVATE_KEY)/i;
+
+  for (const name of Object.keys(env)) {
+    if (secretNames.has(name)) {
+      throw new Error(`Environment variable ${name} cannot be set by both --env and --secret-env`);
+    }
+    if (sensitiveName.test(name)) {
+      throw new Error(`Use --secret-env for sensitive environment variable ${name}`);
+    }
+  }
 }
 
 function buildPayload(args, contract) {
@@ -94,10 +115,15 @@ function buildPayload(args, contract) {
     ...args.env,
   };
 
+  assertSafePlaintextEnv(env, args.secretEnv);
+
   const payload = {
     projectName,
     region,
-    environmentVariablesOverride: Object.entries(env).map(([name, value]) => codebuildEnv(name, value)),
+    environmentVariablesOverride: [
+      ...Object.entries(env).map(([name, value]) => codebuildEnv(name, value)),
+      ...Object.entries(args.secretEnv).map(([name, value]) => codebuildEnv(name, value, 'SECRETS_MANAGER')),
+    ],
   };
 
   if (args.sourceVersion) payload.sourceVersion = args.sourceVersion;

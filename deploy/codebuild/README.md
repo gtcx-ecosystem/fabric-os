@@ -28,6 +28,20 @@ Live AWS execution requires the Terraform-provisioned CodeBuild project:
 Use `--execute` only in a credentialed session. `terraform-apply`, and
 production `argocd-sync`, require `--class-a-ref=<artifact>`.
 
+### Secret environment variables
+
+Use `--secret-env=NAME=SECRETS_MANAGER_REFERENCE` for deployment credentials.
+Do not pass tokens through `--env`, because `--env` is a plaintext CodeBuild
+override and is recorded in start evidence.
+
+For Cloudflare DNS-backed ACM validation, mirror the Baseline Vault
+`CLOUDFLARE_DNS_API_TOKEN` value into an AWS Secrets Manager secret that matches
+the deploy executor IAM boundary (`gtcx/*`), then start a staging plan with:
+
+```bash
+pnpm deployment:codebuild:start -- --environment=staging --mode=plan --secret-env=CLOUDFLARE_API_TOKEN=gtcx/staging/cloudflare-dns-api-token --write
+```
+
 ## Evidence
 
 The runner writes redacted evidence to:

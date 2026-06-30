@@ -119,6 +119,11 @@ Required properties:
   `pnpm deployment:codebuild:runner -- --environment=staging --mode=plan --write`.
 - Dry-run/start wrapper is
   `pnpm deployment:codebuild:start -- --environment=staging --mode=plan --write`.
+- Deployment secrets use CodeBuild `SECRETS_MANAGER` overrides, not plaintext
+  `--env`. For Cloudflare DNS-backed ACM validation, mirror the Baseline Vault
+  `CLOUDFLARE_DNS_API_TOKEN` into an AWS Secrets Manager `gtcx/*` secret and
+  pass it as
+  `--secret-env=CLOUDFLARE_API_TOKEN=gtcx/staging/cloudflare-dns-api-token`.
 - No inbound security group rules.
 - IAM role is least-privilege for EKS, ECR, S3/WORM, Terraform state, and
   required Secrets Manager reads.

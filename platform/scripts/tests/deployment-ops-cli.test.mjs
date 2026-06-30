@@ -62,6 +62,38 @@ describe('deployment ops CLI guardrails', () => {
     assert.ok(witness.payload.environmentVariablesOverride.some((item) => item.name === 'GITHUB_ACTIONS_CRITICAL_PATH' && item.value === 'false'));
   });
 
+  it('codebuild start wrapper supports Secrets Manager environment overrides', () => {
+    const result = runNode('platform/scripts/codebuild-deploy-start.mjs', [
+      '--environment=staging',
+      '--mode=plan',
+      '--secret-env=CLOUDFLARE_API_TOKEN=gtcx/staging/cloudflare-dns-api-token',
+      '--json',
+    ]);
+
+    assert.equal(result.status, 0, result.stderr);
+    const witness = parseJson(result.stdout);
+    assert.ok(
+      witness.payload.environmentVariablesOverride.some(
+        (item) =>
+          item.name === 'CLOUDFLARE_API_TOKEN' &&
+          item.value === 'gtcx/staging/cloudflare-dns-api-token' &&
+          item.type === 'SECRETS_MANAGER',
+      ),
+    );
+  });
+
+  it('codebuild start wrapper rejects sensitive plaintext environment overrides', () => {
+    const result = runNode('platform/scripts/codebuild-deploy-start.mjs', [
+      '--environment=staging',
+      '--mode=plan',
+      '--env=CLOUDFLARE_API_TOKEN=not-a-real-token',
+      '--json',
+    ]);
+
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /Use --secret-env/);
+  });
+
   it('codebuild start wrapper rejects terraform apply without Class A reference', () => {
     const result = runNode('platform/scripts/codebuild-deploy-start.mjs', [
       '--environment=staging',

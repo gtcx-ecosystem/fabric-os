@@ -152,3 +152,36 @@ Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot
 - Push fabric-os alignment commits.
 - Continue backlog-clear protocol.
 - No open engineering stories; parallel assurance gates remain calendar-blocked.
+
+## Session: baseline start — 2026-06-30 12:15 UTC (this turn)
+
+- **Command:** `baseline start`
+- **Agent:** Kimi Code CLI
+- **Repo:** fabric-os
+- **Persona:** platform-architect
+- **Frame:** development
+
+### What Was Done
+- Re-ran Agent Startup Protocol (Phase 1–5).
+- `git status`: clean after prior push.
+- Ran `pnpm agent:next-work` → `backlogClear: true`; phase `internal_closure_complete`; parallel assurance gates only.
+- Re-ran `node platform/tools/scripts/validate-all.mjs`: **56/56 gates pass**.
+- Enrolled AWS account in Cost Optimization Hub (`us-east-1`) and Compute Optimizer (`af-south-1`).
+- Re-ran `node platform/scripts/cost/aws-cost-optimization-export.mjs --write --execute` → `ok: true`.
+- Refreshed `audit/evidence/aws-cost-optimization-export-latest.json` and `audit/evidence/finops-check-latest.json`.
+- Updated `audit/deployment-open-items-audit-2026-06-30.md` with resolved FinOps evidence.
+- Committed and pushed FinOps enrollment witness:
+  - `fabric-os` `fa0b15fe` — `feat(finops): enroll AWS cost optimization services and refresh witnesses`
+- Ran `pnpm operations:check` → pass.
+
+### Active Items
+- **F-FA-001 / Production Terraform apply:** Class A approval required. Dry plan reviewed and saved at `/tmp/production-plan-review.tfplan` (67 add, 15 change, 0 destroy). No destructive changes.
+- **F-FA-002 / Production Argo CD sync:** Class A gated; depends on production apply.
+- **F-INFRA-014 / FinOps enrollment:** Resolved — account enrolled, export green; fleet-wide recommendations are empty because workloads are new/low-utilization.
+- **Sibling-repo residue (F-INFRA-009/010/011):** nyota-ai, bridge-os, canon-os dirty state/compliance gaps remain with those repo owners.
+- **Local disk watch (F-INFRA-003):** 24 GiB free at 98% capacity; monitor before large provider downloads.
+
+### Next Steps
+- Await Class A approval artifact for production Terraform apply (`F-FA-001`).
+- After approval, execute production apply via CodeBuild executor (`codebuild-deploy-start.mjs --environment production --mode terraform-apply --execute --class-a-ref <artifact>`).
+- Continue backlog-clear protocol and monitor parallel assurance gates.

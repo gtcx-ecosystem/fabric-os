@@ -1,29 +1,30 @@
 ---
-title: 'Repository Assurance and Acceptance Protocol'
+title: 'GTCX Quality Assurance, Security, and Compliance Protocol'
 status: current
 date: 2026-06-30
 owner: fabric-os
 document_type: assurance-protocol
 tier: critical
 authority: fabric-os AaaS/DaaS assurance lane; canon-os governance and folder/file specs
-version: 1.1.0
+version: 2.0.0
 review_cycle: on-change
 supersedes: ad hoc repo hygiene cleanup checklists
-protocol_id: FAB-RAAP-001
-workflow_id: repo-cleanup-mpr-signal-loop
-canonical_command: pnpm repo-cleanup:mpr-signal:acceptance
+protocol_id: GTCX-QASC-001
+workflow_id: qasc-loop
+canonical_command: pnpm qasc:repo
 tags: [fabric-os, operations]
 ---
 
-# Repository Assurance and Acceptance Protocol
+# GTCX Quality Assurance, Security, and Compliance Protocol
 
-| Field             | Value                                     |
-| ----------------- | ----------------------------------------- |
-| Protocol ID       | `FAB-RAAP-001`                            |
-| Workflow ID       | `repo-cleanup-mpr-signal-loop`            |
-| Canonical command | `pnpm repo-cleanup:mpr-signal:acceptance` |
+| Field             | Value            |
+| ----------------- | ---------------- |
+| Protocol ID       | `GTCX-QASC-001`  |
+| Workflow ID       | `qasc-loop`      |
+| Canonical command | `pnpm qasc:repo` |
 
-This protocol defines the provider-neutral repository assurance workflow for
+This protocol defines the provider-neutral quality assurance, security, and
+compliance workflow for
 `canon-os`, `bridge-os`, `fabric-os`, `agile-os`, `baseline-os`, and product
 repos. Any terminal-capable agent can execute it: Claude, Codex, Gemini, Kimi,
 Cursor, Copilot, or a future provider.
@@ -63,6 +64,23 @@ unless a real Class S/external dependency makes it `blocked`.
    and other operational workflows belong on separate operational roadmaps unless
    the product owner explicitly binds a specific item as a product-release gate.
 
+## Security And Compliance Enforcement
+
+QASC always scores and enforces internal security and compliance implementation.
+The repository cannot reach the QASC benchmark unless the MPR Compliance,
+Technical Excellence, and Trust & Safety evidence is at 100 with assessable leaf
+evidence. A composite score cannot conceal a weak security or compliance pillar.
+
+External assurance is different from implementation compliance. Auditor opinions,
+certifications, vendor penetration-test delivery, legal countersignatures, and
+elapsed observation periods remain visible, scored, owned, and auditable in the
+Fabric assurance lane. They do not block engineering or product release unless an
+explicit versioned repo release contract sets `blocksProductRelease: true` for that
+exact control. A self-audit never claims an external certification or legal
+determination.
+
+Machine contract: `machine/spec/qasc-contract.json`.
+
 ## Acceptance Standard
 
 | Lens                                 | Required threshold |
@@ -77,6 +95,27 @@ unless a real Class S/external dependency makes it `blocked`.
 | Governance protocol score            |            100/100 |
 | Folder/file spec score               |            100/100 |
 | AaaS and DaaS gates, when applicable |            100/100 |
+| Agile production-package workflow    |            100/100 |
+
+## Agile Production-Package Workflow
+
+QASC audits the current Agile work model, not the retired story-first backlog
+model. The required path is:
+
+```text
+Feature PRD / Product Goal Brief / Business Milestone Brief
+-> standardized machine-readable JSON
+-> forensic spec
+-> MPR 100/100 + SIGNAL L5 audit
+-> production spec package with acceptance criteria, QA, and sprint plans
+-> scrum prioritization and sprint planning
+```
+
+`machine/backlog.json` is generated compatibility output only. It may support
+legacy readers, P22 bridges, or ZenHub adapters, but it is not an authoring
+authority, planning authority, or acceptance criterion.
+
+Machine requirements: `machine/spec/qasc-audit-requirements.json`.
 
 ## Assurance Control Matrix
 
@@ -94,11 +133,19 @@ required benchmark for that control.
 | Ops contract                  | score100 |       100 | command output                        | Technical Excellence, Compliance                | Grounded, Integrated             |
 | P22/runtime                   | score100 |       100 | command output                        | Agentic Empowerment, Compliance                 | Actionable, Specific             |
 | Fabric AaaS/DaaS              | score100 |       100 | command output                        | Technical Excellence, World Class               | Grounded, Actionable             |
+| Security implementation       | score100 |       100 | MPR Technical Excellence + Trust      | Technical Excellence, Trust & Safety            | Grounded, Specific               |
+| Compliance implementation     | score100 |       100 | MPR Compliance leaf evidence          | Compliance                                      | Grounded, Specific               |
 | Operational lane isolation    | score100 |       100 | scan + contract proof                 | Product/Ecosystem Integration, Compliance       | Integrated, Actionable           |
 | MPR composite                 | score100 |       100 | `mpr-repo-latest.json`                | All MPR pillars                                 | Grounded, Specific               |
 | SIGNAL maturity               | score100 |       100 | `signal-maturity-latest.json`         | Agentic Empowerment, Technical Excellence       | All SIGNAL dimensions            |
 | Foundational micro-audits     | score100 |       100 | MPR micro-audit table                 | Foundational MPR tier                           | Specific, Grounded               |
 | Transformational micro-audits | score100 |       100 | MPR micro-audit table                 | Transformational MPR tier                       | Integrated, Actionable, Lossless |
+| Product-intent source         | score100 |       100 | PRD/goal/milestone source artifact    | Commercial Value, Product/Ecosystem Integration | Specific, Actionable             |
+| Machine-readable record       | score100 |       100 | standardized record JSON              | Technical Excellence, Agentic Empowerment       | Grounded, Integrated             |
+| Forensic spec                 | score100 |       100 | forensic spec JSON                    | Craft, Trust & Safety                           | Specific, Lossless               |
+| Production spec package       | score100 |       100 | package manifest                      | World Class, Product/Ecosystem Integration      | Integrated, Actionable           |
+| Scrum handoff                 | score100 |       100 | sprint plan/package handoff           | Commercial Value, Agentic Empowerment           | Actionable, Integrated           |
+| Backlog compatibility only    | score100 |       100 | source-of-truth scan                  | Compliance, Trust & Safety                      | Grounded, Lossless               |
 | Root hygiene                  | score100 |       100 | root scan                             | Compliance, Craft                               | Navigable                        |
 | Link/reference hygiene        | score100 |       100 | scan output                           | World Class, Trust & Safety                     | Navigable, Grounded              |
 | Cross-repo contract           | score100 |       100 | contract checks                       | Product/Ecosystem Integration                   | Integrated                       |
@@ -109,8 +156,8 @@ required benchmark for that control.
 Every run must generate both artifacts, even for `incomplete` or `blocked`:
 
 ```text
-audit/reports/repository-assurance-acceptance-YYYY-MM-DD.md
-audit/evidence/repo-cleanup-mpr-signal-acceptance-latest.json
+audit/reports/qasc-repo-YYYY-MM-DD.md
+audit/evidence/qasc-repo-latest.json
 ```
 
 If files are moved or archived, also generate:
@@ -123,18 +170,22 @@ audit/evidence/repo-cleanup-archive-manifest-latest.json
 In `fabric-os`, the executable surface is:
 
 ```bash
-pnpm repo-cleanup:mpr-signal:acceptance
-pnpm repo-cleanup:mpr-signal:acceptance -- --repo <repo>
-pnpm repo-cleanup:mpr-signal:acceptance:write
-pnpm repo-cleanup:mpr-signal:acceptance:write -- --repo <repo>
+pnpm qasc:repo
+pnpm qasc:repo -- --repo <repo>
+pnpm qasc:repo:write
+pnpm qasc:repo:write -- --repo <repo>
 pnpm repo-cleanup:archive-manifest
 pnpm repo-cleanup:archive-manifest:write
-pnpm repo-cleanup:mpr-signal:acceptance:score
-pnpm repo-cleanup:mpr-signal:acceptance:loop-run --max 5 --repo <repo>
-pnpm repo-cleanup:mpr-signal:acceptance:loop-run:write -- --max 5 --repo <repo>
+pnpm qasc:score
+pnpm qasc:loop -- --max 5 --repo <repo>
+pnpm qasc:loop:write -- --max 5 --repo <repo>
+pnpm qasc:fleet
+pnpm qasc:fleet:write
+pnpm qasc:fleet:strict
+pnpm qasc:contract:check
 ```
 
-`repo-cleanup:mpr-signal:acceptance:score` prints numeric acceptance score output
+`qasc:score` prints numeric acceptance score output
 from the same witness and exits `0` only when complete.
 
 The command exits `0` only when complete. It exits nonzero for incomplete
@@ -144,7 +195,7 @@ The loop runner records every iteration, all phase scores, the first remediation
 and a deterministic stop reason in:
 
 ```text
-audit/evidence/repo-cleanup-mpr-signal-loop-run-latest.json
+audit/evidence/qasc-loop-latest.json
 ```
 
 `benchmark-reached` means every applicable phase reached 100. `stagnant` means
@@ -169,6 +220,7 @@ owner-contract change.
 | 4     | Feature/spec registry and PRDs      | Feature registry, spec registry, PRDs, acceptance criteria, DoR/DoD, delivery packages, and machine records agree                                            |
 | 5     | Roadmap/goals/milestones/workstream | Roadmap, goals, milestones, sessions, status records, and P22 next-work are coherent                                                                         |
 | 5a    | Operational lane isolation          | Security, pen-test, compliance, GTM, pilot, mobile-store, DR/SLA, and legal roadmaps are separate from engineering/product release gates                     |
+| 5b    | Agile production-package workflow   | Source artifact, standardized JSON record, forensic spec, MPR 100, SIGNAL L5, production package, and scrum handoff are present or explicitly N/A            |
 | 6     | Foundational micro-audits           | Compliance, Technical Excellence, Craft, World Class, Trust & Safety micro-audits from `machine/spec/aaas-audit-taxonomy.json` are represented               |
 | 7     | Transformational micro-audits       | Creativity & Innovation, Commercial Value, Defensive Moat, Agentic Empowerment, Product/Ecosystem Integration, IP Magic micro-audits are represented         |
 | 8     | Folder/file specs                   | Canonical roots are used; forbidden live roots are absent unless authorized; no fake symlink compliance                                                      |
@@ -307,7 +359,7 @@ CD in EKS. GitHub is SCM/review only while billing is locked.
 
 The machine witness must include:
 
-- `schema: gtcx://fabric-os/repo-cleanup-mpr-signal-acceptance/v2`
+- `schema: gtcx://fabric-os/qasc-repo-score/v1`
 - repo, branch, commit, generatedAt, decision.
 - loop target/current/blockers/nextRemediation.
 - MPR composite, pillars, foundational micro-audits, transformational micro-audits.

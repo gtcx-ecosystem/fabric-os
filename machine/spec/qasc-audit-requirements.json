@@ -1,0 +1,209 @@
+{
+  "$schema": "gtcx://fabric-os/qasc-audit-requirements/v1",
+  "version": "1.0.0",
+  "updated": "2026-07-01",
+  "ownerRepo": "fabric-os",
+  "status": "current",
+  "title": "QASC audit requirements for Agile production-package workflow",
+  "sourceRunbook": "docs/operations/runbooks/qasc-audit-requirements-2026-07-01.md",
+  "principle": "QASC audits the production-package workflow, not the retired story-first backlog model. Backlog artifacts are generated compatibility outputs only.",
+  "workflow": [
+    "sourceArtifact",
+    "standardizedMachineRecord",
+    "forensicSpec",
+    "mprAudit100",
+    "signalAuditL5",
+    "productionSpecPackage",
+    "scrumSprintHandoff",
+    "implementationReviewShipLearn"
+  ],
+  "globalControls": [
+    {
+      "id": "source-artifact",
+      "targetScore": 100,
+      "evidence": [
+        "product/features/<id>.md",
+        "product/goals/<id>.md",
+        "product/milestones/<id>.md",
+        "current-authority equivalent during transition"
+      ]
+    },
+    {
+      "id": "machine-readable-standardization",
+      "targetScore": 100,
+      "evidence": [
+        "machine/features/<id>/record.json",
+        "machine/product-goals/<id>/record.json",
+        "machine/business-milestones/<id>/record.json"
+      ]
+    },
+    {
+      "id": "forensic-spec",
+      "targetScore": 100,
+      "evidence": ["machine/<track>/<id>/forensic-spec.json"]
+    },
+    {
+      "id": "package-mpr",
+      "targetScore": 100,
+      "evidence": ["machine/<track>/<id>/audits/mpr.json"]
+    },
+    {
+      "id": "package-signal",
+      "targetScore": 100,
+      "targetLevel": "L5",
+      "evidence": ["machine/<track>/<id>/audits/signal.json"]
+    },
+    {
+      "id": "production-spec-package",
+      "targetScore": 100,
+      "evidence": [
+        "machine/<track>/<id>/feature-pack/manifest.json",
+        "machine/<track>/<id>/goal-pack/manifest.json",
+        "machine/<track>/<id>/milestone-pack/manifest.json"
+      ],
+      "requiredSections": [
+        "acceptanceCriteria",
+        "qaTesting",
+        "sprintPlans",
+        "mprReview",
+        "signalReview"
+      ]
+    },
+    {
+      "id": "scrum-handoff",
+      "targetScore": 100,
+      "evidence": [
+        "machine/roadmap/sprints/active.json",
+        "delivery/feature-packages/<id>/sprint-plan.json"
+      ]
+    },
+    {
+      "id": "backlog-compatibility-only",
+      "targetScore": 100,
+      "rule": "machine/backlog.json may exist only as generated compatibility output and must not be the authoring or planning source of truth."
+    }
+  ],
+  "ownerRequirements": {
+    "agile-os": {
+      "role": "Workflow authority for PRD/brief, machine records, MPR/SIGNAL audits, packages, sprint plans, and scrum handoff.",
+      "requiredControls": [
+        "feature-prd-track",
+        "product-goal-track",
+        "business-milestone-track",
+        "standard-records",
+        "forensic-specs",
+        "mpr-package-audits",
+        "signal-package-audits",
+        "production-packages",
+        "scrum-handoff",
+        "artifact-placement"
+      ],
+      "commands": [
+        "pnpm agile:mpr-workflow:check",
+        "pnpm agile:work-loop:check",
+        "pnpm feature:production-package:check",
+        "pnpm docs:feature-spec:check",
+        "pnpm product:compile:check",
+        "pnpm artifact:placement:check"
+      ]
+    },
+    "fabric-os": {
+      "role": "QASC, AaaS, DaaS, deployment, operational assurance, evidence, and fleet audit orchestration.",
+      "requiredControls": [
+        "qasc-contract",
+        "qasc-repo-score",
+        "qasc-loop-efficacy",
+        "aaas-contract",
+        "daas-deployment-contract",
+        "operational-lane-isolation",
+        "external-assurance-boundary",
+        "repo-by-repo-rollout-evidence"
+      ],
+      "commands": [
+        "pnpm qasc:contract:check",
+        "pnpm qasc:repo -- --repo <repo>",
+        "pnpm qasc:loop -- --repo <repo> --max 10",
+        "pnpm qasc:fleet",
+        "pnpm aaas:contract:check",
+        "pnpm aaas:audit --lens all",
+        "pnpm aaas:loop",
+        "pnpm fabric:assurance:run",
+        "pnpm deployment:ops:contract:check",
+        "pnpm deployment:ops:test",
+        "pnpm operations:check"
+      ]
+    },
+    "baseline-os": {
+      "role": "Baseline runtime, universal agent session behavior, command surface, cost router, session records, and machine/operations conventions.",
+      "requiredControls": [
+        "universal-startup-session-contract",
+        "agent-command-surface",
+        "runtime-machine-contract",
+        "operations-layout",
+        "cost-router-runtime-contracts",
+        "session-evidence",
+        "provider-agnostic-llm-behavior"
+      ],
+      "commands": [
+        "baseline start",
+        "baseline session",
+        "pnpm agent:next-work -- --json",
+        "pnpm agent:work-selection:check",
+        "pnpm operations:check",
+        "pnpm machine:status",
+        "pnpm machine:sync"
+      ]
+    },
+    "canon-os": {
+      "role": "Governance protocols, institutional baseline, folder/file specs, feature spec protocol, documentation IA, root hygiene, and authority model.",
+      "requiredControls": [
+        "governance-protocol-authority",
+        "folder-file-specs",
+        "feature-spec-protocol",
+        "documentation-ia",
+        "institutional-baseline",
+        "write-boundary",
+        "protocol-consumption"
+      ],
+      "commands": [
+        "pnpm operations:check",
+        "pnpm machine:folder:check",
+        "pnpm docs:ia:check",
+        "pnpm docs:feature-spec:check",
+        "pnpm agent:work-selection:check"
+      ]
+    },
+    "bridge-os": {
+      "role": "P22 selection/enrichment, MPR and SIGNAL engines, persona/frame routing, lane separation, cross-repo coordination, and feature/spec adoption rollups.",
+      "requiredControls": [
+        "p22-selection-contract",
+        "agile-package-compatibility",
+        "persona-read-gate",
+        "mpr-engine",
+        "signal-engine",
+        "lane-separation",
+        "feature-spec-fleet-adoption",
+        "cross-repo-handoff-evidence"
+      ],
+      "commands": [
+        "pnpm agent:next-work -- --json",
+        "pnpm audit:mpr:repo:run",
+        "pnpm audit:signal:repo:run",
+        "pnpm ecosystem:feature-spec:completion",
+        "pnpm ecosystem:lane:execution:check",
+        "pnpm ecosystem:assurance:evaluate"
+      ]
+    }
+  },
+  "qascScorerRequiredAdditions": [
+    "source-artifact",
+    "machine-readable-standardization",
+    "forensic-spec",
+    "package-mpr",
+    "package-signal",
+    "production-spec-package",
+    "scrum-handoff",
+    "backlog-compatibility-only"
+  ],
+  "openImplementationGap": "fabric-os QASC scorer must add these production-package controls as first-class scored rows before claiming 100/100 against the new Agile workflow."
+}

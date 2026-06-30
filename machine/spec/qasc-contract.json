@@ -1,0 +1,140 @@
+{
+  "$schema": "gtcx://fabric-os/qasc-contract/v1",
+  "version": "1.0.0",
+  "updated": "2026-07-01",
+  "ownerRepo": "fabric-os",
+  "title": "GTCX Quality Assurance, Security, and Compliance Protocol",
+  "protocolId": "GTCX-QASC-001",
+  "status": "current",
+  "purpose": "Provide one scored, evidence-backed, provider-neutral quality assurance, security, and compliance loop for every active GTCX repository.",
+  "auditRequirementsRef": "machine/spec/qasc-audit-requirements.json",
+  "authority": {
+    "governanceAndFolderSpecs": "canon-os",
+    "mprSignalAndRuntimeEngines": "bridge-os",
+    "qualityAssuranceService": "fabric-os",
+    "agileWorkflow": "agile-os",
+    "runtimeConventions": "baseline-os",
+    "implementation": "repo owner"
+  },
+  "benchmarks": {
+    "repositoryScore100": 100,
+    "controlScore100": 100,
+    "mprComposite100": 100,
+    "signalLevel": "L5",
+    "signalScore100": 100,
+    "agileProductionPackageWorkflow100": 100
+  },
+  "enforcementModel": {
+    "alwaysEnforced": [
+      "quality and evidence integrity controls",
+      "secure engineering and configuration controls",
+      "privacy and compliance implementation controls",
+      "regulatory control mappings and traceability",
+      "folder, documentation, workflow, and cross-repo contracts"
+    ],
+    "parallelExternalAssurance": [
+      "external auditor opinions and certifications",
+      "vendor penetration-test delivery",
+      "legal countersignatures and procurement decisions",
+      "observation-period evidence controlled by elapsed time"
+    ],
+    "releaseBoundary": "Every control remains scored and auditable. External assurance does not block engineering or product release unless the owning repository has an explicit, versioned release contract with blocksProductRelease=true for that exact control.",
+    "claimBoundary": "A self-audit can verify implementation and evidence readiness; it cannot claim an external certification, legal determination, or auditor opinion."
+  },
+  "loop": {
+    "mode": "agent-mediated-remediation",
+    "maxIterations": 10,
+    "stagnantLimit": 2,
+    "stopReasons": ["benchmark-reached", "stagnant", "max-iterations", "unreadable-witness"],
+    "rule": "Observe scores, remediate the first owner-appropriate below-benchmark phase, regenerate evidence, and restart at Phase 1. Repetition without a remediation is measurement, not convergence.",
+    "handoffRequiredWhen": ["stagnant", "max-iterations", "unreadable-witness"]
+  },
+  "phases": [
+    "sessionGuard",
+    "inventoryAndClassification",
+    "documentationTaxonomyLifecycle",
+    "featureSpecRegistryPrd",
+    "roadmapGoalsMilestonesWorkstream",
+    "operationalLaneIsolation",
+    "foundationalMicroAudits",
+    "transformationalMicroAudits",
+    "folderFileSpecs",
+    "preservationArchiveProof",
+    "ownerWorkflowValidation",
+    "consumerContractValidation",
+    "fabricAaasDaasVerification",
+    "mprSignalScoring",
+    "remediationLoop",
+    "acceptanceCommitPushHandoff"
+  ],
+  "requiredControls": [
+    "Worktree clean",
+    "Critical docs preserved",
+    "Feature/spec registry",
+    "Documentation hygiene",
+    "Roadmap/goals/milestones",
+    "Agile workflow",
+    "Ops contract",
+    "P22/runtime",
+    "Fabric AaaS/DaaS",
+    "Security implementation controls",
+    "Compliance implementation controls",
+    "Operational lane isolation",
+    "MPR composite",
+    "SIGNAL maturity",
+    "Foundational micro-audits",
+    "Transformational micro-audits",
+    "Product-intent source",
+    "Machine-readable standardization",
+    "Forensic spec",
+    "Package MPR",
+    "Package SIGNAL",
+    "Production spec package",
+    "Scrum handoff",
+    "Backlog compatibility only",
+    "Root hygiene",
+    "Link/reference hygiene",
+    "Cross-repo contract",
+    "Archive recoverability"
+  ],
+  "fleet": {
+    "denominatorPolicy": "Explicit active checkout list. Changes require a versioned contract update; deployment or legacy rollout registries cannot silently narrow QASC coverage.",
+    "repos": [
+      "agile-os",
+      "baseline-os",
+      "bridge-os",
+      "canon-os",
+      "compliance-os",
+      "ecosystem-os",
+      "exploration-os",
+      "fabric-os",
+      "griot-ai",
+      "gtcx-os",
+      "inspection-os",
+      "ledger-os",
+      "ledger-ui",
+      "markets-os",
+      "nyota-ai",
+      "sensei-os",
+      "terminal-os",
+      "terra-os",
+      "venture-os",
+      "veritas-ai"
+    ]
+  },
+  "commands": {
+    "repositoryScore": "pnpm qasc:repo -- --repo <repo>",
+    "repositoryLoop": "pnpm qasc:loop -- --repo <repo>",
+    "fleetScore": "pnpm qasc:fleet",
+    "fleetEvidence": "pnpm qasc:fleet:write",
+    "fleetEnforcement": "pnpm qasc:fleet:strict",
+    "contractEnforcement": "pnpm qasc:contract:check",
+    "tests": "pnpm qasc:test"
+  },
+  "evidence": {
+    "repository": "audit/evidence/qasc-repo-latest.json",
+    "repositoryLoop": "audit/evidence/qasc-loop-latest.json",
+    "fleet": "audit/evidence/qasc-fleet-latest.json",
+    "fleetReport": "audit/reports/qasc-fleet-YYYY-MM-DD.md"
+  }
+}

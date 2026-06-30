@@ -25,6 +25,10 @@ Live AWS execution requires the Terraform-provisioned CodeBuild project:
 - `gtcx-staging-deploy-executor`
 - `gtcx-production-deploy-executor`
 
+The buildspec pins Node.js 22 because the workspace includes packages with a
+Node.js `>=22.12.0` engine requirement. It also activates the exact pnpm version
+declared by the root `packageManager` field.
+
 Use `--execute` only in a credentialed session. `terraform-apply`, and
 production `argocd-sync`, require `--class-a-ref=<artifact>`.
 

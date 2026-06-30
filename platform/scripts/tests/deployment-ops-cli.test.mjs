@@ -146,4 +146,17 @@ describe('deployment ops CLI guardrails', () => {
     );
     assert.match(anomalyDetector, /seccompProfile:\s*\n\s+type:\s+RuntimeDefault/);
   });
+
+  it('codebuild pins the repository runtime and package manager', () => {
+    const buildspec = readRepoFile('deploy/codebuild/deploy-buildspec.yml');
+    const packageJson = JSON.parse(readRepoFile('package.json'));
+
+    assert.match(buildspec, /runtime-versions:\s*\n\s+nodejs:\s+22/);
+    assert.match(
+      buildspec,
+      new RegExp(
+        `corepack prepare ${packageJson.packageManager.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} --activate`
+      )
+    );
+  });
 });

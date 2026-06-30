@@ -158,6 +158,8 @@ gate('codebuild-runner:class-a-ref', /Class A reference required for terraform-a
 gate('codebuild-runner:package-script', packageJson.scripts?.['deployment:codebuild:runner'] === 'node platform/scripts/codebuild-deploy-runner.mjs', packageJson.scripts?.['deployment:codebuild:runner']);
 gate('codebuild-buildspec:runner', /codebuild-deploy-runner\.mjs --write --execute/.test(codebuildBuildspec), 'buildspec runner');
 gate('codebuild-buildspec:evidence-artifact', /audit\/evidence\/codebuild-deploy-runner-latest\.json/.test(codebuildBuildspec), 'buildspec evidence artifact');
+gate('codebuild-buildspec:node-runtime', /runtime-versions:\s*\n\s+nodejs:\s+22/.test(codebuildBuildspec), 'Node.js 22');
+gate('codebuild-buildspec:package-manager', new RegExp(`corepack prepare ${packageJson.packageManager.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} --activate`).test(codebuildBuildspec), packageJson.packageManager);
 gate('codebuild-readme:github-not-executor', /GitHub Actions is not the production deploy\s+executor/i.test(codebuildReadme), 'CodeBuild README');
 gate('codebuild-readme:class-a', /--class-a-ref=<artifact>/.test(codebuildReadme), 'CodeBuild README Class A');
 gate(

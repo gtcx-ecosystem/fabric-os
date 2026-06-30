@@ -77,7 +77,7 @@ for (const packageDir of packages) {
       if (typeof range === 'string' && range.startsWith('workspace:')) {
         const version = versions.get(name);
         if (!version) throw new Error(`No workspace version found for ${name}`);
-        manifest[section][name] = range === 'workspace:*' ? version : `^${version}`;
+        manifest[section][name] = version;
       }
     }
   }
@@ -92,7 +92,17 @@ for package_dir in "${packages[@]}"; do
   name="$(node -p "require('./${package_dir}/package.json').name")"
   version="$(node -p "require('./${package_dir}/package.json').version")"
 
-  if npm view "${name}@${version}" version >/dev/null 2>&1; then
+  package_name="${name#@gtcx/}"
+  if aws codeartifact describe-package-version \
+    --domain gtcx-packages \
+    --repository npm-internal \
+    --region eu-west-1 \
+    --format npm \
+    --namespace gtcx \
+    --package "${package_name}" \
+    --package-version "${version}" \
+    --query 'packageVersion.origin.originType' \
+    --output text 2>/dev/null | grep -qx 'INTERNAL'; then
     echo "SKIP ${name}@${version} already exists in CodeArtifact"
     skipped+=("${name}@${version}")
     continue

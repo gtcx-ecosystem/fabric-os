@@ -252,11 +252,13 @@ resource "aws_iam_role_policy" "deploy" {
             "codeartifact:DescribeRepository",
             "codeartifact:GetAuthorizationToken",
             "codeartifact:GetRepositoryEndpoint",
+            "codeartifact:PublishPackageVersion",
             "codeartifact:ReadFromRepository",
           ]
           Resource = [
             "arn:aws:codeartifact:eu-west-1:${data.aws_caller_identity.current.account_id}:domain/gtcx-packages",
             "arn:aws:codeartifact:eu-west-1:${data.aws_caller_identity.current.account_id}:repository/gtcx-packages/npm-internal",
+            "arn:aws:codeartifact:eu-west-1:${data.aws_caller_identity.current.account_id}:package/gtcx-packages/npm-internal/npm/gtcx/*",
           ]
         },
         {

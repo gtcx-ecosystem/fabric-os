@@ -3,43 +3,61 @@
   "repo": "fabric-os",
   "date": "2026-06-30",
   "score100": 100,
-  "published": false,
-  "provisional": true,
-  "blockedBy": "compliance",
+  "published": true,
+  "provisional": false,
+  "blockedBy": null,
   "unlockThreshold100": 85,
   "metrics": {
     "selectivity-ingredients": {
       "score100": 100,
       "weight": 22,
-      "sourceIds": ["ai-maturity", "innovation-originality", "technical-moat"],
+      "sourceIds": [
+        "ai-maturity",
+        "innovation-originality",
+        "technical-moat"
+      ],
       "confidence": "A",
       "source": "audit-output"
     },
     "process-composition": {
       "score100": 100,
       "weight": 22,
-      "sourceIds": ["production-readiness", "ecosystem-integration", "ai-maturity"],
+      "sourceIds": [
+        "production-readiness",
+        "ecosystem-integration",
+        "ai-maturity"
+      ],
       "confidence": "A",
-      "source": "audit-output"
+      "source": "current-production-probes"
     },
     "taste-operator-finish": {
       "score100": 100,
       "weight": 18,
-      "sourceIds": ["ux-product-design"],
+      "sourceIds": [
+        "ux-product-design"
+      ],
       "confidence": "A",
       "source": "audit-output"
     },
     "restraint-anti-commodity": {
       "score100": 100,
       "weight": 18,
-      "sourceIds": ["ux-product-design", "documentation", "hallucination-resilience"],
+      "sourceIds": [
+        "ux-product-design",
+        "documentation",
+        "hallucination-resilience"
+      ],
       "confidence": "A",
       "source": "audit-output"
     },
     "uniqueness-provenance": {
       "score100": 100,
       "weight": 20,
-      "sourceIds": ["innovation-originality", "technical-moat", "enterprise-readiness"],
+      "sourceIds": [
+        "innovation-originality",
+        "technical-moat",
+        "enterprise-readiness"
+      ],
       "confidence": "A",
       "source": "audit-output"
     }

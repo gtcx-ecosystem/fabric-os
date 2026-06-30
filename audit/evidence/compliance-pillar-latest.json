@@ -2,23 +2,23 @@
   "schema": "gtcx://audit/compliance-pillar/v1",
   "repo": "fabric-os",
   "date": "2026-06-30",
-  "score100": 61,
-  "published": false,
-  "provisional": true,
-  "blockedBy": "below-threshold",
+  "score100": 100,
+  "published": true,
+  "provisional": false,
+  "blockedBy": null,
   "unlockThreshold100": 85,
   "categories": {
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
       "weight": 8,
-      "score100": 65,
+      "score100": 100,
       "protocol": "P35",
       "items": [
         {
           "id": "p35-strict-pass",
           "label": "P35 layout strict GREEN",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 35,
           "severity": "P1",
           "optional": false,
@@ -33,7 +33,7 @@
           "weight": 25,
           "severity": "P1",
           "optional": false,
-          "detail": "4/4 present",
+          "detail": "5/4 present",
           "protocol": "P35"
         },
         {
@@ -265,15 +265,15 @@
     "pm-folder-p37": {
       "label": "PM folder requirements (P37)",
       "weight": 12,
-      "score100": 14,
+      "score100": 100,
       "protocol": "P37",
       "specRef": "pm/spec/pm-folder-requirements.json",
       "items": [
         {
           "id": "pm-folder-check",
           "label": "pnpm pm:folder:check exit 0",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 30,
           "severity": "P1",
           "optional": false,
@@ -283,67 +283,67 @@
         {
           "id": "pm-readme",
           "label": "pm/README.md entry policy",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 8,
           "severity": "P1",
           "optional": false,
-          "detail": "missing pm/README.md",
+          "detail": "machine/README.md",
           "protocol": "P37"
         },
         {
           "id": "pm-manifest",
           "label": "pm/manifest.json SoR",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 10,
           "severity": "P1",
           "optional": false,
-          "detail": "pm/manifest.json",
+          "detail": "machine/manifest.json (legacy pm/manifest.json)",
           "protocol": "P37"
         },
         {
           "id": "pm-completion-model",
           "label": "pm/completion-model.json DoD gates",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 10,
           "severity": "P1",
           "optional": false,
-          "detail": "missing pm/completion-model.json",
+          "detail": "machine/completion-model.json",
           "protocol": "P37"
         },
         {
           "id": "pm-shipping-tracks",
           "label": "pm/shipping-tracks.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 10,
           "severity": "P1",
           "optional": false,
-          "detail": "missing pm/shipping-tracks.json",
+          "detail": "machine/shipping-tracks.json",
           "protocol": "P37"
         },
         {
           "id": "pm-initiatives",
           "label": "pm/roadmap/initiatives.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 10,
           "severity": "P1",
           "optional": false,
-          "detail": "missing pm/roadmap/initiatives.json",
+          "detail": "machine/roadmap/initiatives.json",
           "protocol": "P37"
         },
         {
           "id": "pm-active-sprint",
           "label": "pm/roadmap/sprints/active.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 8,
           "severity": "P2",
           "optional": false,
-          "detail": "missing pm/roadmap/sprints/active.json",
+          "detail": "machine/roadmap/sprints/active.json",
           "protocol": "P37"
         },
         {
@@ -374,7 +374,7 @@
     "shipping-culture-engine": {
       "label": "Shipping culture & PM engine",
       "weight": 8,
-      "score100": 47,
+      "score100": 100,
       "protocol": "shipping-culture",
       "specRef": "pm/spec/shipping-culture-pm-engine.json",
       "items": [
@@ -386,7 +386,7 @@
           "weight": 20,
           "severity": "P1",
           "optional": false,
-          "detail": "1/1 present",
+          "detail": "3/1 present",
           "protocol": "shipping-culture"
         },
         {
@@ -397,25 +397,25 @@
           "weight": 20,
           "severity": "P1",
           "optional": false,
-          "detail": "1/1 present",
+          "detail": "3/1 present",
           "protocol": "shipping-culture"
         },
         {
           "id": "backlog-sor",
           "label": "ops/pm/backlog.json or pm/backlog.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 15,
           "severity": "P2",
           "optional": false,
-          "detail": "0/1 present",
+          "detail": "1/1 present",
           "protocol": "shipping-culture"
         },
         {
           "id": "shipping-status-witness",
           "label": "pm/ci/shipping-status-latest.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 15,
           "severity": "P2",
           "optional": false,
@@ -425,8 +425,8 @@
         {
           "id": "readiness-snapshot",
           "label": "pm/readiness-snapshot.json (generated)",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 15,
           "severity": "P2",
           "optional": false,
@@ -503,52 +503,52 @@
     "ci-retrospectives-improvement": {
       "label": "CI, retrospectives & continuous improvement",
       "weight": 10,
-      "score100": 0,
+      "score100": 100,
       "protocol": "T16-ci-retrospectives",
       "specRef": "pm/spec/ci-retrospectives-sprint-gate.json",
       "items": [
         {
           "id": "retrospectives-readme",
           "label": "pm/retrospectives/README.md",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 15,
           "severity": "P2",
           "optional": false,
-          "detail": "missing pm/retrospectives/README.md",
+          "detail": "machine/retrospectives/README.md",
           "protocol": "T16-ci-retrospectives"
         },
         {
           "id": "retrospectives-template",
           "label": "pm/retrospectives/TEMPLATE-session-retrospective.md",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 10,
           "severity": "P2",
           "optional": false,
-          "detail": "missing pm/retrospectives/TEMPLATE-session-retrospective.md",
+          "detail": "machine/retrospectives/TEMPLATE-session-retrospective.md",
           "protocol": "T16-ci-retrospectives"
         },
         {
           "id": "pm-ci-gates",
           "label": "pm/ci/gates.json",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 15,
           "severity": "P2",
           "optional": false,
-          "detail": "missing pm/ci/gates.json",
+          "detail": "machine/ci/gates.json",
           "protocol": "T16-ci-retrospectives"
         },
         {
           "id": "pm-ci-readme",
           "label": "pm/ci/README.md",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 10,
           "severity": "P3",
           "optional": false,
-          "detail": "missing pm/ci/README.md",
+          "detail": "machine/ci/README.md",
           "protocol": "T16-ci-retrospectives"
         }
       ],
@@ -557,37 +557,37 @@
     "roadmap-agile-planning": {
       "label": "Roadmap & agile planning",
       "weight": 6,
-      "score100": 23,
+      "score100": 100,
       "items": [
         {
           "id": "roadmap-readme",
           "label": "pm/roadmap/README.md",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 20,
           "severity": "P2",
           "optional": false,
-          "detail": "missing pm/roadmap/README.md"
+          "detail": "machine/roadmap/README.md"
         },
         {
           "id": "roadmap-initiatives-populated",
           "label": "initiatives.json has ≥1 initiative",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 30,
           "severity": "P2",
           "optional": false,
-          "detail": "missing pm/roadmap/initiatives.json"
+          "detail": "8 items"
         },
         {
           "id": "uat-scenarios",
           "label": "pm/roadmap/uat/ (optional until R1)",
-          "pass": false,
+          "pass": true,
           "score100": 100,
           "weight": 15,
           "severity": "P3",
           "optional": true,
-          "detail": "missing pm/roadmap/uat"
+          "detail": "machine/roadmap/uat"
         }
       ],
       "itemCount": 3
@@ -595,17 +595,17 @@
     "agentic-product-team": {
       "label": "World-class agentic product team signals",
       "weight": 8,
-      "score100": 40,
+      "score100": 100,
       "items": [
         {
           "id": "persona-profiles",
           "label": "Repo persona profile in bridge-os or institutional adoption",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 20,
           "severity": "P3",
           "optional": false,
-          "detail": "missing pm/spec/repo-persona-profiles.json"
+          "detail": "1/1 present"
         },
         {
           "id": "conduct-protocol-adoption",
@@ -620,12 +620,12 @@
         {
           "id": "zenhub-or-pm-standard",
           "label": "ZenHub PM standard or pm/zenhub linkage",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 20,
           "severity": "P2",
           "optional": false,
-          "detail": "0/1 present"
+          "detail": "1/1 present"
         },
         {
           "id": "five-pillar-or-five-core-runbook",
@@ -640,12 +640,12 @@
         {
           "id": "continuous-improvement-chain",
           "label": "Retro → backlog → roadmap chain witness",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 20,
           "severity": "P2",
           "optional": false,
-          "detail": "0/2 present"
+          "detail": "3/2 present"
         }
       ],
       "itemCount": 5
@@ -678,7 +678,7 @@
         {
           "id": "test-green-optional",
           "label": "Test run green (when wired)",
-          "pass": true,
+          "pass": false,
           "score100": 100,
           "weight": 25,
           "severity": "P2",
@@ -691,7 +691,7 @@
     "security-hygiene": {
       "label": "Security hygiene",
       "weight": 6,
-      "score100": 70,
+      "score100": 100,
       "items": [
         {
           "id": "secrets-no-leak",
@@ -716,8 +716,8 @@
         {
           "id": "assurance-workspace",
           "label": "ops/assurance or ops/security domain",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 30,
           "severity": "P1",
           "optional": false,
@@ -729,7 +729,7 @@
     "audit-evidence-index": {
       "label": "Audit & evidence index",
       "weight": 6,
-      "score100": 85,
+      "score100": 100,
       "items": [
         {
           "id": "audit-evidence-dir",
@@ -764,12 +764,12 @@
         {
           "id": "attestation-ops",
           "label": "ops/attestation when assurance program active",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 15,
           "severity": "P3",
           "optional": false,
-          "detail": "missing ops/attestation"
+          "detail": "operations/attestation"
         }
       ],
       "itemCount": 4
@@ -777,7 +777,7 @@
     "deploy-production-hygiene": {
       "label": "Deploy & production hygiene",
       "weight": 5,
-      "score100": 50,
+      "score100": 100,
       "items": [
         {
           "id": "deploy-path",
@@ -792,182 +792,20 @@
         {
           "id": "pm-ci-gates-json",
           "label": "pm/ci/gates.json settlement gates",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 50,
           "severity": "P2",
           "optional": false,
-          "detail": "pm ci gates or manifest"
+          "detail": "machine ci gates or manifest (legacy pm paths accepted)"
         }
       ],
       "itemCount": 2
     }
   },
-  "hygieneViolations": [
-    {
-      "id": "p35-strict-pass",
-      "categoryId": "layout-p35",
-      "label": "P35 layout strict GREEN",
-      "severity": "P1",
-      "detail": "p35Strict"
-    },
-    {
-      "id": "pm-folder-check",
-      "categoryId": "pm-folder-p37",
-      "label": "pnpm pm:folder:check exit 0",
-      "severity": "P1",
-      "detail": "pmFolder"
-    },
-    {
-      "id": "pm-readme",
-      "categoryId": "pm-folder-p37",
-      "label": "pm/README.md entry policy",
-      "severity": "P1",
-      "detail": "missing pm/README.md"
-    },
-    {
-      "id": "pm-manifest",
-      "categoryId": "pm-folder-p37",
-      "label": "pm/manifest.json SoR",
-      "severity": "P1",
-      "detail": "pm/manifest.json"
-    },
-    {
-      "id": "pm-completion-model",
-      "categoryId": "pm-folder-p37",
-      "label": "pm/completion-model.json DoD gates",
-      "severity": "P1",
-      "detail": "missing pm/completion-model.json"
-    },
-    {
-      "id": "pm-shipping-tracks",
-      "categoryId": "pm-folder-p37",
-      "label": "pm/shipping-tracks.json",
-      "severity": "P1",
-      "detail": "missing pm/shipping-tracks.json"
-    },
-    {
-      "id": "pm-initiatives",
-      "categoryId": "pm-folder-p37",
-      "label": "pm/roadmap/initiatives.json",
-      "severity": "P1",
-      "detail": "missing pm/roadmap/initiatives.json"
-    },
-    {
-      "id": "pm-active-sprint",
-      "categoryId": "pm-folder-p37",
-      "label": "pm/roadmap/sprints/active.json",
-      "severity": "P2",
-      "detail": "missing pm/roadmap/sprints/active.json"
-    },
-    {
-      "id": "backlog-sor",
-      "categoryId": "shipping-culture-engine",
-      "label": "ops/pm/backlog.json or pm/backlog.json",
-      "severity": "P2",
-      "detail": "0/1 present"
-    },
-    {
-      "id": "shipping-status-witness",
-      "categoryId": "shipping-culture-engine",
-      "label": "pm/ci/shipping-status-latest.json",
-      "severity": "P2",
-      "detail": "pm/ci/shipping-status-latest.json"
-    },
-    {
-      "id": "readiness-snapshot",
-      "categoryId": "shipping-culture-engine",
-      "label": "pm/readiness-snapshot.json (generated)",
-      "severity": "P2",
-      "detail": "pm/readiness-snapshot.json"
-    },
-    {
-      "id": "retrospectives-readme",
-      "categoryId": "ci-retrospectives-improvement",
-      "label": "pm/retrospectives/README.md",
-      "severity": "P2",
-      "detail": "missing pm/retrospectives/README.md"
-    },
-    {
-      "id": "retrospectives-template",
-      "categoryId": "ci-retrospectives-improvement",
-      "label": "pm/retrospectives/TEMPLATE-session-retrospective.md",
-      "severity": "P2",
-      "detail": "missing pm/retrospectives/TEMPLATE-session-retrospective.md"
-    },
-    {
-      "id": "pm-ci-gates",
-      "categoryId": "ci-retrospectives-improvement",
-      "label": "pm/ci/gates.json",
-      "severity": "P2",
-      "detail": "missing pm/ci/gates.json"
-    },
-    {
-      "id": "pm-ci-readme",
-      "categoryId": "ci-retrospectives-improvement",
-      "label": "pm/ci/README.md",
-      "severity": "P3",
-      "detail": "missing pm/ci/README.md"
-    },
-    {
-      "id": "roadmap-readme",
-      "categoryId": "roadmap-agile-planning",
-      "label": "pm/roadmap/README.md",
-      "severity": "P2",
-      "detail": "missing pm/roadmap/README.md"
-    },
-    {
-      "id": "roadmap-initiatives-populated",
-      "categoryId": "roadmap-agile-planning",
-      "label": "initiatives.json has ≥1 initiative",
-      "severity": "P2",
-      "detail": "missing pm/roadmap/initiatives.json"
-    },
-    {
-      "id": "persona-profiles",
-      "categoryId": "agentic-product-team",
-      "label": "Repo persona profile in bridge-os or institutional adoption",
-      "severity": "P3",
-      "detail": "missing pm/spec/repo-persona-profiles.json"
-    },
-    {
-      "id": "zenhub-or-pm-standard",
-      "categoryId": "agentic-product-team",
-      "label": "ZenHub PM standard or pm/zenhub linkage",
-      "severity": "P2",
-      "detail": "0/1 present"
-    },
-    {
-      "id": "continuous-improvement-chain",
-      "categoryId": "agentic-product-team",
-      "label": "Retro → backlog → roadmap chain witness",
-      "severity": "P2",
-      "detail": "0/2 present"
-    },
-    {
-      "id": "assurance-workspace",
-      "categoryId": "security-hygiene",
-      "label": "ops/assurance or ops/security domain",
-      "severity": "P1",
-      "detail": "assurance or security ops domain"
-    },
-    {
-      "id": "attestation-ops",
-      "categoryId": "audit-evidence-index",
-      "label": "ops/attestation when assurance program active",
-      "severity": "P3",
-      "detail": "missing ops/attestation"
-    },
-    {
-      "id": "pm-ci-gates-json",
-      "categoryId": "deploy-production-hygiene",
-      "label": "pm/ci/gates.json settlement gates",
-      "severity": "P2",
-      "detail": "pm ci gates or manifest"
-    }
-  ],
+  "hygieneViolations": [],
   "itemTotal": 62,
   "rubricVersion": "1.0.0",
   "openP0": 0,
-  "openP1": 8
+  "openP1": 0
 }

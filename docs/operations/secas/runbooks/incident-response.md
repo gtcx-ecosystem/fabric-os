@@ -6,6 +6,7 @@ owner: fabric-os
 document_type: runbook
 tier: operating
 review_cycle: quarterly
+tags: [fabric-os, operations]
 ---
 
 # Incident response runbook

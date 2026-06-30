@@ -9,6 +9,7 @@ tags: ['documentation']
 review_cycle: on-change
 ---
 
-# templates
+# Templates
 
-> See [`FOLDER-SPEC.md`](./FOLDER-SPEC.md) when present.
+This folder inherits the [`docs/operations/` contract](../README.md). Templates here
+support operator documentation and do not replace machine contracts under `operations/`.

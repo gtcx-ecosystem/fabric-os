@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/daas-friction-check/v1",
   "protocol": "P41-DEVOPS-AS-A-SERVICE",
-  "checkedAt": "2026-06-18T17:14:09.262Z",
+  "checkedAt": "2026-06-30T17:15:15.837Z",
   "owner": "fabric-os",
   "gates": {
     "register": {
@@ -23,10 +23,5 @@
     }
   },
   "openP0": 0,
-  "ok": true,
-  "migrationRecord": {
-    "policy": "T67",
-    "scrubbedAt": "2026-06-19",
-    "note": "Stale path references scrubbed per INIT-DOCS-CORE-IA-V1 — historical generatedAt preserved."
-  }
+  "ok": true
 }

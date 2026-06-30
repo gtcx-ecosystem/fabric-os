@@ -1,4 +1,5 @@
 ---
+
 title: 'Agent deployment ops shareable brief'
 status: current
 date: 2026-06-30
@@ -7,6 +8,7 @@ document_type: handoff
 tier: critical
 tags: ['deployment', 'ci', 'finops', 'agent']
 authority_class: R
+review_cycle: on-change
 ---
 
 # Agent Deployment Ops Handoff (share this)

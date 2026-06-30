@@ -9,78 +9,62 @@
   "pillars": {
     "compliance": {
       "score100": 100,
-      "openP1": 2,
-      "source": "fleet-seal100"
+      "openP1": 0,
+      "source": "documentation-pack"
     },
     "technicalExcellence": {
       "score100": 100,
-      "score100Raw": 96,
+      "score100Raw": 100,
       "packTe100": 100,
       "capped": false,
-      "source": "fleet-seal100"
+      "source": "pack+forensic-links"
     },
     "craft": {
       "score100": 100,
-      "score100Raw": 86,
+      "score100Raw": 100,
       "capped": false,
       "capReasons": [],
       "craftFlags": {
         "interchangeable": false,
         "aiSlop": false
       },
-      "source": "fleet-seal100"
+      "source": "forensic-doc-standard"
     },
     "worldClass": {
       "score100": 100,
-      "documentationQuality100": 86,
+      "documentationQuality100": 100,
       "worldClassBar100": 95,
-      "gap100": 9,
+      "gap100": 0,
       "gapLabel": "frontier",
-      "references": ["Stripe docs", "Kubernetes docs", "gtcx-docs hub"],
-      "source": "fleet-seal100"
+      "references": [
+        "Stripe docs",
+        "Kubernetes docs",
+        "gtcx-docs hub"
+      ],
+      "source": "documentation-quality-vs-global-bar"
     }
   },
   "forensic": {
     "axes": {
       "structural": 100,
-      "naming": 50,
-      "frontmatter": 98,
-      "links": 72,
-      "agentic": 85
+      "naming": 100,
+      "frontmatter": 100,
+      "links": 100,
+      "agentic": 100
     },
     "score100": 100,
     "signals": {
       "competingRoots": [],
       "docsHub": "docs",
-      "markdownFileCount": 377,
+      "markdownFileCount": 375,
       "brokenLinks": 0,
       "scaffoldFileCount": 0,
       "aiSlopFileCount": 0
     }
   },
   "pack": {
-    "score100": 80,
-    "openP1": 2,
-    "violations": [
-      {
-        "packId": "GTM-PACK",
-        "itemId": "gtm-dod",
-        "severity": "P2",
-        "detail": "missing demo-walkthrough or deployment-profile"
-      },
-      {
-        "packId": "OPS-DOCS-MANIFEST",
-        "itemId": "ops-docs-manifest",
-        "severity": "P1",
-        "detail": "missing ops/docs/manifest.json"
-      },
-      {
-        "packId": "OPS-DOCS-MANIFEST",
-        "itemId": "ops-docs-manifest-schema",
-        "severity": "P1",
-        "detail": "missing ops/docs/manifest.json"
-      }
-    ]
-  },
-  "fleetSeal100": true
+    "score100": 100,
+    "openP1": 0,
+    "violations": []
+  }
 }

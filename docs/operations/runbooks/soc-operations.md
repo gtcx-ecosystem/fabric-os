@@ -7,6 +7,7 @@ document_type: runbook
 tier: operating
 protocol: SECAS-S4-01
 review_cycle: quarterly
+tags: [fabric-os, operations]
 ---
 
 # SOC operations

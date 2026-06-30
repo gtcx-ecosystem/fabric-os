@@ -6,6 +6,7 @@ owner: fabric-os
 document_type: remediation
 tier: operating
 review_cycle: on-change
+tags: [fabric-os, operations]
 ---
 
 # AaaS framework — audit findings & recommendations

@@ -6,6 +6,7 @@ owner: fabric-os
 document_type: runbook
 tier: operating
 review_cycle: on-change
+tags: [fabric-os, operations]
 ---
 
 # AIOps-as-a-Service (substrate) — operator runbook

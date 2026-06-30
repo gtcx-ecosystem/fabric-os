@@ -9,6 +9,7 @@ tags: ['documentation']
 review_cycle: on-change
 ---
 
-# compliance
+# Compliance
 
-> See [`FOLDER-SPEC.md`](./FOLDER-SPEC.md) when present.
+This folder inherits the [`docs/operations/` contract](../README.md). Machine-readable
+compliance operations remain under [`operations/compliance/`](../../../operations/compliance/).

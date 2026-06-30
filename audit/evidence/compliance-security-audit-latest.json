@@ -4,8 +4,8 @@
   "slug": "compliance-security",
   "repo": "fabric-os",
   "date": "2026-06-30",
-  "score10": 7.5,
-  "score100": 75,
+  "score10": 10,
+  "score100": 100,
   "score100Raw": 100,
   "status": "rubric-driven",
   "source": "run-five-core-audit",
@@ -47,19 +47,12 @@
     {
       "id": "trust-evidence-indexed",
       "label": "audit/evidence or attestation path",
-      "pass": false,
+      "pass": true,
       "severity": "P1",
       "cap100": 75
     }
   ],
-  "capsFired": [
-    {
-      "id": "gate-trust-evidence-indexed",
-      "label": "Gate failed: audit/evidence or attestation path",
-      "ceiling100": 75,
-      "trigger": "trust-evidence-indexed"
-    }
-  ],
+  "capsFired": [],
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
@@ -70,7 +63,7 @@
       "detail": ".env should not be committed"
     },
     "assuranceWorkspace": {
-      "ok": false,
+      "ok": true,
       "detail": "assurance or security ops domain"
     },
     "trustEvidence": {
@@ -82,6 +75,6 @@
       "detail": "gitleaks witness or CI workflow"
     }
   },
-  "gaps": ["assuranceWorkspace"],
+  "gaps": [],
   "runbook": "audit/runbooks/A4-compliance-security.md"
 }

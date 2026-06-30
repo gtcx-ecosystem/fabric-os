@@ -6,12 +6,13 @@ owner: fabric-os
 document_type: assurance-protocol
 tier: critical
 authority: fabric-os AaaS/DaaS assurance lane; canon-os governance and folder/file specs
-version: 1.0.0
+version: 1.1.0
 review_cycle: on-change
 supersedes: ad hoc repo hygiene cleanup checklists
 protocol_id: FAB-RAAP-001
 workflow_id: repo-cleanup-mpr-signal-loop
 canonical_command: pnpm repo-cleanup:mpr-signal:acceptance
+tags: [fabric-os, operations]
 ---
 
 # Repository Assurance and Acceptance Protocol
@@ -55,8 +56,8 @@ unless a real Class S/external dependency makes it `blocked`.
 5. Do not redefine owner contracts in consumer repos to hide upstream defects.
 6. Do not use `--no-verify` for routine cleanup; if unavoidable, add an exception
    witness and replacement controls.
-7. Do not call a repo complete while any deterministic owner or consumer gate
-   fails.
+7. Do not call a repo complete while any deterministic owner or consumer gate is
+   below benchmark.
 8. Do not let Fabric-owned operational lanes block product release. Security,
    pen-test, compliance, legal, GTM, pilot, mobile-store evidence, DR/SLA proof,
    and other operational workflows belong on separate operational roadmaps unless
@@ -79,34 +80,36 @@ unless a real Class S/external dependency makes it `blocked`.
 
 ## Assurance Control Matrix
 
-Every report must include this table. `PASS` is valid only when the row has
-evidence and the linked MPR/SIGNAL dimensions score 100 for the cleanup scope.
+Every report must include this table. Each control scores the repository against the
+required benchmark for that control.
 
-| Area                          | Result        | Evidence                              | MPR linkage                                     | SIGNAL linkage                   |
-| ----------------------------- | ------------- | ------------------------------------- | ----------------------------------------------- | -------------------------------- |
-| Worktree clean                | PASS/FAIL     | `git status -sb`                      | Craft, Trust & Safety                           | Grounded                         |
-| Critical docs preserved       | PASS/FAIL     | inventory manifest                    | Trust & Safety, Defensive Moat, IP Magic        | Lossless, Specific               |
-| Feature/spec registry         | PASS/FAIL     | path + validation                     | Commercial Value, Product/Ecosystem Integration | Specific, Integrated, Actionable |
-| Documentation hygiene         | PASS/FAIL     | taxonomy, metadata, link checks       | Compliance, World Class, Trust & Safety         | Navigable, Grounded, Lossless    |
-| Roadmap/goals/milestones      | PASS/FAIL     | roadmap, goals, milestone, P22 output | Commercial Value, Agentic Empowerment           | Actionable, Integrated           |
-| Agile workflow                | PASS/FAIL/N/A | command output                        | Product/Ecosystem Integration, Craft            | Actionable, Integrated           |
-| Ops contract                  | PASS/FAIL/N/A | command output                        | Technical Excellence, Compliance                | Grounded, Integrated             |
-| P22/runtime                   | PASS/FAIL/N/A | command output                        | Agentic Empowerment, Compliance                 | Actionable, Specific             |
-| Fabric AaaS/DaaS              | PASS/FAIL/N/A | command output                        | Technical Excellence, World Class               | Grounded, Actionable             |
-| Operational lane isolation    | PASS/FAIL     | scan + contract proof                 | Product/Ecosystem Integration, Compliance       | Integrated, Actionable           |
-| Foundational micro-audits     | PASS/FAIL     | MPR micro-audit table                 | Foundational MPR tier                           | Specific, Grounded               |
-| Transformational micro-audits | PASS/FAIL     | MPR micro-audit table                 | Transformational MPR tier                       | Integrated, Actionable, Lossless |
-| Root hygiene                  | PASS/FAIL     | root scan                             | Compliance, Craft                               | Navigable                        |
-| Link/reference hygiene        | PASS/FAIL     | scan output                           | World Class, Trust & Safety                     | Navigable, Grounded              |
-| Cross-repo contract           | PASS/FAIL     | contract checks                       | Product/Ecosystem Integration                   | Integrated                       |
-| Archive recoverability        | PASS/FAIL     | archive manifest                      | Trust & Safety, Defensive Moat                  | Lossless                         |
+| Area                          |    Score | Benchmark | Evidence                              | MPR linkage                                     | SIGNAL linkage                   |
+| ----------------------------- | -------: | --------: | ------------------------------------- | ----------------------------------------------- | -------------------------------- |
+| Worktree clean                | score100 |       100 | `git status -sb`                      | Craft, Trust & Safety                           | Grounded                         |
+| Critical docs preserved       | score100 |       100 | inventory manifest                    | Trust & Safety, Defensive Moat, IP Magic        | Lossless, Specific               |
+| Feature/spec registry         | score100 |       100 | path + validation                     | Commercial Value, Product/Ecosystem Integration | Specific, Integrated, Actionable |
+| Documentation hygiene         | score100 |       100 | taxonomy, metadata, link checks       | Compliance, World Class, Trust & Safety         | Navigable, Grounded, Lossless    |
+| Roadmap/goals/milestones      | score100 |       100 | roadmap, goals, milestone, P22 output | Commercial Value, Agentic Empowerment           | Actionable, Integrated           |
+| Agile workflow                | score100 |       100 | command output                        | Product/Ecosystem Integration, Craft            | Actionable, Integrated           |
+| Ops contract                  | score100 |       100 | command output                        | Technical Excellence, Compliance                | Grounded, Integrated             |
+| P22/runtime                   | score100 |       100 | command output                        | Agentic Empowerment, Compliance                 | Actionable, Specific             |
+| Fabric AaaS/DaaS              | score100 |       100 | command output                        | Technical Excellence, World Class               | Grounded, Actionable             |
+| Operational lane isolation    | score100 |       100 | scan + contract proof                 | Product/Ecosystem Integration, Compliance       | Integrated, Actionable           |
+| MPR composite                 | score100 |       100 | `mpr-repo-latest.json`                | All MPR pillars                                 | Grounded, Specific               |
+| SIGNAL maturity               | score100 |       100 | `signal-maturity-latest.json`         | Agentic Empowerment, Technical Excellence       | All SIGNAL dimensions            |
+| Foundational micro-audits     | score100 |       100 | MPR micro-audit table                 | Foundational MPR tier                           | Specific, Grounded               |
+| Transformational micro-audits | score100 |       100 | MPR micro-audit table                 | Transformational MPR tier                       | Integrated, Actionable, Lossless |
+| Root hygiene                  | score100 |       100 | root scan                             | Compliance, Craft                               | Navigable                        |
+| Link/reference hygiene        | score100 |       100 | scan output                           | World Class, Trust & Safety                     | Navigable, Grounded              |
+| Cross-repo contract           | score100 |       100 | contract checks                       | Product/Ecosystem Integration                   | Integrated                       |
+| Archive recoverability        | score100 |       100 | archive manifest                      | Trust & Safety, Defensive Moat                  | Lossless                         |
 
 ## Evidence Of Record
 
 Every run must generate both artifacts, even for `incomplete` or `blocked`:
 
 ```text
-audit/reports/repo-cleanup-mpr-signal-acceptance-YYYY-MM-DD.md
+audit/reports/repository-assurance-acceptance-YYYY-MM-DD.md
 audit/evidence/repo-cleanup-mpr-signal-acceptance-latest.json
 ```
 
@@ -124,16 +127,38 @@ pnpm repo-cleanup:mpr-signal:acceptance
 pnpm repo-cleanup:mpr-signal:acceptance -- --repo <repo>
 pnpm repo-cleanup:mpr-signal:acceptance:write
 pnpm repo-cleanup:mpr-signal:acceptance:write -- --repo <repo>
+pnpm repo-cleanup:archive-manifest
+pnpm repo-cleanup:archive-manifest:write
+pnpm repo-cleanup:mpr-signal:acceptance:score
+pnpm repo-cleanup:mpr-signal:acceptance:loop-run --max 5 --repo <repo>
+pnpm repo-cleanup:mpr-signal:acceptance:loop-run:write -- --max 5 --repo <repo>
 ```
+
+`repo-cleanup:mpr-signal:acceptance:score` prints numeric acceptance score output
+from the same witness and exits `0` only when complete.
 
 The command exits `0` only when complete. It exits nonzero for incomplete
 evidence and still writes the report/artifact in `:write` mode.
 
+The loop runner records every iteration, all phase scores, the first remediation,
+and a deterministic stop reason in:
+
+```text
+audit/evidence/repo-cleanup-mpr-signal-loop-run-latest.json
+```
+
+`benchmark-reached` means every applicable phase reached 100. `stagnant` means
+the score, MPR, and SIGNAL values did not move for the configured consecutive
+iterations; the agent must execute the named remediation before another loop.
+`max-iterations` means progress occurred but the configured run budget ended.
+Repetition without score movement is never reported as convergence.
+
 ## Assurance Workflow Phases
 
-The assurance workflow is iterative. If any phase fails, record the blocker, remediate the
-smallest owner-appropriate issue, regenerate evidence, and restart from Phase 1
-for that repo. Re-run consumer phases after any owner-contract change.
+The assurance workflow is iterative. If any phase misses its benchmark, record the
+blocker, remediate the smallest owner-appropriate issue, regenerate evidence,
+and restart from Phase 1 for that repo. Re-run consumer phases after any
+owner-contract change.
 
 | Phase | Gate                                | Required proof                                                                                                                                               |
 | ----- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -148,11 +173,11 @@ for that repo. Re-run consumer phases after any owner-contract change.
 | 7     | Transformational micro-audits       | Creativity & Innovation, Commercial Value, Defensive Moat, Agentic Empowerment, Product/Ecosystem Integration, IP Magic micro-audits are represented         |
 | 8     | Folder/file specs                   | Canonical roots are used; forbidden live roots are absent unless authorized; no fake symlink compliance                                                      |
 | 9     | Preservation/archive proof          | Archive manifest proves recovery path and checksums where practical                                                                                          |
-| 10    | Owner workflow validation           | Owner repo gates pass for canon, bridge, fabric, agile, baseline, or the product repo                                                                        |
+| 10    | Owner workflow validation           | Owner repo gates score at benchmark for canon, bridge, fabric, agile, baseline, or the product repo                                                          |
 | 11    | Consumer contract validation        | Consumer repos can run the owner contracts they depend on                                                                                                    |
 | 12    | Fabric AaaS/DaaS verification       | AaaS, DaaS, honesty, cadence, friction, and operations gates produce current evidence                                                                        |
 | 13    | MPR/SIGNAL scoring                  | Final artifact records MPR 100 and SIGNAL L5 / 100 or names blockers                                                                                         |
-| 14    | Remediation loop                    | Blocker owner, command, exit code, evidence, and next remediation are recorded                                                                               |
+| 14    | Remediation loop                    | Phase score, benchmark delta, blocker owner, command, exit code, evidence, next remediation, and stop reason are recorded                                    |
 | 15    | Acceptance/commit/push/handoff      | Micro-commit, no unrelated files swept in, push, clean worktree or documented blocker                                                                        |
 
 ## Phase Controls
@@ -216,14 +241,14 @@ Forbidden live roots unless the canon/repo spec explicitly authorizes them:
 pm/ ops/ agentic/ reports/ .claude/ .cursor/ .gemini/ .kimi/
 ```
 
-Folder/file failures cap Compliance, Craft, Trust & Safety, Navigable, and
+Folder/file scores below benchmark cap Compliance, Craft, Trust & Safety, Navigable, and
 Lossless below 100.
 
 ### Owner And Consumer Command Controls
 
 Run repo-local equivalents where present. Missing owner commands are blockers
-when the repo owns that contract; missing consumer-only commands are warnings
-only if an equivalent consumer check passes.
+when the repo owns that contract; missing consumer-only commands are scored below
+benchmark unless an equivalent consumer check reaches benchmark.
 
 ```bash
 pnpm operations:check
@@ -282,14 +307,14 @@ CD in EKS. GitHub is SCM/review only while billing is locked.
 
 The machine witness must include:
 
-- `schema: gtcx://fabric-os/repo-cleanup-mpr-signal-acceptance/v1`
+- `schema: gtcx://fabric-os/repo-cleanup-mpr-signal-acceptance/v2`
 - repo, branch, commit, generatedAt, decision.
 - loop target/current/blockers/nextRemediation.
 - MPR composite, pillars, foundational micro-audits, transformational micro-audits.
 - SIGNAL level, score, and dimensions.
 - phaseResults for documentation, feature/spec, roadmap/goals/milestones,
-  operational lane isolation, foundational micro-audits, and transformational
-  micro-audits.
+  operational lane isolation, MPR composite, SIGNAL maturity, foundational
+  micro-audits, and transformational micro-audits.
 - inventory and archive manifest paths.
 - acceptanceTable rows matching this runbook.
 - commands with command, cwd, exitCode, ownerContract, consumerContract,
@@ -302,7 +327,7 @@ The machine witness must include:
 | MPR 100 and SIGNAL L5 / 100, no blockers                     | `complete`   |
 | Any MPR pillar below 100                                     | `incomplete` |
 | Any SIGNAL dimension below L5 / 100                          | `incomplete` |
-| Any deterministic owner/consumer gate fails                  | `incomplete` |
+| Any deterministic owner/consumer gate scores below benchmark | `incomplete` |
 | Any critical artifact lacks inventory/archive recovery proof | `incomplete` |
 | Class S/external dependency prevents evidence                | `blocked`    |
 

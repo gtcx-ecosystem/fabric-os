@@ -32,6 +32,7 @@ function gate(id, ok, detail = '') {
 
 const requiredFiles = [
   'machine/spec/deployment-ops-contract.json',
+  'machine/spec/deployment-fleet-matrix.json',
   'operations/deployment-profile.json',
   'operations/fabric-contract.json',
   'machine/spec/mlops-bridge-contract.json',
@@ -42,6 +43,7 @@ const requiredFiles = [
   'docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md',
   'docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md',
   'docs/operations/deployment/github-billing-independent-deploy-handoff-2026-06-30.md',
+  'docs/operations/deployment/fleet-deployment-matrix-2026-06-30.md',
   'docs/operations/platform-services/devops-as-a-service.md',
   'docs/operations/runbooks/finops-as-a-service.md',
   'platform/scripts/cost/aws-cost-optimization-export.mjs',
@@ -57,7 +59,9 @@ const requiredFiles = [
   'deploy/codebuild/deploy-buildspec.yml',
   'platform/scripts/codebuild-deploy-start.mjs',
   'platform/scripts/codebuild-deploy-runner.mjs',
+  'platform/scripts/deployment-fleet-matrix.mjs',
   'platform/scripts/tests/deployment-ops-cli.test.mjs',
+  'platform/scripts/tests/deployment-fleet-matrix.test.mjs',
 ];
 
 for (const rel of requiredFiles) gate('file:' + rel, existsSync(join(ROOT, rel)), rel);
@@ -156,7 +160,15 @@ gate('codebuild-buildspec:runner', /codebuild-deploy-runner\.mjs --write --execu
 gate('codebuild-buildspec:evidence-artifact', /audit\/evidence\/codebuild-deploy-runner-latest\.json/.test(codebuildBuildspec), 'buildspec evidence artifact');
 gate('codebuild-readme:github-not-executor', /GitHub Actions is not the production deploy\s+executor/i.test(codebuildReadme), 'CodeBuild README');
 gate('codebuild-readme:class-a', /--class-a-ref=<artifact>/.test(codebuildReadme), 'CodeBuild README Class A');
-gate('deployment-ops:test-script', packageJson.scripts?.['deployment:ops:test'] === 'node --test platform/scripts/tests/deployment-ops-cli.test.mjs', packageJson.scripts?.['deployment:ops:test']);
+gate(
+  'deployment-ops:test-script',
+  /platform\/scripts\/tests\/deployment-ops-cli\.test\.mjs/.test(packageJson.scripts?.['deployment:ops:test'] ?? '') &&
+    /platform\/scripts\/tests\/deployment-fleet-matrix\.test\.mjs/.test(packageJson.scripts?.['deployment:ops:test'] ?? ''),
+  packageJson.scripts?.['deployment:ops:test'],
+);
+gate('deployment-fleet:script', packageJson.scripts?.['deployment:fleet:matrix'] === 'node platform/scripts/deployment-fleet-matrix.mjs', packageJson.scripts?.['deployment:fleet:matrix']);
+gate('deployment-fleet:write-script', packageJson.scripts?.['deployment:fleet:matrix:write'] === 'node platform/scripts/deployment-fleet-matrix.mjs --write', packageJson.scripts?.['deployment:fleet:matrix:write']);
+gate('deployment-fleet:strict-script', packageJson.scripts?.['deployment:fleet:matrix:strict'] === 'node platform/scripts/deployment-fleet-matrix.mjs --strict', packageJson.scripts?.['deployment:fleet:matrix:strict']);
 gate('deployment-ops:test-coverage', /Class A reference required/.test(deploymentOpsCliTest) && /aws cost optimization export/.test(deploymentOpsCliTest), 'CLI guardrail tests');
 gate('deployment-ops:fabric-check-runs-test', /pnpm deployment:ops:test/.test(packageJson.scripts?.['fabric:operations:check'] ?? ''), packageJson.scripts?.['fabric:operations:check']);
 gate('deployment-ops:fabric-strict-runs-test', /pnpm deployment:ops:test/.test(packageJson.scripts?.['fabric:operations:check:strict'] ?? ''), packageJson.scripts?.['fabric:operations:check:strict']);

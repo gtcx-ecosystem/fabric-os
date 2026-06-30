@@ -11,12 +11,17 @@ OUTPUT="${SCRIPT_DIR}/rotation.zip"
 echo "Building rotation Lambda package..."
 
 # Install dependency
-PIP="${PIP:-pip}"
-if ! command -v "${PIP}" >/dev/null 2>&1; then
-  PIP="python3 -m pip"
+PIP_SPEC="${PIP:-pip}"
+if ! command -v "pip" >/dev/null 2>&1 && command -v "python3" >/dev/null 2>&1; then
+  PIP_CMD=(python3 -m pip)
+elif [ "${PIP_SPEC}" = "python3 -m pip" ]; then
+  PIP_CMD=(python3 -m pip)
+else
+  read -r -a PIP_CMD <<< "${PIP_SPEC}"
 fi
-"${PIP}" install --target "${BUILD_DIR}" psycopg2-binary --quiet --platform manylinux2014_x86_64 --only-binary=:all: 2>/dev/null || \
-  "${PIP}" install --target "${BUILD_DIR}" psycopg2-binary --quiet
+
+"${PIP_CMD[@]}" install --target "${BUILD_DIR}" psycopg2-binary --quiet --platform manylinux2014_x86_64 --only-binary=:all: 2>/dev/null || \
+  "${PIP_CMD[@]}" install --target "${BUILD_DIR}" psycopg2-binary --quiet
 
 # Copy handler
 cp "${SCRIPT_DIR}/src/index.py" "${BUILD_DIR}/index.py"

@@ -1,28 +1,38 @@
 ---
-title: 'Repo cleanup MPR/SIGNAL loop'
+title: 'Repository Assurance and Acceptance Protocol'
 status: current
 date: 2026-06-30
 owner: fabric-os
-document_type: runbook
+document_type: assurance-protocol
 tier: critical
 authority: fabric-os AaaS/DaaS assurance lane; canon-os governance and folder/file specs
 version: 1.0.0
 review_cycle: on-change
 supersedes: ad hoc repo hygiene cleanup checklists
+protocol_id: FAB-RAAP-001
+workflow_id: repo-cleanup-mpr-signal-loop
+canonical_command: pnpm repo-cleanup:mpr-signal:acceptance
 ---
 
-# Repo cleanup MPR/SIGNAL loop
+# Repository Assurance and Acceptance Protocol
 
-This runbook is the provider-neutral repo cleanup acceptance contract for
+| Field             | Value                                     |
+| ----------------- | ----------------------------------------- |
+| Protocol ID       | `FAB-RAAP-001`                            |
+| Workflow ID       | `repo-cleanup-mpr-signal-loop`            |
+| Canonical command | `pnpm repo-cleanup:mpr-signal:acceptance` |
+
+This protocol defines the provider-neutral repository assurance workflow for
 `canon-os`, `bridge-os`, `fabric-os`, `agile-os`, `baseline-os`, and product
-repos. Any terminal-capable agent can run it: Claude, Codex, Gemini, Kimi,
+repos. Any terminal-capable agent can execute it: Claude, Codex, Gemini, Kimi,
 Cursor, Copilot, or a future provider.
 
-Cleanup is accepted only at **MPR 100/100** and **SIGNAL L5 / 100** for the
-cleanup scope. The loop must preserve critical docs/specs/workflows/contracts,
-verify owner and consumer commands, run the Fabric AaaS/DaaS evidence lane where
-applicable, and generate a human report plus a machine witness. Anything less is
-`incomplete` unless a real Class S/external blocker makes it `blocked`.
+Repository acceptance is granted only at **MPR 100/100** and
+**SIGNAL L5 / 100** for the assessed scope. The workflow preserves critical
+docs/specs/workflows/contracts, verifies owner and consumer commands, evaluates
+Fabric AaaS/DaaS evidence where applicable, and produces both a human-readable
+assurance report and a machine-readable witness. Anything less is `incomplete`
+unless a real Class S/external dependency makes it `blocked`.
 
 ## Authority Stack
 
@@ -52,12 +62,12 @@ applicable, and generate a human report plus a machine witness. Anything less is
    and other operational workflows belong on separate operational roadmaps unless
    the product owner explicitly binds a specific item as a product-release gate.
 
-## Acceptance Thresholds
+## Acceptance Standard
 
 | Lens                                 | Required threshold |
 | ------------------------------------ | -----------------: |
-| MPR cleanup composite                |            100/100 |
-| SIGNAL cleanup maturity              |           L5 / 100 |
+| MPR repository assurance composite   |            100/100 |
+| SIGNAL repository maturity           |           L5 / 100 |
 | MPR Trust & Safety                   |            100/100 |
 | MPR Product/Ecosystem Integration    |            100/100 |
 | SIGNAL Lossless                      |            100/100 |
@@ -67,7 +77,7 @@ applicable, and generate a human report plus a machine witness. Anything less is
 | Folder/file spec score               |            100/100 |
 | AaaS and DaaS gates, when applicable |            100/100 |
 
-## Required Acceptance Table
+## Assurance Control Matrix
 
 Every report must include this table. `PASS` is valid only when the row has
 evidence and the linked MPR/SIGNAL dimensions score 100 for the cleanup scope.
@@ -91,7 +101,7 @@ evidence and the linked MPR/SIGNAL dimensions score 100 for the cleanup scope.
 | Cross-repo contract           | PASS/FAIL     | contract checks                       | Product/Ecosystem Integration                   | Integrated                       |
 | Archive recoverability        | PASS/FAIL     | archive manifest                      | Trust & Safety, Defensive Moat                  | Lossless                         |
 
-## Required Artifacts
+## Evidence Of Record
 
 Every run must generate both artifacts, even for `incomplete` or `blocked`:
 
@@ -119,9 +129,9 @@ pnpm repo-cleanup:mpr-signal:acceptance:write -- --repo <repo>
 The command exits `0` only when complete. It exits nonzero for incomplete
 evidence and still writes the report/artifact in `:write` mode.
 
-## Loop Phases
+## Assurance Workflow Phases
 
-The audit is iterative. If any phase fails, record the blocker, remediate the
+The assurance workflow is iterative. If any phase fails, record the blocker, remediate the
 smallest owner-appropriate issue, regenerate evidence, and restart from Phase 1
 for that repo. Re-run consumer phases after any owner-contract change.
 
@@ -145,9 +155,9 @@ for that repo. Re-run consumer phases after any owner-contract change.
 | 14    | Remediation loop                    | Blocker owner, command, exit code, evidence, and next remediation are recorded                                                                               |
 | 15    | Acceptance/commit/push/handoff      | Micro-commit, no unrelated files swept in, push, clean worktree or documented blocker                                                                        |
 
-## Phase Details
+## Phase Controls
 
-### Inventory And Classification
+### Evidence Inventory And Classification
 
 Inventory these roots before moving anything:
 
@@ -160,7 +170,7 @@ The inventory must include `AGENTS.md`, `agents/`, provider instruction files,
 workflow docs, goals, milestones, roadmaps, Fabric AaaS/DaaS/deploy docs, and
 generated witnesses. Provider-local settings and secrets are delete-forbidden.
 
-### Documentation, Features, Roadmaps
+### Documentation, Feature, And Roadmap Controls
 
 Documentation hygiene covers normative specs, runbooks, generated evidence,
 historical records, provider instructions, product docs, feature specs, PRDs,
@@ -192,7 +202,7 @@ Examples that stay off the product-release critical path by default:
 - GTM, pilot, or reviewer sign-off workflows owned by Fabric or a non-product
   operational function.
 
-### Folder/File Specs
+### Folder And File Specification Controls
 
 Canonical roots when applicable:
 
@@ -209,7 +219,7 @@ pm/ ops/ agentic/ reports/ .claude/ .cursor/ .gemini/ .kimi/
 Folder/file failures cap Compliance, Craft, Trust & Safety, Navigable, and
 Lossless below 100.
 
-### Owner Commands
+### Owner And Consumer Command Controls
 
 Run repo-local equivalents where present. Missing owner commands are blockers
 when the repo owns that contract; missing consumer-only commands are warnings
@@ -240,7 +250,7 @@ Owner-specific required surfaces:
 | `agile-os`    | Feature/spec registry, ceremonies, sprint authority, ship gates                    |
 | `baseline-os` | Startup/runtime command surface, machine/operations conventions                    |
 
-### Fabric AaaS/DaaS Commands
+### Fabric AaaS/DaaS Assurance Controls
 
 Where applicable, run or capture these:
 
@@ -268,7 +278,7 @@ pnpm fabric:operations:check:strict
 Production deploy execution remains AWS-owned through CodeBuild in VPC and Argo
 CD in EKS. GitHub is SCM/review only while billing is locked.
 
-## Final Evidence Shape
+## Machine Witness Contract
 
 The machine witness must include:
 
@@ -285,7 +295,7 @@ The machine witness must include:
 - commands with command, cwd, exitCode, ownerContract, consumerContract,
   mprPillars, and signalDimensions.
 
-## Exit Rules
+## Determination Rules
 
 | State                                                        | Decision     |
 | ------------------------------------------------------------ | ------------ |
@@ -299,7 +309,7 @@ The machine witness must include:
 Do not advance to the next repo until the current repo has a current acceptance
 report/artifact or a documented external blocker.
 
-Repo order for systemic cleanup:
+Repository sequence for systemic assurance:
 
 ```text
 canon-os -> bridge-os -> fabric-os -> agile-os -> baseline-os -> product repos

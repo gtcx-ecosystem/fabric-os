@@ -30,7 +30,8 @@ function parseArgs(argv) {
     else if (arg === '--dry-run') args.execute = false;
     else if (arg === '--help' || arg === '-h') args.help = true;
     else if (arg.startsWith('--mode=')) args.mode = arg.slice('--mode='.length);
-    else if (arg.startsWith('--environment=')) args.environment = arg.slice('--environment='.length);
+    else if (arg.startsWith('--environment='))
+      args.environment = arg.slice('--environment='.length);
     else if (arg.startsWith('--class-a-ref=')) args.classARef = arg.slice('--class-a-ref='.length);
     else throw new Error(`Unknown argument: ${arg}`);
   }
@@ -61,9 +62,17 @@ function redact(value) {
 }
 
 function runCommand(step, command, args, execute) {
+  const commandPath = command;
+  const toolPath = [process.env.PATH, '/usr/local/bin', '/usr/bin']
+    .filter(Boolean)
+    .map((entry) => entry.split(':'))
+    .flat()
+    .filter(Boolean);
+  const path = Array.from(new Set(toolPath)).join(':');
+
   const record = {
     step,
-    command: [command, ...args],
+    command: [commandPath, ...args],
     skipped: !execute,
     status: null,
     stdout: '',
@@ -72,10 +81,13 @@ function runCommand(step, command, args, execute) {
 
   if (!execute) return record;
 
-  const result = spawnSync(command, args, {
+  const result = spawnSync(commandPath, args, {
     cwd: ROOT,
     encoding: 'utf8',
-    env: process.env,
+    env: {
+      ...process.env,
+      PATH: path,
+    },
   });
 
   record.status = result.status;
@@ -92,6 +104,9 @@ function add(commands, step, command, args) {
 
 function buildCommands({ environment, mode, region, clusterName, appName, planPath }) {
   const envDir = `deploy/terraform/environments/${environment}`;
+  const terraformCommand = process.env.TERRAFORM_BINARY ?? 'terraform';
+  const kubectlCommand = process.env.KUBECTL_BINARY ?? 'kubectl';
+  const argocdCommand = process.env.ARGOCD_BINARY ?? 'argocd';
   const commands = [];
 
   add(commands, 'operations-check', 'pnpm', ['operations:check']);
@@ -99,23 +114,73 @@ function buildCommands({ environment, mode, region, clusterName, appName, planPa
   add(commands, 'deployment-contract', 'pnpm', ['deployment:ops:contract:check']);
 
   if (['plan', 'terraform-apply'].includes(mode)) {
-    add(commands, 'terraform-init', 'terraform', ['-chdir=' + envDir, 'init', '-input=false']);
-    add(commands, 'terraform-plan', 'terraform', ['-chdir=' + envDir, 'plan', '-input=false', '-out=' + planPath]);
+    add(commands, 'terraform-init', terraformCommand, ['-chdir=' + envDir, 'init', '-input=false']);
+    add(commands, 'terraform-plan', terraformCommand, [
+      '-chdir=' + envDir,
+      'plan',
+      '-input=false',
+      '-out=' + planPath,
+    ]);
   }
 
   if (mode === 'terraform-apply') {
-    add(commands, 'terraform-apply', 'terraform', ['-chdir=' + envDir, 'apply', '-input=false', '-auto-approve', planPath]);
+    add(commands, 'terraform-apply', terraformCommand, [
+      '-chdir=' + envDir,
+      'apply',
+      '-input=false',
+      '-auto-approve',
+      planPath,
+    ]);
   }
 
   if (['plan', 'smoke', 'argocd-sync'].includes(mode)) {
-    add(commands, 'eks-kubeconfig', 'aws', ['eks', 'update-kubeconfig', '--region', region, '--name', clusterName, '--alias', `gtcx-${environment}`]);
-    add(commands, 'kubectl-auth-can-i', 'kubectl', ['auth', 'can-i', 'get', 'pods', '--all-namespaces']);
-    add(commands, 'argocd-application-get', 'kubectl', ['-n', 'argocd', 'get', 'application/' + appName, '-o', 'json']);
+    add(commands, 'eks-kubeconfig', 'aws', [
+      'eks',
+      'update-kubeconfig',
+      '--region',
+      region,
+      '--name',
+      clusterName,
+      '--alias',
+      `gtcx-${environment}`,
+    ]);
+    add(commands, 'kubectl-auth-can-i', kubectlCommand, [
+      '--request-timeout=25s',
+      'auth',
+      'can-i',
+      'get',
+      'pods',
+      '--all-namespaces',
+    ]);
+    add(commands, 'argocd-application-get', kubectlCommand, [
+      '--request-timeout=25s',
+      '-n',
+      'argocd',
+      'get',
+      'application/' + appName,
+      '-o',
+      'json',
+    ]);
   }
 
   if (mode === 'argocd-sync') {
-    add(commands, 'argocd-sync', 'argocd', ['--core', 'app', 'sync', appName, '--prune=false']);
-    add(commands, 'argocd-wait', 'argocd', ['--core', 'app', 'wait', appName, '--health', '--sync', '--timeout', '300']);
+    add(commands, 'argocd-sync', argocdCommand, [
+      '--core',
+      'app',
+      'sync',
+      appName,
+      '--prune=false',
+    ]);
+    add(commands, 'argocd-wait', argocdCommand, [
+      '--core',
+      'app',
+      'wait',
+      appName,
+      '--health',
+      '--sync',
+      '--timeout',
+      '300',
+    ]);
   }
 
   return commands;
@@ -128,29 +193,37 @@ function main() {
     return 0;
   }
 
-  const environment = args.environment ?? process.env.DEPLOY_ENVIRONMENT ?? process.env.ENVIRONMENT ?? 'staging';
+  const environment =
+    args.environment ?? process.env.DEPLOY_ENVIRONMENT ?? process.env.ENVIRONMENT ?? 'staging';
   const mode = args.mode ?? process.env.DEPLOY_MODE ?? 'plan';
   const classARef = args.classARef ?? process.env.CLASS_A_REF ?? '';
   const region = process.env.AWS_REGION ?? process.env.AWS_DEFAULT_REGION ?? 'af-south-1';
   const clusterName = process.env.EKS_CLUSTER_NAME ?? `gtcx-${environment}`;
-  const appName = process.env.ARGOCD_APP ?? (environment === 'production' ? 'fabric-production-root' : 'fabric-staging-root');
+  const appName =
+    process.env.ARGOCD_APP ??
+    (environment === 'production' ? 'fabric-production-root' : 'fabric-staging-root');
   const planPath = process.env.TF_PLAN_PATH ?? 'tfplan';
   const outRel = process.env.DEPLOY_EVIDENCE_PATH ?? DEFAULT_OUT;
   const out = join(ROOT, outRel);
 
   const validEnvironments = new Set(['staging', 'production']);
   const validModes = new Set(['plan', 'terraform-apply', 'argocd-sync', 'smoke']);
-  if (!validEnvironments.has(environment)) throw new Error('DEPLOY_ENVIRONMENT must be staging or production');
-  if (!validModes.has(mode)) throw new Error('DEPLOY_MODE must be plan, terraform-apply, argocd-sync, or smoke');
+  if (!validEnvironments.has(environment))
+    throw new Error('DEPLOY_ENVIRONMENT must be staging or production');
+  if (!validModes.has(mode))
+    throw new Error('DEPLOY_MODE must be plan, terraform-apply, argocd-sync, or smoke');
   if (!existsSync(join(ROOT, CONTRACT_PATH))) throw new Error(`Missing ${CONTRACT_PATH}`);
 
-  const classARequired = mode === 'terraform-apply' || (environment === 'production' && mode === 'argocd-sync');
+  const classARequired =
+    mode === 'terraform-apply' || (environment === 'production' && mode === 'argocd-sync');
   if (classARequired && !classARef) {
     throw new Error('Class A reference required for terraform-apply and production argocd-sync');
   }
 
   const planned = buildCommands({ environment, mode, region, clusterName, appName, planPath });
-  const results = planned.map((item) => runCommand(item.step, item.command, item.args, args.execute));
+  const results = planned.map((item) =>
+    runCommand(item.step, item.command, item.args, args.execute)
+  );
   const ok = results.every((item) => item.skipped || item.status === 0);
 
   const witness = {
@@ -179,7 +252,9 @@ function main() {
   if (args.json || args.write) {
     console.log(JSON.stringify(witness, null, 2));
   } else {
-    console.log(`CodeBuild deploy runner ${args.execute ? 'executed' : 'dry-run'}: ${ok ? 'PASS' : 'FAIL'}`);
+    console.log(
+      `CodeBuild deploy runner ${args.execute ? 'executed' : 'dry-run'}: ${ok ? 'PASS' : 'FAIL'}`
+    );
     console.log(`environment: ${environment}`);
     console.log(`mode: ${mode}`);
   }

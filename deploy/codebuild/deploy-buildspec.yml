@@ -6,6 +6,9 @@ env:
     DEPLOY_ENVIRONMENT: staging
     DEPLOY_EVIDENCE_PATH: audit/evidence/codebuild-deploy-runner-latest.json
 
+  # Keep build environment explicit and deterministic enough for long-lived workflows.
+  # Terraform and kubectl checks run in the same session, so we avoid relying on
+  # preinstalled tooling in the base image.
 phases:
   install:
     commands:
@@ -13,8 +16,19 @@ phases:
       - corepack enable
       - corepack prepare pnpm@9.15.4 --activate
       - pnpm --version
+      - curl -fsSL -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip
+      - unzip -q /tmp/terraform.zip -d /tmp
+      - chmod +x /tmp/terraform
+      - mv /tmp/terraform /usr/local/bin/terraform
+      - chmod +x /usr/local/bin/terraform
+      - ln -sf /usr/local/bin/terraform /usr/bin/terraform
+      - terraform --version
+      - command -v terraform
+      - ls -l /usr/local/bin/terraform /usr/bin/terraform
       - curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.14.10/argocd-linux-amd64
       - chmod +x /usr/local/bin/argocd
+      - ln -sf /usr/local/bin/argocd /usr/bin/argocd
+      - command -v argocd
   pre_build:
     commands:
       - pnpm install --frozen-lockfile

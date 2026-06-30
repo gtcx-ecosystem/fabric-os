@@ -50,13 +50,13 @@ Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot
 - `griot:prod:verify:write` passes (HTTP/2 200, ACM ISSUED).
 - Related commits: `fabric-os` `d5a6f4f0` and its follow-up revert/closure commit.
 
-## Session bootstrap (2026-06-30 04:17:17 UTC)
+## Session bootstrap (2026-06-30 10:21:03 UTC)
 
 - **Command:** `agent start` (baseline-os repo-session-core)
 - **Repo:** fabric-os
-- **Next work:** COMPOSITE-RESTORE-100 — Restore composite ≥100 (current 59) — SECAS-S4-supply-chain
+- **Next work:** unknown
 - **Blocked:** no
-- **Git:** 43 changed path(s)
+- **Git:** 127 changed path(s)
 
 
 ## Session: baseline start — 2026-06-30 07:04 UTC
@@ -129,3 +129,26 @@ Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot
 - Working tree is now clean; continue backlog-clear protocol.
 - No open engineering stories; parallel assurance gates remain calendar-blocked.
 - nyota-ai has remaining unstaged cleanup changes after the archive commit; next owner should review and commit or revert.
+
+
+## Session: baseline start — 2026-06-30 10:18 UTC (this turn)
+
+- **Command:** `baseline start`
+- **Agent:** Kimi Code CLI
+- **Repo:** fabric-os
+- **Persona:** platform-architect
+- **Frame:** development
+
+### What Was Done
+- Re-ran Agent Startup Protocol (Phase 1–5).
+- `git status`: 123 modified paths + 4 untracked evidence/spec files.
+- Ran `pnpm agent:next-work` → `backlogClear: true`; phase `internal_closure_complete`; parallel assurance gates only (pen-test window 2026-06-17..2026-06-21; SOC2 opinion letter).
+- Ran `node platform/tools/scripts/validate-all.mjs` to refresh evidence gates.
+- `validate-all`: **56/56 gates pass**.
+- Acknowledged cross-repo update: `exploration-os` archival complete and pushed (commits `2e712f67`, `288c504b`, `dfe4f3d8`, `c55b0cfd`, `243cf299`).
+- Committed fabric-os alignment cleanup: removed standalone `gtcx-intelligence` / `gtcx-infrastructure` references, redirected intelligence bridge ownership to `bridge-os`, refreshed evidence witnesses.
+
+### Next Steps
+- Push fabric-os alignment commits.
+- Continue backlog-clear protocol.
+- No open engineering stories; parallel assurance gates remain calendar-blocked.

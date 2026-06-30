@@ -26,7 +26,7 @@ export default defineConfig({
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure',
+          href: 'https://github.com/gtcx-ecosystem/fabric-os',
         },
       ],
       sidebar: [
@@ -53,7 +53,7 @@ export default defineConfig({
       ],
       editLink: {
         baseUrl:
-          'https://github.com/gtcx-ecosystem/gtcx-infrastructure/edit/main/01-docs/external/docs-site/',
+          'https://github.com/gtcx-ecosystem/fabric-os/edit/main/01-docs/external/docs-site/',
       },
       lastUpdated: true,
     }),

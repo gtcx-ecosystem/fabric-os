@@ -109,4 +109,4 @@ Full agile-pm documentation in `agile-pm/` folder:
 - API specification: `04 - spec/api-specification-template.md`
 - Sprint planning: `06 - planning/`
 
-_Source: Originally from the GTCX monorepo migration tools; now maintained in gtcx-infrastructure (templates)_
+_Source: Originally from the GTCX monorepo migration tools; now maintained in fabric-os (templates)_

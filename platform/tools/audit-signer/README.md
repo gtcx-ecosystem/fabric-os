@@ -105,7 +105,7 @@ The `publicKey` ships in every record on purpose: a third party can verify the c
 
 ## Compliance posture
 
-The records produced here are already used in GTCX's SIGNAL 9.29 audit posture under metrics S2 (audit trail), I2 (audit immutability), and I3 (tamper-evident release). See the GTCX [score evidence ledger](https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/05-audit/score-evidence-ledger.json) for live links to deployed evidence.
+The records produced here are already used in GTCX's SIGNAL 9.29 audit posture under metrics S2 (audit trail), I2 (audit immutability), and I3 (tamper-evident release). See the GTCX [score evidence ledger](https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/05-audit/score-evidence-ledger.json) for live links to deployed evidence.
 
 ## License
 

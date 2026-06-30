@@ -9,7 +9,7 @@
  * Services probed:
  *   - sovereign-staging.gtcx.trade/api/health  (gtcx-platforms)
  *   - api.staging.gtcx.trade/api/health        (gtcx-platforms / core)
- *   - intelligence-staging.gtcx.trade/health   (gtcx-intelligence)
+ *   - intelligence-staging.gtcx.trade/health   (bridge-os intelligence bridge)
  *   - compliance-gateway-staging in-cluster /health (optional; external hostname unwired)
  *
  * Usage:
@@ -46,13 +46,13 @@ const SERVICES = [
   },
   {
     name: 'intelligence',
-    repo: 'gtcx-intelligence',
+    repo: 'bridge-os-intelligence-bridge',
     url: 'https://intelligence-staging.gtcx.trade/health',
     required: true,
   },
   {
     name: 'compliance-gateway',
-    repo: 'gtcx-infrastructure',
+    repo: 'fabric-os',
     url: 'https://compliance-gateway-staging.gtcx.trade/health',
     required: false,
     inClusterProbe: {

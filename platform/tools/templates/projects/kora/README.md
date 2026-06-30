@@ -122,4 +122,4 @@ Full agile-pm documentation in `agile-pm/` folder:
 - Security requirements: `09 - security/`
 - Sprint planning: `06 - planning/`
 
-_Source: Originally from the GTCX monorepo migration tools; now maintained in **sensei-ai** (Core logic) and **gtcx-infrastructure** (Deployment templates)._
+_Source: Originally from the GTCX monorepo migration tools; now maintained in **sensei-ai** (Core logic) and **fabric-os** (Deployment templates)._

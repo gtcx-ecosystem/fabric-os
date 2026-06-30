@@ -90,7 +90,7 @@ academic or regulatory citation:
 
 > GTCX Protocol. (2026). _@gtcx/compliance-data: African fintech
 > regulatory jurisdiction catalog_ (Version 1.1.0) [Data set].
-> https://github.com/gtcx-ecosystem/gtcx-infrastructure/tree/main/03-platform/tools/compliance-data
+> https://github.com/gtcx-ecosystem/fabric-os/tree/main/03-platform/tools/compliance-data
 
 ## Sources + how to contribute
 

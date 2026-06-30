@@ -79,7 +79,7 @@ describe('fetchGithubRepoStats', () => {
         },
       }],
     ]));
-    const result = await fetchGithubRepoStats('gtcx-ecosystem/gtcx-infrastructure', fetcher);
+    const result = await fetchGithubRepoStats('gtcx-ecosystem/fabric-os', fetcher);
     assert.strictEqual(result.stars, 12);
     assert.strictEqual(result.forks, 3);
     assert.strictEqual(result.openIssues, 1);

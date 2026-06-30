@@ -86,7 +86,7 @@ function extractCommands(blocks) {
     // Skip blocks explicitly tagged as running outside this repo.
     // Convention: a `# cwd: <other-repo>` comment anywhere in the block
     // exempts the entire block from this-repo command validation.
-    if (/^\s*#\s*cwd:\s*(?!\s*\.|\s*\/Users\/amanianai\/Sites\/gtcx-ecosystem\/gtcx-infrastructure)/m.test(block)) {
+    if (/^\s*#\s*cwd:\s*(?!\s*\.|\s*\/Users\/amanianai\/Sites\/gtcx-ecosystem\/fabric-os)/m.test(block)) {
       continue;
     }
     for (const rawLine of block.split('\n')) {

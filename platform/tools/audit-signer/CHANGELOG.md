@@ -38,8 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- npm provenance with Sigstore bundle — `npm publish --provenance --access public`. The source repository (`gtcx-ecosystem/gtcx-infrastructure`) is now public, enabling full Sigstore/Rekor transparency log attestation. Consumers can verify with `npm audit-signatures`.
+- npm provenance with Sigstore bundle — `npm publish --provenance --access public`. The source repository (`gtcx-ecosystem/fabric-os`) is now public, enabling full Sigstore/Rekor transparency log attestation. Consumers can verify with `npm audit-signatures`.
 
-[0.1.2]: https://github.com/gtcx-ecosystem/gtcx-infrastructure/releases/tag/v0.1.2
-[0.1.1]: https://github.com/gtcx-ecosystem/gtcx-infrastructure/releases/tag/v0.1.1
-[0.1.0]: https://github.com/gtcx-ecosystem/gtcx-infrastructure/tree/main/03-platform/tools/audit-signer
+[0.1.2]: https://github.com/gtcx-ecosystem/fabric-os/releases/tag/v0.1.2
+[0.1.1]: https://github.com/gtcx-ecosystem/fabric-os/releases/tag/v0.1.1
+[0.1.0]: https://github.com/gtcx-ecosystem/fabric-os/tree/main/03-platform/tools/audit-signer

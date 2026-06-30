@@ -6,7 +6,7 @@
  * working. Pulls four signals into a single JSON snapshot:
  *
  *   - npm downloads for @gtcx/audit-signer (last day, last 7 days, last 30 days)
- *   - GitHub stars + forks + open issues for gtcx-ecosystem/gtcx-infrastructure
+ *   - GitHub stars + forks + open issues for gtcx-ecosystem/fabric-os
  *   - GitHub stars + forks + open issues for amani-amina-anai/terraform-aws-compliance-db
  *   - Last-success timestamps so a stale snapshot is detectable
  *
@@ -28,7 +28,7 @@ const OUTPUT_DIR = resolve(REPO_ROOT, 'docs', 'audit', 'distribution-snapshots')
 
 const NPM_PACKAGE = '@gtcx/audit-signer';
 const GITHUB_REPOS = [
-  'gtcx-ecosystem/gtcx-infrastructure',
+  'gtcx-ecosystem/fabric-os',
   'amani-amina-anai/terraform-aws-compliance-db',
 ];
 

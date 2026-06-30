@@ -211,22 +211,22 @@ Each principle has a primary owner repo where its implementation is most critica
 | P9 Governed       | gtcx-platforms                    | Sovereignty  |
 | P10 Compliant     | gtcx-complianceos                 | Sovereignty  |
 | P11 Secure        | gtcx-core                         | Architecture |
-| P12 Resilient     | gtcx-infrastructure               | Architecture |
+| P12 Resilient     | fabric-os                         | Architecture |
 | P13 Modular       | Universal                         | Architecture |
-| P14 Deployable    | gtcx-infrastructure               | Architecture |
-| P15 Observable    | gtcx-infrastructure               | Architecture |
-| P16 Ubuntu        | gtcx-intelligence                 | Frontier     |
+| P14 Deployable    | fabric-os                         | Architecture |
+| P15 Observable    | fabric-os                         | Architecture |
+| P16 Ubuntu        | bridge-os intelligence bridge     | Frontier     |
 | P17 Offline       | gtcx-app                          | Frontier     |
 | P18 Localized     | gtcx-app, gtcx-design             | Frontier     |
 | P19 Accessible    | gtcx-app, gtcx-design             | Frontier     |
 | P20 Hardware      | gtcx-hardware                     | Frontier     |
 | P21 Universal     | gtcx-core                         | Scale        |
-| P22 Portable      | gtcx-infrastructure               | Scale        |
+| P22 Portable      | fabric-os                         | Scale        |
 | P23 Interoperable | gtcx-protocols                    | Scale        |
-| P24 Scalable      | gtcx-infrastructure               | Scale        |
+| P24 Scalable      | fabric-os                         | Scale        |
 | P25 Extensible    | gtcx-agentic                      | Scale        |
 | P26 Researched    | gtcx-docs                         | Craft        |
 | P27 Documented    | Universal                         | Craft        |
-| P28 Adaptive      | gtcx-intelligence                 | Craft        |
+| P28 Adaptive      | bridge-os intelligence bridge     | Craft        |
 | P29 Tested        | Universal                         | Craft        |
 | P30 Intentional   | Universal                         | Craft        |

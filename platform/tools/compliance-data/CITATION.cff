@@ -15,7 +15,7 @@ authors:
 version: 1.1.0
 date-released: '2026-05-30'
 license: MIT
-repository-code: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/tree/main/tools/compliance-data'
+repository-code: 'https://github.com/gtcx-ecosystem/fabric-os/tree/main/tools/compliance-data'
 keywords:
   - african-fintech
   - regulatory-data

@@ -320,7 +320,7 @@ const chain = createChain();
 append(
   chain,
   createRecord({
-    actor: 'gtcx-infrastructure-release-evidence',
+    actor: 'fabric-os-release-evidence',
     action: 'release.evidence.generated',
     target: `${bundle.environment}:${bundle.release.version}`,
     reason: 'recurring release evidence bundle',

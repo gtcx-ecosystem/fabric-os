@@ -45,10 +45,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gtcx-ecosystem/gtcx-infrastructure.git",
+    "url": "git+https://github.com/gtcx-ecosystem/fabric-os.git",
     "directory": "03-platform/tools/audit-signer"
   },
-  "homepage": "https://github.com/gtcx-ecosystem/gtcx-infrastructure/tree/main/03-platform/tools/audit-signer",
+  "homepage": "https://github.com/gtcx-ecosystem/fabric-os/tree/main/03-platform/tools/audit-signer",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {

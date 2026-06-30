@@ -1,4 +1,4 @@
-# Build from gtcx-infrastructure repo root:
+# Build from fabric-os repo root:
 #   docker build -f 03-platform/tools/compliance-gateway/Dockerfile -t compliance-gateway:local .
 FROM node:20-alpine AS build
 WORKDIR /repo

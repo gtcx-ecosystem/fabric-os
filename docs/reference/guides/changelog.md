@@ -8,7 +8,7 @@ tags: [['security', 'infrastructure', 'api', 'frontend', 'database']]
 review_cycle: monthly
 document_type: protocol
 role: frontier-infra-engineer
-agent_id: agent://gtcx-infrastructure/2026-05-27/session-backfill
+agent_id: agent://fabric-os/2026-05-27/session-backfill
 trust_score: 60
 autonomy_level: permissioned
 ---

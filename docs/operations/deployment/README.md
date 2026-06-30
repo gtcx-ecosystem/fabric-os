@@ -18,6 +18,7 @@ Release and environment narratives — link `deploy/` Terraform and [`deploy/`](
 Read first:
 
 - [`agent-deployment-ops-instructions-2026-06-30.md`](./agent-deployment-ops-instructions-2026-06-30.md)
+- [`agent-deployment-ops-shareable-brief-2026-06-30.md`](./agent-deployment-ops-shareable-brief-2026-06-30.md)
 - [`infra-ai-cost-strategy-2026-06-30.md`](./infra-ai-cost-strategy-2026-06-30.md)
 - [`github-billing-independent-deploy-handoff-2026-06-30.md`](./github-billing-independent-deploy-handoff-2026-06-30.md)
 
@@ -26,3 +27,7 @@ execution moves to AWS CodeBuild inside the VPC, with Argo CD handling
 Kubernetes delivery from inside EKS. Runtime defaults to AWS `af-south-1`; GCP
 is limited to the GTCX Intelligence / Bridge Phase 3 ML artifact bridge until
 the cloud-placement SoR changes.
+
+Retained names such as `gtcx-intelligence-sdk` are resource identifiers only
+(ECR/Kubernetes/Terraform/dashboard continuity), not repo ownership. The
+machine-readable rule is [`machine/spec/retained-resource-identifiers.json`](../../../machine/spec/retained-resource-identifiers.json).

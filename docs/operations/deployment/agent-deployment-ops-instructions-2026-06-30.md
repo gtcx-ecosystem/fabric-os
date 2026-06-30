@@ -220,6 +220,7 @@ migration.
 
 - `docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md`
 - `docs/operations/deployment/github-billing-independent-deploy-handoff-2026-06-30.md`
+- `docs/operations/deployment/agent-deployment-ops-shareable-brief-2026-06-30.md`
 - `docs/operations/runbooks/github-actions-cost-controls.md`
 - `docs/operations/runbooks/finops-as-a-service.md`
 - `docs/operations/platform-services/devops-as-a-service.md`

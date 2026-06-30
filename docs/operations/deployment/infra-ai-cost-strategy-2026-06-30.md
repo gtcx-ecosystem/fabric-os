@@ -132,8 +132,8 @@ Cost guardrails:
 
 GTCX Intelligence is treated as the Bridge intelligence runtime consumer for
 this strategy. Some local checkout paths and historical evidence still use
-`gtcx-os/platform/intelligence` or legacy `gtcx-intelligence`; those are path
-aliases, not strategy ownership.
+legacy aliases like `gtcx-os/platform/intelligence`; those are path aliases, not
+strategy ownership.
 
 Priority fix:
 

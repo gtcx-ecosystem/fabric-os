@@ -23,6 +23,12 @@ variable "eks_cluster_name" {
   type        = string
 }
 
+variable "eks_cluster_security_group_id" {
+  description = "EKS cluster security group ID. Allows the deploy executor to reach the private EKS API endpoint."
+  type        = string
+  default     = ""
+}
+
 variable "terraform_state_bucket_arn" {
   description = "Terraform state S3 bucket ARN used by this environment."
   type        = string

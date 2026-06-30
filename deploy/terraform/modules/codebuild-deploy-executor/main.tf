@@ -44,6 +44,18 @@ resource "aws_security_group" "codebuild" {
   })
 }
 
+resource "aws_security_group_rule" "codebuild_to_eks_api" {
+  count = var.eks_cluster_security_group_id != "" ? 1 : 0
+
+  type                     = "ingress"
+  from_port                = 443
+  to_port                  = 443
+  protocol                 = "tcp"
+  source_security_group_id = aws_security_group.codebuild.id
+  security_group_id        = var.eks_cluster_security_group_id
+  description              = "Allow ${local.name} to reach EKS cluster API endpoint"
+}
+
 resource "aws_cloudwatch_log_group" "deploy" {
   name              = "/aws/codebuild/${local.name}"
   retention_in_days = var.log_retention_days
@@ -88,6 +100,7 @@ resource "aws_iam_role_policy" "deploy" {
             "logs:CreateLogStream",
             "logs:PutLogEvents",
             "logs:DescribeLogStreams",
+            "logs:DescribeLogGroups",
           ]
           Resource = "${aws_cloudwatch_log_group.deploy.arn}:*"
         },
@@ -129,6 +142,33 @@ resource "aws_iam_role_policy" "deploy" {
             "eks:ListClusters",
           ]
           Resource = "arn:aws:eks:${var.region}:${data.aws_caller_identity.current.account_id}:cluster/${var.eks_cluster_name}"
+        },
+        {
+          Sid    = "AcmRead"
+          Effect = "Allow"
+          Action = [
+            "acm:DescribeCertificate",
+            "acm:ListCertificates",
+          ]
+          Resource = "arn:aws:acm:${var.region}:${data.aws_caller_identity.current.account_id}:certificate/*"
+        },
+        {
+          Sid    = "Wafv2Read"
+          Effect = "Allow"
+          Action = [
+            "wafv2:GetWebACL",
+            "wafv2:ListWebACLs",
+          ]
+          Resource = "arn:aws:wafv2:${var.region}:${data.aws_caller_identity.current.account_id}:regional/webacl/*/*"
+        },
+        {
+          Sid    = "IamOidcRead"
+          Effect = "Allow"
+          Action = [
+            "iam:GetOpenIDConnectProvider",
+            "iam:ListOpenIDConnectProviders",
+          ]
+          Resource = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/*"
         },
         {
           Sid    = "EcrAuth"

@@ -1,0 +1,589 @@
+{
+  "$schema": "gtcx://fabric-os/deployment-ops-contract-check/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-30T04:43:26.947Z",
+  "repo": "fabric-os",
+  "ok": true,
+  "gates": [
+    {
+      "id": "file:machine/spec/deployment-ops-contract.json",
+      "ok": true,
+      "detail": "machine/spec/deployment-ops-contract.json"
+    },
+    {
+      "id": "file:operations/deployment-profile.json",
+      "ok": true,
+      "detail": "operations/deployment-profile.json"
+    },
+    {
+      "id": "file:operations/fabric-contract.json",
+      "ok": true,
+      "detail": "operations/fabric-contract.json"
+    },
+    {
+      "id": "file:machine/spec/mlops-bridge-contract.json",
+      "ok": true,
+      "detail": "machine/spec/mlops-bridge-contract.json"
+    },
+    {
+      "id": "file:machine/spec/finops-as-a-service.json",
+      "ok": true,
+      "detail": "machine/spec/finops-as-a-service.json"
+    },
+    {
+      "id": "file:machine/spec/github-actions-cost-controls.json",
+      "ok": true,
+      "detail": "machine/spec/github-actions-cost-controls.json"
+    },
+    {
+      "id": "file:docs/operations/deployment/README.md",
+      "ok": true,
+      "detail": "docs/operations/deployment/README.md"
+    },
+    {
+      "id": "file:docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md",
+      "ok": true,
+      "detail": "docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md"
+    },
+    {
+      "id": "file:docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md",
+      "ok": true,
+      "detail": "docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md"
+    },
+    {
+      "id": "file:docs/operations/deployment/github-billing-independent-deploy-handoff-2026-06-30.md",
+      "ok": true,
+      "detail": "docs/operations/deployment/github-billing-independent-deploy-handoff-2026-06-30.md"
+    },
+    {
+      "id": "file:docs/operations/platform-services/devops-as-a-service.md",
+      "ok": true,
+      "detail": "docs/operations/platform-services/devops-as-a-service.md"
+    },
+    {
+      "id": "file:docs/operations/runbooks/finops-as-a-service.md",
+      "ok": true,
+      "detail": "docs/operations/runbooks/finops-as-a-service.md"
+    },
+    {
+      "id": "file:platform/scripts/cost/aws-cost-optimization-export.mjs",
+      "ok": true,
+      "detail": "platform/scripts/cost/aws-cost-optimization-export.mjs"
+    },
+    {
+      "id": "file:deploy/codebuild/README.md",
+      "ok": true,
+      "detail": "deploy/codebuild/README.md"
+    },
+    {
+      "id": "file:deploy/terraform/modules/codebuild-deploy-executor/main.tf",
+      "ok": true,
+      "detail": "deploy/terraform/modules/codebuild-deploy-executor/main.tf"
+    },
+    {
+      "id": "file:deploy/terraform/modules/codebuild-deploy-executor/variables.tf",
+      "ok": true,
+      "detail": "deploy/terraform/modules/codebuild-deploy-executor/variables.tf"
+    },
+    {
+      "id": "file:deploy/terraform/modules/codebuild-deploy-executor/outputs.tf",
+      "ok": true,
+      "detail": "deploy/terraform/modules/codebuild-deploy-executor/outputs.tf"
+    },
+    {
+      "id": "file:deploy/terraform/modules/codebuild-deploy-executor/codebuild-deploy-executor.tftest.hcl",
+      "ok": true,
+      "detail": "deploy/terraform/modules/codebuild-deploy-executor/codebuild-deploy-executor.tftest.hcl"
+    },
+    {
+      "id": "file:deploy/terraform/modules/argocd/main.tf",
+      "ok": true,
+      "detail": "deploy/terraform/modules/argocd/main.tf"
+    },
+    {
+      "id": "file:deploy/terraform/modules/argocd/variables.tf",
+      "ok": true,
+      "detail": "deploy/terraform/modules/argocd/variables.tf"
+    },
+    {
+      "id": "file:deploy/terraform/modules/argocd/outputs.tf",
+      "ok": true,
+      "detail": "deploy/terraform/modules/argocd/outputs.tf"
+    },
+    {
+      "id": "file:deploy/terraform/modules/argocd/argocd.tftest.hcl",
+      "ok": true,
+      "detail": "deploy/terraform/modules/argocd/argocd.tftest.hcl"
+    },
+    {
+      "id": "file:deploy/codebuild/deploy-buildspec.yml",
+      "ok": true,
+      "detail": "deploy/codebuild/deploy-buildspec.yml"
+    },
+    {
+      "id": "file:platform/scripts/codebuild-deploy-start.mjs",
+      "ok": true,
+      "detail": "platform/scripts/codebuild-deploy-start.mjs"
+    },
+    {
+      "id": "file:platform/scripts/codebuild-deploy-runner.mjs",
+      "ok": true,
+      "detail": "platform/scripts/codebuild-deploy-runner.mjs"
+    },
+    {
+      "id": "file:platform/scripts/tests/deployment-ops-cli.test.mjs",
+      "ok": true,
+      "detail": "platform/scripts/tests/deployment-ops-cli.test.mjs"
+    },
+    {
+      "id": "contract:status-current",
+      "ok": true,
+      "detail": "current"
+    },
+    {
+      "id": "contract:strategy-owners",
+      "ok": true,
+      "detail": "[\"fabric-os\",\"baseline-os\"]"
+    },
+    {
+      "id": "contract:github-source-only",
+      "ok": true,
+      "detail": "GitHub remains source control only. Production CI and deploy execution must not depend on GitHub Actions while the billing lock is unresolved."
+    },
+    {
+      "id": "contract:runtime-aws-region",
+      "ok": true,
+      "detail": "{\"primary\":\"AWS\",\"region\":\"af-south-1\",\"gcpScope\":\"GTCX Intelligence / Bridge Phase 3 ML artifact bridge only\"}"
+    },
+    {
+      "id": "contract:gcp-artifact-bridge-only",
+      "ok": true,
+      "detail": "GTCX Intelligence / Bridge Phase 3 ML artifact bridge only"
+    },
+    {
+      "id": "contract:ci-codebuild",
+      "ok": true,
+      "detail": "aws-codebuild"
+    },
+    {
+      "id": "contract:ci-codebuild-module",
+      "ok": true,
+      "detail": "deploy/terraform/modules/codebuild-deploy-executor"
+    },
+    {
+      "id": "contract:ci-env-wires",
+      "ok": true,
+      "detail": "[\"deploy/terraform/environments/staging/main.tf\",\"deploy/terraform/environments/production/main.tf\"]"
+    },
+    {
+      "id": "contract:orchestration",
+      "ok": true,
+      "detail": "[\"aws-codepipeline\",\"eventbridge-triggered-codebuild\"]"
+    },
+    {
+      "id": "contract:gha-not-critical",
+      "ok": true,
+      "detail": "not-production-critical-path"
+    },
+    {
+      "id": "contract:gha-forbidden-production",
+      "ok": true,
+      "detail": "[\"production-deploy-execution\",\"private-eks-kubectl-apply\",\"terraform-apply-production\"]"
+    },
+    {
+      "id": "contract:cd-argocd",
+      "ok": true,
+      "detail": "{\"kubernetesDelivery\":\"argocd-in-eks\",\"terraformModule\":\"deploy/terraform/modules/argocd\",\"stagingApplication\":\"fabric-staging-root\",\"initialSyncMode\":\"manual\",\"imagePolicy\":\"immutable-digests\",\"rollback\":\"prior-git-commit-or-prior-image-digest\",\"productionEksApi\":{\"publicAccess\":\"forbidden-as-ci-workaround\",\"requiredAccessPath\":\"in-vpc-executor-or-in-cluster-controller\"}}"
+    },
+    {
+      "id": "contract:cd-argocd-module",
+      "ok": true,
+      "detail": "deploy/terraform/modules/argocd"
+    },
+    {
+      "id": "contract:cd-staging-app",
+      "ok": true,
+      "detail": "fabric-staging-root"
+    },
+    {
+      "id": "contract:eks-public-forbidden",
+      "ok": true,
+      "detail": "{\"publicAccess\":\"forbidden-as-ci-workaround\",\"requiredAccessPath\":\"in-vpc-executor-or-in-cluster-controller\"}"
+    },
+    {
+      "id": "contract:ai-readiness-rule",
+      "ok": true,
+      "detail": "Do not claim AI cost-router readiness until the live pod can import baselineos/cost-router."
+    },
+    {
+      "id": "contract:agent-docs",
+      "ok": true,
+      "detail": "{\"primaryDoc\":\"docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md\",\"strategyDoc\":\"docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md\",\"handoffDoc\":\"docs/operations/deployment/github-billing-independent-deploy-handoff-2026-06-30.md\",\"requiredSessionCommands\":[\"pnpm operations:check\",\"pnpm agent:next-work\"],\"deploymentDocsCheck\":\"pnpm docs:operations:check\"}"
+    },
+    {
+      "id": "contract:required-session-commands",
+      "ok": true,
+      "detail": "[\"pnpm operations:check\",\"pnpm agent:next-work\"]"
+    },
+    {
+      "id": "contract:docs-check-command",
+      "ok": true,
+      "detail": "pnpm docs:operations:check"
+    },
+    {
+      "id": "profile:deploy-mode",
+      "ok": true,
+      "detail": "aws-codebuild-vpc-plus-argocd-eks"
+    },
+    {
+      "id": "profile:ci-executor",
+      "ok": true,
+      "detail": "aws-codebuild"
+    },
+    {
+      "id": "profile:ci-orchestrator",
+      "ok": true,
+      "detail": "[\"aws-codepipeline\",\"eventbridge-triggered-codebuild\"]"
+    },
+    {
+      "id": "profile:kubernetes-delivery",
+      "ok": true,
+      "detail": "argocd-in-eks"
+    },
+    {
+      "id": "profile:github-actions-role",
+      "ok": true,
+      "detail": "source-control-event-source-only-not-production-critical-path"
+    },
+    {
+      "id": "profile:eks-private-access",
+      "ok": true,
+      "detail": "private-api-via-in-vpc-executor-or-in-cluster-controller"
+    },
+    {
+      "id": "profile:contract-ref",
+      "ok": true,
+      "detail": "machine/spec/deployment-ops-contract.json"
+    },
+    {
+      "id": "profile:strategy-owners",
+      "ok": true,
+      "detail": "[\"fabric-os\",\"baseline-os\"]"
+    },
+    {
+      "id": "gha:contract-ref",
+      "ok": true,
+      "detail": "machine/spec/deployment-ops-contract.json"
+    },
+    {
+      "id": "gha:production-critical-path",
+      "ok": true,
+      "detail": "aws-codebuild-and-argocd"
+    },
+    {
+      "id": "gha:production-critical-path-disallowed",
+      "ok": true,
+      "detail": "false"
+    },
+    {
+      "id": "gha:approval-rule",
+      "ok": true,
+      "detail": "{\"default\":\"forbidden-on-github-actions-while-billing-blocked\",\"requiredExecutor\":\"aws-codebuild-vpc\",\"requiredDelivery\":\"argocd-in-eks\",\"rule\":\"GitHub Actions may be a source-control event source only; production deploy execution must run through AWS-owned execution until a superseding Class A strategy lands.\"}"
+    },
+    {
+      "id": "terraform:codebuild-project",
+      "ok": true,
+      "detail": "aws_codebuild_project.deploy"
+    },
+    {
+      "id": "terraform:codebuild-vpc-config",
+      "ok": true,
+      "detail": "vpc_config private subnets"
+    },
+    {
+      "id": "terraform:codebuild-eks-access",
+      "ok": true,
+      "detail": "EKS access entry"
+    },
+    {
+      "id": "terraform:codebuild-source-default",
+      "ok": true,
+      "detail": "NO_SOURCE default"
+    },
+    {
+      "id": "terraform:staging-wired",
+      "ok": true,
+      "detail": "staging"
+    },
+    {
+      "id": "terraform:production-wired",
+      "ok": true,
+      "detail": "production"
+    },
+    {
+      "id": "terraform:production-kms-admin",
+      "ok": true,
+      "detail": "KMS admin role"
+    },
+    {
+      "id": "terraform:codebuild-source-staging",
+      "ok": true,
+      "detail": "staging GitHub SCM source"
+    },
+    {
+      "id": "terraform:codebuild-source-production",
+      "ok": true,
+      "detail": "production GitHub SCM source"
+    },
+    {
+      "id": "terraform:codebuild-evidence-kms",
+      "ok": true,
+      "detail": "evidence KMS writes"
+    },
+    {
+      "id": "codebuild-start:script",
+      "ok": true,
+      "detail": "start-build wrapper"
+    },
+    {
+      "id": "codebuild-start:class-a-ref",
+      "ok": true,
+      "detail": "Class A guard"
+    },
+    {
+      "id": "codebuild-start:package-script",
+      "ok": true,
+      "detail": "node platform/scripts/codebuild-deploy-start.mjs"
+    },
+    {
+      "id": "codebuild-runner:script",
+      "ok": true,
+      "detail": "runner evidence"
+    },
+    {
+      "id": "codebuild-runner:class-a-ref",
+      "ok": true,
+      "detail": "runner Class A guard"
+    },
+    {
+      "id": "codebuild-runner:package-script",
+      "ok": true,
+      "detail": "node platform/scripts/codebuild-deploy-runner.mjs"
+    },
+    {
+      "id": "codebuild-buildspec:runner",
+      "ok": true,
+      "detail": "buildspec runner"
+    },
+    {
+      "id": "codebuild-buildspec:evidence-artifact",
+      "ok": true,
+      "detail": "buildspec evidence artifact"
+    },
+    {
+      "id": "codebuild-readme:github-not-executor",
+      "ok": true,
+      "detail": "CodeBuild README"
+    },
+    {
+      "id": "codebuild-readme:class-a",
+      "ok": true,
+      "detail": "CodeBuild README Class A"
+    },
+    {
+      "id": "deployment-ops:test-script",
+      "ok": true,
+      "detail": "node --test platform/scripts/tests/deployment-ops-cli.test.mjs"
+    },
+    {
+      "id": "deployment-ops:test-coverage",
+      "ok": true,
+      "detail": "CLI guardrail tests"
+    },
+    {
+      "id": "deployment-ops:fabric-check-runs-test",
+      "ok": true,
+      "detail": "pnpm fabric:ops-contracts:check && pnpm deployment:ops:contract:check && pnpm deployment:ops:test && pnpm operations:consumption:check && pnpm legalops:check && pnpm maturity-lane:check && pnpm central-assurance:check && pnpm ops-prd-routing:check && pnpm fleet-ops-assurance:check && pnpm --dir ../bridge-os ecosystem:ops-authority:check"
+    },
+    {
+      "id": "deployment-ops:fabric-strict-runs-test",
+      "ok": true,
+      "detail": "pnpm fabric:ops-contracts:check && pnpm deployment:ops:contract:check && pnpm deployment:ops:test && pnpm fabric:ops-lanes-11pr:check && pnpm legalops:check && pnpm --dir ../bridge-os ecosystem:fabric:check && pnpm --dir ../bridge-os ecosystem:ops-lanes-11pr:check"
+    },
+    {
+      "id": "terraform:argocd-helm-release",
+      "ok": true,
+      "detail": "helm_release.argocd"
+    },
+    {
+      "id": "terraform:argocd-manual-staging-app",
+      "ok": true,
+      "detail": "manual sync application"
+    },
+    {
+      "id": "terraform:argocd-staging-wired",
+      "ok": true,
+      "detail": "staging argocd module"
+    },
+    {
+      "id": "finops:contract-ref",
+      "ok": true,
+      "detail": "machine/spec/deployment-ops-contract.json"
+    },
+    {
+      "id": "finops:github-actions-role",
+      "ok": true,
+      "detail": "source-control-event-source-only-not-production-critical-path"
+    },
+    {
+      "id": "finops:codebuild-on-demand",
+      "ok": true,
+      "detail": "aws-codebuild-on-demand"
+    },
+    {
+      "id": "finops:aws-optimization-harness",
+      "ok": true,
+      "detail": "pnpm finops:aws-optimization:export:write"
+    },
+    {
+      "id": "finops:aws-optimization-script",
+      "ok": true,
+      "detail": "AWS optimization export"
+    },
+    {
+      "id": "mlops:deployment-contract-ref",
+      "ok": true,
+      "detail": "[\"deploy/terraform/modules/gcp-ml-bridge/\",\"platform/tools/eval-pipeline/\",\"platform/tools/anomaly-detector/\",\"machine/spec/mlops-bridge-contract.json\",\"machine/spec/deployment-ops-contract.json\",\"docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md\",\"audit/evidence/mlops-cost-router-staging-probe-latest.json\"]"
+    },
+    {
+      "id": "mlops:github-not-critical",
+      "ok": true,
+      "detail": "AWS CodeBuild / deployment-ops-contract; GitHub Actions is not production critical path"
+    },
+    {
+      "id": "mlops:readiness-rule",
+      "ok": true,
+      "detail": "Do not claim AI cost-router readiness until the live pod can import baselineos/cost-router."
+    },
+    {
+      "id": "mlops:forbidden-owners",
+      "ok": true,
+      "detail": "[\"bridge-os\",\"gtcx-os\",\"gtcx-intelligence\",\"gtcx-os/platform/intelligence\"]"
+    },
+    {
+      "id": "fabric-contract:deployment-domain",
+      "ok": true,
+      "detail": "deployment"
+    },
+    {
+      "id": "fabric-contract:central-ref",
+      "ok": true,
+      "detail": "fabric-os/docs/operations/deployment/README.md"
+    },
+    {
+      "id": "fabric-contract:local-refs",
+      "ok": true,
+      "detail": "[\"operations/deployment-profile.json\",\"machine/spec/deployment-ops-contract.json\",\"docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md\",\"docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md\",\"docs/operations/deployment/github-billing-independent-deploy-handoff-2026-06-30.md\",\"config/ops.manifest.json\"]"
+    },
+    {
+      "id": "doc:deployment-readme:codebuild",
+      "ok": true,
+      "detail": "deployment-readme"
+    },
+    {
+      "id": "doc:deployment-readme:argocd",
+      "ok": true,
+      "detail": "deployment-readme"
+    },
+    {
+      "id": "doc:deployment-readme:github-not-critical",
+      "ok": true,
+      "detail": "deployment-readme"
+    },
+    {
+      "id": "doc:agent-instructions:codebuild",
+      "ok": true,
+      "detail": "agent-instructions"
+    },
+    {
+      "id": "doc:agent-instructions:argocd",
+      "ok": true,
+      "detail": "agent-instructions"
+    },
+    {
+      "id": "doc:agent-instructions:github-not-critical",
+      "ok": true,
+      "detail": "agent-instructions"
+    },
+    {
+      "id": "doc:strategy-doc:codebuild",
+      "ok": true,
+      "detail": "strategy-doc"
+    },
+    {
+      "id": "doc:strategy-doc:argocd",
+      "ok": true,
+      "detail": "strategy-doc"
+    },
+    {
+      "id": "doc:strategy-doc:github-not-critical",
+      "ok": true,
+      "detail": "strategy-doc"
+    },
+    {
+      "id": "doc:handoff-doc:codebuild",
+      "ok": true,
+      "detail": "handoff-doc"
+    },
+    {
+      "id": "doc:handoff-doc:argocd",
+      "ok": true,
+      "detail": "handoff-doc"
+    },
+    {
+      "id": "doc:handoff-doc:github-not-critical",
+      "ok": true,
+      "detail": "handoff-doc"
+    },
+    {
+      "id": "doc:devops-doc:codebuild",
+      "ok": true,
+      "detail": "devops-doc"
+    },
+    {
+      "id": "doc:devops-doc:argocd",
+      "ok": true,
+      "detail": "devops-doc"
+    },
+    {
+      "id": "doc:devops-doc:github-not-critical",
+      "ok": true,
+      "detail": "devops-doc"
+    },
+    {
+      "id": "doc:finops-doc:codebuild",
+      "ok": true,
+      "detail": "finops-doc"
+    },
+    {
+      "id": "doc:finops-doc:argocd",
+      "ok": true,
+      "detail": "finops-doc"
+    },
+    {
+      "id": "doc:finops-doc:github-not-critical",
+      "ok": true,
+      "detail": "finops-doc"
+    },
+    {
+      "id": "agent-instructions:no-public-eks-reopen",
+      "ok": true,
+      "detail": "public EKS guard"
+    },
+    {
+      "id": "agent-instructions:no-ai-readiness-overclaim",
+      "ok": true,
+      "detail": "AI readiness guard"
+    }
+  ]
+}

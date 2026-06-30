@@ -36,6 +36,8 @@ describe('deployment ops CLI guardrails', () => {
     assert.equal(witness.githubActionsCriticalPath, false);
     assert.equal(witness.environment, 'staging');
     assert.equal(witness.mode, 'plan');
+    assert.ok(witness.commands.some((command) => command.step === 'codebuild-module-init'));
+    assert.ok(witness.commands.some((command) => command.step === 'codebuild-module-test'));
     assert.ok(witness.commands.some((command) => command.step === 'terraform-plan'));
     assert.ok(witness.commands.some((command) => command.step === 'terraform-plan-show'));
     assert.ok(witness.commands.some((command) => command.step === 'terraform-plan-summary'));

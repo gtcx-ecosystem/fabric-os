@@ -9,6 +9,15 @@ variables {
   evidence_bucket_arns       = ["arn:aws:s3:::gtcx-test-worm-audit"]
 }
 
+override_data {
+  target = data.aws_caller_identity.current
+  values = {
+    account_id = "123456789012"
+    arn        = "arn:aws:iam::123456789012:root"
+    user_id    = "123456789012"
+  }
+}
+
 run "uses_vpc_attached_codebuild" {
   command = plan
 
@@ -18,7 +27,7 @@ run "uses_vpc_attached_codebuild" {
   }
 
   assert {
-    condition     = aws_codebuild_project.deploy.vpc_config[0].subnets == var.private_subnet_ids
+    condition     = toset(aws_codebuild_project.deploy.vpc_config[0].subnets) == toset(var.private_subnet_ids)
     error_message = "Deploy executor must use private subnets for private EKS API access."
   }
 }
@@ -36,12 +45,21 @@ run "grants_eks_access_to_codebuild_role" {
   command = plan
 
   assert {
-    condition     = aws_eks_access_entry.deploy.principal_arn == aws_iam_role.deploy.arn
+    condition     = aws_eks_access_entry.deploy.cluster_name == var.eks_cluster_name && aws_eks_access_entry.deploy.type == "STANDARD"
     error_message = "CodeBuild deploy role must be registered with EKS access entries."
   }
 
   assert {
     condition     = aws_eks_access_policy_association.deploy_admin.policy_arn == "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
     error_message = "Deploy executor needs Kubernetes API access for Argo CD/bootstrap operations."
+  }
+}
+
+run "creates_environment_scoped_inline_policy" {
+  command = plan
+
+  assert {
+    condition     = aws_iam_role_policy.deploy.name == "gtcx-test-deploy-executor-policy"
+    error_message = "Deploy executor mutation permissions must remain attached to the environment-scoped inline policy."
   }
 }

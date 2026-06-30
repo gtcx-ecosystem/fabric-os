@@ -207,6 +207,69 @@ resource "aws_iam_role_policy" "deploy" {
           ]
         },
         {
+          Sid    = "IamRoleManageGtcx"
+          Effect = "Allow"
+          Action = [
+            "iam:DeleteRolePolicy",
+            "iam:PutRolePolicy",
+            "iam:TagRole",
+            "iam:UntagRole",
+          ]
+          Resource = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/gtcx-${var.environment}-*"
+        },
+        {
+          Sid    = "IamPolicyManageGtcx"
+          Effect = "Allow"
+          Action = [
+            "iam:CreatePolicyVersion",
+            "iam:DeletePolicyVersion",
+            "iam:SetDefaultPolicyVersion",
+            "iam:TagPolicy",
+            "iam:UntagPolicy",
+          ]
+          Resource = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/gtcx-${var.environment}-*"
+        },
+        {
+          Sid    = "Ec2SecurityGroupManage"
+          Effect = "Allow"
+          Action = [
+            "ec2:AuthorizeSecurityGroupEgress",
+            "ec2:AuthorizeSecurityGroupIngress",
+            "ec2:RevokeSecurityGroupEgress",
+            "ec2:RevokeSecurityGroupIngress",
+          ]
+          Resource = "arn:aws:ec2:${var.region}:${data.aws_caller_identity.current.account_id}:security-group/*"
+        },
+        {
+          Sid    = "EksNodeGroupManage"
+          Effect = "Allow"
+          Action = [
+            "eks:UpdateNodegroupConfig",
+          ]
+          Resource = "arn:aws:eks:${var.region}:${data.aws_caller_identity.current.account_id}:nodegroup/${var.eks_cluster_name}/*/*"
+        },
+        {
+          Sid    = "RdsParameterGroupManage"
+          Effect = "Allow"
+          Action = [
+            "rds:AddTagsToResource",
+            "rds:ModifyDBParameterGroup",
+            "rds:RemoveTagsFromResource",
+          ]
+          Resource = "arn:aws:rds:${var.region}:${data.aws_caller_identity.current.account_id}:pg:gtcx-${var.environment}-*"
+        },
+        {
+          Sid    = "LambdaCodeManage"
+          Effect = "Allow"
+          Action = [
+            "lambda:TagResource",
+            "lambda:UntagResource",
+            "lambda:UpdateFunctionCode",
+            "lambda:UpdateFunctionConfiguration",
+          ]
+          Resource = "arn:aws:lambda:${var.region}:${data.aws_caller_identity.current.account_id}:function:gtcx-${var.environment}-*"
+        },
+        {
           Sid    = "RdsRead"
           Effect = "Allow"
           Action = [

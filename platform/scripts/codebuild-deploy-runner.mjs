@@ -161,6 +161,16 @@ function buildCommands({ environment, mode, region, clusterName, appName, planPa
     add(commands, 'rotation-lambda-build', 'bash', [
       'deploy/terraform/modules/secrets/lambda/build.sh',
     ]);
+    add(commands, 'codebuild-module-init', terraformCommand, [
+      '-chdir=deploy/terraform/modules/codebuild-deploy-executor',
+      'init',
+      '-backend=false',
+      '-input=false',
+    ]);
+    add(commands, 'codebuild-module-test', terraformCommand, [
+      '-chdir=deploy/terraform/modules/codebuild-deploy-executor',
+      'test',
+    ]);
     add(commands, 'terraform-init', terraformCommand, ['-chdir=' + envDir, 'init', '-input=false']);
     add(commands, 'terraform-plan', terraformCommand, [
       '-chdir=' + envDir,

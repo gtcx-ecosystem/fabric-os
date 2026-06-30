@@ -51,7 +51,7 @@ const requiredFiles = [
   'deploy/terraform/modules/codebuild-deploy-executor/main.tf',
   'deploy/terraform/modules/codebuild-deploy-executor/variables.tf',
   'deploy/terraform/modules/codebuild-deploy-executor/outputs.tf',
-  'deploy/terraform/modules/codebuild-deploy-executor/codebuild-deploy-executor.tftest.hcl',
+  'deploy/terraform/modules/codebuild-deploy-executor/tests/codebuild-deploy-executor.tftest.hcl',
   'deploy/terraform/modules/argocd/main.tf',
   'deploy/terraform/modules/argocd/variables.tf',
   'deploy/terraform/modules/argocd/outputs.tf',
@@ -150,6 +150,18 @@ gate('terraform:production-kms-admin', /admin_role_arns\s*=\s*\[module\.ci\.depl
 gate('terraform:codebuild-source-staging', /source_type\s*=\s*"GITHUB"/.test(stagingTerraform) && /deploy\/codebuild\/deploy-buildspec\.yml/.test(stagingTerraform), 'staging GitHub SCM source');
 gate('terraform:codebuild-source-production', /source_type\s*=\s*"GITHUB"/.test(productionTerraform) && /deploy\/codebuild\/deploy-buildspec\.yml/.test(productionTerraform), 'production GitHub SCM source');
 gate('terraform:codebuild-evidence-kms', /evidence_kms_key_arns/.test(codebuildModule) && /kms:GenerateDataKey/.test(codebuildModule), 'evidence KMS writes');
+gate(
+  'terraform:codebuild-scoped-mutations',
+  [
+    'iam:PutRolePolicy',
+    'iam:CreatePolicyVersion',
+    'ec2:RevokeSecurityGroupIngress',
+    'eks:UpdateNodegroupConfig',
+    'rds:ModifyDBParameterGroup',
+    'lambda:UpdateFunctionCode',
+  ].every((action) => codebuildModule.includes(`"${action}"`)),
+  'Terraform mutation actions'
+);
 gate('codebuild-start:script', /codebuild[\s\S]*start-build/.test(codebuildStartScript) && /--execute/.test(codebuildStartScript), 'start-build wrapper');
 gate('codebuild-start:class-a-ref', /Class A reference required for terraform-apply and production argocd-sync/.test(codebuildStartScript), 'Class A guard');
 gate('codebuild-start:package-script', packageJson.scripts?.['deployment:codebuild:start'] === 'node platform/scripts/codebuild-deploy-start.mjs', packageJson.scripts?.['deployment:codebuild:start']);
@@ -159,11 +171,13 @@ gate('codebuild-runner:plan-show', /terraform-plan-show[\s\S]*show[\s\S]*-no-col
 gate('codebuild-runner:plan-summary', /terraform-plan-summary[\s\S]*show[\s\S]*-json/.test(codebuildRunnerScript) && /resource_changes/.test(codebuildRunnerScript) && /changeCount/.test(codebuildRunnerScript) && /changedPaths/.test(codebuildRunnerScript), 'value-free resource action evidence');
 gate('codebuild-runner:plan-summary-buffer', /maxBuffer:\s*64\s*\*\s*1024\s*\*\s*1024/.test(codebuildRunnerScript), 'Terraform plan JSON buffer');
 gate('codebuild-runner:head-tail-truncation', /\[truncated middle\]/.test(codebuildRunnerScript) && /text\.slice\(-half\)/.test(codebuildRunnerScript), 'preserve command summary');
+gate('codebuild-runner:module-test', /codebuild-module-init/.test(codebuildRunnerScript) && /codebuild-module-test/.test(codebuildRunnerScript), 'CodeBuild module Terraform test');
 gate('codebuild-runner:package-script', packageJson.scripts?.['deployment:codebuild:runner'] === 'node platform/scripts/codebuild-deploy-runner.mjs', packageJson.scripts?.['deployment:codebuild:runner']);
 gate('codebuild-buildspec:runner', /codebuild-deploy-runner\.mjs --write --execute/.test(codebuildBuildspec), 'buildspec runner');
 gate('codebuild-buildspec:evidence-artifact', /audit\/evidence\/codebuild-deploy-runner-latest\.json/.test(codebuildBuildspec), 'buildspec evidence artifact');
 gate('codebuild-buildspec:node-runtime', /runtime-versions:\s*\n\s+nodejs:\s+22/.test(codebuildBuildspec), 'Node.js 22');
 gate('codebuild-buildspec:package-manager', new RegExp(`corepack prepare ${packageJson.packageManager.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} --activate`).test(codebuildBuildspec), packageJson.packageManager);
+gate('codebuild-buildspec:terraform-version', /terraform\/1\.15\.7\/terraform_1\.15\.7_linux_amd64\.zip/.test(codebuildBuildspec), 'Terraform 1.15.7');
 gate('codebuild-readme:github-not-executor', /GitHub Actions is not the production deploy\s+executor/i.test(codebuildReadme), 'CodeBuild README');
 gate('codebuild-readme:class-a', /--class-a-ref=<artifact>/.test(codebuildReadme), 'CodeBuild README Class A');
 gate(

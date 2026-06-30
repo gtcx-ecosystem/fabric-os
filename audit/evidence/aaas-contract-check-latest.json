@@ -1,12 +1,12 @@
 {
   "schema": "gtcx://fabric-os/aaas-contract-check/v1",
   "provider": "fabric-os",
-  "checkedAt": "2026-06-30T18:31:17.357Z",
+  "checkedAt": "2026-06-30T18:36:15.333Z",
   "contractSor": "machine/spec/aaas-audit-contract.json",
   "repoCount": 20,
-  "conformant": 16,
-  "nonConformant": 4,
-  "score100": 98,
+  "conformant": 20,
+  "nonConformant": 0,
+  "score100": 100,
   "results": [
     {
       "repo": "fabric-os",
@@ -42,12 +42,12 @@
     {
       "repo": "canon-os",
       "profile": "hub",
-      "ok": false,
-      "score100": 91,
+      "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
-      "failedAudits": ["aaas-honesty-gate"],
+      "failedAudits": [],
       "provisioningGaps": [],
       "staleWitnesses": 0,
       "legacyStale": 70
@@ -55,12 +55,12 @@
     {
       "repo": "baseline-os",
       "profile": "hub",
-      "ok": false,
-      "score100": 91,
+      "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
-      "failedAudits": ["aaas-honesty-gate"],
+      "failedAudits": [],
       "provisioningGaps": [],
       "staleWitnesses": 0,
       "legacyStale": 89
@@ -176,12 +176,12 @@
     {
       "repo": "griot-ai",
       "profile": "product",
-      "ok": false,
-      "score100": 91,
+      "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
-      "failedAudits": ["aaas-honesty-gate"],
+      "failedAudits": [],
       "provisioningGaps": [],
       "staleWitnesses": 0,
       "legacyStale": 36
@@ -279,12 +279,12 @@
     {
       "repo": "inspection-os",
       "profile": "product",
-      "ok": false,
-      "score100": 91,
+      "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
-      "failedAudits": ["aaas-honesty-gate"],
+      "failedAudits": [],
       "provisioningGaps": [],
       "staleWitnesses": 0,
       "legacyStale": 7
@@ -344,5 +344,5 @@
       "legacyStale": 77
     }
   ],
-  "ok": false
+  "ok": true
 }

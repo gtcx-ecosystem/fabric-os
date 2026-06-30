@@ -1,0 +1,95 @@
+{
+  "$schema": "gtcx://fabric-os/aws-cost-optimization-export/v1",
+  "repo": "fabric-os",
+  "generatedAt": "2026-06-30T04:43:26.929Z",
+  "dryRun": true,
+  "ok": true,
+  "region": "af-south-1",
+  "hubRegion": "us-east-1",
+  "deploymentOpsContract": "machine/spec/deployment-ops-contract.json",
+  "finopsContract": "machine/spec/finops-as-a-service.json",
+  "commands": [
+    {
+      "id": "cost-optimization-hub-recommendations",
+      "purpose": "Fleet-level savings recommendations across supported AWS services.",
+      "command": [
+        "aws",
+        "cost-optimization-hub",
+        "list-recommendations",
+        "--region",
+        "us-east-1",
+        "--max-results",
+        "100"
+      ],
+      "skipped": true,
+      "status": null,
+      "stdoutJson": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "compute-optimizer-ec2",
+      "purpose": "EC2 right-sizing recommendations for workload compute.",
+      "command": [
+        "aws",
+        "compute-optimizer",
+        "get-ec2-instance-recommendations",
+        "--region",
+        "af-south-1"
+      ],
+      "skipped": true,
+      "status": null,
+      "stdoutJson": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "compute-optimizer-asg",
+      "purpose": "Auto Scaling group right-sizing recommendations for node groups.",
+      "command": [
+        "aws",
+        "compute-optimizer",
+        "get-auto-scaling-group-recommendations",
+        "--region",
+        "af-south-1"
+      ],
+      "skipped": true,
+      "status": null,
+      "stdoutJson": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "compute-optimizer-ebs",
+      "purpose": "EBS volume right-sizing recommendations.",
+      "command": [
+        "aws",
+        "compute-optimizer",
+        "get-ebs-volume-recommendations",
+        "--region",
+        "af-south-1"
+      ],
+      "skipped": true,
+      "status": null,
+      "stdoutJson": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "compute-optimizer-lambda",
+      "purpose": "Lambda memory and architecture recommendations.",
+      "command": [
+        "aws",
+        "compute-optimizer",
+        "get-lambda-function-recommendations",
+        "--region",
+        "af-south-1"
+      ],
+      "skipped": true,
+      "status": null,
+      "stdoutJson": null,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

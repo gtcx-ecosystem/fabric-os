@@ -1,0 +1,66 @@
+{
+  "$schema": "gtcx://fabric-os/codebuild-deploy-start/v1",
+  "repo": "fabric-os",
+  "generatedAt": "2026-06-30T04:33:07.848Z",
+  "dryRun": true,
+  "authorityClass": "R",
+  "contract": "machine/spec/deployment-ops-contract.json",
+  "mode": "plan",
+  "environment": "staging",
+  "githubActionsCriticalPath": false,
+  "projectName": "gtcx-staging-deploy-executor",
+  "region": "af-south-1",
+  "payload": {
+    "projectName": "gtcx-staging-deploy-executor",
+    "region": "af-south-1",
+    "environmentVariablesOverride": [
+      {
+        "name": "DEPLOY_MODE",
+        "value": "plan",
+        "type": "PLAINTEXT"
+      },
+      {
+        "name": "DEPLOY_ENVIRONMENT",
+        "value": "staging",
+        "type": "PLAINTEXT"
+      },
+      {
+        "name": "DEPLOYMENT_OPS_CONTRACT",
+        "value": "machine/spec/deployment-ops-contract.json",
+        "type": "PLAINTEXT"
+      },
+      {
+        "name": "GITHUB_ACTIONS_CRITICAL_PATH",
+        "value": "false",
+        "type": "PLAINTEXT"
+      },
+      {
+        "name": "CLASS_A_REF",
+        "value": "",
+        "type": "PLAINTEXT"
+      },
+      {
+        "name": "GIT_COMMIT",
+        "value": "",
+        "type": "PLAINTEXT"
+      },
+      {
+        "name": "IMAGE_DIGEST",
+        "value": "",
+        "type": "PLAINTEXT"
+      }
+    ]
+  },
+  "command": [
+    "aws",
+    "codebuild",
+    "start-build",
+    "--region",
+    "af-south-1",
+    "--project-name",
+    "gtcx-staging-deploy-executor",
+    "--environment-variables-override",
+    "[{\"name\":\"DEPLOY_MODE\",\"value\":\"plan\",\"type\":\"PLAINTEXT\"},{\"name\":\"DEPLOY_ENVIRONMENT\",\"value\":\"staging\",\"type\":\"PLAINTEXT\"},{\"name\":\"DEPLOYMENT_OPS_CONTRACT\",\"value\":\"machine/spec/deployment-ops-contract.json\",\"type\":\"PLAINTEXT\"},{\"name\":\"GITHUB_ACTIONS_CRITICAL_PATH\",\"value\":\"false\",\"type\":\"PLAINTEXT\"},{\"name\":\"CLASS_A_REF\",\"value\":\"\",\"type\":\"PLAINTEXT\"},{\"name\":\"GIT_COMMIT\",\"value\":\"\",\"type\":\"PLAINTEXT\"},{\"name\":\"IMAGE_DIGEST\",\"value\":\"\",\"type\":\"PLAINTEXT\"}]"
+  ],
+  "result": null
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "gtcx://fabric-os/codebuild-deploy-runner/v1",
+  "repo": "fabric-os",
+  "generatedAt": "2026-06-30T04:32:57.517Z",
+  "dryRun": true,
+  "ok": true,
+  "authorityClass": "R",
+  "classARef": "",
+  "contract": "machine/spec/deployment-ops-contract.json",
+  "environment": "staging",
+  "mode": "plan",
+  "region": "af-south-1",
+  "clusterName": "gtcx-staging",
+  "appName": "fabric-staging-root",
+  "githubActionsCriticalPath": false,
+  "commands": [
+    {
+      "step": "operations-check",
+      "command": ["pnpm", "operations:check"],
+      "skipped": true,
+      "status": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "step": "github-actions-cost-controls",
+      "command": ["pnpm", "gha:cost-controls:check"],
+      "skipped": true,
+      "status": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "step": "deployment-contract",
+      "command": ["pnpm", "deployment:ops:contract:check"],
+      "skipped": true,
+      "status": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "step": "terraform-init",
+      "command": [
+        "terraform",
+        "-chdir=deploy/terraform/environments/staging",
+        "init",
+        "-input=false"
+      ],
+      "skipped": true,
+      "status": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "step": "terraform-plan",
+      "command": [
+        "terraform",
+        "-chdir=deploy/terraform/environments/staging",
+        "plan",
+        "-input=false",
+        "-out=tfplan"
+      ],
+      "skipped": true,
+      "status": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "step": "eks-kubeconfig",
+      "command": [
+        "aws",
+        "eks",
+        "update-kubeconfig",
+        "--region",
+        "af-south-1",
+        "--name",
+        "gtcx-staging",
+        "--alias",
+        "gtcx-staging"
+      ],
+      "skipped": true,
+      "status": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "step": "kubectl-auth-can-i",
+      "command": ["kubectl", "auth", "can-i", "get", "pods", "--all-namespaces"],
+      "skipped": true,
+      "status": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "step": "argocd-application-get",
+      "command": [
+        "kubectl",
+        "-n",
+        "argocd",
+        "get",
+        "application/fabric-staging-root",
+        "-o",
+        "json"
+      ],
+      "skipped": true,
+      "status": null,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

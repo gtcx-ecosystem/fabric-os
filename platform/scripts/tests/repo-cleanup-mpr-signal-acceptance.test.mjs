@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const SCRIPTS = join(dirname(fileURLToPath(import.meta.url)), '..');
 const REPO = join(SCRIPTS, '../..');
 
-describe('repo cleanup MPR/SIGNAL acceptance CLI', () => {
+describe('repository assurance acceptance CLI', () => {
   it('emits the required acceptance witness shape in JSON mode', () => {
     const res = spawnSync(process.execPath, [
       join(SCRIPTS, 'repo-cleanup-mpr-signal-acceptance.mjs'),

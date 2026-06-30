@@ -9,7 +9,7 @@ No cross-repo dependencies detected in package.json or docs.
 ## Hard Dependencies (Blocking)
 | Needs | From Repo | Status | ETA | Blocking Epic |
 |-------|-----------|--------|-----|---------------|
-| | | | | |
+| `NPM_TOKEN` for npm user `gtcx-protocol` | ledger-ui / fabric-os infra | blocked — secret not provisioned | pending operator | S26-04 |
 
 ## Soft Dependencies (Nice to have)
 | Needs | From Repo | Status | ETA |
@@ -19,5 +19,4 @@ No cross-repo dependencies detected in package.json or docs.
 ## Downstream Consumers
 | Repo | What They Need | Status |
 |------|---------------|--------|
-| | | |
-
+| ledger-ui | `NPM_TOKEN` from fabric-os secret store | blocked |

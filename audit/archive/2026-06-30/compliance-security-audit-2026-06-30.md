@@ -1,6 +1,6 @@
 # Global compliance, security & trust — fabric-os (2026-06-30)
 
-**Score:** 75/100 (raw 100) · **Status:** rubric-driven
+**Score:** 100/100 (raw 100) · **Status:** rubric-driven
 
 ## Metrics (0–100 rubric categories)
 
@@ -16,12 +16,12 @@
 | ----------------------------- | ------ | -------- | ----------- |
 | security-scan-clean-or-waived | PASS   | P0       | 59          |
 | secrets-no-leak               | PASS   | P0       | 50          |
-| trust-evidence-indexed        | FAIL   | P1       | 75          |
+| trust-evidence-indexed        | PASS   | P1       | 75          |
 
 ## Caps fired
 
-- **gate-trust-evidence-indexed** → ceiling 75 (trust-evidence-indexed)
+- none
 
 ## Gaps
 
-- assuranceWorkspace
+- none

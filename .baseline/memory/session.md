@@ -50,13 +50,13 @@ Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot
 - `griot:prod:verify:write` passes (HTTP/2 200, ACM ISSUED).
 - Related commits: `fabric-os` `d5a6f4f0` and its follow-up revert/closure commit.
 
-## Session bootstrap (2026-06-30 10:21:03 UTC)
+## Session bootstrap (2026-06-30 17:30:24 UTC)
 
 - **Command:** `agent start` (baseline-os repo-session-core)
 - **Repo:** fabric-os
-- **Next work:** unknown
+- **Next work:** COMPOSITE-RESTORE-100 — Restore composite ≥100 (current 90) — SECAS-S4-supply-chain
 - **Blocked:** no
-- **Git:** 127 changed path(s)
+- **Git:** 70 changed path(s)
 
 
 ## Session: baseline start — 2026-06-30 07:04 UTC

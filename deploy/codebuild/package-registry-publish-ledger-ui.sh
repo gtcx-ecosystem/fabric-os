@@ -39,6 +39,52 @@ packages=(
   "platform/packages/blocks"
 )
 
+node <<'NODE'
+const { readFileSync, writeFileSync } = require('node:fs');
+const { join } = require('node:path');
+
+const packages = [
+  'platform/packages/utils',
+  'platform/packages/tokens',
+  'platform/packages/ui',
+  'platform/packages/accessibility',
+  'platform/packages/i18n',
+  'platform/packages/ui-mobile',
+  'platform/packages/layouts-mobile',
+  'platform/packages/screens-mobile',
+  'platform/packages/layouts',
+  'platform/packages/desk-shell',
+  'platform/packages/app-foundation',
+  'platform/packages/governance-sdk',
+  'platform/packages/mcp-server',
+  'platform/packages/pages',
+  'platform/packages/blocks',
+];
+
+const versions = new Map();
+for (const packageDir of packages) {
+  const packagePath = join(packageDir, 'package.json');
+  const manifest = JSON.parse(readFileSync(packagePath, 'utf8'));
+  versions.set(manifest.name, manifest.version);
+}
+
+for (const packageDir of packages) {
+  const packagePath = join(packageDir, 'package.json');
+  const manifest = JSON.parse(readFileSync(packagePath, 'utf8'));
+  for (const section of ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies']) {
+    if (!manifest[section]) continue;
+    for (const [name, range] of Object.entries(manifest[section])) {
+      if (typeof range === 'string' && range.startsWith('workspace:')) {
+        const version = versions.get(name);
+        if (!version) throw new Error(`No workspace version found for ${name}`);
+        manifest[section][name] = range === 'workspace:*' ? version : `^${version}`;
+      }
+    }
+  }
+  writeFileSync(packagePath, `${JSON.stringify(manifest, null, 2)}\n`);
+}
+NODE
+
 published=()
 skipped=()
 
@@ -53,7 +99,7 @@ for package_dir in "${packages[@]}"; do
   fi
 
   echo "PUBLISH ${name}@${version}"
-  pnpm --dir "${package_dir}" publish --no-git-checks --access public --ignore-scripts
+  (cd "${package_dir}" && npm publish --access public --ignore-scripts)
   published+=("${name}@${version}")
 done
 

@@ -56,7 +56,7 @@ P0/P1 items are maintained in baseline-os. Query there before planning.
 | P1               | `baseline-os/workstream/index/blockers.md` § P1 Blockers |
 | Open inbound     | `baseline-os/workstream/index/inbound.md`                |
 
-**Examples (2026-06-01):** HSM authority keys / sovereign ceremony → `baseline-os/workstream/coordination/inbound/from-gtcx-protocols-2026-06-01.md`; SPEC §17 sign-off → `baseline-os/workstream/coordination/inbound/from-gtcx-intelligence-2026-05-26-critical-path.md`.
+**Examples (2026-06-01):** HSM authority keys / sovereign ceremony -> `baseline-os/workstream/coordination/inbound/from-gtcx-protocols-2026-06-01.md`; intelligence bridge sign-off -> `baseline-os/workstream/index/inbound.md`.
 
 ---
 
@@ -68,25 +68,25 @@ Charter-aligned **themes** for leadership ordering. Deliverables and acceptance 
 
 ZWCMP Charter tech commitments. Phase 2 does not start until these themes exit blocked state.
 
-| Theme                                         | Primary repo(s)                  | Canonical roadmap                                                 | Blocker / inbound index                                                      |
-| --------------------------------------------- | -------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| Protocol persistence (GCI, TradePass, GeoTag) | `gtcx-protocols`                 | `gtcx-protocols/01-01-01-docs/05-audit/agile/roadmap.md`          | `baseline-os/workstream/index/blockers.md`                                   |
-| ANISA real underwriting + GCI wire            | `gtcx-intelligence`              | `gtcx-intelligence/01-01-01-docs/05-audit/execution-roadmap.md`   | `baseline-os/workstream/index/inbound.md`                                    |
-| Field mobile (TradePass, GeoTag, offline)     | `gtcx-mobile`                    | `gtcx-mobile/01-01-01-docs/05-audit/execution-roadmap.md`         | `baseline-os/workstream/coordination/inbound/from-gtcx-mobile-2026-05-26.md` |
-| AML/KYC + ESG pipeline                        | `compliance-os`                  | `compliance-os/01-01-docs/roadmap/master-roadmap.md`              | `baseline-os/workstream/index/blockers.md`                                   |
-| Zimbabwe deployment fabric                    | `gtcx-infrastructure`            | `gtcx-infrastructure/01-01-01-docs/05-audit/execution-roadmap.md` | `baseline-os/workstream/index/blockers.md` § P0 #2                           |
-| Price oracle / verification premium           | `gtcx-markets`, `gtcx-platforms` | `gtcx-markets/01-01-docs/strategy/execution-roadmap.md`           | `baseline-os/workstream/index/UNIFIED.md` (Roadmap)                          |
+| Theme                                         | Primary repo(s)                  | Canonical roadmap                                                   | Blocker / inbound index                                                      |
+| --------------------------------------------- | -------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Protocol persistence (GCI, TradePass, GeoTag) | `gtcx-protocols`                 | `gtcx-protocols/01-01-01-docs/05-audit/agile/roadmap.md`            | `baseline-os/workstream/index/blockers.md`                                   |
+| ANISA real underwriting + GCI wire            | `bridge-os` intelligence bridge  | `bridge-os/docs/operations/product-management/execution-roadmap.md` | `baseline-os/workstream/index/inbound.md`                                    |
+| Field mobile (TradePass, GeoTag, offline)     | `gtcx-mobile`                    | `gtcx-mobile/01-01-01-docs/05-audit/execution-roadmap.md`           | `baseline-os/workstream/coordination/inbound/from-gtcx-mobile-2026-05-26.md` |
+| AML/KYC + ESG pipeline                        | `compliance-os`                  | `compliance-os/01-01-docs/roadmap/master-roadmap.md`                | `baseline-os/workstream/index/blockers.md`                                   |
+| Zimbabwe deployment fabric                    | `fabric-os`                      | `fabric-os/audit/product-management/execution-roadmap.md`           | `baseline-os/workstream/index/blockers.md` § P0 #2                           |
+| Price oracle / verification premium           | `gtcx-markets`, `gtcx-platforms` | `gtcx-markets/01-01-docs/strategy/execution-roadmap.md`             | `baseline-os/workstream/index/UNIFIED.md` (Roadmap)                          |
 
 ### Should Have — Phase 2 (Q3 2026)
 
 Commercial activation, DFI facility, SA buyer layer.
 
-| Theme                                 | Primary repo(s)       | Canonical roadmap                                                 | Notes                                                                 |
-| ------------------------------------- | --------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------- |
-| AGX / CRX / SGX first implementations | `gtcx-platforms`      | `gtcx-platforms/01-01-01-docs/05-audit/execution-roadmap.md`      | V1: [`execution-tracker.json`](../v1-shipping/execution-tracker.json) |
-| Platform SPV + event bus              | `gtcx-infrastructure` | `gtcx-infrastructure/01-01-01-docs/05-audit/execution-roadmap.md` | Cross-repo pub/sub                                                    |
-| PvP settlement consumer               | `gtcx-protocols`      | `gtcx-protocols/01-01-01-docs/05-audit/agile/roadmap.md`          | Depends persistence Phase 1                                           |
-| Terminal / Fifty-Four real data       | `terminal-os`         | `terminal-os/01-01-docs/strategy/execution-roadmap.md`            | OpenAPI contract with backends                                        |
+| Theme                                 | Primary repo(s)  | Canonical roadmap                                            | Notes                                                                 |
+| ------------------------------------- | ---------------- | ------------------------------------------------------------ | --------------------------------------------------------------------- |
+| AGX / CRX / SGX first implementations | `gtcx-platforms` | `gtcx-platforms/01-01-01-docs/05-audit/execution-roadmap.md` | V1: [`execution-tracker.json`](../v1-shipping/execution-tracker.json) |
+| Platform SPV + event bus              | `fabric-os`      | `fabric-os/audit/product-management/execution-roadmap.md`    | Cross-repo pub/sub                                                    |
+| PvP settlement consumer               | `gtcx-protocols` | `gtcx-protocols/01-01-01-docs/05-audit/agile/roadmap.md`     | Depends persistence Phase 1                                           |
+| Terminal / Fifty-Four real data       | `terminal-os`    | `terminal-os/01-01-docs/strategy/execution-roadmap.md`       | OpenAPI contract with backends                                        |
 
 ### Could Have — Phase 3 (Q4 2026)
 
@@ -109,32 +109,32 @@ Explicitly deprioritized — detail in archived charter deliverable list: [`arch
 
 Paths are **relative to ecosystem root** (`gtcx-ecosystem/`). Prefer the repo’s Protocol 22 register when present; otherwise use the repo’s published planning doc. Full discovery: `baseline-os/workstream/index/UNIFIED.md` § Roadmap.
 
-| Repo                  | Protocol 22 register                                              | Planning / roadmap (fallback)                                         |
-| --------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `baseline-os`         | `baseline-os/01-01-01-docs/05-audit/execution-roadmap.md`         | `baseline-os/01-01-docs/strategy/roadmap.md`                          |
-| `gtcx-core`           | `gtcx-core/01-01-01-docs/05-audit/execution-roadmap.md`           | `gtcx-core/01-01-01-docs/05-audit/agile/sprints/current.md`           |
-| `gtcx-protocols`      | `gtcx-protocols/01-01-01-docs/05-audit/execution-roadmap.md`      | `gtcx-protocols/01-01-01-docs/05-audit/agile/roadmap.md`              |
-| `gtcx-infrastructure` | `gtcx-infrastructure/01-01-01-docs/05-audit/execution-roadmap.md` | `gtcx-infrastructure/01-01-01-docs/05-audit/agile/sprints/current.md` |
-| `gtcx-intelligence`   | `gtcx-intelligence/01-01-01-docs/05-audit/execution-roadmap.md`   | `gtcx-intelligence/01-01-docs/roadmap/README.md`                      |
-| `gtcx-platforms`      | `gtcx-platforms/01-01-01-docs/05-audit/execution-roadmap.md`      | `gtcx-platforms/01-01-docs/roadmap/roadmap.md`                        |
-| `gtcx-agentic`        | `bridge-os/01-01-01-docs/05-audit/execution-roadmap.md`           | `bridge-os/01-01-01-docs/05-audit/agile/sprints/current.md`           |
-| `fabric-os`           | `fabric-os/01-01-docs/strategy/execution-roadmap.md`              | —                                                                     |
-| `compliance-os`       | `compliance-os/01-01-01-docs/05-audit/execution-roadmap.md`       | `compliance-os/01-01-docs/roadmap/master-roadmap.md`                  |
-| `sensei-os`           | `sensei-os/01-01-01-docs/05-audit/execution-roadmap.md`           | `sensei-os/01-01-docs/roadmap/roadmap-index.md`                       |
-| `terminal-os`         | `terminal-os/01-01-docs/strategy/execution-roadmap.md`            | `terminal-os/01-01-docs/roadmap/README.md`                            |
-| `terra-os`            | `terra-os/01-01-01-docs/05-audit/execution-roadmap.md`            | `terra-os/01-01-docs/roadmap/ROADMAP.md`                              |
-| `ledger-ui`           | `ledger-ui/01-01-docs/strategy/execution-roadmap.md`              | `ledger-ui/01-01-01-docs/05-audit/agile/sprints/current.md`           |
-| `gtcx-mobile`         | `gtcx-mobile/01-01-01-docs/05-audit/execution-roadmap.md`         | `gtcx-mobile/01-01-docs/roadmap/README.md`                            |
-| `nyota-ai`            | —                                                                 | `nyota-ai/01-01-docs/roadmap/uat-plan.md`                             |
-| `gtcx-hardware`       | —                                                                 | `gtcx-hardware/01-01-docs/roadmap/README.md`                          |
-| `gtcx-docs`           | `gtcx-01-01-docs/01-01-docs/strategy/execution-roadmap.md`        | `gtcx-01-01-docs/01-01-docs/roadmap/ROADMAP-2026-07-13.md`            |
-| `gtcx-operations`     | —                                                                 | `gtcx-operations/01-01-01-docs/05-audit/agile/sprints/current.md`     |
-| `exploration-os`      | `exploration-os/01-01-docs/strategy/execution-roadmap.md`         | `exploration-os/01-01-docs/roadmap/roadmap.md`                        |
-| `griot-ai`            | —                                                                 | `griot-ai/01-01-docs/roadmap/roadmap-s0-to-s3.md`                     |
-| `gtcx-markets`        | `gtcx-markets/01-01-docs/strategy/execution-roadmap.md`           | `gtcx-markets/01-01-01-docs/05-audit/agile/sprints/current.md`        |
-| `veritas-ai`          | —                                                                 | `veritas-ai/01-01-docs/roadmap/README.md`                             |
+| Repo              | Protocol 22 register                                                | Planning / roadmap (fallback)                                     |
+| ----------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `baseline-os`     | `baseline-os/01-01-01-docs/05-audit/execution-roadmap.md`           | `baseline-os/01-01-docs/strategy/roadmap.md`                      |
+| `gtcx-core`       | `gtcx-core/01-01-01-docs/05-audit/execution-roadmap.md`             | `gtcx-core/01-01-01-docs/05-audit/agile/sprints/current.md`       |
+| `gtcx-protocols`  | `gtcx-protocols/01-01-01-docs/05-audit/execution-roadmap.md`        | `gtcx-protocols/01-01-01-docs/05-audit/agile/roadmap.md`          |
+| `fabric-os`       | `fabric-os/audit/product-management/execution-roadmap.md`           | `fabric-os/workstream/sprints/current.md`                         |
+| `bridge-os`       | `bridge-os/docs/operations/product-management/execution-roadmap.md` | `bridge-os/machine/execution-roadmap.md`                          |
+| `gtcx-platforms`  | `gtcx-platforms/01-01-01-docs/05-audit/execution-roadmap.md`        | `gtcx-platforms/01-01-docs/roadmap/roadmap.md`                    |
+| `gtcx-agentic`    | `bridge-os/01-01-01-docs/05-audit/execution-roadmap.md`             | `bridge-os/01-01-01-docs/05-audit/agile/sprints/current.md`       |
+| `fabric-os`       | `fabric-os/01-01-docs/strategy/execution-roadmap.md`                | —                                                                 |
+| `compliance-os`   | `compliance-os/01-01-01-docs/05-audit/execution-roadmap.md`         | `compliance-os/01-01-docs/roadmap/master-roadmap.md`              |
+| `sensei-os`       | `sensei-os/01-01-01-docs/05-audit/execution-roadmap.md`             | `sensei-os/01-01-docs/roadmap/roadmap-index.md`                   |
+| `terminal-os`     | `terminal-os/01-01-docs/strategy/execution-roadmap.md`              | `terminal-os/01-01-docs/roadmap/README.md`                        |
+| `terra-os`        | `terra-os/01-01-01-docs/05-audit/execution-roadmap.md`              | `terra-os/01-01-docs/roadmap/ROADMAP.md`                          |
+| `ledger-ui`       | `ledger-ui/01-01-docs/strategy/execution-roadmap.md`                | `ledger-ui/01-01-01-docs/05-audit/agile/sprints/current.md`       |
+| `gtcx-mobile`     | `gtcx-mobile/01-01-01-docs/05-audit/execution-roadmap.md`           | `gtcx-mobile/01-01-docs/roadmap/README.md`                        |
+| `nyota-ai`        | —                                                                   | `nyota-ai/01-01-docs/roadmap/uat-plan.md`                         |
+| `gtcx-hardware`   | —                                                                   | `gtcx-hardware/01-01-docs/roadmap/README.md`                      |
+| `gtcx-docs`       | `gtcx-01-01-docs/01-01-docs/strategy/execution-roadmap.md`          | `gtcx-01-01-docs/01-01-docs/roadmap/ROADMAP-2026-07-13.md`        |
+| `gtcx-operations` | —                                                                   | `gtcx-operations/01-01-01-docs/05-audit/agile/sprints/current.md` |
+| `exploration-os`  | `exploration-os/01-01-docs/strategy/execution-roadmap.md`           | `exploration-os/01-01-docs/roadmap/roadmap.md`                    |
+| `griot-ai`        | —                                                                   | `griot-ai/01-01-docs/roadmap/roadmap-s0-to-s3.md`                 |
+| `gtcx-markets`    | `gtcx-markets/01-01-docs/strategy/execution-roadmap.md`             | `gtcx-markets/01-01-01-docs/05-audit/agile/sprints/current.md`    |
+| `veritas-ai`      | —                                                                   | `veritas-ai/01-01-docs/roadmap/README.md`                         |
 
-**Legacy names (historical docs):** `3-protocols` → `gtcx-protocols`; `5-intelligence` → `gtcx-intelligence`; `7-mobile` → `gtcx-mobile`; `6-platforms` → `gtcx-platforms`; `4-infrastructure` → `gtcx-infrastructure`; `ai-3-fiftyfour` → `terminal-os`; `ai-2-ledger` → `ledger-ui`; `ai-6-terra` → `terra-os`.
+**Legacy names (historical docs):** `3-protocols` -> `gtcx-protocols`; `5-intelligence` -> `bridge-os` intelligence bridge; `7-mobile` -> `gtcx-mobile`; `6-platforms` -> `gtcx-platforms`; `4-infrastructure` -> `fabric-os`; `ai-3-fiftyfour` -> `terminal-os`; `ai-2-ledger` -> `ledger-ui`; `ai-6-terra` -> `terra-os`.
 
 ---
 

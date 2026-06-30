@@ -203,7 +203,7 @@
       "acceptance": ["pnpm daas:fleet:health"],
       "uat": [
         {
-          "text": "gtcx-intelligence staging pod Running with cost router enabled",
+          "text": "intelligence bridge staging pod Running with cost router enabled",
           "done": true,
           "note": "intelligence-orchestrator 2/2 Running; ENABLE_COST_ROUTER=1"
         },

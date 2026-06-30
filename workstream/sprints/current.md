@@ -1,4 +1,4 @@
-# Current sprint — gtcx-infrastructure
+# Current sprint — fabric-os
 
 _Status: placeholder — update when sprint is active._
 

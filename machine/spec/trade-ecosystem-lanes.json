@@ -21,14 +21,14 @@
       "product": "GTCX Sovereign",
       "modules": ["CRX", "SGX", "Pathways", "Operations"],
       "hostLane": "L4a",
-      "sor": "gtcx-os/platform/platforms"
+      "sor": "gtcx-platforms"
     },
     "cloud": {
       "adr": "ADR-007",
       "product": "GTCX Cloud",
       "modules": ["AGX", "TradePass", "Veritas"],
       "hostLanes": ["L4b", "L3"],
-      "sor": "gtcx-os/platform/platforms"
+      "sor": "gtcx-platforms"
     }
   },
   "lanes": {
@@ -37,7 +37,7 @@
       "name": "Trade protocol rail",
       "type": "foundation",
       "parentLane": "C",
-      "sor": "gtcx-os/platform/protocols",
+      "sor": "gtcx-protocols",
       "legacyRepo": "gtcx-protocols",
       "members": [
         "TradePass",

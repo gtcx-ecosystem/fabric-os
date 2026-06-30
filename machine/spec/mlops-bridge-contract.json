@@ -8,7 +8,7 @@
   "aiopsProgramOwner": "baseline-os",
   "fabricBridgeOwner": "fabric-os",
   "status": "scaffold",
-  "principle": "MLOps and AIOps strategy is owned by baseline-os and fabric-os. baseline-os owns cost-router, eval, model governance, and CostGuard contracts. fabric-os owns deploy substrate, cost evidence, and runtime bridge controls. GTCX Intelligence / Bridge consumes the runtime contract; it does not own the infra strategy.",
+  "principle": "MLOps and AIOps strategy is owned by baseline-os and fabric-os. baseline-os owns cost-router, eval, model governance, and CostGuard contracts. fabric-os owns deploy substrate, cost evidence, and runtime bridge controls. The bridge-os intelligence bridge consumes the runtime contract; it does not own the infra strategy.",
   "ownerSplit": {
     "baselineOs": [
       "machine/spec/mlops-as-a-service.json",
@@ -26,7 +26,7 @@
       "docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md",
       "audit/evidence/mlops-cost-router-staging-probe-latest.json"
     ],
-    "gtcxIntelligenceBridge": [
+    "bridgeOsIntelligenceBridge": [
       "runtime service behavior",
       "inference API consumption",
       "SDK image containing baselineos/cost-router",
@@ -50,10 +50,5 @@
     "command": "pnpm mlops:cost-router-staging-probe:write",
     "rule": "Do not claim AI cost-router readiness until the live pod can import baselineos/cost-router."
   },
-  "forbiddenStrategyOwners": [
-    "bridge-os",
-    "gtcx-os",
-    "gtcx-intelligence",
-    "gtcx-os/platform/intelligence"
-  ]
+  "forbiddenStrategyOwners": ["bridge-os", "gtcx-os", "archived-intelligence-repo", "fabric-os"]
 }

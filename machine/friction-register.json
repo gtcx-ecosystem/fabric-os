@@ -68,7 +68,7 @@
       "id": "F6",
       "priority": "P1",
       "status": "closed",
-      "repo": "gtcx-intelligence",
+      "repo": "bridge-os-intelligence-bridge",
       "title": "Intelligence staging image with ENABLE_COST_ROUTER",
       "matrixRef": "infra-per-repo-action-matrix F6",
       "executionStatus": "done",

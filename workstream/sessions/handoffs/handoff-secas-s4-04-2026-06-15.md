@@ -62,7 +62,7 @@ _Closure bar not run._
 | Fleet witness       | fabric substrate + baseline MLOps rollup PASS                                              | `pnpm --dir ../bridge-os ecosystem:aiops:check:fleet:write`     |
 | **MOF-002**         | Staging probe: health `enableCostRouter=true` but pod **missing** `baselineos/cost-router` | `pnpm mlops:cost-router-staging-probe:write` → FAIL · `56f6d9b` |
 
-**MOF-002 unblock:** `gtcx-os/platform/intelligence` rebuild SDK image (Dockerfile has baselineos COPY) → ECR push → update `deploy/kubernetes/overlays/staging/intelligence/deployment.yaml` image tag → re-probe must PASS.
+**MOF-002 unblock:** `bridge-os` intelligence bridge rebuild SDK image (Dockerfile has baselineos COPY) → ECR push → update `deploy/kubernetes/overlays/staging/intelligence/deployment.yaml` image tag → re-probe must PASS.
 
 Handoff: `docs/operations/coordination/inbound/to-gtcx-os-intelligence-cost-router-staging-2026-06-15.md`
 

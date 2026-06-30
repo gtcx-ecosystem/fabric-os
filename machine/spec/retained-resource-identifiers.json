@@ -1,0 +1,43 @@
+{
+  "$schema": "gtcx://fabric-os/retained-resource-identifiers/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-30",
+  "ownerRepo": "fabric-os",
+  "status": "current",
+  "principle": "Some deployed AWS, Kubernetes, Terraform, and dashboard identifiers retain legacy names for continuity. These identifiers are runtime resources only and must not be interpreted as source repository ownership.",
+  "sourceOwnership": {
+    "intelligenceBridge": "bridge-os",
+    "infrastructure": "fabric-os"
+  },
+  "rules": [
+    {
+      "pattern": "gtcx-intelligence-*",
+      "meaning": "Retained ECR/Kubernetes/Terraform/Grafana resource identifier for intelligence bridge runtime artifacts.",
+      "notMeaning": "Do not checkout, route work to, or assign ownership to a standalone gtcx-intelligence repo.",
+      "sourceOwner": "bridge-os",
+      "runtimeOwner": "fabric-os deploy substrate"
+    },
+    {
+      "pattern": "gtcx-infrastructure",
+      "meaning": "Legacy fabric-os alias allowed only in immutable historical evidence and cutover validation.",
+      "notMeaning": "Do not use as an active repo, owner, checkout path, or new documentation target.",
+      "sourceOwner": "fabric-os",
+      "runtimeOwner": "fabric-os"
+    }
+  ],
+  "allowedActiveSurfaces": [
+    "ECR repository names",
+    "Kubernetes labels/selectors/group names",
+    "Terraform variable defaults for existing buckets/tables/images",
+    "Grafana dashboard UIDs",
+    "legacy cutover checks",
+    "immutable audit evidence"
+  ],
+  "forbiddenActiveSurfaces": [
+    "source repository checkout",
+    "agent owner routing",
+    "new roadmap ownership",
+    "new runbook cwd paths",
+    "new handoff target repo"
+  ]
+}

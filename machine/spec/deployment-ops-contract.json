@@ -78,6 +78,7 @@
     "readinessGate": "pnpm mlops:cost-router-staging-probe:write",
     "readinessRule": "Do not claim AI cost-router readiness until the live pod can import baselineos/cost-router."
   },
+  "retainedResourceIdentifiers": "machine/spec/retained-resource-identifiers.json",
   "agentInstructions": {
     "primaryDoc": "docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md",
     "strategyDoc": "docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md",

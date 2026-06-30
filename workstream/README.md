@@ -1,4 +1,4 @@
-# 06-workstream — gtcx-infrastructure
+# 06-workstream — fabric-os
 
 **Layout v3:** Same folder shape in **every** ecosystem repo.
 
@@ -9,6 +9,6 @@
 | `coordination/inbound/`  | Inbound handoffs from sibling repos |
 | `coordination/outbound/` | Outbound handoffs to sibling repos  |
 
-Cross-repo federation index (when present): `baseline-os/06-workstream/repos/gtcx-infrastructure/INDEX.md`.
+Cross-repo federation index (when present): `baseline-os/workstream/repos/fabric-os/INDEX.md`.
 
 Machine manifests: `02-ops/coordination/` (JSON, Protocol 24).

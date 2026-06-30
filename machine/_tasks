@@ -80,7 +80,7 @@ Stack security operations are a separate concern from product engineering — pa
 - [x] docs/operations/security-as-a-service.md
 - [x] P42 hub protocol published (gtcx-docs)
 - [x] secas:friction:check + secas:approval:check harness green
-- [x] docs/operations/secas/cards/ (compliance-os, gtcx-markets, gtcx-intelligence)
+- [x] docs/operations/secas/cards/ (compliance-os, gtcx-markets, bridge-os intelligence bridge)
 - [ ] SEC-PENTEST-01 pen-test window after vendor countersign
 - [x] SEC-IRSA-01 compliance-os IRSA review (SECAS-S3-01)
 

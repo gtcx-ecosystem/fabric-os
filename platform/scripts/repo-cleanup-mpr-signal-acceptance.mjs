@@ -26,7 +26,7 @@ const ROOT = repoArg ? join(FLEET, repoArg) : process.cwd();
 const REPO = repoArg ?? basename(ROOT);
 
 const evidenceRel = 'audit/evidence';
-const reportRel = `audit/reports/repo-cleanup-mpr-signal-acceptance-${new Date().toISOString().slice(0, 10)}.md`;
+const reportRel = `audit/reports/repository-assurance-acceptance-${new Date().toISOString().slice(0, 10)}.md`;
 const artifactRel = 'audit/evidence/repo-cleanup-mpr-signal-acceptance-latest.json';
 
 function readJson(rel) {
@@ -35,6 +35,11 @@ function readJson(rel) {
   } catch {
     return null;
   }
+}
+
+function compactEvidence(value, max = 1200) {
+  if (typeof value !== 'string') return value;
+  return value.length > max ? `${value.slice(0, max)}... [truncated ${value.length - max} chars]` : value;
 }
 
 function list(rel) {
@@ -81,6 +86,74 @@ function evidenceOk(rel) {
   return true;
 }
 
+export function scoreJson(json) {
+  if (!json) return 0;
+  if (typeof json.score100 === 'number') return Math.max(0, Math.min(100, Math.round(json.score100)));
+  if (typeof json.composite100 === 'number') return Math.max(0, Math.min(100, Math.round(json.composite100)));
+  for (const [attainedKey, benchmarkKey] of [
+    ['conformant', 'repoCount'],
+    ['clean', 'total'],
+    ['verifiedCount', 'total'],
+  ]) {
+    const attained = json[attainedKey];
+    const benchmark = json[benchmarkKey];
+    if (typeof attained === 'number' && typeof benchmark === 'number' && benchmark > 0) {
+      return Math.round((attained / benchmark) * 100);
+    }
+  }
+  const gateLeaves = [];
+  const collectGateLeaves = (value) => {
+    if (!value || typeof value !== 'object') return;
+    if (value.optional === true) return;
+    if (typeof value.ok === 'boolean' || typeof value.pass === 'boolean') {
+      gateLeaves.push(value);
+      return;
+    }
+    if (Array.isArray(value)) {
+      value.forEach(collectGateLeaves);
+      return;
+    }
+    Object.values(value).forEach(collectGateLeaves);
+  };
+  collectGateLeaves(json.gates);
+  const gates = gateLeaves.filter((gate) => gate?.optional !== true);
+  if (gates.length > 0) {
+    const attained = gates.filter((gate) => gate.ok === true || gate.pass === true).length;
+    return Math.round((attained / gates.length) * 100);
+  }
+  if (json.ok === true || json.pass === true || json.clean === true) return 100;
+  return 0;
+}
+
+function evidenceScore(rel) {
+  return scoreJson(readJson(rel));
+}
+
+function commandScore(run, ratioPattern = null) {
+  if (!run) return 0;
+  const output = `${run.stdout}\n${run.stderr}`;
+  if (ratioPattern) {
+    const match = output.match(ratioPattern);
+    if (match) {
+      const attained = Number.parseInt(match[1], 10);
+      const benchmark = Number.parseInt(match[2], 10);
+      if (Number.isFinite(attained) && Number.isFinite(benchmark) && benchmark > 0) {
+        return Math.round((attained / benchmark) * 100);
+      }
+    }
+  }
+  return run.exitCode === 0 ? 100 : 0;
+}
+
+function linkCommandScore(run) {
+  if (!run) return 0;
+  const output = `${run.stdout}\n${run.stderr}`;
+  const checked = Number.parseInt(output.match(/Checked\s+(\d+)\s+links/i)?.[1] ?? '0', 10);
+  const broken = Number.parseInt(output.match(/(\d+)\s+broken link\(s\) found/i)?.[1] ?? '0', 10);
+  if (checked > 0) return Math.max(0, Math.round(((checked - broken) / checked) * 100));
+  return run.exitCode === 0 ? 100 : 0;
+}
+
 function anyEvidenceOk(...rels) {
   return rels.some((rel) => evidenceOk(rel));
 }
@@ -98,6 +171,48 @@ function walkTextFiles(rel, out = []) {
     else if (/\.(md|json|ya?ml)$/i.test(entry)) out.push(childRel);
   }
   return out;
+}
+
+function readAllowlist() {
+  const rel = 'docs/operations/repo/root-allowlist.json';
+  try {
+    return JSON.parse(readFileSync(join(ROOT, rel), 'utf8'));
+  } catch {
+    return {
+      required_files: ['README.md', 'AGENTS.md', 'CHANGELOG.md'],
+      required_directories: ['docs', 'operations', 'machine', 'platform', 'deploy', 'audit', 'workstream'],
+      allowed_directories: ['archive', 'agents', 'agentic', 'agile', 'ops', 'pm', 'config'],
+      allowed_files: ['LICENSE', 'NOTICE', 'package.json', 'pnpm-workspace.yaml', 'pnpm-lock.yaml', 'turbo.json', 'tsconfig.json'],
+      allowed_dot_directories: ['.github', '.husky', '.agent', '.baseline', '.cursor', '.claude', '.gemini', '.kimi', '.gtcx', '.turbo', '.changeset', '.zap'],
+    };
+  }
+}
+
+function asStringList(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function computeForbiddenRoots() {
+  const allow = readAllowlist();
+  const ignoredExact = new Set(asStringList(allow.ignored_exact));
+  const ignoredPrefixes = asStringList(allow.ignored_prefixes);
+  const allowedNames = new Set([
+    '.git',
+    '.idea',
+    ...asStringList(allow.required_files),
+    ...asStringList(allow.required_directories),
+    ...asStringList(allow.allowed_directories),
+    ...asStringList(allow.allowed_files),
+    ...asStringList(allow.allowed_dot_directories),
+    ...Object.keys(allow.permissible_on_approval ?? {}),
+    'node_modules',
+  ]);
+  const topLevel = readdirSync(ROOT, { withFileTypes: true }).map((entry) => entry.name);
+  return topLevel
+    .filter((name) => !ignoredExact.has(name))
+    .filter((name) => !ignoredPrefixes.some((prefix) => name.startsWith(prefix)))
+    .filter((name) => !allowedNames.has(name))
+    .filter((name) => name !== '.git');
 }
 
 function operationalLaneIsolation() {
@@ -127,8 +242,47 @@ function operationalLaneIsolation() {
   return { ok: violations.length === 0, violations };
 }
 
-function statusRow(area, result, evidence, mpr, signal, blocker = null) {
-  return { area, result, evidence, mpr, signal, blocker };
+function statusRow(area, atBenchmark, evidence, mpr, signal, blocker = null, applicable = true) {
+  return scoredRow(area, applicable ? (atBenchmark ? 100 : 0) : null, evidence, mpr, signal, blocker, applicable);
+}
+
+function scoredRow(area, score100, evidence, mpr, signal, blocker = null, applicable = true) {
+  return {
+    area,
+    score100: applicable && typeof score100 === 'number'
+      ? Math.max(0, Math.min(100, Math.round(score100)))
+      : null,
+    benchmark100: 100,
+    applicable,
+    evidence: compactEvidence(evidence),
+    mpr,
+    signal,
+    blocker,
+  };
+}
+
+function scoreTable(rows) {
+  const applicableRows = rows.filter((row) => row.applicable === true && typeof row.score100 === 'number');
+  const benchmark = applicableRows.reduce((sum, row) => sum + (row.benchmark100 ?? 100), 0);
+  const attained = applicableRows.reduce((sum, row) => sum + (row.score100 ?? 0), 0);
+  const benchmarkCount = applicableRows.filter((row) => (row.score100 ?? 0) >= (row.benchmark100 ?? 100)).length;
+  const score100 = benchmark === 0 ? 100 : Math.round((attained / benchmark) * 100);
+
+  return {
+    areaCount: applicableRows.length,
+    benchmarkCount,
+    benchmark,
+    attained,
+    score100,
+  };
+}
+
+function summarizeGitStatus(statusText) {
+  const lines = String(statusText ?? '').split('\n').filter(Boolean);
+  if (lines.length <= 1) return statusText || 'git status unavailable';
+  const dirty = lines.slice(1);
+  const preview = dirty.slice(0, 25).join('; ');
+  return `git status -sb: ${dirty.length} dirty entr${dirty.length === 1 ? 'y' : 'ies'}${preview ? `; ${preview}` : ''}${dirty.length > 25 ? '; ...' : ''}`;
 }
 
 function microsOf(pillar) {
@@ -155,7 +309,7 @@ function taxonomyMicroAudits(tier) {
     status: 'unverified',
     microAudits: microsOf(taxonomy?.pillars?.[pillarId]).map((id) => ({
       id,
-      result: 'unverified',
+      status: 'unverified',
       evidence: [],
     })),
   }));
@@ -163,12 +317,67 @@ function taxonomyMicroAudits(tier) {
 
 function mprScores() {
   const mpr = readJson('audit/evidence/mpr-repo-latest.json');
+  const foundationalIds = ['compliance', 'technicalExcellence', 'craft', 'worldClass', 'trustAndSafety'];
+  const transformationalIds = [
+    'creativityInnovation',
+    'commercialValue',
+    'defensiveMoat',
+    'agenticEmpowerment',
+    'productEcosystemIntegration',
+    'ipMagic',
+  ];
+  const quadrants = {
+    ...(mpr?.multiPillar?.quadrants ?? {}),
+    ...(mpr?.quadrants ?? {}),
+  };
+  const leafEvidence = (pillarId) => {
+    const pillar = quadrants[pillarId] ?? {};
+    const categories = Object.entries(pillar.categories ?? {}).map(([id, value]) => ({
+      id,
+      score100: value?.score100 ?? null,
+      evidenceDepth: Array.isArray(value?.items) && value.items.length > 0 ? 'leaf' : 'aggregate',
+    }));
+    const metrics = Object.entries(pillar.metrics ?? {}).map(([id, value]) => ({
+      id,
+      score100: value?.score100 ?? null,
+      evidenceDepth: 'leaf',
+    }));
+    const checks = (pillar.checks ?? []).map((value, index) => ({
+      id: value?.id ?? `check-${index + 1}`,
+      score100: value?.score100 ?? (value?.ok === true || value?.pass === true ? 100 : 0),
+      evidenceDepth: 'leaf',
+    }));
+    return [...categories, ...metrics, ...checks].filter((entry) => entry.evidenceDepth === 'leaf');
+  };
+  const tierMicroScore = (ids) => {
+    const pillarScores = ids.map((id) => {
+      const evidence = leafEvidence(id);
+      return {
+        pillar: id,
+        score100: evidence.length
+          ? Math.min(...evidence.map((entry) => entry.score100 ?? 0))
+          : 0,
+        evidence,
+        assessable: evidence.length > 0,
+      };
+    });
+    return {
+      score100: Math.min(...pillarScores.map((pillar) => pillar.score100)),
+      pillars: pillarScores,
+    };
+  };
+  const foundationalMicros = tierMicroScore(foundationalIds);
+  const transformationalMicros = tierMicroScore(transformationalIds);
   return {
     source: mpr ? 'audit/evidence/mpr-repo-latest.json' : null,
     composite100: mpr?.composite100 ?? null,
     foundationComposite100: mpr?.foundationComposite100 ?? null,
     fullComposite100: mpr?.fullComposite100 ?? null,
-    pillars: Object.fromEntries(Object.entries(mpr?.quadrants ?? {}).map(([k, v]) => [k, {
+    foundationalMicroScore100: foundationalMicros.score100,
+    transformationalMicroScore100: transformationalMicros.score100,
+    foundationalMicros: foundationalMicros.pillars,
+    transformationalMicros: transformationalMicros.pillars,
+    pillars: Object.fromEntries(Object.entries(quadrants).map(([k, v]) => [k, {
       score100: v?.score100 ?? null,
       published: v?.published ?? null,
       provisional: v?.provisional ?? null,
@@ -193,10 +402,6 @@ function signalScores() {
   };
 }
 
-function resultFrom(pass) {
-  return pass ? 'PASS' : 'FAIL';
-}
-
 function buildWitness() {
   const status = git(['status', '-sb']);
   const statusLines = status.stdout.split('\n').filter(Boolean);
@@ -206,105 +411,140 @@ function buildWitness() {
   const sc = scripts();
   const scriptKeys = Object.keys(sc);
   const script = (name) => scriptKeys.includes(name);
-  const forbiddenRoots = ['pm', 'ops', 'agentic', 'reports', '.claude', '.cursor', '.gemini', '.kimi']
-    .filter((entry) => has(entry));
   const linkEvidence = list(evidenceRel).filter((f) => /link|docs|folder|root|hygiene/.test(f));
   const mpr = mprScores();
   const signal = signalScores();
 
-  const inventoryOk = evidenceOk('audit/evidence/repo-folder-file-spec-inventory-latest.json');
-  const archiveOk = !has('audit/archive')
-    ? true
-    : evidenceOk('audit/evidence/repo-cleanup-archive-manifest-latest.json');
-  const docsOk = anyEvidenceOk(
-    'audit/evidence/docs-ia-latest.json',
-    'audit/evidence/docs-folder-hygiene-latest.json',
-    'audit/evidence/docs-operations-latest.json',
-    'audit/evidence/docs-product-latest.json',
+  const inventoryScore = evidenceScore('audit/evidence/repo-folder-file-spec-inventory-latest.json');
+  const archiveScore = !has('audit/archive')
+    ? 100
+    : evidenceScore('audit/evidence/repo-cleanup-archive-manifest-latest.json');
+  const docsIaRun = script('docs:ia:check') ? pnpmRun(['docs:ia:check']) : null;
+  const docsTreeRun = script('docs:tree:check') ? pnpmRun(['docs:tree:check']) : null;
+  const docsLinkRun = script('docs:check-links') ? pnpmRun(['docs:check-links']) : null;
+  const docsIaScore = commandScore(docsIaRun, /docs:ia:check\s+(\d+)\/(\d+)/i);
+  const docsTreeScore = commandScore(docsTreeRun, /docs:tree:check\s+\((\d+)\/(\d+)\)/i);
+  const docsLinkScore = linkCommandScore(docsLinkRun);
+  const docsScore = Math.round((docsIaScore + docsTreeScore + docsLinkScore) / 3);
+  const roadmapScore = Math.max(
+    evidenceScore('audit/evidence/docs-roadmap-latest.json'),
+    evidenceScore('audit/evidence/product-roadmap-lane-isolation-latest.json'),
+    evidenceScore('audit/evidence/m4-baseline-roadmap-intake-latest.json'),
   );
   const roadmapOk = anyEvidenceOk(
     'audit/evidence/docs-roadmap-latest.json',
     'audit/evidence/product-roadmap-lane-isolation-latest.json',
     'audit/evidence/m4-baseline-roadmap-intake-latest.json',
   );
-  const featureOk = script('docs:feature-spec:check')
-    ? anyEvidenceOk('audit/evidence/docs-feature-spec-latest.json', 'audit/evidence/feature-spec-latest.json')
-    : false;
+  const featureScore = script('docs:feature-spec:check')
+    ? Math.max(
+      evidenceScore('audit/evidence/docs-feature-spec-latest.json'),
+      evidenceScore('audit/evidence/feature-spec-latest.json'),
+    )
+    : 0;
   const agileApplicable = script('agile:check') || script('docs:agile:check') || has('agile');
-  const agileOk = agileApplicable ? anyEvidenceOk('audit/evidence/agile-latest.json') : null;
+  const agileRun = agileApplicable
+    ? pnpmRun([script('agile:check') ? 'agile:check' : 'docs:agile:check'])
+    : null;
+  const agileScore = agileApplicable ? commandScore(agileRun) : null;
   const opsApplicable = script('operations:check') || script('operations:consumption:check') || has('operations');
-  const opsOk = opsApplicable ? anyEvidenceOk(
-    'audit/evidence/ops-latest.json',
-    'audit/evidence/deployment-ops-contract-check-latest.json',
-    'audit/evidence/fabric-ops-policy-contract-latest.json',
-  ) : null;
+  const opsRun = opsApplicable
+    ? pnpmRun([script('operations:check') ? 'operations:check' : 'operations:consumption:check'])
+    : null;
+  const opsScore = opsApplicable ? commandScore(opsRun) : null;
   const p22Applicable = script('agent:next-work');
   const fabricApplicable = REPO === 'fabric-os' || script('aaas:loop') || script('daas:fleet:health');
-  const fabricOk = fabricApplicable ? [
+  const fabricEvidence = [
     'audit/evidence/aaas-contract-check-latest.json',
     'audit/evidence/aaas-cadence-latest.json',
     'audit/evidence/aaas-honesty-gate-latest.json',
     'audit/evidence/aaas-ownership-latest.json',
     'audit/evidence/aaas-hygiene-check-latest.json',
+    'audit/evidence/aaas-loop-latest.json',
     'audit/evidence/daas-cards-check-latest.json',
     'audit/evidence/daas-friction-check-latest.json',
-  ].every((rel) => evidenceOk(rel)) : null;
+  ];
+  const fabricScore = fabricApplicable
+    ? Math.round(fabricEvidence.reduce((sum, rel) => sum + evidenceScore(rel), 0) / fabricEvidence.length)
+    : null;
   const p22Run = p22Applicable ? pnpmRun(['agent:next-work', '--json']) : null;
   const p22Output = `${p22Run?.stdout ?? ''}${p22Run?.stderr ? `\n${p22Run.stderr}` : ''}`;
   const p22Blocked = /Persona read gate BLOCKED|personaReadGateBlocked["']?\s*:\s*true/.test(p22Output);
-  const p22Pass = p22Run ? p22Run.exitCode === 0 && !p22Blocked : null;
+  const p22Score = p22Run ? (p22Run.exitCode === 0 && !p22Blocked ? 100 : 0) : null;
   const mprComplete = mpr.composite100 === 100;
   const signalComplete = signal.level === 'L5' && signal.score100 === 100;
-  const rootOk = forbiddenRoots.length === 0;
-  const linkOk = linkEvidence.length > 0 && docsOk;
+  const forbiddenRoots = computeForbiddenRoots();
   const laneIsolation = operationalLaneIsolation();
-  const crossRepoOk = anyEvidenceOk(
-    'audit/evidence/aaas-contract-check-latest.json',
-    'audit/evidence/fleet-ops-assurance-check-latest.json',
-    'audit/evidence/fabric-ops-policy-contract-latest.json',
+  const crossRepoScore = Math.max(
+    evidenceScore('audit/evidence/aaas-contract-check-latest.json'),
+    evidenceScore('audit/evidence/fleet-ops-assurance-check-latest.json'),
+    evidenceScore('audit/evidence/fabric-ops-policy-contract-latest.json'),
   );
 
   const rows = [
-    statusRow('Worktree clean', resultFrom(clean), status.stdout || 'git status unavailable', ['Craft', 'Trust & Safety'], ['Grounded'], clean ? null : 'worktree is dirty'),
-    statusRow('Critical docs preserved', resultFrom(inventoryOk), 'audit/evidence/repo-folder-file-spec-inventory-latest.json', ['Trust & Safety', 'Defensive Moat', 'IP Magic'], ['Lossless', 'Specific'], inventoryOk ? null : 'inventory witness missing or failing'),
-    statusRow('Feature/spec registry', resultFrom(featureOk), 'docs:feature-spec:check evidence', ['Commercial Value', 'Product/Ecosystem Integration'], ['Specific', 'Integrated', 'Actionable'], featureOk ? null : 'feature/spec validation not proven'),
-    statusRow('Documentation hygiene', resultFrom(docsOk), 'docs evidence witnesses', ['Compliance', 'World Class', 'Trust & Safety'], ['Navigable', 'Grounded', 'Lossless'], docsOk ? null : 'documentation hygiene not proven'),
-    statusRow('Roadmap/goals/milestones', resultFrom(roadmapOk), 'roadmap/goals/milestone evidence', ['Commercial Value', 'Agentic Empowerment'], ['Actionable', 'Integrated'], roadmapOk ? null : 'roadmap/goals/milestones not proven'),
-    statusRow('Agile workflow', agileOk == null ? 'N/A' : resultFrom(agileOk), 'agile command evidence', ['Product/Ecosystem Integration', 'Craft'], ['Actionable', 'Integrated'], agileOk || agileOk == null ? null : 'agile workflow not proven'),
-    statusRow('Ops contract', opsOk == null ? 'N/A' : resultFrom(opsOk), 'ops command evidence', ['Technical Excellence', 'Compliance'], ['Grounded', 'Integrated'], opsOk || opsOk == null ? null : 'ops contract not proven'),
-    statusRow('P22/runtime', p22Pass == null ? 'N/A' : resultFrom(p22Pass), p22Run ? `pnpm agent:next-work --json exit ${p22Run.exitCode}` : 'agent:next-work unavailable', ['Agentic Empowerment', 'Compliance'], ['Actionable', 'Specific'], p22Pass || p22Pass == null ? null : 'P22 runtime failed or emitted a blocking gate'),
-    statusRow('Fabric AaaS/DaaS', fabricOk == null ? 'N/A' : resultFrom(fabricOk), 'AaaS/DaaS evidence witnesses', ['Technical Excellence', 'World Class'], ['Grounded', 'Actionable'], fabricOk || fabricOk == null ? null : 'AaaS/DaaS evidence incomplete'),
-    statusRow('Operational lane isolation', resultFrom(laneIsolation.ok), laneIsolation.ok ? 'operational lane scan clean' : laneIsolation.violations.map((v) => `${v.path}:${v.line}`).join(', '), ['Product/Ecosystem Integration', 'Compliance'], ['Integrated', 'Actionable'], laneIsolation.ok ? null : 'operational lane item is rendered as a product/GA release blocker'),
-    statusRow('Foundational micro-audits', resultFrom(mprComplete), 'mpr.foundational.microAudits', ['Foundational MPR tier'], ['Specific', 'Grounded'], mprComplete ? null : 'MPR composite is not 100'),
-    statusRow('Transformational micro-audits', resultFrom(mprComplete), 'mpr.transformational.microAudits', ['Transformational MPR tier'], ['Integrated', 'Actionable', 'Lossless'], mprComplete ? null : 'MPR composite is not 100'),
-    statusRow('Root hygiene', resultFrom(rootOk), forbiddenRoots.length ? forbiddenRoots.join(', ') : 'root scan clean', ['Compliance', 'Craft'], ['Navigable'], rootOk ? null : 'forbidden live roots present'),
-    statusRow('Link/reference hygiene', resultFrom(linkOk), linkEvidence.join(', ') || 'no link evidence', ['World Class', 'Trust & Safety'], ['Navigable', 'Grounded'], linkOk ? null : 'link/reference hygiene not proven'),
-    statusRow('Cross-repo contract', resultFrom(crossRepoOk), 'contract evidence witnesses', ['Product/Ecosystem Integration'], ['Integrated'], crossRepoOk ? null : 'cross-repo contract evidence not proven'),
-    statusRow('Archive recoverability', resultFrom(archiveOk), 'audit/evidence/repo-cleanup-archive-manifest-latest.json', ['Trust & Safety', 'Defensive Moat'], ['Lossless'], archiveOk ? null : 'archive manifest missing or failing'),
+    statusRow('Worktree clean', clean, summarizeGitStatus(status.stdout), ['Craft', 'Trust & Safety'], ['Grounded'], clean ? null : 'worktree is dirty'),
+    scoredRow('Critical docs preserved', inventoryScore, 'audit/evidence/repo-folder-file-spec-inventory-latest.json', ['Trust & Safety', 'Defensive Moat', 'IP Magic'], ['Lossless', 'Specific'], inventoryScore === 100 ? null : 'inventory witness is incomplete'),
+    scoredRow('Feature/spec registry', featureScore, 'docs:feature-spec:check evidence', ['Commercial Value', 'Product/Ecosystem Integration'], ['Specific', 'Integrated', 'Actionable'], featureScore === 100 ? null : 'feature/spec validation is below benchmark'),
+    scoredRow('Documentation hygiene', docsScore, `docs IA ${docsIaScore}/100; tree ${docsTreeScore}/100; links ${docsLinkScore}/100`, ['Compliance', 'World Class', 'Trust & Safety'], ['Navigable', 'Grounded', 'Lossless'], docsScore === 100 ? null : 'documentation IA, lifecycle metadata, or link integrity is below benchmark'),
+    scoredRow('Roadmap/goals/milestones', roadmapScore, 'roadmap/goals/milestone evidence', ['Commercial Value', 'Agentic Empowerment'], ['Actionable', 'Integrated'], roadmapOk && roadmapScore === 100 ? null : 'roadmap/goals/milestones are below benchmark'),
+    scoredRow('Agile workflow', agileScore, agileRun ? `${agileRun.command} exit ${agileRun.exitCode}` : 'not applicable', ['Product/Ecosystem Integration', 'Craft'], ['Actionable', 'Integrated'], agileScore === 100 || agileScore == null ? null : 'agile workflow is below benchmark', agileApplicable),
+    scoredRow('Ops contract', opsScore, opsRun ? `${opsRun.command} exit ${opsRun.exitCode}` : 'not applicable', ['Technical Excellence', 'Compliance'], ['Grounded', 'Integrated'], opsScore === 100 || opsScore == null ? null : 'ops contract is below benchmark', opsApplicable),
+    scoredRow('P22/runtime', p22Score, p22Run ? `pnpm agent:next-work --json exit ${p22Run.exitCode}` : 'agent:next-work unavailable', ['Agentic Empowerment', 'Compliance'], ['Actionable', 'Specific'], p22Score === 100 || p22Score == null ? null : 'P22 runtime failed or emitted a blocking gate', p22Applicable),
+    scoredRow('Fabric AaaS/DaaS', fabricScore, 'AaaS/DaaS evidence witness score', ['Technical Excellence', 'World Class'], ['Grounded', 'Actionable'], fabricScore === 100 || fabricScore == null ? null : 'AaaS/DaaS evidence is below benchmark', fabricApplicable),
+    statusRow('Operational lane isolation', laneIsolation.ok, laneIsolation.ok ? 'operational lane scan clean' : laneIsolation.violations.map((v) => `${v.path}:${v.line}`).join(', '), ['Product/Ecosystem Integration', 'Compliance'], ['Integrated', 'Actionable'], laneIsolation.ok ? null : 'operational lane item is rendered as a product/GA release blocker'),
+    scoredRow('MPR composite', mpr.composite100 ?? 0, mpr.source ?? 'missing MPR witness', ['All MPR pillars'], ['Grounded', 'Specific'], mprComplete ? null : 'MPR composite is not 100/100'),
+    scoredRow('SIGNAL maturity', signal.score100 ?? 0, signal.source ?? 'missing SIGNAL witness', ['Agentic Empowerment', 'Technical Excellence'], ['All SIGNAL dimensions'], signalComplete ? null : 'SIGNAL is not L5 / 100'),
+    scoredRow('Foundational micro-audits', mpr.foundationalMicroScore100, 'MPR foundational leaf evidence', ['Foundational MPR tier'], ['Specific', 'Grounded'], mpr.foundationalMicroScore100 === 100 ? null : 'one or more foundational leaf audits are below benchmark'),
+    scoredRow('Transformational micro-audits', mpr.transformationalMicroScore100, 'MPR transformational leaf evidence', ['Transformational MPR tier'], ['Integrated', 'Actionable', 'Lossless'], mpr.transformationalMicroScore100 === 100 ? null : 'transformational leaf evidence is missing or below benchmark'),
+    scoredRow('Root hygiene', forbiddenRoots.length === 0 ? 100 : 0, forbiddenRoots.length ? forbiddenRoots.join(', ') : 'root scan clean', ['Compliance', 'Craft'], ['Navigable'], forbiddenRoots.length === 0 ? null : 'forbidden live roots present'),
+    scoredRow('Link/reference hygiene', docsLinkScore, docsLinkRun ? `${docsLinkRun.command} exit ${docsLinkRun.exitCode}; ${linkEvidence.length} related witnesses` : 'link checker unavailable', ['World Class', 'Trust & Safety'], ['Navigable', 'Grounded'], docsLinkScore === 100 ? null : 'link/reference integrity is below benchmark'),
+    scoredRow('Cross-repo contract', crossRepoScore, 'contract evidence witness score', ['Product/Ecosystem Integration'], ['Integrated'], crossRepoScore === 100 ? null : 'cross-repo contract evidence is below benchmark'),
+    scoredRow('Archive recoverability', archiveScore, 'audit/evidence/repo-cleanup-archive-manifest-latest.json', ['Trust & Safety', 'Defensive Moat'], ['Lossless'], archiveScore === 100 ? null : 'archive recoverability is below benchmark'),
   ];
 
   const blockers = rows
-    .filter((row) => row.result === 'FAIL')
+    .filter((row) => row.applicable && row.score100 < 100)
     .map((row) => ({ area: row.area, blocker: row.blocker, evidence: row.evidence }));
-  if (!signalComplete) {
-    blockers.push({ area: 'SIGNAL', blocker: 'SIGNAL is not L5 / 100', evidence: signal.source ?? 'missing signal witness' });
-  }
-  if (!mprComplete) {
-    blockers.push({ area: 'MPR', blocker: 'MPR cleanup composite is not 100/100', evidence: mpr.source ?? 'missing MPR witness' });
-  }
+  const acceptance = scoreTable(rows);
 
   const decision = blockers.length === 0 ? 'complete' : 'incomplete';
   const phaseResults = {
-    documentationTaxonomyLifecycle: { score100: docsOk ? 100 : 0, evidence: ['docs evidence witnesses'] },
-    featureSpecRegistryPrd: { score100: featureOk ? 100 : 0, evidence: ['docs:feature-spec:check evidence'] },
-    roadmapGoalsMilestonesWorkstream: { score100: roadmapOk ? 100 : 0, evidence: ['roadmap/goals/milestone evidence'] },
-    operationalLaneIsolation: { score100: laneIsolation.ok ? 100 : 0, evidence: laneIsolation.violations },
-    foundationalMicroAudits: { score100: mprComplete ? 100 : 0, evidence: [mpr.source].filter(Boolean) },
-    transformationalMicroAudits: { score100: mprComplete ? 100 : 0, evidence: [mpr.source].filter(Boolean) },
+    documentationTaxonomyLifecycle: { score100: docsScore, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: [{ command: docsIaRun?.command, score100: docsIaScore }, { command: docsTreeRun?.command, score100: docsTreeScore }, { command: docsLinkRun?.command, score100: docsLinkScore }], applicable: true },
+    featureSpecRegistryPrd: { score100: featureScore, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: ['docs:feature-spec:check evidence'], applicable: true },
+    roadmapGoalsMilestonesWorkstream: { score100: roadmapScore, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: ['roadmap/goals/milestone evidence'], applicable: true },
+    operationalLaneIsolation: { score100: laneIsolation.ok ? 100 : 0, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: laneIsolation.violations, applicable: true },
+    mprComposite: { score100: mpr.composite100 ?? 0, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: [mpr.source].filter(Boolean), applicable: true },
+    signalMaturity: { score100: signal.score100 ?? 0, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: [signal.source].filter(Boolean), applicable: true },
+    foundationalMicroAudits: { score100: mpr.foundationalMicroScore100, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: mpr.foundationalMicros, applicable: true },
+    transformationalMicroAudits: { score100: mpr.transformationalMicroScore100, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: mpr.transformationalMicros, applicable: true },
   };
+  const phaseLoopRows = [
+    { phaseId: 'documentationTaxonomyLifecycle', area: 'Documentation hygiene' },
+    { phaseId: 'featureSpecRegistryPrd', area: 'Feature/spec registry' },
+    { phaseId: 'roadmapGoalsMilestonesWorkstream', area: 'Roadmap/goals/milestones' },
+    { phaseId: 'operationalLaneIsolation', area: 'Operational lane isolation' },
+    { phaseId: 'mprComposite', area: 'MPR composite' },
+    { phaseId: 'signalMaturity', area: 'SIGNAL maturity' },
+    { phaseId: 'foundationalMicroAudits', area: 'Foundational micro-audits' },
+    { phaseId: 'transformationalMicroAudits', area: 'Transformational micro-audits' },
+  ];
+  const phaseLoop = phaseLoopRows.map(({ phaseId, area }, index) => {
+    const phase = phaseResults[phaseId];
+    const blocker = blockers.find((row) => row.area === area)?.blocker ?? null;
+    return {
+      phaseIndex: index + 1,
+      phaseId,
+      area,
+      score100: phase.score100,
+      benchmark100: phase.benchmark100,
+      applicable: phase.applicable,
+      loopUntil: phase.loopUntil,
+      nextRemediation: phase.score100 >= phase.benchmark100 ? null : blocker,
+    };
+  });
 
   return {
-    schema: 'gtcx://fabric-os/repo-cleanup-mpr-signal-acceptance/v1',
+    schema: 'gtcx://fabric-os/repo-cleanup-mpr-signal-acceptance/v2',
     repo: REPO,
     branch,
     commit,
@@ -318,28 +558,32 @@ function buildWitness() {
       blockers,
       nextRemediation: blockers[0] ?? null,
     },
+    acceptance,
     mpr: {
       composite100: mpr.composite100,
       source: mpr.source,
       pillars: mpr.pillars,
       foundational: {
-        score100: mpr.foundationComposite100 ?? null,
-        microAudits: taxonomyMicroAudits('foundational'),
+        score100: mpr.foundationalMicroScore100,
+        microAudits: mpr.foundationalMicros,
       },
       transformational: {
-        score100: mpr.fullComposite100 ?? null,
-        microAudits: taxonomyMicroAudits('transformational'),
+        score100: mpr.transformationalMicroScore100,
+        microAudits: mpr.transformationalMicros,
       },
     },
     signal,
     phaseResults,
+    phaseLoop,
     inventory: {
       path: 'audit/evidence/repo-folder-file-spec-inventory-latest.json',
-      lossless: inventoryOk,
+      lossless: inventoryScore === 100,
+      score100: inventoryScore,
     },
     archive: {
       path: 'audit/evidence/repo-cleanup-archive-manifest-latest.json',
-      recoverable: archiveOk,
+      recoverable: archiveScore === 100,
+      score100: archiveScore,
     },
     acceptanceTable: rows,
     commands: [
@@ -356,6 +600,11 @@ function buildWitness() {
         mprPillars: ['Agentic Empowerment', 'Compliance'],
         signalDimensions: ['Actionable', 'Specific'],
       }] : []),
+      ...(docsIaRun ? [{ command: docsIaRun.command, cwd: ROOT, exitCode: docsIaRun.exitCode, score100: docsIaScore, ownerContract: 'canon-os', consumerContract: REPO, mprPillars: ['Compliance', 'World Class'], signalDimensions: ['Navigable', 'Grounded'] }] : []),
+      ...(docsTreeRun ? [{ command: docsTreeRun.command, cwd: ROOT, exitCode: docsTreeRun.exitCode, score100: docsTreeScore, ownerContract: 'canon-os', consumerContract: REPO, mprPillars: ['Compliance', 'Craft', 'World Class'], signalDimensions: ['Navigable', 'Lossless'] }] : []),
+      ...(docsLinkRun ? [{ command: docsLinkRun.command, cwd: ROOT, exitCode: docsLinkRun.exitCode, score100: docsLinkScore, ownerContract: REPO, consumerContract: REPO, mprPillars: ['World Class', 'Trust & Safety'], signalDimensions: ['Navigable', 'Grounded'] }] : []),
+      ...(agileRun ? [{ command: agileRun.command, cwd: ROOT, exitCode: agileRun.exitCode, score100: agileScore, ownerContract: 'agile-os', consumerContract: REPO, mprPillars: ['Product/Ecosystem Integration'], signalDimensions: ['Actionable', 'Integrated'] }] : []),
+      ...(opsRun ? [{ command: opsRun.command, cwd: ROOT, exitCode: opsRun.exitCode, score100: opsScore, ownerContract: REPO, consumerContract: REPO, mprPillars: ['Technical Excellence', 'Compliance'], signalDimensions: ['Grounded', 'Integrated'] }] : []),
     ],
     blockers,
   };
@@ -370,7 +619,7 @@ function renderReport(witness) {
     return text.length > max ? `${text.slice(0, max)}...` : text;
   };
   const table = witness.acceptanceTable
-    .map((row) => `| ${cell(row.area)} | ${cell(row.result)} | ${cell(preview(row.evidence))} | ${cell(row.mpr.join(', '))} | ${cell(row.signal.join(', '))} |`)
+    .map((row) => `| ${cell(row.area)} | ${cell(row.applicable ? row.score100 : 'N/A')} | ${cell(row.benchmark100)} | ${cell(preview(row.evidence))} | ${cell(row.mpr.join(', '))} | ${cell(row.signal.join(', '))} |`)
     .join('\n');
   const blockers = witness.blockers.length
     ? witness.blockers.map((b) => `- ${b.area}: ${b.blocker} (${preview(b.evidence)})`).join('\n')
@@ -394,17 +643,19 @@ MPR: **${witness.mpr.composite100 ?? 'unverified'}/100**
 
 SIGNAL: **${witness.signal.level ?? 'unverified'} / ${witness.signal.score100 ?? 'unverified'}**
 
+Acceptance score: **${witness.acceptance.score100}/100** (**${witness.acceptance.benchmarkCount}/${witness.acceptance.areaCount}** controls at benchmark)
+
 Runbook: \`${witness.runbook}\`
 
 ## Acceptance Table
 
-| Area | Result | Evidence | MPR linkage | SIGNAL linkage |
-| --- | --- | --- | --- | --- |
+| Area | Score | Benchmark | Evidence | MPR linkage | SIGNAL linkage |
+| --- | ---: | ---: | --- | --- | --- |
 ${table}
 
 ## Loop State
 
-| Iteration | MPR | SIGNAL | Blocking dimensions | Remediation | Result |
+| Iteration | MPR | SIGNAL | Blocking dimensions | Remediation | Decision |
 | --- | ---: | --- | --- | --- | --- |
 | ${witness.loop.iteration} | ${witness.loop.current.mprComposite100 ?? 'unverified'} | ${witness.loop.current.signalLevel ?? 'unverified'} / ${witness.loop.current.signalScore100 ?? 'unverified'} | ${witness.blockers.map((b) => b.area).join(', ') || 'none'} | ${witness.loop.nextRemediation?.blocker ?? 'none'} | ${witness.decision} |
 
@@ -434,10 +685,11 @@ function main() {
     writeFileSync(join(ROOT, reportRel), report);
   }
   if (JSON_OUT) {
-    console.log(JSON.stringify(witness, null, 2));
+    console.log(JSON.stringify(witness));
   } else {
     console.log(`repository assurance acceptance — ${witness.repo}: ${witness.decision}`);
     console.log(`MPR ${witness.mpr.composite100 ?? 'unverified'}/100 · SIGNAL ${witness.signal.level ?? 'unverified'} / ${witness.signal.score100 ?? 'unverified'}`);
+    console.log(`acceptance ${witness.acceptance.score100}/100 controls ${witness.acceptance.benchmarkCount}/${witness.acceptance.areaCount} at benchmark`);
     console.log(`blockers: ${witness.blockers.length}`);
     if (WRITE) {
       console.log(`report: ${reportRel}`);

@@ -40,6 +40,102 @@
         "worldClass": 100,
         "trustAndSafety": 92
       }
+    },
+    {
+      "ts": "2026-06-30T12:32:25.513Z",
+      "metrics": {
+        "compliance": 69,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 90
+      }
+    },
+    {
+      "ts": "2026-06-30T17:01:58.065Z",
+      "metrics": {
+        "compliance": 69,
+        "technicalExcellence": 97,
+        "craft": 98,
+        "worldClass": 96,
+        "trustAndSafety": 83
+      }
+    },
+    {
+      "ts": "2026-06-30T17:12:14.223Z",
+      "metrics": {
+        "compliance": 69,
+        "technicalExcellence": 97,
+        "craft": 98,
+        "worldClass": 96,
+        "trustAndSafety": 83
+      }
+    },
+    {
+      "ts": "2026-06-30T17:15:51.717Z",
+      "metrics": {
+        "compliance": 93,
+        "technicalExcellence": 97,
+        "craft": 98,
+        "worldClass": 96,
+        "trustAndSafety": 83
+      }
+    },
+    {
+      "ts": "2026-06-30T17:17:56.928Z",
+      "metrics": {
+        "compliance": 100,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 100,
+        "creativityInnovation": 95,
+        "commercialValue": 92,
+        "defensiveMoat": 93,
+        "agenticEmpowerment": 94,
+        "productEcosystemIntegration": 94,
+        "ipMagic": 98
+      }
+    },
+    {
+      "ts": "2026-06-30T17:18:48.518Z",
+      "metrics": {
+        "compliance": 93,
+        "technicalExcellence": 97,
+        "craft": 98,
+        "worldClass": 96,
+        "trustAndSafety": 83
+      }
+    },
+    {
+      "ts": "2026-06-30T18:00:12.459Z",
+      "metrics": {
+        "compliance": 100,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 100
+      }
+    },
+    {
+      "ts": "2026-06-30T18:00:22.933Z",
+      "metrics": {
+        "compliance": 100,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 100
+      }
+    },
+    {
+      "ts": "2026-06-30T18:15:22.579Z",
+      "metrics": {
+        "compliance": 100,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 100
+      }
     }
   ]
 }

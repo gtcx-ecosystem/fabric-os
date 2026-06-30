@@ -1,47 +1,91 @@
 {
   "schema": "gtcx://fabric-os/aaas-cadence-forecast/v1",
-  "snapshots": 4,
-  "intervalDays": 0,
-  "metricCount": 5,
+  "snapshots": 13,
+  "intervalDays": 0.1,
+  "metricCount": 11,
   "regressions": [],
-  "forecasts": [],
+  "forecasts": [
+    {
+      "metric": "worldClass",
+      "current": 100,
+      "threshold": 85,
+      "breachInSnapshots": 227.5,
+      "breachInDays": 34
+    },
+    {
+      "metric": "technicalExcellence",
+      "current": 100,
+      "threshold": 85,
+      "breachInSnapshots": 303.3,
+      "breachInDays": 45.3
+    },
+    {
+      "metric": "craft",
+      "current": 100,
+      "threshold": 85,
+      "breachInSnapshots": 455,
+      "breachInDays": 68
+    }
+  ],
   "metrics": {
     "compliance": {
-      "current": 69,
-      "previous": 69,
-      "trend": "flat",
-      "slopePerSnapshot": 0,
+      "current": 100,
+      "previous": 100,
+      "trend": "improving",
+      "slopePerSnapshot": 3.42,
       "delta": 0,
       "regressed": false,
       "crossedBelow": false,
-      "forecastSnaps": 0,
+      "forecastSnaps": null,
       "threshold": 85
     },
     "technicalExcellence": {
       "current": 100,
       "previous": 100,
       "trend": "flat",
-      "slopePerSnapshot": 0,
+      "slopePerSnapshot": -0.05,
       "delta": 0,
       "regressed": false,
       "crossedBelow": false,
-      "forecastSnaps": null,
+      "forecastSnaps": 303.3,
       "threshold": 85
     },
     "craft": {
       "current": 100,
       "previous": 100,
       "trend": "flat",
-      "slopePerSnapshot": 0,
+      "slopePerSnapshot": -0.03,
+      "delta": 0,
+      "regressed": false,
+      "crossedBelow": false,
+      "forecastSnaps": 455,
+      "threshold": 85
+    },
+    "worldClass": {
+      "current": 100,
+      "previous": 100,
+      "trend": "flat",
+      "slopePerSnapshot": -0.07,
+      "delta": 0,
+      "regressed": false,
+      "crossedBelow": false,
+      "forecastSnaps": 227.5,
+      "threshold": 85
+    },
+    "trustAndSafety": {
+      "current": 100,
+      "previous": 100,
+      "trend": "improving",
+      "slopePerSnapshot": 0.62,
       "delta": 0,
       "regressed": false,
       "crossedBelow": false,
       "forecastSnaps": null,
       "threshold": 85
     },
-    "worldClass": {
-      "current": 100,
-      "previous": 100,
+    "creativityInnovation": {
+      "current": 95,
+      "previous": null,
       "trend": "flat",
       "slopePerSnapshot": 0,
       "delta": 0,
@@ -50,9 +94,53 @@
       "forecastSnaps": null,
       "threshold": 85
     },
-    "trustAndSafety": {
+    "commercialValue": {
       "current": 92,
-      "previous": 92,
+      "previous": null,
+      "trend": "flat",
+      "slopePerSnapshot": 0,
+      "delta": 0,
+      "regressed": false,
+      "crossedBelow": false,
+      "forecastSnaps": null,
+      "threshold": 85
+    },
+    "defensiveMoat": {
+      "current": 93,
+      "previous": null,
+      "trend": "flat",
+      "slopePerSnapshot": 0,
+      "delta": 0,
+      "regressed": false,
+      "crossedBelow": false,
+      "forecastSnaps": null,
+      "threshold": 85
+    },
+    "agenticEmpowerment": {
+      "current": 94,
+      "previous": null,
+      "trend": "flat",
+      "slopePerSnapshot": 0,
+      "delta": 0,
+      "regressed": false,
+      "crossedBelow": false,
+      "forecastSnaps": null,
+      "threshold": 85
+    },
+    "productEcosystemIntegration": {
+      "current": 94,
+      "previous": null,
+      "trend": "flat",
+      "slopePerSnapshot": 0,
+      "delta": 0,
+      "regressed": false,
+      "crossedBelow": false,
+      "forecastSnaps": null,
+      "threshold": 85
+    },
+    "ipMagic": {
+      "current": 98,
+      "previous": null,
       "trend": "flat",
       "slopePerSnapshot": 0,
       "delta": 0,
@@ -63,6 +151,6 @@
     }
   },
   "ok": true,
-  "checkedAt": "2026-06-28T23:49:34.562Z",
+  "checkedAt": "2026-06-30T18:15:22.579Z",
   "repo": "fabric-os"
 }

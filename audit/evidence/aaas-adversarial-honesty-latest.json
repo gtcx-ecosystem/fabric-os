@@ -1,68 +1,92 @@
 {
   "schema": "gtcx://fabric-os/aaas-adversarial-honesty/v1",
   "total": 5,
-  "upheldCount": 4,
-  "quarantinedCount": 1,
-  "quarantined": [
-    {
-      "id": "trustAndSafety",
-      "score": 92,
-      "threshold": 85,
-      "provisional": false,
-      "survives": false,
-      "quarantined": true,
-      "refutedBy": [
-        {
-          "challenge": "fabricated",
-          "detail": "score 92 with no leaf evidence"
-        }
-      ],
-      "provenance": "sha256:217d19e4962ea6af"
-    }
-  ],
+  "verifiedCount": 1,
+  "unassessableCount": 4,
+  "quarantinedCount": 0,
+  "upheldCount": 1,
+  "depthUnverified": ["technicalExcellence", "craft", "worldClass", "trustAndSafety"],
+  "quarantined": [],
   "upheld": [
     {
       "id": "compliance",
-      "score": 69,
+      "score": 100,
       "threshold": 85,
-      "provisional": true,
+      "provisional": false,
       "survives": true,
       "quarantined": false,
       "refutedBy": [],
-      "provenance": "sha256:225ab4f3e4bd2a1a"
-    },
+      "notes": [],
+      "provenance": "sha256:a64edfc41720b6cd"
+    }
+  ],
+  "unassessable": [
     {
       "id": "technicalExcellence",
       "score": 100,
       "threshold": 85,
-      "provisional": true,
+      "provisional": false,
       "survives": true,
       "quarantined": false,
       "refutedBy": [],
-      "provenance": "sha256:9f20c050ea8492f3"
+      "notes": [
+        {
+          "note": "depth-unverified",
+          "detail": "pillar-level aggregate (no leaf decomposition) — sourced, lower confidence"
+        }
+      ],
+      "provenance": "sha256:7cb32c10db6ffe0f"
     },
     {
       "id": "craft",
       "score": 100,
       "threshold": 85,
-      "provisional": true,
+      "provisional": false,
       "survives": true,
       "quarantined": false,
       "refutedBy": [],
-      "provenance": "sha256:b9c3501e3934b772"
+      "notes": [
+        {
+          "note": "depth-unverified",
+          "detail": "pillar-level aggregate (no leaf decomposition) — sourced, lower confidence"
+        }
+      ],
+      "provenance": "sha256:a496dbc4b322d2c9"
     },
     {
       "id": "worldClass",
       "score": 100,
       "threshold": 85,
-      "provisional": true,
+      "provisional": false,
       "survives": true,
       "quarantined": false,
       "refutedBy": [],
-      "provenance": "sha256:6dba0cd236f76c41"
+      "notes": [
+        {
+          "note": "depth-unverified",
+          "detail": "pillar-level aggregate (no leaf decomposition) — sourced, lower confidence"
+        }
+      ],
+      "provenance": "sha256:c4cd739ec3a7e3f5"
+    },
+    {
+      "id": "trustAndSafety",
+      "score": 100,
+      "threshold": 85,
+      "provisional": false,
+      "survives": true,
+      "quarantined": false,
+      "refutedBy": [],
+      "notes": [
+        {
+          "note": "depth-unverified",
+          "detail": "pillar-level aggregate (no leaf decomposition) — sourced, lower confidence"
+        }
+      ],
+      "provenance": "sha256:b2ce95653c20665f"
     }
   ],
-  "ok": false,
+  "ok": true,
   "repo": "fabric-os",
-  "checkedAt": "2026-06-28T23:49:22.625Z"
+  "checkedAt": "2026-06-30T18:15:02.204Z"
 }

@@ -1,0 +1,52 @@
+{
+  "schema": "gtcx://fabric-os/aaas-loop/v2",
+  "repo": "fabric-os",
+  "generatedAt": "2026-06-30T18:15:22.586Z",
+  "score100": 100,
+  "benchmark100": 100,
+  "benchmarkCount": 5,
+  "stepCount": 5,
+  "belowBenchmark": [],
+  "results": [
+    {
+      "label": "audit (MPR+SIGNAL)",
+      "script": "aaas-audit.mjs",
+      "required": false,
+      "score100": 100,
+      "exitCode": 0,
+      "detail": null
+    },
+    {
+      "label": "handoff",
+      "script": "aaas-handoff.mjs",
+      "required": false,
+      "score100": 100,
+      "exitCode": 0,
+      "detail": null
+    },
+    {
+      "label": "honesty (adversarial)",
+      "script": "aaas-adversarial-honesty.mjs",
+      "required": true,
+      "score100": 100,
+      "exitCode": 0,
+      "detail": null
+    },
+    {
+      "label": "ownership",
+      "script": "aaas-ownership-check.mjs",
+      "required": true,
+      "score100": 100,
+      "exitCode": 0,
+      "detail": null
+    },
+    {
+      "label": "cadence",
+      "script": "aaas-cadence.mjs",
+      "required": false,
+      "score100": 100,
+      "exitCode": 0,
+      "detail": null
+    }
+  ]
+}

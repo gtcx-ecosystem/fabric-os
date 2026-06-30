@@ -1,89 +1,139 @@
 {
   "schema": "gtcx://fabric-os/aaas-contract-check/v1",
   "provider": "fabric-os",
-  "checkedAt": "2026-06-28T21:37:27.754Z",
+  "checkedAt": "2026-06-30T18:24:06.677Z",
   "contractSor": "machine/spec/aaas-audit-contract.json",
   "repoCount": 20,
-  "conformant": 20,
-  "nonConformant": 0,
+  "conformant": 16,
+  "nonConformant": 4,
+  "score100": 98,
   "results": [
     {
       "repo": "fabric-os",
       "profile": "platform",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [],
       "staleWitnesses": 0,
-      "legacyStale": 66
+      "legacyStale": 77
     },
     {
       "repo": "bridge-os",
       "profile": "hub",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 120
+      "legacyStale": 142
     },
     {
       "repo": "canon-os",
       "profile": "hub",
-      "ok": true,
+      "ok": false,
+      "score100": 91,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": ["aaas-honesty-gate"],
+      "provisioningGaps": [],
       "staleWitnesses": 0,
-      "legacyStale": 55
+      "legacyStale": 70
     },
     {
       "repo": "baseline-os",
       "profile": "hub",
-      "ok": true,
+      "ok": false,
+      "score100": 91,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": ["aaas-honesty-gate"],
+      "provisioningGaps": [],
       "staleWitnesses": 0,
-      "legacyStale": 86
+      "legacyStale": 89
     },
     {
       "repo": "agile-os",
       "profile": "hub",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 26
+      "legacyStale": 27
     },
     {
       "repo": "ecosystem-os",
       "profile": "hub",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 30
+      "legacyStale": 34
     },
     {
       "repo": "gtcx-os",
       "profile": "platform",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 44
+      "legacyStale": 48
     },
     {
       "repo": "markets-os",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
       "legacyStale": 50
     },
@@ -91,39 +141,66 @@
       "repo": "terra-os",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 36
+      "legacyStale": 40
     },
     {
       "repo": "sensei-os",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 36
+      "legacyStale": 38
     },
     {
       "repo": "griot-ai",
       "profile": "product",
-      "ok": true,
+      "ok": false,
+      "score100": 91,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": ["aaas-honesty-gate"],
+      "provisioningGaps": [],
       "staleWitnesses": 0,
-      "legacyStale": 31
+      "legacyStale": 36
     },
     {
       "repo": "nyota-ai",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
       "legacyStale": 28
     },
@@ -131,82 +208,141 @@
       "repo": "veritas-ai",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 31
+      "legacyStale": 32
     },
     {
       "repo": "venture-os",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 18
+      "legacyStale": 20
     },
     {
       "repo": "ledger-os",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 8
+      "legacyStale": 24
     },
     {
       "repo": "ledger-ui",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 33
+      "legacyStale": 40
     },
     {
       "repo": "inspection-os",
       "profile": "product",
-      "ok": true,
+      "ok": false,
+      "score100": 91,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": ["aaas-honesty-gate"],
+      "provisioningGaps": [],
       "staleWitnesses": 0,
-      "legacyStale": 5
+      "legacyStale": 7
     },
     {
       "repo": "terminal-os",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 56
+      "legacyStale": 76
     },
     {
       "repo": "exploration-os",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 35
+      "legacyStale": 37
     },
     {
       "repo": "compliance-os",
       "profile": "product",
       "ok": true,
+      "score100": 100,
       "hasPin": true,
       "missingFolders": [],
       "missingAudits": [],
+      "failedAudits": [],
+      "provisioningGaps": [
+        {
+          "type": "aaas-honesty-gate",
+          "reason": "empty capability registry; honesty coverage not assessable"
+        }
+      ],
       "staleWitnesses": 0,
-      "legacyStale": 62
+      "legacyStale": 77
     }
   ],
-  "ok": true
+  "ok": false
 }

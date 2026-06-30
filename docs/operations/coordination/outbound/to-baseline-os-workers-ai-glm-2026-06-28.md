@@ -12,6 +12,10 @@ protocol: P24
 blocksIR: false
 owner: baseline-os
 evidence: docs/architecture/cloudflare-workers-ai-glm-assessment-2026-06-27.md
+document_type: runbook
+tier: operating
+tags: [fabric-os, coordination]
+review_cycle: on-change
 ---
 
 # To baseline-os — register Cloudflare Workers AI + GLM-5.2 in the cost-router

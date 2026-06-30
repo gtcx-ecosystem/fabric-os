@@ -9,6 +9,10 @@ authorityClass: A
 protocol: P24
 blocksIR: false
 owner: bridge-os
+document_type: runbook
+tier: operating
+tags: [fabric-os, coordination]
+review_cycle: on-change
 ---
 
 # To bridge-os — retire (or integrate) the legacy five-core audit

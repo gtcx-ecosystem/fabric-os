@@ -12,6 +12,10 @@ protocol: P24
 blocksIR: false
 owner: bridge-os
 evidence: audit/assurance-apparatus-mpr-audit-2026-06-27.md
+document_type: runbook
+tier: operating
+tags: [fabric-os, coordination]
+review_cycle: on-change
 ---
 
 # To bridge-os — assurance-apparatus P0s (you own the engine SoR)

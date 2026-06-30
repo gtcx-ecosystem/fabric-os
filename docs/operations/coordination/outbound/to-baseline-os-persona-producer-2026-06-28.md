@@ -10,6 +10,10 @@ authorityClass: A
 protocol: P24
 blocksIR: false
 owner: baseline-os
+document_type: runbook
+tier: operating
+tags: [fabric-os, coordination]
+review_cycle: on-change
 ---
 
 # To baseline-os — own the persona producer + wire it fleet-wide

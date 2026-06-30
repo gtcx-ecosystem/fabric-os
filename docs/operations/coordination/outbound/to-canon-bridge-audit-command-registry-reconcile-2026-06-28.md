@@ -11,6 +11,10 @@ protocol: P24
 blocksIR: false
 owner: [canon-os, bridge-os]
 evidence: machine/spec/aaas-command-surface.json
+document_type: runbook
+tier: operating
+tags: [fabric-os, coordination]
+review_cycle: on-change
 ---
 
 # To canon-os + bridge-os — reconcile audit command registries to the canonical surface

@@ -20,6 +20,7 @@ Read first:
 - [`agent-deployment-ops-instructions-2026-06-30.md`](./agent-deployment-ops-instructions-2026-06-30.md)
 - [`agent-deployment-ops-shareable-brief-2026-06-30.md`](./agent-deployment-ops-shareable-brief-2026-06-30.md)
 - [`infra-ai-cost-strategy-2026-06-30.md`](./infra-ai-cost-strategy-2026-06-30.md)
+- [`fleet-deployment-matrix-2026-06-30.md`](./fleet-deployment-matrix-2026-06-30.md)
 - [`github-billing-independent-deploy-handoff-2026-06-30.md`](./github-billing-independent-deploy-handoff-2026-06-30.md)
 - [`../runbooks/package-registry-continuity.md`](../runbooks/package-registry-continuity.md)
 

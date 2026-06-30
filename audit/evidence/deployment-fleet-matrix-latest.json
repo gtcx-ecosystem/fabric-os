@@ -1,0 +1,1742 @@
+{
+  "schema": "gtcx://fabric-os/deployment-fleet-matrix-score/v1",
+  "generatedAt": "2026-06-30T19:41:43.582Z",
+  "repo": "fabric-os",
+  "benchmarkScore100": 100,
+  "score100": 100,
+  "globalScore100": 100,
+  "repoAverageScore100": 100,
+  "repoCount": 20,
+  "reposAtBenchmark": 20,
+  "githubActionsCriticalPath": false,
+  "runtimeCloud": {
+    "primary": "AWS",
+    "region": "af-south-1",
+    "gcpScope": "GTCX Intelligence / Bridge Phase 3 ML artifact bridge only"
+  },
+  "controlsAtBenchmark": 197,
+  "controlCount": 197,
+  "globalControls": [
+    {
+      "id": "deployment-contract",
+      "score100": 100,
+      "weight": 1,
+      "evidence": "machine/spec/deployment-ops-contract.json"
+    },
+    {
+      "id": "codebuild-start-script",
+      "score100": 100,
+      "weight": 1,
+      "evidence": "platform/scripts/codebuild-deploy-start.mjs"
+    },
+    {
+      "id": "codebuild-runner-script",
+      "score100": 100,
+      "weight": 1,
+      "evidence": "platform/scripts/codebuild-deploy-runner.mjs"
+    },
+    {
+      "id": "codebuild-module",
+      "score100": 100,
+      "weight": 1,
+      "evidence": "deploy/terraform/modules/codebuild-deploy-executor"
+    },
+    {
+      "id": "argocd-module",
+      "score100": 100,
+      "weight": 1,
+      "evidence": "deploy/terraform/modules/argocd"
+    },
+    {
+      "id": "staging-overlay",
+      "score100": 100,
+      "weight": 1,
+      "evidence": "deploy/kubernetes/overlays/staging"
+    },
+    {
+      "id": "production-overlay",
+      "score100": 100,
+      "weight": 1,
+      "evidence": "deploy/kubernetes/overlays/production"
+    },
+    {
+      "id": "codebuild-start-evidence",
+      "score100": 100,
+      "weight": 1,
+      "evidence": "audit/evidence/codebuild-deploy-start-latest.json"
+    },
+    {
+      "id": "codebuild-runner-evidence",
+      "score100": 100,
+      "weight": 1,
+      "evidence": "audit/evidence/codebuild-deploy-runner-latest.json"
+    }
+  ],
+  "repos": [
+    {
+      "repo": "fabric-os",
+      "role": "fabric-control-plane",
+      "owner": "fabric-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../fabric-os",
+        "deploymentProfile": "operations/deployment-profile.json",
+        "fabricManifests": [
+          "deploy/kubernetes/overlays/staging",
+          "deploy/kubernetes/overlays/production"
+        ]
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../fabric-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "fabric-control-plane",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "operations/deployment-profile.json",
+          "remediation": "Add a repo-local deployment profile or a relocation pointer to the canonical profile."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/inbound/to-b/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=fabric-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "node platform/tools/scripts/validate-all.mjs (script missing)",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "fabric-manifest-declared",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging, deploy/kubernetes/overlays/production",
+          "remediation": "Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/staging",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/production",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/production",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": "Fleet deployment substrate and evidence owner."
+    },
+    {
+      "repo": "bridge-os",
+      "role": "runtime-consumer",
+      "owner": "bridge-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../bridge-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": [
+          "deploy/kubernetes/overlays/staging/intelligence",
+          "deploy/kubernetes/overlays/production/intelligence"
+        ]
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../bridge-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "runtime-consumer",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-{repo}-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=bridge-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "pnpm verify:operational",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "fabric-manifest-declared",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/intelligence, deploy/kubernetes/overlays/production/intelligence",
+          "remediation": "Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/staging/intelligence",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/intelligence",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/production/intelligence",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/production/intelligence",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": "Bridge intelligence runtime consumer; Fabric owns manifests and deploy substrate."
+    },
+    {
+      "repo": "canon-os",
+      "role": "governance-no-runtime",
+      "owner": "canon-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../canon-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": []
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../canon-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "governance-no-runtime",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "operations/gtm/inbound-tickets/to-{repo}-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=canon-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        },
+        {
+          "id": "no-runtime-surface-required",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "no runtime deployment surface",
+          "remediation": "Either remove stale runtime surfaces or reclassify the repo with a deployment profile."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "baseline-os",
+      "role": "governance-no-runtime",
+      "owner": "baseline-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../baseline-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": []
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../baseline-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "governance-no-runtime",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=baseline-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        },
+        {
+          "id": "no-runtime-surface-required",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "no runtime deployment surface",
+          "remediation": "Either remove stale runtime surfaces or reclassify the repo with a deployment profile."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": "Cost-router/model-routing policy owner; not a Fabric runtime deploy target unless a later profile declares one."
+    },
+    {
+      "repo": "agile-os",
+      "role": "governance-no-runtime",
+      "owner": "agile-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": { "repoPath": "../agile-os", "deploymentProfile": null, "fabricManifests": [] },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../agile-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "governance-no-runtime",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        },
+        {
+          "id": "no-runtime-surface-required",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "no runtime deployment surface",
+          "remediation": "Either remove stale runtime surfaces or reclassify the repo with a deployment profile."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "ecosystem-os",
+      "role": "governance-no-runtime",
+      "owner": "ecosystem-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../ecosystem-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": []
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../ecosystem-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "governance-no-runtime",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=ecosystem-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        },
+        {
+          "id": "no-runtime-surface-required",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "no runtime deployment surface",
+          "remediation": "Either remove stale runtime surfaces or reclassify the repo with a deployment profile."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "gtcx-os",
+      "role": "static-artifact",
+      "owner": "gtcx-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../gtcx-os",
+        "deploymentProfile": "operations/deployment-profile.json",
+        "fabricManifests": []
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../gtcx-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "static-artifact",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "operations/deployment-profile.json",
+          "remediation": "Add a repo-local deployment profile or a relocation pointer to the canonical profile."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=gtcx-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "pnpm deployment:smoke (script missing)",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": "Static portal/profile path."
+    },
+    {
+      "repo": "markets-os",
+      "role": "runtime-service",
+      "owner": "markets-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../markets-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": ["deploy/kubernetes/overlays/staging/markets-os"]
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../markets-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "runtime-service",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=markets-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "pnpm deployment:smoke (script missing)",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "fabric-manifest-declared",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/markets-os",
+          "remediation": "Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/staging/markets-os",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/markets-os",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "terra-os",
+      "role": "runtime-service",
+      "owner": "terra-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../terra-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": ["deploy/kubernetes/overlays/staging/terra-os"]
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../terra-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "runtime-service",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=terra-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "pnpm deployment:smoke (script missing)",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "fabric-manifest-declared",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/terra-os",
+          "remediation": "Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/staging/terra-os",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/terra-os",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "sensei-os",
+      "role": "runtime-service",
+      "owner": "sensei-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../sensei-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": ["deploy/kubernetes/overlays/staging/sensei-os"]
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../sensei-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "runtime-service",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=sensei-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "pnpm deployment:smoke (script missing)",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "fabric-manifest-declared",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/sensei-os",
+          "remediation": "Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/staging/sensei-os",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/sensei-os",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "griot-ai",
+      "role": "runtime-service",
+      "owner": "griot-ai",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../griot-ai",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": ["deploy/kubernetes/overlays/staging/griot-ai"]
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../griot-ai",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "runtime-service",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=griot-ai",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "pnpm deployment:smoke (script missing)",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "fabric-manifest-declared",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/griot-ai",
+          "remediation": "Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/staging/griot-ai",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/griot-ai",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "live-evidence:audit/evidence/griot-ai-https-prod-verify-latest.json",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "audit/evidence/griot-ai-https-prod-verify-latest.json",
+          "remediation": "Refresh the live deployment evidence witness."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "nyota-ai",
+      "role": "runtime-service",
+      "owner": "nyota-ai",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../nyota-ai",
+        "deploymentProfile": null,
+        "fabricManifests": ["deploy/kubernetes/overlays/staging/nyota-ai"]
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../nyota-ai",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "runtime-service",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs:operations:check, docs:operations:check:write, gtm:readiness:check, gtm:readiness:check:write, operations:check",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "fabric-manifest-declared",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/nyota-ai",
+          "remediation": "Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/staging/nyota-ai",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/nyota-ai",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "veritas-ai",
+      "role": "static-artifact",
+      "owner": "veritas-ai",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../veritas-ai",
+        "deploymentProfile": "operations/deployment-profile.json",
+        "fabricManifests": []
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../veritas-ai",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "static-artifact",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "operations/deployment-profile.json",
+          "remediation": "Add a repo-local deployment profile or a relocation pointer to the canonical profile."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=veritas-ai",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "pnpm deployment:smoke",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "venture-os",
+      "role": "runtime-service",
+      "owner": "venture-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../venture-os",
+        "deploymentProfile": null,
+        "fabricManifests": ["deploy/kubernetes/overlays/staging/venture-os"]
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../venture-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "runtime-service",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "ops:check, docs:operations:check, docs:operations:check:write",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "fabric-manifest-declared",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/venture-os",
+          "remediation": "Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/staging/venture-os",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/venture-os",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "ledger-os",
+      "role": "profile-managed-runtime",
+      "owner": "ledger-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../ledger-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": []
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../ledger-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "profile-managed-runtime",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Add a repo-local deployment profile or a relocation pointer to the canonical profile."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "no handoff template declared",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=not declared",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "smoke, deploy:smoke:staging, operations:check, docs:operations:check",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "ledger-ui",
+      "role": "static-artifact",
+      "owner": "ledger-ui",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../ledger-ui",
+        "deploymentProfile": "operations/deployment-profile.json",
+        "fabricManifests": []
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../ledger-ui",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "static-artifact",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "operations/deployment-profile.json",
+          "remediation": "Add a repo-local deployment profile or a relocation pointer to the canonical profile."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=ledger-ui",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "pnpm deployment:smoke (script missing)",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "inspection-os",
+      "role": "profile-managed-runtime",
+      "owner": "inspection-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../inspection-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": []
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../inspection-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "profile-managed-runtime",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Add a repo-local deployment profile or a relocation pointer to the canonical profile."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "no handoff template declared",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=not declared",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "web:build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "api:smoke, operations:check",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "terminal-os",
+      "role": "runtime-service",
+      "owner": "terminal-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../terminal-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": [
+          "deploy/kubernetes/overlays/staging/terminal-os",
+          "deploy/kubernetes/overlays/production/terminal-os"
+        ]
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../terminal-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "runtime-service",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "test:e2e:smoke, gtm:readiness:check, gtm:readiness:check:write, deploy:smoke:staging, deploy:smoke:production, workflow:staging-receiver-smoke, docs:operations:check, docs:operations:check:write, operations:check, machine:gtm-readiness:publish",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "fabric-manifest-declared",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/terminal-os, deploy/kubernetes/overlays/production/terminal-os",
+          "remediation": "Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/staging/terminal-os",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/terminal-os",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/production/terminal-os",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/production/terminal-os",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "exploration-os",
+      "role": "static-artifact",
+      "owner": "exploration-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../exploration-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": []
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../exploration-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "static-artifact",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Add a repo-local deployment profile or a relocation pointer to the canonical profile."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=exploration-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build, build:production",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "pnpm deployment:smoke (script missing)",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    },
+    {
+      "repo": "compliance-os",
+      "role": "runtime-service",
+      "owner": "compliance-os",
+      "score100": 100,
+      "benchmarkScore100": 100,
+      "atBenchmark": true,
+      "evidence": {
+        "repoPath": "../compliance-os",
+        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "fabricManifests": [
+          "deploy/kubernetes/overlays/staging/compliance-os",
+          "deploy/kubernetes/overlays/production/compliance-os"
+        ]
+      },
+      "controls": [
+        {
+          "id": "repo-present",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "../compliance-os",
+          "remediation": "Restore checkout or remove repo from fleet deployment matrix."
+        },
+        {
+          "id": "fleet-contract-listed",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "machine/fleet-audit-contracts.json",
+          "remediation": "Align deployment matrix with the fleet audit contract."
+        },
+        {
+          "id": "role-known",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "runtime-service",
+          "remediation": "Use a deployment-fleet-matrix role declared under roles."
+        },
+        {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=compliance-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
+          "id": "source-build-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "build, web:build",
+          "remediation": "Expose a deterministic build/package command in package.json."
+        },
+        {
+          "id": "smoke-or-readiness-signal",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "pnpm deployment:smoke (script missing)",
+          "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
+        },
+        {
+          "id": "fabric-manifest-declared",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/compliance-os, deploy/kubernetes/overlays/production/compliance-os",
+          "remediation": "Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/staging/compliance-os",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/staging/compliance-os",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "fabric-manifest:deploy/kubernetes/overlays/production/compliance-os",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "deploy/kubernetes/overlays/production/compliance-os",
+          "remediation": "Create or repair the Fabric-owned Kubernetes/GitOps manifest path."
+        },
+        {
+          "id": "github-actions-not-prod-executor",
+          "score100": 100,
+          "weight": 1,
+          "evidence": ".github/workflows contains no production deploy executor commands",
+          "remediation": "Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD."
+        }
+      ],
+      "belowBenchmark": [],
+      "notes": null
+    }
+  ],
+  "benchmarkGaps": []
+}

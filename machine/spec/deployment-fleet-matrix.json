@@ -1,0 +1,197 @@
+{
+  "$schema": "gtcx://fabric-os/deployment-fleet-matrix/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-30",
+  "ownerRepo": "fabric-os",
+  "benchmarkScore100": 100,
+  "principle": "Fabric OS owns fleet deployment execution, evidence, and runtime manifests. Owner repos own source code, image/package production, and app-specific smoke readiness.",
+  "runtimeCloud": {
+    "primary": "AWS",
+    "region": "af-south-1",
+    "gcpScope": "GTCX Intelligence / Bridge Phase 3 ML artifact bridge only"
+  },
+  "globalControls": {
+    "deploymentOpsContract": "machine/spec/deployment-ops-contract.json",
+    "codebuildStart": "platform/scripts/codebuild-deploy-start.mjs",
+    "codebuildRunner": "platform/scripts/codebuild-deploy-runner.mjs",
+    "argocdModule": "deploy/terraform/modules/argocd",
+    "codebuildModule": "deploy/terraform/modules/codebuild-deploy-executor",
+    "stagingOverlay": "deploy/kubernetes/overlays/staging",
+    "productionOverlay": "deploy/kubernetes/overlays/production",
+    "latestCodebuildStartEvidence": "audit/evidence/codebuild-deploy-start-latest.json",
+    "latestCodebuildRunnerEvidence": "audit/evidence/codebuild-deploy-runner-latest.json"
+  },
+  "roles": {
+    "fabric-control-plane": {
+      "description": "Owns AWS CodeBuild, Argo CD, Terraform, EKS access path, manifests, and deploy evidence.",
+      "requiresDeploymentProfile": true,
+      "requiresFabricManifest": true,
+      "requiresBuildScript": false,
+      "requiresSmokeOrReadiness": true
+    },
+    "runtime-service": {
+      "description": "Deployable product/service runtime. Owner repo must expose build and smoke/readiness signals; Fabric must carry runtime manifests or an explicit non-Kubernetes deployment profile.",
+      "requiresDeploymentProfile": false,
+      "requiresFabricManifest": true,
+      "requiresBuildScript": true,
+      "requiresSmokeOrReadiness": true
+    },
+    "static-artifact": {
+      "description": "Static/package artifact consumed by deployed apps. Owner repo must expose package/build and readiness signals; endpoint deployment is not required.",
+      "requiresDeploymentProfile": true,
+      "requiresFabricManifest": false,
+      "requiresBuildScript": true,
+      "requiresSmokeOrReadiness": true
+    },
+    "runtime-consumer": {
+      "description": "Owns source/runtime contract consumed by Fabric manifests, without owning the Fabric execution substrate.",
+      "requiresDeploymentProfile": false,
+      "requiresFabricManifest": true,
+      "requiresBuildScript": true,
+      "requiresSmokeOrReadiness": true
+    },
+    "profile-managed-runtime": {
+      "description": "Runtime is deployed through a repo-local deployment profile or durable host outside Fabric-owned Kubernetes manifests. Fabric scores the profile and readiness signals, not a Kubernetes manifest path.",
+      "requiresDeploymentProfile": true,
+      "requiresFabricManifest": false,
+      "requiresBuildScript": true,
+      "requiresSmokeOrReadiness": true
+    },
+    "governance-no-runtime": {
+      "description": "Governance, protocol, coordination, or planning repo with no direct runtime deployment obligation.",
+      "requiresDeploymentProfile": false,
+      "requiresFabricManifest": false,
+      "requiresBuildScript": false,
+      "requiresSmokeOrReadiness": false
+    }
+  },
+  "repos": [
+    {
+      "repo": "fabric-os",
+      "role": "fabric-control-plane",
+      "owner": "fabric-os",
+      "fabricManifests": [
+        "deploy/kubernetes/overlays/staging",
+        "deploy/kubernetes/overlays/production"
+      ],
+      "notes": "Fleet deployment substrate and evidence owner."
+    },
+    {
+      "repo": "bridge-os",
+      "role": "runtime-consumer",
+      "owner": "bridge-os",
+      "fabricManifests": [
+        "deploy/kubernetes/overlays/staging/intelligence",
+        "deploy/kubernetes/overlays/production/intelligence"
+      ],
+      "notes": "Bridge intelligence runtime consumer; Fabric owns manifests and deploy substrate."
+    },
+    {
+      "repo": "canon-os",
+      "role": "governance-no-runtime",
+      "owner": "canon-os"
+    },
+    {
+      "repo": "baseline-os",
+      "role": "governance-no-runtime",
+      "owner": "baseline-os",
+      "notes": "Cost-router/model-routing policy owner; not a Fabric runtime deploy target unless a later profile declares one."
+    },
+    {
+      "repo": "agile-os",
+      "role": "governance-no-runtime",
+      "owner": "agile-os"
+    },
+    {
+      "repo": "ecosystem-os",
+      "role": "governance-no-runtime",
+      "owner": "ecosystem-os"
+    },
+    {
+      "repo": "gtcx-os",
+      "role": "static-artifact",
+      "owner": "gtcx-os",
+      "notes": "Static portal/profile path."
+    },
+    {
+      "repo": "markets-os",
+      "role": "runtime-service",
+      "owner": "markets-os",
+      "fabricManifests": ["deploy/kubernetes/overlays/staging/markets-os"]
+    },
+    {
+      "repo": "terra-os",
+      "role": "runtime-service",
+      "owner": "terra-os",
+      "fabricManifests": ["deploy/kubernetes/overlays/staging/terra-os"]
+    },
+    {
+      "repo": "sensei-os",
+      "role": "runtime-service",
+      "owner": "sensei-os",
+      "fabricManifests": ["deploy/kubernetes/overlays/staging/sensei-os"]
+    },
+    {
+      "repo": "griot-ai",
+      "role": "runtime-service",
+      "owner": "griot-ai",
+      "fabricManifests": ["deploy/kubernetes/overlays/staging/griot-ai"],
+      "liveEvidence": ["audit/evidence/griot-ai-https-prod-verify-latest.json"]
+    },
+    {
+      "repo": "nyota-ai",
+      "role": "runtime-service",
+      "owner": "nyota-ai",
+      "fabricManifests": ["deploy/kubernetes/overlays/staging/nyota-ai"]
+    },
+    {
+      "repo": "veritas-ai",
+      "role": "static-artifact",
+      "owner": "veritas-ai"
+    },
+    {
+      "repo": "venture-os",
+      "role": "runtime-service",
+      "owner": "venture-os",
+      "fabricManifests": ["deploy/kubernetes/overlays/staging/venture-os"]
+    },
+    {
+      "repo": "ledger-os",
+      "role": "profile-managed-runtime",
+      "owner": "ledger-os"
+    },
+    {
+      "repo": "ledger-ui",
+      "role": "static-artifact",
+      "owner": "ledger-ui"
+    },
+    {
+      "repo": "inspection-os",
+      "role": "profile-managed-runtime",
+      "owner": "inspection-os"
+    },
+    {
+      "repo": "terminal-os",
+      "role": "runtime-service",
+      "owner": "terminal-os",
+      "fabricManifests": [
+        "deploy/kubernetes/overlays/staging/terminal-os",
+        "deploy/kubernetes/overlays/production/terminal-os"
+      ]
+    },
+    {
+      "repo": "exploration-os",
+      "role": "static-artifact",
+      "owner": "exploration-os"
+    },
+    {
+      "repo": "compliance-os",
+      "role": "runtime-service",
+      "owner": "compliance-os",
+      "fabricManifests": [
+        "deploy/kubernetes/overlays/staging/compliance-os",
+        "deploy/kubernetes/overlays/production/compliance-os"
+      ]
+    }
+  ]
+}

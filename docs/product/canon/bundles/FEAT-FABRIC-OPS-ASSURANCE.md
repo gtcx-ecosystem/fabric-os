@@ -16,6 +16,9 @@ experience: []
 commercial: []
 planRef: docs/product/roadmap/features/FEAT-FABRIC-OPS-ASSURANCE.md
 date: 2026-06-24
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # FEAT-FABRIC-OPS-ASSURANCE — engineering contract

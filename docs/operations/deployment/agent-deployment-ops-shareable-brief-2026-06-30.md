@@ -1,5 +1,4 @@
 ---
-
 title: 'Agent deployment ops shareable brief'
 status: current
 date: 2026-06-30

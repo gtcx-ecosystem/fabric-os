@@ -7,6 +7,9 @@ status: draft
 updated: '2026-06-22'
 owner: fabric-os
 date: 2026-06-24
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # Fabric OS

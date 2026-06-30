@@ -5,6 +5,10 @@ title: Fleet ops assurance — centralized programme + master QA
 status: in_progress
 owner: fabric-os
 date: 2026-06-24
+document_type: prd
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # FEAT-FLEET-OPS-ASSURANCE-PROGRAM

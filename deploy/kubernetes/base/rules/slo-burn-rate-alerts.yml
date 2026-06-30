@@ -28,7 +28,7 @@ groups:
           service: gtcx-agx
           slo: availability
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/agx-error-budget.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/agx-error-budget.md'
           summary: 'AGX burning error budget 14.4x faster than sustainable'
           description: 'At current rate, 30-day error budget exhausted in ~2 days. 1h burn rate: {{ $value | printf "%.1f" }}x'
 
@@ -40,7 +40,7 @@ groups:
           service: gtcx-agx
           slo: availability
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/agx-error-budget.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/agx-error-budget.md'
           summary: 'AGX burning error budget 6x faster than sustainable'
           description: '6h burn rate: {{ $value | printf "%.1f" }}x — budget exhausted in ~5 days at this rate'
 
@@ -55,7 +55,7 @@ groups:
           service: gtcx-protocols
           slo: availability
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/protocols-error-budget.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/protocols-error-budget.md'
           summary: 'Protocols burning error budget 14.4x faster than sustainable'
           description: '1h burn rate: {{ $value | printf "%.1f" }}x — page immediately'
 
@@ -74,7 +74,7 @@ groups:
           service: gtcx-protocols
           slo: availability
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/protocols-error-budget.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/protocols-error-budget.md'
           summary: 'Protocols burning error budget 6x — create ticket'
 
       # =======================================================================
@@ -88,7 +88,7 @@ groups:
           service: anisa
           slo: availability
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/anisa-error-budget.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/anisa-error-budget.md'
           summary: 'ANISA burning error budget 14.4x faster than sustainable'
           description: '1h burn rate: {{ $value | printf "%.1f" }}x — AI service degradation'
 
@@ -107,7 +107,7 @@ groups:
           service: anisa
           slo: availability
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/anisa-error-budget.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/anisa-error-budget.md'
           summary: 'ANISA burning error budget 6x — intelligence quality at risk'
 
       # =======================================================================
@@ -121,7 +121,7 @@ groups:
           service: gtcx-agx
           slo: latency
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/latency-slo-breach.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/latency-slo-breach.md'
           summary: 'AGX p95 latency above 500ms SLO target'
           description: 'P95 latency is {{ $value | printf "%.0f" }}ms'
 
@@ -133,7 +133,7 @@ groups:
           service: gtcx-protocols
           slo: latency
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/latency-slo-breach.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/latency-slo-breach.md'
           summary: 'Protocols p95 latency above 500ms SLO target'
 
       - alert: ANISALatencySLOBreach
@@ -144,5 +144,5 @@ groups:
           service: anisa
           slo: latency
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/latency-slo-breach.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/latency-slo-breach.md'
           summary: 'ANISA p95 latency above 2000ms SLO target'

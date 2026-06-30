@@ -7,7 +7,7 @@
 #   - intelligence-orchestrator service must exist in the intelligence namespace
 #   - external-dns must be running to manage Route53 records
 #
-# Endpoints verified by gtcx-intelligence deployment smoke:
+# Endpoints verified by intelligence bridge deployment smoke:
 #   /health  → 200 (ALB target health check)
 #   /ready   → 200 (orchestrator readiness)
 #   /live    → 200 (orchestrator liveness)

@@ -1,3 +1,6 @@
+#
+# Note: gtcx-intelligence-sdk is an ECR image name, not repo ownership.
+#
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -10,6 +10,8 @@
 #
 # Per SIGNAL L5: Shadow deployment for candidate model testing
 # Usage: Adjust weights in HTTPRoute to shift traffic to candidate
+# Note: gtcx-intelligence labels below are retained Kubernetes selectors, not
+# source repo ownership. Intelligence bridge source ownership routes to bridge-os.
 # =============================================================================
 ---
 apiVersion: gateway.networking.k8s.io/v1

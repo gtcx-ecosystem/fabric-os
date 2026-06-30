@@ -14,7 +14,7 @@ groups:
           severity: warning
           service: intelligence
         annotations:
-          runbook_url: 'https://github.com/gtcx-ecosystem/gtcx-infrastructure/blob/main/01-docs/04-ops/runbooks/intelligence-error-rate.md'
+          runbook_url: 'https://github.com/gtcx-ecosystem/fabric-os/blob/main/01-docs/04-ops/runbooks/intelligence-error-rate.md'
           summary: 'Intelligence error rate above 5%'
           description: 'Error rate is {{ $value | humanizePercentage }} over the last 5 minutes'
 

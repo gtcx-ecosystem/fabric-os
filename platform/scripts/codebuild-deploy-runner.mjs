@@ -64,6 +64,27 @@ function redact(value) {
     .replace(/(token|password|secret|apikey|api_key)["'=:\s]+[^"',\s]+/gi, '$1=[redacted]');
 }
 
+function summarizeTerraformPlan(value) {
+  const plan = JSON.parse(value);
+  const changes = (plan.resource_changes ?? [])
+    .map((resource) => ({
+      address: resource.address,
+      actions: resource.change?.actions ?? [],
+    }))
+    .filter((resource) => !resource.actions.includes('no-op'));
+
+  return JSON.stringify(
+    {
+      formatVersion: plan.format_version,
+      terraformVersion: plan.terraform_version,
+      changeCount: changes.length,
+      changes,
+    },
+    null,
+    2
+  );
+}
+
 function runCommand(step, command, args, execute) {
   const commandPath = command;
   const toolPath = [process.env.PATH, '/usr/local/bin', '/usr/bin']
@@ -95,7 +116,11 @@ function runCommand(step, command, args, execute) {
 
   record.status = result.status;
   record.signal = result.signal;
-  record.stdout = truncate(redact(result.stdout));
+  const stdout =
+    step === 'terraform-plan-summary' && result.status === 0
+      ? summarizeTerraformPlan(result.stdout)
+      : result.stdout;
+  record.stdout = truncate(redact(stdout));
   record.stderr = truncate(redact(result.stderr));
   if (result.error) record.error = result.error.message;
   return record;
@@ -131,6 +156,12 @@ function buildCommands({ environment, mode, region, clusterName, appName, planPa
       '-chdir=' + envDir,
       'show',
       '-no-color',
+      planPath,
+    ]);
+    add(commands, 'terraform-plan-summary', terraformCommand, [
+      '-chdir=' + envDir,
+      'show',
+      '-json',
       planPath,
     ]);
   }

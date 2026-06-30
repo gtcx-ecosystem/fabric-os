@@ -156,6 +156,7 @@ gate('codebuild-start:package-script', packageJson.scripts?.['deployment:codebui
 gate('codebuild-runner:script', /DEPLOY_MODE/.test(codebuildRunnerScript) && /codebuild-deploy-runner\/v1/.test(codebuildRunnerScript), 'runner evidence');
 gate('codebuild-runner:class-a-ref', /Class A reference required for terraform-apply and production argocd-sync/.test(codebuildRunnerScript), 'runner Class A guard');
 gate('codebuild-runner:plan-show', /terraform-plan-show[\s\S]*show[\s\S]*-no-color/.test(codebuildRunnerScript), 'saved-plan evidence');
+gate('codebuild-runner:plan-summary', /terraform-plan-summary[\s\S]*show[\s\S]*-json/.test(codebuildRunnerScript) && /resource_changes/.test(codebuildRunnerScript) && /changeCount/.test(codebuildRunnerScript), 'value-free resource action evidence');
 gate('codebuild-runner:head-tail-truncation', /\[truncated middle\]/.test(codebuildRunnerScript) && /text\.slice\(-half\)/.test(codebuildRunnerScript), 'preserve command summary');
 gate('codebuild-runner:package-script', packageJson.scripts?.['deployment:codebuild:runner'] === 'node platform/scripts/codebuild-deploy-runner.mjs', packageJson.scripts?.['deployment:codebuild:runner']);
 gate('codebuild-buildspec:runner', /codebuild-deploy-runner\.mjs --write --execute/.test(codebuildBuildspec), 'buildspec runner');

@@ -206,7 +206,7 @@ function buildWitness() {
     'audit/evidence/aaas-hygiene-check-latest.json',
     'audit/evidence/daas-cards-check-latest.json',
     'audit/evidence/daas-friction-check-latest.json',
-  ].every((rel) => readJson(rel)) : null;
+  ].every((rel) => evidenceOk(rel)) : null;
   const p22Run = p22Applicable ? pnpmRun(['agent:next-work', '--json']) : null;
   const p22Output = `${p22Run?.stdout ?? ''}${p22Run?.stderr ? `\n${p22Run.stderr}` : ''}`;
   const p22Blocked = /Persona read gate BLOCKED|personaReadGateBlocked["']?\s*:\s*true/.test(p22Output);

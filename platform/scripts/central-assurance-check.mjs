@@ -9,7 +9,14 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const ECOSYSTEM = join(ROOT, '..');
-const PROGRAM = join(ROOT, 'pm/spec/central-assurance-program.json');
+function firstExisting(...paths) {
+  return paths.find((p) => existsSync(p)) ?? paths[0];
+}
+
+const PROGRAM = firstExisting(
+  join(ROOT, 'machine/spec/central-assurance-program.json'),
+  join(ROOT, 'pm/spec/central-assurance-program.json'),
+);
 const FABRIC_BACKLOG = join(ROOT, 'machine/backlog.json');
 const OUT = join(ROOT, 'audit/evidence/central-assurance-program-latest.json');
 const WRITE = process.argv.includes('--write');

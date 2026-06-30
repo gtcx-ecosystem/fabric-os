@@ -14,9 +14,22 @@ import {
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const EVIDENCE = join(ROOT, 'audit/evidence');
 const OUT = join(EVIDENCE, 'maturity-lane-check-latest.json');
-const PIN = join(ROOT, 'pm/spec/maturity-lane-separation.json');
-const CONTRACT = join(ROOT, 'pm/spec/assurance-lane-witness-fields.json');
-const BASELINE_SOR = join(ROOT, '../baseline-os/pm/spec/maturity-lane-separation.json');
+function firstExisting(...paths) {
+  return paths.find((p) => existsSync(p)) ?? paths[0];
+}
+
+const PIN = firstExisting(
+  join(ROOT, 'machine/spec/maturity-lane-separation.json'),
+  join(ROOT, 'pm/spec/maturity-lane-separation.json'),
+);
+const CONTRACT = firstExisting(
+  join(ROOT, 'machine/spec/assurance-lane-witness-fields.json'),
+  join(ROOT, 'pm/spec/assurance-lane-witness-fields.json'),
+);
+const BASELINE_SOR = firstExisting(
+  join(ROOT, '../baseline-os/machine/spec/maturity-lane-separation.json'),
+  join(ROOT, '../baseline-os/pm/spec/maturity-lane-separation.json'),
+);
 const WRITE = process.argv.includes('--write');
 
 function readJson(p) {
@@ -33,9 +46,9 @@ const contract = readJson(CONTRACT);
 const baseline = readJson(BASELINE_SOR);
 
 const structural = {
-  policyPin: { ok: Boolean(pin?.policyId === 'GS-MATURITY-LANE-001' && pin?.sor) },
-  baselineSor: { ok: Boolean(baseline?.id === 'GS-MATURITY-LANE-001') },
-  witnessContract: { ok: Boolean(contract?.requiredFields?.lane?.const === 'externalAssurance') },
+  policyPin: { ok: Boolean(pin?.policyId === 'GS-MATURITY-LANE-001' && pin?.sor), detail: PIN },
+  baselineSor: { ok: Boolean(baseline?.id === 'GS-MATURITY-LANE-001'), detail: BASELINE_SOR },
+  witnessContract: { ok: Boolean(contract?.requiredFields?.lane?.const === 'externalAssurance'), detail: CONTRACT },
   parallelLaneCheck: {
     ok: existsSync(join(EVIDENCE, 'secas-parallel-lane-check-latest.json')),
     detail: 'secas-parallel-lane-check witness present',

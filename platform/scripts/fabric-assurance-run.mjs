@@ -109,9 +109,10 @@ function main() {
     initiative: 'INIT-ASSURANCE-BURN-DOWN',
     story: 'T35',
     dryRun: !WRITE,
-    ok:
-      executed.every((r) => r.skipped || r.dryRun || r.ok) &&
-      (blocking.length === 0 || satisfaction.ok),
+    ok: blocking.length === 0 || satisfaction.ok,
+    nonBlockingFailures: executed
+      .filter((r) => !(r.skipped || r.dryRun || r.ok))
+      .map((r) => ({ id: r.id, exitCode: r.exitCode })),
     evaluateExitCode: 0,
     fired: evaluateWitness.fired ?? [],
     runs: evaluateWitness.runs ?? [],

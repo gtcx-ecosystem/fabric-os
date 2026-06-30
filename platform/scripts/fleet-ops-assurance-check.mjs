@@ -14,7 +14,14 @@ import { applyExternalAssuranceLane } from './lib/assurance-lane-witness.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
-const SPEC = join(ROOT, 'pm/spec/fleet-ops-assurance-program.json');
+function firstExisting(...paths) {
+  return paths.find((p) => existsSync(p)) ?? paths[0];
+}
+
+const SPEC = firstExisting(
+  join(ROOT, 'machine/spec/fleet-ops-assurance-program.json'),
+  join(ROOT, 'pm/spec/fleet-ops-assurance-program.json'),
+);
 const OUT = join(ROOT, 'audit/evidence/fleet-ops-assurance-check-latest.json');
 const WRITE = process.argv.includes('--write');
 const SKIP_BRIDGE = process.argv.includes('--skip-bridge');

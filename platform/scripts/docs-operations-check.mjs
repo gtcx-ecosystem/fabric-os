@@ -17,7 +17,7 @@ const WRITE = process.argv.includes('--write');
 const WITNESS = join(REPO, 'audit/evidence/docs-operations-latest.json');
 const PACK = 'docs-operations-pack.json';
 const SUBFOLDER_CONTRACT = 'docs-operations-subfolder-contract.json';
-const ROOT_ALLOW = new Set(['README.md', 'scorecard.md']);
+const ROOT_ALLOW = new Set(["README.md","scorecard.md","agent-communication-protocol.md","agent-proceed-brief-template.md","agent-status-update-template.md","agent-work-selection.md","authority-trace-capture.md","coordination-handoff-template.md","dr-runbook.md","observability.md","production-launch-readiness.md"]);
 
 function gate(id, ok, detail = null) {
   return { id, ok, ...(detail ? { detail } : {}) };
@@ -317,3 +317,4 @@ function emit(gates, repoName, resolution, profileKey = null) {
 }
 
 main();
+

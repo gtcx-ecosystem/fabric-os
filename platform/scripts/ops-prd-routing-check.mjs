@@ -8,7 +8,14 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const BRIDGE = join(ROOT, '..', 'bridge-os');
-const MATRIX = join(ROOT, 'pm/spec/ops-lane-prd-routing-matrix.json');
+function firstExisting(...paths) {
+  return paths.find((p) => existsSync(p)) ?? paths[0];
+}
+
+const MATRIX = firstExisting(
+  join(ROOT, 'machine/spec/ops-lane-prd-routing-matrix.json'),
+  join(ROOT, 'pm/spec/ops-lane-prd-routing-matrix.json'),
+);
 const REGISTRY = join(BRIDGE, 'pm/spec/ops-programs-registry.json');
 const WRITE = process.argv.includes('--write');
 const OUT = join(ROOT, 'audit/evidence/ops-prd-routing-check-latest.json');
@@ -33,7 +40,7 @@ function main() {
   const errors = [];
 
   if (!matrix?.rows?.length) {
-    errors.push('matrix missing or empty — pm/spec/ops-lane-prd-routing-matrix.json');
+    errors.push(`matrix missing or empty — ${MATRIX}`);
   }
   if (!registry?.lanes?.length) {
     errors.push('ops-programs-registry missing');

@@ -87,6 +87,7 @@ NODE
 
 published=()
 skipped=()
+external=()
 
 for package_dir in "${packages[@]}"; do
   name="$(node -p "require('./${package_dir}/package.json').name")"
@@ -109,8 +110,18 @@ for package_dir in "${packages[@]}"; do
   fi
 
   echo "PUBLISH ${name}@${version}"
-  (cd "${package_dir}" && npm publish --access public --ignore-scripts)
-  published+=("${name}@${version}")
+  publish_log="$(mktemp)"
+  if (cd "${package_dir}" && npm publish --access public --ignore-scripts) >"${publish_log}" 2>&1; then
+    cat "${publish_log}"
+    published+=("${name}@${version}")
+  elif grep -q "exists in externally connected repository" "${publish_log}"; then
+    cat "${publish_log}"
+    echo "EXTERNAL ${name}@${version} available through CodeArtifact external connection"
+    external+=("${name}@${version}")
+  else
+    cat "${publish_log}"
+    exit 1
+  fi
 done
 
 echo "Published packages:"
@@ -119,9 +130,12 @@ printf '  %s\n' "${published[@]:-none}"
 echo "Skipped packages:"
 printf '  %s\n' "${skipped[@]:-none}"
 
+echo "External packages:"
+printf '  %s\n' "${external[@]:-none}"
+
 echo "Verifying core consumer packages:"
-npm view @gtcx/tokens version
-npm view @gtcx/utils version
-npm view @gtcx/ui version
-npm view @gtcx/layouts version
-npm view @gtcx/desk-shell version
+npm view @gtcx/tokens@0.3.0 version
+npm view @gtcx/utils@0.2.0 version
+npm view @gtcx/ui@0.4.2 version
+npm view @gtcx/layouts@0.2.10 version
+npm view @gtcx/desk-shell@0.1.0 version

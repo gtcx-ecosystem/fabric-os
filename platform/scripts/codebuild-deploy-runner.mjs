@@ -50,7 +50,10 @@ Modes via --mode or DEPLOY_MODE:
 
 function truncate(value, max = 4000) {
   const text = String(value ?? '');
-  return text.length > max ? text.slice(0, max) + '\n[truncated]' : text;
+  if (text.length <= max) return text;
+
+  const half = Math.floor(max / 2);
+  return text.slice(0, half) + '\n[truncated middle]\n' + text.slice(-half);
 }
 
 function redact(value) {
@@ -123,6 +126,12 @@ function buildCommands({ environment, mode, region, clusterName, appName, planPa
       'plan',
       '-input=false',
       '-out=' + planPath,
+    ]);
+    add(commands, 'terraform-plan-show', terraformCommand, [
+      '-chdir=' + envDir,
+      'show',
+      '-no-color',
+      planPath,
     ]);
   }
 

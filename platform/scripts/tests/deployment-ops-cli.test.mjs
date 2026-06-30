@@ -37,6 +37,7 @@ describe('deployment ops CLI guardrails', () => {
     assert.equal(witness.environment, 'staging');
     assert.equal(witness.mode, 'plan');
     assert.ok(witness.commands.some((command) => command.step === 'terraform-plan'));
+    assert.ok(witness.commands.some((command) => command.step === 'terraform-plan-show'));
     assert.ok(witness.commands.every((command) => command.skipped === true));
   });
 

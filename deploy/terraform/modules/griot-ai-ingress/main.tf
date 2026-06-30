@@ -22,8 +22,8 @@ locals {
     Service     = "griot-ai"
   })
 
-  san_domains   = var.include_gtcx_trade_san ? ["griot.${var.gtcx_trade_apex_domain}"] : []
-  all_domains   = concat([var.primary_domain], local.san_domains)
+  san_domains     = var.include_gtcx_trade_san ? ["griot.${var.gtcx_trade_apex_domain}"] : []
+  all_domains     = concat([var.primary_domain], local.san_domains)
   create_a_record = var.alb_dns_name != "" && var.alb_zone_id != ""
 }
 
@@ -122,6 +122,8 @@ resource "aws_route53_record" "griot_ai_a" {
 # -----------------------------------------------------------------------------
 
 resource "aws_acm_certificate_validation" "griot_ai" {
+  count = var.wait_for_validation ? 1 : 0
+
   certificate_arn = aws_acm_certificate.griot_ai.arn
 
   validation_record_fqdns = concat(

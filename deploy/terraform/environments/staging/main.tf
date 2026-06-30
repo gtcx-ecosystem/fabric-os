@@ -108,6 +108,12 @@ variable "db_allocated_storage" {
   default     = 50
 }
 
+variable "db_engine_version" {
+  description = "PostgreSQL engine version"
+  type        = string
+  default     = "16.6"
+}
+
 variable "eks_node_instance_types" {
   description = "EKS node instance types"
   type        = list(string)
@@ -265,6 +271,7 @@ module "database" {
   subnet_ids              = module.vpc.database_subnet_ids
   instance_class          = var.db_instance_class
   allocated_storage       = var.db_allocated_storage
+  engine_version          = var.db_engine_version
   allowed_security_groups = [module.eks.node_security_group_id]
 
   tags = merge(var.tags, {
@@ -374,11 +381,23 @@ module "griot_ai_ingress" {
   include_gtcx_trade_san = false
   alb_dns_name           = var.griot_ai_alb_dns_name
   alb_zone_id            = var.griot_ai_alb_zone_id
+  # gtcx.trade is delegated to Cloudflare; Route53 validation records are not authoritative.
+  # Validation is handled out-of-band; do not block the apply waiting for it.
+  wait_for_validation = false
 
   tags = merge(var.tags, {
     Environment = "staging"
     Purpose     = "fb-002-griot-ai-https"
   })
+}
+
+resource "kubectl_manifest" "griot_ai_namespace" {
+  yaml_body = <<-YAML
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: griot-ai-staging
+  YAML
 }
 
 resource "kubectl_manifest" "griot_ai_ingress" {

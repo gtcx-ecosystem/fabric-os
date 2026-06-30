@@ -43,6 +43,12 @@ variable "alb_zone_id" {
   default     = ""
 }
 
+variable "wait_for_validation" {
+  description = "Wait for ACM DNS validation to complete. Disable when Route53 is not authoritative and validation is handled out-of-band."
+  type        = bool
+  default     = true
+}
+
 variable "tags" {
   description = "Common tags"
   type        = map(string)

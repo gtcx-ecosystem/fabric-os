@@ -23,6 +23,9 @@ db_allocated_storage = 50
 cost_profile            = "scheduled"
 eks_node_instance_types = ["t3.medium"]
 
+# Database — match existing instance engine version to avoid unintended downgrade
+db_engine_version = "16.13"
+
 # API access — public for CI/CD deploys from GitHub Actions.
 # Staging is pre-production; 0.0.0.0/0 is acceptable here because
 # the EKS API is authenticated via IAM (OIDC trust policy). The

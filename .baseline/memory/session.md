@@ -89,3 +89,8 @@ Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot
 - Operator confirmation requested for micro-commit of Class R changes.
 - Continue backlog-clear protocol: run witness refresh periodically; no open engineering stories.
 - Parallel assurance gates remain calendar-blocked (pen-test window 2026-06-17..2026-06-21; SOC2 auditor opinion letter).
+
+- **Committed:**
+  - `fabric-os` `572e1fc9` — `fix(ci): pin aaas-loop node floor to 20.18.0`
+  - `canon-os` `5425a19d` — `chore(spec): add product-roadmap-lane-isolation protocol spec to pm/spec`
+- **Pushed:** no (commits local)

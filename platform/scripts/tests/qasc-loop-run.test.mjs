@@ -7,10 +7,10 @@ import { fileURLToPath } from 'node:url';
 const SCRIPTS = join(dirname(fileURLToPath(import.meta.url)), '..');
 const REPO = join(SCRIPTS, '../..');
 
-describe('repo cleanup acceptance loop runner', () => {
+describe('GTCX QASC production loop runner', () => {
   it('emits JSON loop summary with scored iterations', () => {
     const res = spawnSync(process.execPath, [
-      join(SCRIPTS, 'repo-cleanup-mpr-signal-acceptance-loop-run.mjs'),
+      join(SCRIPTS, 'qasc-loop-run.mjs'),
       '--max',
       '3',
       '--stagnant-limit',
@@ -20,7 +20,7 @@ describe('repo cleanup acceptance loop runner', () => {
 
     assert.equal(typeof res.stdout, 'string');
     const witness = JSON.parse(res.stdout);
-    assert.equal(witness.schema, 'gtcx://fabric-os/repo-cleanup-mpr-signal-loop-run/v2');
+    assert.equal(witness.schema, 'gtcx://fabric-os/qasc-loop/v1');
     assert.equal(typeof witness.iterations, 'number');
     assert.equal(Array.isArray(witness.history), true);
     assert.equal(witness.history.length >= 1, true);

@@ -3,12 +3,12 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { scoreJson } from '../repo-cleanup-mpr-signal-acceptance.mjs';
+import { scoreJson } from '../qasc-repo.mjs';
 
 const SCRIPTS = join(dirname(fileURLToPath(import.meta.url)), '..');
 const REPO = join(SCRIPTS, '../..');
 
-describe('repo cleanup MPR/SIGNAL acceptance CLI', () => {
+describe('GTCX QASC repository scorer', () => {
   it('scores nested gate groups from explicit boolean leaves only', () => {
     assert.equal(scoreJson({
       gates: {
@@ -25,13 +25,13 @@ describe('repo cleanup MPR/SIGNAL acceptance CLI', () => {
 
   it('emits the required acceptance witness shape in JSON mode', () => {
     const res = spawnSync(process.execPath, [
-      join(SCRIPTS, 'repo-cleanup-mpr-signal-acceptance.mjs'),
+      join(SCRIPTS, 'qasc-repo.mjs'),
       '--json',
     ], { cwd: REPO, encoding: 'utf8', maxBuffer: 20 * 1024 * 1024 });
 
     assert.ok(res.status === 0 || res.status === 1, `unexpected exit ${res.status}: ${res.stderr}`);
     const witness = JSON.parse(res.stdout);
-    assert.equal(witness.schema, 'gtcx://fabric-os/repo-cleanup-mpr-signal-acceptance/v2');
+    assert.equal(witness.schema, 'gtcx://fabric-os/qasc-repo-score/v1');
     assert.ok(['complete', 'incomplete'].includes(witness.decision));
     assert.equal(witness.loop.target.mprComposite100, 100);
     assert.equal(witness.loop.target.signalLevel, 'L5');
@@ -69,6 +69,8 @@ describe('repo cleanup MPR/SIGNAL acceptance CLI', () => {
       'Feature/spec registry',
       'Roadmap/goals/milestones',
       'Operational lane isolation',
+      'Security implementation controls',
+      'Compliance implementation controls',
       'MPR composite',
       'SIGNAL maturity',
       'Foundational micro-audits',

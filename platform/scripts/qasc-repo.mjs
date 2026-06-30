@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 /**
- * Repository Assurance and Acceptance Protocol witness.
+ * GTCX Quality Assurance, Security, and Compliance Protocol repo witness.
  *
- * Generates the mandatory report + machine artifact for FAB-RAAP-001, defined
- * in docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md. This command is
+ * Generates the mandatory report + machine artifact for GTCX-QASC-001, defined
+ * in docs/operations/runbooks/qasc-protocol.md. This command is
  * intentionally conservative: it reports "complete" only when
  * existing evidence proves MPR 100/100, SIGNAL L5 / 100, clean worktree, phase
  * evidence, and no blockers. It does not run remediation commands.
  *
  * Usage:
- *   node platform/scripts/repo-cleanup-mpr-signal-acceptance.mjs [--repo <name>] [--write] [--json]
+ *   node platform/scripts/qasc-repo.mjs [--repo <name>] [--write] [--json]
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
@@ -26,8 +26,8 @@ const ROOT = repoArg ? join(FLEET, repoArg) : process.cwd();
 const REPO = repoArg ?? basename(ROOT);
 
 const evidenceRel = 'audit/evidence';
-const reportRel = `audit/reports/repository-assurance-acceptance-${new Date().toISOString().slice(0, 10)}.md`;
-const artifactRel = 'audit/evidence/repo-cleanup-mpr-signal-acceptance-latest.json';
+const reportRel = `audit/reports/qasc-repo-${new Date().toISOString().slice(0, 10)}.md`;
+const artifactRel = 'audit/evidence/qasc-repo-latest.json';
 
 function readJson(rel) {
   try {
@@ -240,6 +240,87 @@ function operationalLaneIsolation() {
     }
   }
   return { ok: violations.length === 0, violations };
+}
+
+function listMatchingFiles(root, predicate) {
+  return walkTextFiles(root).filter(predicate);
+}
+
+function scoreByCount(count) {
+  return count > 0 ? 100 : 0;
+}
+
+function auditScoreFromFiles(files, predicate) {
+  if (files.length === 0) return 0;
+  const atBenchmark = files.filter((rel) => {
+    const json = readJson(rel);
+    return predicate(json);
+  }).length;
+  return Math.round((atBenchmark / files.length) * 100);
+}
+
+function agileProductionPackageEvidence() {
+  const sourceArtifacts = [
+    ...listMatchingFiles('product', (rel) => /^product\/(features|goals|milestones)\/.+\.md$/i.test(rel)),
+    ...listMatchingFiles('docs/product', (rel) => /^docs\/product\/(roadmap\/)?(features|goals|milestones)\/.+\.md$/i.test(rel)),
+  ];
+  const records = [
+    ...listMatchingFiles('machine/features', (rel) => /\/record\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/product-goals', (rel) => /\/record\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/business-milestones', (rel) => /\/record\.json$/i.test(rel)),
+  ];
+  const forensicSpecs = [
+    ...listMatchingFiles('machine/features', (rel) => /\/forensic-spec\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/product-goals', (rel) => /\/forensic-spec\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/business-milestones', (rel) => /\/forensic-spec\.json$/i.test(rel)),
+  ];
+  const mprAudits = [
+    ...listMatchingFiles('machine/features', (rel) => /\/audits\/mpr\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/product-goals', (rel) => /\/audits\/mpr\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/business-milestones', (rel) => /\/audits\/mpr\.json$/i.test(rel)),
+  ];
+  const signalAudits = [
+    ...listMatchingFiles('machine/features', (rel) => /\/audits\/signal\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/product-goals', (rel) => /\/audits\/signal\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/business-milestones', (rel) => /\/audits\/signal\.json$/i.test(rel)),
+  ];
+  const packages = [
+    ...listMatchingFiles('machine/features', (rel) => /\/feature-pack\/manifest\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/product-goals', (rel) => /\/goal-pack\/manifest\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/business-milestones', (rel) => /\/milestone-pack\/manifest\.json$/i.test(rel)),
+  ];
+  const scrumHandoffs = [
+    ...listMatchingFiles('delivery/feature-packages', (rel) => /\/sprint-plan\.json$/i.test(rel)),
+    ...listMatchingFiles('machine/roadmap/sprints', (rel) => /active\.json$/i.test(rel)),
+  ];
+  const backlog = readJson('machine/backlog.json');
+  const backlogCompatible = !has('machine/backlog.json') || Boolean(backlog?._generated || backlog?.syncSource || backlog?.execution);
+
+  return {
+    sourceArtifacts,
+    records,
+    forensicSpecs,
+    mprAudits,
+    signalAudits,
+    packages,
+    scrumHandoffs,
+    backlogCompatible,
+    scores: {
+      sourceArtifacts: scoreByCount(sourceArtifacts.length),
+      records: scoreByCount(records.length),
+      forensicSpecs: scoreByCount(forensicSpecs.length),
+      mprAudits: auditScoreFromFiles(mprAudits, (json) => json?.score === 100 || json?.score100 === 100),
+      signalAudits: auditScoreFromFiles(signalAudits, (json) => json?.level === 'L5' && (json?.score100 === 100 || json?.score100 == null)),
+      packages: auditScoreFromFiles(packages, (json) =>
+        Array.isArray(json?.acceptanceCriteria)
+        && json.acceptanceCriteria.length > 0
+        && (Array.isArray(json?.qaTesting) || Array.isArray(json?.sprintPlans))
+        && json?.mprReview
+        && json?.signalReview),
+      scrumHandoffs: scoreByCount(scrumHandoffs.length),
+      backlogCompatible: backlogCompatible ? 100 : 0,
+    },
+  };
 }
 
 function statusRow(area, atBenchmark, evidence, mpr, signal, blocker = null, applicable = true) {
@@ -473,8 +554,14 @@ function buildWitness() {
   const p22Score = p22Run ? (p22Run.exitCode === 0 && !p22Blocked ? 100 : 0) : null;
   const mprComplete = mpr.composite100 === 100;
   const signalComplete = signal.level === 'L5' && signal.score100 === 100;
+  const securityScore = Math.min(
+    mpr.pillars?.technicalExcellence?.score100 ?? 0,
+    mpr.pillars?.trustAndSafety?.score100 ?? 0,
+  );
+  const complianceScore = mpr.pillars?.compliance?.score100 ?? 0;
   const forbiddenRoots = computeForbiddenRoots();
   const laneIsolation = operationalLaneIsolation();
+  const agilePackage = agileProductionPackageEvidence();
   const crossRepoScore = Math.max(
     evidenceScore('audit/evidence/aaas-contract-check-latest.json'),
     evidenceScore('audit/evidence/fleet-ops-assurance-check-latest.json'),
@@ -491,11 +578,21 @@ function buildWitness() {
     scoredRow('Ops contract', opsScore, opsRun ? `${opsRun.command} exit ${opsRun.exitCode}` : 'not applicable', ['Technical Excellence', 'Compliance'], ['Grounded', 'Integrated'], opsScore === 100 || opsScore == null ? null : 'ops contract is below benchmark', opsApplicable),
     scoredRow('P22/runtime', p22Score, p22Run ? `pnpm agent:next-work --json exit ${p22Run.exitCode}` : 'agent:next-work unavailable', ['Agentic Empowerment', 'Compliance'], ['Actionable', 'Specific'], p22Score === 100 || p22Score == null ? null : 'P22 runtime failed or emitted a blocking gate', p22Applicable),
     scoredRow('Fabric AaaS/DaaS', fabricScore, 'AaaS/DaaS evidence witness score', ['Technical Excellence', 'World Class'], ['Grounded', 'Actionable'], fabricScore === 100 || fabricScore == null ? null : 'AaaS/DaaS evidence is below benchmark', fabricApplicable),
+    scoredRow('Security implementation controls', securityScore, 'lowest of MPR Technical Excellence and Trust & Safety', ['Technical Excellence', 'Trust & Safety'], ['Grounded', 'Specific'], securityScore === 100 ? null : 'security implementation evidence is below benchmark'),
+    scoredRow('Compliance implementation controls', complianceScore, 'MPR Compliance pillar and leaf evidence', ['Compliance'], ['Grounded', 'Specific'], complianceScore === 100 ? null : 'compliance implementation evidence is below benchmark'),
     statusRow('Operational lane isolation', laneIsolation.ok, laneIsolation.ok ? 'operational lane scan clean' : laneIsolation.violations.map((v) => `${v.path}:${v.line}`).join(', '), ['Product/Ecosystem Integration', 'Compliance'], ['Integrated', 'Actionable'], laneIsolation.ok ? null : 'operational lane item is rendered as a product/GA release blocker'),
     scoredRow('MPR composite', mpr.composite100 ?? 0, mpr.source ?? 'missing MPR witness', ['All MPR pillars'], ['Grounded', 'Specific'], mprComplete ? null : 'MPR composite is not 100/100'),
     scoredRow('SIGNAL maturity', signal.score100 ?? 0, signal.source ?? 'missing SIGNAL witness', ['Agentic Empowerment', 'Technical Excellence'], ['All SIGNAL dimensions'], signalComplete ? null : 'SIGNAL is not L5 / 100'),
     scoredRow('Foundational micro-audits', mpr.foundationalMicroScore100, 'MPR foundational leaf evidence', ['Foundational MPR tier'], ['Specific', 'Grounded'], mpr.foundationalMicroScore100 === 100 ? null : 'one or more foundational leaf audits are below benchmark'),
     scoredRow('Transformational micro-audits', mpr.transformationalMicroScore100, 'MPR transformational leaf evidence', ['Transformational MPR tier'], ['Integrated', 'Actionable', 'Lossless'], mpr.transformationalMicroScore100 === 100 ? null : 'transformational leaf evidence is missing or below benchmark'),
+    scoredRow('Product-intent source', agilePackage.scores.sourceArtifacts, `${agilePackage.sourceArtifacts.length} product intent source artifact(s)`, ['Commercial Value', 'Product/Ecosystem Integration'], ['Specific', 'Actionable'], agilePackage.scores.sourceArtifacts === 100 ? null : 'feature PRD, product goal brief, or milestone brief is missing'),
+    scoredRow('Machine-readable standardization', agilePackage.scores.records, `${agilePackage.records.length} standardized record(s)`, ['Technical Excellence', 'Agentic Empowerment'], ['Grounded', 'Integrated'], agilePackage.scores.records === 100 ? null : 'standardized machine-readable record is missing'),
+    scoredRow('Forensic spec', agilePackage.scores.forensicSpecs, `${agilePackage.forensicSpecs.length} forensic spec(s)`, ['Craft', 'Trust & Safety'], ['Specific', 'Lossless'], agilePackage.scores.forensicSpecs === 100 ? null : 'forensic spec is missing'),
+    scoredRow('Package MPR', agilePackage.scores.mprAudits, `${agilePackage.mprAudits.length} package MPR audit(s)`, ['All MPR pillars'], ['Grounded', 'Specific'], agilePackage.scores.mprAudits === 100 ? null : 'package MPR audit is missing or below 100'),
+    scoredRow('Package SIGNAL', agilePackage.scores.signalAudits, `${agilePackage.signalAudits.length} package SIGNAL audit(s)`, ['Agentic Empowerment', 'Technical Excellence'], ['All SIGNAL dimensions'], agilePackage.scores.signalAudits === 100 ? null : 'package SIGNAL audit is missing or below L5'),
+    scoredRow('Production spec package', agilePackage.scores.packages, `${agilePackage.packages.length} production package manifest(s)`, ['World Class', 'Product/Ecosystem Integration'], ['Integrated', 'Actionable'], agilePackage.scores.packages === 100 ? null : 'production spec package is missing required acceptance, QA, sprint, MPR, or SIGNAL sections'),
+    scoredRow('Scrum handoff', agilePackage.scores.scrumHandoffs, `${agilePackage.scrumHandoffs.length} sprint handoff artifact(s)`, ['Commercial Value', 'Agentic Empowerment'], ['Actionable', 'Integrated'], agilePackage.scores.scrumHandoffs === 100 ? null : 'scrum sprint handoff is missing'),
+    scoredRow('Backlog compatibility only', agilePackage.scores.backlogCompatible, agilePackage.backlogCompatible ? 'backlog absent or generated compatibility output' : 'machine/backlog.json lacks generated compatibility marker', ['Compliance', 'Trust & Safety'], ['Grounded', 'Lossless'], agilePackage.scores.backlogCompatible === 100 ? null : 'backlog appears to be active authority rather than generated compatibility output'),
     scoredRow('Root hygiene', forbiddenRoots.length === 0 ? 100 : 0, forbiddenRoots.length ? forbiddenRoots.join(', ') : 'root scan clean', ['Compliance', 'Craft'], ['Navigable'], forbiddenRoots.length === 0 ? null : 'forbidden live roots present'),
     scoredRow('Link/reference hygiene', docsLinkScore, docsLinkRun ? `${docsLinkRun.command} exit ${docsLinkRun.exitCode}; ${linkEvidence.length} related witnesses` : 'link checker unavailable', ['World Class', 'Trust & Safety'], ['Navigable', 'Grounded'], docsLinkScore === 100 ? null : 'link/reference integrity is below benchmark'),
     scoredRow('Cross-repo contract', crossRepoScore, 'contract evidence witness score', ['Product/Ecosystem Integration'], ['Integrated'], crossRepoScore === 100 ? null : 'cross-repo contract evidence is below benchmark'),
@@ -544,12 +641,12 @@ function buildWitness() {
   });
 
   return {
-    schema: 'gtcx://fabric-os/repo-cleanup-mpr-signal-acceptance/v2',
+    schema: 'gtcx://fabric-os/qasc-repo-score/v1',
     repo: REPO,
     branch,
     commit,
     generatedAt: new Date().toISOString(),
-    runbook: 'docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md',
+    runbook: 'docs/operations/runbooks/qasc-protocol.md',
     decision,
     loop: {
       iteration: 1,
@@ -626,13 +723,13 @@ function renderReport(witness) {
     : '- none';
 
   return `---
-title: "Repository assurance acceptance - ${witness.repo}"
+title: "GTCX QASC repository score - ${witness.repo}"
 status: ${witness.decision}
 date: ${witness.generatedAt.slice(0, 10)}
 owner: fabric-os
 document_type: audit-report
 authority: fabric-os AaaS/DaaS assurance lane
-protocol_id: FAB-RAAP-001
+protocol_id: GTCX-QASC-001
 ---
 
 # Repository Assurance Acceptance - ${witness.repo}
@@ -687,7 +784,7 @@ function main() {
   if (JSON_OUT) {
     console.log(JSON.stringify(witness));
   } else {
-    console.log(`repository assurance acceptance — ${witness.repo}: ${witness.decision}`);
+    console.log(`GTCX QASC repository score — ${witness.repo}: ${witness.acceptance.score100}/100`);
     console.log(`MPR ${witness.mpr.composite100 ?? 'unverified'}/100 · SIGNAL ${witness.signal.level ?? 'unverified'} / ${witness.signal.score100 ?? 'unverified'}`);
     console.log(`acceptance ${witness.acceptance.score100}/100 controls ${witness.acceptance.benchmarkCount}/${witness.acceptance.areaCount} at benchmark`);
     console.log(`blockers: ${witness.blockers.length}`);

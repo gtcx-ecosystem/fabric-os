@@ -10,6 +10,10 @@ lane: engineeringMaturity
 blocksGtmStage: false
 blocksSprintSeal: false
 date: 2026-06-24
+document_type: prd
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # FOAP-007 — Master fleet ops assurance harness

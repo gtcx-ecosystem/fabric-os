@@ -9,6 +9,10 @@ lane: engineeringMaturity
 blocksGtmStage: false
 blocksSprintSeal: false
 date: 2026-06-24
+document_type: prd
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # WC-SECOPS-007 — SOC L3 uplift

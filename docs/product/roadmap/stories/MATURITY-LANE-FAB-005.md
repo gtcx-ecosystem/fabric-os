@@ -10,6 +10,10 @@ lane: externalAssurance
 blocksEngineering: false
 blocksSprintSeal: false
 date: 2026-06-24
+document_type: prd
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # MATURITY-LANE-FAB-005 — Central assurance programme backlog

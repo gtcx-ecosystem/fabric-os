@@ -9,6 +9,10 @@ owner: fabric-os
 lane: externalAssurance
 blocksEngineering: false
 date: 2026-06-24
+document_type: prd
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # MATURITY-LANE-FAB-004 — fabric session assurance lane

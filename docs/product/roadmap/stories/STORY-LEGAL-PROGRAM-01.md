@@ -11,6 +11,10 @@ blocksGtmStage: false
 blocksSprintSeal: false
 auditNotes: 2026-06-15 register closed; 2026-06-24 reconciled into FOAP programme backlog
 date: 2026-06-24
+document_type: prd
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # LEGAL-PROGRAM-01 — Legal friction parity (closed)

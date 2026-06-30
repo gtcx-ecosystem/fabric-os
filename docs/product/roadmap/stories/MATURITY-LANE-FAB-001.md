@@ -9,6 +9,10 @@ owner: fabric-os
 lane: engineeringMaturity
 blocksEngineering: false
 date: 2026-06-24
+document_type: prd
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # MATURITY-LANE-FAB-001 — Pin policy + check harness

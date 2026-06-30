@@ -1,3 +1,13 @@
+---
+title: 'Formal print instances'
+status: current
+date: 2026-06-30
+owner: fabric-os
+document_type: overview
+tier: reference
+review_cycle: on-change
+---
+
 # Formal print instances (fabric-os)
 
 Product-scoped JSON for branded PDFs. Fleet legal kits and Word masters live in **canon-os** only.

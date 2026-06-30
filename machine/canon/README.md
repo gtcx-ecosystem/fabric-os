@@ -11,4 +11,3 @@
 | Feature bundles | `bundles/FEAT-*/manifest.json` |
 
 Synthesis: `canon-os/platform/scripts/synthesize-product-canon.mjs`
-

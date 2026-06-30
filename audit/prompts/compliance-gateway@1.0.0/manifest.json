@@ -2,6 +2,6 @@
   "engine": "compliance-gateway",
   "version": "1.0.0",
   "reviewDate": "2026-06-07",
-  "owner": "gtcx-infrastructure",
+  "owner": "fabric-os",
   "changelog": "audit/prompts/compliance-gateway@1.0.0/CHANGELOG.md"
 }

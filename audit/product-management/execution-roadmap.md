@@ -68,7 +68,7 @@ pnpm daas:fleet:health
 
 **UAT / QA**
 
-- [x] gtcx-intelligence staging pod Running with cost router enabled (intelligence-orchestrator 2/2 Running; ENABLE_COST_ROUTER=1)
+- [x] intelligence bridge staging pod Running with cost router enabled (intelligence-orchestrator 2/2 Running; ENABLE_COST_ROUTER=1)
 - [x] Cost witness evidence published (audit/evidence/daas-cost-router-witness-2026-06-10.json)
 
 **Blockers:** none

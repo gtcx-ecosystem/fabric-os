@@ -3,7 +3,7 @@ title: Ecosystem repo review — infra contract matrix
 status: current
 date: 2026-06-07
 reviewDate: 2026-06-07
-owner: gtcx-infrastructure
+owner: fabric-os
 artifact: audit/ecosystem-integration-matrix-2026-06-07.json
 ---
 

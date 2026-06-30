@@ -6,7 +6,7 @@
     "workflow": ".github/workflows/cross-repo-contract.yml",
     "scope": "infra-only",
     "status": "green",
-    "reason": "Nine contract tests pass in validate-all; matrix job runs gtcx-infrastructure checkout without GTCX_REPO_TOKEN dependency.",
+    "reason": "Nine contract tests pass in validate-all; matrix job runs fabric-os checkout without GTCX_REPO_TOKEN dependency.",
     "siblingExpansion": "Uncomment protocols/core rows when GTCX_REPO_TOKEN is provisioned (IR-5.3 optional)."
   },
   "contractTests": {

@@ -2,7 +2,7 @@
 title: Auto-development state
 status: current
 date: 2026-06-10
-owner: gtcx-infrastructure
+owner: fabric-os
 last_reconciled: 2026-06-25T00:40:00.000Z
 ---
 

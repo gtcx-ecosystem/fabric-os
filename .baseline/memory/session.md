@@ -114,4 +114,6 @@ Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot
 ### Next Steps
 - Micro-commit refreshed evidence witnesses (Class R).
 - Address remaining uncommitted script/docs/backlog changes under separate review if they persist.
+- Ran verification ladder: `pnpm lint` pass (warnings only), `pnpm typecheck` pass, `pnpm format:check` fail — 18 pre-existing files need Prettier formatting.
+- Committed evidence refresh and script/backlog alignment as micro-commits.
 - Continue backlog-clear protocol: periodic witness refresh; no open engineering stories.

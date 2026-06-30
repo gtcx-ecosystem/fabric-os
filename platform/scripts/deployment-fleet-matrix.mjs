@@ -64,13 +64,14 @@ function weightedScore(controls) {
   const weight = applicable.reduce((sum, control) => sum + control.weight, 0);
   if (!weight) return 100;
   return Math.round(
-    applicable.reduce((sum, control) => sum + control.score100 * control.weight, 0) / weight,
+    applicable.reduce((sum, control) => sum + control.score100 * control.weight, 0) / weight
   );
 }
 
 function loadDeploymentProfile(repoRoot) {
   const candidates = [
     'operations/deployment-profile.json',
+    'docs/operations/deployment-profile.json',
     'docs/operations/deployment/deployment-profile.json',
   ];
 
@@ -102,9 +103,7 @@ function hasDeployCriticalGithubActions(repoRoot) {
   const hits = [];
   while (stack.length) {
     const current = stack.pop();
-    const entries = existsSync(current)
-      ? readFileSync('/dev/null', 'utf8') || null
-      : null;
+    const entries = existsSync(current) ? readFileSync('/dev/null', 'utf8') || null : null;
     void entries;
     for (const entry of globalThis.__readdir(current)) {
       const abs = join(current, entry.name);
@@ -114,7 +113,11 @@ function hasDeployCriticalGithubActions(repoRoot) {
       }
       if (!/\.(ya?ml)$/i.test(entry.name)) continue;
       const text = readFileSync(abs, 'utf8');
-      if (/(terraform\s+apply|kubectl\s+apply|argocd\s+app\s+sync|aws\s+eks\s+update-kubeconfig)/i.test(text)) {
+      if (
+        /(terraform\s+apply|kubectl\s+apply|argocd\s+app\s+sync|aws\s+eks\s+update-kubeconfig)/i.test(
+          text
+        )
+      ) {
         hits.push(abs.replace(repoRoot + '/', ''));
       }
     }
@@ -122,7 +125,9 @@ function hasDeployCriticalGithubActions(repoRoot) {
 
   return {
     found: hits.length > 0,
-    evidence: hits.length ? hits.join(', ') : '.github/workflows contains no production deploy executor commands',
+    evidence: hits.length
+      ? hits.join(', ')
+      : '.github/workflows contains no production deploy executor commands',
   };
 }
 
@@ -146,8 +151,8 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
       'repo-present',
       repoExists,
       repoExists ? `../${entry.repo}` : `missing ../${entry.repo}`,
-      'Restore checkout or remove repo from fleet deployment matrix.',
-    ),
+      'Restore checkout or remove repo from fleet deployment matrix.'
+    )
   );
 
   controls.push(
@@ -155,8 +160,8 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
       'fleet-contract-listed',
       fleetRepos.includes(entry.repo),
       'machine/fleet-audit-contracts.json',
-      'Align deployment matrix with the fleet audit contract.',
-    ),
+      'Align deployment matrix with the fleet audit contract.'
+    )
   );
 
   controls.push(
@@ -164,8 +169,8 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
       'role-known',
       Boolean(role),
       entry.role,
-      'Use a deployment-fleet-matrix role declared under roles.',
-    ),
+      'Use a deployment-fleet-matrix role declared under roles.'
+    )
   );
 
   if (role?.requiresDeploymentProfile) {
@@ -174,8 +179,8 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
         'deployment-profile',
         Boolean(profile && !profile.__error),
         profilePath ?? 'missing deployment profile',
-        'Add a repo-local deployment profile or a relocation pointer to the canonical profile.',
-      ),
+        'Add a repo-local deployment profile or a relocation pointer to the canonical profile.'
+      )
     );
   } else if (profile) {
     controls.push(
@@ -183,8 +188,8 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
         'deployment-profile-optional',
         !profile.__error,
         pointerPath ? `${pointerPath} -> ${profilePath}` : profilePath,
-        'Fix malformed deployment profile JSON.',
-      ),
+        'Fix malformed deployment profile JSON.'
+      )
     );
   }
 
@@ -195,16 +200,16 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
         'no-retired-infra-alias',
         !/gtcx-infrastructure/i.test(handoff),
         handoff || 'no handoff template declared',
-        'Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases.',
-      ),
+        'Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases.'
+      )
     );
     controls.push(
       scoreControl(
         'profile-owner-matches-repo',
         !profile.owner || profile.owner === entry.repo,
         `owner=${profile.owner ?? 'not declared'}`,
-        'Set deployment profile owner to the repo id.',
-      ),
+        'Set deployment profile owner to the repo id.'
+      )
     );
   }
 
@@ -213,9 +218,11 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
       scoreControl(
         'source-build-signal',
         Boolean(scripts.build || scripts['web:build'] || scripts['build:production']),
-        Object.keys(scripts).filter((key) => /^(build|web:build|build:production)$/.test(key)).join(', ') || 'missing build script',
-        'Expose a deterministic build/package command in package.json.',
-      ),
+        Object.keys(scripts)
+          .filter((key) => /^(build|web:build|build:production)$/.test(key))
+          .join(', ') || 'missing build script',
+        'Expose a deterministic build/package command in package.json.'
+      )
     );
   }
 
@@ -224,15 +231,17 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
     const script = scriptNameFromCommand(command);
     const hasProfileScript = script ? Boolean(scripts[script]) : false;
     const fallbackScripts = Object.keys(scripts).filter((key) =>
-      /(smoke|readiness|ops:check|operations:check|deploy:readiness|deployment:smoke)/i.test(key),
+      /(smoke|readiness|ops:check|operations:check|deploy:readiness|deployment:smoke)/i.test(key)
     );
     controls.push(
       scoreControl(
         'smoke-or-readiness-signal',
         Boolean(hasProfileScript || fallbackScripts.length),
-        command ? `${command}${hasProfileScript ? '' : ' (script missing)'}` : fallbackScripts.join(', ') || 'missing smoke/readiness script',
-        'Add a repo-local smoke/readiness command that Fabric can cite after deploy.',
-      ),
+        command
+          ? `${command}${hasProfileScript ? '' : ' (script missing)'}`
+          : fallbackScripts.join(', ') || 'missing smoke/readiness script',
+        'Add a repo-local smoke/readiness command that Fabric can cite after deploy.'
+      )
     );
   }
 
@@ -243,8 +252,8 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
         'fabric-manifest-declared',
         manifests.length > 0,
         manifests.length ? manifests.join(', ') : 'no Fabric manifest declared',
-        'Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static.',
-      ),
+        'Declare the Fabric-owned manifest path or explicitly reclassify the repo as non-runtime/static.'
+      )
     );
     for (const rel of manifests) {
       controls.push(
@@ -252,8 +261,8 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
           `fabric-manifest:${rel}`,
           relExists(rel),
           rel,
-          'Create or repair the Fabric-owned Kubernetes/GitOps manifest path.',
-        ),
+          'Create or repair the Fabric-owned Kubernetes/GitOps manifest path.'
+        )
       );
     }
   }
@@ -265,8 +274,8 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
           `live-evidence:${rel}`,
           relExists(rel),
           rel,
-          'Refresh the live deployment evidence witness.',
-        ),
+          'Refresh the live deployment evidence witness.'
+        )
       );
     }
   }
@@ -279,21 +288,21 @@ function evaluateRepo(entry, role, spec, fleetRepos) {
       'github-actions-not-prod-executor',
       !gha.found,
       gha.evidence,
-      'Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD.',
-    ),
+      'Remove production deploy execution from GitHub Actions; route through Fabric CodeBuild/Argo CD.'
+    )
   );
 
   if (entry.role === 'governance-no-runtime') {
     const runtimeSurfaces = ['Dockerfile', 'deploy/kubernetes'].filter((rel) =>
-      existsSync(join(repoRoot, rel)),
+      existsSync(join(repoRoot, rel))
     );
     controls.push(
       scoreControl(
         'no-runtime-surface-required',
         runtimeSurfaces.length === 0,
         runtimeSurfaces.length ? runtimeSurfaces.join(', ') : 'no runtime deployment surface',
-        'Either remove stale runtime surfaces or reclassify the repo with a deployment profile.',
-      ),
+        'Either remove stale runtime surfaces or reclassify the repo with a deployment profile.'
+      )
     );
   }
 
@@ -322,19 +331,55 @@ function main() {
   const fleetRepos = (fleetContracts.repos ?? []).map((entry) => entry.repo);
 
   const globalControls = [
-    scoreControl('deployment-contract', relExists(spec.globalControls.deploymentOpsContract), spec.globalControls.deploymentOpsContract),
-    scoreControl('codebuild-start-script', relExists(spec.globalControls.codebuildStart), spec.globalControls.codebuildStart),
-    scoreControl('codebuild-runner-script', relExists(spec.globalControls.codebuildRunner), spec.globalControls.codebuildRunner),
-    scoreControl('codebuild-module', relExists(spec.globalControls.codebuildModule), spec.globalControls.codebuildModule),
-    scoreControl('argocd-module', relExists(spec.globalControls.argocdModule), spec.globalControls.argocdModule),
-    scoreControl('staging-overlay', relExists(spec.globalControls.stagingOverlay), spec.globalControls.stagingOverlay),
-    scoreControl('production-overlay', relExists(spec.globalControls.productionOverlay), spec.globalControls.productionOverlay),
-    scoreControl('codebuild-start-evidence', relExists(spec.globalControls.latestCodebuildStartEvidence), spec.globalControls.latestCodebuildStartEvidence),
-    scoreControl('codebuild-runner-evidence', relExists(spec.globalControls.latestCodebuildRunnerEvidence), spec.globalControls.latestCodebuildRunnerEvidence),
+    scoreControl(
+      'deployment-contract',
+      relExists(spec.globalControls.deploymentOpsContract),
+      spec.globalControls.deploymentOpsContract
+    ),
+    scoreControl(
+      'codebuild-start-script',
+      relExists(spec.globalControls.codebuildStart),
+      spec.globalControls.codebuildStart
+    ),
+    scoreControl(
+      'codebuild-runner-script',
+      relExists(spec.globalControls.codebuildRunner),
+      spec.globalControls.codebuildRunner
+    ),
+    scoreControl(
+      'codebuild-module',
+      relExists(spec.globalControls.codebuildModule),
+      spec.globalControls.codebuildModule
+    ),
+    scoreControl(
+      'argocd-module',
+      relExists(spec.globalControls.argocdModule),
+      spec.globalControls.argocdModule
+    ),
+    scoreControl(
+      'staging-overlay',
+      relExists(spec.globalControls.stagingOverlay),
+      spec.globalControls.stagingOverlay
+    ),
+    scoreControl(
+      'production-overlay',
+      relExists(spec.globalControls.productionOverlay),
+      spec.globalControls.productionOverlay
+    ),
+    scoreControl(
+      'codebuild-start-evidence',
+      relExists(spec.globalControls.latestCodebuildStartEvidence),
+      spec.globalControls.latestCodebuildStartEvidence
+    ),
+    scoreControl(
+      'codebuild-runner-evidence',
+      relExists(spec.globalControls.latestCodebuildRunnerEvidence),
+      spec.globalControls.latestCodebuildRunnerEvidence
+    ),
   ];
 
   const repos = spec.repos.map((entry) =>
-    evaluateRepo(entry, spec.roles[entry.role], spec, fleetRepos),
+    evaluateRepo(entry, spec.roles[entry.role], spec, fleetRepos)
   );
 
   const repoScore = repos.length
@@ -355,9 +400,14 @@ function main() {
     reposAtBenchmark: repos.filter((repo) => repo.atBenchmark).length,
     githubActionsCriticalPath: false,
     runtimeCloud: spec.runtimeCloud,
-    controlsAtBenchmark: globalControls.filter((control) => control.score100 >= 100).length
-      + repos.reduce((sum, repo) => sum + repo.controls.filter((control) => control.score100 >= 100).length, 0),
-    controlCount: globalControls.length + repos.reduce((sum, repo) => sum + repo.controls.length, 0),
+    controlsAtBenchmark:
+      globalControls.filter((control) => control.score100 >= 100).length +
+      repos.reduce(
+        (sum, repo) => sum + repo.controls.filter((control) => control.score100 >= 100).length,
+        0
+      ),
+    controlCount:
+      globalControls.length + repos.reduce((sum, repo) => sum + repo.controls.length, 0),
     globalControls,
     repos,
     benchmarkGaps: repos
@@ -377,7 +427,7 @@ function main() {
   if (WRITE) {
     const out = join(ROOT, OUT_REL);
     mkdirSync(dirname(out), { recursive: true });
-    writeFileSync(out, JSON.stringify(witness) + '\n');
+    writeFileSync(out, JSON.stringify(witness, null, 2) + '\n');
   }
 
   if (JSON_OUT) {
@@ -392,7 +442,9 @@ function main() {
     console.log('\nrepo scores:');
     for (const repo of repos) {
       const gaps = repo.belowBenchmark.map((control) => control.id).join(', ');
-      console.log(`- ${repo.repo}: ${repo.score100}/100 (${repo.role})${gaps ? ` — gaps: ${gaps}` : ''}`);
+      console.log(
+        `- ${repo.repo}: ${repo.score100}/100 (${repo.role})${gaps ? ` — gaps: ${gaps}` : ''}`
+      );
     }
     if (WRITE) console.log(`\nwitness: ${OUT_REL}`);
     if (STRICT && witness.score100 < witness.benchmarkScore100) {

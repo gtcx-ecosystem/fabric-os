@@ -1,0 +1,82 @@
+{
+  "schema": "gtcx://fabric-os/codebuild-deploy-status/v1",
+  "generatedAt": "2026-06-30T19:56:19.128Z",
+  "repo": "fabric-os",
+  "buildId": "gtcx-staging-deploy-executor:07efb63b-03a7-4af0-a8f0-fade10b17785",
+  "buildNumber": 23,
+  "projectName": "gtcx-staging-deploy-executor",
+  "region": "af-south-1",
+  "buildStatus": "SUCCEEDED",
+  "currentPhase": "COMPLETED",
+  "sourceVersion": "fc660ccf73d4d0e8e1cc6f3906163b5eb2362956",
+  "resolvedSourceVersion": "fc660ccf73d4d0e8e1cc6f3906163b5eb2362956",
+  "buildComplete": true,
+  "startTime": "2026-06-30T21:46:21.740000+02:00",
+  "endTime": "2026-06-30T21:49:01.501000+02:00",
+  "githubActionsCriticalPath": false,
+  "environment": {
+    "type": "LINUX_CONTAINER",
+    "computeType": "BUILD_GENERAL1_SMALL",
+    "privilegedMode": false
+  },
+  "vpcAttached": true,
+  "logGroup": "/aws/codebuild/gtcx-staging-deploy-executor",
+  "logStream": "deploy/07efb63b-03a7-4af0-a8f0-fade10b17785",
+  "phases": [
+    {
+      "phaseType": "SUBMITTED",
+      "phaseStatus": "SUCCEEDED",
+      "durationInSeconds": 0
+    },
+    {
+      "phaseType": "QUEUED",
+      "phaseStatus": "SUCCEEDED",
+      "durationInSeconds": 0
+    },
+    {
+      "phaseType": "PROVISIONING",
+      "phaseStatus": "SUCCEEDED",
+      "durationInSeconds": 24
+    },
+    {
+      "phaseType": "DOWNLOAD_SOURCE",
+      "phaseStatus": "SUCCEEDED",
+      "durationInSeconds": 6
+    },
+    {
+      "phaseType": "INSTALL",
+      "phaseStatus": "SUCCEEDED",
+      "durationInSeconds": 15
+    },
+    {
+      "phaseType": "PRE_BUILD",
+      "phaseStatus": "SUCCEEDED",
+      "durationInSeconds": 17
+    },
+    {
+      "phaseType": "BUILD",
+      "phaseStatus": "SUCCEEDED",
+      "durationInSeconds": 93
+    },
+    {
+      "phaseType": "POST_BUILD",
+      "phaseStatus": "SUCCEEDED",
+      "durationInSeconds": 0
+    },
+    {
+      "phaseType": "UPLOAD_ARTIFACTS",
+      "phaseStatus": "SUCCEEDED",
+      "durationInSeconds": 0
+    },
+    {
+      "phaseType": "FINALIZING",
+      "phaseStatus": "SUCCEEDED",
+      "durationInSeconds": 0
+    },
+    {
+      "phaseType": "COMPLETED",
+      "phaseStatus": null,
+      "durationInSeconds": null
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/deployment-fleet-matrix-score/v1",
-  "generatedAt": "2026-06-30T19:41:43.582Z",
+  "generatedAt": "2026-06-30T19:57:32.426Z",
   "repo": "fabric-os",
   "benchmarkScore100": 100,
   "score100": 100,
@@ -14,8 +14,8 @@
     "region": "af-south-1",
     "gcpScope": "GTCX Intelligence / Bridge Phase 3 ML artifact bridge only"
   },
-  "controlsAtBenchmark": 197,
-  "controlCount": 197,
+  "controlsAtBenchmark": 203,
+  "controlCount": 203,
   "globalControls": [
     {
       "id": "deployment-contract",
@@ -179,7 +179,7 @@
       "atBenchmark": true,
       "evidence": {
         "repoPath": "../bridge-os",
-        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "deploymentProfile": "docs/operations/deployment-profile.json",
         "fabricManifests": [
           "deploy/kubernetes/overlays/staging/intelligence",
           "deploy/kubernetes/overlays/production/intelligence"
@@ -211,7 +211,7 @@
           "id": "deployment-profile-optional",
           "score100": 100,
           "weight": 1,
-          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "evidence": "docs/operations/deployment-profile.json",
           "remediation": "Fix malformed deployment profile JSON."
         },
         {
@@ -283,7 +283,7 @@
       "atBenchmark": true,
       "evidence": {
         "repoPath": "../canon-os",
-        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "deploymentProfile": "docs/operations/deployment-profile.json",
         "fabricManifests": []
       },
       "controls": [
@@ -312,7 +312,7 @@
           "id": "deployment-profile-optional",
           "score100": 100,
           "weight": 1,
-          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "evidence": "docs/operations/deployment-profile.json",
           "remediation": "Fix malformed deployment profile JSON."
         },
         {
@@ -427,7 +427,11 @@
       "score100": 100,
       "benchmarkScore100": 100,
       "atBenchmark": true,
-      "evidence": { "repoPath": "../agile-os", "deploymentProfile": null, "fabricManifests": [] },
+      "evidence": {
+        "repoPath": "../agile-os",
+        "deploymentProfile": null,
+        "fabricManifests": []
+      },
       "controls": [
         {
           "id": "repo-present",
@@ -630,7 +634,7 @@
       "atBenchmark": true,
       "evidence": {
         "repoPath": "../markets-os",
-        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "deploymentProfile": "docs/operations/deployment-profile.json",
         "fabricManifests": ["deploy/kubernetes/overlays/staging/markets-os"]
       },
       "controls": [
@@ -659,7 +663,7 @@
           "id": "deployment-profile-optional",
           "score100": 100,
           "weight": 1,
-          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "evidence": "docs/operations/deployment-profile.json",
           "remediation": "Fix malformed deployment profile JSON."
         },
         {
@@ -818,7 +822,7 @@
       "atBenchmark": true,
       "evidence": {
         "repoPath": "../sensei-os",
-        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "deploymentProfile": "docs/operations/deployment-profile.json",
         "fabricManifests": ["deploy/kubernetes/overlays/staging/sensei-os"]
       },
       "controls": [
@@ -847,7 +851,7 @@
           "id": "deployment-profile-optional",
           "score100": 100,
           "weight": 1,
-          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "evidence": "docs/operations/deployment-profile.json",
           "remediation": "Fix malformed deployment profile JSON."
         },
         {
@@ -1013,7 +1017,7 @@
       "atBenchmark": true,
       "evidence": {
         "repoPath": "../nyota-ai",
-        "deploymentProfile": null,
+        "deploymentProfile": "docs/operations/deployment-profile.json",
         "fabricManifests": ["deploy/kubernetes/overlays/staging/nyota-ai"]
       },
       "controls": [
@@ -1039,6 +1043,27 @@
           "remediation": "Use a deployment-fleet-matrix role declared under roles."
         },
         {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/coordination/to-fabric-os-{topic}-YYYY-MM-DD.md",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=nyota-ai",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
           "id": "source-build-signal",
           "score100": 100,
           "weight": 1,
@@ -1049,7 +1074,7 @@
           "id": "smoke-or-readiness-signal",
           "score100": 100,
           "weight": 1,
-          "evidence": "docs:operations:check, docs:operations:check:write, gtm:readiness:check, gtm:readiness:check:write, operations:check",
+          "evidence": "pnpm deployment:smoke (script missing)",
           "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
         },
         {
@@ -1166,7 +1191,7 @@
       "atBenchmark": true,
       "evidence": {
         "repoPath": "../venture-os",
-        "deploymentProfile": null,
+        "deploymentProfile": "docs/operations/deployment-profile.json",
         "fabricManifests": ["deploy/kubernetes/overlays/staging/venture-os"]
       },
       "controls": [
@@ -1192,6 +1217,27 @@
           "remediation": "Use a deployment-fleet-matrix role declared under roles."
         },
         {
+          "id": "deployment-profile-optional",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "docs/operations/deployment-profile.json",
+          "remediation": "Fix malformed deployment profile JSON."
+        },
+        {
+          "id": "no-retired-infra-alias",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "no handoff template declared",
+          "remediation": "Route deployment handoffs to fabric-os, not retired gtcx-infrastructure aliases."
+        },
+        {
+          "id": "profile-owner-matches-repo",
+          "score100": 100,
+          "weight": 1,
+          "evidence": "owner=venture-os",
+          "remediation": "Set deployment profile owner to the repo id."
+        },
+        {
           "id": "source-build-signal",
           "score100": 100,
           "weight": 1,
@@ -1202,7 +1248,7 @@
           "id": "smoke-or-readiness-signal",
           "score100": 100,
           "weight": 1,
-          "evidence": "ops:check, docs:operations:check, docs:operations:check:write",
+          "evidence": "pnpm ops:consumption:check",
           "remediation": "Add a repo-local smoke/readiness command that Fabric can cite after deploy."
         },
         {
@@ -1239,7 +1285,7 @@
       "atBenchmark": true,
       "evidence": {
         "repoPath": "../ledger-os",
-        "deploymentProfile": "docs/operations/deployment/deployment-profile.json",
+        "deploymentProfile": "docs/operations/deployment-profile.json",
         "fabricManifests": []
       },
       "controls": [
@@ -1268,7 +1314,7 @@
           "id": "deployment-profile",
           "score100": 100,
           "weight": 1,
-          "evidence": "docs/operations/deployment/deployment-profile.json",
+          "evidence": "docs/operations/deployment-profile.json",
           "remediation": "Add a repo-local deployment profile or a relocation pointer to the canonical profile."
         },
         {

@@ -121,8 +121,11 @@ Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot
 - Deleted generated `deploy/terraform/environments/staging/tfplan`.
 - Ran `pnpm format` and committed 14 pre-existing formatting-debt files.
 - Ran verification ladder: `pnpm lint` pass (warnings only), `pnpm typecheck` pass, `pnpm format:check` pass.
+- Audited `/Users/amanianai/Sites/fabric-6.30` transcript (Codex session on griot-ai/nyota-ai cleanup).
+- Cross-repo fix (Protocol 24): corrected syntax error in `nyota-ai/platform/scripts/agent-next-work.mjs` and committed staged cleanup as `c614051`.
+- Verified nyota-ai gates: `docs:ia:check` 10/10, `operations:check` pass.
 
 ### Next Steps
 - Working tree is now clean; continue backlog-clear protocol.
 - No open engineering stories; parallel assurance gates remain calendar-blocked.
-- Continue backlog-clear protocol: periodic witness refresh; no open engineering stories.
+- nyota-ai has remaining unstaged cleanup changes after the archive commit; next owner should review and commit or revert.

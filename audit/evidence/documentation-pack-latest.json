@@ -1,0 +1,248 @@
+{
+  "schema": "gtcx://audit/documentation-pack/v1",
+  "repo": "fabric-os",
+  "repoKind": "infra",
+  "isPilot": true,
+  "date": "2026-06-30",
+  "ok": false,
+  "score100": 80,
+  "pillar": "compliance",
+  "packs": [
+    {
+      "id": "CORE-P32",
+      "label": "P32 core narrative + audit entry",
+      "pillar": "compliance",
+      "required": true,
+      "score100": 100,
+      "items": [
+        {
+          "id": "readme",
+          "label": "README.md",
+          "severity": "P1",
+          "pass": true,
+          "detail": "README.md"
+        },
+        {
+          "id": "docs-readme",
+          "label": "docs/README.md IA entry",
+          "severity": "P1",
+          "pass": true,
+          "detail": "docs/README.md"
+        },
+        {
+          "id": "docs-sor",
+          "label": "docs/sor.json machine SoR",
+          "severity": "P1",
+          "pass": true,
+          "detail": "docs/sor.json"
+        },
+        {
+          "id": "audit-agent-start",
+          "label": "audit/AGENT-START.md",
+          "severity": "P1",
+          "pass": true,
+          "detail": "audit/AGENT-START.md"
+        },
+        {
+          "id": "tier-b-conduct",
+          "label": "docs/operations/repo/CODE_OF_CONDUCT.md",
+          "severity": "P2",
+          "pass": true,
+          "detail": "docs/operations/repo/CODE_OF_CONDUCT.md"
+        }
+      ]
+    },
+    {
+      "id": "AGENT-OPS",
+      "label": "Agent onboarding surfaces",
+      "pillar": "compliance",
+      "required": true,
+      "score100": 100,
+      "items": [
+        {
+          "id": "agents-md",
+          "label": "AGENTS.md repo entry",
+          "severity": "P1",
+          "pass": true,
+          "detail": "AGENTS.md"
+        },
+        {
+          "id": "agents-readme",
+          "label": "docs/agents/README.md or agent index",
+          "severity": "P2",
+          "pass": true,
+          "detail": "agents/README.md"
+        }
+      ]
+    },
+    {
+      "id": "JURISDICTION-SOR",
+      "label": "Documentation jurisdiction + sor.json validity",
+      "pillar": "compliance",
+      "required": true,
+      "score100": 100,
+      "items": [
+        {
+          "id": "sor-schema",
+          "label": "docs/sor.json schema gtcx.docs.sor.v1",
+          "severity": "P1",
+          "pass": true,
+          "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/sor.json"
+        },
+        {
+          "id": "no-ops-under-docs",
+          "label": "No ops machine domains duplicated under docs/",
+          "severity": "P1",
+          "pass": true,
+          "detail": "ok"
+        },
+        {
+          "id": "canon-upstream-pointer",
+          "label": "upstream canon-os or gtcx-docs constitution pointer",
+          "severity": "P2",
+          "pass": true,
+          "detail": "upstream ok"
+        }
+      ]
+    },
+    {
+      "id": "ONBOARD-PACK",
+      "label": "Contributor onboarding",
+      "pillar": "compliance",
+      "required": true,
+      "score100": 100,
+      "items": [
+        {
+          "id": "contributing",
+          "label": "CONTRIBUTING.md (repo or docs/operations/repo/)",
+          "severity": "P1",
+          "pass": true,
+          "detail": "docs/operations/repo/CONTRIBUTING.md"
+        },
+        {
+          "id": "contributing-sections",
+          "label": "CONTRIBUTING required sections",
+          "severity": "P2",
+          "pass": true,
+          "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/docs/operations/repo/CONTRIBUTING.md"
+        }
+      ]
+    },
+    {
+      "id": "GTM-PACK",
+      "label": "GTM / demo / deploy narrative",
+      "pillar": "compliance",
+      "required": true,
+      "score100": 0,
+      "items": [
+        {
+          "id": "gtm-dod",
+          "label": "demo-walkthrough or deployment-profile",
+          "severity": "P2",
+          "pass": false,
+          "detail": "missing demo-walkthrough or deployment-profile"
+        }
+      ]
+    },
+    {
+      "id": "OPS-DOCS-MANIFEST",
+      "label": "ops/docs/manifest.json canon subscribe (pilots)",
+      "pillar": "compliance",
+      "required": true,
+      "score100": 0,
+      "items": [
+        {
+          "id": "ops-docs-manifest",
+          "label": "ops/docs/manifest.json",
+          "severity": "P1",
+          "pass": false,
+          "detail": "missing ops/docs/manifest.json"
+        },
+        {
+          "id": "ops-docs-manifest-schema",
+          "label": "ops/docs/manifest.json schema valid",
+          "severity": "P1",
+          "pass": false,
+          "detail": "missing ops/docs/manifest.json"
+        }
+      ]
+    },
+    {
+      "id": "GITBOOK-NAV",
+      "label": "GitBook navigation (PublishaaS)",
+      "pillar": "technicalExcellence",
+      "required": true,
+      "score100": 100,
+      "items": [
+        {
+          "id": "gitbook-readme",
+          "label": "docs/gitbook/README.md",
+          "severity": "P2",
+          "pass": true,
+          "detail": "docs/gitbook/README.md"
+        },
+        {
+          "id": "gitbook-summary",
+          "label": "docs/gitbook/SUMMARY.md navigation",
+          "severity": "P2",
+          "pass": true,
+          "detail": "SUMMARY present"
+        }
+      ]
+    },
+    {
+      "id": "LINKAAS",
+      "label": "Internal docs link integrity",
+      "pillar": "technicalExcellence",
+      "required": false,
+      "score100": 100,
+      "items": [
+        {
+          "id": "docs-internal-links",
+          "label": "Broken internal links in docs/ ≤25",
+          "severity": "P2",
+          "pass": false,
+          "detail": "28 broken / 377 files"
+        }
+      ]
+    },
+    {
+      "id": "DX-PACK",
+      "label": "Developer experience quickstart (advisory)",
+      "pillar": "technicalExcellence",
+      "required": false,
+      "score100": 100,
+      "items": [
+        {
+          "id": "readme-quick-start",
+          "label": "README Quick start section",
+          "severity": "P3",
+          "pass": false,
+          "detail": "README missing ## Quick start"
+        }
+      ]
+    }
+  ],
+  "violations": [
+    {
+      "packId": "GTM-PACK",
+      "itemId": "gtm-dod",
+      "severity": "P2",
+      "detail": "missing demo-walkthrough or deployment-profile"
+    },
+    {
+      "packId": "OPS-DOCS-MANIFEST",
+      "itemId": "ops-docs-manifest",
+      "severity": "P1",
+      "detail": "missing ops/docs/manifest.json"
+    },
+    {
+      "packId": "OPS-DOCS-MANIFEST",
+      "itemId": "ops-docs-manifest-schema",
+      "severity": "P1",
+      "detail": "missing ops/docs/manifest.json"
+    }
+  ],
+  "openP0": 0,
+  "openP1": 2
+}

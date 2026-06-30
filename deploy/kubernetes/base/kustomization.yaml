@@ -8,7 +8,10 @@ metadata:
   name: gtcx-base
 
 labels:
-  - includeSelectors: false
+  # These fixed ownership labels are already part of the live workload
+  # selectors. Keep them included so GitOps reconciliation does not attempt an
+  # immutable selector rewrite.
+  - includeSelectors: true
     pairs:
       app.kubernetes.io/part-of: gtcx
       app.kubernetes.io/managed-by: kustomize

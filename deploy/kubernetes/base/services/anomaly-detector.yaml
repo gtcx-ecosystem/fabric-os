@@ -38,6 +38,8 @@ spec:
             runAsNonRoot: true
             runAsUser: 1000
             fsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
           restartPolicy: OnFailure
           containers:
             - name: detector

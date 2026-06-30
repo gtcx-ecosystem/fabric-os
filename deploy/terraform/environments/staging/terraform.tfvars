@@ -20,20 +20,23 @@ db_allocated_storage = 50
 
 # EKS — cost_profile scheduled → nodeMin 0 / desired 0 / max 4 (ECO-ENV-07)
 # Warm via bridgeOS env:warm; cold default per environment-cost-policy.v1.json.
-# Product decision 2026-06-30: keep staging warm at 1 node while Argo CD and
-# core platform services are being bootstrapped; revisit cold default once
-# the fleet is stable and on-demand warm-up is validated.
+# Product decision 2026-07-01: keep staging warm at 2 nodes while Argo CD and
+# core platform services are being bootstrapped. A live allocation probe found
+# the single node at 1885m/1930m requested CPU with four workloads pending.
+# Revisit the cold default once fleet scheduling and on-demand warm-up are
+# validated.
 # Instance bumped to t3.large because Argo CD components do not fit on a
 # single t3.medium (pre-upgrade hooks timed out waiting for pod readiness).
 cost_profile            = "scheduled"
-eks_node_min_size       = 1
-eks_node_desired_size   = 1
+eks_node_min_size       = 2
+eks_node_desired_size   = 2
 eks_node_instance_types = ["t3.large"]
 
 # Database — match existing instance engine version to avoid unintended downgrade
 db_engine_version = "16.13"
 
-# API access — public for CI/CD deploys from GitHub Actions.
+# API access — public for existing operator compatibility while deployment
+# execution moves to the VPC-attached CodeBuild path.
 # Staging is pre-production; 0.0.0.0/0 is acceptable here because
 # the EKS API is authenticated via IAM (OIDC trust policy). The
 # network-level CIDR restriction is secondary to IAM.

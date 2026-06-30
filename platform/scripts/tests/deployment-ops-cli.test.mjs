@@ -1,8 +1,13 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
 
 const cwd = new URL('../../..', import.meta.url);
+
+function readRepoFile(path) {
+  return readFileSync(new URL(path, cwd), 'utf8');
+}
 
 function runNode(script, args = []) {
   return spawnSync('node', [script, ...args], {
@@ -59,7 +64,11 @@ describe('deployment ops CLI guardrails', () => {
     assert.equal(witness.authorityClass, 'R');
     assert.equal(witness.projectName, 'gtcx-staging-deploy-executor');
     assert.deepEqual(witness.command.slice(0, 3), ['aws', 'codebuild', 'start-build']);
-    assert.ok(witness.payload.environmentVariablesOverride.some((item) => item.name === 'GITHUB_ACTIONS_CRITICAL_PATH' && item.value === 'false'));
+    assert.ok(
+      witness.payload.environmentVariablesOverride.some(
+        (item) => item.name === 'GITHUB_ACTIONS_CRITICAL_PATH' && item.value === 'false'
+      )
+    );
   });
 
   it('codebuild start wrapper supports Secrets Manager environment overrides', () => {
@@ -77,8 +86,8 @@ describe('deployment ops CLI guardrails', () => {
         (item) =>
           item.name === 'CLOUDFLARE_API_TOKEN' &&
           item.value === 'gtcx/staging/cloudflare-dns-api-token' &&
-          item.type === 'SECRETS_MANAGER',
-      ),
+          item.type === 'SECRETS_MANAGER'
+      )
     );
   });
 
@@ -116,8 +125,25 @@ describe('deployment ops CLI guardrails', () => {
     const witness = parseJson(result.stdout);
     assert.equal(witness.dryRun, true);
     assert.equal(witness.ok, true);
-    assert.ok(witness.commands.some((command) => command.id === 'cost-optimization-hub-recommendations'));
+    assert.ok(
+      witness.commands.some((command) => command.id === 'cost-optimization-hub-recommendations')
+    );
     assert.ok(witness.commands.some((command) => command.id === 'compute-optimizer-ec2'));
     assert.ok(witness.commands.every((command) => command.skipped === true));
+  });
+
+  it('staging manifests preserve live selectors and restricted pod security', () => {
+    const baseKustomization = readRepoFile('deploy/kubernetes/base/kustomization.yaml');
+    const stagingKustomization = readRepoFile(
+      'deploy/kubernetes/overlays/staging/kustomization.yaml'
+    );
+    const anomalyDetector = readRepoFile('deploy/kubernetes/base/services/anomaly-detector.yaml');
+
+    assert.match(baseKustomization, /includeSelectors:\s+true/);
+    assert.match(
+      stagingKustomization,
+      /name:\s+sovereign[\s\S]*\/spec\/selector\/matchLabels\/app\.kubernetes\.io~1managed-by/
+    );
+    assert.match(anomalyDetector, /seccompProfile:\s*\n\s+type:\s+RuntimeDefault/);
   });
 });

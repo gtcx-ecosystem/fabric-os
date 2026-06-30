@@ -36,6 +36,9 @@ gates['spec:two-lanes'] = {
 gates['spec:codeartifact-no-npm-token'] = {
   ok: /no long-lived NPM_TOKEN required/.test(spec.lanes?.internalRegistry?.credentialModel || ''),
 };
+gates['spec:codeartifact-supported-region'] = {
+  ok: spec.lanes?.internalRegistry?.region === 'eu-west-1' && /eu-west-1/.test(runbook),
+};
 gates['terraform:domain'] = { ok: /resource "aws_codeartifact_domain" "this"/.test(moduleMain) };
 gates['terraform:repository'] = {
   ok: /resource "aws_codeartifact_repository" "npm_internal"/.test(moduleMain),

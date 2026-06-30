@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/package-registry-continuity-check/v1",
-  "checkedAt": "2026-06-30T13:34:00.348Z",
+  "checkedAt": "2026-06-30T14:12:55.134Z",
   "ok": true,
   "gates": {
     "file:spec": {
@@ -35,6 +35,9 @@
       "ok": true
     },
     "spec:codeartifact-no-npm-token": {
+      "ok": true
+    },
+    "spec:codeartifact-supported-region": {
       "ok": true
     },
     "terraform:domain": {

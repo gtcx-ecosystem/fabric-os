@@ -36,11 +36,13 @@ deploy/terraform/modules/codeartifact-npm-registry/
 
 Default names:
 
-| Item       | Value           |
-| ---------- | --------------- |
-| Domain     | `gtcx-packages` |
-| Repository | `npm-internal`  |
-| Upstream   | `public:npmjs`  |
+| Item       | Value                                                                                    |
+| ---------- | ---------------------------------------------------------------------------------------- |
+| Region     | `eu-west-1`                                                                              |
+| Domain     | `gtcx-packages`                                                                          |
+| Repository | `npm-internal`                                                                           |
+| Upstream   | `public:npmjs`                                                                           |
+| Rationale  | CodeArtifact has no `af-south-1` endpoint; runtime workloads still default to Cape Town. |
 
 Class A apply creates the domain and repository. Runner auth uses AWS IAM and
 short-lived CodeArtifact tokens.
@@ -48,7 +50,7 @@ short-lived CodeArtifact tokens.
 Configure npm after apply:
 
 ```bash
-aws codeartifact login --tool npm --domain gtcx-packages --repository npm-internal --region af-south-1
+aws codeartifact login --tool npm --domain gtcx-packages --repository npm-internal --region eu-west-1
 npm ping
 ```
 

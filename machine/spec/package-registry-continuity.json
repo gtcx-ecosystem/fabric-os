@@ -12,6 +12,8 @@
       "authorityClass": "A",
       "systemOfRecord": "fabric-os Terraform + AWS IAM",
       "terraformModule": "deploy/terraform/modules/codeartifact-npm-registry",
+      "region": "eu-west-1",
+      "regionRationale": "AWS CodeArtifact has no af-south-1 endpoint; use eu-west-1 as the nearest supported AWS tooling region while runtime workloads remain in af-south-1.",
       "domain": "gtcx-packages",
       "repository": "npm-internal",
       "upstream": "public:npmjs",

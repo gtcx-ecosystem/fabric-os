@@ -1,0 +1,29 @@
+version: 0.2
+
+env:
+  variables:
+    DEPLOY_MODE: plan
+    DEPLOY_ENVIRONMENT: staging
+    DEPLOY_EVIDENCE_PATH: audit/evidence/codebuild-deploy-runner-latest.json
+
+phases:
+  install:
+    commands:
+      - node --version
+      - corepack enable
+      - corepack prepare pnpm@9.15.4 --activate
+      - pnpm --version
+      - curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.14.10/argocd-linux-amd64
+      - chmod +x /usr/local/bin/argocd
+  pre_build:
+    commands:
+      - pnpm install --frozen-lockfile
+  build:
+    commands:
+      - node platform/scripts/codebuild-deploy-runner.mjs --write --execute
+
+artifacts:
+  files:
+    - audit/evidence/codebuild-deploy-runner-latest.json
+    - audit/evidence/codebuild-deploy-start-latest.json
+  discard-paths: no

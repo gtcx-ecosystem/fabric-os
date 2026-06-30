@@ -20,17 +20,15 @@ function resolveRegisterPath(registerSpec) {
   if (registerSpec.startsWith('bridge-os/')) {
     return join(BRIDGE, registerSpec.slice('bridge-os/'.length));
   }
-  for (const prefix of ['fabric-os/', 'gtcx-infrastructure/']) {
-    if (registerSpec.startsWith(prefix)) return join(ROOT, registerSpec.slice(prefix.length));
+  if (registerSpec.startsWith('fabric-os/')) {
+    return join(ROOT, registerSpec.slice('fabric-os/'.length));
   }
   return join(ROOT, registerSpec);
 }
 
 function fabricRegisterRel(registerSpec) {
   if (registerSpec.startsWith('bridge-os/')) return registerSpec;
-  for (const prefix of ['fabric-os/', 'gtcx-infrastructure/']) {
-    if (registerSpec.startsWith(prefix)) return registerSpec.slice(prefix.length);
-  }
+  if (registerSpec.startsWith('fabric-os/')) return registerSpec.slice('fabric-os/'.length);
   return registerSpec;
 }
 

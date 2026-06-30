@@ -1,7 +1,7 @@
 import { attachProductTeamContext, formatGoalOrientationBrief } from '../../../../bridge-os/platform/scripts/lib/build-product-team-context.mjs';
 /**
  * Persona selection for agent:next-work (vendored — no gtcx-agentic checkout required).
- * SoR: gtcx-protocols ecosystem-persona-bridge; synced from gtcx-intelligence pattern.
+ * SoR: gtcx-protocols ecosystem-persona-bridge; synced from intelligence bridge pattern.
  * @see gtcx-protocols/01-docs/04-ops/coordination/ecosystem-persona-bridge-2026-06.md
  */
 

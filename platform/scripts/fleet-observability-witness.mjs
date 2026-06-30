@@ -188,9 +188,9 @@ function main() {
     ok: cluster.ok && witnessOk && witnessFresh,
     namespace: NAMESPACE,
     dashboards: {
-      ecosystemOverview: 'gtcx-infrastructure/monitoring/dashboards/ecosystem-overview.json',
-      protocolHealth: 'gtcx-infrastructure/monitoring/dashboards/protocol-health.json',
-      note: 'Grafana JSON models version-controlled in gtcx-infrastructure',
+      ecosystemOverview: 'fabric-os/monitoring/dashboards/ecosystem-overview.json',
+      protocolHealth: 'fabric-os/monitoring/dashboards/protocol-health.json',
+      note: 'Grafana JSON models version-controlled in fabric-os',
     },
     alertRoutes: ALERT_ROUTES,
     checks: {

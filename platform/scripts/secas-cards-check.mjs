@@ -19,7 +19,7 @@ const JSON_OUT = process.argv.includes('--json');
 const REQUIRED = [
   'compliance-os',
   'markets-os',
-  'gtcx-intelligence',
+  'bridge-os-intelligence-bridge',
   'terminal-os',
   'fabric-os',
   'bridge-os',

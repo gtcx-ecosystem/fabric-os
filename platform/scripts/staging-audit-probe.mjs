@@ -149,7 +149,7 @@ ${pass ? '> Note: Non-404 status (e.g., 400, 405, 503) is expected until signed 
 
 ## Cross-repo
 
-- Unblocks: \`gtcx-intelligence\` bank-grade evidence gaps (staging deploy smoke + external validation)
+- Unblocks: \`bridge-os\` intelligence bridge bank-grade evidence gaps (staging deploy smoke + external validation)
 - Related: \`gtcx-protocols\` PRD-002 Tier B DID resolver contract
 - Evidence consumed by: \`gtcx-docs\` audit framework (master-audit prompt)
 

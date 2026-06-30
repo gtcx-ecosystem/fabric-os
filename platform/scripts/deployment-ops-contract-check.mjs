@@ -35,6 +35,7 @@ const requiredFiles = [
   'operations/deployment-profile.json',
   'operations/fabric-contract.json',
   'machine/spec/mlops-bridge-contract.json',
+  'machine/spec/retained-resource-identifiers.json',
   'machine/spec/finops-as-a-service.json',
   'machine/spec/github-actions-cost-controls.json',
   'docs/operations/deployment/README.md',
@@ -65,6 +66,7 @@ const contract = readJson('machine/spec/deployment-ops-contract.json');
 const profile = readJson('operations/deployment-profile.json');
 const fabric = readJson('operations/fabric-contract.json');
 const mlops = readJson('machine/spec/mlops-bridge-contract.json');
+const retainedIdentifiers = readJson('machine/spec/retained-resource-identifiers.json');
 const finops = readJson('machine/spec/finops-as-a-service.json');
 const gha = readJson('machine/spec/github-actions-cost-controls.json');
 const deploymentReadme = readText('docs/operations/deployment/README.md');
@@ -102,6 +104,11 @@ gate('contract:cd-argocd-module', contract.cd?.terraformModule === 'deploy/terra
 gate('contract:cd-staging-app', contract.cd?.stagingApplication === 'fabric-staging-root', contract.cd?.stagingApplication);
 gate('contract:eks-public-forbidden', contract.cd?.productionEksApi?.publicAccess === 'forbidden-as-ci-workaround', JSON.stringify(contract.cd?.productionEksApi));
 gate('contract:ai-readiness-rule', /baselineos\/cost-router/i.test(contract.aiMlops?.readinessRule ?? ''), contract.aiMlops?.readinessRule);
+gate('contract:retained-identifiers-ref', contract.retainedResourceIdentifiers === 'machine/spec/retained-resource-identifiers.json', contract.retainedResourceIdentifiers);
+gate('retained-identifiers:source-owners', retainedIdentifiers.sourceOwnership?.intelligenceBridge === 'bridge-os' && retainedIdentifiers.sourceOwnership?.infrastructure === 'fabric-os', JSON.stringify(retainedIdentifiers.sourceOwnership));
+gate('retained-identifiers:gtcx-intelligence-rule', (retainedIdentifiers.rules ?? []).some((rule) => rule.pattern === 'gtcx-intelligence-*' && /not.*standalone gtcx-intelligence repo/i.test(rule.notMeaning ?? '') && rule.sourceOwner === 'bridge-os'), JSON.stringify(retainedIdentifiers.rules ?? []));
+gate('retained-identifiers:gtcx-infrastructure-rule', (retainedIdentifiers.rules ?? []).some((rule) => rule.pattern === 'gtcx-infrastructure' && /legacy fabric-os alias/i.test(rule.meaning ?? '') && rule.sourceOwner === 'fabric-os'), JSON.stringify(retainedIdentifiers.rules ?? []));
+gate('retained-identifiers:forbidden-active-surfaces', hasAll(retainedIdentifiers.forbiddenActiveSurfaces, ['source repository checkout', 'agent owner routing', 'new roadmap ownership', 'new runbook cwd paths', 'new handoff target repo']), JSON.stringify(retainedIdentifiers.forbiddenActiveSurfaces));
 
 const expectedDocRefs = [
   'docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md',
@@ -166,7 +173,7 @@ gate('finops:aws-optimization-script', /cost-optimization-hub/.test(awsOptimizat
 gate('mlops:deployment-contract-ref', (mlops.ownerSplit?.fabricOs ?? []).includes('machine/spec/deployment-ops-contract.json'), JSON.stringify(mlops.ownerSplit?.fabricOs));
 gate('mlops:github-not-critical', /GitHub Actions is not production critical path/i.test(mlops.fabricArtifacts?.ci ?? ''), mlops.fabricArtifacts?.ci);
 gate('mlops:readiness-rule', /baselineos\/cost-router/i.test(mlops.readinessGate?.rule ?? ''), mlops.readinessGate?.rule);
-gate('mlops:forbidden-owners', hasAll(mlops.forbiddenStrategyOwners, ['bridge-os', 'gtcx-os', 'gtcx-intelligence', 'gtcx-os/platform/intelligence']), JSON.stringify(mlops.forbiddenStrategyOwners));
+gate('mlops:forbidden-owners', hasAll(mlops.forbiddenStrategyOwners, ['bridge-os', 'gtcx-os', 'archived-intelligence-repo', 'fabric-os']), JSON.stringify(mlops.forbiddenStrategyOwners));
 
 // Fabric contract must expose deployment SoR references.
 const deploymentDomain = (fabric.domains ?? []).find((domain) => domain.id === 'deployment');

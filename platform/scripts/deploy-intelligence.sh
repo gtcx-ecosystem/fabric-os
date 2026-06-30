@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # =============================================================================
-# deploy-intelligence.sh — Build, push, and deploy GTCX intelligence services
+# deploy-intelligence.sh — Deploy prebuilt intelligence bridge services
 # =============================================================================
 #
 # Usage:
@@ -12,13 +12,12 @@
 #   - aws cli configured with ECR access
 #   - kubectl context set to the target EKS cluster
 #   - argo rollouts kubectl plugin (for canary status)
-#   - docker buildx available
+#   - intelligence bridge images already published to ECR
 # =============================================================================
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INFRA_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-INTELLIGENCE_ROOT="$(cd "$SCRIPT_DIR/../../gtcx-intelligence" && pwd)"
 K8S_DIR="$INFRA_ROOT/04-deploy/kubernetes/overlays/production/intelligence"
 
 # Defaults
@@ -132,7 +131,7 @@ else
   AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text 2>/dev/null) || err "Failed to get AWS account ID. Check aws cli config."
 fi
 ECR_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
-IMAGE_TAG="${ENV}-$(git -C "$INTELLIGENCE_ROOT" rev-parse --short HEAD 2>/dev/null || date +%Y%m%d%H%M%S)"
+IMAGE_TAG="${IMAGE_TAG:-manifest-pinned}"
 
 log "Environment:  $ENV"
 log "Service:      $SERVICE"
@@ -148,25 +147,20 @@ run "aws ecr get-login-password --region $AWS_REGION | docker login --username A
 
 # --- Build and push ---
 
-build_and_push() {
+ensure_prebuilt_image() {
   local service_name="$1"
   local image_name="$2"
-  local dockerfile_dir="$3"
 
-  log "Building $service_name..."
-  run "docker build -t $ECR_REGISTRY/$image_name:$IMAGE_TAG -t $ECR_REGISTRY/$image_name:latest -f $dockerfile_dir/Dockerfile $INTELLIGENCE_ROOT"
-
-  log "Pushing $service_name..."
-  run "docker push $ECR_REGISTRY/$image_name:$IMAGE_TAG"
-  run "docker push $ECR_REGISTRY/$image_name:latest"
+  log "Using prebuilt $service_name image: $ECR_REGISTRY/$image_name:$IMAGE_TAG"
+  log "Source builds for intelligence bridge artifacts are owned outside fabric-os."
 }
 
 if [[ "$SERVICE" == "anisa" || "$SERVICE" == "all" ]]; then
-  build_and_push "ANISA" "gtcx-anisa" "$INTELLIGENCE_ROOT/intelligence/anisa"
+  ensure_prebuilt_image "ANISA" "gtcx-anisa"
 fi
 
 if [[ "$SERVICE" == "sdk" || "$SERVICE" == "all" ]]; then
-  build_and_push "Intelligence SDK" "gtcx-intelligence-sdk" "$INTELLIGENCE_ROOT/intelligence/sdk"
+  ensure_prebuilt_image "Intelligence SDK" "gtcx-intelligence-sdk"
 fi
 
 # --- Apply K8s manifests ---

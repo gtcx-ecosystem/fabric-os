@@ -20,7 +20,7 @@ const ua = process.env.GTCX_PROBE_UA ?? 'Mozilla/5.0 (GTCX pilot-staging-smoke)'
 const STAGING_INGRESS = [
   { id: 'markets-agx', owner: 'markets-os', url: 'https://api.staging.gtcx.trade/api/health', pillar: 'ship' },
   { id: 'gtcx-sovereign', owner: 'gtcx-os', url: 'https://sovereign-staging.gtcx.trade/api/health', pillar: 'surfaces' },
-  { id: 'gtcx-intelligence', owner: 'gtcx-os', url: 'https://intelligence-staging.gtcx.trade/health', pillar: 'surfaces' },
+  { id: 'intelligence-bridge', owner: 'bridge-os', url: 'https://intelligence-staging.gtcx.trade/health', pillar: 'surfaces' },
 ];
 
 async function probe(url) {

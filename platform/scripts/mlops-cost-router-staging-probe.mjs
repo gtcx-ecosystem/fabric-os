@@ -86,7 +86,7 @@ export function runProbe() {
       manifest: 'deploy/kubernetes/overlays/staging/intelligence/deployment.yaml',
     },
     remediation: {
-      owner: 'gtcx-os/platform/intelligence',
+      owner: 'bridge-os-intelligence-bridge',
       steps: [
         'node 03-platform/scripts/prepare-baseline-os-for-ci.mjs',
         'node 03-platform/tools/verify-cost-router-v1.1-consume.mjs',

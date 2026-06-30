@@ -14,7 +14,9 @@ const paths = {
   moduleVars: 'deploy/terraform/modules/codeartifact-npm-registry/variables.tf',
   moduleOutputs: 'deploy/terraform/modules/codeartifact-npm-registry/outputs.tf',
   moduleTest: 'deploy/terraform/modules/codeartifact-npm-registry/codeartifact-npm-registry.tftest.hcl',
+  codebuildModule: 'deploy/terraform/modules/codebuild-deploy-executor/main.tf',
   npmReadiness: 'platform/scripts/ci-npm-token-readiness.mjs',
+  liveValidation: 'audit/evidence/package-registry-live-validation-latest.json',
 };
 
 function text(rel) {
@@ -28,7 +30,9 @@ for (const [name, rel] of Object.entries(paths)) {
 
 const spec = gates['file:spec'].ok ? JSON.parse(text(paths.spec)) : {};
 const moduleMain = gates['file:moduleMain'].ok ? text(paths.moduleMain) : '';
+const codebuildModule = gates['file:codebuildModule'].ok ? text(paths.codebuildModule) : '';
 const runbook = gates['file:runbook'].ok ? text(paths.runbook) : '';
+const liveValidation = gates['file:liveValidation'].ok ? JSON.parse(text(paths.liveValidation)) : {};
 
 gates['spec:two-lanes'] = {
   ok: spec.lanes?.internalRegistry?.provider === 'aws-codeartifact' && spec.lanes?.publicNpm?.provider === 'npmjs',
@@ -44,6 +48,12 @@ gates['terraform:repository'] = {
   ok: /resource "aws_codeartifact_repository" "npm_internal"/.test(moduleMain),
 };
 gates['terraform:npmjs-upstream'] = { ok: /public:npmjs/.test(moduleMain) };
+gates['terraform:runner-codeartifact-auth'] = {
+  ok:
+    /CodeArtifactNpmAuth/.test(codebuildModule) &&
+    /codeartifact:GetAuthorizationToken/.test(codebuildModule) &&
+    /sts:GetServiceBearerToken/.test(codebuildModule),
+};
 gates['runbook:both-lanes'] = { ok: /CodeArtifact internal registry/.test(runbook) && /New npm account/.test(runbook) };
 gates['runbook:vault-sor'] = { ok: /Baseline vault/.test(runbook) && /NPM_TOKEN/.test(runbook) };
 gates['runbook:npm-account-checklist'] = {
@@ -51,6 +61,12 @@ gates['runbook:npm-account-checklist'] = {
 };
 gates['runbook:npm-acceptance'] = {
   ok: /Acceptance Criteria/.test(runbook) && /publish:enterprise:check:quick/.test(runbook),
+};
+gates['live:runner-npm-ping'] = {
+  ok:
+    liveValidation.runner?.buildStatus === 'SUCCEEDED' &&
+    liveValidation.validation?.codeartifactLogin === 'SUCCEEDED' &&
+    liveValidation.validation?.npmPing === 'PONG',
 };
 
 const ok = Object.values(gates).every((gate) => gate.ok);

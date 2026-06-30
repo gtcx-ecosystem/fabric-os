@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/package-registry-continuity-check/v1",
-  "checkedAt": "2026-06-30T14:12:55.134Z",
+  "checkedAt": "2026-06-30T16:04:00.915Z",
   "ok": true,
   "gates": {
     "file:spec": {
@@ -27,9 +27,17 @@
       "ok": true,
       "path": "deploy/terraform/modules/codeartifact-npm-registry/codeartifact-npm-registry.tftest.hcl"
     },
+    "file:codebuildModule": {
+      "ok": true,
+      "path": "deploy/terraform/modules/codebuild-deploy-executor/main.tf"
+    },
     "file:npmReadiness": {
       "ok": true,
       "path": "platform/scripts/ci-npm-token-readiness.mjs"
+    },
+    "file:liveValidation": {
+      "ok": true,
+      "path": "audit/evidence/package-registry-live-validation-latest.json"
     },
     "spec:two-lanes": {
       "ok": true
@@ -49,6 +57,9 @@
     "terraform:npmjs-upstream": {
       "ok": true
     },
+    "terraform:runner-codeartifact-auth": {
+      "ok": true
+    },
     "runbook:both-lanes": {
       "ok": true
     },
@@ -59,6 +70,9 @@
       "ok": true
     },
     "runbook:npm-acceptance": {
+      "ok": true
+    },
+    "live:runner-npm-ping": {
       "ok": true
     }
   }

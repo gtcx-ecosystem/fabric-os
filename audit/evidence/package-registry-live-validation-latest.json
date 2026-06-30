@@ -1,0 +1,37 @@
+{
+  "schema": "gtcx://fabric-os/package-registry-live-validation/v1",
+  "checkedAt": "2026-06-30T16:00:45Z",
+  "owner": "fabric-os",
+  "authorityClass": "A",
+  "accountId": "348389439381",
+  "internalRegistry": {
+    "provider": "aws-codeartifact",
+    "region": "eu-west-1",
+    "domain": "gtcx-packages",
+    "domainArn": "arn:aws:codeartifact:eu-west-1:348389439381:domain/gtcx-packages",
+    "repository": "npm-internal",
+    "repositoryArn": "arn:aws:codeartifact:eu-west-1:348389439381:repository/gtcx-packages/npm-internal",
+    "externalConnection": "public:npmjs"
+  },
+  "runner": {
+    "provider": "aws-codebuild",
+    "region": "af-south-1",
+    "project": "gtcx-staging-deploy-executor",
+    "roleArn": "arn:aws:iam::348389439381:role/gtcx-staging-deploy-executor",
+    "buildId": "gtcx-staging-deploy-executor:c4f70e23-0f2c-4165-b681-72ea6ca42bfa",
+    "buildStatus": "SUCCEEDED",
+    "assumedRolePrefix": "arn:aws:sts::348389439381:assumed-role/gtcx-staging-deploy-executor/"
+  },
+  "validation": {
+    "codeartifactLogin": "SUCCEEDED",
+    "npmPing": "PONG",
+    "npmPingLatencyMs": 922,
+    "tokenStored": false,
+    "redaction": "CodeArtifact authorization token was not printed or written to repo."
+  },
+  "manualPublicNpmLane": {
+    "status": "blocked-human",
+    "reason": "npmjs account creation/recovery requires human CAPTCHA/account flow.",
+    "vaultCredentialWhenAvailable": "NPM_TOKEN"
+  }
+}

@@ -245,6 +245,34 @@ resource "aws_iam_role_policy" "deploy" {
           Resource = "arn:aws:ecr:${var.region}:${data.aws_caller_identity.current.account_id}:repository/gtcx-*"
         },
         {
+          Sid    = "CodeArtifactNpmAuth"
+          Effect = "Allow"
+          Action = [
+            "codeartifact:DescribeDomain",
+            "codeartifact:DescribeRepository",
+            "codeartifact:GetAuthorizationToken",
+            "codeartifact:GetRepositoryEndpoint",
+            "codeartifact:ReadFromRepository",
+          ]
+          Resource = [
+            "arn:aws:codeartifact:eu-west-1:${data.aws_caller_identity.current.account_id}:domain/gtcx-packages",
+            "arn:aws:codeartifact:eu-west-1:${data.aws_caller_identity.current.account_id}:repository/gtcx-packages/npm-internal",
+          ]
+        },
+        {
+          Sid    = "CodeArtifactBearerToken"
+          Effect = "Allow"
+          Action = [
+            "sts:GetServiceBearerToken",
+          ]
+          Resource = "*"
+          Condition = {
+            StringEquals = {
+              "sts:AWSServiceName" = "codeartifact.amazonaws.com"
+            }
+          }
+        },
+        {
           Sid    = "TerraformStateReadWrite"
           Effect = "Allow"
           Action = [

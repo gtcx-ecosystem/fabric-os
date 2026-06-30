@@ -58,6 +58,23 @@ AWS documents `aws codeartifact login` as the recommended npm setup path; it
 sets registry auth and the token is time-bound. The registry endpoint must end
 with `/` when configuring manually.
 
+Runner IAM must allow `codeartifact:GetAuthorizationToken`,
+`codeartifact:GetRepositoryEndpoint`, `codeartifact:ReadFromRepository`, and
+`sts:GetServiceBearerToken` for `codeartifact.amazonaws.com`. The staging
+executor role is `gtcx-staging-deploy-executor`.
+
+Live validation on 2026-06-30:
+
+| Item         | Value                                                                                      |
+| ------------ | ------------------------------------------------------------------------------------------ |
+| Account      | `348389439381`                                                                             |
+| Domain ARN   | `arn:aws:codeartifact:eu-west-1:348389439381:domain/gtcx-packages`                         |
+| Repo ARN     | `arn:aws:codeartifact:eu-west-1:348389439381:repository/gtcx-packages/npm-internal`        |
+| Runner proof | `gtcx-staging-deploy-executor:c4f70e23-0f2c-4165-b681-72ea6ca42bfa` completed `SUCCEEDED`. |
+
+The proof build assumed `arn:aws:sts::348389439381:assumed-role/gtcx-staging-deploy-executor/...`,
+ran `aws codeartifact login`, and `npm ping` returned `PONG 922ms`.
+
 ## Lane 2 — New npm account/org
 
 Purpose: public npmjs publishing continuity.

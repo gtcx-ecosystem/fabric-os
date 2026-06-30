@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://fabric-os/aaas-contract-check/v1",
   "provider": "fabric-os",
-  "checkedAt": "2026-06-30T18:24:06.677Z",
+  "checkedAt": "2026-06-30T18:31:17.357Z",
   "contractSor": "machine/spec/aaas-audit-contract.json",
   "repoCount": 20,
   "conformant": 16,

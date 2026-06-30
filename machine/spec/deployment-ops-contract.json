@@ -1,0 +1,97 @@
+{
+  "$schema": "gtcx://fabric-os/deployment-ops-contract/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-30",
+  "ownerRepo": "fabric-os",
+  "strategyOwners": ["fabric-os", "baseline-os"],
+  "title": "Deployment operations contract — GitHub billing independent CI/CD",
+  "status": "current",
+  "principle": "GitHub remains source control only. Production CI and deploy execution must not depend on GitHub Actions while the billing lock is unresolved.",
+  "runtimeCloud": {
+    "primary": "AWS",
+    "region": "af-south-1",
+    "gcpScope": "GTCX Intelligence / Bridge Phase 3 ML artifact bridge only"
+  },
+  "ci": {
+    "primaryExecutor": "aws-codebuild",
+    "terraformModule": "deploy/terraform/modules/codebuild-deploy-executor",
+    "environmentWires": [
+      "deploy/terraform/environments/staging/main.tf",
+      "deploy/terraform/environments/production/main.tf"
+    ],
+    "orchestrator": ["aws-codepipeline", "eventbridge-triggered-codebuild"],
+    "githubActions": {
+      "status": "not-production-critical-path",
+      "allowedFor": ["source-control-event-source", "non-critical checks after billing unblocks"],
+      "forbiddenFor": [
+        "production-deploy-execution",
+        "private-eks-kubectl-apply",
+        "terraform-apply-production"
+      ]
+    },
+    "selfHostedGithubRunners": {
+      "status": "fallback-only",
+      "precondition": "no-op self-hosted job proves GitHub Actions scheduling works under billing state"
+    },
+    "costPosture": "on-demand-codebuild-first; no always-on runner fleet until measured break-even"
+  },
+  "cd": {
+    "kubernetesDelivery": "argocd-in-eks",
+    "terraformModule": "deploy/terraform/modules/argocd",
+    "stagingApplication": "fabric-staging-root",
+    "initialSyncMode": "manual",
+    "imagePolicy": "immutable-digests",
+    "rollback": "prior-git-commit-or-prior-image-digest",
+    "productionEksApi": {
+      "publicAccess": "forbidden-as-ci-workaround",
+      "requiredAccessPath": "in-vpc-executor-or-in-cluster-controller"
+    }
+  },
+  "finops": {
+    "monthlyFleetCapUsd": 1500,
+    "monthlyProductionCapUsd": 1200,
+    "monthlyNonprodCapUsd": 400,
+    "requiredSignals": [
+      "projected-monthly-spend",
+      "eks-share",
+      "nat-vpc-share",
+      "rds-share",
+      "cost-per-deploy",
+      "warm-idle-hours"
+    ],
+    "optimizationOrder": [
+      "enforce-nonprod-cold-defaults",
+      "add-vpc-endpoints-reduce-nat",
+      "right-size-eks-nodes",
+      "spot-for-non-critical-compute",
+      "right-size-rds-and-retention",
+      "reduce-non-audit-log-retention",
+      "move-static-surfaces-off-eks-where-approved",
+      "add-ai-routing-cache-batch-after-telemetry"
+    ]
+  },
+  "aiMlops": {
+    "strategyOwners": ["fabric-os", "baseline-os"],
+    "modelRoutingOwner": "baseline-os",
+    "deployEvidenceOwner": "fabric-os",
+    "runtimeConsumer": "GTCX Intelligence / Bridge",
+    "readinessGate": "pnpm mlops:cost-router-staging-probe:write",
+    "readinessRule": "Do not claim AI cost-router readiness until the live pod can import baselineos/cost-router."
+  },
+  "agentInstructions": {
+    "primaryDoc": "docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md",
+    "strategyDoc": "docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md",
+    "handoffDoc": "docs/operations/deployment/github-billing-independent-deploy-handoff-2026-06-30.md",
+    "requiredSessionCommands": ["pnpm operations:check", "pnpm agent:next-work"],
+    "deploymentDocsCheck": "pnpm docs:operations:check"
+  },
+  "authority": {
+    "routine": ["docs", "checks", "dry-runs"],
+    "classA": [
+      "codebuild-terraform-apply",
+      "argocd-production-sync",
+      "production-kubernetes-apply"
+    ],
+    "classS": ["billing-account-decisions", "legal-contracts", "cloud-placement-expansion"]
+  }
+}

@@ -1,32 +1,36 @@
 {
   "$schema": "gtcx://fabric-os/mlops-bridge-contract/v1",
-  "version": "1.2.0",
-  "updated": "2026-06-15",
+  "version": "1.3.0",
+  "updated": "2026-06-30",
   "title": "MLOps bridge — fabric-os substrate contract",
   "opsLane": "MLOps",
   "mlopsOwner": "baseline-os",
-  "aiopsProgramOwner": "bridge-os",
+  "aiopsProgramOwner": "baseline-os",
   "fabricBridgeOwner": "fabric-os",
   "status": "scaffold",
-  "principle": "MLOps and AIOps lanes run through baseline-os (AI OS: cost-router, eval, model governance) and bridge-os (fleet program office, witnesses, registry). fabric-os supplies deploy substrate only — not lane ownership. Product ML runtime in gtcx-os/platform/intelligence is out of ops-lane scope.",
+  "principle": "MLOps and AIOps strategy is owned by baseline-os and fabric-os. baseline-os owns cost-router, eval, model governance, and CostGuard contracts. fabric-os owns deploy substrate, cost evidence, and runtime bridge controls. GTCX Intelligence / Bridge consumes the runtime contract; it does not own the infra strategy.",
   "ownerSplit": {
     "baselineOs": [
       "machine/spec/mlops-as-a-service.json",
       "docs/specs/runtime/cost-router.md",
       "platform/packages/baselineos/src/core/cost-router.ts",
-      "pnpm mlops:check (to implement)"
-    ],
-    "bridgeOs": [
-      "machine/spec/ops-programs-registry.json",
-      "machine/spec/ops-lanes-100-plan.json",
-      "ecosystem:aiops:check:fleet",
-      "machine/ci/aiops-fleet-latest.json"
+      "CostGuard tenant/repo budget contracts",
+      "durable cost-stats by tenant/repo/model"
     ],
     "fabricOs": [
       "deploy/terraform/modules/gcp-ml-bridge/",
       "platform/tools/eval-pipeline/",
       "platform/tools/anomaly-detector/",
-      "machine/spec/mlops-bridge-contract.json"
+      "machine/spec/mlops-bridge-contract.json",
+      "machine/spec/deployment-ops-contract.json",
+      "docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md",
+      "audit/evidence/mlops-cost-router-staging-probe-latest.json"
+    ],
+    "gtcxIntelligenceBridge": [
+      "runtime service behavior",
+      "inference API consumption",
+      "SDK image containing baselineos/cost-router",
+      "GCP Phase 3 ML artifact production when approved"
     ]
   },
   "fabricArtifacts": {
@@ -36,11 +40,20 @@
       "docs/governance/model-cards/anomaly-detector-model-card.md",
       "docs/governance/model-cards/eval-pipeline-model-card.md"
     ],
-    "ci": ".github/workflows/eval-pipeline.yml"
+    "ci": "AWS CodeBuild / deployment-ops-contract; GitHub Actions is not production critical path"
   },
   "handoffs": {
     "baselineOs": "docs/operations/coordination/inbound/to-baseline-os-mlops-lane-2026-06-15.md",
     "bridgeOs": "docs/operations/coordination/inbound/to-bridge-os-ai-mlops-lane-2026-06-15.md"
   },
-  "forbiddenOwners": ["gtcx-os", "gtcx-intelligence", "gtcx-os/platform/intelligence"]
+  "readinessGate": {
+    "command": "pnpm mlops:cost-router-staging-probe:write",
+    "rule": "Do not claim AI cost-router readiness until the live pod can import baselineos/cost-router."
+  },
+  "forbiddenStrategyOwners": [
+    "bridge-os",
+    "gtcx-os",
+    "gtcx-intelligence",
+    "gtcx-os/platform/intelligence"
+  ]
 }

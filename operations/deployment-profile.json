@@ -1,15 +1,23 @@
 {
   "$schema": "gtcx://bridge-os/deployment-profile/v1",
   "repo": "fabric-os",
-  "deployMode": "aws-eks-control-plane",
+  "deployMode": "aws-codebuild-vpc-plus-argocd-eks",
   "environments": ["staging", "production"],
   "smokeCommand": "node platform/tools/scripts/validate-all.mjs",
   "readinessCommand": "pnpm fabric:ops:check",
+  "ciExecutor": "aws-codebuild",
+  "ciOrchestrator": ["aws-codepipeline", "eventbridge-triggered-codebuild"],
+  "kubernetesDelivery": "argocd-in-eks",
+  "githubActionsRole": "source-control-event-source-only-not-production-critical-path",
+  "productionEksAccess": "private-api-via-in-vpc-executor-or-in-cluster-controller",
   "infraMatrixRef": "OPS-CLOUD-PLACE-001#fabric-os",
   "terraformRoot": "deploy/terraform/environments/staging",
+  "deploymentOpsContract": "machine/spec/deployment-ops-contract.json",
+  "agentInstructions": "docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md",
   "handoffTemplate": "docs/operations/coordination/inbound/to-b/to-fabric-os-{topic}-YYYY-MM-DD.md",
   "proofIds": ["W2-OPS-001"],
   "costClass": "always-on",
   "owner": "fabric-os",
-  "updated": "2026-06-22"
+  "strategyOwners": ["fabric-os", "baseline-os"],
+  "updated": "2026-06-30"
 }

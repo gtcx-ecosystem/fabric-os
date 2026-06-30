@@ -1,9 +1,10 @@
 {
   "$schema": "gtcx://fabric-os/github-actions-cost-controls/v1",
   "version": "1.0.0",
-  "updated": "2026-06-29",
+  "updated": "2026-06-30",
   "ownerRepo": "fabric-os",
   "policyDoc": "docs/operations/runbooks/github-actions-cost-controls.md",
+  "deploymentOpsContract": "machine/spec/deployment-ops-contract.json",
   "checkCommand": "pnpm gha:cost-controls:check",
   "scope": {
     "workflowDirectory": ".github/workflows",
@@ -11,7 +12,9 @@
     "disallowedRunners": ["macos-latest", "macos-13", "macos-14", "windows-latest"],
     "disallowedDeploymentProviderRefs": ["vercel"],
     "scheduledWorkflowRequiresConcurrencyCancel": true,
-    "scheduledWorkflowRequiresJobTimeouts": true
+    "scheduledWorkflowRequiresJobTimeouts": true,
+    "productionCriticalPath": "aws-codebuild-and-argocd",
+    "githubActionsProductionCriticalPathAllowed": false
   },
   "approvalRules": {
     "macosRunners": {
@@ -30,6 +33,12 @@
     "vercel": {
       "status": "retired",
       "rule": "Do not add Vercel deployment or status-check assumptions."
+    },
+    "productionCiCd": {
+      "default": "forbidden-on-github-actions-while-billing-blocked",
+      "requiredExecutor": "aws-codebuild-vpc",
+      "requiredDelivery": "argocd-in-eks",
+      "rule": "GitHub Actions may be a source-control event source only; production deploy execution must run through AWS-owned execution until a superseding Class A strategy lands."
     }
   }
 }

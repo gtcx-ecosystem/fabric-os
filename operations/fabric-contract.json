@@ -22,7 +22,11 @@
       "id": "deployment",
       "centralRef": "fabric-os/docs/operations/deployment/README.md",
       "localRefs": [
-        "docs/operations/deployment/deployment-profile.json",
+        "operations/deployment-profile.json",
+        "machine/spec/deployment-ops-contract.json",
+        "docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md",
+        "docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md",
+        "docs/operations/deployment/github-billing-independent-deploy-handoff-2026-06-30.md",
         "config/ops.manifest.json"
       ]
     },

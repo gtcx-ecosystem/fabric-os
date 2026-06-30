@@ -35,6 +35,11 @@
       "label": "Deployment and environment profile",
       "centralRef": "fabric-os/docs/operations/deployment/README.md",
       "requiredLocalRefs": [
+        "operations/deployment-profile.json",
+        "machine/spec/deployment-ops-contract.json",
+        "docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md",
+        "docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md",
+        "docs/operations/deployment/github-billing-independent-deploy-handoff-2026-06-30.md",
         "docs/operations/deployment/deployment-profile.json",
         "docs/operations/deployment-profile.json",
         "config/ops.manifest.json"
@@ -116,6 +121,15 @@
         "id": "compliance",
         "centralRef": "fabric-os/ops/compliance/manifest.json",
         "localRefs": ["..."]
+      },
+      {
+        "id": "deployment",
+        "centralRef": "fabric-os/docs/operations/deployment/README.md",
+        "localRefs": [
+          "operations/deployment-profile.json",
+          "machine/spec/deployment-ops-contract.json",
+          "docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md"
+        ]
       }
     ]
   }

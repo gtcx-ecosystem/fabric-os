@@ -6,6 +6,7 @@ owner: fabric-os
 document_type: strategy
 tier: operating
 review_cycle: on-change
+tags: [fabric-os, business]
 ---
 
 # GTCX AI‑Ops & Cost Intelligence Platform

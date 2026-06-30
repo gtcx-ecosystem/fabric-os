@@ -1,17 +1,17 @@
 ---
 title: 'Strategy documents'
-status: current
+status: pointer
 date: 2026-06-29
 owner: fabric-os
-document_type: index
+document_type: pointer
 tier: operating
 review_cycle: on-change
 ---
 
 # Strategy documents
 
-Durable strategy and handoff records that are not active product roadmap items.
+Deprecated strategy root. Canonical records now live under business opportunity documents.
 
-| Document                                                                                         | Purpose                                     |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------- |
-| [`ai-ops-cost-intelligence-platform-handoff.md`](./ai-ops-cost-intelligence-platform-handoff.md) | AI-Ops and cost intelligence handoff state. |
+| Document                                                                                                                                         | Purpose                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| [`docs/business/opportunity/ai-ops-cost-intelligence-platform-handoff.md`](../business/opportunity/ai-ops-cost-intelligence-platform-handoff.md) | AI-Ops and cost intelligence handoff state. |

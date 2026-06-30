@@ -6,6 +6,7 @@ owner: fabric-os
 document_type: runbook
 tier: operating
 review_cycle: on-change
+tags: [fabric-os, operations]
 ---
 
 # Layout v5 — local SoR pointer
@@ -13,7 +14,6 @@ review_cycle: on-change
 | Artifact         | Path                                                                                                                         |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | Machine contract | [`../../../../bridge-os/config/ecosystem-layout-contract.json`](../../../../bridge-os/config/ecosystem-layout-contract.json) |
-| Prose            | [`../../../../bridge-os/docs/ecosystem-layout-v5.md`](../../../../bridge-os/docs/ecosystem-layout-v5.md)                     |
 | Runtime pointer  | [`../../../config/layout-contract.json`](../../../config/layout-contract.json)                                               |
 | Ops manifest     | [`../../../config/ops.manifest.json`](../../../config/ops.manifest.json)                                                     |
 | Root allowlist   | [`../repo/root-allowlist.json`](../repo/root-allowlist.json)                                                                 |

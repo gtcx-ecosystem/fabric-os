@@ -9,6 +9,6 @@ review_cycle: on-change
 
 # docs/overview — relocated
 
-**Canonical path:** [`docs/business/`](../docs/business/)
+**Canonical path:** `docs/business/`
 
 P0 legacy scrub — do not add new files here.

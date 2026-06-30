@@ -13,8 +13,8 @@ review_cycle: on-change
 
 **Read-only rollup** — scores come from published MPR witnesses, not manual entry.
 
-- Policy: [`../../canon-os/pm/spec/docs-fractal-mpr-policy.json`](../../canon-os/pm/spec/docs-fractal-mpr-policy.json)
-- Pack: [`../../pm/spec/docs-publishing-pack.json`](../../pm/spec/docs-publishing-pack.json#pillarContract)
+- Policy: [`../../../machine/spec/docs-fractal-mpr-policy.json`](../../../machine/spec/docs-fractal-mpr-policy.json)
+- Pack: [`../../../machine/spec/docs-publishing-pack.json`](../../../machine/spec/docs-publishing-pack.json#pillarContract)
 - **Layer witness (SoR):** [`audit/evidence/mpr-publishing-layer-latest.json`](audit/evidence/mpr-publishing-layer-latest.json)
 
 **Composite target:** **85/100** per profile at layer audit order.

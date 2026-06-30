@@ -6,6 +6,7 @@ owner: fabric-os
 document_type: handoff
 tier: operating
 review_cycle: on-change
+tags: [fabric-os, business]
 ---
 
 # Handoff — GTCX AI-Ops & Cost Intelligence Platform

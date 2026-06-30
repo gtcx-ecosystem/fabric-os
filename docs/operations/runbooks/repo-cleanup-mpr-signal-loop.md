@@ -1,38 +1,41 @@
 ---
-title: 'Repository Assurance and Acceptance Protocol'
+title: 'GTCX Quality Assurance Protocol'
 status: current
 date: 2026-06-30
 owner: fabric-os
-document_type: assurance-protocol
+document_type: quality-assurance-protocol
 tier: critical
 authority: fabric-os AaaS/DaaS assurance lane; canon-os governance and folder/file specs
 version: 1.0.0
 review_cycle: on-change
 supersedes: ad hoc repo hygiene cleanup checklists
-protocol_id: FAB-RAAP-001
+protocol_id: GTCX-QAP-001
 workflow_id: repo-cleanup-mpr-signal-loop
-canonical_command: pnpm repo-cleanup:mpr-signal:acceptance
+canonical_command: pnpm qap:repo:acceptance
+compatibility_command: pnpm repo-cleanup:mpr-signal:acceptance
 ---
 
-# Repository Assurance and Acceptance Protocol
+# GTCX Quality Assurance Protocol
 
-| Field             | Value                                     |
-| ----------------- | ----------------------------------------- |
-| Protocol ID       | `FAB-RAAP-001`                            |
-| Workflow ID       | `repo-cleanup-mpr-signal-loop`            |
-| Canonical command | `pnpm repo-cleanup:mpr-signal:acceptance` |
+| Field                 | Value                                     |
+| --------------------- | ----------------------------------------- |
+| Protocol ID           | `GTCX-QAP-001`                            |
+| Short name            | GTCX QAP                                  |
+| Workflow ID           | `repo-cleanup-mpr-signal-loop`            |
+| Canonical command     | `pnpm qap:repo:acceptance`                |
+| Compatibility command | `pnpm repo-cleanup:mpr-signal:acceptance` |
 
-This protocol defines the provider-neutral repository assurance workflow for
+GTCX QAP defines the provider-neutral repository quality assurance workflow for
 `canon-os`, `bridge-os`, `fabric-os`, `agile-os`, `baseline-os`, and product
 repos. Any terminal-capable agent can execute it: Claude, Codex, Gemini, Kimi,
 Cursor, Copilot, or a future provider.
 
-Repository acceptance is granted only at **MPR 100/100** and
+Repository quality acceptance is granted only at **MPR 100/100** and
 **SIGNAL L5 / 100** for the assessed scope. The workflow preserves critical
 docs/specs/workflows/contracts, verifies owner and consumer commands, evaluates
 Fabric AaaS/DaaS evidence where applicable, and produces both a human-readable
-assurance report and a machine-readable witness. Anything less is `incomplete`
-unless a real Class S/external dependency makes it `blocked`.
+QAP report and a machine-readable witness. Anything less is `incomplete` unless
+a real Class S/external dependency makes it `blocked`.
 
 ## Authority Stack
 
@@ -44,6 +47,64 @@ unless a real Class S/external dependency makes it `blocked`.
 | Agile workflow                                 | `agile-os`    | Feature registry, sprint authority, ceremonies, DoR/DoD, ship gates     |
 | Baseline runtime                               | `baseline-os` | Startup/runtime conventions, command surface, machine/operations layout |
 | Product implementation                         | repo owner    | Product-specific docs, code, evidence, and local gates                  |
+
+## Service Contract
+
+GTCX QAP is a critical Fabric service, not a one-off repository cleanup task.
+The machine-readable service contract is:
+
+```text
+machine/spec/gtcx-qap-contract.json
+```
+
+The contract defines the QAP control matrix, required evidence, acceptance
+thresholds, command surface, owner boundaries, and provisioning rules. The
+runbook is the operator-facing procedure; the contract is the agent/runtime
+surface that other repos consume.
+
+## Relationship To AaaS And MPR
+
+QAP is the repository quality acceptance protocol. AaaS and MPR are the audit
+evidence supply chain that QAP consumes.
+
+| Concern             | Owner       | System of record                                        | Product of record                                      |
+| ------------------- | ----------- | ------------------------------------------------------- | ------------------------------------------------------ |
+| QAP acceptance      | `fabric-os` | `machine/spec/gtcx-qap-contract.json`                   | `audit/evidence/repo-cleanup-mpr-signal-acceptance-latest.json` |
+| AaaS contract       | `fabric-os` | `machine/spec/aaas-audit-contract.json`                 | `machine/spec/aaas-audit-contract.pin.json` in each repo |
+| MPR taxonomy        | `fabric-os` | `machine/spec/aaas-audit-taxonomy.json`                 | 11-pillar MPR report taxonomy                          |
+| MPR scoring engine  | `bridge-os` | `bridge-os/platform/scripts/ecosystem/run-mpr-repo-audit.mjs` | `audit/evidence/mpr-repo-latest.json` in target repo   |
+| SIGNAL evaluator    | `fabric-os` now, `baseline-os` target owner | `platform/scripts/aaas-signal-eval.mjs` | `audit/evidence/signal-maturity-latest.json`           |
+| Coverage denominator | `canon-os` | canon capability/governance registries                  | coverage and honesty inputs consumed by Fabric         |
+
+QAP must not recalculate MPR by hand. It verifies that the canonical AaaS/MPR
+witnesses exist, are current, pass honesty/ownership/cadence gates, and satisfy
+the QAP threshold for the assessed repo.
+
+## How AaaS/MPR Is Saved And Provisioned
+
+AaaS is saved and provisioned through Fabric-owned contracts and repo-local pins:
+
+1. Fabric stores the canonical AaaS service contract at
+   `machine/spec/aaas-audit-contract.json`.
+2. Fabric stores the MPR taxonomy at `machine/spec/aaas-audit-taxonomy.json`.
+3. Fabric stores the canonical command surface at
+   `machine/spec/aaas-command-surface.json`.
+4. Fleet bindings live in `machine/fleet-audit-contracts.json`.
+5. `pnpm aaas:provision` / `pnpm aaas:provision:write` creates the required
+   repo folders and writes `machine/spec/aaas-audit-contract.pin.json` in each
+   target repo.
+6. `pnpm aaas:audit -- --repo <repo> --lens mpr --write` delegates scoring to
+   the Bridge MPR engine and writes target-repo MPR witnesses under
+   `audit/evidence/`, especially `audit/evidence/mpr-repo-latest.json`.
+7. Fabric saves AaaS control witnesses under `audit/evidence/`:
+   `aaas-contract-check-latest.json`, `aaas-cadence-latest.json`,
+   `aaas-honesty-gate-latest.json`, `aaas-ownership-latest.json`, and related
+   DaaS/Fabric evidence.
+8. Human-readable dated assessments live under `audit/reports/`; handoff
+   directives live under `audit/handoff/`; superseded dated artifacts move to
+   `audit/archive/`.
+9. QAP consumes those saved witnesses and emits the final repository quality
+   acceptance decision.
 
 ## Non-Negotiables
 
@@ -66,7 +127,7 @@ unless a real Class S/external dependency makes it `blocked`.
 
 | Lens                                 | Required threshold |
 | ------------------------------------ | -----------------: |
-| MPR repository assurance composite   |            100/100 |
+| MPR QAP composite                    |            100/100 |
 | SIGNAL repository maturity           |           L5 / 100 |
 | MPR Trust & Safety                   |            100/100 |
 | MPR Product/Ecosystem Integration    |            100/100 |
@@ -77,7 +138,7 @@ unless a real Class S/external dependency makes it `blocked`.
 | Folder/file spec score               |            100/100 |
 | AaaS and DaaS gates, when applicable |            100/100 |
 
-## Assurance Control Matrix
+## QAP Control Matrix
 
 Every report must include this table. `PASS` is valid only when the row has
 evidence and the linked MPR/SIGNAL dimensions score 100 for the cleanup scope.
@@ -120,6 +181,12 @@ audit/evidence/repo-cleanup-archive-manifest-latest.json
 In `fabric-os`, the executable surface is:
 
 ```bash
+pnpm qap:repo:acceptance
+pnpm qap:repo:acceptance -- --repo <repo>
+pnpm qap:repo:acceptance:write
+pnpm qap:repo:acceptance:write -- --repo <repo>
+
+# Compatibility aliases
 pnpm repo-cleanup:mpr-signal:acceptance
 pnpm repo-cleanup:mpr-signal:acceptance -- --repo <repo>
 pnpm repo-cleanup:mpr-signal:acceptance:write
@@ -129,9 +196,9 @@ pnpm repo-cleanup:mpr-signal:acceptance:write -- --repo <repo>
 The command exits `0` only when complete. It exits nonzero for incomplete
 evidence and still writes the report/artifact in `:write` mode.
 
-## Assurance Workflow Phases
+## QAP Workflow Phases
 
-The assurance workflow is iterative. If any phase fails, record the blocker, remediate the
+The QAP workflow is iterative. If any phase fails, record the blocker, remediate the
 smallest owner-appropriate issue, regenerate evidence, and restart from Phase 1
 for that repo. Re-run consumer phases after any owner-contract change.
 

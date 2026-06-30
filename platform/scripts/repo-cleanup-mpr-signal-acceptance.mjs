@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Repository Assurance and Acceptance Protocol witness.
+ * GTCX Quality Assurance Protocol witness.
  *
- * Generates the mandatory report + machine artifact for FAB-RAAP-001, defined
+ * Generates the mandatory report + machine artifact for GTCX-QAP-001, defined
  * in docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md. This command is
  * intentionally conservative: it reports "complete" only when
  * existing evidence proves MPR 100/100, SIGNAL L5 / 100, clean worktree, phase
@@ -23,11 +23,19 @@ const JSON_OUT = process.argv.includes('--json');
 const arg = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null);
 const repoArg = arg('--repo');
 const ROOT = repoArg ? join(FLEET, repoArg) : process.cwd();
-const REPO = repoArg ?? basename(ROOT);
+const REPO = repoArg ?? (() => {
+  try {
+    return JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8'))?.name ?? basename(ROOT);
+  } catch {
+    return basename(ROOT);
+  }
+})();
 
 const evidenceRel = 'audit/evidence';
 const reportRel = `audit/reports/repo-cleanup-mpr-signal-acceptance-${new Date().toISOString().slice(0, 10)}.md`;
 const artifactRel = 'audit/evidence/repo-cleanup-mpr-signal-acceptance-latest.json';
+const protocolId = 'GTCX-QAP-001';
+const protocolName = 'GTCX Quality Assurance Protocol';
 
 function readJson(rel) {
   try {
@@ -304,7 +312,10 @@ function buildWitness() {
   };
 
   return {
-    schema: 'gtcx://fabric-os/repo-cleanup-mpr-signal-acceptance/v1',
+    schema: 'gtcx://fabric-os/gtcx-qap-repository-acceptance/v1',
+    protocolId,
+    protocolName,
+    compatibilitySchema: 'gtcx://fabric-os/repo-cleanup-mpr-signal-acceptance/v1',
     repo: REPO,
     branch,
     commit,
@@ -377,16 +388,16 @@ function renderReport(witness) {
     : '- none';
 
   return `---
-title: "Repository assurance acceptance - ${witness.repo}"
+title: "GTCX QAP repository acceptance - ${witness.repo}"
 status: ${witness.decision}
 date: ${witness.generatedAt.slice(0, 10)}
 owner: fabric-os
 document_type: audit-report
 authority: fabric-os AaaS/DaaS assurance lane
-protocol_id: FAB-RAAP-001
+protocol_id: ${protocolId}
 ---
 
-# Repository Assurance Acceptance - ${witness.repo}
+# GTCX QAP Repository Acceptance - ${witness.repo}
 
 Decision: **${witness.decision}**
 
@@ -436,7 +447,7 @@ function main() {
   if (JSON_OUT) {
     console.log(JSON.stringify(witness, null, 2));
   } else {
-    console.log(`repository assurance acceptance — ${witness.repo}: ${witness.decision}`);
+    console.log(`GTCX QAP repository acceptance — ${witness.repo}: ${witness.decision}`);
     console.log(`MPR ${witness.mpr.composite100 ?? 'unverified'}/100 · SIGNAL ${witness.signal.level ?? 'unverified'} / ${witness.signal.score100 ?? 'unverified'}`);
     console.log(`blockers: ${witness.blockers.length}`);
     if (WRITE) {

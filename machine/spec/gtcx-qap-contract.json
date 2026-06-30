@@ -1,0 +1,231 @@
+{
+  "$schema": "gtcx://fabric-os/gtcx-qap-contract/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-30",
+  "provider": "fabric-os",
+  "service": "GTCX-QAP",
+  "title": "GTCX Quality Assurance Protocol contract",
+  "status": "current",
+  "principle": "GTCX QAP is Fabric's repository quality acceptance service. It does not replace AaaS, MPR, SIGNAL, canon governance, bridge runtime, agile workflow, or repo-local product gates; it verifies that those owner contracts are present, current, non-contradictory, and sufficient for repository acceptance.",
+  "runbook": "docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md",
+  "canonicalCommand": "qap:repo:acceptance",
+  "compatibilityCommands": [
+    "repo-cleanup:mpr-signal:acceptance"
+  ],
+  "acceptanceThresholds": {
+    "mprComposite100": 100,
+    "signalLevel": "L5",
+    "signalScore100": 100,
+    "governanceProtocolScore100": 100,
+    "folderFileSpecScore100": 100,
+    "fabricAaasDaasScore100": 100,
+    "operationalLaneIsolation": true
+  },
+  "ownerBoundaries": {
+    "qapAcceptance": {
+      "owner": "fabric-os",
+      "sor": "machine/spec/gtcx-qap-contract.json",
+      "witness": "audit/evidence/repo-cleanup-mpr-signal-acceptance-latest.json"
+    },
+    "aaasContract": {
+      "owner": "fabric-os",
+      "sor": "machine/spec/aaas-audit-contract.json",
+      "repoPin": "machine/spec/aaas-audit-contract.pin.json"
+    },
+    "mprTaxonomy": {
+      "owner": "fabric-os",
+      "sor": "machine/spec/aaas-audit-taxonomy.json"
+    },
+    "mprEngine": {
+      "owner": "bridge-os",
+      "entrypoint": "bridge-os/platform/scripts/ecosystem/run-mpr-repo-audit.mjs",
+      "witness": "audit/evidence/mpr-repo-latest.json"
+    },
+    "signalEvaluator": {
+      "owner": "fabric-os now; baseline-os target",
+      "entrypoint": "platform/scripts/aaas-signal-eval.mjs",
+      "witness": "audit/evidence/signal-maturity-latest.json"
+    },
+    "governanceAndFolderSpecs": {
+      "owner": "canon-os",
+      "sor": "canon-os governance protocols and folder/file specs"
+    },
+    "runtimeAndPersona": {
+      "owner": "bridge-os",
+      "sor": "P22 runtime, persona/frame, MPR engine"
+    },
+    "agileWorkflow": {
+      "owner": "agile-os",
+      "sor": "feature registry, sprint authority, ceremonies, DoR/DoD"
+    },
+    "baselineRuntime": {
+      "owner": "baseline-os",
+      "sor": "startup/runtime conventions and command surface"
+    },
+    "productImplementation": {
+      "owner": "repo owner",
+      "sor": "repo-local code, product docs, tests, and delivery evidence"
+    }
+  },
+  "persistence": {
+    "qapReport": "audit/reports/repo-cleanup-mpr-signal-acceptance-YYYY-MM-DD.md",
+    "qapWitness": "audit/evidence/repo-cleanup-mpr-signal-acceptance-latest.json",
+    "inventoryWitness": "audit/evidence/repo-folder-file-spec-inventory-latest.json",
+    "archiveManifest": "audit/evidence/repo-cleanup-archive-manifest-latest.json",
+    "aaasContractWitness": "audit/evidence/aaas-contract-check-latest.json",
+    "aaasCadenceWitness": "audit/evidence/aaas-cadence-latest.json",
+    "aaasHonestyWitness": "audit/evidence/aaas-honesty-gate-latest.json",
+    "aaasOwnershipWitness": "audit/evidence/aaas-ownership-latest.json",
+    "mprCompositeWitness": "audit/evidence/mpr-repo-latest.json",
+    "signalWitness": "audit/evidence/signal-maturity-latest.json"
+  },
+  "provisioning": {
+    "aaasProvisionCommand": "pnpm aaas:provision:write",
+    "aaasProvisionScript": "platform/scripts/aaas-provision.mjs",
+    "fleetBindings": "machine/fleet-audit-contracts.json",
+    "repoPin": "machine/spec/aaas-audit-contract.pin.json",
+    "requiredAaasFolders": [
+      "audit/evidence",
+      "audit/reports",
+      "audit/handoff",
+      "audit/archive",
+      "reports"
+    ],
+    "qapCommandAliases": [
+      "pnpm qap:repo:acceptance",
+      "pnpm qap:repo:acceptance:write",
+      "pnpm repo-cleanup:mpr-signal:acceptance",
+      "pnpm repo-cleanup:mpr-signal:acceptance:write"
+    ],
+    "notes": [
+      "Fabric provisions contracts and pins; it does not copy the scoring engine into product repos.",
+      "Bridge produces the MPR witness in the target repo; Fabric consumes and validates it.",
+      "Repo-local ad hoc scripts must not be added to satisfy a missing upstream contract."
+    ]
+  },
+  "controlMatrix": [
+    {
+      "area": "Worktree clean",
+      "result": "PASS/FAIL",
+      "evidence": "git status -sb",
+      "mpr": ["Craft", "Trust & Safety"],
+      "signal": ["Grounded"]
+    },
+    {
+      "area": "Critical docs preserved",
+      "result": "PASS/FAIL",
+      "evidence": "inventory manifest",
+      "mpr": ["Trust & Safety", "Defensive Moat", "IP Magic"],
+      "signal": ["Lossless", "Specific"]
+    },
+    {
+      "area": "Feature/spec registry",
+      "result": "PASS/FAIL",
+      "evidence": "path + validation",
+      "mpr": ["Commercial Value", "Product/Ecosystem Integration"],
+      "signal": ["Specific", "Integrated", "Actionable"]
+    },
+    {
+      "area": "Documentation hygiene",
+      "result": "PASS/FAIL",
+      "evidence": "taxonomy, metadata, link checks",
+      "mpr": ["Compliance", "World Class", "Trust & Safety"],
+      "signal": ["Navigable", "Grounded", "Lossless"]
+    },
+    {
+      "area": "Roadmap/goals/milestones",
+      "result": "PASS/FAIL",
+      "evidence": "roadmap, goals, milestone, P22 output",
+      "mpr": ["Commercial Value", "Agentic Empowerment"],
+      "signal": ["Actionable", "Integrated"]
+    },
+    {
+      "area": "Agile workflow",
+      "result": "PASS/FAIL/N/A",
+      "evidence": "command output",
+      "mpr": ["Product/Ecosystem Integration", "Craft"],
+      "signal": ["Actionable", "Integrated"]
+    },
+    {
+      "area": "Ops contract",
+      "result": "PASS/FAIL/N/A",
+      "evidence": "command output",
+      "mpr": ["Technical Excellence", "Compliance"],
+      "signal": ["Grounded", "Integrated"]
+    },
+    {
+      "area": "P22/runtime",
+      "result": "PASS/FAIL/N/A",
+      "evidence": "command output",
+      "mpr": ["Agentic Empowerment", "Compliance"],
+      "signal": ["Actionable", "Specific"]
+    },
+    {
+      "area": "Fabric AaaS/DaaS",
+      "result": "PASS/FAIL/N/A",
+      "evidence": "command output",
+      "mpr": ["Technical Excellence", "World Class"],
+      "signal": ["Grounded", "Actionable"]
+    },
+    {
+      "area": "Operational lane isolation",
+      "result": "PASS/FAIL",
+      "evidence": "scan + contract proof",
+      "mpr": ["Product/Ecosystem Integration", "Compliance"],
+      "signal": ["Integrated", "Actionable"]
+    },
+    {
+      "area": "Foundational micro-audits",
+      "result": "PASS/FAIL",
+      "evidence": "MPR micro-audit table",
+      "mpr": ["Foundational MPR tier"],
+      "signal": ["Specific", "Grounded"]
+    },
+    {
+      "area": "Transformational micro-audits",
+      "result": "PASS/FAIL",
+      "evidence": "MPR micro-audit table",
+      "mpr": ["Transformational MPR tier"],
+      "signal": ["Integrated", "Actionable", "Lossless"]
+    },
+    {
+      "area": "Root hygiene",
+      "result": "PASS/FAIL",
+      "evidence": "root scan",
+      "mpr": ["Compliance", "Craft"],
+      "signal": ["Navigable"]
+    },
+    {
+      "area": "Link/reference hygiene",
+      "result": "PASS/FAIL",
+      "evidence": "scan output",
+      "mpr": ["World Class", "Trust & Safety"],
+      "signal": ["Navigable", "Grounded"]
+    },
+    {
+      "area": "Cross-repo contract",
+      "result": "PASS/FAIL",
+      "evidence": "contract checks",
+      "mpr": ["Product/Ecosystem Integration"],
+      "signal": ["Integrated"]
+    },
+    {
+      "area": "Archive recoverability",
+      "result": "PASS/FAIL",
+      "evidence": "archive manifest",
+      "mpr": ["Trust & Safety", "Defensive Moat"],
+      "signal": ["Lossless"]
+    }
+  ],
+  "determinationRules": {
+    "complete": "All QAP control rows pass or are valid N/A, MPR is 100/100, SIGNAL is L5 / 100, and no blockers remain.",
+    "incomplete": "Any required QAP control row fails, MPR is below 100, SIGNAL is below L5 / 100, or required evidence is missing/stale.",
+    "blocked": "Only valid when the remaining gap is a real Class S or external dependency with owner, evidence, and unblock path.",
+    "forbidden": [
+      "No product-release block from Fabric-owned operational lanes unless an explicit repo-local product contract sets blocksProductRelease: true.",
+      "No ad hoc repo-local scripts to satisfy a missing upstream command contract.",
+      "No symlink-only compliance.",
+      "No --no-verify acceptance without an exception witness and replacement controls."
+    ]
+  }
+}

@@ -12,7 +12,8 @@
     "aaas:contract:check": "contract obligations vs state (built)",
     "aaas:cadence": "freshness heartbeat (built)",
     "aaas:honesty:check": "coverage/honesty gate (built)",
-    "aaas:scrub": "node platform/scripts/aaas-scrub.mjs  — execute aaas-legacy-scrub-map (archive non-canonical)"
+    "aaas:scrub": "node platform/scripts/aaas-scrub.mjs  — execute aaas-legacy-scrub-map (archive non-canonical)",
+    "qap:repo:acceptance": "node platform/scripts/repo-cleanup-mpr-signal-acceptance.mjs [--repo <r>] [--write] [--json] — BUILT. GTCX Quality Assurance Protocol acceptance gate; consumes AaaS/MPR/SIGNAL/governance/workflow evidence and exits 0 only when repository quality acceptance is complete"
   },
   "engine": {
     "owner": "bridge-os",

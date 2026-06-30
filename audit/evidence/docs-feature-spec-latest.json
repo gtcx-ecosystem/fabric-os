@@ -1,0 +1,98 @@
+{
+  "schema": "gtcx://fabric-os/feature-spec-check/v1",
+  "repo": "fabric-os",
+  "repoKind": "infra-platform",
+  "at": "2026-06-30T17:13:21.325Z",
+  "ok": true,
+  "score100": 100,
+  "strict": false,
+  "gates": [
+    {
+      "id": "registry:schema-v2",
+      "ok": true,
+      "optional": false
+    },
+    {
+      "id": "registry:present",
+      "ok": true,
+      "optional": false,
+      "detail": "machine/spec/feature-registry/manifest.json"
+    },
+    {
+      "id": "registry:features-nonempty",
+      "ok": true,
+      "optional": false,
+      "detail": "6 features"
+    },
+    {
+      "id": "registry:entries-nonempty",
+      "ok": true,
+      "optional": false,
+      "detail": "0 entries missing required contract fields"
+    },
+    {
+      "id": "registry:valid-class-tier",
+      "ok": true,
+      "optional": false,
+      "detail": "0 entries invalid status"
+    },
+    {
+      "id": "registry:coverage-valid",
+      "ok": true,
+      "optional": false,
+      "detail": "0 entries with invalid coveragePercent"
+    },
+    {
+      "id": "registry:refs-present",
+      "ok": true,
+      "optional": false,
+      "detail": "0 entries missing referenced PRD/spec path"
+    },
+    {
+      "id": "registry:no-duplicates",
+      "ok": true,
+      "optional": false,
+      "detail": "0 duplicate id/capabilityId values"
+    },
+    {
+      "id": "registry:no-assurance-leak",
+      "ok": true,
+      "optional": false,
+      "detail": "6 ids / 6 capabilityIds"
+    },
+    {
+      "id": "prd-index:present",
+      "ok": true,
+      "optional": false
+    },
+    {
+      "id": "prd-index:features-traced",
+      "ok": true,
+      "optional": false,
+      "detail": "0 unregistered feature slugs"
+    },
+    {
+      "id": "prd-index:prd-files-present",
+      "ok": true,
+      "optional": false,
+      "detail": "0 PRD files missing"
+    },
+    {
+      "id": "workflows:present",
+      "ok": true,
+      "optional": false,
+      "detail": "machine/spec/workflows/e2e-catalog.json"
+    },
+    {
+      "id": "workflows:feature-count",
+      "ok": true,
+      "optional": true,
+      "detail": "5 feature workflows"
+    }
+  ],
+  "counts": {
+    "totalFeatures": 6,
+    "featureIds": 6,
+    "capabilityIds": 6
+  }
+}

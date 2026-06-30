@@ -1,0 +1,339 @@
+{
+  "schema": "gtcx://fabric-os/repo-cleanup-mpr-signal-loop-run/v2",
+  "generatedAt": "2026-06-30T18:15:48.441Z",
+  "completed": false,
+  "decision": "incomplete",
+  "iterations": 2,
+  "maxIterations": 3,
+  "stagnantLimit": 1,
+  "stopReason": "stagnant",
+  "final": {
+    "iteration": 2,
+    "score100": 94,
+    "areaCount": 18,
+    "benchmarkCount": 16,
+    "mpr": 100,
+    "signal": 100,
+    "decision": "incomplete",
+    "blockerCount": 2,
+    "blockers": [
+      {
+        "area": "Worktree clean",
+        "blocker": "worktree is dirty",
+        "evidence": "git status -sb: 165 dirty entries;  M .baseline/memory/session.md; R  docs/architecture/integration/narrative/legacy-README.md -> archive/legacy-doc-pointers/architecture-integration-narrative/README.md; R  docs/architecture/specs/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/architecture-specs/FOLDER-SPEC.md; R  docs/architecture/specs/legacy-README.md -> archive/legacy-doc-pointers/architecture-specs/README.md; R  docs/business/strategy/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/business-strategy/FOLDER-SPEC.md; R  docs/business/strategy/legacy-README.md -> archive/legacy-doc-pointers/business-strategy/README.md; R  docs/reference/legacy-layer-root/architecture/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/reference-legacy-layer-root-architecture/FOLDER-SPEC.md;  M audit/archive/2026-06-30/agentic-innovation-audit-2026-06-30.md;  M audit/archive/2026-06-30/compliance-security-audit-2026-06-30.md;  M audit/archive/2026-06-30/product-excellence-audit-2026-06-30.md;  M audit/archive/2026-06-30/production-grade-audit-2026-06-30.md;  M audit/archive/2026-06-30/repo-hygiene-audit-2026-06-30.md;  M audit/audit-output-2026-06-30.json;  M audit/deployment-open-item... [truncated 579 chars]"
+      },
+      {
+        "area": "Fabric AaaS/DaaS",
+        "blocker": "AaaS/DaaS evidence is below benchmark",
+        "evidence": "AaaS/DaaS evidence witness score"
+      }
+    ],
+    "nextRemediation": {
+      "area": "Worktree clean",
+      "blocker": "worktree is dirty",
+      "evidence": "git status -sb: 165 dirty entries;  M .baseline/memory/session.md; R  docs/architecture/integration/narrative/legacy-README.md -> archive/legacy-doc-pointers/architecture-integration-narrative/README.md; R  docs/architecture/specs/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/architecture-specs/FOLDER-SPEC.md; R  docs/architecture/specs/legacy-README.md -> archive/legacy-doc-pointers/architecture-specs/README.md; R  docs/business/strategy/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/business-strategy/FOLDER-SPEC.md; R  docs/business/strategy/legacy-README.md -> archive/legacy-doc-pointers/business-strategy/README.md; R  docs/reference/legacy-layer-root/architecture/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/reference-legacy-layer-root-architecture/FOLDER-SPEC.md;  M audit/archive/2026-06-30/agentic-innovation-audit-2026-06-30.md;  M audit/archive/2026-06-30/compliance-security-audit-2026-06-30.md;  M audit/archive/2026-06-30/product-excellence-audit-2026-06-30.md;  M audit/archive/2026-06-30/production-grade-audit-2026-06-30.md;  M audit/archive/2026-06-30/repo-hygiene-audit-2026-06-30.md;  M audit/audit-output-2026-06-30.json;  M audit/deployment-open-item... [truncated 579 chars]"
+    },
+    "phases": [
+      {
+        "phaseIndex": 1,
+        "phaseId": "documentationTaxonomyLifecycle",
+        "area": "Documentation hygiene",
+        "score100": 100,
+        "benchmark100": 100,
+        "applicable": true,
+        "loopUntil": "score100 >= 100",
+        "nextRemediation": null
+      },
+      {
+        "phaseIndex": 2,
+        "phaseId": "featureSpecRegistryPrd",
+        "area": "Feature/spec registry",
+        "score100": 100,
+        "benchmark100": 100,
+        "applicable": true,
+        "loopUntil": "score100 >= 100",
+        "nextRemediation": null
+      },
+      {
+        "phaseIndex": 3,
+        "phaseId": "roadmapGoalsMilestonesWorkstream",
+        "area": "Roadmap/goals/milestones",
+        "score100": 100,
+        "benchmark100": 100,
+        "applicable": true,
+        "loopUntil": "score100 >= 100",
+        "nextRemediation": null
+      },
+      {
+        "phaseIndex": 4,
+        "phaseId": "operationalLaneIsolation",
+        "area": "Operational lane isolation",
+        "score100": 100,
+        "benchmark100": 100,
+        "applicable": true,
+        "loopUntil": "score100 >= 100",
+        "nextRemediation": null
+      },
+      {
+        "phaseIndex": 5,
+        "phaseId": "mprComposite",
+        "area": "MPR composite",
+        "score100": 100,
+        "benchmark100": 100,
+        "applicable": true,
+        "loopUntil": "score100 >= 100",
+        "nextRemediation": null
+      },
+      {
+        "phaseIndex": 6,
+        "phaseId": "signalMaturity",
+        "area": "SIGNAL maturity",
+        "score100": 100,
+        "benchmark100": 100,
+        "applicable": true,
+        "loopUntil": "score100 >= 100",
+        "nextRemediation": null
+      },
+      {
+        "phaseIndex": 7,
+        "phaseId": "foundationalMicroAudits",
+        "area": "Foundational micro-audits",
+        "score100": 100,
+        "benchmark100": 100,
+        "applicable": true,
+        "loopUntil": "score100 >= 100",
+        "nextRemediation": null
+      },
+      {
+        "phaseIndex": 8,
+        "phaseId": "transformationalMicroAudits",
+        "area": "Transformational micro-audits",
+        "score100": 100,
+        "benchmark100": 100,
+        "applicable": true,
+        "loopUntil": "score100 >= 100",
+        "nextRemediation": null
+      }
+    ]
+  },
+  "history": [
+    {
+      "iteration": 1,
+      "score100": 94,
+      "areaCount": 18,
+      "benchmarkCount": 16,
+      "mpr": 100,
+      "signal": 100,
+      "decision": "incomplete",
+      "blockerCount": 2,
+      "blockers": [
+        {
+          "area": "Worktree clean",
+          "blocker": "worktree is dirty",
+          "evidence": "git status -sb: 165 dirty entries;  M .baseline/memory/session.md; R  docs/architecture/integration/narrative/legacy-README.md -> archive/legacy-doc-pointers/architecture-integration-narrative/README.md; R  docs/architecture/specs/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/architecture-specs/FOLDER-SPEC.md; R  docs/architecture/specs/legacy-README.md -> archive/legacy-doc-pointers/architecture-specs/README.md; R  docs/business/strategy/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/business-strategy/FOLDER-SPEC.md; R  docs/business/strategy/legacy-README.md -> archive/legacy-doc-pointers/business-strategy/README.md; R  docs/reference/legacy-layer-root/architecture/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/reference-legacy-layer-root-architecture/FOLDER-SPEC.md;  M audit/archive/2026-06-30/agentic-innovation-audit-2026-06-30.md;  M audit/archive/2026-06-30/compliance-security-audit-2026-06-30.md;  M audit/archive/2026-06-30/product-excellence-audit-2026-06-30.md;  M audit/archive/2026-06-30/production-grade-audit-2026-06-30.md;  M audit/archive/2026-06-30/repo-hygiene-audit-2026-06-30.md;  M audit/audit-output-2026-06-30.json;  M audit/deployment-open-item... [truncated 579 chars]"
+        },
+        {
+          "area": "Fabric AaaS/DaaS",
+          "blocker": "AaaS/DaaS evidence is below benchmark",
+          "evidence": "AaaS/DaaS evidence witness score"
+        }
+      ],
+      "nextRemediation": {
+        "area": "Worktree clean",
+        "blocker": "worktree is dirty",
+        "evidence": "git status -sb: 165 dirty entries;  M .baseline/memory/session.md; R  docs/architecture/integration/narrative/legacy-README.md -> archive/legacy-doc-pointers/architecture-integration-narrative/README.md; R  docs/architecture/specs/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/architecture-specs/FOLDER-SPEC.md; R  docs/architecture/specs/legacy-README.md -> archive/legacy-doc-pointers/architecture-specs/README.md; R  docs/business/strategy/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/business-strategy/FOLDER-SPEC.md; R  docs/business/strategy/legacy-README.md -> archive/legacy-doc-pointers/business-strategy/README.md; R  docs/reference/legacy-layer-root/architecture/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/reference-legacy-layer-root-architecture/FOLDER-SPEC.md;  M audit/archive/2026-06-30/agentic-innovation-audit-2026-06-30.md;  M audit/archive/2026-06-30/compliance-security-audit-2026-06-30.md;  M audit/archive/2026-06-30/product-excellence-audit-2026-06-30.md;  M audit/archive/2026-06-30/production-grade-audit-2026-06-30.md;  M audit/archive/2026-06-30/repo-hygiene-audit-2026-06-30.md;  M audit/audit-output-2026-06-30.json;  M audit/deployment-open-item... [truncated 579 chars]"
+      },
+      "phases": [
+        {
+          "phaseIndex": 1,
+          "phaseId": "documentationTaxonomyLifecycle",
+          "area": "Documentation hygiene",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 2,
+          "phaseId": "featureSpecRegistryPrd",
+          "area": "Feature/spec registry",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 3,
+          "phaseId": "roadmapGoalsMilestonesWorkstream",
+          "area": "Roadmap/goals/milestones",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 4,
+          "phaseId": "operationalLaneIsolation",
+          "area": "Operational lane isolation",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 5,
+          "phaseId": "mprComposite",
+          "area": "MPR composite",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 6,
+          "phaseId": "signalMaturity",
+          "area": "SIGNAL maturity",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 7,
+          "phaseId": "foundationalMicroAudits",
+          "area": "Foundational micro-audits",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 8,
+          "phaseId": "transformationalMicroAudits",
+          "area": "Transformational micro-audits",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "score100": 94,
+      "areaCount": 18,
+      "benchmarkCount": 16,
+      "mpr": 100,
+      "signal": 100,
+      "decision": "incomplete",
+      "blockerCount": 2,
+      "blockers": [
+        {
+          "area": "Worktree clean",
+          "blocker": "worktree is dirty",
+          "evidence": "git status -sb: 165 dirty entries;  M .baseline/memory/session.md; R  docs/architecture/integration/narrative/legacy-README.md -> archive/legacy-doc-pointers/architecture-integration-narrative/README.md; R  docs/architecture/specs/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/architecture-specs/FOLDER-SPEC.md; R  docs/architecture/specs/legacy-README.md -> archive/legacy-doc-pointers/architecture-specs/README.md; R  docs/business/strategy/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/business-strategy/FOLDER-SPEC.md; R  docs/business/strategy/legacy-README.md -> archive/legacy-doc-pointers/business-strategy/README.md; R  docs/reference/legacy-layer-root/architecture/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/reference-legacy-layer-root-architecture/FOLDER-SPEC.md;  M audit/archive/2026-06-30/agentic-innovation-audit-2026-06-30.md;  M audit/archive/2026-06-30/compliance-security-audit-2026-06-30.md;  M audit/archive/2026-06-30/product-excellence-audit-2026-06-30.md;  M audit/archive/2026-06-30/production-grade-audit-2026-06-30.md;  M audit/archive/2026-06-30/repo-hygiene-audit-2026-06-30.md;  M audit/audit-output-2026-06-30.json;  M audit/deployment-open-item... [truncated 579 chars]"
+        },
+        {
+          "area": "Fabric AaaS/DaaS",
+          "blocker": "AaaS/DaaS evidence is below benchmark",
+          "evidence": "AaaS/DaaS evidence witness score"
+        }
+      ],
+      "nextRemediation": {
+        "area": "Worktree clean",
+        "blocker": "worktree is dirty",
+        "evidence": "git status -sb: 165 dirty entries;  M .baseline/memory/session.md; R  docs/architecture/integration/narrative/legacy-README.md -> archive/legacy-doc-pointers/architecture-integration-narrative/README.md; R  docs/architecture/specs/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/architecture-specs/FOLDER-SPEC.md; R  docs/architecture/specs/legacy-README.md -> archive/legacy-doc-pointers/architecture-specs/README.md; R  docs/business/strategy/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/business-strategy/FOLDER-SPEC.md; R  docs/business/strategy/legacy-README.md -> archive/legacy-doc-pointers/business-strategy/README.md; R  docs/reference/legacy-layer-root/architecture/legacy-FOLDER-SPEC.md -> archive/legacy-doc-pointers/reference-legacy-layer-root-architecture/FOLDER-SPEC.md;  M audit/archive/2026-06-30/agentic-innovation-audit-2026-06-30.md;  M audit/archive/2026-06-30/compliance-security-audit-2026-06-30.md;  M audit/archive/2026-06-30/product-excellence-audit-2026-06-30.md;  M audit/archive/2026-06-30/production-grade-audit-2026-06-30.md;  M audit/archive/2026-06-30/repo-hygiene-audit-2026-06-30.md;  M audit/audit-output-2026-06-30.json;  M audit/deployment-open-item... [truncated 579 chars]"
+      },
+      "phases": [
+        {
+          "phaseIndex": 1,
+          "phaseId": "documentationTaxonomyLifecycle",
+          "area": "Documentation hygiene",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 2,
+          "phaseId": "featureSpecRegistryPrd",
+          "area": "Feature/spec registry",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 3,
+          "phaseId": "roadmapGoalsMilestonesWorkstream",
+          "area": "Roadmap/goals/milestones",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 4,
+          "phaseId": "operationalLaneIsolation",
+          "area": "Operational lane isolation",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 5,
+          "phaseId": "mprComposite",
+          "area": "MPR composite",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 6,
+          "phaseId": "signalMaturity",
+          "area": "SIGNAL maturity",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 7,
+          "phaseId": "foundationalMicroAudits",
+          "area": "Foundational micro-audits",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        },
+        {
+          "phaseIndex": 8,
+          "phaseId": "transformationalMicroAudits",
+          "area": "Transformational micro-audits",
+          "score100": 100,
+          "benchmark100": 100,
+          "applicable": true,
+          "loopUntil": "score100 >= 100",
+          "nextRemediation": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "gtcx://canon-os/docs-foundation-check/v2",
+  "repo": "fabric-os",
+  "at": "2026-06-30T17:13:21.372Z",
+  "ok": true,
+  "spec": {
+    "localPath": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/machine/spec/docs-foundation-pack.json",
+    "localIsStub": false,
+    "resolvedIsFull": true
+  },
+  "gates": [
+    {
+      "id": "spec:local-present",
+      "ok": true,
+      "detail": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os/machine/spec/docs-foundation-pack.json"
+    },
+    {
+      "id": "spec:not-stub",
+      "ok": true,
+      "detail": "full local pack"
+    },
+    {
+      "id": "spec:resolved-full",
+      "ok": true,
+      "detail": "resolved full foundation pack"
+    },
+    {
+      "id": "profile",
+      "ok": true,
+      "detail": "platform-runtime"
+    },
+    {
+      "id": "file:foundation/README.md",
+      "ok": true,
+      "detail": "docs/foundation/README.md"
+    },
+    {
+      "id": "file:foundation/constitution.md",
+      "ok": true,
+      "detail": "docs/foundation/constitution.md"
+    },
+    {
+      "id": "file:foundation/manifesto.md",
+      "ok": true,
+      "detail": "docs/foundation/manifesto.md"
+    },
+    {
+      "id": "file:foundation/vision.md",
+      "ok": true,
+      "detail": "docs/foundation/vision.md"
+    },
+    {
+      "id": "file:foundation/mission.md",
+      "ok": true,
+      "detail": "docs/foundation/mission.md"
+    },
+    {
+      "id": "file:foundation/goals.md",
+      "ok": true,
+      "detail": "docs/foundation/goals.md"
+    },
+    {
+      "id": "file:foundation/milestones.md",
+      "ok": true,
+      "detail": "docs/foundation/milestones.md"
+    },
+    {
+      "id": "file:foundation/roadmap.md",
+      "ok": true,
+      "detail": "docs/foundation/roadmap.md"
+    },
+    {
+      "id": "readme:index",
+      "ok": true,
+      "detail": "README index or freshness table"
+    },
+    {
+      "id": "readme:business-link",
+      "ok": true,
+      "detail": "README links to docs/business/ for detail layer"
+    },
+    {
+      "id": "constitution:fleet-link",
+      "ok": true,
+      "detail": "constitution.md → fleet constitution"
+    },
+    {
+      "id": "canon:synthesize:check",
+      "ok": true,
+      "detail": "docs → machine/canon fresh"
+    }
+  ]
+}

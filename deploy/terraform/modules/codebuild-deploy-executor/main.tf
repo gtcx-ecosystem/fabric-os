@@ -100,9 +100,16 @@ resource "aws_iam_role_policy" "deploy" {
             "logs:CreateLogStream",
             "logs:PutLogEvents",
             "logs:DescribeLogStreams",
-            "logs:DescribeLogGroups",
           ]
           Resource = "${aws_cloudwatch_log_group.deploy.arn}:*"
+        },
+        {
+          Sid    = "CloudWatchLogsList"
+          Effect = "Allow"
+          Action = [
+            "logs:DescribeLogGroups",
+          ]
+          Resource = "*"
         },
         {
           Sid    = "CodeBuildVpcNetworking"
@@ -169,6 +176,19 @@ resource "aws_iam_role_policy" "deploy" {
             "iam:ListOpenIDConnectProviders",
           ]
           Resource = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/*"
+        },
+        {
+          Sid    = "IamRoleRead"
+          Effect = "Allow"
+          Action = [
+            "iam:GetRole",
+            "iam:ListRolePolicies",
+            "iam:ListAttachedRolePolicies",
+          ]
+          Resource = [
+            "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.name}",
+            "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/gtcx-${var.environment}-shared-deploy",
+          ]
         },
         {
           Sid    = "EcrAuth"

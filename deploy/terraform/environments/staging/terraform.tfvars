@@ -19,8 +19,13 @@ db_instance_class    = "db.t3.small"
 db_allocated_storage = 50
 
 # EKS — cost_profile scheduled → nodeMin 0 / desired 0 / max 4 (ECO-ENV-07)
-# Warm via bridgeOS env:warm; cold default per environment-cost-policy.v1.json
+# Warm via bridgeOS env:warm; cold default per environment-cost-policy.v1.json.
+# Product decision 2026-06-30: keep staging warm at 1 node while Argo CD and
+# core platform services are being bootstrapped; revisit cold default once
+# the fleet is stable and on-demand warm-up is validated.
 cost_profile            = "scheduled"
+eks_node_min_size       = 1
+eks_node_desired_size   = 1
 eks_node_instance_types = ["t3.medium"]
 
 # Database — match existing instance engine version to avoid unintended downgrade

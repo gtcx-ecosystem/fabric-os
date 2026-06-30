@@ -155,6 +155,9 @@ function buildCommands({ environment, mode, region, clusterName, appName, planPa
       'pods',
       '--all-namespaces',
     ]);
+  }
+
+  if (['smoke', 'argocd-sync'].includes(mode)) {
     add(commands, 'argocd-application-get', kubectlCommand, [
       '--request-timeout=25s',
       '-n',

@@ -11,7 +11,7 @@
  * Usage:
  *   node platform/scripts/repo-cleanup-mpr-signal-acceptance.mjs [--repo <name>] [--write] [--json]
  */
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
@@ -83,6 +83,48 @@ function evidenceOk(rel) {
 
 function anyEvidenceOk(...rels) {
   return rels.some((rel) => evidenceOk(rel));
+}
+
+function walkTextFiles(rel, out = []) {
+  const abs = join(ROOT, rel);
+  if (!existsSync(abs)) return out;
+  for (const entry of readdirSync(abs)) {
+    const childRel = `${rel}/${entry}`;
+    if (/\/(archive|_delete|node_modules|\.git|dist|build|coverage)\b/.test(childRel)) continue;
+    const childAbs = join(ROOT, childRel);
+    let st = null;
+    try { st = statSync(childAbs); } catch { continue; }
+    if (st.isDirectory()) walkTextFiles(childRel, out);
+    else if (/\.(md|json|ya?ml)$/i.test(entry)) out.push(childRel);
+  }
+  return out;
+}
+
+function operationalLaneIsolation() {
+  const roots = ['docs', 'operations', 'machine', 'audit/reports'];
+  const files = roots.flatMap((root) => walkTextFiles(root));
+  const blockRe = /\b(no ship|ga blocked|release blocked|ship blocked|blocks product release|product release blocker|blocks engineering release|engineering release blocker)\b/i;
+  const opsRe = /\b(pen[- ]?test|pentest|soc ?2|iso[- ]?27001|dpa|loi|legal|compliance|gtm|pilot|mobile store|store evidence|dr live failover|rpo|rto|sla|procurement assurance|external assurance|parallel assurance)\b/i;
+  const allowRe = /blocksProductRelease["']?\s*:\s*true/i;
+  const negativePolicyRe = /\b(must not|do not|never|does not|should not|not)\b.{0,80}\b(block|blocked|blocker|release gate|critical path)\b/i;
+
+  const violations = [];
+  for (const rel of files) {
+    let text = '';
+    try { text = readFileSync(join(ROOT, rel), 'utf8'); } catch { continue; }
+    if (allowRe.test(text)) continue;
+    if (!blockRe.test(text) || !opsRe.test(text)) continue;
+    const lines = text.split(/\r?\n/);
+    for (let i = 0; i < lines.length; i += 1) {
+      const line = lines[i];
+      if (!blockRe.test(line)) continue;
+      const context = lines.slice(Math.max(0, i - 4), Math.min(lines.length, i + 5)).join(' ');
+      if (!opsRe.test(context)) continue;
+      if (negativePolicyRe.test(context) || /blocksIR:\s*false|blocksEngineeringMaturity:\s*false|blocksGtmStage:\s*false/i.test(context)) continue;
+      violations.push({ path: rel, line: i + 1, excerpt: line.trim().slice(0, 240) });
+    }
+  }
+  return { ok: violations.length === 0, violations };
 }
 
 function statusRow(area, result, evidence, mpr, signal, blocker = null) {
@@ -215,6 +257,7 @@ function buildWitness() {
   const signalComplete = signal.level === 'L5' && signal.score100 === 100;
   const rootOk = forbiddenRoots.length === 0;
   const linkOk = linkEvidence.length > 0 && docsOk;
+  const laneIsolation = operationalLaneIsolation();
   const crossRepoOk = anyEvidenceOk(
     'audit/evidence/aaas-contract-check-latest.json',
     'audit/evidence/fleet-ops-assurance-check-latest.json',
@@ -231,6 +274,7 @@ function buildWitness() {
     statusRow('Ops contract', opsOk == null ? 'N/A' : resultFrom(opsOk), 'ops command evidence', ['Technical Excellence', 'Compliance'], ['Grounded', 'Integrated'], opsOk || opsOk == null ? null : 'ops contract not proven'),
     statusRow('P22/runtime', p22Pass == null ? 'N/A' : resultFrom(p22Pass), p22Run ? `pnpm agent:next-work --json exit ${p22Run.exitCode}` : 'agent:next-work unavailable', ['Agentic Empowerment', 'Compliance'], ['Actionable', 'Specific'], p22Pass || p22Pass == null ? null : 'P22 runtime failed or emitted a blocking gate'),
     statusRow('Fabric AaaS/DaaS', fabricOk == null ? 'N/A' : resultFrom(fabricOk), 'AaaS/DaaS evidence witnesses', ['Technical Excellence', 'World Class'], ['Grounded', 'Actionable'], fabricOk || fabricOk == null ? null : 'AaaS/DaaS evidence incomplete'),
+    statusRow('Operational lane isolation', resultFrom(laneIsolation.ok), laneIsolation.ok ? 'operational lane scan clean' : laneIsolation.violations.map((v) => `${v.path}:${v.line}`).join(', '), ['Product/Ecosystem Integration', 'Compliance'], ['Integrated', 'Actionable'], laneIsolation.ok ? null : 'operational lane item is rendered as a product/GA release blocker'),
     statusRow('Foundational micro-audits', resultFrom(mprComplete), 'mpr.foundational.microAudits', ['Foundational MPR tier'], ['Specific', 'Grounded'], mprComplete ? null : 'MPR composite is not 100'),
     statusRow('Transformational micro-audits', resultFrom(mprComplete), 'mpr.transformational.microAudits', ['Transformational MPR tier'], ['Integrated', 'Actionable', 'Lossless'], mprComplete ? null : 'MPR composite is not 100'),
     statusRow('Root hygiene', resultFrom(rootOk), forbiddenRoots.length ? forbiddenRoots.join(', ') : 'root scan clean', ['Compliance', 'Craft'], ['Navigable'], rootOk ? null : 'forbidden live roots present'),
@@ -254,6 +298,7 @@ function buildWitness() {
     documentationTaxonomyLifecycle: { score100: docsOk ? 100 : 0, evidence: ['docs evidence witnesses'] },
     featureSpecRegistryPrd: { score100: featureOk ? 100 : 0, evidence: ['docs:feature-spec:check evidence'] },
     roadmapGoalsMilestonesWorkstream: { score100: roadmapOk ? 100 : 0, evidence: ['roadmap/goals/milestone evidence'] },
+    operationalLaneIsolation: { score100: laneIsolation.ok ? 100 : 0, evidence: laneIsolation.violations },
     foundationalMicroAudits: { score100: mprComplete ? 100 : 0, evidence: [mpr.source].filter(Boolean) },
     transformationalMicroAudits: { score100: mprComplete ? 100 : 0, evidence: [mpr.source].filter(Boolean) },
   };

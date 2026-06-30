@@ -13,7 +13,7 @@ Decision: **incomplete**
 
 MPR: **59/100**
 
-SIGNAL: **L5 / 100**
+SIGNAL: **L3 high / 70**
 
 Runbook: `docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md`
 
@@ -30,6 +30,7 @@ Runbook: `docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md`
 | Ops contract                  | PASS   | ops command evidence                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Technical Excellence, Compliance                | Grounded, Integrated             |
 | P22/runtime                   | PASS   | pnpm agent:next-work --json exit 0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Agentic Empowerment, Compliance                 | Actionable, Specific             |
 | Fabric AaaS/DaaS              | FAIL   | AaaS/DaaS evidence witnesses                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Technical Excellence, World Class               | Grounded, Actionable             |
+| Operational lane isolation    | PASS   | operational lane scan clean                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Product/Ecosystem Integration, Compliance       | Integrated, Actionable           |
 | Foundational micro-audits     | FAIL   | mpr.foundational.microAudits                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Foundational MPR tier                           | Specific, Grounded               |
 | Transformational micro-audits | FAIL   | mpr.transformational.microAudits                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Transformational MPR tier                       | Integrated, Actionable, Lossless |
 | Root hygiene                  | FAIL   | pm, .claude, .cursor, .gemini, .kimi                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Compliance, Craft                               | Navigable                        |
@@ -39,9 +40,9 @@ Runbook: `docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md`
 
 ## Loop State
 
-| Iteration | MPR | SIGNAL   | Blocking dimensions                                                                                                                                                                   | Remediation       | Result     |
-| --------- | --: | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ---------- |
-| 1         |  59 | L5 / 100 | Worktree clean, Critical docs preserved, Feature/spec registry, Fabric AaaS/DaaS, Foundational micro-audits, Transformational micro-audits, Root hygiene, Archive recoverability, MPR | worktree is dirty | incomplete |
+| Iteration | MPR | SIGNAL       | Blocking dimensions                                                                                                                                                                           | Remediation       | Result     |
+| --------- | --: | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ---------- |
+| 1         |  59 | L3 high / 70 | Worktree clean, Critical docs preserved, Feature/spec registry, Fabric AaaS/DaaS, Foundational micro-audits, Transformational micro-audits, Root hygiene, Archive recoverability, SIGNAL, MPR | worktree is dirty | incomplete |
 
 ## Blockers
 
@@ -63,6 +64,7 @@ Runbook: `docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md`
 - Transformational micro-audits: MPR composite is not 100 (mpr.transformational.microAudits)
 - Root hygiene: forbidden live roots present (pm, .claude, .cursor, .gemini, .kimi)
 - Archive recoverability: archive manifest missing or failing (audit/evidence/repo-cleanup-archive-manifest-latest.json)
+- SIGNAL: SIGNAL is not L5 / 100 (audit/evidence/signal-maturity-latest.json)
 - MPR: MPR cleanup composite is not 100/100 (audit/evidence/mpr-repo-latest.json)
 
 ## Evidence

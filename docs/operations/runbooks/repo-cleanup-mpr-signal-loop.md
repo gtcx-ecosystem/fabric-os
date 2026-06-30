@@ -47,6 +47,10 @@ applicable, and generate a human report plus a machine witness. Anything less is
    witness and replacement controls.
 7. Do not call a repo complete while any deterministic owner or consumer gate
    fails.
+8. Do not let Fabric-owned operational lanes block product release. Security,
+   pen-test, compliance, legal, GTM, pilot, mobile-store evidence, DR/SLA proof,
+   and other operational workflows belong on separate operational roadmaps unless
+   the product owner explicitly binds a specific item as a product-release gate.
 
 ## Acceptance Thresholds
 
@@ -79,6 +83,7 @@ evidence and the linked MPR/SIGNAL dimensions score 100 for the cleanup scope.
 | Ops contract                  | PASS/FAIL/N/A | command output                        | Technical Excellence, Compliance                | Grounded, Integrated             |
 | P22/runtime                   | PASS/FAIL/N/A | command output                        | Agentic Empowerment, Compliance                 | Actionable, Specific             |
 | Fabric AaaS/DaaS              | PASS/FAIL/N/A | command output                        | Technical Excellence, World Class               | Grounded, Actionable             |
+| Operational lane isolation    | PASS/FAIL     | scan + contract proof                 | Product/Ecosystem Integration, Compliance       | Integrated, Actionable           |
 | Foundational micro-audits     | PASS/FAIL     | MPR micro-audit table                 | Foundational MPR tier                           | Specific, Grounded               |
 | Transformational micro-audits | PASS/FAIL     | MPR micro-audit table                 | Transformational MPR tier                       | Integrated, Actionable, Lossless |
 | Root hygiene                  | PASS/FAIL     | root scan                             | Compliance, Craft                               | Navigable                        |
@@ -128,6 +133,7 @@ for that repo. Re-run consumer phases after any owner-contract change.
 | 3     | Documentation taxonomy/lifecycle    | Markdown/JSON/YAML docs have owner, status, version/date where supported, authority, and supersedes mapping                                                  |
 | 4     | Feature/spec registry and PRDs      | Feature registry, spec registry, PRDs, acceptance criteria, DoR/DoD, delivery packages, and machine records agree                                            |
 | 5     | Roadmap/goals/milestones/workstream | Roadmap, goals, milestones, sessions, status records, and P22 next-work are coherent                                                                         |
+| 5a    | Operational lane isolation          | Security, pen-test, compliance, GTM, pilot, mobile-store, DR/SLA, and legal roadmaps are separate from engineering/product release gates                     |
 | 6     | Foundational micro-audits           | Compliance, Technical Excellence, Craft, World Class, Trust & Safety micro-audits from `machine/spec/aaas-audit-taxonomy.json` are represented               |
 | 7     | Transformational micro-audits       | Creativity & Innovation, Commercial Value, Defensive Moat, Agentic Empowerment, Product/Ecosystem Integration, IP Magic micro-audits are represented         |
 | 8     | Folder/file specs                   | Canonical roots are used; forbidden live roots are absent unless authorized; no fake symlink compliance                                                      |
@@ -166,6 +172,25 @@ Feature/spec acceptance requires path + validation evidence for registries,
 PRDs, delivery packages, acceptance criteria, DoR/DoD, tests, and machine
 records. Roadmap/goals/milestones acceptance requires current execution state,
 P22 mapping, workstream continuity, and archive proof for superseded plans.
+
+Operational roadmaps are separate from product and engineering roadmaps. Fabric
+may provision and audit security, pen-test, compliance, GTM, pilot, mobile-store
+evidence, DR/SLA, and legal workflows for every repo, but those workflows must
+surface as operational readiness, procurement qualification, or parallel
+assurance items. They must not be rendered as `NO SHIP`, `GA BLOCKED`, product
+release blockers, or engineering release blockers unless a repo-local product
+release contract explicitly sets `blocksProductRelease: true` for that exact
+item.
+
+Examples that stay off the product-release critical path by default:
+
+- External pen-test completion.
+- SOC 2, ISO, legal, DPA, LOI, or procurement assurance.
+- Mobile store evidence used as operational proof.
+- DR live failover RPO/RTO evidence.
+- SLA observation-period proof.
+- GTM, pilot, or reviewer sign-off workflows owned by Fabric or a non-product
+  operational function.
 
 ### Folder/File Specs
 
@@ -253,7 +278,8 @@ The machine witness must include:
 - MPR composite, pillars, foundational micro-audits, transformational micro-audits.
 - SIGNAL level, score, and dimensions.
 - phaseResults for documentation, feature/spec, roadmap/goals/milestones,
-  foundational micro-audits, and transformational micro-audits.
+  operational lane isolation, foundational micro-audits, and transformational
+  micro-audits.
 - inventory and archive manifest paths.
 - acceptanceTable rows matching this runbook.
 - commands with command, cwd, exitCode, ownerContract, consumerContract,

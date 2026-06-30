@@ -378,7 +378,7 @@ module "ci" {
 
   environment         = var.environment
   github_org          = "gtcx-ecosystem"
-  github_repo         = "gtcx-infrastructure"
+  github_repo         = "fabric-os"
   ecr_repository_arns = module.ecr.repository_arns
 
   tags = var.tags

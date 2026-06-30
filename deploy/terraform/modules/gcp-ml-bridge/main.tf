@@ -4,7 +4,7 @@
 # Allows GCP Vertex pipeline SA to write model artifacts to AWS S3 and
 # update DynamoDB registry. No customer PII — artifacts and metadata only.
 #
-# Canonical HCL: gtcx-intelligence/docs/roadmap/global-trade-phase-3-ml-pipeline.md
+# Canonical HCL: bridge-os intelligence bridge Phase 3 ML pipeline contract
 # Ecosystem spec: gtcx-docs/docs/architecture/cloud-placement/gtcx-ecosystem-2026-06-05.md
 # =============================================================================
 

@@ -2,7 +2,7 @@
 
 GCP Workload Identity Federation → AWS IAM role for **intelligence Phase 3** Vertex pipelines.
 
-Writes **model artifacts only** to existing `ml-pipeline` S3/DynamoDB resources. Does not provision GCP resources (Vertex/GCS/BQ are owned by gtcx-intelligence).
+Writes **model artifacts only** to existing `ml-pipeline` S3/DynamoDB resources. Does not provision GCP resources (Vertex/GCS/BQ are owned by the `bridge-os` intelligence bridge).
 
 **Epic:** `01-docs/04-ops/intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md`
 

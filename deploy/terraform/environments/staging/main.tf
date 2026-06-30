@@ -361,7 +361,7 @@ module "alb" {
 # -----------------------------------------------------------------------------
 # Route53 — DNS for staging hostnames + ACM cert validation
 # -----------------------------------------------------------------------------
-# Unblocks gtcx-infrastructure#49 (INF-49): authority DID resolution at
+# Unblocks INF-49: authority DID resolution at
 #   api.staging.gtcx.trade and geotag.staging.gtcx.trade requires public
 #   DNS records pointing at the ALB created by the K8s Ingress.
 #

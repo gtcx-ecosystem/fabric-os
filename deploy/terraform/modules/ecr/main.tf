@@ -4,6 +4,10 @@
 # Container registry for GTCX service images.
 # Per SOVEREIGN (6): Images stored in-region
 # Per SECURE: Image scanning enabled, lifecycle policies enforced
+#
+# Note: gtcx-intelligence-* names are retained ECR repository identifiers.
+# Source ownership for the intelligence bridge is bridge-os, not a standalone
+# intelligence repo.
 # =============================================================================
 
 variable "environment" {

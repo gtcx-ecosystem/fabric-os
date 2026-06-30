@@ -192,7 +192,10 @@
         "workspace",
         "templates",
         "monitoring",
-        "runtime"
+        "runtime",
+        "compliance",
+        "evidence",
+        "pilot-kit"
       ],
       "subfolderContractEnforced": true,
       "note": "14 product repos. Consume fabric-os ops via links — don't host provider zones."

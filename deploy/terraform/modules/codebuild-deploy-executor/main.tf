@@ -165,6 +165,7 @@ resource "aws_iam_role_policy" "deploy" {
           Action = [
             "wafv2:GetWebACL",
             "wafv2:ListWebACLs",
+            "wafv2:ListTagsForResource",
           ]
           Resource = "arn:aws:wafv2:${var.region}:${data.aws_caller_identity.current.account_id}:regional/webacl/*/*"
         },
@@ -182,12 +183,17 @@ resource "aws_iam_role_policy" "deploy" {
           Effect = "Allow"
           Action = [
             "iam:GetRole",
+            "iam:GetRolePolicy",
             "iam:ListRolePolicies",
             "iam:ListAttachedRolePolicies",
+            "iam:GetPolicy",
+            "iam:GetPolicyVersion",
+            "iam:ListPolicyVersions",
           ]
           Resource = [
             "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${local.name}",
             "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/gtcx-${var.environment}-shared-deploy",
+            "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/gtcx-*",
           ]
         },
         {

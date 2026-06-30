@@ -1,11 +1,17 @@
 {
   "schema": "gtcx://fabric-os/fabric-assurance/v1",
-  "at": "2026-06-25T05:36:07.619Z",
+  "at": "2026-06-30T04:17:46.591Z",
   "repo": "fabric-os",
   "initiative": "INIT-ASSURANCE-BURN-DOWN",
   "story": "T35",
   "dryRun": false,
-  "ok": false,
+  "ok": true,
+  "nonBlockingFailures": [
+    {
+      "id": "uat-independent",
+      "exitCode": 1
+    }
+  ],
   "evaluateExitCode": 0,
   "fired": [
     {
@@ -162,7 +168,7 @@
       "skipped": false,
       "command": "pnpm ecosystem:fleet:pillars:stress:write",
       "exitCode": 0,
-      "output": "oration-os composite=100 mode=full-unlock\nOK fabric-os composite=100 mode=full-unlock\nFAIL griot-ai composite=59 mode=partial-unlock\nFAIL gtcx-os composite=91 mode=full-unlock\nFAIL inspection-os composite=31 mode=partial-unlock\nFAIL ledger-os composite=58 mode=partial-unlock\nOK ledger-ui composite=100 mode=full-unlock\nFAIL markets-os composite=91 mode=full-unlock\nFAIL nyota-ai composite=59 mode=partial-unlock\nFAIL sensei-os composite=100 mode=full-unlock\nFAIL terminal-os composite=59 mode=partial-unlock\nFAIL terra-os composite=91 mode=full-unlock\nFAIL venture-os composite=59 mode=partial-unlock\nFAIL veritas-ai composite=59 mode=partial-unlock\n\nStress: fullUnlock=9/20 compliance<85=11 noRubric=2\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-pillars-stress-latest.json\n"
+      "output": "os composite=100 mode=full-unlock\nFAIL fabric-os composite=59 mode=partial-unlock\nFAIL griot-ai composite=59 mode=partial-unlock\nFAIL gtcx-os composite=91 mode=partial-unlock\nFAIL inspection-os composite=54 mode=partial-unlock\nFAIL ledger-os composite=59 mode=partial-unlock\nFAIL ledger-ui composite=100 mode=full-unlock\nFAIL markets-os composite=91 mode=full-unlock\nFAIL nyota-ai composite=59 mode=partial-unlock\nFAIL sensei-os composite=59 mode=partial-unlock\nFAIL terminal-os composite=99 mode=full-unlock\nFAIL terra-os composite=91 mode=full-unlock\nFAIL venture-os composite=59 mode=partial-unlock\nFAIL veritas-ai composite=59 mode=partial-unlock\n\nStress: fullUnlock=6/20 compliance<85=12 noRubric=1\nWitness: /Users/amanianai/Sites/gtcx-ecosystem/bridge-os/pm/ci/fleet-pillars-stress-latest.json\n"
     },
     {
       "id": "uat-independent",

@@ -1,8 +1,8 @@
 {
   "$schema": "gtcx://fabric-os/codebuild-deploy-start/v1",
   "repo": "fabric-os",
-  "generatedAt": "2026-06-30T04:33:07.848Z",
-  "dryRun": true,
+  "generatedAt": "2026-06-30T05:17:55.518Z",
+  "dryRun": false,
   "authorityClass": "R",
   "contract": "machine/spec/deployment-ops-contract.json",
   "mode": "plan",
@@ -36,7 +36,7 @@
       },
       {
         "name": "CLASS_A_REF",
-        "value": "",
+        "value": "audit/evidence/deployment-ops-class-a-approval-2026-06-30.json",
         "type": "PLAINTEXT"
       },
       {
@@ -60,7 +60,12 @@
     "--project-name",
     "gtcx-staging-deploy-executor",
     "--environment-variables-override",
-    "[{\"name\":\"DEPLOY_MODE\",\"value\":\"plan\",\"type\":\"PLAINTEXT\"},{\"name\":\"DEPLOY_ENVIRONMENT\",\"value\":\"staging\",\"type\":\"PLAINTEXT\"},{\"name\":\"DEPLOYMENT_OPS_CONTRACT\",\"value\":\"machine/spec/deployment-ops-contract.json\",\"type\":\"PLAINTEXT\"},{\"name\":\"GITHUB_ACTIONS_CRITICAL_PATH\",\"value\":\"false\",\"type\":\"PLAINTEXT\"},{\"name\":\"CLASS_A_REF\",\"value\":\"\",\"type\":\"PLAINTEXT\"},{\"name\":\"GIT_COMMIT\",\"value\":\"\",\"type\":\"PLAINTEXT\"},{\"name\":\"IMAGE_DIGEST\",\"value\":\"\",\"type\":\"PLAINTEXT\"}]"
+    "[{\"name\":\"DEPLOY_MODE\",\"value\":\"plan\",\"type\":\"PLAINTEXT\"},{\"name\":\"DEPLOY_ENVIRONMENT\",\"value\":\"staging\",\"type\":\"PLAINTEXT\"},{\"name\":\"DEPLOYMENT_OPS_CONTRACT\",\"value\":\"machine/spec/deployment-ops-contract.json\",\"type\":\"PLAINTEXT\"},{\"name\":\"GITHUB_ACTIONS_CRITICAL_PATH\",\"value\":\"false\",\"type\":\"PLAINTEXT\"},{\"name\":\"CLASS_A_REF\",\"value\":\"audit/evidence/deployment-ops-class-a-approval-2026-06-30.json\",\"type\":\"PLAINTEXT\"},{\"name\":\"GIT_COMMIT\",\"value\":\"\",\"type\":\"PLAINTEXT\"},{\"name\":\"IMAGE_DIGEST\",\"value\":\"\",\"type\":\"PLAINTEXT\"}]"
   ],
-  "result": null
+  "result": {
+    "status": 254,
+    "signal": null,
+    "stdout": "",
+    "stderr": "\nAn error occurred (ResourceNotFoundException) when calling the StartBuild operation: Project cannot be found: arn:aws:codebuild:af-south-1:348389439381:project/gtcx-staging-deploy-executor\n"
+  }
 }

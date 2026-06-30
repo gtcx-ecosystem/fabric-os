@@ -1,12 +1,12 @@
 {
   "schema": "gtcx://audit/strategic-depth/v1",
   "repo": "fabric-os",
-  "date": "2026-06-25",
+  "date": "2026-06-30",
   "status": "composite-lift",
   "frameworksRun": ["ECOSYSTEM-FIT", "INNOVATION-MOAT-90D"],
   "frameworkScores": {
-    "ECOSYSTEM-FIT": 85,
-    "INNOVATION-MOAT-90D": 85
+    "ECOSYSTEM-FIT": 100,
+    "INNOVATION-MOAT-90D": 100
   },
   "dimensionHints": {
     "ecosystem-integration": 100,
@@ -14,7 +14,7 @@
     "technical-moat": 100,
     "enterprise-readiness": 100
   },
-  "strategicInsightScore100": 85,
+  "strategicInsightScore100": 100,
   "bundle": "strategic-depth",
   "source": "run-composite-lift"
 }

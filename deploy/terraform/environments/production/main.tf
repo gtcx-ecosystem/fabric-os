@@ -146,6 +146,8 @@ variable "tags" {
 # Data Sources
 # -----------------------------------------------------------------------------
 
+data "aws_caller_identity" "current" {}
+
 data "aws_eks_cluster" "main" {
   name = module.eks.cluster_name
 }
@@ -341,6 +343,32 @@ module "audit_flush_irsa" {
 }
 
 # -----------------------------------------------------------------------------
+# CodeBuild Deploy Executor — GitHub Actions Billing Independent Path
+# -----------------------------------------------------------------------------
+
+module "codebuild_deploy_executor" {
+  source = "../../modules/codebuild-deploy-executor"
+
+  environment                = var.environment
+  region                     = var.region
+  vpc_id                     = module.vpc.vpc_id
+  private_subnet_ids         = module.vpc.private_subnet_ids
+  eks_cluster_name           = module.eks.cluster_name
+  terraform_state_bucket_arn = "arn:aws:s3:::gtcx-terraform-state-production"
+  terraform_lock_table_arn   = "arn:aws:dynamodb:us-east-1:${data.aws_caller_identity.current.account_id}:table/gtcx-terraform-locks-production"
+  evidence_bucket_arns       = [module.worm_audit.bucket_arn]
+  evidence_kms_key_arns      = [module.worm_audit.kms_key_arn]
+  source_type                = "GITHUB"
+  source_location            = "https://github.com/gtcx-ecosystem/fabric-os.git"
+  buildspec                  = "deploy/codebuild/deploy-buildspec.yml"
+
+  tags = merge(var.tags, {
+    Environment = "production"
+    Component   = "deploy-executor"
+  })
+}
+
+# -----------------------------------------------------------------------------
 # Detective Controls — CloudTrail + GuardDuty
 # -----------------------------------------------------------------------------
 # GuardDuty already enabled manually (detector e2cf...); set enable_guardduty
@@ -371,7 +399,7 @@ module "kms_signing" {
 
   environment          = var.environment
   signing_role_arns    = [module.irsa_platform.platforms_role_arn]
-  admin_role_arns      = [module.ci.deploy_role_arn]
+  admin_role_arns      = [module.ci.deploy_role_arn, module.codebuild_deploy_executor.deploy_role_arn]
   alarm_sns_topic_arns = [module.detective.security_alerts_topic_arn]
 }
 
@@ -401,7 +429,7 @@ module "kms_sovereign_signing" {
   source = "../../modules/kms-sovereign-signing"
 
   environment          = var.environment
-  admin_role_arns      = [module.ci.deploy_role_arn]
+  admin_role_arns      = [module.ci.deploy_role_arn, module.codebuild_deploy_executor.deploy_role_arn]
   alarm_sns_topic_arns = [module.detective.security_alerts_topic_arn]
 
   # Pilot: single authority for ceremony rehearsal.
@@ -453,10 +481,10 @@ module "secrets" {
   eks_cluster_name      = module.eks.cluster_name
   eks_oidc_provider_arn = module.eks.oidc_provider_arn
 
-  compliance_os_namespace        = "compliance-os-production"
-  compliance_os_service_account  = "compliance-os-sa"
-  terminal_os_namespace          = "terminal-os-production"
-  terminal_os_service_account    = "terminal-os-sa"
+  compliance_os_namespace       = "compliance-os-production"
+  compliance_os_service_account = "compliance-os-sa"
+  terminal_os_namespace         = "terminal-os-production"
+  terminal_os_service_account   = "terminal-os-sa"
 
   tags = merge(var.tags, {
     Environment = "production"
@@ -529,6 +557,21 @@ output "deploy_role_arn" {
 output "github_oidc_provider_arn" {
   description = "GitHub OIDC provider ARN"
   value       = module.ci.github_oidc_provider_arn
+}
+
+output "codebuild_deploy_project_name" {
+  description = "CodeBuild deploy executor project name"
+  value       = module.codebuild_deploy_executor.project_name
+}
+
+output "codebuild_deploy_project_arn" {
+  description = "CodeBuild deploy executor project ARN"
+  value       = module.codebuild_deploy_executor.project_arn
+}
+
+output "codebuild_deploy_role_arn" {
+  description = "CodeBuild deploy executor role ARN"
+  value       = module.codebuild_deploy_executor.deploy_role_arn
 }
 
 output "waf_acl_arn" {

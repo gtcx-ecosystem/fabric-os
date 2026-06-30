@@ -368,12 +368,12 @@ module "route53" {
 module "griot_ai_ingress" {
   source = "../../modules/griot-ai-ingress"
 
-  environment          = var.environment
-  primary_domain       = "griot-staging.gtcx.trade"
-  griot_ai_apex_domain = "gtcx.trade"
+  environment            = var.environment
+  primary_domain         = "griot-staging.gtcx.trade"
+  griot_ai_apex_domain   = "gtcx.trade"
   include_gtcx_trade_san = false
-  alb_dns_name         = var.griot_ai_alb_dns_name
-  alb_zone_id          = var.griot_ai_alb_zone_id
+  alb_dns_name           = var.griot_ai_alb_dns_name
+  alb_zone_id            = var.griot_ai_alb_zone_id
 
   tags = merge(var.tags, {
     Environment = "staging"
@@ -465,10 +465,10 @@ resource "aws_eks_access_policy_association" "ci_deploy_admin" {
 module "waf" {
   source = "../../modules/waf"
 
-  name_prefix       = "gtcx-staging"
-  scope             = "REGIONAL"
-  rate_limit        = 500 # 100/min for staging (TradePass Wire #2 §10.1)
-  aws_region        = var.region
+  name_prefix                   = "gtcx-staging"
+  scope                         = "REGIONAL"
+  rate_limit                    = 500 # 100/min for staging (TradePass Wire #2 §10.1)
+  aws_region                    = var.region
   allow_audit_paths             = true
   allow_markets_authority_paths = true
   allow_terraos_staging_web     = true
@@ -515,6 +515,78 @@ module "audit_flush_irsa" {
     Environment = "staging"
     Component   = "audit-flush"
   })
+}
+
+# -----------------------------------------------------------------------------
+# CodeBuild Deploy Executor — GitHub Actions Billing Independent Path
+# -----------------------------------------------------------------------------
+
+module "codebuild_deploy_executor" {
+  source = "../../modules/codebuild-deploy-executor"
+
+  environment                = var.environment
+  region                     = var.region
+  vpc_id                     = module.vpc.vpc_id
+  private_subnet_ids         = module.vpc.private_subnet_ids
+  eks_cluster_name           = module.eks.cluster_name
+  terraform_state_bucket_arn = "arn:aws:s3:::gtcx-terraform-state-staging"
+  terraform_lock_table_arn   = "arn:aws:dynamodb:us-east-1:${data.aws_caller_identity.current.account_id}:table/gtcx-terraform-locks-staging"
+  evidence_bucket_arns       = [module.worm_audit.bucket_arn]
+  evidence_kms_key_arns      = [module.worm_audit.kms_key_arn]
+  source_type                = "GITHUB"
+  source_location            = "https://github.com/gtcx-ecosystem/fabric-os.git"
+  buildspec                  = "deploy/codebuild/deploy-buildspec.yml"
+
+  tags = merge(var.tags, {
+    Environment = "staging"
+    Component   = "deploy-executor"
+  })
+}
+
+# -----------------------------------------------------------------------------
+# Argo CD — In-cluster GitOps controller, manual sync first
+# -----------------------------------------------------------------------------
+
+module "argocd" {
+  source = "../../modules/argocd"
+
+  environment      = var.environment
+  manual_sync_only = true
+
+  tags = merge(var.tags, {
+    Environment = "staging"
+    Component   = "argocd"
+  })
+
+  depends_on = [module.eks]
+}
+
+resource "kubectl_manifest" "argocd_fabric_staging_app" {
+  yaml_body = <<-YAML
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: fabric-staging-root
+      namespace: ${module.argocd.namespace}
+      labels:
+        gtcx.io/environment: staging
+        gtcx.io/sync-mode: manual
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/gtcx-ecosystem/fabric-os.git
+        targetRevision: main
+        path: deploy/kubernetes/overlays/staging
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: gtcx-staging
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - PruneLast=true
+  YAML
+
+  depends_on = [module.argocd]
 }
 
 # -----------------------------------------------------------------------------
@@ -602,6 +674,36 @@ output "deploy_role_arn" {
 output "github_oidc_provider_arn" {
   description = "GitHub OIDC provider ARN"
   value       = module.ci.github_oidc_provider_arn
+}
+
+output "codebuild_deploy_project_name" {
+  description = "CodeBuild deploy executor project name"
+  value       = module.codebuild_deploy_executor.project_name
+}
+
+output "codebuild_deploy_project_arn" {
+  description = "CodeBuild deploy executor project ARN"
+  value       = module.codebuild_deploy_executor.project_arn
+}
+
+output "codebuild_deploy_role_arn" {
+  description = "CodeBuild deploy executor role ARN"
+  value       = module.codebuild_deploy_executor.deploy_role_arn
+}
+
+output "argocd_namespace" {
+  description = "Argo CD namespace"
+  value       = module.argocd.namespace
+}
+
+output "argocd_release_name" {
+  description = "Argo CD Helm release name"
+  value       = module.argocd.release_name
+}
+
+output "argocd_staging_app_name" {
+  description = "Argo CD staging root application name"
+  value       = "fabric-staging-root"
 }
 
 output "waf_acl_arn" {

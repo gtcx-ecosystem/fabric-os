@@ -1,0 +1,47 @@
+{
+  "$schema": "gtcx://agile-os/forensic-feature-spec/v1",
+  "id": "FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT",
+  "repo": "fabric-os",
+  "status": "current",
+  "version": "1.0.0",
+  "updated": "2026-07-01",
+  "sourceRecord": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/record.json",
+  "forensicQuestion": "Does fabric-os provide a scored, repeatable QASC production-package audit workflow that any agent can run without reverting to legacy backlog-first planning?",
+  "evidenceModel": {
+    "minimumEvidence": [
+      "machine/spec/qasc-contract.json",
+      "machine/spec/qasc-audit-requirements.json",
+      "docs/operations/runbooks/qasc-protocol.md",
+      "platform/scripts/qasc-repo.mjs",
+      "platform/scripts/qasc-fleet.mjs",
+      "platform/scripts/lib/qasc-loop.mjs",
+      "platform/scripts/tests/qasc-*.test.mjs"
+    ],
+    "scorePolicy": "Each required area emits score100 and benchmark100; completion requires score100 >= benchmark100."
+  },
+  "riskControls": [
+    {
+      "id": "QASC-RISK-001",
+      "risk": "Agent reintroduces backlog-first planning language.",
+      "control": "Backlog compatibility is a scored QASC row and machine/backlog.json is treated only as generated compatibility output."
+    },
+    {
+      "id": "QASC-RISK-002",
+      "risk": "External assurance work is misclassified as release-critical.",
+      "control": "Operational lane isolation scans for false release blockers and requires explicit blocksProductRelease authority."
+    },
+    {
+      "id": "QASC-RISK-003",
+      "risk": "Audit reports pass without production-package evidence.",
+      "control": "Machine record, forensic spec, MPR audit, SIGNAL audit, and feature-pack manifest are separate scored controls."
+    }
+  ],
+  "traceability": {
+    "productIntent": "docs/product/roadmap/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT.md",
+    "machineRecord": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/record.json",
+    "mprAudit": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/audits/mpr.json",
+    "signalAudit": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/audits/signal.json",
+    "featurePack": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/feature-pack/manifest.json",
+    "scrumHandoff": "machine/roadmap/sprints/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT-sprint-plan.json"
+  }
+}

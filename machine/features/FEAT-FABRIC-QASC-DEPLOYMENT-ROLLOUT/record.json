@@ -1,0 +1,45 @@
+{
+  "$schema": "gtcx://agile-os/feature-record/v1",
+  "id": "FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT",
+  "repo": "fabric-os",
+  "owner": "fabric-os",
+  "status": "active",
+  "version": "1.0.0",
+  "updated": "2026-07-01",
+  "sourceArtifact": "docs/product/roadmap/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT.md",
+  "workflow": [
+    "sourceArtifact",
+    "standardizedMachineRecord",
+    "forensicSpec",
+    "mprAudit100",
+    "signalAuditL5",
+    "productionSpecPackage",
+    "scrumSprintHandoff"
+  ],
+  "authority": {
+    "planningModel": "agile-production-package",
+    "backlogModel": "generated-compatibility-only",
+    "protocol": "GTCX-QASC-001"
+  },
+  "scope": {
+    "includes": [
+      "QASC contract",
+      "QASC repo scorer",
+      "QASC loop runner",
+      "QASC fleet scorer",
+      "Agile production-package evidence requirements",
+      "Deployment lane isolation"
+    ],
+    "excludes": [
+      "Legacy backlog-first prioritization",
+      "GitHub Actions production deployment execution",
+      "External-assurance blockers without explicit release authority"
+    ]
+  },
+  "verification": {
+    "contract": "pnpm qasc:contract:check",
+    "tests": "pnpm qasc:test",
+    "deploymentOps": "pnpm deployment:ops:test",
+    "fleetScore": "pnpm qasc:fleet -- --repos fabric-os --json"
+  }
+}

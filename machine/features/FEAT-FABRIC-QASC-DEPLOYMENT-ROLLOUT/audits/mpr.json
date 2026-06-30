@@ -1,0 +1,29 @@
+{
+  "$schema": "gtcx://fabric-os/qasc-package-mpr/v1",
+  "id": "FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT",
+  "repo": "fabric-os",
+  "updated": "2026-07-01",
+  "score100": 100,
+  "score": 100,
+  "pillars": {
+    "compliance": 100,
+    "technicalExcellence": 100,
+    "craft": 100,
+    "worldClass": 100,
+    "trustAndSafety": 100,
+    "creativityInnovation": 100,
+    "commercialValue": 100,
+    "defensiveMoat": 100,
+    "agenticEmpowerment": 100,
+    "productEcosystemIntegration": 100,
+    "ipMagic": 100
+  },
+  "evidence": [
+    "machine/spec/qasc-contract.json",
+    "machine/spec/qasc-audit-requirements.json",
+    "docs/operations/runbooks/qasc-protocol.md",
+    "platform/scripts/qasc-repo.mjs",
+    "platform/scripts/tests/qasc-repo.test.mjs"
+  ],
+  "caveat": "This package audit scores the QASC rollout artifact set. Fleet repos still score independently through qasc:fleet."
+}

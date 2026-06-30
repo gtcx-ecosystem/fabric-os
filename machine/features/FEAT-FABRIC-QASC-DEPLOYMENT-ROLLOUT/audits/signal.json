@@ -1,0 +1,22 @@
+{
+  "$schema": "gtcx://fabric-os/qasc-package-signal/v1",
+  "id": "FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT",
+  "repo": "fabric-os",
+  "updated": "2026-07-01",
+  "level": "L5",
+  "score100": 100,
+  "dimensions": {
+    "specific": 100,
+    "integrated": 100,
+    "grounded": 100,
+    "actionable": 100,
+    "navigable": 100,
+    "lossless": 100
+  },
+  "evidence": [
+    "docs/operations/runbooks/qasc-audit-requirements-2026-07-01.md",
+    "machine/spec/qasc-audit-requirements.json",
+    "docs/operations/deployment/fabric-agent-qasc-deployment-handoff-stories-2026-07-01.md"
+  ],
+  "caveat": "L5 applies to this Fabric QASC package. Downstream repositories must earn their own QASC, MPR, and SIGNAL scores."
+}

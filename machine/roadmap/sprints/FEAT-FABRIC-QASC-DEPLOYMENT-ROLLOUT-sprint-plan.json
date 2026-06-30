@@ -1,0 +1,27 @@
+{
+  "$schema": "gtcx://agile-os/scrum-handoff/v1",
+  "id": "SPRINT-HANDOFF-FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT",
+  "featureId": "FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT",
+  "repo": "fabric-os",
+  "owner": "scrum",
+  "sourcePack": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/feature-pack/manifest.json",
+  "updated": "2026-07-01",
+  "status": "ready-for-prioritization",
+  "sprints": [
+    {
+      "id": "SPR-FABRIC-QASC-2026-07",
+      "goal": "Roll out scored QASC production-package audits repo by repo.",
+      "candidateWork": [
+        "Create repo package artifacts.",
+        "Run QASC loop until score reaches 100/100 or named external blocker.",
+        "Capture QASC report and machine evidence.",
+        "Hand off remaining remediation through owner repo packages."
+      ],
+      "acceptance": [
+        "Each repo has QASC score evidence.",
+        "Each repo has MPR and SIGNAL evidence.",
+        "Each repo has explicit owner/action/blocker when below benchmark."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "gtcx://agile-os/feature-pack-manifest/v1",
+  "id": "FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT",
+  "repo": "fabric-os",
+  "status": "ready-for-scrum-prioritization",
+  "version": "1.0.0",
+  "updated": "2026-07-01",
+  "sourceArtifact": "docs/product/roadmap/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT.md",
+  "machineRecord": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/record.json",
+  "forensicSpec": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/forensic-spec.json",
+  "acceptanceCriteria": [
+    "QASC contract check scores 100/100.",
+    "QASC tests run with scored output and no binary-only closeout.",
+    "QASC repo scorer includes Agile production-package controls.",
+    "Operational lane isolation prevents false product-release blockers.",
+    "Feature package includes PRD source, machine record, forensic spec, MPR, SIGNAL, and scrum handoff."
+  ],
+  "qaTesting": [
+    {
+      "command": "pnpm qasc:contract:check",
+      "expectedScore100": 100
+    },
+    {
+      "command": "pnpm qasc:test",
+      "expectedTests": 11
+    },
+    {
+      "command": "pnpm deployment:ops:test",
+      "expectedTests": 11
+    },
+    {
+      "command": "pnpm qasc:fleet -- --repos fabric-os --json",
+      "expected": "Scores all QASC rows and reports any repo-local blocker explicitly."
+    }
+  ],
+  "sprintPlans": [
+    {
+      "sprintId": "SPR-FABRIC-QASC-2026-07",
+      "handoff": "machine/roadmap/sprints/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT-sprint-plan.json"
+    }
+  ],
+  "mprReview": {
+    "path": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/audits/mpr.json",
+    "score100": 100
+  },
+  "signalReview": {
+    "path": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/audits/signal.json",
+    "level": "L5",
+    "score100": 100
+  }
+}

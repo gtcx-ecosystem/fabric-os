@@ -24,6 +24,7 @@ describe('GTCX QAP repository acceptance CLI', () => {
     assert.equal(witness.loop.target.mprComposite100, 100);
     assert.equal(witness.loop.target.signalLevel, 'L5');
     assert.equal(witness.loop.target.signalScore100, 100);
+    assert.ok(Array.isArray(witness.phaseLoop), 'missing phase-level loop scorecard');
 
     for (const key of [
       'documentationTaxonomyLifecycle',
@@ -34,6 +35,9 @@ describe('GTCX QAP repository acceptance CLI', () => {
       'transformationalMicroAudits',
     ]) {
       assert.ok(witness.phaseResults[key], `missing phase result: ${key}`);
+      assert.equal(typeof witness.phaseResults[key].score100, 'number', `missing phase score: ${key}`);
+      assert.equal(witness.phaseResults[key].benchmark100, 100, `missing phase benchmark: ${key}`);
+      assert.equal(witness.phaseResults[key].loopUntil, 'score100 >= benchmark100', `missing phase loop rule: ${key}`);
     }
 
     const areas = witness.acceptanceTable.map((row) => row.area);
@@ -46,6 +50,19 @@ describe('GTCX QAP repository acceptance CLI', () => {
       'Archive recoverability',
     ]) {
       assert.ok(areas.includes(area), `missing acceptance area: ${area}`);
+    }
+
+    for (const row of witness.acceptanceTable) {
+      assert.equal(Object.hasOwn(row, 'result'), false, `binary result leaked into row: ${row.area}`);
+      assert.equal(typeof row.score100, 'number', `missing score100: ${row.area}`);
+      assert.equal(row.benchmark100, 100, `missing benchmark100: ${row.area}`);
+      assert.equal(typeof row.applicable, 'boolean', `missing applicability: ${row.area}`);
+    }
+
+    for (const phase of witness.phaseLoop) {
+      assert.equal(typeof phase.score100, 'number', `missing phase loop score: ${phase.area}`);
+      assert.equal(phase.benchmark100, 100, `missing phase loop benchmark: ${phase.area}`);
+      assert.equal(phase.loopUntil, 'score100 >= benchmark100', `missing phase loop rule: ${phase.area}`);
     }
   });
 });

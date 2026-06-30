@@ -135,8 +135,31 @@ function operationalLaneIsolation() {
   return { ok: violations.length === 0, violations };
 }
 
-function statusRow(area, result, evidence, mpr, signal, blocker = null) {
-  return { area, result, evidence, mpr, signal, blocker };
+function scoreFromCheck(ok, applicable = true) {
+  if (!applicable) return 100;
+  return ok ? 100 : 0;
+}
+
+function controlRow(area, {
+  score100,
+  benchmark100 = 100,
+  applicable = true,
+  evidence,
+  mpr,
+  signal,
+  blocker = null,
+}) {
+  const normalizedScore = Math.max(0, Math.min(100, Number(score100 ?? 0)));
+  return {
+    area,
+    score100: normalizedScore,
+    benchmark100,
+    applicable,
+    evidence,
+    mpr,
+    signal,
+    blocker: normalizedScore >= benchmark100 ? null : blocker,
+  };
 }
 
 function microsOf(pillar) {
@@ -163,7 +186,8 @@ function taxonomyMicroAudits(tier) {
     status: 'unverified',
     microAudits: microsOf(taxonomy?.pillars?.[pillarId]).map((id) => ({
       id,
-      result: 'unverified',
+      score100: null,
+      benchmark100: 100,
       evidence: [],
     })),
   }));
@@ -199,10 +223,6 @@ function signalScores() {
       gaps: d.gaps ?? [],
     }])),
   };
-}
-
-function resultFrom(pass) {
-  return pass ? 'PASS' : 'FAIL';
 }
 
 function buildWitness() {
@@ -260,7 +280,7 @@ function buildWitness() {
   const p22Run = p22Applicable ? pnpmRun(['agent:next-work', '--json']) : null;
   const p22Output = `${p22Run?.stdout ?? ''}${p22Run?.stderr ? `\n${p22Run.stderr}` : ''}`;
   const p22Blocked = /Persona read gate BLOCKED|personaReadGateBlocked["']?\s*:\s*true/.test(p22Output);
-  const p22Pass = p22Run ? p22Run.exitCode === 0 && !p22Blocked : null;
+  const p22ScoreReady = p22Run ? p22Run.exitCode === 0 && !p22Blocked : null;
   const mprComplete = mpr.composite100 === 100;
   const signalComplete = signal.level === 'L5' && signal.score100 === 100;
   const rootOk = forbiddenRoots.length === 0;
@@ -273,43 +293,52 @@ function buildWitness() {
   );
 
   const rows = [
-    statusRow('Worktree clean', resultFrom(clean), status.stdout || 'git status unavailable', ['Craft', 'Trust & Safety'], ['Grounded'], clean ? null : 'worktree is dirty'),
-    statusRow('Critical docs preserved', resultFrom(inventoryOk), 'audit/evidence/repo-folder-file-spec-inventory-latest.json', ['Trust & Safety', 'Defensive Moat', 'IP Magic'], ['Lossless', 'Specific'], inventoryOk ? null : 'inventory witness missing or failing'),
-    statusRow('Feature/spec registry', resultFrom(featureOk), 'docs:feature-spec:check evidence', ['Commercial Value', 'Product/Ecosystem Integration'], ['Specific', 'Integrated', 'Actionable'], featureOk ? null : 'feature/spec validation not proven'),
-    statusRow('Documentation hygiene', resultFrom(docsOk), 'docs evidence witnesses', ['Compliance', 'World Class', 'Trust & Safety'], ['Navigable', 'Grounded', 'Lossless'], docsOk ? null : 'documentation hygiene not proven'),
-    statusRow('Roadmap/goals/milestones', resultFrom(roadmapOk), 'roadmap/goals/milestone evidence', ['Commercial Value', 'Agentic Empowerment'], ['Actionable', 'Integrated'], roadmapOk ? null : 'roadmap/goals/milestones not proven'),
-    statusRow('Agile workflow', agileOk == null ? 'N/A' : resultFrom(agileOk), 'agile command evidence', ['Product/Ecosystem Integration', 'Craft'], ['Actionable', 'Integrated'], agileOk || agileOk == null ? null : 'agile workflow not proven'),
-    statusRow('Ops contract', opsOk == null ? 'N/A' : resultFrom(opsOk), 'ops command evidence', ['Technical Excellence', 'Compliance'], ['Grounded', 'Integrated'], opsOk || opsOk == null ? null : 'ops contract not proven'),
-    statusRow('P22/runtime', p22Pass == null ? 'N/A' : resultFrom(p22Pass), p22Run ? `pnpm agent:next-work --json exit ${p22Run.exitCode}` : 'agent:next-work unavailable', ['Agentic Empowerment', 'Compliance'], ['Actionable', 'Specific'], p22Pass || p22Pass == null ? null : 'P22 runtime failed or emitted a blocking gate'),
-    statusRow('Fabric AaaS/DaaS', fabricOk == null ? 'N/A' : resultFrom(fabricOk), 'AaaS/DaaS evidence witnesses', ['Technical Excellence', 'World Class'], ['Grounded', 'Actionable'], fabricOk || fabricOk == null ? null : 'AaaS/DaaS evidence incomplete'),
-    statusRow('Operational lane isolation', resultFrom(laneIsolation.ok), laneIsolation.ok ? 'operational lane scan clean' : laneIsolation.violations.map((v) => `${v.path}:${v.line}`).join(', '), ['Product/Ecosystem Integration', 'Compliance'], ['Integrated', 'Actionable'], laneIsolation.ok ? null : 'operational lane item is rendered as a product/GA release blocker'),
-    statusRow('Foundational micro-audits', resultFrom(mprComplete), 'mpr.foundational.microAudits', ['Foundational MPR tier'], ['Specific', 'Grounded'], mprComplete ? null : 'MPR composite is not 100'),
-    statusRow('Transformational micro-audits', resultFrom(mprComplete), 'mpr.transformational.microAudits', ['Transformational MPR tier'], ['Integrated', 'Actionable', 'Lossless'], mprComplete ? null : 'MPR composite is not 100'),
-    statusRow('Root hygiene', resultFrom(rootOk), forbiddenRoots.length ? forbiddenRoots.join(', ') : 'root scan clean', ['Compliance', 'Craft'], ['Navigable'], rootOk ? null : 'forbidden live roots present'),
-    statusRow('Link/reference hygiene', resultFrom(linkOk), linkEvidence.join(', ') || 'no link evidence', ['World Class', 'Trust & Safety'], ['Navigable', 'Grounded'], linkOk ? null : 'link/reference hygiene not proven'),
-    statusRow('Cross-repo contract', resultFrom(crossRepoOk), 'contract evidence witnesses', ['Product/Ecosystem Integration'], ['Integrated'], crossRepoOk ? null : 'cross-repo contract evidence not proven'),
-    statusRow('Archive recoverability', resultFrom(archiveOk), 'audit/evidence/repo-cleanup-archive-manifest-latest.json', ['Trust & Safety', 'Defensive Moat'], ['Lossless'], archiveOk ? null : 'archive manifest missing or failing'),
+    controlRow('Worktree clean', { score100: scoreFromCheck(clean), evidence: status.stdout || 'git status unavailable', mpr: ['Craft', 'Trust & Safety'], signal: ['Grounded'], blocker: 'worktree is dirty' }),
+    controlRow('Critical docs preserved', { score100: scoreFromCheck(inventoryOk), evidence: 'audit/evidence/repo-folder-file-spec-inventory-latest.json', mpr: ['Trust & Safety', 'Defensive Moat', 'IP Magic'], signal: ['Lossless', 'Specific'], blocker: 'inventory witness missing or below benchmark' }),
+    controlRow('Feature/spec registry', { score100: scoreFromCheck(featureOk), evidence: 'docs:feature-spec:check evidence', mpr: ['Commercial Value', 'Product/Ecosystem Integration'], signal: ['Specific', 'Integrated', 'Actionable'], blocker: 'feature/spec validation below benchmark' }),
+    controlRow('Documentation hygiene', { score100: scoreFromCheck(docsOk), evidence: 'docs evidence witnesses', mpr: ['Compliance', 'World Class', 'Trust & Safety'], signal: ['Navigable', 'Grounded', 'Lossless'], blocker: 'documentation hygiene below benchmark' }),
+    controlRow('Roadmap/goals/milestones', { score100: scoreFromCheck(roadmapOk), evidence: 'roadmap/goals/milestone evidence', mpr: ['Commercial Value', 'Agentic Empowerment'], signal: ['Actionable', 'Integrated'], blocker: 'roadmap/goals/milestones below benchmark' }),
+    controlRow('Agile workflow', { score100: scoreFromCheck(agileOk, agileApplicable), applicable: agileApplicable, evidence: agileApplicable ? 'agile command evidence' : 'not applicable to this repo profile', mpr: ['Product/Ecosystem Integration', 'Craft'], signal: ['Actionable', 'Integrated'], blocker: 'agile workflow below benchmark' }),
+    controlRow('Ops contract', { score100: scoreFromCheck(opsOk, opsApplicable), applicable: opsApplicable, evidence: opsApplicable ? 'ops command evidence' : 'not applicable to this repo profile', mpr: ['Technical Excellence', 'Compliance'], signal: ['Grounded', 'Integrated'], blocker: 'ops contract below benchmark' }),
+    controlRow('P22/runtime', { score100: scoreFromCheck(p22ScoreReady, p22Applicable), applicable: p22Applicable, evidence: p22Run ? `pnpm agent:next-work --json exit ${p22Run.exitCode}` : 'agent:next-work unavailable for this repo profile', mpr: ['Agentic Empowerment', 'Compliance'], signal: ['Actionable', 'Specific'], blocker: 'P22 runtime below benchmark or emitted a blocking gate' }),
+    controlRow('Fabric AaaS/DaaS', { score100: scoreFromCheck(fabricOk, fabricApplicable), applicable: fabricApplicable, evidence: fabricApplicable ? 'AaaS/DaaS evidence witnesses' : 'not applicable to this repo profile', mpr: ['Technical Excellence', 'World Class'], signal: ['Grounded', 'Actionable'], blocker: 'AaaS/DaaS evidence below benchmark' }),
+    controlRow('Operational lane isolation', { score100: scoreFromCheck(laneIsolation.ok), evidence: laneIsolation.ok ? 'operational lane scan clean' : laneIsolation.violations.map((v) => `${v.path}:${v.line}`).join(', '), mpr: ['Product/Ecosystem Integration', 'Compliance'], signal: ['Integrated', 'Actionable'], blocker: 'operational lane item is rendered as a product/GA release blocker' }),
+    controlRow('Foundational micro-audits', { score100: mprComplete ? 100 : Number(mpr.foundationComposite100 ?? mpr.composite100 ?? 0), evidence: 'mpr.foundational.microAudits', mpr: ['Foundational MPR tier'], signal: ['Specific', 'Grounded'], blocker: 'foundational MPR micro-audits below benchmark' }),
+    controlRow('Transformational micro-audits', { score100: mprComplete ? 100 : Number(mpr.fullComposite100 ?? mpr.composite100 ?? 0), evidence: 'mpr.transformational.microAudits', mpr: ['Transformational MPR tier'], signal: ['Integrated', 'Actionable', 'Lossless'], blocker: 'transformational MPR micro-audits below benchmark' }),
+    controlRow('Root hygiene', { score100: scoreFromCheck(rootOk), evidence: forbiddenRoots.length ? forbiddenRoots.join(', ') : 'root scan clean', mpr: ['Compliance', 'Craft'], signal: ['Navigable'], blocker: 'forbidden live roots present' }),
+    controlRow('Link/reference hygiene', { score100: scoreFromCheck(linkOk), evidence: linkEvidence.join(', ') || 'no link evidence', mpr: ['World Class', 'Trust & Safety'], signal: ['Navigable', 'Grounded'], blocker: 'link/reference hygiene below benchmark' }),
+    controlRow('Cross-repo contract', { score100: scoreFromCheck(crossRepoOk), evidence: 'contract evidence witnesses', mpr: ['Product/Ecosystem Integration'], signal: ['Integrated'], blocker: 'cross-repo contract evidence below benchmark' }),
+    controlRow('Archive recoverability', { score100: scoreFromCheck(archiveOk), evidence: 'audit/evidence/repo-cleanup-archive-manifest-latest.json', mpr: ['Trust & Safety', 'Defensive Moat'], signal: ['Lossless'], blocker: 'archive manifest missing or below benchmark' }),
   ];
 
   const blockers = rows
-    .filter((row) => row.result === 'FAIL')
-    .map((row) => ({ area: row.area, blocker: row.blocker, evidence: row.evidence }));
+    .filter((row) => row.score100 < row.benchmark100)
+    .map((row) => ({ area: row.area, score100: row.score100, benchmark100: row.benchmark100, blocker: row.blocker, evidence: row.evidence }));
   if (!signalComplete) {
-    blockers.push({ area: 'SIGNAL', blocker: 'SIGNAL is not L5 / 100', evidence: signal.source ?? 'missing signal witness' });
+    blockers.push({ area: 'SIGNAL', score100: signal.score100 ?? 0, benchmark100: 100, blocker: 'SIGNAL is below L5 / 100', evidence: signal.source ?? 'missing signal witness' });
   }
   if (!mprComplete) {
-    blockers.push({ area: 'MPR', blocker: 'MPR cleanup composite is not 100/100', evidence: mpr.source ?? 'missing MPR witness' });
+    blockers.push({ area: 'MPR', score100: mpr.composite100 ?? 0, benchmark100: 100, blocker: 'MPR cleanup composite is below 100/100', evidence: mpr.source ?? 'missing MPR witness' });
   }
 
   const decision = blockers.length === 0 ? 'complete' : 'incomplete';
   const phaseResults = {
-    documentationTaxonomyLifecycle: { score100: docsOk ? 100 : 0, evidence: ['docs evidence witnesses'] },
-    featureSpecRegistryPrd: { score100: featureOk ? 100 : 0, evidence: ['docs:feature-spec:check evidence'] },
-    roadmapGoalsMilestonesWorkstream: { score100: roadmapOk ? 100 : 0, evidence: ['roadmap/goals/milestone evidence'] },
-    operationalLaneIsolation: { score100: laneIsolation.ok ? 100 : 0, evidence: laneIsolation.violations },
-    foundationalMicroAudits: { score100: mprComplete ? 100 : 0, evidence: [mpr.source].filter(Boolean) },
-    transformationalMicroAudits: { score100: mprComplete ? 100 : 0, evidence: [mpr.source].filter(Boolean) },
+    documentationTaxonomyLifecycle: { score100: scoreFromCheck(docsOk), benchmark100: 100, loopUntil: 'score100 >= benchmark100', evidence: ['docs evidence witnesses'] },
+    featureSpecRegistryPrd: { score100: scoreFromCheck(featureOk), benchmark100: 100, loopUntil: 'score100 >= benchmark100', evidence: ['docs:feature-spec:check evidence'] },
+    roadmapGoalsMilestonesWorkstream: { score100: scoreFromCheck(roadmapOk), benchmark100: 100, loopUntil: 'score100 >= benchmark100', evidence: ['roadmap/goals/milestone evidence'] },
+    operationalLaneIsolation: { score100: scoreFromCheck(laneIsolation.ok), benchmark100: 100, loopUntil: 'score100 >= benchmark100', evidence: laneIsolation.violations },
+    foundationalMicroAudits: { score100: rows.find((row) => row.area === 'Foundational micro-audits')?.score100 ?? 0, benchmark100: 100, loopUntil: 'score100 >= benchmark100', evidence: [mpr.source].filter(Boolean) },
+    transformationalMicroAudits: { score100: rows.find((row) => row.area === 'Transformational micro-audits')?.score100 ?? 0, benchmark100: 100, loopUntil: 'score100 >= benchmark100', evidence: [mpr.source].filter(Boolean) },
   };
+  const phaseLoop = rows.map((row, index) => ({
+    phase: index,
+    area: row.area,
+    score100: row.score100,
+    benchmark100: row.benchmark100,
+    applicable: row.applicable,
+    loopUntil: 'score100 >= benchmark100',
+    nextRemediation: row.score100 < row.benchmark100 ? row.blocker : null,
+  }));
 
   return {
     schema: 'gtcx://fabric-os/gtcx-qap-repository-acceptance/v1',
@@ -344,6 +373,7 @@ function buildWitness() {
     },
     signal,
     phaseResults,
+    phaseLoop,
     inventory: {
       path: 'audit/evidence/repo-folder-file-spec-inventory-latest.json',
       lossless: inventoryOk,
@@ -381,10 +411,10 @@ function renderReport(witness) {
     return text.length > max ? `${text.slice(0, max)}...` : text;
   };
   const table = witness.acceptanceTable
-    .map((row) => `| ${cell(row.area)} | ${cell(row.result)} | ${cell(preview(row.evidence))} | ${cell(row.mpr.join(', '))} | ${cell(row.signal.join(', '))} |`)
+    .map((row) => `| ${cell(row.area)} | ${cell(row.score100)} | ${cell(row.benchmark100)} | ${cell(row.applicable)} | ${cell(preview(row.evidence))} | ${cell(row.mpr.join(', '))} | ${cell(row.signal.join(', '))} |`)
     .join('\n');
   const blockers = witness.blockers.length
-    ? witness.blockers.map((b) => `- ${b.area}: ${b.blocker} (${preview(b.evidence)})`).join('\n')
+    ? witness.blockers.map((b) => `- ${b.area}: ${b.score100}/${b.benchmark100} — ${b.blocker} (${preview(b.evidence)})`).join('\n')
     : '- none';
 
   return `---
@@ -407,15 +437,15 @@ SIGNAL: **${witness.signal.level ?? 'unverified'} / ${witness.signal.score100 ??
 
 Runbook: \`${witness.runbook}\`
 
-## Acceptance Table
+## Control Scorecard
 
-| Area | Result | Evidence | MPR linkage | SIGNAL linkage |
-| --- | --- | --- | --- | --- |
+| Area | Score | Benchmark | Applicable | Evidence | MPR linkage | SIGNAL linkage |
+| --- | ---: | ---: | --- | --- | --- | --- |
 ${table}
 
 ## Loop State
 
-| Iteration | MPR | SIGNAL | Blocking dimensions | Remediation | Result |
+| Iteration | MPR | SIGNAL | Dimensions below benchmark | Remediation | Decision |
 | --- | ---: | --- | --- | --- | --- |
 | ${witness.loop.iteration} | ${witness.loop.current.mprComposite100 ?? 'unverified'} | ${witness.loop.current.signalLevel ?? 'unverified'} / ${witness.loop.current.signalScore100 ?? 'unverified'} | ${witness.blockers.map((b) => b.area).join(', ') || 'none'} | ${witness.loop.nextRemediation?.blocker ?? 'none'} | ${witness.decision} |
 

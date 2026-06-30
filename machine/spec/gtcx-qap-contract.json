@@ -21,6 +21,14 @@
     "fabricAaasDaasScore100": 100,
     "operationalLaneIsolation": true
   },
+  "scoringModel": {
+    "principle": "Every QAP control is scored. Binary labels are not valid QAP evidence.",
+    "scoreField": "score100",
+    "benchmarkField": "benchmark100",
+    "belowBenchmarkRule": "score100 < benchmark100",
+    "phaseLoopRule": "A phase repeats until score100 >= benchmark100, then the repo may advance to the next phase.",
+    "defaultBenchmark100": 100
+  },
   "ownerBoundaries": {
     "qapAcceptance": {
       "owner": "fabric-os",
@@ -106,120 +114,136 @@
   "controlMatrix": [
     {
       "area": "Worktree clean",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "git status -sb",
       "mpr": ["Craft", "Trust & Safety"],
       "signal": ["Grounded"]
     },
     {
       "area": "Critical docs preserved",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "inventory manifest",
       "mpr": ["Trust & Safety", "Defensive Moat", "IP Magic"],
       "signal": ["Lossless", "Specific"]
     },
     {
       "area": "Feature/spec registry",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "path + validation",
       "mpr": ["Commercial Value", "Product/Ecosystem Integration"],
       "signal": ["Specific", "Integrated", "Actionable"]
     },
     {
       "area": "Documentation hygiene",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "taxonomy, metadata, link checks",
       "mpr": ["Compliance", "World Class", "Trust & Safety"],
       "signal": ["Navigable", "Grounded", "Lossless"]
     },
     {
       "area": "Roadmap/goals/milestones",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "roadmap, goals, milestone, P22 output",
       "mpr": ["Commercial Value", "Agentic Empowerment"],
       "signal": ["Actionable", "Integrated"]
     },
     {
       "area": "Agile workflow",
-      "result": "PASS/FAIL/N/A",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "command output",
       "mpr": ["Product/Ecosystem Integration", "Craft"],
       "signal": ["Actionable", "Integrated"]
     },
     {
       "area": "Ops contract",
-      "result": "PASS/FAIL/N/A",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "command output",
       "mpr": ["Technical Excellence", "Compliance"],
       "signal": ["Grounded", "Integrated"]
     },
     {
       "area": "P22/runtime",
-      "result": "PASS/FAIL/N/A",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "command output",
       "mpr": ["Agentic Empowerment", "Compliance"],
       "signal": ["Actionable", "Specific"]
     },
     {
       "area": "Fabric AaaS/DaaS",
-      "result": "PASS/FAIL/N/A",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "command output",
       "mpr": ["Technical Excellence", "World Class"],
       "signal": ["Grounded", "Actionable"]
     },
     {
       "area": "Operational lane isolation",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "scan + contract proof",
       "mpr": ["Product/Ecosystem Integration", "Compliance"],
       "signal": ["Integrated", "Actionable"]
     },
     {
       "area": "Foundational micro-audits",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "MPR micro-audit table",
       "mpr": ["Foundational MPR tier"],
       "signal": ["Specific", "Grounded"]
     },
     {
       "area": "Transformational micro-audits",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "MPR micro-audit table",
       "mpr": ["Transformational MPR tier"],
       "signal": ["Integrated", "Actionable", "Lossless"]
     },
     {
       "area": "Root hygiene",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "root scan",
       "mpr": ["Compliance", "Craft"],
       "signal": ["Navigable"]
     },
     {
       "area": "Link/reference hygiene",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "scan output",
       "mpr": ["World Class", "Trust & Safety"],
       "signal": ["Navigable", "Grounded"]
     },
     {
       "area": "Cross-repo contract",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "contract checks",
       "mpr": ["Product/Ecosystem Integration"],
       "signal": ["Integrated"]
     },
     {
       "area": "Archive recoverability",
-      "result": "PASS/FAIL",
+      "score100": "0-100",
+      "benchmark100": 100,
       "evidence": "archive manifest",
       "mpr": ["Trust & Safety", "Defensive Moat"],
       "signal": ["Lossless"]
     }
   ],
   "determinationRules": {
-    "complete": "All QAP control rows pass or are valid N/A, MPR is 100/100, SIGNAL is L5 / 100, and no blockers remain.",
-    "incomplete": "Any required QAP control row fails, MPR is below 100, SIGNAL is below L5 / 100, or required evidence is missing/stale.",
+    "complete": "All QAP control rows score at or above benchmark, MPR is 100/100, SIGNAL is L5 / 100, and no blockers remain.",
+    "incomplete": "Any QAP control score is below benchmark, MPR is below 100, SIGNAL is below L5 / 100, or required evidence is missing/stale.",
     "blocked": "Only valid when the remaining gap is a real Class S or external dependency with owner, evidence, and unblock path.",
     "forbidden": [
       "No product-release block from Fabric-owned operational lanes unless an explicit repo-local product contract sets blocksProductRelease: true.",

@@ -1,0 +1,23 @@
+{
+  "$schema": "gtcx://fabric-os/deployment-ops-class-a-approval/v1",
+  "repo": "fabric-os",
+  "approvedAt": "2026-06-30T05:10:00.000Z",
+  "authorityClass": "A",
+  "approver": "operator",
+  "scope": [
+    {
+      "environment": "staging",
+      "mode": "plan",
+      "action": "Run credentialed AWS CodeBuild deploy executor plan"
+    },
+    {
+      "environment": "staging",
+      "mode": "terraform-apply",
+      "action": "Apply approved Terraform plan to staging environment",
+      "condition": "Plan output reviewed and no destructive changes outside expectation"
+    }
+  ],
+  "githubActionsCriticalPath": false,
+  "approvedBranches": ["feat/ai-cost-check"],
+  "evidencePath": "audit/evidence/deployment-ops-class-a-approval-2026-06-30.json"
+}

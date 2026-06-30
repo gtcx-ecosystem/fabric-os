@@ -1,20 +1,22 @@
 {
   "$schema": "gtcx://fabric-os/finops-as-a-service/v1",
-  "version": "1.0.0",
-  "updated": "2026-06-15",
+  "version": "1.1.0",
+  "updated": "2026-06-30",
   "protocolId": "P48-FINOPS-AS-A-SERVICE",
   "title": "FinOps-as-a-Service",
   "opsLane": "FinOps",
   "initiative": "INIT-OPS-LANES-OPERATIONALIZE",
   "status": "active",
   "hubProtocolTarget": "canon-os/docs/governance/protocols/48-finops-as-a-service/protocol.md",
-  "principle": "fabric-os owns infra cost attribution, Terraform cost profiles, and fleet cost witnesses; bridge-os holds policy SoR.",
+  "principle": "fabric-os owns infra cost attribution, Terraform cost profiles, deployment cost gates, and fleet cost witnesses. Current deployment execution strategy is CodeBuild on demand plus Argo CD in EKS; GitHub Actions is not production critical path while billing is blocked.",
+  "deploymentOpsContract": "machine/spec/deployment-ops-contract.json",
   "ownerSplit": {
     "fabricOs": [
       "machine/spec/finops-as-a-service.json",
       "machine/finops-friction-register.json",
       "platform/scripts/finops-check.mjs",
       "platform/scripts/cost/run-infra-cost-audit.mjs",
+      "platform/scripts/cost/aws-cost-optimization-export.mjs",
       "audit/evidence/finops-check-latest.json"
     ],
     "bridgeOs": [
@@ -29,11 +31,19 @@
     "frictionRegister": "machine/finops-friction-register.json",
     "opsEntry": "docs/operations/finops-as-a-service.md",
     "witness": "audit/evidence/finops-check-latest.json",
-    "infraCostWitness": "audit/evidence/infra-aws-cost-optimization-latest.json"
+    "infraCostWitness": "audit/evidence/infra-aws-cost-optimization-latest.json",
+    "awsOptimizationExport": "audit/evidence/aws-cost-optimization-export-latest.json",
+    "deploymentStrategy": "docs/operations/deployment/infra-ai-cost-strategy-2026-06-30.md"
   },
   "harness": {
     "check": "pnpm finops:check",
     "checkWrite": "pnpm finops:check:write",
-    "infraCostAudit": "pnpm infra:cost:audit:write"
+    "infraCostAudit": "pnpm infra:cost:audit:write",
+    "awsOptimizationExport": "pnpm finops:aws-optimization:export:write"
+  },
+  "ciCostPolicy": {
+    "primary": "aws-codebuild-on-demand",
+    "avoid": "always-on-runners-until-measured-break-even",
+    "githubActions": "source-control-event-source-only-not-production-critical-path"
   }
 }

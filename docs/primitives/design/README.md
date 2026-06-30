@@ -17,20 +17,20 @@ Canonical source of record: `canon-os/docs/primitives/design/`.
 
 Design documentation lives here. Generated media binaries do not. Media generation and asset inventory stay under `docs/primitives/assets/`, `platform/assets/generated/media/`, and `machine/media/library.manifest.json`.
 
-| Track | Purpose |
-| ----- | ------- |
-| [Principles](./principles.md) | Durable design laws and decision rules. |
-| [Goals](./goals.md) | Experience outcomes, quality bar, and design success measures. |
-| [Personas](./personas.md) | Design-facing user archetypes and implications. |
-| [Aesthetics](./aesthetics.md) | Visual tone, density, type, color, layout, and imagery. |
-| [Motion](./motion.md) | Animation, transitions, motion safety, and code-driven video direction. |
-| [Components](./components.md) | Component expectations and interaction patterns. |
-| [Platform](./platform.md) | Surface-specific rules across web, mobile, docs, console, and presentations. |
-| [Comparables](./comparables.md) | Reference products and lessons to adopt or avoid. |
-| [Inspiration](./inspiration.md) | Curated moodboard and emerging reference direction. |
-| [Tooling](./tooling.md) | Tool radar for design, asset, motion, and agent-assisted creation. |
-| [Tooling Security](./tooling-security.md) | Supply-chain, permission, data, and prompt-injection controls. |
-| [Scorecard](./scorecard.md) | Design primitive readiness and MPR rollup. |
+| Track                                     | Purpose                                                                      |
+| ----------------------------------------- | ---------------------------------------------------------------------------- |
+| [Principles](./principles.md)             | Durable design laws and decision rules.                                      |
+| [Goals](./goals.md)                       | Experience outcomes, quality bar, and design success measures.               |
+| [Personas](./personas.md)                 | Design-facing user archetypes and implications.                              |
+| [Aesthetics](./aesthetics.md)             | Visual tone, density, type, color, layout, and imagery.                      |
+| [Motion](./motion.md)                     | Animation, transitions, motion safety, and code-driven video direction.      |
+| [Components](./components.md)             | Component expectations and interaction patterns.                             |
+| [Platform](./platform.md)                 | Surface-specific rules across web, mobile, docs, console, and presentations. |
+| [Comparables](./comparables.md)           | Reference products and lessons to adopt or avoid.                            |
+| [Inspiration](./inspiration.md)           | Curated moodboard and emerging reference direction.                          |
+| [Tooling](./tooling.md)                   | Tool radar for design, asset, motion, and agent-assisted creation.           |
+| [Tooling Security](./tooling-security.md) | Supply-chain, permission, data, and prompt-injection controls.               |
+| [Scorecard](./scorecard.md)               | Design primitive readiness and MPR rollup.                                   |
 
 ## Boundary
 

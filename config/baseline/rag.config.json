@@ -2,15 +2,7 @@
   "$schema": "gtcx://ecosystem-os/rag-config/v1",
   "repo": "fabric-os",
   "topology": "local",
-  "knowledge": [
-    "README.md",
-    "AGENTS.md",
-    "docs",
-    "pm",
-    "platform",
-    "deploy",
-    "audit"
-  ],
+  "knowledge": ["README.md", "AGENTS.md", "docs", "pm", "platform", "deploy", "audit"],
   "include": [
     "README.md",
     "AGENTS.md",

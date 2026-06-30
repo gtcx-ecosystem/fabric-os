@@ -17,16 +17,16 @@ review_cycle: on-change
 
 ## Allowed Children
 
-| Folder | Role |
-| ------ | ---- |
+| Folder    | Role                                                                                 |
+| --------- | ------------------------------------------------------------------------------------ |
 | `assets/` | Generated media documentation, prompt tracks, asset governance, and asset scorecard. |
-| `design/` | Design principles, aesthetics, personas, motion, tooling, and design scorecard. |
+| `design/` | Design principles, aesthetics, personas, motion, tooling, and design scorecard.      |
 
 ## Storage Boundary
 
-| Content | Path |
-| ------- | ---- |
-| Primitive documentation | `docs/primitives/` |
-| Generated media binaries | `platform/assets/generated/media/` |
-| Media inventory | `machine/media/library.manifest.json` |
-| Media contract | `config/genai-media-contract.json` |
+| Content                  | Path                                  |
+| ------------------------ | ------------------------------------- |
+| Primitive documentation  | `docs/primitives/`                    |
+| Generated media binaries | `platform/assets/generated/media/`    |
+| Media inventory          | `machine/media/library.manifest.json` |
+| Media contract           | `config/genai-media-contract.json`    |

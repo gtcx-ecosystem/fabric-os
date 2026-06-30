@@ -52,10 +52,5 @@
     "audit/evidence/graph-projection-latest.json",
     "audit/evidence/eval-config-latest.json"
   ],
-  "exclude": [
-    ".git/**",
-    ".worktrees/**",
-    "node_modules/**",
-    "audit/archive/**"
-  ]
+  "exclude": [".git/**", ".worktrees/**", "node_modules/**", "audit/archive/**"]
 }

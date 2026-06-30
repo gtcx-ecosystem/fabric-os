@@ -17,15 +17,15 @@ ChatGPT image generation is the default generator for candidate image assets unl
 
 ## Required Categories
 
-| Category | Folder | Use |
-| -------- | ------ | --- |
-| Hero | `platform/assets/generated/media/images/hero/` | Wide images with usable negative space. |
-| Workflow | `platform/assets/generated/media/images/workflow/` | Operator completing a credible domain workflow. |
-| Detail | `platform/assets/generated/media/images/detail/` | Close detail of tools, documents, devices, equipment, or environment. |
-| Field | `platform/assets/generated/media/images/field/` | Domain-relevant field or institutional setting. |
-| Team | `platform/assets/generated/media/images/team/` | Collaboration without identifiable real people as factual subjects. |
-| Product context | `platform/assets/generated/media/images/product-context/` | Product-adjacent context without fake UI or unsupported outcomes. |
-| Background | `platform/assets/generated/media/images/background/` | Texture, atmosphere, and non-authoritative background imagery. |
+| Category        | Folder                                                    | Use                                                                   |
+| --------------- | --------------------------------------------------------- | --------------------------------------------------------------------- |
+| Hero            | `platform/assets/generated/media/images/hero/`            | Wide images with usable negative space.                               |
+| Workflow        | `platform/assets/generated/media/images/workflow/`        | Operator completing a credible domain workflow.                       |
+| Detail          | `platform/assets/generated/media/images/detail/`          | Close detail of tools, documents, devices, equipment, or environment. |
+| Field           | `platform/assets/generated/media/images/field/`           | Domain-relevant field or institutional setting.                       |
+| Team            | `platform/assets/generated/media/images/team/`            | Collaboration without identifiable real people as factual subjects.   |
+| Product context | `platform/assets/generated/media/images/product-context/` | Product-adjacent context without fake UI or unsupported outcomes.     |
+| Background      | `platform/assets/generated/media/images/background/`      | Texture, atmosphere, and non-authoritative background imagery.        |
 
 ## Prompt Baseline
 

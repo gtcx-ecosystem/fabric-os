@@ -3,7 +3,15 @@
   "$id": "gtcx://baseline-os/kaleidoscope-ai/mcp-config.schema/v1",
   "title": "Split MCP config contract",
   "type": "object",
-  "required": ["$schema", "repo", "mode", "server", "tools", "permissions", "humanApprovalRequired"],
+  "required": [
+    "$schema",
+    "repo",
+    "mode",
+    "server",
+    "tools",
+    "permissions",
+    "humanApprovalRequired"
+  ],
   "properties": {
     "$schema": { "const": "gtcx://ecosystem-os/mcp-config/v1" },
     "repo": { "type": "string" },

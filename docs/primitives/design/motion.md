@@ -15,12 +15,12 @@ Defines motion, animation, transition, and code-driven video direction for Fabri
 
 ## Motion Roles
 
-| Role | Use |
-| ---- | --- |
-| Feedback | Confirm state changes, completion, validation, or errors. |
-| Orientation | Help users understand navigation, hierarchy, and spatial change. |
-| Continuity | Smooth transitions between related states without hiding latency. |
-| Emphasis | Draw attention to a priority action or important status change. |
+| Role         | Use                                                                      |
+| ------------ | ------------------------------------------------------------------------ |
+| Feedback     | Confirm state changes, completion, validation, or errors.                |
+| Orientation  | Help users understand navigation, hierarchy, and spatial change.         |
+| Continuity   | Smooth transitions between related states without hiding latency.        |
+| Emphasis     | Draw attention to a priority action or important status change.          |
 | Storytelling | Explain product value, workflow, or system behavior in demos and videos. |
 
 ## Rules
@@ -33,7 +33,7 @@ Defines motion, animation, transition, and code-driven video direction for Fabri
 
 ## References
 
-| Reference | Use | Boundary |
-| --------- | --- | -------- |
-| [Remotion](https://github.com/remotion-dev/remotion) | Programmatic video and motion composition with React. | Reference pattern only; review license before production use. |
+| Reference                                                | Use                                                                           | Boundary                                                                               |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [Remotion](https://github.com/remotion-dev/remotion)     | Programmatic video and motion composition with React.                         | Reference pattern only; review license before production use.                          |
 | [HyperFrames](https://github.com/heygen-com/hyperframes) | HTML-native deterministic video rendering and agent-assisted video workflows. | Reference pattern only; review license and runtime requirements before production use. |

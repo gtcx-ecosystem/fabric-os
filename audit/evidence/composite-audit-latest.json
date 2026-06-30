@@ -155,11 +155,7 @@
     "A4-COMPLIANCE-SECURITY": 0.2,
     "A5-REPO-HYGIENE": 0.2
   },
-  "replaces": [
-    "master-audit",
-    "comprehensive-audit",
-    "bank-grade-audit"
-  ],
+  "replaces": ["master-audit", "comprehensive-audit", "bank-grade-audit"],
   "initiative": "INIT-AUDIT-CONSOLIDATION",
   "source": "run-five-core-audit",
   "status": "rubric-driven",

@@ -2,7 +2,7 @@
   "schema": "gtcx://baseline-os/signal-maturity/v1",
   "lens": "SIGNAL",
   "repo": "fabric-os",
-  "checkedAt": "2026-06-28T23:49:34.613Z",
+  "checkedAt": "2026-06-30T18:15:02.104Z",
   "overall": 5,
   "overallLabel": "L5",
   "weakestLink": "Systems Architecture",
@@ -46,7 +46,7 @@
         "L1: audit/ tree",
         "L2: evidence + reports folders",
         "L3: handoff directive folder",
-        "L4: remediation reports/ folder",
+        "L4: remediation audit/reports folder",
         "L5: lifecycle running (fresh witness)"
       ],
       "gaps": [],

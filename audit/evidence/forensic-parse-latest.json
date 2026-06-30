@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://baseline-os/forensic-parse-artifact/v1",
   "programId": "FORENSIC-PARSE-001",
-  "parsedAt": "2026-06-30T10:21:03.503Z",
+  "parsedAt": "2026-06-30T17:30:25.111Z",
   "repo": "fabric-os",
   "corpus": {
     "docs": {
@@ -112,7 +112,6 @@
         "XR-004",
         "XR-201",
         "XR-ID",
-        "XR-101",
         "XR-MARKETS-OS-FRESH-AUDIT-2026-06-27",
         "XR-LEDGER-OS-FRESH-AUDIT-2026-06-27",
         "INIT-FIVE-PILLAR-FLEET-100",
@@ -134,6 +133,7 @@
         "BL-001",
         "INIT-FABRIC-LANE-DEPLOY-MATRIX",
         "XR-401",
+        "XR-101",
         "XR-103",
         "XR-301",
         "XR-003",
@@ -179,7 +179,7 @@
       ]
     },
     "sessions": {
-      "ledgerCount": 48,
+      "ledgerCount": 49,
       "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-baseline-os/agent-transcripts/3577dbe4-16a2-449b-92d4-5f56d9f622ba/3577dbe4-16a2-449b-92d4-5f56d9f622ba.jsonl",
       "transcriptLines": 417,
       "userQueryCount": 10
@@ -188,7 +188,7 @@
   "layerBindings": {
     "persona": {
       "primary": "platform-engineer",
-      "confidence": 0.7604166666666667,
+      "confidence": 0.7551020408163265,
       "candidates": [
         {
           "personaId": "platform-engineer",
@@ -196,7 +196,7 @@
         },
         {
           "personaId": "platform-architect",
-          "weight": 23
+          "weight": 24
         }
       ]
     },
@@ -281,6 +281,7 @@
         "agent:work-selection:check",
         "ops:check",
         "fabric:assurance:run:write",
+        "deployment:ops:contract:check",
         "CEILING-PREP-PASS",
         "fabric:lanes:check",
         "daas:cards:check",
@@ -298,16 +299,15 @@
         "first-deal:dry-run",
         "ecosystem:fleet:diagnostic:refresh:write",
         "griot:prod:verify:write",
+        "ci:npm-token:readiness",
+        "package-registry:continuity:check",
         "markets:staging:verify",
         "w2:staging-prereq-check",
         "staging:pilot-smoke",
         "secas:cards:check",
         "persona:read-witness",
         "ecosystem:agent:conduct:check",
-        "fabric:ops-lanes-11pr:check",
-        "daas:friction:check",
-        "secas:friction:check",
-        "ecosystemops:network:check"
+        "fabric:ops-lanes-11pr:check"
       ],
       "commands": [
         "baseline start",
@@ -557,7 +557,7 @@
       "text": "Dominant persona signal: platform-engineer",
       "source": "sessions+transcript",
       "refs": ["platform-engineer"],
-      "confidence": 0.7604166666666667
+      "confidence": 0.7551020408163265
     },
     {
       "id": "lang:docs:foundation:check",

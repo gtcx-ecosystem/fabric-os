@@ -23,10 +23,12 @@ db_allocated_storage = 50
 # Product decision 2026-06-30: keep staging warm at 1 node while Argo CD and
 # core platform services are being bootstrapped; revisit cold default once
 # the fleet is stable and on-demand warm-up is validated.
+# Instance bumped to t3.large because Argo CD components do not fit on a
+# single t3.medium (pre-upgrade hooks timed out waiting for pod readiness).
 cost_profile            = "scheduled"
 eks_node_min_size       = 1
 eks_node_desired_size   = 1
-eks_node_instance_types = ["t3.medium"]
+eks_node_instance_types = ["t3.large"]
 
 # Database — match existing instance engine version to avoid unintended downgrade
 db_engine_version = "16.13"

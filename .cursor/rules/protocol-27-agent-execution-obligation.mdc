@@ -34,7 +34,7 @@ D1 Shell → D2 background Shell → D3 node child_process → D4 owner-repo cwd
 
 ## Runbook execution order
 
-1. `cd` **owner repo** (e.g. `fabric-os` for W2/k8s/terraform).
+1. `cd` **owner repo** (e.g. `fabric-os` for W2/k8s/terraform, live successor to archived `gtcx-infrastructure`).
 2. Run **repo scripts first** (`03-platform/scripts/staging/*.sh`, `pnpm` targets in `package.json`).
 3. Run raw commands from docs **yourself**; report **each exit code**.
 4. If `aws`/`kubectl` denied → **Permission Unblock Report** (D6) — not a copy-paste block for the operator.

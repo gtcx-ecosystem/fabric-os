@@ -10,7 +10,7 @@ Saying **"P22 directs; I do not poll"** while pasting `aws` / `kubectl` / `terra
 
 ## Required behavior
 
-1. **Execute** each step in the owner-repo shell (usually `fabric-os` for W2).
+1. **Execute** each step in the owner-repo shell (usually `fabric-os` for W2, live successor to archived `gtcx-infrastructure`).
 2. Prefer **repo scripts** over retyping runbook blocks:
    - `./03-platform/scripts/staging/populate-compliance-os-staging-sm.sh`
    - `./03-platform/scripts/staging/install-compliance-os-eso.sh`

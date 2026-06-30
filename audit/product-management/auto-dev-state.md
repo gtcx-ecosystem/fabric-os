@@ -13,15 +13,17 @@ last_reconciled: 2026-06-25T00:40:00.000Z
 - **Ticket:** S26-04
 - **Blocked work:** ledger-ui CI/build package installation and publishing while previous npm account access is locked
 - **Owner:** fabric-os / infrastructure operator
-- **Status:** **internal registry unblocked** — inbound handoff filed at `docs/operations/coordination/inbound/from-ledger-ui-npm-token-2026-06-30.md`; public npm account remains human/manual due CAPTCHA/account recovery.
+- **Status:** **internal consumption verified** — ledger-ui packages are consumable through AWS CodeArtifact by approved GTCX runners; public npm account remains human/manual due CAPTCHA/account recovery.
 - **Evidence:**
   - ledger-ui commits `75d4c735`, `ff766de5`, `7bee324d` — NPM token access instructions and credential-pointer updates.
   - ledger-ui commit `83c61912` — refreshed auto-dev-state and cross-repo deps.
+  - fabric-os publish proof `gtcx-staging-deploy-executor:2f805ac3-3c0e-4aca-8a18-267a1f5ea5cf` — CodeArtifact package availability completed `SUCCEEDED`.
+  - fabric-os clean install proof `gtcx-staging-deploy-executor:9bf69523-617a-438d-a066-95f24af0c603` — empty consumer project installed `@gtcx/tokens`, `@gtcx/utils`, `@gtcx/ui`, `@gtcx/layouts`, `@gtcx/desk-shell`, `@gtcx/pages`, and `@gtcx/blocks`.
 - **Root cause:** Previous npm account access is blocked; `NPM_TOKEN` is not in Baseline vault, and internal builds need a registry path that does not wait for account recovery.
-- **Authority:** Class A/S — operator / infrastructure owner must create or inject the secret.
+- **Authority:** Class A for CodeArtifact runner policy; Class S/A remains only for public npm account recovery or new-account token custody.
 - **Continuity plan:** run both lanes — AWS CodeArtifact internal registry (`deploy/terraform/modules/codeartifact-npm-registry/`) and new/recovered npmjs account for public publishing.
-- **Internal lane evidence:** CodeArtifact domain `gtcx-packages` and repository `npm-internal` exist in `eu-west-1`; CodeBuild proof `gtcx-staging-deploy-executor:c4f70e23-0f2c-4165-b681-72ea6ca42bfa` completed `SUCCEEDED` and `npm ping` returned `PONG`.
-- **Completion signal:** ledger-ui build succeeds against CodeArtifact, or `NPM_TOKEN` is available from Baseline vault to approved runners for public npm publishing; redacted witness confirms consumption.
+- **Internal lane evidence:** CodeArtifact domain `gtcx-packages` and repository `npm-internal` exist in `eu-west-1`; CodeBuild proof `gtcx-staging-deploy-executor:c4f70e23-0f2c-4165-b681-72ea6ca42bfa` completed `SUCCEEDED` and `npm ping` returned `PONG`; ledger-ui consumption witness is `audit/evidence/ledger-ui-codeartifact-consumption-latest.json`.
+- **Completion signal:** internal lane complete for GTCX repo consumption. Public npm distribution remains separate and resumes when `NPM_TOKEN` is available from Baseline vault or npm account recovery/new-account setup is complete.
 
 ## Inbound handoff — ledger-os durable host recheck (2026-06-27)
 

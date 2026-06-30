@@ -65,6 +65,8 @@
     "ci:npm-token:readiness:write": "node platform/scripts/ci-npm-token-readiness.mjs --write",
     "package-registry:continuity:check": "node platform/scripts/package-registry-continuity-check.mjs",
     "package-registry:continuity:check:write": "node platform/scripts/package-registry-continuity-check.mjs --write",
+    "ledger-ui:consumption:check": "node platform/scripts/package-registry-continuity-check.mjs",
+    "ledger-ui:consumption:check:write": "node platform/scripts/package-registry-continuity-check.mjs --write",
     "signal:import-cost-stats": "node platform/scripts/ops/import-baseline-cost-stats.mjs",
     "infra:cost:audit": "node platform/scripts/cost/run-infra-cost-audit.mjs",
     "infra:cost:audit:write": "node platform/scripts/cost/run-infra-cost-audit.mjs --write",

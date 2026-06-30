@@ -1,0 +1,141 @@
+{
+  "schema": "gtcx://fabric-os/ledger-ui-codeartifact-consumption/v1",
+  "checkedAt": "2026-06-30T16:36:38Z",
+  "owner": "fabric-os",
+  "authorityClass": "A",
+  "decision": "ledger-ui packages are consumable by GTCX repos through AWS CodeArtifact without NPM_TOKEN.",
+  "registry": {
+    "provider": "aws-codeartifact",
+    "region": "eu-west-1",
+    "domain": "gtcx-packages",
+    "repository": "npm-internal",
+    "endpoint": "https://gtcx-packages-348389439381.d.codeartifact.eu-west-1.amazonaws.com/npm/npm-internal/",
+    "externalConnection": "public:npmjs"
+  },
+  "sourceBundle": {
+    "uri": "s3://gtcx-terraform-state-staging/package-registry/ledger-ui-codeartifact-source-20260630.tgz",
+    "etag": "d2fec78de120b1d964bd80872fa11c89",
+    "versionId": "rjOTZPwvo3cMwpzHFv9RQJTO4Y8UrwAO"
+  },
+  "publishProof": {
+    "provider": "aws-codebuild",
+    "region": "af-south-1",
+    "project": "gtcx-staging-deploy-executor",
+    "sourceVersion": "7158612f",
+    "buildId": "gtcx-staging-deploy-executor:2f805ac3-3c0e-4aca-8a18-267a1f5ea5cf",
+    "buildStatus": "SUCCEEDED",
+    "exactVersionVerification": {
+      "@gtcx/tokens": "0.3.0",
+      "@gtcx/utils": "0.2.0",
+      "@gtcx/ui": "0.4.2",
+      "@gtcx/layouts": "0.2.10",
+      "@gtcx/desk-shell": "0.1.0"
+    }
+  },
+  "consumptionProof": {
+    "provider": "aws-codebuild",
+    "region": "af-south-1",
+    "project": "gtcx-staging-deploy-executor",
+    "sourceVersion": "7158612f",
+    "buildId": "gtcx-staging-deploy-executor:9bf69523-617a-438d-a066-95f24af0c603",
+    "buildStatus": "SUCCEEDED",
+    "cleanProject": "/tmp/ledger-ui-consume",
+    "commands": [
+      "aws codeartifact login --tool npm --domain gtcx-packages --repository npm-internal --region eu-west-1",
+      "npm ping",
+      "npm install --ignore-scripts --legacy-peer-deps @gtcx/tokens@0.3.0 @gtcx/utils@0.2.0 @gtcx/ui@0.4.2 @gtcx/layouts@0.2.10 @gtcx/desk-shell@0.1.0 @gtcx/pages@0.1.8 @gtcx/blocks@0.1.0",
+      "npm ls --depth=0 @gtcx/tokens @gtcx/utils @gtcx/ui @gtcx/layouts @gtcx/desk-shell @gtcx/pages @gtcx/blocks"
+    ],
+    "installed": {
+      "@gtcx/blocks": "0.1.0",
+      "@gtcx/desk-shell": "0.1.0",
+      "@gtcx/layouts": "0.2.10",
+      "@gtcx/pages": "0.1.8",
+      "@gtcx/tokens": "0.3.0",
+      "@gtcx/ui": "0.4.2",
+      "@gtcx/utils": "0.2.0"
+    },
+    "warnings": [
+      "npm emitted EBADENGINE for lru-cache@11.5.1 on the CodeBuild Node 18 image, but install and npm ls completed successfully."
+    ]
+  },
+  "packageAvailability": [
+    {
+      "name": "@gtcx/utils",
+      "version": "0.2.0",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/tokens",
+      "version": "0.3.0",
+      "availability": "codeartifact-external-connection"
+    },
+    { "name": "@gtcx/ui", "version": "0.4.2", "availability": "codeartifact-internal" },
+    {
+      "name": "@gtcx/accessibility",
+      "version": "0.1.0",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/i18n",
+      "version": "0.1.0",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/ui-mobile",
+      "version": "0.2.0",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/layouts-mobile",
+      "version": "0.1.0",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/screens-mobile",
+      "version": "1.0.0",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/layouts",
+      "version": "0.2.10",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/desk-shell",
+      "version": "0.1.0",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/app-foundation",
+      "version": "0.1.1",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/governance-sdk",
+      "version": "0.1.0",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/mcp-server",
+      "version": "1.0.0",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/pages",
+      "version": "0.1.8",
+      "availability": "codeartifact-external-connection"
+    },
+    {
+      "name": "@gtcx/blocks",
+      "version": "0.1.0",
+      "availability": "codeartifact-external-connection"
+    }
+  ],
+  "consumerInstructions": {
+    "login": "aws codeartifact login --tool npm --domain gtcx-packages --repository npm-internal --region eu-west-1",
+    "installExample": "pnpm add @gtcx/ui@0.4.2 @gtcx/tokens@0.3.0 @gtcx/utils@0.2.0",
+    "credentialModel": "AWS IAM session auth; no long-lived NPM_TOKEN is required for internal consumption."
+  },
+  "redaction": "No CodeArtifact authorization token, npm token, or secret value was written to repo."
+}

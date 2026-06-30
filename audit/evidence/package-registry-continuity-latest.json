@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/package-registry-continuity-check/v1",
-  "checkedAt": "2026-06-30T16:04:51.089Z",
+  "checkedAt": "2026-06-30T16:39:22.754Z",
   "ok": true,
   "gates": {
     "file:spec": {
@@ -39,6 +39,14 @@
       "ok": true,
       "path": "audit/evidence/package-registry-live-validation-latest.json"
     },
+    "file:ledgerUiPublisher": {
+      "ok": true,
+      "path": "deploy/codebuild/package-registry-publish-ledger-ui.sh"
+    },
+    "file:ledgerUiConsumption": {
+      "ok": true,
+      "path": "audit/evidence/ledger-ui-codeartifact-consumption-latest.json"
+    },
     "spec:two-lanes": {
       "ok": true
     },
@@ -63,6 +71,9 @@
     "runbook:both-lanes": {
       "ok": true
     },
+    "runbook:ledger-ui-consumption": {
+      "ok": true
+    },
     "runbook:vault-sor": {
       "ok": true
     },
@@ -73,6 +84,15 @@
       "ok": true
     },
     "live:runner-npm-ping": {
+      "ok": true
+    },
+    "ledger-ui:publish-proof": {
+      "ok": true
+    },
+    "ledger-ui:clean-install-proof": {
+      "ok": true
+    },
+    "ledger-ui:publisher-script": {
       "ok": true
     }
   }

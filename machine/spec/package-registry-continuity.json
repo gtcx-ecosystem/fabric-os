@@ -29,6 +29,23 @@
       "fallbackIfScopeUnavailable": "Use new public scope or publish public packages after old scope recovery."
     }
   },
+  "ledgerUiConsumption": {
+    "status": "verified",
+    "registry": "aws-codeartifact",
+    "evidence": "audit/evidence/ledger-ui-codeartifact-consumption-latest.json",
+    "publishRunner": "gtcx-staging-deploy-executor:2f805ac3-3c0e-4aca-8a18-267a1f5ea5cf",
+    "installRunner": "gtcx-staging-deploy-executor:9bf69523-617a-438d-a066-95f24af0c603",
+    "consumerCommand": "aws codeartifact login --tool npm --domain gtcx-packages --repository npm-internal --region eu-west-1",
+    "packages": [
+      { "name": "@gtcx/tokens", "version": "0.3.0" },
+      { "name": "@gtcx/utils", "version": "0.2.0" },
+      { "name": "@gtcx/ui", "version": "0.4.2" },
+      { "name": "@gtcx/layouts", "version": "0.2.10" },
+      { "name": "@gtcx/desk-shell", "version": "0.1.0" },
+      { "name": "@gtcx/pages", "version": "0.1.8" },
+      { "name": "@gtcx/blocks", "version": "0.1.0" }
+    ]
+  },
   "decision": "Run both lanes: CodeArtifact unblocks internal builds; new npm account handles public distribution and recovery fallback.",
   "nonGoals": [
     "Do not wait for old npm account recovery to unblock internal CI.",

@@ -75,6 +75,47 @@ Live validation on 2026-06-30:
 The proof build assumed `arn:aws:sts::348389439381:assumed-role/gtcx-staging-deploy-executor/...`,
 ran `aws codeartifact login`, and `npm ping` returned `PONG 922ms`.
 
+### ledger-ui consumption
+
+All GTCX repos should consume ledger-ui packages through the CodeArtifact npm
+endpoint for internal builds:
+
+```bash
+aws codeartifact login --tool npm --domain gtcx-packages --repository npm-internal --region eu-west-1
+pnpm add @gtcx/ui@0.4.2 @gtcx/tokens@0.3.0 @gtcx/utils@0.2.0
+```
+
+Core package surface verified on 2026-06-30:
+
+| Package            | Version  |
+| ------------------ | -------- |
+| `@gtcx/tokens`     | `0.3.0`  |
+| `@gtcx/utils`      | `0.2.0`  |
+| `@gtcx/ui`         | `0.4.2`  |
+| `@gtcx/layouts`    | `0.2.10` |
+| `@gtcx/desk-shell` | `0.1.0`  |
+| `@gtcx/pages`      | `0.1.8`  |
+| `@gtcx/blocks`     | `0.1.0`  |
+
+Evidence:
+
+| Proof                | Build ID                                                            | Result      |
+| -------------------- | ------------------------------------------------------------------- | ----------- |
+| Publish/availability | `gtcx-staging-deploy-executor:2f805ac3-3c0e-4aca-8a18-267a1f5ea5cf` | `SUCCEEDED` |
+| Clean install        | `gtcx-staging-deploy-executor:9bf69523-617a-438d-a066-95f24af0c603` | `SUCCEEDED` |
+
+The clean install proof created an empty npm project, authenticated to
+CodeArtifact, installed the packages above with exact versions, and `npm ls`
+confirmed the installed tree. The detailed witness is
+`audit/evidence/ledger-ui-codeartifact-consumption-latest.json`.
+
+Some package versions already exist in the externally connected npmjs upstream.
+CodeArtifact serves those through `public:npmjs`; `@gtcx/ui@0.4.2` is also
+published with internal CodeArtifact origin. This is acceptable for internal
+consumption. Future ledger-ui releases should publish bumped versions through
+this runner so fabric-os can own internal availability even while npm account
+recovery continues.
+
 ## Lane 2 — New npm account/org
 
 Purpose: public npmjs publishing continuity.
@@ -159,6 +200,7 @@ continuity on CodeArtifact.
 - `pnpm package-registry:continuity:check` passes.
 - CodeArtifact repository exists after Class A apply.
 - Enterprise runner can `npm ping` against CodeArtifact.
+- GTCX consumer proof can install ledger-ui packages through CodeArtifact.
 - Public npm token, if needed, is stored in Baseline vault and redacted
   readiness witness passes with `--execute`.
 

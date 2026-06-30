@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/ci-npm-token-readiness/v2",
-  "checkedAt": "2026-06-30T13:32:06.462Z",
+  "checkedAt": "2026-06-30T13:34:00.351Z",
   "owner": "fabric-os",
   "vaultSystemOfRecord": "bridge-os Baseline vault",
   "runtimePrimitive": "@baselineos/vault",

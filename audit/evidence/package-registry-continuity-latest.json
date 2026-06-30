@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/package-registry-continuity-check/v1",
-  "checkedAt": "2026-06-30T13:31:31.267Z",
+  "checkedAt": "2026-06-30T13:34:00.348Z",
   "ok": true,
   "gates": {
     "file:spec": {

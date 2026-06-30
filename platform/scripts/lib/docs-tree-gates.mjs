@@ -63,6 +63,16 @@ export function readIaExemptions(repoRoot) {
   }
 }
 
+function readDocsSor(repoRoot) {
+  const sorPath = join(repoRoot, 'docs/sor.json');
+  if (!existsSync(sorPath)) return {};
+  try {
+    return JSON.parse(readFileSync(sorPath, 'utf8'));
+  } catch {
+    return {};
+  }
+}
+
 function isExemptPath(relPath, prefixes) {
   const norm = relPath.replace(/\\/g, '/');
   return prefixes.some((p) => norm === p.replace(/\/$/, '') || norm.startsWith(p.replace(/\/$/, '') + '/'));
@@ -186,8 +196,12 @@ export function validateDocsTree(repoRoot, options = {}) {
     );
   }
 
+  const docsSor = readDocsSor(repoRoot);
   const deprecated = new Set((spec.universal?.deprecatedDecompose ?? []).map((d) => d.path.replace(/^docs\//, '')));
-  const allowedTop = new Set(profile?.allowedTopLevel ?? []);
+  const allowedTop = new Set([
+    ...(profile?.allowedTopLevel ?? []),
+    ...(Array.isArray(docsSor.allowedTopLevel) ? docsSor.allowedTopLevel : []),
+  ]);
 
   const topDirs = readdirSync(docsDir, { withFileTypes: true })
     .filter((e) => e.isDirectory() && !e.name.startsWith('.'))

@@ -33,6 +33,11 @@ const DOCS_ROOT = resolve(REPO_ROOT, DOCS_HUB);
 
 /** Legacy P35 path aliases when resolving link targets. */
 const LEGACY_LINK_ALIASES = [
+  { from: /^\.\.\/ops\//, to: '../operations/' },
+  { from: /^ops\//, to: 'operations/' },
+  { from: /^\.\.\/pm\//, to: '../machine/' },
+  { from: /^\.\.\/\.\.\/pm\//, to: '../../machine/' },
+  { from: /^pm\//, to: 'machine/' },
   { from: /^\.\.\/audit\//, to: '../../../audit/' },
   { from: /^audit\//, to: '../../../audit/' },
   { from: /^\.\.\/security\//, to: '../governance/security/' },
@@ -43,6 +48,8 @@ const LEGACY_LINK_ALIASES = [
   { from: /^\.\.\/04-deploy\//, to: '../../deploy/' },
   { from: /^\.\.\/\.\.\/04-deploy\//, to: '../../../deploy/' },
 ];
+
+const SIBLING_REPO_LINK_RE = /^(?:\.\.\/)+(baseline-os|bridge-os|canon-os|compliance-os|agile-os|fabric-os|gtcx-os|markets-os|terminal-os|terra-os|sensei-os|griot-ai|nyota-ai|ledger-ui|ledger-os|inspection-os)\//;
 
 function makeKey(file) {
   return `broken-link|${file}`;
@@ -62,6 +69,8 @@ function walk(dir, files = []) {
     const fullPath = join(dir, entry);
     const stat = statSync(fullPath);
     if (stat.isDirectory()) {
+      const rel = relative(DOCS_ROOT, fullPath);
+      if (rel === 'reference/legacy-top-level' || rel.startsWith('reference/legacy-top-level/')) continue;
       walk(fullPath, files);
     } else if (entry.endsWith('.md')) {
       files.push(relative(DOCS_ROOT, fullPath));
@@ -72,14 +81,32 @@ function walk(dir, files = []) {
 
 function resolveWithAliases(fileDir, linkTarget) {
   const candidates = [linkTarget];
+  if (/^(docs|operations|machine|platform|deploy|audit|workstream|agents|archive)\//.test(linkTarget)) {
+    candidates.push(resolve(REPO_ROOT, linkTarget));
+  }
+  if (/^(?:\.\.\/)+(deploy|operations|machine|platform|audit|workstream|agents|archive)\//.test(linkTarget)) {
+    candidates.push(resolve(REPO_ROOT, linkTarget.replace(/^(?:\.\.\/)+/, '')));
+  }
+  if (/^(?:\.\.\/)+pm\//.test(linkTarget)) {
+    candidates.push(resolve(REPO_ROOT, linkTarget.replace(/^(?:\.\.\/)+pm\//, 'machine/')));
+  }
+  if (SIBLING_REPO_LINK_RE.test(linkTarget)) {
+    const stripped = linkTarget.replace(/^(?:\.\.\/)+/, '');
+    candidates.push(resolve(REPO_ROOT, '..', stripped));
+    candidates.push(resolve(REPO_ROOT, '..', stripped.replace(/\/pm\//, '/machine/')));
+  }
   for (const { from, to } of LEGACY_LINK_ALIASES) {
     if (from.test(linkTarget)) {
       candidates.push(linkTarget.replace(from, to));
     }
   }
   for (const target of candidates) {
-    const resolved = resolve(fileDir, target);
+    const resolved = target.startsWith('/') ? target : resolve(fileDir, target);
     if (existsSync(resolved)) return resolved;
+    if (/^(docs|operations|machine|platform|deploy|audit|workstream|agents|archive)\//.test(target)) {
+      const rootResolved = resolve(REPO_ROOT, target);
+      if (existsSync(rootResolved)) return rootResolved;
+    }
     if (target.endsWith('.md') && existsSync(`${resolved}`)) return resolved;
   }
   return resolve(fileDir, linkTarget);

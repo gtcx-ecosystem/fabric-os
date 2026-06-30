@@ -91,7 +91,13 @@ def load_schema() -> dict | None:
 def validate_allowlist_shape(allowlist: dict) -> list[str]:
     """Lightweight structural validation that does not require jsonschema."""
     errors: list[str] = []
-    required_top = ("version", "required_files", "allowed_files", "allowed_directories")
+    required_top = (
+        "version",
+        "required_files",
+        "required_directories",
+        "allowed_files",
+        "allowed_directories",
+    )
     for key in required_top:
         if key not in allowlist:
             errors.append(f"allowlist missing required key: `{key}`")
@@ -108,7 +114,12 @@ def validate_allowlist_shape(allowlist: dict) -> list[str]:
             f"allowlist `schema_version` must be semver, got `{schema_version}`"
         )
 
-    for key in ("required_files", "allowed_files", "allowed_directories"):
+    for key in (
+        "required_files",
+        "required_directories",
+        "allowed_files",
+        "allowed_directories",
+    ):
         value = allowlist.get(key)
         if value is not None and not isinstance(value, list):
             errors.append(f"allowlist `{key}` must be a list")
@@ -194,6 +205,9 @@ def find_issues(allowlist: dict, root: pathlib.Path | None = None) -> list[str]:
 
     for entry in sorted(base.iterdir(), key=lambda path: path.name.lower()):
         name = entry.name
+        if entry.is_symlink():
+            issues.append(f"Root symlink forbidden: `{name}`")
+            continue
         if should_skip(name, allowlist):
             continue
         if base == ROOT and is_gitignored_untracked(entry):
@@ -225,6 +239,10 @@ def find_issues(allowlist: dict, root: pathlib.Path | None = None) -> list[str]:
     for required in allowlist.get("required_files", []):
         if not (base / required).is_file():
             issues.append(f"Required root file missing: `{required}`")
+
+    for required in allowlist.get("required_directories", []):
+        if not (base / required).is_dir():
+            issues.append(f"Required root directory missing: `{required}`")
 
     return issues
 

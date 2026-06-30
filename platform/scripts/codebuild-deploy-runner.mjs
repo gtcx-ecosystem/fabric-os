@@ -64,12 +64,27 @@ function redact(value) {
     .replace(/(token|password|secret|apikey|api_key)["'=:\s]+[^"',\s]+/gi, '$1=[redacted]');
 }
 
+function changedPaths(before, after, prefix = '') {
+  if (JSON.stringify(before) === JSON.stringify(after)) return [];
+
+  const beforeObject = before !== null && typeof before === 'object' && !Array.isArray(before);
+  const afterObject = after !== null && typeof after === 'object' && !Array.isArray(after);
+  if (!beforeObject || !afterObject) return [prefix || '$'];
+
+  return Array.from(new Set([...Object.keys(before), ...Object.keys(after)]))
+    .flatMap((key) => changedPaths(before[key], after[key], prefix ? `${prefix}.${key}` : key))
+    .sort();
+}
+
 function summarizeTerraformPlan(value) {
   const plan = JSON.parse(value);
   const changes = (plan.resource_changes ?? [])
     .map((resource) => ({
       address: resource.address,
       actions: resource.change?.actions ?? [],
+      changedPaths: (resource.change?.actions ?? []).includes('update')
+        ? changedPaths(resource.change?.before, resource.change?.after)
+        : [],
     }))
     .filter((resource) => !resource.actions.includes('no-op'));
 

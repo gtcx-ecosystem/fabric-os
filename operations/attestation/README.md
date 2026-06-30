@@ -1,4 +1,4 @@
-# workspace/attestation — gtcx-infrastructure
+# workspace/attestation — fabric-os
 
 Human gates (Class **S**), custody runners (Class **A**), attestation evidence.
 

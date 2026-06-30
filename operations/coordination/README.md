@@ -1,4 +1,4 @@
-# workspace/coordination — gtcx-infrastructure
+# workspace/coordination — fabric-os
 
 **Protocol 24** cross-repo handoffs. Operational SoR for XR rows, outbound/inbound artifacts.
 

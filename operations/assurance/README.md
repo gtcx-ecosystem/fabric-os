@@ -1,4 +1,4 @@
-# workspace/assurance-programs — gtcx-infrastructure
+# workspace/assurance-programs — fabric-os
 
 Program index: pen-test, SOC2, pilot, attestation, legal-DPA.
 

@@ -1,4 +1,4 @@
-# workspace/audit — gtcx-infrastructure
+# workspace/audit — fabric-os
 
 Witness lane — smoke JSON, deployment proof, credentialed runs.
 

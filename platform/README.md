@@ -1,6 +1,6 @@
 # 03-platform — code hub
 
-Layout v3 **code hub** for `gtcx-infrastructure`: workspace packages, agent scripts, and operational tooling.
+Layout v3 **code hub** for `fabric-os`: workspace packages, agent scripts, and operational tooling.
 
 | Path                              | Purpose                                                                                     |
 | --------------------------------- | ------------------------------------------------------------------------------------------- |

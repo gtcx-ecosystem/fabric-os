@@ -80,6 +80,18 @@ const controls = [
     },
   },
   {
+    id: 'folder-file-product-spec-alignment-control',
+    score100: contract?.requiredControls?.includes('Folder/file/product spec alignment')
+      && auditRequirements?.globalControls?.some((control) => control.id === 'folder-file-product-spec-alignment')
+      && auditRequirements?.qascScorerRequiredAdditions?.includes('folder-file-product-spec-alignment')
+      ? 100
+      : 0,
+    evidence: {
+      requiredControl: 'Folder/file/product spec alignment',
+      auditRequirement: 'folder-file-product-spec-alignment',
+    },
+  },
+  {
     id: 'command-surface',
     score100: Object.entries(requiredCommands).every(([name, command]) => scripts[name] === command) ? 100 : 0,
     evidence: requiredCommands,

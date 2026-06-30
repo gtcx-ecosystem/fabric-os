@@ -81,6 +81,21 @@
       "id": "backlog-compatibility-only",
       "targetScore": 100,
       "rule": "machine/backlog.json may exist only as generated compatibility output and must not be the authoring or planning source of truth."
+    },
+    {
+      "id": "folder-file-product-spec-alignment",
+      "targetScore": 100,
+      "evidence": [
+        "docs/product/FOLDER-SPEC.md",
+        "machine/spec/docs-product-pack.json",
+        "machine/spec/docs-folders/04-product.json",
+        "machine/spec/docs-tree-spec.json",
+        "machine/spec/feature-ship-gates-protocol.json",
+        "docs:product:check",
+        "docs:tree:check",
+        "machine:folder:check where present"
+      ],
+      "rule": "Product intent, machine records, feature packs, sprint handoffs, documentation, and generated compatibility outputs must live in the authoritative folder/file locations or have a recorded migration gap."
     }
   ],
   "ownerRequirements": {
@@ -203,7 +218,8 @@
     "package-signal",
     "production-spec-package",
     "scrum-handoff",
-    "backlog-compatibility-only"
+    "backlog-compatibility-only",
+    "folder-file-product-spec-alignment"
   ],
-  "openImplementationGap": "fabric-os QASC scorer must add these production-package controls as first-class scored rows before claiming 100/100 against the new Agile workflow."
+  "openImplementationGap": "Production-package controls are implemented. The remaining enforcement surface is repo-by-repo remediation to satisfy folder/file/product spec alignment and package evidence at 100/100."
 }

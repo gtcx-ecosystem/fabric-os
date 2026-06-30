@@ -68,6 +68,7 @@ describe('GTCX QASC repository scorer', () => {
     for (const area of [
       'Feature/spec registry',
       'Roadmap/goals/milestones',
+      'Folder/file/product spec alignment',
       'Operational lane isolation',
       'Security implementation controls',
       'Compliance implementation controls',
@@ -75,6 +76,14 @@ describe('GTCX QASC repository scorer', () => {
       'SIGNAL maturity',
       'Foundational micro-audits',
       'Transformational micro-audits',
+      'Product-intent source',
+      'Machine-readable standardization',
+      'Forensic spec',
+      'Package MPR',
+      'Package SIGNAL',
+      'Production spec package',
+      'Scrum handoff',
+      'Backlog compatibility only',
       'Archive recoverability',
     ]) {
       assert.ok(areas.includes(area), `missing acceptance area: ${area}`);

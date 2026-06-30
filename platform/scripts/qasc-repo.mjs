@@ -154,6 +154,11 @@ function linkCommandScore(run) {
   return run.exitCode === 0 ? 100 : 0;
 }
 
+function commandOrNullScore(run, applicable) {
+  if (!applicable) return null;
+  return run ? commandScore(run) : 0;
+}
+
 function anyEvidenceOk(...rels) {
   return rels.some((rel) => evidenceOk(rel));
 }
@@ -240,6 +245,51 @@ function operationalLaneIsolation() {
     }
   }
   return { ok: violations.length === 0, violations };
+}
+
+function specDriftEvidenceRecorded() {
+  const files = [
+    ...walkTextFiles('audit/reports'),
+    ...walkTextFiles('operations/coordination/outbound'),
+    ...walkTextFiles('docs/operations/remediation'),
+  ];
+  const re = /\b(folder\/file\/product spec alignment|target-authoritative spec drift|work-artifact placement|product folder spec|docs-product-subfolder-contract|feature-spec-protocol)\b/i;
+  return files.some((rel) => {
+    try {
+      return re.test(readFileSync(join(ROOT, rel), 'utf8'));
+    } catch {
+      return false;
+    }
+  });
+}
+
+function folderFileProductSpecScore({ docsProductRun, docsTreeScore, machineFolderRun }) {
+  const hasProductPlane = has('docs/product') || has('product') || has('machine/product');
+  const docsProductApplicable = hasProductPlane || Boolean(docsProductRun);
+  const machineFolderApplicable = has('machine') || Boolean(machineFolderRun);
+  const localSpecFiles = [
+    'docs/product/FOLDER-SPEC.md',
+    'machine/spec/docs-product-pack.json',
+    'machine/spec/docs-folders/04-product.json',
+    'machine/spec/docs-tree-spec.json',
+    'machine/spec/feature-ship-gates-protocol.json',
+  ].filter((rel) => has(rel));
+  const localSpecScore = localSpecFiles.length > 0 ? 100 : 0;
+  const scores = [
+    localSpecScore,
+    commandOrNullScore(docsProductRun, docsProductApplicable),
+    typeof docsTreeScore === 'number' ? docsTreeScore : 0,
+    commandOrNullScore(machineFolderRun, machineFolderApplicable),
+  ].filter((score) => score !== null);
+  const score100 = scores.length ? Math.min(...scores) : 0;
+  const driftRecorded = specDriftEvidenceRecorded();
+  return {
+    score100,
+    evidence: `local specs ${localSpecFiles.length}; docs:product exit ${docsProductRun ? docsProductRun.exitCode : 'unavailable'}; docs:tree ${docsTreeScore}/100; machine:folder exit ${machineFolderRun ? machineFolderRun.exitCode : 'unavailable'}; driftRecorded=${driftRecorded}`,
+    blocker: score100 === 100
+      ? null
+      : 'folder/file/product spec alignment is below benchmark or target-authoritative drift is unrecorded',
+  };
 }
 
 function listMatchingFiles(root, predicate) {
@@ -503,6 +553,8 @@ function buildWitness() {
   const docsIaRun = script('docs:ia:check') ? pnpmRun(['docs:ia:check']) : null;
   const docsTreeRun = script('docs:tree:check') ? pnpmRun(['docs:tree:check']) : null;
   const docsLinkRun = script('docs:check-links') ? pnpmRun(['docs:check-links']) : null;
+  const docsProductRun = script('docs:product:check') ? pnpmRun(['docs:product:check']) : null;
+  const machineFolderRun = script('machine:folder:check') ? pnpmRun(['machine:folder:check']) : null;
   const docsIaScore = commandScore(docsIaRun, /docs:ia:check\s+(\d+)\/(\d+)/i);
   const docsTreeScore = commandScore(docsTreeRun, /docs:tree:check\s+\((\d+)\/(\d+)\)/i);
   const docsLinkScore = linkCommandScore(docsLinkRun);
@@ -562,6 +614,11 @@ function buildWitness() {
   const forbiddenRoots = computeForbiddenRoots();
   const laneIsolation = operationalLaneIsolation();
   const agilePackage = agileProductionPackageEvidence();
+  const folderFileProductSpec = folderFileProductSpecScore({
+    docsProductRun,
+    docsTreeScore,
+    machineFolderRun,
+  });
   const crossRepoScore = Math.max(
     evidenceScore('audit/evidence/aaas-contract-check-latest.json'),
     evidenceScore('audit/evidence/fleet-ops-assurance-check-latest.json'),
@@ -573,6 +630,7 @@ function buildWitness() {
     scoredRow('Critical docs preserved', inventoryScore, 'audit/evidence/repo-folder-file-spec-inventory-latest.json', ['Trust & Safety', 'Defensive Moat', 'IP Magic'], ['Lossless', 'Specific'], inventoryScore === 100 ? null : 'inventory witness is incomplete'),
     scoredRow('Feature/spec registry', featureScore, 'docs:feature-spec:check evidence', ['Commercial Value', 'Product/Ecosystem Integration'], ['Specific', 'Integrated', 'Actionable'], featureScore === 100 ? null : 'feature/spec validation is below benchmark'),
     scoredRow('Documentation hygiene', docsScore, `docs IA ${docsIaScore}/100; tree ${docsTreeScore}/100; links ${docsLinkScore}/100`, ['Compliance', 'World Class', 'Trust & Safety'], ['Navigable', 'Grounded', 'Lossless'], docsScore === 100 ? null : 'documentation IA, lifecycle metadata, or link integrity is below benchmark'),
+    scoredRow('Folder/file/product spec alignment', folderFileProductSpec.score100, folderFileProductSpec.evidence, ['Compliance', 'World Class', 'Product/Ecosystem Integration'], ['Navigable', 'Grounded', 'Lossless'], folderFileProductSpec.blocker),
     scoredRow('Roadmap/goals/milestones', roadmapScore, 'roadmap/goals/milestone evidence', ['Commercial Value', 'Agentic Empowerment'], ['Actionable', 'Integrated'], roadmapOk && roadmapScore === 100 ? null : 'roadmap/goals/milestones are below benchmark'),
     scoredRow('Agile workflow', agileScore, agileRun ? `${agileRun.command} exit ${agileRun.exitCode}` : 'not applicable', ['Product/Ecosystem Integration', 'Craft'], ['Actionable', 'Integrated'], agileScore === 100 || agileScore == null ? null : 'agile workflow is below benchmark', agileApplicable),
     scoredRow('Ops contract', opsScore, opsRun ? `${opsRun.command} exit ${opsRun.exitCode}` : 'not applicable', ['Technical Excellence', 'Compliance'], ['Grounded', 'Integrated'], opsScore === 100 || opsScore == null ? null : 'ops contract is below benchmark', opsApplicable),
@@ -607,6 +665,7 @@ function buildWitness() {
   const decision = blockers.length === 0 ? 'complete' : 'incomplete';
   const phaseResults = {
     documentationTaxonomyLifecycle: { score100: docsScore, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: [{ command: docsIaRun?.command, score100: docsIaScore }, { command: docsTreeRun?.command, score100: docsTreeScore }, { command: docsLinkRun?.command, score100: docsLinkScore }], applicable: true },
+    folderFileSpecs: { score100: folderFileProductSpec.score100, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: folderFileProductSpec.evidence, applicable: true },
     featureSpecRegistryPrd: { score100: featureScore, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: ['docs:feature-spec:check evidence'], applicable: true },
     roadmapGoalsMilestonesWorkstream: { score100: roadmapScore, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: ['roadmap/goals/milestone evidence'], applicable: true },
     operationalLaneIsolation: { score100: laneIsolation.ok ? 100 : 0, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: laneIsolation.violations, applicable: true },
@@ -617,6 +676,7 @@ function buildWitness() {
   };
   const phaseLoopRows = [
     { phaseId: 'documentationTaxonomyLifecycle', area: 'Documentation hygiene' },
+    { phaseId: 'folderFileSpecs', area: 'Folder/file/product spec alignment' },
     { phaseId: 'featureSpecRegistryPrd', area: 'Feature/spec registry' },
     { phaseId: 'roadmapGoalsMilestonesWorkstream', area: 'Roadmap/goals/milestones' },
     { phaseId: 'operationalLaneIsolation', area: 'Operational lane isolation' },
@@ -699,6 +759,8 @@ function buildWitness() {
       }] : []),
       ...(docsIaRun ? [{ command: docsIaRun.command, cwd: ROOT, exitCode: docsIaRun.exitCode, score100: docsIaScore, ownerContract: 'canon-os', consumerContract: REPO, mprPillars: ['Compliance', 'World Class'], signalDimensions: ['Navigable', 'Grounded'] }] : []),
       ...(docsTreeRun ? [{ command: docsTreeRun.command, cwd: ROOT, exitCode: docsTreeRun.exitCode, score100: docsTreeScore, ownerContract: 'canon-os', consumerContract: REPO, mprPillars: ['Compliance', 'Craft', 'World Class'], signalDimensions: ['Navigable', 'Lossless'] }] : []),
+      ...(docsProductRun ? [{ command: docsProductRun.command, cwd: ROOT, exitCode: docsProductRun.exitCode, score100: commandScore(docsProductRun), ownerContract: 'canon-os', consumerContract: REPO, mprPillars: ['Compliance', 'Product/Ecosystem Integration'], signalDimensions: ['Grounded', 'Lossless'] }] : []),
+      ...(machineFolderRun ? [{ command: machineFolderRun.command, cwd: ROOT, exitCode: machineFolderRun.exitCode, score100: commandScore(machineFolderRun), ownerContract: 'canon-os', consumerContract: REPO, mprPillars: ['Compliance', 'Technical Excellence'], signalDimensions: ['Grounded', 'Lossless'] }] : []),
       ...(docsLinkRun ? [{ command: docsLinkRun.command, cwd: ROOT, exitCode: docsLinkRun.exitCode, score100: docsLinkScore, ownerContract: REPO, consumerContract: REPO, mprPillars: ['World Class', 'Trust & Safety'], signalDimensions: ['Navigable', 'Grounded'] }] : []),
       ...(agileRun ? [{ command: agileRun.command, cwd: ROOT, exitCode: agileRun.exitCode, score100: agileScore, ownerContract: 'agile-os', consumerContract: REPO, mprPillars: ['Product/Ecosystem Integration'], signalDimensions: ['Actionable', 'Integrated'] }] : []),
       ...(opsRun ? [{ command: opsRun.command, cwd: ROOT, exitCode: opsRun.exitCode, score100: opsScore, ownerContract: REPO, consumerContract: REPO, mprPillars: ['Technical Excellence', 'Compliance'], signalDimensions: ['Grounded', 'Integrated'] }] : []),

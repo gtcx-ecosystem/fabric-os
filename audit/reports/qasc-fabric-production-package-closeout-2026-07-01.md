@@ -27,7 +27,7 @@ deployment evidence work.
 | QASC tests        | 100/100 | `pnpm qasc:test`                              |
 | Root hygiene      | 100/100 | `pnpm operations:check`                       |
 | Docs tree hygiene | 100/100 | `pnpm docs:tree:check`                        |
-| QASC fabric score |  96/100 | `pnpm qasc:fleet -- --repos fabric-os --json` |
+| QASC fabric score |  97/100 | `pnpm qasc:fleet -- --repos fabric-os --json` |
 
 ## Remaining Blocker
 
@@ -62,5 +62,5 @@ by the deployment owner, rerun:
 pnpm qasc:fleet -- --repos fabric-os --json
 ```
 
-Expected result: Fabric QASC reaches `100/100` with `28/28` controls at
+Expected result: Fabric QASC reaches `100/100` with `29/29` controls at
 benchmark.

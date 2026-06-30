@@ -108,6 +108,7 @@ function runCommand(step, command, args, execute) {
   const result = spawnSync(commandPath, args, {
     cwd: ROOT,
     encoding: 'utf8',
+    maxBuffer: 64 * 1024 * 1024,
     env: {
       ...process.env,
       PATH: path,

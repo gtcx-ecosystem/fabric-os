@@ -3,7 +3,7 @@
 **Canonical policy:** `gtcx-docs/01-docs/governance/protocols/19-agent-credential-access/protocol.md` (see “System-of-Record and Operational Ownership Split”).
 
 - **System-of-record (SoR)**: `bridge-os` Baseline vault (shared provider creds + audited access)
-- **Runtime usage owner**: product repo (e.g. `gtcx-intelligence`) owns its runtime secrets
+- **Runtime usage owner**: owning runtime repo owns its runtime secrets; the intelligence bridge is owned through `bridge-os`, not a standalone archived intelligence repo
 - **CI/automation owner**: `fabric-os` owns org automation secrets/policy
 - **Contracts only**: `gtcx-protocols` defines env var names, redaction rules, and artifact paths/globs
 

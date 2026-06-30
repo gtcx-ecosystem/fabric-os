@@ -91,7 +91,7 @@ Provider-agnostic — the same surface works for Claude, Codex, Gemini, Kimi, De
 **Canonical policy:** `gtcx-docs/01-docs/governance/protocols/19-agent-credential-access/protocol.md` (see “System-of-Record and Operational Ownership Split”).
 
 - **System-of-record (SoR)**: `bridge-os` Baseline vault (shared provider creds + audited access)
-- **Runtime usage owner**: product repo (e.g. `gtcx-intelligence`) owns its runtime secrets
+- **Runtime usage owner**: owning runtime repo owns its runtime secrets; the intelligence bridge is owned through `bridge-os`, not a standalone archived intelligence repo
 - **CI/automation owner**: `fabric-os` owns org automation secrets/policy
 - **Contracts only**: `gtcx-protocols` defines env var names, redaction rules, and artifact paths/globs
 
@@ -137,7 +137,7 @@ When a story is **blocked on a sibling repo** or you **hand off** cross-repo wor
 
 **Not in this repo:** inbound archive SoR for ecosystem-wide weekly reports — that stays **`baseline-os`** (`workstream/coordination/`).
 
-**Evidence paths (link only):** production smoke and EAP issuance artifacts live in owning repos per deployment-proof-index (e.g. `gtcx-intelligence/01-docs/05-audit/evidence/`).
+**Evidence paths (link only):** production smoke and EAP issuance artifacts live in owning repos per deployment-proof-index. Intelligence bridge evidence routes through `bridge-os`; do not route agents to a standalone archived intelligence repo.
 
 ## Universal agent behavior (ANY LLM — terminal, IDE, CLI)
 

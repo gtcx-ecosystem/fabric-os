@@ -1121,7 +1121,7 @@
     {
       "type": "broken-link",
       "file": "docs/operations/intelligence-phase-3-gcp-ml-bridge-epic-2026-06-05.md",
-      "detail": "Link target does not exist: ../../../gtcx-intelligence/01-docs/roadmap/global-trade-phase-3-ml-pipeline.md",
+      "detail": "Legacy link target removed: standalone intelligence repo path replaced by bridge-os intelligence bridge ownership",
       "reviewBy": "2026-06-30"
     },
     {

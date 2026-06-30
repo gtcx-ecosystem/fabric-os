@@ -15,4 +15,4 @@ When a story is **blocked on a sibling repo** or you **hand off** cross-repo wor
 
 **Not in this repo:** inbound archive SoR for ecosystem-wide weekly reports — that stays **`baseline-os`** (`workstream/coordination/`).
 
-**Evidence paths (link only):** production smoke and EAP issuance artifacts live in owning repos per deployment-proof-index (e.g. `gtcx-intelligence/01-docs/05-audit/evidence/`).
+**Evidence paths (link only):** production smoke and EAP issuance artifacts live in owning repos per deployment-proof-index. Intelligence bridge evidence routes through `bridge-os`; do not route agents to a standalone archived intelligence repo.

@@ -1,5 +1,5 @@
 ---
-description: W2 staging — agent runs aws/kubectl/terraform in gtcx-infrastructure; no operator paste blocks
+description: W2 staging — agent runs aws/kubectl/terraform in fabric-os; no operator paste blocks
 globs: ["04-ship/**", "03-platform/scripts/staging/**", "01-docs/04-ops/**"]
 alwaysApply: true
 ---
@@ -10,7 +10,7 @@ alwaysApply: true
 
 When **Next priority** is W2-OPS-001 or Hub #17 staging:
 
-1. Work in **`gtcx-infrastructure`** — not gtcx-docs-only.
+1. Work in **`fabric-os`** — not gtcx-docs-only.
 2. Run `./03-platform/scripts/staging/*.sh` and terraform/kubectl **in-session**.
 3. Forbidden: **"Your action needed"** + pasted `aws`/`kubectl` sequence.
 4. Blocked creds → **Permission Unblock Report**, not operator runbook dump.

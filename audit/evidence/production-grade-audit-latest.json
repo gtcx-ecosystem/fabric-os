@@ -1,0 +1,81 @@
+{
+  "schema": "gtcx://audit/core-witness/v2",
+  "coreId": "A2-PRODUCTION-GRADE",
+  "slug": "production-grade",
+  "repo": "fabric-os",
+  "date": "2026-06-30",
+  "score10": 8.5,
+  "score100": 85,
+  "score100Raw": 100,
+  "status": "rubric-driven",
+  "source": "run-five-core-audit",
+  "metrics": {
+    "production-readiness": {
+      "score100": 100,
+      "weight": 1,
+      "confidence": "A",
+      "source": "audit-output"
+    }
+  },
+  "gates": [
+    {
+      "id": "ci-pipeline-defined",
+      "label": "CI workflow or test/lint scripts",
+      "pass": true,
+      "severity": "P1",
+      "cap100": 75
+    },
+    {
+      "id": "ops-check-pass",
+      "label": "pnpm ops:check exit 0",
+      "pass": true,
+      "severity": "P1",
+      "cap100": 70
+    },
+    {
+      "id": "deploy-path-documented",
+      "label": "Deploy path exists",
+      "pass": false,
+      "severity": "P2",
+      "cap100": 85
+    }
+  ],
+  "capsFired": [
+    {
+      "id": "gate-deploy-path-documented",
+      "label": "Gate failed: Deploy path exists",
+      "ceiling100": 85,
+      "trigger": "deploy-path-documented"
+    }
+  ],
+  "openP0": 0,
+  "openP1": 0,
+  "rubricSource": "audit-output",
+  "rubricSourcePath": "audit/audit-output-2026-06-30.json",
+  "checks": {
+    "ciPipeline": {
+      "ok": true,
+      "detail": "ci.yml or test/lint scripts"
+    },
+    "opsCheck": {
+      "ok": true,
+      "code": 0,
+      "out": "> fabric-os@0.1.0 ops:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> pnpm operations:check\n\n\n> fabric-os@0.1.0 operations:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> pnpm workspace:check && pnpm check:workspace-root-cleanliness:strict\n\n\n> fabric-os@0.1.0 workspace:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node platform/scripts/workspace/check.mjs\n\nworkspace:root OK\nworkspace:coordination OK\nworkspace:compliance OK\nworkspace:gtm OK\nworkspace:attestation OK\nworkspace:product-management OK\nworkspace:security OK\nworkspace:assurance-programs OK\nworkspace:audit OK\n"
+    },
+    "deployPath": {
+      "ok": true,
+      "detail": "deploy/ or platform/ infra home (deploy optional)"
+    },
+    "pmGates": {
+      "ok": false,
+      "detail": "pm ci gates or manifest"
+    },
+    "p35Strict": {
+      "ok": false,
+      "code": 1,
+      "out": "{\n  \"ok\": false,\n  \"protocol\": \"35-ecosystem-workspace-world-class/v5.0.0\",\n  \"engine\": \"layout-spec-enforce/v1\",\n  \"contractVersion\": \"5.1.0\",\n  \"contractPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/config/ecosystem-layout-contract.json\",\n  \"mode\": \"strict\",\n  \"repo\": \"fabric-os\",\n  \"repoRoot\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os\",\n  \"repoKind\": \"product\",\n  \"layoutVersion\": \"v5\",\n  \"resolvedHubs\": {\n    \"agentic\": {\n      \"path\": null,\n      \"kind\": \"missing\"\n    },\n    \"agents\": {\n      \"path\": \"agents\",\n      \"kind\": \"v5\"\n    },\n    \"archive\": {\n      \"path\": \"archi"
+    }
+  },
+  "gaps": ["pmGates", "p35Strict"],
+  "runbook": "audit/runbooks/A2-production-grade.md"
+}

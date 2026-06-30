@@ -1,0 +1,80 @@
+{
+  "schema": "gtcx://audit/core-witness/v2",
+  "coreId": "A1-PRODUCT-EXCELLENCE",
+  "slug": "product-excellence",
+  "repo": "fabric-os",
+  "date": "2026-06-30",
+  "score10": 10,
+  "score100": 100,
+  "score100Raw": 100,
+  "status": "rubric-driven",
+  "source": "run-five-core-audit",
+  "metrics": {
+    "ux-product-design": {
+      "score100": 100,
+      "weight": 1,
+      "confidence": "A",
+      "source": "audit-output"
+    },
+    "ecosystem-integration": {
+      "score100": 100,
+      "weight": 1,
+      "confidence": "A",
+      "source": "audit-output"
+    },
+    "innovation-originality": {
+      "score100": 100,
+      "weight": 1,
+      "confidence": "A",
+      "source": "audit-output"
+    },
+    "technical-moat": {
+      "score100": 100,
+      "weight": 1,
+      "confidence": "A",
+      "source": "audit-output"
+    }
+  },
+  "gates": [
+    {
+      "id": "build-or-test-green",
+      "label": "Build or test script present and runnable",
+      "pass": true,
+      "severity": "P1",
+      "cap100": 70
+    },
+    {
+      "id": "ux-spec-present-if-product",
+      "label": "UX/strategy spec path exists for product repos",
+      "pass": true,
+      "severity": "P2",
+      "cap100": 85
+    }
+  ],
+  "capsFired": [],
+  "openP0": 0,
+  "openP1": 0,
+  "rubricSource": "audit-output",
+  "rubricSourcePath": "audit/audit-output-2026-06-30.json",
+  "checks": {
+    "buildScript": {
+      "ok": true,
+      "detail": "build or test script"
+    },
+    "testRun": {
+      "ok": true,
+      "code": 0,
+      "out": "ERROR  Unknown option: 'passWithNoTests'\nFor help, run: pnpm help test"
+    },
+    "uxSpecs": {
+      "ok": true,
+      "detail": "ux or strategy specs path"
+    },
+    "exrPack": {
+      "ok": true,
+      "detail": "EXR pack or N/A"
+    }
+  },
+  "gaps": [],
+  "runbook": "audit/runbooks/A1-product-excellence.md"
+}

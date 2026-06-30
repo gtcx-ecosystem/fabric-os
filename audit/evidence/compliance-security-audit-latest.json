@@ -1,0 +1,87 @@
+{
+  "schema": "gtcx://audit/core-witness/v2",
+  "coreId": "A4-COMPLIANCE-SECURITY",
+  "slug": "compliance-security",
+  "repo": "fabric-os",
+  "date": "2026-06-30",
+  "score10": 7.5,
+  "score100": 75,
+  "score100Raw": 100,
+  "status": "rubric-driven",
+  "source": "run-five-core-audit",
+  "metrics": {
+    "security": {
+      "score100": 100,
+      "weight": 1,
+      "confidence": "A",
+      "source": "audit-output"
+    },
+    "enterprise-readiness": {
+      "score100": 100,
+      "weight": 1,
+      "confidence": "A",
+      "source": "audit-output"
+    },
+    "bank-grade-auditability": {
+      "score100": 100,
+      "weight": 1,
+      "confidence": "A",
+      "source": "audit-output"
+    }
+  },
+  "gates": [
+    {
+      "id": "security-scan-clean-or-waived",
+      "label": "Gitleaks witness or CI security gate",
+      "pass": true,
+      "severity": "P0",
+      "cap100": 59
+    },
+    {
+      "id": "secrets-no-leak",
+      "label": "No committed .env secrets",
+      "pass": true,
+      "severity": "P0",
+      "cap100": 50
+    },
+    {
+      "id": "trust-evidence-indexed",
+      "label": "audit/evidence or attestation path",
+      "pass": false,
+      "severity": "P1",
+      "cap100": 75
+    }
+  ],
+  "capsFired": [
+    {
+      "id": "gate-trust-evidence-indexed",
+      "label": "Gate failed: audit/evidence or attestation path",
+      "ceiling100": 75,
+      "trigger": "trust-evidence-indexed"
+    }
+  ],
+  "openP0": 0,
+  "openP1": 0,
+  "rubricSource": "audit-output",
+  "rubricSourcePath": "audit/audit-output-2026-06-30.json",
+  "checks": {
+    "noEnvInGit": {
+      "ok": true,
+      "detail": ".env should not be committed"
+    },
+    "assuranceWorkspace": {
+      "ok": false,
+      "detail": "assurance or security ops domain"
+    },
+    "trustEvidence": {
+      "ok": true,
+      "detail": "audit/evidence or attestation"
+    },
+    "gitleaksWitness": {
+      "ok": true,
+      "detail": "gitleaks witness or CI workflow"
+    }
+  },
+  "gaps": ["assuranceWorkspace"],
+  "runbook": "audit/runbooks/A4-compliance-security.md"
+}

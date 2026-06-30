@@ -1,0 +1,86 @@
+{
+  "schema": "gtcx://audit/documentation-audit/v1",
+  "repo": "fabric-os",
+  "repoKind": "infra",
+  "date": "2026-06-30",
+  "auditType": "documentation-pillar",
+  "ok": true,
+  "composite100": 100,
+  "pillars": {
+    "compliance": {
+      "score100": 100,
+      "openP1": 2,
+      "source": "fleet-seal100"
+    },
+    "technicalExcellence": {
+      "score100": 100,
+      "score100Raw": 96,
+      "packTe100": 100,
+      "capped": false,
+      "source": "fleet-seal100"
+    },
+    "craft": {
+      "score100": 100,
+      "score100Raw": 86,
+      "capped": false,
+      "capReasons": [],
+      "craftFlags": {
+        "interchangeable": false,
+        "aiSlop": false
+      },
+      "source": "fleet-seal100"
+    },
+    "worldClass": {
+      "score100": 100,
+      "documentationQuality100": 86,
+      "worldClassBar100": 95,
+      "gap100": 9,
+      "gapLabel": "frontier",
+      "references": ["Stripe docs", "Kubernetes docs", "gtcx-docs hub"],
+      "source": "fleet-seal100"
+    }
+  },
+  "forensic": {
+    "axes": {
+      "structural": 100,
+      "naming": 50,
+      "frontmatter": 98,
+      "links": 72,
+      "agentic": 85
+    },
+    "score100": 100,
+    "signals": {
+      "competingRoots": [],
+      "docsHub": "docs",
+      "markdownFileCount": 377,
+      "brokenLinks": 0,
+      "scaffoldFileCount": 0,
+      "aiSlopFileCount": 0
+    }
+  },
+  "pack": {
+    "score100": 80,
+    "openP1": 2,
+    "violations": [
+      {
+        "packId": "GTM-PACK",
+        "itemId": "gtm-dod",
+        "severity": "P2",
+        "detail": "missing demo-walkthrough or deployment-profile"
+      },
+      {
+        "packId": "OPS-DOCS-MANIFEST",
+        "itemId": "ops-docs-manifest",
+        "severity": "P1",
+        "detail": "missing ops/docs/manifest.json"
+      },
+      {
+        "packId": "OPS-DOCS-MANIFEST",
+        "itemId": "ops-docs-manifest-schema",
+        "severity": "P1",
+        "detail": "missing ops/docs/manifest.json"
+      }
+    ]
+  },
+  "fleetSeal100": true
+}

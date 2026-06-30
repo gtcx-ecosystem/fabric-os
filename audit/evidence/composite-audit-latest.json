@@ -1,0 +1,178 @@
+{
+  "schema": "gtcx://audit/composite/v2",
+  "repo": "fabric-os",
+  "date": "2026-06-30",
+  "composite100": 80,
+  "composite100Raw": 88,
+  "productionReady": false,
+  "openP0": 0,
+  "openP1": 0,
+  "capsFired": [
+    {
+      "id": "gate-deploy-path-documented",
+      "label": "Gate failed: Deploy path exists",
+      "ceiling100": 85,
+      "trigger": "deploy-path-documented",
+      "coreId": "A2-PRODUCTION-GRADE"
+    },
+    {
+      "id": "gate-trust-evidence-indexed",
+      "label": "Gate failed: audit/evidence or attestation path",
+      "ceiling100": 75,
+      "trigger": "trust-evidence-indexed",
+      "coreId": "A4-COMPLIANCE-SECURITY"
+    },
+    {
+      "id": "gate-p35-strict-pass",
+      "label": "Gate failed: P35 layout strict",
+      "ceiling100": 70,
+      "trigger": "p35-strict-pass",
+      "coreId": "A5-REPO-HYGIENE"
+    },
+    {
+      "id": "gate-pm-folder-requirements",
+      "label": "Gate failed: pm/manifest.json present",
+      "ceiling100": 85,
+      "trigger": "pm-folder-requirements",
+      "coreId": "A5-REPO-HYGIENE"
+    }
+  ],
+  "cores": {
+    "A1-PRODUCT-EXCELLENCE": {
+      "slug": "product-excellence",
+      "score100": 100,
+      "score100Raw": 100,
+      "weight": 0.25,
+      "status": "rubric-driven",
+      "metrics": {
+        "ux-product-design": {
+          "score100": 100,
+          "weight": 1,
+          "confidence": "A",
+          "source": "audit-output"
+        },
+        "ecosystem-integration": {
+          "score100": 100,
+          "weight": 1,
+          "confidence": "A",
+          "source": "audit-output"
+        },
+        "innovation-originality": {
+          "score100": 100,
+          "weight": 1,
+          "confidence": "A",
+          "source": "audit-output"
+        },
+        "technical-moat": {
+          "score100": 100,
+          "weight": 1,
+          "confidence": "A",
+          "source": "audit-output"
+        }
+      }
+    },
+    "A2-PRODUCTION-GRADE": {
+      "slug": "production-grade",
+      "score100": 85,
+      "score100Raw": 100,
+      "weight": 0.2,
+      "status": "rubric-driven",
+      "metrics": {
+        "production-readiness": {
+          "score100": 100,
+          "weight": 1,
+          "confidence": "A",
+          "source": "audit-output"
+        }
+      }
+    },
+    "A3-AGENTIC-INNOVATION": {
+      "slug": "agentic-innovation",
+      "score100": 100,
+      "score100Raw": 100,
+      "weight": 0.15,
+      "status": "rubric-driven",
+      "metrics": {
+        "ai-maturity": {
+          "score100": 100,
+          "weight": 1,
+          "confidence": "A",
+          "source": "audit-output"
+        },
+        "hallucination-resilience": {
+          "score100": 100,
+          "weight": 1,
+          "confidence": "A",
+          "source": "audit-output"
+        }
+      }
+    },
+    "A4-COMPLIANCE-SECURITY": {
+      "slug": "compliance-security",
+      "score100": 75,
+      "score100Raw": 100,
+      "weight": 0.2,
+      "status": "rubric-driven",
+      "metrics": {
+        "security": {
+          "score100": 100,
+          "weight": 1,
+          "confidence": "A",
+          "source": "audit-output"
+        },
+        "enterprise-readiness": {
+          "score100": 100,
+          "weight": 1,
+          "confidence": "A",
+          "source": "audit-output"
+        },
+        "bank-grade-auditability": {
+          "score100": 100,
+          "weight": 1,
+          "confidence": "A",
+          "source": "audit-output"
+        }
+      }
+    },
+    "A5-REPO-HYGIENE": {
+      "slug": "repo-hygiene",
+      "score100": 40,
+      "score100Raw": 40,
+      "weight": 0.2,
+      "status": "probe-gates-only",
+      "metrics": {
+        "documentation": {
+          "score100": 0,
+          "weight": 1,
+          "confidence": "D",
+          "source": "missing"
+        },
+        "repo-folder-hygiene": {
+          "score100": 0,
+          "weight": 1,
+          "confidence": "D",
+          "source": "missing"
+        },
+        "spec-drift": {
+          "score100": 0,
+          "weight": 1,
+          "confidence": "D",
+          "source": "missing"
+        }
+      }
+    }
+  },
+  "weights": {
+    "A1-PRODUCT-EXCELLENCE": 0.25,
+    "A2-PRODUCTION-GRADE": 0.2,
+    "A3-AGENTIC-INNOVATION": 0.15,
+    "A4-COMPLIANCE-SECURITY": 0.2,
+    "A5-REPO-HYGIENE": 0.2
+  },
+  "replaces": ["master-audit", "comprehensive-audit", "bank-grade-audit"],
+  "initiative": "INIT-AUDIT-CONSOLIDATION",
+  "source": "run-five-core-audit",
+  "status": "rubric-driven",
+  "rubricSource": "audit-output",
+  "rubricSourcePath": "audit/audit-output-2026-06-30.json"
+}

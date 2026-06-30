@@ -94,3 +94,24 @@ Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot
   - `fabric-os` `572e1fc9` — `fix(ci): pin aaas-loop node floor to 20.18.0`
   - `canon-os` `5425a19d` — `chore(spec): add product-roadmap-lane-isolation protocol spec to pm/spec`
 - **Pushed:** no (commits local)
+
+
+## Session: baseline start — 2026-06-30 07:05 UTC (this turn)
+
+- **Command:** `baseline start`
+- **Agent:** Kimi Code CLI
+- **Repo:** fabric-os
+- **Persona:** platform-architect (development)
+- **Frame:** development
+
+### What Was Done
+- Re-ran Agent Startup Protocol (Phase 1–5).
+- `git status`: 21 modified paths + 10 untracked evidence files from prior session.
+- Ran `pnpm agent:next-work` → `backlogClear: true`; phase `internal_closure_complete`; parallel assurance gates only (pen-test window 2026-06-17..2026-06-21; SOC2 opinion letter).
+- Ran `node platform/tools/scripts/validate-all.mjs` to refresh evidence gates.
+- `validate-all`: **56/56 gates pass**.
+
+### Next Steps
+- Micro-commit refreshed evidence witnesses (Class R).
+- Address remaining uncommitted script/docs/backlog changes under separate review if they persist.
+- Continue backlog-clear protocol: periodic witness refresh; no open engineering stories.

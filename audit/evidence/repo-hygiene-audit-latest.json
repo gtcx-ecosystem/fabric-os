@@ -1,0 +1,99 @@
+{
+  "schema": "gtcx://audit/core-witness/v2",
+  "coreId": "A5-REPO-HYGIENE",
+  "slug": "repo-hygiene",
+  "repo": "fabric-os",
+  "date": "2026-06-30",
+  "score10": 4,
+  "score100": 40,
+  "score100Raw": 40,
+  "status": "probe-gates-only",
+  "source": "run-five-core-audit",
+  "metrics": {
+    "documentation": {
+      "score100": 0,
+      "weight": 1,
+      "confidence": "D",
+      "source": "missing"
+    },
+    "repo-folder-hygiene": {
+      "score100": 0,
+      "weight": 1,
+      "confidence": "D",
+      "source": "missing"
+    },
+    "spec-drift": {
+      "score100": 0,
+      "weight": 1,
+      "confidence": "D",
+      "source": "missing"
+    }
+  },
+  "gates": [
+    {
+      "id": "p35-strict-pass",
+      "label": "P35 layout strict",
+      "pass": false,
+      "severity": "P1",
+      "cap100": 70
+    },
+    {
+      "id": "docs-sor-present",
+      "label": "Docs SoR manifest",
+      "pass": true,
+      "severity": "P1",
+      "cap100": 75
+    },
+    {
+      "id": "pm-folder-requirements",
+      "label": "pm/manifest.json present",
+      "pass": false,
+      "severity": "P2",
+      "cap100": 85
+    }
+  ],
+  "capsFired": [
+    {
+      "id": "gate-p35-strict-pass",
+      "label": "Gate failed: P35 layout strict",
+      "ceiling100": 70,
+      "trigger": "p35-strict-pass"
+    },
+    {
+      "id": "gate-pm-folder-requirements",
+      "label": "Gate failed: pm/manifest.json present",
+      "ceiling100": 85,
+      "trigger": "pm-folder-requirements"
+    }
+  ],
+  "openP0": 0,
+  "openP1": 0,
+  "rubricSource": "audit-output",
+  "rubricSourcePath": "audit/audit-output-2026-06-30.json",
+  "checks": {
+    "p35Strict": {
+      "ok": false,
+      "code": 1,
+      "out": "{\n  \"ok\": false,\n  \"protocol\": \"35-ecosystem-workspace-world-class/v5.0.0\",\n  \"engine\": \"layout-spec-enforce/v1\",\n  \"contractVersion\": \"5.1.0\",\n  \"contractPath\": \"/Users/amanianai/Sites/gtcx-ecosystem/bridge-os/config/ecosystem-layout-contract.json\",\n  \"mode\": \"strict\",\n  \"repo\": \"fabric-os\",\n  \"repoRoot\": \"/Users/amanianai/Sites/gtcx-ecosystem/fabric-os\",\n  \"repoKind\": \"product\",\n  \"layoutVersion\": \"v5\",\n  \"resolvedHubs\": {\n    \"agentic\": {\n      \"path\": null,\n      \"kind\": \"missing\"\n    },\n    \"agents\": {\n      \"path\": \"agents\",\n      \"kind\": \"v5\"\n    },\n    \"archive\": {\n      \"path\": \"archi"
+    },
+    "docsSor": {
+      "ok": true,
+      "detail": "docs SoR manifest"
+    },
+    "pmManifest": {
+      "ok": false,
+      "detail": "pm/manifest.json"
+    },
+    "fiveCoreIndex": {
+      "ok": true,
+      "detail": "audit/FIVE-CORE-AUDITS.md"
+    },
+    "pmFolder": {
+      "ok": false,
+      "code": 1,
+      "out": "> fabric-os@0.1.0 pm:folder:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node ../bridge-os/platform/scripts/workspace/pm-folder-check.mjs\n\n ELIFECYCLE  Command failed with exit code 1.\npm:folder:check FAIL — spec missing: /Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/pm-folder-requirements.json"
+    }
+  },
+  "gaps": ["p35Strict", "pmManifest", "pmFolder"],
+  "runbook": "audit/runbooks/A5-repo-hygiene.md"
+}

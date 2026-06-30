@@ -111,10 +111,18 @@ Operator clarified: `griot.ai` is not a GTCX production URL; the canonical griot
 - Ran `node platform/tools/scripts/validate-all.mjs` to refresh evidence gates.
 - `validate-all`: **56/56 gates pass**.
 
-### Next Steps
-- Micro-commit refreshed evidence witnesses (Class R).
-- Address remaining uncommitted script/docs/backlog changes under separate review if they persist.
-- Ran verification ladder: `pnpm lint` pass (warnings only), `pnpm typecheck` pass, `pnpm format:check` fail — 18 pre-existing files need Prettier formatting.
-- Committed evidence refresh, script/backlog alignment, and route53 collision fix as micro-commits.
+### What Was Done (continued)
+- Micro-committed refreshed evidence witnesses (Class R).
+- Committed script/backlog alignment and route53 collision fix as micro-commits.
 - Persona switched to product-strategist (product lead) per operator instruction.
+- Restored `docs/operations/README.md` ownership to `fabric-os` (was incorrectly drifted to `markets-os`).
+- Formatted and committed `machine/spec/docs-operations-pack.json`.
+- Added `pm/` product artifacts (product goals, PRD index, product charter scaffold).
+- Deleted generated `deploy/terraform/environments/staging/tfplan`.
+- Ran `pnpm format` and committed 14 pre-existing formatting-debt files.
+- Ran verification ladder: `pnpm lint` pass (warnings only), `pnpm typecheck` pass, `pnpm format:check` pass.
+
+### Next Steps
+- Working tree is now clean; continue backlog-clear protocol.
+- No open engineering stories; parallel assurance gates remain calendar-blocked.
 - Continue backlog-clear protocol: periodic witness refresh; no open engineering stories.

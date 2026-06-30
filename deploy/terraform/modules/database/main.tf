@@ -104,6 +104,7 @@ resource "aws_security_group" "database" {
   name        = "gtcx-${var.environment}-db-sg"
   description = "Security group for GTCX databases"
   vpc_id      = var.vpc_id
+  egress      = []
 
   # PostgreSQL from allowed security groups only
   ingress {
@@ -112,15 +113,6 @@ resource "aws_security_group" "database" {
     to_port         = 5432
     protocol        = "tcp"
     security_groups = var.allowed_security_groups
-  }
-
-  # No egress (database doesn't initiate connections)
-  egress {
-    description = "No outbound"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = []
   }
 
   tags = merge(local.common_tags, {
@@ -138,8 +130,9 @@ resource "aws_db_parameter_group" "main" {
 
   # SSL enforcement (per SECURE principle)
   parameter {
-    name  = "rds.force_ssl"
-    value = "1"
+    name         = "rds.force_ssl"
+    value        = "1"
+    apply_method = "pending-reboot"
   }
 
   # Logging parameters (per AUDITABLE principle)

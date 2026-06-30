@@ -514,7 +514,7 @@ resource "aws_security_group_rule" "nodes_to_database" {
   protocol                 = "tcp"
   source_security_group_id = aws_security_group.nodes.id
   security_group_id        = var.database_security_group_id
-  description              = "Allow EKS nodes to access RDS"
+  description              = "PostgreSQL from application"
 }
 
 # -----------------------------------------------------------------------------

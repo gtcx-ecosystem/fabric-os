@@ -7,6 +7,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BUILD_DIR="$(mktemp -d)"
 OUTPUT="${SCRIPT_DIR}/rotation.zip"
+ZIP_MTIME="${ZIP_MTIME:-198001010000}"
 
 echo "Building rotation Lambda package..."
 
@@ -28,7 +29,14 @@ cp "${SCRIPT_DIR}/src/index.py" "${BUILD_DIR}/index.py"
 
 # Package
 cd "${BUILD_DIR}"
-zip -r9 "${OUTPUT}" . -x '*.pyc' '__pycache__/*' '*.dist-info/*' > /dev/null
+rm -f "${OUTPUT}"
+find . -exec touch -h -t "${ZIP_MTIME}" {} +
+find . -type f \
+  ! -name '*.pyc' \
+  ! -path '*/__pycache__/*' \
+  ! -path '*.dist-info/*' \
+  | LC_ALL=C sort \
+  | zip -X -q -9 "${OUTPUT}" -@
 
 # Cleanup
 rm -rf "${BUILD_DIR}"

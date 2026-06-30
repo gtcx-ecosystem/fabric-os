@@ -50,7 +50,7 @@ run "oidc_provider_created_for_irsa" {
   command = plan
 
   assert {
-    condition     = aws_iam_openid_connect_provider.eks.url != ""
-    error_message = "OIDC provider must be created for IRSA"
+    condition     = contains(aws_iam_openid_connect_provider.eks.client_id_list, "sts.amazonaws.com")
+    error_message = "OIDC provider must be configured for IRSA"
   }
 }

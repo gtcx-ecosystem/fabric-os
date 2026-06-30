@@ -7,6 +7,10 @@ owner: fabric-os
 ticket: XR-FLEET-MATURITY-LANES-001
 policy: GS-MATURITY-LANE-001
 date: 2026-06-24
+document_type: prd
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # INIT-XR-FLEET-MATURITY-LANES

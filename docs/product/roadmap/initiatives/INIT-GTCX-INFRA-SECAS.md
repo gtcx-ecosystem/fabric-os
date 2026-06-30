@@ -6,6 +6,10 @@ status: done
 priority: P0
 owner: fabric-os
 date: 2026-06-24
+document_type: prd
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # INIT-GTCX-INFRA-SECAS — Security-as-a-Service

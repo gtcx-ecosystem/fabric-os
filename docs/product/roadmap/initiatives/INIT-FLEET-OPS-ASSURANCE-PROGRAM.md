@@ -7,6 +7,10 @@ priority: P0
 owner: fabric-os
 programmeId: PROG-FLEET-OPS-ASSURANCE
 date: 2026-06-24
+document_type: prd
+tier: product
+tags: [fabric-os, roadmap]
+review_cycle: on-change
 ---
 
 # INIT-FLEET-OPS-ASSURANCE-PROGRAM

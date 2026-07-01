@@ -72,9 +72,10 @@ run "permits_scoped_ebs_csi_addon_repair" {
       for statement in local.deploy_policy_statements :
       statement.Sid == "EksAddonCreate" &&
       contains(statement.Action, "eks:CreateAddon") &&
-      statement.Resource == "arn:aws:eks:af-south-1:123456789012:addon/gtcx-test-eks/*/*"
+      length(statement.Action) == 1 &&
+      statement.Resource == "*"
     ])
-    error_message = "Deploy executor must create add-ons only on the target EKS add-on ARN."
+    error_message = "EKS CreateAddon is wildcard-resource evaluated; deploy executor must not combine it with broader EKS mutations."
   }
 
   assert {

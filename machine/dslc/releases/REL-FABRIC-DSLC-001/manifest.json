@@ -1,0 +1,82 @@
+{
+  "schema": "gtcx://fabric-os/dslc-release-manifest/v1",
+  "releaseId": "REL-FABRIC-DSLC-001",
+  "repo": "fabric-os",
+  "releaseClass": "internal",
+  "title": "DSLC protocol v1 owner-ring release",
+  "owner": "fabric-os platform architecture",
+  "qasc": {
+    "score100": 93,
+    "signalLevel": "L5",
+    "evidence": "pnpm qasc:repo -- --repo fabric-os --json (2026-07-01)"
+  },
+  "lanes": {
+    "deployment": {
+      "owner": "fabric-os",
+      "controls": [
+        {
+          "id": "release-scope-version",
+          "status": "satisfied",
+          "evidence": [
+            "machine/spec/dslc-contract.json",
+            "docs/product/roadmap/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT.md"
+          ]
+        },
+        {
+          "id": "ci-build-provenance",
+          "status": "satisfied",
+          "evidence": ["package.json#dslc:test", "platform/scripts/tests/dslc-release.test.mjs"]
+        },
+        {
+          "id": "qa-qasc-acceptance",
+          "status": "blocked",
+          "evidence": ["audit/evidence/qasc-repo-latest.json"],
+          "rationale": "Current QASC score is 93/100; benchmark is 100/100."
+        },
+        {
+          "id": "environment-config-migrations",
+          "status": "not-applicable",
+          "evidence": ["docs/product/roadmap/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT.md"],
+          "rationale": "The owner-ring slice adds protocol documents and local validation tooling only; it changes no runtime environment, secret binding, database, or migration.",
+          "approver": "platform-architect"
+        },
+        {
+          "id": "release-notes-operator-runbook",
+          "status": "satisfied",
+          "evidence": ["docs/operations/runbooks/dslc-protocol.md"]
+        },
+        {
+          "id": "deployment-rollout-rollback",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Owner-ring adoption and rollback references are delivery slice DSLC-005."
+        },
+        {
+          "id": "observability-alerting-slo",
+          "status": "not-applicable",
+          "evidence": ["docs/product/roadmap/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT.md"],
+          "rationale": "This protocol-only slice introduces no running service or production SLO.",
+          "approver": "platform-architect"
+        },
+        {
+          "id": "post-deploy-verification",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "The owner-ring release has not been adopted or committed."
+        }
+      ]
+    },
+    "sales": {
+      "owner": "commercial-ops",
+      "controls": []
+    },
+    "legal": {
+      "owner": "legal-ops",
+      "controls": []
+    },
+    "communications": {
+      "owner": "communications",
+      "controls": []
+    }
+  }
+}

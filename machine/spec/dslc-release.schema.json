@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gtcx://fabric-os/dslc-release-manifest/v1",
+  "title": "GTCX DSLC release manifest",
+  "type": "object",
+  "required": ["schema", "releaseId", "repo", "releaseClass", "title", "owner", "qasc", "lanes"],
+  "properties": {
+    "schema": {
+      "const": "gtcx://fabric-os/dslc-release-manifest/v1"
+    },
+    "releaseId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,79}$"
+    },
+    "repo": {
+      "type": "string",
+      "minLength": 2
+    },
+    "releaseClass": {
+      "enum": [
+        "internal",
+        "public",
+        "pilot",
+        "customer-contract",
+        "partnership",
+        "regulated-data",
+        "ip-bearing"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 2
+    },
+    "qasc": {
+      "type": "object",
+      "required": ["score100", "signalLevel", "evidence"],
+      "properties": {
+        "score100": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "signalLevel": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "lanes": {
+      "type": "object",
+      "required": ["deployment", "sales", "legal", "communications"],
+      "additionalProperties": false,
+      "properties": {
+        "deployment": {
+          "$ref": "#/$defs/lane"
+        },
+        "sales": {
+          "$ref": "#/$defs/lane"
+        },
+        "legal": {
+          "$ref": "#/$defs/lane"
+        },
+        "communications": {
+          "$ref": "#/$defs/lane"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "lane": {
+      "type": "object",
+      "required": ["owner", "controls"],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "minLength": 2
+        },
+        "controls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "status", "evidence"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "status": {
+                "enum": ["pending", "satisfied", "blocked", "not-applicable"]
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "approver": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

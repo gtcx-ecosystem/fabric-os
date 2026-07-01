@@ -1,0 +1,244 @@
+{
+  "$schema": "gtcx://fabric-os/dslc-contract/v1",
+  "version": "1.0.0",
+  "updated": "2026-07-01",
+  "ownerRepo": "fabric-os",
+  "title": "GTCX Deployment, Sales, Legal, and Communications Protocol",
+  "protocolId": "GTCX-DSLC-001",
+  "status": "current",
+  "purpose": "Provide one evidence-backed release-to-revenue operating lifecycle for deploying, selling, legally enabling, communicating, measuring, and closing GTCX release units.",
+  "qascRelationship": {
+    "protocolId": "GTCX-QASC-001",
+    "rule": "QASC independently establishes implementation assurance. DSLC consumes the current QASC result as the deployment quality gate and does not duplicate QASC scoring.",
+    "minimumScore100": 100,
+    "minimumSignalLevel": "L5"
+  },
+  "authority": {
+    "governance": "canon-os",
+    "workflowAndCeremonies": "agile-os",
+    "assuranceDeploymentAndProtocolRuntime": "fabric-os",
+    "runtimeAndCrossRepoMetadata": "bridge-os",
+    "commercialOwner": "release owner",
+    "legalDeterminationsAndSignatures": "sovereign human",
+    "publicStatements": "authorized communications owner",
+    "implementation": "repo owner"
+  },
+  "releaseClasses": {
+    "internal": {
+      "requiredLanes": ["deployment"]
+    },
+    "public": {
+      "requiredLanes": ["deployment", "communications"]
+    },
+    "pilot": {
+      "requiredLanes": ["deployment", "sales", "legal", "communications"]
+    },
+    "customer-contract": {
+      "requiredLanes": ["deployment", "sales", "legal"]
+    },
+    "partnership": {
+      "requiredLanes": ["sales", "legal", "communications"]
+    },
+    "regulated-data": {
+      "requiredLanes": ["deployment", "legal", "communications"]
+    },
+    "ip-bearing": {
+      "requiredLanes": ["deployment", "legal", "communications"]
+    }
+  },
+  "lifecycleStages": [
+    "intakeAndClassification",
+    "planAndAuthorize",
+    "developAndPrepare",
+    "verifyReleaseCandidate",
+    "commercialLegalCommunicationsReadiness",
+    "releaseDecision",
+    "launchAndActivate",
+    "operateMeasureAndReconcile",
+    "renewIterateOrRetire"
+  ],
+  "lanes": {
+    "deployment": {
+      "owner": "repo owner and fabric-os",
+      "controls": [
+        {
+          "id": "release-scope-version",
+          "requiredFor": ["all"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "ci-build-provenance",
+          "requiredFor": ["all"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "qa-qasc-acceptance",
+          "requiredFor": ["all"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "environment-config-migrations",
+          "requiredFor": ["all"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "release-notes-operator-runbook",
+          "requiredFor": ["all"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "deployment-rollout-rollback",
+          "requiredFor": ["all"],
+          "authorityClass": "A"
+        },
+        {
+          "id": "observability-alerting-slo",
+          "requiredFor": ["all"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "post-deploy-verification",
+          "requiredFor": ["all"],
+          "authorityClass": "R"
+        }
+      ]
+    },
+    "sales": {
+      "owner": "commercial owner",
+      "controls": [
+        {
+          "id": "offer-sku-pricing-approval",
+          "requiredFor": ["pilot", "customer-contract", "partnership"],
+          "authorityClass": "A"
+        },
+        {
+          "id": "crm-account-opportunity-owner",
+          "requiredFor": ["pilot", "customer-contract", "partnership"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "quote-order-payment-billing",
+          "requiredFor": ["customer-contract"],
+          "authorityClass": "A"
+        },
+        {
+          "id": "customer-onboarding-success-support",
+          "requiredFor": ["pilot", "customer-contract"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "revenue-finops-recognition-reconciliation",
+          "requiredFor": ["customer-contract"],
+          "authorityClass": "A"
+        },
+        {
+          "id": "renewal-expansion-churn-plan",
+          "requiredFor": ["pilot", "customer-contract"],
+          "authorityClass": "R"
+        }
+      ]
+    },
+    "legal": {
+      "owner": "legal owner and sovereign human",
+      "controls": [
+        {
+          "id": "legal-applicability-matrix",
+          "requiredFor": [
+            "pilot",
+            "customer-contract",
+            "partnership",
+            "regulated-data",
+            "ip-bearing"
+          ],
+          "authorityClass": "R"
+        },
+        {
+          "id": "nda-mou-pilot-partnership-agreement",
+          "requiredFor": ["pilot", "partnership"],
+          "authorityClass": "S"
+        },
+        {
+          "id": "terms-privacy-dpa-data-sharing",
+          "requiredFor": ["customer-contract", "regulated-data"],
+          "authorityClass": "S"
+        },
+        {
+          "id": "ip-provenance-protection-filing",
+          "requiredFor": ["ip-bearing"],
+          "authorityClass": "S"
+        },
+        {
+          "id": "code-of-conduct-policy-incorporation",
+          "requiredFor": ["pilot", "customer-contract", "partnership"],
+          "authorityClass": "A"
+        },
+        {
+          "id": "signatory-authority-execution",
+          "requiredFor": ["pilot", "customer-contract", "partnership"],
+          "authorityClass": "S"
+        }
+      ]
+    },
+    "communications": {
+      "owner": "authorized communications owner",
+      "controls": [
+        {
+          "id": "audience-message-claims-register",
+          "requiredFor": ["public", "pilot", "partnership", "regulated-data", "ip-bearing"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "sales-email-script-battlecard",
+          "requiredFor": ["pilot", "partnership"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "one-pager-tearsheet-business-overview",
+          "requiredFor": ["public", "pilot", "partnership"],
+          "authorityClass": "R"
+        },
+        {
+          "id": "press-release-public-disclosure",
+          "requiredFor": ["public"],
+          "authorityClass": "A"
+        },
+        {
+          "id": "legal-privacy-ip-claims-review",
+          "requiredFor": ["public", "pilot", "partnership", "regulated-data", "ip-bearing"],
+          "authorityClass": "A"
+        },
+        {
+          "id": "distribution-owner-channel-calendar",
+          "requiredFor": ["public", "pilot", "partnership"],
+          "authorityClass": "R"
+        }
+      ]
+    }
+  },
+  "decisionPolicy": {
+    "controlStatuses": ["pending", "satisfied", "blocked", "not-applicable"],
+    "readyRule": "QASC is at benchmark and every applicable control in every lane required by the release class is satisfied.",
+    "notApplicableRule": "A required control may be marked not-applicable only with a rationale, named approver, and evidence of the approved applicability determination. A bare not-applicable status remains below benchmark.",
+    "releaseBoundary": "Sales, legal, and communications controls block only the activation they govern. They do not block an internal engineering deployment unless the release class requires that lane or a versioned release manifest explicitly binds the control.",
+    "claimBoundary": "DSLC records legal, financial, and public-communications decisions; an agent cannot make a legal determination, execute a signature, recognize revenue, approve pricing, or authorize a public claim.",
+    "segregationOfDuties": "The same actor must not both originate and sovereignly approve a legal instrument, pricing exception, revenue-recognition decision, or public disclosure."
+  },
+  "commands": {
+    "contractEnforcement": "pnpm dslc:contract:check",
+    "releaseEvaluation": "pnpm dslc:release -- --manifest <path>",
+    "releaseEvidence": "pnpm dslc:release:write -- --manifest <path>",
+    "tests": "pnpm dslc:test"
+  },
+  "evidence": {
+    "releaseManifest": "machine/dslc/releases/<release-id>/manifest.json",
+    "releaseWitness": "audit/evidence/dslc-release-<release-id>-latest.json",
+    "releaseReport": "audit/reports/dslc-release-<release-id>-YYYY-MM-DD.md",
+    "contractWitness": "audit/evidence/dslc-contract-check-latest.json"
+  },
+  "rollout": {
+    "ownerRing": ["fabric-os", "canon-os", "agile-os", "bridge-os"],
+    "commercialPilotRing": ["markets-os", "ledger-os", "ledger-ui", "terminal-os"],
+    "regulatedOperationsRing": ["compliance-os", "terra-os", "inspection-os", "exploration-os"],
+    "fleetExpansionRule": "Add a repository only after one real release manifest is evaluated, ownership gaps are recorded, and the repository can consume the canonical command surface without copying the protocol."
+  }
+}

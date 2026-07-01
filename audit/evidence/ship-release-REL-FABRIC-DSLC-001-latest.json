@@ -1,0 +1,169 @@
+{
+  "schema": "gtcx://fabric-os/ship-release-decision/v1",
+  "generatedAt": "2026-07-01T11:45:20.680Z",
+  "date": "2026-07-01",
+  "protocolId": "GTCX-SHIP-001",
+  "contractVersion": "1.0.0",
+  "manifest": "machine/ship/releases/REL-FABRIC-DSLC-001/manifest.json",
+  "releaseId": "REL-FABRIC-DSLC-001",
+  "repo": "fabric-os",
+  "releaseClass": "internal",
+  "title": "DSLC protocol v1 owner-ring SHIP closeout",
+  "owner": "fabric-os platform architecture",
+  "requiredPillars": ["sealed", "hardened", "provisioned"],
+  "dslc": {
+    "releaseId": "REL-FABRIC-DSLC-001",
+    "decision": "ready",
+    "score100": 100,
+    "evidence": "audit/evidence/dslc-release-REL-FABRIC-DSLC-001-latest.json",
+    "atBenchmark": true
+  },
+  "pillars": {
+    "sealed": {
+      "name": "sealed",
+      "owner": "release-management",
+      "required": true,
+      "score100": 100,
+      "controlsAtBenchmark": 4,
+      "controlCount": 4,
+      "controls": [
+        {
+          "id": "protocol-proof-pack",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "audit/evidence/qasc-repo-latest.json",
+            "audit/evidence/dslc-release-REL-FABRIC-DSLC-001-latest.json",
+            "audit/reports/dslc-decision-REL-FABRIC-DSLC-001-2026-07-01.md"
+          ],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "dslc-decision-ready",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["audit/evidence/dslc-release-REL-FABRIC-DSLC-001-latest.json"],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "evidence-chain-current",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "audit/evidence/ship-contract-check-latest.json",
+            "git:feat/ai-cost-check@3d9b663e"
+          ],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "release-manager-attestation",
+          "authorityClass": "A",
+          "status": "satisfied",
+          "evidence": ["docs/operations/runbooks/ship-protocol.md"],
+          "rationale": "Protocol-only owner-ring closeout. Release manager attestation is bounded to repo-local SHIP protocol scaffolding and rollback by revert.",
+          "approver": null,
+          "atBenchmark": true
+        }
+      ]
+    },
+    "hardened": {
+      "name": "hardened",
+      "owner": "security-legal-ops",
+      "required": true,
+      "score100": 100,
+      "controlsAtBenchmark": 3,
+      "controlCount": 3,
+      "controls": [
+        {
+          "id": "security-critical-controls",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "audit/evidence/qasc-repo-latest.json",
+            "audit/evidence/compliance-security-audit-latest.json",
+            "node platform/tools/scripts/validate-all.mjs (56/56)"
+          ],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "ops-critical-controls",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "pnpm operations:check",
+            "pnpm dslc:release -- --manifest machine/dslc/releases/REL-FABRIC-DSLC-001/manifest.json"
+          ],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "exceptions-risk-acceptance-register",
+          "authorityClass": "A",
+          "status": "satisfied",
+          "evidence": [
+            "audit/evidence/aaas-honesty-gate-latest.json",
+            "audit/evidence/aaas-friction-check-latest.json"
+          ],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        }
+      ]
+    },
+    "institutionalized": {
+      "name": "institutionalized",
+      "owner": "product-docs-architecture",
+      "required": false,
+      "score100": 100,
+      "controlsAtBenchmark": 0,
+      "controlCount": 0,
+      "controls": []
+    },
+    "provisioned": {
+      "name": "provisioned",
+      "owner": "release-management-docs",
+      "required": true,
+      "score100": 100,
+      "controlsAtBenchmark": 2,
+      "controlCount": 2,
+      "controls": [
+        {
+          "id": "spec-versioning",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["machine/spec/ship-contract.json", "machine/spec/ship-release.schema.json"],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "surface-feature-versioning",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "package.json#ship:*",
+            "platform/scripts/ship-contract-check.mjs",
+            "platform/scripts/ship-release.mjs"
+          ],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        }
+      ]
+    }
+  },
+  "score100": 100,
+  "benchmarkScore100": 100,
+  "decision": "ready",
+  "atBenchmark": true,
+  "blockers": []
+}

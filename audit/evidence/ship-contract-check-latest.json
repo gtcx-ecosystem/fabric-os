@@ -1,0 +1,115 @@
+{
+  "schema": "gtcx://fabric-os/ship-contract-check/v1",
+  "generatedAt": "2026-07-01T11:45:20.605Z",
+  "protocolId": "GTCX-SHIP-001",
+  "score100": 100,
+  "benchmarkScore100": 100,
+  "controlsAtBenchmark": 10,
+  "controlCount": 10,
+  "atBenchmark": true,
+  "controls": [
+    {
+      "id": "contract-schema",
+      "score100": 100,
+      "evidence": "gtcx://fabric-os/ship-contract/v1"
+    },
+    {
+      "id": "protocol-id",
+      "score100": 100,
+      "evidence": "GTCX-SHIP-001"
+    },
+    {
+      "id": "post-dslc-boundary",
+      "score100": 100,
+      "evidence": {
+        "dslcRelationship": {
+          "protocolId": "GTCX-DSLC-001",
+          "rule": "DSLC establishes release-to-revenue readiness. SHIP consumes the DSLC decision as its prerequisite and never downgrades DSLC blockers.",
+          "minimumDecision": "ready",
+          "minimumScore100": 100
+        },
+        "postDslcBoundary": "SHIP is the final release-management check after DSLC. It can block formal shipment even when DSLC passed, but it cannot override a DSLC blocker."
+      }
+    },
+    {
+      "id": "qasc-relationship",
+      "score100": 100,
+      "evidence": {
+        "protocolId": "GTCX-QASC-001",
+        "rule": "QASC proof is consumed through DSLC and may also be referenced directly in the sealed proof pack. SHIP does not rescore QASC.",
+        "minimumScore100": 100,
+        "minimumSignalLevel": "L5"
+      }
+    },
+    {
+      "id": "four-pillar-contract",
+      "score100": 100,
+      "evidence": {
+        "sealed": 4,
+        "hardened": 4,
+        "institutionalized": 4,
+        "provisioned": 4
+      }
+    },
+    {
+      "id": "release-class-routing",
+      "score100": 100,
+      "evidence": {
+        "internal": {
+          "requiredPillars": ["sealed", "hardened", "provisioned"]
+        },
+        "public": {
+          "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+        },
+        "pilot": {
+          "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+        },
+        "customer-contract": {
+          "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+        },
+        "partnership": {
+          "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+        },
+        "regulated-data": {
+          "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+        },
+        "ip-bearing": {
+          "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+        }
+      }
+    },
+    {
+      "id": "authority-and-claim-boundary",
+      "score100": 100,
+      "evidence": {
+        "controlStatuses": ["pending", "satisfied", "blocked", "not-applicable"],
+        "readyRule": "DSLC is ready at 100/100 and every applicable SHIP control in every required pillar is satisfied or has an approved not-applicable determination.",
+        "notApplicableRule": "A required control may be marked not-applicable only with rationale, named approver, and evidence of the applicability determination.",
+        "postDslcBoundary": "SHIP is the final release-management check after DSLC. It can block formal shipment even when DSLC passed, but it cannot override a DSLC blocker.",
+        "claimBoundary": "SHIP records legal, public-release, billing, and product-readiness approvals; an agent cannot synthesize a legal signature, revenue-recognition approval, public claim, or human release-manager attestation.",
+        "segregationOfDuties": "The same actor must not both originate and sovereignly approve a legal instrument, public disclosure, pricing exception, revenue-recognition decision, or final release-manager attestation."
+      }
+    },
+    {
+      "id": "manifest-schema",
+      "score100": 100,
+      "evidence": "machine/spec/ship-release.schema.json"
+    },
+    {
+      "id": "command-surface",
+      "score100": 100,
+      "evidence": {
+        "ship:contract:check": "node platform/scripts/ship-contract-check.mjs",
+        "ship:contract:check:write": "node platform/scripts/ship-contract-check.mjs --write",
+        "ship:release": "node platform/scripts/ship-release.mjs",
+        "ship:release:write": "node platform/scripts/ship-release.mjs --write",
+        "ship:test": "node --test platform/scripts/tests/ship-contract-check.test.mjs platform/scripts/tests/ship-release.test.mjs"
+      }
+    },
+    {
+      "id": "protocol-artifacts",
+      "score100": 100,
+      "evidence": "SHIP runbook, rollout PRD, contract, schema, evaluator, and release manifest"
+    }
+  ]
+}

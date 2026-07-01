@@ -19,7 +19,7 @@
   "classifications": {
     "local-complete": "Repo carries local QASC, DSLC, and SHIP scripts, specs, and current latest witnesses.",
     "fabric-provider": "Fabric-owned central provider surface for AaaS/QASC/DSLC/SHIP contracts and release commands.",
-    "delegated": "Repo intentionally delegates all required protocol gates to Fabric through pinned contract references and current delegated witnesses.",
+    "delegated": "Repo intentionally delegates all required protocol gates to Fabric through pinned contract references and semantically valid QASC complete 100/L5, DSLC ready 100/100, and SHIP ready 100/100 witnesses.",
     "exempt": "Repo is explicitly exempt by this versioned Fabric contract with reason, owner, review date, and impact.",
     "gap": "Repo has no valid local, delegated, provider, or exempt status."
   },
@@ -56,6 +56,8 @@
         "qasc:dslc:ship:fleet-parity",
         "qasc:dslc:ship:fleet-parity:write",
         "qasc:dslc:ship:fleet-parity:strict",
+        "qasc:dslc:ship:delegate",
+        "qasc:dslc:ship:delegate:write",
         "dslc:release",
         "dslc:contract:check",
         "ship:release",
@@ -88,6 +90,11 @@
     ]
   },
   "delegatedRequirements": {
+    "decisionRequirements": {
+      "qasc": "decision=complete, acceptance.score100=100, mpr.composite100=100, signal.level=L5, signal.score100=100",
+      "dslc": "decision=ready, score100=100, atBenchmark=true",
+      "ship": "decision=ready, score100=100, atBenchmark=true"
+    },
     "pinFiles": [
       "machine/spec/aaas-audit-contract.pin.json",
       "machine/spec/qasc-contract.pin.json",

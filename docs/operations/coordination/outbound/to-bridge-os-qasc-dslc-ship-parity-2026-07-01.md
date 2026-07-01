@@ -27,14 +27,15 @@ Fabric's canonical parity witness classifies `bridge-os` as `gap`.
 
 ## Delegated route gap
 
-- Delegation pins present: machine/spec/aaas-audit-contract.pin.json
+- Delegation pins present: machine/spec/aaas-audit-contract.pin.json, pm/spec/aaas-audit-contract.pin.json
 - Delegated protocols still missing script+witness: qasc, dslc, ship
 
 ## Required remediation
 
 - Local route: add repo-local `qasc:check`, `dslc:check`, and `ship:check` scripts with specs and latest witnesses.
-- Delegated route: add explicit Fabric delegation pins plus current delegated QASC/DSLC/SHIP witnesses.
+- Delegated route: first produce a semantically valid QASC `complete` 100/100 + SIGNAL L5 witness, then run `pnpm qasc:dslc:ship:delegate:write -- --repo bridge-os` from `fabric-os`.
+- Delegated witnesses count only when QASC is `complete` at 100/L5, DSLC is `ready` at 100/100, and SHIP is `ready` at 100/100.
 - Exempt route: request a Fabric contract exemption with reason, owner, review date, and impact.
 
 Canonical Fabric witness: `audit/evidence/qasc-dslc-ship-fleet-parity-latest.json`.
-Current strict parity: 2/21 repos at parity; 19 gaps.
+Current strict parity: 16/21 repos at parity; 5 gaps.

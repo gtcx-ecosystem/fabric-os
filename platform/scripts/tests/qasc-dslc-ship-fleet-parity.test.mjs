@@ -42,8 +42,22 @@ describe('QASC/DSLC/SHIP fleet parity', () => {
     assert.deepEqual(witness.results[0].local.missingLocalScripts, []);
   });
 
+  it('accepts delegated parity only with benchmark decisions', () => {
+    const result = run('--repos', 'baseline-os', '--json');
+    assert.equal(result.status, 0, result.stderr);
+    const witness = JSON.parse(result.stdout);
+
+    assert.equal(witness.strictPass, true);
+    assert.equal(witness.results[0].classification, 'delegated');
+    assert.deepEqual(witness.results[0].delegated.protocolsComplete, {
+      qasc: true,
+      dslc: true,
+      ship: true,
+    });
+  });
+
   it('exposes gaps without failing advisory scans', () => {
-    const advisory = run('--repos', 'agile-os', '--json');
+    const advisory = run('--repos', 'bridge-os', '--json');
     assert.equal(advisory.status, 0, advisory.stderr);
     const witness = JSON.parse(advisory.stdout);
 
@@ -53,7 +67,7 @@ describe('QASC/DSLC/SHIP fleet parity', () => {
     assert.equal(witness.results[0].classification, 'gap');
     assert.equal(witness.results[0].valid, false);
 
-    const strict = run('--repos', 'agile-os', '--json', '--strict');
+    const strict = run('--repos', 'bridge-os', '--json', '--strict');
     assert.equal(strict.status, 1);
   });
 

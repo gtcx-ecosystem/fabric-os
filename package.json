@@ -344,6 +344,8 @@
     "qasc:dslc:ship:fleet-parity": "node platform/scripts/qasc-dslc-ship-fleet-parity.mjs",
     "qasc:dslc:ship:fleet-parity:write": "node platform/scripts/qasc-dslc-ship-fleet-parity.mjs --write",
     "qasc:dslc:ship:fleet-parity:strict": "node platform/scripts/qasc-dslc-ship-fleet-parity.mjs --strict",
+    "qasc:dslc:ship:delegate": "node platform/scripts/qasc-dslc-ship-delegate.mjs",
+    "qasc:dslc:ship:delegate:write": "node platform/scripts/qasc-dslc-ship-delegate.mjs --write",
     "qasc:contract:check": "node platform/scripts/qasc-contract-check.mjs",
     "qasc:contract:check:write": "node platform/scripts/qasc-contract-check.mjs --write",
     "qasc:test": "node --test platform/scripts/tests/qasc-contract-check.test.mjs platform/scripts/tests/qasc-repo.test.mjs platform/scripts/tests/qasc-loop.test.mjs platform/scripts/tests/qasc-loop-run.test.mjs platform/scripts/tests/qasc-fleet.test.mjs platform/scripts/tests/qasc-dslc-ship-fleet-parity.test.mjs",

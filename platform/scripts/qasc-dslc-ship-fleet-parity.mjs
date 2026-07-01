@@ -87,6 +87,35 @@ function newestMatching(repoRoot, dirs, regex) {
   return matches.sort();
 }
 
+function validProtocolWitness(repoRoot, rel, protocol) {
+  const witness = maybeReadJson(join(repoRoot, rel));
+  if (!witness) return false;
+  if (protocol === 'qasc') {
+    return (
+      witness.schema === 'gtcx://fabric-os/qasc-repo-score/v1' &&
+      witness.decision === 'complete' &&
+      witness.acceptance?.score100 === 100 &&
+      witness.mpr?.composite100 === 100 &&
+      witness.signal?.level === 'L5' &&
+      witness.signal?.score100 === 100
+    );
+  }
+  if (protocol === 'dslc') {
+    return (
+      witness.schema === 'gtcx://fabric-os/dslc-release-decision/v1' &&
+      witness.decision === 'ready' &&
+      witness.score100 === 100 &&
+      witness.atBenchmark === true
+    );
+  }
+  return (
+    witness.schema === 'gtcx://fabric-os/ship-release-decision/v1' &&
+    witness.decision === 'ready' &&
+    witness.score100 === 100 &&
+    witness.atBenchmark === true
+  );
+}
+
 function selectedRepos(spec) {
   const selected = arg('--repos');
   if (!selected) return spec.activeRepos;
@@ -162,10 +191,19 @@ function delegatedResult(repo, repoRoot, spec) {
     ...existingFiles(repoRoot, req.witnessesAny?.ship ?? []),
     ...newestMatching(repoRoot, ['audit/evidence'], /^ship-.*-latest\.json$/),
   ];
+  const validQascWitnesses = [...new Set(qascWitnesses)]
+    .filter((rel) => validProtocolWitness(repoRoot, rel, 'qasc'))
+    .sort();
+  const validDslcWitnesses = [...new Set(dslcWitnesses)]
+    .filter((rel) => validProtocolWitness(repoRoot, rel, 'dslc'))
+    .sort();
+  const validShipWitnesses = [...new Set(shipWitnesses)]
+    .filter((rel) => validProtocolWitness(repoRoot, rel, 'ship'))
+    .sort();
 
-  const hasQasc = qascScripts.length > 0 && qascWitnesses.length > 0;
-  const hasDslc = dslcScripts.length > 0 && dslcWitnesses.length > 0;
-  const hasShip = shipScripts.length > 0 && shipWitnesses.length > 0;
+  const hasQasc = qascScripts.length > 0 && validQascWitnesses.length > 0;
+  const hasDslc = dslcScripts.length > 0 && validDslcWitnesses.length > 0;
+  const hasShip = shipScripts.length > 0 && validShipWitnesses.length > 0;
   const ok = pins.length > 0 && hasQasc && hasDslc && hasShip;
 
   return {
@@ -176,16 +214,19 @@ function delegatedResult(repo, repoRoot, spec) {
       qasc: {
         scripts: qascScripts,
         witnesses: [...new Set(qascWitnesses)].sort(),
+        validWitnesses: validQascWitnesses,
         complete: hasQasc,
       },
       dslc: {
         scripts: dslcScripts,
         witnesses: [...new Set(dslcWitnesses)].sort(),
+        validWitnesses: validDslcWitnesses,
         complete: hasDslc,
       },
       ship: {
         scripts: shipScripts,
         witnesses: [...new Set(shipWitnesses)].sort(),
+        validWitnesses: validShipWitnesses,
         complete: hasShip,
       },
     },
@@ -382,7 +423,8 @@ Fabric's canonical parity witness classifies \`${result.repo}\` as \`gap\`.
 ## Required remediation
 
 - Local route: add repo-local \`qasc:check\`, \`dslc:check\`, and \`ship:check\` scripts with specs and latest witnesses.
-- Delegated route: add explicit Fabric delegation pins plus current delegated QASC/DSLC/SHIP witnesses.
+- Delegated route: first produce a semantically valid QASC \`complete\` 100/100 + SIGNAL L5 witness, then run \`pnpm qasc:dslc:ship:delegate:write -- --repo ${result.repo}\` from \`fabric-os\`.
+- Delegated witnesses count only when QASC is \`complete\` at 100/L5, DSLC is \`ready\` at 100/100, and SHIP is \`ready\` at 100/100.
 - Exempt route: request a Fabric contract exemption with reason, owner, review date, and impact.
 
 Canonical Fabric witness: \`${OUT_REL}\`.

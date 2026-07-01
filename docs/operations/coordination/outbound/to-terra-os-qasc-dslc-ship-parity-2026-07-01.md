@@ -37,4 +37,4 @@ Fabric's canonical parity witness classifies `terra-os` as `gap`.
 - Exempt route: request a Fabric contract exemption with reason, owner, review date, and impact.
 
 Canonical Fabric witness: `audit/evidence/qasc-dslc-ship-fleet-parity-latest.json`.
-Current strict parity: 2/21 repos at parity; 19 gaps.
+Current strict parity: 14/21 repos at parity; 7 gaps.

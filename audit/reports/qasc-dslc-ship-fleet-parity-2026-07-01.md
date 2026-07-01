@@ -10,15 +10,15 @@ version: 1.0.0
 # QASC/DSLC/SHIP Fleet Parity
 
 Command health: **pass**.
-Strict pass: **no** (10/21 repos at parity).
+Strict pass: **no** (11/21 repos at parity).
 
 | Classification  | Count |
 | --------------- | ----: |
 | local-complete  |     1 |
 | fabric-provider |     1 |
-| delegated       |     8 |
+| delegated       |     9 |
 | exempt          |     0 |
-| gap             |    11 |
+| gap             |    10 |
 
 | Repo           | Classification  | Valid | Next remediation                                                                                                                                                                  |
 | -------------- | --------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,7 +28,7 @@ Strict pass: **no** (10/21 repos at parity).
 | canon-os       | gap             | no    | Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses. |
 | compliance-os  | delegated       | yes   | Maintain pinned Fabric delegation and current QASC/DSLC/SHIP delegated witnesses.                                                                                                 |
 | document-os    | delegated       | yes   | Maintain pinned Fabric delegation and current QASC/DSLC/SHIP delegated witnesses.                                                                                                 |
-| ecosystem-os   | gap             | no    | Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses. |
+| ecosystem-os   | delegated       | yes   | Maintain pinned Fabric delegation and current QASC/DSLC/SHIP delegated witnesses.                                                                                                 |
 | exploration-os | delegated       | yes   | Maintain pinned Fabric delegation and current QASC/DSLC/SHIP delegated witnesses.                                                                                                 |
 | fabric-os      | fabric-provider | yes   | Maintain Fabric-owned AaaS/QASC/DSLC/SHIP provider contracts and release commands.                                                                                                |
 | griot-ai       | gap             | no    | Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses. |

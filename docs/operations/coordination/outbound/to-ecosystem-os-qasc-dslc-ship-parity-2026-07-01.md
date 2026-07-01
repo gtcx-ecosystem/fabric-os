@@ -1,6 +1,6 @@
 ---
 title: 'Outbound — ecosystem-os QASC/DSLC/SHIP parity remediation'
-status: current
+status: resolved
 date: 2026-07-01
 from: fabric-os
 to: ecosystem-os
@@ -16,25 +16,26 @@ review_cycle: on-change
 
 # Outbound — ecosystem-os QASC/DSLC/SHIP parity remediation
 
-Fabric's canonical parity witness classifies `ecosystem-os` as `gap`.
+Fabric's canonical parity witness classifies `ecosystem-os` as `delegated`.
 
-## Missing local parity surface
+## Remediation completed
 
-- Scripts: qasc:check, dslc:check, ship:check
-- Specs: machine/spec/qasc-protocol.json, machine/spec/dslc-protocol.json, machine/spec/release-readiness-benchmark.json
-- Witnesses: machine/ci/qasc-protocol-latest.json, machine/ci/dslc-protocol-latest.json
-- SHIP witness any-of: missing
+- Added delegated QASC/DSLC/SHIP command surface in `ecosystem-os` package scripts.
+- Added Fabric delegation pin in the existing `pm/` plane.
+- Added DSLC and SHIP release manifests in the existing `pm/` plane.
+- Refreshed delegated QASC, DSLC, and SHIP witnesses.
 
-## Delegated route gap
+## Verification
 
-- Delegation pins present: none
-- Delegated protocols still missing script+witness: qasc, dslc, ship
+- `pnpm --dir ../ecosystem-os qasc:check` — pass, QASC 100/100.
+- `pnpm --dir ../ecosystem-os dslc:check` — pass, DSLC ready 100/100.
+- `pnpm --dir ../ecosystem-os ship:check` — pass, SHIP ready 100/100.
+- `pnpm --dir ../fabric-os qasc:dslc:ship:fleet-parity:strict -- --repos ecosystem-os` — pass, delegated.
 
-## Required remediation
+## ecosystem-os commits
 
-- Local route: add repo-local `qasc:check`, `dslc:check`, and `ship:check` scripts with specs and latest witnesses.
-- Delegated route: add explicit Fabric delegation pins plus current delegated QASC/DSLC/SHIP witnesses.
-- Exempt route: request a Fabric contract exemption with reason, owner, review date, and impact.
+- `3aca926` — `feat(protocols): expose qasc dslc ship delegation`
+- `98fbf33` — `chore(protocols): refresh ecosystem qasc witness`
 
 Canonical Fabric witness: `audit/evidence/qasc-dslc-ship-fleet-parity-latest.json`.
-Current strict parity: 2/21 repos at parity; 19 gaps.
+Current strict parity: 11/21 repos at parity; 10 gaps.

@@ -1,65 +1,13 @@
 {
-  "0": {
-    "id": "FEAT-FABRIC-OPS-ASSURANCE",
-    "title": "Fabric ops assurance",
-    "status": "in_progress",
-    "spec": {
-      "_generated": true,
-      "_synthesisVersion": "1.1.0",
-      "_source": "docs/product/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
-      "$schema": "gtcx://canon-os/product-canon-bundle-manifest/v1",
-      "bundleId": "FEAT-FABRIC-OPS-ASSURANCE",
-      "productId": "fabric-os",
-      "version": "0.1.0",
-      "status": "in_progress",
-      "updated": "2026-06-22",
-      "title": "Fabric ops assurance",
-      "owner": "fabric-os",
-      "authorityClass": "R",
-      "goalIds": [
-        "GOAL-FABRIC-OPS"
-      ],
-      "milestoneIds": [
-        "M1"
-      ],
-      "composition": [],
-      "slices": {
-        "charter": {
-          "path": "charter.json",
-          "version": "0.1.0",
-          "status": "in_progress",
-          "contentHash": "f0782a7c87e32add"
-        },
-        "requirements": {
-          "path": "requirements.json",
-          "version": "0.1.0",
-          "status": "in_progress",
-          "contentHash": "bb7a8276e1a33435"
-        },
-        "experience": {
-          "path": "experience.json",
-          "version": "0.1.0",
-          "status": "in_progress",
-          "contentHash": "fcacd4d8d8b4a118"
-        },
-        "dod": {
-          "path": "dod.json",
-          "version": "0.1.0",
-          "status": "in_progress",
-          "contentHash": "a42e678f94c22d87"
-        },
-        "uat": {
-          "path": "uat.json",
-          "version": "0.1.0",
-          "status": "in_progress",
-          "contentHash": "eb8e45d66d09c8af"
-        }
-      },
-      "narrativeRefs": {},
-      "initiativeRef": null
-    }
-  },
   "_generated": true,
   "_synthesisVersion": "1.1.0",
-  "_source": "docs/canon/bundles/"
+  "_source": "docs/canon/bundles/",
+  "entries": [
+    {
+      "id": "FEAT-FABRIC-OPS-ASSURANCE",
+      "title": "Fabric ops assurance",
+      "status": "in_progress",
+      "spec": "machine/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE/manifest.json"
+    }
+  ]
 }

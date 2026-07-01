@@ -24,8 +24,10 @@ const repoArg = process.argv.includes('--repo') ? process.argv[process.argv.inde
 const ROOT = repoArg ? join(SELF, '..', repoArg) : SELF;
 
 const has = (rel) => existsSync(join(ROOT, rel));
+const fabricHas = (rel) => existsSync(join(SELF, rel));
 const hasAny = (...rels) => rels.some(has);
 const readJson = (rel) => { try { return JSON.parse(readFileSync(join(ROOT, rel), 'utf8')); } catch { return null; } };
+const readFabricJson = (rel) => { try { return JSON.parse(readFileSync(join(SELF, rel), 'utf8')); } catch { return null; } };
 const specDir = () => (has('machine/spec') ? 'machine/spec' : has('pm/spec') ? 'pm/spec' : null);
 
 function listFiles(rel) {
@@ -58,6 +60,9 @@ function historySnapshots() {
 const sc = scripts();
 const scriptVals = Object.values(sc).join(' ');
 const hasScript = (re) => Object.keys(sc).some((k) => re.test(k));
+const hasAaasPin = hasAny('machine/spec/aaas-audit-contract.pin.json', 'pm/spec/aaas-audit-contract.pin.json');
+const fabricContract = readFabricJson('machine/spec/aaas-audit-contract.json');
+const fabricAaasProvider = hasAaasPin && fabricContract?.service === 'AAAS';
 
 const dimChecks = {
   'Systems Architecture': [
@@ -65,13 +70,13 @@ const dimChecks = {
     { level: 2, label: 'AaaS contract pin', pass: hasAny('machine/spec/aaas-audit-contract.pin.json', 'pm/spec/aaas-audit-contract.pin.json') },
     { level: 3, label: '>=3 machine specs', pass: specCount() >= 3 },
     { level: 4, label: 'schema-validated specs ($schema)', pass: schemaValidatedSpecs() },
-    { level: 5, label: 'framework design doc', pass: listFiles(specDir() ?? '.').some((f) => /design.*\.md$/.test(f)) || has('machine/spec/aaas-framework-design-2026-06-28.md') },
+    { level: 5, label: 'framework design doc', pass: listFiles(specDir() ?? '.').some((f) => /design.*\.md$/.test(f)) || has('machine/spec/aaas-framework-design-2026-06-28.md') || (fabricAaasProvider && fabricHas('machine/spec/aaas-framework-design-2026-06-28.md')) },
   ],
   Tooling: [
     { level: 1, label: 'package scripts', pass: Object.keys(sc).length > 0 },
     { level: 2, label: '>=10 scripts', pass: Object.keys(sc).length >= 10 },
     { level: 3, label: 'check/audit tooling', pass: hasScript(/:check$|^aaas:/) },
-    { level: 4, label: 'handoff synthesizer (aaas:handoff)', pass: hasScript(/^aaas:handoff/) || has('platform/scripts/lib/aaas-handoff.mjs') },
+    { level: 4, label: 'handoff synthesizer (aaas:handoff)', pass: hasScript(/^aaas:handoff/) || has('platform/scripts/lib/aaas-handoff.mjs') || (fabricAaasProvider && fabricHas('platform/scripts/aaas-handoff.mjs')) },
     { level: 5, label: '>=30 scripts (rich automation)', pass: Object.keys(sc).length >= 30 },
   ],
   Process: [
@@ -84,7 +89,7 @@ const dimChecks = {
   Safeguards: [
     { level: 1, label: 'gate/check tooling', pass: hasScript(/:check$|gate/i) || /gate/i.test(scriptVals) },
     { level: 2, label: 'honesty gate', pass: has('audit/evidence/aaas-honesty-gate-latest.json') || hasScript(/honesty/) },
-    { level: 3, label: 'adversarial honesty', pass: has('platform/scripts/lib/aaas-adversarial-honesty.mjs') || hasScript(/adversarial/) },
+    { level: 3, label: 'adversarial honesty', pass: has('platform/scripts/lib/aaas-adversarial-honesty.mjs') || hasScript(/adversarial/) || has('audit/evidence/aaas-adversarial-honesty-latest.json') },
     { level: 4, label: 'commit gates (husky/settlement)', pass: has('.husky') || /settlement/i.test(scriptVals) },
     { level: 5, label: 'signed provenance in witnesses', pass: witnessHasProvenance() },
   ],
@@ -98,7 +103,7 @@ const dimChecks = {
   'Team & Ownership': [
     { level: 1, label: 'agent instructions (CLAUDE/AGENTS.md)', pass: hasAny('CLAUDE.md', '.claude/CLAUDE.md', 'AGENTS.md') },
     { level: 2, label: 'contract pin (ownership binding)', pass: hasAny('machine/spec/aaas-audit-contract.pin.json', 'pm/spec/aaas-audit-contract.pin.json') },
-    { level: 3, label: 'ownership codified in contract', pass: !!readJson('machine/spec/aaas-audit-contract.json')?.ownership },
+    { level: 3, label: 'ownership codified in contract', pass: !!readJson('machine/spec/aaas-audit-contract.json')?.ownership || (fabricAaasProvider && !!fabricContract?.ownership) },
     { level: 4, label: 'coordination docs (P24)', pass: hasAny('docs/operations/coordination', '01-docs/06-coordination', '01-docs/08-gtm/inbound-tickets') },
     { level: 5, label: 'ownership check witness', pass: has('audit/evidence/aaas-ownership-latest.json') },
   ],

@@ -10,12 +10,13 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const SCRIPTS = join(dirname(fileURLToPath(import.meta.url)), '..');
 const REPO = join(SCRIPTS, '../..');
+const contract = JSON.parse(readFileSync(join(REPO, 'machine/spec/aaas-audit-contract.json'), 'utf8'));
 
 function run(script, args) {
   const r = spawnSync(process.execPath, [join(SCRIPTS, script), ...args], { encoding: 'utf8', cwd: REPO });
@@ -55,7 +56,7 @@ describe('aaas:honesty:ownership CLI', () => {
   it('emits an ownership witness over the required artifact types', () => {
     const { status, json } = runJson('aaas-ownership-check.mjs', []);
     assert.equal(status, 0);
-    assert.ok(json.requiredTypes >= 5);
+    assert.equal(json.requiredTypes, contract.obligations.repo.requiredFolders.length);
     assert.equal(typeof json.ok, 'boolean');
     assert.ok(Array.isArray(json.violations));
   });

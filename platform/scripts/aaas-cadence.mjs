@@ -7,7 +7,7 @@
  * "witnesses rot" (audit finding ASR-007) becomes a visible, gating signal rather
  * than silent staleness.
  *
- * Usage: node aaas-cadence.mjs [--write] [--json] [--strict] [--max-age-days N]
+ * Usage: node aaas-cadence.mjs [--repo <name>] [--write] [--json] [--strict] [--max-age-days N]
  *   --write   regenerate friction + honesty witnesses before checking freshness
  *   --strict  exit nonzero when any monitored witness is stale or undateable
  */
@@ -20,6 +20,10 @@ import { evaluatePredictive, appendSnapshot } from './lib/aaas-cadence-predict.m
 
 const DAY = 86_400_000;
 const DATE_FIELDS = ['checkedAt', 'updated', 'evaluatedAt', 'date', 'generatedAt'];
+const SELF = join(dirname(fileURLToPath(import.meta.url)), '../..');
+const repoArg = process.argv.includes('--repo') ? process.argv[process.argv.indexOf('--repo') + 1] : null;
+const ROOT = repoArg ? join(SELF, '..', repoArg) : SELF;
+const REPO = repoArg ?? 'fabric-os';
 
 /** First present, parseable date-ish field → epoch ms, else null. */
 export function extractDateMs(obj) {
@@ -74,7 +78,7 @@ export function evaluateStaleness({ witnesses, nowMs, maxAgeDays }) {
  * against existing history without polluting it. Returns the forecast witness, or
  * null when there is no MPR witness to read.
  */
-function runPredictive(ROOT, WRITE, nowIso) {
+function runPredictive(ROOT, WRITE, nowIso, repo) {
   const mprPath = join(ROOT, 'audit/evidence/mpr-repo-latest.json');
   if (!existsSync(mprPath)) return null;
   let mpr = null;
@@ -96,7 +100,7 @@ function runPredictive(ROOT, WRITE, nowIso) {
   const effective = appendSnapshot(history, snapshot);
   const witness = evaluatePredictive({ history: effective, thresholds });
   witness.checkedAt = nowIso;
-  witness.repo = 'fabric-os';
+  witness.repo = repo;
 
   if (WRITE) {
     mkdirSync(dirname(HIST), { recursive: true });
@@ -116,7 +120,6 @@ const MONITORED = [
 ];
 
 function main() {
-  const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
   const WRITE = process.argv.includes('--write');
   const JSON_OUT = process.argv.includes('--json');
   const STRICT = process.argv.includes('--strict');
@@ -125,7 +128,7 @@ function main() {
   const OUT = join(ROOT, 'audit/evidence/aaas-cadence-latest.json');
 
   // Heartbeat: refresh the witnesses fabric-os owns locally.
-  if (WRITE) {
+  if (WRITE && !repoArg) {
     for (const args of [
       ['platform/scripts/aaas-friction-check.mjs', '--write'],
       ['platform/scripts/aaas-honesty-gate.mjs', '--write'],
@@ -150,7 +153,7 @@ function main() {
   const nowIso = new Date().toISOString();
   const { witness, ok } = evaluateStaleness({ witnesses, nowMs: Date.now(), maxAgeDays });
   witness.checkedAt = nowIso;
-  witness.repo = 'fabric-os';
+  witness.repo = REPO;
 
   // Only persist on --write. Read-only/--json/test runs must not mutate the tree
   // (self-audit: the unconditional write dirtied the working tree on every invocation).
@@ -160,7 +163,7 @@ function main() {
   }
 
   // Predictive layer — trends, regressions, breach forecasts (§4c.2).
-  const forecast = runPredictive(ROOT, WRITE, nowIso);
+  const forecast = runPredictive(ROOT, WRITE, nowIso, REPO);
   const noRegression = !forecast || forecast.ok;
 
   if (JSON_OUT) {

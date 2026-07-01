@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "exerciseId": "S3-07-rds-restore-operational-staging-20260701-062204",
+  "date": "2026-07-01T06:22:04Z",
+  "dbType": "operational",
+  "environment": "staging",
+  "sourceInstance": "gtcx-staging-operational",
+  "targetInstance": "gtcx-staging-operational-restore-20260701-062204",
+  "steps": [
+    {
+      "name": "describe-source",
+      "status": "PASS",
+      "durationMs": 3000,
+      "detail": "latestRestorableTime=2026-07-01T06:19:04+00:00"
+    },
+    {
+      "name": "initiate-restore",
+      "status": "PASS",
+      "durationMs": 4000,
+      "detail": "target=gtcx-staging-operational-restore-20260701-062204"
+    },
+    {
+      "name": "poll-availability",
+      "status": "PASS",
+      "durationMs": 930000,
+      "detail": "elapsed=810s"
+    },
+    {
+      "name": "connectivity-check",
+      "status": "PASS",
+      "durationMs": 4000,
+      "detail": "endpoint=gtcx-staging-operational-restore-20260701-062204.c9q6m82euzii.af-south-1.rds.amazonaws.com"
+    }
+  ],
+  "rtoMs": 941000,
+  "rpoMs": 0,
+  "status": "success"
+}

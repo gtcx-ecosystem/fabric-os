@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/central-assurance-program-check/v1",
   "storyId": "MATURITY-LANE-FAB-005",
   "policy": "GS-MATURITY-LANE-001",
-  "checkedAt": "2026-06-24T15:16:26.245Z",
+  "checkedAt": "2026-07-01T06:20:42.860Z",
   "ok": true,
   "checks": {
     "programSpec": {

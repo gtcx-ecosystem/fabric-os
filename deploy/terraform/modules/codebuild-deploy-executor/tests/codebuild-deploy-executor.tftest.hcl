@@ -91,6 +91,17 @@ run "permits_scoped_ebs_csi_addon_repair" {
   assert {
     condition = anytrue([
       for statement in local.deploy_policy_statements :
+      statement.Sid == "EksAddonTag" &&
+      contains(statement.Action, "eks:TagResource") &&
+      length(statement.Action) == 1 &&
+      statement.Resource == "arn:aws:eks:af-south-1:123456789012:addon/gtcx-test-eks/*/*"
+    ])
+    error_message = "Deploy executor must tag EKS add-ons only on the target EKS add-on ARN."
+  }
+
+  assert {
+    condition = anytrue([
+      for statement in local.deploy_policy_statements :
       statement.Sid == "IamAttachEbsCsiPolicyToNodeRole" &&
       contains(statement.Action, "iam:AttachRolePolicy") &&
       contains(statement.Action, "iam:DetachRolePolicy") &&

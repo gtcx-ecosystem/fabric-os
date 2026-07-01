@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/qasc-dslc-ship-fleet-parity-witness/v1",
-  "generatedAt": "2026-07-01T17:41:19.152Z",
+  "generatedAt": "2026-07-01T17:46:57.109Z",
   "ownerRepo": "fabric-os",
   "contract": "machine/spec/qasc-dslc-ship-fleet-parity.json",
   "contractVersion": "1.0.0",
@@ -13,15 +13,15 @@
   },
   "strictParity": {
     "ok": false,
-    "atParity": 4,
-    "gapCount": 17,
+    "atParity": 5,
+    "gapCount": 16,
     "rule": "strict parity passes only when every repo is local-complete, fabric-provider, delegated, or exempt"
   },
   "strictPass": false,
   "repoCount": 21,
   "summary": {
-    "gap": 17,
-    "delegated": 2,
+    "gap": 16,
+    "delegated": 3,
     "fabric-provider": 1,
     "local-complete": 1
   },
@@ -152,18 +152,16 @@
       "repo": "exploration-os",
       "checkoutPresent": true,
       "packagePresent": true,
-      "classification": "gap",
-      "valid": false,
-      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
-      "missingSummary": {
-        "localScripts": 3,
-        "localSpecs": 3,
-        "localWitnesses": 2,
-        "shipWitnessMissing": true,
-        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
-        "delegatedProtocolsMissing": ["dslc", "ship"],
-        "providerScripts": 0,
-        "providerSpecs": 0
+      "classification": "delegated",
+      "valid": true,
+      "remediation": "Maintain pinned Fabric delegation and current QASC/DSLC/SHIP delegated witnesses.",
+      "delegated": {
+        "pins": ["machine/spec/aaas-audit-contract.pin.json"],
+        "protocolsComplete": {
+          "qasc": true,
+          "dslc": true,
+          "ship": true
+        }
       }
     },
     {

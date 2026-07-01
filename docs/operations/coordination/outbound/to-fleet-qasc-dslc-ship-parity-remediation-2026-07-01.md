@@ -41,9 +41,9 @@ Report:
 | ----------------- | ----: |
 | `local-complete`  |     1 |
 | `fabric-provider` |     1 |
-| `delegated`       |     2 |
+| `delegated`       |     3 |
 | `exempt`          |     0 |
-| `gap`             |    17 |
+| `gap`             |    16 |
 
 Known complete/provider repos:
 
@@ -51,6 +51,7 @@ Known complete/provider repos:
 - `fabric-os` — `fabric-provider`
 - `baseline-os` — `delegated`
 - `document-os` — `delegated`
+- `exploration-os` — `delegated`
 
 ## Required remediation path
 
@@ -95,25 +96,24 @@ Partial QASC-only delegation is not sufficient for QASC/DSLC/SHIP parity.
 
 ## Gap repo matrix
 
-| Repo             | Current state            | Required next action                                                                                        |
-| ---------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| `agile-os`       | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `bridge-os`      | gap                      | Add local triplet or full Fabric delegation; keep Bridge as reference/runtime metadata, not protocol owner. |
-| `canon-os`       | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `compliance-os`  | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `ecosystem-os`   | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `exploration-os` | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
-| `griot-ai`       | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `inspection-os`  | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
-| `ledger-os`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `ledger-ui`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `markets-os`     | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `nyota-ai`       | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `sensei-os`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `terminal-os`    | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
-| `terra-os`       | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `venture-os`     | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `veritas-ai`     | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| Repo            | Current state            | Required next action                                                                                        |
+| --------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `agile-os`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `bridge-os`     | gap                      | Add local triplet or full Fabric delegation; keep Bridge as reference/runtime metadata, not protocol owner. |
+| `canon-os`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `compliance-os` | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `ecosystem-os`  | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `griot-ai`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `inspection-os` | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
+| `ledger-os`     | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `ledger-ui`     | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `markets-os`    | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `nyota-ai`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `sensei-os`     | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `terminal-os`   | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
+| `terra-os`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `venture-os`    | gap                      | Add local triplet or full Fabric delegation.                                                                |
+| `veritas-ai`    | gap                      | Add local triplet or full Fabric delegation.                                                                |
 
 ## Verification
 
@@ -124,7 +124,7 @@ pnpm qasc:dslc:ship:fleet-parity:write
 pnpm qasc:dslc:ship:fleet-parity:strict -- --repos <repo>
 ```
 
-Fleet strict is expected to remain nonzero until all 17 gap repos are
+Fleet strict is expected to remain nonzero until all 16 gap repos are
 remediated or explicitly exempted by Fabric contract.
 
 ## Boundary

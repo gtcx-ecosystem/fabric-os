@@ -480,6 +480,20 @@ function isQascOutputStatusLine(line) {
   return String(line ?? '').includes(artifactRel) || String(line ?? '').includes(reportRel);
 }
 
+export function isGeneratedEvidenceStatusLine(line) {
+  const path = String(line ?? '')
+    .slice(3)
+    .trim()
+    .replace(/^"|"$/g, '');
+  return (
+    path === '.baseline/memory/session.md' ||
+    path.startsWith('audit/evidence/') ||
+    path.startsWith('audit/reports/') ||
+    path.startsWith('audit/archive/') ||
+    /^audit\/audit-output-\d{4}-\d{2}-\d{2}\.json$/.test(path)
+  );
+}
+
 function microsOf(pillar) {
   if (!pillar) return [];
   if (Array.isArray(pillar.microAudits)) return pillar.microAudits;
@@ -636,7 +650,10 @@ function signalScores() {
 function buildWitness() {
   const status = git(['status', '-sb']);
   const statusLines = status.stdout.split('\n').filter(Boolean);
-  const dirtyStatusLines = statusLines.slice(1).filter((line) => !(WRITE && isQascOutputStatusLine(line)));
+  const dirtyStatusLines = statusLines
+    .slice(1)
+    .filter((line) => !(WRITE && isQascOutputStatusLine(line)))
+    .filter((line) => !isGeneratedEvidenceStatusLine(line));
   const effectiveStatus = [statusLines[0], ...dirtyStatusLines].filter(Boolean).join('\n');
   const diverged = branchDivergence(statusLines[0]);
   const clean = status.exitCode === 0 && dirtyStatusLines.length === 0 && !diverged;

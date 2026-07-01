@@ -200,7 +200,7 @@ const witness = {
 if (WRITE) {
   const id = safeId(manifest.releaseId);
   const evidence = join(ROOT, `audit/evidence/dslc-release-${id}-latest.json`);
-  const report = join(ROOT, `audit/reports/dslc-release-${id}-${witness.date}.md`);
+  const report = join(ROOT, `audit/reports/dslc-decision-${id}-${witness.date}.md`);
   mkdirSync(dirname(evidence), { recursive: true });
   mkdirSync(dirname(report), { recursive: true });
   writeFileSync(evidence, `${JSON.stringify(witness, null, 2)}\n`);

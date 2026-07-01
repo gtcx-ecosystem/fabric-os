@@ -233,7 +233,7 @@ Generated evidence:
 ```text
 audit/evidence/dslc-contract-check-latest.json
 audit/evidence/dslc-release-<release-id>-latest.json
-audit/reports/dslc-release-<release-id>-YYYY-MM-DD.md
+audit/reports/dslc-decision-<release-id>-YYYY-MM-DD.md
 ```
 
 ## Commands

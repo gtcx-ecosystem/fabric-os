@@ -5,12 +5,20 @@ import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { branchDivergence, scoreJson } from '../qasc-repo.mjs';
+import { branchDivergence, isGeneratedEvidenceStatusLine, scoreJson } from '../qasc-repo.mjs';
 
 const SCRIPTS = join(dirname(fileURLToPath(import.meta.url)), '..');
 const REPO = join(SCRIPTS, '../..');
 
 describe('GTCX QASC repository scorer', () => {
+  it('ignores canonical generated witnesses but not source changes', () => {
+    assert.equal(isGeneratedEvidenceStatusLine(' M audit/evidence/mpr-repo-latest.json'), true);
+    assert.equal(isGeneratedEvidenceStatusLine('?? audit/archive/2026-07-01/'), true);
+    assert.equal(isGeneratedEvidenceStatusLine(' M .baseline/memory/session.md'), true);
+    assert.equal(isGeneratedEvidenceStatusLine(' M platform/scripts/qasc-repo.mjs'), false);
+    assert.equal(isGeneratedEvidenceStatusLine(' M package.json'), false);
+  });
+
   it('scores nested gate groups from explicit boolean leaves only', () => {
     assert.equal(scoreJson({
       gates: {

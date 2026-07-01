@@ -182,7 +182,7 @@ locals {
         Action = [
           "eks:CreateAddon",
         ]
-        Resource = "arn:aws:eks:${var.region}:${data.aws_caller_identity.current.account_id}:cluster/${var.eks_cluster_name}"
+        Resource = "arn:aws:eks:${var.region}:${data.aws_caller_identity.current.account_id}:addon/${var.eks_cluster_name}/*/*"
       },
       {
         Sid    = "EksAddonManage"

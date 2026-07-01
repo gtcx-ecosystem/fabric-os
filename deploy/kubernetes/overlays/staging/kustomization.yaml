@@ -109,10 +109,25 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/resources/requests/cpu
-        value: "200m"
+        value: "100m"
       - op: replace
         path: /spec/template/spec/containers/0/resources/requests/memory
-        value: "384Mi"
+        value: "256Mi"
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/limits/memory
+        value: "1Gi"
+      - op: replace
+        path: /spec/template/spec/containers/0/startupProbe/timeoutSeconds
+        value: 5
+      - op: replace
+        path: /spec/template/spec/containers/0/startupProbe/periodSeconds
+        value: 10
+      - op: replace
+        path: /spec/template/spec/containers/0/startupProbe/failureThreshold
+        value: 18
+      - op: replace
+        path: /spec/template/spec/containers/0/readinessProbe/timeoutSeconds
+        value: 5
       - op: replace
         path: /spec/replicas
         value: 1
@@ -194,6 +209,27 @@ patches:
       kind: ServiceAccount
       name: gtcx-platform
   - patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/requests/cpu
+        value: "100m"
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/requests/memory
+        value: "256Mi"
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/limits/memory
+        value: "1Gi"
+      - op: replace
+        path: /spec/template/spec/containers/0/startupProbe/timeoutSeconds
+        value: 5
+      - op: replace
+        path: /spec/template/spec/containers/0/startupProbe/periodSeconds
+        value: 10
+      - op: replace
+        path: /spec/template/spec/containers/0/startupProbe/failureThreshold
+        value: 18
+      - op: replace
+        path: /spec/template/spec/containers/0/readinessProbe/timeoutSeconds
+        value: 5
       - op: replace
         path: /spec/replicas
         value: 1

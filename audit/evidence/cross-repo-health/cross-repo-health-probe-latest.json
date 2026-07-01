@@ -3,10 +3,10 @@
   "testType": "cross-repo-health-probe",
   "storyId": "S1-13",
   "laneSeparation": "GS-MATURITY-LANE-001",
-  "timestamp": "2026-06-25T10:21:54.730Z",
+  "timestamp": "2026-07-01T03:03:21.025Z",
   "environment": "staging",
   "engineeringHealth": {
-    "overall": "PASS",
+    "overall": "FAIL",
     "note": "HTTP service probes only — vendor assurance calendar does not affect engineering lane"
   },
   "parallelAssurance": {
@@ -14,151 +14,50 @@
     "blocksEngineeringMaturity": false,
     "note": "SECAS vendor calendar tracked in fabric-os assurance witnesses — not probed here"
   },
-  "overall": "PASS",
+  "overall": "FAIL",
   "services": [
     {
       "name": "sovereign",
       "repo": "gtcx-platforms",
       "url": "https://sovereign-staging.gtcx.trade/api/health",
-      "status": 200,
+      "status": 503,
       "error": null,
-      "body": {
-        "status": "up",
-        "timestamp": "2026-06-25T10:20:51.397Z",
-        "database": {
-          "status": "up",
-          "details": {
-            "type": "postgres"
-          }
-        },
-        "protocol-adapters": {
-          "status": "up",
-          "details": {
-            "expectedVersions": {
-              "tradepass": "1.0.0",
-              "geotag": "1.0.0",
-              "gci": "1.0.0",
-              "vaultmark": "1.0.0",
-              "panx": "1.0.0"
-            }
-          }
-        },
-        "audit-trail": {
-          "status": "up",
-          "details": {
-            "lastAppend": "2026-06-25T10:20:51.397Z",
-            "chainVerified": true
-          }
-        }
-      },
-      "transport": "fetch",
-      "latencyMs": 1707,
+      "body": "<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n</body>\r\n</html>\r\n",
+      "transport": "curl",
+      "latencyMs": 2497,
       "required": true
     },
     {
       "name": "agx-api",
       "repo": "gtcx-platforms",
       "url": "https://api.staging.gtcx.trade/api/health",
-      "status": 200,
+      "status": 503,
       "error": null,
-      "body": {
-        "status": "up",
-        "timestamp": "2026-06-25T10:20:51.347Z",
-        "database": {
-          "status": "up",
-          "details": {
-            "type": "postgres"
-          }
-        },
-        "protocol-adapters": {
-          "status": "up",
-          "details": {
-            "expectedVersions": {
-              "tradepass": "1.0.0",
-              "geotag": "1.0.0",
-              "gci": "1.0.0",
-              "vaultmark": "1.0.0",
-              "panx": "1.0.0"
-            }
-          }
-        },
-        "audit-trail": {
-          "status": "up",
-          "details": {
-            "lastAppend": "2026-06-25T10:20:51.347Z",
-            "chainVerified": true
-          }
-        }
-      },
+      "body": "<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n</body>\r\n</html>\r\n",
       "transport": "fetch",
-      "latencyMs": 1625,
+      "latencyMs": 2344,
       "required": true
     },
     {
       "name": "intelligence",
-      "repo": "gtcx-intelligence",
+      "repo": "bridge-os-intelligence-bridge",
       "url": "https://intelligence-staging.gtcx.trade/health",
-      "status": 200,
+      "status": 503,
       "error": null,
-      "body": {
-        "service": "intelligence-sdk",
-        "version": "0.1.0",
-        "uptime": 671548,
-        "status": "healthy",
-        "dependencies": {
-          "inference_backend": {
-            "status": "up",
-            "latency_ms": 0
-          },
-          "event_store": {
-            "status": "up",
-            "events": 0
-          }
-        },
-        "scheduler": {
-          "running": true,
-          "jobs": {
-            "anomaly": {
-              "enabled": true,
-              "lastRun": "2026-06-25T10:18:23.859Z",
-              "runCount": 2238
-            },
-            "trend": {
-              "enabled": true,
-              "runCount": 0
-            },
-            "summary": {
-              "enabled": false,
-              "runCount": 0
-            }
-          }
-        },
-        "features": {
-          "enableWorldModel": false,
-          "enableDriftAutoRollback": true,
-          "enableTradePassSubmission": false,
-          "enableCostRouter": true,
-          "degradationTimeoutMs": 5000,
-          "degradationErrorThreshold": 0.5,
-          "degradationLatencyThresholdMs": 2000
-        },
-        "ussd": {
-          "activeSessions": 0
-        }
-      },
-      "transport": "fetch",
-      "latencyMs": 1885,
+      "body": "<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n</body>\r\n</html>\r\n",
+      "transport": "curl",
+      "latencyMs": 2775,
       "required": true
     },
     {
       "name": "compliance-gateway",
-      "repo": "gtcx-infrastructure",
+      "repo": "fabric-os",
       "url": "https://compliance-gateway-staging.gtcx.trade/health",
       "status": 525,
       "error": "Command failed: kubectl exec -n gtcx-staging deploy/compliance-gateway-staging -- wget -qO- http://127.0.0.1:8500/health\nerror: timed out waiting for the condition\n",
-      "body": "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-js ie8 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if gt IE 8]><!--> <html class=\"no-js\" lang=\"en-US\"> <!--<![endif]-->\n<head>\n\n<title>gtcx.trade | 525: SSL handshake failed</title>\n<meta charset=\"UTF-8\" />\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n<meta http-equiv=\"X-UA-Compa",
-      "transport": "fetch",
-      "latencyMs": 65290,
+      "body": "error code: 525\n",
+      "transport": "curl",
+      "latencyMs": 65930,
       "required": false
     },
     {
@@ -168,15 +67,15 @@
       "status": 200,
       "error": null,
       "body": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>GTCX SIR Verifier — ExplorationOS</title>\n    <style>\n      :root {\n        color-scheme: light dark;\n        --bg: #0f172a;\n        --card: #1e293b;\n        --text: #f8fafc;\n        --muted: #94a3b8;\n        --ok: #22c55e;\n        --bad: #ef4444;\n        --warn: #f59e0b;\n      }\n      * {\n        box-sizing: border-box;\n      }\n      body {",
-      "transport": "fetch",
-      "latencyMs": 1625,
+      "transport": "curl",
+      "latencyMs": 2728,
       "required": false
     }
   ],
   "summary": {
     "total": 5,
-    "healthy": 4,
-    "unhealthy": 1,
-    "requiredUnhealthy": 0
+    "healthy": 1,
+    "unhealthy": 4,
+    "requiredUnhealthy": 3
   }
 }

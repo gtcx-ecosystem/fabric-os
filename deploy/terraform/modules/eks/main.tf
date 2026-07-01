@@ -225,6 +225,11 @@ resource "aws_iam_role_policy_attachment" "node_ssm" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
+resource "aws_iam_role_policy_attachment" "node_ebs_csi" {
+  role       = aws_iam_role.node_group.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+}
+
 # -----------------------------------------------------------------------------
 # Security Group — Cluster
 # -----------------------------------------------------------------------------
@@ -394,6 +399,24 @@ resource "aws_cloudwatch_log_group" "eks" {
   tags = local.common_tags
 }
 
+# Managed add-on required for dynamic EBS provisioning. The cluster still has
+# legacy gp2 PVCs; without the CSI driver those claims remain Pending.
+resource "aws_eks_addon" "ebs_csi" {
+  cluster_name                = aws_eks_cluster.main.name
+  addon_name                  = "aws-ebs-csi-driver"
+  resolve_conflicts_on_create = "OVERWRITE"
+  resolve_conflicts_on_update = "OVERWRITE"
+
+  tags = merge(local.common_tags, {
+    Name = "${local.cluster_name}-aws-ebs-csi-driver"
+  })
+
+  depends_on = [
+    aws_eks_node_group.main,
+    aws_iam_role_policy_attachment.node_ebs_csi,
+  ]
+}
+
 # -----------------------------------------------------------------------------
 # Managed Node Group
 # -----------------------------------------------------------------------------
@@ -431,6 +454,7 @@ resource "aws_eks_node_group" "main" {
     aws_iam_role_policy_attachment.node_worker,
     aws_iam_role_policy_attachment.node_cni,
     aws_iam_role_policy_attachment.node_ecr,
+    aws_iam_role_policy_attachment.node_ebs_csi,
   ]
 }
 
@@ -483,6 +507,7 @@ resource "aws_eks_node_group" "gpu" {
     aws_iam_role_policy_attachment.node_worker,
     aws_iam_role_policy_attachment.node_cni,
     aws_iam_role_policy_attachment.node_ecr,
+    aws_iam_role_policy_attachment.node_ebs_csi,
   ]
 }
 

@@ -21,6 +21,12 @@ spec:
             gtcx.trade/data-classification: internal
         spec:
           serviceAccountName: anomaly-detector
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            fsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
           containers:
             - name: detector
               securityContext:

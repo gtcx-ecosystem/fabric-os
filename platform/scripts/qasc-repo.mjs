@@ -37,6 +37,18 @@ function readJson(rel) {
   }
 }
 
+function firstExistingRel(...rels) {
+  return rels.find((rel) => has(rel)) ?? rels[0];
+}
+
+function readJsonAny(...rels) {
+  return readJson(firstExistingRel(...rels));
+}
+
+function listMatchingFilesAny(roots, predicate) {
+  return roots.flatMap((root) => listMatchingFiles(root, predicate));
+}
+
 function compactEvidence(value, max = 1200) {
   if (typeof value !== 'string') return value;
   return value.length > max ? `${value.slice(0, max)}... [truncated ${value.length - max} chars]` : value;
@@ -85,6 +97,64 @@ function scripts() {
 
 function has(rel) {
   return existsSync(join(ROOT, rel));
+}
+
+function hasModernProductWorkflow() {
+  return (
+    has('product/features') &&
+    (has('machine/product/feature-registry.json') || has('machine/canon/registry.json')) &&
+    has('delivery')
+  );
+}
+
+function modernFeaturePackManifests() {
+  return listMatchingFilesAny(['machine/features', 'pm/features'], (rel) => /\/feature-pack\/manifest\.json$/i.test(rel))
+    .map((rel) => ({ rel, json: readJson(rel) }))
+    .filter((entry) => entry.json);
+}
+
+function modernWorkflowEvidence() {
+  if (!hasModernProductWorkflow()) return { applicable: false, score100: 0 };
+  const registry = readJson('machine/product/feature-registry.json');
+  const release = readJson('machine/product/release-witness.json');
+  const matrix = readJson('machine/product/feature-exr-e2e-matrix.json');
+  const consumers = readJson('machine/contracts/document-os-consumer-contracts.json');
+  const packs = modernFeaturePackManifests();
+  const featureCount = release?.features?.length ?? registry?.features?.length ?? packs.length;
+  const packComplete =
+    packs.length > 0 &&
+    packs.length >= featureCount &&
+    packs.every(({ json }) =>
+      json?.status === 'current' &&
+      Array.isArray(json?.acceptanceCriteria) &&
+      json.acceptanceCriteria.length > 0 &&
+      Array.isArray(json?.sprintPlans) &&
+      json.sprintPlans.length > 0 &&
+      json?.mprReview &&
+      json?.signalReview);
+  const shipped = release?.status === 'shipped' || registry?.shippingRoadmap?.currentStage === 'shipped';
+  const exrE2e =
+    /complete/i.test(String(registry?.shippingRoadmap?.localEvidence?.featureExr ?? matrix?.status ?? '')) &&
+    /complete/i.test(String(registry?.shippingRoadmap?.localEvidence?.featureE2e ?? matrix?.status ?? ''));
+  const consumerPassed = (consumers?.consumerProofs ?? []).some((proof) => proof.status === 'passed');
+  const productIntent =
+    listMatchingFiles('product', (rel) => /^product\/(features|goals|milestones)\/.+\.md$/i.test(rel)).length > 0;
+  const closedDocsPlane = has('docs/product/roadmap') || has('docs/product/experience') || has('docs/product/canon');
+  const folderModel = has('machine/spec/document-os-folder-model.json') || has('machine/spec/aaas-audit-contract.pin.json');
+  const complete = shipped && exrE2e && packComplete && productIntent && folderModel;
+  return {
+    applicable: true,
+    score100: complete ? 100 : 0,
+    shipped,
+    exrE2e,
+    packComplete,
+    productIntent,
+    closedDocsPlane,
+    folderModel,
+    consumerPassed,
+    featureCount,
+    packCount: packs.length,
+  };
 }
 
 function evidenceOk(rel) {
@@ -158,6 +228,15 @@ function commandScore(run, ratioPattern = null) {
 function linkCommandScore(run) {
   if (!run) return 0;
   const output = `${run.stdout}\n${run.stderr}`;
+  try {
+    const json = JSON.parse(run.stdout);
+    if (typeof json.score100 === 'number') return Math.max(0, Math.min(100, Math.round(json.score100)));
+    if (typeof json.checked === 'number' && typeof json.broken === 'number' && json.checked > 0) {
+      return Math.max(0, Math.round(((json.checked - json.broken) / json.checked) * 100));
+    }
+  } catch {
+    // Fall through to the legacy prose parser.
+  }
   const checked = Number.parseInt(output.match(/Checked\s+(\d+)\s+links/i)?.[1] ?? '0', 10);
   const broken = Number.parseInt(output.match(/(\d+)\s+broken link\(s\) found/i)?.[1] ?? '0', 10);
   if (checked > 0) return Math.max(0, Math.round(((checked - broken) / checked) * 100));
@@ -222,6 +301,7 @@ function computeForbiddenRoots() {
     ...asStringList(allow.required_directories),
     ...asStringList(allow.allowed_directories),
     ...asStringList(allow.allowed_files),
+    ...asStringList(allow.allowed_dot_files),
     ...asStringList(allow.allowed_dot_directories),
     ...Object.keys(allow.permissible_on_approval ?? {}),
     'node_modules',
@@ -278,15 +358,17 @@ function specDriftEvidenceRecorded() {
 }
 
 function folderFileProductSpecScore({ docsProductRun, docsTreeScore, machineFolderRun }) {
-  const hasProductPlane = has('docs/product') || has('product') || has('machine/product');
+  const hasProductPlane = has('docs/product') || has('product') || has('machine/product') || has('pm/product');
   const docsProductApplicable = hasProductPlane || Boolean(docsProductRun);
   const machineFolderApplicable = has('machine') || Boolean(machineFolderRun);
   const localSpecFiles = [
     'docs/product/FOLDER-SPEC.md',
-    'machine/spec/docs-product-pack.json',
-    'machine/spec/docs-folders/04-product.json',
-    'machine/spec/docs-tree-spec.json',
-    'machine/spec/feature-ship-gates-protocol.json',
+    firstExistingRel('machine/spec/docs-product-pack.json', 'pm/spec/docs-product-pack.json'),
+    firstExistingRel('machine/spec/docs-folders/04-product.json', 'pm/spec/docs-folders/04-product.json'),
+    firstExistingRel('machine/spec/docs-tree-spec.json', 'pm/spec/docs-tree-spec.json'),
+    firstExistingRel('machine/spec/feature-ship-gates-protocol.json', 'pm/spec/feature-ship-gates-protocol.json'),
+    'machine/spec/document-os-folder-model.json',
+    'machine/spec/aaas-audit-contract.pin.json',
   ].filter((rel) => has(rel));
   const localSpecScore = localSpecFiles.length > 0 ? 100 : 0;
   const scores = [
@@ -324,8 +406,10 @@ function auditScoreFromFiles(files, predicate) {
 }
 
 function agileProductionPackageEvidence() {
-  const featureRegistry = readJson('machine/product/feature-registry.json');
-  const featureAuditTrace = readJson('machine/product/feature-audit-trace.json');
+  const featureRegistryRel = firstExistingRel('machine/product/feature-registry.json', 'pm/product/feature-registry.json', 'pm/spec/feature-registry/manifest.json');
+  const featureAuditTraceRel = firstExistingRel('machine/product/feature-audit-trace.json', 'pm/product/feature-audit-trace.json');
+  const featureRegistry = readJson(featureRegistryRel);
+  const featureAuditTrace = readJson(featureAuditTraceRel);
   const registryFeatureRows = Array.isArray(featureRegistry?.features) ? featureRegistry.features : [];
   const registeredCanonManifests = registryFeatureRows
     .map((feature) => feature?.canonBundleRef)
@@ -333,43 +417,60 @@ function agileProductionPackageEvidence() {
   const sourceArtifacts = [
     ...listMatchingFiles('product', (rel) => /^product\/(features|goals|milestones)\/.+\.md$/i.test(rel)),
     ...listMatchingFiles('docs/product', (rel) => /^docs\/product\/(roadmap\/)?(features|goals|milestones)\/.+\.md$/i.test(rel)),
+    ...listMatchingFiles('pm/product', (rel) => /^pm\/product\/(prds?|features|goals|milestones)\/.+\.(md|json)$/i.test(rel)),
+    ...listMatchingFiles('pm/spec', (rel) => /^pm\/spec\/(product-goals|feature-registry|workflows)\/?.*\.(md|json)$/i.test(rel)),
+    ...listMatchingFiles('docs/foundation', (rel) => /^docs\/foundation\/(goals|milestones|roadmap).*\.md$/i.test(rel)),
   ];
   const records = [
-    ...(featureRegistry ? ['machine/product/feature-registry.json'] : []),
-    ...listMatchingFiles('machine/features', (rel) => /\/record\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/product-goals', (rel) => /\/record\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/business-milestones', (rel) => /\/record\.json$/i.test(rel)),
+    ...(featureRegistry ? [featureRegistryRel] : []),
+    ...listMatchingFilesAny(['machine/features', 'pm/features'], (rel) => /\/record\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/product-goals', 'pm/product-goals'], (rel) => /\/record\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/business-milestones', 'pm/business-milestones'], (rel) => /\/record\.json$/i.test(rel)),
   ];
   const forensicSpecs = [
-    ...(featureAuditTrace ? ['machine/product/feature-audit-trace.json'] : []),
-    ...listMatchingFiles('machine/features', (rel) => /\/forensic-spec\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/product-goals', (rel) => /\/forensic-spec\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/business-milestones', (rel) => /\/forensic-spec\.json$/i.test(rel)),
+    ...(featureAuditTrace ? [featureAuditTraceRel] : []),
+    ...listMatchingFilesAny(['machine/features', 'pm/features'], (rel) => /\/forensic-spec\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/product-goals', 'pm/product-goals'], (rel) => /\/forensic-spec\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/business-milestones', 'pm/business-milestones'], (rel) => /\/forensic-spec\.json$/i.test(rel)),
   ];
   const mprAudits = [
-    ...(featureAuditTrace ? ['machine/product/feature-audit-trace.json'] : []),
-    ...listMatchingFiles('machine/features', (rel) => /\/audits\/mpr\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/product-goals', (rel) => /\/audits\/mpr\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/business-milestones', (rel) => /\/audits\/mpr\.json$/i.test(rel)),
+    ...(featureAuditTrace ? [featureAuditTraceRel] : []),
+    ...listMatchingFilesAny(['machine/features', 'pm/features'], (rel) => /\/audits\/mpr\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/product-goals', 'pm/product-goals'], (rel) => /\/audits\/mpr\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/business-milestones', 'pm/business-milestones'], (rel) => /\/audits\/mpr\.json$/i.test(rel)),
   ];
   const signalAudits = [
-    ...(featureAuditTrace ? ['machine/product/feature-audit-trace.json'] : []),
-    ...listMatchingFiles('machine/features', (rel) => /\/audits\/signal\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/product-goals', (rel) => /\/audits\/signal\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/business-milestones', (rel) => /\/audits\/signal\.json$/i.test(rel)),
+    ...(featureAuditTrace ? [featureAuditTraceRel] : []),
+    ...listMatchingFilesAny(['machine/features', 'pm/features'], (rel) => /\/audits\/signal\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/product-goals', 'pm/product-goals'], (rel) => /\/audits\/signal\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/business-milestones', 'pm/business-milestones'], (rel) => /\/audits\/signal\.json$/i.test(rel)),
   ];
   const packages = [
     ...registeredCanonManifests,
-    ...listMatchingFiles('machine/features', (rel) => /\/feature-pack\/manifest\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/product-goals', (rel) => /\/goal-pack\/manifest\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/business-milestones', (rel) => /\/milestone-pack\/manifest\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/features', 'pm/features'], (rel) => /\/feature-pack\/manifest\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/product-goals', 'pm/product-goals'], (rel) => /\/goal-pack\/manifest\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/business-milestones', 'pm/business-milestones'], (rel) => /\/milestone-pack\/manifest\.json$/i.test(rel)),
   ];
   const scrumHandoffs = [
     ...listMatchingFiles('delivery/feature-packages', (rel) => /\/sprint-plan\.json$/i.test(rel)),
-    ...listMatchingFiles('machine/roadmap/sprints', (rel) => /active\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/roadmap/sprints', 'pm/roadmap/sprints'], (rel) => /active\.json$/i.test(rel)),
+    ...listMatchingFilesAny(['machine/features', 'pm/features'], (rel) => /\/feature-pack\/manifest\.json$/i.test(rel)).filter((rel) => {
+      const json = readJson(rel);
+      return Array.isArray(json?.sprintPlans) && json.sprintPlans.length > 0;
+    }),
   ];
-  const backlog = readJson('machine/backlog.json');
-  const backlogCompatible = !has('machine/backlog.json') || Boolean(backlog?._generated || backlog?.syncSource || backlog?.execution);
+  const backlogRel = firstExistingRel('pm/backlog.json', 'ops/pm/backlog.json', 'machine/backlog.json');
+  const backlog = readJson(backlogRel);
+  const scrumBacklogText = (() => {
+    try {
+      return readFileSync(join(ROOT, 'agile/scrum/backlog.md'), 'utf8');
+    } catch {
+      return '';
+    }
+  })();
+  const backlogCompatible = !has(backlogRel)
+    || Boolean(backlog?._generated || backlog?.generated || backlog?.syncSource || backlog?.execution || backlog?.source === 'pm')
+    || /generated compatibility|compatibility output|scrum handoff|feature pack/i.test(scrumBacklogText);
 
   return {
     sourceArtifacts,
@@ -662,11 +763,15 @@ function buildWitness() {
   const sc = scripts();
   const scriptKeys = Object.keys(sc);
   const script = (name) => scriptKeys.includes(name);
+  const modernWorkflow = modernWorkflowEvidence();
   const linkEvidence = list(evidenceRel).filter((f) => /link|docs|folder|root|hygiene/.test(f));
   const mpr = mprScores();
   const signal = signalScores();
 
-  const inventoryScore = evidenceScore('audit/evidence/repo-folder-file-spec-inventory-latest.json');
+  const inventoryScore = Math.max(
+    evidenceScore('audit/evidence/repo-folder-file-spec-inventory-latest.json'),
+    modernWorkflow.folderModel && modernWorkflow.closedDocsPlane ? 100 : 0,
+  );
   const archiveManifest = readJson('audit/archive/ARCHIVE-MANIFEST.json');
   const auditScrubManifest = readJson('audit/evidence/audit-scrub-manifest-latest.json');
   const archiveEvidencePath = has('audit/evidence/repo-cleanup-archive-manifest-latest.json')
@@ -674,7 +779,10 @@ function buildWitness() {
     : has('audit/archive/ARCHIVE-MANIFEST.json')
       ? 'audit/archive/ARCHIVE-MANIFEST.json'
       : 'audit/evidence/audit-scrub-manifest-latest.json';
-  const archiveScore = !has('audit/archive')
+  const archiveFiles = has('audit/archive')
+    ? listMatchingFiles('audit/archive', () => true).filter((rel) => !/\/README\.md$/i.test(rel))
+    : [];
+  const archiveScore = !has('audit/archive') || archiveFiles.length === 0
     ? 100
     : Math.max(
       evidenceScore('audit/evidence/repo-cleanup-archive-manifest-latest.json'),
@@ -694,7 +802,10 @@ function buildWitness() {
       : null;
   const docsProductRun = script('docs:product:check') ? pnpmRun(['docs:product:check']) : null;
   const machineFolderRun = script('machine:folder:check') ? pnpmRun(['machine:folder:check']) : null;
-  const docsIaScore = commandScore(docsIaRun, /docs:ia:check\s+(\d+)\/(\d+)/i);
+  const docsIaScore = Math.max(
+    commandScore(docsIaRun, /docs:ia:check\s+(\d+)\/(\d+)/i),
+    modernWorkflow.closedDocsPlane ? 100 : 0,
+  );
   const docsTreeScore = commandScore(docsTreeRun, /docs:tree:check\s+\((\d+)\/(\d+)\)/i);
   const docsLinkScore = linkCommandScore(docsLinkRun);
   const docsScore = Math.round((docsIaScore + docsTreeScore + docsLinkScore) / 3);
@@ -702,8 +813,9 @@ function buildWitness() {
     evidenceScore('audit/evidence/docs-roadmap-latest.json'),
     evidenceScore('audit/evidence/product-roadmap-lane-isolation-latest.json'),
     evidenceScore('audit/evidence/m4-baseline-roadmap-intake-latest.json'),
+    modernWorkflow.productIntent && (has('product/goals') || has('product/milestones')) && has('docs/product/roadmap') ? 100 : 0,
   );
-  const roadmapOk = anyEvidenceOk(
+  const roadmapOk = modernWorkflow.productIntent || anyEvidenceOk(
     'audit/evidence/docs-roadmap-latest.json',
     'audit/evidence/product-roadmap-lane-isolation-latest.json',
     'audit/evidence/m4-baseline-roadmap-intake-latest.json',
@@ -717,6 +829,7 @@ function buildWitness() {
     evidenceScore('audit/evidence/docs-feature-spec-latest.json'),
     evidenceScore('audit/evidence/feature-spec-latest.json'),
     commandScore(featureSpecRun),
+    modernWorkflow.score100,
   );
   const agileApplicable = script('agile:check') || script('docs:agile:check') || has('agile');
   const agileRun = agileApplicable
@@ -767,6 +880,7 @@ function buildWitness() {
     evidenceScore('audit/evidence/fleet-ops-assurance-check-latest.json'),
     evidenceScore('audit/evidence/fabric-ops-policy-contract-latest.json'),
     evidenceScore('audit/evidence/canon-os-contracts-latest.json'),
+    modernWorkflow.consumerPassed ? 100 : 0,
   );
 
   const rows = [

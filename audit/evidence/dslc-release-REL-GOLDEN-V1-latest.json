@@ -1,0 +1,342 @@
+{
+  "schema": "gtcx://fabric-os/dslc-release-decision/v1",
+  "generatedAt": "2026-07-01T17:07:40.274Z",
+  "date": "2026-07-01",
+  "protocolId": "GTCX-DSLC-001",
+  "contractVersion": "1.0.0",
+  "manifest": "machine/dslc/releases/REL-GOLDEN-V1/manifest.json",
+  "outputRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+  "releaseId": "REL-GOLDEN-V1",
+  "repo": "markets-os",
+  "releaseClass": "pilot",
+  "title": "GTCX Golden V1 pilot proof pack",
+  "owner": "gtcx-release-management",
+  "requiredLanes": ["deployment", "sales", "legal", "communications"],
+  "qasc": {
+    "score100": 100,
+    "signalLevel": "L5",
+    "evidence": "../markets-os/audit/evidence/qasc-repo-latest.json",
+    "atBenchmark": true
+  },
+  "lanes": {
+    "deployment": {
+      "name": "deployment",
+      "owner": "fabric-os + markets-os",
+      "required": true,
+      "score100": 50,
+      "controlsAtBenchmark": 4,
+      "controlCount": 8,
+      "controls": [
+        {
+          "id": "release-scope-version",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "machine/dslc/releases/REL-GOLDEN-V1/manifest.json",
+            "audit/reports/dslc-ship-fleet-audit-2026-07-01.md"
+          ],
+          "rationale": "REL-GOLDEN-V1 is the canonical pilot-class proof pack for the QASC -> DSLC -> SHIP chain.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "ci-build-provenance",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "../markets-os/audit/evidence/qasc-repo-latest.json",
+            "../markets-os/audit/evidence/mpr-repo-latest.json",
+            "../markets-os/audit/evidence/signal-maturity-latest.json"
+          ],
+          "rationale": "Read-only audit confirms markets-os has current QASC 100/100, MPR 100/100, and SIGNAL L5 evidence.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "qa-qasc-acceptance",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["../markets-os/audit/evidence/qasc-repo-latest.json"],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "environment-config-migrations",
+          "authorityClass": "R",
+          "status": "pending",
+          "evidence": [
+            "docs/operations/release-management/rel-golden-v1-ops-evidence-map.md",
+            "../markets-os/audit/evidence/live-env-readiness-latest.json",
+            "../markets-os/audit/evidence/production-launch-readiness-latest.json",
+            "../markets-os/docs/operations/runbooks/env-readiness.md"
+          ],
+          "rationale": "Read-only markets-os evidence shows environment contract and manifest coverage, but runtime values, service reachability, and database connectivity are not proven for the pilot activation.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "release-notes-operator-runbook",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["docs/operations/release-management/rel-golden-v1-proof-pack.md"],
+          "rationale": "The release-management proof pack records the pilot scope, operator runbook sequence, command surface, and current blocker set.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "deployment-rollout-rollback",
+          "authorityClass": "A",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Pilot rollout and rollback plan requires release-manager approval after environment binding.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "observability-alerting-slo",
+          "authorityClass": "R",
+          "status": "pending",
+          "evidence": [
+            "docs/operations/release-management/rel-golden-v1-ops-evidence-map.md",
+            "../markets-os/audit/evidence/production-observability-latest.json",
+            "../markets-os/docs/operations/runbooks/production-observability.md"
+          ],
+          "rationale": "Read-only markets-os evidence defines SLO workflows, alert owners, and telemetry primitives, but the source witness explicitly keeps live trace and alert export pending.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "post-deploy-verification",
+          "authorityClass": "R",
+          "status": "pending",
+          "evidence": [
+            "docs/operations/release-management/rel-golden-v1-ops-evidence-map.md",
+            "../markets-os/audit/evidence/pilot-golden-transaction-latest.json",
+            "../markets-os/audit/evidence/production-launch-readiness-latest.json",
+            "../markets-os/audit/evidence/transaction-test-run-latest.json"
+          ],
+          "rationale": "Pilot-golden gates pass, but the source launch witness still reports the live/staging e2e transaction chain as blocked.",
+          "approver": null,
+          "atBenchmark": false
+        }
+      ]
+    },
+    "sales": {
+      "name": "sales",
+      "owner": "commercial-ops",
+      "required": true,
+      "score100": 50,
+      "controlsAtBenchmark": 2,
+      "controlCount": 4,
+      "controls": [
+        {
+          "id": "offer-sku-pricing-approval",
+          "authorityClass": "A",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Pilot offer, SKU, pricing, and discount authority must be approved before customer activation.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "crm-account-opportunity-owner",
+          "authorityClass": "R",
+          "status": "pending",
+          "evidence": ["docs/business/sales/rel-golden-v1-owner-roster.md"],
+          "rationale": "Internal commercial ownership is assigned, but no named customer account, CRM opportunity, or customer-management record is present.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "customer-onboarding-success-support",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "docs/business/sales/rel-golden-v1-owner-roster.md",
+            "docs/business/sales/rel-golden-v1-sales-enablement.md"
+          ],
+          "rationale": "The owner roster assigns pilot onboarding, success, support, technical escalation, and product escalation ownership. The named customer account remains a separate CRM blocker.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "renewal-expansion-churn-plan",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["docs/business/sales/rel-golden-v1-sales-enablement.md"],
+          "rationale": "The sales enablement packet records draft conversion, extension, exit, and closeout criteria.",
+          "approver": null,
+          "atBenchmark": true
+        }
+      ]
+    },
+    "legal": {
+      "name": "legal",
+      "owner": "legal-ops + sovereign human",
+      "required": true,
+      "score100": 25,
+      "controlsAtBenchmark": 1,
+      "controlCount": 4,
+      "controls": [
+        {
+          "id": "legal-applicability-matrix",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["docs/operations/legal/rel-golden-v1-legal-applicability-matrix.md"],
+          "rationale": "The legal applicability matrix identifies applicable legal domains and preserves Class S/Class A approval boundaries.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "nda-mou-pilot-partnership-agreement",
+          "authorityClass": "S",
+          "status": "blocked",
+          "evidence": [],
+          "rationale": "Sovereign human must execute or approve the NDA/MOU/pilot agreement before pilot activation.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "code-of-conduct-policy-incorporation",
+          "authorityClass": "A",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Applicable code-of-conduct and policy references must be incorporated into the pilot packet.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "signatory-authority-execution",
+          "authorityClass": "S",
+          "status": "blocked",
+          "evidence": [],
+          "rationale": "Sovereign human signatory authority and execution evidence cannot be synthesized by an agent.",
+          "approver": null,
+          "atBenchmark": false
+        }
+      ]
+    },
+    "communications": {
+      "name": "communications",
+      "owner": "authorized-communications-owner",
+      "required": true,
+      "score100": 80,
+      "controlsAtBenchmark": 4,
+      "controlCount": 5,
+      "controls": [
+        {
+          "id": "audience-message-claims-register",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["docs/business/communications/rel-golden-v1-claims-and-comms.md"],
+          "rationale": "The claims and communications packet records audiences, messages, required evidence, and legal-review boundaries.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "sales-email-script-battlecard",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["docs/business/communications/rel-golden-v1-claims-and-comms.md"],
+          "rationale": "The communications packet contains draft sales script and battlecard content; legal/commercial approval remains pending before use.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "one-pager-tearsheet-business-overview",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["docs/business/communications/rel-golden-v1-claims-and-comms.md"],
+          "rationale": "The communications packet contains the one-pager and tear sheet outline; approval remains pending before external distribution.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "legal-privacy-ip-claims-review",
+          "authorityClass": "A",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Legal/privacy/IP review must approve public and customer-facing pilot claims.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "distribution-owner-channel-calendar",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["docs/business/communications/rel-golden-v1-distribution-calendar.md"],
+          "rationale": "The distribution calendar records owner, channels, activation sequence, and the rule that no external distribution occurs until Class A/S approvals land.",
+          "approver": null,
+          "atBenchmark": true
+        }
+      ]
+    }
+  },
+  "score100": 61,
+  "benchmarkScore100": 100,
+  "decision": "blocked",
+  "atBenchmark": false,
+  "blockers": [
+    {
+      "lane": "deployment",
+      "control": "environment-config-migrations",
+      "authorityClass": "R",
+      "reason": "status=pending; evidence=4; approver=missing"
+    },
+    {
+      "lane": "deployment",
+      "control": "deployment-rollout-rollback",
+      "authorityClass": "A",
+      "reason": "status=pending; evidence=0; approver=missing"
+    },
+    {
+      "lane": "deployment",
+      "control": "observability-alerting-slo",
+      "authorityClass": "R",
+      "reason": "status=pending; evidence=3; approver=missing"
+    },
+    {
+      "lane": "deployment",
+      "control": "post-deploy-verification",
+      "authorityClass": "R",
+      "reason": "status=pending; evidence=4; approver=missing"
+    },
+    {
+      "lane": "sales",
+      "control": "offer-sku-pricing-approval",
+      "authorityClass": "A",
+      "reason": "status=pending; evidence=0; approver=missing"
+    },
+    {
+      "lane": "sales",
+      "control": "crm-account-opportunity-owner",
+      "authorityClass": "R",
+      "reason": "status=pending; evidence=1; approver=missing"
+    },
+    {
+      "lane": "legal",
+      "control": "nda-mou-pilot-partnership-agreement",
+      "authorityClass": "S",
+      "reason": "status=blocked; evidence=0; approver=missing"
+    },
+    {
+      "lane": "legal",
+      "control": "code-of-conduct-policy-incorporation",
+      "authorityClass": "A",
+      "reason": "status=pending; evidence=0; approver=missing"
+    },
+    {
+      "lane": "legal",
+      "control": "signatory-authority-execution",
+      "authorityClass": "S",
+      "reason": "status=blocked; evidence=0; approver=missing"
+    },
+    {
+      "lane": "communications",
+      "control": "legal-privacy-ip-claims-review",
+      "authorityClass": "A",
+      "reason": "status=pending; evidence=0; approver=missing"
+    }
+  ]
+}

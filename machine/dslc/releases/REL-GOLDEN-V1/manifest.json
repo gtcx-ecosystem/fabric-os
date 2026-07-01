@@ -1,0 +1,184 @@
+{
+  "schema": "gtcx://fabric-os/dslc-release-manifest/v1",
+  "releaseId": "REL-GOLDEN-V1",
+  "repo": "markets-os",
+  "releaseClass": "pilot",
+  "title": "GTCX Golden V1 pilot proof pack",
+  "owner": "gtcx-release-management",
+  "qasc": {
+    "score100": 100,
+    "signalLevel": "L5",
+    "evidence": "../markets-os/audit/evidence/qasc-repo-latest.json"
+  },
+  "lanes": {
+    "deployment": {
+      "owner": "fabric-os + markets-os",
+      "controls": [
+        {
+          "id": "release-scope-version",
+          "status": "satisfied",
+          "evidence": [
+            "machine/dslc/releases/REL-GOLDEN-V1/manifest.json",
+            "audit/reports/dslc-ship-fleet-audit-2026-07-01.md"
+          ],
+          "rationale": "REL-GOLDEN-V1 is the canonical pilot-class proof pack for the QASC -> DSLC -> SHIP chain."
+        },
+        {
+          "id": "ci-build-provenance",
+          "status": "satisfied",
+          "evidence": [
+            "../markets-os/audit/evidence/qasc-repo-latest.json",
+            "../markets-os/audit/evidence/mpr-repo-latest.json",
+            "../markets-os/audit/evidence/signal-maturity-latest.json"
+          ],
+          "rationale": "Read-only audit confirms markets-os has current QASC 100/100, MPR 100/100, and SIGNAL L5 evidence."
+        },
+        {
+          "id": "qa-qasc-acceptance",
+          "status": "satisfied",
+          "evidence": ["../markets-os/audit/evidence/qasc-repo-latest.json"]
+        },
+        {
+          "id": "environment-config-migrations",
+          "status": "pending",
+          "evidence": [
+            "docs/operations/release-management/rel-golden-v1-ops-evidence-map.md",
+            "../markets-os/audit/evidence/live-env-readiness-latest.json",
+            "../markets-os/audit/evidence/production-launch-readiness-latest.json",
+            "../markets-os/docs/operations/runbooks/env-readiness.md"
+          ],
+          "rationale": "Read-only markets-os evidence shows environment contract and manifest coverage, but runtime values, service reachability, and database connectivity are not proven for the pilot activation."
+        },
+        {
+          "id": "release-notes-operator-runbook",
+          "status": "satisfied",
+          "evidence": ["docs/operations/release-management/rel-golden-v1-proof-pack.md"],
+          "rationale": "The release-management proof pack records the pilot scope, operator runbook sequence, command surface, and current blocker set."
+        },
+        {
+          "id": "deployment-rollout-rollback",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Pilot rollout and rollback plan requires release-manager approval after environment binding."
+        },
+        {
+          "id": "observability-alerting-slo",
+          "status": "pending",
+          "evidence": [
+            "docs/operations/release-management/rel-golden-v1-ops-evidence-map.md",
+            "../markets-os/audit/evidence/production-observability-latest.json",
+            "../markets-os/docs/operations/runbooks/production-observability.md"
+          ],
+          "rationale": "Read-only markets-os evidence defines SLO workflows, alert owners, and telemetry primitives, but the source witness explicitly keeps live trace and alert export pending."
+        },
+        {
+          "id": "post-deploy-verification",
+          "status": "pending",
+          "evidence": [
+            "docs/operations/release-management/rel-golden-v1-ops-evidence-map.md",
+            "../markets-os/audit/evidence/pilot-golden-transaction-latest.json",
+            "../markets-os/audit/evidence/production-launch-readiness-latest.json",
+            "../markets-os/audit/evidence/transaction-test-run-latest.json"
+          ],
+          "rationale": "Pilot-golden gates pass, but the source launch witness still reports the live/staging e2e transaction chain as blocked."
+        }
+      ]
+    },
+    "sales": {
+      "owner": "commercial-ops",
+      "controls": [
+        {
+          "id": "offer-sku-pricing-approval",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Pilot offer, SKU, pricing, and discount authority must be approved before customer activation."
+        },
+        {
+          "id": "crm-account-opportunity-owner",
+          "status": "pending",
+          "evidence": ["docs/business/sales/rel-golden-v1-owner-roster.md"],
+          "rationale": "Internal commercial ownership is assigned, but no named customer account, CRM opportunity, or customer-management record is present."
+        },
+        {
+          "id": "customer-onboarding-success-support",
+          "status": "satisfied",
+          "evidence": [
+            "docs/business/sales/rel-golden-v1-owner-roster.md",
+            "docs/business/sales/rel-golden-v1-sales-enablement.md"
+          ],
+          "rationale": "The owner roster assigns pilot onboarding, success, support, technical escalation, and product escalation ownership. The named customer account remains a separate CRM blocker."
+        },
+        {
+          "id": "renewal-expansion-churn-plan",
+          "status": "satisfied",
+          "evidence": ["docs/business/sales/rel-golden-v1-sales-enablement.md"],
+          "rationale": "The sales enablement packet records draft conversion, extension, exit, and closeout criteria."
+        }
+      ]
+    },
+    "legal": {
+      "owner": "legal-ops + sovereign human",
+      "controls": [
+        {
+          "id": "legal-applicability-matrix",
+          "status": "satisfied",
+          "evidence": ["docs/operations/legal/rel-golden-v1-legal-applicability-matrix.md"],
+          "rationale": "The legal applicability matrix identifies applicable legal domains and preserves Class S/Class A approval boundaries."
+        },
+        {
+          "id": "nda-mou-pilot-partnership-agreement",
+          "status": "blocked",
+          "evidence": [],
+          "rationale": "Sovereign human must execute or approve the NDA/MOU/pilot agreement before pilot activation."
+        },
+        {
+          "id": "code-of-conduct-policy-incorporation",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Applicable code-of-conduct and policy references must be incorporated into the pilot packet."
+        },
+        {
+          "id": "signatory-authority-execution",
+          "status": "blocked",
+          "evidence": [],
+          "rationale": "Sovereign human signatory authority and execution evidence cannot be synthesized by an agent."
+        }
+      ]
+    },
+    "communications": {
+      "owner": "authorized-communications-owner",
+      "controls": [
+        {
+          "id": "audience-message-claims-register",
+          "status": "satisfied",
+          "evidence": ["docs/business/communications/rel-golden-v1-claims-and-comms.md"],
+          "rationale": "The claims and communications packet records audiences, messages, required evidence, and legal-review boundaries."
+        },
+        {
+          "id": "sales-email-script-battlecard",
+          "status": "satisfied",
+          "evidence": ["docs/business/communications/rel-golden-v1-claims-and-comms.md"],
+          "rationale": "The communications packet contains draft sales script and battlecard content; legal/commercial approval remains pending before use."
+        },
+        {
+          "id": "one-pager-tearsheet-business-overview",
+          "status": "satisfied",
+          "evidence": ["docs/business/communications/rel-golden-v1-claims-and-comms.md"],
+          "rationale": "The communications packet contains the one-pager and tear sheet outline; approval remains pending before external distribution."
+        },
+        {
+          "id": "legal-privacy-ip-claims-review",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Legal/privacy/IP review must approve public and customer-facing pilot claims."
+        },
+        {
+          "id": "distribution-owner-channel-calendar",
+          "status": "satisfied",
+          "evidence": ["docs/business/communications/rel-golden-v1-distribution-calendar.md"],
+          "rationale": "The distribution calendar records owner, channels, activation sequence, and the rule that no external distribution occurs until Class A/S approvals land."
+        }
+      ]
+    }
+  }
+}

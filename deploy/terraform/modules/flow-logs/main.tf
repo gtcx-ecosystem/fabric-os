@@ -42,7 +42,10 @@ variable "name_prefix" {
   default     = "gtcx"
 }
 
-data "aws_region" "current" {}
+variable "iam_role_arn" {
+  description = "Existing IAM role ARN for CloudWatch VPC Flow Logs. Ownership belongs to the VPC module."
+  type        = string
+}
 
 resource "aws_cloudwatch_log_group" "flow_logs" {
   name              = "/${var.name_prefix}/vpc/flow-logs"
@@ -55,55 +58,12 @@ resource "aws_cloudwatch_log_group" "flow_logs" {
   }
 }
 
-resource "aws_iam_role" "flow_logs" {
-  name = "${var.name_prefix}-flow-logs-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principal = {
-          Service = "vpc-flow-logs.amazonaws.com"
-        }
-      }
-    ]
-  })
-
-  tags = {
-    Principle = "SOVEREIGN"
-  }
-}
-
-resource "aws_iam_role_policy" "flow_logs" {
-  name = "${var.name_prefix}-flow-logs-policy"
-  role = aws_iam_role.flow_logs.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents",
-          "logs:DescribeLogGroups",
-          "logs:DescribeLogStreams"
-        ]
-        Resource = "arn:aws:logs:${data.aws_region.current.name}:*:log-group:/aws/vpc-flow-log/${var.name_prefix}*"
-      }
-    ]
-  })
-}
-
 resource "aws_flow_log" "main" {
   vpc_id                   = var.vpc_id
   traffic_type             = var.traffic_type
   log_destination_type     = var.log_destination != "" ? "s3" : "cloud-watch-logs"
   log_destination          = var.log_destination != "" ? var.log_destination : aws_cloudwatch_log_group.flow_logs.arn
-  iam_role_arn             = var.log_destination == "" ? aws_iam_role.flow_logs.arn : null
+  iam_role_arn             = var.log_destination == "" ? var.iam_role_arn : null
   max_aggregation_interval = 600
 
   tags = {

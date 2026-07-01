@@ -416,6 +416,21 @@ output "nat_gateway_ip" {
   value       = var.enable_nat_gateway ? aws_eip.nat[0].public_ip : null
 }
 
+output "flow_log_cloudwatch_log_group_arn" {
+  description = "ARN of the primary VPC Flow Logs CloudWatch Log Group"
+  value       = aws_cloudwatch_log_group.flow_logs.arn
+}
+
+output "flow_log_id" {
+  description = "ID of the primary CloudWatch VPC Flow Log"
+  value       = aws_flow_log.main.id
+}
+
+output "flow_log_iam_role_arn" {
+  description = "ARN of the IAM role used by VPC Flow Logs"
+  value       = aws_iam_role.flow_logs.arn
+}
+
 # -----------------------------------------------------------------------------
 # VPC Endpoints — keep AWS service traffic off the public internet
 # -----------------------------------------------------------------------------

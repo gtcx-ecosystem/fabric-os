@@ -529,6 +529,23 @@ module "flow_logs" {
   traffic_type       = "ALL"
   log_retention_days = 365
   name_prefix        = "gtcx-staging"
+  iam_role_arn       = module.vpc.flow_log_iam_role_arn
+}
+
+removed {
+  from = module.flow_logs.aws_iam_role.flow_logs
+
+  lifecycle {
+    destroy = false
+  }
+}
+
+removed {
+  from = module.flow_logs.aws_iam_role_policy.flow_logs
+
+  lifecycle {
+    destroy = false
+  }
 }
 
 # -----------------------------------------------------------------------------
@@ -763,12 +780,12 @@ output "waf_acl_id" {
 
 output "flow_log_cloudwatch_log_group" {
   description = "VPC Flow Logs CloudWatch Log Group"
-  value       = module.flow_logs.cloudwatch_log_group_arn
+  value       = module.vpc.flow_log_cloudwatch_log_group_arn
 }
 
 output "flow_log_id" {
   description = "VPC Flow Log ID"
-  value       = module.flow_logs.flow_log_id
+  value       = module.vpc.flow_log_id
 }
 
 output "worm_audit_bucket_name" {

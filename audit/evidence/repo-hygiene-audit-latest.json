@@ -3,10 +3,10 @@
   "coreId": "A5-REPO-HYGIENE",
   "slug": "repo-hygiene",
   "repo": "fabric-os",
-  "date": "2026-06-30",
-  "score10": 8,
-  "score100": 80,
-  "score100Raw": 80,
+  "date": "2026-07-01",
+  "score10": 10,
+  "score100": 100,
+  "score100Raw": 100,
   "status": "probe-gates-only",
   "source": "run-five-core-audit",
   "metrics": {
@@ -47,23 +47,16 @@
     {
       "id": "pm-folder-requirements",
       "label": "pm/manifest.json present",
-      "pass": false,
+      "pass": true,
       "severity": "P2",
       "cap100": 85
     }
   ],
-  "capsFired": [
-    {
-      "id": "gate-pm-folder-requirements",
-      "label": "Gate failed: pm/manifest.json present",
-      "ceiling100": 85,
-      "trigger": "pm-folder-requirements"
-    }
-  ],
+  "capsFired": [],
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-30.json",
+  "rubricSourcePath": "audit/audit-output-2026-07-01.json",
   "checks": {
     "p35Strict": {
       "ok": true,
@@ -83,11 +76,11 @@
       "detail": "audit/FIVE-CORE-AUDITS.md"
     },
     "pmFolder": {
-      "ok": false,
-      "code": 1,
-      "out": "> fabric-os@0.1.0 pm:folder:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node ../bridge-os/platform/scripts/workspace/pm-folder-check.mjs\n\n ELIFECYCLE  Command failed with exit code 1.\npm:folder:check FAIL — spec missing: /Users/amanianai/Sites/gtcx-ecosystem/fabric-os/pm/spec/pm-folder-requirements.json"
+      "ok": true,
+      "code": 0,
+      "out": "> fabric-os@0.1.0 pm:folder:check /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node platform/scripts/machine-folder-check.mjs\n\nmachine folder score=100/100"
     }
   },
-  "gaps": ["pmFolder"],
+  "gaps": [],
   "runbook": "audit/runbooks/A5-repo-hygiene.md"
 }

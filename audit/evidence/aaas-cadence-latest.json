@@ -7,7 +7,7 @@
     "stale": 0,
     "unknown": 0
   },
-  "oldestAgeDays": 0,
+  "oldestAgeDays": 1,
   "stale": [],
   "unknown": [],
   "fresh": [
@@ -18,6 +18,6 @@
     "signal-maturity"
   ],
   "ok": true,
-  "checkedAt": "2026-06-30T18:15:22.579Z",
+  "checkedAt": "2026-07-01T06:43:42.140Z",
   "repo": "fabric-os"
 }

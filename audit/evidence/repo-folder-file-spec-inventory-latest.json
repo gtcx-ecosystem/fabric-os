@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/repo-folder-file-spec-inventory/v1",
-  "generatedAt": "2026-06-30T17:13:25.827Z",
+  "generatedAt": "2026-07-01T04:57:17.563Z",
   "repo": "fabric-os",
   "ok": true,
   "required": {
@@ -241,40 +241,40 @@
           "kind": "file",
           "bytes": 1949,
           "mode": "100644",
-          "sha256": "6cd3a3f0ad78891b996247f6d8a20fe3a05e65e8b8393e6e8db623ad125c4456",
-          "mtimeMs": 1782814863581.7812
+          "sha256": "65b063ce4bb658dbbe109de996b6fc7fae0def7fe1d9c6fc0da73394d78f45a2",
+          "mtimeMs": 1782840625282.8962
         },
         {
           "path": ".baseline/forensic-ai/ambient-context.json",
           "kind": "file",
-          "bytes": 15814,
+          "bytes": 16736,
           "mode": "100644",
-          "sha256": "fd8d2f060d9ff5f2d8fc391010bb826a379d55b3885e9746961d1473e0c25531",
-          "mtimeMs": 1782814863581.6055
+          "sha256": "6becaa2e0c0cfbce01c766c049ad0ab5b8b42c0e7fe023142655b5175a2fe6dd",
+          "mtimeMs": 1782840625282.714
         },
         {
           "path": ".baseline/forensic-ai/latest-run.json",
           "kind": "file",
           "bytes": 6552,
           "mode": "100644",
-          "sha256": "5aeebd0733b368e37b5f5c540a2e2e0a7998215a53ca3ec5c5b6625a45c9cb1d",
-          "mtimeMs": 1782814863583.3542
+          "sha256": "f59323b280b3b7017f04c7366d15e989645115280b0cde9009f24dd0a50a8a43",
+          "mtimeMs": 1782840625284.6418
         },
         {
           "path": ".baseline/forensic-ai/parse-latest.json",
           "kind": "file",
-          "bytes": 23279,
+          "bytes": 23298,
           "mode": "100644",
-          "sha256": "c619fed65030ef41ebcd6a5143535fc8e00bc560ba2b4ae856b8f83ae0bec348",
-          "mtimeMs": 1782814863555.7874
+          "sha256": "c58fb1d141645b8cdea865a18b51d6384ba995bfe4baad7d8f87196f91e95613",
+          "mtimeMs": 1782840625250.5112
         },
         {
           "path": ".baseline/frame/active-stack.json",
           "kind": "file",
           "bytes": 289,
           "mode": "100644",
-          "sha256": "77e27b0fee0b2218587c6cb3b763267b8ef3f59e91c97580a0168c5bdd5dfd9f",
-          "mtimeMs": 1782814863582.3738
+          "sha256": "c78132dd0c248e66e2489ae98757dde0f770bfff5741ff61fc3927b3f5c816e4",
+          "mtimeMs": 1782840625283.49
         },
         {
           "path": ".baseline/frame/catalog.json",
@@ -289,16 +289,16 @@
           "kind": "file",
           "bytes": 1880,
           "mode": "100644",
-          "sha256": "4407cbef355a3fef79c0a1789ea89d6cb8c1da6f7a117f28b5958f2c5986c59f",
-          "mtimeMs": 1782814863582.0107
+          "sha256": "2cf1f8796e29a77afe66b1caf7bfe287878da99f4b34fd0bfb2e65cadc442667",
+          "mtimeMs": 1782840625283.1575
         },
         {
           "path": ".baseline/frame/question-catalog.json",
           "kind": "file",
           "bytes": 1202,
           "mode": "100644",
-          "sha256": "ee819197f13aee882a9be6871ba435a6c913afa18833e98746384fc80747b30f",
-          "mtimeMs": 1782814863582.911
+          "sha256": "e7679e989a747ede97fdddbceb4450d3c188ae4f6b7aaabe7e49eeba6072fed2",
+          "mtimeMs": 1782840625284.1008
         },
         {
           "path": ".baseline/index/changes.json",
@@ -375,18 +375,18 @@
         {
           "path": ".baseline/memory/session-last-start.json",
           "kind": "file",
-          "bytes": 42174,
+          "bytes": 46217,
           "mode": "100644",
-          "sha256": "7e0c4f42d1092dea1ea2ebdb3e406d74fe395e07cf6a15354abed1104268ccfc",
-          "mtimeMs": 1782814863112.742
+          "sha256": "3b43856d0e391e0fbd16e60a11233a5169237d012ecc0478a36aea7343987f0a",
+          "mtimeMs": 1782840624567.8147
         },
         {
           "path": ".baseline/memory/session.md",
           "kind": "file",
-          "bytes": 9422,
+          "bytes": 9503,
           "mode": "100644",
-          "sha256": "afc1d031af4e1e8c640e7ab4969d80332543ec14d8c6c6d38a8a9de365b8395a",
-          "mtimeMs": 1782821860284.0366
+          "sha256": "f245abd0a5644e0e618c8777128c80756e1de6f19553c3fabfa33465661e3f54",
+          "mtimeMs": 1782840624566.852
         },
         {
           "path": ".baseline/memory.db",
@@ -447,18 +447,18 @@
         {
           "path": ".baseline/session/ego-latest.json",
           "kind": "file",
-          "bytes": 2537,
+          "bytes": 2551,
           "mode": "100644",
-          "sha256": "9501922b081ff4634e978ee52a11279fcc252a4b104bdc7f8d664e504da2a975",
-          "mtimeMs": 1782814867856.9739
+          "sha256": "b0fc57789f14db321219c4067c5828564a584ef9854b9e35cb09c8d0e4544f63",
+          "mtimeMs": 1782840629904.0432
         },
         {
           "path": ".baseline/session/ego-latest.md",
           "kind": "file",
-          "bytes": 9717,
+          "bytes": 10006,
           "mode": "100644",
-          "sha256": "f0660b0e716db57e670070606027029ca7431e797822183a08dcf35eff9fead5",
-          "mtimeMs": 1782814867856.7727
+          "sha256": "d178becd07241e140de8839d880c0c72d321797f493d0df612e9cbf871c0a1a8",
+          "mtimeMs": 1782840629903.6199
         },
         {
           "path": ".baseline/session/persistent-shell-latest.json",
@@ -947,18 +947,18 @@
         {
           "path": ".github/workflows/build-push-ecr.yml",
           "kind": "file",
-          "bytes": 13770,
+          "bytes": 1102,
           "mode": "100644",
-          "sha256": "a4861ec40029f44328c97f84c39235ae9773304fa2f575d0860c970d4b51102f",
-          "mtimeMs": 1782813976441.1353
+          "sha256": "93e5f6183c97b7230ffc8da0b4e8d0b2345c38fb554a9ffaddc4f86601c041b2",
+          "mtimeMs": 1782845271874.4863
         },
         {
           "path": ".github/workflows/chaos-test.yml",
           "kind": "file",
-          "bytes": 17759,
+          "bytes": 542,
           "mode": "100644",
-          "sha256": "0075d068f9c9b343dfcd47d01c2e697238e6d9ca6ef060dff218c0a05f358cac",
-          "mtimeMs": 1782720633020.6997
+          "sha256": "02a044bdb963fcd811682d8bf93a35619a563cd7783c6b8d7c2502ba5ca5f207",
+          "mtimeMs": 1782845272646.92
         },
         {
           "path": ".github/workflows/ci.yml",
@@ -1011,10 +1011,10 @@
         {
           "path": ".github/workflows/deploy-staging.yml",
           "kind": "file",
-          "bytes": 5918,
+          "bytes": 538,
           "mode": "100644",
-          "sha256": "85a2d68c6bbfab062bc2bc02ccddabee3f3b224c7ff0641469c5e86d2884f9c7",
-          "mtimeMs": 1782811968511.4976
+          "sha256": "17227f23c877caf4f87d5d18403b05b9065f6cec94ee73ad56d0cf351a9c4b94",
+          "mtimeMs": 1782845272266.5908
         },
         {
           "path": ".github/workflows/distribution-snapshot.yml",
@@ -1035,18 +1035,18 @@
         {
           "path": ".github/workflows/dr-test-quarterly.yml",
           "kind": "file",
-          "bytes": 4689,
+          "bytes": 551,
           "mode": "100644",
-          "sha256": "03a8cd24992e9eea8f466025a3259635280237fc2a85a0f4e9f90f0d927f12d0",
-          "mtimeMs": 1782720633023.475
+          "sha256": "48df61a0c988275958c7672cf1b49e25982a57c90f32bb8361ec842a64fba553",
+          "mtimeMs": 1782845273407.5024
         },
         {
           "path": ".github/workflows/dr-test.yml",
           "kind": "file",
-          "bytes": 6217,
+          "bytes": 521,
           "mode": "100644",
-          "sha256": "b4a00ee27d6998572ee1c275933547d4aeba2563f639a6263c26e72299539052",
-          "mtimeMs": 1782720633023.926
+          "sha256": "cc314890376c06631eb03660847b613352b0a6f247f1123e05c94f01a2199a51",
+          "mtimeMs": 1782845273025.6565
         },
         {
           "path": ".github/workflows/eval-pipeline.yml",
@@ -2255,7 +2255,7 @@
     {
       "path": "archive",
       "kind": "directory",
-      "childCount": 399,
+      "childCount": 405,
       "entries": [
         {
           "path": "archive/README.md",
@@ -2480,6 +2480,54 @@
           "mode": "100644",
           "sha256": "69853c4258ed851e6d6ce3cb9a5597c137042aa9ab24366863a88c025f5e1044",
           "mtimeMs": 1782550342667.3145
+        },
+        {
+          "path": "archive/legacy-doc-pointers/architecture-integration-narrative/README.md",
+          "kind": "file",
+          "bytes": 343,
+          "mode": "100644",
+          "sha256": "b910e12968ee9c0283812956e8ea2a646282c74628f00e585d5aead94e580786",
+          "mtimeMs": 1782550353086.463
+        },
+        {
+          "path": "archive/legacy-doc-pointers/architecture-specs/FOLDER-SPEC.md",
+          "kind": "file",
+          "bytes": 532,
+          "mode": "100644",
+          "sha256": "7fd90da3bbbd651c90320e868eabfa4aed82010e19ac9b2b33a7ce96d74368aa",
+          "mtimeMs": 1782550353084.786
+        },
+        {
+          "path": "archive/legacy-doc-pointers/architecture-specs/README.md",
+          "kind": "file",
+          "bytes": 343,
+          "mode": "100644",
+          "sha256": "7d04a1eaf9852be17a9c6d9ebb01c5e2d18f90773592ccc3194aab666d8ba90d",
+          "mtimeMs": 1782550353083.2166
+        },
+        {
+          "path": "archive/legacy-doc-pointers/business-strategy/FOLDER-SPEC.md",
+          "kind": "file",
+          "bytes": 544,
+          "mode": "100644",
+          "sha256": "5697c61349d93795ac0e7c6721e42d145aa78cff7f990543ce46c9ba0d2ad509",
+          "mtimeMs": 1782550352960.5488
+        },
+        {
+          "path": "archive/legacy-doc-pointers/business-strategy/README.md",
+          "kind": "file",
+          "bytes": 324,
+          "mode": "100644",
+          "sha256": "8f87709cc6e7a3d5ee13193b5bebdaf8a279a5cd1d574419b77eaa568b494da9",
+          "mtimeMs": 1782550352959.5454
+        },
+        {
+          "path": "archive/legacy-doc-pointers/reference-legacy-layer-root-architecture/FOLDER-SPEC.md",
+          "kind": "file",
+          "bytes": 556,
+          "mode": "100644",
+          "sha256": "6fdb34466be5c1109c41a3b4f7adbccdd3b9e88626ce7f04febe020f990ffa28",
+          "mtimeMs": 1782550353165.152
         },
         {
           "path": "archive/legacy-docs-_archive/FOLDER-SPEC.md",
@@ -5454,7 +5502,7 @@
     {
       "path": "audit",
       "kind": "directory",
-      "childCount": 421,
+      "childCount": 422,
       "entries": [
         {
           "path": "audit/AGENT-START.md",
@@ -5479,14 +5527,6 @@
           "mode": "100644",
           "sha256": "d346fed1d16a1777e0f9dca7df3ea0902e56e73e89825ede417ace9b757b9bc1",
           "mtimeMs": 1782550353407.5571
-        },
-        {
-          "path": "audit/agentic-innovation-audit-2026-06-30.md",
-          "kind": "file",
-          "bytes": 560,
-          "mode": "100644",
-          "sha256": "65ef79c5a80a232f4e825a80b4a806fa8e56910703bb4d2a15098b96330a1ded",
-          "mtimeMs": 1782839533653.6873
         },
         {
           "path": "audit/archive/2026-06/agentic-innovation-audit-2026-06-27.md",
@@ -6467,42 +6507,42 @@
         {
           "path": "audit/archive/2026-06-30/agentic-innovation-audit-2026-06-30.md",
           "kind": "file",
-          "bytes": 571,
+          "bytes": 783,
           "mode": "100644",
-          "sha256": "f5959078dc942f44a682f401cfc711dc984c0e9f4767fd67a016e5985e8f39c8",
-          "mtimeMs": 1782838517863.422
+          "sha256": "d434dbc67669e68fc0e602cf649853bf3dd6994a197785f8776cc3cf9c9502a3",
+          "mtimeMs": 1782844183091.482
         },
         {
           "path": "audit/archive/2026-06-30/compliance-security-audit-2026-06-30.md",
           "kind": "file",
-          "bytes": 659,
+          "bytes": 942,
           "mode": "100644",
-          "sha256": "5e088b4fa32a7f34c96f1633040a59cf0dcc613344dc3dce8631cdb0094b8b87",
-          "mtimeMs": 1782838517864.8735
+          "sha256": "0c1a1d345d374b8acb51e6a87b40b0db9a22e155a0c728f6a690f4a74a85dc23",
+          "mtimeMs": 1782844183123.5254
         },
         {
           "path": "audit/archive/2026-06-30/product-excellence-audit-2026-06-30.md",
           "kind": "file",
-          "bytes": 675,
+          "bytes": 931,
           "mode": "100644",
-          "sha256": "0cd12ed0c8a74c6bc2d2699d476ae66c89c6089e0519226ac8dffa5b3654f129",
-          "mtimeMs": 1782838513997.1096
+          "sha256": "69718bbe4f3f4a4ba4783cbe497eaa76d0d3f352cc1b15f0207f3c6893873c00",
+          "mtimeMs": 1782844183139.0774
         },
         {
           "path": "audit/archive/2026-06-30/production-grade-audit-2026-06-30.md",
           "kind": "file",
-          "bytes": 641,
+          "bytes": 833,
           "mode": "100644",
-          "sha256": "958169de6810a326099fac0ed58127ac971947758d2a6698319f7de9eb37b522",
-          "mtimeMs": 1782838515603.874
+          "sha256": "8ae8385b0678d0d21a0ac78f60c3617b5a9d1f2f359a6c9d0c75e97953938b9c",
+          "mtimeMs": 1782844183183.4812
         },
         {
           "path": "audit/archive/2026-06-30/repo-hygiene-audit-2026-06-30.md",
           "kind": "file",
-          "bytes": 763,
+          "bytes": 937,
           "mode": "100644",
-          "sha256": "4c40d2bf2aff2dcb07d83c511bbe2614d5952aa9a35d79bbbdfeaa6259a24e65",
-          "mtimeMs": 1782838518219.3855
+          "sha256": "dc517fb8a2ec70ee545f7ea8c6d93eb5c716abac437d267957d23cbcdfd343ca",
+          "mtimeMs": 1782844183213.9885
         },
         {
           "path": "audit/archive/ARCHIVE-MANIFEST.json",
@@ -7190,7 +7230,7 @@
           "bytes": 1716,
           "mode": "100644",
           "sha256": "b9838c26c96ff2a858600a4315a3c98d876c36ca28eee7d065924f8beb88b8b0",
-          "mtimeMs": 1782838518223.7644
+          "mtimeMs": 1782839957406.4563
         },
         {
           "path": "audit/bank-grade/README.md",
@@ -7201,20 +7241,12 @@
           "mtimeMs": 1782550353408.7979
         },
         {
-          "path": "audit/compliance-security-audit-2026-06-30.md",
-          "kind": "file",
-          "bytes": 641,
-          "mode": "100644",
-          "sha256": "20d6fcac6464837bf328f5fffd3b7bfcaccb32029174a2fa8113109d907f0950",
-          "mtimeMs": 1782839533654.3416
-        },
-        {
           "path": "audit/deployment-open-items-audit-2026-06-30.md",
           "kind": "file",
-          "bytes": 70557,
+          "bytes": 71522,
           "mode": "100644",
-          "sha256": "f0b4936202044c7c73bf7d850367adad1a27bbc09f3442551ddf808855dba1e4",
-          "mtimeMs": 1782838038384.601
+          "sha256": "898805ce14efbc6ac2d8df4adda4e732c7fb1128684e7dae5af3a36b1f72a7b7",
+          "mtimeMs": 1782874842928.6167
         },
         {
           "path": "audit/dr-fire-drill-evidence-2026-05-31.md",
@@ -7259,50 +7291,50 @@
         {
           "path": "audit/evidence/aaas-adversarial-honesty-latest.json",
           "kind": "file",
-          "bytes": 2325,
+          "bytes": 2314,
           "mode": "100644",
-          "sha256": "e823b17c24651c124deafce0d66eca702b8ab719e585e03c941d64583f43bf3a",
-          "mtimeMs": 1782838913317.5547
+          "sha256": "33adde2bea706ceb6fed1fc26867d093f92837c2d52b620c157e2ac3095ac3fb",
+          "mtimeMs": 1782844078203.465
         },
         {
           "path": "audit/evidence/aaas-cadence-forecast-latest.json",
           "kind": "file",
-          "bytes": 1968,
+          "bytes": 3514,
           "mode": "100644",
-          "sha256": "ea8754bce797250898198bb07ffd7c0456454bdddfec2dbe0fc723acf50705cc",
-          "mtimeMs": 1782839534225.9421
+          "sha256": "6c142640a8cc356e62817af9f87d368875c25ad54102738cf97eb26c5fe901c0",
+          "mtimeMs": 1782843322582.2424
         },
         {
           "path": "audit/evidence/aaas-cadence-history.json",
           "kind": "file",
-          "bytes": 1611,
+          "bytes": 3129,
           "mode": "100644",
-          "sha256": "16d42bd9eca452e474cc6bf6390c4ee4f1bc422131b91fe5b5d8b1b45afbd44f",
-          "mtimeMs": 1782839534225.7493
+          "sha256": "814ba4e051facb21883cd4c636f095ce45a8b2fe0be8ac245138784b6b4683be",
+          "mtimeMs": 1782843322582.0457
         },
         {
           "path": "audit/evidence/aaas-cadence-latest.json",
           "kind": "file",
-          "bytes": 424,
+          "bytes": 428,
           "mode": "100644",
-          "sha256": "3a0fa023df6c1b0a53759e42ff038b47779c45166f86b725743a93ddfca81691",
-          "mtimeMs": 1782839534224.27
+          "sha256": "e68ee5e3c3fb42fc117e27c90b9c73d6beece70116dcf2c28226fc911e7d621f",
+          "mtimeMs": 1782843322580.8447
         },
         {
           "path": "audit/evidence/aaas-contract-check-latest.json",
           "kind": "file",
-          "bytes": 4557,
+          "bytes": 8362,
           "mode": "100644",
-          "sha256": "01809aa2b5d258304a1f7909d889485a04c34bfb1b003e6a92b640571b7b12d9",
-          "mtimeMs": 1782690172757.841
+          "sha256": "380773b41b42a28a2611cd04d199f6f70ba24030b4fa80e81cf905f1d442e745",
+          "mtimeMs": 1782844650988.6733
         },
         {
           "path": "audit/evidence/aaas-friction-check-latest.json",
           "kind": "file",
-          "bytes": 1051,
+          "bytes": 1046,
           "mode": "100644",
-          "sha256": "4ca17ba7ac4df44eaf28dd19f5ff07aa8be170bbe63a15bff38caf989f175a1a",
-          "mtimeMs": 1782839534181.4878
+          "sha256": "e815c473fe33283911340cae4b3741d924c351834ae64e751323fa34188b0451",
+          "mtimeMs": 1782843322545.7114
         },
         {
           "path": "audit/evidence/aaas-honesty-coverage.json",
@@ -7315,26 +7347,34 @@
         {
           "path": "audit/evidence/aaas-honesty-gate-latest.json",
           "kind": "file",
-          "bytes": 1495,
+          "bytes": 1417,
           "mode": "100644",
-          "sha256": "3a08a0925e635132d173ddb71b368c98cbd3bb3b7acb4b978b206c2bfb7b02cb",
-          "mtimeMs": 1782839534218.1924
+          "sha256": "0bf28d59d4a7aea1841566a775182ea81f49502befb324ab3522402c7874cf83",
+          "mtimeMs": 1782843322575.9075
         },
         {
           "path": "audit/evidence/aaas-hygiene-check-latest.json",
           "kind": "file",
-          "bytes": 318,
+          "bytes": 254,
           "mode": "100644",
-          "sha256": "ec601d5e2eef5a30fe7089e51e2bdba3e08cf1bd1654484395b37f66397ebfb0",
-          "mtimeMs": 1782839529534.1294
+          "sha256": "f45fa731da6ee666b002e5477ec696d4f72d9305732b5f35d46d75176dc376cf",
+          "mtimeMs": 1782843947327.521
+        },
+        {
+          "path": "audit/evidence/aaas-loop-latest.json",
+          "kind": "file",
+          "bytes": 1110,
+          "mode": "100644",
+          "sha256": "30420e469d22709d0ac518140cc4a389b3018ebed67512637a27fb665ae3b534",
+          "mtimeMs": 1782843322587.655
         },
         {
           "path": "audit/evidence/aaas-ownership-latest.json",
           "kind": "file",
           "bytes": 863,
           "mode": "100644",
-          "sha256": "a4d69a1d3e75c51bf483a7848f2101452a31b4a1e80e68f0b690a9e001479082",
-          "mtimeMs": 1782838913354.0078
+          "sha256": "21060aa6c497f51aa82a0c917ba29304d5f6a20c4877045de82aa10d870fe123",
+          "mtimeMs": 1782843302246.1257
         },
         {
           "path": "audit/evidence/aaas-ship-gates-monitor-latest.json",
@@ -7347,10 +7387,10 @@
         {
           "path": "audit/evidence/agentic-innovation-audit-latest.json",
           "kind": "file",
-          "bytes": 2257,
+          "bytes": 2310,
           "mode": "100644",
-          "sha256": "55b60581ba0f227169862d3a28cececa79d7517603bfd83746db196c654a8d52",
-          "mtimeMs": 1782839533653.4639
+          "sha256": "032460ce0d3be156f6671256f8f0b51075c7fca2ffb201e1063de37a60495cc7",
+          "mtimeMs": 1782839957116.0625
         },
         {
           "path": "audit/evidence/agents-latest.json",
@@ -7435,10 +7475,18 @@
         {
           "path": "audit/evidence/codebuild-deploy-start-latest.json",
           "kind": "file",
-          "bytes": 8468,
+          "bytes": 8469,
           "mode": "100644",
-          "sha256": "36b5f407145e83f8381aad3754af053b9fc2a897eb218352c798fc1a442f42e2",
-          "mtimeMs": 1782823755814.5999
+          "sha256": "ccadb9e6d35ee456db7d17ba471fc693f2bf70f2286f38f240d2d6ef9ea2f8eb",
+          "mtimeMs": 1782879267433.716
+        },
+        {
+          "path": "audit/evidence/codebuild-deploy-status-latest.json",
+          "kind": "file",
+          "bytes": 2153,
+          "mode": "100644",
+          "sha256": "b1b5c722b61106bdfbf402858d7af6d9b2d6317ea9fec4098210394714fdf809",
+          "mtimeMs": 1782849379130.6433
         },
         {
           "path": "audit/evidence/commops-check-latest.json",
@@ -7475,66 +7523,74 @@
         {
           "path": "audit/evidence/compliance-pillar-latest.json",
           "kind": "file",
-          "bytes": 23676,
+          "bytes": 22728,
           "mode": "100644",
-          "sha256": "726735ac33e8127f42706990ae13a547855a8d6bc005f59eaba673943d247cae",
-          "mtimeMs": 1782838913222.487
+          "sha256": "63e71428db291cd60eaa675ff1922776effd09b473d9bd91490985899d4a2eea",
+          "mtimeMs": 1782843322539.8347
         },
         {
           "path": "audit/evidence/compliance-rubric-latest.json",
           "kind": "file",
-          "bytes": 23504,
+          "bytes": 22569,
           "mode": "100644",
-          "sha256": "c9d4d98880bcb8beaa61c150aadf8dc2c2873b3eeac228edff8c25e5c35bf07e",
-          "mtimeMs": 1782838913223.047
+          "sha256": "552414d3537234cc587c74308e08d08830d3768130085c6cc7b914d831c76d17",
+          "mtimeMs": 1782843322540.032
         },
         {
           "path": "audit/evidence/compliance-security-audit-latest.json",
           "kind": "file",
-          "bytes": 1777,
+          "bytes": 1837,
           "mode": "100644",
-          "sha256": "d91344f27ff7001bf0acd6bbb065cf476029e1886817ccfae7cdc93906b666d8",
-          "mtimeMs": 1782839533654.2056
+          "sha256": "4d3e0daee8a38158948ef67a9b31367d19dc71482ea455754390f8fe13aea36c",
+          "mtimeMs": 1782839957116.7166
         },
         {
           "path": "audit/evidence/composite-audit-latest.json",
           "kind": "file",
-          "bytes": 4240,
+          "bytes": 4127,
           "mode": "100644",
-          "sha256": "8aaf943b4e27229e9ec3b625bd63883c73276b1e37d7123324e28eda45ef994c",
-          "mtimeMs": 1782839534167.2317
+          "sha256": "d353f5596fdc7abae15be837388b13242ab11a30774d9285c678eddd6dc9c43f",
+          "mtimeMs": 1782844090496.2837
         },
         {
           "path": "audit/evidence/craft-pillar-latest.json",
           "kind": "file",
-          "bytes": 1652,
+          "bytes": 1516,
           "mode": "100644",
-          "sha256": "b1549b1c3b8d1fc4e3a53175be6022ad774de70428fec42d4ba683815adecf97",
-          "mtimeMs": 1782838913223.3096
+          "sha256": "6e75b2cfe4116741f247cc3dbfb3cfdce8ae30159e9e3d7e4bc8e5f6372f51ec",
+          "mtimeMs": 1782844090496.448
         },
         {
           "path": "audit/evidence/cross-repo-health/cross-repo-health-probe-latest.json",
           "kind": "file",
-          "bytes": 5915,
+          "bytes": 3321,
           "mode": "100644",
-          "sha256": "0838ec6d62a55246c48df6be5250457256b27c948f9723c29471d2df555326d2",
-          "mtimeMs": 1782564023956.118
+          "sha256": "26562d9749de4e6a785287977933871d2e8635b0b2ab99cb206637544b908ade",
+          "mtimeMs": 1782875272524.502
         },
         {
           "path": "audit/evidence/daas-cards-check-latest.json",
           "kind": "file",
           "bytes": 1069,
           "mode": "100644",
-          "sha256": "7211d3930108865fec583bb2d5205610029edf04cb554151e7bdaaf4f40de384",
-          "mtimeMs": 1782550353319.292
+          "sha256": "d329746024dd7e55757edcf1b7120eecf6821d87ebe566c35b4ee0b5e79ce28b",
+          "mtimeMs": 1782839716107.589
         },
         {
           "path": "audit/evidence/daas-friction-check-latest.json",
           "kind": "file",
-          "bytes": 647,
+          "bytes": 458,
           "mode": "100644",
-          "sha256": "88dcb470044a74d34e0cc8bd926907d46fc66e2a958b85b40ccc7941d257dec0",
-          "mtimeMs": 1782550353344.6272
+          "sha256": "3998cc6ce96575ed52351129e574cf67b40bfed609098613473c77c35dfa464b",
+          "mtimeMs": 1782839715840.628
+        },
+        {
+          "path": "audit/evidence/deployment-fleet-matrix-latest.json",
+          "kind": "file",
+          "bytes": 64478,
+          "mode": "100644",
+          "sha256": "250a99af4cd3ed518e9566a44589358cae310349132f44767fceb1716df4e349",
+          "mtimeMs": 1782874876692.2266
         },
         {
           "path": "audit/evidence/deployment-ops-class-a-approval-2026-06-30.json",
@@ -7641,12 +7697,20 @@
           "mtimeMs": 1782550353310.982
         },
         {
+          "path": "audit/evidence/docs-tree-latest.json",
+          "kind": "file",
+          "bytes": 58076,
+          "mode": "100644",
+          "sha256": "e3342b889558edad196a76e6b2a98c80ac2cbe8fe3914966c265991bf61249bf",
+          "mtimeMs": 1782842925778.4348
+        },
+        {
           "path": "audit/evidence/documentation-audit-latest.json",
           "kind": "file",
-          "bytes": 2021,
+          "bytes": 1477,
           "mode": "100644",
-          "sha256": "41fb7be900d8e39356139902db97a8a69e2876947176fed160c39045e83739b2",
-          "mtimeMs": 1782838513712.3562
+          "sha256": "05ff429462ed6534a782fe89b6b09f8d2218c71e3a539b08862215341406fded",
+          "mtimeMs": 1782844090496.575
         },
         {
           "path": "audit/evidence/documentation-pack-latest.json",
@@ -7789,16 +7853,16 @@
           "kind": "file",
           "bytes": 6404,
           "mode": "100644",
-          "sha256": "ef69e33569e06e5b702ee752862eeb1ce085a13d7bfc90e3e9914d2a090bb1c8",
-          "mtimeMs": 1782815076733.901
+          "sha256": "1c33453294228e137189e6d65c37c377961dce79c009e2bdaa5ac49ffc8281d8",
+          "mtimeMs": 1782844156297.8997
         },
         {
           "path": "audit/evidence/forensic-parse-latest.json",
           "kind": "file",
-          "bytes": 22855,
+          "bytes": 22874,
           "mode": "100644",
-          "sha256": "bd4584e35192c846184f39aec3eb0083b66007666875e81a2775ed6b85b6af06",
-          "mtimeMs": 1782815076749.9905
+          "sha256": "903051d911a5e2f881f8700f1dc36ae93c14e26bd6841e14c9f06d8aa3739004",
+          "mtimeMs": 1782844156357.0374
         },
         {
           "path": "audit/evidence/golden-transaction-protocol-native-2026-06-12.json",
@@ -8035,10 +8099,10 @@
         {
           "path": "audit/evidence/mpr-repo-latest.json",
           "kind": "file",
-          "bytes": 39598,
+          "bytes": 40350,
           "mode": "100644",
-          "sha256": "8714d7d3837eb5ed24e4a3443810f0edf3c2359533c8668b6f8ea807aebaf7e0",
-          "mtimeMs": 1782838913221.8523
+          "sha256": "d5e7a681000400847d6dcb2a440246e4c9a5de500ae7747c465760d14ac8d58b",
+          "mtimeMs": 1782844156433.6401
         },
         {
           "path": "audit/evidence/mpr-research-layer-latest.json",
@@ -8187,10 +8251,10 @@
         {
           "path": "audit/evidence/product-excellence-audit-latest.json",
           "kind": "file",
-          "bytes": 1768,
+          "bytes": 1835,
           "mode": "100644",
-          "sha256": "34b57e7b808c156237aebb5c656625c5a7ea9544e838c65d68633b6ba8beb990",
-          "mtimeMs": 1782839528883.5608
+          "sha256": "b0d15c8416bc9982dafda2387ed1c1315e175657532c683f579c4a80d7672056",
+          "mtimeMs": 1782839954187.127
         },
         {
           "path": "audit/evidence/product-roadmap-lane-isolation-latest.json",
@@ -8203,10 +8267,10 @@
         {
           "path": "audit/evidence/production-grade-audit-latest.json",
           "kind": "file",
-          "bytes": 3031,
+          "bytes": 3068,
           "mode": "100644",
-          "sha256": "9c18de21199e65907a9fbf72086cc9100981060a748e8499fbb7f6171dd61b69",
-          "mtimeMs": 1782839530717.6157
+          "sha256": "b901edab80287133d1f0cb4f9c14cd619186126b6f947ede7b36f5c23a5a1c99",
+          "mtimeMs": 1782844156454.0269
         },
         {
           "path": "audit/evidence/program-sprints-seal-latest.json",
@@ -8243,34 +8307,42 @@
         {
           "path": "audit/evidence/repo-cleanup-archive-manifest-latest.json",
           "kind": "file",
-          "bytes": 212138,
+          "bytes": 212126,
           "mode": "100644",
-          "sha256": "f0f794b188ea70a7e7a3230d1a50b83153f4633e1a3de778e0d9315fcb858a75",
-          "mtimeMs": 1782839601465.2566
+          "sha256": "d803b6bebb92608c9752ca58a5733f653d930d4976103b318ec2d5adf912a0fe",
+          "mtimeMs": 1782844167834.0693
         },
         {
           "path": "audit/evidence/repo-cleanup-mpr-signal-acceptance-latest.json",
           "kind": "file",
-          "bytes": 42683,
+          "bytes": 40377,
           "mode": "100644",
-          "sha256": "d401f94719045d0f3b405655ee985a0d71a3ef87fdabfa85f3b6b48da1428670",
-          "mtimeMs": 1782839381458.2734
+          "sha256": "da657897bcd17247fb4aacbe3572a4a6ccde6a2eec615eb8d7f84fa9c5c00f6b",
+          "mtimeMs": 1782844754724.5708
+        },
+        {
+          "path": "audit/evidence/repo-cleanup-mpr-signal-loop-run-latest.json",
+          "kind": "file",
+          "bytes": 5525,
+          "mode": "100644",
+          "sha256": "31e5ccf31c94d669dc66daf512cd4082b4bd2a38d5682d0f81ec2f4970b58972",
+          "mtimeMs": 1782844660230.734
         },
         {
           "path": "audit/evidence/repo-folder-file-spec-inventory-latest.json",
           "kind": "file",
-          "bytes": 992558,
+          "bytes": 992755,
           "mode": "100644",
-          "sha256": "a620cb26bc38f19f35e778c3d4ce05ec23f1351243d8ed2d83166124e8aef181",
-          "mtimeMs": 1782839517029.818
+          "sha256": "b5275824efe8df8efa7068036aa3ca4ddb48a2d4ece1d35678bacf88a0a7138c",
+          "mtimeMs": 1782844168134.1018
         },
         {
           "path": "audit/evidence/repo-hygiene-audit-latest.json",
           "kind": "file",
-          "bytes": 3124,
+          "bytes": 2980,
           "mode": "100644",
-          "sha256": "4392cba3b27320c5960fd9a9f3b55aff1002f070cf4db8aa6909be8b1ddf4ab5",
-          "mtimeMs": 1782839534166.3755
+          "sha256": "4eb6f1da129a3cf826a1d80fcd49e277050c7c7deb474e7ada494cbad4b56e45",
+          "mtimeMs": 1782844156561.4197
         },
         {
           "path": "audit/evidence/revops-friction-check-latest.json",
@@ -8435,10 +8507,10 @@
         {
           "path": "audit/evidence/signal-maturity-latest.json",
           "kind": "file",
-          "bytes": 2731,
+          "bytes": 2668,
           "mode": "100644",
-          "sha256": "f64943557d5986948d6ff67f5a40669cb6d94d44c57891151b8c55cf448413a4",
-          "mtimeMs": 1782838913255.2898
+          "sha256": "f33e36c8ccf4779e6f177c21b51ca7aaa7976adee950281f392ae3d9bdd52fee",
+          "mtimeMs": 1782843302105.158
         },
         {
           "path": "audit/evidence/signal-trace-pilot-latest.json",
@@ -8451,10 +8523,10 @@
         {
           "path": "audit/evidence/strategic-depth-latest.json",
           "kind": "file",
-          "bytes": 537,
+          "bytes": 525,
           "mode": "100644",
-          "sha256": "0d4de6b9af8b9f77b2e37ea829ddb1739832aa653c82042b42782133636e4855",
-          "mtimeMs": 1782838513550.5745
+          "sha256": "414a7ebfcd63e61573b63245af27675df944b49564af28e8b1ab0100b3b29a79",
+          "mtimeMs": 1782844156584.3923
         },
         {
           "path": "audit/evidence/stratops-strategy-check-latest.json",
@@ -8467,10 +8539,10 @@
         {
           "path": "audit/evidence/technical-excellence-pillar-latest.json",
           "kind": "file",
-          "bytes": 1873,
+          "bytes": 1744,
           "mode": "100644",
-          "sha256": "d22311a2accf456b3591c820b33dce3c0e60f56072c90ba686ca605dd7325df8",
-          "mtimeMs": 1782838913223.2039
+          "sha256": "168a7efd9e63d9b7a3fb6ef23431e229e54e0428408745c593931ce7d8821ad7",
+          "mtimeMs": 1782844156593.3914
         },
         {
           "path": "audit/evidence/tool-scout-codeowner-fleet-pilot.json",
@@ -8507,10 +8579,10 @@
         {
           "path": "audit/evidence/trust-safety-pillar-latest.json",
           "kind": "file",
-          "bytes": 1220,
+          "bytes": 1113,
           "mode": "100644",
-          "sha256": "ffcfe3f4855ebfb8ebb10e777ea05d17063b707d660a26615066ac8347a1b68c",
-          "mtimeMs": 1782838913223.4866
+          "sha256": "92e24979e4db3284d0608cdc395da51864a4bf49af1938b4e539b7d45e395035",
+          "mtimeMs": 1782844168146.1257
         },
         {
           "path": "audit/evidence/venture-staging-dns-unblock-latest.json",
@@ -8523,10 +8595,10 @@
         {
           "path": "audit/evidence/world-class-pillar-latest.json",
           "kind": "file",
-          "bytes": 2382,
+          "bytes": 2196,
           "mode": "100644",
-          "sha256": "816fa764e435c6c8ae29ac79c7c0998aade47aa6f88a6b9f33e0cf4c6cdf3e0d",
-          "mtimeMs": 1782838913223.3972
+          "sha256": "caf5329204eccc5057fbac7f57010556c35e245792055698319e61549231996c",
+          "mtimeMs": 1782844168158.5981
         },
         {
           "path": "audit/evidence/xr-lane-witness-latest.json",
@@ -8571,10 +8643,10 @@
         {
           "path": "audit/handoff/handoff-2026-06-30.md",
           "kind": "file",
-          "bytes": 990,
+          "bytes": 1661,
           "mode": "100644",
-          "sha256": "217d2172081772dc5e18d7040502a4821595a3a2db365f58b4869a98f8eca224",
-          "mtimeMs": 1782838913285.9622
+          "sha256": "3eae230e66e8eaf9a9d34859e9b8627b05bd90b68280618c9aabbdeea6987ac5",
+          "mtimeMs": 1782844168185.028
         },
         {
           "path": "audit/latest.json",
@@ -8615,14 +8687,6 @@
           "mode": "100644",
           "sha256": "af1a45d371d895f60c604f609adee3b03726cf108b217598ea329bc99d3031af",
           "mtimeMs": 1782813570805.8958
-        },
-        {
-          "path": "audit/product-excellence-audit-2026-06-30.md",
-          "kind": "file",
-          "bytes": 650,
-          "mode": "100644",
-          "sha256": "e25efeb6db04e8cb962e8d6e94b3d83270f5b0ffb0beafdb46c47b04621af865",
-          "mtimeMs": 1782839528884.0632
         },
         {
           "path": "audit/product-management/auto-dev-state.md",
@@ -8673,14 +8737,6 @@
           "mtimeMs": 1782550353418.4866
         },
         {
-          "path": "audit/production-grade-audit-2026-06-30.md",
-          "kind": "file",
-          "bytes": 626,
-          "mode": "100644",
-          "sha256": "b44562dcc28338c8e8ec3fc99dda1bb0a2111e3abac6cef9f552932ccea45256",
-          "mtimeMs": 1782839530717.7432
-        },
-        {
           "path": "audit/prompts/compliance-gateway@1.0.0/CHANGELOG.md",
           "kind": "file",
           "bytes": 306,
@@ -8711,14 +8767,6 @@
           "mode": "100644",
           "sha256": "76fff61539f1fdb488efccca41f7f665fb597d3b101e5287b3590839b3c0aff1",
           "mtimeMs": 1782550353428.6274
-        },
-        {
-          "path": "audit/repo-hygiene-audit-2026-06-30.md",
-          "kind": "file",
-          "bytes": 763,
-          "mode": "100644",
-          "sha256": "4c40d2bf2aff2dcb07d83c511bbe2614d5952aa9a35d79bbbdfeaa6259a24e65",
-          "mtimeMs": 1782839534166.5972
         },
         {
           "path": "audit/reports/.gitkeep",
@@ -8761,6 +8809,14 @@
           "mtimeMs": 1782690172760.678
         },
         {
+          "path": "audit/reports/qasc-fabric-production-package-closeout-2026-07-01.md",
+          "kind": "file",
+          "bytes": 2678,
+          "mode": "100644",
+          "sha256": "229acff8661620122f46247f6f22dfcdaf9877287f2c74da7d14f94974f004fb",
+          "mtimeMs": 1782862254407.3276
+        },
+        {
           "path": "audit/reports/remediation-roadmap-2026-06-28.md",
           "kind": "file",
           "bytes": 343,
@@ -8769,12 +8825,12 @@
           "mtimeMs": 1782690172760.8032
         },
         {
-          "path": "audit/reports/repo-cleanup-mpr-signal-acceptance-2026-06-30.md",
+          "path": "audit/reports/repository-assurance-acceptance-2026-06-30.md",
           "kind": "file",
-          "bytes": 5464,
+          "bytes": 5001,
           "mode": "100644",
-          "sha256": "6355c4436b3625dc75ceff4db5636b9c332bcc2a5a549c7903acd857172089dd",
-          "mtimeMs": 1782839381458.5962
+          "sha256": "710a48bf361f4ccde0ed6f5d3d71c2c9dfd746ad2220e7fc41a58fbaa1a8d31a",
+          "mtimeMs": 1782844754764.7158
         },
         {
           "path": "audit/reports/session-self-audit-2026-06-28.md",
@@ -9100,7 +9156,7 @@
     {
       "path": "deploy",
       "kind": "directory",
-      "childCount": 498,
+      "childCount": 515,
       "entries": [
         {
           "path": "deploy/03-platform/scripts/README.md",
@@ -9369,18 +9425,18 @@
         {
           "path": "deploy/codebuild/README.md",
           "kind": "file",
-          "bytes": 1983,
+          "bytes": 2187,
           "mode": "100644",
-          "sha256": "0c2c4f5b642a56195e97a16a3830d834c9f3196d467ba5ad868ae4ba113f6e81",
-          "mtimeMs": 1782808603679.9517
+          "sha256": "511b509134a33af792660bc1e1e5bd4e01350c2e38b65f9cd79ac02f4e9966f1",
+          "mtimeMs": 1782859471401.6667
         },
         {
           "path": "deploy/codebuild/deploy-buildspec.yml",
           "kind": "file",
-          "bytes": 1552,
+          "bytes": 1593,
           "mode": "100644",
-          "sha256": "465b6bdfb0c12a49110e1a12e6f790dcbd7b5a4d9f70810a1b3e1e08f6ce4883",
-          "mtimeMs": 1782810122620.6035
+          "sha256": "4137ee5dbbf8ce1bc10f55df54da93b330848918593d895606eddeea9e3100f1",
+          "mtimeMs": 1782861312268.1726
         },
         {
           "path": "deploy/codebuild/package-registry-publish-ledger-ui.sh",
@@ -9625,10 +9681,10 @@
         {
           "path": "deploy/kubernetes/base/kustomization.yaml",
           "kind": "file",
-          "bytes": 3203,
+          "bytes": 3384,
           "mode": "100644",
-          "sha256": "f1440e39f39414fff0079699449f0165307c8a405841ecf7800b9e97a2553810",
-          "mtimeMs": 1780999815235.9163
+          "sha256": "1270a86ca0cf5f87aab0dfd139a4a7ccf8a5479c86eab1c6ffbdb69c0b2ea4bd",
+          "mtimeMs": 1782858911236.0762
         },
         {
           "path": "deploy/kubernetes/base/namespace.yaml",
@@ -9745,10 +9801,10 @@
         {
           "path": "deploy/kubernetes/base/services/anomaly-detector.yaml",
           "kind": "file",
-          "bytes": 2632,
+          "bytes": 2695,
           "mode": "100644",
-          "sha256": "883ee15cbbbd3fa0b62bc4ad3ae537aeed261c4afa370e460f6fee2b7222840c",
-          "mtimeMs": 1780999815236.9778
+          "sha256": "46d59f12e8a70bc74df510e3003a4ee0ac45e2d22eeda05d6a105fa2074fb8fa",
+          "mtimeMs": 1782858802795.1443
         },
         {
           "path": "deploy/kubernetes/base/services/api.yaml",
@@ -10361,10 +10417,10 @@
         {
           "path": "deploy/kubernetes/overlays/staging/anomaly-detector-patch.yaml",
           "kind": "file",
-          "bytes": 2026,
+          "bytes": 2201,
           "mode": "100644",
-          "sha256": "1f16216ff715f46b81b8aa285a7802624be5080116b635ac20780a2db7194e41",
-          "mtimeMs": 1780999815243.0396
+          "sha256": "03894dd6d9f813ad1b80036adc576a8ef6da25e6ace19fc36c9ee34ea7ba02fc",
+          "mtimeMs": 1782875136310.3918
         },
         {
           "path": "deploy/kubernetes/overlays/staging/audit-flush-patch.yaml",
@@ -10521,10 +10577,10 @@
         {
           "path": "deploy/kubernetes/overlays/staging/intelligence/deployment.yaml",
           "kind": "file",
-          "bytes": 3996,
+          "bytes": 4223,
           "mode": "100644",
-          "sha256": "dcfdca2c60d2f839c5b391499bc20aa66161bbee5103fe95cf030567bab7bc57",
-          "mtimeMs": 1782813976884.3276
+          "sha256": "84ecd2ab7609c9b3337adf1a865387ead76e97d9eaa3f22d39a7dcb47fb76a71",
+          "mtimeMs": 1782875113543.4702
         },
         {
           "path": "deploy/kubernetes/overlays/staging/intelligence/ingress.yaml",
@@ -10553,10 +10609,10 @@
         {
           "path": "deploy/kubernetes/overlays/staging/kustomization.yaml",
           "kind": "file",
-          "bytes": 6214,
+          "bytes": 8202,
           "mode": "100644",
-          "sha256": "8f8873c6b1843ca05842581da2d1a6748f4a10e8c463279114326caf58206193",
-          "mtimeMs": 1781300667060.661
+          "sha256": "92ad108f70445824dca9ebb8d00fad7bad0a8d381fad1a85b508d8bf2f2cf451",
+          "mtimeMs": 1782875128610.9539
         },
         {
           "path": "deploy/kubernetes/overlays/staging/letsencrypt-issuer.yaml",
@@ -11553,10 +11609,10 @@
         {
           "path": "deploy/terraform/environments/production/main.tf",
           "kind": "file",
-          "bytes": 19496,
+          "bytes": 19758,
           "mode": "100644",
-          "sha256": "6f116bdb706d762eba91b7ac63800307f240ae4a07a064217cb54c32c62d1d58",
-          "mtimeMs": 1782815190310.7854
+          "sha256": "e9424f33ce7efae3ae5c21be01acf04964b53b1c9d1e9f609a1fda4d394bdccf",
+          "mtimeMs": 1782873708585.0823
         },
         {
           "path": "deploy/terraform/environments/production/terraform.tfvars",
@@ -11729,18 +11785,18 @@
         {
           "path": "deploy/terraform/environments/staging/main.tf",
           "kind": "file",
-          "bytes": 26645,
+          "bytes": 26907,
           "mode": "100644",
-          "sha256": "d2a813690013058488290ac6846fa449ffcc761ae56d3de3f14b33784eadbdcf",
-          "mtimeMs": 1782815190298.6912
+          "sha256": "99d49508187e1b34705740dda85bafae8d0bd18ca764532576bb8abda886eb35",
+          "mtimeMs": 1782873708364.8726
         },
         {
           "path": "deploy/terraform/environments/staging/terraform.tfvars",
           "kind": "file",
-          "bytes": 3548,
+          "bytes": 3727,
           "mode": "100644",
-          "sha256": "47f5ea12be26d533cdc769d39cbb74e9a18c266b3f9542730e9b6611324d2454",
-          "mtimeMs": 1782819219118.0159
+          "sha256": "e6537037f33b1a9027b386c95b52a0513a67b13e7211c366f37250a013a1d9c8",
+          "mtimeMs": 1782858803002.8103
         },
         {
           "path": "deploy/terraform/environments/template/README.md",
@@ -11983,20 +12039,36 @@
           "mtimeMs": 1782825718249.4292
         },
         {
-          "path": "deploy/terraform/modules/codebuild-deploy-executor/codebuild-deploy-executor.tftest.hcl",
+          "path": "deploy/terraform/modules/codebuild-deploy-executor/.terraform/providers/registry.terraform.io/hashicorp/aws/6.52.0/darwin_arm64/LICENSE.txt",
           "kind": "file",
-          "bytes": 1740,
+          "bytes": 16757,
+          "mode": "100664",
+          "sha256": "588768dc819dc773d6914c22df7de8932cc7899c24188f5b09b013d86457e115",
+          "mtimeMs": 1782861463256.6272
+        },
+        {
+          "path": "deploy/terraform/modules/codebuild-deploy-executor/.terraform/providers/registry.terraform.io/hashicorp/aws/6.52.0/darwin_arm64/terraform-provider-aws_v6.52.0_x5",
+          "kind": "file",
+          "bytes": 837907920,
+          "mode": "100755",
+          "sha256": "6a4268384c0c5177c6ac90907780bc0bd67aa5d97057c42c282e50de87b50132",
+          "mtimeMs": 1782861468151.7825
+        },
+        {
+          "path": "deploy/terraform/modules/codebuild-deploy-executor/.terraform.lock.hcl",
+          "kind": "file",
+          "bytes": 1452,
           "mode": "100644",
-          "sha256": "53e97419f6607fab4998a05e1d6f3be3b229e260b6e7e00b4c543bf701a8d2df",
-          "mtimeMs": 1782792987376.6482
+          "sha256": "e844b38f6aa034ae5861dfe8ed3962762c7b4ff49ab8df6283c7f889446e5eec",
+          "mtimeMs": 1782861468900.5173
         },
         {
           "path": "deploy/terraform/modules/codebuild-deploy-executor/main.tf",
           "kind": "file",
-          "bytes": 13361,
+          "bytes": 16068,
           "mode": "100644",
-          "sha256": "a0e69eb51b39258f3921581fc9fb5b9d3e260e74d9da85a8a8ba60824ea7dc0d",
-          "mtimeMs": 1782836663179.817
+          "sha256": "27aecd07991032fc3611f2307bef1b06ef96ed26f53ad78cc4e3c82a36e6f195",
+          "mtimeMs": 1782879174547.9092
         },
         {
           "path": "deploy/terraform/modules/codebuild-deploy-executor/outputs.tf",
@@ -12005,6 +12077,14 @@
           "mode": "100644",
           "sha256": "35c3755983c99b9875020ba5858c5bfc3f3e971e6248a219b627d1a6f134f440",
           "mtimeMs": 1782792987149.3037
+        },
+        {
+          "path": "deploy/terraform/modules/codebuild-deploy-executor/tests/codebuild-deploy-executor.tftest.hcl",
+          "kind": "file",
+          "bytes": 3756,
+          "mode": "100644",
+          "sha256": "9b4fc39e3f6ecc03739f6368d1712356c34e3ddbd70e7fa2f8415d74e67d8fa6",
+          "mtimeMs": 1782879188235.36
         },
         {
           "path": "deploy/terraform/modules/codebuild-deploy-executor/variables.tf",
@@ -12143,6 +12223,30 @@
           "mtimeMs": 1781215062053.1255
         },
         {
+          "path": "deploy/terraform/modules/database/.terraform/providers/registry.terraform.io/hashicorp/aws/6.52.0/darwin_arm64/LICENSE.txt",
+          "kind": "file",
+          "bytes": 16757,
+          "mode": "100664",
+          "sha256": "588768dc819dc773d6914c22df7de8932cc7899c24188f5b09b013d86457e115",
+          "mtimeMs": 1782863322408.8196
+        },
+        {
+          "path": "deploy/terraform/modules/database/.terraform/providers/registry.terraform.io/hashicorp/aws/6.52.0/darwin_arm64/terraform-provider-aws_v6.52.0_x5",
+          "kind": "file",
+          "bytes": 837907920,
+          "mode": "100755",
+          "sha256": "6a4268384c0c5177c6ac90907780bc0bd67aa5d97057c42c282e50de87b50132",
+          "mtimeMs": 1782863327316.6177
+        },
+        {
+          "path": "deploy/terraform/modules/database/.terraform.lock.hcl",
+          "kind": "file",
+          "bytes": 1483,
+          "mode": "100644",
+          "sha256": "1ad00c8e9c70c1267cf2fd19042f19cf3fda64d99a8acf7f086873a4270b5dfb",
+          "mtimeMs": 1782863328092.2046
+        },
+        {
           "path": "deploy/terraform/modules/database/database.tftest.hcl",
           "kind": "file",
           "bytes": 3085,
@@ -12161,10 +12265,10 @@
         {
           "path": "deploy/terraform/modules/database/main.tf",
           "kind": "file",
-          "bytes": 10447,
+          "bytes": 10330,
           "mode": "100644",
-          "sha256": "a9d98b6441ef1ce3a86be2d9686c61463ca5ecee0c49069cbf73df7469d5b954",
-          "mtimeMs": 1780999815255.161
+          "sha256": "f78525a80435c121783e8f19d2d7b3bf6e7e9bcb4fbc0bc3ad74816f72952e4c",
+          "mtimeMs": 1782863158255.0823
         },
         {
           "path": "deploy/terraform/modules/database/versions.tf",
@@ -12215,20 +12319,60 @@
           "mtimeMs": 1780999815255.6995
         },
         {
+          "path": "deploy/terraform/modules/eks/.terraform/providers/registry.terraform.io/hashicorp/aws/6.52.0/darwin_arm64/LICENSE.txt",
+          "kind": "file",
+          "bytes": 16757,
+          "mode": "100664",
+          "sha256": "588768dc819dc773d6914c22df7de8932cc7899c24188f5b09b013d86457e115",
+          "mtimeMs": 1782863329565.1533
+        },
+        {
+          "path": "deploy/terraform/modules/eks/.terraform/providers/registry.terraform.io/hashicorp/aws/6.52.0/darwin_arm64/terraform-provider-aws_v6.52.0_x5",
+          "kind": "file",
+          "bytes": 837907920,
+          "mode": "100755",
+          "sha256": "6a4268384c0c5177c6ac90907780bc0bd67aa5d97057c42c282e50de87b50132",
+          "mtimeMs": 1782863334571.9414
+        },
+        {
+          "path": "deploy/terraform/modules/eks/.terraform/providers/registry.terraform.io/hashicorp/tls/4.3.0/darwin_arm64/LICENSE.txt",
+          "kind": "file",
+          "bytes": 16757,
+          "mode": "100664",
+          "sha256": "6cc8b40dbd9225bcae53f83bab17b8c01ad162c2093545c5bb7f1dcf5ae99d72",
+          "mtimeMs": 1782863341867.9404
+        },
+        {
+          "path": "deploy/terraform/modules/eks/.terraform/providers/registry.terraform.io/hashicorp/tls/4.3.0/darwin_arm64/terraform-provider-tls_v4.3.0_x5",
+          "kind": "file",
+          "bytes": 18555888,
+          "mode": "100755",
+          "sha256": "848061d526548ddaa82bb9c9bb8560e27c3c4976c058e231f6fb4dae9d4370bb",
+          "mtimeMs": 1782863342063.1501
+        },
+        {
+          "path": "deploy/terraform/modules/eks/.terraform.lock.hcl",
+          "kind": "file",
+          "bytes": 2602,
+          "mode": "100644",
+          "sha256": "57832035b44ec6fa1f25f778ee0eb6dc91f155a7c291c7f9fdbd0ae59d17ad9f",
+          "mtimeMs": 1782863342077.0632
+        },
+        {
           "path": "deploy/terraform/modules/eks/eks.tftest.hcl",
           "kind": "file",
-          "bytes": 1675,
+          "bytes": 1714,
           "mode": "100644",
-          "sha256": "a087bcdbc23a390c13076ace0392f773f5f663b6f01235c6f304036b16852d3d",
-          "mtimeMs": 1780999815255.7842
+          "sha256": "a773dffb82e177d0f5a6952dd0c701918fc3e6d7c398e01fe0a603371a18d213",
+          "mtimeMs": 1782863431536.7468
         },
         {
           "path": "deploy/terraform/modules/eks/main.tf",
           "kind": "file",
-          "bytes": 16854,
+          "bytes": 17719,
           "mode": "100644",
-          "sha256": "905937961646358457faa25844b3a9246685ed8fecc19ef9231b13b39cccde3a",
-          "mtimeMs": 1780999815255.8562
+          "sha256": "b50abc21236803ac7443513812eb71ccafbdb0ba8cee2e3872af8ce184485eef",
+          "mtimeMs": 1782875168902.8694
         },
         {
           "path": "deploy/terraform/modules/eks/versions.tf",
@@ -12263,12 +12407,36 @@
           "mtimeMs": 1780999815256.156
         },
         {
+          "path": "deploy/terraform/modules/flow-logs/.terraform/providers/registry.terraform.io/hashicorp/aws/6.52.0/darwin_arm64/LICENSE.txt",
+          "kind": "file",
+          "bytes": 16757,
+          "mode": "100664",
+          "sha256": "588768dc819dc773d6914c22df7de8932cc7899c24188f5b09b013d86457e115",
+          "mtimeMs": 1782863512820.7578
+        },
+        {
+          "path": "deploy/terraform/modules/flow-logs/.terraform/providers/registry.terraform.io/hashicorp/aws/6.52.0/darwin_arm64/terraform-provider-aws_v6.52.0_x5",
+          "kind": "file",
+          "bytes": 837907920,
+          "mode": "100755",
+          "sha256": "6a4268384c0c5177c6ac90907780bc0bd67aa5d97057c42c282e50de87b50132",
+          "mtimeMs": 1782863519530.5625
+        },
+        {
+          "path": "deploy/terraform/modules/flow-logs/.terraform.lock.hcl",
+          "kind": "file",
+          "bytes": 1452,
+          "mode": "100644",
+          "sha256": "e844b38f6aa034ae5861dfe8ed3962762c7b4ff49ab8df6283c7f889446e5eec",
+          "mtimeMs": 1782863520678.4124
+        },
+        {
           "path": "deploy/terraform/modules/flow-logs/main.tf",
           "kind": "file",
-          "bytes": 3237,
+          "bytes": 2576,
           "mode": "100644",
-          "sha256": "e80bba815fa1c7fb512e6db486d6b0a781d24c2760298027d0571b6d9b523b25",
-          "mtimeMs": 1780999815256.2441
+          "sha256": "a3e3c19623456bba3944a35f9a5e0da02e1aaa2a7d9ac3044d158c2ba625b5fb",
+          "mtimeMs": 1782873708152.365
         },
         {
           "path": "deploy/terraform/modules/gcp-ml-bridge/README.md",
@@ -12737,10 +12905,10 @@
         {
           "path": "deploy/terraform/modules/secrets/lambda/build.sh",
           "kind": "file",
-          "bytes": 1123,
+          "bytes": 1295,
           "mode": "100644",
-          "sha256": "4f20f3738ffb527e79a5ce716ccc2486cbf0827026127fcd7763ca9e40c691c3",
-          "mtimeMs": 1782814923517.2183
+          "sha256": "3be4c6142c77d9d6ec02da414d3072add85bb223401fdb3841a3cb8a309fe178",
+          "mtimeMs": 1782863158950.1877
         },
         {
           "path": "deploy/terraform/modules/secrets/lambda/rotation.zip",
@@ -12959,12 +13127,36 @@
           "mtimeMs": 1780999815261.53
         },
         {
+          "path": "deploy/terraform/modules/vpc/.terraform/providers/registry.terraform.io/hashicorp/aws/6.52.0/darwin_arm64/LICENSE.txt",
+          "kind": "file",
+          "bytes": 16757,
+          "mode": "100664",
+          "sha256": "588768dc819dc773d6914c22df7de8932cc7899c24188f5b09b013d86457e115",
+          "mtimeMs": 1782873774859.9458
+        },
+        {
+          "path": "deploy/terraform/modules/vpc/.terraform/providers/registry.terraform.io/hashicorp/aws/6.52.0/darwin_arm64/terraform-provider-aws_v6.52.0_x5",
+          "kind": "file",
+          "bytes": 837907920,
+          "mode": "100755",
+          "sha256": "6a4268384c0c5177c6ac90907780bc0bd67aa5d97057c42c282e50de87b50132",
+          "mtimeMs": 1782873781475.5107
+        },
+        {
+          "path": "deploy/terraform/modules/vpc/.terraform.lock.hcl",
+          "kind": "file",
+          "bytes": 1483,
+          "mode": "100644",
+          "sha256": "1ad00c8e9c70c1267cf2fd19042f19cf3fda64d99a8acf7f086873a4270b5dfb",
+          "mtimeMs": 1782873782117.7734
+        },
+        {
           "path": "deploy/terraform/modules/vpc/main.tf",
           "kind": "file",
-          "bytes": 14671,
+          "bytes": 15108,
           "mode": "100644",
-          "sha256": "49e34cd42cfb64a47c9ecd45fe4713b1bd5e80b8bc6bb25a9ee290250126b9ff",
-          "mtimeMs": 1781000190537.7651
+          "sha256": "f1ad2c93d09a065690e14e01fafedbdfb9d48bff012931440dc01e11bc270d23",
+          "mtimeMs": 1782873707928.5352
         },
         {
           "path": "deploy/terraform/modules/vpc/versions.tf",
@@ -13091,7 +13283,7 @@
     {
       "path": "docs",
       "kind": "directory",
-      "childCount": 384,
+      "childCount": 386,
       "entries": [
         {
           "path": "docs/CHANGELOG.md",
@@ -13228,14 +13420,6 @@
           "mode": "100644",
           "sha256": "6252f132e5b6cc0ba8ff358dfee82e67ff1e84c3a5f7db9294ad322cac6f1b5b",
           "mtimeMs": 1782550353086.7517
-        },
-        {
-          "path": "docs/architecture/integration/narrative/legacy-README.md",
-          "kind": "file",
-          "bytes": 343,
-          "mode": "100644",
-          "sha256": "b910e12968ee9c0283812956e8ea2a646282c74628f00e585d5aead94e580786",
-          "mtimeMs": 1782550353086.463
         },
         {
           "path": "docs/architecture/narratives/README.md",
@@ -13404,22 +13588,6 @@
           "mode": "100644",
           "sha256": "8a10bb7cf28736c26545cd0b99961adb23840e0454b8b525f83ac8359761be07",
           "mtimeMs": 1782550353085.094
-        },
-        {
-          "path": "docs/architecture/specs/legacy-FOLDER-SPEC.md",
-          "kind": "file",
-          "bytes": 532,
-          "mode": "100644",
-          "sha256": "7fd90da3bbbd651c90320e868eabfa4aed82010e19ac9b2b33a7ce96d74368aa",
-          "mtimeMs": 1782550353084.786
-        },
-        {
-          "path": "docs/architecture/specs/legacy-README.md",
-          "kind": "file",
-          "bytes": 343,
-          "mode": "100644",
-          "sha256": "7d04a1eaf9852be17a9c6d9ebb01c5e2d18f90773592ccc3194aab666d8ba90d",
-          "mtimeMs": 1782550353083.2166
         },
         {
           "path": "docs/architecture/specs/system-overview.md",
@@ -13646,6 +13814,22 @@
           "mtimeMs": 1782550352953.3489
         },
         {
+          "path": "docs/business/opportunity/README.md",
+          "kind": "file",
+          "bytes": 297,
+          "mode": "100644",
+          "sha256": "5322fc948abf2dd807165869cc66ab6c6a3a350f3b32214d8bde24447e1f5716",
+          "mtimeMs": 1782842901249.6843
+        },
+        {
+          "path": "docs/business/opportunity/ai-ops-cost-intelligence-platform-handoff.md",
+          "kind": "file",
+          "bytes": 10968,
+          "mode": "100644",
+          "sha256": "4cfd16e015e25ea501331855c4b6a9c23c3c049baa39342731f9d372bca16036",
+          "mtimeMs": 1782844010717.9243
+        },
+        {
           "path": "docs/business/overview/FOLDER-SPEC.md",
           "kind": "file",
           "bytes": 544,
@@ -13656,10 +13840,10 @@
         {
           "path": "docs/business/overview/README.md",
           "kind": "file",
-          "bytes": 278,
+          "bytes": 257,
           "mode": "100644",
-          "sha256": "8417376579670feb54a5194b3cbf4736bd1a32beb7495ee9924e4e6233ba95b2",
-          "mtimeMs": 1782550352956.2634
+          "sha256": "fc49cbcb1f78adaba4bc4241e82a190add629c850b7e652be2f19967cdd50d4d",
+          "mtimeMs": 1782842771124.4404
         },
         {
           "path": "docs/business/partnerships/FOLDER-SPEC.md",
@@ -13744,10 +13928,10 @@
         {
           "path": "docs/business/research/scorecard.md",
           "kind": "file",
-          "bytes": 2275,
+          "bytes": 2289,
           "mode": "100644",
-          "sha256": "ab97e13b70ffde99c99bda882d64a099eab81ad5fea165cf2c928cc970d41e17",
-          "mtimeMs": 1782550352942.8533
+          "sha256": "3e5b6c05f61e34d737db52249db78f19da767b307719d6899d6a5566ffb572fd",
+          "mtimeMs": 1782842778924.0115
         },
         {
           "path": "docs/business/sales/FOLDER-SPEC.md",
@@ -13792,10 +13976,10 @@
         {
           "path": "docs/business/strategy/ai-ops-cost-intelligence-platform.md",
           "kind": "file",
-          "bytes": 25554,
+          "bytes": 25582,
           "mode": "100644",
-          "sha256": "935d6a8b7e78b14637b13a86a5bf5659ae9ff782d4df9e09ff8e4d9795c04cb0",
-          "mtimeMs": 1782754622354.7449
+          "sha256": "f5824b8974a01f7ac104014cb4ec22e9d7c965be3cddccb12cf50ef58ad5c433",
+          "mtimeMs": 1782844010952.9998
         },
         {
           "path": "docs/business/strategy/ecosystem-integration.md",
@@ -13828,22 +14012,6 @@
           "mode": "100644",
           "sha256": "77ba84ea7d9f96a154af1f820c962c952760bbeaa86ac02e2457210785db6dfe",
           "mtimeMs": 1782550352961.8413
-        },
-        {
-          "path": "docs/business/strategy/legacy-FOLDER-SPEC.md",
-          "kind": "file",
-          "bytes": 544,
-          "mode": "100644",
-          "sha256": "5697c61349d93795ac0e7c6721e42d145aa78cff7f990543ce46c9ba0d2ad509",
-          "mtimeMs": 1782550352960.5488
-        },
-        {
-          "path": "docs/business/strategy/legacy-README.md",
-          "kind": "file",
-          "bytes": 324,
-          "mode": "100644",
-          "sha256": "8f87709cc6e7a3d5ee13193b5bebdaf8a279a5cd1d574419b77eaa568b494da9",
-          "mtimeMs": 1782550352959.5454
         },
         {
           "path": "docs/business/strategy/product-capability-matrix.md",
@@ -14144,10 +14312,10 @@
         {
           "path": "docs/gitbook/publish/scorecard.md",
           "kind": "file",
-          "bytes": 2291,
+          "bytes": 2305,
           "mode": "100644",
-          "sha256": "b06df3cdbc8c4d2be993f695cfe7b0b6e75a1d78cc5b8988e98187162aede552",
-          "mtimeMs": 1782550353105.861
+          "sha256": "9bba34f87b1dede34a8e7d65f65f7ab939f26030cff2d9e5002d04722de476de",
+          "mtimeMs": 1782842785720.057
         },
         {
           "path": "docs/governance/README.md",
@@ -14156,6 +14324,14 @@
           "mode": "100644",
           "sha256": "8a093c46d14ca89564f19a19bd2fae167a1f64e2be7bf1f4309a96ca3843a6ec",
           "mtimeMs": 1782550353095.1292
+        },
+        {
+          "path": "docs/governance/regulatory/README.md",
+          "kind": "file",
+          "bytes": 321,
+          "mode": "100644",
+          "sha256": "4b9c3a44f6d94549049f297febe7f0dd45ff01fd113cfb60fea6829c65962002",
+          "mtimeMs": 1782842901449.6719
         },
         {
           "path": "docs/governance/regulatory/soc2-readiness-checklist.md",
@@ -14224,10 +14400,10 @@
         {
           "path": "docs/operations/compliance/README.md",
           "kind": "file",
-          "bytes": 249,
+          "bytes": 375,
           "mode": "100644",
-          "sha256": "0d38f2dd5f9da1fd5e984c3a114388aecd1bd50b1bec4608f23d5f70c16a92c0",
-          "mtimeMs": 1782550353056.0276
+          "sha256": "d0b4d23b03d76d094ac9419b09ec9b66bfc9da2d5116ffc1f1ab8cdeac853f8d",
+          "mtimeMs": 1782840763778.1602
         },
         {
           "path": "docs/operations/coordination/README.md",
@@ -14248,34 +14424,34 @@
         {
           "path": "docs/operations/coordination/cross-repo-agent-log.md",
           "kind": "file",
-          "bytes": 64634,
+          "bytes": 64638,
           "mode": "100644",
-          "sha256": "109d0921553b12324b407c107ff09fcff42dda1e658410c5b8a7b5fe355daaed",
-          "mtimeMs": 1782823127523.9402
+          "sha256": "c145a31aa6fa65129c5bf9ccf61d3d0819d80e7fb26d88f8389fdb197e5af55f",
+          "mtimeMs": 1782844176742.7444
         },
         {
           "path": "docs/operations/coordination/fabric-os-blocking-retrospective-2026-06-25.md",
           "kind": "file",
-          "bytes": 2962,
+          "bytes": 2986,
           "mode": "100644",
-          "sha256": "717d933cf2406081e3d66eaccbdf38c6e7a2b25917eb10ead76825a4e706aa86",
-          "mtimeMs": 1782550353006.526
+          "sha256": "2ed4444f7904ca8feef5043cdc0fd19f9e8fd0993b16003b152a150fc7cfba96",
+          "mtimeMs": 1782844176803.4663
         },
         {
           "path": "docs/operations/coordination/fabric-os-fleet-unblock-register-2026-06-25.md",
           "kind": "file",
-          "bytes": 5683,
+          "bytes": 5707,
           "mode": "100644",
-          "sha256": "1957a2f3884afb0123c2ef9bced4720d7c4967091937dcda8712aaabdebadf4f",
-          "mtimeMs": 1782580323120.6753
+          "sha256": "d79899dc93497655c2d418f45d8520d54465b535b88326db0c20ba0f9fb64e56",
+          "mtimeMs": 1782844176860.7002
         },
         {
           "path": "docs/operations/coordination/fabric-os-proactive-nonblocking-ci-spec-2026-06-25.md",
           "kind": "file",
-          "bytes": 3770,
+          "bytes": 3794,
           "mode": "100644",
-          "sha256": "4ea2d88797962d2b8d6136afba2e1911307f0ca6a26c1c19c4acdfd691a1e402",
-          "mtimeMs": 1782550353007.8071
+          "sha256": "b3e99010b579cd6dfe356a4a057425781e0094e0aae6338f96d7d9f1cf9c2475",
+          "mtimeMs": 1782844176899.2134
         },
         {
           "path": "docs/operations/coordination/fleet-qa-report-2026-06-25.md",
@@ -14296,26 +14472,26 @@
         {
           "path": "docs/operations/coordination/from-fabric-os-xr-fleet-maturity-lanes-001-ack-2026-06-24.md",
           "kind": "file",
-          "bytes": 6073,
+          "bytes": 6168,
           "mode": "100644",
-          "sha256": "4603e538c245e647756efe96b38b5bfdcc92e9a6597dafe455408740928a0c03",
-          "mtimeMs": 1782550353021.6023
+          "sha256": "e993e11ffbf269c3cf36cfadc425511c0e81f5a5f521e2c4a75b09ad32ff480c",
+          "mtimeMs": 1782844176937.0723
         },
         {
           "path": "docs/operations/coordination/from-fabric-os-xr-gtm-assurance-lane-002-ack-2026-06-24.md",
           "kind": "file",
-          "bytes": 4045,
+          "bytes": 4140,
           "mode": "100644",
-          "sha256": "82b993d922286d76dbf600bcb05bfad7d81fff229d1571b2c9e4df3f9b47f66f",
-          "mtimeMs": 1782550353020.6592
+          "sha256": "77307f3abe54b04a8154dcd03b21078aae37a9d151d399ba598cbfdeda414ddd",
+          "mtimeMs": 1782844176978.4226
         },
         {
           "path": "docs/operations/coordination/from-markets-os-xr-markets-os-fresh-audit-2026-06-27.md",
           "kind": "file",
-          "bytes": 3196,
+          "bytes": 3220,
           "mode": "100644",
-          "sha256": "5e9c7896238e05b725469e30074fb9d2b6cbb507fb073c8b8e556d28cd6a7d34",
-          "mtimeMs": 1782550353016.4966
+          "sha256": "2dc45eb7327538f91c415838c9ecba9f353c198383b2f8f194955a63b144e860",
+          "mtimeMs": 1782844177020.888
         },
         {
           "path": "docs/operations/coordination/inbound/README.md",
@@ -14328,42 +14504,50 @@
         {
           "path": "docs/operations/coordination/inbound/XR-FLEET-MATURITY-LANES-001-program.md",
           "kind": "file",
-          "bytes": 9151,
+          "bytes": 9246,
           "mode": "100644",
-          "sha256": "86b3eee3805ab4ebc60c8241323a9ccde844fcc73f96006e72c4dd0395aaf53d",
-          "mtimeMs": 1782550353013.6519
+          "sha256": "c50c620e042a897dd0a5d263de6d4e3b15228458f715263eb09869e7e31520bd",
+          "mtimeMs": 1782844177084.0122
         },
         {
           "path": "docs/operations/coordination/inbound/from-agile-os-assurance-lane-handoff-2026-06-24.md",
           "kind": "file",
-          "bytes": 1786,
+          "bytes": 1881,
           "mode": "100644",
-          "sha256": "42445ad44f49f984b4c139212207d079672b167f2af7350374840f7454c6be90",
-          "mtimeMs": 1782550353014.973
+          "sha256": "6925896c3b2a77dd69d3e1d19a6e9c4598579bd7a369e1245689d9775dc387b1",
+          "mtimeMs": 1782844177123.5898
         },
         {
           "path": "docs/operations/coordination/inbound/from-bridge-os-maturity-lane-feedback-2026-06-24.md",
           "kind": "file",
-          "bytes": 4523,
+          "bytes": 4618,
           "mode": "100644",
-          "sha256": "dbd2dacbf0667d1c03f2392669483a958e829e5ca4ccd73642e8818c14d10a30",
-          "mtimeMs": 1782550353011.4834
+          "sha256": "413922cdfe674f86d1bee50aaef7870a1b0270225a748ebb58242628caf3aed7",
+          "mtimeMs": 1782844177158.8962
         },
         {
           "path": "docs/operations/coordination/inbound/from-griot-ai-f-prod06-2026-06-25.md",
           "kind": "file",
-          "bytes": 1834,
+          "bytes": 1929,
           "mode": "100644",
-          "sha256": "968ef835a22ff092b6ab38639745a2a3cfcbdb80dafe7407a09ca8fecf33ac17",
-          "mtimeMs": 1782754622191.7334
+          "sha256": "12ee2250e1bc2dc1e6193fe4e6d8ecdcd43df9b7c24738d28164853107114de8",
+          "mtimeMs": 1782844177177.3179
         },
         {
           "path": "docs/operations/coordination/inbound/from-ledger-ui-npm-token-2026-06-30.md",
           "kind": "file",
-          "bytes": 3964,
+          "bytes": 4036,
           "mode": "100644",
-          "sha256": "d3d5462f5e56f5f9292fb81f925855dd5fa4f68e898319c7f5955719370c8fd2",
-          "mtimeMs": 1782826401703.2654
+          "sha256": "f03f36e277d6a7a545cdd6f34702c6afefa5e5a8368dbf3ef5f01c753203c018",
+          "mtimeMs": 1782844177212.6812
+        },
+        {
+          "path": "docs/operations/coordination/inbound/from-ledger-ui-qasc-spec-scoring-2026-07-01.md",
+          "kind": "file",
+          "bytes": 2665,
+          "mode": "100644",
+          "sha256": "5a8978ca2cee876c5205980d80f96fed8c4c30987c36f7a74f243c4100392796",
+          "mtimeMs": 1782862493077.2144
         },
         {
           "path": "docs/operations/coordination/inbound/from-markets-os-s120-05-staging-api-preflight-response-2026-06-25.md",
@@ -14392,10 +14576,10 @@
         {
           "path": "docs/operations/coordination/infra-per-repo-action-matrix-2026-06-05.md",
           "kind": "file",
-          "bytes": 16252,
+          "bytes": 16927,
           "mode": "100644",
-          "sha256": "53c259b00690e484cc7f72bc6ee1360db315f046f6f797a828e3d68bc5f238b3",
-          "mtimeMs": 1782815051328.4414
+          "sha256": "909360a22d3353815d151ec63c03dda617cf0f8efbf9ca861c3602666add665d",
+          "mtimeMs": 1782844177263.0598
         },
         {
           "path": "docs/operations/coordination/outbound/README.md",
@@ -14408,90 +14592,98 @@
         {
           "path": "docs/operations/coordination/outbound/to-agile-os-audit-signal-ingest-2026-06-27.md",
           "kind": "file",
-          "bytes": 2889,
+          "bytes": 2984,
           "mode": "100644",
-          "sha256": "07450c98496e6254aa22f126b0b71ed2115f8e38ae48059432271182c53a2cc4",
-          "mtimeMs": 1782590114418.3274
+          "sha256": "5e6d85823a50b740ce365f48f022b03960838bdeb1a9156ded58446ebf1aa839",
+          "mtimeMs": 1782844193769.6748
         },
         {
           "path": "docs/operations/coordination/outbound/to-agile-os-open-items-correction-2026-06-25.md",
           "kind": "file",
-          "bytes": 4817,
+          "bytes": 4912,
           "mode": "100644",
-          "sha256": "cb9732397ca55a492dae0ab77f7ea243f1177330477be63b713fa4b63bd0b4ad",
-          "mtimeMs": 1782720632977.377
+          "sha256": "bbfcff0f0b053f30266f126d030726bdd57414d8c9fd4e3526cb1810a5f35e6e",
+          "mtimeMs": 1782844193803.627
         },
         {
           "path": "docs/operations/coordination/outbound/to-baseline-bridge-agent-capability-ownership-2026-06-28.md",
           "kind": "file",
-          "bytes": 3487,
+          "bytes": 3582,
           "mode": "100644",
-          "sha256": "2cffc8d543e94197b785c275ba25c134aedf6cbf269a5fe059c6299e31864ddc",
-          "mtimeMs": 1782690172762.3015
+          "sha256": "8d47257e5f4e490d543026d8745d463fb376c5899ec87b98b5d441b1a6d597e3",
+          "mtimeMs": 1782844193869.0293
         },
         {
           "path": "docs/operations/coordination/outbound/to-baseline-os-persona-producer-2026-06-28.md",
           "kind": "file",
-          "bytes": 2342,
+          "bytes": 2437,
           "mode": "100644",
-          "sha256": "736cd679da250b381112baef91cca67d4295252e740db847ffecd6363d8d304a",
-          "mtimeMs": 1782690172762.3938
+          "sha256": "c3e1540100cb2c55bb76cf6c2ba2b67578aa5eb95489502114ae3dd94efdac36",
+          "mtimeMs": 1782844193938.7178
         },
         {
           "path": "docs/operations/coordination/outbound/to-baseline-os-signal-lens-transfer-2026-06-28.md",
           "kind": "file",
-          "bytes": 2778,
+          "bytes": 2873,
           "mode": "100644",
-          "sha256": "c8f5c8b213d2cef8be1bd4889ebe140285ca01e12d1a4b2920a7d1bc9b60aef6",
-          "mtimeMs": 1782690630965.9473
+          "sha256": "4179781b89e7259f6054a6b9f71a18eec582fbf6e50859babd0a4a366735464a",
+          "mtimeMs": 1782844194006.2515
         },
         {
           "path": "docs/operations/coordination/outbound/to-baseline-os-workers-ai-glm-2026-06-28.md",
           "kind": "file",
-          "bytes": 4180,
+          "bytes": 4275,
           "mode": "100644",
-          "sha256": "de83315729ab221100fc22538ba126055433a9320842333cecb5933859fc20b6",
-          "mtimeMs": 1782616732919.8838
+          "sha256": "ea3efc099779b878d2872e7622a03ae56ab286c8ca3d181e335a38609d92f307",
+          "mtimeMs": 1782844194087.3389
         },
         {
           "path": "docs/operations/coordination/outbound/to-bridge-feat-sync-main-2026-06-28.md",
           "kind": "file",
-          "bytes": 2374,
+          "bytes": 2469,
           "mode": "100644",
-          "sha256": "4a6c2c124f25bd51986407d3b6b10efa2c8a04681a7d37dda801bb27d6fab9f4",
-          "mtimeMs": 1782690172762.5083
+          "sha256": "a41fb2495559445133ded6561f6e7ee5345a66d8fe8fe3a50116db14dbbbb5fa",
+          "mtimeMs": 1782844194129.7622
         },
         {
           "path": "docs/operations/coordination/outbound/to-bridge-os-assurance-apparatus-p0s-2026-06-27.md",
           "kind": "file",
-          "bytes": 5074,
+          "bytes": 5169,
           "mode": "100644",
-          "sha256": "ff8f2f86e654842073070840fcced7684c91a58670a4f441541326b91c30053b",
-          "mtimeMs": 1782590114433.6255
+          "sha256": "0facadbdb39224c8869d5d9943eaa7bda3a2554a87a65739a2df86de7835b355",
+          "mtimeMs": 1782844194206.2107
         },
         {
           "path": "docs/operations/coordination/outbound/to-bridge-os-infer-gtm-lane-split-2026-06-24.md",
           "kind": "file",
-          "bytes": 1435,
+          "bytes": 1530,
           "mode": "100644",
-          "sha256": "a7ddb1762f072dd2c3c054a1e9c469d4f8faf429dce334a39cd1e4f2dd8026d8",
-          "mtimeMs": 1782550353017.781
+          "sha256": "e61a5f47ca00aeea0c6f5ed7461f57cc12e2f3b1f4549357b2bd206f352f54d0",
+          "mtimeMs": 1782844194224.4587
         },
         {
           "path": "docs/operations/coordination/outbound/to-bridge-os-retire-five-core-2026-06-28.md",
           "kind": "file",
-          "bytes": 2280,
+          "bytes": 2375,
           "mode": "100644",
-          "sha256": "1cfd5c5d5fc02aad42765574943ddd7ee3222bfae94f4a51d1f5061aa320d5b9",
-          "mtimeMs": 1782762529123.8345
+          "sha256": "5480d5f24c9410dec3c9c39cfce98b78f7e67c67f24f67b72f39b0af420f37c0",
+          "mtimeMs": 1782844194252.8208
         },
         {
           "path": "docs/operations/coordination/outbound/to-canon-bridge-audit-command-registry-reconcile-2026-06-28.md",
           "kind": "file",
-          "bytes": 3823,
+          "bytes": 3918,
           "mode": "100644",
-          "sha256": "6daa1d2f32b3f23fae0202df3007ff9ace1da950d5598a63d2a60ad2ed9d4658",
-          "mtimeMs": 1782690172762.6106
+          "sha256": "4f01cc7da2bece7aa62682059b5d3e82c9cbd8ab107dad7477860182b6ca84cb",
+          "mtimeMs": 1782844194303.3826
+        },
+        {
+          "path": "docs/operations/coordination/outbound/to-ledger-ui-qasc-remediation-2026-07-01.md",
+          "kind": "file",
+          "bytes": 3310,
+          "mode": "100644",
+          "sha256": "01049f54fc83bd7551c727d317b63d280102a19a2fe1db60ecc502fdc843ca76",
+          "mtimeMs": 1782862643689.0684
         },
         {
           "path": "docs/operations/core-ops/README.md",
@@ -14560,10 +14752,10 @@
         {
           "path": "docs/operations/deployment/README.md",
           "kind": "file",
-          "bytes": 1667,
+          "bytes": 1752,
           "mode": "100644",
-          "sha256": "6a669a3e6ae7f0d5f8443c52fb1ac0e68cceadf7fa4a00042d20271d003791cc",
-          "mtimeMs": 1782825776792.5676
+          "sha256": "fefc28a75c828f5867a98bc69a3529354dc92feecbf05bdccc98b1b553adff69",
+          "mtimeMs": 1782845345014.5117
         },
         {
           "path": "docs/operations/deployment/agent-deployment-ops-instructions-2026-06-30.md",
@@ -14576,10 +14768,26 @@
         {
           "path": "docs/operations/deployment/agent-deployment-ops-shareable-brief-2026-06-30.md",
           "kind": "file",
-          "bytes": 3982,
+          "bytes": 4006,
           "mode": "100644",
-          "sha256": "e9de706e85d3a70f2916b5ee29ce255dddafce7728863c817e38fc9581c1825d",
-          "mtimeMs": 1782815051399.633
+          "sha256": "54f1809c9046aeefaede3451ff75915b598a54aa96a52f3bfd10cd6782ddc36d",
+          "mtimeMs": 1782844090496.7488
+        },
+        {
+          "path": "docs/operations/deployment/fabric-agent-qasc-deployment-handoff-stories-2026-07-01.md",
+          "kind": "file",
+          "bytes": 13721,
+          "mode": "100644",
+          "sha256": "13812c1711acab55d0cc7a99b146e4f385517ce8a6e58ba6e62968814b02fe79",
+          "mtimeMs": 1782861128394.9368
+        },
+        {
+          "path": "docs/operations/deployment/fleet-deployment-matrix-2026-06-30.md",
+          "kind": "file",
+          "bytes": 5466,
+          "mode": "100644",
+          "sha256": "b885cc204370a2a2457f06960f15ff4e350efb399a63aab5b0f5394ccf2f2627",
+          "mtimeMs": 1782874876727.6382
         },
         {
           "path": "docs/operations/deployment/github-billing-independent-deploy-handoff-2026-06-30.md",
@@ -14680,10 +14888,10 @@
         {
           "path": "docs/operations/remediation/aaas-audit-recommendations.md",
           "kind": "file",
-          "bytes": 2564,
+          "bytes": 2594,
           "mode": "100644",
-          "sha256": "ee0dd5af845a846452bad833da2ae79cb65df91aaa91fee69a89194b19a0261a",
-          "mtimeMs": 1782754621853.2788
+          "sha256": "4d5c38198308f42e633d2b143dfa09f08e47d364710e747b8212ae51d82e8d6e",
+          "mtimeMs": 1782844088929.2373
         },
         {
           "path": "docs/operations/repo/CODE_OF_CONDUCT.md",
@@ -14752,10 +14960,10 @@
         {
           "path": "docs/operations/runbooks/aiops-as-a-service.md",
           "kind": "file",
-          "bytes": 4097,
+          "bytes": 4127,
           "mode": "100644",
-          "sha256": "c8f98a8b36e7811faed24dbf1b7f40dd4c59ce52a9ecf3ce355c5d2c59714e16",
-          "mtimeMs": 1782754622026.966
+          "sha256": "dce1701169a912cd50716188d3955b027ffc5d34a3495004b9fb724d94ddf914",
+          "mtimeMs": 1782844089017.0332
         },
         {
           "path": "docs/operations/runbooks/assurance/README.md",
@@ -14926,20 +15134,28 @@
           "mtimeMs": 1782837602415.7344
         },
         {
-          "path": "docs/operations/runbooks/repo-cleanup-mpr-signal-loop.md",
+          "path": "docs/operations/runbooks/qasc-audit-requirements-2026-07-01.md",
           "kind": "file",
-          "bytes": 19527,
+          "bytes": 14029,
           "mode": "100644",
-          "sha256": "df9555e274c9c8d671bcfed19ac7c05ea66ff3f5a3af87427e684664d6eeb1e3",
-          "mtimeMs": 1782839324947.991
+          "sha256": "cd4e3737091e30aa227748cca2329dcda8a1b1a0d486bc1422be12de00c0e3e3",
+          "mtimeMs": 1782861128443.636
+        },
+        {
+          "path": "docs/operations/runbooks/qasc-protocol.md",
+          "kind": "file",
+          "bytes": 23750,
+          "mode": "100644",
+          "sha256": "fb400f4361301488f6e83afc1d6613428a6dac128a2a877242b3787b86087650",
+          "mtimeMs": 1782861146456.2324
         },
         {
           "path": "docs/operations/runbooks/soc-operations.md",
           "kind": "file",
-          "bytes": 2421,
+          "bytes": 2451,
           "mode": "100644",
-          "sha256": "6be68d704957725d6225b54f0d61547869d66001278642aa6030036bac417bc6",
-          "mtimeMs": 1782550353046.4268
+          "sha256": "3598e9c6f2f2f400bc6eb2f5acc68218431de90d431a653fdc23449442310588",
+          "mtimeMs": 1782844089227.2205
         },
         {
           "path": "docs/operations/runbooks/sre/README.md",
@@ -14976,10 +15192,10 @@
         {
           "path": "docs/operations/secas/csirt-operating-model.md",
           "kind": "file",
-          "bytes": 2312,
+          "bytes": 2342,
           "mode": "100644",
-          "sha256": "f923c82b2cf79f59b4eea6492933e1fd17249067b94c60cedffb40042958757f",
-          "mtimeMs": 1782754621688.5583
+          "sha256": "b1dd04cef60e089f80ec8cee2569486aa05a34d38b5388b394b923d0f84cdb98",
+          "mtimeMs": 1782844089252.2979
         },
         {
           "path": "docs/operations/secas/runbooks/README.md",
@@ -14992,10 +15208,10 @@
         {
           "path": "docs/operations/secas/runbooks/incident-response.md",
           "kind": "file",
-          "bytes": 1703,
+          "bytes": 1733,
           "mode": "100644",
-          "sha256": "ae083fef06062a6caef689922c32f58981577575b34576f2c2caa1ac1df5f047",
-          "mtimeMs": 1782550353058.3696
+          "sha256": "1e26cf828b36dc81a29200927c275ce08b2ec73f6c921fb116d5f537d1c61b5a",
+          "mtimeMs": 1782844089277.6455
         },
         {
           "path": "docs/operations/secas/secas-s4-security-engineering-program.md",
@@ -15024,10 +15240,10 @@
         {
           "path": "docs/operations/templates/README.md",
           "kind": "file",
-          "bytes": 247,
+          "bytes": 364,
           "mode": "100644",
-          "sha256": "27fda47ae94e981be1dfc0c518776798676d07030fa301404cc9af48e4101846",
-          "mtimeMs": 1782550353064.239
+          "sha256": "296f8a10fb7037e0a18c76e413fb9246ce78750427944861aeea77e2e1e42eec",
+          "mtimeMs": 1782840763944.2183
         },
         {
           "path": "docs/operations/workspace/README.md",
@@ -15040,10 +15256,10 @@
         {
           "path": "docs/operations/workspace/ecosystem-repo-layout-v5.md",
           "kind": "file",
-          "bytes": 2177,
+          "bytes": 2059,
           "mode": "100644",
-          "sha256": "e1b463a23553bb9ccf202fced07d6d198dcce2bf1c4cdc29d6b5505ee2adb1fe",
-          "mtimeMs": 1782550353031.087
+          "sha256": "61f37357118ddae284f7e19b90f46b49e729710e58d6e4349ca53453257dd90f",
+          "mtimeMs": 1782844011002.558
         },
         {
           "path": "docs/operations/workspace/ecosystem-repo-layout.md",
@@ -15296,10 +15512,10 @@
         {
           "path": "docs/product/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE.md",
           "kind": "file",
-          "bytes": 3735,
+          "bytes": 3800,
           "mode": "100644",
-          "sha256": "9a6af0c2ea37e475ad06408ce9b048d1f2de8a78e159c512cc046216d787dca1",
-          "mtimeMs": 1782550352992.7673
+          "sha256": "1c2becae1315bb37333e6b9fa63bac3f29f11fcf4090b7ed2e01977834cbaa24",
+          "mtimeMs": 1782844221925.7222
         },
         {
           "path": "docs/product/canon/bundles/README.md",
@@ -15312,10 +15528,10 @@
         {
           "path": "docs/product/canon/product.md",
           "kind": "file",
-          "bytes": 818,
+          "bytes": 883,
           "mode": "100644",
-          "sha256": "df176e926f952709e64deb1d4e8fc3e3582e7f4416eae3a930cef47733e89af5",
-          "mtimeMs": 1782550352991.6248
+          "sha256": "3711275f8fc61c7bfa1eba29722c2dddd0c50f387d885e69b52409fe6002677e",
+          "mtimeMs": 1782844221939.9878
         },
         {
           "path": "docs/product/roadmap/README.md",
@@ -15336,58 +15552,66 @@
         {
           "path": "docs/product/roadmap/features/FEAT-FABRIC-ASSURANCE-WITNESS-LANE.md",
           "kind": "file",
-          "bytes": 701,
+          "bytes": 785,
           "mode": "100644",
-          "sha256": "142961dda12b7828c775b2ca1d95c0910a4ad6f1b51576a0cac67128adac1775",
-          "mtimeMs": 1782550352974.8599
+          "sha256": "c43f0980c83348c785b0c7e2a6c0866f5ba32319354c0dabf3c11fa1a24676a8",
+          "mtimeMs": 1782844221997.009
         },
         {
           "path": "docs/product/roadmap/features/FEAT-FABRIC-CENTRAL-ASSURANCE-PROGRAM.md",
           "kind": "file",
-          "bytes": 555,
+          "bytes": 639,
           "mode": "100644",
-          "sha256": "83ba625fd6112e624cac51ce437e5c34dab4d9d8640c84934740848ebfeed3b2",
-          "mtimeMs": 1782550352975.9495
+          "sha256": "9b086bc48aaaad4954df6f8d2e75612b5f728a62bfcef9a22bb0d8b43c8893cf",
+          "mtimeMs": 1782844222085.0874
         },
         {
           "path": "docs/product/roadmap/features/FEAT-FABRIC-HEALTH-PROBE-LANE.md",
           "kind": "file",
-          "bytes": 426,
+          "bytes": 510,
           "mode": "100644",
-          "sha256": "d8ee8a1d8eccf545091d874aa092d5ffc401fcfa8c7153f73d67b440c42161a2",
-          "mtimeMs": 1782550352978.7969
+          "sha256": "b2ac814e754efbaaf7678ccf26b6295dde363f38d86213dca39835a763c8cd2c",
+          "mtimeMs": 1782844222131.6868
         },
         {
           "path": "docs/product/roadmap/features/FEAT-FABRIC-MATURITY-LANE-ENFORCE.md",
           "kind": "file",
-          "bytes": 508,
+          "bytes": 592,
           "mode": "100644",
-          "sha256": "cd5f3b48fef0ad91fcf701e0bd56ad7d5fb4f68946308f59b6ced276a1272575",
-          "mtimeMs": 1782550352978.0105
+          "sha256": "879091f513d1aed4a506658c991acc4620b6ca683989894468bb2ea5f97fc9f7",
+          "mtimeMs": 1782844222156.0706
         },
         {
           "path": "docs/product/roadmap/features/FEAT-FABRIC-OPS-ASSURANCE.md",
           "kind": "file",
-          "bytes": 531,
+          "bytes": 615,
           "mode": "100644",
-          "sha256": "0e44911bcfb3733564896b88b662d665998937ee37f5feb9ede887736f355525",
-          "mtimeMs": 1782550352973.69
+          "sha256": "2c4a0abc405e7a7321387224b6427333ecd68179c7264e2ac316880a7515742b",
+          "mtimeMs": 1782844222287.2424
+        },
+        {
+          "path": "docs/product/roadmap/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT.md",
+          "kind": "file",
+          "bytes": 1813,
+          "mode": "100644",
+          "sha256": "c8e34815f67ce555d4d890960d42787c775b6e61214eeab99302a3a0a8801af2",
+          "mtimeMs": 1782861693442.1091
         },
         {
           "path": "docs/product/roadmap/features/FEAT-FABRIC-SESSION-ASSURANCE-LANE.md",
           "kind": "file",
-          "bytes": 619,
+          "bytes": 703,
           "mode": "100644",
-          "sha256": "99b3b3bd2d684dcac1ea9f6080c14e04cdf4ea78829193252af6ccc41355dfb9",
-          "mtimeMs": 1782550352976.3252
+          "sha256": "a214410cdf2ddb975d1886d589ee39d8e0be2a083973c923e3d75601303e1b38",
+          "mtimeMs": 1782844222296.0583
         },
         {
           "path": "docs/product/roadmap/features/FEAT-FLEET-OPS-ASSURANCE-PROGRAM.md",
           "kind": "file",
-          "bytes": 1419,
+          "bytes": 1503,
           "mode": "100644",
-          "sha256": "73fb34369d24c8d8777f31e00e7a7b99d90af6e88bc617b4812629bf12ec7bc5",
-          "mtimeMs": 1782550352976.897
+          "sha256": "e8614f57af0389e46a49665fd588b4c627846f199658925ada55dd49bf1aa9bc",
+          "mtimeMs": 1782844222318.1958
         },
         {
           "path": "docs/product/roadmap/features/README.md",
@@ -15408,42 +15632,42 @@
         {
           "path": "docs/product/roadmap/initiatives/INIT-FABRIC-OPS-PRD-ROUTING.md",
           "kind": "file",
-          "bytes": 335,
+          "bytes": 419,
           "mode": "100644",
-          "sha256": "0d759c433a2ceade42651737eb76dc9d3ec9f759a0ec8482b366ad4dbb88f4fc",
-          "mtimeMs": 1782550352980.9097
+          "sha256": "e994e135edf702a6eb6983bd2a3933c32f39aac735f422650914e9da3f94a8dd",
+          "mtimeMs": 1782844225128.0852
         },
         {
           "path": "docs/product/roadmap/initiatives/INIT-FLEET-OPS-ASSURANCE-PROGRAM.md",
           "kind": "file",
-          "bytes": 1667,
+          "bytes": 1751,
           "mode": "100644",
-          "sha256": "3a74499630e0938a450cb982fb1ac07bdcbb061085dd020ea6bbf2a26d5b3542",
-          "mtimeMs": 1782567797409.908
+          "sha256": "6f874e9d2fce3bad33996a046ba4a55492fb9d83fb0ebdb9f6a832a9ecc3af6f",
+          "mtimeMs": 1782844225161.919
         },
         {
           "path": "docs/product/roadmap/initiatives/INIT-GTCX-INFRA-DAAS.md",
           "kind": "file",
-          "bytes": 530,
+          "bytes": 614,
           "mode": "100644",
-          "sha256": "5e263b95f01005d7f43d4925ef7fae4370fd8f9aa85ac4992f481164f123826f",
-          "mtimeMs": 1782550352981.2356
+          "sha256": "d2babfb1e7f8fe4f177c99f6a085cb2d78e639b7bba6dbb62d1b278313fcef7a",
+          "mtimeMs": 1782844225172.2803
         },
         {
           "path": "docs/product/roadmap/initiatives/INIT-GTCX-INFRA-SECAS.md",
           "kind": "file",
-          "bytes": 547,
+          "bytes": 631,
           "mode": "100644",
-          "sha256": "196c3119768ffd88bb7e5e5bfe3a1bc9bfb91ad69d35b1add4c86dc66096d282",
-          "mtimeMs": 1782550352979.1265
+          "sha256": "630bf441ba9bb3e7725a8d45267542955ebd39127f9b3e0e223cb6ace9626e0c",
+          "mtimeMs": 1782844225180.603
         },
         {
           "path": "docs/product/roadmap/initiatives/INIT-XR-FLEET-MATURITY-LANES.md",
           "kind": "file",
-          "bytes": 1360,
+          "bytes": 1444,
           "mode": "100644",
-          "sha256": "01336e68dfc10a031e589136314c365637f5a1e5200ddf82c70fbe1be05545b7",
-          "mtimeMs": 1782550352979.6196
+          "sha256": "90dfdd8fd909ace99a1fde93027ec3e63f5e4258a9adb68b750f53c66025bbe5",
+          "mtimeMs": 1782844225191.1172
         },
         {
           "path": "docs/product/roadmap/initiatives/README.md",
@@ -15456,42 +15680,42 @@
         {
           "path": "docs/product/roadmap/stories/MATURITY-LANE-FAB-001.md",
           "kind": "file",
-          "bytes": 1727,
+          "bytes": 1811,
           "mode": "100644",
-          "sha256": "1598646de8b3491e72fedaf890ccd73de94b95c51104f919ffb7645169b2dd71",
-          "mtimeMs": 1782550352985.474
+          "sha256": "71f7fb47a3a0a5aa5647d12fe05ee75edf638063c70b7430cfa52c804521b543",
+          "mtimeMs": 1782844241586.2207
         },
         {
           "path": "docs/product/roadmap/stories/MATURITY-LANE-FAB-002.md",
           "kind": "file",
-          "bytes": 1635,
+          "bytes": 1719,
           "mode": "100644",
-          "sha256": "1ff0686beb816f5f278cd8162fc0e53354eb7d122153d75004b156fb3ec24d6f",
-          "mtimeMs": 1782550352990.119
+          "sha256": "491a6791f745bbfffbff43fe2e21a72a728755ae2d7aa40463446b5e5457eeb9",
+          "mtimeMs": 1782844241619.7234
         },
         {
           "path": "docs/product/roadmap/stories/MATURITY-LANE-FAB-003.md",
           "kind": "file",
-          "bytes": 1337,
+          "bytes": 1421,
           "mode": "100644",
-          "sha256": "32286d1959738ab7e04a53c22435341d48ed92909c19e64aa3074035895404fe",
-          "mtimeMs": 1782550352989.2786
+          "sha256": "be57a2d8bb26ce360c6e1f3095b96465fc569f03ce02ef2a36b282c0ebb5210d",
+          "mtimeMs": 1782844241631.1497
         },
         {
           "path": "docs/product/roadmap/stories/MATURITY-LANE-FAB-004.md",
           "kind": "file",
-          "bytes": 1316,
+          "bytes": 1400,
           "mode": "100644",
-          "sha256": "be56df09e37f2d9822e840e02bb71746517d3a9c2bbf3a3519feae645bda262c",
-          "mtimeMs": 1782550352986.329
+          "sha256": "5a4f12c3b9379f78bb3b28313313655b269e5606ed992a5ea301360390933229",
+          "mtimeMs": 1782844241643.3652
         },
         {
           "path": "docs/product/roadmap/stories/MATURITY-LANE-FAB-005.md",
           "kind": "file",
-          "bytes": 1620,
+          "bytes": 1704,
           "mode": "100644",
-          "sha256": "99b8844e748befd5fa72e5a41153e5efcc5a80d27d7210a8f04a8ce639e526c0",
-          "mtimeMs": 1782550352983.3667
+          "sha256": "db06990902f594115367b1165b6b0bc219aac20741ff41856c822edbd70fe768",
+          "mtimeMs": 1782844241653.347
         },
         {
           "path": "docs/product/roadmap/stories/README.md",
@@ -15504,58 +15728,58 @@
         {
           "path": "docs/product/roadmap/stories/STORY-FOAP-007.md",
           "kind": "file",
-          "bytes": 941,
+          "bytes": 1025,
           "mode": "100644",
-          "sha256": "27d02df5d034a05ce3fbd3301fedc9a8d71fa43f76c91a06e522dc929c5e8931",
-          "mtimeMs": 1782550352989.6743
+          "sha256": "527476741a71900ee143592825be4f6a22decee1abe7a7d9a835e287f9d35bcd",
+          "mtimeMs": 1782844241673.7095
         },
         {
           "path": "docs/product/roadmap/stories/STORY-FOAP-009.md",
           "kind": "file",
-          "bytes": 779,
+          "bytes": 863,
           "mode": "100644",
-          "sha256": "7b20bb7fddab81a599b90421f0038815de994f749e54101af7a76b4fb4c1e6d4",
-          "mtimeMs": 1782550352988.7263
+          "sha256": "844766be7f1e70fb0ccb474685ff293203bb097970f9c1efe6ec7aa40045277f",
+          "mtimeMs": 1782844241688.1418
         },
         {
           "path": "docs/product/roadmap/stories/STORY-FOAP-010.md",
           "kind": "file",
-          "bytes": 662,
+          "bytes": 746,
           "mode": "100644",
-          "sha256": "976f3d7aeeac8aea3df34681958ac6326718c61b3525ffc47f57931f1740c757",
-          "mtimeMs": 1782550352983.851
+          "sha256": "d9aac885d7c104a7b9a2198de70cd2fcec38d0e24e2877635a0557dc17d3d117",
+          "mtimeMs": 1782844241693.544
         },
         {
           "path": "docs/product/roadmap/stories/STORY-LEGAL-PROGRAM-01.md",
           "kind": "file",
-          "bytes": 631,
+          "bytes": 715,
           "mode": "100644",
-          "sha256": "58248b82e49c74e438439aa7c0bd921921158b4fa3b2d952643ce86199892c4b",
-          "mtimeMs": 1782550352988.3071
+          "sha256": "205b428a0db07f9d3586a64933a3b9b641e84d8e2a21fda4f5c1d6766ad60ebf",
+          "mtimeMs": 1782844241701.7144
         },
         {
           "path": "docs/product/roadmap/stories/STORY-OPS-PRD-ROUTING-001.md",
           "kind": "file",
-          "bytes": 637,
+          "bytes": 721,
           "mode": "100644",
-          "sha256": "983e6e3353b85e526455d4e35b9af623cb25b8de8d356b7dfcab8ac6148eccea",
-          "mtimeMs": 1782550352984.2168
+          "sha256": "fbe4fa223a9d73ca42d41da6e6cc7d2ba1407a3ce8e3b4ba0b3a4d2317c62349",
+          "mtimeMs": 1782844241708.0767
         },
         {
           "path": "docs/product/roadmap/stories/STORY-T46.md",
           "kind": "file",
-          "bytes": 730,
+          "bytes": 814,
           "mode": "100644",
-          "sha256": "1d61c6eb61d15965a88386ba34b54772285ba576481c0a2fbf65150f79d295f3",
-          "mtimeMs": 1782550352984.7966
+          "sha256": "9fb67f3fb9943dcb6e61d325465e688a545edf6657ba51a3e253bbf4cac8dc3d",
+          "mtimeMs": 1782844241714.628
         },
         {
           "path": "docs/product/roadmap/stories/STORY-WC-SECOPS-007.md",
           "kind": "file",
-          "bytes": 904,
+          "bytes": 988,
           "mode": "100644",
-          "sha256": "59e1d4c052b7a0a8ec0be2ef3ac9f9ecccaf4efcd078dcf2f6187208c3c458fd",
-          "mtimeMs": 1782550352987.5789
+          "sha256": "827d6e2c24151b21defd859199093d3787390e303946ce7e56fd50e6e5ea3ad4",
+          "mtimeMs": 1782844241719.9678
         },
         {
           "path": "docs/product/scorecard.md",
@@ -15656,10 +15880,10 @@
         {
           "path": "docs/reference/adr/README.md",
           "kind": "file",
-          "bytes": 107,
+          "bytes": 257,
           "mode": "100644",
-          "sha256": "56d195b07ac8b322a7b8e4fc3d7c9e7e31433334cfb4a28ecf478e272dd6b9b3",
-          "mtimeMs": 1782550353116.634
+          "sha256": "13a69ebc81864474076a84812fef78d489d6e0a9a0d64a6e6517eac37724a306",
+          "mtimeMs": 1782841022427.8528
         },
         {
           "path": "docs/reference/canon/FOLDER-SPEC.md",
@@ -15680,10 +15904,10 @@
         {
           "path": "docs/reference/canon/scorecard.md",
           "kind": "file",
-          "bytes": 2241,
+          "bytes": 2255,
           "mode": "100644",
-          "sha256": "f92c9e52a6686f42842585cc911f85a1ab4d071e7054ee31f6ada3a7a595c7ae",
-          "mtimeMs": 1782550353131.616
+          "sha256": "d7216dccab1fb6fa19aa1be443a61ffa7b38d7cc48f08dd5bd092fc35216651e",
+          "mtimeMs": 1782842792748.3398
         },
         {
           "path": "docs/reference/design/FOLDER-SPEC.md",
@@ -15696,10 +15920,10 @@
         {
           "path": "docs/reference/design/README.md",
           "kind": "file",
-          "bytes": 101,
+          "bytes": 254,
           "mode": "100644",
-          "sha256": "26622cef81f4d17aa7274ea031b442b4fdd54850e0ed5bf1c9645cb53c18a7b6",
-          "mtimeMs": 1782550353115.6848
+          "sha256": "45366e8c27642ea8810e95b749e8cc2fa693c253953ffb49847a769e3084837c",
+          "mtimeMs": 1782841022605.5159
         },
         {
           "path": "docs/reference/design/canonical-layouts.md",
@@ -15728,26 +15952,26 @@
         {
           "path": "docs/reference/esg/README.md",
           "kind": "file",
-          "bytes": 51,
+          "bytes": 201,
           "mode": "100644",
-          "sha256": "b9ebdfc561f2532e2271d17cbaa5a481c4f86d57879f2c487152915d45429ca5",
-          "mtimeMs": 1782550353162.0703
+          "sha256": "81ab1b8dffe201aa5519034115e7689ec344d9a4a488262fa041537ada1b0b9b",
+          "mtimeMs": 1782841022807.3047
         },
         {
           "path": "docs/reference/evaluation/README.md",
           "kind": "file",
-          "bytes": 69,
+          "bytes": 226,
           "mode": "100644",
-          "sha256": "d4b11eaa1735faa1fc5a3e001303eb5ced697041696cc81f135ff1c067f0c2b9",
-          "mtimeMs": 1782550353163.181
+          "sha256": "f3ced064fd66413e09e1a4c682bfb2750dccd778cda2ed88b8cc04abb11ce000",
+          "mtimeMs": 1782841023020.9358
         },
         {
           "path": "docs/reference/financial/README.md",
           "kind": "file",
-          "bytes": 63,
+          "bytes": 219,
           "mode": "100644",
-          "sha256": "210f65b82587755da2b07ce5f7f9ae6df0139ec19782e88c05b795f9a8eb94d1",
-          "mtimeMs": 1782550353117.0452
+          "sha256": "c120b60e9f4619a35ca3a83211f5556af0491d2aa773636be06233862df7bffc",
+          "mtimeMs": 1782841023207.7314
         },
         {
           "path": "docs/reference/glossary.md",
@@ -15844,14 +16068,6 @@
           "mode": "100644",
           "sha256": "f6d50e412e76fa5b78f9f60417436b7f1c60372c44096fd0ba889ea4f2008e02",
           "mtimeMs": 1782550353164.8171
-        },
-        {
-          "path": "docs/reference/legacy-layer-root/architecture/legacy-FOLDER-SPEC.md",
-          "kind": "file",
-          "bytes": 556,
-          "mode": "100644",
-          "sha256": "6fdb34466be5c1109c41a3b4f7adbccdd3b9e88626ce7f04febe020f990ffa28",
-          "mtimeMs": 1782550353165.152
         },
         {
           "path": "docs/reference/legacy-top-level/FOLDER-SPEC.md",
@@ -16088,10 +16304,10 @@
         {
           "path": "docs/reference/security/README.md",
           "kind": "file",
-          "bytes": 135,
+          "bytes": 290,
           "mode": "100644",
-          "sha256": "eebb7b2ffcb1394b30fc4474e914f9b4a13188fb81244560aa9e6b83d38dbbc4",
-          "mtimeMs": 1782550353117.3474
+          "sha256": "9c4910d60167aa078212bf3aaa30285a8f5b14bf8fa35d5fc87682940dbda417",
+          "mtimeMs": 1782841023379.7515
         },
         {
           "path": "docs/reference/templates/README.md",
@@ -16112,10 +16328,10 @@
         {
           "path": "docs/reference/templates/formal/instances/README.md",
           "kind": "file",
-          "bytes": 997,
+          "bytes": 1152,
           "mode": "100644",
-          "sha256": "918ea6312aa83e20461e2dd443c7b5164f7016eb396b8f935e5708fd3f7dc83b",
-          "mtimeMs": 1782550353166.071
+          "sha256": "372c9c1ee1039702afadb443a989e1f9f67c167d05b878253f9ba35c4ad69d22",
+          "mtimeMs": 1782841023550.8093
         },
         {
           "path": "docs/reference/templates/formal/instances/fabric-os-tear-sheet.sample.json",
@@ -16152,18 +16368,10 @@
         {
           "path": "docs/strategy/README.md",
           "kind": "file",
-          "bytes": 692,
+          "bytes": 849,
           "mode": "100644",
-          "sha256": "011e3355718defeca51e7f5cb3d70fdab41dc1c349687e1bd56da2cf3d566237",
-          "mtimeMs": 1782754960952.4148
-        },
-        {
-          "path": "docs/strategy/ai-ops-cost-intelligence-platform-handoff.md",
-          "kind": "file",
-          "bytes": 10940,
-          "mode": "100644",
-          "sha256": "32f29915d65017d555749f6c39c6a2fc539d85a376fdc517da6f1bc000a5c502",
-          "mtimeMs": 1782754622516.471
+          "sha256": "9fb6013b0e3c8fad2e097a68ade9027b6de8c87bd66cbe7cd8fdacd3bae892fa",
+          "mtimeMs": 1782844011058.661
         }
       ]
     },
@@ -16217,7 +16425,7 @@
     {
       "path": "machine",
       "kind": "directory",
-      "childCount": 187,
+      "childCount": 196,
       "entries": [
         {
           "path": "machine/README.md",
@@ -16281,7 +16489,7 @@
           "bytes": 20878,
           "mode": "100644",
           "sha256": "5098ca644cdbf9235f6c77091ba27a94d9fcb86fbc1e5c906be2077a94cfb537",
-          "mtimeMs": 1782567797440.584
+          "mtimeMs": 1782860467474.877
         },
         {
           "path": "machine/canon/README.md",
@@ -16660,6 +16868,46 @@
           "mtimeMs": 1782550353534.6104
         },
         {
+          "path": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/audits/mpr.json",
+          "kind": "file",
+          "bytes": 882,
+          "mode": "100644",
+          "sha256": "aeada023cbfad6d3c324bfa4a9b688fd400320cfe0484ced47716644d37ea632",
+          "mtimeMs": 1782861581826.8005
+        },
+        {
+          "path": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/audits/signal.json",
+          "kind": "file",
+          "bytes": 706,
+          "mode": "100644",
+          "sha256": "e114b18d13d2d28cf785117112ba738d92761c99075e5d1ab42ad7e2f734d77c",
+          "mtimeMs": 1782861582167.6946
+        },
+        {
+          "path": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/feature-pack/manifest.json",
+          "kind": "file",
+          "bytes": 1776,
+          "mode": "100644",
+          "sha256": "87303cb6fb11c9d54c43c05b1cacf622305daefcf619f4d81bd5dc8b3d1ea272",
+          "mtimeMs": 1782861624744.315
+        },
+        {
+          "path": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/forensic-spec.json",
+          "kind": "file",
+          "bytes": 2326,
+          "mode": "100644",
+          "sha256": "96d8a85aa1a107cf835e3a0104ac1cf17229c2b397c2b07ef7717ff3846daf19",
+          "mtimeMs": 1782861624534.6191
+        },
+        {
+          "path": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/record.json",
+          "kind": "file",
+          "bytes": 1299,
+          "mode": "100644",
+          "sha256": "2a538027a9a776d46f6372b6d95f4a88fc62df57db3ceab97345eb9f04c8c083",
+          "mtimeMs": 1782861581172.7424
+        },
+        {
           "path": "machine/finops-friction-register.json",
           "kind": "file",
           "bytes": 1174,
@@ -16884,6 +17132,14 @@
           "mtimeMs": 1782550353447.6965
         },
         {
+          "path": "machine/roadmap/sprints/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT-sprint-plan.json",
+          "kind": "file",
+          "bytes": 1007,
+          "mode": "100644",
+          "sha256": "43e3bf34fed15554cb33c0be587c350cce36e8ccc9fafebf3d21120d21aa06b3",
+          "mtimeMs": 1782861624965.2847
+        },
+        {
           "path": "machine/roadmap/sprints/active.json",
           "kind": "file",
           "bytes": 391,
@@ -16958,10 +17214,10 @@
         {
           "path": "machine/spec/aaas-audit-contract.json",
           "kind": "file",
-          "bytes": 10062,
+          "bytes": 10134,
           "mode": "100644",
-          "sha256": "ae31d77dfdba904d0f957f097508aa0d4bb69b75d00059285ee997d4c56e04b0",
-          "mtimeMs": 1782691611685.498
+          "sha256": "10617651e49c0268c1514c2d5dd0b614c9193478585d0c2e1baf20beb5e06aff",
+          "mtimeMs": 1782843899795.7815
         },
         {
           "path": "machine/spec/aaas-audit-contract.pin.json",
@@ -16990,10 +17246,10 @@
         {
           "path": "machine/spec/aaas-framework-design-2026-06-28.md",
           "kind": "file",
-          "bytes": 14157,
+          "bytes": 14175,
           "mode": "100644",
-          "sha256": "44278f0cbdf3bd176f67793b5acb861b36fe4af5dc408a37b5555bd4c303fe67",
-          "mtimeMs": 1782704083238.1262
+          "sha256": "eaf6242cb7d64654f8766a6e13c7a611f5bcb23626ffbab640e193c6d243fd3d",
+          "mtimeMs": 1782841130906.4128
         },
         {
           "path": "machine/spec/aaas-legacy-scrub-map.json",
@@ -17066,6 +17322,14 @@
           "mode": "100644",
           "sha256": "a3ba02e0047cbc43691b04bbd3966f0458b9c1e62ee00309a7550f9cc411a632",
           "mtimeMs": 1782550353477.4282
+        },
+        {
+          "path": "machine/spec/deployment-fleet-matrix.json",
+          "kind": "file",
+          "bytes": 6867,
+          "mode": "100644",
+          "sha256": "d386857a87a9c309323b3ea059dc164eccdaca5144df5febe7e41f221a294d59",
+          "mtimeMs": 1782848543552.113
         },
         {
           "path": "machine/spec/deployment-ops-contract.json",
@@ -17522,6 +17786,22 @@
           "mode": "100644",
           "sha256": "00a95e23883b7ee0a7f773f8f342df71e0edc0c77555a9ed6034511e7e4fefdb",
           "mtimeMs": 1782550353483.3535
+        },
+        {
+          "path": "machine/spec/qasc-audit-requirements.json",
+          "kind": "file",
+          "bytes": 7545,
+          "mode": "100644",
+          "sha256": "8f85177a5b6690d0fe5f868dee997d4da789936e5fe1085aae58d0a1ed1c5175",
+          "mtimeMs": 1782862131287.6292
+        },
+        {
+          "path": "machine/spec/qasc-contract.json",
+          "kind": "file",
+          "bytes": 5064,
+          "mode": "100644",
+          "sha256": "9d30bb7d856f0f2e739364607a45e416e07b0e478f7bd53720b615c474801d49",
+          "mtimeMs": 1782862131070.0842
         },
         {
           "path": "machine/spec/retained-resource-identifiers.json",
@@ -18199,15 +18479,15 @@
     {
       "path": "package.json",
       "kind": "file",
-      "bytes": 31171,
+      "bytes": 31950,
       "mode": "100644",
-      "sha256": "97f8bbfd08b39e012cb56e35145706b6b45513be658b2881557e7cb3094bd4c9",
-      "mtimeMs": 1782839423135.8848
+      "sha256": "95520ed0de60dc56e5df22e6ebafe730801317d6cb723841ffc18dc73c905099",
+      "mtimeMs": 1782859484017.946
     },
     {
       "path": "platform",
       "kind": "directory",
-      "childCount": 891,
+      "childCount": 900,
       "entries": [
         {
           "path": "platform/README.md",
@@ -18356,26 +18636,26 @@
         {
           "path": "platform/scripts/aaas-cadence.mjs",
           "kind": "file",
-          "bytes": 7665,
+          "bytes": 7899,
           "mode": "100644",
-          "sha256": "0f5cb8c27513408f14d2f9d4af26a2d4a5c63c0138d14a474569a8670ebc2aa9",
-          "mtimeMs": 1782691891995.6882
+          "sha256": "c50f1070bff0a7354fc8f0d6a2e39de71477aac58616edd3aba1d18c0b297f7c",
+          "mtimeMs": 1782876422605.9307
         },
         {
           "path": "platform/scripts/aaas-contract-check.mjs",
           "kind": "file",
-          "bytes": 3906,
+          "bytes": 4339,
           "mode": "100644",
-          "sha256": "02a4b0110ce80535c37fdc459f8b0543a453a65903a0ff93668c39bd08e75347",
-          "mtimeMs": 1782641314222.6838
+          "sha256": "2a3889970eb60300f2a1a92ce4c07bd3ba947405fac200c767d956cf7003caac",
+          "mtimeMs": 1782843824219.5137
         },
         {
           "path": "platform/scripts/aaas-friction-check.mjs",
           "kind": "file",
-          "bytes": 4334,
+          "bytes": 3884,
           "mode": "100644",
-          "sha256": "5fbdd3efb61bda8e19ee6e7df18c8999fbce781ca433fe0ee4be063465b33542",
-          "mtimeMs": 1782570781654.563
+          "sha256": "3ccd047727a889ddcfe750d3ee0fff1acc9de1326907026fe732a83161cb18dc",
+          "mtimeMs": 1782839894288.671
         },
         {
           "path": "platform/scripts/aaas-handoff.mjs",
@@ -18388,10 +18668,10 @@
         {
           "path": "platform/scripts/aaas-honesty-gate.mjs",
           "kind": "file",
-          "bytes": 7698,
+          "bytes": 8223,
           "mode": "100644",
-          "sha256": "6618c53f83180446bfee3312f3d69df601cfab7c7956735f75d69a274cd00ccb",
-          "mtimeMs": 1782690172764.6042
+          "sha256": "49f6761c9cb7538fed95b302a45a86a712619b8fd21563d5e2ad725e31ef6624",
+          "mtimeMs": 1782840592179.2903
         },
         {
           "path": "platform/scripts/aaas-hygiene-check.mjs",
@@ -18404,10 +18684,10 @@
         {
           "path": "platform/scripts/aaas-loop.mjs",
           "kind": "file",
-          "bytes": 2375,
+          "bytes": 4058,
           "mode": "100644",
-          "sha256": "75eb594881c1d4a23c762341cf94af695a3909757955d2fdca9dbcb3c398c2c6",
-          "mtimeMs": 1782693883732.9568
+          "sha256": "b43f4c6b6d41c7f2657d78366eea89447a9895223b40be3d0b38bd7d1572fabd",
+          "mtimeMs": 1782842270665.374
         },
         {
           "path": "platform/scripts/aaas-ownership-check.mjs",
@@ -18436,10 +18716,10 @@
         {
           "path": "platform/scripts/aaas-remediation-report.mjs",
           "kind": "file",
-          "bytes": 4344,
+          "bytes": 4379,
           "mode": "100644",
-          "sha256": "c1f954221d884520659b2606fdade6859e1ac100290c7bbff00b54b05f807cee",
-          "mtimeMs": 1782690172765.0679
+          "sha256": "c5eecfef7be8573d3770347b649875737837b3e54a9d9c9306d6a28a6c703d9a",
+          "mtimeMs": 1782841130610.5203
         },
         {
           "path": "platform/scripts/aaas-report.mjs",
@@ -18468,10 +18748,10 @@
         {
           "path": "platform/scripts/aaas-signal-eval.mjs",
           "kind": "file",
-          "bytes": 7230,
+          "bytes": 7961,
           "mode": "100644",
-          "sha256": "dc09b3e22bff94556dab0d1a355956f80dd069c062d756d1ef10500987436205",
-          "mtimeMs": 1782839172982.4578
+          "sha256": "3e8c206f81b8e80ac60acb0703f308ac509e7ef6dba6faf7cf93e5d05e03bae6",
+          "mtimeMs": 1782876402428.5828
         },
         {
           "path": "platform/scripts/agent-bootstrap-check.mjs",
@@ -18636,10 +18916,10 @@
         {
           "path": "platform/scripts/codebuild-deploy-runner.mjs",
           "kind": "file",
-          "bytes": 8352,
+          "bytes": 10463,
           "mode": "100644",
-          "sha256": "40f15834f972a619233dc9cf1bd94cfb3f2f8b13a5723411d0bc011e5bab1d9b",
-          "mtimeMs": 1782816553687.8005
+          "sha256": "077d92f60e76e76c5f6d2640bfce7fcf8fa7be11dbdd25bc7704ea85caae7179",
+          "mtimeMs": 1782861262672.7188
         },
         {
           "path": "platform/scripts/codebuild-deploy-start.mjs",
@@ -18722,12 +19002,20 @@
           "mtimeMs": 1782813663717.5886
         },
         {
+          "path": "platform/scripts/deployment-fleet-matrix.mjs",
+          "kind": "file",
+          "bytes": 14495,
+          "mode": "100644",
+          "sha256": "cccced596e51555f1f690f921d66a7b96dcf888148d0ac6c5324acdb6641d9a3",
+          "mtimeMs": 1782849444474.8108
+        },
+        {
           "path": "platform/scripts/deployment-ops-contract-check.mjs",
           "kind": "file",
-          "bytes": 19757,
+          "bytes": 22521,
           "mode": "100644",
-          "sha256": "301af5b08da11337bef473b6d6f3b859374cab79f0d18a3401e02cc8fc2345b0",
-          "mtimeMs": 1782814179984.6006
+          "sha256": "279a98b852d1cd82e3def82c851bed3a8d47a590499256f2bf218a3a13d3418d",
+          "mtimeMs": 1782861312483.6074
         },
         {
           "path": "platform/scripts/docs-agents-check.mjs",
@@ -19100,10 +19388,10 @@
         {
           "path": "platform/scripts/lib/aaas-audit-registry.mjs",
           "kind": "file",
-          "bytes": 3537,
+          "bytes": 5484,
           "mode": "100644",
-          "sha256": "13a0a57785f2a08d635f7712daf9ba3159eb50d88083462039129f8afdb2e439",
-          "mtimeMs": 1782690172766.132
+          "sha256": "b8d612b259758a1aea0e5113485bc597ee31b90bef7d1706ba7cb6d3596ef514",
+          "mtimeMs": 1782843823830.5918
         },
         {
           "path": "platform/scripts/lib/aaas-cadence-predict.mjs",
@@ -19204,10 +19492,10 @@
         {
           "path": "platform/scripts/lib/docs-tree-gates.mjs",
           "kind": "file",
-          "bytes": 14272,
+          "bytes": 14628,
           "mode": "100644",
-          "sha256": "a0932a1a20b6a7e4aeafab03ffdc13818ccaa83bc8e8ffb468065def9bc626cc",
-          "mtimeMs": 1782572212690.6292
+          "sha256": "09727291f2c82ddb579a1f5ae9289a4b5334ff93c37e5fa0f861138f49d92e49",
+          "mtimeMs": 1782842912595.2952
         },
         {
           "path": "platform/scripts/lib/evaluate-gtm-readiness.mjs",
@@ -19258,6 +19546,14 @@
           "mtimeMs": 1782550348091.1643
         },
         {
+          "path": "platform/scripts/lib/qasc-loop.mjs",
+          "kind": "file",
+          "bytes": 2600,
+          "mode": "100644",
+          "sha256": "c573a798eab345a179121d5c4bac98a23aa57520d52db33534e68962c730c296",
+          "mtimeMs": 1782859017390.4946
+        },
+        {
           "path": "platform/scripts/lib/readme-central-spec-link.mjs",
           "kind": "file",
           "bytes": 1191,
@@ -19306,6 +19602,14 @@
           "mtimeMs": 1782550348098.395
         },
         {
+          "path": "platform/scripts/machine-folder-check.mjs",
+          "kind": "file",
+          "bytes": 1603,
+          "mode": "100644",
+          "sha256": "0108e342f2215ddcb5a0fcb8a237c5741a340097f3deb2c5ce4a02e8fc780337",
+          "mtimeMs": 1782840081028.1995
+        },
+        {
           "path": "platform/scripts/maturity-lane-check.mjs",
           "kind": "file",
           "bytes": 3604,
@@ -19320,14 +19624,6 @@
           "mode": "100644",
           "sha256": "a6ab591dedfbcfd736fcbe119c7c5b98f0510411dc8b08c09dfbd3b68423f8f0",
           "mtimeMs": 1782813697307.0325
-        },
-        {
-          "path": "platform/scripts/ops/__pycache__/check-workspace-root-cleanliness.cpython-312.pyc",
-          "kind": "file",
-          "bytes": 19495,
-          "mode": "100644",
-          "sha256": "a018e33e1b18117a867ba14a212c704ce85aac9aa64c54879836332cafb47718",
-          "mtimeMs": 1782839543523.9019
         },
         {
           "path": "platform/scripts/ops/check-workspace-root-cleanliness.py",
@@ -19458,36 +19754,52 @@
           "mtimeMs": 1782550348114.4504
         },
         {
+          "path": "platform/scripts/qasc-contract-check.mjs",
+          "kind": "file",
+          "bytes": 5923,
+          "mode": "100644",
+          "sha256": "b292aa127034b5f74b859574bbea697b8152e7a9493c803e7ac1299ff6804eba",
+          "mtimeMs": 1782862140432.5222
+        },
+        {
+          "path": "platform/scripts/qasc-fleet.mjs",
+          "kind": "file",
+          "bytes": 6880,
+          "mode": "100644",
+          "sha256": "58da9614e615bdd04500ca3c350e8382eabae477b7b57250c59cf4aa8514526e",
+          "mtimeMs": 1782859428148.1438
+        },
+        {
+          "path": "platform/scripts/qasc-loop-run.mjs",
+          "kind": "file",
+          "bytes": 2963,
+          "mode": "100644",
+          "sha256": "e4a80fc668dd65e108c47538a21cbefab47e3c6695101de5ddb3f0ece3c217c2",
+          "mtimeMs": 1782859160424.7231
+        },
+        {
+          "path": "platform/scripts/qasc-repo.mjs",
+          "kind": "file",
+          "bytes": 50168,
+          "mode": "100644",
+          "sha256": "cde7196041b3142da29a79fdc30356e1b965565c20fb2cb04d0498745b649be6",
+          "mtimeMs": 1782878668259.6763
+        },
+        {
+          "path": "platform/scripts/qasc-score.mjs",
+          "kind": "file",
+          "bytes": 1539,
+          "mode": "100644",
+          "sha256": "851b6b33ec834cc1957ee56e4e930b5a901da545a26c8f04f5ab22fe26cf9779",
+          "mtimeMs": 1782859234856.0854
+        },
+        {
           "path": "platform/scripts/repo-cleanup-archive-manifest.mjs",
           "kind": "file",
           "bytes": 4599,
           "mode": "100644",
           "sha256": "c6a12182cae976b9ad63e75300214a344a89a68d20475778d55d6622cd32d7f9",
           "mtimeMs": 1782839582367.2178
-        },
-        {
-          "path": "platform/scripts/repo-cleanup-mpr-signal-acceptance-loop-run.mjs",
-          "kind": "file",
-          "bytes": 3380,
-          "mode": "100644",
-          "sha256": "5ba3d2b4e8cb75f8e59a79354ff4476136a9f0743dd5c97458c6803cb9012fad",
-          "mtimeMs": 1782839013833.568
-        },
-        {
-          "path": "platform/scripts/repo-cleanup-mpr-signal-acceptance-score.mjs",
-          "kind": "file",
-          "bytes": 1447,
-          "mode": "100755",
-          "sha256": "92b75e31eb623f646e3a0935bfdb48707348cf7cf843028241d27a43dc6d9f81",
-          "mtimeMs": 1782838591391.391
-        },
-        {
-          "path": "platform/scripts/repo-cleanup-mpr-signal-acceptance.mjs",
-          "kind": "file",
-          "bytes": 24836,
-          "mode": "100644",
-          "sha256": "4aebba5c725aa75019cb7f0da6e1e1f8b3a70f592b8143e731c7952b7ca2743a",
-          "mtimeMs": 1782839398510.9424
         },
         {
           "path": "platform/scripts/repo-folder-file-spec-inventory.mjs",
@@ -19860,10 +20172,10 @@
         {
           "path": "platform/scripts/tests/aaas-audit-registry.test.mjs",
           "kind": "file",
-          "bytes": 3592,
+          "bytes": 5684,
           "mode": "100644",
-          "sha256": "2bb6a29a1e94d26967d59e24c2a452cf26dd8d1ff5836fcc772ba86f04b829d0",
-          "mtimeMs": 1782690172766.9412
+          "sha256": "7b90380ab728c87511453b84d08027c6e2904fed94cccd6a37dd04de8e02846b",
+          "mtimeMs": 1782843838217.1016
         },
         {
           "path": "platform/scripts/tests/aaas-cadence-predict.test.mjs",
@@ -19876,26 +20188,26 @@
         {
           "path": "platform/scripts/tests/aaas-cadence.test.mjs",
           "kind": "file",
-          "bytes": 2482,
+          "bytes": 2476,
           "mode": "100644",
-          "sha256": "e8f8e7f1d37729cc3329bce2c39e80b61190c38671f2aac38f146ded9277db3d",
-          "mtimeMs": 1782592377565.2725
+          "sha256": "1f1106e41cccd0d9e25e560094a4763182e375d04581cdd3c322662b17d29577",
+          "mtimeMs": 1782839848867.3948
         },
         {
           "path": "platform/scripts/tests/aaas-cli-integration.test.mjs",
           "kind": "file",
-          "bytes": 3654,
+          "bytes": 3820,
           "mode": "100644",
-          "sha256": "6a440fc8fd12138c03a91fdbdac5abce434ae1d046df9e7892c4d04e88acedd3",
-          "mtimeMs": 1782691584838.225
+          "sha256": "66170b155fdf4324c38efedfa30efffa26caadf723982ac59d145795d70c17c6",
+          "mtimeMs": 1782876940929.7476
         },
         {
           "path": "platform/scripts/tests/aaas-framework-design.test.mjs",
           "kind": "file",
-          "bytes": 6454,
+          "bytes": 6673,
           "mode": "100644",
-          "sha256": "0e5a88db68008e5be90bc8370acbbe3a9bd19479f5a95f40e460a69b3e50e769",
-          "mtimeMs": 1782690172767.1846
+          "sha256": "1aeea8565eee728ed0e4dbae7540074902ab41df619497d14801a53d2beaabec",
+          "mtimeMs": 1782842343320.225
         },
         {
           "path": "platform/scripts/tests/aaas-handoff.test.mjs",
@@ -19908,10 +20220,18 @@
         {
           "path": "platform/scripts/tests/aaas-honesty-gate.test.mjs",
           "kind": "file",
-          "bytes": 6485,
+          "bytes": 7105,
           "mode": "100644",
-          "sha256": "bf46d025c5c25dee21a6dde1b15fe6c29c413d48b174d3149c68fe5d2c039122",
-          "mtimeMs": 1782580313051.4172
+          "sha256": "79b1eb74597a8445cda721e45da2c292ad3e4bfccbfe21f71b50ebd4ef90da07",
+          "mtimeMs": 1782840592343.9343
+        },
+        {
+          "path": "platform/scripts/tests/aaas-loop.test.mjs",
+          "kind": "file",
+          "bytes": 803,
+          "mode": "100644",
+          "sha256": "34793088316f0ee9436a75a49f00cde7c5704a996ad9066c87ae03c6f7b6cdb9",
+          "mtimeMs": 1782841453088.9414
         },
         {
           "path": "platform/scripts/tests/aaas-ownership.test.mjs",
@@ -19938,12 +20258,20 @@
           "mtimeMs": 1782550348036.9856
         },
         {
+          "path": "platform/scripts/tests/deployment-fleet-matrix.test.mjs",
+          "kind": "file",
+          "bytes": 2005,
+          "mode": "100644",
+          "sha256": "5263e81f69f865345d329e1d46c8290c2b028d108ca79c1fcdd5a428d16eb78f",
+          "mtimeMs": 1782845429825.5984
+        },
+        {
           "path": "platform/scripts/tests/deployment-ops-cli.test.mjs",
           "kind": "file",
-          "bytes": 4459,
+          "bytes": 6157,
           "mode": "100644",
-          "sha256": "6fb0ced0896ed758995f88d61c91bcc24ecddb89061580e157d46cc7c3930d56",
-          "mtimeMs": 1782808596325.092
+          "sha256": "a20f15c93e2ab5a055477cac48037237cfb72c153ccc946a7d18fd6baae8f402",
+          "mtimeMs": 1782861262883.7456
         },
         {
           "path": "platform/scripts/tests/fabric-lanes-check.test.mjs",
@@ -19954,20 +20282,44 @@
           "mtimeMs": 1782550348036.2947
         },
         {
-          "path": "platform/scripts/tests/repo-cleanup-mpr-signal-acceptance-loop-run.test.mjs",
+          "path": "platform/scripts/tests/qasc-contract-check.test.mjs",
           "kind": "file",
-          "bytes": 1060,
+          "bytes": 784,
           "mode": "100644",
-          "sha256": "3e21e429501c898032b3824234d200cca48a6deb05d6aacd71027b3beab113d2",
-          "mtimeMs": 1782838949642.3284
+          "sha256": "9f667c750d05ed81cf6edaf50ca248c575fd2c70dc16c2efcd134a166506748b",
+          "mtimeMs": 1782862152976.9119
         },
         {
-          "path": "platform/scripts/tests/repo-cleanup-mpr-signal-acceptance.test.mjs",
+          "path": "platform/scripts/tests/qasc-fleet.test.mjs",
           "kind": "file",
-          "bytes": 2968,
+          "bytes": 1932,
           "mode": "100644",
-          "sha256": "fc63eeb8e5b6ab7bd0ed7471b461e6235f915e990b738706cbc105108cd78e14",
-          "mtimeMs": 1782838518807.4387
+          "sha256": "59b8cf22b4367e05cc98c52e2cdbb6742790d2545a440d4e1d7b3a47b2d8900e",
+          "mtimeMs": 1782859235692.7886
+        },
+        {
+          "path": "platform/scripts/tests/qasc-loop-run.test.mjs",
+          "kind": "file",
+          "bytes": 1381,
+          "mode": "100644",
+          "sha256": "4e0239f8ff110c9791463c3cba1ab005df25297ade3a2cc20c883bbf5fa4fb42",
+          "mtimeMs": 1782859161843.3152
+        },
+        {
+          "path": "platform/scripts/tests/qasc-loop.test.mjs",
+          "kind": "file",
+          "bytes": 3051,
+          "mode": "100644",
+          "sha256": "a5df4e7e049e6be93ddd4ae8818ae317330c7947198ccb6e236c1bd4f5468d26",
+          "mtimeMs": 1782859018556.805
+        },
+        {
+          "path": "platform/scripts/tests/qasc-repo.test.mjs",
+          "kind": "file",
+          "bytes": 5311,
+          "mode": "100644",
+          "sha256": "5cd23a89c8bd38e557eb3f36c0a2307c4795a5eee5a33664e47bf6bf5b3a1ddf",
+          "mtimeMs": 1782874184716.001
         },
         {
           "path": "platform/scripts/tests/shared-root-concurrency-check.test.mjs",
@@ -24500,10 +24852,10 @@
         {
           "path": "platform/tools/scripts/docs-link-checker.mjs",
           "kind": "file",
-          "bytes": 4388,
+          "bytes": 6000,
           "mode": "100644",
-          "sha256": "7cc57402e1297c90ddde88c05752cdcc4774ccdd81e6927ac0294aef985ec428",
-          "mtimeMs": 1782550345432.918
+          "sha256": "8fd5a585c8aa36387373e743abb0fd684c73ba37fda0f9ad3ee939830252a774",
+          "mtimeMs": 1782842748374.1038
         },
         {
           "path": "platform/tools/scripts/docs-standard-validator.mjs",
@@ -25335,7 +25687,7 @@
           "bytes": 57,
           "mode": "100644",
           "sha256": "ec6bd321ae9ba772178fa7c29ef210cba3801aa0b95cc0ae7efe88e6a58f38e3",
-          "mtimeMs": 1782820904850.492
+          "mtimeMs": 1782843316888.2747
         }
       ]
     },
@@ -25349,24 +25701,24 @@
           "kind": "file",
           "bytes": 183,
           "mode": "100644",
-          "sha256": "696e5c923ea94070a5e4e50b8d7c3e56efc46182e4ddedf142d2affafa613bb9",
-          "mtimeMs": 1782837601567.797
+          "sha256": "5d5cb052d212bd0b312c74d032d17937ea211a5e1afbc07d026af925fe1ebe1d",
+          "mtimeMs": 1782879248416.236
         },
         {
           "path": "pm/ci/settlement-push-latest.json",
           "kind": "file",
           "bytes": 195,
           "mode": "100644",
-          "sha256": "5ed0214004ccae7a910c617b51312fea3ef47c5a32531c7b32b85cb25fb0953e",
-          "mtimeMs": 1782837612033.3704
+          "sha256": "b093e9ae493cd19c9d4d24ab120278f70194e2e87e390151cfa7b7a1db7cc6fd",
+          "mtimeMs": 1782879255792.1301
         },
         {
           "path": "pm/ci/settlement-story-scope-latest.json",
           "kind": "file",
           "bytes": 423,
           "mode": "100644",
-          "sha256": "7799fb7678366b91c0027e85e3148115d774855b037a3c08bd51d9a70bfc49ec",
-          "mtimeMs": 1782837601556.5112
+          "sha256": "d07b773a0cc699e3192a55e8ddace8b565b388c9f2774aedbd9b299ffd08c410",
+          "mtimeMs": 1782879248409.373
         },
         {
           "path": "pm/product/prd-index.json",
@@ -25429,7 +25781,7 @@
     {
       "path": "workstream",
       "kind": "directory",
-      "childCount": 119,
+      "childCount": 121,
       "entries": [
         {
           "path": "workstream/FOLDER-SPEC.md",
@@ -25498,18 +25850,18 @@
         {
           "path": "workstream/sessions/ci/session-ceremony-latest.json",
           "kind": "file",
-          "bytes": 5887,
+          "bytes": 6426,
           "mode": "100644",
-          "sha256": "12b730843804fe0c91bc7e187aee2e4d6585d9db087835afa639364b2db847e0",
-          "mtimeMs": 1782706191279.6372
+          "sha256": "d72877d0eac82c5acd16846b2c54d9d3410129ddd4e102f0f53065b26eb621b5",
+          "mtimeMs": 1782840634461.3086
         },
         {
           "path": "workstream/sessions/ci/session-forensic-compliance-latest.json",
           "kind": "file",
           "bytes": 565,
           "mode": "100644",
-          "sha256": "58490a5fac3c35efbfac8718147aea436171a89d2a24a92bbc032dc35a6d17c9",
-          "mtimeMs": 1782814867830.6646
+          "sha256": "b11317d37a5f2a8e2ee1ffc5d091d9efa6d5b02d31b67171c8113e7b0b7962a2",
+          "mtimeMs": 1782840629872.5886
         },
         {
           "path": "workstream/sessions/ci/session-handoff-latest.json",
@@ -25524,8 +25876,8 @@
           "kind": "file",
           "bytes": 311,
           "mode": "100644",
-          "sha256": "f8551074fbcb47bae45c642e79e6af3a3b59e9e377fa0c3560295bc0aeb75a88",
-          "mtimeMs": 1782814867821.5374
+          "sha256": "bda04844dc71d5315faddc8dad85777719bfb2a40a9348719067b6066ca2b1d6",
+          "mtimeMs": 1782840629863.968
         },
         {
           "path": "workstream/sessions/ci/session-trajectory-latest.md",
@@ -25533,7 +25885,7 @@
           "bytes": 336,
           "mode": "100644",
           "sha256": "01351a4732fa635338998636426b4e40f8b052db9cfa459d5ce498f306c7af1a",
-          "mtimeMs": 1782706191280.1616
+          "mtimeMs": 1782840634462.7131
         },
         {
           "path": "workstream/sessions/ci/snapshots/session-open-items-c457e6f2-f920-4693-b04b-744036e12e44-2026-06-26T00-27-30-460Z.json",
@@ -25944,6 +26296,14 @@
           "mtimeMs": 1782550342992.9639
         },
         {
+          "path": "workstream/sessions/ledger/ea9388db-5150-4466-b629-1438a0869ea7.json",
+          "kind": "file",
+          "bytes": 2227,
+          "mode": "100644",
+          "sha256": "684a6775f399914dae8ce4cf44967e78c9037c7f3f8b7870d476d3ed676dd877",
+          "mtimeMs": 1782840629871.5154
+        },
+        {
           "path": "workstream/sessions/ledger/f40038c2-6a31-4b83-a37f-2ad661691cd3.json",
           "kind": "file",
           "bytes": 2094,
@@ -26334,6 +26694,14 @@
           "mode": "100644",
           "sha256": "1b5e873ba19667e5d72ffe3d1f6ab125adbc795fdf44ebb098ba8dd0e62fd441",
           "mtimeMs": 1782550342951.8396
+        },
+        {
+          "path": "workstream/sessions/transcripts/ea9388db-5150-4466-b629-1438a0869ea7.json",
+          "kind": "file",
+          "bytes": 347,
+          "mode": "100644",
+          "sha256": "bc6a17cae0a0e9a6483db805ad903214519951f7c92bd95af2d7ac21cbd6a3b8",
+          "mtimeMs": 1782840629864.1763
         },
         {
           "path": "workstream/sessions/transcripts/f40038c2-6a31-4b83-a37f-2ad661691cd3.json",

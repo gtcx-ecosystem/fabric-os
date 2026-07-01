@@ -3,9 +3,9 @@
   "coreId": "A1-PRODUCT-EXCELLENCE",
   "slug": "product-excellence",
   "repo": "fabric-os",
-  "date": "2026-06-30",
-  "score10": 10,
-  "score100": 100,
+  "date": "2026-07-01",
+  "score10": 7,
+  "score100": 70,
   "score100Raw": 100,
   "status": "rubric-driven",
   "source": "run-five-core-audit",
@@ -39,7 +39,7 @@
     {
       "id": "build-or-test-green",
       "label": "Build or test script present and runnable",
-      "pass": true,
+      "pass": false,
       "severity": "P1",
       "cap100": 70
     },
@@ -51,20 +51,27 @@
       "cap100": 85
     }
   ],
-  "capsFired": [],
+  "capsFired": [
+    {
+      "id": "gate-build-or-test-green",
+      "label": "Gate failed: Build or test script present and runnable",
+      "ceiling100": 70,
+      "trigger": "build-or-test-green"
+    }
+  ],
   "openP0": 0,
   "openP1": 0,
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-30.json",
+  "rubricSourcePath": "audit/audit-output-2026-07-01.json",
   "checks": {
     "buildScript": {
       "ok": true,
       "detail": "build or test script"
     },
     "testRun": {
-      "ok": true,
-      "code": 0,
-      "out": "ERROR  Unknown option: 'passWithNoTests'\nFor help, run: pnpm help test"
+      "ok": false,
+      "code": 1,
+      "out": "> fabric-os@0.1.0 test /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> bash ./deploy/03-platform/scripts/validate.sh quick && node --test platform/scripts/tests/**/*.test.mjs\n\n\u001b[0;36m[INFO]\u001b[0m Running workflow policy checks...\n\n> fabric-os@0.1.0 check:fine-tune-workflow-policy /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node platform/tools/policy/check-fine-tune-workflow-policy.mjs\n\nFine-tune workflow policy checks passed\n\n> fabric-os@0.1.0 check:workflow-image-contract /Users/amanianai/Sites/gtcx-ecosystem/fabric-os\n> node platform/tools/policy/check-workflow-image-contract.mjs\n\nWork"
     },
     "uxSpecs": {
       "ok": true,
@@ -75,6 +82,6 @@
       "detail": "EXR pack or N/A"
     }
   },
-  "gaps": [],
+  "gaps": ["testRun"],
   "runbook": "audit/runbooks/A1-product-excellence.md"
 }

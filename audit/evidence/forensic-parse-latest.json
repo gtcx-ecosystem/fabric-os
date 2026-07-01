@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://baseline-os/forensic-parse-artifact/v1",
   "programId": "FORENSIC-PARSE-001",
-  "parsedAt": "2026-06-30T17:30:25.111Z",
+  "parsedAt": "2026-07-01T07:38:25.013Z",
   "repo": "fabric-os",
   "corpus": {
     "docs": {
@@ -24,7 +24,6 @@
         "docs/architecture/integration/README.md",
         "docs/architecture/integration/narrative/FOLDER-SPEC.md",
         "docs/architecture/integration/narrative/README.md",
-        "docs/architecture/integration/narrative/legacy-README.md",
         "docs/architecture/narratives/README.md",
         "docs/architecture/narratives/agent-topology-2026-q3.md",
         "docs/architecture/narratives/cloudflare-workers-ai-glm-assessment-2026-06-27.md",
@@ -46,8 +45,6 @@
         "docs/architecture/specs/design/README.md",
         "docs/architecture/specs/frontend/README.md",
         "docs/architecture/specs/index.md",
-        "docs/architecture/specs/legacy-FOLDER-SPEC.md",
-        "docs/architecture/specs/legacy-README.md",
         "docs/architecture/specs/system-overview.md",
         "docs/architecture/specs/testing/README.md",
         "docs/business/FOLDER-SPEC.md",
@@ -76,6 +73,8 @@
         "docs/business/market/secondary-market.md",
         "docs/business/market/stakeholder-analysis.md",
         "docs/business/market/tertiary-market.md",
+        "docs/business/opportunity/README.md",
+        "docs/business/opportunity/ai-ops-cost-intelligence-platform-handoff.md",
         "docs/business/overview/FOLDER-SPEC.md",
         "docs/business/overview/README.md",
         "docs/business/partnerships/FOLDER-SPEC.md",
@@ -86,7 +85,8 @@
         "docs/business/research/ecosystem-overview.md",
         "docs/business/research/funding-analysis.md",
         "docs/business/research/industry-transformation.md",
-        "docs/business/research/master-voice.md"
+        "docs/business/research/master-voice.md",
+        "docs/business/research/research-portfolio-blueprint.md"
       ],
       "initiativeIds": [
         "INIT-DOCS-FOUNDATION-IA-V1",
@@ -175,28 +175,30 @@
         "INIT-HUB-SCOPE-GUARD",
         "XR-CANON-AGENT-WORKTREE-062",
         "DOC-MPR-FLEET-SCRUB-003",
-        "INIT-EXEC-GAP"
+        "INIT-EXEC-GAP",
+        "BL-O-01",
+        "INIT-M7-"
       ]
     },
     "sessions": {
-      "ledgerCount": 49,
-      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-baseline-os/agent-transcripts/3577dbe4-16a2-449b-92d4-5f56d9f622ba/3577dbe4-16a2-449b-92d4-5f56d9f622ba.jsonl",
-      "transcriptLines": 417,
-      "userQueryCount": 10
+      "ledgerCount": 50,
+      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-terminal-os/agent-transcripts/263b9aa0-e1e4-4a43-989d-ef45b46c912e/263b9aa0-e1e4-4a43-989d-ef45b46c912e.jsonl",
+      "transcriptLines": 357,
+      "userQueryCount": 14
     }
   },
   "layerBindings": {
     "persona": {
-      "primary": "platform-engineer",
-      "confidence": 0.7551020408163265,
+      "primary": "platform-architect",
+      "confidence": 0.7596153846153846,
       "candidates": [
+        {
+          "personaId": "platform-architect",
+          "weight": 27
+        },
         {
           "personaId": "platform-engineer",
           "weight": 25
-        },
-        {
-          "personaId": "platform-architect",
-          "weight": 24
         }
       ]
     },
@@ -209,7 +211,6 @@
         "['documentation', 'architecture/decisions']",
         "['documentation', 'architecture/diagrams']",
         "['documentation', 'architecture/integration']",
-        "['pointer', 'documentation']",
         "[['signal', 'architecture', 'agents']]",
         "['llm-routing', 'cloudflare', 'workers-ai', 'glm', 'sovereignty', 'cost-router']",
         "['documentation', 'architecture/pillars']",
@@ -218,7 +219,6 @@
         "['documentation', 'architecture/security']",
         "['documentation', 'architecture/specs']",
         "['aaas', 'audit', 'honesty-gate', 'assurance']",
-        "['documentation', 'specs']",
         "['documentation', 'business']",
         "['documentation', 'business/case-studies']",
         "['documentation', 'business/customers']",
@@ -226,13 +226,14 @@
         "['documentation', 'business/domain']",
         "['documentation', 'business/economics']",
         "['documentation', 'business/market']",
+        "[fabric-os, business, opportunity]",
+        "[fabric-os, business]",
         "['documentation', 'overview']",
         "['documentation', 'business/partnerships']",
         "['documentation', 'business/research']",
         "['documentation', 'business/sales']",
         "['documentation', 'business/strategy']",
         "['strategy', 'protocol', 'coo', 'documentation']",
-        "['documentation', 'strategy']",
         "['overview', 'documentation']",
         "['documentation', 'business/use-cases']",
         "['protocol', 'documentation']",
@@ -242,7 +243,8 @@
         "['documentation', 'gitbook/docs-site']",
         "['external', 'docs-site', 'distribution']",
         "[['docs-site', 'architecture']]",
-        "[['docs-site', 'audit-signer', 'reference']]"
+        "[['docs-site', 'audit-signer', 'reference']]",
+        "[['docs-site', 'compliance-db', 'terraform', 'reference']]"
       ],
       "confidence": 0.75
     },
@@ -255,6 +257,7 @@
         "agent:next-work",
         "cost-route",
         "aaas:honesty:check",
+        "--dir",
         "ai:cost:manifest",
         "ai:cost:manifest:write",
         "fabric:ops:check",
@@ -270,7 +273,6 @@
         "start",
         "agent:start",
         "agent:session-start",
-        "--dir",
         "session",
         "canon:synthesize",
         "add",
@@ -301,47 +303,49 @@
         "griot:prod:verify:write",
         "ci:npm-token:readiness",
         "package-registry:continuity:check",
+        "qasc:contract:check",
+        "qasc:test",
+        "qasc:repo",
+        "qasc:fleet",
         "markets:staging:verify",
         "w2:staging-prereq-check",
-        "staging:pilot-smoke",
-        "secas:cards:check",
-        "persona:read-witness",
-        "ecosystem:agent:conduct:check",
-        "fabric:ops-lanes-11pr:check"
+        "staging:pilot-smoke"
       ],
       "commands": [
         "baseline start",
+        "baseline session:",
         "baseline session",
-        "pnpm script",
-        "baseline files",
-        "baseline directory",
-        "baseline file",
-        "pnpm fleet:ceremony:check:write",
-        "baseline completion",
-        "baseline audit",
-        "baseline shows",
+        "pnpm session",
         "pnpm operations:check",
-        "pnpm context",
-        "pnpm invocations",
-        "baseline scores",
-        "pnpm ops:check"
+        "pnpm agent:protocols:check",
+        "pnpm agent:work-selection:check",
+        "pnpm ceremony:check:write",
+        "pnpm format:check",
+        "pnpm test",
+        "Baseline session",
+        "pnpm --dir",
+        "pnpm agile:check",
+        "pnpm agent:next-work",
+        "pnpm docs:check-links",
+        "pnpm docs:ia:check",
+        "pnpm docs:foundation:check",
+        "pnpm canon:synthesize:check",
+        "pnpm qasc:score",
+        "pnpm qasc:repo:write",
+        "pnpm ux:measure:lighthouse",
+        "pnpm ux:measure:run",
+        "pnpm docs:feature-spec:check"
       ]
     },
     "studio": {
-      "deliverables": [
-        "folder-spec",
-        "docs-integrity-pack",
-        "relocation-report",
-        "docs-integrity",
-        "folder-spec",
-        "deliverable"
-      ],
+      "deliverables": ["folder-spec", "docs-integrity-pack", "relocation-report"],
       "provenanceRequired": true
     },
     "skills": ["doc-standard", "docs-machine-readable", "repo-hygiene", "compliance-audit"],
     "initiatives": [
       "BL-001",
       "BL-002",
+      "BL-O-01",
       "BL-SOC2",
       "DOC-MPR-FLEET-SCRUB-003",
       "DOC-PROMOTION-M4",
@@ -366,6 +370,7 @@
       "INIT-GTCX-SERVICE-FABRIC",
       "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
       "INIT-HUB-SCOPE-GUARD",
+      "INIT-M7-",
       "INIT-OPS-LANES-OPERATIONALIZE",
       "INIT-PRODUCT-TEAM-MODEL-R5",
       "INIT-WORLD-CLASS-SECOPS",
@@ -445,6 +450,14 @@
       "text": "Active initiative reference: BL-002",
       "source": "docs+sessions",
       "refs": ["BL-002"],
+      "confidence": 0.85
+    },
+    {
+      "id": "initiative:BL-O-01",
+      "kind": "initiative",
+      "text": "Active initiative reference: BL-O-01",
+      "source": "docs+sessions",
+      "refs": ["BL-O-01"],
       "confidence": 0.85
     },
     {
@@ -544,20 +557,12 @@
       "confidence": 0.85
     },
     {
-      "id": "initiative:INIT-EXEC-GAP",
-      "kind": "initiative",
-      "text": "Active initiative reference: INIT-EXEC-GAP",
-      "source": "docs+sessions",
-      "refs": ["INIT-EXEC-GAP"],
-      "confidence": 0.85
-    },
-    {
-      "id": "persona:platform-engineer",
+      "id": "persona:platform-architect",
       "kind": "persona",
-      "text": "Dominant persona signal: platform-engineer",
+      "text": "Dominant persona signal: platform-architect",
       "source": "sessions+transcript",
-      "refs": ["platform-engineer"],
-      "confidence": 0.7551020408163265
+      "refs": ["platform-architect"],
+      "confidence": 0.7596153846153846
     },
     {
       "id": "lang:docs:foundation:check",
@@ -616,6 +621,14 @@
       "confidence": 0.7
     },
     {
+      "id": "lang:--dir",
+      "kind": "lang",
+      "text": "Lang expression observed: --dir",
+      "source": "docs",
+      "refs": ["--dir"],
+      "confidence": 0.7
+    },
+    {
       "id": "lang:ai:cost:manifest",
       "kind": "lang",
       "text": "Lang expression observed: ai:cost:manifest",
@@ -632,49 +645,41 @@
       "confidence": 0.7
     },
     {
-      "id": "lang:fabric:ops:check",
-      "kind": "lang",
-      "text": "Lang expression observed: fabric:ops:check",
-      "source": "docs",
-      "refs": ["fabric:ops:check"],
-      "confidence": 0.7
-    },
-    {
-      "id": "query:df519545",
+      "id": "query:ec3d51b2",
       "kind": "operator-intent",
-      "text": "Thursday, Jun 25, 2026, 3:52 AM (UTC+2)\n\nBriefly inform the user about the task result and perform any follow-up actions (if needed).",
+      "text": "ready to ship? feature EXR ? UX scores?",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:df519545",
+      "id": "query:3aea8b81",
       "kind": "operator-intent",
-      "text": "Thursday, Jun 25, 2026, 3:52 AM (UTC+2)\n\nBriefly inform the user about the task result and perform any follow-up actions (if needed).",
+      "text": "feature spec quality ? fractal MPR scores?",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:46f25638",
+      "id": "query:ce69f304",
       "kind": "operator-intent",
-      "text": "Thursday, Jun 25, 2026, 4:56 AM (UTC+2)\n\ncomplete a fresh audit of each repo based on your last audit",
+      "text": "report saved?",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:91c6ce87",
+      "id": "query:a1a1cec2",
       "kind": "operator-intent",
-      "text": "Thursday, Jun 25, 2026, 5:24 AM (UTC+2)\n\nwhat needs to happen next?",
+      "text": "shipped? ux-audit? strong?",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:135bd04e",
+      "id": "query:20574628",
       "kind": "operator-intent",
-      "text": "Thursday, Jun 25, 2026, 5:26 AM (UTC+2)\n\non a branch?",
+      "text": "UX remediation",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65

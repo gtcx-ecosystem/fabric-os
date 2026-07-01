@@ -136,6 +136,46 @@
         "worldClass": 100,
         "trustAndSafety": 100
       }
+    },
+    {
+      "ts": "2026-07-01T05:10:25.306Z",
+      "metrics": {
+        "compliance": 100,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 100
+      }
+    },
+    {
+      "ts": "2026-07-01T05:30:51.730Z",
+      "metrics": {
+        "compliance": 100,
+        "technicalExcellence": 100,
+        "craft": 100,
+        "worldClass": 100,
+        "trustAndSafety": 100
+      }
+    },
+    {
+      "ts": "2026-07-01T06:40:16.270Z",
+      "metrics": {
+        "compliance": 69,
+        "technicalExcellence": 93,
+        "craft": 97,
+        "worldClass": 94,
+        "trustAndSafety": 92
+      }
+    },
+    {
+      "ts": "2026-07-01T06:43:42.140Z",
+      "metrics": {
+        "compliance": 69,
+        "technicalExcellence": 93,
+        "craft": 97,
+        "worldClass": 94,
+        "trustAndSafety": 92
+      }
     }
   ]
 }

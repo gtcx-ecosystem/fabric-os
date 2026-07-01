@@ -1,32 +1,25 @@
 {
   "schema": "gtcx://audit/composite/v2",
   "repo": "fabric-os",
-  "date": "2026-06-30",
-  "composite100": 93,
-  "composite100Raw": 93,
+  "date": "2026-07-01",
+  "composite100": 92.5,
+  "composite100Raw": 100,
   "productionReady": true,
   "openP0": 0,
   "openP1": 0,
   "capsFired": [
     {
-      "id": "gate-deploy-path-documented",
-      "label": "Gate failed: Deploy path exists",
-      "ceiling100": 85,
-      "trigger": "deploy-path-documented",
-      "coreId": "A2-PRODUCTION-GRADE"
-    },
-    {
-      "id": "gate-pm-folder-requirements",
-      "label": "Gate failed: pm/manifest.json present",
-      "ceiling100": 85,
-      "trigger": "pm-folder-requirements",
-      "coreId": "A5-REPO-HYGIENE"
+      "id": "gate-build-or-test-green",
+      "label": "Gate failed: Build or test script present and runnable",
+      "ceiling100": 70,
+      "trigger": "build-or-test-green",
+      "coreId": "A1-PRODUCT-EXCELLENCE"
     }
   ],
   "cores": {
     "A1-PRODUCT-EXCELLENCE": {
       "slug": "product-excellence",
-      "score100": 100,
+      "score100": 70,
       "score100Raw": 100,
       "weight": 0.25,
       "status": "rubric-driven",
@@ -59,13 +52,13 @@
     },
     "A2-PRODUCTION-GRADE": {
       "slug": "production-grade",
-      "score100": 85,
-      "score100Raw": 85,
+      "score100": 100,
+      "score100Raw": 100,
       "weight": 0.2,
       "status": "rubric-driven",
       "metrics": {
         "production-readiness": {
-          "score100": 85,
+          "score100": 100,
           "weight": 1,
           "confidence": "A",
           "source": "audit-output"
@@ -122,8 +115,8 @@
     },
     "A5-REPO-HYGIENE": {
       "slug": "repo-hygiene",
-      "score100": 80,
-      "score100Raw": 80,
+      "score100": 100,
+      "score100Raw": 100,
       "weight": 0.2,
       "status": "probe-gates-only",
       "metrics": {
@@ -160,5 +153,5 @@
   "source": "run-five-core-audit",
   "status": "rubric-driven",
   "rubricSource": "audit-output",
-  "rubricSourcePath": "audit/audit-output-2026-06-30.json"
+  "rubricSourcePath": "audit/audit-output-2026-07-01.json"
 }

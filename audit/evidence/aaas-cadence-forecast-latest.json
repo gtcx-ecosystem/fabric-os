@@ -1,82 +1,82 @@
 {
   "schema": "gtcx://fabric-os/aaas-cadence-forecast/v1",
-  "snapshots": 13,
+  "snapshots": 17,
   "intervalDays": 0.1,
   "metricCount": 11,
   "regressions": [],
   "forecasts": [
     {
-      "metric": "worldClass",
-      "current": 100,
+      "metric": "technicalExcellence",
+      "current": 93,
       "threshold": 85,
-      "breachInSnapshots": 227.5,
-      "breachInDays": 34
+      "breachInSnapshots": 36.3,
+      "breachInDays": 5.2
     },
     {
-      "metric": "technicalExcellence",
-      "current": 100,
+      "metric": "worldClass",
+      "current": 94,
       "threshold": 85,
-      "breachInSnapshots": 303.3,
-      "breachInDays": 45.3
+      "breachInSnapshots": 52.5,
+      "breachInDays": 7.6
     },
     {
       "metric": "craft",
-      "current": 100,
+      "current": 97,
       "threshold": 85,
-      "breachInSnapshots": 455,
-      "breachInDays": 68
+      "breachInSnapshots": 139.9,
+      "breachInDays": 20.2
     }
   ],
   "metrics": {
     "compliance": {
-      "current": 100,
-      "previous": 100,
+      "current": 69,
+      "previous": 69,
       "trend": "improving",
-      "slopePerSnapshot": 3.42,
+      "slopePerSnapshot": 1.52,
       "delta": 0,
       "regressed": false,
       "crossedBelow": false,
-      "forecastSnaps": null,
+      "forecastSnaps": 0,
       "threshold": 85
     },
     "technicalExcellence": {
-      "current": 100,
-      "previous": 100,
+      "current": 93,
+      "previous": 93,
       "trend": "flat",
-      "slopePerSnapshot": -0.05,
+      "slopePerSnapshot": -0.22,
       "delta": 0,
       "regressed": false,
       "crossedBelow": false,
-      "forecastSnaps": 303.3,
+      "forecastSnaps": 36.3,
       "threshold": 85
     },
     "craft": {
-      "current": 100,
-      "previous": 100,
+      "current": 97,
+      "previous": 97,
       "trend": "flat",
-      "slopePerSnapshot": -0.03,
+      "slopePerSnapshot": -0.09,
       "delta": 0,
       "regressed": false,
       "crossedBelow": false,
-      "forecastSnaps": 455,
+      "forecastSnaps": 139.9,
       "threshold": 85
     },
     "worldClass": {
-      "current": 100,
-      "previous": 100,
+      "current": 94,
+      "previous": 94,
       "trend": "flat",
-      "slopePerSnapshot": -0.07,
+      "slopePerSnapshot": -0.17,
       "delta": 0,
       "regressed": false,
       "crossedBelow": false,
-      "forecastSnaps": 227.5,
+      "forecastSnaps": 52.5,
       "threshold": 85
     },
     "trustAndSafety": {
-      "current": 100,
-      "previous": 100,
+      "current": 92,
+      "previous": 92,
       "trend": "improving",
-      "slopePerSnapshot": 0.62,
+      "slopePerSnapshot": 0.52,
       "delta": 0,
       "regressed": false,
       "crossedBelow": false,
@@ -151,6 +151,6 @@
     }
   },
   "ok": true,
-  "checkedAt": "2026-06-30T18:15:22.579Z",
+  "checkedAt": "2026-07-01T06:43:42.140Z",
   "repo": "fabric-os"
 }

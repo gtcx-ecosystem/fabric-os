@@ -2,7 +2,7 @@
   "schema": "gtcx://fabric-os/aaas-friction-check/v1",
   "initiative": "INIT-GTCX-SERVICE-FABRIC",
   "service": "AAAS",
-  "checkedAt": "2026-06-30T18:15:22.544Z",
+  "checkedAt": "2026-07-01T06:43:42.104Z",
   "owner": "fabric-os",
   "harness": "bridge-os/audit:mpr:repo:run",
   "gates": {
@@ -20,8 +20,8 @@
     },
     "mprProbe": {
       "ok": true,
-      "exit": 0,
-      "maturityBelowBenchmark": false,
+      "exit": 2,
+      "maturityBelowBenchmark": true,
       "skipped": false
     },
     "mprWitness": {

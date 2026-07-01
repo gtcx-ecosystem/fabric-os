@@ -41,15 +41,16 @@ Report:
 | ----------------- | ----: |
 | `local-complete`  |     1 |
 | `fabric-provider` |     1 |
-| `delegated`       |     7 |
+| `delegated`       |     8 |
 | `exempt`          |     0 |
-| `gap`             |    12 |
+| `gap`             |    11 |
 
 Known complete/provider repos:
 
 - `gtcx-os` — `local-complete`
 - `fabric-os` — `fabric-provider`
 - `baseline-os` — `delegated`
+- `compliance-os` — `delegated`
 - `document-os` — `delegated`
 - `exploration-os` — `delegated`
 - `ledger-ui` — `delegated`
@@ -107,7 +108,6 @@ Partial QASC-only delegation is not sufficient for QASC/DSLC/SHIP parity.
 | `agile-os`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `bridge-os`     | gap                      | Add local triplet or full Fabric delegation; keep Bridge as reference/runtime metadata, not protocol owner. |
 | `canon-os`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `compliance-os` | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `ecosystem-os`  | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `griot-ai`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `inspection-os` | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
@@ -126,7 +126,7 @@ pnpm qasc:dslc:ship:fleet-parity:write
 pnpm qasc:dslc:ship:fleet-parity:strict -- --repos <repo>
 ```
 
-Fleet strict is expected to remain nonzero until all 12 gap repos are
+Fleet strict is expected to remain nonzero until all 11 gap repos are
 remediated or explicitly exempted by Fabric contract.
 
 ## Boundary

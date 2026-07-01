@@ -463,10 +463,17 @@ function scoreTable(rows) {
 
 function summarizeGitStatus(statusText) {
   const lines = String(statusText ?? '').split('\n').filter(Boolean);
-  if (lines.length <= 1) return statusText || 'git status unavailable';
+  const divergence = branchDivergence(lines[0]);
+  if (lines.length <= 1) return divergence || statusText || 'git status unavailable';
   const dirty = lines.slice(1);
   const preview = dirty.slice(0, 25).join('; ');
-  return `git status -sb: ${dirty.length} dirty entr${dirty.length === 1 ? 'y' : 'ies'}${preview ? `; ${preview}` : ''}${dirty.length > 25 ? '; ...' : ''}`;
+  return `git status -sb: ${dirty.length} dirty entr${dirty.length === 1 ? 'y' : 'ies'}${divergence ? `; ${divergence}` : ''}${preview ? `; ${preview}` : ''}${dirty.length > 25 ? '; ...' : ''}`;
+}
+
+export function branchDivergence(statusHeader) {
+  const header = String(statusHeader ?? '');
+  const match = header.match(/\[(?<state>[^\]]*(?:ahead|behind|gone)[^\]]*)\]/i);
+  return match?.groups?.state ? `branch divergence: ${match.groups.state}` : null;
 }
 
 function isQascOutputStatusLine(line) {
@@ -631,7 +638,8 @@ function buildWitness() {
   const statusLines = status.stdout.split('\n').filter(Boolean);
   const dirtyStatusLines = statusLines.slice(1).filter((line) => !(WRITE && isQascOutputStatusLine(line)));
   const effectiveStatus = [statusLines[0], ...dirtyStatusLines].filter(Boolean).join('\n');
-  const clean = status.exitCode === 0 && dirtyStatusLines.length === 0;
+  const diverged = branchDivergence(statusLines[0]);
+  const clean = status.exitCode === 0 && dirtyStatusLines.length === 0 && !diverged;
   const branch = statusLines[0]?.replace(/^##\s*/, '') ?? null;
   const commit = git(['rev-parse', 'HEAD']).stdout || null;
   const sc = scripts();

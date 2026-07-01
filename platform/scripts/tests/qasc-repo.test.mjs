@@ -5,7 +5,7 @@ import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { scoreJson } from '../qasc-repo.mjs';
+import { branchDivergence, scoreJson } from '../qasc-repo.mjs';
 
 const SCRIPTS = join(dirname(fileURLToPath(import.meta.url)), '..');
 const REPO = join(SCRIPTS, '../..');
@@ -23,6 +23,13 @@ describe('GTCX QASC repository scorer', () => {
         aggregate: { ok: true },
       },
     }), 100);
+  });
+
+  it('treats unpushed or out-of-date branch state as SCM divergence', () => {
+    assert.equal(branchDivergence('## main...origin/main [ahead 20]'), 'branch divergence: ahead 20');
+    assert.equal(branchDivergence('## main...origin/main [behind 2]'), 'branch divergence: behind 2');
+    assert.equal(branchDivergence('## main...origin/main [ahead 1, behind 1]'), 'branch divergence: ahead 1, behind 1');
+    assert.equal(branchDivergence('## main...origin/main'), null);
   });
 
   it('emits the required acceptance witness shape in JSON mode', () => {

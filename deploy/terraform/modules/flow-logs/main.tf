@@ -42,6 +42,8 @@ variable "name_prefix" {
   default     = "gtcx"
 }
 
+data "aws_region" "current" {}
+
 resource "aws_cloudwatch_log_group" "flow_logs" {
   name              = "/${var.name_prefix}/vpc/flow-logs"
   retention_in_days = var.log_retention_days
@@ -84,19 +86,13 @@ resource "aws_iam_role_policy" "flow_logs" {
       {
         Effect = "Allow"
         Action = [
+          "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:PutLogEvents",
+          "logs:DescribeLogGroups",
           "logs:DescribeLogStreams"
         ]
-        Resource = "${aws_cloudwatch_log_group.flow_logs.arn}:*"
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "logs:CreateLogGroup",
-          "logs:DescribeLogGroups"
-        ]
-        Resource = "*"
+        Resource = "arn:aws:logs:${data.aws_region.current.region}:*:log-group:/aws/vpc-flow-log/${var.name_prefix}*"
       }
     ]
   })

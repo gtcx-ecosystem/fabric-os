@@ -27,7 +27,7 @@ const requiredCommands = {
   'ship:release': 'node platform/scripts/ship-release.mjs',
   'ship:release:write': 'node platform/scripts/ship-release.mjs --write',
   'ship:test':
-    'node --test platform/scripts/tests/ship-contract-check.test.mjs platform/scripts/tests/ship-release.test.mjs',
+    'node --test platform/scripts/tests/ship-contract-check.test.mjs platform/scripts/tests/ship-release.test.mjs platform/scripts/tests/qasc-dslc-ship-fleet-parity.test.mjs',
 };
 
 const controls = [

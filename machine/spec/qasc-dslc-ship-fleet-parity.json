@@ -1,0 +1,114 @@
+{
+  "$schema": "gtcx://fabric-os/qasc-dslc-ship-fleet-parity/v1",
+  "version": "1.0.0",
+  "updated": "2026-07-01",
+  "ownerRepo": "fabric-os",
+  "status": "current",
+  "protocolIds": ["GTCX-QASC-001", "GTCX-DSLC-001", "GTCX-SHIP-001"],
+  "purpose": "Classify every active GTCX package repository against the Fabric-owned QASC, DSLC, and SHIP protocol model without moving ownership to bridge-os.",
+  "sourceHandoff": "docs/operations/coordination/inbound/from-bridge-os-qasc-dslc-ship-fleet-parity-2026-07-01.md",
+  "ownership": {
+    "fleetParityContract": "fabric-os",
+    "aaasOrchestration": "fabric-os",
+    "qascContract": "fabric-os/machine/spec/qasc-contract.json",
+    "dslcContract": "fabric-os/machine/spec/dslc-contract.json",
+    "shipContract": "fabric-os/machine/spec/ship-contract.json",
+    "runtimeAndCrossRepoMetadata": "bridge-os",
+    "localImplementationEvidence": "repo owner"
+  },
+  "classifications": {
+    "local-complete": "Repo carries local QASC, DSLC, and SHIP scripts, specs, and current latest witnesses.",
+    "fabric-provider": "Fabric-owned central provider surface for AaaS/QASC/DSLC/SHIP contracts and release commands.",
+    "delegated": "Repo intentionally delegates all required protocol gates to Fabric through pinned contract references and current delegated witnesses.",
+    "exempt": "Repo is explicitly exempt by this versioned Fabric contract with reason, owner, review date, and impact.",
+    "gap": "Repo has no valid local, delegated, provider, or exempt status."
+  },
+  "activeRepos": [
+    "agile-os",
+    "baseline-os",
+    "bridge-os",
+    "canon-os",
+    "compliance-os",
+    "document-os",
+    "ecosystem-os",
+    "exploration-os",
+    "fabric-os",
+    "griot-ai",
+    "gtcx-os",
+    "inspection-os",
+    "ledger-os",
+    "ledger-ui",
+    "markets-os",
+    "nyota-ai",
+    "sensei-os",
+    "terminal-os",
+    "terra-os",
+    "venture-os",
+    "veritas-ai"
+  ],
+  "providerRepos": {
+    "fabric-os": {
+      "reason": "Fabric is the central AaaS and QASC/DSLC/SHIP protocol provider.",
+      "requiredScripts": [
+        "qasc:repo",
+        "qasc:fleet",
+        "qasc:contract:check",
+        "qasc:dslc:ship:fleet-parity",
+        "qasc:dslc:ship:fleet-parity:write",
+        "qasc:dslc:ship:fleet-parity:strict",
+        "dslc:release",
+        "dslc:contract:check",
+        "ship:release",
+        "ship:contract:check",
+        "aaas:contract:check"
+      ],
+      "requiredSpecs": [
+        "machine/spec/qasc-contract.json",
+        "machine/spec/dslc-contract.json",
+        "machine/spec/ship-contract.json",
+        "machine/spec/qasc-dslc-ship-fleet-parity.json",
+        "machine/spec/aaas-command-surface.json"
+      ]
+    }
+  },
+  "localCompleteRequirements": {
+    "scripts": ["qasc:check", "dslc:check", "ship:check"],
+    "specs": [
+      "machine/spec/qasc-protocol.json",
+      "machine/spec/dslc-protocol.json",
+      "machine/spec/release-readiness-benchmark.json"
+    ],
+    "witnesses": ["machine/ci/qasc-protocol-latest.json", "machine/ci/dslc-protocol-latest.json"],
+    "anyShipWitness": [
+      "audit/evidence/gtcx-os-ship-latest.json",
+      "audit/evidence/ship-latest.json",
+      "audit/evidence/desktop-ship-latest.json",
+      "machine/ci/ship-latest.json",
+      "machine/ci/release-readiness-latest.json"
+    ]
+  },
+  "delegatedRequirements": {
+    "pinFiles": [
+      "machine/spec/aaas-audit-contract.pin.json",
+      "machine/spec/qasc-contract.pin.json",
+      "machine/spec/dslc-contract.pin.json",
+      "machine/spec/ship-contract.pin.json"
+    ],
+    "scriptsAny": {
+      "qasc": ["qasc:repo", "qasc:repo:write", "qasc:check"],
+      "dslc": ["dslc:release", "dslc:check"],
+      "ship": ["ship:release", "ship:check"]
+    },
+    "witnessesAny": {
+      "qasc": ["audit/evidence/qasc-repo-latest.json", "machine/ci/qasc-protocol-latest.json"],
+      "dslc": ["audit/evidence/dslc-release-latest.json", "machine/ci/dslc-protocol-latest.json"],
+      "ship": ["audit/evidence/ship-release-latest.json", "audit/evidence/ship-latest.json"]
+    }
+  },
+  "exemptions": {},
+  "evidence": {
+    "witness": "audit/evidence/qasc-dslc-ship-fleet-parity-latest.json",
+    "report": "audit/reports/qasc-dslc-ship-fleet-parity-YYYY-MM-DD.md",
+    "outboundHandoffs": "docs/operations/coordination/outbound/to-<repo>-qasc-dslc-ship-parity-YYYY-MM-DD.md"
+  }
+}

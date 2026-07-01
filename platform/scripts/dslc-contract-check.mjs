@@ -26,7 +26,7 @@ const requiredCommands = {
   'dslc:release': 'node platform/scripts/dslc-release.mjs',
   'dslc:release:write': 'node platform/scripts/dslc-release.mjs --write',
   'dslc:test':
-    'node --test platform/scripts/tests/dslc-contract-check.test.mjs platform/scripts/tests/dslc-release.test.mjs',
+    'node --test platform/scripts/tests/dslc-contract-check.test.mjs platform/scripts/tests/dslc-release.test.mjs platform/scripts/tests/qasc-dslc-ship-fleet-parity.test.mjs',
 };
 
 const requiredLanes = ['deployment', 'sales', 'legal', 'communications'];

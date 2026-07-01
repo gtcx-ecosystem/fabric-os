@@ -30,6 +30,11 @@ const requiredCommands = {
   'qasc:fleet': 'node platform/scripts/qasc-fleet.mjs',
   'qasc:fleet:write': 'node platform/scripts/qasc-fleet.mjs --write',
   'qasc:fleet:strict': 'node platform/scripts/qasc-fleet.mjs --strict',
+  'qasc:dslc:ship:fleet-parity': 'node platform/scripts/qasc-dslc-ship-fleet-parity.mjs',
+  'qasc:dslc:ship:fleet-parity:write':
+    'node platform/scripts/qasc-dslc-ship-fleet-parity.mjs --write',
+  'qasc:dslc:ship:fleet-parity:strict':
+    'node platform/scripts/qasc-dslc-ship-fleet-parity.mjs --strict',
 };
 
 const controls = [
@@ -45,7 +50,11 @@ const controls = [
   },
   {
     id: 'benchmarks',
-    score100: Object.values(contract?.benchmarks ?? {}).every((value) => value === 100 || value === 'L5') ? 100 : 0,
+    score100: Object.values(contract?.benchmarks ?? {}).every(
+      (value) => value === 100 || value === 'L5'
+    )
+      ? 100
+      : 0,
     evidence: contract?.benchmarks ?? null,
   },
   {
@@ -60,20 +69,23 @@ const controls = [
   },
   {
     id: 'agile-production-package-controls',
-    score100: [
-      'Product-intent source',
-      'Machine-readable standardization',
-      'Forensic spec',
-      'Package MPR',
-      'Package SIGNAL',
-      'Production spec package',
-      'Scrum handoff',
-      'Backlog compatibility only',
-    ].every((name) => contract?.requiredControls?.includes(name))
-      && auditRequirements?.principle?.includes('production-package workflow')
-      && auditRequirements?.globalControls?.some((control) => control.id === 'backlog-compatibility-only')
-      ? 100
-      : 0,
+    score100:
+      [
+        'Product-intent source',
+        'Machine-readable standardization',
+        'Forensic spec',
+        'Package MPR',
+        'Package SIGNAL',
+        'Production spec package',
+        'Scrum handoff',
+        'Backlog compatibility only',
+      ].every((name) => contract?.requiredControls?.includes(name)) &&
+      auditRequirements?.principle?.includes('production-package workflow') &&
+      auditRequirements?.globalControls?.some(
+        (control) => control.id === 'backlog-compatibility-only'
+      )
+        ? 100
+        : 0,
     evidence: {
       auditRequirementsRef: contract?.auditRequirementsRef ?? null,
       addedControlCount: auditRequirements?.qascScorerRequiredAdditions?.length ?? 0,
@@ -81,11 +93,14 @@ const controls = [
   },
   {
     id: 'folder-file-product-spec-alignment-control',
-    score100: contract?.requiredControls?.includes('Folder/file/product spec alignment')
-      && auditRequirements?.globalControls?.some((control) => control.id === 'folder-file-product-spec-alignment')
-      && auditRequirements?.qascScorerRequiredAdditions?.includes('folder-file-product-spec-alignment')
-      ? 100
-      : 0,
+    score100:
+      contract?.requiredControls?.includes('Folder/file/product spec alignment') &&
+      auditRequirements?.globalControls?.some(
+        (control) => control.id === 'folder-file-product-spec-alignment'
+      ) &&
+      auditRequirements?.qascScorerRequiredAdditions?.includes('folder-file-product-spec-alignment')
+        ? 100
+        : 0,
     evidence: {
       requiredControl: 'Folder/file/product spec alignment',
       auditRequirement: 'folder-file-product-spec-alignment',
@@ -93,12 +108,16 @@ const controls = [
   },
   {
     id: 'command-surface',
-    score100: Object.entries(requiredCommands).every(([name, command]) => scripts[name] === command) ? 100 : 0,
+    score100: Object.entries(requiredCommands).every(([name, command]) => scripts[name] === command)
+      ? 100
+      : 0,
     evidence: requiredCommands,
   },
   {
     id: 'legacy-command-scrub',
-    score100: Object.keys(scripts).some((name) => name.startsWith('repo-cleanup:mpr-signal')) ? 0 : 100,
+    score100: Object.keys(scripts).some((name) => name.startsWith('repo-cleanup:mpr-signal'))
+      ? 0
+      : 100,
     evidence: Object.keys(scripts).filter((name) => name.startsWith('repo-cleanup:mpr-signal')),
   },
   {
@@ -108,8 +127,11 @@ const controls = [
       'platform/scripts/qasc-repo.mjs',
       'platform/scripts/qasc-loop-run.mjs',
       'platform/scripts/qasc-fleet.mjs',
+      'platform/scripts/qasc-dslc-ship-fleet-parity.mjs',
       'platform/scripts/lib/qasc-loop.mjs',
-    ].every((rel) => existsSync(join(ROOT, rel))) ? 100 : 0,
+    ].every((rel) => existsSync(join(ROOT, rel)))
+      ? 100
+      : 0,
     evidence: 'QASC runbook, repository scorer, loop, fleet runner, and loop library',
   },
   {
@@ -119,10 +141,11 @@ const controls = [
   },
   {
     id: 'external-assurance-boundary',
-    score100: /blocksProductRelease=true/.test(contract?.enforcementModel?.releaseBoundary ?? '')
-      && /cannot claim an external certification/.test(contract?.enforcementModel?.claimBoundary ?? '')
-      ? 100
-      : 0,
+    score100:
+      /blocksProductRelease=true/.test(contract?.enforcementModel?.releaseBoundary ?? '') &&
+      /cannot claim an external certification/.test(contract?.enforcementModel?.claimBoundary ?? '')
+        ? 100
+        : 0,
     evidence: {
       releaseBoundary: contract?.enforcementModel?.releaseBoundary ?? null,
       claimBoundary: contract?.enforcementModel?.claimBoundary ?? null,
@@ -130,7 +153,9 @@ const controls = [
   },
 ];
 
-const score100 = Math.round(controls.reduce((sum, control) => sum + control.score100, 0) / controls.length);
+const score100 = Math.round(
+  controls.reduce((sum, control) => sum + control.score100, 0) / controls.length
+);
 const witness = {
   schema: 'gtcx://fabric-os/qasc-contract-check/v1',
   generatedAt: new Date().toISOString(),

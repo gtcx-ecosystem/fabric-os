@@ -219,6 +219,7 @@
     "controlStatuses": ["pending", "satisfied", "blocked", "not-applicable"],
     "readyRule": "QASC is at benchmark and every applicable control in every lane required by the release class is satisfied.",
     "notApplicableRule": "A required control may be marked not-applicable only with a rationale, named approver, and evidence of the approved applicability determination. A bare not-applicable status remains below benchmark.",
+    "approvalRule": "A Class A or Class S control marked satisfied is below benchmark unless it has evidence and a named approver. Agents may record the evidence but cannot synthesize the approval.",
     "releaseBoundary": "Sales, legal, and communications controls block only the activation they govern. They do not block an internal engineering deployment unless the release class requires that lane or a versioned release manifest explicitly binds the control.",
     "claimBoundary": "DSLC records legal, financial, and public-communications decisions; an agent cannot make a legal determination, execute a signature, recognize revenue, approve pricing, or authorize a public claim.",
     "segregationOfDuties": "The same actor must not both originate and sovereignly approve a legal instrument, pricing exception, revenue-recognition decision, or public disclosure."
@@ -226,7 +227,7 @@
   "commands": {
     "contractEnforcement": "pnpm dslc:contract:check",
     "releaseEvaluation": "pnpm dslc:release -- --manifest <path>",
-    "releaseEvidence": "pnpm dslc:release:write -- --manifest <path>",
+    "releaseEvidence": "pnpm dslc:release:write -- --manifest <path> --output-root <repo-root>",
     "tests": "pnpm dslc:test"
   },
   "evidence": {
@@ -239,6 +240,7 @@
     "ownerRing": ["fabric-os", "canon-os", "agile-os", "bridge-os"],
     "commercialPilotRing": ["markets-os", "ledger-os", "ledger-ui", "terminal-os"],
     "regulatedOperationsRing": ["compliance-os", "terra-os", "inspection-os", "exploration-os"],
-    "fleetExpansionRule": "Add a repository only after one real release manifest is evaluated, ownership gaps are recorded, and the repository can consume the canonical command surface without copying the protocol."
+    "fleetExpansionRule": "Add a repository only after one real release manifest is evaluated, ownership gaps are recorded, and the repository can consume the canonical command surface without copying the protocol.",
+    "evidenceOwnershipRule": "Cross-repo evaluations must pass --output-root <repo-root> so the release witness and report remain owned by the repository they describe."
   }
 }

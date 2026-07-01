@@ -71,6 +71,7 @@ const manifestArg = arg('--manifest');
 if (!manifestArg) fail('Usage: dslc-release.mjs --manifest <path> [--write] [--json]');
 
 const manifestPath = resolve(process.cwd(), manifestArg);
+const outputRoot = resolve(process.cwd(), arg('--output-root') ?? ROOT);
 if (!existsSync(manifestPath)) fail(`DSLC manifest not found: ${manifestArg}`);
 
 let manifest;
@@ -114,19 +115,24 @@ for (const [laneName, laneContract] of Object.entries(CONTRACT.lanes)) {
   const results = applicable.map((control) => {
     const entry = observed.get(control.id);
     const evidenced = (entry?.evidence?.length ?? 0) > 0;
+    const approvalRequired = ['A', 'S'].includes(control.authorityClass);
+    const approved = !approvalRequired || Boolean(entry?.approver?.trim());
     const approvedNotApplicable =
       entry?.status === 'not-applicable' &&
       evidenced &&
       Boolean(entry.rationale?.trim()) &&
       Boolean(entry.approver?.trim());
-    const atBenchmark = (entry?.status === 'satisfied' && evidenced) || approvedNotApplicable;
+    const atBenchmark =
+      (entry?.status === 'satisfied' && evidenced && approved) || approvedNotApplicable;
     if (!atBenchmark) {
       blockers.push({
         lane: laneName,
         control: control.id,
         authorityClass: control.authorityClass,
         reason: entry
-          ? `status=${entry.status}; evidence=${entry.evidence?.length ?? 0}`
+          ? `status=${entry.status}; evidence=${entry.evidence?.length ?? 0}; approver=${
+              entry.approver ?? 'missing'
+            }`
           : 'control missing',
       });
     }
@@ -182,6 +188,7 @@ const witness = {
   protocolId: CONTRACT.protocolId,
   contractVersion: CONTRACT.version,
   manifest: manifestArg,
+  outputRoot,
   releaseId: manifest.releaseId,
   repo: manifest.repo,
   releaseClass: manifest.releaseClass,
@@ -199,8 +206,8 @@ const witness = {
 
 if (WRITE) {
   const id = safeId(manifest.releaseId);
-  const evidence = join(ROOT, `audit/evidence/dslc-release-${id}-latest.json`);
-  const report = join(ROOT, `audit/reports/dslc-decision-${id}-${witness.date}.md`);
+  const evidence = join(outputRoot, `audit/evidence/dslc-release-${id}-latest.json`);
+  const report = join(outputRoot, `audit/reports/dslc-decision-${id}-${witness.date}.md`);
   mkdirSync(dirname(evidence), { recursive: true });
   mkdirSync(dirname(report), { recursive: true });
   writeFileSync(evidence, `${JSON.stringify(witness, null, 2)}\n`);

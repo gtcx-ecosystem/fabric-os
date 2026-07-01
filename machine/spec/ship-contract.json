@@ -200,6 +200,7 @@
     "controlStatuses": ["pending", "satisfied", "blocked", "not-applicable"],
     "readyRule": "DSLC is ready at 100/100 and every applicable SHIP control in every required pillar is satisfied or has an approved not-applicable determination.",
     "notApplicableRule": "A required control may be marked not-applicable only with rationale, named approver, and evidence of the applicability determination.",
+    "approvalRule": "A Class A or Class S control marked satisfied is below benchmark unless it has evidence and a named approver. Agents may record the evidence but cannot synthesize the approval.",
     "postDslcBoundary": "SHIP is the final release-management check after DSLC. It can block formal shipment even when DSLC passed, but it cannot override a DSLC blocker.",
     "claimBoundary": "SHIP records legal, public-release, billing, and product-readiness approvals; an agent cannot synthesize a legal signature, revenue-recognition approval, public claim, or human release-manager attestation.",
     "segregationOfDuties": "The same actor must not both originate and sovereignly approve a legal instrument, public disclosure, pricing exception, revenue-recognition decision, or final release-manager attestation."
@@ -208,7 +209,7 @@
     "contractEnforcement": "pnpm ship:contract:check",
     "contractEvidence": "pnpm ship:contract:check:write",
     "releaseEvaluation": "pnpm ship:release -- --manifest <path>",
-    "releaseEvidence": "pnpm ship:release:write -- --manifest <path>",
+    "releaseEvidence": "pnpm ship:release:write -- --manifest <path> --output-root <repo-root>",
     "tests": "pnpm ship:test"
   },
   "evidence": {
@@ -220,6 +221,7 @@
   "rollout": {
     "ownerRing": ["fabric-os", "canon-os", "agile-os", "bridge-os"],
     "productRing": ["markets-os", "ledger-ui", "terminal-os", "compliance-os"],
-    "rule": "A repository may claim v1 shipped only after QASC, DSLC, and SHIP evidence exist for the same release unit."
+    "rule": "A repository may claim v1 shipped only after QASC, DSLC, and SHIP evidence exist for the same release unit.",
+    "evidenceOwnershipRule": "Cross-repo evaluations must pass --output-root <repo-root> so the release witness and report remain owned by the repository they describe."
   }
 }

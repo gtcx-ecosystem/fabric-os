@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { describe, it } from 'node:test';
@@ -19,6 +19,9 @@ function manifest(status = 'satisfied') {
         id: control.id,
         status,
         evidence: status === 'satisfied' ? [`evidence/${control.id}.json`] : [],
+        ...(status === 'satisfied' && ['A', 'S'].includes(control.authorityClass)
+          ? { approver: `${control.authorityClass.toLowerCase()}-approver` }
+          : {}),
       })),
     };
   }
@@ -88,6 +91,22 @@ describe('GTCX DSLC release evaluator', () => {
     assert.equal(witness.decision, 'ready');
   });
 
+  it('requires an approver for satisfied Class A controls', () => {
+    const input = manifest();
+    const rollout = input.lanes.deployment.controls.find(
+      (control) => control.id === 'deployment-rollout-rollback'
+    );
+    delete rollout.approver;
+    const result = run(input);
+    assert.equal(result.status, 1, result.stderr);
+    const witness = JSON.parse(result.stdout);
+    assert.equal(witness.decision, 'incomplete');
+    assert.equal(
+      witness.blockers.find((blocker) => blocker.control === rollout.id).reason,
+      'status=satisfied; evidence=1; approver=missing'
+    );
+  });
+
   it('reports a sovereign legal blocker for a pilot', () => {
     const input = manifest();
     input.releaseClass = 'pilot';
@@ -104,5 +123,19 @@ describe('GTCX DSLC release evaluator', () => {
       witness.blockers.find((blocker) => blocker.control === signature.id).authorityClass,
       'S'
     );
+  });
+
+  it('writes evidence to an explicit repository output root', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'dslc-release-output-'));
+    const path = join(dir, 'manifest.json');
+    writeFileSync(path, `${JSON.stringify(manifest(), null, 2)}\n`);
+    const result = spawnSync(
+      process.execPath,
+      [SCRIPT, '--manifest', path, '--output-root', dir, '--write', '--json'],
+      { cwd: ROOT, encoding: 'utf8' }
+    );
+    assert.equal(result.status, 0, result.stderr);
+    assert.ok(existsSync(join(dir, 'audit/evidence/dslc-release-REL-TEST-001-latest.json')));
+    rmSync(dir, { recursive: true, force: true });
   });
 });

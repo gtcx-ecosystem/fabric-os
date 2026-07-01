@@ -41,7 +41,8 @@
           "id": "release-manager-attestation",
           "status": "satisfied",
           "evidence": ["docs/operations/runbooks/ship-protocol.md"],
-          "rationale": "Protocol-only owner-ring closeout. Release manager attestation is bounded to repo-local SHIP protocol scaffolding and rollback by revert."
+          "rationale": "Protocol-only owner-ring closeout. Release manager attestation is bounded to repo-local SHIP protocol scaffolding and rollback by revert.",
+          "approver": "platform-architect"
         }
       ]
     },
@@ -78,7 +79,8 @@
           "evidence": [
             "audit/evidence/aaas-honesty-gate-latest.json",
             "audit/evidence/aaas-friction-check-latest.json"
-          ]
+          ],
+          "approver": "platform-architect"
         }
       ]
     },

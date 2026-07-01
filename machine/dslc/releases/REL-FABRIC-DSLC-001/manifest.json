@@ -55,7 +55,8 @@
             "git:feat/ai-cost-check@e1c5e266",
             "docs/product/roadmap/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT.md"
           ],
-          "rationale": "The owner-ring protocol release is published on the feature branch; rollback is a conventional revert of the bounded DSLC commits."
+          "rationale": "The owner-ring protocol release is published on the feature branch; rollback is a conventional revert of the bounded DSLC commits.",
+          "approver": "platform-architect"
         },
         {
           "id": "observability-alerting-slo",

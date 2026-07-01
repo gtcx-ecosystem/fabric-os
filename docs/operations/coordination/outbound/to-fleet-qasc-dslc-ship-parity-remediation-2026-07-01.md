@@ -41,9 +41,9 @@ Report:
 | ----------------- | ----: |
 | `local-complete`  |     1 |
 | `fabric-provider` |     1 |
-| `delegated`       |     5 |
+| `delegated`       |     6 |
 | `exempt`          |     0 |
-| `gap`             |    14 |
+| `gap`             |    13 |
 
 Known complete/provider repos:
 
@@ -54,6 +54,7 @@ Known complete/provider repos:
 - `exploration-os` — `delegated`
 - `ledger-ui` — `delegated`
 - `markets-os` — `delegated`
+- `sensei-os` — `delegated`
 
 ## Required remediation path
 
@@ -109,7 +110,6 @@ Partial QASC-only delegation is not sufficient for QASC/DSLC/SHIP parity.
 | `inspection-os` | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
 | `ledger-os`     | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `nyota-ai`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `sensei-os`     | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `terminal-os`   | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
 | `terra-os`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `venture-os`    | gap                      | Add local triplet or full Fabric delegation.                                                                |
@@ -124,7 +124,7 @@ pnpm qasc:dslc:ship:fleet-parity:write
 pnpm qasc:dslc:ship:fleet-parity:strict -- --repos <repo>
 ```
 
-Fleet strict is expected to remain nonzero until all 14 gap repos are
+Fleet strict is expected to remain nonzero until all 13 gap repos are
 remediated or explicitly exempted by Fabric contract.
 
 ## Boundary

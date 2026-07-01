@@ -25,3 +25,6 @@ CONVENTIONS.md
 # Keep byte-for-byte compatible with canon:synthesize:check.
 machine/canon/
 machine/ci/canon-synthesize-latest.json
+
+# Compact machine witness; pretty-printing exceeds the atomic settlement limit.
+audit/evidence/qasc-repo-latest.json

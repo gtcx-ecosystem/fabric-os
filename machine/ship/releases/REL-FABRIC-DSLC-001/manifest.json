@@ -1,0 +1,154 @@
+{
+  "schema": "gtcx://fabric-os/ship-release-manifest/v1",
+  "releaseId": "REL-FABRIC-DSLC-001",
+  "repo": "fabric-os",
+  "releaseClass": "internal",
+  "title": "DSLC protocol v1 owner-ring SHIP closeout",
+  "owner": "fabric-os platform architecture",
+  "dslc": {
+    "releaseId": "REL-FABRIC-DSLC-001",
+    "decision": "ready",
+    "score100": 100,
+    "evidence": "audit/evidence/dslc-release-REL-FABRIC-DSLC-001-latest.json"
+  },
+  "pillars": {
+    "sealed": {
+      "owner": "release-management",
+      "controls": [
+        {
+          "id": "protocol-proof-pack",
+          "status": "satisfied",
+          "evidence": [
+            "audit/evidence/qasc-repo-latest.json",
+            "audit/evidence/dslc-release-REL-FABRIC-DSLC-001-latest.json",
+            "audit/reports/dslc-decision-REL-FABRIC-DSLC-001-2026-07-01.md"
+          ]
+        },
+        {
+          "id": "dslc-decision-ready",
+          "status": "satisfied",
+          "evidence": ["audit/evidence/dslc-release-REL-FABRIC-DSLC-001-latest.json"]
+        },
+        {
+          "id": "evidence-chain-current",
+          "status": "satisfied",
+          "evidence": [
+            "audit/evidence/ship-contract-check-latest.json",
+            "git:feat/ai-cost-check@3d9b663e"
+          ]
+        },
+        {
+          "id": "release-manager-attestation",
+          "status": "satisfied",
+          "evidence": ["docs/operations/runbooks/ship-protocol.md"],
+          "rationale": "Protocol-only owner-ring closeout. Release manager attestation is bounded to repo-local SHIP protocol scaffolding and rollback by revert."
+        }
+      ]
+    },
+    "hardened": {
+      "owner": "security-legal-ops",
+      "controls": [
+        {
+          "id": "security-critical-controls",
+          "status": "satisfied",
+          "evidence": [
+            "audit/evidence/qasc-repo-latest.json",
+            "audit/evidence/compliance-security-audit-latest.json",
+            "node platform/tools/scripts/validate-all.mjs (56/56)"
+          ]
+        },
+        {
+          "id": "legal-ops-critical-controls",
+          "status": "not-applicable",
+          "evidence": ["machine/dslc/releases/REL-FABRIC-DSLC-001/manifest.json"],
+          "rationale": "Internal protocol-only release; no customer legal instrument, public claim, regulated data processing, or IP filing is activated.",
+          "approver": "platform-architect"
+        },
+        {
+          "id": "ops-critical-controls",
+          "status": "satisfied",
+          "evidence": [
+            "pnpm operations:check",
+            "pnpm dslc:release -- --manifest machine/dslc/releases/REL-FABRIC-DSLC-001/manifest.json"
+          ]
+        },
+        {
+          "id": "exceptions-risk-acceptance-register",
+          "status": "satisfied",
+          "evidence": [
+            "audit/evidence/aaas-honesty-gate-latest.json",
+            "audit/evidence/aaas-friction-check-latest.json"
+          ]
+        }
+      ]
+    },
+    "institutionalized": {
+      "owner": "product-docs-architecture",
+      "controls": [
+        {
+          "id": "producer-experience-standard",
+          "status": "not-applicable",
+          "evidence": ["docs/product/roadmap/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT.md"],
+          "rationale": "Internal protocol release; no producer-facing runtime experience changes.",
+          "approver": "platform-architect"
+        },
+        {
+          "id": "billing-payment-revops-standard",
+          "status": "not-applicable",
+          "evidence": ["docs/product/roadmap/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT.md"],
+          "rationale": "Internal protocol release; no payment, billing, customer management, or revenue-recognition path is activated.",
+          "approver": "platform-architect"
+        },
+        {
+          "id": "onboarding-success-support-standard",
+          "status": "not-applicable",
+          "evidence": ["docs/operations/runbooks/ship-protocol.md"],
+          "rationale": "Owner-ring protocol adoption is documented through the runbook and command surface; no external onboarding package is activated.",
+          "approver": "platform-architect"
+        },
+        {
+          "id": "docs-architecture-standard",
+          "status": "satisfied",
+          "evidence": [
+            "docs/operations/runbooks/ship-protocol.md",
+            "machine/spec/ship-contract.json",
+            "machine/spec/ship-release.schema.json"
+          ]
+        }
+      ]
+    },
+    "provisioned": {
+      "owner": "release-management-docs",
+      "controls": [
+        {
+          "id": "spec-versioning",
+          "status": "satisfied",
+          "evidence": ["machine/spec/ship-contract.json", "machine/spec/ship-release.schema.json"]
+        },
+        {
+          "id": "surface-feature-versioning",
+          "status": "satisfied",
+          "evidence": [
+            "package.json#ship:*",
+            "platform/scripts/ship-contract-check.mjs",
+            "platform/scripts/ship-release.mjs"
+          ]
+        },
+        {
+          "id": "gitbook-public-docs-issued",
+          "status": "not-applicable",
+          "evidence": ["docs/product/roadmap/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT.md"],
+          "rationale": "Internal owner-ring protocol closeout; public GitBook publication is not activated by this release class.",
+          "approver": "platform-architect"
+        },
+        {
+          "id": "public-changelog-release-notes-issued",
+          "status": "not-applicable",
+          "evidence": ["docs/product/roadmap/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT.md"],
+          "rationale": "Internal protocol release; public changelog is not activated by this release class.",
+          "approver": "platform-architect"
+        }
+      ]
+    }
+  }
+}

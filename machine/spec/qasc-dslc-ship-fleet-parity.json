@@ -92,7 +92,8 @@
       "machine/spec/aaas-audit-contract.pin.json",
       "machine/spec/qasc-contract.pin.json",
       "machine/spec/dslc-contract.pin.json",
-      "machine/spec/ship-contract.pin.json"
+      "machine/spec/ship-contract.pin.json",
+      "pm/spec/aaas-audit-contract.pin.json"
     ],
     "scriptsAny": {
       "qasc": ["qasc:repo", "qasc:repo:write", "qasc:check"],

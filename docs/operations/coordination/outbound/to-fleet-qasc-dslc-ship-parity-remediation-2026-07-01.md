@@ -41,9 +41,9 @@ Report:
 | ----------------- | ----: |
 | `local-complete`  |     1 |
 | `fabric-provider` |     1 |
-| `delegated`       |     6 |
+| `delegated`       |     7 |
 | `exempt`          |     0 |
-| `gap`             |    13 |
+| `gap`             |    12 |
 
 Known complete/provider repos:
 
@@ -55,6 +55,7 @@ Known complete/provider repos:
 - `ledger-ui` — `delegated`
 - `markets-os` — `delegated`
 - `sensei-os` — `delegated`
+- `venture-os` — `delegated`
 
 ## Required remediation path
 
@@ -91,6 +92,8 @@ Pin the Fabric contract and produce delegated witnesses for all three protocols:
   - `machine/spec/qasc-contract.pin.json`
   - `machine/spec/dslc-contract.pin.json`
   - `machine/spec/ship-contract.pin.json`
+  - `pm/spec/aaas-audit-contract.pin.json` for repos whose canonical
+    machine-readable product plane is `pm/`
 - provide QASC script + witness
 - provide DSLC script + witness
 - provide SHIP script + witness
@@ -112,7 +115,6 @@ Partial QASC-only delegation is not sufficient for QASC/DSLC/SHIP parity.
 | `nyota-ai`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `terminal-os`   | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
 | `terra-os`      | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `venture-os`    | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `veritas-ai`    | gap                      | Add local triplet or full Fabric delegation.                                                                |
 
 ## Verification
@@ -124,7 +126,7 @@ pnpm qasc:dslc:ship:fleet-parity:write
 pnpm qasc:dslc:ship:fleet-parity:strict -- --repos <repo>
 ```
 
-Fleet strict is expected to remain nonzero until all 13 gap repos are
+Fleet strict is expected to remain nonzero until all 12 gap repos are
 remediated or explicitly exempted by Fabric contract.
 
 ## Boundary

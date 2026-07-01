@@ -10,15 +10,15 @@ version: 1.0.0
 # QASC/DSLC/SHIP Fleet Parity
 
 Command health: **pass**.
-Strict pass: **no** (8/21 repos at parity).
+Strict pass: **no** (9/21 repos at parity).
 
 | Classification  | Count |
 | --------------- | ----: |
 | local-complete  |     1 |
 | fabric-provider |     1 |
-| delegated       |     6 |
+| delegated       |     7 |
 | exempt          |     0 |
-| gap             |    13 |
+| gap             |    12 |
 
 | Repo           | Classification  | Valid | Next remediation                                                                                                                                                                  |
 | -------------- | --------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -41,7 +41,7 @@ Strict pass: **no** (8/21 repos at parity).
 | sensei-os      | delegated       | yes   | Maintain pinned Fabric delegation and current QASC/DSLC/SHIP delegated witnesses.                                                                                                 |
 | terminal-os    | gap             | no    | Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses. |
 | terra-os       | gap             | no    | Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses. |
-| venture-os     | gap             | no    | Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses. |
+| venture-os     | delegated       | yes   | Maintain pinned Fabric delegation and current QASC/DSLC/SHIP delegated witnesses.                                                                                                 |
 | veritas-ai     | gap             | no    | Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses. |
 
 Machine witness: `audit/evidence/qasc-dslc-ship-fleet-parity-latest.json`.

@@ -1,0 +1,307 @@
+{
+  "schema": "gtcx://fabric-os/ship-release-decision/v1",
+  "generatedAt": "2026-07-01T17:08:34.240Z",
+  "date": "2026-07-01",
+  "protocolId": "GTCX-SHIP-001",
+  "contractVersion": "1.0.0",
+  "manifest": "machine/ship/releases/REL-GOLDEN-V1/manifest.json",
+  "outputRoot": "/Users/amanianai/Sites/gtcx-ecosystem/fabric-os",
+  "releaseId": "REL-GOLDEN-V1",
+  "repo": "markets-os",
+  "releaseClass": "pilot",
+  "title": "GTCX Golden V1 pilot SHIP proof pack",
+  "owner": "gtcx-release-management",
+  "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"],
+  "dslc": {
+    "releaseId": "REL-GOLDEN-V1",
+    "decision": "blocked",
+    "score100": 61,
+    "evidence": "audit/evidence/dslc-release-REL-GOLDEN-V1-latest.json",
+    "atBenchmark": false
+  },
+  "pillars": {
+    "sealed": {
+      "name": "sealed",
+      "owner": "release-management",
+      "required": true,
+      "score100": 50,
+      "controlsAtBenchmark": 2,
+      "controlCount": 4,
+      "controls": [
+        {
+          "id": "protocol-proof-pack",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "../markets-os/audit/evidence/qasc-repo-latest.json",
+            "audit/evidence/dslc-release-REL-GOLDEN-V1-latest.json",
+            "audit/reports/dslc-decision-REL-GOLDEN-V1-2026-07-01.md",
+            "audit/reports/dslc-ship-fleet-audit-2026-07-01.md"
+          ],
+          "rationale": "Initial golden proof pack binds QASC evidence, DSLC decision, and fleet DSLC/SHIP audit findings.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "dslc-decision-ready",
+          "authorityClass": "R",
+          "status": "blocked",
+          "evidence": ["audit/evidence/dslc-release-REL-GOLDEN-V1-latest.json"],
+          "rationale": "DSLC must become ready/100 for the same release unit before SHIP can pass.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "evidence-chain-current",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "machine/dslc/releases/REL-GOLDEN-V1/manifest.json",
+            "machine/ship/releases/REL-GOLDEN-V1/manifest.json",
+            "../markets-os/audit/evidence/qasc-repo-latest.json"
+          ],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "release-manager-attestation",
+          "authorityClass": "A",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Final release-manager attestation must be issued after DSLC reaches ready/100 and all SHIP pillars are satisfied.",
+          "approver": null,
+          "atBenchmark": false
+        }
+      ]
+    },
+    "hardened": {
+      "name": "hardened",
+      "owner": "security-legal-ops",
+      "required": true,
+      "score100": 25,
+      "controlsAtBenchmark": 1,
+      "controlCount": 4,
+      "controls": [
+        {
+          "id": "security-critical-controls",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "../markets-os/audit/evidence/qasc-repo-latest.json",
+            "../markets-os/audit/evidence/mpr-repo-latest.json",
+            "../markets-os/audit/evidence/signal-maturity-latest.json"
+          ],
+          "rationale": "Read-only audit confirms markets-os has QASC 100/100, MPR 100/100, and SIGNAL L5 evidence.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "legal-ops-critical-controls",
+          "authorityClass": "S",
+          "status": "blocked",
+          "evidence": [],
+          "rationale": "Pilot legal/privacy/data/IP controls require sovereign human approval and executed legal artifacts.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "ops-critical-controls",
+          "authorityClass": "R",
+          "status": "pending",
+          "evidence": [
+            "docs/operations/release-management/rel-golden-v1-ops-evidence-map.md",
+            "../markets-os/audit/evidence/live-env-readiness-latest.json",
+            "../markets-os/audit/evidence/production-observability-latest.json",
+            "../markets-os/audit/evidence/production-launch-readiness-latest.json",
+            "../markets-os/audit/evidence/pilot-golden-transaction-latest.json"
+          ],
+          "rationale": "Read-only markets-os evidence shows staging/pilot readiness progress, but live runtime values, live trace/alert export, and e2e transaction verification remain pending or blocked.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "exceptions-risk-acceptance-register",
+          "authorityClass": "A",
+          "status": "pending",
+          "evidence": ["docs/operations/release-management/rel-golden-v1-ops-evidence-map.md"],
+          "rationale": "Residual operational blockers are mapped, but Class A exception/risk acceptance with owner, expiry, and approval is not present.",
+          "approver": null,
+          "atBenchmark": false
+        }
+      ]
+    },
+    "institutionalized": {
+      "name": "institutionalized",
+      "owner": "product-commercial-docs-architecture",
+      "required": true,
+      "score100": 75,
+      "controlsAtBenchmark": 3,
+      "controlCount": 4,
+      "controls": [
+        {
+          "id": "producer-experience-standard",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "docs/operations/release-management/rel-golden-v1-producer-experience-standard.md",
+            "../markets-os/machine/ux/personas/persona-tokenization-operator.md",
+            "../markets-os/audit/evidence/market-operator-pack-v0.json",
+            "../markets-os/audit/evidence/pilot-golden-transaction-latest.json"
+          ],
+          "rationale": "The producer/operator standard is documented and tied to the markets-os operator persona, operator pack, and gates-only pilot-golden transaction witness. Production execution remains outside this claim.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "billing-payment-revops-standard",
+          "authorityClass": "A",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Pilot payment, billing, customer management, RevOps, and FinOps paths must be defined or explicitly approved out of scope.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "onboarding-success-support-standard",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "docs/business/sales/rel-golden-v1-owner-roster.md",
+            "docs/business/sales/rel-golden-v1-sales-enablement.md",
+            "docs/operations/release-management/rel-golden-v1-proof-pack.md"
+          ],
+          "rationale": "Onboarding, success, support, and escalation owners are assigned for the pilot proof pack; renewal and exit paths are recorded in the sales enablement packet.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "docs-architecture-standard",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "docs/operations/release-management/rel-golden-v1-proof-pack.md",
+            "docs/operations/legal/rel-golden-v1-legal-applicability-matrix.md",
+            "docs/business/sales/rel-golden-v1-sales-enablement.md",
+            "docs/business/communications/rel-golden-v1-claims-and-comms.md",
+            "docs/operations/release-management/rel-golden-v1-surface-version-inventory.md"
+          ],
+          "rationale": "The proof-pack, legal, sales, communications, and surface-inventory documents provide the institutional docs architecture for the pilot proof pack.",
+          "approver": null,
+          "atBenchmark": true
+        }
+      ]
+    },
+    "provisioned": {
+      "name": "provisioned",
+      "owner": "release-management-docs",
+      "required": true,
+      "score100": 50,
+      "controlsAtBenchmark": 2,
+      "controlCount": 4,
+      "controls": [
+        {
+          "id": "spec-versioning",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "machine/dslc/releases/REL-GOLDEN-V1/manifest.json",
+            "machine/ship/releases/REL-GOLDEN-V1/manifest.json"
+          ],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "surface-feature-versioning",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "docs/operations/release-management/rel-golden-v1-surface-version-inventory.md"
+          ],
+          "rationale": "The surface and feature inventory records SDK, CLI, desktop, cloud, mobile, docs, and changelog applicability and required version evidence.",
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "gitbook-public-docs-issued",
+          "authorityClass": "A",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "GitBook and public-facing docs must be formally issued for pilot/customer-facing activation.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "public-changelog-release-notes-issued",
+          "authorityClass": "A",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Public changelog, release notes, and version history must be issued or approved as non-public for the release class.",
+          "approver": null,
+          "atBenchmark": false
+        }
+      ]
+    }
+  },
+  "score100": 40,
+  "benchmarkScore100": 100,
+  "decision": "blocked",
+  "atBenchmark": false,
+  "blockers": [
+    {
+      "pillar": "sealed",
+      "control": "dslc-decision-ready",
+      "authorityClass": "R",
+      "reason": "DSLC blocked; 61/100"
+    },
+    {
+      "pillar": "sealed",
+      "control": "dslc-decision-ready",
+      "authorityClass": "R",
+      "reason": "status=blocked; evidence=1; approver=missing"
+    },
+    {
+      "pillar": "sealed",
+      "control": "release-manager-attestation",
+      "authorityClass": "A",
+      "reason": "status=pending; evidence=0; approver=missing"
+    },
+    {
+      "pillar": "hardened",
+      "control": "legal-ops-critical-controls",
+      "authorityClass": "S",
+      "reason": "status=blocked; evidence=0; approver=missing"
+    },
+    {
+      "pillar": "hardened",
+      "control": "ops-critical-controls",
+      "authorityClass": "R",
+      "reason": "status=pending; evidence=5; approver=missing"
+    },
+    {
+      "pillar": "hardened",
+      "control": "exceptions-risk-acceptance-register",
+      "authorityClass": "A",
+      "reason": "status=pending; evidence=1; approver=missing"
+    },
+    {
+      "pillar": "institutionalized",
+      "control": "billing-payment-revops-standard",
+      "authorityClass": "A",
+      "reason": "status=pending; evidence=0; approver=missing"
+    },
+    {
+      "pillar": "provisioned",
+      "control": "gitbook-public-docs-issued",
+      "authorityClass": "A",
+      "reason": "status=pending; evidence=0; approver=missing"
+    },
+    {
+      "pillar": "provisioned",
+      "control": "public-changelog-release-notes-issued",
+      "authorityClass": "A",
+      "reason": "status=pending; evidence=0; approver=missing"
+    }
+  ]
+}

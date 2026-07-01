@@ -69,6 +69,16 @@ function pnpmRun(args) {
   };
 }
 
+function nodeRun(args) {
+  const res = spawnSync('node', args, { cwd: ROOT, encoding: 'utf8' });
+  return {
+    command: `node ${args.join(' ')}`,
+    exitCode: res.status ?? 1,
+    stdout: (res.stdout ?? '').trim(),
+    stderr: (res.stderr ?? '').trim(),
+  };
+}
+
 function scripts() {
   return readJson('package.json')?.scripts ?? {};
 }
@@ -552,7 +562,11 @@ function buildWitness() {
     : evidenceScore('audit/evidence/repo-cleanup-archive-manifest-latest.json');
   const docsIaRun = script('docs:ia:check') ? pnpmRun(['docs:ia:check']) : null;
   const docsTreeRun = script('docs:tree:check') ? pnpmRun(['docs:tree:check']) : null;
-  const docsLinkRun = script('docs:check-links') ? pnpmRun(['docs:check-links']) : null;
+  const docsLinkRun = script('docs:check-links')
+    ? pnpmRun(['docs:check-links'])
+    : has('platform/scripts/check-doc-links.mjs')
+      ? nodeRun(['platform/scripts/check-doc-links.mjs'])
+      : null;
   const docsProductRun = script('docs:product:check') ? pnpmRun(['docs:product:check']) : null;
   const machineFolderRun = script('machine:folder:check') ? pnpmRun(['machine:folder:check']) : null;
   const docsIaScore = commandScore(docsIaRun, /docs:ia:check\s+(\d+)\/(\d+)/i);

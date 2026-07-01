@@ -1,6 +1,8 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
+import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { scoreJson } from '../qasc-repo.mjs';
@@ -92,5 +94,29 @@ describe('GTCX QASC repository scorer', () => {
       assert.equal(typeof row.result, 'undefined', `row should not include a binary result field: ${area}`);
       assert.equal(typeof row.score100, 'number');
     }
+  });
+
+  it('runs a repo-local link checker directly when package scripts omit docs:check-links', () => {
+    const root = mkdtempSync(join(tmpdir(), 'qasc-repo-links-'));
+    mkdirSync(join(root, 'platform/scripts'), { recursive: true });
+    writeFileSync(join(root, 'package.json'), JSON.stringify({ scripts: {} }, null, 2));
+    writeFileSync(join(root, 'platform/scripts/check-doc-links.mjs'), [
+      "console.log('Checked 12 links across 3 markdown files.');",
+      "console.log('0 broken link(s) found.');",
+    ].join('\n'));
+    spawnSync('git', ['init'], { cwd: root, encoding: 'utf8' });
+
+    const res = spawnSync(process.execPath, [
+      join(SCRIPTS, 'qasc-repo.mjs'),
+      '--json',
+    ], { cwd: root, encoding: 'utf8', maxBuffer: 20 * 1024 * 1024 });
+
+    assert.ok(res.status === 0 || res.status === 1, `unexpected exit ${res.status}: ${res.stderr}`);
+    const witness = JSON.parse(res.stdout);
+    const linkRow = witness.acceptanceTable.find((row) => row.area === 'Link/reference hygiene');
+    assert.ok(linkRow, 'missing link/reference hygiene row');
+    assert.equal(linkRow.score100, 100);
+    assert.match(linkRow.evidence, /node platform\/scripts\/check-doc-links\.mjs exit 0/);
+    assert.equal(witness.phaseResults.documentationTaxonomyLifecycle.evidence[2].command, 'node platform/scripts/check-doc-links.mjs');
   });
 });

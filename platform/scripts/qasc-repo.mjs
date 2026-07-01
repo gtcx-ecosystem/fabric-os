@@ -892,8 +892,13 @@ function renderReport(witness) {
     const text = String(value ?? '');
     return text.length > max ? `${text.slice(0, max)}...` : text;
   };
+  const reportArea = (area) => {
+    if (area === 'MPR composite') return 'MPR aggregate';
+    if (area === 'Link/reference hygiene') return 'Reference hygiene';
+    return area;
+  };
   const table = witness.acceptanceTable
-    .map((row) => `| ${cell(row.area)} | ${cell(row.applicable ? row.score100 : 'N/A')} | ${cell(row.benchmark100)} | ${cell(preview(row.evidence))} | ${cell(row.mpr.join(', '))} | ${cell(row.signal.join(', '))} |`)
+    .map((row) => `| ${cell(reportArea(row.area))} | ${cell(row.applicable ? row.score100 : 'N/A')} | ${cell(row.benchmark100)} | ${cell(preview(row.evidence))} | ${cell(row.mpr.join(', '))} | ${cell(row.signal.join(', '))} |`)
     .join('\n');
   const blockers = witness.blockers.length
     ? witness.blockers.map((b) => `- ${b.area}: ${b.blocker} (${preview(b.evidence)})`).join('\n')

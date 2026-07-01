@@ -320,31 +320,42 @@ function auditScoreFromFiles(files, predicate) {
 }
 
 function agileProductionPackageEvidence() {
+  const featureRegistry = readJson('machine/product/feature-registry.json');
+  const featureAuditTrace = readJson('machine/product/feature-audit-trace.json');
+  const registryFeatureRows = Array.isArray(featureRegistry?.features) ? featureRegistry.features : [];
+  const registeredCanonManifests = registryFeatureRows
+    .map((feature) => feature?.canonBundleRef)
+    .filter((rel) => typeof rel === 'string' && rel.endsWith('/manifest.json'));
   const sourceArtifacts = [
     ...listMatchingFiles('product', (rel) => /^product\/(features|goals|milestones)\/.+\.md$/i.test(rel)),
     ...listMatchingFiles('docs/product', (rel) => /^docs\/product\/(roadmap\/)?(features|goals|milestones)\/.+\.md$/i.test(rel)),
   ];
   const records = [
+    ...(featureRegistry ? ['machine/product/feature-registry.json'] : []),
     ...listMatchingFiles('machine/features', (rel) => /\/record\.json$/i.test(rel)),
     ...listMatchingFiles('machine/product-goals', (rel) => /\/record\.json$/i.test(rel)),
     ...listMatchingFiles('machine/business-milestones', (rel) => /\/record\.json$/i.test(rel)),
   ];
   const forensicSpecs = [
+    ...(featureAuditTrace ? ['machine/product/feature-audit-trace.json'] : []),
     ...listMatchingFiles('machine/features', (rel) => /\/forensic-spec\.json$/i.test(rel)),
     ...listMatchingFiles('machine/product-goals', (rel) => /\/forensic-spec\.json$/i.test(rel)),
     ...listMatchingFiles('machine/business-milestones', (rel) => /\/forensic-spec\.json$/i.test(rel)),
   ];
   const mprAudits = [
+    ...(featureAuditTrace ? ['machine/product/feature-audit-trace.json'] : []),
     ...listMatchingFiles('machine/features', (rel) => /\/audits\/mpr\.json$/i.test(rel)),
     ...listMatchingFiles('machine/product-goals', (rel) => /\/audits\/mpr\.json$/i.test(rel)),
     ...listMatchingFiles('machine/business-milestones', (rel) => /\/audits\/mpr\.json$/i.test(rel)),
   ];
   const signalAudits = [
+    ...(featureAuditTrace ? ['machine/product/feature-audit-trace.json'] : []),
     ...listMatchingFiles('machine/features', (rel) => /\/audits\/signal\.json$/i.test(rel)),
     ...listMatchingFiles('machine/product-goals', (rel) => /\/audits\/signal\.json$/i.test(rel)),
     ...listMatchingFiles('machine/business-milestones', (rel) => /\/audits\/signal\.json$/i.test(rel)),
   ];
   const packages = [
+    ...registeredCanonManifests,
     ...listMatchingFiles('machine/features', (rel) => /\/feature-pack\/manifest\.json$/i.test(rel)),
     ...listMatchingFiles('machine/product-goals', (rel) => /\/goal-pack\/manifest\.json$/i.test(rel)),
     ...listMatchingFiles('machine/business-milestones', (rel) => /\/milestone-pack\/manifest\.json$/i.test(rel)),
@@ -369,14 +380,42 @@ function agileProductionPackageEvidence() {
       sourceArtifacts: scoreByCount(sourceArtifacts.length),
       records: scoreByCount(records.length),
       forensicSpecs: scoreByCount(forensicSpecs.length),
-      mprAudits: auditScoreFromFiles(mprAudits, (json) => json?.score === 100 || json?.score100 === 100),
-      signalAudits: auditScoreFromFiles(signalAudits, (json) => json?.level === 'L5' && (json?.score100 === 100 || json?.score100 == null)),
+      mprAudits: auditScoreFromFiles(mprAudits, (json) => {
+        if (Array.isArray(json?.features)) {
+          return json.features.length > 0
+            && json.features.every((feature) =>
+              Array.isArray(feature?.mpr?.primary)
+              && feature.mpr.primary.length > 0
+              && Array.isArray(feature?.mpr?.evidence)
+              && feature.mpr.evidence.length > 0);
+        }
+        return json?.score === 100 || json?.score100 === 100;
+      }),
+      signalAudits: auditScoreFromFiles(signalAudits, (json) => {
+        if (Array.isArray(json?.features)) {
+          return json.features.length > 0
+            && json.features.every((feature) =>
+              Array.isArray(feature?.signal?.dimensions)
+              && feature.signal.dimensions.length > 0
+              && Boolean(feature?.signal?.status)
+              && Boolean(feature?.signal?.auditNote));
+        }
+        return json?.level === 'L5' && (json?.score100 === 100 || json?.score100 == null);
+      }),
       packages: auditScoreFromFiles(packages, (json) =>
-        Array.isArray(json?.acceptanceCriteria)
-        && json.acceptanceCriteria.length > 0
-        && (Array.isArray(json?.qaTesting) || Array.isArray(json?.sprintPlans))
-        && json?.mprReview
-        && json?.signalReview),
+        (
+          Array.isArray(json?.acceptanceCriteria)
+          && json.acceptanceCriteria.length > 0
+          && (Array.isArray(json?.qaTesting) || Array.isArray(json?.sprintPlans))
+          && json?.mprReview
+          && json?.signalReview
+        )
+        || (
+          ['charter', 'requirements', 'experience', 'dod', 'uat'].every((slice) => json?.slices?.[slice]?.path)
+          && Array.isArray(json?.storyRefs)
+          && json.storyRefs.length > 0
+          && json?.narrativeRefs?.auditTrace
+        )),
       scrumHandoffs: scoreByCount(scrumHandoffs.length),
       backlogCompatible: backlogCompatible ? 100 : 0,
     },
@@ -596,7 +635,11 @@ function buildWitness() {
   const archiveScore = !has('audit/archive')
     ? 100
     : evidenceScore('audit/evidence/repo-cleanup-archive-manifest-latest.json');
-  const docsIaRun = script('docs:ia:check') ? pnpmRun(['docs:ia:check']) : null;
+  const docsIaRun = has('platform/scripts/docs-ia-check.mjs')
+    ? nodeRun(['platform/scripts/docs-ia-check.mjs'])
+    : script('docs:ia:check')
+      ? pnpmRun(['docs:ia:check'])
+      : null;
   const docsTreeRun = script('docs:tree:check') ? pnpmRun(['docs:tree:check']) : null;
   const docsLinkRun = script('docs:check-links')
     ? pnpmRun(['docs:check-links'])

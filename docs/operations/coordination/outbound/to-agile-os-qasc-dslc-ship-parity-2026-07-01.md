@@ -1,6 +1,6 @@
 ---
 title: 'Outbound — agile-os QASC/DSLC/SHIP parity remediation'
-status: current
+status: resolved
 date: 2026-07-01
 from: fabric-os
 to: agile-os
@@ -16,25 +16,23 @@ review_cycle: on-change
 
 # Outbound — agile-os QASC/DSLC/SHIP parity remediation
 
-Fabric's canonical parity witness classifies `agile-os` as `gap`.
+Fabric's canonical parity witness classifies `agile-os` as `delegated`.
 
-## Missing local parity surface
+## Resolution
 
-- Scripts: qasc:check, dslc:check, ship:check
-- Specs: machine/spec/qasc-protocol.json, machine/spec/dslc-protocol.json, machine/spec/release-readiness-benchmark.json
-- Witnesses: machine/ci/qasc-protocol-latest.json, machine/ci/dslc-protocol-latest.json
-- SHIP witness any-of: missing
+- `f787d12` — added the explicit Fabric QASC/DSLC/SHIP command surface,
+  governed release manifests, and current DSLC/SHIP decision witnesses.
+- `5d4913c` — refreshed the repository QASC and documentation-link witnesses
+  against the pushed clean revision.
 
-## Delegated route gap
+## Verification
 
-- Delegation pins present: machine/spec/aaas-audit-contract.pin.json
-- Delegated protocols still missing script+witness: qasc, dslc, ship
-
-## Required remediation
-
-- Local route: add repo-local `qasc:check`, `dslc:check`, and `ship:check` scripts with specs and latest witnesses.
-- Delegated route: add explicit Fabric delegation pins plus current delegated QASC/DSLC/SHIP witnesses.
-- Exempt route: request a Fabric contract exemption with reason, owner, review date, and impact.
+- `pnpm --dir ../agile-os qasc:check` — exit 0; QASC 100/100,
+  MPR 100/100, SIGNAL L5/100, acceptance 28/28.
+- `pnpm --dir ../agile-os dslc:check` — exit 0; ready 100/100.
+- `pnpm --dir ../agile-os ship:check` — exit 0; ready 100/100.
+- `pnpm --dir ../fabric-os qasc:dslc:ship:fleet-parity:strict -- --repos agile-os`
+  — exit 0; strict pass, delegated.
 
 Canonical Fabric witness: `audit/evidence/qasc-dslc-ship-fleet-parity-latest.json`.
-Current strict parity: 2/21 repos at parity; 19 gaps.
+Current strict parity: 14/21 repos at parity; 7 gaps.

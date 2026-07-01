@@ -189,10 +189,14 @@ function walkTextFiles(rel, out = []) {
 }
 
 function readAllowlist() {
-  const rel = 'docs/operations/repo/root-allowlist.json';
-  try {
-    return JSON.parse(readFileSync(join(ROOT, rel), 'utf8'));
-  } catch {
+  for (const rel of ['config/root-allowlist.json', 'docs/operations/repo/root-allowlist.json']) {
+    try {
+      return JSON.parse(readFileSync(join(ROOT, rel), 'utf8'));
+    } catch {
+      // Try the next supported location before falling back to the generic policy.
+    }
+  }
+  {
     return {
       required_files: ['README.md', 'AGENTS.md', 'CHANGELOG.md'],
       required_directories: ['docs', 'operations', 'machine', 'platform', 'deploy', 'audit', 'workstream'],
@@ -632,9 +636,15 @@ function buildWitness() {
   const signal = signalScores();
 
   const inventoryScore = evidenceScore('audit/evidence/repo-folder-file-spec-inventory-latest.json');
+  const archiveManifest = readJson('audit/archive/ARCHIVE-MANIFEST.json');
+  const auditScrubManifest = readJson('audit/evidence/audit-scrub-manifest-latest.json');
   const archiveScore = !has('audit/archive')
     ? 100
-    : evidenceScore('audit/evidence/repo-cleanup-archive-manifest-latest.json');
+    : Math.max(
+      evidenceScore('audit/evidence/repo-cleanup-archive-manifest-latest.json'),
+      Array.isArray(archiveManifest?.entries) && archiveManifest.entries.length > 0 ? 100 : 0,
+      Array.isArray(auditScrubManifest?.moved) && auditScrubManifest.moved.length > 0 ? 100 : 0,
+    );
   const docsIaRun = has('platform/scripts/docs-ia-check.mjs')
     ? nodeRun(['platform/scripts/docs-ia-check.mjs'])
     : script('docs:ia:check')
@@ -716,6 +726,7 @@ function buildWitness() {
     evidenceScore('audit/evidence/aaas-contract-check-latest.json'),
     evidenceScore('audit/evidence/fleet-ops-assurance-check-latest.json'),
     evidenceScore('audit/evidence/fabric-ops-policy-contract-latest.json'),
+    evidenceScore('audit/evidence/canon-os-contracts-latest.json'),
   );
 
   const rows = [

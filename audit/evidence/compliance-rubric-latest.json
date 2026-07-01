@@ -2,7 +2,7 @@
   "schema": "gtcx://audit/compliance-rubric/v1",
   "repo": "fabric-os",
   "date": "2026-07-01",
-  "score100": 100,
+  "score100": 99,
   "categories": {
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
@@ -219,7 +219,7 @@
     "anti-version-bloat-p32": {
       "label": "Anti-version bloat (P32)",
       "weight": 4,
-      "score100": 100,
+      "score100": 60,
       "protocol": "P32",
       "items": [
         {
@@ -247,12 +247,12 @@
         {
           "id": "witness-latest-only",
           "label": "No dated audit/evidence siblings when *-latest.* exists",
-          "pass": true,
-          "score100": 100,
+          "pass": false,
+          "score100": 0,
           "weight": 40,
           "severity": "P2",
           "optional": false,
-          "detail": "witness-latest clean",
+          "detail": "1 dated sibling(s) with -latest witness — e.g. audit/reports/qasc-repo-2026-07-01.md",
           "protocol": "P32"
         }
       ],
@@ -749,13 +749,13 @@
         },
         {
           "id": "composite-or-five-core",
-          "label": "composite-audit or five-core witnesses",
+          "label": "MPR, composite-audit, or five-core witnesses",
           "pass": true,
           "score100": 100,
           "weight": 25,
           "severity": "P2",
           "optional": false,
-          "detail": "2/1 present"
+          "detail": "3/1 present"
         },
         {
           "id": "attestation-ops",
@@ -799,6 +799,14 @@
       "itemCount": 2
     }
   },
-  "violations": [],
+  "violations": [
+    {
+      "id": "witness-latest-only",
+      "categoryId": "anti-version-bloat-p32",
+      "label": "No dated audit/evidence siblings when *-latest.* exists",
+      "severity": "P2",
+      "detail": "1 dated sibling(s) with -latest witness — e.g. audit/reports/qasc-repo-2026-07-01.md"
+    }
+  ],
   "itemTotal": 62
 }

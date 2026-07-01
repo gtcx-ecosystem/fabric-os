@@ -3,8 +3,8 @@
   "scope": "repo",
   "id": "fabric-os",
   "repo": "fabric-os",
-  "evaluatedAt": "2026-07-01T07:57:01.249Z",
-  "gitHead": "e1c5e266dcab38b6c3adcdd768f147f01a52815d",
+  "evaluatedAt": "2026-07-01T16:52:19.529Z",
+  "gitHead": "b930d8f210f32cd41961c88b04e033088e71d07b",
   "date": "2026-07-01",
   "weights": {
     "compliance": 0,
@@ -20,7 +20,7 @@
   },
   "quadrants": {
     "compliance": {
-      "score100": 100,
+      "score100": 99,
       "published": true,
       "provisional": false,
       "blockedBy": null,
@@ -241,7 +241,7 @@
         "anti-version-bloat-p32": {
           "label": "Anti-version bloat (P32)",
           "weight": 4,
-          "score100": 100,
+          "score100": 60,
           "protocol": "P32",
           "items": [
             {
@@ -269,12 +269,12 @@
             {
               "id": "witness-latest-only",
               "label": "No dated audit/evidence siblings when *-latest.* exists",
-              "pass": true,
-              "score100": 100,
+              "pass": false,
+              "score100": 0,
               "weight": 40,
               "severity": "P2",
               "optional": false,
-              "detail": "witness-latest clean",
+              "detail": "1 dated sibling(s) with -latest witness — e.g. audit/reports/qasc-repo-2026-07-01.md",
               "protocol": "P32"
             }
           ],
@@ -771,13 +771,13 @@
             },
             {
               "id": "composite-or-five-core",
-              "label": "composite-audit or five-core witnesses",
+              "label": "MPR, composite-audit, or five-core witnesses",
               "pass": true,
               "score100": 100,
               "weight": 25,
               "severity": "P2",
               "optional": false,
-              "detail": "2/1 present"
+              "detail": "3/1 present"
             },
             {
               "id": "attestation-ops",
@@ -821,7 +821,15 @@
           "itemCount": 2
         }
       },
-      "hygieneViolations": [],
+      "hygieneViolations": [
+        {
+          "id": "witness-latest-only",
+          "categoryId": "anti-version-bloat-p32",
+          "label": "No dated audit/evidence siblings when *-latest.* exists",
+          "severity": "P2",
+          "detail": "1 dated sibling(s) with -latest witness — e.g. audit/reports/qasc-repo-2026-07-01.md"
+        }
+      ],
       "itemTotal": 62,
       "rubricVersion": "1.0.0",
       "openP0": 0,
@@ -1104,7 +1112,7 @@
     },
     "quadrants": {
       "compliance": {
-        "score100": 100,
+        "score100": 99,
         "published": true,
         "provisional": false,
         "blockedBy": [],

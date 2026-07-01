@@ -8,8 +8,10 @@
 data "aws_caller_identity" "current" {}
 
 locals {
-  name                      = "gtcx-${var.environment}-deploy-executor"
-  ebs_csi_driver_policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+  name                         = "gtcx-${var.environment}-deploy-executor"
+  ebs_csi_driver_policy_arn    = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+  ebs_csi_driver_policy_v2_arn = "arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2"
+  ebs_csi_controller_role_arn  = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/gtcx-${var.environment}-ebs-csi-controller"
 
   default_environment_variables = {
     AWS_REGION                   = var.region
@@ -212,6 +214,45 @@ locals {
         Condition = {
           ArnEquals = {
             "iam:PolicyARN" = local.ebs_csi_driver_policy_arn
+          }
+        }
+      },
+      {
+        Sid    = "IamManageEbsCsiControllerRole"
+        Effect = "Allow"
+        Action = [
+          "iam:CreateRole",
+          "iam:DeleteRole",
+          "iam:TagRole",
+          "iam:UntagRole",
+          "iam:UpdateAssumeRolePolicy",
+        ]
+        Resource = local.ebs_csi_controller_role_arn
+      },
+      {
+        Sid    = "IamAttachEbsCsiControllerPolicy"
+        Effect = "Allow"
+        Action = [
+          "iam:AttachRolePolicy",
+          "iam:DetachRolePolicy",
+        ]
+        Resource = local.ebs_csi_controller_role_arn
+        Condition = {
+          ArnEquals = {
+            "iam:PolicyARN" = local.ebs_csi_driver_policy_v2_arn
+          }
+        }
+      },
+      {
+        Sid    = "IamPassEbsCsiControllerRoleToEks"
+        Effect = "Allow"
+        Action = [
+          "iam:PassRole",
+        ]
+        Resource = local.ebs_csi_controller_role_arn
+        Condition = {
+          StringEquals = {
+            "iam:PassedToService" = "eks.amazonaws.com"
           }
         }
       },

@@ -231,6 +231,40 @@ resource "aws_iam_role_policy_attachment" "node_ebs_csi" {
 }
 
 # -----------------------------------------------------------------------------
+# IAM — EBS CSI Controller IRSA Role
+# -----------------------------------------------------------------------------
+
+resource "aws_iam_role" "ebs_csi_controller" {
+  name = "${local.cluster_name}-ebs-csi-controller"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Action = "sts:AssumeRoleWithWebIdentity"
+      Effect = "Allow"
+      Principal = {
+        Federated = aws_iam_openid_connect_provider.eks.arn
+      }
+      Condition = {
+        StringEquals = {
+          "${replace(aws_eks_cluster.main.identity[0].oidc[0].issuer, "https://", "")}:aud" = "sts.amazonaws.com"
+          "${replace(aws_eks_cluster.main.identity[0].oidc[0].issuer, "https://", "")}:sub" = "system:serviceaccount:kube-system:ebs-csi-controller-sa"
+        }
+      }
+    }]
+  })
+
+  tags = merge(local.common_tags, {
+    Name = "${local.cluster_name}-ebs-csi-controller"
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "ebs_csi_controller" {
+  role       = aws_iam_role.ebs_csi_controller.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2"
+}
+
+# -----------------------------------------------------------------------------
 # Security Group — Cluster
 # -----------------------------------------------------------------------------
 
@@ -406,6 +440,7 @@ resource "aws_eks_addon" "ebs_csi" {
   addon_name                  = "aws-ebs-csi-driver"
   resolve_conflicts_on_create = "OVERWRITE"
   resolve_conflicts_on_update = "OVERWRITE"
+  service_account_role_arn    = aws_iam_role.ebs_csi_controller.arn
 
   tags = merge(local.common_tags, {
     Name = "${local.cluster_name}-aws-ebs-csi-driver"
@@ -413,6 +448,7 @@ resource "aws_eks_addon" "ebs_csi" {
 
   depends_on = [
     aws_eks_node_group.main,
+    aws_iam_role_policy_attachment.ebs_csi_controller,
     aws_iam_role_policy_attachment.node_ebs_csi,
   ]
 }

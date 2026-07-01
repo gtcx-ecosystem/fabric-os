@@ -5,11 +5,11 @@
 # =============================================================================
 
 variables {
-  environment        = "test"
-  region             = "us-east-1"
-  vpc_id             = "vpc-test123"
-  private_subnet_ids = ["subnet-priv-a", "subnet-priv-b"]
-  public_subnet_ids  = ["subnet-pub-a", "subnet-pub-b"]
+  environment          = "test"
+  region               = "us-east-1"
+  vpc_id               = "vpc-test123"
+  private_subnet_ids   = ["subnet-priv-a", "subnet-priv-b"]
+  public_subnet_ids    = ["subnet-pub-a", "subnet-pub-b"]
   enable_public_access = false
   allowed_cidr_blocks  = []
 }
@@ -52,5 +52,27 @@ run "oidc_provider_created_for_irsa" {
   assert {
     condition     = contains(aws_iam_openid_connect_provider.eks.client_id_list, "sts.amazonaws.com")
     error_message = "OIDC provider must be configured for IRSA"
+  }
+}
+
+run "ebs_csi_addon_uses_controller_irsa" {
+  command = plan
+
+  assert {
+    condition     = aws_eks_addon.ebs_csi.addon_name == "aws-ebs-csi-driver"
+    error_message = "EBS CSI managed add-on must remain explicitly declared."
+  }
+
+  assert {
+    condition     = aws_iam_role.ebs_csi_controller.name == "gtcx-test-ebs-csi-controller"
+    error_message = "EBS CSI controller IRSA role must be environment scoped."
+  }
+
+  assert {
+    condition = (
+      aws_iam_role_policy_attachment.ebs_csi_controller.role == aws_iam_role.ebs_csi_controller.name &&
+      aws_iam_role_policy_attachment.ebs_csi_controller.policy_arn == "arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2"
+    )
+    error_message = "EBS CSI controller IRSA role must use AmazonEBSCSIDriverPolicyV2."
   }
 }

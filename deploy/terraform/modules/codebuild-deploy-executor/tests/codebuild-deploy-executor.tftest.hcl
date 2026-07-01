@@ -110,4 +110,40 @@ run "permits_scoped_ebs_csi_addon_repair" {
     ])
     error_message = "Deploy executor must attach only the EBS CSI managed policy to the environment node role."
   }
+
+  assert {
+    condition = anytrue([
+      for statement in local.deploy_policy_statements :
+      statement.Sid == "IamManageEbsCsiControllerRole" &&
+      contains(statement.Action, "iam:CreateRole") &&
+      contains(statement.Action, "iam:DeleteRole") &&
+      contains(statement.Action, "iam:UpdateAssumeRolePolicy") &&
+      statement.Resource == "arn:aws:iam::123456789012:role/gtcx-test-ebs-csi-controller"
+    ])
+    error_message = "Deploy executor must manage only the environment-scoped EBS CSI controller IRSA role."
+  }
+
+  assert {
+    condition = anytrue([
+      for statement in local.deploy_policy_statements :
+      statement.Sid == "IamAttachEbsCsiControllerPolicy" &&
+      contains(statement.Action, "iam:AttachRolePolicy") &&
+      contains(statement.Action, "iam:DetachRolePolicy") &&
+      statement.Resource == "arn:aws:iam::123456789012:role/gtcx-test-ebs-csi-controller" &&
+      statement.Condition.ArnEquals["iam:PolicyARN"] == "arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicyV2"
+    ])
+    error_message = "Deploy executor must attach only AmazonEBSCSIDriverPolicyV2 to the EBS CSI controller role."
+  }
+
+  assert {
+    condition = anytrue([
+      for statement in local.deploy_policy_statements :
+      statement.Sid == "IamPassEbsCsiControllerRoleToEks" &&
+      contains(statement.Action, "iam:PassRole") &&
+      length(statement.Action) == 1 &&
+      statement.Resource == "arn:aws:iam::123456789012:role/gtcx-test-ebs-csi-controller" &&
+      statement.Condition.StringEquals["iam:PassedToService"] == "eks.amazonaws.com"
+    ])
+    error_message = "Deploy executor must pass the EBS CSI controller role only to EKS."
+  }
 }

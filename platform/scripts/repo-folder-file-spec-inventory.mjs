@@ -5,13 +5,17 @@
  */
 import { createHash } from 'node:crypto';
 import { existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const SELF = join(new URL(import.meta.url).pathname.endsWith('/') ? new URL(import.meta.url).pathname : new URL(import.meta.url).pathname.replace(/[^/]*$/, ''));
-const ROOT = join(SELF, '../..');
+const SELF = dirname(fileURLToPath(import.meta.url));
+const FABRIC_ROOT = join(SELF, '../..');
+const FLEET_ROOT = join(FABRIC_ROOT, '..');
 const WRITE = process.argv.includes('--write');
 const DRY = process.argv.includes('--dry');
+const arg = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null);
+const repoArg = arg('--repo');
+const ROOT = repoArg ? join(FLEET_ROOT, repoArg) : FABRIC_ROOT;
 const OUT = join(ROOT, 'audit/evidence/repo-folder-file-spec-inventory-latest.json');
 
 function readJson(rel) {
@@ -144,7 +148,7 @@ for (const name of rootSymlinks) {
 const payload = {
   schema: 'gtcx://fabric-os/repo-folder-file-spec-inventory/v1',
   generatedAt: new Date().toISOString(),
-  repo: 'fabric-os',
+  repo: repoArg ?? basename(ROOT),
   ok: issues.length === 0,
   required: {
     files: requiredFiles,

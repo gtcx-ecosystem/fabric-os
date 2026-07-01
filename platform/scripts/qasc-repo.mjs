@@ -708,12 +708,16 @@ function buildWitness() {
     'audit/evidence/product-roadmap-lane-isolation-latest.json',
     'audit/evidence/m4-baseline-roadmap-intake-latest.json',
   );
-  const featureScore = script('docs:feature-spec:check')
-    ? Math.max(
-      evidenceScore('audit/evidence/docs-feature-spec-latest.json'),
-      evidenceScore('audit/evidence/feature-spec-latest.json'),
-    )
-    : 0;
+  const featureSpecRun = script('docs:feature-spec:check')
+    ? pnpmRun(['docs:feature-spec:check'])
+    : script('feature:production-package:check')
+      ? pnpmRun(['feature:production-package:check'])
+      : null;
+  const featureScore = Math.max(
+    evidenceScore('audit/evidence/docs-feature-spec-latest.json'),
+    evidenceScore('audit/evidence/feature-spec-latest.json'),
+    commandScore(featureSpecRun),
+  );
   const agileApplicable = script('agile:check') || script('docs:agile:check') || has('agile');
   const agileRun = agileApplicable
     ? pnpmRun([script('agile:check') ? 'agile:check' : 'docs:agile:check'])
@@ -768,7 +772,7 @@ function buildWitness() {
   const rows = [
     statusRow('Worktree clean', clean, summarizeGitStatus(effectiveStatus), ['Craft', 'Trust & Safety'], ['Grounded'], clean ? null : 'worktree is dirty'),
     scoredRow('Critical docs preserved', inventoryScore, 'audit/evidence/repo-folder-file-spec-inventory-latest.json', ['Trust & Safety', 'Defensive Moat', 'IP Magic'], ['Lossless', 'Specific'], inventoryScore === 100 ? null : 'inventory witness is incomplete'),
-    scoredRow('Feature/spec registry', featureScore, 'docs:feature-spec:check evidence', ['Commercial Value', 'Product/Ecosystem Integration'], ['Specific', 'Integrated', 'Actionable'], featureScore === 100 ? null : 'feature/spec validation is below benchmark'),
+    scoredRow('Feature/spec registry', featureScore, featureSpecRun ? `${featureSpecRun.command} exit ${featureSpecRun.exitCode}` : 'feature/spec package evidence', ['Commercial Value', 'Product/Ecosystem Integration'], ['Specific', 'Integrated', 'Actionable'], featureScore === 100 ? null : 'feature/spec validation is below benchmark'),
     scoredRow('Documentation hygiene', docsScore, `docs IA ${docsIaScore}/100; tree ${docsTreeScore}/100; links ${docsLinkScore}/100`, ['Compliance', 'World Class', 'Trust & Safety'], ['Navigable', 'Grounded', 'Lossless'], docsScore === 100 ? null : 'documentation IA, lifecycle metadata, or link integrity is below benchmark'),
     scoredRow('Folder/file/product spec alignment', folderFileProductSpec.score100, folderFileProductSpec.evidence, ['Compliance', 'World Class', 'Product/Ecosystem Integration'], ['Navigable', 'Grounded', 'Lossless'], folderFileProductSpec.blocker),
     scoredRow('Roadmap/goals/milestones', roadmapScore, 'roadmap/goals/milestone evidence', ['Commercial Value', 'Agentic Empowerment'], ['Actionable', 'Integrated'], roadmapOk && roadmapScore === 100 ? null : 'roadmap/goals/milestones are below benchmark'),
@@ -806,7 +810,7 @@ function buildWitness() {
   const phaseResults = {
     documentationTaxonomyLifecycle: { score100: docsScore, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: [{ command: docsIaRun?.command, score100: docsIaScore }, { command: docsTreeRun?.command, score100: docsTreeScore }, { command: docsLinkRun?.command, score100: docsLinkScore }], applicable: true },
     folderFileSpecs: { score100: folderFileProductSpec.score100, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: folderFileProductSpec.evidence, applicable: true },
-    featureSpecRegistryPrd: { score100: featureScore, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: ['docs:feature-spec:check evidence'], applicable: true },
+    featureSpecRegistryPrd: { score100: featureScore, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: [featureSpecRun ? `${featureSpecRun.command} exit ${featureSpecRun.exitCode}` : 'feature/spec package evidence'], applicable: true },
     roadmapGoalsMilestonesWorkstream: { score100: roadmapScore, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: ['roadmap/goals/milestone evidence'], applicable: true },
     operationalLaneIsolation: { score100: laneIsolation.ok ? 100 : 0, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: laneIsolation.violations, applicable: true },
     mprComposite: { score100: mpr.composite100 ?? 0, benchmark100: 100, loopUntil: 'score100 >= 100', evidence: [mpr.source].filter(Boolean), applicable: true },
@@ -902,6 +906,7 @@ function buildWitness() {
       ...(docsProductRun ? [{ command: docsProductRun.command, cwd: ROOT, exitCode: docsProductRun.exitCode, score100: commandScore(docsProductRun), ownerContract: 'canon-os', consumerContract: REPO, mprPillars: ['Compliance', 'Product/Ecosystem Integration'], signalDimensions: ['Grounded', 'Lossless'] }] : []),
       ...(machineFolderRun ? [{ command: machineFolderRun.command, cwd: ROOT, exitCode: machineFolderRun.exitCode, score100: commandScore(machineFolderRun), ownerContract: 'canon-os', consumerContract: REPO, mprPillars: ['Compliance', 'Technical Excellence'], signalDimensions: ['Grounded', 'Lossless'] }] : []),
       ...(docsLinkRun ? [{ command: docsLinkRun.command, cwd: ROOT, exitCode: docsLinkRun.exitCode, score100: docsLinkScore, ownerContract: REPO, consumerContract: REPO, mprPillars: ['World Class', 'Trust & Safety'], signalDimensions: ['Navigable', 'Grounded'] }] : []),
+      ...(featureSpecRun ? [{ command: featureSpecRun.command, cwd: ROOT, exitCode: featureSpecRun.exitCode, score100: featureScore, ownerContract: 'agile-os', consumerContract: REPO, mprPillars: ['Commercial Value', 'Product/Ecosystem Integration'], signalDimensions: ['Specific', 'Integrated', 'Actionable'] }] : []),
       ...(agileRun ? [{ command: agileRun.command, cwd: ROOT, exitCode: agileRun.exitCode, score100: agileScore, ownerContract: 'agile-os', consumerContract: REPO, mprPillars: ['Product/Ecosystem Integration'], signalDimensions: ['Actionable', 'Integrated'] }] : []),
       ...(opsRun ? [{ command: opsRun.command, cwd: ROOT, exitCode: opsRun.exitCode, score100: opsScore, ownerContract: REPO, consumerContract: REPO, mprPillars: ['Technical Excellence', 'Compliance'], signalDimensions: ['Grounded', 'Integrated'] }] : []),
     ],

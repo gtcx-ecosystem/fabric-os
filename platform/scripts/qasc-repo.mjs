@@ -467,6 +467,41 @@ function mprScores() {
     'productEcosystemIntegration',
     'ipMagic',
   ];
+  const transformationalDimensionMap = {
+    creativityInnovation: ['innovation-originality'],
+    commercialValue: ['ux-product-design', 'enterprise-readiness', 'production-readiness'],
+    defensiveMoat: ['technical-moat'],
+    agenticEmpowerment: ['ai-maturity', 'hallucination-resilience'],
+    productEcosystemIntegration: ['ecosystem-integration'],
+    ipMagic: ['innovation-originality', 'technical-moat', 'ux-product-design'],
+  };
+  const qualityDimensionScores = () => {
+    const auditFile = list('audit')
+      .filter((file) => /^audit-output-.*\.json$/.test(file))
+      .sort()
+      .reverse()[0];
+    const audit = auditFile ? readJson(`audit/${auditFile}`) : null;
+    const raw = audit?.qualityDimensionScores ?? audit?.dimensionScores ?? readJson('audit/evidence/strategic-depth-latest.json')?.dimensionHints ?? {};
+    return Object.fromEntries(Object.entries(raw).map(([id, value]) => {
+      const score100 = typeof value === 'number'
+        ? (value <= 10 ? Math.round(value * 10) : Math.round(value))
+        : Math.round(value?.score100 ?? value?.currentScore100 ?? 0);
+      return [id, { score100, source: auditFile ? `audit/${auditFile}` : 'audit/evidence/strategic-depth-latest.json' }];
+    }));
+  };
+  const qualityDimensions = qualityDimensionScores();
+  const transformationalLeafEvidence = (pillarId) => (transformationalDimensionMap[pillarId] ?? [])
+    .map((id) => {
+      const dim = qualityDimensions[id];
+      if (!dim || typeof dim.score100 !== 'number') return null;
+      return {
+        id,
+        score100: dim.score100,
+        evidenceDepth: 'leaf',
+        source: dim.source,
+      };
+    })
+    .filter(Boolean);
   const quadrants = {
     ...(mpr?.multiPillar?.quadrants ?? {}),
     ...(mpr?.quadrants ?? {}),
@@ -488,7 +523,8 @@ function mprScores() {
       score100: value?.score100 ?? (value?.ok === true || value?.pass === true ? 100 : 0),
       evidenceDepth: 'leaf',
     }));
-    return [...categories, ...metrics, ...checks].filter((entry) => entry.evidenceDepth === 'leaf');
+    const leaf = [...categories, ...metrics, ...checks].filter((entry) => entry.evidenceDepth === 'leaf');
+    return leaf.length ? leaf : transformationalLeafEvidence(pillarId);
   };
   const tierMicroScore = (ids) => {
     const pillarScores = ids.map((id) => {

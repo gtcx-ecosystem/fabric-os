@@ -112,14 +112,16 @@ const server = createServer(async (req, res) => {
   }
 });
 
-server.listen(config.port, () => {
-  console.log(JSON.stringify({
-    level: 'info',
-    message: 'USSD Handler listening',
-    port: config.port,
-    store: config.redisUrl ? 'redis' : 'memory',
-    nodeEnv: config.nodeEnv,
-  }));
-});
+if (config.nodeEnv !== 'test') {
+  server.listen(config.port, () => {
+    console.log(JSON.stringify({
+      level: 'info',
+      message: 'USSD Handler listening',
+      port: config.port,
+      store: config.redisUrl ? 'redis' : 'memory',
+      nodeEnv: config.nodeEnv,
+    }));
+  });
+}
 
 export { server };

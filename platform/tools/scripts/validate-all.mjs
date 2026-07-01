@@ -27,12 +27,13 @@ const REPO_ROOT = path.resolve(SCRIPT_DIR, '..', '..', '..');
 let totalPassed = 0;
 let totalFailed = 0;
 
-function run(name, command, cwd) {
+function run(name, command, cwd, options = {}) {
   process.stdout.write(`[VALIDATE] ${name} ... `);
+  const stdio = options.stdio ?? 'pipe';
   try {
     execSync(command, {
       cwd: cwd || REPO_ROOT,
-      stdio: 'pipe',
+      stdio,
       encoding: 'utf8',
       timeout: 120000,
       // Node's default 1MB stdout buffer overflows on packages with
@@ -46,10 +47,14 @@ function run(name, command, cwd) {
     return true;
   } catch (e) {
     console.log(`${RED}FAIL${RESET}`);
-    const combined = [e.stderr, e.stdout, e.message].filter(Boolean).join('\n');
-    const lines = combined.split('\n').filter((l) => l.trim());
-    for (const line of lines.slice(-8)) {
-      console.log(`  ${RED}>${RESET} ${line}`);
+    if (stdio === 'pipe') {
+      const combined = [e.stderr, e.stdout, e.message].filter(Boolean).join('\n');
+      const lines = combined.split('\n').filter((l) => l.trim());
+      for (const line of lines.slice(-8)) {
+        console.log(`  ${RED}>${RESET} ${line}`);
+      }
+    } else {
+      console.log(`  ${RED}>${RESET} ${e.message}`);
     }
     totalFailed++;
     return false;
@@ -81,7 +86,10 @@ const packages = [
 for (const pkg of packages) {
   const pkgPath = path.join(REPO_ROOT, pkg);
   if (existsSync(path.join(pkgPath, 'package.json'))) {
-    run(pkg, 'pnpm run test:coverage:gate', pkgPath);
+    // Coverage gates include HTTP integration tests that open loopback
+    // listeners. Running them with inherited stdio preserves their normal
+    // terminal execution path while still failing on non-zero exits.
+    run(pkg, 'pnpm run test:coverage:gate', pkgPath, { stdio: 'inherit' });
   }
 }
 

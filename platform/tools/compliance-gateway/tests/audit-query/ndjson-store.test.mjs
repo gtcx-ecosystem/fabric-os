@@ -177,6 +177,28 @@ describe('NdjsonQueryStore — malformed lines', () => {
     assert.strictEqual(parseErrors[1].line, '{partial: "json');
     assert.strictEqual(parseErrors[1].lineNo, 4);
   });
+
+  it('uses the default parse-error logger with truncated previews', async () => {
+    const originalError = console.error;
+    const logs = [];
+    console.error = (line) => logs.push(JSON.parse(line));
+    try {
+      const tenantDir = join(scratchRoot, 'default-parse-err');
+      mkdirSync(tenantDir, { recursive: true });
+      writeFileSync(
+        join(tenantDir, 'bad.ndjson'),
+        `${'x'.repeat(100)}\n${JSON.stringify(event({ id: 'good-default' }))}\n`,
+      );
+      const defaultLoggerStore = new NdjsonQueryStore({ rootDir: scratchRoot });
+      const r = await defaultLoggerStore.query({ tenantId: 'default-parse-err' });
+      assert.strictEqual(r.events.length, 1);
+      assert.strictEqual(logs.length, 1);
+      assert.strictEqual(logs[0].type, 'ndjson-store.parseError');
+      assert.match(logs[0].linePreview, /…$/);
+    } finally {
+      console.error = originalError;
+    }
+  });
 });
 
 describe('NdjsonQueryStore — caching', () => {

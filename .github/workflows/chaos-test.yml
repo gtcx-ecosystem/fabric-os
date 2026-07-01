@@ -14,8 +14,25 @@ permissions:
 jobs:
   retired:
     runs-on: ubuntu-latest
+    environment: production-chaos
+    env:
+      SLO_ERROR_RATE_THRESHOLD: '0.01'
+      SLO_P99_LATENCY_THRESHOLD: '1000'
     steps:
       - name: Retired path notice
         run: |
+          mkdir -p chaos-retired-evidence
           echo "This GitHub Actions chaos path is retired."
           echo "Use Fabric CodeBuild or in-cluster operational runners for cluster-reaching tests."
+          {
+            echo "status=retired"
+            echo "runner=github-actions"
+            echo "replacement=Fabric CodeBuild or in-cluster operational runners"
+          } > chaos-retired-evidence/retired-chaos-path.txt
+
+      - name: Upload retired chaos path evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: retired-chaos-path
+          path: chaos-retired-evidence/

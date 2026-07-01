@@ -168,6 +168,7 @@ pnpm ci:npm-token:readiness -- --execute --write
 5. Run the ledger-ui enterprise release preflight from the approved runner:
 
 ```bash
+# cwd: /Users/amanianai/Sites/gtcx-ecosystem/ledger-ui
 pnpm publish:enterprise:check:quick
 ```
 

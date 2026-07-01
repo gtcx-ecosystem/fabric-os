@@ -3,49 +3,63 @@
  */
 
 import assert from 'node:assert';
-import { createServer, request as httpRequest } from 'node:http';
 import { describe, it, before, after } from 'node:test';
 
 let testServer;
-let baseUrl;
 
 async function fetchJson(path, opts = {}) {
-  const url = new URL(path, baseUrl);
   return new Promise((resolve, reject) => {
-    const req = httpRequest(url, { method: opts.method ?? 'GET', headers: opts.headers }, (res) => {
-      let body = '';
-      res.on('data', (c) => { body += c; });
-      res.on('end', () => {
+    const requestBody = opts.body === undefined
+      ? ''
+      : typeof opts.body === 'string'
+        ? opts.body
+        : JSON.stringify(opts.body);
+
+    const req = {
+      method: opts.method ?? 'GET',
+      url: path,
+      headers: opts.headers ?? {},
+      async *[Symbol.asyncIterator]() {
+        if (requestBody) yield Buffer.from(requestBody);
+      },
+    };
+
+    let status = 200;
+    let headers = {};
+    let responseBody = '';
+    const res = {
+      writeHead(nextStatus, nextHeaders = {}) {
+        status = nextStatus;
+        headers = nextHeaders;
+      },
+      end(data = '') {
+        responseBody += String(data);
         try {
-          resolve({ status: res.statusCode, body: JSON.parse(body) });
+          const contentType = headers['Content-Type'] ?? '';
+          resolve({
+            status,
+            body: contentType.includes('application/json') ? JSON.parse(responseBody) : responseBody,
+          });
         } catch {
-          resolve({ status: res.statusCode, body });
+          resolve({ status, body: responseBody });
         }
-      });
-    });
-    req.on('error', reject);
-    if (opts.body) {
-      req.write(typeof opts.body === 'string' ? opts.body : JSON.stringify(opts.body));
+      },
+    };
+
+    try {
+      testServer.emit('request', req, res);
+    } catch (err) {
+      reject(err);
     }
-    req.end();
   });
 }
 
 describe('USSD Handler Server', () => {
   before(async () => {
-    const stubServer = createServer();
-    await new Promise((r) => stubServer.listen(0, () => r()));
-    const addr = stubServer.address();
-    const port = typeof addr === 'string' ? parseInt(addr.split(':').pop() || '0', 10) : (addr?.port || 0);
-    stubServer.close();
-
-    process.env.USSD_PORT = String(port);
     process.env.NODE_ENV = 'test';
 
     const mod = await import('../src/server.mjs');
     testServer = mod.server;
-    baseUrl = `http://127.0.0.1:${port}`;
-    await new Promise((r) => setTimeout(r, 200));
   });
 
   after(() => {

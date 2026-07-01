@@ -1,6 +1,7 @@
 const js = require('@eslint/js');
 const tseslint = require('typescript-eslint');
 const eslintConfigPrettier = require('eslint-config-prettier');
+const globals = require('globals');
 
 module.exports = tseslint.config(
   // Global ignores
@@ -43,11 +44,14 @@ module.exports = tseslint.config(
   // Prettier compatibility (must be last among rule configs)
   eslintConfigPrettier,
 
-  // JavaScript files (Node.js scripts) — allow CommonJS globals
+  // JavaScript files (Node.js scripts) — allow Node.js globals across
+  // both CommonJS and ESM tool packages.
   {
-    files: ['**/*.js'],
+    files: ['**/*.{js,mjs,cjs}'],
     languageOptions: {
       globals: {
+        ...globals.node,
+        AbortController: 'readonly',
         require: 'readonly',
         module: 'readonly',
         exports: 'readonly',
@@ -56,12 +60,26 @@ module.exports = tseslint.config(
         console: 'readonly',
         process: 'readonly',
         Buffer: 'readonly',
+        crypto: 'readonly',
+        fetch: 'readonly',
+        FormData: 'readonly',
+        Headers: 'readonly',
+        Request: 'readonly',
+        Response: 'readonly',
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
         setInterval: 'readonly',
         clearInterval: 'readonly',
+        structuredClone: 'readonly',
+        URL: 'readonly',
+        URLSearchParams: 'readonly',
       },
     },
+  },
+
+  // CommonJS files — allow require/module forms.
+  {
+    files: ['**/*.{js,cjs}'],
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
     },
@@ -80,6 +98,14 @@ module.exports = tseslint.config(
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'prefer-const': 'error',
       'no-var': 'error',
+    },
+  },
+
+  // Repo tool scripts intentionally write structured CLI/test output.
+  {
+    files: ['platform/**/*.mjs', 'deploy/**/*.mjs'],
+    rules: {
+      'no-console': 'off',
     },
   }
 );

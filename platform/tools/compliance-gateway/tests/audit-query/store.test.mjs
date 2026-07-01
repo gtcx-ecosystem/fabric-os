@@ -49,6 +49,13 @@ describe('applyFilter', () => {
     assert.strictEqual(r[0].id, 'e3');
   });
 
+  it('excludes events without metadata when actorDid is required', () => {
+    const r = applyFilter([event({ id: 'no-metadata', metadata: undefined })], {
+      actorDid: 'did:gtcx:tp_gh_004',
+    });
+    assert.deepStrictEqual(r, []);
+  });
+
   it('filters by outcome', () => {
     const r = applyFilter(events, { outcome: 'escalate' });
     assert.strictEqual(r.length, 1);
@@ -76,6 +83,20 @@ describe('applyFilter', () => {
     assert.deepStrictEqual(
       r.map((e) => e.id),
       ['e3', 'e2', 'e1'],
+    );
+  });
+
+  it('keeps equal timestamps stable through the tie branch', () => {
+    const r = applyFilter(
+      [
+        event({ id: 'same-1', timestamp: '2026-05-20T12:00:00Z' }),
+        event({ id: 'same-2', timestamp: '2026-05-20T12:00:00Z' }),
+      ],
+      {},
+    );
+    assert.deepStrictEqual(
+      r.map((e) => e.id),
+      ['same-1', 'same-2'],
     );
   });
 });

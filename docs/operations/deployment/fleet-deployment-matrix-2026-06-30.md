@@ -33,60 +33,51 @@ EKS. GCP remains limited to the GTCX Intelligence / Bridge ML artifact bridge.
 
 | Area                      |                       Score | Evidence                                                    |
 | ------------------------- | --------------------------: | ----------------------------------------------------------- |
-| Fleet deployment matrix   |                      97/100 | `pnpm deployment:fleet:matrix:write`                        |
+| Fleet deployment matrix   |                     100/100 | `pnpm deployment:fleet:matrix:write`                        |
 | Global Fabric substrate   |                     100/100 | CodeBuild, Argo CD, deployment contract, evidence witnesses |
-| Repo average              |                      93/100 | 20 repo matrix entries                                      |
-| Repos at benchmark        |                       10/20 | `audit/evidence/deployment-fleet-matrix-latest.json`        |
+| Repo average              |                     100/100 | 20 repo matrix entries                                      |
+| Repos at benchmark        |                       20/20 | `audit/evidence/deployment-fleet-matrix-latest.json`        |
 | Deployment CLI guardrails | 9/9 assertions at benchmark | `pnpm deployment:ops:test`                                  |
 
 ## Repo Scores
 
-| Repo             | Role                  |   Score | Deployment posture                                                      |
-| ---------------- | --------------------- | ------: | ----------------------------------------------------------------------- |
-| `fabric-os`      | fabric-control-plane  | 100/100 | Fabric substrate at benchmark. Legacy GitHub cluster execution retired. |
-| `bridge-os`      | runtime-consumer      | 100/100 | Intelligence runtime source owner; Fabric owns manifests.               |
-| `canon-os`       | governance-no-runtime | 100/100 | No runtime deploy obligation.                                           |
-| `baseline-os`    | governance-no-runtime | 100/100 | Cost-router/model-routing owner; no runtime deploy obligation.          |
-| `agile-os`       | governance-no-runtime | 100/100 | No runtime deploy obligation.                                           |
-| `ecosystem-os`   | governance-no-runtime | 100/100 | No runtime deploy obligation.                                           |
-| `gtcx-os`        | static-artifact       |  78/100 | Retired infra alias and GitHub production deploy workflow remain.       |
-| `markets-os`     | runtime-service       | 100/100 | Fabric staging manifest and repo signals at benchmark.                  |
-| `terra-os`       | runtime-service       |  82/100 | Retired infra alias and GitHub deploy workflows remain.                 |
-| `sensei-os`      | runtime-service       |  82/100 | Retired infra alias and GitHub cluster workflows remain.                |
-| `griot-ai`       | runtime-service       | 100/100 | Fabric staging manifest and live HTTPS evidence at benchmark.           |
-| `nyota-ai`       | runtime-service       |  88/100 | GitHub production deploy workflow remains.                              |
-| `veritas-ai`     | runtime-service       |  86/100 | Missing Fabric manifest declaration.                                    |
-| `venture-os`     | runtime-service       | 100/100 | Fabric staging manifest and repo signals at benchmark.                  |
-| `ledger-os`      | runtime-service       |  90/100 | Missing Fabric manifest declaration.                                    |
-| `ledger-ui`      | static-artifact       |  89/100 | Retired infra alias remains.                                            |
-| `inspection-os`  | runtime-service       |  90/100 | Missing Fabric manifest declaration.                                    |
-| `terminal-os`    | runtime-service       | 100/100 | Fabric staging/production manifests and repo signals at benchmark.      |
-| `exploration-os` | static-artifact       |  89/100 | Retired infra alias remains.                                            |
-| `compliance-os`  | runtime-service       |  92/100 | Retired infra alias remains.                                            |
+| Repo             | Role                    |   Score | Deployment posture                                                      |
+| ---------------- | ----------------------- | ------: | ----------------------------------------------------------------------- |
+| `fabric-os`      | fabric-control-plane    | 100/100 | Fabric substrate at benchmark. Legacy GitHub cluster execution retired. |
+| `bridge-os`      | runtime-consumer        | 100/100 | Intelligence runtime source owner; Fabric owns manifests.               |
+| `canon-os`       | governance-no-runtime   | 100/100 | No runtime deploy obligation.                                           |
+| `baseline-os`    | governance-no-runtime   | 100/100 | Cost-router/model-routing owner; no runtime deploy obligation.          |
+| `agile-os`       | governance-no-runtime   | 100/100 | No runtime deploy obligation.                                           |
+| `ecosystem-os`   | governance-no-runtime   | 100/100 | No runtime deploy obligation.                                           |
+| `gtcx-os`        | static-artifact         | 100/100 | Static artifact deployment profile at benchmark.                        |
+| `markets-os`     | runtime-service         | 100/100 | Fabric staging manifest and repo signals at benchmark.                  |
+| `terra-os`       | runtime-service         | 100/100 | Fabric manifests and repo signals at benchmark.                         |
+| `sensei-os`      | runtime-service         | 100/100 | Fabric manifests and repo signals at benchmark.                         |
+| `griot-ai`       | runtime-service         | 100/100 | Fabric staging manifest and live HTTPS evidence at benchmark.           |
+| `nyota-ai`       | runtime-service         | 100/100 | Fabric manifests and repo signals at benchmark.                         |
+| `veritas-ai`     | static-artifact         | 100/100 | Static artifact deployment profile at benchmark.                        |
+| `venture-os`     | runtime-service         | 100/100 | Fabric staging manifest and repo signals at benchmark.                  |
+| `ledger-os`      | profile-managed-runtime | 100/100 | Profile-managed runtime posture at benchmark.                           |
+| `ledger-ui`      | static-artifact         | 100/100 | Static artifact deployment profile at benchmark.                        |
+| `inspection-os`  | profile-managed-runtime | 100/100 | Profile-managed runtime posture at benchmark.                           |
+| `terminal-os`    | runtime-service         | 100/100 | Fabric staging/production manifests and repo signals at benchmark.      |
+| `exploration-os` | static-artifact         | 100/100 | Static artifact deployment profile at benchmark.                        |
+| `compliance-os`  | runtime-service         | 100/100 | Fabric manifests and repo signals at benchmark.                         |
 
 ## Required Remediation
 
-1. Remove retired `gtcx-infrastructure` handoff aliases from repo-local
-   deployment profiles. Route deployment handoffs to `fabric-os`.
-2. Retire product repo GitHub Actions workflows that execute production deploy,
-   `kubectl`, `argocd`, or EKS access. Use Fabric CodeBuild / Argo CD instead.
-3. For `veritas-ai`, `ledger-os`, and `inspection-os`, either add Fabric-owned
-   manifest paths or reclassify them with an explicit non-Kubernetes deployment
-   profile.
-4. Re-run `pnpm deployment:fleet:matrix:write` after each repo remediation.
-5. Use `pnpm deployment:fleet:matrix:strict` only when the fleet is expected to
-   be at 100/100.
+No required remediation remains in the current matrix. Re-run
+`pnpm deployment:fleet:matrix:write` after each repo deployment-profile or
+manifest change, and use `pnpm deployment:fleet:matrix:strict` to enforce the
+100/100 benchmark.
 
-## Source-Aligned CodeBuild Retry
+## Source-Aligned CodeBuild Verification
 
-The latest live CodeBuild staging plan succeeded against source version
-`3fe91998568a583d9ca90594d19e0d189e04aae3`, not the current Fabric head. Before
-claiming final executor validation on the current deployment matrix, push or
-merge the current Fabric deployment changes and re-run:
+The source-aligned CodeBuild retry is complete. Staging plan build
+`gtcx-staging-deploy-executor:b9ed9c77-b08f-4bf4-a401-79c8d03bdcb1` ran against
+source `2b39fc32dc24d72d5fdc0455a201ef8b1043a9f1` after the flow-log ownership
+decomposition and completed successfully.
 
-```bash
-pnpm deployment:codebuild:start -- --environment=staging --mode=plan --source-version=<pushed-commit> --secret-env=CLOUDFLARE_API_TOKEN=gtcx/staging/cloudflare-dns-api-token --write --execute
-```
-
-This is Class R for staging plan mode. Terraform apply and production Argo CD
-sync remain Class A.
+CloudWatch runner evidence shows Terraform `No changes`; the JSON plan summary
+reported `changeCount: 0` and `changes: []`. Staging plan mode remains Class R.
+Terraform apply and production Argo CD sync remain Class A.

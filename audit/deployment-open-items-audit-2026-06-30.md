@@ -20,13 +20,30 @@ read-only cloud checks on 2026-06-30.
 
 The GitHub-independent CI/CD strategy is implemented and pushed on
 `fabric-os@feat/ai-cost-check`. The older transcript blockers around missing
-CodeBuild infrastructure and Argo CD installation are superseded by later
-evidence in this audit: the CodeBuild executor exists, Argo CD is installed in
-staging, and the staging deployment plan has passed through the executor. The
-remaining open items are credentialed CI-runner and live-runner consistency,
-local disk headroom, the `NPM_TOKEN`
-handoff, and sibling-repo cleanup in `nyota-ai`, `bridge-os`, `canon-os`, and
-`baseline-os`.
+CodeBuild infrastructure, source mismatch, flow-log drift, and Argo CD
+installation are superseded by later evidence in this audit: the CodeBuild
+executor exists, Argo CD is installed in staging, the non-destructive Terraform
+state ownership migration completed, and the final staging plan ran against the
+pushed source with zero Terraform changes.
+
+## 2026-07-01 Deployment Evidence Update
+
+- Flow-log IAM ownership was decomposed in commit `2b39fc32`; the legacy
+  duplicate `module.flow_logs` IAM role and policy addresses were removed from
+  Terraform state with `destroy = false`.
+- Staging CodeBuild plan build
+  `gtcx-staging-deploy-executor:bf49d031-8f5a-4877-8b93-4dfee0baa0b1` showed
+  only two non-destructive `forget` actions for the duplicate flow-log IAM
+  addresses.
+- Staging CodeBuild apply build
+  `gtcx-staging-deploy-executor:801ddfdc-464d-4356-8552-a01097b2dcad`
+  completed successfully under the existing Class A approval artifact.
+- Final staging CodeBuild plan build
+  `gtcx-staging-deploy-executor:b9ed9c77-b08f-4bf4-a401-79c8d03bdcb1` ran
+  against resolved source `2b39fc32dc24d72d5fdc0455a201ef8b1043a9f1` and
+  reported Terraform `changeCount: 0`, `changes: []`.
+- Fleet deployment matrix now scores `100/100`; `20/20` repos are at benchmark
+  and `pnpm deployment:fleet:matrix:strict` exits 0.
 
 ## Open Items
 

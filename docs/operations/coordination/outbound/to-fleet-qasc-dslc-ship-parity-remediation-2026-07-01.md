@@ -41,15 +41,16 @@ Report:
 | ----------------- | ----: |
 | `local-complete`  |     1 |
 | `fabric-provider` |     1 |
-| `delegated`       |     1 |
+| `delegated`       |     2 |
 | `exempt`          |     0 |
-| `gap`             |    18 |
+| `gap`             |    17 |
 
 Known complete/provider repos:
 
 - `gtcx-os` — `local-complete`
 - `fabric-os` — `fabric-provider`
 - `baseline-os` — `delegated`
+- `document-os` — `delegated`
 
 ## Required remediation path
 
@@ -100,7 +101,6 @@ Partial QASC-only delegation is not sufficient for QASC/DSLC/SHIP parity.
 | `bridge-os`      | gap                      | Add local triplet or full Fabric delegation; keep Bridge as reference/runtime metadata, not protocol owner. |
 | `canon-os`       | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `compliance-os`  | gap                      | Add local triplet or full Fabric delegation.                                                                |
-| `document-os`    | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
 | `ecosystem-os`   | gap                      | Add local triplet or full Fabric delegation.                                                                |
 | `exploration-os` | partial QASC signal only | Add DSLC + SHIP and formal delegation pins, or adopt local triplet.                                         |
 | `griot-ai`       | gap                      | Add local triplet or full Fabric delegation.                                                                |
@@ -124,7 +124,7 @@ pnpm qasc:dslc:ship:fleet-parity:write
 pnpm qasc:dslc:ship:fleet-parity:strict -- --repos <repo>
 ```
 
-Fleet strict is expected to remain nonzero until all 18 gap repos are
+Fleet strict is expected to remain nonzero until all 17 gap repos are
 remediated or explicitly exempted by Fabric contract.
 
 ## Boundary

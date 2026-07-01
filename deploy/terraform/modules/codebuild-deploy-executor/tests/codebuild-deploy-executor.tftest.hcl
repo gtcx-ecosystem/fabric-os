@@ -70,12 +70,21 @@ run "permits_scoped_ebs_csi_addon_repair" {
   assert {
     condition = anytrue([
       for statement in local.deploy_policy_statements :
-      statement.Sid == "EksAddonManage" &&
+      statement.Sid == "EksAddonCreate" &&
       contains(statement.Action, "eks:CreateAddon") &&
+      statement.Resource == "arn:aws:eks:af-south-1:123456789012:cluster/gtcx-test-eks"
+    ])
+    error_message = "Deploy executor must create add-ons only on the target EKS cluster."
+  }
+
+  assert {
+    condition = anytrue([
+      for statement in local.deploy_policy_statements :
+      statement.Sid == "EksAddonManage" &&
       contains(statement.Action, "eks:UpdateAddon") &&
       statement.Resource == "arn:aws:eks:af-south-1:123456789012:addon/gtcx-test-eks/*/*"
     ])
-    error_message = "Deploy executor must be able to manage add-ons only on the target EKS cluster."
+    error_message = "Deploy executor must update/delete add-ons only on the target EKS add-on ARN."
   }
 
   assert {

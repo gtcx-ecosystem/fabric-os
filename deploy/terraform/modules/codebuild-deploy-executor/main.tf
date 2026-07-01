@@ -177,10 +177,17 @@ locals {
         Resource = "arn:aws:eks:${var.region}:${data.aws_caller_identity.current.account_id}:nodegroup/${var.eks_cluster_name}/*/*"
       },
       {
-        Sid    = "EksAddonManage"
+        Sid    = "EksAddonCreate"
         Effect = "Allow"
         Action = [
           "eks:CreateAddon",
+        ]
+        Resource = "arn:aws:eks:${var.region}:${data.aws_caller_identity.current.account_id}:cluster/${var.eks_cluster_name}"
+      },
+      {
+        Sid    = "EksAddonManage"
+        Effect = "Allow"
+        Action = [
           "eks:DeleteAddon",
           "eks:UpdateAddon",
         ]

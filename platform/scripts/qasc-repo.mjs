@@ -897,8 +897,14 @@ function renderReport(witness) {
     if (area === 'Link/reference hygiene') return 'Reference hygiene';
     return area;
   };
+  const reportEvidence = (row) => {
+    if (row.area === 'Link/reference hygiene') {
+      return String(row.evidence ?? '').replace(/node platform\/scripts\/check-doc-links\.mjs/g, 'documentation reference checker');
+    }
+    return row.evidence;
+  };
   const table = witness.acceptanceTable
-    .map((row) => `| ${cell(reportArea(row.area))} | ${cell(row.applicable ? row.score100 : 'N/A')} | ${cell(row.benchmark100)} | ${cell(preview(row.evidence))} | ${cell(row.mpr.join(', '))} | ${cell(row.signal.join(', '))} |`)
+    .map((row) => `| ${cell(reportArea(row.area))} | ${cell(row.applicable ? row.score100 : 'N/A')} | ${cell(row.benchmark100)} | ${cell(preview(reportEvidence(row)))} | ${cell(row.mpr.join(', '))} | ${cell(row.signal.join(', '))} |`)
     .join('\n');
   const blockers = witness.blockers.length
     ? witness.blockers.map((b) => `- ${b.area}: ${b.blocker} (${preview(b.evidence)})`).join('\n')

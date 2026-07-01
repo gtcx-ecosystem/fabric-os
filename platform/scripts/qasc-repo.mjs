@@ -469,6 +469,10 @@ function summarizeGitStatus(statusText) {
   return `git status -sb: ${dirty.length} dirty entr${dirty.length === 1 ? 'y' : 'ies'}${preview ? `; ${preview}` : ''}${dirty.length > 25 ? '; ...' : ''}`;
 }
 
+function isQascOutputStatusLine(line) {
+  return String(line ?? '').includes(artifactRel) || String(line ?? '').includes(reportRel);
+}
+
 function microsOf(pillar) {
   if (!pillar) return [];
   if (Array.isArray(pillar.microAudits)) return pillar.microAudits;
@@ -625,7 +629,9 @@ function signalScores() {
 function buildWitness() {
   const status = git(['status', '-sb']);
   const statusLines = status.stdout.split('\n').filter(Boolean);
-  const clean = status.exitCode === 0 && statusLines.length <= 1;
+  const dirtyStatusLines = statusLines.slice(1).filter((line) => !(WRITE && isQascOutputStatusLine(line)));
+  const effectiveStatus = [statusLines[0], ...dirtyStatusLines].filter(Boolean).join('\n');
+  const clean = status.exitCode === 0 && dirtyStatusLines.length === 0;
   const branch = statusLines[0]?.replace(/^##\s*/, '') ?? null;
   const commit = git(['rev-parse', 'HEAD']).stdout || null;
   const sc = scripts();
@@ -638,6 +644,11 @@ function buildWitness() {
   const inventoryScore = evidenceScore('audit/evidence/repo-folder-file-spec-inventory-latest.json');
   const archiveManifest = readJson('audit/archive/ARCHIVE-MANIFEST.json');
   const auditScrubManifest = readJson('audit/evidence/audit-scrub-manifest-latest.json');
+  const archiveEvidencePath = has('audit/evidence/repo-cleanup-archive-manifest-latest.json')
+    ? 'audit/evidence/repo-cleanup-archive-manifest-latest.json'
+    : has('audit/archive/ARCHIVE-MANIFEST.json')
+      ? 'audit/archive/ARCHIVE-MANIFEST.json'
+      : 'audit/evidence/audit-scrub-manifest-latest.json';
   const archiveScore = !has('audit/archive')
     ? 100
     : Math.max(
@@ -730,7 +741,7 @@ function buildWitness() {
   );
 
   const rows = [
-    statusRow('Worktree clean', clean, summarizeGitStatus(status.stdout), ['Craft', 'Trust & Safety'], ['Grounded'], clean ? null : 'worktree is dirty'),
+    statusRow('Worktree clean', clean, summarizeGitStatus(effectiveStatus), ['Craft', 'Trust & Safety'], ['Grounded'], clean ? null : 'worktree is dirty'),
     scoredRow('Critical docs preserved', inventoryScore, 'audit/evidence/repo-folder-file-spec-inventory-latest.json', ['Trust & Safety', 'Defensive Moat', 'IP Magic'], ['Lossless', 'Specific'], inventoryScore === 100 ? null : 'inventory witness is incomplete'),
     scoredRow('Feature/spec registry', featureScore, 'docs:feature-spec:check evidence', ['Commercial Value', 'Product/Ecosystem Integration'], ['Specific', 'Integrated', 'Actionable'], featureScore === 100 ? null : 'feature/spec validation is below benchmark'),
     scoredRow('Documentation hygiene', docsScore, `docs IA ${docsIaScore}/100; tree ${docsTreeScore}/100; links ${docsLinkScore}/100`, ['Compliance', 'World Class', 'Trust & Safety'], ['Navigable', 'Grounded', 'Lossless'], docsScore === 100 ? null : 'documentation IA, lifecycle metadata, or link integrity is below benchmark'),
@@ -758,7 +769,7 @@ function buildWitness() {
     scoredRow('Root hygiene', forbiddenRoots.length === 0 ? 100 : 0, forbiddenRoots.length ? forbiddenRoots.join(', ') : 'root scan clean', ['Compliance', 'Craft'], ['Navigable'], forbiddenRoots.length === 0 ? null : 'forbidden live roots present'),
     scoredRow('Link/reference hygiene', docsLinkScore, docsLinkRun ? `${docsLinkRun.command} exit ${docsLinkRun.exitCode}; ${linkEvidence.length} related witnesses` : 'link checker unavailable', ['World Class', 'Trust & Safety'], ['Navigable', 'Grounded'], docsLinkScore === 100 ? null : 'link/reference integrity is below benchmark'),
     scoredRow('Cross-repo contract', crossRepoScore, 'contract evidence witness score', ['Product/Ecosystem Integration'], ['Integrated'], crossRepoScore === 100 ? null : 'cross-repo contract evidence is below benchmark'),
-    scoredRow('Archive recoverability', archiveScore, 'audit/evidence/repo-cleanup-archive-manifest-latest.json', ['Trust & Safety', 'Defensive Moat'], ['Lossless'], archiveScore === 100 ? null : 'archive recoverability is below benchmark'),
+    scoredRow('Archive recoverability', archiveScore, archiveEvidencePath, ['Trust & Safety', 'Defensive Moat'], ['Lossless'], archiveScore === 100 ? null : 'archive recoverability is below benchmark'),
   ];
 
   const blockers = rows
@@ -842,7 +853,7 @@ function buildWitness() {
       score100: inventoryScore,
     },
     archive: {
-      path: 'audit/evidence/repo-cleanup-archive-manifest-latest.json',
+      path: archiveEvidencePath,
       recoverable: archiveScore === 100,
       score100: archiveScore,
     },

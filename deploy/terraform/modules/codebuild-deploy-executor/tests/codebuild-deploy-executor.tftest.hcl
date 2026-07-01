@@ -94,9 +94,9 @@ run "permits_scoped_ebs_csi_addon_repair" {
       statement.Sid == "EksAddonTag" &&
       contains(statement.Action, "eks:TagResource") &&
       length(statement.Action) == 1 &&
-      statement.Resource == "arn:aws:eks:af-south-1:123456789012:addon/gtcx-test-eks/*/*"
+      statement.Resource == "*"
     ])
-    error_message = "Deploy executor must tag EKS add-ons only on the target EKS add-on ARN."
+    error_message = "EKS TagResource during add-on creation is wildcard-resource evaluated; deploy executor must not combine it with broader EKS mutations."
   }
 
   assert {

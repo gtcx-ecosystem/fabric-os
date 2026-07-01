@@ -199,7 +199,7 @@ locals {
         Action = [
           "eks:TagResource",
         ]
-        Resource = "arn:aws:eks:${var.region}:${data.aws_caller_identity.current.account_id}:addon/${var.eks_cluster_name}/*/*"
+        Resource = "*"
       },
       {
         Sid    = "IamAttachEbsCsiPolicyToNodeRole"

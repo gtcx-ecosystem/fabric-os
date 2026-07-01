@@ -51,31 +51,31 @@ function list(rel) {
 }
 
 function git(args) {
-  const res = spawnSync('git', args, { cwd: ROOT, encoding: 'utf8' });
+  const res = spawnSync('git', args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 30 * 1024 * 1024 });
   return {
     exitCode: res.status ?? 1,
     stdout: (res.stdout ?? '').trim(),
-    stderr: (res.stderr ?? '').trim(),
+    stderr: (res.stderr ?? res.error?.message ?? '').trim(),
   };
 }
 
 function pnpmRun(args) {
-  const res = spawnSync('pnpm', args, { cwd: ROOT, encoding: 'utf8' });
+  const res = spawnSync('pnpm', args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 30 * 1024 * 1024 });
   return {
     command: `pnpm ${args.join(' ')}`,
     exitCode: res.status ?? 1,
     stdout: (res.stdout ?? '').trim(),
-    stderr: (res.stderr ?? '').trim(),
+    stderr: (res.stderr ?? res.error?.message ?? '').trim(),
   };
 }
 
 function nodeRun(args) {
-  const res = spawnSync('node', args, { cwd: ROOT, encoding: 'utf8' });
+  const res = spawnSync('node', args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 30 * 1024 * 1024 });
   return {
     command: `node ${args.join(' ')}`,
     exitCode: res.status ?? 1,
     stdout: (res.stdout ?? '').trim(),
-    stderr: (res.stderr ?? '').trim(),
+    stderr: (res.stderr ?? res.error?.message ?? '').trim(),
   };
 }
 

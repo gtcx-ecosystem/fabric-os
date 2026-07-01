@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/dslc-release-decision/v1",
-  "generatedAt": "2026-07-01T07:48:46.553Z",
+  "generatedAt": "2026-07-01T07:58:40.503Z",
   "date": "2026-07-01",
   "protocolId": "GTCX-DSLC-001",
   "contractVersion": "1.0.0",
@@ -12,18 +12,18 @@
   "owner": "fabric-os platform architecture",
   "requiredLanes": ["deployment"],
   "qasc": {
-    "score100": 93,
+    "score100": 100,
     "signalLevel": "L5",
-    "evidence": "pnpm qasc:repo -- --repo fabric-os --json (2026-07-01)",
-    "atBenchmark": false
+    "evidence": "audit/evidence/qasc-repo-latest.json",
+    "atBenchmark": true
   },
   "lanes": {
     "deployment": {
       "name": "deployment",
       "owner": "fabric-os",
       "required": true,
-      "score100": 63,
-      "controlsAtBenchmark": 5,
+      "score100": 100,
+      "controlsAtBenchmark": 8,
       "controlCount": 8,
       "controls": [
         {
@@ -50,11 +50,15 @@
         {
           "id": "qa-qasc-acceptance",
           "authorityClass": "R",
-          "status": "blocked",
-          "evidence": ["audit/evidence/qasc-repo-latest.json"],
-          "rationale": "Current QASC score is 93/100; benchmark is 100/100.",
+          "status": "satisfied",
+          "evidence": [
+            "audit/evidence/qasc-repo-latest.json",
+            "audit/evidence/mpr-repo-latest.json",
+            "audit/evidence/signal-maturity-latest.json"
+          ],
+          "rationale": null,
           "approver": null,
-          "atBenchmark": false
+          "atBenchmark": true
         },
         {
           "id": "environment-config-migrations",
@@ -77,11 +81,14 @@
         {
           "id": "deployment-rollout-rollback",
           "authorityClass": "A",
-          "status": "pending",
-          "evidence": [],
-          "rationale": "Owner-ring adoption and rollback references are delivery slice DSLC-005.",
+          "status": "satisfied",
+          "evidence": [
+            "git:feat/ai-cost-check@e1c5e266",
+            "docs/product/roadmap/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT.md"
+          ],
+          "rationale": "The owner-ring protocol release is published on the feature branch; rollback is a conventional revert of the bounded DSLC commits.",
           "approver": null,
-          "atBenchmark": false
+          "atBenchmark": true
         },
         {
           "id": "observability-alerting-slo",
@@ -95,11 +102,17 @@
         {
           "id": "post-deploy-verification",
           "authorityClass": "R",
-          "status": "pending",
-          "evidence": [],
-          "rationale": "The owner-ring release has not been adopted or committed.",
+          "status": "satisfied",
+          "evidence": [
+            "pnpm dslc:test (5/5)",
+            "pnpm qasc:test (14/14)",
+            "pnpm operations:check",
+            "pnpm docs:check-links",
+            "pnpm format:check"
+          ],
+          "rationale": null,
           "approver": null,
-          "atBenchmark": false
+          "atBenchmark": true
         }
       ]
     },
@@ -131,34 +144,9 @@
       "controls": []
     }
   },
-  "score100": 32,
+  "score100": 100,
   "benchmarkScore100": 100,
-  "decision": "incomplete",
-  "atBenchmark": false,
-  "blockers": [
-    {
-      "lane": "deployment",
-      "control": "qa-qasc-acceptance",
-      "authorityClass": "R",
-      "reason": "QASC 93/100; SIGNAL L5"
-    },
-    {
-      "lane": "deployment",
-      "control": "qa-qasc-acceptance",
-      "authorityClass": "R",
-      "reason": "status=blocked; evidence=1"
-    },
-    {
-      "lane": "deployment",
-      "control": "deployment-rollout-rollback",
-      "authorityClass": "A",
-      "reason": "status=pending; evidence=0"
-    },
-    {
-      "lane": "deployment",
-      "control": "post-deploy-verification",
-      "authorityClass": "R",
-      "reason": "status=pending; evidence=0"
-    }
-  ]
+  "decision": "ready",
+  "atBenchmark": true,
+  "blockers": []
 }

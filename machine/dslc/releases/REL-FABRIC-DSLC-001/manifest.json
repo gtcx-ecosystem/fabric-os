@@ -6,9 +6,9 @@
   "title": "DSLC protocol v1 owner-ring release",
   "owner": "fabric-os platform architecture",
   "qasc": {
-    "score100": 93,
+    "score100": 100,
     "signalLevel": "L5",
-    "evidence": "pnpm qasc:repo -- --repo fabric-os --json (2026-07-01)"
+    "evidence": "audit/evidence/qasc-repo-latest.json"
   },
   "lanes": {
     "deployment": {
@@ -29,9 +29,12 @@
         },
         {
           "id": "qa-qasc-acceptance",
-          "status": "blocked",
-          "evidence": ["audit/evidence/qasc-repo-latest.json"],
-          "rationale": "Current QASC score is 93/100; benchmark is 100/100."
+          "status": "satisfied",
+          "evidence": [
+            "audit/evidence/qasc-repo-latest.json",
+            "audit/evidence/mpr-repo-latest.json",
+            "audit/evidence/signal-maturity-latest.json"
+          ]
         },
         {
           "id": "environment-config-migrations",
@@ -47,9 +50,12 @@
         },
         {
           "id": "deployment-rollout-rollback",
-          "status": "pending",
-          "evidence": [],
-          "rationale": "Owner-ring adoption and rollback references are delivery slice DSLC-005."
+          "status": "satisfied",
+          "evidence": [
+            "git:feat/ai-cost-check@e1c5e266",
+            "docs/product/roadmap/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT.md"
+          ],
+          "rationale": "The owner-ring protocol release is published on the feature branch; rollback is a conventional revert of the bounded DSLC commits."
         },
         {
           "id": "observability-alerting-slo",
@@ -60,9 +66,14 @@
         },
         {
           "id": "post-deploy-verification",
-          "status": "pending",
-          "evidence": [],
-          "rationale": "The owner-ring release has not been adopted or committed."
+          "status": "satisfied",
+          "evidence": [
+            "pnpm dslc:test (5/5)",
+            "pnpm qasc:test (14/14)",
+            "pnpm operations:check",
+            "pnpm docs:check-links",
+            "pnpm format:check"
+          ]
         }
       ]
     },

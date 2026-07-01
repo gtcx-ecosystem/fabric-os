@@ -1,0 +1,401 @@
+{
+  "schema": "gtcx://fabric-os/qasc-dslc-ship-fleet-parity-witness/v1",
+  "generatedAt": "2026-07-01T17:31:39.242Z",
+  "ownerRepo": "fabric-os",
+  "contract": "machine/spec/qasc-dslc-ship-fleet-parity.json",
+  "contractVersion": "1.0.0",
+  "sourceHandoff": "docs/operations/coordination/inbound/from-bridge-os-qasc-dslc-ship-fleet-parity-2026-07-01.md",
+  "commandHealth": {
+    "ok": true,
+    "status": "pass",
+    "scanCompleted": true,
+    "repoCount": 21
+  },
+  "strictParity": {
+    "ok": false,
+    "atParity": 2,
+    "gapCount": 19,
+    "rule": "strict parity passes only when every repo is local-complete, fabric-provider, delegated, or exempt"
+  },
+  "strictPass": false,
+  "repoCount": 21,
+  "summary": {
+    "gap": 19,
+    "fabric-provider": 1,
+    "local-complete": 1
+  },
+  "results": [
+    {
+      "repo": "agile-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "baseline-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": false,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "bridge-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "canon-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "compliance-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "document-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "ecosystem-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": [],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "exploration-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "fabric-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "fabric-provider",
+      "valid": true,
+      "remediation": "Maintain Fabric-owned AaaS/QASC/DSLC/SHIP provider contracts and release commands.",
+      "reason": "Fabric is the central AaaS and QASC/DSLC/SHIP protocol provider.",
+      "missing": {
+        "providerScripts": [],
+        "providerSpecs": []
+      }
+    },
+    {
+      "repo": "griot-ai",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "gtcx-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "local-complete",
+      "valid": true,
+      "remediation": "Maintain repo-local QASC/DSLC/SHIP scripts, specs, and latest witnesses.",
+      "local": {
+        "missingLocalScripts": [],
+        "missingLocalSpecs": [],
+        "missingLocalWitnesses": [],
+        "shipWitnesses": [
+          "audit/evidence/gtcx-os-ship-latest.json",
+          "machine/ci/release-readiness-latest.json"
+        ]
+      }
+    },
+    {
+      "repo": "inspection-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "ledger-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "ledger-ui",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "markets-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "nyota-ai",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "sensei-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "terminal-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "terra-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "venture-os",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": [],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    },
+    {
+      "repo": "veritas-ai",
+      "checkoutPresent": true,
+      "packagePresent": true,
+      "classification": "gap",
+      "valid": false,
+      "remediation": "Either add repo-local qasc:check/dslc:check/ship:check with specs and latest witnesses, or add an explicit Fabric delegation pin plus current delegated QASC/DSLC/SHIP witnesses.",
+      "missingSummary": {
+        "localScripts": 3,
+        "localSpecs": 3,
+        "localWitnesses": 2,
+        "shipWitnessMissing": true,
+        "delegatedPinsPresent": ["machine/spec/aaas-audit-contract.pin.json"],
+        "delegatedProtocolsMissing": ["qasc", "dslc", "ship"],
+        "providerScripts": 0,
+        "providerSpecs": 0
+      }
+    }
+  ]
+}

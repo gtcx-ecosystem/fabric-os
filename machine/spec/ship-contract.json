@@ -1,0 +1,225 @@
+{
+  "$schema": "gtcx://fabric-os/ship-contract/v1",
+  "version": "1.0.0",
+  "updated": "2026-07-01",
+  "ownerRepo": "fabric-os",
+  "title": "GTCX Sealed, Hardened, Institutionalized, and Provisioned Protocol",
+  "protocolId": "GTCX-SHIP-001",
+  "status": "current",
+  "purpose": "Provide the final release-management gate after DSLC has passed: every v1 release must be sealed with verified proof, hardened against critical security/legal/ops gaps, institutionalized to GTCX v1 product standards, and provisioned with versioned specs, surfaces, docs, and changelog.",
+  "dslcRelationship": {
+    "protocolId": "GTCX-DSLC-001",
+    "rule": "DSLC establishes release-to-revenue readiness. SHIP consumes the DSLC decision as its prerequisite and never downgrades DSLC blockers.",
+    "minimumDecision": "ready",
+    "minimumScore100": 100
+  },
+  "qascRelationship": {
+    "protocolId": "GTCX-QASC-001",
+    "rule": "QASC proof is consumed through DSLC and may also be referenced directly in the sealed proof pack. SHIP does not rescore QASC.",
+    "minimumScore100": 100,
+    "minimumSignalLevel": "L5"
+  },
+  "authority": {
+    "governance": "canon-os",
+    "workflowAndCeremonies": "agile-os",
+    "releaseManagementRuntime": "fabric-os",
+    "runtimeAndCrossRepoMetadata": "bridge-os",
+    "productExperienceOwner": "repo owner",
+    "commercialAndBillingOwner": "commercial owner",
+    "legalDeterminationsAndSignatures": "sovereign human",
+    "publicDocsAndChangelogOwner": "authorized communications owner",
+    "implementation": "repo owner"
+  },
+  "releaseClasses": {
+    "internal": {
+      "requiredPillars": ["sealed", "hardened", "provisioned"]
+    },
+    "public": {
+      "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+    },
+    "pilot": {
+      "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+    },
+    "customer-contract": {
+      "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+    },
+    "partnership": {
+      "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+    },
+    "regulated-data": {
+      "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+    },
+    "ip-bearing": {
+      "requiredPillars": ["sealed", "hardened", "institutionalized", "provisioned"]
+    }
+  },
+  "pillars": {
+    "sealed": {
+      "definition": "Verified proof of all required protocols, release decisions, evidence chains, and release-manager attestation.",
+      "owner": "release manager and fabric-os",
+      "controls": [
+        {
+          "id": "protocol-proof-pack",
+          "requiredFor": ["all"],
+          "authorityClass": "R",
+          "description": "QASC, DSLC, MPR/SIGNAL, test, evidence, and release reports are linked in one proof pack."
+        },
+        {
+          "id": "dslc-decision-ready",
+          "requiredFor": ["all"],
+          "authorityClass": "R",
+          "description": "DSLC decision witness is ready at 100/100 for the same release unit."
+        },
+        {
+          "id": "evidence-chain-current",
+          "requiredFor": ["all"],
+          "authorityClass": "R",
+          "description": "Evidence files are current, machine-readable, and trace to the release commit or version."
+        },
+        {
+          "id": "release-manager-attestation",
+          "requiredFor": ["all"],
+          "authorityClass": "A",
+          "description": "Release manager records the final ship attestation and rollback boundary."
+        }
+      ]
+    },
+    "hardened": {
+      "definition": "Critical security, legal, and operational vulnerabilities meet control requirements before public/customer activation.",
+      "owner": "security, legal ops, platform ops",
+      "controls": [
+        {
+          "id": "security-critical-controls",
+          "requiredFor": ["all"],
+          "authorityClass": "R",
+          "description": "Critical and high security controls have passing evidence or approved exceptions."
+        },
+        {
+          "id": "legal-ops-critical-controls",
+          "requiredFor": [
+            "public",
+            "pilot",
+            "customer-contract",
+            "partnership",
+            "regulated-data",
+            "ip-bearing"
+          ],
+          "authorityClass": "S",
+          "description": "Legal, privacy, data-sharing, IP, terms, and agreement blockers are closed by the authorized human owner."
+        },
+        {
+          "id": "ops-critical-controls",
+          "requiredFor": ["all"],
+          "authorityClass": "R",
+          "description": "Deploy, rollback, observability, incident, support, and operational readiness controls meet the release class."
+        },
+        {
+          "id": "exceptions-risk-acceptance-register",
+          "requiredFor": ["all"],
+          "authorityClass": "A",
+          "description": "Any residual security/legal/ops exceptions have named owner, expiry, rationale, and evidence."
+        }
+      ]
+    },
+    "institutionalized": {
+      "definition": "The release adheres to institutional-grade GTCX v1 product standards across experience, billing, onboarding, docs, and architecture.",
+      "owner": "product, commercial ops, docs, architecture",
+      "controls": [
+        {
+          "id": "producer-experience-standard",
+          "requiredFor": ["public", "pilot", "customer-contract", "regulated-data"],
+          "authorityClass": "R",
+          "description": "Producer/operator experience is documented, tested, and supportable."
+        },
+        {
+          "id": "billing-payment-revops-standard",
+          "requiredFor": ["pilot", "customer-contract", "partnership"],
+          "authorityClass": "A",
+          "description": "Payment, billing, customer management, revenue ops, and FinOps paths are defined or explicitly out of scope."
+        },
+        {
+          "id": "onboarding-success-support-standard",
+          "requiredFor": ["public", "pilot", "customer-contract", "partnership"],
+          "authorityClass": "R",
+          "description": "Customer/operator onboarding, success, support, and handoff docs exist."
+        },
+        {
+          "id": "docs-architecture-standard",
+          "requiredFor": [
+            "public",
+            "pilot",
+            "customer-contract",
+            "partnership",
+            "regulated-data",
+            "ip-bearing"
+          ],
+          "authorityClass": "R",
+          "description": "Architecture, runbook, API/CLI, user docs, and institutional documentation standards are satisfied."
+        }
+      ]
+    },
+    "provisioned": {
+      "definition": "Specs, features, surfaces, docs, GitBook/public releases, and changelog are version controlled and formally issued.",
+      "owner": "release manager, docs owner, repo owner",
+      "controls": [
+        {
+          "id": "spec-versioning",
+          "requiredFor": ["all"],
+          "authorityClass": "R",
+          "description": "Formal specs are versioned, machine-readable where applicable, and referenced from the release manifest."
+        },
+        {
+          "id": "surface-feature-versioning",
+          "requiredFor": ["all"],
+          "authorityClass": "R",
+          "description": "SDK, CLI, desktop, cloud, mobile, and other shipped surfaces/features are versioned or explicitly not applicable."
+        },
+        {
+          "id": "gitbook-public-docs-issued",
+          "requiredFor": ["public", "pilot", "customer-contract", "partnership"],
+          "authorityClass": "A",
+          "description": "GitBook and public-facing docs are formally issued for the release class."
+        },
+        {
+          "id": "public-changelog-release-notes-issued",
+          "requiredFor": [
+            "public",
+            "pilot",
+            "customer-contract",
+            "partnership",
+            "regulated-data",
+            "ip-bearing"
+          ],
+          "authorityClass": "A",
+          "description": "Public changelog, release notes, and version history are formally issued or approved as non-public."
+        }
+      ]
+    }
+  },
+  "decisionPolicy": {
+    "controlStatuses": ["pending", "satisfied", "blocked", "not-applicable"],
+    "readyRule": "DSLC is ready at 100/100 and every applicable SHIP control in every required pillar is satisfied or has an approved not-applicable determination.",
+    "notApplicableRule": "A required control may be marked not-applicable only with rationale, named approver, and evidence of the applicability determination.",
+    "postDslcBoundary": "SHIP is the final release-management check after DSLC. It can block formal shipment even when DSLC passed, but it cannot override a DSLC blocker.",
+    "claimBoundary": "SHIP records legal, public-release, billing, and product-readiness approvals; an agent cannot synthesize a legal signature, revenue-recognition approval, public claim, or human release-manager attestation.",
+    "segregationOfDuties": "The same actor must not both originate and sovereignly approve a legal instrument, public disclosure, pricing exception, revenue-recognition decision, or final release-manager attestation."
+  },
+  "commands": {
+    "contractEnforcement": "pnpm ship:contract:check",
+    "contractEvidence": "pnpm ship:contract:check:write",
+    "releaseEvaluation": "pnpm ship:release -- --manifest <path>",
+    "releaseEvidence": "pnpm ship:release:write -- --manifest <path>",
+    "tests": "pnpm ship:test"
+  },
+  "evidence": {
+    "releaseManifest": "machine/ship/releases/<release-id>/manifest.json",
+    "releaseWitness": "audit/evidence/ship-release-<release-id>-latest.json",
+    "releaseReport": "audit/reports/ship-decision-<release-id>-YYYY-MM-DD.md",
+    "contractWitness": "audit/evidence/ship-contract-check-latest.json"
+  },
+  "rollout": {
+    "ownerRing": ["fabric-os", "canon-os", "agile-os", "bridge-os"],
+    "productRing": ["markets-os", "ledger-ui", "terminal-os", "compliance-os"],
+    "rule": "A repository may claim v1 shipped only after QASC, DSLC, and SHIP evidence exist for the same release unit."
+  }
+}

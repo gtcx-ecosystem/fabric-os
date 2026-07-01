@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gtcx://fabric-os/ship-release-manifest/v1",
+  "title": "GTCX SHIP release manifest",
+  "type": "object",
+  "required": ["schema", "releaseId", "repo", "releaseClass", "title", "owner", "dslc", "pillars"],
+  "properties": {
+    "schema": {
+      "const": "gtcx://fabric-os/ship-release-manifest/v1"
+    },
+    "releaseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "releaseClass": {
+      "type": "string",
+      "enum": [
+        "internal",
+        "public",
+        "pilot",
+        "customer-contract",
+        "partnership",
+        "regulated-data",
+        "ip-bearing"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dslc": {
+      "type": "object",
+      "required": ["releaseId", "decision", "score100", "evidence"],
+      "properties": {
+        "releaseId": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string"
+        },
+        "score100": {
+          "type": "number"
+        },
+        "evidence": {
+          "type": "string"
+        }
+      }
+    },
+    "pillars": {
+      "type": "object",
+      "required": ["sealed", "hardened", "institutionalized", "provisioned"],
+      "properties": {
+        "sealed": {
+          "$ref": "#/$defs/pillar"
+        },
+        "hardened": {
+          "$ref": "#/$defs/pillar"
+        },
+        "institutionalized": {
+          "$ref": "#/$defs/pillar"
+        },
+        "provisioned": {
+          "$ref": "#/$defs/pillar"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "pillar": {
+      "type": "object",
+      "required": ["owner", "controls"],
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "controls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "status", "evidence"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["pending", "satisfied", "blocked", "not-applicable"]
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "approver": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

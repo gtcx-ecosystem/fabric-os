@@ -1,0 +1,164 @@
+{
+  "schema": "gtcx://fabric-os/dslc-release-decision/v1",
+  "generatedAt": "2026-07-01T07:48:46.553Z",
+  "date": "2026-07-01",
+  "protocolId": "GTCX-DSLC-001",
+  "contractVersion": "1.0.0",
+  "manifest": "machine/dslc/releases/REL-FABRIC-DSLC-001/manifest.json",
+  "releaseId": "REL-FABRIC-DSLC-001",
+  "repo": "fabric-os",
+  "releaseClass": "internal",
+  "title": "DSLC protocol v1 owner-ring release",
+  "owner": "fabric-os platform architecture",
+  "requiredLanes": ["deployment"],
+  "qasc": {
+    "score100": 93,
+    "signalLevel": "L5",
+    "evidence": "pnpm qasc:repo -- --repo fabric-os --json (2026-07-01)",
+    "atBenchmark": false
+  },
+  "lanes": {
+    "deployment": {
+      "name": "deployment",
+      "owner": "fabric-os",
+      "required": true,
+      "score100": 63,
+      "controlsAtBenchmark": 5,
+      "controlCount": 8,
+      "controls": [
+        {
+          "id": "release-scope-version",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": [
+            "machine/spec/dslc-contract.json",
+            "docs/product/roadmap/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT.md"
+          ],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "ci-build-provenance",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["package.json#dslc:test", "platform/scripts/tests/dslc-release.test.mjs"],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "qa-qasc-acceptance",
+          "authorityClass": "R",
+          "status": "blocked",
+          "evidence": ["audit/evidence/qasc-repo-latest.json"],
+          "rationale": "Current QASC score is 93/100; benchmark is 100/100.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "environment-config-migrations",
+          "authorityClass": "R",
+          "status": "not-applicable",
+          "evidence": ["docs/product/roadmap/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT.md"],
+          "rationale": "The owner-ring slice adds protocol documents and local validation tooling only; it changes no runtime environment, secret binding, database, or migration.",
+          "approver": "platform-architect",
+          "atBenchmark": true
+        },
+        {
+          "id": "release-notes-operator-runbook",
+          "authorityClass": "R",
+          "status": "satisfied",
+          "evidence": ["docs/operations/runbooks/dslc-protocol.md"],
+          "rationale": null,
+          "approver": null,
+          "atBenchmark": true
+        },
+        {
+          "id": "deployment-rollout-rollback",
+          "authorityClass": "A",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "Owner-ring adoption and rollback references are delivery slice DSLC-005.",
+          "approver": null,
+          "atBenchmark": false
+        },
+        {
+          "id": "observability-alerting-slo",
+          "authorityClass": "R",
+          "status": "not-applicable",
+          "evidence": ["docs/product/roadmap/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT.md"],
+          "rationale": "This protocol-only slice introduces no running service or production SLO.",
+          "approver": "platform-architect",
+          "atBenchmark": true
+        },
+        {
+          "id": "post-deploy-verification",
+          "authorityClass": "R",
+          "status": "pending",
+          "evidence": [],
+          "rationale": "The owner-ring release has not been adopted or committed.",
+          "approver": null,
+          "atBenchmark": false
+        }
+      ]
+    },
+    "sales": {
+      "name": "sales",
+      "owner": "commercial-ops",
+      "required": false,
+      "score100": 100,
+      "controlsAtBenchmark": 0,
+      "controlCount": 0,
+      "controls": []
+    },
+    "legal": {
+      "name": "legal",
+      "owner": "legal-ops",
+      "required": false,
+      "score100": 100,
+      "controlsAtBenchmark": 0,
+      "controlCount": 0,
+      "controls": []
+    },
+    "communications": {
+      "name": "communications",
+      "owner": "communications",
+      "required": false,
+      "score100": 100,
+      "controlsAtBenchmark": 0,
+      "controlCount": 0,
+      "controls": []
+    }
+  },
+  "score100": 32,
+  "benchmarkScore100": 100,
+  "decision": "incomplete",
+  "atBenchmark": false,
+  "blockers": [
+    {
+      "lane": "deployment",
+      "control": "qa-qasc-acceptance",
+      "authorityClass": "R",
+      "reason": "QASC 93/100; SIGNAL L5"
+    },
+    {
+      "lane": "deployment",
+      "control": "qa-qasc-acceptance",
+      "authorityClass": "R",
+      "reason": "status=blocked; evidence=1"
+    },
+    {
+      "lane": "deployment",
+      "control": "deployment-rollout-rollback",
+      "authorityClass": "A",
+      "reason": "status=pending; evidence=0"
+    },
+    {
+      "lane": "deployment",
+      "control": "post-deploy-verification",
+      "authorityClass": "R",
+      "reason": "status=pending; evidence=0"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "gtcx://fabric-os/dslc-contract-check/v1",
+  "generatedAt": "2026-07-01T07:48:51.130Z",
+  "protocolId": "GTCX-DSLC-001",
+  "score100": 100,
+  "benchmarkScore100": 100,
+  "controlsAtBenchmark": 9,
+  "controlCount": 9,
+  "atBenchmark": true,
+  "controls": [
+    {
+      "id": "contract-schema",
+      "score100": 100,
+      "evidence": "gtcx://fabric-os/dslc-contract/v1"
+    },
+    {
+      "id": "protocol-id",
+      "score100": 100,
+      "evidence": "GTCX-DSLC-001"
+    },
+    {
+      "id": "qasc-boundary",
+      "score100": 100,
+      "evidence": {
+        "protocolId": "GTCX-QASC-001",
+        "rule": "QASC independently establishes implementation assurance. DSLC consumes the current QASC result as the deployment quality gate and does not duplicate QASC scoring.",
+        "minimumScore100": 100,
+        "minimumSignalLevel": "L5"
+      }
+    },
+    {
+      "id": "four-lane-contract",
+      "score100": 100,
+      "evidence": {
+        "deployment": 8,
+        "sales": 6,
+        "legal": 6,
+        "communications": 6
+      }
+    },
+    {
+      "id": "release-class-routing",
+      "score100": 100,
+      "evidence": {
+        "internal": {
+          "requiredLanes": ["deployment"]
+        },
+        "public": {
+          "requiredLanes": ["deployment", "communications"]
+        },
+        "pilot": {
+          "requiredLanes": ["deployment", "sales", "legal", "communications"]
+        },
+        "customer-contract": {
+          "requiredLanes": ["deployment", "sales", "legal"]
+        },
+        "partnership": {
+          "requiredLanes": ["sales", "legal", "communications"]
+        },
+        "regulated-data": {
+          "requiredLanes": ["deployment", "legal", "communications"]
+        },
+        "ip-bearing": {
+          "requiredLanes": ["deployment", "legal", "communications"]
+        }
+      }
+    },
+    {
+      "id": "authority-and-release-boundary",
+      "score100": 100,
+      "evidence": {
+        "controlStatuses": ["pending", "satisfied", "blocked", "not-applicable"],
+        "readyRule": "QASC is at benchmark and every applicable control in every lane required by the release class is satisfied.",
+        "notApplicableRule": "A required control may be marked not-applicable only with a rationale, named approver, and evidence of the approved applicability determination. A bare not-applicable status remains below benchmark.",
+        "releaseBoundary": "Sales, legal, and communications controls block only the activation they govern. They do not block an internal engineering deployment unless the release class requires that lane or a versioned release manifest explicitly binds the control.",
+        "claimBoundary": "DSLC records legal, financial, and public-communications decisions; an agent cannot make a legal determination, execute a signature, recognize revenue, approve pricing, or authorize a public claim.",
+        "segregationOfDuties": "The same actor must not both originate and sovereignly approve a legal instrument, pricing exception, revenue-recognition decision, or public disclosure."
+      }
+    },
+    {
+      "id": "manifest-schema",
+      "score100": 100,
+      "evidence": "machine/spec/dslc-release.schema.json"
+    },
+    {
+      "id": "command-surface",
+      "score100": 100,
+      "evidence": {
+        "dslc:contract:check": "node platform/scripts/dslc-contract-check.mjs",
+        "dslc:contract:check:write": "node platform/scripts/dslc-contract-check.mjs --write",
+        "dslc:release": "node platform/scripts/dslc-release.mjs",
+        "dslc:release:write": "node platform/scripts/dslc-release.mjs --write",
+        "dslc:test": "node --test platform/scripts/tests/dslc-contract-check.test.mjs platform/scripts/tests/dslc-release.test.mjs"
+      }
+    },
+    {
+      "id": "protocol-artifacts",
+      "score100": 100,
+      "evidence": "DSLC runbook, rollout PRD, contract, schema, and release evaluator"
+    }
+  ]
+}

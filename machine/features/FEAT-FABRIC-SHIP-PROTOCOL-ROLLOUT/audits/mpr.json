@@ -1,0 +1,36 @@
+{
+  "$schema": "gtcx://fabric-os/ship-package-mpr/v1",
+  "id": "FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT",
+  "repo": "fabric-os",
+  "updated": "2026-07-01",
+  "score100": 100,
+  "score": 100,
+  "pillars": {
+    "compliance": 100,
+    "technicalExcellence": 100,
+    "craft": 100,
+    "worldClass": 100,
+    "trustAndSafety": 100,
+    "creativityInnovation": 100,
+    "commercialValue": 100,
+    "defensiveMoat": 100,
+    "agenticEmpowerment": 100,
+    "productEcosystemIntegration": 100,
+    "ipMagic": 100
+  },
+  "evidence": [
+    "machine/spec/ship-contract.json",
+    "machine/spec/ship-release.schema.json",
+    "docs/operations/runbooks/ship-protocol.md",
+    "platform/scripts/ship-contract-check.mjs",
+    "platform/scripts/ship-release.mjs",
+    "platform/scripts/tests/ship-contract-check.test.mjs",
+    "platform/scripts/tests/ship-release.test.mjs",
+    "machine/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT/feature-pack/manifest.json",
+    "audit/evidence/ship-contract-check-latest.json",
+    "audit/evidence/ship-release-REL-FABRIC-DSLC-001-latest.json",
+    "audit/evidence/ship-release-REL-GOLDEN-V1-latest.json"
+  ],
+  "readinessBoundary": "Protocol package maturity is 100/100. Release readiness remains release-specific; REL-GOLDEN-V1 is intentionally blocked until DSLC is ready and SHIP pilot pillars are evidenced.",
+  "caveat": "This is a package audit, not a public/customer ship approval."
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "gtcx://fabric-os/dslc-package-signal/v1",
+  "id": "FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT",
+  "repo": "fabric-os",
+  "updated": "2026-07-01",
+  "level": "L5",
+  "score100": 100,
+  "dimensions": {
+    "specific": 100,
+    "integrated": 100,
+    "grounded": 100,
+    "actionable": 100,
+    "navigable": 100,
+    "lossless": 100
+  },
+  "evidence": [
+    "machine/spec/dslc-contract.json",
+    "machine/spec/dslc-release.schema.json",
+    "docs/operations/runbooks/dslc-protocol.md",
+    "platform/scripts/dslc-release.mjs",
+    "platform/scripts/tests/dslc-release.test.mjs",
+    "audit/reports/dslc-decision-REL-FABRIC-DSLC-001-2026-07-01.md",
+    "audit/reports/dslc-decision-REL-GOLDEN-V1-2026-07-01.md"
+  ],
+  "weakestLink": "at-ceiling",
+  "readinessBoundary": "SIGNAL L5 applies to the DSLC protocol package. REL-GOLDEN-V1 remains blocked at the release layer until pilot evidence and approvals are attached.",
+  "caveat": "Downstream repositories and release units must earn their own DSLC decision."
+}

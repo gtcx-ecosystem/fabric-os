@@ -1,0 +1,36 @@
+{
+  "$schema": "gtcx://fabric-os/dslc-package-mpr/v1",
+  "id": "FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT",
+  "repo": "fabric-os",
+  "updated": "2026-07-01",
+  "score100": 100,
+  "score": 100,
+  "pillars": {
+    "compliance": 100,
+    "technicalExcellence": 100,
+    "craft": 100,
+    "worldClass": 100,
+    "trustAndSafety": 100,
+    "creativityInnovation": 100,
+    "commercialValue": 100,
+    "defensiveMoat": 100,
+    "agenticEmpowerment": 100,
+    "productEcosystemIntegration": 100,
+    "ipMagic": 100
+  },
+  "evidence": [
+    "machine/spec/dslc-contract.json",
+    "machine/spec/dslc-release.schema.json",
+    "docs/operations/runbooks/dslc-protocol.md",
+    "platform/scripts/dslc-contract-check.mjs",
+    "platform/scripts/dslc-release.mjs",
+    "platform/scripts/tests/dslc-contract-check.test.mjs",
+    "platform/scripts/tests/dslc-release.test.mjs",
+    "machine/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT/feature-pack/manifest.json",
+    "audit/evidence/dslc-contract-check-latest.json",
+    "audit/evidence/dslc-release-REL-FABRIC-DSLC-001-latest.json",
+    "audit/evidence/dslc-release-REL-GOLDEN-V1-latest.json"
+  ],
+  "readinessBoundary": "Protocol package maturity is 100/100. Release readiness remains release-specific; REL-GOLDEN-V1 is intentionally blocked until pilot evidence and approvals exist.",
+  "caveat": "This is a package audit, not a customer/pilot release approval."
+}

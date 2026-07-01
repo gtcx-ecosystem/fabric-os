@@ -1,0 +1,25 @@
+{
+  "$schema": "gtcx://fabric-os/feature-pack/v1",
+  "id": "FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT",
+  "repo": "fabric-os",
+  "title": "SHIP protocol rollout",
+  "status": "current",
+  "updated": "2026-07-01",
+  "releaseProtocol": "GTCX-SHIP-001",
+  "artifacts": [
+    "machine/spec/ship-contract.json",
+    "machine/spec/ship-release.schema.json",
+    "docs/operations/runbooks/ship-protocol.md",
+    "platform/scripts/ship-contract-check.mjs",
+    "platform/scripts/ship-release.mjs",
+    "platform/scripts/tests/ship-contract-check.test.mjs",
+    "platform/scripts/tests/ship-release.test.mjs",
+    "machine/ship/releases/REL-FABRIC-DSLC-001/manifest.json",
+    "machine/ship/releases/REL-GOLDEN-V1/manifest.json"
+  ],
+  "audits": {
+    "mpr": "machine/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT/audits/mpr.json",
+    "signal": "machine/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT/audits/signal.json"
+  },
+  "caveat": "This package manifest covers SHIP protocol maturity. Individual releases must still earn release-specific SHIP readiness."
+}

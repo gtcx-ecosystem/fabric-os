@@ -1,0 +1,25 @@
+{
+  "$schema": "gtcx://fabric-os/feature-pack/v1",
+  "id": "FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT",
+  "repo": "fabric-os",
+  "title": "DSLC protocol rollout",
+  "status": "current",
+  "updated": "2026-07-01",
+  "releaseProtocol": "GTCX-DSLC-001",
+  "artifacts": [
+    "machine/spec/dslc-contract.json",
+    "machine/spec/dslc-release.schema.json",
+    "docs/operations/runbooks/dslc-protocol.md",
+    "platform/scripts/dslc-contract-check.mjs",
+    "platform/scripts/dslc-release.mjs",
+    "platform/scripts/tests/dslc-contract-check.test.mjs",
+    "platform/scripts/tests/dslc-release.test.mjs",
+    "machine/dslc/releases/REL-FABRIC-DSLC-001/manifest.json",
+    "machine/dslc/releases/REL-GOLDEN-V1/manifest.json"
+  ],
+  "audits": {
+    "mpr": "machine/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT/audits/mpr.json",
+    "signal": "machine/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT/audits/signal.json"
+  },
+  "caveat": "This package manifest covers DSLC protocol maturity. Individual releases must still earn release-specific DSLC readiness."
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "gtcx://fabric-os/ship-package-signal/v1",
+  "id": "FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT",
+  "repo": "fabric-os",
+  "updated": "2026-07-01",
+  "level": "L5",
+  "score100": 100,
+  "dimensions": {
+    "specific": 100,
+    "integrated": 100,
+    "grounded": 100,
+    "actionable": 100,
+    "navigable": 100,
+    "lossless": 100
+  },
+  "evidence": [
+    "machine/spec/ship-contract.json",
+    "machine/spec/ship-release.schema.json",
+    "docs/operations/runbooks/ship-protocol.md",
+    "platform/scripts/ship-release.mjs",
+    "platform/scripts/tests/ship-release.test.mjs",
+    "audit/reports/ship-decision-REL-FABRIC-DSLC-001-2026-07-01.md",
+    "audit/reports/ship-decision-REL-GOLDEN-V1-2026-07-01.md"
+  ],
+  "weakestLink": "at-ceiling",
+  "readinessBoundary": "SIGNAL L5 applies to the SHIP protocol package. REL-GOLDEN-V1 remains blocked at the release layer until DSLC is ready and pilot/public issuance evidence is attached.",
+  "caveat": "Downstream repositories and release units must earn their own SHIP decision."
+}

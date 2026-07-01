@@ -63,3 +63,30 @@ run "creates_environment_scoped_inline_policy" {
     error_message = "Deploy executor mutation permissions must remain attached to the environment-scoped inline policy."
   }
 }
+
+run "permits_scoped_ebs_csi_addon_repair" {
+  command = plan
+
+  assert {
+    condition = anytrue([
+      for statement in local.deploy_policy_statements :
+      statement.Sid == "EksAddonManage" &&
+      contains(statement.Action, "eks:CreateAddon") &&
+      contains(statement.Action, "eks:UpdateAddon") &&
+      statement.Resource == "arn:aws:eks:af-south-1:123456789012:addon/gtcx-test-eks/*/*"
+    ])
+    error_message = "Deploy executor must be able to manage add-ons only on the target EKS cluster."
+  }
+
+  assert {
+    condition = anytrue([
+      for statement in local.deploy_policy_statements :
+      statement.Sid == "IamAttachEbsCsiPolicyToNodeRole" &&
+      contains(statement.Action, "iam:AttachRolePolicy") &&
+      contains(statement.Action, "iam:DetachRolePolicy") &&
+      statement.Resource == "arn:aws:iam::123456789012:role/gtcx-test-node-role" &&
+      statement.Condition.ArnEquals["iam:PolicyARN"] == "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+    ])
+    error_message = "Deploy executor must attach only the EBS CSI managed policy to the environment node role."
+  }
+}

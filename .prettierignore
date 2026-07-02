@@ -6,6 +6,8 @@ build/
 .terraform/
 coverage/
 _delete/
+archive/_delete/
+archive/_delete/**
 .baseline/
 tools/docs-site/.astro/
 tools/docs-site/src/content/docs/

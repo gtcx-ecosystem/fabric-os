@@ -1,0 +1,20 @@
+{
+  "schema": "gtcx://fabric-os/secas-s4-04-internal-closure/v1",
+  "storyId": "SECAS-S4-04",
+  "program": "INIT-GTCX-INFRA-SECAS",
+  "closedAt": "2026-06-15T00:00:00.000Z",
+  "closureType": "class-r-scaffold",
+  "internalScopeComplete": true,
+  "storyComplete": false,
+  "phase": "awaiting_vendor_report",
+  "uat": {
+    "internal": "2/4 Class R scaffold items done",
+    "external": "findings mapping + closure — BG-10-10-REPORT"
+  },
+  "witnesses": [
+    "audit/evidence/secas-pentest-remediation-check-latest.json",
+    "audit/evidence/pen-test-findings-register-latest.json",
+    "audit/evidence/pen-test-remediation-closure-latest.json"
+  ],
+  "blocksIR": false
+}

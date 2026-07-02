@@ -1,0 +1,11 @@
+{
+  "$schema": "gtcx.agentic.bridge.v1",
+  "repo": "fabric-os",
+  "owner": "fabric-os",
+  "layoutVersion": "v5",
+  "status": "current",
+  "updated": "2026-06-22",
+  "purpose": "Agentic bridge — runtime via baseline-os; harness at agents/manifest.json",
+  "runtimeSor": "platform/",
+  "governanceSor": "docs/operations/agents/"
+}

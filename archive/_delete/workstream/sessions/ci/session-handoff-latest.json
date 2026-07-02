@@ -1,0 +1,49 @@
+{
+  "schema": "gtcx://fabric-os/session-handoff/v1",
+  "at": "2026-06-26T00:27:30.716Z",
+  "repo": "fabric-os",
+  "story": "SECAS-S4-04",
+  "persona": "platform-engineer",
+  "frame": "development",
+  "handoffPath": "workstream/sessions/handoffs/handoff-secas-s4-04-2026-06-26.md",
+  "sessionComplete": false,
+  "closureBar": null,
+  "nextWorkItem": null,
+  "git": {
+    "branch": "main",
+    "recent": [
+      "99dbc599 chore(ops): refresh fleet evidence witnesses and blocker register",
+      "764a62f3 chore(evidence): refresh fabric-ops policy contract witness",
+      "8b89e971 chore(coordination): sync fleet unblock register with JSON state",
+      "ec739507 docs(coordination): P24 correction — fabric-os open items already done",
+      "269a4391 chore(evidence): refresh MPR witnesses after F-prod-06 documentation",
+      "424fbf8e feat(coordination): add F-prod-06 production HTTPS blocker state and runbook",
+      "3d5c58e4 chore(evidence): refresh MPR + validation witnesses after FB-002 delivery",
+      "d2a94444 ci(security): pin actions/checkout SHA in markets-os staging verify workflow"
+    ],
+    "ahead": 0,
+    "dirty": [
+      "M audit/archive/2026-06-25/no-bullshit-gtm-full-audit-2026-06-25.md",
+      " M audit/pen-test-intake-evidence-2026-05-31.md",
+      " M machine/ci/session-open-items-latest.json",
+      " M machine/ci/settlement-commit-latest.json",
+      " M machine/ci/settlement-push-latest.json",
+      " M machine/ci/settlement-story-scope-latest.json",
+      " M operations/coordination/manifest.json",
+      " M platform/scripts/lib/evaluate-gtm-readiness.mjs",
+      " M platform/scripts/lib/evaluate-product-charter.mjs",
+      "?? audit/archive/2026-06-25/independent/",
+      "?? documents/print/output/deals/gtcx-fabr-ts-001-v1-tear-sheet.pdf",
+      "?? platform/scripts/lib/infer-gtm-stage.mjs",
+      "?? workstream/sessions/ci/snapshots/session-open-items-c457e6f2-f920-4693-b04b-744036e12e44-2026-06-26T00-27-30-460Z.json",
+      "?? workstream/sessions/ledger/7d86fb65-959f-4a27-b4e8-e61bc71c3659.json",
+      "?? workstream/sessions/ledger/ac9d9228-0a91-47a1-ba6e-1450bcafd636.json",
+      "?? workstream/sessions/ledger/c457e6f2-f920-4693-b04b-744036e12e44.json",
+      "?? workstream/sessions/ledger/d2fc3953-4bd5-4173-b9f6-aca1d88a60b2.json",
+      "?? workstream/sessions/transcripts/7d86fb65-959f-4a27-b4e8-e61bc71c3659.json",
+      "?? workstream/sessions/transcripts/ac9d9228-0a91-47a1-ba6e-1450bcafd636.json",
+      "?? workstream/sessions/transcripts/c457e6f2-f920-4693-b04b-744036e12e44.json",
+      "?? workstream/sessions/transcripts/d2fc3953-4bd5-4173-b9f6-aca1d88a60b2.json"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "gtcx://fabric-os/git-safety-net-pack/v1",
+  "generatedAt": "2026-07-02T04:35:46.411Z",
+  "repo": "fabric-os",
+  "write": true,
+  "stashCount": 55,
+  "unreachableObjectCount": 11863,
+  "objectCounts": {
+    "commit": 2181,
+    "tree": 7385,
+    "blob": 2296,
+    "tag": 1
+  },
+  "objectBytes": {
+    "commit": 762466,
+    "tree": 8971800,
+    "blob": 65092830,
+    "tag": 1011
+  },
+  "errors": [],
+  "files": [
+    "archive/_delete/safety-net/manifest.json",
+    "archive/_delete/safety-net/stashes.jsonl",
+    "archive/_delete/safety-net/unreachable-objects-commit.jsonl",
+    "archive/_delete/safety-net/unreachable-objects-tree.jsonl",
+    "archive/_delete/safety-net/unreachable-objects-blob.jsonl",
+    "archive/_delete/safety-net/unreachable-objects-tag.jsonl"
+  ]
+}

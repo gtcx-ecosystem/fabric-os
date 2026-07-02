@@ -9,16 +9,39 @@
  */
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
+const FABRIC_ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
+const ECOSYSTEM_ROOT = join(FABRIC_ROOT, '..');
+const ROOT = resolveTargetRoot();
+const REPO = repoName(ROOT);
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
 const OUT_ROOT = join(ROOT, 'archive/_delete/safety-net');
 const MANIFEST = join(OUT_ROOT, 'manifest.json');
 const TYPES = ['commit', 'tree', 'blob', 'tag'];
+
+function arg(name) {
+  return process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null;
+}
+
+function resolveTargetRoot() {
+  const explicit = arg('--repo-root');
+  if (explicit) return explicit;
+  const repo = arg('--repo');
+  if (repo) return repo.includes('/') ? repo : join(ECOSYSTEM_ROOT, repo);
+  return FABRIC_ROOT;
+}
+
+function repoName(root) {
+  try {
+    return JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).name ?? root.split('/').pop();
+  } catch {
+    return root.split('/').pop();
+  }
+}
 
 function git(args, options = {}) {
   return execFileSync('git', ['-C', ROOT, ...args], {
@@ -99,7 +122,7 @@ const objectBytes = Object.fromEntries(
 const manifest = {
   schema: 'gtcx://fabric-os/git-safety-net-pack/v1',
   generatedAt: new Date().toISOString(),
-  repo: 'fabric-os',
+  repo: REPO,
   write: WRITE,
   stashCount: stashes.length,
   unreachableObjectCount: Object.values(objectCounts).reduce((sum, count) => sum + count, 0),

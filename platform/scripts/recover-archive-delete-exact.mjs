@@ -16,7 +16,10 @@ import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } 
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
+const FABRIC_ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
+const ECOSYSTEM_ROOT = join(FABRIC_ROOT, '..');
+const ROOT = resolveTargetRoot();
+const REPO = repoName(ROOT);
 const SINCE = arg('--since') ?? '2026-06-02T00:00:00';
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
@@ -26,6 +29,22 @@ const MANIFEST = join(ARCHIVE_ROOT, 'exact-manifest.json');
 
 function arg(name) {
   return process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null;
+}
+
+function resolveTargetRoot() {
+  const explicit = arg('--repo-root');
+  if (explicit) return explicit;
+  const repo = arg('--repo');
+  if (repo) return repo.includes('/') ? repo : join(ECOSYSTEM_ROOT, repo);
+  return FABRIC_ROOT;
+}
+
+function repoName(root) {
+  try {
+    return JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).name ?? root.split('/').pop();
+  } catch {
+    return root.split('/').pop();
+  }
 }
 
 function git(args, options = {}) {
@@ -191,7 +210,7 @@ const coverage = verifyCoverage(events);
 const witness = {
   schema: 'gtcx://fabric-os/archive-delete-exact-recovery/v1',
   generatedAt: new Date().toISOString(),
-  repo: 'fabric-os',
+  repo: REPO,
   since: SINCE,
   write: WRITE,
   deletionEvents: events.length,

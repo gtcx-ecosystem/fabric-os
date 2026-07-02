@@ -1,0 +1,125 @@
+{
+  "schema": "gtcx://fabric-os/qasc-contract-check/v1",
+  "generatedAt": "2026-07-02T15:19:01.039Z",
+  "protocolId": "GTCX-QASC-001",
+  "score100": 100,
+  "benchmarkScore100": 100,
+  "controlsAtBenchmark": 13,
+  "controlCount": 13,
+  "atBenchmark": true,
+  "controls": [
+    {
+      "id": "contract-schema",
+      "score100": 100,
+      "evidence": "gtcx://fabric-os/qasc-contract/v1"
+    },
+    {
+      "id": "protocol-id",
+      "score100": 100,
+      "evidence": "GTCX-QASC-001"
+    },
+    {
+      "id": "benchmarks",
+      "score100": 100,
+      "evidence": {
+        "repositoryScore100": 100,
+        "controlScore100": 100,
+        "mprComposite100": 100,
+        "signalLevel": "L5",
+        "signalScore100": 100,
+        "agileProductionPackageWorkflow100": 100
+      }
+    },
+    {
+      "id": "fleet-denominator",
+      "score100": 100,
+      "evidence": {
+        "repoCount": 20,
+        "uniqueRepoCount": 20
+      }
+    },
+    {
+      "id": "required-controls",
+      "score100": 100,
+      "evidence": {
+        "controlCount": 30,
+        "minimum": 20
+      }
+    },
+    {
+      "id": "agile-production-package-controls",
+      "score100": 100,
+      "evidence": {
+        "auditRequirementsRef": "machine/spec/qasc-audit-requirements.json",
+        "addedControlCount": 10
+      }
+    },
+    {
+      "id": "folder-file-product-spec-alignment-control",
+      "score100": 100,
+      "evidence": {
+        "requiredControl": "Folder/file/product spec alignment",
+        "auditRequirement": "folder-file-product-spec-alignment"
+      }
+    },
+    {
+      "id": "command-surface",
+      "score100": 100,
+      "evidence": {
+        "qasc:repo": "node platform/scripts/qasc-repo.mjs",
+        "qasc:repo:write": "node platform/scripts/qasc-repo.mjs --write",
+        "qasc:score": "node platform/scripts/qasc-score.mjs",
+        "qasc:loop": "node platform/scripts/qasc-loop-run.mjs",
+        "qasc:loop:write": "node platform/scripts/qasc-loop-run.mjs --write",
+        "qasc:fleet": "node platform/scripts/qasc-fleet.mjs",
+        "qasc:fleet:write": "node platform/scripts/qasc-fleet.mjs --write",
+        "qasc:fleet:strict": "node platform/scripts/qasc-fleet.mjs --strict",
+        "qasc:deletion-preservation:audit": "node platform/scripts/qasc-deletion-preservation-audit.mjs",
+        "qasc:deletion-preservation:audit:write": "node platform/scripts/qasc-deletion-preservation-audit.mjs --write",
+        "qasc:deletion-preservation:audit:strict": "node platform/scripts/qasc-deletion-preservation-audit.mjs --strict",
+        "qasc:dslc:ship:fleet-parity": "node platform/scripts/qasc-dslc-ship-fleet-parity.mjs",
+        "qasc:dslc:ship:fleet-parity:write": "node platform/scripts/qasc-dslc-ship-fleet-parity.mjs --write",
+        "qasc:dslc:ship:fleet-parity:strict": "node platform/scripts/qasc-dslc-ship-fleet-parity.mjs --strict"
+      }
+    },
+    {
+      "id": "deletion-preservation-gate",
+      "score100": 100,
+      "evidence": {
+        "policy": "QASC-DELETE-PRESERVE-001",
+        "requiredControl": "Deletion preservation policy",
+        "script": "platform/scripts/qasc-deletion-preservation-audit.mjs",
+        "command": "qasc:deletion-preservation:audit:strict"
+      }
+    },
+    {
+      "id": "legacy-command-scrub",
+      "score100": 100,
+      "evidence": []
+    },
+    {
+      "id": "protocol-artifacts",
+      "score100": 100,
+      "evidence": "QASC runbook, repository scorer, loop, fleet runner, and loop library"
+    },
+    {
+      "id": "security-compliance-enforcement",
+      "score100": 100,
+      "evidence": [
+        "quality and evidence integrity controls",
+        "secure engineering and configuration controls",
+        "privacy and compliance implementation controls",
+        "regulatory control mappings and traceability",
+        "folder, documentation, workflow, and cross-repo contracts"
+      ]
+    },
+    {
+      "id": "external-assurance-boundary",
+      "score100": 100,
+      "evidence": {
+        "releaseBoundary": "Every control remains scored and auditable. External assurance does not block engineering or product release unless the owning repository has an explicit, versioned release contract with blocksProductRelease=true for that exact control.",
+        "claimBoundary": "A self-audit can verify implementation and evidence readiness; it cannot claim an external certification, legal determination, or auditor opinion."
+      }
+    }
+  ]
+}

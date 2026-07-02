@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/ship-contract-check/v1",
-  "generatedAt": "2026-07-01T11:45:20.605Z",
+  "generatedAt": "2026-07-02T15:19:01.538Z",
   "protocolId": "GTCX-SHIP-001",
   "score100": 100,
   "benchmarkScore100": 100,
@@ -85,6 +85,7 @@
         "controlStatuses": ["pending", "satisfied", "blocked", "not-applicable"],
         "readyRule": "DSLC is ready at 100/100 and every applicable SHIP control in every required pillar is satisfied or has an approved not-applicable determination.",
         "notApplicableRule": "A required control may be marked not-applicable only with rationale, named approver, and evidence of the applicability determination.",
+        "approvalRule": "A Class A or Class S control marked satisfied is below benchmark unless it has evidence and a named approver. Agents may record the evidence but cannot synthesize the approval.",
         "postDslcBoundary": "SHIP is the final release-management check after DSLC. It can block formal shipment even when DSLC passed, but it cannot override a DSLC blocker.",
         "claimBoundary": "SHIP records legal, public-release, billing, and product-readiness approvals; an agent cannot synthesize a legal signature, revenue-recognition approval, public claim, or human release-manager attestation.",
         "segregationOfDuties": "The same actor must not both originate and sovereignly approve a legal instrument, public disclosure, pricing exception, revenue-recognition decision, or final release-manager attestation."
@@ -103,7 +104,7 @@
         "ship:contract:check:write": "node platform/scripts/ship-contract-check.mjs --write",
         "ship:release": "node platform/scripts/ship-release.mjs",
         "ship:release:write": "node platform/scripts/ship-release.mjs --write",
-        "ship:test": "node --test platform/scripts/tests/ship-contract-check.test.mjs platform/scripts/tests/ship-release.test.mjs"
+        "ship:test": "node --test platform/scripts/tests/ship-contract-check.test.mjs platform/scripts/tests/ship-release.test.mjs platform/scripts/tests/qasc-dslc-ship-fleet-parity.test.mjs"
       }
     },
     {

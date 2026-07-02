@@ -1,6 +1,6 @@
 {
   "schema": "gtcx://fabric-os/dslc-contract-check/v1",
-  "generatedAt": "2026-07-01T07:48:51.130Z",
+  "generatedAt": "2026-07-02T15:19:01.292Z",
   "protocolId": "GTCX-DSLC-001",
   "score100": 100,
   "benchmarkScore100": 100,
@@ -72,6 +72,7 @@
         "controlStatuses": ["pending", "satisfied", "blocked", "not-applicable"],
         "readyRule": "QASC is at benchmark and every applicable control in every lane required by the release class is satisfied.",
         "notApplicableRule": "A required control may be marked not-applicable only with a rationale, named approver, and evidence of the approved applicability determination. A bare not-applicable status remains below benchmark.",
+        "approvalRule": "A Class A or Class S control marked satisfied is below benchmark unless it has evidence and a named approver. Agents may record the evidence but cannot synthesize the approval.",
         "releaseBoundary": "Sales, legal, and communications controls block only the activation they govern. They do not block an internal engineering deployment unless the release class requires that lane or a versioned release manifest explicitly binds the control.",
         "claimBoundary": "DSLC records legal, financial, and public-communications decisions; an agent cannot make a legal determination, execute a signature, recognize revenue, approve pricing, or authorize a public claim.",
         "segregationOfDuties": "The same actor must not both originate and sovereignly approve a legal instrument, pricing exception, revenue-recognition decision, or public disclosure."
@@ -90,7 +91,7 @@
         "dslc:contract:check:write": "node platform/scripts/dslc-contract-check.mjs --write",
         "dslc:release": "node platform/scripts/dslc-release.mjs",
         "dslc:release:write": "node platform/scripts/dslc-release.mjs --write",
-        "dslc:test": "node --test platform/scripts/tests/dslc-contract-check.test.mjs platform/scripts/tests/dslc-release.test.mjs"
+        "dslc:test": "node --test platform/scripts/tests/dslc-contract-check.test.mjs platform/scripts/tests/dslc-release.test.mjs platform/scripts/tests/qasc-dslc-ship-fleet-parity.test.mjs"
       }
     },
     {

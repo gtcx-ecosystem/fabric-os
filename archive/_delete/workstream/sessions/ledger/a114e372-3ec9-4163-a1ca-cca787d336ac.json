@@ -1,0 +1,60 @@
+{
+  "schema": "gtcx://baseline-os/session-ledger/v1",
+  "sessionId": "a114e372-3ec9-4163-a1ca-cca787d336ac",
+  "repo": "fabric-os",
+  "startedAt": "2026-06-16T04:28:23.722Z",
+  "agentTrace": {
+    "id": "gtcx-agent-a114e372-3ec9-4163-a1ca-cca787d336ac",
+    "header": "x-gtcx-agent-trace-id",
+    "otelAttribute": "gtcx.agent_trace_id",
+    "traceparent": "00-b271e8dc000316b46e83b6f7465cad61-778f7109d0640423-01"
+  },
+  "persona": "platform-engineer",
+  "frame": "regulatory-audit",
+  "p22Head": "SECAS-S4-04",
+  "tracking": {
+    "schema": "gtcx://baseline-os/session-tracked-items/v1",
+    "spec": "baseline-os/pm/spec/session-tracked-items.json",
+    "agentReference": "workstream/sessions/TRACKED-ITEMS.md"
+  },
+  "events": [
+    {
+      "id": "ec332656-39f2-4d55-96d3-8922c393c631",
+      "at": "2026-06-16T04:28:24.186Z",
+      "type": "session.start",
+      "source": "hook",
+      "summary": "Session bootstrap — fabric-os",
+      "refs": ["SECAS-S4-04"],
+      "meta": {
+        "ssot": "baseline-os/platform/scripts/agent/session-ledger-init.mjs",
+        "protocol": "51-session-forensic-synthesis"
+      }
+    },
+    {
+      "id": "9063e7d6-2509-4393-b963-98a3939408fe",
+      "at": "2026-06-16T04:28:24.186Z",
+      "type": "p22.head",
+      "source": "hook",
+      "summary": "P22 head: SECAS-S4-04",
+      "refs": ["SECAS-S4-04"],
+      "meta": {
+        "persona": "platform-engineer",
+        "frame": "regulatory-audit"
+      }
+    },
+    {
+      "id": "0f56ef7b-22b1-4013-84b8-f572002049f0",
+      "at": "2026-06-16T04:28:24.190Z",
+      "type": "session.compliance",
+      "source": "hook",
+      "summary": "Agent attests P51 forensic capture: session:init active; session:record obligation for gems, bugs, CI insights during work; session:open-items at closure.",
+      "refs": ["SECAS-S4-04"],
+      "meta": {
+        "protocol": "51-session-forensic-synthesis",
+        "agentObligation": ["session:record during work", "session:open-items at closure"],
+        "complianceGate": "session:compliance:check"
+      }
+    }
+  ],
+  "lastRecordedAt": "2026-06-16T04:28:24.190Z"
+}

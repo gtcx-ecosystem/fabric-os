@@ -1,0 +1,26 @@
+{
+  "schema": "gtcx://fabric-os/golden-transaction-protocol-native/v1",
+  "id": "GOLDEN-TXN-PROTOCOL-NATIVE-2026-06-12",
+  "ticket": "XR-MKT-PROTOCOL-NATIVE-001",
+  "probedAt": "2026-06-13T17:30:37.894Z",
+  "ok": true,
+  "phase": "golden_transaction_protocol_native_live",
+  "prerequisites": {
+    "verifierUrl": true,
+    "verifierToken": true,
+    "tokenSource": "k8s-secret",
+    "readinessWitness": "audit/evidence/protocol-verifier-staging-readiness-2026-06-12.json",
+    "marketsBrokerageDeployed": true,
+    "marketsTraceWitness": "../markets-os/audit/evidence/golden-transaction-markets-staging-2026-06-12.json",
+    "pnv2Image": "f399b116-tradepass-active-amd64",
+    "brokerageImage": "348389439381.dkr.ecr.af-south-1.amazonaws.com/gtx-markets/brokerage-api:pnv2-staging-20260612-amd64"
+  },
+  "verifyRouteProbe": {
+    "ok": true,
+    "exitCode": 0,
+    "body": "wget: server returned error: HTTP/1.1 409 Conflict",
+    "stderr": null
+  },
+  "note": "Verify route live and Markets brokerage cluster deploy ready for Golden Transaction trace.",
+  "repo": "fabric-os"
+}

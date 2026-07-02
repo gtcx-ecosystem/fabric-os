@@ -1,8 +1,8 @@
 {
   "schema": "gtcx://audit/compliance-rubric/v1",
   "repo": "fabric-os",
-  "date": "2026-07-01",
-  "score100": 99,
+  "date": "2026-07-02",
+  "score100": 100,
   "categories": {
     "layout-p35": {
       "label": "Layout & workspace (P35 v5)",
@@ -210,7 +210,7 @@
           "weight": 30,
           "severity": "P2",
           "optional": false,
-          "detail": "audit/FIVE-CORE-AUDITS.md",
+          "detail": "audit five-core index, audit start/readme, or AaaS contract",
           "protocol": "P32"
         }
       ],
@@ -219,7 +219,7 @@
     "anti-version-bloat-p32": {
       "label": "Anti-version bloat (P32)",
       "weight": 4,
-      "score100": 60,
+      "score100": 100,
       "protocol": "P32",
       "items": [
         {
@@ -247,12 +247,12 @@
         {
           "id": "witness-latest-only",
           "label": "No dated audit/evidence siblings when *-latest.* exists",
-          "pass": false,
-          "score100": 0,
+          "pass": true,
+          "score100": 100,
           "weight": 40,
           "severity": "P2",
           "optional": false,
-          "detail": "1 dated sibling(s) with -latest witness — e.g. audit/reports/qasc-repo-2026-07-01.md",
+          "detail": "witness-latest clean",
           "protocol": "P32"
         }
       ],
@@ -295,7 +295,7 @@
           "weight": 10,
           "severity": "P1",
           "optional": false,
-          "detail": "machine/manifest.json (legacy pm/manifest.json)",
+          "detail": "machine manifest, product registry, canon registry, or legacy pm manifest",
           "protocol": "P37"
         },
         {
@@ -446,7 +446,7 @@
           "weight": 20,
           "severity": "P1",
           "optional": false,
-          "detail": "agents/manifest.json (or legacy agentic/manifest.json)",
+          "detail": "agents manifest, or modern product AGENTS.md + AaaS contract",
           "protocol": "P22-P28"
         },
         {
@@ -479,7 +479,7 @@
           "weight": 15,
           "severity": "P2",
           "optional": false,
-          "detail": "MCP hub, hub repo, or agent-manifest consumer",
+          "detail": "MCP hub, hub repo, agent-manifest consumer, or AaaS product contract",
           "protocol": "P22-P28"
         },
         {
@@ -707,7 +707,7 @@
           "weight": 35,
           "severity": "P0",
           "optional": false,
-          "detail": "gitleaks witness or CI workflow"
+          "detail": "gitleaks witness, CI workflow, pre-commit hook, or honesty gate"
         },
         {
           "id": "assurance-workspace",
@@ -717,7 +717,7 @@
           "weight": 30,
           "severity": "P1",
           "optional": false,
-          "detail": "assurance or security ops domain"
+          "detail": "assurance/security ops domain, audit evidence, or AaaS contract"
         }
       ],
       "itemCount": 3
@@ -793,20 +793,12 @@
           "weight": 50,
           "severity": "P2",
           "optional": false,
-          "detail": "machine ci gates or manifest (legacy pm paths accepted)"
+          "detail": "machine ci gates, product registry, canon registry, or legacy pm manifest"
         }
       ],
       "itemCount": 2
     }
   },
-  "violations": [
-    {
-      "id": "witness-latest-only",
-      "categoryId": "anti-version-bloat-p32",
-      "label": "No dated audit/evidence siblings when *-latest.* exists",
-      "severity": "P2",
-      "detail": "1 dated sibling(s) with -latest witness — e.g. audit/reports/qasc-repo-2026-07-01.md"
-    }
-  ],
+  "violations": [],
   "itemTotal": 62
 }

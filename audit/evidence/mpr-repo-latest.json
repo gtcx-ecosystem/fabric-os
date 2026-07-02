@@ -3,9 +3,9 @@
   "scope": "repo",
   "id": "fabric-os",
   "repo": "fabric-os",
-  "evaluatedAt": "2026-07-01T16:52:19.529Z",
-  "gitHead": "b930d8f210f32cd41961c88b04e033088e71d07b",
-  "date": "2026-07-01",
+  "evaluatedAt": "2026-07-02T14:57:44.124Z",
+  "gitHead": "72a664944206b8af86f5b70d9ff50cc175ca85ef",
+  "date": "2026-07-02",
   "weights": {
     "compliance": 0,
     "technicalExcellence": 0.15,
@@ -20,7 +20,7 @@
   },
   "quadrants": {
     "compliance": {
-      "score100": 99,
+      "score100": 100,
       "published": true,
       "provisional": false,
       "blockedBy": null,
@@ -232,7 +232,7 @@
               "weight": 30,
               "severity": "P2",
               "optional": false,
-              "detail": "audit/FIVE-CORE-AUDITS.md",
+              "detail": "audit five-core index, audit start/readme, or AaaS contract",
               "protocol": "P32"
             }
           ],
@@ -241,7 +241,7 @@
         "anti-version-bloat-p32": {
           "label": "Anti-version bloat (P32)",
           "weight": 4,
-          "score100": 60,
+          "score100": 100,
           "protocol": "P32",
           "items": [
             {
@@ -269,12 +269,12 @@
             {
               "id": "witness-latest-only",
               "label": "No dated audit/evidence siblings when *-latest.* exists",
-              "pass": false,
-              "score100": 0,
+              "pass": true,
+              "score100": 100,
               "weight": 40,
               "severity": "P2",
               "optional": false,
-              "detail": "1 dated sibling(s) with -latest witness — e.g. audit/reports/qasc-repo-2026-07-01.md",
+              "detail": "witness-latest clean",
               "protocol": "P32"
             }
           ],
@@ -317,7 +317,7 @@
               "weight": 10,
               "severity": "P1",
               "optional": false,
-              "detail": "machine/manifest.json (legacy pm/manifest.json)",
+              "detail": "machine manifest, product registry, canon registry, or legacy pm manifest",
               "protocol": "P37"
             },
             {
@@ -468,7 +468,7 @@
               "weight": 20,
               "severity": "P1",
               "optional": false,
-              "detail": "agents/manifest.json (or legacy agentic/manifest.json)",
+              "detail": "agents manifest, or modern product AGENTS.md + AaaS contract",
               "protocol": "P22-P28"
             },
             {
@@ -501,7 +501,7 @@
               "weight": 15,
               "severity": "P2",
               "optional": false,
-              "detail": "MCP hub, hub repo, or agent-manifest consumer",
+              "detail": "MCP hub, hub repo, agent-manifest consumer, or AaaS product contract",
               "protocol": "P22-P28"
             },
             {
@@ -729,7 +729,7 @@
               "weight": 35,
               "severity": "P0",
               "optional": false,
-              "detail": "gitleaks witness or CI workflow"
+              "detail": "gitleaks witness, CI workflow, pre-commit hook, or honesty gate"
             },
             {
               "id": "assurance-workspace",
@@ -739,7 +739,7 @@
               "weight": 30,
               "severity": "P1",
               "optional": false,
-              "detail": "assurance or security ops domain"
+              "detail": "assurance/security ops domain, audit evidence, or AaaS contract"
             }
           ],
           "itemCount": 3
@@ -815,21 +815,13 @@
               "weight": 50,
               "severity": "P2",
               "optional": false,
-              "detail": "machine ci gates or manifest (legacy pm paths accepted)"
+              "detail": "machine ci gates, product registry, canon registry, or legacy pm manifest"
             }
           ],
           "itemCount": 2
         }
       },
-      "hygieneViolations": [
-        {
-          "id": "witness-latest-only",
-          "categoryId": "anti-version-bloat-p32",
-          "label": "No dated audit/evidence siblings when *-latest.* exists",
-          "severity": "P2",
-          "detail": "1 dated sibling(s) with -latest witness — e.g. audit/reports/qasc-repo-2026-07-01.md"
-        }
-      ],
+      "hygieneViolations": [],
       "itemTotal": 62,
       "rubricVersion": "1.0.0",
       "openP0": 0,
@@ -894,16 +886,16 @@
       },
       "hasRubric": true,
       "rubricSource": "audit-output",
-      "rubricSpec": "pm/spec/technical-excellence-rubric.json",
+      "rubricSpec": "machine/spec/technical-excellence-rubric.json",
       "rubricVersion": "1.0.0",
       "capped": false,
       "capReason": null
     },
     "craft": {
       "score100": 100,
-      "published": true,
-      "provisional": false,
-      "blockedBy": null,
+      "published": false,
+      "provisional": true,
+      "blockedBy": "esl:ESL-2",
       "unlockThreshold100": 85,
       "metrics": {
         "selectivity-ingredients": {
@@ -943,20 +935,22 @@
         }
       },
       "hasRubric": true,
-      "rubricSpec": "pm/spec/craft-rubric.json",
+      "rubricSpec": "machine/spec/craft-rubric.json",
       "rubricVersion": "1.0.0",
       "capped": false,
       "capReasons": [],
       "craftFlags": {
         "interchangeable": false,
         "aiSlop": false
-      }
+      },
+      "eslRequired": "ESL-2",
+      "eslActive": "ESL-1"
     },
     "worldClass": {
       "score100": 100,
-      "published": true,
-      "provisional": false,
-      "blockedBy": null,
+      "published": false,
+      "provisional": true,
+      "blockedBy": "esl:ESL-3",
       "unlockThreshold100": 85,
       "metrics": {
         "documentation-world-class": {
@@ -1033,8 +1027,10 @@
         }
       },
       "hasRubric": true,
-      "rubricSpec": "pm/spec/world-class-rubric.json",
-      "rubricVersion": "1.0.0"
+      "rubricSpec": "machine/spec/world-class-rubric.json",
+      "rubricVersion": "1.0.0",
+      "eslRequired": "ESL-3",
+      "eslActive": "ESL-1"
     },
     "trustAndSafety": {
       "score100": 100,
@@ -1074,7 +1070,7 @@
         }
       },
       "mode": "envelope-cap",
-      "rubricSpec": "pm/spec/trust-safety-rubric.json",
+      "rubricSpec": "machine/spec/trust-safety-rubric.json",
       "rubricVersion": "1.0.0",
       "publishGate": {
         "minConfidence": "B",
@@ -1088,8 +1084,8 @@
   "trustCap100": 100,
   "composite100": 100,
   "composite100Raw": 100,
-  "compositeMode": "full-unlock",
-  "fullCompositeEligible": true,
+  "compositeMode": "partial-unlock",
+  "fullCompositeEligible": false,
   "unlockThreshold100": 85,
   "openP0": 0,
   "openP1": 0,
@@ -1112,7 +1108,7 @@
     },
     "quadrants": {
       "compliance": {
-        "score100": 99,
+        "score100": 100,
         "published": true,
         "provisional": false,
         "blockedBy": [],
@@ -1129,17 +1125,17 @@
       },
       "craft": {
         "score100": 100,
-        "published": true,
-        "provisional": false,
-        "blockedBy": [],
+        "published": false,
+        "provisional": true,
+        "blockedBy": ["esl:ESL-2"],
         "confidence": "B",
         "checks": []
       },
       "worldClass": {
         "score100": 100,
-        "published": true,
-        "provisional": false,
-        "blockedBy": [],
+        "published": false,
+        "provisional": true,
+        "blockedBy": ["esl:ESL-3"],
         "confidence": "B",
         "checks": []
       },

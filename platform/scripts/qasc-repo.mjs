@@ -595,6 +595,7 @@ export function isGeneratedEvidenceStatusLine(line) {
     path.startsWith('audit/evidence/') ||
     path.startsWith('audit/reports/') ||
     path.startsWith('audit/archive/') ||
+    /^machine\/ci\/.*-latest\.json$/.test(path) ||
     /^audit\/audit-output-\d{4}-\d{2}-\d{2}\.json$/.test(path)
   );
 }

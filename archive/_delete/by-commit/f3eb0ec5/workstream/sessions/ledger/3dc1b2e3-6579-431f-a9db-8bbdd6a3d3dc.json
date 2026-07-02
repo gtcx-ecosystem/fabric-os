@@ -1,0 +1,60 @@
+{
+  "schema": "gtcx://baseline-os/session-ledger/v1",
+  "sessionId": "3dc1b2e3-6579-431f-a9db-8bbdd6a3d3dc",
+  "repo": "fabric-os",
+  "startedAt": "2026-06-24T12:14:36.721Z",
+  "agentTrace": {
+    "id": "gtcx-agent-3dc1b2e3-6579-431f-a9db-8bbdd6a3d3dc",
+    "header": "x-gtcx-agent-trace-id",
+    "otelAttribute": "gtcx.agent_trace_id",
+    "traceparent": "00-4a4d79768ce21bfd898e4dcd796fb5ba-e94cca572a692e8b-01"
+  },
+  "persona": "platform-architect",
+  "frame": "development",
+  "p22Head": "OPS-PRD-ROUTING-001",
+  "tracking": {
+    "schema": "gtcx://baseline-os/session-tracked-items/v1",
+    "spec": "baseline-os/pm/spec/session-tracked-items.json",
+    "agentReference": "workstream/sessions/TRACKED-ITEMS.md"
+  },
+  "events": [
+    {
+      "id": "a8c13abe-ef76-4f29-8cf8-6e31122c2861",
+      "at": "2026-06-24T12:14:41.314Z",
+      "type": "session.start",
+      "source": "hook",
+      "summary": "Session bootstrap — fabric-os",
+      "refs": ["OPS-PRD-ROUTING-001"],
+      "meta": {
+        "ssot": "baseline-os/platform/scripts/agent/session-ledger-init.mjs",
+        "protocol": "51-session-forensic-synthesis"
+      }
+    },
+    {
+      "id": "6be854af-dfc1-4023-bcde-cc68cef8496f",
+      "at": "2026-06-24T12:14:41.314Z",
+      "type": "p22.head",
+      "source": "hook",
+      "summary": "P22 head: OPS-PRD-ROUTING-001",
+      "refs": ["OPS-PRD-ROUTING-001"],
+      "meta": {
+        "persona": "platform-architect",
+        "frame": "development"
+      }
+    },
+    {
+      "id": "ba3706a0-c4ac-40b8-9b7f-ecdbbdfaa73c",
+      "at": "2026-06-24T12:14:41.322Z",
+      "type": "session.compliance",
+      "source": "hook",
+      "summary": "Agent attests P51 forensic capture: session:init active; session:record obligation for gems, bugs, CI insights during work; session:open-items at closure.",
+      "refs": ["OPS-PRD-ROUTING-001"],
+      "meta": {
+        "protocol": "51-session-forensic-synthesis",
+        "agentObligation": ["session:record during work", "session:open-items at closure"],
+        "complianceGate": "session:compliance:check"
+      }
+    }
+  ],
+  "lastRecordedAt": "2026-06-24T12:14:41.322Z"
+}

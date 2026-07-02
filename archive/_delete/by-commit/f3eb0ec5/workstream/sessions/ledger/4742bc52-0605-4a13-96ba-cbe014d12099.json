@@ -1,0 +1,60 @@
+{
+  "schema": "gtcx://baseline-os/session-ledger/v1",
+  "sessionId": "4742bc52-0605-4a13-96ba-cbe014d12099",
+  "repo": "fabric-os",
+  "startedAt": "2026-06-18T08:37:29.202Z",
+  "agentTrace": {
+    "id": "gtcx-agent-4742bc52-0605-4a13-96ba-cbe014d12099",
+    "header": "x-gtcx-agent-trace-id",
+    "otelAttribute": "gtcx.agent_trace_id",
+    "traceparent": "00-3b9d45e0a3ae0d5976de295c2daaf28e-dfc2606c4f19877c-01"
+  },
+  "persona": "platform-architect",
+  "frame": "development",
+  "p22Head": "COMPOSITE-RESTORE-100",
+  "tracking": {
+    "schema": "gtcx://baseline-os/session-tracked-items/v1",
+    "spec": "baseline-os/pm/spec/session-tracked-items.json",
+    "agentReference": "workstream/sessions/TRACKED-ITEMS.md"
+  },
+  "events": [
+    {
+      "id": "6cfd130d-8a9b-44f4-b8e5-cbd20bd914c9",
+      "at": "2026-06-18T08:37:31.928Z",
+      "type": "session.start",
+      "source": "hook",
+      "summary": "Session bootstrap — fabric-os",
+      "refs": ["COMPOSITE-RESTORE-100"],
+      "meta": {
+        "ssot": "baseline-os/platform/scripts/agent/session-ledger-init.mjs",
+        "protocol": "51-session-forensic-synthesis"
+      }
+    },
+    {
+      "id": "48ceb0c5-05d5-4000-b98d-3554bd6a44df",
+      "at": "2026-06-18T08:37:31.928Z",
+      "type": "p22.head",
+      "source": "hook",
+      "summary": "P22 head: COMPOSITE-RESTORE-100",
+      "refs": ["COMPOSITE-RESTORE-100"],
+      "meta": {
+        "persona": "platform-architect",
+        "frame": "development"
+      }
+    },
+    {
+      "id": "200bc3eb-1171-466d-9a51-bf5304e21b47",
+      "at": "2026-06-18T08:37:31.935Z",
+      "type": "session.compliance",
+      "source": "hook",
+      "summary": "Agent attests P51 forensic capture: session:init active; session:record obligation for gems, bugs, CI insights during work; session:open-items at closure.",
+      "refs": ["COMPOSITE-RESTORE-100"],
+      "meta": {
+        "protocol": "51-session-forensic-synthesis",
+        "agentObligation": ["session:record during work", "session:open-items at closure"],
+        "complianceGate": "session:compliance:check"
+      }
+    }
+  ],
+  "lastRecordedAt": "2026-06-18T08:37:31.935Z"
+}

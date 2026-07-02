@@ -1,7 +1,7 @@
 {
   "schema": "gtcx://baseline-os/forensic-parse-artifact/v1",
   "programId": "FORENSIC-PARSE-001",
-  "parsedAt": "2026-07-01T07:38:25.013Z",
+  "parsedAt": "2026-07-02T07:26:26.532Z",
   "repo": "fabric-os",
   "corpus": {
     "docs": {
@@ -51,6 +51,9 @@
         "docs/business/README.md",
         "docs/business/case-studies/FOLDER-SPEC.md",
         "docs/business/case-studies/README.md",
+        "docs/business/communications/README.md",
+        "docs/business/communications/rel-golden-v1-claims-and-comms.md",
+        "docs/business/communications/rel-golden-v1-distribution-calendar.md",
         "docs/business/customers/FOLDER-SPEC.md",
         "docs/business/customers/README.md",
         "docs/business/customers/core-audiences.md",
@@ -83,10 +86,7 @@
         "docs/business/research/README.md",
         "docs/business/research/capital-markets-playbook.md",
         "docs/business/research/ecosystem-overview.md",
-        "docs/business/research/funding-analysis.md",
-        "docs/business/research/industry-transformation.md",
-        "docs/business/research/master-voice.md",
-        "docs/business/research/research-portfolio-blueprint.md"
+        "docs/business/research/funding-analysis.md"
       ],
       "initiativeIds": [
         "INIT-DOCS-FOUNDATION-IA-V1",
@@ -166,35 +166,32 @@
         "INIT-GTCX-INFRA-SECAS",
         "INIT-GTCX-INFRA-DAAS",
         "INIT-FABRIC-OPS-PRD-ROUTING",
+        "INIT-FABRIC-RELEASE-TO-REVENUE",
         "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
         "INIT-OPS-LANES-OPERATIONALIZE",
         "INIT-ECOSYSTEM-LEGAL-PROGRAM",
         "XR-FLEET-MATURITY-LANES-001-",
         "BL-SOC2",
         "XR-BRIDGE-SECOPS-WC-001",
-        "INIT-HUB-SCOPE-GUARD",
-        "XR-CANON-AGENT-WORKTREE-062",
-        "DOC-MPR-FLEET-SCRUB-003",
         "INIT-EXEC-GAP",
-        "BL-O-01",
-        "INIT-M7-"
+        "DOC-LINK"
       ]
     },
     "sessions": {
-      "ledgerCount": 50,
-      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-terminal-os/agent-transcripts/263b9aa0-e1e4-4a43-989d-ef45b46c912e/263b9aa0-e1e4-4a43-989d-ef45b46c912e.jsonl",
-      "transcriptLines": 357,
-      "userQueryCount": 14
+      "ledgerCount": 51,
+      "transcriptPath": "/Users/amanianai/.cursor/projects/Users-amanianai-Sites-gtcx-ecosystem-compliance-os/agent-transcripts/3238ecb0-388a-4913-b3b9-45b36257fd87/3238ecb0-388a-4913-b3b9-45b36257fd87.jsonl",
+      "transcriptLines": 525,
+      "userQueryCount": 10
     }
   },
   "layerBindings": {
     "persona": {
       "primary": "platform-architect",
-      "confidence": 0.7596153846153846,
+      "confidence": 0.7641509433962264,
       "candidates": [
         {
           "personaId": "platform-architect",
-          "weight": 27
+          "weight": 28
         },
         {
           "personaId": "platform-engineer",
@@ -300,54 +297,56 @@
         "roadmap:status",
         "first-deal:dry-run",
         "ecosystem:fleet:diagnostic:refresh:write",
+        "qasc:contract:check",
+        "dslc:contract:check",
+        "ship:contract:check",
+        "qasc:test",
+        "dslc:test",
+        "ship:test",
+        "aaas:contract:check",
         "griot:prod:verify:write",
         "ci:npm-token:readiness",
-        "package-registry:continuity:check",
-        "qasc:contract:check",
-        "qasc:test",
-        "qasc:repo",
-        "qasc:fleet",
-        "markets:staging:verify",
-        "w2:staging-prereq-check",
-        "staging:pilot-smoke"
+        "package-registry:continuity:check"
       ],
       "commands": [
         "baseline start",
         "baseline session:",
-        "baseline session",
-        "pnpm session",
-        "pnpm operations:check",
-        "pnpm agent:protocols:check",
-        "pnpm agent:work-selection:check",
-        "pnpm ceremony:check:write",
-        "pnpm format:check",
-        "pnpm test",
         "Baseline session",
-        "pnpm --dir",
-        "pnpm agile:check",
-        "pnpm agent:next-work",
-        "pnpm docs:check-links",
+        "pnpm canon:synthesize",
+        "pnpm agent:bootstrap:check",
         "pnpm docs:ia:check",
+        "pnpm validate:agent",
+        "pnpm check:workspace-root-cleanliness:strict",
+        "pnpm ops:check",
+        "pnpm agent:next-work",
+        "pnpm web:dev",
+        "pnpm --filter",
+        "pnpm --dir",
+        "baseline start:",
+        "pnpm agile:check",
+        "pnpm operations:check",
+        "pnpm qasc:",
+        "pnpm persona:read-witness",
+        "pnpm gtm:readiness:check",
+        "pnpm compliance:deploy:witness",
+        "pnpm pilot:ship-ready:witness",
+        "pnpm docs:tree:check",
+        "pnpm docs:check-links",
+        "pnpm docs:feature-spec:check",
         "pnpm docs:foundation:check",
-        "pnpm canon:synthesize:check",
-        "pnpm qasc:score",
-        "pnpm qasc:repo:write",
-        "pnpm ux:measure:lighthouse",
-        "pnpm ux:measure:run",
-        "pnpm docs:feature-spec:check"
+        "pnpm canon:synthesize:check"
       ]
     },
     "studio": {
-      "deliverables": ["folder-spec", "docs-integrity-pack", "relocation-report"],
+      "deliverables": ["folder-spec", "docs-integrity-pack", "relocation-report", "folder-spec"],
       "provenanceRequired": true
     },
     "skills": ["doc-standard", "docs-machine-readable", "repo-hygiene", "compliance-audit"],
     "initiatives": [
       "BL-001",
       "BL-002",
-      "BL-O-01",
       "BL-SOC2",
-      "DOC-MPR-FLEET-SCRUB-003",
+      "DOC-LINK",
       "DOC-PROMOTION-M4",
       "ECO-OS-SHIP-001",
       "INIT-AGENT-TOOL-SCOUT",
@@ -361,6 +360,7 @@
       "INIT-EXEC-GAP",
       "INIT-FABRIC-LANE-DEPLOY-MATRIX",
       "INIT-FABRIC-OPS-PRD-ROUTING",
+      "INIT-FABRIC-RELEASE-TO-REVENUE",
       "INIT-FIVE-PILLAR-FLEET-100",
       "INIT-FLEET-OPS-ASSURANCE-PROGRAM",
       "INIT-GLOBAL-SOUTH-GTM",
@@ -369,8 +369,6 @@
       "INIT-GTCX-INFRA-SECAS",
       "INIT-GTCX-SERVICE-FABRIC",
       "INIT-GTCX-TRADE-ECOSYSTEM-LANES",
-      "INIT-HUB-SCOPE-GUARD",
-      "INIT-M7-",
       "INIT-OPS-LANES-OPERATIONALIZE",
       "INIT-PRODUCT-TEAM-MODEL-R5",
       "INIT-WORLD-CLASS-SECOPS",
@@ -407,7 +405,6 @@
       "XR-BRIDGE-LANES-REGISTRY-SYNC",
       "XR-BRIDGE-SECOPS-WC-001",
       "XR-BRIDGE-TOOL-SCOUT-001",
-      "XR-CANON-AGENT-WORKTREE-062",
       "XR-EO-003",
       "XR-FABRIC",
       "XR-FABRIC-OPS-LANES-001",
@@ -433,7 +430,7 @@
       "XR-SIGNAL-LENS-TRANSFER-001",
       "XR-WORKERS-AI-GLM-001"
     ],
-    "tags": ["docs/business", "docs/foundation", "session-corpus"]
+    "tags": ["docs/business", "docs/foundation"]
   },
   "ingestSignals": [
     {
@@ -453,14 +450,6 @@
       "confidence": 0.85
     },
     {
-      "id": "initiative:BL-O-01",
-      "kind": "initiative",
-      "text": "Active initiative reference: BL-O-01",
-      "source": "docs+sessions",
-      "refs": ["BL-O-01"],
-      "confidence": 0.85
-    },
-    {
       "id": "initiative:BL-SOC2",
       "kind": "initiative",
       "text": "Active initiative reference: BL-SOC2",
@@ -469,11 +458,11 @@
       "confidence": 0.85
     },
     {
-      "id": "initiative:DOC-MPR-FLEET-SCRUB-003",
+      "id": "initiative:DOC-LINK",
       "kind": "initiative",
-      "text": "Active initiative reference: DOC-MPR-FLEET-SCRUB-003",
+      "text": "Active initiative reference: DOC-LINK",
       "source": "docs+sessions",
-      "refs": ["DOC-MPR-FLEET-SCRUB-003"],
+      "refs": ["DOC-LINK"],
       "confidence": 0.85
     },
     {
@@ -557,12 +546,20 @@
       "confidence": 0.85
     },
     {
+      "id": "initiative:INIT-EXEC-GAP",
+      "kind": "initiative",
+      "text": "Active initiative reference: INIT-EXEC-GAP",
+      "source": "docs+sessions",
+      "refs": ["INIT-EXEC-GAP"],
+      "confidence": 0.85
+    },
+    {
       "id": "persona:platform-architect",
       "kind": "persona",
       "text": "Dominant persona signal: platform-architect",
       "source": "sessions+transcript",
       "refs": ["platform-architect"],
-      "confidence": 0.7596153846153846
+      "confidence": 0.7641509433962264
     },
     {
       "id": "lang:docs:foundation:check",
@@ -645,41 +642,41 @@
       "confidence": 0.7
     },
     {
-      "id": "query:ec3d51b2",
+      "id": "query:f0ae30ef",
       "kind": "operator-intent",
-      "text": "ready to ship? feature EXR ? UX scores?",
+      "text": "QASC 100/100 Remediation Plan — compliance-os\n\nImplement the plan as specified, it is attached for your reference. Do NOT edit the plan file itself.\n\nTo-do's from the plan have already been created. Do not create them again. Mark them as in",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:3aea8b81",
+      "id": "query:46a566b7",
       "kind": "operator-intent",
-      "text": "feature spec quality ? fractal MPR scores?",
+      "text": "approved",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:ce69f304",
+      "id": "query:46a566b7",
       "kind": "operator-intent",
-      "text": "report saved?",
+      "text": "approved",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:a1a1cec2",
+      "id": "query:b158f775",
       "kind": "operator-intent",
-      "text": "shipped? ux-audit? strong?",
+      "text": "execute",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65
     },
     {
-      "id": "query:20574628",
+      "id": "query:4eb60472",
       "kind": "operator-intent",
-      "text": "UX remediation",
+      "text": "For this repo only: Complete the QASC Protocol Audit",
       "source": "transcript",
       "refs": [],
       "confidence": 0.65

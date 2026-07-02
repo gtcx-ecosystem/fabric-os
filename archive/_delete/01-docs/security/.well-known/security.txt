@@ -1,0 +1,7 @@
+Contact: mailto:security@gtcx.trade
+Expires: 2027-05-25T00:00:00.000Z
+Acknowledgements: https://gtcx.trade/security#hall-of-fame
+Preferred-Languages: en
+Canonical: https://gtcx.trade/.well-known/security.txt
+Policy: https://gtcx.trade/security
+Hiring: https://gtcx.trade/careers#security

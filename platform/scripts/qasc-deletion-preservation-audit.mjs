@@ -362,6 +362,7 @@ function main() {
     delegatedRepos: [...delegated],
     totals: {
       unsafeDeleteCommits: repos.reduce((sum, repo) => sum + (repo.historical?.unsafeDeleteCommits ?? 0), 0),
+      exactRecoveryGaps: repos.reduce((sum, repo) => sum + (repo.historical?.exactRecovery?.valid === false ? 1 : 0), 0),
       deletedFiles: repos.reduce((sum, repo) => sum + (repo.historical?.deletedFiles ?? 0), 0),
       currentBareDeletes: repos.reduce((sum, repo) => sum + (repo.current?.bareDeleteCount ?? 0), 0),
       currentArchiveRenames: repos.reduce((sum, repo) => sum + (repo.current?.archiveRenameCount ?? 0), 0),
@@ -381,7 +382,8 @@ function main() {
   } else {
     console.log(`QASC deletion preservation fleet score: ${witness.score100}/100`);
     console.log(`repositories at benchmark: ${witness.reposAtBenchmark}/${witness.repoCount}`);
-    console.log(`unsafe delete commits: ${witness.totals.unsafeDeleteCommits}`);
+    console.log(`historical bare-delete commits: ${witness.totals.unsafeDeleteCommits}`);
+    console.log(`exact recovery gaps: ${witness.totals.exactRecoveryGaps}`);
     console.log(`current bare deletes: ${witness.totals.currentBareDeletes}`);
     for (const repo of witness.repos) {
       const blocker = repo.blockers?.[0]?.area ?? 'benchmark reached';

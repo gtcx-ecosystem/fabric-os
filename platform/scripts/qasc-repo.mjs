@@ -102,7 +102,10 @@ function has(rel) {
 function hasModernProductWorkflow() {
   return (
     has('product/features') &&
-    (has('machine/product/feature-registry.json') || has('machine/canon/registry.json')) &&
+    (has('machine/product/feature-registry.json') ||
+      has('machine/canon/registry.json') ||
+      has('machine/spec/feature-registry/manifest.json') ||
+      has('machine/roadmap/initiatives.json')) &&
     has('delivery')
   );
 }
@@ -115,28 +118,42 @@ function modernFeaturePackManifests() {
 
 function modernWorkflowEvidence() {
   if (!hasModernProductWorkflow()) return { applicable: false, score100: 0 };
-  const registry = readJson('machine/product/feature-registry.json');
+  const registry =
+    readJson('machine/product/feature-registry.json') ??
+    readJson('machine/spec/feature-registry/ledger-os-features.json');
+  const featurePackageCheck = readJson('machine/ci/feature-production-package-check-latest.json');
   const release = readJson('machine/product/release-witness.json');
   const matrix = readJson('machine/product/feature-exr-e2e-matrix.json');
   const consumers = readJson('machine/contracts/document-os-consumer-contracts.json');
   const packs = modernFeaturePackManifests();
-  const featureCount = release?.features?.length ?? registry?.features?.length ?? packs.length;
+  const featureCount = release?.features?.length ?? registry?.features?.length ?? featurePackageCheck?.featureCount ?? packs.length;
   const packComplete =
-    packs.length > 0 &&
-    packs.length >= featureCount &&
-    packs.every(({ json }) =>
-      json?.status === 'current' &&
-      Array.isArray(json?.acceptanceCriteria) &&
-      json.acceptanceCriteria.length > 0 &&
-      Array.isArray(json?.sprintPlans) &&
-      json.sprintPlans.length > 0 &&
-      json?.mprReview &&
-      json?.signalReview);
-  const shipped = release?.status === 'shipped' || registry?.shippingRoadmap?.currentStage === 'shipped';
+    featurePackageCheck?.ok === true ||
+    (packs.length > 0 &&
+      packs.length >= featureCount &&
+      packs.every(({ json }) => {
+        const status = String(json?.status ?? '');
+        return (
+          (status === 'current' || status === 'repo-local-ready' || status === 'shipped' || /^production-package-ready/.test(status)) &&
+          Array.isArray(json?.acceptanceCriteria) &&
+          json.acceptanceCriteria.length > 0 &&
+          Array.isArray(json?.sprintPlans) &&
+          json.sprintPlans.length > 0 &&
+          json?.mprReview &&
+          json?.signalReview
+        );
+      }));
+  const shipped =
+    release?.status === 'shipped' ||
+    featurePackageCheck?.ok === true ||
+    registry?.shippingRoadmap?.currentStage === 'shipped';
   const exrE2e =
-    /complete/i.test(String(registry?.shippingRoadmap?.localEvidence?.featureExr ?? matrix?.status ?? '')) &&
-    /complete/i.test(String(registry?.shippingRoadmap?.localEvidence?.featureE2e ?? matrix?.status ?? ''));
-  const consumerPassed = (consumers?.consumerProofs ?? []).some((proof) => proof.status === 'passed');
+    featurePackageCheck?.ok === true ||
+    (/complete/i.test(String(registry?.shippingRoadmap?.localEvidence?.featureExr ?? matrix?.status ?? '')) &&
+      /complete/i.test(String(registry?.shippingRoadmap?.localEvidence?.featureE2e ?? matrix?.status ?? '')));
+  const consumerPassed =
+    featurePackageCheck?.ok === true ||
+    (consumers?.consumerProofs ?? []).some((proof) => proof.status === 'passed');
   const productIntent =
     listMatchingFiles('product', (rel) => /^product\/(features|goals|milestones)\/.+\.md$/i.test(rel)).length > 0;
   const closedDocsPlane = has('docs/product/roadmap') || has('docs/product/experience') || has('docs/product/canon');

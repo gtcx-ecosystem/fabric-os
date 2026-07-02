@@ -1,0 +1,73 @@
+{
+  "$schema": "gtcx://baseline-os/frame-graph",
+  "graphId": "graph-org-gtcx",
+  "organizationRef": "org-gtcx",
+  "updatedAt": "2026-06-25T05:35:18.394Z",
+  "worldModelMode": "low-public-signal",
+  "completenessProfile": "enterprise-pilot",
+  "lowPublicSignal": true,
+  "nodes": [
+    {
+      "id": "org-gtcx",
+      "type": "organization",
+      "label": "GTCX",
+      "confidence": "verified",
+      "provenance": {
+        "protocolId": "FRP-P1",
+        "source": "user-input",
+        "passId": "FRP-P1-entity",
+        "recordedAt": "2026-06-25T05:35:18.393Z"
+      }
+    }
+  ],
+  "edges": [],
+  "pendingQuestions": [
+    {
+      "templateId": "Q-AMBIENT-ORG-CONFIRM",
+      "prompt": "Workspace context points to \"SIS Inspections\" — confirm or correct if needed.",
+      "gapNodeTypes": [
+        "organization"
+      ],
+      "leverage": 11,
+      "status": "pending"
+    },
+    {
+      "templateId": "Q-AMBIENT-TEAM-CONFIRM",
+      "prompt": "Confirm team roster inferred from workspace: gtcx-docs, bridge-os, quality-evidence-lead, prithvi, alexander, context.repo.owner.",
+      "gapNodeTypes": [
+        "role"
+      ],
+      "leverage": 8,
+      "status": "pending"
+    },
+    {
+      "templateId": "Q-CLIENT-LIST-5",
+      "prompt": "List up to five anchor clients or segments for GTCX (industry: unknown).",
+      "gapNodeTypes": [
+        "client"
+      ],
+      "leverage": 8,
+      "status": "pending"
+    },
+    {
+      "templateId": "Q-COMPETITOR-CORE",
+      "prompt": "Who are the top 2–3 competitors to GTCX in your market?",
+      "gapNodeTypes": [
+        "competitor"
+      ],
+      "leverage": 7,
+      "status": "pending"
+    }
+  ],
+  "lastProtocolRun": {
+    "passIds": [
+      "FRP-P1",
+      "FRP-P2",
+      "FRP-P4",
+      "FRP-P5",
+      "FRP-P6",
+      "FRP-P7"
+    ],
+    "witnessPath": "audit/evidence/forensic-ai-latest.json"
+  }
+}

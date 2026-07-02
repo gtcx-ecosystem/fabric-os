@@ -1,0 +1,52 @@
+{
+  "$schema": "gtcx://baseline-os/experience-forensic-solicitation/v1",
+  "updatedAt": "2026-06-25T05:35:18.394Z",
+  "programId": "FORENSIC-AI-001",
+  "moveSet": "forensic-onboarding",
+  "prompts": [
+    {
+      "id": "forensic-confirm-org",
+      "type": "inform",
+      "priority": 10,
+      "message": "Workspace context points to \"SIS Inspections\" — confirm or correct if needed.",
+      "evidence": [
+        {
+          "path": ".baseline/experience/forensic-solicitation.json",
+          "snippet": "context points to \\\"SIS Inspections\\\" — confirm or correct if needed.\", ",
+          "weight": 5
+        },
+        {
+          "path": ".baseline/experience/forensic-solicitation.json",
+          "snippet": "ntext points to \\\\\\\"SIS Inspections\\\\\\\" — confirm or correct if needed.\\\", ",
+          "weight": 5
+        },
+        {
+          "path": ".baseline/experience/forensic-solicitation.json",
+          "snippet": "t points to \\\\\\\\\\\\\\\"SIS Inspections\\\\\\\\\\\\\\\" — confirm or correct if needed.",
+          "weight": 5
+        }
+      ],
+      "gapQuestionId": "Q-AMBIENT-ORG-CONFIRM"
+    },
+    {
+      "id": "forensic-solicit-clients",
+      "type": "solicit",
+      "priority": 8,
+      "message": "List up to five anchor clients or segments for this organization.",
+      "gapQuestionId": "Q-CLIENT-LIST-5"
+    },
+    {
+      "id": "forensic-confirm-team",
+      "type": "confirm",
+      "priority": 7,
+      "message": "Likely team members from workspace files: gtcx-docs, bridge-os, quality-evidence-lead, prithvi, alexander. Correct?",
+      "gapQuestionId": "Q-AMBIENT-TEAM-CONFIRM"
+    },
+    {
+      "id": "forensic-inform-goals",
+      "type": "inform",
+      "priority": 5,
+      "message": "Inferred goals: Unblock Report:** When execution is blocked (sandbox, missing creds, MCP deny), emit a structured report with concrete enablement steps, the"
+    }
+  ]
+}

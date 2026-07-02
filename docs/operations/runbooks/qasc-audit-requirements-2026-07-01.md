@@ -100,6 +100,7 @@ fleet audit orchestration.
 | Operational lane isolation    |      100/100 | pen-test/SOC2/legal/mobile-store/DR/SLA stay parallel by default               |
 | External assurance boundary   |      100/100 | no product `NO SHIP` claim without explicit `blocksProductRelease: true`       |
 | Repo-by-repo rollout evidence |      100/100 | dated report + latest JSON witness per repo                                    |
+| Deletion preservation gate    |      100/100 | `archive/_delete` exact recovery and no current bare deletes across QASC fleet |
 
 **Commands to verify when available:**
 
@@ -108,6 +109,7 @@ pnpm qasc:contract:check
 pnpm qasc:repo -- --repo <repo>
 pnpm qasc:loop -- --repo <repo> --max 10
 pnpm qasc:fleet
+pnpm qasc:deletion-preservation:audit:strict
 pnpm aaas:contract:check
 pnpm aaas:audit --lens all
 pnpm aaas:loop
@@ -207,16 +209,17 @@ pnpm ecosystem:assurance:evaluate
 
 Add these scored controls to every repo audit:
 
-| Control                          | Target | Scoring rule                                                                 |
-| -------------------------------- | -----: | ---------------------------------------------------------------------------- |
-| Product-intent source            |    100 | Active feature/goal/milestone source exists or N/A is justified              |
-| Machine-readable standardization |    100 | record JSON exists and satisfies owner schema                                |
-| Forensic spec readiness          |    100 | forensic spec exists and references source record                            |
-| Package MPR                      |    100 | MPR score is 100 with no open findings                                       |
-| Package SIGNAL                   |    100 | SIGNAL level is L5 with no open findings                                     |
-| Production package               |    100 | package manifest includes acceptance criteria, QA, sprint plans, MPR, SIGNAL |
-| Scrum handoff                    |    100 | sprint plan traces to production package                                     |
-| Backlog deprecation compliance   |    100 | backlog is generated compatibility only                                      |
+| Control                          | Target | Scoring rule                                                                       |
+| -------------------------------- | -----: | ---------------------------------------------------------------------------------- |
+| Product-intent source            |    100 | Active feature/goal/milestone source exists or N/A is justified                    |
+| Machine-readable standardization |    100 | record JSON exists and satisfies owner schema                                      |
+| Forensic spec readiness          |    100 | forensic spec exists and references source record                                  |
+| Package MPR                      |    100 | MPR score is 100 with no open findings                                             |
+| Package SIGNAL                   |    100 | SIGNAL level is L5 with no open findings                                           |
+| Production package               |    100 | package manifest includes acceptance criteria, QA, sprint plans, MPR, SIGNAL       |
+| Scrum handoff                    |    100 | sprint plan traces to production package                                           |
+| Backlog deprecation compliance   |    100 | backlog is generated compatibility only                                            |
+| Deletion preservation policy     |    100 | tracked removals have `archive/_delete` exact coverage and no current bare deletes |
 
 The QASC report must keep the existing repository hygiene, security,
 compliance, deployment, AaaS/DaaS, and archive recoverability controls. The new

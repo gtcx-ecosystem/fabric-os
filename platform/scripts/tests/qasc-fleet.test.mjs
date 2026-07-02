@@ -27,6 +27,10 @@ describe('GTCX QASC fleet scoring', () => {
     assert.equal(witness.repos[0].repo, 'fabric-os');
     assert.equal(typeof witness.repos[0].score100, 'number');
     assert.equal(witness.repos[0].contractScore100, 100);
+    assert.equal(typeof witness.repos[0].qascScore100, 'number');
+    assert.equal(typeof witness.repos[0].deletionPreservation.score100, 'number');
+    assert.equal(witness.repos[0].deletionPreservation.atBenchmark, true);
+    assert.equal(witness.deletionPreservation.atBenchmark, true);
     assert.deepEqual(witness.repos[0].missingControls, []);
     assert.equal(typeof witness.repos[0].atBenchmark, 'boolean');
     assert.equal(typeof witness.repos[0].result, 'undefined');

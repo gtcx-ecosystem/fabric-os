@@ -1,5 +1,8 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   analyzeCommits,
   analyzeCurrentStatus,
@@ -8,6 +11,9 @@ import {
   statusLineIsArchiveDeleteRename,
   statusLineIsBareDelete,
 } from '../qasc-deletion-preservation-audit.mjs';
+
+const SCRIPTS = join(dirname(fileURLToPath(import.meta.url)), '..');
+const ROOT = join(SCRIPTS, '../..');
 
 describe('QASC deletion preservation audit', () => {
   it('scores bare historical deletes as preservation gaps', () => {
@@ -79,6 +85,26 @@ describe('QASC deletion preservation audit', () => {
     assert.equal(result.score100, 100);
     assert.equal(result.coveredEvents, 3);
     assert.equal(result.collisionMarkers, 1);
+  });
+
+  it('emits compact JSON for nested fleet scorers', () => {
+    const result = spawnSync(process.execPath, [
+      join(SCRIPTS, 'qasc-deletion-preservation-audit.mjs'),
+      '--compact-json',
+      '--repos',
+      'fabric-os',
+    ], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      maxBuffer: 1024 * 1024,
+    });
+
+    assert.equal(result.status, 0, result.stderr);
+    const witness = JSON.parse(result.stdout);
+    assert.equal(witness.schema, 'gtcx://fabric-os/qasc-deletion-preservation-audit/v1');
+    assert.equal(witness.repos[0].repo, 'fabric-os');
+    assert.equal(witness.repos[0].historical.risky, undefined);
+    assert.equal(typeof witness.repos[0].historical.exactRecovery.score100, 'number');
   });
 
   it('rejects exact delete recovery manifests that do not match git deletion events', () => {

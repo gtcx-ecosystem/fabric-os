@@ -160,7 +160,8 @@ audit/reports/qasc-repo-YYYY-MM-DD.md
 audit/evidence/qasc-repo-latest.json
 ```
 
-If files are moved or archived, also generate:
+If files are moved, archived, decomposed, or removed from the active tree, also
+generate:
 
 ```text
 audit/evidence/repo-folder-file-spec-inventory-latest.json
@@ -182,8 +183,17 @@ pnpm qasc:loop:write -- --max 5 --repo <repo>
 pnpm qasc:fleet
 pnpm qasc:fleet:write
 pnpm qasc:fleet:strict
+pnpm qasc:deletion-preservation:audit
+pnpm qasc:deletion-preservation:audit:write
+pnpm qasc:deletion-preservation:audit:strict
 pnpm qasc:contract:check
 ```
+
+`qasc:fleet:strict` consumes the deletion-preservation witness. A repository is
+not at QASC fleet benchmark unless both the repository QASC witness and
+`archive/_delete` exact recovery/current-worktree preservation are at 100/100.
+Current tracked deletes must be converted to `archive/_delete` relocations before
+commit; historical bare-delete gaps require forward-repair coverage.
 
 `qasc:score` prints numeric acceptance score output
 from the same witness and exits `0` only when complete.
@@ -224,7 +234,7 @@ owner-contract change.
 | 6     | Foundational micro-audits           | Compliance, Technical Excellence, Craft, World Class, Trust & Safety micro-audits from `machine/spec/aaas-audit-taxonomy.json` are represented               |
 | 7     | Transformational micro-audits       | Creativity & Innovation, Commercial Value, Defensive Moat, Agentic Empowerment, Product/Ecosystem Integration, IP Magic micro-audits are represented         |
 | 8     | Folder/file specs                   | Canonical roots are used; forbidden live roots are absent unless authorized; no fake symlink compliance                                                      |
-| 9     | Preservation/archive proof          | Archive manifest proves recovery path and checksums where practical                                                                                          |
+| 9     | Preservation/archive proof          | `archive/_delete` exact mirrored coverage and by-commit provenance exist for tracked removals; current worktree has no bare deletes                          |
 | 10    | Owner workflow validation           | Owner repo gates score at benchmark for canon, bridge, fabric, agile, baseline, or the product repo                                                          |
 | 11    | Consumer contract validation        | Consumer repos can run the owner contracts they depend on                                                                                                    |
 | 12    | Fabric AaaS/DaaS verification       | AaaS, DaaS, honesty, cadence, friction, and operations gates produce current evidence                                                                        |

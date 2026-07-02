@@ -15,6 +15,6 @@ describe('GTCX QASC contract enforcement', () => {
 
     assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
     assert.match(result.stdout, /GTCX QASC contract score: 100\/100/);
-    assert.match(result.stdout, /controls at benchmark: 12\/12/);
+    assert.match(result.stdout, /controls at benchmark: 13\/13/);
   });
 });

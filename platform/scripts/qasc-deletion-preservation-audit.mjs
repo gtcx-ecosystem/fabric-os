@@ -24,6 +24,7 @@ const REPORT = join(ROOT, `audit/reports/qasc-deletion-preservation-audit-${DATE
 
 const WRITE = process.argv.includes('--write');
 const JSON_OUT = process.argv.includes('--json');
+const COMPACT_JSON_OUT = process.argv.includes('--compact-json');
 const STRICT = process.argv.includes('--strict');
 
 function arg(name) {
@@ -297,6 +298,47 @@ function auditRepo(repo, since, delegatedSet) {
   };
 }
 
+function compactRepo(repo) {
+  return {
+    repo: repo.repo,
+    checkoutPresent: repo.checkoutPresent,
+    remediationOwner: repo.remediationOwner,
+    score100: repo.score100,
+    benchmarkScore100: repo.benchmarkScore100,
+    atBenchmark: repo.atBenchmark === true,
+    historical: repo.historical
+      ? {
+          deleteCommits: repo.historical.deleteCommits ?? 0,
+          archiveDeleteCommits: repo.historical.archiveDeleteCommits ?? 0,
+          unsafeDeleteCommits: repo.historical.unsafeDeleteCommits ?? 0,
+          deletedFiles: repo.historical.deletedFiles ?? 0,
+          historicalScore100: repo.historical.historicalScore100 ?? 0,
+          exactRecovery: repo.historical.exactRecovery ?? null,
+        }
+      : null,
+    current: repo.current ?? null,
+    blockers: repo.blockers ?? [],
+  };
+}
+
+function compactWitness(witness) {
+  return {
+    schema: witness.schema,
+    generatedAt: witness.generatedAt,
+    protocolId: witness.protocolId,
+    contract: witness.contract,
+    since: witness.since,
+    score100: witness.score100,
+    benchmarkScore100: witness.benchmarkScore100,
+    atBenchmark: witness.atBenchmark,
+    repoCount: witness.repoCount,
+    reposAtBenchmark: witness.reposAtBenchmark,
+    delegatedRepos: witness.delegatedRepos,
+    totals: witness.totals,
+    repos: witness.repos.map(compactRepo),
+  };
+}
+
 function renderReport(witness) {
   const rows = witness.repos.map((repo) => {
     const blocker = repo.blockers?.[0]?.blocker ?? 'benchmark reached';
@@ -377,8 +419,8 @@ function main() {
     writeFileSync(REPORT, renderReport(witness));
   }
 
-  if (JSON_OUT) {
-    console.log(JSON.stringify(witness, null, 2));
+  if (JSON_OUT || COMPACT_JSON_OUT) {
+    console.log(JSON.stringify(COMPACT_JSON_OUT ? compactWitness(witness) : witness, null, 2));
   } else {
     console.log(`QASC deletion preservation fleet score: ${witness.score100}/100`);
     console.log(`repositories at benchmark: ${witness.reposAtBenchmark}/${witness.repoCount}`);

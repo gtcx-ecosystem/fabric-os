@@ -30,6 +30,12 @@ const requiredCommands = {
   'qasc:fleet': 'node platform/scripts/qasc-fleet.mjs',
   'qasc:fleet:write': 'node platform/scripts/qasc-fleet.mjs --write',
   'qasc:fleet:strict': 'node platform/scripts/qasc-fleet.mjs --strict',
+  'qasc:deletion-preservation:audit':
+    'node platform/scripts/qasc-deletion-preservation-audit.mjs',
+  'qasc:deletion-preservation:audit:write':
+    'node platform/scripts/qasc-deletion-preservation-audit.mjs --write',
+  'qasc:deletion-preservation:audit:strict':
+    'node platform/scripts/qasc-deletion-preservation-audit.mjs --strict',
   'qasc:dslc:ship:fleet-parity': 'node platform/scripts/qasc-dslc-ship-fleet-parity.mjs',
   'qasc:dslc:ship:fleet-parity:write':
     'node platform/scripts/qasc-dslc-ship-fleet-parity.mjs --write',
@@ -114,6 +120,24 @@ const controls = [
     evidence: requiredCommands,
   },
   {
+    id: 'deletion-preservation-gate',
+    score100:
+      contract?.deletionPreservationPolicy?.id === 'QASC-DELETE-PRESERVE-001' &&
+      contract?.requiredControls?.includes('Deletion preservation policy') &&
+      auditRequirements?.globalControls?.some(
+        (control) => control.id === 'deletion-preservation-policy'
+      ) &&
+      existsSync(join(ROOT, 'platform/scripts/qasc-deletion-preservation-audit.mjs'))
+        ? 100
+        : 0,
+    evidence: {
+      policy: contract?.deletionPreservationPolicy?.id ?? null,
+      requiredControl: 'Deletion preservation policy',
+      script: 'platform/scripts/qasc-deletion-preservation-audit.mjs',
+      command: 'qasc:deletion-preservation:audit:strict',
+    },
+  },
+  {
     id: 'legacy-command-scrub',
     score100: Object.keys(scripts).some((name) => name.startsWith('repo-cleanup:mpr-signal'))
       ? 0
@@ -127,6 +151,7 @@ const controls = [
       'platform/scripts/qasc-repo.mjs',
       'platform/scripts/qasc-loop-run.mjs',
       'platform/scripts/qasc-fleet.mjs',
+      'platform/scripts/qasc-deletion-preservation-audit.mjs',
       'platform/scripts/qasc-dslc-ship-fleet-parity.mjs',
       'platform/scripts/lib/qasc-loop.mjs',
     ].every((rel) => existsSync(join(ROOT, rel)))

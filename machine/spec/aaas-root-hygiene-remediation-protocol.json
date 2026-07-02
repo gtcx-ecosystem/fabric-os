@@ -1,0 +1,106 @@
+{
+  "$schema": "gtcx://fabric-os/aaas-root-hygiene-remediation-protocol/v1",
+  "version": "1.0.0",
+  "updated": "2026-07-02",
+  "provider": "fabric-os",
+  "title": "AaaS root hygiene remediation protocol",
+  "principle": "Detect aggressively, remediate safely. AaaS may plan and verify root hygiene cleanup; it may only mutate artifacts after each forbidden root is classified.",
+  "scope": {
+    "appliesTo": [
+      "fleet repos carrying AaaS contract pins",
+      "QASC candidates",
+      "DSLC release candidates",
+      "SHIP release candidates"
+    ],
+    "nonGoals": [
+      "blind deletion of root artifacts",
+      "silent migration of source-of-record material",
+      "repo-specific policy exceptions without evidence"
+    ]
+  },
+  "lifecycle": [
+    {
+      "step": "inventory",
+      "owner": "fabric-os",
+      "produces": "audit/evidence/root-hygiene-inventory-latest.json",
+      "description": "List forbidden live roots, classify file counts, hashes, git status, references, and likely canonical homes."
+    },
+    {
+      "step": "classify",
+      "owner": "repo owner or authorized agent",
+      "produces": "audit/evidence/root-hygiene-classification-latest.json",
+      "description": "Assign every forbidden root to one remediation class before mutation."
+    },
+    {
+      "step": "apply-safe",
+      "owner": "agent",
+      "authorityClass": "R",
+      "produces": "code/docs/config changes plus audit/evidence/root-hygiene-remediation-latest.json",
+      "description": "Apply only Class R actions: allowlist legitimate root files with rationale, archive generated/historical material, move local transient material."
+    },
+    {
+      "step": "handoff-ambiguous",
+      "owner": "fabric-os",
+      "authorityClass": "A/S",
+      "produces": "audit/handoff/root-hygiene-YYYY-MM-DD.md",
+      "description": "Open handoffs for source-of-record migration, destructive deletion, or ambiguous legacy roots."
+    },
+    {
+      "step": "verify",
+      "owner": "fabric-os",
+      "produces": "fresh QASC/AaaS evidence",
+      "description": "Re-run root hygiene, QASC, AaaS contract, and SHIP gates; close handoff items only when evidence clears."
+    }
+  ],
+  "classification": {
+    "allowlist-with-rationale": {
+      "authorityClass": "R",
+      "allowedWhen": "The root artifact is a legitimate repo-level control file and the canonical allowlist omitted it.",
+      "examples": [".gitignore", "LICENSE", "NOTICE"],
+      "requiredEvidence": ["allowlist path", "rationale", "policy version"]
+    },
+    "archive-generated-or-historical": {
+      "authorityClass": "R",
+      "allowedWhen": "The material is historical, generated, or no longer source-of-record but must remain recoverable.",
+      "canonicalHomes": ["audit/archive/", "archive/_delete/"],
+      "requiredEvidence": ["before path", "after path", "sha256", "git move or recovery witness"]
+    },
+    "move-local-transient": {
+      "authorityClass": "R",
+      "allowedWhen": "The material is local-only, non-secret runtime output or developer scratch state.",
+      "canonicalHomes": [".local/", "audit/archive/local/"],
+      "requiredEvidence": ["secret scan result", "ignore/allowlist rule"]
+    },
+    "source-of-record-migration": {
+      "authorityClass": "A",
+      "allowedWhen": "The root contains canonical product, architecture, delivery, or operational source material.",
+      "canonicalHomes": ["docs/", "machine/", "operations/", "platform/"],
+      "requiredEvidence": ["inventory", "target mapping", "link/reference repair", "owner approval"]
+    },
+    "destructive-delete": {
+      "authorityClass": "S",
+      "allowedWhen": "Deletion would remove tracked source material or legal/compliance evidence.",
+      "requiredEvidence": [
+        "human approval",
+        "archive/recovery proof",
+        "deletion-preservation audit"
+      ]
+    },
+    "ambiguous-legacy-root": {
+      "authorityClass": "A",
+      "allowedWhen": "The root may contain mixed historical and source-of-record material.",
+      "requiredEvidence": ["classification handoff", "owner decision", "migration plan"]
+    }
+  },
+  "requiredGates": [
+    "pnpm operations:check",
+    "pnpm aaas:contract:check",
+    "pnpm qasc:repo:write -- --repo <repo>",
+    "pnpm qasc:dslc:ship:fleet-parity:write"
+  ],
+  "releasePolicy": {
+    "qasc": "Root hygiene failure is a QASC blocker until resolved or allowlisted with evidence.",
+    "dslc": "Release-management cannot mark DSLC passed when ambiguous root hygiene handoffs remain open for the release candidate.",
+    "ship": "SHIP requires root hygiene clean, evidence fresh, and public docs/changelog paths free of legacy root drift."
+  }
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/aaas-command-surface/v1",
-  "version": "1.0.0",
-  "updated": "2026-06-28",
+  "version": "1.1.0",
+  "updated": "2026-07-02",
   "provider": "fabric-os",
   "principle": "ONE canonical command surface for the whole fleet. Every legacy audit/report command, slash-command, and registry entry maps to exactly one of these or is retired. fabric-os orchestrates; bridge-os MPR engine scores; canon-os holds coverage. No parallel command vocabularies.",
   "canonicalCommands": {
@@ -12,7 +12,14 @@
     "aaas:contract:check": "contract obligations vs state (built)",
     "aaas:cadence": "freshness heartbeat (built)",
     "aaas:honesty:check": "coverage/honesty gate (built)",
+    "aaas:root-hygiene:plan": "planned command — classify forbidden root artifacts before mutation; writes root-hygiene inventory/classification evidence",
+    "aaas:root-hygiene:apply": "planned command — apply only Class R safe root-hygiene remediations; ambiguous/source-of-record/delete actions become handoffs",
     "aaas:scrub": "node platform/scripts/aaas-scrub.mjs  — execute aaas-legacy-scrub-map (archive non-canonical)"
+  },
+  "enforcement": {
+    "contract": "machine/spec/aaas-audit-contract.json#enforcement",
+    "rootHygieneProtocol": "machine/spec/aaas-root-hygiene-remediation-protocol.json",
+    "principle": "AaaS owns audit, evidence, gates, cadence, and handoff. It does not blind-mutate repo roots; safe remediation is classification-bound and release-gated through QASC/DSLC/SHIP."
   },
   "engine": {
     "owner": "bridge-os",

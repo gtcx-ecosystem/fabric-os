@@ -1,8 +1,8 @@
 {
   "$schema": "gtcx://fabric-os/aaas-audit-contract/v1",
-  "version": "1.3.0",
-  "updated": "2026-06-30",
-  "changelog": "1.3.0 reconciles remediation reports with P35 root hygiene at audit/reports/remediation/ and removes the conflicting top-level reports/ obligation. 1.2.0 added lenses, lifecycle, maturityModel, namingConventions, and ownership.",
+  "version": "1.4.0",
+  "updated": "2026-07-02",
+  "changelog": "1.4.0 promotes AaaS from surfaced-only assurance to staged enforcement for QASC, DSLC, and SHIP, and binds root hygiene to a classify-before-mutate remediation protocol. 1.3.0 reconciled remediation reports with P35 root hygiene at audit/reports/remediation/ and removed the conflicting top-level reports/ obligation. 1.2.0 added lenses, lifecycle, maturityModel, namingConventions, and ownership.",
   "provider": "fabric-os",
   "service": "AAAS",
   "title": "Audit-as-a-Service contract — fabric-os ↔ repo",
@@ -111,6 +111,25 @@
       }
     ]
   },
+  "rootHygiene": {
+    "protocol": "machine/spec/aaas-root-hygiene-remediation-protocol.json",
+    "principle": "Root hygiene is enforced by evidence and release gates, but remediation is never blind. Every forbidden root is classified before mutation.",
+    "requiredWitnesses": [
+      "audit/evidence/root-hygiene-inventory-latest.json",
+      "audit/evidence/root-hygiene-remediation-latest.json"
+    ],
+    "safeAutonomousClasses": [
+      "allowlist-with-rationale",
+      "archive-generated-or-historical",
+      "move-local-transient"
+    ],
+    "requiresOwnerDecision": [
+      "source-of-record-migration",
+      "destructive-delete",
+      "ambiguous-legacy-root"
+    ],
+    "releaseGate": "QASC and SHIP score Root hygiene 0/100 until forbidden live roots are resolved or explicitly allowlisted with evidence."
+  },
   "maturityModel": {
     "ceiling": "SIGNAL L5 across all 6 dimensions / MPR 95+ across all 11 pillars",
     "signalLevels": ["L0", "L1", "L2", "L3", "L4", "L5"],
@@ -196,8 +215,43 @@
     "honestyCoverage": "gtcx://fabric-os/aaas-honesty-coverage/v1"
   },
   "enforcement": {
-    "mode": "surfaced",
-    "note": "Contract check is advisory until each repo's pin + reports/ + cadence are provisioned, then per-repo hard-block in CI (mirrors the --closed-specs rollout).",
+    "mode": "staged-enforced",
+    "currentStage": "stage-2-fail-ci-nonblocking",
+    "principle": "AaaS is the assurance control plane: it audits, writes evidence, emits handoffs, and fails gates when assurance evidence is missing or stale. It does not perform ambiguous repo remediation without classification and authority.",
+    "stages": [
+      {
+        "id": "stage-1-report-only",
+        "effect": "write evidence and reports; do not fail automation",
+        "appliesTo": ["new repo onboarding", "unprovisioned legacy repos"]
+      },
+      {
+        "id": "stage-2-fail-ci-nonblocking",
+        "effect": "CI/checks fail but do not block Class R remediation or fleet execution",
+        "appliesTo": ["AaaS contract", "cadence", "honesty", "root-hygiene inventory"]
+      },
+      {
+        "id": "stage-3-block-release-branches",
+        "effect": "release branch promotion requires green AaaS, MPR, SIGNAL, and QASC evidence",
+        "appliesTo": ["QASC", "DSLC release candidates", "REL-GOLDEN-V1 successors"]
+      },
+      {
+        "id": "stage-4-block-ship",
+        "effect": "SHIP cannot pass unless AaaS evidence is fresh, root hygiene is resolved, MPR target is met, SIGNAL target is met, and DSLC is passed",
+        "appliesTo": ["v1 release", "pilot/customer-contract release", "public changelog issuance"]
+      }
+    ],
+    "hardGateConsumers": {
+      "qasc": ["aaas-contract", "root-hygiene", "mpr-repo", "signal-maturity", "honesty"],
+      "dslc": [
+        "aaas-contract",
+        "release-management",
+        "qa",
+        "billing-ops",
+        "legal-ops",
+        "communications"
+      ],
+      "ship": ["qasc", "dslc", "root-hygiene", "fresh-evidence", "public-docs", "versioned-specs"]
+    },
     "witness": "audit/evidence/aaas-contract-check-latest.json"
   }
 }

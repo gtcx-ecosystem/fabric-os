@@ -37,13 +37,13 @@ reference both:
 
 ## 2. Four-artifact lifecycle (the canonical folders)
 
-| Concept                      | Folder            | Is                                         | Naming                                                                                             |
-| ---------------------------- | ----------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| **audit** (assessment)       | `audit/reports/`  | how it scores + matures                    | `mpr-scorecard-YYYY-MM-DD.md`, `signal-maturity-YYYY-MM-DD.md`, `readiness-combined-YYYY-MM-DD.md` |
-| **evidence** (proof)         | `audit/evidence/` | machine witnesses verifying audit + report | `mpr-repo-latest.json`, `signal-maturity-latest.json`, `<probe>-latest.json`                       |
-| **handoff** (directive) ★NEW | `audit/handoff/`  | the prioritized work-order: do these next  | `handoff-YYYY-MM-DD.md`                                                                            |
-| **report** (remediation)     | `reports/`        | what was actually done                     | `<action>-YYYY-MM-DD.md`                                                                           |
-| **archive**                  | `audit/archive/`  | superseded, recoverable                    | `<group>-YYYY-MM-DD/`                                                                              |
+| Concept                      | Folder                       | Is                                         | Naming                                                                                             |
+| ---------------------------- | ---------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| **audit** (assessment)       | `audit/reports/`             | how it scores + matures                    | `mpr-scorecard-YYYY-MM-DD.md`, `signal-maturity-YYYY-MM-DD.md`, `readiness-combined-YYYY-MM-DD.md` |
+| **evidence** (proof)         | `audit/evidence/`            | machine witnesses verifying audit + report | `mpr-repo-latest.json`, `signal-maturity-latest.json`, `<probe>-latest.json`                       |
+| **handoff** (directive) ★NEW | `audit/handoff/`             | the prioritized work-order: do these next  | `handoff-YYYY-MM-DD.md`                                                                            |
+| **report** (remediation)     | `audit/reports/remediation/` | what was actually done                     | `<action>-YYYY-MM-DD.md`                                                                           |
+| **archive**                  | `audit/archive/`             | superseded, recoverable                    | `<group>-YYYY-MM-DD/`                                                                              |
 
 `audit/handoff/` is the missing first-class concept: the audit _describes_ gaps; the
 handoff _hands the repo a work order_.
@@ -71,7 +71,7 @@ It is regenerated on each audit run; closed items drop off as evidence proves th
 1. **Run audit** (fabric-os AaaS): apply MPR lens (bridge-os engine) + SIGNAL lens
    (baseline-os) → write `audit/evidence/*-latest.json` (proof) + `audit/reports/*.md` (assessment).
 2. **Emit handoff** (fabric-os): synthesize findings → `audit/handoff/handoff-<date>.md` (directive).
-3. **Remediate**: an agent (Class R) or repo owner (Class A/S) executes the handoff actions.
+3. **Remediate**: an agent (Class R) or repo owner (Class A/S) executes the handoff actions. For root hygiene, remediation is classification-bound: inventory first, then allowlist/archive/local moves under Class R; source-of-record migration, destructive delete, and ambiguous legacy roots require owner handoff.
 4. **Report**: `audit/reports/remediation/<action>-<date>.md` — what was done, cites the evidence.
 5. **Re-verify** (fabric-os): re-run audit → fresh evidence → handoff item auto-closes when its gate clears.
 
@@ -139,17 +139,20 @@ contract), an **SLA**, and an **escalation path**. Ownership is machine-checkabl
   (Depends on `XR-AGENT-CAPABILITY-OWNERSHIP-001` for the SIGNAL/agentic lens move to baseline-os.)
 - **Non-destructive**: move-never-delete; superseded → `audit/archive/`; all changes git-recorded.
 - **Contract**: each repo carries `machine/spec/aaas-audit-contract.pin.json`; folders provisioned
-  (`audit/evidence|reports|handoff|archive`, `reports/`); conformance via `aaas:contract:check`.
+  (`audit/evidence|reports|handoff|archive`, `audit/reports/remediation/`); conformance via `aaas:contract:check`.
+- **Staged enforcement**: AaaS starts report-only for unprovisioned legacy repos, fails CI non-blocking for provisioned repos, blocks release branches for QASC/DSLC candidates, and blocks SHIP for v1/customer-contract releases.
+- **Root hygiene**: `machine/spec/aaas-root-hygiene-remediation-protocol.json` defines classify-before-mutate cleanup. AaaS owns inventory, evidence, gates, and handoff; the repo owns remediation decisions.
 
 ## 6. Commands (canonical surface, extended)
 
-| Command                                                       | Does                                                                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `aaas:audit --lens mpr\|signal\|all [--repo]`                 | run lens(es) → evidence + assessment                                                                   |
-| `aaas:report <umbrella> [--repo]`                             | render assessment write-up                                                                             |
-| `aaas:handoff [--repo] [--write]` (BUILT)                     | synthesize unified handoff (SIGNAL weakest-link first, then MPR leverage); MPR-only until SIGNAL ships |
-| `aaas:report:remediation`                                     | record what was done (reports/)                                                                        |
-| `aaas:contract:check` / `aaas:cadence` / `aaas:honesty:check` | enforce conformance/freshness/honesty                                                                  |
+| Command                                                        | Does                                                                                                             |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `aaas:audit --lens mpr\|signal\|all [--repo]`                  | run lens(es) → evidence + assessment                                                                             |
+| `aaas:report <umbrella> [--repo]`                              | render assessment write-up                                                                                       |
+| `aaas:handoff [--repo] [--write]` (BUILT)                      | synthesize unified handoff (SIGNAL weakest-link first, then MPR leverage); MPR-only until SIGNAL ships           |
+| `aaas:report:remediation`                                      | record what was done (reports/)                                                                                  |
+| `aaas:contract:check` / `aaas:cadence` / `aaas:honesty:check`  | enforce conformance/freshness/honesty                                                                            |
+| `aaas:root-hygiene:plan` / `aaas:root-hygiene:apply` (PLANNED) | classify forbidden roots, apply Class R safe remediations only, emit handoffs for ambiguous or owner-gated moves |
 
 ## 7. Build status + open dependencies
 

@@ -738,18 +738,31 @@ function mprScores() {
 }
 
 function signalScores() {
-  const signal = readJson('audit/evidence/signal-maturity-latest.json');
-  const score100 = signal?.overall === 5 ? 100 : signal?.overall != null ? signal.overall * 20 : null;
-  return {
-    source: signal ? 'audit/evidence/signal-maturity-latest.json' : null,
-    level: signal?.overallLabel ?? null,
-    score100,
-    dimensions: Object.fromEntries((signal?.dimensions ?? []).map((d) => [d.dimension, {
+  const maturityRel = 'audit/evidence/signal-maturity-latest.json';
+  const repoRel = 'audit/evidence/signal-repo-latest.json';
+  const signal = readJsonAny(maturityRel, repoRel);
+  const source = signal ? firstExistingRel(maturityRel, repoRel) : null;
+  const level = signal?.overallLabel ?? signal?.overallLevel ?? null;
+  const legacyScore = signal?.overall === 5 ? 100 : signal?.overall != null ? signal.overall * 20 : null;
+  const repoScore = level === 'L5' ? 100 : signal?.overallScore100;
+  const dimensions = Array.isArray(signal?.dimensions)
+    ? Object.fromEntries((signal?.dimensions ?? []).map((d) => [d.dimension, {
       level: d.level,
       label: d.label,
       primaryBlocker: d.primaryBlocker ?? null,
       gaps: d.gaps ?? [],
-    }])),
+    }]))
+    : Object.fromEntries(Object.entries(signal?.dimensions ?? {}).map(([dimension, axes]) => [dimension, {
+      level: axes?.signalP?.level ?? axes?.signalE?.level ?? null,
+      label: axes?.signalP?.summary ?? axes?.signalE?.summary ?? null,
+      primaryBlocker: null,
+      gaps: [...(axes?.signalP?.gaps ?? []), ...(axes?.signalE?.gaps ?? [])],
+    }]));
+  return {
+    source,
+    level,
+    score100: repoScore ?? legacyScore ?? null,
+    dimensions,
   };
 }
 

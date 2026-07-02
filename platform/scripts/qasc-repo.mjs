@@ -581,6 +581,10 @@ function isQascOutputStatusLine(line) {
   return String(line ?? '').includes(artifactRel) || String(line ?? '').includes(reportRel);
 }
 
+function isBareDeleteStatusLine(line) {
+  return /^D[ MTADRCU?!]\s+/.test(line) || /^[ MTADRCU?!]D\s+/.test(line);
+}
+
 export function isGeneratedEvidenceStatusLine(line) {
   const path = String(line ?? '')
     .slice(3)
@@ -789,6 +793,11 @@ function buildWitness() {
       Array.isArray(archiveManifest?.entries) && archiveManifest.entries.length > 0 ? 100 : 0,
       Array.isArray(auditScrubManifest?.moved) && auditScrubManifest.moved.length > 0 ? 100 : 0,
     );
+  const currentBareDeletes = statusLines.slice(1).filter((line) => !isQascOutputStatusLine(line)).filter(isBareDeleteStatusLine);
+  const deletionPreservationScore = currentBareDeletes.length === 0 ? 100 : 0;
+  const deletionPreservationEvidence = currentBareDeletes.length === 0
+    ? 'current git status has no bare delete entries; historical fleet audit: audit/evidence/qasc-deletion-preservation-audit-latest.json'
+    : `current bare deletes: ${currentBareDeletes.slice(0, 20).join('; ')}`;
   const docsIaRun = has('platform/scripts/docs-ia-check.mjs')
     ? nodeRun(['platform/scripts/docs-ia-check.mjs'])
     : script('docs:ia:check')
@@ -913,6 +922,7 @@ function buildWitness() {
     scoredRow('Link/reference hygiene', docsLinkScore, docsLinkRun ? `${docsLinkRun.command} exit ${docsLinkRun.exitCode}; ${linkEvidence.length} related witnesses` : 'link checker unavailable', ['World Class', 'Trust & Safety'], ['Navigable', 'Grounded'], docsLinkScore === 100 ? null : 'link/reference integrity is below benchmark'),
     scoredRow('Cross-repo contract', crossRepoScore, 'contract evidence witness score', ['Product/Ecosystem Integration'], ['Integrated'], crossRepoScore === 100 ? null : 'cross-repo contract evidence is below benchmark'),
     scoredRow('Archive recoverability', archiveScore, archiveEvidencePath, ['Trust & Safety', 'Defensive Moat'], ['Lossless'], archiveScore === 100 ? null : 'archive recoverability is below benchmark'),
+    scoredRow('Deletion preservation policy', deletionPreservationScore, deletionPreservationEvidence, ['Trust & Safety', 'Compliance'], ['Lossless', 'Grounded'], deletionPreservationScore === 100 ? null : 'current worktree contains bare deletes; move removed files to archive/_delete before commit'),
   ];
 
   const blockers = rows

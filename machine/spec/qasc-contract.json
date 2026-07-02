@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/qasc-contract/v1",
-  "version": "1.0.0",
-  "updated": "2026-07-01",
+  "version": "1.1.0",
+  "updated": "2026-07-02",
   "ownerRepo": "fabric-os",
   "title": "GTCX Quality Assurance, Security, and Compliance Protocol",
   "protocolId": "GTCX-QASC-001",
@@ -48,6 +48,16 @@
     "stopReasons": ["benchmark-reached", "stagnant", "max-iterations", "unreadable-witness"],
     "rule": "Observe scores, remediate the first owner-appropriate below-benchmark phase, regenerate evidence, and restart at Phase 1. Repetition without a remediation is measurement, not convergence.",
     "handoffRequiredWhen": ["stagnant", "max-iterations", "unreadable-witness"]
+  },
+  "deletionPreservationPolicy": {
+    "id": "QASC-DELETE-PRESERVE-001",
+    "scoreTarget100": 100,
+    "rule": "Tracked files must not be removed as bare deletes during repo cleanup. Retired, superseded, decomposed, or disallowed active-tree content must be moved to archive/_delete/<reason-date>/... so Git records a recoverable relocation.",
+    "currentWorktreeGate": "Any current D status outside archive/_delete scores 0 for current deletion preservation until converted to an archive/_delete move.",
+    "historicalAuditGate": "Any commit in the audit window with tracked D entries and no same-commit archive/_delete relocation is a historical preservation gap requiring forward-repair assessment.",
+    "command": "pnpm qasc:deletion-preservation:audit",
+    "witness": "audit/evidence/qasc-deletion-preservation-audit-latest.json",
+    "report": "audit/reports/qasc-deletion-preservation-audit-YYYY-MM-DD.md"
   },
   "phases": [
     "sessionGuard",
@@ -96,7 +106,8 @@
     "Root hygiene",
     "Link/reference hygiene",
     "Cross-repo contract",
-    "Archive recoverability"
+    "Archive recoverability",
+    "Deletion preservation policy"
   ],
   "fleet": {
     "denominatorPolicy": "Explicit active checkout list. Changes require a versioned contract update; deployment or legacy rollout registries cannot silently narrow QASC coverage.",
@@ -129,6 +140,9 @@
     "fleetScore": "pnpm qasc:fleet",
     "fleetEvidence": "pnpm qasc:fleet:write",
     "fleetEnforcement": "pnpm qasc:fleet:strict",
+    "deletionPreservationAudit": "pnpm qasc:deletion-preservation:audit -- --since 2026-06-02T00:00:00",
+    "deletionPreservationEvidence": "pnpm qasc:deletion-preservation:audit:write -- --since 2026-06-02T00:00:00",
+    "deletionPreservationEnforcement": "pnpm qasc:deletion-preservation:audit:strict -- --since 2026-06-02T00:00:00",
     "contractEnforcement": "pnpm qasc:contract:check",
     "tests": "pnpm qasc:test"
   },
@@ -136,6 +150,7 @@
     "repository": "audit/evidence/qasc-repo-latest.json",
     "repositoryLoop": "audit/evidence/qasc-loop-latest.json",
     "fleet": "audit/evidence/qasc-fleet-latest.json",
+    "deletionPreservation": "audit/evidence/qasc-deletion-preservation-audit-latest.json",
     "fleetReport": "audit/reports/qasc-fleet-YYYY-MM-DD.md"
   }
 }

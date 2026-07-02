@@ -1,7 +1,7 @@
 {
   "$schema": "gtcx://fabric-os/qasc-audit-requirements/v1",
-  "version": "1.0.0",
-  "updated": "2026-07-01",
+  "version": "1.1.0",
+  "updated": "2026-07-02",
   "ownerRepo": "fabric-os",
   "status": "current",
   "title": "QASC audit requirements for Agile production-package workflow",
@@ -96,6 +96,16 @@
         "machine:folder:check where present"
       ],
       "rule": "Product intent, machine records, feature packs, sprint handoffs, documentation, and generated compatibility outputs must live in the authoritative folder/file locations or have a recorded migration gap."
+    },
+    {
+      "id": "deletion-preservation-policy",
+      "targetScore": 100,
+      "evidence": [
+        "audit/evidence/qasc-deletion-preservation-audit-latest.json",
+        "audit/reports/qasc-deletion-preservation-audit-YYYY-MM-DD.md",
+        "archive/_delete/<reason-date>/manifest.json when a cleanup removes active-tree content"
+      ],
+      "rule": "No tracked cleanup deletion is acceptable as a bare delete. Files removed from active folders must be moved to archive/_delete/<reason-date>/... and recorded as a recoverable relocation. Historical bare-delete commits require forward-repair assessment rather than history rewriting."
     }
   ],
   "ownerRequirements": {
@@ -132,13 +142,15 @@
         "daas-deployment-contract",
         "operational-lane-isolation",
         "external-assurance-boundary",
-        "repo-by-repo-rollout-evidence"
+        "repo-by-repo-rollout-evidence",
+        "deletion-preservation-fleet-audit"
       ],
       "commands": [
         "pnpm qasc:contract:check",
         "pnpm qasc:repo -- --repo <repo>",
         "pnpm qasc:loop -- --repo <repo> --max 10",
         "pnpm qasc:fleet",
+        "pnpm qasc:deletion-preservation:audit",
         "pnpm aaas:contract:check",
         "pnpm aaas:audit --lens all",
         "pnpm aaas:loop",
@@ -219,7 +231,8 @@
     "production-spec-package",
     "scrum-handoff",
     "backlog-compatibility-only",
-    "folder-file-product-spec-alignment"
+    "folder-file-product-spec-alignment",
+    "deletion-preservation-policy"
   ],
   "openImplementationGap": "Production-package controls are implemented. The remaining enforcement surface is repo-by-repo remediation to satisfy folder/file/product spec alignment and package evidence at 100/100."
 }

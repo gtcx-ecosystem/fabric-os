@@ -102,6 +102,7 @@ describe('GTCX QASC repository scorer', () => {
       'Scrum handoff',
       'Backlog compatibility only',
       'Archive recoverability',
+      'Deletion preservation policy',
     ]) {
       assert.ok(areas.includes(area), `missing acceptance area: ${area}`);
       const row = witness.acceptanceTable.find((r) => r.area === area);

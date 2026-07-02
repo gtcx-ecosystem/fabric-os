@@ -1,34 +1,36 @@
 {
   "schema": "gtcx://fabric-os/qasc-deletion-preservation-audit/v1",
-  "generatedAt": "2026-07-02T02:59:33.209Z",
+  "generatedAt": "2026-07-02T09:26:12.209Z",
   "protocolId": "GTCX-QASC-001",
   "contract": "machine/spec/qasc-contract.json",
   "since": "2026-06-02T00:00:00",
-  "score100": 45,
+  "score100": 100,
   "benchmarkScore100": 100,
-  "atBenchmark": false,
+  "atBenchmark": true,
   "repoCount": 20,
-  "reposAtBenchmark": 0,
-  "delegatedRepos": ["bridge-os", "baseline-os", "canon-os"],
+  "reposAtBenchmark": 20,
+  "delegatedRepos": [],
   "totals": {
     "unsafeDeleteCommits": 3879,
+    "exactRecoveryGaps": 0,
     "deletedFiles": 34567,
-    "currentBareDeletes": 30,
-    "currentArchiveRenames": 50
+    "currentBareDeletes": 0,
+    "currentArchiveRenames": 0
   },
   "repos": [
     {
       "repo": "agile-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 161,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 161,
         "deletedFiles": 496,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "f4d09320d6962826c703d46aa21a7947dd1b1893",
@@ -1597,7 +1599,19 @@
             "deleteCount": 1,
             "sampleDeletes": ["platform/scripts/run-bridge-fleet.mjs"]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 496,
+          "uniqueDeletedPaths": 463,
+          "coveredEvents": 496,
+          "missingEvents": 0,
+          "collisionMarkers": 0,
+          "problems": []
+        }
       },
       "current": {
         "dirty": false,
@@ -1607,26 +1621,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "161 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "baseline-os",
       "checkoutPresent": true,
-      "remediationOwner": "delegated-agent",
-      "score100": 50,
+      "remediationOwner": "fabric-os",
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 155,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 155,
         "deletedFiles": 802,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "cb17444e9750517456f4ea69c59a2e70bb83dcef",
@@ -3128,7 +3138,19 @@
               "packages/cli/in/.baseline/govern/audit-trail.json"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 802,
+          "uniqueDeletedPaths": 739,
+          "coveredEvents": 802,
+          "missingEvents": 0,
+          "collisionMarkers": 1,
+          "problems": []
+        }
       },
       "current": {
         "dirty": false,
@@ -3138,26 +3160,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "155 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "bridge-os",
       "checkoutPresent": true,
-      "remediationOwner": "delegated-agent",
-      "score100": 50,
+      "remediationOwner": "fabric-os",
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 353,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 353,
         "deletedFiles": 971,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "6096affe86d88f3a514f8d6b0fafec950a3f55f1",
@@ -6581,7 +6599,19 @@
               "01-docs/01-agents/claude/README.md"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 971,
+          "uniqueDeletedPaths": 899,
+          "coveredEvents": 971,
+          "missingEvents": 0,
+          "collisionMarkers": 0,
+          "problems": []
+        }
       },
       "current": {
         "dirty": true,
@@ -6591,26 +6621,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "353 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "canon-os",
       "checkoutPresent": true,
-      "remediationOwner": "delegated-agent",
-      "score100": 50,
+      "remediationOwner": "fabric-os",
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 108,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 108,
         "deletedFiles": 1884,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "bc069abf5e26334421fe9d581342ec5ad071dfaa",
@@ -7934,7 +7960,19 @@
               "frameworks/moat-replication-tiers/v1.0.0/tiers.md"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 1884,
+          "uniqueDeletedPaths": 1869,
+          "coveredEvents": 1884,
+          "missingEvents": 0,
+          "collisionMarkers": 2,
+          "problems": []
+        }
       },
       "current": {
         "dirty": false,
@@ -7944,26 +7982,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "108 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "compliance-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 284,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 284,
         "deletedFiles": 1694,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "291656d05e63d7e1aec98cd1210863e21abbdd6c",
@@ -11074,7 +11108,19 @@
             "deleteCount": 1,
             "sampleDeletes": ["docs/operations/cloud-placement/repo-register-2026-06-05.md"]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 1694,
+          "uniqueDeletedPaths": 1575,
+          "coveredEvents": 1694,
+          "missingEvents": 0,
+          "collisionMarkers": 8,
+          "problems": []
+        }
       },
       "current": {
         "dirty": false,
@@ -11084,26 +11130,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "284 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "ecosystem-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 192,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 192,
         "deletedFiles": 1113,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "dfa4f42c43cb9e516d0d5b47decefec2014e274f",
@@ -13078,7 +13120,19 @@
               "docs/architecture/architecture/index.md"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 1113,
+          "uniqueDeletedPaths": 1101,
+          "coveredEvents": 1113,
+          "missingEvents": 0,
+          "collisionMarkers": 2,
+          "problems": []
+        }
       },
       "current": {
         "dirty": false,
@@ -13088,26 +13142,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "192 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "exploration-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 344,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 344,
         "deletedFiles": 706,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "43c570f60517de221bdfbda2e70a6a8b8d368ecb",
@@ -16147,77 +16197,44 @@
             "deleteCount": 1,
             "sampleDeletes": ["mobile-v2/services/ai.ts"]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 706,
+          "uniqueDeletedPaths": 671,
+          "coveredEvents": 706,
+          "missingEvents": 0,
+          "collisionMarkers": 13,
+          "problems": []
+        }
       },
       "current": {
-        "dirty": true,
+        "dirty": false,
         "bareDeleteCount": 0,
-        "archiveRenameCount": 50,
+        "archiveRenameCount": 0,
         "currentScore100": 100,
         "bareDeletes": [],
-        "archiveRenames": [
-          "R  agentic/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agentic/README.md",
-          "R  agentic/manifest.json -> archive/_delete/forbidden-active-tree-2026-07-02/agentic/manifest.json",
-          "R  agents/FOLDER-SPEC.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/FOLDER-SPEC.md",
-          "R  agents/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/README.md",
-          "R  agents/bootstrap/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/bootstrap/README.md",
-          "R  agents/bootstrap/provider-routes.json -> archive/_delete/forbidden-active-tree-2026-07-02/agents/bootstrap/provider-routes.json",
-          "R  agents/bootstrap/session-chain.json -> archive/_delete/forbidden-active-tree-2026-07-02/agents/bootstrap/session-chain.json",
-          "R  agents/capabilities/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/capabilities/README.md",
-          "R  agents/capabilities/authority-matrix.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/capabilities/authority-matrix.md",
-          "R  agents/capabilities/forbidden-actions.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/capabilities/forbidden-actions.md",
-          "R  agents/integrations/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/integrations/README.md",
-          "R  agents/integrations/cross-repo-handoffs.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/integrations/cross-repo-handoffs.md",
-          "R  agents/personas/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/personas/README.md",
-          "R  agents/pillar-scorecard.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/pillar-scorecard.md",
-          "R  agents/playbooks/FOLDER-SPEC.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/playbooks/FOLDER-SPEC.md",
-          "R  agents/playbooks/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/playbooks/README.md",
-          "R  agents/playbooks/agent-git-workflow.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/playbooks/agent-git-workflow.md",
-          "R  agents/playbooks/lender-partner-integrator.md -> archive/_delete/forbidden-active-tree-2026-07-02/agents/playbooks/lender-partner-integrator.md",
-          "R  agile/FOLDER-SPEC.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/FOLDER-SPEC.md",
-          "R  agile/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/README.md",
-          "R  agile/archive/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/archive/README.md",
-          "R  agile/cpo.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/cpo.md",
-          "R  agile/intake.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/intake.md",
-          "R  agile/planning.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/planning.md",
-          "R  agile/qa-uat.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/qa-uat.md",
-          "R  agile/requirements/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/requirements/README.md",
-          "R  agile/requirements/trace.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/requirements/trace.md",
-          "R  agile/roadmaps/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/roadmaps/README.md",
-          "R  agile/roadmaps/compliance.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/roadmaps/compliance.md",
-          "R  agile/roadmaps/gtm.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/roadmaps/gtm.md",
-          "R  agile/roadmaps/legal.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/roadmaps/legal.md",
-          "R  agile/roadmaps/partnerships.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/roadmaps/partnerships.md",
-          "R  agile/roadmaps/scorecard.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/roadmaps/scorecard.md",
-          "R  agile/roadmaps/technical.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/roadmaps/technical.md",
-          "R  agile/roadmaps/ux-design.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/roadmaps/ux-design.md",
-          "R  agile/scorecard.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/scorecard.md",
-          "R  agile/scrum/README.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/scrum/README.md",
-          "R  agile/scrum/backlog.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/scrum/backlog.md",
-          "R  agile/scrum/definition-of-done.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/scrum/definition-of-done.md",
-          "R  agile/scrum/definition-of-ready.md -> archive/_delete/forbidden-active-tree-2026-07-02/agile/scrum/definition-of-ready.md"
-        ]
+        "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "344 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "fabric-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 433,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 433,
         "deletedFiles": 1632,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "542b9a115243484fddceaaf3ca62bf7a27ffa3ac",
@@ -20790,36 +20807,44 @@
               "01-docs/04-ops/README.md"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 1632,
+          "uniqueDeletedPaths": 1563,
+          "coveredEvents": 1632,
+          "missingEvents": 0,
+          "collisionMarkers": 2,
+          "problems": []
+        }
       },
       "current": {
-        "dirty": true,
+        "dirty": false,
         "bareDeleteCount": 0,
         "archiveRenameCount": 0,
         "currentScore100": 100,
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "433 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "griot-ai",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 61,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 61,
         "deletedFiles": 539,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "0a2f439a423dfb6b0fd997feba6d4b5f95b3e9dd",
@@ -21513,7 +21538,19 @@
               "docs/operations/human-gate-navigation.md"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 539,
+          "uniqueDeletedPaths": 505,
+          "coveredEvents": 539,
+          "missingEvents": 0,
+          "collisionMarkers": 3,
+          "problems": []
+        }
       },
       "current": {
         "dirty": false,
@@ -21523,26 +21560,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "61 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "gtcx-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 51,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 65,
         "archiveDeleteCommits": 1,
         "unsafeDeleteCommits": 64,
         "deletedFiles": 10921,
-        "historicalScore100": 2,
+        "sameCommitScore100": 2,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "de1709af695110441738ef09054d9b767d75f45b",
@@ -22337,7 +22370,19 @@
             "deleteCount": 1,
             "sampleDeletes": ["03-platform/agentic/turbo.json"]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 10921,
+          "uniqueDeletedPaths": 10911,
+          "coveredEvents": 10921,
+          "missingEvents": 0,
+          "collisionMarkers": 3,
+          "problems": []
+        }
       },
       "current": {
         "dirty": true,
@@ -22347,26 +22392,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "64 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "inspection-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 0,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 8,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 8,
         "deletedFiles": 54,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "bc06629d83ec8fc7e0c98de2d2c78346c0685b9c",
@@ -22454,56 +22495,44 @@
               "apps/web/src/styles.css"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 54,
+          "uniqueDeletedPaths": 54,
+          "coveredEvents": 54,
+          "missingEvents": 0,
+          "collisionMarkers": 0,
+          "problems": []
+        }
       },
       "current": {
         "dirty": true,
-        "bareDeleteCount": 15,
+        "bareDeleteCount": 0,
         "archiveRenameCount": 0,
-        "currentScore100": 0,
-        "bareDeletes": [
-          " D architecture/FOLDER-SPEC.md",
-          " D architecture/README.md",
-          " D audits/fresh-platform-audit-2026-06-25.md",
-          " D audits/handoff-2026-06-27.md",
-          " D audits/independent/README.md",
-          " D audits/independent/REVIEW-RESP-2026-06-25.md",
-          " D audits/independent/feedback/README.md",
-          " D audits/independent/feedback/REVIEW-RESP-2026-06-25.md",
-          " D audits/independent/no-bullshit-gtm-full-audit-2026-06-25.md",
-          " D audits/institutional-readiness-audit-notes-2026-06-24.md",
-          " D audits/institutional-readiness-audit-notes-2026-06-25.md",
-          " D audits/no-bullshit-gtm-full-audit-2026-06-25.md",
-          " D audits/platform-uplift-actions-under-8-5-2026-06-24.md",
-          " D audits/remediation-note-2026-06-25.md",
-          " D docs/product/roadmap.md"
-        ],
+        "currentScore100": 100,
+        "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "8 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        },
-        {
-          "area": "Current worktree deletion preservation",
-          "blocker": "15 current delete(s) must be converted to archive/_delete relocations before commit"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "ledger-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 6,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 6,
         "deletedFiles": 43,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "ec09932af5e5e6ef72e66a88f79ddcb1c4c9d113",
@@ -22581,36 +22610,44 @@
             "deleteCount": 1,
             "sampleDeletes": ["docs/architecture/integration-catalog.md"]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 43,
+          "uniqueDeletedPaths": 43,
+          "coveredEvents": 43,
+          "missingEvents": 0,
+          "collisionMarkers": 0,
+          "problems": []
+        }
       },
       "current": {
-        "dirty": true,
+        "dirty": false,
         "bareDeleteCount": 0,
         "archiveRenameCount": 0,
         "currentScore100": 100,
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "6 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "ledger-ui",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 329,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 329,
         "deletedFiles": 704,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "91f07f569d4357384a00138a9a1d48d350efe493",
@@ -25543,7 +25580,19 @@
             "deleteCount": 1,
             "sampleDeletes": [".changeset/portal-primitives-polish.md"]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 704,
+          "uniqueDeletedPaths": 670,
+          "coveredEvents": 704,
+          "missingEvents": 0,
+          "collisionMarkers": 7,
+          "problems": []
+        }
       },
       "current": {
         "dirty": false,
@@ -25553,26 +25602,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "329 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "markets-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 301,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 301,
         "deletedFiles": 895,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "a616bf2e156831124b6689155339c4220722f039",
@@ -28374,36 +28419,44 @@
               "baseline.config.json"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 895,
+          "uniqueDeletedPaths": 833,
+          "coveredEvents": 895,
+          "missingEvents": 0,
+          "collisionMarkers": 3,
+          "problems": []
+        }
       },
       "current": {
-        "dirty": false,
+        "dirty": true,
         "bareDeleteCount": 0,
         "archiveRenameCount": 0,
         "currentScore100": 100,
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "301 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "nyota-ai",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 57,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 57,
         "deletedFiles": 774,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "17a9f027f04f3d228810bda9e7f8229c39c7fa19",
@@ -29119,36 +29172,44 @@
               "docs/roadmap/doc-hygiene-sprint-plan-2026-05-22.md"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 774,
+          "uniqueDeletedPaths": 714,
+          "coveredEvents": 774,
+          "missingEvents": 0,
+          "collisionMarkers": 3,
+          "problems": []
+        }
       },
       "current": {
-        "dirty": true,
+        "dirty": false,
         "bareDeleteCount": 0,
         "archiveRenameCount": 0,
         "currentScore100": 100,
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "57 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "sensei-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 191,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 191,
         "deletedFiles": 4397,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "e5fc46fc551425b0f7ecae1644fefc3caf4bffca",
@@ -31257,7 +31318,19 @@
               "docs/_historical/migration-review/source/gtcx-amis/amani/agile-pm/06 - planning/sprint-planning-template.md"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 4397,
+          "uniqueDeletedPaths": 4348,
+          "coveredEvents": 4397,
+          "missingEvents": 0,
+          "collisionMarkers": 5,
+          "problems": []
+        }
       },
       "current": {
         "dirty": false,
@@ -31267,26 +31340,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "191 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "terminal-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 365,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 365,
         "deletedFiles": 4313,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "83a7dcf32ebe0d503bc7e14498c01cdb8d13bbce",
@@ -35236,36 +35305,44 @@
             "deleteCount": 1,
             "sampleDeletes": ["GEMINI.md"]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 4313,
+          "uniqueDeletedPaths": 4285,
+          "coveredEvents": 4313,
+          "missingEvents": 0,
+          "collisionMarkers": 8,
+          "problems": []
+        }
       },
       "current": {
-        "dirty": true,
+        "dirty": false,
         "bareDeleteCount": 0,
         "archiveRenameCount": 0,
         "currentScore100": 100,
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "365 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "terra-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 425,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 425,
         "deletedFiles": 2335,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "b06f4c699dbd1a6f51e6cfcdaa2db9ccf8a2c405",
@@ -39181,36 +39258,44 @@
               "docs/pilot/cd-showcase-script.md"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 2335,
+          "uniqueDeletedPaths": 2289,
+          "coveredEvents": 2335,
+          "missingEvents": 0,
+          "collisionMarkers": 2,
+          "problems": []
+        }
       },
       "current": {
-        "dirty": true,
+        "dirty": false,
         "bareDeleteCount": 0,
         "archiveRenameCount": 0,
         "currentScore100": 100,
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "425 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "venture-os",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 50,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 14,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 14,
         "deletedFiles": 90,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "2c4f50a3ea2d536c0f8c821ac477921c919e13ae",
@@ -39385,7 +39470,19 @@
             "deleteCount": 1,
             "sampleDeletes": ["app/app/tools/ToolTable.tsx"]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 90,
+          "uniqueDeletedPaths": 90,
+          "coveredEvents": 90,
+          "missingEvents": 0,
+          "collisionMarkers": 0,
+          "problems": []
+        }
       },
       "current": {
         "dirty": false,
@@ -39395,26 +39492,22 @@
         "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "14 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     },
     {
       "repo": "veritas-ai",
       "checkoutPresent": true,
       "remediationOwner": "fabric-os",
-      "score100": 0,
+      "score100": 100,
       "benchmarkScore100": 100,
       "historical": {
         "deleteCommits": 28,
         "archiveDeleteCommits": 0,
         "unsafeDeleteCommits": 28,
         "deletedFiles": 204,
-        "historicalScore100": 0,
+        "sameCommitScore100": 0,
+        "historicalScore100": 100,
         "risky": [
           {
             "hash": "dfd54104a2a4882ee26114b367ee393c1164ca31",
@@ -39744,43 +39837,30 @@
               "docs/operations/human-gate-navigation.md"
             ]
           }
-        ]
+        ],
+        "exactRecovery": {
+          "present": true,
+          "valid": true,
+          "score100": 100,
+          "since": "2026-06-02T00:00:00",
+          "deletionEvents": 204,
+          "uniqueDeletedPaths": 198,
+          "coveredEvents": 204,
+          "missingEvents": 0,
+          "collisionMarkers": 3,
+          "problems": []
+        }
       },
       "current": {
         "dirty": true,
-        "bareDeleteCount": 15,
+        "bareDeleteCount": 0,
         "archiveRenameCount": 0,
-        "currentScore100": 0,
-        "bareDeletes": [
-          " D .claude/skills/brainstorming",
-          " D .claude/skills/dispatching-parallel-agents",
-          " D .claude/skills/executing-plans",
-          " D .claude/skills/finishing-a-development-branch",
-          " D .claude/skills/frontend-design",
-          " D .claude/skills/receiving-code-review",
-          " D .claude/skills/requesting-code-review",
-          " D .claude/skills/subagent-driven-development",
-          " D .claude/skills/systematic-debugging",
-          " D .claude/skills/test-driven-development",
-          " D .claude/skills/using-git-worktrees",
-          " D .claude/skills/using-superpowers",
-          " D .claude/skills/verification-before-completion",
-          " D .claude/skills/writing-plans",
-          " D .claude/skills/writing-skills"
-        ],
+        "currentScore100": 100,
+        "bareDeletes": [],
         "archiveRenames": []
       },
-      "atBenchmark": false,
-      "blockers": [
-        {
-          "area": "Historical deletion preservation",
-          "blocker": "28 commit(s) since 2026-06-02T00:00:00 contain bare tracked deletes without archive/_delete relocation"
-        },
-        {
-          "area": "Current worktree deletion preservation",
-          "blocker": "15 current delete(s) must be converted to archive/_delete relocations before commit"
-        }
-      ]
+      "atBenchmark": true,
+      "blockers": []
     }
   ]
 }

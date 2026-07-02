@@ -1,0 +1,168 @@
+{
+  "$schema": "gtcx://bridge-os/product-goals/v1",
+  "version": "1.0.0",
+  "repo": "fabric-os",
+  "tier": "platform",
+  "updated": "2026-06-17",
+  "vision": {
+    "statement": "Sovereign deploy substrate — EKS/staging, SECAS, fleet health, observability",
+    "horizon": "2026-2028"
+  },
+  "mission": "Sovereign deploy substrate — EKS/staging, SecOps, fleet health, observability",
+  "northStarMetric": {
+    "name": "SECAS-S4-02 supply-chain gates PASS",
+    "target": "Witness: audit/evidence/secas-supply-chain-check-latest.json",
+    "witness": "audit/evidence/secas-supply-chain-check-latest.json"
+  },
+  "productGoals": [
+    {
+      "id": "PG1",
+      "title": "Fleet security clearance",
+      "outcome": "SecOps and ComplianceOps can promote fleet infrastructure with clear evidence and no hidden gating ambiguity",
+      "measure": "SecOps internal Class R sealed and ComplianceOps fleet harness PASS",
+      "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json"
+    },
+    {
+      "id": "PG2",
+      "title": "Supply-chain trust",
+      "outcome": "Supply-chain gates remain provably green across the fleet deploy substrate",
+      "measure": "SECAS-S4-02 supply-chain gates PASS",
+      "witness": "audit/evidence/secas-supply-chain-check-latest.json"
+    },
+    {
+      "id": "PG3",
+      "title": "Operational deploy choreography",
+      "outcome": "Fleet integrators can rely on one coherent deploy and observability substrate for staged promotion",
+      "measure": "Demo walkthrough evidence and fleet health witnesses remain current",
+      "witness": "audit/evidence/demo-readiness-{repo}.json"
+    }
+  ],
+  "valueProposition": {
+    "for": "Operators and integrators consuming Fabric OS",
+    "who": "need shippable outcomes traced to PRD and active milestone",
+    "product": "Fabric OS",
+    "that": "Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
+    "unlike": "Ad-hoc docs and sprint theater without product-goals trace",
+    "we": "Fabric OS — DevOps, InfraOps, SecOps, fleet env, deploy choreography"
+  },
+  "customers": {
+    "primarySegment": "GTCX fleet integrators — fabric-os",
+    "icp": "platform-engineer",
+    "buyerPersonas": [],
+    "soR": "pm/product/customers/"
+  },
+  "competition": {
+    "alternatives": ["Generic SaaS without protocol trace"],
+    "differentiation": "Service fabric execution — DevOps, InfraOps, SecOps, fleet env, deploy choreography",
+    "soR": "pm/product/market-research/"
+  },
+  "gtm": {
+    "tier": "GR-T2-partial",
+    "motion": "Integrator pilot / enterprise / sovereign",
+    "channels": [],
+    "pilotWindowDays": {
+      "min": 30,
+      "max": 90
+    }
+  },
+  "gtmGoals": [
+    {
+      "id": "GTM1",
+      "title": "Integrator deploy substrate pilots",
+      "outcome": "GR-T2 pilots promote infrastructure with SecOps clearance evidence",
+      "measure": "Demo walkthrough + supply-chain gates PASS",
+      "motion": "Integrator pilot",
+      "tier": "GR-T2-partial"
+    }
+  ],
+  "shippingGoals": {
+    "schema": "gtcx://pm/shipping-goals/v1",
+    "note": "Assurance and delivery bars — not product or GTM goals.",
+    "goals": [
+      {
+        "id": "SG1",
+        "label": "SecOps and ComplianceOps clearance",
+        "target": "internal clearance sealed and fleet compliance harness PASS",
+        "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json"
+      },
+      {
+        "id": "SG2",
+        "label": "Supply-chain gates",
+        "target": "SECAS-S4-02 supply-chain gates PASS",
+        "witness": "audit/evidence/secas-supply-chain-check-latest.json"
+      },
+      {
+        "id": "SG3",
+        "label": "PRD traceability",
+        "target": "100% in-flight work traces to prdRef, capabilityId, or activeMilestone.id",
+        "witness": "pm/product/prd-index.json"
+      }
+    ]
+  },
+  "activeMilestone": {
+    "id": "FLEET-SECOPS-COMPLIANCEOPS-CLEARANCE",
+    "title": "SECAS-S4-supply-chain",
+    "shippableOutcome": "SecOps internal Class R sealed; ComplianceOps harness PASS; vendor gates parallel only",
+    "targetDate": "2026-06-15",
+    "programmeId": "PROG-SECAS-ENGINEERING",
+    "prdRefs": ["prd-product-charter"],
+    "headStoryId": "XR-FABRIC-SESSION-OPEN-004",
+    "clearanceRegister": "../bridge-os/pm/spec/internal-secops-complianceops-clearance.json",
+    "postLaunchExternalSoR": "ops/coordination/post-launch-external-gates.json",
+    "acceptanceChecks": [
+      {
+        "id": "secops-internal-clearance",
+        "label": "SecOps internal Class R sealed",
+        "witness": "audit/evidence/fleet-secops-complianceops-clearance-2026-06-15.json",
+        "actual": "PASS"
+      },
+      {
+        "id": "complianceops-fleet",
+        "label": "ComplianceOps fleet harness",
+        "witness": "../bridge-os/pm/ci/complianceops-fleet-latest.json",
+        "actual": "PASS"
+      },
+      {
+        "id": "composite-85",
+        "label": "Composite ≥85",
+        "check": "composite85"
+      },
+      {
+        "id": "demo",
+        "label": "Demo walkthrough evidence",
+        "witness": "audit/evidence/demo-readiness-{repo}.json"
+      }
+    ],
+    "headAdvancedAt": "2026-06-17T09:39:41.207Z",
+    "previousHeadStoryId": "SECAS-S4-04"
+  },
+  "definitionOfDone": {
+    "story": [
+      "prdRef or capability id",
+      "acceptance criteria",
+      "tests or witness command",
+      "auditNotes on done"
+    ],
+    "milestone": [
+      "all acceptanceChecks pass",
+      "independent QA when shipClaim",
+      "UAT linked when customer-facing"
+    ],
+    "forbidden": ["done without PRD trace", "ROADMAP-COMPLETE without shippableOutcome"]
+  },
+  "productIntegrity": {
+    "prdIndex": "pm/product/prd-index.json",
+    "prdsDir": "pm/product/prds/",
+    "capabilityMatrix": "docs/strategy/product-capability-matrix-*.md",
+    "executionRoadmap": "docs/strategy/execution-roadmap.md",
+    "storyMustTraceTo": ["prdRef", "capabilityId", "activeMilestone.id"]
+  },
+  "milestoneProgress": {
+    "completedStories": [
+      {
+        "storyId": "SECAS-S4-04",
+        "at": "2026-06-17T09:39:41.206Z"
+      }
+    ]
+  }
+}

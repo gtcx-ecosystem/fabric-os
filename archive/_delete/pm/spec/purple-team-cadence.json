@@ -1,0 +1,14 @@
+{
+  "$schema": "gtcx://fabric-os/purple-team-cadence/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-15",
+  "storyId": "SECAS-S5-01",
+  "opsLane": "SecOps",
+  "cadence": "quarterly",
+  "nextWindow": "2026-09-01",
+  "owner": "fabric-os",
+  "scope": ["eks-ingress", "payops-webhooks", "auth-boundaries", "secrets-eso"],
+  "witnessPath": "audit/evidence/secas-purple-team-latest.json",
+  "runbook": "docs/operations/secas/runbooks/purple-team-cadence.md",
+  "blocksIR": false
+}

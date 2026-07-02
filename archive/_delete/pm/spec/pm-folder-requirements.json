@@ -1,0 +1,60 @@
+{
+  "$schema": "gtcx://bridge-os/pm-folder-requirements/v1",
+  "version": "1.0.0",
+  "updated": "2026-06-10",
+  "principle": "Every fleet repo pm/ folder is spec-first — audits evaluate categories; specs define implementation and Definition of Done.",
+  "required": {
+    "files": [
+      { "path": "pm/README.md", "role": "entry — generated vs input policy" },
+      { "path": "pm/manifest.json", "role": "SoR pointers + reconcile config" },
+      {
+        "path": "pm/completion-model.json",
+        "role": "DoD gates, dimension weights, deploy thresholds"
+      },
+      { "path": "pm/shipping-tracks.json", "role": "shipping lanes + lifts (engine input)" },
+      { "path": "pm/roadmap/initiatives.json", "role": "initiatives → epics → features" },
+      { "path": "pm/roadmap/sprints/active.json", "role": "Scrum Master sprint input" },
+      { "path": "pm/roadmap/README.md", "role": "roadmap operator entry" }
+    ],
+    "directories": [
+      { "path": "pm/product", "role": "PRDs, goals, ADRs — implementation specs", "minFiles": 1 },
+      { "path": "pm/ux", "role": "EXR / journey specs when product repo", "optional": true },
+      {
+        "path": "pm/roadmap/uat",
+        "role": "UAT scenarios tied to features",
+        "optionalUntilR1": true
+      },
+      { "path": "pm/ci", "role": "generated witnesses incl. shipping-status-latest.json" }
+    ]
+  },
+  "generated": [
+    "pm/readiness-snapshot.json",
+    "pm/execution-roadmap.md",
+    "pm/backlog.json",
+    "ops/pm/backlog.json",
+    "pm/ci/shipping-status-latest.json",
+    "pm/ci/shipping-status-latest.md"
+  ],
+  "specQualityBar": {
+    "feature": ["acceptance criteria", "owner repo", "evidence command", "uat link or N/A"],
+    "story": ["definition of done", "gates", "auditNotes on complete"],
+    "adr": ["decision", "consequences", "status", "review_cycle"],
+    "prd": ["problem", "success metrics", "non-goals", "milestones"]
+  },
+  "rollout": {
+    "registry": "config/ecosystem-pm-engine-rollout-registry.json",
+    "checkCommand": "pnpm pm:folder:check",
+    "targetPhase": "R1",
+    "productCultureTargetPhase": "R2",
+    "productCultureProtocol": "pm/spec/product-development-culture-protocol.json"
+  },
+  "productCultureR2": {
+    "files": [
+      {
+        "path": "pm/spec/product-goals.json",
+        "role": "Vision, mission, milestone, GTM, customers — product SoR"
+      }
+    ],
+    "fleetCheck": "pnpm ecosystem:product-culture:check"
+  }
+}

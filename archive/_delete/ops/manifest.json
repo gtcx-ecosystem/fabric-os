@@ -1,0 +1,26 @@
+{
+  "$schema": "gtcx://workspace/manifest/v3",
+  "schema": "gtcx.workspace.manifest.v3",
+  "repo": "fabric-os",
+  "updated": "2026-06-16",
+  "domains": {
+    "coordination": "ops/coordination",
+    "productManagement": "ops/pm",
+    "gtm": "ops/gtm",
+    "compliance": "ops/compliance",
+    "attestation": "ops/attestation",
+    "security": "ops/security",
+    "assurance": "ops/assurance",
+    "audit": "ops/attestation/witness",
+    "operations": "ops"
+  },
+  "commands": {
+    "check": "pnpm workspace:check",
+    "pmSync": "pnpm pm:sync",
+    "pmStatus": "pnpm pm:status"
+  },
+  "docs": {
+    "map": "docs/README.md"
+  },
+  "layout": "docs/operations/workspace/ecosystem-repo-layout-v5.md"
+}

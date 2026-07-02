@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   analyzeCommits,
   analyzeCurrentStatus,
+  analyzeExactRecoveryManifest,
   parseNameStatusLog,
   statusLineIsArchiveDeleteRename,
   statusLineIsBareDelete,
@@ -58,5 +59,44 @@ describe('QASC deletion preservation audit', () => {
     assert.equal(status.bareDeleteCount, 1);
     assert.equal(status.archiveRenameCount, 1);
     assert.equal(status.currentScore100, 0);
+  });
+
+  it('scores exact delete recovery manifests as historical coverage', () => {
+    const result = analyzeExactRecoveryManifest({
+      schema: 'gtcx://fabric-os/archive-delete-exact-recovery/v1',
+      since: '2026-06-02T00:00:00',
+      deletionEvents: 3,
+      uniqueDeletedPaths: 2,
+      coveredEvents: 3,
+      missingEvents: 0,
+      collisionMarkers: 1,
+    }, {
+      since: '2026-06-02T00:00:00',
+      expectedDeletedFiles: 3,
+    });
+
+    assert.equal(result.valid, true);
+    assert.equal(result.score100, 100);
+    assert.equal(result.coveredEvents, 3);
+    assert.equal(result.collisionMarkers, 1);
+  });
+
+  it('rejects exact delete recovery manifests that do not match git deletion events', () => {
+    const result = analyzeExactRecoveryManifest({
+      schema: 'gtcx://fabric-os/archive-delete-exact-recovery/v1',
+      since: '2026-06-02T00:00:00',
+      deletionEvents: 2,
+      uniqueDeletedPaths: 2,
+      coveredEvents: 2,
+      missingEvents: 0,
+      collisionMarkers: 0,
+    }, {
+      since: '2026-06-02T00:00:00',
+      expectedDeletedFiles: 3,
+    });
+
+    assert.equal(result.valid, false);
+    assert.equal(result.score100, 0);
+    assert.match(result.problems[0], /does not match git deleted file events/);
   });
 });

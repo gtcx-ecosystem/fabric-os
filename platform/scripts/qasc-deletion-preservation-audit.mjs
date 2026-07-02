@@ -41,6 +41,11 @@ function readJson(path) {
   return JSON.parse(readFileSync(path, 'utf8'));
 }
 
+function dateValue(value) {
+  const parsed = Date.parse(value);
+  return Number.isNaN(parsed) ? null : parsed;
+}
+
 function git(repoRoot, args) {
   try {
     return {
@@ -124,13 +129,14 @@ export function analyzeCommits(commits) {
   }
 
   const unsafeDeleteCommits = risky.length;
-  const historicalScore100 = deleteCommits === 0 ? 100 : Math.round((archiveDeleteCommits / deleteCommits) * 100);
+  const sameCommitScore100 = deleteCommits === 0 ? 100 : Math.round((archiveDeleteCommits / deleteCommits) * 100);
   return {
     deleteCommits,
     archiveDeleteCommits,
     unsafeDeleteCommits,
     deletedFiles,
-    historicalScore100,
+    sameCommitScore100,
+    historicalScore100: sameCommitScore100,
     risky,
   };
 }
@@ -147,6 +153,85 @@ export function analyzeCurrentStatus(raw) {
     bareDeletes: bareDeletes.slice(0, 40),
     archiveRenames: archiveRenames.slice(0, 40),
   };
+}
+
+export function analyzeExactRecoveryManifest(manifest, options = {}) {
+  const expectedDeletedFiles = options.expectedDeletedFiles ?? null;
+  const auditSince = options.since ?? null;
+  const manifestSince = manifest?.since ?? null;
+  const auditSinceValue = auditSince ? dateValue(auditSince) : null;
+  const manifestSinceValue = manifestSince ? dateValue(manifestSince) : null;
+  const problems = [];
+
+  if (manifest?.schema !== 'gtcx://fabric-os/archive-delete-exact-recovery/v1') {
+    problems.push('manifest schema is not archive-delete-exact-recovery/v1');
+  }
+  if (expectedDeletedFiles !== null && manifest?.deletionEvents !== expectedDeletedFiles) {
+    problems.push(`manifest deletionEvents ${manifest?.deletionEvents ?? 'missing'} does not match git deleted file events ${expectedDeletedFiles}`);
+  }
+  if (auditSinceValue !== null && manifestSinceValue !== null && manifestSinceValue > auditSinceValue) {
+    problems.push(`manifest starts at ${manifestSince}; audit window starts at ${auditSince}`);
+  }
+  if (manifest?.coveredEvents !== manifest?.deletionEvents || manifest?.missingEvents !== 0) {
+    problems.push(`manifest coverage is ${manifest?.coveredEvents ?? 0}/${manifest?.deletionEvents ?? 0} with ${manifest?.missingEvents ?? 'unknown'} missing`);
+  }
+
+  const score100 =
+    problems.length === 0 && manifest?.deletionEvents === 0
+      ? 100
+      : problems.length === 0
+        ? Math.round(((manifest.coveredEvents ?? 0) / manifest.deletionEvents) * 100)
+        : 0;
+
+  return {
+    present: true,
+    valid: problems.length === 0,
+    score100,
+    since: manifestSince,
+    deletionEvents: manifest?.deletionEvents ?? 0,
+    uniqueDeletedPaths: manifest?.uniqueDeletedPaths ?? 0,
+    coveredEvents: manifest?.coveredEvents ?? 0,
+    missingEvents: manifest?.missingEvents ?? null,
+    collisionMarkers: manifest?.collisionMarkers ?? 0,
+    problems,
+  };
+}
+
+function readExactRecovery(repoRoot, since, historical) {
+  const manifestPath = join(repoRoot, 'archive/_delete/exact-manifest.json');
+  if (!existsSync(manifestPath)) {
+    return {
+      present: false,
+      valid: historical.deletedFiles === 0,
+      score100: historical.deletedFiles === 0 ? 100 : 0,
+      problems: historical.deletedFiles === 0 ? [] : ['archive/_delete/exact-manifest.json missing'],
+    };
+  }
+
+  const manifest = readJson(manifestPath);
+  const result = analyzeExactRecoveryManifest(manifest, {
+    expectedDeletedFiles: historical.deletedFiles,
+    since,
+  });
+
+  if (result.valid && Array.isArray(manifest.events)) {
+    const missing = [];
+    for (const event of manifest.events) {
+      const exact = event.exactArchivePath ? join(repoRoot, event.exactArchivePath) : null;
+      const byCommit = event.byCommitArchivePath ? join(repoRoot, event.byCommitArchivePath) : null;
+      if (!exact || !byCommit || !existsSync(exact) || !existsSync(byCommit)) {
+        missing.push({ path: event.path, exactArchivePath: event.exactArchivePath, byCommitArchivePath: event.byCommitArchivePath });
+      }
+    }
+    if (missing.length) {
+      result.valid = false;
+      result.score100 = 0;
+      result.problems.push(`${missing.length} manifest event(s) point to missing archive files`);
+      result.missingArchivePaths = missing.slice(0, 40);
+    }
+  }
+
+  return result;
 }
 
 function requestedRepos(contract) {
@@ -180,13 +265,16 @@ function auditRepo(repo, since, delegatedSet) {
   ]);
   const commits = parseNameStatusLog(log.stdout);
   const historical = analyzeCommits(commits);
+  const exactRecovery = readExactRecovery(repoRoot, since, historical);
+  historical.exactRecovery = exactRecovery;
+  historical.historicalScore100 = exactRecovery.valid ? exactRecovery.score100 : historical.sameCommitScore100;
   const current = analyzeCurrentStatus(git(repoRoot, ['status', '--porcelain=v1']).stdout);
   const score100 = Math.round((historical.historicalScore100 + current.currentScore100) / 2);
   const blockers = [];
-  if (historical.unsafeDeleteCommits > 0) {
+  if (historical.deletedFiles > 0 && !exactRecovery.valid) {
     blockers.push({
-      area: 'Historical deletion preservation',
-      blocker: `${historical.unsafeDeleteCommits} commit(s) since ${since} contain bare tracked deletes without archive/_delete relocation`,
+      area: 'Historical exact/by-commit recovery',
+      blocker: exactRecovery.problems[0] ?? `${historical.deletedFiles} deleted file event(s) since ${since} lack exact archive coverage`,
     });
   }
   if (current.bareDeleteCount > 0) {
@@ -212,7 +300,10 @@ function auditRepo(repo, since, delegatedSet) {
 function renderReport(witness) {
   const rows = witness.repos.map((repo) => {
     const blocker = repo.blockers?.[0]?.blocker ?? 'benchmark reached';
-    return `| ${repo.repo} | ${repo.score100}/100 | ${repo.historical?.historicalScore100 ?? 0}/100 | ${repo.current?.currentScore100 ?? 0}/100 | ${repo.remediationOwner} | ${blocker.replace(/\|/g, '\\|')} |`;
+    const exact = repo.historical?.exactRecovery?.present
+      ? `${repo.historical.exactRecovery.coveredEvents}/${repo.historical.exactRecovery.deletionEvents}`
+      : 'missing';
+    return `| ${repo.repo} | ${repo.score100}/100 | ${repo.historical?.historicalScore100 ?? 0}/100 | ${exact} | ${repo.current?.currentScore100 ?? 0}/100 | ${repo.remediationOwner} | ${blocker.replace(/\|/g, '\\|')} |`;
   });
   return `---
 title: "QASC deletion preservation fleet audit"
@@ -229,19 +320,20 @@ Fleet score: **${witness.score100}/100**.
 
 Window: **${witness.since}** through **${witness.generatedAt}**.
 
-Policy: tracked files must not be removed as bare deletes during repo cleanup.
-Retired, superseded, or decomposed content must be preserved under
-\`archive/_delete/<reason-date>/...\` so Git records a recoverable relocation.
+Policy: tracked files must not be removed as unrecoverable bare deletes during
+repo cleanup. Retired, superseded, or decomposed content must have exact mirrored
+coverage under \`archive/_delete/<original-path>\` plus forensic provenance under
+\`archive/_delete/by-commit/<commit>/<original-path>\`.
 
-| Repository | Score | Historical | Current worktree | Remediation owner | First blocker |
-| ---------- | ----: | ---------: | ---------------: | ----------------- | ------------- |
+| Repository | Score | Historical | Exact coverage | Current worktree | Remediation owner | First blocker |
+| ---------- | ----: | ---------: | -------------: | ---------------: | ----------------- | ------------- |
 ${rows.join('\n')}
 
 ## Notes
 
 - This audit is intentionally historical. It does not rewrite history.
-- Historical gaps require forward-repair archive commits when the content is
-  materially useful or policy-critical.
+- Historical gaps require forward-repair archive commits with exact mirrored
+  coverage and by-commit provenance.
 - Current bare deletes must be converted to archive/_delete moves before commit.
 - Delegated repositories remain in the denominator; their remediation owner is
   marked only for coordination.

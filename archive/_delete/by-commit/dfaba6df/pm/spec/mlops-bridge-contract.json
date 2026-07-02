@@ -1,0 +1,46 @@
+{
+  "$schema": "gtcx://fabric-os/mlops-bridge-contract/v1",
+  "version": "1.2.0",
+  "updated": "2026-06-15",
+  "title": "MLOps bridge — fabric-os substrate contract",
+  "opsLane": "MLOps",
+  "mlopsOwner": "baseline-os",
+  "aiopsProgramOwner": "bridge-os",
+  "fabricBridgeOwner": "fabric-os",
+  "status": "scaffold",
+  "principle": "MLOps and AIOps lanes run through baseline-os (AI OS: cost-router, eval, model governance) and bridge-os (fleet program office, witnesses, registry). fabric-os supplies deploy substrate only — not lane ownership. Product ML runtime in gtcx-os/platform/intelligence is out of ops-lane scope.",
+  "ownerSplit": {
+    "baselineOs": [
+      "pm/spec/mlops-as-a-service.json",
+      "docs/specs/runtime/cost-router.md",
+      "platform/packages/baselineos/src/core/cost-router.ts",
+      "pnpm mlops:check (to implement)"
+    ],
+    "bridgeOs": [
+      "pm/spec/ops-programs-registry.json",
+      "pm/spec/ops-lanes-100-plan.json",
+      "ecosystem:aiops:check:fleet",
+      "pm/ci/aiops-fleet-latest.json"
+    ],
+    "fabricOs": [
+      "deploy/terraform/modules/gcp-ml-bridge/",
+      "platform/tools/eval-pipeline/",
+      "platform/tools/anomaly-detector/",
+      "pm/spec/mlops-bridge-contract.json"
+    ]
+  },
+  "fabricArtifacts": {
+    "terraform": "deploy/terraform/modules/gcp-ml-bridge/",
+    "evalPipeline": "platform/tools/eval-pipeline/",
+    "modelCards": [
+      "docs/governance/model-cards/anomaly-detector-model-card.md",
+      "docs/governance/model-cards/eval-pipeline-model-card.md"
+    ],
+    "ci": ".github/workflows/eval-pipeline.yml"
+  },
+  "handoffs": {
+    "baselineOs": "docs/operations/coordination/inbound/to-baseline-os-mlops-lane-2026-06-15.md",
+    "bridgeOs": "docs/operations/coordination/inbound/to-bridge-os-ai-mlops-lane-2026-06-15.md"
+  },
+  "forbiddenOwners": ["gtcx-os", "gtcx-intelligence", "gtcx-os/platform/intelligence"]
+}

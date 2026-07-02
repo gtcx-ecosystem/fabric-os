@@ -3,6 +3,10 @@ title: 'REL-GOLDEN-V1 surface and feature version inventory'
 status: draft
 date: 2026-07-01
 owner: release-management
+document_type: release-evidence
+tier: operations
+tags: [release-management, golden-v1, surfaces]
+review_cycle: on-change
 release: REL-GOLDEN-V1
 authority: GTCX-SHIP-001
 ---

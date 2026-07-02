@@ -3,9 +3,12 @@ featureId: FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT
 status: current
 title: 'FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT — final release-management gate'
 owner: fabric-os
+document_type: feature-spec
+tier: product
 authority: GTCX-SHIP-001
 date: 2026-07-01
 tags: [fabric-os, ship, dslc, release-management]
+review_cycle: on-change
 ---
 
 # Fabric SHIP Protocol Rollout

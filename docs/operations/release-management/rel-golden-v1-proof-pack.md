@@ -3,6 +3,10 @@ title: 'REL-GOLDEN-V1 release-management proof pack'
 status: draft
 date: 2026-07-01
 owner: gtcx-release-management
+document_type: release-evidence
+tier: operations
+tags: [release-management, golden-v1, proof-pack]
+review_cycle: on-change
 release: REL-GOLDEN-V1
 release_class: pilot
 authority: GTCX-DSLC-001 + GTCX-SHIP-001

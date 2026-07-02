@@ -4,6 +4,8 @@ status: current
 date: 2026-07-01
 owner: fabric-os
 document_type: release-evidence
+tier: business
+tags: [release-management, golden-v1, sales]
 review_cycle: on-change
 release: REL-GOLDEN-V1
 ---

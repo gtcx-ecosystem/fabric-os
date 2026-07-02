@@ -21,5 +21,40 @@
     "mpr": "machine/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT/audits/mpr.json",
     "signal": "machine/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT/audits/signal.json"
   },
+  "acceptanceCriteria": [
+    "DSLC contract schema validates release manifests deterministically.",
+    "DSLC release evaluator scores deployment, sales, legal, and communications lanes separately.",
+    "Operational lanes remain release-management evidence and do not create false product-engineering blockers.",
+    "Release-specific DSLC witnesses and reports are generated from machine manifests."
+  ],
+  "qaTesting": [
+    {
+      "command": "pnpm dslc:contract:check",
+      "expectedScore100": 100
+    },
+    {
+      "command": "pnpm dslc:test",
+      "expectedTests": 11
+    },
+    {
+      "command": "pnpm dslc:release -- --manifest machine/dslc/releases/REL-FABRIC-DSLC-001/manifest.json",
+      "expectedScore100": 100
+    }
+  ],
+  "sprintPlans": [
+    {
+      "sprintId": "SPR-FABRIC-DSLC-2026-07",
+      "handoff": "machine/roadmap/sprints/active.json"
+    }
+  ],
+  "mprReview": {
+    "path": "machine/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT/audits/mpr.json",
+    "score100": 100
+  },
+  "signalReview": {
+    "path": "machine/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT/audits/signal.json",
+    "level": "L5",
+    "score100": 100
+  },
   "caveat": "This package manifest covers DSLC protocol maturity. Individual releases must still earn release-specific DSLC readiness."
 }

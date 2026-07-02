@@ -3,6 +3,9 @@ title: 'GTCX SHIP Protocol'
 status: current
 date: 2026-07-01
 owner: fabric-os
+document_type: runbook
+tier: operations
+review_cycle: on-change
 authority: GTCX-SHIP-001
 protocol_id: GTCX-SHIP-001
 workflow_id: ship-release

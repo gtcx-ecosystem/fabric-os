@@ -3,6 +3,10 @@ title: 'REL-GOLDEN-V1 sales enablement packet'
 status: draft
 date: 2026-07-01
 owner: commercial-ops
+document_type: release-evidence
+tier: business
+tags: [release-management, golden-v1, sales]
+review_cycle: on-change
 release: REL-GOLDEN-V1
 authority: GTCX-DSLC-001
 ---

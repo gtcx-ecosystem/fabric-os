@@ -64,6 +64,20 @@
       "required": ["README.md"],
       "optional": true
     },
+    "legal": {
+      "purpose": "Release legal applicability and activation boundary records for release-management proof packs",
+      "allowedDocTypes": ["release-evidence", "runbook"],
+      "required": ["README.md"],
+      "optional": true,
+      "platformRuntimeOnly": true
+    },
+    "release-management": {
+      "purpose": "Release proof packs, evidence maps, surface inventories, and release-manager operating records",
+      "allowedDocTypes": ["release-evidence", "runbook"],
+      "required": ["README.md"],
+      "optional": true,
+      "platformRuntimeOnly": true
+    },
     "workspace": {
       "purpose": "Fleet workspace layout and multi-repo Cursor notes",
       "allowedDocTypes": ["overview", "runbook"],
@@ -149,7 +163,9 @@
         "platform-services",
         "secas",
         "fleet-ops-assurance",
-        "protocols"
+        "protocols",
+        "legal",
+        "release-management"
       ],
       "subfolderContractEnforced": true,
       "complianceNestSpec": "machine/spec/docs-operations-compliance-nest.json",

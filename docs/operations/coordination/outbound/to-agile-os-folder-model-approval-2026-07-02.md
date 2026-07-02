@@ -2,8 +2,13 @@
 title: 'Outbound - agile-os folder model approval from fabric-os'
 owner: fabric-os
 status: current
+date: 2026-07-02
 version: 1.0.0
 updated: 2026-07-02
+document_type: coordination
+tier: operations
+tags: [qasc, agile-os, folder-model]
+review_cycle: on-change
 authority: GTCX-QASC-001
 supersedes: docs/operations/coordination/outbound/to-fabric-os-folder-deprecation-validation-2026-06-28.md
 ---

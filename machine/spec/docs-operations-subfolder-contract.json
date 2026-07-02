@@ -251,6 +251,28 @@
       "filePatternHuman": "{slug}.md",
       "forbidLooseMdAtRoot": false,
       "allowedChildFolders": ["archive"]
+    },
+    "legal": {
+      "purpose": "Release legal applicability and activation boundary records for release-management proof packs.",
+      "documentType": "release-evidence",
+      "profileOnly": "platform-runtime",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{release-or-topic}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["archive"]
+    },
+    "release-management": {
+      "purpose": "Release proof packs, evidence maps, surface inventories, and release-manager operating records.",
+      "documentType": "release-evidence",
+      "profileOnly": "platform-runtime",
+      "requiredFiles": ["README.md"],
+      "allowedRootFiles": ["README.md"],
+      "filePatternRegex": "^[a-z0-9-]+\\.md$",
+      "filePatternHuman": "{release-or-topic}.md",
+      "forbidLooseMdAtRoot": false,
+      "allowedChildFolders": ["archive"]
     }
   },
   "decomposeMatrix": {

@@ -4,10 +4,34 @@
   "_source": "docs/canon/bundles/",
   "entries": [
     {
+      "id": "FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT",
+      "title": "DSLC protocol rollout",
+      "status": "current",
+      "featureClass": "workflow-step",
+      "ownerRepo": "fabric-os",
+      "productionPackageRef": "machine/features/FEAT-FABRIC-DSLC-PROTOCOL-ROLLOUT/feature-pack/manifest.json"
+    },
+    {
       "id": "FEAT-FABRIC-OPS-ASSURANCE",
       "title": "Fabric ops assurance",
       "status": "in_progress",
       "spec": "machine/canon/bundles/FEAT-FABRIC-OPS-ASSURANCE/manifest.json"
+    },
+    {
+      "id": "FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT",
+      "title": "FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT",
+      "status": "ready-for-scrum-prioritization",
+      "featureClass": "workflow-step",
+      "ownerRepo": "fabric-os",
+      "productionPackageRef": "machine/features/FEAT-FABRIC-QASC-DEPLOYMENT-ROLLOUT/feature-pack/manifest.json"
+    },
+    {
+      "id": "FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT",
+      "title": "SHIP protocol rollout",
+      "status": "current",
+      "featureClass": "workflow-step",
+      "ownerRepo": "fabric-os",
+      "productionPackageRef": "machine/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT/feature-pack/manifest.json"
     }
   ]
 }

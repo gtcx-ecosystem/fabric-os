@@ -2,7 +2,7 @@
 
 **Generated** — do not edit. Author strategy in `docs/foundation/` and bundles in `docs/canon/`; run `pnpm canon:synthesize`.
 
-**Product:** fabric-os · **Version:** 0.1.0 · **Status:** draft
+**Product:** fabric-os · **Version:** 0.1.0 · **Status:** active
 
 | Need | Path |
 | ---- | ---- |

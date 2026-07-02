@@ -3,6 +3,10 @@ title: 'REL-GOLDEN-V1 claims and communications packet'
 status: draft
 date: 2026-07-01
 owner: authorized-communications-owner
+document_type: release-evidence
+tier: business
+tags: [release-management, golden-v1, communications]
+review_cycle: on-change
 release: REL-GOLDEN-V1
 authority: GTCX-DSLC-001 + GTCX-SHIP-001
 ---

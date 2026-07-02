@@ -21,5 +21,40 @@
     "mpr": "machine/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT/audits/mpr.json",
     "signal": "machine/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT/audits/signal.json"
   },
+  "acceptanceCriteria": [
+    "SHIP contract schema validates release manifests deterministically.",
+    "SHIP release evaluator scores sealed, hardened, institutionalized, and provisioned dimensions separately.",
+    "SHIP consumes DSLC evidence without replacing QASC, MPR, SIGNAL, or owner-lane release proof.",
+    "Release-specific SHIP witnesses and reports are generated from machine manifests."
+  ],
+  "qaTesting": [
+    {
+      "command": "pnpm ship:contract:check",
+      "expectedScore100": 100
+    },
+    {
+      "command": "pnpm ship:test",
+      "expectedTests": 7
+    },
+    {
+      "command": "pnpm ship:release -- --manifest machine/ship/releases/REL-FABRIC-DSLC-001/manifest.json",
+      "expectedScore100": 100
+    }
+  ],
+  "sprintPlans": [
+    {
+      "sprintId": "SPR-FABRIC-SHIP-2026-07",
+      "handoff": "machine/roadmap/sprints/active.json"
+    }
+  ],
+  "mprReview": {
+    "path": "machine/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT/audits/mpr.json",
+    "score100": 100
+  },
+  "signalReview": {
+    "path": "machine/features/FEAT-FABRIC-SHIP-PROTOCOL-ROLLOUT/audits/signal.json",
+    "level": "L5",
+    "score100": 100
+  },
   "caveat": "This package manifest covers SHIP protocol maturity. Individual releases must still earn release-specific SHIP readiness."
 }

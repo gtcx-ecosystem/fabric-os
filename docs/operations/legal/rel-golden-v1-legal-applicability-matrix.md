@@ -3,6 +3,10 @@ title: 'REL-GOLDEN-V1 legal applicability matrix'
 status: draft
 date: 2026-07-01
 owner: legal-ops
+document_type: release-evidence
+tier: operations
+tags: [release-management, golden-v1, legal]
+review_cycle: on-change
 release: REL-GOLDEN-V1
 authority: GTCX-DSLC-001 + GTCX-SHIP-001
 ---

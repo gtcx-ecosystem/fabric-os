@@ -1,0 +1,36 @@
+{
+  "schema": "gtcx://fabric-os/fleet-secops-complianceops-clearance/v1",
+  "checkedAt": "2026-06-15T00:00:00.000Z",
+  "directive": "Clear all internal Class R SecOps and ComplianceOps work; vendor pen-test/SOW/SOC gates remain parallel",
+  "register": "bridge-os/pm/spec/internal-secops-complianceops-clearance.json",
+  "lanes": {
+    "SecOps": {
+      "harness": "ecosystem:secas:check",
+      "rollup": "8/8 PASS",
+      "internalSealed": true,
+      "executionBlocked": "SECAS-S4-04 findings mapping — BG-10-10-REPORT"
+    },
+    "ComplianceOps": {
+      "harness": "complianceops:check",
+      "fleetHarness": "ecosystem:complianceops:check:fleet",
+      "internalSealed": true
+    }
+  },
+  "parallelExternalOnly": [
+    "BG-10-10",
+    "BG-10-10-REPORT",
+    "BG-10-11",
+    "SECAS-S2-01-INGEST",
+    "EXT-INF-014",
+    "EXT-INF-015",
+    "H-03"
+  ],
+  "gates": {
+    "secas": "PASS 12/12",
+    "secasRollup": "PASS 8/8",
+    "complianceops": "PASS",
+    "complianceopsFleet": "PASS",
+    "fleetRisk": "PASS"
+  },
+  "ok": true
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "testType": "load-test",
+  "date": "2026-06-03T20:31:20Z",
+  "result": "FAIL",
+  "services": [
+    { "name": "replay-protection-health", "port": 34567, "status": "PASS" },
+    { "name": "replay-protection-verify", "port": 34567, "status": "PASS" },
+    { "name": "compliance-gateway-health", "port": 34568, "status": "PASS" },
+    { "name": "compliance-gateway-tools", "port": 34568, "status": "FAIL" },
+    { "name": "compliance-gateway-rate-limit", "port": 34568, "status": "PASS" }
+  ]
+}

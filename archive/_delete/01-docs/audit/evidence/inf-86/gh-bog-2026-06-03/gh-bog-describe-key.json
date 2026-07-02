@@ -1,0 +1,18 @@
+{
+  "KeyMetadata": {
+    "AWSAccountId": "348389439381",
+    "KeyId": "d44106a0-cb37-4225-b84d-bb8105eaaca5",
+    "Arn": "arn:aws:kms:af-south-1:348389439381:key/d44106a0-cb37-4225-b84d-bb8105eaaca5",
+    "CreationDate": "2026-06-03T13:50:17.008000+02:00",
+    "Enabled": true,
+    "Description": "GTCX sovereign signing — production — Ghana Bogoso",
+    "KeyUsage": "SIGN_VERIFY",
+    "KeyState": "Enabled",
+    "Origin": "AWS_KMS",
+    "KeyManager": "CUSTOMER",
+    "CustomerMasterKeySpec": "ECC_NIST_P256",
+    "KeySpec": "ECC_NIST_P256",
+    "SigningAlgorithms": ["ECDSA_SHA_256"],
+    "MultiRegion": false
+  }
+}
